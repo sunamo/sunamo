@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="desktop.ColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="0">
+        <!--<VariableSizedWrapGrid Width="345" Margin="10, 5, 5, 5">-->
+            <StackPanel Width="345"  Margin="10, 5, 5, 5">
+            <StackPanel Orientation="Vertical">
+                <TextBlock  FontSize="20" Foreground="Black" x:Name="RTextBlock"></TextBlock>
+                <Slider x:Name="RSlider" LargeChange="5" Minimum="0" BorderBrush="Black" BorderThickness="1" Maximum="255" ValueChanged="Slider_ValueChanged" Width="325" MaxWidth="325" >
+                </Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="20" x:Name="GTextBlock" Foreground="Black" ></TextBlock>
+                <Slider x:Name="GSlider" Minimum="0" BorderThickness="1" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" Width="325" MaxWidth="325" ></Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="20" x:Name="BTextBlock" Foreground="Black" ></TextBlock>
+                <Slider x:Name="BSlider" Minimum="0" BorderThickness="1" LargeChange="1" Maximum="255" ValueChanged="Slider_ValueChanged" Width="325" MaxWidth="325" ></Slider>
+            </StackPanel>
+
+
+
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="20" x:Name="ATextBlock" Foreground="Black" ></TextBlock>
+                <Slider x:Name="ASlider" Minimum="0" BorderThickness="1" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" Width="325" MaxWidth="325" ></Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Rectangle x:Name="rectColor" Width="100" Height="100" Margin="0,0,0,0" HorizontalAlignment="Left" />
+                <TextBox x:Name="htmlColor"  FontSize="20" Width="200" Height="50" Margin="5" KeyUp="htmlColor_KeyUp" TextChanged="htmlColor_TextChanged_1"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <!--</VariableSizedWrapGrid>-->
+    </Grid>
+</UserControl>

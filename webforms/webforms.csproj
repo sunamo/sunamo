@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEE6192C-6FC5-40DF-933B-B26032A65CA9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>webforms</RootNamespace>
+    <AssemblyName>webforms</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AF.cs" />
+    <Compile Include="MSStoredProceduresI.cs" />
+    <Compile Include="Converters\MySitesConverter.cs" />
+    <Compile Include="CookieNames.cs" />
+    <Compile Include="Data\DatabaseRows.cs" />
+    <Compile Include="Data\UserContactInfo.cs" />
+    <Compile Include="Data\WebSwitchs.cs" />
+    <Compile Include="DayViewManager.cs" />
+    <Compile Include="DeleteCommentsManager.cs" />
+    <Compile Include="Enums\MySites.cs" />
+    <Compile Include="Enums\MySitesShort.cs" />
+    <Compile Include="FileBasedTable.cs" />
+    <Compile Include="General\DontCopy2\TableRowCities.cs" />
+    <Compile Include="General\DontCopy2\TableRowColors.cs" />
+    <Compile Include="General\DontCopy2\TableRowComments.cs" />
+    <Compile Include="General\DontCopy2\TableRowCommentSubscribe.cs" />
+    <Compile Include="General\DontCopy2\TableRowFavorites.cs" />
+    <Compile Include="General\DontCopy2\TableRowFileExts.cs" />
+    <Compile Include="General\DontCopy2\TableRowGo.cs" />
+    <Compile Include="General\DontCopy2\TableRowGoVisitors.cs" />
+    <Compile Include="General\DontCopy2\TableRowHostnames.cs" />
+    <Compile Include="General\DontCopy2\TableRowIPAddress.cs" />
+    <Compile Include="General\DontCopy2\TableRowLangs.cs" />
+    <Compile Include="General\DontCopy2\TableRowLocation.cs" />
+    <Compile Include="General\DontCopy2\TableRowLoginAttempt.cs" />
+    <Compile Include="General\DontCopy2\TableRowNameDays.cs" />
+    <Compile Include="General\DontCopy2\TableRowOS.cs" />
+    <Compile Include="General\DontCopy2\TableRowPage.cs" />
+    <Compile Include="General\DontCopy2\TableRowPageArgument.cs" />
+    <Compile Include="General\DontCopy2\TableRowPageName.cs" />
+    <Compile Include="General\DontCopy2\TableRowPageNew.cs" />
+    <Compile Include="General\DontCopy2\TableRowPageOld.cs" />
+    <Compile Include="General\DontCopy2\TableRowPlatforms.cs" />
+    <Compile Include="General\DontCopy2\TableRowRegion.cs" />
+    <Compile Include="General\DontCopy2\TableRowState.cs" />
+    <Compile Include="General\DontCopy2\TableRowStates.cs" />
+    <Compile Include="General\DontCopy2\TableRowTypesOfContacts.cs" />
+    <Compile Include="General\DontCopy2\TableRowUsers.cs" />
+    <Compile Include="General\DontCopy2\TableRowUsersActivates.cs" />
+    <Compile Include="General\DontCopy2\TableRowUsersReactivates.cs" />
+    <Compile Include="General\DontCopy3\TableRowCities3.cs" />
+    <Compile Include="General\DontCopy3\TableRowFavorites3.cs" />
+    <Compile Include="General\DontCopy3\TableRowFileExts3.cs" />
+    <Compile Include="General\DontCopy3\TableRowPageArgument3.cs" />
+    <Compile Include="General\DontCopy3\TableRowPageName3.cs" />
+    <Compile Include="General\DontCopy3\TableRowSessions3.cs" />
+    <Compile Include="General\DontCopy3\TableRowSRDistricts3.cs" />
+    <Compile Include="General\DontCopy3\TableRowSRegions3.cs" />
+    <Compile Include="General\DontCopy3\TableRowStates3.cs" />
+    <Compile Include="General\DontCopy3\TableRowTypesOfContacts3.cs" />
+    <Compile Include="General\DontCopy3\TableRowUsers3.cs" />
+    <Compile Include="General\DontCopy3\TableRowUsersActivates3.cs" />
+    <Compile Include="General\DontCopyBase\TableRowCitiesBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowColorsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowCommentsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowCommentSubscribeBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowFavoritesBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowFileExtsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowGoBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowGoVisitorsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowHostnamesBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowIPAddressBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowLangsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowLocationBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowLoginAttemptBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowNameDaysBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowOSBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPageArgumentBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPageBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPageNameBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPageNewBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPageOldBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowPlatformsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowRegionBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowStateBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowStatesBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowTypesOfContactsBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowUsersActivatesBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowUsersBase.cs" />
+    <Compile Include="General\DontCopyBase\TableRowUsersReactivatesBase.cs" />
+    <Compile Include="General\GeneralCells.cs" />
+    <Compile Include="General\GeneralColls.cs" />
+    <Compile Include="General\GeneralConsts.cs" />
+    <Compile Include="General\GeneralConstsShared.cs" />
+    <Compile Include="General\GeneralHelper.cs" />
+    <Compile Include="General\GeneralLayer.cs" />
+    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\DDLH.cs" />
+    <Compile Include="Helpers\GravatarHelper.cs" />
+    <Compile Include="Helpers\HttpHandlerHelper.cs" />
+    <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\HttpRequestHelper.cs" />
+    <Compile Include="Helpers\HttpRequestHelpers.cs" />
+    <Compile Include="Helpers\ListItemHelper.cs" />
+    <Compile Include="Helpers\SelectHelper.cs" />
+    <Compile Include="Helpers\WLBH.cs" />
+    <Compile Include="Helpers\XHelper.cs" />
+    <Compile Include="HtmlGenerators\GeneralHtmlGenerator.cs" />
+    <Compile Include="HtmlInjector.cs" />
+    <Compile Include="Helpers\ImagesHelper.cs" />
+    <Compile Include="HtmlPagingGenerator.cs" />
+    <Compile Include="Interfaces\IHttpHandlerSession.cs" />
+    <Compile Include="JavaScriptGenerator2.cs" />
+    <None Include="JavaScriptGeneratorcs" />
+    <Compile Include="JavaScriptInjection.cs" />
+    <Compile Include="JavaScriptInjectionResponse.cs" />
+    <Compile Include="LoginCookie.cs" />
+    <Compile Include="Logins.cs" />
+    <Compile Include="LoginSystem\Registration.cs" />
+    <Compile Include="LoginSystem\RegistrationLogic.cs" />
+    <Compile Include="MasterPage.cs" />
+    <Compile Include="Me\MeUri.cs" />
+    <Compile Include="MultiColorLine.cs" />
+    <Compile Include="NameValueCollectionParserGet.cs" />
+    <Compile Include="PageArgumentVerifier.cs" />
+    <Compile Include="PageHelper.cs" />
+    <Compile Include="PageHelperBase.cs" />
+    <Compile Include="PagesAndVisitsDeleteManager.cs" />
+    <Compile Include="PageSnippet\OpenGraphHelper.cs" />
+    <Compile Include="PageSnippet\PageSnippet.cs" />
+    <Compile Include="PageSnippet\SchemaOrgHelper.cs" />
+    <Compile Include="LoginedUser.cs" />
+    <Compile Include="Pages\IRoutePage.cs" />
+    <Compile Include="Pages\SunamoPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SunamoRoutePage.cs" />
+    <Compile Include="PrettySocialHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QSHelpers.cs" />
+    <Compile Include="RequestValidator.cs" />
+    <Compile Include="RoutePageHelper.cs" />
+    <Compile Include="SessionManager.cs" />
+    <Compile Include="ShareButtons.cs" />
+    <Compile Include="SmallDateTime.cs" />
+    <Compile Include="SocialShareButtons.cs" />
+    <Compile Include="StateMessage.cs" />
+    <Compile Include="StyleInjection.cs" />
+    <Compile Include="StyleInjectionResponse.cs" />
+    <Compile Include="SunamoCzHelper.cs" />
+    <Compile Include="SunamoCzMetroUIHelper.cs" />
+    <Compile Include="SunamoMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SunamoPageHelper.cs" />
+    <Compile Include="SunamoPhotoGallery\SunamoPhotoGallery.cs" />
+    <Compile Include="SunamoPhotoGallery\SunamoPhotoSwipeGallery.cs" />
+    <Compile Include="SunamoSearchEngine\HtmlSearchResult.cs" />
+    <Compile Include="SunamoSearchEngine\ITableRowSearchIndex.cs" />
+    <Compile Include="SunamoSearchEngine\ITableRowWord.cs" />
+    <Compile Include="SunamoSearchEngine\SunamoSearchData.cs" />
+    <Compile Include="SunamoSearchEngine\SunamoSearchEngine.cs" />
+    <Compile Include="SunamoSearchEngine\SunamoSearchEngineTInt.cs" />
+    <Compile Include="SunamoSearchEngine\SunamoSearchEngineTLong.cs" />
+    <Compile Include="Tables.cs" />
+    <Compile Include="TempHelper.cs" />
+    <Compile Include="UH.cs" />
+    <Compile Include="UploaderManager.cs" />
+    <Compile Include="WaitingManagerAspx.cs" />
+    <Compile Include="WaitingManagerAspxPagesID.cs" />
+    <Compile Include="WebPage2.cs" />
+    <Compile Include="YouTubeThumbnail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\shared\shared.csproj">
+      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{617c1f6b-4f97-42cc-8834-a5432a1d1cd4}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\web\web.csproj">
+      <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>
+      <Name>web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="General\DontCopyBaseEx\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

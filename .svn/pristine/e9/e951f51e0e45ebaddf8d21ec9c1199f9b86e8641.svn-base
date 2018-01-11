@@ -1,0 +1,329 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Diagnostics;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Globalization;
+using System.Collections.ObjectModel;
+using sunamo;
+
+// !Hotovo!-
+namespace sunamo
+{
+    /// <summary>
+    /// Lze vypnout logovani ale nelze jednoduse zjistit, zda se loguje.
+    /// Pracuje s 2 prvky - sablonami a zpravami.
+    /// 
+    /// Z je StorageFile
+    /// </summary>
+    public abstract class LogServiceAbstract<T, Z> //: ILog
+    {
+        #region DPP
+        /// <summary>
+        /// Pri cteni uloz. souboru.
+        /// Uklada v M MaRadekObsah
+        /// </summary>
+        protected string prectenyRadek;
+        /// <summary>
+        /// Ulozena zprava spusteni aby bylo mozno snadno rozpoznat nove zpravy. 
+        /// </summary>
+        public LogMessageAbstract<T, Z> spusteni = null; 
+        /// <summary>
+        /// Sablony zprav
+        /// </summary>
+        public List<LogMessageAbstract<T, Z>> templates = new List<LogMessageAbstract<T, Z>>();
+        // Pokud byla kolekce List, často mi vznikala chyba AppDomain.UnhandledException - Layout cycle detected. Layout could not complete.
+        public List<LogMessageAbstract<T, Z>> messagesActualSession2 = new List<LogMessageAbstract<T, Z>>();
+        public List<LogMessageAbstract<T, Z>> messagesOlder = new List<LogMessageAbstract<T, Z>>();
+        /// <summary>
+        /// Zda se prijate zpravy maji zaznamenavat.
+        /// </summary>
+        bool isLogging = true;
+
+
+        #endregion
+
+        #region IParser<ZpravaLogu> Members
+        /// <summary>
+        /// Vrátí null pokud se nepodaří vyparsovat datum nebo A1 bude SE.
+        /// G zpravu logu zpar. s ToString().
+        /// </summary>
+        /// <param name="co"></param>
+        /// <returns></returns>
+        public async Task<LogMessageAbstract<T, Z>> Parse(string co)
+        {
+            string[] roz = SH.SplitToParts(co, 3, LogServiceData.ods);
+            if (roz.Length != 3)
+            {
+                return null;
+            }
+            roz = CA.Trim(roz);
+            DateTime dt = DateTime.Today;
+
+            if (DateTime.TryParse(roz[0], CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+            {
+                TypeOfMessage tom = (TypeOfMessage)Enum.Parse(typeof(TypeOfMessage), roz[1]);
+                return await CreateInstance().Initialize(dt, tom, roz[2], GetBackgroundBrushOfTypeOfMessage(tom));
+            }
+
+            return null;
+        }
+        #endregion
+
+        public abstract T GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st);
+        public abstract T GetForegroundBrushOfTypeOfMessage(TypeOfMessage st);
+
+        #region base
+        /// <summary>
+        /// EK, OOP. 
+        /// Pokud je A1 null, uzije se nazev app podle ThisApp.Name
+        /// Pro sablony je pouzito automaticky sablony.txt
+        /// A3 nemusi byt ulozen, zpravuje o tom jeTssl
+        /// Nacte dosud ulozene a sablony
+        /// </summary>
+        /// <param name="slozka"></param>
+        /// <param name="soubor"></param>
+        /// <param name="tssl"></param>
+        protected async Task<object> InitializeAbstract(bool invariant, Langs l)
+        {
+                LogServiceData.ciForShowing = AppLangHelper.currentUICulture;
+                if (invariant)
+                {
+                LogServiceData.ciForParse = CultureInfo.InvariantCulture;
+                }
+                else
+                {
+                LogServiceData.ciForParse = AppLangHelper.currentUICulture;
+                }
+                
+            string mesAppStarted = null;
+            if (l == Langs.cs)
+            {
+                mesAppStarted = "Program spusten";
+            }
+            else
+            {
+                mesAppStarted = "App started";
+            }
+            spusteni = await Add(TypeOfMessage.Success, mesAppStarted);
+
+            return null;
+        }
+
+        #endregion
+
+        #region -!Hotovo!-
+
+        #region Nacteni/Ulozeni
+        /// <summary>
+        /// Pridam do kolekce zpravy ze souboru. Je volana jen pri vytvoreni O.
+        /// </summary>
+        protected  abstract Task<List<LogMessageAbstract<T, Z>>> ReadMessagesFromFile(Z fileStream);
+
+
+        #endregion
+        protected abstract LogMessageAbstract<T,  Z> CreateInstance();
+        #region Prace se sablonovymi zpravami - vraceni
+        /// <summary>
+        /// Prida do temp zpravy, ktere souhlasi s sablonou A1.
+        /// Je nutno dodržovat konvenci označovat proměnné texty entit do znaku A2
+        /// </summary>
+        /// <param name="zpravaLogu"></param>
+        private List<LogMessageAbstract<T, Z>> FindMessageByTemplate(LogMessageAbstract<T, Z> zpravaLogu, char ch)
+        {
+            List<LogMessageAbstract<T, Z>> temp = new List<LogMessageAbstract<T, Z>>();
+            
+            List<string> baseText = ClearTextBetween(zpravaLogu.Message, ch);
+            foreach (LogMessageAbstract<T, Z> var in messagesActualSession2)
+            {
+                foreach (var item in baseText)
+                {
+                    if (var.Message.Contains(item))
+                    {
+                        temp.Add(var);
+                    }
+                }
+            }
+            return temp;
+        }
+        #endregion
+
+        #region Zbytek - HelperM
+        #region Retezec
+        /// <summary>
+        /// G true, kdyz A1 neni prazdny.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        protected bool HasRowContent(string p)
+        {
+            if (p == null)
+            {
+                return false;
+            }
+            prectenyRadek = p.Trim();
+            if (p == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Vrátí mi texty mezi A2 - pokud nenaleznu koncový znak, nepřidá nic
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private List<string> ClearTextBetween(string p, char ch)
+        {
+            List<string> vr = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            bool mazat = false;
+            foreach (char var in p)
+            {
+                if (var == ch)
+                {
+                    mazat = !mazat;
+                    if (mazat)
+                    {
+                        string sbs = sb.ToString().Trim();
+                        sb = new StringBuilder();
+                        if (sbs != "")
+                        {
+                            vr.Add(sbs);
+                        }
+                    }
+                    
+                    continue;
+                }
+
+                if (!mazat)
+                {
+                    sb.Append(var);
+                }
+            }
+            return vr;
+        }
+        #endregion
+
+        #region Stav
+        /// <summary>
+        /// Vypise pocet sablon, zprav a zda se loguje.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return "Loguje se: " + Bool2Cz(isLogging, true) + " Pocet sablon: " + templates.Count + " Pocet sablon: " + messagesActualSession2.Count;
+        } 
+        #endregion
+
+        /// <summary>
+        /// Prevede T/F na A/N.
+        /// </summary>
+        /// <param name="vstup"></param>
+        /// <param name="velkym"></param>
+        /// <returns></returns>
+        public string Bool2Cz(bool vstup, bool velkym)
+        {
+            return SH.ToCase(sunamo.BT.BoolToStringCs(vstup), velkym);
+        }
+        #endregion
+
+        #region Pridavani novych zprav
+        /// <summary>
+        /// Zaloguje zpravu. Jine datum nez aktualni nelze uzit.
+        /// Pokud se neloguje, vrátí null.
+        /// </summary>
+        /// <param name="zprava"></param>
+        /// <returns></returns>
+        public async Task<LogMessageAbstract<T, Z>> Add(TypeOfMessage st, string zprava)
+        {
+            if (isLogging)
+            {
+                LogMessageAbstract<T, Z> zl3 = await CreateInstance().Initialize(DateTime.Now, st, zprava, GetBackgroundBrushOfTypeOfMessage(st));
+                messagesActualSession2.Insert(0, zl3);
+                return zl3;
+            }
+            return null;
+        }
+        #endregion
+
+        #region Vraceni zprav
+        /// <summary>
+        /// G vsechny zpravy od A1.
+        /// Vrací prázdnou kolekci v přápadě problémů.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public List<LogMessageAbstract<T, Z>> MessagesFromDate(DateTime dt, bool alsoOlder)
+        {
+            List<LogMessageAbstract<T,Z>> messagesActualSession = Messages(alsoOlder);
+            List<LogMessageAbstract<T, Z>> vr = new List<LogMessageAbstract<T, Z>>();
+            // Zjistim index od ktereho vezmu zaznamy
+            var fm = FirstMessageFrom(dt, alsoOlder);
+            if (fm == null)
+            {
+                return vr;
+            }
+            int index = messagesActualSession.IndexOf(fm);
+            int c = messagesActualSession.Count - index + 1;
+            for (int i = 0; i < c; i++)
+            {
+                vr.Add(messagesActualSession[i]);
+            }
+            return vr;
+        }
+
+        private List<LogMessageAbstract<T, Z>> Messages(bool alsoOlder)
+        {
+            List<LogMessageAbstract<T, Z>> vr = new List<LogMessageAbstract<T, Z>>(messagesActualSession2);
+            if (alsoOlder)
+            {
+                vr.AddRange(messagesOlder);
+            }
+            return vr;
+        }
+
+        /// <summary>
+        /// G prvni zpravu za A1.
+        /// Pokud se nepodaří najít, vrátí null.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        private LogMessageAbstract<T, Z> FirstMessageFrom(DateTime dt, bool alsoOlder)
+        {
+            List<LogMessageAbstract<T, Z>> messagesActualSession = Messages(alsoOlder);
+            foreach (LogMessageAbstract<T, Z> var in messagesActualSession)
+            {
+                // TODO: Vychazim z toho, ze by zpravy meli byt chronologicky serazeny
+                if (var.Dt > dt)
+                {
+                    return var;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// G A1 poslednich zprav.
+        /// Nevrací null, pouze prázdnou kolekci.
+        /// </summary>
+        /// <param name="pocet"></param>
+        /// <returns></returns>
+        public List<LogMessageAbstract<T, Z>> LastMessages(int pocet, bool alsoOlder)
+        {
+            List<LogMessageAbstract<T, Z>> messagesActualSession = Messages(alsoOlder);
+            List<LogMessageAbstract<T, Z>> vr = new List<LogMessageAbstract<T, Z>>();
+            int c = messagesActualSession.Count < pocet ? pocet : messagesActualSession.Count;
+            for (int i = 0; i < c; i++)
+            {
+                vr.Add(messagesActualSession[i]);
+            }
+            return vr;
+        }
+        #endregion
+        #endregion
+    }
+}

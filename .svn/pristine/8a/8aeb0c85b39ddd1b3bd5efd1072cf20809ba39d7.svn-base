@@ -1,0 +1,470 @@
+using sunamo;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+public abstract class FtpBase
+{
+    public IFtpClientExt MainWindow = null;
+    /// <summary>
+    /// Je public jen kvůli třídě Ftp
+    /// </summary>
+    public PathSelector ps = null;
+    /// <summary>
+    /// Vzdálený hostitel
+    /// </summary>
+    protected string remoteHost;
+    /// <summary>
+    /// Uživatel který se pokouší přihlásit - používá se s příkazem USER
+    /// </summary>
+    protected string remoteUser;
+    /// <summary>
+    /// Heslo uživatele který se pokouší autentizovat. Posílá se s příkazem PASS
+    /// </summary>
+    protected string remotePass;
+    /// <summary>
+    /// 
+    /// </summary>
+    protected int remotePort;
+    public bool logined;
+    /// <summary>
+    /// Pokud bude nastaveno na false, nebude se uploadovat na hosting nic - používá se pouze v této třídě, proto všechno ostatní bude fungovat normálně
+    /// </summary>
+    public bool reallyUpload = true;
+
+    /// <summary>
+    /// IK, OOP.
+    /// </summary>
+    public FtpBase()
+    {
+        ps = new PathSelector("");
+        remoteHost = string.Empty;
+        //remotePath = ".";
+        remoteUser = string.Empty;
+        remotePass = string.Empty;
+        remotePort = 21;
+        logined = false;
+    }
+
+    /// <summary>
+    /// S PP remoteHost A1
+    /// </summary>
+    /// <param name="remoteHost"></param>
+    public void setRemoteHost(string remoteHost)
+    {
+        this.remoteHost = remoteHost;
+    }
+
+    /// <summary>
+    /// G adresu vzdáleného hostitele
+    /// </summary>
+    /// <returns></returns>
+    public string getRemoteHost()
+    {
+        return remoteHost;
+    }
+
+    /// <summary>
+    /// S PP remotePort A1
+    /// </summary>
+    /// <param name="remotePort"></param>
+    public void setRemotePort(int remotePort)
+    {
+        this.remotePort = remotePort;
+    }
+
+    /// <summary>
+    /// G port který se používá pro vzdálený přenos
+    /// </summary>
+    /// <returns></returns>
+    public int getRemotePort()
+    {
+        return remotePort;
+    }
+
+    /// <summary>
+    /// S PP remoteUser A1
+    /// </summary>
+    /// <param name="remoteUser"></param>
+    public void setRemoteUser(string remoteUser)
+    {
+        this.remoteUser = remoteUser;
+    }
+
+    /// <summary>
+    /// S PP remotePass A1
+    /// </summary>
+    /// <param name="remotePass"></param>
+    public void setRemotePass(string remotePass)
+    {
+        this.remotePass = remotePass;
+    }
+
+    public void OnNewStatusNewFolder()
+    {
+        NewStatus("Nová složka je " + ps.ActualPath);
+    }
+
+    public abstract void goToUpFolderForce();
+    public abstract void goToUpFolder();
+    public abstract void LoginIfIsNot(bool startup);
+
+
+    
+
+    
+
+    public abstract long getFileSize(string filename);
+
+    
+    
+
+    
+
+    public static event VoidObjectParamsObjects NewStatus;
+
+    /// <summary>
+    /// OK
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="p"></param>
+    public static void OnNewStatus(string s, params object[] p)
+    {
+        NewStatus(s, p);
+    }
+
+    public abstract void goToPath(string slozkaNaHostingu);
+
+    
+
+    /// <summary>
+    /// STOR
+    /// Nauploaduje pouze soubory které ještě v adresáři nejsou
+    /// </summary>
+    /// <param name="files"></param>
+    /// <param name="iw"></param>
+    /// <returns></returns>
+    public bool UploadFiles(string[] files)
+    {
+
+        string[] fse = ListDirectoryDetails();
+        foreach (string item in files)
+        {
+            
+            long fileSize = sunamo.FS.GetFileSize(item);
+            if (!FtpHelper.IsFileOnHosting(item, fse, fileSize))
+            {
+                
+                UploadFile(item);
+            }
+
+        }
+        return true;
+    }
+
+    public string GetActualPath()
+    {
+        return  UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+    }
+
+    /// <summary>
+    /// A1 musí být vždy pouze název adresáře/souboru, nikdy to nemůže být plná cesta
+    /// </summary>
+    /// <param name="dirName"></param>
+    /// <returns></returns>
+    public string GetActualPath(string dirName)
+    {
+        string s =  UH.Combine(true, remoteHost + ":" + remotePort, UH.Combine(true, ps.ActualPath, dirName));
+        return s.TrimEnd('/');
+    }
+
+    public abstract bool UploadFileMain(string _FileName, string _UploadPath);
+    public abstract bool mkdir(string dirName);
+    public abstract bool download(string remFileName, string locFileName, Boolean deleteLocalIfExists);
+    public abstract bool deleteRemoteFile(string fileName);
+    public abstract void renameRemoteFile(string oldFileName, string newFileName);
+    public abstract bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName);
+    public abstract void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td);
+    public abstract void CreateDirectoryIfNotExists(string dirName);
+    public abstract string[] ListDirectoryDetails();
+    public abstract Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS);
+    public abstract void chdirLite(string dirName);
+
+    #region Zakomentované metody
+    #endregion
+
+    #region OK metody
+    /// <summary>
+    /// STOR
+    /// </summary>
+    /// <param name="slozkaNaLocalu"></param>
+    /// <param name="slozkaNaHostingu"></param>
+    /// <param name="iw"></param>
+    /// <returns></returns>
+    public bool uploadFolderRek(string slozkaNaLocalu, string slozkaNaHostingu)
+    {
+        // Musí to tu být právě kvůli předchozímu řádku string[] fse = getFSEntriesList(); kdy získávám seznam souborů na FTP serveru
+        goToPath(slozkaNaHostingu);
+
+
+
+        string[] directories = Directory.GetDirectories(slozkaNaLocalu);
+        string[] files = Directory.GetFiles(slozkaNaLocalu);
+        OnNewStatus("Uploaduji všechny soubory (" + files.Length + ") do složky ftp serveru " + ps.ActualPath);
+
+        if (!UploadFiles(files))
+        {
+            return false;
+        }
+
+        foreach (string item in directories)
+        {
+            if (!uploadFolderRek(item, UH.Combine(false, slozkaNaHostingu, sunamo.FS.GetFileName(item))))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// OK
+    /// </summary>
+    /// <param name="slozkaNaLocalu"></param>
+    /// <returns></returns>
+    public bool uploadFolderRek(string slozkaNaLocalu, IWorking iw)
+    {
+        return uploadFolderShared(slozkaNaLocalu, true, iw);
+    }
+
+    protected bool startup = true;
+    public ulong folderSizeRec = 0;
+
+    /// <summary>
+    /// OK
+    /// LIST
+    /// Tato metoda není vstupní, nevolej ji, zavolej místo toho getFSEntriesListRecursively s 1 parametrem
+    /// </summary>
+    /// <param name="projiteSlozky"></param>
+    /// <param name="vr"></param>
+    /// <param name="p"></param>
+    /// <param name="folderName"></param>
+    public void getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS, List<string> projiteSlozky, Dictionary<string, List<string>> vr, string p, string folderName)
+    {
+        LoginIfIsNot(startup);
+        string nextPath = UH.Combine(true, ps.ActualPath, folderName);
+        if (!projiteSlozky.Contains(nextPath))
+        {
+            NewStatus("Složka do které se mělo přejít (" + nextPath + ") ještě nebyla v projeté kolekci");
+            ps.AddToken(folderName);
+            projiteSlozky.Add(nextPath);
+
+
+            string[] fse = ListDirectoryDetails();
+            string actualPath = ps.ActualPath;
+            foreach (string item in fse)
+            {
+                string size = SH.JoinFromIndex(4, ' ', SH.Split(item, " "));
+                char fz = item[0];
+                if (fz == '-')
+                {
+                    if (size != "0")
+                    {
+                        folderSizeRec += ulong.Parse(size.Substring(0, size.IndexOf(' ') + 1));
+                    }
+
+                    if (vr.ContainsKey(actualPath))
+                    {
+                        vr[actualPath].Add(item);
+                    }
+                    else
+                    {
+                        List<string> ppk = new List<string>();
+                        ppk.Add(item);
+                        vr.Add(actualPath, ppk);
+                    }
+                }
+                else if (fz == 'd')
+                {
+                    string folderName2 = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                    if (!FtpHelper.IsThisOrUp(folderName2))
+                    {
+                        if (slozkyNeuploadovatAVS.Contains(folderName2) && ps.ActualPath == MainWindow.WwwSlash)
+                        {
+                            continue;
+                        }
+                        if (vr.ContainsKey(actualPath))
+                        {
+                            vr[actualPath].Add(item);
+                        }
+                        else
+                        {
+                            List<string> ppk = new List<string>();
+                            ppk.Add(item);
+                            vr.Add(actualPath, ppk);
+                        }
+                        getFSEntriesListRecursively(slozkyNeuploadovatAVS, projiteSlozky, vr, ps.ActualPath, folderName2);
+                    }
+                }
+                
+                else
+                {
+                    
+                    throw new Exception("Nepodporovaný typ objektu");
+                }
+            }
+            if (ps.CanGoToUpFolder)
+            {
+                goToUpFolder();
+                //ps.RemoveLastToken();
+            }
+        }
+        else
+        {
+            NewStatus("Složka do které se mělo přejít (" + nextPath + ") již byla v projeté kolekci");
+        }
+
+        //ps.ActualPath = p;
+    }
+
+    /// <summary>
+    /// OK
+    /// RETR
+    /// Stáhne soubor A1 do lok. souboru A2. Nenavazuje
+    /// </summary>
+    /// <param name="remFileName"></param>
+    /// <param name="locFileName"></param>
+    public void download(string remFileName, string locFileName)
+    {
+        download(remFileName, locFileName, true);
+    }
+
+    /// <summary>
+    /// OK
+    /// STOR
+    /// Před použitím této metody se musím přesunout do složky do které chci uploadovat.
+    /// Methods to upload file to FTP Server
+    /// </summary>
+    /// <param name="_FileName">local source file name</param>
+    /// <param name="_UploadPath">Upload FTP path including Host name</param>
+    /// <param name="_FTPUser">FTP login username</param>
+    /// <param name="_FTPPass">FTP login password</param>
+    public void UploadFile(string _FileName)
+    {
+        String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/", UH.Combine(true, ps.ActualPath, sunamo.FS.GetFileName(_FileName)));
+        if (reallyUpload)
+        {
+            UploadFileMain(_FileName, _UploadPath);
+        }
+        
+        //MainWindow.FileUploaded(_FileName);
+    }
+
+    /// <summary>
+    /// OK
+    /// STOR
+    /// Metoda s druhým argumentem, pokud chci uploadovat do jiné složky, než ve které teď jsem
+    /// </summary>
+    /// <param name="fullFilePath"></param>
+    /// <param name="actualFtpPath"></param>
+    /// <returns></returns>
+    public bool UploadFile(string fullFilePath, string actualFtpPath)
+    {
+        String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/" + "/", UH.Combine(false, actualFtpPath, sunamo.FS.GetFileName(fullFilePath)));
+        var vr = true;
+        if (reallyUpload)
+        {
+            vr = UploadFileMain(fullFilePath, _UploadPath);
+        }
+        return vr;
+    }
+
+    
+
+    /// <summary>
+    /// OK
+    /// STOR
+    /// </summary>
+    /// <param name="slozkaTo"></param>
+    /// <param name="iw"></param>
+    /// <returns></returns>
+    public bool uploadFolderShared(string slozkaFrom, bool rek, IWorking working)
+    {
+        string nazevSlozky = Path.GetFileName(slozkaFrom);
+        string pathFolder = UH.Combine(true, ps.ActualPath, nazevSlozky);
+        slozkaFrom = slozkaFrom.TrimEnd('\\');
+        string[] soubory = Directory.GetFiles(slozkaFrom);
+        string[] slozky = Directory.GetDirectories(slozkaFrom);
+
+        NewStatus("Uploaduji všechny soubory (" + soubory.Length + ") do složky ftp serveru " + pathFolder);
+
+        CreateDirectoryIfNotExists(nazevSlozky);
+        foreach (var item in soubory)
+        {
+            if (!working.IsWorking)
+            {
+                return false;
+            }
+            UploadFile(item);
+        }
+
+        if (rek)
+        {
+            if (slozky.Length == 0)
+            {
+                goToUpFolder();
+            }
+            else
+            {
+                foreach (var item in slozky)
+                {
+                    uploadFolderShared(item, rek, working);
+                }
+                if (slozky.Length != 0)
+                {
+                    goToUpFolder();
+                }
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// OK
+    /// Do A1 se zadává název souboru bez cesty
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <returns></returns>
+    public bool ExistsFolder(string folder)
+    {
+        string[] fse = ListDirectoryDetails();
+        List<string> d = new List<string>(FtpHelper.GetDirectories(fse));
+        return d.Contains(folder);
+    }
+    #endregion
+
+
+
+
+
+    #region OK Methods
+    /// <summary>
+    /// OK
+    /// Po zavolání této metody v třídě FTP, pokud chceš do adresáře, kde jsi byl před jejím zavoláním, musíš zavolat goToUpFolder
+    /// </summary>
+    /// <param name="slozkaFrom"></param>
+    /// <returns></returns>
+    public bool uploadFolder(string slozkaFrom, bool FTPclass, IWorking working)
+    {
+        string actPath = ps.ActualPath;
+        bool vr = uploadFolderShared(slozkaFrom, false, working);
+        if (FTPclass)
+        {
+            goToPath(actPath);
+        }
+        return vr;
+    }
+    
+
+    #endregion
+}

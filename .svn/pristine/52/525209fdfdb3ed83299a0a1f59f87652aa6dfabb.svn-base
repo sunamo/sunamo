@@ -1,0 +1,166 @@
+using sunamo;
+using desktop.Essential;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace desktop
+{
+    public class LogService : LogServiceAbstract<Color, string>
+    {
+        public override Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st)
+        {
+            switch (st)
+            {
+                case TypeOfMessage.Error:
+                    return Colors.LightCoral;
+                case TypeOfMessage.Warning:
+                    return Colors.LightYellow;
+                case TypeOfMessage.Information:
+                    return Colors.White;
+                case TypeOfMessage.Ordinal:
+                    return Colors.White;
+                case TypeOfMessage.Appeal:
+                    return Colors.LightGray;
+                case TypeOfMessage.Success:
+                    return Colors.LightGreen;
+                default:
+                    return Colors.White;
+            }
+        }
+
+        public override Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage st)
+        {
+            switch (st)
+            {
+                case TypeOfMessage.Error:
+                    return Colors.DarkRed;
+                case TypeOfMessage.Warning:
+                    return Colors.DarkOrange;
+                case TypeOfMessage.Information:
+                    return Colors.Black;
+                case TypeOfMessage.Ordinal:
+                    return Colors.Black;
+                case TypeOfMessage.Appeal:
+                    return Colors.Gray;
+                case TypeOfMessage.Success:
+                    return Colors.LightGreen;
+                default:
+                    return Colors.White;
+            }
+        }
+
+        public LogService()
+        {
+
+        }
+
+        #region Cesty
+        /// <summary>
+        /// Cesta k souboru s logem.
+        /// </summary>
+        string sfLog;
+        /// <summary>
+        /// Cesta k souboru s logem.
+        /// </summary>
+        string sfTemplates;
+        #endregion
+        TextBlock tssl = null;
+
+        protected async override Task<List<LogMessageAbstract<Color, string>>> ReadMessagesFromFile(string fileStream)
+        {
+            string[] lines = TF.GetAllLines(fileStream);
+            List<LogMessageAbstract<Color, string>> vr = new List<LogMessageAbstract<Color, string>>();
+            // Zde by se prazdne radky nemeli vyskytovat, ale v jinych programech ano!
+            foreach (var item in lines)
+            {
+                if (HasRowContent(item))
+                {
+                    LogMessageAbstract<Color, string> zpravaLogu = CreateInstance();
+                    zpravaLogu = await Parse(prectenyRadek);
+                    if (zpravaLogu != null)
+                    {
+                        vr.Add(zpravaLogu);
+                    }
+                }
+            }
+            return vr;
+        }
+
+        #region Ulozeni do souboru
+        /// <summary>
+        /// Je volana jen pri vytvoreni O.
+        /// </summary>
+        public void SaveToFile()
+        {
+            StringBuilder sb = new StringBuilder();
+            // V souboru to bude pozpátku jak je to všude jinde běžné
+            for (int i = messagesOlder.Count - 1; i >= 0; i--)
+            {
+                sb.AppendLine(messagesActualSession2[i].ToString());
+            }
+            for (int i = messagesActualSession2.Count - 1; i >= 0; i--)
+            {
+                sb.AppendLine(messagesActualSession2[i].ToString());
+            }
+            if (sfLog != null)
+            {
+                 TF.SaveFile(sb.ToString(), sfLog);
+            }
+        }
+
+        /// <summary>
+        /// Ulozi sablony do souboru.
+        /// </summary>
+        private  void UlozSablonyDoSouboru()
+        {
+            StringBuilder sb = new StringBuilder();
+            // V souboru to bude pozpátku jak je to všude jinde běžné
+            for (int i = templates.Count - 1; i >= 0; i--)
+            {
+                sb.AppendLine(templates[i].ToString());
+            }
+
+             TF.SaveFile(sb.ToString(), sfTemplates);
+        }
+        #endregion
+
+        protected async void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
+        {
+            await InitializeAbstract(invariant, l);
+            this.tssl = tssl;
+            #region Ulozim do As, pokud nekt. byla null
+            string slozka =  AppData.GetFolder(AppFolders.Logs);
+            if (string.IsNullOrEmpty(soubor))
+            {
+                soubor = ThisApp.Name + ".log";
+            }
+            #endregion
+
+            #region Posklada cesty a zal. poc. zpravu
+            sfLog = AppData.GetFile(AppFolders.Logs, soubor);
+            sfTemplates = AppData.GetFile(AppFolders.Logs, "templates.txt");
+
+            #endregion
+
+            #region Nacte dosud ulozene a sablony
+             sunamo.FS.TryDeleteFile(sfLog);
+
+            messagesOlder = new List<LogMessageAbstract<Color, string>>(); //await ReadMessagesFromFile(sfLog);
+
+            templates = await ReadMessagesFromFile(sfTemplates);
+
+            #endregion
+        }
+
+        protected override LogMessageAbstract<Color, string> CreateInstance()
+        {
+            return new LogMessage();
+        }
+    }
+}

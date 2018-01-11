@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace shared.Essential
+{
+    public class ConsoleLogger
+    {
+        public static void Write(string name, string value)
+        {
+            Console.WriteLine(name + ": " + value);
+        }
+
+        public static void Write(List<string> list)
+        {
+            list.ForEach(d => Console.WriteLine(d));
+        }
+    }
+}

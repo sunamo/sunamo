@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sunamo
+{
+    public static class LogServiceData
+    {
+        public static CultureInfo ciForParse = null;
+        public static CultureInfo ciForShowing = null;
+        /// <summary>
+        /// Znak, kterym se oodeluji udaje ve zprave, abych mohl snadno identifikovat stejné zprávy.
+        /// </summary>
+        public static char odd = '\'';
+        public static string ods = "'";
+    }
+}
