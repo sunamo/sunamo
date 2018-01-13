@@ -102,7 +102,7 @@ public class ColorHelper
                 
                 var pxsi = pxs[i, y];
 #if DEBUG
-                //DebugLogger.Write(pxsi.Alpha + "-" + pxsi.Red + "-" + pxsi.Green + "-" + pxsi.Blue);
+                //DebugLogger.Instance.Write(pxsi.Alpha + "-" + pxsi.Red + "-" + pxsi.Green + "-" + pxsi.Blue);
 #endif
 
                 bool b = ColorHelper.IsColorSame(bgPixelColor, pxsi) || ColorHelper.IsColorSame(balckZero, pxsi);

@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F7D74DB-C73D-4B96-8176-96C0867750D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sunamo</RootNamespace>
+    <AssemblyName>sunamo</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\IgnoreAttribute.cs" />
+    <Compile Include="Attributes\InnerObjectAttribute.cs" />
+    <Compile Include="Attributes\OuterObjectAttribute.cs" />
+    <Compile Include="Attributes\OuterObjectMapping.cs" />
+    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Attributes\SerializableAttribute.cs" />
+    <Compile Include="Collections\ExtensionSortedCollection.cs" />
+    <Compile Include="CzechRegions.cs" />
+    <Compile Include="Data\DirectoriesToDelete.cs" />
+    <Compile Include="Data\RelatedScope.cs" />
+    <Compile Include="Delegates\StringDelegates.cs" />
+    <Compile Include="Enums\DoIfFileExists.cs" />
+    <Compile Include="Enums\FileEntriesDuplicitiesStrategy.cs" />
+    <Compile Include="Essential\CleanUp.cs" />
+    <Compile Include="Essential\LoggerBase.cs" />
+    <Compile Include="Essential\ThisApp.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Helpers\Resource\ResourcesHelper.cs" />
+    <Compile Include="Parsing\BTSParse.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Threating\IThreatPool.cs" />
+    <Compile Include="Values\AllExtensions.cs" />
+    <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
+    <Compile Include="Collections\CollectionToEnd.cs" />
+    <Compile Include="Collections\CyclingCollection.cs" />
+    <Compile Include="List\DictionaryHelper.cs" />
+    <Compile Include="Collections\DictionarySort.cs" />
+    <Compile Include="Collections\ParallelDictionary.cs" />
+    <Compile Include="Collections\PhotoFileNameConvention.cs" />
+    <Compile Include="Collections\PpkOnDrive.cs" />
+    <Compile Include="Collections\PpkOnDriveT.cs" />
+    <Compile Include="Collections\StringCollectionWithoutDuplicates.cs" />
+    <Compile Include="Collections\SunamoDictionary.cs" />
+    <Compile Include="Collections\SunamoDictionarySort.cs" />
+    <Compile Include="Collections\TwoWayDictionary.cs" />
+    <Compile Include="Collections\UniqueTableInWhole.cs" />
+    <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Values\Consts.cs" />
+    <Compile Include="Converters\AppLangConverter.cs" />
+    <Compile Include="Converters\BlobConverter.cs" />
+    <Compile Include="Converters\ConvertDateTimeToFileNamePrefix.cs" />
+    <Compile Include="Converters\PluralConverter.cs" />
+    <Compile Include="Converters\PropertyType2Converter.cs" />
+    <Compile Include="Converts\ConvertBase64.cs" />
+    <Compile Include="Converts\ConvertDateTimeToFileNamePostfix.cs" />
+    <Compile Include="Converts\ConvertDateTimeToFileNamePrefix.cs" />
+    <Compile Include="Converts\ConvertEveryWordLargeCharConvention.cs" />
+    <Compile Include="Converts\ConvertMonthCzechEnglish.cs" />
+    <Compile Include="Converts\ConvertMonthNumberString.cs" />
+    <Compile Include="Converts\ConvertMonthShortcut.cs" />
+    <Compile Include="Converts\ConvertPascalConvention.cs" />
+    <Compile Include="Converts\ConvertRot12.cs" />
+    <Compile Include="Converts\ConvertRot21.cs" />
+    <Compile Include="Converts\ConvertTypeNameType.cs" />
+    <Compile Include="Converts\ConvertTypeNameTypeNumbers.cs" />
+    <Compile Include="Converts\ConvertTypeShortcutFullName.cs" />
+    <Compile Include="Data\AB.cs" />
+    <Compile Include="Data\ABC.cs" />
+    <Compile Include="Data\ABP.cs" />
+    <Compile Include="Data\ABT.cs" />
+    <Compile Include="Data\AllItems.cs" />
+    <Compile Include="Data\CheckBoxData.cs" />
+    <Compile Include="Data\ColumnRow.cs" />
+    <Compile Include="Data\ConventionParseResult.cs" />
+    <Compile Include="Data\DataString2.cs" />
+    <Compile Include="Data\Distance2.cs" />
+    <Compile Include="Data\ExternalLoginResult.cs" />
+    <Compile Include="Data\FgBgColors.cs" />
+    <Compile Include="Data\FileEntry.cs" />
+    <Compile Include="Data\FileEntryDB.cs" />
+    <Compile Include="Data\FileInfoLite.cs" />
+    <Compile Include="Data\FileInfoSerie.cs" />
+    <Compile Include="Data\FileSystemEntry.cs" />
+    <Compile Include="Data\FolderEntry.cs" />
+    <Compile Include="Data\FolderEntryDB.cs" />
+    <Compile Include="Data\HttpRequestData.cs" />
+    <Compile Include="Data\ImageWithSize.cs" />
+    <Compile Include="Data\IntegerXY.cs" />
+    <Compile Include="Data\ItemWithCount.cs" />
+    <Compile Include="Data\MonthYear.cs" />
+    <Compile Include="Data\FromTo.cs" />
+    <Compile Include="Data\PGPhoto.cs" />
+    <Compile Include="Data\PhotoToUpload.cs" />
+    <Compile Include="Data\PhotoToUploadWithStream.cs" />
+    <Compile Include="Data\ReplaceArgs.cs" />
+    <Compile Include="Data\SanitizedString.cs" />
+    <Compile Include="Data\Speed.cs" />
+    <Compile Include="Data\StringInt.cs" />
+    <Compile Include="Data\SunamoHttpPostedFile.cs" />
+    <Compile Include="Data\SunamoSize.cs" />
+    <Compile Include="Data\CharFormatData.cs" />
+    <Compile Include="Data\TextFormatData.cs" />
+    <Compile Include="Data\TWithPath.cs" />
+    <Compile Include="Data\TWithSize.cs" />
+    <Compile Include="Data\TWithSizeInString.cs" />
+    <Compile Include="Data\UploadFile.cs" />
+    <Compile Include="Data\ValueLabel.cs" />
+    <Compile Include="Data\XPathPart.cs" />
+    <Compile Include="Delegates\CodeFile1.cs" />
+    <Compile Include="Enums\Action.cs" />
+    <Compile Include="Enums\AddBeforeControl.cs" />
+    <Compile Include="Enums\AppFolders.cs" />
+    <Compile Include="Enums\AppPics.cs" />
+    <Compile Include="Enums\AscDesc.cs" />
+    <Compile Include="Enums\Browsers.cs" />
+    <Compile Include="Enums\ColorComponent.cs" />
+    <Compile Include="Enums\ColorTheme.cs" />
+    <Compile Include="Enums\ComputerSizeUnits.cs" />
+    <Compile Include="Enums\CssFramework.cs" />
+    <Compile Include="Enums\CssNamedColors.cs" />
+    <Compile Include="Enums\DateTimeFormat.cs" />
+    <Compile Include="Enums\DebugOutput.cs" />
+    <Compile Include="Enums\Device.cs" />
+    <Compile Include="Enums\DirectoryMoveCollisionOption.cs" />
+    <Compile Include="Enums\Display.cs" />
+    <Compile Include="Enums\Fav.cs" />
+    <Compile Include="Enums\FileExceptions.cs" />
+    <Compile Include="Enums\FileMoveCollisionOption.cs" />
+    <Compile Include="Enums\FirstLast.cs" />
+    <Compile Include="Enums\FirstSecondNothing.cs" />
+    <Compile Include="Enums\FontWeight2.cs" />
+    <Compile Include="Enums\Hosting.cs" />
+    <Compile Include="Enums\ImageFormats.cs" />
+    <Compile Include="Enums\ImageOperation.cs" />
+    <Compile Include="Enums\InternetProtocols.cs" />
+    <Compile Include="Enums\Iso3166_1_Alpha_2.cs" />
+    <Compile Include="Enums\ISUD.cs" />
+    <Compile Include="Enums\LandscapePortrait.cs" />
+    <Compile Include="Enums\Langs.cs" />
+    <Compile Include="Enums\ModifiersConstructor.cs" />
+    <Compile Include="Enums\ObjectInitializationOptions.cs" />
+    <Compile Include="Enums\OpenInNewTab.cs" />
+    <Compile Include="Enums\PreviousNext.cs" />
+    <Compile Include="Enums\PropertyType2.cs" />
+    <Compile Include="Enums\ResultCheckWebArgument.cs" />
+    <Compile Include="Enums\ResultLogin.cs" />
+    <Compile Include="Enums\RunTypes.cs" />
+    <Compile Include="Enums\SearchIn.cs" />
+    <Compile Include="Enums\Signed.cs" />
+    <Compile Include="Enums\SortBy.cs" />
+    <Compile Include="Enums\SqlMethods.cs" />
+    <Compile Include="Enums\SqlNumericType.cs" />
+    <Compile Include="Enums\StatusOfUser.cs" />
+    <Compile Include="Enums\StorageApplicationData.cs" />
+    <Compile Include="Enums\Tld.cs" />
+    <Compile Include="Enums\TypeAffinityEx.cs" />
+    <Compile Include="Enums\TypeOfExtension.cs" />
+    <Compile Include="Enums\TypeOfFile.cs" />
+    <Compile Include="Enums\TypeOfMessage.cs" />
+    <Compile Include="Enums\VariableModifiers.cs" />
+    <Compile Include="Enums\VideoExtension.cs" />
+    <Compile Include="Enums\ViewTable.cs" />
+    <Compile Include="Enums\WizardResult.cs" />
+    <Compile Include="Enums\WriteInXml.cs" />
+    <Compile Include="Enums\ZdrojDomena.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\ExtensionsHelper.cs" />
+    <Compile Include="Extensions\TimeSpanExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Generators\XmlGeneratorResources.cs" />
+    <Compile Include="File\AllExtensionsHelper.cs" />
+    <Compile Include="Helpers\i18n\AppLang.cs" />
+    <Compile Include="Helpers\i18n\AppLangHelper.cs" />
+    <Compile Include="Helpers\Types\BitHelper.cs" />
+    <Compile Include="Helpers\Types\CharHelper.cs" />
+    <Compile Include="Control\ColumnSizeHelper.cs" />
+    <Compile Include="Constants\ComparerHelper.cs" />
+    <Compile Include="Helpers\i18n\CzechHelper.cs" />
+    <Compile Include="Helpers\Types\DTHelper.cs" />
+    <Compile Include="Helpers\Types\EnumHelper.cs" />
+    <Compile Include="Helpers\Number\HexHelper.cs" />
+    <Compile Include="Helpers\Http\HttpClientHelper.cs" />
+    <Compile Include="Constants\HttpKnownHeaderNames.cs" />
+    <Compile Include="Helpers\Net\IPAddressHelper.cs" />
+    <Compile Include="Helpers\Number\LinearHelper.cs" />
+    <Compile Include="Helpers\Resource\RandomHelper.cs" />
+    <Compile Include="Helpers\Text\RegexHelper.cs" />
+    <Compile Include="Html\SecurityHelper.cs" />
+    <Compile Include="File\SelectFromManyHelper.cs" />
+    <Compile Include="Helpers\Text\StringBuilderHelper.cs" />
+    <Compile Include="Html\XHelper.cs" />
+    <Compile Include="Html\HtmlHelper.cs" />
+    <Compile Include="Html\HtmlHelperSunamoCz.cs" />
+    <Compile Include="Html\HtmlParser.cs" />
+    <Compile Include="Html\HtmlParserS.cs" />
+    <Compile Include="Html\HtmlTableParser.cs" />
+    <Compile Include="Interfaces\IConvertConvention.cs" />
+    <Compile Include="Interfaces\IConvertNumberString.cs" />
+    <Compile Include="Interfaces\IConvertShortcut.cs" />
+    <Compile Include="Interfaces\ICzechEnglishConvert.cs" />
+    <Compile Include="Interfaces\IEntityPage.cs" />
+    <Compile Include="Interfaces\IEssentialMainPage.cs" />
+    <Compile Include="Interfaces\IException.cs" />
+    <Compile Include="Interfaces\IFSItem.cs" />
+    <Compile Include="Interfaces\IFtpClientExt.cs" />
+    <Compile Include="Interfaces\IIdentificator.cs" />
+    <Compile Include="Interfaces\IIDParent.cs" />
+    <Compile Include="Interfaces\IListBoxHelperItem.cs" />
+    <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\ILogMessage.cs" />
+    <Compile Include="Interfaces\IName.cs" />
+    <Compile Include="Interfaces\IParser.cs" />
+    <Compile Include="Interfaces\IParserExt.cs" />
+    <Compile Include="Interfaces\IParserO.cs" />
+    <Compile Include="Interfaces\IParserT.cs" />
+    <Compile Include="Interfaces\IPath.cs" />
+    <Compile Include="Interfaces\IRandom.cs" />
+    <Compile Include="Interfaces\IRegistry.cs" />
+    <Compile Include="Interfaces\IResult.cs" />
+    <Compile Include="Interfaces\ISatisfiesSearch.cs" />
+    <Compile Include="Interfaces\ISearching.cs" />
+    <Compile Include="Interfaces\ISearchingAll.cs" />
+    <Compile Include="Interfaces\ISelectFromMany.cs" />
+    <Compile Include="Interfaces\ISerialization.cs" />
+    <Compile Include="Interfaces\ISimpleConverter.cs" />
+    <Compile Include="Interfaces\ISitePage.cs" />
+    <Compile Include="Interfaces\IStatusBroadcaster.cs" />
+    <Compile Include="Interfaces\ISunamoBrowser.cs" />
+    <Compile Include="Interfaces\ISunamoComparer.cs" />
+    <Compile Include="Interfaces\IUsersWebService.cs" />
+    <Compile Include="Interfaces\IWorking.cs" />
+    <Compile Include="Helpers\i18n\Translation.cs" />
+    <Compile Include="Log\LogMessage.cs" />
+    <Compile Include="Log\LogMessagesComparer.cs" />
+    <Compile Include="Log\LogService.cs" />
+    <Compile Include="Log\LogServiceData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Values\AllChars.cs" />
+    <Compile Include="Collections\BadGoodCollection.cs" />
+    <Compile Include="Converters\BigEndianBitConverter.cs" />
+    <Compile Include="Helpers\Types\BitOperations.cs" />
+    <Compile Include="Parsing\BT.cs" />
+    <Compile Include="Helpers\Types\BTS.cs" />
+    <Compile Include="List\CA.cs" />
+    <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
+    <Compile Include="Entity\ComplexInfoString.cs" />
+    <Compile Include="Generators\ControlNameGenerator.cs" />
+    <Compile Include="Essential\DebugLogger.cs" />
+    <Compile Include="Generators\ExceptionMessageGenerator.cs" />
+    <Compile Include="Generators\FileIndex.cs" />
+    <Compile Include="File\FS.cs" />
+    <Compile Include="Values\GeoCzechRegion.cs" />
+    <Compile Include="Values\GeoCzechRegions.cs" />
+    <Compile Include="Values\GeoStates.cs" />
+    <Compile Include="Values\M.cs" />
+    <Compile Include="Web\GeoCachingComSite.cs" />
+    <Compile Include="Constants\GoogleApiCodes.cs" />
+    <Compile Include="Helpers\Resource\GuidHelper.cs" />
+    <Compile Include="Generators\HtmlGenerator.cs" />
+    <Compile Include="Generators\HtmlGenerator2.cs" />
+    <Compile Include="Generators\HtmlGeneratorExtended.cs" />
+    <Compile Include="Generators\HtmlGeneratorSelective.cs" />
+    <Compile Include="Helpers\Text\HtmlSB.cs" />
+    <Compile Include="Helpers\Text\InstantSB.cs" />
+    <Compile Include="Converters\JavascriptSerialization.cs" />
+    <Compile Include="Generators\LoremIpsumGenerator.cs" />
+    <Compile Include="Entity\ManageArtistDashTitle.cs" />
+    <Compile Include="Helpers\Number\MH.cs" />
+    <Compile Include="Helpers\Number\NH.cs" />
+    <Compile Include="Helpers\Number\NormalizeNumbers.cs" />
+    <Compile Include="Converters\NullableConverter.cs" />
+    <Compile Include="Data\OTS.cs" />
+    <Compile Include="Data\Parsing.cs" />
+    <Compile Include="Helpers\Resource\Pictures.cs" />
+    <Compile Include="Helpers\Http\QSHelper.cs" />
+    <Compile Include="Helpers\Sql\Runtime\RH.cs" />
+    <Compile Include="Converters\Rot13.cs" />
+    <Compile Include="Web\SearchingOnWeb.cs" />
+    <Compile Include="File\SF.cs" />
+    <Compile Include="Helpers\Text\SH.cs" />
+    <Compile Include="Entity\SongFromInternet.cs" />
+    <Compile Include="Generators\SpecialFolders.cs" />
+    <Compile Include="Helpers\Sql\SqlServerHelper.cs" />
+    <Compile Include="Data\StateMessage.cs" />
+    <Compile Include="Entity\SunamoComparer.cs" />
+    <Compile Include="Constants\SunamoStrings.cs" />
+    <Compile Include="Generators\HtmlTemplates.cs" />
+    <Compile Include="Essential\ThrowExceptions.cs" />
+    <Compile Include="Entity\Timestamp.cs" />
+    <Compile Include="Parsing\TryParse.cs" />
+    <Compile Include="Generators\TT.cs" />
+    <Compile Include="Data\TU.cs" />
+    <Compile Include="Helpers\Http\UH.cs" />
+    <Compile Include="Exceptions\UnauthorizedAccessException.cs" />
+    <Compile Include="EventArgs\UriEventArgs.cs" />
+    <Compile Include="Web\UriWebServices.cs" />
+    <Compile Include="Data\VideoFromInternet.cs" />
+    <Compile Include="Entity\Wildcard.cs" />
+    <Compile Include="Generators\XmlGenerator.cs" />
+    <Compile Include="Generators\XmlGeneratorNS2.cs" />
+    <Compile Include="Generators\XmlGeneratorSelective.cs" />
+    <Compile Include="Generators\XmlTemplates.cs" />
+    <Compile Include="Web\YouTube.cs" />
+    <Compile Include="Structs\PixelColor.cs" />
+    <Compile Include="Xml\XH.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BasicHelper\" />
+    <Folder Include="Helpers\Html\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

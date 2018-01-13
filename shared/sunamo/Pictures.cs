@@ -642,7 +642,7 @@ namespace shared
                     }
                     else
                     {
-                        //DebugLogger.Write(pxsi.Alpha + "-" + pxsi.Red + "-" + pxsi.Green + "-" + pxsi.Blue);
+                        //DebugLogger.Instance.Write(pxsi.Alpha + "-" + pxsi.Red + "-" + pxsi.Green + "-" + pxsi.Blue);
                         if (b2)
                         {
                             nt++;

@@ -224,10 +224,6 @@
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{617c1f6b-4f97-42cc-8834-a5432a1d1cd4}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ColorPicker.xaml">

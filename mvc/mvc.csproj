@@ -60,12 +60,6 @@
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{617c1f6b-4f97-42cc-8834-a5432a1d1cd4}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

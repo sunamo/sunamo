@@ -58,18 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFtpCommands.cs" />
-    <Compile Include="FileSystemType.cs" />
-    <Compile Include="FluentFtpWrapper.cs" />
-    <Compile Include="FTP.cs" />
-    <Compile Include="FtpAbstract.cs" />
-    <Compile Include="FtpBase.cs" />
-    <Compile Include="FtpBaseNew.cs" />
-    <Compile Include="FtpDllWrapper.cs" />
-    <Compile Include="FtpHelper.cs" />
-    <Compile Include="FtpNet.cs" />
-    <Compile Include="FtpTest.cs" />
-    <Compile Include="PathSelector.cs" />
+    <Compile Include="Other\CustomFtpCommands.cs" />
+    <Compile Include="Other\FileSystemType.cs" />
+    <Compile Include="FtpClients\FluentFtpWrapper.cs" />
+    <Compile Include="FtpClients\FTP.cs" />
+    <Compile Include="Base\FtpAbstract.cs" />
+    <Compile Include="Base\FtpBase.cs" />
+    <Compile Include="Base\FtpBaseNew.cs" />
+    <Compile Include="FtpClients\FtpDllWrapper.cs" />
+    <Compile Include="Other\FtpHelper.cs" />
+    <Compile Include="FtpClients\FtpNet.cs" />
+    <Compile Include="Other\FtpTest.cs" />
+    <Compile Include="Other\PathSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,10 +79,6 @@
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{0f7d74db-c73d-4b96-8176-96c0867750d1}</Project>
-      <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

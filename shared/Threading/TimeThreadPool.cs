@@ -49,7 +49,7 @@ using System.Threading;
         void TimerElapsed(object o)
         {
 #if DEBUG
-        DebugLogger.WriteLine(DateTime.Now.ToLongTimeString());
+        DebugLogger.Instance.WriteLine(DateTime.Now.ToLongTimeString());
 #endif
 
         if (zbyva != 0)
