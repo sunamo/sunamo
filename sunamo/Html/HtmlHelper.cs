@@ -738,7 +738,7 @@ namespace sunamo.Html
             List<string> jizNahrazeno = new List<string>();
             var pol = CA.ToEnumerable("br", "hr", "img", "meta", "input", "iframe");
             MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
-            List<string> col = new List<string>(pol);
+            List<string> col = new List<string>( pol);
 
             //<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>
             foreach (Match item in mc)

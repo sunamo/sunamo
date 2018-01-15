@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>webforms</RootNamespace>
     <AssemblyName>webforms</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -227,6 +227,10 @@
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
+      <Name>sunamo</Name>
     </ProjectReference>
     <ProjectReference Include="..\web\web.csproj">
       <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>

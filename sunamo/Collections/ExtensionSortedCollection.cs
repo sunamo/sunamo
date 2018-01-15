@@ -22,6 +22,7 @@ namespace sunamo.Collections
         /// <param name="d"></param>
         public ExtensionSortedCollection(params string[] d)
         {
+            
             d.ToList().ForEach(fileName => AddOnlyFileName(fileName));
         }
 
