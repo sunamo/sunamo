@@ -31,6 +31,13 @@ public class MenuItemHelper
         return tsmi;
     }
 
+    public static MenuItem CreateNew(string header, RoutedEventHandler clickHandler)
+    {
+        MenuItem menuItem = new MenuItem();
+        menuItem.Click += clickHandler;
+        return menuItem;
+    }
+
     public static MenuItem CreateNewCheckable(string header, RoutedEventHandler miOnlyWithSameProjectName_Click, Brush foreground, object tag)
     {
         MenuItem mi = new MenuItem();

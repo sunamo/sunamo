@@ -1,11 +1,6 @@
-using desktop;
 using sunamo;
-using sunamo.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -49,12 +44,12 @@ namespace desktop.Essential
             LogMessageAbstract<Color, string> lmn = null;
             if (alsoLb)
             {
-                lmn = await mp.lsg.Add(st, status);
+                lmn = await mp.Logger.Add(st, status);
                 //await lbLogs.RefreshLb(ls.messagesActualSession2);
             }
             else
             {
-                lmn = await new LogMessage().Initialize(DateTime.Now, st, status, mp.lsg.GetBackgroundBrushOfTypeOfMessage(st));
+                lmn = await new LogMessage().Initialize(DateTime.Now, st, status, mp.Logger.GetBackgroundBrushOfTypeOfMessage(st));
             }
             await mp.SetStatus(lmn, alsoLb);
 
@@ -62,7 +57,7 @@ namespace desktop.Essential
 
         public async static Task SetStatusToTextBlock(TypeOfMessage st, string status)
         {
-            Color fg = mp.lsg.GetForegroundBrushOfTypeOfMessage(st);
+            Color fg = mp.Logger.GetForegroundBrushOfTypeOfMessage(st);
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
                 await SetForeground(tbLastErrorOrWarning, fg);

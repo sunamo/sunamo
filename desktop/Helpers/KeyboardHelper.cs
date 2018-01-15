@@ -1,5 +1,4 @@
-﻿using sunamo.Essential;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace sunamo
 {
@@ -10,7 +9,7 @@ namespace sunamo
             bool result = key == e.Key && (Keyboard.Modifiers & modifier) > 0;
             if (result)
             {
-                DebugHelper.TwoState(result, key, modifier);
+                DebugLogger.Instance.TwoState(result, key, modifier);
             }
             return result;
         }

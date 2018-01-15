@@ -1,6 +1,6 @@
 using System;
 using System.Security;
-public class SecureStringHelper
+public class SecureSH
 {
     public static SecureString ToSecureString(string input)
     {

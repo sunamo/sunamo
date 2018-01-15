@@ -1,5 +1,7 @@
+using sunamo.Clipboard;
 using System;
 using System.Runtime.InteropServices;
+using System.Windows;
 
 public class ClipboardHelper
     {
@@ -13,4 +15,9 @@ public class ClipboardHelper
         W32.CloseClipboard();
         Marshal.FreeHGlobal(ptr);
     }
+
+    public static string GetText()
+    {
+        return Clipboard.GetText();
     }
+}
