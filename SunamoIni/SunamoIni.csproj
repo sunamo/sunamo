@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SunamoIni</RootNamespace>
     <AssemblyName>SunamoIni</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -77,7 +77,7 @@
       <Name>shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{617c1f6b-4f97-42cc-8834-a5432a1d1cd4}</Project>
+      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>

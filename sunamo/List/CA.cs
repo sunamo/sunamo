@@ -40,7 +40,7 @@ public static class CA
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
     }
-
+    
     public static int PartsCount(int count, int inPart)
     {
         int celkove = count / inPart;
@@ -797,7 +797,12 @@ public static class CA
     }
     #endregion
 
-    public static string[] ToEnumerable(params string[] p)
+    public static IEnumerable ToEnumerable(params object[] p)
+    {
+        return p;
+    }
+
+    public static IEnumerable<string> ToEnumerable(params string[] p)
     {
         return p;
     }
