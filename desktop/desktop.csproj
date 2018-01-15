@@ -66,7 +66,7 @@
   <ItemGroup>
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
-    <Compile Include="ClipboardHelper.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
@@ -153,6 +153,7 @@
     <Compile Include="FontHelper.cs" />
     <Compile Include="AppPaths.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\ComboBoxHelper.cs" />
     <Compile Include="Helpers\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\ContextMenuHelper.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Helpers\FrameworkElementHelper.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Helpers\IHWPF.cs" />
+    <Compile Include="Helpers\KeyboardHelper.cs" />
     <Compile Include="Helpers\LBHT.cs" />
     <Compile Include="Helpers\MenuItemHelper.cs" />
     <Compile Include="Helpers\MenuItemWithSubitemsHelper.cs" />

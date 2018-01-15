@@ -1,17 +1,10 @@
-using System;
-using System.Web.UI;
-
-using System.Net;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Diagnostics;
-
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Web;
 using sunamo.Values;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
 
 public  class SunamoPage : System.Web.UI.Page
 {
@@ -327,7 +320,6 @@ public  class SunamoPage : System.Web.UI.Page
     /// Je to pouze pro připomenutí abys vložil do PP errors prvek error, aby s ním mohli metody Error/Warning/Info pracovat.
     /// Také nezapomeň ve stránkách kde máš errors při každém reloadu prvek errors skrýt, aby se pořád neukazovala tatéž chyba i když už nebude platná
     /// </summary>
-    /// <param name="errors"></param>
     public SunamoPage()
     {
     }

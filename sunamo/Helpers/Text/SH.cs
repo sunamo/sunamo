@@ -1720,7 +1720,7 @@ public static class SH
     /// <param name="name"></param>
     /// <param name="labels"></param>
     /// <returns></returns>
-    public static string Join(char name, params string[] labels)
+    public static string Join(char name, params object[] labels)
     {
         string s = name.ToString();
         StringBuilder sb = new StringBuilder();

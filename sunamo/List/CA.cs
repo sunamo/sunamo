@@ -1,14 +1,17 @@
 
+using sunamo.Extensions;
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using sunamo;
-using sunamo.Values;
-using sunamo.Extensions;
+using System.Linq;
 
 public static class CA
 {
+   public static bool HasIndex(int dex, Array col)
+    {
+        return col.Length > dex;
+    }
+
     public static bool IsInRange(int od, int to, int index)
     {
         return od >= index && to <= index;

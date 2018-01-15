@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Html5-boilerplate-end" xml:space="preserve">
+  <data name="Html5BoilerplateEnd" xml:space="preserve">
     <value>&lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
-  <data name="Html5-boilerplate-start" xml:space="preserve">
+  <data name="Html5BoilerplateStart" xml:space="preserve">
     <value>&lt;!DOCTYPE html&gt;
 &lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
 &lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
@@ -138,5 +138,8 @@
         &lt;!--[if lt IE 7]&gt;
             &lt;p class="browsehappy"&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href="#"&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
         &lt;![endif]--&gt;</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>Html5BoilerplateEnd</value>
   </data>
 </root>
