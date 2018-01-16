@@ -19,4 +19,5 @@ public class JavaScriptPaths
     public const string AngularJsRoute = "Scripts/angular-route.min.js";
     public const string MetroUi = "Scripts/metro.js";
     public const string NgDirectiveFillHeight = "js/angular/angular-fill-height.js";
+    public const string RequireJs = ;
 }
