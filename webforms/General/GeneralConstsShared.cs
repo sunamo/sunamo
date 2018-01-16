@@ -25,7 +25,7 @@ public static partial class GeneralConsts
     public const int maxFileCountOnAccount = 10000;
     //"css/Web.css",
     public static readonly List<string> includeStyles = new List<string>(new string[] { "Shared/css/Shared.css", "Content/metro-icons.css", "Content/metro.css" });
-    public static readonly List<string> includeScripts = new List<string>(new string[] { "ts/Me/Shared.js", "ts/swf.js", "Scripts/jquery.min.js" });
+    public static readonly List<string> includeScripts = new List<string>(new string[] { "ts/Me/Shared.js", "ts/su.js", "Scripts/jquery.min.js", "wwwroot/lib/requirejs/requirejs.js" });
     //public static readonly List<string> includeScriptsAsync = new List<string>() { };
     public const string FbEventBaseUri = "https://www.facebook.com/events/";
 

@@ -34,8 +34,6 @@ public  class SunamoPage : System.Web.UI.Page
         return ps;
     }
 
-    
-
     public void InsertPageSnippet(string pageName, MySitesShort sda)
     {
         string desc = "";
@@ -43,10 +41,9 @@ public  class SunamoPage : System.Web.UI.Page
         InsertPageSnippet(pageName, desc);
     }
 
-    
-
     #region Odstranění ViewState
     #endregion
+
     /// <summary>
     /// Do A1 se nemůže předat Consts.tString, ta se musí validovat samostatně
     /// </summary>
@@ -151,6 +148,7 @@ public  class SunamoPage : System.Web.UI.Page
         }
         return dd;
     }
+
     protected string GetContent(Control c)
     {
         //string sr = c.UniqueID.Substring(0, c.UniqueID.LastIndexOf('$') + 1) + simpleName;
