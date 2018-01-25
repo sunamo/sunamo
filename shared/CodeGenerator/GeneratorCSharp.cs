@@ -2,7 +2,7 @@ using System.Text;
 using System.Collections.Generic;
 using System;
 using System.Collections;
-using shared.CodeGenerator;
+using sunamo.CodeGenerator;
 
 public class GeneratorCSharp : GeneratorCodeAbstract
 {

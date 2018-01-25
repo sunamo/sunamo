@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Net.Mail;
 
-namespace shared
+namespace sunamo
 {
     public class GoogleAppsMailbox
     {

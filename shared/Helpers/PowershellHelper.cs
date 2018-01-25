@@ -6,81 +6,25 @@ using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using shared.Essential;
+using sunamo.Essential;
 using System.Management.Automation.Runspaces;
 
-namespace shared.Helpers
+namespace sunamo.Helpers
 {
     public class PowershellHelper
     {
-
-        public static List<string> WaitForResult(string command)
+        public static List<string> ProcessNames()
         {
-            List<string> output = null;
-            using (PowerShell ps = PowerShell.Create())
+            List<string> processNames = new List<string>();
+            PowerShell ps = PowerShell.Create();
+            ps.AddCommand("Get-Process");
+            var processes = ps.Invoke();
+            foreach (var item in processes)
             {
-                ps.AddScript(command);
-                output = Invoke(ps);
-
+                Process process = (Process)item.BaseObject;
+                processNames.Add(process.ProcessName);
             }
-            return output;
+            return processNames;
         }
-
-        public static List<string> Invoke(PowerShell ps)
-        {
-            return ProcessPSObjects(ps.Invoke());
-
-        }
-
-        public static List<string> ProcessPSObjects(ICollection<PSObject> pso)
-        {
-            List<string> output = new List<string>();
-            
-            foreach (var item in pso)
-            {
-                if (item != null)
-                {
-                    output.Add(item.ToString());
-                }
-            }
-
-            return output;
-        }
-
-        public static List<string> InvokeAsync(params string[] commands)
-        {
-            List<string> returnList = new List<string>();
-            PowerShell ps = null;
-
-            foreach (var item in commands)
-            {
-                //  After leaving using is closed pipeline, must watch for complete or 
-                using (ps = PowerShell.Create())
-                {
-                    ps.AddScript(item);
-                    var async = ps.BeginInvoke();
-                    returnList.AddRange(ProcessPSObjects( ps.EndInvoke(async)));
-                }
-            }
-
-            return returnList;
-        }
-
-        public async static Task DontWaitForResultAsync(params string[] commands)
-        {
-            PowerShell ps = null;
-
-            foreach (var item in commands)
-            {
-                //  After leaving using is closed pipeline, must watch for complete or 
-                using (ps = PowerShell.Create())
-                {
-                    ps.AddScript(item);
-                    var async = ps.BeginInvoke();
-                    ps.EndInvoke(async);
-                }
-            }
-        }
-
     }
 }

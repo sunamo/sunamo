@@ -51,6 +51,10 @@ namespace SimpleThreadPool
             }
         }
 
+        /// <summary>
+        /// Add new task.
+        /// </summary>
+        /// <param name="task"></param>
         public void QueueTask(Action task)
         {
             lock (this._tasks)
@@ -62,6 +66,9 @@ namespace SimpleThreadPool
             }
         }
 
+        /// <summary>
+        /// Contains cycle for run activity
+        /// </summary>
         private void Worker()
         {
             Action task = null;

@@ -1,5 +1,6 @@
 using sunamo;
 using sunamo.Data;
+using sunamo.Enums;
 using System.IO;
 public class FileInfoSerie : FileInfoLite
 {
@@ -28,8 +29,8 @@ public class FileInfoSerie : FileInfoLite
         fil.Path = item2.FullName;
         fil.Size = item2.Length;
         bool hasSerie = false;
-        fil.NameWithoutSeries = sunamo.FS.GetNameWithoutSeries(fil.Name, false, out hasSerie);
-        fil.PathWithoutSerie = sunamo.FS.GetNameWithoutSeries(fil.Name, true, out hasSerie);
+        fil.NameWithoutSeries = sunamo.FS.GetNameWithoutSeries(fil.Name, false, out hasSerie, SerieStyle.Brackets);
+        fil.PathWithoutSerie = sunamo.FS.GetNameWithoutSeries(fil.Name, true, out hasSerie, SerieStyle.Brackets);
         fil.HasSerie = hasSerie;
         fil.FileNameComplet = sunamo.FS.GetFileName(item2.FullName);
         return fil;

@@ -3,7 +3,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System;
 using sunamo;
-using shared.Essential;
+using sunamo.Essential;
 
 public class SunamoJson
 {

@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 using System;
-using shared.PInvoke;
+using sunamo.PInvoke;
 
 public class W32
 {

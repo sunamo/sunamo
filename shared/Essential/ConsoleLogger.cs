@@ -2,7 +2,7 @@ using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 
-namespace shared.Essential
+namespace sunamo.Essential
 {
     public class ConsoleLogger : LoggerBase
     {

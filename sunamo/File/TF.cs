@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 public class TF
 {
     /// <summary>
@@ -19,14 +20,13 @@ public class TF
         }
         else
         {
-
             File.WriteAllText(s, "", Encoding.UTF8);
         }
-
 
         return "";
     }
 
+    #region Encoding
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -42,9 +42,25 @@ public class TF
 
         file.Read(bom, 0, 4);
         return EncodingHelper.DetectEncoding(bom);
+    } 
+    #endregion
+
+    static void AppendToStartOfFileIfDontContains(List<string> files, string append)
+    {
+        append += Environment.NewLine;
+
+        foreach (var item in files)
+        {
+            string content = File.ReadAllText(item);
+            if (!content.Contains(append))
+            {
+                content = append + content;
+                File.WriteAllText(item, content);
+            }
+        }
     }
 
-    
+
 
     /// <summary>
     /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
@@ -130,5 +146,22 @@ public class TF
         SaveFile(obsah, soubor, false);
     }
 
+    static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
+    {
+        foreach (var item in files)
+        {
+            string[] lines = File.ReadAllLines(item);
+            for (int i = 0; i < lines.Length; i++)
+            {
 
+                string line = lines[i].Trim();
+                if (line.StartsWith(contains))
+                {
+                    lines[i] = lines[i].Replace(contains, prefix + contains);
+                }
+            }
+
+            File.WriteAllLines(item, lines);
+        }
+    }
 }

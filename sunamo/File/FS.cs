@@ -8,6 +8,7 @@ using sunamo.Enums;
 using sunamo.Data;
 using sunamo.Values;
 using System.Runtime.CompilerServices;
+using sunamo.Helpers;
 
 namespace sunamo
 {
@@ -18,6 +19,23 @@ namespace sunamo
         static List<char> invalidCharsForMapPath = null;
         static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+        public static void RemoveDiacriticInFileContents(string folder, string mask)
+        {
+            string[] files = Directory.GetFiles(folder, mask, SearchOption.AllDirectories);
+            foreach (string item in files)
+            {
+                string df2 = File.ReadAllText(item, Encoding.Default);
+
+                if (true) //SH.ContainsDiacritic(df2))
+                {
+                    TF.SaveFile(SH.TextWithoutDiacritic(df2), item);
+                    df2 = SH.ReplaceOnce(df2, "ď»ż", "");
+                    TF.SaveFile(df2, item);
+                }
+
+            }
+        }
+
         public static void CopyStream(Stream input, Stream output)
         {
             byte[] buffer = new byte[8 * 1024];
@@ -26,6 +44,11 @@ namespace sunamo
             {
                 output.Write(buffer, 0, len);
             }
+        }
+
+        internal static IEnumerable<string> GetFiles(string folderPath, bool v)
+        {
+            return FS.GetFiles(folderPath, "*.*", v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }
 
         #region Create to avoid adding System.IO and using without ns colliding
@@ -48,16 +71,17 @@ namespace sunamo
         /// <returns></returns>
         public static string GetExtension(string v)
         {
+            string result = "";
             int lastDot = v.LastIndexOf('.');
             if (lastDot < v.Length)
             {
                 if (lastDot == -1)
                 {
-                    return "";
+                    result = "";
                 }
-                return v.Substring(lastDot).ToLower();
+                result = v.Substring(lastDot).ToLower();
             }
-            return "";
+            return result;
         }
 
         /// <summary>
@@ -91,6 +115,24 @@ namespace sunamo
             string folderWithCaretFiles = pathToFolder + Path.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
 
             return folderWithCaretFiles;
+        }
+
+        static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
+        {
+            folderFrom = FS.WithEndSlash(folderFrom);
+            FolderTo = FS.WithEndSlash(FolderTo);
+
+            Dictionary<string, string[]> filesOfExtension = FS.FilesOfExtensions(folderFrom, extensions);
+
+            foreach (var item in filesOfExtension)
+            {
+                foreach (var path in item.Value)
+                {
+                    string newPath = path.Replace(folderFrom, FolderTo);
+                    FS.CreateUpfoldersPsysicallyUnlessThere(newPath);
+                    File.Copy(path, newPath);
+                }
+            }
         }
 
         /// <summary>
@@ -822,70 +864,85 @@ namespace sunamo
         /// <summary>
         /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
         /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
+        /// Works for brackets, not dash 
         /// </summary>
         public static string GetNameWithoutSeries(string p, bool path)
         {
             bool hasSerie = false;
-            return GetNameWithoutSeries(p, path, out hasSerie);
+            return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets);
         }
 
         /// <summary>
         /// Vrací vždy s příponou
         /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
         /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
+        /// When file has unknown extension, return SE
         /// </summary>
         /// <param name="p"></param>
         /// <param name="path"></param>
         /// <param name="hasSerie"></param>
         /// <returns></returns>
-        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie)
+        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
         {
+            hasSerie = false;
             string dd = sunamo.FS.WithEndSlash(FS.GetDirectoryName(p));
             string ext = FS.GetExtension(p);
-            string g = p;
-            hasSerie = false;
-            // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
-            while (true)
+            // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
+            if (AllExtensionsHelper.FindTypeWithDot(ext) != TypeOfExtension.other)
             {
-                string gBackup = g;
-                g = Path.GetFileNameWithoutExtension(g);
-                if (g == gBackup)
+                string g = p;
+                
+                // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
+                int pocetSerii = 0;
+                if (serieStyle == SerieStyle.Brackets)
                 {
-                    break;
-                }
-            }
-            int pocetSerii = 0;
-            while (true)
-            {
-                g = g.Trim();
-
-                if (g[g.Length - 1] == ')')
-                {
-                    if (g[g.Length - 3] == '(')
+                    while (true)
                     {
-                        pocetSerii++;
+                        g = g.Trim();
+
+                        if (g[g.Length - 1] == ')')
+                        {
+                            if (g[g.Length - 3] == '(')
+                            {
+                                pocetSerii++;
+                                g = g.Substring(0, g.Length - 3);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else if (serieStyle == SerieStyle.Dash)
+                {
+                    if (g[g.Length - 3] == '-')
+                    {
                         g = g.Substring(0, g.Length - 3);
                     }
-                    else
+                    else if (g[g.Length - 2] == '-')
                     {
-                        break;
+                        g = g.Substring(0, g.Length - 2);
                     }
+                    pocetSerii++;
+
                 }
-                else
+                if (pocetSerii != 0)
                 {
-                    break;
+                    hasSerie = true;
                 }
+                g = g.Trim();
+                if (path)
+                {
+                    return dd + g + ext;
+                }
+                return g + ext;
             }
-            if (pocetSerii != 0)
-            {
-                hasSerie = true;
-            }
-            g = g.Trim();
-            if (path)
-            {
-                return dd + g + ext;
-            }
-            return g + ext;
+            return "";
         }
 
         /// <summary>
@@ -1156,6 +1213,7 @@ namespace sunamo
 
         /// <summary>
         /// Vrátí cestu a název souboru bez ext a ext
+        /// All returned is normal case
         /// </summary>
         /// <param name="fn"></param>
         /// <param name="path"></param>
@@ -1163,9 +1221,9 @@ namespace sunamo
         /// <param name="ext"></param>
         public static void GetPathAndFileNameWithoutExtension(string fn, out string path, out string file, out string ext)
         {
-            path = FS.GetDirectoryName(fn) + AllChars.bs;
+            path = Path.GetDirectoryName(fn) + AllChars.bs;
             file = Path.GetFileNameWithoutExtension(fn);
-            ext = FS.GetExtension(fn);
+            ext = Path.GetExtension(fn);
         }
 
         public static List<string> FilesOfExtensionsArray(string folder, List<string> extension)

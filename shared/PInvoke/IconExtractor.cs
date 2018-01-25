@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shared.PInvoke
+namespace sunamo.PInvoke
 {
     public class IconExtractor
     {

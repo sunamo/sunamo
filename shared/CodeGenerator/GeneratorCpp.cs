@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shared.CodeGenerator
+namespace sunamo.CodeGenerator
 {
     public class GeneratorCpp : GeneratorCodeAbstract
     {

@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Windows;
 using sunamo;
-using shared.Data;
+using sunamo.Data;
 
 namespace shared
 {

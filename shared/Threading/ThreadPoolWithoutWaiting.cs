@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace shared.Threading
+namespace sunamo.Threading
 {
     public class ThreadPoolWithoutWaiting
     {

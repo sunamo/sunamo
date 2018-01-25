@@ -54,8 +54,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.6.13.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.6.13\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.6.15.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\AllProjectsSearch\packages\HtmlAgilityPack.1.6.15\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="netstandard" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -112,19 +112,16 @@
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
-    <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
-    <Compile Include="FSShared.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\CSharpHelper.cs" />
-    <Compile Include="Helpers\EncodingHelper.cs" />
-    <Compile Include="Helpers\HtmlHelper.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
     <Compile Include="Helpers\PowershellHelper.cs" />
+    <Compile Include="Helpers\PowershellRunner.cs" />
     <Compile Include="Helpers\Resources\BitmapImageHelper.cs" />
     <Compile Include="Helpers\Resources\BitmapImagesHelper.cs" />
     <Compile Include="Helpers\Resources\DrawingImageHelper.cs" />
@@ -135,12 +132,7 @@
     <Compile Include="Helpers\Resources\WritableBitmap.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="Interfaces\IEssentialMainPage.cs" />
-    <Compile Include="Interfaces\ILogMessage.cs" />
     <Compile Include="Interfaces\IXml.cs" />
-    <Compile Include="Logger\LogServiceAbstract.cs" />
-    <Compile Include="Logger\LogMessage.cs" />
-    <Compile Include="Logger\LogMessageAbstract.cs" />
     <Compile Include="MSSQL\GeneratorMsSql.cs" />
     <Compile Include="MSSQL\i\ISpecificLayer.cs" />
     <Compile Include="MSSQL\i\ITableRow.cs" />
@@ -173,7 +165,6 @@
     <Compile Include="RH.cs" />
     <Compile Include="SqLite\WebDatabaseLayer.cs" />
     <Compile Include="SunamoJson.cs" />
-    <Compile Include="TF.cs" />
     <Compile Include="Threading\Downloading\IInputDownload.cs" />
     <Compile Include="Threading\Downloading\InputDownload.cs" />
     <Compile Include="Threading\Downloading\IUri.cs" />

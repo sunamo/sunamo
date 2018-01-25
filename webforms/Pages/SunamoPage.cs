@@ -22,6 +22,7 @@ public  class SunamoPage : System.Web.UI.Page
         SchemaOrgHelper.InsertBasicToPageHeader(this, ps, sa);
         OpenGraphHelper.InsertBasicToPageHeader(this, ps, sa);
     }
+
     protected PageSnippet InsertPageSnippet( string pageName, string desc)
     {
         if (desc == "")
@@ -195,7 +196,6 @@ public  class SunamoPage : System.Web.UI.Page
             {
                 scripts.Insert(0, "ts/Web/ShowDebugInfo.js");
             }
-            
         }
         
         if (scriptsUri == null)
@@ -342,6 +342,7 @@ public  class SunamoPage : System.Web.UI.Page
     /// </summary>
     public int idPageArgument = int.MaxValue;
     public bool writeToLastVisitsLogined = false;
+
     public void WriteOld(PageArgumentName[] pans = null)
     {
         PageArgumentVerifier.GetIDWebAndNameOfPage(out IDWeb, out namePage, this.Request.FilePath);
@@ -353,7 +354,7 @@ public  class SunamoPage : System.Web.UI.Page
         {
             PageArgumentVerifier.SetWriteRows(this, PageArgumentName.EmptyArray);   
         }
-        //hfIDPage.Value = this.idPage.ToString();
+        
         if (writeRows.HasValue)
         {
             if (writeRows.Value)
@@ -383,9 +384,7 @@ public  class SunamoPage : System.Web.UI.Page
 
     protected override void OnInit(EventArgs e)
     {
-        
         base.OnInit(e);
-        
     }
 
     protected override void OnLoad(EventArgs e)
@@ -415,13 +414,6 @@ public  class SunamoPage : System.Web.UI.Page
         CreateTitle();
     }
 
-    public void GetTitle()
-    {
-
-    }
-
-
-
     public void CreateTitle()
     {
         if (zapisTitle)
@@ -435,27 +427,25 @@ public  class SunamoPage : System.Web.UI.Page
                 {
                     // Stránka neměla <head runat='server'>
                 }
-            //}
         }
 
         #region MyRegion
         #endregion
-    }    
+    }
 
-    #region Práce s cookies a přihlašováním, pokud se něco změní zde, musíš to projevit i do SunamoMasterPage - Commented
-    /// <summary>
-    /// Tato metoda musí být volána ještě předtím než se odhlásím ze session, protože ze session beru login který mám zapsat
-    /// </summary>
-    
-
-    #endregion
-
+    #region Events variables
     public event VoidVoid ErrorEvent;
     public event VoidVoid WarningEvent;
     // Pro info to skutečně nevytvářej, radši to dej jako warning s událostí, zbylé warningy bez událostí
     public event VoidVoid InfoEvent;
     public event VoidVoid SuccessEvent;
+    protected bool callEventInfo = true;
+    protected bool callEventWarning = true;
+    protected bool callEventSuccess = true;
+    protected bool callEventError = true; 
+    #endregion
 
+    #region Events method
     public new void Error(string message)
     {
         var page = this;
@@ -536,10 +526,8 @@ public  class SunamoPage : System.Web.UI.Page
                 SuccessEvent();
             }
         }
-    }
+    } 
+    #endregion
 
-    protected bool callEventInfo = true;
-    protected bool callEventWarning = true;
-    protected bool callEventSuccess = true;
-    protected bool callEventError = true;
+    
 }

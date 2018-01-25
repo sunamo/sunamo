@@ -33,6 +33,7 @@ namespace sunamo.Enums
         multimedia,
         temporary,
         /// <summary>
+        /// Is used when extension isn't know
         /// U ostatních souborů vypsat jejich popis z windows
         /// </summary>
         other

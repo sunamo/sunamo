@@ -27,25 +27,15 @@ namespace sunamo.Helpers
             return Encoding.ASCII;
         }
 
-        static void testBinaryFile(string folderPath)
+        static Dictionary<string, bool> TestBinaryFile(string folderPath)
         {
-            List<string> output = new List<string>();
-            foreach (string filePath in getFiles(folderPath, true))
+            Dictionary<string, bool> output = new Dictionary<string, bool>();
+            foreach (string filePath in FS.GetFiles(folderPath, true))
             {
-                output.Add(isBinary(filePath).ToString() + "  ----  " + filePath);
+                output.Add(filePath, isBinary(filePath));
             }
-            Clipboard.SetText(string.Join("\n", output), TextDataFormat.Text);
+            return output;
         }
-
-        public static List<string> getFiles(string path, bool recursive = false)
-        {
-            return Directory.Exists(path) ?
-                Directory.GetFiles(path, "*.*",
-                recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly).ToList() :
-                new List<string>();
-        }
-
-
 
         public static bool isBinary(string path)
         {

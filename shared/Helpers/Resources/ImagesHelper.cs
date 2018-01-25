@@ -4,7 +4,7 @@ using sunamo;
 /// Tato třída se stejně jako BitmapImagesHelper používá tehdy, když mám obrázky na světlém pozadí.
 /// </summary>
 using System.Windows.Controls;
-namespace shared
+namespace sunamo
 {
     public static class ImagesHelper
     {

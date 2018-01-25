@@ -1,4 +1,6 @@
+using desktop.Logger;
 using sunamo;
+using sunamo.LoggerAbstract;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -6,9 +8,10 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
 
+
 namespace desktop.Essential
 {
-    public  class ThisApp : shared.Essential.ThisApp
+    public  class ThisApp : sunamo.Essential.ThisApp
     {
         public static string SQLExpressInstanceName()
         {

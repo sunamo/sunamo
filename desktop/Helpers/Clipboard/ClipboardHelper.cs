@@ -5,7 +5,8 @@ using System.Windows;
 
 public class ClipboardHelper
     {
-        public static void SetText(string v)
+    #region Get,Set
+    public static void SetText(string v)
     {
         ClipboardMonitor.monitor = null;
         ClipboardMonitor.afterSet = true;
@@ -19,5 +20,35 @@ public class ClipboardHelper
     public static string GetText()
     {
         return Clipboard.GetText();
+    } 
+    #endregion
+
+    public static void GetFirstWordOfList()
+    {
+        Console.WriteLine("Copy text to clipboard.");
+        Console.ReadLine();
+
+        StringBuilder sb = new StringBuilder();
+
+        string[] text = ClipboardHelper.GetLines();
+        foreach (var item in text)
+        {
+            string t = item.Trim();
+
+            if (t.EndsWith(":"))
+            {
+                sb.AppendLine(item);
+            }
+            else if (t == "")
+            {
+                sb.AppendLine(t);
+            }
+            else
+            {
+                sb.AppendLine(SH.GetFirstWord(t));
+            }
+        }
+
+        ClipboardHelper.SetText(sb.ToString());
     }
 }
