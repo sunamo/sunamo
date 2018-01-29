@@ -1,5 +1,4 @@
 ﻿using Limilabs.FTP.Client;
-using shared.Essential;
 using SunamoFtp;
 using System;
 
@@ -7,8 +6,6 @@ namespace tempConsole
 {
     public class FtpTest
     {
-        
-
         private static void SetConnectionInfo(FtpAbstract ftpBase)
         {
             ftpBase.setRemoteHost("185.8.239.101");

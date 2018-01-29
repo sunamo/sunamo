@@ -9,7 +9,8 @@ using System.Windows.Media;
 
 namespace desktop
 {
-    public interface IEssentialMainPage : IEssentialMainPage<Color, string, TextBlock>
+    public interface IEssentialMainPage 
     {
+
     }
 }

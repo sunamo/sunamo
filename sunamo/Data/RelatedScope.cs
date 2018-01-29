@@ -23,10 +23,63 @@ namespace sunamo.Data
             this.states = states;
         }
 
-        public List<FromTo> RangeFromState(bool def, bool b)
+        /// <summary>
+        /// Is used for deleting regions blocks. All lines between must dont exists or be empty
+        /// </summary>
+        /// <param name="def"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public List<FromTo> RangeFromStateSimple(List<int> startIndexes)
         {
             List<FromTo> foundedRanges = new List<FromTo>();
-            // true - is in code block. false - in comment block
+
+            bool insideRegion = false;
+            FromTo fromTo = new FromTo();
+
+            for (int i = 0; i < states.Length; i++)
+            {
+                bool? b = states[i];
+                if (b.HasValue)
+                {
+                    if (b.Value)
+                    {
+                        if (insideRegion)
+                        {
+                            if (startIndexes.Contains(i))
+                            {
+                                fromTo.from = i;
+                            }
+                            else
+                            {
+                                insideRegion = false;
+                                fromTo.to = i;
+                                foundedRanges.Add(fromTo);
+                            }
+                        }
+                        else
+                        {
+                            insideRegion = true;
+
+                            fromTo = new FromTo();
+                            fromTo.from = i;
+                        }
+                    }
+                }
+            }
+
+            return foundedRanges;
+        }
+
+            /// <summary>
+            /// Was used for deleting comments. Returns serie only when is all lines between is comments
+            /// </summary>
+            /// <param name="def"></param>
+            /// <param name="b"></param>
+            /// <returns></returns>
+            public List<FromTo> RangeFromState(bool def, bool b)
+        {
+            List<FromTo> foundedRanges = new List<FromTo>();
+            // true - is in code block. false - in non-code block
             bool previous = def;
             FromTo fromTo = new FromTo();
             fromTo.from = 0;
@@ -55,7 +108,7 @@ namespace sunamo.Data
                     // its comment!
                     else
                     {
-                        // I'm actually in code block
+                        // I'm actually in non-code block
                         if (previous)
                         {
                             fromTo = new FromTo();

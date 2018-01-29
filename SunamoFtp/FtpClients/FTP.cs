@@ -493,7 +493,7 @@ namespace SunamoFtp
             OnNewStatus("Přihlašuji se na FTP Server bez uživatele");
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress v4 = null;
-            string remoteHost2 = remoteHost; ;
+            string remoteHost2 = remoteHost;
             if (FtpHelper.IsSchemaFtp(remoteHost))
             {
                 remoteHost2 = FtpHelper.ReplaceSchemaFtp(remoteHost2);
@@ -1563,8 +1563,7 @@ namespace SunamoFtp
             string[] smazat = ListDirectoryDetails();
             foreach (var item2 in smazat)
             {
-                string fn = "";
-                FileSystemType fst = FtpHelper.IsFile(item2, out fn);
+                FileSystemType fst = FtpHelper.IsFile(item2, out string fn);
                 if (fst == FileSystemType.File)
                 {
                     deleteRemoteFile(fn);

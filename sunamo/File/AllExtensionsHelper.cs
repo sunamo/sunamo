@@ -56,6 +56,7 @@ namespace sunamo.Helpers
 
         /// <summary>
         /// When can't be found, return other
+        /// Default was WithDot
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -75,6 +76,7 @@ namespace sunamo.Helpers
 
         /// <summary>
         /// When can't be found, return other
+        /// Was default
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>

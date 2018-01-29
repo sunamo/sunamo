@@ -1,5 +1,4 @@
 ﻿using FluentFTP;
-using shared.Essential;
 using Sunamo.Data;
 using System;
 using System.Collections.Generic;

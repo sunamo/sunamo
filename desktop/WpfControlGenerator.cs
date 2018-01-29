@@ -12,7 +12,7 @@ namespace desktop
 {
     public class WpfControlGenerator
     {
-        public static StackPanel VerticalColoredList(List<ILogMessageAbstract<Color, string>> c)
+        public static StackPanel VerticalColoredList(List<ILogMessage<Color, string>> c)
         {
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Vertical;
@@ -21,7 +21,7 @@ namespace desktop
                 Grid g = new Grid();
                 g.Background = new SolidColorBrush(item.Bg);
                 TextBlock tb = new TextBlock();
-                tb.Text = item.Ts;
+                tb.Text = item.Message;
                 Grid.SetColumn(tb, 0);
                 Grid.SetRow(tb, 0);
                 g.Children.Add(tb);
@@ -30,12 +30,12 @@ namespace desktop
             return sp;
         }
 
-        public static Grid LogMessage(ILogMessageAbstract<Color, string> c)
+        public static Grid LogMessage(ILogMessage<Color, string> c)
         {
             Grid g = new Grid();
             g.Background = new SolidColorBrush(c.Bg);
             TextBlock tb = new TextBlock();
-            tb.Text = c.Ts;
+            tb.Text = c.Message;
             tb.TextWrapping = TextWrapping.Wrap;
             Grid.SetColumn(tb, 0);
             Grid.SetRow(tb, 0);

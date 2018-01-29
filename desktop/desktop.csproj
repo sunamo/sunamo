@@ -186,8 +186,6 @@
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
     <Compile Include="JunctionPoint.cs" />
-    <Compile Include="Logger\LogMessage.cs" />
-    <Compile Include="Logger\LogService.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\RA.cs" />

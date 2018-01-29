@@ -4,6 +4,8 @@ using shared.Essential;
 /// Simple Dialog Helper
 /// </summary>
 using System.Windows.Forms;
+using forms.Essential;
+
 public class SDH
 {
     public static DialogResult Information(string msg)

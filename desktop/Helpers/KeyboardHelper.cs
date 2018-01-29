@@ -9,7 +9,9 @@ namespace sunamo
             bool result = key == e.Key && (Keyboard.Modifiers & modifier) > 0;
             if (result)
             {
+#if DEBUG
                 DebugLogger.Instance.TwoState(result, key, modifier);
+#endif
             }
             return result;
         }

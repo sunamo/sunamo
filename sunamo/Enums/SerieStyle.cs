@@ -7,6 +7,7 @@ namespace sunamo.Enums
     public enum SerieStyle
     {
         Dash,
-        Brackets
+        Brackets,
+        All
     }
 }

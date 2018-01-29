@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace forms.Essential
 {
-    public class ThisApp : shared.Essential.ThisApp
+    public class ThisApp : sunamo.Essential.ThisApp
     {
 
     }

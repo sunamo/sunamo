@@ -1,6 +1,7 @@
 using sunamo.Clipboard;
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 
 public class ClipboardHelper
@@ -20,7 +21,12 @@ public class ClipboardHelper
     public static string GetText()
     {
         return Clipboard.GetText();
-    } 
+    }
+
+    public static string[] GetLines()
+    {
+        return SH.GetLines( Clipboard.GetText());
+    }
     #endregion
 
     public static void GetFirstWordOfList()

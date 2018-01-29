@@ -873,10 +873,12 @@ namespace sunamo
         }
 
         /// <summary>
+        /// 
         /// Vrací vždy s příponou
         /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
         /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
         /// When file has unknown extension, return SE
+        /// Default for A4 was bracket
         /// </summary>
         /// <param name="p"></param>
         /// <param name="path"></param>
@@ -894,7 +896,7 @@ namespace sunamo
                 
                 // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
                 int pocetSerii = 0;
-                if (serieStyle == SerieStyle.Brackets)
+                if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
                 {
                     while (true)
                     {
@@ -918,7 +920,7 @@ namespace sunamo
                         }
                     }
                 }
-                else if (serieStyle == SerieStyle.Dash)
+                 if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
                 {
                     if (g[g.Length - 3] == '-')
                     {

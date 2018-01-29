@@ -70,7 +70,7 @@ namespace desktop.Controls
                     bi.StreamSource = ms;
                     bi.EndInit();
                     var bs = bi;
-                    bmp = sunamo.Pictures.BitmapImage2Bitmap(bs);
+                    bmp = shared.Pictures.BitmapImage2Bitmap(bs);
                     //bmp.MakeTransparent(System.Drawing.Color.FromArgb(pxs[0, 0].Alpha, pxs[0, 0].Red, pxs[0, 0].Green, pxs[0, 0].Blue));
                     FileSelected(file, bmp, bs);
                 }

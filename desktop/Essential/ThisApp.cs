@@ -1,6 +1,4 @@
-using desktop.Logger;
 using sunamo;
-using sunamo.LoggerAbstract;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -44,23 +42,24 @@ namespace desktop.Essential
             }
             beforeMessage = status;
             status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
-            LogMessageAbstract<Color, string> lmn = null;
-            if (alsoLb)
-            {
-                lmn = await mp.Logger.Add(st, status);
-                //await lbLogs.RefreshLb(ls.messagesActualSession2);
-            }
-            else
-            {
-                lmn = await new LogMessage().Initialize(DateTime.Now, st, status, mp.Logger.GetBackgroundBrushOfTypeOfMessage(st));
-            }
-            await mp.SetStatus(lmn, alsoLb);
+            //LogMessageAbstract<Color, string> lmn = null;
+            //if (alsoLb)
+            //{
+            //    lmn = await mp.Logger.Add(st, status);
+            //    //await lbLogs.RefreshLb(ls.messagesActualSession2);
+            //}
+            //else
+            //{
+            //    lmn = await new LogMessage().Initialize(DateTime.Now, st, status, mp.Logger.GetBackgroundBrushOfTypeOfMessage(st));
+            //}
+            //await mp.SetStatus(lmn, alsoLb);
 
         }
 
         public async static Task SetStatusToTextBlock(TypeOfMessage st, string status)
         {
-            Color fg = mp.Logger.GetForegroundBrushOfTypeOfMessage(st);
+            Color fg = Colors.Black;
+            //fg = mp.Logger.GetForegroundBrushOfTypeOfMessage(st);
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
                 await SetForeground(tbLastErrorOrWarning, fg);
