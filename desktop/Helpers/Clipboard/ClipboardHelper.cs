@@ -1,5 +1,6 @@
 using sunamo.Clipboard;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -23,7 +24,11 @@ public class ClipboardHelper
         return Clipboard.GetText();
     }
 
+<<<<<<< HEAD
+    public static List<string> GetLines()
+=======
     public static string[] GetLines()
+>>>>>>> 57567a43a48b2e752b313e083d4fbb75cf586ff0
     {
         return SH.GetLines( Clipboard.GetText());
     }
@@ -36,7 +41,7 @@ public class ClipboardHelper
 
         StringBuilder sb = new StringBuilder();
 
-        string[] text = ClipboardHelper.GetLines();
+        var text = ClipboardHelper.GetLines();
         foreach (var item in text)
         {
             string t = item.Trim();

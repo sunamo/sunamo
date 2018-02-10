@@ -72,9 +72,9 @@ public class TF
     public static string[] GetAllLines(string file)
     {
 
-        string[] lines = TF.GetLines(file);
+        List<string> lines = TF.GetLines(file);
         List<string> linesPpk = new List<string>();
-        for (int i = 0; i < lines.Length; i++)
+        for (int i = 0; i < lines.Count; i++)
         {
             string trim = lines[i].Trim();
             if (trim != "")
@@ -110,7 +110,7 @@ public class TF
     
 
 
-    public static string[] GetLines(string sobuor)
+    public static List<string> GetLines(string sobuor)
     {
         return SH.GetLines(ReadFile(sobuor));
     }

@@ -1654,7 +1654,7 @@ public static class SH
         return source.Split(new string[] { p_2 }, StringSplitOptions.None).Length - 1;
     }
 
-    public static string[] GetLines(string p)
+    public static List<string> GetLines(string p)
     {
         List<string> vr = new List<string>();
         StringReader sr = new StringReader(p);
@@ -1663,7 +1663,7 @@ public static class SH
         {
             vr.Add(f);
         }
-        return vr.ToArray();
+        return vr;
     }
 
     public static string[] Split(string vstup, params string[] deli)

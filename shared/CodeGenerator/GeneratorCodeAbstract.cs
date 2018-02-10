@@ -102,8 +102,8 @@ namespace sunamo.CodeGenerator
 
         public static string AddTab(int pocetTab, string text)
         {
-            string[] radky = SH.GetLines(text);
-            for (int i = 0; i < radky.Length; i++)
+            var radky = SH.GetLines(text);
+            for (int i = 0; i < radky.Count; i++)
             {
                 radky[i] = radky[i].Trim();
                 for (int y = 0; y < pocetTab; y++)

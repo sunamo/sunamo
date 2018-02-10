@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

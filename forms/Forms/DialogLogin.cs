@@ -23,7 +23,7 @@ namespace F.WF
         //}
 
         ///// <summary>
-        ///// A1 je vhodné tehdy když napøíklad pouštím python skripty, ve kterých nemùžu ovìøit zda se mi podaøilo nalogovat
+        ///// A1 je vhodnï¿½ tehdy kdyï¿½ napï¿½ï¿½klad pouï¿½tï¿½m python skripty, ve kterï¿½ch nemï¿½ï¿½u ovï¿½ï¿½it zda se mi podaï¿½ilo nalogovat
         ///// </summary>
         ///// <param name="internalSaveLogic"></param>
         //public DialogLogin(bool internalSaveLogic)

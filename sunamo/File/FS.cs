@@ -966,6 +966,10 @@ namespace sunamo
 
         public static string WithEndSlash(string v)
         {
+            if (v == string.Empty)
+            {
+                return v;
+            }
             return v.TrimEnd(AllChars.bs) + AllChars.bs;
         }
 

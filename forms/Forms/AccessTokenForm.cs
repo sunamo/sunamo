@@ -124,7 +124,7 @@ namespace F.WF
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Musíte získat AccessToken");
+                System.Windows.Forms.MessageBox.Show("Musï¿½te zï¿½skat AccessToken");
             }
         }
 

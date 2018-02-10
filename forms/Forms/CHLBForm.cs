@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace F.WF
 {
-    // Nemùže být generický protože bych to musel dát jak tu tak do Designer
+    // Nemï¿½ï¿½e bï¿½t generickï¿½ protoï¿½e bych to musel dï¿½t jak tu tak do Designer
     public partial class CHLBForm : Form
     {
 

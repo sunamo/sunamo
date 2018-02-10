@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 namespace forms
 {
     public class ClipboardHelper
     {
-        public static string[] GetLines()
+        public static List<string> GetLines()
         {
             return SH.GetLines(Clipboard.GetText());
         }
