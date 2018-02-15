@@ -15,6 +15,23 @@ public class DictionaryHelper
         }
     }
 
+    /// <summary>
+    /// Return p1 if exists key A2 with value no equal to A3
+    /// </summary>
+    /// <param name="g"></param>
+    /// <returns></returns>
+    private T FindIndexOfValue<T, U>(Dictionary<T, U> g, U p1, T p2)
+    {
+        foreach (KeyValuePair<T, U> var in g)
+        {
+            if (Comparer<U>.Default.Compare( var.Value, p1) == ComparerHelper.Higher &&  Comparer<T>.Default.Compare( var.Key, p2) == ComparerHelper.Lower)
+            {
+                return var.Key;
+            }
+        }
+        return default(T);
+    }
+
     public static Dictionary<T, U> ReturnsCopy<T, U>(Dictionary<T, U> slovnik)
     {
         Dictionary<T, U> tu = new Dictionary<T, U>();

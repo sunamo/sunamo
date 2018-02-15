@@ -1,5 +1,5 @@
 using System.Text;
-public class StringBuilderHelper
+public class TextOutputGenerator
 {
     readonly static string znakNadpisu = "*";
     StringBuilder sb = new StringBuilder();
@@ -19,7 +19,7 @@ public class StringBuilderHelper
     /// </summary>
     public  void NoData()
     {
-        sb.AppendLine("When you take the input data, run the program again.");
+        sb.AppendLine("When you will have the input data, run the program again.");
     }
 
     
@@ -51,7 +51,8 @@ public class StringBuilderHelper
 
     public  void WriteLineFormat(string text, params object[] p)
     {
-        sb.AppendLine();sb.AppendLine(string.Format(text, p));
+        sb.AppendLine();
+        sb.AppendLine(string.Format(text, p));
     }
 
     public void Format(string text, params object[] p)

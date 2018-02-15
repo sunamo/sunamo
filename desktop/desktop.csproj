@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">

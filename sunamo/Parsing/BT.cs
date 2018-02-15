@@ -215,7 +215,11 @@ namespace sunamo
         }
 
 
-
+        /// <summary>
+        /// 0 - false, all other - 1
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool IntToBool(object v)
         {
             return Convert.ToBoolean(int.Parse(v.ToString()));
@@ -612,6 +616,11 @@ namespace sunamo
             return Convert.ToInt32(v);
         }
 
+        /// <summary>
+        /// 0 - false, all other - 1
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool IntToBool(int v)
         {
             return Convert.ToBoolean(v);

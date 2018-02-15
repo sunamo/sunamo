@@ -115,7 +115,7 @@ public class FileIndex
     /// </summary>
     /// <param name="folders"></param>
     /// <returns></returns>
-    public static Dictionary<string, FileIndex> IndexFolders(string[] folders)
+    public static Dictionary<string, FileIndex> IndexFolders(IEnumerable<string> folders)
     {
         Dictionary<string, FileIndex> vr = new Dictionary<string, FileIndex>();
         foreach (var item in folders)

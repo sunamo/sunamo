@@ -62,6 +62,23 @@ public static class SH
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="us"></param>
+    /// <param name="nameSolution"></param>
+    /// <returns></returns>
+    public static string RemoveAfterLast(char delimiter, string nameSolution)
+    {
+        int dex = nameSolution.LastIndexOf(delimiter);
+        if (dex != -1)
+        {
+            string s = SH.Substring(nameSolution, 0, dex);
+            return s;
+        }
+        return nameSolution;
+    }
+
+    /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
     /// </summary>
     /// <param name="item"></param>
@@ -1626,7 +1643,7 @@ public static class SH
 
     /// <summary>
     /// POZOR, tato metoda se změnila, nyní automaticky přičítá k indexu od 1
-    /// Pro nové použití této metody doporučuji dát odečíst 1 od A3 a poté si zkontrolovat výsledek v debuggeru.
+    /// When I want to include delimiter, add to A3 +1
     /// </summary>
     /// <param name="sql"></param>
     /// <param name="p"></param>
@@ -1643,7 +1660,7 @@ public static class SH
         {
             if (tl > indexTo)
             {
-                return sql.Substring(indexFrom + 1, indexTo - indexFrom);
+                return sql.Substring(indexFrom, indexTo - indexFrom);
             }
         }
         return null;
@@ -1733,6 +1750,29 @@ public static class SH
         }
         return d;
         //return d;
+    }
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="labels"></param>
+    /// <returns></returns>
+    public static string Join(List<string> labels, char name)
+    {
+        string s = name.ToString();
+        StringBuilder sb = new StringBuilder();
+        foreach (string item in labels)
+        {
+            sb.Append(item + s);
+        }
+        string sb2 = sb.ToString();
+        if (labels.Count != 0)
+        {
+            sb2 = sb2.Substring(0, sb2.Length - 1);
+        }
+        return sb2;
     }
 
     /// <summary>

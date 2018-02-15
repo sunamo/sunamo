@@ -7,6 +7,45 @@ using System.Linq;
 
 public static class CA
 {
+    /// <summary>
+    /// 
+    /// Modify both A1 and A2 - keep only which is only in one
+    /// </summary>
+    /// <param name="c1"></param>
+    /// <param name="c2"></param>
+    public static List<string> CompareList( List<string> c1,  List<string> c2)
+    {
+        List<string> existsInBoth = new List<string>();
+
+        int dex = -1;
+
+        for (int i = c2.Count - 1; i >= 0; i--)
+        {
+            string item = c2[i];
+            dex = c1.IndexOf(item);
+            if (dex != -1)
+            {
+                existsInBoth.Add(item);
+                c2.RemoveAt(i);
+                c1.RemoveAt(dex);
+            }
+        }
+
+        for (int i = c1.Count - 1; i >= 0; i--)
+        {
+            string item = c1[i];
+            dex = c2.IndexOf(item);
+            if (dex != -1)
+            {
+                existsInBoth.Add(item);
+                c1.RemoveAt(i);
+                c2.RemoveAt(dex);
+            }
+        }
+
+        return existsInBoth;
+    }
+
    public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
@@ -468,7 +507,7 @@ public static class CA
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
-    public static string[] RemoveStringsEmpty2(string[] mySites)
+    public static List<string> RemoveStringsEmpty2(List<string> mySites)
     {
         List<string> dd = new List<string>();
         foreach (string item in mySites)
@@ -478,7 +517,7 @@ public static class CA
                 dd.Add(item);
             }
         }
-        return dd.ToArray();
+        return dd;
     }
 
     public static List<string> ShortCircuit(List<string> proj, int p)

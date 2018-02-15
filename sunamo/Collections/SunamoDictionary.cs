@@ -7,8 +7,6 @@ using System.Windows;
 
 namespace sunamo
 {
-    
-
     public class SunamoDictionary<T, U> : Dictionary<T, U>
     {
         public int CountOfValueNot(U u)

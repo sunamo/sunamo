@@ -2,6 +2,7 @@ using System.Collections.Generic;
 public class SunamoDictionarySort<T, U> : Dictionary<T, U>
 {
     DictionarySort<T,U> ss = new DictionarySort<T,U>();
+
     /// <summary>
     /// sezareno a->z, lomítko první, pak čísla, pak písmena - vše standardně. Porovnává se tak bez volání Reverse
     /// </summary>

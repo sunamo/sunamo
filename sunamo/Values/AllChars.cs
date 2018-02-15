@@ -23,7 +23,10 @@ public static class AllChars
     public const char tab = '\t';
     public const char nl = '\n';
     public const char cr = '\t';
-    public const char bs = '\\'; 
+    public const char bs = '\\';
+    public const char us = '_';
+    public const char comma = ',';
+    public const char dot = ',';
     #endregion
 
     static AllChars()
@@ -38,7 +41,7 @@ public static class AllChars
         foreach (int item in whiteSpacesCodes)
         {
             string s = "";
-                s = char.ConvertFromUtf32(item);
+            s = char.ConvertFromUtf32(item);
             whiteSpacesChars.Add(Convert.ToChar(s));
         }
         

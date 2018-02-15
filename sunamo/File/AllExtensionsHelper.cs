@@ -40,9 +40,9 @@ namespace sunamo.Helpers
                         List<string> extensions = new List<string>();
                         extensions.Add(extWithDot);
                         extensionsByType.Add(toe, extensions);
+
                         List<string> extensionsWithoutDot = new List<string>();
                         extensionsWithoutDot.Add(extWithoutDot);
-
                         extensionsByTypeWithoutDot.Add(toe, extensionsWithoutDot);
                     }
                     else
@@ -85,9 +85,9 @@ namespace sunamo.Helpers
             if (p != "")
             {
                 p = p.Substring(1);
-                if (allExtensionsWithoutDot.ContainsKey(p))
+                if (allExtensions.ContainsKey(p))
                 {
-                    return allExtensionsWithoutDot[p];
+                    return allExtensions[p];
                 }
             }
 

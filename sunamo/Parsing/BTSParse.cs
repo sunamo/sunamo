@@ -191,10 +191,15 @@ using System.Threading.Tasks;
             return bool.TryParse(trim, out lastBool);
         }
 
-        #endregion
+    #endregion
 
-        #region *To*
-        public static bool IntToBool(object v)
+    #region *To*
+    /// <summary>
+    /// 0 - false, all other - 1
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static bool IntToBool(object v)
         {
             return Convert.ToBoolean(int.Parse(v.ToString()));
         }

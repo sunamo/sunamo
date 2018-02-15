@@ -24,11 +24,7 @@ public class ClipboardHelper
         return Clipboard.GetText();
     }
 
-<<<<<<< HEAD
     public static List<string> GetLines()
-=======
-    public static string[] GetLines()
->>>>>>> 57567a43a48b2e752b313e083d4fbb75cf586ff0
     {
         return SH.GetLines( Clipboard.GetText());
     }

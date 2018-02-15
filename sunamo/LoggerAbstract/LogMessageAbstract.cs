@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-using sunamo;
-=======
+
 ﻿using sunamo;
->>>>>>> 57567a43a48b2e752b313e083d4fbb75cf586ff0
 using System;
 using System.Collections.Generic;
 using System.Linq;
