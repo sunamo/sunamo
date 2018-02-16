@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace desktop
+namespace desktop.Controls
 {
     /// <summary>
     /// Interaction logic for SelectFolder.xaml

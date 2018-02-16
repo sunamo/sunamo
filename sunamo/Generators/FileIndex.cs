@@ -110,7 +110,7 @@ public class FileIndex
     }
 
     /// <summary>
-    /// Initialize folders
+    /// Process recursively A1 - for every folder one object FileIndex in output
     /// 
     /// </summary>
     /// <param name="folders"></param>
@@ -129,6 +129,10 @@ public class FileIndex
 
     /// <summary>
     /// Use relative path to file to find id directory and insert bot to A2
+    /// A1 - used to make relative file paths from A2
+    /// 
+    /// A3 - key is relative file path, value is index of relative directory
+    /// A4 - relative paths to files which is used to fill A3. no change
     /// </summary>
     /// <param name="folderOfSolution"></param>
     /// <param name="fi"></param>
@@ -139,6 +143,7 @@ public class FileIndex
         foreach (var item2 in fi.files)
         {
             string relativeFilePath = (item2.Path + item2.Name).Replace(folderOfSolution, "");
+
             if (!relativeFilePathForEveryColumn.ContainsKey(relativeFilePath))
             {
                 int relativeDirectoryId = filesFromAllFoldersUniqueRelative.IndexOf(relativeFilePath);

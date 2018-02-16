@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AF.cs" />
+    <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
     <Compile Include="Converters\MySitesConverter.cs" />
     <Compile Include="CookieNames.cs" />

@@ -1,8 +1,10 @@
+using System;
+using System.Collections.Generic;
 using System.Text;
 public class TextOutputGenerator
 {
     readonly static string znakNadpisu = "*";
-    StringBuilder sb = new StringBuilder();
+    public StringBuilder sb = new StringBuilder();
 
     #region Main
 
@@ -42,10 +44,6 @@ public class TextOutputGenerator
         sb.AppendLine(text);
         sb.AppendLine(hvezdicky);
         
-        sb.AppendLine();sb.AppendLine(hvezdicky);
-        sb.Append(text);
-        sb.AppendLine();sb.AppendLine(hvezdicky);
-        
     }
     #endregion
 
@@ -65,4 +63,15 @@ public class TextOutputGenerator
  	    return sb.ToString();
     }
 
+    public void Header(string v)
+    {
+        sb.AppendLine();
+        sb.AppendLine(v);
+        sb.AppendLine();
+    }
+
+    public void List(List<string> files1)
+    {
+        files1.ForEach(d => sb.AppendLine(d));
+    }
 }

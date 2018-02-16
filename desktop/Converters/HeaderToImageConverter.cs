@@ -15,8 +15,10 @@ using System.Windows.Media.Imaging;
 
 namespace desktop.Converters
 {
-        [ValueConversion(typeof(string), typeof(bool))]
-        public class HeaderToImageConverter : IValueConverter
+    //TODO: Try this, in attr are types string and bool but Convert() return ImageSource
+
+    //[ValueConversion(typeof(string), typeof(bool))]
+    public class HeaderToImageConverter : IValueConverter
         {
             public static HeaderToImageConverter Instance = new HeaderToImageConverter();
 

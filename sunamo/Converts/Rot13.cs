@@ -5,8 +5,6 @@ public static class Rot13
     /// </summary>
     public static string Transform(string value)
     {
-        
-
         char[] array = value.ToCharArray();
         for (int i = 0; i < array.Length; i++)
         {

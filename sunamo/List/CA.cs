@@ -321,6 +321,12 @@ public static class CA
         return folders;
     }
 
+    /// <summary>
+    /// Remove elements starting with A1
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="mySites"></param>
+    /// <returns></returns>
     public static List<string> RemoveStartingWith(string start, List<string> mySites)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
@@ -520,6 +526,12 @@ public static class CA
         return dd;
     }
 
+    /// <summary>
+    /// Return first A2 elements of A1 or A1 if A2 is bigger
+    /// </summary>
+    /// <param name="proj"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static List<string> ShortCircuit(List<string> proj, int p)
     {
         List<string> vratit = new List<string>();
@@ -1054,17 +1066,6 @@ public static class CA
         return toReplace;
     }
 
-    /// <summary>
-    /// NI
-    /// </summary>
-    /// <param name="s"></param>
-    /// <param name="afterReplace"></param>
-    /// <returns></returns>
-    public static string[] Substring(string s, string[] afterReplace)
-    {
-        throw new NotImplementedException();
-    }
-
     public static List<string> Format(string uninstallNpmPackageGlobal, List<string> globallyInstalledTsDefinitions)
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
@@ -1074,11 +1075,11 @@ public static class CA
         return globallyInstalledTsDefinitions;
     }
 
-    public static string[] ChangeContent(string[] files_in, Func<string, string> readAllText)
+    public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
     {
-        for (int i = 0; i < files_in.Length; i++)
+        for (int i = 0; i < files_in.Count; i++)
         {
-            files_in[i] = readAllText.Invoke(files_in[i]);
+            files_in[i] = func.Invoke(files_in[i]);
         }
         return files_in;
     }

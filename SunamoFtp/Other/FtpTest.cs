@@ -14,7 +14,7 @@ namespace tempConsole
             ftpBase.setRemotePass("hekaPuC4;");
         }
 
-        public static void FtpDll( )
+        public static void FtpDll()
         {
             FtpDllWrapper ftpDll = new FtpDllWrapper(new Ftp());
             SetConnectionInfo(ftpDll);

@@ -8,6 +8,7 @@ public delegate void VoidBoolNullable(bool? b);
 public delegate String StringString(string s);
 public delegate void VoidString(string s);
 public delegate void VoidStringTU<T, U>(string s, T t, U u);
+public delegate void SetStatusDelegate(TypeOfMessage t, string message);
 
 public delegate void VoidObjectBool(object o, bool b);
 

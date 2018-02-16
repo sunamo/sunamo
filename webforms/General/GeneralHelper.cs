@@ -14,6 +14,7 @@ using System.Web.UI.WebControls;
 using System.Web.Hosting;
 using sunamo;
 using shared.Extensions;
+using sunamo.Essential;
 
 public class GeneralHelper
 {
@@ -783,6 +784,11 @@ public class GeneralHelper
     /// </summary>
     public static Dictionary<short, List<string>> colorsOfBars = new Dictionary<short, List<string>>();
 
+    /// <summary>
+    /// Result saves to colorsOfBars variable
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="pocet"></param>
     public static void CalculatePercentOfColorBars(short width, int pocet)
     {
         List<string> barvyFinal;
@@ -794,6 +800,7 @@ public class GeneralHelper
 
     public static int CalculatePercentOfColorBar(int pocet, out List<string> barvyFinal, out byte[] b2)
     {
+        #region Initialize variable and collections
         barvyFinal = new List<string>(pocet);
         List<string> colors = new List<string>(colorsColorBar);
         byte percent = 100;
@@ -801,7 +808,11 @@ public class GeneralHelper
         int pocet2 = pocet;
         pocet2--;
         byte[] b = new byte[pocet];
+        // increases from 1 to 9, numbers of generated colors
         byte i = 1;
+        #endregion
+
+        #region Select 9 random colors, substract maximum 1...9 = 45
         for (; i < 10; i++)
         {
             b[i - 1] = i;
@@ -811,19 +822,27 @@ public class GeneralHelper
             pocet--;
             percent2 += i;
             percent -= i;
-        }
-        //
+        } 
+        #endregion
+
         while (percent > 0 && pocet != 0)
         {
+            #region Break if percent is two
             if (percent == 2)
             {
                 break;
             }
+            #endregion
+
+            #region Get random number between 1 and actual reaming percent
             byte r = RandomHelper.RandomByte2(1, percent > 9 ? 9 : percent);
             if (r > percent)
             {
                 continue;
             }
+            #endregion
+
+            #region Generate color, substract about random color
             b[i - 1] = r;
             int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
             barvyFinal.Add(colors[indexBarvy]);
@@ -831,13 +850,20 @@ public class GeneralHelper
             pocet--;
             percent2 += r;
             percent -= r;
+            #endregion
+
+            #region If percent is below zero, break
             if (percent < 0)
             {
                 break;
             }
             i++;
+            #endregion
+
+            #region When percent is below 10, generate new color for every one
             if (percent < 10 && percent != 0)
             {
+
                 for (int i2 = 1; i2 < percent + 1; i2++)
                 {
                     int dex = i - 1;
@@ -845,6 +871,7 @@ public class GeneralHelper
                     {
                         break;
                     }
+
                     b[dex] = 1;
                     indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
                     barvyFinal.Add(colors[indexBarvy]);
@@ -854,6 +881,7 @@ public class GeneralHelper
                     {
                         break;
                     }
+
                     percent2 += 1;
                     percent -= 1;
                     if (percent < 0)
@@ -862,10 +890,14 @@ public class GeneralHelper
                     }
                     i++;
                 }
-            }
+            } 
+            #endregion
         }
+
+        #region Finalize if is still under 100%
         if (percent2 < 100)
         {
+            #region If I have space in b array, set as last element, otherwise add to first
             i++;
             int pomer = 100 - percent2;
             if (b.Length == i + 1)
@@ -878,7 +910,11 @@ public class GeneralHelper
             {
                 b[0] += (byte)pomer;
             }
+            #endregion
         }
+        #endregion
+
+        #region Sum all elements, if will greater than 100 substract from 9th element
         int nt = 0;
         for (int i3 = 0; i3 < b.Length; i3++)
         {
@@ -889,21 +925,13 @@ public class GeneralHelper
             int pomer = nt - 100;
             b[8] -= (byte)pomer;
         }
-        b2 = null;
-        int b2l = barvyFinal.Count;
-        if (b2l == b.Length)
+        #endregion
+
+        if (b.Length != barvyFinal.Count)
         {
-            b2 = b;
+               
         }
-        else
-        {
-            b2 = new byte[b2l];
-            for (int y = 0; y < b2l; y++)
-            {
-                b2[y] = b[y];
-            }
-        }
-        b2 = CA.JumbleUp<byte>(b2);
+        b2 = CA.JumbleUp<byte>(b);
         return pocet;
     }
 

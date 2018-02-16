@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace sunamo
 {
+    /// <summary>
+    /// AppLang/string
+    /// </summary>
     public static class AppLangConverter //: ISimpleConverter<AppLang, string>
     {
         public static AppLang ConvertTo(string b)

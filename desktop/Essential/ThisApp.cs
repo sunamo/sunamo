@@ -16,12 +16,24 @@ namespace desktop.Essential
             return Environment.MachineName + "\\SQLExpress";
         }
 
+        static ThisApp()
+        {
+            sunamo.Essential.ThisApp.StatusSetted += ThisApp_StatusSetted;
+        }
+
+        private async static void ThisApp_StatusSetted(TypeOfMessage t, string message)
+        {
+            await SetStatusToTextBlock(t, message);
+        }
+
 #if DEBUG
         public static void WriteDebug(string v)
         {
             Debug.WriteLine(v);
         }
 #endif
+
+
 
         public async static Task SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
         {
@@ -42,24 +54,26 @@ namespace desktop.Essential
             }
             beforeMessage = status;
             status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
-            //LogMessageAbstract<Color, string> lmn = null;
-            //if (alsoLb)
-            //{
-            //    lmn = await mp.Logger.Add(st, status);
-            //    //await lbLogs.RefreshLb(ls.messagesActualSession2);
-            //}
-            //else
-            //{
-            //    lmn = await new LogMessage().Initialize(DateTime.Now, st, status, mp.Logger.GetBackgroundBrushOfTypeOfMessage(st));
-            //}
-            //await mp.SetStatus(lmn, alsoLb);
+        }
 
+        public static void SaveReferenceToTextBlockStatus(bool restore)
+        {
+            if (restore)
+            {
+                tbLastErrorOrWarning = tbLastErrorOrWarningSaved;
+                tbLastOtherMessage = tbLastOtherMessageSaved;
+            }
+            else
+            {
+                tbLastErrorOrWarningSaved = tbLastErrorOrWarning;
+                tbLastOtherMessageSaved = tbLastOtherMessage;
+            }
         }
 
         public async static Task SetStatusToTextBlock(TypeOfMessage st, string status)
         {
             Color fg = Colors.Black;
-            //fg = mp.Logger.GetForegroundBrushOfTypeOfMessage(st);
+            
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
                 await SetForeground(tbLastErrorOrWarning, fg);
@@ -93,6 +107,8 @@ namespace desktop.Essential
         public static IEssentialMainPage mp = null;
         public static TextBlock tbLastErrorOrWarning = null;
         public static TextBlock tbLastOtherMessage = null;
+        static TextBlock tbLastErrorOrWarningSaved = null;
+        static TextBlock tbLastOtherMessageSaved = null;
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
         public static Langs l = Langs.en;
