@@ -7,38 +7,48 @@ namespace sunamo.Essential
 {
     public class Exceptions
     {
-        
-
         #region Without parameters
-        public static string NotImplementedCase()
+        public static string NotImplementedCase( string before)
         {
-            return "Not implemented case. public program error. Please contact developer.";
+            return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
         }
         #endregion
 
-        #region Without locating executing code
         public static string CheckBackslashEnd(string before, string r)
         {
             if (r.Length != 0)
             {
                 if (r[r.Length - 1] != AllChars.bs)
                 {
-                    return "String has not been in path format!";
+                    return CheckBefore( before) + "String has not been in path format!";
                 }
             }
 
             return null;
         }
-        #endregion
+
+        private static string CheckBefore(string before)
+        {
+            if (string.IsNullOrWhiteSpace(before))
+            {
+                return "";
+            }
+            return before + ": ";
+        }
 
         public static string DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
         {
             if (countfc != countsc)
             {
-                return " Different count elements in collection " + SH.ConcatIfBeforeHasValue(namefc + " - " + countfc) + " vs. " + SH.ConcatIfBeforeHasValue(namesc + " - " + countsc);
+                return CheckBefore( before) + " Different count elements in collection " + SH.ConcatIfBeforeHasValue(namefc + " - " + countfc) + " vs. " + SH.ConcatIfBeforeHasValue(namesc + " - " + countsc);
             }
 
             return null;
+        }
+
+        public static object ToManyElementsInCollection(string before, int max, int actual, string nameCollection)
+        {
+            return CheckBefore(before) + actual + " elements in " + nameCollection + ", maximum is " + max;
         }
 
         public static string ArrayElementContainsUnallowedStrings(string before, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
@@ -46,7 +56,7 @@ namespace sunamo.Essential
             List<string> foundedUnallowed = SH.ContainsAny(valueElement, false, unallowedStrings);
             if (foundedUnallowed.Count != 0)
             {
-                return  " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(',', unallowedStrings);
+                return CheckBefore( before) + " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(',', unallowedStrings);
             }
 
             return null;
@@ -56,7 +66,7 @@ namespace sunamo.Essential
         {
             if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))
             {
-                return mayUrlDecoded + " is url endoded " + typeOfInput;
+                return CheckBefore( before) + mayUrlDecoded + " is url endoded " + typeOfInput;
             }
 
             return null;
@@ -64,7 +74,7 @@ namespace sunamo.Essential
 
         public static string ElementCantBeFound(string before, string nameCollection, string element)
         {
-            return element + "cannot be found in " + nameCollection;
+            return CheckBefore( before) + element + "cannot be found in " + nameCollection;
         }
     }
 }

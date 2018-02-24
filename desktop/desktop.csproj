@@ -68,6 +68,10 @@
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
+    <Compile Include="Controls\InputTwoColumnsUC.xaml.cs">
+      <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionStrings.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
@@ -76,9 +80,6 @@
     <Compile Include="Controls\CommandBindingManager.cs" />
     <Compile Include="Controls\CompareTwoIntegers.xaml.cs">
       <DependentUpon>CompareTwoIntegers.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CompareTwoIntegersGrid.xaml.cs">
-      <DependentUpon>CompareTwoIntegersGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CyclingImageViewer.xaml.cs">
       <DependentUpon>CyclingImageViewer.xaml</DependentUpon>
@@ -154,35 +155,35 @@
     <Compile Include="FileSystemWatcherExtended\WatchersExList.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="AppPaths.cs" />
-    <Compile Include="Helpers\ButtonHelper.cs" />
+    <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
-    <Compile Include="Helpers\ComboBoxHelper.cs" />
-    <Compile Include="Helpers\ComboBoxHelperT.cs" />
-    <Compile Include="Helpers\ContextMenuHelper.cs" />
-    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
+    <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
+    <Compile Include="Helpers\BaseControls\ControlHelper.cs" />
     <Compile Include="Helpers\DataGridHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
-    <Compile Include="Helpers\FrameworkElementHelper.cs" />
-    <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Helpers\BaseControls\FrameworkElementHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\IHWPF.cs" />
     <Compile Include="Helpers\KeyboardHelper.cs" />
-    <Compile Include="Helpers\LBHT.cs" />
-    <Compile Include="Helpers\MenuItemHelper.cs" />
-    <Compile Include="Helpers\MenuItemWithSubitemsHelper.cs" />
-    <Compile Include="Helpers\MenuItemWithSubitemsHelperT.cs" />
+    <Compile Include="Helpers\Controls\LBHT.cs" />
+    <Compile Include="Helpers\Controls\MenuItemHelper.cs" />
+    <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
+    <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
-    <Compile Include="Helpers\ProgressBarHelper.cs" />
-    <Compile Include="Helpers\RTBH.cs" />
+    <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
+    <Compile Include="Helpers\Controls\RTBH.cs" />
     <Compile Include="Helpers\SecureStringHelper.cs" />
     <Compile Include="Helpers\SizeH.cs" />
-    <Compile Include="Helpers\TBH.cs" />
-    <Compile Include="Helpers\TextBlockDataHelper.cs" />
-    <Compile Include="Helpers\TextBlockHelperBase.cs" />
-    <Compile Include="Helpers\TextBoxHelper.cs" />
-    <Compile Include="Helpers\ToolbarHelper.cs" />
-    <Compile Include="Helpers\TreeViewHelper.cs" />
-    <Compile Include="Helpers\VisualHelper.cs" />
-    <Compile Include="Helpers\WRTBH.cs" />
+    <Compile Include="Helpers\Controls\TBH.cs" />
+    <Compile Include="Helpers\StaticControls\TextBlockDataHelper.cs" />
+    <Compile Include="Helpers\Controls\TextBlockHelperBase.cs" />
+    <Compile Include="Helpers\Controls\TextBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\ToolbarHelper.cs" />
+    <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
+    <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
+    <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
@@ -241,10 +242,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CompareTwoIntegersGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\CyclingImageViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -266,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FolderContentsTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\InputTwoColumnsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

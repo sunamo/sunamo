@@ -749,12 +749,23 @@ public static class CA
 
     public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek)
     {
+        List<T> foundedDuplicities;
+        return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
+    }
+
+    public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek, out List<T> foundedDuplicities)
+    {
+        foundedDuplicities = new List<T>();
         List<T> h = new List<T>();
         foreach (T item in idKesek)
         {
             if (!h.Contains(item))
             {
                 h.Add(item);
+            }
+            else
+            {
+                foundedDuplicities.Add(item);
             }
         }
         return h;

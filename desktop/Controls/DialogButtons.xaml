@@ -17,6 +17,6 @@
 
         <Button x:FieldModifier="public" x:Name="btnOk" Content="OK" Grid.Column="1" Click="btnOk_Click" IsEnabled="False" Margin="10"></Button>
         <Button x:FieldModifier="public" x:Name="btnCancel" Content="Cancel" Grid.Column="2" Click="btnCancel_Click" Margin="10"></Button>
-        <Button x:FieldModifier="public" x:Name="btnApply" Content="Apply" Grid.Column="3" Click="btnApply_Click" Margin="10"></Button>
+        <Button x:FieldModifier="public" x:Name="btnApply" Content="Apply" Grid.Column="3" Click="btnApply_Click" Margin="10" IsEnabled="False"></Button>
     </Grid>
 </UserControl>

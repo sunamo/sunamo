@@ -457,9 +457,21 @@ namespace sunamo
             return vr;
         }
 
-        public static List<string> GetFiles(string folder, string mask, SearchOption searchOption)
+        /// <summary>
+        /// A1 have to be with ending backslash
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="mask"></param>
+        /// <param name="searchOption"></param>
+        /// <returns></returns>
+        public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
         {
-            return new List<string>(Directory.GetFiles(folder, mask, searchOption));
+            var list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
+            if (trimA1)
+            {
+                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+            }
+            return list;
         }
 
         /// <summary>
@@ -553,7 +565,6 @@ namespace sunamo
             string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
             foreach (var item in files)
             {
-
                 string fileTo = to + item.Substring(p.Length);
                 MoveFile(item, fileTo, co);
             }
@@ -563,8 +574,6 @@ namespace sunamo
                 Directory.Delete(dirs[i], false);
             }
             Directory.Delete(p, false);
-
-            //Directory.Move(from, to);
         }
 
         /// <summary>

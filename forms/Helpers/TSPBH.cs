@@ -1,3 +1,4 @@
+using sunamo.Helpers.Number;
 using System.Windows.Forms;
 namespace forms
 {
@@ -7,8 +8,7 @@ namespace forms
     public class TSPBH
     {
         ToolStripProgressBar tscb = null;
-        float onePercent = 0;
-        float last = 0;
+        PercentCalculator percentCalculator;
         Form f = null;
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace forms
             this.f = f;
             tscb.Value = 0;
             this.tscb = tscb;
-            onePercent = 100 / pocetCelkove;
+            percentCalculator = new PercentCalculator(pocetCelkove);
         }
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace forms
         /// </summary>
         public void Hotovo()
         {
-            last += onePercent;
-            f.Invoke(IH.delegatePbarUpdate, tscb, (int)last);
+            percentCalculator.last += percentCalculator.onePercent;
+            f.Invoke(IH.delegatePbarUpdate, tscb, (int)percentCalculator.last);
             //IHS.updateProgressBarValue(tscb, (int)predchozi);
         }
 

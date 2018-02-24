@@ -2,6 +2,8 @@ using System.Windows.Media;
 using System.Windows.Controls;
 public class StatusesLogger
 {
+    // TODO: Merge with class ThisApp
+
     TextBlock tb = null;
     public StatusesLogger(TextBlock tb)
     {

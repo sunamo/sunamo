@@ -55,6 +55,14 @@ namespace desktop.Controls
             }
         }
 
+        public bool IsEnabledBtnApply
+        {
+            set
+            {
+                btnApply.IsEnabled = value;
+            }
+        }
+
         public Visibility VisibilityBtnApply
         {
             set
@@ -62,6 +70,7 @@ namespace desktop.Controls
                 btnApply.Visibility = value;
             }
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +84,7 @@ namespace desktop.Controls
 
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = null;
         }
     }
 }

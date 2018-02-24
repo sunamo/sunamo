@@ -10,4 +10,8 @@
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
+
 </Project>

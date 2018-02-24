@@ -34,29 +34,29 @@ namespace desktop.Essential
 #endif
 
 
+        // TODO: Pozustatek z apps, nikde ani neloguje, rozhodnout co s ni
+//        public  static void SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
+//        {
+//#if DEBUG
+//            WriteDebug(status);
+//#endif
+//            //var tsc = new TaskCompletionSource();
+//            if (alsoLb)
+//            {
+//                if (beforeMessage == status)
+//                {
+//#if DEBUG
+//                    //Debugger.Break();
+//#else
+//                    return;
+//#endif
+//                }
+//            }
+//            beforeMessage = status;
+//            status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
+//        }
 
-        public async static Task SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
-        {
-#if DEBUG
-            WriteDebug(status);
-#endif
-            //var tsc = new TaskCompletionSource();
-            if (alsoLb)
-            {
-                if (beforeMessage == status)
-                {
-#if DEBUG
-                    //Debugger.Break();
-#else
-                    return;
-#endif
-                }
-            }
-            beforeMessage = status;
-            status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
-        }
-
-        public static void SaveReferenceToTextBlockStatus(bool restore)
+        public static void SaveReferenceToTextBlockStatus(bool restore, TextBlock tbTemporaryLastErrorOrWarning, TextBlock tbTemporaryLastOtherMessage)
         {
             if (restore)
             {
@@ -68,25 +68,58 @@ namespace desktop.Essential
                 tbLastErrorOrWarningSaved = tbLastErrorOrWarning;
                 tbLastOtherMessageSaved = tbLastOtherMessage;
             }
+
+            if (!restore)
+            {
+                tbLastErrorOrWarning = tbTemporaryLastErrorOrWarning;
+                tbLastOtherMessage = tbTemporaryLastOtherMessage;
+            }
         }
 
+        public static void SetStatus(TypeOfMessage st, string status)
+        {
+            Color fg = Colors.Black;
+
+            if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
+            {
+                SetForeground(tbLastErrorOrWarning, fg);
+                SetText(tbLastErrorOrWarning, status);
+            }
+            else
+            {
+                SetForeground(tbLastOtherMessage, fg);
+                SetText(tbLastOtherMessage, status);
+            }
+        }
+
+        public static void SetForeground(TextBlock tbLastOtherMessage, Color color)
+        {
+                tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+        }
+
+        public static void SetText(TextBlock lblStatusDownload, string status)
+        {
+                lblStatusDownload.Text = status;
+        }
+
+        // TODO: Rename to SetStatusAsync and merge with commented method SetStatus here
         public async static Task SetStatusToTextBlock(TypeOfMessage st, string status)
         {
             Color fg = Colors.Black;
             
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
-                await SetForeground(tbLastErrorOrWarning, fg);
-                await SetText(tbLastErrorOrWarning, status);
+                await SetForegroundAsync(tbLastErrorOrWarning, fg);
+                await SetTextAsync(tbLastErrorOrWarning, status);
             }
             else
             {
-                await SetForeground(tbLastOtherMessage, fg);
-                await SetText(tbLastOtherMessage, status);
+                await SetForegroundAsync(tbLastOtherMessage, fg);
+                await SetTextAsync(tbLastOtherMessage, status);
             }
         }
 
-        public async static Task SetForeground(TextBlock tbLastOtherMessage, Color color)
+        public async static Task SetForegroundAsync(TextBlock tbLastOtherMessage, Color color)
         {
             await cd.InvokeAsync( () =>
             {
@@ -94,7 +127,7 @@ namespace desktop.Essential
             }, cdp);
         }
 
-        public async static Task SetText(TextBlock lblStatusDownload, string status)
+        public async static Task SetTextAsync(TextBlock lblStatusDownload, string status)
         {
 
             await cd.InvokeAsync(() =>

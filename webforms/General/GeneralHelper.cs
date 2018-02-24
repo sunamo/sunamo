@@ -785,6 +785,7 @@ public class GeneralHelper
     public static Dictionary<short, List<string>> colorsOfBars = new Dictionary<short, List<string>>();
 
     /// <summary>
+    /// Calculate exactly widths and colors for colorful bar
     /// Result saves to colorsOfBars variable
     /// </summary>
     /// <param name="width"></param>
@@ -798,6 +799,13 @@ public class GeneralHelper
         colorsOfBars.Add(width, barvyFinal);
     }
 
+    /// <summary>
+    /// Calculate percent and colors for colorful bar
+    /// </summary>
+    /// <param name="pocet"></param>
+    /// <param name="barvyFinal"></param>
+    /// <param name="b2"></param>
+    /// <returns></returns>
     public static int CalculatePercentOfColorBar(int pocet, out List<string> barvyFinal, out byte[] b2)
     {
         #region Initialize variable and collections

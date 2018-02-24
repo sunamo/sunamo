@@ -232,7 +232,6 @@ namespace desktop
                     }
                 }
                 #endregion
-
             }
         }
 

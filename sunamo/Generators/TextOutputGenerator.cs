@@ -72,6 +72,20 @@ public class TextOutputGenerator
 
     public void List(List<string> files1)
     {
-        files1.ForEach(d => sb.AppendLine(d));
+        if (files1.Count == 0)
+        {
+            sb.AppendLine();
+        }
+        else
+        {
+            files1.ForEach(d => sb.AppendLine(d));
+            sb.AppendLine();
+        }
+        
+    }
+
+    public void SingleCharLine(char paddingChar, int v)
+    {
+        sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
     }
 }

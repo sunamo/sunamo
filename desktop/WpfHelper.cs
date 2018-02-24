@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System;
 public class WpfHelper
 {
+    // TODO: Merge with ButtonHelper
 
     public static Button GetButton(string tooltip, string imagePath)
     {

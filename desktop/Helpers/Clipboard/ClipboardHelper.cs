@@ -58,4 +58,10 @@ public class ClipboardHelper
 
         ClipboardHelper.SetText(sb.ToString());
     }
+
+    public static void SetList(List<string> d)
+    {
+        string s = SH.JoinNL(d);
+        Clipboard.SetText(s);
+    }
 }

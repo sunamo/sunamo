@@ -1,4 +1,5 @@
 using System.Windows;
+
 public interface IUserControlWithResult
 {
     /// <summary>

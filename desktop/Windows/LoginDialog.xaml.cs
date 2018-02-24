@@ -2,6 +2,7 @@ using sunamo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,7 +116,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase();
+                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
             }
 
             if (txtLogin.Text != "")
@@ -231,7 +232,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase();
+                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
             }
         }
 
@@ -256,7 +257,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase();
+                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
             }
         }
 

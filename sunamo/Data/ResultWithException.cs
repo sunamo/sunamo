@@ -4,9 +4,9 @@ using System.Text;
 
 namespace sunamo.Data
 {
-    public class TWithException<T>
+    public class ResultWithException<T>
     {
-        public T Data;
+        public T Data = default(T);
         /// <summary>
         /// only string, because Message property isn't editable after instatiate
         /// </summary>

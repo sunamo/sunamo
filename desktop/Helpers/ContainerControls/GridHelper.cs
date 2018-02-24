@@ -17,6 +17,12 @@ namespace desktop.Helpers
             return g;
         }
 
+        /// <summary>
+        /// Assign to every cell GridLength.Auto
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="columns"></param>
+        /// <param name="rows"></param>
         public static void GetAutoSize(Grid g, int columns, int rows)
         {
             for (int i = 0; i < columns; i++)

@@ -448,9 +448,9 @@ public static class SH
         return slozka;
     }
 
-    public static IEnumerable<string> GetLinesList(string p)
+    public static List<string> GetLinesList(string p)
     {
-        return SH.Split(p, Environment.NewLine);
+        return SH.Split(p, Environment.NewLine).ToList();
     }
 
     public static string GetStringNL(string[] list)
@@ -2317,15 +2317,15 @@ public static class SH
     /// <param name="input"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static List<string> RemoveDuplicates(string input, string p2)
+    public static List<string> RemoveDuplicates(string input, string delimiter)
     {
-        string[] split = SH.Split(input, p2);
+        string[] split = SH.Split(input, delimiter);
         return CA.RemoveDuplicitiesList(new List<string>(split));
     }
 
-    public static List< string> RemoveDuplicatesNone(string p1, string p2)
+    public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
     {
-        string[] split = SH.SplitNone(p1, p2);
+        string[] split = SH.SplitNone(p1, delimiter);
         return CA.RemoveDuplicitiesList<string>(new List<string>(split));
     }
 

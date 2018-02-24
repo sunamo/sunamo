@@ -113,10 +113,10 @@ namespace desktop
             return dict[copyInt] * countDouble;
         }
 
-        public static TextBlock Get(string defaultFileForLeave)
+        public static TextBlock Get(string text)
         {
             TextBlock tb = new TextBlock();
-            tb.Text = defaultFileForLeave;
+            tb.Text = text;
             return tb;
         }
         #endregion

@@ -22,5 +22,12 @@ namespace sunamo
                     other.SetValue(target, property.GetValue(source, null), null);
             }
         }
+
+        public static string FullNameOfExecutedCode(MethodBase method)
+        {
+            string methodName = method.Name;
+            string type = method.ReflectedType.Name;
+            return SH.ConcatIfBeforeHasValue(type, ".", methodName, ":");
+        }
     }
 }

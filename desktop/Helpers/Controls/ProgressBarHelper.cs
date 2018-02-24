@@ -1,13 +1,12 @@
+using sunamo.Helpers.Number;
 using System.Windows;
 using System.Windows.Controls;
 namespace desktop
-{
+{               
     public class ProgressBarHelper : Window
     {
         ProgressBar pb = null;
-
-        double onePercent = 0;
-        double last = 0;
+        PercentCalculator percentCalculator;
         UIElement ui = null;
         IH ih = null;
 
@@ -18,7 +17,7 @@ namespace desktop
             this.ui = ui;
             ui.Dispatcher.Invoke(IH.delegateUpdateProgressBarWpf, pb, 0d);
             ui.Dispatcher.Invoke(IH.delegateChangeVisibilityUIElementWpf, pb, System.Windows.Visibility.Visible);
-            onePercent = 100 / overall;
+            percentCalculator = new PercentCalculator(overall);
         }
 
         public void Done()
@@ -29,8 +28,8 @@ namespace desktop
 
         public void DonePartially()
         {
-            last += onePercent;
-            ui.Dispatcher.Invoke(IH.delegateUpdateProgressBarWpf, pb, last);
+            percentCalculator.last += percentCalculator.onePercent;
+            ui.Dispatcher.Invoke(IH.delegateUpdateProgressBarWpf, pb, percentCalculator.last);
         }
     }
 }

@@ -27,6 +27,7 @@ public static class AllChars
     public const char us = '_';
     public const char comma = ',';
     public const char dot = ',';
+    public const char asterisk = '*';
     #endregion
 
     static AllChars()
