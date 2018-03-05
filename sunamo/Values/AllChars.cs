@@ -16,6 +16,7 @@ public static class AllChars
     public static readonly List<char> specialChars = new List<char>(new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '?', '_', '~' });
     public static readonly List<char> numericChars = new List<char>(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
     public static List<char> whiteSpacesChars = null;
+    
     public static readonly List<char> lowerChars = new List<char>(new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' });
     public static readonly List<char> upperChars = new List<char>(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' });
 
@@ -28,6 +29,13 @@ public static class AllChars
     public const char comma = ',';
     public const char dot = ',';
     public const char asterisk = '*';
+    public const char colon = ':';
+    /// <summary>
+    /// Left bracket
+    /// </summary>
+    public const char lb = '(';
+    public const char rb = ')';
+    public const char space = ' ';
     #endregion
 
     static AllChars()

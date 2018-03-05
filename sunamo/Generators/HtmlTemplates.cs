@@ -55,11 +55,11 @@ public class HtmlTemplates
 
     public static string Img(string src, string alt)
     {
-        return string.Format("<img src=\"{0}\" alt=\"{1}\" />", src, alt);
+        return $"<img src=\"{src}\" alt=\"{alt}\" />";
     }
 
     public static string Img(string src)
     {
-        return string.Format("<img src=\"{0}\" />", src);
+        return $"<img src=\"{src}\" />";
     }
 }

@@ -9,6 +9,7 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
+        public static Langs l = Langs.en;
         public static ResourcesHelper Resources;
         public static string Name;
         public static readonly bool initialized = false;

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
     /// </summary>
     public class SunamoStrings
     {
+    // TODO: Clean which are not necessary here
+
         static SunamoStrings()
         {
             messageIfEmpty = MessageIfEmpty("data");
@@ -48,10 +50,12 @@ using System.Threading.Tasks;
         public const string YouAreNotLoggedAsWebAdmin = "Nebyl jste přihlášen jako admin stránek";
         public const string NoRightArgumentsToPage = "Do stránky nebyl předán správný počet parametrů a/nebo se správnými hodnotami";
         public const string StringNotFound = "Řetězen nebyl nalezen";
+
         public static string MessageIfEmpty(string p)
         {
             return "Nebyly nalezeny žádné " + p + " k zobrazení";
         }
+
         public const string TurnOffSelectingPhotos = "Vypni režim označování fotek";
         public const string TurnOnSelectingPhotos = "Zapni režim označování fotek";
         public const string YouAreBlocked = "error: Byly jste zablokování dle IP adresy nebo nicku, požadovanou operaci nemůžete provést";
@@ -62,4 +66,3 @@ using System.Threading.Tasks;
         public const string UserDetail = "Detail uživatele";
         public const string EditUserAccount = "Editace uživatelského účtu";
     }
-//}

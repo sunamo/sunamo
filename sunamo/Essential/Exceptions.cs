@@ -46,7 +46,7 @@ namespace sunamo.Essential
             return null;
         }
 
-        public static object ToManyElementsInCollection(string before, int max, int actual, string nameCollection)
+        public static string ToManyElementsInCollection(string before, int max, int actual, string nameCollection)
         {
             return CheckBefore(before) + actual + " elements in " + nameCollection + ", maximum is " + max;
         }

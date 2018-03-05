@@ -6,12 +6,13 @@ namespace sunamo.Essential
     {
         // TODO: Make logger class as base and replace all occurences With Instance 
 
-         VoidString writeLineDelegate;
+        VoidString writeLineDelegate;
 
         public LoggerBase(VoidString writeLineDelegate)
         {
             this.writeLineDelegate = writeLineDelegate;
         }
+
         public  void TwoState(bool ret, params object[] toAppend)
         {
             writeLineDelegate.Invoke(ret.ToString() + "," + SH.Join(',', toAppend));

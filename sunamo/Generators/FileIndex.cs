@@ -394,41 +394,23 @@ public class FileIndex
     string name = null;
     public string Name
     {
-        get
-        {
-            return name;
-        }
-        set
-        {
-            name = value;
-        }
+        get => name;
+        set => name = value;
     }
 
     string path = null;
     public string Path
     {
-        get
-        {
-            return path;
-        }
-        set
-        {
-            path = value;
-        }
+        get =>  path;
+        set => path = value;
     }
 
 
     int iDParent = -1;
     public int IDParent
     {
-        get
-        {
-            return iDParent;
-        }
-        set
-        {
-            iDParent = value;
-        }
+        get =>  iDParent;
+        set => iDParent = value;
     }
     long length = -1;
     public long Length

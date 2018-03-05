@@ -245,7 +245,7 @@ function changeImage() {
 
         public static string FunctionOpenNewTab(string uri)
         {
-            return string.Format("window.open('{0}', '_blank'); return false;", uri);
+            return $"window.open('{uri}', '_blank'); return false;";
         }
 
 

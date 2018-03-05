@@ -3,6 +3,7 @@ using sunamo.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public static class CA
@@ -75,11 +76,59 @@ public static class CA
         return true;
     }
 
+    public static List<string> ReturnWhichContains(List<string> lines, string item)
+    {
+        return lines.FindAll(d => d.Contains(item));
+    }
+
     public static List<string> WrapWithAndJoin(IEnumerable<string> list, string wrapWith, string delimiter)
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
     }
-    
+
+    public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
+    {
+        if (wildcard)
+        {
+
+
+
+            //item = SH.WrapWith(item, AllChars.asterisk);
+            for (int i = files1.Count - 1; i >= 0; i--)
+            {
+                //if (item == @"\\obj\\")
+                //{
+                //    if (files1[i].Contains(@"\obj\"))
+                //    {
+                //        Debugger.Break();
+                //    }
+                //}
+
+                //if (files1[i].Contains(@"\obj\"))
+                //{
+                //    Debugger.Break();
+                //}
+
+
+                if (Wildcard.IsMatch(files1[i], item))
+                {
+                    files1.RemoveAt(i);
+                }
+
+                }
+            }
+        else
+        {
+            for (int i = files1.Count - 1; i >= 0; i--)
+            {
+                if (files1[i].Contains(item))
+                {
+                    files1.RemoveAt(i);
+                }
+            }
+        }
+    }
+
     public static int PartsCount(int count, int inPart)
     {
         int celkove = count / inPart;
@@ -135,13 +184,14 @@ public static class CA
         return false;
     }
 
-    public static IList WrapWith(IList whereIsUsed2, string v)
+    public static IList<string> WrapWith(IList<string> whereIsUsed2, string v)
     {
+        List<string> result = new List<string>();
         for (int i = 0; i < whereIsUsed2.Count; i++)
         {
-            whereIsUsed2[i] = v + whereIsUsed2[i] + v;
+            result.Add( v + whereIsUsed2[i] + v);
         }
-        return whereIsUsed2;
+        return result;
     }
 
     public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)

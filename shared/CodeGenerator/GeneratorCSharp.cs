@@ -474,7 +474,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, string type, IList whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, string type, IList<string> whereIsUsed2, bool wrapToHyphens)
     {
         string objectIdentificator = "";
         if (timeObjectName != null)
@@ -498,7 +498,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// <param name="type"></param>
     /// <param name="whereIsUsed2"></param>
     /// <param name="wrapToHyphens"></param>
-    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, Type type, IList whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, Type type, IList<string> whereIsUsed2, bool wrapToHyphens)
     {
         AddValuesViaAddRange(pocetTab, timeObjectName, v, type.FullName, whereIsUsed2, wrapToHyphens);
         sb.AppendLine();

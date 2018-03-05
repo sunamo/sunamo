@@ -12,5 +12,10 @@ namespace shared.Essential
         {
 
         }
+
+        public static void WriteMessage(TypeOfMessage typeOfMessage, string text, params object[] args)
+        {
+            Console.WriteLine(typeOfMessage.ToString() + ": " + string.Format( text, args));
+        }
     }
 }

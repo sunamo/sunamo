@@ -91,11 +91,11 @@ namespace desktop
 
         public bool? DialogResult
         {
-            set {
+            set
+            {
                 ChangeDialogResult(value);
             }
         }
-
 
         public Size UcSize
         {

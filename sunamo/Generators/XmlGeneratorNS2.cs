@@ -27,7 +27,7 @@ public class XmlGeneratorNS2
 
     public void WriteCData(string innerCData)
     {
-        this.WriteRaw(string.Format("<![CDATA[{0}]]>", innerCData));
+        this.WriteRaw($"<![CDATA[{ innerCData }]]>");
     }
 
     public void WriteElementObject(string p, object o)

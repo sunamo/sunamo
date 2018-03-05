@@ -112,6 +112,7 @@
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
+    <Compile Include="Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />

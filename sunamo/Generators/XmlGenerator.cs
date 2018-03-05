@@ -96,7 +96,7 @@ public class XmlGenerator
 
     public void WriteTag(string p)
     {
-        string r = string.Format("<{0}>", p);
+        string r = $"<{p}>";
         if (useStack)
         {
             stack.Push(r);

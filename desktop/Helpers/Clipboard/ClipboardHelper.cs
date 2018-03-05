@@ -1,6 +1,8 @@
 using sunamo.Clipboard;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -63,5 +65,20 @@ public class ClipboardHelper
     {
         string s = SH.JoinNL(d);
         Clipboard.SetText(s);
+    }
+
+    public static void CutFiles(params string[] selected)
+    { 
+        byte[] moveEffect = { 2, 0, 0, 0 };
+        MemoryStream dropEffect = new MemoryStream();
+        dropEffect.Write(moveEffect, 0, moveEffect.Length);
+
+        StringCollection filestToCut = new StringCollection();
+        filestToCut.AddRange(selected);
+        DataObject data = new DataObject("Preferred DropEffect", dropEffect);
+        data.SetFileDropList(filestToCut);
+
+        Clipboard.Clear();
+        Clipboard.SetDataObject(data, true);
     }
 }

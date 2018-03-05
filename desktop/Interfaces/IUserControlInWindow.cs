@@ -7,7 +7,9 @@ public interface IUserControlWithResult
     /// </summary>
     event VoidBoolNullable ChangeDialogResult;
     /// <summary>
-    /// Do Set zapiš jen ChangeDialogResult(value);
+    /// Do Set zapiš jen ChangeDialogResult(value); 
+    /// It is construction from WF apps and protect if handler will be null.
+    /// 
     /// </summary>
     bool? DialogResult {set;}
 }

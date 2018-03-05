@@ -21,9 +21,9 @@ namespace desktop.Essential
             sunamo.Essential.ThisApp.StatusSetted += ThisApp_StatusSetted;
         }
 
-        private async static void ThisApp_StatusSetted(TypeOfMessage t, string message)
+        private  static void ThisApp_StatusSetted(TypeOfMessage t, string message)
         {
-            await SetStatusToTextBlock(t, message);
+            desktop.Essential.ThisApp.SetStatus(t, message);
         }
 
 #if DEBUG
@@ -76,7 +76,8 @@ namespace desktop.Essential
             }
         }
 
-        public static void SetStatus(TypeOfMessage st, string status)
+        #region Sync
+        private static void SetStatus(TypeOfMessage st, string status)
         {
             Color fg = Colors.Black;
 
@@ -92,21 +93,23 @@ namespace desktop.Essential
             }
         }
 
-        public static void SetForeground(TextBlock tbLastOtherMessage, Color color)
+        private static void SetForeground(TextBlock tbLastOtherMessage, Color color)
         {
-                tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+            tbLastOtherMessage.Foreground = new SolidColorBrush(color);
         }
 
-        public static void SetText(TextBlock lblStatusDownload, string status)
+        private static void SetText(TextBlock lblStatusDownload, string status)
         {
-                lblStatusDownload.Text = status;
-        }
+            lblStatusDownload.Text = status;
+        } 
+        #endregion
 
+        #region Async
         // TODO: Rename to SetStatusAsync and merge with commented method SetStatus here
         public async static Task SetStatusToTextBlock(TypeOfMessage st, string status)
         {
             Color fg = Colors.Black;
-            
+
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
                 await SetForegroundAsync(tbLastErrorOrWarning, fg);
@@ -121,10 +124,10 @@ namespace desktop.Essential
 
         public async static Task SetForegroundAsync(TextBlock tbLastOtherMessage, Color color)
         {
-            await cd.InvokeAsync( () =>
-            {
-                tbLastOtherMessage.Foreground = new SolidColorBrush(color);
-            }, cdp);
+            await cd.InvokeAsync(() =>
+           {
+               tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+           }, cdp);
         }
 
         public async static Task SetTextAsync(TextBlock lblStatusDownload, string status)
@@ -134,9 +137,10 @@ namespace desktop.Essential
             {
                 lblStatusDownload.Text = status;
             }, cdp);
-        }
+        } 
+        #endregion
 
-        static string beforeMessage = "";
+
         public static IEssentialMainPage mp = null;
         public static TextBlock tbLastErrorOrWarning = null;
         public static TextBlock tbLastOtherMessage = null;
@@ -144,6 +148,6 @@ namespace desktop.Essential
         static TextBlock tbLastOtherMessageSaved = null;
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
-        public static Langs l = Langs.en;
+        
     }
 }

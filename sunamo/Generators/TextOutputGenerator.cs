@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 public class TextOutputGenerator
 {
@@ -34,7 +35,7 @@ public class TextOutputGenerator
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    public  void StartRunTime(string text)
+    public void StartRunTime(string text)
     {
         int delkaTextu = text.Length;
         string hvezdicky = "";
@@ -70,18 +71,28 @@ public class TextOutputGenerator
         sb.AppendLine();
     }
 
-    public void List(List<string> files1)
+   
+
+    public void List(IEnumerable<string> files1)
     {
-        if (files1.Count == 0)
+        if (files1.Count() == 0)
         {
             sb.AppendLine();
         }
         else
         {
-            files1.ForEach(d => sb.AppendLine(d));
+            foreach (var item in files1)
+            {
+                sb.AppendLine(item);
+            }
             sb.AppendLine();
         }
-        
+    }
+
+    public void List(IEnumerable<string> files1, string header)
+    {
+        sb.AppendLine(header);
+        List(files1);
     }
 
     public void SingleCharLine(char paddingChar, int v)

@@ -78,6 +78,42 @@ public static class SH
         return nameSolution;
     }
 
+    public static string WordAfter(string input, string word)
+    {
+        //input = input.Trim();
+        input = SH.WrapWith(input, AllChars.space);
+        
+        int dex = input.IndexOf(word);
+        
+            // Add 1 because I will remove next word
+        //    input = input.Substring(dex + word.Length + 1);
+        //if (!input.Contains(AllChars.space))
+        //{
+        //    input += AllChars.space;
+        //}
+        
+            int dex2 = input.IndexOf(AllChars.space, dex+1);
+            StringBuilder sb = new StringBuilder();
+            if (dex2 != -1)
+            {
+                dex2++;
+                for (int i = dex2; i < input.Length; i++)
+                {
+                    char ch = input[i];
+                    if (ch != AllChars.space)
+                    {
+                        sb.Append(ch);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return sb.ToString();
+        
+    }
+
     /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
     /// </summary>
@@ -901,6 +937,7 @@ public static class SH
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string WrapWith(string value, char v)
     {
+        // TODO: Make with StringBuilder, because of SH.WordAfter and so
         return WrapWith(value, v.ToString());
     }
 

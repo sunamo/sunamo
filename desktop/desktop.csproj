@@ -71,6 +71,12 @@
     <Compile Include="Controls\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ResultButtons.xaml.cs">
+      <DependentUpon>ResultButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShowTextResult.xaml.cs">
+      <DependentUpon>ShowTextResult.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
@@ -278,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\ResultButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SelectFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,6 +305,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SelectImageFileAndMakeSingleColorTransparent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShowTextResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

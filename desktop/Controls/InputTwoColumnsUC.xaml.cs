@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for InputTwoColumnsUC.xaml
+    /// 
     /// </summary>
     public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow
     {
@@ -58,10 +58,10 @@ namespace desktop.Controls
 
         public bool? DialogResult
         {
-            set {
+            set
+            {
                 ChangeDialogResult(value);
-                }
-            
+            }
         }
 
         public event VoidBoolNullable ChangeDialogResult;

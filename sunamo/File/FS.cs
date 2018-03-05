@@ -9,6 +9,7 @@ using sunamo.Data;
 using sunamo.Values;
 using System.Runtime.CompilerServices;
 using sunamo.Helpers;
+using sunamo.Essential;
 
 namespace sunamo
 {
@@ -984,6 +985,7 @@ namespace sunamo
 
         /// <summary>
         /// Works with and without end backslash
+        /// Return with backslash
         /// </summary>
         /// <param name="rp"></param>
         /// <returns></returns>
@@ -1172,8 +1174,15 @@ namespace sunamo
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public static bool TryDeleteFile(string item)
         {
+            // TODO: To all code message logging as here
+
             try
             {
                 File.Delete(item);
@@ -1181,6 +1190,7 @@ namespace sunamo
             }
             catch (Exception ex)
             {
+                ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted: " + item);
                 return false;
             }
         }

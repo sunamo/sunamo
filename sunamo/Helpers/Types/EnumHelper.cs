@@ -39,5 +39,10 @@ namespace sunamo
 
             return vr;
         }
+
+        public static Dictionary<T, string> EnumToString<T>(Type enumType)
+        {
+            return Enum.GetValues(enumType).Cast<T>().Select(t => new { Key = t, Value = t.ToString().ToLower() }).ToDictionary(r => r.Key, r => r.Value);
+        }
     }
 }

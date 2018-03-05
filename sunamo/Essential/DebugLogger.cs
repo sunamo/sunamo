@@ -20,6 +20,11 @@ namespace sunamo
 
         }
 
+        public static void DebugWriteMessage(TypeOfMessage typeOfMessage, string text, params object[] args)
+        {
+            DebugWriteLine(typeOfMessage.ToString() + ": " + string.Format( text, args));
+        }
+
         private static void DebugWriteLine(string text)
         {
             Debug.WriteLine(text);

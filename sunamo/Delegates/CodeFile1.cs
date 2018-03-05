@@ -7,6 +7,7 @@ public delegate void VoidBool(bool b);
 public delegate void VoidBoolNullable(bool? b);
 public delegate String StringString(string s);
 public delegate void VoidString(string s);
+public delegate void VoidTypeOfMessageStringParamsObject(TypeOfMessage tom, string s, params object[] args);
 public delegate void VoidStringTU<T, U>(string s, T t, U u);
 public delegate void SetStatusDelegate(TypeOfMessage t, string message);
 
