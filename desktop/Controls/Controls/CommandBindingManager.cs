@@ -8,6 +8,4 @@ public class CommandBindingManager
         w.CommandBindings.Add(cb);
         return cb;
     }
-
-    
 }

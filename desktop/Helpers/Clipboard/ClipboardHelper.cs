@@ -75,10 +75,16 @@ public class ClipboardHelper
 
         StringCollection filestToCut = new StringCollection();
         filestToCut.AddRange(selected);
+
         DataObject data = new DataObject("Preferred DropEffect", dropEffect);
         data.SetFileDropList(filestToCut);
 
         Clipboard.Clear();
         Clipboard.SetDataObject(data, true);
+    }
+
+    public static void SetText(StringBuilder stringBuilder)
+    {
+        Clipboard.SetText(stringBuilder.ToString());
     }
 }

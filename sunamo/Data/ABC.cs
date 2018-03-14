@@ -6,7 +6,7 @@ public class ABC : List<AB>//, IEnumerable<AB>
 
     }
 
-    public ABC(object[] setsNameValue)
+    public ABC(params object[] setsNameValue)
     {
         for (int i = 0; i < setsNameValue.Length; i++)
         {

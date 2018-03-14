@@ -311,6 +311,7 @@ public class GeneratorMsSql
                 asponNeco = true;
             }
         }
+
         if (!asponNeco)
         {
             if (isNotWhere != null)

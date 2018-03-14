@@ -14,6 +14,6 @@ namespace sunamo.Helpers.Types
             this.selected = selected;
         }
 
-        public T Selected => (T)selected.Selected;
+        public T Selected => (T)selected.SelectedFile;
     }
 }

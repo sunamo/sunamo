@@ -5,14 +5,57 @@ namespace sunamo
 {
     public class KeyboardHelper
     {
+        /// <summary>
+        /// Keyboard.Modifiers has always only first pressed key, cannot combine
+        /// When I want handle keys without modifier, must use KeyWithNoneModifier
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="key"></param>
+        /// <param name="modifier"></param>
+        /// <returns></returns>
+        public static bool KeyWithModifier(Key key, ModifierKeys modifier)
+        {
+            ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
+            bool modifierPresent = modifierInt > 0;
+            bool result = Keyboard.IsKeyUp(key) && modifierPresent;
+            return result;
+        }
+
+        /// <summary>
+        /// Primary use method without KeyEventArgs param. When I try catch with this Alt+f3, for f3 returns System key.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="key"></param>
+        /// <param name="modifier"></param>
+        /// <returns></returns>
         public static bool KeyWithModifier(KeyEventArgs e, Key key, ModifierKeys modifier)
         {
-            bool result = key == e.Key && (Keyboard.Modifiers & modifier) > 0;
+            bool keyPressed = key == e.Key;
+            bool result = KeyWithModifier(keyPressed, modifier);
             if (result)
             {
 #if DEBUG
                 DebugLogger.Instance.TwoState(result, key, modifier);
 #endif
+            }
+            return result;
+        }
+
+        private static bool KeyWithModifier(bool keyPressed, ModifierKeys modifier)
+        {
+            ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
+            bool modifierPresent = modifierInt > 0;
+            bool result = keyPressed && modifierPresent;
+            
+            return result;
+        }
+
+        public static bool KeyWithNoneModifier(KeyEventArgs e, Key key)
+        {
+            bool result = false;
+            if (Keyboard.Modifiers == ModifierKeys.None)
+            {
+                result = key == e.Key;
             }
             return result;
         }

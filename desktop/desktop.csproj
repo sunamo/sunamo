@@ -68,74 +68,83 @@
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
-    <Compile Include="Controls\InputTwoColumnsUC.xaml.cs">
+    <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ResultButtons.xaml.cs">
+    <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ShowTextResult.xaml.cs">
+    <Compile Include="Controls\Result\ShowTextResult.xaml.cs">
       <DependentUpon>ShowTextResult.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ToggleSwitch\Borders\ClippingBorder.cs" />
+    <Compile Include="Controls\ToggleSwitch\Borders\InnerGlowBorder.cs" />
+    <Compile Include="Controls\ToggleSwitch\Borders\OuterGlowBorder.cs" />
+    <Compile Include="Controls\ToggleSwitch\DropShadowTextBlock.cs" />
+    <Compile Include="Controls\ToggleSwitch\HorizontalToggleSwitch.cs" />
+    <Compile Include="Controls\ToggleSwitch\ToggleSwitchBase.cs" />
+    <Compile Include="Controls\ToggleSwitch\Utils\ActualSizePropertyProxy.cs" />
+    <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
+    <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
-    <Compile Include="Controls\ColorPicker.xaml.cs">
+    <Compile Include="Controls\Input\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CommandBindingManager.cs" />
-    <Compile Include="Controls\CompareTwoIntegers.xaml.cs">
+    <Compile Include="Controls\Controls\CommandBindingManager.cs" />
+    <Compile Include="Controls\Text\CompareTwoIntegers.xaml.cs">
       <DependentUpon>CompareTwoIntegers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CyclingImageViewer.xaml.cs">
+    <Compile Include="Controls\Image\CyclingImageViewer.xaml.cs">
       <DependentUpon>CyclingImageViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DeleteDuplicitiesFilesCheckBox.xaml.cs">
+    <Compile Include="Controls\Collections\DeleteDuplicitiesFilesCheckBox.xaml.cs">
       <DependentUpon>DeleteDuplicitiesFilesCheckBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DeleteDuplicitiesFilesRadioButton.xaml.cs">
+    <Compile Include="Controls\Collections\DeleteDuplicitiesFilesRadioButton.xaml.cs">
       <DependentUpon>DeleteDuplicitiesFilesRadioButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DeleteDuplicitiesFilesWrapper.xaml.cs">
+    <Compile Include="Controls\Collections\DeleteDuplicitiesFilesWrapper.xaml.cs">
       <DependentUpon>DeleteDuplicitiesFilesWrapper.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DialogButtons.xaml.cs">
+    <Compile Include="Controls\Buttons\DialogButtons.xaml.cs">
       <DependentUpon>DialogButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FolderContentsTreeView.xaml.cs">
+    <Compile Include="Controls\Visualization\FolderContentsTreeView.xaml.cs">
       <DependentUpon>FolderContentsTreeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FrugalContainer.cs" />
-    <Compile Include="Controls\MultiLineTextBlock.xaml.cs">
+    <Compile Include="Controls\Panels\FrugalContainer.cs" />
+    <Compile Include="Controls\Text\MultiLineTextBlock.xaml.cs">
       <DependentUpon>MultiLineTextBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NumericUpDown.xaml.cs">
+    <Compile Include="Controls\Input\NumericUpDown.xaml.cs">
       <DependentUpon>NumericUpDown.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SearchingInLBWPF.cs" />
-    <Compile Include="Controls\SelectFile.xaml.cs">
+    <Compile Include="Controls\Controls\SearchingInLBWPF.cs" />
+    <Compile Include="Controls\Input\SelectFile.xaml.cs">
       <DependentUpon>SelectFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SelectFolder.xaml.cs">
+    <Compile Include="Controls\Input\SelectFolder.xaml.cs">
       <DependentUpon>SelectFolder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SelectFolderAdvanced.xaml.cs">
+    <Compile Include="Controls\Input\SelectFolderAdvanced.xaml.cs">
       <DependentUpon>SelectFolderAdvanced.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SelectImageFile.xaml.cs">
+    <Compile Include="Controls\ToolBar\SelectImageFile.xaml.cs">
       <DependentUpon>SelectImageFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SelectImageFileAndMakeSingleColorTransparent.xaml.cs">
+    <Compile Include="Controls\ToolBar\SelectImageFileAndMakeSingleColorTransparent.xaml.cs">
       <DependentUpon>SelectImageFileAndMakeSingleColorTransparent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SunamoVariableSizedWrapGrid.cs" />
-    <Compile Include="Controls\SunamoVariableSizedWrapGrid2.cs" />
-    <Compile Include="Controls\TextBoxOnlyNumbers.xaml.cs">
+    <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid.cs" />
+    <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid2.cs" />
+    <Compile Include="Controls\Text\TextBoxOnlyNumbers.xaml.cs">
       <DependentUpon>TextBoxOnlyNumbers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextPanel.cs" />
-    <Compile Include="Controls\ToolStripButton.cs" />
-    <Compile Include="Controls\TwoStatesToggleButton.cs" />
+    <Compile Include="Controls\Text\TextPanel.cs" />
+    <Compile Include="Controls\ToolBar\ToolStripButton.cs" />
+    <Compile Include="Controls\Controls\TwoStatesToggleButton.cs" />
     <Compile Include="Controls\Visualization\TwoWayTable.xaml.cs">
       <DependentUpon>TwoWayTable.xaml</DependentUpon>
     </Compile>
@@ -208,6 +217,8 @@
     <Compile Include="Storage\ApplicationDataContainerList.cs" />
     <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="TrialManager.cs" />
+    <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
+    <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
     <Compile Include="Windows\EnterValueForm.xaml.cs">
       <DependentUpon>EnterValueForm.xaml</DependentUpon>
@@ -240,79 +251,99 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\ColorPicker.xaml">
+    <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\CompareTwoIntegers.xaml">
+    <Page Include="Controls\Text\CompareTwoIntegers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CyclingImageViewer.xaml">
+    <Page Include="Controls\Image\CyclingImageViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\DeleteDuplicitiesFilesCheckBox.xaml">
+    <Page Include="Controls\Collections\DeleteDuplicitiesFilesCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\DeleteDuplicitiesFilesRadioButton.xaml">
+    <Page Include="Controls\Collections\DeleteDuplicitiesFilesRadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\DeleteDuplicitiesFilesWrapper.xaml">
+    <Page Include="Controls\Collections\DeleteDuplicitiesFilesWrapper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\DialogButtons.xaml">
+    <Page Include="Controls\Buttons\DialogButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FolderContentsTreeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\InputTwoColumnsUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MultiLineTextBlock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NumericUpDown.xaml">
+    <Page Include="Controls\ToggleSwitch\Assets\Brushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ResultButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SelectFile.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SelectFolder.xaml">
+    <Page Include="Controls\ToggleSwitch\Assets\Fonts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\SelectFolderAdvanced.xaml">
+    <Page Include="Controls\ToggleSwitch\Assets\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ToggleSwitch\Assets\ToggleSwitchStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ToggleSwitch\WPF\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Visualization\FolderContentsTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SelectImageFile.xaml">
+    <Page Include="Controls\Input\InputTwoColumnsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SelectImageFileAndMakeSingleColorTransparent.xaml">
+    <Page Include="Controls\Text\MultiLineTextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ShowTextResult.xaml">
+    <Page Include="Controls\Input\NumericUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Buttons\ResultButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\TextBoxOnlyNumbers.xaml">
+    <Page Include="Controls\Input\SelectFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectFolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\SelectFolderAdvanced.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToolBar\SelectImageFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToolBar\SelectImageFileAndMakeSingleColorTransparent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Result\ShowTextResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Text\TextBoxOnlyNumbers.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -335,6 +366,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ftp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Large.png" />
+    <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Small.png" />
+    <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.VisualStudio.bmp" />
+    <Content Include="Controls\ToggleSwitch\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

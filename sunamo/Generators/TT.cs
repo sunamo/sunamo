@@ -1,4 +1,6 @@
+using System;
 using System.Runtime.CompilerServices;
+using System.Text;
 /// <summary>
 /// Text Templates
 /// </summary>
@@ -14,5 +16,15 @@ public class TT
     public static string NameValue(string name, string value)
     {
         return name.TrimEnd(':') + ": " + value;
+    }
+
+    public static string NameValue(ABC winrar, string delimiter)
+    {
+        StringBuilder builder = new StringBuilder();
+        foreach (var item in winrar)
+        {
+            builder.Append(TT.NameValue(item.A, item.B.ToString()) + delimiter);
+        }
+        return builder.ToString();
     }
 }

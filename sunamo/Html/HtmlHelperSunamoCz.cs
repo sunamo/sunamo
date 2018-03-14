@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-
-public class HtmlHelperSunamoCz
+namespace sunamo.Html
+{
+    public class HtmlHelperSunamoCz
     {
         public static string ConvertTextToHtmlWithAnchors(string p)
         {
@@ -21,3 +22,4 @@ public class HtmlHelperSunamoCz
             return SH.Join(' ', d);
         }
     }
+}

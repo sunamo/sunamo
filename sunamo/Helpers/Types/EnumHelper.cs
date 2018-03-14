@@ -1,3 +1,4 @@
+using sunamo.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,18 @@ namespace sunamo
         public static Dictionary<T, string> EnumToString<T>(Type enumType)
         {
             return Enum.GetValues(enumType).Cast<T>().Select(t => new { Key = t, Value = t.ToString().ToLower() }).ToDictionary(r => r.Key, r => r.Value);
+        }
+
+        public static List<T> GetValues<T>() where T : struct
+        {
+            Type type = typeof(T);
+            var values = Enum.GetValues(type).Cast<T>().ToList();
+            T nope;
+            if(Enum.TryParse<T>(CodeElementsConstants.NopeValue, out nope))
+            {
+                values.Remove(nope);
+            }
+            return values;
         }
     }
 }

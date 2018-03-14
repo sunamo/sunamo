@@ -328,7 +328,9 @@ public static class SH
     /// <returns></returns>
     public static string TrimEnd(string name, string ext)
     {
-        if (name.EndsWith(ext))
+        
+
+        while (name.EndsWith(ext))
         {
             return name.Substring(0, name.Length - ext.Length);
         }
@@ -2078,16 +2080,20 @@ public static class SH
         return sb.ToString();
     }
 
-    public static string TrimStartAndEnd(string v, string s, string e)
+    public static string TrimStart(string v, string s)
     {
-        while (v.EndsWith(e))
-        {
-            v = v.Substring(0, v.Length - 1);
-        }
         while (v.StartsWith(s))
         {
             v = v.Substring(s.Length);
         }
+        return v;
+    }
+
+    public static string TrimStartAndEnd(string v, string s, string e)
+    {
+        v = TrimEnd(v, e);
+        v = TrimStart(v, s);
+        
         return v;
     }
 

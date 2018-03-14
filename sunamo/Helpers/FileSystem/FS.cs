@@ -16,6 +16,9 @@ namespace sunamo
     public class FS
     {
         static List<char> invalidPathChars = null;
+
+        
+
         static List<char> invalidFileNameChars = null;
         static List<char> invalidCharsForMapPath = null;
         static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
@@ -53,6 +56,11 @@ namespace sunamo
         }
 
         #region Create to avoid adding System.IO and using without ns colliding
+        /// <summary>
+        /// Without path
+        /// </summary>
+        /// <param name="jpgcka"></param>
+        /// <returns></returns>
         public static string[] GetFileNamesWoExtension(string[] jpgcka)
         {
             string[] dd = new string[jpgcka.Length];
@@ -193,6 +201,43 @@ namespace sunamo
                 }
             }
 
+        }
+
+        public static string GetFilesSize(List<string> winrarFiles)
+        {
+            long size = 0;
+            foreach (var item in winrarFiles)
+            {
+                size += FS.GetFileSize(item);
+            }
+            return GetSizeInAutoString( size);
+        }
+
+        private static string GetSizeInAutoString(double size)
+        {
+            ComputerSizeUnits unit = ComputerSizeUnits.B;
+            if (size < Consts.kB)
+            {
+                unit = ComputerSizeUnits.KB;
+                size /= Consts.kB;
+            }
+            if (size < Consts.kB)
+            {
+                unit = ComputerSizeUnits.MB;
+                size /= Consts.kB;
+            }
+            if (size < Consts.kB)
+            {
+                unit = ComputerSizeUnits.GB;
+                size /= Consts.kB;
+            }
+            if (size < Consts.kB)
+            {
+                unit = ComputerSizeUnits.TB;
+                size /= Consts.kB;
+            }
+
+            return GetSizeInAutoString(size, unit);
         }
 
         public static string GetUpFolderWhichContainsExtension(string path, string fileExt)
@@ -347,6 +392,11 @@ namespace sunamo
 
         private static long ConvertToSmallerComputerUnitSize(long value, ComputerSizeUnits b, ComputerSizeUnits to)
         {
+            return ConvertToSmallerComputerUnitSize(value, b, to);
+        }
+
+        private static double ConvertToSmallerComputerUnitSize(double value, ComputerSizeUnits b, ComputerSizeUnits to)
+        {
             if (to == ComputerSizeUnits.Auto)
             {
                 throw new Exception("Byl specifikován výstupní ComputerSizeUnit, nemůžu toto nastavení změnit");
@@ -373,6 +423,11 @@ namespace sunamo
 
         public static string GetSizeInAutoString(long value, ComputerSizeUnits b)
         {
+            return GetSizeInAutoString(value, b);
+        }
+
+        public static string GetSizeInAutoString(double value, ComputerSizeUnits b)
+        {
             if (b != ComputerSizeUnits.B)
             {
                 // Získám hodnotu v bytech
@@ -385,7 +440,7 @@ namespace sunamo
                 return value + " B";
             }
 
-            long previous = value;
+            double previous = value;
             value /= 1024;
 
             if (value < 1)
@@ -456,6 +511,16 @@ namespace sunamo
             }
 
             return vr;
+        }
+
+        /// <summary>
+        /// No recursive, all extension
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static List<string> GetFiles(string path)
+        {
+            return FS.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
         }
 
         /// <summary>
@@ -719,6 +784,18 @@ namespace sunamo
             for (int i = 0; i < vr.Length; i++)
             {
                 vr[i] = FS.GetExtension(cesta[i]).ToLower();
+            }
+            return vr;
+        }
+
+        public static string[] OnlyExtensionsToLowerWithPath(List<string> cesta)
+        {
+            string[] vr = new string[cesta.Count];
+            for (int i = 0; i < vr.Length; i++)
+            {
+                string path, fn, ext;
+                FS.GetPathAndFileName(cesta[i], out path, out fn, out ext);
+                vr[i] = path + fn + ext.ToLower();
             }
             return vr;
         }

@@ -47,7 +47,20 @@ public static class CA
         return existsInBoth;
     }
 
-   public static bool HasIndex(int dex, Array col)
+    public static int CountOfEnding(List<string> winrarFiles, string v)
+    {
+        int count = 0;
+        for (int i = 0; i < winrarFiles.Count; i++)
+        {
+            if (winrarFiles[i].EndsWith(v))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
     }

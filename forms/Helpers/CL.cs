@@ -110,9 +110,10 @@ public static class CL //:  IZpravaUzivatelovi
         string z = "";
         if (pridat)
         {
-            text = "Zadejte " + text + ". Pro na�ten� ze schr�nky stiskn�te esc. ";
+            text = "Zadejte " + text + ". Pro nacteni ze schranky stisknete esc. ";
         }
-        Console.WriteLine();Console.WriteLine(text + ": ");
+        Console.WriteLine();
+        Console.WriteLine(text + ": ");
         StringBuilder sb = new StringBuilder();
         
         while (true)
