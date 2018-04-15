@@ -16,7 +16,7 @@ namespace sunamo.Helpers
         /// <summary>
         /// With dot
         /// </summary>
-        public static Dictionary<string, TypeOfExtension> allExtensions = new Dictionary<string, TypeOfExtension>();
+        //public static Dictionary<string, TypeOfExtension> allExtensions = new Dictionary<string, TypeOfExtension>();
         public static Dictionary<TypeOfExtension, List<string>> extensionsByTypeWithoutDot = new Dictionary<TypeOfExtension, List<string>>();
         public static Dictionary<string, TypeOfExtension> allExtensionsWithoutDot = new Dictionary<string, TypeOfExtension>();
 
@@ -32,7 +32,7 @@ namespace sunamo.Helpers
                     string extWithoutDot = extWithDot.Substring(1);
                     var v1 = item.CustomAttributes.First();
                     TypeOfExtension toe = (TypeOfExtension)v1.ConstructorArguments.First().Value;
-                    allExtensions.Add(extWithDot, toe);
+                    //allExtensions.Add(extWithDot, toe);
                     allExtensionsWithoutDot.Add(extWithoutDot, toe);
 
                     if (!extensionsByType.ContainsKey(toe))
@@ -47,6 +47,8 @@ namespace sunamo.Helpers
                     }
                     else
                     {
+
+
                         extensionsByType[toe].Add(extWithDot);
                         extensionsByTypeWithoutDot[toe].Add(extWithoutDot);
                     }
@@ -64,7 +66,7 @@ namespace sunamo.Helpers
         {
             if (p != "")
             {
-                p = p.Substring(1);
+                
                 if (allExtensionsWithoutDot.ContainsKey(p))
                 {
                     return allExtensionsWithoutDot[p];
@@ -85,9 +87,9 @@ namespace sunamo.Helpers
             if (p != "")
             {
                 p = p.Substring(1);
-                if (allExtensions.ContainsKey(p))
+                if (allExtensionsWithoutDot.ContainsKey(p))
                 {
-                    return allExtensions[p];
+                    return allExtensionsWithoutDot[p];
                 }
             }
 

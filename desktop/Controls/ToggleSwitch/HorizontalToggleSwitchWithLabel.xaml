@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="desktop.Controls.ToggleSwitch.HorizontalToggleSwitchWithLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:desktopControlsToggleSwitch="clr-namespace:desktop.Controls.ToggleSwitch"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Monitor clipboard: " VerticalAlignment="Center" Padding="10,0,10,0"></TextBlock>
+        <desktopControlsToggleSwitch:HorizontalToggleSwitch x:Name="monitorClipboard" x:FieldModifier="public" Grid.Column="1" IsChecked="False" ></desktopControlsToggleSwitch:HorizontalToggleSwitch>
+        
+    </Grid>
+</UserControl>

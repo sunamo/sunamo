@@ -1,18 +1,42 @@
 using sunamo;
 using sunamo.Essential;
+using sunamo.Values;
 using System;
 using System.IO;
 using System.Web;
-using System.Web.Hosting;
+
 
 /// <summary>
 /// 
 /// </summary>
 public class AppData
 {
+    /// <summary>
+    /// After startup will setted up in AppData/Roaming
+    /// Then from fileFolderWithAppsFiles App can load alternative path - 
+    /// For all apps will be valid either AppData/Roaming or alternative path
+    /// </summary>
+    static string rootFolder = null;
+
     static AppData()
     {
         //CreateAppFoldersIfDontExists();
+    }
+
+    static string fileFolderWithAppsFiles = "";
+
+    //public static void ReloadFilePathsOfSettings()
+    //{
+    //    fileFolderWithAppsFiles = 
+    //}
+
+    public static string GetFolderWithAppsFiles()
+    {
+        //Common(true)
+        string slozka = Path.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
+        fileFolderWithAppsFiles = Path.Combine(slozka, "folderWithAppsFiles.txt");
+        sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
+        return fileFolderWithAppsFiles;
     }
 
     public static void CreateAppFoldersIfDontExists()
@@ -21,7 +45,14 @@ public class AppData
         {
             string r = AppData.GetFolderWithAppsFiles();
 
-            RootFolder = Path.Combine(TF.ReadFile(r),ThisApp.Name);
+            rootFolder = TF.ReadFile(r);
+
+            if (string.IsNullOrWhiteSpace(rootFolder))
+            {
+                rootFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
+            }
+
+            RootFolder = Path.Combine(rootFolder,ThisApp.Name);
             sunamo.FS.CreateDirectory(RootFolder);
             foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
             {
@@ -177,16 +208,9 @@ public class AppData
             return soubor;
     }
 
-    public static string GetFolderWithAppsFiles()
-    {
-        //Common(true)
-        string slozka = Path.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
-        string soubor = Path.Combine(slozka, "folderWithAppsFiles.txt");
-        sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(soubor);
-        return soubor;
-    }
+    
 
-     static string rootFolder = null;
+    
 
     /// <summary>
     /// Pokud rootFolder bude SE nebo null, G false, jinak vrátí zda rootFolder existuej ve FS
@@ -231,9 +255,9 @@ public class AppData
 
     public static string RootFolderCommon(bool inFolderCommon)
     {
-            
-            string dokumenty2 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string sunamo2 = Path.Combine(dokumenty2, "sunamo");
+
+        //string appDataFolder = SpecialFO
+            string sunamo2 = Path.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
             if (inFolderCommon)
             {
                 return Path.Combine(sunamo2, "Common");

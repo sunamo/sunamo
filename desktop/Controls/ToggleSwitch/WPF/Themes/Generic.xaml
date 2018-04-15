@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Borders="clr-namespace:ToggleSwitch.Borders"
-                    xmlns:ToggleSwitch="clr-namespace:ToggleSwitch"
-                    xmlns:Utils="clr-namespace:ToggleSwitch.Utils">
+                    xmlns:Borders="clr-namespace:desktop.Controls.ToggleSwitch.Borders"
+                    xmlns:ToggleSwitch="clr-namespace:desktop.Controls.ToggleSwitch"
+                    xmlns:Utils="clr-namespace:desktop.Controls.ToggleSwitch.Utils">
 
     <!--  ClippingBorder style  -->
     <Style TargetType="Borders:ClippingBorder">

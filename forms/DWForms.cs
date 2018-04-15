@@ -1,4 +1,5 @@
 
+using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -37,7 +38,7 @@ namespace sunamo
         public static string SelectPathToSaveFileTo(string initialDirectory, string filter, bool checkFileExists, string nameWithExt)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "sunamo")));
+            sfd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             sfd.SupportMultiDottedExtensions = true;
             sfd.InitialDirectory = initialDirectory;
             sfd.CheckPathExists = true;
@@ -114,14 +115,12 @@ namespace sunamo
             // Here is available set this only way
             fbd.RootFolder = rootFolder;
             fbd.ShowNewFolderButton = true;
-#if DEBUG
-            return "D:\\Documents";
-#else
+
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 return fbd.SelectedPath;
             }
-#endif
+
             return null;
         }
 #endregion
@@ -241,7 +240,7 @@ namespace sunamo
         private static string[] SelectOfFiles(string filter, string initialDirectory, bool multiselect)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "sunamo")));
+            ofd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             ofd.AddExtension = false;
             ofd.InitialDirectory = initialDirectory;
             //ofd.AutoUpgradeEnabled = true;

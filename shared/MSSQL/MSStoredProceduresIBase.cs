@@ -57,6 +57,12 @@ public class MSStoredProceduresIBase : SqlServerHelper
             }
         }
     }
+
+    public int SelectID(string tabulka, string nazevSloupce, object hodnotaSloupce)
+    {
+        return SelectID(false, tabulka, nazevSloupce, hodnotaSloupce);
+    }
+
     SqlConnection _conn = null;
     public SqlConnection conn
     {

@@ -1,3 +1,4 @@
+using sunamo.Helpers.DT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,11 @@ using System.Web;
     /// <returns></returns>
     public static long DateTimeToSecondsUnixTime(DateTime t, bool addDateTimeMinVal)
     {
-        long vr = DTHelper.SecondsInYear(t.Year);
-        vr += DTHelper.SecondsInMonth(t);
-        vr += DTHelper.secondsInDay * t.Day;
-        vr += t.Hour * DTHelper.secondsInHour;
-        vr += t.Minute * DTHelper.secondsInMinute;
+        long vr = DTHelperGeneral.SecondsInYear(t.Year);
+        vr += DTHelperGeneral.SecondsInMonth(t);
+        vr += DTConstants.secondsInDay * t.Day;
+        vr += t.Hour * DTConstants.secondsInHour;
+        vr += t.Minute * DTConstants.secondsInMinute;
         vr += t.Second;
         //vr *= TimeSpan.TicksPerSecond;
         if (addDateTimeMinVal)

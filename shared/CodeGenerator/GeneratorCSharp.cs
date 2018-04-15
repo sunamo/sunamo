@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Collections;
 using sunamo.CodeGenerator;
+using sunamo.Constants;
 
 public class GeneratorCSharp : GeneratorCodeAbstract
 {
@@ -385,15 +386,16 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         this.AppendLine(pocetTabu, "[" + name + zav + "]");
     }
 
-    public void DictionaryStringString(int pocetTabu, string v, Dictionary<string, string> nameCommentEnums)
+    public void List(int pocetTabu, string genericType, string v, List<string> list)
     {
-        string cn = "Dictionary<string, string>";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, v, true);
-        foreach (var item in nameCommentEnums)
-        {
-            this.AppendLine(pocetTabu, v + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
-        }
+        string cn = "List<"+genericType+">";
+        NewVariable(pocetTabu, AccessModifiers.Private, cn, v, false);
+        list = CA.WrapWith(list, AllStrings.qm);
+        AppendLine(pocetTabu, v + " = new List<" + genericType + ">(" + SH.Join(list, AllChars.comma));
+        
     }
+
+    
 
     public void This(int pocetTab, string item)
     {
@@ -401,15 +403,42 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         Append(pocetTab, "this." + item);
     }
 
-    public void DictionaryNumberNumber<T,U>(int pocetTabu, string v, Dictionary<T, U> nameCommentEnums)
+    #region Dictionary
+    public void DictionaryNumberNumber<T, U>(int pocetTabu, string nameDictionary, Dictionary<T, U> nameCommentEnums)
     {
-        string cn = "Dictionary<"+typeof(T).FullName+", "+typeof(U).FullName+">";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, v, true);
+        string cn = "Dictionary<" + typeof(T).FullName + ", " + typeof(U).FullName + ">";
+        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
         foreach (var item in nameCommentEnums)
         {
-            this.AppendLine(pocetTabu, v + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
+            this.AppendLine(pocetTabu, nameDictionary + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
         }
     }
+
+    public void DictionaryStringString(int pocetTabu, string nameDictionary, Dictionary<string, string> nameCommentEnums)
+    {
+        string cn = "Dictionary<string, string>";
+        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
+        foreach (var item in nameCommentEnums)
+        {
+            this.AppendLine(pocetTabu, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
+        }
+    }
+
+    public void DictionaryStringObject<Value>(int pocetTabu, string nameDictionary, Dictionary<string, Value> dict)
+    {
+        string valueType = null;
+        if (dict.Count > 0)
+        {
+            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
+        }
+        string cn = "Dictionary<string, "+valueType+">";
+        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
+        foreach (var item in dict)
+        {
+            this.AppendLine(pocetTabu, nameDictionary + ".Add(\"" + item.Key + "\", " + item.Value + ");");
+        }
+    }
+    #endregion
 
     private void NewVariable(int pocetTabu, AccessModifiers _public, string cn, string name, bool createInstance)
     {

@@ -6,6 +6,8 @@ namespace sunamo
     public class KeyboardHelper
     {
         /// <summary>
+        /// USE ONLY FOR ALT+F3 AND SO. 
+        /// When I check for Alt+f3 and 
         /// Keyboard.Modifiers has always only first pressed key, cannot combine
         /// When I want handle keys without modifier, must use KeyWithNoneModifier
         /// </summary>
@@ -17,11 +19,13 @@ namespace sunamo
         {
             ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
             bool modifierPresent = modifierInt > 0;
+
             bool result = Keyboard.IsKeyUp(key) && modifierPresent;
             return result;
         }
 
         /// <summary>
+        /// Working also with more modifiers specified
         /// Primary use method without KeyEventArgs param. When I try catch with this Alt+f3, for f3 returns System key.
         /// </summary>
         /// <param name="e"></param>
@@ -31,7 +35,10 @@ namespace sunamo
         public static bool KeyWithModifier(KeyEventArgs e, Key key, ModifierKeys modifier)
         {
             bool keyPressed = key == e.Key;
-            bool result = KeyWithModifier(keyPressed, modifier);
+            // Working also with more modifiers specified
+            bool modifierPressed = modifier == Keyboard.Modifiers;
+            bool result = keyPressed && modifierPressed;
+
             if (result)
             {
 #if DEBUG
@@ -41,6 +48,13 @@ namespace sunamo
             return result;
         }
 
+        /// <summary>
+        /// If was pressed ctrl+shift and want only ctrl, return also true!! Must be ==
+        /// If was pressed A2 and A1, return true. Otherwise false
+        /// </summary>
+        /// <param name="keyPressed"></param>
+        /// <param name="modifier"></param>
+        /// <returns></returns>
         private static bool KeyWithModifier(bool keyPressed, ModifierKeys modifier)
         {
             ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
@@ -108,5 +122,11 @@ namespace sunamo
                     return -1;
             }
         }
+
+        public static string DownKey(KeyEventArgs e)
+        {
+            string d = Keyboard.Modifiers.ToString() + ", " + e.Key.ToString();
+            return d;
+    }
     }
 }

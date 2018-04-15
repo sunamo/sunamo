@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 
+public interface ITableRow
+{
+    int InsertToTable();
+}
 
     /// <summary>
     /// Generick� I je typ kter� vrac� metoda InsertToTable
     /// MYSL�M �E TE� U� TU JE V�E POT�EBN�, PROTO TU ��DN� JIN� V�CI JAKO NAP��KLAD TA POSLEDN� ZAKOMENTOVAN� METODA NEP�ID�VEJ
     /// ZAPRV� SI VA� SV�HO �ASU A ZA DRUH� TO BUDE V�T�INOU DUPLIKACE
     /// </summary>
-    public interface ITableRow<I>
+public interface ITableRow<I>
     {
         /// <summary>
         /// Bude� muset kontrolovat s�m na UNIQUE, PRIMARY KEY atd.

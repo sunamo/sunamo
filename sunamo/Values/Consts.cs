@@ -8,6 +8,25 @@ namespace sunamo.Values
 {
     public partial class Consts
     {
+        public const string @sunamo = "sunamo";
+
+        public const string UncLongPath = @"\\?\";
+
+        public const string HttpLocalhostSlash = "http://localhost/";
+        public const string HttpSunamoCzSlash = "http://www.sunamo.cz/";
+        public readonly static string localhost = "localhost";
+
+        public static string HttpWwwCzSlash = "http://www.sunamo.cz/";
+        public static string HttpCzSlash = "http://sunamo.cz/";
+        public static string HttpWwwCz = "http://www.sunamo.cz";
+
+        public static string Cz = "http://sunamo.cz";
+        public static string WwwCz = "http://www.sunamo.cz";
+
+        public static string CzSlash = "http://sunamo.cz/";
+        public static string DotCzSlash = ".sunamo.cz/";
+        public static string DotCz = ".sunamo.cz";
+
         public static readonly Type tString = typeof(string);
         public static readonly Type tInt = typeof(int);
         public static readonly Type tDateTime = typeof(DateTime);

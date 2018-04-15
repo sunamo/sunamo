@@ -10,14 +10,15 @@ using sunamo.Values;
 using System.Runtime.CompilerServices;
 using sunamo.Helpers;
 using sunamo.Essential;
+using sunamo.Constants;
 
 namespace sunamo
 {
     public class FS
     {
         static List<char> invalidPathChars = null;
+        static Type type = typeof(FS);
 
-        
 
         static List<char> invalidFileNameChars = null;
         static List<char> invalidCharsForMapPath = null;
@@ -40,6 +41,17 @@ namespace sunamo
             }
         }
 
+        /// <summary>
+        /// Create folder hiearchy and write
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="content"></param>
+        public static void WriteAllText(string path, string content)
+        {
+            FS.CreateUpfoldersPsysicallyUnlessThere(path);
+            File.WriteAllText(path, content);
+        }
+
         public static void CopyStream(Stream input, Stream output)
         {
             byte[] buffer = new byte[8 * 1024];
@@ -53,6 +65,26 @@ namespace sunamo
         internal static IEnumerable<string> GetFiles(string folderPath, bool v)
         {
             return FS.GetFiles(folderPath, "*.*", v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+        }
+
+        public static List<string> GetFolders(string folder)
+        {
+            return new List<string>(Directory.GetDirectories(folder));
+        }
+
+        public static List<string> GetFolders(string v, string startingWith)
+        {
+            var folders = GetFolders(v);
+            folders = CA.TrimEnd(folders, '\\');
+            for (int i = folders.Count - 1; i >= 0; i--)
+            {
+                if (!Path.GetFileName(folders[i]).Contains(startingWith))
+                {
+                    folders.RemoveAt(i);
+                }
+            }
+
+            return folders;
         }
 
         #region Create to avoid adding System.IO and using without ns colliding
@@ -72,6 +104,20 @@ namespace sunamo
             return dd;
         }
 
+        public static string ShrinkLongPath(string actualFilePath)
+        {
+            // .NET 4.7.1
+            // Originally - 265 chars, 254 also too long: d:\Documents\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\Facebook.cs
+            // 4+265 - OK: @"\\?\D:\_NewlyRecovered\Visual Studio 2020\Projects\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\Facebook.cs"
+            // 216 - OK: d:\Recovered data 03-23 12_11_44012345678901234567890123456\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\
+            // for many API is different limits: https://stackoverflow.com/questions/265769/maximum-filename-length-in-ntfs-windows-xp-and-windows-vista
+            // 237+11 - bad 
+
+
+
+            return Consts.UncLongPath + actualFilePath;
+        }
+
         /// <summary>
         /// ALL EXT. HAVE TO BE ALWAYS LOWER
         /// Return in lowercase
@@ -82,14 +128,12 @@ namespace sunamo
         {
             string result = "";
             int lastDot = v.LastIndexOf('.');
-            if (lastDot < v.Length)
+            if (lastDot == -1)
             {
-                if (lastDot == -1)
-                {
-                    result = "";
-                }
-                result = v.Substring(lastDot).ToLower();
+                return string.Empty;
             }
+            result = v.Substring(lastDot).ToLower();
+
             return result;
         }
 
@@ -115,8 +159,54 @@ namespace sunamo
         public static void CreateDirectory(string v)
         {
             Directory.CreateDirectory(v);
-        } 
+        }
+
+        public static void CreateDirectory(string v, DirectoryCreateCollisionOption whenExists, SerieStyle serieStyle)
+        {
+            if (Directory.Exists(v))
+            {
+                bool hasSerie;
+                string nameWithoutSerie = FS.GetNameWithoutSeries(v, false, out hasSerie, serieStyle);
+                if (hasSerie)
+                {
+
+                }
+                if (whenExists == DirectoryCreateCollisionOption.AddSerie)
+                {
+                    int serie = 1;
+                    while (true)
+                    {
+                        string newFn = nameWithoutSerie + " (" + serie + ")";
+                        if (!Directory.Exists(newFn))
+                        {
+
+                            nameWithoutSerie = newFn;
+                            break;
+                        }
+                        serie++;
+                    }
+                }
+                else if (whenExists == DirectoryCreateCollisionOption.Delete)
+                {
+
+                }
+                else if (whenExists == DirectoryCreateCollisionOption.Overwrite)
+                {
+
+                }
+                else
+                {
+                    ThrowExceptions.NotImplementedCase(type, "CreateDirectory");
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(v);
+            }
+        }
         #endregion
+
+
 
         public static string CreateNewFolderPathWithEndingNextTo(string folder, string ending)
         {
@@ -124,6 +214,53 @@ namespace sunamo
             string folderWithCaretFiles = pathToFolder + Path.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
 
             return folderWithCaretFiles;
+        }
+
+        public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
+        {
+            int resultSerie = 1;
+            string[] folders = Directory.GetDirectories(repairedBlogPostsFolder);
+
+            bool deleted = true;
+            // 0 or 1
+            if (folders.Length < 2)
+            {
+                try
+                {
+                    Directory.Delete(repairedBlogPostsFolder, true);
+                }
+                catch (Exception)
+                {
+                    deleted = false;
+                }
+            }
+
+            string withEndFlash = FS.WithEndSlash(repairedBlogPostsFolder);
+
+            if (!deleted)
+            {
+
+                FS.CreateDirectory(withEndFlash + "1\\");
+            }
+            else
+            {
+                TextOutputGenerator generator = new TextOutputGenerator();
+                generator.sb.Append(withEndFlash);
+                generator.sb.CanUndo = true;
+                for (; resultSerie < int.MaxValue; resultSerie++)
+                {
+                    generator.sb.Append(resultSerie);
+                    string newDirectory = generator.ToString();
+                    if (!Directory.Exists(newDirectory))
+                    {
+                        Directory.CreateDirectory(newDirectory);
+                        break;
+                    }
+                    generator.Undo();
+                }
+            }
+
+            return resultSerie;
         }
 
         static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
@@ -210,7 +347,7 @@ namespace sunamo
             {
                 size += FS.GetFileSize(item);
             }
-            return GetSizeInAutoString( size);
+            return GetSizeInAutoString(size);
         }
 
         private static string GetSizeInAutoString(double size)
@@ -642,6 +779,37 @@ namespace sunamo
             Directory.Delete(p, false);
         }
 
+        public static void DeleteFilesWithSameContent(List<string> files)
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>(files.Count);
+            foreach (var item in files)
+            {
+                dictionary.Add(item, TF.ReadFile(item));
+
+            }
+
+            Dictionary<string, List<string>> sameContent = DictionaryHelper.GroupByValues<string, string>(dictionary);
+
+            foreach (var item in sameContent)
+            {
+                if (item.Value.Count > 1)
+                {
+                    item.Value.RemoveAt(0);
+                    item.Value.ForEach(d => File.Delete(d));
+                }
+            }
+
+        }
+
+        public static string MakeUncLongPath(ref string path)
+        {
+            if (!path.StartsWith(Consts.UncLongPath))
+            {
+                path = Consts.UncLongPath + path;
+            }
+            return path;
+        }
+
         /// <summary>
         /// A2 is path of target file
         /// </summary>
@@ -650,6 +818,8 @@ namespace sunamo
         /// <param name="co"></param>
         public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
         {
+            item = Consts.UncLongPath + item;
+            MakeUncLongPath(ref fileTo);
             sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
             if (File.Exists(fileTo))
             {
@@ -766,7 +936,7 @@ namespace sunamo
         /// <param name="mask"></param>
         /// <param name="searchOption"></param>
         /// <returns></returns>
-        public static Dictionary<string, List< string>> GetDictionaryByExtension(string folder, string mask, SearchOption searchOption)
+        public static Dictionary<string, List<string>> GetDictionaryByExtension(string folder, string mask, SearchOption searchOption)
         {
             Dictionary<string, List<string>> extDict = new Dictionary<string, List<string>>();
             foreach (var item in Directory.GetFiles(folder, mask, searchOption))
@@ -936,7 +1106,7 @@ namespace sunamo
             return filter;
         }
 
-        
+
 
         /// <summary>
         /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
@@ -955,8 +1125,21 @@ namespace sunamo
         /// </summary>
         public static string GetNameWithoutSeries(string p, bool path)
         {
+            int serie;
             bool hasSerie = false;
-            return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets);
+            return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets, out serie);
+        }
+
+        //public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
+        //{
+        //    int serie;
+        //    return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
+        //}
+
+        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
+        {
+            int serie;
+            return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
         }
 
         /// <summary>
@@ -971,67 +1154,157 @@ namespace sunamo
         /// <param name="path"></param>
         /// <param name="hasSerie"></param>
         /// <returns></returns>
-        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
+        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle, out int serie)
         {
+            serie = -1;
             hasSerie = false;
             string dd = sunamo.FS.WithEndSlash(FS.GetDirectoryName(p));
+            StringBuilder sbExt = new StringBuilder();
             string ext = FS.GetExtension(p);
-            // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
-            if (AllExtensionsHelper.FindTypeWithDot(ext) != TypeOfExtension.other)
-            {
-                string g = p;
-                
-                // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
-                int pocetSerii = 0;
-                if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
-                {
-                    while (true)
-                    {
-                        g = g.Trim();
+            p = SH.TrimEnd(p, ext);
+            sbExt.Append(ext);
+            int pocetSerii = 0;
 
-                        if (g[g.Length - 1] == ')')
+            while (true)
+            {
+                ext = FS.GetExtension(p);
+                if (ext == string.Empty)
+                {
+                    break;
+                }
+
+                if (p.Contains(AllStrings.us))
+                {
+                    RemoveSerieUnderscore(ref serie, ref p, ref pocetSerii);
+                }
+
+                ext = FS.GetExtension(p);
+                if (ext == string.Empty)
+                {
+                    break;
+                }
+
+                sbExt.Insert(0, ext);
+                p = SH.TrimEnd(p, ext);
+                // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
+                if (AllExtensionsHelper.FindTypeWithDot(ext) == TypeOfExtension.other)
+                {
+                    return "";
+                }
+            }
+            ext = sbExt.ToString();
+
+            string g = p;
+
+            if (dd.Length != 0)
+            {
+                g = g.Substring(dd.Length);
+            }
+
+            // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
+            
+            if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
+            {
+                while (true)
+                {
+                    g = g.Trim();
+                    int lb = g.LastIndexOf(AllChars.lb);
+                    int rb = g.LastIndexOf(AllChars.rb);
+
+                    if (lb != -1 && rb != -1)
+                    {
+                        string between = SH.GetTextBetweenTwoChars(g, lb, rb);
+                        if (SH.IsNumber(between))
                         {
-                            if (g[g.Length - 3] == '(')
-                            {
-                                pocetSerii++;
-                                g = g.Substring(0, g.Length - 3);
-                            }
-                            else
-                            {
-                                break;
-                            }
+                            serie = int.Parse(between);
+                            pocetSerii++;
+                            // s - 4, on end (1) - 
+                            g = g.Substring(0, lb);
                         }
                         else
                         {
                             break;
                         }
                     }
-                }
-                 if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
-                {
-                    if (g[g.Length - 3] == '-')
+                    else
                     {
-                        g = g.Substring(0, g.Length - 3);
+                        break;
                     }
-                    else if (g[g.Length - 2] == '-')
-                    {
-                        g = g.Substring(0, g.Length - 2);
-                    }
-                    pocetSerii++;
+
 
                 }
-                if (pocetSerii != 0)
-                {
-                    hasSerie = true;
-                }
-                g = g.Trim();
-                if (path)
-                {
-                    return dd + g + ext;
-                }
-                return g + ext;
             }
+
+            if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
+            {
+                int dex = g.IndexOf(AllChars.dash);
+
+                if (g[g.Length - 3] == '-')
+                {
+                    serie = int.Parse(g.Substring(g.Length - 2));
+                    g = g.Substring(0, g.Length - 3);
+                }
+                else if (g[g.Length - 2] == '-')
+                {
+                    serie = int.Parse(g.Substring(g.Length - 1));
+                    g = g.Substring(0, g.Length - 2);
+
+                }
+                // To true hasSerie
+                pocetSerii++;
+
+            }
+
+            if (serieStyle == SerieStyle.Underscore || serieStyle == SerieStyle.All)
+            {
+                RemoveSerieUnderscore(ref serie, ref g, ref pocetSerii);
+
+            }
+
+            if (pocetSerii != 0)
+            {
+                hasSerie = true;
+            }
+            g = g.Trim();
+            if (path)
+            {
+                return dd + g + ext;
+            }
+            return g + ext;
+
             return "";
+        }
+
+        public static string RemoveSerieUnderscore(string d)
+        {
+            int serie = 0;
+            int pocetSerii = 0;
+            RemoveSerieUnderscore(ref serie, ref d, ref pocetSerii);
+            return d;
+        }
+
+        private static void RemoveSerieUnderscore(ref int serie, ref string g, ref int pocetSerii)
+        {
+            while (true)
+            {
+                int dex = g.LastIndexOf('_');
+                if (dex != -1)
+                {
+                    string serieS = g.Substring(dex + 1);
+                    g = g.Substring(0, dex);
+
+                    if (int.TryParse(serieS, out serie))
+                    {
+
+                        pocetSerii++;
+                    }
+
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -1107,7 +1380,7 @@ namespace sunamo
                 {
                     dict.Add(ext, files);
                 }
-                
+
             }
             return dict;
         }
@@ -1337,7 +1610,7 @@ namespace sunamo
             var files = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories);
             foreach (var item in files)
             {
-                string ext = FS.GetNormalizedExtension( item);
+                string ext = FS.GetNormalizedExtension(item);
                 if (extension.Contains(ext))
                 {
                     foundedFiles.Add(ext);
@@ -1372,6 +1645,13 @@ namespace sunamo
             ext = FS.GetExtension(file);
         }
 
+        /// <summary>
+        /// Get number higher by one from the number filenames with highest value (as 3.txt)
+        /// </summary>
+        /// <param name="slozka"></param>
+        /// <param name="fn"></param>
+        /// <param name="ext"></param>
+        /// <returns></returns>
         public static string GetFileSeries(string slozka, string fn, string ext)
         {
             int dalsi = 0;
@@ -1379,7 +1659,9 @@ namespace sunamo
             foreach (string item in soubory)
             {
                 int p;
-                if (int.TryParse(System.IO.Path.GetFileNameWithoutExtension(SH.ReplaceOnce(SH.ReplaceOnce(item, fn, ""), ext, "")), out p))
+                string withoutFn = SH.ReplaceOnce(item, fn, "");
+                string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
+                if (int.TryParse(System.IO.Path.GetFileNameWithoutExtension(withoutFnAndExt), out p))
                 {
                     if (p > dalsi)
                     {
@@ -1510,12 +1792,18 @@ namespace sunamo
                 slozkyKVytvoreni.Reverse();
                 foreach (string item in slozkyKVytvoreni)
                 {
-                    if (!Directory.Exists(item))
+                    string folder = Consts.UncLongPath + item;
+                    if (!Directory.Exists(folder))
                     {
-                        Directory.CreateDirectory(item);
+                        Directory.CreateDirectory(folder);
                     }
                 }
             }
+        }
+
+        public static string[] OnlyNames(string[] files2)
+        {
+            return OnlyNames(CA.ToListString(files2)).ToArray();
         }
 
         /// <summary>
@@ -1524,15 +1812,17 @@ namespace sunamo
         /// </summary>
         /// <param name="files"></param>
         /// <returns></returns>
-        public static string[] OnlyNames(string[] files2)
+        public static List<string> OnlyNames(List<string> files2)
         {
-            string[] files = new string[files2.Length];
-            for (int i = 0; i < files2.Length; i++)
+            List<string> files = new List<string>(files2.Count);
+            for (int i = 0; i < files2.Count; i++)
             {
-                files[i] = Path.GetFileName(files2[i]);
+                files.Add(Path.GetFileName(files2[i]));
             }
             return files;
         }
+
+
 
         /// <summary>
         /// 

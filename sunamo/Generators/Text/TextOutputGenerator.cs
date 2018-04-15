@@ -1,3 +1,4 @@
+using sunamo.Generators.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,8 @@ using System.Text;
 public class TextOutputGenerator
 {
     readonly static string znakNadpisu = "*";
-    public StringBuilder sb = new StringBuilder();
+    public TextBuilder sb = new TextBuilder();
+    
 
     #region Main
 
@@ -71,8 +73,6 @@ public class TextOutputGenerator
         sb.AppendLine();
     }
 
-   
-
     public void List(IEnumerable<string> files1)
     {
         if (files1.Count() == 0)
@@ -98,5 +98,10 @@ public class TextOutputGenerator
     public void SingleCharLine(char paddingChar, int v)
     {
         sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
+    }
+
+    internal void Undo()
+    {
+        
     }
 }

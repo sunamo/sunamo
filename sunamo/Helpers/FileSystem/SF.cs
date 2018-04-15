@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Text;
+using sunamo.Data;
 /// <summary>
 /// Is not allowed write empty elements - split of strings is running with  StringSplitOptions.RemoveEmptyEntries
 /// Tato třída je zde pouze kvůli GetTablesInDatabaseExportHandler.ashx.cs a General/ImportTables.aspx.cs
@@ -10,8 +11,55 @@ using System.Text;
 /// </summary>
 public static class SF
 {
-    public static readonly char separatorChar = '|';
-    public const string separatorString = "|";
+     static SerializeContentArgs contentArgs = new SerializeContentArgs();
+
+    /// <summary>
+    /// Must be property - I can forget change value on three occurences. 
+    /// </summary>
+    public static char separatorChar
+    {
+        get
+        {
+            return contentArgs.separatorChar;
+        }
+    }
+    
+
+    public static string separatorString
+    {
+        get { return contentArgs.separatorString; }
+        set { contentArgs.separatorString = value; }
+    }
+
+    public static int keyCodeSeparator
+    {
+        get
+        {
+            return (int)contentArgs.separatorChar;
+        }
+    }
+
+    static SF()
+    {
+        contentArgs.separatorString = "|";
+    }
+
+    public static void ReadFileOfSettingsOther(string fileNameOrPath)
+    {
+        
+        var lines = SH.GetLines( AppData.ReadFileOfSettingsOther(fileNameOrPath));
+        if (lines.Count > 1)
+        {
+            int delimiterInt;
+            if (int.TryParse(lines[0], out delimiterInt))
+            {
+                separatorString = ((char)delimiterInt).ToString();
+            }
+            
+
+        }
+    }
+
     public static readonly char replaceForSeparatorChar = '_';
     public const string replaceForSeparatorString = "_";
 
@@ -133,8 +181,6 @@ public static class SF
         return var.Split(new char[] { oddelovaciZnak }, StringSplitOptions.None);
     }
 
-    
-
     /// <summary>
     /// 
     /// </summary>
@@ -157,7 +203,7 @@ public static class SF
 
     public static string PrepareToSerialization(params object[] o)
     {
-        return SH.GetString(o, separatorString);
+        return  SH.GetString(o, separatorString);
     }
 
 

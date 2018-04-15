@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ToggleSwitch.Borders
+namespace desktop.Controls.ToggleSwitch.Borders
 {
 	/// <summary>
 	/// Content control that draws a glow around its inside.

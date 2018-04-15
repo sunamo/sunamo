@@ -12,9 +12,9 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using ToggleSwitch;
+using desktop.Controls.ToggleSwitch;
 
-namespace ToggleSwitch
+namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
 	/// Vertically oriented toggle switch control.

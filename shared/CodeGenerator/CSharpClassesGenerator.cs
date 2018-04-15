@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+/// <summary>
+/// Generate of single element is in CSharpHelper
+/// </summary>
 public class CSharpClassesGenerator
 {
     public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)

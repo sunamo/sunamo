@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 public class ApplicationDataContainerList : Dictionary<string, AB>
 {
     string path = null;
 
+    /// <summary>
+    /// Parse text file in format key|fullname|value
+    /// </summary>
+    /// <param name="path"></param>
     public ApplicationDataContainerList(string path)
     {
         this.path = path;

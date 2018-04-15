@@ -640,33 +640,7 @@ namespace sunamo.Html
             return r;
         }
 
-        /// <summary>
-        /// A2 je název tagu, napříkald img
-        /// </summary>
-        /// <param name="html"></param>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            foreach (HtmlNode item in html.ChildNodes)
-            {
-                if (item.Name == p)
-                {
-                    HtmlNode node = item.ParentNode;
-                    if (node != null)
-                    {
-                        vr.Add(item);
-                        //}
-                    }
-                }
-                else
-                {
-                    vr.AddRange(ReturnAllTags(item, p));
-                }
-            }
-            return vr;
-        }
+        
 
         #region Z swf HtmlParser
         private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
@@ -1064,6 +1038,34 @@ namespace sunamo.Html
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             RecursiveReturnAllTags(vr, htmlNode, p);
+            return vr;
+        }
+
+        /// <summary>
+        /// If tag is A2, don't apply recursive on that
+        /// A2 je název tagu, napříkald img
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (HtmlNode item in html.ChildNodes)
+            {
+                if (item.Name == p)
+                {
+                    HtmlNode node = item.ParentNode;
+                    if (node != null)
+                    {
+                        vr.Add(item);
+                    }
+                }
+                else
+                {
+                    vr.AddRange(ReturnAllTags(item, p));
+                }
+            }
             return vr;
         }
         #endregion

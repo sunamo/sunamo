@@ -42,8 +42,6 @@ namespace sunamo.CodeGenerator
 
         }
 
-        
-
         /// <summary>
         /// Přidá nový řádek, složenou závorku 
         /// Je to jediná zdejší metoda která na začátku přidává nový řádek.
@@ -128,7 +126,5 @@ namespace sunamo.CodeGenerator
             }
             AssignValue(pocetTab, objectName, variable, vs, addToHyphens);
         }
-
-
     }
 }

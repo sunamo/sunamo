@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ToggleSwitch
+namespace desktop.Controls.ToggleSwitch
 {
     /// <summary>
     /// A control that displays text, with a drop shadow.

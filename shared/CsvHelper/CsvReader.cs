@@ -1,3 +1,4 @@
+using desktop;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,14 +24,29 @@ using System.Text;
         private readonly StringBuilder _columnBuilder = new StringBuilder(100);
         private readonly Type _type = Type.File;
 
-        #endregion Members
+    #endregion Members
+
+    /// <summary>
+    /// Use CsvFile.DateTimes instead
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public List<DateTime?> DateTime(CsvFile file, int v)
+    {
+        return file.DateTimes(v);
+    }
+
+    public List<string> Strings(CsvFile file, int v)
+    {
+        return file.Strings(v);
+    }
 
         #region Properties
 
-        /// <summary>
-        /// Gets or sets whether column values should be trimmed
-        /// </summary>
-        public bool TrimColumns { get; set; }
+    /// <summary>
+    /// Gets or sets whether column values should be trimmed
+    /// </summary>
+    public bool TrimColumns { get; set; }
 
         /// <summary>
         /// Gets or sets whether the csv file has a header row
@@ -42,10 +58,15 @@ using System.Text;
         /// </summary>
         public List<string> Fields { get; private set; }
 
-        /// <summary>
-        /// Gets the field count or returns null if no fields have been read
-        /// </summary>
-        public int? FieldCount
+    public void ReturnToStart()
+    {
+        
+    }
+
+    /// <summary>
+    /// Gets the field count or returns null if no fields have been read
+    /// </summary>
+    public int? FieldCount
         {
             get
             {
@@ -239,6 +260,8 @@ using System.Text;
             return dataTable;
         }
 
+    public static char delimiter = AllChars.comma;
+
         /// <summary>
         /// Parses a csv line
         /// </summary>
@@ -270,7 +293,7 @@ using System.Text;
                 // If we are in between double quotes
                 if (inQuotes)
                 {
-                    if (character == '"' && ((line.Length > (i + 1) && line[i + 1] == ',') || ((i + 1) == line.Length)))
+                    if (character == '"' && ((line.Length > (i + 1) && line[i + 1] == delimiter) || ((i + 1) == line.Length)))
                     {
                         inQuotes = false;
                         inColumn = false;
@@ -279,7 +302,7 @@ using System.Text;
                     else if (character == '"' && line.Length > (i + 1) && line[i + 1] == '"')
                         i++;
                 }
-                else if (character == ',')
+                else if (character == delimiter)
                     inColumn = false;
 
                 // If we are no longer in the column clear the builder and add the columns to the list

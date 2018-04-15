@@ -14,6 +14,7 @@ public class TF
     /// <returns></returns>
     public static string ReadFile(string s)
     {
+        FS.MakeUncLongPath(ref s);
         if (File.Exists(s))
         {
             return File.ReadAllText(s, Encoding.UTF8);
@@ -128,6 +129,9 @@ public class TF
             File.WriteAllText(path, "");
         }
     }
+
+    
+
     static void SaveFile(string obsah, string soubor, bool pripsat)
     {
         

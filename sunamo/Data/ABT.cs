@@ -8,4 +8,9 @@ public class ABT<Key, Value>
         this.A = a;
         this.B = b;
     }
+
+    public ABT()
+    {
+
+    }
 }

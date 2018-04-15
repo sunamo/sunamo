@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.LoggerAbstract
 {
+
     public abstract class LogServiceAbstract<Color, StorageClass, TextBlock>
     {
         public abstract Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st);

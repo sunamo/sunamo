@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 public class DictionaryHelper
 {
+    static Type type = typeof(DictionaryHelper);
+
+    public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
+    {
+        ThrowExceptions.DifferentCountInLists(type, "GetDictionary", "keys", keys.Count, "values", values.Count);
+        Dictionary<Key, Value> result = new Dictionary<Key, Value>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            result.Add(keys[i], values[i]);
+        }
+        return result;
+    }
+
     public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
     {
         if (sl.ContainsKey(baseNazevTabulky))
@@ -13,6 +26,16 @@ public class DictionaryHelper
         {
             sl.Add(baseNazevTabulky, 1);
         }
+    }
+
+    public static Dictionary<T, List<U>> GroupByValues<U, T>(Dictionary<U, T> dictionary)
+    {
+        Dictionary<T, List<U>> result = new Dictionary<T, List<U>>();
+        foreach (var item in dictionary)
+        {
+            DictionaryHelper.AddOrCreate<T, U>(result, item.Value, item.Key);
+        }
+        return result;
     }
 
     /// <summary>
@@ -65,6 +88,24 @@ public class DictionaryHelper
         }
     }
 
+    public static void AddOrCreateTimeSpan<Key>(Dictionary<Key, TimeSpan> sl, Key key, DateTime value)
+    {
+        TimeSpan ts = TimeSpan.FromTicks(value.Ticks);
+        AddOrCreateTimeSpan<Key>(sl, key, ts);
+    }
+
+    public static void AddOrCreateTimeSpan<Key>(Dictionary<Key, TimeSpan> sl, Key key, TimeSpan value)
+    {
+        if (sl.ContainsKey(key))
+        {
+            sl[key] = sl[key].Add(value);
+        }
+        else
+        {
+            sl.Add(key, value);
+        }
+    }
+
     /// <summary>
     /// In addition to method AddOrCreate, more is checking whether value in collection does not exists
     /// </summary>
@@ -102,6 +143,17 @@ public class DictionaryHelper
         }
     }
 
+    public static void AddOrPlus<T>(Dictionary<T, int> sl, T key, int p)
+    {
+        if (sl.ContainsKey(key))
+        {
+            sl[key] += p;
+        }
+        else
+        {
+            sl.Add(key, p);
+        }
+    }
 
     public static List<string> GetListStringFromDictionaryIntInt(IOrderedEnumerable<KeyValuePair<int, int>> d)
     {
@@ -139,5 +191,12 @@ public class DictionaryHelper
         return i;
     }
 
-    
+    public static Value GetFirstItem<Value>(Dictionary<string, Value> dict)
+    {
+        foreach (var item in dict)
+        {
+            return item.Value;
+        }
+        return default(Value);
+    }
 }

@@ -19,6 +19,45 @@ namespace desktop
             TextBoxHelper.InicializeWidths();
         }
 
+        public static int GetLineLength(TextBox txt, int line)
+        {
+            // Counting from 0
+            return txt.GetLineLength(line);
+        }
+
+        /// <summary>
+        /// Get number of chars before
+        /// </summary>
+        /// <param name="txt"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public static int GetCharacterIndexFromLineIndex(TextBox txt, int line)
+        {
+            // Counting from 0
+            return txt.GetCharacterIndexFromLineIndex(line);
+        }
+
+        public static string GetLineText(TextBox txt, int line)
+        {
+            // Counting from 0
+            return txt.GetLineText(line);
+        }
+
+        /// <summary>
+        /// line is from 0
+        /// </summary>
+        /// <param name="txt"></param>
+        /// <param name="line"></param>
+        public static void ScrollToLine(TextBox txt, int line)
+        {
+            
+            txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+            txt.SelectionLength = txt.GetLineLength(line);
+            txt.CaretIndex = txt.SelectionStart;
+            txt.ScrollToLine(line);
+            txt.Focus();
+        }
+
         public static void InicializeWidths()
         {
             StackPanel p = new StackPanel();

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace sunamo
-{
+
     public class XHelper
     {
         public static Dictionary<string, string> ns = new Dictionary<string, string>();
@@ -274,6 +273,7 @@ namespace sunamo
                 return "";
             }
             return xe.Value.Trim();
+
+        
         }
     }
-}

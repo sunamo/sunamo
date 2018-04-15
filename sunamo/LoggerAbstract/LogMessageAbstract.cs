@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Must be LoggerAbstract because same class exists in uap
+/// </summary>
 namespace sunamo.LoggerAbstract
 {
     public abstract class LogMessageAbstract<Color, StorageClass> : ILogMessage<Color, StorageClass>
@@ -15,7 +18,7 @@ namespace sunamo.LoggerAbstract
         private string message;
         private Color bg;
 
-        //public DateTime DateTime { get { return dateTime; } }
+        public DateTime Dt { get { return dateTime; } }
         public TypeOfMessage st { get { return typeOfMessage; } }
         public string Message { get { return message; } }
         public Color Bg { get { return Bg;  }  set { Bg = value; } }

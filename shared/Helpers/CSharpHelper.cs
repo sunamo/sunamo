@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 public static class CSharpHelper
 {
     public static string DefaultValueForTypeSqLite(string type)
@@ -26,6 +28,14 @@ public static class CSharpHelper
         }
         throw new Exception("Nepodporovaný typ");
     }
+
+    public static string GetDictionaryStringObject<Value>(List<string> keys, List<Value> values, string nameDictionary)
+    {
+        GeneratorCSharp gen = new GeneratorCSharp();
+        gen.DictionaryStringObject(0, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
+        return gen.ToString();
+    }
+
     public static string DefaultValueForType(string type)
     {
         if (type.Contains("."))
@@ -100,5 +110,12 @@ public static class CSharpHelper
                 return null;
         }
         throw new Exception("Nepodporovaný typ");
+    }
+
+    public static string GetArray(List<string> input, string arrayName)
+    {
+        GeneratorCSharp generator = new GeneratorCSharp();
+        generator.List(0, "string", arrayName, input);
+        return generator.ToString();
     }
 }

@@ -1,4 +1,5 @@
 using sunamo.Attributes;
+using sunamo.Helpers.DT;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,15 @@ namespace desktop
     [Serializable]
     public sealed class CsvFile
     {
+        public CsvFile()
+        {
+
+        }
+
+        public CsvFile(char delimiter)
+        {
+            CsvReader.delimiter = delimiter;
+        }
 
         #region Properties
 
@@ -35,6 +45,61 @@ namespace desktop
             {
                 return Headers.Count;
             }
+        }
+
+        public List<string> Strings(int v)
+        {
+            List<string> list = new List<string>();
+            var objects = Objects(v);
+            foreach (var item in objects)
+            {
+                list.Add(item[0]);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Return null when cannot be parsed
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public List<DateTime?> DateTimes(int v)
+        {
+            DateTime dt;
+            List<DateTime?> list = new List<DateTime?>();
+            var objects = Objects(v);
+            foreach (var item in objects)
+            {
+                dt = DTHelperCs.ParseTimeCzech(item[0]);
+                if (dt != DateTime.MinValue)
+                {
+                    list.Add(new System.DateTime(1,1,1, dt.Hour, dt.Minute, dt.Second));
+                }
+                else
+                {
+                    list.Add(null);
+                }
+
+            }
+            return list;
+        }
+
+        public List<string[]> Objects(params int[] columns)
+        {
+            List<string[]> result = new List<string[]>();
+            int i = 0;
+            string[] o = null;
+
+            foreach (var item in Records)
+            {
+                o = new string[columns.Length];
+                for (i = 0; i < columns.Length; i++)
+                {
+                    o[i] = item.Fields[columns[i]];
+                }
+                result.Add(o);
+            }
+            return result;
         }
 
         /// <summary>

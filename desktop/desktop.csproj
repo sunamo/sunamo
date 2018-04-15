@@ -82,6 +82,9 @@
     <Compile Include="Controls\ToggleSwitch\Borders\OuterGlowBorder.cs" />
     <Compile Include="Controls\ToggleSwitch\DropShadowTextBlock.cs" />
     <Compile Include="Controls\ToggleSwitch\HorizontalToggleSwitch.cs" />
+    <Compile Include="Controls\ToggleSwitch\HorizontalToggleSwitchWithLabel.xaml.cs">
+      <DependentUpon>HorizontalToggleSwitchWithLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ToggleSwitch\ToggleSwitchBase.cs" />
     <Compile Include="Controls\ToggleSwitch\Utils\ActualSizePropertyProxy.cs" />
     <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
@@ -154,7 +157,6 @@
     <Compile Include="Data\FontArgs.cs" />
     <Compile Include="Data\MeasureStringArgs.cs" />
     <Compile Include="Data\TextBlockData.cs" />
-    <Compile Include="DateTimeFileIndex.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
@@ -200,22 +202,23 @@
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
+    <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
+    <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="JunctionPoint.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registry\RA.cs" />
     <Compile Include="Registry\RegistryEntries.cs" />
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
-    <Compile Include="Helpers\SpecialFoldersHelper.cs" />
     <Compile Include="SHWithControls.cs" />
     <Compile Include="StatusesLogger.cs" />
     <Compile Include="Storage\ApplicationData.cs" />
     <Compile Include="Storage\ApplicationDataContainer.cs" />
     <Compile Include="Storage\ApplicationDataContainerList.cs" />
     <Compile Include="Essential\ThisApp.cs" />
+    <Compile Include="Storage\ApplicationDataList.cs" />
     <Compile Include="TrialManager.cs" />
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
@@ -294,6 +297,10 @@
     <Page Include="Controls\ToggleSwitch\Assets\ToggleSwitchStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ToggleSwitch\HorizontalToggleSwitchWithLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ToggleSwitch\WPF\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>

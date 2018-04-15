@@ -26,7 +26,7 @@ public class HtmlGenerator2 : HtmlGenerator
         hg.WriteTagWith2Attrs("table", "class", "tabulkaNaStredAutoSirka", "style", "width: 600px");
         hg.WriteTag("tr");
         #region Zapíšu vrchní řádky - názvy dnů
-        string[] ppp = DTHelper.daysInWeekCS;
+        string[] ppp = DTConstants.daysInWeekCS;
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareLeft bunkaTabulkyKalendareTop");
         hg.WriteElement("b", ppp[0]);
         hg.TerminateTag("td");
@@ -784,7 +784,7 @@ public class HtmlGenerator2 : HtmlGenerator
         hg.WriteTagWith2Attrs("table", "class", "tabulkaNaStredAutoSirka", "style", "width: 100%");
         hg.WriteTag("tr");
         #region Zapíšu vrchní řádky - názvy dnů
-        string[] ppp = DTHelper.monthsInYearCZ;
+        string[] ppp = DTConstants.monthsInYearCZ;
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareLeft bunkaTabulkyKalendareTop");
         hg.WriteElement("b", ppp[0]);
         hg.TerminateTag("td");

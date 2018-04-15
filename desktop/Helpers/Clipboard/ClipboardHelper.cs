@@ -1,4 +1,5 @@
 using sunamo.Clipboard;
+using sunamo.Generators.Text;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -81,6 +82,11 @@ public class ClipboardHelper
 
         Clipboard.Clear();
         Clipboard.SetDataObject(data, true);
+    }
+
+    public static void SetText(TextBuilder stringBuilder)
+    {
+        Clipboard.SetText(stringBuilder.ToString());
     }
 
     public static void SetText(StringBuilder stringBuilder)

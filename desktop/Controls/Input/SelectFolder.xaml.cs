@@ -1,4 +1,5 @@
 using sunamo;
+using sunamo.Constants;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,20 @@ namespace desktop.Controls
         public SelectFolder()
         {
             InitializeComponent();
+
+#if DEBUG
+            ComboBox cbDefaultFolders = new ComboBox();
+            cbDefaultFolders.IsEditable = false;
+            cbDefaultFolders.ItemsSource = DefaultPaths.All;
+            cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
+            
+#endif
+        }
+
+        private void CbDefaultFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            SelectOfFolder(cb.SelectedItem.ToString());
         }
 
         /// <summary>
@@ -66,6 +81,11 @@ namespace desktop.Controls
         private void SelectOfFolder()
         {
             string folder = DW.SelectOfFolder(Environment.SpecialFolder.MyComputer);
+            SelectOfFolder(folder);
+        }
+
+        private void SelectOfFolder(string folder)
+        {
             if (folder != null)
             {
                 txtFolder.Text = folder;

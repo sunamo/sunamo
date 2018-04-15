@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
+
 public static class CA
 {
     /// <summary>
@@ -65,9 +66,29 @@ public static class CA
         return col.Length > dex;
     }
 
+    public static List<T> ToList<T>(params T[] f)
+    {
+        return new List<T>(f);
+    }
+
     public static bool IsInRange(int od, int to, int index)
     {
         return od >= index && to <= index;
+    }
+
+    public static List<int> IndexesWithNull<T>(List<Nullable< T>> times) where T : struct
+    {
+        
+        List<int> nulled = new List<int>();
+        for (int i = 0; i < times.Count; i++)
+        {
+            T? t = new Nullable<T>(times[i].Value);
+            if (!t.HasValue)
+            {
+                nulled.Add(i);
+            }
+        }
+        return nulled;
     }
 
     public static List<T> CreateListAndInsertElement<T>(T el)
@@ -94,6 +115,13 @@ public static class CA
         return lines.FindAll(d => d.Contains(item));
     }
 
+    /// <summary>
+    /// Is useful when want to wrap and also join with string. Also last element will have delimiter
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="wrapWith"></param>
+    /// <param name="delimiter"></param>
+    /// <returns></returns>
     public static List<string> WrapWithAndJoin(IEnumerable<string> list, string wrapWith, string delimiter)
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
@@ -142,6 +170,19 @@ public static class CA
         }
     }
 
+    public static List<int> ReturnWhichContainsIndexes(List<string> value, string term)
+    {
+        List<int> result = new List<int>();
+        for (int i = 0; i < value.Count; i++)
+        {
+            if (value[i].Contains(term))
+            {
+                result.Add(i);
+            }
+        }
+        return result;
+    }
+
     public static int PartsCount(int count, int inPart)
     {
         int celkove = count / inPart;
@@ -152,13 +193,18 @@ public static class CA
         return celkove;
     }
 
-    public static string[] TrimEnd(string[] sf, params char[] toTrim)
+    public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
     {
-        for (int i = 0; i < sf.Length; i++)
+        for (int i = 0; i < sf.Count; i++)
         {
             sf[i] = sf[i].TrimEnd(toTrim);
         }
         return sf;
+    }
+
+    public static string[] TrimEnd(string[] sf, params char[] toTrim)
+    {
+        return TrimEnd(new List<string>(sf), toTrim).ToArray();
     }
 
     #region input Object IEnumerable
@@ -197,7 +243,7 @@ public static class CA
         return false;
     }
 
-    public static IList<string> WrapWith(IList<string> whereIsUsed2, string v)
+    public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
     {
         List<string> result = new List<string>();
         for (int i = 0; i < whereIsUsed2.Count; i++)
@@ -488,6 +534,16 @@ public static class CA
             return true;
         }
         return false;
+    }
+
+  
+
+    public static void AddIfNotContains<T>(List<T> founded, T e)
+    {
+        if (!founded.Contains(e))
+        {
+            founded.Add(e);
+        }
     }
 
     public static List<string> GetRowOfTable(List<string[]> _dataBinding, int i2)

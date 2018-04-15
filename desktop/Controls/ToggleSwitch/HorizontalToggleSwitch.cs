@@ -13,7 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace ToggleSwitch
+namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
 	/// Horizontally oriented toggle switch control.

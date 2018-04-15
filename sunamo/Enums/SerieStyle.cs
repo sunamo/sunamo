@@ -8,6 +8,7 @@ namespace sunamo.Enums
     {
         Dash,
         Brackets,
+        Underscore,
         All
     }
 }

@@ -7,7 +7,7 @@ public  class ApplicationData
     static ApplicationData()
     {
         RoamingSettings = new ApplicationDataContainer(AppData.GetFile(AppFolders.Roaming, "data.dat"));
-        //Path.Combine(SpecialFoldersHelper.ApplicationData(), "Local", "sunamo", ThisApp.Name, "data.dat")
+        //Path.Combine(SpecialFoldersHelper.ApplicationData(), "Local", Consts.@sunamo, ThisApp.Name, "data.dat")
         LocalSettings = new ApplicationDataContainer(AppData.GetFile(AppFolders.Local, "data.dat"));
     }
 

@@ -192,7 +192,7 @@ public  class SunamoPage : System.Web.UI.Page
 
         if (idLoginedUser == 1)
         {
-            if (Request.Url.Host.Contains("sunamo"))
+            if (Request.Url.Host.Contains(Consts.@sunamo))
             {
                 scripts.Insert(0, "ts/Web/ShowDebugInfo.js");
             }

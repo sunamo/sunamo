@@ -10,7 +10,7 @@ namespace sunamo.Clipboard
 {
     public sealed class ClipboardMonitor : IDisposable
     {
-        public static bool pernamentlyBlock = true;
+        public static bool pernamentlyBlock = false;
         public static bool? monitor = true;
         /// <summary>
         /// second blocking element before starting monitor clipboard after set data. 

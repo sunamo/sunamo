@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-#if DEBUG
-namespace sunamo
-{
+
+//namespace sunamo.Essential
+//{
     
     /// <summary>
     /// Tento DebugLogger.Instance je ve sunamo, obsahuje jedinou metodu, kterou používej ve DebugLogger.Instance např. apps
@@ -34,6 +34,9 @@ namespace sunamo
         {
             Debugger.Break();
         }
-    }
+
+    
 }
+//}
+#if DEBUG
 #endif

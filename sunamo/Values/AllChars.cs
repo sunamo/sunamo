@@ -21,21 +21,28 @@ public static class AllChars
     public static readonly List<char> upperChars = new List<char>(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' });
 
     #region Names here must be the same as in Consts
+    public const char space = ' ';
+    public const char dash = '-';
+    public const char colon = ':';
+    public const char us = '_';
+
     public const char tab = '\t';
     public const char nl = '\n';
     public const char cr = '\t';
     public const char bs = '\\';
-    public const char us = '_';
+    
     public const char comma = ',';
-    public const char dot = ',';
+    public const char dot = '.';
     public const char asterisk = '*';
-    public const char colon = ':';
+    
+    public const char sc = ';';
+    public const char qm = '"';
     /// <summary>
     /// Left bracket
     /// </summary>
     public const char lb = '(';
     public const char rb = ')';
-    public const char space = ' ';
+    
     #endregion
 
     static AllChars()

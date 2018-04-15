@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToggleSwitch.Utils
+namespace desktop.Controls.ToggleSwitch.Utils
 {
 	internal static class HelperExtensions
 	{

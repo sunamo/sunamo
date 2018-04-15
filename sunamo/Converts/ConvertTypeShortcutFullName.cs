@@ -43,12 +43,22 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
         throw new Exception("Nepodporované klíčové slovo");
     }
 
+    public static string ToShortcut(object instance)
+    {
+        return ToShortcut(instance.GetType().FullName, false);
+    }
+
+    public static string ToShortcut(string fullName)
+    {
+        return ToShortcut(fullName, true);
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="fullName"></param>
     /// <returns></returns>
-    public static string ToShortcut(string fullName)
+    public static string ToShortcut(string fullName, bool throwExceptionWhenNotBasicType)
     {
         switch (fullName)
         {
@@ -79,12 +89,16 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
                 return "long";
             case "System.UInt16":
                 return "ushort"; 
-            #endregion
             case "System.UInt32":
                 return "uint";
             case "System.UInt64":
                 return "ulong";
+                #endregion
         }
-        throw new Exception("Nepodporovaný typ");
+        if (throwExceptionWhenNotBasicType)
+        {
+            throw new Exception("Nepodporovaný typ");
+        }
+        return fullName;
     }
 }

@@ -9,6 +9,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <TextBox Grid.Column="0" Margin="5" MinWidth="400" IsReadOnly="True" TextChanged="txtFolder_TextChanged" x:Name="txtFolder" Text="" MouseDoubleClick="txtFolder_MouseDoubleClick"></TextBox>

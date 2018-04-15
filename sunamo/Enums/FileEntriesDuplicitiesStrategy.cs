@@ -12,7 +12,7 @@ namespace sunamo.Enums
     public enum FileEntriesDuplicitiesStrategy
     {
         /// <summary>
-        /// Přidá sérii k souboru
+        /// Přidá sérii k souboru (1)
         /// </summary>
         Serie,
         /// <summary>

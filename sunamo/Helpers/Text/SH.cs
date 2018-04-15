@@ -114,6 +114,18 @@ public static class SH
         
     }
 
+    public static bool HasLetter(string s)
+    {
+        foreach (var item in s)
+        {
+            if (char.IsLetter(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
     /// </summary>
@@ -206,6 +218,12 @@ public static class SH
     public static string Copy(string s)
     {
         return s;
+    }
+
+    public static string GetTextBetweenTwoChars(string p, int begin, int end)
+    {
+        // a(1) - 1,3
+        return p.Substring(begin+1, end - begin - 1);
     }
 
     public static string GetTextBetween(string p, string after, string before)
@@ -328,8 +346,6 @@ public static class SH
     /// <returns></returns>
     public static string TrimEnd(string name, string ext)
     {
-        
-
         while (name.EndsWith(ext))
         {
             return name.Substring(0, name.Length - ext.Length);
@@ -1427,7 +1443,7 @@ public static class SH
                 }
             }
         }
-        Directory.GetFiles("", "*", SearchOption.AllDirectories);
+        
         return true;
     }
 
@@ -1825,9 +1841,9 @@ public static class SH
     {
         string s = name.ToString();
         StringBuilder sb = new StringBuilder();
-        foreach (string item in labels)
+        foreach (object item in labels)
         {
-            sb.Append(item + s);
+            sb.Append(item.ToString() + s);
         }
         string sb2 = sb.ToString();
         if (labels.Length != 0)

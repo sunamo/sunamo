@@ -16,9 +16,9 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using ToggleSwitch.Utils;
+using desktop.Controls.ToggleSwitch.Utils;
 
-namespace ToggleSwitch
+namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
 	/// Base class for the toggle switch control.

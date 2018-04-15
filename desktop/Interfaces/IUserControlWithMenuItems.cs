@@ -1,11 +1,15 @@
+using desktop.Interfaces;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
-namespace desktop
+namespace desktop.Interfaces
 {
-    public interface IUserControlWithMenuItems
+    /// <summary>
+    /// Better is use IUserControlWithMenuItemsList, because structure here is too complicated and then useless
+    /// </summary>
+    public interface IUserControlWithMenuItems : IUserControl
     {
-        string Name { get; }
+        
         Dictionary<string, List<MenuItem>> MenuItems();
     }
 }

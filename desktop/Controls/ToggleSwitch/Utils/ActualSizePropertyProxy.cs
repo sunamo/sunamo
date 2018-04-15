@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace ToggleSwitch.Utils
+namespace desktop.Controls.ToggleSwitch.Utils
 {
 	public class ActualSizePropertyProxy : FrameworkElement, INotifyPropertyChanged
 	{
