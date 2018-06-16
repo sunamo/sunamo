@@ -4,6 +4,17 @@ public class FromTo
 {
     public int from = 0;
     public int to = 0;
+
+    public FromTo()
+    {
+
+    }
+
+    public FromTo(int from, int to)
+    {
+        this.from = from;
+        this.to = to;
+    }
 }
 
 public class FromToWord

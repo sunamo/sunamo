@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace sunamo
+namespace desktop
 {
     public class KeyboardHelper
     {

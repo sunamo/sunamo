@@ -7,9 +7,18 @@ using System.Threading.Tasks;
 
 namespace sunamo
 {
-    public class Reflection
+    public static class Reflection
     {
-        public void CopyProperties(object source, object target)
+        public static bool IsType<T>(object o)
+        {
+            if (o.GetType() == typeof(T))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static void CopyProperties(object source, object target)
         {
             Type typeB = target.GetType();
             foreach (PropertyInfo property in source.GetType().GetProperties())

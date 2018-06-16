@@ -9,7 +9,7 @@ public static class SpecialFoldersHelper
     /// <returns></returns>
     public static string ApplicationData()
     {
-        return sunamo.FS.GetDirectoryName(AppDataRoaming());
+        return System.FS.GetDirectoryName(AppDataRoaming());
     }
 
     public static string AppDataRoaming()

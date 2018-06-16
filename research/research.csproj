@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE3511F2-97E5-4BF5-A61B-27FAB91E0B34}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>research</RootNamespace>
+    <AssemblyName>research</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.6.15.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\WpfApp1\packages\HtmlAgilityPack.1.6.15\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearchConsole\AllProjectsSearchConsoleResearch.cs">
+      <Link>AllProjectsSearchConsoleResearch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearch\AllProjectsSearchResearch.cs">
+      <Link>AllProjectsSearchResearch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ConsoleApp1\ConsoleApp1\ConsoleApp1Research.cs">
+      <Link>ConsoleApp1Research.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WpfApp1\WpfApp1\WpfApp1Research.cs">
+      <Link>WpfApp1Research.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CefSunamo\SunamoCef.csproj">
+      <Project>{91872261-77d1-4ffe-871b-961a706fbf35}</Project>
+      <Name>SunamoCef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cmd\cmd.csproj">
+      <Project>{388ffd6c-f9c4-4394-96ae-171ffecfb67c}</Project>
+      <Name>cmd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\desktop\desktop.csproj">
+      <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
+      <Name>desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\forms\forms.csproj">
+      <Project>{f7969338-1b99-485c-99ea-5d06f45cda32}</Project>
+      <Name>forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvc\mvc.csproj">
+      <Project>{f3a63e91-6143-46b6-bc63-9bf5cfc0c218}</Project>
+      <Name>mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\shared\shared.csproj">
+      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoFtp\SunamoFtp.csproj">
+      <Project>{107523e6-02a3-4c8f-bfb6-225d6fa3fb86}</Project>
+      <Name>SunamoFtp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoIni\SunamoIni.csproj">
+      <Project>{b6722a85-ffdd-4bde-9006-212bf93553bc}</Project>
+      <Name>SunamoIni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoZip\SunamoZip.csproj">
+      <Project>{38304f31-dcc7-42b6-84c7-8e7127cabbc9}</Project>
+      <Name>SunamoZip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\webforms\webforms.csproj">
+      <Project>{fee6192c-6fc5-40df-933b-b26032a65ca9}</Project>
+      <Name>webforms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSunamo\SunamoWeb.csproj">
+      <Project>{ba9d6b58-457b-4ca5-ad4d-71a5f24d0bd1}</Project>
+      <Name>SunamoWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\web\web.csproj">
+      <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>
+      <Name>web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CssPlayground.css" />
+    <Content Include="GoogleForm.html" />
+    <Content Include="Questionary.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

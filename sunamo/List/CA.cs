@@ -1,12 +1,14 @@
 
-using sunamo.Extensions;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-
+/// <summary>
+/// All methods (expect with other description) return same object as input
+/// </summary>
 public static class CA
 {
     /// <summary>
@@ -24,9 +26,13 @@ public static class CA
         for (int i = c2.Count - 1; i >= 0; i--)
         {
             string item = c2[i];
+
+            
+
             dex = c1.IndexOf(item);
             if (dex != -1)
             {
+
                 existsInBoth.Add(item);
                 c2.RemoveAt(i);
                 c1.RemoveAt(dex);
@@ -36,9 +42,13 @@ public static class CA
         for (int i = c1.Count - 1; i >= 0; i--)
         {
             string item = c1[i];
+
+            
+
             dex = c2.IndexOf(item);
             if (dex != -1)
             {
+
                 existsInBoth.Add(item);
                 c1.RemoveAt(i);
                 c2.RemoveAt(dex);
@@ -46,6 +56,30 @@ public static class CA
         }
 
         return existsInBoth;
+    }
+
+    internal static IEnumerable<T> CreateListWithValue<T>(T empty, int count)
+    {
+        List<T> list = new List<T>(count);
+        for (int i = 0; i < count; i++)
+        {
+            list.Add(empty);
+        }
+        return list;
+    }
+
+    /// <summary>
+    /// Don't need use return value
+    /// </summary>
+    /// <param name="delete"></param>
+    /// <param name="replaceWhat"></param>
+    /// <param name="forWhat"></param>
+    public static void Replace(List<string> delete, string replaceWhat, string forWhat)
+    {
+        for (int i = 0; i < delete.Count; i++)
+        {
+            delete[i] = delete[i].Replace(replaceWhat, forWhat);
+        }
     }
 
     public static int CountOfEnding(List<string> winrarFiles, string v)
@@ -59,6 +93,18 @@ public static class CA
             }
         }
         return count;
+    }
+
+    public static void RemoveWildcard(List<string> onlyNames, string folder)
+    {
+        for (int i = onlyNames.Count - 1; i >= 0; i--)
+        {
+            string item = onlyNames[i];
+            if (Wildcard.IsMatch(item, folder))
+            {
+                onlyNames.RemoveAt(i);
+            }
+        }
     }
 
     public static bool HasIndex(int dex, Array col)
@@ -89,6 +135,22 @@ public static class CA
             }
         }
         return nulled;
+    }
+
+    /// <summary>
+    /// In A1 must be zero elements
+    /// If element exists in A2, set true, otherwise false.
+    /// </summary>
+    /// <param name="photoFiles"></param>
+    /// <param name="allFilesRelative"></param>
+    /// <param name="value"></param>
+    public static void CheckExists<T>(List<bool> photoFiles, List<T> allFilesRelative, List<T> value)
+    {
+        int count = allFilesRelative.Count;
+        for (int i = 0; i < count; i++)
+        {
+            photoFiles.Add(value.Contains(allFilesRelative[i]));
+        }
     }
 
     public static List<T> CreateListAndInsertElement<T>(T el)
@@ -131,26 +193,8 @@ public static class CA
     {
         if (wildcard)
         {
-
-
-
-            //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\")
-                //{
-                //    if (files1[i].Contains(@"\obj\"))
-                //    {
-                //        Debugger.Break();
-                //    }
-                //}
-
-                //if (files1[i].Contains(@"\obj\"))
-                //{
-                //    Debugger.Break();
-                //}
-
-
                 if (Wildcard.IsMatch(files1[i], item))
                 {
                     files1.RemoveAt(i);
@@ -245,12 +289,11 @@ public static class CA
 
     public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
     {
-        List<string> result = new List<string>();
         for (int i = 0; i < whereIsUsed2.Count; i++)
         {
-            result.Add( v + whereIsUsed2[i] + v);
+            whereIsUsed2[i] = v + whereIsUsed2[i] + v;
         }
-        return result;
+        return whereIsUsed2.ToList();
     }
 
     public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
@@ -304,6 +347,12 @@ public static class CA
         return -1;
     }
 
+    /// <summary>
+    /// Don't modify input arrays
+    /// </summary>
+    /// <param name="pass"></param>
+    /// <param name="salt"></param>
+    /// <returns></returns>
     public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
     {
         List<byte> lb = new List<byte>(pass.Length + salt.Length);
@@ -342,14 +391,22 @@ public static class CA
 
     public static string[] Trim(string[] l)
     {
-        for (int i = 0; i < l.Length; i++)
+        return Trim(l.ToList()).ToArray();
+    }
+
+    /// <summary>
+    /// Don't create new list
+    /// </summary>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static List<string> Trim(List<string> l)
+    {
+        for (int i = 0; i < l.Count; i++)
         {
             l[i] = l[i].Trim();
         }
         return l;
     }
-
-    
 
     public static string[] EnsureBackslash(string[] eb)
     {
@@ -416,7 +473,7 @@ public static class CA
     {
         for (int i = 0; i < folders.Length; i++)
         {
-            folders[i] = sunamo.FS.WithEndSlash(folders[i]);
+            folders[i] = System.FS.WithEndSlash(folders[i]);
         }
         return folders;
     }
@@ -425,12 +482,13 @@ public static class CA
     {
         for (int i = 0; i < folders.Length; i++)
         {
-            folders[i] = sunamo.FS.WithoutEndSlash(folders[i]);
+            folders[i] = System.FS.WithoutEndSlash(folders[i]);
         }
         return folders;
     }
 
     /// <summary>
+    /// Doesn't create new array, but must used return value
     /// Remove elements starting with A1
     /// </summary>
     /// <param name="start"></param>
@@ -487,6 +545,12 @@ public static class CA
         return false;
     }
 
+    /// <summary>
+    /// Don't modify input arrays
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static List<string> JoinArrayAndArrayString(string[] a, params string[] p)
     {
         if (a != null)
@@ -536,8 +600,6 @@ public static class CA
         return false;
     }
 
-  
-
     public static void AddIfNotContains<T>(List<T> founded, T e)
     {
         if (!founded.Contains(e))
@@ -577,6 +639,18 @@ public static class CA
         return nazev;
     }
 
+    public static string ToLowerIfIs(List<string> boolToString, string value)
+    {
+        foreach (var item in boolToString)
+        {
+            if (item == value)
+            {
+                return value.ToLower();
+            }
+        }
+        return value;
+    }
+
     /// <summary>
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
@@ -598,15 +672,7 @@ public static class CA
     /// <returns></returns>
     public static string[] RemoveStringsEmpty(string[] mySites)
     {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
-        {
-            if (item != "")
-            {
-                dd.Add(item);
-            }
-        }
-        return dd.ToArray();
+        return RemoveStringsEmpty(mySites.ToArray()).ToArray();
     }
 
     /// <summary>
@@ -616,15 +682,14 @@ public static class CA
     /// <returns></returns>
     public static List<string> RemoveStringsEmpty(List<string> mySites)
     {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
+        for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (item != "")
+            if (mySites[i] == "")
             {
-                dd.Add(item);
+                mySites.RemoveAt(i);
             }
         }
-        return dd;
+        return mySites;
     }
 
     /// <summary>
@@ -634,18 +699,18 @@ public static class CA
     /// <returns></returns>
     public static List<string> RemoveStringsEmpty2(List<string> mySites)
     {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
+        for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (item.Trim() != "")
+            if (mySites[i].Trim() == "")
             {
-                dd.Add(item);
+                mySites.RemoveAt(i);
             }
         }
-        return dd;
+        return mySites;
     }
 
     /// <summary>
+    /// Create new list
     /// Return first A2 elements of A1 or A1 if A2 is bigger
     /// </summary>
     /// <param name="proj"></param>
@@ -711,24 +776,45 @@ public static class CA
         return nejdelsi;
     }
 
-    public static List<string> ContainsDiacritic(IEnumerable<string> nazvyReseni)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nazvyReseni"></param>
+    /// <returns></returns>
+    public static List<string> ContainsDiacritic(IEnumerable<string> nazvyReseni, bool createNewList = true)
     {
-        List<string> vr = new List<string>(nazvyReseni.Count());
-        foreach (var item in nazvyReseni)
+        List<string> vr = nazvyReseni.ToList();
+
+        if (createNewList)
         {
-            if (SH.ContainsDiacritic(item))
+            vr = new List<string>(nazvyReseni.Count());
+            foreach (var item in nazvyReseni)
             {
-                vr.Add(item);
+                if (SH.ContainsDiacritic(item))
+                {
+                    vr.Add(item);
+                }
             }
         }
+        else
+        {
+            for (int i = vr.Count - 1; i >= 0; i--)
+            {
+                if (!SH.ContainsDiacritic(vr[i]))
+                {
+                    vr.RemoveAt(i);
+                }
+            }
+        }
+        
         return vr;
     }
 
-    public static bool IsSomethingTheSame(string ext, params string[] p1)
+    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
     {
-        for (int i = 0; i < p1.Length; i++)
+        foreach (var item in p1)
         {
-            if (p1[i] == ext)
+            if (item == ext)
             {
                 return true;
             }
@@ -872,6 +958,13 @@ public static class CA
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
     }
 
+    /// <summary>
+    /// Create new list
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="idKesek"></param>
+    /// <param name="foundedDuplicities"></param>
+    /// <returns></returns>
     public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek, out List<T> foundedDuplicities)
     {
         foundedDuplicities = new List<T>();
@@ -1013,6 +1106,17 @@ public static class CA
         return result;
     }
 
+    public static List<string> ToListString(params object[] enumerable)
+    {
+        List<string> result = new List<string>();
+        foreach (var item in enumerable)
+        {
+            result.Add(item.ToString());
+        }
+        return result;
+    }
+
+
     public static List<string> ToListString(IEnumerable enumerable)
     {
         List<string> result = new List<string>();
@@ -1153,6 +1257,12 @@ public static class CA
         return s;
     }
 
+    /// <summary>
+    /// Always create new array
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="requiredLength"></param>
+    /// <returns></returns>
     public static string[] ToSize(string[] input, int requiredLength)
     {
         string[] returnArray = null;
@@ -1205,6 +1315,21 @@ public static class CA
         return globallyInstalledTsDefinitions;
     }
 
+    public static List<string> ChangeContent(List<string> files_in, Func<string, char, string> func, char firstArg)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i], firstArg);
+        }
+        return files_in;
+    }
+
+    /// <summary>
+    /// Don't need use return value
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
     public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
     {
         for (int i = 0; i < files_in.Count; i++)

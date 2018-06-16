@@ -9,8 +9,6 @@ public  class RH
 {
     public static object CopyObject(object input)
     {
-        
-
         if (input != null)
         {
             object result = Activator.CreateInstance(input.GetType());//, BindingFlags.Instance);

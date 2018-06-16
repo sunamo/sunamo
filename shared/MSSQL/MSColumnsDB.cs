@@ -209,13 +209,13 @@ public class MSColumnsDB : List<MSSloupecDB>
             PathSczBaseAdmin = System.IO.Path.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
         }
 
-        sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(Path);
-        //sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(Path4);
-        sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(PathBase);
+        System.FS.CreateUpfoldersPsysicallyUnlessThere(Path);
+        //System.FS.CreateUpfoldersPsysicallyUnlessThere(Path4);
+        System.FS.CreateUpfoldersPsysicallyUnlessThere(PathBase);
         if (PathSczAdmin != null)
         {
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(PathSczAdmin);
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(PathSczBaseAdmin);
+            System.FS.CreateUpfoldersPsysicallyUnlessThere(PathSczAdmin);
+            System.FS.CreateUpfoldersPsysicallyUnlessThere(PathSczBaseAdmin);
         }
 
         //string cs4 = GetCs

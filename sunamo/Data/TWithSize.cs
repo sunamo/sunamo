@@ -11,6 +11,4 @@ namespace sunamo.Data
         public T t = default(T);
         public long size = 0;
     }
-
-    
 }

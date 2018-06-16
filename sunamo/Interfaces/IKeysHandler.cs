@@ -4,6 +4,8 @@ using System.Text;
 
 namespace sunamo.Interfaces
 {
+    
+
     public interface IKeysHandler<KeyArg>
     {
         bool HandleKey(KeyArg e);

@@ -9,6 +9,8 @@ namespace desktop.Helpers
 {
     public class ControlHelper
     {
+        // TODO: Move all to WPF control
+
         public static readonly Size SizePositiveInfinity = new Size(double.PositiveInfinity, double.PositiveInfinity);
 
         public static Point GetOnCenter(Size parent, Size child)

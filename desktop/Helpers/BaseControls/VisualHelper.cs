@@ -15,6 +15,8 @@ namespace desktop
 {
     public class VisualHelper
     {
+        // TODO: Move all to WPF control
+
         /// <summary>
         /// A1 je Control jen proto abych mohl zjistit DPI, pokud bys ho zjistil z jiného controlu můžeš do A1 použít UIElement
         /// </summary>
@@ -23,6 +25,7 @@ namespace desktop
         /// <returns></returns>
         private static RenderTargetBitmap ConvertToBitmap(FrameworkElement uiElement, double resolutionX, double resolutionY)
         {
+            
             double dpi = WindowsDisplaySettings.getScalingFactor();
             var scaleX = resolutionX / dpi;
             var scaleY = resolutionY / dpi;

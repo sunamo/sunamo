@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/// <summary>
+/// Only parsing and convert method
+/// </summary>
     public static partial class BTS
     {
+    // TODO: Merge whole class with BT
 
         #region Parse*
         public static bool lastBool = false;
@@ -212,8 +215,9 @@ using System.Threading.Tasks;
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static bool StringToBool(string s)
+        public static bool StringToBool(object o)
         {
+        string s = (string)o;
             if (s == Yes) return true;
             return false;
         }

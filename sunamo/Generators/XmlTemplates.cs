@@ -10,6 +10,11 @@ public class XmlTemplates
 {
     public const string xml = "<?xml version='1.0' encoding='utf-8'?>";
 
+    public static string Element(string tag, string content)
+    {
+        return $"<{tag}>{content}</{tag}>";
+    }
+
     public static string GetXml2(string n1, string n2)
     {
         return "<sunamo><n1><![CDATA[" + n1 + "]]></n1><n2><![CDATA[" + n2 + "]]></n2></sunamo>";

@@ -2,6 +2,7 @@ using sunamo.Delegates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -70,12 +71,22 @@ public static class SH
     public static string RemoveAfterLast(char delimiter, string nameSolution)
     {
         int dex = nameSolution.LastIndexOf(delimiter);
+        return RemoveAfter(nameSolution, dex);
+    }
+
+    private static string RemoveAfter(string nameSolution, int dex)
+    {
         if (dex != -1)
         {
             string s = SH.Substring(nameSolution, 0, dex);
             return s;
         }
         return nameSolution;
+    }
+
+    public static string RemoveAfterFirst(string item, char stroke)
+    {
+        return RemoveAfter(item, item.IndexOf(stroke));
     }
 
     public static string WordAfter(string input, string word)
@@ -112,6 +123,23 @@ public static class SH
             }
             return sb.ToString();
         
+    }
+
+    public static  string NumberedList(List<string> possibleAnswers)
+    {
+        if (possibleAnswers.Count == 0)
+        {
+            return string.Empty;
+        }
+        StringBuilder sb = new StringBuilder();
+        int to = possibleAnswers.Count;
+        int i = 1;
+        for (; i < to; i++)
+        {
+            sb.AppendLine(i.ToString() + ". " + possibleAnswers[i - 1]);
+        }
+        sb.Append(i.ToString() + ". " + possibleAnswers[possibleAnswers.Count - 1]);
+        return sb.ToString();
     }
 
     public static bool HasLetter(string s)
@@ -171,6 +199,14 @@ public static class SH
     /// <returns></returns>
     public static string ConcatIfBeforeHasValue(params string[] className)
     {
+        //StringBuilder sb = new StringBuilder();
+        //for (int i = 0; i < className.Length; i++)
+        //{
+        //    if (string.IsNullOrWhiteSpace( className[i]))
+        //    {
+
+        //    }
+        //}
         throw new NotImplementedException();
     }
 
@@ -210,6 +246,11 @@ public static class SH
         return vr.ToArray();
     }
 
+    internal static string ReplaceAll2(string fn, string space, object doubleSpace)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
     /// </summary>
@@ -239,6 +280,16 @@ public static class SH
         }
 
         return vr;
+    }
+
+    public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (var item in dictionary)
+        {
+            stringBuilder.AppendLine(item.Key + delimiter + item.Value);
+        }
+        return stringBuilder.ToString();
     }
 
     public static bool IsAllUnique(List<string> c)
@@ -292,12 +343,68 @@ public static class SH
             charCount = Math.Min(r.Length, tfd.requiredLength);
         }
 
-        for (int i = 0; i < charCount; i++)
+        int iteration = 0;
+        FromTo fromTo = null;
+        for (int i = 0; i < charCount; )
         {
-            if (!HasCharRightFormat(r[i], tfd[i]))
+
+            // When I achieve max count of elements
+            if (tfd.Count == iteration)
             {
                 return false;
             }
+            CharFormatData charFormatData = tfd[iteration++];
+            fromTo = charFormatData.requiredLength;
+            int countTo = 1;
+            if (fromTo != null)
+            {
+                countTo = fromTo.to - fromTo.from+1;
+            }
+
+            if (countTo == 1)
+            {
+                if (!HasCharRightFormat(r[i], charFormatData))
+                {
+                    return false;
+                }
+                i++;
+            }
+            else
+            {
+                for (int y = 0; y < countTo; y++, i++)
+                {
+                    if (r.Length > i)
+                    {
+                        if (!HasCharRightFormat(r[i], charFormatData))
+                        {
+                            if (y == 0)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                break;
+                                //i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (r.Length != i)
+                        {
+                            return false;
+                        }
+                        else if(iteration < tfd.Count)
+                        {
+                            return false;
+                        }
+                    }
+                        
+                    
+                }
+            }
+
+            
         }
 
         return true;
@@ -323,7 +430,7 @@ public static class SH
             }
         }
 
-        if (cfd.mustBe.Length != 0)
+        if (cfd.mustBe.Count != 0)
         {
             foreach (char item in cfd.mustBe)
             {
@@ -548,6 +655,8 @@ public static class SH
         }
         return input;
     }
+
+    
 
     public static string ReplaceFirstOccurences(string v, string zaCo, string co, char maxToFirstChar)
     {
@@ -959,7 +1068,7 @@ public static class SH
         return WrapWith(value, v.ToString());
     }
 
-    public static string[] Split(string text, params char[] deli)
+    public static List< string> SplitList(string text, params char[] deli)
     {
         if (deli == null || deli.Length == 0)
         {
@@ -972,7 +1081,32 @@ public static class SH
                 throw new Exception("No delimiter determined");
             }
         }
-        return text.Split(deli, StringSplitOptions.None);
+        return text.Split(deli, StringSplitOptions.None).ToList();
+    }
+
+   
+
+    
+
+    public static string[] Split(string text, params char[] deli)
+    {
+        return SplitList(text, deli).ToArray();
+    }
+
+    internal static char CharWhichIsNotContained(string text)
+    {
+        
+        foreach (char item in AllChars.allUnicodeChars)
+        {
+            if (!text.Contains(item))
+            {
+                return item;
+            }
+        }
+
+        // TODO: Make checking for unlimited size of string
+
+        return char.MinValue;
     }
 
     /// <summary>
@@ -2661,5 +2795,8 @@ public static class SH
         return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
 
-    
+    public static bool ContainsAll(string line, object lb, object rb)
+    {
+        throw new NotImplementedException();
+    }
 }

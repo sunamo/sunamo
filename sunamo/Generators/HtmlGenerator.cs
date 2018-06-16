@@ -1,19 +1,52 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
-public class HtmlGenerator : XmlGenerator
+using sunamo.Helpers;
+using sunamo.Enums;
+using sunamo.Interfaces;
+using sunamo.Generators;
+
+/// <summary>
+/// Here can be only method which don't passed as arguments any of tags - due to derive w
+/// </summary>
+public class HtmlGenerator : XmlGenerator, IHtmlGeneratorShared
 {
-    public void WriteBr()
+    HtmlGeneratorShared html = null;
+    
+
+    public HtmlGeneratorShared Html
     {
-        base.WriteNonPairTag("br");
+        get
+        {
+            return html;
+        }
     }
 
-    public void Boilerplate()
+    public XmlGeneratorShared Xml
+    {
+        get
+        {
+            return xml;
+        }
+    }
+
+    public HtmlGeneratorExtended<string, string> extended = null;
+
+    public HtmlGenerator()
     {
         
+        
+        html = new HtmlGeneratorShared(this);
+        extended = new HtmlGeneratorExtended<string, string>(this, html, xml, sb);
     }
 
+    public void WriteBr()
+    {
+        html.WriteBr();
+    }
 
-
-  
+    public override string ToString()
+    {
+        return base.ToString();
+    }
 }

@@ -72,7 +72,11 @@ public class TF
     /// <returns></returns>
     public static string[] GetAllLines(string file)
     {
+        return ReadAllLines(file).ToArray();
+    }
 
+    public static List<string> ReadAllLines(string file)
+    {
         List<string> lines = TF.GetLines(file);
         List<string> linesPpk = new List<string>();
         for (int i = 0; i < lines.Count; i++)
@@ -83,7 +87,7 @@ public class TF
                 linesPpk.Add(trim);
             }
         }
-        return linesPpk.ToArray();
+        return linesPpk;
     }
 
     /// <summary>
@@ -104,13 +108,6 @@ public class TF
         return 0;
     }
 
-    
-
-    
-
-    
-
-
     public static List<string> GetLines(string sobuor)
     {
         return SH.GetLines(ReadFile(sobuor));
@@ -125,7 +122,7 @@ public class TF
     {
         if (!File.Exists(path))
         {
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(path);
+            System.FS.CreateUpfoldersPsysicallyUnlessThere(path);
             File.WriteAllText(path, "");
         }
     }

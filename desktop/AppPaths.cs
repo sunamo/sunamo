@@ -12,7 +12,7 @@ namespace desktop
     {
         public static string GetStartupPath()
         {
-            return sunamo.FS.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            return System.FS.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         }
         public static string GetFileInStartupPath(string file)
         {

@@ -29,10 +29,10 @@ public class FileInfoSerie : FileInfoLite
         fil.Path = item2.FullName;
         fil.Size = item2.Length;
         bool hasSerie = false;
-        fil.NameWithoutSeries = sunamo.FS.GetNameWithoutSeries(fil.Name, false, out hasSerie, SerieStyle.Brackets);
-        fil.PathWithoutSerie = sunamo.FS.GetNameWithoutSeries(fil.Name, true, out hasSerie, SerieStyle.Brackets);
+        fil.NameWithoutSeries = System.FS.GetNameWithoutSeries(fil.Name, false, out hasSerie, SerieStyle.Brackets);
+        fil.PathWithoutSerie = System.FS.GetNameWithoutSeries(fil.Name, true, out hasSerie, SerieStyle.Brackets);
         fil.HasSerie = hasSerie;
-        fil.FileNameComplet = sunamo.FS.GetFileName(item2.FullName);
+        fil.FileNameComplet = System.FS.GetFileName(item2.FullName);
         return fil;
     }
 
