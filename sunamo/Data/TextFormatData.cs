@@ -20,8 +20,8 @@ using System.Threading.Tasks;
     /// <param name="trimBefore"></param>
     /// <param name="requiredLength"></param>
     /// <param name="a"></param>
-    public TextFormatData(bool trimBefore, int requiredLength, params CharFormatData[] a)
-    {
+        public TextFormatData(bool trimBefore, int requiredLength, params CharFormatData[] a)
+        {
         this.trimBefore = trimBefore;
         AddRange(a);
         }

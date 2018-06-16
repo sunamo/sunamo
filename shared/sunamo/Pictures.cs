@@ -246,7 +246,7 @@ namespace shared
             using (System.IO.MemoryStream mss = new System.IO.MemoryStream())
             {
                 thumb.Save(mss, Info, Params);
-                System.FS.SaveMemoryStream(mss, path);
+                sunamo.FS.SaveMemoryStream(mss, path);
                 //thumb.Dispose();
             }
         }

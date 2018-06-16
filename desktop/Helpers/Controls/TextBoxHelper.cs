@@ -1,5 +1,4 @@
 using desktop.Helpers;
-using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace desktop
 {
@@ -27,8 +25,6 @@ namespace desktop
             return txt.GetLineLength(line);
         }
 
-        
-
         /// <summary>
         /// Get number of chars before
         /// </summary>
@@ -39,30 +35,6 @@ namespace desktop
         {
             // Counting from 0
             return txt.GetCharacterIndexFromLineIndex(line);
-        }
-
-        public static bool validated = true;
-
-        /// <summary>
-        /// Before first use must set validated = true
-        /// Must be here because in sunamo.Exceptions don't have access to TextBox
-        /// </summary>
-        /// <param name="txtFolder"></param>
-        public static void Validate(Visual controlLabel, Visual controlContent)
-        {
-            
-            string status = Exceptions.TextBoxWithoutContent(null, WpfHelper.GetText(controlLabel), WpfHelper.GetText(controlContent));
-            bool validated2 = true;
-
-            if (!string.IsNullOrEmpty( status))
-            {
-                validated2 = false;
-                ThisApp.SetStatus(TypeOfMessage.Information, status);
-            }
-            if (validated)
-            {
-                validated = validated2;
-            }
         }
 
         public static string GetLineText(TextBox txt, int line)

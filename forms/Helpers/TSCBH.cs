@@ -1,7 +1,6 @@
 using System.Windows.Forms;
 using System.IO;
 using sunamo;
-using System;
 
 namespace forms
 {

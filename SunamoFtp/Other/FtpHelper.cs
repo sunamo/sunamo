@@ -26,7 +26,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public static bool IsFileOnHosting(string item2, string[] fse, long fileLenght)
         {
-            item2 = System.FS.GetFileName(item2);
+            item2 = sunamo.FS.GetFileName(item2);
             foreach (string item in fse)
             {
                 long fl = 0;

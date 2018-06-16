@@ -6,15 +6,13 @@ public class CollectionWithoutDuplicates<T>
 {
     public List<T> c = new List<T>();
 
-    public bool Add(T t2)
+    public void Add(T t2)
     {
         if (!c.Contains(t2))
         {
             c.Add(t2);
-            return true;
         }
-
-        return false;
+        
     }
 
     public int AddWithIndex(T t2)

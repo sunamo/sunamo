@@ -6,8 +6,6 @@ using System.Diagnostics;
 /// </summary>
 public static class AllChars
 {
-    public static readonly List<char> allUnicodeChars = new List<char>(); 
-
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
     public static readonly List<int> numericKeyCodes = new List<int>(new int[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 });
     // , 55296 mi taky vrátila metoda IsWhiteSpace vrátila, ale při znovu vytvoření pomocí tohoto kódu to vyhazovalo výjimku
@@ -31,12 +29,8 @@ public static class AllChars
     public const char tab = '\t';
     public const char nl = '\n';
     public const char cr = '\t';
-    /// <summary>
-    /// backstroke
-    /// </summary>
     public const char bs = '\\';
-    public const char stroke = '/';
-
+    
     public const char comma = ',';
     public const char dot = '.';
     public const char asterisk = '*';
@@ -54,26 +48,19 @@ public static class AllChars
     static AllChars()
     {
         ConvertWhiteSpaceCodesToChars();
-
-        for (int i = 0; i < 65536; i++)
-        {
-            allUnicodeChars.Add((char)i);
-        }
-
-
     }
-
-
 
     public static void ConvertWhiteSpaceCodesToChars()
     {
+        
         whiteSpacesChars = new List<char>();
         foreach (int item in whiteSpacesCodes)
         {
             string s = "";
             s = char.ConvertFromUtf32(item);
             whiteSpacesChars.Add(Convert.ToChar(s));
-        }   
+        }
+        
     }
 
     

@@ -18,20 +18,7 @@ namespace desktop.Essential
 
         static ThisApp()
         {
-            
-        }
-
-        public static void EnableDesktopLogging(bool enable)
-        {
-            if (enable)
-            {
-                sunamo.Essential.ThisApp.StatusSetted += ThisApp_StatusSetted;
-            }
-            else
-            {
-                // Don't raise exception when StatusSetted is null
-                sunamo.Essential.ThisApp.StatusSetted -= ThisApp_StatusSetted;
-            }
+            sunamo.Essential.ThisApp.StatusSetted += ThisApp_StatusSetted;
         }
 
         private  static void ThisApp_StatusSetted(TypeOfMessage t, string message)

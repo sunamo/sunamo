@@ -1,37 +1,8 @@
 using System;
 using System.Text;
-using System.Web;
 
 public static class UriWebServices
 {
-    public const string SearchTermSubsitite = "%s";
-    
-    public static string KmoAV(string name)
-    {
-        return ChromeOmniboxSearch("https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0", name);
-    }
-
-    public static string KmoMP(string name)
-    {
-        return ChromeOmniboxSearch("https://tritius.kmo.cz/Katalog/search?q=%s&area=242&field=0", name);
-    }
-
-    public static string KmoAll(string name)
-    {
-        return ChromeOmniboxSearch("https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0", name);
-    }
-
-    public static string MapyCzSearch(string what)
-    {
-        string mapyCzSearch = $"https://en.mapy.cz/zakladni?q={SearchTermSubsitite}";
-        return ChromeOmniboxSearch( mapyCzSearch, what);
-    }
-
-    private static string ChromeOmniboxSearch(string mapyCzSearch, string what)
-    {
-        return mapyCzSearch.Replace(SearchTermSubsitite, HttpUtility.UrlEncode(what));
-    }
-
     public static string FacebookProfile(string nick)
     {
         return "http://www.facebook.com/" + nick;

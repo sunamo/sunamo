@@ -14,11 +14,6 @@ namespace sunamo.Essential
         }
         #endregion
 
-        public static string FolderDontExists(string before, string path)
-        {
-            return CheckBefore(before) + "Folder doesn't exist: " + path;
-        }
-
         public static string CheckBackslashEnd(string before, string r)
         {
             if (r.Length != 0)
@@ -39,15 +34,6 @@ namespace sunamo.Essential
                 return "";
             }
             return before + ": ";
-        }
-
-        public static string TextBoxWithoutContent(string before, string txtName, string txtContent)
-        {
-            if (string.IsNullOrEmpty(txtContent))
-            {
-                return txtName + " wasn't filled";
-            }
-            return null;
         }
 
         public static string DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
@@ -76,16 +62,6 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static string IsNull(string before, string variableName, object variableValue)
-        {
-            if (variableValue == null)
-            {
-                return CheckBefore(before) + " " + variableName + " is null";
-            }
-
-            return null;
-        }
-
         public static string InvalidParameter(string before, string mayUrlDecoded, string typeOfInput)
         {
             if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))
@@ -98,7 +74,7 @@ namespace sunamo.Essential
 
         public static string ElementCantBeFound(string before, string nameCollection, string element)
         {
-            return CheckBefore( before) + element + " cannot be found in " + nameCollection;
+            return CheckBefore( before) + element + "cannot be found in " + nameCollection;
         }
     }
 }

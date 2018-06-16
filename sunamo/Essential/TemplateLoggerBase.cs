@@ -17,10 +17,5 @@ namespace sunamo.Essential
         {
             writeLineDelegate.Invoke(TypeOfMessage.Success, what + " was successfully copied to clipboard.");
         }
-
-        public void FolderDontExists(string path)
-        {
-            writeLineDelegate.Invoke(TypeOfMessage.Error, Exceptions.FolderDontExists("", path));
-        }
     }
 }

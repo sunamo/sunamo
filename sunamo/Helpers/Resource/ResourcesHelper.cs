@@ -1,4 +1,3 @@
-using sunamo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,25 +29,14 @@ namespace sunamo.Helpers
         public static ResourcesHelper Create(string resourceClass, Assembly sunamoAssembly)
         {
             ResourcesHelper resourcesHelper = new ResourcesHelper();
-            resourcesHelper.rm = new ResourceManager(typeof(Properties.Resources));
+            resourcesHelper.rm = new ResourceManager(resourceClass, sunamoAssembly);
             return resourcesHelper;
-        }
-
-        public static ResourcesHelper Create(Type resourcesHelperType)
-        {
-            return Create(resourcesHelperType.FullName, resourcesHelperType.Assembly);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string GetString(string name)
         {
             return rm.GetString(name);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public string GetString(ResourceKeys name)
-        {
-            return rm.GetString(name.ToString());
         }
     }
 }

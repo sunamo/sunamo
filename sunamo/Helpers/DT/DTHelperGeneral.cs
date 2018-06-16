@@ -19,27 +19,6 @@ namespace sunamo.Helpers.DT
             //return Math.Round(((double)p.ElapsedMilliseconds / 999), 2).ToString() + "s";
         }
 
-        public static DateTime SetDateToMinValue(DateTime ugtFirstStep)
-        {
-            DateTime t = DateTime.MinValue;
-            return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
-        }
-
-        /// <summary>
-        /// Compare and return always positive value
-        /// </summary>
-        /// <param name="dt1"></param>
-        /// <param name="dt2"></param>
-        /// <returns></returns>
-        public static TimeSpan Substract(DateTime dt1, DateTime dt2)
-        {
-            if (dt1 > dt2)
-            {
-                return dt1 - dt2;
-            }
-            return dt2 - dt1;
-        }
-
         public static DateTime TodayPlusActualHour()
         {
             DateTime dt = DateTime.Today;

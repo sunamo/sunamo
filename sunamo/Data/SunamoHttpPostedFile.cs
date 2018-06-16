@@ -20,7 +20,7 @@ namespace sunamo.Data
             this.ContentType = ContentType;
 
             MemoryStream ms = new MemoryStream();
-            System.FS.CopyStream(InputStream, ms);
+            sunamo.FS.CopyStream(InputStream, ms);
 
             this.Bytes = ms.ToArray();
             this.FileName = FileName;
@@ -46,7 +46,7 @@ namespace sunamo.Data
 
         public void SaveAs(string filename)
         {
-            //System.FS.SaveStream(filename, InputStream);
+            //sunamo.FS.SaveStream(filename, InputStream);
             File.WriteAllBytes(filename, Bytes);
         }
     }

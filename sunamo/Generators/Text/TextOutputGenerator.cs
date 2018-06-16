@@ -89,14 +89,8 @@ public class TextOutputGenerator
         }
     }
 
-    public void List(IEnumerable<string> files1, string header, bool appendCount = false)
+    public void List(IEnumerable<string> files1, string header)
     {
-        if (appendCount)
-        {
-            header = header.TrimEnd(AllChars.space, AllChars.colon);
-            header += " (" + files1.Count() + ")";
-        }
-
         sb.AppendLine(header);
         List(files1);
     }

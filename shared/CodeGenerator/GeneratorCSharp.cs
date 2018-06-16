@@ -4,12 +4,9 @@ using System;
 using System.Collections;
 using sunamo.CodeGenerator;
 using sunamo.Constants;
-using sunamo.Values;
 
 public class GeneratorCSharp : GeneratorCodeAbstract
 {
-    static Type type = typeof(GeneratorCSharp);
-
     public GeneratorCSharp()
     {
     }
@@ -63,8 +60,6 @@ public class GeneratorCSharp : GeneratorCodeAbstract
             throw new Exception("Neimplementovaná výjimka v metodě WriteAccessModifiers.");
         }
     }
-
-    
 
     public void Attribute(int pocetTab, string name, string attrs)
     {
@@ -396,8 +391,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         string cn = "List<"+genericType+">";
         NewVariable(pocetTabu, AccessModifiers.Private, cn, v, false);
         list = CA.WrapWith(list, AllStrings.qm);
-        
-        AppendLine(pocetTabu, v + " = new List<" + genericType + ">(CA.ToList<string>(" +  SH.Join(list, AllChars.comma) + "));" );
+        AppendLine(pocetTabu, v + " = new List<" + genericType + ">(" + SH.Join(list, AllChars.comma));
         
     }
 
@@ -439,44 +433,12 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         }
         string cn = "Dictionary<string, "+valueType+">";
         NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
-
         foreach (var item in dict)
         {
-            this.AppendLine(pocetTabu+1, nameDictionary + ".Add(@\"" + item.Key + "\", " + CSharpHelper.ConvertCodeElementToRightCsSynctact(item.Value.ToString()) + ");");
+            this.AppendLine(pocetTabu, nameDictionary + ".Add(\"" + item.Key + "\", " + item.Value + ");");
         }
     }
     #endregion
-
-    //
-    internal void GetIndexedABArray(int pocetTab, string nameList, List<string> input, System.Collections.IList values)
-    {
-        int count = input.Count;
-        ThrowExceptions.DifferentCountInLists(type, "GetIndexedABArray", "input", count, "values", values.Count);
-
-        string cn = "AB";
-
-        NewVariable(pocetTab, AccessModifiers.Private, cn + "[]", nameList, false);
-        AppendLine(pocetTab, nameList + "= new " + cn + "[" + count + "];");
-
-        for (int i = 0; i < input.Count; i++)
-        {
-            this.AppendLine(pocetTab + 1, nameList + "[" + i + "]= new "+ cn +"(@" + SH.WrapWith(input[i], AllChars.qm) + ", " + CSharpHelper.ConvertCodeElementToRightCsSynctact(values[i].ToString()) + ");" + "");
-        }
-    }
-
-    internal void GetABList(int pocetTab, string nameList, List<string> input, System.Collections.IList values)
-    {
-        ThrowExceptions.DifferentCountInLists(type, "GetABList", "input", input.Count, "values", values.Count);
-
-        string cn = "ABC";
-
-        NewVariable(pocetTab, AccessModifiers.Private, cn, nameList, true);
-        for (int i = 0; i < input.Count; i++)
-        {
-            this.AppendLine(pocetTab + 1, nameList + ".Add(@" + SH.WrapWith(input[i], AllChars.qm) + ", " + CSharpHelper.ConvertCodeElementToRightCsSynctact(values[i].ToString())+ ");" +
-                "");
-        }
-    }
 
     private void NewVariable(int pocetTabu, AccessModifiers _public, string cn, string name, bool createInstance)
     {
@@ -492,7 +454,6 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         {
             sb.AddItem((object)" = null;");
         }
-        // Cant be AppendLine - sometimes I need create instance non ordinal way (as array)
     }
 
     public void Enum(int pocetTabu, AccessModifiers _public, string nameEnum, List<EnumItem> enumItems)

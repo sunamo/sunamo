@@ -145,20 +145,6 @@ public class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-    public static string GetOl(List<string> possibleAnswers, bool checkForDuplicate)
-    {
-        string content = null;
-        if (checkForDuplicate)
-        {
-            content = GetForUlWCheckDuplicate(possibleAnswers);
-        }
-        else
-        {
-            content = GetForUlWoCheckDuplicate(possibleAnswers);
-        }
-        return XmlTemplates.Element("ol", content);
-    }
-
     public static string GalleryZoomInProfilePhoto(List<string> membersName, List<string> memberProfilePicture, List<string> memberAnchors)
     {
         HtmlGenerator hg = new HtmlGenerator();
@@ -560,6 +546,8 @@ public class HtmlGenerator2 : HtmlGenerator
         return "<ul class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "</ul>";
     }
 
+    
+
     public static string Success(string p)
     {
         HtmlGenerator hg = new HtmlGenerator();
@@ -568,6 +556,11 @@ public class HtmlGenerator2 : HtmlGenerator
         hg.TerminateTag("div");
         return hg.ToString();
     }
+
+
+
+
+
 
     /// <summary>
     /// Zadávej A1 bez http://, do odkazu se doplní samo, do textu nikoliv

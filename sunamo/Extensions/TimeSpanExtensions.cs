@@ -1,6 +1,5 @@
 using System;
 
-// Extension class can't be in namespace
 public static class TimeSpanExtensions
 {
     public static int TotalYears(this TimeSpan timespan)

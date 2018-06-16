@@ -22,7 +22,6 @@ namespace sunamo.Essential
 
         public static void SetStatus(TypeOfMessage st, string status, params object[] args)
             {
-            
             StatusSetted(st, string.Format(status, args));
             }
     }

@@ -170,7 +170,7 @@ namespace SunamoFtp
             foreach (string item in files)
             {
 
-                long fileSize = System.FS.GetFileSize(item);
+                long fileSize = sunamo.FS.GetFileSize(item);
                 if (!FtpHelper.IsFileOnHosting(item, fse, fileSize))
                 {
 
@@ -228,7 +228,7 @@ namespace SunamoFtp
 
             foreach (string item in directories)
             {
-                if (!uploadFolderRek(item, UH.Combine(false, slozkaNaHostingu, System.FS.GetFileName(item))))
+                if (!uploadFolderRek(item, UH.Combine(false, slozkaNaHostingu, sunamo.FS.GetFileName(item))))
                 {
                     return false;
                 }
@@ -359,7 +359,7 @@ namespace SunamoFtp
         /// <param name="_FTPPass">FTP login password</param>
         public void UploadFile(string _FileName)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/", UH.Combine(true, ps.ActualPath, System.FS.GetFileName(_FileName)));
+            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/", UH.Combine(true, ps.ActualPath, sunamo.FS.GetFileName(_FileName)));
             if (reallyUpload)
             {
                 UploadFileMain(_FileName, _UploadPath);
@@ -378,7 +378,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool UploadFile(string fullFilePath, string actualFtpPath)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/" + "/", UH.Combine(false, actualFtpPath, System.FS.GetFileName(fullFilePath)));
+            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/" + "/", UH.Combine(false, actualFtpPath, sunamo.FS.GetFileName(fullFilePath)));
             var vr = true;
             if (reallyUpload)
             {

@@ -134,11 +134,8 @@ namespace sunamo
         }
     }
 
-
     public class BT
     {
-        
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Invert(bool b, bool really)
         {
@@ -158,19 +155,6 @@ namespace sunamo
                 return vr;
             }
             return defaultValue;
-        }
-
-        public static bool IsNullableTrue(bool? Value)
-        {
-            if (Value.HasValue)
-            {
-                if (Value.Value)
-                {
-                    return true;
-                }
-
-            }
-            return false;
         }
 
         public static bool GetValueOfNullable(bool? t)

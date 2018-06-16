@@ -8,8 +8,8 @@ namespace sunamo.Constants
     {
         public const string EaseUsRestored = @"c:\Users\n\";
         public const string DiskDrill = @"d:\_NewlyRecovered\";
-        public const string Managed = @"d:\Documents\vs\";
+        public const string Managed = @"d:\Docs\vs\Projects\";
         public const string GoodContent = @"d:\_GoodContent\";
-        
+
     }
 }

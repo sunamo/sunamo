@@ -7,6 +7,6 @@ using System.Text;
         Jpg,
         Png,
         Gif,
-       None
+    None
 }
 

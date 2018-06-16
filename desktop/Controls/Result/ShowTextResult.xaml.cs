@@ -29,10 +29,9 @@ namespace desktop.Controls
             InitializeComponent();
         }
 
-
         public ShowTextResult(string text) : this()
         {
-            txtResult.Text = text.Trim();
+            txtResult.Text = text;
         }
 
         public bool? DialogResult { set => ChangeDialogResult(value); }

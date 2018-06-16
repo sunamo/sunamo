@@ -91,8 +91,11 @@ public  class RA
         public static bool ReturnValueBool(string klic)
         {
             string s = m.GetValue(klic, "").ToString();
-        return BTS.ParseBool(s);
-            
+            if (s == "True")
+            {
+                return true;
+            }
+            return false;
         }
     }
 

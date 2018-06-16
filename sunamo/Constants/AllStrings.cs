@@ -8,16 +8,6 @@ namespace sunamo.Constants
     {
         public const string space = " ";
         public const string dash = "-";
-
-        /// <summary>
-        /// Space wrapped dash
-        /// </summary>
-        public const string swd = " - ";
-        /// <summary>
-        /// Space wrapped dash and right arrow
-        /// </summary>
-        public const string swda = " -> ";
-
         public const string colon = ":";
         public const string us = "_";
 
@@ -32,14 +22,5 @@ namespace sunamo.Constants
 
         public const string sc = ";";
         public const string qm = "\"";
-
-        public const string _1 = "1";
-        public const string _2 = "2";
-        public const string _1a = "1a";
-        public const string DoubleSpace = "  ";
-
-        public const string lb = "(";
-        public const string rb = ")";
-        
     }
 }

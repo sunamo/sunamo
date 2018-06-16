@@ -28,22 +28,12 @@ public class DictionaryHelper
         }
     }
 
-    /// <summary>
-    /// Change values to keys and aggregate keys
-    /// Used for delete all files but one
-    /// Can be used also for collections - unit test
-    /// </summary>
-    /// <typeparam name="Key"></typeparam>
-    /// <typeparam name="Value"></typeparam>
-    /// <param name="dictionary"></param>
-    /// <returns></returns>
-    public static Dictionary<Value, List<Key>> GroupByValues<Key, Value>(Dictionary<Key, Value> dictionary)
+    public static Dictionary<T, List<U>> GroupByValues<U, T>(Dictionary<U, T> dictionary)
     {
-        // TODO: Rename for GroupByKeys
-        Dictionary<Value, List<Key>> result = new Dictionary<Value, List<Key>>();
+        Dictionary<T, List<U>> result = new Dictionary<T, List<U>>();
         foreach (var item in dictionary)
         {
-            DictionaryHelper.AddOrCreate<Value, Key>(result, item.Value, item.Key);
+            DictionaryHelper.AddOrCreate<T, U>(result, item.Value, item.Key);
         }
         return result;
     }

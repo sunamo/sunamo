@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 public class FrameworkElementHelper
 {
-    // TODO: Move all to WPF control
+
 
     public static Size GetMaxContentSize(FrameworkElement fe)
     {

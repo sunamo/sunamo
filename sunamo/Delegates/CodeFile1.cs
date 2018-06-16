@@ -26,7 +26,6 @@ public delegate void VoidT3<T, U, Z>(T t, U u, Z z);
 public delegate void VoidVoid();
 public delegate void VoidListT<T>(List<T> c);
 public delegate void VoidUri(Uri uri);
-public delegate List<string> ListStringListString(List<string> list);
 
 public delegate void VoidAction(sunamo.Action action);
 public delegate void VoidDouble(Double c);

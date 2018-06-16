@@ -84,7 +84,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGenerator\CSharpParser.cs" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstract.cs" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
     <Compile Include="Converters\StringHexColorConverter.cs" />
@@ -117,15 +116,12 @@
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\CSharpHelper.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
-    <Compile Include="Helpers\Powershell\PowershellBuilder.cs" />
-    <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
-    <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
+    <Compile Include="Helpers\PowershellHelper.cs" />
+    <Compile Include="Helpers\PowershellRunner.cs" />
     <Compile Include="Helpers\Resources\BitmapImageHelper.cs" />
     <Compile Include="Helpers\Resources\BitmapImagesHelper.cs" />
     <Compile Include="Helpers\Resources\DrawingImageHelper.cs" />

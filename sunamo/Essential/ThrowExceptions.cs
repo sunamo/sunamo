@@ -36,12 +36,7 @@ public class ThrowExceptions
             typeFullName = t.FullName;
         }
 
-        if (!string.IsNullOrWhiteSpace(typeFullName))
-        {
-            return string.Concat(typeFullName, ".", methodName);
-        }
-
-        return methodName;
+        return SH.ConcatIfBeforeHasValue(typeFullName, ".", methodName);
     }
     #endregion
 
@@ -76,19 +71,6 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.CheckBackslashEnd("", r));
     }
     #endregion
-
-    public static void IsNull(object type, string methodName, string variableName, object variableValue)
-    {
-        if (variableValue == null)
-        {
-            ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName), variableName, variableValue));
-        }
-    }
-
-    public static void TextBoxWithoutContent(object type, string methodName, string txtName, string txtContent)
-    {
-        ThrowIsNotNull(Exceptions.TextBoxWithoutContent(FullNameOfExecutedCode(type, methodName), txtName, txtContent));
-    }
 
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {

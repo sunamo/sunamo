@@ -332,7 +332,10 @@ public class GeneralHelper
             idIP = MSStoredProceduresI.ci.SelectCellDataTableIntOneRow(true, Tables.IPAddress, "ID", AB.Get("IP1", ip[0]), AB.Get("IP2", ip[1]), AB.Get("IP3", ip[2]), AB.Get("IP4", ip[3]));
         }
         return idIP;
+
     }
+
+
 
     public static byte GetOrInsertState(string venueLocationCountry)
     {

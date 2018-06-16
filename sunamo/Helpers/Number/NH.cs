@@ -16,26 +16,6 @@ public static class NH
         return s;
     }
 
-    /// <summary>
-    /// If will be zero elements, return 0;
-    /// </summary>
-    /// <param name="f"></param>
-    /// <returns></returns>
-    public static float Average(params float[] f)
-    {
-        if (f.Length == 0)
-        {
-            return 0;
-        }
-        double sum = 0;
-        foreach (var item in f)
-        {
-            sum += item;
-        }
-        double result = (sum / f.Length);
-        return (float)result;
-    }
-
     public static double Average(double gridWidth, int columnsCount)
     {
         //int columnsCount = g.ColumnDefinitions.Count;
@@ -126,11 +106,6 @@ public static class NH
     public static double ReturnTheNearestSmallIntegerNumber(double d)
     {
         return (double)Convert.ToInt32(d);
-    }
-
-    public static float Round0(float f)
-    {
-        return (float)Math.Round(f, 0);
     }
 
     public static float RoundAndReturnInInputType(float ugtKm, int v)

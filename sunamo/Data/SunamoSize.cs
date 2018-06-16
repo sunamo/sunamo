@@ -1,4 +1,3 @@
-using sunamo.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +16,10 @@ namespace sunamo.Data
 
         }
 
-        public SunamoSize(double width, double height)
+        public SunamoSize(int width, int height)
         {
             Width = width;
             Height = height;
-        }
-
-        public override string ToString()
-        {
-            return TextTemplates.WidthHeight(Width, Height);
         }
     }
 }
