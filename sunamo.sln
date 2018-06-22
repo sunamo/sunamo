@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webforms", "webforms\webfor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoWeb", "WebSunamo\SunamoWeb.csproj", "{BA9D6B58-457B-4CA5-AD4D-71A5F24D0BD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "research", "research\research.csproj", "{AE29610A-802D-4C92-8197-1B5F8A293170}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,18 @@ Global
 		{BA9D6B58-457B-4CA5-AD4D-71A5F24D0BD1}.Release|x64.Build.0 = Release|x64
 		{BA9D6B58-457B-4CA5-AD4D-71A5F24D0BD1}.Release|x86.ActiveCfg = Release|x86
 		{BA9D6B58-457B-4CA5-AD4D-71A5F24D0BD1}.Release|x86.Build.0 = Release|x86
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|x64.Build.0 = Release|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE29610A-802D-4C92-8197-1B5F8A293170}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
