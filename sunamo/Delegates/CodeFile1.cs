@@ -42,3 +42,4 @@ public delegate void VoidIntDouble(int nt, double d);
 public delegate Task TaskVoid();
 public delegate Task TaskObject(object o);
 //public delegate string EditHtmlWidthHandler(ref HtmlNode hm, string s);
+public delegate List<string> ListStringListString(List<string> list);

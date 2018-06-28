@@ -10,6 +10,7 @@ using sunamo;
 public static class CL //:  IZpravaUzivatelovi
 {
     readonly static string znakNadpisu = "*";
+    public static int zad = 0;
 
     #region base
     static CL()
@@ -37,11 +38,17 @@ public static class CL //:  IZpravaUzivatelovi
     }
     #endregion
 
-    #region Zmena barvy konzoly
+    public static string UserMustTypeInFormat(string v, TextFormatData textFormat)
+    {
+        throw new NotImplementedException();
+    }
+
+    #region Change color of Console
     static void ChangeColorOfConsoleAndWrite(string text, TypeOfMessage tz)
     {
         SetColorOfConsole(tz);
-        Console.WriteLine();Console.WriteLine(text);
+        Console.WriteLine();
+        Console.WriteLine(text);
         SetColorOfConsole(TypeOfMessage.Ordinal);
     }
 
@@ -85,6 +92,7 @@ public static class CL //:  IZpravaUzivatelovi
 
     #region UzivatelMusiZadat
     #region Main
+
     #region Text
     /// <summary>
     /// Do A1 zadejte text mezi "Zadejte " a textem ": "
@@ -95,8 +103,6 @@ public static class CL //:  IZpravaUzivatelovi
     {
         return UserMustType(text, true);
     }
-
-    public static int zad = 0;
 
     /// <summary>
     /// A2 zda se m� A1 p�ipojit p�ed A1 "Zadejte " a za text ": "
@@ -161,7 +167,7 @@ public static class CL //:  IZpravaUzivatelovi
     }
     #endregion
 
-    #region Cislo
+    #region Numbers
     /// <summary>
     /// 
     /// </summary>
@@ -220,22 +226,7 @@ public static class CL //:  IZpravaUzivatelovi
         return UserMustTypeNumber(vyzva, max);
     }
 
-    /// <summary>
-    /// Vyp�e "Thank you for using my app. Press enter to app will be terminated."
-    /// </summary>
-    public static void EndRunTime()
-    {
-        Information("Thank you for using my app. Press enter to app will be terminated.");
-        Console.ReadLine();
-    }
-
-    /// <summary>
-    /// Pouze vyp�e "Az budete mit vstupn� data, spus�te program znovu."
-    /// </summary>
-    public static void NoData()
-    {
-        Information("Az budete mit vstupn� data, spus�te program znovu.");
-    }
+    
     #endregion
 
     #region AnoNe
@@ -397,7 +388,7 @@ public static class CL //:  IZpravaUzivatelovi
 
     #endregion
 
-    #region Akce
+    #region Action
     /// <summary>
     /// ZObrazi na konzoli moznosti a po vyberu uzivatele ji vyvola s arg. A2.
     /// </summary>
@@ -405,8 +396,7 @@ public static class CL //:  IZpravaUzivatelovi
     public  static void PerformAction(Dictionary<string, EventHandler> akce, object sender)
     {
         string[] ss = NamesOfActions(akce);
-        int vybrano = SelectFromVariants(ss, "Akce kterou chcete provest?");
-        //Program.VytvoritScreenshot();
+        int vybrano = SelectFromVariants(ss, "Select action to proceed:");
         string ind = ss[vybrano];
         EventHandler eh = akce[ind];
         eh.Invoke(sender, EventArgs.Empty);
@@ -430,14 +420,30 @@ public static class CL //:  IZpravaUzivatelovi
     }
     #endregion
 
-
-
     public static void WriteLineFormat(string text, params object[] p)
     {
-        Console.WriteLine();Console.WriteLine(string.Format(text, p));
+        Console.WriteLine();
+        Console.WriteLine(string.Format(text, p));
     }
 
-    
+    #region Only print text
+    /// <summary>
+    /// Vyp�e "Thank you for using my app. Press enter to app will be terminated."
+    /// </summary>
+    public static void EndRunTime()
+    {
+        Information("Thank you for using my app. Press enter to app will be terminated.");
+        Console.ReadLine();
+    }
+
+    /// <summary>
+    /// Pouze vyp�e "Az budete mit vstupn� data, spus�te program znovu."
+    /// </summary>
+    public static void NoData()
+    {
+        Information("Az budete mit vstupn� data, spus�te program znovu.");
+    }
+    #endregion
 }
 
 

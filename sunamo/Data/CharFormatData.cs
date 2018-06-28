@@ -18,6 +18,10 @@ using System.Threading.Tasks;
     /// </summary>
         public char[] mustBe = null;
 
+    
+
+    public FromTo fromTo = null;
+
         public CharFormatData(bool? upper, char[] mustBe)
         {
             this.upper = upper;
@@ -26,6 +30,24 @@ using System.Threading.Tasks;
         
         }
 
+    public CharFormatData()
+    {
 
     }
+
+    public static CharFormatData GetOnlyNumbers(FromTo requiredLength)
+    {
+        CharFormatData data = new CharFormatData();
+        data.fromTo = requiredLength;
+        data.mustBe = AllChars.numericChars.ToArray();
+        return data;
+    }
+
+    public static CharFormatData Get(bool? upper, FromTo fromTo, params char[] mustBe)
+    {
+        CharFormatData data = new CharFormatData(upper, mustBe);
+        data.fromTo = fromTo;
+        return data;
+    }
+}
 
