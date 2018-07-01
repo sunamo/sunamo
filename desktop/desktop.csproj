@@ -90,7 +90,6 @@
     <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
     <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
     <Compile Include="ExceptionStrings.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\Input\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
@@ -173,7 +172,6 @@
     <Compile Include="FontHelper.cs" />
     <Compile Include="AppPaths.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />

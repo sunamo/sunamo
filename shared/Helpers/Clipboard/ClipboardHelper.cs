@@ -64,7 +64,12 @@ public class ClipboardHelper
 
     public static void SetList(List<string> d)
     {
-        string s = SH.JoinNL(d);
+        SetLines(d);
+    }
+
+    public static void SetLines(List<string> lines)
+    {
+        string s = SH.JoinNL(lines);
         Clipboard.SetText(s);
     }
 
@@ -93,4 +98,6 @@ public class ClipboardHelper
     {
         Clipboard.SetText(stringBuilder.ToString());
     }
+
+    
 }

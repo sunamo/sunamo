@@ -141,6 +141,18 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
         }
     }
 
+    public void Nuke()
+    {
+        base.Clear();
+        SaveFile();
+    }
+
+    public void DeleteEntry(string key)
+    {
+        base.Remove(key);
+        SaveFile();
+    }
+
     public object this[string key]
     {
         get
@@ -160,12 +172,8 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
                 if (typeName == ab.A)
                 {
                     ab.B = value;
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var item in this)
-                    {
-                        sb.Append(SF.PrepareToSerialization(item.Key, item.Value.A, item.Value.B));
-                    }
-                    TF.SaveFile(sb.ToString(), path);
+                    
+                    SaveFile();
                 }
                 else
                 {
@@ -180,5 +188,20 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
                 TF.AppendToFile(zapsatDoSouboru, path);
             }
         }
+    }
+
+    public bool Contains(string key)
+    {
+        return base.ContainsKey(key);
+    }
+
+    private void SaveFile()
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in this)
+        {
+            sb.Append(SF.PrepareToSerialization(item.Key, item.Value.A, item.Value.B));
+        }
+        TF.SaveFile(sb.ToString(), path);
     }
 }

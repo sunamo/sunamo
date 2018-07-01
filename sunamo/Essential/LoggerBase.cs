@@ -7,20 +7,26 @@ namespace sunamo.Essential
         // TODO: Make logger class as base and replace all occurences With Instance 
 
         VoidString writeLineDelegate;
+        public bool IsActive = true;
 
         public LoggerBase(VoidString writeLineDelegate)
         {
             this.writeLineDelegate = writeLineDelegate;
         }
+        
 
         public  void TwoState(bool ret, params object[] toAppend)
         {
-            writeLineDelegate.Invoke(ret.ToString() + "," + SH.Join(',', toAppend));
+            WriteLine(ret.ToString() + "," + SH.Join(',', toAppend));
         }
 
         public void WriteLine(string text)
         {
-            writeLineDelegate.Invoke(text);
+            if (IsActive)
+            {
+                writeLineDelegate.Invoke(text);
+            }
+            
         }
 
         public  void WriteLine(string what, object text)
@@ -33,7 +39,7 @@ namespace sunamo.Essential
                 {
                     append = what + ": ";
                 }
-                writeLineDelegate.Invoke(append + text.ToString());
+                WriteLine(append + text.ToString());
             }
         }
 
@@ -48,14 +54,14 @@ namespace sunamo.Essential
                 }
                 else
                 {
-                    writeLineDelegate.Invoke(list[i]);
+                    WriteLine(list[i]);
                 }
             }
         }
 
         public void WriteList(List<string> list)
         {
-            list.ForEach(d => writeLineDelegate.Invoke(d));
+            list.ForEach(d => WriteLine(d));
         }
 
         

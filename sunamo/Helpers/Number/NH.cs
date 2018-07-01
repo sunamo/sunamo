@@ -16,7 +16,7 @@ public static class NH
         return s;
     }
 
-    public static double Average(double gridWidth, int columnsCount)
+    public static double Average(double gridWidth, double columnsCount)
     {
         //int columnsCount = g.ColumnDefinitions.Count;
         if (columnsCount == 0)
@@ -129,5 +129,11 @@ public static class NH
             }
         }
         return vr;
+    }
+
+
+    public static string Round0(float v)
+    {
+        return Math.Round(v, 0).ToString();
     }
 }

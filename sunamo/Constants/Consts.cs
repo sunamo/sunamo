@@ -15,5 +15,11 @@ namespace sunamo.Values
         /// "x "
         /// </summary>
         public const string xs = "x ";
+
+        public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
+            AllExtensions.bmp,
+            AllExtensions.jpg);
+
+
     }
 }

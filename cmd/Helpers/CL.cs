@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
-
 using System.IO;
-using System.Windows.Forms;
 using sunamo;
+using sunamo.Enums;
 
 public static class CL //:  IZpravaUzivatelovi
 {
@@ -129,7 +128,7 @@ public static class CL //:  IZpravaUzivatelovi
 
             if (zad == 27)
             {
-                z = Clipboard.GetText();
+                z = ClipboardHelper.GetText();
                 break;
             }
             else if(zad == 13)

@@ -66,16 +66,23 @@ public class XmlGenerator
         sb.Append(" />");
     }
 
-    #region CheckNull - Zakomentované, kdykoliv je můžeš odkomentovat 
-    #endregion
+    
 
     public void WriteCData(string innerCData)
     {
         this.WriteRaw(string.Format("<![CDATA[{0}]]>", innerCData));
     }
 
-    public void WriteTagWithAttr(string tag, string atribut, string hodnota)
+    public void WriteTagWithAttr(string tag, string atribut, string hodnota, bool skipEmptyOrNull = false)
     {
+        if (skipEmptyOrNull)
+        {
+            if (string.IsNullOrWhiteSpace(hodnota))
+            {
+                return;
+            }
+        }
+
         string r = string.Format("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
         if (useStack)
         {

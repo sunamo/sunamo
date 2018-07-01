@@ -386,12 +386,12 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         this.AppendLine(pocetTabu, "[" + name + zav + "]");
     }
 
-    public void List(int pocetTabu, string genericType, string v, List<string> list)
+    public void List(int pocetTabu, string genericType, string listName, List<string> list)
     {
         string cn = "List<"+genericType+">";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, v, false);
+        NewVariable(pocetTabu, AccessModifiers.Private, cn, listName, false);
         list = CA.WrapWith(list, AllStrings.qm);
-        AppendLine(pocetTabu, v + " = new List<" + genericType + ">(" + SH.Join(list, AllChars.comma));
+        AppendLine(pocetTabu, listName + " = new List<" + genericType + ">(" + SH.Join(list, AllChars.comma));
         
     }
 

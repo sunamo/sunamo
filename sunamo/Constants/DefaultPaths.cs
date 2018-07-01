@@ -8,7 +8,10 @@ namespace sunamo.Constants
     {
         public static string Documents = @"D:\Documents";
         public static string Docs = @"D:\Docs";
+        public static string Downloads = @"D:\Downloads";
 
-        public static string[] All = new string[] { Documents, Docs };
+        public static string[] All = new string[] { Documents, Docs, Downloads };
+
+       
     }
 }

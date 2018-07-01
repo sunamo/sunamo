@@ -198,24 +198,10 @@ public class HtmlGenerator2 : HtmlGenerator
         return gh.ToString();
     }
 
-    public static string GetForUlWCheckDuplicate(System.Collections.Generic.List<string> to)
-    {
-        HtmlGenerator hg = new HtmlGenerator();
-        System.Collections.Generic.List<string> zapsane = new System.Collections.Generic.List<string>();
-        for (int i = 0; i < to.Count; i++)
-        {
-            string s = to[i];
-            if (!zapsane.Contains(s))
-            {
-                zapsane.Add(s);
-                hg.WriteTag("li");
-                //hg.ZapisTagSAtributem("a", "href", "ZobrazText.aspx?sid=" + s.id.ToString());
-                hg.WriteRaw(s);
-                hg.TerminateTag("li");
-            }
-        }
-        return hg.ToString();
-    }
+    
+
+
+
 
     /// <summary>
     /// Jedná se o divy pod sebou, nikoliv o ol/ul>li 
@@ -335,6 +321,8 @@ public class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
+
+    #region GetForUlWoCheckDuplicate
     /// <summary>
     /// Do A1 doplň třeba EditMister.aspx?mid= - co za toto si automaticky doplní a A2 jsou texty do inner textu a
     /// Nehodí se tedy proto vždy, například, když máš přehozené IDčka v DB
@@ -344,30 +332,25 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetForUlWoCheckDuplicate(string baseAnchor, string[] to)
     {
-        HtmlGenerator hg = new HtmlGenerator();
-
-        for (int i = 0; i < to.Length; i++)
-        {
-            string s = to[i];
-
-            hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", baseAnchor + (i + 1).ToString());
-            hg.WriteRaw(s);
-            hg.TerminateTag("a");
-
-            hg.TerminateTag("li");
-        }
-
-        return hg.ToString();
+        return GetForUlWoCheckDuplicate(baseAnchor, to, to);
     }
 
-    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> to, string najitVTextu, string nahraditVTextu, string pripona = "")
+    /// <summary>
+    /// Automatically replace A3 for A4
+    /// </summary>
+    /// <param name="baseAnchor"></param>
+    /// <param name="idcka"></param>
+    /// <param name="najitVTextu"></param>
+    /// <param name="nahraditVTextu"></param>
+    /// <param name="pripona"></param>
+    /// <returns></returns>
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> idcka, string najitVTextu, string nahraditVTextu, string pripona = "")
     {
         HtmlGenerator hg = new HtmlGenerator();
 
-        for (int i = 0; i < to.Count; i++)
+        for (int i = 0; i < idcka.Count; i++)
         {
-            string s = to[i];
+            string s = idcka[i];
 
             hg.WriteTag("li");
             hg.WriteTagWithAttr("a", "href", baseAnchor + s + pripona);
@@ -379,6 +362,41 @@ public class HtmlGenerator2 : HtmlGenerator
             {
                 hg.WriteRaw(s);
             }
+
+            hg.TerminateTag("a");
+
+            hg.TerminateTag("li");
+        }
+
+        return hg.ToString();
+    }
+
+    public static string GetForUl(string baseAnchor, string[] idcka, string[] texty, bool skipDuplicates)
+    {
+        return GetForUl(baseAnchor, CA.ToListString(idcka), CA.ToListString(texty), skipDuplicates);
+    }
+
+    public static string GetForUl(string baseAnchor, List<string> idcka, List<string> texty, bool skipDuplicates)
+    {
+        if (idcka.Count != texty.Count)
+        {
+            return "Nastala chyba, program poslal na render nejméně v jednom poli méně prvků než se očekávalo";
+        }
+        HtmlGenerator hg = new HtmlGenerator();
+
+        if (skipDuplicates)
+        {
+            texty = CA.RemoveDuplicitiesList(texty);
+        }
+
+        for (int i = 0; i < texty.Count; i++)
+        {
+            string s = texty[i];
+            hg.WriteTag("li");
+            hg.WriteTagWithAttr("a", "href", baseAnchor + idcka[i]);
+            
+                hg.WriteRaw(texty[i]);
+            
             
             hg.TerminateTag("a");
 
@@ -390,43 +408,7 @@ public class HtmlGenerator2 : HtmlGenerator
 
     public static string GetForUlWoCheckDuplicate(string baseAnchor, string[] idcka, string[] texty)
     {
-        if (idcka.Length != texty.Length)
-        {
-            return "Nastala chyba, program poslal na render nejméně v jednom poli méně prvků než se očekávalo";
-        }
-        HtmlGenerator hg = new HtmlGenerator();
-
-        for (int i = 0; i < texty.Length; i++)
-        {
-            hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", baseAnchor + idcka[i]);
-            hg.WriteRaw(texty[i]);
-            hg.TerminateTag("a");
-
-            hg.TerminateTag("li");
-        }
-
-        return hg.ToString();
-    }
-
-    public static string GetUlWoCheckDuplicate(string baseAnchor, string[] to)
-    {
-        return "<ul class=\"textVlevo\">";
-        HtmlGenerator hg = new HtmlGenerator();
-
-        for (int i = 0; i < to.Length; i++)
-        {
-            string s = to[i];
-
-            hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", baseAnchor + (i + 1).ToString());
-            hg.WriteRaw(s);
-            hg.TerminateTag("a");
-
-            hg.TerminateTag("li");
-        }
-
-        return hg.ToString() + "</ul>";
+        return GetForUl(baseAnchor, idcka, texty, false);
     }
 
     /// <summary>
@@ -438,50 +420,7 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetForUlWoCheckDuplicate(string[] anchors, string[] to)
     {
-        if (anchors.Length != to.Length)
-        {
-            throw new Exception("Počty odrážek a odkazů se liší");
-        }
-
-        HtmlGenerator hg = new HtmlGenerator();
-
-        for (int i = 0; i < to.Length; i++)
-        {
-            string s = to[i];
-
-            hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", anchors[i]);
-            hg.WriteRaw(s);
-            hg.TerminateTag("a");
-
-            hg.TerminateTag("li");
-        }
-
-        return hg.ToString();
-    }
-
-    public static string GetOlWoCheckDuplicate(List<string> anchors, List<string> to)
-    {
-        if (anchors.Count != to.Count)
-        {
-            throw new Exception("Počty odrážek a odkazů se liší");
-        }
-
-        HtmlGenerator hg = new HtmlGenerator();
-        hg.WriteTag("ol");
-        for (int i = 0; i < to.Count; i++)
-        {
-            string s = to[i];
-
-            hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", anchors[i]);
-            hg.WriteRaw(s);
-            hg.TerminateTag("a");
-
-            hg.TerminateTag("li");
-        }
-        hg.TerminateTag("ol");
-        return hg.ToString();
+        return GetForUl("", anchors, to, false);
     }
 
     /// <summary>
@@ -510,16 +449,51 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetForUlWoCheckDuplicate(string[] to)
     {
+        return GetForUlWCheckDuplicate(CA.ToListString(to));
+    }
+    #endregion
+
+    #region GetForUlWCheckDuplicate
+    public static string GetForUlWCheckDuplicate(System.Collections.Generic.List<string> to)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+        System.Collections.Generic.List<string> zapsane = new System.Collections.Generic.List<string>();
+        for (int i = 0; i < to.Count; i++)
+        {
+            string s = to[i];
+            if (!zapsane.Contains(s))
+            {
+                zapsane.Add(s);
+                hg.WriteTag("li");
+                //hg.ZapisTagSAtributem("a", "href", "ZobrazText.aspx?sid=" + s.id.ToString());
+                hg.WriteRaw(s);
+                hg.TerminateTag("li");
+            }
+        }
+        return hg.ToString();
+    }  
+    #endregion
+
+
+    #region Ul
+    public static string GetUlWoCheckDuplicate(string baseAnchor, string[] to)
+    {
+        return "<ul class=\"textVlevo\">";
         HtmlGenerator hg = new HtmlGenerator();
 
         for (int i = 0; i < to.Length; i++)
         {
+            string s = to[i];
+
             hg.WriteTag("li");
-            hg.WriteRaw(to[i]);
+            hg.WriteTagWithAttr("a", "href", baseAnchor + (i + 1).ToString());
+            hg.WriteRaw(s);
+            hg.TerminateTag("a");
+
             hg.TerminateTag("li");
         }
 
-        return hg.ToString();
+        return hg.ToString() + "</ul>";
     }
 
     /// <summary>
@@ -530,10 +504,8 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] list, string appendClass)
     {
-        return "<ul class=\"textVlevo "+ appendClass +"\">" + GetForUlWoCheckDuplicate(list) + "</ul>";
-    } 
-
-    
+        return "<ul class=\"textVlevo " + appendClass + "\">" + GetForUlWoCheckDuplicate(list) + "</ul>";
+    }
 
     /// <summary>
     /// 
@@ -545,8 +517,38 @@ public class HtmlGenerator2 : HtmlGenerator
     {
         return "<ul class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "</ul>";
     }
+    #endregion
 
-    
+    #region Ol
+    public static string GetOl(List<string> possibleAnswers, bool v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static string GetOlWoCheckDuplicate(List<string> anchors, List<string> to)
+    {
+        if (anchors.Count != to.Count)
+        {
+            throw new Exception("Počty odrážek a odkazů se liší");
+        }
+
+        HtmlGenerator hg = new HtmlGenerator();
+        hg.WriteTag("ol");
+        for (int i = 0; i < to.Count; i++)
+        {
+            string s = to[i];
+
+            hg.WriteTag("li");
+            hg.WriteTagWithAttr("a", "href", anchors[i]);
+            hg.WriteRaw(s);
+            hg.TerminateTag("a");
+
+            hg.TerminateTag("li");
+        }
+        hg.TerminateTag("ol");
+        return hg.ToString();
+    }
+    #endregion
 
     public static string Success(string p)
     {
@@ -556,11 +558,6 @@ public class HtmlGenerator2 : HtmlGenerator
         hg.TerminateTag("div");
         return hg.ToString();
     }
-
-
-
-
-
 
     /// <summary>
     /// Zadávej A1 bez http://, do odkazu se doplní samo, do textu nikoliv

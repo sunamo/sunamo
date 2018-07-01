@@ -22,5 +22,10 @@ namespace sunamo.Constants
 
         public const string sc = ";";
         public const string qm = "\"";
+        /// <summary>
+        /// space wrapped dash
+        /// </summary>
+        public const string swda = " - ";
+        public const string doubleSpace = "  ";
     }
 }

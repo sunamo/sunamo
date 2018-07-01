@@ -95,6 +95,8 @@ public class TextOutputGenerator
         List(files1);
     }
 
+
+
     public void SingleCharLine(char paddingChar, int v)
     {
         sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
@@ -104,4 +106,7 @@ public class TextOutputGenerator
     {
         
     }
+
+
+
 }

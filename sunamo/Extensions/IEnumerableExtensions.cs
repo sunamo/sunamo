@@ -25,5 +25,17 @@ namespace sunamo.Extensions
             }
             return count;
         }
+
+        public static object FirstOrNull(this IEnumerable e)
+        {
+            if (e.Count() > 0)
+            {
+                foreach (var item in e)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -112,10 +112,23 @@ public static class CSharpHelper
         throw new Exception("Nepodporovaný typ");
     }
 
+    /// <summary>
+    /// Return also List because Array isn't use
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="arrayName"></param>
+    /// <returns></returns>
     public static string GetArray(List<string> input, string arrayName)
     {
         GeneratorCSharp generator = new GeneratorCSharp();
         generator.List(0, "string", arrayName, input);
+        return generator.ToString();
+    }
+
+    public static string GetList(List<string> input, string listName)
+    {
+        GeneratorCSharp generator = new GeneratorCSharp();
+        generator.List(0, "string", listName, input);
         return generator.ToString();
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE29610A-802D-4C92-8197-1B5F8A293170}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>research</RootNamespace>
-    <AssemblyName>research</AssemblyName>
+    <ProjectGuid>{EA7FB898-AD1B-401D-AC59-29E1BF80564B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cmd</RootNamespace>
+    <AssemblyName>cmd</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,13 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.6.15.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.6.15\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,38 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearchConsole\AllProjectsSearchConsoleResearch.cs">
-      <Link>AllProjectsSearchConsoleResearch.cs</Link>
-    </Compile>
-    <Compile Include="..\..\AllProjectsSearch\AllProjectsSearch\AllProjectsSearchResearch.cs">
-      <Link>AllProjectsSearchResearch.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ConsoleApp1\ConsoleApp1\ConsoleApp1Research.cs">
-      <Link>ConsoleApp1Research.cs</Link>
-    </Compile>
-    <Compile Include="..\..\WpfApp1\WpfApp1\WpfApp1Research.cs">
-      <Link>WpfApp1Research.cs</Link>
-    </Compile>
+    <Compile Include="Helpers\CL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cmd\cmd.csproj">
-      <Project>{ea7fb898-ad1b-401d-ac59-29e1bf80564b}</Project>
-      <Name>cmd</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\desktop\desktop.csproj">
-      <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
-      <Name>desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\forms\forms.csproj">
-      <Project>{f7969338-1b99-485c-99ea-5d06f45cda32}</Project>
-      <Name>forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
@@ -85,14 +60,6 @@
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
       <Name>sunamo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\webforms\webforms.csproj">
-      <Project>{fee6192c-6fc5-40df-933b-b26032a65ca9}</Project>
-      <Name>webforms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\web\web.csproj">
-      <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>
-      <Name>web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -113,7 +113,7 @@ public class TF
 
     public static List<string> GetLines(string sobuor)
     {
-        return SH.GetLines(ReadFile(sobuor));
+        return ReadAllLines(sobuor);
     }
 
     public static void AppendToFile(string obsah, string soubor)
@@ -167,5 +167,10 @@ public class TF
 
             File.WriteAllLines(item, lines);
         }
+    }
+
+    public static List<string> ReadAllLines(string file)
+    {
+        return SH.GetLines(ReadFile(file));
     }
 }

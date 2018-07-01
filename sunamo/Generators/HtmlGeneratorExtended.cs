@@ -1,3 +1,5 @@
+using sunamo.Constants;
+using sunamo.Properties;
 using System;
 
 public class HtmlGeneratorExtended : HtmlGenerator
@@ -55,5 +57,31 @@ public class HtmlGeneratorExtended : HtmlGenerator
             TerminateTag("a");
             WriteBr();
         }
+    }
+
+    public void BoilerplateStart(string css, bool directInject)
+    {
+        WriteRaw(Resources.Html5BoilerplateStart);
+        if (directInject)
+        {
+            WriteTagWithAttr(HtmlTags.style, HtmlAttrs.type, HtmlAttrValue.textCss);
+            WriteRaw(TF.ReadFile(css));
+            TerminateTag(HtmlTags.style);
+        }
+        else
+        {
+            WriteTagWith2Attrs(HtmlTags.link, HtmlAttrs.rel, HtmlAttrValue.stylesheet, HtmlAttrs.href, css);
+        }
+
+    }
+
+    public void BoilerplateMiddle()
+    {
+        //WriteRaw(Resources.)
+    }
+
+    public void BoilerplateEnd()
+    {
+        throw new NotImplementedException();
     }
 }

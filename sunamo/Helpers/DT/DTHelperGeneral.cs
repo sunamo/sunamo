@@ -58,6 +58,18 @@ namespace sunamo.Helpers.DT
             return b.ToString();
         }
 
+        public static TimeSpan Substract(DateTime dt1, DateTime dt2)
+        {
+            TimeSpan ts = dt1 - dt2;
+            return ts;
+        }
+
+        public static DateTime SetDateToMinValue(DateTime dt)
+        {
+            DateTime minVal = DateTime.MinValue;
+            return new DateTime(minVal.Year, minVal.Month, minVal.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+        }
+
         /// <summary>
         /// Kontroluje i na MinValue a MaxValue
         /// </summary>

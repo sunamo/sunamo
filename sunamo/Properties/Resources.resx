@@ -121,6 +121,13 @@
     <value>&lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="Html5BoilerplateMiddle" xml:space="preserve">
+    <value>&lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--[if lt IE 7]&gt;
+            &lt;p class="browsehappy"&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href="#"&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
+        &lt;![endif]--&gt;</value>
+  </data>
   <data name="Html5BoilerplateStart" xml:space="preserve">
     <value>&lt;!DOCTYPE html&gt;
 &lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
@@ -133,13 +140,6 @@
         &lt;title&gt;&lt;/title&gt;
         &lt;meta name="description" content=""&gt;
         &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;!--[if lt IE 7]&gt;
-            &lt;p class="browsehappy"&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href="#"&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
-        &lt;![endif]--&gt;</value>
-  </data>
-  <data name="String" xml:space="preserve">
-    <value>Html5BoilerplateEnd</value>
+    </value>
   </data>
 </root>

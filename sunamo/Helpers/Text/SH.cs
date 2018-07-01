@@ -114,6 +114,17 @@ public static class SH
         
     }
 
+    public static string RemoveAfterFirst(string t, char ch)
+    {
+        int dex = t.IndexOf(ch);
+        if (dex == -1 || dex == t.Length -1)
+        {
+            return t;
+        }
+        
+        return t.Substring(dex+1);
+    }
+
     public static bool HasLetter(string s)
     {
         foreach (var item in s)
@@ -568,6 +579,11 @@ public static class SH
             return v;
         }
         return SH.ReplaceOnce(v, co, zaCo);
+    }
+
+    internal static string Replace(string t, string what, string forWhat)
+    {
+        return t.Replace(what, forWhat);
     }
 
     public static bool IsNullOrWhiteSpace(string s)

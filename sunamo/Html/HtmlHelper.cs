@@ -1,4 +1,5 @@
 using HtmlAgilityPack;
+using sunamo.Constants;
 using sunamo.Xml;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace sunamo.Html
 {
     public static class HtmlHelper
     {
+        #region Without HtmlAgility
+        #region ToXml
         public static string ToXmlFinal(string xml)
         {
             xml = sunamo.Html.HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(xml);
@@ -54,457 +57,36 @@ namespace sunamo.Html
         {
             return ToXml(xml, true);
         }
+        #endregion
 
-        /// <summary>
-        /// Prochází děti A1 a pokud některý má název A2, G
-        /// Vrátí null pokud se takový tag nepodaří najít
-        /// </summary>
-        /// <param name="body"></param>
-        /// <param name="nazevTagu"></param>
-        /// <returns></returns>
-        public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
+        public static string ClearSpaces(string dd)
         {
-
-            //List<HtmlNode> html = new List<HtmlNode>();
-            foreach (HtmlNode item in body.ChildNodes)
-            {
-                if (item.Name == nazevTagu)
-                {
-                    return item;
-                }
-            }
-            return null;
-
-        }
-
-
-
-        /// <summary>
-        /// Do A3 se může vložit *
-        /// </summary>
-        /// <param name="vr"></param>
-        /// <param name="html"></param>
-        /// <param name="p"></param>
-        private static void RecursiveReturnTags(List<HtmlNode> vr, HtmlNode html, string p)
-        {
-            foreach (HtmlNode item in html.ChildNodes)
-            {
-                if (HasTagName(item, p))
-                {
-                    //RecursiveReturnTags(vr, item, p);
-                    if (!vr.Contains(item))
-                    {
-                        vr.Add(item);
-                    }
-                }
-                else
-                {
-                    RecursiveReturnTags(vr, item, p);
-                }
-            }
+            return dd.Replace("&nbsp;", " ").Replace("  ", " ");
         }
 
         /// <summary>
-        /// Do A2 se může zadat *
-        /// </summary>
-        /// <param name="hn"></param>
-        /// <param name="tag"></param>
-        /// <returns></returns>
-        private static bool HasTagName(HtmlNode hn, string tag)
-        {
-            if (tag == "*")
-            {
-                return true;
-            }
-            return hn.Name == tag;
-        }
-
-        public static bool HasChildTag(HtmlNode spanInHeader, string v)
-        {
-            return ReturnTags(spanInHeader, v).Count != 0;
-        }
-
-        /// <summary>
-        /// Do A2 se může vložit * ale nemělo by to moc smysl
-        /// </summary>
-        /// <param name="parent"></param>
-        /// <param name="tag"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnTags(HtmlNode parent, string tag)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-
-            foreach (var item in parent.ChildNodes)
-            {
-                if (HasTagName(item, tag))
-                {
-                    vr.Add(item);
-                }
-
-            }
-
-            return vr;
-        }
-
-        /// <summary>
-        /// Do A3 se může zadat * pro vrácení všech tagů
-        /// 
-        /// Do A5 se může vložit * pro vrácení tagů s hledaným atributem s jakoukoliv hodnotou
-        /// </summary>
-        /// <param name="vr"></param>
-        /// <param name="htmlNode"></param>
-        /// <param name="p"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        private static void RecursiveReturnTagsWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu)
-        {
-
-            foreach (HtmlNode item in htmlNode.ChildNodes)
-            {
-                if (HasTagName(item, p))
-                {
-                    if (HasTagAttr(item, atribut, hodnotaAtributu))
-                    {
-                        //RecursiveReturnTagsWithAttr(vr, item, p);
-                        if (!vr.Contains(item))
-                        {
-                            vr.Add(item);
-                        }
-                    }
-                }
-                else
-                {
-                    RecursiveReturnTagsWithAttr(vr, item, p, atribut, hodnotaAtributu);
-                }
-            }
-        }
-
-        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu)
-        {
-            if (hodnotaAtributu == "*")
-            {
-                return true;
-            }
-            return HtmlHelper.GetValueOfAttribute(atribut, item) == hodnotaAtributu;
-        }
-
-        /// <summary>
-        /// Do A3 se může zadat * pro vrácení všech tagů
-        /// </summary>
-        /// <param name="vr"></param>
-        /// <param name="htmlNode"></param>
-        /// <param name="p"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        private static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu)
-        {
-
-            foreach (HtmlNode item in htmlNode.ChildNodes)
-            {
-                if (HasTagName(item, p) && HtmlHelper.GetValueOfAttribute(atribut, item).Contains(hodnotaAtributu))
-                {
-                    //RecursiveReturnTagsWithContainsAttr(vr, item, p);
-                    if (!vr.Contains(item))
-                    {
-                        vr.Add(item);
-                    }
-                }
-                else
-                {
-                    RecursiveReturnTagsWithContainsAttr(vr, item, p, atribut, hodnotaAtributu);
-                }
-            }
-        }
-
-        public static bool HasTagAttrContains(HtmlNode htmlNode, string delimiter, string attr, string value)
-        {
-            string attrValue = HtmlHelper.GetValueOfAttribute(attr, htmlNode);
-            string[] spl = SH.Split(attrValue, delimiter);
-            return spl.Contains(value);
-        }
-
-        /// <summary>
-        /// Do A3 se může zadat * pro vrácení všech tagů
-        /// </summary>
-        /// <param name="vr"></param>
-        /// <param name="htmlNode"></param>
-        /// <param name="p"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        private static void RecursiveReturnTagsWithContainsAttrWithSplittedElement(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu, string delimiter)
-        {
-
-            foreach (HtmlNode item in htmlNode.ChildNodes)
-            {
-                if (HasTagName(item, p) && HasTagAttrContains(item, delimiter, atribut, hodnotaAtributu))
-                {
-                    //RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, item, p, atribut, hodnotaAtributu, delimiter);
-                    if (!vr.Contains(item))
-                    {
-                        vr.Add(item);
-                    }
-                }
-                else
-                {
-                    RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, item, p, atribut, hodnotaAtributu, delimiter);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Do A2 se může zadat * pro získaní všech tagů
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tag"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-
-            RecursiveReturnTagsWithContainsAttr(vr, htmlNode, tag, atribut, hodnotaAtributu);
-            return vr;
-        }
-
-        /// <summary>
-        /// Do A2 se může zadat * pro získaní všech tagů
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tag"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnTagsWithContainsClassRek(HtmlNode htmlNode, string tag, string t)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-
-            RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, htmlNode, tag, "class", t, " ");
-            return vr;
-        }
-
-        /// <summary>
-        /// Do A2 se může zadat * pro získaní všech tagů
-        /// Do A4 se může vložit * pro vrácení tagů s hledaným atributem s jakoukoliv hodnotou
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tag"></param>
-        /// <param name="atribut"></param>
-        /// <param name="hodnotaAtributu"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnTagsWithAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-
-            RecursiveReturnTagsWithAttr(vr, htmlNode, tag, atribut, hodnotaAtributu);
-            return vr;
-        }
-
-        /// <summary>
-        /// Nehodí se na vrácení obsahu celé stránky
-        /// A1 je zdrojový kód celé stránky
         /// 
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="p"></param>
-        /// <param name="ssh"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            HtmlDocument doc = new HtmlDocument();
-            //hd.Encoding = Encoding.UTF8;
-            doc.LoadHtml(s);
-            HtmlNode htmlNode = doc.DocumentNode;
-            RecursiveApplyToAllTags(vr, ref htmlNode, p, ssh, value);
-            return htmlNode.OuterHtml;
-            ;
-        }
-
-        /// <summary>
-        /// A1 je kolekce uzlů na které jsem zavolal A4
-        /// A2 je referencovaný uzel, do kterého se změny přímo projevují
-        /// A3 je název tagu který se hledá(div, a, atd.)
-        /// A4 je samotná metoda která bude provádět změny
-        /// A5 je volitelný parametr do A4
-        /// </summary>
-        /// <param name="vr"></param>
         /// <param name="html"></param>
-        /// <param name="p"></param>
-        /// <param name="ssh"></param>
-        /// <param name="value"></param>
-        private static void RecursiveApplyToAllTags(List<HtmlNode> vr, ref HtmlNode html, string p, EditHtmlWidthHandler ssh, string value)
-        {
-            for (int i = 0; i < html.ChildNodes.Count; i++)
-            {
-                HtmlNode item = html.ChildNodes[i];
-                if (item.Name == p)
-                {
-                    RecursiveApplyToAllTags(vr, ref item, p, ssh, value);
-                    if (!vr.Contains(item))
-                    {
-                        vr.Add(item);
-
-                        string d = ssh.Invoke(ref item, value);
-                    }
-                }
-                else
-                {
-                    RecursiveApplyToAllTags(vr, ref item, p, ssh, value);
-                }
-            }
-        }
-
-        public static HtmlNode ReturnTagRek(HtmlNode hn, string nameOfTag)
-        {
-            hn = HtmlHelper.TrimNode(hn);
-            foreach (HtmlNode var in hn.ChildNodes)
-            {
-                HtmlNode hn2 = var;//.FirstChild;
-                foreach (HtmlNode item2 in var.ChildNodes)
-                {
-                    if (item2.Name == nameOfTag)
-                    {
-                        return item2;
-                    }
-                    HtmlNode hn3 = ReturnTagRek(item2, nameOfTag);
-                    if (hn3 != null)
-                    {
-                        return hn3;
-                    }
-                }
-                if (hn2.Name == nameOfTag)
-                {
-                    return hn2;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Originally from HtmlParser
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tagName"></param>
-        /// <param name="attrName"></param>
-        /// <param name="attrValue"></param>
+        /// <param name="nameOfTag"></param>
         /// <returns></returns>
-        public static List<HtmlNode> ReturnTagsWithAttrRek2(HtmlNode htmlNode, string tagName, string attrName, string attrValue)
+        public static string TrimOpenAndEndTags(string html, string nameOfTag)
         {
-            List<HtmlNode> node = new List<HtmlNode>();
-            RecursiveReturnAllTags(node, htmlNode, tagName);
-            for (int i = node.Count - 1; i >= 0; i--)
-            {
-                if (GetValueOfAttribute(attrName, node[i]) != attrValue)
-                {
-                    node.RemoveAt(i);
-                }
-            }
-            return node;
+            html = html.Replace("<" + nameOfTag + ">", "");
+            html = html.Replace("</" + nameOfTag + ">", "");
+            return html;
         }
 
-        /// <summary>
-        /// Pokud bude nalezen alespoň jeden tag, vrátí ho, pokud žádný, GN
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tag"></param>
-        /// <param name="attr"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static HtmlNode ReturnTagWithAttr(HtmlNode htmlNode, string tag, string attr, string value)
+        public static string ConvertTextToHtml(string p)
         {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            RecursiveReturnTagWithAttr(vr, htmlNode, tag, attr, value);
-            if (vr.Count > 0)
-            {
-                return vr[0];
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// G null když tag nebude nalezen
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="tag"></param>
-        /// <param name="attr"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static HtmlNode ReturnTagWithAttrRek(HtmlNode htmlNode, string tag, string attr, string value)
-        {
-            return ReturnTagWithAttr(htmlNode, tag, attr, value);
-        }
-
-        public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            foreach (var item in htmlNodeCollection)
-            {
-                if (item.Name != "#text")
-                {
-                    vr.Add(item);
-                }
-            }
-            return vr;
-        }
-
-        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            foreach (var item in c2)
-            {
-                if (item.Name != "#text")
-                {
-                    vr.Add(item);
-                }
-            }
-            return vr;
+            p = p.Replace(Environment.NewLine, "<br />");
+            return p;
         }
 
         public static string PrepareToAttribute(string title)
         {
             return title.Replace('\"', '\'');
         }
-
-        /*
-                 * -----
-    from: 60
-    to: 67
-    word: aplikace
-    veta: -1
-    -----
-    -----
-    from: 81
-    to: 89
-    word: zobrazuje
-    veta: -1
-    -----
-    -----
-    from: 188
-    to: 196
-    word: zobrazuje
-    veta: -1
-    -----
-    -----
-    from: 217
-    to: 221
-    word: ještě
-    veta: -1
-    -----
-    -----
-    from: 251
-    to: 259
-    word: zobrazuje
-    veta: -1
-    -----
-    -----
-    from: 340
-    to: 349
-    word: angličtinu
-    veta: -1
-    -----
-                 */
 
         /// <summary>
         /// Před zavoláním této metody musí být v A1 převedeny bílé znaky na mezery - pouze tak budou označeny všechny výskyty daných slov
@@ -640,79 +222,12 @@ namespace sunamo.Html
             return r;
         }
 
-        
-
-        #region Z swf HtmlParser
-        private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
-        {
-            foreach (HtmlNode item in htmlNode.ChildNodes)
-            {
-                if (item.Name == tag && HtmlHelper.GetValueOfAttribute(attr, item) == value)
-                {
-                    //RecursiveReturnTagWithAttr(vr, item, tag, attr, value);
-                    vr.Add(item);
-                    return;
-                }
-                else
-                {
-                    RecursiveReturnTagWithAttr(vr, item, tag, attr, value);
-                }
-            }
-        }
-
-        
-        #endregion
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="atr"></param>
-        /// <param name="hod"></param>
-        public static void SetAttribute(HtmlNode node, string atr, string hod)
-        {
-            object o = node.Attributes[atr];
-            if (o != null)
-            {
-                node.Attributes.Remove(node.Attributes[atr]);
-            }
-            node.Attributes.Add(atr, hod);
-        }
-
-        /// <summary>
-        /// Vrátí SE pokud nenalezne, nebo bude prázdný. nevrací null
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="divMain"></param>
-        /// <returns></returns>
-        public static string GetValueOfAttribute(string p, HtmlNode divMain)
-        {
-            return GetValueOfAttribute(p, divMain, false);
-        }
-
-        public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim)
-        {
-            object o = divMain.Attributes[p];
-            if (o != null)
-            {
-                string st = ((HtmlAttribute)o).Value;
-                if (trim)
-                {
-                    st = st.Trim();
-                }
-                return st;
-            }
-            return "";
-        }
-
         public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
         {
             List<string> jizNahrazeno = new List<string>();
             var pol = CA.ToEnumerable("br", "hr", "img", "meta", "input", "iframe");
             MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
-            List<string> col = new List<string>( pol);
+            List<string> col = new List<string>(pol);
 
             //<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>
             foreach (Match item in mc)
@@ -746,9 +261,264 @@ namespace sunamo.Html
             return vstup;
         }
 
+        #region Strip
 
+        /// <summary>
+        /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static string StripAllTags(string p)
+        {
+            return StripAllTags(p, AllStrings.doubleSpace);
+        }
 
+        public static string StripAllTags(string p, string replaceFor)
+        {
+            return Regex.Replace(p, @"<[^>]*>", replaceFor);
+        }
 
+        /// <summary>
+        /// Strip all tags and return only 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static List<string> StripAllTagsList(string d)
+        {
+            string replaced = StripAllTags(d, AllStrings.doubleSpace);
+            return CA.ToListString(SH.Split(replaced, AllStrings.doubleSpace));
+        }
+
+        /// <summary>
+        /// Nahradí každý text <*> za mezeru. Vnitřní ne-xml obsah nechá být.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static string StripAllTagsSpace(string p)
+        {
+            return Regex.Replace(p, @"<[^>]*>", " ");
+        }
+
+        /// <summary>
+        /// Jen volá metodu StripAllTags
+        /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static string RemoveAllTags(string p)
+        {
+            return StripAllTags(p);
+        }
+        #endregion
+        #endregion
+
+        #region Set
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="atr"></param>
+        /// <param name="hod"></param>
+        public static void SetAttribute(HtmlNode node, string atr, string hod)
+        {
+            object o = node.Attributes[atr];
+            if (o != null)
+            {
+                node.Attributes.Remove(node.Attributes[atr]);
+            }
+            node.Attributes.Add(atr, hod);
+        }
+        #endregion
+
+        #region Get
+        /// <summary>
+        /// Vrátí SE pokud nenalezne, nebo bude prázdný. nevrací null
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="divMain"></param>
+        /// <returns></returns>
+        public static string GetValueOfAttribute(string p, HtmlNode divMain)
+        {
+            return GetValueOfAttribute(p, divMain, false);
+        }
+
+        public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim)
+        {
+            object o = divMain.Attributes[p];
+            if (o != null)
+            {
+                string st = ((HtmlAttribute)o).Value;
+                if (trim)
+                {
+                    st = st.Trim();
+                }
+                return st;
+            }
+            return "";
+        }
+        #endregion
+
+        #region Check name and value
+        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu)
+        {
+            if (hodnotaAtributu == "*")
+            {
+                return true;
+            }
+            return HtmlHelper.GetValueOfAttribute(atribut, item) == hodnotaAtributu;
+        }
+
+        /// <summary>
+        /// Do A2 se může zadat *
+        /// </summary>
+        /// <param name="hn"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        private static bool HasTagName(HtmlNode hn, string tag)
+        {
+            if (tag == "*")
+            {
+                return true;
+            }
+            return hn.Name == tag;
+        }
+
+        public static bool HasTagAttrContains(HtmlNode htmlNode, string delimiter, string attr, string value)
+        {
+            string attrValue = HtmlHelper.GetValueOfAttribute(attr, htmlNode);
+            string[] spl = SH.Split(attrValue, delimiter);
+            return spl.Contains(value);
+        }
+        #endregion
+
+        #region Helper methods
+
+        public static HtmlNode TrimNode(HtmlNode hn2)
+        {
+            if (hn2.FirstChild == null)
+            {
+                return hn2;
+            }
+            if (string.IsNullOrWhiteSpace(hn2.FirstChild.InnerHtml))
+            {
+                return hn2;
+            }
+            hn2.InnerHtml = hn2.InnerHtml.Trim();
+            hn2.FirstChild.InnerHtml = hn2.FirstChild.InnerHtml.Trim();
+            hn2.InnerHtml = hn2.InnerHtml.Trim();
+            return hn2;
+        }
+
+        #region Text nodes
+        public static List<HtmlNode> GetWithoutTextNodes(HtmlNode htmlNode)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (HtmlNode item in htmlNode.ChildNodes)
+            {
+                string dd = item.ToString();
+                if (dd != "HtmlAgilityPack.HtmlTextNode")
+                {
+                    vr.Add(item);
+                }
+            }
+            return vr;
+        }
+
+        public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (var item in htmlNodeCollection)
+            {
+                if (item.Name != "#text")
+                {
+                    vr.Add(item);
+                }
+            }
+            return vr;
+        }
+
+        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (var item in c2)
+            {
+                if (item.Name != "#text")
+                {
+                    vr.Add(item);
+                }
+            }
+            return vr;
+        }
+        #endregion
+
+        public static bool HasChildTag(HtmlNode spanInHeader, string v)
+        {
+            return ReturnTags(spanInHeader, v).Count != 0;
+        }
+
+        
+
+        #region Apply
+        /// <summary>
+        /// Nehodí se na vrácení obsahu celé stránky
+        /// A1 je zdrojový kód celé stránky
+        /// 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="p"></param>
+        /// <param name="ssh"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            HtmlDocument doc = new HtmlDocument();
+            //hd.Encoding = Encoding.UTF8;
+            doc.LoadHtml(s);
+            HtmlNode htmlNode = doc.DocumentNode;
+            RecursiveApplyToAllTags(vr, ref htmlNode, p, ssh, value);
+            return htmlNode.OuterHtml;
+            ;
+        }
+
+        /// <summary>
+        /// A1 je kolekce uzlů na které jsem zavolal A4
+        /// A2 je referencovaný uzel, do kterého se změny přímo projevují
+        /// A3 je název tagu který se hledá(div, a, atd.)
+        /// A4 je samotná metoda která bude provádět změny
+        /// A5 je volitelný parametr do A4
+        /// </summary>
+        /// <param name="vr"></param>
+        /// <param name="html"></param>
+        /// <param name="p"></param>
+        /// <param name="ssh"></param>
+        /// <param name="value"></param>
+        private static void RecursiveApplyToAllTags(List<HtmlNode> vr, ref HtmlNode html, string p, EditHtmlWidthHandler ssh, string value)
+        {
+            for (int i = 0; i < html.ChildNodes.Count; i++)
+            {
+                HtmlNode item = html.ChildNodes[i];
+                if (item.Name == p)
+                {
+                    RecursiveApplyToAllTags(vr, ref item, p, ssh, value);
+                    if (!vr.Contains(item))
+                    {
+                        vr.Add(item);
+
+                        string d = ssh.Invoke(ref item, value);
+                    }
+                }
+                else
+                {
+                    RecursiveApplyToAllTags(vr, ref item, p, ssh, value);
+                }
+            }
+        }
+        #endregion
+
+        
+
+        
 
         public static Dictionary<string, string> GetValuesOfStyle(HtmlNode item)
         {
@@ -769,62 +539,227 @@ namespace sunamo.Html
             return vr;
         }
 
-        /// <summary>
-        /// Jen volá metodu StripAllTags
-        /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string RemoveAllTags(string p)
+        
+
+        
+        #endregion
+
+
+        #region 1 Node
+        public static HtmlNode GetTag(HtmlNode cacheAuthorNode, string p)
         {
-            return StripAllTags(p);
+            foreach (HtmlNode item in cacheAuthorNode.ChildNodes)
+            {
+                if (item.OriginalName == p)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         /// <summary>
-        /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
+        /// Prochází děti A1 a pokud některý má název A2, G
+        /// Vrátí null pokud se takový tag nepodaří najít
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="body"></param>
+        /// <param name="nazevTagu"></param>
         /// <returns></returns>
-        public static string StripAllTags(string p)
+        public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
         {
-            return Regex.Replace(p, @"<[^>]*>", String.Empty);
+
+            //List<HtmlNode> html = new List<HtmlNode>();
+            foreach (HtmlNode item in body.ChildNodes)
+            {
+                if (item.Name == nazevTagu)
+                {
+                    return item;
+                }
+            }
+            return null;
+
         }
 
-        /// <summary>
-        /// Nahradí každý text <*> za mezeru. Vnitřní ne-xml obsah nechá být.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string StripAllTagsSpace(string p)
+        public static HtmlNode ReturnTagRek(HtmlNode hn, string nameOfTag)
         {
-            return Regex.Replace(p, @"<[^>]*>", " ");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="hn"></param>
-        /// <param name="nameOfTag"></param>
-        /// <param name="nameOfAtr"></param>
-        /// <param name="valueOfAtr"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> GetTagsOfAtribute(HtmlNode hn, string nameOfTag, string nameOfAtr, string valueOfAtr)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
+            hn = HtmlHelper.TrimNode(hn);
             foreach (HtmlNode var in hn.ChildNodes)
             {
-                if (var.Name == nameOfTag)
+                HtmlNode hn2 = var;//.FirstChild;
+                foreach (HtmlNode item2 in var.ChildNodes)
                 {
-                    if (HtmlHelper.GetValueOfAttribute(nameOfAtr, var) == valueOfAtr)
+                    if (item2.Name == nameOfTag)
                     {
-                        vr.Add(var);
+                        return item2;
                     }
+                    HtmlNode hn3 = ReturnTagRek(item2, nameOfTag);
+                    if (hn3 != null)
+                    {
+                        return hn3;
+                    }
+                }
+                if (hn2.Name == nameOfTag)
+                {
+                    return hn2;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        #region 2 Nodes - recursive
+        /// <summary>
+        /// Rekurzivně volá metodu RecursiveReturnAllTags
+        /// </summary>
+        /// <param name="vr"></param>
+        /// <param name="html"></param>
+        /// <param name="p"></param>
+        private static void RecursiveReturnAllTags(List<HtmlNode> vr, HtmlNode html, params string[] p)
+        {
+            foreach (HtmlNode item in html.ChildNodes)
+            {
+                bool contains = false;
+
+                if (p.Length == 1)
+                {
+                    if (item.Name == p[0])
+                    {
+                        contains = true;
+                    }
+                }
+                else
+                {
+                    foreach (var t in p)
+                    {
+                        if (item.Name == t)
+                        {
+                            contains = true;
+                        }
+                    }
+                }
+
+                if (contains)
+                {
+                    RecursiveReturnAllTags(vr, item, p);
+                    if (!vr.Contains(item))
+                    {
+                        vr.Add(item);
+                    }
+                }
+                else
+                {
+                    RecursiveReturnAllTags(vr, item, p);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Do A3 se může vložit *
+        /// </summary>
+        /// <param name="vr"></param>
+        /// <param name="html"></param>
+        /// <param name="p"></param>
+        private static void RecursiveReturnTags(List<HtmlNode> vr, HtmlNode html, string p)
+        {
+            foreach (HtmlNode item in html.ChildNodes)
+            {
+                if (HasTagName(item, p))
+                {
+                    //RecursiveReturnTags(vr, item, p);
+                    if (!vr.Contains(item))
+                    {
+                        vr.Add(item);
+                    }
+                }
+                else
+                {
+                    RecursiveReturnTags(vr, item, p);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Používá metodu RecursiveReturnTags
+        /// Do A2 se může vložit *
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnTagsRek(HtmlNode htmlNode, string tag)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            RecursiveReturnTags(vr, htmlNode, tag);
+            return vr;
+        }
+
+        /// <summary>
+        /// A1 je uzel který se bude rekurzivně porovnávat
+        /// A2 je název tagu(div, a, atd.) které chci vrátit.
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnAllTags(HtmlNode htmlNode, params string[] p)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            RecursiveReturnAllTags(vr, htmlNode, p);
+            return vr;
+        }
+
+        /// <summary>
+        /// If tag is A2, don't apply recursive on that
+        /// A2 je název tagu, napříkald img
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (HtmlNode item in html.ChildNodes)
+            {
+                if (item.Name == p)
+                {
+                    HtmlNode node = item.ParentNode;
+                    if (node != null)
+                    {
+                        vr.Add(item);
+                    }
+                }
+                else
+                {
+                    vr.AddRange(ReturnAllTags(item, p));
                 }
             }
             return vr;
         }
+        #endregion
 
+        #region 2 Nodes - no recursive
+        /// <summary>
+        /// Do A2 se může vložit * ale nemělo by to moc smysl
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnTags(HtmlNode parent, string tag)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
 
+            foreach (var item in parent.ChildNodes)
+            {
+                if (HasTagName(item, tag))
+                {
+                    vr.Add(item);
+                }
+
+            }
+
+            return vr;
+        }
+        #endregion
+
+        #region 3 NodeWithAttr
         public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string nameOfAtr, string valueOfAtr)
         {
             hn = HtmlHelper.TrimNode(hn);
@@ -892,126 +827,194 @@ namespace sunamo.Html
         }
 
         /// <summary>
-        /// 
+        /// Pokud bude nalezen alespoň jeden tag, vrátí ho, pokud žádný, GN
         /// </summary>
-        /// <param name="html"></param>
-        /// <param name="nameOfTag"></param>
+        /// <param name="htmlNode"></param>
+        /// <param name="tag"></param>
+        /// <param name="attr"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
-        public static string TrimOpenAndEndTags(string html, string nameOfTag)
+        public static HtmlNode ReturnTagWithAttr(HtmlNode htmlNode, string tag, string attr, string value)
         {
-            html = html.Replace("<" + nameOfTag + ">", "");
-            html = html.Replace("</" + nameOfTag + ">", "");
-            return html;
-        }
-
-
-
-        public static HtmlNode TrimNode(HtmlNode hn2)
-        {
-            if (hn2.FirstChild == null)
+            List<HtmlNode> vr = new List<HtmlNode>();
+            RecursiveReturnTagWithAttr(vr, htmlNode, tag, attr, value);
+            if (vr.Count > 0)
             {
-                return hn2;
-            }
-            if (string.IsNullOrWhiteSpace(hn2.FirstChild.InnerHtml))
-            {
-                return hn2;
-            }
-            hn2.InnerHtml = hn2.InnerHtml.Trim();
-            hn2.FirstChild.InnerHtml = hn2.FirstChild.InnerHtml.Trim();
-            hn2.InnerHtml = hn2.InnerHtml.Trim();
-            return hn2;
-        }
-
-        public static HtmlNode GetTag(HtmlNode cacheAuthorNode, string p)
-        {
-            foreach (HtmlNode item in cacheAuthorNode.ChildNodes)
-            {
-                if (item.OriginalName == p)
-                {
-                    return item;
-                }
+                return vr[0];
             }
             return null;
         }
 
 
+        #endregion
 
-        public static string ClearSpaces(string dd)
-        {
-            return dd.Replace("&nbsp;", " ").Replace("  ", " ");
-        }
 
-        public static string ConvertTextToHtml(string p)
-        {
-            p = p.Replace(Environment.NewLine, "<br />");
-            return p;
-        }
 
-        public static List<HtmlNode> GetWithoutTextNodes(HtmlNode htmlNode)
+        #region 4 NodesWithAttr
+        private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
         {
-            List<HtmlNode> vr = new List<HtmlNode>();
             foreach (HtmlNode item in htmlNode.ChildNodes)
             {
-                string dd = item.ToString();
-                if (dd != "HtmlAgilityPack.HtmlTextNode")
+                if (item.Name == tag && HtmlHelper.GetValueOfAttribute(attr, item) == value)
                 {
+                    //RecursiveReturnTagWithAttr(vr, item, tag, attr, value);
                     vr.Add(item);
+                    return;
+                }
+                else
+                {
+                    RecursiveReturnTagWithAttr(vr, item, tag, attr, value);
                 }
             }
-            return vr;
         }
 
-        #region Vrácení všech tagů v elementu s ohledem jen na název tagu
-
-        #region Using RecursiveReturnTags method
+        #region Only call other method
         /// <summary>
-        /// Používá metodu RecursiveReturnTags
-        /// Do A2 se může vložit *
+        /// Do A2 se může zadat * pro získaní všech tagů
+        /// Do A4 se může vložit * pro vrácení tagů s hledaným atributem s jakoukoliv hodnotou
         /// </summary>
         /// <param name="htmlNode"></param>
         /// <param name="tag"></param>
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
         /// <returns></returns>
-        public static List<HtmlNode> ReturnTagsRek(HtmlNode htmlNode, string tag)
+        public static List<HtmlNode> ReturnTagsWithAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
-            RecursiveReturnTags(vr, htmlNode, tag);
+
+            RecursiveReturnTagsWithAttr(vr, htmlNode, tag, atribut, hodnotaAtributu);
             return vr;
         }
 
         /// <summary>
-        /// Rekurzivně volá metodu RecursiveReturnAllTags
+        /// G null když tag nebude nalezen
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="tag"></param>
+        /// <param name="attr"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static HtmlNode ReturnTagWithAttrRek(HtmlNode htmlNode, string tag, string attr, string value)
+        {
+            return ReturnTagWithAttr(htmlNode, tag, attr, value);
+        }
+        #endregion
+
+        /// <summary>
+        /// Originally from HtmlParser
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="tagName"></param>
+        /// <param name="attrName"></param>
+        /// <param name="attrValue"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnTagsWithAttrRek2(HtmlNode htmlNode, string tagName, string attrName, string attrValue)
+        {
+            List<HtmlNode> node = new List<HtmlNode>();
+            RecursiveReturnAllTags(node, htmlNode, tagName);
+            for (int i = node.Count - 1; i >= 0; i--)
+            {
+                if (GetValueOfAttribute(attrName, node[i]) != attrValue)
+                {
+                    node.RemoveAt(i);
+                }
+            }
+            return node;
+        }
+
+        #region Called by other method
+        /// <summary>
+        /// Do A3 se může zadat * pro vrácení všech tagů
+        /// 
+        /// Do A5 se může vložit * pro vrácení tagů s hledaným atributem s jakoukoliv hodnotou
         /// </summary>
         /// <param name="vr"></param>
-        /// <param name="html"></param>
+        /// <param name="htmlNode"></param>
         /// <param name="p"></param>
-        private static void RecursiveReturnAllTags(List<HtmlNode> vr, HtmlNode html, params string[] p)
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
+        private static void RecursiveReturnTagsWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu)
         {
-
-            foreach (HtmlNode item in html.ChildNodes)
+            foreach (HtmlNode item in htmlNode.ChildNodes)
             {
-                bool contains = false;
-
-                if (p.Length == 1)
+                if (HasTagName(item, p))
                 {
-                    if (item.Name == p[0])
+                    if (HasTagAttr(item, atribut, hodnotaAtributu))
                     {
-                        contains = true;
+                        //RecursiveReturnTagsWithAttr(vr, item, p);
+                        if (!vr.Contains(item))
+                        {
+                            vr.Add(item);
+                        }
                     }
                 }
                 else
                 {
-                    foreach (var t in p)
+                    RecursiveReturnTagsWithAttr(vr, item, p, atribut, hodnotaAtributu);
+                }
+            }
+        }
+        #endregion
+
+        #region No recursive
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hn"></param>
+        /// <param name="nameOfTag"></param>
+        /// <param name="nameOfAtr"></param>
+        /// <param name="valueOfAtr"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> GetTagsOfAtribute(HtmlNode hn, string nameOfTag, string nameOfAtr, string valueOfAtr)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            foreach (HtmlNode var in hn.ChildNodes)
+            {
+                if (var.Name == nameOfTag)
+                {
+                    if (HtmlHelper.GetValueOfAttribute(nameOfAtr, var) == valueOfAtr)
                     {
-                        if (item.Name == t)
-                        {
-                            contains = true;
-                        }
+                        vr.Add(var);
                     }
                 }
+            }
+            return vr;
+        }
+        #endregion
 
+        #endregion
+
+        #region 5 NodesWhichContainsInAttr
+        private static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode node, string p, string atribut, string hodnotaAtributu)
+            {
+            RecursiveReturnTagsWithContainsAttr(vr, node, p, atribut, hodnotaAtributu, true, true);
+        }
+
+        /// <summary>
+        /// Do A3 se může zadat * pro vrácení všech tagů
+        /// </summary>
+        /// <param name="vr"></param>
+        /// <param name="htmlNode"></param>
+        /// <param name="p"></param>
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
+        public static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu, bool contains, bool recursively)
+        {
+            foreach (HtmlNode item in htmlNode.ChildNodes)
+            {
+                bool hasAttr = false;
+                string attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);
                 if (contains)
                 {
-                    RecursiveReturnAllTags(vr, item, p);
+                    contains = attrValue.Contains(hodnotaAtributu);
+                }
+                else
+                {
+                    contains = attrValue == hodnotaAtributu;
+                }
+                if (HasTagName(item, p) && contains)
+                {
+                    //RecursiveReturnTagsWithContainsAttr(vr, item, p);
                     if (!vr.Contains(item))
                     {
                         vr.Add(item);
@@ -1019,57 +1022,81 @@ namespace sunamo.Html
                 }
                 else
                 {
-                    RecursiveReturnAllTags(vr, item, p);
+                    if (recursively)
+                    {
+                        RecursiveReturnTagsWithContainsAttr(vr, item, p, atribut, hodnotaAtributu, contains, recursively);
+                    }
                 }
             }
         }
-        #endregion
-
-
 
         /// <summary>
-        /// A1 je uzel který se bude rekurzivně porovnávat
-        /// A2 je název tagu(div, a, atd.) které chci vrátit.
+        /// Do A3 se může zadat * pro vrácení všech tagů
         /// </summary>
+        /// <param name="vr"></param>
         /// <param name="htmlNode"></param>
         /// <param name="p"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnAllTags(HtmlNode htmlNode, params string[] p)
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
+        private static void RecursiveReturnTagsWithContainsAttrWithSplittedElement(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu, string delimiter)
         {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            RecursiveReturnAllTags(vr, htmlNode, p);
-            return vr;
-        }
 
-        /// <summary>
-        /// If tag is A2, don't apply recursive on that
-        /// A2 je název tagu, napříkald img
-        /// </summary>
-        /// <param name="html"></param>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
-        {
-            List<HtmlNode> vr = new List<HtmlNode>();
-            foreach (HtmlNode item in html.ChildNodes)
+            foreach (HtmlNode item in htmlNode.ChildNodes)
             {
-                if (item.Name == p)
+                if (HasTagName(item, p) && HasTagAttrContains(item, delimiter, atribut, hodnotaAtributu))
                 {
-                    HtmlNode node = item.ParentNode;
-                    if (node != null)
+                    //RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, item, p, atribut, hodnotaAtributu, delimiter);
+                    if (!vr.Contains(item))
                     {
                         vr.Add(item);
                     }
                 }
                 else
                 {
-                    vr.AddRange(ReturnAllTags(item, p));
+                    RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, item, p, atribut, hodnotaAtributu, delimiter);
                 }
             }
+        }
+
+        /// <summary>
+        /// Do A2 se může zadat * pro získaní všech tagů
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="tag"></param>
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+
+            RecursiveReturnTagsWithContainsAttr(vr, htmlNode, tag, atribut, hodnotaAtributu);
+            return vr;
+        }
+
+        public static List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu, bool contains, bool recursively)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+
+            RecursiveReturnTagsWithContainsAttr(vr, htmlNode, tag, atribut, hodnotaAtributu, contains, recursively);
+            return vr;
+        }
+
+        /// <summary>
+        /// Do A2 se může zadat * pro získaní všech tagů
+        /// </summary>
+        /// <param name="htmlNode"></param>
+        /// <param name="tag"></param>
+        /// <param name="atribut"></param>
+        /// <param name="hodnotaAtributu"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> ReturnTagsWithContainsClassRek(HtmlNode htmlNode, string tag, string t)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+
+            RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, htmlNode, tag, "class", t, " ");
             return vr;
         }
         #endregion
-
-
     }
 }

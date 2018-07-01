@@ -42,7 +42,7 @@ public static class AllChars
     /// </summary>
     public const char lb = '(';
     public const char rb = ')';
-    
+    public const char stroke = '/';
     #endregion
 
     static AllChars()

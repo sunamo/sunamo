@@ -118,6 +118,19 @@ namespace sunamo
             return Consts.UncLongPath + actualFilePath;
         }
 
+        public static string ReplaceInvalidFileNameChars(string filename)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in filename)
+            {
+                if (invalidFileNameChars.Contains(item))
+                {
+                    sb.Append(item);
+                }
+            }
+            return sb.ToString();
+        }
+
         /// <summary>
         /// ALL EXT. HAVE TO BE ALWAYS LOWER
         /// Return in lowercase

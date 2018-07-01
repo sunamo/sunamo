@@ -116,6 +116,8 @@
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardHelper.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\CSharpHelper.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />

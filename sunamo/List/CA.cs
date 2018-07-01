@@ -115,6 +115,8 @@ public static class CA
         return lines.FindAll(d => d.Contains(item));
     }
 
+    
+
     /// <summary>
     /// Is useful when want to wrap and also join with string. Also last element will have delimiter
     /// </summary>
@@ -340,13 +342,19 @@ public static class CA
         return t.Length > 0;
     }
 
-    public static string[] Trim(string[] l)
+    public static void Trim(List<string> l)
     {
-        for (int i = 0; i < l.Length; i++)
+        for (int i = 0; i < l.Count; i++)
         {
             l[i] = l[i].Trim();
         }
-        return l;
+    }
+
+    public static string[] Trim(string[] l)
+    {
+        var list = CA.ToListString(l);
+        CA.Trim(list);
+        return list.ToArray();
     }
 
     
@@ -499,6 +507,15 @@ public static class CA
         return new List<string>(p);
     }
 
+    public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
+    {
+
+        foreach (var item in allFilesRelative)
+        {
+            photoFiles.Add(value.Contains(item));
+        }
+    }
+
     public static bool HasNullValue(List<string> idPhotos)
     {
         for (int i = 0; i < idPhotos.Count; i++)
@@ -607,6 +624,11 @@ public static class CA
             }
         }
         return dd.ToArray();
+    }
+
+    public static void Replace(List<string> files_in, string what, string forWhat)
+    {
+        CA.ChangeContent(files_in, SH.Replace, what, forWhat);
     }
 
     /// <summary>
@@ -1210,6 +1232,24 @@ public static class CA
         for (int i = 0; i < files_in.Count; i++)
         {
             files_in[i] = func.Invoke(files_in[i]);
+        }
+        return files_in;
+    }
+
+    public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i], arg1, arg2);
+        }
+        return files_in;
+    }
+
+    public static List<string> ChangeContent<Arg1>(List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i], arg);
         }
         return files_in;
     }
