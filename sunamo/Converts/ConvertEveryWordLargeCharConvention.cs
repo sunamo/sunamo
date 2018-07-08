@@ -9,7 +9,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
     /// <returns></returns>
     public static string FromConvention(string p)
     {
-        throw new NotImplementedException();
+        throw new NoImplementedException();
     }
 
     /// <summary>

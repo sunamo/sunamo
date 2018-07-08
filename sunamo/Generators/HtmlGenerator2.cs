@@ -326,6 +326,7 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <summary>
     /// Do A1 doplň třeba EditMister.aspx?mid= - co za toto si automaticky doplní a A2 jsou texty do inner textu a
     /// Nehodí se tedy proto vždy, například, když máš přehozené IDčka v DB
+    /// When uri args and titles are the same
     /// </summary>
     /// <param name="baseAnchor"></param>
     /// <param name="to"></param>
@@ -520,9 +521,9 @@ public class HtmlGenerator2 : HtmlGenerator
     #endregion
 
     #region Ol
-    public static string GetOl(List<string> possibleAnswers, bool v)
+    public static string GetOl(List<string> possibleAnswers, bool checkDuplicates = false)
     {
-        throw new NotImplementedException();
+        return HtmlGeneratorList.GetFor("", possibleAnswers, possibleAnswers, checkDuplicates, HtmlTags.ol);
     }
 
     public static string GetOlWoCheckDuplicate(List<string> anchors, List<string> to)
@@ -539,9 +540,9 @@ public class HtmlGenerator2 : HtmlGenerator
             string s = to[i];
 
             hg.WriteTag("li");
-            hg.WriteTagWithAttr("a", "href", anchors[i]);
+            
             hg.WriteRaw(s);
-            hg.TerminateTag("a");
+            
 
             hg.TerminateTag("li");
         }

@@ -18,5 +18,8 @@ using System.Text;
     public const string td = "td";
     public const string tr = "tr";
     public const string body = "body";
+    public const string ul = "ul";
+    public const string ol = "ol";
+
 }
 

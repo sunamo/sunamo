@@ -12,7 +12,7 @@ namespace sunamo
 
         public PropertyType2 ConvertTo(string u)
         {
-            throw new NotImplementedException();
+            throw new NoImplementedException();
         }
 
         /// <summary>

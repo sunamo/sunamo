@@ -1,0 +1,3 @@
+﻿replace every NotImplementedException for NoImplementedException
+
+CleanUp HtmlGenerator2 to use HtmlGeneratorList
