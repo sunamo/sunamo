@@ -19,6 +19,7 @@ using System.Text;
             HtmlGenerator hg = new HtmlGenerator();
             List<string> zapsane = null;
         bool links = false;
+
         if (to != null)
         {
             links = true;
