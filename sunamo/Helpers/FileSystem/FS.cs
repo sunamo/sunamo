@@ -123,7 +123,7 @@ namespace sunamo
             StringBuilder sb = new StringBuilder();
             foreach (var item in filename)
             {
-                if (invalidFileNameChars.Contains(item))
+                if (!invalidFileNameChars.Contains(item))
                 {
                     sb.Append(item);
                 }

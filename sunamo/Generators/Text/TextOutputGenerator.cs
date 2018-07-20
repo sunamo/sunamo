@@ -1,3 +1,4 @@
+using sunamo.Constants;
 using sunamo.Generators.Text;
 using System;
 using System.Collections.Generic;
@@ -91,7 +92,20 @@ public class TextOutputGenerator
 
     public void List(IEnumerable<string> files1, string header)
     {
-        sb.AppendLine(header);
+        List(files1, header, true);
+    }
+
+    public void List(IEnumerable<string> files1, string header, bool headerWrappedEmptyLines)
+    {
+        if (headerWrappedEmptyLines)
+        {
+            sb.AppendLine();
+        }
+        sb.AppendLine(header + AllStrings.colon);
+        if (headerWrappedEmptyLines)
+        {
+            sb.AppendLine();
+        }
         List(files1);
     }
 

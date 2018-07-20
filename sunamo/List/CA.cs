@@ -1035,6 +1035,16 @@ public static class CA
         return result;
     }
 
+    public static List<string> ToListString(params string[] enumerable)
+    {
+        List<string> result = new List<string>();
+        foreach (var item in enumerable)
+        {
+            result.Add(item.ToString());
+        }
+        return result;
+    }
+
     public static List<string> ToListString(IEnumerable enumerable)
     {
         List<string> result = new List<string>();
@@ -1044,6 +1054,8 @@ public static class CA
         }
         return result;
     }
+
+
 
     public static List<short> ToShort(IEnumerable enumerable)
     {

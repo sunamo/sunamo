@@ -74,6 +74,12 @@
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Result\FoundedFilesUC.xaml.cs">
+      <DependentUpon>FoundedFilesUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Result\FoundedFileUC.xaml.cs">
+      <DependentUpon>FoundedFileUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Result\ShowTextResult.xaml.cs">
       <DependentUpon>ShowTextResult.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,8 @@
     <Compile Include="FileSystemWatcherExtended\WatchersExList.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="AppPaths.cs" />
+    <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
+    <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
@@ -255,6 +263,14 @@
     <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Result\FoundedFilesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Result\FoundedFileUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Text\CompareTwoIntegers.xaml">
       <SubType>Designer</SubType>
