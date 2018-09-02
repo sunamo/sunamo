@@ -17,7 +17,7 @@ public class TextOutputGenerator
     /// </summary>
     public  void EndRunTime()
     {
-        sb.AppendLine("Thank you for using my app. Press enter to app will be terminated.");
+        sb.AppendLine(Messages.AppWillBeTerminated);
     }
 
     /// <summary>
@@ -25,7 +25,7 @@ public class TextOutputGenerator
     /// </summary>
     public  void NoData()
     {
-        sb.AppendLine("When you will have the input data, run the program again.");
+        sb.AppendLine(Messages.NoData);
     }
 
     
@@ -90,13 +90,34 @@ public class TextOutputGenerator
         }
     }
 
-    public void List(IEnumerable<string> files1, string header)
+    public void Paragraph(StringBuilder wrongNumberOfParts, string header)
     {
-        List(files1, header, true);
+        string text = wrongNumberOfParts.ToString().Trim();
+        Paragraph(text, header);
     }
 
-    public void List(IEnumerable<string> files1, string header, bool headerWrappedEmptyLines)
+    public void Paragraph(string text, string header)
     {
+        
+        if (text != string.Empty)
+        {
+            sb.AppendLine(header + AllStrings.colon);
+            sb.AppendLine(text);
+            sb.AppendLine();
+        }
+    }
+
+    public void List(IEnumerable<string> files1, string header)
+    {
+        List(files1, header, true, false);
+    }
+
+    public void List(IEnumerable<string> files1, string header, bool headerWrappedEmptyLines, bool insertCount)
+    {
+        if (insertCount)
+        {
+            header += " (" + files1.Count() + ")";
+        }
         if (headerWrappedEmptyLines)
         {
             sb.AppendLine();
@@ -121,6 +142,5 @@ public class TextOutputGenerator
         
     }
 
-
-
+    
 }

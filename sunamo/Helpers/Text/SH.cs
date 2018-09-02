@@ -114,6 +114,17 @@ public static class SH
         
     }
 
+    public static string RemoveAfterFirst(string t, string ch)
+    {
+        int dex = t.IndexOf(ch);
+        if (dex == -1 || dex == t.Length - 1)
+        {
+            return t;
+        }
+
+        return t.Remove(dex);
+    }
+
     public static string RemoveAfterFirst(string t, char ch)
     {
         int dex = t.IndexOf(ch);
@@ -135,6 +146,19 @@ public static class SH
             }
         }
         return false;
+    }
+
+    public static bool ContainsOnly(string floorS, List<char> numericChars)
+    {
+        foreach (var item in floorS)
+        {
+            if (!numericChars.Contains(item))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -215,7 +239,8 @@ public static class SH
             
                 int p2_3 = p2_2 + after.Length;
                 int p3_3 = p3_2 - 1;
-                vr.Add( p.Substring(p2_3, p3_3 - p2_3).Trim());
+            // When I return between ( ), there must be +1 
+            vr.Add( p.Substring(p2_3, p3_3 - p2_3+1).Trim());
         }
 
         return vr.ToArray();
@@ -246,7 +271,8 @@ public static class SH
         {
             p2 += after.Length;
             p3 -= 1;
-            vr = p.Substring(p2, p3 - p2).Trim();
+            // When I return between ( ), there must be +1 
+            vr = p.Substring(p2, p3 - p2+1).Trim();
         }
 
         return vr;
@@ -293,25 +319,133 @@ public static class SH
             r = r.Trim();
         }
 
-        int charCount = r.Length;
-        if (tfd.requiredLength != -1)
-        {
-            if (r.Length != tfd.requiredLength)
-            {
-                return false;
-            }
-            charCount = Math.Min(r.Length, tfd.requiredLength);
-        }
+        int partsCount = tfd.Count;
+        
+        int actualCharFormatData = 0;
+        CharFormatData actualFormatData = tfd[actualCharFormatData];
+        CharFormatData followingFormatData = tfd[actualCharFormatData + 1];
+        //int charCount = r.Length;
+        //if (tfd.requiredLength != -1)
+        //{
+        //    if (r.Length != tfd.requiredLength)
+        //    {
+        //        return false;
+        //    }
+        //    charCount = Math.Min(r.Length, tfd.requiredLength);
+        //}
+        int actualChar = 0;
+        int processed = 0;
+        int from = actualFormatData.fromTo.from;
+        int remains = actualFormatData.fromTo.to;
+        int tfdCountM1 = tfd.Count-1;
 
-        for (int i = 0; i < charCount; i++)
+        while (true)
         {
-            if (!HasCharRightFormat(r[i], tfd[i]))
+            bool canBeAnyChar = CA.IsEmptyOrNull(actualFormatData.mustBe);
+            bool isRightChar = false;
+            if (canBeAnyChar)
             {
-                return false;
+                isRightChar = true;
+                remains--;
             }
+            else
+            {
+                if (!CA.HasIndex(actualChar, r))
+                {
+                    return false;
+                }
+                isRightChar = CA.IsEqualToAnyElement<char>(r[ actualChar], actualFormatData.mustBe);
+                if (isRightChar && !canBeAnyChar)
+                {
+                    actualChar++;
+                    processed++;
+                    remains--;
+                }
+                 
+            }
+
+            if (!isRightChar)
+            {
+                if (!CA.HasIndex(actualChar, r))
+                {
+                    return false;
+                }
+                isRightChar = CA.IsEqualToAnyElement<char>(r[actualChar], followingFormatData.mustBe);
+                if (!isRightChar)
+                {
+                    return false;
+                }
+                if (remains != 0 && processed < from)
+                {
+                    return false;
+                }
+                if (isRightChar && !canBeAnyChar)
+                {
+                    
+                    actualCharFormatData++;
+                    processed++;
+                    actualChar++;
+
+                    if (!CA.HasIndex(actualCharFormatData, tfd) && r.Length > actualChar)
+                    {
+                        return false;
+                    }
+
+                    actualFormatData = tfd[actualCharFormatData];
+                    if (CA.HasIndex(actualCharFormatData + 1, tfd))
+                    {
+                        followingFormatData = tfd[actualCharFormatData + 1];
+                    }
+                    else
+                    {
+                        followingFormatData = CharFormatData.Templates.Any;
+                    }
+
+                    processed = 0;
+                    remains = actualFormatData.fromTo.to;
+                    remains--;
+                }
+                
+            }
+
+            if (remains == 0)
+            {
+                ++actualCharFormatData;
+                if (!CA.HasIndex(actualCharFormatData, tfd) && r.Length > actualChar)
+                {
+                    return false;
+                }
+                actualFormatData = tfd[actualCharFormatData];
+                if (CA.HasIndex(actualCharFormatData+1, tfd))
+                {
+                    followingFormatData = tfd[actualCharFormatData + 1];
+                }
+                else
+                {
+                    followingFormatData = CharFormatData.Templates.Any;
+                }
+
+                processed = 0;
+                remains = actualFormatData.fromTo.to;
+            }
+
+            //if (actualCharFormatData == tfdCountM1 && isRightChar && actualChar )
+            //{
+            //    break;
+            //}
         }
 
         return true;
+    }
+
+    public static string JoinDictionary(Dictionary<string, string> dictionary, string v)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in dictionary)
+        {
+            sb.AppendLine(item.Key + v + item.Value);
+        }
+        return sb.ToString();
     }
 
     public static bool HasCharRightFormat(char ch, CharFormatData cfd)
@@ -403,6 +537,21 @@ public static class SH
             SplitByIndex(p, firstHranata, out title, out remix);
         }
         return true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
+    public static string AppendIfDontEndingWith(string text, string append)
+    {
+        if (text.EndsWith(append))
+        {
+            return text;
+        }
+        return text + append;
     }
 
     /// <summary>
@@ -739,7 +888,7 @@ public static class SH
         return false;
     }
 
-    public static string JoinSpace(List<string> nazev)
+    public static string JoinSpace(IEnumerable<string> nazev)
     {
         StringBuilder sb = new StringBuilder();
         foreach (string item in nazev)
@@ -749,10 +898,19 @@ public static class SH
         return sb.ToString().TrimEnd(' ');
     }
 
-    public static string FirstCharUpper(string nazevPP)
+    public static string FirstCharUpper(string nazevPP, bool only = false)
     {
         string sb = nazevPP.Substring(1);
+        if (only)
+        {
+            sb = sb.ToLower();
+        }
         return nazevPP[0].ToString().ToUpper() + sb;
+    }
+
+    public static string OnlyFirstCharUpper(string input)
+    {
+        return FirstCharUpper(input, true);
     }
 
     /// <summary>
@@ -1780,11 +1938,11 @@ public static class SH
     /// <returns></returns>
     public static string JoinString(string name, IEnumerable labels)
     {
-        string s = name.ToString();
+        string s = name;
         StringBuilder sb = new StringBuilder();
-        foreach (string item in labels)
+        foreach (var item in labels)
         {
-            sb.Append(item + s);
+            sb.Append(item.ToString() + s);
         }
         string d = sb.ToString();
         //return d.Remove(d.Length - (name.Length - 1), name.Length);
@@ -1823,27 +1981,51 @@ public static class SH
         //return d;
     }
 
+
+
+    #region Join
     /// <summary>
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// Automaticky ořeže poslední A1
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="labels"></param>
+    /// <param name="p"></param>
+    /// <param name="vsechnyFotkyVAlbu"></param>
     /// <returns></returns>
-    public static string Join(List<string> labels, char name)
+    public static string Join(char p, IList vsechnyFotkyVAlbu)
     {
-        string s = name.ToString();
         StringBuilder sb = new StringBuilder();
-        foreach (string item in labels)
+        int pf = vsechnyFotkyVAlbu.Count;
+        if (pf == 0)
         {
-            sb.Append(item + s);
+            return "";
         }
-        string sb2 = sb.ToString();
-        if (labels.Count != 0)
+        sb.Append(vsechnyFotkyVAlbu[0].ToString());
+        if (pf > 1)
         {
-            sb2 = sb2.Substring(0, sb2.Length - 1);
+            for (int i = 1; i < pf; i++)
+            {
+                sb.Append(p + vsechnyFotkyVAlbu[i].ToString());
+            }
         }
-        return sb2;
+        return sb.ToString();
+    }
+
+    public static string Join(char p, int[] vsechnyFotkyVAlbu)
+    {
+        StringBuilder sb = new StringBuilder();
+        int pf = vsechnyFotkyVAlbu.Length;
+        if (pf == 0)
+        {
+            return "";
+        }
+        sb.Append(vsechnyFotkyVAlbu[0].ToString());
+        if (pf > 1)
+        {
+            for (int i = 1; i < pf; i++)
+            {
+                sb.Append("," + vsechnyFotkyVAlbu[i].ToString());
+            }
+        }
+        return sb.ToString();
     }
 
     /// <summary>
@@ -1868,6 +2050,30 @@ public static class SH
         }
         return sb2;
     }
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="labels"></param>
+    /// <returns></returns>
+    public static string Join(List<string> labels, char name)
+    {
+        string s = name.ToString();
+        StringBuilder sb = new StringBuilder();
+        foreach (string item in labels)
+        {
+            sb.Append(item + s);
+        }
+        string sb2 = sb.ToString();
+        if (labels.Count != 0)
+        {
+            sb2 = sb2.Substring(0, sb2.Length - 1);
+        }
+        return sb2;
+    }
+    #endregion
 
     public static string JoinMoreWords(char v, params string[] fields)
     {
@@ -1913,6 +2119,13 @@ public static class SH
         return vstup;
     }
 
+    /// <summary>
+    /// In difference with ReplaceAll2, A3 is params
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <param name="zaCo"></param>
+    /// <param name="co"></param>
+    /// <returns></returns>
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
 
@@ -2224,6 +2437,7 @@ public static class SH
         return false;
     }
 
+    #region JoinNL
     public static string JoinNL(IEnumerable p)
     {
         return SH.JoinString(Environment.NewLine, p);
@@ -2232,32 +2446,10 @@ public static class SH
     public static string JoinNL(params string[] p)
     {
         return SH.JoinString(Environment.NewLine, p);
-    }
+    } 
+    #endregion
 
-    /// <summary>
-    /// Automaticky ořeže poslední A1
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="vsechnyFotkyVAlbu"></param>
-    /// <returns></returns>
-    public static string Join(char p, IList vsechnyFotkyVAlbu)
-    {
-        StringBuilder sb = new StringBuilder();
-        int pf = vsechnyFotkyVAlbu.Count;
-        if (pf == 0)
-        {
-            return "";
-        }
-        sb.Append(vsechnyFotkyVAlbu[0].ToString());
-        if (pf > 1)
-        {
-            for (int i = 1; i < pf; i++)
-            {
-                sb.Append("," + vsechnyFotkyVAlbu[i].ToString());
-            }
-        }
-        return sb.ToString();
-    }
+    
 
     public static char[] spaceAndPuntactionChars = new char[] { ' ', '-', '.', ',', ';', ':', '!', '?', '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', '\'', '(', ')', '[', ']', '{', '}', '〈', '〉', '<', '>', '/', '\\', '|', '”', '\"', '~', '°', '+', '@', '#', '$', '%', '^', '&', '*', '=', '_', 'ˇ', '¨', '¤', '÷', '×', '˝' };
 
@@ -2282,24 +2474,7 @@ public static class SH
         return s.Split(spaceAndPuntactionChars, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    public static string Join(char p, int[] vsechnyFotkyVAlbu)
-    {
-        StringBuilder sb = new StringBuilder();
-        int pf = vsechnyFotkyVAlbu.Length;
-        if (pf == 0)
-        {
-            return "";
-        }
-        sb.Append(vsechnyFotkyVAlbu[0].ToString());
-        if (pf > 1)
-        {
-            for (int i = 1; i < pf; i++)
-            {
-                sb.Append("," + vsechnyFotkyVAlbu[i].ToString());
-            }
-        }
-        return sb.ToString();
-    }
+    
 
     public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
     {

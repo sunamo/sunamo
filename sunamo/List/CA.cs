@@ -9,6 +9,8 @@ using System.Linq;
 
 public static class CA
 {
+    static Type type = typeof(CA);
+
     /// <summary>
     /// 
     /// Modify both A1 and A2 - keep only which is only in one
@@ -61,6 +63,11 @@ public static class CA
         return count;
     }
 
+    public static void RemoveWildcard(List<string> d, string folder)
+    {
+        ThrowExceptions.NotImplementedCase(type, "RemoveWildcard");
+    }
+
     public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
@@ -69,6 +76,11 @@ public static class CA
     public static List<T> ToList<T>(params T[] f)
     {
         return new List<T>(f);
+    }
+
+    public static List<string> OnlyFirstCharUpper(List<string> list)
+    {
+        return ChangeContent(list, SH.OnlyFirstCharUpper);
     }
 
     public static bool IsInRange(int od, int to, int index)
@@ -232,13 +244,13 @@ public static class CA
         return where.Count;
     }
 
-    public static bool HasIndex(int p, IList nahledy)
+    public static bool HasIndex(int p, IEnumerable nahledy)
     {
         if (p < 0)
         {
             throw new Exception("Chybný parametr p");
         }
-        if (nahledy.Count > p)
+        if (nahledy.Count() > p)
         {
             return true;
         }
@@ -342,12 +354,32 @@ public static class CA
         return t.Length > 0;
     }
 
-    public static void Trim(List<string> l)
+    /// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static List<string> Trim(List<string> l)
     {
         for (int i = 0; i < l.Count; i++)
         {
             l[i] = l[i].Trim();
         }
+        return l;
+    }
+
+
+    internal static bool IsEmptyOrNull(IEnumerable mustBe)
+    {
+        if (mustBe == null)
+        {
+            return true;
+        }
+        else if (mustBe.Count() == 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public static string[] Trim(string[] l)
@@ -746,15 +778,16 @@ public static class CA
         return vr;
     }
 
-    public static bool IsSomethingTheSame(string ext, params string[] p1)
+    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
     {
-        for (int i = 0; i < p1.Length; i++)
+        foreach (var item in p1)
         {
-            if (p1[i] == ext)
+            if (item == ext)
             {
                 return true;
             }
         }
+        
         return false;
     }
     #endregion
@@ -1176,15 +1209,19 @@ public static class CA
     }
 
     #region To Array (without change) - output Object type
-    
 
-    public static string[] TrimStart(char backslash, params string[] s)
+    public static List<string> TrimStart(char backslash, List<string> s)
     {
-        for (int i = 0; i < s.Length; i++)
+        for (int i = 0; i < s.Count; i++)
         {
             s[i] = s[i].TrimStart(backslash);
         }
         return s;
+    }
+
+    public static string[] TrimStart(char backslash, params string[] s)
+    {
+        return TrimStart(backslash, s.ToList()).ToArray();
     }
 
     public static string[] ToSize(string[] input, int requiredLength)
@@ -1257,6 +1294,14 @@ public static class CA
         return files_in;
     }
 
+    /// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <typeparam name="Arg1"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <param name="arg"></param>
+    /// <returns></returns>
     public static List<string> ChangeContent<Arg1>(List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
     {
         for (int i = 0; i < files_in.Count; i++)

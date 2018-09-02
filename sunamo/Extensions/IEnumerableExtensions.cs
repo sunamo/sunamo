@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Extensions
-{
+
     public static class IEnumerableExtensions
     {
+        public static int Length(this IEnumerable e)
+        {
+            return Count(e);
+        }
+
         public static int Count(this IEnumerable e)
         {
             if (e is IList)
@@ -38,4 +42,3 @@ namespace sunamo.Extensions
             return null;
         }
     }
-}

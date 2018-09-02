@@ -6,6 +6,6 @@ namespace sunamo.Interfaces
 {
     public interface ISelected
     {
-        object SelectedFile { get; }
+        object SelectedItem { get; }
     }
 }

@@ -173,4 +173,9 @@ public class TF
     {
         return SH.GetLines(ReadFile(file));
     }
+
+    public static void SaveLines(List<string> list, string file)
+    {
+        SaveFile(SH.JoinNL(list), file);
+    }
 }

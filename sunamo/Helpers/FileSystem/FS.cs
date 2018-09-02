@@ -24,6 +24,24 @@ namespace sunamo
         static List<char> invalidCharsForMapPath = null;
         static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+        /// <summary>
+        /// In key are just filename, in value full path to all files 
+        /// </summary>
+        /// <param name="linesFiles"></param>
+        /// <param name="searchOnlyWithExtension"></param>
+        /// <returns></returns>
+        public static Dictionary<string, List<string>> GetDictionaryByFileNameWithExtension(List<string> files)
+        {
+            Dictionary<string, List<string>> result = new Dictionary<string, List<string>>();
+            foreach (var item in files)
+            {
+                string filename = FS.GetFileName(item);
+                DictionaryHelper.AddOrCreateIfDontExists<string, string>(result, filename, item);
+            }
+
+            return result;
+        }
+
         public static void RemoveDiacriticInFileContents(string folder, string mask)
         {
             string[] files = Directory.GetFiles(folder, mask, SearchOption.AllDirectories);
@@ -62,6 +80,11 @@ namespace sunamo
             }
         }
 
+        public static string MascFromExtension(string ext)
+        {
+            return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
+        }
+
         internal static IEnumerable<string> GetFiles(string folderPath, bool v)
         {
             return FS.GetFiles(folderPath, "*.*", v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
@@ -70,6 +93,11 @@ namespace sunamo
         public static List<string> GetFolders(string folder)
         {
             return new List<string>(Directory.GetDirectories(folder));
+        }
+
+        public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
+        {
+            ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
         }
 
         public static List<string> GetFolders(string v, string startingWith)
@@ -388,6 +416,24 @@ namespace sunamo
             }
 
             return GetSizeInAutoString(size, unit);
+        }
+
+        /// <summary>
+        /// A2 true - bs to slash. false - slash to bs
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static string Slash(string path, bool slash)
+        {
+            if (slash)
+            {
+                return SH.ReplaceAll2(path, AllStrings.slash, AllStrings.bs);
+            }
+            else
+            {
+                return SH.ReplaceAll2(path, AllStrings.bs, AllStrings.slash);
+            }
         }
 
         public static string GetUpFolderWhichContainsExtension(string path, string fileExt)
@@ -1334,16 +1380,26 @@ namespace sunamo
 
         public static string WithoutEndSlash(string v)
         {
+            return WithEndSlash(ref v);
+        }
+
+        public static string WithoutEndSlash(ref string v)
+        {
             return v.TrimEnd(AllChars.bs);
+        }
+
+        public static string WithEndSlash(ref string v)
+        {
+            if (v != string.Empty)
+            {
+                v = v.TrimEnd(AllChars.bs) + AllChars.bs;
+            }
+            return v;
         }
 
         public static string WithEndSlash(string v)
         {
-            if (v == string.Empty)
-            {
-                return v;
-            }
-            return v.TrimEnd(AllChars.bs) + AllChars.bs;
+            return WithEndSlash(ref v);
         }
 
         /// <summary>

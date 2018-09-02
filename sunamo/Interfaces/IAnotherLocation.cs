@@ -4,8 +4,9 @@ using System.Text;
 
 namespace sunamo.Interfaces
 {
-    public interface ISelectedT<T>
+    public interface IAnotherLocation<T, U>
     {
-        T SelectedItem { get; }
+        T Root { get; set; }
+        U ReturnRightLocation(T id);
     }
 }

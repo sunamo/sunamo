@@ -58,6 +58,12 @@ namespace sunamo.Helpers.DT
             return b.ToString();
         }
 
+        /// <summary>
+        /// Subtract A2 from A1
+        /// </summary>
+        /// <param name="dt1"></param>
+        /// <param name="dt2"></param>
+        /// <returns></returns>
         public static TimeSpan Substract(DateTime dt1, DateTime dt2)
         {
             TimeSpan ts = dt1 - dt2;
