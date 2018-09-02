@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutApp" xml:space="preserve">
+    <value>About app</value>
+  </data>
+  <data name="AboutDeveloper" xml:space="preserve">
+    <value>This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</value>
+  </data>
+  <data name="BlueColorComponentColon" xml:space="preserve">
+    <value>Blue color component:</value>
+  </data>
+  <data name="btnCloseDialog.Content" xml:space="preserve">
+    <value>Close dialog</value>
+  </data>
+  <data name="btnForgetLoginAndPassword.Content" xml:space="preserve">
+    <value>Forget all</value>
+  </data>
+  <data name="btnForgetPassword.Content" xml:space="preserve">
+    <value>Forget password</value>
+  </data>
+  <data name="btnLogin.Content" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="chbAutoLogin.Content" xml:space="preserve">
+    <value>Auto login</value>
+  </data>
+  <data name="chbRememberLogin.Content" xml:space="preserve">
+    <value>Remember login</value>
+  </data>
+  <data name="doesNotExists" xml:space="preserve">
+    <value>does not exists</value>
+  </data>
+  <data name="ExceptionNotExists" xml:space="preserve">
+    <value>The program is attempting to show the exception that actually does not exist.</value>
+  </data>
+  <data name="FileOrFolder" xml:space="preserve">
+    <value>File or folder</value>
+  </data>
+  <data name="GreenColorComponentColon" xml:space="preserve">
+    <value>Green color component:</value>
+  </data>
+  <data name="HereEnter" xml:space="preserve">
+    <value>Here enter </value>
+  </data>
+  <data name="InsufficientRightsToAccessFileOrFolder" xml:space="preserve">
+    <value>Insufficient rights for this type of access to a file or folder</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="RedColorComponentColon" xml:space="preserve">
+    <value>Red color component:</value>
+  </data>
+  <data name="tbPassword.Text" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="TickAll" xml:space="preserve">
+    <value>Tick all</value>
+  </data>
+  <data name="TransparencyColon" xml:space="preserve">
+    <value>Opacity:</value>
+  </data>
+  <data name="UnknownErrorWhenWorkWithFileOrFolder" xml:space="preserve">
+    <value>An error of unknown type when you work with a file or folder</value>
+  </data>
+  <data name="UntickAll" xml:space="preserve">
+    <value>Untick all</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="FileCannotBeDeleted" xml:space="preserve">
+    <value>File cannot be deleted</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="lasted" xml:space="preserve">
+    <value>lasted</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="PasswordOrLoginNotEntered" xml:space="preserve">
+    <value>User name or password has not been entered</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="SuccessfullyLoginedToSpace" xml:space="preserve">
+    <value>You're successfully logined to </value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="tbAnyFeedbackIsWelcome.Text" xml:space="preserve">
+    <value>Any feedback is welcome!</value>
+  </data>
+  <data name="CzechBlog" xml:space="preserve">
+    <value>Czech blog</value>
+  </data>
+  <data name="EnglishBlog" xml:space="preserve">
+    <value>English blog</value>
+  </data>
+</root>
