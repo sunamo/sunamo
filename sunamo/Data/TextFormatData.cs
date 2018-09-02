@@ -14,6 +14,11 @@ using System.Threading.Tasks;
     public int requiredLength = -1;
     public bool trimBefore = false;
 
+    public static class Templates
+    {
+        
+    }
+
     /// <summary>
     /// Zadej do A2 -1 pokud text může mít jakoukoliv délku
     /// </summary>
@@ -23,6 +28,7 @@ using System.Threading.Tasks;
         public TextFormatData(bool trimBefore, int requiredLength, params CharFormatData[] a)
         {
         this.trimBefore = trimBefore;
+        this.requiredLength = requiredLength;
         AddRange(a);
         }
     }

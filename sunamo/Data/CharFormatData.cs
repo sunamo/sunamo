@@ -10,6 +10,7 @@ using System.Threading.Tasks;
     public class CharFormatData
     {
         /// <summary>
+        /// Null = no matter
         /// Nejvhodnější je zde výčet Windows.UI.Text.LetterCase
         /// </summary>
         public bool? upper = false;
@@ -18,7 +19,26 @@ using System.Threading.Tasks;
     /// </summary>
         public char[] mustBe = null;
 
-    
+    public static class Templates
+    {
+        public static CharFormatData dash = CharFormatData.Get(null, new FromTo(1, 1), AllChars.dash);
+        /// <summary>
+        /// When doesn't contains fixed, is from 0 to number
+        /// </summary>
+        public static CharFormatData twoLetterNumber;
+
+        static Templates()
+        {
+            FromTo requiredLength = new FromTo(1, 2);
+            twoLetterNumber = CharFormatData.GetOnlyNumbers(requiredLength);
+            Any = CharFormatData.Get(null, new FromTo(0, int.MaxValue));
+        }
+
+        public static CharFormatData Any;
+
+
+    }
+
 
     public FromTo fromTo = null;
 
@@ -43,6 +63,14 @@ using System.Threading.Tasks;
         return data;
     }
 
+    /// <summary>
+    /// A1 Null = no matter
+    /// 
+    /// </summary>
+    /// <param name="upper"></param>
+    /// <param name="fromTo"></param>
+    /// <param name="mustBe"></param>
+    /// <returns></returns>
     public static CharFormatData Get(bool? upper, FromTo fromTo, params char[] mustBe)
     {
         CharFormatData data = new CharFormatData(upper, mustBe);

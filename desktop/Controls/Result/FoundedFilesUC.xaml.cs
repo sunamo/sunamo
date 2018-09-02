@@ -20,9 +20,10 @@ namespace desktop.Controls.Result
     /// <summary>
     /// Interaction logic for FoundedFilesUC.xaml
     /// </summary>
-    public partial class FoundedFilesUC : UserControl, ISelectedT<FoundedFileUC>
+    public partial class FoundedFilesUC : UserControl, ISelectedT<string>
     {
-        public FoundedFileUC Selected => throw new NotImplementedException();
+        public event VoidString Selected;
+        public string SelectedItem => throw new NotImplementedException();
 
         public FoundedFilesUC()
         {

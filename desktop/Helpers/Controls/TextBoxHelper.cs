@@ -13,6 +13,7 @@ namespace desktop
     {
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
+        public static bool validated;
 
         static TextBoxHelper()
         {
@@ -118,6 +119,11 @@ namespace desktop
                 p.Children.Remove(txtTest);
             }
             p.Visibility = Visibility.Collapsed;
+        }
+
+        public static void Validate(TextBlock tbUri, TextBox txtUri)
+        {
+            
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)
