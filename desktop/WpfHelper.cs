@@ -2,6 +2,8 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System;
+using System.Windows;
+
 public class WpfHelper
 {
     // TODO: Merge with ButtonHelper
@@ -20,5 +22,11 @@ public class WpfHelper
         return vr;
     }
 
-    
+    public static void SetIsEnabled(bool v, params UIElement[] elements)
+    {
+        foreach (var item in elements)
+        {
+            item.IsEnabled = v;
+        }
+    }
 }

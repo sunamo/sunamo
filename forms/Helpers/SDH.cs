@@ -1,5 +1,5 @@
 using sunamo;
-using shared.Essential;
+using cmd.Essential;
 /// <summary>
 /// Simple Dialog Helper
 /// </summary>

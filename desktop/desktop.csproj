@@ -51,8 +51,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xaml" />
@@ -68,6 +70,7 @@
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
+    <Compile Include="Controls\Text\TextBoxFoundedLines.cs" />
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,9 @@
     <Compile Include="AppPaths.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
+    <Compile Include="Helpers\BitmapSourceHelper.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
@@ -194,9 +200,21 @@
     <Compile Include="Helpers\Controls\MenuItemHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
+    <Compile Include="Helpers\Pictures.cs" />
+    <Compile Include="Helpers\Powershell\PowershellBuilder.cs" />
+    <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
+    <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />
+    <Compile Include="Helpers\Resources\BitmapImageHelper.cs" />
+    <Compile Include="Helpers\Resources\BitmapImagesHelper.cs" />
+    <Compile Include="Helpers\Resources\DrawingImageHelper.cs" />
+    <Compile Include="Helpers\Resources\DrawingImagesHelper.cs" />
+    <Compile Include="Helpers\Resources\ImageHelper.cs" />
+    <Compile Include="Helpers\Resources\ImagesHelper.cs" />
+    <Compile Include="Helpers\Resources\ImageSourceHelper.cs" />
+    <Compile Include="Helpers\Resources\WritableBitmap.cs" />
     <Compile Include="Helpers\SecureStringHelper.cs" />
     <Compile Include="Helpers\SizeH.cs" />
     <Compile Include="Helpers\Controls\TBH.cs" />
@@ -208,10 +226,12 @@
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
+    <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
+    <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="JunctionPoint.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,6 +245,7 @@
     <Compile Include="Storage\ApplicationDataContainerList.cs" />
     <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="Storage\ApplicationDataList.cs" />
+    <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="TrialManager.cs" />
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
@@ -244,6 +265,7 @@
     <Compile Include="WpfHelper.cs" />
     <Compile Include="XamlDisplay.cs" />
     <Compile Include="XamlGenerator.cs" />
+    <Compile Include="Data\BitmapImageWithPath.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\forms\forms.csproj">

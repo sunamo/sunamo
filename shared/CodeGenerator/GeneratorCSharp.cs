@@ -391,7 +391,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         string cn = "List<"+genericType+">";
         NewVariable(pocetTabu, AccessModifiers.Private, cn, listName, false);
         list = CA.WrapWith(list, AllStrings.qm);
-        AppendLine(pocetTabu, listName + " = new List<" + genericType + ">(" + SH.Join(list, AllChars.comma));
+        AppendLine(pocetTabu, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
         
     }
 

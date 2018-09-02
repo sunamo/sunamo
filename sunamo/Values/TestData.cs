@@ -5,9 +5,12 @@ using System.Text;
 
     public class TestData
     {
-    const string a = "a";
-    const string b = "b";
-    const string c = "c";
+    public const string a = "a";
+    public const string ab = "ab";
+    public const string b = "b";
+    public const string c = "c";
+    public const string a2 = "a2";
+
     public static readonly List<string> listAB1;
     public static readonly List<string> listAB2;
     public static readonly List<string> listA;

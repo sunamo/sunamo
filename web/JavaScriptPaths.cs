@@ -3,7 +3,9 @@
 /// </summary>
 public class JavaScriptPaths
 {
-    
+    public const string RequireJS = "Scripts/require.js";
+    public const string su = "ts/su.js";
+    public const string jQuery = "Scripts/jquery-3.2.1.min.js";
     public const string jQueryUiJs = "Scripts/jquery-ui-1.11.4.min.js";
     public const string jQueryPrettySocial = "js/jquery/jquery.prettySocial.min.js";
     public const string JustifiedGallery = "Shared/js/JustifiedGallery/jquery.justifiedGallery.min.js";

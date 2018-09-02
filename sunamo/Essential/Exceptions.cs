@@ -7,6 +7,23 @@ namespace sunamo.Essential
 {
     public class Exceptions
     {
+        /// <summary>
+        /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
+        /// </summary>
+        /// <param name="fn"></param>
+        public static string SuccessfullyResized(string fn)
+        {
+            return "Successfully resized to " + fn;
+        }
+
+        /// <summary>
+        /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
+        /// </summary>
+        public static string FileHasWrongExtension(string fnOri)
+        {
+            return "File " + fnOri + " has wrong file extension";
+        }
+
         #region Without parameters
         public static string NotImplementedCase( string before)
         {
@@ -26,6 +43,19 @@ namespace sunamo.Essential
 
             return null;
         }
+
+        public static string FileWasntFoundInDirectory(string before, string directory, string fileName)
+        {
+            return CheckBefore(before) + "File "+fileName+" wasn't found in " + directory;
+        }
+
+        public static string FileWasntFoundInDirectory(string before, string fullPath)
+        {
+            string path, fn;
+            FS.GetPathAndFileName(fullPath, out path, out fn);
+            return FileWasntFoundInDirectory(before, path, fn);
+        }
+
 
         private static string CheckBefore(string before)
         {
@@ -75,6 +105,11 @@ namespace sunamo.Essential
         public static string ElementCantBeFound(string before, string nameCollection, string element)
         {
             return CheckBefore( before) + element + "cannot be found in " + nameCollection;
+        }
+
+        public static string MoreCandidates(string before, List<string> list, string item)
+        {
+            return CheckBefore(before) + "Under " + item + " is more candidates: " + SH.JoinNL(list);
         }
     }
 }

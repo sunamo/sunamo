@@ -9,7 +9,7 @@ namespace sunamo.Essential
     {
         public static DebugTemplateLogger Instance = new DebugTemplateLogger();
 
-        private DebugTemplateLogger() : base(DebugLogger.DebugWriteMessage)
+        private DebugTemplateLogger() : base(DebugLogger.DebugWriteLine)
         {
 
         }

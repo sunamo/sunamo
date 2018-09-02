@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Limilabs.FTP.Client;
-using shared.Essential;
+using cmd.Essential;
 using sunamo;
 using Sunamo.Data;
+
 
 namespace SunamoFtp
 {

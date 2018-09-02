@@ -20,12 +20,16 @@ namespace sunamo.Values
         public static string HttpCzSlash = "http://sunamo.cz/";
         public static string HttpWwwCz = "http://www.sunamo.cz";
 
+        public const string scz = "sunamo.cz";
+
         public static string Cz = "http://sunamo.cz";
         public static string WwwCz = "http://www.sunamo.cz";
 
         public static string CzSlash = "http://sunamo.cz/";
         public static string DotCzSlash = ".sunamo.cz/";
         public static string DotCz = ".sunamo.cz";
+
+        public static string http = "http://";
 
         public static readonly Type tString = typeof(string);
         public static readonly Type tInt = typeof(int);

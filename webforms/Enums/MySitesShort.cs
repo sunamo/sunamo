@@ -22,6 +22,6 @@ public enum MySitesShort : byte
     Wid = 15,
     Wmc = 16,
     Wsa = 17,
-    Msl = 18,
+    Rps = 18,
     None = 255
 }

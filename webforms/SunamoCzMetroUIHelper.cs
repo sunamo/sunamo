@@ -138,7 +138,7 @@ public class SunamoCzMetroUIHelper
                 continue;
             }
             // 18
-            if (item == MySites.MediaServis)
+            if (item == MySites.RepairPhones)
             {
                 continue;
             }

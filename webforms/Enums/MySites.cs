@@ -22,6 +22,6 @@ public enum MySites : byte
     Widgets = 15,
     WindowsMetroControls = 16,
     WindowsStoreApps = 17,
-    MediaServis = 18,
+    RepairPhones = 18,
     None = 255
 }

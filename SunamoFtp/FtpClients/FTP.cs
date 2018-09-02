@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Windows;
 using sunamo;
 using Sunamo.Data;
+using SunamoFtp.Other;
 
 namespace SunamoFtp
 {
@@ -206,7 +207,10 @@ namespace SunamoFtp
 
         public override void goToUpFolderForce()
         {
-            OnNewStatus("Přecházím do nadsložky " + ps.ActualPath);
+            if (FtpLogging.GoToUpFolder)
+            {
+                OnNewStatus("Přecházím do nadsložky " + ps.ActualPath);
+            }
             this.sendCommand("CWD ..");
             ps.RemoveLastTokenForce();
             NewStatusNewFolder();
@@ -342,7 +346,11 @@ namespace SunamoFtp
             {
                 login();
             }
-            OnNewStatus("Přecházím do složky " + remoteFolder);
+            if (FtpLogging.GoToFolder)
+            {
+                OnNewStatus("Přecházím do složky " + remoteFolder);
+            }
+            
 
             string actualPath = ps.ActualPath;
             int dd = remoteFolder.Length - 1;

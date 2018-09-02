@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -85,10 +85,6 @@
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
       <Name>sunamo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\webforms\webforms.csproj">
-      <Project>{fee6192c-6fc5-40df-933b-b26032a65ca9}</Project>
-      <Name>webforms</Name>
     </ProjectReference>
     <ProjectReference Include="..\web\web.csproj">
       <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>

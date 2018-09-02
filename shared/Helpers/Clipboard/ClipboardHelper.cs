@@ -1,4 +1,4 @@
-using sunamo.Clipboard;
+
 using sunamo.Generators.Text;
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,17 @@ using System.Windows;
 
 public class ClipboardHelper
     {
+    static IClipboardMonitor clipboardMonitor = null;
+
     #region Get,Set
     public static void SetText(string v)
     {
-        ClipboardMonitor.monitor = null;
-        ClipboardMonitor.afterSet = true;
+        if (clipboardMonitor != null)
+        {
+            clipboardMonitor.monitor = null;
+            clipboardMonitor.afterSet = true;
+        }
+        
         W32.OpenClipboard(IntPtr.Zero);
         var ptr = Marshal.StringToHGlobalUni(v);
         W32.SetClipboardData(13, ptr);

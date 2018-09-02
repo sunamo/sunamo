@@ -10,6 +10,7 @@ namespace sunamo.Generators.Text
         string lastText = "";
         StringBuilder sb = new StringBuilder();
 
+
         bool canUndo = false;
 
         public bool CanUndo

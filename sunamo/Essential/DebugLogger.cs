@@ -1,3 +1,4 @@
+using sunamo.Constants;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,15 @@ using System.Diagnostics;
 
         }
 
-        public static void DebugWriteMessage(TypeOfMessage typeOfMessage, string text, params object[] args)
-        {
-            DebugWriteLine(typeOfMessage.ToString() + ": " + string.Format( text, args));
-        }
 
-        private static void DebugWriteLine(string text)
+ 
+
+    public static void DebugWriteLine(TypeOfMessage tz, string text, params object[] args)
+    {
+        Debug.WriteLine(tz.ToString() + AllStrings.cs2+ string.Format(text, args));
+    }
+
+    private static void DebugWriteLine(string text)
         {
             Debug.WriteLine(text);
         }
@@ -35,8 +39,5 @@ using System.Diagnostics;
             Debugger.Break();
         }
 
-    
+
 }
-//}
-#if DEBUG
-#endif
