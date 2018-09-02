@@ -16,7 +16,7 @@ public static class NH
         return s;
     }
 
-    public static float AverageFloat(double gridWidth, double columnsCount)
+    public static double Average(double gridWidth, double columnsCount)
     {
         //int columnsCount = g.ColumnDefinitions.Count;
         if (columnsCount == 0)
@@ -31,7 +31,13 @@ public static class NH
         }
 
         double result = gridWidth / columnsCount;
-        return (float)result;
+        return result;
+    }
+
+    public static float AverageFloat(double gridWidth, double columnsCount)
+    {
+        
+        return (float)Average(gridWidth, columnsCount);
     }
 
     public static string MakeUpTo3NumbersToZero(int p)
