@@ -359,13 +359,23 @@ namespace sunamo.Html
         #endregion
 
         #region Check name and value
-        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu)
+        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
             if (hodnotaAtributu == "*")
             {
                 return true;
             }
-            return HtmlHelper.GetValueOfAttribute(atribut, item) == hodnotaAtributu;
+            bool contains = false;
+            var attrValue = HtmlHelper.GetValueOfAttribute(atribut, item) ;
+            if (enoughIsContainsAttribute)
+            {
+                contains = attrValue.Contains(hodnotaAtributu);
+            }
+            else
+            {
+                contains = attrValue == hodnotaAtributu;
+            }
+            return contains;
         }
 
         /// <summary>
@@ -567,7 +577,6 @@ namespace sunamo.Html
         /// <returns></returns>
         public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
         {
-
             //List<HtmlNode> html = new List<HtmlNode>();
             foreach (HtmlNode item in body.ChildNodes)
             {
@@ -577,7 +586,6 @@ namespace sunamo.Html
                 }
             }
             return null;
-
         }
 
         public static HtmlNode ReturnTagRek(HtmlNode hn, string nameOfTag)
@@ -654,6 +662,7 @@ namespace sunamo.Html
         }
 
         /// <summary>
+        /// It's calling by others
         /// Do A3 se může vložit *
         /// </summary>
         /// <param name="vr"></param>
@@ -666,10 +675,10 @@ namespace sunamo.Html
                 if (HasTagName(item, p))
                 {
                     //RecursiveReturnTags(vr, item, p);
-                    if (!vr.Contains(item))
-                    {
+                   
                         vr.Add(item);
-                    }
+                    
+                    RecursiveReturnTags(vr, item, p);
                 }
                 else
                 {
@@ -679,6 +688,7 @@ namespace sunamo.Html
         }
 
         /// <summary>
+        /// Vratilo 15 namisto 10
         /// Používá metodu RecursiveReturnTags
         /// Do A2 se může vložit *
         /// </summary>
@@ -689,10 +699,12 @@ namespace sunamo.Html
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             RecursiveReturnTags(vr, htmlNode, tag);
+            vr = TrimTexts(vr);
             return vr;
         }
 
         /// <summary>
+        /// Vratilo 0 misto 10
         /// A1 je uzel který se bude rekurzivně porovnávat
         /// A2 je název tagu(div, a, atd.) které chci vrátit.
         /// </summary>
@@ -707,6 +719,7 @@ namespace sunamo.Html
         }
 
         /// <summary>
+        /// Return 0 instead of 10
         /// If tag is A2, don't apply recursive on that
         /// A2 je název tagu, napříkald img
         /// </summary>
@@ -901,6 +914,7 @@ namespace sunamo.Html
         #endregion
 
         /// <summary>
+        /// Return 0 instead of 10
         /// Originally from HtmlParser
         /// </summary>
         /// <param name="htmlNode"></param>
@@ -939,7 +953,7 @@ namespace sunamo.Html
             {
                 if (HasTagName(item, p))
                 {
-                    if (HasTagAttr(item, atribut, hodnotaAtributu))
+                    if (HasTagAttr(item, atribut, hodnotaAtributu, false))
                     {
                         //RecursiveReturnTagsWithAttr(vr, item, p);
                         if (!vr.Contains(item))

@@ -122,6 +122,21 @@ public static class CA
         return t;
     }
 
+    /// <summary>
+    /// better is use first or default, because here I also have to use default(T)
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    internal static T FirstOrNull<T>(List<T> list)
+    {
+        if (list.Count > 0)
+        {
+            return list[0];
+        }
+        return default(T);
+    }
+
     public static bool ContainsElement<T>(IEnumerable<T> list, T t)
     {
         foreach (T item in list)
