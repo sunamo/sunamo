@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutApp" xml:space="preserve">
+    <value>O aplikaci</value>
+  </data>
+  <data name="AboutDeveloper" xml:space="preserve">
+    <value>Tato aplikace byla vytvořena ve vývojovém prostředí Visual Studio 2015 Community, které je zcela zdarma. Osoba, která učinila tuto aplikaci na internetu je znám pod nickem sunamo.</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="HereEnter" xml:space="preserve">
+    <value>Zde zadejte </value>
+  </data>
+  <data name="TickAll" xml:space="preserve">
+    <value>Zaškrtnout vše</value>
+  </data>
+  <data name="UntickAll" xml:space="preserve">
+    <value>Odškrtnout vše</value>
+  </data>
+  <data name="tbPassword.Text" xml:space="preserve">
+    <value>Heslo:</value>
+  </data>
+  <data name="chbRememberLogin.Content" xml:space="preserve">
+    <value>Zapamatovat login</value>
+  </data>
+  <data name="chbAutoLogin.Content" xml:space="preserve">
+    <value>Automatické přihlášení</value>
+  </data>
+  <data name="btnCloseDialog.Content" xml:space="preserve">
+    <value>Zavřít dialog</value>
+  </data>
+  <data name="btnForgetLoginAndPassword.Content" xml:space="preserve">
+    <value>Zapomenout login a heslo</value>
+  </data>
+  <data name="btnForgetPassword.Content" xml:space="preserve">
+    <value>Zapomenout heslo</value>
+  </data>
+  <data name="btnLogin.Content" xml:space="preserve">
+    <value>Přihlásit se</value>
+  </data>
+  <data name="doesNotExists" xml:space="preserve">
+    <value>neexistuje</value>
+  </data>
+  <data name="ExceptionNotExists" xml:space="preserve">
+    <value>Program se pokouší zobrazit výjimku, která ve skutečnosti neexistuje.</value>
+  </data>
+  <data name="FileOrFolder" xml:space="preserve">
+    <value>Soubor nebo složka</value>
+  </data>
+  <data name="InsufficientRightsToAccessFileOrFolder" xml:space="preserve">
+    <value>Nedostatečná práva pro typ přístupu k souboru nebo složce</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="UnknownErrorWhenWorkWithFileOrFolder" xml:space="preserve">
+    <value>Chyba neznámého typu při práci se souborem nebo složkou</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="FileCannotBeDeleted" xml:space="preserve">
+    <value>Soubor nelze odstranit</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="lasted" xml:space="preserve">
+    <value>trvala</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operace</value>
+  </data>
+  <data name="PasswordOrLoginNotEntered" xml:space="preserve">
+    <value>Heslo nebo uživatelské jméno nebylo zadáno</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Úspěch</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="tbAnyFeedbackIsWelcome.Text" xml:space="preserve">
+    <value>Jakýkoliv zpětná vazba je vítána! Díky za vaše názory a podněty.</value>
+  </data>
+  <data name="CzechBlog" xml:space="preserve">
+    <value>Česky psaný blog</value>
+  </data>
+  <data name="EnglishBlog" xml:space="preserve">
+    <value>Anglicky psaný blog</value>
+  </data>
+  <data name="BlueColorComponentColon" xml:space="preserve">
+    <value>Modrá barva:</value>
+  </data>
+  <data name="GreenColorComponentColon" xml:space="preserve">
+    <value>Zelená barva:</value>
+  </data>
+  <data name="TransparencyColon" xml:space="preserve">
+    <value>Průhlednost:</value>
+  </data>
+  <data name="RedColorComponentColon" xml:space="preserve">
+    <value>Červená barva:</value>
+  </data>
+</root>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-GB" original="UNIVERSALWEBCONTROL/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1517.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="UNIVERSALWEBCONTROL/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="txtSearch.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Search on Google</source>
+          <target state="new">Search on Google</target>
+        </trans-unit>
+        <trans-unit id="Always" translate="yes" xml:space="preserve">
+          <source>Always</source>
+          <target state="new">Always</target>
+        </trans-unit>
+        <trans-unit id="btnBack.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Previous</source>
+          <target state="new">Previous</target>
+        </trans-unit>
+        <trans-unit id="btnNext.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="new">Next</target>
+        </trans-unit>
+        <trans-unit id="btnReload.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Reload</source>
+          <target state="new">Reload</target>
+        </trans-unit>
+        <trans-unit id="btnStopLoading.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Stop loading</source>
+          <target state="new">Stop loading</target>
+        </trans-unit>
+        <trans-unit id="Never" translate="yes" xml:space="preserve">
+          <source>Never</source>
+          <target state="new">Never</target>
+        </trans-unit>
+        <trans-unit id="Prompt" translate="yes" xml:space="preserve">
+          <source>Prompt</source>
+          <target state="new">Prompt</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

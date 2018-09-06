@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-GB" original="APPS/STRINGS/CS-CZ/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1517.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="APPS/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="AboutApp" translate="yes" xml:space="preserve">
+          <source>About app</source>
+          <target state="new">About app</target>
+        </trans-unit>
+        <trans-unit id="AboutDeveloper" translate="yes" xml:space="preserve">
+          <source>This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</source>
+          <target state="new">This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</target>
+        </trans-unit>
+        <trans-unit id="Cancel.Content" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+        </trans-unit>
+        <trans-unit id="HereEnter" translate="yes" xml:space="preserve">
+          <source>Here enter </source>
+          <target state="new">Here enter </target>
+        </trans-unit>
+        <trans-unit id="TickAll" translate="yes" xml:space="preserve">
+          <source>Tick all</source>
+          <target state="new">Tick all</target>
+        </trans-unit>
+        <trans-unit id="UntickAll" translate="yes" xml:space="preserve">
+          <source>Untick all</source>
+          <target state="new">Untick all</target>
+        </trans-unit>
+        <trans-unit id="tbPassword.Text" translate="yes" xml:space="preserve">
+          <source>Password:</source>
+          <target state="new">Password:</target>
+        </trans-unit>
+        <trans-unit id="chbRememberLogin.Content" translate="yes" xml:space="preserve">
+          <source>Remember login</source>
+          <target state="new">Remember login</target>
+        </trans-unit>
+        <trans-unit id="chbAutoLogin.Content" translate="yes" xml:space="preserve">
+          <source>Auto login</source>
+          <target state="new">Auto login</target>
+        </trans-unit>
+        <trans-unit id="btnCloseDialog.Content" translate="yes" xml:space="preserve">
+          <source>Close dialog</source>
+          <target state="new">Close dialog</target>
+        </trans-unit>
+        <trans-unit id="btnForgetLoginAndPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget all</source>
+          <target state="new">Forget all</target>
+        </trans-unit>
+        <trans-unit id="btnForgetPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget password</source>
+          <target state="new">Forget password</target>
+        </trans-unit>
+        <trans-unit id="btnLogin.Content" translate="yes" xml:space="preserve">
+          <source>Log in</source>
+          <target state="new">Log in</target>
+        </trans-unit>
+        <trans-unit id="doesNotExists" translate="yes" xml:space="preserve">
+          <source>does not exists</source>
+          <target state="new">does not exists</target>
+        </trans-unit>
+        <trans-unit id="ExceptionNotExists" translate="yes" xml:space="preserve">
+          <source>The program is attempting to show the exception that actually does not exist.</source>
+          <target state="new">The program is attempting to show the exception that actually does not exist.</target>
+        </trans-unit>
+        <trans-unit id="FileOrFolder" translate="yes" xml:space="preserve">
+          <source>File or folder</source>
+          <target state="new">File or folder</target>
+        </trans-unit>
+        <trans-unit id="InsufficientRightsToAccessFileOrFolder" translate="yes" xml:space="preserve">
+          <source>Insufficient rights for this type of access to a file or folder</source>
+          <target state="new">Insufficient rights for this type of access to a file or folder</target>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="new">No</target>
+        </trans-unit>
+        <trans-unit id="UnknownErrorWhenWorkWithFileOrFolder" translate="yes" xml:space="preserve">
+          <source>An error of unknown type when you work with a file or folder</source>
+          <target state="new">An error of unknown type when you work with a file or folder</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="new">Yes</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="new">Error</target>
+        </trans-unit>
+        <trans-unit id="FileCannotBeDeleted" translate="yes" xml:space="preserve">
+          <source>File cannot be deleted</source>
+          <target state="new">File cannot be deleted</target>
+        </trans-unit>
+        <trans-unit id="Information" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <target state="new">Information</target>
+        </trans-unit>
+        <trans-unit id="lasted" translate="yes" xml:space="preserve">
+          <source>lasted</source>
+          <target state="new">lasted</target>
+        </trans-unit>
+        <trans-unit id="Operation" translate="yes" xml:space="preserve">
+          <source>Operation</source>
+          <target state="new">Operation</target>
+        </trans-unit>
+        <trans-unit id="PasswordOrLoginNotEntered" translate="yes" xml:space="preserve">
+          <source>User name or password has not been entered</source>
+          <target state="new">User name or password has not been entered</target>
+        </trans-unit>
+        <trans-unit id="Success" translate="yes" xml:space="preserve">
+          <source>Success</source>
+          <target state="new">Success</target>
+        </trans-unit>
+        <trans-unit id="Warning" translate="yes" xml:space="preserve">
+          <source>Warning</source>
+          <target state="new">Warning</target>
+        </trans-unit>
+        <trans-unit id="tbAnyFeedbackIsWelcome.Text" translate="yes" xml:space="preserve">
+          <source>Any feedback is welcome!</source>
+          <target state="new">Any feedback is welcome!</target>
+        </trans-unit>
+        <trans-unit id="CzechBlog" translate="yes" xml:space="preserve">
+          <source>Czech blog</source>
+          <target state="new">Czech blog</target>
+        </trans-unit>
+        <trans-unit id="EnglishBlog" translate="yes" xml:space="preserve">
+          <source>English blog</source>
+          <target state="new">English blog</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Blue color component:</source>
+          <target state="new">Blue color component:</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Green color component:</source>
+          <target state="new">Green color component:</target>
+        </trans-unit>
+        <trans-unit id="TransparencyColon" translate="yes" xml:space="preserve">
+          <source>Opacity:</source>
+          <target state="new">Opacity:</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Red color component:</source>
+          <target state="new">Red color component:</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyLoginedToSpace" translate="yes" xml:space="preserve">
+          <source>You're successfully logined to </source>
+          <target state="new">You're successfully logined to </target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
