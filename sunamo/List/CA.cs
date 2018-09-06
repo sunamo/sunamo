@@ -63,9 +63,21 @@ public static class CA
         return count;
     }
 
-    public static void RemoveWildcard(List<string> d, string folder)
+    /// <summary>
+    /// Delete which fullfil A2 wildcard
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="mask"></param>
+    public static void RemoveWildcard(List<string> d, string mask)
     {
-        ThrowExceptions.NotImplementedCase(type, "RemoveWildcard");
+        for (int i = d.Count - 1; i >= 0; i--)
+        {
+            if (SH.MatchWildcard(d[i], mask))
+            {
+                d.RemoveAt(i);
+            }
+        }
+        
     }
 
     public static bool HasIndex(int dex, Array col)
@@ -184,16 +196,19 @@ public static class CA
         }
     }
 
-    public static List<int> ReturnWhichContainsIndexes(List<string> value, string term)
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term)
     {
         List<int> result = new List<int>();
-        for (int i = 0; i < value.Count; i++)
+        int i = 0;
+        foreach (var item in value)
         {
-            if (value[i].Contains(term))
+            if (item.Contains(term))
             {
                 result.Add(i);
             }
+            i++;
         }
+        
         return result;
     }
 
@@ -495,6 +510,16 @@ public static class CA
             slova[i] = slova[i].ToLower();
         }
         return slova;
+    }
+
+    public static List< int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
+    {
+        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
+        foreach (var item in mustContains)
+        {
+            result.AddRange(ReturnWhichContainsIndexes(parts, item));
+        }
+        return result.c;
     }
 
     public static bool AnyElementEndsWith(string t, params string[] v)
@@ -833,9 +858,9 @@ public static class CA
         return vr;
     }
 
-    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
     {
-        foreach (T item in prvky)
+        foreach (T item in list)
         {
             if (EqualityComparer<T>.Default.Equals(p, item))
             {
@@ -843,6 +868,11 @@ public static class CA
             }
         }
         return false;
+    }
+
+    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+    {
+        return IsEqualToAnyElement(p, prvky.ToList());
     }
 
     public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)

@@ -1,4 +1,4 @@
-#region Mono
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,17 +43,18 @@ namespace sunamo.Helpers
 			return output;
 		}
 
-		public static List<string> InvokeAsync(params string[] commands)
+		public async static Task< List<string>> InvokeAsync(params string[] commands)
 		{
 			List<string> returnList = new List<string>();
 			PowerShell ps = null;
-
-			foreach (var item in commands)
+            //  After leaving using is closed pipeline, must watch for complete or 
+            using (ps = PowerShell.Create())
+            {
+                foreach (var item in commands)
 			{
-				//  After leaving using is closed pipeline, must watch for complete or 
-				using (ps = PowerShell.Create())
-				{
+				
 					ps.AddScript(item);
+
 					var async = ps.BeginInvoke();
 					returnList.AddRange(ProcessPSObjects(ps.EndInvoke(async)));
 				}
@@ -71,12 +72,17 @@ namespace sunamo.Helpers
 				//  After leaving using is closed pipeline, must watch for complete or 
 				using (ps = PowerShell.Create())
 				{
+                    
 					ps.AddScript(item);
-					var async = ps.BeginInvoke();
-					ps.EndInvoke(async);
+                    //s ziskanim vysledku a EndInvoke - synchronni
+                    //bez ziskani vysledku - okamzite ale neni mozne ziskat vystup
+                    ps.BeginInvoke();
+                    
+                    //var async =
+                    //ps.EndInvoke(async);
 				}
 			}
 		}
 	}
 }
-#endregion
+

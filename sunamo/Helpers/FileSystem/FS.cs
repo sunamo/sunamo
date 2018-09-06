@@ -100,13 +100,13 @@ namespace sunamo
             ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
         }
 
-        public static List<string> GetFolders(string v, string startingWith)
+        public static List<string> GetFolders(string v, string contains)
         {
             var folders = GetFolders(v);
             folders = CA.TrimEnd(folders, '\\');
             for (int i = folders.Count - 1; i >= 0; i--)
             {
-                if (!Path.GetFileName(folders[i]).Contains(startingWith))
+                if (!Path.GetFileName(folders[i]).Contains(contains))
                 {
                     folders.RemoveAt(i);
                 }
@@ -860,6 +860,11 @@ namespace sunamo
 
         }
 
+        public static string MakeUncLongPath( string path)
+        {
+            return MakeUncLongPath(ref path);
+        }
+
         public static string MakeUncLongPath(ref string path)
         {
             if (!path.StartsWith(Consts.UncLongPath))
@@ -1119,6 +1124,11 @@ namespace sunamo
 
             }
             return t;
+        }
+
+        public static string ExpandEnvironmentVariables(EnvironmentVariables environmentVariable)
+        {
+            return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.modulo));
         }
 
         /// <summary>
@@ -1861,7 +1871,7 @@ namespace sunamo
                 slozkyKVytvoreni.Reverse();
                 foreach (string item in slozkyKVytvoreni)
                 {
-                    string folder = Consts.UncLongPath + item;
+                    string folder = FS.MakeUncLongPath( item);
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);

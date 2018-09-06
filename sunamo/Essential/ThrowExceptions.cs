@@ -18,9 +18,10 @@ public class ThrowExceptions
         string typeFullName = string.Empty;
         if (type is Type)
         {
-            typeFullName = ((Type)type).FullName;
+            var type2 = ((Type)type);
+            typeFullName = type2.FullName;
         }
-        if (type is MethodBase)
+        else if (type is MethodBase)
         {
             MethodBase method = (MethodBase)type;
             typeFullName = method.ReflectedType.FullName;
@@ -36,7 +37,7 @@ public class ThrowExceptions
             typeFullName = t.FullName;
         }
 
-        return SH.ConcatIfBeforeHasValue(typeFullName, ".", methodName);
+        return string.Concat(typeFullName, ".", methodName);
     }
     #endregion
 
@@ -75,6 +76,11 @@ public class ThrowExceptions
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {
         ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName), namefc, countfc, namesc, countsc));
+    }
+
+    public static void IsNull(object type, string methodName, string variableName, object variable)
+    {
+        ThrowIsNotNull( Exceptions.IsNull(FullNameOfExecutedCode(type, methodName), variableName, variable));
     }
 
     public static void ArrayElementContainsUnallowedStrings(object type, string methodName, string arrayName, int dex,  string valueElement, params string[] unallowedStrings)

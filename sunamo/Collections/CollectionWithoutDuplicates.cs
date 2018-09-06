@@ -38,5 +38,11 @@ public class CollectionWithoutDuplicates<T>
         return vr;
     }
 
-    
+    internal void AddRange(IEnumerable<T> list)
+    {
+        foreach (var item in list)
+        {
+            Add(item);
+        }
+    }
 }

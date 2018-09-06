@@ -8,8 +8,8 @@ namespace sunamo.Generators.Text
     {
         int lastIndex = -1;
         string lastText = "";
-        StringBuilder sb = new StringBuilder();
-
+        public StringBuilder sb = new StringBuilder();
+        public string prependEveryNoWhite = string.Empty;
 
         bool canUndo = false;
 
@@ -41,7 +41,8 @@ namespace sunamo.Generators.Text
         public void Append(string s)
         {
             SetUndo(s);
-            sb.Append(s);
+            sb.Append(prependEveryNoWhite);
+            sb.Append( s);
         }
 
         private void SetUndo(string text)
@@ -57,17 +58,18 @@ namespace sunamo.Generators.Text
         {
             string text = s.ToString();
             SetUndo(text);
-            sb.Append(text);
+            Append(text);
         }
 
         public void AppendLine()
         {
-            Append(Environment.NewLine);
+            sb.Append(Environment.NewLine);
         }
 
         public void AppendLine(string s)
         {
             SetUndo(s);
+            sb.Append(prependEveryNoWhite);
             sb.AppendLine(s);
         }
 

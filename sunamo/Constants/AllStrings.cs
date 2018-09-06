@@ -6,6 +6,9 @@ namespace sunamo.Constants
 {
     public class AllStrings
     {
+        public const string cbl = "{";
+        public const string cbr = "}";
+
         public const string space = " ";
         public const string dash = "-";
         public const string colon = ":";

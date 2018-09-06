@@ -3,19 +3,23 @@ using sunamo.Generators.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 public class TextOutputGenerator
 {
     readonly static string znakNadpisu = "*";
     public TextBuilder sb = new TextBuilder();
-    
+    public string prependEveryNoWhite
+    {
+        get => sb.prependEveryNoWhite;
+        set => sb.prependEveryNoWhite = value;
+    }
 
-    #region Main
-
+    #region Static texts
     /// <summary>
     /// 
     /// </summary>
-    public  void EndRunTime()
+    public void EndRunTime()
     {
         sb.AppendLine(Messages.AppWillBeTerminated);
     }
@@ -27,11 +31,9 @@ public class TextOutputGenerator
     {
         sb.AppendLine(Messages.NoData);
     }
-
-    
     #endregion
 
-    #region Dalsi vyskyty
+    #region Templates
 
     /// <summary>
     /// Napíše nadpis A1 do konzole 
@@ -54,12 +56,19 @@ public class TextOutputGenerator
     public  void WriteLineFormat(string text, params object[] p)
     {
         sb.AppendLine();
-        sb.AppendLine(string.Format(text, p));
+        
+        AppendLine(string.Format(text, p));
     }
 
     public void Format(string text, params object[] p)
     {
-        sb.AppendLine(string.Format(text, p));
+        AppendLine(string.Format(text, p));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void AppendLine(string text)
+    {
+        sb.AppendLine(text);
     }
     
     public override string ToString()
@@ -70,7 +79,7 @@ public class TextOutputGenerator
     public void Header(string v)
     {
         sb.AppendLine();
-        sb.AppendLine(v);
+        AppendLine(v);
         sb.AppendLine();
     }
 
@@ -84,7 +93,7 @@ public class TextOutputGenerator
         {
             foreach (var item in files1)
             {
-                sb.AppendLine(item);
+                AppendLine(item);
             }
             sb.AppendLine();
         }
@@ -139,7 +148,7 @@ public class TextOutputGenerator
 
     internal void Undo()
     {
-        
+        sb.Undo();
     }
 
     

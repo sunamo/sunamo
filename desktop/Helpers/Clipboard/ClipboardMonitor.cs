@@ -12,6 +12,8 @@ namespace sunamo.Clipboard
 {
 	public sealed class ClipboardMonitor : IDisposable, IClipboardMonitor
     {
+        public static ClipboardMonitor Instance = new ClipboardMonitor();
+
 		public static bool pernamentlyBlock = false;
 		public static bool? _monitor = true;
 		/// <summary>
@@ -49,12 +51,12 @@ namespace sunamo.Clipboard
 		// Don't exists in mono
 		private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, NativeMethods.HWND_MESSAGE);
 
-        public IClipboardMonitor Instance => throw new NotImplementedException();
+        
 
         public bool? monitor { get =>  _monitor; set => _monitor = value; }
         public bool afterSet { get => _afterSet; set => _afterSet = value; }
 
-        public ClipboardMonitor()
+        private ClipboardMonitor()
 		{
 			hwndSource.AddHook(WndProc);
 			NativeMethods.AddClipboardFormatListener(hwndSource.Handle);

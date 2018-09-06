@@ -95,7 +95,7 @@ namespace desktop.Essential
 
         public static void EnableDesktopLogging(bool v)
         {
-            throw new NotImplementedException();
+            
         }
 
         private static void SetForeground(TextBlock tbLastOtherMessage, Color color)

@@ -20,7 +20,11 @@ public static class AllChars
     public static readonly List<char> lowerChars = new List<char>(new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' });
     public static readonly List<char> upperChars = new List<char>(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' });
 
+    public const char cbl = '{';
+    public const char cbr = '}';
+
     #region Names here must be the same as in Consts
+    public const char modulo = '%';
     public const char space = ' ';
     public const char dash = '-';
     public const char colon = ':';

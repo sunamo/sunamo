@@ -26,6 +26,10 @@ using System.Text;
         listC = new List<string>(CA.ToEnumerable(c));
     }
 
+    public const int one = 1;
+    public const int two = 2;
+    public const int three = 3;
+
     public static readonly List<int> list12 = CA.ToInt(CA.ToList<int>(1, 2));
     public static readonly List<int> list1 = CA.ToInt(CA.ToList<int>(1));
     public static readonly List<int> list2 = CA.ToInt(CA.ToList<int>(2));

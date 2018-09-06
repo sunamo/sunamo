@@ -28,6 +28,8 @@ public static class SH
         return vr;
     }
 
+    
+
     /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
     /// </summary>
@@ -76,6 +78,11 @@ public static class SH
             return s;
         }
         return nameSolution;
+    }
+
+    internal static string WrapWithQm(string commitMessage)
+    {
+        return SH.WrapWith(commitMessage, AllChars.qm);
     }
 
     public static string WordAfter(string input, string word)
@@ -196,7 +203,7 @@ public static class SH
     }
 
     /// <summary>
-    /// not implemented
+    /// Musi mit sudy pocet prvku
     /// Pokud sudý [0], [2], ... bude mít aspoň jeden nebílý znak, pak se přidá lichý [1], [3] i sudý ve dvojicích. jinak nic
     /// </summary>
     /// <param name="className"></param>
@@ -206,7 +213,19 @@ public static class SH
     /// <returns></returns>
     public static string ConcatIfBeforeHasValue(params string[] className)
     {
-        throw new NotImplementedException();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < className.Length; i++)
+        {
+            string even = className[i];
+            if (!string.IsNullOrWhiteSpace(even))
+            {
+
+                //string odd = 
+                result.Append(even + className[++i]);
+            }
+
+        }
+        return result.ToString();
     }
 
     public static string ReplaceWhiteSpacesExcludeSpaces(string p)
@@ -437,6 +456,8 @@ public static class SH
 
         return true;
     }
+
+    
 
     public static string JoinDictionary(Dictionary<string, string> dictionary, string v)
     {
@@ -800,13 +821,47 @@ public static class SH
     /// <param name="delimiter"></param>
     /// <param name="tokeny"></param>
     /// <returns></returns>
-    public static string JoinFromIndex(int p, char delimiter, string[] tokeny)
+    public static string JoinFromIndex(int p, char delimiter, IEnumerable<string> tokeny)
     {
-        string delimiter2 = delimiter.ToString();
+        return JoinFromIndex(p, delimiter.ToString(), tokeny);
+    }
+
+    public static string JoinFromIndex(int dex, string delimiter, IEnumerable<string> parts)
+    {
         StringBuilder sb = new StringBuilder();
-        for (int i = p; i < tokeny.Length; i++)
+        int i = 0;
+        foreach (var item in parts)
         {
-            sb.Append(tokeny[i] + delimiter2);
+            if (i >= dex)
+            {
+                sb.Append(item + delimiter);
+            }
+            
+            i++;
+        }
+        string vr = sb.ToString();
+        return vr.Substring(0, vr.Length - 1);
+    }
+
+    /// <summary>
+    /// A1 won't be included
+    /// </summary>
+    /// <param name="dex"></param>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinToIndex(int dex, string delimiter, IEnumerable<string> parts)
+    {
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        foreach (var item in parts)
+        {
+            if (i < dex)
+            {
+                sb.Append(item + delimiter);
+            }
+
+            i++;
         }
         string vr = sb.ToString();
         return vr.Substring(0, vr.Length - 1);

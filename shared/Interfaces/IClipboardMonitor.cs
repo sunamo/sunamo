@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
     public interface IClipboardMonitor
     {
-        IClipboardMonitor Instance { get; }
+    // need to create static
+        //IClipboardMonitor Instance { get; }
         bool? monitor { get; set; }
         bool afterSet { get; set; }
     }

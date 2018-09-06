@@ -1,4 +1,6 @@
-﻿using System;
+﻿using sunamo.Constants;
+using sunamo.Generators.Text;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +10,36 @@ namespace shared.Helpers.Powershell
 {
     public class PowershellBuilder
     {
-        public void AddRaw(string v)
+        TextBuilder sb = new TextBuilder();
+
+        public PowershellBuilder()
         {
-            throw new NotImplementedException();
+            sb.prependEveryNoWhite = AllStrings.space;
         }
 
-        public void Add(string v, string matchTitle)
+        /// <summary>
+        /// Automatically prepend by space
+        /// </summary>
+        /// <param name="v"></param>
+        public void AddRaw(string v)
         {
-            throw new NotImplementedException();
+            sb.Append(v);
+        }
+
+        public void AddArg(string argName, string argValue)
+        {
+            sb.Append(argName);
+            sb.Append(argValue);
+        }
+
+        public void CmdC(string v)
+        {
+            sb.AppendLine("cmd /c " + v);
+        }
+
+        public override string ToString()
+        {
+            return sb.ToString();
         }
     }
 }

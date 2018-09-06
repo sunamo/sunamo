@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 
 namespace sunamo.Essential
@@ -14,6 +15,20 @@ namespace sunamo.Essential
             this.writeLineDelegate = writeLineDelegate;
         }
         
+        public void WriteCount(string collectionName, IEnumerable list)
+        {
+            WriteLine(collectionName + " count: " + list.Count());
+            
+        }
+
+        public void WriteList(string collectionName, IEnumerable list)
+        {
+            WriteLine(collectionName + " elements:");
+            foreach (var item in list)
+            {
+                WriteLine(item.ToString());
+            }
+        }
 
         public  void TwoState(bool ret, params object[] toAppend)
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
@@ -137,5 +138,10 @@ public static class UriWebServices
     public static string CoordsInfo(string f)
     {
         return "http://coords.info/" + f;
+    }
+
+    public static string GitRepoInVsts(string slnName)
+    {
+        return "https://sunamocz.visualstudio.com/_git/" + slnName;
     }
 }

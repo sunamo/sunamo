@@ -70,7 +70,17 @@ namespace sunamo.Essential
         {
             if (countfc != countsc)
             {
-                return CheckBefore( before) + " Different count elements in collection " + SH.ConcatIfBeforeHasValue(namefc + " - " + countfc) + " vs. " + SH.ConcatIfBeforeHasValue(namesc + " - " + countsc);
+                return CheckBefore( before) + " Different count elements in collection " + string.Concat(namefc + " - " + countfc) + " vs. " + string.Concat(namesc + " - " + countsc);
+            }
+
+            return null;
+        }
+
+        internal static string IsNull(string before, string variableName, object variable)
+        {
+            if (variable == null)
+            {
+                return CheckBefore(before) + variable + " is null.";
             }
 
             return null;
