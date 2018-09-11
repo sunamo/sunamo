@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace sunamo.CodeGenerator
 {
+    /// <summary>
+    /// Similar: InstantSB,TextBuilder,HtmlSB
+    /// </summary>
     public abstract class GeneratorCodeAbstract
     {
         protected InstantSB sb = new InstantSB(" ");
@@ -23,9 +26,9 @@ namespace sunamo.CodeGenerator
             return vr;
         }
 
-        public void AddTab2(int pocetTab, string text)
+        public void AddTab2(int tabCount, string text)
         {
-            sb.AddItem((object)AddTab(pocetTab, text));
+            sb.AddItem((object)AddTab(tabCount, text));
         }
 
         /// <summary>
@@ -33,10 +36,10 @@ namespace sunamo.CodeGenerator
         /// Ukončí složenou závorku a přidá nový řádek
         /// 
         /// </summary>
-        public void EndBrace(int pocetTab)
+        public void EndBrace(int tabCount)
         {
             //sb.AppendLine();
-            AddTab(pocetTab);
+            AddTab(tabCount);
             //sb.AppendLine();
             sb.AppendLine("}");
 
@@ -46,18 +49,19 @@ namespace sunamo.CodeGenerator
         /// Přidá nový řádek, složenou závorku 
         /// Je to jediná zdejší metoda která na začátku přidává nový řádek.
         /// </summary>
-        public void StartBrace(int pocetTab)
+        public void StartBrace(int tabCount)
         {
-            sb.AppendLine();
-            AddTab(pocetTab);
+            // Line always ending previous command
+            //sb.AppendLine();
+            AddTab(tabCount);
             sb.AppendLine("{");
             //sb.AppendLine();
         }
 
-        public void AddTab(int pocetTab)
+        public void AddTab(int tabCount)
         {
-            //pocetTab += 1;
-            for (int i = 0; i < pocetTab; i++)
+            //tabCount += 1;
+            for (int i = 0; i < tabCount; i++)
             {
                 sb.AddItem((object)Consts.tab);
             }
@@ -73,38 +77,43 @@ namespace sunamo.CodeGenerator
             sb.AddItem((object)")");
         }
 
-        public void AppendLine(int pocetTab, string p, params object[] p2)
+        public void AppendLine()
+        {
+            sb.AppendLine();
+        }
+
+        public void AppendLine(int tabCount, string p, params object[] p2)
         {
             if (p2.Length != 0)
             {
-                sb.AppendLine(AddTab(pocetTab, string.Format(p, p2)));
+                sb.AppendLine(AddTab(tabCount, string.Format(p, p2)));
             }
             else
             {
-                sb.AppendLine(AddTab(pocetTab, p));
+                sb.AppendLine(AddTab(tabCount, p));
             }
         }
 
-        public void Append(int pocetTab, string p, params object[] p2)
+        public void Append(int tabCount, string p, params object[] p2)
         {
             if (p2.Length != 0)
             {
-                sb.AddItem(AddTab(pocetTab, string.Format(p, p2)));
+                sb.AddItem(AddTab(tabCount, string.Format(p, p2)));
             }
             else
             {
-                sb.AddItem(AddTab(pocetTab, p));
+                sb.AddItem(AddTab(tabCount, p));
             }
             string sbn = sb.ToString();
         }
 
-        public static string AddTab(int pocetTab, string text)
+        public static string AddTab(int tabCount, string text)
         {
             var radky = SH.GetLines(text);
             for (int i = 0; i < radky.Count; i++)
             {
                 radky[i] = radky[i].Trim();
-                for (int y = 0; y < pocetTab; y++)
+                for (int y = 0; y < tabCount; y++)
                 {
                     radky[i] = Consts.tab + radky[i];
                 }
@@ -113,7 +122,7 @@ namespace sunamo.CodeGenerator
             return vr;
         }
 
-        public void AssignValue(int pocetTab, string objectName, string variable, object value, bool addToHyphens)
+        public void AssignValue(int tabCount, string objectName, string variable, object value, bool addToHyphens)
         {
             string vs = null;
             if (value.GetType() == typeof(bool))
@@ -124,7 +133,7 @@ namespace sunamo.CodeGenerator
             {
                 vs = value.ToString();
             }
-            AssignValue(pocetTab, objectName, variable, vs, addToHyphens);
+            AssignValue(tabCount, objectName, variable, vs, addToHyphens);
         }
     }
 }

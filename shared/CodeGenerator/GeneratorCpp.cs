@@ -8,30 +8,30 @@ namespace sunamo.CodeGenerator
 {
     public class GeneratorCpp : GeneratorCodeAbstract
     {
-        public void MapStringString(int pocetTabu, string mapName, Dictionary<string, string> nameCommentEnums)
+        public void MapStringString(int tabCount, string mapName, Dictionary<string, string> nameCommentEnums)
         {
             string cn = "map<string, string>";
-            NewVariable(pocetTabu, AccessModifiers.Private, cn, mapName, true);
+            NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(pocetTabu, mapName + ".insert({\"" + item.Key + "\", \"" + item.Value + "\"});");
+                AppendLine(tabCount, mapName + ".insert({\"" + item.Key + "\", \"" + item.Value + "\"});");
             }
         }
 
-        private void NewVariable(int pocetTabu, AccessModifiers _public, string cn, string name, bool createInstance)
+        private void NewVariable(int tabCount, AccessModifiers _public, string cn, string name, bool createInstance)
         {
-            AddTab2(pocetTabu, "");
+            AddTab2(tabCount, "");
             sb.AddItem(cn);
             sb.AppendLine(name + ";");
         }
 
-        public void MapNonStringNonString(int pocetTabu, string mapName, string keyType, string valueType, Dictionary<string, string> nameCommentEnums)
+        public void MapNonStringNonString(int tabCount, string mapName, string keyType, string valueType, Dictionary<string, string> nameCommentEnums)
         {
             string cn = "map<" + keyType + ", " + valueType + ">";
-            NewVariable(pocetTabu, AccessModifiers.Private, cn, mapName, true);
+            NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(pocetTabu, mapName + ".insert({" + item.Key + ", " + item.Value + "});");
+                AppendLine(tabCount, mapName + ".insert({" + item.Key + ", " + item.Value + "});");
             }
         }
 

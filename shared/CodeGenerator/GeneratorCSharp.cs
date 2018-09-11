@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using sunamo.CodeGenerator;
 using sunamo.Constants;
+using sunamo.Values;
 
 public class GeneratorCSharp : GeneratorCodeAbstract
 {
@@ -11,9 +12,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     {
     }
 
-    public void StartClass(int pocetTab, AccessModifiers _public, bool _static, string className, params string[] derive)
+    public void StartClass(int tabCount, AccessModifiers _public, bool _static, string className, params string[] derive)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         PublicStatic(_public, _static);
         sb.AddItem((object)("class " + className));
         if (derive.Length != 0)
@@ -25,7 +26,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
             }
             sb.AddItem((object)derive[derive.Length - 1]);
         }
-        StartBrace(pocetTab);
+        StartBrace(tabCount);
     }
 
     private void PublicStatic(AccessModifiers _public, bool _static)
@@ -61,20 +62,31 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         }
     }
 
-    public void Attribute(int pocetTab, string name, string attrs)
+    internal void EndRegion(int tabCount)
     {
-        AddTab(pocetTab);
+        AppendLine(tabCount, "#endregion");
+    }
+
+    internal void Region(int tabCount, string v)
+    {
+        AppendLine(tabCount, "#region " + v);
+        
+    }
+
+    public void Attribute(int tabCount, string name, string attrs)
+    {
+        AddTab(tabCount);
         sb.AppendLine("[" + name + "(" + attrs + ")]");
     }
 
-    public void Field(int pocetTab, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool addHyphensToValue, string value)
+    public void Field(int tabCount, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool addHyphensToValue, string value)
     {
         ObjectInitializationOptions oio = ObjectInitializationOptions.Original;
         if (addHyphensToValue)
         {
             oio = ObjectInitializationOptions.Hyphens;
         }
-        Field(pocetTab, _public, _static, variableModifiers, type, name, oio, value);
+        Field(tabCount, _public, _static, variableModifiers, type, name, oio, value);
     }
 
     /// <summary>
@@ -82,7 +94,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// A1 se bude ignorovat pokud v A7 bude NewAssign
     /// Do A8 se nesmí vkládal null, program by havaroval
     /// </summary>
-    /// <param name="pocetTab"></param>
+    /// <param name="tabCount"></param>
     /// <param name="_public"></param>
     /// <param name="_static"></param>
     /// <param name="variableModifiers"></param>
@@ -90,9 +102,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// <param name="name"></param>
     /// <param name="oio"></param>
     /// <param name="value"></param>
-    public void Field(int pocetTab, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, ObjectInitializationOptions oio, string value)
+    public void Field(int tabCount, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, ObjectInitializationOptions oio, string value)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         ModificatorsField(_public, _static, variableModifiers);
         ReturnTypeName(type, name);
         sb.AddItem((object)"=");
@@ -111,9 +123,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
             sb.AppendLine();
     }
 
-    public void Field(int pocetTab, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool defaultValue)
+    public void Field(int tabCount, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool defaultValue)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         ModificatorsField(_public, _static, variableModifiers);
         ReturnTypeName(type, name);
         DefaultValue(type, defaultValue);
@@ -157,9 +169,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// <param name="tableName"></param>
     /// <param name="inner"></param>
     /// <param name="args"></param>
-    public void Ctor(int pocetTab, ModifiersConstructor mc, string ctorName, string inner, params string[] args)
+    public void Ctor(int tabCount, ModifiersConstructor mc, string ctorName, string inner, params string[] args)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AddItem((object)SH.FirstCharLower(mc.ToString()));
         sb.AddItem((object)ctorName);
         StartParenthesis();
@@ -180,11 +192,11 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         }
         EndParenthesis();
 
-        StartBrace(pocetTab);
+        StartBrace(tabCount);
         //sb.AppendLine();
-        Append(pocetTab + 1, inner);
+        Append(tabCount + 1, inner);
         
-        EndBrace(pocetTab -2);
+        EndBrace(tabCount -2);
         sb.AppendLine();
     }
 
@@ -195,9 +207,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// <param name="tableName"></param>
     /// <param name="autoAssing"></param>
     /// <param name="args"></param>
-    public void Ctor(int pocetTab, ModifiersConstructor mc, string ctorName, bool autoAssing, bool isBase, params string[] args)
+    public void Ctor(int tabCount, ModifiersConstructor mc, string ctorName, bool autoAssing, bool isBase, params string[] args)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AddItem((object)SH.FirstCharLower(mc.ToString()));
         sb.AddItem((object)ctorName);
         StartParenthesis();
@@ -223,54 +235,54 @@ public class GeneratorCSharp : GeneratorCodeAbstract
             sb.AddItem((object)(": base(" + SH.Join(',', nazevParams.ToArray()) + ")"));
         }
         
-        StartBrace(pocetTab);
+        StartBrace(tabCount);
         if (autoAssing && isBase)
         {
             foreach (string item in nazevParams)
             {
                 
-                This(pocetTab, item);
+                This(tabCount, item);
                 sb.AddItem((object)"=");
                 sb.AddItem((object)(item + ";"));
                 sb.AppendLine();
             }
         }
-        EndBrace(pocetTab);
+        EndBrace(tabCount);
         sb.AppendLine();
     }
 
-    public void Property(int pocetTab, AccessModifiers _public, bool _static, string returnType, string name, bool _get, bool _set, string field)
+    public void Property(int tabCount, AccessModifiers _public, bool _static, string returnType, string name, bool _get, bool _set, string field)
     {     
         #region MyRegion
-        AddTab(pocetTab);
+        AddTab(tabCount);
         PublicStatic(_public, _static);
 	    #endregion
         ReturnTypeName(returnType, name);
-        AddTab(pocetTab);
-        StartBrace(pocetTab);
+        AddTab(tabCount);
+        StartBrace(tabCount);
         if (_get)
         {
-            AddTab(pocetTab + 1);
+            AddTab(tabCount + 1);
             sb.AddItem((object)"get");
-            StartBrace(pocetTab + 1);
-            AddTab(pocetTab + 2);
+            StartBrace(tabCount + 1);
+            AddTab(tabCount + 2);
             sb.AddItem((object)("return " + field + ";"));
             sb.AppendLine();
-            EndBrace(pocetTab + 1);
+            EndBrace(tabCount + 1);
         }
         if (_set)
         {
-            AddTab(pocetTab + 1);
+            AddTab(tabCount + 1);
             sb.AddItem((object)"set");
             
-            StartBrace(pocetTab + 1);
-            AddTab(pocetTab + 2);
+            StartBrace(tabCount + 1);
+            AddTab(tabCount + 2);
             sb.AddItem((object)(field + " = value;"));
             sb.AppendLine();
-            EndBrace(pocetTab + 1);
+            EndBrace(tabCount + 1);
         }
         
-        EndBrace(pocetTab);
+        EndBrace(tabCount);
         sb.AppendLine();
     }
 
@@ -283,20 +295,20 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// <param name="name"></param>
     /// <param name="inner"></param>
     /// <param name="args"></param>
-    public void Method(int pocetTab, AccessModifiers _public, bool _static, string returnType, string name, string inner, string args)
+    public void Method(int tabCount, AccessModifiers _public, bool _static, string returnType, string name, string inner, string args)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         PublicStatic(_public, _static);
         ReturnTypeName(returnType, name);
         StartParenthesis();
         sb.AddItem((object)args);
         EndParenthesis();
         
-        StartBrace(pocetTab);
-        //AddTab(pocetTab + 1);
+        StartBrace(tabCount);
+        //AddTab(tabCount + 1);
         sb.AddItem((object)inner);
         sb.AppendLine();
-        EndBrace(pocetTab);
+        EndBrace(tabCount);
         sb.AppendLine();
     }
 
@@ -306,16 +318,16 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         sb.AddItem((object)name);
     }
 
-    public void Method(int pocetTab, string header, string inner)
+    public void Method(int tabCount, string header, string inner)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AddItem((object)header);
         
-        StartBrace(pocetTab);
-        //AddTab(pocetTab + 1);
+        StartBrace(tabCount);
+        //AddTab(tabCount + 1);
         sb.AddItem((object)inner);
         sb.AppendLine("");
-        EndBrace(pocetTab);
+        EndBrace(tabCount);
         sb.AppendLine();
     }
 
@@ -327,9 +339,9 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     }
     /// <summary>
     /// Pokud chceš nový řádek bez jakéhokoliv textu, zadej například 2, ""
-    /// Nepoužívej na to metodu jen s pocetTab, protože ji pak IntelliSense nevidělo.
+    /// Nepoužívej na to metodu jen s tabCount, protože ji pak IntelliSense nevidělo.
     /// </summary>
-    /// <param name="pocetTab"></param>
+    /// <param name="tabCount"></param>
     /// <param name="p"></param>
     /// <param name="p2"></param>
     
@@ -337,94 +349,105 @@ public class GeneratorCSharp : GeneratorCodeAbstract
     /// Automaticky doplní počáteční závorku
     /// </summary>
     /// <param name="podminka"></param>
-    public void If(int pocetTab, string podminka)
+    public void If(int tabCount, string podminka)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AppendLine( "if(" + podminka + ")");
-        StartBrace(pocetTab);
+        StartBrace(tabCount);
     }
 
     /// <summary>
     /// Automaticky doplní počáteční závorku
     /// </summary>
-    public void Else(int pocetTab)
+    public void Else(int tabCount)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AppendLine("else");
-        StartBrace(pocetTab);
+        StartBrace(tabCount);
     }
 
     public void EnumWithComments(AccessModifiers _public, string nameEnum, Dictionary<string, string> nameCommentEnums)
     {
         WriteAccessModifiers(_public);
-        int pocetTabu = 1;
-        AddTab(pocetTabu);
+        int tabCount = 1;
+        AddTab(tabCount);
         sb.AddItem((object)("enum " + nameEnum));
-        StartBrace(pocetTabu);
+        StartBrace(tabCount);
         foreach (var item in nameCommentEnums)
         {
-            XmlSummary(pocetTabu + 1, item.Value);
-            this.AppendLine(pocetTabu + 1, item.Key + ",");
+            XmlSummary(tabCount + 1, item.Value);
+            this.AppendLine(tabCount + 1, item.Key + ",");
         }
-        EndBrace(pocetTabu);
+        EndBrace(tabCount);
     }
 
-    private void XmlSummary(int pocetTabu, string summary)
+    private void XmlSummary(int tabCount, string summary)
     {
-        this.AppendLine(pocetTabu, "/// <summary>");
-        this.AppendLine(pocetTabu, "/// " + summary);
-        this.AppendLine(pocetTabu, "/// </summary>");
+        this.AppendLine(tabCount, "/// <summary>");
+        this.AppendLine(tabCount, "/// " + summary);
+        this.AppendLine(tabCount, "/// </summary>");
     }
 
-    private void AppendAttribute(int pocetTabu, string name, string inParentheses)
+    private void AppendAttribute(int tabCount, string name, string inParentheses)
     {
         string zav = "";
         if (inParentheses != null)
         {
             zav = "(" + inParentheses + ")";
         }
-        this.AppendLine(pocetTabu, "[" + name + zav + "]");
+        this.AppendLine(tabCount, "[" + name + zav + "]");
     }
 
-    public void List(int pocetTabu, string genericType, string listName, List<string> list)
+    public void List(int tabCount, string genericType, string listName, List<string> list)
     {
         string cn = "List<"+genericType+">";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, listName, false);
+        NewVariable(tabCount, AccessModifiers.Private, cn, listName, false);
         list = CA.WrapWith(list, AllStrings.qm);
-        AppendLine(pocetTabu, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
+        AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
         
     }
 
     
 
-    public void This(int pocetTab, string item)
+    public void This(int tabCount, string item)
     {
         
-        Append(pocetTab, "this." + item);
+        Append(tabCount, "this." + item);
     }
 
     #region Dictionary
-    public void DictionaryNumberNumber<T, U>(int pocetTabu, string nameDictionary, Dictionary<T, U> nameCommentEnums)
+    public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums)
     {
         string cn = "Dictionary<" + typeof(T).FullName + ", " + typeof(U).FullName + ">";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
         foreach (var item in nameCommentEnums)
         {
-            this.AppendLine(pocetTabu, nameDictionary + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
+            this.AppendLine(tabCount, nameDictionary + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
         }
     }
 
-    public void DictionaryStringString(int pocetTabu, string nameDictionary, Dictionary<string, string> nameCommentEnums)
+    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
     {
         string cn = "Dictionary<string, string>";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
         foreach (var item in nameCommentEnums)
         {
-            this.AppendLine(pocetTabu, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
         }
     }
 
-    public void DictionaryStringObject<Value>(int pocetTabu, string nameDictionary, Dictionary<string, Value> dict)
+    public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result)
+    {
+        string cn = "Dictionary<string, List<string>>";
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
+        foreach (var item in result)
+        {
+            var list = CA.WrapWithQm(item.Value);
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", CA.ToListString(" + SH.Join(list, AllChars.comma) + "));");
+        }
+    }
+
+    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
     {
         string valueType = null;
         if (dict.Count > 0)
@@ -432,43 +455,65 @@ public class GeneratorCSharp : GeneratorCodeAbstract
             valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
         }
         string cn = "Dictionary<string, "+valueType+">";
-        NewVariable(pocetTabu, AccessModifiers.Private, cn, nameDictionary, true);
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        AppendLine();
+        CreateInstance(cn, nameDictionary);
+        
         foreach (var item in dict)
         {
-            this.AppendLine(pocetTabu, nameDictionary + ".Add(\"" + item.Key + "\", " + item.Value + ");");
+            string value = null;
+            if (item.Value.GetType() == Consts.tString)
+            {
+                value = SH.WrapWithQm(item.Value.ToString());
+            }
+            else
+            {
+                value = item.Value.ToString();
+            }
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", " + value + ");");
         }
     }
+
+    
     #endregion
 
-    private void NewVariable(int pocetTabu, AccessModifiers _public, string cn, string name, bool createInstance)
+    private void NewVariable(int tabCount, AccessModifiers _public, string cn, string name, bool createInstance)
     {
-        AddTab2(pocetTabu, "");
+        AddTab2(tabCount, "");
         WriteAccessModifiers(_public);
         sb.AddItem((object)cn);
         sb.AddItem((object)name);
         if (createInstance)
         {
-            sb.AddItem((object)(" = new " + cn + "();"));
+            sb.EndLine(AllChars.sc);
+            AppendLine();
+            CreateInstance(cn, name);
         }
         else
         {
-            sb.AddItem((object)" = null;");
+            sb.AddItem((object)"= null;");
         }
+        sb.AppendLine();
     }
 
-    public void Enum(int pocetTabu, AccessModifiers _public, string nameEnum, List<EnumItem> enumItems)
+    private void CreateInstance(string className, string variableName)
+    {
+        sb.AddItem((object)(variableName + " = new " + className + "();"));
+    }
+
+    public void Enum(int tabCount, AccessModifiers _public, string nameEnum, List<EnumItem> enumItems)
     {  
         WriteAccessModifiers(_public);
-        AddTab(pocetTabu);
+        AddTab(tabCount);
         sb.AddItem((object)("enum " + nameEnum));
-        StartBrace(pocetTabu);
+        StartBrace(tabCount);
         foreach (var item in enumItems)
         {
             if (item.Attributes != null)
             {
                 foreach (var item2 in item.Attributes)
                 {
-                    AppendAttribute(pocetTabu + 1, item2.Key, item2.Value);
+                    AppendAttribute(tabCount + 1, item2.Key, item2.Value);
                 }
             }
             string hex = "";
@@ -477,21 +522,21 @@ public class GeneratorCSharp : GeneratorCodeAbstract
                 hex = "=" + item.Hex;
             }
 
-            this.AppendLine(pocetTabu + 1, item.Name + hex + ",");
+            this.AppendLine(tabCount + 1, item.Name + hex + ",");
         }
-        EndBrace(pocetTabu);
+        EndBrace(tabCount);
     }
 
     /// <summary>
     /// A4 nepřidává do uvozovek
     /// </summary>
-    /// <param name="pocetTab"></param>
+    /// <param name="tabCount"></param>
     /// <param name="objectName"></param>
     /// <param name="variable"></param>
     /// <param name="value"></param>
-    public void AssignValue(int pocetTab, string objectName, string variable, string value, bool addToHyphens)
+    public void AssignValue(int tabCount, string objectName, string variable, string value, bool addToHyphens)
     {
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AddItem((object)(objectName + "." + variable));
         sb.AddItem((object)"=");
         if (addToHyphens)
@@ -503,7 +548,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, string type, IList<string> whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, string type, IList<string> whereIsUsed2, bool wrapToHyphens)
     {
         string objectIdentificator = "";
         if (timeObjectName != null)
@@ -514,22 +559,22 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         {
             whereIsUsed2 = CA.WrapWith(whereIsUsed2, "\"");
         }
-        AddTab(pocetTab);
+        AddTab(tabCount);
         sb.AddItem((object)(objectIdentificator + v + ".AddRange(new " + type + "[] { " + SH.JoinIEnumerable(',', whereIsUsed2) + "});"));
     }
 
     /// <summary>
     /// Pokud nechceš použít identifikátor objektu(například u statické třídy), vlož do A2 null
     /// </summary>
-    /// <param name="pocetTab"></param>
+    /// <param name="tabCount"></param>
     /// <param name="timeObjectName"></param>
     /// <param name="v"></param>
     /// <param name="type"></param>
     /// <param name="whereIsUsed2"></param>
     /// <param name="wrapToHyphens"></param>
-    public void AddValuesViaAddRange(int pocetTab, string timeObjectName, string v, Type type, IList<string> whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, Type type, IList<string> whereIsUsed2, bool wrapToHyphens)
     {
-        AddValuesViaAddRange(pocetTab, timeObjectName, v, type.FullName, whereIsUsed2, wrapToHyphens);
+        AddValuesViaAddRange(tabCount, timeObjectName, v, type.FullName, whereIsUsed2, wrapToHyphens);
         sb.AppendLine();
     }
 }
