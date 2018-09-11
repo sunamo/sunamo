@@ -14,12 +14,12 @@ namespace sunamo.Clipboard
     {
         public static ClipboardMonitor Instance = new ClipboardMonitor();
 
-		public static bool pernamentlyBlock = false;
-		public static bool? _monitor = true;
+		 static bool _pernamentlyBlock = false;
+		 static bool? _monitor = true;
 		/// <summary>
 		/// second blocking element before starting monitor clipboard after set data. 
 		/// </summary>
-		public static bool _afterSet = false;
+		 static bool _afterSet = false;
 
 		private static class NativeMethods
 		{
@@ -51,10 +51,9 @@ namespace sunamo.Clipboard
 		// Don't exists in mono
 		private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, NativeMethods.HWND_MESSAGE);
 
-        
-
         public bool? monitor { get =>  _monitor; set => _monitor = value; }
         public bool afterSet { get => _afterSet; set => _afterSet = value; }
+        public bool pernamentlyBlock { get => _pernamentlyBlock; set => _pernamentlyBlock = value; }
 
         private ClipboardMonitor()
 		{

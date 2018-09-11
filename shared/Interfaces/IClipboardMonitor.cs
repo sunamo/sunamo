@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public interface IClipboardMonitor
-    {
+public interface IClipboardMonitor
+{
     // need to create static
-        //IClipboardMonitor Instance { get; }
-        bool? monitor { get; set; }
-        bool afterSet { get; set; }
+    //IClipboardMonitor Instance { get; }
+    bool? monitor { get; set; }
+    /// <summary>
+    /// Whether after copy to clipboard from any source allow monitoring
+    /// </summary>
+    bool afterSet { get; set; }
+    bool pernamentlyBlock { get; set; }
     }
 
