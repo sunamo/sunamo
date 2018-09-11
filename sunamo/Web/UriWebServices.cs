@@ -20,32 +20,32 @@ public static class UriWebServices
 
         public static string BazosCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(bazosCz, what);
+            return FromChromeReplacement(bazosCz, what);
         }
 
         public static string HyperInzerceCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(hyperinzerceCz, what);
+            return FromChromeReplacement(hyperinzerceCz, what);
         }
 
         public static string BazarCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(bazarCz, what);
+            return FromChromeReplacement(bazarCz, what);
         }
 
         public static string SBazarCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(sBazarCz, what);
+            return FromChromeReplacement(sBazarCz, what);
         }
 
         public static string AvizoCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(avizoCz, what);
+            return FromChromeReplacement(avizoCz, what);
         }
 
         public static string LetGoCz(string what)
         {
-            return UriWebServices.FromChromeReplacement(letGoCz, what);
+            return FromChromeReplacement(letGoCz, what);
         }
 
 
@@ -58,7 +58,7 @@ public static class UriWebServices
         public const string letGoCz = "https://www.letgo.cz/poruba_g50000007359/q-%s";
     }
 
-    public const string chromeSearchUriReplacement = "%s";
+    public const string chromeSearchstringReplacement = "%s";
 
     public static string FacebookProfile(string nick)
     {
@@ -100,19 +100,15 @@ public static class UriWebServices
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static Uri GoogleSearch(string s)
+    public static string GoogleSearch(string s)
     {
-        Uri uri = new Uri("https://www.google.cz/search?q=" + s);
-        
-        return uri;
+        return "https://www.google.cz/search?q=" + s;
     }
 
-    public static Uri GoogleSearchSite(string site, string v)
+    public static string GoogleSearchSite(string site, string v)
     {
         //https://www.google.cz/search?q=site%3Asunamo.cz+s
-        Uri uri = new Uri("https://www.google.cz/search?q=site%3A" + site + "+" + v);
-
-        return uri;
+        return "https://www.google.cz/search?q=site%3A" + site + "+" + v;
     }
 
     public static string KmoAll(string item)
@@ -122,7 +118,7 @@ public static class UriWebServices
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchUriReplacement, term);
+        return uri.Replace(chromeSearchstringReplacement, term);
     }
 
     public static string KmoAV(string item)
@@ -143,5 +139,10 @@ public static class UriWebServices
     public static string GitRepoInVsts(string slnName)
     {
         return "https://sunamocz.visualstudio.com/_git/" + slnName;
+    }
+
+    public static string GoogleImFeelingLucky(string v)
+    {
+        return FromChromeReplacement("http://www.google.com/search?btnI&q=%s", v);
     }
 }
