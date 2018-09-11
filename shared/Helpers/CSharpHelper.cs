@@ -29,11 +29,24 @@ public static class CSharpHelper
         throw new Exception("Nepodporovaný typ");
     }
 
-    public static string GetDictionaryStringObject<Value>(List<string> keys, List<Value> values, string nameDictionary)
+    public static string GetDictionaryStringObject<Value>(List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
     {
+        int pocetTabu = 0;
         GeneratorCSharp gen = new GeneratorCSharp();
-        gen.DictionaryStringObject(0, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
-        return gen.ToString();
+        gen.Region(pocetTabu, "Airplane companies");
+        if (checkForNull)
+        {
+            gen.If(pocetTabu, nameDictionary + " == null");
+        }
+        gen.DictionaryStringObject(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
+        
+        if (checkForNull)
+        {
+            gen.EndBrace(pocetTabu);
+        }
+        gen.EndRegion(pocetTabu);
+        string result = gen.ToString();
+        return result;
     }
 
     public static string DefaultValueForType(string type)

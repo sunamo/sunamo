@@ -17,7 +17,7 @@ public static class CA
     /// </summary>
     /// <param name="c1"></param>
     /// <param name="c2"></param>
-    public static List<string> CompareList( List<string> c1,  List<string> c2)
+    public static List<string> CompareList(List<string> c1, List<string> c2)
     {
         List<string> existsInBoth = new List<string>();
 
@@ -77,7 +77,7 @@ public static class CA
                 d.RemoveAt(i);
             }
         }
-        
+
     }
 
     public static bool HasIndex(int dex, Array col)
@@ -100,9 +100,9 @@ public static class CA
         return od >= index && to <= index;
     }
 
-    public static List<int> IndexesWithNull<T>(List<Nullable< T>> times) where T : struct
+    public static List<int> IndexesWithNull<T>(List<Nullable<T>> times) where T : struct
     {
-        
+
         List<int> nulled = new List<int>();
         for (int i = 0; i < times.Count; i++)
         {
@@ -137,6 +137,11 @@ public static class CA
         return default(T);
     }
 
+    public static List<string> DummyElementsCollection(int count)
+    {
+        return Enumerable.Repeat<string>(string.Empty, count).ToList();   
+    }
+
     public static bool ContainsElement<T>(IEnumerable<T> list, T t)
     {
         foreach (T item in list)
@@ -154,7 +159,7 @@ public static class CA
         return lines.FindAll(d => d.Contains(item));
     }
 
-    
+
 
     /// <summary>
     /// Is useful when want to wrap and also join with string. Also last element will have delimiter
@@ -197,8 +202,8 @@ public static class CA
                     files1.RemoveAt(i);
                 }
 
-                }
             }
+        }
         else
         {
             for (int i = files1.Count - 1; i >= 0; i--)
@@ -223,7 +228,7 @@ public static class CA
             }
             i++;
         }
-        
+
         return result;
     }
 
@@ -292,7 +297,7 @@ public static class CA
         List<string> result = new List<string>();
         for (int i = 0; i < whereIsUsed2.Count; i++)
         {
-            result.Add( v + whereIsUsed2[i] + v);
+            result.Add(v + whereIsUsed2[i] + v);
         }
         return result;
     }
@@ -419,11 +424,11 @@ public static class CA
         return list.ToArray();
     }
 
-    
+
 
     public static string[] EnsureBackslash(string[] eb)
     {
-        
+
 
         for (int i = 0; i < eb.Length; i++)
         {
@@ -527,7 +532,7 @@ public static class CA
         return slova;
     }
 
-    public static List< int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
     {
         CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
         foreach (var item in mustContains)
@@ -579,6 +584,15 @@ public static class CA
         return new List<string>(p);
     }
 
+    public static List<string> WrapWithQm(List<string> value)
+    {
+        for (int i = 0; i < value.Count; i++)
+        {
+            value[i] = SH.WrapWithQm(value[i]);
+        }
+        return value;
+    }
+
     public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
     {
 
@@ -625,7 +639,7 @@ public static class CA
         return false;
     }
 
-  
+
 
     public static void AddIfNotContains<T>(List<T> founded, T e)
     {
@@ -672,7 +686,7 @@ public static class CA
     public static List<string> RemoveStringsByScopeKeepAtLeastOne(List<string> mySites, FromTo fromTo, int keepLines)
     {
         mySites.RemoveRange(fromTo.from, fromTo.to - fromTo.from + 1);
-        for (int i = fromTo.from; i < fromTo.from - 1+keepLines; i++)
+        for (int i = fromTo.from; i < fromTo.from - 1 + keepLines; i++)
         {
             mySites.Insert(i, "");
         }
@@ -704,39 +718,39 @@ public static class CA
     }
 
     /// <summary>
+    /// Direct edit collection
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
     public static List<string> RemoveStringsEmpty(List<string> mySites)
     {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
+        for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (item != "")
+            if (mySites[i] == string.Empty)
             {
-                dd.Add(item);
+                mySites.RemoveAt(i);
             }
         }
-        return dd;
+        return mySites;
     }
 
     /// <summary>
+    /// Direct edit collection
     /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
     public static List<string> RemoveStringsEmpty2(List<string> mySites)
     {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
+        for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (item.Trim() != "")
+            if (mySites[i].Trim() == string.Empty)
             {
-                dd.Add(item);
+                mySites.RemoveAt(i);
             }
         }
-        return dd;
+        return mySites;
     }
 
     /// <summary>
@@ -827,7 +841,7 @@ public static class CA
                 return true;
             }
         }
-        
+
         return false;
     }
     #endregion
@@ -1269,6 +1283,12 @@ public static class CA
         return TrimStart(backslash, s.ToList()).ToArray();
     }
 
+    /// <summary>
+    /// Change elements count in collection to A2
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="requiredLength"></param>
+    /// <returns></returns>
     public static string[] ToSize(string[] input, int requiredLength)
     {
         string[] returnArray = null;
@@ -1319,6 +1339,36 @@ public static class CA
             globallyInstalledTsDefinitions[i] = string.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
+    }
+
+    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
+    {
+        List<TResult> result = new List<TResult>(files_in.Count);
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            result.Add( func.Invoke(files_in[i]));
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// TResult is the same type as T1 (output collection is the same generic as input)
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="T2"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
+    private static List<TResult> ChangeContent<T1, T2, TResult>(Func<T1, T2, TResult> func, List<T1> files_in, T2 t2)
+    {
+        List<TResult> result = new List<TResult>(files_in.Count);
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            // Fully generic - no strict string can't return the same collection
+            result.Add( func.Invoke(files_in[i], t2));
+        }
+        return result;
     }
 
     public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)

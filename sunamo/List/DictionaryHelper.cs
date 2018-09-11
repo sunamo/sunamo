@@ -38,6 +38,16 @@ public class DictionaryHelper
         return result;
     }
 
+    public static List<T2> AggregateValues<T1, T2>(Dictionary<T2, List<T2>> lowCostNotFoundEurope)
+    {
+        List<T2> result = new List<T2>();
+        foreach (var lcCountry in lowCostNotFoundEurope)
+        {
+            result.AddRange(lcCountry.Value);
+        }
+        return result;
+    }
+
     /// <summary>
     /// Return p1 if exists key A2 with value no equal to A3
     /// </summary>
@@ -198,5 +208,24 @@ public class DictionaryHelper
             return item.Value;
         }
         return default(Value);
+    }
+
+    public static Dictionary<T1, T2> RemoveDuplicatedFromDictionaryByValues<T1, T2>(Dictionary<T1, T2> airPlaneCompanies, out Dictionary<T1, T2> twoTimes)
+    {
+        twoTimes = new Dictionary<T1, T2>();
+
+        CollectionWithoutDuplicates<T2> processed = new CollectionWithoutDuplicates<T2>();
+
+        foreach (var item in airPlaneCompanies.Keys.ToList())
+        {
+            T2 value = airPlaneCompanies[item];
+            if (!processed.Add(value))
+            {
+                twoTimes.Add(item, value);
+                airPlaneCompanies.Remove(item);
+            }
+            
+        }
+        return airPlaneCompanies;
     }
 }

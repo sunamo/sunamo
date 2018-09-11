@@ -80,7 +80,7 @@ public static class SH
         return nameSolution;
     }
 
-    internal static string WrapWithQm(string commitMessage)
+    public static string WrapWithQm(string commitMessage)
     {
         return SH.WrapWith(commitMessage, AllChars.qm);
     }
@@ -120,6 +120,8 @@ public static class SH
             return sb.ToString();
         
     }
+
+    
 
     public static string RemoveAfterFirst(string t, string ch)
     {
@@ -2891,6 +2893,16 @@ public static class SH
             return true;
         }
         return false;
+    }
+
+    public static string GetToFirst(string input, string searchFor)
+    {
+        int indexOfChar = input.IndexOf(searchFor);
+        if (indexOfChar != -1)
+        {
+            return input.Substring(0, indexOfChar + 1);
+        }
+        return input;
     }
 
     public static string GetToFirstChar(string input, int indexOfChar)

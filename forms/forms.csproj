@@ -140,9 +140,9 @@
       <DependentUpon>WebBrowserWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CBH.cs" />
-    <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CHBH.cs" />
     <Compile Include="Helpers\CHLBH.cs" />
+    <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\ComboBoxEnumHelper.cs" />
     <Compile Include="Helpers\IH.cs" />
     <Compile Include="Helpers\LBHT.cs" />
