@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+/// <summary>
+/// Similar: InstantSB,TextBuilder,HtmlSB
+/// </summary>
 public class TextOutputGenerator
 {
     readonly static string znakNadpisu = "*";
