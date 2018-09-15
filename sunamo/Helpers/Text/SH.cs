@@ -64,23 +64,8 @@ public static class SH
 
         return hasLine;
     }
-
-    internal static string JoinPairs(params object[] args)
-    {
-        return JoinPairs(AllStrings.sc, AllStrings.cs);
-    }
-
     static Type type = typeof(SH);
-
-    internal static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] args)
-    {
-            ThisApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", args);
-
-        ThisApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", args)
-
-
-
-    }
+    
 
     /// <summary>
     /// 
@@ -480,15 +465,6 @@ public static class SH
 
     
 
-    public static string JoinDictionary(Dictionary<string, string> dictionary, string v)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in dictionary)
-        {
-            sb.AppendLine(item.Key + v + item.Value);
-        }
-        return sb.ToString();
-    }
 
     public static bool HasCharRightFormat(char ch, CharFormatData cfd)
     {
@@ -787,16 +763,7 @@ public static class SH
         return true;
     }
 
-    public static string JoinWithoutEndTrimDelimiter(string name, params string[] labels)
-    {
-        string s = name.ToString();
-        StringBuilder sb = new StringBuilder();
-        foreach (string item in labels)
-        {
-            sb.Append(item + s);
-        }
-        return sb.ToString();
-    }
+    
 
     public static string DoubleSpacesToSingle(string v)
     {
@@ -835,58 +802,6 @@ public static class SH
         return p;
     }
 
-    /// <summary>
-    /// Ořeže poslední znak - delimiter
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="delimiter"></param>
-    /// <param name="tokeny"></param>
-    /// <returns></returns>
-    public static string JoinFromIndex(int p, char delimiter, IEnumerable<string> tokeny)
-    {
-        return JoinFromIndex(p, delimiter.ToString(), tokeny);
-    }
-
-    public static string JoinFromIndex(int dex, string delimiter, IEnumerable<string> parts)
-    {
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        foreach (var item in parts)
-        {
-            if (i >= dex)
-            {
-                sb.Append(item + delimiter);
-            }
-            
-            i++;
-        }
-        string vr = sb.ToString();
-        return vr.Substring(0, vr.Length - 1);
-    }
-
-    /// <summary>
-    /// A1 won't be included
-    /// </summary>
-    /// <param name="dex"></param>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string JoinToIndex(int dex, string delimiter, IEnumerable<string> parts)
-    {
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        foreach (var item in parts)
-        {
-            if (i < dex)
-            {
-                sb.Append(item + delimiter);
-            }
-
-            i++;
-        }
-        string vr = sb.ToString();
-        return vr.Substring(0, vr.Length - 1);
-    }
 
     public static bool EndsWithNumber(string nameSolution)
     {
@@ -964,15 +879,7 @@ public static class SH
         return false;
     }
 
-    public static string JoinSpace(IEnumerable<string> nazev)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (string item in nazev)
-        {
-            sb.Append(item + " ");
-        }
-        return sb.ToString().TrimEnd(' ');
-    }
+    
 
     public static string FirstCharUpper(string nazevPP, bool only = false)
     {
@@ -2001,161 +1908,7 @@ public static class SH
         return vstup.Split(deli, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    public static string JoinStringParams(string name, params string[] labels)
-    {
-        return JoinString(name, labels);
-    }
-
-    /// <summary>
-    /// Automaticky ořeže poslední A1
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="labels"></param>
-    /// <returns></returns>
-    public static string JoinString(string name, IEnumerable labels)
-    {
-        string s = name;
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in labels)
-        {
-            sb.Append(item.ToString() + s);
-        }
-        string d = sb.ToString();
-        //return d.Remove(d.Length - (name.Length - 1), name.Length);
-        int to = d.Length - name.Length;
-        if (to > 0)
-        {
-            return d.Substring(0, to);
-        }
-        return d;
-        //return d;
-    }
-
-    public static string JoinStringExceptIndexes(string name, IEnumerable labels, params int[] v2)
-    {
-        string s = name.ToString();
-        StringBuilder sb = new StringBuilder();
-        int i = -1;
-        foreach (string item in labels)
-        {
-            i++;
-            if (CA.IsEqualToAnyElement<int>(i, v2))
-            {
-                continue;
-            }
-            sb.Append(item + s);
-            
-        }
-        string d = sb.ToString();
-        //return d.Remove(d.Length - (name.Length - 1), name.Length);
-        int to = d.Length - name.Length;
-        if (to > 0)
-        {
-            return d.Substring(0, to);
-        }
-        return d;
-        //return d;
-    }
-
-
-
-    #region Join
-    /// <summary>
-    /// Automaticky ořeže poslední A1
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="vsechnyFotkyVAlbu"></param>
-    /// <returns></returns>
-    public static string Join(char p, IList vsechnyFotkyVAlbu)
-    {
-        StringBuilder sb = new StringBuilder();
-        int pf = vsechnyFotkyVAlbu.Count;
-        if (pf == 0)
-        {
-            return "";
-        }
-        sb.Append(vsechnyFotkyVAlbu[0].ToString());
-        if (pf > 1)
-        {
-            for (int i = 1; i < pf; i++)
-            {
-                sb.Append(p + vsechnyFotkyVAlbu[i].ToString());
-            }
-        }
-        return sb.ToString();
-    }
-
-    public static string Join(char p, int[] vsechnyFotkyVAlbu)
-    {
-        StringBuilder sb = new StringBuilder();
-        int pf = vsechnyFotkyVAlbu.Length;
-        if (pf == 0)
-        {
-            return "";
-        }
-        sb.Append(vsechnyFotkyVAlbu[0].ToString());
-        if (pf > 1)
-        {
-            for (int i = 1; i < pf; i++)
-            {
-                sb.Append("," + vsechnyFotkyVAlbu[i].ToString());
-            }
-        }
-        return sb.ToString();
-    }
-
-    /// <summary>
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="labels"></param>
-    /// <returns></returns>
-    public static string Join(char name, params object[] labels)
-    {
-        string s = name.ToString();
-        StringBuilder sb = new StringBuilder();
-        foreach (object item in labels)
-        {
-            sb.Append(item.ToString() + s);
-        }
-        string sb2 = sb.ToString();
-        if (labels.Length != 0)
-        {
-            sb2 = sb2.Substring(0, sb2.Length - 1);
-        }
-        return sb2;
-    }
-
-    /// <summary>
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="labels"></param>
-    /// <returns></returns>
-    public static string Join(List<string> labels, char name)
-    {
-        string s = name.ToString();
-        StringBuilder sb = new StringBuilder();
-        foreach (string item in labels)
-        {
-            sb.Append(item + s);
-        }
-        string sb2 = sb.ToString();
-        if (labels.Count != 0)
-        {
-            sb2 = sb2.Substring(0, sb2.Length - 1);
-        }
-        return sb2;
-    }
-    #endregion
-
-    public static string JoinMoreWords(char v, params string[] fields)
-    {
-        fields = CA.WrapWithIf(StringDelegates.IsNumber, true, " ", "\"", fields);
-        return Join(v, fields);
-    }
+    
 
     public static string StripFunctationsAndSymbols(string p)
     {
@@ -2432,15 +2185,7 @@ public static class SH
         return s;
     }
 
-    public static string JoinMakeUpTo2NumbersToZero(char p, params int[] args)
-    {
-        List<string> na2Cislice = new List<string>();
-        foreach (var item in args)
-        {
-            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
-        }
-        return JoinIEnumerable(p, na2Cislice);
-    }
+    
 
     /// <summary>
     /// Pokud něco nebude číslo, program vyvolá výjimku, protože parsuje metodou int.Parse
@@ -2513,17 +2258,7 @@ public static class SH
         return false;
     }
 
-    #region JoinNL
-    public static string JoinNL(IEnumerable p)
-    {
-        return SH.JoinString(Environment.NewLine, p);
-    }
-
-    public static string JoinNL(params string[] p)
-    {
-        return SH.JoinString(Environment.NewLine, p);
-    } 
-    #endregion
+    
 
     
 
@@ -2710,15 +2445,7 @@ public static class SH
         return text.Where(e => e >= min && e <= max).Count() != 0;
     }
 
-    public static string JoinWithoutTrim(string p, IList ownedCatsLI)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (int item in ownedCatsLI)
-        {
-            sb.Append(item.ToString() + p);
-        }
-        return sb.ToString();
-    }
+    
 
     /// <summary>
     /// Je dobré před voláním této metody převést bílé znaky v A1 na mezery
@@ -2873,21 +2600,7 @@ public static class SH
         return -1;
     }
 
-    public static string JoinIEnumerable(char name, IEnumerable labels)
-    {
-        string s = name.ToString();
-        StringBuilder sb = new StringBuilder();
-        foreach (object item in labels)
-        {
-            sb.Append(item.ToString() + s);
-        }
-        string sb2 = sb.ToString();
-        if (sb2.Length != 0)
-        {
-            sb2 = sb2.Substring(0, sb2.Length - 1);
-        }
-        return sb2;
-    }
+    
 
     public static bool ContainsOtherChatThanLetterAndDigit(string p)
     {
@@ -2938,5 +2651,245 @@ public static class SH
         return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
 
-    
+    #region Join
+    public static string Join(object delimiter, IEnumerable parts)
+    {
+        string s = delimiter.ToString();
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in parts)
+        {
+            sb.Append(item.ToString() + s);
+        }
+        string d = sb.ToString();
+        //return d.Remove(d.Length - (name.Length - 1), name.Length);
+        int to = d.Length - s.Length;
+        if (to > 0)
+        {
+            return d.Substring(0, to);
+        }
+        return d;
+        //return d;
+    }
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(object delimiter, params object[] parts)
+    {
+        return Join(delimiter, parts);
+    }
+
+    #region Join - Delete after all solutions working
+    /// <summary>
+    /// Automaticky ořeže poslední A1
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinString(object delimiter, IEnumerable parts)
+    {
+        // TODO: Delete after all app working, has here method Join with same arguments
+        return Join(delimiter, parts);
+    }
+
+    public static string JoinStringParams(object delimiter, params string[] parts)
+    {
+        // TODO: Delete after all app working, has here method Join with same arguments
+        return Join(delimiter, parts);
+    }
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(IEnumerable parts, object delimiter)
+    {
+        // TODO: Delete after all app working, has flipped A1 and A2
+        return Join(delimiter, parts);
+    }
+
+    public static string JoinIEnumerable(object delimiter, IEnumerable parts)
+    {
+        // TODO: Delete after all app working
+        return JoinString(delimiter, parts);
+    }
+    #endregion
+
+    /// <summary>
+    /// If element will be number, wont wrap with qm.
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinMoreWords(object delimiter, params string[] parts)
+    {
+        parts = CA.WrapWithIf(StringDelegates.IsNumber, true, " ", "\"", parts);
+        return Join(delimiter, parts);
+    }
+
+    #region With special inputs collections
+    public static string JoinStringExceptIndexes(object delimiter, IEnumerable parts, params int[] v2)
+    {
+        string s = delimiter.ToString();
+        StringBuilder sb = new StringBuilder();
+        int i = -1;
+        foreach (string item in parts)
+        {
+            i++;
+            if (CA.IsEqualToAnyElement<int>(i, v2))
+            {
+                continue;
+            }
+            sb.Append(item + s);
+
+        }
+        string d = sb.ToString();
+        //return d.Remove(d.Length - (name.Length - 1), name.Length);
+        int to = d.Length - s.Length;
+        if (to > 0)
+        {
+            return d.Substring(0, to);
+        }
+        return d;
+        //return d;
+    }
+
+    #region From to index
+    /// <summary>
+    /// Ořeže poslední znak - delimiter
+    /// </summary>
+    /// <param name="dex"></param>
+    /// <param name="delimiter2"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinFromIndex(int dex, object delimiter2, IEnumerable parts)
+    {
+        string delimiter = delimiter2.ToString();
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        foreach (var item in parts)
+        {
+            if (i >= dex)
+            {
+                sb.Append(item + delimiter);
+            }
+
+            i++;
+        }
+        string vr = sb.ToString();
+        return vr.Substring(0, vr.Length - 1);
+    }
+
+    /// <summary>
+    /// A1 won't be included
+    /// </summary>
+    /// <param name="dex"></param>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinToIndex(int dex, object delimiter2, IEnumerable parts)
+    {
+        string delimiter = delimiter2.ToString();
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        foreach (var item in parts)
+        {
+            if (i < dex)
+            {
+                sb.Append(item + delimiter);
+            }
+
+            i++;
+        }
+        string vr = sb.ToString();
+        return vr.Substring(0, vr.Length - 1);
+    }
+    #endregion 
+    #endregion
+
+    #region Join with fixed letter
+    #region JoinNL
+    public static string JoinNL(IEnumerable parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+
+    public static string JoinNL(params string[] parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+    #endregion
+
+    public static string JoinSpace(IEnumerable parts)
+    {
+        return SH.JoinString(AllStrings.space, parts);
+    }
+    #endregion
+
+    #region Pairs, Dictionary
+    public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in dictionary)
+        {
+            sb.AppendLine(item.Key + delimiter + item.Value);
+        }
+        return sb.ToString();
+    }
+
+    internal static string JoinPairs(params object[] parts)
+    {
+        return JoinPairs(AllStrings.sc, AllStrings.cs);
+    }
+
+    internal static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
+    {
+        ThisApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
+        ThisApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < parts.Length; i++)
+        {
+            sb.Append(parts[i++] + firstDelimiter);
+            sb.Append(parts[i] + secondDelimiter);
+        }
+        return sb.ToString();
+    }
+    #endregion
+
+    #region Only with numbers
+    public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
+    {
+        List<string> na2Cislice = new List<string>();
+        foreach (var item in parts)
+        {
+            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
+        }
+        return JoinIEnumerable(p, na2Cislice);
+    } 
+    #endregion
+
+    public static string JoinWithoutTrim(object p, IList parts)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (int item in parts)
+        {
+            sb.Append(item.ToString() + p);
+        }
+        return sb.ToString();
+    }
+
+    public static string JoinWithoutEndTrimDelimiter(object name, params string[] parts)
+    {
+        // TODO: Delete after making all solutions working
+        return JoinWithoutTrim(name, parts);
+    }
+    #endregion
 }
