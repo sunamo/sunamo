@@ -1,4 +1,5 @@
 #region Mono
+using desktop.Essential;
 using desktop.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace sunamo.Clipboard
 		 static bool _pernamentlyBlock = false;
 		 static bool? _monitor = true;
 		/// <summary>
-		/// second blocking element before starting monitor clipboard after set data. 
+		/// If true, in first clipboard change change its value = false and monitor = null. In second monitor = true and in third is clipboard watching.
 		/// </summary>
 		 static bool _afterSet = false;
 
@@ -51,6 +52,9 @@ namespace sunamo.Clipboard
 		// Don't exists in mono
 		private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, NativeMethods.HWND_MESSAGE);
 
+        /// <summary>
+        /// First is setted to false, after first save to clipboart auto to true
+        /// </summary>
         public bool? monitor { get =>  _monitor; set => _monitor = value; }
         public bool afterSet { get => _afterSet; set => _afterSet = value; }
         public bool pernamentlyBlock { get => _pernamentlyBlock; set => _pernamentlyBlock = value; }
@@ -79,7 +83,6 @@ namespace sunamo.Clipboard
 				}
 				else if (monitor.HasValue && monitor.Value)
 				{
-
 					if (msg == NativeMethods.WM_CLIPBOARDUPDATE)
 					{
 						OnClipboardContentChanged.Invoke(this, EventArgs.Empty);
@@ -92,7 +95,11 @@ namespace sunamo.Clipboard
 				}
 			}
 
-			return IntPtr.Zero;
+#if debug
+            ThisApp.Logger.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "handled", handled);
+#endif
+
+            return IntPtr.Zero;
 		}
 
 		/// <summary>
