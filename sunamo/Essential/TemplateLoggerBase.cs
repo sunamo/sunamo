@@ -58,27 +58,61 @@ namespace sunamo.Essential
             return ThrowExceptions.FullNameOfExecutedCode(type, methodName);
         }
 
-        internal void NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
+        /// <summary>
+        /// Return true if number of counts is odd
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="methodName"></param>
+        /// <param name="nameOfCollection"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        internal bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
         {
             if (args.Count() % 2 == 0)
             {
                 writeLineDelegate.Invoke(TypeOfMessage.Error, Exceptions.NotEvenNumberOfElements( FullNameOfExecutedCode(type, methodName), nameOfCollection));
+                return false;
             }
+            return true;
         }
 
-        internal void AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
+        /// <summary>
+        /// Return true if any will be null or empty
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="methodName"></param>
+        /// <param name="nameOfCollection"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        internal bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
+        {
+            List<int> nulled = CA.IndexesWithNullOrEmpty(args);
+
+            if (nulled.Count > 0)
+            {
+                writeLineDelegate.Invoke(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Return true if any will be null
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="methodName"></param>
+        /// <param name="nameOfCollection"></param>
+        /// <param name="args"></param>
+        internal bool AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
         {
             List<int> nulled = CA.IndexesWithNull(args);
 
             if (nulled.Count > 0)
             {
                 writeLineDelegate.Invoke(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
+                return true;
             }
-        }
-
-        internal void AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
-        {
-            throw new NotImplementedException();
+            return false;
         }
         #endregion
     }

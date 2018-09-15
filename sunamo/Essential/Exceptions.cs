@@ -82,7 +82,7 @@ namespace sunamo.Essential
 
         internal static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
         {
-            return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join()); 
+            return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " with null value"; 
         }
 
         internal static string IsNull(string before, string variableName, object variable)

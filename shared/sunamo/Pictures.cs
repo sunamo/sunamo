@@ -514,13 +514,11 @@ namespace shared
                     //g.Save();
                     string temp = finalPath;
 
-
-
                     Pictures.SaveImage(temp, img, Pictures.GetImageFormatFromExtension2(ext));
                     img.Dispose();
                     if (writeToConsole)
                     {
-                        Exceptions.SuccessfullyResized(Path.GetFileName(temp));
+                        ThisApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(temp));
                     }
                     #endregion
                 }

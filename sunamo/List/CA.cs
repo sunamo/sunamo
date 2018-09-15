@@ -142,6 +142,31 @@ public static class CA
         return nulled;
     }
 
+    /// <summary>
+    /// Dont trim
+    /// </summary>
+    /// <param name="times"></param>
+    /// <returns></returns>
+    internal static List<int> IndexesWithNullOrEmpty(IEnumerable times)
+    {
+        List<int> nulled = new List<int>();
+        int i = 0;
+        foreach (var item in times)
+        {
+            if (item == null)
+            {
+                nulled.Add(i);
+            }
+            else if(item.ToString() == string.Empty)
+            {
+                nulled.Add(i);
+            }
+            i++;
+        }
+
+        return nulled;
+    }
+
     public static List<T> CreateListAndInsertElement<T>(T el)
     {
         List<T> t = new List<T>();

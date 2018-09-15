@@ -232,7 +232,7 @@ namespace desktop
                 y /= 2;
                 if (writeToConsole)
                 {
-                    Exceptions.SuccessfullyResized(Path.GetFileName(arg));
+                    ThisApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(arg));
                 }
 
                 return CreateBitmapSourceAndDrawOpacity(img.PixelWidth, img.PixelHeight, bmp2, y, x, useAtA1PixelSize);
