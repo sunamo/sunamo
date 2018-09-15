@@ -1,4 +1,6 @@
+using sunamo.Constants;
 using sunamo.Delegates;
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -61,6 +63,23 @@ public static class SH
         }
 
         return hasLine;
+    }
+
+    internal static string JoinPairs(params object[] args)
+    {
+        return JoinPairs(AllStrings.sc, AllStrings.cs);
+    }
+
+    static Type type = typeof(SH);
+
+    internal static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] args)
+    {
+            ThisApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", args);
+
+        ThisApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", args)
+
+
+
     }
 
     /// <summary>

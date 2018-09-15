@@ -5,16 +5,13 @@ using System.Text;
 
 namespace sunamo.Essential
 {
+    /// <summary>
+    /// TODO: Don't add anything here and just use TemplateLoggerBase and ThisApp.DefaultLogger (dependent in type of app - Console, WPF, web etc.)
+    /// Here only errors and so where is needed define location of code
+    /// </summary>
     public class Exceptions
     {
-        /// <summary>
-        /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
-        /// </summary>
-        /// <param name="fn"></param>
-        public static string SuccessfullyResized(string fn)
-        {
-            return "Successfully resized to " + fn;
-        }
+        
 
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
@@ -66,6 +63,13 @@ namespace sunamo.Essential
             return before + ": ";
         }
 
+        #region Called from TemplateLoggerBase
+        internal static string NotEvenNumberOfElements(string before, string nameOfCollection)
+        {
+            return CheckBefore(before) + nameOfCollection + " have odd elements count";
+        } 
+        #endregion
+
         public static string DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
         {
             if (countfc != countsc)
@@ -74,6 +78,11 @@ namespace sunamo.Essential
             }
 
             return null;
+        }
+
+        internal static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
+        {
+            return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join()); 
         }
 
         internal static string IsNull(string before, string variableName, object variable)

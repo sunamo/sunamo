@@ -100,6 +100,33 @@ public static class CA
         return od >= index && to <= index;
     }
 
+    /// <summary>
+    /// For all types
+    /// </summary>
+    /// <param name="times"></param>
+    /// <returns></returns>
+    public static List<int> IndexesWithNull(IEnumerable times) 
+    {
+        List<int> nulled = new List<int>();
+        int i = 0;
+        foreach (var item in times)
+        {
+            if (item == null)
+            {
+                nulled.Add(i);
+            }
+            i++;
+        }
+
+        return nulled;
+    }
+
+    /// <summary>
+    /// Only for structs
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="times"></param>
+    /// <returns></returns>
     public static List<int> IndexesWithNull<T>(List<Nullable<T>> times) where T : struct
     {
 
