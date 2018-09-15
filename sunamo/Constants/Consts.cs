@@ -28,5 +28,6 @@ namespace sunamo.Values
             cssTemplatesSites = new List<string>(CA.ToEnumerable("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
         }
 
+        public const string nulled = "(null)";
     }
 }

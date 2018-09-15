@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,6 +34,11 @@ namespace sunamo.Essential
         public  void TwoState(bool ret, params object[] toAppend)
         {
             WriteLine(ret.ToString() + "," + SH.Join(',', toAppend));
+        }
+
+        public void WriteArgs(params object[] args)
+        {
+            writeLineDelegate.Invoke(SH.JoinPairs(args));
         }
 
         public void WriteLine(string text)
@@ -73,6 +79,8 @@ namespace sunamo.Essential
                 }
             }
         }
+
+        
 
         public void WriteList(List<string> list)
         {
