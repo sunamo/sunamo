@@ -8,6 +8,7 @@ using sunamo.Enums;
 using cmd.Essential;
 using sunamo.Essential;
 using sunamo.Constants;
+using System.Linq;
 
 public static class CL 
 {
@@ -63,6 +64,7 @@ public static class CL
     }
 
     /// <summary>
+    /// In A1 not end with :
     /// Return null when user force stop 
     /// A2 are acceptable chars. Can be null/empty for anything 
     /// </summary>
@@ -78,7 +80,7 @@ public static class CL
         }
         whatOrTextWithoutEndingDot += ". For loading from clipboard leave empty input. For exit press esc.";
         Console.WriteLine();
-        Console.WriteLine(whatOrTextWithoutEndingDot + ": ");
+        Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
         int zad = 0;
         
@@ -182,6 +184,7 @@ public static class CL
 
     /// <summary>
     /// Return int.MinValue when user force stop operation
+    /// A1 without ending :
     /// </summary>
     /// <param name="what"></param>
     /// <param name="max"></param>
@@ -287,6 +290,7 @@ public static class CL
     }
 
     /// <summary>
+    /// A2 without ending :
     /// Return index of selected action
     /// Or int.MinValue when user force stop operation
     /// </summary>
@@ -359,6 +363,16 @@ public static class CL
         EventHandler eh = actions[ind];
         eh.Invoke(sender, EventArgs.Empty);
     }
+
+    public static void PerformAction(Dictionary<string, VoidVoid> actions)
+    {
+        List<string> listOfActions =  actions.Keys.ToList();
+        int selected = SelectFromVariants(listOfActions, "Select action to proceed");
+        string ind = listOfActions[selected];
+        var eh = actions[ind];
+        eh.Invoke();
+    }
+
 
     /// <summary>
     /// Return names of actions passed from keys
