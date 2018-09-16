@@ -1,4 +1,4 @@
-public enum ResultLogin
+﻿public enum ResultLogin
 {
 
 }

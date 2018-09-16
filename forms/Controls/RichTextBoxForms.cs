@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 public class RichTextBoxForms : RichTextBox
 {
     protected override void OnKeyUp(KeyEventArgs e)

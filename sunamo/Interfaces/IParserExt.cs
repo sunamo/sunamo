@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 public interface IParser<T>
 {
     T Parse(string co);

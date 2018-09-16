@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 public static class NormalizeNumbers
 {
         public static ushort NormalizeShort(short p)

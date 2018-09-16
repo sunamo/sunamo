@@ -1,4 +1,4 @@
-public enum FileMoveCollisionOption
+﻿public enum FileMoveCollisionOption
 {
     AddSerie,
     AddFileSize,

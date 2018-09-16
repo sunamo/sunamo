@@ -1,4 +1,4 @@
-//Compare2TextFiles
+﻿//Compare2TextFiles
 
 using System.Windows.Forms;
 using System;

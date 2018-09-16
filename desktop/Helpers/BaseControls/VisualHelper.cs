@@ -1,4 +1,4 @@
-using desktop.WindowsSettings;
+﻿using desktop.WindowsSettings;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 public class MSBaseRowTable

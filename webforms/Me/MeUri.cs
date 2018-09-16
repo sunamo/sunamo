@@ -1,4 +1,4 @@
-using System.Web;
+﻿using System.Web;
 using System.Web.UI;
 /// <summary>
 /// Některé metody jsou v GeneralUri

@@ -1,4 +1,4 @@
-public enum ISUD
+﻿public enum ISUD
 {
     Insert,
     Select,

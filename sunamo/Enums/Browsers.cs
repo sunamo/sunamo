@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Jsou dělané přesně podle Request.Browser.Browser
 /// </summary>
 public enum Browsers : byte

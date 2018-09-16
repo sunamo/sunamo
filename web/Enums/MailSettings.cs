@@ -1,4 +1,4 @@
-public enum MailSettings : byte 
+﻿public enum MailSettings : byte 
 {
     /// <summary>
     /// Mail je viditelný pro všechny, uživatelé mohou napsat i jiným způsobem než pouze na této stránce

@@ -1,4 +1,4 @@
-public enum Fav
+﻿public enum Fav
 {
     Faved,
     NonFaved,

@@ -1,4 +1,4 @@
-public enum TypeOfMessage
+﻿public enum TypeOfMessage
 {
     Error,
     Warning,

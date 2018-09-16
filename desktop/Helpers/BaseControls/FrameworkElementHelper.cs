@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +33,16 @@ public class FrameworkElementHelper
         fe.Width = s.Width;
         fe.Height = s.Height;
         fe.UpdateLayout();
+    }
+
+    public static T FindName<T>(FrameworkElement element, string controlNamePrefix, int serie)
+    {
+        return FindName<T>(element, controlNamePrefix + serie);
+    }
+
+    public static T FindName<T>(FrameworkElement element, string controlName)
+    {
+        return (T)element.FindName(controlName);
     }
 }
 

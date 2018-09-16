@@ -1,4 +1,4 @@
-public interface IWorking
+﻿public interface IWorking
 {
     bool IsWorking { get; }
 }

@@ -1,4 +1,4 @@
-using sunamo.Helpers.Number;
+﻿using sunamo.Helpers.Number;
 using System.Windows;
 using System.Windows.Controls;
 namespace desktop

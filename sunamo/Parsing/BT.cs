@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Nesmí obsahovat žádné statické metody, od toho tu je třída BTS
 /// </summary>
 using System;

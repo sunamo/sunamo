@@ -1,4 +1,4 @@
-public enum AccessModifiers
+﻿public enum AccessModifiers
 {
     Public,
     Private,

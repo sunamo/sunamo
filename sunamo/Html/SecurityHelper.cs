@@ -1,4 +1,4 @@
-public static class SecurityHelper
+﻿public static class SecurityHelper
 {
 
     public static string TreatHtmlCode(string r)

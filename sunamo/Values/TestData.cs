@@ -13,6 +13,8 @@ using System.Text;
 
     public static readonly List<string> listAB1;
     public static readonly List<string> listAB2;
+    public static readonly List<string> listABC;
+    public static readonly List<string> listAC;
     public static readonly List<string> listA;
     public static readonly List<string> listB;
     public static readonly List<string> listC;
@@ -21,6 +23,8 @@ using System.Text;
     {
         listAB1 = new List<string>(CA.ToEnumerable(a,b));
         listAB2 = new List<string>(CA.ToEnumerable(a, b));
+        listABC = new List<string>(CA.ToEnumerable(a, b, c));
+        listAC = new List<string>(CA.ToEnumerable(a, c));
         listA = new List<string>(CA.ToEnumerable(a));
         listB = new List<string>(CA.ToEnumerable(b));
         listC = new List<string>(CA.ToEnumerable(c));

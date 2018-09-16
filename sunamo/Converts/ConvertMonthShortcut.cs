@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
 {
     public static string FromShortcut(string shortcut)

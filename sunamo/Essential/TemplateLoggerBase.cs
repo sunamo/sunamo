@@ -114,6 +114,12 @@ namespace sunamo.Essential
             }
             return false;
         }
+
+        public void MustHaveValue(string controlNameOrText)
+        {
+            controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
+            writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " must have value");
+        }
         #endregion
     }
 }

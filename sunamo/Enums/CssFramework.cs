@@ -1,4 +1,4 @@
-public enum CssFramework
+﻿public enum CssFramework
 {
     Materialize,
     Metro

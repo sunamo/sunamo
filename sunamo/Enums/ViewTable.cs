@@ -1,4 +1,4 @@
-public enum ViewTable : byte
+﻿public enum ViewTable : byte
 {
     Phs_PhsGallery = 0,
     Phs_PhsAlbum = 1,

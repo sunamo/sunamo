@@ -1,4 +1,4 @@
-using desktop;
+﻿using desktop;
 using desktop.Essential;
 using System.ComponentModel;
 using System.Windows;
@@ -21,7 +21,7 @@ public class WindowWithUserControl : Window
         statusBar.Height = 25;
 
         TextBlock textBlockStatus = TextBlockHelper.Get("");
-        ThisApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
+        WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
         statusBar.Items.Add(textBlockStatus);
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
@@ -45,7 +45,7 @@ public class WindowWithUserControl : Window
 
     private void WindowWithUserControl_Closed(object sender, System.EventArgs e)
     {
-        ThisApp.SaveReferenceToTextBlockStatus(true, null, null);
+        WpfApp.SaveReferenceToTextBlockStatus(true, null, null);
     }
 
     void uc_ChangeDialogResult(bool? b)

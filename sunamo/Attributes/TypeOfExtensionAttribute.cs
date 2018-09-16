@@ -1,4 +1,4 @@
-using sunamo.Enums;
+﻿using sunamo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

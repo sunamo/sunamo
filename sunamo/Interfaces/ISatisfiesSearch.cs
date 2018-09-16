@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// 
 /// </summary>
 public interface ISatisfiesSearching

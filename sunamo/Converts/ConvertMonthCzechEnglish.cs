@@ -1,4 +1,4 @@
-public class ConvertMonthCzechEnglish //: IConvertCzechEnglish
+﻿public class ConvertMonthCzechEnglish //: IConvertCzechEnglish
 {
 
     public static string ToCzech(string english)

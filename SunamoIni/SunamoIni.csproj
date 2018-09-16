@@ -47,7 +47,6 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="netstandard" />
     <Reference Include="SharpConfig, Version=3.2.5.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
       <HintPath>..\..\AllProjectsSearch\packages\sharpconfig.3.2.5\lib\net20\SharpConfig.dll</HintPath>
     </Reference>

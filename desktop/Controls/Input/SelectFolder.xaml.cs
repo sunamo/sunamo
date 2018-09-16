@@ -1,4 +1,4 @@
-using sunamo;
+﻿using sunamo;
 using sunamo.Constants;
 using sunamo.Essential;
 using System;
@@ -68,7 +68,11 @@ namespace desktop.Controls
                 ThisApp.TemplateLogger.FolderDontExists(text);
                 validated = false;
             }
-            validated = true;
+            else
+            {
+                validated = true;
+            }
+            
         }
 
         private void CbDefaultFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)

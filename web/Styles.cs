@@ -1,4 +1,4 @@
-public static class Styles
+﻿public static class Styles
 {
     public static string zaokrouhleneKolecko = @".zaokrouhleneKolecko{height: 22px;
     padding: 6px;

@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Je to zkratka AB Property - obsahuje vlastnosti místo veřejných proměnných
 /// </summary>
 public class ABP

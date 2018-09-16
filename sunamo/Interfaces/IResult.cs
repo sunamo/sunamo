@@ -1,4 +1,4 @@
-public interface IResult
+﻿public interface IResult
 {
     //object Result { get; }
     event VoidObject Finished;

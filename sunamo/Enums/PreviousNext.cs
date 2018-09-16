@@ -1,4 +1,4 @@
-public enum PreviousNext
+﻿public enum PreviousNext
 {
     Previous,
     Next

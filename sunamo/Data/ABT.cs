@@ -1,4 +1,4 @@
-public class ABT<Key, Value>
+﻿public class ABT<Key, Value>
 {
     public Key A;
     public Value B;

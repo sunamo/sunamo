@@ -1,4 +1,4 @@
-public interface ITableRowSearchIndexLong : ITableRow<long>
+﻿public interface ITableRowSearchIndexLong : ITableRow<long>
 {
      long iDWord
     {

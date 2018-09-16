@@ -1,4 +1,6 @@
 ﻿using desktop.Essential;
+using sunamo.Constants;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,64 @@ namespace desktop.Controls
     /// </summary>
     public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow
     {
+        public TextBox txtFirst
+        {
+            get
+            {
+                return txt1;
+            }
+        }
+        public TextBox txtSecond
+        {
+            get
+            {
+                return txt2;
+            }
+        }
+        Type type = typeof(InputTwoColumnsUC);
+        const int rowsCount = 2;
+        List<TextBox> checkForContent = new List<TextBox>();
+
         public InputTwoColumnsUC()
         {
             InitializeComponent();
 
             dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
+        }
+
+        public InputTwoColumnsUC(int neededRows) : this()
+        {
+            if (neededRows > rowsCount)
+            {
+                ThrowExceptions.BadMappedXaml(type, "InputTwoColumnsUC", "InputTwoColumnsUC", "Is needed more rows than exists");
+            }
+            else
+            {
+                TextBlock tb = null;
+                TextBox txt = null;
+
+                Visibility visible = Visibility.Visible;
+
+                for (int i = 1; i < rowsCount+1; i++)
+                {
+                    tb = FrameworkElementHelper.FindName<TextBlock>(this, ControlNames.tb, i);
+                    txt = FrameworkElementHelper.FindName<TextBox>(this, ControlNames.txt, i);
+
+                    if (visible == Visibility.Visible)
+                    {
+                        checkForContent.Add(txt);
+                    }
+
+                    tb.Visibility = txt.Visibility = visible;
+
+                    if (i == neededRows)
+                    {
+                        visible = Visibility.Collapsed;
+                    }
+                }
+
+
+            }
         }
 
         private void DialogButtons_ChangeDialogResult(bool? b)
@@ -38,13 +93,19 @@ namespace desktop.Controls
                 }
             }
 
-            if (string.IsNullOrEmpty(txtFirst.Text) || string.IsNullOrEmpty(txtSecond.Text))
+            bool allOk = true;
+
+            foreach (var item in checkForContent)
             {
-                ThisApp.SetStatus(TypeOfMessage.Error, ExceptionStrings.AllOfInputsMustBeFilled);
-                
+                if (string.IsNullOrEmpty(item.Text))
+                {
+                    ThisApp.SetStatus(TypeOfMessage.Error, ExceptionStrings.AllOfInputsMustBeFilled);
+                    allOk = false;
+                }
             }
-            else
-            {
+
+            if ( allOk)
+            { 
                 DialogResult = true;
 
             }
@@ -52,8 +113,8 @@ namespace desktop.Controls
 
         public void Init(string textFirst, string textSecond)
         {
-            tbFirst.Text = textFirst;
-            tbSecond.Text = textSecond;
+            tb1.Text = textFirst;
+            tb2.Text = textSecond;
         }
 
         public bool? DialogResult

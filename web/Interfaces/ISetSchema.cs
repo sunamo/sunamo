@@ -1,4 +1,4 @@
-public interface ISetSchema
+﻿public interface ISetSchema
 {
     string SchemaOrg
     {

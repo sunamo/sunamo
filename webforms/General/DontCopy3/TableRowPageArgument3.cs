@@ -1,4 +1,4 @@
-public static class TableRowPageArgument3
+﻿public static class TableRowPageArgument3
 {
     public static void DeleteFromTable(int ID)
     {

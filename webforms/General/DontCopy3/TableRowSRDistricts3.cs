@@ -1,4 +1,4 @@
-public class TableRowSRDistricts3
+﻿public class TableRowSRDistricts3
 {
     public const string all = "Všechny";
 

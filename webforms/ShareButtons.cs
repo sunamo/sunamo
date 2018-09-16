@@ -1,4 +1,4 @@
-using System.Web.UI.HtmlControls;
+﻿using System.Web.UI.HtmlControls;
 public static class ShareButtons
 {
     public static void PlusOneCasdMladezPhoto(HtmlButton hb, bool bilyObtah)

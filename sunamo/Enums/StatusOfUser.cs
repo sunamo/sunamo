@@ -1,4 +1,4 @@
-public enum StatusOfUser : byte
+﻿public enum StatusOfUser : byte
 {
     Banned = 0,
     Allowed = 1,

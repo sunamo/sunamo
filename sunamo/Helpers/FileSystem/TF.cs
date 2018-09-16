@@ -1,4 +1,4 @@
-using sunamo;
+﻿using sunamo;
 using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
@@ -137,11 +137,11 @@ public class TF
         
         if (pripsat)
         {
-            File.AppendAllText(soubor, obsah);
+            File.AppendAllText(soubor, obsah, Encoding.UTF8);
         }
         else
         {
-            File.WriteAllText(soubor, obsah);
+            File.WriteAllText(soubor, obsah, Encoding.UTF8);
         }
     }
 

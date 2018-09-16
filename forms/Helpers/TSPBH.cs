@@ -1,4 +1,4 @@
-using sunamo.Helpers.Number;
+﻿using sunamo.Helpers.Number;
 using System.Windows.Forms;
 namespace forms
 {

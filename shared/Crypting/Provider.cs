@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Provideři symetrického šifrování.
 /// </summary>
 public enum Provider

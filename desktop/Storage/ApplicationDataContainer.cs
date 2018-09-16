@@ -1,4 +1,4 @@
-public class ApplicationDataContainer
+﻿public class ApplicationDataContainer
 {
     /// <summary>
     /// Inicializuji veškeré hodnoty, abych je pak už mohl pouze brát z paměti a nikoliv pořád načítat z disku

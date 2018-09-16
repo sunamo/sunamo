@@ -1,4 +1,4 @@
-public class CzechHelper
+﻿public class CzechHelper
 {
     public static string Dear(bool sex)
     {

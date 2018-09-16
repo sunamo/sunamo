@@ -1,4 +1,4 @@
-public class ReplaceArgs
+﻿public class ReplaceArgs
 {
     public string initialMessage = null;
     public string lblOldValue = null;

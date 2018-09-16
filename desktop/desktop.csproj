@@ -47,7 +47,6 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="netstandard" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -240,7 +239,7 @@
     <Compile Include="Storage\ApplicationData.cs" />
     <Compile Include="Storage\ApplicationDataContainer.cs" />
     <Compile Include="Storage\ApplicationDataContainerList.cs" />
-    <Compile Include="Essential\ThisApp.cs" />
+    <Compile Include="Essential\WpfApp.cs" />
     <Compile Include="Storage\ApplicationDataList.cs" />
     <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="TrialManager.cs" />
@@ -265,10 +264,6 @@
     <Compile Include="Data\BitmapImageWithPath.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\forms\forms.csproj">
-      <Project>{f7969338-1b99-485c-99ea-5d06f45cda32}</Project>
-      <Name>forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
@@ -405,6 +400,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Extensions\" />
     <Folder Include="ftp\" />
   </ItemGroup>
   <ItemGroup>

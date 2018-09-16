@@ -1,4 +1,4 @@
-
+﻿
 ﻿using sunamo;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace sunamo.LoggerAbstract
         public Color Bg { get { return Bg;  }  set { Bg = value; } }
 
         /// <summary>
-        /// Must be method because call await ThisApp.cd.RunAsync (works with controls)
+        /// Must be method because call await WpfApp.cd.RunAsync (works with controls)
         /// </summary>
         /// <param name="c"></param>
         protected virtual async void SetBg(Color c)

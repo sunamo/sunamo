@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Obsahuje URI ke stažení - každá URI má jedinečné identifikační číslo
 /// </summary>
 public class InputDownload : IInputDownload

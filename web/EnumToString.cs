@@ -1,4 +1,4 @@
-public static class EnumToString
+﻿public static class EnumToString
 {
     public static string FromStatusOfUser(StatusOfUser s)
     {

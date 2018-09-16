@@ -1,4 +1,4 @@
-public enum AllOne
+﻿public enum AllOne
 {
     All,
     One

@@ -1,4 +1,4 @@
-partial class WebBrowserWF
+﻿partial class WebBrowserWF
     {
         /// <summary>
         /// Required designer variable.

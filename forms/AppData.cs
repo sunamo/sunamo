@@ -1,8 +1,11 @@
-using sunamo;
+﻿using sunamo;
 using forms.Essential;
 using System;
 using System.IO;
 using System.Windows.Controls;
+
+namespace forms.Essential
+{ }
 
 // TODO: Later uncomment, now I can't because have ComboBox and sunamo.AppData must be without namespace
 //namespace forms

@@ -1,4 +1,4 @@
-//AlphaNumericTextBox
+﻿//AlphaNumericTextBox
 using System;
 using System.Windows.Forms;
 public class AlphaNumericTextBox : TextBoxForms

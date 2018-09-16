@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// The list of watchers created in the watcher class
 /// </summary>
 using System.Collections.Generic;

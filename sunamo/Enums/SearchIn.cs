@@ -1,4 +1,4 @@
-public enum WordsIn
+﻿public enum WordsIn
 {
     Contents,
     Titles,

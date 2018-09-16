@@ -1,1 +1,5 @@
-﻿
+﻿Changing WpfApp to ThisApp"
+MainWindow.xaml.cs
+
+Catch UnhadledException
+MainWindow

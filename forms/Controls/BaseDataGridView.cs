@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 /// <summary>
 /// Pak je t�eba p�ekr�t jen metody:

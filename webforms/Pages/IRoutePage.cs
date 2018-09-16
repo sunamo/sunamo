@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Dává se ke třídám Page které patří k aplikaci používající Routy
 /// </summary>
 public interface IRoutePage

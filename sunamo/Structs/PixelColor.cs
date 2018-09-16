@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct PixelColor

@@ -1,4 +1,4 @@
-public enum Tld
+﻿public enum Tld
 {
     cz
 }

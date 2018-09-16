@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ using System.Threading.Tasks;
         {
             return Count(e);
         }
+
 
         public static int Count(this IEnumerable e)
         {

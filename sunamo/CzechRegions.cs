@@ -1,4 +1,4 @@
-public enum CzechRegions
+﻿public enum CzechRegions
 {
     /*
      * 

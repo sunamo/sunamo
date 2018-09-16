@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 /// <summary>
 /// Generická třída třídy TSDDBH - ToolStripDropDownButtonHelper

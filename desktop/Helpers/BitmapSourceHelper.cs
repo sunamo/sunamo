@@ -1,4 +1,4 @@
-#region Mono
+﻿#region Mono
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;

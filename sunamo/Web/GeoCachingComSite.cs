@@ -1,4 +1,4 @@
-public class GeoCachingComSite
+﻿public class GeoCachingComSite
 {
     public static string CacheDetails(string cacheGuid)
     {

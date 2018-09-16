@@ -1,4 +1,4 @@
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 /// <summary>
 /// Nemůže být statická protože kdyby parsala různé nvc najednou tak by házela blbosti
 /// Tuto třídu nepoužívej, protože musíš při instanci vytvořit všechny proměnné jako int, long, byte, string atd.

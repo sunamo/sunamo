@@ -1,4 +1,4 @@
-public class TableRowHelper
+﻿public class TableRowHelper
 {
     /// <summary>
     /// 

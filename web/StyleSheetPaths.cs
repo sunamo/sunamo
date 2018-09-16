@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Pro soubory ve složkách Content a Shared
 /// </summary>
 public static class StyleSheetPaths

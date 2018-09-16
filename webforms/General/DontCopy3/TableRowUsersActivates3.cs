@@ -1,4 +1,4 @@
-public static class TableRowUsersActivates3
+﻿public static class TableRowUsersActivates3
 {
     public static void DeleteFromTable(int ID)
     {

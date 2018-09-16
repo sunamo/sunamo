@@ -1,4 +1,4 @@
-
+﻿
 using System.Web;
 
 public static class HttpHandlerHelper

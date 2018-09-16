@@ -1,4 +1,4 @@
-public class AB
+﻿public class AB
 {
     public string A = null;
     public object B = null;

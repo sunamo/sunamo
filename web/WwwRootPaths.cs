@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Pro soubory ve složce wwwroot, tedy asi jen bower
 /// </summary>
 public class WwwRootPaths

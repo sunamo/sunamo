@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// 
 /// </summary>
 public enum TypeOfFile

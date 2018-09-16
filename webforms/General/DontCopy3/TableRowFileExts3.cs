@@ -1,4 +1,4 @@
-public static class TableRowFileExts3
+﻿public static class TableRowFileExts3
 {
     /// <summary>
     /// Do A1 se vkládá bez tečky - přesně tak jak se ukládá do DB

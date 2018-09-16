@@ -130,5 +130,10 @@ namespace sunamo.Essential
         {
             return CheckBefore(before) + "Under " + item + " is more candidates: " + SH.JoinNL(list);
         }
+
+        internal static string BadMappedXaml(string before, string nameControl, string additionalInfo)
+        {
+            return CheckBefore(before) + $"Bad mapped XAML in {nameControl}. {additionalInfo}";
+        }
     }
 }

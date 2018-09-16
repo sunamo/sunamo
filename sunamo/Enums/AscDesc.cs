@@ -1,4 +1,4 @@
-public enum AscDesc
+﻿public enum AscDesc
 {
     Asc,
     Desc

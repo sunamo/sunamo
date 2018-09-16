@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using sunamo.Helpers;
 using sunamo.Essential;
 using sunamo.Constants;
+using System.Diagnostics;
 
 namespace sunamo
 {
@@ -40,6 +41,25 @@ namespace sunamo
             }
 
             return result;
+        }
+
+        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
+        {
+            var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+            foreach (var item in files)
+            {
+                var content = TF.ReadFile(item);
+                //if (!content.Contains("using "))
+                //{
+                //    Debugger.Break();
+                //}
+                //for (int i = 0; i < replaceFrom.Count; i++)
+                //{
+                //    content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                //}
+                TF.SaveFile(content, item);
+            }
         }
 
         public static void RemoveDiacriticInFileContents(string folder, string mask)

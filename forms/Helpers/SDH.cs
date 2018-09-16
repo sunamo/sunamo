@@ -1,10 +1,11 @@
-using sunamo;
+﻿using sunamo;
 
 /// <summary>
 /// Simple Dialog Helper
 /// </summary>
 using System.Windows.Forms;
 using forms.Essential;
+using sunamo.Essential;
 
 public class SDH
 {

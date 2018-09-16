@@ -57,7 +57,6 @@
     <Reference Include="HtmlAgilityPack, Version=1.6.15.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\..\AllProjectsSearch\packages\HtmlAgilityPack.1.6.15\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="netstandard" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -75,6 +74,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -109,6 +109,7 @@
     <Compile Include="CsvHelper\CsvWriter.cs" />
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\CSharpHelper.cs" />
     <Compile Include="Helpers\DrawingColorHelper.cs" />
+    <Compile Include="Helpers\DW.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />

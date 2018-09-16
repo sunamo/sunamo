@@ -1,4 +1,4 @@
-public enum AppFolders
+﻿public enum AppFolders
 {
     Input,
     Output,

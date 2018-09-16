@@ -1,4 +1,4 @@
-public enum FileExceptions
+﻿public enum FileExceptions
 {
     None,
     FileNotFound,

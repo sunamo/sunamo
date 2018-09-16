@@ -1,4 +1,4 @@
-public interface ITableRowWordLong : ITableRow<long>
+﻿public interface ITableRowWordLong : ITableRow<long>
 {
 
      long iD

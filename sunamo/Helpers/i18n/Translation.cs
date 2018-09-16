@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Datová třída, obsahující pouze český text a jeho odpovídající anglický překlad
 /// </summary>
 public class Translation

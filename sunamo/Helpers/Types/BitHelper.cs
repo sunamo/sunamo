@@ -1,4 +1,4 @@
-namespace sunamo
+﻿namespace sunamo
 {
     class BitHelper
     {

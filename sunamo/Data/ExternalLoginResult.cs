@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Jakékoliv změny v této složce musíš projevit i v stejně pojmenované třídě v swf projektu
 /// </summary>
 public class ExternalLoginResult

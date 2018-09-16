@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 /// <summary>
 /// Generate of single element is in CSharpHelper
 /// </summary>

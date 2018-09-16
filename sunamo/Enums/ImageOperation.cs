@@ -1,4 +1,4 @@
-public enum ImageOperation
+﻿public enum ImageOperation
 {
     Crop,
     Shrink

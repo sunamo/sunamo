@@ -1,4 +1,4 @@
-public class LoginCookie
+﻿public class LoginCookie
 {
     public string login = "";
     public string sc = "";

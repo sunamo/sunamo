@@ -1,4 +1,4 @@
-public class AutoIncrementNumber
+﻿public class AutoIncrementNumber
 {
     public double d = 0;
     double incO = 0;

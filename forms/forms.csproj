@@ -47,7 +47,6 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="netstandard" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -98,8 +97,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Delegates\Delegates.cs" />
-    <Compile Include="DWForms.cs" />
-    <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="Forms\AccessTokenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,10 +204,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cmd\cmd.csproj">
-      <Project>{ea7fb898-ad1b-401d-ac59-29e1bf80564b}</Project>
-      <Name>cmd</Name>
-    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
@@ -219,6 +212,9 @@
       <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Essential\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

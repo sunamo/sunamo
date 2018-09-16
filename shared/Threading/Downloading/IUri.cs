@@ -1,4 +1,4 @@
-public interface IUri
+﻿public interface IUri
 {
     string Uri { get; set; }
 }

@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Zkratka pro SignedUnsigned
 /// </summary>
 public enum Signed

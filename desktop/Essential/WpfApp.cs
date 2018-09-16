@@ -1,4 +1,5 @@
-using sunamo;
+﻿using sunamo;
+using sunamo.Essential;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -9,21 +10,11 @@ using System.Windows.Threading;
 
 namespace desktop.Essential
 {
-    public  class ThisApp : sunamo.Essential.ThisApp
+    public  class WpfApp 
     {
         public static string SQLExpressInstanceName()
         {
             return Environment.MachineName + "\\SQLExpress";
-        }
-
-        static ThisApp()
-        {
-            sunamo.Essential.ThisApp.StatusSetted += ThisApp_StatusSetted;
-        }
-
-        private  static void ThisApp_StatusSetted(TypeOfMessage t, string message)
-        {
-            desktop.Essential.ThisApp.SetStatus(t, message);
         }
 
 #if DEBUG
@@ -95,7 +86,19 @@ namespace desktop.Essential
 
         public static void EnableDesktopLogging(bool v)
         {
-            
+            if (v)
+            {
+                ThisApp.StatusSetted += ThisApp_StatusSetted;
+            }
+            else
+            {
+                ThisApp.StatusSetted -= ThisApp_StatusSetted;
+            }
+        }
+
+        private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
+        {
+            SetStatus(t, message);
         }
 
         private static void SetForeground(TextBlock tbLastOtherMessage, Color color)

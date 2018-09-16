@@ -1,4 +1,4 @@
-using desktop.Helpers;
+﻿using desktop.Helpers;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -145,7 +145,10 @@ namespace desktop
                 ThisApp.TemplateLogger.MustHaveValue(tb.Text);
                 validated = false;
             }
-            validated = true;
+            else
+            {
+                validated = true;
+            }
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)

@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 public static class LoremIpsumGenerator
 {
     static string[] words =new string[]{"consetetur", "sadipscing", "elitr", "sed", "diam", "nonumy", "eirmod",

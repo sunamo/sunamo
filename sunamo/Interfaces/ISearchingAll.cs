@@ -1,4 +1,4 @@
-using System.Collections.Generic;/// <summary>
+﻿using System.Collections.Generic;/// <summary>
 /// Pokud chci n�co aplikovat na v�. dT, mus�m to vlo�it zde
 /// </summary>
 /// <typeparam name="T"></typeparam>

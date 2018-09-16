@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Případy licence které mohou být
 /// </summary>
 public enum RunTypes

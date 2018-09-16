@@ -1,4 +1,4 @@
-using System.Web.UI.HtmlControls;
+﻿using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 public class SelectHelper
 {

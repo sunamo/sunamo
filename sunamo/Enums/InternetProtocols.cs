@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Povolené internetové protokoly v GoShorteneru
 /// </summary>
 public enum InternetProtocols : byte

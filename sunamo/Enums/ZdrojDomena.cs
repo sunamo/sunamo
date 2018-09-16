@@ -1,4 +1,4 @@
-public enum SourceMailDomain
+﻿public enum SourceMailDomain
 {
     Live,
     Gmail,

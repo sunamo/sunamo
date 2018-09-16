@@ -1,4 +1,4 @@
-using sunamo.Constants;
+﻿using sunamo.Constants;
 using sunamo.Delegates;
 using sunamo.Essential;
 using System;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 public class MSStoredProceduresISql5 : MSStoredProceduresIBase
 {
     static MSStoredProceduresIBase _ci = null;

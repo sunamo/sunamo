@@ -1,4 +1,4 @@
-public enum PageArgumentType
+﻿public enum PageArgumentType
 {
     // Typy které se vlezou do long
     Sbyte,

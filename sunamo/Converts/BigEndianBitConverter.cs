@@ -1,4 +1,4 @@
-namespace sunamo
+﻿namespace sunamo
 {
     /// <summary>
     /// TODO: Study about endians

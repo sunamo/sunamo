@@ -1,4 +1,4 @@
-
+﻿
 using sunamo.Extensions;
 using System;
 using System.Collections;
@@ -1375,13 +1375,30 @@ public static class CA
         return returnArray;
     }
 
-    public static string[] Prepend(string v, string[] toReplace)
+    /// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="toReplace"></param>
+    /// <returns></returns>
+    public static List<string> Prepend(string v, List<string> toReplace)
     {
-        for (int i = 0; i < toReplace.Length; i++)
+        for (int i = 0; i < toReplace.Count; i++)
         {
             toReplace[i] = v + toReplace[i];
         }
         return toReplace;
+    }
+
+    /// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="toReplace"></param>
+    /// <returns></returns>
+    public static string[] Prepend(string v, string[] toReplace)
+    {
+        return Prepend(v, toReplace.ToList()).ToArray();
     }
 
     public static List<string> Format(string uninstallNpmPackageGlobal, List<string> globallyInstalledTsDefinitions)

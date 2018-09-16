@@ -1,4 +1,4 @@
-#region Mono
+﻿#region Mono
 using System.Windows;
 using System.Windows.Media;
 /// <summary>

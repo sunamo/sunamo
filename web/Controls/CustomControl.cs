@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 /// <summary>
 /// Prvně vypisuje pomocí delegáta pokud není null a když bude tak outerHtml
 /// ---Zde cesta nevede, pokud ti nějaký prvek nevyhovuje, 

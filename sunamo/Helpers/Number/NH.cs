@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 /// <summary>
 /// Number Helper Class
 /// </summary>

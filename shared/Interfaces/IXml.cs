@@ -1,4 +1,4 @@
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 public interface IXml
 {
     void Parse(System.Xml.XmlNode node);

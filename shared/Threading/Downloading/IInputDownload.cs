@@ -1,4 +1,4 @@
-public interface IInputDownload : IUri //IException,
+﻿public interface IInputDownload : IUri //IException,
 {
 
 }

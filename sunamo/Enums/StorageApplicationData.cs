@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Tento výčet říká kam se mají ukládat uživatelská data aplikace ve formě řetězců
 /// </summary>
 public enum StorageApplicationData

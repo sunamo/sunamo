@@ -1,4 +1,4 @@
-public class InternetProtocolsHelper
+﻿public class InternetProtocolsHelper
 {
     public static string GetInternetProtocolFromEnum(bool https)
     {

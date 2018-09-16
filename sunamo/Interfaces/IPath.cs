@@ -1,4 +1,4 @@
-public interface IPath
+﻿public interface IPath
 {
     string Path { get; set; }
 }

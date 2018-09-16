@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// SB, kter� po ka�d� p�id. polo�ce p�id� znak.
 /// </summary>
 using System.IO;

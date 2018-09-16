@@ -1,4 +1,4 @@
-public static class WebCollections
+﻿public static class WebCollections
 {
 
 }

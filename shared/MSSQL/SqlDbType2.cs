@@ -1,4 +1,4 @@
-public enum SqlDbType2
+﻿public enum SqlDbType2
 {
     #region Nikdy nepoužívat
     

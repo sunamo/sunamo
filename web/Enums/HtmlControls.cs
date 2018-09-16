@@ -1,4 +1,4 @@
-public enum HtmlControls
+﻿public enum HtmlControls
 {
     HtmlInputRadioButton
 }

@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Používá se pro mnoho serverů pro ukládání do DB, proto hodnotu žádné z těchto výčtových hodnot nemůžeš měnit, protože by ti pak nefungovala práce s DB
 /// </summary>
 public enum MySites : byte

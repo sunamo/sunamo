@@ -1,4 +1,4 @@
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 public delegate void setTextInTextBoxForms(TextBoxForms txt, string text);
 public delegate void appendLineInTextBoxForms(TextBoxForms txt, string text);

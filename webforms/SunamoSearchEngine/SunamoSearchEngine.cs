@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 /// <summary>
 /// Umí i stránkování
 /// Prvně musíš ve webové aplikaci, kde chceš používat, App_AppWords a App_AppSearchIndex. Samořejmě že nahradíš název App za správný název aplikace.

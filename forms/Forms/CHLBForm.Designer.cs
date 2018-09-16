@@ -1,4 +1,4 @@
-namespace F.WF
+﻿namespace F.WF
 {
     partial class CHLBForm
     {

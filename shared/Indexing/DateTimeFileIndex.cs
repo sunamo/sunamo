@@ -1,4 +1,4 @@
-
+﻿
 using sunamo.Enums;
 using sunamo.Essential;
 using System;

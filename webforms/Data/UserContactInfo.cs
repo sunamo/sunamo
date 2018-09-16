@@ -1,4 +1,4 @@
-public  class UserContactInfo
+﻿public  class UserContactInfo
 {
     public string Email = null;
     public MailSettings MailSettings = MailSettings.NoMail;

@@ -1,4 +1,4 @@
-public enum FirstLast
+﻿public enum FirstLast
 {
     First,
     Last

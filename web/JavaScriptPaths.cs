@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// Pro soubory ve složkách Scripts, Shared, ts a js - tedy NuGet a zbytek
 /// </summary>
 public class JavaScriptPaths

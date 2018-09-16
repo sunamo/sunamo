@@ -19,11 +19,11 @@
             <ColumnDefinition Width="50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="tbFirst" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock x:Name="tbSecond" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="tb1" x:FieldModifier="public" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="tb2" x:FieldModifier="public" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 
-        <TextBox x:Name="txtFirst" x:FieldModifier="public" Grid.Row="1" Grid.Column="0" AcceptsReturn="True"></TextBox>
-        <TextBox x:Name="txtSecond" x:FieldModifier="public" Grid.Row="1" Grid.Column="2" AcceptsReturn="True"></TextBox>
+        <TextBox x:Name="txt1" x:FieldModifier="public" Grid.Row="1" Grid.Column="0" AcceptsReturn="True"></TextBox>
+        <TextBox x:Name="txt2" x:FieldModifier="public" Grid.Row="1" Grid.Column="2" AcceptsReturn="True"></TextBox>
 
         <desktopControls:DialogButtons x:Name="dialogButtons" Grid.Row="2" Grid.ColumnSpan="2" IsEnabledBtnOk="True"></desktopControls:DialogButtons>
     </Grid>

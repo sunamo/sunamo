@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// This class allows us to pass any type of watcher arguments to the calling object's 
 /// handler via a single object instead of having to add a lot of event handlers for 
 /// the various event args types.
