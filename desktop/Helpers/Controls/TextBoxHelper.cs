@@ -1,4 +1,5 @@
 using desktop.Helpers;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,9 +122,30 @@ namespace desktop
             p.Visibility = Visibility.Collapsed;
         }
 
-        public static void Validate(TextBlock tbUri, TextBox txtUri)
+        /// <summary>
+        /// Before first calling I have to set validated = true
+        /// </summary>
+        /// <param name="validated"></param>
+        /// <param name="tb"></param>
+        /// <param name="control"></param>
+        /// <param name="trim"></param>
+        public static void Validate(TextBlock tb, TextBox control, bool trim = true)
         {
-            
+            if (!validated)
+            {
+                return;
+            }
+            string text = control.Text;
+            if (trim)
+            {
+                text = text.Trim();
+            }
+            if (text == string.Empty)
+            {
+                ThisApp.TemplateLogger.MustHaveValue(tb.Text);
+                validated = false;
+            }
+            validated = true;
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)

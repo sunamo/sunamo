@@ -95,7 +95,7 @@ namespace sunamo.Clipboard
 				}
 			}
 
-#if debug
+#if DEBUG
             ThisApp.Logger.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "handled", handled);
 #endif
 
