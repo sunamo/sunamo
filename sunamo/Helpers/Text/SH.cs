@@ -2680,7 +2680,8 @@ public static class SH
     /// <returns></returns>
     public static string Join(object delimiter, params object[] parts)
     {
-        return Join(delimiter, parts);
+        // JoinString point to Join with implementation
+        return JoinString(delimiter, parts);
     }
 
     #region Join - Delete after all solutions working
