@@ -1,5 +1,6 @@
 using sunamo;
 using sunamo.Constants;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,8 @@ namespace desktop.Controls
     /// </summary>
     public partial class SelectFolder : UserControl
     {
+        public static bool validated;
+
         //public event VoidString FolderSelected;
         public event VoidString FolderChanged;
         public SelectFolder()
@@ -36,6 +39,36 @@ namespace desktop.Controls
             cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
             
 #endif
+        }
+
+        /// <summary>
+        /// Before first calling I have to set validated = true
+        /// </summary>
+        /// <param name="validated"></param>
+        /// <param name="tb"></param>
+        /// <param name="control"></param>
+        /// <param name="trim"></param>
+        public static void Validate(TextBlock tb, SelectFolder control)
+        {
+            if (!validated)
+            {
+                return;
+            }
+            string text = control.SelectedFolder;
+           
+                text = text.Trim();
+            
+            if (text == string.Empty)
+            {
+                ThisApp.TemplateLogger.MustHaveValue(tb.Text);
+                validated = false;
+            }
+            else if (!Directory.Exists(text))
+            {
+                ThisApp.TemplateLogger.FolderDontExists(text);
+                validated = false;
+            }
+            validated = true;
         }
 
         private void CbDefaultFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
