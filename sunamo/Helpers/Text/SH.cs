@@ -1,5 +1,8 @@
-﻿using sunamo.Constants;
+﻿using sunamo;
+using sunamo.Collections;
+using sunamo.Constants;
 using sunamo.Delegates;
+using sunamo.Enums;
 using sunamo.Essential;
 using System;
 using System.Collections;
@@ -1116,20 +1119,47 @@ public static class SH
         return WrapWith(value, v.ToString());
     }
 
-    public static string[] Split(string text, params char[] deli)
+    
+
+    
+
+    
+
+    private static bool IsUnicodeChar(UnicodeChars generic, char c)
     {
-        if (deli == null || deli.Length == 0)
+        switch (generic)
         {
-            if (cs)
-            {
-                throw new Exception("Nebyl specifikován delimiter");
-            }
-            else
-            {
-                throw new Exception("No delimiter determined");
-            }
+            case UnicodeChars.Control:
+                return char.IsControl(c);
+                break;
+            case UnicodeChars.HighSurrogate:
+                return char.IsHighSurrogate(c);
+            case UnicodeChars.Lower:
+                return char.IsLower(c);
+            case UnicodeChars.LowSurrogate:
+                return char.IsLowSurrogate(c);
+            case UnicodeChars.Number:
+                return char.IsNumber(c);
+            case UnicodeChars.Punctaction:
+                return char.IsPunctuation(c);
+            case UnicodeChars.Separator:
+                return char.IsSeparator(c);
+            case UnicodeChars.Surrogate:
+                return char.IsSurrogate(c);
+            case UnicodeChars.Symbol:
+                return char.IsSymbol(c);
+            case UnicodeChars.Upper:
+                return char.IsUpper(c);
+            case UnicodeChars.WhiteSpace:
+                return char.IsWhiteSpace(c);
+            case UnicodeChars.Special:
+                return CharHelper.IsSpecial(c);
+            case UnicodeChars.Generic:
+                return CharHelper.IsGeneric(c);
+            default:
+                ThrowExceptions.NotImplementedCase(type, "IsUnicodeChar");
+                return false;
         }
-        return text.Split(deli, StringSplitOptions.None);
     }
 
     /// <summary>
@@ -1643,9 +1673,17 @@ public static class SH
 
     }
 
-    public static string[] SplitNone(string text, params char[] deli)
+    #region Split
+    /// <summary>
+    /// With these 
+    /// </summary>
+    /// <param name="stringSplitOptions"></param>
+    /// <param name="text"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
+    private static string[] Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
     {
-        if (deli == null || deli.Length == 0)
+        if (deli == null || deli.Count() == 0)
         {
             if (cs)
             {
@@ -1656,23 +1694,144 @@ public static class SH
                 throw new Exception("No delimiter determined");
             }
         }
-        return text.Split(deli, StringSplitOptions.None);
+
+        return text.Split(deli, stringSplitOptions);
+    }
+
+    public static string[] Split(string text, params char[] deli)
+    {
+        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli);
+    }
+
+    public static string[] SplitNone(string text, params char[] deli)
+    {
+        return Split(StringSplitOptions.None, text, deli);
+    }
+    #endregion
+
+    /// <summary>
+    /// Use with general letters
+    /// </summary>
+    /// <param name="stringSplitOptions"></param>
+    /// <param name="text"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
+    private static string[] SplitSpecial(StringSplitOptions stringSplitOptions, string text, params char[] deli)
+    {
+        if (deli == null || deli.Count() == 0)
+        {
+            if (cs)
+            {
+                throw new Exception("Nebyl specifikován delimiter");
+            }
+            else
+            {
+                throw new Exception("No delimiter determined");
+            }
+        }
+
+
+
+        if (deli.Length == 1 && !SH.IsUnicodeChar(UnicodeChars.Generic, deli[0]))
+        {
+            return text.Split(deli, stringSplitOptions);
+        }
+        else
+        {
+            List<char> normal = new List<char>();
+            List<char> generic = new List<char>();
+            foreach (var item in deli)
+            {
+                if (SH.IsUnicodeChar(UnicodeChars.Generic, item))
+                {
+                    generic.Add(item);
+                }
+                else
+                {
+                    normal.Add(item);
+                }
+            }
+            if (generic.Count > 0)
+            {
+                DebugCollection<string> splitted = new DebugCollection<string>();
+                splitted.dontAllow.Add(string.Empty);
+                if (normal.Count > 0)
+                {
+                    splitted.AddRange(text.Split(normal.ToArray(), stringSplitOptions).ToList());
+                }
+                else
+                {
+                    splitted.Add(text);
+                }
+
+                Predicate<char> predicate;
+
+                foreach (var genericChar in generic)
+                {
+                    predicate = AllChars.ReturnRightPredicate(genericChar);
+                    DebugCollection<string> splittedPart = new DebugCollection<string>();
+                    splittedPart.dontAllow.Add(string.Empty);
+                    for (int i = splitted.Count() - 1; i >= 0; i--)
+                    {
+                        var item2 = splitted[i];
+
+                        splittedPart.Clear();
+
+                        StringBuilder sb = new StringBuilder();
+                        foreach (var item in item2)
+                        {
+                            if (predicate.Invoke(item))
+                            {
+                                sb.Append(item);
+                            }
+                            else
+                            {
+                                if (sb.Length != 0)
+                                {
+                                    splittedPart.Add(sb.ToString());
+                                    sb.Clear();
+                                }
+
+
+                            }
+                        }
+
+                        int splittedPartCount = splittedPart.Count();
+                        if (splittedPartCount > 1)
+                        {
+                            splitted.RemoveAt(i);
+                            for (int y = splittedPartCount - 1; y >= 0; y--)
+                            {
+                                splitted.Insert(i, splittedPart[y]);
+                            }
+
+                        }
+                        splitted.Add(sb.ToString());
+                    }
+
+                }
+                return splitted.ToArray();
+            }
+            else
+            {
+                return text.Split(deli, stringSplitOptions);
+            }
+        }
+    }
+
+    public static string[] SplitSpecial(string text, params char[] deli)
+    {
+        return SplitSpecial(StringSplitOptions.RemoveEmptyEntries, text, deli);
+    }
+
+    public static string[] SplitSpecialNone(string text, params char[] deli)
+    {
+        return SplitSpecial(StringSplitOptions.None, text, deli);
     }
 
     public static string[] SplitNone(string text, params string[] deli)
     {
-        if (deli == null || deli.Length == 0)
-        {
-            if (cs)
-            {
-                throw new Exception("Nebyl specifikován delimiter");
-            }
-            else
-            {
-                throw new Exception("No delimiter determined");
-            }
-        }
-        return text.Split(deli, StringSplitOptions.None);
+        return text.Split( deli, StringSplitOptions.None);
     }
 
     public static string FirstCharLower(string nazevPP)
@@ -1895,20 +2054,10 @@ public static class SH
         return vr;
     }
 
-    public static string[] Split(string vstup, params string[] deli)
+    public static string[] Split(string text, params string[] deli)
     {
-        if (vstup == "")
-        {
-            return new string[0];
-        }
-        if (deli == null || deli.Length == 0)
-        {
-            throw new Exception("No delimiter determined");
-        }
-        return vstup.Split(deli, StringSplitOptions.RemoveEmptyEntries);
+        return text.Split(deli, StringSplitOptions.RemoveEmptyEntries);
     }
-
-    
 
     public static string StripFunctationsAndSymbols(string p)
     {
@@ -2686,6 +2835,7 @@ public static class SH
 
     #region Join - Delete after all solutions working
     /// <summary>
+    /// Will be delete after final refactoring
     /// Automaticky ořeže poslední A1
     /// </summary>
     /// <param name="delimiter"></param>
@@ -2704,6 +2854,7 @@ public static class SH
     }
 
     /// <summary>
+    /// Will be delete after final refactoring
     /// Automaticky ořeže poslední znad A1
     /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
     /// </summary>
@@ -2847,13 +2998,13 @@ public static class SH
 
     internal static string JoinPairs(params object[] parts)
     {
-        return JoinPairs(AllStrings.sc, AllStrings.cs);
+        return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
     }
 
     internal static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
-        ThisApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
-        ThisApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < parts.Length; i++)

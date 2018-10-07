@@ -22,6 +22,7 @@ using System.Threading.Tasks;
     public static class Templates
     {
         public static CharFormatData dash = CharFormatData.Get(null, new FromTo(1, 1), AllChars.dash);
+        public static CharFormatData notNumber = CharFormatData.Get(null, new FromTo(1, 1), AllChars.notNumber);
         /// <summary>
         /// When doesn't contains fixed, is from 0 to number
         /// </summary>
