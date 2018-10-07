@@ -143,5 +143,19 @@ namespace sunamo.Helpers.DT
             }
             return p.ToString();
         }
+
+        public static DateTime Create(string day, string month, string hour, string minute)
+        {
+            
+            return new DateTime(1, int.Parse(month), int.Parse(day), int.Parse(hour), int.Parse(minute), 0);
+        }
+
+        public static DateTime CreateTime(string v1, string v2)
+        {
+            DateTime today = DateTime.MinValue;
+            today = today.AddHours(double.Parse(v1));
+            today = today.AddHours(double.Parse(v2));
+            return today;
+        }
     }
 }
