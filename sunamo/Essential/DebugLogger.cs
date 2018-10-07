@@ -16,7 +16,7 @@ namespace sunamo.Essential
     {
         public static DebugLogger Instance = new DebugLogger(DebugWriteLine);
 
-        public DebugLogger(VoidString writeLineHandler) : base(writeLineHandler)
+        public DebugLogger(VoidStringParamsObjects writeLineHandler) : base(writeLineHandler)
         {
 
         }
@@ -29,9 +29,9 @@ namespace sunamo.Essential
             Debug.WriteLine(tz.ToString() + AllStrings.cs2 + string.Format(text, args));
         }
 
-        private static void DebugWriteLine(string text)
+        public static void DebugWriteLine(string text, params object[] args)
         {
-            Debug.WriteLine(text);
+            Debug.WriteLine(string.Format( text, args));
         }
 
         public static void Break()

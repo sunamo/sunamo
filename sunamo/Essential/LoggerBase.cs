@@ -8,10 +8,10 @@ namespace sunamo.Essential
     {
         // TODO: Make logger class as base and replace all occurences With Instance 
 
-        VoidString writeLineDelegate;
+        VoidStringParamsObjects writeLineDelegate;
         public bool IsActive = true;
 
-        public LoggerBase(VoidString writeLineDelegate)
+        public LoggerBase(VoidStringParamsObjects writeLineDelegate)
         {
             this.writeLineDelegate = writeLineDelegate;
         }
@@ -41,11 +41,11 @@ namespace sunamo.Essential
             writeLineDelegate.Invoke(SH.JoinPairs(args));
         }
 
-        public void WriteLine(string text)
+        public  void WriteLine(string text, params object[] args)
         {
             if (IsActive)
             {
-                writeLineDelegate.Invoke(text);
+                writeLineDelegate.Invoke(text, args);
             }
             
         }

@@ -8,7 +8,7 @@ namespace cmd.Essential
     {
         public static ConsoleLogger Instance = new ConsoleLogger(Console.WriteLine);
 
-        public ConsoleLogger(VoidString writeLineHandler) : base(writeLineHandler)
+        public ConsoleLogger(VoidStringParamsObjects writeLineHandler) : base(writeLineHandler)
         {
 
         }

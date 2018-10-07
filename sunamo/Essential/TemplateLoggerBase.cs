@@ -68,7 +68,7 @@ namespace sunamo.Essential
         /// <returns></returns>
         internal bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
         {
-            if (args.Count() % 2 == 0)
+            if (args.Count() % 2 == 1)
             {
                 writeLineDelegate.Invoke(TypeOfMessage.Error, Exceptions.NotEvenNumberOfElements( FullNameOfExecutedCode(type, methodName), nameOfCollection));
                 return false;

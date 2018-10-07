@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 
@@ -111,6 +112,16 @@ namespace sunamo.Essential
             return null;
         }
 
+        public static string DirectoryWasntFound(string before, string directory)
+        {
+            if (!FS.ExistsDirectory(directory))
+            {
+                return CheckBefore(before) + "Directory " + directory + " wasn't found.";
+            }
+
+            return null;
+        }
+
         public static string InvalidParameter(string before, string mayUrlDecoded, string typeOfInput)
         {
             if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))
@@ -128,7 +139,7 @@ namespace sunamo.Essential
 
         public static string MoreCandidates(string before, List<string> list, string item)
         {
-            return CheckBefore(before) + "Under " + item + " is more candidates: " + SH.JoinNL(list);
+            return CheckBefore(before) + "Under " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
         }
 
         internal static string BadMappedXaml(string before, string nameControl, string additionalInfo)
