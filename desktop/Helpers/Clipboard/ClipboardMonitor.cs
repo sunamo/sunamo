@@ -73,11 +73,28 @@ namespace sunamo.Clipboard
 			hwndSource.Dispose();
 		}
 
+        const long wParamChromeOmnibox = 4;
+        /// <summary>
+        /// wParam during copy most text, which isnt captured ěx
+        /// </summary>
+        const long wParamRight = 5;
+        long lastWParam = 0;
+
 		private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
-			if (!pernamentlyBlock)
+            
+
+            if (!pernamentlyBlock)
 			{
-				if (afterSet)
+                bool avoidTwoTimes = lastWParam == wParamChromeOmnibox;
+                lastWParam = wParam.ToInt64();
+                if (avoidTwoTimes)
+                {
+                    lastWParam = wParamRight;
+                    return IntPtr.Zero;
+                }
+                
+                if (afterSet)
 				{
 					afterSet = false;
 					monitor = null;
@@ -94,10 +111,12 @@ namespace sunamo.Clipboard
 				{
 					monitor = true;
 				}
-			}
+
+                
+            }
 
 #if DEBUG
-            ThisApp.Logger.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "handled", handled);
+            InitApp.Logger.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "handled", handled);
 #endif
 
             return IntPtr.Zero;
