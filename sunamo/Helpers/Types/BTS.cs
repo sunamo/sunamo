@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-    public static partial class BTS
+public static partial class BTS
     {
         #region Castint to Array
         public static int[] CastArrayStringToInt(string[] plemena)
@@ -38,7 +38,9 @@ using System.Text;
             return vr;
         }
 
-        public static string[] CastArrayIntToString(int[] args)
+    
+
+    public static string[] CastArrayIntToString(int[] args)
         {
             string[] vr = new string[args.Length];
             for (int i = 0; i < args.Length; i++)

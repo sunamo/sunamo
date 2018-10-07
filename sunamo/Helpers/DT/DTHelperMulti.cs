@@ -348,9 +348,6 @@ namespace sunamo.Helpers.DT
             return DTHelperMulti.DateToString(p, l);
         }
 
-        
-
-
         /// <summary>
         /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
         /// </summary>
