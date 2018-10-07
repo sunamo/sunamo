@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+
 
 namespace forms
 {
@@ -20,12 +20,7 @@ namespace forms
             return new Icon(ms);
         }
 
-        public static System.Drawing.Icon ConvertToIcon(string p)
-        {
-            BitmapImage bi = new BitmapImage(new Uri(p));
-            System.Drawing.Bitmap b = shared.Pictures.BitmapImage2Bitmap(bi);
-            return forms.Pictures.ConvertToIcon(b);
-        }
+        
 
         public static string InfoAbout(Bitmap bmp)
         {

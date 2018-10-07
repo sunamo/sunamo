@@ -5,7 +5,6 @@ using System.Drawing.Imaging;
 using System;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Windows;
 using sunamo;
@@ -240,20 +239,7 @@ namespace shared
             return imgOutput;
         }
 
-        public static Bitmap BitmapImage2Bitmap(BitmapSource bitmapImage)
-        {
-            using (MemoryStream outStream = new MemoryStream())
-            {
-                BitmapEncoder enc = new BmpBitmapEncoder();
-                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
-                enc.Save(outStream);
-                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
-
-                // return bitmap; <-- leads to problems, stream is closed/closing ...
-                return new Bitmap(bitmap);
-            }
-        }
-
+              
 		public static void saveJpeg(string path, Image img, long quality)
 		{
 			try
@@ -518,7 +504,7 @@ namespace shared
                     img.Dispose();
                     if (writeToConsole)
                     {
-                        ThisApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(temp));
+                        InitApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(temp));
                     }
                     #endregion
                 }

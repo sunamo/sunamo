@@ -2,6 +2,7 @@
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,28 @@ namespace desktop
 
             return newImage;
         }
+
+		//public static System.Drawing.Icon ConvertToIcon(string p)
+  //      {
+  //          BitmapImage bi = new BitmapImage(new Uri(p));
+  //          System.Drawing.Bitmap b = shared.Pictures.BitmapImage2Bitmap(bi);
+  //          return forms.Pictures.ConvertToIcon(b);
+  //      }
+
+		public static Bitmap BitmapImage2Bitmap(BitmapSource bitmapImage)
+        {
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
+                enc.Save(outStream);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+
+                // return bitmap; <-- leads to problems, stream is closed/closing ...
+                return new Bitmap(bitmap);
+            }
+        }
+
 
         #region Mono
         #region Již v CreateW10AppGraphics - několik PlaceToCenter metod
@@ -232,7 +255,7 @@ namespace desktop
                 y /= 2;
                 if (writeToConsole)
                 {
-                    ThisApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(arg));
+                    InitApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(arg));
                 }
 
                 return CreateBitmapSourceAndDrawOpacity(img.PixelWidth, img.PixelHeight, bmp2, y, x, useAtA1PixelSize);
