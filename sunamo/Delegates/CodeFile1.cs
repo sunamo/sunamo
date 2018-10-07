@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+/* 
+sunamo/Delegates/CodeFile1.cs
+*/
+
 public delegate void VoidBool(bool b);
 public delegate void VoidBoolNullable(bool? b);
 public delegate String StringString(string s);
@@ -31,6 +35,7 @@ public delegate void VoidUri(Uri uri);
 public delegate void VoidAction(sunamo.Action action);
 public delegate void VoidDouble(Double c);
 public delegate void VoidObject(object o);
+
 public delegate void VoidStringParamsObjects(string s, params object[] o);
 public delegate void VoidObjectParamsObjects(object s, params object[] o);
 public delegate bool BoolString(string s);
