@@ -148,7 +148,7 @@ namespace desktop
             {
                 sb.AppendLine(var.ToString());
             }
-            Clipboard.SetText(sb.ToString());
+            ClipboardHelper.SetText(sb.ToString());
         }
 
         #region DPP
@@ -212,7 +212,7 @@ namespace desktop
                 {
                     if (saveToClipboard)
                     {
-                        Clipboard.SetText(SelectedS);
+                        ClipboardHelper.SetText(SelectedS);
                     }
                 }
                 #endregion
@@ -318,7 +318,7 @@ namespace desktop
         }
         #endregion
 
-        public List<string> ReturnPpk()
+        public List<string> GetItemsListString()
         {
             List<string> vr = new List<string>();
             foreach (object item in lb.Items)

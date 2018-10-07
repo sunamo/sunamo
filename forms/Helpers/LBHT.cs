@@ -53,7 +53,7 @@ namespace forms
             {
                 sb.AppendLine(var.ToString());
             }
-            Clipboard.SetText(sb.ToString());
+            ClipboardHelper.SetText(sb.ToString());
         }
 
         #region DPP
@@ -106,7 +106,7 @@ namespace forms
                 {
                     if (saveToClipboard)
                     {
-                        Clipboard.SetText(SelectedS);
+                        ClipboardHelper.SetText(SelectedS);
                     }
                 }
                 #endregion
@@ -198,7 +198,7 @@ namespace forms
         }
         #endregion
 
-        public List<string> ReturnPpk()
+        public List<string> GetItemsListString()
         {
             List<string> vr = new List<string>();
             foreach (object item in lb.Items)
