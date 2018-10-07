@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Limilabs.FTP.Client;
-using cmd.Essential;
 using sunamo;
+using sunamo.Essential;
 using Sunamo.Data;
 
 
@@ -39,13 +39,13 @@ namespace SunamoFtp
 
         public override void DebugActualFolder()
         {
-            ConsoleLogger.Instance.WriteLine("Actual dir:", Client.GetCurrentFolder());
+			InitApp.Logger.WriteLine("Actual dir:", Client.GetCurrentFolder());
         }
 
         public override void DebugAllEntries()
         {
-            ConsoleLogger.Instance.WriteLine("All file entries:");
-            Client.GetList().ForEach(d => ConsoleLogger.Instance.WriteLine(d.Name));
+			InitApp.Logger.WriteLine("All file entries:");
+			Client.GetList().ForEach(d => InitApp.Logger.WriteLine(d.Name));
             
         }
 
