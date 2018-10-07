@@ -60,12 +60,12 @@ namespace desktop.Controls
             
             if (text == string.Empty)
             {
-                ThisApp.TemplateLogger.MustHaveValue(tb.Text);
+                InitApp.TemplateLogger.MustHaveValue(tb.Text);
                 validated = false;
             }
             else if (!Directory.Exists(text))
             {
-                ThisApp.TemplateLogger.FolderDontExists(text);
+                InitApp.TemplateLogger.FolderDontExists(text);
                 validated = false;
             }
             else

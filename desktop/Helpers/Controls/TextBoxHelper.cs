@@ -142,7 +142,7 @@ namespace desktop
             }
             if (text == string.Empty)
             {
-                ThisApp.TemplateLogger.MustHaveValue(tb.Text);
+                InitApp.TemplateLogger.MustHaveValue(tb.Text);
                 validated = false;
             }
             else
