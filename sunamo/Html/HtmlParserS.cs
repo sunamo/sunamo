@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using sunamo.Html;
 using System.IO;
 using System.Net;
 
@@ -26,5 +27,19 @@ public static class HtmlParserS
         //HtmlHelper.ToXml(html)
         hd.LoadHtml(html);
         return hd.DocumentNode;
+    }
+
+    public static string Title(HtmlNode hd)
+    {
+        return InnerHtmlToStringEmpty(HtmlAgilityHelper.Node(hd, true, HtmlTags.title));
+    }
+
+    internal static string InnerHtmlToStringEmpty(HtmlNode htmlNode)
+    {
+        if (htmlNode == null)
+        {
+            return string.Empty;
+        }
+        return htmlNode.InnerHtml;
     }
 }

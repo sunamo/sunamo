@@ -79,6 +79,31 @@ namespace sunamo
             }
         }
 
+        public static string AddExtensionIfDontHave(string file, string ext)
+        {
+            // For *.* and git paths {dir}/*
+            if (file[file.Length -1] == AllChars.asterisk)
+            {
+                return file;
+            }
+            if (GetExtension(file) == string.Empty)
+            {
+                return file + ext;
+            }
+            
+            return file;
+        }
+
+        /// <summary>
+        /// Convert to UNC path
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static bool ExistsDirectory(string item)
+        {
+            return Directory.Exists(MakeUncLongPath(item));
+        }
+
         /// <summary>
         /// Create folder hiearchy and write
         /// </summary>
@@ -100,14 +125,14 @@ namespace sunamo
             }
         }
 
-        public static string MascFromExtension(string ext)
+        public static string MascFromExtension(string ext = AllStrings.asterisk)
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
 
         internal static IEnumerable<string> GetFiles(string folderPath, bool v)
         {
-            return FS.GetFiles(folderPath, "*.*", v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+            return FS.GetFiles(folderPath, FS.MascFromExtension(), v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }
 
         public static List<string> GetFolders(string folder)
@@ -1118,7 +1143,7 @@ namespace sunamo
             List<string> files = new List<string>();
             foreach (var item in v)
             {
-                files.AddRange(Directory.GetFiles(item, "*.*", so));
+                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(), so));
             }
             return files;
         }
@@ -1706,7 +1731,7 @@ namespace sunamo
 
             FS.NormalizeExtensions(extension);
 
-            var files = Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories);
+            var files = Directory.EnumerateFiles(folder, FS.MascFromExtension(), SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 string ext = FS.GetNormalizedExtension(item);
@@ -1868,6 +1893,7 @@ namespace sunamo
         /// <param name="nad"></param>
         public static void CreateFoldersPsysicallyUnlessThere(string nad)
         {
+            FS.MakeUncLongPath(ref nad);
             if (Directory.Exists(nad))
             {
                 return;
@@ -1876,10 +1902,12 @@ namespace sunamo
             {
                 List<string> slozkyKVytvoreni = new List<string>();
                 slozkyKVytvoreni.Add(nad);
+
                 while (true)
                 {
                     nad = FS.GetDirectoryName(nad);
 
+                    // TODO: Tady to nefunguje pro UWP/UAP apps protoze nemaji pristup k celemu disku. Zjistit co to je UWP/UAP/... a jak v nem ziskat/overit jakoukoliv slozku na disku
                     if (Directory.Exists(nad))
                     {
                         break;
@@ -1888,6 +1916,7 @@ namespace sunamo
                     string kopia = nad;
                     slozkyKVytvoreni.Add(kopia);
                 }
+
                 slozkyKVytvoreni.Reverse();
                 foreach (string item in slozkyKVytvoreni)
                 {

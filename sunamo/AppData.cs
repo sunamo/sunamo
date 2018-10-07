@@ -3,6 +3,7 @@ using sunamo.Essential;
 using sunamo.Values;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Web;
  
 
@@ -39,7 +40,7 @@ public class AppData
         return fileFolderWithAppsFiles;
     }
 
-    public static void CreateAppFoldersIfDontExists()
+    public async static Task CreateAppFoldersIfDontExists()
     {
         if (!string.IsNullOrEmpty(ThisApp.Name))
         {
