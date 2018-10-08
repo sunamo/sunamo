@@ -19,6 +19,7 @@ public class SunamoJson
 
     public static string SerializeXmlNode(XmlNode xn)
     {
+        
         return JsonConvert.SerializeXmlNode(xn);
     }
 

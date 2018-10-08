@@ -43,6 +43,8 @@ public static class UriWebServices
         public static void SearchInAll(string what)
         {
             UriWebServices.SearchInAll(All, what);
+
+
         }
 
         /// <summary>
