@@ -6,6 +6,8 @@ namespace sunamo.Constants
 {
     public class AllStrings
     {
+        public const string slashAsterisk = "/*";
+
         public const string cbl = "{";
         public const string cbr = "}";
 
