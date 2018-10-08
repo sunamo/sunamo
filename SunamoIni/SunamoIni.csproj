@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SharpConfig, Version=3.2.5.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
-      <HintPath>..\..\AllProjectsSearch\packages\sharpconfig.3.2.5\lib\net20\SharpConfig.dll</HintPath>
+      <HintPath>..\packages\sharpconfig.3.2.5\lib\net20\SharpConfig.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,10 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\desktop\desktop.csproj">
-      <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
-      <Name>desktop</Name>
-    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

@@ -1,6 +1,5 @@
 ﻿using desktop;
 using sunamo;
-using desktop.Essential;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -90,6 +89,6 @@ public class IniFile
 
         public static IniFile InStartupPath()
         {
-            return new IniFile(desktop.AppPaths.GetFileInStartupPath(ThisApp.Name + ".ini"));
+            return new IniFile(sunamo.AppPaths.GetFileInStartupPath(ThisApp.Name + ".ini"));
         }
     }

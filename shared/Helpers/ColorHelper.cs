@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Drawing;
 
 
 namespace shared
@@ -27,7 +27,7 @@ namespace shared
 
         public static object FromRgb(byte current_R, byte current_G, byte current_B)
         {
-            return Color.FromRgb(current_R, current_G, current_B);
+			return System.Drawing.Color.FromArgb(current_R, current_G, current_B);
         }
 
 
