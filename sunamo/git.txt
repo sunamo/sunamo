@@ -1,5 +1,9 @@
-﻿Changing WpfApp to ThisApp"
-MainWindow.xaml.cs
+﻿cmd.csproj - add CmdApp.cs
+desktop.csproj - add win.csproj
 
-Catch UnhadledException
-MainWindow
+
+Replace *.* to MascFromExtension():
+FileIndex
+
+Sort regions as this in MySites.cs
+Tables

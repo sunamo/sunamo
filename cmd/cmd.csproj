@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Essential\CmdApp.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
     <Compile Include="Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="Essential\TypedConsoleLogger.cs" />

@@ -5,6 +5,156 @@ using System.Linq;
 
 public class Tables 
 {
+    #region 1 Bib
+    #region Bib *
+    #region Čtecí plány
+    //public const string Sda_GroupVersesOfPlans = "Sda_GroupVersesOfPlans";
+    //public const string Sda_NameOfPlans = "Sda_NameOfPlans";
+    //public const string Sda_ReadedDaysOfPlans = "Sda_ReadedDaysOfPlans";
+    //public const string Sda_CategoryOfPlan = "Sda_CategoryOfPlan";
+    //public const string Sda_DonedPlans = "Sda_DonedPlans";
+    #endregion
+
+    #region Main
+    public const string Sda_BibSearchIndex = "Sda_BibSearchIndex";
+    //public const string Sda_Book = "Sda_Book";
+    //public const string Sda_Verse = "Sda_Verse";
+    //public const string Sda_Word = "Sda_Word";
+    //public const string Sda_BookShortcut = "Sda_BookShortcut";
+    #endregion
+
+    #region Ostatní
+    //public const string Sda_GroupVerses = "Sda_GroupVerses";
+
+    ////public const string Bib_Users = "Sda_Users";
+    //public const string Sda_Bookmark = "Sda_Bookmark";
+    #endregion
+    #endregion
+
+    #region Bib *2
+
+    #endregion
+    #endregion
+
+    #region 2 Koc - nijak je nepřemisťuj, jsou seřazeny podle toho jak se musí vytvářet
+    public const string Koc_OwnedCats = "Koc_OwnedCats";
+    public const string Koc_Breeds = "Koc_Breeds";
+    public const string Koc_KennelDayView = "Koc_KennelDayView";
+    public const string Koc_Kennels = "Koc_Kennels";
+    public const string Koc_Kennels2 = "Koc_Kennels2";
+    public const string Koc_Kennels_Breeds = "Koc_Kennels_Breeds";
+    public const string Koc_Kennels_Cats = "Koc_Kennels_Cats";
+    public const string Koc_MisterDayView = "Koc_MisterDayView";
+    public const string Koc_Misters = "Koc_Misters";
+    public const string Koc_Misters2 = "Koc_Misters2";
+    public const string Koc_VeterinarianDayView = "Koc_VeterinarianDayView";
+    public const string Koc_Veterinarians = "Koc_Veterinarians";
+    public const string Koc_Veterinarians2 = "Koc_Veterinarians2";
+
+    public const string Koc_Calendar = "Koc_Calendar";
+    public const string Koc_CatDayView = "Koc_CatDayView";
+    public const string Koc_Cats = "Koc_Cats";
+    public const string Koc_Cats2 = "Koc_Cats2";
+    public const string Koc_CatsTransfer = "Koc_CatsTransfer";
+
+    public const string Koc_Albums = "Koc_Albums";
+    public const string Koc_PhotoDayView = "Koc_PhotoDayView";
+    public const string Koc_Photos = "Koc_Photos";
+    public const string Koc_Photos2 = "Koc_Photos2";
+    #region Koc komentáře
+    public const string Koc_KocComments = "Koc_KocComments";
+    public const string Koc_KocComments2 = "Koc_KocComments2";
+    public const string Koc_KocCommentsThumbsUp = "Koc_KocCommentsThumbsUp";
+    public const string Koc_KocCommentsThumbsDown = "Koc_KocCommentsThumbsDown";
+    public const string Koc_KocCommentsSpamVotes = "Koc_KocCommentsSpamVotes";
+    //public const string Koc_KocCommentSubscribe = "Koc_KocCommentSubscribe"; 
+    #endregion
+
+    public const string Koc_KocWords = "Koc_KocWords";
+    public const string Koc_KocSearchIndex = "Koc_KocSearchIndex";
+    #endregion
+
+    #region 3 Geo
+    #region Geo *
+    public const string Geo_Cachers = "Geo_Cachers";
+
+    public const string Geo_CachesSizes = "Geo_CachesSizes";
+    public const string Geo_CachesTypes = "Geo_CachesTypes";
+    public const string Geo_Waypoints = "Geo_Waypoints";
+
+    public const string Geo_Caches = "Geo_Caches";
+
+    public const string Geo_CachesWaypoints = "Geo_CachesWaypoints";
+    public const string Geo_CachesMyWaypoints = "Geo_CachesMyWaypoints";
+    public const string Geo_Lists = "Geo_Lists";
+
+    public const string Geo_UploadedGpxTracks = "Geo_UploadedGpxTracks";
+    public const string Geo_GeoUsers = "Geo_GeoUsers";
+    #endregion
+
+    #region Geo *2
+    public const string Geo_Cachers2 = "Geo_Cachers2";
+    public const string Geo_Waypoints2 = "Geo_Waypoints2";
+    public const string Geo_Caches2 = "Geo_Caches2";
+    public const string Geo_Lists2 = "Geo_Lists2";
+    #endregion
+    #endregion
+
+    #region 4 App
+    #region App *
+    //public const string App_AppDayView = "App_AppDayView";
+    public const string App_App = "App_App";
+    public const string App_AppWords = "App_AppWords";
+    public const string App_AppSearchIndex = "App_AppSearchIndex";
+    public const string App_AppSW = "App_AppSW";
+    public const string App_SW = "App_SW";
+    public const string App_Like = "App_Like";
+    public const string App_Version = "App_Version";
+    public const string App_Tag = "App_Tag";
+    public const string App_AppTag = "App_AppTag";
+    #endregion
+
+    #region App *2
+    public const string App_App2 = "App_App2";
+    #endregion 
+    #endregion
+
+    #region 6 Lyr
+    #region Lyr *
+    public const string Lyr_Artist = "Lyr_Artist";
+
+    public const string Lyr_Album = "Lyr_Album";
+    public const string Lyr_YoutubeVideos = "Lyr_YoutubeVideos";
+    public const string Lyr_Lyrics = "Lyr_Lyrics";
+    public const string Lyr_FavoritesVotes = "Lyr_FavoritesVotes";
+    public const string Lyr_RatingVotes = "Lyr_RatingVotes";
+    public const string Lyr_Song = "Lyr_Song";
+
+    //public const string Lyr_SongDayView = "Lyr_SongDayView";
+    public const string Lyr_LyrWords = "Lyr_LyrWords";
+    public const string Lyr_LyrSearchIndex = "Lyr_LyrSearchIndex";
+
+    public static string Lyr_LyrTag = "Lyr_LyrTag";
+    public static string Lyr_SimilarArtist = "Lyr_SimilarArtist";
+    public static string Lyr_Genre = "Lyr_Genre";
+    public static string Lyr_ArtistTag = "Lyr_ArtistTag";
+    public static string Lyr_ArtistGenre = "Lyr_ArtistGenre";
+
+    public const string Lyr_Event = "Lyr_Event";
+    public const string Lyr_EventArtist = "Lyr_EventArtist";
+    public const string Lyr_EventVenue = "Lyr_EventVenue";
+    public const string Lyr_EventTag = "Lyr_EventTag";
+    #endregion
+
+    #region Lyr *2
+    public const string Lyr_LyrTag2 = "Lyr_LyrTag2";
+    public const string Lyr_Album2 = "Lyr_Album2";
+    public const string Lyr_Song2 = "Lyr_Song2";
+    public const string Lyr_Artist2 = "Lyr_Artist2";
+    #endregion
+    #endregion
+
+
     #region Shp *
     //public const string Shp_ShpBrand = "Shp_ShpBrand";
     //public const string Shp_ShpProductType = "Shp_ShpProductType";
@@ -51,216 +201,14 @@ public class Tables
     //public const string Blg_BlgSearchIndex = "Blg_BlgSearchIndex";
     #endregion
 
-    #region Geo
-    #region Geo *
-    public const string Geo_Cachers = "Geo_Cachers";
 
-    public const string Geo_CachesSizes = "Geo_CachesSizes";
-    public const string Geo_CachesTypes = "Geo_CachesTypes";
-    public const string Geo_Waypoints = "Geo_Waypoints";
 
-    public const string Geo_Caches = "Geo_Caches";
 
-    public const string Geo_CachesWaypoints = "Geo_CachesWaypoints";
-    public const string Geo_CachesMyWaypoints = "Geo_CachesMyWaypoints";
-    public const string Geo_Lists = "Geo_Lists";
 
-    public const string Geo_UploadedGpxTracks = "Geo_UploadedGpxTracks";
-    public const string Geo_GeoUsers = "Geo_GeoUsers";
-    #endregion
 
-    #region Geo *2
-    public const string Geo_Cachers2 = "Geo_Cachers2";
-    public const string Geo_Waypoints2 = "Geo_Waypoints2";
-    public const string Geo_Caches2 = "Geo_Caches2";
-    public const string Geo_Lists2 = "Geo_Lists2";
-    #endregion 
-    #endregion
-
-    #region Lyr
-    #region Lyr *
-    public const string Lyr_Artist = "Lyr_Artist";
-
-    public const string Lyr_Album = "Lyr_Album";
-    public const string Lyr_YoutubeVideos = "Lyr_YoutubeVideos";
-    public const string Lyr_Lyrics = "Lyr_Lyrics";
-    public const string Lyr_FavoritesVotes = "Lyr_FavoritesVotes";
-    public const string Lyr_RatingVotes = "Lyr_RatingVotes";
-    public const string Lyr_Song = "Lyr_Song";
-
-    //public const string Lyr_SongDayView = "Lyr_SongDayView";
-    public const string Lyr_LyrWords = "Lyr_LyrWords";
-    public const string Lyr_LyrSearchIndex = "Lyr_LyrSearchIndex";
-
-    public static string Lyr_LyrTag = "Lyr_LyrTag";
-    public static string Lyr_SimilarArtist = "Lyr_SimilarArtist";
-    public static string Lyr_Genre = "Lyr_Genre";
-    public static string Lyr_ArtistTag = "Lyr_ArtistTag";
-    public static string Lyr_ArtistGenre = "Lyr_ArtistGenre";
-
-    public const string Lyr_Event = "Lyr_Event";
-    public const string Lyr_EventArtist = "Lyr_EventArtist";
-    public const string Lyr_EventVenue = "Lyr_EventVenue";
-    public const string Lyr_EventTag = "Lyr_EventTag";
-    #endregion
-
-    #region Lyr *2
-    public const string Lyr_LyrTag2 = "Lyr_LyrTag2";
-    public const string Lyr_Album2 = "Lyr_Album2";
-    public const string Lyr_Song2 = "Lyr_Song2";
-    public const string Lyr_Artist2 = "Lyr_Artist2";
-    #endregion 
-    #endregion
-
-    #region Bib
-    #region Bib *
-    #region Čtecí plány
-    //public const string Sda_GroupVersesOfPlans = "Sda_GroupVersesOfPlans";
-    //public const string Sda_NameOfPlans = "Sda_NameOfPlans";
-    //public const string Sda_ReadedDaysOfPlans = "Sda_ReadedDaysOfPlans";
-    //public const string Sda_CategoryOfPlan = "Sda_CategoryOfPlan";
-    //public const string Sda_DonedPlans = "Sda_DonedPlans";
-    #endregion
-
-    #region Main
-    public const string Sda_BibSearchIndex = "Sda_BibSearchIndex";
-    //public const string Sda_Book = "Sda_Book";
-    //public const string Sda_Verse = "Sda_Verse";
-    //public const string Sda_Word = "Sda_Word";
-    //public const string Sda_BookShortcut = "Sda_BookShortcut";
-    #endregion
-
-    #region Ostatní
-    //public const string Sda_GroupVerses = "Sda_GroupVerses";
-
-    ////public const string Bib_Users = "Sda_Users";
-    //public const string Sda_Bookmark = "Sda_Bookmark";
-    #endregion
-    #endregion
-
-    #region Bib *2
-
-    #endregion
-    #endregion
-
-    #region Nope
-    #region Nope *
-    /// <summary>
-    /// Státy. Používají se například i v Go zkracovači.
-    /// </summary>
-    public const string State = "State";
-    public const string Region = "Region";
-    public const string Location = "Location";
-    public const string Cities = "Cities";
-    public const string Users = "Users";
-
-    public const string UsersReactivates = "UsersReactivates";
-
-    public const string UsersActivates = "UsersActivates";
-
-    public const string News = "News";
-    public const string PageName = "PageName";
-    public const string PageArgument = "PageArgument";
-
-    public const string Page = "Page";
-    public const string PageOld = "PageOld";
-    public const string PageNew = "PageNew";
-    public const string Favorites = "Favorites";
-    /// <summary>
-    /// Tato tabulka zatím existuje, ale je určena k smazání. 
-    /// Hodit se může pouze pro kontrolu přihlášených uživatelů, aby nenačítali masivně stránku a nezvyšovalo se jim tak skóre přečtení
-    /// Nijak se už nikde nevyužívá, jen v rlc na smazání dat.
-    /// </summary>
-    public const string TypesOfContacts = "TypesOfContacts";
-    public const string CzechNameDays = "CzechNameDays";
-    /// <summary>
-    /// Není to tabulka v DB ale pouze FileBasedTable
-    /// </summary>
-    public const string Sessions = "Sessions";
-    public const string FileExts = "FileExts";
-    public const string Go = "Go";
-    /// <summary>
-    /// Tato tabulka by měla být každopádně bez Var
-    /// </summary>
-    public const string GoVisitors = "GoVisitors";
-    /// <summary>
-    /// Tabulka pro URL Referrery například ve zkracovači Go
-    /// </summary>
-    public const string Hostnames = "Hostnames";
-    /// <summary>
-    /// Nechat tuto tabulku jen tehdy, půjde-li z dotazu snadno zjistit platforma. Jinak udělat výčet s základními
-    /// </summary>
-    public const string Platforms = "Platforms";
-    /// <summary>
-    /// To tu nebude, bude to ve výčtu
-    /// </summary>
-    //public const string Browsers = "";
-    /// <summary>
-    /// Tato tabulka zde taky nebude, budu převádět jazyk na zemi, ve které se tímto jazykem mluví
-    /// </summary>
-    public const string Langs = "Langs";
-    public const string Colors = "Colors";
-
-    public const string OS = "OS";
-    public const string IPAddress = "IPAddress";
-    #region General komentáře
-    /// <summary>
-    /// Využívám ji v třídě Discuss pro parsování výsledků skrze item.ItemArray
-    /// </summary>
-    public const string Comments = "Comments";
-    public const string CommentSubscribe = "CommentSubscribe";
-    #endregion
-    //public const string BannedIP = "BannedIP";
-    public const string LoginAttempt = "LoginAttempt";
-    #endregion
-
-    #region Nope *2
-    public const string UsersActivates2 = "UsersActivates2";
-    public const string Users2 = "Users2";
-    public static string Page2 = "Page2";
-    #endregion 
-    #endregion
-
-    #region Koc - nijak je nepřemisťuj, jsou seřazeny podle toho jak se musí vytvářet
-    public const string Koc_OwnedCats = "Koc_OwnedCats";
-    public const string Koc_Breeds = "Koc_Breeds";
-    public const string Koc_KennelDayView = "Koc_KennelDayView";
-    public const string Koc_Kennels = "Koc_Kennels";
-    public const string Koc_Kennels2 = "Koc_Kennels2";
-    public const string Koc_Kennels_Breeds = "Koc_Kennels_Breeds";
-    public const string Koc_Kennels_Cats = "Koc_Kennels_Cats";
-    public const string Koc_MisterDayView = "Koc_MisterDayView";
-    public const string Koc_Misters = "Koc_Misters";
-    public const string Koc_Misters2 = "Koc_Misters2";
-    public const string Koc_VeterinarianDayView = "Koc_VeterinarianDayView";
-    public const string Koc_Veterinarians = "Koc_Veterinarians";
-    public const string Koc_Veterinarians2 = "Koc_Veterinarians2";
-
-    public const string Koc_Calendar = "Koc_Calendar";
-    public const string Koc_CatDayView = "Koc_CatDayView";
-    public const string Koc_Cats = "Koc_Cats";
-    public const string Koc_Cats2 = "Koc_Cats2";
-    public const string Koc_CatsTransfer = "Koc_CatsTransfer";
     
-    public const string Koc_Albums = "Koc_Albums";
-    public const string Koc_PhotoDayView = "Koc_PhotoDayView";
-    public const string Koc_Photos = "Koc_Photos";
-    public const string Koc_Photos2 = "Koc_Photos2";
-    #region Koc komentáře
-    public const string Koc_KocComments = "Koc_KocComments";
-    public const string Koc_KocComments2 = "Koc_KocComments2";
-    public const string Koc_KocCommentsThumbsUp = "Koc_KocCommentsThumbsUp";
-    public const string Koc_KocCommentsThumbsDown = "Koc_KocCommentsThumbsDown";
-    public const string Koc_KocCommentsSpamVotes = "Koc_KocCommentsSpamVotes";
-    //public const string Koc_KocCommentSubscribe = "Koc_KocCommentSubscribe"; 
-    #endregion
 
-    public const string Koc_KocWords = "Koc_KocWords";
-    public const string Koc_KocSearchIndex = "Koc_KocSearchIndex";
-    #endregion
-
-    #region Koc - zakomentované
-    #endregion
+    
 
     #region Sda
     #region Sda *
@@ -319,24 +267,7 @@ public class Tables
     #endregion 
     #endregion
 
-    #region App
-    #region App *
-    //public const string App_AppDayView = "App_AppDayView";
-    public const string App_App = "App_App";
-    public const string App_AppWords = "App_AppWords";
-    public const string App_AppSearchIndex = "App_AppSearchIndex";
-    public const string App_AppSW = "App_AppSW";
-    public const string App_SW = "App_SW";
-    public const string App_Like = "App_Like";
-    public const string App_Version = "App_Version";
-    public const string App_Tag = "App_Tag";
-    public const string App_AppTag = "App_AppTag";
-    #endregion
-
-    #region App *2
-    public const string App_App2 = "App_App2";
-    #endregion 
-    #endregion
+    
 
     #region Wid
     #region Wid *
@@ -464,13 +395,89 @@ public class Tables
 
     #region Phs *2
     public const string Phs_PhsPhoto2 = "Phs_PhsPhoto2";
-    #endregion 
+    #endregion
     #endregion
 
     //public const string Geo_UploadedGpxTracksDayView = "Geo_UploadedGpxTracksDayView";
-    
-    
-    
-    
+
+
+
+    #region Nope 255
+    #region Nope *
+    /// <summary>
+    /// Státy. Používají se například i v Go zkracovači.
+    /// </summary>
+    public const string State = "State";
+    public const string Region = "Region";
+    public const string Location = "Location";
+    public const string Cities = "Cities";
+    public const string Users = "Users";
+
+    public const string UsersReactivates = "UsersReactivates";
+
+    public const string UsersActivates = "UsersActivates";
+
+    public const string News = "News";
+    public const string PageName = "PageName";
+    public const string PageArgument = "PageArgument";
+
+    public const string Page = "Page";
+    public const string PageOld = "PageOld";
+    public const string PageNew = "PageNew";
+    public const string Favorites = "Favorites";
+    /// <summary>
+    /// Tato tabulka zatím existuje, ale je určena k smazání. 
+    /// Hodit se může pouze pro kontrolu přihlášených uživatelů, aby nenačítali masivně stránku a nezvyšovalo se jim tak skóre přečtení
+    /// Nijak se už nikde nevyužívá, jen v rlc na smazání dat.
+    /// </summary>
+    public const string TypesOfContacts = "TypesOfContacts";
+    public const string CzechNameDays = "CzechNameDays";
+    /// <summary>
+    /// Není to tabulka v DB ale pouze FileBasedTable
+    /// </summary>
+    public const string Sessions = "Sessions";
+    public const string FileExts = "FileExts";
+    public const string Go = "Go";
+    /// <summary>
+    /// Tato tabulka by měla být každopádně bez Var
+    /// </summary>
+    public const string GoVisitors = "GoVisitors";
+    /// <summary>
+    /// Tabulka pro URL Referrery například ve zkracovači Go
+    /// </summary>
+    public const string Hostnames = "Hostnames";
+    /// <summary>
+    /// Nechat tuto tabulku jen tehdy, půjde-li z dotazu snadno zjistit platforma. Jinak udělat výčet s základními
+    /// </summary>
+    public const string Platforms = "Platforms";
+    /// <summary>
+    /// To tu nebude, bude to ve výčtu
+    /// </summary>
+    //public const string Browsers = "";
+    /// <summary>
+    /// Tato tabulka zde taky nebude, budu převádět jazyk na zemi, ve které se tímto jazykem mluví
+    /// </summary>
+    public const string Langs = "Langs";
+    public const string Colors = "Colors";
+
+    public const string OS = "OS";
+    public const string IPAddress = "IPAddress";
+    #region General komentáře
+    /// <summary>
+    /// Využívám ji v třídě Discuss pro parsování výsledků skrze item.ItemArray
+    /// </summary>
+    public const string Comments = "Comments";
+    public const string CommentSubscribe = "CommentSubscribe";
+    #endregion
+    //public const string BannedIP = "BannedIP";
+    public const string LoginAttempt = "LoginAttempt";
+    #endregion
+
+    #region Nope *2
+    public const string UsersActivates2 = "UsersActivates2";
+    public const string Users2 = "Users2";
+    public static string Page2 = "Page2";
+    #endregion 
+    #endregion
 
 }

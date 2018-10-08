@@ -108,7 +108,7 @@ namespace sunamo.Indexing.FileSystem
         /// <param name="folder"></param>
         private void AddFilesFromFolder(string basePath, string folder)
         {
-            var files2 = Directory.GetFiles(folder, "*.*", SearchOption.TopDirectoryOnly);
+            var files2 = Directory.GetFiles(folder, FS.MascFromExtension(), SearchOption.TopDirectoryOnly);
             files2.ToList().ForEach(c => files.Add(GetFileItem(c, basePath)));
         }
 

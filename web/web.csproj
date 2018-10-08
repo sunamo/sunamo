@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularJsHelper.cs" />
-    <Compile Include="Values\Consts.cs" />
+    <Compile Include="Values\CookieNames.cs" />
     <Compile Include="Controls\Anchor.cs" />
     <Compile Include="Controls\BaseControl.cs" />
     <Compile Include="Controls\CustomControl.cs" />
