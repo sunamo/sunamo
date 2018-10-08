@@ -1,0 +1,9 @@
+﻿scalar: 1
+string: "2"
+command: |
+    if [ "${CIRCLE_BRANCH}" == "master" ];
+      then ansible-playbook site.yml -i production;
+    fi
+collection:
+# Nesting uses indentation. 2 space indent is preferred (but not required).
+k1: v1
