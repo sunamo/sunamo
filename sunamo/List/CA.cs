@@ -5,11 +5,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-
+using System.Runtime.CompilerServices;
 
 public static class CA
 {
     static Type type = typeof(CA);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void Swap<T>(this IList<T> list, int i, int j)
+    {
+        if (i == j)   //This check is not required but Partition function may make many calls so its for perf reason
+            return;
+        var temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
+    }
 
     /// <summary>
     /// 
@@ -206,11 +216,39 @@ public static class CA
         return true;
     }
 
-    public static List<string> ReturnWhichContains(List<string> lines, string item)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded)
     {
-        return lines.FindAll(d => d.Contains(item));
+        founded = new List<int>();
+        List<string> result = new List<string>();
+        int i = 0;
+        foreach (var item in lines)
+        {
+            if (item.Contains(term))
+            {
+                founded.Add(i);
+                result.Add(item);
+            }
+            i++;
+        }
+
+        return result;
     }
 
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term)
+    {
+        List<int> result = new List<int>();
+        int i = 0;
+        foreach (var item in value)
+        {
+            if (item.Contains(term))
+            {
+                result.Add(i);
+            }
+            i++;
+        }
+
+        return result;
+    }
 
 
     /// <summary>
@@ -268,22 +306,7 @@ public static class CA
         }
     }
 
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term)
-    {
-        List<int> result = new List<int>();
-        int i = 0;
-        foreach (var item in value)
-        {
-            if (item.Contains(term))
-            {
-                result.Add(i);
-            }
-            i++;
-        }
-
-        return result;
-    }
-
+    
     public static int PartsCount(int count, int inPart)
     {
         int celkove = count / inPart;
@@ -534,16 +557,22 @@ public static class CA
     }
 
     /// <summary>
+    /// Direct edit 
     /// WithEndSlash - trims backslash and append new
     /// WithoutEndSlash - ony trims backslash
     /// </summary>
     /// <param name="folders"></param>
     /// <returns></returns>
-    public static string[] WithEndSlash(string[] folders)
+    public static List<string> WithEndSlash(List<string> folders)
     {
-        for (int i = 0; i < folders.Length; i++)
+        List<string> list = folders as List<string>;
+        if (list == null)
         {
-            folders[i] = sunamo.FS.WithEndSlash(folders[i]);
+            list = folders.ToList();
+        }
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i] = sunamo.FS.WithEndSlash(list[i]);
         }
         return folders;
     }
