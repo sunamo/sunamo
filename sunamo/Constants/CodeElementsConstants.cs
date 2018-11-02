@@ -7,5 +7,6 @@ namespace sunamo.Constants
     public class CodeElementsConstants
     {
         public const string NopeValue = "Nope";
+        public const string NoneValue = "None";
     }
 }
