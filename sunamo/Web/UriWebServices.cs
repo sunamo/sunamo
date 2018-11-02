@@ -1,10 +1,21 @@
-﻿using System;
+﻿using sunamo.Values;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
 public static class UriWebServices
 {
+    public static class RepairMobile
+    {
+        public static void SearchInAll(string what)
+        {
+            //UriWebServices.SearchInAll(RepairMobileValues.allRepairKitShops, what);
+
+
+        }
+    }
+
     public static class EnglishMobileParts
     {
         /// <summary>
@@ -159,6 +170,40 @@ public static class UriWebServices
 
     }
 
+    public static class Libraries
+    {
+        /// <summary>
+        /// Narodni knihovna
+        /// </summary>
+        public const string nkp = @"https://aleph.nkp.cz/F/K1AF26NFNIRG8S216J2Q7YBV19F2F8LF11VEA4AY4I2L2Y42M3-55374?func=find-b&find_code=WRD&x=0&y=0&request=%s&filter_code_1=WTP&filter_request_1=&filter_code_2=WLN&adjacent=N";
+        public const string vsb = "https://katalog.vsb.cz/search?type=global&q=s";
+        /// <summary>
+        /// Knihovna akademie ved
+        /// </summary>
+        public const string cas = @"https://vufind.lib.cas.cz/ustav/KNAV/Search/Results?type=AllFields&institution=KNAV&filter%5B%5D=institution%3AKNAV&lookfor=nginx&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp";
+        public const string mlp = "http://search.mlp.cz/en/?query=%s&kde=all#/c_s_ol=query-eq:%s";
+        public const string kmoAll = "https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0";
+        public const string kmoAV = "https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0";
+        public const string kmoMP = "https://tritius.kmo.cz/Katalog/search?q=%s&area=242&field=0";
+        public const string svkos = "https://katalog.svkos.cz/F/JSAUCF45R2HDYLIMN5CFCRTY5LIRAYKG33QJR7IT42N8G4X53M-60701?func=find-b&request=%s&x=0&y=0&find_code=WRD&adjacent=N&local_base=KATALOG&filter_code_4=WFM&filter_request_4=&filter_code_1=WLN&filter_request_1=&filter_code_2=WYR&filter_request_2=&filter_code_3=WYR&filter_request_3=";
+        public const string dk = "https://www.databazeknih.cz/search?q=%s&hledat=";
+    }
+
+    public static string KmoAll(string item)
+    {
+        return FromChromeReplacement("", item);
+    }
+
+    public static string KmoAV(string item)
+    {
+        return FromChromeReplacement("", item);
+    }
+
+    public static string KmoMP(string item)
+    {
+        return FromChromeReplacement("", item);
+    }
+
     public const string chromeSearchstringReplacement = "%s";
 
     public static void SearchInAll(string[] array, string what)
@@ -190,6 +235,14 @@ public static class UriWebServices
         return "http://www.google.com/+" + nick;
     }
 
+    public static void GoogleSearchInAllSite(List<string> allRepairKitShops, string v)
+    {
+        foreach (var item in allRepairKitShops)
+        {
+            Process.Start( GoogleSearchSite(item, v));
+        }
+    }
+
     public static string GoogleMaps(string coordsOrAddress, string center, string zoom)
     {
         StringBuilder sb = new StringBuilder();
@@ -212,7 +265,8 @@ public static class UriWebServices
     /// <returns></returns>
     public static string GoogleSearch(string s)
     {
-        return "https://www.google.cz/search?q=" + s;
+        // q for reviews in czech and not translated 
+        return "https://www.google.cz/search?hl=cs&q=" + s;
     }
 
     public static string GoogleSearchSite(string site, string v)
@@ -221,25 +275,12 @@ public static class UriWebServices
         return "https://www.google.cz/search?q=site%3A" + site + "+" + v;
     }
 
-    public static string KmoAll(string item)
-    {
-        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0", item);
-    }
-
     public static string FromChromeReplacement(string uri, string term)
     {
         return uri.Replace(chromeSearchstringReplacement, term);
     }
 
-    public static string KmoAV(string item)
-    {
-        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0", item);
-    }
-
-    public static string KmoMP(string item)
-    {
-        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=242&field=0", item);
-    }
+    
 
     public static string CoordsInfo(string f)
     {
