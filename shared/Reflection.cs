@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Markup.Primitives;
 
 namespace sunamo
 {
@@ -28,6 +31,33 @@ namespace sunamo
             string methodName = method.Name;
             string type = method.ReflectedType.Name;
             return SH.ConcatIfBeforeHasValue(type, ".", methodName, ":");
+        }
+
+        public static IEnumerable<Type> GetTypesInNamespace(Assembly assembly, string nameSpace)
+        {
+            var types = assembly.GetTypes();
+            return types.Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
+        }
+
+        
+
+        public IList<DependencyProperty> GetAttachedProperties(DependencyObject obj)
+        {
+            List<DependencyProperty> result = new List<DependencyProperty>();
+
+            foreach (PropertyDescriptor pd in TypeDescriptor.GetProperties(obj,
+                new Attribute[] { new PropertyFilterAttribute(PropertyFilterOptions.All) }))
+            {
+                DependencyPropertyDescriptor dpd =
+                    DependencyPropertyDescriptor.FromProperty(pd);
+
+                if (dpd != null)
+                {
+                    result.Add(dpd.DependencyProperty);
+                }
+            }
+
+            return result;
         }
     }
 }

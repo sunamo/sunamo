@@ -1,4 +1,6 @@
-﻿using System;
+﻿using desktop.Storage;
+using sunamo.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,11 @@ namespace desktop.Interfaces
 {
     public interface IWindowWithSettingsManager
     {
-        Dictionary<DependencyObject, DependencyProperty> SavedElements { get; set; }
+        /// <summary>
+        /// TUList due to FrameworkElement will be as many as have dependency property
+        /// </summary>
+        TUList<FrameworkElement, DependencyProperty> SavedElements { get; set; }
+        SettingsManager SettingsManager { get; }
+        void AddSavedElement(FrameworkElement fw, DependencyProperty dp);
     }
 }

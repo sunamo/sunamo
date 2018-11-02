@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
+/// <summary>
+/// In key is name
+/// In AB Key full type
+/// </summary>
 public class ApplicationDataContainerList : Dictionary<string, AB>
 {
     string path = null;
