@@ -4,13 +4,34 @@ using System.Windows;
 
 public class CollectionWithoutDuplicates<T>
 {
-    public List<T> c = new List<T>();
+    public List<T> c = null;
+    public bool allowNull = false;
+
+    public CollectionWithoutDuplicates()
+    {
+        c = new List<T>();
+    }
+
+    public CollectionWithoutDuplicates(int count)
+    {
+        c = new List<T>(count);
+    }
 
     public bool Add(T t2)
     {
         if (!c.Contains(t2))
         {
-            c.Add(t2);
+            if (EqualityComparer<T>.Default.Equals( t2,  default(T)))
+            {
+                if (allowNull)
+                {
+                    c.Add(t2);
+                }
+            }
+            else
+            {
+                c.Add(t2);
+            }
             return true;
         }
         return false;
@@ -21,7 +42,7 @@ public class CollectionWithoutDuplicates<T>
         int vr = c.IndexOf(t2);
         if (vr == -1)
         {
-            c.Add(t2);
+            Add(t2);
             return c.Count - 1;
         }
         return vr;
@@ -38,11 +59,19 @@ public class CollectionWithoutDuplicates<T>
         return vr;
     }
 
-    internal void AddRange(IEnumerable<T> list)
+    /// <summary>
+    /// If I want without chechink, use c.AddRange
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <param name="withoutChecking"></param>
+    public void AddRange(IEnumerable<T> list)
     {
         foreach (var item in list)
         {
             Add(item);
         }
     }
+
+    
+    
 }
