@@ -254,8 +254,6 @@ namespace sunamo.Indexing.FileSystem
             CheckBoxData<TWithSize<string>>[,] vr = new CheckBoxData<TWithSize<string>>[files.Count, columns];
             int r = -1;
 
-            int? first = null;
-
             // Process all rows
             foreach (var item in files)
             {

@@ -8,7 +8,18 @@ using System.Data.SqlClient;
 
 public class MSDatabaseLayerSql5 : MSDatabaseLayerBase
 {
-    static SqlConnection _conn = null;
+    public static SqlConnection _conn
+    {
+        get
+        {
+            return conn;
+        }
+        set
+        {
+            conn = value;
+        }
+    }
+
     static string cs = null;
     static bool closing = false;
 
@@ -70,13 +81,7 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayerBase
             LoadNewConnectionFirst(cs);
     }
 
-    public static SqlConnection conn
-    {
-        get
-        {
-            return _conn;
-        }
-    }
+
 
     #region Prace s vlastni DB
     

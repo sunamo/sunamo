@@ -78,7 +78,6 @@ public class GeneralLayer //: ISpecificLayer
         s.Add(Tables.Cities, MSColumnsDB.IDName(25));
         string delkaLogin = "20";
         string delkaEmail = "40";
-        string delkaTelNumber = "20";
         string delkaSecQue = "4000";
         string delkaSecAns = "4000";
   

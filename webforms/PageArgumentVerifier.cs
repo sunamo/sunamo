@@ -346,7 +346,6 @@ public static class PageArgumentVerifier
             return false;
         }
         throw new Exception("Neimplementovaný typ v metodě PageArgumentVerifier.IsRightValue");
-        return false;
     }
 
     /// <summary>

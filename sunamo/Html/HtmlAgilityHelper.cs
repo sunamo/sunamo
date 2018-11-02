@@ -135,13 +135,7 @@ namespace sunamo.Html
         {
             foreach (HtmlNode item in htmlNode.ChildNodes)
             {
-                bool hasAttr = false;
                 string attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);
-
-
-                
-               
-                    
                 
                 if (HasTagName(item, p))
                 {

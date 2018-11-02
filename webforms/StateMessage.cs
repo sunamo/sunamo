@@ -29,7 +29,6 @@ namespace web
                 case TypeOfMessage.Appeal:
                 default:
                     throw new Exception("Neznámý nebo neimplementovaný prvek výčtu TypeOfMessage");
-                    break;
             }
             return sp.errors;
         }

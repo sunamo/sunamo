@@ -617,7 +617,6 @@ public class CryptHelper2
         if ((cipherTextBytes.Length % RSA_BLOCKSIZE) != 0)
         {
             throw new System.Security.Cryptography.CryptographicException("Encrypted text is an invalid length");
-            return null;
         }
 
         //Calculate the number of blocks we will have to work on

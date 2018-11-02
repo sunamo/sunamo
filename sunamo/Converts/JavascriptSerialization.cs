@@ -40,13 +40,11 @@ public class JavascriptSerialization
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
         throw new Exception("System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps.");
-        return default(T);
     }
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
         throw new NotImplementedException("Else if with enum value " + sl + " in JavascriptSerialization." + v);
-        return default(T);
     }
 
     public object Deserialize(String o, Type targetType)
@@ -54,7 +52,6 @@ public class JavascriptSerialization
         if (sl == SerializationLibrary.Microsoft)
         {
             return ThrowExceptionsMicrosoftSerializerNotSupported<object>();
-            //return js.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.Newtonsoft)
         {

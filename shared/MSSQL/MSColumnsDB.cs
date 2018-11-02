@@ -854,19 +854,19 @@ ParseRow(o);");
             case SqlDbType.NChar:
             case SqlDbType.NVarChar:
                 return "GetString";
-                break;
+                
             case SqlDbType.Int:
                 return "GetInt";
-                break;
+                
             case SqlDbType.Real:
                 return "GetFloat";
-                break;
+                
             case SqlDbType.BigInt:
                 return "GetLong";
-                break;
+                
             case SqlDbType.Bit:
                 return "GetBool";
-                break;
+                
             case SqlDbType.Date:
             case SqlDbType.DateTime:
             case SqlDbType.DateTime2:
@@ -874,46 +874,45 @@ ParseRow(o);");
             case SqlDbType.DateTimeOffset:
             case SqlDbType.SmallDateTime:
                 return "GetDateTime";
-                break;
             // Bude to až po všech běžně používaných datových typech, protože bych se měl vyvarovat ukládat do malé DB takové množství dat
             case SqlDbType.Timestamp:
             case SqlDbType.Binary:
             case SqlDbType.VarBinary:
             case SqlDbType.Image:
                 return "GetImage";
-                break;
+                
             case SqlDbType.SmallMoney:
             case SqlDbType.Money:
             case SqlDbType.Decimal:
                 return "GetDecimal";
-                break;
+                
             case SqlDbType.Float:
                 return "GetDouble";
-                break;
+                
             case SqlDbType.SmallInt:
                 return "GetShort";
-                break;
+                
             case SqlDbType.TinyInt:
                 return "GetByte";
-                break;
+                
             case SqlDbType.Structured:
             case SqlDbType.Udt:
             case SqlDbType.Xml:
                 throw new Exception("Snažíte se převést na int strukturovaný(složitý) datový typ");
-                break;
+                
             case SqlDbType.UniqueIdentifier:
                 return "GetGuid";
-                break;
+                
 
             case SqlDbType.VarChar:
                 return "GetString";
-                break;
+                
             case SqlDbType.Variant:
                 return "GetObject";
-                break;
+                
             default:
                 throw new Exception("Snažíte se převést datový typ, pro který není implementována větev");
-                break;
+                
         }
     }
 
@@ -979,7 +978,6 @@ ParseRow(o);");
                 case SqlDbType.DateTimeOffset:
                 case SqlDbType.Timestamp:
                     throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován.");
-                    break;
 
                 case SqlDbType.Real:
                 case SqlDbType.Float:
@@ -990,22 +988,22 @@ ParseRow(o);");
                 case SqlDbType.Binary:
                 case SqlDbType.VarBinary:
                     throw new Exception("Not supported convert binary data to string");
-                    break;
+                    
 
 
                 case SqlDbType.Structured:
                     throw new NotSupportedException("Strukturované datové typy nejsou podporovány.");
-                    break;
+                    
 
                 case SqlDbType.Udt:
                     throw new NotSupportedException("Univerzální datové typy nejsou podporovány.");
-                    break;
+                    
                 case SqlDbType.Variant:
                     throw new NotSupportedException("Variantní datové typy nejsou podporovány.");
-                    break;
+                    
                 case SqlDbType.Xml:
                     throw new NotSupportedException("Xml datový typ není podporován");
-                    break;
+                    
                 default:
                     break;
             }

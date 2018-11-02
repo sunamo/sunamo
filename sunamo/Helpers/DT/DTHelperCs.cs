@@ -127,7 +127,7 @@ namespace sunamo.Helpers.DT
                     {
                         if (tt.Days == 1)
                         {
-                            return tt.Days + " den";
+                            return "1 den";
                         }
                         else if (tt.Days < 5 && tt.Days > 1)
                         {
@@ -184,11 +184,9 @@ namespace sunamo.Helpers.DT
                             }
                             else
                             {
-                                return "1 den";
+                                return tt.Days + " dnů";
                             }
                         }
-
-                        return tt.Days + " dnů";
                     }
                     else if (totalWeeks == 1)
                     {

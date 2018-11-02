@@ -222,7 +222,7 @@ public class UploaderManager
             bmp = new Bitmap(to);
             bmp.Save(FS.InsertBetweenFileNameAndExtension(to, "_2"));
         }
-        catch (Exception ex)
+        catch
         {
             return "error: Z nauploadovaného souboru " + Path.GetFileName(to) + " se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
         }

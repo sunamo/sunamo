@@ -260,7 +260,7 @@ namespace shared
 				img.Save(path, jpegCodec, encoderParams);
 
 			}
-			catch (Exception ex)
+			catch
 			{
 
 			}
@@ -423,13 +423,6 @@ namespace shared
 					}
 				}
 				//}
-			}
-			else
-			{
-				if (writeToConsole)
-				{
-                    Exceptions.FileHasWrongExtension(ext);
-				}
 			}
 			return false;
 		}

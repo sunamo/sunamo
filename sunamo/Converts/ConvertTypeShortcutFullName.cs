@@ -3,10 +3,6 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
 {
     public static string FromShortcut(string shortcut)
     {
-        decimal d = -1m;
-        double dd = -1d;
-        float f = -1f;
-
         switch (shortcut)
         {
             case "string":

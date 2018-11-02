@@ -23,7 +23,6 @@ public class CryptHelper : ICryptHelper
         {
             case Provider.DES:
                 throw new NotSupportedException("Symetrické šifrování DES není podporováno.");
-                break;
             case Provider.RC2:
                 crypt = new CryptHelper.RC2();
                 break;
@@ -35,7 +34,6 @@ public class CryptHelper : ICryptHelper
                 break;
             default:
                 throw new NotImplementedException("");
-                break;
         }
         crypt.iv = iv;
         crypt.pp = pp;

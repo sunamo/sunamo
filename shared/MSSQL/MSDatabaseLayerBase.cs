@@ -83,19 +83,19 @@ public class MSDatabaseLayerBase
             case SqlDbType.NChar:
             case SqlDbType.NVarChar:
                 return "string";
-                break;
+                
             case SqlDbType.Int:
                 return "int";
-                break;
+                
             case SqlDbType.Real:
                 return "float";
-                break;
+                
             case SqlDbType.BigInt:
                 return "long";
-                break;
+                
             case SqlDbType.Bit:
                 return "bool";
-                break;
+                
             case SqlDbType.Date:
             case SqlDbType.DateTime:
             case SqlDbType.DateTime2:
@@ -103,46 +103,45 @@ public class MSDatabaseLayerBase
             case SqlDbType.DateTimeOffset:
             case SqlDbType.SmallDateTime:
                 return "DateTime";
-                break;
+                
             // Bude to až po všech běžně používaných datových typech, protože bych se měl vyvarovat ukládat do malé DB takové množství dat
             case SqlDbType.Timestamp:
             case SqlDbType.Binary:
             case SqlDbType.VarBinary:
             case SqlDbType.Image:
                 return "byte[]";
-                break;
+                
             case SqlDbType.SmallMoney:
             case SqlDbType.Money:
             case SqlDbType.Decimal:
                 return "decimal";
-                break;
+                
             case SqlDbType.Float:
                 return "double";
-                break;
+                
             case SqlDbType.SmallInt:
                 return "short";
-                break;
+                
             case SqlDbType.TinyInt:
                 return "byte";
-                break;
+                
             case SqlDbType.Structured:
             case SqlDbType.Udt:
             case SqlDbType.Xml:
                 throw new Exception("Snažíte se převést na int strukturovaný(složitý) datový typ");
-                break;
+                
             case SqlDbType.UniqueIdentifier:
                 return "Guid";
-                break;
+                
 
             case SqlDbType.VarChar:
                 return "string";
-                break;
+                
             case SqlDbType.Variant:
                 return "object";
-                break;
+                
             default:
                 throw new Exception("Snažíte se převést datový typ, pro který není implementována větev");
-                break;
         }
     }
 
@@ -425,7 +424,7 @@ public class MSDatabaseLayerBase
                 return SqlDbType.TinyInt;
             default:
                 throw new Exception("Neimplementovaná větev");
-                break;
+              
         }
     }
 
@@ -509,7 +508,6 @@ public class MSDatabaseLayerBase
                 throw new Exception("Nepodporovaný datový typ");
 
         }
-        return vstup;
     }
 
 
