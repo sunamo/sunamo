@@ -54,7 +54,10 @@ namespace sunamo.Values
         public static string DotCz = ".sunamo.cz";
 
         public static string http = "http://";
-
+        public static double zeroDouble = 0;
+        public static int zeroInt = 0;
+        public static float zeroFloat = 0;
+        public static readonly Type tObject = typeof(object);
         public static readonly Type tString = typeof(string);
         public static readonly Type tStringBuilder = typeof(StringBuilder);
         public static readonly Type tInt = typeof(int);
