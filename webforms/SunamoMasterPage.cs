@@ -1,47 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
+
 public  class SunamoMasterPage : System.Web.UI.MasterPage
 {
-    #region Práce s cookies a přihlašováním, pokud se něco změní zde, musíš to projevit i do SunamoPage
     /// <summary>
-    /// Do názvu cookie A2 zadej například ThisApp.Name pro cookii, která obsahuje přihlašovací údaje
+    /// To A2 is passed ThisApp.Name
     /// </summary>
     /// <param name="Page"></param>
     /// <param name="nameOfCookie"></param>
     /// <returns></returns>
-    public static HttpCookie GetExistsOrNew(HttpRequest req, string nameOfCookie)
+    public static HttpCookie GetExistsOrNew(HttpRequest request, string nameOfCookie)
     {
-        HttpCookieCollection col = null;
-        if (req == null)
+        HttpCookieCollection collection = null;
+        if (request == null)
         {
-            col = HttpContext.Current.Request.Cookies;
+            collection = HttpContext.Current.Request.Cookies;
         }
         else
         {
-            col = req.Cookies;
+            collection = request.Cookies;
         }
 
-        string Mja = nameOfCookie;
+        HttpCookie cookie = collection[nameOfCookie];
 
-        // Musí se to získavat pomocí metody Get, ne pomocí indexeru
-        HttpCookie vr = col[Mja];
-
-        if (vr == null)
+        if (cookie == null)
         {
-            vr = col.Get(Mja);
+            cookie = collection.Get(nameOfCookie);
         }
-        if (vr == null)
+        if (cookie == null)
         {
-            vr = new HttpCookie(Mja);
-            foreach (string item in col.AllKeys)
+            cookie = new HttpCookie(nameOfCookie);
+            foreach (string item in collection.AllKeys)
             {
-                vr.Values[item] = col[item].Value;
+                cookie.Values[item] = collection[item].Value;
             }
         }
-        return vr;
+        return cookie;
     }
 
     public static LoginCookie GetLoginCookie(HttpRequest req)
@@ -49,6 +44,7 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
         string sc = ReadPermanentCookieSingleValue(req, CookieNames.sCzSc);
         string login = ReadPermanentCookieSingleValue(req, CookieNames.sCzLogin);
         string idUser = ReadPermanentCookieSingleValue(req, CookieNames.sCzIdUser);
+
         if (login != null && sc != null && idUser != null)
         {
             if (!login.Contains("ASP.NET_SessionId=") && !sc.Contains("ASP.NET_SessionId=") && !idUser.Contains("ASP.NET_SessionId="))
@@ -87,116 +83,92 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
 
     public string[] ReadPermanentCookie(string nameOfCookie, params string[] keys)
     {
-        HttpCookie myCookie = null;
-        myCookie = GetExistsOrNew(Page.Request, nameOfCookie);
-        if (myCookie == null)
+        HttpCookie cookie = null;
+        cookie = GetExistsOrNew(Page.Request, nameOfCookie);
+        if (cookie == null)
         {
             return new string[0];
         }
 
-        string[] vr = new string[keys.Length];
-        //ok - cookie is found.
+        string[] result = new string[keys.Length];
+        // ok - cookie is found.
         for (int i = 0; i < keys.Length; i++)
         {
-            //Gracefully check if the cookie has the key-value as expected.
-            string o = myCookie.Values[keys[i]];
+            string o = cookie.Values[keys[i]];
             if (!string.IsNullOrEmpty(o))
             {
                 if (o == null)
                 {
-                    vr[i] = null;
+                    result[i] = null;
                 }
                 else
                 {
                     if (keys[i] == "sc")
                     {
-                        vr[i] = ConvertRot12.From(o);
+                        result[i] = ConvertRot12.From(o);
                     }
                     else
                     {
-                        vr[i] = o;
+                        result[i] = o;
                     }
                 }
             }
             else
             {
-                vr[i] = null;
+                result[i] = null;
             }
         }
-        return vr;
+        return result;
     }
 
     /// <summary>
-    /// Pokud budeš chtít použít tuto metodu třeba v MasterPage, musíš ji zkopírovat! Žádné vkládání do statických tříd.
     /// Pokud chci zapsat null, nestačí poslat pouze null, musí to být string null
     /// </summary>
     /// <param name="args"></param>
     public void WritePernamentCookie(string nameOfCookie, params string[] args)
     {
-        #region Nový kód podle SunamoPage
-        #region NEFUNGUJE
-        #endregion
-
-        #region Možná funguje ale ...
-        #endregion
-
-        //create a cookie
-        HttpCookie myCookie = null;
+        // create a cookie
+        HttpCookie cookie = null;
         if (!this.Request.IsLocal)
         {
-            myCookie = new HttpCookie(nameOfCookie);
+            cookie = new HttpCookie(nameOfCookie);
         }
         else
         {
-            myCookie = new HttpCookie("localhost." + nameOfCookie);
+            cookie = new HttpCookie("localhost." + nameOfCookie);
         }
 
         //Add key-values in the cookie
         for (int i = 0; i < args.Length; i++)
         {
-            #region MyRegion
-            #endregion
-            string fd = args[i];
-            string df = args[++i];
-            if (df == null)
+            string key = args[i];
+            string value = args[++i];
+            if (value == null)
             {
-                df = "";
+                value = "";
             }
-            if (fd == "sc")
+            if (key == "sc")
             {
-                df = ConvertRot12.To(df);
+                value = ConvertRot12.To(value);
             }
-            myCookie.Values.Add(fd, df);    
+            cookie.Values.Add(key, value);    
         }
 
-        //set cookie expiry date-time. Made it to last for next 12 hours.
-        myCookie.Expires = DateTime.Now.AddYears(1);
+        cookie.Expires = DateTime.Now.AddYears(1);
 
-        //Most important, write the cookie to client.
-        Response.Cookies.Add(myCookie); 
-        #endregion
+        Response.Cookies.Add(cookie); 
     }
 
     public void WritePernamentCookieSingleValue(string nameOfCookie, string value)
     {
-        HttpCookie myCookie = new HttpCookie(nameOfCookie);
+        HttpCookie cookie = new HttpCookie(nameOfCookie);
         if (nameOfCookie == CookieNames.sCzSc)
         {
             value = ConvertRot12.To(value);
         }
-        myCookie.Value = value;
-        myCookie.Expires = DateTime.Now.AddYears(1);
-        Response.Cookies.Add(myCookie);
-    }
-    
-    /// <summary>
-    /// Tato metoda musí být volána ještě předtím než se odhlásím ze session
-    /// </summary>
-    public void LogoutUser(string web)
-    {
-        #region Nový kód podle SunamoPage
-            Logout();
-        #endregion
+        cookie.Value = value;
+        cookie.Expires = DateTime.Now.AddYears(1);
+        Response.Cookies.Add(cookie);
     }
 
     /// <summary>
@@ -216,7 +188,6 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
 
     public void RemoveCookie(string nameOfCookie, params string[] keysToDelete)
     {
-        #region Novější verze pomocí SunamoPage
         string[] d = new string[keysToDelete.Length *2];
 
         for (int i = 0; i < keysToDelete.Length; i++)
@@ -225,20 +196,12 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
             d[++i] = null;
         }
         WritePernamentCookie(nameOfCookie, d);
-        #endregion
     }
-    /// <summary>
-    /// Tato metoda se může volat pouze po přihlášení, nikoliv při načtení každé stránky
-    /// </summary>
-    /// <param name="login"></param>
-    /// <param name="idUser"></param>
-    /// <param name="sc"></param>
-    /// <param name="autoLogin"></param>
-    /// <param name="rememberUser"></param>
+
     public void DoLogin(string login, int idUser, string sc, bool autoLogin, bool rememberUser)
     {
         TableRowSessions3.SetSessionID(idUser, sc);
-        //string[] args = null;
+        
         if (autoLogin)
         {
             WritePernamentCookieSingleValue(CookieNames.sCzLogin, login);
@@ -251,14 +214,6 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
             {
                 WritePernamentCookieSingleValue(CookieNames.sCzLogin, login);
             }
-            else
-            {
-                //WritePernamentCookie(ThisApp.Name, "login", null);
-            }
         }
     }
-    #endregion
-
-    #region Working with cookies - Permanently commented
-    #endregion
 }

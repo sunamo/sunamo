@@ -6,11 +6,69 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
-public  class SunamoPage : System.Web.UI.Page
+public class SunamoPage : System.Web.UI.Page
 {
-    //protected PageArgument[] pageArguments = new PageArgument[0];
     public string hfs = "";
     protected string descriptionPage = "";
+    public bool showComments = false;
+    protected bool zapisTitle = true;
+    /// <summary>
+    /// Ïs forbidden use this variable direct, always have to be used througt any method, e.g. PageArgumentVerifier.SetWriteRows() 
+    /// Variable is use nowhere in SunamoPage, it's here just for avoid declare in *Page every time
+    /// </summary>
+    public bool? writeRows = null;
+    public MySites sa = MySites.Nope;
+    /// <summary>
+    /// Is filling in FillLoginVariables(), FillIDUsers(), WriteRowToPagesAndLstVisits(). If after that is still -1, user didnt be authorize.
+    /// </summary>
+    public int idLoginedUser = -1;
+    public string nameLoginedUser = null;
+    public string scLoginedUser = null;
+    public uint overall = 0;
+    public uint today = 0;
+
+    HtmlGenericControl _errors = null;
+    public HtmlGenericControl errors
+    {
+        get
+        {
+            return _errors;
+        }
+        set
+        {
+            _errors = value;
+            _errors.Visible = false;
+        }
+    }
+
+    /// <summary>
+    /// If idPage != -1, shouldnt be neither idUsers == -1. When idUsers == -1, user wont be autenticate.
+    /// </summary>
+    public int idPage = -1;
+    public int entityId = int.MaxValue;
+    public byte IDWeb = 8;
+    public string namePage = "";
+    public string args = "";
+
+    public int idPageName = int.MaxValue;
+    public IPAddress ipAddress = null;
+    public bool writeVisit = false;
+    /// <summary>
+    /// ID stránky pod kterým se stránka vede v tabulce PageArgument
+    /// </summary>
+    public int idPageArgument = int.MaxValue;
+    public bool writeToLastVisitsLogined = false;
+
+    #region Events variables
+    public event VoidVoid ErrorEvent;
+    public event VoidVoid WarningEvent;
+    public event VoidVoid InfoEvent;
+    public event VoidVoid SuccessEvent;
+    protected bool callEventInfo = true;
+    protected bool callEventWarning = true;
+    protected bool callEventSuccess = true;
+    protected bool callEventError = true;
+    #endregion
 
     protected Langs GetLang()
     {
@@ -23,7 +81,7 @@ public  class SunamoPage : System.Web.UI.Page
         OpenGraphHelper.InsertBasicToPageHeader(this, ps, sa);
     }
 
-    protected PageSnippet InsertPageSnippet( string pageName, string desc)
+    protected PageSnippet InsertPageSnippet(string pageName, string desc)
     {
         if (desc == "")
         {
@@ -42,17 +100,14 @@ public  class SunamoPage : System.Web.UI.Page
         InsertPageSnippet(pageName, desc);
     }
 
-    #region Odstranění ViewState
-    #endregion
-
     /// <summary>
-    /// Do A1 se nemůže předat Consts.tString, ta se musí validovat samostatně
+    /// Into A2 I cant pass Consts.tString, string must be validate in other way
     /// </summary>
-    /// <param name="ddlStates"></param>
+    /// <param name="control"></param>
     /// <param name="type"></param>
-    protected void RegisterForEventValidation(Control ddlStates, Type type)
+    protected void RegisterForEventValidation(Control control, Type type)
     {
-        string r = Request.Form[ddlStates.UniqueID];
+        string r = Request.Form[control.UniqueID];
         bool b = false;
         if (r != null)
         {
@@ -131,11 +186,11 @@ public  class SunamoPage : System.Web.UI.Page
         }
         if (b)
         {
-            ClientScript.RegisterForEventValidation(ddlStates.UniqueID, r);
+            ClientScript.RegisterForEventValidation(control.UniqueID, r);
         }
         else
         {
-            ClientScript.RegisterForEventValidation(ddlStates.UniqueID, "");
+            ClientScript.RegisterForEventValidation(control.UniqueID, "");
         }
     }
 
@@ -152,7 +207,6 @@ public  class SunamoPage : System.Web.UI.Page
 
     protected string GetContent(Control c)
     {
-        //string sr = c.UniqueID.Substring(0, c.UniqueID.LastIndexOf('$') + 1) + simpleName;
         string dd = Request.Form[c.UniqueID];
         if (dd == null)
         {
@@ -162,7 +216,7 @@ public  class SunamoPage : System.Web.UI.Page
     }
 
     /// <summary>
-    /// Používá se když mám vypnutou viewstate, ale lepší je použít metodu HasContent která je rychlejší
+    /// Is used when I have turned off viewstate, but better way is use HasContent() which is moore speedy
     /// </summary>
     /// <param name="c"></param>
     /// <returns></returns>
@@ -176,19 +230,16 @@ public  class SunamoPage : System.Web.UI.Page
         return dd == "on";
     }
 
-
     protected bool HasContent(Control c)
     {
         string cont = Request.Form[c.UniqueID];
 
         return !string.IsNullOrWhiteSpace(cont);
-        //}
     }
 
-    protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri,  List<string> scriptsUri)
+    protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
         string hostWithHttp = "http://" + Request.Url.Host + "/";
-        
 
         if (idLoginedUser == 1)
         {
@@ -197,15 +248,16 @@ public  class SunamoPage : System.Web.UI.Page
                 scripts.Insert(0, "ts/Web/ShowDebugInfo.js");
             }
         }
-        
+
         if (scriptsUri == null)
         {
             scriptsUri = new List<string>(1);
         }
+
         scriptsUri.Insert(0, "https://www.google-analytics.com/analytics.js");
         JavaScriptInjection.InjectExternalScriptOnlySpecified(this, scriptsUri, "");
         JavaScriptInjection.InjectExternalScriptOnlySpecified(this, scripts, hostWithHttp);
-        
+
         if (stylesUri != null)
         {
             StyleInjection.InjectExternalStyle(this, stylesUri, "");
@@ -213,50 +265,25 @@ public  class SunamoPage : System.Web.UI.Page
         StyleInjection.InjectExternalStyle(this, styles, hostWithHttp);
     }
 
-
-        /// <summary>
-        /// Zapisuje se relativní cesta k aktuální cestě, jsem li třeba v Lyrics/Home a chci do Lyrics/AddSong, zapíšu pouze AddSong
-        /// </summary>
-        /// <param name="uri"></param>
+    /// <summary>
+    /// Pass relative path to actual, when I'm in Lyrics/Home and I want to go to Lyrics/AddSong, is enough just AddSong
+    /// </summary>
+    /// <param name="uri"></param>
     public void WriteToDebugWithTime(string uri)
     {
-        #region Když ti tato metoda nebude fungovat, zkontoluj zda do ní nepředáváš null, empty nebo whitespace
-        #region Toto už vůbec nefungovalo
-        #endregion
-        #endregion
-
-        // Toto byl původní kód
         try
         {
-            ////uri);
             Response.Redirect(uri);
         }
         catch (Exception)
         {
-            // Vyhazovalo to chybu: System.Threading.ThreadAbortException Thread was being aborted.
+            // Often I got error: System.Threading.ThreadAbortException Thread was being aborted.
         }
         Response.End();
     }
-    public bool showComments = false;
-    
-
-    //public StringBuilder stylesAndScripts = new StringBuilder();
-    protected bool zapisTitle = true;
-    /// <summary>
-    /// Je zakázáno tuto proměnnou nastavovat přímo, vžžy se to musí přes nějakou metodu, například //PageArgumentVerifier.SetWriteRows
-    /// Tato proměnná se nikde ve SunamoPage nevyužívá, slouží pouze k tomu abych ji nemusel pokaždé definovat znovu v každé třídě *Page
-    /// </summary>
-    public bool? writeRows = null;
-    public MySites sa = MySites.Nope;
-    /// <summary>
-    /// Naplňuje se v metodách FillLoginVariables a FillIDUsers
-    /// </summary>
-    public int idLoginedUser = -1;
-    public string nameLoginedUser = null;
-    public string scLoginedUser = null;
 
     /// <summary>
-    /// Před zavoláním této metody musí být voláno alespoň FillIDUsers, protože tato metoda žádnou takovou metodu nevolá
+    /// Before calling this method must be called FillIDUsers() to fill idLoginedUser variable
     /// </summary>
     /// <returns></returns>
     protected bool IsLoginedUserAdmin()
@@ -264,11 +291,9 @@ public  class SunamoPage : System.Web.UI.Page
         return idLoginedUser == 1;
     }
 
-    public uint overall = 0;
-    public uint today = 0;
     /// <summary>
-    /// Toto jde použít pouze v General stránkách protože v stránkách specifického webu budu mít samostatnou tabulku jako je Sda_Youths nebo Koc_Misters, proto se snaž spíše používat metody IsLoginedYouthWithID nebo IsLoginedMisterWithID
-    /// Před použitím této metody je třeba nějak prvně naplnit proměnnou idUsers v SunamoPage. S dalšími podobnými proměnnýma metoda nepracuje.
+    /// Can be used only in General pages because in pages of specific web I'll have site-specific Page is method like IsLoginedMisterWithID with table Koc_Misters / IsLoginedYouthWithID with Sda_Youths etc.
+    /// Before calling this method must be called FillIDUsers() to fill idLoginedUser variable
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
@@ -279,21 +304,6 @@ public  class SunamoPage : System.Web.UI.Page
             return true;
         }
         return false;
-    }
-
-
-     HtmlGenericControl _errors = null;
-    public HtmlGenericControl errors
-    {
-        get
-        {
-            return _errors;
-        }
-        set
-        {
-            _errors = value;
-            _errors.Visible = false;
-        }
     }
 
     public bool FillIDUsers()
@@ -313,48 +323,22 @@ public  class SunamoPage : System.Web.UI.Page
         return true;
     }
 
-    /// <summary>
-    /// Do A1 můžeš předat cokoliv, nic se s tím dále nedělá.
-    /// Je to pouze pro připomenutí abys vložil do PP errors prvek error, aby s ním mohli metody Error/Warning/Info pracovat.
-    /// Také nezapomeň ve stránkách kde máš errors při každém reloadu prvek errors skrýt, aby se pořád neukazovala tatéž chyba i když už nebude platná
-    /// </summary>
     public SunamoPage()
     {
     }
-
-    /// <summary>
-    /// Pokud idPage != -1, nemělo by být ani idUsers -1. Pokud idUsers == -1, tak uživatele se nepodařilo autorizovat.
-    /// </summary>
-    public int idPage = -1;
-    public int entityId = int.MaxValue;
-    public byte IDWeb = 8;
-    public string namePage = "";
-    public string args = "";
-    /// <summary>
-    /// Naplňuje se v WriteRowToPagesAndLstVisits(), pokud i po volání této metody je -1, tak se uživatele nepodařilo autorizovat.
-    /// </summary>
-    //protected int idLoginedUser = -1;
-    public int idPageName = int.MaxValue;
-    public IPAddress ipAddress = null;
-    public bool writeVisit = false;
-    /// <summary>
-    /// ID stránky pod kterým se stránka vede v tabulce PageArgument
-    /// </summary>
-    public int idPageArgument = int.MaxValue;
-    public bool writeToLastVisitsLogined = false;
 
     public void WriteOld(PageArgumentName[] pans = null)
     {
         PageArgumentVerifier.GetIDWebAndNameOfPage(out IDWeb, out namePage, this.Request.FilePath);
         if (pans != null && pans != PageArgumentName.EmptyArray)
         {
-            PageArgumentVerifier.SetWriteRows(this, pans);   
+            PageArgumentVerifier.SetWriteRows(this, pans);
         }
         else
         {
-            PageArgumentVerifier.SetWriteRows(this, PageArgumentName.EmptyArray);   
+            PageArgumentVerifier.SetWriteRows(this, PageArgumentName.EmptyArray);
         }
-        
+
         if (writeRows.HasValue)
         {
             if (writeRows.Value)
@@ -389,20 +373,11 @@ public  class SunamoPage : System.Web.UI.Page
 
     protected override void OnLoad(EventArgs e)
     {
-        
-
-        #region Zakomentováno, toto se stejně děje v každé stránce vyžadující přihlášení
-        #endregion
-
-
         base.OnLoad(e);
 
-        // Musí to tu být, protože pak se zpracovává kód MasterPage a tam potřebuji ID uživatele. NEMĚNIT!!!
+        // Must be here because then is processing MasterPage and there I need user ID. Dont change!
         FillIDUsers();
 
-        #region MyRegion
-        #endregion
-        // Spouští se jako 2. 
         if (GeneralLayer.AllowedRegLogSys)
         {
             if (MSStoredProceduresI.ci.SelectExistsTable(Tables.Users))
@@ -410,7 +385,7 @@ public  class SunamoPage : System.Web.UI.Page
                 MSStoredProceduresI.ci.Update(Tables.Users, "LastSeen", DateTime.Now, "ID", idLoginedUser);
             }
         }
-        
+
         CreateTitle();
     }
 
@@ -418,32 +393,17 @@ public  class SunamoPage : System.Web.UI.Page
     {
         if (zapisTitle)
         {
-                try
-                {
-                    Title = Title + SunamoPageHelper.WebTitle(sa, Request, sa);
-                    zapisTitle = false;
-                }
-                catch (Exception)
-                {
-                    // Stránka neměla <head runat='server'>
-                }
+            try
+            {
+                Title = Title + SunamoPageHelper.WebTitle(sa, Request, sa);
+                zapisTitle = false;
+            }
+            catch (Exception)
+            {
+                // Page dont have <head runat='server'>
+            }
         }
-
-        #region MyRegion
-        #endregion
     }
-
-    #region Events variables
-    public event VoidVoid ErrorEvent;
-    public event VoidVoid WarningEvent;
-    // Pro info to skutečně nevytvářej, radši to dej jako warning s událostí, zbylé warningy bez událostí
-    public event VoidVoid InfoEvent;
-    public event VoidVoid SuccessEvent;
-    protected bool callEventInfo = true;
-    protected bool callEventWarning = true;
-    protected bool callEventSuccess = true;
-    protected bool callEventError = true; 
-    #endregion
 
     #region Events method
     public new void Error(string message)
@@ -526,8 +486,6 @@ public  class SunamoPage : System.Web.UI.Page
                 SuccessEvent();
             }
         }
-    } 
+    }
     #endregion
-
-    
 }
