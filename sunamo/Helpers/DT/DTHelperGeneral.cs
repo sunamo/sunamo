@@ -58,6 +58,16 @@ namespace sunamo.Helpers.DT
             return b.ToString();
         }
 
+        public static DateTime SetMinute(DateTime d, int v)
+        {
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, v, d.Second);
+        }
+
+        public static DateTime SetHour(DateTime d, int v)
+        {
+            return new DateTime(d.Year, d.Month, d.Day, v, d.Minute, d.Second);
+        }
+
         /// <summary>
         /// Subtract A2 from A1
         /// </summary>
