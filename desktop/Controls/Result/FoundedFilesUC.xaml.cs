@@ -1,4 +1,5 @@
-﻿using sunamo.Data;
+﻿using sunamo;
+using sunamo.Data;
 using sunamo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,22 @@ namespace desktop.Controls.Result
     public partial class FoundedFilesUC : UserControl, ISelectedT<string>
     {
         public event VoidString Selected;
-        public string SelectedItem => throw new NotImplementedException();
+        string selectedItem = null;
+        public string SelectedItem => selectedItem;
+        public static List<string> basePaths = null;
+
 
         public FoundedFilesUC()
         {
             InitializeComponent();
+        }
+
+        public void Init(params string[] basePath)
+        {
+            basePaths = basePath.ToList();
+            SunamoComparerICompare.StringLength.Desc s = new SunamoComparerICompare.StringLength.Desc(SunamoComparer.StringLength.Instance);
+            basePaths.Sort(s);
+            CA.WithEndSlash(basePaths);
         }
 
         public TUList<string, Brush> DefaultBrushes(string green, string red)
@@ -38,15 +50,35 @@ namespace desktop.Controls.Result
             return result;
         }
 
-        public void AddFoundedFiles(List<string> foundedList, object p)
+        public void AddFoundedFiles(List<string> foundedList, TUList<string, Brush> p)
         {
-            throw new NotImplementedException();
+            foreach (var item in foundedList)
+            {
+                FoundedFileUC foundedFile = new FoundedFileUC(item, p);
+                foundedFile.Selected += FoundedFile_Selected;
+                sp.Children.Add(foundedFile);
+            }
+        }
+
+        private void FoundedFile_Selected(string s)
+        {
+            selectedItem = s;
+            Selected(s);
+        }
+
+        public void SelectFile(string file)
+        {
+            Selected(file);
         }
 
         public void ClearFoundedResult()
         {
-            throw new NotImplementedException();
+            sp.Children.Clear();
         }
-        //
+
+        public void OnSelected(string p)
+        {
+            Selected(p);
+        }
     }
 }

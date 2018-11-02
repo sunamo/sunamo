@@ -1,5 +1,7 @@
 ﻿using desktop;
+using desktop.Controls;
 using desktop.Essential;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,5 +53,13 @@ public class WindowWithUserControl : Window
     void uc_ChangeDialogResult(bool? b)
     {
         DialogResult = b;
+    }
+
+    public static void AvailableShortcut(Dictionary<string, string> dictionary)
+    {
+        ShowTextResult result = new ShowTextResult(SH.JoinDictionary(dictionary, " - "));
+
+        WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.NoResize);
+        window.ShowDialog();
     }
 }

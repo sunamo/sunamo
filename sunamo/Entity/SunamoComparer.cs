@@ -13,14 +13,39 @@ public class SunamoComparerICompare
         {
             ISunamoComparer<string> sc = null;
 
+            /// <summary>
+            /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
+            /// </summary>
+            /// <param name="sc"></param>
             public Asc(ISunamoComparer<string> sc)
             {
                 this.sc = sc;
             }
 
+            
             public int Compare(string x, string y)
             {
                 return sc.Asc(x, y);
+            }
+        }
+
+        public class Desc : IComparer<string>
+        {
+            ISunamoComparer<string> sc = null;
+
+            /// <summary>
+            /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
+            /// </summary>
+            /// <param name="sc"></param>
+            public Desc(ISunamoComparer<string> sc)
+            {
+                this.sc = sc;
+            }
+
+
+            public int Compare(string x, string y)
+            {
+                return sc.Desc(x, y);
             }
         }
     }
@@ -89,6 +114,8 @@ public  class SunamoComparer
 {
     public  class Integer : ISunamoComparer<int>
     {
+        public static Integer Instance = new Integer();
+
         public int Desc(int x, int y)
         {
             return x.CompareTo(y) * -1;
@@ -102,6 +129,8 @@ public  class SunamoComparer
 
     public class DT : ISunamoComparer<DateTime>
     {
+        public static DT Instance = new DT();
+
         public int Desc(DateTime x, DateTime y)
         {
             return x.CompareTo(y) * -1;
@@ -115,6 +144,8 @@ public  class SunamoComparer
 
     public class Float : ISunamoComparer<float>
     {
+        public static Float Instance = new Float();
+
         public int Desc(float x, float y)
         {
             return x.CompareTo(y) * -1;
@@ -128,6 +159,8 @@ public  class SunamoComparer
 
     public class IEnumerableCharLength : ISunamoComparer<IEnumerable<char>>
     {
+        public static IEnumerableCharLength Instance = new IEnumerableCharLength();
+
         public int Desc(IEnumerable<char> x, IEnumerable<char> y)
         {
             List<char> lx = new List<char>();
@@ -171,6 +204,8 @@ public  class SunamoComparer
 
     public class StringLength : ISunamoComparer<string>
     {
+        public static StringLength Instance = new StringLength();
+
         public int Desc(string x, string y)
         {
             int a = x.Length;
@@ -188,6 +223,8 @@ public  class SunamoComparer
 
     public class ItemWithCountSunamoComparer<T> : ISunamoComparer<ItemWithCount<T>>
     {
+        
+
         public int Desc(ItemWithCount<T> x, ItemWithCount<T> y)
         {
             int a = x.count;

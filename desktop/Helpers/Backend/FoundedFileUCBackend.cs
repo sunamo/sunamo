@@ -11,20 +11,28 @@ using System.Windows.Input;
 
 namespace desktop.Helpers.Backend
 {
+    /// <summary>
+    /// IsDerived from TextBoxBackend
+    /// </summary>
     public class FoundedFileUCBackend : IKeysHandler<KeyEventArgs>
     {
-        public List<string> OldRoots = null;
+        public CollectionWithoutDuplicates<string> OldRoots = new CollectionWithoutDuplicates<string>();
         private SelectedCastHelper<string> selectedCastHelperString;
-        private TextBox txtContent;
+        public TextBoxBackend textBoxBackend = null;
         private FoundedFilesUC foundedFilesUC;
 
-        public FoundedFileUCBackend(SelectedCastHelper<string> selectedCastHelperString, TextBox txtContent, FoundedFilesUC foundedFilesUC)
+        /// <summary>
+        /// A1 and A3 can be null - ReviewRestoredSourceFilesUC
+        /// </summary>
+        /// <param name="selectedCastHelperString"></param>
+        /// <param name="txtContent"></param>
+        /// <param name="foundedFilesUC"></param>
+        public FoundedFileUCBackend(TextBlock txtTextBoxState, TextBox txtContent, SelectedCastHelper<string> selectedCastHelperString,  FoundedFilesUC foundedFilesUC ) 
         {
             this.selectedCastHelperString = selectedCastHelperString;
-            this.txtContent = txtContent;
             this.foundedFilesUC = foundedFilesUC;
 
-            
+            textBoxBackend = new TextBoxBackend(txtTextBoxState, txtContent);
         }
 
         public string FullPathSelectedFile
@@ -43,25 +51,46 @@ namespace desktop.Helpers.Backend
 
         public bool HandleKey(KeyEventArgs e)
         {
+            if (FullPathSelectedFile == null)
+            {
+                return false;
+            }
+
             if (e.Key == Key.Right)
             {
-                FileIsRightEvent(FullPathSelectedFile);
-                return true;
+                if (FileIsRightEvent != null)
+                {
+                    FileIsRightEvent(FullPathSelectedFile);
+                    return true;
+                }
+                
             }
             else if (e.Key == Key.Left)
             {
-                LeaveInActualFolder(FullPathSelectedFile);
-                return true;
+                if (LeaveInActualFolder != null)
+                {
+                    LeaveInActualFolder(FullPathSelectedFile);
+                    return true;
+                }
+                
             }
             else if (e.Key == Key.Up)
             {
-                MoveLastFile(FullPathSelectedFile);
-                return true;
+                if (MoveLastFile != null)
+                {
+                    MoveLastFile(FullPathSelectedFile);
+                    return true;
+                }
+                
             }
-            else if (e.Key == Key.Back)
+            else if (e.Key == Key.Down)
             {
-                ReturnMovedFileBack(FullPathSelectedFile);
-                return true;
+                if (ReturnMovedFileBack != null)
+                {
+                    ReturnMovedFileBack(FullPathSelectedFile);
+                    return true;
+                }
+                
             }
             return false;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,52 @@ namespace desktop.Controls.Result
     /// </summary>
     public partial class FoundedFileUC : UserControl
     {
-        public FoundedFileUC()
+        public event VoidString Selected;
+        string fileFullPath;
+        string file;
+
+        public FoundedFileUC(string filePath, TUList<string, Brush> p)
         {
             InitializeComponent();
+
+            this.fileFullPath = filePath;
+            this.file = filePath;
+
+            bool replaced = false;
+            foreach (var item in FoundedFilesUC.basePaths)
+            {
+                file = SH.ReplaceOnceIfStartedWith( file, item, "", out replaced);
+                if (replaced)
+                {
+                    break;
+                }
+            }
+
+            tbFileName.Text = file;
+            foreach (var item in p)
+            {
+                
+                    if (SH.Contains( fileFullPath, item.Key))
+                    {
+                        tbFileName.Foreground = item.Value;
+                        break;
+                    }
+                
+            }
+
+            this.MouseLeftButtonDown += FoundedFileUC_MouseLeftButtonDown;
+        }
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            base.OnGotFocus(e);
+
+            Selected(fileFullPath);
+        }
+
+        private void FoundedFileUC_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Selected(fileFullPath);
         }
     }
 }
