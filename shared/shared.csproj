@@ -92,11 +92,13 @@
     <Compile Include="Collections\Converters\StringHexColorConverter.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
     <Compile Include="CodeGenerator\GeneratorCpp.cs" />
+    <Compile Include="Crypting\Asymmetric.cs" />
     <Compile Include="Crypting\CryptData.cs" />
     <Compile Include="Crypting\CryptHelper.cs" />
     <Compile Include="Crypting\CryptHelper2.cs" />
     <Compile Include="Crypting\CryptHelperAdvanced.cs" />
-    <Compile Include="Crypting\Encryption.cs" />
+    <Compile Include="Crypting\DataCrypt.cs" />
+    <Compile Include="Crypting\Hash.cs" />
     <Compile Include="Crypting\HashHelper.cs" />
     <Compile Include="Crypting\ICrypt.cs" />
     <Compile Include="Crypting\Password.cs" />
@@ -107,6 +109,8 @@
     <Compile Include="CodeGenerator\EnumItem.cs" />
     <Compile Include="CodeGenerator\ModifiersConstructor.cs" />
     <Compile Include="CodeGenerator\GeneratorCSharp.cs" />
+    <Compile Include="Crypting\Symmetric.cs" />
+    <Compile Include="Crypting\Utils.cs" />
     <Compile Include="CsvHelper\CsvFile.cs" />
     <Compile Include="CsvHelper\CsvReader.cs" />
     <Compile Include="CsvHelper\CsvWriter.cs" />

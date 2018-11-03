@@ -158,7 +158,7 @@
       <DependentUpon>TwoWayTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\HeaderToImageConverter.cs" />
-    <Compile Include="Converters\StringHexColorConverter.cs" />
+    <Compile Include="Converters\StringHexWindowsMediaColorConverter.cs" />
     <Compile Include="Converters\StringHexDrawingColorConverter.cs" />
     <Compile Include="Data\FontArgs.cs" />
     <Compile Include="Data\MeasureStringArgs.cs" />

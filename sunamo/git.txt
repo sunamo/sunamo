@@ -1,9 +1,118 @@
-﻿cmd.csproj - add CmdApp.cs
-desktop.csproj - add win.csproj
+﻿StringHexWindowsMediaColorConverter
 
+t0030 MenuItems, rename args
+MenuItemTemplates
+ToolbarHelper
+ToolbarTemplates
 
-Replace *.* to MascFromExtension():
+t0033 WpfApp1/SearchInCodeElementsUC
+FoundedFileUC.xaml
+FoundedFilesUC.xaml
+FoundedFileUC.xaml.cs
+FoundedFilesUC.xaml.cs
+SunamoComparer
+FoundedFileUCBackend
+TextBoxBackend
+WindowWithUserControl
+SearchCodeElementsUCData
+TextBoxState
+
+t0034 Remove unnecessary code, break and return, add (Exception ex):
+shared/sunamo/Pictures
+CryptHelper
+CryptHelper2
+MSColumnsDB
+MSDatabaseLayerBase
+MSDatabaseLayerSql5
+MSStoredProceduresIBase
+ConvertTypeShortcutFullName
+JavascriptSerialization
+ErrorMessageGenerator
+HtmlGeneratorList
+DTHelperCs
+HtmlAgilityHelper
+HtmlHelper
 FileIndex
+GeneralLayer
+PageArgumentVerifier
+*StateMessage
+UploaderManager
 
-Sort regions as this in MySites.cs
-Tables
+3) Refactor Sunamo pages:
+SunamoPage
+MasterPageHelper
+SunamoMasterPage
+
+4) Refactor CollectionWithoutDuplicates:
+CollectionWithoutDuplicates
+
+5) Refactor on PpkOnDrive:
+PpkOnDrive
+PpkOnDriveBase
+PpkOnDrive
+
+After mass commit 2-11-18, not used
+Exceptions
+ThrowExceptions
+ListExtensions
+TypedLoggerBase
+
+
+t0011 saving control's data and statepersistently d:\Documents\Visual Studio 2017\Projects\_otherDevelopers\, have several archives_
+IUserControlWithSettingsManager
+
+After mass commit 2-11-18, csproj
+shared.csproj
+desktop.csproj
+
+t0038 create app for generate git checkout:
+GitBashBuilder
+
+
+
+
+StringHexWindowsMediaColorConverter
+
+t0006 MedianAverage to find shop with best prices:
+MedianAverage
+
+t0011 saving control's data and statepersistently d:\Documents\Visual Studio 2017\Projects\_otherDevelopers\, have several archives:
+IWindowWithSettingsManager
+DependencyObjectHelper
+XamlSerializer
+ApplicationDataContainerList
+AppSettingsManager
+SettingsManager
+SunamoApplicationSettings
+shared/Reflection
+ISettingsManager
+
+t0008 Generate dates for form of Zapletal:
+DTHelperGeneral
+
+t0012 Create generic method Average:
+Consts
+
+t0029 Create UriWebServices.Libraries:
+UriWebServices
+
+t0030 Add ruleset:
+sunamo.ruleset
+
+t0031 Refactor opening RepairPhones:
+ProcessHelper
+CA
+RepairMobileValues
+
+t0032 Advanced work with Enum:
+CodeElementsConstants
+EnumA
+
+
+
+
+FS
+MH
+NH
+SH
+EnumHelper
