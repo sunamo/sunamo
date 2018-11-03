@@ -5,29 +5,71 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Helpers
+namespace win.Helpers.Powershell
 {
 	public class PowershellRunner
 	{
-		public static List<string> WaitForResult(string command)
-		{
-			List<string> output = null;
-			using (PowerShell ps = PowerShell.Create())
-			{
-				ps.AddScript(command);
-				output = Invoke(ps);
+        static PowershellBuilder builder = new PowershellBuilder();
 
-			}
+		public static List<List<string>> WaitForResult( List<string> command, string path = null)
+		{
+
+			List<List<string>> output = new List<List<string>>();
+            using (PowerShell ps = PowerShell.Create())
+            {
+                builder.Clear();
+                if (path != null)
+                {
+                    Invoke(builder.Cd(path) , output, ps);
+                }
+
+                for (int i = 0; i < command.Count; i++)
+                {
+                    Invoke(command[i], output, ps);
+                }
+            }
+			
 			return output;
 		}
 
-		public static List<string> Invoke(PowerShell ps)
+        private static void Invoke(string command, List<List<string>> output, PowerShell ps)
+        {
+            ps.AddScript(command);
+            var invoke = Invoke(ps);
+            output.Add(invoke);
+        }
+
+        public async static Task DontWaitForResultAsync(List<string> commands, string path = null)
+        {
+            PowerShell ps = null;
+
+            foreach (var item in commands)
+            {
+                //  After leaving using is closed pipeline, must watch for complete or 
+                using (ps = PowerShell.Create())
+                {
+                    if (path != null)
+                    {
+
+                    }
+                    ps.AddScript(item);
+                    //s ziskanim vysledku a EndInvoke - synchronni
+                    //bez ziskani vysledku - okamzite ale neni mozne ziskat vystup
+                    ps.BeginInvoke();
+
+                    //var async =
+                    //ps.EndInvoke(async);
+                }
+            }
+        }
+
+        public static List<string> Invoke(PowerShell ps)
 		{
 			return ProcessPSObjects(ps.Invoke());
 
 		}
 
-		public static List<string> ProcessPSObjects(ICollection<PSObject> pso)
+        private static List<string> ProcessPSObjects(ICollection<PSObject> pso)
 		{
 			List<string> output = new List<string>();
 
@@ -42,9 +84,9 @@ namespace sunamo.Helpers
 			return output;
 		}
 
-		public async static Task< List<string>> InvokeAsync(params string[] commands)
+        public async static Task<List< List<string>>> InvokeAsync(params string[] commands)
 		{
-			List<string> returnList = new List<string>();
+            List<List<string>> returnList = new List<List<string>>();
 			PowerShell ps = null;
             //  After leaving using is closed pipeline, must watch for complete or 
             using (ps = PowerShell.Create())
@@ -55,33 +97,17 @@ namespace sunamo.Helpers
 					ps.AddScript(item);
 
 					var async = ps.BeginInvoke();
-					returnList.AddRange(ProcessPSObjects(ps.EndInvoke(async)));
+                    // Return for SleepWithRandomOutputConsole zero outputs
+                    var psObjects = ps.EndInvoke(async);
+
+                    returnList.Add(ProcessPSObjects(psObjects));
 				}
 			}
 
 			return returnList;
 		}
 
-		public async static Task DontWaitForResultAsync(params string[] commands)
-		{
-			PowerShell ps = null;
-
-			foreach (var item in commands)
-			{
-				//  After leaving using is closed pipeline, must watch for complete or 
-				using (ps = PowerShell.Create())
-				{
-                    
-					ps.AddScript(item);
-                    //s ziskanim vysledku a EndInvoke - synchronni
-                    //bez ziskani vysledku - okamzite ale neni mozne ziskat vystup
-                    ps.BeginInvoke();
-                    
-                    //var async =
-                    //ps.EndInvoke(async);
-				}
-			}
-		}
+		
 	}
 }
 

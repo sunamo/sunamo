@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shared.Helpers.Powershell
+namespace win.Helpers.Powershell
 {
     public class PowershellBuilder
     {
@@ -15,6 +15,11 @@ namespace shared.Helpers.Powershell
         public PowershellBuilder()
         {
             sb.prependEveryNoWhite = AllStrings.space;
+        }
+
+        public void Clear()
+        {
+            sb.sb.Clear();
         }
 
         /// <summary>
@@ -31,6 +36,18 @@ namespace shared.Helpers.Powershell
             sb.Append(argName);
             sb.Append(argValue);
         }
+
+        /// <summary>
+        /// Returns string because of PowershellRunner
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public string Cd(string path)
+        {
+            sb.Append("cd \"" + path + "\"");
+            return sb.ToString();
+        }
+
 
         public void CmdC(string v)
         {

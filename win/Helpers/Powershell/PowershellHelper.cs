@@ -10,7 +10,7 @@ using System.Diagnostics;
 using sunamo.Essential;
 using System.Management.Automation.Runspaces;
 
-namespace sunamo.Helpers
+namespace win.Helpers.Powershell
 {
 	public class PowershellHelper
 	{
