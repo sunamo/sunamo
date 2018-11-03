@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace sunamo
 {
     #region "  Hash"
-
+    //shared/Crypting/*
     
     #endregion
 
