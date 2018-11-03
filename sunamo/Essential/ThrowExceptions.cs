@@ -13,6 +13,15 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName), nameControl, additionalInfo));
     }
 
+    /// <summary>
+    /// Must be string due to in sunamo is not NamespaceElement
+    /// </summary>
+    /// <param name="name"></param>
+    public static void NameIsNotSetted(object type, string methodName, string nameControl, string nameFromProperty)
+    {
+            ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName), nameControl, nameFromProperty));
+    }
+
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {
         ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName), namefc, countfc, namesc, countsc));

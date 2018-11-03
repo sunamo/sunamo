@@ -34,11 +34,6 @@ namespace sunamo.Essential
         {
             typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);
         }
-
-        public void Error(object someErrorsOccured)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 }

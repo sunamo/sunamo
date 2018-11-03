@@ -27,6 +27,15 @@ namespace sunamo.Essential
         {
             return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
         }
+
+        internal static string NameIsNotSetted(string before, string nameControl, string nameFromProperty)
+        {
+            if (string.IsNullOrWhiteSpace(nameFromProperty))
+            {
+                return CheckBefore(before) + nameControl + " doesnt have setted Name";
+            }
+            return null;
+        }
         #endregion
 
         public static string CheckBackslashEnd(string before, string r)
