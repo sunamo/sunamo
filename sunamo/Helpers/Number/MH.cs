@@ -45,6 +45,6 @@ public class MH
                 return i;
             }
         }
-        return 1;
+        // Here was originally return 1 but C# compiler marked this as useless
     }
 }

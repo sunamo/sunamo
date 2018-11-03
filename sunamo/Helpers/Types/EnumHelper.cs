@@ -10,6 +10,7 @@ namespace sunamo
     public static class EnumHelper
     {
         /// <summary>
+        /// Get values include zero and All
         /// Pokud bude A1 null nebo nebude obsahovat žádný element T, vrátí A1
         /// Pokud nebude obsahovat všechny, vrátí jen některé - nutno kontrolovat počet výstupních elementů pole
         /// Pokud bude prvek duplikován, zařadí se jen jednou
@@ -48,14 +49,135 @@ namespace sunamo
 
         public static List<T> GetValues<T>() where T : struct
         {
-            Type type = typeof(T);
+            return GetValues<T>(typeof(T));
+        }
+
+        /// <summary>
+        /// Get all values expect of Nope/None
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static List<T> GetValues<T>(Type type) where T : struct
+        {
             var values = Enum.GetValues(type).Cast<T>().ToList();
             T nope;
             if(Enum.TryParse<T>(CodeElementsConstants.NopeValue, out nope))
             {
                 values.Remove(nope);
             }
+            if (Enum.TryParse<T>(CodeElementsConstants.NoneValue, out nope))
+            {
+                values.Remove(nope);
+            }
             return values;
+        }
+
+        /// <summary>
+        /// Get all without zero and All.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="secondIsAll"></param>
+        /// <returns></returns>
+        public static List<T> GetAllValues<T>(bool secondIsAll = true)
+    where T : struct
+        {
+            int def, max;
+            int[] valuesInverted;
+            List<T> result;
+            GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
+
+            int i = max;
+            int unaccountedBits = i;
+            for (int j = def; j < valuesInverted.Length; j++)
+            {
+                unaccountedBits &= valuesInverted[j];
+                if (unaccountedBits == 0)
+                {
+                    result.Add((T)(object)i);
+                    break;
+                }
+            }
+
+            CheckForZero(result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get all without zero and All.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="secondIsAll"></param>
+        /// <returns></returns>
+        public static List<T> GetAllCombinations<T>(bool secondIsAll = true)
+    where T : struct
+        {
+            int def, max;
+            int[] valuesInverted;
+            List<T> result;
+            GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
+
+            for (int i = def; i <= max; i++)
+            {
+                int unaccountedBits = i;
+                for (int j = def; j < valuesInverted.Length; j++)
+                {
+                    unaccountedBits &= valuesInverted[j];
+                    if (unaccountedBits == 0)
+                    {
+                        result.Add((T)(object)i);
+                        break;
+                    }
+                }
+            }
+
+
+            //Check for zero
+            CheckForZero(result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Tested with EnumA
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="result"></param>
+        private static void CheckForZero<T>(List<T> result) where T : struct
+        {
+            try
+            {
+                // Here I get None
+                var val = Enum.GetName(typeof(T), (T)(object)0);
+                if (string.IsNullOrEmpty(val))
+                {
+                    result.Remove((T)(object)0);
+                }
+            }
+            catch
+            {
+                result.Remove((T)(object)0);
+            }
+        }
+
+        private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max) where T : struct
+        {
+            def = 0;
+            if (secondIsAll)
+            {
+                def = 1;
+            }
+            if (typeof(T).BaseType != typeof(Enum)) throw new ArgumentException("T must be an Enum type");
+
+            var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
+            valuesInverted = values.Select(v => ~v).ToArray();
+            result = new List<T>();
+            max = def;
+            for (int i = def; i < values.Length; i++)
+            {
+                max |= values[i];
+            }
         }
     }
 }

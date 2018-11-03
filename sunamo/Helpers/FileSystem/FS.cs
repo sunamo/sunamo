@@ -62,6 +62,16 @@ namespace sunamo
             }
         }
 
+        /// <summary>
+        /// Jen kvuli starým aplikacím, at furt nenahrazuji.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static string GetFileInStartupPath(string v)
+        {
+            return AppPaths.GetFileInStartupPath(v);
+        }
+
         public static void RemoveDiacriticInFileContents(string folder, string mask)
         {
             string[] files = Directory.GetFiles(folder, mask, SearchOption.AllDirectories);
@@ -1385,8 +1395,6 @@ namespace sunamo
                 return dd + g + ext;
             }
             return g + ext;
-
-            return "";
         }
 
         public static string RemoveSerieUnderscore(string d)
@@ -1637,7 +1645,7 @@ namespace sunamo
                     File.Delete(item);
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     pokusyOSmazani++;
                     if (pokusyOSmazani == 9)
@@ -1662,7 +1670,7 @@ namespace sunamo
                 File.Delete(item);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted: " + item);
                 return false;
@@ -2055,7 +2063,7 @@ namespace sunamo
                 Directory.Delete(v, true);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -2111,7 +2119,7 @@ namespace sunamo
                     }
                     File.Move(item, nova);
                 }
-                catch (Exception ex)
+                catch
                 {
                 }
             }
@@ -2134,7 +2142,7 @@ namespace sunamo
                     }
                     File.Move(item, nova);
                 }
-                catch (Exception ex)
+                catch
                 {
                 }
             }

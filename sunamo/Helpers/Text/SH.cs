@@ -33,7 +33,17 @@ public static class SH
         return vr;
     }
 
-    
+
+    public static string PrefixIfNotStartedWith(string http, string item)
+    {
+        if (!item.StartsWith(http))
+        {
+            return http + item;
+        }
+        return item;
+    }
+
+
 
     /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
@@ -67,8 +77,23 @@ public static class SH
 
         return hasLine;
     }
+
+    /// <summary>
+    /// Control for string.Empty, because otherwise all results are true
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="what"></param>
+    /// <returns></returns>
+    public static bool Contains(string input, string what)
+    {
+        if (what != "")
+        {
+            return input.Contains(what);
+        }
+        return false;
+    }
+
     static Type type = typeof(SH);
-    
 
     /// <summary>
     /// 
@@ -124,11 +149,8 @@ public static class SH
                     }
                 }
             }
-            return sb.ToString();
-        
+            return sb.ToString();       
     }
-
-    
 
     public static string RemoveAfterFirst(string t, string ch)
     {
@@ -150,6 +172,11 @@ public static class SH
         }
         
         return t.Substring(dex+1);
+    }
+
+    public static int CountLines(string text)
+    {
+        return Regex.Matches(text, Environment.NewLine).Count;
     }
 
     public static bool HasLetter(string s)
@@ -462,8 +489,6 @@ public static class SH
             //    break;
             //}
         }
-
-        return true;
     }
 
     
@@ -1131,7 +1156,6 @@ public static class SH
         {
             case UnicodeChars.Control:
                 return char.IsControl(c);
-                break;
             case UnicodeChars.HighSurrogate:
                 return char.IsHighSurrogate(c);
             case UnicodeChars.Lower:
@@ -2434,12 +2458,18 @@ public static class SH
         return s.Split(spaceAndPuntactionChars, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    
-
     public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
     {
+        bool replaced;
+        return ReplaceOnceIfStartedWith(what, replaceWhat, zaCo, out replaced);
+    }
+
+    public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
+    {
+        replaced = false;
         if (what.StartsWith(replaceWhat))
         {
+            replaced = true;
             return SH.ReplaceOnce(what, replaceWhat, zaCo);
         }
         return what;
