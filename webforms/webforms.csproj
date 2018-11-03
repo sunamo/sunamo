@@ -178,7 +178,7 @@
     <Compile Include="Logins.cs" />
     <Compile Include="LoginSystem\Registration.cs" />
     <Compile Include="LoginSystem\RegistrationLogic.cs" />
-    <Compile Include="MasterPage.cs" />
+    <Compile Include="MasterPageHelper.cs" />
     <Compile Include="Me\MeUri.cs" />
     <Compile Include="MultiColorLine.cs" />
     <Compile Include="NameValueCollectionParserGet.cs" />
