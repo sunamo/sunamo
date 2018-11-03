@@ -26,7 +26,12 @@ namespace sunamo.Generators
 
         public static string CreateGitAddForFiles(StringBuilder sb, List<string> linesFiles)
         {
-            return Git(sb, "add " + SH.Join(AllChars.space, linesFiles));
+            return CreateGitCommandForFiles("add", sb, linesFiles);
+        }
+
+        public static string CreateGitCommandForFiles(string command, StringBuilder sb, List<string> linesFiles)
+        {
+            return Git(sb, command + " " + SH.Join(AllChars.space, linesFiles));
         }
 
         public void Cd(string key)
@@ -154,6 +159,6 @@ namespace sunamo.Generators
             AppendLine();
         }
 
-
+        
     }
 }
