@@ -65,6 +65,8 @@ public static class AllChars
     // my extension
     public static readonly List<char> generalChars = null;
 
+    public const char pipe = '|';
+
     public const char cbl = '{';
     public const char cbr = '}';
     #region Generic chars

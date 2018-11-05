@@ -60,6 +60,19 @@ namespace desktop.Controls.Result
             }
         }
 
+        public FoundedFileUC GetFoundedFileByPath(string path)
+        {
+            foreach (FoundedFileUC item in sp.Children)
+            {
+                if (item.fileFullPath == path)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
         private void FoundedFile_Selected(string s)
         {
             selectedItem = s;

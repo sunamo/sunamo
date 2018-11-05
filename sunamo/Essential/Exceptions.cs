@@ -36,6 +36,11 @@ namespace sunamo.Essential
             }
             return null;
         }
+
+        internal static string DoesntHaveRequiredType(string v, string variableName)
+        {
+            return variableName + "Doesn't have required type.";
+        }
         #endregion
 
         public static string CheckBackslashEnd(string before, string r)

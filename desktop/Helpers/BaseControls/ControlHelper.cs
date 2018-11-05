@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using desktop.Controls.Result;
+using sunamo.Data;
+using sunamo.Values;
 
 namespace desktop.Helpers
 {
@@ -39,6 +42,22 @@ namespace desktop.Helpers
                 vr.Y = 0;
             }
             return vr;
+        }
+
+        internal static void SwitchBorder(FoundedFileUC c, BorderData bd)
+        {
+            if (c != null)
+            {
+                string file = c.fileFullPath;
+
+                var b = c.BorderThickness;
+                if (!CA.IsAllTheSame<double>(Consts.zeroDouble, b.Bottom, b.Left, b.Right, b.Top))
+                {
+                    bd = BorderData.None;
+                }
+                c.BorderThickness = bd.BorderThickness;
+                c.BorderBrush = bd.BorderBrush;
+            }
         }
     }
 

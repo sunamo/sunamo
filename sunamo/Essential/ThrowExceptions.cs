@@ -27,6 +27,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName), namefc, countfc, namesc, countsc));
     }
 
+    public static void DoesntHaveRequiredType(object type, string methodName, string variableName)
+    {
+        ThrowIsNotNull(Exceptions.DoesntHaveRequiredType(FullNameOfExecutedCode(type, methodName), variableName));
+    }
+
     public static void DifferentCountInLists(Type type, string methodName, string namefc, IEnumerable replaceFrom, string namesc, IEnumerable replaceTo)
     {
         DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());

@@ -1,6 +1,11 @@
-﻿using System;
+﻿using sunamo;
+using sunamo.Constants;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Windows;
 
 /// <summary>
 /// In key is name
@@ -10,11 +15,23 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
 {
     string path = null;
 
+    
+
+    public ApplicationDataContainerList(string path)
+    {
+        Init(path);
+    }
+
+    public ApplicationDataContainerList(FrameworkElement fw)
+    {
+        Init(AppData.GetFile(AppFolders.Controls, fw.Name));
+    }
+
     /// <summary>
     /// Parse text file in format key|fullname|value
     /// </summary>
     /// <param name="path"></param>
-    public ApplicationDataContainerList(string path)
+    public void Init(string path)
     {
         this.path = path;
         string content = TF.ReadFile(path);
@@ -24,7 +41,7 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
         }
         
         string[] d = SH.SplitNone(content, "|");
-        int to = d.Length / 3;
+        int to = (d.Length / 3) * 3;
         for (int i = 0; i < to; )
         {
             string key = d[i++];
@@ -33,6 +50,9 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
             object value = null;
             switch (fullName)
             {
+                case "System.Collections.Generic.List`1":
+                    value = SF.GetAllElementsLine(third);
+                    break;
                 #region MyRegion
                 case "System.String":
                     value = third.ToString();
@@ -145,6 +165,32 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
         }
     }
 
+    internal bool? GetNullableBool(string isChecked)
+    {
+        if (this.ContainsKey(isChecked))
+        {
+            return BTS.StringToBool(this[isChecked].ToString());
+        }
+        return false;
+    }
+
+    internal List<string> GetListString(string dataContext)
+    {
+        
+        return DeserializeList(this.ContainsKey(dataContext) ? this[dataContext] : null );
+    }
+
+    List<string> DeserializeList(object value)
+    {
+        if (value == null)
+        {
+            return new List<string>();
+        }
+
+        var list2 = CA.ToListString(value as IEnumerable);
+        return SF.GetAllElementsLine(list2[0], AllChars.comma).ToList();
+    }
+
     public void Nuke()
     {
         base.Clear();
@@ -169,13 +215,18 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
         }
         set
         {
-            string typeName = value.GetType().FullName;
+            object val = value;
+            string typeName = RH.FullPathCodeEntity( value.GetType());
+            if (value is IList)
+            {
+               val = SF.PrepareToSerialization2(val as IEnumerable, AllStrings.comma);
+            }
             if (base.ContainsKey(key))
             {
                 AB ab = base[key];
                 if (typeName == ab.A)
                 {
-                    ab.B = value;
+                    ab.B = val;
                     
                     SaveFile();
                 }
@@ -186,9 +237,9 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
             }
             else
             {
-                AB ab = AB.Get(typeName, value);
+                AB ab = AB.Get(typeName, val);
                 base.Add(key, ab);
-                string zapsatDoSouboru = SF.PrepareToSerialization(key, typeName, value.ToString());
+                string zapsatDoSouboru = SF.PrepareToSerialization(CA.ToListString( key, typeName, SH.ListToString( value)));
                 TF.AppendToFile(zapsatDoSouboru, path);
             }
         }
@@ -199,12 +250,12 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
         return base.ContainsKey(key);
     }
 
-    private void SaveFile()
+    public void SaveFile()
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in this)
         {
-            sb.Append(SF.PrepareToSerialization(item.Key, item.Value.A, item.Value.B));
+            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, item.Value.B)));
         }
         TF.SaveFile(sb.ToString(), path);
     }

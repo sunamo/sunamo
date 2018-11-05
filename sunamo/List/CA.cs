@@ -1208,7 +1208,7 @@ public static class CA
         return result;
     }
 
-    public static List<string> ToListString(params string[] enumerable)
+    public static List<string> ToListString(params object[] enumerable)
     {
         List<string> result = new List<string>();
         foreach (var item in enumerable)

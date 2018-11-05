@@ -3,6 +3,9 @@ using System;
 using System.IO;
 using System.Text;
 using sunamo.Data;
+using System.Collections;
+using System.Linq;
+using sunamo.Constants;
 /// <summary>
 /// Is not allowed write empty elements - split of strings is running with  StringSplitOptions.RemoveEmptyEntries
 /// Tato třída je zde pouze kvůli GetTablesInDatabaseExportHandler.ashx.cs a General/ImportTables.aspx.cs
@@ -201,22 +204,34 @@ public static class SF
         return null;
     }
 
-    public static string PrepareToSerialization(params object[] o)
+    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
     {
-        return  SH.GetString(o, separatorString);
+        return  SH.GetString(o, separator);
     }
 
-
+    /// <summary>
+    /// IEnumerable Must have type to use ToArray()
+    /// </summary>
+    /// <param name="o"></param>
+    /// <returns></returns>
+    public static string PrepareToSerializationList(IEnumerable<string> o, string separator = AllStrings.pipe)
+    {
+        return SH.GetString(o.ToArray(), separator);
+    }
 
     /// <summary>
     /// Vrátí bez poslední 
     /// </summary>
     /// <param name="o"></param>
     /// <returns></returns>
-    public static string PrepareToSerialization2(params object[] o)
+    public static string PrepareToSerialization2(IEnumerable o, string separator = AllStrings.pipe)
     {
-        string vr = SH.GetString(o, separatorChar.ToString());
-        return vr.Substring(0, vr.Length - 1);
+        string vr = SH.GetString(o, separator.ToString());
+        if (vr.Length > 0)
+        {
+            return vr.Substring(0, vr.Length - 1);
+        }
+        return vr;
     }
 
     public static void WriteAllElementsToFile(string VybranySouborLogu, string[][] p)

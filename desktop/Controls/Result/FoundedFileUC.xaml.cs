@@ -22,7 +22,10 @@ namespace desktop.Controls.Result
     public partial class FoundedFileUC : UserControl
     {
         public event VoidString Selected;
-        string fileFullPath;
+        public string fileFullPath;
+        /// <summary>
+        /// Without removed FoundedFilesUC.basePaths
+        /// </summary>
         string file;
 
         public FoundedFileUC(string filePath, TUList<string, Brush> p)
@@ -45,13 +48,11 @@ namespace desktop.Controls.Result
             tbFileName.Text = file;
             foreach (var item in p)
             {
-                
                     if (SH.Contains( fileFullPath, item.Key))
                     {
                         tbFileName.Foreground = item.Value;
                         break;
                     }
-                
             }
 
             this.MouseLeftButtonDown += FoundedFileUC_MouseLeftButtonDown;

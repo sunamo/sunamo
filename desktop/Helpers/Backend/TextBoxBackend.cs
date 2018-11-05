@@ -71,7 +71,7 @@ namespace desktop.Helpers.Backend
 
         private void TxtContent_SelectionChanged(object sender, System.Windows.RoutedEventArgs e)
         {
-            SetActualLine( txtContent.GetLineIndexFromCharacterIndex(txtContent.SelectionStart));
+            //SetActualLine( txtContent.GetLineIndexFromCharacterIndex(txtContent.SelectionStart));
         }
 
         
@@ -83,7 +83,7 @@ namespace desktop.Helpers.Backend
 
         TextBlock txtTextBoxState;
         protected TextBox txtContent;
-        TextBoxState state = new TextBoxState();
+        public TextBoxState state = new TextBoxState();
 
         public void SetTbSearchedResult(int actual, int count)
         {
@@ -92,16 +92,22 @@ namespace desktop.Helpers.Backend
             
         }
 
+        public void SetActualFile(string file)
+        {
+            state.textActualFile = "File: " + file;
+            SetTextBoxState();
+        }
+
         public void SetActualLine(int line)
         {
             _actualLine = line++;
-            state.textActualLine = "Line: " + _actualLine;
+            state.textActualFile = "Line: " + _actualLine;
             SetTextBoxState();
         }
 
         private void SetTextBoxState()
         {
-            txtTextBoxState.Text = SH.Join("  ", state.textActualLine, state.textSearchedResult).Trim();
+            txtTextBoxState.Text = SH.Join("  ", state.textActualFile, state.textSearchedResult).Trim();
         }
 
         public void JumpToNextSearchedResult()

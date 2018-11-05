@@ -4,6 +4,7 @@ using sunamo.Constants;
 using sunamo.Delegates;
 using sunamo.Enums;
 using sunamo.Essential;
+using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,21 @@ using System.Text.RegularExpressions;
 
 public static class SH
 {
+    public static string ListToString(object value)
+    {
+        string text;
+        var valueType = value.GetType();
+        text = value.ToString();
+        if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder)
+        {
+            var enumerable = CA.ToListString(value as IEnumerable);
+            CA.Replace(enumerable, AllStrings.comma, AllStrings.space);
+            text = SH.Join(AllChars.comma, enumerable);
+        }
+        return text;
+    }
+
+
 
     public static string ReplaceAllCaseInsensitive(string vr, string zaCo, params string[] co)
     {
@@ -1417,12 +1433,12 @@ public static class SH
         return nazevTabulky;
     }
 
-    public static string GetString(object[] o, string p)
+    public static string GetString(IEnumerable o, string p)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in o)
         {
-            sb.Append(item.ToString() + p);
+            sb.Append(SH.ListToString( item) + p);
         }
         return sb.ToString();
     }

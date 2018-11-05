@@ -9,8 +9,8 @@ using System.Windows.Controls;
 
     public class SearchCodeElementsUCData
     {
-        public TextBox txtSearchInCodeElementName;
-        public TextBox txtSearchInContent;
+        public ComboBox txtSearchInCodeElementName;
+        public ComboBox txtSearchInContent;
         public ComboBox txtSearchInPath;
         CheckBox chbSearchInContent;
         CheckBox chbSearchInPath;
@@ -30,7 +30,7 @@ using System.Windows.Controls;
             }
         }
 
-        public SearchCodeElementsUCData(TextBox txtSearchInCodeElementName, TextBox txtSearchInContent, ComboBox txtSearchInPath, CheckBox chbSearchInContent, CheckBox chbSearchInPath, CheckBox chbSearchInCodeElementName)
+        public SearchCodeElementsUCData(ComboBox txtSearchInCodeElementName, ComboBox txtSearchInContent, ComboBox txtSearchInPath, CheckBox chbSearchInContent, CheckBox chbSearchInPath, CheckBox chbSearchInCodeElementName)
         {
             this.txtSearchInCodeElementName = txtSearchInCodeElementName;
             this.txtSearchInContent = txtSearchInContent;

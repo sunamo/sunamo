@@ -17,7 +17,7 @@ namespace sunamo.Values
         /// "x "
         /// </summary>
         public const string xs = "x ";
-
+        
 
         public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
             AllExtensions.bmp,
@@ -54,9 +54,9 @@ namespace sunamo.Values
         public static string DotCz = ".sunamo.cz";
 
         public static string http = "http://";
-        public static double zeroDouble = 0;
-        public static int zeroInt = 0;
-        public static float zeroFloat = 0;
+        public const double zeroDouble = 0;
+        public const int zeroInt = 0;
+        public const float zeroFloat = 0;
         public static readonly Type tObject = typeof(object);
         public static readonly Type tString = typeof(string);
         public static readonly Type tStringBuilder = typeof(StringBuilder);

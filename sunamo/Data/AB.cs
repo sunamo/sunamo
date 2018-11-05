@@ -1,4 +1,6 @@
-﻿public class AB
+﻿using System;
+
+public class AB
 {
     public string A = null;
     public object B = null;
@@ -9,8 +11,13 @@
         B = b;
     }
 
+    public static AB Get(Type a, object b)
+    {
+        return new AB(a.FullName, b);
+    }
+
     /// <summary>
-    /// Ginstantion O AB
+    /// 
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>

@@ -214,7 +214,7 @@ using System.Threading.Tasks;
         /// <returns></returns>
         public static bool StringToBool(string s)
         {
-            if (s == Yes) return true;
+            if (s == Yes || s == bool.TrueString) return true;
             return false;
         }
 

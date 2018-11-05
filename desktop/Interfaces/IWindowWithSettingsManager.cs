@@ -14,8 +14,12 @@ namespace desktop.Interfaces
         /// <summary>
         /// TUList due to FrameworkElement will be as many as have dependency property
         /// </summary>
-        TUList<FrameworkElement, DependencyProperty> SavedElements { get; set; }
-        SettingsManager SettingsManager { get; }
-        void AddSavedElement(FrameworkElement fw, DependencyProperty dp);
+        //TUList<FrameworkElement, DependencyProperty> SavedElements { get; set; }
+        //SettingsManager SettingsManager { get; }
+        //void AddSavedElement(FrameworkElement fw, DependencyProperty dp);
+        ApplicationDataContainer Data
+        {
+            get;
+        }
     }
 }

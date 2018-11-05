@@ -40,13 +40,7 @@ t0033 WpfApp1/SearchInCodeElementsUC
 t0034 buy huawei battery + lcd 
 
 t0035 offer lcd parts https://www.aliexpress.com/item/Tested-Warranty-5-0-inch-1280x720-Display-For-XiaoMi-RedMi-4X-LCD-with-Touch-Screen-Digitizer/32817876150.html?spm=a2g0s.13010208.99999999.260.25363c001k9xVw, psal jsem mail jestli na to funguje sluzba Odnos
-t0036 class StringHexWindowsMediaColorConverter is in StringHexColorConverter - during checkout dont found
-t0037 create unit test for PowershellRunner 
-
-t0038 create app for generate git checkout
-
-
-win/Helpers/Powershell/*
+t0036 opravit kodovani jpn importu, treba GridView, ListView a ListBox - k cemu se kazdy z techto prvku hodi je tak zprzneny ze se prekryva text druhym
 
 live wallpaper
 
@@ -54,7 +48,7 @@ data as mp3 to huawei
 sečíst moje dluhy a závazky 
 
 refactor, large tasks:
-
+replace in all C# files class name
 
 BEM, Flexbox
 leaflet

@@ -1,4 +1,5 @@
 ﻿using desktop.Controls.Result;
+using sunamo.Data;
 using sunamo.Helpers.Types;
 using sunamo.Interfaces;
 using System;
@@ -20,6 +21,7 @@ namespace desktop.Helpers.Backend
         private SelectedCastHelper<string> selectedCastHelperString;
         public TextBoxBackend textBoxBackend = null;
         private FoundedFilesUC foundedFilesUC;
+        FoundedFileUC lastSelected = null;
 
         /// <summary>
         /// A1 and A3 can be null - ReviewRestoredSourceFilesUC
@@ -31,8 +33,16 @@ namespace desktop.Helpers.Backend
         {
             this.selectedCastHelperString = selectedCastHelperString;
             this.foundedFilesUC = foundedFilesUC;
+            foundedFilesUC.Selected += FoundedFilesUC_Selected;
 
             textBoxBackend = new TextBoxBackend(txtTextBoxState, txtContent);
+        }
+
+        private void FoundedFilesUC_Selected(string s)
+        {
+            ControlHelper.SwitchBorder(lastSelected, BorderData.Black1);
+            lastSelected = foundedFilesUC.GetFoundedFileByPath(s);
+            ControlHelper.SwitchBorder(lastSelected, BorderData.Black1);
         }
 
         public string FullPathSelectedFile

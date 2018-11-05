@@ -6,7 +6,7 @@ namespace sunamo.Data
 {
     public class TextBoxState
     {
-        public string textActualLine = "";
+        public string textActualFile = "";
         public string textSearchedResult = "";
     }
 }

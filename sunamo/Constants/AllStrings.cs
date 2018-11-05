@@ -8,6 +8,8 @@ namespace sunamo.Constants
     {
         public const string slashAsterisk = "/*";
 
+        public const string pipe = "|";
+
         public const string cbl = "{";
         public const string cbr = "}";
 
