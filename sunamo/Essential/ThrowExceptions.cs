@@ -13,6 +13,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName), nameControl, additionalInfo));
     }
 
+    public static void FileExists(object type, string methodName, string fulLPath)
+    {
+        ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName), fulLPath));
+    }
+
     /// <summary>
     /// Must be string due to in sunamo is not NamespaceElement
     /// </summary>

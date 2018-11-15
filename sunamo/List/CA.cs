@@ -11,6 +11,30 @@ public static class CA
 {
     static Type type = typeof(CA);
 
+    public static string GetNumberedList(List<string> input)
+    {
+        CA.RemoveStringsEmpty2(input);
+        CA.PrependWithNumbered(input);
+        return SH.JoinNL(input);
+    }
+
+    private static void PrependWithNumbered(List<string> input)
+    {
+        var numbered = BTS.GetNumberedListFromTo(1, input.Count - 1, ") ");
+        Prepend(numbered, input);
+    }
+
+    private static void Prepend(List<string> numbered, List<string> input)
+    {
+        ThrowExceptions.DifferentCountInLists(type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+
+        for (int i = 0; i < input.Count; i++)
+        {
+            input[i] = numbered[i] + input[i]; 
+        }
+
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Swap<T>(this IList<T> list, int i, int j)
     {
