@@ -22,6 +22,15 @@ namespace sunamo.Essential
             return "File " + fnOri + " has wrong file extension";
         }
 
+        internal static string FileExists(string before, string fulLPath)
+        {
+            if (File.Exists(fulLPath))
+            {
+                return null;
+            }
+            return CheckBefore(before) + " Doesn't exists: " + fulLPath;
+        }
+
         #region Without parameters
         public static string NotImplementedCase( string before)
         {

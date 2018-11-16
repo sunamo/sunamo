@@ -43,6 +43,8 @@ t0034 buy huawei battery + lcd
 
 t0035 offer lcd parts https://www.aliexpress.com/item/Tested-Warranty-5-0-inch-1280x720-Display-For-XiaoMi-RedMi-4X-LCD-with-Touch-Screen-Digitizer/32817876150.html?spm=a2g0s.13010208.99999999.260.25363c001k9xVw, psal jsem mail jestli na to funguje sluzba Odnos
 t0036 opravit kodovani jpn importu, treba GridView, ListView a ListBox - k cemu se kazdy z techto prvku hodi je tak zprzneny ze se prekryva text druhym
+t0037 understand Design Patterns with BlueJ
+
 
 live wallpaper
 

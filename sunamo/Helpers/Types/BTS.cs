@@ -143,6 +143,13 @@ public static partial class BTS
         #endregion
 
         #region GetNumberedList*
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="max"></param>
+    /// <param name="postfix"></param>
+    /// <returns></returns>
         public static object[] GetNumberedListFromTo(int p, int max)
         {
             max++;
@@ -154,7 +161,18 @@ public static partial class BTS
             return vr.ToArray();
         }
 
-        private static List<string> GetNumberedListFromToList(int p, int indexOdNext)
+    public static List<string> GetNumberedListFromTo(int p, int max, string postfix = ". ")
+    {
+        max++;
+        List<string> vr = new List<string>();
+        for (int i = 0; i < max; i++)
+        {
+            vr.Add(i + postfix);
+        }
+        return vr;
+    }
+
+    private static List<string> GetNumberedListFromToList(int p, int indexOdNext)
         {
             List<string> vr = new List<string>();
             object[] o = GetNumberedListFromTo(p, indexOdNext);
