@@ -24,4 +24,10 @@
     <Folder Include="Converters\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="win">
+      <HintPath>..\win\bin\Release\win.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

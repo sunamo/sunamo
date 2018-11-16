@@ -185,6 +185,7 @@ public static class JunctionPoint
             IntPtr hTemplateFile);
 
         /// <summary>
+        /// For files use mklink
         /// Creates a junction point from the specified directory to the specified target directory.
         /// </summary>
         /// <remarks>

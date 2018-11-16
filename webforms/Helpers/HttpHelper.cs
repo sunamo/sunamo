@@ -115,7 +115,6 @@ public static class HttpHelper
         return vr;
     }
 
-
     public static int Count(IList<HttpPostedFile> list)
     {
         int vr = ListOfRealFiles(list).Count;

@@ -150,6 +150,13 @@ namespace sunamo
             return new List<string>(Directory.GetDirectories(folder));
         }
 
+        public static void CopyFile(string jsFiles, string v)
+        {
+            File.Copy(jsFiles, v, true);
+        }
+
+        
+
         public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
         {
             ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
@@ -228,6 +235,16 @@ namespace sunamo
             {
                 return string.Empty;
             }
+            int lastSlash = v.LastIndexOf(AllChars.stroke);
+            int lastBs = v.LastIndexOf(AllChars.bs);
+            if (lastSlash > lastDot)
+            {
+                return string.Empty;
+            }
+            if (lastBs > lastDot)
+            {
+                return string.Empty;
+            }
             result = v.Substring(lastDot).ToLower();
 
             return result;
@@ -235,6 +252,7 @@ namespace sunamo
 
         /// <summary>
         /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
+        /// if have more extension, remove just one
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>

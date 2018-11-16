@@ -9,7 +9,7 @@ public static class AngularJsHelper
     /// <param name="styles"></param>
     public static void Include(List<string> scripts, List<string> styles)
     {
-        string[] arr = new string[] { "Scripts/angular-material.min.js", "Scripts/angular-messages.min.js", "Scripts/angular-aria.min.js", "Scripts/angular-route.min.js", "Scripts/angular-animate.min.js", "js/Shared.js", "Scripts/angular.min.js" };
+        string[] arr = new string[] { "ts/angular-material.min.js", "ts/angular-messages.min.js", "ts/angular-aria.min.js", "ts/angular-route.min.js", "ts/angular-animate.min.js", "js/Shared.js", "ts/angular.min.js" };
 
         for (int i = arr.Length - 1; i >= 0; i--)
         {

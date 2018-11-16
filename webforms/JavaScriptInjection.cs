@@ -1,4 +1,6 @@
-﻿using System;
+﻿using sunamo;
+using sunamo.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -152,8 +154,22 @@ public class JavaScriptInjection
             page.Header.Controls.AddAt(0, lc);
         }
     }
-    public static void InjectExternalScriptOnlySpecified(Page page, List<string> p2, string hostWithHttp)
+    public static void InjectExternalScriptOnlySpecified(SunamoPage page, List<string> p2, string hostWithHttp)
     {
+        var mss = page.sa;
+        string sa = page.sa.ToString();
+        if (mss == MySites.Nope)
+        {
+            if (page.Request.CurrentExecutionFilePath.StartsWith("/Me/"))
+            {
+                sa = GeneralConsts.Me;
+            }
+            else
+            {
+                sa = AllStrings.us;
+            }
+        }
+        
 
         foreach (var item in p2)
         {
@@ -166,6 +182,11 @@ public class JavaScriptInjection
 
             if ((hostWithHttp.StartsWith("http://") || item.StartsWith("https://")) && !item.Contains("{") && !item.Contains("["))
             {
+                if (item == JavaScriptPaths.RequireJS)
+                {
+                    var fileName = UH.GetFileName(page.Request.CurrentExecutionFilePath).Replace(".aspx", "");
+                    sb.Append(" data-main=\"http://localhost/ts/" + sa + "/" + fileName + ".js\" type=\"module\"");
+                }
                 // charset=\"utf-16\"
                 sb.Append(" src=\"");
                 sb.Append(hostWithHttp + item ); //+ "?nocache"

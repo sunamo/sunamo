@@ -14,7 +14,7 @@ namespace desktop.Essential
     {
         public static string SQLExpressInstanceName()
         {
-            return Environment.MachineName + "\\SQLExpress";
+            return Environment.MachineName;
         }
 
 #if DEBUG

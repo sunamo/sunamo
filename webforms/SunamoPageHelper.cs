@@ -7,11 +7,9 @@ using System.Web;
 public static class SunamoPageHelper
 {
     #region Lst
-    #region Navždy zakomentováno
-    #endregion
-    public static string WebTitle(MySites sa, HttpRequest Request, MySites ms)
+    public static string WebTitle(MySites sa, HttpRequest Request)
     {
-        return " - " + MasterPageHelper.GetNameOfWeb(sa, Request, ms);
+        return " - " + MasterPageHelper.GetNameOfWeb(sa, Request);
     }
 
     public static string DescriptionOfSite(byte sda)
@@ -70,10 +68,7 @@ public static class SunamoPageHelper
         {
             return IsIpAddressRight(sp.ipAddress);
         }
-        
     }
-
-
     #endregion
 
     public static string GetFooterHtml(MySites ms)
@@ -194,6 +189,7 @@ public static class SunamoPageHelper
             sp.nameLoginedUser = GeneralCells.LoginOfUser(id); //lu.login;
         }
     }
+    
     /// <summary>
     /// Pokud IP adresa nebude mít 4 čísla byte, vrátím null
     /// </summary>

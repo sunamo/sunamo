@@ -38,7 +38,10 @@ public class MultiColorLine
         byte[] sirky;
         GeneralHelper.CalculatePercentOfColorBar(31, out colors, out sirky);
         HtmlGenerator hg = new HtmlGenerator();
-        int bl = sirky.Length - 1;
+        var sirkyLength = sirky.Length;
+        var colorsLength = colors.Count;
+        int bl = sirkyLength < colorsLength ? sirkyLength : colorsLength;
+        bl--;
         for (int i = 0; i < bl; i++)
         {
             hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[i] + "%;background-color:" + colors[i]);

@@ -1,4 +1,5 @@
-﻿using sunamo.Values;
+﻿using sunamo.Helpers;
+using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -74,6 +75,7 @@ public class SunamoPage : System.Web.UI.Page
     {
         return Langs.cs;
     }
+
 
     protected void InsertPageSnippet(PageSnippet ps)
     {
@@ -369,6 +371,8 @@ public class SunamoPage : System.Web.UI.Page
     protected override void OnInit(EventArgs e)
     {
         base.OnInit(e);
+
+        Request.Headers.Add(HttpKnownHeaderNames.CacheControl, "no-cache");
     }
 
     protected override void OnLoad(EventArgs e)
@@ -395,7 +399,7 @@ public class SunamoPage : System.Web.UI.Page
         {
             try
             {
-                Title = Title + SunamoPageHelper.WebTitle(sa, Request, sa);
+                Title = Title + SunamoPageHelper.WebTitle(sa, Request);
                 zapisTitle = false;
             }
             catch (Exception)

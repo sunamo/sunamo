@@ -11,6 +11,7 @@ namespace win.Helpers.Powershell
     public class PowershellBuilder
     {
         TextBuilder sb = new TextBuilder();
+        static PowershellBuilder instance = new PowershellBuilder();
 
         public PowershellBuilder()
         {
@@ -37,6 +38,12 @@ namespace win.Helpers.Powershell
             sb.Append(argValue);
         }
 
+        public static PowershellBuilder GetInstance()
+        {
+            instance.Clear();
+            return instance;
+        }
+
         /// <summary>
         /// Returns string because of PowershellRunner
         /// </summary>
@@ -47,7 +54,6 @@ namespace win.Helpers.Powershell
             sb.Append("cd \"" + path + "\"");
             return sb.ToString();
         }
-
 
         public void CmdC(string v)
         {

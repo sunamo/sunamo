@@ -1,4 +1,4 @@
-﻿#region Mono
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +27,12 @@ namespace win.Helpers.Powershell
 			}
 			return processNames;
 		}
-	}
+
+        public async static void CmdC(string v)
+        {
+            PowershellBuilder ps = PowershellBuilder.GetInstance();
+            ps.CmdC(v);
+            await PowershellRunner.InvokeAsync(ps.ToString());
+        }
+    }
 }
-#endregion

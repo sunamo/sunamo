@@ -12,10 +12,6 @@ using System.Web;
 /// </summary>
 public static class HttpRequestHelper
 {
-    
-
-    
-
     public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
     {
         int dex = address.IndexOf('?');
@@ -168,10 +164,12 @@ public static class HttpRequestHelper
         }
         return vr;
     }
+
     public static byte[] GetIPAddressInArray(HttpRequest httpRequest)
     {
         return IPAddressHelper.GetIPAddressInArray(GetUserIPString(httpRequest));
     }
+
     /// <summary>
     /// Vrátí null pokud se nepodaří zjistit IP adresa
     /// </summary>

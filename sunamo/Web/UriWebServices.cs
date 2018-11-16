@@ -225,6 +225,11 @@ public static class UriWebServices
         return "http://www.twitter.com/" + nick;
     }
 
+    public static string SearchGitHub(string item)
+    {
+        return "https://github.com/search?q=" + item;
+    }
+
     public static string YouTubeProfile(string nick)
     {
         return "http://www.youtube.com/c/" + nick;

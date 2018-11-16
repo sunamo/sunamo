@@ -1220,10 +1220,18 @@ public static class CA
 
     public static List<string> ToListString(IEnumerable enumerable)
     {
+        
         List<string> result = new List<string>();
-        foreach (var item in enumerable)
+        if (enumerable is IEnumerable<char>)
         {
-            result.Add(item.ToString());
+            result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+        }
+        else
+        {
+            foreach (var item in enumerable)
+            {
+                result.Add(item.ToString());
+            }
         }
         return result;
     }

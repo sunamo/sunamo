@@ -84,7 +84,7 @@ public class MasterPageHelper
 
     public static SunamoMasterPage GetSmp(Page p)
     {
-            return (SunamoMasterPage)p.Master;
+        return (SunamoMasterPage)p.Master;
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public class MasterPageHelper
         return page.Request.Path.IndexOf('/', 1) == -1;
     }
 
-    public static string GetNameOfWeb(MySites sa, HttpRequest Request, MySites ms)
+    public static string GetNameOfWeb(MySites sa, HttpRequest Request)
     {
         if (sa == MySites.Nope)
         {
@@ -125,7 +125,7 @@ public class MasterPageHelper
         }
         else
         {
-            if (ms != MySites.None)
+            if (sa != MySites.None)
             {
                 return SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
             }

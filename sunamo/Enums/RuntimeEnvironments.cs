@@ -9,6 +9,7 @@ namespace sunamo.Enums
         Android,
         Windows,
         Chrome,
-        Web
+        Web,
+        Developer
     }
 }

@@ -21,10 +21,12 @@ namespace webforms.Helpers
             }
             return vr;
         }
+
         public static byte[] GetIPAddressInArray(HttpRequest httpRequest)
         {
             return IPAddressHelper.GetIPAddressInArray(GetUserIPString(httpRequest));
         }
+
         /// <summary>
         /// Vrátí null pokud se nepodaří zjistit IP adresa
         /// </summary>

@@ -11,9 +11,15 @@ namespace win.Helpers.Powershell
 	{
         static PowershellBuilder builder = new PowershellBuilder();
 
+        #region Not tested, probably not working
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
 		public static List<List<string>> WaitForResult( List<string> command, string path = null)
 		{
-
 			List<List<string>> output = new List<List<string>>();
             using (PowerShell ps = PowerShell.Create())
             {
@@ -31,14 +37,22 @@ namespace win.Helpers.Powershell
 			
 			return output;
 		}
+        #endregion
 
         private static void Invoke(string command, List<List<string>> output, PowerShell ps)
         {
             ps.AddScript(command);
-            var invoke = Invoke(ps);
+            var invoke = ProcessPSObjects( ps.Invoke());
             output.Add(invoke);
         }
 
+        
+        /// <summary>
+        /// Tested, working
+        /// </summary>
+        /// <param name="commands"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public async static Task DontWaitForResultAsync(List<string> commands, string path = null)
         {
             PowerShell ps = null;
@@ -64,10 +78,11 @@ namespace win.Helpers.Powershell
         }
 
         public static List<string> Invoke(PowerShell ps)
-		{
-			return ProcessPSObjects(ps.Invoke());
+        {
+            return ProcessPSObjects(ps.Invoke());
 
-		}
+        }
+        
 
         private static List<string> ProcessPSObjects(ICollection<PSObject> pso)
 		{
@@ -84,6 +99,11 @@ namespace win.Helpers.Powershell
 			return output;
 		}
 
+        /// <summary>
+        /// Tested, working
+        /// </summary>
+        /// <param name="commands"></param>
+        /// <returns></returns>
         public async static Task<List< List<string>>> InvokeAsync(params string[] commands)
 		{
             List<List<string>> returnList = new List<List<string>>();
@@ -107,7 +127,13 @@ namespace win.Helpers.Powershell
 			return returnList;
 		}
 
-		
-	}
+        public  static List<List<string>> Invoke(params string[] commands)
+        {
+            var result = InvokeAsync(commands);
+            result.Wait();
+            return result.Result;
+        }
+
+    }
 }
 

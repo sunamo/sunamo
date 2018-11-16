@@ -3077,7 +3077,7 @@ public static class SH
     public static string JoinWithoutTrim(object p, IList parts)
     {
         StringBuilder sb = new StringBuilder();
-        foreach (int item in parts)
+        foreach (object item in parts)
         {
             sb.Append(item.ToString() + p);
         }

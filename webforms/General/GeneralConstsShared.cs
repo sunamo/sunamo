@@ -8,7 +8,8 @@ public static partial class GeneralConsts
     public const int tnHeight = 168;
     public const byte maxPocetPokusu = 10;
 
-
+    public const string General = "General";
+    public const string Me = "Me";
     public const string passwordSql = "84GS9gaA_z";
 
 
@@ -25,7 +26,7 @@ public static partial class GeneralConsts
     public const int maxFileCountOnAccount = 10000;
     //"css/Web.css",
     public static readonly List<string> includeStyles = new List<string>(new string[] { "Shared/css/Shared.css", "Content/metro-icons.css", "Content/metro.css" });
-    public static readonly List<string> includeScripts = new List<string>(new string[] { "ts/Me/Shared.js", "ts/su.js", "Scripts/jquery.min.js", "wwwroot/lib/requirejs/requirejs.js" });
+    public static readonly List<string> includeScripts = new List<string>(new string[] {  JavaScriptPaths.RequireJS });
     //public static readonly List<string> includeScriptsAsync = new List<string>() { };
     public const string FbEventBaseUri = "https://www.facebook.com/events/";
 
