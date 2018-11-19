@@ -52,12 +52,12 @@ namespace desktop
         /// <param name="line"></param>
         public static void ScrollToLine(TextBox txt, int line)
         {
-            
             txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
             txt.SelectionLength = txt.GetLineLength(line);
             txt.CaretIndex = txt.SelectionStart;
             txt.ScrollToLine(line);
-            txt.Focus();
+            // I had combobox which was focused by ctrl+1. But then lost focus due to next line
+            //txt.Focus();
         }
 
         public static void InicializeWidths()

@@ -134,7 +134,10 @@ public class TF
 
     static void SaveFile(string obsah, string soubor, bool pripsat)
     {
-        
+        if (soubor == null)
+        {
+            return;
+        }
         if (pripsat)
         {
             File.AppendAllText(soubor, obsah, Encoding.UTF8);

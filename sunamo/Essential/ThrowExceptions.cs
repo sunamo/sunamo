@@ -111,6 +111,12 @@ public class ThrowExceptions
         return string.Concat(typeFullName, ".", methodName);
     }
 
+    /// <summary>
+    /// Default use here method with one argument
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="exception"></param>
     public static void ThrowIsNotNull(object type, string methodName, string exception)
     {
         if (exception != null)
@@ -127,8 +133,21 @@ public class ThrowExceptions
         }
     }
 
+    internal static void NoPassedFolders(Type type, string v, IEnumerable folders)
+    {
+        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v), folders));   
+    }
+
+    private static void ThrowIsNotNull(object v)
+    {
+        if (v != null)
+        {
+            ThrowIsNotNull(v.ToString());
+        }
+    }
+
 
     #endregion
 
-    
+
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -132,6 +133,15 @@ namespace sunamo.Essential
                 return CheckBefore( before) + " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(',', unallowedStrings);
             }
 
+            return null;
+        }
+
+        internal static object NoPassedFolders(string before, IEnumerable folders)
+        {
+            if (folders.Count() == 0)
+            {
+                return CheckBefore(before) + "No passed folder into";
+            }
             return null;
         }
 

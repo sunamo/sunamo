@@ -29,13 +29,13 @@ namespace desktop.Helpers.Backend
         /// <param name="selectedCastHelperString"></param>
         /// <param name="txtContent"></param>
         /// <param name="foundedFilesUC"></param>
-        public FoundedFileUCBackend(TextBlock txtTextBoxState, TextBox txtContent, SelectedCastHelper<string> selectedCastHelperString,  FoundedFilesUC foundedFilesUC ) 
+        public FoundedFileUCBackend(TextBlock txtTextBoxState, TextBox txtContent, SelectedCastHelper<string> selectedCastHelperString,  FoundedFilesUC foundedFilesUC, int addRowsDuringScrolling) 
         {
             this.selectedCastHelperString = selectedCastHelperString;
             this.foundedFilesUC = foundedFilesUC;
             foundedFilesUC.Selected += FoundedFilesUC_Selected;
 
-            textBoxBackend = new TextBoxBackend(txtTextBoxState, txtContent);
+            textBoxBackend = new TextBoxBackend(txtTextBoxState, txtContent, addRowsDuringScrolling);
         }
 
         private void FoundedFilesUC_Selected(string s)

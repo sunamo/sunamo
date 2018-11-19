@@ -70,6 +70,7 @@ namespace desktop.Essential
         #region Sync
         private static void SetStatus(TypeOfMessage st, string status)
         {
+            status = DateTime.Now.ToShortTimeString() + " " + status;
             Color fg = Colors.Black;
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)

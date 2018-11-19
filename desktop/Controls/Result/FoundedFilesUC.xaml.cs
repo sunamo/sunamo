@@ -52,9 +52,10 @@ namespace desktop.Controls.Result
 
         public void AddFoundedFiles(List<string> foundedList, TUList<string, Brush> p)
         {
+            int i = 0;
             foreach (var item in foundedList)
             {
-                FoundedFileUC foundedFile = new FoundedFileUC(item, p);
+                FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
                 foundedFile.Selected += FoundedFile_Selected;
                 sp.Children.Add(foundedFile);
             }

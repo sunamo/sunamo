@@ -5,7 +5,7 @@ public class JavaScriptPaths
 {
     public const string RequireJS = "wwwroot/lib/requirejs/require.js";
     public const string su = "ts/su.js";
-    public const string jQuery = "ts/jquery-3.2.1.min.js";
+    public const string jQuery = "ts/jquery-3.3.1.min.js";
     public const string jQueryUiJs = "ts/jquery-ui-1.11.4.min.js";
     public const string jQueryPrettySocial = "js/jquery/jquery.prettySocial.min.js";
     public const string JustifiedGallery = "Shared/js/JustifiedGallery/jquery.justifiedGallery.min.js";

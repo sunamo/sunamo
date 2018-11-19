@@ -28,10 +28,12 @@ namespace desktop.Controls.Result
         /// </summary>
         string file;
 
-        public FoundedFileUC(string filePath, TUList<string, Brush> p)
+        public FoundedFileUC(string filePath, TUList<string, Brush> p, int serie)
         {
             InitializeComponent();
 
+            ellipseSerie.Stroke = Brushes.Black;
+            tbSerie.Text = serie.ToString();
             this.fileFullPath = filePath;
             this.file = filePath;
 
@@ -50,6 +52,7 @@ namespace desktop.Controls.Result
             {
                     if (SH.Contains( fileFullPath, item.Key))
                     {
+                    ellipseSerie.Stroke = item.Value;
                         tbFileName.Foreground = item.Value;
                         break;
                     }

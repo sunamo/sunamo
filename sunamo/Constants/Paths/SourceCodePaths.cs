@@ -11,7 +11,7 @@ namespace sunamo.Constants
 
         public const string EaseUsRestored = @"c:\Users\n\";
         public const string DiskDrill = @"d:\_NewlyRecovered\";
-        public const string Managed = @"d:\Docs\vs\Projects\";
+        public const string Managed = @"d:\Documents\vs17\Projects\";
         public const string GoodContent = @"d:\_GoodContent\";
 
         public const string GoodContentTest = @"d:\_Test\WpfApp1\WpfApp1\ReviewRestoredSourceFilesUC\_GoodContent\";

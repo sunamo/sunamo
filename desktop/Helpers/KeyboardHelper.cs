@@ -1,5 +1,6 @@
 ﻿using sunamo.Essential;
 using System;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace sunamo
@@ -26,6 +27,7 @@ namespace sunamo
         }
 
         /// <summary>
+        /// Are there passed from PreviewKeyDown
         /// Working also with more modifiers specified
         /// Primary use method without KeyEventArgs param. When I try catch with this Alt+f3, for f3 returns System key.
         /// </summary>
@@ -35,8 +37,13 @@ namespace sunamo
         /// <returns></returns>
         public static bool KeyWithModifier(KeyEventArgs e, Key key, ModifierKeys modifier)
         {
-            bool keyPressed = key == e.Key;
-            // Working also with more modifiers specified
+            /*
+            stisknul jsem 1, mam 1, d1,u0
+                Hned nasledne na to se zkontroluje i na 2 a 3
+mam 2, d0, u1 - logicke
+mam 3, d0, u1 - nechapu */
+
+            bool keyPressed = Keyboard.IsKeyDown(key);
             bool modifierPressed = modifier == Keyboard.Modifiers;
             bool result = keyPressed && modifierPressed;
 
@@ -128,6 +135,21 @@ namespace sunamo
         {
             string d = Keyboard.Modifiers.ToString() + ", " + e.Key.ToString();
             return d;
-    }
+        }
+
+        /// <summary>
+        /// If dont be remain number, return 255
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static byte IsNumber(KeyEventArgs e)
+        {
+            string s = e.Key.ToString();
+            if (SH.RemovePrefix(ref s, "NumPad"))
+            {
+                return byte.Parse(s);
+            }
+            return byte.MaxValue;
+        }
     }
 }

@@ -94,6 +94,15 @@ public static class SH
         return hasLine;
     }
 
+    public static string PostfixIfNotEmpty(string text, string postfix)
+    {
+        if (text.Length != 0)
+        {
+            return text + postfix;
+        }
+        return text;
+    }
+
     /// <summary>
     /// Control for string.Empty, because otherwise all results are true
     /// </summary>
@@ -168,6 +177,16 @@ public static class SH
             return sb.ToString();       
     }
 
+    public static bool RemovePrefix(ref string s, string v)
+    {
+        if (s.StartsWith(v))
+        {
+            s = s.Substring(v.Length);
+            return true;
+        }
+        return false;
+    }
+
     public static string RemoveAfterFirst(string t, string ch)
     {
         int dex = t.IndexOf(ch);
@@ -227,17 +246,14 @@ public static class SH
     /// <param name="hasFirstEmptyLength"></param>
     /// <param name="contains"></param>
     /// <returns></returns>
-    public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, params string[] contains)
+    public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, IEnumerable<string> contains)
     {
         List<string>  founded = new List<string>();
 
         bool hasLine = false;
-        if (contains.Length == 1)
+        if (contains.Count() == 1 && checkInCaseOnlyOneString)
         {
-            if (checkInCaseOnlyOneString)
-            {
-                hasLine = item.Contains(contains[0]);
-            }
+                hasLine = item.Contains(contains.ToList()[0]);
         }
         else
         {

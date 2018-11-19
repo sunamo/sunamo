@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+
 public class ComboBoxHelper
 {
     public static void AddRange2List(ComboBox cbInterpret, IList allInterprets)
@@ -21,6 +23,11 @@ public class ComboBoxHelper
 
 
         }
+    }
+
+    public static void SetFocus(ComboBox comboBox1)
+    {
+        Keyboard.Focus(comboBox1);
     }
 
     protected ComboBox tsddb = null;

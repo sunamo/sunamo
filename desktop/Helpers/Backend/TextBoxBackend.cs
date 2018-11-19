@@ -54,6 +54,7 @@ namespace desktop.Helpers.Backend
                 return _actualLine;
             }
         }
+        int addRowsDuringScrolling = 0;
 
         /// <summary>
         /// 
@@ -61,10 +62,11 @@ namespace desktop.Helpers.Backend
         /// <param name="searchData"></param>
         /// <param name="txtTextBoxState"></param>
         /// <param name="txtContent"></param>
-        public TextBoxBackend(TextBlock txtTextBoxState, TextBox txtContent)
+        public TextBoxBackend(TextBlock txtTextBoxState, TextBox txtContent, int addRowsDuringScrolling)
         {
             this.txtTextBoxState = txtTextBoxState;
             this.txtContent = txtContent;
+            this.addRowsDuringScrolling = addRowsDuringScrolling;
             // Is changed also when just moved cursor (mouse, arrows)
             txtContent.SelectionChanged += TxtContent_SelectionChanged;
         }
@@ -104,13 +106,13 @@ namespace desktop.Helpers.Backend
             state.textActualFile = "Line: " + _actualLine;
             SetTextBoxState();
         }
-
+         
         private void SetTextBoxState()
         {
-            txtTextBoxState.Text = SH.Join("  ", state.textActualFile, state.textSearchedResult).Trim();
+            txtTextBoxState.Text = (SH.Join("  ", state.textActualFile, state.textSearchedResult) + " Line: " + (actualLine+1)).Trim();
         }
 
-        public void JumpToNextSearchedResult()
+        public void JumpToNextSearchedResult(int addLines)
         {
             var data = searchCodeElementsUCData;
             if (actualFileSearchOccurences.Count == 0)
@@ -132,40 +134,52 @@ namespace desktop.Helpers.Backend
                 int serie = actualSearchedResult + 1;
                 SetTbSearchedResult(serie, actualFileSearchOccurences.Count);
                 
-                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult]);
+                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult], addRowsDuringScrolling);
                 
                 actualSearchedResult++;
             }
         }
 
-        void ScrollToLineMethod(int line)
+        /// <summary>
+        /// A2 to full number of showing rows at one time.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="addLines"></param>
+        public void ScrollToLineMethod(int line, int addLines)
         {
+            if (txtContent.LineCount > addLines)
+            {
+                line += addLines - 2;
+            }
+            
             if (ScrollToLine != null)
             {
                 ScrollToLine(line);
             }
+            actualLine = line;
             if (txtContent != null)
             {
                 TextBoxHelper.ScrollToLine(txtContent, line);
             }
-            
+            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line " + line);
+            SetTextBoxState();
         }
 
         public void ScrollAboutLines(int v)
         {
-            v -= 1; 
-            v = v * 2;
+            //v -= 1; 
+            //v = v * 2;
             //v -= 1;
             int newLine = actualLine + v;
             int countLines = SH.CountLines(txtContent.Text);
             if (newLine > countLines)
             {
-                ScrollToLineMethod(countLines);
+                ScrollToLineMethod(countLines, addRowsDuringScrolling);
             }
             else
             {
-                ScrollToLineMethod(newLine);
-                ScrollToLineMethod(v / 2);
+                ScrollToLineMethod(newLine, addRowsDuringScrolling);
+                
             }
         }
     }

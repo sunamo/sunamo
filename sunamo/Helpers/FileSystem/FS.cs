@@ -50,15 +50,14 @@ namespace sunamo
             foreach (var item in files)
             {
                 var content = TF.ReadFile(item);
-                //if (!content.Contains("using "))
-                //{
-                //    Debugger.Break();
-                //}
-                //for (int i = 0; i < replaceFrom.Count; i++)
-                //{
-                //    content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
-                //}
-                TF.SaveFile(content, item);
+                if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
+                {
+                    for (int i = 0; i < replaceFrom.Count; i++)
+                    {
+                        content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                    }
+                    TF.SaveFile(content, item);
+                }
             }
         }
 
@@ -1150,10 +1149,18 @@ namespace sunamo
             }
         }
 
-        public static List<string> AllExtensionsInFolders(SearchOption so, params string[] v)
+        /// <summary>
+        /// files as .bowerrc return whole
+        /// </summary>
+        /// <param name="so"></param>
+        /// <param name="folders"></param>
+        /// <returns></returns>
+        public static List<string> AllExtensionsInFolders(SearchOption so, params string[] folders)
         {
+            ThrowExceptions.NoPassedFolders(type, "AllExtensionsInFolders", folders);
+
             List<string> vr = new List<string>();
-            List<string> files = AllFilesInFolders(so, v);
+            List<string> files = AllFilesInFolders(so, folders);
 
             files = new List<string>(OnlyExtensionsToLower(files));
             foreach (var item in files)
