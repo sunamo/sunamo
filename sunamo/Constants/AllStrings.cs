@@ -6,6 +6,14 @@ namespace sunamo.Constants
 {
     public class AllStrings
     {
+        /// <summary>
+        /// double dots
+        /// </summary>
+        public const string dd = "..";
+        /// <summary>
+        /// double dots slash
+        /// </summary>
+        public const string dds = "../";
         public const string slashAsterisk = "/*";
 
         public const string pipe = "|";

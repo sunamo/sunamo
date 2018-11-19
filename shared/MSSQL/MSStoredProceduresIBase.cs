@@ -2225,6 +2225,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
             return vratit;
         }
         else
+
         {
             throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
         }
