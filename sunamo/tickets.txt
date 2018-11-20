@@ -3,9 +3,7 @@ t0002 ReplaceInAllFiles - replace name of class, keep name of class entity
 t0003 send cv
 t0004 opravit otevirani kose
 t0005 ConsoleApp with user ask for action
-
 t0006 MedianAverage to find shop with best prices
-
 t0007 make app for automatically commit work
 t0008 Zapletal method
 t0009 kdyz se dostanu na stranku ktera neexistuje aby se zobrazilo 404 ktera bude vysvetlovat co se stalo. 
@@ -15,16 +13,12 @@ t0012 Create generic method Average
 t0013 obnovit fotky, potrebuji je do bytu
 t0014 make CalculateDifferencesBetweenTwoDateTimes for use with any delimiter
 t0015 ClipboardWatcher show captured texts
-
 t0016 SunamoYaml
-
 t0017 ReplaceInAllFiles, because notepad++ saving all files. Is succifient save only changed. Automatically create script for git add. Then these changes is mixed with other changes. 
 t0018 GenerateCommandForGitAddSunamo
 t0019 Point git ignore to all solutions
-
-t0020 Download only interesting, there is many Uvod and others stupidity https://www.youtube.com/user/SJKshow/videos
+t0020 
 t0021 download 50MB of files, write review and check what is in french and other language
-
 t0022 ConsoleApp1 GetLinesWithDiacritic as another user selected action.
 t0023 Find new work
 t0024 Allow use any delimiter in GenerateCommandForGitAdd
@@ -33,7 +27,7 @@ t0025 vsts tasks.txt
 t0026 linux double sized printing
 t0027 dostat Sykoruv podpis na smlouvu
 
-t0028 add reference for d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo.ruleset in csproj, is in sunamo.cs.csproj
+t0028 add reference for d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo.ruleset in csproj, is in sunamo.cz.csproj
 t0029 merge functionality of SunamoMasterPage and SunamoPage to single files. U hodně mám komentář Pokud budeš chtít použít tuto metodu třeba v MasterPage, musíš ji zkopírovat! Žádné vkládání do statických tříd.
 t0030 MenuItems, rename args
 t0031 Refactor opening RepairPhones
