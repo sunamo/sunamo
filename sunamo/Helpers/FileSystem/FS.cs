@@ -376,7 +376,7 @@ namespace sunamo
             return resultSerie;
         }
 
-        static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
+        public static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
         {
             folderFrom = FS.WithEndSlash(folderFrom);
             FolderTo = FS.WithEndSlash(FolderTo);
@@ -1434,6 +1434,12 @@ namespace sunamo
                 return dd + g + ext;
             }
             return g + ext;
+        }
+
+        public static string AddUpfoldersToRelativePath(int i, string file)
+        {
+            return SH.JoinTimes(i, AllStrings.dds) + file;
+            
         }
 
         public static string RemoveSerieUnderscore(string d)

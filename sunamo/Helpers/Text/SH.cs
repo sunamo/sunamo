@@ -1789,6 +1789,18 @@ public static class SH
         return Split(StringSplitOptions.RemoveEmptyEntries, text, deli);
     }
 
+    internal static string JoinTimes(int times, string dds)
+    {
+        // Working just for char
+        //return new String(dds, times);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < times; i++)
+        {
+            sb.Append(dds);
+        }
+        return sb.ToString();
+    }
+
     public static string[] SplitNone(string text, params char[] deli)
     {
         return Split(StringSplitOptions.None, text, deli);
