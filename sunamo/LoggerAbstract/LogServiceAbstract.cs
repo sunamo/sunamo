@@ -1,5 +1,6 @@
 ﻿
-﻿using System;
+using sunamo.Essential;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace sunamo.LoggerAbstract
 
         protected virtual async Task<List<LogMessageAbstract<Color, StorageClass>>> ReadMessagesFromFile(StorageClass fileStream)
         {
+            
             return null;
         }
 

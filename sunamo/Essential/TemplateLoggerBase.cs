@@ -13,7 +13,7 @@ namespace sunamo.Essential
         {
             this.writeLineDelegate = writeLineDelegate;
         }
-
+        
         #region Success
         public void CopiedToClipboard(string what)
         {
