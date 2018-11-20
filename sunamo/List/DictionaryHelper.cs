@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class DictionaryHelper
@@ -28,12 +29,12 @@ public class DictionaryHelper
         }
     }
 
-    public static Dictionary<T, List<U>> GroupByValues<U, T>(Dictionary<U, T> dictionary)
+    public static Dictionary<T, List<U>> GroupByValues<U, T, ColType>(Dictionary<U, T> dictionary)
     {
         Dictionary<T, List<U>> result = new Dictionary<T, List<U>>();
         foreach (var item in dictionary)
         {
-            DictionaryHelper.AddOrCreate<T, U>(result, item.Value, item.Key);
+            DictionaryHelper.AddOrCreate<T, U, ColType>(result, item.Value, item.Key);
         }
         return result;
     }
@@ -86,16 +87,70 @@ public class DictionaryHelper
     /// <param name="p"></param>
     public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
     {
-        if (sl.ContainsKey(key))
+        AddOrCreate<Key, Value, object>(sl, key, value);
+    }
+
+    /// <summary>
+    /// A3 is inner type of collection entries
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <typeparam name="ColType"></typeparam>
+    /// <param name="sl"></param>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    {
+        //T, byte[]
+        if (key is IEnumerable && typeof(ColType) != typeof(object))
         {
-            sl[key].Add(value);
+            IEnumerable<ColType> keyE = key as IEnumerable<ColType>;
+
+            bool contains = false;
+            foreach (var item in sl)
+            {
+                
+
+                IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
+                if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
+                {
+                    contains = true;
+                }
+                
+            }
+            if (contains)
+            {
+                foreach (var item in sl)
+                {
+                    IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
+                    if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
+                    {
+                        item.Value.Add(value);
+                    }
+                }
+            }
+            else
+            {
+                List<Value> ad = new List<Value>();
+                ad.Add(value);
+                sl.Add(key, ad);
+            }
+
         }
         else
         {
-            List<Value> ad = new List<Value>();
-            ad.Add(value);
-            sl.Add(key, ad);
+            if (sl.ContainsKey(key))
+            {
+                sl[key].Add(value);
+            }
+            else
+            {
+                List<Value> ad = new List<Value>();
+                ad.Add(value);
+                sl.Add(key, ad);
+            }
         }
+        
     }
 
     public static void AddOrCreateTimeSpan<Key>(Dictionary<Key, TimeSpan> sl, Key key, DateTime value)

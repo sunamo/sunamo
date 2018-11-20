@@ -1,4 +1,5 @@
 ﻿
+using sunamo.Constants;
 using sunamo.Extensions;
 using System;
 using System.Collections;
@@ -258,18 +259,20 @@ public static class CA
         return result;
     }
 
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term)
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, bool fixedSpace = true)
     {
         List<int> result = new List<int>();
         int i = 0;
-        foreach (var item in value)
-        {
-            if (item.Contains(term))
+            foreach (var item in value)
             {
-                result.Add(i);
+                if (SH.Contains( item, term, fixedSpace))
+                {
+                    result.Add(i);
+                }
+                i++;
             }
-            i++;
-        }
+        
+        
 
         return result;
     }

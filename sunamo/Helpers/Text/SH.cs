@@ -109,11 +109,19 @@ public static class SH
     /// <param name="input"></param>
     /// <param name="what"></param>
     /// <returns></returns>
-    public static bool Contains(string input, string what)
+    public static bool Contains(string input, string term, bool fixedSpace = true)
     {
-        if (what != "")
+        if (term != "")
         {
-            return input.Contains(what);
+            if (fixedSpace)
+            {
+                return input.Contains(term);
+            }
+            else
+            {
+                var allWords = SH.Split(term, AllStrings.space);
+                return SH.ContainsAll(input, allWords);
+            }
         }
         return false;
     }
@@ -268,6 +276,18 @@ public static class SH
         }
 
         return founded;
+    }
+
+    internal static bool ContainsAll(string input, IEnumerable<string> allWords)
+    {
+        foreach (var item in allWords)
+        {
+            if (!input.Contains(item))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /// <summary>
@@ -828,6 +848,16 @@ public static class SH
     public static string DoubleSpacesToSingle(string v)
     {
         return SH.ReplaceAll2(v, " ", "  ");
+    }
+
+    public static string AddEmptyLines(string content, int addRowsDuringScrolling)
+    {
+        var lines = SH.GetLines(content);
+        for (int i = 0; i < addRowsDuringScrolling; i++)
+        {
+            lines.Add(string.Empty);
+        }
+        return SH.JoinNL(lines);
     }
 
     public static string ToCase(string v, bool? velkym)

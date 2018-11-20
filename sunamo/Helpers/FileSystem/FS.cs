@@ -910,16 +910,21 @@ namespace sunamo
             Directory.Delete(p, false);
         }
 
-        public static void DeleteFilesWithSameContent(List<string> files)
+        public static void DeleteFilesWithSameContentBytes(List<string> files)
         {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>(files.Count);
+            DeleteFilesWithSameContentWorking<byte[], byte>(files, File.ReadAllBytes);
+        }
+
+        public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T > readFunc)
+        {
+            Dictionary<string, T> dictionary = new Dictionary<string, T>(files.Count);
             foreach (var item in files)
             {
-                dictionary.Add(item, TF.ReadFile(item));
+                dictionary.Add(item, readFunc.Invoke(item));
 
             }
 
-            Dictionary<string, List<string>> sameContent = DictionaryHelper.GroupByValues<string, string>(dictionary);
+            Dictionary<T, List<string>> sameContent = DictionaryHelper.GroupByValues<string, T, ColType>(dictionary);
 
             foreach (var item in sameContent)
             {
@@ -929,6 +934,15 @@ namespace sunamo
                     item.Value.ForEach(d => File.Delete(d));
                 }
             }
+        }
+
+        /// <summary>
+        /// Working fine, verified by Unit tests
+        /// </summary>
+        /// <param name="files"></param>
+        public static void DeleteFilesWithSameContent(List<string> files)
+        {
+            DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
 
         }
 

@@ -149,6 +149,7 @@ namespace desktop.Helpers.Backend
         {
             if (txtContent.LineCount > addLines)
             {
+                // -4 due to excepiton on txt.GetCharacterIndexFromLineIndex(line); - line was 244, but has only 243 lines
                 line += addLines - 2;
             }
             
