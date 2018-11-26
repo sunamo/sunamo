@@ -8,7 +8,7 @@ namespace sunamo.Enums
 {
     public enum NamespaceCodeElementsType
     {
-        Nope = 0;
+        Nope = 0,
         Enum,
         Class,
         Interface,

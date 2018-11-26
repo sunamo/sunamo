@@ -10,7 +10,7 @@ namespace sunamo.Constants
         public static string Docs = @"D:\Docs";
         public static string Downloads = @"D:\Downloads";
         public static string Music2 = @"D:\Music2";
-        
+        public static string sczPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz\");
 
         //
 

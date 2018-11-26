@@ -373,7 +373,7 @@ public static class PageArgumentVerifier
         //stranka = tokeny[0];
         bool route = false;
         MySitesShort mss= ((MySitesShort)IDWeb);
-        if (mss == MySitesShort.App || mss == MySitesShort.Wmc)
+        if (mss == MySitesShort.App)
         {
             route = true; 
         }

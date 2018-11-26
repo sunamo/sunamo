@@ -10,17 +10,16 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace sunamo.Html
-{
+
     public static class HtmlHelper
     {
         #region Without HtmlAgility
         #region ToXml
         public static string ToXmlFinal(string xml)
         {
-            xml = sunamo.Html.HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(xml);
+            xml = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(xml);
             xml = XH.RemoveXmlDeclaration(xml);
-            return "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" + sunamo.Html.HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(XH.RemoveXmlDeclaration(xml.Replace("<?xml version=\"1.0\" encoding=\"iso-8859-2\" />", "").Replace("<?xml version=\"1.0\" encoding=\"utf-8\" />", "").Replace("<?xml version=\"1.0\" encoding=\"UTF-8\" />", "")));
+            return "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" + HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(XH.RemoveXmlDeclaration(xml.Replace("<?xml version=\"1.0\" encoding=\"iso-8859-2\" />", "").Replace("<?xml version=\"1.0\" encoding=\"utf-8\" />", "").Replace("<?xml version=\"1.0\" encoding=\"UTF-8\" />", "")));
         }
 
         /// <summary>
@@ -44,7 +43,7 @@ namespace sunamo.Html
             {
                 vr = XH.RemoveXmlDeclaration(vr);
             }
-            vr = sunamo.Html.HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(vr);
+            vr = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(vr);
             return vr;
         }
 
@@ -1112,4 +1111,4 @@ namespace sunamo.Html
         }
         #endregion
     }
-}
+

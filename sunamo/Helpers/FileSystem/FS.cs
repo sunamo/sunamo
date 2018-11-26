@@ -20,10 +20,23 @@ namespace sunamo
         static List<char> invalidPathChars = null;
         static Type type = typeof(FS);
 
-
         static List<char> invalidFileNameChars = null;
         static List<char> invalidCharsForMapPath = null;
         static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
+
+        
+
+        public static void DeleteEmptyFiles(string folder, SearchOption so)
+        {
+            var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
+            foreach (var item in files)
+            {
+                if (FS.GetFileSize(item) == 0)
+                {
+                    FS.TryDeleteFile(item);
+                }
+            }
+        }
 
         /// <summary>
         /// In key are just filename, in value full path to all files 
@@ -146,7 +159,12 @@ namespace sunamo
 
         public static List<string> GetFolders(string folder)
         {
-            return new List<string>(Directory.GetDirectories(folder));
+            return GetFolders(folder, SearchOption.TopDirectoryOnly);
+        }
+
+        public static List<string> GetFolders(string folder, SearchOption so)
+        {
+            return new List<string>(Directory.GetDirectories(folder, "*", so));
         }
 
         public static void CopyFile(string jsFiles, string v)
@@ -2003,7 +2021,14 @@ namespace sunamo
             return files;
         }
 
-
+        public static List<string> OnlyNamesWithoutExtension(List<string> p)
+        {
+            for (int i = 0; i < p.Count; i++)
+            {
+                p[i] = Path.GetFileNameWithoutExtension(p[i]);
+            }
+            return p;
+        }
 
         /// <summary>
         /// 
@@ -2012,11 +2037,7 @@ namespace sunamo
         /// <returns></returns>
         public static string[] OnlyNamesWithoutExtension(string[] p)
         {
-            for (int i = 0; i < p.Length; i++)
-            {
-                p[i] = Path.GetFileNameWithoutExtension(p[i]);
-            }
-            return p;
+            return OnlyNamesWithoutExtension(new List<string>(p)).ToArray();
         }
 
         public static string[] OnlyNamesWithoutExtensionCopy(List<string> p2)

@@ -11,8 +11,6 @@ public static class UriWebServices
         public static void SearchInAll(string what)
         {
             //UriWebServices.SearchInAll(RepairMobileValues.allRepairKitShops, what);
-
-
         }
     }
 
@@ -284,8 +282,6 @@ public static class UriWebServices
     {
         return uri.Replace(chromeSearchstringReplacement, term);
     }
-
-    
 
     public static string CoordsInfo(string f)
     {
