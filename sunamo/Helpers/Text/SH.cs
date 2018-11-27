@@ -31,7 +31,16 @@ public static class SH
         return text;
     }
 
-
+    public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
+    {
+        CA.Trim(input);
+        for (int i = 0; i < input.Count; i++)
+        {
+            input[i] = input[i].Insert(1, AllStrings.space);
+        }
+        input.Sort();
+        return input;
+    }
 
     public static string ReplaceAllCaseInsensitive(string vr, string zaCo, params string[] co)
     {
@@ -1693,12 +1702,12 @@ public static class SH
     /// </summary>
     /// <param name="pred"></param>
     /// <param name="za"></param>
-    /// <param name="pozice"></param>
+    /// <param name="text"></param>
     /// <param name="or"></param>
-    public static void GetPartsByLocation(out string pred, out string za, string pozice, char or)
+    public static void GetPartsByLocation(out string pred, out string za, string text, char or)
     {
-        int dex = pozice.IndexOf(or);
-        SH.GetPartsByLocation(out pred, out za, pozice, dex);
+        int dex = text.IndexOf(or);
+        SH.GetPartsByLocation(out pred, out za, text, dex);
     }
 
     public static bool IsNumber(string str, params char[] nextAllowedChars)
@@ -1717,17 +1726,17 @@ public static class SH
         return true;
     }
 
-    public static void GetPartsByLocation(out string pred, out string za, string or, int pozice)
+    public static void GetPartsByLocation(out string pred, out string za, string text, int pozice)
     {
         if (pozice == -1)
         {
-            pred = or;
+            pred = text;
             za = "";
         }
         else
         {
-            pred = or.Substring(0, pozice);
-            za = or.Substring(pozice + 1);
+            pred = text.Substring(0, pozice);
+            za = text.Substring(pozice + 1);
         }
 
         

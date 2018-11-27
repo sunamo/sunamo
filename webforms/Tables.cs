@@ -5,29 +5,29 @@ using System.Linq;
 
 public class Tables 
 {
-    #region 1 Bib
+    #region 1 Bib - keep there, because SczAdmin and others are dependents
     #region Bib *
     #region Čtecí plány
-    //public const string Sda_GroupVersesOfPlans = "Sda_GroupVersesOfPlans";
-    //public const string Sda_NameOfPlans = "Sda_NameOfPlans";
-    //public const string Sda_ReadedDaysOfPlans = "Sda_ReadedDaysOfPlans";
-    //public const string Sda_CategoryOfPlan = "Sda_CategoryOfPlan";
-    //public const string Sda_DonedPlans = "Sda_DonedPlans";
+    public const string Sda_GroupVersesOfPlans = "Sda_GroupVersesOfPlans";
+    public const string Sda_NameOfPlans = "Sda_NameOfPlans";
+    public const string Sda_ReadedDaysOfPlans = "Sda_ReadedDaysOfPlans";
+    public const string Sda_CategoryOfPlan = "Sda_CategoryOfPlan";
+    public const string Sda_DonedPlans = "Sda_DonedPlans";
     #endregion
 
     #region Main
     public const string Sda_BibSearchIndex = "Sda_BibSearchIndex";
-    //public const string Sda_Book = "Sda_Book";
-    //public const string Sda_Verse = "Sda_Verse";
-    //public const string Sda_Word = "Sda_Word";
-    //public const string Sda_BookShortcut = "Sda_BookShortcut";
+    public const string Sda_Book = "Sda_Book";
+    public const string Sda_Verse = "Sda_Verse";
+    public const string Sda_Word = "Sda_Word";
+    public const string Sda_BookShortcut = "Sda_BookShortcut";
     #endregion
 
     #region Ostatní
-    //public const string Sda_GroupVerses = "Sda_GroupVerses";
+    public const string Sda_GroupVerses = "Sda_GroupVerses";
 
-    ////public const string Bib_Users = "Sda_Users";
-    //public const string Sda_Bookmark = "Sda_Bookmark";
+    public const string Bib_Users = "Sda_Users";
+    public const string Sda_Bookmark = "Sda_Bookmark";
     #endregion
     #endregion
 

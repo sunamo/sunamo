@@ -20,8 +20,6 @@ public enum MySites : byte
     Shared = 13,
     Eurostrip = 14,
     Widgets = 15,
-    WindowsMetroControls = 16,
-    WindowsStoreApps = 17,
     RepairPhones = 18,
     None = 255
 }

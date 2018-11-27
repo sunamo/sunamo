@@ -15,7 +15,7 @@ public static class SunamoPageHelper
     public static string DescriptionOfSite(byte sda)
     {
         string desc;
-        if (sda == (byte)MySitesShort.Sda)
+        if (sda == (byte)MySitesShort.Fth)
         {
             desc = "Mládež, Sbor, Církev, Křesťanství, Bůh, Ježíš, Duch svatý, Zábava, Hry, Soutěže, Fotogalerie, Download, Odkazy, Kontakty, Kalendář, Vzkazník, Modlitební prosby";
         }

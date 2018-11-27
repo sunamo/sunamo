@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClipboardAsync.cs" />
     <Compile Include="Helpers\DW.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellBuilder.cs" />

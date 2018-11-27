@@ -57,16 +57,23 @@ namespace desktop
 #endif
             //try
             //{
-                txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
-                txt.SelectionLength = txt.GetLineLength(line);
-                txt.CaretIndex = txt.SelectionStart;
-                txt.ScrollToLine(line);
+            txt.SelectionStart = 0;
+            
+            ScrollToLineWorking(txt, line);
             //}
             //catch (Exception ex)
             //{
             //}
             // I had combobox which was focused by ctrl+1. But then lost focus due to next line
             //txt.Focus();
+        }
+
+        private static void ScrollToLineWorking(TextBox txt, int line)
+        {
+            txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+            txt.SelectionLength = txt.GetLineLength(line);
+            txt.CaretIndex = txt.SelectionStart;
+            txt.ScrollToLine(line);
         }
 
         public static void InicializeWidths()

@@ -147,7 +147,7 @@ namespace desktop.Helpers.Backend
         /// <param name="addLines"></param>
         public void ScrollToLineMethod(int line, int addLines)
         {
-            if (txtContent.LineCount > addLines)
+            if (txtContent.LineCount > addLines && line > addLines)
             {
                 // -4 due to excepiton on txt.GetCharacterIndexFromLineIndex(line); - line was 244, but has only 243 lines
                 line += addLines - 2;

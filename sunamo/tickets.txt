@@ -17,7 +17,7 @@ t0016 SunamoYaml
 t0017 ReplaceInAllFiles, because notepad++ saving all files. Is succifient save only changed. Automatically create script for git add. Then these changes is mixed with other changes. 
 t0018 GenerateCommandForGitAddSunamo
 t0019 Point git ignore to all solutions
-t0020 
+t0020 Make app for bundle ts file  webpack --mode development ./ts/Dev_ConvertHtmlToEntities.js --output-path=./ts/Developer --output-filename=ConvertHtmlToEntities.js
 t0021 download 50MB of files, write review and check what is in french and other language
 t0022 ConsoleApp1 GetLinesWithDiacritic as another user selected action.
 t0023 Find new work
@@ -42,6 +42,8 @@ t0037 make working awesome font, need it for SearchInCode, have created solution
 t0038 jednoduchy parser na html kde nebudu muset kodit v c#, bude stacit zadat syntaxi v textu http://www.ceske-hospudky.cz/hudebni-kluby/ostrava
 t0039 tidy up sql solutions, after reduce every push to git, not done yet
 t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole solution, it musnt be with TODO and so
+
+t0041 process recovered sources codes and find all regions
 
 live wallpaper
 

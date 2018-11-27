@@ -19,6 +19,6 @@ public class JavaScriptPaths
     public const string Web_Clipboard = "ts/Web/Clipboard.js";
     public const string AngularJs = "ts/angular.min.js";
     public const string AngularJsRoute = "ts/angular-route.min.js";
-    public const string MetroUi = "ts/metro.js";
+    public const string MetroUi = "js/MetroShared/metro.min.js";
     public const string NgDirectiveFillHeight = "js/angular/angular-fill-height.js";
 }

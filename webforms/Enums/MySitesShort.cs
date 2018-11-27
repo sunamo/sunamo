@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// Every web should start with unique letter - checked by AddSpaceAfterFirstLetterForEveryAndSort - 
 /// Používá se pro mnoho serverů pro ukládání do DB, proto hodnotu žádné z těchto výčtových hodnot nemůžeš měnit, protože by ti pak nefungovala práce s DB
 /// </summary>
 public enum MySitesShort : byte
@@ -15,13 +16,11 @@ public enum MySitesShort : byte
     Nope = 8,
     //Bld = 9,
     TBG = 10,
-    Sda = 11,
+    Fth = 11,
     Sho = 12,
     Sha = 13,
     Eur = 14,
     Wid = 15,
-    Wmc = 16,
-    Wsa = 17,
     Rps = 18,
     None = 255
 }

@@ -7,10 +7,17 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows;
 using System.Windows.Forms;
+using win;
+// if app isnt STA, raise exception
+//using System.Windows;
+// if app isnt STA, return empty
+//using System.Windows.Forms;
 
-public  class ClipboardHelperWin : IClipboardHelper
+/// <summary>
+/// Use in ClipboardAsync and ClipboardHelperWin only System.Windows.Forms, not System.Windows which have very similar interface.
+/// </summary>
+public class ClipboardHelperWin : IClipboardHelper
 {
     IClipboardMonitor clipboardMonitor = null;
     public static ClipboardHelperWin Instance = new ClipboardHelperWin();
@@ -38,8 +45,13 @@ public  class ClipboardHelperWin : IClipboardHelper
 
     public string GetText()
     {
-        return Clipboard.GetText();
+        ClipboardAsync ca = new ClipboardAsync();
+        string s = ca.GetText();
+        return s;
+        //return Clipboard.GetText();
     }
+
+    
 
     public List<string> GetLines()
     {
