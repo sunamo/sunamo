@@ -1088,27 +1088,43 @@ public static class CA
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
     }
 
+    /// <summary>
+    /// direct edit
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="idKesek"></param>
+    /// <returns></returns>
     public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek)
     {
         List<T> foundedDuplicities;
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
     }
 
+    /// <summary>
+    /// direct edit
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="idKesek"></param>
+    /// <param name="foundedDuplicities"></param>
+    /// <returns></returns>
     public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek, out List<T> foundedDuplicities)
     {
         foundedDuplicities = new List<T>();
         List<T> h = new List<T>();
-        foreach (T item in idKesek)
+        for (int i = idKesek.Count - 1; i >= 0; i--)
         {
+            var item = idKesek[i];
             if (!h.Contains(item))
             {
                 h.Add(item);
             }
             else
             {
+                idKesek.RemoveAt(i);
                 foundedDuplicities.Add(item);
             }
         }
+        
         return h;
     }
 
@@ -1202,6 +1218,15 @@ public static class CA
 
     public static IEnumerable ToEnumerable(params object[] p)
     {
+        if (p.Count() == 0)
+        {
+            return new List<string>();
+        }
+
+        if (p[0] is IEnumerable)
+        {
+            return (IEnumerable)p.First();
+        }
         return p;
     }
 
