@@ -58,7 +58,6 @@ public static class SH
         return vr;
     }
 
-
     public static string PrefixIfNotStartedWith(string http, string item)
     {
         if (!item.StartsWith(http))
@@ -67,8 +66,6 @@ public static class SH
         }
         return item;
     }
-
-
 
     /// <summary>
     /// Whether A1 contains any from a3. a2 only logical chcek 
@@ -2913,8 +2910,72 @@ public static class SH
         return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
 
+    #region Join - its chaos in it, previous interface
     #region Join
-    public static string Join(object delimiter, IEnumerable parts)
+    //public static string JoinStringParams(string name, params string[] labels) { return null; }
+    //public static string JoinStringParams(object delimiter, params string[] parts) { return null; }
+    //public static string JoinPairs(params object[] args){return null;} 
+    #endregion
+
+    #region Join - Delete after all solutions working
+    //public static string JoinString(object delimiter, IEnumerable parts){return null;}
+    //public static string Join(IEnumerable parts, object delimiter){return null;}
+    //public static string JoinIEnumerable(object delimiter, IEnumerable parts){return null;}
+    #endregion Join - Delete after all solutions working
+
+    #region Join
+    //public static string Join(char p, IList vsechnyFotkyVAlbu){return null;}
+    //public static string Join(char p, int[] vsechnyFotkyVAlbu){return null;}
+    //public static string Join(char name, params object[] labels){return null;}
+    //public static string Join(List<string> labels, char name){return null;}
+    #endregion
+
+    #region JoinNL
+    //public static string JoinNL(IEnumerable p){return null;}
+    //public static string JoinNL(params string[] p){return null;}
+    #endregion
+
+    //public static string JoinSpace(IEnumerable<string> nazev){return null;}
+    //public static string JoinString(string name, IEnumerable labels){return null;}
+    //public static string JoinStringExceptIndexes(string name, IEnumerable labels, params int[] v2){return null;}
+    //public static string JoinMoreWords(char v, params string[] fields){return null;}
+    //public static string JoinWithoutTrim(string p, IList ownedCatsLI){return null;}
+    //public static string JoinIEnumerable(char name, IEnumerable labels){return null;}
+    //public static string JoinWithoutEndTrimDelimiter(string name, params string[] labels){return null;}
+    //public static string JoinFromIndex(int p, char delimiter, IEnumerable<string> tokeny){return null;}
+    //public static string JoinFromIndex(int dex, string delimiter, IEnumerable<string> parts){return null;}
+    //public static string JoinToIndex(int dex, string delimiter, IEnumerable<string> parts){return null;}
+    //public static string JoinMakeUpTo2NumbersToZero(char p, params int[] args){return null;}
+    //public static string JoinDictionary(Dictionary<string, string> dictionary, string v){return null;} 
+    #endregion
+
+    #region Join
+    /* Result of refactoring Join methods:
+     * params have only two:
+     * Join
+     * JoinString
+     */
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(object delimiter, params object[] parts)
+    {
+        // JoinString point to Join with implementation
+        return Join(delimiter.ToString(), CA.ToEnumerable( parts));
+    }
+
+    /// <summary>
+    /// A2 Must be string due to The call is ambiguous between the following methods or properties: 'SH.Join(object, IEnumerable)' and 'SH.Join(IEnumerable, object)'
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(string delimiter, IEnumerable parts)
     {
         string s = delimiter.ToString();
         StringBuilder sb = new StringBuilder();
@@ -2933,17 +2994,10 @@ public static class SH
         //return d;
     }
 
-    /// <summary>
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string Join(object delimiter, params object[] parts)
+    public static string JoinStringParams(object delimiter, params string[] parts)
     {
-        // JoinString point to Join with implementation
-        return JoinString(delimiter, parts);
+        // TODO: Delete after all app working, has here method Join with same arguments
+        return Join(delimiter, CA.ToEnumerable( parts));
     }
 
     #region Join - Delete after all solutions working
@@ -2960,11 +3014,7 @@ public static class SH
         return Join(delimiter, parts);
     }
 
-    public static string JoinStringParams(object delimiter, params string[] parts)
-    {
-        // TODO: Delete after all app working, has here method Join with same arguments
-        return Join(delimiter, parts);
-    }
+    
 
     /// <summary>
     /// Will be delete after final refactoring
@@ -2976,10 +3026,22 @@ public static class SH
     /// <returns></returns>
     public static string Join(IEnumerable parts, object delimiter)
     {
+        if (delimiter is string)
+        {
+            return Join(delimiter, parts);
+        }
         // TODO: Delete after all app working, has flipped A1 and A2
         return Join(delimiter, parts);
     }
 
+    // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
+
+        /// <summary>
+        /// This can be only one 
+        /// </summary>
+        /// <param name="delimiter"></param>
+        /// <param name="parts"></param>
+        /// <returns></returns>
     public static string JoinIEnumerable(object delimiter, IEnumerable parts)
     {
         // TODO: Delete after all app working
