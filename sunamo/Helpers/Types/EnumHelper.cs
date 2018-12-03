@@ -140,6 +140,22 @@ namespace sunamo
         }
 
         /// <summary>
+        /// ignore case
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="web"></param>
+        /// <returns></returns>
+        public static T Parse<T>(string web) where T : struct
+        {
+            T result;
+            if (Enum.TryParse<T>(web, true, out result))
+            {
+                return result;
+            }
+            return default(T);
+        }
+
+        /// <summary>
         /// Tested with EnumA
         /// </summary>
         /// <typeparam name="T"></typeparam>

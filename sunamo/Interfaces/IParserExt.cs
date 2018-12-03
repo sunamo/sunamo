@@ -11,5 +11,5 @@ public interface IParserCollection<T>
 
 public interface IParser
 {
-    void Parse(string co);
+    void Parse(string input);
 }

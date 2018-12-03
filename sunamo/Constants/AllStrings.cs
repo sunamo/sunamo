@@ -39,6 +39,9 @@ namespace sunamo.Constants
         public const string dot = ".";
         public const string asterisk = "*";
 
+        /// <summary>
+        /// semicolon
+        /// </summary>
         public const string sc = ";";
         public const string qm = "\"";
         /// <summary>
@@ -55,5 +58,6 @@ namespace sunamo.Constants
         /// colon space
         /// </summary>
         public static string cs2 = ": ";
+        public const string bs2 = "\b";
     }
 }

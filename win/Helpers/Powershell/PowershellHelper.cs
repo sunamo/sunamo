@@ -32,7 +32,7 @@ namespace win.Helpers.Powershell
         {
             PowershellBuilder ps = PowershellBuilder.GetInstance();
             ps.CmdC(v);
-            await PowershellRunner.InvokeAsync(ps.ToString());
+            await PowershellRunner.InvokeAsync(ps.ToList());
         }
     }
 }

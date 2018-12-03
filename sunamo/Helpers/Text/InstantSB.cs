@@ -1,13 +1,16 @@
-﻿/// <summary>
-/// SB, kter� po ka�d� p�id. polo�ce p�id� znak.
-/// </summary>
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System;
+/// <summary>
+/// InstantSB(can specify own delimiter, check whether dont exists)
+/// TextBuilder(implements Undo, save to Sb or List)
+/// HtmlSB(Same as InstantSB, use br)
+/// </summary>
 public class InstantSB //: StringWriter
 {
     StringBuilder sb = new StringBuilder();
     string tokensDelimiter;
+
     public InstantSB(string znak)
     {
         this.tokensDelimiter = znak;

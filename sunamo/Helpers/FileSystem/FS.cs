@@ -39,6 +39,24 @@ namespace sunamo
         }
 
         /// <summary>
+        /// A2 can be null
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="folder"></param>
+        /// <param name="insert"></param>
+        /// <returns></returns>
+        public static string InsertBetweenFileNameAndPath(string item, string folder, string insert)
+        {
+            if (folder == null)
+            {
+                folder = FS.GetDirectoryName(item);
+            }
+            var outputFolder = FS.Combine(folder, insert);
+            FS.CreateDirectoryIfNotExists(outputFolder);
+            return FS.Combine( outputFolder, Path.GetFileName(item));
+        }
+
+        /// <summary>
         /// In key are just filename, in value full path to all files 
         /// </summary>
         /// <param name="linesFiles"></param>
@@ -1506,7 +1524,7 @@ namespace sunamo
 
         public static string WithoutEndSlash(string v)
         {
-            return WithEndSlash(ref v);
+            return WithoutEndSlash(ref v);
         }
 
         public static string WithoutEndSlash(ref string v)

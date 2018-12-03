@@ -1,12 +1,24 @@
-﻿using System;
+﻿using sunamo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public static class MySitesConverter //: ISimpleConverter<string, MySites>
 {
-    public static string ConvertTo(MySites u)
+    /// <summary>
+    /// ignore case
+    /// </summary>
+    /// <param name="u"></param>
+    /// <returns></returns>
+    public static MySites ConvertTo(string u)
     {
-        return u.ToString();
+        var r = EnumHelper.Parse<MySites>(u);
+        return r;
+    }
+
+    public static MySites ConvertTo(MySitesShort u)
+    {
+        return (MySites)((int)u);
     }
 
     public static byte ConvertFrom(MySites u)

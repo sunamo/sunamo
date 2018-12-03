@@ -210,6 +210,7 @@
     <Compile Include="Helpers\Resources\DrawingImageHelper.cs" />
     <Compile Include="Helpers\Resources\DrawingImagesHelper.cs" />
     <Compile Include="Helpers\Resources\ImageHelper.cs" />
+    <Compile Include="Helpers\Resources\ImageHelperShared.cs" />
     <Compile Include="Helpers\Resources\ImagesHelper.cs" />
     <Compile Include="Helpers\Resources\ImageSourceHelper.cs" />
     <Compile Include="Helpers\Resources\WritableBitmap.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
+    <Compile Include="ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />

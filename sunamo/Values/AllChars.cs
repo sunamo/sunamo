@@ -97,6 +97,10 @@ public static class AllChars
     public const char lb = '(';
     public const char rb = ')';
     public const char stroke = '/';
+    /// <summary>
+    /// backspace
+    /// </summary>
+    public const char bs2 = '\b';
     #endregion
 
     static AllChars()
