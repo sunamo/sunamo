@@ -305,6 +305,7 @@ public static class JunctionPoint
         }
 
         /// <summary>
+        /// 
         /// Determines whether the specified path exists and refers to a junction point.
         /// </summary>
         /// <param name="path">The junction point path</param>
