@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,11 @@ namespace webforms.Helpers
         public static MySitesShort GetMss(string table, ref bool pok)
         {
             MySitesShort mss = MySitesShort.Nope;
+
              pok = false;
-            List<string> tabulkyNope = webforms.MSStoredProceduresI.ci.SelectGetAllTablesInDBStartedWith(MySitesShort.Nope);
+            //List<string> tabulkyNope = webforms.MSStoredProceduresI.ci.SelectGetAllTablesInDBStartedWith(MySitesShort.Nope);
+            var tabulkyNope = Reflection.GetConsts(typeof(Tables)).Select(d => d.Name).Where(r => !r.Contains(AllChars.us));
+
             if (table.Length > 3)
             {
                 if (Enum.TryParse<MySitesShort>(table.Substring(0, 3), false, out mss))
@@ -48,7 +52,7 @@ namespace webforms.Helpers
             return mss;
         }
 
-        MySitesShort GetMySitesShortFromTableName(string table)
+        public static MySitesShort GetMySitesShortFromTableName(string table)
         {
             MySitesShort mss = MySitesShort.Nope;
             if (Enum.TryParse<MySitesShort>(table.Substring(0, 3), false, out mss))

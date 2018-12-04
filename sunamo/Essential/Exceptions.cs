@@ -71,6 +71,11 @@ namespace sunamo.Essential
             return null;
         }
 
+        internal static object IsNotAllowed(string before, string what)
+        {
+            return CheckBefore(before) + what + " is not allowed.";
+        }
+
         public static string FileWasntFoundInDirectory(string before, string directory, string fileName)
         {
             return CheckBefore(before) + "File "+fileName+" wasn't found in " + directory;

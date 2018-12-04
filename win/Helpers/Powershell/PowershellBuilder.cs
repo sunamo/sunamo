@@ -10,26 +10,33 @@ namespace win.Helpers.Powershell
 {
     public class PowershellBuilder
     {
-        TextBuilder sb = new TextBuilder();
+        TextBuilder sb = null;
         static PowershellBuilder instance = new PowershellBuilder();
 
         public PowershellBuilder()
         {
+            sb = new TextBuilder(true);
             sb.prependEveryNoWhite = AllStrings.space;
         }
 
         public void Clear()
         {
-            sb.sb.Clear();
+            sb.Clear();
         }
 
         /// <summary>
+        /// Dont postfix with NewLine
         /// Automatically prepend by space
         /// </summary>
         /// <param name="v"></param>
         public void AddRaw(string v)
         {
             sb.Append(v);
+        }
+
+        public void AddRawLine(string v)
+        {
+            sb.AppendLine( v);
         }
 
         public void AddArg(string argName, string argValue)
@@ -51,7 +58,7 @@ namespace win.Helpers.Powershell
         /// <returns></returns>
         public string Cd(string path)
         {
-            sb.Append("cd \"" + path + "\"");
+            sb.AppendLine("cd \"" + path + "\"");
             return sb.ToString();
         }
 
@@ -63,6 +70,11 @@ namespace win.Helpers.Powershell
         public override string ToString()
         {
             return sb.ToString();
+        }
+
+        public List<string> ToList()
+        {
+            return sb.list;
         }
     }
 }

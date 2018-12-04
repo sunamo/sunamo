@@ -42,6 +42,11 @@ public class ThrowExceptions
         DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
     }
 
+    internal static void IsNotAllowed(Type type, string methodName, string what)
+    {
+        ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName), what));
+    }
+
     public static void IsNull(object type, string methodName, string variableName, object variable)
     {
         ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName), variableName, variable));

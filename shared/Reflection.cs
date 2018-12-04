@@ -39,8 +39,6 @@ namespace sunamo
             return types.Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
         }
 
-        
-
         public IList<DependencyProperty> GetAttachedProperties(DependencyObject obj)
         {
             List<DependencyProperty> result = new List<DependencyProperty>();
@@ -58,6 +56,13 @@ namespace sunamo
             }
 
             return result;
+        }
+
+        public static List<FieldInfo> GetConsts(Type type)
+        {
+            FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
+            return fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
         }
     }
 }

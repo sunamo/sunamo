@@ -63,6 +63,28 @@ public static class CL
         return UserMustType(what, true);
     }
 
+    public static void ClearCurrentConsoleLine()
+    {
+        int currentLineCursor = Console.CursorTop;
+        Console.SetCursorPosition(0, Console.CursorTop);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, currentLineCursor);
+    }
+
+    /// <summary>
+    /// Is A1 is negative => chars to remove
+    /// </summary>
+    /// <param name="leftCursorAdd"></param>
+    public static void ClearBehindLeftCursor(int leftCursorAdd)
+    {
+        int currentLineCursor = Console.CursorTop;
+        int leftCursor = Console.CursorLeft + leftCursorAdd +1;
+
+        Console.SetCursorPosition(leftCursor, Console.CursorTop);
+        Console.Write(new string(' ', Console.WindowWidth + leftCursorAdd));
+        Console.SetCursorPosition(leftCursor, currentLineCursor);
+    }
+
     /// <summary>
     /// In A1 not end with :
     /// Return null when user force stop 
@@ -88,7 +110,15 @@ public static class CL
         {
             zad = (int) Console.ReadKey().KeyChar;
 
-            if (zad == 27)
+            if (zad == 8)
+            {
+                sb.Remove(sb.Length - 1, 1);
+                // not delete visually, only move cursor about two back
+                //Console.Write(AllChars.bs2);
+                
+                ClearBehindLeftCursor(-1);
+            }
+            else if (zad == 27)
             {
                 z = null;
                 break;

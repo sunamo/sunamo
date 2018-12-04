@@ -747,13 +747,13 @@ public static class SH
         return vr;
     }
 
-    public static string SubstringIfAvailable(string p1, int p2)
+    public static string SubstringIfAvailable(string input, int lenght)
     {
-        if (p1.Length > p2)
+        if (input.Length > lenght)
         {
-            return p1.Substring(0, p2);
+            return input.Substring(0, lenght);
         }
-        return p1;
+        return input;
     }
 
     public static string RemoveLastCharIfIs(string slozka, char znak)

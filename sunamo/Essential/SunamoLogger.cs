@@ -5,7 +5,7 @@ using System.Text;
 
 namespace sunamo.Essential
 {
-    class SunamoLogger : LoggerBase
+    public class SunamoLogger : LoggerBase
     {
         public static SunamoLogger Instance = new SunamoLogger(WriteLine);
 

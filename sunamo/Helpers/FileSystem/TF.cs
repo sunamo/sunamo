@@ -37,6 +37,12 @@ public class TF
         return enc;
     }
 
+    /// <summary>
+    /// Dont working, with Air bank export return US-ascii / 1252, file has diacritic
+    /// Atom with auto-encoding return ISO-8859-2 which is right
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
     public static Encoding GetEncoding(FileStream file)
     {
         var bom = new byte[4];

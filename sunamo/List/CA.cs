@@ -85,6 +85,18 @@ public static class CA
         return existsInBoth;
     }
 
+    internal static void AppendToLastElement(List<string> list, string s)
+    {
+        if (list.Count >0 )
+        {
+            list[list.Count - 1] += s;
+        }
+        else
+        {
+            list.Add(s);
+        }
+    }
+
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {
         int count = 0;
