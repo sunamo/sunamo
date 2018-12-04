@@ -133,10 +133,6 @@ public class SunamoCzMetroUIHelper
             {
                 continue;
             }
-            if (item == MySites.WindowsStoreApps)
-            {
-                continue;
-            }
             // 18
             if (item == MySites.RepairPhones)
             {

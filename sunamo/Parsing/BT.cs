@@ -295,9 +295,9 @@ namespace sunamo
             return vr.ToArray();
         }
 
-        public static bool IsInRange(int od, int to, int index)
+        public static bool IsInRange(int od, int to, int value)
         {
-            return od >= index && to <= index;
+            return od >= value && to <= value;
         }
 
         private static List<string> GetNumberedListFromToList(int p, int indexOdNext)

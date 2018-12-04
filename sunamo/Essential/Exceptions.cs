@@ -23,6 +23,11 @@ namespace sunamo.Essential
             return "File " + fnOri + " has wrong file extension";
         }
 
+        public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)
+        {
+            return string.Format("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
+        }
+
         internal static string FileExists(string before, string fulLPath)
         {
             if (File.Exists(fulLPath))
