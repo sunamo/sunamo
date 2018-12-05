@@ -18,6 +18,11 @@ namespace sunamo.Helpers.DT
             return NH.MakeUpTo2NumbersToZero(dt.Hour) + ":" + NH.MakeUpTo2NumbersToZero(dt.Minute) + ":" + NH.MakeUpTo2NumbersToZero(dt.Second) + ":" + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + " " + defin;
         }
 
+        internal static string ToShortTime(DateTime value)
+        {
+            return value.Hour + ":" + DTHelperGeneral.MakeUpTo2NumbersToZero( value.Minute);
+        }
+
 
         #endregion
 

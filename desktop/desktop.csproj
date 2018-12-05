@@ -167,6 +167,7 @@
     <Compile Include="Data\TextBlockData.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
+    <Compile Include="Extensions\RadioButtonExtensions.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
@@ -249,6 +250,7 @@
     <Compile Include="Storage\AppSettingsManager.cs" />
     <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
+    <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="TrialManager.cs" />
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
@@ -412,7 +414,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
     <Folder Include="ftp\" />
   </ItemGroup>
   <ItemGroup>

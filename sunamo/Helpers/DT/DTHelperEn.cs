@@ -64,6 +64,11 @@ namespace sunamo.Helpers.DT
             return vr;
         }
 
+        //internal static string ToShortTime(DateTime value)
+        //{
+        //    return 
+        //}
+
         public static DateTime ParseDateUSA(string input)
         {
             DateTime vr = DateTime.MinValue;

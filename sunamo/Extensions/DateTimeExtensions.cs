@@ -1,4 +1,6 @@
-﻿using System;
+﻿using sunamo;
+using sunamo.Helpers.DT;
+using System;
 
 public static class DateTimeExtensions
 {
@@ -12,5 +14,12 @@ public static class DateTimeExtensions
         return dt.Hour + ":" + dt.Minute;
     }
 
-
+    public static string ToStringShortTimeNullable(this DateTime? dt)
+    {
+        if (dt.HasValue)
+        {
+            return DTHelperCs.ToShortTime(dt.Value);
+        }
+        return string.Empty;
+    }
 }
