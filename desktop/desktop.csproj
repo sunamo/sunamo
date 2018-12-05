@@ -225,6 +225,7 @@
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
+    <Compile Include="Hotkey.cs" />
     <Compile Include="ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />

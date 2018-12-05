@@ -47,6 +47,8 @@ namespace desktop.Essential
 //            status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
 //        }
 
+            
+
         public static void SaveReferenceToTextBlockStatus(bool restore, TextBlock tbTemporaryLastErrorOrWarning, TextBlock tbTemporaryLastOtherMessage)
         {
             if (restore)
@@ -155,8 +157,15 @@ namespace desktop.Essential
         public static TextBlock tbLastOtherMessage = null;
         static TextBlock tbLastErrorOrWarningSaved = null;
         static TextBlock tbLastOtherMessageSaved = null;
+        static StackPanel lbLogsOthers = null;
+        static StackPanel lbLogsErrors = null;
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
-        
+
+        public static void SaveReferenceToLogsStackPanel(StackPanel _lbLogsOthers, StackPanel _lbLogsErrors)
+        {
+            lbLogsErrors = _lbLogsErrors;
+            lbLogsOthers = _lbLogsOthers;
+        }
     }
 }
