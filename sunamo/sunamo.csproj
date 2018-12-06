@@ -1,33 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoWarn>1701;1702;1998;0108</NoWarn>
-    <CodeAnalysisRuleSet />
+    <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <CodeAnalysisRuleSet />
+    <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.6.15" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.5" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Converters\" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="win">
       <HintPath>..\win\bin\Release\win.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>
