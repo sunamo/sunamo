@@ -5,8 +5,8 @@ using System.Text;
 
     public class DTConstants
     {
-        #region Dny v týdny CS
-        public const string Pondeli = "Pondělí";
+    #region Dny v týdny CS
+    public const string Pondeli = "Pondělí";
         public const string Utery = "Úterý";
         public const string Streda = "Středa";
         public const string Ctvrtek = "Čtvrtek";

@@ -8,16 +8,19 @@ using System.Text;
 
 namespace sunamo.Generators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GitBashBuilder
     {
-        static TextBuilder sb = new TextBuilder();
+        public TextBuilder sb = new TextBuilder();
 
-        static GitBashBuilder()
+        public GitBashBuilder()
         {
             sb.prependEveryNoWhite = AllStrings.space;
         }
 
-        static void Git(string remainCommand)
+         void Git(string remainCommand)
         {
             Git(sb.sb, remainCommand);
         }
@@ -39,7 +42,10 @@ namespace sunamo.Generators
             sb.AppendLine("cd " + SH.WrapWith( key, AllChars.qm)); 
         }
 
-        
+        public void Clear()
+        {
+            sb.Clear();
+        }
 
         public void Append(string text)
         {
@@ -159,6 +165,10 @@ namespace sunamo.Generators
             AppendLine();
         }
 
-        
+        public void Status()
+        {
+            Git("status");
+            AppendLine();
+        }
     }
 }

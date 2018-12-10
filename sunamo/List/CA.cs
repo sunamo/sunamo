@@ -253,6 +253,12 @@ public static class CA
         return true;
     }
 
+    public static List<string> ReturnWhichContains(List<string> lines, string term)
+    {
+        List<int> founded;
+        return ReturnWhichContains(lines, term, out founded);
+    }
+
     public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded)
     {
         founded = new List<int>();

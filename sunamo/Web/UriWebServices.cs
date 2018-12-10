@@ -37,6 +37,9 @@ public static class UriWebServices
         }
     }
 
+    /// <summary>
+    /// For phones, etc. is better repas sites as mp.cz
+    /// </summary>
     public static class AdsMsRegion
     {
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
@@ -104,6 +107,9 @@ public static class UriWebServices
 
     }
 
+    /// <summary>
+    /// For phones, etc. is better repas sites as mp.cz
+    /// </summary>
     public static class AdsWholeCR
     {
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
