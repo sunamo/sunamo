@@ -54,5 +54,15 @@ namespace desktop
 
             return attachedProperties;
         }
+
+        public static T CreatedWithCopiedValues<T>(T t, params DependencyProperty[] p) where T : DependencyObject
+        {
+            T instance = Activator.CreateInstance<T>();
+            foreach (var item in p)
+            {
+                instance.SetValue(item, t.GetValue(item));
+            }
+            return instance;
+        }
     }
 }

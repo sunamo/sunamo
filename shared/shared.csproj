@@ -66,6 +66,7 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\sunamo.cz\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -157,6 +158,7 @@
     <Compile Include="MSSQL\Wid\WidStoredProceduresI.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="RA.cs" />
+    <Compile Include="StatusHelper.cs" />
     <Compile Include="sunamo\Pictures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection.cs" />

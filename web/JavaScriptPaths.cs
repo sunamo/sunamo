@@ -5,7 +5,7 @@ public class JavaScriptPaths
 {
     public const string RequireJS = "wwwroot/lib/requirejs/require.js";
     public const string su = "ts/su.js";
-    public const string jQuery = "ts/jquery-3.3.1.min.js";
+    public const string jQuery = "ts/jquery.js";
     public const string jQueryUiJs = "ts/jquery-ui-1.11.4.min.js";
     public const string jQueryPrettySocial = "js/jquery/jquery.prettySocial.min.js";
     public const string JustifiedGallery = "Shared/js/JustifiedGallery/jquery.justifiedGallery.min.js";
@@ -19,6 +19,6 @@ public class JavaScriptPaths
     public const string Web_Clipboard = "ts/Web/Clipboard.js";
     public const string AngularJs = "ts/angular.min.js";
     public const string AngularJsRoute = "ts/angular-route.min.js";
-    public const string MetroUi = "js/MetroShared/metro.min.js";
+    public const string MetroUi = "_/metro/js/metro.min.js";
     public const string NgDirectiveFillHeight = "js/angular/angular-fill-height.js";
 }

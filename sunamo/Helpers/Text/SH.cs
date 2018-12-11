@@ -31,6 +31,18 @@ public static class SH
         return text;
     }
 
+    internal static string Format(string status, object[] args)
+    {
+        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
+        {
+            return status;
+        }
+        else
+        {
+            return string.Format(status, args);
+        }
+    }
+
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
     {
         CA.Trim(input);
@@ -1726,6 +1738,13 @@ public static class SH
         return true;
     }
 
+    /// <summary>
+    /// Into A1,2 never put null
+    /// </summary>
+    /// <param name="pred"></param>
+    /// <param name="za"></param>
+    /// <param name="text"></param>
+    /// <param name="pozice"></param>
     public static void GetPartsByLocation(out string pred, out string za, string text, int pozice)
     {
         if (pozice == -1)

@@ -22,13 +22,11 @@ namespace sunamo.Essential
             
         }
 
-        public void WriteList(string collectionName, IEnumerable list)
+
+        public void WriteList(string collectionName, List<string> list)
         {
             WriteLine(collectionName + " elements:");
-            foreach (var item in list)
-            {
-                WriteLine(item.ToString());
-            }
+            WriteList(list);
         }
 
         public  void TwoState(bool ret, params object[] toAppend)

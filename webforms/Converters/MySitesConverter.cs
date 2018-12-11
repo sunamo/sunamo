@@ -12,8 +12,8 @@ public static class MySitesConverter //: ISimpleConverter<string, MySites>
     /// <returns></returns>
     public static MySites ConvertTo(string u)
     {
-        var r = EnumHelper.Parse<MySites>(u);
-        return r;
+        MySitesShort r = EnumHelper.Parse<MySitesShort>(u);
+        return ConvertTo(r);
     }
 
     public static MySites ConvertTo(MySitesShort u)

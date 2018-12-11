@@ -1,8 +1,10 @@
-﻿using sunamo;
+﻿using shared;
+using sunamo;
 using sunamo.Essential;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -12,6 +14,8 @@ namespace desktop.Essential
 {
     public  class WpfApp 
     {
+        static DependencyProperty[] props = new DependencyProperty[] { TextBlock.ForegroundProperty, TextBlock.TextProperty };
+
         public static string SQLExpressInstanceName()
         {
             return Environment.MachineName;
@@ -73,17 +77,31 @@ namespace desktop.Essential
         private static void SetStatus(TypeOfMessage st, string status)
         {
             status = DateTime.Now.ToShortTimeString() + " " + status;
-            Color fg = Colors.Black;
+            Color fg = StatusHelper.GetForegroundBrushOfTypeOfMessage(st);
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
                 SetForeground(tbLastErrorOrWarning, fg);
                 SetText(tbLastErrorOrWarning, status);
+
+                if (lbLogsErrors != null)
+                {
+                    TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
+                    txt.ToolTip = tbLastErrorOrWarning.Text;
+                    lbLogsErrors.Children.Insert(0, txt);
+                }
             }
             else
             {
                 SetForeground(tbLastOtherMessage, fg);
                 SetText(tbLastOtherMessage, status);
+
+                if (lbLogsOthers != null)
+                {
+                    TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
+                    txt.ToolTip = tbLastOtherMessage.Text;
+                    lbLogsOthers.Children.Insert(0, txt);
+                }
             }
         }
 

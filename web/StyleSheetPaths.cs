@@ -14,4 +14,9 @@ public static class StyleSheetPaths
     
     public const string jQuerySpinner = "Shared/css/jquery/bootstrap-spinner.css";
     public const string CommentsShared = "Shared/css/CommentsShared.css";
+
+    public const string metro = "_/metro/css/metro.min.css";
+    public const string metroIcons = "_/metro/css/metro-icons.min.css";
+    public const string cssShared = "Shared/css/Shared.css";
+    public const string Dev = "css/Dev.css";
 }
