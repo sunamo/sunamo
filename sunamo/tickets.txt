@@ -40,9 +40,12 @@ t0034 buy huawei battery + lcd
 t0035 offer lcd parts https://www.aliexpress.com/item/Tested-Warranty-5-0-inch-1280x720-Display-For-XiaoMi-RedMi-4X-LCD-with-Touch-Screen-Digitizer/32817876150.html?spm=a2g0s.13010208.99999999.260.25363c001k9xVw, psal jsem mail jestli na to funguje sluzba Odnos
 t0036 opravit kodovani jpn importu, treba GridView, ListView a ListBox - k cemu se kazdy z techto prvku hodi je tak zprzneny ze se prekryva text druhym
 
-t0037 make working awesome font, ne;ed it for SearchInCode, have created solution AwesomeFontTests but to now without any code
-t0038 jednoduchy parser na html kde nebudu muset kodit v c#, bude stacit zadat syntaxi v textu http://www.ceske-hospudky.cz/hudebni-kluby/ostrava
+t0037 make working awesome font, nedeed it for SearchInCode, have created solution AwesomeFontTests but to now without any code
+
+Home:
+t0038 je to plno aplikaci instalovanych na PC, musim v Win Test - jednoduchy parser na html kde nebudu muset kodit v c#, bude stacit zadat syntaxi v textu http://www.ceske-hospudky.cz/hudebni-kluby/ostrava
 t0039 tidy up sql solutions, after reduce every push to git, not done yet
+
 t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole solution, it musnt be with TODO and so
 
 t0041 process recovered sources codes and find all regions
@@ -79,7 +82,7 @@ príklad účtování darů
 náklady na výmalbu 
 vytisknout výpis trestu domů , případně levnější než na checkpoint , stejně tam nedává podpis /razitko 
 android contact app which groups easy changing 
-
+print about secure behaviour on tor https://www.torproject.org/download/download.html#warning
 co s nacuchnutym polštářem 
 zdrojové kódy k sql knize, např. str 224 se pracuje s tabulkami o kterých není vůbec uvedeno kde se vzali nebo jejich data ,teď vidím, je to adventuteworks 
 
@@ -94,3 +97,4 @@ funguje ale za kazdy znak da ,
 zkusit external tool, prvne Clipboard, pak ClipboardHelper
 
 XamlGenerator
+

@@ -17,6 +17,12 @@ using System.Text.RegularExpressions;
 
 public static class SH
 {
+    /// <summary>
+    /// If A1 is string, return A1
+    /// If IEnumerable, return joined by comma
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public static string ListToString(object value)
     {
         string text;
