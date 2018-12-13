@@ -49,7 +49,7 @@ t0039 tidy up sql solutions, after reduce every push to git, not done yet
 t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole solution, it musnt be with TODO and so
 
 t0041 process recovered sources codes and find all regions
-t0042 merge in SunamoCzAdmin.Wpf/wsf
+t0042 tidy up solutions, make exactly description to avoid dupliciting
 
 
 t0043 
