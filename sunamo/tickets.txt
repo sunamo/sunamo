@@ -31,7 +31,8 @@ t0027 dostat Sykoruv podpis na smlouvu - jebat
 
 t0028 add reference for d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo.ruleset in csproj, is in sunamo.cz.csproj
 t0029 merge functionality of SunamoMasterPage and SunamoPage to single files. U hodně mám komentář Pokud budeš chtít použít tuto metodu třeba v MasterPage, musíš ji zkopírovat! Žádné vkládání do statických tříd. - dont know what I mean with that, now havent founded any of this text.
-t0030 
+
+t0030 fix push after fatal: not a git repository (or any of the parent directories): .git
 t0031 Refactor opening RepairPhones
 t0032 Advanced work with Enum
 t0033 WpfApp1/SearchInCodeElementsUC
