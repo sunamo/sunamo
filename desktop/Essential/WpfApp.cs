@@ -109,6 +109,8 @@ namespace desktop.Essential
         {
             if (v)
             {
+                // because method was called two times 
+                ThisApp.StatusSetted -= ThisApp_StatusSetted;
                 ThisApp.StatusSetted += ThisApp_StatusSetted;
             }
             else

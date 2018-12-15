@@ -30,10 +30,6 @@ namespace shared
 			return System.Drawing.Color.FromArgb(current_R, current_G, current_B);
         }
 
-
-
-
-
         public static bool IsColorSimilar(System.Drawing.Color a, System.Drawing.Color b, int threshold = 50)
         {
             int r = (int)a.R - b.R;

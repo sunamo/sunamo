@@ -189,6 +189,18 @@ public static class CA
         return nulled;
     }
 
+    public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
+    {
+        for (int i = input.Count - 1; i >= 0; i--)
+        {
+            if (pred.Invoke( input[i], arg))
+            {
+                input.RemoveAt(i);
+            }
+        }
+
+    }
+
     /// <summary>
     /// Dont trim
     /// </summary>
@@ -1241,10 +1253,15 @@ public static class CA
             return new List<string>();
         }
 
-        if (p[0] is IEnumerable)
+        if (p[0] is IEnumerable && p.Length == 1)
         {
             return (IEnumerable)p.First();
         }
+        else if (p[0] is IEnumerable)
+        {
+            return (IEnumerable)p;
+        }
+
         return p;
     }
 

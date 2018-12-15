@@ -8,5 +8,7 @@ using System.Threading.Tasks;
     public interface IUserControl
     {
         string Title { get; }
+    // Stupid, better is doing that on ctor
+    //void OnClosing();
     }
 

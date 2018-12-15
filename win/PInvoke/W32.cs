@@ -4,6 +4,9 @@ using sunamo.PInvoke;
 
 public class W32
 {
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+
     [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
     public static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out string pszPath);
 

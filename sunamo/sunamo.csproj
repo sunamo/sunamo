@@ -6,6 +6,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoWarn>1701;1702;1998;0108</NoWarn>
     <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
@@ -13,10 +14,11 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.6.15" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.5" />
+    <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+    <Folder Include="Helpers\Runtime\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="win">

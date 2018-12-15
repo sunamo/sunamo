@@ -60,7 +60,8 @@ namespace desktop
             T instance = Activator.CreateInstance<T>();
             foreach (var item in p)
             {
-                instance.SetValue(item, t.GetValue(item));
+                var value = t.GetValue(item);
+                instance.SetValue(item, value);
             }
             return instance;
         }

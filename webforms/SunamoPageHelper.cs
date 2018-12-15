@@ -74,7 +74,7 @@ public static class SunamoPageHelper
     public static string GetFooterHtml(MySites ms)
     {
         HtmlGenerator sb = new HtmlGenerator();
-        sb.WriteRaw("(c) 2012 - 2017 ");
+        sb.WriteRaw("(c) 2012 - 2018 with ❤ ");
         sb.WriteTagWithAttr("a", "href", "mailto:radek.jancik@sunamo.cz");
         sb.WriteRaw("radek.jancik@sunamo.cz");
         sb.TerminateTag("a");

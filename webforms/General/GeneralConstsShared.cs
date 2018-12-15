@@ -27,7 +27,7 @@ public static partial class GeneralConsts
     //"css/Web.css",
     public static readonly List<string> includeStyles = new List<string>(new string[] { StyleSheetPaths.cssShared, StyleSheetPaths.metroIcons, StyleSheetPaths.metro });
     // JavaScriptPaths.RequireJS  - byvavalo, uz nemuze byt protoze by se mi prilonkoval pres c# vstupni js soubor pro stranku
-    public static readonly List<string> includeScripts = new List<string>(new string[] { JavaScriptPaths.jQuery,   });
+    public static readonly List<string> includeScripts = new List<string>(new string[] { JavaScriptPaths.MetroUi, JavaScriptPaths.jQuery });
     //public static readonly List<string> includeScriptsAsync = new List<string>() { };
     public const string FbEventBaseUri = "https://www.facebook.com/events/";
 

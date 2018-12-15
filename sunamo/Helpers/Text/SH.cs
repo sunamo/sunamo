@@ -169,6 +169,11 @@ public static class SH
         return nameSolution;
     }
 
+    public static bool EndsWith(string input, string endsWith)
+    {
+        return input.EndsWith(endsWith);
+    }
+
     public static string WrapWithQm(string commitMessage)
     {
         return SH.WrapWith(commitMessage, AllChars.qm);

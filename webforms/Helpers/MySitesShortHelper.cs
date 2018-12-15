@@ -15,15 +15,21 @@ namespace webforms.Helpers
             return GetMss(table, ref pok);
         }
 
+        /// <summary>
+        /// A2 whether was founded exactly match
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="pok"></param>
+        /// <returns></returns>
         public static MySitesShort GetMss(string table, ref bool pok)
         {
             MySitesShort mss = MySitesShort.Nope;
 
-             pok = false;
+            pok = false;
             //List<string> tabulkyNope = webforms.MSStoredProceduresI.ci.SelectGetAllTablesInDBStartedWith(MySitesShort.Nope);
             var tabulkyNope = Reflection.GetConsts(typeof(Tables)).Select(d => d.Name).Where(r => !r.Contains(AllChars.us));
 
-            if (table.Length > 3)
+            if (table.Length > 3 && table.Contains(AllChars.us))
             {
                 if (Enum.TryParse<MySitesShort>(table.Substring(0, 3), false, out mss))
                 {
@@ -34,20 +40,12 @@ namespace webforms.Helpers
                 }
                 else
                 {
-                    if (tabulkyNope.Contains(table))
-                    {
-                        mss = MySitesShort.Nope;
-                        pok = true;
-                    }
+                    // keep 8 Nope
                 }
             }
             else
             {
-                if (tabulkyNope.Contains(table))
-                {
-                    mss = MySitesShort.Nope;
-                    pok = true;
-                }
+                // keep 8 Nope
             }
             return mss;
         }

@@ -32,7 +32,7 @@ public class MultiColorLine
         return hg.ToString();
     }
 
-    public static string GetHtmlCustom(short width)
+    public static string GetHtmlCustom(short width = 1600)
     {
         List<string> colors;
         byte[] sirky;
