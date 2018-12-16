@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.csproj.vspscc" />
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.fx.4.0-CP.csproj.vspscc" />
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.fx.4.0.csproj.vspscc" />
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.fx.4.5.csproj.vspscc" />
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.NETStandard.csproj.vspscc" />
+    <None Remove="HtmlAgilityPack\HtmlAgilityPack.snk" />
+  </ItemGroup>
+
 </Project>

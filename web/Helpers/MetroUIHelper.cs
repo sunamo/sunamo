@@ -3,7 +3,10 @@
 
 public static class MetroUIHelper
 {
-    
+    public static string TransformHtmlToMetro4(string s)
+    {
+        HtmlNode 
+    }
 
     /// <summary>
     /// Získanou třídu pak stačí pouze přidat do atributu class html elementu, u kterého chci mít podbarvení

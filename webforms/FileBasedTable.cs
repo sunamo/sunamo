@@ -6,6 +6,10 @@ public class FileBasedTable
     public static byte[] GetSbf(string table, string column, int id)
     {
         string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
+        if (!File.Exists(file))
+        {
+            return new byte[0];
+        }
         return File.ReadAllBytes(file);
     }
 
