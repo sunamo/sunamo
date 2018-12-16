@@ -144,9 +144,19 @@ namespace desktop
         public void CopyToClipboard()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (object var in lb.Items)
+            foreach (IListBoxHelperItem var in lb.Items)
             {
                 sb.AppendLine(var.ToString());
+            }
+            ClipboardHelper.SetText(sb.ToString());
+        }
+
+        public void CopyToClipboardShort()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (IListBoxHelperItem var in lb.Items)
+            {
+                sb.AppendLine(var.ShortName);
             }
             ClipboardHelper.SetText(sb.ToString());
         }

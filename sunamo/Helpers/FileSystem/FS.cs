@@ -78,6 +78,13 @@ namespace sunamo
         {
             var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
             ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+            ReplaceInAllFiles(replaceFrom, replaceTo, files);
+        }
+
+
+
+        public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files)
+        {
             foreach (var item in files)
             {
                 var content = TF.ReadFile(item);
