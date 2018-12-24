@@ -122,6 +122,7 @@ namespace desktop.Controls
             set
             {
                 ChangeDialogResult(value);
+
             }
         }
 
@@ -130,6 +131,19 @@ namespace desktop.Controls
         private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// A1 must be ABT<string, string>
+        /// </summary>
+        /// <param name="input"></param>
+        public void Accept(object input)
+        {
+            ABT<string, string> d = (ABT<string, string>)input;
+            txtFirst.Text = d.A;
+            txtSecond.Text = d.B;
+            // Cant be, window must be already showned as dialog
+            //DialogResult = true;
         }
     }
 }

@@ -10,10 +10,10 @@ using System.Windows.Input;
 /// </summary>
 public class MenuItemWithSubitemsHelper
 {
-    protected MenuItem tsddb = null;
+        protected MenuItem tsddb = null;
         protected MenuItem prev = new MenuItem();
         protected string originalToolTipText = "";
-    public event EventHandler MenuItemChecked;
+        public event EventHandler MenuItemChecked;
         object selectedO = null;
         bool mnoho = false;
         /// <summary>

@@ -117,9 +117,9 @@ public class TF
     
 
 
-    public static List<string> GetLines(string sobuor)
+    public static List<string> GetLines(string file)
     {
-        return ReadAllLines(sobuor);
+        return ReadAllLines(file);
     }
 
     public static void AppendToFile(string obsah, string soubor)

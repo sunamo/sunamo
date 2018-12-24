@@ -28,6 +28,24 @@ namespace sunamo.Essential
             return string.Format("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
         }
 
+        internal static string HaveAllInnerSameCount(string before, List<List<string>> elements)
+        {
+            int first = elements[0].Count;
+            List<int> wrongCount = new List<int>();
+            for (int i = 1; i < elements.Count; i++)
+            {
+                if (first != elements[i].Count)
+                {
+                    wrongCount.Add(i);
+                }
+            }
+            if (wrongCount.Count > 0)
+            {
+                return $"Elements {SH.Join(wrongCount, AllChars.comma)} have different count than 0 (first)";
+            }
+            return null;
+        }
+
         internal static string FileExists(string before, string fulLPath)
         {
             if (File.Exists(fulLPath))

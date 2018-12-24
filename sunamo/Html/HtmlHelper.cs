@@ -320,28 +320,27 @@ using System.Xml;
         /// <param name="hod"></param>
         public static void SetAttribute(HtmlNode node, string atr, string hod)
         {
-            object o = node.Attributes[atr];
-            if (o != null)
+
+        object o = null;
+            while (true)
             {
-                node.Attributes.Remove(node.Attributes[atr]);
+                o = node.Attributes.FirstOrDefault(a => a.Name == atr);
+                if (o != null)
+                {
+                    node.Attributes.Remove((HtmlAttribute)o);
+                }
+                else
+                {
+                    break;
+                }
             }
             node.Attributes.Add(atr, hod);
         }
         #endregion
 
         #region Get
-        /// <summary>
-        /// Vrátí SE pokud nenalezne, nebo bude prázdný. nevrací null
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="divMain"></param>
-        /// <returns></returns>
-        public static string GetValueOfAttribute(string p, HtmlNode divMain)
-        {
-            return GetValueOfAttribute(p, divMain, false);
-        }
 
-        public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim)
+        public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
         {
             object o = divMain.Attributes[p];
             if (o != null)

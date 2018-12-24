@@ -12,7 +12,6 @@
     <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.6.15" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
   </ItemGroup>
@@ -21,6 +20,9 @@
     <Folder Include="Helpers\Runtime\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="win">
       <HintPath>..\win\bin\Release\win.dll</HintPath>
     </Reference>

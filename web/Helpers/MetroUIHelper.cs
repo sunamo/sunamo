@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-
+﻿using HtmlAgilityPack;
+using sunamo.Html;
+using System.Collections.Generic;
+using System.Text;
 
 public static class MetroUIHelper
 {
-    public static string TransformHtmlToMetro4(string s)
-    {
-        HtmlNode 
-    }
+    
 
     /// <summary>
     /// Získanou třídu pak stačí pouze přidat do atributu class html elementu, u kterého chci mít podbarvení
@@ -37,8 +36,6 @@ public static class MetroUIHelper
         return vr;
     }
 
-    
-     
     /// <summary>
     /// Barvy pozadí které by měli mít popředí bílé
     /// </summary>

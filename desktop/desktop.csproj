@@ -72,6 +72,9 @@
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
     <Compile Include="Controls\Collections\SunamoComboBox.cs" />
+    <Compile Include="Controls\Input\EnterOneValueUC.xaml.cs">
+      <DependentUpon>EnterOneValueUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
@@ -233,7 +236,7 @@
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
-    <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
+    <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
@@ -255,6 +258,9 @@
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="TrialManager.cs" />
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
@@ -294,6 +300,10 @@
     <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\EnterOneValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Result\FoundedFilesUC.xaml">
       <SubType>Designer</SubType>
@@ -400,6 +410,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Visualization\TwoWayTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

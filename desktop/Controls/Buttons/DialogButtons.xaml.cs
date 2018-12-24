@@ -86,5 +86,10 @@ namespace desktop.Controls
         {
             DialogResult = null;
         }
+
+        public void Accept(object input)
+        {
+            throw new Exception("Only buttons cant be accepted, because hasnt data for accept.");
+        }
     }
 }

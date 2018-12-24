@@ -57,6 +57,16 @@ namespace sunamo
         }
 
         /// <summary>
+        /// For empty or whitespace return false.
+        /// </summary>
+        /// <param name="selectedFile"></param>
+        /// <returns></returns>
+        public static bool ExistsFile(string selectedFile)
+        {
+            return File.Exists(selectedFile);
+        }
+
+        /// <summary>
         /// In key are just filename, in value full path to all files 
         /// </summary>
         /// <param name="linesFiles"></param>
@@ -126,6 +136,17 @@ namespace sunamo
             }
         }
 
+        public static string RemoveFile(string fullPathCsproj)
+        {
+            // Most effecient way to handle csproj and dir
+            var ext = FS.GetExtension(fullPathCsproj);
+            if (ext != string.Empty)
+            {
+                fullPathCsproj = FS.GetDirectoryName(fullPathCsproj);
+            }
+            return FS.WithoutEndSlash( fullPathCsproj);
+        }
+
         public static string AddExtensionIfDontHave(string file, string ext)
         {
             // For *.* and git paths {dir}/*
@@ -160,6 +181,12 @@ namespace sunamo
         {
             FS.CreateUpfoldersPsysicallyUnlessThere(path);
             File.WriteAllText(path, content);
+        }
+
+        public static string MakeFromLastPartFile(string fullPath, string ext)
+        {
+            FS.WithoutEndSlash(ref fullPath);
+            return fullPath + ext;
         }
 
         public static void CopyStream(Stream input, Stream output)
@@ -1479,10 +1506,11 @@ namespace sunamo
             return g + ext;
         }
 
-        public static string AddUpfoldersToRelativePath(int i, string file)
+        public static string AddUpfoldersToRelativePath(int i, string file, char delimiter)
         {
-            return SH.JoinTimes(i, AllStrings.dds) + file;
+            var jumpUp = AllStrings.dd + delimiter;
             
+            return SH.JoinTimes(i, jumpUp) + file;
         }
 
         public static string RemoveSerieUnderscore(string d)

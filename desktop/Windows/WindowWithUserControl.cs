@@ -1,6 +1,7 @@
 ﻿using desktop;
 using desktop.Controls;
 using desktop.Essential;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
@@ -43,6 +44,11 @@ public class WindowWithUserControl : Window
         this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
         this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
         this.Content = dock;
+    }
+
+    public void Accept(string value)
+    {
+        
     }
 
     private void WindowWithUserControl_Closed(object sender, System.EventArgs e)

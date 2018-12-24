@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-/// <summary>
-/// In key is name
-/// In AB Key full type
-/// </summary>
-public class ApplicationDataContainerList : Dictionary<string, AB>
+
+public class ApplicationDataContainerList
 {
     string path = null;
+    /// <summary>
+    /// In key is name
+    /// In AB Key full type
+    /// </summary>
+    Dictionary<string, AB> data = new Dictionary<string, AB>();
 
-    
 
     public ApplicationDataContainerList(string path)
     {
@@ -160,14 +161,14 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
             if (value != null)
             {
                 AB get = AB.Get(fullName, value);
-                base.Add(key, get);
+                data.Add(key, get);
             }
         }
     }
 
     internal bool? GetNullableBool(string isChecked)
     {
-        if (this.ContainsKey(isChecked))
+        if (data.ContainsKey(isChecked))
         {
             return BTS.StringToBool(this[isChecked].ToString());
         }
@@ -177,7 +178,20 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
     internal List<string> GetListString(string dataContext)
     {
         
-        return DeserializeList(this.ContainsKey(dataContext) ? this[dataContext] : null );
+        return DeserializeList(data.ContainsKey(dataContext) ? this[dataContext] : null );
+    }
+
+    public string GetString(string text)
+    {
+        if (data.ContainsKey(text))
+        {
+            return data[text].B.ToString();
+        }
+        else
+        {
+            // File doesnt exists on disc
+            return null;
+        }
     }
 
     List<string> DeserializeList(object value)
@@ -193,13 +207,13 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
 
     public void Nuke()
     {
-        base.Clear();
+        data.Clear();
         SaveFile();
     }
 
     public void DeleteEntry(string key)
     {
-        base.Remove(key);
+        data.Remove(key);
         SaveFile();
     }
 
@@ -207,9 +221,9 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
     {
         get
         {
-            if (base.ContainsKey(key))
+            if (data.ContainsKey(key))
             {
-                return base[key].B;
+                return data[key].B;
             }
             return null;
         }
@@ -221,9 +235,9 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
             {
                val = SF.PrepareToSerialization2(val as IEnumerable, AllStrings.comma);
             }
-            if (base.ContainsKey(key))
+            if (data.ContainsKey(key))
             {
-                AB ab = base[key];
+                AB ab = data[key];
                 if (typeName == ab.A)
                 {
                     ab.B = val;
@@ -238,7 +252,7 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
             else
             {
                 AB ab = AB.Get(typeName, val);
-                base.Add(key, ab);
+                data.Add(key, ab);
                 string zapsatDoSouboru = SF.PrepareToSerialization(CA.ToListString( key, typeName, SH.ListToString( value)));
                 TF.AppendToFile(zapsatDoSouboru, path);
             }
@@ -247,13 +261,13 @@ public class ApplicationDataContainerList : Dictionary<string, AB>
 
     public bool Contains(string key)
     {
-        return base.ContainsKey(key);
+        return data.ContainsKey(key);
     }
 
     public void SaveFile()
     {
         StringBuilder sb = new StringBuilder();
-        foreach (var item in this)
+        foreach (var item in data)
         {
             sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, item.Value.B)));
         }

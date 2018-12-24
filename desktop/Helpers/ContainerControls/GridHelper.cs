@@ -35,6 +35,17 @@ namespace desktop.Helpers
             }   
         }
 
+        internal static List<string> ForAllTheSame(int columns)
+        {
+            List<string> result = new List<string>(columns);
+            var d = 100d / (double)columns;
+            for (int i = 0; i < columns; i++)
+            {
+                result.Add(d + "*");
+            }
+            return result;
+        }
+
         public static RowDefinition GetRowDefinition(GridLength auto)
         {
             RowDefinition rd = new RowDefinition();

@@ -49,6 +49,9 @@ namespace sunamo.Constants
         /// </summary>
         public const string swda = " - ";
         public const string doubleSpace = "  ";
+        /// <summary>
+        /// " - "
+        /// </summary>
         public static string swd = " - ";
         /// <summary>
         /// comma space

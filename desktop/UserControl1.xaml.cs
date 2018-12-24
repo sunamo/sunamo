@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,22 +16,13 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for EnterValueForm.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class EnterValueForm : Window, IResult
+    public partial class UserControl1 : UserControl
     {
-        public EnterValueForm(string whatEnter)
+        public UserControl1()
         {
             InitializeComponent();
-            enterOneValueUC.Init(whatEnter);
-            enterOneValueUC.Finished += EnterOneValueUC_Finished;
         }
-
-        private void EnterOneValueUC_Finished(object o)
-        {
-            Finished(o);
-        }
-
-        public event VoidObject Finished;
     }
 }

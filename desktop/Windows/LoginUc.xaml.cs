@@ -1,10 +1,12 @@
-﻿using System;
+﻿using sunamo.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,7 +28,9 @@ namespace desktop
 
         public LoginUc()
         {
+            
             InitializeComponent();
+            
         }
 
         /// <summary>
@@ -86,6 +90,19 @@ namespace desktop
             return he != "" && lo != "";
         }
 
+        /// <summary>
+        /// A1 = LoginData
+        /// </summary>
+        /// <param name="input"></param>
+        public void Accept(object input)
+        {
+            LoginData ld = (LoginData)input;
+            txtLogin.Text = ld.Login;
+            txtHeslo.Text = ld.Pw;
+            // Cant be, window must be already showned as dialog
+            //DialogResult = true;
+        }
+
         public event VoidBoolNullable ChangeDialogResult;
 
 
@@ -117,5 +134,7 @@ namespace desktop
                 return txtHeslo.Text;
             }
         }
+
+        public ButtonBase AcceptButton => btnLetsLogin;
     }
 }

@@ -22,6 +22,11 @@ namespace sunamo.Essential
         #endregion
 
         #region Error
+        public void SomeErrorsOccuredSeeLog()
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "Some errors occured, see log");
+        }
+
         public void FolderDontExists(string folder)
         {
             writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder " + folder + " doesn't exists.");

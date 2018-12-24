@@ -45,7 +45,15 @@ public static class SH
         }
         else
         {
-            return string.Format(status, args);
+            try
+            {
+                return string.Format(status, args);
+            }
+            catch (Exception)
+            {
+                return status;
+                
+            }
         }
     }
 
@@ -1702,7 +1710,11 @@ public static class SH
     public static string ReplaceByIndex(string s, string zaCo, int v, int length)
     {
         s = s.Remove(v, length);
-        s = s.Insert(v, zaCo);
+        if (zaCo != string.Empty)
+        {
+            s = s.Insert(v, zaCo);
+        }
+        
         return s;
     }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using desktop.Helpers;
+using sunamo.Constants;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +11,38 @@ using System.Windows.Markup;
 namespace desktop
 {
     
-    public class XamlGenerator<T> : XmlGenerator
+    public class XamlGenerator : XmlGenerator
     {
+        static Type type = typeof(XamlGenerator);
+
+        /// <summary>
+        /// in outer rows
+        /// in inner columns
+        /// </summary>
+        /// <param name="elements"></param>
+        public void Grid(List<List<string>> elements)
+        {
+            ThrowExceptions.HaveAllInnerSameCount(type, "Grid", elements);
+            int rows = elements.Count;
+            int columns = elements[0].Count;
+
+            WriteTag("Grid");
+
+            WriteColumnDefinitions(GridHelper.ForAllTheSame(columns));
+            WriteRowDefinitions(GridHelper.ForAllTheSame(rows));
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int column = 0; column < columns; column++)
+                {
+                    string cell = elements[row][column];
+                    cell = cell.Replace("><", $" Grid.Column=\"{column}\" Grid.Row=\"{row}\"><");
+                    WriteRaw(cell);
+                }
+            }
+            TerminateTag("Grid");
+        }
+
         public void WriteDataTemplate(List<double> cd)
         {
             WriteRaw(@"<DataTemplate><Grid>");
@@ -24,17 +56,42 @@ namespace desktop
                                 </DataTemplate>");
         }
 
-        private void WriteColumnDefinitions(List<double> cd)
+        public void WriteColumnDefinitions(List<double> cd)
+        {
+            var cds = CA.ToListString(cd);
+            CA.ChangeContent<string, string>(cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
+            WriteColumnDefinitions(cds);
+        }
+
+
+        public void WriteColumnDefinitions(List<string> cd)
         {
             WriteRaw("<Grid.ColumnDefinitions>");
             foreach (var item in cd)
             {
-                WriteRaw("<ColumnDefinition Width='"+ item.ToString().Replace(',', '.') +"'></ColumnDefinition>");
+                WriteRaw("<ColumnDefinition Width='"+ item +"'></ColumnDefinition>");
             }
             WriteRaw("</Grid.ColumnDefinitions>");
         }
 
-        public T GetControl()
+        public void WriteRowDefinitions(List<double> cd)
+        {
+            var cds = CA.ToListString(cd);
+            CA.ChangeContent<string, string>(cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
+            WriteRowDefinitions(cds);
+        }
+
+        public void WriteRowDefinitions(List<string> cd)
+        {
+            WriteRaw("<Grid.RowDefinitions>");
+            foreach (var item in cd)
+            {
+                WriteRaw("<RowDefinition Height='" + item + "'></RowDefinition>");
+            }
+            WriteRaw("</Grid.RowDefinitions>");
+        }
+
+        public T GetControl<T>()
         {
             string vr = sb.ToString();
             // xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"

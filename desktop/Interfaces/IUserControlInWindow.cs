@@ -1,5 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 
+/// <summary>
+/// Applied to any control
+/// 
+/// </summary>
 public interface IUserControlWithResult
 {
     /// <summary>
@@ -12,6 +17,8 @@ public interface IUserControlWithResult
     /// 
     /// </summary>
     bool? DialogResult {set;}
+    //ButtonBase AcceptButton { get; }
+    void Accept(object input);
 }
 
 public interface IUserControlInWindow : IUserControlWithResult

@@ -18,6 +18,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName), fulLPath));
     }
 
+    public static void HaveAllInnerSameCount(Type type, string methodName, List<List<string>> elements)
+    {
+        ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName), elements));
+    }
+
     /// <summary>
     /// Must be string due to in sunamo is not NamespaceElement
     /// </summary>

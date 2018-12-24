@@ -51,6 +51,10 @@ t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole 
 t0041 process recovered sources codes and find all regions
 t0042 tidy up solutions, make exactly description to avoid dupliciting
 
+porovnani prvku Metro 3 a 4
+jak zpenezit weby - prodavat je jako baliky, ve vlastni sablonou a podporou
+jak se zapisuji znacky v jinych popularnich fw
+
 
 t0043 
 t0044 clean up SunamoStoraEnso
@@ -63,6 +67,7 @@ capture dbms_output oracle globally
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller?view=aspnetcore-2.1
 
 live wallpaper
+find all caches from gpx file cpWPT=, its important to compare whether I have in GPS all
 
 data as mp3 to huawei 
 sečíst moje dluhy a závazky 

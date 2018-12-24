@@ -94,5 +94,16 @@ namespace desktop.Controls
         {
             DialogResult = b;
         }
+
+        /// <summary>
+        /// A1 = string
+        /// </summary>
+        /// <param name="input"></param>
+        public void Accept(object input)
+        {
+            selectFolder.SelectedFolder = input.ToString();
+            // Cant be, window must be already showned as dialog
+            //DialogResult = true;
+        }
     }
 }

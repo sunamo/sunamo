@@ -44,14 +44,34 @@ public class ApplicationDataContainer : ApplicationDataConsts
         cb.ItemsSource = list;
         cb.KeyUp += Cb_KeyUp;
         cb.DataContextChanged += Cb_DataContextChanged;
-        
     }
 
     public void Add(CheckBox chb)
     {
-        var adcl = AddFrameworkElement(chb);
+        ApplicationDataContainerList adcl = AddFrameworkElement(chb);
         chb.Click += Chb_Click;
         chb.IsChecked = adcl.GetNullableBool( IsChecked);
+    }
+
+    public void Add(TextBox txt)
+    {
+        var adcl = AddFrameworkElement(txt);
+        txt.Text = adcl.GetString(Text);
+        txt.TextChanged += Txt_TextChanged;
+    }
+
+    private void Txt_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        TextBox chb = sender as TextBox;
+        data[sender][Text] = chb.Text;
+        var d = data[sender][Text];
+        SaveControl(chb);
+    }
+
+    public void Add(TextBlock tb)
+    {
+        var tb2 = AddFrameworkElement(tb);
+        //tb.TextChanged +=
     }
 
     private void Chb_Click(object sender, RoutedEventArgs e)
@@ -60,8 +80,6 @@ public class ApplicationDataContainer : ApplicationDataConsts
         data[sender][IsChecked] = chb.IsChecked;
         SaveControl(chb);
     }
-
-    
 
     private void Cb_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
     {

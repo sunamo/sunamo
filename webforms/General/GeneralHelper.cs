@@ -1061,6 +1061,7 @@ public class GeneralHelper
         {
             location.IDState = 0;
         }
+        
 
         if (location.IDState != 0)
         {

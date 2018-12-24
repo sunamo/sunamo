@@ -53,7 +53,14 @@ namespace desktop.Controls
             }
         }
 
+        public static void Validate(TextBlock tbNewPath, SelectFile txtNewPath)
+        {
+            validated = FS.ExistsFile(txtNewPath.SelectedFile);
+            
+        }
+
         string selectedFile = "";
+        public static bool validated;
 
         public string SelectedFile
         {
