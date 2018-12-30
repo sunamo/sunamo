@@ -12,11 +12,15 @@
     <CodeAnalysisRuleSet>../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Converters\**" />
+    <EmbeddedResource Remove="Converters\**" />
+    <None Remove="Converters\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
     <Folder Include="Helpers\Runtime\" />
   </ItemGroup>
   <ItemGroup>

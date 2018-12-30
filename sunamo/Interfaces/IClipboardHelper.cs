@@ -7,7 +7,9 @@ public interface IClipboardHelper
     {
 		string GetText();
 		void SetText(string s);
-	void GetFirstWordOfList();
+    void SetText2(string s);
+    void SetText3(string s);
+    void GetFirstWordOfList();
 	List<string> GetLines();
 	void SetList(List<string> d);
 	void SetLines(List<string> lines);

@@ -31,6 +31,11 @@ namespace sunamo.Essential
         {
             writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder " + folder + " doesn't exists.");
         }
+
+        public void FileDontExists(string selectedFile)
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "File " + selectedFile + " doesn't exists.");
+        }
         #endregion
 
         #region Information
@@ -48,6 +53,8 @@ namespace sunamo.Essential
         {
             writeLineDelegate.Invoke(TypeOfMessage.Information, "Please enter right input data");
         }
+
+        
 
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec

@@ -1,4 +1,11 @@
-﻿t0001 FindRightFlyingTicket
+﻿redirect sunamo.cz/me to scz
+repair gui of ReplaceInFiles, copy as exe
+
+continue from 27/11
+první bydlení, pak teprve zavolat klarce
+
+
+t0001 FindRightFlyingTicket
 t0002 ReplaceInAllFiles - replace name of class, keep name of class entity
 t0003 send cv
 t0004 opravit otevirani kose
@@ -50,13 +57,24 @@ t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole 
 
 t0041 process recovered sources codes and find all regions
 t0042 tidy up solutions, make exactly description to avoid dupliciting
+t0043 zrcadkeni - a nlp 
+t0044 calibre sony headphones 
+t0045 psycho walkman, another relax as mp3
+t0046 cviky na uvolnění svého těla, pak i holky budou uvolněné 
+t0047 mysterky nemá cenu řešit, třeba vytvořit můj web finalek
+t0048 auta / cars - karavan, neplatit žádný nájem. neblbější je internet.
+t0049 sql code folding
+t0050 vps firmy, send cv
 
-porovnani prvku Metro 3 a 4
+
+better pdf view android
+dodělat ucto, kolik bych musel platit pro 10k zisku 
+
 jak zpenezit weby - prodavat je jako baliky, ve vlastni sablonou a podporou
 jak se zapisuji znacky v jinych popularnich fw
 
 
-t0043 
+t0043 scrollviewer to SearchCodeElements file results - try find ompare
 t0044 clean up SunamoStoraEnso
 
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/apex/r51/testing_and_debugging_sqldeveloper/testing_and_debugging_sqldeveloper.html
@@ -105,3 +123,17 @@ zkusit external tool, prvne Clipboard, pak ClipboardHelper
 
 XamlGenerator
 
+701 Lee Road, Suite 300, Chesterbrook, PA 19087
+
+
+Mono\monoConsoleSqlClient - testing connection to SQL DB
+
+Projects:
+SqlServerManager - working with remote and actual 
+
+Sql:
+LearnTransactSql - pokročilé skripty pro T-sql. je to jen v SQL, ne v Project, protože jinak to ztrácí smysl
+
+
+
+Your computer appears to be correctly configured, but the device or resource (DNS server) is not responding

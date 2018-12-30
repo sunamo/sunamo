@@ -72,6 +72,7 @@
     <Compile Include="AF.cs" />
     <Compile Include="Data\LyricsWithRating.cs" />
     <Compile Include="Data\TagWithUri.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Helpers\MySitesShortHelper.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
     <Compile Include="Converters\MySitesConverter.cs" />

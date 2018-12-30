@@ -54,7 +54,7 @@ public static class CL
 
     #region Text
     /// <summary>
-    /// 
+    /// if fail, return empty string.
     /// </summary>
     /// <param name="what"></param>
     /// <returns></returns>
@@ -86,6 +86,7 @@ public static class CL
     }
 
     /// <summary>
+    /// if fail, return empty string.
     /// In A1 not end with :
     /// Return null when user force stop 
     /// A2 are acceptable chars. Can be null/empty for anything 

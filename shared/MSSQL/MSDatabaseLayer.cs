@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Text;
 using System.Data.SqlClient;
+using System.Web;
 
 public class MSDatabaseLayer : MSDatabaseLayerBase
 {
@@ -49,6 +50,13 @@ public class MSDatabaseLayer : MSDatabaseLayerBase
         return true;
 
     }
+
+    public static void AssignConnectionStringScz(HttpApplication app)
+    {
+        
+        AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True;");
+    }
+
     /// <summary>
     /// Používá se ve desktopových aplikacích
     /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace

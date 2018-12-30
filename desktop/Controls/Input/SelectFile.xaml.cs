@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,10 +54,13 @@ namespace desktop.Controls
             }
         }
 
-        public static void Validate(TextBlock tbNewPath, SelectFile txtNewPath)
+        public void Validate(TextBlock tbNewPath)
         {
-            validated = FS.ExistsFile(txtNewPath.SelectedFile);
-            
+            validated = FS.ExistsFile(this.SelectedFile);
+            if (!validated)
+            {
+                InitApp.TemplateLogger.FileDontExists(this.SelectedFile);
+            }
         }
 
         string selectedFile = "";

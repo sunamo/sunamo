@@ -1,5 +1,6 @@
 ﻿
 using sunamo.Constants;
+using sunamo.Data;
 using sunamo.Extensions;
 using System;
 using System.Collections;
@@ -46,8 +47,42 @@ public static class CA
         list[j] = temp;
     }
 
+    public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
+    {
+        List<string> existsIn1 = new List<string>();
+        List<string> existsIn2 = new List<string>();
+
+        int dex = -1;
+
+        for (int i = c2.Count - 1; i >= 0; i--)
+        {
+            string item = c2[i];
+            dex = c1.IndexOf(item);
+            if (dex == -1)
+            {
+                existsIn2.Add(item);
+            }
+        }
+
+        for (int i = c1.Count - 1; i >= 0; i--)
+        {
+            string item = c1[i];
+            dex = c2.IndexOf(item);
+            if (dex == -1)
+            {
+                existsIn1.Add(item);
+            }
+        }
+
+        ABL<string, string> abl = new ABL<string, string>();
+        abl.a = existsIn1;
+        abl.b = existsIn2;
+
+        return abl;
+    }
+
     /// <summary>
-    /// 
+    /// Return what exists in both
     /// Modify both A1 and A2 - keep only which is only in one
     /// </summary>
     /// <param name="c1"></param>
@@ -83,6 +118,15 @@ public static class CA
         }
 
         return existsInBoth;
+    }
+
+    public static List<string> PaddingByEmptyString(List<string> list, int columns)
+    {
+        for (int i = list.Count - 1; i < columns-1; i++)
+        {
+            list.Add(string.Empty);
+        }
+        return list;
     }
 
     internal static void AppendToLastElement(List<string> list, string s)
@@ -199,6 +243,24 @@ public static class CA
             }
         }
 
+    }
+
+    /// <summary>
+    /// Return A1 if stars with any of A2
+    /// </summary>
+    /// <param name="suMethods"></param>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    public static string StartWith(List<string> suMethods, string line)
+    {
+        foreach (var method in suMethods)
+        {
+            if (line.StartsWith(method))
+            {
+                return line;
+            }
+        }
+        return null;
     }
 
     /// <summary>
@@ -484,6 +546,8 @@ public static class CA
         }
         return -1;
     }
+
+   
 
     public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
     {
@@ -1564,6 +1628,12 @@ public static class CA
         return result;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
     public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
     {
         for (int i = 0; i < files_in.Count; i++)

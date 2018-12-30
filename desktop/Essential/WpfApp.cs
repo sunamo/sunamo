@@ -14,6 +14,11 @@ namespace desktop.Essential
 {
     public  class WpfApp 
     {
+        static WpfApp()
+        {
+            EnableDesktopLogging(true);
+        }
+
         static DependencyProperty[] props = new DependencyProperty[] { TextBlock.ForegroundProperty, TextBlock.TextProperty };
 
         public static string SQLExpressInstanceName()
@@ -105,6 +110,8 @@ namespace desktop.Essential
             }
         }
 
+
+
         public static void EnableDesktopLogging(bool v)
         {
             if (v)
@@ -117,12 +124,16 @@ namespace desktop.Essential
             {
                 ThisApp.StatusSetted -= ThisApp_StatusSetted;
             }
+
+
         }
 
         private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
         {
             SetStatus(t, message);
         }
+
+
 
         private static void SetForeground(TextBlock tbLastOtherMessage, Color color)
         {

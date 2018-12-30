@@ -376,13 +376,26 @@ using System.Xml;
             return contains;
         }
 
-        /// <summary>
-        /// Do A2 se může zadat *
-        /// </summary>
-        /// <param name="hn"></param>
-        /// <param name="tag"></param>
-        /// <returns></returns>
-        private static bool HasTagName(HtmlNode hn, string tag)
+    /// <summary>
+    /// Used in ParseChromeAPIs. Searched everywhere, DNF
+    /// </summary>
+    /// <param name="item2"></param>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <param name="v3"></param>
+    /// <returns></returns>
+    public static HtmlNode ReturnTagOfAtribute(HtmlNode item2, string v1, string v2, string v3)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Do A2 se může zadat *
+    /// </summary>
+    /// <param name="hn"></param>
+    /// <param name="tag"></param>
+    /// <returns></returns>
+    private static bool HasTagName(HtmlNode hn, string tag)
         {
             if (tag == "*")
             {
@@ -464,20 +477,31 @@ using System.Xml;
             return ReturnTags(spanInHeader, v).Count != 0;
         }
 
-        
+    /// <summary>
+    /// Used in ParseChromeAPIs. Nowhere is executed
+    /// </summary>
+    /// <param name="dd2"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string ReturnInnerTextOfTagsRek(HtmlNode dd2, string v)
+    {
+        throw new NotImplementedException();
+    }
 
-        #region Apply
-        /// <summary>
-        /// Nehodí se na vrácení obsahu celé stránky
-        /// A1 je zdrojový kód celé stránky
-        /// 
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="p"></param>
-        /// <param name="ssh"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
+
+
+    #region Apply
+    /// <summary>
+    /// Nehodí se na vrácení obsahu celé stránky
+    /// A1 je zdrojový kód celé stránky
+    /// 
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="p"></param>
+    /// <param name="ssh"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             HtmlDocument doc = new HtmlDocument();
@@ -566,14 +590,19 @@ using System.Xml;
             return null;
         }
 
-        /// <summary>
-        /// Prochází děti A1 a pokud některý má název A2, G
-        /// Vrátí null pokud se takový tag nepodaří najít
-        /// </summary>
-        /// <param name="body"></param>
-        /// <param name="nazevTagu"></param>
-        /// <returns></returns>
-        public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
+    public static HtmlNode ReturnNextSibling(HtmlNode h4Callback, string v)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Prochází děti A1 a pokud některý má název A2, G
+    /// Vrátí null pokud se takový tag nepodaří najít
+    /// </summary>
+    /// <param name="body"></param>
+    /// <param name="nazevTagu"></param>
+    /// <returns></returns>
+    public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
         {
             //List<HtmlNode> html = new List<HtmlNode>();
             foreach (HtmlNode item in body.ChildNodes)
@@ -611,16 +640,27 @@ using System.Xml;
             }
             return null;
         }
-        #endregion
 
-        #region 2 Nodes - recursive
-        /// <summary>
-        /// Rekurzivně volá metodu RecursiveReturnAllTags
-        /// </summary>
-        /// <param name="vr"></param>
-        /// <param name="html"></param>
-        /// <param name="p"></param>
-        private static void RecursiveReturnAllTags(List<HtmlNode> vr, HtmlNode html, params string[] p)
+
+    /// <summary>
+    /// Method with just single parameter are used in ParseChromeAPIs
+    /// </summary>
+    /// <param name="dlOuter"></param>
+    /// <returns></returns>
+    public static List<HtmlNode> ReturnTags(HtmlNode dlOuter)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
+
+    #region 2 Nodes - recursive
+    /// <summary>
+    /// Rekurzivně volá metodu RecursiveReturnAllTags
+    /// </summary>
+    /// <param name="vr"></param>
+    /// <param name="html"></param>
+    /// <param name="p"></param>
+    private static void RecursiveReturnAllTags(List<HtmlNode> vr, HtmlNode html, params string[] p)
         {
             foreach (HtmlNode item in html.ChildNodes)
             {

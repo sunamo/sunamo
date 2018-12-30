@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using win;
 // if app isnt STA, raise exception
@@ -28,6 +29,10 @@ public class ClipboardHelperWin : IClipboardHelper
     }
 
     #region Get,Set
+    /// <summary>
+    /// not working if was pasted into visual studio (but code yes), created SetText2
+    /// </summary>
+    /// <param name="v"></param>
     public void SetText(string v)
     {
         if (clipboardMonitor != null)
@@ -51,7 +56,14 @@ public class ClipboardHelperWin : IClipboardHelper
         //return Clipboard.GetText();
     }
 
-    
+    public void SetText2(string s)
+    {
+        var text = Clipboard.GetText();
+        Clipboard.Clear();
+        text = Clipboard.GetText();
+        // Nastavím text a místo toho se mi  uloží nějaký úplně starý
+        Clipboard.SetText(s);
+    }
 
     public List<string> GetLines()
     {
@@ -126,5 +138,11 @@ public class ClipboardHelperWin : IClipboardHelper
         SetText(stringBuilder.ToString());
     }
 
-
+    public void SetText3(string s)
+    {
+        Thread thread = new Thread(() => Clipboard.SetText(s));
+        thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
+        thread.Start();
+        thread.Join();
+    }
 }

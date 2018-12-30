@@ -25,7 +25,7 @@ public class LimitedTimer
         Tick();
         if (pocet == odbylo)
         {
-            //Debug.Print(pocet.ToString());
+            //DebugLogger.Instance.WriteLine(pocet.ToString());
             t.Stop();
         }
     }

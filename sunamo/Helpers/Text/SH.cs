@@ -17,6 +17,26 @@ using System.Text.RegularExpressions;
 
 public static class SH
 {
+    public static string ReplaceWhiteSpacesAndTrim(string p)
+    {
+        return ReplaceWhiteSpaces(p).Trim();
+    }
+
+    public static string ReplaceWhiteSpaces(string p)
+    {
+        return ReplaceWhiteSpacesWithoutSpaces(p).Replace(" ", "");
+    }
+
+    public static string ReplaceWhiteSpacesWithoutSpaces(string p)
+    {
+        return ReplaceWhiteSpacesWithoutSpaces(p, "");
+    }
+
+    public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWith = "")
+    {
+        return p.Replace("\r", replaceWith).Replace("\n", replaceWith).Replace("\t", replaceWith);
+    }
+
     /// <summary>
     /// If A1 is string, return A1
     /// If IEnumerable, return joined by comma
@@ -124,6 +144,24 @@ public static class SH
         }
 
         return hasLine;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="templateHandler"></param>
+    /// <param name="lsf"></param>
+    /// <param name="rsf"></param>
+    /// <param name="id"></param>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
+    {
+        var result = string.Format(templateHandler, args);
+        result = SH.ReplaceAll2(result, "{", lsf);
+        result = SH.ReplaceAll2(result, "}", rsf);
+        return result;
     }
 
     public static string PostfixIfNotEmpty(string text, string postfix)
@@ -427,6 +465,11 @@ public static class SH
         throw new NotImplementedException();
     }
 
+    public static string ReplaceAllDoubleSpaceToSingle(string arg)
+    {
+        return SH.ReplaceAll2(arg, " ", "  ");
+    }
+
     /// <summary>
     /// Pokud je A1 true, bere se z A2,3 menší počet prvků
     /// </summary>
@@ -727,6 +770,11 @@ public static class SH
             vr = Regex.Replace(vr, co[i], zaCo, RegexOptions.IgnoreCase);
         }
         return vr;
+    }
+
+    public static string ReplaceDoubleSpacesAndTrim2(string innerText)
+    {
+        throw new NotImplementedException();
     }
 
     public static string RemoveBracketsWithoutText(string vr)

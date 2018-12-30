@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 
-namespace sunamo.Essential
-{
+//namespace sunamo.Essential
+//{
 
     /// <summary>
     /// Tento DebugLogger.Instance je ve sunamo, obsahuje jedinou metodu, kterou používej ve DebugLogger.Instance např. apps
@@ -41,4 +41,4 @@ namespace sunamo.Essential
 
 
     }
-}
+//}

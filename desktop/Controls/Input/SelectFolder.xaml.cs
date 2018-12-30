@@ -41,8 +41,16 @@ namespace desktop.Controls
 #endif
         }
 
+        public void Validate(TextBlock tbFolder)
+        {
+            SelectFolder.Validate(tbFolder, this);
+            
+            
+        }
+
         /// <summary>
         /// Before first calling I have to set validated = true
+        /// Its instance to avoid include another namespace
         /// </summary>
         /// <param name="validated"></param>
         /// <param name="tb"></param>
@@ -72,6 +80,7 @@ namespace desktop.Controls
             {
                 validated = true;
             }
+
             
         }
 

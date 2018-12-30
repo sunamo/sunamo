@@ -9,6 +9,8 @@ namespace sunamo.Essential
     /// </summary>
     public class InitApp
     {
+        
+
         #region Must be set during app initializing
         public static IClipboardHelper Clipboard
         {

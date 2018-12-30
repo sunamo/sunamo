@@ -55,7 +55,7 @@ namespace sunamo
             SmtpClient client = new SmtpClient();
             client.EnableSsl = true; //Mail aspone nefunguje na SSL zatím, pokud byste zde dali true, tak vám vznikne výjimka se zprávou Server does not support secure connections.
             client.Credentials = new System.Net.NetworkCredential(userName, password);
-            //client.Port = 587; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
+            client.Port = 587; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
             client.Host = "smtp.gmail.com"; //Adresa smtp serveru. Může končit buď na název vašeho webu nebo na aspone.cz. Zadává se bez protokolu, jak je zvykem
             MailMessage mail = new MailMessage();
 

@@ -15,21 +15,25 @@
     {
         var document = new HtmlAgilityPack.HtmlDocument();
         document.LoadHtml(html);
-        foreach (var eachNode in document.DocumentNode.SelectNodes("//*"))
+        var nodes = document.DocumentNode.SelectNodes("//*");
+        if (nodes != null)
         {
-            foreach (var item in eachNode.Attributes)
+            foreach (var eachNode in nodes)
             {
-                if (item.Name.ToLower().StartsWith("on"))
+                foreach (var item in eachNode.Attributes)
                 {
-                    item.Remove();
-                }
-                else if (item.Value.ToLower().Trim().StartsWith("javascript:"))
-                {
-                    item.Remove();
+                    if (item.Name.ToLower().StartsWith("on"))
+                    {
+                        item.Remove();
+                    }
+                    else if (item.Value.ToLower().Trim().StartsWith("javascript:"))
+                    {
+                        item.Remove();
+                    }
                 }
             }
+            html = document.DocumentNode.OuterHtml;
         }
-        html = document.DocumentNode.OuterHtml;
         return html;
     }
 }

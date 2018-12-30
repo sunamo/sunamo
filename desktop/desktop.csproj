@@ -173,6 +173,7 @@
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
+    <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">

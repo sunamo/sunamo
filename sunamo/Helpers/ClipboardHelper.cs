@@ -22,7 +22,12 @@ public  class ClipboardHelper
 		Instance.SetText(s);
 	}
 
-	public static void GetFirstWordOfList()
+    public static void SetText2(string s)
+    {
+        Instance.SetText2(s);
+    }
+
+    public static void GetFirstWordOfList()
 	{
 		Instance.GetFirstWordOfList();
 	}
@@ -52,7 +57,12 @@ public  class ClipboardHelper
 		Instance.SetText(stringBuilder);
 	}
 
-	public static void SetText(StringBuilder stringBuilder)
+    public static void SetText3(string s)
+    {
+        Instance.SetText3(s);
+    }
+
+    public static void SetText(StringBuilder stringBuilder)
 	{
 		Instance.SetText(stringBuilder.ToString());
 	}

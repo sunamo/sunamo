@@ -14,7 +14,17 @@ namespace desktop
     {
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
-        public static bool validated;
+        public static bool validated
+        {
+            set
+            {
+                TextBoxExtensions.validated = value;
+            }
+            get
+            {
+                return TextBoxExtensions.validated;
+            }
+        }
 
         static TextBoxHelper()
         {
@@ -139,32 +149,14 @@ namespace desktop
         }
 
         /// <summary>
-        /// Before first calling I have to set validated = true
+        /// Instead of this use instance 
         /// </summary>
-        /// <param name="validated"></param>
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
         public static void Validate(TextBlock tb, TextBox control, bool trim = true)
         {
-            if (!validated)
-            {
-                return;
-            }
-            string text = control.Text;
-            if (trim)
-            {
-                text = text.Trim();
-            }
-            if (text == string.Empty)
-            {
-                InitApp.TemplateLogger.MustHaveValue(tb.Text);
-                validated = false;
-            }
-            else
-            {
-                validated = true;
-            }
+            control.Validate(tb, trim);
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)

@@ -38,6 +38,11 @@ namespace sunamo
             }
         }
 
+        public static void ReplaceInAllFiles(string from, string to, List<string> files)
+        {
+            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files);
+        }
+
         /// <summary>
         /// A2 can be null
         /// </summary>
@@ -1265,6 +1270,25 @@ namespace sunamo
                 files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(), so));
             }
             return files;
+        }
+
+        // Žádné vytváření statických instancí takovýchto tříd ;)
+        public static string ReplaceIncorrectCharactersFile(string p)
+        {
+            string t = p;
+            foreach (char item in Path.GetInvalidFileNameChars())
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (char item2 in t)
+                {
+                    if (item != item2)
+                    {
+                        sb.Append(item2);
+                    }
+                }
+                t = sb.ToString();
+            }
+            return t;
         }
 
         public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisThen, string replaceForThis)

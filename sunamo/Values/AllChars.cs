@@ -69,6 +69,17 @@ public static class AllChars
 
     public const char cbl = '{';
     public const char cbr = '}';
+
+    /// <summary>
+    /// left square fowl [
+    /// </summary>
+    public const char lsf = '[';
+    /// <summary>
+    /// right square fowl ]
+    /// </summary>
+    public const char rsf = ']';
+
+
     #region Generic chars
     public static readonly char notNumber;
     #endregion
