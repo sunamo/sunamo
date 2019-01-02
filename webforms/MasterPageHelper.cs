@@ -18,7 +18,7 @@ public class MasterPageHelper
     /// <param name="page"></param>
     /// <param name="template"></param>
     /// <param name="writeGaTrackingCode"></param>
-    public static void WriteGeneralCode(Page page, bool template, bool writeGaTrackingCode)
+    public static void WriteGeneralCode(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
         //SunamoPage sp = (SunamoPage)page;
         bool isRoot = MasterPageHelper.IsRoot(page);
@@ -36,7 +36,7 @@ public class MasterPageHelper
     /// <param name="page"></param>
     /// <param name="template"></param>
     /// <param name="writeGaTrackingCode"></param>
-    public static void WriteGeneralCodeRoute(Page page, bool template, bool writeGaTrackingCode)
+    public static void WriteGeneralCodeRoute(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
         //SunamoPage sp = (SunamoPage)page;
         bool isRoot =MasterPageHelper.IsRoot(page);
@@ -82,7 +82,7 @@ public class MasterPageHelper
         
     }
 
-    public static SunamoMasterPage GetSmp(Page p)
+    public static SunamoMasterPage GetSmp(SunamoPage p)
     {
         return (SunamoMasterPage)p.Master;
     }
@@ -91,12 +91,12 @@ public class MasterPageHelper
     /// Vrátí null, jen pokud bude login null nebo WhiteSpaces
     /// </summary>
     /// <returns></returns>
-    public static LoginCookie GetLoginCookie(Page p)
+    public static LoginCookie GetLoginCookie(SunamoPage p)
     {
         return SunamoMasterPage.GetLoginCookie(p.Request);
     }
 
-    public static void AddFavicon(Page page, MySites ms)
+    public static void AddFavicon(SunamoPage page, MySites ms)
     {
         if (page.Header != null)
         {
@@ -111,7 +111,7 @@ public class MasterPageHelper
 
     }
 
-    public static bool IsRoot(Page page)
+    public static bool IsRoot(SunamoPage page)
     {
         //return HttpContext.Current.Request.Path.IndexOf('/', 1) == -1;
         return page.Request.Path.IndexOf('/', 1) == -1;
@@ -136,12 +136,12 @@ public class MasterPageHelper
         }
     }
 
-    protected void LogoutUser(Page p, string web)
+    protected void LogoutUser(SunamoPage p, string web)
     {
         GetSmp(p).Logout();
     }
 
-    private static void WriteGeneralCodeBase(Page page, bool writeGaTrackingCode)
+    private static void WriteGeneralCodeBase(SunamoPage page, bool writeGaTrackingCode)
     {
         if (writeGaTrackingCode)
         {
@@ -156,7 +156,7 @@ public class MasterPageHelper
     /// </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    public static bool ReplaceWithCorrectFunction(Page page)
+    public static bool ReplaceWithCorrectFunction(SunamoPage page)
     {
         LoginedUser lu = SessionManager.GetLoginedUser(page);
         if (lu.ID((SunamoPage)page) == 1)

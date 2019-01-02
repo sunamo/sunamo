@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public static class CSharpHelper
@@ -32,7 +33,7 @@ public static class CSharpHelper
     public static string GetDictionaryStringObject<Value>(List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
     {
         int pocetTabu = 0;
-        GeneratorCSharp gen = new GeneratorCSharp();
+        CSharpGenerator gen = new CSharpGenerator();
         gen.Region(pocetTabu, "Airplane companies");
         if (checkForNull)
         {
@@ -47,6 +48,33 @@ public static class CSharpHelper
         gen.EndRegion(pocetTabu);
         string result = gen.ToString();
         return result;
+    }
+
+    public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)
+    {
+        CSharpGenerator genCS = new CSharpGenerator();
+        genCS.StartClass(0, AccessModifiers.Private, false, nameClass);
+        genCS.Field(1, AccessModifiers.Private, false, VariableModifiers.None, "Dictionary&lt;string, string&gt;", "dict", false, "new Dictionary&lt;string, string&gt;()");
+        CSharpGenerator inner = new CSharpGenerator();
+        foreach (var item in keys)
+        {
+            inner.AppendLine(2, "dict.Add(\"{0}\", \"{1}\");", item, randomValue.Invoke());
+        }
+        genCS.Ctor(1, ModifiersConstructor.Private, nameClass, inner.ToString());
+        genCS.EndBrace(0);
+        return genCS.ToString();
+    }
+
+    public static string GetCtorInner(int tabCount, IEnumerable values)
+    {
+        const string assignVariable = "this.{0} = {0};";
+        CSharpGenerator csg = new CSharpGenerator();
+        foreach (var item in values)
+        {
+            csg.AppendLine(tabCount, string.Format(assignVariable, item));
+
+        }
+        return csg.ToString().Trim();
     }
 
     public static string DefaultValueForType(string type)
@@ -133,14 +161,14 @@ public static class CSharpHelper
     /// <returns></returns>
     public static string GetArray(List<string> input, string arrayName)
     {
-        GeneratorCSharp generator = new GeneratorCSharp();
+        CSharpGenerator generator = new CSharpGenerator();
         generator.List(0, "string", arrayName, input);
         return generator.ToString();
     }
 
     public static string GetList(List<string> input, string listName)
     {
-        GeneratorCSharp generator = new GeneratorCSharp();
+        CSharpGenerator generator = new CSharpGenerator();
         generator.List(0, "string", listName, input);
         return generator.ToString();
     }

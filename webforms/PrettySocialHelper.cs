@@ -11,14 +11,14 @@ using System.Web.UI.HtmlControls;
         /// <summary>
         /// 
         /// </summary>
-        public static void Init( Page p, string title, string description, HtmlAnchor google, HtmlAnchor facebook, HtmlAnchor twitter)
+        public static void Init( SunamoPage p, string title, string description, HtmlAnchor google, HtmlAnchor facebook, HtmlAnchor twitter)
         {
             SetToControl(p, title, description, google);
             SetToControl(p, title, description, facebook);
             SetToControl(p, title, description, twitter);
         }
 
-        private static void SetToControl(Page p, string title, string description, HtmlAnchor google)
+        private static void SetToControl(SunamoPage p, string title, string description, HtmlAnchor google)
         {
             google.Attributes.Add("data-title", title);
             google.Attributes.Add("data-description", description);

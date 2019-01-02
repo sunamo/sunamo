@@ -4,11 +4,45 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using webforms.Interfaces;
 
 public class SunamoPage : System.Web.UI.Page
 {
+    public new HttpRequest Request => HttpContext.Current.Request;
+    public new HttpResponse Response => HttpContext.Current.Response;
+    public new HtmlHead Header
+    {
+        get
+        {
+            try
+            {
+                return Page.Header;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            
+        }
+    }
+    Page page = null;
+    public new Page Page
+    {
+        get
+        {
+            return page;
+        }
+        set
+        {
+            page = value;
+        }
+    }
+    //public new HttpHead Header => HttpContext.Current.
+
     public string hfs = "";
     protected string descriptionPage = "";
     public bool showComments = false;
@@ -28,8 +62,32 @@ public class SunamoPage : System.Web.UI.Page
     public uint overall = 0;
     public uint today = 0;
 
+    public SunamoPage()
+    {
+        IPageCs cs = this as IPageCs;
+
+        if (cs != null)
+        {
+            base.PreInit += cs.SunamoPage_PreInit;
+            base.Init += cs.SunamoPageCs_Init;
+            base.InitComplete += cs.SunamoPageCs_InitComplete;
+            base.PreLoad += cs.SunamoPageCs_PreLoad;
+        //}
+
+            // Load between two ifs
+
+        //if (cs != null)
+        //{
+            base.LoadComplete += cs.SunamoPageCs_LoadComplete;
+            base.PreRender += cs.SunamoPageCs_PreRender;
+            base.SaveStateComplete += cs.SunamoPageCs_SaveStateComplete;
+            // Render method, not event https://www.c-sharpcorner.com/uploadfile/61b832/Asp-Net-page-life-cycle-events/
+            base.Unload += cs.SunamoPageCs_Unload;
+        }
+    }
+
     HtmlGenericControl _errors = null;
-    public HtmlGenericControl errors
+    public HtmlGenericControl errorsPlaceholder
     {
         get
         {
@@ -75,6 +133,32 @@ public class SunamoPage : System.Web.UI.Page
     {
         return Langs.cs;
     }
+
+    //public virtual void Pre_Init()
+    //{
+
+    //}
+
+    //public virtual void Init()
+    //{
+
+    //}
+
+    //public virtual void InitComplete()
+    //{
+
+    //}
+
+    //public virtual void PreLoad()
+    //{
+
+    //}
+
+    //public virtual void Pre_Init()
+    //{
+
+    //}
+
 
 
     protected void InsertPageSnippet(PageSnippet ps)
@@ -325,9 +409,7 @@ public class SunamoPage : System.Web.UI.Page
         return true;
     }
 
-    public SunamoPage()
-    {
-    }
+    
 
     public void WriteOld(PageArgumentName[] pans = null)
     {
@@ -413,15 +495,15 @@ public class SunamoPage : System.Web.UI.Page
     public new void Error(string message)
     {
         var page = this;
-        errors.Visible = true;
+        errorsPlaceholder.Visible = true;
 
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/ko.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "error");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "error");
         if (callEventError)
         {
             if (ErrorEvent != null)
@@ -434,14 +516,14 @@ public class SunamoPage : System.Web.UI.Page
     public TypeOfMessage Warning(string message)
     {
         var page = this;
-        errors.Visible = true;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/warning.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "varovani");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "varovani");
         if (callEventWarning)
         {
             if (WarningEvent != null)
@@ -455,14 +537,14 @@ public class SunamoPage : System.Web.UI.Page
     public void Info(string message)
     {
         var page = this;
-        errors.Visible = true;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/info.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "info");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "info");
         if (callEventInfo)
         {
             if (InfoEvent != null)
@@ -475,14 +557,14 @@ public class SunamoPage : System.Web.UI.Page
     public void Success(string message)
     {
         var page = this;
-        errors.Visible = true;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/ok.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "success");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "success");
         if (callEventSuccess)
         {
             if (SuccessEvent != null)

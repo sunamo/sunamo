@@ -5,12 +5,12 @@ using System.Web.UI;
 /// </summary>
 public static class MeUri
 {
-    public static string Login(Page p)
+    public static string Login(SunamoPage p)
     {
         return "http://" + p.Request.Url.Host + "/Me/Login.aspx";
     }
 
-    public static string Logout(Page p)
+    public static string Logout(SunamoPage p)
     {
         return "http://" + p.Request.Url.Host + "/Me/Logout.aspx";
     }
@@ -34,12 +34,12 @@ public static class MeUri
         return GetWebUri(sp, "ChangeProfilePicture.aspx");
     }
 
-    public static string LoginWithReturnUrl(Page p)
+    public static string LoginWithReturnUrl(SunamoPage p)
     {
         return SunamoCzMetroUIHelper.GetAnchorWithReturnUri(MeUri.Login(p), p.Request);
     }
 
-    public static string LogoutWithReturnUrl(Page p)
+    public static string LogoutWithReturnUrl(SunamoPage p)
     {
         return SunamoCzMetroUIHelper.GetAnchorWithReturnUri(MeUri.Logout(p), p.Request);
     }

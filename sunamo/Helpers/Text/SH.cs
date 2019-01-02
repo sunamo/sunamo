@@ -57,6 +57,28 @@ public static class SH
         return text;
     }
 
+    public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
+    {
+        return JoinKeyValueCollection(dict.Keys, dict.Values, delimiterBetweenKeyAndValue, delimAfter);
+    }
+
+    public static string JoinKeyValueCollection(IEnumerable v1, IEnumerable v2, string delimiterBetweenKeyAndValue, string delimAfter)
+    {
+        StringBuilder sb = new StringBuilder();
+        var v2List = new List<object>(v2.Count());
+        foreach (var item in v2)
+        {
+            v2List.Add(item);
+        }
+        int i = 0;
+        foreach (var item in v1)
+        {
+            sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
+        }
+        
+        return SH.TrimEnd( sb.ToString(), delimAfter);
+    }
+
     internal static string Format(string status, object[] args)
     {
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))

@@ -22,6 +22,8 @@ public class InstantSB //: StringWriter
         return vratit;
     }
 
+
+
     /// <summary>
     /// Nep�ipisuje se k celkov�mu v�stupu ,proto vrac� sv�j valstn�.
     /// </summary>
@@ -34,6 +36,11 @@ public class InstantSB //: StringWriter
         {
             sb.Append(s + tokensDelimiter);   
         }
+    }
+
+    public void AddRaw(object tab)
+    {
+        sb.Append(tab.ToString());
     }
 
     /// <summary>
@@ -76,7 +83,10 @@ public class InstantSB //: StringWriter
         EndLine((object)Environment.NewLine);
     }
 
-
+    public void RemoveEndDelimiter()
+    {
+        sb.Remove(sb.Length - tokensDelimiter.Length, tokensDelimiter.Length);
+    }
 
     
 }

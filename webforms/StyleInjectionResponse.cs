@@ -10,7 +10,7 @@ public static class StyleInjectionResponse
     /// <param name="page"></param>
     /// <param name="src"></param>
     /// <returns></returns>
-    public static string RegisterClientStyleExternal(Page page, string getRightUpRoot, string item)
+    public static string RegisterClientStyleExternal(SunamoPage page, string getRightUpRoot, string item)
     {
             HtmlGenerator hg = new HtmlGenerator();
             if (item.EndsWith(".css"))
@@ -44,7 +44,7 @@ public static class StyleInjectionResponse
     /// <param name="getRightUpRoot"></param>
     /// <param name="p1"></param>
     /// <returns></returns>
-    public static string InjectExternalStyle(Page page, string getRightUpRoot, params string[] p1)
+    public static string InjectExternalStyle(SunamoPage page, string getRightUpRoot, params string[] p1)
     {
         List<HtmlGenerator> list = new List<HtmlGenerator>(p1.Length);
         foreach (var item in p1)
@@ -88,7 +88,7 @@ public static class StyleInjectionResponse
     /// <param name="page"></param>
     /// <param name="p1"></param>
     /// <returns></returns>
-    public static string InjectExternalStyleUri(Page page, params string[] p1)
+    public static string InjectExternalStyleUri(SunamoPage page, params string[] p1)
     {
         List<HtmlGenerator> list = new List<HtmlGenerator>(p1.Length);
         foreach (var item in p1)

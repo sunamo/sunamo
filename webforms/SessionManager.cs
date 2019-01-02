@@ -183,12 +183,12 @@ public static class SessionManager
     /// </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    public static LoginedUser GetLoginedUser(Page page)
+    public static LoginedUser GetLoginedUser(SunamoPage page)
     {
         return GetLoginedUser(CastToSMP(page));
     }
 
-    private static SunamoMasterPage CastToSMP(Page page)
+    private static SunamoMasterPage CastToSMP(SunamoPage page)
     {
         return (SunamoMasterPage)page.Master;
     }
@@ -198,7 +198,7 @@ public static class SessionManager
     /// </summary>
     /// <param name="login"></param>
     /// <param name="fce"></param>
-    public static void LoginUser(Page page, string login, int userId, string sc)
+    public static void LoginUser(SunamoPage page, string login, int userId, string sc)
     {
         LoginUser(CastToSMP(page), login, userId, sc);
     }
@@ -206,12 +206,12 @@ public static class SessionManager
     /// <summary>
     /// 
     /// </summary>
-    public static void LogoutUser(Page page)
+    public static void LogoutUser(SunamoPage page)
     {
         LogoutUser(CastToSMP(page));
     }
 
-    public static string GetValue(Page page, string nameOfValue)
+    public static string GetValue(SunamoPage page, string nameOfValue)
     {
         return GetValue(CastToSMP(page), nameOfValue);
     } 

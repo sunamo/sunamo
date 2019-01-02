@@ -4,6 +4,8 @@ using System.Web.UI;
 
 public  class SunamoMasterPage : System.Web.UI.MasterPage
 {
+    public SunamoPage sp => (SunamoPage)this.Page;
+
     /// <summary>
     /// To A2 is passed ThisApp.Name
     /// </summary>

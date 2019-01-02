@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 public class ABC : List<AB>//, IEnumerable<AB>
 {
     public ABC()
@@ -30,5 +31,13 @@ public class ABC : List<AB>//, IEnumerable<AB>
         return o;
     }
 
-    
+    public string[] OnlyAs()
+    {
+        string[] o = new string[this.Count];
+        for (int i = 0; i < this.Count; i++)
+        {
+            o[i] = this[i].A;
+        }
+        return o;
+    }
 }

@@ -18,6 +18,11 @@ using sunamo.Essential;
 
 public class GeneralHelper
 {
+    static GeneralHelper()
+    {
+        
+    }
+
     public static string GetPhotoPathImgUri(HttpRequest Request, string fileName)
     {
         return UH.CombineTrimEndSlash("http://" + Request.Url.Host, "img", fileName);
@@ -738,6 +743,10 @@ public class GeneralHelper
         return GeneralColls.browsersIDs[Browsers.Other.ToString()];
         
     }
+    static List<string> darkColors = null;
+    
+
+
     static string[] colorsColorBar = new string[] { "#3FB1F0",
 "#FFFDFE",
 "#D8306E",
@@ -808,25 +817,32 @@ public class GeneralHelper
     /// <returns></returns>
     public static int CalculatePercentOfColorBar(int pocet, out List<string> barvyFinal, out byte[] b2)
     {
+        if (darkColors == null)
+        {
+            darkColors = new List<string>(CA.ToEnumerable("#0B0B3F", "#BB4C2E", "#20096E", "#8F750D", "#008E40", "#76D9DE", "#93B51D", "#C99397", "#70C2E5", "#BCE4F7", "#3B83D2", "#E96997", "#DEB086", "#C77341", "#6D7F2F", "#EC897B", "#AE485C", "#CC08C9", "#C04277", "#A74B89"));
+        }
+
         #region Initialize variable and collections
         barvyFinal = new List<string>(pocet);
-        List<string> colors = new List<string>(colorsColorBar);
+        List<string> colors = new List<string>(darkColors);
+        //colors.AddRange(darkColors);
         byte percent = 100;
         byte percent2 = 0;
         int pocet2 = pocet;
         pocet2--;
+        // b - percent of every generated color
         byte[] b = new byte[pocet];
-        // increases from 1 to 9, numbers of generated colors
+        // increases from 1 to 9, numbers of generated colors - 
         byte i = 1;
         #endregion
 
-        #region Select 9 random colors, substract maximum 1...9 = 45
+        #region Select 9 random colors, substract maximum 1...9 = 45%
         for (; i < 10; i++)
         {
             b[i - 1] = i;
             int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
             barvyFinal.Add(colors[indexBarvy]);
-            colors.RemoveAt(indexBarvy);
+            //colors.RemoveAt(indexBarvy);
             pocet--;
             percent2 += i;
             percent -= i;
@@ -854,7 +870,7 @@ public class GeneralHelper
             b[i - 1] = r;
             int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
             barvyFinal.Add(colors[indexBarvy]);
-            colors.RemoveAt(indexBarvy);
+            //colors.RemoveAt(indexBarvy);
             pocet--;
             percent2 += r;
             percent -= r;
@@ -883,7 +899,7 @@ public class GeneralHelper
                     b[dex] = 1;
                     indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
                     barvyFinal.Add(colors[indexBarvy]);
-                    colors.RemoveAt(indexBarvy);
+                    //colors.RemoveAt(indexBarvy);
                     pocet--;
                     if (pocet == 0)
                     {
@@ -908,8 +924,13 @@ public class GeneralHelper
             #region If I have space in b array, set as last element, otherwise add to first
             i++;
             int pomer = 100 - percent2;
+            if (pomer == 0)
+            {
+                DebugLogger.Break();
+            }
             if (b.Length == i + 1)
             {
+                
                 b[i] = (byte)pomer;
                 int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
                 barvyFinal.Add(colors[indexBarvy]);
@@ -933,12 +954,14 @@ public class GeneralHelper
             int pomer = nt - 100;
             b[8] -= (byte)pomer;
         }
+        if (nt < 100)
+        {
+            int pomer = 100 - nt ;
+            b[8] += (byte)pomer;
+        }
         #endregion
 
-        if (b.Length != barvyFinal.Count)
-        {
-               
-        }
+
         b2 = CA.JumbleUp<byte>(b);
         return pocet;
     }

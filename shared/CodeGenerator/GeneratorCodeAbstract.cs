@@ -63,7 +63,7 @@ namespace sunamo.CodeGenerator
             //tabCount += 1;
             for (int i = 0; i < tabCount; i++)
             {
-                sb.AddItem((object)Consts.tab);
+                sb.AddRaw((object)Consts.tab);
             }
         }
 

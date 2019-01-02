@@ -59,5 +59,15 @@ namespace mono
 		{
 			throw new NotImplementedException();
 		}
-	}
+
+        public void SetText2(string s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetText3(string s)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

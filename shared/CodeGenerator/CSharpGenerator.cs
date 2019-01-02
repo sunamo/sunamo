@@ -6,9 +6,9 @@ using sunamo.CodeGenerator;
 using sunamo.Constants;
 using sunamo.Values;
 
-public class GeneratorCSharp : GeneratorCodeAbstract
+public class CSharpGenerator : GeneratorCodeAbstract
 {
-    public GeneratorCSharp()
+    public CSharpGenerator()
     {
     }
 
@@ -129,6 +129,7 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         ModificatorsField(_public, _static, variableModifiers);
         ReturnTypeName(type, name);
         DefaultValue(type, defaultValue);
+        sb.RemoveEndDelimiter();
         sb.AddItem((object)";");
         sb.AppendLine();
         //this.sb.AddItem(sb.ToString());
@@ -331,12 +332,18 @@ public class GeneratorCSharp : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void Usings(string usings)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="usings"></param>
+    public void Using(string usings)
     {
-        sb.AddItem((object)usings);
-        sb.AppendLine();
+        usings = "using " + usings + ";";
+        sb.AddItem(usings);
+        
         sb.AppendLine();
     }
+
     /// <summary>
     /// Pokud chceš nový řádek bez jakéhokoliv textu, zadej například 2, ""
     /// Nepoužívej na to metodu jen s tabCount, protože ji pak IntelliSense nevidělo.

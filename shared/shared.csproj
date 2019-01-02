@@ -108,10 +108,9 @@
     <Compile Include="Crypting\ProtectedDataHelper.cs" />
     <Compile Include="Crypting\Provider.cs" />
     <Compile Include="CodeGenerator\AccessModifiers.cs" />
-    <Compile Include="CodeGenerator\CSharpClassesGenerator.cs" />
     <Compile Include="CodeGenerator\EnumItem.cs" />
     <Compile Include="CodeGenerator\ModifiersConstructor.cs" />
-    <Compile Include="CodeGenerator\GeneratorCSharp.cs" />
+    <Compile Include="CodeGenerator\CSharpGenerator.cs" />
     <Compile Include="Crypting\Symmetric.cs" />
     <Compile Include="Crypting\Utils.cs" />
     <Compile Include="CsvHelper\CsvFile.cs" />

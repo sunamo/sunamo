@@ -13,11 +13,7 @@ namespace web
 {
     public class UH
     {
-        
-
-
-
-        public static string GetWebUri2(Page sp, MySites item2)
+        public static string GetWebUri2(SunamoPage sp, MySites item2)
         {
             string host = sp.Request.Url.Host.Replace("www.", "");
             bool localHost = host == "localhost";
@@ -28,7 +24,7 @@ namespace web
             return "http://" + item2.ToString().ToLower() + "." + host;
         }
 
-        public static string GetWebUriWithoutHttp(Page sp)
+        public static string GetWebUriWithoutHttp(SunamoPage sp)
         {
             return sp.Request.Url.Host.Replace("www.", "");
         }
@@ -57,7 +53,7 @@ namespace web
         /// <param name="sp"></param>
         /// <param name="item2"></param>
         /// <returns></returns>
-        public static string GetWebUri2(Page sp, string item2, bool localHost, string host)
+        public static string GetWebUri2(SunamoPage sp, string item2, bool localHost, string host)
         {
             return GetWebUri3(sp, item2);
         }
@@ -70,7 +66,7 @@ namespace web
         /// <param name="p2"></param>
         /// <param name="p3"></param>
         /// <returns></returns>
-        public static string GetWebUri(Page p1, string p2, string p3)
+        public static string GetWebUri(SunamoPage p1, string p2, string p3)
         {
             return "http://" + p1.Request.Url.Host.Replace("www.", "") + "/" + p2 + "/" + p3;
         }
@@ -82,7 +78,7 @@ namespace web
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static string GetWebUri(Page p1, string p2)
+        public static string GetWebUri(SunamoPage p1, string p2)
         {
             return "http://" + p1.Request.Url.Host.Replace("www.", "") + "/" + p2.TrimStart('/');
         }
@@ -98,7 +94,7 @@ namespace web
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static string GetWebUri3(Page p1, string p2)
+        public static string GetWebUri3(SunamoPage p1, string p2)
         {
             return "http://" + p1.Request.Url.Host + "/" + p2.TrimStart('/');
         }

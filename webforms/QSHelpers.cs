@@ -24,7 +24,7 @@ public class QSHelperWebForms
     /// <param name="page"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static int GetParameterInt(Page page, string p)
+    public static int GetParameterInt(SunamoPage page, string p)
     {
         string d = page.Request.QueryString[p];
         int vr = -1;
@@ -116,7 +116,7 @@ public class QSHelperWebForms
     /// <param name="page"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string GetParameter(Page page, string p)
+    public static string GetParameter(SunamoPage page, string p)
     {
         return page.Request.QueryString[p];
     }
@@ -127,7 +127,7 @@ public class QSHelperWebForms
     /// <param name="page"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string GetParameterSE(Page page, string p)
+    public static string GetParameterSE(SunamoPage page, string p)
     {
         string d = page.Request.QueryString[p];
         if (d == null)
@@ -144,7 +144,7 @@ public class QSHelperWebForms
     /// <param name="page"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string GetParameterBoolSE(Page page, string p)
+    public static string GetParameterBoolSE(SunamoPage page, string p)
     {
         string s = page.Request.QueryString[p];
         if (s == null)
@@ -159,7 +159,7 @@ public class QSHelperWebForms
         return string.Empty;
     }
 
-    public static string GetParameterIntSE(Page page, string p)
+    public static string GetParameterIntSE(SunamoPage page, string p)
     {
         string s = page.Request.QueryString[p];
         if (s == null)

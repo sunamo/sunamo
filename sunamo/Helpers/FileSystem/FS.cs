@@ -214,6 +214,28 @@ namespace sunamo
             return FS.GetFiles(folderPath, FS.MascFromExtension(), v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }
 
+        public static void CreateFileIfDoesntExists(string path)
+        {
+            if (!FS.ExistsFile(path))
+            {
+                File.CreateText(path);
+            }
+        }
+
+        /// <summary>
+        /// Remove all extensions, not only one
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static string GetFileNameWithoutExtensions(string item)
+        {
+            while (Path.HasExtension(item))
+            {
+                item = FS.GetFileNameWithoutExtension(item);
+            }
+            return item;
+        }
+
         public static List<string> GetFolders(string folder)
         {
             return GetFolders(folder, SearchOption.TopDirectoryOnly);

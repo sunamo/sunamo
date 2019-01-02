@@ -2,12 +2,12 @@
 using System.Web.UI.HtmlControls;
 public static class SchemaOrgHelper
 {
-    public static void InsertBasicToPageHeader(ISetSchema ss, PageSnippet pageSnippet, MySites ms)
-    {
-        InsertBasicToPageHeader(((MasterPage)ss).Page, pageSnippet, ms);
-    }
+    //public static void InsertBasicToPageHeader(ISetSchema ss, PageSnippet pageSnippet, MySites ms)
+    //{
+    //    InsertBasicToPageHeader(((SunamoPage)ss).Page, pageSnippet, ms);
+    //}
 
-    public static void InsertBasicToPageHeader(Page ss, PageSnippet ps, MySites ms)
+    public static void InsertBasicToPageHeader(SunamoPage ss, PageSnippet ps, MySites ms)
     {
         string image = "";
 
