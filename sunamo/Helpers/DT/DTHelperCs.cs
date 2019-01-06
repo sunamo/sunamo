@@ -40,7 +40,7 @@ namespace sunamo.Helpers.DT
         {
             var vr = DateTime.MinValue;
             var parts = SH.Split(t, ':');
-            if (parts.Length == 2)
+            if (parts.Count == 2)
             {
                 t += ":00";
                 parts = SH.Split(t, ':');
@@ -48,7 +48,7 @@ namespace sunamo.Helpers.DT
             int hours = -1;
             int minutes = -1;
             int seconds = -1;
-            if (parts.Length == 3)
+            if (parts.Count == 3)
             {
                 TryParse.Integer itp = new TryParse.Integer();
                 if (itp.TryParseInt(parts[0]))

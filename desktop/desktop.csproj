@@ -57,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -190,6 +191,7 @@
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
@@ -273,6 +275,9 @@
     </Compile>
     <Compile Include="Windows\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\WindowResult.cs" />
     <Compile Include="Windows\WindowWithUserControl.cs" />
@@ -429,6 +434,10 @@
     <Page Include="Windows\LoginUc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NotificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -157,7 +157,7 @@ namespace sunamo.Indexing.FileSystem
 
             //if (relativeDirectoryName)
             //{
-            string relDirName = p.Replace(basePath, "");
+            string relDirName = FS.GetDirectoryName( p).Replace(basePath, "");
             if (!relativeDirectories.Contains(relDirName))
             {
                 relativeDirectories.Add(relDirName);

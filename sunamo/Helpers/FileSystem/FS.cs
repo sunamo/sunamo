@@ -426,6 +426,11 @@ namespace sunamo
             return folderWithCaretFiles;
         }
 
+        /// <summary>
+        /// Delete whole folder A1. If fail, only "1" subdir
+        /// </summary>
+        /// <param name="repairedBlogPostsFolder"></param>
+        /// <returns></returns>
         public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
         {
             int resultSerie = 1;
@@ -449,11 +454,12 @@ namespace sunamo
 
             if (!deleted)
             {
-
+                // confuse me, dir can exists
                 FS.CreateDirectory(withEndFlash + "1\\");
             }
             else
             {
+                // When deleting will be successful, create new dir
                 TextOutputGenerator generator = new TextOutputGenerator();
                 generator.sb.Append(withEndFlash);
                 generator.sb.CanUndo = true;

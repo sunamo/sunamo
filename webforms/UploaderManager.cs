@@ -49,7 +49,7 @@ public class UploaderManager
         }
     }
     int idUser = -1;
-    string[] exts = null;
+    List<string> exts = null;
     string toFolderTempSlash = null;
     Color borderColor = Color.AliceBlue;
     bool workWithDatabase = false;
@@ -326,11 +326,11 @@ public class UploaderManager
         ext = Path.GetExtension(fileName).ToUpper();
         fn = fn.Substring(0, fn.Length - ext.Length) + ext;
         bool preskocNaDalsi = true;
-        if (exts.Length == 0)
+        if (exts.Count == 0)
         {
             preskocNaDalsi = false;
         }
-        for (int i = 0; i < exts.Length; i++)
+        for (int i = 0; i < exts.Count; i++)
         {
             if (ext == exts[i])
             {

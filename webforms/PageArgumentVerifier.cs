@@ -217,7 +217,7 @@ public static class PageArgumentVerifier
         return "";
     }
 
-    private static bool IsRightValue(PageArgumentType t, string[] availableValues, string value)
+    private static bool IsRightValue(PageArgumentType t, List<string> availableValues, string value)
     {
         if (availableValues != null)
         {
@@ -479,7 +479,7 @@ public class PageArgumentName
     public PageArgumentType type = PageArgumentType.None;
     public string value = "";
     public bool isCompulsory = false;
-    public string[] availableValues = null;
+    public List<string> availableValues = null;
     public static PageArgumentName[] EmptyArray = PageArgumentVerifier.GetNormalizedParameters();
 }
 

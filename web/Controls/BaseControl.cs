@@ -76,7 +76,7 @@ public abstract class BaseControl
         if (actualRow != -1)
         {
             string parametry = DelegateArgs;
-            string[] s = null;
+            List<string> s = null;
             string oddelovac = "";
             if (parametry.Contains(','))
             {

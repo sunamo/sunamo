@@ -20,7 +20,7 @@ namespace mono
 
 		public void GetFirstWordOfList()
 		{
-			throw new NotImplementedException();
+			throw new NotImplementedException();s
 		}
 
 		public List<string> GetLines()

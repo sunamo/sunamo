@@ -407,7 +407,7 @@ using System.Xml;
         public static bool HasTagAttrContains(HtmlNode htmlNode, string delimiter, string attr, string value)
         {
             string attrValue = HtmlHelper.GetValueOfAttribute(attr, htmlNode);
-            string[] spl = SH.Split(attrValue, delimiter);
+            var spl = SH.Split(attrValue, delimiter);
             return spl.Contains(value);
         }
         #endregion
@@ -558,7 +558,7 @@ using System.Xml;
             string at = GetValueOfAttribute("style", item);
             if (at.Contains(";"))
             {
-                string[] d = SH.Split(at, ";");
+                var d = SH.Split(at, ";");
                 foreach (string item2 in d)
                 {
                     if (item2.Contains(":"))

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows;
 
 
-public class ApplicationDataContainerList
+public class ApplicationDataContainerList : IEnumerable
 {
     string path = null;
     /// <summary>
@@ -166,6 +166,11 @@ public class ApplicationDataContainerList
         }
     }
 
+    public Dictionary<string, AB> GetItems()
+    {
+        return data;
+    }
+
     internal bool? GetNullableBool(string isChecked)
     {
         if (data.ContainsKey(isChecked))
@@ -272,5 +277,10 @@ public class ApplicationDataContainerList
             sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, item.Value.B)));
         }
         TF.SaveFile(sb.ToString(), path);
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return data.GetEnumerator();
     }
 }

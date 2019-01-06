@@ -12,6 +12,11 @@ public  class ClipboardHelper
 	{
 	}
 
+    public static bool ContainsText()
+    {
+        return Instance.ContainsText();
+    }
+
 	public static  string GetText()
 	{
 		return Instance.GetText();

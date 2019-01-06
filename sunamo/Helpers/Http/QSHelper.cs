@@ -39,10 +39,10 @@ public  class QSHelper
     /// <returns></returns>
     public static string GetParameter(string uri, string nameParam)
     {
-        string[] main = SH.Split(uri, "?", "&");
+        var main = SH.Split(uri, "?", "&");
         foreach (string var in main)
         {
-            string[] v = SH.Split(var, "=");
+            var v = SH.Split(var, "=");
             if (v[0] == nameParam)
             {
                 return v[1];

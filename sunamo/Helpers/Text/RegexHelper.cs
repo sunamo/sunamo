@@ -1,18 +1,29 @@
-﻿using System.Text.RegularExpressions;
+﻿using sunamo.Html;
+using System;
+using System.Text.RegularExpressions;
 public class RegexHelper
 {
     public static Regex rHtmlScript = new Regex(@"<script[^>]*>[\s\S]*?</script>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     public static Regex rHtmlComment = new Regex(@"<!--[^>]*>[\s\S]*?-->", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     public static Regex rYtVideoLink = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)", RegexOptions.Compiled);
 
+
     public static bool IsEmail(string email)
     {
         Regex r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
         return r.IsMatch(email);
     }
+    public static Regex rUri = new Regex(@"(https?://[^\s]+)");
+    //static Regex rUriOnlyOutsideTags = new Regex("https?:\/\/[^\s]*|<\/?\w+\b(?=\s|>)(?:='[^']*'|="[^ "]*" |=[^ '"][^\s>]*|[^>])*>|\&nbsp;John|(John)/gi");
+    //static Regex rUriOnlyOutsideTags = new Regex("(text|simple)(?![^<]*>|[^<>]*</)");
+    // cant compile
+    //static Regex rHtmlTag = new Regex(@"(?<==)["']?((?:.(?!["']?\\s+(?:\S+)=|[>"']))+.)["']?");
+    public static Regex rHtmlTag = new Regex("<\\s*([A-Za-z])*?[^>]*/?>");
 
-    static Regex rgColor6 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}$");
-    static Regex rgColor8 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}(?:[0-9a-fA-F]){2}$");
+    public static Regex rgColor6 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}$");
+    public static Regex rgColor8 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}(?:[0-9a-fA-F]){2}$");
+    public static Regex rPreTagWithContent = new Regex(@"<\s*pre[^>]*>(.*?)<\s*/\s*pre>");
+
     public static bool IsColor(string entry)
     {
         entry = entry.Trim().TrimStart('#');
@@ -32,6 +43,12 @@ public class RegexHelper
         return rYtVideoLink.IsMatch(text);
     }
 
+    /// <summary>
+    /// Dont use, parse uri with regex is total naive . Use DOM parser
+    /// Not working - keep in plain text, use ReplacePlainUrlWithLinks2
+    /// </summary>
+    /// <param name="plainText"></param>
+    /// <returns></returns>
     public static string ReplacePlainUrlWithLinks(string plainText)
     {
         var html = Regex.Replace(plainText, @"^(http|https|ftp)\://[a-zA-Z0-9\-\.]+" +
@@ -40,4 +57,70 @@ public class RegexHelper
                          "<a href=\"$1\">$1</a>");
         return html;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="myString"></param>
+    /// <returns></returns>
+    public static string ReplacePlainUrlWithLinks2(string myString)
+    {
+        return HtmlAgilityHelper.ReplacePlainUriForAnchors(myString);
+    }
+
+    public static bool IsUri(string text)
+    {
+        return rUri.IsMatch(text);
+    }
+
+    static RegexHelper()
+    {
+        // this one I unfortunately cant use because I use .net core 2.0, available from 2.1
+        // from https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/ and https://gist.github.com/Haacked/7729259
+        ////HtmlTagRegex.
+        //RegexCompilationInfo[] compInfo =
+        //{
+        //        //HtmlTag Regex.
+        //        new RegexCompilationInfo
+        //        (
+        //            @"<"
+        //            +    @"(?<endTag>/)?"    //Captures the / if this is an end tag.
+        //            +    @"(?<tagname>\w+)"    //Captures TagName
+        //            +    @"("                //Groups tag contents
+        //            +        @"(\s+"            //Groups attributes
+        //            +            @"(?<attName>\w+)"  //Attribute name
+        //            +            @"("                //groups =value portion.
+        //            +                @"\s*=\s*"            // = 
+        //            +                @"(?:"        //Groups attribute "value" portion.
+        //            +                    @"""(?<attVal>[^""]*)"""    // attVal='double quoted'
+        //            +                    @"|'(?<attVal>[^']*)'"        // attVal='single quoted'
+        //            +                    @"|(?<attVal>[^'"">\s]+)"    // attVal=urlnospaces
+        //            +                @")"
+        //            +            @")?"        //end optional att value portion.
+        //            +        @")+\s*"        //One or more attribute pairs
+        //            +        @"|\s*"            //Some white space.
+        //            +    @")"
+        //            + @"(?<completeTag>/)?>" //Captures the "/" if this is a complete tag.
+        //            , RegexOptions.IgnoreCase
+        //            , "HtmlTagRegex"
+        //            , "Haack.RegularExpressions"
+        //            , true
+        //        )
+        //        ,
+        //        // Matches double words.
+        //        new RegexCompilationInfo
+        //        (
+        //            @"\b(\w+)\s+\1\b"
+        //            , RegexOptions.None
+        //            , "DoubleWordRegex"
+        //            , "Haack.RegularExpressions", true
+        //        )
+        //    };
+        //AssemblyName assemblyName = new AssemblyName();
+        //assemblyName.Name = "Haack.RegularExpressions";
+        //assemblyName.Version = new Version("1.0.0.0");
+        //Regex.CompileToAssembly(compInfo, assemblyName);
+    }
+
+    
 }

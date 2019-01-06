@@ -65,6 +65,7 @@ t0047 mysterky nemá cenu řešit, třeba vytvořit můj web finalek
 t0048 auta / cars - karavan, neplatit žádný nájem. neblbější je internet.
 t0049 sql code folding
 t0050 vps firmy, send cv
+t0051 replace yaml nuget for dll as in in WpfApp1 already
 
 
 better pdf view android

@@ -143,6 +143,49 @@ public class CSharpGenerator : GeneratorCodeAbstract
             sb.AddItem((object)CSharpHelper.DefaultValueForType(type));
         }
     }
+    
+    public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex)
+    {
+        classIndex = -1;
+        bool cl = false;
+        bool lsf = false;
+
+        for (int i = 0; i < contentFileNew.Count; i++)
+        {
+            if (!cl)
+            {
+                if (contentFileNew[i].Contains(" class "))
+                {
+                    classIndex = i;
+                    cl = true;
+                }
+            }
+            else if (cl && !lsf)
+            {
+                if (contentFileNew[i].Contains("{"))
+                {
+                    lsf = true;
+                }
+            }
+            else if (cl && lsf)
+            {
+                if (contentFileNew[i].Contains("}"))
+                {
+                    contentFileNew.InsertRange(i, insertedLines);
+                    break;
+                }
+            }
+        }
+        return contentFileNew;
+    }
+
+    public void Namespace(int tabCount, string ns)
+    {
+        sb.AddItem("namespace " + ns);
+        sb.AppendLine();
+        sb.AddItem("{");
+        sb.AppendLine();
+    }
 
     private void ModificatorsField(AccessModifiers _public, bool _static, VariableModifiers variableModifiers)
     {
@@ -338,7 +381,15 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <param name="usings"></param>
     public void Using(string usings)
     {
-        usings = "using " + usings + ";";
+        if (!usings.StartsWith("using "))
+        {
+            usings = "using " + usings + ";";
+        }
+        else if(!usings.EndsWith(AllStrings.sc))
+        {
+            usings += ";";
+        }
+        
         sb.AddItem(usings);
         
         sb.AppendLine();

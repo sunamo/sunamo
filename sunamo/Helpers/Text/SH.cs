@@ -169,7 +169,7 @@ public static class SH
     }
 
     /// <summary>
-    /// 
+    /// Cannot be use on existing code - will corrupt them
     /// </summary>
     /// <param name="templateHandler"></param>
     /// <param name="lsf"></param>
@@ -181,8 +181,11 @@ public static class SH
     public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
     {
         var result = string.Format(templateHandler, args);
+        const string replacement = "{        }";
+        result = SH.ReplaceAll2(result, replacement, "[]");
         result = SH.ReplaceAll2(result, "{", lsf);
         result = SH.ReplaceAll2(result, "}", rsf);
+        result = SH.ReplaceAll2(result, replacement, "{}");
         return result;
     }
 
@@ -280,6 +283,15 @@ public static class SH
                 }
             }
             return sb.ToString();       
+    }
+
+    public static string Format2(string template, params string[] args)
+    {
+        for (int i = 0; i < args.Length; i++)
+        {
+            template = SH.ReplaceOnce(template, "{" + i + "}", args[i]);
+        }
+        return template;
     }
 
     public static bool RemovePrefix(ref string s, string v)
@@ -770,7 +782,7 @@ public static class SH
     public static List<string> SplitAndReturnRegexMatches(string input, Regex r, params char[] del)
     {
         List<string> vr = new List<string>();
-        string[] ds = SH.Split(input, del);
+        var ds = SH.Split(input, del);
         foreach (var item in ds)
         {
             if (r.IsMatch(item))
@@ -1220,7 +1232,7 @@ public static class SH
     /// <param name="parts"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
-    public static string[] SplitToPartsFromEnd2(string what, int parts, params char[] deli)
+    public static List<string> SplitToPartsFromEnd2(string what, int parts, params char[] deli)
     {
         List<int> indexyDelimiteru = new List<int>();
         foreach (var item in deli)
@@ -1229,17 +1241,17 @@ public static class SH
         }
         //indexyDelimiteru.OrderBy(d => d);
         indexyDelimiteru.Sort();
-        string[] s = SH.Split(what, deli);
+        var s = SH.Split(what, deli);
         #region Pokud bude mít A1 méně částí než A2, vratí nenalezené části jako SE
-        if (s.Length < parts)
+        if (s.Count < parts)
         {
             //throw new Exception("");
-            if (s.Length > 0)
+            if (s.Count > 0)
             {
                 List<string> vr2 = new List<string>();
                 for (int i = 0; i < parts; i++)
                 {
-                    if (i < s.Length)
+                    if (i < s.Count)
                     {
                         vr2.Add(s[i]);
                     }
@@ -1248,7 +1260,7 @@ public static class SH
                         vr2.Add("");
                     }
                 }
-                return vr2.ToArray();
+                return vr2;
                 //return new string[] { s[0] };
             }
             else
@@ -1256,7 +1268,7 @@ public static class SH
                 return null;
             }
         }
-        else if (s.Length == parts)
+        else if (s.Count == parts)
         {
             return s;
         }
@@ -1265,9 +1277,9 @@ public static class SH
 
 
         #region old
-        int parts2 = s.Length - parts - 1;
+        int parts2 = s.Count - parts - 1;
         //parts += povysit;
-        if (parts < s.Length - 1)
+        if (parts < s.Count - 1)
         {
             parts++;
         }
@@ -1287,7 +1299,7 @@ public static class SH
             //}
         }
         vr[0] = s[0] + what[indexyDelimiteru[0]].ToString() + vr[0];
-        return vr.ToArray();
+        return vr;
         #endregion
     }
 
@@ -1364,18 +1376,18 @@ public static class SH
     /// <param name="addEmptyPaddingItems"></param>
     /// <param name="joinOverloadedPartsToLast"></param>
     /// <returns></returns>
-    public static string[] SplitToParts(string what, int parts, string deli, bool addEmptyPaddingItems /*, bool joinOverloadedPartsToLast - not used */)
+    public static List<string> SplitToParts(string what, int parts, string deli, bool addEmptyPaddingItems /*, bool joinOverloadedPartsToLast - not used */)
     {
-        string[] s = SH.Split(what, deli);
-        if (s.Length < parts)
+        var s = SH.Split(what, deli);
+        if (s.Count < parts)
         {
             // Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce
-            if (s.Length == 0)
+            if (s.Count == 0)
             {
                 List<string> vr2 = new List<string>();
                 for (int i = 0; i < parts; i++)
                 {
-                    if (i < s.Length)
+                    if (i < s.Count)
                     {
                         vr2.Add(s[i]);
                     }
@@ -1384,7 +1396,7 @@ public static class SH
                         vr2.Add("");
                     }
                 }
-                return vr2.ToArray();
+                return vr2;
                 //return new string[] { s[0] };
             }
             else
@@ -1392,7 +1404,7 @@ public static class SH
                 return null;
             }
         }
-        else if (s.Length == parts)
+        else if (s.Count == parts)
         {
             // Pokud pocet ziskanych partu souhlasim presne, vratim jak je
             return s;
@@ -1401,7 +1413,7 @@ public static class SH
         // Pokud je pocet ziskanych partu vetsi nez kolik ma byt, pripojim ty co josu navic do zbytku
         parts--;
         List<string> vr = new List<string>();
-        for (int i = 0; i < s.Length; i++)
+        for (int i = 0; i < s.Count; i++)
         {
             if (i < parts)
             {
@@ -1411,7 +1423,7 @@ public static class SH
             {
                 vr.Add(s[i] + deli);
             }
-            else if (i != s.Length - 1)
+            else if (i != s.Count - 1)
             {
                 vr[parts] += s[i] + deli;
             }
@@ -1420,7 +1432,7 @@ public static class SH
                 vr[parts] += s[i];
             }
         }
-        return vr.ToArray();
+        return vr;
     }
 
     public static bool LastCharEquals(string input, char delimiter)
@@ -1468,18 +1480,18 @@ public static class SH
     /// <param name="p"></param>
     /// <param name="p_2"></param>
     /// <returns></returns>
-    public static string[] SplitToParts(string what, int parts, string deli)
+    public static List<string> SplitToParts(string what, int parts, string deli)
     {
-        string[] s = SH.Split(what, deli);
-        if (s.Length < parts)
+        var s = SH.Split(what, deli);
+        if (s.Count < parts)
         {
             // Pokud je pocet ziskanych partu mensi, vlozim do zbytku prazdne retezce
-            if (s.Length > 0)
+            if (s.Count > 0)
             {
                 List<string> vr2 = new List<string>();
                 for (int i = 0; i < parts; i++)
                 {
-                    if (i < s.Length)
+                    if (i < s.Count)
                     {
                         vr2.Add(s[i]);
                     }
@@ -1488,7 +1500,7 @@ public static class SH
                         vr2.Add("");
                     }
                 }
-                return vr2.ToArray();
+                return vr2;
                 //return new string[] { s[0] };
             }
             else
@@ -1496,7 +1508,7 @@ public static class SH
                 return null;
             }
         }
-        else if (s.Length == parts)
+        else if (s.Count == parts)
         {
             // Pokud pocet ziskanych partu souhlasim presne, vratim jak je
             return s;
@@ -1505,7 +1517,7 @@ public static class SH
         // Pokud je pocet ziskanych partu vetsi nez kolik ma byt, pripojim ty co josu navic do zbytku
         parts--;
         List<string> vr = new List<string>();
-        for (int i = 0; i < s.Length; i++)
+        for (int i = 0; i < s.Count; i++)
         {
             if (i < parts)
             {
@@ -1515,7 +1527,7 @@ public static class SH
             {
                 vr.Add(s[i] + deli);
             }
-            else if (i != s.Length - 1)
+            else if (i != s.Count - 1)
             {
                 vr[parts] += s[i] + deli;
             }
@@ -1524,7 +1536,7 @@ public static class SH
                 vr[parts] += s[i];
             }
         }
-        return vr.ToArray();
+        return vr;
     }
 
     
@@ -1733,19 +1745,19 @@ public static class SH
         return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
     }
 
-    public static string[] SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool trim, bool escapeQuoations, params string[] deli)
+    public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool trim, bool escapeQuoations, params string[] deli)
     {
-        string[] s = SH.Split(v, deli);
+        var s = SH.Split(v, deli);
         if (replaceNewLineBySpace)
         {
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Count; i++)
             {
                 s[i] = SH.ReplaceAll(s[i], " ", "\r", "\n", Environment.NewLine);
             }
         }
         if (moreSpacesForOne)
         {
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Count; i++)
             {
                 s[i] = SH.ReplaceAll2(s[i], " ", "  ");
             }
@@ -1758,7 +1770,7 @@ public static class SH
         {
             string rep = "\"";
 
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < s.Count; i++)
             {
                     s[i] = SH.ReplaceFromEnd(s[i], "\\\"", rep);
                 //}
@@ -1902,9 +1914,9 @@ public static class SH
         return text.Split(deli, stringSplitOptions);
     }
 
-    public static string[] Split(string text, params char[] deli)
+    public static List<string> Split(string text, params char[] deli)
     {
-        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli);
+        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
     }
 
     internal static string JoinTimes(int times, string dds)
@@ -2270,9 +2282,9 @@ public static class SH
         return vr;
     }
 
-    public static string[] Split(string text, params string[] deli)
+    public static List<string> Split(string text, params string[] deli)
     {
-        return text.Split(deli, StringSplitOptions.RemoveEmptyEntries);
+        return text.Split(deli, StringSplitOptions.RemoveEmptyEntries).ToList() ;
     }
 
     public static string StripFunctationsAndSymbols(string p)
@@ -2560,8 +2572,8 @@ public static class SH
     /// <returns></returns>
     public static List<int> SplitToIntList(string stringToSplit, params string[] delimiter)
     {
-        string[] f = SH.Split(stringToSplit, delimiter);
-        List<int> nt = new List<int>(f.Length);
+        var f = SH.Split(stringToSplit, delimiter);
+        List<int> nt = new List<int>(f.Count);
         foreach (string item in f)
         {
             nt.Add(int.Parse(item));
@@ -2629,9 +2641,14 @@ public static class SH
 
     public static char[] spaceAndPuntactionChars = new char[] { ' ', '-', '.', ',', ';', ':', '!', '?', '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', '\'', '(', ')', '[', ']', '{', '}', '〈', '〉', '<', '>', '/', '\\', '|', '”', '\"', '~', '°', '+', '@', '#', '$', '%', '^', '&', '*', '=', '_', 'ˇ', '¨', '¤', '÷', '×', '˝' };
 
-    public static string[] SplitBySpaceAndPunctuationCharsAndWhiteSpaces(string s)
+    public static List<string> SplitByWhiteSpaces(string s)
     {
-        return s.Split(spaceAndPuntactionCharsAndWhiteSpaces);
+        return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
+    }
+
+    public static List<string> SplitBySpaceAndPunctuationCharsAndWhiteSpaces(string s)
+    {
+        return s.Split(spaceAndPuntactionCharsAndWhiteSpaces).ToList();
     }
 
     public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool comma)
@@ -2751,7 +2768,7 @@ public static class SH
     /// <returns></returns>
     public static List<string> RemoveDuplicates(string input, string delimiter)
     {
-        string[] split = SH.Split(input, delimiter);
+        var split = SH.Split(input, delimiter);
         return CA.RemoveDuplicitiesList(new List<string>(split));
     }
 

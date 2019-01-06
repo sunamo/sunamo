@@ -16,5 +16,6 @@ public interface IClipboardHelper
 	void CutFiles(params string[] selected);
 	void SetText(TextBuilder stringBuilder);
 	void SetText(StringBuilder stringBuilder);
+    bool ContainsText();
     }
 

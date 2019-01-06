@@ -60,8 +60,8 @@ public class UlozTo
     {
 
 
-        string[] sp = SH.Split(uri, "/", "?", "=", ".", "&");
-        if (sp.Length > 10)
+        var sp = SH.Split(uri, "/", "?", "=", ".", "&");
+        if (sp.Count > 10)
         {
             StringBuilder errors = new StringBuilder();
             UlozToMediaUriParts ut = new UlozToMediaUriParts();

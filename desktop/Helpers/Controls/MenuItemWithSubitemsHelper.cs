@@ -257,11 +257,11 @@ public class MenuItemWithSubitemsHelper
                 MenuItem tsmi = new MenuItem();
                 tsmi.Header = category;
 
-                string[] stovkyDivided = SH.Split(stovky[i].ToString(), '|');
+                var stovkyDivided = SH.Split(stovky[i].ToString(), '|');
 
                 List< String> stovkyActual = new List<String>();
                 StringBuilder stovkyActualTemp = new StringBuilder();
-                for (int y = 0; y < stovkyDivided.Length; y++)
+                for (int y = 0; y < stovkyDivided.Count; y++)
                 {
                     if ((y) % 100 == 0 && y != 0)
                     {
@@ -285,13 +285,13 @@ public class MenuItemWithSubitemsHelper
                 {
 
                     MenuItem tsmiStovky = new MenuItem();
-                    tsmiStovky.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Length).ToString() ;
+                    tsmiStovky.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Count).ToString() ;
                     
                     List< List<MenuItem>> kVlozeniDoDesitky = new List< List<MenuItem>>();
                     List<StringBuilder> idckaDesitky = new List<StringBuilder>();
                     kVlozeniDoDesitky.Add(new List<MenuItem>());
                     idckaDesitky.Add(new StringBuilder());
-                    string[] jednotkyDivided = SH.Split(idcka, ",");
+                    var jednotkyDivided = SH.Split(idcka, ",");
                     int indexNaKteryUkladatDesitky = 0;
                     foreach (var jednotka in jednotkyDivided)
                     {
@@ -327,16 +327,16 @@ public class MenuItemWithSubitemsHelper
                     {
                         var u =idckaDesitky[e].ToString();
                         e++;
-                        string[] desitkyPouze = SH.Split(u, ",");
+                        var desitkyPouze = SH.Split(u, ",");
                         MenuItem tsmiDesitky = new MenuItem();
-                        tsmiDesitky.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Length).ToString();
+                        tsmiDesitky.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         foreach (var item4 in item3)
                         {
                             tsmiDesitky.Items.Add(item4);
                         }
 
                         MenuItem tsmiDesitky2 = new MenuItem();
-                        tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Length).ToString();
+                        tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         tsmiDesitky2.Command = cmd2;
                         //  
                         tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + "|" + categoryPipe + u;
@@ -348,7 +348,7 @@ public class MenuItemWithSubitemsHelper
                     }
 
                     MenuItem tsmiStovky2 = new MenuItem();
-                    tsmiStovky2.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Length).ToString();
+                    tsmiStovky2.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Count).ToString();
 
                     pristePokracovatStovky += 100;
                     tsmiStovky2.Command = cmd1;

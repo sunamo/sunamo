@@ -28,7 +28,6 @@ namespace desktop.Controls.Result
         public string SelectedItem => selectedItem;
         public static List<string> basePaths = null;
 
-
         public FoundedFilesUC()
         {
             InitializeComponent();

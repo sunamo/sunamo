@@ -9,8 +9,8 @@ public class GeneratorMsSql
 {
     public static string OutputDeleted(string sloupceJezVratit)
     {
-        string[] cols = SH.Split(sloupceJezVratit, ",");
-        if (cols.Length != 0)
+        var cols = SH.Split(sloupceJezVratit, ",");
+        if (cols.Count != 0)
         {
             cols = CA.Trim(cols);
             StringBuilder sb = new StringBuilder();

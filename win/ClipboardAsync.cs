@@ -12,7 +12,7 @@ namespace win
     /// <summary>
     /// Use in ClipboardAsync and ClipboardHelperWin only System.Windows.Forms, not System.Windows which have very similar interface.
     /// </summary>
-    public class ClipboardAsync
+    public class ClipboardAsync 
     {
 
         private string _GetText;

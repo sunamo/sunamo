@@ -72,6 +72,7 @@
     <Compile Include="AF.cs" />
     <Compile Include="Data\LyricsWithRating.cs" />
     <Compile Include="Data\TagWithUri.cs" />
+    <Compile Include="Enums\WhatCopyHostingLocal.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Helpers\MySitesShortHelper.cs" />
     <Compile Include="Interfaces\IPageCs.cs" />

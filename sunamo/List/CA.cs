@@ -762,7 +762,7 @@ public static class CA
     /// <param name="value"></param>
     /// <param name="availableValues"></param>
     /// <returns></returns>
-    public static bool Contains(string value, string[] availableValues)
+    public static bool Contains(string value, List<string> availableValues)
     {
         foreach (var item in availableValues)
         {
@@ -828,13 +828,13 @@ public static class CA
         return false;
     }
 
-    public static bool HasIndexWithValueWithoutException(int p, string[] nahledy, string item)
+    public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
     {
         if (p < 0)
         {
             return false;
         }
-        if (nahledy.Length > p && nahledy[p] == item)
+        if (nahledy.Count > p && nahledy[p] == item)
         {
             return true;
         }
@@ -1184,6 +1184,7 @@ public static class CA
 
     /// <summary>
     /// direct edit
+    /// Remove duplicities from A1
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
@@ -1196,6 +1197,7 @@ public static class CA
 
     /// <summary>
     /// direct edit
+    /// Remove duplicities from A1
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
@@ -1626,6 +1628,26 @@ public static class CA
             result.Add( func.Invoke(files_in[i], t2));
         }
         return result;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
+    public static bool ChangeContent(List<string> files_in, Predicate<string> predicate, Func<string, string> func)
+    {
+        bool changed = false;
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            if (predicate.Invoke(files_in[i]))
+            {
+                files_in[i] = func.Invoke(files_in[i]);
+                changed = true;
+            }
+        }
+        return changed;
     }
 
     /// <summary>

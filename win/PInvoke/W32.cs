@@ -4,6 +4,43 @@ using sunamo.PInvoke;
 
 public class W32
 {
+    #region ClipboardMonitor
+    /// <summary>
+    /// Places the given window in the system-maintained clipboard format listener list.
+    /// </summary>
+    [DllImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool AddClipboardFormatListener(IntPtr hwnd);
+
+    /// <summary>
+    /// Removes the given window from the system-maintained clipboard format listener list.
+    /// </summary>
+    [DllImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
+
+    /// <summary>
+    /// Sent when the contents of the clipboard have changed.
+    /// </summary>
+    public const int WM_CLIPBOARDUPDATE = 0x031D;
+
+    /// <summary>
+    /// To find message-only windows, specify HWND_MESSAGE in the hwndParent parameter of the FindWindowEx function.
+    /// </summary>
+    public static IntPtr HWND_MESSAGE = new IntPtr(-3);
+
+    #endregion
+
+
+    [DllImport("User32.dll")]
+    public static extern int SetClipboardViewer(int hWndNewViewer);
+
+    [DllImport("User32.dll", CharSet = CharSet.Auto)]
+    public static extern bool ChangeClipboardChain(IntPtr hWndRemove, IntPtr hWndNewNext);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
     [DllImport("user32.dll")]
     public static extern bool SetForegroundWindow(IntPtr hWnd);
 

@@ -145,4 +145,9 @@ public class ClipboardHelperWin : IClipboardHelper
         thread.Start();
         thread.Join();
     }
+
+    public bool ContainsText()
+    {
+        return Clipboard.ContainsText();
+    }
 }

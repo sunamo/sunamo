@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 /// 
 /// Apps:
 /// </summary>
-    public partial class M
-    {
-        public static bool Auto = false;
-    }
+    //public partial class M
+    //{
+    //    public static bool Auto = false;
+    //}
 

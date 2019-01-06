@@ -23,36 +23,6 @@ namespace sunamo.Clipboard
 		/// </summary>
 		 static bool _afterSet = false;
 
-		private static class NativeMethods
-		{
-			/// <summary>
-			/// Places the given window in the system-maintained clipboard format listener list.
-			/// </summary>
-			[DllImport("user32.dll", SetLastError = true)]
-			[return: MarshalAs(UnmanagedType.Bool)]
-			public static extern bool AddClipboardFormatListener(IntPtr hwnd);
-
-			/// <summary>
-			/// Removes the given window from the system-maintained clipboard format listener list.
-			/// </summary>
-			[DllImport("user32.dll", SetLastError = true)]
-			[return: MarshalAs(UnmanagedType.Bool)]
-			public static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
-
-			/// <summary>
-			/// Sent when the contents of the clipboard have changed.
-			/// </summary>
-			public const int WM_CLIPBOARDUPDATE = 0x031D;
-
-			/// <summary>
-			/// To find message-only windows, specify HWND_MESSAGE in the hwndParent parameter of the FindWindowEx function.
-			/// </summary>
-			public static IntPtr HWND_MESSAGE = new IntPtr(-3);
-		}
-
-		// Don't exists in mono
-		private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, NativeMethods.HWND_MESSAGE);
-
         /// <summary>
         /// First is setted to false, after first save to clipboart auto to true
         /// </summary>
@@ -60,15 +30,18 @@ namespace sunamo.Clipboard
         public bool afterSet { get => _afterSet; set => _afterSet = value; }
         public bool pernamentlyBlock { get => _pernamentlyBlock; set => _pernamentlyBlock = value; }
 
+        // Don't exists in mono
+        private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, W32.HWND_MESSAGE);
+
         private ClipboardMonitor()
 		{
 			hwndSource.AddHook(WndProc);
-			NativeMethods.AddClipboardFormatListener(hwndSource.Handle);
+			W32.AddClipboardFormatListener(hwndSource.Handle);
 		}
 
 		public void Dispose()
 		{
-			NativeMethods.RemoveClipboardFormatListener(hwndSource.Handle);
+			W32.RemoveClipboardFormatListener(hwndSource.Handle);
 			hwndSource.RemoveHook(WndProc);
 			hwndSource.Dispose();
 		}
@@ -86,24 +59,29 @@ namespace sunamo.Clipboard
 
             if (!pernamentlyBlock)
 			{
-                bool avoidTwoTimes = lastWParam == wParamChromeOmnibox;
-                lastWParam = wParam.ToInt64();
-                if (avoidTwoTimes)
-                {
-                    lastWParam = wParamRight;
-                    return IntPtr.Zero;
-                }
+                //bool avoidTwoTimes = lastWParam == wParamChromeOmnibox;
+                //lastWParam = wParam.ToInt64();
+                //if (avoidTwoTimes)
+                //{
+                //    lastWParam = wParamRight;
+                //    return IntPtr.Zero;
+                //}
                 
                 if (afterSet)
 				{
 					afterSet = false;
-					monitor = null;
+                    // With this I never on second attempt invoke event, because its jump into 3th case of this if
+					//monitor = null;
 				}
 				else if (monitor.HasValue && monitor.Value)
 				{
-					if (msg == NativeMethods.WM_CLIPBOARDUPDATE)
+					if (msg == W32.WM_CLIPBOARDUPDATE)
 					{
-						OnClipboardContentChanged.Invoke(this, EventArgs.Empty);
+                        // After second calling app will be crash and no unhandled exception is generated
+                        // ClipboardHelper also is working perfectly with that
+                        
+                            ClipboardContentChanged(this, EventArgs.Empty);
+                        
 
 					}
 				}
@@ -111,13 +89,7 @@ namespace sunamo.Clipboard
 				{
 					monitor = true;
 				}
-
-                
             }
-
-#if DEBUG
-            InitApp.Logger.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "handled", handled);
-#endif
 
             return IntPtr.Zero;
 		}
@@ -125,7 +97,7 @@ namespace sunamo.Clipboard
 		/// <summary>
 		/// Occurs when the clipboard content changes.
 		/// </summary>
-		public event EventHandler OnClipboardContentChanged;
+		public event EventHandler ClipboardContentChanged;
 	}
 }
 #endregion

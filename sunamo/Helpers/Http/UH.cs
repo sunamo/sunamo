@@ -233,15 +233,15 @@ namespace sunamo
 
         public static string InsertBetweenPathAndFile(string uri, string vlozit)
         {
-            string[] s = SH.Split(uri, "/");
-            s[s.Length - 2] += "/" + vlozit;
+            var s = SH.Split(uri, "/");
+            s[s.Count - 2] += "/" + vlozit;
             //Uri uri2 = new Uri(uri);
             string vr = null;
             vr = Join(s);
             return vr.Replace(":/", "://");
         }
 
-        private static string Join(params string[] s)
+        private static string Join(params object[] s)
         {
             return SH.Join('/', s);
         }

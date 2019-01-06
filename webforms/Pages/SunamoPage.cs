@@ -86,6 +86,20 @@ public class SunamoPage : System.Web.UI.Page
         }
     }
 
+    
+    public HtmlGenericControl errors
+    {
+        get
+        {
+            return _errors;
+        }
+        set
+        {
+            _errors = value;
+            _errors.Visible = false;
+        }
+    }
+
     HtmlGenericControl _errors = null;
     public HtmlGenericControl errorsPlaceholder
     {

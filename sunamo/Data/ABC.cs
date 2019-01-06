@@ -21,12 +21,12 @@ public class ABC : List<AB>//, IEnumerable<AB>
         this.AddRange(abc);
     }
 
-    public object[] OnlyBs()
+    public List<object> OnlyBs()
     {
-        object[] o = new object[this.Count];
+        List<object> o = new List<object>(this.Count);
         for (int i = 0; i < this.Count; i++)
         {
-            o[i] = this[i].B;
+            o.Add( this[i].B);
         }
         return o;
     }

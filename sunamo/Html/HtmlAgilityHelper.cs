@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
 using System.Linq;
+using sunamo.Constants;
 
 namespace sunamo.Html
 {
@@ -71,7 +72,7 @@ namespace sunamo.Html
 
         /// <summary>
         /// It's calling by others
-        /// Do A3 se může vložit *
+        /// Do A5 se může vložit *
         /// </summary>
         /// <param name="vr"></param>
         /// <param name="html"></param>
@@ -205,5 +206,74 @@ namespace sunamo.Html
             return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, true);
         }
         #endregion
+
+        public static string ReplacePlainUriForAnchors(string input)
+        {
+            HtmlDocument hd = new HtmlDocument();
+            hd.OptionOutputOriginalCase = true;
+            hd.LoadHtml(input);
+            List<HtmlNode> textNodes = HtmlAgilityHelper.TextNodes(hd.DocumentNode, "a");
+            for (int i = textNodes.Count - 1; i >= 0; i--)
+            {
+                var item = textNodes[i];
+                var d = SH.Split(item.InnerText, AllStrings.space);
+                bool changed = CA.ChangeContent(d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
+
+                InsertGroup(item, d);
+                item.ParentNode.RemoveChild(item);
+                //new HtmlNode(HtmlNodeType.Element, hd, 0);
+                
+                //    var ret = item.ParentNode.ReplaceChild(newNode, item);
+                //newNode.ParentNode.InsertAfter(HtmlNode.CreateNode(d[1]), newNode);
+                //int x = 0;
+                //}
+            }
+
+            return SH.DoubleSpacesToSingle( hd.DocumentNode.OuterHtml).Trim();
+        }
+
+       public static void InsertGroup(HtmlNode insertAfter, List<string> list)
+        {
+            foreach (var item in list)
+            {
+                insertAfter = insertAfter.ParentNode.InsertAfter(CreateNode(item), insertAfter);
+            }
+        }
+
+        public static HtmlNode CreateNode(string html)
+        {
+            if (!RegexHelper.rHtmlTag.IsMatch(html))
+            {
+                html = SH.WrapWith(html, AllChars.space);
+            }
+            return HtmlNode.CreateNode(html);
+        }
+
+        private static List<HtmlNode> TextNodes(HtmlNode node, params string[] dontHaveAsParentTag)
+        {
+            /*
+             * I tried https://www.nuget.org/p/ because <a href=\"http://jepsano.net/\">http://jepsano.net/</a> another text https://www.nuget.org/p/ divide into:
+             * I tried https://www.nuget.org/p/ because
+             * <a href=\"http://jepsano.net/\">
+             * http://jepsano.net/ with parent a
+             * another text https://www.nuget.org/p/ 
+             * 
+             */
+
+            List<HtmlNode> vr = new List<HtmlNode>();
+            List<HtmlNode> allNodes = new List<HtmlNode>();
+            RecursiveReturnTags(allNodes, node, true, false, "*");
+            foreach (var item in allNodes)
+            {
+                if (item.Name == "#text")
+                {
+                    if (!CA.IsEqualToAnyElement<string>(item.ParentNode.Name, dontHaveAsParentTag))
+                    {
+                        vr.Add(item);
+                    }
+                }
+            }
+            return vr;
+        }
     }
 }

@@ -62,10 +62,7 @@ namespace sunamo.Generators.Text
             }
             set
             {
-                if (true)
-                {
-                    UndoIsNotAllowed("CanUndo");
-                }
+
                 canUndo = value;
                 if (!value)
                 {

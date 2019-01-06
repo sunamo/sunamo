@@ -12,7 +12,7 @@ public class Timestamp
     public static string[] GetAllTimeStamps(string p)
     {
         List<string> vr = new List<string>(); 
-        string[] s = SH.Split(p, ' ', '.');
+        var s = SH.Split(p, ' ', '.');
         foreach (var item in s)
         {
             if (item.Length == 9)
