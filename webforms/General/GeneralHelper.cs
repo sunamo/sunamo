@@ -326,8 +326,8 @@ public class GeneralHelper
         {
             ip2 = "127.0.0.1";
         }
-        string[] ips = SH.Split(ip2, ".");
-        if (ips.Length == 4)
+        var ips = SH.Split(ip2, ".");
+        if (ips.Count == 4)
         {
             ip = new byte[4];
             for (int i = 0; i < 4; i++)

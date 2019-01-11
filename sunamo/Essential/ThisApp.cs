@@ -26,5 +26,10 @@ namespace sunamo.Essential
                 StatusSetted(st, format);
             }
          }
+
+        public static void NewStatus(string status, params object[] args)
+        {
+            SetStatus(TypeOfMessage.Information, status, args);
+        }
     }
 }

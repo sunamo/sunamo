@@ -360,7 +360,7 @@ public static class PageArgumentVerifier
         {
             df = df.Substring(1);
         }
-        string[] tokeny = SH.Split(df, "/");
+        var tokeny = SH.Split(df, "/");
         if (tokeny[0].Length == 3)
         {
             IDWeb = (byte)((MySitesShort)Enum.Parse(typeof(MySitesShort), tokeny[0], true));
@@ -379,13 +379,13 @@ public static class PageArgumentVerifier
         }
         if (!route)
         {
-            if (tokeny.Length == 2)
+            if (tokeny.Count == 2)
             {
                 //IDWeb = MySitesConverter.ConvertFrom(tokeny[0].ToLower());
                 stranka = tokeny[1].ToLower();
                 return;
             }
-            else if (tokeny.Length == 1)
+            else if (tokeny.Count == 1)
             {
                 stranka = tokeny[0].ToLower();
 

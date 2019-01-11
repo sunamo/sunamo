@@ -49,14 +49,14 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry)
         {
             string fileName = null;
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, " ");
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
 
         public static FileSystemType IsFile(string entry, out string fileName)
         {
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, " ");
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
@@ -64,14 +64,14 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry, out string fileName, out long length)
         {
             //drw-rw-rw-   1 user     group           0 Nov 21 18:03 App_Data
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, " ");
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             length = long.Parse(tokeny[4]);
 
             return isFile;
         }
 
-        private static FileSystemType IsFileShared(string entry, string[] tokeny, out string fileName)
+        private static FileSystemType IsFileShared(string entry, List<string> tokeny, out string fileName)
         {
             fileName = SH.JoinFromIndex(8, ' ', tokeny);
             FileSystemType isFile = FileSystemType.File;

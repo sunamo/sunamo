@@ -24,7 +24,12 @@ namespace sunamo
         static List<char> invalidCharsForMapPath = null;
         static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
-        
+        public static string GetActualDateTime()
+        {
+            DateTime dt = DateTime.Now;
+            return ReplaceIncorrectCharactersFile(dt.ToString());
+
+        }
 
         public static void DeleteEmptyFiles(string folder, SearchOption so)
         {
@@ -331,7 +336,7 @@ namespace sunamo
             {
                 return string.Empty;
             }
-            int lastSlash = v.LastIndexOf(AllChars.stroke);
+            int lastSlash = v.LastIndexOf(AllChars.slash);
             int lastBs = v.LastIndexOf(AllChars.bs);
             if (lastSlash > lastDot)
             {
@@ -999,18 +1004,23 @@ namespace sunamo
         /// <param name="to"></param>
         public static void MoveAllRecursivelyAndThenDirectory(string p, string to, FileMoveCollisionOption co)
         {
-            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
-            foreach (var item in files)
-            {
-                string fileTo = to + item.Substring(p.Length);
-                MoveFile(item, fileTo, co);
-            }
+            MoveAllFilesRecursively(p, to, co);
             string[] dirs = Directory.GetDirectories(p, "*", SearchOption.AllDirectories);
             for (int i = dirs.Length - 1; i >= 0; i--)
             {
                 Directory.Delete(dirs[i], false);
             }
             Directory.Delete(p, false);
+        }
+
+        public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co)
+        {
+            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
+            foreach (var item in files)
+            {
+                string fileTo = to + item.Substring(p.Length);
+                MoveFile(item, fileTo, co);
+            }
         }
 
         public static void DeleteFilesWithSameContentBytes(List<string> files)

@@ -1,6 +1,8 @@
 ﻿redirect sunamo.cz/me to scz
 repair gui of ReplaceInFiles, copy as exe
 
+vsb koleje kolik bych měl a kolik platím, ted napr. 4257 
+
 continue from 27/11
 první bydlení, pak teprve zavolat klarce
 
@@ -66,7 +68,7 @@ t0048 auta / cars - karavan, neplatit žádný nájem. neblbější je internet.
 t0049 sql code folding
 t0050 vps firmy, send cv
 t0051 replace yaml nuget for dll as in in WpfApp1 already
-
+t0052 app for archive only specified file type. 
 
 better pdf view android
 dodělat ucto, kolik bych musel platit pro 10k zisku 

@@ -12,8 +12,8 @@
 
         <!-- Notification area -->
         <Border BorderThickness="1" Background="Beige" BorderBrush="Black" CornerRadius="10">
-            <StackPanel Margin="20" x:Name="sp">
-                <TextBlock x:Name="tb" TextWrapping="Wrap" Margin="5">
+            <StackPanel Margin="20" x:Name="sp" x:FieldModifier="public">
+                <TextBlock x:Name="tb" TextWrapping="Wrap" Margin="5" x:FieldModifier="public">
           <Bold>Notification data</Bold><LineBreak /><LineBreak />
           Something just happened and you are being notified of it.
                 </TextBlock>

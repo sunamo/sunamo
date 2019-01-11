@@ -211,33 +211,102 @@ namespace sunamo.Html
         {
             HtmlDocument hd = new HtmlDocument();
             hd.OptionOutputOriginalCase = true;
+            hd.OptionAutoCloseOnEnd = false;
+            hd.OptionOutputAsXml = false;
+            hd.OptionFixNestedTags = false;
+            hd.OptionCheckSyntax = false;
+
+            return ReplacePlainUriForAnchors(hd, input);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ReplacePlainUriForAnchors(HtmlDocument hd, string input)
+        {
+            /*
+             * Kurví se mi to tady, přidává se na konec </installedapp></installedapp></installedapp></string></string>. 
+             * Zde jsem ani po krokování neobjevil kde to vzniká, čímž bude to nejnodušší odstranit při formátu
+             */
+            
+            input = HtmlAgilityHelper.WrapIntoTagIfNot(input);
             hd.LoadHtml(input);
             List<HtmlNode> textNodes = HtmlAgilityHelper.TextNodes(hd.DocumentNode, "a");
             for (int i = textNodes.Count - 1; i >= 0; i--)
             {
+
                 var item = textNodes[i];
+                if (item.ParentNode.Name == "pre")
+                {
+                    continue;
+                }
                 var d = SH.Split(item.InnerText, AllStrings.space);
                 bool changed = CA.ChangeContent(d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
 
+                item.InnerHtml = string.Empty;
                 InsertGroup(item, d);
-                item.ParentNode.RemoveChild(item);
-                //new HtmlNode(HtmlNodeType.Element, hd, 0);
                 
+                
+
+                //item.ParentNode.ReplaceChild(CreateNode(item.InnerHtml), item);
+
+                
+
+                // must be last because use ParentNode above
+                //item.ParentNode.RemoveChild(item);
+
+                //new HtmlNode(HtmlNodeType.Element, hd, 0);
+
                 //    var ret = item.ParentNode.ReplaceChild(newNode, item);
                 //newNode.ParentNode.InsertAfter(HtmlNode.CreateNode(d[1]), newNode);
                 //int x = 0;
                 //}
             }
 
-            return SH.DoubleSpacesToSingle( hd.DocumentNode.OuterHtml).Trim();
+            string output = hd.DocumentNode.OuterHtml;
+            
+            
+
+            return output;
         }
 
-       public static void InsertGroup(HtmlNode insertAfter, List<string> list)
+        public static string WrapIntoTagIfNot(string input, string tag = HtmlTags.div)
+        {
+            input = input.Trim();
+            if (input[0] != AllChars.lt)
+            {
+                input = WrapIntoTag(tag, input);
+            }
+
+            return input;
+        }
+
+        private static string WrapIntoTag(string div, string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(AllChars.lt);
+            sb.Append(div);
+            sb.Append(AllChars.gt);
+
+            sb.Append(input);
+
+            sb.Append(AllChars.lt + string.Empty + AllChars.slash);
+            sb.Append(div);
+            sb.Append(AllChars.gt);
+
+            return sb.ToString();
+        }
+
+        public static void InsertGroup(HtmlNode insertAfter, List<string> list)
         {
             foreach (var item in list)
             {
-                insertAfter = insertAfter.ParentNode.InsertAfter(CreateNode(item), insertAfter);
+                insertAfter.InnerHtml += SH.WrapWith(item, AllChars.space);
+                //insertAfter = insertAfter.ParentNode.InsertAfter(CreateNode(item), insertAfter);
             }
+            insertAfter.InnerHtml = SH.DoubleSpacesToSingle(insertAfter.InnerHtml).Trim();
         }
 
         public static HtmlNode CreateNode(string html)

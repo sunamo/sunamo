@@ -13,14 +13,19 @@ namespace mono
 		{
 		}
 
-		public void CutFiles(params string[] selected)
+        public bool ContainsText()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CutFiles(params string[] selected)
 		{
 			throw new NotImplementedException();
 		}
 
 		public void GetFirstWordOfList()
 		{
-			throw new NotImplementedException();s
+			throw new NotImplementedException();
 		}
 
 		public List<string> GetLines()

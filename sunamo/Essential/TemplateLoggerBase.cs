@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Constants;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,12 @@ namespace sunamo.Essential
         {
             this.writeLineDelegate = writeLineDelegate;
         }
-        
+
+        public void EndRunTime()
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Ordinal, Messages.AppWillBeTerminated);
+        }
+
         #region Success
         public void CopiedToClipboard(string what)
         {

@@ -12,6 +12,9 @@ using System.Windows.Interop;
 
 namespace sunamo.Clipboard
 {
+    /// <summary>
+    /// Funguje dokonale, jen se nesmí používat P/Invoke metody když to neumím. Nemusel bych přeinstalovávat!!!
+    /// </summary>
 	public sealed class ClipboardMonitor : IDisposable, IClipboardMonitor
     {
         public static ClipboardMonitor Instance = new ClipboardMonitor();
@@ -55,10 +58,9 @@ namespace sunamo.Clipboard
 
 		private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
-            
-
             if (!pernamentlyBlock)
 			{
+                handled = true;
                 //bool avoidTwoTimes = lastWParam == wParamChromeOmnibox;
                 //lastWParam = wParam.ToInt64();
                 //if (avoidTwoTimes)
@@ -66,7 +68,7 @@ namespace sunamo.Clipboard
                 //    lastWParam = wParamRight;
                 //    return IntPtr.Zero;
                 //}
-                
+
                 if (afterSet)
 				{
 					afterSet = false;
@@ -80,15 +82,12 @@ namespace sunamo.Clipboard
                         // After second calling app will be crash and no unhandled exception is generated
                         // ClipboardHelper also is working perfectly with that
                         
-                            ClipboardContentChanged(this, EventArgs.Empty);
+                            ClipboardContentChanged();
                         
 
 					}
 				}
-				else
-				{
-					monitor = true;
-				}
+				
             }
 
             return IntPtr.Zero;
@@ -97,7 +96,7 @@ namespace sunamo.Clipboard
 		/// <summary>
 		/// Occurs when the clipboard content changes.
 		/// </summary>
-		public event EventHandler ClipboardContentChanged;
+		public event VoidVoid ClipboardContentChanged;
 	}
 }
 #endregion

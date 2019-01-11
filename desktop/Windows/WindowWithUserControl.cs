@@ -11,9 +11,10 @@ using System.Windows.Controls.Primitives;
 /// <summary>
 /// With this is allowed use logging via ThisApp (has own statusbar)
 /// </summary>
-public class WindowWithUserControl : Window
+public class WindowWithUserControl : Window, IUserControlWithResult
 {
-    public WindowWithUserControl(IUserControlInWindow uc, ResizeMode rm)
+
+    public WindowWithUserControl(IUserControlInWindow uc, ResizeMode rm, bool addDialogButtons = false)
     {
         this.Closed += WindowWithUserControl_Closed;
 
@@ -22,6 +23,12 @@ public class WindowWithUserControl : Window
 
         StatusBar statusBar = new StatusBar();
         statusBar.Height = 25;
+
+        // Stupid - I have to save reference to control, because contains data
+        //DialogButtons dialogButtons = new DialogButtons();
+        //DockPanel.SetDock(dialogButtons, Dock.Bottom);
+        //dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
+        //dock.Children.Add(dialogButtons);
 
         TextBlock textBlockStatus = TextBlockHelper.Get("");
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
@@ -44,12 +51,16 @@ public class WindowWithUserControl : Window
         this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
         this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
         this.Content = dock;
+
+        Loaded += WindowWithUserControl_Loaded;
     }
 
-    public void Accept(string value)
+    private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        
+        Activate();
     }
+
+    public event VoidBoolNullable ChangeDialogResult;
 
     private void WindowWithUserControl_Closed(object sender, System.EventArgs e)
     {
@@ -59,6 +70,10 @@ public class WindowWithUserControl : Window
     void uc_ChangeDialogResult(bool? b)
     {
         DialogResult = b;
+        if (ChangeDialogResult != null)
+        {
+            ChangeDialogResult(b);
+        }
     }
 
     public static void AvailableShortcut(Dictionary<string, string> dictionary)
@@ -67,5 +82,10 @@ public class WindowWithUserControl : Window
 
         WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.NoResize);
         window.ShowDialog();
+    }
+
+    public void Accept(object input)
+    {
+        throw new NotImplementedException();
     }
 }

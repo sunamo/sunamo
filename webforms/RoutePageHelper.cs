@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Routing;
 public static class RoutePageHelper
 {
@@ -65,7 +66,7 @@ public static class RoutePageHelper
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(RouteData nvc, string argname, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(RouteData nvc, string argname, out List<string> result)
     {
         return PageHelperBase.CheckStringArgumentCommaDelimiter(GetStringFromRouteData(nvc, argname), out result);
     }
@@ -76,7 +77,7 @@ public static class RoutePageHelper
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(RouteData nvc, string argname, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(RouteData nvc, string argname, out List<string> result)
     {
         return PageHelperBase.CheckStringArgumentPipeDelimiter(GetStringFromRouteData(nvc, argname), out result);
     }

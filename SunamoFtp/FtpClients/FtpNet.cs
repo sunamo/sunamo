@@ -43,7 +43,7 @@ namespace SunamoFtp
                 if (remoteFolder.StartsWith(actualPath))
                 {
                     remoteFolder = remoteFolder.Substring(actualPath.Length);
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
                     foreach (string item in tokens)
                     {
                         CreateDirectoryIfNotExists(item);
@@ -53,9 +53,9 @@ namespace SunamoFtp
                 else
                 {
                     ps.ActualPath = "";
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
                     int pridat = 0;
-                    for (int i = 0 + pridat; i < tokens.Length; i++)
+                    for (int i = 0 + pridat; i < tokens.Count; i++)
                     {
                         CreateDirectoryIfNotExists(tokens[i]);
                     }
@@ -442,7 +442,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Length;
+                    int tokens = SH.Split(item, " ").Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -499,7 +499,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Length;
+                    int tokens = SH.Split(item, " ").Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;

@@ -16,6 +16,17 @@ public static class SF
 {
      static SerializeContentArgs contentArgs = new SerializeContentArgs();
 
+    public static string PrepareToSerialization(params string[] o)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (object item in o)
+        {
+            sb.Append(item + separatorString);
+        }
+        //.TrimEnd(separatorChar) nen� t�eba, kdy� byly na konci pr�zdn�, odstranilo mi to je v�echny, a ten jeden nav�c tam nevad�, stejn� ho odstran� RemoveEmptyEntries
+        return sb.ToString();
+    }
+
     /// <summary>
     /// Must be property - I can forget change value on three occurences. 
     /// </summary>

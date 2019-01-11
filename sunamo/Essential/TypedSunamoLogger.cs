@@ -17,5 +17,7 @@ namespace sunamo.Essential
         {
             ThisApp.SetStatus(tz, text, args);
         }
+
+        
     }
 }

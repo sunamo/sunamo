@@ -56,14 +56,14 @@ public class TextOutputGenerator
     }
     #endregion
 
-    public  void WriteLineFormat(string text, params object[] p)
+    public  void AppendLineFormat(string text, params object[] p)
     {
         sb.AppendLine();
         
         AppendLine(string.Format(text, p));
     }
 
-    public void Format(string text, params object[] p)
+    public void AppendFormat(string text, params object[] p)
     {
         AppendLine(string.Format(text, p));
     }
@@ -108,6 +108,11 @@ public class TextOutputGenerator
         Paragraph(text, header);
     }
 
+    /// <summary>
+    /// For ordinary text use Append*
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="header"></param>
     public void Paragraph(string text, string header)
     {
         

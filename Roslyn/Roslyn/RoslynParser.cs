@@ -11,6 +11,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using sunamo;
 using sunamo.Collections;
 using sunamo.Constants;
+using Microsoft.CodeAnalysis.MSBuild;
+using Microsoft.CodeAnalysis.Text;
+using HtmlAgilityPack;
 
 namespace Roslyn
 {
@@ -188,6 +191,109 @@ namespace {0}
         {
             return CSharpSyntaxTree.ParseText(code);
         }
+
+        public static string Format(string format)
+        {
+            var workspace = MSBuildWorkspace.Create();
+            StringBuilder sb = new StringBuilder();
+
+            SyntaxTree firstTree = CSharpSyntaxTree.ParseText(format);
+
+            //SourceText text = firstTree.GetText();
+            var firstRoot = firstTree.GetRoot();
+            var syntaxNodes = firstRoot.ChildNodesAndTokens();
+
+            bool token = false;
+            bool node2 = false;
+
+            SyntaxNode node = null;
+
+            //List<SyntaxNodeOrToken> syntaxNodes2 = new List<SyntaxNodeOrToken>();
+            //syntaxNodes2.AddRange(syntaxNodes.Where(d => d.Kind() == SyntaxKind.IncompleteMember));
+            List<SyntaxNode> syntaxNodes2 = new List<SyntaxNode>();
+
+
+            foreach (var item in syntaxNodes.Where(d => d.Kind() == SyntaxKind.IncompleteMember))
+            {
+                var node3 = item.AsNode();
+                //string name = node3.TryGetInferredMemberName();
+                //string name = node3.De
+                //HtmlNode.ElementsFlags.Add(name, HtmlElementFlag.CanOverlap);
+                syntaxNodes2.Add(node3);
+            }
+
+            //SyntaxNode node = CSharpSyntaxNode.DeserializeFrom()
+            syntaxNodes = firstRoot.ChildNodesAndTokens();
+            foreach (var syntaxNode in syntaxNodes)
+            {
+                string s = syntaxNode.GetType().FullName.ToString();
+                if (syntaxNode.GetType() == typeof(SyntaxNodeOrToken))
+                {
+                    token = true;
+                    node = ((SyntaxNodeOrToken)syntaxNode).Parent;
+                    break;
+                }
+                else if (syntaxNode.GetType() == typeof(SyntaxNode))
+                {
+                    node2 = true;
+                    node = (SyntaxNode)syntaxNode;
+                    
+                }
+                else
+                {
+                    ThrowExceptions.NotImplementedCase(type, "Format");
+                }
+            }
+
+            //var m = node.DescendantNodes().OfType<IncompleteMemberSyntax>().First();
+            //m.Type.Ide
+
+            if (node2 && token)
+            {
+                throw new Exception("Cant process token and SyntaxNode - output could be duplicated");
+            }
+
+            var node4 = node.Parent;
+            if (token)
+            {
+                node4 = node;
+            }
+
+            node = node4.ReplaceNode(node, node.RemoveNodes(syntaxNodes2, SyntaxRemoveOptions.AddElasticMarker));
+            var nodesAndTokens = node.ChildNodesAndTokens();
+            var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace);
+            sb.AppendLine(formattedResult.ToFullString());
+            //if (syntaxNodes.Count() == 0)
+            //{
+            //    sb.Append(format);
+            //    //SyntaxNode syntaxNode = RoslynParser.GetNode(format);
+            //    //    var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(syntaxNode, workspace);
+            //    //sb.AppendLine(formattedResult.ToFullString());
+            //}
+
+            return sb.ToString();
+
+            //var engine = FormattingEngine.Create();
+            //engine.PreprocessorConfigurations = options.PreprocessorConfigurations;
+            //engine.FileNames = options.FileNames;
+            //engine.CopyrightHeader = options.CopyrightHeader;
+            //engine.AllowTables = options.AllowTables;
+            //engine.Verbose = false;
+
+            //if (!SetRuleMap(engine, options.RuleMap))
+            //{
+            //    return 1;
+            //}
+
+            //foreach (var item in options.FormatTargets)
+            //{
+            //    await RunFormatItemAsync(engine, item, options.Language, cancellationToken);
+            //}
+
+            //return 0;
+        }
+
+       
 
         public List<string> GetCodeOfElementsClass(string folderFrom, string folderTo)
         {

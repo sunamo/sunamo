@@ -82,6 +82,9 @@
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
+      <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Result\FoundedFilesUC.xaml.cs">
       <DependentUpon>FoundedFilesUC.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,7 @@
     <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
     <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
     <Compile Include="Data\BorderData.cs" />
+    <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\Input\ColorPicker.xaml.cs">
@@ -308,6 +312,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Input\EnterOneValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

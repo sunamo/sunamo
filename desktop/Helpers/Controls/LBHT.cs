@@ -20,7 +20,7 @@ namespace desktop
         /// </summary>
         /// <param name="lb"></param>
         /// <param name="sm"></param>
-        public LBHT(ListBox lb, SelectionMode sm)
+        public LBHT(ListBox lb, SelectionMode sm = SelectionMode.Single)
             : base(lb, sm)
         {
             lb.SelectionChanged += Lb_SelectionChanged;

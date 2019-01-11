@@ -9,19 +9,22 @@ using System.Windows.Interop;
 
 namespace desktop.Helpers.Clipboard
 {
-    public class ClipboardMonitorW32 : IDisposable
+    public class ClipboardMonitorW32
     {
         IntPtr nextClipboardViewer;
         WindowInteropHelper w;
         /// <summary>
 		/// Occurs when the clipboard content changes.
 		/// </summary>
-		public event EventHandler ClipboardContentChanged;
+		public event VoidVoid ClipboardContentChanged;
+        public event TaskVoid ClipboardContentChangedAsync;
+        public  bool pernamentlyBlock;
+        public  bool afterSet;
 
         // Don't exists in mono
         private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, W32.HWND_MESSAGE);
 
-        public void Dispose()
+        ~ClipboardMonitorW32()
         {
             W32.ChangeClipboardChain(this.Handle, nextClipboardViewer);
             W32.RemoveClipboardFormatListener(hwndSource.Handle);
@@ -54,12 +57,21 @@ namespace desktop.Helpers.Clipboard
             {
                 case WM_DRAWCLIPBOARD:
                 case 797:
-                    
+                    handled = true;
                     W32.SendMessage(nextClipboardViewer, m.Msg, m.WParam, m.LParam);
-                    ClipboardContentChanged(null, null);
+                    if (ClipboardContentChanged != null)
+                    {
+                        ClipboardContentChanged();
+                    }
+                    else if(ClipboardContentChangedAsync != null)
+                    {
+                        ClipboardContentChangedAsync();
+                    }
+                    
                     break;
 
                 case WM_CHANGECBCHAIN:
+                    handled = true;
                     if (m.WParam == nextClipboardViewer)
                         nextClipboardViewer = m.LParam;
                     else

@@ -304,6 +304,32 @@ public static class SH
         return false;
     }
 
+    public static string Leading(string v, Func<char, bool> isWhiteSpace)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in v)
+        {
+            if (isWhiteSpace.Invoke(item))
+            {
+                sb.Append(item);
+            }
+            else
+            {
+                break;
+            }
+        }
+        return sb.ToString();
+    }
+
+    public static bool IsOnIndex(string input, int dx, Func<char, bool> isWhiteSpace)
+    {
+        if (input.Length > dx)
+        {
+            return isWhiteSpace.Invoke(input[dx]);
+        }
+        return false;
+    }
+
     public static string RemoveAfterFirst(string t, string ch)
     {
         int dex = t.IndexOf(ch);
@@ -475,7 +501,9 @@ public static class SH
     public static string GetTextBetweenTwoChars(string p, int begin, int end)
     {
         // a(1) - 1,3
-        return p.Substring(begin+1, end - begin - 1);
+        return p.Substring(begin + 1, end - begin - 1);
+        // originally
+        //return p.Substring(begin+1, end - begin - 1);
     }
 
     public static string GetTextBetween(string p, string after, string before)
@@ -2309,6 +2337,8 @@ public static class SH
     /// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co)
     {
+        // needed, otherwise stack overflow
+
         if (zaCo.Contains(co))
         {
             throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
@@ -3015,6 +3045,12 @@ public static class SH
         return false;
     }
 
+    /// <summary>
+    /// Return A1 if wont find A2
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="searchFor"></param>
+    /// <returns></returns>
     public static string GetToFirst(string input, string searchFor)
     {
         int indexOfChar = input.IndexOf(searchFor);

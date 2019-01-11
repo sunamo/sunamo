@@ -40,7 +40,11 @@ public static class RandomHelper
         #endregion
     }
 
-    
+    public static IntPtr RandomIntPtr()
+    {
+        IntPtr p = new IntPtr(RandomInt());
+        return p;
+    }
 
     static Random rnd = new Random();
     #region Gen. nahodnych posloupnosti - jen pro vitrni potreby. Pro praci s poli je v T KolekcePole

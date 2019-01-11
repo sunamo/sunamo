@@ -1,11 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 
+public interface IUserControlWithResult : IControlWithResult
+{ 
+
+}
+
 /// <summary>
 /// Applied to any control
 /// 
 /// </summary>
-public interface IUserControlWithResult
+public interface IControlWithResult
 {
     /// <summary>
     /// Null není pro zavření okna, null je pro 3. tlačítko
@@ -16,12 +21,13 @@ public interface IUserControlWithResult
     /// It is construction from WF apps and protect if handler will be null.
     /// 
     /// </summary>
-    bool? DialogResult {set;}
+    bool? DialogResult { set; }
     //ButtonBase AcceptButton { get; }
     void Accept(object input);
 }
 
 public interface IUserControlInWindow : IUserControlWithResult
 {
-
+   
 }
+

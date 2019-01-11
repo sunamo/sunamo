@@ -283,7 +283,7 @@ public static class PageHelperBase
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(string arg, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(string arg, out List<string> result)
     {
         //string dd = HttpUtility.UrlDecode(nvc[key]);
         ResultCheckWebArgument vr = ResultCheckWebArgument.AllOk;
@@ -312,7 +312,7 @@ public static class PageHelperBase
         {
             vr = ResultCheckWebArgument.NotFound;
         }
-        result = new string[0];
+        result = new List<string>();
         return vr;
     }
 
@@ -322,7 +322,7 @@ public static class PageHelperBase
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(string arg, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(string arg, out List<string> result)
     {
         //string dd = HttpUtility.UrlDecode(nvc[key]);
         ResultCheckWebArgument vr = ResultCheckWebArgument.AllOk;
@@ -351,7 +351,7 @@ public static class PageHelperBase
         {
             vr = ResultCheckWebArgument.NotFound;
         }
-        result = new string[0];
+        result = new List<string>();
         return vr;
     }
 

@@ -16,6 +16,9 @@ namespace sunamo.Constants
         public const string dds = "../";
         public const string slashAsterisk = "/*";
 
+        public const string lt = "<";
+        public const string gt = ">";
+
         /// <summary>
         /// left square fowl [
         /// </summary>

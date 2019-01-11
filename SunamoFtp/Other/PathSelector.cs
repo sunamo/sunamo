@@ -29,7 +29,7 @@ namespace SunamoFtp
             }
         }
 
-        public  string[] DivideToTokens(string r)
+        public  List<string> DivideToTokens(string r)
         {
             return SH.Split(r, delimiter);
         }

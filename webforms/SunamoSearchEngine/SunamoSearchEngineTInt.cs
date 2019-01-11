@@ -36,11 +36,11 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
     /// </summary>
     /// <param name="searchTerm"></param>
     /// <returns></returns>
-    protected string[] GetSearchWords(string searchTerm)
+    protected List<string> GetSearchWords(string searchTerm)
     {
         string e = searchTerm.ToLower();
         //e = SH.TextWithoutDiacritic(e);
-        string[] slova = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(e);
+        var slova = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(e);
         //slova = CA.ToLower(slova);
         return slova;
     }

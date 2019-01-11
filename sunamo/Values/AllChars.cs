@@ -70,6 +70,9 @@ public static class AllChars
     public const char cbl = '{';
     public const char cbr = '}';
 
+    public const char lt = '<';
+    public const char gt = '>';
+
     /// <summary>
     /// left square fowl [
     /// </summary>
@@ -107,7 +110,7 @@ public static class AllChars
     /// </summary>
     public const char lb = '(';
     public const char rb = ')';
-    public const char stroke = '/';
+    public const char slash = '/';
     /// <summary>
     /// backspace
     /// </summary>

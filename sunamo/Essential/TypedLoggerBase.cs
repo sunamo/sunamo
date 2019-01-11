@@ -16,6 +16,18 @@ namespace sunamo.Essential
         {
             this.typedWriteLineDelegate = typedWriteLineDelegate;
         }
+
+        /// <summary>
+        /// Only due to Old sfw apps
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="name"></param>
+        /// <param name="v2"></param>
+        public void WriteLineFormat(string v1, params string[] name)
+        {
+            Ordinal(v1, name);
+        }
+
         #region 
         public void Success(string text, params object[] p)
         {

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
 public static class Unsafe
 {
     public static SecureString ToSecureString(this string value)
     {
+        Debugger.Break();
         unsafe
         {
             fixed (char* value3 = value)

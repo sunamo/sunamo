@@ -22,7 +22,7 @@ public class RegexHelper
 
     public static Regex rgColor6 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}$");
     public static Regex rgColor8 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}(?:[0-9a-fA-F]){2}$");
-    public static Regex rPreTagWithContent = new Regex(@"<\s*pre[^>]*>(.*?)<\s*/\s*pre>");
+    public static Regex rPreTagWithContent = new Regex(@"<\s*pre[^>]*>(.*?)<\s*/\s*pre>", RegexOptions.Multiline);
 
     public static bool IsColor(string entry)
     {
@@ -58,15 +58,7 @@ public class RegexHelper
         return html;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="myString"></param>
-    /// <returns></returns>
-    public static string ReplacePlainUrlWithLinks2(string myString)
-    {
-        return HtmlAgilityHelper.ReplacePlainUriForAnchors(myString);
-    }
+
 
     public static bool IsUri(string text)
     {

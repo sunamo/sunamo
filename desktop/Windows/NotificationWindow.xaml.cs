@@ -6,37 +6,46 @@ using System.Windows.Threading;
 public partial class NotificationWindow : Window
 {
 
-
-    public static NotificationWindow Instance = new NotificationWindow();
+    PresentationSource presentationSource = null;
+    static UIElement thenFocusTo = null;
 
     private NotificationWindow()
     {
         InitializeComponent();
 
-        ShowInTaskbar = false;
+        //ShowInTaskbar = false;
         Loaded += NotificationWindow_Loaded;
     }
 
-    public void Show(object content)
+    public static void Show(object content, UIElement thenFocusTo2)
     {
-        
+        thenFocusTo = thenFocusTo2;
+        NotificationWindow window = new NotificationWindow();
 
         if (content is UIElement)
         {
             var ui = (UIElement)content;
-            sp.Children.Clear();
-            sp.Children.Add(ui);
+            window.sp.Children.Clear();
+            window.sp.Children.Add(ui);
         }
         else
         {
-            tb.Text = content.ToString();
+            window.tb.Text = content.ToString();
         }
 
-        Show();
+        window.Show();
+        //window.Focus();
+        window.Activate();
+
+        //Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() =>
+        //{
+        //    if (PresentationSource.FromVisual(this) != null)
+        //    {
+        //NotificationWindow_Loaded(null, null);
+        //    }
+        //}));
 
         
-
-
     }
 
 
@@ -49,13 +58,33 @@ public partial class NotificationWindow : Window
         {
             var workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
 
+            if (presentationSource == null)
+            {
+                presentationSource = PresentationSource.FromVisual(this);
+            }
+            if (presentationSource != null)
+            {
 
 
-            var transform = PresentationSource.FromVisual(this).CompositionTarget.TransformFromDevice;
-            var corner = transform.Transform(new Point(workingArea.Right, workingArea.Bottom));
+                var transform = presentationSource.CompositionTarget.TransformFromDevice;
+                var corner = transform.Transform(new Point(workingArea.Right, workingArea.Bottom));
 
-            this.Left = corner.X - this.ActualWidth - 100;
-            this.Top = corner.Y - this.ActualHeight;
+                this.Left = corner.X - this.ActualWidth - 100;
+                this.Top = corner.Y - this.ActualHeight;
+
+                //Show();
+                //Activate();
+                //Nezobrazi se
+                //Close();
+
+                LimitedTimer timer = new LimitedTimer(5000, 1, () => Dispatcher.Invoke(() =>
+                {
+                    Close(); if (thenFocusTo.Focusable)
+                    {
+                        thenFocusTo.Focus();
+                    }  } ));
+                
+            }
         }));
 
     }

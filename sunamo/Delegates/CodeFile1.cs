@@ -9,6 +9,7 @@ sunamo/Delegates/CodeFile1.cs
 
 public delegate void VoidBool(bool b);
 public delegate void VoidBoolNullable(bool? b);
+public delegate void VoidBoolNullableObject(bool? b, object o);
 public delegate String StringString(string s);
 public delegate void VoidString(string s);
 public delegate void VoidInt(int s);
