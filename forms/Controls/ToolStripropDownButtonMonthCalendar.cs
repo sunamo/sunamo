@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-    //Declare a class that inherits from ToolStripControlHost.
+    //Declare a public class that inherits from ToolStripControlHost.
     public class ToolStripDropDownButtonMonthCalendar : ToolStripDropDownButton
     {
         public ToolStripMonthCalendar mc = new ToolStripMonthCalendar();

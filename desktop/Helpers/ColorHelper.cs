@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-public  class ColorHelper
+public class ColorHelper
     {
     #region Mono
     public static bool IsColorLight(Color clr)

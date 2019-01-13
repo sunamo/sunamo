@@ -1,6 +1,6 @@
 ﻿namespace sunamo.Data
 {
-    internal class Thickness
-    {
-    }
+    //public class Thickness
+    //{
+    //}
 }

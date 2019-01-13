@@ -35,7 +35,7 @@ namespace desktop.Helpers
             }   
         }
 
-        internal static List<string> ForAllTheSame(int columns)
+        public static List<string> ForAllTheSame(int columns)
         {
             List<string> result = new List<string>(columns);
             var d = 100d / (double)columns;

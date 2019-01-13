@@ -14,6 +14,8 @@ using sunamo.Constants;
 using Microsoft.CodeAnalysis.MSBuild;
 using Microsoft.CodeAnalysis.Text;
 using HtmlAgilityPack;
+using System.Web;
+using System.Text.RegularExpressions;
 
 namespace Roslyn
 {
@@ -194,6 +196,9 @@ namespace {0}
 
         public static string Format(string format)
         {
+            format = HttpUtility.HtmlDecode(format);
+            format = Regex.Replace(format, RegexHelper.rBrTagCaseInsensitive.ToString(), string.Empty);
+
             var workspace = MSBuildWorkspace.Create();
             StringBuilder sb = new StringBuilder();
 
@@ -201,6 +206,7 @@ namespace {0}
 
             //SourceText text = firstTree.GetText();
             var firstRoot = firstTree.GetRoot();
+            
             var syntaxNodes = firstRoot.ChildNodesAndTokens();
 
             bool token = false;
@@ -262,6 +268,7 @@ namespace {0}
             node = node4.ReplaceNode(node, node.RemoveNodes(syntaxNodes2, SyntaxRemoveOptions.AddElasticMarker));
             var nodesAndTokens = node.ChildNodesAndTokens();
             var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace);
+            
             sb.AppendLine(formattedResult.ToFullString());
             //if (syntaxNodes.Count() == 0)
             //{
@@ -271,7 +278,11 @@ namespace {0}
             //    //sb.AppendLine(formattedResult.ToFullString());
             //}
 
-            return sb.ToString();
+
+
+            string result =  sb.ToString();
+
+            return result;
 
             //var engine = FormattingEngine.Create();
             //engine.PreprocessorConfigurations = options.PreprocessorConfigurations;

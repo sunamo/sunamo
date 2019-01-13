@@ -81,6 +81,18 @@ public static class CA
         return abl;
     }
 
+    public static bool IsEqualToAllElement<T>(List<T> searchTerms, List<T> key)
+    {
+        foreach (var item in searchTerms)
+        {
+            if (!CA.IsEqualToAnyElement<T>(item, key))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /// <summary>
     /// Return what exists in both
     /// Modify both A1 and A2 - keep only which is only in one
@@ -129,7 +141,7 @@ public static class CA
         return list;
     }
 
-    internal static void AppendToLastElement(List<string> list, string s)
+    public static void AppendToLastElement(List<string> list, string s)
     {
         if (list.Count >0 )
         {
@@ -268,7 +280,7 @@ public static class CA
     /// </summary>
     /// <param name="times"></param>
     /// <returns></returns>
-    internal static List<int> IndexesWithNullOrEmpty(IEnumerable times)
+    public static List<int> IndexesWithNullOrEmpty(IEnumerable times)
     {
         List<int> nulled = new List<int>();
         int i = 0;
@@ -301,7 +313,7 @@ public static class CA
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
-    internal static T FirstOrNull<T>(List<T> list)
+    public static T FirstOrNull<T>(List<T> list)
     {
         if (list.Count > 0)
         {
@@ -315,6 +327,13 @@ public static class CA
         return Enumerable.Repeat<string>(string.Empty, count).ToList();   
     }
 
+    /// <summary>
+    /// Is same as IsEqualToAnyElement, only have switched elements
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <param name="t"></param>
+    /// <returns></returns>
     public static bool ContainsElement<T>(IEnumerable<T> list, T t)
     {
         foreach (T item in list)
@@ -557,21 +576,6 @@ public static class CA
         return lb;
     }
 
-    public static bool AreTheSame(byte[] p, byte[] p2)
-    {
-        if (p.Length != p2.Length)
-        {
-            return false;
-        }
-        for (int i = 0; i < p.Length; i++)
-        {
-            if (p[i] != p2[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
     #endregion
 
     #region input String IEnumerable
@@ -600,7 +604,7 @@ public static class CA
     }
 
 
-    internal static bool IsEmptyOrNull(IEnumerable mustBe)
+    public static bool IsEmptyOrNull(IEnumerable mustBe)
     {
         if (mustBe == null)
         {
@@ -1089,6 +1093,13 @@ public static class CA
         return vr;
     }
 
+    /// <summary>
+    /// Is same as ContainsElement, only have switched arguments
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="p"></param>
+    /// <param name="list"></param>
+    /// <returns></returns>
     public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
     {
         foreach (T item in list)

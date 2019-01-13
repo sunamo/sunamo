@@ -20,7 +20,7 @@ namespace sunamo.Generators
 
         public void WriteRow(string additionalQuestionCssClass, List<string> possibleAnswersAll)
         {
-            WriteTagWithAttr(HtmlTags.tr, HtmlAttrs.@class, additionalQuestionCssClass, true);
+            WriteTagWithAttr(HtmlTags.tr, HtmlAttrs.c, additionalQuestionCssClass, true);
             foreach (var item in possibleAnswersAll)
             {
                 WriteTd(item);

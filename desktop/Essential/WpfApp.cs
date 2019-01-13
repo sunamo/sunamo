@@ -12,7 +12,7 @@ using System.Windows.Threading;
 
 namespace desktop.Essential
 {
-    public  class WpfApp 
+    public class WpfApp 
     {
         static WpfApp()
         {

@@ -5,7 +5,7 @@ using System.Text;
 namespace sunamo.Essential
 {
     /// <summary>
-    /// Special class for variables which must be init on startup of every app
+    /// Special public class for variables which must be init on startup of every app
     /// </summary>
     public class InitApp
     {

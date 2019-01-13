@@ -257,7 +257,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Updates the inner glow color.
 		/// </summary>
 		/// <param name="color">The new color.</param>
-		internal void UpdateGlowColor(Color color)
+		public void UpdateGlowColor(Color color)
 		{
 			if (_leftGlowStop0 != null)
 			{
@@ -304,7 +304,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Sets the glow size.
 		/// </summary>
 		/// <param name="newGlowSize">The new glow size.</param>
-		internal void UpdateGlowSize(Thickness newGlowSize)
+		public void UpdateGlowSize(Thickness newGlowSize)
 		{
 			if (_leftGlow != null)
 			{

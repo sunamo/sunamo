@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace shared.Crypting
 {
     /// <summary>
-    /// Friend class for shared utility methods used by multiple Encryption classes
+    /// Friend public class for shared utility methods used by multiple Encryption classes
     /// </summary>
     public class Utils
     {
@@ -18,7 +18,7 @@ namespace shared.Crypting
         /// converts an array of bytes to a string Hex representation
         /// P�evedu pole byt� A1 na hexadecim�ln� �et�zec.
         /// </summary>
-        static public string ToHex(byte[] ba)
+        public static string ToHex(byte[] ba)
         {
             if (ba == null || ba.Length == 0)
             {
@@ -37,7 +37,7 @@ namespace shared.Crypting
         /// converts from a string Hex representation to an array of bytes
         /// P�evedu �et�zec v hexadexim�ln� form�tu A1 na pole byt�. Pokud nebude hex form�t(nap��kal nebude m�t sud� po�et znak�), VV
         /// </summary>
-        static public byte[] FromHex(string hexEncoded)
+        public static byte[] FromHex(string hexEncoded)
         {
             if (hexEncoded == null || hexEncoded.Length == 0)
             {
@@ -63,7 +63,7 @@ namespace shared.Crypting
         /// converts from a string Base64 representation to an array of bytes
         /// pokud je A1 null/L0, GN. Jinak se pokus�m p�ev�st na pole byt�-pokud A1 nebbude Base64 �et�zec, VV
         /// </summary>
-        static public byte[] FromBase64(string base64Encoded)
+        public static byte[] FromBase64(string base64Encoded)
         {
             if (base64Encoded == null || base64Encoded.Length == 0)
             {
@@ -83,7 +83,7 @@ namespace shared.Crypting
         /// converts from an array of bytes to a string Base64 representation
         /// Pokud A1 null nebo L0, G SE. Jinak mi p�evede na Base64
         /// </summary>
-        static public string ToBase64(byte[] b)
+        public static string ToBase64(byte[] b)
         {
             if (b == null || b.Length == 0)
             {
@@ -96,7 +96,7 @@ namespace shared.Crypting
         /// retrieve an element from an XML string
         /// V XML A1 najde p�rov� prvek A2 a vr�t� jeho obsah. Pokud nenajde, VV.
         /// </summary>
-        static public string GetXmlElement(string xml, string element)
+        public static string GetXmlElement(string xml, string element)
         {
             Match m = null;
             m = Regex.Match(xml, "<" + element + ">(?<Element>[^>]*)</" + element + ">", RegexOptions.IgnoreCase);
@@ -111,7 +111,7 @@ namespace shared.Crypting
         /// Returns the specified string value from the application .config file
         /// G �et�zec z ConfigurationManager.AppSettings kl��e A1. Pokud se nepoda�� z�skat a A2, VV
         /// </summary>
-        static public string GetConfigString(string key, bool isRequired)
+        public static string GetConfigString(string key, bool isRequired)
         {
 
             string s = Convert.ToString(ConfigurationManager.AppSettings.Get(key));
@@ -138,7 +138,7 @@ namespace shared.Crypting
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        static public string WriteConfigKey(string key, string value)
+        public static string WriteConfigKey(string key, string value)
         {
             string s = "<add key=\"{0}\" value=\"{1}\" />" + Environment.NewLine;
             return string.Format(s, key, value);
@@ -150,7 +150,7 @@ namespace shared.Crypting
         /// <param name="element"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        static public string WriteXmlElement(string element, string value)
+        public static string WriteXmlElement(string element, string value)
         {
             string s = "<{0}>{1}</{0}>" + Environment.NewLine;
             return string.Format(s, element, value);
@@ -162,7 +162,7 @@ namespace shared.Crypting
         /// <param name="element"></param>
         /// <param name="isClosing"></param>
         /// <returns></returns>
-        static public string WriteXmlNode(string element, bool isClosing)
+        public static string WriteXmlNode(string element, bool isClosing)
         {
             string s = null;
             if (isClosing)

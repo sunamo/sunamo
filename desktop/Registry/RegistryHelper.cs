@@ -12,7 +12,7 @@ using System.Collections.Generic;
 /// M IPrevedPpk zatim nejsou impl.
 /// 
 /// </summary>
-class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
+public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
 {
     #region DPP
     /// <summary>

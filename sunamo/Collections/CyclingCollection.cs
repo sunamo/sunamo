@@ -17,7 +17,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <summary>
     /// PPk pro prvky
     /// </summary>
-    public List<T> t = new List<T>();
+    public List<T> c = new List<T>();
     int _index = 0;
     int index
     {
@@ -27,9 +27,9 @@ public class CyclingCollection<T> : IStatusBroadcaster
             {
                 _index = 0;
             }
-            else if (_index > t.Count - 1)
+            else if (_index > c.Count - 1)
             {
-                _index = t.Count - 1;
+                _index = c.Count - 1;
             }
             return _index;
         }
@@ -42,8 +42,9 @@ public class CyclingCollection<T> : IStatusBroadcaster
             _index = value;
         }
     }
+
     /// <summary>
-    /// Zda se maji delat mezery
+    /// Whether make space in formatting actual showing
     /// </summary>
     bool _MakesSpaces;
     /// <summary>
@@ -75,7 +76,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <param name="t"></param>
     public void Add(T t)
     {
-        this.t.Add(t);
+        this.c.Add(t);
         _index++;
         OnChange();
     }
@@ -90,7 +91,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
        //t.AddRange(k);
         foreach (T item in k)
         {
-            t.Add(item);
+            c.Add(item);
             _index++;
         }
         OnChange();
@@ -102,7 +103,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// </summary>
     public void Clear()
     {
-        t.Clear();
+        c.Clear();
         _index = 0;
         OnChange();
     }
@@ -115,9 +116,24 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <returns></returns>
     public T SetIretation(int ir)
     {
-        index = ir;
+        
+        index = ValidateIndex(ir);
         OnChange();
         return GetIretation;
+    }
+
+    private int ValidateIndex(int ir)
+    {
+        if (ir < 0)
+        {
+            ir = c.Count - 1;
+        }
+        else if (ir >= c.Count)
+        {
+            ir = 0;
+        }
+
+        return ir;
     }
 
     public void SetIretationWithoutEvent(int p)
@@ -174,7 +190,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         {
             sb.Append(" ");
         }
-        sb.Append(t.Count.ToString());
+        sb.Append(c.Count.ToString());
         return sb.ToString();
     }
 
@@ -182,11 +198,11 @@ public class CyclingCollection<T> : IStatusBroadcaster
     {
         get
         {
-            if (t.Count == 0)
+            if (c.Count == 0)
             {
                 return default(T);
             }
-            return t[index];
+            return c[index];
         }
     }
 
@@ -199,33 +215,31 @@ public class CyclingCollection<T> : IStatusBroadcaster
         {
             T t2 = default(T);
             int dex = Math.Abs(index);
-            if (t.Count > dex && t.Count >= dex)
+            if (c.Count > dex && c.Count >= dex)
             {
-                t2 = t[dex];
+                t2 = c[dex];
             }
             else
 	        {
                 dex = Math.Abs(++index);
-                if (t.Count > dex && t.Count >= dex)
-            {
-                t2 = t[dex];
-            }
-                    
-                
+                if (c.Count > dex && c.Count >= dex)
+                {
+                    t2 = c[dex];
+                }
                 else
                 {
                     
                         index--;
                         dex = Math.Abs(--index);
-                        if (t.Count > dex && t.Count >= dex)
+                        if (c.Count > dex && c.Count >= dex)
                         {
-                            t2 = t[dex];
+                            t2 = c[dex];
                         }
                         else
                         {
-                            if (t.Count > 0)
+                            if (c.Count > 0)
                             {
-                                t2 = t[0];
+                                t2 = c[0];
                             }
                             else
                             {
@@ -252,7 +266,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         {
             if (index == 0)
             {
-                index = t.Count - 1;
+                index = c.Count - 1;
 
             }
             else
@@ -283,7 +297,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         back = false;
         if (Cycling)
         {
-            if (index == t.Count - 1)
+            if (index == c.Count - 1)
             {
                 index = 0;
             }
@@ -295,7 +309,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         }
         else
         {
-            if (index != t.Count - 1)
+            if (index != c.Count - 1)
             {
                 index++;
                 //OnChange();
@@ -314,7 +328,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <returns></returns>
     public T Before(int pocet)
     {
-        if (pocet > t.Count)
+        if (pocet > c.Count)
         {
             return GetIretation;
         }
@@ -328,7 +342,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         else if (dex < 0)
         {
             int odecist = Math.Abs(dex);
-            int vNovem = (t.Count - odecist);
+            int vNovem = (c.Count - odecist);
             index = vNovem;
         }
         else
@@ -348,7 +362,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <returns></returns>
     public T Next(int pocet)
     {
-        if (pocet > t.Count)
+        if (pocet > c.Count)
         {
             return GetIretation;
         }
@@ -358,10 +372,10 @@ public class CyclingCollection<T> : IStatusBroadcaster
         {
 
         }
-        else if (dex > t.Count)
+        else if (dex > c.Count)
         {
             // Zjistim o kolik a tolik posunu i v novem
-            int vNovem = dex - t.Count;
+            int vNovem = dex - c.Count;
             index = vNovem;
         }
         else
@@ -376,9 +390,9 @@ public class CyclingCollection<T> : IStatusBroadcaster
 
     public void ReplaceOnce(T p, T nove)
     {
-        int dex = t.IndexOf(p);
-        t.RemoveAt(dex);
-        t.Insert(dex, nove);
+        int dex = c.IndexOf(p);
+        c.RemoveAt(dex);
+        c.Insert(dex, nove);
 
     }
 

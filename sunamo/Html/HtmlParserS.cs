@@ -34,7 +34,7 @@ public static class HtmlParserS
         return InnerHtmlToStringEmpty(HtmlAgilityHelper.Node(hd, true, HtmlTags.title));
     }
 
-    internal static string InnerHtmlToStringEmpty(HtmlNode htmlNode)
+    public static string InnerHtmlToStringEmpty(HtmlNode htmlNode)
     {
         if (htmlNode == null)
         {

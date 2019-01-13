@@ -9,7 +9,7 @@ using System.Windows.Documents;
 
 namespace desktop
 {
-    class WRTBH : TextBlockHelperBase
+    public class WRTBH : TextBlockHelperBase
     {
         FontArgs fa = null;
         Thickness margin = new Thickness(0);

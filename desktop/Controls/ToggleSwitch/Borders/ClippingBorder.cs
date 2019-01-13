@@ -154,7 +154,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Sets the corner radius.
 		/// </summary>
 		/// <param name="newCornerRadius">The new corner radius.</param>
-		internal void UpdateCornerRadius(CornerRadius newCornerRadius)
+		public void UpdateCornerRadius(CornerRadius newCornerRadius)
 		{
 			if (_border != null)
 			{
@@ -188,7 +188,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Updates whether the content is clipped.
 		/// </summary>
 		/// <param name="clipContent">Whether the content is clipped.</param>
-		internal void UpdateClipContent(bool clipContent)
+		public void UpdateClipContent(bool clipContent)
 		{
 			if (clipContent)
 			{

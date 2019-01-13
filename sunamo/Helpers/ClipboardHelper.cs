@@ -4,7 +4,7 @@ using System.Text;
 using sunamo;
 using sunamo.Generators.Text;
 
-public  class ClipboardHelper
+public class ClipboardHelper
 {
 	public static  IClipboardHelper Instance = null;
 

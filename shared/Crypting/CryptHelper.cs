@@ -40,7 +40,7 @@ public class CryptHelper : ICryptHelper
         crypt.s = s;
     }
 
-    class TripleDES : ICrypt
+    public class TripleDES : ICrypt
     {
         byte[] _s = null;
         byte[] _iv = null;
@@ -72,7 +72,7 @@ public class CryptHelper : ICryptHelper
         }
     }
 
-    class RC2 : ICrypt
+    public class RC2 : ICrypt
     {
         byte[] _s = null;
         byte[] _iv = null;
@@ -104,7 +104,7 @@ public class CryptHelper : ICryptHelper
         }
     }
 
-    class Rijndael : ICrypt
+    public class Rijndael : ICrypt
     {
         public Rijndael()
         {

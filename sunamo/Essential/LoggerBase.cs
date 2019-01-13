@@ -6,7 +6,7 @@ namespace sunamo.Essential
 {
     public class LoggerBase
     {
-        // TODO: Make logger class as base and replace all occurences With Instance 
+        // TODO: Make logger public class as base and replace all occurences With Instance 
 
         VoidStringParamsObjects writeLineDelegate;
         public bool IsActive = true;

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Attributes
-{
-    class SerializableAttribute : Attribute
-    {
+//namespace sunamo.Attributes
+//{
+//    public class SerializableAttribute : Attribute
+//    {
 
-    }
-}
+//    }
+//}

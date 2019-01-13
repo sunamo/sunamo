@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 public class StatusesLogger
 {
-    // TODO: Merge with class ThisApp
+    // TODO: Merge with public class ThisApp
 
     TextBlock tb = null;
     public StatusesLogger(TextBlock tb)

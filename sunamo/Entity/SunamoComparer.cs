@@ -110,9 +110,9 @@ public class SunamoComparerICompare
     }
 }
 
-public  class SunamoComparer
+public class SunamoComparer
 {
-    public  class Integer : ISunamoComparer<int>
+    public class Integer : ISunamoComparer<int>
     {
         public static Integer Instance = new Integer();
 

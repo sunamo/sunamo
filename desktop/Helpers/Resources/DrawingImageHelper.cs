@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Media.Imaging;
 
 
-class DrawingImageHelper
+public class DrawingImageHelper
 {
 
 

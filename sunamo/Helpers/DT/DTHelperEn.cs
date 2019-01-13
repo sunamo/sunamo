@@ -64,7 +64,7 @@ namespace sunamo.Helpers.DT
             return vr;
         }
 
-        //internal static string ToShortTime(DateTime value)
+        //public static string ToShortTime(DateTime value)
         //{
         //    return 
         //}

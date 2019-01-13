@@ -150,7 +150,7 @@ using System.Text;
         #region Methods
 
         /// <summary>
-        /// Initialises the class to use a file
+        /// Initialises the public class to use a file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="encoding"></param>
@@ -164,7 +164,7 @@ using System.Text;
         }
 
         /// <summary>
-        /// Initialises the class to use a stream
+        /// Initialises the public class to use a stream
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="encoding"></param>
@@ -180,7 +180,7 @@ using System.Text;
         }
 
         /// <summary>
-        /// Initialies the class to use a string
+        /// Initialies the public class to use a string
         /// </summary>
         /// <param name="encoding"></param>
         /// <param name="csvContent"></param>

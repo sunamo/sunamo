@@ -234,7 +234,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Updates the drop shadow.
         /// </summary>
-        internal void UpdateDropShadowPosition()
+        public void UpdateDropShadowPosition()
         {
             if (_dropShadowTranslate != null)
             {
@@ -248,7 +248,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Updates the drop shadow brush.
         /// </summary>
-        internal void UpdateDropShadowBrush()
+        public void UpdateDropShadowBrush()
         {
             if (_dropShadowBrush != null)
             {

@@ -149,7 +149,7 @@ namespace shared.Crypting
         /// <summary>
         /// Vlastn� t��da pro po��t�n� CRC32 Hashe
         /// </summary>
-        private class CRC32 : HashAlgorithm
+        private  class CRC32 : HashAlgorithm
         {
             private uint result = 0xffffffff;
             /// <summary>

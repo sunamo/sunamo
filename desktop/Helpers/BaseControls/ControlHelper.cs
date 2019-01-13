@@ -44,7 +44,7 @@ namespace desktop.Helpers
             return vr;
         }
 
-        internal static void SwitchBorder(FoundedFileUC c, BorderData bd)
+        public static void SwitchBorder(FoundedFileUC c, BorderData bd)
         {
             if (c != null)
             {

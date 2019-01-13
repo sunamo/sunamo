@@ -14,7 +14,7 @@ using System.Text;
         /// <param name="st"></param>
         /// <param name="MoveBase"></param>
         /// <returns></returns>
-        static public string InverseByBase(string st, int MoveBase)
+        static string InverseByBase(string st, int MoveBase)
         {
             StringBuilder SB = new StringBuilder();
             //st = ConvertToLetterDigit(st);
@@ -35,7 +35,7 @@ using System.Text;
         /// </summary>
         /// <param name="st"></param>
         /// <returns></returns>
-        static public string InverseString(string st)
+        static string InverseString(string st)
         {
             StringBuilder SB = new StringBuilder();
             for (int i = st.Length - 1; i >= 0; i--)
@@ -50,7 +50,7 @@ using System.Text;
         /// </summary>
         /// <param name="st"></param>
         /// <returns></returns>
-        static public string ConvertToLetterDigit(string st)
+        static string ConvertToLetterDigit(string st)
         {
             StringBuilder SB = new StringBuilder();
             foreach (char ch in st)
@@ -73,7 +73,7 @@ using System.Text;
         /// </summary>
         /// <param name="st">string to moving characters</param>
         /// <returns>moved characters string</returns>
-        static public string Boring(string st)
+        static string Boring(string st)
         {
             int NewPlace;
             char ch;
@@ -99,7 +99,7 @@ using System.Text;
         /// <param name="ch"></param>
         /// <param name="EnCode"></param>
         /// <returns></returns>
-        static public char ChangeChar(char ch, int[] EnCode)
+        static char ChangeChar(char ch, int[] EnCode)
         {
             ch = char.ToUpper(ch);
             if (ch >= 'A' && ch <= 'H')

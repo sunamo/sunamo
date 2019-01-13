@@ -16,7 +16,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         AddTab(tabCount);
         PublicStatic(_public, _static);
-        sb.AddItem((object)("class " + className));
+        sb.AddItem((object)("public class " + className));
         if (derive.Length != 0)
         {
             sb.AddItem((object)":");
@@ -62,12 +62,12 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
     }
 
-    internal void EndRegion(int tabCount)
+    public void EndRegion(int tabCount)
     {
         AppendLine(tabCount, "#endregion");
     }
 
-    internal void Region(int tabCount, string v)
+    public void Region(int tabCount, string v)
     {
         AppendLine(tabCount, "#region " + v);
         
@@ -154,7 +154,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             if (!cl)
             {
-                if (contentFileNew[i].Contains(" class "))
+                if (contentFileNew[i].Contains(" public class "))
                 {
                     classIndex = i;
                     cl = true;

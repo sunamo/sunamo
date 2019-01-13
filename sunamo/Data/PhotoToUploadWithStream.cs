@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.Data
 {
-    class PhotoToUploadWithStream : PhotoToUpload
+    public class PhotoToUploadWithStream : PhotoToUpload
     {
         
     }

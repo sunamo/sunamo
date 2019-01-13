@@ -154,7 +154,7 @@ public class TextOutputGenerator
         sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
     }
 
-    internal void Undo()
+    public void Undo()
     {
         sb.Undo();
     }

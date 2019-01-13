@@ -38,14 +38,14 @@ namespace desktop
 
         public bool IsLoadedAnyImage()
         {
-            return imagesPath.t.Count != 0;
+            return imagesPath.c.Count != 0;
         }
 
         public List<string> AllFiles
         {
             get
             {
-                return imagesPath.t;
+                return imagesPath.c;
             }
         }
         public BitmapImage ActualImage = null;

@@ -6,7 +6,7 @@ public class RegexHelper
     public static Regex rHtmlScript = new Regex(@"<script[^>]*>[\s\S]*?</script>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     public static Regex rHtmlComment = new Regex(@"<!--[^>]*>[\s\S]*?-->", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     public static Regex rYtVideoLink = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)", RegexOptions.Compiled);
-
+    public static Regex rBrTagCaseInsensitive = new Regex(@"<br\s*/?>");
 
     public static bool IsEmail(string email)
     {
@@ -23,6 +23,8 @@ public class RegexHelper
     public static Regex rgColor6 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}$");
     public static Regex rgColor8 = new Regex(@"^(?:[0-9a-fA-F]{3}){1,2}(?:[0-9a-fA-F]){2}$");
     public static Regex rPreTagWithContent = new Regex(@"<\s*pre[^>]*>(.*?)<\s*/\s*pre>", RegexOptions.Multiline);
+    public static Regex isGuid = new Regex(@"^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$", RegexOptions.Compiled);
+    public static Regex rImgTag = new Regex(@"<img\s+([^>]*)(.*?)[^>]*>");
 
     public static bool IsColor(string entry)
     {

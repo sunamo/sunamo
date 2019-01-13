@@ -12,7 +12,7 @@ namespace sunamo.Helpers
     /// <summary>
     /// Load from files *.resources
     /// </summary>
-    public  class ResourcesHelper
+    public class ResourcesHelper
     {
         private ResourceManager rm = null;
 

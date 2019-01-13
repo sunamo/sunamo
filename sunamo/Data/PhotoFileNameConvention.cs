@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sunamo
 {
-    class PhotoFileNameConvention
+    public class PhotoFileNameConvention
     {
         public string text = "";
         public uint? number = null;

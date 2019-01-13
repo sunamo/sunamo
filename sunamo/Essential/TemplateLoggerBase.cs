@@ -84,7 +84,7 @@ namespace sunamo.Essential
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        internal bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
+        public bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
         {
             if (args.Count() % 2 == 1)
             {
@@ -102,7 +102,7 @@ namespace sunamo.Essential
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        internal bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
+        public bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
         {
             List<int> nulled = CA.IndexesWithNullOrEmpty(args);
 
@@ -121,7 +121,7 @@ namespace sunamo.Essential
         /// <param name="methodName"></param>
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
-        internal bool AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
+        public bool AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
         {
             List<int> nulled = CA.IndexesWithNull(args);
 

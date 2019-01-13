@@ -5,8 +5,8 @@ using System.IO;
 using System.Text;
 
     /// <summary>
-    /// This is the main class (and the one you'll use directly). Create an instance of 
-    /// the class (passing in a WatcherInfo object for intialization), and then attach 
+    /// This is the main public class (and the one you'll use directly). Create an instance of 
+    /// the public class (passing in a WatcherInfo object for intialization), and then attach 
     /// event handlers to this object.  One or more watchers will be created to handle 
     /// the various events and filters, and will marshal these evnts into a single set 
     /// from which you can gather info.

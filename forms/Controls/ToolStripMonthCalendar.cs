@@ -1,4 +1,4 @@
-﻿//Declare a class that inherits from ToolStripControlHost.
+﻿//Declare a public class that inherits from ToolStripControlHost.
 using System.Windows.Forms;
 using System;
 public class ToolStripMonthCalendar : ToolStripControlHost

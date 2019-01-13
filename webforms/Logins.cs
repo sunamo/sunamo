@@ -283,7 +283,7 @@ namespace webforms
             byte[] p = TableRowUsers3.GetHash(userID);
             byte[] salt = TableRowUsers3.GetSalt(userID);
             byte[] p2 = HashHelper.GetHash(Encoding.UTF8.GetBytes(Password), salt);
-            if (CA.AreTheSame(p, p2))
+            if (CA.IsTheSame<byte>(p, p2))
             {
                 return true;
             }
@@ -300,7 +300,7 @@ namespace webforms
                 byte[] p = TableRowUsers3.GetHash(userID);
                 byte[] salt = TableRowUsers3.GetSalt(userID);
                 byte[] p2 = HashHelper.GetHash(Encoding.UTF8.GetBytes(Password), salt);
-                if (CA.AreTheSame(p, p2))
+                if (CA.IsTheSame<byte>(p, p2))
                 {
                     return true;
                 }

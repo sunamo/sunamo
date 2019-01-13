@@ -214,7 +214,7 @@ namespace sunamo
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
 
-        internal static IEnumerable<string> GetFiles(string folderPath, bool v)
+        public static IEnumerable<string> GetFiles(string folderPath, bool v)
         {
             return FS.GetFiles(folderPath, FS.MascFromExtension(), v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }

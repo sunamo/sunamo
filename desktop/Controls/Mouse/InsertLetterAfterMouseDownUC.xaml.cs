@@ -23,7 +23,9 @@ namespace desktop.Controls.Mouse
     {
         public string ToInsert = "\\";
 
-        public bool? DialogResult { set  {
+        public bool? DialogResult {
+            set
+            {
                 if (value.HasValue && value.Value)
                 {
                     Data.Inserted = txt.Text;

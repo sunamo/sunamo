@@ -47,7 +47,7 @@ public class ThrowExceptions
         DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
     }
 
-    internal static void IsNotAllowed(Type type, string methodName, string what)
+    public static void IsNotAllowed(Type type, string methodName, string what)
     {
         ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName), what));
     }
@@ -143,7 +143,7 @@ public class ThrowExceptions
         }
     }
 
-    internal static void NoPassedFolders(Type type, string v, IEnumerable folders)
+    public static void NoPassedFolders(Type type, string v, IEnumerable folders)
     {
         ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v), folders));   
     }

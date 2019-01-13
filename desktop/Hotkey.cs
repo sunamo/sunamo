@@ -94,7 +94,7 @@ namespace UnManaged
         // ******************************************************************
         // Implement IDisposable.
         // Do not make this method virtual.
-        // A derived class should not be able to override this method.
+        // A derived public class should not be able to override this method.
         public void Dispose()
         {
             Dispose(true);

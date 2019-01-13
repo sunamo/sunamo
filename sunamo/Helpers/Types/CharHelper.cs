@@ -26,12 +26,12 @@ namespace sunamo
             return sb.ToString();
         }
 
-        internal static bool IsGeneric(char c)
+        public static bool IsGeneric(char c)
         {
             return CA.IsEqualToAnyElement<char>(c, AllChars.generalChars);
         }
 
-        internal static bool IsSpecial(char c)
+        public static bool IsSpecial(char c)
         {
             return CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
         }

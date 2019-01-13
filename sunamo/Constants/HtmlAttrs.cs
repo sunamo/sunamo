@@ -8,14 +8,16 @@ using System.Text;
 /// </summary>
     public class HtmlAttrs
     {
-        public const string classAttr = "class";
+        public const string cAttr = "class";
         public const string src = "src";
         public const string href = "href";
     public const string id = "id";
     public const string type = "type";
-    public const string @class = "@class";
     public const string rel = "rel";
-    public static string class_ = "class";
+    /// <summary>
+    /// cant name it class due to mass replacing of class
+    /// </summary>
+    public static string c = "class";
 }
 
 

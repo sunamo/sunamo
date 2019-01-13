@@ -124,6 +124,17 @@ namespace sunamo.Html
             return vr;
         }
 
+        public static HtmlDocument CreateHtmlElement()
+        {
+            HtmlDocument hd = new HtmlDocument();
+            hd.OptionOutputOriginalCase = true;
+            hd.OptionAutoCloseOnEnd = false;
+            hd.OptionOutputAsXml = false;
+            hd.OptionFixNestedTags = false;
+            hd.OptionCheckSyntax = false;
+            return hd;
+        }
+
         /// <summary>
         /// Do A3 se může zadat * pro vrácení všech tagů
         /// </summary>

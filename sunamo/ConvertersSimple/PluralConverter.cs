@@ -318,7 +318,7 @@ namespace sunamo
         /// </summary>
         /// <param name="word">word to test</param>
         /// <returns>true if a word is plural</returns>
-        static public bool TestIsPlural(string word)
+        static bool TestIsPlural(string word)
         {
             word = word.ToLower();
             if (word.Length <= 2)

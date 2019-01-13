@@ -171,7 +171,7 @@ public class ApplicationDataContainerList : IEnumerable
         return data;
     }
 
-    internal bool? GetNullableBool(string isChecked)
+    public bool? GetNullableBool(string isChecked)
     {
         if (data.ContainsKey(isChecked))
         {
@@ -180,7 +180,7 @@ public class ApplicationDataContainerList : IEnumerable
         return false;
     }
 
-    internal List<string> GetListString(string dataContext)
+    public List<string> GetListString(string dataContext)
     {
         
         return DeserializeList(data.ContainsKey(dataContext) ? this[dataContext] : null );

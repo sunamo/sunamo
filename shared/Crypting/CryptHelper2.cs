@@ -13,10 +13,10 @@ using System.Collections.Generic;
 /// <summary>
 /// Všechny šifrování v této třídě fungují.
 /// 
-/// This class uses a symmetric key algorithm (Rijndael/AES) to encrypt and 
+/// This public class uses a symmetric key algorithm (Rijndael/AES) to encrypt and 
 /// decrypt data. As long as encryption and decryption routines use the same
 /// parameters to generate the keys, the keys are guaranteed to be the same.
-/// The class uses static functions with duplicate code to make it easier to
+/// The public class uses static functions with duplicate code to make it easier to
 /// demonstrate encryption and decryption logic. In a real-life application, 
 /// this may not be the most efficient way of handling encryption, so - as
 /// soon as you feel comfortable with it - you may want to redesign this class.
@@ -365,7 +365,7 @@ public class CryptHelper2
     /// </param>
     /// <param name="initVector">
     /// Initialization vector (or IV). This value is required to encrypt the
-    /// first block of plaintext data. For RijndaelManaged class IV must be 
+    /// first block of plaintext data. For RijndaelManaged public class IV must be 
     /// exactly 16 ASCII characters long.
     /// </param>
     /// <param name="keySize">
@@ -450,7 +450,7 @@ public class CryptHelper2
     /// </param>
     /// <param name="initVector">
     /// Initialization vector (or IV). This value is required to encrypt the
-    /// first block of plaintext data. For RijndaelManaged class IV must be
+    /// first block of plaintext data. For RijndaelManaged public class IV must be
     /// exactly 16 ASCII characters long.
     /// </param>
     /// <param name="keySize">

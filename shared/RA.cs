@@ -7,7 +7,7 @@ using sunamo.Essential;
 /// <summary>
 /// 
 /// </summary>
-public  class RA
+public class RA
     {
         protected static List<string> valuesInKey = null;
         protected static RegistryKey m = null;

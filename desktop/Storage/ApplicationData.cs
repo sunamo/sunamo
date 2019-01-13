@@ -2,7 +2,7 @@
 using sunamo;
 using System;
 using System.IO;
-public  class ApplicationData
+public class ApplicationData
 {
     static ApplicationData()
     {

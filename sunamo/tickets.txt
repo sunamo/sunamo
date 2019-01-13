@@ -78,7 +78,8 @@ jak se zapisuji znacky v jinych popularnich fw
 
 
 t0043 scrollviewer to SearchCodeElements file results - try find ompare
-t0044 clean up SunamoStoraEnso
+t0044 clean up SunamoStoraEns
+t0045 app for make class public, i need replace internal for public. I got many private public class, public sealed/abstract/... public
 
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/apex/r51/testing_and_debugging_sqldeveloper/testing_and_debugging_sqldeveloper.html
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/apex/r51/testing_and_debugging_sqldeveloper/testing_and_debugging_sqldeveloper.html#overview
@@ -140,3 +141,5 @@ LearnTransactSql - pokročilé skripty pro T-sql. je to jen v SQL, ne v Project,
 
 
 Your computer appears to be correctly configured, but the device or resource (DNS server) is not responding
+
+search for cache in c, is in vain backuping to W:, n.\nuget

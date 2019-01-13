@@ -6,7 +6,7 @@
 // </copyright>
 // <date>15-Sept-2011</date>
 // <author>Eric Jensen</author>
-// <summary>Base class for the toggle switch control.</summary>
+// <summary>Base public class for the toggle switch control.</summary>
 //-----------------------------------------------------------------------
 using System;
 using System.ComponentModel;
@@ -21,7 +21,7 @@ using desktop.Controls.ToggleSwitch.Utils;
 namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
-	/// Base class for the toggle switch control.
+	/// Base public class for the toggle switch control.
 	///</summary>
 	[TemplateVisualState(Name = NormalState, GroupName = CommonStates)]
 	[TemplateVisualState(Name = DisabledState, GroupName = CommonStates)]
@@ -668,7 +668,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// <summary> 
 		/// Capture the mouse. 
 		/// </summary>
-		internal void CaptureMouseInternal()
+		public void CaptureMouseInternal()
 		{
 			if (!_isMouseCaptured)
 			{
@@ -679,7 +679,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// <summary>
 		/// Release mouse capture if we already had it. 
 		/// </summary>
-		protected internal void ReleaseMouseCaptureInternal()
+		protected  void ReleaseMouseCaptureInternal()
 		{
 			ReleaseMouseCapture();
 			_isMouseCaptured = false;

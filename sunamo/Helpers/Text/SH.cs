@@ -79,7 +79,7 @@ public static class SH
         return SH.TrimEnd( sb.ToString(), delimAfter);
     }
 
-    internal static string Format(string status, object[] args)
+    public static string Format(string status, object[] args)
     {
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
         {
@@ -108,6 +108,45 @@ public static class SH
         }
         input.Sort();
         return input;
+    }
+
+    public static string AddSpaceAndDontDuplicate(bool after, string text, string colon)
+    {
+        List<int> dxsColons = null;
+
+        StringBuilder sb = new StringBuilder();
+        sb.Append(text);
+        if (after)
+        {
+            dxsColons = SH.ReturnOccurencesOfString(text, colon); 
+
+            for (int i = dxsColons.Count - 1; i >= 0; i--)
+            {
+                sb.Insert(dxsColons[i] + 1, AllStrings.space);
+            }
+
+            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), colon + "  ");
+            for (int i = dxsColons.Count - 1; i >= 0; i--)
+            {
+                sb.Remove(dxsColons[i] + 1, 1);
+            } 
+        }
+        else
+        {
+            dxsColons = SH.ReturnOccurencesOfString(text, colon);
+
+            for (int i = dxsColons.Count - 1; i >= 0; i--)
+            {
+                sb.Insert(dxsColons[i], AllStrings.space);
+            }
+
+            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), "  " + colon);
+            for (int i = dxsColons.Count - 1; i >= 0; i--)
+            {
+                sb.Remove(dxsColons[i], 1);
+            }
+        }
+        return sb.ToString();
     }
 
     public static string ReplaceAllCaseInsensitive(string vr, string zaCo, params string[] co)
@@ -413,7 +452,7 @@ public static class SH
         return founded;
     }
 
-    internal static bool ContainsAll(string input, IEnumerable<string> allWords)
+    public static bool ContainsAll(string input, IEnumerable<string> allWords)
     {
         foreach (var item in allWords)
         {
@@ -975,7 +1014,7 @@ public static class SH
         return SH.ReplaceOnce(v, co, zaCo);
     }
 
-    internal static string Replace(string t, string what, string forWhat)
+    public static string Replace(string t, string what, string forWhat)
     {
         return t.Replace(what, forWhat);
     }
@@ -1947,7 +1986,7 @@ public static class SH
         return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
     }
 
-    internal static string JoinTimes(int times, string dds)
+    public static string JoinTimes(int times, string dds)
     {
         // Working just for char
         //return new String(dds, times);
@@ -3336,12 +3375,12 @@ public static class SH
         return sb.ToString();
     }
 
-    internal static string JoinPairs(params object[] parts)
+    public static string JoinPairs(params object[] parts)
     {
         return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
     }
 
-    internal static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
+    public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
         InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
         InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);

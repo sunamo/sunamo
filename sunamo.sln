@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dll", "dll\dll.csproj", "{E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roslyn", "Roslyn\Roslyn\Roslyn.csproj", "{9A5C5730-B16B-4FD5-B1E6-B73A5A3DA09E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoTidy", "SunamoTidy\SunamoTidy.csproj", "{E66F3AF2-6667-4695-BD57-01E840B27888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +265,18 @@ Global
 		{9A5C5730-B16B-4FD5-B1E6-B73A5A3DA09E}.Release|x64.Build.0 = Release|Any CPU
 		{9A5C5730-B16B-4FD5-B1E6-B73A5A3DA09E}.Release|x86.ActiveCfg = Release|Any CPU
 		{9A5C5730-B16B-4FD5-B1E6-B73A5A3DA09E}.Release|x86.Build.0 = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|x64.Build.0 = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Debug|x86.Build.0 = Debug|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|x64.ActiveCfg = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|x64.Build.0 = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|x86.ActiveCfg = Release|Any CPU
+		{E66F3AF2-6667-4695-BD57-01E840B27888}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

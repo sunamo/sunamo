@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace desktop
 {
     // TODO: Merge with resources 
-    class ExceptionStrings
+    public class ExceptionStrings
     {
         public const string AllOfInputsMustBeFilled = "All of inputs must be filled";
     }

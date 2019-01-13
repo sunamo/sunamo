@@ -6,7 +6,7 @@ using sunamo;
 /// <summary>
 /// Summary description for QSHelper
 /// </summary>
-public  class QSHelper
+public class QSHelper
 {
     /// <summary>
     /// Do A1 se zadává Request.Url.Query.Substring(1) neboli třeba pid=1&amp;aid=10 

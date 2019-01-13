@@ -28,7 +28,7 @@ namespace sunamo.Essential
             return string.Format("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
         }
 
-        internal static string HaveAllInnerSameCount(string before, List<List<string>> elements)
+        public static string HaveAllInnerSameCount(string before, List<List<string>> elements)
         {
             int first = elements[0].Count;
             List<int> wrongCount = new List<int>();
@@ -46,7 +46,7 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static string FileExists(string before, string fulLPath)
+        public static string FileExists(string before, string fulLPath)
         {
             if (File.Exists(fulLPath))
             {
@@ -61,7 +61,7 @@ namespace sunamo.Essential
             return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
         }
 
-        internal static string NameIsNotSetted(string before, string nameControl, string nameFromProperty)
+        public static string NameIsNotSetted(string before, string nameControl, string nameFromProperty)
         {
             if (string.IsNullOrWhiteSpace(nameFromProperty))
             {
@@ -70,7 +70,7 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static string DoesntHaveRequiredType(string v, string variableName)
+        public static string DoesntHaveRequiredType(string v, string variableName)
         {
             return variableName + "Doesn't have required type.";
         }
@@ -89,7 +89,7 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static object IsNotAllowed(string before, string what)
+        public static object IsNotAllowed(string before, string what)
         {
             return CheckBefore(before) + what + " is not allowed.";
         }
@@ -117,7 +117,7 @@ namespace sunamo.Essential
         }
 
         #region Called from TemplateLoggerBase
-        internal static string NotEvenNumberOfElements(string before, string nameOfCollection)
+        public static string NotEvenNumberOfElements(string before, string nameOfCollection)
         {
             return CheckBefore(before) + nameOfCollection + " have odd elements count";
         } 
@@ -133,12 +133,12 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
+        public static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
         {
             return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " with null value"; 
         }
 
-        internal static string IsNull(string before, string variableName, object variable)
+        public static string IsNull(string before, string variableName, object variable)
         {
             if (variable == null)
             {
@@ -164,7 +164,7 @@ namespace sunamo.Essential
             return null;
         }
 
-        internal static object NoPassedFolders(string before, IEnumerable folders)
+        public static object NoPassedFolders(string before, IEnumerable folders)
         {
             if (folders.Count() == 0)
             {
@@ -203,7 +203,7 @@ namespace sunamo.Essential
             return CheckBefore(before) + "Under " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
         }
 
-        internal static string BadMappedXaml(string before, string nameControl, string additionalInfo)
+        public static string BadMappedXaml(string before, string nameControl, string additionalInfo)
         {
             return CheckBefore(before) + $"Bad mapped XAML in {nameControl}. {additionalInfo}";
         }
