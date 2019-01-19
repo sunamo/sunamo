@@ -106,7 +106,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
     /// <param name="slova"></param>
     /// <param name="onlyEntityChar"></param>
     /// <returns></returns>
-    protected List<SunamoSearchDataInt> GetFoundedEntities(string[] slova, string onlyEntityChar)
+    protected List<SunamoSearchDataInt> GetFoundedEntities(List<string> slova, string onlyEntityChar)
     {
         List<SunamoSearchDataInt> f = new List<SunamoSearchDataInt>();
 

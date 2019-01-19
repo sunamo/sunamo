@@ -22,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Runtime\" />
+    <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

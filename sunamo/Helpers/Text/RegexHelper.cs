@@ -25,6 +25,7 @@ public class RegexHelper
     public static Regex rPreTagWithContent = new Regex(@"<\s*pre[^>]*>(.*?)<\s*/\s*pre>", RegexOptions.Multiline);
     public static Regex isGuid = new Regex(@"^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$", RegexOptions.Compiled);
     public static Regex rImgTag = new Regex(@"<img\s+([^>]*)(.*?)[^>]*>");
+    public static Regex rWpImgThumbnail = new Regex(@"(https?:\/\/([^\s]+)-([0-9]*)x([0-9]*).jpg)");
 
     public static bool IsColor(string entry)
     {
@@ -59,8 +60,6 @@ public class RegexHelper
                          "<a href=\"$1\">$1</a>");
         return html;
     }
-
-
 
     public static bool IsUri(string text)
     {
@@ -115,6 +114,4 @@ public class RegexHelper
         //assemblyName.Version = new Version("1.0.0.0");
         //Regex.CompileToAssembly(compInfo, assemblyName);
     }
-
-    
 }

@@ -6,6 +6,18 @@ public class DictionaryHelper
 {
     static Type type = typeof(DictionaryHelper);
 
+    public static List<KeyValuePair<T, int>> CountOfItems<T>(List<T> streets)
+    {
+        Dictionary<T, int> pairs = new Dictionary<T, int>();
+        foreach (var item in streets)
+        {
+            DictionaryHelper.AddOrPlus(pairs, item, 1);
+        }
+        var v = pairs.OrderByDescending(d => d.Value);
+        var r = v.ToList();
+        return r;
+    }
+
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
         ThrowExceptions.DifferentCountInLists(type, "GetDictionary", "keys", keys.Count, "values", values.Count);

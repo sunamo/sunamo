@@ -26,6 +26,31 @@ public static class MySitesConverter //: ISimpleConverter<string, MySites>
         return ConvertFrom(u.ToString().ToLower());
     }
 
+    /// <summary>
+    /// Return short
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static string ConvertFrom(int t)
+    {
+        return ((MySitesShort)t).ToString();
+    }
+
+    /// <summary>
+    /// Can be use also simpy A1.ToString();
+    /// </summary>
+    /// <param name="mySites"></param>
+    /// <returns></returns>
+    public static string ConvertTo(MySites mySites)
+    {
+        return mySites.ToString();
+    }
+
+    /// <summary>
+    /// String can be easily obtained by MySitesConverter.ConvertFrom( MySitesConverter.ConvertFrom
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
     public static byte ConvertFrom(string t)
     {
         if (t.EndsWith("new"))

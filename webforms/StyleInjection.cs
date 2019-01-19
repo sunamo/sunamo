@@ -19,8 +19,12 @@ public static class StyleInjection
 
     public static void InjectExternalStyle(SunamoPage page, List<string> p1, string hostWithHttp)
     {
+        // řešeno v HexCodeForAwesomeFontChar
         foreach (var item in p1)
         {
+            //for (int i = p1.Count - 1; i >= 0; i--)
+            //{
+            //    var item = p1[i];
             var myHtmlLink = new HtmlLink { Href = hostWithHttp + item };
             myHtmlLink.Attributes.Add("rel", "Stylesheet");
             if (item.EndsWith(".css"))

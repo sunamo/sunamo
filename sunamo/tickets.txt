@@ -1,11 +1,24 @@
 ﻿redirect sunamo.cz/me to scz
-repair gui of ReplaceInFiles, copy as exe
+repair gui of ReplaceInFiles, copy as exe¨
+když mi přijde zpráva na messenger, nevšimnul si toho nebo nebyl doma, aby mi ji připomnělo
+dělat na tom folkloru, měla opravdovou radost, dotýkala se mě, usmívala se
+tváře co chodí na folklor fb
+licence co mám, zkusit to prodat dále
+
+
+App pro sql syntaxi kde je volana, viz seznam procedur a funkci v sql
+tiketovací System a sledovac cadu 
+
+najit weby programatoru co delaji na zakazku, jejich reference. je lepší udělat aspon neco a prinejhorsim zacit naostro
+
+VideosSorter - chybi anglicky project
 
 vsb koleje kolik bych měl a kolik platím, ted napr. 4257 
 
 continue from 27/11
 první bydlení, pak teprve zavolat klarce
-
+instalk English again to stop boring 
+c# quizzes txt, don't have on mobile
 
 t0001 FindRightFlyingTicket
 t0002 ReplaceInAllFiles - replace name of class, keep name of class entity

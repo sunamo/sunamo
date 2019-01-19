@@ -8,6 +8,7 @@ using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -145,6 +146,16 @@ public static class SH
             {
                 sb.Remove(dxsColons[i], 1);
             }
+        }
+        return sb.ToString();
+    }
+
+    public static string CountOfItems(List<KeyValuePair<string, int>> counted)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in counted)
+        {
+            sb.AppendLine(item.Value + "x " + item.Key);
         }
         return sb.ToString();
     }
@@ -291,18 +302,10 @@ public static class SH
 
     public static string WordAfter(string input, string word)
     {
-        //input = input.Trim();
         input = SH.WrapWith(input, AllChars.space);
         
         int dex = input.IndexOf(word);
-        
-            // Add 1 because I will remove next word
-        //    input = input.Substring(dex + word.Length + 1);
-        //if (!input.Contains(AllChars.space))
-        //{
-        //    input += AllChars.space;
-        //}
-        
+     
             int dex2 = input.IndexOf(AllChars.space, dex+1);
             StringBuilder sb = new StringBuilder();
             if (dex2 != -1)
@@ -422,7 +425,8 @@ public static class SH
     }
 
     /// <summary>
-    /// Whether A1 contains any from a3. a2 only logical chcek 
+    /// Whether A1 contains any from a3. if a2 and A3 contains only 1 element, check for contains these first element
+    /// Return elements from A3 which is contained
     /// </summary>
     /// <param name="item"></param>
     /// <param name="hasFirstEmptyLength"></param>
@@ -556,6 +560,10 @@ public static class SH
             p3 -= 1;
             // When I return between ( ), there must be +1 
             vr = p.Substring(p2, p3 - p2+1).Trim();
+        }
+        else
+        {
+            Debugger.Break();
         }
 
         return vr;

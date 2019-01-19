@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using sunamo.Constants;
+using sunamo.Html;
 using sunamo.Xml;
 using System;
 using System.Collections.Generic;
@@ -336,28 +337,18 @@ using System.Xml;
             }
             node.Attributes.Add(atr, hod);
         }
+    #endregion
+
+    #region Get
+    public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
+    {
+        return HtmlAssistent.GetValueOfAttribute(p, divMain, trim);
+    }
+
         #endregion
 
-        #region Get
-
-        public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
-        {
-            object o = divMain.Attributes[p];
-            if (o != null)
-            {
-                string st = ((HtmlAttribute)o).Value;
-                if (trim)
-                {
-                    st = st.Trim();
-                }
-                return st;
-            }
-            return "";
-        }
-        #endregion
-
-        #region Check name and value
-        private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
+    #region Check name and value
+    private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
             if (hodnotaAtributu == "*")
             {

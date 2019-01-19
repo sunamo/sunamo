@@ -337,6 +337,13 @@ public class SunamoPage : System.Web.UI.Page
         return !string.IsNullOrWhiteSpace(cont);
     }
 
+    /// <summary>
+    /// My files should be as trailing - while adding to lately added will be more in front in html
+    /// </summary>
+    /// <param name="styles"></param>
+    /// <param name="scripts"></param>
+    /// <param name="stylesUri"></param>
+    /// <param name="scriptsUri"></param>
     protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
         string hostWithHttp = "http://" + Request.Url.Host + "/";

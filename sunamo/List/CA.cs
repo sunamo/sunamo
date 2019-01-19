@@ -1701,6 +1701,13 @@ public static class CA
         }
         return files_in;
     }
+
+    public static List<string> CreateListStringWithReverse(int reverse, params string[] v)
+    {
+        List<string> vs = new List<string>(reverse + v.Length);
+        vs.AddRange(v);
+        return vs;
+    }
     #endregion
 
 

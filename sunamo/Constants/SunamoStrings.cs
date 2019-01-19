@@ -15,6 +15,7 @@ using System.Threading.Tasks;
         {
             messageIfEmpty = MessageIfEmpty("data");
         }
+
         public const string NotImplementedPleaseContactWebAdmin = "Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.";
         public const string ScIsNotTheSame = "error: Nesouhlasilo sc. ";
         public const string UnvalidSession = "error: Špatné údaje o přihlášení - odhlašte se a přihlašte se znovu. ";

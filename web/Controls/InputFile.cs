@@ -12,7 +12,6 @@ public class InputFile : BaseControl
 	{
 	}
 
-
     /// <summary>
     /// Fixní řetězec(metoda nemá Delegate který by ho naplnil), přidá do výstupního HTML pokud bude nastaven
     /// </summary>

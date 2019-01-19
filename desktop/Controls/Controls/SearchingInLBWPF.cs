@@ -15,7 +15,7 @@ public class SearchingInLbWPF
     /// </summary>
     TextBox tstb = null;
     /// <summary>
-    /// V�choz� polo�ky. Nahraj� se do LB po stornov�n� hled�n�.
+    /// V�choz� polo�ky. Nahraje se do LB po stornov�n� hled�n�.
     /// </summary>
     public object[] oc = null;
     string searchOnlyFromLastOccurenceOf = null;

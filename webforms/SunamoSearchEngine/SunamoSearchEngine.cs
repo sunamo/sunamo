@@ -123,5 +123,5 @@ public abstract class SunamoSearchEngine
         RegisterNewWords(tableChar, idEntity, register);
     }
 
-    public abstract List<WordsCountSearchTargetInt> Search(string searchTerm, object o, out string[] slova);    
+    public abstract List<WordsCountSearchTargetInt> Search(string searchTerm, object o, out List<string> slova);    
 }

@@ -19,6 +19,7 @@ public static class StyleSheetPaths
     /// must use normal because are conflicts 
     /// </summary>
     public const string metro = "_/metro/css/metro.css";
+    public const string metroResponsible = "_/metro/css/metro-responsible.css";
     public const string metroIcons = "_/metro/css/metro-icons.min.css";
     public const string cssShared = "Shared/css/Shared.css";
     public const string Dev = "css/Dev.css";
