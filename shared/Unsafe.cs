@@ -6,7 +6,6 @@ public static class Unsafe
 {
     public static SecureString ToSecureString(this string value)
     {
-        Debugger.Break();
         unsafe
         {
             fixed (char* value3 = value)

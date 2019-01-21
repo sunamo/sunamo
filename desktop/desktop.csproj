@@ -71,7 +71,11 @@
   <ItemGroup>
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
+    <Compile Include="Controls\Collections\LoggerUC.xaml.cs">
+      <DependentUpon>LoggerUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\SunamoComboBox.cs" />
     <Compile Include="Controls\Input\EnterOneValueUC.xaml.cs">
       <DependentUpon>EnterOneValueUC.xaml</DependentUpon>
@@ -307,6 +311,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Collections\LoggerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

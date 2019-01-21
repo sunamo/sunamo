@@ -258,7 +258,7 @@ public static class CA
     }
 
     /// <summary>
-    /// Return A1 if stars with any of A2
+    /// Return A1 if stars with any of A2. Otherwise null
     /// </summary>
     /// <param name="suMethods"></param>
     /// <param name="line"></param>

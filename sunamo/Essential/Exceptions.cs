@@ -164,7 +164,21 @@ namespace sunamo.Essential
             return null;
         }
 
-        public static object NoPassedFolders(string before, IEnumerable folders)
+        internal static string NotContains(string before, string originalText, params string[] shouldContains)
+        {
+            List<string> notContained = new List<string>();
+            foreach (var item in shouldContains)
+            {
+                if (!originalText.Contains(item))
+                {
+                    notContained.Add(item);
+                }
+            }
+
+            return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, ",");
+        }
+
+        public static string NoPassedFolders(string before, IEnumerable folders)
         {
             if (folders.Count() == 0)
             {

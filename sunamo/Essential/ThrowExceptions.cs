@@ -156,6 +156,11 @@ public class ThrowExceptions
         }
     }
 
+    internal static void NotContains(Type type, string v, string p, params string[] after)
+    {
+        ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
+    }
+
 
     #endregion
 

@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace sunamo.Html
@@ -20,6 +21,25 @@ namespace sunamo.Html
                 return st;
             }
             return "";
+        }
+
+        public static void SetAttribute(HtmlNode node, string atr, string hod)
+        {
+
+            object o = null;
+            while (true)
+            {
+                o = node.Attributes.FirstOrDefault(a => a.Name == atr);
+                if (o != null)
+                {
+                    node.Attributes.Remove((HtmlAttribute)o);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            node.Attributes.Add(atr, hod);
         }
     }
 }

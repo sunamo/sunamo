@@ -2,6 +2,7 @@
 using sunamo;
 using sunamo.Essential;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,32 +32,7 @@ namespace desktop.Essential
         {
             Debug.WriteLine(v);
         }
-#endif
-
-
-        // TODO: Pozustatek z apps, nikde ani neloguje, rozhodnout co s ni
-//        public  static void SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
-//        {
-//#if DEBUG
-//            WriteDebug(status);
-//#endif
-//            //var tsc = new TaskCompletionSource();
-//            if (alsoLb)
-//            {
-//                if (beforeMessage == status)
-//                {
-//#if DEBUG
-//                    //Debugger.Break();
-//#else
-//                    return;
-//#endif
-//                }
-//            }
-//            beforeMessage = status;
-//            status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
-//        }
-
-            
+#endif 
 
         public static void SaveReferenceToTextBlockStatus(bool restore, TextBlock tbTemporaryLastErrorOrWarning, TextBlock tbTemporaryLastOtherMessage)
         {
@@ -78,6 +54,15 @@ namespace desktop.Essential
             }
         }
 
+        //static List<string> otherStatuses = new List<string>();
+        //static List<string> errorStatuses = new List<string>();
+
+        //public static void ClearRemembered()
+        //{
+        //    otherStatuses.Clear();
+        //    errorStatuses.Clear();
+        //}
+
         #region Sync
         private static void SetStatus(TypeOfMessage st, string status)
         {
@@ -86,26 +71,34 @@ namespace desktop.Essential
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
-                SetForeground(tbLastErrorOrWarning, fg);
-                SetText(tbLastErrorOrWarning, status);
-
-                if (lbLogsErrors != null)
+                if (tbLastErrorOrWarning != null)
                 {
-                    TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
-                    txt.ToolTip = tbLastErrorOrWarning.Text;
-                    lbLogsErrors.Children.Insert(0, txt);
+
+                    SetForeground(tbLastErrorOrWarning, fg);
+                    SetText(tbLastErrorOrWarning, status);
+
+                    if (lbLogsErrors != null)
+                    {
+                        TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
+                        txt.ToolTip = tbLastErrorOrWarning.Text;
+                        lbLogsErrors.Children.Insert(0, txt);
+                    }
                 }
             }
             else
             {
-                SetForeground(tbLastOtherMessage, fg);
-                SetText(tbLastOtherMessage, status);
-
-                if (lbLogsOthers != null)
+                if (tbLastOtherMessage != null)
                 {
-                    TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
-                    txt.ToolTip = tbLastOtherMessage.Text;
-                    lbLogsOthers.Children.Insert(0, txt);
+
+                    SetForeground(tbLastOtherMessage, fg);
+                    SetText(tbLastOtherMessage, status);
+
+                    if (lbLogsOthers != null)
+                    {
+                        TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
+                        txt.ToolTip = tbLastOtherMessage.Text;
+                        lbLogsOthers.Children.Insert(0, txt);
+                    }
                 }
             }
         }
@@ -137,12 +130,20 @@ namespace desktop.Essential
 
         private static void SetForeground(TextBlock tbLastOtherMessage, Color color)
         {
-            tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+            if (tbLastOtherMessage != null)
+            {
+                tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+            }
+            
         }
 
         private static void SetText(TextBlock lblStatusDownload, string status)
         {
-            lblStatusDownload.Text = status;
+            if (lblStatusDownload != null)
+            {
+                lblStatusDownload.Text = status;
+            }
+            
         } 
         #endregion
 
@@ -174,7 +175,6 @@ namespace desktop.Essential
 
         public async static Task SetTextAsync(TextBlock lblStatusDownload, string status)
         {
-
             await cd.InvokeAsync(() =>
             {
                 lblStatusDownload.Text = status;
@@ -192,6 +192,7 @@ namespace desktop.Essential
         static StackPanel lbLogsErrors = null;
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
+        public static bool rememberStatuses;
 
         public static void SaveReferenceToLogsStackPanel(StackPanel _lbLogsOthers, StackPanel _lbLogsErrors)
         {

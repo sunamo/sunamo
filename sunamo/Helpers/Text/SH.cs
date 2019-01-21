@@ -554,7 +554,9 @@ public static class SH
         string vr = null;
         int p2 = p.IndexOf(after);
         int p3 = p.IndexOf(before);
-        if (p2 != -1 && p3 != -1)
+        bool b2 = p2 != -1;
+        bool b3 = p3 != -1;
+        if (b2 && b3)
         {
             p2 += after.Length;
             p3 -= 1;
@@ -563,7 +565,7 @@ public static class SH
         }
         else
         {
-            Debugger.Break();
+            ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
         }
 
         return vr;
@@ -1162,17 +1164,25 @@ public static class SH
         }
         return false;
     }
-
     
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nazevPP"></param>
+    /// <param name="only"></param>
+    /// <returns></returns>
     public static string FirstCharUpper(string nazevPP, bool only = false)
     {
-        string sb = nazevPP.Substring(1);
-        if (only)
+        if (nazevPP != null)
         {
-            sb = sb.ToLower();
+            string sb = nazevPP.Substring(1);
+            if (only)
+            {
+                sb = sb.ToLower();
+            }
+            return nazevPP[0].ToString().ToUpper() + sb;
         }
-        return nazevPP[0].ToString().ToUpper() + sb;
+        return null;
     }
 
     public static string OnlyFirstCharUpper(string input)

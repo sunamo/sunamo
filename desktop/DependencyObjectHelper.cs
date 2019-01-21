@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup.Primitives;
@@ -57,13 +58,28 @@ namespace desktop
 
         public static T CreatedWithCopiedValues<T>(T t, params DependencyProperty[] p) where T : DependencyObject
         {
-            T instance = Activator.CreateInstance<T>();
-            foreach (var item in p)
+            dynamic d = new System.Dynamic.ExpandoObject();
+            d.t = t;
+            d.p = p;
+
+            Thread thread = new Thread(new ParameterizedThreadStart( CreatedWithCopiedValuesWorker));
+            thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
+            thread.Start( d);
+            thread.Join(); //Wait for the thread to end
+
+            return (T)d.r;
+        }
+
+         static void CreatedWithCopiedValuesWorker(object o) 
+        {
+            dynamic d = o;
+            object instance = Activator.CreateInstance(d.t.GetType());
+            foreach (var item in d.p)
             {
-                var value = t.GetValue(item);
-                instance.SetValue(item, value);
+                var value = d.t.GetValue(item);
+                (instance as DependencyObject).SetValue(item, value);
             }
-            return instance;
+            d.r = instance;
         }
     }
 }
