@@ -139,7 +139,8 @@ namespace webforms
                                     bool rememberUser = rememberUser2;
                                     SessionManager.LoginUser(page, login, idUser, sc);
 
-                                    MasterPageHelper.GetSmp(page).DoLogin(login, idUser, sc, rememberPass, rememberUser2);
+                                    var v = MasterPageHelper.GetSmp(page);
+                                    v.DoLogin(login, idUser, sc, rememberPass, rememberUser2);
 
                                     if (string.IsNullOrWhiteSpace(continueUri))
                                     {

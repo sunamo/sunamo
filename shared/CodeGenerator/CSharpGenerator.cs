@@ -146,15 +146,19 @@ public class CSharpGenerator : GeneratorCodeAbstract
     
     public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex)
     {
+        // index line with class
         classIndex = -1;
+        // whether im after {
         bool cl = false;
         bool lsf = false;
 
+       
         for (int i = 0; i < contentFileNew.Count; i++)
         {
             if (!cl)
             {
-                if (contentFileNew[i].Contains(" public class "))
+                // can be public / public partial
+                if (contentFileNew[i].Contains(" class "))
                 {
                     classIndex = i;
                     cl = true;

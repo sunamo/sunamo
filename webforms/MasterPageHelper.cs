@@ -20,7 +20,7 @@ public class MasterPageHelper
     /// <param name="writeGaTrackingCode"></param>
     public static void WriteGeneralCode(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
-        //SunamoPage sp = (SunamoPage)page;
+        
         bool isRoot = MasterPageHelper.IsRoot(page);
         WriteGeneralCodeBase(page, writeGaTrackingCode);
         string pridat = "";
@@ -38,7 +38,7 @@ public class MasterPageHelper
     /// <param name="writeGaTrackingCode"></param>
     public static void WriteGeneralCodeRoute(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
-        //SunamoPage sp = (SunamoPage)page;
+        //SunamoPage sp = SunamoMasterPage.CastToSunamoPage(page;
         bool isRoot =MasterPageHelper.IsRoot(page);
         WriteGeneralCodeBase(page, writeGaTrackingCode);
         StringBuilder pridat = new StringBuilder();
@@ -82,9 +82,14 @@ public class MasterPageHelper
         
     }
 
-    public static SunamoMasterPage GetSmp(SunamoPage p)
+    public static SunamoMasterPage GetSmp(SunamoPage page)
     {
-        return (SunamoMasterPage)p.Master;
+        Page p = page;
+        if (page.Master == null)
+        {
+            p = page.Page;
+        }
+        return  (SunamoMasterPage)p.Master;
     }
 
     /// <summary>
@@ -159,7 +164,7 @@ public class MasterPageHelper
     public static bool ReplaceWithCorrectFunction(SunamoPage page)
     {
         LoginedUser lu = SessionManager.GetLoginedUser(page);
-        if (lu.ID((SunamoPage)page) == 1)
+        if (lu.ID(SunamoMasterPage.CastToSunamoPage(page)) == 1)
         {
             return true;
         }

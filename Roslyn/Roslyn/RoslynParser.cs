@@ -32,12 +32,12 @@ namespace Roslyn
             string ns = FS.GetFileName(from);
             string nsX = FS.GetFileName(to);
 
-            foreach (var file in files)
+            foreach (var fileAspxCs in files)
             {
-                string fnwoe = FS.GetFileNameWithoutExtensions(file);
-                string designer = FS.Combine(from, fnwoe+ ".aspx.designer.cs");
+                string fnwoeAspxCs = FS.GetFileNameWithoutExtensions(fileAspxCs);
+                string designer = FS.Combine(from, fnwoeAspxCs + ".aspx.designer.cs");
 
-                string fullPathTo = FS.Combine(to, fnwoe + "Cs.cs");
+                string fullPathTo = FS.Combine(to, fnwoeAspxCs + "Cs.cs");
 
                 #region Generate and save *Cs file
                 CollectionWithoutDuplicates<string> usings;
@@ -45,13 +45,13 @@ namespace Roslyn
                 {
                     #region Get variables in designer
                     var designerContent = TF.ReadFile(designer);
-                    var fileContent = TF.ReadFile(file);
-                    var dict = GetVariablesInCsharp(GetSyntaxTree(designerContent), SH.GetLines(fileContent), out usings);
+                    var fileAspxCsContent = TF.ReadFile(fileAspxCs);
+                    var dict = GetVariablesInCsharp(GetSyntaxTree(designerContent), SH.GetLines(fileAspxCsContent), out usings);
                     usings.Add(ns);
                     #endregion
 
-                    #region Get all other code in .cs
-                    SyntaxTree tree = CSharpSyntaxTree.ParseText(fileContent);
+                    #region Get all other members in .cs
+                    SyntaxTree tree = CSharpSyntaxTree.ParseText(fileAspxCsContent);
                     StringWriter swCode = new StringWriter();
                     var cl = GetClass(tree);
 
@@ -66,7 +66,7 @@ namespace Roslyn
                         //cl.Members.Remove(item);
                         if (i == 0)
                         {
-                            var firstTree = CSharpSyntaxTree.ParseText("            " + fnwoe + "Cs cs;");
+                            var firstTree = CSharpSyntaxTree.ParseText("            " + fnwoeAspxCs + "Cs cs;");
                             firstNode = firstTree.GetRoot().ChildNodes().First();
                             cl = cl.ReplaceNode(item, firstNode);
                         }
@@ -96,12 +96,13 @@ namespace Roslyn
 
                     var variables = genVariables.ToString();
                     var usingsCode = genUsings.ToString();
+
                     var ctorArgs = SH.JoinKeyValueCollection(dict.OnlyAs(), onlyB, AllStrings.space, AllStrings.comma);
                     var ctorInner = CSharpHelper.GetCtorInner(3, onlyB);
                     var code = swCode.ToString();
                     code = SH.ReplaceOnce(code, "protected void Page_Load", "public override void Page_Load");
 
-                    string c = GetContentOfNewAspxCs(fnwoe + "Cs", SH.Join(AllStrings.comma, onlyB));
+                    string c = GetContentOfNewAspxCs(fnwoeAspxCs + "Cs", SH.Join(AllStrings.comma, onlyB));
                     //SyntaxTree addedCode = CSharpSyntaxTree.ParseText(c);
                     //var syntaxNodes = addedCode.GetRoot().ChildNodes().ToList();
                     //var inserted = cl.SyntaxTree.GetRoot().InsertNodesAfter(firstNode, CA.ToList<SyntaxNode>( syntaxNodes[0]));
@@ -132,12 +133,12 @@ namespace Roslyn
 
 
 
-                    string content = GetContentOfPageCsFile(nsX, fnwoe, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
+                    string content = GetContentOfPageCsFile(nsX, fnwoeAspxCs, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
                     if (!File.Exists(fullPathTo))
                     {
 
                         // save .cs file
-                        TF.SaveLines(contentFileNew, file);
+                        TF.SaveLines(contentFileNew, fileAspxCs);
                         // save new file
                         TF.SaveFile(content, fullPathTo);
                     }
@@ -304,19 +305,12 @@ namespace {0}
             //return 0;
         }
 
-       
-
         public List<string> GetCodeOfElementsClass(string folderFrom, string folderTo)
         {
             var files = FS.GetFiles(folderFrom, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
             foreach (var file in files)
             {
-                
-
                 SyntaxTree tree = CSharpSyntaxTree.ParseText(TF.ReadFile(file));
-
-                //List<string> usings = new List<string>();
-                
 
                 List<string> result = new List<string>();
                 SyntaxNode sn;
@@ -360,6 +354,14 @@ namespace {0}
             return result;
         }
 
+        /// <summary>
+        /// A = Namespace
+        /// B = class
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="lines"></param>
+        /// <param name="usings"></param>
+        /// <returns></returns>
         public ABC GetVariablesInCsharp(SyntaxTree tree, List<string> lines, out CollectionWithoutDuplicates<string> usings)
         {
             usings = new CollectionWithoutDuplicates<string>();

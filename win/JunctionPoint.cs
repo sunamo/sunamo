@@ -1,15 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Win32.SafeHandles;
 using sunamo;
+using win.Helpers.Powershell;
 
 /// <summary>
 /// Provides access to NTFS junction points in .Net.
 /// </summary>
 public static class JunctionPoint
     {
+
+    /// <summary>
+    /// If exists, will rewrite.
+    /// /J vytváří vždy adresář, jde pak dle toho poznat i ve FS
+    /// /H pracuje adekvátně se soubory
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public static List<string> MklinkH(string source, string target)
+    {
+        string command = "cmd /c mklink /H " + SH.WrapWithQm(source) + " " + SH.WrapWithQm(target);
+        List<string> output = PowershellRunner.InvokeSingle(command);
+        return output;
+    }
+
         /// <summary>
         /// The file or directory is not a reparse point.
         /// </summary>
@@ -185,7 +203,7 @@ public static class JunctionPoint
             IntPtr hTemplateFile);
 
         /// <summary>
-        /// For files use mklink
+        /// For files use mklink, this can be use only for directory
         /// Creates a junction point from the specified directory to the specified target directory.
         /// </summary>
         /// <remarks>

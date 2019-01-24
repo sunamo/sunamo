@@ -29,6 +29,35 @@ public class SunamoPage : System.Web.UI.Page
             
         }
     }
+
+    public string Css(object cl)
+    {
+        // jméno stránky zjistit ze cl, jméno webu ze A1
+        string csPage = SunamoPage.GetName(cl, 2);
+        string basePage = MySitesConverter.ConvertFrom(MySitesConverter.ConvertFrom(sa));
+
+        return "css/" + basePage + "/" + csPage + ".css";
+    }
+
+
+
+    public string Js(object cl)
+    {
+        string csPage = SunamoPage.GetName(cl, 2);
+        string basePage = sa.ToString();
+
+        return "ts/" + basePage + "/" + csPage + ".js";
+    }
+
+    
+
+    public static string GetName(object cl, int v)
+    {
+        string d = cl.GetType().Name;
+        string s = d.Substring(0, d.Length - v);
+        return s;
+    }
+
     Page page = null;
     public new Page Page
     {
@@ -430,8 +459,6 @@ public class SunamoPage : System.Web.UI.Page
         return true;
     }
 
-    
-
     public void WriteOld(PageArgumentName[] pans = null)
     {
         PageArgumentVerifier.GetIDWebAndNameOfPage(out IDWeb, out namePage, this.Request.FilePath);
@@ -482,18 +509,22 @@ public class SunamoPage : System.Web.UI.Page
     {
         base.OnLoad(e);
 
-        // Must be here because then is processing MasterPage and there I need user ID. Dont change!
-        FillIDUsers();
-
-        if (GeneralLayer.AllowedRegLogSys)
+        if (Title == string.Empty || Title[0] != AllChars.space)
         {
-            if (MSStoredProceduresI.ci.SelectExistsTable(Tables.Users))
-            {
-                MSStoredProceduresI.ci.Update(Tables.Users, "LastSeen", DateTime.Now, "ID", idLoginedUser);
-            }
-        }
 
-        CreateTitle();
+            // Must be here because then is processing MasterPage and there I need user ID. Dont change!
+            FillIDUsers();
+
+            if (GeneralLayer.AllowedRegLogSys)
+            {
+                if (MSStoredProceduresI.ci.SelectExistsTable(Tables.Users))
+                {
+                    MSStoredProceduresI.ci.Update(Tables.Users, "LastSeen", DateTime.Now, "ID", idLoginedUser);
+                }
+            }
+
+            CreateTitle();
+        }
     }
 
     public void CreateTitle()

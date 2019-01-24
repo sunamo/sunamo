@@ -20,6 +20,7 @@ public class UlozTo
 
         SortedDictionary<int, Uri> quality = new SortedDictionary<int, Uri>();
 
+        // Uloz.to has changed, videoQualityButtons not exists on page
         var videoQualityButtonsNode = HtmlHelper.ReturnTagWithAttr(hd.DocumentNode, "span", "id", "videoQualityButtons");
         foreach (var qualityNode in videoQualityButtonsNode.ChildNodes)
         {

@@ -11,7 +11,7 @@ public class SunamoCzMetroUIHelper
 {
     public static void SetHtmlMetroUpperBarV3(SunamoMasterPage smp, HtmlGenericControl horniLista, MySites domain)
     {
-        SunamoPage p = (SunamoPage)smp.Page;
+        SunamoPage p = SunamoMasterPage.CastToSunamoPage(smp.Page);
         SetHtmlMetroUpperBarV3(p, horniLista, domain);
     }
     private static void WriteLiWithAnchor(HtmlGenerator hgUlSettings, string link, string text)

@@ -20,6 +20,10 @@ public static class CA
         return SH.JoinNL(input);
     }
 
+    
+
+   
+
     private static void PrependWithNumbered(List<string> input)
     {
         var numbered = BTS.GetNumberedListFromTo(1, input.Count - 1, ") ");
@@ -183,6 +187,8 @@ public static class CA
 
     }
 
+    
+
     public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
@@ -275,6 +281,26 @@ public static class CA
         return null;
     }
 
+    public static object[] TwoDimensionParamsIntoOne(object[] para)
+    {
+        List<object> result = new List<object>();
+        foreach (var item in para)
+        {
+            if (item is IEnumerable && item.GetType() != typeof(string))
+            {
+                foreach (var r in (IEnumerable)item)
+                {
+                    result.Add(r);
+                }
+            }
+            else
+            {
+                result.Add(item);
+            }
+        }
+        return result.ToArray();
+    }
+
     /// <summary>
     /// Dont trim
     /// </summary>
@@ -363,6 +389,22 @@ public static class CA
             {
                 founded.Add(i);
                 result.Add(item);
+            }
+            i++;
+        }
+
+        return result;
+    }
+
+    private static IEnumerable<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, T value)
+    {
+        List<int> result = new List<int>();
+        int i = 0;
+        foreach (var item in parts)
+        {
+            if (EqualityComparer<T>.Default.Equals(item, value))
+            {
+                result.Add(i);
             }
             i++;
         }
@@ -747,6 +789,18 @@ public static class CA
         }
         return result.c;
     }
+
+    private static List<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
+    {
+        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
+        foreach (var item in mustBeEqual)
+        {
+            result.AddRange(ReturnWhichAreEqualIndexes<T>(parts, item));
+        }
+        return result.c;
+    }
+
+    
 
     public static bool AnyElementEndsWith(string t, params string[] v)
     {

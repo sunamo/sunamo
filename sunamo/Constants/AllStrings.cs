@@ -15,6 +15,7 @@ namespace sunamo.Constants
         /// </summary>
         public const string dds = "../";
         public const string slashAsterisk = "/*";
+        public const string apostrophe = "'";
 
         public const string lt = "<";
         public const string gt = ">";

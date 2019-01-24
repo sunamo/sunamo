@@ -14,9 +14,16 @@ namespace desktop.AwesomeFont
     /// </summary>
     public static class AwesomeFontControls
     {
-        public const string awesomeFontPath = "/Fonts/FontAwesome.otf#FontAwesome";
+        public static async Task SetAwesomeFontSymbol(Button txtSearchIcon, string v)
+        {
+            await WpfApp.cd.InvokeAsync(() =>
+            {
+                txtSearchIcon.FontFamily = new System.Windows.Media.FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#FontAwesome");
+                txtSearchIcon.Content = v;
+            });
+        }
 
-        private static async Task SetAwesomeFontSymbol(TextBlock txtSearchIcon, string v)
+            public static async Task SetAwesomeFontSymbol(TextBlock txtSearchIcon, string v)
         {
             await WpfApp.cd.InvokeAsync(() =>
             {

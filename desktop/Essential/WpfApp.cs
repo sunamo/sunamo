@@ -71,10 +71,11 @@ namespace desktop.Essential
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
-                if (tbLastErrorOrWarning != null)
-                {
+                // tbLastErrorOrWarning must be defined otherwise wont be adding to lbLogsErrors also
+                //if (tbLastErrorOrWarning != null)
+                //{
 
-                    SetForeground(tbLastErrorOrWarning, fg);
+                SetForeground(tbLastErrorOrWarning, fg);
                     SetText(tbLastErrorOrWarning, status);
 
                     if (lbLogsErrors != null)
@@ -83,12 +84,13 @@ namespace desktop.Essential
                         txt.ToolTip = tbLastErrorOrWarning.Text;
                         lbLogsErrors.Children.Insert(0, txt);
                     }
-                }
+                //}
             }
             else
             {
-                if (tbLastOtherMessage != null)
-                {
+                // tbLastOtherMessage must be defined otherwise wont be adding to lbLogsErrors also
+                //if (tbLastOtherMessage != null)
+                //{
 
                     SetForeground(tbLastOtherMessage, fg);
                     SetText(tbLastOtherMessage, status);
@@ -96,10 +98,13 @@ namespace desktop.Essential
                     if (lbLogsOthers != null)
                     {
                         TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
+                    cd.Invoke(() =>
+                    {
                         txt.ToolTip = tbLastOtherMessage.Text;
                         lbLogsOthers.Children.Insert(0, txt);
+                    });
                     }
-                }
+                //}
             }
         }
 
@@ -132,7 +137,10 @@ namespace desktop.Essential
         {
             if (tbLastOtherMessage != null)
             {
+                WpfApp.cd.BeginInvoke(() => { 
                 tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+                }
+                );
             }
             
         }
@@ -141,7 +149,10 @@ namespace desktop.Essential
         {
             if (lblStatusDownload != null)
             {
-                lblStatusDownload.Text = status;
+                WpfApp.cd.BeginInvoke(() => {
+                    lblStatusDownload.Text = status;
+                }
+                );
             }
             
         } 

@@ -21,20 +21,31 @@ namespace desktop
             return chb;
         }
 
+        /// <summary>
+        /// For get from simple string use CheckBox.Get
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="addDescription"></param>
+        /// <param name="tick"></param>
+        /// <returns></returns>
         public static CheckBox CheckBoxWithDescription(TWithSizeInString<string> data, bool addDescription, bool tick)
         {
+            var s = TextBlockHelper.Get(data.sizeS);
+
             CheckBox chb = new CheckBox();
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Vertical;
             sp.Children.Add(TextBlockHelper.Get(data.t));
             if (addDescription)
             {
-                sp.Children.Add(TextBlockHelper.Get(data.sizeS));
+                sp.Children.Add(s);
             }
             chb.IsThreeState = false;
             chb.IsChecked = tick;
             chb.Content = sp;
             return chb;
         }
+
+       
     }
 }

@@ -124,10 +124,11 @@ namespace sunamo.Html
             return vr;
         }
 
-        public static HtmlDocument CreateHtmlElement()
+        public static HtmlDocument CreateHtmlDocument()
         {
             HtmlDocument hd = new HtmlDocument();
             hd.OptionOutputOriginalCase = true;
+            // false - i přesto mi tag ukončený na / převede na </Page>
             hd.OptionAutoCloseOnEnd = false;
             hd.OptionOutputAsXml = false;
             hd.OptionFixNestedTags = false;

@@ -188,9 +188,11 @@ public static class SessionManager
         return GetLoginedUser(CastToSMP(page));
     }
 
+    
+
     private static SunamoMasterPage CastToSMP(SunamoPage page)
     {
-        return (SunamoMasterPage)page.Master;
+        return MasterPageHelper.GetSmp(page);
     }
 
     /// <summary>

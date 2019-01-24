@@ -96,11 +96,11 @@ using System.Xml;
         /// <param name="pocetVet"></param>
         /// <param name="hledaneSlova"></param>
         /// <returns></returns>
-        public static string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, string[] hledaneSlova)
+        public static string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, List<string> hledaneSlova)
         {
             hledaneSlova = CA.ToLower(hledaneSlova);
             celyObsah = celyObsah.Trim();
-            List<FromToWord> ftw = SH.ReturnOccurencesOfStringFromToWord(celyObsah, hledaneSlova);
+            List<FromToWord> ftw = SH.ReturnOccurencesOfStringFromToWord(celyObsah, hledaneSlova.ToArray());
             if (ftw.Count > 0)
             {
 

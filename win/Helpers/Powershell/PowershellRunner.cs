@@ -26,6 +26,11 @@ namespace win.Helpers.Powershell
 			return output;
 		}
 
+        public static List<string> InvokeSingle(string command)
+        {
+            return Invoke(CA.ToListString(command))[0];
+        }
+
         /// <summary>
         /// Tested, working
         /// For every command return at least one entry in result

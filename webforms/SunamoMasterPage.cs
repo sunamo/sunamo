@@ -1,10 +1,30 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 
 public  class SunamoMasterPage : System.Web.UI.MasterPage
 {
-    public SunamoPage sp => (SunamoPage)this.Page;
+    public SunamoPage sp => SunamoMasterPage.CastToSunamoPage( this.Page);
+
+    public static SunamoPage CastToSunamoPage(Page Page)
+    {
+        SunamoPage sp = null;
+        if (Page is SunamoPage)
+        {
+            sp = (SunamoMasterPage.CastToSunamoPage(Page));
+        }
+        else
+        {
+            var cs = Page.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic |
+                                          BindingFlags.Instance).Where(d => d.Name == "cs").FirstOrDefault();
+
+            var page = cs.GetValue(Page);
+            sp = (SunamoPage)page;
+        }
+        return sp;
+    }
 
     /// <summary>
     /// To A2 is passed ThisApp.Name

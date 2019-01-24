@@ -1,4 +1,5 @@
-﻿using sunamo.Essential;
+﻿using desktop.AwesomeFont;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,14 @@ namespace desktop.Controls.Collections
         public LoggerUC()
         {
             InitializeComponent();
+
+            Loaded += LoggerUC_Loaded;
+        }
+
+        private async void LoggerUC_Loaded(object sender, RoutedEventArgs e)
+        {
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnClear, "\uf00d");
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnCopyToClipboard, "\uf0c5");
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)

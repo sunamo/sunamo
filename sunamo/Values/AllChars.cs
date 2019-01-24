@@ -102,7 +102,8 @@ public static class AllChars
     public const char comma = ',';
     public const char dot = '.';
     public const char asterisk = '*';
-    
+    public const char apostrophe = '\'';
+
     public const char sc = ';';
     public const char qm = '"';
     /// <summary>

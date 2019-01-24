@@ -69,28 +69,7 @@ public class TF
 
 
 
-    /// <summary>
-    /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
-    /// Vrátí všechny řádky vytrimované z A1, ale nikoliv deserializované
-    /// Every non empty line trim, every empty line don't return
-    /// </summary>
-    /// <param name="file"></param>
-    /// <returns></returns>
-    public static string[] GetAllLines(string file)
-    {
 
-        List<string> lines = TF.GetLines(file);
-        List<string> linesPpk = new List<string>();
-        for (int i = 0; i < lines.Count; i++)
-        {
-            string trim = lines[i].Trim();
-            if (trim != "")
-            {
-                linesPpk.Add(trim);
-            }
-        }
-        return linesPpk.ToArray();
-    }
 
     /// <summary>
     /// ...
@@ -181,6 +160,31 @@ public class TF
     public static List<string> ReadAllLines(string file)
     {
         return SH.GetLines(ReadFile(file));
+    }
+
+    /// <summary>
+    /// Return all lines except empty
+    /// 
+    /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
+    /// Vrátí všechny řádky vytrimované z A1, ale nikoliv deserializované
+    /// Every non empty line trim, every empty line don't return
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
+    public static string[] GetAllLines(string file)
+    {
+
+        List<string> lines = TF.GetLines(file);
+        List<string> linesPpk = new List<string>();
+        for (int i = 0; i < lines.Count; i++)
+        {
+            string trim = lines[i].Trim();
+            if (trim != "")
+            {
+                linesPpk.Add(trim);
+            }
+        }
+        return linesPpk.ToArray();
     }
 
     public static void SaveLines(List<string> list, string file)

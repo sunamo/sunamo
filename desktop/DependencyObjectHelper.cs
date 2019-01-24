@@ -1,4 +1,5 @@
-﻿using System;
+﻿using desktop.Essential;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,10 +63,12 @@ namespace desktop
             d.t = t;
             d.p = p;
 
-            Thread thread = new Thread(new ParameterizedThreadStart( CreatedWithCopiedValuesWorker));
-            thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
-            thread.Start( d);
-            thread.Join(); //Wait for the thread to end
+            CreatedWithCopiedValuesWorker(d);
+
+            //Thread thread = new Thread(new ParameterizedThreadStart( ));
+            //thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
+            //thread.Start( d);
+            //thread.Join(); //Wait for the thread to end <== here will be froze
 
             return (T)d.r;
         }
@@ -73,12 +76,18 @@ namespace desktop
          static void CreatedWithCopiedValuesWorker(object o) 
         {
             dynamic d = o;
-            object instance = Activator.CreateInstance(d.t.GetType());
-            foreach (var item in d.p)
+            object instance = null;
+            WpfApp.cd.Invoke(() =>
             {
-                var value = d.t.GetValue(item);
-                (instance as DependencyObject).SetValue(item, value);
-            }
+
+                instance = Activator.CreateInstance(d.t.GetType());
+                foreach (var item in d.p)
+                {
+                    object value = null;
+                    value = d.t.GetValue(item); ;
+                    (instance as DependencyObject).SetValue(item, value);
+                }
+            });
             d.r = instance;
         }
     }

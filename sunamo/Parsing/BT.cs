@@ -157,6 +157,11 @@ namespace sunamo
             return defaultValue;
         }
 
+        /// <summary>
+        /// If has value true, return true. Otherwise return false
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static bool GetValueOfNullable(bool? t)
         {
             if (t.HasValue)

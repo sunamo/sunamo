@@ -120,7 +120,7 @@ public class HtmlParser
     /// <param name="pocetVet"></param>
     /// <param name="hledaneSlova"></param>
     /// <returns></returns>
-    public  string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, string[] hledaneSlova)
+    public  string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, List<string> hledaneSlova)
     {
 
 
