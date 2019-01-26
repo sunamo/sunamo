@@ -89,6 +89,6 @@ public class IniFile
 
         public static IniFile InStartupPath()
         {
-            return new IniFile(sunamo.AppPaths.GetFileInStartupPath(ThisApp.Name + ".ini"));
+            return new IniFile(AppPaths.GetFileInStartupPath(ThisApp.Name + ".ini"));
         }
     }

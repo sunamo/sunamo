@@ -475,7 +475,9 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private DataTable SelectDataTable(string sql, params object[] _params)
     {
+        _params = CA.TwoDimensionParamsIntoOne(_params);
         SqlCommand comm = new SqlCommand(sql);
+        _params = CA.TwoDimensionParamsIntoOne(_params);
         for (int i = 0; i < _params.Length; i++)
         {
             AddCommandParameter(comm, i, _params[i]);
@@ -494,6 +496,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
 
     public int ExecuteNonQuery(string commText, params object[] para)
     {
+        para = CA.TwoDimensionParamsIntoOne(para);
         SqlCommand comm = new SqlCommand(commText);
         for (int i = 0; i < para.Length; i++)
         {
@@ -523,6 +526,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
 
     public object ExecuteScalar(string commText, params object[] para)
     {
+        para = CA.TwoDimensionParamsIntoOne(para);
         SqlCommand comm = new SqlCommand(commText);
         for (int i = 0; i < para.Length; i++)
         {
@@ -670,6 +674,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         bool signed = false;
 
         return Insert1(tabulka, idt, sloupecID, sloupce, signed);
@@ -677,6 +682,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
 
     public long InsertSigned(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         return Insert1(tabulka, idt, sloupecID, sloupce, true);
     }
 
@@ -741,6 +747,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
@@ -769,6 +776,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void Insert3(string tabulka, long IDUsers, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce));
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
@@ -790,6 +798,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
         /// <param name="sloupce"></param>
     public void Insert4(string tabulka, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
@@ -807,6 +816,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
 
     public long Insert5(string table, string nazvySloupcu, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu));
@@ -833,6 +843,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public void Insert6(string table, string nazvySloupcu, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace("(", "(newid(),")));
@@ -869,6 +880,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public Guid InsertToRowGuid(string tabulka, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         return InsertToRowGuid2(tabulka, "ID", sloupce);
     }
 
@@ -883,6 +895,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public Guid InsertToRowGuid2(string tabulka, string sloupecID, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         int hodnotyLenght = sloupce.Length + 1;
         string hodnoty = MSDatabaseLayer.GetValuesDirect(hodnotyLenght);
 
@@ -909,6 +922,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void InsertToRowGuid3(string tabulka, Guid IDUsers, params object[] sloupce)
     {
+        sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce));
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
@@ -1399,6 +1413,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     }
     private DataTable SelectDataTable(SqlConnection conn, string sql, params object[] _params)
     {
+        _params = CA.TwoDimensionParamsIntoOne(_params);
         SqlCommand comm = new SqlCommand(sql);
         for (int i = 0; i < _params.Length; i++)
         {
@@ -1618,6 +1633,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     #region SelectTableInnerJoin
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params object[] fixniHodnotyOdNuly)
     {
+        fixniHodnotyOdNuly = CA.TwoDimensionParamsIntoOne(fixniHodnotyOdNuly);
         return SelectDataTable("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly, fixniHodnotyOdNuly);
     }
 
@@ -1635,6 +1651,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLimitLastRowsInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, int limit, string sloupecPodleKterehoRadit, AB[] whereIs, AB[] whereIsNot, params object[] hodnotyOdNuly)
     {
+        hodnotyOdNuly = CA.TwoDimensionParamsIntoOne(hodnotyOdNuly);
         SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " ORDER BY " + sloupecPodleKterehoRadit + " DESC");
         AddCommandParameteres(comm, 0, hodnotyOdNuly);
         AddCommandParameteresCombinedArrays(comm, hodnotyOdNuly.Length, whereIs, whereIsNot, null, null);
@@ -2134,6 +2151,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
 
     public void UpdateValuesCombination(string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
     {
+        setsNameValue = CA.TwoDimensionParamsIntoOne(setsNameValue);
         ABC abc = new ABC(setsNameValue);
         UpdateValuesCombination(TableName, nameOfColumn, valueOfColumn, abc.ToArray());
     }

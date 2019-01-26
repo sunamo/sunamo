@@ -281,6 +281,12 @@ public static class CA
         return null;
     }
 
+    /// <summary>
+    /// Multi deep array is not suppported
+    /// For convert into string use ListToString
+    /// </summary>
+    /// <param name="para"></param>
+    /// <returns></returns>
     public static object[] TwoDimensionParamsIntoOne(object[] para)
     {
         List<object> result = new List<object>();
@@ -739,7 +745,7 @@ public static class CA
         }
         for (int i = 0; i < list.Count; i++)
         {
-            list[i] = sunamo.FS.WithEndSlash(list[i]);
+            list[i] = FS.WithEndSlash(list[i]);
         }
         return folders;
     }
@@ -748,7 +754,7 @@ public static class CA
     {
         for (int i = 0; i < folders.Length; i++)
         {
-            folders[i] = sunamo.FS.WithoutEndSlash(folders[i]);
+            folders[i] = FS.WithoutEndSlash(folders[i]);
         }
         return folders;
     }

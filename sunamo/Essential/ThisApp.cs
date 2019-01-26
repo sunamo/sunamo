@@ -14,6 +14,14 @@ namespace sunamo.Essential
         public static Langs l = Langs.en;
         public static ResourcesHelper Resources;
         public static string Name;
+        public static string _Name
+        {
+            get
+            {
+                return "_" + Name;
+            }
+        }
+
         public static readonly bool initialized = false;
         public static string Namespace = "";
         public static event SetStatusDelegate StatusSetted;

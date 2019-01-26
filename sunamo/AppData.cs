@@ -35,7 +35,7 @@ public class AppData
         //Common(true)
         string slozka = Path.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
         fileFolderWithAppsFiles = Path.Combine(slozka, "folderWithAppsFiles.txt");
-        sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
+        FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
         return fileFolderWithAppsFiles;
     }
 
@@ -53,11 +53,11 @@ public class AppData
             }
 
             RootFolder = Path.Combine(rootFolder,ThisApp.Name);
-            sunamo.FS.CreateDirectory(RootFolder);
+            FS.CreateDirectory(RootFolder);
             foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
             {
-                //sunamo.FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
-                sunamo.FS.CreateDirectory(GetFolder(item));
+                //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
+                FS.CreateDirectory(GetFolder(item));
             }
         }
         else

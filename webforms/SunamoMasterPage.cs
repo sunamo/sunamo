@@ -13,7 +13,7 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
         SunamoPage sp = null;
         if (Page is SunamoPage)
         {
-            sp = (SunamoMasterPage.CastToSunamoPage(Page));
+            sp = (SunamoPage)Page;
         }
         else
         {

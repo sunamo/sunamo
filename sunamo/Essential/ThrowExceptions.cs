@@ -161,6 +161,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
     }
 
+    public static void DirectoryWasntFound(Type type, string methodName, string folder1)
+    {
+        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode( type, methodName), folder1));
+    }
+
 
     #endregion
 

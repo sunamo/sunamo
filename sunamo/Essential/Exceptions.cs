@@ -5,15 +5,24 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace sunamo.Essential
-{
+
     /// <summary>
     /// TODO: Don't add anything here and just use TemplateLoggerBase and ThisApp.DefaultLogger (dependent in type of app - Console, WPF, web etc.)
     /// Here only errors and so where is needed define location of code
     /// </summary>
     public class Exceptions
     {
-        
+        public static string TextOfExceptions(Exception ex, bool alsoInner = true)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(ex.Message);
+            while (ex.InnerException != null)
+            {
+                ex = ex.InnerException;
+                sb.AppendLine(ex.Message);
+            }
+            return sb.ToString();
+        }
 
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
@@ -222,4 +231,3 @@ namespace sunamo.Essential
             return CheckBefore(before) + $"Bad mapped XAML in {nameControl}. {additionalInfo}";
         }
     }
-}

@@ -1,4 +1,5 @@
-﻿using sunamo.Helpers;
+﻿using sunamo.Essential;
+using sunamo.Helpers;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,18 @@ using webforms.Interfaces;
 
 public class SunamoPage : System.Web.UI.Page
 {
+    public new string Title
+    {
+        set
+        {
+            CreateTitle(value);
+        }
+        get
+        {
+            return base.Title;
+        }
+    }
+
     public new HttpRequest Request => HttpContext.Current.Request;
     public new HttpResponse Response => HttpContext.Current.Response;
     public new HtmlHead Header
@@ -25,8 +38,6 @@ public class SunamoPage : System.Web.UI.Page
             {
                 return null;
             }
-
-            
         }
     }
 
@@ -38,8 +49,6 @@ public class SunamoPage : System.Web.UI.Page
 
         return "css/" + basePage + "/" + csPage + ".css";
     }
-
-
 
     public string Js(object cl)
     {
@@ -72,6 +81,9 @@ public class SunamoPage : System.Web.UI.Page
     }
     //public new HttpHead Header => HttpContext.Current.
 
+    /// <summary>
+    /// Used in Photo.aspx <%= hfs %>
+    /// </summary>
     public string hfs = "";
     protected string descriptionPage = "";
     public bool showComments = false;
@@ -176,32 +188,6 @@ public class SunamoPage : System.Web.UI.Page
     {
         return Langs.cs;
     }
-
-    //public virtual void Pre_Init()
-    //{
-
-    //}
-
-    //public virtual void Init()
-    //{
-
-    //}
-
-    //public virtual void InitComplete()
-    //{
-
-    //}
-
-    //public virtual void PreLoad()
-    //{
-
-    //}
-
-    //public virtual void Pre_Init()
-    //{
-
-    //}
-
 
 
     protected void InsertPageSnippet(PageSnippet ps)
@@ -427,6 +413,8 @@ public class SunamoPage : System.Web.UI.Page
         return idLoginedUser == 1;
     }
 
+    
+
     /// <summary>
     /// Can be used only in General pages because in pages of specific web I'll have site-specific Page is method like IsLoginedMisterWithID with table Koc_Misters / IsLoginedYouthWithID with Sda_Youths etc.
     /// Before calling this method must be called FillIDUsers() to fill idLoginedUser variable
@@ -509,7 +497,7 @@ public class SunamoPage : System.Web.UI.Page
     {
         base.OnLoad(e);
 
-        if (Title == string.Empty || Title[0] != AllChars.space)
+        if (base.Title == string.Empty || base.Title[0] != AllChars.space)
         {
 
             // Must be here because then is processing MasterPage and there I need user ID. Dont change!
@@ -527,17 +515,22 @@ public class SunamoPage : System.Web.UI.Page
         }
     }
 
-    public void CreateTitle()
+    public void CreateTitle(string Title = null)
     {
         if (zapisTitle)
         {
+            if (Title == null)
+            {
+                Title = base.Title;
+            }
             try
             {
-                Title = Title + SunamoPageHelper.WebTitle(sa, Request);
+                base.Title = Title + SunamoPageHelper.WebTitle(sa, Request);
                 zapisTitle = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw new Exception("Cant set Title: " + Exceptions.TextOfExceptions(ex));
                 // Page dont have <head runat='server'>
             }
         }

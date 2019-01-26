@@ -884,7 +884,7 @@ namespace SunamoFtp
             #endregion
 
             #region Pošlu příkaz STOR s jménem souboru a zapíšu všechny bajty z souboru do bufferu byte[]
-            sendCommand("STOR " + sunamo.FS.GetFileName(fileName));
+            sendCommand("STOR " + FS.GetFileName(fileName));
 
             if (!(retValue == 125 || retValue == 150))
             {
@@ -1008,7 +1008,7 @@ namespace SunamoFtp
                 }
             }
 
-            sendCommand("STOR " + sunamo.FS.GetFileName(fileName));
+            sendCommand("STOR " + FS.GetFileName(fileName));
 
             if (!(retValue == 125 || retValue == 150))
             {

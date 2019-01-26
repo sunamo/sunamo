@@ -13,8 +13,7 @@ using sunamo.Essential;
 using sunamo.Constants;
 using System.Diagnostics;
 
-namespace sunamo
-{
+
     public class FS
     {
         static List<char> invalidPathChars = null;
@@ -179,6 +178,7 @@ namespace sunamo
         /// <returns></returns>
         public static bool ExistsDirectory(string item)
         {
+            // Directory.Exists if pass SE or only start of Unc return false
             return Directory.Exists(MakeUncLongPath(item));
         }
 
@@ -552,7 +552,7 @@ namespace sunamo
                     int vlozeno = 0;
                     while (File.Exists(realNewPath))
                     {
-                        realNewPath = sunamo.FS.InsertBetweenFileNameAndExtension(newpath, vlozeno.ToString());
+                        realNewPath = FS.InsertBetweenFileNameAndExtension(newpath, vlozeno.ToString());
                         vlozeno++;
                     }
                     File.Move(item, realNewPath);
@@ -857,13 +857,13 @@ namespace sunamo
         /// <param name="v"></param>
         public static void DeleteAllEmptyDirectories(string v)
         {
-            List<ItemWithCount<string>> dirs = sunamo.FS.DirectoriesWithToken(v, AscDesc.Desc);
+            List<ItemWithCount<string>> dirs = FS.DirectoriesWithToken(v, AscDesc.Desc);
 
             foreach (var item in dirs)
             {
-                if (sunamo.FS.IsDirectoryEmpty(item.t, true, true))
+                if (FS.IsDirectoryEmpty(item.t, true, true))
                 {
-                    sunamo.FS.TryDeleteDirectory(item.t);
+                    FS.TryDeleteDirectory(item.t);
                 }
 
             }
@@ -957,7 +957,7 @@ namespace sunamo
             }
 
             string[] files = Directory.GetFiles(item, "*", SearchOption.TopDirectoryOnly);
-            sunamo.FS.CreateFoldersPsysicallyUnlessThere(nova);
+            FS.CreateFoldersPsysicallyUnlessThere(nova);
             foreach (var item2 in files)
             {
 
@@ -974,9 +974,9 @@ namespace sunamo
 
             }
 
-            if (sunamo.FS.IsDirectoryEmpty(item, true, true))
+            if (FS.IsDirectoryEmpty(item, true, true))
             {
-                sunamo.FS.TryDeleteDirectory(item);
+                FS.TryDeleteDirectory(item);
             }
 
             return vr;
@@ -1083,12 +1083,12 @@ namespace sunamo
         {
             item = Consts.UncLongPath + item;
             MakeUncLongPath(ref fileTo);
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
+            FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
             if (File.Exists(fileTo))
             {
                 if (co == FileMoveCollisionOption.AddFileSize)
                 {
-                    string newFn = sunamo.FS.InsertBetweenFileNameAndExtension(fileTo, " " + sunamo.FS.GetFileSize(item));
+                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
                     if (File.Exists(newFn))
                     {
                         File.Delete(item);
@@ -1101,7 +1101,7 @@ namespace sunamo
                     int serie = 1;
                     while (true)
                     {
-                        string newFn = sunamo.FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
+                        string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
                         if (!File.Exists(newFn))
                         {
                             fileTo = newFn;
@@ -1121,8 +1121,8 @@ namespace sunamo
                 }
                 else if (co == FileMoveCollisionOption.LeaveLarger)
                 {
-                    long fsFrom = sunamo.FS.GetFileSize(item);
-                    long fsTo = sunamo.FS.GetFileSize(fileTo);
+                    long fsFrom = FS.GetFileSize(item);
+                    long fsTo = FS.GetFileSize(fileTo);
                     if (fsFrom > fsTo)
                     {
                         File.Delete(fileTo);
@@ -1255,7 +1255,7 @@ namespace sunamo
 
                 while (true)
                 {
-                    nad = sunamo.FS.GetDirectoryName(nad);
+                    nad = FS.GetDirectoryName(nad);
 
                     if (Directory.Exists(nad))
                     {
@@ -1453,7 +1453,7 @@ namespace sunamo
         {
             serie = -1;
             hasSerie = false;
-            string dd = sunamo.FS.WithEndSlash(FS.GetDirectoryName(p));
+            string dd = FS.WithEndSlash(FS.GetDirectoryName(p));
             StringBuilder sbExt = new StringBuilder();
             string ext = FS.GetExtension(p);
             p = SH.TrimEnd(p, ext);
@@ -1750,15 +1750,15 @@ namespace sunamo
         {
             if (dirs)
             {
-                List<ItemWithCount<string>> dires = sunamo.FS.DirectoriesWithToken(folder, AscDesc.Desc);
+                List<ItemWithCount<string>> dires = FS.DirectoriesWithToken(folder, AscDesc.Desc);
                 foreach (var item in dires)
                 {
-                    var dirPath = sunamo.FS.WithoutEndSlash(item.t);
+                    var dirPath = FS.WithoutEndSlash(item.t);
                     string dirName = Path.GetFileName(dirPath);
                     if (SH.ContainsDiacritic(dirName))
                     {
                         string dirNameWithoutDiac = SH.TextWithoutDiacritic(dirName);
-                        sunamo.FS.RenameDirectory(item.t, dirNameWithoutDiac, fo, co);
+                        FS.RenameDirectory(item.t, dirNameWithoutDiac, fo, co);
                     }
                 }
             }
@@ -1773,7 +1773,7 @@ namespace sunamo
                     if (SH.ContainsDiacritic(fileName))
                     {
                         string dirNameWithoutDiac = SH.TextWithoutDiacritic(fileName);
-                        sunamo.FS.RenameFile(item, dirNameWithoutDiac, co);
+                        FS.RenameFile(item, dirNameWithoutDiac, co);
                     }
 
                 }
@@ -1788,7 +1788,7 @@ namespace sunamo
         /// <param name="co"></param>
         public static void RenameFile(string item, string dirNameWithoutDiac, FileMoveCollisionOption co)
         {
-            sunamo.FS.MoveFile(item, sunamo.FS.ChangeFilename(item, dirNameWithoutDiac, false), co);
+            FS.MoveFile(item, FS.ChangeFilename(item, dirNameWithoutDiac, false), co);
         }
 
         /// <summary>
@@ -1800,7 +1800,7 @@ namespace sunamo
         public static string RenameDirectory(string path, string newname, DirectoryMoveCollisionOption co, FileMoveCollisionOption fo)
         {
             string vr = null;
-            path = sunamo.FS.WithoutEndSlash(path);
+            path = FS.WithoutEndSlash(path);
             string cesta = FS.GetDirectoryName(path);
             string nova = Path.Combine(cesta, newname);
 
@@ -2012,7 +2012,7 @@ namespace sunamo
 
             using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
             {
-                sunamo.FS.CopyStream(s, fs);
+                FS.CopyStream(s, fs);
                 fs.Flush();
 
             }
@@ -2271,8 +2271,8 @@ namespace sunamo
         /// <returns></returns>
         public static string ChangeDirectory(string fileName, string changeFolderTo)
         {
-            string p = sunamo.FS.GetDirectoryName(fileName);
-            string fn = sunamo.FS.GetFileName(fileName);
+            string p = FS.GetDirectoryName(fileName);
+            string fn = FS.GetFileName(fileName);
 
             return Path.Combine(changeFolderTo, fn);
         }
@@ -2330,4 +2330,3 @@ namespace sunamo
             return nova;
         }
     }
-}

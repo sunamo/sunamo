@@ -177,6 +177,8 @@
     <Compile Include="Threading\TimeThreadPool.cs" />
     <Compile Include="UlozToParser.cs" />
     <Compile Include="Unsafe.cs" />
+    <Compile Include="WindowsSecurityHelper.cs" />
+    <Compile Include="WriterEventLog.cs" />
     <Compile Include="XH.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\DatabaseLayer.cs" />

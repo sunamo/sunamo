@@ -41,6 +41,7 @@ public static class SH
     /// <summary>
     /// If A1 is string, return A1
     /// If IEnumerable, return joined by comma
+    /// For inner collection use CA.TwoDimensionParamsIntoOne
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>

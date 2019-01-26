@@ -17,7 +17,7 @@ namespace sunamo
         /// <summary>
         /// Povinný. Heslo k mailu userName, které se taktéž nastavuje na https://ks.aspone.cz/
         /// </summary>
-        string password = "4W6k4?MLja";
+        string password = "Y7bdnfycg93641";
         public string mailOfAdmin = null;
 
 

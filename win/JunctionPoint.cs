@@ -207,7 +207,7 @@ public static class JunctionPoint
         /// Creates a junction point from the specified directory to the specified target directory.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         /// <param name="targetDir">The target directory</param>
@@ -228,7 +228,7 @@ public static class JunctionPoint
             }
             else
             {
-                sunamo.FS.CreateDirectory(junctionPoint);
+                FS.CreateDirectory(junctionPoint);
             }
 
             using (SafeFileHandle handle = OpenReparsePoint(junctionPoint, EFileAccess.GenericWrite))
@@ -272,7 +272,7 @@ public static class JunctionPoint
         /// Does nothing if the junction point does not exist.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         public static void Delete(string junctionPoint)
@@ -346,7 +346,7 @@ public static class JunctionPoint
         /// Gets the target of the specified junction point.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         /// <returns>The target of the junction point</returns>

@@ -4,16 +4,52 @@ když mi přijde zpráva na messenger, nevšimnul si toho nebo nebyl doma, aby m
 dělat na tom folkloru, měla opravdovou radost, dotýkala se mě, usmívala se
 tváře co chodí na folklor fb
 licence co mám, zkusit to prodat dále
+bumb keys, budou se hodit i na vloupani do ubytovacky
 
+udělat výpis a resume tidy knihoven!!
+znovu lyrics a ted už musí být všechno OK!!!! od toho ten kód mám ať udělá vše za mě. 
+kde se nastavuje title, proč mám proboha " - localhost"
+uk, potvrzeni pro UP, aby to nějak vypadalo, nebyly nasilne ulomene sloupce
+cd vraceni mesicnik
+ubytovacka
+sunamo.cz kdy se presmeruje na neexistujici, mozna pri novem prohlizeci
+vyzkouset nakupování v itesco, obnovil jsem heslo na sunamocz@gmail.com a sunamo@seznam.cz 
 
+najít metody na On nebo Page_ a nejsou public. Když jsou v samostatné assembly nezavolají se.
+
+aliens 1:43
+
+cmd /c mklink /H "d:\Documents\Visual Studio 2017\Projects\AllProjectsSearch\AllProjectsSearch\Fonts\FontAwesome.otf" "d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Fonts\FontAwesome.otf"
+
+registrovat na jepsano.net, takhle mam skoro 1000 uzivatelu, musi byt nutnost overit mail
+
+use mysql;
+UPDATE user SET authentication_string = password("hekaPuC4") where User='root';
+FLUSH PRIVILEGES;
+
+ mysql -u root -p jpn --single-transaction jpn > jpn.sql
+
+ mestske byty havirov
+
+ vypocist nemocenskou, z ceho se skladala:
+ Nemocenské 28.12.18-30.12.18, denní dávka od 15.dne 576 Kč, DVZ 960 Kč , zánik nároku na výplatu 30.12.18. 
+ 1728/4=432
+
+ jste na nemocenske? a na co?
+
+ ostatní koleje v ČR, kolik je aktuálně obsazených
+
+22-12-0-0-21-1
+
+https://www.mra.cz/
 App pro sql syntaxi kde je volana, viz seznam procedur a funkci v sql
-tiketovací System a sledovac cadu 
+tiketovací System a sledovac casu 
 
 najit weby programatoru co delaji na zakazku, jejich reference. je lepší udělat aspon neco a prinejhorsim zacit naostro
 
 VideosSorter - chybi anglicky project
 
-vsb koleje kolik bych měl a kolik platím, ted napr. 4257 
+vsb koleje kolik bych měl a kolik platím, ted napr. 4257, College pay excel 
 
 continue from 27/11
 první bydlení, pak teprve zavolat klarce
@@ -78,7 +114,7 @@ t0045 psycho walkman, another relax as mp3
 t0046 cviky na uvolnění svého těla, pak i holky budou uvolněné 
 t0047 mysterky nemá cenu řešit, třeba vytvořit můj web finalek
 t0048 auta / cars - karavan, neplatit žádný nájem. neblbější je internet.
-t0049 sql code folding
+t0049 sql code folding - v sunamocz@outlook.com mám notifikaci, extension pry bylo opraveno
 t0050 vps firmy, send cv
 t0051 replace yaml nuget for dll as in in WpfApp1 already
 t0052 app for archive only specified file type. 

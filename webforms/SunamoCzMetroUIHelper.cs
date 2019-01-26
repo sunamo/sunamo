@@ -70,18 +70,7 @@ public class SunamoCzMetroUIHelper
 
         HtmlGenerator hg = new HtmlGenerator();
 
-        #region v3
-        // fixed-top
-        //hg.WriteTagWithAttr("ul", "class", "app-bar");
-        //hg.WriteTagWithAttr("li", "style", "list-style-type: none;");
-        //hg.WriteTagWithAttr("ul", "class", "app-bar-menu");
-        //hg.WriteTagWithAttr("li", "class", "active-container");
-
-        //hg.WriteTagWith2Attrs("a", "href", "#", "class", "dropdown-toggle");
-        //hg.WriteTagWithAttr("span", "class", "mif-menu");
-        //hg.TerminateTag("span");
-        //hg.TerminateTag("a");
-        #endregion
+        
 
         #region v4
         // fixed-top
@@ -200,24 +189,28 @@ public class SunamoCzMetroUIHelper
         hg.TerminateTag("span");
         hg.TerminateTag("a");
         hg.TerminateTag("li");
+        #endregion
 
+        #region Main page of web
         hg.WriteTag("li");
         hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aGoToMainPage", "title", "Jdi na hlavní stránku " + aActualWebInnerHtml);
         hg.WriteTagWithAttr("span", "class", "mif-history");
         hg.TerminateTag("span");
         hg.TerminateTag("a");
         hg.TerminateTag("li");
+        #endregion
 
+        #region Send to human
         hg.WriteTag("li");
         if (logined)
         {
-
             hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aSendPageToCloseHuman", "title", "Doporučit tuto stránku blízkému");
             hg.WriteTagWithAttr("span", "class", "mif-mail");
             hg.TerminateTag("span");
             hg.TerminateTag("a");
         }
-        hg.TerminateTag("li");
+        hg.TerminateTag("li"); 
+        #endregion
 
         hg.WriteTag("li");
         if (luid == 1)
@@ -228,7 +221,7 @@ public class SunamoCzMetroUIHelper
             hg.TerminateTag("a");
         }
         hg.TerminateTag("li");
-        #endregion
+        
         //app-bar-menu
         hg.TerminateTag("ul"); 
         #endregion
