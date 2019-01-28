@@ -17,8 +17,9 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
         }
         else
         {
-            var cs = Page.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic |
-                                          BindingFlags.Instance).Where(d => d.Name == "cs").FirstOrDefault();
+            // a / nebo NonPublic misto Public zde nepomuze. Všechny cs musí být striktně Public
+            var cs = Page.GetType().GetFields( BindingFlags.Public |
+                                          BindingFlags.Instance ).Where(d => d.Name == "cs").FirstOrDefault();
 
             var page = cs.GetValue(Page);
             sp = (SunamoPage)page;

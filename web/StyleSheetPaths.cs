@@ -23,4 +23,5 @@ public static class StyleSheetPaths
     public const string metroIcons = "_/metro/css/metro-icons.min.css";
     public const string cssShared = "Shared/css/Shared.css";
     public const string Dev = "css/Dev.css";
+    public const string breadcrumbs2 = "Shared/css/breadcrumbs2.css";
 }

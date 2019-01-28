@@ -153,7 +153,7 @@ namespace sunamo
 
             foreach (var item in attachments)
             {
-                if (System.IO.File.Exists(item))
+                if (FS.ExistsFile(item))
                 {
                     mail.Attachments.Add(new Attachment(item));
                 }

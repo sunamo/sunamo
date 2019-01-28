@@ -83,7 +83,7 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// <param name="nacist"></param>
     public PpkOnDriveBase(string soubor2, bool nacist, bool ukladat)
     {
-        if (!File.Exists(soubor2))
+        if (!FS.ExistsFile(soubor2))
         {
             File.WriteAllText(soubor2, "");
         }
@@ -118,7 +118,7 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// </summary>
     public void Save()
     {
-        if (File.Exists(soubor))
+        if (FS.ExistsFile(soubor))
         {
             File.Delete(soubor);
         }

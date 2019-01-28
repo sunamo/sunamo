@@ -1,18 +1,29 @@
-﻿redirect sunamo.cz/me to scz
-repair gui of ReplaceInFiles, copy as exe¨
+﻿hned ráno projít věci co jsem naprogramoval ať furt nepíšu totéž, solution po solution
+
+g+ for insta
+
+replace global::System.Web.UI.WebControls.TextBox for global::System.Web.UI.HtmlControls.HtmlInputText
+
+veškeré .js soubory udělat aby používali npm
+
 když mi přijde zpráva na messenger, nevšimnul si toho nebo nebyl doma, aby mi ji připomnělo
 dělat na tom folkloru, měla opravdovou radost, dotýkala se mě, usmívala se
 tváře co chodí na folklor fb
-licence co mám, zkusit to prodat dále
 bumb keys, budou se hodit i na vloupani do ubytovacky
+
+aby se mi pouzivaly novejsi soubory po uploadu
+
+sunamo.cz stále vede mě i když jsem přihlášený jako admin
+
+přidat volání base do On metod
+
+udělat porovnání na hash nebo datum poslední změny (méně náročnější ael nevím zda se nebude uplodovat pak vše). na velikost to není spolehlivé, assembly má tutéž velikost ale web nefunguje.
 
 udělat výpis a resume tidy knihoven!!
 znovu lyrics a ted už musí být všechno OK!!!! od toho ten kód mám ať udělá vše za mě. 
-kde se nastavuje title, proč mám proboha " - localhost"
-uk, potvrzeni pro UP, aby to nějak vypadalo, nebyly nasilne ulomene sloupce
-cd vraceni mesicnik
-ubytovacka
-sunamo.cz kdy se presmeruje na neexistujici, mozna pri novem prohlizeci
+
+SunamoPage nesmí být odvozena od Page. Nebo aspon se v ní nesmí pracovat se this / base. není to stránka v pravém slova smyslu, nevyvoláváají se žádné události, jen to zpracovává kód
+
 vyzkouset nakupování v itesco, obnovil jsem heslo na sunamocz@gmail.com a sunamo@seznam.cz 
 
 najít metody na On nebo Page_ a nejsou public. Když jsou v samostatné assembly nezavolají se.

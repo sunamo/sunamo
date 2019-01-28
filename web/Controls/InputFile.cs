@@ -25,7 +25,7 @@ public class InputFile : BaseControl
     /// </summary>
     public string onchange = null;
 
-    public override string Render(int actualRow, List<String[]> _dataBinding)
+    public override string Render(int actualRow, List<String[]> _dataBinding = null)
     {
         this.actualRow = actualRow;
         HtmlGenerator hg = new HtmlGenerator();

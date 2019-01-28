@@ -9,6 +9,7 @@ using System.Text;
 /// </summary>
 public abstract class BaseControl
 {
+    public string dataRole = null;
     /// <summary>
     /// Závisí na každém prvku, zda bude tuto vlastnost renderovat, v této třídě se nerenderuje nic
     /// </summary>
@@ -33,7 +34,7 @@ public abstract class BaseControl
     /// Metoda do které se předá index řádku, aby mohla vzít ten správný řádek z string[][] a vyvodit z něho hodnoty
     /// </summary>
     /// <returns></returns>
-    public abstract string Render(int actualRow, List<String[]> _dataBinding);
+    public abstract string Render(int actualRow, List<String[]> _dataBinding = null);
     public List<String[]> _dataBinding = null;
     public int actualRow = -1;
     /// <summary>

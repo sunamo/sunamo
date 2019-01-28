@@ -78,7 +78,7 @@ public class AppData
         }
         TF.CreateEmptyFileWhenDoesntExists(path);
         string content = TF.ReadFile(path);
-        if (File.Exists(content) || Directory.Exists(content))
+        if (FS.ExistsFile(content) || FS.ExistsDirectory(content))
         {
             return content;
         }
@@ -222,7 +222,7 @@ public class AppData
          {
              return false;
          }
-         return Directory.Exists(rootFolder);
+         return FS.ExistsDirectory(rootFolder);
      }
 
     /// <summary>

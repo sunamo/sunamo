@@ -12,9 +12,9 @@ using sunamo.Helpers;
 using sunamo.Essential;
 using sunamo.Constants;
 using System.Diagnostics;
+using sunamo;
 
-
-    public class FS
+public class FS
     {
         static List<char> invalidPathChars = null;
         static Type type = typeof(FS);
@@ -42,9 +42,9 @@ using System.Diagnostics;
             }
         }
 
-        public static void ReplaceInAllFiles(string from, string to, List<string> files)
+        public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace)
         {
-            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files);
+            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files, useSimpleReplace);
         }
 
         /// <summary>
@@ -72,7 +72,12 @@ using System.Diagnostics;
         /// <returns></returns>
         public static bool ExistsFile(string selectedFile)
         {
-            return File.Exists(selectedFile);
+        if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
+        {
+            return false;
+        }
+
+        return File.Exists(selectedFile);
         }
 
         /// <summary>
@@ -93,16 +98,14 @@ using System.Diagnostics;
             return result;
         }
 
-        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
+        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool replaceSimple)
         {
             var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
             ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
-            ReplaceInAllFiles(replaceFrom, replaceTo, files);
+            ReplaceInAllFiles(replaceFrom, replaceTo, files, replaceSimple);
         }
 
-
-
-        public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files)
+        public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool replaceSimple)
         {
             foreach (var item in files)
             {
@@ -111,7 +114,14 @@ using System.Diagnostics;
                 {
                     for (int i = 0; i < replaceFrom.Count; i++)
                     {
+                    if (replaceSimple)
+                    {
+                        content = content.Replace(replaceFrom[i], replaceTo[i]);
+                    }
+                    else
+                    {
                         content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                    }
                     }
                     TF.SaveFile(content, item);
                 }
@@ -178,7 +188,11 @@ using System.Diagnostics;
         /// <returns></returns>
         public static bool ExistsDirectory(string item)
         {
-            // Directory.Exists if pass SE or only start of Unc return false
+        if (item == Consts.UncLongPath || item == string.Empty)
+        {
+            return false;
+        }
+            // FS.ExistsDirectory if pass SE or only start of Unc return false
             return Directory.Exists(MakeUncLongPath(item));
         }
 
@@ -214,9 +228,9 @@ using System.Diagnostics;
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
 
-        public static IEnumerable<string> GetFiles(string folderPath, bool v)
+        public static IEnumerable<string> GetFiles(string folderPath, bool recursive)
         {
-            return FS.GetFiles(folderPath, FS.MascFromExtension(), v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+            return FS.GetFiles(folderPath, FS.MascFromExtension(), recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }
 
         public static void CreateFileIfDoesntExists(string path)
@@ -378,7 +392,7 @@ using System.Diagnostics;
 
         public static void CreateDirectory(string v, DirectoryCreateCollisionOption whenExists, SerieStyle serieStyle)
         {
-            if (Directory.Exists(v))
+            if (FS.ExistsDirectory(v))
             {
                 bool hasSerie;
                 string nameWithoutSerie = FS.GetNameWithoutSeries(v, false, out hasSerie, serieStyle);
@@ -392,7 +406,7 @@ using System.Diagnostics;
                     while (true)
                     {
                         string newFn = nameWithoutSerie + " (" + serie + ")";
-                        if (!Directory.Exists(newFn))
+                        if (!FS.ExistsDirectory(newFn))
                         {
 
                             nameWithoutSerie = newFn;
@@ -472,7 +486,7 @@ using System.Diagnostics;
                 {
                     generator.sb.Append(resultSerie);
                     string newDirectory = generator.ToString();
-                    if (!Directory.Exists(newDirectory))
+                    if (!FS.ExistsDirectory(newDirectory))
                     {
                         Directory.CreateDirectory(newDirectory);
                         break;
@@ -521,7 +535,7 @@ using System.Diagnostics;
                     string realnewpath = SH.Copy(newpath).TrimEnd(AllChars.bs);
                     string realnewpathcopy = SH.Copy(realnewpath);
                     int i = 0;
-                    while (Directory.Exists(realnewpath))
+                    while (FS.ExistsDirectory(realnewpath))
                     {
                         realnewpath = realnewpathcopy + i.ToString();
                         i++;
@@ -550,7 +564,7 @@ using System.Diagnostics;
 
                     string realNewPath = SH.Copy(newpath);
                     int vlozeno = 0;
-                    while (File.Exists(realNewPath))
+                    while (FS.ExistsFile(realNewPath))
                     {
                         realNewPath = FS.InsertBetweenFileNameAndExtension(newpath, vlozeno.ToString());
                         vlozeno++;
@@ -929,7 +943,7 @@ using System.Diagnostics;
         public static string MoveDirectoryNoRecursive(string item, string nova, DirectoryMoveCollisionOption co, FileMoveCollisionOption co2)
         {
             string vr = null;
-            if (Directory.Exists(nova))
+            if (FS.ExistsDirectory(nova))
             {
                 if (co == DirectoryMoveCollisionOption.AddSerie)
                 {
@@ -937,7 +951,7 @@ using System.Diagnostics;
                     while (true)
                     {
                         string newFn = nova + " (" + serie + ")";
-                        if (!Directory.Exists(newFn))
+                        if (!FS.ExistsDirectory(newFn))
                         {
                             vr = "Folder has been renamed to " + Path.GetFileName(newFn);
                             nova = newFn;
@@ -1068,7 +1082,8 @@ using System.Diagnostics;
         {
             if (!path.StartsWith(Consts.UncLongPath))
             {
-                path = Consts.UncLongPath + path;
+            // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
+            //path = Consts.UncLongPath + path;
             }
             return path;
         }
@@ -1084,12 +1099,12 @@ using System.Diagnostics;
             item = Consts.UncLongPath + item;
             MakeUncLongPath(ref fileTo);
             FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-            if (File.Exists(fileTo))
+            if (FS.ExistsFile(fileTo))
             {
                 if (co == FileMoveCollisionOption.AddFileSize)
                 {
                     string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
-                    if (File.Exists(newFn))
+                    if (FS.ExistsFile(newFn))
                     {
                         File.Delete(item);
                         return;
@@ -1102,7 +1117,7 @@ using System.Diagnostics;
                     while (true)
                     {
                         string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
-                        if (!File.Exists(newFn))
+                        if (!FS.ExistsFile(newFn))
                         {
                             fileTo = newFn;
                             break;
@@ -1241,7 +1256,7 @@ using System.Diagnostics;
         /// <param name="nad"></param>
         public static void CreateFoldersPsysicallyUnlessThere(string nad, bool isFolder)
         {
-            if (Directory.Exists(nad))
+            if (FS.ExistsDirectory(nad))
             {
                 return;
             }
@@ -1257,7 +1272,7 @@ using System.Diagnostics;
                 {
                     nad = FS.GetDirectoryName(nad);
 
-                    if (Directory.Exists(nad))
+                    if (FS.ExistsDirectory(nad))
                     {
                         break;
                     }
@@ -1268,7 +1283,7 @@ using System.Diagnostics;
                 slozkyKVytvoreni.Reverse();
                 foreach (string item in slozkyKVytvoreni)
                 {
-                    if (!Directory.Exists(item))
+                    if (!FS.ExistsDirectory(item))
                     {
                         Directory.CreateDirectory(item);
                     }
@@ -1746,7 +1761,12 @@ using System.Diagnostics;
             invalidFileNameCharsWithoutDelimiterOfFolders.Remove('/');
         }
 
-        public static void ReplaceDiacriticRecursive(string folder, bool dirs, bool files, DirectoryMoveCollisionOption fo, FileMoveCollisionOption co)
+    public static long ModifiedinUnix(string dsi)
+    {
+        return (long)(File.GetLastWriteTimeUtc(dsi).Subtract(DTConstants.UnixFsStart)).TotalSeconds;
+    }
+
+    public static void ReplaceDiacriticRecursive(string folder, bool dirs, bool files, DirectoryMoveCollisionOption fo, FileMoveCollisionOption co)
         {
             if (dirs)
             {
@@ -1987,7 +2007,7 @@ using System.Diagnostics;
 
         public static void CreateDirectoryIfNotExists(string p)
         {
-            if (!Directory.Exists(p))
+            if (!FS.ExistsDirectory(p))
             {
                 Directory.CreateDirectory(p);
             }
@@ -1996,7 +2016,7 @@ using System.Diagnostics;
         public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
         {
             path = path.Replace("\\\\", "\\");
-            if (!File.Exists(path))
+            if (!FS.ExistsFile(path))
             {
                 using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
                 {
@@ -2080,7 +2100,7 @@ using System.Diagnostics;
         public static void CreateFoldersPsysicallyUnlessThere(string nad)
         {
             FS.MakeUncLongPath(ref nad);
-            if (Directory.Exists(nad))
+            if (FS.ExistsDirectory(nad))
             {
                 return;
             }
@@ -2094,7 +2114,7 @@ using System.Diagnostics;
                     nad = FS.GetDirectoryName(nad);
 
                     // TODO: Tady to nefunguje pro UWP/UAP apps protoze nemaji pristup k celemu disku. Zjistit co to je UWP/UAP/... a jak v nem ziskat/overit jakoukoliv slozku na disku
-                    if (Directory.Exists(nad))
+                    if (FS.ExistsDirectory(nad))
                     {
                         break;
                     }
@@ -2107,7 +2127,7 @@ using System.Diagnostics;
                 foreach (string item in slozkyKVytvoreni)
                 {
                     string folder = FS.MakeUncLongPath( item);
-                    if (!Directory.Exists(folder))
+                    if (!FS.ExistsDirectory(folder))
                     {
                         Directory.CreateDirectory(folder);
                     }
@@ -2231,7 +2251,7 @@ using System.Diagnostics;
         /// <param name="path"></param>
         public static void DeleteFileIfExists(string path)
         {
-            if (File.Exists(path))
+            if (FS.ExistsFile(path))
             {
                 File.Delete(path);
             }
@@ -2294,7 +2314,7 @@ using System.Diagnostics;
             {
                 try
                 {
-                    if (File.Exists(nova))
+                    if (FS.ExistsFile(nova))
                     {
                         File.Delete(nova);
                     }
@@ -2317,7 +2337,7 @@ using System.Diagnostics;
             {
                 try
                 {
-                    if (File.Exists(nova))
+                    if (FS.ExistsFile(nova))
                     {
                         File.Delete(nova);
                     }

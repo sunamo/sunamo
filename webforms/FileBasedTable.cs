@@ -6,7 +6,7 @@ public class FileBasedTable
     public static byte[] GetSbf(string table, string column, int id)
     {
         string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
-        if (!File.Exists(file))
+        if (!FS.ExistsFile(file))
         {
             return new byte[0];
         }
@@ -22,14 +22,14 @@ public class FileBasedTable
     public static void CreatePathsIfNotExistsSbf(string table, params string[] columns)
     {
         string tablePath = Path.Combine(HostingEnvironment.ApplicationPhysicalPath, "_", "sbf", table);
-        if (!Directory.Exists(tablePath))
+        if (!FS.ExistsDirectory(tablePath))
         {
             Directory.CreateDirectory(tablePath);
         }
         foreach (string item in columns)
         {
             string columnPath = Path.Combine(tablePath, item);
-            if (!Directory.Exists(columnPath))
+            if (!FS.ExistsDirectory(columnPath))
             {
                 Directory.CreateDirectory(columnPath);
             }

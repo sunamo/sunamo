@@ -18,7 +18,7 @@ public class PpkOnDrive<T> : PpkOnDriveBase<T> where T : IParser
     /// </summary>
     public override void Load()
     {
-        if (File.Exists(soubor))
+        if (FS.ExistsFile(soubor))
         {
             int dex = 0;
             foreach (string item in File.ReadAllLines(soubor))

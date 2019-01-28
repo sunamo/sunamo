@@ -18,10 +18,10 @@ public static partial class BTS
             return vr;
         }
 
-        public static short[] CastArrayStringToShort(string[] plemena)
+        public static short[] CastArrayStringToShort(List<string> plemena)
         {
-            short[] vr = new short[plemena.Length];
-            for (int i = 0; i < plemena.Length; i++)
+            short[] vr = new short[plemena.Count];
+            for (int i = 0; i < plemena.Count; i++)
             {
                 vr[i] = short.Parse(plemena[i]);
             }

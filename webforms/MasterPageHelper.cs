@@ -130,7 +130,7 @@ public class MasterPageHelper
         }
         else
         {
-            if (sa != MySites.None)
+            if (sa == MySites.None)
             {
                 return SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
             }

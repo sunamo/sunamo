@@ -85,7 +85,7 @@ public class ZA
 
     public void ExtractArchive(string archiveFilenameIn, string outFolder)
     {
-        if (!Directory.Exists(outFolder))
+        if (!FS.ExistsDirectory(outFolder))
         {
             FS.CreateDirectory(outFolder);
         }

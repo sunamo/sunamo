@@ -48,7 +48,7 @@ namespace shared
         public static string ImageToBase64(string path, ImageFormat jpeg, out int width, out int height)
         {
 
-            if (File.Exists(path))
+            if (FS.ExistsFile(path))
             {
                 Image imgo = Image.FromFile(path);
                 width = imgo.Width;

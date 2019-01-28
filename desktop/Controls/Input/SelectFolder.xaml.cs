@@ -71,7 +71,7 @@ namespace desktop.Controls
                 InitApp.TemplateLogger.MustHaveValue(tb.Text);
                 validated = false;
             }
-            else if (!Directory.Exists(text))
+            else if (!FS.ExistsDirectory(text))
             {
                 InitApp.TemplateLogger.FolderDontExists(text);
                 validated = false;
@@ -101,7 +101,7 @@ namespace desktop.Controls
             }
             set
             {
-                if (Directory.Exists(value))
+                if (FS.ExistsDirectory(value))
                 {
                     //FireFolderChanged = false;
                     txtFolder.Text = value;

@@ -18,6 +18,10 @@ using System.Text;
     /// cant name it class due to mass replacing of class
     /// </summary>
     public static string c = "class";
+    public static string runat = "runat";
+    public static string textmode = "textmode";
+    public static string maxlength = "maxlength";
+    public static string dataRole = "data-role";
 }
 
 

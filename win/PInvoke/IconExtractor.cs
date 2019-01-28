@@ -32,14 +32,14 @@ namespace sunamo.PInvoke
         {
             if (file)
             {
-                if (!File.Exists(fileName))
+                if (!FS.ExistsFile(fileName))
                 {
                     return null;
                 }
             }
             else
             {
-                if (!Directory.Exists(fileName))
+                if (!FS.ExistsDirectory(fileName))
                 {
                     return null;
                 }

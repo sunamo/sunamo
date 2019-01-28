@@ -70,8 +70,6 @@ public class SunamoCzMetroUIHelper
 
         HtmlGenerator hg = new HtmlGenerator();
 
-        
-
         #region v4
         // fixed-top
         hg.WriteTagWith2Attrs("div", "data-role", "appbar", "data-expand-point", "md");

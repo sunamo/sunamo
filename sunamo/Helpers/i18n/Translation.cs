@@ -9,6 +9,6 @@ public class Translation
     public Translation(string en, string cs)
     {
         En = en;
-        Cs = cs;
+        Cs =  cs;
     }
 }

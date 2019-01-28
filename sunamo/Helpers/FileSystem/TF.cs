@@ -15,7 +15,7 @@ public class TF
     public static string ReadFile(string s)
     {
         FS.MakeUncLongPath(ref s);
-        if (File.Exists(s))
+        if (FS.ExistsFile(s))
         {
             return File.ReadAllText(s, Encoding.UTF8);
         }
@@ -108,7 +108,7 @@ public class TF
 
     public static void CreateEmptyFileWhenDoesntExists(string path)
     {
-        if (!File.Exists(path))
+        if (!FS.ExistsFile(path))
         {
             FS.CreateUpfoldersPsysicallyUnlessThere(path);
             File.WriteAllText(path, "");

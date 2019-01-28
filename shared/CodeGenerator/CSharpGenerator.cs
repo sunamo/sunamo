@@ -144,14 +144,13 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
     }
     
-    public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex)
+    public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex, string ns)
     {
         // index line with class
         classIndex = -1;
         // whether im after {
         bool cl = false;
         bool lsf = false;
-
        
         for (int i = 0; i < contentFileNew.Count; i++)
         {
@@ -160,6 +159,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
                 // can be public / public partial
                 if (contentFileNew[i].Contains(" class "))
                 {
+                    contentFileNew[i] = contentFileNew[i].Replace(ns + "Page", "Page");
                     classIndex = i;
                     cl = true;
                 }

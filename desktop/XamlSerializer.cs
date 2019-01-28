@@ -44,7 +44,7 @@ namespace desktop
 
         public void LoadExternalXaml()
         {
-            if ( File.Exists(path))
+            if ( FS.ExistsFile(path))
             {
                 using (FileStream stream = new FileStream(path, FileMode.Open))
                 {

@@ -80,7 +80,7 @@ namespace desktop.Controls
 
         private void selectFolder_FolderChanged(string s)
         {
-            if (Directory.Exists(s))
+            if (FS.ExistsDirectory(s))
             {
                 cDialogButtons.btnOk.IsEnabled = true;
             }

@@ -201,7 +201,7 @@ public class UploaderManager
         
         FS.CreateUpfoldersPsysicallyUnlessThere(to);
         //string final = Path.Combine(to, fn);
-        if (File.Exists(to))
+        if (FS.ExistsFile(to))
         {
             try
             {
@@ -242,7 +242,7 @@ public class UploaderManager
         if (controlSize)
         {
             string toMiddle = FS.InsertBetweenFileNameAndExtension(to, "_middle");
-            if (File.Exists(toMiddle))
+            if (FS.ExistsFile(toMiddle))
             {
                 try
                 {
@@ -413,22 +413,22 @@ public class UploaderManager
         finalMinOpt = FS.InsertBetweenFileNameAndExtension(finalMinOpt, "_to");
         if (stopIfFinalOrFinalMinExists)
         {
-            if (File.Exists(final))
+            if (FS.ExistsFile(final))
             {
                 return "Upload souboru byl zastaven, neboť soubor " + final + " již existoval";
             }
-            if (File.Exists(finalMin))
+            if (FS.ExistsFile(finalMin))
             {
                 return "Upload souboru byl zastaven, neboť soubor " + finalMin + " již existoval";
             }
-            if (File.Exists(finalMinOpt))
+            if (FS.ExistsFile(finalMinOpt))
             {
                 return "Upload souboru byl zastaven, neboť soubor " + finalMinOpt + " již existoval";
             }
         }
         else
         {
-            if (File.Exists(final) || File.Exists(finalMin) || File.Exists(finalMinOpt))
+            if (FS.ExistsFile(final) || FS.ExistsFile(finalMin) || FS.ExistsFile(finalMinOpt))
             {
                 nahrazenySoubory = true;
             }

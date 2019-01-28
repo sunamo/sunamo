@@ -80,7 +80,7 @@ public sealed class CsvWriter : IDisposable
         /// <param name="encoding">Encoding</param>
         public void WriteCsv(CsvFile csvFile, string filePath, Encoding encoding)
         {
-            if (File.Exists(filePath))
+            if (FS.ExistsFile(filePath))
                 File.Delete(filePath);
 
             using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))
@@ -169,7 +169,7 @@ public sealed class CsvWriter : IDisposable
         /// <param name="encoding">Encoding</param>
         public void WriteCsv(DataTable dataTable, string filePath, Encoding encoding)
         {
-            if (File.Exists(filePath))
+            if (FS.ExistsFile(filePath))
                 File.Delete(filePath);
 
             using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))

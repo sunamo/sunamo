@@ -12,7 +12,9 @@ using System.Text;
     /// </summary>
     public class Exceptions
     {
-        public static string TextOfExceptions(Exception ex, bool alsoInner = true)
+    
+
+    public static string TextOfExceptions(Exception ex, bool alsoInner = true)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ex.Message);
@@ -57,7 +59,7 @@ using System.Text;
 
         public static string FileExists(string before, string fulLPath)
         {
-            if (File.Exists(fulLPath))
+            if (FS.ExistsFile(fulLPath))
             {
                 return null;
             }

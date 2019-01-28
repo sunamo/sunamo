@@ -41,7 +41,7 @@ namespace Roslyn
 
                 #region Generate and save *Cs file
                 CollectionWithoutDuplicates<string> usings;
-                if (File.Exists(designer)  && !File.Exists(fullPathTo))
+                if (FS.ExistsFile(designer)  && !FS.ExistsFile(fullPathTo))
                 {
                     #region Get variables in designer
                     var designerContent = TF.ReadFile(designer);
@@ -54,6 +54,11 @@ namespace Roslyn
                     SyntaxTree tree = CSharpSyntaxTree.ParseText(fileAspxCsContent);
                     StringWriter swCode = new StringWriter();
                     var cl = GetClass(tree);
+                    if (cl == null)
+                    {
+                        Console.WriteLine(fnwoeAspxCs + " contains more classes");
+                        continue;
+                    }
 
                     SyntaxNode firstNode = null;
 
@@ -66,7 +71,7 @@ namespace Roslyn
                         //cl.Members.Remove(item);
                         if (i == 0)
                         {
-                            var firstTree = CSharpSyntaxTree.ParseText("            " + fnwoeAspxCs + "Cs cs;");
+                            var firstTree = CSharpSyntaxTree.ParseText("            public " + fnwoeAspxCs + "Cs cs;");
                             firstNode = firstTree.GetRoot().ChildNodes().First();
                             cl = cl.ReplaceNode(item, firstNode);
                         }
@@ -93,7 +98,6 @@ namespace Roslyn
                     }
 
                     var onlyB = dict.OnlyBs();
-
                     var variables = genVariables.ToString();
                     var usingsCode = genUsings.ToString();
 
@@ -109,14 +113,7 @@ namespace Roslyn
 
                     var contentFileNew = SH.GetLines(cl.SyntaxTree.ToString());
                     int classIndex = -1;
-                    contentFileNew = CSharpGenerator.AddIntoClass(contentFileNew, SH.GetLines( c), out classIndex);
-
-                    //string classLine = contentFileNew[classIndex];
-                    //int colonIndex = classLine.IndexOf(AllChars.colon);
-                    //string deriveFrom = classLine.Substring(colonIndex);
-                    //var elements = SH.Split(deriveFrom, AllChars.comma);
-                    //elements[0] = ": " + baseClassCs;
-                    //contentFileNew[classIndex] = SH.Join(AllStrings.comma, elements);
+                    contentFileNew = CSharpGenerator.AddIntoClass(contentFileNew, SH.GetLines( c), out classIndex, ns);
 
                     List<string> us = CA.ToList(ns, ns + "X", "System", "System.Web.UI");
                     CSharpGenerator genUs = new CSharpGenerator();
@@ -134,16 +131,74 @@ namespace Roslyn
 
 
                     string content = GetContentOfPageCsFile(nsX, fnwoeAspxCs, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
-                    if (!File.Exists(fullPathTo))
-                    {
-
+                    content = SH.ReplaceAll(content, string.Empty, "CreateEmpty();");
+                   
                         // save .cs file
                         TF.SaveLines(contentFileNew, fileAspxCs);
                         // save new file
                         TF.SaveFile(content, fullPathTo);
-                    }
+                    
                 }
                 #endregion
+            }
+        }
+
+        public void FindPageMethod(string sczRootPath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<string> project = new List<string>();
+
+            var folders = FS.GetFolders(sczRootPath, SearchOption.TopDirectoryOnly);
+            foreach (var item in folders)
+            {
+                string nameProject = FS.GetFileName(item);
+                if (nameProject.EndsWith("X"))
+                {
+                    string project2 = nameProject.Substring(0, nameProject.Length - 1);
+                    // General files is in Nope. GeneralX is only for pages in General folder
+                    if (project2 != "General")
+                    {
+                        project.Add(project2);
+                    }
+                    
+                    var files = FS.GetFiles(item, FS.MascFromExtension(AllExtensions.cs), SearchOption.TopDirectoryOnly);
+                    AddPageMethods(sb, files);
+                }
+            }
+
+            foreach (var item in project)
+            {
+                string path = FS.Combine(sczRootPath, item);
+                var pages = FS.GetFiles(path, "*Page*.cs", SearchOption.TopDirectoryOnly);
+                AddPageMethods(sb, pages);
+            }
+
+            ClipboardHelper.SetText(sb);
+        }
+
+        private static void AddPageMethods(StringBuilder sb, List<string> files)
+        {
+            SourceCodeIndexer indexer = new SourceCodeIndexer();
+            
+            foreach (var file in files)
+            {
+
+                indexer.ProcessFile(file, sunamo.Enums.NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method);
+                
+            }
+
+            foreach (var file2 in indexer.classCodeElements)
+            {
+                sb.AppendLine(file2.Key);
+                foreach (var method in file2.Value)
+                {
+
+                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page_"))
+                    {
+                        sb.AppendLine(method.Name);
+                    }
+                }
             }
         }
 
@@ -162,6 +217,7 @@ namespace Roslyn
             [
                 cs.Page = ((Page)this).Page;
                 cs.Page_Load(sender, e);
+                cs.CreateTitle();
             ]";
 
             return SH.Format(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
@@ -433,6 +489,10 @@ namespace {0}
 
             var root = (CompilationUnitSyntax)tree.GetRoot();
 
+            if(root.DescendantNodes().OfType<ClassDeclarationSyntax>().Count() > 1)
+            {
+                return null;
+            }
             var firstMember = root.Members[0];
 
             if (firstMember is NamespaceDeclarationSyntax)

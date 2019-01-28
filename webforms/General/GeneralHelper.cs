@@ -247,7 +247,7 @@ public class GeneralHelper
         while (true)
         {
             toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\";
-            if (!Directory.Exists(toFolderTempSlash))
+            if (!FS.ExistsDirectory(toFolderTempSlash))
             {
                 toFolderTempSlash += "\\";
                 break;
@@ -269,7 +269,7 @@ public class GeneralHelper
     {
         string rc =RandomHelper.RandomStringWithoutSpecial(20);
         string folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
-        while (Directory.Exists(folder))
+        while (FS.ExistsDirectory(folder))
         {
             rc = RandomHelper.RandomStringWithoutSpecial(20);
             folder = GeneralHelper.MapPath("_/RawUploads/" + rc);

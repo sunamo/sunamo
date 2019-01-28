@@ -218,10 +218,10 @@ public static class JunctionPoint
         {
             targetDir = Path.GetFullPath(targetDir);
 
-            if (!Directory.Exists(targetDir))
+            if (!FS.ExistsDirectory(targetDir))
                 throw new IOException("Target path does not exist or is not a directory.");
 
-            if (Directory.Exists(junctionPoint))
+            if (FS.ExistsDirectory(junctionPoint))
             {
                 if (!overwrite)
                     throw new IOException("Directory already exists and overwrite parameter is false.");
@@ -277,9 +277,9 @@ public static class JunctionPoint
         /// <param name="junctionPoint">The junction point path</param>
         public static void Delete(string junctionPoint)
         {
-            if (!Directory.Exists(junctionPoint))
+            if (!FS.ExistsDirectory(junctionPoint))
             {
-                if (File.Exists(junctionPoint))
+                if (FS.ExistsFile(junctionPoint))
                     throw new IOException("Path is not a junction point.");
 
                 return;
@@ -332,7 +332,7 @@ public static class JunctionPoint
         /// or some other error occurs</exception>
         public static bool Exists(string path)
         {
-            if (! Directory.Exists(path))
+            if (! FS.ExistsDirectory(path))
                 return false;
 
             using (SafeFileHandle handle = OpenReparsePoint(path, EFileAccess.GenericRead))

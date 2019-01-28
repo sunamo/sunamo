@@ -3,6 +3,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System;
 using System.Windows;
+using desktop.Controls;
+using sunamo.Helpers;
 
 public class WpfHelper
 {
@@ -28,5 +30,22 @@ public class WpfHelper
         {
             item.IsEnabled = v;
         }
+    }
+
+    //
+    public static void ShowExceptionWindow( object e)
+    {
+        ShowExceptionWindow(e, Environment.NewLine);
+    }
+
+    public static void ShowExceptionWindow(object e, string methodName = "")
+    {
+        if (methodName != string.Empty)
+        {
+            methodName += " ";
+        }
+        ShowTextResult result = new ShowTextResult(methodName + YamlHelper.DumpAsYaml(e));
+        WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
+        window.ShowDialog();
     }
 }

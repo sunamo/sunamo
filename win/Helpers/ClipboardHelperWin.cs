@@ -52,7 +52,15 @@ public class ClipboardHelperWin : IClipboardHelper
 
         if (!string.IsNullOrWhiteSpace(v))
         {
+            // In use from SunamoCzAdmin.Cmd: Current thread must be set to single thread apartment (STA) mode before OLE calls can be made. Ensure that your Main function has STAThreadAttribute marked on it. 
+            // Ani Dispatcher ani Thread nepomohl
+            //WpfApp.cd.Invoke(() =>
+            //{
+            //new System.Threading.Thread(delegate ()
+            //{
             Clipboard.SetText(v);
+            //}).Start();
+            //});
         }
         
     }

@@ -35,55 +35,57 @@ public abstract class YouTubeThumbnail
 
     public bool HasAnyFile(int idSong)
     {
-        if (File.Exists(GetPath(idSong, 1)))
+        if (FS.ExistsFile(GetPath(idSong, 1)))
         {
             return true;
         }
-        if (File.Exists(GetPath(idSong, 2)))
+        if (FS.ExistsFile(GetPath(idSong, 2)))
         {
             return true;
         }
-        if (File.Exists(GetPath(idSong, 3)))
+        if (FS.ExistsFile(GetPath(idSong, 3)))
         {
             return true;
         }
         return false;
     }
+
     public List<string> AllRelativeFiles(short idSong)
     {
         List<string> vr = new List<string>(3);
         string path = GetPath(idSong, 1);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(GetBaseUri(idSong, 1));
         }
         path = GetPath(idSong, 2);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(GetBaseUri(idSong, 2));
         }
         path = GetPath(idSong, 3);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(GetBaseUri(idSong, 3));
         }
         return vr;
     }
+
     public List<string> AllFiles(int idSong)
     {
         List<string> vr = new List<string>(3);
         string path = GetPath(idSong, 1);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(path);
         }
         path = GetPath(idSong, 2);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(path);
         }
         path = GetPath(idSong, 3);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Add(path);
         }
@@ -109,7 +111,7 @@ public abstract class YouTubeThumbnail
         vr.Append(nameArray + "[" + idSong + "] = [");
         string path = GetPath(idSong, 1);
 
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             uriImage1 = GetUri2(idSong, 1);
             vr.Append("'" + uriImage1 + "',");
@@ -120,7 +122,7 @@ public abstract class YouTubeThumbnail
             return "";
         }
         path = GetPath(idSong, 2);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Append(GetUri(idSong, 2) + ",");
 
@@ -130,7 +132,7 @@ public abstract class YouTubeThumbnail
             return "";
         }
         path = GetPath(idSong, 3);
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             vr.Append(GetUri(idSong, 3) + ",");
         }
@@ -187,7 +189,7 @@ public abstract class YouTubeThumbnail
     {
         string path = GetPath(idSong, poradi);
         bool smazano = false;
-        if (File.Exists(path))
+        if (FS.ExistsFile(path))
         {
             try
             {

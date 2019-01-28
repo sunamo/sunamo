@@ -701,7 +701,7 @@ namespace SunamoFtp
         {
             OnNewStatus("Stahuji " + UH.Combine(false, ps.ActualPath, remFileName));
 
-            if (File.Exists(locFileName))
+            if (FS.ExistsFile(locFileName))
             {
                 if (deleteLocalIfExists)
                 {
@@ -740,7 +740,7 @@ namespace SunamoFtp
             #region Pokud neexistuje, vytvořím jej a hned zavřu. Načtu jej do FS s FileMode Open
             OnNewStatus("Downloading file " + remFileName + " from " + remoteHost + "/" + remotePath);
 
-            if (!File.Exists(locFileName))
+            if (!FS.ExistsFile(locFileName))
             {
                 Stream st = File.Create(locFileName);
                 st.Close();

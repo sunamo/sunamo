@@ -46,7 +46,7 @@ namespace desktop.Controls
             string file = DW.SelectOfFile(Environment.SpecialFolder.DesktopDirectory);
             if (file != null)
             {
-                if (File.Exists(file))
+                if (FS.ExistsFile(file))
                 {
                     SelectedFile = file;
                     FileSelected(file);

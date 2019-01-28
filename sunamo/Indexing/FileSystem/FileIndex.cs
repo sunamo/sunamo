@@ -271,7 +271,7 @@ namespace sunamo.Indexing.FileSystem
                     int columnToInsert = relativeFilePathForEveryColumn[relativeFilePath];
                     string fullFilePath = relativeDirectories[file.IDRelativeDirectory] + file.Name;
 
-                    if (File.Exists(fullFilePath))
+                    if (FS.ExistsFile(fullFilePath))
                     {
                         long l2 = FS.GetFileSize(fullFilePath);
                         // To result set CheckBoxData - full path and size

@@ -84,7 +84,7 @@ namespace sunamo.Generators
             //TypedLoggerBase tlb = TypedConsoleLogger.Instance;
 
             string pathSearchForFiles = null;
-            if (Directory.Exists(solution))
+            if (FS.ExistsDirectory(solution))
             {
                 pathSearchForFiles = solution;
             }
@@ -170,7 +170,7 @@ namespace sunamo.Generators
                         #region Add as relative file
                         if (itemWithoutTrim.Contains(AllStrings.slash))
                         {
-                            if (File.Exists(itemWithoutTrimBackslashed))
+                            if (FS.ExistsFile(itemWithoutTrimBackslashed))
                             {
                                 filesToCommit.Add(itemWithoutTrim.Replace(pathRepository, string.Empty));
                             }

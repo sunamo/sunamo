@@ -273,9 +273,6 @@
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="TrialManager.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
@@ -440,10 +437,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Visualization\TwoWayTable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

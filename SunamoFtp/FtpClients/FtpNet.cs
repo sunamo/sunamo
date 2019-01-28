@@ -847,7 +847,7 @@ namespace SunamoFtp
 
             OnNewStatus("Stahuji " + remFileName);
 
-            if (File.Exists(locFileName))
+            if (FS.ExistsFile(locFileName))
             {
                 if (deleteLocalIfExists)
                 {
