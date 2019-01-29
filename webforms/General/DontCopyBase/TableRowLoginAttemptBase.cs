@@ -7,7 +7,7 @@ using System.Collections.Generic;
  {
  	 public int ID = -1 ; 
  	 public string Login = "" ; 
- 	 public DateTime DT = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime DT = SqlServerHelper.DateTimeMinVal ; 
  	 public byte Count = 0 ; 
  	public TableRowLoginAttemptBase ( object[] o )
 	{

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Xml;
 
 
-    public static class HtmlHelper
+    public static partial class HtmlHelper
     {
         #region Without HtmlAgility
         #region ToXml
@@ -77,11 +77,7 @@ using System.Xml;
             return html;
         }
 
-        public static string ConvertTextToHtml(string p)
-        {
-            p = p.Replace(Environment.NewLine, "<br />");
-            return p;
-        }
+        
 
         public static string PrepareToAttribute(string title)
         {

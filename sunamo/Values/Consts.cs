@@ -34,7 +34,7 @@ namespace sunamo.Values
 
         public const string @sunamo = "sunamo";
 
-        public const string UncLongPath = @"\\?\";
+        
 
         public const string HttpLocalhostSlash = "http://localhost/";
         public const string HttpSunamoCzSlash = "http://www.sunamo.cz/";

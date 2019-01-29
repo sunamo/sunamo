@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo
-{
+
     public class SqlServerHelper
     {
         /// <summary>
@@ -50,4 +49,3 @@ namespace sunamo
             return vr;
         }
     }
-}

@@ -995,7 +995,7 @@ public class GeneralHelper
         bool expiredSurvey = (DateExpired < DateTime.Now);
         if (expiredSurvey)
         {
-            if (DateExpired == MSStoredProceduresI.DateTimeMinVal)
+            if (DateExpired == SqlServerHelper.DateTimeMinVal)
             {
                 expiredSurvey = false;
             }

@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\sunamo\Constants\DTConstantsShared.cs" Link="Constants\DTConstantsShared.cs" />
+    <Compile Include="..\sunamo\Constants\HtmlAttrs.cs" Link="Constants\HtmlAttrs.cs" />
+    <Compile Include="..\sunamo\Constants\HtmlAttrValue.cs" Link="Constants\HtmlAttrValue.cs" />
+    <Compile Include="..\sunamo\Constants\HtmlTags.cs" Link="Constants\HtmlTags.cs" />
+    <Compile Include="..\sunamo\Data\AB.cs" Link="Data\AB.cs" />
+    <Compile Include="..\sunamo\Extensions\IEnumerableExtensions.cs" Link="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="..\sunamo\Generators\HtmlGenerator.cs" Link="Generators\HtmlGenerator.cs" />
+    <Compile Include="..\sunamo\Generators\HtmlGenerator2.cs" Link="Generators\HtmlGenerator2.cs" />
+    <Compile Include="..\sunamo\Generators\HtmlGeneratorList.cs" Link="Generators\HtmlGeneratorList.cs" />
+    <Compile Include="..\sunamo\Generators\XmlGenerator.cs" Link="Generators\XmlGenerator.cs" />
+    <Compile Include="..\sunamo\Helpers\DT\DTHelperCsShared.cs" Link="Helpers\DT\DTHelperCsShared.cs" />
+    <Compile Include="..\sunamo\Helpers\DT\DTHelperShared.cs" Link="Helpers\DT\DTHelperShared.cs" />
+    <Compile Include="..\sunamo\Helpers\FileSystem\FSShared.cs" Link="Helpers\FileSystem\FSShared.cs" />
+    <Compile Include="..\sunamo\Helpers\FileSystem\TFShared.cs" Link="Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\sunamo\Helpers\Http\UHShared.cs" Link="Helpers\Http\UHShared.cs" />
+    <Compile Include="..\sunamo\Helpers\Resource\RandomHelperShared.cs" Link="Helpers\Resource\RandomHelperShared.cs" />
+    <Compile Include="..\sunamo\Helpers\Sql\SqlServerHelper.cs" Link="Helpers\Sql\SqlServerHelper.cs" />
+    <Compile Include="..\sunamo\Helpers\Text\SHShared.cs" Link="Helpers\Text\SHShared.cs" />
+    <Compile Include="..\sunamo\Helpers\Types\BTSShared.cs" Link="Helpers\Types\BTSShared.cs" />
+    <Compile Include="..\sunamo\Html\HtmlHelperShared.cs" Link="Html\HtmlHelperShared.cs" />
+    <Compile Include="..\sunamo\List\CAShared.cs" Link="List\CAShared.cs" />
+    <Compile Include="..\sunamo\Values\AllChars.cs" Link="Values\AllChars.cs" />
+    <Compile Include="..\sunamo\Values\AllExtensions.cs" Link="Values\AllExtensions.cs" />
+    <Compile Include="..\sunamo\Values\ConstsShared.cs" Link="Values\ConstsShared.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Generators\" />
+    <Folder Include="Data\" />
+    <Folder Include="Helpers\FileSystem\" />
+    <Folder Include="Helpers\DT\" />
+    <Folder Include="Helpers\Http\" />
+    <Folder Include="Helpers\Resource\" />
+    <Folder Include="Helpers\Types\" />
+    <Folder Include="Helpers\Text\" />
+    <Folder Include="Helpers\Sql\" />
+    <Folder Include="List\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Html\" />
+    <Folder Include="Values\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\Documents\vs17\Projects\sunamo\dll\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -9,9 +9,9 @@ using System.Web;
     {
         public static DateTime RandomSmallDateTime()
         {
-            TimeSpan ts = DateTime.Today - MSStoredProceduresI.DateTimeMinVal;
+            TimeSpan ts = DateTime.Today - SqlServerHelper.DateTimeMinVal;
             int pridatDnu = RandomHelper.RandomInt2(1, ts.Days);
-            DateTime vr = MSStoredProceduresI.DateTimeMinVal.AddDays(pridatDnu);
+            DateTime vr = SqlServerHelper.DateTimeMinVal.AddDays(pridatDnu);
             return vr;
         }
 
@@ -32,7 +32,7 @@ using System.Web;
         //vr *= TimeSpan.TicksPerSecond;
         if (addDateTimeMinVal)
         {
-            vr += DateTimeToSecondsUnixTime(MSStoredProceduresI.DateTimeMinVal, false);
+            vr += DateTimeToSecondsUnixTime(SqlServerHelper.DateTimeMinVal, false);
         }
 
 

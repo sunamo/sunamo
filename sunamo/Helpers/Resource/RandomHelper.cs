@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// M pro gen. nahodnych ruznych typu dat bez pretypovani
 /// </summary>
-public static class RandomHelper
+public static partial class RandomHelper
 {
     
     public static List<char> vsZnaky = null;
@@ -46,7 +46,7 @@ public static class RandomHelper
         return p;
     }
 
-    static Random rnd = new Random();
+    
     #region Gen. nahodnych posloupnosti - jen pro vitrni potreby. Pro praci s poli je v T KolekcePole
     public static byte[] RandomBytes(int kolik)
     {
@@ -149,16 +149,7 @@ public static class RandomHelper
         return rnd.Next(0, int.MaxValue);
     }
 
-    /// <summary>
-    /// Vr�t� ��slo mezi 0 a A1-1
-    /// </summary>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static int RandomInt(int to)
-    {
-
-        return rnd.Next(0, to);
-    }
+   
 
     /// <summary>
     /// Vr�t� ��slo mezi A1 a A2 v�etn�
@@ -237,28 +228,7 @@ public static class RandomHelper
         return bool.Parse(pars);
     }
 
-    public static T RandomElementOfCollectionT<T>(IList<T> ppk)
-    {
-        int nt = RandomInt(ppk.Count);
-        return ppk[nt];
-    }
-
-    public static T RandomElementOfCollectionT<T>(IEnumerable<T> ppk)
-    {
-        List < T > col = new List<T>();
-        foreach (var item in ppk)
-        {
-            col.Add(item);
-        }
-
-        return RandomElementOfCollectionT<T>(col);
-    }
-
-    public static string RandomElementOfCollection(IList ppk)
-    {
-        int nt = RandomInt(ppk.Count);
-        return ppk[nt].ToString();
-    }
+    
 
     public static string RandomElementOfArray(Array ppk)
     {

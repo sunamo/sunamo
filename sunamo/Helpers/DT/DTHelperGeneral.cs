@@ -27,7 +27,7 @@ namespace sunamo.Helpers.DT
 
         #region General
         /// <summary>
-        /// A2 bylo původně MSStoredProceduresI.DateTimeMinVal
+        /// A2 bylo původně SqlServerHelper.DateTimeMinVal
         /// </summary>
         /// <param name="bday"></param>
         /// <returns></returns>
@@ -141,7 +141,7 @@ namespace sunamo.Helpers.DT
             vr += t.Minute * DTConstants.secondsInMinute;
             vr += t.Second;
             vr *= TimeSpan.TicksPerSecond;
-            //vr += MSStoredProceduresI.DateTimeMinVal
+            //vr += SqlServerHelper.DateTimeMinVal
             return vr;
         }
 

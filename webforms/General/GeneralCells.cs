@@ -24,7 +24,7 @@ public static class GeneralCells
 
     public static DateTime DateBornOfUser(int p)
     {
-        return MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.Users, "DateBorn", "ID", p, MSStoredProceduresI.DateTimeMinVal);
+        return MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.Users, "DateBorn", "ID", p, SqlServerHelper.DateTimeMinVal);
     }
 
     public static string NameOfTypeOfContacts(byte p)
@@ -99,7 +99,7 @@ public static class GeneralCells
 
     public static DateTime DateExpiredOfSurvey(short idSurvey)
     {
-        return MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.Wid_Polls, "DateExpired", "ID", idSurvey, MSStoredProceduresI.DateTimeMinVal);
+        return MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.Wid_Polls, "DateExpired", "ID", idSurvey, SqlServerHelper.DateTimeMinVal);
     }
 
     public static int IDUsersOfAnswer(int idAnswer)

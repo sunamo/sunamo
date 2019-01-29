@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using sunamo;
 using sunamo.Values;
 
-public class MSStoredProceduresIBase : SqlServerHelper
+public partial class MSStoredProceduresIBase : SqlServerHelper
 {
     public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, AB[] whereIs, AB[] whereIsNot)
     {
@@ -19,8 +19,6 @@ public class MSStoredProceduresIBase : SqlServerHelper
         DataTable dt = SelectDataTable(comm);
         return dt;
     }
-
-    
 
     public DataTable DeleteWithOutput(string TableName, string sloupceJezVratit, string idColumn, object idValue)
     {
@@ -53,7 +51,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
                 {
                     return p2;
                 }
-                return MSStoredProceduresI.DateTimeMinVal;
+                return SqlServerHelper.DateTimeMinVal;
             }
         }
     }
@@ -2654,21 +2652,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
         return SelectRowReader(comm);
     }
 
-    /// <summary>
-    /// Interně volá metodu SelectRowReader
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="sloupecID"></param>
-    /// <param name="id"></param>
-    /// <param name="nazvySloupcu"></param>
-    /// <returns></returns>
-    public object[] SelectSelectiveOneRow(string tabulka, string sloupecID, object id, string nazvySloupcu)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
-        AddCommandParameter(comm, 0, id);
-        //NT
-        return SelectRowReader(comm);
-    }
+    
 
 
 
@@ -2763,13 +2747,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
     #endregion
 
     #region SelectCell
-    public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
-    {
-        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameterFromAbc(comm, abc);
-        return ExecuteScalarShort(signed, comm);
-    }
+    
 
     /// <summary>
     /// G -1 když se žádný takový řádek nepodaří najít
@@ -3122,17 +3100,7 @@ public class MSStoredProceduresIBase : SqlServerHelper
         return dt.Rows[0].ItemArray;
     }
 
-    public object[] SelectOneRowForTableRow(string TableName, string nazevSloupce, object hodnotaSloupce)
-    {
-        // Index nemůže být ani pole bajtů ani null takže to je v pohodě
-        DataTable dt = SelectDataTable("SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
-        if (dt.Rows.Count == 0)
-        {
-            return null; // CA.CreateEmptyArray(pocetSloupcu);
-        }
-        return dt.Rows[0].ItemArray;
-    }
-
+    
     /// <summary>
     /// Nepoužívat a smazat!!!
     /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsString

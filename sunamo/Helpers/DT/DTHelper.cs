@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 
 
-public class DTHelper
+public partial class DTHelper
 {
     #region Code
     public static string DateToStringjQueryDatePicker(DateTime dt)
@@ -83,10 +83,7 @@ public class DTHelper
         return DTHelperCs.DateTimeToStringWithDayOfWeekCS(dt);
     }
 
-    public static string DateToStringWithDayOfWeekCS(DateTime dt)
-    {
-        return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
-    }
+    
     #endregion
 
     #region En

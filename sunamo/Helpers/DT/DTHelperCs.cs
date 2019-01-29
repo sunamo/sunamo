@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sunamo.Helpers.DT
 {
-    public class DTHelperCs
+    public partial class DTHelperCs
     {
         #region Pouze čas
         /// <summary>
@@ -105,7 +105,7 @@ namespace sunamo.Helpers.DT
 
         /// <summary>
         /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
-        /// A3 bylo původně MSStoredProceduresI.DateTimeMinVal
+        /// A3 bylo původně SqlServerHelper.DateTimeMinVal
         /// </summary>
         /// <param name="dateTime"></param>
         /// <param name="calculateTime"></param>
@@ -243,7 +243,7 @@ namespace sunamo.Helpers.DT
         /// <summary>
         /// Tato metoda zatím funguje pouze česky, ať ji předáš parametr Langs jaký chceš..
         /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
-        /// A4 bylo původně MSStoredProceduresI.DateTimeMinVal
+        /// A4 bylo původně SqlServerHelper.DateTimeMinVal
         /// </summary>
         /// <param name="dateTime"></param>
         /// <param name="calculateTime"></param>
@@ -380,36 +380,7 @@ namespace sunamo.Helpers.DT
             }
         }
 
-        #region CZ Other
-        /// <summary>
-        /// Vrátí český název dne v týdnu podle A1
-        /// </summary>
-        /// <param name="dayOfWeek"></param>
-        /// <returns></returns>
-        public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
-        {
-            switch (dayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    return DTConstants.Pondeli;
-                case DayOfWeek.Tuesday:
-                    return DTConstants.Utery;
-                case DayOfWeek.Wednesday:
-                    return DTConstants.Streda;
-                case DayOfWeek.Thursday:
-                    return DTConstants.Ctvrtek;
-                case DayOfWeek.Friday:
-                    return DTConstants.Patek;
-                case DayOfWeek.Saturday:
-                    return DTConstants.Sobota;
-                case DayOfWeek.Sunday:
-                    return DTConstants.Nedele;
-            }
-            throw new Exception("Neznámý den v týdnu");
-        }
-
-
-        #endregion
+        
 
         
 
@@ -426,16 +397,7 @@ namespace sunamo.Helpers.DT
             return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + " " + NH.MakeUpTo2NumbersToZero(dt.Hour) + ":" + NH.MakeUpTo2NumbersToZero(dt.Minute);
         }
 
-        /// <summary>
-        /// Tato metoda bude vždy bezčasová! Proto má v názvu jen Date.
-        /// 
-        /// </summary>
-        /// <param name="dt"></param>
-        /// <returns></returns>
-        public static string DateToStringWithDayOfWeekCS(DateTime dt)
-        {
-            return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year;
-        }
+        
         #endregion
     }
 }

@@ -25,6 +25,63 @@ namespace Roslyn
 
         static Type type = null;
 
+        public void FindPageMethod(string sczRootPath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<string> project = new List<string>();
+
+            var folders = FS.GetFolders(sczRootPath, SearchOption.TopDirectoryOnly);
+            foreach (var item in folders)
+            {
+                string nameProject = FS.GetFileName(item);
+                if (nameProject.EndsWith("X"))
+                {
+                    string project2 = nameProject.Substring(0, nameProject.Length - 1);
+                    // General files is in Nope. GeneralX is only for pages in General folder
+                    if (project2 != "General")
+                    {
+                        project.Add(project2);
+                    }
+
+                    var files = FS.GetFiles(item, FS.MascFromExtension(AllExtensions.cs), SearchOption.TopDirectoryOnly);
+                    AddPageMethods(sb, files);
+                }
+            }
+
+            foreach (var item in project)
+            {
+                string path = FS.Combine(sczRootPath, item);
+                var pages = FS.GetFiles(path, "*Page*.cs", SearchOption.TopDirectoryOnly);
+                AddPageMethods(sb, pages);
+            }
+
+            ClipboardHelper.SetText(sb);
+        }
+
+        private static void AddPageMethods(StringBuilder sb, List<string> files)
+        {
+            SourceCodeIndexer indexer = new SourceCodeIndexer();
+
+            foreach (var file in files)
+            {
+                indexer.ProcessFile(file, sunamo.Enums.NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method);
+            }
+
+            foreach (var file2 in indexer.classCodeElements)
+            {
+                sb.AppendLine(file2.Key);
+                foreach (var method in file2.Value)
+                {
+                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page_"))
+                    {
+                        sb.AppendLine(method.Name);
+
+                    }
+                }
+            }
+        }
+
         public  void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs)
         {
             var files = FS.GetFiles(from, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
@@ -41,7 +98,7 @@ namespace Roslyn
 
                 #region Generate and save *Cs file
                 CollectionWithoutDuplicates<string> usings;
-                if (FS.ExistsFile(designer)  && !FS.ExistsFile(fullPathTo))
+                if (FS.ExistsFile(designer) && !FS.ExistsFile(fullPathTo))
                 {
                     #region Get variables in designer
                     var designerContent = TF.ReadFile(designer);
@@ -128,8 +185,6 @@ namespace Roslyn
                     contentFileNew.Insert(0, genUs.ToString());
                     contentFileNew.Add("}");
 
-
-
                     string content = GetContentOfPageCsFile(nsX, fnwoeAspxCs, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
                     content = SH.ReplaceAll(content, string.Empty, "CreateEmpty();");
                    
@@ -140,65 +195,6 @@ namespace Roslyn
                     
                 }
                 #endregion
-            }
-        }
-
-        public void FindPageMethod(string sczRootPath)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            List<string> project = new List<string>();
-
-            var folders = FS.GetFolders(sczRootPath, SearchOption.TopDirectoryOnly);
-            foreach (var item in folders)
-            {
-                string nameProject = FS.GetFileName(item);
-                if (nameProject.EndsWith("X"))
-                {
-                    string project2 = nameProject.Substring(0, nameProject.Length - 1);
-                    // General files is in Nope. GeneralX is only for pages in General folder
-                    if (project2 != "General")
-                    {
-                        project.Add(project2);
-                    }
-                    
-                    var files = FS.GetFiles(item, FS.MascFromExtension(AllExtensions.cs), SearchOption.TopDirectoryOnly);
-                    AddPageMethods(sb, files);
-                }
-            }
-
-            foreach (var item in project)
-            {
-                string path = FS.Combine(sczRootPath, item);
-                var pages = FS.GetFiles(path, "*Page*.cs", SearchOption.TopDirectoryOnly);
-                AddPageMethods(sb, pages);
-            }
-
-            ClipboardHelper.SetText(sb);
-        }
-
-        private static void AddPageMethods(StringBuilder sb, List<string> files)
-        {
-            SourceCodeIndexer indexer = new SourceCodeIndexer();
-            
-            foreach (var file in files)
-            {
-
-                indexer.ProcessFile(file, sunamo.Enums.NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method);
-                
-            }
-
-            foreach (var file2 in indexer.classCodeElements)
-            {
-                sb.AppendLine(file2.Key);
-                foreach (var method in file2.Value)
-                {
-
-                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page_"))
-                    {
-                        sb.AppendLine(method.Name);
-                    }
-                }
             }
         }
 
@@ -308,9 +304,6 @@ namespace {0}
                 }
             }
 
-            //var m = node.DescendantNodes().OfType<IncompleteMemberSyntax>().First();
-            //m.Type.Ide
-
             if (node2 && token)
             {
                 throw new Exception("Cant process token and SyntaxNode - output could be duplicated");
@@ -327,48 +320,31 @@ namespace {0}
             var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace);
             
             sb.AppendLine(formattedResult.ToFullString());
-            //if (syntaxNodes.Count() == 0)
-            //{
-            //    sb.Append(format);
-            //    //SyntaxNode syntaxNode = RoslynParser.GetNode(format);
-            //    //    var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(syntaxNode, workspace);
-            //    //sb.AppendLine(formattedResult.ToFullString());
-            //}
-
-
 
             string result =  sb.ToString();
 
             return result;
-
-            //var engine = FormattingEngine.Create();
-            //engine.PreprocessorConfigurations = options.PreprocessorConfigurations;
-            //engine.FileNames = options.FileNames;
-            //engine.CopyrightHeader = options.CopyrightHeader;
-            //engine.AllowTables = options.AllowTables;
-            //engine.Verbose = false;
-
-            //if (!SetRuleMap(engine, options.RuleMap))
-            //{
-            //    return 1;
-            //}
-
-            //foreach (var item in options.FormatTargets)
-            //{
-            //    await RunFormatItemAsync(engine, item, options.Language, cancellationToken);
-            //}
-
-            //return 0;
         }
 
+        /// <summary>
+        /// Úplně nevím k čemu toto mělo sloužit. 
+        /// Read comments inside
+        /// </summary>
+        /// <param name="folderFrom"></param>
+        /// <param name="folderTo"></param>
+        /// <returns></returns>
         public List<string> GetCodeOfElementsClass(string folderFrom, string folderTo)
         {
+            FS.WithEndSlash(ref folderFrom);
+            FS.WithEndSlash(ref folderTo);
+
             var files = FS.GetFiles(folderFrom, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
             foreach (var file in files)
             {
                 SyntaxTree tree = CSharpSyntaxTree.ParseText(TF.ReadFile(file));
 
                 List<string> result = new List<string>();
+                // Here probable it mean SpaceName, ale když není namespace, uloží třídu 
                 SyntaxNode sn;
                 var cl = GetClass(tree,out sn);
 
@@ -384,17 +360,18 @@ namespace {0}
                 int count = cl.Members.Count;
                 for (int i = count - 1; i >= 0; i--)
                 {
-                    
                     var item = cl.Members[i];
                     //cl.Members.RemoveAt(i);
                     //cl.Members.Remove(item);
                     cl = cl.RemoveNode(item, SyntaxRemoveOptions.KeepEndOfLine);
                 }
+                // záměna namespace za class pak dělá problémy tady
                 sn = sn.TrackNodes(cl);
                 root = root.TrackNodes(sn);
                 
                 var d = sn.SyntaxTree.ToString();
-                int t = 0;
+                var fileTo = SH.Replace(file, folderFrom, folderTo);
+                File.WriteAllText(fileTo, d);
             }
 
             return null;
@@ -411,8 +388,6 @@ namespace {0}
         }
 
         /// <summary>
-        /// A = Namespace
-        /// B = class
         /// </summary>
         /// <param name="tree"></param>
         /// <param name="lines"></param>
@@ -422,21 +397,6 @@ namespace {0}
         {
             usings = new CollectionWithoutDuplicates<string>();
             ABC result = new ABC();
-
-            #region MyRegion
-            //StringWriter swUsings = new StringWriter();
-            //var usingsSn = tree.GetRoot().DescendantNodes().Where(node => node is UsingDirectiveSyntax);
-
-            //foreach (var item in usingsSn)
-            //{
-            //    item.WriteTo(swUsings);
-            //}
-
-            //foreach (var item in SH.GetLines(swUsings.ToString()))
-            //{
-            //    usings.Add(item);
-            //} 
-            #endregion
 
             foreach (var item in lines)
             {
@@ -469,6 +429,7 @@ namespace {0}
                 string ns, cn;
                 SH.GetPartsByLocation(out ns, out cn, variableName, lastIndex);
                 usings.Add(ns);
+                // in key type, in value name
                 result.Add(AB.Get(cn, variableDeclaration.Declaration.Variables.First().Identifier.Text));
 
             }
@@ -482,6 +443,12 @@ namespace {0}
             return GetClass(tree, out sn);
         }
 
+        /// <summary>
+        /// Into A2 insert first member of A1 - Namespace/Class
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="ns"></param>
+        /// <returns></returns>
         private static ClassDeclarationSyntax GetClass(SyntaxTree tree, out SyntaxNode ns)
         {
             ns = null;

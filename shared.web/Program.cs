@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Extensions
+namespace shared.web
 {
-    public class ExtensionsHelper
+    class Program
     {
+        static void Main(string[] args)
+        {
 
+        }
     }
 }

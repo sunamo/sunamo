@@ -9,7 +9,7 @@ using System.Collections.Generic;
  	 public byte IDWeb = 0 ; 
  	 public int IDPageName = -1 ; 
  	 public int IDPageArg = -1 ; 
- 	 public DateTime Day = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime Day = SqlServerHelper.DateTimeMinVal ; 
  	 public int Views = -1 ; 
  	public TableRowPageOldBase ( object[] o )
 	{

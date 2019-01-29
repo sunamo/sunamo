@@ -13,7 +13,7 @@ namespace webforms
         public string Heslo = null;
         public string HesloZnovu = null;
         public string Email = null;
-        public DateTime DateBorn = global::MSStoredProceduresI.DateTimeMinVal;
+        public DateTime DateBorn = global::SqlServerHelper.DateTimeMinVal;
         public string SecQ = "";
         public string SecA = "";
         public bool Sex = false;
@@ -136,7 +136,7 @@ namespace webforms
                 }
             }
 
-            if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::MSStoredProceduresI.DateTimeMinVal)
+            if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::SqlServerHelper.DateTimeMinVal)
             {
                 sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-).");
             }

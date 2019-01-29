@@ -121,8 +121,8 @@ namespace webforms
                                     string email = global::MSStoredProceduresI.ci.SelectCellDataTableStringOneRow(Tables.UsersReactivates, "Email", CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
                                     if (email != "")
                                     {
-                                        DateTime dateChanged = global::MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.UsersReactivates, "DateChanged", global::MSStoredProceduresI.DateTimeMinVal, CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
-                                        return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::MSStoredProceduresI.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + web.UH.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
+                                        DateTime dateChanged = global::MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.UsersReactivates, "DateChanged", global::SqlServerHelper.DateTimeMinVal, CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
+                                        return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + web.UH.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
                                     }
 
                                     string sc = "";

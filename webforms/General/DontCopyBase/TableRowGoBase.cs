@@ -12,7 +12,7 @@ using System.Collections.Generic;
  	 public string Uri = "" ; 
  	 public bool Enabled = false ; 
  	 public short ViewCount = -1 ; 
- 	 public DateTime CreatedDT = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime CreatedDT = SqlServerHelper.DateTimeMinVal ; 
  	 public string Comment = "" ; 
  	public TableRowGoBase ( object[] o )
 	{
