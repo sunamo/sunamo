@@ -29,7 +29,7 @@ namespace desktop.Helpers.Backend
         public event VoidInt ScrollToLine;
         public event VoidVoid EndOfFilteredLines;
 
-        public List<int> actualFileSearchOccurences
+        public List<FoundedCodeElement> actualFileSearchOccurences
         {
             get
             {
@@ -134,7 +134,7 @@ namespace desktop.Helpers.Backend
                 int serie = actualSearchedResult + 1;
                 SetTbSearchedResult(serie, actualFileSearchOccurences.Count);
                 
-                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult], addRowsDuringScrolling);
+                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult].Line, addRowsDuringScrolling);
                 
                 actualSearchedResult++;
             }
@@ -180,8 +180,21 @@ namespace desktop.Helpers.Backend
             else
             {
                 ScrollToLineMethod(newLine, addRowsDuringScrolling);
-                
             }
+        }
+
+        public void Highlight(int from, int length)
+        {
+            txtContent.Select(from, length);
+        }
+
+        /// <summary>
+        /// A1 -1, because highlighting can be processed only after and index was already increment
+        /// </summary>
+        public void Highlight(int actualSearchedResult)
+        {
+            var r = searchCodeElementsUCData.actualFileSearchOccurences[actualSearchedResult];
+            Highlight(r.From, r.Lenght);
         }
     }
 }

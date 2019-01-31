@@ -11,7 +11,7 @@ using System.Threading.Tasks;
     {
         public override string ToString()
         {
-            return SourceCodeIndexer.e2sNamespaceCodeElements[Type] + " " + Name;
+            return SourceCodeIndexerRoslyn.e2sNamespaceCodeElements[Type] + " " + Name;
         }
     }
 

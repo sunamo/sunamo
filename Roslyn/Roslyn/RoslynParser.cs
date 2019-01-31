@@ -61,7 +61,7 @@ namespace Roslyn
 
         private static void AddPageMethods(StringBuilder sb, List<string> files)
         {
-            SourceCodeIndexer indexer = new SourceCodeIndexer();
+            SourceCodeIndexerRoslyn indexer = new SourceCodeIndexerRoslyn();
 
             foreach (var file in files)
             {
@@ -82,7 +82,7 @@ namespace Roslyn
             }
         }
 
-        public  void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs)
+        public void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs)
         {
             var files = FS.GetFiles(from, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
             // Get namespace
@@ -437,26 +437,27 @@ namespace {0}
             return result;
         }
 
-        private static ClassDeclarationSyntax GetClass(SyntaxTree tree)
+        public static ClassDeclarationSyntax GetClass(SyntaxTree tree)
         {
             SyntaxNode sn;
             return GetClass(tree, out sn);
         }
 
         /// <summary>
+        /// Return null if 
         /// Into A2 insert first member of A1 - Namespace/Class
         /// </summary>
         /// <param name="tree"></param>
         /// <param name="ns"></param>
         /// <returns></returns>
-        private static ClassDeclarationSyntax GetClass(SyntaxTree tree, out SyntaxNode ns)
+        public static ClassDeclarationSyntax GetClass(SyntaxTree tree, out SyntaxNode ns)
         {
             ns = null;
             ClassDeclarationSyntax helloWorldDeclaration = null;
 
             var root = (CompilationUnitSyntax)tree.GetRoot();
 
-            if(root.DescendantNodes().OfType<ClassDeclarationSyntax>().Count() > 1)
+            if(root.ChildNodes().OfType<ClassDeclarationSyntax>().Count() > 1)
             {
                 return null;
             }

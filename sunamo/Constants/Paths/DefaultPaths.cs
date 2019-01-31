@@ -21,7 +21,7 @@ namespace sunamo.Constants
         //
 
         public static string[] All = new string[] { Documents, Docs, Downloads, Music2 };
-
+        public static string sunamo = @"d:\vs\sunamo\";
         public const string PhotosScz = @"d:\Pictures\photos.sunamo.cz\";
     }
 }

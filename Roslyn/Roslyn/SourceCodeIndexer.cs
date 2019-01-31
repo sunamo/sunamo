@@ -10,9 +10,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-public class SourceCodeIndexer
+public class SourceCodeIndexerRoslyn
 {
-    Type type = typeof(SourceCodeIndexer);
+    Type type = typeof(SourceCodeIndexerRoslyn);
     //public Dictionary<string, TU<string, int>> foundedLines = new Dictionary<string, TU<string, int>>();
     /// <summary>
     /// In A1 is full path, in A2 lines with letter content
@@ -48,7 +48,7 @@ public class SourceCodeIndexer
         return namespaceCodeElements.ContainsKey(pathFile);
     }
 
-    public SourceCodeIndexer()
+    public SourceCodeIndexerRoslyn()
     {
         var arr = Enum.GetValues(typeof(NamespaceCodeElementsType));
         foreach (NamespaceCodeElementsType item in arr)
@@ -180,10 +180,13 @@ public class SourceCodeIndexer
             var methods = classEl.DescendantNodes().OfType<MethodDeclarationSyntax>().ToList();
             foreach (MethodDeclarationSyntax method in methods)
             {
+                var s = method.Span;
+                
                 var location = method.GetLocation();
                 FileLinePositionSpan fileLinePositionSpan = location.GetLineSpan();
 
-                ClassCodeElement element = new ClassCodeElement() { Index = fileLinePositionSpan.StartLinePosition.Line, Name = method.Identifier.ToString(), Type = ClassCodeElementsType.Method };
+                ClassCodeElement element = new ClassCodeElement() { Index = fileLinePositionSpan.StartLinePosition.Line, Name = method.Identifier.ToString(), Type = ClassCodeElementsType.Method,
+                From = s.Start, To = s.End, Length = s.Length, Member = method };
 
                 DictionaryHelper.AddOrCreate<string, ClassCodeElement>(classCodeElements, pathFile, element);
             }
@@ -192,9 +195,9 @@ public class SourceCodeIndexer
 
     }
 
-    public Dictionary<string, List<int>> SearchInContent(string term, bool includeEmpty)
+    public Dictionary<string, List<FoundedCodeElement>> SearchInContent(string term, bool includeEmpty)
     {
-        Dictionary<string, List<int>> result = new Dictionary<string, List<int>>();
+        Dictionary<string, List<FoundedCodeElement>> result = new Dictionary<string, List<FoundedCodeElement>>();
         bool include = false;
 
         foreach (var item in linesWithContent)
@@ -202,7 +205,7 @@ public class SourceCodeIndexer
             var indexes = linesWithIndexes[item.Key];
             include = false;
             // return with zero elements - in item.Value is only lines with content. I need lines with exactly content of file to localize searched results
-            List<int> founded = CA.ReturnWhichContainsIndexes(item.Value, term, false);
+            List<int> founded = CA.ReturnWhichContainsIndexes(item.Value, term, SearchStrategy.AnySpaces);
 
             if (founded.Count == 0)
             {
@@ -216,10 +219,10 @@ public class SourceCodeIndexer
                 include = true;
             }
 
-            var founded2 = new List<int>();
+            var founded2 = new List<FoundedCodeElement>();
             foreach (var item2 in founded)
             {
-                founded2.Add(indexes[item2]);
+                founded2.Add(new FoundedCodeElement(indexes[item2], -1, 0));
             }
 
             if (include)
@@ -230,7 +233,15 @@ public class SourceCodeIndexer
         return result;
     }
 
-    public CodeElements FindNamespaceElement(string text, NamespaceCodeElementsType type, ClassCodeElementsType classType, bool fixedSpace = true)
+    /// <summary>
+    /// A4 = search for exact occur. otherwise split both to words
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="type"></param>
+    /// <param name="classType"></param>
+    /// <param name="searchStrategy"></param>
+    /// <returns></returns>
+    public CodeElements FindNamespaceElement(string text, NamespaceCodeElementsType type, ClassCodeElementsType classType, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         bool makeChecking = type != NamespaceCodeElementsType.All;
         Dictionary<string, NamespaceCodeElements> result = new Dictionary<string, NamespaceCodeElements>();
@@ -256,7 +267,7 @@ public class SourceCodeIndexer
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, fixedSpace))
+                    if (SH.Contains(item2.Name, text, searchStrategy))
                     {
                         d.Add(item2);
                     }
@@ -288,7 +299,7 @@ public class SourceCodeIndexer
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, fixedSpace))
+                    if (SH.Contains(item2.Name, text, searchStrategy))
                     {
                         d.Add(item2);
                     }

@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
     public class ClassCodeElement : CodeElement<ClassCodeElementsType>
     {
-        
+    public override string ToString()
+    {
+        //if (base.Type == ClassCodeElementsType.Method)
+        //{
+        return base.ToString();
+        //}
     }
+}
 

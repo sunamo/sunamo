@@ -175,7 +175,12 @@ using System.Text;
             return null;
         }
 
-        internal static string NotContains(string before, string originalText, params string[] shouldContains)
+    internal static object Custom(string before, string message)
+    {
+        return CheckBefore(before) + message;
+    }
+
+    internal static string NotContains(string before, string originalText, params string[] shouldContains)
         {
             List<string> notContained = new List<string>();
             foreach (var item in shouldContains)

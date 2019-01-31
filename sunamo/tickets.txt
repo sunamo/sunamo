@@ -1,6 +1,13 @@
 ﻿hned ráno projít věci co jsem naprogramoval ať furt nepíšu totéž, solution po solution
-
+stationery d:\Pictures\100_PANA\Range of goods bubble packing\
+Stodolni d:\Pictures\100_PANA\Stodolni\
+d:\Pictures\100_PANA\parfemy\
+muj globus registrace
+obnovit inzeraty
+prazske koleje
 g+ for insta
+
+92,98,99,100,105,106
 
 replace global::System.Web.UI.WebControls.TextBox for global::System.Web.UI.HtmlControls.HtmlInputText
 

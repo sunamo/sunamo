@@ -414,13 +414,13 @@ public static partial class CA
         return result;
     }
 
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, bool fixedSpace = true)
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         List<int> result = new List<int>();
         int i = 0;
             foreach (var item in value)
             {
-                if (SH.Contains( item, term, fixedSpace))
+                if (SH.Contains( item, term, searchStrategy))
                 {
                     result.Add(i);
                 }

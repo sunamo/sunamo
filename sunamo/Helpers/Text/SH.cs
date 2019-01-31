@@ -252,23 +252,31 @@ public static partial class SH
     }
 
     /// <summary>
+    /// A1 = search for exact occur. otherwise split both to words
     /// Control for string.Empty, because otherwise all results are true
     /// </summary>
     /// <param name="input"></param>
     /// <param name="what"></param>
     /// <returns></returns>
-    public static bool Contains(string input, string term, bool fixedSpace = true)
+    public static bool Contains(string input, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         if (term != "")
         {
-            if (fixedSpace)
+            if (searchStrategy == SearchStrategy.ExactlyName)
             {
-                return input.Contains(term);
+                return input == term;
             }
             else
             {
-                var allWords = SH.Split(term, AllStrings.space);
-                return SH.ContainsAll(input, allWords);
+                if (searchStrategy == SearchStrategy.FixedSpace)
+                {
+                    return input.Contains(term);
+                }
+                else
+                {
+                    var allWords = SH.Split(term, AllStrings.space);
+                    return SH.ContainsAll(input, allWords);
+                }
             }
         }
         return false;
@@ -524,7 +532,6 @@ public static partial class SH
                 continue;
             }
 
-            
                 int p2_3 = p2_2 + after.Length;
                 int p3_3 = p3_2 - 1;
             // When I return between ( ), there must be +1 

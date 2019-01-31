@@ -33,8 +33,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectCellDataTableStringOneRow(table, columnName, iDColumnName, idColumnValue) != "";
     }
 
-    
-
     public class Parse
     {
         public class DateTime
