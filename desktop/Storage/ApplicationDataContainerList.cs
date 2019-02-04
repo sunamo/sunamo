@@ -251,7 +251,7 @@ public class ApplicationDataContainerList : IEnumerable
                 }
                 else
                 {
-                    throw new Exception(string.Format( "Pravděpodobně chyba v aplikaci, pokoušíte se uložit do souboru v AppData položku typu {0} pod klíčem {1} která měla původně typ {2}", typeName, key, ab.A));
+                    throw new Exception(SH.Format( "Pravděpodobně chyba v aplikaci, pokoušíte se uložit do souboru v AppData položku typu {0} pod klíčem {1} která měla původně typ {2}", typeName, key, ab.A));
                 }
             }
             else

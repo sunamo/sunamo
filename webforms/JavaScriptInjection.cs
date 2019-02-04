@@ -229,7 +229,7 @@ public class JavaScriptInjection
 
     public static void InitTinyMCE(SunamoPage sp)
     {
-        //cleanup_callback : " + string.Format("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", "\"") + @"
+        //cleanup_callback : " + SH.Format("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", "\"") + @"
         InjectInternalScript(sp, @"$(document).ready(function () {
             tinymce.init({
     selector: '#txtTinymce',

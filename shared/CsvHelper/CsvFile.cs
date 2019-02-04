@@ -127,7 +127,7 @@ namespace desktop
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no record at index {0}.", recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no record at index {0}.", recordIndex));
 
                 return Records[recordIndex];
             }
@@ -144,23 +144,23 @@ namespace desktop
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no record at index {0}.", recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 return record.Fields[fieldIndex];
             }
             set
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no record at index {0}.", recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no field at index {0}.", fieldIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no field at index {0}.", fieldIndex));
 
                 record.Fields[fieldIndex] = value;
             }
@@ -177,7 +177,7 @@ namespace desktop
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no record at index {0}.", recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
@@ -193,17 +193,17 @@ namespace desktop
                 }
 
                 if (fieldIndex == -1)
-                    throw new ArgumentException(string.Format("There is no field header with the name '{0}'", fieldName));
+                    throw new ArgumentException(SH.Format("There is no field header with the name '{0}'", fieldName));
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 return record.Fields[fieldIndex];
             }
             set
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no record at index {0}.", recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
@@ -219,10 +219,10 @@ namespace desktop
                 }
 
                 if (fieldIndex == -1)
-                    throw new ArgumentException(string.Format("There is no field header with the name '{0}'", fieldName));
+                    throw new ArgumentException(SH.Format("There is no field header with the name '{0}'", fieldName));
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(string.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    throw new IndexOutOfRangeException(SH.Format("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 record.Fields[fieldIndex] = value;
             }

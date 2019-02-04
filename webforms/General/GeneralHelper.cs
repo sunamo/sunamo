@@ -697,7 +697,7 @@ public class GeneralHelper
 
     public static string GetTableNameDistricts(byte idState, int idRegion)
     {
-        return string.Format("S{0}_R{1}_Districts", idState, idRegion);
+        return SH.Format("S{0}_R{1}_Districts", idState, idRegion);
     }
 
 

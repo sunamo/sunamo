@@ -29,6 +29,9 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="ObjectDumper">
+      <HintPath>..\..\..\Documents\vs17\Projects\sunamo\dll\ObjectDumper.dll</HintPath>
+    </Reference>
     <Reference Include="win">
       <HintPath>..\win\bin\Release\win.dll</HintPath>
     </Reference>

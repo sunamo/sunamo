@@ -157,7 +157,7 @@ using System.Text;
         private void Initialise(string filePath, Encoding encoding)
         {
             if (!FS.ExistsFile(filePath))
-                throw new FileNotFoundException(string.Format("The file '{0}' does not exist.", filePath));
+                throw new FileNotFoundException(SH.Format("The file '{0}' does not exist.", filePath));
 
             _fileStream = File.OpenRead(filePath);
             Initialise(_fileStream, encoding);

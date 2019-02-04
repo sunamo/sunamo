@@ -27,7 +27,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object[] SelectSelectiveOneRow(string tabulka, string sloupecID, object id, string nazvySloupcu)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
+        SqlCommand comm = new SqlCommand(SH.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
         AddCommandParameter(comm, 0, id);
         //NT
         return SelectRowReader(comm);

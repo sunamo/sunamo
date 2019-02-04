@@ -425,7 +425,7 @@ public static class CL
     public static void WriteLineFormat(string text, params object[] p)
     {
         Console.WriteLine();
-        Console.WriteLine(string.Format(text, p));
+        Console.WriteLine(SH.Format(text, p));
     }
 
     /// <summary>

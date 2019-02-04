@@ -64,7 +64,7 @@ public class SocialShareButtons
     public static void SetLikeXfbml(SunamoPage page, HtmlGenericControl first, HtmlGenericControl html)
     {
         first.InnerHtml = "<div id=\"fb-root\"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>";
-        html.InnerHtml = string.Format("<fb:like href=\"{0}\" layout=\"box_count\" action=\"like\" show_faces=\"false\" share=\"false\"></fb:like>",  GetUri(page.Request.Url));
+        html.InnerHtml = SH.Format("<fb:like href=\"{0}\" layout=\"box_count\" action=\"like\" show_faces=\"false\" share=\"false\"></fb:like>",  GetUri(page.Request.Url));
     }
 
     public static void SetLikeAttributes(SunamoPage page, HtmlGenericControl html)
@@ -109,7 +109,7 @@ public class SocialShareButtons
   js.src = " + "\"/" + "/connect.facebook.net/en_US/all.js#xfbml=1\";" + Environment.NewLine +
   @"fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>";
-        html.InnerHtml = string.Format("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri( page.Request.Url), "http://" + page.Request.Url.Host + "/");
+        html.InnerHtml = SH.Format("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri( page.Request.Url), "http://" + page.Request.Url.Host + "/");
     }
 
 

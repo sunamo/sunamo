@@ -86,7 +86,7 @@ namespace sunamo.CodeGenerator
         {
             if (p2.Length != 0)
             {
-                sb.AppendLine(AddTab(tabCount, string.Format(p, p2)));
+                sb.AppendLine(AddTab(tabCount, SH.Format(p, p2)));
             }
             else
             {
@@ -98,7 +98,7 @@ namespace sunamo.CodeGenerator
         {
             if (p2.Length != 0)
             {
-                sb.AddItem(AddTab(tabCount, string.Format(p, p2)));
+                sb.AddItem(AddTab(tabCount, SH.Format(p, p2)));
             }
             else
             {

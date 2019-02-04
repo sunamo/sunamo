@@ -12,8 +12,4 @@ public class HtmlGenerator : XmlGenerator
     {
         
     }
-
-
-
-  
 }

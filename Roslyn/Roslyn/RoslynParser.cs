@@ -198,6 +198,120 @@ namespace Roslyn
             }
         }
 
+        public static SyntaxNode FindNode(SyntaxNode parent, SyntaxNode child, bool onlyDirectSub)
+        {
+            int dx;
+            return FindNode(parent, child, onlyDirectSub, out dx);
+        }
+
+        /// <summary>
+        /// Because of searching is very unreliable
+        /// Into A1 I have to insert class when I search in classes. If I insert root/ns/etc, method will be return to me whole class, because its contain method
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="child"></param>
+        /// <returns></returns>
+        public static SyntaxNode FindNode(SyntaxNode parent, SyntaxNode child, bool onlyDirectSub, out int dx)
+        {
+            dx = -1;
+
+            #region MyRegion
+            if (false)
+            {
+                if (onlyDirectSub)
+                {
+                    // toto mi vratí např. jen public, nikoliv celou stránku
+                    //var ss = cl.ChildThatContainsPosition(cl.GetLocation().SourceSpan.Start);
+                    foreach (var item in parent.ChildNodes())
+                    {
+                        // Má tu lokaci trochu dál protože obsahuje zároveň celou třídu
+                        string l1 = item.GetLocation().ToString();
+                        string l2 = child.GetLocation().ToString();
+
+                        var s = child.Span;
+                        var s2 = child.FullSpan;
+                        var s3 = child.GetReference();
+
+                        if (l1 == l2)
+                        {
+                            return item;
+                        }
+                    }
+                }
+                else
+                {
+                    return parent.FindNode(child.FullSpan, false, true).WithoutLeadingTrivia().WithoutTrailingTrivia();
+                }
+
+                return null;
+            }
+            #endregion
+
+            if (child is MethodDeclarationSyntax && parent is ClassDeclarationSyntax)
+            {
+                ClassDeclarationSyntax cl = (ClassDeclarationSyntax)parent;
+                MethodDeclarationSyntax method = (MethodDeclarationSyntax)child;
+
+                
+                foreach (var item in cl.Members)
+                {
+                    dx++;
+                    if (item is MethodDeclarationSyntax)
+                    {
+                        var method2 = (MethodDeclarationSyntax)item;
+                        bool same = true;
+
+                        if (method.Identifier.Text != method2.Identifier.Text)
+                        {
+                            same = false;
+                        }
+
+                        if (same)
+                        {
+                            if (!RoslynComparer.Modifiers(method.Modifiers, method2.Modifiers))
+                            {
+                                same = false;
+                            }
+                        }
+
+                        if (same)
+                        {
+                            return method2;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ThrowExceptions.NotImplementedCase(type, "FindNode");
+            }
+
+            return null;
+            //return nsShared.FindNode(cl.FullSpan, false, true).WithoutLeadingTrivia().WithoutTrailingTrivia();
+        }
+
+        public static ClassDeclarationSyntax RemoveNode(ClassDeclarationSyntax cl2, SyntaxNode method, SyntaxRemoveOptions keepDirectives)
+        {
+            //var children = method.ChildNodesAndTokens().ToList();
+            //for (int i = children.Count() - 1; i >= 0; i--)
+            //{
+            //    var t = children[i].GetType().FullName;
+            //    if (!(children[i] is MethodDeclarationSyntax))
+            //    {
+            //        int i2 = 0;
+            //    }
+            //    else
+            //    {
+            //        children.RemoveAt(i);
+            //    }
+            //}
+            //return null;
+
+            //FindNode()
+            //cl2.Members.
+            return null;
+        }
+
         string GetContentOfNewAspxCs(string csClass, string ctorArgs)
         {
             //CSharpGenerator genAspxCs = new CSharpGenerator();
@@ -319,7 +433,7 @@ namespace {0}
             var nodesAndTokens = node.ChildNodesAndTokens();
             var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace);
             
-            sb.AppendLine(formattedResult.ToFullString());
+            sb.AppendLine(formattedResult.ToFullString().Trim());
 
             string result =  sb.ToString();
 
@@ -477,11 +591,12 @@ namespace {0}
             else if (firstMember is ClassDeclarationSyntax)
             {
                 helloWorldDeclaration = (ClassDeclarationSyntax)firstMember;
-                ns = helloWorldDeclaration;
+                // keep ns as null
+                //ns = nu;
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "GetVariablesInCsharp");
+                ThrowExceptions.NotImplementedCase(type, "GetClass");
             }
 
             return helloWorldDeclaration;

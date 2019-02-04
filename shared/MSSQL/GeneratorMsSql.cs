@@ -30,7 +30,7 @@ public class GeneratorMsSql
     public static string Insert4(int i2, string tabulka, int pocetSloupcu)
     {
         string hodnoty = GetValuesDirect(i2, pocetSloupcu);
-        return string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty);
+        return SH.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty);
     }
 
     public static string GetValuesDirect(int i2, int to)
@@ -169,7 +169,7 @@ public class GeneratorMsSql
                 // TODO: Zjistit si zda se tu skutečně dává AND
                 sb.Append(",");
             }
-            sb.Append(string.Format(" {0} = @p" + p.ToString(), var.A));
+            sb.Append(SH.Format(" {0} = @p" + p.ToString(), var.A));
             p++;
         }
         return sb.ToString();
@@ -216,7 +216,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} = {1} ", var.A, "@p" + pridavatOd));
+                sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + pridavatOd));
                 pridavatOd++;
             }
 
@@ -255,7 +255,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} != {1} ", var.A, "@p" + pridavatOd));
+                sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + pridavatOd));
                 pridavatOd++;
             }
 
@@ -361,7 +361,7 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(string.Format(" {0} = {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
@@ -379,7 +379,7 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(string.Format(" {0} != {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
@@ -397,7 +397,7 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(string.Format(" {0} > {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format(" {0} > {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
@@ -415,7 +415,7 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(string.Format(" {0} < {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format(" {0} < {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
@@ -460,7 +460,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} = {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
@@ -479,7 +479,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} != {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
@@ -498,7 +498,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} > {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format(" {0} > {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
@@ -517,7 +517,7 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(string.Format(" {0} < {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format(" {0} < {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
@@ -561,7 +561,7 @@ public class GeneratorMsSql
             {
                 sb.Append(" OR ");
             }
-            sb.Append(string.Format(" {0} = {1} ", var.A, "@p" + p));
+            sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
             p++;
         }
         if (pCopy != 0)
@@ -591,7 +591,7 @@ public class GeneratorMsSql
             {
                 sb.Append(" OR ");
             }
-            sb.Append(string.Format(" {0} = {1} ", var.A, "@p" + p));
+            sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
             p++;
         }
 
@@ -611,7 +611,7 @@ public class GeneratorMsSql
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" WHERE ");
-        sb.Append(string.Format(" {0} = @p0 ", sloupec));
+        sb.Append(SH.Format(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
 
@@ -619,7 +619,7 @@ public class GeneratorMsSql
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" WHERE ");
-        sb.Append(string.Format(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
+        sb.Append(SH.Format(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
         return sb.ToString();
     }
 
@@ -629,7 +629,7 @@ public class GeneratorMsSql
         sb.Append("SELECT " + columns);
         sb.Append(" FROM " + tabulka);
         sb.Append(" WHERE ");
-        sb.Append(string.Format(" {0} = @p0 ", sloupec));
+        sb.Append(SH.Format(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
 
@@ -647,7 +647,7 @@ public class GeneratorMsSql
         sb.Append("SELECT TOP(1) " + vracenySloupec);
         sb.Append(" FROM " + table);
         sb.Append(" WHERE ");
-        sb.Append(string.Format(" {0} = @p0 ", idColumnName));
+        sb.Append(SH.Format(" {0} = @p0 ", idColumnName));
         return sb.ToString();
     }
 

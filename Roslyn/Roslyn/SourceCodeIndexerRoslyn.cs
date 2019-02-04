@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Roslyn.Data;
 using sunamo;
 using sunamo.Constants;
 using sunamo.Enums;
@@ -12,6 +13,7 @@ using System.Linq;
 
 public class SourceCodeIndexerRoslyn
 {
+    public static Dictionary<string, SourceFileTree> sourceFileTrees = new Dictionary<string, SourceFileTree>();
     Type type = typeof(SourceCodeIndexerRoslyn);
     //public Dictionary<string, TU<string, int>> foundedLines = new Dictionary<string, TU<string, int>>();
     /// <summary>
@@ -60,13 +62,25 @@ public class SourceCodeIndexerRoslyn
         }
     }
 
-    public void ProcessAllCodeElementsInFiles(string file)
+    public void ProcessAllCodeElementsInFiles(string file, bool removeRegions = false)
     {
-        ProcessFile(file, allNamespaceCodeElements, allClassCodeElements);
+        ProcessFile(file, allNamespaceCodeElements, allClassCodeElements, removeRegions);
     }
 
-    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType)
+    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions = false)
     {
+        SyntaxTree tree;
+        CompilationUnitSyntax root;
+        ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions);
+
+        sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = tree });
+    }
+
+    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, out SyntaxTree tree, out CompilationUnitSyntax root,  bool removeRegions = false)
+    {
+        tree = null;
+        root = null;
+
         if (!linesWithContent.ContainsKey(pathFile))
         {
             if (pathFile.Contains("Projects\\Projects"))
@@ -80,9 +94,21 @@ public class SourceCodeIndexerRoslyn
             List<string> namespaceCodeElementsKeywords = new List<string>();
             List<string> classCodeElementsKeywords = new List<string>();
 
-            string fileContent = File.ReadAllText(pathFile);
+            string fileContent = string.Empty;
+            List<string> lines = TF.ReadAllLines(pathFile);
+            //for (int i = lines.Count - 1; i >= 0; i--)
+            //{
+            //    string line = lines[i].Trim();
+            //    if (line.StartsWith("#region ") || line.StartsWith("#endregion"))
+            //    {
+            //        lines.RemoveAt(i);
+            //    }
+            //}
+
+            fileContent = SH.JoinNL(lines);
+
             List<string> linesAll = SH.GetLines(fileContent);
-            List<string> lines = CA.WrapWith(linesAll, AllStrings.space).ToList();
+            lines = CA.WrapWith(linesAll, AllStrings.space).ToList();
 
             List<int> FullFileIndex = new List<int>();
 
@@ -148,9 +174,8 @@ public class SourceCodeIndexerRoslyn
                 classCodeElementsTypeToFind |= ClassCodeElementsType.Method;
             }
 
-
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(fileContent);
-            var root = (CompilationUnitSyntax)tree.GetRoot();
+             tree = CSharpSyntaxTree.ParseText(fileContent);
+             root = (CompilationUnitSyntax)tree.GetRoot();
 
             var c = classCodeElements;
 
@@ -158,13 +183,11 @@ public class SourceCodeIndexerRoslyn
             IEnumerable<NamespaceDeclarationSyntax> namespaces = ns.OfType<NamespaceDeclarationSyntax>().ToList();
             foreach (var nameSpace in namespaces)
             {
-                
                 if (classCodeElementsTypeToFind.HasFlag(ClassCodeElementsType.Method))
                 {
                     var ancestor = nameSpace;
                     AddMethodsFrom(ancestor, pathFile);
                 }
-
             }
             AddMethodsFrom(root, pathFile);
         }
@@ -178,15 +201,24 @@ public class SourceCodeIndexerRoslyn
         foreach (var classEl in cls)
         {
             var methods = classEl.DescendantNodes().OfType<MethodDeclarationSyntax>().ToList();
-            foreach (MethodDeclarationSyntax method in methods)
+            foreach (MethodDeclarationSyntax method2 in methods)
             {
+                // cant .WithoutTrailingTrivia().WithoutLeadingTrivia() - Specified argument was out of the range of valid values.'
+                var method = method2;
+
                 var s = method.Span;
                 
                 var location = method.GetLocation();
                 FileLinePositionSpan fileLinePositionSpan = location.GetLineSpan();
 
-                ClassCodeElement element = new ClassCodeElement() { Index = fileLinePositionSpan.StartLinePosition.Line, Name = method.Identifier.ToString(), Type = ClassCodeElementsType.Method,
+                string methodName = method.Identifier.ToString();
+                ClassCodeElement element = new ClassCodeElement() { Index = fileLinePositionSpan.StartLinePosition.Line, Name = methodName, Type = ClassCodeElementsType.Method,
                 From = s.Start, To = s.End, Length = s.Length, Member = method };
+
+                //if (methodName == "JoinSpace")
+                //{
+                //    DebugLogger.Instance.WriteLine(RH.DumpAsString("During indexing:", method.FullSpan));
+                //}
 
                 DictionaryHelper.AddOrCreate<string, ClassCodeElement>(classCodeElements, pathFile, element);
             }
@@ -263,6 +295,10 @@ public class SourceCodeIndexerRoslyn
                         // Nope there cannot be passed
                         add = true;
                     }
+                    else if (classType == ClassCodeElementsType.All)
+                    {
+                        add = true;
+                    }
                 }
 
                 if (add)
@@ -293,6 +329,10 @@ public class SourceCodeIndexerRoslyn
                     if (item2.Type == classType)
                     {
                         // Nope there cannot be passed
+                        add = true;
+                    }
+                    else if (classType == ClassCodeElementsType.All)
+                    {
                         add = true;
                     }
                 }

@@ -16,7 +16,7 @@ using System.Threading.Tasks;
         {
         if (!list.Contains(item))
         {
-            list.Insert(0, string.Format(GeneralConsts.tsInclude, item));
+            list.Insert(0, SH.Format(GeneralConsts.tsInclude, item));
         }
             
             return (List<string>)list;

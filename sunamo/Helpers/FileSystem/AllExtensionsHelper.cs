@@ -25,7 +25,7 @@ namespace sunamo.Helpers
             if (extensionsByType.Count == 0)
             {
                 AllExtensions ae = new AllExtensions();
-                var exts = sunamo.RH.GetConstants(typeof(AllExtensions));
+                var exts = RH.GetConsts(typeof(AllExtensions));
                 foreach (var item in exts)
                 {
                     string extWithDot = item.GetValue(ae).ToString();

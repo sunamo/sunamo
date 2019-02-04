@@ -164,6 +164,10 @@ namespace desktop
         #region DPP
         public event VoidObject ItemRemoved;
         /// <summary>
+        /// Dont register 
+        /// </summary>
+        public event VoidVoid ItemSelected;
+        /// <summary>
         /// LB, na kt. se kont.
         /// </summary>
         protected ListBox lb;
@@ -174,7 +178,8 @@ namespace desktop
 
         private void Lb_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            mb = e.ChangedButton;   
+            mb = e.ChangedButton; 
+            
         }
 
         #region base
@@ -190,6 +195,23 @@ namespace desktop
             lb.SelectionMode = sm;
             lb.KeyDown += new KeyEventHandler(lb_KeyDown);
             lb.PreviewMouseDown += Lb_MouseDown;
+            lb.SelectionChanged += Lb_SelectionChanged;
+
+        }
+
+        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Length() > 0)
+            {
+                Selected = e.AddedItems[0];
+                ItemSelected();
+            }
+            else
+            {
+                Selected = null;
+            }
+
+            
         }
 
         public bool Tag = false;

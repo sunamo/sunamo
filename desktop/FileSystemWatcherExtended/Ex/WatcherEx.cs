@@ -140,7 +140,7 @@ using System.Text;
             CreateWatcher(true, NotifyFilters.Security);
             CreateWatcher(true, NotifyFilters.Size);
 
-            ////Debug.WriteLine(string.Format("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
+            ////Debug.WriteLine(SH.Format("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
         }
 
 

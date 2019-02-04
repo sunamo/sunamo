@@ -15,6 +15,24 @@ public static class UriWebServices
         }
     }
 
+    public static class SpiceMarks
+    {
+        static List<string> list = null;
+        
+        public static void SearchInAll(string spicyName)
+        {
+            if (list == null)
+            {
+                list = new List<string>(CA.ToEnumerable("kotanyi", "avokádo", "nadir", "Orient", "Drago", "vítana", "svět bylinek"));
+            }
+
+            foreach (var item in list)
+            {
+                Process.Start(UriWebServices.GoogleSearch($"{item} koření {spicyName}"));
+            }
+        }
+    }
+
     public static class EnglishMobileParts
     {
         /// <summary>

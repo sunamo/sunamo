@@ -72,7 +72,7 @@ public static class CSharpHelper
         CSharpGenerator csg = new CSharpGenerator();
         foreach (var item in values)
         {
-            csg.AppendLine(tabCount, string.Format(assignVariable, item));
+            csg.AppendLine(tabCount, SH.Format(assignVariable, item));
 
         }
         return csg.ToString().Trim();
@@ -172,5 +172,18 @@ public static class CSharpHelper
         CSharpGenerator generator = new CSharpGenerator();
         generator.List(0, "string", listName, input);
         return generator.ToString();
+    }
+
+    public static List<string> RemoveRegions(List<string> lines)
+    {
+        for (int i = lines.Count - 1; i >= 0; i--)
+        {
+            string line = lines[i].Trim();
+            if (line.StartsWith("#region ") || line.StartsWith("#endregion"))
+            {
+                lines.RemoveAt(i);
+            }
+        }
+        return lines;
     }
 }

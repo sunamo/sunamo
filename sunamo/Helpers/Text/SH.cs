@@ -83,7 +83,7 @@ public static partial class SH
         return SH.TrimEnd( sb.ToString(), delimAfter);
     }
 
-    public static string Format(string status, object[] args)
+    public static string Format(string status, params object[] args)
     {
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
         {
@@ -233,7 +233,7 @@ public static partial class SH
     /// <returns></returns>
     public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
     {
-        var result = string.Format(templateHandler, args);
+        var result = SH.Format(templateHandler, args);
         const string replacement = "{        }";
         result = SH.ReplaceAll2(result, replacement, "[]");
         result = SH.ReplaceAll2(result, "{", lsf);
@@ -1314,7 +1314,7 @@ public static partial class SH
 
     public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
     {
-        Regex regex = new Regex(string.Format("\\{0}.*?\\{1}", begin, end));
+        Regex regex = new Regex(SH.Format("\\{0}.*?\\{1}", begin, end));
         return regex.Replace(s, string.Empty);
     }
 

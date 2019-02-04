@@ -7,6 +7,21 @@ obnovit inzeraty
 prazske koleje
 g+ for insta
 
+vytvořit video s popisem co se dělo v černobylo, 
+
+udělat pořádek v tom co se uploaduje, je tam stále mnoho temp souborů z _
+
+.nuget in c:\n 
+Castle aspires to simplify the development of enterprise and web applications. - find another
+
+make https://github.com/KirillOsenkov/SourceBrowser for searchin in my code
+
+nuget.smbsrc.net - If the authors of the NuGet package publish symbol & source packages (to nuget.smbsrc.net), these can be downloaded via "SourceLink" in VS (Enabled via Options > Debugging > General > Enable source server support). 
+
+vytvořit soubory, 
+
+roslyn codetextbox
+
 92,98,99,100,105,106
 
 replace global::System.Web.UI.WebControls.TextBox for global::System.Web.UI.HtmlControls.HtmlInputText

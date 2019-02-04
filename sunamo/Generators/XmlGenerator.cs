@@ -70,7 +70,7 @@ public class XmlGenerator
 
     public void WriteCData(string innerCData)
     {
-        this.WriteRaw(string.Format("<![CDATA[{0}]]>", innerCData));
+        this.WriteRaw(SH.Format("<![CDATA[{0}]]>", innerCData));
     }
 
     public void WriteTagWithAttr(string tag, string atribut, string hodnota, bool skipEmptyOrNull = false)
@@ -83,7 +83,7 @@ public class XmlGenerator
             }
         }
 
-        string r = string.Format("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
+        string r = SH.Format("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
         if (useStack)
         {
             stack.Push(r);
@@ -151,7 +151,7 @@ public class XmlGenerator
     public void WriteTagWith2Attrs(string p, string p_2, string p_3, string p_4, string p_5)
     {
         
-        string r = string.Format("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
+        string r = SH.Format("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
         if (useStack)
         {
             stack.Push(r);

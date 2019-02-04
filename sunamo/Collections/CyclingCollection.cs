@@ -412,7 +412,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     {
         if (NewStatus != null)
         {
-            NewStatus(string.Format(s, p));
+            NewStatus(SH.Format(s, p));
         }
     }
 

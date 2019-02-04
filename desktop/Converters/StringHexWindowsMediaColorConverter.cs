@@ -13,7 +13,7 @@ namespace desktop
 
         public static string ConvertTo(Color u)
         {
-            return string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
+            return SH.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
         }
 
         public static Color ConvertFrom(string t)

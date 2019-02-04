@@ -1579,7 +1579,7 @@ public static partial class CA
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
         {
-            globallyInstalledTsDefinitions[i] = string.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
+            globallyInstalledTsDefinitions[i] = SH.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
     }

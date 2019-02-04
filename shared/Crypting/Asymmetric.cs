@@ -565,7 +565,7 @@ namespace shared.Crypting
                 {
                     s = "public";
                 }
-                throw new System.Security.XmlSyntaxException(string.Format("The provided {0} encryption key XML does not appear to be valid.", s), ex);
+                throw new System.Security.XmlSyntaxException(SH.Format("The provided {0} encryption key XML does not appear to be valid.", s), ex);
             }
         }
 
