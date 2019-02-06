@@ -223,7 +223,7 @@ public static class CL
     private static int UserMustTypeNumber(string what, int max)
     {
         int parsed = 1;
-        string entered = UserMustType(what, false, CA.ToListString(BT.GetNumberedListFromTo( 0, max)).ToArray());
+        string entered = UserMustType(what, false, CA.ToListString(BTS.GetNumberedListFromTo( 0, max)).ToArray());
         if (what == null)
         {
             return int.MinValue;

@@ -146,7 +146,7 @@ namespace sunamo.Helpers.DT
             {
                 return null;
             }
-            serie = BT.ParseInt(sp[4], null);
+            serie = BTS.ParseInt(sp[4], null);
 
 
             return new DateTime(date[0], date[1], date[2]);

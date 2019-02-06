@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace sunamo.Collections
@@ -15,6 +16,27 @@ namespace sunamo.Collections
         /// Column - inner - apps 4
         /// </summary>
         private List<List<T>> exists;
+
+        public DataTable SwitchRowsAndColumn()
+        {
+            DataTable newTable = new DataTable();
+
+            newTable.Columns.Add("Field Name");
+            for (int i = 0; i < exists.Count; i++)
+                newTable.Columns.Add();
+
+            for (int i = 0; i < exists[0].Count; i++)
+            {
+                DataRow newRow = newTable.NewRow();
+
+                newRow[0] = oldTable.Columns[i].Caption;
+                for (int j = 0; j < oldTable.Rows.Count; j++)
+                    newRow[j + 1] = oldTable.Rows[j][i];
+                newTable.Rows.Add(newRow);
+            }
+
+            dataGridView.DataSource = newTable;
+        }
 
         public ValuesTableGrid(List<List<T>> exists)
         {

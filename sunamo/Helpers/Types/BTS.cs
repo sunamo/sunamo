@@ -3,6 +3,8 @@
 /// </summary>
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 public static partial class BTS
@@ -18,7 +20,92 @@ public static partial class BTS
 
     #endregion
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool Invert(bool b, bool really)
+    {
+        if (really)
+        {
+            return !b;
+        }
+        return b;
+    }
+
+    /// <summary>
+    ///  G zda  prvky A2 - Ax jsou hodnoty A1.
+    /// </summary>
+    /// <param name="hodnota"></param>
+    /// <param name="paramy"></param>
+    /// <returns></returns>
+    public static bool IsAllEquals(bool hodnota, params bool[] paramy)
+    {
+        for (int i = 0; i < paramy.Length; i++)
+        {
+            if (hodnota != paramy[i])
+            {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="od"></param>
+    /// <param name="to"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static bool IsInRange(int od, int to, int value)
+    {
+        return od >= value && to <= value;
+    }
+
+    /// <summary>
+    /// If has value true, return true. Otherwise return false
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static bool GetValueOfNullable(bool? t)
+    {
+        if (t.HasValue)
+        {
+            return t.Value;
+        }
+        return false;
+    }
+
     #region TryParse*
+    public static DateTime TryParseDateTime(string v, CultureInfo ciForParse, DateTime defaultValue)
+    {
+        DateTime vr = defaultValue;
+
+        if (DateTime.TryParse(v, ciForParse, DateTimeStyles.None, out vr))
+        {
+            return vr;
+        }
+        return defaultValue;
+    }
+
+    public static uint lastUint = 0;
+
+    public static bool TryParseUint(string entry)
+    {
+        // Pokud bude A1 null, výsledek bude false
+        return uint.TryParse(entry, out lastUint);
+    }
+
+    public static bool TryParseDateTime(string entry)
+    {
+        if (DateTime.TryParse(entry, out lastDateTime))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public static byte TryParseByte(string p1, byte _def)
     {
         byte vr = _def;
@@ -29,6 +116,8 @@ public static partial class BTS
         }
         return _def;
     }
+
+    
 
     /// <summary>
     /// Vrací vyparsovanou hodnotu pokud se podaří vyparsovat, jinak A2
@@ -72,7 +161,35 @@ public static partial class BTS
     }
     #endregion
 
+    #region int <> bool
+    public static int BoolToInt(bool v)
+    {
+        return Convert.ToInt32(v);
+    }
+
+    /// <summary>
+    /// 0 - false, all other - 1
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static bool IntToBool(int v)
+    {
+        return Convert.ToBoolean(v);
+    }
+    #endregion
+
     #region Parse*
+    public static float ParseFloat(string ratingS)
+    {
+        float vr = float.MinValue;
+        ratingS = ratingS.Replace(',', '.');
+        if (float.TryParse(ratingS, out vr))
+        {
+            return vr;
+        }
+        return vr;
+    }
+
     /// <summary>
     /// Vrátí false v případě že se nepodaří vyparsovat
     /// </summary>
@@ -147,6 +264,7 @@ public static partial class BTS
         }
         return byte.MinValue;
     }
+
     public static byte ParseByte(string entry, byte def)
     {
         byte lastInt2 = 0;
@@ -157,6 +275,15 @@ public static partial class BTS
         return def;
     }
 
+    public static int? ParseInt(string entry, int? _default)
+    {
+        int lastInt2 = 0;
+        if (int.TryParse(entry, out lastInt2))
+        {
+            return lastInt2;
+        }
+        return _default;
+    }
     #endregion
 
     #region Is*
@@ -180,6 +307,21 @@ public static partial class BTS
         }
         return DateTime.TryParse(dt, out lastDateTime);
     }
+
+
+    public static bool IsByte(string id, out byte b)
+    {
+        if (id == null)
+        {
+            b = 0;
+            return false;
+        }
+        //byte b2 = 0;
+        bool vr = byte.TryParse(id, out b);
+        //b = b2;
+        return vr;
+    }
+
 
     public static bool IsBool(string trim)
     {
@@ -228,57 +370,91 @@ public static partial class BTS
         return No;
     }
 
-    
+
 
 
     #endregion
 
-    #region Castint to Array
-    public static int[] CastArrayStringToInt(string[] plemena)
-        {
-            int[] vr = new int[plemena.Length];
-            for (int i = 0; i < plemena.Length; i++)
-            {
-                vr[i] = int.Parse(plemena[i]);
-            }
-            return vr;
-        }
+    #region byte[] <> string
+    public static byte[] ConvertFromUtf8ToBytes(string vstup)
+    {
+        return Encoding.UTF8.GetBytes(vstup);
+    }
 
-        public static short[] CastArrayStringToShort(List<string> plemena)
-        {
-            short[] vr = new short[plemena.Count];
-            for (int i = 0; i < plemena.Count; i++)
-            {
-                vr[i] = short.Parse(plemena[i]);
-            }
-            return vr;
-        }
+    public static string ConvertFromBytesToUtf8(byte[] bajty)
+    {
+        return Encoding.UTF8.GetString(bajty);
+    }
+    #endregion
 
-        public static string[] CastArrayObjectToString(object[] args)
+    #region Casting between array - cant commented because it wasnt visible between 
+    public static string[] CastArrayObjectToString(object[] args)
+    {
+        string[] vr = new string[args.Length];
+        for (int i = 0; i < args.Length; i++)
         {
-            string[] vr = new string[args.Length];
-            for (int i = 0; i < args.Length; i++)
-            {
-                vr[i] = args[i].ToString();
-            }
-            return vr;
+            vr[i] = args[i].ToString();
         }
-
-    
+        return vr;
+    }
 
     public static string[] CastArrayIntToString(int[] args)
+    {
+        string[] vr = new string[args.Length];
+        for (int i = 0; i < args.Length; i++)
         {
-            string[] vr = new string[args.Length];
-            for (int i = 0; i < args.Length; i++)
-            {
-                vr[i] = args[i].ToString();
-            }
-            return vr;
+            vr[i] = args[i].ToString();
         }
-        #endregion
+        return vr;
+    }
+    #endregion
 
-        #region Casting to List
-        public static List<int> CastToIntList(object[] d)
+    #region Castint to Array - commented, its in used only List
+    //public static int[] CastArrayStringToInt(string[] plemena)
+    //    {
+    //        int[] vr = new int[plemena.Length];
+    //        for (int i = 0; i < plemena.Length; i++)
+    //        {
+    //            vr[i] = int.Parse(plemena[i]);
+    //        }
+    //        return vr;
+    //    }
+
+    //    public static short[] CastArrayStringToShort(List<string> plemena)
+    //    {
+    //        short[] vr = new short[plemena.Count];
+    //        for (int i = 0; i < plemena.Count; i++)
+    //        {
+    //            vr[i] = short.Parse(plemena[i]);
+    //        }
+    //        return vr;
+    //    }
+
+    //    public static string[] CastArrayObjectToString(object[] args)
+    //    {
+    //        string[] vr = new string[args.Length];
+    //        for (int i = 0; i < args.Length; i++)
+    //        {
+    //            vr[i] = args[i].ToString();
+    //        }
+    //        return vr;
+    //    }
+
+
+
+    //public static string[] CastArrayIntToString(int[] args)
+    //    {
+    //        string[] vr = new string[args.Length];
+    //        for (int i = 0; i < args.Length; i++)
+    //        {
+    //            vr[i] = args[i].ToString();
+    //        }
+    //        return vr;
+    //    }
+    #endregion
+
+    #region Casting to List
+    public static List<int> CastToIntList(object[] d)
         {
             List<int> vr = new List<int>();
             foreach (string item in d)
@@ -408,16 +584,22 @@ public static partial class BTS
             }
             return vr;
         }
-        #endregion
+    #endregion
 
-        #region Ostatní
-        /// <summary>
-        /// Rok nezkracuje, počítá se standardním 4 místným
-        /// Produkuje formát standardní s metodou DateTime.ToString()
-        /// </summary>
-        /// <param name="dateTime"></param>
-        /// <returns></returns>
-        public static string SameLenghtAllDateTimes(DateTime dateTime)
+    public static string BoolToStringCs(bool p)
+    {
+        if (p) return "Ano";
+        return "Ne";
+    }
+
+    #region Ostatní
+    /// <summary>
+    /// Rok nezkracuje, počítá se standardním 4 místným
+    /// Produkuje formát standardní s metodou DateTime.ToString()
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <returns></returns>
+    public static string SameLenghtAllDateTimes(DateTime dateTime)
         {
             string year = dateTime.Year.ToString();
             string month = SH.MakeUpToXChars(dateTime.Month, 2);

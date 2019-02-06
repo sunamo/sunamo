@@ -52,6 +52,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName), what));
     }
 
+    public static void MoreThanOneElement(Type type, string methodName, string listName, int count)
+    {
+        ThrowIsNotNull(Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName), listName, count));
+    }
+
     public static void IsNull(object type, string methodName, string variableName, object variable)
     {
         ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName), variableName, variable));

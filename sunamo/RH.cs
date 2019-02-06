@@ -182,6 +182,12 @@ namespace sunamo
         }
         #endregion
 
+        /// <summary>
+        /// A1 have to be selected
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public static string DumpAsString(string name, object o)
         {
             return o.DumpToString(name);

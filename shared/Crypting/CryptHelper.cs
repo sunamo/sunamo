@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// K převodu z a na bajty BT.ConvertFromBytesToUtf8 a BT.ConvertFromUtf8ToBytes
+/// K převodu z a na bajty BTS.ConvertFromBytesToUtf8 a BTS.ConvertFromUtf8ToBytes
 /// </summary>
 public class CryptHelper : ICryptHelper
 {

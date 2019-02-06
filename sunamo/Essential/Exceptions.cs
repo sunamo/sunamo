@@ -72,7 +72,16 @@ using System.Text;
             return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
         }
 
-        public static string NameIsNotSetted(string before, string nameControl, string nameFromProperty)
+    internal static object MoreThanOneElement(string before, string listName, int count)
+    {
+        if (count > 1)
+        {
+            return CheckBefore(before) + listName + " has " + count + " elements, which is more than 1";
+        }
+        return null;
+    }
+
+    public static string NameIsNotSetted(string before, string nameControl, string nameFromProperty)
         {
             if (string.IsNullOrWhiteSpace(nameFromProperty))
             {

@@ -20,7 +20,7 @@ namespace sunamo.Delegates
         {
             input = SH.ReplaceAll(input, "", Consts.numberPoints);
             long l = 0;
-            return BT.Invert( long.TryParse(input, out l), invert);
+            return BTS.Invert( long.TryParse(input, out l), invert);
             
         }
     }

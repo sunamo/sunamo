@@ -19,7 +19,7 @@ using System.Windows.Controls;
     public static IEnumerable<int> CheckedIndexes(List<CheckBox> chbs)
     {
         var indexes = chbs.Select((v, i) => new { v, i })
-                    .Where(x => BT.GetValueOfNullable( x.v.IsChecked))
+                    .Where(x => BTS.GetValueOfNullable( x.v.IsChecked))
                     .Select(x => x.i);
         return indexes;
     }
