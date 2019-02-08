@@ -6,7 +6,7 @@ using System.Text;
 
 namespace sunamo.Html
 {
-    public class HtmlAssistent
+    public class HtmlAssistant
     {
         public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
         {

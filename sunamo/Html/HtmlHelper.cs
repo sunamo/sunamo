@@ -338,7 +338,7 @@ using System.Xml;
     #region Get
     public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
     {
-        return HtmlAssistent.GetValueOfAttribute(p, divMain, trim);
+        return HtmlAssistant.GetValueOfAttribute(p, divMain, trim);
     }
 
         #endregion
@@ -432,7 +432,12 @@ using System.Xml;
             return vr;
         }
 
-        public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
+    /// <summary>
+    /// Have also override with List<HtmlNode>
+    /// </summary>
+    /// <param name="htmlNodeCollection"></param>
+    /// <returns></returns>
+    public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             foreach (var item in htmlNodeCollection)

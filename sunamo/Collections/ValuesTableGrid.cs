@@ -16,12 +16,18 @@ namespace sunamo.Collections
         /// Column - inner - apps 4
         /// </summary>
         private List<List<T>> exists;
+        public List<string> captions;
 
+        /// <summary>
+        /// Must be initialized captions variable
+        /// All rows must be trimmed from \r \n
+        /// </summary>
+        /// <returns></returns>
         public DataTable SwitchRowsAndColumn()
         {
             DataTable newTable = new DataTable();
 
-            newTable.Columns.Add("Field Name");
+            newTable.Columns.Add(string.Empty);
             for (int i = 0; i < exists.Count; i++)
                 newTable.Columns.Add();
 
@@ -29,13 +35,13 @@ namespace sunamo.Collections
             {
                 DataRow newRow = newTable.NewRow();
 
-                newRow[0] = oldTable.Columns[i].Caption;
-                for (int j = 0; j < oldTable.Rows.Count; j++)
-                    newRow[j + 1] = oldTable.Rows[j][i];
+                newRow[0] = captions[i];
+                for (int j = 0; j < exists.Count; j++)
+                    newRow[j + 1] = exists[j][i];
                 newTable.Rows.Add(newRow);
             }
 
-            dataGridView.DataSource = newTable;
+            return newTable;
         }
 
         public ValuesTableGrid(List<List<T>> exists)
