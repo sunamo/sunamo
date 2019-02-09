@@ -165,7 +165,7 @@
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="RA.cs" />
     <Compile Include="StatusHelper.cs" />
-    <Compile Include="sunamo\Pictures.cs" />
+    <Compile Include="sunamo\PicturesShared.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqLite\WebDatabaseLayer.cs" />
     <Compile Include="SunamoJson.cs" />

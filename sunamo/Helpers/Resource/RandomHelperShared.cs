@@ -40,4 +40,21 @@ public static partial class RandomHelper
         int nt = RandomInt(ppk.Count);
         return ppk[nt].ToString();
     }
+
+/// <summary>
+    /// Vrac� ��slo od A1 do A2-1
+    /// </summary>
+    /// <param name="od"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
+    public static int RandomInt2(int od, int to)
+    {
+        return rnd.Next(od, to);
+    }
+
+public static string RandomElementOfArray(Array ppk)
+    {
+        int nt = RandomInt(ppk.Length);
+        return ppk.GetValue(nt).ToString();
+    }
 }

@@ -8,6 +8,9 @@ public static partial class SH
 {
     public const String diacritic = "áčďéěíňóšťúůýřžÁČĎÉĚÍŇÓŠŤÚŮÝŘŽ";
 
+
+    
+
     /// <summary>
     /// This can be only one 
     /// </summary>
@@ -106,6 +109,11 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
+    public static List<string> Split(string parametry, char v)
+    {
+        return Split(parametry, v.ToString());
+    }
+
     /// <summary>
     /// In difference with ReplaceAll2, A3 is params
     /// </summary>
@@ -116,7 +124,6 @@ public static partial class SH
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
 
-        #region Toto nefungovalo
         for (int i = 0; i < co.Length; i++)
         {
             string what = co[i];
@@ -128,7 +135,6 @@ public static partial class SH
             }
         }
         return vstup;
-        #endregion
     }
 
     public static string ReplaceByIndex(string s, string zaCo, int v, int length)
@@ -194,8 +200,6 @@ public static partial class SH
 
     private static string ShortForLettersCount(string p, int p_2, out bool pridatTriTecky)
     {
-        #region MyRegion
-        #endregion
 
         pridatTriTecky = false;
         // Vše tu funguje výborně
@@ -268,8 +272,6 @@ public static partial class SH
 
     public static string ReplaceOnce(string input, string what, string zaco)
     {
-        #region Varianta #1 - pomocí Regexu
-        #endregion
 
         if (input.Contains("na rozdíl od 4"))
         {
@@ -281,14 +283,12 @@ public static partial class SH
             return input;
         }
 
-        #region Varianta #2 - údajně rychlejší podle SO
         int pos = input.IndexOf(what);
         if (pos == -1)
         {
             return input;
         }
         return input.Substring(0, pos) + zaco + input.Substring(pos + what.Length);
-        #endregion
     }
 
     /// <summary>
@@ -304,4 +304,275 @@ public static partial class SH
 
 
 
+
+public static string Format(string status, params object[] args)
+    {
+        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
+        {
+            return status;
+        }
+        else
+        {
+            try
+            {
+                return string.Format(status, args);
+            }
+            catch (Exception)
+            {
+                return status;
+                
+            }
+        }
+    }
+/// <summary>
+    /// Cannot be use on existing code - will corrupt them
+    /// </summary>
+    /// <param name="templateHandler"></param>
+    /// <param name="lsf"></param>
+    /// <param name="rsf"></param>
+    /// <param name="id"></param>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
+    {
+        var result = SH.Format(templateHandler, args);
+        const string replacement = "{        }";
+        result = SH.ReplaceAll2(result, replacement, "[]");
+        result = SH.ReplaceAll2(result, "{", lsf);
+        result = SH.ReplaceAll2(result, "}", rsf);
+        result = SH.ReplaceAll2(result, replacement, "{}");
+        return result;
+    }
+
+/// <summary>
+    /// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <param name="zaCo"></param>
+    /// <param name="co"></param>
+    /// <returns></returns>
+    public static string ReplaceAll2(string vstup, string zaCo, string co)
+    {
+        // needed, otherwise stack overflow
+
+        if (zaCo.Contains(co))
+        {
+            throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
+        }
+        if (co == zaCo)
+        {
+            throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
+        }
+        while (vstup.Contains(co))
+        {
+            vstup = vstup.Replace(co, zaCo);
+        }
+
+        return vstup;
+    }
+
+/// <summary>
+    /// Whether A1 contains any from a3. if a2 and A3 contains only 1 element, check for contains these first element
+    /// Return elements from A3 which is contained
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="hasFirstEmptyLength"></param>
+    /// <param name="contains"></param>
+    /// <returns></returns>
+    public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, IEnumerable<string> contains)
+    {
+        List<string>  founded = new List<string>();
+
+        bool hasLine = false;
+        if (contains.Count() == 1 && checkInCaseOnlyOneString)
+        {
+                hasLine = item.Contains(contains.ToList()[0]);
+        }
+        else
+        {
+            foreach (var c in contains)
+            {
+                if (item.Contains(c))
+                {
+                    hasLine = true;
+                    founded.Add(c);
+                }
+            }
+        }
+
+        return founded;
+    }
+
+
+    public static string JoinNL(IEnumerable parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+public static string JoinNL(params string[] parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+
+public static bool ContainsVariable( string innerHtml)
+    {
+        return ContainsVariable('{', '}', innerHtml);
+    }
+public static bool ContainsVariable(char p, char k, string innerHtml)
+    {
+        if (string.IsNullOrEmpty(innerHtml))
+        {
+            return false;
+        }
+        StringBuilder sbNepridano = new StringBuilder();
+        StringBuilder sbPridano = new StringBuilder();
+        bool inVariable = false;
+
+        foreach (var item in innerHtml)
+        {
+            if (item == p)
+            {
+                inVariable = true;
+                continue;
+            }
+            else if (item == k)
+            {
+                if (inVariable)
+                {
+                    inVariable = false;
+                }
+                int nt = 0;
+                if (int.TryParse(sbNepridano.ToString(), out nt))
+                {
+                    return true;
+                }
+                else
+                {
+                    sbPridano.Append(p + sbNepridano.ToString() + k);
+                }
+                sbNepridano.Clear();
+            }
+            else if (inVariable)
+            {
+                sbNepridano.Append(item);
+            }
+            else
+            {
+                sbPridano.Append(item);
+            }
+        }
+        return false;
+    }
+
+public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
+    {
+        return ReplaceVariables('{', '}', innerHtml, _dataBinding, actualRow);
+    }
+public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
+    {
+        StringBuilder sbNepridano = new StringBuilder();
+        StringBuilder sbPridano = new StringBuilder();
+        bool inVariable = false;
+
+        foreach (var item in innerHtml)
+        {
+            if (item == p)
+            {
+                inVariable = true;
+                continue;
+            }
+            else if (item == k)
+            {
+                if (inVariable)
+                {
+                    inVariable = false;
+                }
+                int nt = 0;
+                if (int.TryParse(sbNepridano.ToString(), out nt))
+                {
+                    
+                    // Zde přidat nahrazenou proměnnou
+                    string v = _dataBinding[nt][actualRow];
+                    sbPridano.Append(v);
+                }
+                else
+                {
+                    sbPridano.Append(p + sbNepridano.ToString() + k);
+                }
+                sbNepridano.Clear();
+            }
+            else if (inVariable)
+            {
+                sbNepridano.Append(item);
+            }
+            else
+            {
+                sbPridano.Append(item);
+            }
+        }
+        return sbPridano.ToString();
+    }
+
+
+
+public static List<int> GetVariablesInString(string innerHtml)
+    {
+        return GetVariablesInString('{', '}', innerHtml);
+    }
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ret"></param>
+    /// <param name="pocetDo"></param>
+    /// <returns></returns>
+    public static List<int> GetVariablesInString(char p, char k, string innerHtml)
+    {
+        /// Vrátí mi formáty, které jsou v A1 od 0 do A2-1
+        /// A1={0} {2} {3} A2=3 G=0,2
+
+        List<int> vr = new List<int>();
+        StringBuilder sbNepridano = new StringBuilder();
+        //StringBuilder sbPridano = new StringBuilder();
+        bool inVariable = false;
+
+        foreach (var item in innerHtml)
+        {
+            if (item == p)
+            {
+                inVariable = true;
+                continue;
+            }
+            else if (item == k)
+            {
+                if (inVariable)
+                {
+                    inVariable = false;
+                }
+                int nt = 0;
+                if (int.TryParse(sbNepridano.ToString(), out nt))
+                {
+                    vr.Add(nt);
+                }
+                
+                sbNepridano.Clear();
+            }
+            else if (inVariable)
+            {
+                sbNepridano.Append(item);
+            }
+        }
+        return vr;
+    }
+
+/// <summary>
+    /// Really return list, for string join value
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="p2"></param>
+    /// <returns></returns>
+    public static List<string> RemoveDuplicates(string input, string delimiter)
+    {
+        var split = SH.Split(input, delimiter);
+        return CA.RemoveDuplicitiesList(new List<string>(split));
+    }
 }

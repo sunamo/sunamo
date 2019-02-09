@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
+      <Project>{b5a43071-45f0-4f14-8513-466c67cf8806}</Project>
+      <Name>sunamo.web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -171,4 +171,58 @@ public partial class FS
     {
         return OnlyNamesWithoutExtension(new List<string>(p)).ToArray();
     }
+
+/// <summary>
+        /// Vrátí cestu a název souboru s ext
+        /// </summary>
+        /// <param name="fn"></param>
+        /// <param name="path"></param>
+        /// <param name="file"></param>
+        public static void GetPathAndFileName(string fn, out string path, out string file)
+        {
+            path = FS.GetDirectoryName(fn);
+            file = Path.GetFileName(fn);
+        }
+/// <summary>
+        /// Vrátí cestu a název souboru s ext a ext
+        /// </summary>
+        /// <param name="fn"></param>
+        /// <param name="path"></param>
+        /// <param name="file"></param>
+        /// <param name="ext"></param>
+        public static void GetPathAndFileName(string fn, out string path, out string file, out string ext)
+        {
+            path = FS.GetDirectoryName(fn) + AllChars.bs;
+            file = Path.GetFileName(fn);
+            ext = FS.GetExtension(file);
+        }
+
+/// <summary>
+        /// ALL EXT. HAVE TO BE ALWAYS LOWER
+        /// Return in lowercase
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static string GetExtension(string v)
+        {
+            string result = "";
+            int lastDot = v.LastIndexOf('.');
+            if (lastDot == -1)
+            {
+                return string.Empty;
+            }
+            int lastSlash = v.LastIndexOf(AllChars.slash);
+            int lastBs = v.LastIndexOf(AllChars.bs);
+            if (lastSlash > lastDot)
+            {
+                return string.Empty;
+            }
+            if (lastBs > lastDot)
+            {
+                return string.Empty;
+            }
+            result = v.Substring(lastDot).ToLower();
+
+            return result;
+        }
 }

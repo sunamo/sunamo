@@ -455,7 +455,7 @@ namespace shared
         {
             string fnOri = Path.GetFileName(arg);
             string ext = "";
-            if (sunamo.Pictures.GetImageFormatFromExtension1(fnOri, out ext))
+            if (PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
             {
                 float y = (height - img.Height);
                 float x = (width - img.Width);
@@ -514,7 +514,7 @@ namespace shared
                         newHeight *= .9f;
                     }
                     string temp = finalPath;
-                    imgArg = Pictures.ImageResize(img, (int)newWidth, (int)newHeight, sunamo.Pictures.GetImageFormatsFromExtension(arg));
+                    imgArg = Pictures.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension(arg));
                     if (imgArg != null)
                     {
 
@@ -586,7 +586,7 @@ namespace shared
 
 
             string temp = finalPath;
-            System.Drawing.Image img2 = Pictures.ImageResize(args[i].image, (int)innerWidth, (int)innerHeight, sunamo.Pictures.GetImageFormatsFromExtension(args[i].path));
+            System.Drawing.Image img2 = Pictures.ImageResize(args[i].image, (int)innerWidth, (int)innerHeight, PicturesSunamo.GetImageFormatsFromExtension(args[i].path));
             if (img2 != null)
             {
                 #region MyRegion

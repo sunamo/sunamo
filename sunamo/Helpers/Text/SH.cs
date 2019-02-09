@@ -83,25 +83,7 @@ public static partial class SH
         return SH.TrimEnd( sb.ToString(), delimAfter);
     }
 
-    public static string Format(string status, params object[] args)
-    {
-        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
-        {
-            return status;
-        }
-        else
-        {
-            try
-            {
-                return string.Format(status, args);
-            }
-            catch (Exception)
-            {
-                return status;
-                
-            }
-        }
-    }
+
 
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
     {
@@ -219,27 +201,6 @@ public static partial class SH
         }
 
         return hasLine;
-    }
-
-    /// <summary>
-    /// Cannot be use on existing code - will corrupt them
-    /// </summary>
-    /// <param name="templateHandler"></param>
-    /// <param name="lsf"></param>
-    /// <param name="rsf"></param>
-    /// <param name="id"></param>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
-    {
-        var result = SH.Format(templateHandler, args);
-        const string replacement = "{        }";
-        result = SH.ReplaceAll2(result, replacement, "[]");
-        result = SH.ReplaceAll2(result, "{", lsf);
-        result = SH.ReplaceAll2(result, "}", rsf);
-        result = SH.ReplaceAll2(result, replacement, "{}");
-        return result;
     }
 
     public static string PostfixIfNotEmpty(string text, string postfix)
@@ -433,38 +394,6 @@ public static partial class SH
         }
 
         return true;
-    }
-
-    /// <summary>
-    /// Whether A1 contains any from a3. if a2 and A3 contains only 1 element, check for contains these first element
-    /// Return elements from A3 which is contained
-    /// </summary>
-    /// <param name="item"></param>
-    /// <param name="hasFirstEmptyLength"></param>
-    /// <param name="contains"></param>
-    /// <returns></returns>
-    public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, IEnumerable<string> contains)
-    {
-        List<string>  founded = new List<string>();
-
-        bool hasLine = false;
-        if (contains.Count() == 1 && checkInCaseOnlyOneString)
-        {
-                hasLine = item.Contains(contains.ToList()[0]);
-        }
-        else
-        {
-            foreach (var c in contains)
-            {
-                if (item.Contains(c))
-                {
-                    hasLine = true;
-                    founded.Add(c);
-                }
-            }
-        }
-
-        return founded;
     }
 
     public static bool ContainsAll(string input, IEnumerable<string> allWords)
@@ -1337,7 +1266,6 @@ public static partial class SH
         //indexyDelimiteru.OrderBy(d => d);
         indexyDelimiteru.Sort();
         var s = SH.Split(what, deli);
-        #region Pokud bude mít A1 méně částí než A2, vratí nenalezené části jako SE
         if (s.Count < parts)
         {
             //throw new Exception("");
@@ -1367,11 +1295,9 @@ public static partial class SH
         {
             return s;
         }
-        #endregion
 
 
 
-        #region old
         int parts2 = s.Count - parts - 1;
         //parts += povysit;
         if (parts < s.Count - 1)
@@ -1395,7 +1321,6 @@ public static partial class SH
         }
         vr[0] = s[0] + what[indexyDelimiteru[0]].ToString() + vr[0];
         return vr;
-        #endregion
     }
 
     public static string WrapWithIf(string value, string v, Func<string, string, bool> f)
@@ -1870,7 +1795,11 @@ public static partial class SH
 
     }
 
-    #region Split
+    public static List<string> Split(string text, params char[] deli)
+    {
+        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
+    }
+
     /// <summary>
     /// With these 
     /// </summary>
@@ -1895,10 +1824,7 @@ public static partial class SH
         return text.Split(deli, stringSplitOptions);
     }
 
-    public static List<string> Split(string text, params char[] deli)
-    {
-        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
-    }
+    
 
     public static string JoinTimes(int times, string dds)
     {
@@ -1916,7 +1842,6 @@ public static partial class SH
     {
         return Split(StringSplitOptions.None, text, deli);
     }
-    #endregion
 
     /// <summary>
     /// Use with general letters
@@ -2208,35 +2133,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-    /// <summary>
-    /// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
-    /// </summary>
-    /// <param name="vstup"></param>
-    /// <param name="zaCo"></param>
-    /// <param name="co"></param>
-    /// <returns></returns>
-    public static string ReplaceAll2(string vstup, string zaCo, string co)
-    {
-        // needed, otherwise stack overflow
-
-        if (zaCo.Contains(co))
-        {
-            throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
-        }
-        if (co == zaCo)
-        {
-            throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
-        }
-        while (vstup.Contains(co))
-        {
-            vstup = vstup.Replace(co, zaCo);
-        }
-
-        return vstup;
-    }
-
-    
-
     public static string GetOddIndexesOfWord(string hash)
     {
         int polovina = hash.Length / 2;
@@ -2249,159 +2145,6 @@ public static partial class SH
             sb.Append(hash[i]);
         }
         return sb.ToString();
-    }
-
-    public static List<int> GetVariablesInString(string innerHtml)
-    {
-        return GetVariablesInString('{', '}', innerHtml);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="ret"></param>
-    /// <param name="pocetDo"></param>
-    /// <returns></returns>
-    public static List<int> GetVariablesInString(char p, char k, string innerHtml)
-    {
-        #region Původní metoda
-        /// Vrátí mi formáty, které jsou v A1 od 0 do A2-1
-        /// A1={0} {2} {3} A2=3 G=0,2
-        #endregion
-
-        List<int> vr = new List<int>();
-        StringBuilder sbNepridano = new StringBuilder();
-        //StringBuilder sbPridano = new StringBuilder();
-        bool inVariable = false;
-
-        foreach (var item in innerHtml)
-        {
-            if (item == p)
-            {
-                inVariable = true;
-                continue;
-            }
-            else if (item == k)
-            {
-                if (inVariable)
-                {
-                    inVariable = false;
-                }
-                int nt = 0;
-                if (int.TryParse(sbNepridano.ToString(), out nt))
-                {
-                    vr.Add(nt);
-                }
-                
-                sbNepridano.Clear();
-            }
-            else if (inVariable)
-            {
-                sbNepridano.Append(item);
-            }
-        }
-        return vr;
-    }
-
-    public static bool ContainsVariable( string innerHtml)
-    {
-        return ContainsVariable('{', '}', innerHtml);
-    }
-
-    public static bool ContainsVariable(char p, char k, string innerHtml)
-    {
-        if (string.IsNullOrEmpty(innerHtml))
-        {
-            return false;
-        }
-        StringBuilder sbNepridano = new StringBuilder();
-        StringBuilder sbPridano = new StringBuilder();
-        bool inVariable = false;
-
-        foreach (var item in innerHtml)
-        {
-            if (item == p)
-            {
-                inVariable = true;
-                continue;
-            }
-            else if (item == k)
-            {
-                if (inVariable)
-                {
-                    inVariable = false;
-                }
-                int nt = 0;
-                if (int.TryParse(sbNepridano.ToString(), out nt))
-                {
-                    return true;
-                }
-                else
-                {
-                    sbPridano.Append(p + sbNepridano.ToString() + k);
-                }
-                sbNepridano.Clear();
-            }
-            else if (inVariable)
-            {
-                sbNepridano.Append(item);
-            }
-            else
-            {
-                sbPridano.Append(item);
-            }
-        }
-        return false;
-    }
-
-    public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
-    {
-        return ReplaceVariables('{', '}', innerHtml, _dataBinding, actualRow);
-    }
-
-    public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
-    {
-        StringBuilder sbNepridano = new StringBuilder();
-        StringBuilder sbPridano = new StringBuilder();
-        bool inVariable = false;
-
-        foreach (var item in innerHtml)
-        {
-            if (item == p)
-            {
-                inVariable = true;
-                continue;
-            }
-            else if (item == k)
-            {
-                if (inVariable)
-                {
-                    inVariable = false;
-                }
-                int nt = 0;
-                if (int.TryParse(sbNepridano.ToString(), out nt))
-                {
-                    
-                    // Zde přidat nahrazenou proměnnou
-                    string v = _dataBinding[nt][actualRow];
-                    sbPridano.Append(v);
-                }
-                else
-                {
-                    sbPridano.Append(p + sbNepridano.ToString() + k);
-                }
-                sbNepridano.Clear();
-            }
-            else if (inVariable)
-            {
-                sbNepridano.Append(item);
-            }
-            else
-            {
-                sbPridano.Append(item);
-            }
-        }
-        return sbPridano.ToString();
     }
 
     public static string MakeUpToXChars(int p, int p_2)
@@ -2644,19 +2387,6 @@ public static partial class SH
             }
         }
         return vr;
-    }
-
-    
-    /// <summary>
-    /// Really return list, for string join value
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="p2"></param>
-    /// <returns></returns>
-    public static List<string> RemoveDuplicates(string input, string delimiter)
-    {
-        var split = SH.Split(input, delimiter);
-        return CA.RemoveDuplicitiesList(new List<string>(split));
     }
 
     public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
@@ -2932,30 +2662,21 @@ public static partial class SH
         return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
 
-    #region Join - its chaos in it, previous interface
-    #region Join
     //public static string JoinStringParams(string name, params string[] labels) { return null; }
     //public static string JoinStringParams(object delimiter, params string[] parts) { return null; }
     //public static string JoinPairs(params object[] args){return null;} 
-    #endregion
 
-    #region Join - Delete after all solutions working
     //public static string JoinString(object delimiter, IEnumerable parts){return null;}
     //public static string Join(IEnumerable parts, object delimiter){return null;}
     //public static string JoinIEnumerable(object delimiter, IEnumerable parts){return null;}
-    #endregion Join - Delete after all solutions working
 
-    #region Join
     //public static string Join(char p, IList vsechnyFotkyVAlbu){return null;}
     //public static string Join(char p, int[] vsechnyFotkyVAlbu){return null;}
     //public static string Join(char name, params object[] labels){return null;}
     //public static string Join(List<string> labels, char name){return null;}
-    #endregion
 
-    #region JoinNL
     //public static string JoinNL(IEnumerable p){return null;}
     //public static string JoinNL(params string[] p){return null;}
-    #endregion
 
     //public static string JoinSpace(IEnumerable<string> nazev){return null;}
     //public static string JoinString(string name, IEnumerable labels){return null;}
@@ -2969,9 +2690,7 @@ public static partial class SH
     //public static string JoinToIndex(int dex, string delimiter, IEnumerable<string> parts){return null;}
     //public static string JoinMakeUpTo2NumbersToZero(char p, params int[] args){return null;}
     //public static string JoinDictionary(Dictionary<string, string> dictionary, string v){return null;} 
-    #endregion
 
-    #region Join
     /* Result of refactoring Join methods:
      * params have only two:
      * Join
@@ -2987,7 +2706,6 @@ public static partial class SH
         return Join(delimiter, CA.ToEnumerable( parts));
     }
 
-    #region Join - Delete after all solutions working
     
 
     
@@ -3013,7 +2731,6 @@ public static partial class SH
     // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
 
     
-    #endregion
 
     /// <summary>
     /// If element will be number, wont wrap with qm.
@@ -3027,7 +2744,6 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
-    #region With special inputs collections
     public static string JoinStringExceptIndexes(object delimiter, IEnumerable parts, params int[] v2)
     {
         string s = delimiter.ToString();
@@ -3054,7 +2770,6 @@ public static partial class SH
         //return d;
     }
 
-    #region From to index
     /// <summary>
     /// Ořeže poslední znak - delimiter
     /// </summary>
@@ -3104,29 +2819,15 @@ public static partial class SH
         string vr = sb.ToString();
         return vr.Substring(0, vr.Length - 1);
     }
-    #endregion 
-    #endregion
 
-    #region Join with fixed letter
-    #region JoinNL
-    public static string JoinNL(IEnumerable parts)
-    {
-        return SH.JoinString(Environment.NewLine, parts);
-    }
 
-    public static string JoinNL(params string[] parts)
-    {
-        return SH.JoinString(Environment.NewLine, parts);
-    }
-    #endregion
+
 
     public static string JoinSpace(IEnumerable parts)
     {
         return SH.JoinString(AllStrings.space, parts);
     }
-    #endregion
 
-    #region Pairs, Dictionary
     public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
     {
         StringBuilder sb = new StringBuilder();
@@ -3155,9 +2856,7 @@ public static partial class SH
         }
         return sb.ToString();
     }
-    #endregion
 
-    #region Only with numbers
     public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
     {
         List<string> na2Cislice = new List<string>();
@@ -3167,7 +2866,6 @@ public static partial class SH
         }
         return JoinIEnumerable(p, na2Cislice);
     } 
-    #endregion
 
     public static string JoinWithoutTrim(object p, IList parts)
     {
@@ -3184,5 +2882,4 @@ public static partial class SH
         // TODO: Delete after making all solutions working
         return JoinWithoutTrim(name, parts);
     }
-    #endregion
 }

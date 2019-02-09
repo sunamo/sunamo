@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.WindowsAPICodePack.Dialogs;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
@@ -111,24 +112,31 @@ namespace sunamo
         /// </summary>
         /// <param name="rootFolder"></param>
         /// <returns></returns>
-        public static string SelectOfFolder(Environment.SpecialFolder rootFolder)
+        public static string SelectOfFolder(string rootFolder)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Vyberte si slozku";
-            // Here is available set this only way
-            fbd.RootFolder = rootFolder;
-            fbd.ShowNewFolderButton = true;
+            CommonOpenFileDialog fbd = new CommonOpenFileDialog();
 
-            if (fbd.ShowDialog() == DialogResult.OK)
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Title = "Select the folder";
+            // Here is available set this only way
+            fbd.IsFolderPicker = true;
+            fbd.InitialDirectory = rootFolder;
+
+            if (fbd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                return fbd.SelectedPath;
+                return fbd.FileName;
             }
 
             return null;
         }
+
+        public static string SelectOfFolder(Environment.SpecialFolder rootFolder)
+        {
+            return SelectOfFolder(Environment.GetFolderPath(rootFolder));
+        }
 #endregion
 
-#region SelectOfFile
+        #region SelectOfFile
         /// <summary>
         /// Filter is set do default - PP filterDefault
         /// InitialFolder is MyDocuments

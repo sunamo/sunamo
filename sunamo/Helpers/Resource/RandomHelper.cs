@@ -36,8 +36,6 @@ public static partial class RandomHelper
         vsZnakyWithoutSpecial.AddRange(AllChars.numericChars);
         vsZnakyWithoutSpecial.AddRange(AllChars.upperChars);
         
-        #region Generov�ni postaru
-        #endregion
     }
 
     public static IntPtr RandomIntPtr()
@@ -47,7 +45,6 @@ public static partial class RandomHelper
     }
 
     
-    #region Gen. nahodnych posloupnosti - jen pro vitrni potreby. Pro praci s poli je v T KolekcePole
     public static byte[] RandomBytes(int kolik)
     {
         byte[] b = new byte[kolik];
@@ -228,15 +225,6 @@ public static partial class RandomHelper
         return bool.Parse(pars);
     }
 
-    
-
-    public static string RandomElementOfArray(Array ppk)
-    {
-        int nt = RandomInt(ppk.Length);
-        return ppk.GetValue(nt).ToString();
-    }
-    #endregion
-
     public static List<string> RandomElementsOfCollection(IList sou, int pol)
     {
         List<string> vr = new List<string>();
@@ -247,16 +235,6 @@ public static partial class RandomHelper
         return vr;
     }
 
-    /// <summary>
-    /// Vrac� ��slo od A1 do A2-1
-    /// </summary>
-    /// <param name="od"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static int RandomInt2(int od, int to)
-    {
-        return rnd.Next(od, to);
-    }
 
     /// <summary>
     /// A1 je po�et ��sel p�ed des. ��rkou. Pokud bude men�� ne� 7, automaticky se dopln� i ��sla za desetinnou ��rku.
@@ -341,5 +319,3 @@ public static partial class RandomHelper
         return RandomFloat(1, 1, 0);
     }
 }
-
-

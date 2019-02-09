@@ -13,8 +13,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Hosting;
 using sunamo;
-using shared.Extensions;
-using sunamo.Essential;
 
 public class GeneralHelper
 {

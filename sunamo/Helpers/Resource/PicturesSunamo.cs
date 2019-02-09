@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo
-{
-    public class Pictures
+    public partial class PicturesSunamo
     {
+
+
         static string[] supportedExtensionForResize = new string[] {
         "png", "jpg", "jpeg", "gif"
     };
@@ -18,7 +18,7 @@ namespace sunamo
         {
             ext = FS.GetExtension(filePath).TrimStart('.').ToLower();
 
-            if (Pictures.IsSupportedResizeForExtension(ext))
+            if (PicturesSunamo.IsSupportedResizeForExtension(ext))
             {
                 return true;
             }
@@ -74,27 +74,4 @@ namespace sunamo
 
             return vr;
         }
-
-        /// <summary>
-        /// Vypočte optimální šířku v případě že obrázek je postaven na výšku.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="p_2"></param>
-        /// <param name="p_3"></param>
-        /// <returns></returns>
-        public static SunamoSize CalculateOptimalSizeHeight(int width, int height, int maxHeight)
-        {
-            SunamoSize vr = new SunamoSize(width, height);
-            int vyskaSloupce = maxHeight;
-            if (height > vyskaSloupce)
-            {
-                vr.Height = vyskaSloupce;
-
-                // mohl by ses ještě rozhodovat jestli round, nebo floor, nebo ceil
-                vr.Width = vyskaSloupce * width / height;
-            }
-
-            return vr;
-        }
     }
-}

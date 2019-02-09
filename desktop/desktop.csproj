@@ -222,7 +222,7 @@
     <Compile Include="Helpers\Controls\MenuItemHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
-    <Compile Include="Helpers\Pictures.cs" />
+    <Compile Include="Helpers\PicturesDesktop.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />

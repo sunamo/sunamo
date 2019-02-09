@@ -148,7 +148,7 @@
     <Compile Include="Helpers\OPH.cs" />
     <Compile Include="Helpers\SDH.cs" />
     <Compile Include="PH.cs" />
-    <Compile Include="Pictures.cs" />
+    <Compile Include="PicturesForms.cs" />
     <Compile Include="SearchingInLBWF.cs" />
     <Compile Include="Helpers\TBH.cs" />
     <Compile Include="Helpers\TSBH.cs" />

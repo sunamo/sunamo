@@ -44,7 +44,11 @@ public partial class FS
 
         public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace)
         {
-            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files, useSimpleReplace);
+        var from2 = SH.Split(from, Environment.NewLine);
+        var to2 = SH.Split(to, Environment.NewLine);
+        ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+
+            ReplaceInAllFiles(from2, to2, files, useSimpleReplace);
         }
 
         /// <summary>
@@ -64,8 +68,6 @@ public partial class FS
             FS.CreateDirectoryIfNotExists(outputFolder);
             return FS.Combine( outputFolder, Path.GetFileName(item));
         }
-
-        
 
         /// <summary>
         /// In key are just filename, in value full path to all files 
@@ -266,7 +268,6 @@ public partial class FS
             return folders;
         }
 
-        #region Create to avoid adding System.IO and using without ns colliding
         /// <summary>
         /// Without path
         /// </summary>
@@ -311,35 +312,6 @@ public partial class FS
         }
 
         /// <summary>
-        /// ALL EXT. HAVE TO BE ALWAYS LOWER
-        /// Return in lowercase
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static string GetExtension(string v)
-        {
-            string result = "";
-            int lastDot = v.LastIndexOf('.');
-            if (lastDot == -1)
-            {
-                return string.Empty;
-            }
-            int lastSlash = v.LastIndexOf(AllChars.slash);
-            int lastBs = v.LastIndexOf(AllChars.bs);
-            if (lastSlash > lastDot)
-            {
-                return string.Empty;
-            }
-            if (lastBs > lastDot)
-            {
-                return string.Empty;
-            }
-            result = v.Substring(lastDot).ToLower();
-
-            return result;
-        }
-
-        /// <summary>
         /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
         /// if have more extension, remove just one
         /// </summary>
@@ -351,10 +323,8 @@ public partial class FS
         }
 
 
-        #endregion
 
 
-        #region Methods to avoid adding System.IO - often is colliding with other
         /// <summary>
         /// All occurences Path's method in sunamo replaced
         /// </summary>
@@ -407,7 +377,6 @@ public partial class FS
                 Directory.CreateDirectory(v);
             }
         }
-        #endregion
 
 
 
@@ -1793,32 +1762,6 @@ public partial class FS
                 message = ex.Message;
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Vrátí cestu a název souboru s ext
-        /// </summary>
-        /// <param name="fn"></param>
-        /// <param name="path"></param>
-        /// <param name="file"></param>
-        public static void GetPathAndFileName(string fn, out string path, out string file)
-        {
-            path = FS.GetDirectoryName(fn);
-            file = Path.GetFileName(fn);
-        }
-
-        /// <summary>
-        /// Vrátí cestu a název souboru s ext a ext
-        /// </summary>
-        /// <param name="fn"></param>
-        /// <param name="path"></param>
-        /// <param name="file"></param>
-        /// <param name="ext"></param>
-        public static void GetPathAndFileName(string fn, out string path, out string file, out string ext)
-        {
-            path = FS.GetDirectoryName(fn) + AllChars.bs;
-            file = Path.GetFileName(fn);
-            ext = FS.GetExtension(file);
         }
 
         /// <summary>

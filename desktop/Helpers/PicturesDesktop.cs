@@ -55,13 +55,6 @@ namespace desktop
             return newImage;
         }
 
-		//public static System.Drawing.Icon ConvertToIcon(string p)
-  //      {
-  //          BitmapImage bi = new BitmapImage(new Uri(p));
-  //          System.Drawing.Bitmap b = shared.Pictures.BitmapImage2Bitmap(bi);
-  //          return forms.Pictures.ConvertToIcon(b);
-  //      }
-
 		public static Bitmap BitmapImage2Bitmap(BitmapSource bitmapImage)
         {
             using (MemoryStream outStream = new MemoryStream())
@@ -75,7 +68,6 @@ namespace desktop
                 return new Bitmap(bitmap);
             }
         }
-
 
         #region Mono
         #region Již v CreateW10AppGraphics - několik PlaceToCenter metod
@@ -195,7 +187,7 @@ namespace desktop
 
             string fnOri = Path.GetFileName(arg);
             string ext = "";
-            if (sunamo.Pictures.GetImageFormatFromExtension1(fnOri, out ext))
+            if (PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
             {
                 double h2 = bmp2.Height;
                 double w2 = bmp2.Width;
@@ -299,7 +291,7 @@ namespace desktop
                 {
                     ts16 = true;
                     //vr = shared.Pictures.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, true);
-                    vr = Pictures.ImageResize(bi, width, height, 0, 0, sunamo.Pictures.GetImageFormatsFromExtension(bi), true);
+                    vr = Pictures.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
                     vr = CreateBitmapSource(vr.PixelWidth, vr.PixelHeight, paddingLeftRight, paddingTopBottom, bi, vr, true);
                 }
                 else if (path.Contains("targetsize"))
@@ -315,7 +307,7 @@ namespace desktop
             {
 
 
-                vr = Pictures.ImageResize(bi, width, height, 0, 0, sunamo.Pictures.GetImageFormatsFromExtension(bi), true);
+                vr = Pictures.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
                 vr = CreateBitmapSource(vr.PixelWidth, vr.PixelHeight, 0, 0, bi, vr);
 
             }
@@ -360,7 +352,7 @@ namespace desktop
             double newHeight = height;
             double innerWidth = arg.image.Width;
             double innerHeight = arg.image.Height;
-            var img2 = Pictures.ImageResize(arg.path, minWidthImage, minHeightImage, 0, 0, sunamo.Pictures.GetImageFormatsFromExtension(arg.path), useAtA1PixelSize);
+            var img2 = Pictures.ImageResize(arg.path, minWidthImage, minHeightImage, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(arg.path), useAtA1PixelSize);
             BitmapSource bi = null;
             //bi = img2;
             if (true && img2 != null)
