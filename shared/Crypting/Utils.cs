@@ -28,7 +28,7 @@ namespace shared.Crypting
             StringBuilder sb = new StringBuilder();
             foreach (byte b in ba)
             {
-                sb.Append(SH.Format(HexFormat, b));
+                sb.Append(SH.Format2(HexFormat, b));
             }
             return sb.ToString();
         }
@@ -141,7 +141,7 @@ namespace shared.Crypting
         public static string WriteConfigKey(string key, string value)
         {
             string s = "<add key=\"{0}\" value=\"{1}\" />" + Environment.NewLine;
-            return SH.Format(s, key, value);
+            return SH.Format2(s, key, value);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace shared.Crypting
         public static string WriteXmlElement(string element, string value)
         {
             string s = "<{0}>{1}</{0}>" + Environment.NewLine;
-            return SH.Format(s, element, value);
+            return SH.Format2(s, element, value);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace shared.Crypting
             {
                 s = "<{0}>" + Environment.NewLine;
             }
-            return SH.Format(s, element);
+            return SH.Format2(s, element);
         }
 
     }

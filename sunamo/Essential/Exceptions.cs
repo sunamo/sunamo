@@ -36,7 +36,7 @@ using System.Text;
 
         public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)
         {
-            return SH.Format("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
+            return SH.Format2("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
         }
 
         public static string HaveAllInnerSameCount(string before, List<List<string>> elements)
@@ -187,6 +187,15 @@ using System.Text;
     internal static object Custom(string before, string message)
     {
         return CheckBefore(before) + message;
+    }
+
+    internal static object ElementWasntRemoved(string before, string detailLocation, int before2, int after)
+    {
+        if (before2 == after)
+        {
+            return CheckBefore(before) + "Element wasnt removed during: " + detailLocation;
+        }
+        return null;
     }
 
     internal static string NotContains(string before, string originalText, params string[] shouldContains)

@@ -22,6 +22,7 @@ namespace sunamo
             ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
             bool modifierPresent = modifierInt > 0;
 
+            // Tady v Keyboard.IsKeyUp to prochází jakémkoliv textu
             bool result = Keyboard.IsKeyUp(key) && modifierPresent;
             return result;
         }

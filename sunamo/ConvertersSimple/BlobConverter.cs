@@ -21,7 +21,7 @@ namespace sunamo
             StringBuilder sb = new StringBuilder();
             foreach (byte b in ba)
             {
-                sb.Append(SH.Format(HexFormat, b));
+                sb.Append(SH.Format2(HexFormat, b));
             }
             return "X'" + sb.ToString() + "'";
         }

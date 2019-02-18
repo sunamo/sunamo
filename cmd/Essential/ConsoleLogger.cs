@@ -19,7 +19,7 @@ namespace cmd.Essential
         {
             SetColorOfConsole(tz);
             
-            Console.WriteLine(SH.Format( text, args));
+            Console.WriteLine(SH.Format2( text, args));
             SetColorOfConsole(TypeOfMessage.Ordinal);
         }
 

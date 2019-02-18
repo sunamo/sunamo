@@ -34,6 +34,19 @@ namespace desktop.Essential
         }
 #endif 
 
+        /// <summary>
+        /// Alternatives are:
+        /// InitApp.SetDebugLogger
+        /// CmdApp.SetLogger
+        /// WpfApp.SetLogger
+        /// </summary>
+        public static void SetLogger()
+        {
+            InitApp.Logger = SunamoLogger.Instance;
+            InitApp.TemplateLogger = SunamoTemplateLogger.Instance;
+            InitApp.TypedLogger = TypedSunamoLogger.Instance;
+        }
+
         public static void SaveReferenceToTextBlockStatus(bool restore, TextBlock tbTemporaryLastErrorOrWarning, TextBlock tbTemporaryLastOtherMessage)
         {
             if (restore)
@@ -83,7 +96,9 @@ namespace desktop.Essential
                         TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
                         txt.ToolTip = tbLastErrorOrWarning.Text;
                         lbLogsErrors.Children.Insert(0, txt);
-                    }
+                    
+                    
+                }
                 //}
             }
             else
@@ -98,11 +113,21 @@ namespace desktop.Essential
                     if (lbLogsOthers != null)
                     {
                         TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
+                    
                     cd.Invoke(() =>
                     {
                         txt.ToolTip = tbLastOtherMessage.Text;
                         lbLogsOthers.Children.Insert(0, txt);
-                    });
+                        
+                        //lbLogsOthers.InvalidateVisual();
+                        //lbLogsOthers.UpdateLayout();
+                        //lbLogsOthers.Children.Insert(0, new TextBlock());
+                        //lbLogsOthers.Children.RemoveAt(0);
+
+                        //lbLogsOthers.InvalidateArrange();
+                        //lbLogsOthers.UpdateLayout();
+                        //lbLogsOthers.
+                    }, DispatcherPriority.Render);
                     }
                 //}
             }
@@ -137,7 +162,7 @@ namespace desktop.Essential
         {
             if (tbLastOtherMessage != null)
             {
-                WpfApp.cd.BeginInvoke(() => { 
+                WpfApp.cd.Invoke(() => { 
                 tbLastOtherMessage.Foreground = new SolidColorBrush(color);
                 }
                 );
@@ -149,7 +174,8 @@ namespace desktop.Essential
         {
             if (lblStatusDownload != null)
             {
-                WpfApp.cd.BeginInvoke(() => {
+                // Must be invoke because after that I immediately load it on ListBox
+                WpfApp.cd.Invoke(() => {
                     lblStatusDownload.Text = status;
                 }
                 );
@@ -201,6 +227,7 @@ namespace desktop.Essential
         static TextBlock tbLastOtherMessageSaved = null;
         static StackPanel lbLogsOthers = null;
         static StackPanel lbLogsErrors = null;
+
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
         public static bool rememberStatuses;

@@ -72,7 +72,7 @@ public static class CSharpHelper
         CSharpGenerator csg = new CSharpGenerator();
         foreach (var item in values)
         {
-            csg.AppendLine(tabCount, SH.Format(assignVariable, item));
+            csg.AppendLine(tabCount, SH.Format2(assignVariable, item));
 
         }
         return csg.ToString().Trim();

@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Data.SqlClient;
 
-public class GeneratorMsSql
+public partial class GeneratorMsSql
 {
     public static string OutputDeleted(string sloupceJezVratit)
     {
@@ -30,7 +30,7 @@ public class GeneratorMsSql
     public static string Insert4(int i2, string tabulka, int pocetSloupcu)
     {
         string hodnoty = GetValuesDirect(i2, pocetSloupcu);
-        return SH.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty);
+        return SH.Format2("INSERT INTO {0} VALUES {1}", tabulka, hodnoty);
     }
 
     public static string GetValuesDirect(int i2, int to)
@@ -45,6 +45,10 @@ public class GeneratorMsSql
         return sb.ToString().TrimEnd(',') + ")";
     }
 
+    
+
+
+
     /// <summary>
     /// Může vrátit null když tabulka bude existovat
     /// Výchozí pro A3 je true
@@ -56,6 +60,8 @@ public class GeneratorMsSql
     /// <returns></returns>
     public static string CreateTable(string table, MSColumnsDB sloupce,  bool dynamicTables, SqlConnection conn)
     {
+
+
         StringBuilder sb = new StringBuilder();
         bool exists = MSStoredProceduresI.ci.SelectExistsTable(table, conn);
         if (!exists)
@@ -169,7 +175,7 @@ public class GeneratorMsSql
                 // TODO: Zjistit si zda se tu skutečně dává AND
                 sb.Append(",");
             }
-            sb.Append(SH.Format(" {0} = @p" + p.ToString(), var.A));
+            sb.Append(SH.Format2(" {0} = @p" + p.ToString(), var.A));
             p++;
         }
         return sb.ToString();
@@ -204,7 +210,6 @@ public class GeneratorMsSql
 
             bool první = true;
 
-            #region MyRegion
 
             foreach (AB var in where)
             {
@@ -216,11 +221,10 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + pridavatOd));
+                sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + pridavatOd));
                 pridavatOd++;
             }
 
-            #endregion
         }
         return sb.ToString();
     }
@@ -243,7 +247,6 @@ public class GeneratorMsSql
             }
             bool první = true;
 
-            #region MyRegion
 
             foreach (AB var in whereIsNot)
             {
@@ -255,11 +258,10 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + pridavatOd));
+                sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + pridavatOd));
                 pridavatOd++;
             }
 
-            #endregion
             return sb.ToString();
         }
         return "";
@@ -348,7 +350,6 @@ public class GeneratorMsSql
             sb.Append(" WHERE ");
             bool první = true;
             int p = 0;
-            #region MyRegion
             if (where != null)
             {
                 foreach (AB var in where)
@@ -361,12 +362,10 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
-            #endregion
-            #region e
             if (isNotWhere != null)
             {
                 foreach (AB var in isNotWhere)
@@ -379,12 +378,10 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
-            #endregion
-            #region e
             if (greaterThanWhere != null)
             {
                 foreach (AB var in greaterThanWhere)
@@ -397,12 +394,10 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(SH.Format(" {0} > {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format2(" {0} > {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
-            #endregion
-            #region e
             if (lowerThanWhere != null)
             {
                 foreach (AB var in lowerThanWhere)
@@ -415,11 +410,10 @@ public class GeneratorMsSql
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(SH.Format(" {0} < {1} ", var.A, "@p" + p));
+                    sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
-            #endregion
             return sb.ToString();
         }
         return "";
@@ -447,7 +441,6 @@ public class GeneratorMsSql
         
         bool první = true;
         int p = 0;
-        #region MyRegion
         if (where != null)
         {
             foreach (AB var in where)
@@ -460,13 +453,11 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
-        #endregion
-        #region e
         if (isNotWhere != null)
         {
             foreach (AB var in isNotWhere)
@@ -479,13 +470,11 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} != {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
-        #endregion
-        #region e
         if (greaterThanWhere != null)
         {
             foreach (AB var in greaterThanWhere)
@@ -498,13 +487,11 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} > {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format2(" {0} > {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
-        #endregion
-        #region e
         if (lowerThanWhere != null)
         {
             foreach (AB var in lowerThanWhere)
@@ -517,12 +504,11 @@ public class GeneratorMsSql
                 {
                     sb.Append(" AND ");
                 }
-                sb.Append(SH.Format(" {0} < {1} ", var.A, "@p" + p));
+                sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
                 MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
-        #endregion
         if (orderBy != null)
         {
             sb.Append("ORDER BY " + orderBy + " ");
@@ -549,7 +535,6 @@ public class GeneratorMsSql
         
         bool první = true;
         
-        #region MyRegion
 
         foreach (AB var in where)
         {
@@ -561,14 +546,13 @@ public class GeneratorMsSql
             {
                 sb.Append(" OR ");
             }
-            sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
+            sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
             p++;
         }
         if (pCopy != 0)
         {
             sb.Append(")");
         }
-        #endregion
         return sb.ToString();
     }
 
@@ -579,7 +563,6 @@ public class GeneratorMsSql
         sb.Append(" WHERE ");
         bool první = true;
         int p = 0;
-        #region MyRegion
 
         foreach (AB var in where)
         {
@@ -591,11 +574,10 @@ public class GeneratorMsSql
             {
                 sb.Append(" OR ");
             }
-            sb.Append(SH.Format(" {0} = {1} ", var.A, "@p" + p));
+            sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
             p++;
         }
 
-        #endregion
         return sb.ToString();
     }
 
@@ -611,7 +593,7 @@ public class GeneratorMsSql
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" WHERE ");
-        sb.Append(SH.Format(" {0} = @p0 ", sloupec));
+        sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
 
@@ -619,7 +601,7 @@ public class GeneratorMsSql
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" WHERE ");
-        sb.Append(SH.Format(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
+        sb.Append(SH.Format2(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
         return sb.ToString();
     }
 
@@ -629,7 +611,7 @@ public class GeneratorMsSql
         sb.Append("SELECT " + columns);
         sb.Append(" FROM " + tabulka);
         sb.Append(" WHERE ");
-        sb.Append(SH.Format(" {0} = @p0 ", sloupec));
+        sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
 
@@ -647,7 +629,7 @@ public class GeneratorMsSql
         sb.Append("SELECT TOP(1) " + vracenySloupec);
         sb.Append(" FROM " + table);
         sb.Append(" WHERE ");
-        sb.Append(SH.Format(" {0} = @p0 ", idColumnName));
+        sb.Append(SH.Format2(" {0} = @p0 ", idColumnName));
         return sb.ToString();
     }
 

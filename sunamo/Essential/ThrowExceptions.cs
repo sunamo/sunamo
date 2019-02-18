@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Reflection;
 
+namespace sunamo.Essential
+{ }
+
 public class ThrowExceptions
 {
     #region Must be as first - newly created method fall into this
@@ -174,6 +177,13 @@ public class ThrowExceptions
     public static void Custom(object type, string methodName, string message)
     {
         ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName), message));
+    }
+
+    public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
+    {
+       
+            ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName), detailLocation, before, after));
+        
     }
 
 

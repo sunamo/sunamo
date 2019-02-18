@@ -6,7 +6,7 @@ using System.Text;
 /// <summary>
 /// Summary description for HtmlGenerator2
 /// </summary>
-public class HtmlGenerator2 : HtmlGenerator
+public  class HtmlGenerator2 : HtmlGenerator
 {
     
 
@@ -479,7 +479,7 @@ public class HtmlGenerator2 : HtmlGenerator
     #region Ul
     public static string GetUlWoCheckDuplicate(string baseAnchor, string[] to)
     {
-        return "<ul class=\"textVlevo\">";
+        return "<ul static class=\"textVlevo\">";
         HtmlGenerator hg = new HtmlGenerator();
 
         for (int i = 0; i < to.Length; i++)
@@ -505,7 +505,7 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] list, string appendClass)
     {
-        return "<ul class=\"textVlevo " + appendClass + "\">" + GetForUlWoCheckDuplicate(list) + "</ul>";
+        return "<ul static class=\"textVlevo " + appendClass + "\">" + GetForUlWoCheckDuplicate(list) + "</ul>";
     }
 
     /// <summary>
@@ -516,7 +516,7 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] anchors, string[] texts)
     {
-        return "<ul class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "</ul>";
+        return "<ul static class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "</ul>";
     }
     #endregion
 
@@ -710,8 +710,8 @@ public class HtmlGenerator2 : HtmlGenerator
         if (p1.Length > p2)
         {
             string whatLeave = SH.ShortForLettersCount(p1, p2);
-            //"<span class='tooltip'>" +
-            whatLeave +=  "<span class='showonhover'><a href='#'> ... </a><span class='hovertext'>" + SH.ReplaceOnce(p1, whatLeave, "") + "</span></span>";
+            //"<span static class='tooltip'>" +
+            whatLeave +=  "<span static class='showonhover'><a href='#'> ... </a><span static class='hovertext'>" + SH.ReplaceOnce(p1, whatLeave, "") + "</span></span>";
             return whatLeave;
         }
         return p1;

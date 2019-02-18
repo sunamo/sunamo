@@ -149,10 +149,10 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(SH.Format("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
             foreach (var item in d)
             {
-                lineChart.AppendLine(SH.Format("['{0}', {1}],", item.Key, item.Value));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", item.Key, item.Value));
             }
             lineChart.Append(@"]);
 
@@ -178,10 +178,10 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(SH.Format("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
             for (int i = 0; i < coSePorovnavaHodnoty.Count; i++)
             {
-                lineChart.AppendLine(SH.Format("['{0}', {1}],", coSePorovnavaHodnoty[i], jednotkaHodnotyPorovnavaniHodnoty[i]));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", coSePorovnavaHodnoty[i], jednotkaHodnotyPorovnavaniHodnoty[i]));
             }
             lineChart.Append(@"]);
 
@@ -207,10 +207,10 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(SH.Format("['{0}', '{1}'],", osaX, osaY));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", osaX, osaY));
             for (int i = 0; i < osaXPopisky.Count; i++)
             {
-                lineChart.AppendLine(SH.Format("['{0}', {1}],", osaXPopisky[i], osaXHodnoty[i]));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", osaXPopisky[i], osaXHodnoty[i]));
             }
             lineChart.Append(@"]);
 

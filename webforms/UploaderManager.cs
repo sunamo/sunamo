@@ -260,8 +260,8 @@ public class UploaderManager
 
 
                 
-                Size s = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
-            shared.Pictures.TransformImage(bmp, s.Width, s.Height, toMiddle);
+                Size s = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
+            PicturesShared.TransformImage(bmp, s.Width, s.Height, toMiddle);
                 if (idUser != 1)
                 {
                     long size = FS.GetFileSize(toMiddle);
@@ -440,8 +440,8 @@ public class UploaderManager
         bmp = new Bitmap(to);
         if (bmp.Width > convertToMaxWidth)
         {
-            Size s = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
-            shared.Pictures.TransformImage(bmp, s.Width, s.Height, final);
+            Size s = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
+            PicturesShared.TransformImage(bmp, s.Width, s.Height, final);
             bmp = (Image)System.Drawing.Image.FromFile(final);//.Clone();
         }
         else

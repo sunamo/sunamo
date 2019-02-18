@@ -3,11 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public enum SerializationLibrary
-{
-    Microsoft,
-    Newtonsoft
-}
+
 
 public class JavascriptSerialization
 {

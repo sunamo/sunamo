@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace forms
 {
-    public class Pictures
+    public class PicturesForms
     {
         public static Icon ConvertToIcon(Image imgFavorites)
         {

@@ -279,6 +279,11 @@ public static class UriWebServices
         return "https://github.com/search?q=" + item;
     }
 
+    public static string WebShare(string item)
+    {
+        return "https://webshare.cz/#/search?what=" + item;
+    }
+
     public static string YouTubeProfile(string nick)
     {
         return "http://www.youtube.com/c/" + nick;

@@ -7,6 +7,8 @@ obnovit inzeraty
 prazske koleje
 g+ for insta
 
+
+
 vytvořit video s popisem co se dělo v černobylo, 
 
 udělat pořádek v tom co se uploaduje, je tam stále mnoho temp souborů z _
@@ -19,6 +21,10 @@ make https://github.com/KirillOsenkov/SourceBrowser for searchin in my code
 nuget.smbsrc.net - If the authors of the NuGet package publish symbol & source packages (to nuget.smbsrc.net), these can be downloaded via "SourceLink" in VS (Enabled via Options > Debugging > General > Enable source server support). 
 
 vytvořit soubory, 
+
+existuje stránka kde bych zadal telefonní číslo a dostal bych cenu za minutu hovoru? 
+
+Lze poznat či se nějak bránit při přepojení aby to nebylo na extrémně dražší linku?
 
 roslyn codetextbox
 
@@ -152,16 +158,21 @@ t0050 vps firmy, send cv
 t0051 replace yaml nuget for dll as in in WpfApp1 already
 t0052 app for archive only specified file type. 
 
+t0053 scrollviewer to SearchCodeElements file results - try find ompare
+t0054 clean up SunamoStoraEns
+t0055 app for make class public, i need replace internal for public. I got many private public class, public sealed/abstract/... public
+t0056 MoveClassElementIntoSharedFileUC
+t0057 tieto payslips
+
+artroza kolene cvicit, 2015
+
+t0058 create Roslyn wrapper - all nodes are immutable, its stupid still calling TrackNodes
+
 better pdf view android
 dodělat ucto, kolik bych musel platit pro 10k zisku 
 
 jak zpenezit weby - prodavat je jako baliky, ve vlastni sablonou a podporou
 jak se zapisuji znacky v jinych popularnich fw
-
-
-t0043 scrollviewer to SearchCodeElements file results - try find ompare
-t0044 clean up SunamoStoraEns
-t0045 app for make class public, i need replace internal for public. I got many private public class, public sealed/abstract/... public
 
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/apex/r51/testing_and_debugging_sqldeveloper/testing_and_debugging_sqldeveloper.html
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/apex/r51/testing_and_debugging_sqldeveloper/testing_and_debugging_sqldeveloper.html#overview

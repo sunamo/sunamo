@@ -1,5 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+/// <summary>
+/// Exists also SunamoDictionarySort - for SunamoDictionary type
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <typeparam name="U"></typeparam>
 public class DictionarySort<T, U>
 {
     public List<U> ReturnValues(Dictionary<T, U> sl)
@@ -94,7 +99,6 @@ public class DictionarySort<T, U>
             {
                 return item.Key;
             }
-            //////////ObjectHelper.ci.VratTR(item.Key) + " - " + ObjectHelper.ci.VratTR(item.Value));
         }
         // Lépe jsem to tu nedokázal vymyslet :-(
         foreach (KeyValuePair<T, U> item in l)

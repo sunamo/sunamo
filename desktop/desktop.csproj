@@ -186,6 +186,7 @@
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
     <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="Extensions\UIElementExtensions.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
@@ -383,6 +384,10 @@
     <Page Include="Controls\ToggleSwitch\HorizontalToggleSwitchWithLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToggleSwitch\ResourceDictionaries\ToggleSwitchResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ToggleSwitch\WPF\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>

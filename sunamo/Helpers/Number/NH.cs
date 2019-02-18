@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public static class NH
+public static partial class NH
 {
     static Type type = typeof(NH);
 
@@ -39,16 +39,6 @@ public static class NH
             sum += item;
         }
         return sum;
-    }
-
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        string s = p.ToString();
-        if (s.Length == 1)
-        {
-            return "0" + p;
-        }
-        return s;
     }
 
     public static double Average(double gridWidth, double columnsCount)

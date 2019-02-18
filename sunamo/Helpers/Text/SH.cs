@@ -243,7 +243,7 @@ public static partial class SH
         return false;
     }
 
-    static Type type = typeof(SH);
+    
 
     /// <summary>
     /// 
@@ -299,14 +299,6 @@ public static partial class SH
             return sb.ToString();       
     }
 
-    public static string Format2(string template, params string[] args)
-    {
-        for (int i = 0; i < args.Length; i++)
-        {
-            template = SH.ReplaceOnce(template, "{" + i + "}", args[i]);
-        }
-        return template;
-    }
 
     public static bool RemovePrefix(ref string s, string v)
     {
@@ -470,6 +462,15 @@ public static partial class SH
         return vr.ToArray();
     }
 
+    public static string RemoveLastLetters(string v1, int v2)
+    {
+        if (v1.Length > v2)
+        {
+            return v1.Substring(0, v1.Length - v2);
+        }
+        return v1;
+    }
+
     /// <summary>
     /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
     /// </summary>
@@ -548,6 +549,8 @@ public static partial class SH
 
         return true;
     }
+
+
 
     public static bool HasTextRightFormat(string r, TextFormatData tfd)
     {
@@ -1012,7 +1015,7 @@ public static partial class SH
     }
 
     
-    static bool cs = false;
+    
 
     /// <summary>
     /// Oddělovač může být pouze jediný znak, protože se to pak předává do metody s parametrem int!
@@ -1243,7 +1246,7 @@ public static partial class SH
 
     public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
     {
-        Regex regex = new Regex(SH.Format("\\{0}.*?\\{1}", begin, end));
+        Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
         return regex.Replace(s, string.Empty);
     }
 
@@ -1704,17 +1707,6 @@ public static partial class SH
         return s;
     }
 
-    
-
-    /// <summary>
-    /// G zda je jedinz znak v A1 s dia.
-    /// </summary>
-    /// <returns></returns>
-    public static bool ContainsDiacritic(string slovo)
-    {
-        return slovo != SH.TextWithoutDiacritic(slovo);
-    }
-
     public static string RemoveLastChar(string artist)
     {
         return artist.Substring(0, artist.Length - 1);
@@ -1800,29 +1792,7 @@ public static partial class SH
         return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
     }
 
-    /// <summary>
-    /// With these 
-    /// </summary>
-    /// <param name="stringSplitOptions"></param>
-    /// <param name="text"></param>
-    /// <param name="deli"></param>
-    /// <returns></returns>
-    private static string[] Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
-    {
-        if (deli == null || deli.Count() == 0)
-        {
-            if (cs)
-            {
-                throw new Exception("Nebyl specifikován delimiter");
-            }
-            else
-            {
-                throw new Exception("No delimiter determined");
-            }
-        }
-
-        return text.Split(deli, stringSplitOptions);
-    }
+    
 
     
 
@@ -1836,11 +1806,6 @@ public static partial class SH
             sb.Append(dds);
         }
         return sb.ToString();
-    }
-
-    public static string[] SplitNone(string text, params char[] deli)
-    {
-        return Split(StringSplitOptions.None, text, deli);
     }
 
     /// <summary>
@@ -1968,11 +1933,7 @@ public static partial class SH
         return text.Split( deli, StringSplitOptions.None);
     }
 
-    public static string FirstCharLower(string nazevPP)
-    {
-        string sb = nazevPP.Substring(1);
-        return nazevPP[0].ToString().ToLower() + sb;
-    }
+
 
     public static string FirstCharuUpper(string nazevPP)
     {
@@ -2147,19 +2108,7 @@ public static partial class SH
         return sb.ToString();
     }
 
-    public static string MakeUpToXChars(int p, int p_2)
-    {
-        StringBuilder sb = new StringBuilder();
-        string d = p.ToString();
-        int doplnit = (p.ToString().Length - p_2) * -1;
-        for (int i = 0; i < doplnit; i++)
-        {
-            sb.Append(0);
-        }
-        sb.Append(d);
-
-        return sb.ToString();
-    }
+    
 
     public static string TrimStart(string v, string s)
     {
@@ -2834,25 +2783,6 @@ public static partial class SH
         foreach (var item in dictionary)
         {
             sb.AppendLine(item.Key + delimiter + item.Value);
-        }
-        return sb.ToString();
-    }
-
-    public static string JoinPairs(params object[] parts)
-    {
-        return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
-    }
-
-    public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
-    {
-        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
-        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < parts.Length; i++)
-        {
-            sb.Append(parts[i++] + firstDelimiter);
-            sb.Append(parts[i] + secondDelimiter);
         }
         return sb.ToString();
     }

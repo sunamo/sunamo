@@ -56,8 +56,13 @@ namespace sunamo.Clipboard
         const long wParamRight = 5;
         long lastWParam = 0;
 
+
+        string last = null;
+
 		private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
+            DebugLogger.Instance.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "lParam", lParam);
+
             if (!pernamentlyBlock)
 			{
                 handled = true;
@@ -79,10 +84,26 @@ namespace sunamo.Clipboard
 				{
 					if (msg == W32.WM_CLIPBOARDUPDATE)
 					{
+                        if (last == null)
+                        {
+                            CopyToClipboard();
+                        }
+                        else
+                        {
+                            string content = ClipboardHelper.GetText();
+                            if (last != content)
+                            {
+                                CopyToClipboard();
+                            }
+                            else
+                            {
+                                last = null;
+                            }
+                        }
                         // After second calling app will be crash and no unhandled exception is generated
                         // ClipboardHelper also is working perfectly with that
                         
-                            ClipboardContentChanged();
+                            
                         
 
 					}
@@ -93,10 +114,16 @@ namespace sunamo.Clipboard
             return IntPtr.Zero;
 		}
 
-		/// <summary>
-		/// Occurs when the clipboard content changes.
-		/// </summary>
-		public event VoidVoid ClipboardContentChanged;
+        private void CopyToClipboard()
+        {
+            ClipboardContentChanged();
+            last = ClipboardHelper.GetText();
+        }
+
+        /// <summary>
+        /// Occurs when the clipboard content changes.
+        /// </summary>
+        public event VoidVoid ClipboardContentChanged;
 	}
 }
 #endregion

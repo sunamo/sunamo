@@ -6,8 +6,9 @@ using System;
 using System.Text;
 using System.Data.SqlClient;
 using System.Web;
+using sunamo.Values;
 
-public class MSDatabaseLayer : MSDatabaseLayerBase
+public partial class MSDatabaseLayer : MSDatabaseLayerBase
 {
     static SqlConnection _conn = null;
     static string cs = null;
@@ -21,6 +22,87 @@ public class MSDatabaseLayer : MSDatabaseLayerBase
         get
         {
             return database2;
+        }
+    }
+
+    /// <summary>
+    /// NSN
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string ConvertObjectToDotNetType(object p)
+    {
+        if (p.GetType() == Consts.tString)
+        {
+            return "string";
+        }
+        else if (p.GetType() == Consts.tInt)
+        {
+            return "int";
+        }
+        else if (p.GetType() == Consts.tBool)
+        {
+            return "bool";
+        }
+        else if (p.GetType() == Consts.tDateTime)
+        {
+            return "DateTime";
+        }
+        else if (p.GetType() == Consts.tBinary)
+        {
+            return "byte[]";
+        }
+        else if (p.GetType() == Consts.tFloat)
+        {
+            return "float";
+        }
+        else if (p.GetType().IsEnum)
+        {
+            return p.GetType().Name;
+        }
+        else if (p.GetType() == Consts.tDouble)
+        {
+            return "double";
+        }
+        else if (p.GetType() == Consts.tDecimal)
+        {
+            return "decimal";
+        }
+        else if (p.GetType() == Consts.tSbyte)
+        {
+            return "sbyte";
+        }
+        else if (p.GetType() == Consts.tSbyte)
+        {
+            return "byte";
+        }
+        else if (p.GetType() == Consts.tChar)
+        {
+            return "char";
+        }
+        else if (p.GetType() == Consts.tShort)
+        {
+            return "short";
+        }
+        else if (p.GetType() == Consts.tUshort)
+        {
+            return "ushort";
+        }
+        else if (p.GetType() == Consts.tUint)
+        {
+            return "uint";
+        }
+        else if (p.GetType() == Consts.tLong)
+        {
+            return "long";
+        }
+        else if (p.GetType() == Consts.uUlong)
+        {
+            return "ulong";
+        }
+        else
+        {
+            throw new Exception("Snažíte se vytvořit třídu s nepodporovaným typem");
         }
     }
 
@@ -92,7 +174,6 @@ public class MSDatabaseLayer : MSDatabaseLayerBase
         }
     }
 
-    #region Prace s vlastni DB
 
 
     /// <summary>
@@ -109,7 +190,6 @@ public class MSDatabaseLayer : MSDatabaseLayerBase
         //customDB = false;
     }
 
-    #endregion
 
     public static void LoadNewConnectionFirst(string cs2)
     {

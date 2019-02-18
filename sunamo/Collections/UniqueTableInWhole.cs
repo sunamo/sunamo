@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace sunamo.Collections
 {
     /// <summary>
+    /// Add one row with all columns
+    /// Similar class with two dimension array is ValuesTableGrid<T>
+    /// 
     /// Může být:
     /// Každý sloupec řádku unikátní
     /// Každý řádek sloupce unikátní

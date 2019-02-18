@@ -153,6 +153,7 @@
     <Compile Include="MSSQL\MSTableRowIDName.cs" />
     <Compile Include="MSSQL\MSTableRowParse.cs" />
     <Compile Include="MSSQL\MSTSP.cs" />
+    <Compile Include="MSSQL\MSTSPShared.cs" />
     <Compile Include="MSSQL\Rows\ChangedRows.cs" />
     <Compile Include="MSSQL\Rows\DeletedRows.cs" />
     <Compile Include="MSSQL\Rows\InsertedRows.cs" />

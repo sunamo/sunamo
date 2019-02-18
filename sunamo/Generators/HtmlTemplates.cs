@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-public class HtmlTemplates
+public static partial  class HtmlTemplates
 {
     public static string HiddenField(string id, string value)
     {
@@ -20,7 +20,7 @@ public class HtmlTemplates
 
     public static string GetH2(string title)
     {
-        return "<h2 class=\"velkaPismena tl\">" + title + "</h2>";
+        return "<h2 static class=\"velkaPismena tl\">" + title + "</h2>";
     }
 
     public static string NameValueBr(string name, string value)
@@ -53,13 +53,4 @@ public class HtmlTemplates
         return "<tr><td colspan='2'><b>" + name + " </b></td></tr><tr><td colspan='2'>" + value + "</td></tr>";
     }
 
-    public static string Img(string src, string alt)
-    {
-        return $"<img src=\"{src}\" alt=\"{alt}\" />";
-    }
-
-    public static string Img(string src)
-    {
-        return $"<img src=\"{src}\" />";
-    }
 }

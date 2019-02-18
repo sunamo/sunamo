@@ -290,7 +290,7 @@ public sealed class CsvWriter : IDisposable
                     fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
                 }
 
-                writer.Write(SH.Format("{0}{1}{0}{2}", 
+                writer.Write(SH.Format2("{0}{1}{0}{2}", 
                     (quotesRequired || escapeQuotes ? "\"" : string.Empty),
                     fieldValue, 
                     ( i < (fields.Count - 1) ? "," : string.Empty)));

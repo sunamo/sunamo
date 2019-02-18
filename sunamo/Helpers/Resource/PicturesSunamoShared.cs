@@ -6,15 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class PicturesSunamo{ 
-/// <summary>
-        /// Vypočte optimální šířku v případě že obrázek je postaven na výšku.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="p_2"></param>
-        /// <param name="p_3"></param>
-        /// <returns></returns>
-        public static SunamoSize CalculateOptimalSizeHeight(int width, int height, int maxHeight)
+public partial class PicturesSunamo{
+    static string[] supportedExtensionForResize = new string[] {
+        "png", "jpg", "jpeg", "gif"
+    };
+
+    /// <summary>
+    /// Vypočte optimální šířku v případě že obrázek je postaven na výšku.
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
+    /// <param name="p_3"></param>
+    /// <returns></returns>
+    public static SunamoSize CalculateOptimalSizeHeight(int width, int height, int maxHeight)
         {
             SunamoSize vr = new SunamoSize(width, height);
             int vyskaSloupce = maxHeight;
@@ -29,4 +33,50 @@ public partial class PicturesSunamo{
             return vr;
         }
 
+
+public static bool GetImageFormatFromExtension1(string filePath, out string ext)
+        {
+            ext = FS.GetExtension(filePath).TrimStart('.').ToLower();
+
+            if (PicturesSunamo.IsSupportedResizeForExtension(ext))
+            {
+                return true;
+            }
+            return false;
+        }
+
+public static ImageFormats GetImageFormatsFromExtension(string filePath)
+        {
+            string ext = FS.GetExtension(filePath).TrimStart('.').ToLower();
+            return GetImageFormatsFromExtension2(ext);
+        }
+
+private static bool IsSupportedResizeForExtension(string ext)
+        {
+            if (ext == "jpg")
+            {
+                ext = "jpeg";
+            }
+            for (int i = 0; i < supportedExtensionForResize.Length; i++)
+            {
+                if (supportedExtensionForResize[i] == ext)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+public static ImageFormats GetImageFormatsFromExtension2(string ext)
+        {
+            if (ext == "")
+            {
+                return ImageFormats.None;
+            }
+            if (!IsSupportedResizeForExtension(ext))
+            {
+                return ImageFormats.None;
+            }
+            return (ImageFormats)Enum.Parse(typeof(ImageFormats), ext, true);
+        }
 }

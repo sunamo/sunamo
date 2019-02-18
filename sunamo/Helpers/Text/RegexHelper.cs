@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Text.RegularExpressions;
-public class RegexHelper
+public static class RegexHelper
 {
     public static Regex rHtmlScript = new Regex(@"<script[^>]*>[\s\S]*?</script>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     public static Regex rHtmlComment = new Regex(@"<!--[^>]*>[\s\S]*?-->", RegexOptions.IgnoreCase | RegexOptions.Compiled);

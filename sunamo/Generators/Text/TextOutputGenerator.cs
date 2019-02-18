@@ -60,12 +60,12 @@ public class TextOutputGenerator
     {
         sb.AppendLine();
         
-        AppendLine(SH.Format(text, p));
+        AppendLine(SH.Format2(text, p));
     }
 
     public void AppendFormat(string text, params object[] p)
     {
-        AppendLine(SH.Format(text, p));
+        AppendLine(SH.Format2(text, p));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

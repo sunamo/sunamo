@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public class HtmlGeneratorList
+    public static class HtmlGeneratorList
     {
     /// <summary>
     /// If A3 is null, will be used data from A2

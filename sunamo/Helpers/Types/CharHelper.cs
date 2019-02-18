@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo
-{
-    public class CharHelper
+    public partial class CharHelper
     {
-        public static string OnlyDigits(string v)
+    public static bool IsSpecial(char c)
+    {
+        return CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
+    }
+
+    public static string OnlyDigits(string v)
         {
             return OnlyAccepted(v, char.IsDigit);
         }
 
-        private static string OnlyAccepted(string v, Func<char, bool> isDigit)
+    public static bool IsGeneric(char c)
+    {
+        return CA.IsEqualToAnyElement<char>(c, AllChars.generalChars);
+    }
+
+    private static string OnlyAccepted(string v, Func<char, bool> isDigit)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var item in v)
@@ -25,15 +33,4 @@ namespace sunamo
             }
             return sb.ToString();
         }
-
-        public static bool IsGeneric(char c)
-        {
-            return CA.IsEqualToAnyElement<char>(c, AllChars.generalChars);
-        }
-
-        public static bool IsSpecial(char c)
-        {
-            return CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
-        }
     }
-}

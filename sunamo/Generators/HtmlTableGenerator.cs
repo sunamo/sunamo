@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sunamo.Generators
 {
-    public class HtmlTableGenerator : HtmlGenerator
+    public  class HtmlTableGenerator : HtmlGenerator
     {
         public HtmlGeneratorExtended extended = new HtmlGeneratorExtended();
 

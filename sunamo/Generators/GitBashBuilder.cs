@@ -12,7 +12,7 @@ namespace sunamo.Generators
     /// <summary>
     /// 
     /// </summary>
-    public class GitBashBuilder
+    public  class GitBashBuilder
     {
         public TextBuilder sb = new TextBuilder();
 

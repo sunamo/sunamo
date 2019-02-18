@@ -16,6 +16,6 @@ public class SearchingOnWeb
     public static string YouTube(string vyraz)
     {
         vyraz = vyraz.Replace(" ", "+");
-        return SH.Format("http://www.youtube.com/results?search_query={0}&aq=f", vyraz);
+        return SH.Format2("http://www.youtube.com/results?search_query={0}&aq=f", vyraz);
     }
 }

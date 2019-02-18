@@ -12,7 +12,7 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
 
     public static string ConvertToWoAlpha(byte r, byte g, byte b)
     {
-        //return SH.Format("#{0:X2}{1:X2}{2:X2}", r, g,b);
+        //return SH.Format2("#{0:X2}{1:X2}{2:X2}", r, g,b);
         return "#" + ByteArrayToString(new byte[] { r, g, b });
     }
 
@@ -24,12 +24,12 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
 
     public static string ConvertToWoAlpha(Color u)
     {
-        return SH.Format("#{0:X2}{1:X2}{2:X2}", u.R, u.G, u.B);
+        return SH.Format2("#{0:X2}{1:X2}{2:X2}", u.R, u.G, u.B);
     }
 
     public static string ConvertTo(Color u)
     {
-        return SH.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
+        return SH.Format2("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
     }
 
     /// <summary>

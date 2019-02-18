@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-public class ErrorMessageGenerator
+public  class ErrorMessageGenerator
 {
     StringBuilder vypis = new StringBuilder();
     StringBuilder triTecky = new StringBuilder();

@@ -6,6 +6,7 @@ using System.Text;
 namespace sunamo.Collections
 {
     /// <summary>
+    /// Similar class with two dimension array is UniqueTableInWhole
     /// Allow make query to parallel collections as be one
     /// </summary>
     /// <typeparam name="T"></typeparam>

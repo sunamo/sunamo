@@ -2,7 +2,7 @@
 using sunamo.Properties;
 using System;
 
-public class HtmlGeneratorExtended : HtmlGenerator
+public  class HtmlGeneratorExtended : HtmlGenerator
 {
     public void DetailAnchor(string label, string oUriYouthProfile, string oNameYouthProfile)
     {

@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApp1.ResourceDictionaries">
+    <!--Start ToggleSwitch-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/Styles.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/ToggleSwitchStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    <!--End ToggleSwitch-->
+</ResourceDictionary>

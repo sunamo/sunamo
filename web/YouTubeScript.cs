@@ -19,7 +19,7 @@ frameborder="0" allowFullScreen></iframe>
 
     public static string EmbedVideoIframe(string kod)
     {
-        return SH.Format("<iframe width=\"512\" height=\"384\" src=\"//www.youtube.com/embed/"+kod+"\" frameborder=\"0\" allowfullscreen></iframe>");
+        return SH.Format2("<iframe width=\"512\" height=\"384\" src=\"//www.youtube.com/embed/"+kod+"\" frameborder=\"0\" allowfullscreen></iframe>");
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ frameborder="0" allowFullScreen></iframe>
        /* <object type="application/x-shockwave-flash" style="width:{0}px; height:{1}px;" 
         * data="http://www.youtube.com/v/{2}"><param name="movie" 
         * value="http://www.youtube.com/v/{2}" /></object>*/
-        return SH.Format("<p>&nbsp;</p><object type=\"application/x-shockwave-flash\" style=\"width:{0}px; height:{1}px;\" data=\"http://www.youtube.com/v/{2}\"><param name=\"movie\" value=\"http://www.youtube.com/v/{2}\" /></object>", 512, 384, kod);
+        return SH.Format2("<p>&nbsp;</p><object type=\"application/x-shockwave-flash\" style=\"width:{0}px; height:{1}px;\" data=\"http://www.youtube.com/v/{2}\"><param name=\"movie\" value=\"http://www.youtube.com/v/{2}\" /></object>", 512, 384, kod);
     }
 
     #region YouTube Player default script: no autoplay, 320x240

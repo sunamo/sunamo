@@ -1,4 +1,5 @@
-﻿using sunamo.Values;
+﻿using sunamo.Constants;
+using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -224,5 +225,77 @@ public partial class FS
             result = v.Substring(lastDot).ToLower();
 
             return result;
+        }
+
+public static string WithoutEndSlash(string v)
+        {
+            return WithoutEndSlash(ref v);
+        }
+public static string WithoutEndSlash(ref string v)
+        {
+            return v.TrimEnd(AllChars.bs);
+        }
+
+public static void CopyStream(Stream input, Stream output)
+        {
+            byte[] buffer = new byte[8 * 1024];
+            int len;
+            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, len);
+            }
+        }
+
+    public static string ReplaceVsProjectFolder(string fullPathOriginalFile, string combineWithA1, string empty)
+    {
+        fullPathOriginalFile = SH.FirstCharLower(fullPathOriginalFile);
+        foreach (var item in DefaultPaths.AllPathsToProjects)
+        {
+            string replace = FS.WithEndSlash( FS.Combine(item, combineWithA1));
+            if (fullPathOriginalFile.StartsWith(replace))
+            {
+                return fullPathOriginalFile.Replace(replace, empty);
+            }
+        }
+        return fullPathOriginalFile;
+    }
+
+/// <summary>
+        /// Use this than Path.Combine which if argument starts with backslash ignore all arguments before this
+        /// </summary>
+        /// <param name="upFolderName"></param>
+        /// <param name="dirNameDecoded"></param>
+        /// <returns></returns>
+        public static string Combine(params string[] s)
+        {
+            s = CA.TrimStart(AllChars.bs, s);
+            return SH.FirstCharLower( Path.Combine(s));
+        }
+
+public static string WithEndSlash(ref string v)
+        {
+            if (v != string.Empty)
+            {
+                v = v.TrimEnd(AllChars.bs) + AllChars.bs;
+            }
+            return v;
+        }
+public static string WithEndSlash(string v)
+        {
+            return WithEndSlash(ref v);
+        }
+
+public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
+        {
+            path = path.Replace("\\\\", "\\");
+            if (!FS.ExistsFile(path))
+            {
+                using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                {
+                    byte[] matriz = mss.ToArray();
+                    fs.Write(matriz, 0, matriz.Length);
+                }
+
+            }
         }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class XmlGeneratorResources
+    public  class XmlGeneratorResources
     {
      XmlGenerator xml = new XmlGenerator();
 

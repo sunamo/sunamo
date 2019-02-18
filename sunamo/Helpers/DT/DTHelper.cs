@@ -10,7 +10,6 @@ using System.Diagnostics;
 
 public partial class DTHelper
 {
-    #region Code
     public static string DateToStringjQueryDatePicker(DateTime dt)
     {
         return DTHelperCode.DateToStringjQueryDatePicker(dt);
@@ -40,18 +39,16 @@ public partial class DTHelper
     {
         return DTHelperCode.StringToDateTimeFromInputDateTimeLocal(v, dtMinVal);
     }
-    #endregion
 
-    #region Cs
     public static string AppendToFrontOnlyTime(string defin)
     {
         return DTHelperCs.AppendToFrontOnlyTime(defin);
     }
 
-    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
-    {
-        return DTHelperCs.IntervalToString(oDTStart, oDTEnd, l, dtMinVal);
-    }
+    //public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
+    //{
+    //    return DTHelperCs.IntervalToString(oDTStart, oDTEnd, l, dtMinVal);
+    //}
 
     public static DateTime ParseTimeCzech(string t)
     {
@@ -84,26 +81,17 @@ public partial class DTHelper
     }
 
     
-    #endregion
 
-    #region En
     public static DateTime ParseTimeUSA(string t)
     {
         return DTHelperEn.ParseTimeUSA(t);
-    }
-
-    public static DateTime ParseDateUSA(string input)
-    {
-        return DTHelperEn.ParseDateUSA(input);
     }
 
     public static DateTime CalculateStartOfPeriod(string AddedAgo)
     {
         return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
     }
-    #endregion
 
-    #region Formalized
     public static DateTime StringToDateTimeFormalizeDate(string p)
     {
         return DTHelperFormalized.StringToDateTimeFormalizeDate(p);    }
@@ -117,9 +105,7 @@ public partial class DTHelper
     {
         return DTHelperFormalized.FormatDateTime(dt, fullCalendar);
     }
-    #endregion
 
-    #region FormalizedWithT
     
 
     public static string DateTimeToStringFormalizeDateEmptyTime(DateTime dt)
@@ -141,9 +127,7 @@ public partial class DTHelper
     {
         return DTHelperFormalizedWithT.DateAndTimeToStringFormalizeDate(dt);
     }
-    #endregion
 
-    #region Cs
     public static string TimeInMsToSeconds(Stopwatch p)
     {
         return DTHelperGeneral.TimeInMsToSeconds(p);
@@ -163,23 +147,13 @@ public partial class DTHelper
     {
         return DTHelperGeneral.MakeUpTo2NumbersToZero(p);
     }
-    #endregion
 
-    #region Multi
     public static string DateToString(DateTime p, Langs l)
     {
         return DTHelperMulti.DateToString(p, l);
     }
 
-    public static DateTime IsValidDateText(string r)
-    {
-        return DTHelperMulti.IsValidDateText(r);
-    }
 
-    public static DateTime IsValidTimeText(string r)
-    {
-        return DTHelperMulti.IsValidTimeText(r);
-    }
 
     public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)
     {
@@ -213,13 +187,6 @@ public partial class DTHelper
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }
 
-    public static DateTime IsValidDateTimeText(string datum)
-    {
-        return DTHelperMulti.IsValidDateTimeText(datum);
-    }
-    #endregion
-
-    #region Us
     public static string DateTimeToFileName(DateTime dt)
     {
         return DTHelperUs.DateTimeToFileName(dt);
@@ -249,5 +216,4 @@ public partial class DTHelper
     {
         return DTHelperUs.DateTimeToFileName(dt, time);
     }
-    #endregion
 }

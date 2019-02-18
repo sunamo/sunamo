@@ -13,7 +13,7 @@ using HtmlAgilityPack;
 /// Element - prvek kterému se zapisují ihned i innerObsah. Může být i prázdný.
 /// Tag - prvek kterému to mohu zapsat později nebo vůbec.
 /// </summary>
-public class XmlGenerator
+public  class XmlGenerator
 {
     protected StringBuilder sb = new StringBuilder();
     bool useStack = false;
@@ -70,7 +70,7 @@ public class XmlGenerator
 
     public void WriteCData(string innerCData)
     {
-        this.WriteRaw(SH.Format("<![CDATA[{0}]]>", innerCData));
+        this.WriteRaw(SH.Format2("<![CDATA[{0}]]>", innerCData));
     }
 
     public void WriteTagWithAttr(string tag, string atribut, string hodnota, bool skipEmptyOrNull = false)
@@ -83,7 +83,7 @@ public class XmlGenerator
             }
         }
 
-        string r = SH.Format("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
+        string r = SH.Format2("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
         if (useStack)
         {
             stack.Push(r);
@@ -151,7 +151,7 @@ public class XmlGenerator
     public void WriteTagWith2Attrs(string p, string p_2, string p_3, string p_4, string p_5)
     {
         
-        string r = SH.Format("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
+        string r = SH.Format2("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
         if (useStack)
         {
             stack.Push(r);

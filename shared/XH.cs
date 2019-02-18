@@ -57,14 +57,21 @@ public class XH
 
     /// <summary>
     /// Vrac� FirstChild, p�i parsaci cel�ho dokumentu tak vrac� xml deklaraci.
+    /// A2 should be entered otherwise can occur error "different XmlDocument context"
     /// </summary>
     /// <param name="soubor"></param>
     /// <param name="xnm"></param>
     /// <returns></returns>
-    public static XmlNode ReturnXmlNode(string xml)
+    public static XmlNode ReturnXmlNode(string xml, XmlDocument xdoc2 = null)
     {
+        XmlDocument xdoc = null;
         //XmlTextReader xtr = new XmlTextReader(
-        XmlDocument xdoc = new XmlDocument();
+        if (xdoc == null)
+        {
+            xdoc = new XmlDocument();
+        }
+
+        
         xdoc.LoadXml(xml);
 
         //xdoc.Load(soubor);

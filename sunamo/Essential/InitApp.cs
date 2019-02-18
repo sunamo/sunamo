@@ -9,7 +9,18 @@ namespace sunamo.Essential
     /// </summary>
     public class InitApp
     {
-        
+        /// <summary>
+        /// Alternatives are:
+        /// InitApp.SetDebugLogger
+        /// CmdApp.SetLogger
+        /// WpfApp.SetLogger
+        /// </summary>
+        public static void SetDebugLogger()
+        {
+            InitApp.Logger = DebugLogger.Instance;
+            InitApp.TemplateLogger = DebugTemplateLogger.Instance;
+            InitApp.TypedLogger = TypedDebugLogger.Instance;
+        }
 
         #region Must be set during app initializing
         public static IClipboardHelper Clipboard

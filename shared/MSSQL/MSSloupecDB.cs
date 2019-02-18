@@ -130,7 +130,7 @@ public class MSSloupecDB
     #region d
     public string ReferencesTo()
     {
-        return SH.Format("{0}[{1}]", referencesTable, referencesColumn);
+        return SH.Format2("{0}[{1}]", referencesTable, referencesColumn);
     }
 
     public string InfoToTextBox()

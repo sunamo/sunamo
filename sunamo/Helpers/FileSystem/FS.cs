@@ -96,6 +96,7 @@ public partial class FS
 
         public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool replaceSimple)
         {
+        bool c = files.Contains(@"d:\Documents\vs\sunamo.cz\sunamo.cz-later\sunamo.cz-later\Kocicky\Photo.aspx.cs");
             foreach (var item in files)
             {
                 var content = TF.ReadFile(item);
@@ -189,16 +190,6 @@ public partial class FS
             return fullPath + ext;
         }
 
-        public static void CopyStream(Stream input, Stream output)
-        {
-            byte[] buffer = new byte[8 * 1024];
-            int len;
-            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                output.Write(buffer, 0, len);
-            }
-        }
-
         public static string MascFromExtension(string ext = AllStrings.asterisk)
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
@@ -246,9 +237,76 @@ public partial class FS
             File.Copy(jsFiles, v, true);
         }
 
-        
+    public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileMoveCollisionOption co)
+    {
+        item = Consts.UncLongPath + item;
+        MakeUncLongPath(ref fileTo);
+        FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
+        if (FS.ExistsFile(fileTo))
+        {
+            if (co == FileMoveCollisionOption.AddFileSize)
+            {
+                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
+                if (FS.ExistsFile(newFn))
+                {
+                    File.Delete(item);
+                    return;
+                }
+                fileTo = newFn;
+            }
+            else if (co == FileMoveCollisionOption.AddSerie)
+            {
+                int serie = 1;
+                while (true)
+                {
+                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
+                    if (!FS.ExistsFile(newFn))
+                    {
+                        fileTo = newFn;
+                        break;
+                    }
+                    serie++;
+                }
+            }
+            else if (co == FileMoveCollisionOption.DiscardFrom)
+            {
+                File.Delete(item);
+                return;
+            }
+            else if (co == FileMoveCollisionOption.Overwrite)
+            {
+                File.Delete(fileTo);
+            }
+            else if (co == FileMoveCollisionOption.LeaveLarger)
+            {
+                long fsFrom = FS.GetFileSize(item);
+                long fsTo = FS.GetFileSize(fileTo);
+                if (fsFrom > fsTo)
+                {
+                    File.Delete(fileTo);
+                }
+                else //if (fsFrom < fsTo)
+                {
+                    File.Delete(item);
+                    return;
+                }
+            }
+        }
+    }
 
-        public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
+    /// <summary>
+    /// A2 is path of target file
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="fileTo"></param>
+    /// <param name="co"></param>
+    public static void CopyFile(string item, string fileTo, FileMoveCollisionOption co)
+    {
+        CopyMoveFilePrepare(ref item, ref fileTo, co);
+        File.Copy(item, fileTo);
+    }
+
+    public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
         {
             ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
         }
@@ -972,15 +1030,32 @@ public partial class FS
 
         public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co)
         {
-            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
-            foreach (var item in files)
-            {
-                string fileTo = to + item.Substring(p.Length);
-                MoveFile(item, fileTo, co);
-            }
+            CopyMoveAllFilesRecursively(p, to, co, true);
         }
 
-        public static void DeleteFilesWithSameContentBytes(List<string> files)
+        public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co)
+        {
+            CopyMoveAllFilesRecursively(p, to, co, false);
+        }
+
+    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move)
+    {
+        string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
+        foreach (var item in files)
+        {
+            string fileTo = to + item.Substring(p.Length);
+            if (move)
+            {
+                MoveFile(item, fileTo, co);
+            }
+            else
+            {
+                CopyFile(item, fileTo, co);
+            }
+        }
+    }
+
+    public static void DeleteFilesWithSameContentBytes(List<string> files)
         {
             DeleteFilesWithSameContentWorking<byte[], byte>(files, File.ReadAllBytes);
         }
@@ -1013,10 +1088,7 @@ public partial class FS
         public static void DeleteFilesWithSameContent(List<string> files)
         {
             DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
-
         }
-
-        
 
         /// <summary>
         /// A2 is path of target file
@@ -1026,62 +1098,8 @@ public partial class FS
         /// <param name="co"></param>
         public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
         {
-            item = Consts.UncLongPath + item;
-            MakeUncLongPath(ref fileTo);
-            FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-            if (FS.ExistsFile(fileTo))
-            {
-                if (co == FileMoveCollisionOption.AddFileSize)
-                {
-                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
-                    if (FS.ExistsFile(newFn))
-                    {
-                        File.Delete(item);
-                        return;
-                    }
-                    fileTo = newFn;
-                }
-                else if (co == FileMoveCollisionOption.AddSerie)
-                {
-                    int serie = 1;
-                    while (true)
-                    {
-                        string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
-                        if (!FS.ExistsFile(newFn))
-                        {
-                            fileTo = newFn;
-                            break;
-                        }
-                        serie++;
-                    }
-                }
-                else if (co == FileMoveCollisionOption.DiscardFrom)
-                {
-                    File.Delete(item);
-                    return;
-                }
-                else if (co == FileMoveCollisionOption.Overwrite)
-                {
-                    File.Delete(fileTo);
-                }
-                else if (co == FileMoveCollisionOption.LeaveLarger)
-                {
-                    long fsFrom = FS.GetFileSize(item);
-                    long fsTo = FS.GetFileSize(fileTo);
-                    if (fsFrom > fsTo)
-                    {
-                        File.Delete(fileTo);
-
-                    }
-                    else //if (fsFrom < fsTo)
-                    {
-                        File.Delete(item);
-                        return;
-                    }
-
-                }
-            }
-            File.Move(item, fileTo);
+        CopyMoveFilePrepare(ref item, ref fileTo, co);
+        File.Move(item, fileTo);
         }
 
         public static Dictionary<string, List<string>> SortPathsByFileName(string[] allCsFilesInFolder, bool onlyOneExtension)
@@ -1511,42 +1529,6 @@ public partial class FS
             }
         }
 
-        /// <summary>
-        /// Use this than Path.Combine which if argument starts with backslash ignore all arguments before this
-        /// </summary>
-        /// <param name="upFolderName"></param>
-        /// <param name="dirNameDecoded"></param>
-        /// <returns></returns>
-        public static string Combine(params string[] s)
-        {
-            s = CA.TrimStart(AllChars.bs, s);
-            return Path.Combine(s);
-        }
-
-        public static string WithoutEndSlash(string v)
-        {
-            return WithoutEndSlash(ref v);
-        }
-
-        public static string WithoutEndSlash(ref string v)
-        {
-            return v.TrimEnd(AllChars.bs);
-        }
-
-        public static string WithEndSlash(ref string v)
-        {
-            if (v != string.Empty)
-            {
-                v = v.TrimEnd(AllChars.bs) + AllChars.bs;
-            }
-            return v;
-        }
-
-        public static string WithEndSlash(string v)
-        {
-            return WithEndSlash(ref v);
-        }
-
         
 
         /// <summary>
@@ -1858,20 +1840,6 @@ public partial class FS
             if (!FS.ExistsDirectory(p))
             {
                 Directory.CreateDirectory(p);
-            }
-        }
-
-        public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
-        {
-            path = path.Replace("\\\\", "\\");
-            if (!FS.ExistsFile(path))
-            {
-                using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
-                {
-                    byte[] matriz = mss.ToArray();
-                    fs.Write(matriz, 0, matriz.Length);
-                }
-
             }
         }
 

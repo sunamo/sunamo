@@ -141,25 +141,6 @@ public static partial class RandomHelper
         return RandomElementOfCollection(AllChars.numericChars)[0];
     }
 
-    public static int RandomInt()
-    {
-        return rnd.Next(0, int.MaxValue);
-    }
-
-   
-
-    /// <summary>
-    /// Vr�t� ��slo mezi A1 a A2 v�etn�
-    /// </summary>
-    /// <param name="od"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static int RandomInt(int od, int to)
-    {
-
-        return rnd.Next(od, to+1);
-    }
-
     /// <summary>
     /// Vrac� ��slo od A1 do A2 v�.
     /// </summary>

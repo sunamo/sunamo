@@ -6,7 +6,7 @@ using System.Linq;
 /// <summary>
 /// Summary description for XmlTemplates
 /// </summary>
-public class XmlTemplates
+public static class XmlTemplates
 {
     public const string xml = "<?xml version='1.0' encoding='utf-8'?>";
 

@@ -28,16 +28,13 @@ namespace sunamo.Essential
 
         public static void SetStatus(TypeOfMessage st, string status, params object[] args)
             {
-            var format = SH.Format(status, args);
+            var format = SH.Format2(status, args);
             if (format.Trim() != string.Empty)
             {
                 StatusSetted(st, format);
             }
          }
 
-        public static void NewStatus(string status, params object[] args)
-        {
-            SetStatus(TypeOfMessage.Information, status, args);
-        }
+        
     }
 }

@@ -23,11 +23,3 @@ public class FromToWord
     public int to = 0;
     public string word = "";
 }
-
-public class BeforeAfter
-{
-    public string slovaZa = "";
-    public string slovaPred = "";
-    public string slovoStred = "";
-    public List<FromToWord> ftw = new List<FromToWord>();
-}

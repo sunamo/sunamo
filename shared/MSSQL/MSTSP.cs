@@ -12,7 +12,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return SelectOneRow(tran, TableName, nazevSloupce, hodnotaSloupce);
     }
 
-
     // Duplikátní metoda
     /// <summary>
     /// G null pokud nenalezne
@@ -22,15 +21,15 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="id"></param>
     /// <param name="hledanySloupec"></param>
     /// <returns></returns>
-    public string SelectCellDataTableString( SqlTransaction tran, string table, string sloupecID, object id, string hledanySloupec)
+    public string SelectCellDataTableString(SqlTransaction tran, string table, string sloupecID, object id, string hledanySloupec)
     {
         DataTable dt = SelectDataTableSelective(tran, table, sloupecID, id, hledanySloupec);
         return GetCellDataTableString(dt, 0, 0);
     }
 
-    public List<int> SelectValuesOfColumnInt( SqlTransaction tran, string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
+    public List<int> SelectValuesOfColumnInt(SqlTransaction tran, string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
     {
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
         AddCommandParameter(comm, 0, hodnota);
         //SQLiteCommand comm = new SQLiteCommand(sql, conn);
         List<int> vr = new List<int>();
@@ -206,7 +205,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableSelective(SqlTransaction tran, string tabulka, string sloupecID, object id, string hledanySloupec)
     {
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, sloupecID));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, sloupecID));
         AddCommandParameter(comm, 0, id);
         //NT
         return this.SelectDataTable(tran, comm);
@@ -217,7 +216,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableSelective(SqlTransaction tran, string TableName, AB[] where, string nazvySloupcu)
     {
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} {2}", nazvySloupcu, TableName, GeneratorMsSql.CombinedWhere(where)));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", nazvySloupcu, TableName, GeneratorMsSql.CombinedWhere(where)));
         AddCommandParameterFromAbc(comm, where);
         //NTd
         return this.SelectDataTable(tran, comm);
@@ -266,14 +265,14 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, params string[] selectSloupce)
     {
-        return SelectDataTable(tran, SH.Format("SELECT {0} FROM {1}", SH.Join(',', selectSloupce), p));
+        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(',', selectSloupce), p));
     }
 
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, List<string> ziskaneSloupce, string idColumnName, int idColumnValue)
     {
         string nazvy = SH.Join(',', ziskaneSloupce.ToArray());
 
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} ", nazvy, p) + GeneratorMsSql.SimpleWhere(idColumnName));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", nazvy, p) + GeneratorMsSql.SimpleWhere(idColumnName));
         AddCommandParameter(comm, 0, idColumnValue);
         return SelectDataTable(tran, comm);
     }
@@ -283,14 +282,14 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectGreaterThan(SqlTransaction tran, string tableName, string tableColumn, object hodnotaOd)
     {
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT * FROM {0} WHERE {1} > @p0", tableName, tableColumn), conn);
+        SqlCommand comm = new SqlCommand(string.Format("SELECT * FROM {0} WHERE {1} > @p0", tableName, tableColumn), conn);
         AddCommandParameter(comm, 0, hodnotaOd);
         return SelectDataTable(tran, comm);
     }
 
     public string SelectCellDataTableStringOneRow(SqlTransaction tran, string tabulka, string hledanySloupec, params AB[] aB)
     {
-        string sql = SH.Format("SELECT TOP(1) {0} FROM {1} ", hledanySloupec, tabulka) + GeneratorMsSql.CombinedWhere(aB);
+        string sql = string.Format("SELECT TOP(1) {0} FROM {1} ", hledanySloupec, tabulka) + GeneratorMsSql.CombinedWhere(aB);
         SqlCommand comm = new SqlCommand(sql);
         for (int i = 0; i < aB.Length; i++)
         {
@@ -313,7 +312,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         //SELECT TOP 1 * FROM table_Name ORDER BY unique_column DESC
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
-        SqlCommand comm = new SqlCommand(sql + SH.Format(" ORDER BY {0} DESC", unique_column));
+        SqlCommand comm = new SqlCommand(sql + string.Format(" ORDER BY {0} DESC", unique_column));
         AddCommandParameter(comm, 0, idColumnValue);
         DataTable dt = SelectDataTable(tran, comm);
         if (dt.Rows.Count == 0)
@@ -375,7 +374,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<string> SelectValuesOfColumnAllRowsString(SqlTransaction tran, string tabulka, string sloupec)
     {
         List<string> vr = new List<string>();
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1}", sloupec, tabulka));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
         DataTable dt = SelectDataTable(tran, comm);
         foreach (DataRow var in dt.Rows)
         {
@@ -401,7 +400,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string sloupec)
     {
         List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1}", sloupec, tabulka));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
         DataTable dt = SelectDataTable(tran, comm);
         foreach (DataRow var in dt.Rows)
         {
@@ -427,7 +426,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<string> SelectValuesOfColumnAllRowsStringTrim(SqlTransaction tran, string tabulka, string sloupec)
     {
         List<string> vr = new List<string>();
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1}", sloupec, tabulka));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
         DataTable dt = SelectDataTable(tran, comm);
         foreach (DataRow var in dt.Rows)
         {
@@ -449,7 +448,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public bool SelectExistsCombination(SqlTransaction tran, string p, params AB[] aB)
     {
-        string sql = SH.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
+        string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         ABC abc = new ABC(aB);
         DataTable result = SelectDataTable(tran, sql, abc.OnlyBs());
         return result.Rows.Count != 0;
@@ -460,7 +459,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public bool SelectExistsCombination(SqlTransaction tran, string p, out DataTable result, params AB[] aB)
     {
-        string sql = SH.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
+        string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, aB);
         result = SelectDataTable(tran, comm);
@@ -472,7 +471,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public bool SelectExistsCombination(SqlTransaction tran, string p, out DataTable result, string sloupceKVraceni, params AB[] aB)
     {
-        string sql = SH.Format("SELECT {0} FROM {1} {2}", sloupceKVraceni, p, GeneratorMsSql.CombinedWhere(aB));
+        string sql = string.Format("SELECT {0} FROM {1} {2}", sloupceKVraceni, p, GeneratorMsSql.CombinedWhere(aB));
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, aB);
         result = SelectDataTable(tran, comm);
@@ -484,7 +483,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public bool SelectExists(SqlTransaction tran, string tabulka, string sloupec, object hodnota)
     {
-        string sql = SH.Format("SELECT {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
+        string sql = string.Format("SELECT {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
         DataTable result = SelectDataTable(tran, sql, hodnota);
         return result.Rows.Count != 0;
     }
@@ -494,7 +493,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int SelectID(SqlTransaction tran, string tabulka, string nazevSloupce, object hodnotaSloupce)
     {
-        SqlCommand c = new SqlCommand(SH.Format("SELECT (ID) FROM {0} WHERE {1} = @p0", tabulka, nazevSloupce), conn, tran);
+        SqlCommand c = new SqlCommand(string.Format("SELECT (ID) FROM {0} WHERE {1} = @p0", tabulka, nazevSloupce), conn, tran);
         AddCommandParameter(c, 0, hodnotaSloupce);
         #region Pomocí DataTable
         DataTable dt = new DataTable();
@@ -540,7 +539,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         if (SelectID(tran, tabulka, "Name", nazev) == int.MinValue)
         {
-            SqlCommand c = new SqlCommand(SH.Format("INSERT INTO {0} (ID, Name) VALUES (@p0, @p1)", tabulka), conn, tran);
+            SqlCommand c = new SqlCommand(string.Format("INSERT INTO {0} (ID, Name) VALUES (@p0, @p1)", tabulka), conn, tran);
             AddCommandParameter(c, 0, SelectFindOutNumberOfRows(tran, tabulka) + 1);
             AddCommandParameter(c, 1, nazev);
             c.ExecuteNonQuery();
@@ -584,7 +583,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             return "";
         }
-        //SQLiteCommand comm = new SQLiteCommand(SH.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
+        //SQLiteCommand comm = new SQLiteCommand(string.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
         return GetCellDataTableString(dt, 0, 1);
     }
 
@@ -595,7 +594,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             return "";
         }
-        //SQLiteCommand comm = new SQLiteCommand(SH.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
+        //SQLiteCommand comm = new SQLiteCommand(string.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
         return GetCellDataTableString(dt, 0, 1);
     }
 
@@ -676,7 +675,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int Update(SqlTransaction tran, string table, string sloupecKUpdate, object n, string sloupecID, object id)
     {
-        string sql = SH.Format("UPDATE {0} SET {1}=@p0 WHERE {2} = @p1", table, sloupecKUpdate, sloupecID);
+        string sql = string.Format("UPDATE {0} SET {1}=@p0 WHERE {2} = @p1", table, sloupecKUpdate, sloupecID);
         SqlCommand comm = new SqlCommand(sql, conn, tran);
         AddCommandParameter(comm, 0, n);
         AddCommandParameter(comm, 1, id);
@@ -690,7 +689,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int UpdateOneRow(SqlTransaction tran, string table, string sloupecKUpdate, object n, string sloupecID, object id)
     {
-        string sql = SH.Format("UPDATE {0} SET {1}=@p1 WHERE {2} = @p2", table, sloupecKUpdate, sloupecID);
+        string sql = string.Format("UPDATE {0} SET {1}=@p1 WHERE {2} = @p2", table, sloupecKUpdate, sloupecID);
         SqlCommand comm = new SqlCommand(sql, conn, tran);
         AddCommandParameter(comm, 1, n);
         AddCommandParameter(comm, 2, id);
@@ -712,7 +711,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string setString = GeneratorMsSql.CombinedSet(sets);
         //int pocetParametruSets = sets.Length;
         int indexParametrWhere = sets.Length;
-        SqlCommand comm = new SqlCommand(SH.Format("UPDATE {0} {1} WHERE {2}={3}", TableName, setString, nameOfColumn, "@p" + (indexParametrWhere).ToString()));
+        SqlCommand comm = new SqlCommand(string.Format("UPDATE {0} {1} WHERE {2}={3}", TableName, setString, nameOfColumn, "@p" + (indexParametrWhere).ToString()));
         for (int i = 0; i < indexParametrWhere; i++)
         {
             AddCommandParameter(comm, i, sets[i].B);
@@ -734,7 +733,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public bool Delete(SqlTransaction tran, string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhere(where);
-        SqlCommand comm = new SqlCommand( "DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(tran, comm);
 
@@ -746,7 +745,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int Delete(SqlTransaction tran, string table, string sloupec, object id)
     {
-        return ExecuteNonQuery(tran, new SqlCommand(SH.Format("DELETE FROM {0} WHERE {1} = @p0", table, sloupec)), id);
+        return ExecuteNonQuery(tran, new SqlCommand(string.Format("DELETE FROM {0} WHERE {1} = @p0", table, sloupec)), id);
     }
 
     /// <summary>
@@ -771,7 +770,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
-        SqlCommand comm = new SqlCommand(SH.Format("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, hodnoty), conn, tran);
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, hodnoty), conn, tran);
         for (int i = 0; i < sloupce.Length; i++)
         {
             AddCommandParameter(comm, i, sloupce[i]);
@@ -808,7 +807,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
 
         int d = SelectLastIDFromTable(tran, tabulka, sloupecID);
-        SqlCommand comm = new SqlCommand(SH.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", ++d);
         int to = sloupce.Length + 1;
         for (int i = 1; i < to; i++)
@@ -833,7 +832,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
-        SqlCommand comm = new SqlCommand(SH.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", IDUsers);
         int to = sloupce.Length + 1;
         for (int i = 1; i < to; i++)
@@ -857,7 +856,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
-        SqlCommand comm = new SqlCommand(SH.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", IDUsers);
         int to = sloupce.Length + 1;
         for (int i = 1; i < to; i++)
@@ -964,7 +963,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <returns></returns>
     private DataTable SelectDataTableWithWhere(SqlTransaction tran, string tabulka, string sloupce, string whereName, object whereValue)
     {
-        return SelectDataTable(tran, SH.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupce, tabulka, whereName), whereValue);
+        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupce, tabulka, whereName), whereValue);
         //return null;
     }
 
@@ -988,7 +987,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public bool SelectExistsTable(SqlTransaction tran, string p)
     {
-        DataTable dt = SelectDataTable(tran, SH.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
+        DataTable dt = SelectDataTable(tran, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
         return dt.Rows.Count != 0;
     }
 
@@ -1007,7 +1006,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             AddCommandParameter(comm, i, _params[i]);
         }
         return SelectDataTable(tran, comm);
-        //return SelectDataTable(SH.Format(sql, _params));
+        //return SelectDataTable(string.Format(sql, _params));
     }
 
 
@@ -1034,7 +1033,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string setString = GeneratorMsSql.CombinedSet(sets);
         string whereString = GeneratorMsSql.CombinedWhere(where);
         int indexParametrWhere = sets.Length + 1;
-        SqlCommand comm = new SqlCommand(SH.Format("UPDATE {0} {1} WHERE {2}", TableName, setString, whereString));
+        SqlCommand comm = new SqlCommand(string.Format("UPDATE {0} {1} WHERE {2}", TableName, setString, whereString));
         //bool first = true;
         for (int i = 0; i < indexParametrWhere; i++)
         {
@@ -1050,7 +1049,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         ExecuteNonQuery(tran, comm);
     }
 
-    
+
 
 
 
@@ -1105,7 +1104,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string hledanySloupec, string idColumn, object idValue)
     {
         List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, idColumn));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, idColumn));
         AddCommandParameter(comm, 0, idValue);
         DataTable dt = SelectDataTable(tran, comm);
         foreach (DataRow var in dt.Rows)
@@ -1128,7 +1127,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
 
         List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(SH.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
         for (int i = 0; i < aB.Length; i++)
         {
             AddCommandParameter(comm, i, aB[i].B);

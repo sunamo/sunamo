@@ -82,7 +82,7 @@ public class GeneralHelper
             if (bmp.Height > bmp.Width)
             {
                 // Menší je šířka, vypočtu optimální velikost obrázku, kde specifikuji výšku 168
-                sizeMin = Pictures.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
                 bool vypocistIVysku = false;
                 while (sizeMin.Width > GeneralConsts.tnWidth)
                 {
@@ -101,7 +101,7 @@ public class GeneralHelper
             }
             else if (bmp.Width > bmp.Height)
             {
-                sizeMin = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
                 bool vypocistISirku = false;
                 while (sizeMin.Height > GeneralConsts.tnHeight)
                 {
@@ -135,7 +135,7 @@ public class GeneralHelper
         {
             string tempMin = toFolderTempSlash + fnwoe + "_tn" + ext;
             FS.CreateUpfoldersPsysicallyUnlessThere(tempMin);
-            shared.Pictures.TransformImage(bmp, sizeMin.Width, sizeMin.Height, tempMin);
+            PicturesShared.TransformImage(bmp, sizeMin.Width, sizeMin.Height, tempMin);
             using (System.Drawing.Image bmpMin = Bitmap.FromFile(tempMin))
             {
                 using (Bitmap b2 = new Bitmap(GeneralConsts.tnWidth, GeneralConsts.tnHeight))
@@ -175,7 +175,7 @@ public class GeneralHelper
             if (bmp.Height > bmp.Width)
             {
                 // Menší je šířka, vypočtu optimální velikost obrázku, kde specifikuji výšku 168
-                sizeMin = Pictures.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
                 bool vypocistIVysku = false;
                 while (sizeMin.Width > GeneralConsts.tnWidth)
                 {
@@ -194,7 +194,7 @@ public class GeneralHelper
             }
             else if (bmp.Width > bmp.Height)
             {
-                sizeMin = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
                 bool vypocistISirku = false;
                 while (sizeMin.Height > GeneralConsts.tnHeight)
                 {
@@ -228,7 +228,7 @@ public class GeneralHelper
         {
             string tempMin = toFolderTempSlash + fnwoe + "_tn" + ext;
             FS.CreateUpfoldersPsysicallyUnlessThere(tempMin);
-            shared.Pictures.TransformImage(bmp, sizeMin.Width, sizeMin.Height, finalMin);
+            PicturesShared.TransformImage(bmp, sizeMin.Width, sizeMin.Height, finalMin);
         }
     }
 
@@ -695,7 +695,7 @@ public class GeneralHelper
 
     public static string GetTableNameDistricts(byte idState, int idRegion)
     {
-        return SH.Format("S{0}_R{1}_Districts", idState, idRegion);
+        return SH.Format2("S{0}_R{1}_Districts", idState, idRegion);
     }
 
 

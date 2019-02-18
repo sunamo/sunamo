@@ -22,6 +22,8 @@
             <StackPanel x:FieldModifier="public" x:Name="lbLogs"></StackPanel>
         </ScrollViewer>
 
-    </Grid>
+            <!--<ListBox Grid.Row="1" x:Name="lbLogs" x:FieldModifier="public"></ListBox>-->
+
+        </Grid>
     </Border>
 </UserControl>

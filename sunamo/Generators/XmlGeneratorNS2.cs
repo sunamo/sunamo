@@ -11,7 +11,7 @@ using System.Diagnostics;
 /// Element - prvek kter�mu se zapisuj� ihned i innerObsah. M��e b�t i pr�zdn�.
 /// Tag - prvek kter�mu to mohu zapsat pozd�ji nebo v�bec.
 /// </summary>
-public class XmlGeneratorNS2
+public  class XmlGeneratorNS2
 {
     protected StringBuilder sb = new StringBuilder();
      string ns = null;

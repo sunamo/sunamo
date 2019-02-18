@@ -13,7 +13,7 @@ using System.Linq;
 
 public class SourceCodeIndexerRoslyn
 {
-    public static Dictionary<string, SourceFileTree> sourceFileTrees = new Dictionary<string, SourceFileTree>();
+    public Dictionary<string, SourceFileTree> sourceFileTrees = new Dictionary<string, SourceFileTree>();
     Type type = typeof(SourceCodeIndexerRoslyn);
     //public Dictionary<string, TU<string, int>> foundedLines = new Dictionary<string, TU<string, int>>();
     /// <summary>
@@ -71,12 +71,23 @@ public class SourceCodeIndexerRoslyn
     {
         SyntaxTree tree;
         CompilationUnitSyntax root;
-        ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions);
-
-        sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = tree });
+        if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions))
+        {
+            sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = tree });
+        }
     }
 
-    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, out SyntaxTree tree, out CompilationUnitSyntax root,  bool removeRegions = false)
+    /// <summary>
+    /// True if file wasnt indexed yet
+    /// False is file was already indexed
+    /// </summary>
+    /// <param name="pathFile"></param>
+    /// <param name="namespaceCodeElementsType"></param>
+    /// <param name="classCodeElementsType"></param>
+    /// <param name="tree"></param>
+    /// <param name="root"></param>
+    /// <param name="removeRegions"></param>
+    public bool ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, out SyntaxTree tree, out CompilationUnitSyntax root,  bool removeRegions = false)
     {
         tree = null;
         root = null;
@@ -190,7 +201,12 @@ public class SourceCodeIndexerRoslyn
                 }
             }
             AddMethodsFrom(root, pathFile);
+
+            return true;
+
         }
+
+        return false;
     }
 
     private void AddMethodsFrom(CSharpSyntaxNode ancestor, string pathFile)

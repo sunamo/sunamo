@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace sunamo.Helpers.DT
-{
-    public class DTHelperGeneral
+    public partial class DTHelperGeneral
     {
         public static string TimeInMsToSeconds(Stopwatch p)
         {
@@ -23,29 +21,6 @@ namespace sunamo.Helpers.DT
         {
             DateTime dt = DateTime.Today;
             return dt.AddHours(DateTime.Now.Hour);
-        }
-
-        #region General
-        /// <summary>
-        /// A2 bylo původně SqlServerHelper.DateTimeMinVal
-        /// </summary>
-        /// <param name="bday"></param>
-        /// <returns></returns>
-        public static byte CalculateAge(DateTime bday, DateTime dtMinVal)
-        {
-            if (bday == dtMinVal)
-            {
-                return 255;
-            }
-            DateTime today = DateTime.Today;
-            int age = today.Year - bday.Year;
-            if (bday > today.AddYears(-age)) age--;
-            byte vr = (byte)age;
-            if (vr == 255)
-            {
-                return 0;
-            }
-            return vr;
         }
 
         public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
@@ -105,7 +80,6 @@ namespace sunamo.Helpers.DT
             return false;
         }
 
-        #region Seconds in
         public static long SecondsInMonth(DateTime dt)
         {
             return DTConstants.secondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
@@ -121,7 +95,6 @@ namespace sunamo.Helpers.DT
 
             return mal * DTConstants.secondsInDay;
         }
-        #endregion
 
         public static DateTime SetToday(DateTime ugtFirstStep)
         {
@@ -129,7 +102,6 @@ namespace sunamo.Helpers.DT
             return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
         }
 
-        #endregion
         /// <summary>
         /// Počítá pouze čas, vrátí jako nenormalizovaný int
         /// </summary>
@@ -145,14 +117,6 @@ namespace sunamo.Helpers.DT
             return vr;
         }
 
-        public static string MakeUpTo2NumbersToZero(int p)
-        {
-            if (p.ToString().Length == 1)
-            {
-                return "0" + p;
-            }
-            return p.ToString();
-        }
 
         public static DateTime Create(string day, string month, string hour, string minute)
         {
@@ -168,4 +132,3 @@ namespace sunamo.Helpers.DT
             return today;
         }
     }
-}

@@ -57,4 +57,20 @@ public static string RandomElementOfArray(Array ppk)
         int nt = RandomInt(ppk.Length);
         return ppk.GetValue(nt).ToString();
     }
+
+public static int RandomInt()
+    {
+        return rnd.Next(0, int.MaxValue);
+    }
+/// <summary>
+    /// Vr�t� ��slo mezi A1 a A2 v�etn�
+    /// </summary>
+    /// <param name="od"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
+    public static int RandomInt(int od, int to)
+    {
+
+        return rnd.Next(od, to+1);
+    }
 }

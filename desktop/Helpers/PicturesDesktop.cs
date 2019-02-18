@@ -11,9 +11,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace desktop
-{
-    public class Pictures
+
+    public class PicturesDesktop
     {
         public static BitmapSource MakeTransparentWindowsFormsButton(BitmapSource bs)
         {
@@ -169,12 +168,12 @@ namespace desktop
             if (minimalHeightPadding <= 0 && minimalWidthPadding <= 0)
             {
 
-                bi = desktop.Pictures.PlaceToCenter(wb, wb.Width, wb.Height, false, 0, 0, arg, img2, true);
+                bi = PicturesDesktop.PlaceToCenter(wb, wb.Width, wb.Height, false, 0, 0, arg, img2, true);
 
             }
             else
             {
-                bi = desktop.Pictures.PlaceToCenter(wb, wb.Width, wb.Height, false, minimalWidthPadding / 2, minimalHeightPadding / 2, arg, img2, useAtA1PixelSize);
+                bi = PicturesDesktop.PlaceToCenter(wb, wb.Width, wb.Height, false, minimalWidthPadding / 2, minimalHeightPadding / 2, arg, img2, useAtA1PixelSize);
             }
 
             //return PlaceToCenterExactly(img, args, width, height, i, temp, writeToConsole, minimalWidthPadding, minimalHeightPadding);
@@ -290,24 +289,24 @@ namespace desktop
                 if (path.Contains("targetsize-16"))
                 {
                     ts16 = true;
-                    //vr = shared.Pictures.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, true);
-                    vr = Pictures.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
+                    //vr = PicturesShared.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, true);
+                    vr = PicturesDesktop.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
                     vr = CreateBitmapSource(vr.PixelWidth, vr.PixelHeight, paddingLeftRight, paddingTopBottom, bi, vr, true);
                 }
                 else if (path.Contains("targetsize"))
                 {
-                    vr = desktop.Pictures.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, false);
+                    vr = PicturesDesktop.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, false);
                 }
                 else
                 {
-                    vr = desktop.Pictures.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, false);
+                    vr = PicturesDesktop.PlaceToCenterExactly(width, height, false, paddingLeftRight, paddingTopBottom, bi, ratioW, ratioH, false);
                 }
             }
             else
             {
 
 
-                vr = Pictures.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
+                vr = PicturesDesktop.ImageResize(bi, width, height, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(bi), true);
                 vr = CreateBitmapSource(vr.PixelWidth, vr.PixelHeight, 0, 0, bi, vr);
 
             }
@@ -352,7 +351,7 @@ namespace desktop
             double newHeight = height;
             double innerWidth = arg.image.Width;
             double innerHeight = arg.image.Height;
-            var img2 = Pictures.ImageResize(arg.path, minWidthImage, minHeightImage, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(arg.path), useAtA1PixelSize);
+            var img2 = PicturesDesktop.ImageResize(arg.path, minWidthImage, minHeightImage, 0, 0, PicturesSunamo.GetImageFormatsFromExtension(arg.path), useAtA1PixelSize);
             BitmapSource bi = null;
             //bi = img2;
             if (true && img2 != null)
@@ -534,4 +533,4 @@ namespace desktop
         #endregion
 
     }
-}
+

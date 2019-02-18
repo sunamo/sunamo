@@ -1,4 +1,6 @@
-﻿using System;
+﻿using sunamo.Constants;
+using sunamo.Essential;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +9,21 @@ using System.Text;
 public static partial class SH
 {
     public const String diacritic = "áčďéěíňóšťúůýřžÁČĎÉĚÍŇÓŠŤÚŮÝŘŽ";
+    static Type type = typeof(SH);
 
+    public static string MakeUpToXChars(int p, int p_2)
+    {
+        StringBuilder sb = new StringBuilder();
+        string d = p.ToString();
+        int doplnit = (p.ToString().Length - p_2) * -1;
+        for (int i = 0; i < doplnit; i++)
+        {
+            sb.Append(0);
+        }
+        sb.Append(d);
 
-    
+        return sb.ToString();
+    }
 
     /// <summary>
     /// This can be only one 
@@ -304,7 +318,14 @@ public static partial class SH
 
 
 
-
+    /// <summary>
+    /// If input has curly bracket but isnt in right format, return A1. Otherwise apply string.Format. 
+    /// SH.Format2 return string.Format always
+    /// Wont working if contains {0} and another non-format replacement. For this case of use is there Format3
+    /// </summary>
+    /// <param name="status"></param>
+    /// <param name="args"></param>
+    /// <returns></returns>
 public static string Format(string status, params object[] args)
     {
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
@@ -317,7 +338,7 @@ public static string Format(string status, params object[] args)
             {
                 return string.Format(status, args);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return status;
                 
@@ -336,7 +357,7 @@ public static string Format(string status, params object[] args)
     /// <returns></returns>
     public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
     {
-        var result = SH.Format(templateHandler, args);
+        var result = SH.Format2(templateHandler, args);
         const string replacement = "{        }";
         result = SH.ReplaceAll2(result, replacement, "[]");
         result = SH.ReplaceAll2(result, "{", lsf);
@@ -574,5 +595,98 @@ public static List<int> GetVariablesInString(string innerHtml)
     {
         var split = SH.Split(input, delimiter);
         return CA.RemoveDuplicitiesList(new List<string>(split));
+    }
+
+/// <summary>
+    /// G zda je jedinz znak v A1 s dia.
+    /// </summary>
+    /// <returns></returns>
+    public static bool ContainsDiacritic(string slovo)
+    {
+        return slovo != SH.TextWithoutDiacritic(slovo);
+    }
+
+public static string[] SplitNone(string text, params char[] deli)
+    {
+        return Split(StringSplitOptions.None, text, deli);
+    }
+
+    static bool cs = false;
+    /// <summary>
+    /// With these 
+    /// </summary>
+    /// <param name="stringSplitOptions"></param>
+    /// <param name="text"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
+    private static string[] Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
+    {
+        if (deli == null || deli.Count() == 0)
+        {
+            if (cs)
+            {
+                throw new Exception("Nebyl specifikován delimiter");
+            }
+            else
+            {
+                throw new Exception("No delimiter determined");
+            }
+        }
+
+        return text.Split(deli, stringSplitOptions);
+    }
+
+    /// <summary>
+    /// Simply return from string.Format. SH.Format is more intelligent
+    /// </summary>
+    /// <param name="template"></param>
+    /// <param name="args"></param>
+    /// <returns></returns>
+public static string Format2(string template, params object[] args)
+    {
+        
+
+        //now is, also due to use {0:X2} etc
+        return string.Format(template, args);
+    }
+
+    /// <summary>
+    /// Manually replace every {i} 
+    /// </summary>
+    /// <param name="template"></param>
+    /// <param name="args"></param>
+    /// <returns></returns>
+    public static string Format3(string template, params object[] args)
+    {
+        // this was original implementation but dont know why isnt used string.format
+        for (int i = 0; i < args.Length; i++)
+        {
+            template = SH.ReplaceAll2(template, args[i].ToString(), "{" + i + "}");
+        }
+        return template;
+    }
+
+    public static string FirstCharLower(string nazevPP)
+    {
+        string sb = nazevPP.Substring(1);
+        return nazevPP[0].ToString().ToLower() + sb;
+    }
+
+public static string JoinPairs(params object[] parts)
+    {
+        return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
+    }
+public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
+    {
+        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < parts.Length; i++)
+        {
+            sb.Append(parts[i++] + firstDelimiter);
+            sb.Append(parts[i] + secondDelimiter);
+        }
+        return sb.ToString();
     }
 }

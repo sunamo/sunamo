@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.CodeGenerator
-{
     /// <summary>
     /// Similar: InstantSB,TextBuilder,HtmlSB
     /// </summary>
-    public abstract class GeneratorCodeAbstract
+    public abstract partial class GeneratorCodeAbstract
     {
         protected InstantSB sb = new InstantSB(" ");
 
@@ -86,7 +84,7 @@ namespace sunamo.CodeGenerator
         {
             if (p2.Length != 0)
             {
-                sb.AppendLine(AddTab(tabCount, SH.Format(p, p2)));
+                sb.AppendLine(AddTab(tabCount, SH.Format2(p, p2)));
             }
             else
             {
@@ -98,7 +96,7 @@ namespace sunamo.CodeGenerator
         {
             if (p2.Length != 0)
             {
-                sb.AddItem(AddTab(tabCount, SH.Format(p, p2)));
+                sb.AddItem(AddTab(tabCount, SH.Format2(p, p2)));
             }
             else
             {
@@ -136,4 +134,3 @@ namespace sunamo.CodeGenerator
             AssignValue(tabCount, objectName, variable, vs, addToHyphens);
         }
     }
-}

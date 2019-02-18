@@ -5,16 +5,15 @@ using System.Drawing.Imaging;
 using System;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
-using System.Windows.Media;
+
 using System.Windows;
 using sunamo;
 using sunamo.Data;
 using System.Drawing;
 using sunamo.Essential;
 
-namespace shared
-{
-    public class Pictures
+
+    public class PicturesShared
     {
         private static Regex r = new Regex(":");
 
@@ -53,7 +52,7 @@ namespace shared
                 Image imgo = Image.FromFile(path);
                 width = imgo.Width;
                 height = imgo.Height;
-                return Pictures.ImageToBase64(imgo, jpeg);
+                return PicturesShared.ImageToBase64(imgo, jpeg);
             }
             width = 0;
             height = 0;
@@ -384,7 +383,7 @@ namespace shared
 			string fnOri = "";
 
 			//string ext = "";
-			if (true) //Pictures.GetImageFormatFromExtension1(fnOri, out ext))
+			if (true) //PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
 			{
 
 				float minWidthImage = width;
@@ -403,7 +402,7 @@ namespace shared
 				float y = (height - newHeight) / 2f;
 				float x = (width - newWidth) / 2f;
 				string temp = finalPath;
-				//img = Pictures.ImageResize(img, (int)newWidth, (int)newHeight, Pictures.GetImageFormatsFromExtension2(ext));
+				//img = PicturesDesktop.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension2(ext));
 				if (img != null)
 				{
 					Bitmap bmp = new Bitmap(512, 384);
@@ -493,7 +492,7 @@ namespace shared
                     //g.Save();
                     string temp = finalPath;
 
-                    Pictures.SaveImage(temp, img, Pictures.GetImageFormatFromExtension2(ext));
+                    PicturesShared.SaveImage(temp, img, PicturesShared.GetImageFormatFromExtension2(ext));
                     img.Dispose();
                     if (writeToConsole)
                     {
@@ -514,7 +513,7 @@ namespace shared
                         newHeight *= .9f;
                     }
                     string temp = finalPath;
-                    imgArg = Pictures.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension(arg));
+                    imgArg = PicturesShared.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension(arg));
                     if (imgArg != null)
                     {
 
@@ -586,7 +585,7 @@ namespace shared
 
 
             string temp = finalPath;
-            System.Drawing.Image img2 = Pictures.ImageResize(args[i].image, (int)innerWidth, (int)innerHeight, PicturesSunamo.GetImageFormatsFromExtension(args[i].path));
+            System.Drawing.Image img2 = PicturesShared.ImageResize(args[i].image, (int)innerWidth, (int)innerHeight, PicturesSunamo.GetImageFormatsFromExtension(args[i].path));
             if (img2 != null)
             {
                 #region MyRegion
@@ -595,7 +594,7 @@ namespace shared
                 Bitmap bmp = new Bitmap(img);
                 img.Dispose();
 
-                shared.Pictures.PlaceToCenter(bmp, (int)newWidth2, (int)newHeight2, finalPath, false, 0f, 0f, args[i].path, img2);
+                PicturesShared.PlaceToCenter(bmp, (int)newWidth2, (int)newHeight2, finalPath, false, 0f, 0f, args[i].path, img2);
 
                 //return PlaceToCenterExactly(img, args, width, height, i, temp, writeToConsole, minimalWidthPadding, minimalHeightPadding);
             }
@@ -609,4 +608,3 @@ namespace shared
         }
         #endregion
     }
-}

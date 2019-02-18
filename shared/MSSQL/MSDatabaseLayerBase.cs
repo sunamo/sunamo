@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
-public class MSDatabaseLayerBase
+public partial class MSDatabaseLayerBase
 {
     public static SqlConnection conn = null;
 
@@ -146,168 +146,6 @@ public class MSDatabaseLayerBase
     }
 
     /// <summary>
-    /// NSN
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static string ConvertObjectToDotNetType(object p)
-    {
-        if (p.GetType() == Consts.tString)
-        {
-            return "string";
-        }
-        else if (p.GetType() == Consts.tInt)
-        {
-            return "int";
-        }
-        else if (p.GetType() == Consts.tBool)
-        {
-            return "bool";
-        }
-        else if (p.GetType() == Consts.tDateTime)
-        {
-            return "DateTime";
-        }
-        else if (p.GetType() == Consts.tBinary)
-        {
-            return "byte[]";
-        }
-        else if (p.GetType() == Consts.tFloat)
-        {
-            return "float";
-        }
-        else if (p.GetType().IsEnum)
-        {
-            return p.GetType().Name;
-        }
-        else if (p.GetType() == Consts.tDouble)
-        {
-            return "double";
-        }
-        else if (p.GetType() == Consts.tDecimal)
-        {
-            return "decimal";
-        }
-        else if (p.GetType() == Consts.tSbyte)
-        {
-            return "sbyte";
-        }
-        else if (p.GetType() == Consts.tSbyte)
-        {
-            return "byte";
-        }
-        else if (p.GetType() == Consts.tChar)
-        {
-            return "char";
-        }
-        else if (p.GetType() == Consts.tShort)
-        {
-            return "short";
-        }
-        else if (p.GetType() == Consts.tUshort)
-        {
-            return "ushort";
-        }
-        else if (p.GetType() == Consts.tUint)
-        {
-            return "uint";
-        }
-        else if (p.GetType() == Consts.tLong)
-        {
-            return "long";
-        }
-        else if (p.GetType() == Consts.uUlong)
-        {
-            return "ulong";
-        }
-        else
-        {
-            throw new Exception("Snažíte se vytvořit třídu s nepodporovaným typem");
-        }
-    }
-
-    /// <summary>
-    /// NSN
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static string ConvertObjectToDotNetType(Type p)
-    {
-        if (p == Consts.tString)
-        {
-            return "string";
-        }
-        else if (p == Consts.tInt)
-        {
-            return "int";
-        }
-        else if (p == Consts.tBool)
-        {
-            return "bool";
-        }
-        else if (p == Consts.tDateTime)
-        {
-            return "DateTime";
-        }
-        else if (p == Consts.tBinary)
-        {
-            return "byte[]";
-        }
-        else if (p == Consts.tFloat)
-        {
-            return "float";
-        }
-        else if (p.IsEnum)
-        {
-            return p.Name;
-        }
-        else if (p == Consts.tDouble)
-        {
-            return "double";
-        }
-        else if (p == Consts.tDecimal)
-        {
-            return "decimal";
-        }
-        else if (p == Consts.tSbyte)
-        {
-            return "sbyte";
-        }
-        else if (p == Consts.tByte)
-        {
-            return "byte";
-        }
-        else if (p == Consts.tChar)
-        {
-            return "char";
-        }
-        else if (p == Consts.tShort)
-        {
-            return "short";
-        }
-        else if (p == Consts.tUshort)
-        {
-            return "ushort";
-        }
-        else if (p == Consts.tUint)
-        {
-            return "uint";
-        }
-        else if (p == Consts.tLong)
-        {
-            return "long";
-        }
-        else if (p == Consts.uUlong)
-        {
-            return "ulong";
-        }
-        else
-        {
-            throw new Exception("Snažíte se vytvořit název třídy s nepodporovaným typem");
-        }
-    }
-
-    /// <summary>
     /// Jsou rozděleny do 2 dict ze 2 důvodů: 
     /// 1) aby se rychleji získavali popisy daných datových typů
     /// 2) aby jsem odlišil a zaznamenal typy které chci používat a které nikoliv
@@ -317,7 +155,6 @@ public class MSDatabaseLayerBase
 
     static MSDatabaseLayerBase()
     {
-        #region Používané datové typy
         usedTa.Add(SqlDbType.SmallDateTime, "Datum a čas");
         usedTa.Add(SqlDbType.Real, "Číslo s desetinnou čárkou");
         usedTa.Add(SqlDbType.Int, "Číslo bez desetinné čárky v rozsahu od -2,147,483,648 do 2,147,483,647");
@@ -328,9 +165,7 @@ public class MSDatabaseLayerBase
         usedTa.Add(SqlDbType.Binary, "Zápis bajtů v rozmezí velikosti 1-8000");
 
 
-        #endregion
 
-        #region Skryté datové typy
 
         // Je to sice nejlepší možná varianta(Text) pro ukládání textů, ale i tak to NEpatří do DB
         hiddenTa.Add(SqlDbType.Text, "Neomezený řetězec");
@@ -342,7 +177,6 @@ public class MSDatabaseLayerBase
         hiddenTa.Add(SqlDbType.Char, "Řetězec non-unicode s pevnou šířkou do velikosti 8000 znaků");
         hiddenTa.Add(SqlDbType.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
 
-        #endregion
     }
 
     public static List<object> GetUsedDataTypes()

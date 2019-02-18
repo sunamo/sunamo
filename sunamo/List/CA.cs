@@ -1,5 +1,4 @@
 ﻿
-using sunamo.Constants;
 using sunamo.Data;
 
 using System;
@@ -9,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-public static partial class CA
+public static partial  class CA
 {
     static Type type = typeof(CA);
 
@@ -35,16 +34,6 @@ public static partial class CA
             input[i] = numbered[i] + input[i]; 
         }
 
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Swap<T>(this IList<T> list, int i, int j)
-    {
-        if (i == j)   //This check is not required but Partition function may make many calls so its for perf reason
-            return;
-        var temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
     }
 
     public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
@@ -140,18 +129,7 @@ public static partial class CA
         }
         return list;
     }
-
-    public static void AppendToLastElement(List<string> list, string s)
-    {
-        if (list.Count >0 )
-        {
-            list[list.Count - 1] += s;
-        }
-        else
-        {
-            list.Add(s);
-        }
-    }
+    
 
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {
@@ -190,11 +168,6 @@ public static partial class CA
         return col.Length > dex;
     }
 
-    public static List<T> ToList<T>(params T[] f)
-    {
-        return new List<T>(f);
-    }
-
     public static List<string> OnlyFirstCharUpper(List<string> list)
     {
         return ChangeContent(list, SH.OnlyFirstCharUpper);
@@ -205,47 +178,6 @@ public static partial class CA
         return od >= index && to <= index;
     }
 
-    /// <summary>
-    /// For all types
-    /// </summary>
-    /// <param name="times"></param>
-    /// <returns></returns>
-    public static List<int> IndexesWithNull(IEnumerable times) 
-    {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
-        {
-            if (item == null)
-            {
-                nulled.Add(i);
-            }
-            i++;
-        }
-
-        return nulled;
-    }
-
-    /// <summary>
-    /// Only for structs
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="times"></param>
-    /// <returns></returns>
-    public static List<int> IndexesWithNull<T>(List<Nullable<T>> times) where T : struct
-    {
-
-        List<int> nulled = new List<int>();
-        for (int i = 0; i < times.Count; i++)
-        {
-            T? t = new Nullable<T>(times[i].Value);
-            if (!t.HasValue)
-            {
-                nulled.Add(i);
-            }
-        }
-        return nulled;
-    }
 
     public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
     {
@@ -301,31 +233,6 @@ public static partial class CA
             }
         }
         return result.ToArray();
-    }
-
-    /// <summary>
-    /// Dont trim
-    /// </summary>
-    /// <param name="times"></param>
-    /// <returns></returns>
-    public static List<int> IndexesWithNullOrEmpty(IEnumerable times)
-    {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
-        {
-            if (item == null)
-            {
-                nulled.Add(i);
-            }
-            else if(item.ToString() == string.Empty)
-            {
-                nulled.Add(i);
-            }
-            i++;
-        }
-
-        return nulled;
     }
 
     public static List<T> CreateListAndInsertElement<T>(T el)
@@ -513,7 +420,6 @@ public static partial class CA
         return TrimEnd(new List<string>(sf), toTrim).ToArray();
     }
 
-    #region input Object IEnumerable
     public static bool HasIndexWithoutException(int p, IList nahledy)
     {
         if (p < 0)
@@ -583,9 +489,7 @@ public static partial class CA
         o.AddRange(sloupce);
         return o.ToArray();
     }
-    #endregion
 
-    #region input Numeric IEnumerable
     public static bool Contains(int idUser, int[] onlyUsers)
     {
         foreach (int item in onlyUsers)
@@ -620,9 +524,7 @@ public static partial class CA
         return lb;
     }
 
-    #endregion
 
-    #region input String IEnumerable
     public static bool HasFirstItemLength(string[] notContains)
     {
         string t = "";
@@ -632,43 +534,6 @@ public static partial class CA
         }
         return t.Length > 0;
     }
-
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <param name="l"></param>
-    /// <returns></returns>
-    public static List<string> Trim(List<string> l)
-    {
-        for (int i = 0; i < l.Count; i++)
-        {
-            l[i] = l[i].Trim();
-        }
-        return l;
-    }
-
-
-    public static bool IsEmptyOrNull(IEnumerable mustBe)
-    {
-        if (mustBe == null)
-        {
-            return true;
-        }
-        else if (mustBe.Count() == 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static string[] Trim(string[] l)
-    {
-        var list = CA.ToListString(l);
-        CA.Trim(list);
-        return list.ToArray();
-    }
-
-
 
     public static string[] EnsureBackslash(string[] eb)
     {
@@ -834,16 +699,21 @@ public static partial class CA
         return false;
     }
 
-    public static List<string> JoinArrayAndArrayString(string[] a, params string[] p)
+    public static List<string> JoinArrayAndArrayString(IEnumerable<string> a, IEnumerable<string> p)
     {
         if (a != null)
         {
-            List<string> d = new List<string>(a.Length + p.Length);
+            List<string> d = new List<string>(a.Length() + p.Length());
             d.AddRange(a);
             d.AddRange(p);
             return d;
         }
         return new List<string>(p);
+    }
+
+    public static List<string> JoinArrayAndArrayString(IEnumerable<string> a, params string[] p)
+    {
+        return JoinArrayAndArrayString(a, p.ToList());
     }
 
     public static List<string> WrapWithQm(List<string> value)
@@ -1106,9 +976,7 @@ public static partial class CA
 
         return false;
     }
-    #endregion
 
-    #region input Generic IEnumerable
     public static T[,] OneDimensionArrayToTwoDirection<T>(T[] flatArray, int width)
     {
         int height = (int)Math.Ceiling(flatArray.Length / (double)width);
@@ -1330,14 +1198,7 @@ public static partial class CA
 
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
     }
-    #endregion
 
-    #region To Array (without change) - output Generic
-    public static T[] ToArrayT<T>(params T[] aB)
-    {
-        return aB;
-    }
-    #endregion
 
     
 
@@ -1493,21 +1354,6 @@ public static partial class CA
         return result;
     }
 
-    #region To Array (without change) - output Object type
-
-    public static List<string> TrimStart(char backslash, List<string> s)
-    {
-        for (int i = 0; i < s.Count; i++)
-        {
-            s[i] = s[i].TrimStart(backslash);
-        }
-        return s;
-    }
-
-    public static string[] TrimStart(char backslash, params string[] s)
-    {
-        return TrimStart(backslash, s.ToList()).ToArray();
-    }
 
     /// <summary>
     /// Change elements count in collection to A2
@@ -1579,7 +1425,7 @@ public static partial class CA
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
         {
-            globallyInstalledTsDefinitions[i] = SH.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
+            globallyInstalledTsDefinitions[i] = SH.Format2(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
     }
@@ -1676,7 +1522,6 @@ public static partial class CA
     }
 
     
-    #endregion
 
 
 }
