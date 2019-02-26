@@ -15,6 +15,11 @@ public class FrameworkElementHelper
         return new Size(fe.ActualWidth, fe.ActualHeight);
     }
 
+    public static Size GetContentSize(FrameworkElement fe)
+    {
+        return new Size(fe.Width, fe.Height);
+    }
+
     public static void SetMaxContentSize(FrameworkElement fe, Size s)
     {
         fe.MaxWidth = s.Width;

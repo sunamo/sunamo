@@ -204,14 +204,15 @@ namespace desktop
             if (e.AddedItems.Length() > 0)
             {
                 Selected = e.AddedItems[0];
-                ItemSelected();
+                if (ItemSelected != null)
+                {
+                    ItemSelected();
+                }
             }
             else
             {
                 Selected = null;
             }
-
-            
         }
 
         public bool Tag = false;
@@ -272,11 +273,11 @@ namespace desktop
             if (Selected is IListBoxHelperItem)
             {
                 IListBoxHelperItem lbi = Selected as IListBoxHelperItem;
-                ProcessHelper.Start(lbi.RunOne);
+                PH.Start(lbi.RunOne);
             }
             else
             {
-                ProcessHelper.Start(SelectedS);
+                PH.Start(SelectedS);
             }
         }
         #endregion

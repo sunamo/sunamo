@@ -179,6 +179,14 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName), message));
     }
 
+    /// <summary>
+    /// Throw exc A4,5 is same count of elements
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="detailLocation"></param>
+    /// <param name="before"></param>
+    /// <param name="after"></param>
     public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
     {
        

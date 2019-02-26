@@ -101,7 +101,7 @@ namespace Roslyn
                 List<string> result = new List<string>();
                 // Here probable it mean SpaceName, ale když není namespace, uloží třídu 
                 SyntaxNode sn;
-                var cl = RoslynHelper.GetClass(tree,out sn);
+                var cl = RoslynHelper.GetClass(tree.GetRoot(),out sn);
 
                 SyntaxAnnotation saSn = new SyntaxAnnotation();
                 sn = sn.WithAdditionalAnnotations(saSn);
@@ -144,11 +144,11 @@ namespace Roslyn
 
         /// <summary>
         /// </summary>
-        /// <param name="tree"></param>
+        /// <param name="root"></param>
         /// <param name="lines"></param>
         /// <param name="usings"></param>
         /// <returns></returns>
-        public static ABC GetVariablesInCsharp(SyntaxTree tree, List<string> lines, out CollectionWithoutDuplicates<string> usings)
+        public static ABC GetVariablesInCsharp(SyntaxNode root, List<string> lines, out CollectionWithoutDuplicates<string> usings)
         {
             usings = new CollectionWithoutDuplicates<string>();
             ABC result = new ABC();
@@ -170,7 +170,7 @@ namespace Roslyn
             }
 
             ClassDeclarationSyntax helloWorldDeclaration = null;
-            helloWorldDeclaration = RoslynHelper.GetClass(tree);
+            helloWorldDeclaration = RoslynHelper.GetClass(root);
 
             var variableDeclarations = helloWorldDeclaration.DescendantNodes().OfType<FieldDeclarationSyntax>();
 

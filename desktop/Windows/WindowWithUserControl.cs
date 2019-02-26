@@ -13,12 +13,16 @@ using System.Windows.Controls.Primitives;
 /// </summary>
 public class WindowWithUserControl : Window, IUserControlWithResult
 {
+    UserControl userControl = null;
+    DockPanel dock = null;
+    IUserControlInWindow uc = null;
 
     public WindowWithUserControl(IUserControlInWindow uc, ResizeMode rm, bool addDialogButtons = false)
     {
         this.Closed += WindowWithUserControl_Closed;
+        this.uc = uc;
 
-        DockPanel dock = new DockPanel();
+        dock = new DockPanel();
         dock.LastChildFill = true;
 
         StatusBar statusBar = new StatusBar();
@@ -36,8 +40,26 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
 
+        
+
+        this.ResizeMode = rm;
+        // Původně bylo WidthAndHeight
+        this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
+        this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
+        this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
+        this.Content = dock;
+        this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+        this.VerticalContentAlignment = VerticalAlignment.Stretch;
+        this.HorizontalAlignment = HorizontalAlignment.Stretch;
+        this.VerticalAlignment = VerticalAlignment.Stretch;
+
+        Loaded += WindowWithUserControl_Loaded;
+    }
+
+    private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
+    {
         uc.ChangeDialogResult += uc_ChangeDialogResult;
-        UserControl userControl = (UserControl)uc;
+        userControl = (UserControl)uc;
         // TODO: Find method where is mass setted all aligments
         userControl.VerticalAlignment = VerticalAlignment.Stretch;
         userControl.VerticalContentAlignment = VerticalAlignment.Stretch;
@@ -46,18 +68,16 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
         dock.Children.Add(userControl);
 
-        this.ResizeMode = rm;
-        this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
-        this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
-        this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
-        this.Content = dock;
-
-        Loaded += WindowWithUserControl_Loaded;
-    }
-
-    private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
-    {
         Activate();
+
+
+
+        
+
+        // V InvalidateMeasure není volání na žádné Invalidate
+        InvalidateMeasure();
+        // Díval jsem se do ReferenceSource, InvalidateVisual volá jen InvalidateArrange
+        InvalidateVisual();
     }
 
     public event VoidBoolNullable ChangeDialogResult;
@@ -86,6 +106,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
     public void Accept(object input)
     {
-        throw new NotImplementedException();
+        uc.Accept(input);
     }
 }

@@ -106,10 +106,10 @@ namespace Roslyn
             return result;
         }
 
-        public static ClassDeclarationSyntax GetClass(SyntaxTree tree)
+        public static ClassDeclarationSyntax GetClass(SyntaxNode root)
         {
             SyntaxNode sn;
-            return GetClass(tree, out sn);
+            return GetClass(root, out sn);
         }
 
         public static SyntaxNode FindNode(SyntaxNode parent, SyntaxNode child, bool onlyDirectSub)
@@ -204,6 +204,7 @@ namespace Roslyn
 
                 foreach (BaseTypeDeclarationSyntax item in ns.Members)
                 {
+                    dx++;
                     if (method.Identifier.Value == item.Identifier.Value)
                     {
                         return method;
@@ -217,6 +218,7 @@ namespace Roslyn
 
                 foreach (NamespaceDeclarationSyntax item in ns.Members)
                 {
+                    dx++;
                     string fs1 = method.Name.ToFullString();
                     string fs2 = item.Name.ToFullString();
                     if (fs1 == fs2)
@@ -232,6 +234,7 @@ namespace Roslyn
 
                 foreach (ClassDeclarationSyntax item in ns.Members)
                 {
+                    dx++;
                     string fs1 = method.Identifier.ToFullString();
                     string fs2 = item.Identifier.ToFullString();
                     if (fs1 == fs2)
@@ -276,22 +279,26 @@ namespace Roslyn
         /// <summary>
         /// Return null if 
         /// Into A2 insert first member of A1 - Namespace/Class
+        /// A1 should be rather Tree/CompilationUnitSyntax than Node because of Members - Node.ChildNodes.First is usings
         /// </summary>
-        /// <param name="tree"></param>
+        /// <param name="root"></param>
         /// <param name="ns"></param>
         /// <returns></returns>
-        public static ClassDeclarationSyntax GetClass(SyntaxTree tree, out SyntaxNode ns)
+        public static ClassDeclarationSyntax GetClass(SyntaxNode root2, out SyntaxNode ns)
         {
             ns = null;
             ClassDeclarationSyntax helloWorldDeclaration = null;
 
-            var root = (CompilationUnitSyntax)tree.GetRoot();
+            var root = (CompilationUnitSyntax)root2;
+            //var root = (CompilationUnitSyntax)tree.GetRoot();
 
             if (root.ChildNodes().OfType<ClassDeclarationSyntax>().Count() > 1)
             {
                 return null;
             }
-            var firstMember = root.Members[0];
+            SyntaxNode firstMember = null;
+            firstMember = root.Members[0]; 
+            //firstMember = tree.ChildNodes().First();
 
             if (firstMember is NamespaceDeclarationSyntax)
             {
@@ -341,7 +348,7 @@ namespace Roslyn
                 sb.AddItem("static");
             }
             sb.AddItem(m.ReturnType.ToFullString());
-
+            sb.AddItem(m.Identifier.Text);
             // in brackets, newline
             //string parameters = m.ParameterList.ToFullString(); 
             // only text

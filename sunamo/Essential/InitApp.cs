@@ -18,7 +18,9 @@ namespace sunamo.Essential
         public static void SetDebugLogger()
         {
             InitApp.Logger = DebugLogger.Instance;
+#if DEBUG
             InitApp.TemplateLogger = DebugTemplateLogger.Instance;
+#endif
             InitApp.TypedLogger = TypedDebugLogger.Instance;
         }
 

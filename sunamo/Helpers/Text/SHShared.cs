@@ -644,10 +644,14 @@ public static string[] SplitNone(string text, params char[] deli)
     /// <returns></returns>
 public static string Format2(string template, params object[] args)
     {
-        
+        if (template.Contains("{0"))
+        {
 
-        //now is, also due to use {0:X2} etc
-        return string.Format(template, args);
+
+            //now is, also due to use {0:X2} etc
+            return string.Format(template, args);
+        }
+        return template;
     }
 
     /// <summary>

@@ -42,13 +42,21 @@ public partial class FS
             }
         }
 
-        public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace)
+        public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace, bool pairLinesInFromAndTo)
         {
-        var from2 = SH.Split(from, Environment.NewLine);
-        var to2 = SH.Split(to, Environment.NewLine);
-        ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+        if (pairLinesInFromAndTo)
+        {
+            var from2 = SH.Split(from, Environment.NewLine);
+            var to2 = SH.Split(to, Environment.NewLine);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
             ReplaceInAllFiles(from2, to2, files, useSimpleReplace);
+        }
+        else
+        {
+            ReplaceInAllFiles(CA.ToListString( from),  CA.ToListString( to), files, useSimpleReplace);
+        }
+            
         }
 
         /// <summary>

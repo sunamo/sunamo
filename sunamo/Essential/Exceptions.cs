@@ -189,6 +189,14 @@ using System.Text;
         return CheckBefore(before) + message;
     }
 
+    /// <summary>
+    /// Check whether in A3,4 is same count of elements
+    /// </summary>
+    /// <param name="before"></param>
+    /// <param name="detailLocation"></param>
+    /// <param name="before2"></param>
+    /// <param name="after"></param>
+    /// <returns></returns>
     internal static object ElementWasntRemoved(string before, string detailLocation, int before2, int after)
     {
         if (before2 == after)

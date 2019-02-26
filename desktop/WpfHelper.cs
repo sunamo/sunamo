@@ -44,7 +44,11 @@ public class WpfHelper
         {
             methodName += " ";
         }
-        ShowTextResult result = new ShowTextResult(methodName + YamlHelper.DumpAsYaml(e));
+        string dump = null;
+        //dump = YamlHelper.DumpAsYaml(e);
+        dump = SunamoJson.SerializeObject(e, true);
+
+        ShowTextResult result = new ShowTextResult(methodName + dump);
         WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
         window.ShowDialog();
     }

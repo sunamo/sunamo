@@ -7,6 +7,9 @@ using System.Linq;
 
 public class JavascriptSerialization
 {
+    public static JavascriptSerialization InstanceMs = new JavascriptSerialization(SerializationLibrary.Microsoft);
+    public static JavascriptSerialization InstanceNewtonSoft = new JavascriptSerialization(SerializationLibrary.Newtonsoft);
+
     SerializationLibrary sl = SerializationLibrary.Newtonsoft;
     /// <summary>
     /// Výchozí pro A1 je Microsoft

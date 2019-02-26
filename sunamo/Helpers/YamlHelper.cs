@@ -13,7 +13,9 @@ namespace sunamo.Helpers
         {
             var stringBuilder = new StringBuilder();
             var serializer = new Serializer();
-            serializer.Serialize(new IndentedTextWriter(new StringWriter(stringBuilder)), o);
+            List<object> o2 = new List<object>(1);
+            o2.Add(o);
+            serializer.Serialize(new IndentedTextWriter(new StringWriter(stringBuilder)), o2);
             return stringBuilder.ToString();
         }
     }

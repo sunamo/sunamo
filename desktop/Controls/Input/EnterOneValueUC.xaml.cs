@@ -19,17 +19,28 @@ namespace desktop.Controls.Input
     /// <summary>
     /// Interaction logic for EnterOneValueUC.xaml
     /// </summary>
-    public partial class EnterOneValueUC : UserControl, IResult, IUserControlInWindow
+    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult
     {
         public EnterOneValueUC()
         {
-
+            InitializeComponent();
         }
 
-        public EnterOneValueUC(string whatEnter)
+        public EnterOneValueUC(string whatEnter) : this()
         {
-            InitializeComponent();
+            
             Init(whatEnter);
+        }
+
+        public EnterOneValueUC(string whatEnter, Size size) : this()
+        {
+            
+            Init(whatEnter);
+            if (size != Size.Empty)
+            {
+                txtEnteredText.Width = size.Width;
+                txtEnteredText.Height = size.Height;
+            }
         }
 
         public void Init(string whatEnter)
@@ -43,7 +54,10 @@ namespace desktop.Controls.Input
             
             if (AfterEnteredValue(txtEnteredText))
             {
-                Finished(txtEnteredText.Text);
+                if (Finished != null)
+                {
+                    Finished(txtEnteredText.Text);
+                }
                 DialogResult = true;
             }
         }
@@ -77,7 +91,10 @@ namespace desktop.Controls.Input
             {
                 if (AfterEnteredValue(txtEnteredText))
                 {
-                    Finished(txtEnteredText.Text);
+                    if (Finished != null)
+                    {
+                        Finished(txtEnteredText.Text);
+                    }
                 }
             }
         }

@@ -7,6 +7,33 @@ obnovit inzeraty
 prazske koleje
 g+ for insta
 
+poslouchat s neutrální hudbou, vyzkouset ruznou
+
+print all sizes of element
+
+nebo ho nahlásím za krádež
+to nebylo úřední jednání, residomo je firma
+
+hlavně všechno dělat pomalu, žádné stresy
+
+
+
+most!!!
+find what delete files in download
+download, fotky andysek
+complete git backup
+car
+mzdy
+time trackery
+holici strojky uspora
+vybrat penize, rozměnit na 100, schovat
+tieto payslip
+bible quiz flash
+cleaning number
+price dancing 
+
+find new flat
+
 
 
 vytvořit video s popisem co se dělo v černobylo, 
@@ -140,7 +167,7 @@ t0036 opravit kodovani jpn importu, treba GridView, ListView a ListBox - k cemu 
 t0037 make working awesome font, nedeed it for SearchInCode, have created solution AwesomeFontTests but to now without any code
 
 Home:
-t0038 je to plno aplikaci instalovanych na PC, musim v Win Test - web scrapery, I have create html in sunamo.Tests - jednoduchy parser na html kde nebudu muset kodit v c#, bude stacit zadat syntaxi v textu http://www.ceske-hospudky.cz/hudebni-kluby/ostrava
+t0038 je to plno aplikaci instalovanych na PC, musim v Win Test - web scrapery, I have create html in sunamo.Tests - jednoduchy parser na html kde nebudu muset kodit v c#, bude stacit zadat syntaxi v textu http://www.ceske-hospudky.cz/hudebni-kluby/ostrava. tím že mám aktuálně několik parseru html se mi naskýtá možnost vytvořit parser bez nutnosti programovat. prvně si však musím najít jestli něco takového již neexistuje 
 t0039 tidy up sql solutions, after reduce every push to git, not done yet
 
 t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole solution, it musnt be with TODO and so
@@ -163,6 +190,7 @@ t0054 clean up SunamoStoraEns
 t0055 app for make class public, i need replace internal for public. I got many private public class, public sealed/abstract/... public
 t0056 MoveClassElementIntoSharedFileUC
 t0057 tieto payslips
+t0058 sunamo.github.io redirect to http://sunamo.cz which is redirecting to http://www.sunamo.cz/Sunamo/
 
 artroza kolene cvicit, 2015
 

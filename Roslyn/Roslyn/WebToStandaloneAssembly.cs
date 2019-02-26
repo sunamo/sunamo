@@ -76,14 +76,14 @@ namespace {0}
                     #region Get variables in designer
                     var designerContent = TF.ReadFile(designer);
                     var fileAspxCsContent = TF.ReadFile(fileAspxCs);
-                    var dict = RoslynParser.GetVariablesInCsharp(RoslynHelper.GetSyntaxTree(designerContent), SH.GetLines(fileAspxCsContent), out usings);
+                    var dict = RoslynParser.GetVariablesInCsharp(RoslynHelper.GetSyntaxTree(designerContent).GetRoot(), SH.GetLines(fileAspxCsContent), out usings);
                     usings.Add(ns);
                     #endregion
 
                     #region Get all other members in .cs
                     SyntaxTree tree = CSharpSyntaxTree.ParseText(fileAspxCsContent);
                     StringWriter swCode = new StringWriter();
-                    var cl = RoslynHelper.GetClass(tree);
+                    var cl = RoslynHelper.GetClass(tree.GetRoot());
                     if (cl == null)
                     {
                         Console.WriteLine(fnwoeAspxCs + " contains more classes");

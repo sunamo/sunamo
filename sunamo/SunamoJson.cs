@@ -39,9 +39,14 @@ public class SunamoJson
         return JsonConvert.SerializeObject(p);
     }
 
-    public static string SerializeObject(object ab)
+    public static string SerializeObject(object ab, bool intended = true)
     {
-        string dd = JsonConvert.SerializeObject(ab);//.Replace("\\\"", "\"");
+        Newtonsoft.Json.Formatting formatting = Newtonsoft.Json.Formatting.None;
+        if (intended)
+        {
+            formatting = Newtonsoft.Json.Formatting.Indented;
+        }
+        string dd = JsonConvert.SerializeObject(ab, formatting);//.Replace("\\\"", "\"");
         List<char> ch = new List<char>(dd.ToCharArray());
         ch[0] = '\'';
         ch.Insert(1, '{');

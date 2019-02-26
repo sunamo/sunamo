@@ -49,6 +49,10 @@ public static partial class SH
     /// <returns></returns>
     public static string ListToString(object value)
     {
+        if (value == null)
+        {
+            return "(null)";
+        }
         string text;
         var valueType = value.GetType();
         text = value.ToString();

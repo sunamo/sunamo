@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace sunamo
 {
@@ -86,6 +87,49 @@ namespace sunamo
                 stream.Seek(0, SeekOrigin.Begin);
                 return (T)formatter.Deserialize(stream);
             }
+        }
+
+        public static List<string> GetValuesOfProperty(object o, params string[] onlyNames)
+        {
+            List<string> values = new List<string>();
+
+            var props = o.GetType().GetProperties();
+            foreach (var item in props)
+            {
+                if (!onlyNames.Contains(item.Name))
+                {
+                    continue;
+                }
+
+                var getMethod = item.GetGetMethod();
+                if (getMethod != null)
+                {
+                    string name = getMethod.Name;
+                    object value = null;
+                    if (getMethod.GetParameters().Length > 0)
+                    {
+                        name += "[]";
+                         value = item.GetValue(o, new[] { (object)1/* indexer value(s)*/});
+                    }
+                    else
+                    {
+                        
+                        try
+                        {
+                            value = item.GetValue(o);
+                        }
+                        catch (Exception ex)
+                        {
+                            value = Exceptions.TextOfExceptions(ex);
+                        }
+                        
+                    }
+
+                    values.Add($"{name}: {SH.ListToString( value)}");
+                }
+            }
+
+            return values;
         }
 
         /// <summary>
@@ -169,8 +213,6 @@ namespace sunamo
         } 
         #endregion
 
-        
-
         #region Get types of class
         public static List<FieldInfo> GetConsts(Type type)
         {
@@ -190,7 +232,23 @@ namespace sunamo
         /// <returns></returns>
         public static string DumpAsString(string name, object o)
         {
+            
+            // When I was serializing ISymbol, execution takes unlimited time here
             return o.DumpToString(name);
+        }
+
+        public static string DumpListAsString(string name, IEnumerable o)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            int i = 0;
+            foreach (var item in o)
+            {
+                sb.AppendLine(DumpAsString(name + "#" + i, item));
+                i++;
+            }
+
+            return sb.ToString();
         }
     }
 }

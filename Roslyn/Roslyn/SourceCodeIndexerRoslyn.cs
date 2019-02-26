@@ -13,6 +13,9 @@ using System.Linq;
 
 public class SourceCodeIndexerRoslyn
 {
+    /// <summary>
+    /// Syntax root is the same as root - contains all code (include usings)
+    /// </summary>
     public Dictionary<string, SourceFileTree> sourceFileTrees = new Dictionary<string, SourceFileTree>();
     Type type = typeof(SourceCodeIndexerRoslyn);
     //public Dictionary<string, TU<string, int>> foundedLines = new Dictionary<string, TU<string, int>>();

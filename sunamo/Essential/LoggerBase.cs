@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Helpers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +11,46 @@ namespace sunamo.Essential
 
         VoidStringParamsObjects writeLineDelegate;
         public bool IsActive = true;
+        static Type type = typeof(LoggerBase);
+
+        public void DumpObject(string name, object o, DumpProvider d, params string[] onlyNames)
+        {
+            string dump = null;
+            switch (d)
+            {
+                case DumpProvider.Reflection:
+                    dump = SH.Join( RH.GetValuesOfProperty(o, onlyNames), Environment.NewLine);
+                    break;
+                case DumpProvider.Yaml:
+                    dump = YamlHelper.DumpAsYaml(o);
+                    break;
+                case DumpProvider.Microsoft:
+                    dump = JavascriptSerialization.InstanceMs.Serialize(o);
+                    break;
+                case DumpProvider.Newtonsoft:
+                    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
+                    break;
+                case DumpProvider.ObjectDumper:
+                    dump = RH.DumpAsString(name, o);
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(type, "DumpObject");
+                    break;
+            }
+
+            WriteLine( name + Environment.NewLine + dump);
+            WriteLine(" ");
+        }
+
+        public void DumpObjects(string name, IEnumerable o, DumpProvider d, params string[] onlyNames)
+        {
+            int i = 0;
+            foreach (var item in o)
+            {
+                DumpObject(name + " #" + i, item, d, onlyNames);
+                i++;
+            }
+        }
 
         /// <summary>
         /// Only due to Old sfw apps
@@ -56,7 +97,17 @@ namespace sunamo.Essential
             {
                 writeLineDelegate.Invoke(text, args);
             }
-            
+        }
+        /// <summary>
+        /// for compatibility with Console.WriteLine 
+        /// </summary>
+        /// <param name="what"></param>
+        public void WriteLine(object what)
+        {
+            if (what != null)
+            {
+                WriteLine(SH.ListToString( what));
+            }
         }
 
         public  void WriteLine(string what, object text)
