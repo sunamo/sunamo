@@ -1,4 +1,16 @@
-﻿hned ráno projít věci co jsem naprogramoval ať furt nepíšu totéž, solution po solution
+﻿---
+SelectValuesOfColumnAllRowsInt
+
+---
+auta
+karavan
+
+poradek in food google, by description online
+open tabs in mobile
+
+Co na sebe uživatel prásknul:
+
+hned ráno projít věci co jsem naprogramoval ať furt nepíšu totéž, solution po solution
 stationery d:\Pictures\100_PANA\Range of goods bubble packing\
 Stodolni d:\Pictures\100_PANA\Stodolni\
 d:\Pictures\100_PANA\parfemy\
@@ -186,11 +198,12 @@ t0051 replace yaml nuget for dll as in in WpfApp1 already
 t0052 app for archive only specified file type. 
 
 t0053 scrollviewer to SearchCodeElements file results - try find ompare
-t0054 clean up SunamoStoraEns
+t0054 clean up SunamoStoraEnso
 t0055 app for make class public, i need replace internal for public. I got many private public class, public sealed/abstract/... public
 t0056 MoveClassElementIntoSharedFileUC
 t0057 tieto payslips
 t0058 sunamo.github.io redirect to http://sunamo.cz which is redirecting to http://www.sunamo.cz/Sunamo/
+t0059 udelat dane
 
 artroza kolene cvicit, 2015
 

@@ -209,4 +209,108 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
         }
         return "SELECT " + t1 + nazvySloupcu + " FROM " + tabulka + CombinedWhere(ab);
     }
+
+/// <summary>
+    /// Může vrátit null když tabulka bude existovat
+    /// Výchozí pro A3 je true
+    /// A3 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat.
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="sloupce"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string CreateTable(string table, MSColumnsDB sloupce,  bool dynamicTables, SqlConnection conn)
+    {
+
+
+        StringBuilder sb = new StringBuilder();
+        bool exists = MSStoredProceduresI.ci.SelectExistsTable(table, conn);
+        if (!exists)
+        {
+            sb.AppendFormat("CREATE TABLE {0}(", table);
+            foreach (MSSloupecDB var in sloupce)
+            {
+                sb.Append(GeneratorMsSql.Column(var, table, dynamicTables) + ",");
+            }
+            string dd = sb.ToString();
+            dd = dd.TrimEnd(',');
+            string vr = dd + ")";
+            //vr);
+            return vr;
+        }
+        return null;
+    }
+
+/// <summary>
+    /// A3 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
+    /// </summary>
+    /// <param name="var"></param>
+    /// <param name="inTable"></param>
+    /// <param name="dynamicTables"></param>
+    /// <returns></returns>
+    private static string Column(MSSloupecDB var, string inTable, bool dynamicTables)
+    {
+        InstantSB sb = new InstantSB(" ");
+
+        sb.AddItem((object)var.Name);
+        sb.AddItem((object)(var.Type + var.Delka));
+        var t = var.Type;
+        /*Tyto typy které používám nemůžou obsahovat text a collace je u nich zakázána
+         * t == System.Data.SqlDbType.BigInt || 
+         * t == System.Data.SqlDbType.Int ||
+         * t == System.Data.SqlDbType.Bit || 
+         * t == System.Data.SqlDbType.TinyInt || 
+         * t == System.Data.SqlDbType.SmallInt || 
+         * t == System.Data.SqlDbType.UniqueIdentifier || 
+         * t == System.Data.SqlDbType.Date || 
+         * t == System.Data.SqlDbType.SmallDateTime || 
+         * t == System.Data.SqlDbType.Real ||  
+         * t == System.Data.SqlDbType.Binary ||
+         * t == System.Data.SqlDbType.Decimal ||
+         */
+        if (
+            t == System.Data.SqlDbType.VarChar || 
+            t == System.Data.SqlDbType.Char || 
+            t == System.Data.SqlDbType.NVarChar || 
+            t == System.Data.SqlDbType.NChar
+            )
+        {
+            // Musí to být AI, protože když bych měl slovo è, SQL Server by mi vrátil že neexistuje ale když bych ho chtěl vložit, udělal by z něho "e" a vrátil by chybu
+            sb.AddItem((object)"COLLATE Czech_CS_AS_KS_WS");    
+        }
+        
+        if (!var.CanBeNull)
+        {
+            sb.AddItem((object)"NOT NULL");
+        }
+        if (var.PrimaryKey || var.MustBeUnique)
+        {
+            if (var.PrimaryKey)
+            {
+                sb.AddItem((object)"PRIMARY KEY");
+            }
+            else
+            {
+                sb.AddItem((object)"UNIQUE");
+            }
+        }
+        if (var.IsNewId)
+        {
+            sb.AddItem((object)"DEFAULT(newid())");
+            //sb.AddItem("DEFAULT newsequentialid()");
+        }
+        if (!dynamicTables)
+        {
+            if (var.referencesTable != null)
+            {
+                sb.AddItem((object)"CONSTRAINT");
+                sb.AddItem((object)("fk_" + var.Name + "_" + inTable + "_" + var.referencesTable + "_" + var.referencesColumn));
+                sb.AddItem((object)"FOREIGN KEY REFERENCES");
+                sb.AddItem((object)(var.referencesTable + "(" + var.referencesColumn + ")"));
+            }
+        }
+
+        
+        return sb.ToString();
+    }
 }

@@ -9,7 +9,6 @@ public partial class TF
 {
     
 
-    #region Encoding
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -32,7 +31,6 @@ public partial class TF
         file.Read(bom, 0, 4);
         return EncodingHelper.DetectEncoding(bom);
     } 
-    #endregion
 
     static void AppendToStartOfFileIfDontContains(List<string> files, string append)
     {
@@ -95,29 +93,6 @@ public partial class TF
             FS.CreateUpfoldersPsysicallyUnlessThere(path);
             File.WriteAllText(path, "");
         }
-    }
-
-    
-
-    static void SaveFile(string obsah, string soubor, bool pripsat)
-    {
-        if (soubor == null)
-        {
-            return;
-        }
-        if (pripsat)
-        {
-            File.AppendAllText(soubor, obsah, Encoding.UTF8);
-        }
-        else
-        {
-            File.WriteAllText(soubor, obsah, Encoding.UTF8);
-        }
-    }
-
-    public static void SaveFile(string obsah, string soubor)
-    {
-        SaveFile(obsah, soubor, false);
     }
 
     static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)

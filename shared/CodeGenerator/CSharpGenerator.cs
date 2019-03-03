@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System;
 using System.Collections;
-using sunamo.CodeGenerator;
 using sunamo.Constants;
 using sunamo.Values;
 
@@ -144,6 +143,8 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
     }
     
+
+
     public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex, string ns)
     {
         // index line with class

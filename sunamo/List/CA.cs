@@ -209,32 +209,6 @@ public static partial  class CA
         return null;
     }
 
-    /// <summary>
-    /// Multi deep array is not suppported
-    /// For convert into string use ListToString
-    /// </summary>
-    /// <param name="para"></param>
-    /// <returns></returns>
-    public static object[] TwoDimensionParamsIntoOne(object[] para)
-    {
-        List<object> result = new List<object>();
-        foreach (var item in para)
-        {
-            if (item is IEnumerable && item.GetType() != typeof(string))
-            {
-                foreach (var r in (IEnumerable)item)
-                {
-                    result.Add(r);
-                }
-            }
-            else
-            {
-                result.Add(item);
-            }
-        }
-        return result.ToArray();
-    }
-
     public static List<T> CreateListAndInsertElement<T>(T el)
     {
         List<T> t = new List<T>();
@@ -453,16 +427,6 @@ public static partial  class CA
             return true;
         }
         return false;
-    }
-
-    public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
-    {
-        List<string> result = new List<string>();
-        for (int i = 0; i < whereIsUsed2.Count; i++)
-        {
-            result.Add(v + whereIsUsed2[i] + v);
-        }
-        return result;
     }
 
     public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
@@ -716,15 +680,6 @@ public static partial  class CA
         return JoinArrayAndArrayString(a, p.ToList());
     }
 
-    public static List<string> WrapWithQm(List<string> value)
-    {
-        for (int i = 0; i < value.Count; i++)
-        {
-            value[i] = SH.WrapWithQm(value[i]);
-        }
-        return value;
-    }
-
     public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
     {
 
@@ -842,11 +797,6 @@ public static partial  class CA
             }
         }
         return dd.ToArray();
-    }
-
-    public static void Replace(List<string> files_in, string what, string forWhat)
-    {
-        CA.ChangeContent(files_in, SH.Replace, what, forWhat);
     }
 
     /// <summary>
@@ -1428,97 +1378,6 @@ public static partial  class CA
             globallyInstalledTsDefinitions[i] = SH.Format2(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
-    }
-
-    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            result.Add( func.Invoke(files_in[i]));
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// TResult is the same type as T1 (output collection is the same generic as input)
-    /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="T2"></typeparam>
-    /// <typeparam name="TResult"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <returns></returns>
-    private static List<TResult> ChangeContent<T1, T2, TResult>(Func<T1, T2, TResult> func, List<T1> files_in, T2 t2)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            // Fully generic - no strict string can't return the same collection
-            result.Add( func.Invoke(files_in[i], t2));
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <returns></returns>
-    public static bool ChangeContent(List<string> files_in, Predicate<string> predicate, Func<string, string> func)
-    {
-        bool changed = false;
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            if (predicate.Invoke(files_in[i]))
-            {
-                files_in[i] = func.Invoke(files_in[i]);
-                changed = true;
-            }
-        }
-        return changed;
-    }
-
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <returns></returns>
-    public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i]);
-        }
-        return files_in;
-    }
-
-    public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg1, arg2);
-        }
-        return files_in;
-    }
-
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <typeparam name="Arg1"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <param name="arg"></param>
-    /// <returns></returns>
-    public static List<string> ChangeContent<Arg1>(List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg);
-        }
-        return files_in;
     }
 
     

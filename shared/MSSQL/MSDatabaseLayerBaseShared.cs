@@ -5,8 +5,42 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
-public partial class MSDatabaseLayerBase{ 
-/// <summary>
+public partial class MSDatabaseLayerBase{
+    /// <summary>
+    /// Jsou rozděleny do 2 dict ze 2 důvodů: 
+    /// 1) aby se rychleji získavali popisy daných datových typů
+    /// 2) aby jsem odlišil a zaznamenal typy které chci používat a které nikoliv
+    /// </summary>
+    public static Dictionary<SqlDbType, string> usedTa = new Dictionary<SqlDbType, string>();
+    public static Dictionary<SqlDbType, string> hiddenTa = new Dictionary<SqlDbType, string>();
+
+    static MSDatabaseLayerBase()
+    {
+        usedTa.Add(SqlDbType.SmallDateTime, "Datum a čas");
+        usedTa.Add(SqlDbType.Real, "Číslo s desetinnou čárkou");
+        usedTa.Add(SqlDbType.Int, "Číslo bez desetinné čárky v rozsahu od -2,147,483,648 do 2,147,483,647");
+        usedTa.Add(SqlDbType.NVarChar, "Omezený řetězec na max. 4000 znaků");
+        usedTa.Add(SqlDbType.Bit, "Duální hodnota pravda/nepravda");
+        usedTa.Add(SqlDbType.TinyInt, "Číslo bez desetinné čárky v rozsahu od 0 do 255");
+        usedTa.Add(SqlDbType.SmallInt, "Číslo bez desetinné čárky v rozsahu od -32,768 do 32,767");
+        usedTa.Add(SqlDbType.Binary, "Zápis bajtů v rozmezí velikosti 1-8000");
+
+
+
+
+        // Je to sice nejlepší možná varianta(Text) pro ukládání textů, ale i tak to NEpatří do DB
+        hiddenTa.Add(SqlDbType.Text, "Neomezený řetězec");
+        hiddenTa.Add(SqlDbType.VarChar, "Omezený řetězec na 8000 znaků");
+        hiddenTa.Add(SqlDbType.NText, "Omezený řetězec na 1073741823");
+        hiddenTa.Add(SqlDbType.VarBinary, "Zápis bajtů v rozmezí velikosti 1-8000");
+        hiddenTa.Add(SqlDbType.Image, "Zápis bajtů v rozmezí velikosti 0-2147483647");
+
+        hiddenTa.Add(SqlDbType.Char, "Řetězec non-unicode s pevnou šířkou do velikosti 8000 znaků");
+        hiddenTa.Add(SqlDbType.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
+
+    }
+
+    /// <summary>
     /// Vrací @p0,@p1,...,@pX
     /// Vrátí tolik hodnot kolik je v A1.
     /// Do A1 se mohou předávat libovolné hodnoty - AB, string, object,...
@@ -195,6 +229,78 @@ public partial class MSDatabaseLayerBase{
         else
         {
             throw new Exception("Snažíte se vytvořit název třídy s nepodporovaným typem");
+        }
+    }
+
+public static string ConvertSqlDbTypeToDotNetType(SqlDbType p)
+    {
+        switch (p)
+        {
+            case SqlDbType.Text:
+            case SqlDbType.Char:
+            case SqlDbType.NText:
+            case SqlDbType.NChar:
+            case SqlDbType.NVarChar:
+                return "string";
+                
+            case SqlDbType.Int:
+                return "int";
+                
+            case SqlDbType.Real:
+                return "float";
+                
+            case SqlDbType.BigInt:
+                return "long";
+                
+            case SqlDbType.Bit:
+                return "bool";
+                
+            case SqlDbType.Date:
+            case SqlDbType.DateTime:
+            case SqlDbType.DateTime2:
+            case SqlDbType.Time:
+            case SqlDbType.DateTimeOffset:
+            case SqlDbType.SmallDateTime:
+                return "DateTime";
+                
+            // Bude to až po všech běžně používaných datových typech, protože bych se měl vyvarovat ukládat do malé DB takové množství dat
+            case SqlDbType.Timestamp:
+            case SqlDbType.Binary:
+            case SqlDbType.VarBinary:
+            case SqlDbType.Image:
+                return "byte[]";
+                
+            case SqlDbType.SmallMoney:
+            case SqlDbType.Money:
+            case SqlDbType.Decimal:
+                return "decimal";
+                
+            case SqlDbType.Float:
+                return "double";
+                
+            case SqlDbType.SmallInt:
+                return "short";
+                
+            case SqlDbType.TinyInt:
+                return "byte";
+                
+            case SqlDbType.Structured:
+            case SqlDbType.Udt:
+            case SqlDbType.Xml:
+                throw new Exception("Snažíte se převést na int strukturovaný(složitý) datový typ");
+                
+            case SqlDbType.UniqueIdentifier:
+                return "Guid";
+                
+
+            case SqlDbType.VarChar:
+                return "string";
+                
+            case SqlDbType.Variant:
+                return "object";
+                
+            default:
+                throw new Exception("Snažíte se převést datový typ, pro který není implementována větev");
         }
     }
 }

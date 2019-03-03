@@ -6,6 +6,7 @@ namespace sunamo.Constants
 {
     public class DefaultPaths
     {
+        public const string rootVideos0Kb = @"d:\Documents\Videos0kb\"; 
         public static string Documents = @"D:\Documents\";
         public static string Docs = @"D:\Docs\";
         public static string Downloads = @"D:\Downloads\";

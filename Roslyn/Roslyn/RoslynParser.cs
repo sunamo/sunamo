@@ -65,7 +65,7 @@ namespace Roslyn
 
             foreach (var file in files)
             {
-                indexer.ProcessFile(file, NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method);
+                indexer.ProcessFile(file, NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method, false, false);
             }
 
             foreach (var file2 in indexer.classCodeElements)

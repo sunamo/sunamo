@@ -10,5 +10,9 @@ using System.Text;
         p = p.Replace(Environment.NewLine, "<br />");
         return p;
     }
-}
 
+public static string PrepareToAttribute(string title)
+        {
+            return title.Replace('\"', '\'');
+        }
+}

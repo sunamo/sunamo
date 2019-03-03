@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Roslyn;
 using Roslyn.Data;
 using sunamo;
 using sunamo.Constants;
@@ -47,6 +48,26 @@ public class SourceCodeIndexerRoslyn
     /// Map NamespaceCodeElementsType to keywords used in C#
     /// </summary>
     public static Dictionary<NamespaceCodeElementsType, string> e2sNamespaceCodeElements = EnumHelper.EnumToString<NamespaceCodeElementsType>(namespaceCodeElementsType2);
+    /// <summary>
+    /// After first init must set to true
+    /// </summary>
+    public bool init = false;
+    public FileSystemWatchers watchers = null;
+
+    public void RemoveFile(string t, bool fromFileSystemWatcher = false)
+    {
+        linesWithContent.Remove(t);
+        linesWithIndexes.Remove(t);
+        sourceFileTrees.Remove(t);
+        classCodeElements.Remove(t);
+        namespaceCodeElements.Remove(t);
+
+        if (!fromFileSystemWatcher)
+        {
+            // will be raise in FileSystemWatchers
+            watchers.Stop(t);
+        }
+    }
 
     public bool IsIndexed(string pathFile)
     {
@@ -63,18 +84,32 @@ public class SourceCodeIndexerRoslyn
                 allNamespaceCodeElements |= item;
             }
         }
+
+        watchers = new FileSystemWatchers(false, ProcessFile, RemoveFile);
     }
 
-    public void ProcessAllCodeElementsInFiles(string file, bool removeRegions = false)
+    public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
-        ProcessFile(file, allNamespaceCodeElements, allClassCodeElements, removeRegions);
+        
+            ProcessFile(file, NamespaceCodeElementsType.All, ClassCodeElementsType.All, false, fromFileSystemWatcher);
+        
     }
 
-    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions = false)
+    public void ProcessAllCodeElementsInFiles(string file, bool fromFileSystemWatcher, bool removeRegions = false)
     {
+        ProcessFile(file, allNamespaceCodeElements, allClassCodeElements, removeRegions, fromFileSystemWatcher);
+    }
+
+    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
+    {
+        if (init)
+        {
+            RemoveFile(pathFile);
+        }
+        
         SyntaxTree tree;
         CompilationUnitSyntax root;
-        if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions))
+        if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions, fromFileSystemWatcher))
         {
             sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = tree });
         }
@@ -90,13 +125,30 @@ public class SourceCodeIndexerRoslyn
     /// <param name="tree"></param>
     /// <param name="root"></param>
     /// <param name="removeRegions"></param>
-    public bool ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, out SyntaxTree tree, out CompilationUnitSyntax root,  bool removeRegions = false)
+    public bool ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, out SyntaxTree tree, out CompilationUnitSyntax root,  bool removeRegions, bool fromFileSystemWatcher)
     {
         tree = null;
         root = null;
 
-        if (!linesWithContent.ContainsKey(pathFile))
+        if (!RoslynHelper.AllowOnly(pathFile, false, false, false, false, false))
         {
+            return false;
+        }
+
+        if (!RoslynHelper.AllowOnlyContains(pathFile, false, false))
+        {
+            return false;
+        }
+
+            if (!linesWithContent.ContainsKey(pathFile))
+        {
+            if (!fromFileSystemWatcher)
+            {
+                // only would call ProcessFile again
+                watchers.Start(pathFile);
+            }
+            
+
             if (pathFile.Contains("Projects\\Projects"))
             {
                 Debugger.Break();
@@ -173,6 +225,11 @@ public class SourceCodeIndexerRoslyn
                     {
                         if (char.IsUpper(namespaceElementName[0]))
                         {
+                            if (namespaceElementName.Contains("ITableRow"))
+                            {
+
+                            }
+
                             NamespaceCodeElement element = new NamespaceCodeElement() { Index = FullFileIndex[indexes[i]], Name = namespaceElementName, Type = namespaceCodeElementType };
 
                             DictionaryHelper.AddOrCreate<string, NamespaceCodeElement>(namespaceCodeElements, pathFile, element);
@@ -211,6 +268,8 @@ public class SourceCodeIndexerRoslyn
 
         return false;
     }
+
+ 
 
     private void AddMethodsFrom(CSharpSyntaxNode ancestor, string pathFile)
     {

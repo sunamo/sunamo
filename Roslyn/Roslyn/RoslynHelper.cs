@@ -23,6 +23,55 @@ namespace Roslyn
     {
         static Type type = typeof(RoslynHelper);
 
+        /// <summary>
+        /// A2 is also for master.designer.cs and aspx.designer.cs
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="designerCs"></param>
+        /// <param name="xamlCs"></param>
+        /// <param name="sharedCs"></param>
+        /// <returns></returns>
+        public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs)
+        {
+            if (!designerCs && item.EndsWith(".designer.cs"))
+            {
+                return false;
+            }
+            if (!xamlCs && item.EndsWith(".xaml.cs"))
+            {
+                return false;
+            }
+            if (!sharedCs && item.EndsWith("Shared.cs"))
+            {
+                return false;
+            }
+            if (!iCs && item.EndsWith(".i.cs"))
+            {
+                return false;
+            }
+            if (!gICs && item.EndsWith(".g.i.cs"))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool AllowOnlyContains(string i, bool obj, bool bin)
+        {
+            if (!obj && i.Contains(@"\obj\"))
+            {
+                return false;
+            }
+
+            if (!bin && i.Contains(@"\bin\"))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public static SyntaxTree GetSyntaxTree(string code)
         {
             return CSharpSyntaxTree.ParseText(code);
@@ -118,6 +167,8 @@ namespace Roslyn
             return FindNode(parent, child, onlyDirectSub, out dx);
         }
 
+        
+
         /// <summary>
         /// Because of searching is very unreliable
         /// Into A1 I have to insert class when I search in classes. If I insert root/ns/etc, method will be return to me whole class, because its contain method
@@ -127,6 +178,7 @@ namespace Roslyn
         /// <returns></returns>
         public static SyntaxNode FindNode(SyntaxNode parent, SyntaxNode child, bool onlyDirectSub, out int dx)
         {
+            
             dx = -1;
 
             #region MyRegion
@@ -164,6 +216,8 @@ namespace Roslyn
             var childType = child.GetType().FullName;
             var parentType = parent.GetType().FullName;
 
+            SyntaxNode result = null;
+
             if (child is MethodDeclarationSyntax && parent is ClassDeclarationSyntax)
             {
                 ClassDeclarationSyntax cl = (ClassDeclarationSyntax)parent;
@@ -192,7 +246,18 @@ namespace Roslyn
 
                         if (same)
                         {
-                            return method2;
+                            string p1 = RoslynHelper.GetParameters(method.ParameterList);
+                            string p2 = RoslynHelper.GetParameters(method2.ParameterList);
+                            if (p1 != p2)
+                            {
+                                same = false;
+                            }
+                        }
+
+                        if (same)
+                        {
+                            result = method2;
+                            break;
                         }
                     }
                 }
@@ -207,7 +272,8 @@ namespace Roslyn
                     dx++;
                     if (method.Identifier.Value == item.Identifier.Value)
                     {
-                        return method;
+                        result = method;
+                        break;
                     }
                 }
             }
@@ -223,7 +289,8 @@ namespace Roslyn
                     string fs2 = item.Name.ToFullString();
                     if (fs1 == fs2)
                     {
-                        return method;
+                        result = method;
+                        break;
                     }
                 }
             }
@@ -239,7 +306,8 @@ namespace Roslyn
                     string fs2 = item.Identifier.ToFullString();
                     if (fs1 == fs2)
                     {
-                        return method;
+                        result = method;
+                        break;
                     }
                 }
             }
@@ -248,7 +316,8 @@ namespace Roslyn
                 ThrowExceptions.NotImplementedCase(type, "FindNode");
             }
 
-            return null;
+            
+            return result;
             //return nsShared.FindNode(cl.FullSpan, false, true).WithoutLeadingTrivia().WithoutTrailingTrivia();
         }
 
@@ -298,7 +367,11 @@ namespace Roslyn
             }
             SyntaxNode firstMember = null;
             firstMember = root.Members[0]; 
-            //firstMember = tree.ChildNodes().First();
+            //firstMember = (SyntaxNode)root.ChildNodes().OfType<NamespaceDeclarationSyntax>().FirstOrNull();
+            //if (firstMember == null)
+            //{
+            //    firstMember = root.ChildNodes().OfType<ClassDeclarationSyntax>().First();
+            //}
 
             if (firstMember is NamespaceDeclarationSyntax)
             {

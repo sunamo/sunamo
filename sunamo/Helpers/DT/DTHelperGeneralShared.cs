@@ -34,4 +34,20 @@ public static string MakeUpTo2NumbersToZero(int p)
             }
             return vr;
         }
+
+public static long SecondsInMonth(DateTime dt)
+        {
+            return DTConstants.secondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
+        }
+
+public static long SecondsInYear(int year)
+        {
+            long mal = 365;
+            if (DateTime.IsLeapYear(year))
+            {
+                mal = 366;
+            }
+
+            return mal * DTConstants.secondsInDay;
+        }
 }

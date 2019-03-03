@@ -12,6 +12,16 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Net\IPAddressHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\HttpKnownHeaderNames.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\PicturesSunamoShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Sql\SqlServerHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertTypeNameTypeNumbers.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" Link="" />
     <Compile Remove="Converters\**" />
     <EmbeddedResource Remove="Converters\**" />
     <None Remove="Converters\**" />

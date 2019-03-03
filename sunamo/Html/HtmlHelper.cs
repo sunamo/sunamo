@@ -14,8 +14,6 @@ using System.Xml;
 
     public static partial class HtmlHelper
     {
-        #region Without HtmlAgility
-        #region ToXml
         public static string ToXmlFinal(string xml)
         {
             xml = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(xml);
@@ -57,7 +55,6 @@ using System.Xml;
         {
             return ToXml(xml, true);
         }
-        #endregion
 
         public static string ClearSpaces(string dd)
         {
@@ -75,13 +72,6 @@ using System.Xml;
             html = html.Replace("<" + nameOfTag + ">", "");
             html = html.Replace("</" + nameOfTag + ">", "");
             return html;
-        }
-
-        
-
-        public static string PrepareToAttribute(string title)
-        {
-            return title.Replace('\"', '\'');
         }
 
         /// <summary>
@@ -257,7 +247,6 @@ using System.Xml;
             return vstup;
         }
 
-        #region Strip
 
         /// <summary>
         /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
@@ -305,10 +294,7 @@ using System.Xml;
         {
             return StripAllTags(p);
         }
-        #endregion
-        #endregion
 
-        #region Set
         /// <summary>
         /// 
         /// </summary>
@@ -333,17 +319,13 @@ using System.Xml;
             }
             node.Attributes.Add(atr, hod);
         }
-    #endregion
 
-    #region Get
     public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
     {
         return HtmlAssistant.GetValueOfAttribute(p, divMain, trim);
     }
 
-        #endregion
 
-    #region Check name and value
     private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
             if (hodnotaAtributu == "*")
@@ -397,9 +379,7 @@ using System.Xml;
             var spl = SH.Split(attrValue, delimiter);
             return spl.Contains(value);
         }
-        #endregion
 
-        #region Helper methods
 
         public static HtmlNode TrimNode(HtmlNode hn2)
         {
@@ -417,7 +397,6 @@ using System.Xml;
             return hn2;
         }
 
-        #region Text nodes
         public static List<HtmlNode> GetWithoutTextNodes(HtmlNode htmlNode)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
@@ -462,7 +441,6 @@ using System.Xml;
             }
             return vr;
         }
-        #endregion
 
         public static bool HasChildTag(HtmlNode spanInHeader, string v)
         {
@@ -482,7 +460,6 @@ using System.Xml;
 
 
 
-    #region Apply
     /// <summary>
     /// Nehodí se na vrácení obsahu celé stránky
     /// A1 je zdrojový kód celé stránky
@@ -538,7 +515,6 @@ using System.Xml;
                 }
             }
         }
-        #endregion
 
         
 
@@ -566,10 +542,8 @@ using System.Xml;
         
 
         
-        #endregion
 
 
-        #region 1 Node
         public static HtmlNode GetTag(HtmlNode cacheAuthorNode, string p)
         {
             foreach (HtmlNode item in cacheAuthorNode.ChildNodes)
@@ -643,9 +617,7 @@ using System.Xml;
     {
         throw new NotImplementedException();
     }
-    #endregion
 
-    #region 2 Nodes - recursive
     /// <summary>
     /// Rekurzivně volá metodu RecursiveReturnAllTags
     /// </summary>
@@ -776,9 +748,7 @@ using System.Xml;
             }
             return vr;
         }
-        #endregion
 
-        #region 2 Nodes - no recursive
         /// <summary>
         /// Do A2 se může vložit * ale nemělo by to moc smysl
         /// </summary>
@@ -800,9 +770,7 @@ using System.Xml;
 
             return vr;
         }
-        #endregion
 
-        #region 3 NodeWithAttr
         public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string nameOfAtr, string valueOfAtr)
         {
             hn = HtmlHelper.TrimNode(hn);
@@ -889,11 +857,9 @@ using System.Xml;
         }
 
 
-        #endregion
 
 
 
-        #region 4 NodesWithAttr
         private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
         {
             foreach (HtmlNode item in htmlNode.ChildNodes)
@@ -911,7 +877,6 @@ using System.Xml;
             }
         }
 
-        #region Only call other method
         /// <summary>
         /// Do A2 se může zadat * pro získaní všech tagů
         /// Do A4 se může vložit * pro vrácení tagů s hledaným atributem s jakoukoliv hodnotou
@@ -941,7 +906,6 @@ using System.Xml;
         {
             return ReturnTagWithAttr(htmlNode, tag, attr, value);
         }
-        #endregion
 
         /// <summary>
         /// Return 0 instead of 10
@@ -966,7 +930,6 @@ using System.Xml;
             return node;
         }
 
-        #region Called by other method
         /// <summary>
         /// Do A3 se může zadat * pro vrácení všech tagů
         /// 
@@ -998,9 +961,7 @@ using System.Xml;
                 }
             }
         }
-        #endregion
 
-        #region No recursive
         /// <summary>
         /// 
         /// </summary>
@@ -1024,11 +985,8 @@ using System.Xml;
             }
             return vr;
         }
-        #endregion
 
-        #endregion
 
-        #region 5 NodesWhichContainsInAttr
         private static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode node, string p, string atribut, string hodnotaAtributu)
             {
             RecursiveReturnTagsWithContainsAttr(vr, node, p, atribut, hodnotaAtributu, true, true);
@@ -1140,6 +1098,4 @@ using System.Xml;
             RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, htmlNode, tag, "class", t, " ");
             return vr;
         }
-        #endregion
     }
-

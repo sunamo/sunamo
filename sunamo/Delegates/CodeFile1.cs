@@ -14,6 +14,7 @@ public delegate String StringString(string s);
 public delegate void VoidString(string s);
 public delegate void VoidInt(int s);
 public delegate void VoidTypeOfMessageStringParamsObject(TypeOfMessage tom, string s, params object[] args);
+public delegate void VoidStringT<T>(string s, T t);
 public delegate void VoidStringTU<T, U>(string s, T t, U u);
 public delegate void SetStatusDelegate(TypeOfMessage t, string message);
 

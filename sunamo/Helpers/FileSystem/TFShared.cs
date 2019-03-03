@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 public partial class TF
 {
@@ -15,7 +16,20 @@ public partial class TF
         FS.MakeUncLongPath(ref s);
         if (FS.ExistsFile(s))
         {
-            return File.ReadAllText(s, Encoding.UTF8);
+            while (true)
+            {
+                try
+                {
+                    return File.ReadAllText(s, Encoding.UTF8);
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
+                Thread.Sleep(500);
+            }
+            
         }
         else
         {
@@ -23,5 +37,55 @@ public partial class TF
         }
 
         return "";
+    }
+
+static void SaveFile(string obsah, string soubor, bool pripsat)
+    {
+        if (soubor == null)
+        {
+            return;
+        }
+        if (pripsat)
+        {
+            while (true)
+            {
+                try
+                {
+                    File.AppendAllText(soubor, obsah, Encoding.UTF8);
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+                Thread.Sleep(500);
+            }
+        }
+        else
+        {
+            while (true)
+            {
+                try
+                {
+                    File.WriteAllText(soubor, obsah, Encoding.UTF8);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                Thread.Sleep(500);
+            }
+        }
+    }
+public static void SaveFile(string obsah, string soubor)
+    {
+        SaveFile(obsah, soubor, false);
+    }
+
+    public static void Replace(string pathCsproj, string to, string from)
+    {
+        string content = TF.ReadFile(pathCsproj);
+        content = content.Replace(to, from);
+        TF.SaveFile( content, pathCsproj);
     }
 }

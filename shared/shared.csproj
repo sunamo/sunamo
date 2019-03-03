@@ -93,7 +93,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseShared.cs" Link="" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstract.cs" />
+    <Compile Include="CodeGenerator\GeneratorCodeAbstractShared.cs" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
     <Compile Include="Collections\Converters\StringHexColorConverter.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\CSharpHelper.cs" />
+    <Compile Include="Helpers\CSharpHelperShared.cs" />
     <Compile Include="Helpers\DrawingColorHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
@@ -135,6 +139,7 @@
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
     <Compile Include="MSSQL\GeneratorMsSql.cs" />
+    <Compile Include="MSSQL\GeneratorMsSqlShared.cs" />
     <Compile Include="MSSQL\i\ColumnsDB.cs" />
     <Compile Include="MSSQL\i\ISpecificLayer.cs" />
     <Compile Include="MSSQL\i\ITableRow.cs" />
@@ -142,6 +147,8 @@
     <Compile Include="MSSQL\MSColumnsDB.cs" />
     <Compile Include="MSSQL\MSDatabaseLayer.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerBaseShared.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerShared.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerSql5.cs" />
     <Compile Include="MSSQL\MSSloupec2.cs" />
     <Compile Include="MSSQL\MSSloupecDB.cs" />
@@ -149,6 +156,7 @@
     <Compile Include="MSSQL\MSStoredProceduresI.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseShared2.cs" />
     <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
     <Compile Include="MSSQL\MSTableRowIDName.cs" />
     <Compile Include="MSSQL\MSTableRowParse.cs" />

@@ -1,9 +1,12 @@
 ﻿using sunamo.Constants;
 using sunamo.Essential;
+using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 public static partial class SH
@@ -345,6 +348,7 @@ public static string Format(string status, params object[] args)
             }
         }
     }
+
 /// <summary>
     /// Cannot be use on existing code - will corrupt them
     /// </summary>
@@ -366,31 +370,43 @@ public static string Format(string status, params object[] args)
         return result;
     }
 
+    public static string ReplaceAll2(bool replaceSimple, string vstup, string zaCo, string co)
+    {
+        if (replaceSimple)
+        {
+            return vstup.Replace(co, zaCo);
+        }
+        else
+        {
+            // needed, otherwise stack overflow
+
+            if (zaCo.Contains(co))
+            {
+                throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
+            }
+            if (co == zaCo)
+            {
+                throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
+            }
+            while (vstup.Contains(co))
+            {
+                vstup = vstup.Replace(co, zaCo);
+            }
+
+            return vstup;
+        }
+    }
+
 /// <summary>
-    /// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
-    /// </summary>
-    /// <param name="vstup"></param>
-    /// <param name="zaCo"></param>
-    /// <param name="co"></param>
-    /// <returns></returns>
+/// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
+/// </summary>
+/// <param name="vstup"></param>
+/// <param name="zaCo"></param>
+/// <param name="co"></param>
+/// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co)
     {
-        // needed, otherwise stack overflow
-
-        if (zaCo.Contains(co))
-        {
-            throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
-        }
-        if (co == zaCo)
-        {
-            throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
-        }
-        while (vstup.Contains(co))
-        {
-            vstup = vstup.Replace(co, zaCo);
-        }
-
-        return vstup;
+        return ReplaceAll2(false, vstup, zaCo, co);
     }
 
 /// <summary>
@@ -424,7 +440,6 @@ public static string Format(string status, params object[] args)
 
         return founded;
     }
-
 
     public static string JoinNL(IEnumerable parts)
     {
@@ -692,5 +707,146 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
             sb.Append(parts[i] + secondDelimiter);
         }
         return sb.ToString();
+    }
+
+/// <summary>
+    /// If A1 is string, return A1
+    /// If IEnumerable, return joined by comma
+    /// For inner collection use CA.TwoDimensionParamsIntoOne
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string ListToString(object value)
+    {
+        if (value == null)
+        {
+            return "(null)";
+        }
+        string text;
+        var valueType = value.GetType();
+        text = value.ToString();
+        if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder)
+        {
+            var enumerable = CA.ToListString(value as IEnumerable);
+            CA.Replace(enumerable, AllStrings.comma, AllStrings.space);
+            text = SH.Join(AllChars.comma, enumerable);
+        }
+        return text;
+    }
+
+/// <summary>
+    /// Musi mit sudy pocet prvku
+    /// Pokud sudý [0], [2], ... bude mít aspoň jeden nebílý znak, pak se přidá lichý [1], [3] i sudý ve dvojicích. jinak nic
+    /// </summary>
+    /// <param name="className"></param>
+    /// <param name="v1"></param>
+    /// <param name="methodName"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
+    public static string ConcatIfBeforeHasValue(params string[] className)
+    {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < className.Length; i++)
+        {
+            string even = className[i];
+            if (!string.IsNullOrWhiteSpace(even))
+            {
+
+                //string odd = 
+                result.Append(even + className[++i]);
+            }
+
+        }
+        return result.ToString();
+    }
+
+public static string Replace(string t, string what, string forWhat)
+    {
+        return t.Replace(what, forWhat);
+    }
+
+/// <summary>
+    /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static string Copy(string s)
+    {
+        return s;
+    }
+
+/// <summary>
+    /// Pokud je poslední znak v A1 A2, odstraním ho
+    /// </summary>
+    /// <param name="nazevTabulky"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string ConvertPluralToSingleEn(string nazevTabulky)
+    {
+        if (nazevTabulky[nazevTabulky.Length - 1] == 's')
+        {
+            if (nazevTabulky[nazevTabulky.Length - 2] == 'e')
+            {
+                if (nazevTabulky[nazevTabulky.Length - 3] == 'i')
+                {
+                    return nazevTabulky.Substring(0, nazevTabulky.Length - 3) + "y";
+                }
+            }
+            return nazevTabulky.Substring(0, nazevTabulky.Length - 1);
+        }
+
+        return nazevTabulky;
+    }
+
+public static List<string> GetLines(string p)
+    {
+        List<string> vr = new List<string>();
+        StringReader sr = new StringReader(p);
+        string f = null;
+        while ((f = sr.ReadLine()) != null)
+        {
+            vr.Add(f);
+        }
+        return vr;
+    }
+
+public static string WrapWithQm(string commitMessage)
+    {
+        return SH.WrapWith(commitMessage, AllChars.qm);
+    }
+
+[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string WrapWith(string value, string h)
+    {
+        return h + value + h;
+    }
+[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static string WrapWith(string value, char v)
+    {
+        // TODO: Make with StringBuilder, because of SH.WordAfter and so
+        return WrapWith(value, v.ToString());
+    }
+
+/// <summary>
+    /// Vše tu funguje výborně
+    /// Metoda pokud chci vybrat ze textu A1 posledních p_2 znaků které jsou v celku(oddělené mezerami) a vložit před ně ...
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
+    /// <returns></returns>
+    public static string ShortForLettersCountThreeDots(string p, int p_2)
+    {
+        bool pridatTriTecky = false;
+        string vr = ShortForLettersCount(p, p_2, out pridatTriTecky);
+        if (pridatTriTecky)
+        {
+            vr += " ... ";
+        }
+        return vr;
+    }
+
+public static int OccurencesOfStringIn(string source, string p_2)
+    {
+        return source.Split(new string[] { p_2 }, StringSplitOptions.None).Length - 1;
     }
 }

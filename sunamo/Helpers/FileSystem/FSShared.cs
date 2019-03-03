@@ -7,6 +7,48 @@ using System.Text;
 
 public partial class FS
 {
+    static List<char> invalidPathChars = null;
+    static Type type = typeof(FS);
+
+    static List<char> invalidFileNameChars = null;
+    static List<char> invalidCharsForMapPath = null;
+    static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
+
+    static FS()
+    {
+        invalidPathChars = new List<char>(Path.GetInvalidPathChars());
+        if (!invalidPathChars.Contains('/'))
+        {
+            invalidPathChars.Add('/');
+        }
+        if (!invalidPathChars.Contains(AllChars.bs))
+        {
+            invalidPathChars.Add(AllChars.bs);
+        }
+        invalidFileNameChars = new List<char>(Path.GetInvalidFileNameChars());
+        for (char i = (char)65529; i < 65534; i++)
+        {
+            invalidFileNameChars.Add(i);
+        }
+
+        invalidCharsForMapPath = new List<char>();
+        invalidCharsForMapPath.AddRange(invalidFileNameChars.ToArray());
+        foreach (var item in Path.GetInvalidFileNameChars())
+        {
+            if (!invalidCharsForMapPath.Contains(item))
+            {
+                invalidCharsForMapPath.Add(item);
+            }
+        }
+
+        invalidCharsForMapPath.Remove('/');
+
+        invalidFileNameCharsWithoutDelimiterOfFolders = new List<char>(invalidFileNameChars.ToArray());
+
+        invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.bs);
+        invalidFileNameCharsWithoutDelimiterOfFolders.Remove('/');
+    }
+
     /// <summary>
     /// For empty or whitespace return false.
     /// </summary>
@@ -246,6 +288,14 @@ public static void CopyStream(Stream input, Stream output)
             }
         }
 
+    /// <summary>
+    /// Remove path to project folder as are in DefaultPaths.AllPathsToProjects
+    /// A2 is here to remove also solution
+    /// </summary>
+    /// <param name="fullPathOriginalFile"></param>
+    /// <param name="combineWithA1"></param>
+    /// <param name="empty"></param>
+    /// <returns></returns>
     public static string ReplaceVsProjectFolder(string fullPathOriginalFile, string combineWithA1, string empty)
     {
         fullPathOriginalFile = SH.FirstCharLower(fullPathOriginalFile);
@@ -297,5 +347,87 @@ public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
                 }
 
             }
+        }
+
+/// <summary>
+        /// Create all upfolders of A1, if they dont exist 
+        /// </summary>
+        /// <param name="nad"></param>
+        public static void CreateUpfoldersPsysicallyUnlessThere(string nad)
+        {
+            CreateFoldersPsysicallyUnlessThere(FS.GetDirectoryName(nad));
+        }
+
+public static long GetFileSize(string item)
+        {
+            FileInfo fi = null;
+            try
+            {
+                fi = new FileInfo(item);
+            }
+            catch (Exception)
+            {
+                // Například příliš dlouhý název souboru
+                return 0;
+            }
+            if (fi.Exists)
+            {
+                return fi.Length;
+            }
+            return 0;
+        }
+
+/// <summary>
+        /// Vrátí vč. cesty
+        /// </summary>
+        /// <param name="orig"></param>
+        /// <param name="whatInsert"></param>
+        /// <returns></returns>
+        public static string InsertBetweenFileNameAndExtension(string orig, string whatInsert)
+        {
+            string p = FS.GetDirectoryName(orig);
+            string fn = Path.GetFileNameWithoutExtension(orig);
+            string e = FS.GetExtension(orig);
+            return Path.Combine(p, fn + whatInsert + e);
+        }
+
+public static string DeleteWrongCharsInDirectoryName(string p)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            foreach (char item in p)
+            {
+                if (!invalidPathChars.Contains(item))
+                {
+                    sb.Append(item);
+                }
+
+            }
+            return sb.ToString();
+        }
+
+public static string DeleteWrongCharsInFileName(string p, bool isPath)
+        {
+            List<char> invalidFileNameChars2 = null;
+
+            if (isPath)
+            {
+                invalidFileNameChars2 = invalidFileNameCharsWithoutDelimiterOfFolders;
+            }
+            else
+            {
+                invalidFileNameChars2 = invalidFileNameChars;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach (char item in p)
+            {
+                if (!invalidFileNameChars2.Contains(item))
+                {
+                    sb.Append(item);
+                }
+            }
+
+            return sb.ToString();
         }
 }

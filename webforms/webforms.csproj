@@ -60,6 +60,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\sunamo.cz\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -241,6 +244,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.web\shared.web\shared.web.csproj">
+      <Project>{3322f417-812e-434c-b993-b696c972c54b}</Project>
+      <Name>shared.web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
       <Project>{b5a43071-45f0-4f14-8513-466c67cf8806}</Project>
       <Name>sunamo.web</Name>

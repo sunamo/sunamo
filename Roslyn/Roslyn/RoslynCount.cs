@@ -1,13 +1,10 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using sunamo.Essential;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Roslyn
 {
-    public class RoslynCount
+    public class RoslynCount 
     {
         public Type type = typeof(RoslynCount);
 
@@ -40,11 +37,11 @@ namespace Roslyn
 
         public void ThrowException()
         {
-            string methodName = "ThrowException";
-            // Members
-            ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class members", before, after);
-            // Methods
-            ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class methods", before2, after2);
+            //string methodName = "ThrowException";
+            //// Members
+            //ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class members", before, after);
+            //// Methods
+            //ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class methods", before2, after2);
         }
     }
 }
