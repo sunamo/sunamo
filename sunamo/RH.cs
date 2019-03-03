@@ -1,4 +1,4 @@
-﻿using ObjectDumper;
+﻿
 using sunamo.Constants;
 using System;
 using System.Collections;
@@ -18,6 +18,8 @@ namespace sunamo
     /// </summary>
     public class RH
     {
+        static Type type = typeof(RH);
+
         #region Copy object
         public static object CopyObject(object input)
         {
@@ -232,9 +234,11 @@ namespace sunamo
         /// <returns></returns>
         public static string DumpAsString(string name, object o)
         {
-            
+
             // When I was serializing ISymbol, execution takes unlimited time here
-            return o.DumpToString(name);
+            //return o.DumpToString(name);
+            ThrowExceptions.NotImplementedCase(type, "DumpAsString");
+            return string.Empty;
         }
 
         public static string DumpListAsString(string name, IEnumerable o)

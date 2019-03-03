@@ -344,6 +344,11 @@ public static class UriWebServices
         return "http://coords.info/" + f;
     }
 
+    /// <summary>
+    /// Already new radekjancik
+    /// </summary>
+    /// <param name="slnName"></param>
+    /// <returns></returns>
     public static string GitRepoInVsts(string slnName)
     {
         return "https://radekjancik.visualstudio.com/_git/" + slnName;
