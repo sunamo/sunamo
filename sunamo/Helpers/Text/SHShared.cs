@@ -187,7 +187,8 @@ public static partial class SH
         StringBuilder sb = new StringBuilder();
         foreach (var item in parts)
         {
-            sb.Append(item.ToString() + s);
+            
+            sb.Append(SH.ListToString(item) + s);
         }
         string d = sb.ToString();
         //return d.Remove(d.Length - (name.Length - 1), name.Length);

@@ -351,7 +351,7 @@ public static class UriWebServices
     /// <returns></returns>
     public static string GitRepoInVsts(string slnName)
     {
-        return "https://radekjancik.visualstudio.com/_git/" + slnName;
+        return "https://radekjancik.visualstudio.com/_git/" + HttpUtility.UrlEncode( slnName);
     }
 
     public static string GoogleImFeelingLucky(string v)
