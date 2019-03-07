@@ -1,4 +1,5 @@
 ﻿
+using sunamo.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,6 +13,13 @@ using System.Web;
 /// </summary>
 public static class HttpRequestHelper
 {
+    /// <summary>
+    /// A3 cant be null
+    /// </summary>
+    /// <param name="address"></param>
+    /// <param name="method"></param>
+    /// <param name="hrd"></param>
+    /// <returns></returns>
     public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
     {
         int dex = address.IndexOf('?');
@@ -62,31 +70,91 @@ public static class HttpRequestHelper
             }
         }
 
-        using (var response = (HttpWebResponse)request.GetResponse())
+        try
         {
-            Encoding encoding = null;
+            using (var response = (HttpWebResponse)request.GetResponse())
+            {
+                Encoding encoding = null;
 
-            if (response.CharacterSet == "")
-            {
-                //encoding = Encoding.UTF8;
-            }
-            else
-            {
-                encoding = Encoding.GetEncoding(response.CharacterSet);
-            }
-
-            using (var responseStream = response.GetResponseStream())
-            {
-                StreamReader reader = null;
-                if (encoding == null)
+                if (response.CharacterSet == "")
                 {
-                    reader = new StreamReader(responseStream, true);
+                    //encoding = Encoding.UTF8;
                 }
                 else
                 {
-                    reader = new StreamReader(responseStream, encoding);
+                    encoding = Encoding.GetEncoding(response.CharacterSet);
                 }
-                return reader.ReadToEnd();
+
+                using (var responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = null;
+                    if (encoding == null)
+                    {
+                        reader = new StreamReader(responseStream, true);
+                    }
+                    else
+                    {
+                        reader = new StreamReader(responseStream, encoding);
+                    }
+                    return reader.ReadToEnd();
+                }
+            }
+        }
+        catch (System.Exception ex)
+        {
+            return Exceptions.TextOfExceptions(ex);
+        }
+    }
+
+    /// <summary>
+    /// A2 can be null
+    /// </summary>
+    /// <param name="href"></param>
+    /// <param name="DontHaveAllowedExtension"></param>
+    /// <param name="folder2"></param>
+    /// <param name="fn"></param>
+    /// <param name="ext"></param>
+    /// <returns></returns>
+    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
+    {
+        if (DontHaveAllowedExtension != null)
+        {
+            if (DontHaveAllowedExtension(ext))
+            {
+                ext += ".jpeg";
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace( ext))
+        {
+            ext = FS.GetExtension(href);
+        }
+
+        string path = FS.Combine(folder2, fn + ext);
+        FS.CreateFoldersPsysicallyUnlessThere(folder2);
+        if (!FS.ExistsFile(path))
+        {
+            var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
+            File.WriteAllBytes(path, c);
+        }
+
+        return ext;
+    }
+
+    static void DownloadAllVideoArticles()
+    {
+        HtmlDocument hd = new HtmlDocument();
+        hd.Load(@"G:\_data\1seriaNiektoNieJeDokonaly.html");
+
+        const string basePath = "https://videoportal.joj.sk/nikto-nie-je-dokonaly/epizoda/";
+
+        var articles = HtmlAgilityHelper.Nodes(hd.DocumentNode, true, "article");
+        foreach (var item in articles)
+        {
+            var href = HtmlAssistant.GetValueOfAttribute("href", HtmlAgilityHelper.Node(item, false, "a"));
+            if (href.StartsWith(basePath))
+            {
+                HttpRequestHelper.Download(href, null, @"g:\_data\1seriaNiektoNieJeDokonaly\", href.Replace(basePath, ""), ".html");
             }
         }
     }

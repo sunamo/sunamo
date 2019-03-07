@@ -3,6 +3,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Net;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace sunamo
 {
@@ -249,7 +251,10 @@ namespace sunamo
         }
 
 
-
+        public static string Combine(params string[] p)
+        {
+            return Combine(p.ToList());
+        }
 
 
         /// <summary>
@@ -257,7 +262,7 @@ namespace sunamo
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public static string Combine(params string[] p)
+        public static string Combine(IEnumerable<string> p)
         {
             StringBuilder vr = new StringBuilder();
             int i = 0;
@@ -274,7 +279,7 @@ namespace sunamo
                 }
                 else
                 {
-                    if (i == p.Length && FS.GetExtension(item) != "")
+                    if (i == p.Length() && FS.GetExtension(item) != "")
                     {
                         vr.Append(item);
                     }
@@ -344,8 +349,6 @@ namespace sunamo
             return t;
         }
 
-        
-
         public static string GetProtocolString(Uri uri)
         {
             return uri.Scheme + "://";
@@ -373,8 +376,6 @@ namespace sunamo
         {
             return uri.Query;
         }
-
-        
 
         public static string RemoveHostAndProtocol(Uri uri)
         {

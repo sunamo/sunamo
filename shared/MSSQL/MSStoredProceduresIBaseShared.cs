@@ -208,7 +208,45 @@ public int ExecuteNonQuery(string commText, params object[] para)
         AddCommandParameterFromAbc(comm, where);
         return ExecuteScalarByte(comm);
     }
-/// <summary>
+
+    /// <summary>
+    /// Počítá od nuly
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <param name = "where"></param>
+    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
+    {
+        for (int i = 0; i < where.Length; i++)
+        {
+            AddCommandParameter(comm, i, where[i].B);
+        }
+    }
+
+    /// <summary>
+    /// Automaticky doplní connection
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <returns></returns>
+    public object ExecuteScalar(SqlCommand comm)
+    {
+        //SqlDbType.SmallDateTime;
+        comm.Connection = conn;
+        return comm.ExecuteScalar();
+    }
+
+    private byte ExecuteScalarByte(SqlCommand comm)
+    {
+        object o = ExecuteScalar(comm);
+        if (o == null)
+        {
+            return 0;
+        }
+
+        return Convert.ToByte(o);
+    }
+
+
+    /// <summary>
     /// Vrátí 0 pokud takový řádek nebude nalezen.
     /// </summary>
     /// <param name = "table"></param>
@@ -256,7 +294,31 @@ public int ExecuteNonQuery(string commText, params object[] para)
         return ReadValuesInt(comm);
     }
 
-/// <summary>
+    private SqlDataReader ExecuteReader(SqlCommand comm)
+    {
+        comm.Connection = conn;
+        return comm.ExecuteReader(CommandBehavior.Default);
+    }
+
+    private List<int> ReadValuesInt(SqlCommand comm)
+    {
+        List<int> vr = new List<int>();
+        SqlDataReader r = null;
+        r = ExecuteReader(comm);
+        if (r.HasRows)
+        {
+            while (r.Read())
+            {
+                int o = r.GetInt32(0);
+                //Type t = val.GetType();
+                vr.Add(o);
+            }
+        }
+
+        return vr;
+    }
+
+    /// <summary>
     /// Maže všechny řádky, ne jen jeden.
     /// </summary>
     public int Delete(string table, string sloupec, object id)
@@ -289,7 +351,7 @@ public int ExecuteNonQuery(string commText, params object[] para)
     /// <returns></returns>
     public List<DateTime> SelectValuesOfColumnAllRowsDateTime(string table, string returnColumns, params AB[] where)
     {
-        string hodnoty = MSDatabaseLayer.GetValues(where.ToArray());
+        string hodnoty = MSDatabaseLayerBase.GetValues(where.ToArray());
         List<DateTime> vr = new List<DateTime>();
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", returnColumns, table, GeneratorMsSql.CombinedWhere(where)));
         for (int i = 0; i < where.Length; i++)
@@ -300,7 +362,24 @@ public int ExecuteNonQuery(string commText, params object[] para)
         return ReadValuesDateTime(comm);
     }
 
-/// <summary>
+    private List<DateTime> ReadValuesDateTime(SqlCommand comm)
+    {
+        List<DateTime> vr = new List<DateTime>();
+        SqlDataReader r = ExecuteReader(comm);
+        if (r.HasRows)
+        {
+            while (r.Read())
+            {
+                DateTime o = r.GetDateTime(0);
+                //Type t = val.GetType();
+                vr.Add(o);
+            }
+        }
+
+        return vr;
+    }
+
+    /// <summary>
     /// Pokud chceš použít OrderBy, je tu metoda SelectDataTableLimitLastRows nebo SelectDataTableLimitLastRowsInnerJoin
     /// Conn nastaví automaticky
     /// Vrátí prázdnou tabulku pokud se nepodaří žádný řádek najít
@@ -358,5 +437,40 @@ public DataTable SelectDataTableSelective(string table, string vraceneSloupce, A
         //AddCommandParameter(comm, 0, idColumnValue);
         DataTable dt = SelectDataTable(comm);
         return dt;
+    }
+
+    /// <summary>
+    /// Bude se počítat od nuly
+    /// Některé z vnitřních polí může být null
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <param name = "where"></param>
+    /// <param name = "whereIsNot"></param>
+    private static void AddCommandParameteresArrays(SqlCommand comm, int i, params AB[][] where)
+    {
+        //int i = 0;
+        foreach (var item in where)
+        {
+            if (item != null)
+            {
+                foreach (var item2 in item)
+                {
+                    i = AddCommandParameter(comm, i, item2.B);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Libovolné z hodnot A2 až A5 může být null, protože se to postupuje metodě AddCommandParameteresArrays
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <param name = "where"></param>
+    /// <param name = "isNotWhere"></param>
+    /// <param name = "greaterThanWhere"></param>
+    /// <param name = "lowerThanWhere"></param>
+    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i, AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere)
+    {
+        AddCommandParameteresArrays(comm, i, CA.ToArrayT<AB[]>(where, isNotWhere, greaterThanWhere, lowerThanWhere));
     }
 }

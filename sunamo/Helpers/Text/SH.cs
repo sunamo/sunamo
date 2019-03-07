@@ -308,6 +308,12 @@ public static partial class SH
         return false;
     }
 
+    /// <summary>
+    /// Remove also A2
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="ch"></param>
+    /// <returns></returns>
     public static string RemoveAfterFirst(string t, string ch)
     {
         int dex = t.IndexOf(ch);
@@ -319,6 +325,12 @@ public static partial class SH
         return t.Remove(dex);
     }
 
+    /// <summary>
+    /// Remove with A2
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="ch"></param>
+    /// <returns></returns>
     public static string RemoveAfterFirst(string t, char ch)
     {
         int dex = t.IndexOf(ch);
@@ -327,7 +339,7 @@ public static partial class SH
             return t;
         }
         
-        return t.Substring(dex+1);
+        return t.Substring(0, dex);
     }
 
     public static int CountLines(string text)
@@ -761,10 +773,7 @@ public static partial class SH
         return vr;
     }
 
-    public static string ReplaceDoubleSpacesAndTrim2(string innerText)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     public static string RemoveBracketsWithoutText(string vr)
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Values;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,17 @@ using System.Text;
     /// </summary>
     public class Exceptions
     {
-    
 
+    /// <summary>
+    /// Start with Consts.Exception to identify occur
+    /// </summary>
+    /// <param name="ex"></param>
+    /// <param name="alsoInner"></param>
+    /// <returns></returns>
     public static string TextOfExceptions(Exception ex, bool alsoInner = true)
         {
             StringBuilder sb = new StringBuilder();
+        sb.Append(Consts.Exception);
             sb.AppendLine(ex.Message);
             while (ex.InnerException != null)
             {

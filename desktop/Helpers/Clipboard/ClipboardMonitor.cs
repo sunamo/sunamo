@@ -80,7 +80,17 @@ namespace sunamo.Clipboard
                     // With this I never on second attempt invoke event, because its jump into 3th case of this if
 					//monitor = null;
 				}
-				else if (monitor.HasValue && monitor.Value)
+                #region MyRegion
+                //else if (monitor.HasValue && !monitor.Value)
+                //{
+                //    monitor = null;
+                //}
+                //else if (!monitor.HasValue)
+                //{
+                //    monitor = true;
+                //} 
+                #endregion
+                else if (monitor.HasValue && monitor.Value)
 				{
 					if (msg == W32.WM_CLIPBOARDUPDATE)
 					{
@@ -116,6 +126,7 @@ namespace sunamo.Clipboard
 
         private void CopyToClipboard()
         {
+            // Will be add all lines again if wont check for permanently block
             ClipboardContentChanged();
             last = ClipboardHelper.GetText();
         }

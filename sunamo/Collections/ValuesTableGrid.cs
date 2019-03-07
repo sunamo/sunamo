@@ -32,7 +32,8 @@ namespace sunamo.Collections
             for (int i = 0; i < exists.Count; i++)
                 newTable.Columns.Add();
 
-            for (int i = 0; i < exists[0].Count; i++)
+            var s = exists[0];
+            for (int i = 0; i < s.Count; i++)
             {
                 DataRow newRow = newTable.NewRow();
 

@@ -57,6 +57,7 @@ public static class AllChars
     // , 55296 mi taky vrátila metoda IsWhiteSpace vrátila, ale při znovu vytvoření pomocí tohoto kódu to vyhazovalo výjimku
     public static readonly List<int> whiteSpacesCodes = new List<int>(new int[] { 9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8232, 8233, 8239, 8287, 12288 });
     public static List<char> whiteSpacesChars = null;
+    public const char plus = '+';
 
     // my extension
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
@@ -89,7 +90,14 @@ public static class AllChars
 
     #region Names here must be the same as in Consts
     public const char modulo = '%';
+    /// <summary>
+    /// char code 32
+    /// </summary>
     public const char space = ' ';
+    /// <summary>
+    /// Look similar as 32 space
+    /// </summary>
+    public const char nbsp = (char)160;
     public const char dash = '-';
     public const char colon = ':';
     public const char us = '_';

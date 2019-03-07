@@ -15,7 +15,7 @@ namespace sunamo.Values
         /// "x "
         /// </summary>
         public const string xs = "x ";
-
+        public const string Exception = "Exception: ";
 
         public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
             AllExtensions.bmp,

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using sunamo.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 public partial class TF
 {
@@ -52,13 +54,14 @@ static void SaveFile(string obsah, string soubor, bool pripsat)
                 try
                 {
                     File.AppendAllText(soubor, obsah, Encoding.UTF8);
+                    return;
                 }
                 catch (Exception ex)
                 {
 
-
+                    Thread.Sleep(500);
                 }
-                Thread.Sleep(500);
+                
             }
         }
         else
@@ -68,12 +71,13 @@ static void SaveFile(string obsah, string soubor, bool pripsat)
                 try
                 {
                     File.WriteAllText(soubor, obsah, Encoding.UTF8);
+                    return;
                 }
                 catch (Exception ex)
                 {
-
+                    Thread.Sleep(500);
                 }
-                Thread.Sleep(500);
+                
             }
         }
     }
@@ -87,5 +91,11 @@ public static void SaveFile(string obsah, string soubor)
         string content = TF.ReadFile(pathCsproj);
         content = content.Replace(to, from);
         TF.SaveFile( content, pathCsproj);
+    }
+
+    internal static void SaveFile(string content, StorageFile storageFile)
+    {
+        TF.SaveFile(content, storageFile.FullPath());
+        
     }
 }

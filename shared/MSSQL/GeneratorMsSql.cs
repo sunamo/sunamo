@@ -76,43 +76,7 @@ public partial class GeneratorMsSql
 
 
 
-    public static string CombinedWhereNotEquals(bool continuing, ref int pridavatOd, AB[] whereIsNot)
-    {
-        if (whereIsNot != null)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (whereIsNot.Length != 0)
-            {
-                if (continuing)
-                {
-                    sb.Append(" AND ");
-                }
-                else
-                {
-                    sb.Append(" WHERE ");
-                }
-            }
-            bool první = true;
-
-
-            foreach (AB var in whereIsNot)
-            {
-                if (první)
-                {
-                    první = false;
-                }
-                else
-                {
-                    sb.Append(" AND ");
-                }
-                sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + pridavatOd));
-                pridavatOd++;
-            }
-
-            return sb.ToString();
-        }
-        return "";
-    }
+    
 
 
     /// <summary>
@@ -301,44 +265,13 @@ public partial class GeneratorMsSql
         return sb.ToString();
     }
 
-    public static string SimpleWhere(string columns, string tabulka, string sloupec)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT " + columns);
-        sb.Append(" FROM " + tabulka);
-        sb.Append(" WHERE ");
-        sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
-        return sb.ToString();
-    }
+    
 
-    /// <summary>
-    /// po vytvoření comm je třeba ručně přidat idValue
-    /// </summary>
-    /// <param name="vracenySloupec"></param>
-    /// <param name="table"></param>
-    /// <param name="idColumnName"></param>
-    /// <param name="idValue"></param>
-    /// <returns></returns>
-    public static string SimpleWhereOneRow(string vracenySloupec, string table, string idColumnName)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1) " + vracenySloupec);
-        sb.Append(" FROM " + table);
-        sb.Append(" WHERE ");
-        sb.Append(SH.Format2(" {0} = @p0 ", idColumnName));
-        return sb.ToString();
-    }
+    
 
 
 
-    public static string SimpleSelectOneRow(string vracenySloupec, string table)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1) " + vracenySloupec);
-        sb.Append(" FROM " + table);
-        sb.Append(" ");
-        return sb.ToString();
-    }
+    
 
 
 
@@ -346,22 +279,6 @@ public partial class GeneratorMsSql
 
 
 
-    public static string OrderBy(string orderByColumn, SortOrder sortOrder)
-    {
-        if (sortOrder == SortOrder.Unspecified)
-        {
-            return "";
-        }
-        string vr = " ORDER BY " + orderByColumn;
-        if (sortOrder == SortOrder.Ascending)
-        {
-            vr += " ASC";
-        }
-        else
-        {
-            vr += " DESC";
-        }
-        return vr;
-    }
+    
 }
 

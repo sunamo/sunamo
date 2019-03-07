@@ -5,6 +5,27 @@ using System.Text;
 
     public partial class DTHelperGeneral
     {
+    /// <summary>
+    /// Find four digit letter in any string
+    /// </summary>
+    /// <returns></returns>
+    public static string ParseYear(string s)
+    {
+        
+        var p = SH.Split(s, AllChars.dash, AllChars.slash);
+        foreach (var item in p)
+        {
+            if (item.Length == 4)
+            {
+                if (SH.IsNumber(item))
+                {
+                    return item;
+                }
+            }
+        }
+        return string.Empty;
+    }
+
         public static string TimeInMsToSeconds(Stopwatch p)
         {
             p.Stop();

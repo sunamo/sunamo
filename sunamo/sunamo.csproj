@@ -12,7 +12,6 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Net\IPAddressHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Constants\HttpKnownHeaderNames.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\PicturesSunamoShared.cs" Link="" />

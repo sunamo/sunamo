@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Data;
 using sunamo.Essential;
 using sunamo.Values;
 using System;
@@ -192,6 +193,14 @@ public class AppData
         return vr;
         
         
+    }
+
+    public async static Task< StorageFolder> GetFolderAsync(AppFolders af)
+    {
+        string vr = Path.Combine(RootFolder, af.ToString());
+        return new StorageFolder( vr);
+
+
     }
 
     /// <summary>

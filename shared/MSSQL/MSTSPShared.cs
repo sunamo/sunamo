@@ -107,6 +107,11 @@ public partial class MSTSP
         //return SelectDataTable(SH.Format2(sql, _params));
     }
 
+    /// <summary>
+    /// Počítá od nuly
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <param name = "where"></param>
     private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
     {
         for (int i = 0; i < where.Length; i++)
@@ -114,6 +119,7 @@ public partial class MSTSP
             AddCommandParameter(comm, i, where[i].B);
         }
     }
+
 
 public List<int> SelectValuesOfColumnInt(SqlTransaction tran, string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
     {

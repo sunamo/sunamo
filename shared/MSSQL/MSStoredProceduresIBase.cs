@@ -63,18 +63,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectID(false, tabulka, nazevSloupce, hodnotaSloupce);
     }
 
-    /// <summary>
-    /// Počítá od nuly
-    /// </summary>
-    /// <param name = "comm"></param>
-    /// <param name = "where"></param>
-    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
-    {
-        for (int i = 0; i < where.Length; i++)
-        {
-            AddCommandParameter(comm, i, where[i].B);
-        }
-    }
+    
 
     /// <summary>
     /// Počítá od nuly
@@ -96,18 +85,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return i;
     }
 
-    /// <summary>
-    /// Libovolné z hodnot A2 až A5 může být null, protože se to postupuje metodě AddCommandParameteresArrays
-    /// </summary>
-    /// <param name = "comm"></param>
-    /// <param name = "where"></param>
-    /// <param name = "isNotWhere"></param>
-    /// <param name = "greaterThanWhere"></param>
-    /// <param name = "lowerThanWhere"></param>
-    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i, AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere)
-    {
-        AddCommandParameteresArrays(comm, i, CA.ToArrayT<AB[]>(where, isNotWhere, greaterThanWhere, lowerThanWhere));
-    }
+    
 
     private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i2, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
     {
@@ -152,27 +130,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         AddCommandParameteresArrays(comm, i2, ab);
     }
 
-    /// <summary>
-    /// Bude se počítat od nuly
-    /// Některé z vnitřních polí může být null
-    /// </summary>
-    /// <param name = "comm"></param>
-    /// <param name = "where"></param>
-    /// <param name = "whereIsNot"></param>
-    private static void AddCommandParameteresArrays(SqlCommand comm, int i, params AB[][] where)
-    {
-        //int i = 0;
-        foreach (var item in where)
-        {
-            if (item != null)
-            {
-                foreach (var item2 in item)
-                {
-                    i = AddCommandParameter(comm, i, item2.B);
-                }
-            }
-        }
-    }
+    
 
     private int AddCommandParameteres(SqlCommand comm, int pocIndex, object[] hodnotyOdNuly)
     {
@@ -344,23 +302,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return 0;
     }
 
-    private SqlDataReader ExecuteReader(SqlCommand comm)
-    {
-        comm.Connection = conn;
-        return comm.ExecuteReader(CommandBehavior.Default);
-    }
+    
 
-    /// <summary>
-    /// Automaticky doplní connection
-    /// </summary>
-    /// <param name = "comm"></param>
-    /// <returns></returns>
-    public object ExecuteScalar(SqlCommand comm)
-    {
-        //SqlDbType.SmallDateTime;
-        comm.Connection = conn;
-        return comm.ExecuteScalar();
-    }
+    
 
     public object ExecuteScalar(string commText, params object[] para)
     {
@@ -385,17 +329,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return Convert.ToBoolean(o);
     }
 
-    private byte ExecuteScalarByte(SqlCommand comm)
-    {
-        object o = ExecuteScalar(comm);
-        if (o == null)
-        {
-            return 0;
-        }
-
-        return Convert.ToByte(o);
-    }
-
+    
     private DateTime ExecuteScalarDateTime(DateTime getIfNotFound, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
@@ -958,23 +892,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesByte(comm);
     }
 
-    private List<int> ReadValuesInt(SqlCommand comm)
-    {
-        List<int> vr = new List<int>();
-        SqlDataReader r = null;
-        r = ExecuteReader(comm);
-        if (r.HasRows)
-        {
-            while (r.Read())
-            {
-                int o = r.GetInt32(0);
-                //Type t = val.GetType();
-                vr.Add(o);
-            }
-        }
-
-        return vr;
-    }
+    
 
     public List<string> ReadValuesStringTrim(SqlCommand comm)
     {
@@ -1030,22 +948,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return vr;
     }
 
-    private List<DateTime> ReadValuesDateTime(SqlCommand comm)
-    {
-        List<DateTime> vr = new List<DateTime>();
-        SqlDataReader r = ExecuteReader(comm);
-        if (r.HasRows)
-        {
-            while (r.Read())
-            {
-                DateTime o = r.GetDateTime(0);
-                //Type t = val.GetType();
-                vr.Add(o);
-            }
-        }
-
-        return vr;
-    }
+    
 
     private List<long> ReadValuesLong(SqlCommand comm)
     {

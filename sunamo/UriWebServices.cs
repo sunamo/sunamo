@@ -209,6 +209,13 @@ public static class UriWebServices
         }
     }
 
+    public static string SpritMonitor(string car)
+    {
+        // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
+        string d = @"cng overview " + car;
+        return GoogleSearchSite("spritmonitor.de", d);
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -357,5 +364,10 @@ public static class UriWebServices
     public static string GoogleImFeelingLucky(string v)
     {
         return FromChromeReplacement("http://www.google.com/search?btnI&q=%s", v);
+    }
+
+    public static string MapyCz(string v)
+    {
+        return FromChromeReplacement( "https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
     }
 }

@@ -185,7 +185,11 @@ namespace desktop.Helpers.Backend
 
         public void Highlight(int from, int length)
         {
-            txtContent.Select(from, length);
+            if (from != -1)
+            {
+                txtContent.Select(from, length);
+            }
+            
         }
 
         /// <summary>

@@ -1,9 +1,11 @@
 ﻿using sunamo.Constants;
+using sunamo.Data;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 public partial class FS
 {
@@ -151,6 +153,16 @@ public partial class FS
                 }
             }
         }
+    }
+
+    internal static Task DeleteFile(StorageFile t)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
+    {
+        return new StorageFile(folder.fullPath, v);
     }
 
     /// <summary>

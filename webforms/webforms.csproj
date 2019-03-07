@@ -170,7 +170,6 @@
     <Compile Include="Helpers\GravatarHelper.cs" />
     <Compile Include="Helpers\HttpHandlerHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
-    <Compile Include="Helpers\HttpRequestHelper.cs" />
     <Compile Include="Helpers\HttpRequestHelpers.cs" />
     <Compile Include="Helpers\ListItemHelper.cs" />
     <Compile Include="Helpers\SelectHelper.cs" />

@@ -5,6 +5,15 @@ SelectValuesOfColumnAllRowsInt
 auta
 karavan
 
+Go tutorials:
+https://stackify.com/learn-go-tutorials/#post-22307-_ca5qa3631l2c
+https://www.quora.com/What-are-the-best-free-sources-to-learn-Go-programming-language
+
+Started:
+https://gobyexample.com/methods
+https://tour.golang.org/moretypes/13
+
+
 poradek in food google, by description online
 open tabs in mobile
 
@@ -24,6 +33,8 @@ g+ for insta
 poslouchat s neutrální hudbou, vyzkouset ruznou
 
 print all sizes of element
+
+vše co je s adresou musím encodovat return "https://radekjancik.visualstudio.com/_git/" + slnName;
 
 nebo ho nahlásím za krádež
 to nebylo úřední jednání, residomo je firma
@@ -45,6 +56,7 @@ tieto payslip
 bible quiz flash
 cleaning number
 price dancing 
+
 
 find new flat
 
@@ -206,6 +218,9 @@ t0056 MoveClassElementIntoSharedFileUC
 t0057 tieto payslips
 t0058 sunamo.github.io redirect to http://sunamo.cz which is redirecting to http://www.sunamo.cz/Sunamo/
 t0059 udelat dane
+t0060 find us/british/ca page to download movies, payed the best yearly, unlimited
+t0061 merge DateTimeFileIndex with FileNameGenerator
+t0062 TODO: implement DateTimeFileIndex.CreateObjectFileNameWithDateTime
 
 artroza kolene cvicit, 2015
 

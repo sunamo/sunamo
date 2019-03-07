@@ -111,7 +111,14 @@ public  static partial class CA
         {
             foreach (var item in enumerable)
             {
-                result.Add(item.ToString());
+                if (item == null)
+                {
+                    result.Add("(null)");
+                }
+                else
+                {
+                    result.Add(item.ToString());
+                }
             }
         }
         return result;
@@ -302,7 +309,21 @@ private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<
         }
         return changed;
     }
-/// <summary>
+
+    public static List<T> JoinIEnumerable<T>(params IEnumerable< T>[] enumerable)
+    {
+        List<T> t = new List<T>();
+        foreach (var item in enumerable)
+        {
+            foreach (var item2 in item)
+            {
+                t.Add((T)item2);
+            }
+        }
+        return t;
+    }
+
+    /// <summary>
     /// Direct edit
     /// </summary>
     /// <param name="files_in"></param>

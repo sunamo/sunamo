@@ -9,6 +9,8 @@ namespace shared
 {
     public class StatusHelper
     {
+
+
         public static Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st)
         {
             switch (st)

@@ -1235,8 +1235,14 @@ public partial class FS
             return files;
         }
 
-        // Žádné vytváření statických instancí takovýchto tříd ;)
-        public static string ReplaceIncorrectCharactersFile(string p)
+    public static string replaceIncorrectFor = string.Empty;
+
+    /// <summary>
+    /// Replacement can be configured with replaceIncorrectFor
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string ReplaceIncorrectCharactersFile(string p)
         {
             string t = p;
             foreach (char item in Path.GetInvalidFileNameChars())
@@ -1248,13 +1254,24 @@ public partial class FS
                     {
                         sb.Append(item2);
                     }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
                 }
                 t = sb.ToString();
             }
             return t;
         }
 
-        public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisThen, string replaceForThis)
+    /// <summary>
+    /// A3 is applicable only for A2. In general is use replaceIncorrectFor
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="replaceAllOfThisByA3"></param>
+    /// <param name="replaceForThis"></param>
+    /// <returns></returns>
+    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisByA3, string replaceForThis)
         {
             string t = p;
             foreach (char item in Path.GetInvalidFileNameChars())
@@ -1266,12 +1283,16 @@ public partial class FS
                     {
                         sb.Append(item2);
                     }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
                 }
                 t = sb.ToString();
             }
-            if (!string.IsNullOrEmpty(replaceAllOfThisThen))
+            if (!string.IsNullOrEmpty(replaceAllOfThisByA3))
             {
-                t = SH.ReplaceAll(t, replaceForThis, replaceAllOfThisThen);
+                t = SH.ReplaceAll(t, replaceForThis, replaceAllOfThisByA3);
 
             }
             return t;
@@ -1300,6 +1321,10 @@ public partial class FS
                     {
                         sb.Append(item2);
                     }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
                 }
                 t = sb.ToString();
             }

@@ -1,16 +1,40 @@
 ﻿
+using sunamo.Collections;
 using sunamo.Data;
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 public static partial  class CA
 {
     static Type type = typeof(CA);
+
+    public static string SwitchForGoogleSheets(List<string> captions, List<List<string>> exists)
+    {
+        ValuesTableGrid<string> vtg = new ValuesTableGrid<string>(exists);
+        vtg.captions = captions;
+        DataTable dt = vtg.SwitchRowsAndColumn();
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (DataRow item in dt.Rows)
+        {
+            JoinForGoogleSheetRow(sb, item.ItemArray);
+        }
+
+        return sb.ToString();
+    }
+
+    static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
+    {
+        sb.AppendLine(SH.Join(AllChars.tab, en));
+    }
 
     public static string GetNumberedList(List<string> input)
     {
@@ -192,7 +216,7 @@ public static partial  class CA
     }
 
     /// <summary>
-    /// Return A1 if stars with any of A2. Otherwise null
+    /// Return first of A1 if stars with any of A2. Otherwise null
     /// </summary>
     /// <param name="suMethods"></param>
     /// <param name="line"></param>
