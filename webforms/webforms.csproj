@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\webforms\Converters\MySitesConverter.cs" Link="" />
     <Compile Include="..\..\sunamo\webforms\Logins.cs" Link="" />
     <Compile Include="..\..\sunamo\webforms\LoginsShared.cs" Link="" />
     <Compile Include="AF.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Enums\WhatCopyHostingLocal.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Helpers\MySitesShortHelper.cs" />
+    <Compile Include="Helpers\UA.cs" />
     <Compile Include="Interfaces\IPageCs.cs" />
     <Compile Include="Interfaces\IPageResources.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
@@ -241,7 +243,6 @@
     <Compile Include="SunamoSearchEngine\SunamoSearchEngineTLong.cs" />
     <Compile Include="Tables.cs" />
     <Compile Include="TempHelper.cs" />
-    <Compile Include="UH.cs" />
     <Compile Include="UploaderManager.cs" />
     <Compile Include="WaitingManagerAspx.cs" />
     <Compile Include="WaitingManagerAspxPagesID.cs" />
@@ -250,6 +251,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.web\shared.web\shared.web.csproj">
+      <Project>{3322f417-812e-434c-b993-b696c972c54b}</Project>
+      <Name>shared.web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
       <Project>{b5a43071-45f0-4f14-8513-466c67cf8806}</Project>
       <Name>sunamo.web</Name>

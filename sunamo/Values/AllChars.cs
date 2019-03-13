@@ -66,6 +66,7 @@ public static class AllChars
     // my extension
     public static readonly List<char> generalChars = null;
 
+    public const char exclamation = '!';
     public const char pipe = '|';
 
     public const char cbl = '{';

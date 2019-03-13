@@ -1046,26 +1046,6 @@ public static partial class SH
         }
         return false;
     }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="nazevPP"></param>
-    /// <param name="only"></param>
-    /// <returns></returns>
-    public static string FirstCharUpper(string nazevPP, bool only = false)
-    {
-        if (nazevPP != null)
-        {
-            string sb = nazevPP.Substring(1);
-            if (only)
-            {
-                sb = sb.ToLower();
-            }
-            return nazevPP[0].ToString().ToUpper() + sb;
-        }
-        return null;
-    }
 
     public static string OnlyFirstCharUpper(string input)
     {
@@ -1590,19 +1570,6 @@ public static partial class SH
         return artist.Substring(0, artist.Length - 1);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="pred"></param>
-    /// <param name="za"></param>
-    /// <param name="text"></param>
-    /// <param name="or"></param>
-    public static void GetPartsByLocation(out string pred, out string za, string text, char or)
-    {
-        int dex = text.IndexOf(or);
-        SH.GetPartsByLocation(out pred, out za, text, dex);
-    }
-
     public static bool IsNumber(string str, params char[] nextAllowedChars)
     {
         foreach (var item in str)
@@ -1617,29 +1584,6 @@ public static partial class SH
         }
         
         return true;
-    }
-
-    /// <summary>
-    /// Into A1,2 never put null
-    /// </summary>
-    /// <param name="pred"></param>
-    /// <param name="za"></param>
-    /// <param name="text"></param>
-    /// <param name="pozice"></param>
-    public static void GetPartsByLocation(out string pred, out string za, string text, int pozice)
-    {
-        if (pozice == -1)
-        {
-            pred = text;
-            za = "";
-        }
-        else
-        {
-            pred = text.Substring(0, pozice);
-            za = text.Substring(pozice + 1);
-        }
-
-        
     }
 
     public static string ReplaceLastOccurenceOfString(string text, string co, string čím)
@@ -2064,23 +2008,6 @@ public static partial class SH
     public static string[] SplitBySpaceAndPunctuationChars(string s)
     {
         return s.Split(spaceAndPuntactionChars, StringSplitOptions.RemoveEmptyEntries);
-    }
-
-    public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
-    {
-        bool replaced;
-        return ReplaceOnceIfStartedWith(what, replaceWhat, zaCo, out replaced);
-    }
-
-    public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
-    {
-        replaced = false;
-        if (what.StartsWith(replaceWhat))
-        {
-            replaced = true;
-            return SH.ReplaceOnce(what, replaceWhat, zaCo);
-        }
-        return what;
     }
 
     /// <summary>
@@ -2547,7 +2474,20 @@ public static partial class SH
             i++;
         }
         string vr = sb.ToString();
-        return vr.Substring(0, vr.Length - 1);
+        return SH.SubstringLength( vr,0, vr.Length - 1);
+    }
+
+    private static string SubstringLength(string vr, int from, int length)
+    {
+        if (HasIndex(from, vr))
+        {
+            if (HasIndex(length, vr))
+            {
+                return vr.Substring(from, length);
+            }
+        }
+
+        return string.Empty;
     }
 
     /// <summary>
@@ -2592,16 +2532,6 @@ public static partial class SH
         }
         return sb.ToString();
     }
-
-    public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
-    {
-        List<string> na2Cislice = new List<string>();
-        foreach (var item in parts)
-        {
-            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
-        }
-        return JoinIEnumerable(p, na2Cislice);
-    } 
 
     public static string JoinWithoutTrim(object p, IList parts)
     {

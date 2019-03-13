@@ -34,4 +34,10 @@ public static string MakeUpTo2NumbersToZero(int p)
         vr.Add(to);
         return vr;
     }
+
+public static float RoundAndReturnInInputType(float ugtKm, int v)
+    {
+        string vr = Math.Round(ugtKm, v).ToString();
+        return float.Parse(vr);
+    }
 }

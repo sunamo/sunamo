@@ -1022,7 +1022,7 @@ public partial class FS
         /// <param name="to"></param>
         public static void MoveAllRecursivelyAndThenDirectory(string p, string to, FileMoveCollisionOption co)
         {
-            MoveAllFilesRecursively(p, to, co);
+            MoveAllFilesRecursively(p, to, co, null);
             string[] dirs = Directory.GetDirectories(p, "*", SearchOption.AllDirectories);
             for (int i = dirs.Length - 1; i >= 0; i--)
             {
@@ -1031,21 +1031,41 @@ public partial class FS
             Directory.Delete(p, false);
         }
 
-        public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co)
+        public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
         {
-            CopyMoveAllFilesRecursively(p, to, co, true);
+            CopyMoveAllFilesRecursively(p, to, co, true, contains);
         }
 
-        public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co)
+        public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
         {
-            CopyMoveAllFilesRecursively(p, to, co, false);
+            CopyMoveAllFilesRecursively(p, to, co, false, contains);
         }
 
-    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move)
+    /// <summary>
+    /// If want use which not contains, prefix A4 with !
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="to"></param>
+    /// <param name="co"></param>
+    /// <param name="contains"></param>
+    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains)
     {
         string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
         foreach (var item in files)
         {
+            if (!string.IsNullOrEmpty( contains ))
+            {
+                bool negation = SH.IsNegation(ref contains);
+
+                if (negation && item.Contains(contains))
+                {
+                    continue;
+                }
+                else if(!negation && !item.Contains(contains))
+                {
+                    continue;
+                }
+            }
             string fileTo = to + item.Substring(p.Length);
             if (move)
             {
@@ -1918,18 +1938,6 @@ public partial class FS
             return ds;
         }
 
-        /// <summary>
-        /// Odstraňuje samozřejmě ve výjimce
-        /// </summary>
-        /// <param name="path"></param>
-        public static void DeleteFileIfExists(string path)
-        {
-            if (FS.ExistsFile(path))
-            {
-                File.Delete(path);
-            }
-        }
-
         public static bool TryDeleteDirectory(string v)
         {
             try
@@ -1941,19 +1949,6 @@ public partial class FS
             {
                 return false;
             }
-        }
-
-        public static bool ContainsInvalidPathCharForPartOfMapPath(string p)
-        {
-            foreach (var item in invalidCharsForMapPath)
-            {
-                if (p.IndexOf(item) != -1)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         /// <summary>

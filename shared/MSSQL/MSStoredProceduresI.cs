@@ -46,4 +46,9 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
             _ci = value;
         }
     }
+
+    public static string ConvertToVarChar(string item)
+    {
+        return SqlServerHelper.ConvertToVarChar(item);
+    }
 }

@@ -151,12 +151,6 @@ public static partial class NH
         return (double)Convert.ToInt32(d);
     }
 
-    public static float RoundAndReturnInInputType(float ugtKm, int v)
-    {
-        string vr = Math.Round(ugtKm, v).ToString();
-        return float.Parse(vr);
-    }
-
     public static List<int> Invert(List<int> arr, int changeTo, int finalCount)
     {
         List<int> vr = new List<int>(finalCount);

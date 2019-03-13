@@ -5,89 +5,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo
+public static partial class EnumHelper
 {
-    public static class EnumHelper
+    /// <summary>
+    /// Get values include zero and All
+    /// Pokud bude A1 null nebo nebude obsahovat žádný element T, vrátí A1
+    /// Pokud nebude obsahovat všechny, vrátí jen některé - nutno kontrolovat počet výstupních elementů pole
+    /// Pokud bude prvek duplikován, zařadí se jen jednou
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "v"></param>
+    /// <returns></returns>
+    public static List<T> GetEnumList<T>(List<T> _def, string[] v)
+        where T : struct
     {
-        /// <summary>
-        /// Get values include zero and All
-        /// Pokud bude A1 null nebo nebude obsahovat žádný element T, vrátí A1
-        /// Pokud nebude obsahovat všechny, vrátí jen některé - nutno kontrolovat počet výstupních elementů pole
-        /// Pokud bude prvek duplikován, zařadí se jen jednou
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static List<T> GetEnumList<T>(List<T> _def, string[] v) where T: struct
+        if (v == null)
         {
-            if (v == null)
-            {
-                return _def;
-            }
-            List<T> vr = new List<T>();
-            foreach (string item in v)
-            {
-                T t;
-                if (Enum.TryParse<T>(item, out t))
-                {
-                    vr.Add(t);
-                }
-            }
-
-            if (vr.Count == 0)
-            {
-                return _def;
-            }
-
-            return vr;
+            return _def;
         }
 
-        public static Dictionary<T, string> EnumToString<T>(Type enumType)
+        List<T> vr = new List<T>();
+        foreach (string item in v)
         {
-            return Enum.GetValues(enumType).Cast<T>().Select(t => new { Key = t, Value = t.ToString().ToLower() }).ToDictionary(r => r.Key, r => r.Value);
-        }
-
-        public static List<T> GetValues<T>() where T : struct
-        {
-            return GetValues<T>(typeof(T));
-        }
-
-        /// <summary>
-        /// Get all values expect of Nope/None
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static List<T> GetValues<T>(Type type) where T : struct
-        {
-            var values = Enum.GetValues(type).Cast<T>().ToList();
-            T nope;
-            if(Enum.TryParse<T>(CodeElementsConstants.NopeValue, out nope))
+            T t;
+            if (Enum.TryParse<T>(item, out t))
             {
-                values.Remove(nope);
+                vr.Add(t);
             }
-            if (Enum.TryParse<T>(CodeElementsConstants.NoneValue, out nope))
-            {
-                values.Remove(nope);
-            }
-            return values;
         }
 
-        /// <summary>
-        /// Get all without zero and All.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="secondIsAll"></param>
-        /// <returns></returns>
-        public static List<T> GetAllValues<T>(bool secondIsAll = true)
-    where T : struct
+        if (vr.Count == 0)
         {
-            int def, max;
-            int[] valuesInverted;
-            List<T> result;
-            GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
+            return _def;
+        }
 
-            int i = max;
+        return vr;
+    }
+
+    public static Dictionary<T, string> EnumToString<T>(Type enumType)
+    {
+        return Enum.GetValues(enumType).Cast<T>().Select(t => new
+        {
+            Key = t,
+            Value = t.ToString().ToLower()
+        }
+
+        ).ToDictionary(r => r.Key, r => r.Value);
+    }
+
+    /// <summary>
+    /// Get all without zero and All.
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "secondIsAll"></param>
+    /// <returns></returns>
+    public static List<T> GetAllValues<T>(bool secondIsAll = true)
+        where T : struct
+    {
+        int def, max;
+        int[] valuesInverted;
+        List<T> result;
+        GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
+        int i = max;
+        int unaccountedBits = i;
+        for (int j = def; j < valuesInverted.Length; j++)
+        {
+            unaccountedBits &= valuesInverted[j];
+            if (unaccountedBits == 0)
+            {
+                result.Add((T)(object)i);
+                break;
+            }
+        }
+
+        CheckForZero(result);
+        return result;
+    }
+
+    /// <summary>
+    /// Get all without zero and All.
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "secondIsAll"></param>
+    /// <returns></returns>
+    public static List<T> GetAllCombinations<T>(bool secondIsAll = true)
+        where T : struct
+    {
+        int def, max;
+        int[] valuesInverted;
+        List<T> result;
+        GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
+        for (int i = def; i <= max; i++)
+        {
             int unaccountedBits = i;
             for (int j = def; j < valuesInverted.Length; j++)
             {
@@ -98,102 +107,72 @@ namespace sunamo
                     break;
                 }
             }
+        }
 
-            CheckForZero(result);
+        //Check for zero
+        CheckForZero(result);
+        return result;
+    }
 
+    /// <summary>
+    /// ignore case
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "web"></param>
+    /// <returns></returns>
+    public static T Parse<T>(string web)
+        where T : struct
+    {
+        T result;
+        if (Enum.TryParse<T>(web, true, out result))
+        {
             return result;
         }
 
-        /// <summary>
-        /// Get all without zero and All.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="secondIsAll"></param>
-        /// <returns></returns>
-        public static List<T> GetAllCombinations<T>(bool secondIsAll = true)
-    where T : struct
+        return default(T);
+    }
+
+    /// <summary>
+    /// Tested with EnumA
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "result"></param>
+    private static void CheckForZero<T>(List<T> result)
+        where T : struct
+    {
+        try
         {
-            int def, max;
-            int[] valuesInverted;
-            List<T> result;
-            GetValuesOfEnum(secondIsAll, out def, out valuesInverted, out result, out max);
-
-            for (int i = def; i <= max; i++)
-            {
-                int unaccountedBits = i;
-                for (int j = def; j < valuesInverted.Length; j++)
-                {
-                    unaccountedBits &= valuesInverted[j];
-                    if (unaccountedBits == 0)
-                    {
-                        result.Add((T)(object)i);
-                        break;
-                    }
-                }
-            }
-
-
-            //Check for zero
-            CheckForZero(result);
-
-            return result;
-        }
-
-        /// <summary>
-        /// ignore case
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="web"></param>
-        /// <returns></returns>
-        public static T Parse<T>(string web) where T : struct
-        {
-            T result;
-            if (Enum.TryParse<T>(web, true, out result))
-            {
-                return result;
-            }
-            return default(T);
-        }
-
-        /// <summary>
-        /// Tested with EnumA
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="result"></param>
-        private static void CheckForZero<T>(List<T> result) where T : struct
-        {
-            try
-            {
-                // Here I get None
-                var val = Enum.GetName(typeof(T), (T)(object)0);
-                if (string.IsNullOrEmpty(val))
-                {
-                    result.Remove((T)(object)0);
-                }
-            }
-            catch
+            // Here I get None
+            var val = Enum.GetName(typeof(T), (T)(object)0);
+            if (string.IsNullOrEmpty(val))
             {
                 result.Remove((T)(object)0);
             }
         }
-
-        private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max) where T : struct
+        catch
         {
-            def = 0;
-            if (secondIsAll)
-            {
-                def = 1;
-            }
-            if (typeof(T).BaseType != typeof(Enum)) throw new ArgumentException("T must be an Enum type");
+            result.Remove((T)(object)0);
+        }
+    }
 
-            var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
-            valuesInverted = values.Select(v => ~v).ToArray();
-            result = new List<T>();
-            max = def;
-            for (int i = def; i < values.Length; i++)
-            {
-                max |= values[i];
-            }
+    private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max)
+        where T : struct
+    {
+        def = 0;
+        if (secondIsAll)
+        {
+            def = 1;
+        }
+
+        if (typeof(T).BaseType != typeof(Enum))
+            throw new ArgumentException("T must be an Enum type");
+        var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
+        valuesInverted = values.Select(v => ~v).ToArray();
+        result = new List<T>();
+        max = def;
+        for (int i = def; i < values.Length; i++)
+        {
+            max |= values[i];
         }
     }
 }

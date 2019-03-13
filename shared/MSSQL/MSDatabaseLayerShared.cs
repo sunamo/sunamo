@@ -15,6 +15,11 @@ public partial class MSDatabaseLayer{
     static string dataSource2 = "";
     static string database2 = "";
 
+    public static string GetValues(params object[] sloupce)
+    {
+        return MSDatabaseLayerBase.GetValues(sloupce);
+    }
+
     public static string databaseName
     {
         get
@@ -304,5 +309,10 @@ public static void LoadNewConnection(string cs)
             _conn.Open();
         }
         
+    }
+
+    internal static string GetValuesDirect(int v)
+    {
+        return MSDatabaseLayerBase.GetValuesDirect(v);
     }
 }

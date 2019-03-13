@@ -138,16 +138,6 @@ public partial class DTHelper
         return DTHelperGeneral.DateTimeToSecondsOnlyTime(t);
     }
 
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        return DTHelperGeneral.MakeUpTo2NumbersToZero(p);
-    }
-
-    public static string DateToString(DateTime p, Langs l)
-    {
-        return DTHelperMulti.DateToString(p, l);
-    }
-
 
 
     public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)

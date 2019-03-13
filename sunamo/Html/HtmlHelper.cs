@@ -320,11 +320,6 @@ using System.Xml;
             node.Attributes.Add(atr, hod);
         }
 
-    public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
-    {
-        return HtmlAssistant.GetValueOfAttribute(p, divMain, trim);
-    }
-
 
     private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {

@@ -95,6 +95,14 @@ public static partial  class CA
         return abl;
     }
 
+    /// <summary>
+    /// Return whether all of A1 are in A2
+    /// Not all from A2 must be A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="searchTerms"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static bool IsEqualToAllElement<T>(List<T> searchTerms, List<T> key)
     {
         foreach (var item in searchTerms)
@@ -471,26 +479,6 @@ public static partial  class CA
         return list.Any(d => SH.MatchWildcard(file, d));
     }
 
-    public static object[] JoinVariableAndArray(object p, object[] sloupce)
-    {
-        List<object> o = new List<object>();
-        o.Add(p);
-        o.AddRange(sloupce);
-        return o.ToArray();
-    }
-
-    public static bool Contains(int idUser, int[] onlyUsers)
-    {
-        foreach (int item in onlyUsers)
-        {
-            if (item == idUser)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static int IndexOfValue(List<int> allWidths, int width)
     {
         for (int i = 0; i < allWidths.Count; i++)
@@ -644,24 +632,6 @@ public static partial  class CA
         foreach (var item in v)
         {
             if (t.EndsWith(item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// G zda se alespoň 1 prvek A2 == A1
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="availableValues"></param>
-    /// <returns></returns>
-    public static bool Contains(string value, List<string> availableValues)
-    {
-        foreach (var item in availableValues)
-        {
-            if (item == value)
             {
                 return true;
             }
@@ -1071,36 +1041,6 @@ public static partial  class CA
         return true;
     }
 
-    public static T[] JumbleUp<T>(T[] b)
-    {
-        int bl = b.Length;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
-    public static List<T> JumbleUp<T>(List<T> b)
-    {
-        int bl = b.Count;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
     /// <summary>
     /// V prvním indexu jsou řádky, v druhém sloupce
     /// </summary>
@@ -1125,14 +1065,6 @@ public static partial  class CA
         }
 
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
-    }
-
-
-    
-
-    public static IEnumerable<string> ToEnumerable(params string[] p)
-    {
-        return p;
     }
 
     public static List<object> ToObject(IEnumerable enumerable)

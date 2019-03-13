@@ -26,7 +26,7 @@ public static class MeUri
 
     private static string GetWebUri(SunamoPage sp, string p)
     {
-        return web.UH.GetWebUri(sp, "Me/" + p);
+        return UA.GetWebUri(sp, "Me/" + p);
     }
 
     public static string ChangeProfilePicture(SunamoPage sp)

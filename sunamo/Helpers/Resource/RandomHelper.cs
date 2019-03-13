@@ -8,8 +8,8 @@ using System.Collections;
 public static partial class RandomHelper
 {
     
-    public static List<char> vsZnaky = null;
-    public static List<char> vsZnakyWithoutSpecial = null;
+    
+
     public static void RemoveChars(string[] p)
     {
         foreach (string item in p)
@@ -21,30 +21,12 @@ public static partial class RandomHelper
         }
     }
 
-    
-
-    static RandomHelper()
-    {
-        vsZnaky = new List<char>(AllChars.lowerChars.Count + AllChars.numericChars.Count + AllChars.specialChars.Count + AllChars.upperChars.Count);
-        vsZnaky.AddRange(AllChars.lowerChars);
-        vsZnaky.AddRange(AllChars.numericChars);
-        vsZnaky.AddRange(AllChars.specialChars);
-        vsZnaky.AddRange(AllChars.upperChars);
-
-        vsZnakyWithoutSpecial = new List<char>(AllChars.lowerChars.Count + AllChars.numericChars.Count + AllChars.upperChars.Count);
-        vsZnakyWithoutSpecial.AddRange(AllChars.lowerChars);
-        vsZnakyWithoutSpecial.AddRange(AllChars.numericChars);
-        vsZnakyWithoutSpecial.AddRange(AllChars.upperChars);
-        
-    }
-
     public static IntPtr RandomIntPtr()
     {
         IntPtr p = new IntPtr(RandomInt());
         return p;
     }
 
-    
     public static byte[] RandomBytes(int kolik)
     {
         byte[] b = new byte[kolik];
@@ -53,24 +35,6 @@ public static partial class RandomHelper
             b[i] = (byte)rnd.Next(0, byte.MaxValue);
         }
         return b;
-    }
-
-
-    /// <summary>
-    /// Zad�vej ��slo o 1 v�t�� ne� skute�n� po�et znak� kter� chce�
-    /// Vr�t� mi n�hodn� �et�zec pouze z velk�ch, mal�ch p�smen a ��slic
-    /// </summary>
-    /// <param name="delka"></param>
-    /// <returns></returns>
-    public static string RandomStringWithoutSpecial(int delka)
-    {
-        delka--;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i != delka; i++)
-        {
-            sb.Append(RandomCharWithoutSpecial());
-        }
-        return sb.ToString();
     }
 
     public static string RandomString(int delka)
@@ -123,19 +87,6 @@ public static partial class RandomHelper
         return sb.ToString();
     }
 
-    public static char RandomChar()
-    {
-        return RandomElementOfCollection(vsZnaky)[0];
-    }
-    /// <summary>
-    /// Vr�t� mi n�hodn� znak pouze z velk�ch, mal�ch p�smen a ��slic
-    /// </summary>
-    /// <returns></returns>
-    public static char RandomCharWithoutSpecial()
-    {
-        return RandomElementOfCollection(vsZnakyWithoutSpecial)[0];
-    }
-
     private static char RandomNumberChar()
     {
         return RandomElementOfCollection(AllChars.numericChars)[0];
@@ -150,17 +101,6 @@ public static partial class RandomHelper
     public static byte RandomByte(int od, int to)
     {
         return (byte)rnd.Next(od, to + 1);
-    }
-
-    /// <summary>
-    /// Hod� se pro po��tan� index� proto�e vrac� ��slo mezi A1 do A2-1
-    /// </summary>
-    /// <param name="od"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static byte RandomByte2(int od, int to)
-    {
-        return (byte)rnd.Next(od, to);
     }
     /// <summary>
     /// Vr�t� ��slo mezi 0 a A1-1

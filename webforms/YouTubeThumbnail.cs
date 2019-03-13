@@ -17,7 +17,7 @@ public abstract class YouTubeThumbnail
     /// <returns></returns>
     public string GetUri(int idSong, int poradi)
     {
-        //return UH.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
+        //return UA.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
         return "'" + GetBaseUri(idSong, poradi) + "'";
     }
 
@@ -29,7 +29,7 @@ public abstract class YouTubeThumbnail
     /// <returns></returns>
     public string GetUri2(int idSong, int poradi)
     {
-        //return UH.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
+        //return UA.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
         return GetBaseUri(idSong, poradi);
     }
 

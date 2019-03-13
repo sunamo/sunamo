@@ -552,4 +552,128 @@ public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
         lb.AddRange(salt);
         return lb;
     }
+
+public static bool Contains(int idUser, int[] onlyUsers)
+    {
+        foreach (int item in onlyUsers)
+        {
+            if (item == idUser)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+/// <summary>
+    /// G zda se alespoň 1 prvek A2 == A1
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="availableValues"></param>
+    /// <returns></returns>
+    public static bool Contains(string value, List<string> availableValues)
+    {
+        foreach (var item in availableValues)
+        {
+            if (item == value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+public static IEnumerable<string> ToEnumerable(params string[] p)
+    {
+        return p;
+    }
+
+public static T[] JumbleUp<T>(T[] b)
+    {
+        int bl = b.Length;
+        for (int i = 0; i < bl; ++i)
+        {
+            int index1 = (RandomHelper.RandomInt() % bl);
+            int index2 = (RandomHelper.RandomInt() % bl);
+
+            T temp = b[index1];
+            b[index1] = b[index2];
+            b[index2] = temp;
+        }
+        return b;
+    }
+public static List<T> JumbleUp<T>(List<T> b)
+    {
+        int bl = b.Count;
+        for (int i = 0; i < bl; ++i)
+        {
+            int index1 = (RandomHelper.RandomInt() % bl);
+            int index2 = (RandomHelper.RandomInt() % bl);
+
+            T temp = b[index1];
+            b[index1] = b[index2];
+            b[index2] = temp;
+        }
+        return b;
+    }
+
+
+
+
+
+public static bool HasIndex(int dex, Array col)
+    {
+        return col.Length > dex;
+    }
+public static bool HasIndex(int p, IEnumerable nahledy)
+    {
+        if (p < 0)
+        {
+            throw new Exception("Chybný parametr p");
+        }
+        if (nahledy.Count() > p)
+        {
+            return true;
+        }
+        return false;
+    }
+
+public static int GetLength(IList where)
+    {
+        if (where == null)
+        {
+            return 0;
+        }
+        return where.Count;
+    }
+
+/// <summary>
+    /// Is same as ContainsElement, only have switched arguments
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="p"></param>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
+    {
+        foreach (T item in list)
+        {
+            if (EqualityComparer<T>.Default.Equals(p, item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+    {
+        return IsEqualToAnyElement(p, prvky.ToList());
+    }
+
+public static object[] JoinVariableAndArray(object p, object[] sloupce)
+    {
+        List<object> o = new List<object>();
+        o.Add(p);
+        o.AddRange(sloupce);
+        return o.ToArray();
+    }
 }

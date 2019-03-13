@@ -442,4 +442,29 @@ public static string DeleteWrongCharsInFileName(string p, bool isPath)
 
             return sb.ToString();
         }
+
+public static bool ContainsInvalidPathCharForPartOfMapPath(string p)
+        {
+            foreach (var item in invalidCharsForMapPath)
+            {
+                if (p.IndexOf(item) != -1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+/// <summary>
+        /// Odstraňuje samozřejmě ve výjimce
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DeleteFileIfExists(string path)
+        {
+            if (FS.ExistsFile(path))
+            {
+                File.Delete(path);
+            }
+        }
 }

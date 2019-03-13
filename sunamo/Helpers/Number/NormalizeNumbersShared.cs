@@ -9,4 +9,13 @@ public static uint NormalizeInt(int p)
         //nt++;
         return nt;
     }
+
+public static ushort NormalizeShort(short p)
+    {
+        int p2 = (int)p;
+        int sm = (int)short.MaxValue;
+        ushort nt = (ushort)(p2 + sm + 1);
+        //nt++;
+        return nt;
+    }
 }

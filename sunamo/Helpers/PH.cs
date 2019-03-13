@@ -36,7 +36,7 @@ public class PH
         return v;
     }
 
-    private static void Uri(string v)
+    public static void Uri(string v)
     {
         v = NormalizeUri(v);
         Process.Start(v);
@@ -55,7 +55,7 @@ public class PH
             switch (prohlizec)
             {
                 case Browsers.Chrome:
-                    b = @"C:\Users\sunamo\AppData\Local\Google\Chrome\Application\chrome.exe";
+                    b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
                     break;
                 case Browsers.Firefox:
                     b = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
@@ -86,5 +86,10 @@ public class PH
         carModels = CA.ChangeContent(carModels, spritMonitor);
         carModels = CA.ChangeContent(carModels, NormalizeUri);
         StartAllUri(carModels);
+    }
+
+    public static void OpenInBrowser(string uri)
+    {
+         OpenInBrowser(Browsers.Chrome, uri);
     }
 }

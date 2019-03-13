@@ -12,6 +12,22 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperMultiShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlAssistantShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Exceptions\NoImplementedException.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCodeShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NormalizeNumbersShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertEveryWordLargeCharConvention.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertBase64.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\CodeElementsConstants.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Types\EnumHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\LinearHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\RandomHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\Browsers.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Types\EnumHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFoldersHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\AppDataShared.cs" Link="" />
@@ -22,10 +38,8 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Net\IPAddressHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Constants\Constants.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertRot12.cs" Link="" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\QSHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\List\DictionaryHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Constants\HttpKnownHeaderNames.cs" Link="" />
@@ -46,6 +60,7 @@
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\Net\" />
     <Folder Include="Helpers\Runtime\" />
     <Folder Include="List\NewFolder\" />
     <Folder Include="Mixins\" />

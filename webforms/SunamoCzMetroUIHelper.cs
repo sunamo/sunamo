@@ -38,7 +38,7 @@ public class SunamoCzMetroUIHelper
         text = domain.ToString();
         sb.Append("<li>");
         string host = sp.Request.Url.Host.Replace("www.", "");
-        WriteTagWithAttrs(sb, "a", text, "href", web.UH.GetWebUri2(sp, text, host == Consts.localhost, host));
+        WriteTagWithAttrs(sb, "a", text, "href", UA.GetWebUri2(sp, text, host == Consts.localhost, host));
 
         sb.Append("</li>");
         return sb.ToString();

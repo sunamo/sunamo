@@ -962,4 +962,162 @@ public static string GetString(IEnumerable o, string p)
         }
         return sb.ToString();
     }
+
+    internal static bool IsNegation(ref string contains)
+    {
+        if (contains[0] == AllChars.exclamation)
+        {
+            contains = contains.Substring(1);
+            return true;
+        }
+        return false;
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pred"></param>
+    /// <param name="za"></param>
+    /// <param name="text"></param>
+    /// <param name="or"></param>
+    public static void GetPartsByLocation(out string pred, out string za, string text, char or)
+    {
+        int dex = text.IndexOf(or);
+        SH.GetPartsByLocation(out pred, out za, text, dex);
+    }
+/// <summary>
+    /// Into A1,2 never put null
+    /// </summary>
+    /// <param name="pred"></param>
+    /// <param name="za"></param>
+    /// <param name="text"></param>
+    /// <param name="pozice"></param>
+    public static void GetPartsByLocation(out string pred, out string za, string text, int pozice)
+    {
+        if (pozice == -1)
+        {
+            pred = text;
+            za = "";
+        }
+        else
+        {
+            pred = text.Substring(0, pozice);
+            za = text.Substring(pozice + 1);
+        }
+
+        
+    }
+
+public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
+    {
+        List<string> na2Cislice = new List<string>();
+        foreach (var item in parts)
+        {
+            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
+        }
+        return JoinIEnumerable(p, na2Cislice);
+    }
+
+public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
+    {
+        bool replaced;
+        return ReplaceOnceIfStartedWith(what, replaceWhat, zaCo, out replaced);
+    }
+public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
+    {
+        replaced = false;
+        if (what.StartsWith(replaceWhat))
+        {
+            replaced = true;
+            return SH.ReplaceOnce(what, replaceWhat, zaCo);
+        }
+        return what;
+    }
+
+public static string RemoveLastChar(string artist)
+    {
+        return artist.Substring(0, artist.Length - 1);
+    }
+
+/// <summary>
+    /// Údajně detekuje i japonštinu a podpobné jazyky
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static bool IsChinese(string text)
+    {
+        var hiragana = GetCharsInRange(text, 0x3040, 0x309F);
+        if (hiragana )
+        {
+            return true;
+        }
+        var katakana = GetCharsInRange(text, 0x30A0, 0x30FF);
+        if (katakana )
+        {
+            return true;
+        }
+        var kanji = GetCharsInRange(text, 0x4E00, 0x9FBF);
+        if (kanji )
+        {
+            return true;
+        }
+
+        if (text.Any(c => c >= 0x20000 && c <= 0xFA2D))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+public static string SubstringIfAvailable(string input, int lenght)
+    {
+        if (input.Length > lenght)
+        {
+            return input.Substring(0, lenght);
+        }
+        return input;
+    }
+
+/// <summary>
+    /// Nevraci znaky na indexech ale zda nektere znaky maji rozsah char definovany v A2,3
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
+    /// <returns></returns>
+    public static  bool GetCharsInRange(string text, int min, int max)
+    {
+        return text.Where(e => e >= min && e <= max).Count() != 0;
+    }
+
+public static string JoinWithoutTrim(object p, IList parts)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (object item in parts)
+        {
+            sb.Append(item.ToString() + p);
+        }
+        return sb.ToString();
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nazevPP"></param>
+    /// <param name="only"></param>
+    /// <returns></returns>
+    public static string FirstCharUpper(string nazevPP, bool only = false)
+    {
+        if (nazevPP != null)
+        {
+            string sb = nazevPP.Substring(1);
+            if (only)
+            {
+                sb = sb.ToLower();
+            }
+            return nazevPP[0].ToString().ToUpper() + sb;
+        }
+        return null;
+    }
 }

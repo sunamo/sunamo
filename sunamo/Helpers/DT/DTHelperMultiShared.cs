@@ -115,4 +115,18 @@ public static DateTime IsValidTimeText(string r)
             }
             return dt;
         }
+
+/// <summary>
+        /// Vrátí datum v českém formátu(například 21.6.1989)
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static string DateToString(DateTime p, Langs l)
+        {
+            if (l == Langs.cs)
+            {
+                return p.Day + "." + p.Month + "." + p.Year;
+            }
+            return p.Month + "/" + p.Day + "/" + p.Year;
+        }
 }

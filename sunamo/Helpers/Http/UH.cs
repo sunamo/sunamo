@@ -120,27 +120,6 @@ using System.Linq;
             return false;
         }
 
-        public static string GetPageNameFromUri(Uri uri)
-        {
-            int nt = uri.PathAndQuery.IndexOf("?");
-            if (nt != -1)
-            {
-                return uri.PathAndQuery.Substring(0, nt);
-            }
-            return uri.PathAndQuery;
-        }
-
-        
-
-        public static string GetPageNameFromUri(string atr, string p)
-        {
-            if (!atr.StartsWith("http://") && !atr.StartsWith("https://"))
-            {
-                return GetPageNameFromUri(new Uri("http://" + p + "/" + atr.TrimStart('/')));
-            }
-            return GetPageNameFromUri(new Uri(atr));
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -180,14 +159,7 @@ using System.Linq;
             return rp;
         }
 
-        public static string GetFileName(string rp)
-        {
-            rp = rp.TrimEnd('/');
-            int dex = rp.LastIndexOf('/');
-            return rp.Substring(dex + 1);
-        }
-
-        public static string GetFileNameWithoutExtension(string p)
+    public static string GetFileNameWithoutExtension(string p)
         {
             return Path.GetFileNameWithoutExtension(GetFileName(p));
         }
@@ -398,4 +370,6 @@ using System.Linq;
             }
             return false;
         }
-    }
+
+    
+}

@@ -1,0 +1,7 @@
+GetWebUri2
+GetWebUriWithoutHttp
+AppendSiteNameIfNotExists
+GetWebUri
+GetWebUri3
+GetWithProtocol
+GetProtocol

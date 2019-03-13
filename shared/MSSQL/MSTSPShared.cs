@@ -145,4 +145,83 @@ public List<int> SelectValuesOfColumnInt(SqlTransaction tran, string tabulka, st
         //return SelectValuesOfColumnAllRowsInt(comm);
         return vr;
     }
+
+/// <summary>
+    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="sloupec"></param>
+    /// <returns></returns>
+    public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string sloupec)
+    {
+        List<int> vr = new List<int>();
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
+        DataTable dt = SelectDataTable(tran, comm);
+        foreach (DataRow var in dt.Rows)
+        {
+            object o = var.ItemArray[0];
+            if (o != DBNull.Value)
+            {
+                vr.Add(int.Parse(o.ToString()));
+            }
+            else
+            {
+                vr.Add(-1);
+            }
+        }
+        return vr;
+    }
+/// <summary>
+    /// Tato metoda má navíc možnost specifikovat simple where.
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="hledanySloupec"></param>
+    /// <param name="idColumn"></param>
+    /// <param name="idValue"></param>
+    /// <returns></returns>
+    public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string hledanySloupec, string idColumn, object idValue)
+    {
+        List<int> vr = new List<int>();
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, idColumn));
+        AddCommandParameter(comm, 0, idValue);
+        DataTable dt = SelectDataTable(tran, comm);
+        foreach (DataRow var in dt.Rows)
+        {
+            object o = var.ItemArray[0];
+            if (o != DBNull.Value)
+            {
+                vr.Add(int.Parse(o.ToString()));
+            }
+            else
+            {
+                vr.Add(-1);
+            }
+        }
+        return vr;
+    }
+public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string hledanySloupec, params AB[] aB)
+    {
+        string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
+
+        List<int> vr = new List<int>();
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
+        for (int i = 0; i < aB.Length; i++)
+        {
+            AddCommandParameter(comm, i, aB[i].B);
+        }
+        DataTable dt = SelectDataTable(tran, comm);
+        foreach (DataRow var in dt.Rows)
+        {
+            object o = var.ItemArray[0];
+            if (o != DBNull.Value)
+            {
+                vr.Add(int.Parse(o.ToString()));
+            }
+            else
+            {
+                vr.Add(-1);
+            }
+        }
+        return vr;
+    }
 }
