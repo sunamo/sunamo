@@ -319,7 +319,7 @@ public class GeneralHelper
     {
         ip = null;
         int idIP = int.MaxValue;
-        string ip2 = HttpRequestHelper.GetUserIPString(Request);
+        string ip2 = IPAddressHelper.GetUserIPString(Request);
         if (ip2.TrimStart(':') == "1")
         {
             ip2 = "127.0.0.1";

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 
-public static class SunamoPageHelper
+public static partial class SunamoPageHelper
 {
     #region Lst
     public static string WebTitle(MySites sa, HttpRequest Request)
@@ -49,26 +49,7 @@ public static class SunamoPageHelper
 
     #endregion
 
-    /// <summary>
-    /// Pokud ještě nebyla IP adresa zjištěna, zjistím ji 
-    /// Pokud IP adresa nebude mít 4 čísla byte nebo bude moje, vrátím null
-    /// </summary>
-    /// <returns></returns>
-    public static byte[] IsIpAddressRight(SunamoPage sp)
-    {
-        if (sp.ipAddress == null)
-        {
-            sp.ipAddress = HttpRequestHelper.GetUserIP(sp.Request);
-        }
-        if (sp.ipAddress == null)
-        {
-            return null;
-        }
-        else
-        {
-            return IsIpAddressRight(sp.ipAddress);
-        }
-    }
+    
     #endregion
 
     public static string GetFooterHtml(MySites ms)
@@ -106,6 +87,8 @@ public static class SunamoPageHelper
     {
         sp.WriteToDebugWithTime(rightUp + "Me/Login.aspx?ReturnUrl=" + UH.UrlEncode(sp.Request.Url.ToString()));
     }
+
+    
 
     /// <summary>
     /// Přesměruje na OffRegLogSys.aspx když je vypnuté přihlašovací a registrační systém.
@@ -189,7 +172,28 @@ public static class SunamoPageHelper
             sp.nameLoginedUser = GeneralCells.LoginOfUser(id); //lu.login;
         }
     }
-    
+
+    /// <summary>
+    /// Pokud ještě nebyla IP adresa zjištěna, zjistím ji 
+    /// Pokud IP adresa nebude mít 4 čísla byte nebo bude moje, vrátím null
+    /// </summary>
+    /// <returns></returns>
+    public static byte[] IsIpAddressRight(SunamoPage sp)
+    {
+        if (sp.ipAddress == null)
+        {
+            sp.ipAddress = HttpRequestHelper.GetUserIP(sp.Request);
+        }
+        if (sp.ipAddress == null)
+        {
+            return null;
+        }
+        else
+        {
+            return IsIpAddressRight(sp.ipAddress);
+        }
+    }
+
     /// <summary>
     /// Pokud IP adresa nebude mít 4 čísla byte, vrátím null
     /// </summary>
@@ -197,7 +201,7 @@ public static class SunamoPageHelper
     /// <returns></returns>
     private static byte[] IsIpAddressRight(IPAddress ipAddress)
     {
-        
+
 
         byte[] b = ipAddress.GetAddressBytes();
         if (b == null)

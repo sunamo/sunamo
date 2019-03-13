@@ -98,4 +98,18 @@ public static void SaveFile(string obsah, string soubor)
         TF.SaveFile(content, storageFile.FullPath());
         
     }
+
+public static List<string> ReadAllLines(string file)
+    {
+        return SH.GetLines(ReadFile(file));
+    }
+
+public static void CreateEmptyFileWhenDoesntExists(string path)
+    {
+        if (!FS.ExistsFile(path))
+        {
+            FS.CreateUpfoldersPsysicallyUnlessThere(path);
+            File.WriteAllText(path, "");
+        }
+    }
 }

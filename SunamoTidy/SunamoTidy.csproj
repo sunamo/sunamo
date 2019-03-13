@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Reference Include="TidyManaged">
-      <HintPath>..\..\..\Documents\vs17\Projects\sunamo\dll\TidyManaged.dll</HintPath>
+      <HintPath>..\dll\TidyManaged.dll</HintPath>
     </Reference>
   </ItemGroup>
 

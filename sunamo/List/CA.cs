@@ -19,6 +19,7 @@ public static partial  class CA
     {
         ValuesTableGrid<string> vtg = new ValuesTableGrid<string>(exists);
         vtg.captions = captions;
+
         DataTable dt = vtg.SwitchRowsAndColumn();
 
         StringBuilder sb = new StringBuilder();
@@ -31,7 +32,7 @@ public static partial  class CA
         return sb.ToString();
     }
 
-    static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
+    public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
     {
         sb.AppendLine(SH.Join(AllChars.tab, en));
     }
@@ -502,16 +503,6 @@ public static partial  class CA
         return -1;
     }
 
-   
-
-    public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
-    {
-        List<byte> lb = new List<byte>(pass.Length + salt.Length);
-        lb.AddRange(pass);
-        lb.AddRange(salt);
-        return lb;
-    }
-
 
     public static bool HasFirstItemLength(string[] notContains)
     {
@@ -624,15 +615,6 @@ public static partial  class CA
             }
         }
         return mySites;
-    }
-
-    public static List<string> ToLower(List<string> slova)
-    {
-        for (int i = 0; i < slova.Count; i++)
-        {
-            slova[i] = slova[i].ToLower();
-        }
-        return slova;
     }
 
     public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
@@ -882,29 +864,6 @@ public static partial  class CA
 
     }
 
-    /// <summary>
-    /// Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
-    /// </summary>
-    /// <param name="ss"></param>
-    /// <returns></returns>
-    public static string[] ToLower(string[] ss, bool createNewArray = false)
-    {
-        string[] outArr = ss;
-
-        if (createNewArray)
-        {
-            outArr = new string[ss.Length];
-        }
-
-        for (int i = 0; i < ss.Length; i++)
-        {
-            outArr[i] = ss[i].ToLower();
-
-        }
-        return outArr;
-
-    }
-
     public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
         int delkaNejdelsiho = 0;
@@ -1013,11 +972,6 @@ public static partial  class CA
     public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
     {
         return IsEqualToAnyElement(p, prvky.ToList());
-    }
-
-    public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)
-    {
-        return sloupce.SequenceEqual(sloupce2);
     }
 
     /// <summary>
@@ -1181,45 +1135,6 @@ public static partial  class CA
         return p;
     }
 
-    /// <summary>
-    /// Pokud potřebuješ vrátit null když něco nebude sedět, použij ToInt s parametry nebo ToIntMinRequiredLength
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable enumerable)
-    {
-        List<int> result = new List<int>();
-        foreach (var item in enumerable)
-        {
-            result.Add(int.Parse(item.ToString()));
-        }
-        return result;
-    }
-
-    public static List<long> ToLong(IEnumerable enumerable)
-    {
-        List<long> result = new List<long>();
-        foreach (var item in enumerable)
-        {
-            result.Add(long.Parse(item.ToString()));
-        }
-        return result;
-    }
-
-    
-
-
-
-    public static List<short> ToShort(IEnumerable enumerable)
-    {
-        List<short> result = new List<short>();
-        foreach (var item in enumerable)
-        {
-            result.Add(short.Parse(item.ToString()));
-        }
-        return result;
-    }
-
     public static List<object> ToObject(IEnumerable enumerable)
     {
         List<object> result = new List<object>();
@@ -1228,75 +1143,6 @@ public static partial  class CA
             result.Add(item);
         }
         return result;
-    }
-
-    /// <summary>
-    /// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable enumerable, int requiredLength)
-    {
-        int enumerableCount = enumerable.Count();
-        if (enumerableCount != requiredLength)
-        {
-            return null;
-        }
-
-        List<int> result = new List<int>();
-        int y = 0;
-        foreach (var item in enumerable)
-        {
-            if (int.TryParse(item.ToString(), out y))
-            {
-                result.Add(y);
-            }
-            else
-            {
-                return null;
-            }
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable altitudes, int requiredLength, int startFrom)
-    {
-        int finalLength = altitudes.Count() - startFrom;
-        if (finalLength < requiredLength)
-        {
-            return null;
-        }
-        List<int> vr = new List<int>(finalLength);
-
-        int i = 0;
-        foreach (var item in altitudes)
-        {
-            if (i < startFrom)
-            {
-                continue;
-            }
-
-            int y = 0;
-            if (int.TryParse(item.ToString(), out y))
-            {
-                vr.Add(y);
-            }
-            else
-            {
-                return null;
-            }
-
-            i++;
-        }
-
-        return vr;
     }
 
     /// <summary>

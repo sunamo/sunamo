@@ -17,4 +17,21 @@ public static string MakeUpTo2NumbersToZero(int p)
         return s;
     }
 
+
+/// <summary>
+    /// Vytvoří interval od A1 do A2 včetně
+    /// </summary>
+    /// <param name="od"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
+    public static List<int> GenerateIntervalInt(int od, int to)
+    {
+        List<int> vr = new List<int>();
+        for (int i = od; i < to; i++)
+        {
+            vr.Add(i);
+        }
+        vr.Add(to);
+        return vr;
+    }
 }

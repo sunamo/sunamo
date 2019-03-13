@@ -676,7 +676,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         return slovo != SH.TextWithoutDiacritic(slovo);
     }
 
-public static string[] SplitNone(string text, params char[] deli)
+public static List<string> SplitNone(string text, params char[] deli)
     {
         return Split(StringSplitOptions.None, text, deli);
     }
@@ -689,7 +689,7 @@ public static string[] SplitNone(string text, params char[] deli)
     /// <param name="text"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
-    private static string[] Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
+    private static List<string> Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
     {
         if (deli == null || deli.Count() == 0)
         {
@@ -703,7 +703,7 @@ public static string[] SplitNone(string text, params char[] deli)
             }
         }
 
-        return text.Split(deli, stringSplitOptions);
+        return text.Split(deli, stringSplitOptions).ToList();
     }
 
     /// <summary>
@@ -903,5 +903,63 @@ public static string WrapWithQm(string commitMessage)
 public static int OccurencesOfStringIn(string source, string p_2)
     {
         return source.Split(new string[] { p_2 }, StringSplitOptions.None).Length - 1;
+    }
+
+public static bool ContainsOtherChatThanLetterAndDigit(string p)
+    {
+        foreach (char item in p)
+        {
+            if (!char.IsLetterOrDigit(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static char[] spaceAndPuntactionChars = new char[] { ' ', '-', '.', ',', ';', ':', '!', '?', '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', '\'', '(', ')', '[', ']', '{', '}', '〈', '〉', '<', '>', '/', '\\', '|', '”', '\"', '~', '°', '+', '@', '#', '$', '%', '^', '&', '*', '=', '_', 'ˇ', '¨', '¤', '÷', '×', '˝' };
+
+    public static void Init()
+    {
+        List<char> spaceAndPuntactionCharsAndWhiteSpacesList = new List<char>();
+        spaceAndPuntactionCharsAndWhiteSpacesList.AddRange(spaceAndPuntactionChars);
+        foreach (var item in AllChars.whiteSpacesChars)
+        {
+            if (!spaceAndPuntactionCharsAndWhiteSpacesList.Contains(item))
+            {
+                spaceAndPuntactionCharsAndWhiteSpacesList.Add(item);
+            }
+        }
+
+        spaceAndPuntactionCharsAndWhiteSpaces = spaceAndPuntactionCharsAndWhiteSpacesList.ToArray();
+    }
+
+    static char[] spaceAndPuntactionCharsAndWhiteSpaces = null;
+    public static List<string> SplitBySpaceAndPunctuationCharsAndWhiteSpaces(string s)
+    {
+        return s.Split(spaceAndPuntactionCharsAndWhiteSpaces).ToList();
+    }
+
+public static string GetOddIndexesOfWord(string hash)
+    {
+        int polovina = hash.Length / 2;
+        polovina = (polovina / 2);
+        polovina += polovina / 2;
+        StringBuilder sb = new StringBuilder(polovina);
+        int pricist = 2;
+        for (int i = 0; i < hash.Length; i += pricist)
+        {
+            sb.Append(hash[i]);
+        }
+        return sb.ToString();
+    }
+
+public static string GetString(IEnumerable o, string p)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in o)
+        {
+            sb.Append(SH.ListToString( item) + p);
+        }
+        return sb.ToString();
     }
 }

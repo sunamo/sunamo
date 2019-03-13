@@ -241,29 +241,7 @@ public partial class GeneratorMsSql
         return sb.ToString();
     }
 
-    /// <summary>
-    /// object hodnota se musí přidat pak k SqlCommand ručně pod @p0
-    /// Vrátí pouze klazuli where
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="tabulka"></param>
-    /// <param name="sloupec"></param>
-    /// <returns></returns>
-    public static string SimpleWhere( string sloupec)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
-        sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
-        return sb.ToString();
-    }
-
-    public static string SimpleWhere(string sloupec, int pocetJizPridanychParametru)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
-        sb.Append(SH.Format2(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
-        return sb.ToString();
-    }
+    
 
     
 

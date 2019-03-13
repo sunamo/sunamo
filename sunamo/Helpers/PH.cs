@@ -23,8 +23,23 @@ public class PH
     {
         foreach (var item in all)
         {
-            Process.Start(UH.AppendHttpIfNotExists(item));
+            Uri(UH.AppendHttpIfNotExists(item));
         }
+    }
+
+
+
+    private static string NormalizeUri(string v)
+    {
+        // Without this cant search for google apps
+        v = SH.ReplaceAll(v, "%22", "\"");
+        return v;
+    }
+
+    private static void Uri(string v)
+    {
+        v = NormalizeUri(v);
+        Process.Start(v);
     }
 
     public static void SaveAndOpenInBrowser(Browsers prohlizec, string htmlKod)
@@ -55,6 +70,21 @@ public class PH
                     throw new Exception("Neimplementovan� prohl�e�");
                     break;
             }
-            Process.Start(new ProcessStartInfo(b, s));
+            Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));
         }
+
+    
+
+    public static void StartAllUri(List<string> carModels, string v)
+    {
+        //
+        throw new NotImplementedException();
     }
+
+    public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
+    {
+        carModels = CA.ChangeContent(carModels, spritMonitor);
+        carModels = CA.ChangeContent(carModels, NormalizeUri);
+        StartAllUri(carModels);
+    }
+}

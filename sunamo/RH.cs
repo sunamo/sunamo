@@ -135,6 +135,25 @@ namespace sunamo
         }
 
         /// <summary>
+        /// A1 can be Type of instance
+        /// </summary>
+        /// <param name="carSAutoType"></param>
+        /// <returns></returns>
+        public static List<FieldInfo> GetFields(object carSAuto)
+        {
+            Type carSAutoType = null;
+            if (carSAuto.GetType() == typeof(Type))
+            {
+                carSAutoType = carSAuto as Type;
+            }
+            else
+            {
+                carSAutoType = carSAuto.GetType();
+            }
+            return carSAutoType.GetFields().ToList();
+        }
+
+        /// <summary>
         /// Copy values of all readable properties
         /// </summary>
         /// <param name="source"></param>

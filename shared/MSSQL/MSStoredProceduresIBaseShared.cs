@@ -473,4 +473,418 @@ public DataTable SelectDataTableSelective(string table, string vraceneSloupce, A
     {
         AddCommandParameteresArrays(comm, i, CA.ToArrayT<AB[]>(where, isNotWhere, greaterThanWhere, lowerThanWhere));
     }
+
+/// <summary>
+    /// Vykonává metodou ExecuteScalar. Ta pokud vrátí null, metoda vrátí "". To je taky rozdíl oproti metodě SelectCellDataTableStringOneRowABC.
+    /// </summary>
+    /// <param name = "tabulka"></param>
+    /// <param name = "nazvySloupcu"></param>
+    /// <param name = "ab"></param>
+    /// <returns></returns>
+    public string SelectCellDataTableStringOneRow(string tabulka, string nazvySloupcu, params AB[] ab)
+    {
+        SqlCommand comm = new SqlCommand(GeneratorMsSql.CombinedWhere(tabulka, true, nazvySloupcu, ab));
+        AddCommandParameterFromAbc(comm, ab);
+        return ExecuteScalarString(comm);
+    }
+/// <summary>
+    /// Vrátí SE v případě že řádek nebude nalezen, nikdy nevrací null.
+    /// Automaticky vytrimuje
+    /// </summary>
+    /// <param name = "table"></param>
+    /// <param name = "idColumnName"></param>
+    /// <param name = "idColumnValue"></param>
+    /// <param name = "vracenySloupec"></param>
+    /// <returns></returns>
+    public string SelectCellDataTableStringOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
+    {
+        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameter(comm, 0, idColumnValue);
+        return ExecuteScalarString(comm);
+    }
+/// <summary>
+    /// A4 může být null, A3 nikoliv
+    /// </summary>
+    /// <param name = "table"></param>
+    /// <param name = "vracenySloupec"></param>
+    /// <param name = "where"></param>
+    /// <param name = "whereIsNot"></param>
+    /// <returns></returns>
+    public string SelectCellDataTableStringOneRow(string table, string vracenySloupec, AB[] where, AB[] whereIsNot)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("SELECT TOP(1) " + vracenySloupec);
+        sb.Append(" FROM " + table);
+        int dd = 0;
+        sb.Append(GeneratorMsSql.CombinedWhere(where, ref dd));
+        sb.Append(GeneratorMsSql.CombinedWhereNotEquals(where.Length != 0, ref dd, whereIsNot));
+        //string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
+        SqlCommand comm = new SqlCommand(sb.ToString());
+        AddCommandParameteresArrays(comm, 0, where, whereIsNot);
+        return ExecuteScalarString(comm);
+    }
+
+public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec, params AB[] ab)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1}", sloupec, tabulka));
+        object[] o = SelectRowReader(comm);
+        if (o == null)
+        {
+            return new List<long>();
+        }
+
+        Type t = o[0].GetType();
+        comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(ab));
+        AddCommandParameteres(comm, 0, ab);
+        if (t == Consts.tInt)
+        {
+            //snt = SqlNumericType.Int;
+            return ReadValuesInt(comm);
+        }
+        else if (t == Consts.tLong)
+        {
+            //snt = SqlNumericType.Long;
+            return ReadValuesLong(comm);
+        }
+        else if (t == Consts.tShort)
+        {
+            //snt = SqlNumericType.Short;
+            return ReadValuesShort(comm);
+        }
+
+        return ReadValuesByte(comm);
+    }
+public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec)
+    {
+        return SelectValuesOfColumnAllRowsNumeric(tabulka, sloupec, new AB[0]);
+    }
+
+/// <summary>
+    /// 2
+    /// </summary>
+    public DataTable SelectAllRowsOfColumns(string p, string selectSloupce)
+    {
+        return SelectDataTable(string.Format("SELECT {0} FROM {1}", selectSloupce, p));
+    }
+public DataTable SelectAllRowsOfColumns(string p, string ziskaneSloupce, string idColumnName, object idColumnValue)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", ziskaneSloupce, p) + GeneratorMsSql.SimpleWhere(idColumnName));
+        AddCommandParameter(comm, 0, idColumnValue);
+        return SelectDataTable(comm);
+    }
+public DataTable SelectAllRowsOfColumns(string p, string ziskaneSloupce, params AB[] ab)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", ziskaneSloupce, p) + GeneratorMsSql.CombinedWhere(ab));
+        AddCommandParameteres(comm, 0, ab);
+        return SelectDataTable(comm);
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    public bool SelectExists(string tabulka, string sloupec, object hodnota)
+    {
+        string sql = string.Format("SELECT TOP(1) {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
+        return ExecuteScalar(sql, hodnota) != null;
+    }
+
+public int DeleteOneRow(string table, string sloupec, object id)
+    {
+        return ExecuteNonQuery(string.Format("DELETE TOP(1) FROM {0} WHERE {1} = @p0", table, sloupec), id);
+    }
+public bool DeleteOneRow(string TableName, params AB[] where)
+    {
+        string whereS = GeneratorMsSql.CombinedWhere(where);
+        SqlCommand comm = new SqlCommand("DELETE TOP(1) FROM " + TableName + whereS);
+        AddCommandParameterFromAbc(comm, where);
+        int f = ExecuteNonQuery(comm);
+        return f == 1;
+    }
+    public object ExecuteScalar(string commText, params object[] para)
+    {
+        para = CA.TwoDimensionParamsIntoOne(para);
+        SqlCommand comm = new SqlCommand(commText);
+        for (int i = 0; i < para.Length; i++)
+        {
+            AddCommandParameter(comm, i, para[i]);
+        }
+
+        return ExecuteScalar(comm);
+    }
+    public long SelectCount(string table)
+    {
+        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM " + table));
+    }
+public long SelectCount(string table, params AB[] abc)
+    {
+        SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM " + table + GeneratorMsSql.CombinedWhere(abc));
+        AddCommandParameteres(comm, 0, abc);
+        return Convert.ToInt64(ExecuteScalar(comm));
+    }
+
+public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
+    {
+        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
+        if (d == int.MaxValue)
+        {
+            return d;
+        }
+
+        int n = pridej;
+        n = d + pridej;
+        Update(table, sloupecKUpdate, n, abc);
+        return n;
+    }
+public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object hodnotaID)
+    {
+        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
+        if (d == int.MaxValue)
+        {
+            return d;
+        }
+
+        int n = pridej;
+        n = d + pridej;
+        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
+        return n;
+    }
+
+public DateTime SelectCellDataTableDateTimeOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue, DateTime getIfNotFound)
+    {
+        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameter(comm, 0, idColumnValue);
+        return ExecuteScalarDateTime(getIfNotFound, comm);
+    }
+/// <summary>
+    /// Vrátí DateTimeMinVal, pokud takový řádek nebude nalezen.
+    /// </summary>
+    /// <param name = "table"></param>
+    /// <param name = "vracenySloupec"></param>
+    /// <param name = "where"></param>
+    /// <param name = "whereIsNot"></param>
+    /// <returns></returns>
+    public DateTime SelectCellDataTableDateTimeOneRow(string table, string vracenySloupec, DateTime getIfNotFound, AB[] where, AB[] whereIsNot)
+    {
+        int dd = 0;
+        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(where, ref dd) + GeneratorMsSql.CombinedWhereNotEquals(true, ref dd, whereIsNot);
+        SqlCommand comm = new SqlCommand(sql);
+        //AddCommandParameter(comm, 0, idColumnValue);
+        AddCommandParameteresArrays(comm, 0, where, whereIsNot);
+        return ExecuteScalarDateTime(getIfNotFound, comm);
+    }
+
+public object SelectCellDataTableObjectOneRow(string table, string idColumnName, object idColumnValue, string vracenySloupec)
+    {
+        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameter(comm, 0, idColumnValue);
+        return ExecuteScalar(comm);
+    }
+
+/// <summary>
+    /// G -1 když se žádný takový řádek nepodaří najít
+    /// </summary>
+    /// <param name = "table"></param>
+    /// <param name = "vracenySloupec"></param>
+    /// <param name = "abc"></param>
+    /// <returns></returns>
+    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, ABC whereIs, ABC whereIsNot)
+    {
+        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null);
+        SqlCommand comm = new SqlCommand(sql);
+        int dalsi = AddCommandParameterFromAbc(comm, whereIs, 0);
+        AddCommandParameterFromAbc(comm, whereIsNot, dalsi);
+        return ExecuteScalarInt(signed, comm);
+    }
+/// <summary>
+    /// Vrátí -1 pokud žádný takový řádek nenalezne pokud !A1 enbo int.MaxValue pokud A1
+    /// </summary>
+    /// <param name = "table"></param>
+    /// <param name = "idColumnName"></param>
+    /// <param name = "idColumnValue"></param>
+    /// <param name = "vracenySloupec"></param>
+    /// <returns></returns>
+    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
+    {
+        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameter(comm, 0, idColumnValue);
+        return ExecuteScalarInt(signed, comm);
+    }
+public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
+    {
+        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameterFromAbc(comm, abc);
+        return ExecuteScalarInt(signed, comm);
+    }
+
+private DateTime ExecuteScalarDateTime(DateTime getIfNotFound, SqlCommand comm)
+    {
+        object o = ExecuteScalar(comm);
+        if (o == null || o == DBNull.Value)
+        {
+            return getIfNotFound;
+        }
+
+        return Convert.ToDateTime(o);
+    }
+
+private int ExecuteScalarInt(bool signed, SqlCommand comm)
+    {
+        object o = ExecuteScalar(comm);
+        if (o == null)
+        {
+            if (signed)
+            {
+                return int.MaxValue;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        return Convert.ToInt32(o);
+    }
+
+public object[] SelectRowReader(string tabulka, string sloupecID, object id, string nazvySloupcu)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
+        AddCommandParameter(comm, 0, id);
+        //NT
+        return SelectRowReader(comm);
+    }
+/// <summary>
+    /// Vrátí null, pokud výsledek nebude mít žádné řádky
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <returns></returns>
+    private object[] SelectRowReader(SqlCommand comm)
+    {
+        SqlDataReader r = ExecuteReader(comm);
+        if (r.HasRows)
+        {
+            object[] o = new object[r.VisibleFieldCount];
+            r.Read();
+            for (int i = 0; i < r.VisibleFieldCount; i++)
+            {
+                o[i] = r.GetValue(i);
+            }
+
+            return o;
+        }
+
+        return null;
+    }
+
+private int AddCommandParameteres(SqlCommand comm, int pocIndex, object[] hodnotyOdNuly)
+    {
+        foreach (var item in hodnotyOdNuly)
+        {
+            AddCommandParameter(comm, pocIndex, item);
+            pocIndex++;
+        }
+
+        return pocIndex;
+    }
+public static int AddCommandParameteres(SqlCommand comm, int pocIndex, AB[] aWhere)
+    {
+        foreach (var item in aWhere)
+        {
+            AddCommandParameter(comm, pocIndex, item.B);
+            pocIndex++;
+        }
+
+        return pocIndex;
+    }
+
+private string ExecuteScalarString(SqlCommand comm)
+    {
+        object o = ExecuteScalar(comm);
+        if (o == null)
+        {
+            return "";
+        }
+        else if (o == DBNull.Value)
+        {
+            return "";
+        }
+
+        return o.ToString().TrimEnd(' ');
+    }
+
+private List<short> ReadValuesShort(SqlCommand comm)
+    {
+        List<short> vr = new List<short>();
+        SqlDataReader r = ExecuteReader(comm);
+        if (r.HasRows)
+        {
+            while (r.Read())
+            {
+                short o = r.GetInt16(0);
+                //Type t = val.GetType();
+                vr.Add(o);
+            }
+        }
+
+        return vr;
+    }
+
+private List<long> ReadValuesLong(SqlCommand comm)
+    {
+        List<long> vr = new List<long>();
+        SqlDataReader r = ExecuteReader(comm);
+        if (r.HasRows)
+        {
+            while (r.Read())
+            {
+                long o = r.GetInt64(0);
+                //Type t = val.GetType();
+                vr.Add(o);
+            }
+        }
+
+        return vr;
+    }
+
+private List<byte> ReadValuesByte(SqlCommand comm)
+    {
+        List<byte> vr = new List<byte>();
+        SqlDataReader r = ExecuteReader(comm);
+        ;
+        if (r.HasRows)
+        {
+            while (r.Read())
+            {
+                byte o = r.GetByte(0);
+                //Type t = val.GetType();
+                vr.Add(o);
+            }
+        }
+
+        return vr;
+    }
+
+/// <summary>
+    /// Počítá od nuly
+    /// Mohu volat i s A2 null, v takovém případě se nevykoná žádný kód
+    /// </summary>
+    /// <param name = "comm"></param>
+    /// <param name = "where"></param>
+    private static int AddCommandParameterFromAbc(SqlCommand comm, ABC where, int i)
+    {
+        if (where != null)
+        {
+            for (var i2 = 0; i2 < where.Count; i2++)
+            {
+                AddCommandParameter(comm, i, where[i2].B);
+                i++;
+            }
+        }
+
+        return i;
+    }
 }

@@ -11,6 +11,7 @@ namespace sunamo.Constants
         public static string Docs = @"D:\Docs\";
         public static string Downloads = @"D:\Downloads\";
         public static string Music2 = @"D:\Music2\";
+        public static string Backup = @"D:\Documents\Backup\";
         /// <summary>
         /// For all is here sczRootPath
         /// </summary>

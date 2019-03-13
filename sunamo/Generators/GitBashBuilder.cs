@@ -347,5 +347,17 @@ namespace sunamo.Generators
             Git("status");
             AppendLine();
         }
+
+        public void Fetch()
+        {
+            Git("merge");
+            AppendLine();
+        }
+
+        public void Merge(string v)
+        {
+            Git("merge " + v);
+            AppendLine();
+        }
     }
 }

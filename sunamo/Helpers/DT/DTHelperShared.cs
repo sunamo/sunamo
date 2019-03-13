@@ -29,4 +29,9 @@ public static DateTime ParseDateUSA(string input)
     {
         return DTHelperEn.ParseDateUSA(input);
     }
+
+public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
+    {
+        return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
+    }
 }

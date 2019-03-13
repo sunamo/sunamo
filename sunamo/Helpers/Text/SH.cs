@@ -1427,37 +1427,12 @@ public static partial class SH
 
     
 
-    static char[] spaceAndPuntactionCharsAndWhiteSpaces = null;
+    
 
     static SH()
     {
         cs = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs";
         Init();
-    }
-
-    public static void Init()
-    {
-        List<char> spaceAndPuntactionCharsAndWhiteSpacesList = new List<char>();
-        spaceAndPuntactionCharsAndWhiteSpacesList.AddRange(spaceAndPuntactionChars);
-        foreach (var item in AllChars.whiteSpacesChars)
-        {
-            if (!spaceAndPuntactionCharsAndWhiteSpacesList.Contains(item))
-            {
-                spaceAndPuntactionCharsAndWhiteSpacesList.Add(item);
-            }
-        }
-
-        spaceAndPuntactionCharsAndWhiteSpaces = spaceAndPuntactionCharsAndWhiteSpacesList.ToArray();
-    }
-
-    public static string GetString(IEnumerable o, string p)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in o)
-        {
-            sb.Append(SH.ListToString( item) + p);
-        }
-        return sb.ToString();
     }
 
     public static string FirstWhichIsNotEmpty(params string[] s)
@@ -1958,20 +1933,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-    public static string GetOddIndexesOfWord(string hash)
-    {
-        int polovina = hash.Length / 2;
-        polovina = (polovina / 2);
-        polovina += polovina / 2;
-        StringBuilder sb = new StringBuilder(polovina);
-        int pricist = 2;
-        for (int i = 0; i < hash.Length; i += pricist)
-        {
-            sb.Append(hash[i]);
-        }
-        return sb.ToString();
-    }
-
     
 
     public static string TrimStart(string v, string s)
@@ -2082,16 +2043,11 @@ public static partial class SH
 
     
 
-    public static char[] spaceAndPuntactionChars = new char[] { ' ', '-', '.', ',', ';', ':', '!', '?', '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', '\'', '(', ')', '[', ']', '{', '}', '〈', '〉', '<', '>', '/', '\\', '|', '”', '\"', '~', '°', '+', '@', '#', '$', '%', '^', '&', '*', '=', '_', 'ˇ', '¨', '¤', '÷', '×', '˝' };
+    
 
     public static List<string> SplitByWhiteSpaces(string s)
     {
         return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
-    }
-
-    public static List<string> SplitBySpaceAndPunctuationCharsAndWhiteSpaces(string s)
-    {
-        return s.Split(spaceAndPuntactionCharsAndWhiteSpaces).ToList();
     }
 
     public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool comma)
@@ -2416,20 +2372,6 @@ public static partial class SH
         }
 
         return -1;
-    }
-
-    
-
-    public static bool ContainsOtherChatThanLetterAndDigit(string p)
-    {
-        foreach (char item in p)
-        {
-            if (!char.IsLetterOrDigit(item))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static bool HasIndex(int p, string nahledy)

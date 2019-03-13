@@ -6,8 +6,6 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace sunamo
-{
     public partial class UH
     {
         public static string GetUriSafeString(string title)
@@ -70,11 +68,6 @@ namespace sunamo
                 title = title.Substring(0, maxLenght);
 
             return title;
-        }
-
-        public static string UrlEncode(string co)
-        {
-            return WebUtility.UrlEncode(co.Trim());
         }
 
         private static string GetUriSafeString2(string title)
@@ -406,4 +399,3 @@ namespace sunamo
             return false;
         }
     }
-}

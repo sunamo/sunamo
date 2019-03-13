@@ -12,6 +12,22 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFoldersHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\ColorConverter.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SF.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCsShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Net\IPAddressHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\Constants.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertRot12.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\QSHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\List\DictionaryHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Constants\HttpKnownHeaderNames.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\PicturesSunamoShared.cs" Link="" />

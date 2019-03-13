@@ -261,13 +261,6 @@ public partial class DictionaryHelper
         return i;
     }
 
-    public static short AddToIndexAndReturnIncrementedShort<T>(short i, Dictionary<short, T> colors, T colorOnWeb)
-    {
-        colors.Add(i, colorOnWeb);
-        i++;
-        return i;
-    }
-
     public static Dictionary<T1, T2> RemoveDuplicatedFromDictionaryByValues<T1, T2>(Dictionary<T1, T2> airPlaneCompanies, out Dictionary<T1, T2> twoTimes)
     {
         twoTimes = new Dictionary<T1, T2>();

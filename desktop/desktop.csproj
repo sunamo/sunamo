@@ -201,10 +201,12 @@
     <Compile Include="FontHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
+    <Compile Include="Helpers\BaseControls\UIElementHelper.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\CheckBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
@@ -213,7 +215,7 @@
     <Compile Include="Helpers\BaseControls\ControlHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
-    <Compile Include="Helpers\DataGridHelper.cs" />
+    <Compile Include="Helpers\Controls\DataGridHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
     <Compile Include="Helpers\BaseControls\FrameworkElementHelper.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
@@ -247,7 +249,7 @@
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Hotkey.cs" />
-    <Compile Include="ImageHelperDesktop.cs" />
+    <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
@@ -257,7 +259,7 @@
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DependencyObjectHelper.cs" />
+    <Compile Include="Helpers\BaseControls\DependencyObjectHelper.cs" />
     <Compile Include="Registry\RegistryEntries.cs" />
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
@@ -292,7 +294,6 @@
     <Compile Include="Windows\WindowResult.cs" />
     <Compile Include="Windows\WindowWithUserControl.cs" />
     <Compile Include="WpfControlGenerator.cs" />
-    <Compile Include="WpfHelper.cs" />
     <Compile Include="XamlDisplay.cs" />
     <Compile Include="XamlGenerator.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />

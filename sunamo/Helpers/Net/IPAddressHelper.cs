@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Helpers
-{
+
     public class IPAddressHelper
     {
         /// <summary>
@@ -33,4 +32,4 @@ namespace sunamo.Helpers
             return ip;
         }
     }
-}
+

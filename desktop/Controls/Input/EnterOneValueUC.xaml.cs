@@ -28,7 +28,6 @@ namespace desktop.Controls.Input
 
         public EnterOneValueUC(string whatEnter) : this()
         {
-            
             Init(whatEnter);
         }
 

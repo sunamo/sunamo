@@ -1,24 +1,26 @@
 ﻿
+using HtmlAgilityPack;
 using sunamo.Helpers;
+using sunamo.Html;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
-
 /// <summary>
 /// Náhrada za třídu NetHelper
 /// </summary>
-public static class HttpRequestHelper
+public static partial class HttpRequestHelper
 {
     /// <summary>
     /// A3 cant be null
     /// </summary>
-    /// <param name="address"></param>
-    /// <param name="method"></param>
-    /// <param name="hrd"></param>
+    /// <param name = "address"></param>
+    /// <param name = "method"></param>
+    /// <param name = "hrd"></param>
     /// <returns></returns>
     public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
     {
@@ -34,7 +36,6 @@ public static class HttpRequestHelper
 
         var request = (HttpWebRequest)WebRequest.Create(address);
         request.Method = method.Method;
-        
         if (method == HttpMethod.Post)
         {
             string query = adressCopy.Substring(dex + 1);
@@ -47,21 +48,25 @@ public static class HttpRequestHelper
             {
                 encoder = hrd.encodingPostData;
             }
+
             byte[] data = encoder.GetBytes((query));
             request.ContentType = "application/x-www-urlencoded";
             request.ContentLength = data.Length;
             request.GetRequestStream().Write(data, 0, data.Length);
         }
+
         //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
         request.UserAgent = "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36";
         if (hrd.contentType != null)
         {
             request.ContentType = hrd.contentType;
         }
+
         if (hrd.accept != null)
         {
             request.Accept = hrd.accept;
         }
+
         if (hrd != null)
         {
             foreach (var item in hrd.headers)
@@ -75,10 +80,9 @@ public static class HttpRequestHelper
             using (var response = (HttpWebResponse)request.GetResponse())
             {
                 Encoding encoding = null;
-
                 if (response.CharacterSet == "")
                 {
-                    //encoding = Encoding.UTF8;
+                //encoding = Encoding.UTF8;
                 }
                 else
                 {
@@ -96,6 +100,7 @@ public static class HttpRequestHelper
                     {
                         reader = new StreamReader(responseStream, encoding);
                     }
+
                     return reader.ReadToEnd();
                 }
             }
@@ -109,11 +114,11 @@ public static class HttpRequestHelper
     /// <summary>
     /// A2 can be null
     /// </summary>
-    /// <param name="href"></param>
-    /// <param name="DontHaveAllowedExtension"></param>
-    /// <param name="folder2"></param>
-    /// <param name="fn"></param>
-    /// <param name="ext"></param>
+    /// <param name = "href"></param>
+    /// <param name = "DontHaveAllowedExtension"></param>
+    /// <param name = "folder2"></param>
+    /// <param name = "fn"></param>
+    /// <param name = "ext"></param>
     /// <returns></returns>
     public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
     {
@@ -125,11 +130,12 @@ public static class HttpRequestHelper
             }
         }
 
-        if (string.IsNullOrWhiteSpace( ext))
+        if (string.IsNullOrWhiteSpace(ext))
         {
             ext = FS.GetExtension(href);
         }
 
+        fn = SH.RemoveAfterFirst(fn, '?');
         string path = FS.Combine(folder2, fn + ext);
         FS.CreateFoldersPsysicallyUnlessThere(folder2);
         if (!FS.ExistsFile(path))
@@ -141,28 +147,10 @@ public static class HttpRequestHelper
         return ext;
     }
 
-    static void DownloadAllVideoArticles()
-    {
-        HtmlDocument hd = new HtmlDocument();
-        hd.Load(@"G:\_data\1seriaNiektoNieJeDokonaly.html");
-
-        const string basePath = "https://videoportal.joj.sk/nikto-nie-je-dokonaly/epizoda/";
-
-        var articles = HtmlAgilityHelper.Nodes(hd.DocumentNode, true, "article");
-        foreach (var item in articles)
-        {
-            var href = HtmlAssistant.GetValueOfAttribute("href", HtmlAgilityHelper.Node(item, false, "a"));
-            if (href.StartsWith(basePath))
-            {
-                HttpRequestHelper.Download(href, null, @"g:\_data\1seriaNiektoNieJeDokonaly\", href.Replace(basePath, ""), ".html");
-            }
-        }
-    }
-
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="address"></param>
+    /// <param name = "address"></param>
     /// <returns></returns>
     public static byte[] GetResponseBytes(string address, HttpMethod method)
     {
@@ -182,7 +170,7 @@ public static class HttpRequestHelper
             }
 
             using (var responseStream = response.GetResponseStream())
-            { 
+            {
                 using (MemoryStream ms = new MemoryStream())
                 {
                     responseStream.CopyTo(ms);
@@ -199,72 +187,5 @@ public static class HttpRequestHelper
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="address"></param>
-    /// <returns></returns>
-    public static Stream GetResponseStream(string address, HttpMethod method)
-    {
-        var request = (HttpWebRequest)WebRequest.Create(address);
-        request.Method = method.Method;
-        HttpWebResponse response = null;
-        try
-        {
-            response = (HttpWebResponse)request.GetResponse();
-        }
-        catch (System.Exception)
-        {
-            return null;
-
-        }
-
-        return response.GetResponseStream();
-    }
-
-    public static IPAddress GetUserIP(HttpRequest Request)
-    {
-        IPAddress vr = null;
-        //return (IPAddress)System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0);
-        if(!IPAddress.TryParse(GetUserIPString(Request), out vr))
-        {
-            return null;
-        }
-        return vr;
-    }
-
-    public static byte[] GetIPAddressInArray(HttpRequest httpRequest)
-    {
-        return IPAddressHelper.GetIPAddressInArray(GetUserIPString(httpRequest));
-    }
-
-    /// <summary>
-    /// Vrátí null pokud se nepodaří zjistit IP adresa
-    /// </summary>
-    /// <param name="Request"></param>
-    /// <returns></returns>
-    public static string GetUserIPString(HttpRequest Request)
-    {
-        string vr = Request.ServerVariables["REMOTE_ADDR"];
-        if (vr == "::1")
-        {
-            vr = "127.0.0.1";
-        }
-        if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, ".") !=3)
-        {
-            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (!string.IsNullOrEmpty(ipList))
-            {
-
-                vr = ipList.Split(',')[0];
-                if (SH.OccurencesOfStringIn(vr, ".") !=3)
-                {
-                    return null;
-                }
-                return vr;
-            }
-        }
-        return vr;
-    }
+    
 }

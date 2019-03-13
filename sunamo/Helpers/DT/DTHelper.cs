@@ -65,11 +65,6 @@ public partial class DTHelper
         return DTHelperCs.CalculateAgeAndAddRightString(dateTime, calculateTime, dtMinVal);
     }
 
-    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
-    {
-        return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
-    }
-
     public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
     {
         return DTHelperCs.DayOfWeek2DenVTydnu(dayOfWeek);

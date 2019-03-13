@@ -80,7 +80,19 @@ namespace desktop
 
         private static void ScrollToLineWorking(TextBox txt, int line)
         {
-            txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+
+            try
+            {
+                /*Snažil jsem opravit 
+                 * problém s napovídáním, mám git status, napíšu git, znovu mi to doplní status, mezerník a GetCharacterIndexFromLineIndex(Int32 lineIndex)\r\n   at desktop.TextBoxHelper.ScrollToLineWorking(TextBox txt, Int32 line)\r\n   at desktop.TextBoxHelper.ScrollToLin. 
+                 * poprvé se to projevilo, podruhé už ne, tak to jednoduše zakomentuji
+                 */ 
+                txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+            }
+            catch (Exception)
+            {
+                return;
+            }
             txt.SelectionLength = txt.GetLineLength(line);
             txt.CaretIndex = txt.SelectionStart;
             txt.ScrollToLine(line);

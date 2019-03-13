@@ -212,7 +212,7 @@ public static class UriWebServices
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
-        string d = @"cng overview " + car;
+        string d = "cng overview -\"/detail/\" " + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
 
@@ -338,7 +338,7 @@ public static class UriWebServices
     public static string GoogleSearchSite(string site, string v)
     {
         //https://www.google.cz/search?q=site%3Asunamo.cz+s
-        return "https://www.google.cz/search?q=site%3A" + site + "+" + v;
+        return  "https://www.google.cz/search?q=site%3A" + site + "+" + v;
     }
 
     public static string FromChromeReplacement(string uri, string term)
@@ -353,6 +353,7 @@ public static class UriWebServices
 
     /// <summary>
     /// Already new radekjancik
+    /// Working with spaces right (SQL Server Scripts1)
     /// </summary>
     /// <param name="slnName"></param>
     /// <returns></returns>

@@ -303,7 +303,7 @@ public class SunamoCzMetroUIHelper
         string s = null;
         if (encode)
         {
-            s = sunamo.UH.UrlEncode(Request.Url.ToString());
+            s = UH.UrlEncode(Request.Url.ToString());
         }
         else
         {

@@ -13,5 +13,11 @@ namespace sunamo.Data
         {
             A = B = string.Empty;
         }
+
+        public ABS(string a, string b)
+        {
+            this.A = a;
+            this.B = b;
+        }
     }
 }

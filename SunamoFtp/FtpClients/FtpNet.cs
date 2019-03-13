@@ -552,7 +552,7 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                string adr = sunamo.UH.Combine(true, ps.ActualPath, dirName);
+                string adr = UH.Combine(true, ps.ActualPath, dirName);
 
                 OnNewStatus("Vytvářím adresář " + adr);
                 FtpWebRequest reqFTP = null;
@@ -625,7 +625,7 @@ namespace SunamoFtp
                 StreamReader reader = null;
                 FtpWebResponse response = null;
 
-                String _Path = sunamo.UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+                String _Path = UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
                 try
                 {
                     // Get the object used to communicate with the server.
@@ -688,7 +688,7 @@ namespace SunamoFtp
             bool vr = true;
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Odstraňuji ze ftp serveru soubor " + sunamo.UH.Combine(false, ps.ActualPath, fileName));
+                OnNewStatus("Odstraňuji ze ftp serveru soubor " + UH.Combine(false, ps.ActualPath, fileName));
                 FtpWebRequest reqFTP = null;
                 StreamReader sr = null;
                 Stream datastream = null;
@@ -768,7 +768,7 @@ namespace SunamoFtp
             long fileSize = 0;
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Pokouším se získat velikost souboru " + sunamo.UH.Combine(false, ps.ActualPath, fileName));
+                OnNewStatus("Pokouším se získat velikost souboru " + UH.Combine(false, ps.ActualPath, fileName));
 
                 FtpWebRequest reqFTP = null;
                 Stream ftpStream = null;

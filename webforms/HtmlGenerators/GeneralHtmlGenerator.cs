@@ -90,7 +90,7 @@ namespace web
         public static string AnchorWithHttp(HttpRequest req, bool targetBlank, string www, string text)
         {
             string http = UH.AppendSiteNameIfNotExists(req, www);
-            http = sunamo.UH.AppendHttpIfNotExists(http);
+            http = UH.AppendHttpIfNotExists(http);
             return HtmlGenerator2.AnchorWithHttpCore(targetBlank, text, http);
         }
         public static string GetNovelty(string HtmlContent, DateTime DT, String User)

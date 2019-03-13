@@ -14,6 +14,9 @@ using System.Text;
     public class Exceptions
     {
 
+    //
+    
+
     /// <summary>
     /// Start with Consts.Exception to identify occur
     /// </summary>

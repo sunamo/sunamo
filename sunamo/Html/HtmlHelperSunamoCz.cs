@@ -11,8 +11,8 @@ namespace sunamo.Html
     {
         public static string ConvertTextToHtmlWithAnchors(string p)
         {
-            string[] d = SH.SplitNone(HtmlHelper.ConvertTextToHtml(p), ' ');
-            for (int i = 0; i < d.Length; i++)
+            var d = SH.SplitNone(HtmlHelper.ConvertTextToHtml(p), ' ');
+            for (int i = 0; i < d.Length(); i++)
             {
                 if (d[i].StartsWith("http://") || d[i].StartsWith("https://"))
                 {

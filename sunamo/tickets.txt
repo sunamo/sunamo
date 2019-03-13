@@ -1,6 +1,16 @@
-﻿---
-SelectValuesOfColumnAllRowsInt
+﻿občas to tady zredukovat:
+nakládání s omezeným časem
+zábrana proti rozptylování
+stanovení osobních cílů
+obrana před stresem a ztrátou energie
+hledání produktivních zvyklostí
 
+
+
+You haven't added any Discord servers
+
+---
+SelectValuesOfColumnAllRowsInt
 ---
 auta
 karavan
@@ -221,6 +231,14 @@ t0059 udelat dane
 t0060 find us/british/ca page to download movies, payed the best yearly, unlimited
 t0061 merge DateTimeFileIndex with FileNameGenerator
 t0062 TODO: implement DateTimeFileIndex.CreateObjectFileNameWithDateTime
+t0063 převést Dívčí jména dle abecedy do plain textu
+t0064 Money from fraudsters
+t0065 find job in global gwi
+t0066 Roslyn
+
+
+
+parse header for parsing serie of car: https://en.wikipedia.org/wiki/Opel_Zafira
 
 artroza kolene cvicit, 2015
 
@@ -244,6 +262,8 @@ find all caches from gpx file cpWPT=, its important to compare whether I have in
 
 data as mp3 to huawei 
 sečíst moje dluhy a závazky 
+
+jak mám 1seriaNiektoNieJeDokonaly, load in browser if will be loaded video. in downloaded video is link only to html. if I download this html, there is links to videos. This can be better approach. 
 
 refactor, large tasks:
 replace in all C# files class name

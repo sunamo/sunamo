@@ -13,4 +13,11 @@ public static Value GetFirstItem<Value>(Dictionary<string, Value> dict)
 
         return default(Value);
     }
+
+public static short AddToIndexAndReturnIncrementedShort<T>(short i, Dictionary<short, T> colors, T colorOnWeb)
+    {
+        colors.Add(i, colorOnWeb);
+        i++;
+        return i;
+    }
 }

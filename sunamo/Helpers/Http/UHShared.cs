@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 
-namespace sunamo
-{
+
     public partial class UH
     {
         public static string AppendHttpIfNotExists(string p)
@@ -38,6 +38,9 @@ namespace sunamo
             }
             return vr.ToString().TrimEnd('/');
         }
-    }
+    
+public static string UrlEncode(string co)
+        {
+            return WebUtility.UrlEncode(co.Trim());
+        }
 }
-

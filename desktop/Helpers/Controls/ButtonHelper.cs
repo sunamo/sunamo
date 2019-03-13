@@ -1,12 +1,23 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 public static class ButtonHelper
 {
+
     public static Button GetButton(string tooltip, string imagePath)
     {
-        return WpfHelper.GetButton(tooltip, imagePath);
+        Button vr = new Button();
+        BitmapImage btm = new BitmapImage(new System.Uri(imagePath, System.UriKind.Relative));
+        Image img = new Image();
+        img.Source = btm;
+        img.Width = 16;
+        img.Height = 16;
+        img.Stretch = Stretch.Fill;
+        vr.Content = img;
+        vr.ToolTip = tooltip;
+        return vr;
     }
 
     public static void PerformClick(ButtonBase someButton)

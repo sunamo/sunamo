@@ -8,7 +8,20 @@ using System.Threading.Tasks;
 
 public static class StringHexColorConverter //: ISimpleConverter<string, Color>
 {
-    static ColorConverter cc = new ColorConverter();
+    #region Not working in Core, installed package ColorConverter but no effect and all of System.Drawings
+    //static ColorConverter cc = new ColorConverter();
+
+    ///// <summary>
+    ///// Fungující metoda, která narozdíl od metody ConvertFrom používá BCL třídu ColorConverter
+    ///// Nevýhoda je ta že se výsleedek musí přetypovat na typ Color a to trvá taky nějaký čas.
+    ///// </summary>
+    ///// <param name="t"></param>
+    ///// <returns></returns>
+    //public static Color ConvertFrom2(string t)
+    //{
+    //    return (Color)cc.ConvertFromString(t);
+    //} 
+    #endregion
 
     public static string ConvertToWoAlpha(byte r, byte g, byte b)
     {
@@ -53,15 +66,9 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
         return Color.Black;
     }
 
-    /// <summary>
-    /// Fungující metoda, která narozdíl od metody ConvertFrom používá BCL třídu ColorConverter
-    /// Nevýhoda je ta že se výsleedek musí přetypovat na typ Color a to trvá taky nějaký čas.
-    /// </summary>
-    /// <param name="t"></param>
-    /// <returns></returns>
-    public static Color ConvertFrom2(string t)
+    public static Color ConvertFrom2(string hex)
     {
-        return (Color)cc.ConvertFromString(t);
+        throw new NotImplementedException();
     }
 
     private static byte GetGroup(int p, string t)

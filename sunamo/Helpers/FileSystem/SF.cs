@@ -12,10 +12,20 @@ using sunamo.Constants;
 /// Snaž se tuto třídu nikdy nevyužívat a naopak vše ukládat do db, popř. stf/sbf
 /// 
 /// </summary>
-public static class SF
+public static partial class SF
 {
-     static SerializeContentArgs contentArgs = new SerializeContentArgs();
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "var"></param>
+    /// <returns></returns>
+    public static List<string> GetAllElementsLine(string var, char oddelovaciZnak = '|')
+    {
+        // Musí tu být none, protože pak když někde nic nebylo, tak mi to je nevrátilo a progran vyhodil IndexOutOfRangeException
+        return SH.SplitNone(var, oddelovaciZnak);
+    }
 
+    static SerializeContentArgs contentArgs = new SerializeContentArgs();
     public static string PrepareToSerialization(params string[] o)
     {
         StringBuilder sb = new StringBuilder();
@@ -23,6 +33,7 @@ public static class SF
         {
             sb.Append(item + separatorString);
         }
+
         //.TrimEnd(separatorChar) nen� t�eba, kdy� byly na konci pr�zdn�, odstranilo mi to je v�echny, a ten jeden nav�c tam nevad�, stejn� ho odstran� RemoveEmptyEntries
         return sb.ToString();
     }
@@ -37,12 +48,18 @@ public static class SF
             return contentArgs.separatorChar;
         }
     }
-    
 
     public static string separatorString
     {
-        get { return contentArgs.separatorString; }
-        set { contentArgs.separatorString = value; }
+        get
+        {
+            return contentArgs.separatorString;
+        }
+
+        set
+        {
+            contentArgs.separatorString = value;
+        }
     }
 
     public static int keyCodeSeparator
@@ -60,8 +77,7 @@ public static class SF
 
     public static void ReadFileOfSettingsOther(string fileNameOrPath)
     {
-        
-        var lines = SH.GetLines( AppData.ReadFileOfSettingsOther(fileNameOrPath));
+        var lines = SH.GetLines(AppData.ReadFileOfSettingsOther(fileNameOrPath));
         if (lines.Count > 1)
         {
             int delimiterInt;
@@ -69,8 +85,6 @@ public static class SF
             {
                 separatorString = ((char)delimiterInt).ToString();
             }
-            
-
         }
     }
 
@@ -80,74 +94,76 @@ public static class SF
     /// <summary>
     /// If index won't founded, return null.
     /// </summary>
-    /// <param name="element"></param>
-    /// <param name="line"></param>
+    /// <param name = "element"></param>
+    /// <param name = "line"></param>
     /// <returns></returns>
     public static string GetElementAtIndexFile(string file, int element, int line)
     {
-        string[][] elements = GetAllElementsFile(file);
+        List<List<string>> elements = GetAllElementsFile(file);
         return GetElementAtIndex(elements, element, line);
     }
 
     /// <summary>
     /// G null if first element on any lines A2 dont exists
     /// </summary>
-    /// <param name="file"></param>
-    /// <param name="element"></param>
+    /// <param name = "file"></param>
+    /// <param name = "element"></param>
     /// <returns></returns>
-    public static string[] GetFirstWhereIsFirstElement(string file, string element)
+    public static List<string> GetFirstWhereIsFirstElement(string file, string element)
     {
-        string[][] elementsLines = SF.GetAllElementsFile(file);
-        for (int i = 0; i < elementsLines.Length; i++)
+        List<List<string>> elementsLines = SF.GetAllElementsFile(file);
+        for (int i = 0; i < elementsLines.Length(); i++)
         {
             if (elementsLines[i][0] == element)
             {
                 return elementsLines[i];
             }
         }
+
         return null;
     }
 
     /// <summary>
     /// G null if first element on any lines A2 dont exists
     /// </summary>
-    /// <param name="file"></param>
-    /// <param name="element"></param>
+    /// <param name = "file"></param>
+    /// <param name = "element"></param>
     /// <returns></returns>
-    public static string[] GetLastWhereIsFirstElement(string file, string element)
+    public static List<string> GetLastWhereIsFirstElement(string file, string element)
     {
-        string[][] elementsLines = SF.GetAllElementsFile(file);
-        for (int i = elementsLines.Length - 1; i >= 0; i--)
+        List<List<string>> elementsLines = SF.GetAllElementsFile(file);
+        for (int i = elementsLines.Length() - 1; i >= 0; i--)
         {
             if (elementsLines[i][0] == element)
             {
                 return elementsLines[i];
             }
         }
+
         return null;
     }
 
     /// <summary>
     /// In inner array is elements, in outer lines.
     /// </summary>
-    /// <param name="file"></param>
+    /// <param name = "file"></param>
     /// <returns></returns>
-    public static string[][] GetAllElementsFile(string file)
+    public static List<List<string>> GetAllElementsFile(string file)
     {
-        List<string[]> vr = new List<string[]>();
-        string[] lines = File.ReadAllLines(file);
-
+        List<List<string>> vr = new List<List<string>>();
+        var lines = TF.ReadAllLines(file);
         foreach (string var in lines)
         {
             vr.Add(SF.GetAllElementsLine(var));
         }
-        return vr.ToArray();
+
+        return vr;
     }
 
-    public static string[][] GetAllElementsFileAdvanced(string file, out string[] hlavicka, char oddelovaciZnak = '|')
+    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = '|')
     {
         string oz = oddelovaciZnak.ToString();
-        List<string[]> vr = new List<string[]>();
+        List<List<string>> vr = new List<List<string>>();
         string[] lines = File.ReadAllLines(file);
         lines = CA.Trim(lines);
         hlavicka = SF.GetAllElementsLine(lines[0], '\'');
@@ -161,13 +177,13 @@ public static class SF
             if (nalezeno == musiByt)
             {
                 nalezeno = 0;
-                string[] columns = SF.GetAllElementsLine(jedenRadek.ToString(), '\'');
+                var columns = SF.GetAllElementsLine(jedenRadek.ToString(), '\'');
                 jedenRadek = new StringBuilder();
                 vr.Add(columns);
             }
         }
 
-        return vr.ToArray();
+        return vr;
     }
 
     private static string[] GetLinesFromString(string p)
@@ -179,51 +195,40 @@ public static class SF
         {
             vr.Add(f);
         }
+
         return vr.ToArray();
     }
 
-    
-
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="var"></param>
+    /// <param name = "element"></param>
+    /// <param name = "line"></param>
+    /// <param name = "elements"></param>
     /// <returns></returns>
-    public static string[] GetAllElementsLine(string var, char oddelovaciZnak = '|')
+    private static string GetElementAtIndex(List<List<string>> elements, int element, int line)
     {
-        // Musí tu být none, protože pak když někde nic nebylo, tak mi to je nevrátilo a progran vyhodil IndexOutOfRangeException
-        return var.Split(new char[] { oddelovaciZnak }, StringSplitOptions.None);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="element"></param>
-    /// <param name="line"></param>
-    /// <param name="elements"></param>
-    /// <returns></returns>
-    private static string GetElementAtIndex(string[][] elements, int element, int line)
-    {
-        if (elements.Length > line)
+        if (elements.Length() > line)
         {
-            string[] lineElements = elements[line];
-            if (lineElements.Length > element)
+            var lineElements = elements[line];
+            if (lineElements.Length() > element)
             {
                 return lineElements[element];
             }
         }
+
         return null;
     }
 
     public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
     {
-        return  SH.GetString(o, separator);
+        return SH.GetString(o, separator);
     }
 
     /// <summary>
     /// IEnumerable Must have type to use ToArray()
     /// </summary>
-    /// <param name="o"></param>
+    /// <param name = "o"></param>
     /// <returns></returns>
     public static string PrepareToSerializationList(IEnumerable<string> o, string separator = AllStrings.pipe)
     {
@@ -233,7 +238,7 @@ public static class SF
     /// <summary>
     /// Vrátí bez poslední 
     /// </summary>
-    /// <param name="o"></param>
+    /// <param name = "o"></param>
     /// <returns></returns>
     public static string PrepareToSerialization2(IEnumerable o, string separator = AllStrings.pipe)
     {
@@ -242,6 +247,7 @@ public static class SF
         {
             return vr.Substring(0, vr.Length - 1);
         }
+
         return vr;
     }
 
@@ -252,6 +258,7 @@ public static class SF
         {
             sb.AppendLine(PrepareToSerialization(item));
         }
+
         File.WriteAllText(VybranySouborLogu, sb.ToString());
     }
 
@@ -260,8 +267,4 @@ public static class SF
         string vr = SH.GetString(o, p1.ToString());
         return vr.Substring(0, vr.Length - 1);
     }
-
-
-
-
 }
