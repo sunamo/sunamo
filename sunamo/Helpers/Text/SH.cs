@@ -322,7 +322,8 @@ public static partial class SH
             return t;
         }
 
-        return t.Remove(dex);
+        string vr = t.Remove(dex);
+        return vr;
     }
 
     /// <summary>
@@ -824,14 +825,7 @@ public static partial class SH
         return vr;
     }
 
-    public static string SubstringIfAvailable(string input, int lenght)
-    {
-        if (input.Length > lenght)
-        {
-            return input.Substring(0, lenght);
-        }
-        return input;
-    }
+
 
     public static string RemoveLastCharIfIs(string slozka, char znak)
     {
@@ -1017,7 +1011,8 @@ public static partial class SH
         {
             return "";
         }
-        return v.ToString();
+        var s = v.ToString();
+        return s;
     }
 
     /// <summary>
@@ -1144,30 +1139,6 @@ public static partial class SH
             }
         }
         return v.ToArray();
-    }
-
-    public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
-    {
-        if (squareBrackets)
-        {
-            title = RemoveBetweenAndEdgeChars(title, '[', ']');
-        }
-        if (parentheses)
-        {
-            title = RemoveBetweenAndEdgeChars(title, '(', ')');
-        }
-        if (braces)
-        {
-            title = RemoveBetweenAndEdgeChars(title, '{', '}');
-        }
-        title = ReplaceAll(title, "", "  ").Trim();
-        return title;
-    }
-
-    public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
-    {
-        Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
-        return regex.Replace(s, string.Empty);
     }
 
     /// <summary>
@@ -1565,11 +1536,6 @@ public static partial class SH
         return s;
     }
 
-    public static string RemoveLastChar(string artist)
-    {
-        return artist.Substring(0, artist.Length - 1);
-    }
-
     public static bool IsNumber(string str, params char[] nextAllowedChars)
     {
         foreach (var item in str)
@@ -1837,31 +1803,6 @@ public static partial class SH
 
     }
 
-    /// <summary>
-    /// POZOR, tato metoda se změnila, nyní automaticky přičítá k indexu od 1
-    /// When I want to include delimiter, add to A3 +1
-    /// </summary>
-    /// <param name="sql"></param>
-    /// <param name="p"></param>
-    /// <param name="p_3"></param>
-    /// <returns></returns>
-    public static string Substring(string sql, int indexFrom, int indexTo)
-    {
-        if (sql == null)
-        {
-            return null;
-        }
-        int tl = sql.Length;
-        if (tl > indexFrom)
-        {
-            if (tl > indexTo)
-            {
-                return sql.Substring(indexFrom, indexTo - indexFrom);
-            }
-        }
-        return null;
-    }
-
     
 
     public static string StripFunctationsAndSymbols(string p)
@@ -2085,12 +2026,6 @@ public static partial class SH
         return vr;
     }
 
-    public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
-    {
-        string[] split = SH.SplitNone(p1, delimiter);
-        return CA.RemoveDuplicitiesList<string>(new List<string>(split));
-    }
-
     public static string GetWithoutFirstWord(string item2)
     {
         item2 = item2.Trim();
@@ -2102,51 +2037,6 @@ public static partial class SH
         }
         return item2;
     }
-
-    /// <summary>
-    /// Údajně detekuje i japonštinu a podpobné jazyky
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
-    public static bool IsChinese(string text)
-    {
-        var hiragana = GetCharsInRange(text, 0x3040, 0x309F);
-        if (hiragana )
-        {
-            return true;
-        }
-        var katakana = GetCharsInRange(text, 0x30A0, 0x30FF);
-        if (katakana )
-        {
-            return true;
-        }
-        var kanji = GetCharsInRange(text, 0x4E00, 0x9FBF);
-        if (kanji )
-        {
-            return true;
-        }
-
-        if (text.Any(c => c >= 0x20000 && c <= 0xFA2D))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Nevraci znaky na indexech ale zda nektere znaky maji rozsah char definovany v A2,3
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="min"></param>
-    /// <param name="max"></param>
-    /// <returns></returns>
-    public static  bool GetCharsInRange(string text, int min, int max)
-    {
-        return text.Where(e => e >= min && e <= max).Count() != 0;
-    }
-
-    
 
     /// <summary>
     /// Je dobré před voláním této metody převést bílé znaky v A1 na mezery
@@ -2515,14 +2405,6 @@ public static partial class SH
         return vr.Substring(0, vr.Length - 1);
     }
 
-
-
-
-    public static string JoinSpace(IEnumerable parts)
-    {
-        return SH.JoinString(AllStrings.space, parts);
-    }
-
     public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
     {
         StringBuilder sb = new StringBuilder();
@@ -2533,15 +2415,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-    public static string JoinWithoutTrim(object p, IList parts)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (object item in parts)
-        {
-            sb.Append(item.ToString() + p);
-        }
-        return sb.ToString();
-    }
 
     public static string JoinWithoutEndTrimDelimiter(object name, params string[] parts)
     {

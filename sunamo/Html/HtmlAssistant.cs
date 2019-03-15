@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using sunamo.Html;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,3 +42,4 @@ public partial class HtmlAssistant
     {
         return HttpUtility.HtmlDecode(v);
     }
+}

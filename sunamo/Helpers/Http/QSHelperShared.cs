@@ -47,4 +47,23 @@ public static void GetArray(string[] p, StringBuilder sb, bool uvo)
 
         sb.Append(")");
     }
+
+public static string GetParameterSE(string r1, string p)
+    {
+        p = p + "=";
+        int dexPocatek = r1.IndexOf(p);
+        if (dexPocatek != -1)
+        {
+            int dexKonec = r1.IndexOf("&", dexPocatek);
+            dexPocatek = dexPocatek + p.Length;
+            if (dexKonec != -1)
+            {
+                return SH.Substring(r1, dexPocatek, dexKonec);
+            }
+
+            return r1.Substring(dexPocatek);
+        }
+
+        return "";
+    }
 }

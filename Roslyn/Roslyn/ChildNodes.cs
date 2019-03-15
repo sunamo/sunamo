@@ -13,5 +13,42 @@ namespace Roslyn
         {
             return n.ChildNodes().OfType<MethodDeclarationSyntax>();
         }
+
+        public static MethodDeclarationSyntax Method(ClassDeclarationSyntax cl, string item)
+        {
+            var methodToFind = RoslynParser.Method(item);
+
+            var founded = RoslynHelper.FindNode(cl, methodToFind, true);
+            //var methods =  Methods(cl);
+            return (MethodDeclarationSyntax)founded;
+        }
+
+        public static NamespaceDeclarationSyntax Namespace(SyntaxNode n)
+        {
+            if (n is NamespaceDeclarationSyntax)
+            {
+                return (NamespaceDeclarationSyntax)n;
+            }
+            return (NamespaceDeclarationSyntax)n.ChildNodes().OfType<NamespaceDeclarationSyntax>().FirstOrNull();
+        }
+
+        public static ClassDeclarationSyntax Class(SyntaxNode n)
+        {
+            if (n is ClassDeclarationSyntax)
+            {
+                return (ClassDeclarationSyntax)n;
+            }
+            return (ClassDeclarationSyntax)n.ChildNodes().OfType<ClassDeclarationSyntax>().FirstOrNull();
+        }
+
+        internal static SyntaxNode NamespaceOrClass(SyntaxNode root)
+        {
+            var ns = Namespace(root);
+            if (ns != null)
+            {
+                return ns;
+            }
+            return Class(root);
+        }
     }
 }

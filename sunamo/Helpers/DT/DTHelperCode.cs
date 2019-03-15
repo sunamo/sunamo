@@ -7,7 +7,7 @@ using System.Text;
     /// Must contains in header Input, Angular, jQuery, etc. 
     /// Next relative methods are in DTHelperFormalized / DTHelperFormalizedWithT
     /// </summary>
-    public class DTHelperCode
+    public partial class DTHelperCode
     {
         public static string DateTimeToStringToInputDateTimeLocal(DateTime dt, DateTime dtMinVal)
         {
@@ -40,12 +40,6 @@ using System.Text;
         {
             //return NH.MakeUpTo2NumbersToZero(dt.Day) + "." + NH.MakeUpTo2NumbersToZero(dt.Month) + "." + dt.Year;
             return NH.MakeUpTo2NumbersToZero(dt.Month) + "/" + NH.MakeUpTo2NumbersToZero(dt.Day) + "/" + dt.Year;
-        }
-
-
-        public static string DateToStringAngularDate(DateTime dt)
-        {
-            return dt.Year + NH.MakeUpTo2NumbersToZero(dt.Month) + NH.MakeUpTo2NumbersToZero(dt.Day) + "T00:00:00";
         }
 
         public static string DateAndTimeToStringAngularDateTime(DateTime dt)

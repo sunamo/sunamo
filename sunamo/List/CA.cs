@@ -194,13 +194,6 @@ public static partial  class CA
 
     }
 
-    
-
-    public static bool HasIndex(int dex, Array col)
-    {
-        return col.Length > dex;
-    }
-
     public static List<string> OnlyFirstCharUpper(List<string> list)
     {
         return ChangeContent(list, SH.OnlyFirstCharUpper);
@@ -434,28 +427,6 @@ public static partial  class CA
             return false;
         }
         if (nahledy.Count > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static int GetLength(IList where)
-    {
-        if (where == null)
-        {
-            return 0;
-        }
-        return where.Count;
-    }
-
-    public static bool HasIndex(int p, IEnumerable nahledy)
-    {
-        if (p < 0)
-        {
-            throw new Exception("Chybný parametr p");
-        }
-        if (nahledy.Count() > p)
         {
             return true;
         }
@@ -918,30 +889,6 @@ public static partial  class CA
             }
         }
         return vr;
-    }
-
-    /// <summary>
-    /// Is same as ContainsElement, only have switched arguments
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="p"></param>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
-    {
-        foreach (T item in list)
-        {
-            if (EqualityComparer<T>.Default.Equals(p, item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
-    {
-        return IsEqualToAnyElement(p, prvky.ToList());
     }
 
     /// <summary>

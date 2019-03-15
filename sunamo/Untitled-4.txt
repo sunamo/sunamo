@@ -1,7 +1,17 @@
-GetWebUri2
-GetWebUriWithoutHttp
-AppendSiteNameIfNotExists
-GetWebUri
-GetWebUri3
-GetWithProtocol
-GetProtocol
+RandomHelper:
+RandomString
+RandomBytes
+
+SH:
+public static string SubstringIfAvailable(string input, int lenght)
+GetCharsInRange
+RemoveLastChar
+IsChinese
+
+CA:
+HasIndex 2x
+IsEqualToAnyElement 2x
+GetLength
+
+UH:
+GetUriSafeString

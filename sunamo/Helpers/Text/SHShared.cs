@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public static partial class SH
 {
@@ -1119,5 +1120,65 @@ public static string JoinWithoutTrim(object p, IList parts)
             return nazevPP[0].ToString().ToUpper() + sb;
         }
         return null;
+    }
+
+/// <summary>
+    /// POZOR, tato metoda se změnila, nyní automaticky přičítá k indexu od 1
+    /// When I want to include delimiter, add to A3 +1
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <param name="p"></param>
+    /// <param name="p_3"></param>
+    /// <returns></returns>
+    public static string Substring(string sql, int indexFrom, int indexTo)
+    {
+        if (sql == null)
+        {
+            return null;
+        }
+        int tl = sql.Length;
+        if (tl > indexFrom)
+        {
+            if (tl > indexTo)
+            {
+                return sql.Substring(indexFrom, indexTo - indexFrom);
+            }
+        }
+        return null;
+    }
+
+public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
+    {
+        string[] split = SH.SplitNone(p1, delimiter);
+        return CA.RemoveDuplicitiesList<string>(new List<string>(split));
+    }
+
+public static string JoinSpace(IEnumerable parts)
+    {
+        return SH.JoinString(AllStrings.space, parts);
+    }
+
+public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
+    {
+        if (squareBrackets)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '[', ']');
+        }
+        if (parentheses)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '(', ')');
+        }
+        if (braces)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '{', '}');
+        }
+        title = ReplaceAll(title, "", "  ").Trim();
+        return title;
+    }
+
+public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
+    {
+        Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
+        return regex.Replace(s, string.Empty);
     }
 }

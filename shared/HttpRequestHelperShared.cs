@@ -172,4 +172,44 @@ public static partial class HttpRequestHelper{
             return Exceptions.TextOfExceptions(ex);
         }
     }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "address"></param>
+    /// <returns></returns>
+    public static byte[] GetResponseBytes(string address, HttpMethod method)
+    {
+        var request = (HttpWebRequest)WebRequest.Create(address);
+        request.Method = method.Method;
+        request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
+        using (var response = (HttpWebResponse)request.GetResponse())
+        {
+            Encoding encoding = null;
+            if (response.CharacterSet == "")
+            {
+                encoding = Encoding.UTF8;
+            }
+            else
+            {
+                encoding = Encoding.GetEncoding(response.CharacterSet);
+            }
+
+            using (var responseStream = response.GetResponseStream())
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    responseStream.CopyTo(ms);
+                    ms.Seek(0, SeekOrigin.Begin);
+                    using (var reader = new StreamReader(ms, encoding))
+                    {
+                        using (BinaryReader br = new BinaryReader(reader.BaseStream))
+                        {
+                            return br.ReadBytes((int)ms.Length);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

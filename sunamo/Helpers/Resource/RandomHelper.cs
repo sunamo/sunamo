@@ -27,66 +27,6 @@ public static partial class RandomHelper
         return p;
     }
 
-    public static byte[] RandomBytes(int kolik)
-    {
-        byte[] b = new byte[kolik];
-        for (int i = 0; i < kolik; i++)
-        {
-            b[i] = (byte)rnd.Next(0, byte.MaxValue);
-        }
-        return b;
-    }
-
-    public static string RandomString(int delka)
-    {
-        delka--;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i != delka; i++)
-        {
-            sb.Append(RandomChar());
-        }
-        return sb.ToString();
-    }
-
-    public static string RandomString(int delka, bool upper, bool lower, bool numeric, bool special)
-    {
-        List<char> ch = new List<char>();
-        if (lower)
-        {
-            ch.AddRange(AllChars.lowerChars);
-        }
-        if (numeric)
-        {
-            ch.AddRange(AllChars.numericChars);
-        }
-        if (special)
-        {
-            ch.AddRange(AllChars.specialChars);
-        }
-        if (upper)
-        {
-            ch.AddRange(AllChars.upperChars);
-        }
-
-        delka--;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i != delka; i++)
-        {
-            sb.Append(RandomElementOfCollection(ch));
-        }
-        return sb.ToString();
-    }
-
-    public static string RandomString()
-    {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 7; i++)
-        {
-            sb.Append(RandomChar());
-        }
-        return sb.ToString();
-    }
-
     private static char RandomNumberChar()
     {
         return RandomElementOfCollection(AllChars.numericChars)[0];

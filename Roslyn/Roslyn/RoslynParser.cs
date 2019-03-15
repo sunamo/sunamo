@@ -25,6 +25,21 @@ namespace Roslyn
 
         static Type type = null;
 
+        internal static MethodDeclarationSyntax Method(string item)
+        {
+            item = item + "{}";
+            //StringReader sr = new StringReader(item);
+            //CSharpSyntaxNode.DeserializeFrom();
+            var tree = CSharpSyntaxTree.ParseText(item);
+            var root = tree.GetRoot();
+            //return (MethodDeclarationSyntax)root.DescendantNodesAndTokensAndSelf().OfType<MethodDeclarationSyntax>().FirstOrNull();
+
+            // Only root I cannot cast -> cannot cast CSU to MethodDeclSyntax
+
+            var childNodes = root.ChildNodes();
+            return (MethodDeclarationSyntax)childNodes.First();
+        }
+
         public void FindPageMethod(string sczRootPath)
         {
             StringBuilder sb = new StringBuilder();
@@ -150,24 +165,8 @@ namespace Roslyn
         /// <returns></returns>
         public static ABC GetVariablesInCsharp(SyntaxNode root, List<string> lines, out CollectionWithoutDuplicates<string> usings)
         {
-            usings = new CollectionWithoutDuplicates<string>();
             ABC result = new ABC();
-
-            foreach (var item in lines)
-            {
-                var line = item.Trim();
-                if (line != string.Empty)
-                {
-                    if (line.StartsWith("using "))
-                    {
-                        usings.Add(line);
-                    }
-                    else if (line.Contains(AllStrings.lsf))
-                    {
-                        break;
-                    }   
-                }
-            }
+            usings = Usings(lines);
 
             ClassDeclarationSyntax helloWorldDeclaration = null;
             helloWorldDeclaration = RoslynHelper.GetClass(root);
@@ -192,6 +191,46 @@ namespace Roslyn
             return result;
         }
 
-        
+        public static CollectionWithoutDuplicates<string> Usings(List<string> lines)
+        {
+            CollectionWithoutDuplicates<string> usings = new CollectionWithoutDuplicates<string>();
+            foreach (var item in lines)
+            {
+                var line = item.Trim();
+                if (line != string.Empty)
+                {
+                    if (line.StartsWith("using "))
+                    {
+                        usings.Add(line);
+                    }
+                    else if (line.Contains(AllStrings.lsf))
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return usings;
+        }
+
+        public static string GetAccessModifiers(SyntaxTokenList modifiers )
+        {
+            foreach (var item in modifiers)
+            {
+                switch (item.Kind())
+                {
+                    case SyntaxKind.PublicKeyword:
+                        
+                    case SyntaxKind.PrivateKeyword:
+                        
+                    case SyntaxKind.InternalKeyword:
+                        
+                    case SyntaxKind.ProtectedKeyword:
+                        return item.WithoutTrivia().ToFullString();
+                }
+
+            }
+            return string.Empty;
+        }
     }
 }

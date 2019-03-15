@@ -117,69 +117,10 @@ public partial class GeneratorMsSql
         return comm;
     }
 
-    public static string CombinedWhereOR(AB[] where, ref int p)
-    {
-        StringBuilder sb = new StringBuilder();
-        int pCopy = p;
-        if (p == 0)
-        {
-            if (where.Length != 0)
-            {
-                sb.Append(" WHERE ");
-            }
-        }
-        else
-        {
-            sb.Append("(");
-        }
-        
-        bool první = true;
-        
-
-        foreach (AB var in where)
-        {
-            if (první && p == 0)
-            {
-                první = false;
-            }
-            else
-            {
-                sb.Append(" OR ");
-            }
-            sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
-            p++;
-        }
-        if (pCopy != 0)
-        {
-            sb.Append(")");
-        }
-        return sb.ToString();
-    }
+   
 
 
-    public static string CombinedWhereOR(AB[] where)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
-        bool první = true;
-        int p = 0;
-
-        foreach (AB var in where)
-        {
-            if (první)
-            {
-                první = false;
-            }
-            else
-            {
-                sb.Append(" OR ");
-            }
-            sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
-            p++;
-        }
-
-        return sb.ToString();
-    }
+    
 
     
 

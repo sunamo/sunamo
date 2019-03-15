@@ -93,6 +93,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\UlozToParser.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Threading\TimeThreadPool.cs" Link="" />

@@ -50,25 +50,6 @@ public partial class QSHelper
         return null;
     }
 
-    public static string GetParameterSE(string r1, string p)
-    {
-        p = p + "=";
-        int dexPocatek = r1.IndexOf(p);
-        if (dexPocatek != -1)
-        {
-            int dexKonec = r1.IndexOf("&", dexPocatek);
-            dexPocatek = dexPocatek + p.Length;
-            if (dexKonec != -1)
-            {
-                return SH.Substring(r1, dexPocatek, dexKonec);
-            }
-
-            return r1.Substring(dexPocatek);
-        }
-
-        return "";
-    }
-
     /// <summary>
     /// A1 je adresa bez konzového otazníku
     /// Všechny parametry automaticky zakóduje metodou UH.UrlEncode

@@ -225,14 +225,19 @@ public class SourceCodeIndexerRoslyn
                     {
                         if (char.IsUpper(namespaceElementName[0]))
                         {
-                            if (namespaceElementName.Contains("ITableRow"))
-                            {
-
-                            }
+                            
 
                             NamespaceCodeElement element = new NamespaceCodeElement() { Index = FullFileIndex[indexes[i]], Name = namespaceElementName, Type = namespaceCodeElementType };
 
-                            DictionaryHelper.AddOrCreate<string, NamespaceCodeElement>(namespaceCodeElements, pathFile, element);
+                            //if (namespaceElementName.Contains("ItemWithCount"))
+                            //{
+                            //    namespaceCodeElements.
+                            //}
+                            //else
+                            //{
+                                DictionaryHelper.AddOrCreate<string, NamespaceCodeElement>(namespaceCodeElements, pathFile, element);
+                            //}
+                            
                         }
                     }
                 }
@@ -364,6 +369,11 @@ public class SourceCodeIndexerRoslyn
 
             foreach (var item2 in item.Value)
             {
+                if (item.Key.Contains("ItemWithCount"))
+                {
+
+                }
+
                 if (makeChecking)
                 {
                     add = false;
@@ -381,7 +391,7 @@ public class SourceCodeIndexerRoslyn
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, searchStrategy))
+                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
                     {
                         d.Add(item2);
                     }
@@ -417,7 +427,7 @@ public class SourceCodeIndexerRoslyn
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, searchStrategy))
+                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
                     {
                         d.Add(item2);
                     }

@@ -12,6 +12,18 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Data\ItemWithCount.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\SunamoComparer.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitle.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlParser.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\ResourcesHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\UriWebServices.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Data\ABC.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Sql\SqlServerHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Data\AB.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\DateTimeFormatStyles.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalized.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperMultiShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlAssistantShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" Link="" />
