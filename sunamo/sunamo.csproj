@@ -12,6 +12,18 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Data\ExternalLoginResult.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\XmlTemplates.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFolders.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\ComparerRowsByColumn.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Web\SearchingOnWebShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Web\YouTube.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Values\ConstsShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Types\CharHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\YamlHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\HtmlTemplatesShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\DTConstantsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Data\ItemWithCount.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Entity\SunamoComparer.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitle.cs" Link="" />

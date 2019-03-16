@@ -6,7 +6,10 @@ using System.IO;
 using System.Net;
 using System.Xml;
 
-public class HtmlParser
+/// <summary>
+/// Is 2, never use HtmlDocument!!! have too many methods. 
+/// </summary>
+public class HtmlDocument2
 {
     HtmlDocument hd = new HtmlDocument();
     string html = null;
@@ -463,7 +466,7 @@ public class HtmlParser
 
     /// <summary>
     /// Return 0 instead of 10
-    /// Originally from HtmlParser
+    /// Originally from HtmlDocument
     /// </summary>
     /// <param name="htmlNode"></param>
     /// <param name="tagName"></param>

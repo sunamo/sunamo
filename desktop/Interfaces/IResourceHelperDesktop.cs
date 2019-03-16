@@ -4,12 +4,11 @@ using System.IO;
 using System.Text;
 using System.Windows.Media.Imaging;
 
-namespace sunamo.Interfaces
-{
-    public interface IResourceHelper
+
+    public interface IResourceHelperDesktop : IResourceHelper
     {
-        string GetString(string name);
+        
         BitmapImage GetBitmapImageSource(string name);
-        Stream GetStream(string name);
+        
     }
-}
+

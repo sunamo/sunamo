@@ -254,7 +254,7 @@
     <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
-    <Compile Include="Interfaces\IResourceHelper.cs" />
+    <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />

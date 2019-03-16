@@ -70,6 +70,7 @@ public  static partial class CA
 
     public static List<string> ToListString(params object[] enumerable)
     {
+        
         List<string> result = new List<string>();
         foreach (var item in enumerable)
         {
@@ -675,5 +676,18 @@ public static object[] JoinVariableAndArray(object p, object[] sloupce)
         o.Add(p);
         o.AddRange(sloupce);
         return o.ToArray();
+    }
+
+public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
+    {
+        for (int i = 0; i < sf.Count; i++)
+        {
+            sf[i] = sf[i].TrimEnd(toTrim);
+        }
+        return sf;
+    }
+public static string[] TrimEnd(string[] sf, params char[] toTrim)
+    {
+        return TrimEnd(new List<string>(sf), toTrim).ToArray();
     }
 }

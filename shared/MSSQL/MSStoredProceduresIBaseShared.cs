@@ -354,7 +354,7 @@ public int ExecuteNonQuery(string commText, params object[] para)
     /// <returns></returns>
     public List<DateTime> SelectValuesOfColumnAllRowsDateTime(string table, string returnColumns, params AB[] where)
     {
-        string hodnoty = MSDatabaseLayerBase.GetValues(where.ToArray());
+        string hodnoty = MSDatabaseLayer.GetValues(where.ToArray());
         List<DateTime> vr = new List<DateTime>();
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", returnColumns, table, GeneratorMsSql.CombinedWhere(where)));
         for (int i = 0; i < where.Length; i++)
@@ -995,6 +995,13 @@ public string SelectNameOfID(string tabulka, long id, string nameColumnID)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.SimpleWhere(idColumn)));
         AddCommandParameter(comm, 0, idValue);
+        return ReadValuesInt(comm);
+    }
+
+    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
+        AddCommandParameteresCombinedArrays(comm, 0, whereIs.ToArray(), whereIsNot.ToArray(), null, null);
         return ReadValuesInt(comm);
     }
 

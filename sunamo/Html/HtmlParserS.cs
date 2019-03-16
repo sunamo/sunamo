@@ -3,7 +3,7 @@ using sunamo.Html;
 using System.IO;
 using System.Net;
 
-public static class HtmlParserS
+public static class HtmlDocumentS
 {
     static string html2 = null;
 

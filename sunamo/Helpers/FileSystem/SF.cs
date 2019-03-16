@@ -262,7 +262,7 @@ public static partial class SF
         File.WriteAllText(VybranySouborLogu, sb.ToString());
     }
 
-    public static string PrepareToSerializationExplicit(char p1, object[] o)
+    public static string PrepareToSerializationExplicit(char p1, IEnumerable o)
     {
         string vr = SH.GetString(o, p1.ToString());
         return vr.Substring(0, vr.Length - 1);

@@ -6,19 +6,9 @@ using System;
 using System.Text;
 using System.Data.SqlClient;
 
-public class MSDatabaseLayerSql5 : MSDatabaseLayerBase
+public class MSDatabaseLayerSql5 : MSDatabaseLayer
 {
-    public static SqlConnection _conn
-    {
-        get
-        {
-            return conn;
-        }
-        set
-        {
-            conn = value;
-        }
-    }
+
 
     static string cs = null;
     static bool closing = false;

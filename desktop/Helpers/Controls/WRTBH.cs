@@ -37,7 +37,7 @@ namespace desktop
 
         public void Run(string text)
         {
-            string[] slova = GetWords(text);
+            var slova = GetWords(text);
             foreach (var item in slova)
             {
                 Add(GetTextBlock(GetRun(item, fa)));
@@ -46,7 +46,7 @@ namespace desktop
 
 
 
-        private string[] GetWords(string text)
+        private List<string> GetWords(string text)
         {
             return SH.SplitNone(text, " ");
         }
@@ -65,7 +65,7 @@ namespace desktop
 
         public void Bold(string text)
         {
-            string[] slova = GetWords(text);
+            var slova = GetWords(text);
             foreach (var item in slova)
             {
                 Add(GetTextBlock(GetBold(item + "  ", fa)));
@@ -119,7 +119,7 @@ namespace desktop
 
         public void Italic(string p)
         {
-            string[] slova = GetWords(p);
+            var slova = GetWords(p);
             foreach (var item in slova)
             {
                 Add(GetTextBlock(GetItalic(item + "  ", fa)));

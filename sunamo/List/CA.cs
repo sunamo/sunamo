@@ -406,20 +406,6 @@ public static partial  class CA
         return celkove;
     }
 
-    public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
-    {
-        for (int i = 0; i < sf.Count; i++)
-        {
-            sf[i] = sf[i].TrimEnd(toTrim);
-        }
-        return sf;
-    }
-
-    public static string[] TrimEnd(string[] sf, params char[] toTrim)
-    {
-        return TrimEnd(new List<string>(sf), toTrim).ToArray();
-    }
-
     public static bool HasIndexWithoutException(int p, IList nahledy)
     {
         if (p < 0)

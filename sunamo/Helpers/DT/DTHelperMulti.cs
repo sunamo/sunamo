@@ -493,7 +493,7 @@ using System.Text;
         /// <returns></returns>
         public static DateTime? ParseDateMonthDayYear(string p)
         {
-            string[] s = SH.SplitNone(p, "/");
+            var s = SH.SplitNone(p, "/");
             DateTime vr;
             if (DateTime.TryParse(s[1] + "." + s[0] + "." + s[2], out vr))
             {

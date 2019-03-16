@@ -1554,31 +1554,27 @@ public static partial class SH
 
     public static string ReplaceLastOccurenceOfString(string text, string co, string čím)
     {
-        string[] roz = SplitNone(text, co);
-        if (roz.Length == 1)
+        var roz = SplitNone(text, co);
+        if (roz.Length() == 1)
         {
             return text.Replace(co, čím);
         }
         else
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < roz.Length - 2; i++)
+            for (int i = 0; i < roz.Length() - 2; i++)
             {
                 sb.Append(roz[i] + co);
             }
 
-            sb.Append(roz[roz.Length - 2]);
+            sb.Append(roz[roz.Length() - 2]);
             sb.Append(čím);
-            sb.Append(roz[roz.Length - 1]);
+            sb.Append(roz[roz.Length() - 1]);
             return sb.ToString();
         }
 
     }
 
-    public static List<string> Split(string text, params char[] deli)
-    {
-        return Split(StringSplitOptions.RemoveEmptyEntries, text, deli).ToList();
-    }
 
     
 
@@ -1716,11 +1712,6 @@ public static partial class SH
         return SplitSpecial(StringSplitOptions.None, text, deli);
     }
 
-    public static string[] SplitNone(string text, params string[] deli)
-    {
-        return text.Split( deli, StringSplitOptions.None);
-    }
-
 
 
     public static string FirstCharuUpper(string nazevPP)
@@ -1728,82 +1719,6 @@ public static partial class SH
         string sb = nazevPP.Substring(1);
         return nazevPP[0].ToString().ToUpper() + sb;
     }
-
-    /// <summary>
-    /// Vše tu funguje výborně
-    /// G text z A1, ktery bude obsahovat max A2 písmen - ne slov, protože někdo tam může vložit příliš dlouhé slova a nevypadalo by to pak hezky.
-    /// 
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="p_2"></param>
-    /// <returns></returns>
-    public static string ShortForLettersCountThreeDotsReverse(string p, int p_2)
-    {
-        p = p.Trim();
-        int pl = p.Length;
-        bool jeDelsiA1 = p_2 <= pl;
-
-
-        if (jeDelsiA1)
-        {
-            if (SH.IsInLastXCharsTheseLetters(p, p_2, ' '))
-            {
-                int dexMezery = 0;
-                string d = p; //p.Substring(p.Length - zkratitO);
-                int to = d.Length;
-
-                int napocitano = 0;
-                for (int i = to - 1; i >= 0; i--)
-                {
-                    napocitano++;
-
-                    if (d[i] == ' ')
-                    {
-                        if (napocitano >= p_2)
-                        {
-                            break;
-                        }
-
-                        dexMezery = i;
-                    }
-                }
-                    d = d.Substring(dexMezery + 1);
-                    if (d.Trim() != "")
-                    {
-                        d = " ... " + d;
-                    }
-                    return d;
-                //}
-            }
-            else
-            {
-                return " ... " + p.Substring(p.Length - p_2);
-            }
-        }
-
-        return p;
-    }
-
-    
-
-    private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] letters)
-    {
-        
-        for (int i = p.Length - 1; i >= pl; i--)
-        {
-            foreach (var item in letters)
-            {
-                if (p[i] == item)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-
-    }
-
-    
 
     public static string StripFunctationsAndSymbols(string p)
     {
@@ -1876,8 +1791,8 @@ public static partial class SH
         stringToSplit = stringToSplit.Trim();
         if (stringToSplit != "")
         {
-            string[] f = SH.SplitNone(stringToSplit, delimiter);
-            nt = new List<int>(f.Length); 
+            var f = SH.SplitNone(stringToSplit, delimiter);
+            nt = new List<int>(f.Length()); 
             foreach (string item in f)
             {
                 nt.Add(int.Parse(item));
@@ -1975,57 +1890,6 @@ public static partial class SH
     }
 
 
-
-    public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObsah, params string[] hledaneSlova)
-    {
-        if (hledaneSlova == null || hledaneSlova.Length == 0)
-        {
-            return new List<FromToWord>();
-           
-        }
-        celyObsah = celyObsah.ToLower();
-        List<FromToWord> vr = new List<FromToWord>();
-        int l = celyObsah.Length;
-        for (int i = 0; i < l; i++)
-        {
-            foreach (string item in hledaneSlova)
-            {
-                bool vsechnoStejne = true;
-                int pridat = 0;
-                while (pridat < item.Length)
-                {
-                    
-                    int dex = i + pridat;
-                    if (l > dex)
-                    {
-                        if (celyObsah[dex] != item[pridat])
-                        {
-                            vsechnoStejne = false;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        vsechnoStejne = false;
-                        break;
-                    }
-                    pridat++;
-                }
-                if (vsechnoStejne)
-                {
-                    FromToWord ftw = new FromToWord();
-                    ftw.from = i;
-                    ftw.to = i + pridat - 1;
-                    ftw.word = item;
-                    vr.Add(ftw);
-                    i += pridat;
-                    break;
-                }
-            }
-        }
-        return vr;
-    }
-
     public static string GetWithoutFirstWord(string item2)
     {
         item2 = item2.Trim();
@@ -2036,134 +1900,6 @@ public static partial class SH
             return item2.Substring(dex + 1);
         }
         return item2;
-    }
-
-    /// <summary>
-    /// Je dobré před voláním této metody převést bílé znaky v A1 na mezery
-    /// </summary>
-    /// <param name="celyObsah"></param>
-    /// <param name="stred"></param>
-    /// <param name="naKazdeStrane"></param>
-    /// <returns></returns>
-    public static string XCharsBeforeAndAfterWholeWords(string celyObsah, int stred, int naKazdeStrane)
-    {
-        StringBuilder prava = new StringBuilder();
-        StringBuilder slovo = new StringBuilder();
-        
-        // Teď to samé udělám i pro levou stranu
-        StringBuilder leva = new StringBuilder();
-        for (int i = stred - 1; i >= 0; i--)
-        {
-            char ch = celyObsah[i];
-            if (ch == ' ')
-            {
-                string ts = slovo.ToString();
-                slovo.Clear();
-                if (ts != "")
-                {
-
-                    leva.Insert(0, ts + " ");
-                    if (leva.Length + " ".Length + ts.Length > naKazdeStrane)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-            }
-            else
-            {
-                slovo.Insert(0, ch);
-            }
-        }
-        string l = slovo.ToString() + " " + leva.ToString().TrimEnd(' ');
-        l = l.TrimEnd(' ');
-        naKazdeStrane += naKazdeStrane - l.Length;
-        slovo.Clear();
-        // Počítám po pravé straně započítám i to středové písmenko
-        for (int i = stred; i < celyObsah.Length; i++)
-        {
-            char ch = celyObsah[i];
-            if (ch == ' ')
-            {
-                string ts = slovo.ToString();
-                slovo.Clear();
-                if (ts != "")
-                {
-
-                    prava.Append(" " + ts);
-                    if (prava.Length + " ".Length + ts.Length > naKazdeStrane)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-            }
-            else
-            {
-                slovo.Append(ch);
-            }
-        }
-        
-        string p = prava.ToString().TrimStart(' ') + " " + slovo.ToString();
-        p = p.TrimStart(' ');
-        string vr = "";
-        if (celyObsah.Contains(l + " ") && celyObsah.Contains(" " + p))
-        {
-            vr = l + " " + p;
-        }
-        else
-        {
-            vr = l + p;
-        }
-        return vr;
-    }
-
-    /// <summary>
-    /// Do výsledku zahranu i mezery a punktační znaménka 
-    /// </summary>
-    /// <param name="veta"></param>
-    /// <returns></returns>
-    public static string[] SplitBySpaceAndPunctuationCharsLeave(string veta)
-    {
-        List<string> vr = new List<string>();
-        vr.Add("");
-        foreach (var item in veta)
-        {
-            bool jeMezeraOrPunkce = false;
-            foreach (var item2 in spaceAndPuntactionChars)
-            {
-                if (item == item2)
-                {
-                    jeMezeraOrPunkce = true;
-                    break;
-                }
-            }
-
-            if (jeMezeraOrPunkce)
-            {
-                if (vr[vr.Count - 1] == "")
-                {
-                vr[vr.Count - 1] += item.ToString();    
-                }
-                else
-                {
-                    vr.Add(item.ToString());
-                }
-                
-                vr.Add("");
-            }
-            else
-            {
-                vr[vr.Count - 1] += item.ToString();
-            }
-        }
-        return vr.ToArray();
     }
 
     public static bool EndsWithArray(string source, params string[] p2)
@@ -2227,11 +1963,6 @@ public static partial class SH
             return input.Substring(0, indexOfChar + 1);
         }
         return input;
-    }
-
-    public static string TrimNewLineAndTab(string lyricsFirstOriginal)
-    {
-        return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
 
     //public static string JoinStringParams(string name, params string[] labels) { return null; }

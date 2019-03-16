@@ -45,5 +45,7 @@ public class WindowHelper
         WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
         window.ShowDialog();
     }
+
+    
 }
 

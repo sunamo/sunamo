@@ -136,7 +136,7 @@ public class MSSloupecDB
     public string InfoToTextBox()
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Datový typ: " + MSDatabaseLayerBase.usedTa[ typ]);
+        sb.AppendLine("Datový typ: " + MSDatabaseLayer.usedTa[ typ]);
         sb.AppendLine("Název: " + _nazev);
         sb.AppendLine("Je primárním klíčem: " + BTS.BoolToStringCs(primaryKey));
         sb.AppendLine("Nemusí být zadána: " + BTS.BoolToStringCs(canBeNull));
@@ -157,7 +157,7 @@ public class MSSloupecDB
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(MSDatabaseLayerBase.usedTa[ typ] + " " + _nazev);
+        sb.Append(MSDatabaseLayer.usedTa[ typ] + " " + _nazev);
         if (referencesTable != null)
         {
             sb.Append(" odkazuje na " + ReferencesTo());

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -31,6 +32,7 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
 
     public static string ByteArrayToString(byte[] ba)
     {
+        
         string hex = BitConverter.ToString(ba);
         return hex.Replace("-", "");
     }
@@ -68,7 +70,12 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
 
     public static Color ConvertFrom2(string hex)
     {
-        throw new NotImplementedException();
+        var v = Utils.FromHex(hex);
+        if (v.Count() == 3)
+        {
+            return Color.FromArgb(v[0], v[1], v[2]);
+        }
+        return Color.FromArgb(v[0], v[1], v[2], v[3]);
     }
 
     private static byte GetGroup(int p, string t)

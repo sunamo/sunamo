@@ -24,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\sunamo.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -93,6 +94,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\Crypting\UtilsShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Crypting\PasswordShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresISql5.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerSql5.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Helpers\CSharpHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\UlozToParser.cs" Link="" />
@@ -159,9 +165,6 @@
     <Compile Include="MSSQL\MSBaseRowTable.cs" />
     <Compile Include="MSSQL\MSColumnsDB.cs" />
     <Compile Include="MSSQL\MSDatabaseLayer.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerBaseShared.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerShared.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerSql5.cs" />
     <Compile Include="MSSQL\MSSloupec2.cs" />
     <Compile Include="MSSQL\MSSloupecDB.cs" />
@@ -215,6 +218,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="forms\" />
     <Folder Include="Helpers\Clipboard\" />
     <Folder Include="Helpers\Http\" />
     <Folder Include="_ToNetStd16\" />

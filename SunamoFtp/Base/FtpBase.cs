@@ -217,7 +217,7 @@ namespace SunamoFtp
 
 
 
-            string[] directories = Directory.GetDirectories(slozkaNaLocalu);
+            string[] directories = FS.GetFolders(slozkaNaLocalu);
             string[] files = Directory.GetFiles(slozkaNaLocalu);
             OnNewStatus("Uploaduji všechny soubory (" + files.Length + ") do složky ftp serveru " + ps.ActualPath);
 
@@ -402,7 +402,7 @@ namespace SunamoFtp
             string pathFolder = UH.Combine(true, ps.ActualPath, nazevSlozky);
             slozkaFrom = slozkaFrom.TrimEnd('\\');
             string[] soubory = Directory.GetFiles(slozkaFrom);
-            string[] slozky = Directory.GetDirectories(slozkaFrom);
+            string[] slozky = FS.GetFolders(slozkaFrom);
 
             NewStatus("Uploaduji všechny soubory (" + soubory.Length + ") do složky ftp serveru " + pathFolder);
 

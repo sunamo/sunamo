@@ -1,4 +1,10 @@
-﻿using HtmlAgilityPack;
+﻿using sunamo.Html;
+
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Xml;
+using HtmlAgilityPack;
 using sunamo.Constants;
 using System;
 using System.Collections.Generic;
@@ -277,5 +283,21 @@ public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string
 public static string StripAllTags(string p, string replaceFor)
         {
             return Regex.Replace(p, @"<[^>]*>", replaceFor);
+        }
+
+public static HtmlNode TrimNode(HtmlNode hn2)
+        {
+            if (hn2.FirstChild == null)
+            {
+                return hn2;
+            }
+            if (string.IsNullOrWhiteSpace(hn2.FirstChild.InnerHtml))
+            {
+                return hn2;
+            }
+            hn2.InnerHtml = hn2.InnerHtml.Trim();
+            hn2.FirstChild.InnerHtml = hn2.FirstChild.InnerHtml.Trim();
+            hn2.InnerHtml = hn2.InnerHtml.Trim();
+            return hn2;
         }
 }

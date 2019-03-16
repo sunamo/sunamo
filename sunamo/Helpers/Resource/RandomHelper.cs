@@ -42,34 +42,6 @@ public static partial class RandomHelper
     {
         return (byte)rnd.Next(od, to + 1);
     }
-    /// <summary>
-    /// Vr�t� ��slo mezi 0 a A1-1
-    /// </summary>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static short RandomShort(short to)
-    {
-        return (short)rnd.Next(0, to);
-    }
-
-    /// <summary>
-    /// Vr�t� ��slo mezi A1 v�etn� a A2+1 v�etn�
-    /// </summary>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static short RandomShort(short from, short to)
-    {
-        return (short)rnd.Next(from, to + 1);
-    }
-
-    /// <summary>
-    /// Vr�t� ��slo mezi 0 a short.MaxValue-1
-    /// </summary>
-    /// <returns></returns>
-    public static short RandomShort()
-    {
-        return (short)rnd.Next(0, short.MaxValue);
-    }
 
     public static bool RandomBool()
     {

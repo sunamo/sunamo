@@ -226,20 +226,6 @@ using System.Linq;
             return uri.Scheme + "://";
         }
 
-
-
-
-        /// <summary>
-        /// Pod�v� naprosto stejn� v�sledek jako UH.GetPageNameFromUri
-        /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� /Widgets/VerifyDomain.aspx
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <returns></returns>
-        public static string GetFilePathAsHttpRequest(Uri uri)
-        {
-            return uri.LocalPath;
-        }
-
         /// <summary>
         /// Vr�t� cel� QS v�etn� po��te�n�ho otazn�ku
         /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� ?code=xer4o51s0aavpdmndwrmdbd1

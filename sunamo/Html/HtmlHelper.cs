@@ -209,23 +209,6 @@ using System.Xml;
             return spl.Contains(value);
         }
 
-
-        public static HtmlNode TrimNode(HtmlNode hn2)
-        {
-            if (hn2.FirstChild == null)
-            {
-                return hn2;
-            }
-            if (string.IsNullOrWhiteSpace(hn2.FirstChild.InnerHtml))
-            {
-                return hn2;
-            }
-            hn2.InnerHtml = hn2.InnerHtml.Trim();
-            hn2.FirstChild.InnerHtml = hn2.FirstChild.InnerHtml.Trim();
-            hn2.InnerHtml = hn2.InnerHtml.Trim();
-            return hn2;
-        }
-
     /// <summary>
     /// Have also override with List<HtmlNode>
     /// </summary>
@@ -346,7 +329,7 @@ using System.Xml;
                 {
                     if (item2.Contains(":"))
                     {
-                        string[] r = SH.SplitNone(item2, ":");
+                        var r = SH.SplitNone(item2, ":");
                         vr.Add(r[0].Trim().ToLower(), r[1].Trim().ToLower());
                     }
                 }
@@ -650,7 +633,7 @@ using System.Xml;
 
         /// <summary>
         /// Return 0 instead of 10
-        /// Originally from HtmlParser
+        /// Originally from HtmlDocument
         /// </summary>
         /// <param name="htmlNode"></param>
         /// <param name="tagName"></param>

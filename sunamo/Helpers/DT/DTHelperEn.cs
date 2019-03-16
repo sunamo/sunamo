@@ -22,8 +22,8 @@ using System.Text;
             int days = -1;
             int number = -1;
 
-            string[] arg = SH.SplitNone(AddedAgo, "_");
-            if (arg.Length == 2)
+            var arg = SH.SplitNone(AddedAgo, "_");
+            if (arg.Length() == 2)
             {
                 TryParse.Integer dt = new TryParse.Integer();
                 if (dt.TryParseInt(arg[0].ToString()))

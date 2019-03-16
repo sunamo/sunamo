@@ -4,6 +4,7 @@ using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -466,5 +467,62 @@ public static bool ContainsInvalidPathCharForPartOfMapPath(string p)
             {
                 File.Delete(path);
             }
+        }
+
+public static string[] OnlyNames(string[] files2)
+        {
+            return OnlyNames(CA.ToListString(files2)).ToArray();
+        }
+/// <summary>
+        /// Returns with extension
+        /// POZOR: Na rozdíl od stejné metody v swf tato metoda vrací úplně nové pole a nemodifikuje A1
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public static List<string> OnlyNames(List<string> files2)
+        {
+            List<string> files = new List<string>(files2.Count);
+            for (int i = 0; i < files2.Count; i++)
+            {
+                files.Add(Path.GetFileName(files2[i]));
+            }
+            return files;
+        }
+public static string[] OnlyNames(string appendToStart, string[] fullPaths)
+        {
+            string[] ds = new string[fullPaths.Length];
+            for (int i = 0; i < fullPaths.Length; i++)
+            {
+                ds[i] = appendToStart + Path.GetFileName(fullPaths[i]);
+            }
+            return ds;
+        }
+
+public static List<string> GetFolders(string folder)
+        {
+            return GetFolders(folder, SearchOption.TopDirectoryOnly);
+        }
+
+    public static List<string> GetFolders(string folder, string masc, SearchOption so)
+    {
+        return Directory.GetDirectories(folder, masc, so).ToList();
+    }
+public static List<string> GetFolders(string folder, SearchOption so)
+        {
+        return GetFolders(folder, "*", so);
+        }
+public static List<string> GetFolders(string v, string contains)
+        {
+            var folders = GetFolders(v);
+            folders = CA.TrimEnd(folders, '\\');
+            for (int i = folders.Count - 1; i >= 0; i--)
+            {
+                if (!Path.GetFileName(folders[i]).Contains(contains))
+                {
+                    folders.RemoveAt(i);
+                }
+            }
+
+            return folders;
         }
 }

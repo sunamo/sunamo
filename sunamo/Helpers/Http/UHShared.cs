@@ -160,4 +160,15 @@ public static string GetPageNameFromUri(string atr, string p)
             }
             return GetPageNameFromUri(new Uri(atr));
         }
+
+/// <summary>
+        /// Pod�v� naprosto stejn� v�sledek jako UH.GetPageNameFromUri
+        /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� /Widgets/VerifyDomain.aspx
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public static string GetFilePathAsHttpRequest(Uri uri)
+        {
+            return uri.LocalPath;
+        }
 }

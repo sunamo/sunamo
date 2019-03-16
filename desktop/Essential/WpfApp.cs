@@ -20,6 +20,12 @@ namespace desktop.Essential
             EnableDesktopLogging(true);
         }
 
+        public static void Shutdown(object o, EventArgs eh)
+        {
+            WpfApp.mp.CancelClosing = false;
+            Application.Current.MainWindow.Close();
+        }
+
         static DependencyProperty[] props = new DependencyProperty[] { TextBlock.ForegroundProperty, TextBlock.TextProperty };
 
         public static string SQLExpressInstanceName()
