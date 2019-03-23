@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 public static class UriWebServices
@@ -245,6 +246,37 @@ public static class UriWebServices
         public const string dk = "https://www.databazeknih.cz/search?q=%s&hledat=";
     }
 
+    /// <summary>
+    /// Is possible user also OpenInBrowser.OpenCachesFromCacheList
+    /// </summary>
+    public class GeoCachingComSite
+    {
+        public static string CacheDetails(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/cache_details.aspx?guid=" + cacheGuid;
+        }
+
+        public static string Gallery(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/gallery.aspx?guid=" + cacheGuid;
+        }
+
+        public static string Log(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/log.aspx?guid=" + cacheGuid;
+        }
+
+        public static string CoordsInfo(string f)
+        {
+            return "http://coords.info/" + f;
+        }
+
+        public static string GC(string f)
+        {
+            return "http://coords.info/GC" + f;
+        }
+    }
+
     public static string KmoAll(string item)
     {
         return FromChromeReplacement("", item);
@@ -346,10 +378,7 @@ public static class UriWebServices
         return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode( term));
     }
 
-    public static string CoordsInfo(string f)
-    {
-        return "http://coords.info/" + f;
-    }
+    
 
     /// <summary>
     /// Already new radekjancik
@@ -370,5 +399,47 @@ public static class UriWebServices
     public static string MapyCz(string v)
     {
         return FromChromeReplacement( "https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
+    }
+
+    /// <summary>
+    /// Summary description for YouTube
+    /// </summary>
+    public static class YouTube
+    {
+        public static string GetLinkToVideo(string kod)
+        {
+            return "http://www.youtube.com/watch?v=" + kod;
+        }
+
+        public static string GetHtmlAnchor(string kod)
+        {
+            return "<a href='" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
+        }
+
+        public static string ReplaceOperators(string vstup)
+        {
+            return SH.ReplaceAll(vstup, "", "OR", "+", "-", "\"", "*");
+        }
+
+        public static string GetLinkToSearch(string co)
+        {
+            return "http://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
+        }
+
+        /// <summary>
+        /// G null pokud se YT kód nepodaří získat
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public static string ParseYtCode(string uri)
+        {
+            Regex regex = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");
+            var match = regex.Match(uri);
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            return null;
+        }
     }
 }

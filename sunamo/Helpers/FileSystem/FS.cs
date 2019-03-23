@@ -510,7 +510,7 @@ public partial class FS
                 if (SH.ContainsDiacritic(filename))
                 {
                     filename = SH.TextWithoutDiacritic(filename);
-                    string newpath = Path.Combine(directory, filename);
+                    string newpath = FS.Combine(directory, filename);
                     string realnewpath = SH.Copy(newpath).TrimEnd(AllChars.bs);
                     string realnewpathcopy = SH.Copy(realnewpath);
                     int i = 0;
@@ -533,7 +533,7 @@ public partial class FS
                     string newpath = null;
                     try
                     {
-                        newpath = Path.Combine(directory, filename);
+                        newpath = FS.Combine(directory, filename);
                     }
                     catch (Exception)
                     {
@@ -1668,7 +1668,7 @@ public partial class FS
             string vr = null;
             path = FS.WithoutEndSlash(path);
             string cesta = FS.GetDirectoryName(path);
-            string nova = Path.Combine(cesta, newname);
+            string nova = FS.Combine(cesta, newname);
 
             vr = MoveDirectoryNoRecursive(path, nova, co, fo);
             return vr;
@@ -1822,7 +1822,7 @@ public partial class FS
 
             dalsi++;
 
-            return Path.Combine(slozka, fn + "_" + dalsi + ext);
+            return FS.Combine(slozka, fn + "_" + dalsi + ext);
         }
 
         public static void CreateDirectoryIfNotExists(string p)
@@ -1855,7 +1855,7 @@ public partial class FS
         {
             string fn = Path.GetFileNameWithoutExtension(orig);
             string e = FS.GetExtension(orig);
-            return Path.Combine(fn + whatInsert + e);
+            return FS.Combine(fn + whatInsert + e);
         }
 
         
@@ -1904,7 +1904,7 @@ public partial class FS
             string p = FS.GetDirectoryName(fileName);
             string fn = FS.GetFileName(fileName);
 
-            return Path.Combine(changeFolderTo, fn);
+            return FS.Combine(changeFolderTo, fn);
         }
 
         /// <summary>
@@ -1918,7 +1918,7 @@ public partial class FS
         public static string ChangeFilename(string item, string g, bool physically)
         {
             string cesta = FS.GetDirectoryName(item);
-            string nova = Path.Combine(cesta, g);
+            string nova = FS.Combine(cesta, g);
 
             if (physically)
             {
@@ -1941,7 +1941,7 @@ public partial class FS
         {
             string cesta = FS.GetDirectoryName(item);
             string fnwoe = Path.GetFileNameWithoutExtension(item);
-            string nova = Path.Combine(cesta, fnwoe + newExt);
+            string nova = FS.Combine(cesta, fnwoe + newExt);
 
             if (physically)
             {

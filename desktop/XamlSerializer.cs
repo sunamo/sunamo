@@ -26,7 +26,7 @@ namespace desktop
             var name = w.GetType().Name;
             //ThrowExceptions.NameIsNotSetted(type, "ctor", nameWindow, w.Name);
             this.w = w;
-            path = AppData.GetFile(AppFolders.Controls, name);
+            path = AppData.ci.GetFile(AppFolders.Controls, name);
             w.Loaded += new RoutedEventHandler(MainWindow_Loaded);
             w.Closing += new CancelEventHandler(MainWindow_Closing);
         }

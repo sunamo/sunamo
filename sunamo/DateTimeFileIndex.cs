@@ -72,15 +72,15 @@ namespace desktop
             return FS.Combine(folder.fullPath, o.fnwoe + ext);
         }
 
-        public DateTimeFileIndex(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
+        public DateTimeFileIndex()
         {
-            Initialize(af, ext, ds, addPostfix);
+            //Initialize(af, ext, ds, addPostfix);
         }
 
-        async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
+        public async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
         {
             this.ds = ds;
-            this.folder = await AppData.GetFolderAsync(af);
+            this.folder = new StorageFolder( AppData.ci.GetFolder(af));
 
             this.ext = ext;
             string mask = "????_??_??_";
@@ -181,7 +181,7 @@ namespace desktop
         public async Task<StorageFile> GetStorageFile(FileNameWithDateTime o)
         {
             return (await FS.GetStorageFile(folder, o.fnwoe + ext));
-            //return Path.Combine(folder, o.fnwoe + ext);
+            //return FS.Combine(folder, o.fnwoe + ext);
         }
 
         /// <summary>

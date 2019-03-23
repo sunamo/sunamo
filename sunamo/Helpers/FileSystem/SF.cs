@@ -77,7 +77,7 @@ public static partial class SF
 
     public static void ReadFileOfSettingsOther(string fileNameOrPath)
     {
-        var lines = SH.GetLines(AppData.ReadFileOfSettingsOther(fileNameOrPath));
+        var lines = SH.GetLines(AppData.ci.ReadFileOfSettingsOther(fileNameOrPath));
         if (lines.Count > 1)
         {
             int delimiterInt;

@@ -176,7 +176,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
     /// <returns></returns>
     public static string CombinePaths(string s1, string s2)
     {
-        return Path.Combine(s1, s2);
+        return FS.Combine(s1, s2);
     }
 
     /// <summary>

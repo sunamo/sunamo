@@ -61,7 +61,7 @@
 //        public DateTimeFileIndex(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
 //        {
 //            this.ds = ds;
-//            this.folder = AppData.GetFolder(af);
+//            this.folder = AppData.ci.GetFolder(af);
 //            this.ext = ext;
 //            string mask = "????_??_??_";
 //            if (ds == FileEntriesDuplicitiesStrategy.Serie)
@@ -170,7 +170,7 @@
 
 //        public string GetFullPath(FileNameWithDateTime o)
 //        {
-//            return Path.Combine(folder, o.fnwoe + ext);
+//            return FS.Combine(folder, o.fnwoe + ext);
 //        }
 
 //        /// <summary>
@@ -207,7 +207,7 @@
 //            {
 //                // Zbytečné, kontroluje se již v konstruktoru
 //            }
-//            string path = Path.Combine(folder, fnwoe + ext);
+//            string path = FS.Combine(folder, fnwoe + ext);
 //            TF.SaveFile(content, path);
 
 //            return CreateObjectFileNameWithDateTime(GetDisplayText(dt, max, name), dt, max, name, fnwoe);

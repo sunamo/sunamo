@@ -16,7 +16,6 @@
     <Compile Include="..\..\sunamo\sunamo\Generators\XmlTemplates.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFolders.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\ComparerRowsByColumn.cs" Link="" />
-    <Compile Include="..\..\sunamo\sunamo\Web\SearchingOnWebShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Web\YouTube.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Values\ConstsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Types\CharHelperShared.cs" Link="" />
@@ -54,7 +53,6 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\Types\EnumHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFoldersHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\sunamo\AppDataShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\ColorConverter.cs" Link="" />
@@ -86,7 +84,6 @@
   <ItemGroup>
     <Folder Include="Helpers\Net\" />
     <Folder Include="Helpers\Runtime\" />
-    <Folder Include="List\NewFolder\" />
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>
@@ -102,5 +99,8 @@
     <Reference Include="YamlDotNet">
       <HintPath>..\dll\YamlDotNet.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AppDataBaseShared.cs" />
   </ItemGroup>
 </Project>

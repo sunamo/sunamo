@@ -352,9 +352,10 @@ public class CSharpGenerator : GeneratorCodeAbstract
         StartParenthesis();
         sb.AddItem((object)args);
         EndParenthesis();
-        
+
+        AppendLine();
         StartBrace(tabCount);
-        //AddTab(tabCount + 1);
+        AddTab(tabCount + 1);
         sb.AddItem((object)inner);
         sb.AppendLine();
         EndBrace(tabCount);

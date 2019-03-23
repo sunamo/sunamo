@@ -77,15 +77,35 @@ public static partial class HttpRequestHelper{
         return response.GetResponseStream();
     }
 
-/// <summary>
-    /// A3 cant be null
+    /// <summary>
+    /// A3 can be null
     /// </summary>
-    /// <param name = "address"></param>
-    /// <param name = "method"></param>
-    /// <param name = "hrd"></param>
+    /// <param name="address"></param>
+    /// <param name="method"></param>
+    /// <param name="hrd"></param>
     /// <returns></returns>
     public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
     {
+        HttpWebResponse response;
+        return GetResponseText(address, method, hrd, out response);
+    }
+
+/// <summary>
+/// A3 can be null
+/// Dont forger Dispose on A4
+/// </summary>
+/// <param name = "address"></param>
+/// <param name = "method"></param>
+/// <param name = "hrd"></param>
+/// <returns></returns>
+    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+    {
+        response = null;
+        if (hrd == null)
+        {
+            hrd = new HttpRequestData();
+        }
+
         int dex = address.IndexOf('?');
         string adressCopy = address;
         if (method.Method.ToUpper() == "POST")
@@ -98,6 +118,7 @@ public static partial class HttpRequestHelper{
 
         var request = (HttpWebRequest)WebRequest.Create(address);
         request.Method = method.Method;
+
         if (method == HttpMethod.Post)
         {
             string query = adressCopy.Substring(dex + 1);
@@ -139,8 +160,8 @@ public static partial class HttpRequestHelper{
 
         try
         {
-            using (var response = (HttpWebResponse)request.GetResponse())
-            {
+            response = (HttpWebResponse)request.GetResponse();
+            
                 Encoding encoding = null;
                 if (response.CharacterSet == "")
                 {
@@ -165,7 +186,7 @@ public static partial class HttpRequestHelper{
 
                     return reader.ReadToEnd();
                 }
-            }
+            
         }
         catch (System.Exception ex)
         {

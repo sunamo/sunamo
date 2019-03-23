@@ -1,10 +1,18 @@
-﻿občas to tady zredukovat:
+﻿dodělat apps.
+
+občas to tady zredukovat:
 nakládání s omezeným časem
 zábrana proti rozptylování
 stanovení osobních cílů
 obrana před stresem a ztrátou energie
 hledání produktivních zvyklostí
+login to all ms accounts, when at any will need accept on auth disable two way
 
+
+https://www.youtube.com/watch?v=MYLrpegMSG4
+https://www.youtube.com/results?search_query=%C5%A1%C3%A1hl+na+prsa+1000+d%C3%ADvk%C3%A1m&page=&utm_source=opensearch
+
+https://www.facebook.com/OVAtrip
 
 
 You haven't added any Discord servers
@@ -235,8 +243,10 @@ t0063 převést Dívčí jména dle abecedy do plain textu
 t0064 Money from fraudsters
 t0065 find job in global gwi
 t0066 Roslyn
-
-
+t0067 denied decompiling of my code
+t0068 all files which isnt included in projects include
+t0069 xml namespaces with automatic parsing 
+t0070 d:\pa\_obfuscators\
 
 parse header for parsing serie of car: https://en.wikipedia.org/wiki/Opel_Zafira
 

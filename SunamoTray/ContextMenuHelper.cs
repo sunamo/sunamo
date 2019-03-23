@@ -19,7 +19,11 @@ namespace forms
         {
             ContextMenu cm = new ContextMenu();
 
-            cm.MenuItems.Add(MenuItemHelper.Get("Quit", onQuit));
+            if (onQuit != null)
+            {
+                cm.MenuItems.Add(MenuItemHelper.Get("Quit", onQuit));
+            }
+            
 
             return cm;
         }

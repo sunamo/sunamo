@@ -15,17 +15,42 @@ using System.Web;
 /// </summary>
 public static partial class HttpRequestHelper
 {
+    public static bool IsNotFound(object uri)
+    {
+        HttpWebResponse r;
+        var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
 
-    /// <summary>
-    /// A2 can be null
-    /// </summary>
-    /// <param name = "href"></param>
-    /// <param name = "DontHaveAllowedExtension"></param>
-    /// <param name = "folder2"></param>
-    /// <param name = "fn"></param>
-    /// <param name = "ext"></param>
-    /// <returns></returns>
-    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
+        switch (r.StatusCode)
+        {
+            case HttpStatusCode.NotFound:
+                return true;
+        }
+        return false;
+    }
+
+    public static bool SomeError(object uri)
+    {
+        HttpWebResponse r;
+        var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
+
+        switch (r.StatusCode)
+        {
+            case HttpStatusCode.OK:
+                return false;
+        }
+        return true;
+    }
+
+        /// <summary>
+        /// A2 can be null
+        /// </summary>
+        /// <param name = "href"></param>
+        /// <param name = "DontHaveAllowedExtension"></param>
+        /// <param name = "folder2"></param>
+        /// <param name = "fn"></param>
+        /// <param name = "ext"></param>
+        /// <returns></returns>
+        public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
     {
         if (DontHaveAllowedExtension != null)
         {

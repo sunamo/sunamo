@@ -22,7 +22,7 @@ namespace desktop.Essential
 
         public static void Shutdown(object o, EventArgs eh)
         {
-            WpfApp.mp.CancelClosing = false;
+            //WpfApp.mp.SetCancelClosing(false);
             Application.Current.MainWindow.Close();
         }
 

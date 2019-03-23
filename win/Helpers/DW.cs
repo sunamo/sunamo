@@ -20,12 +20,12 @@ namespace sunamo
         #region PathToSaveFileTo
         public static string SelectPathToSaveFileTo(AppFolders af, string filter, bool checkFileExists, string nameWithExt)
         {
-            return SelectPathToSaveFileTo(AppData.GetFolder(af), filter, checkFileExists, nameWithExt);
+            return SelectPathToSaveFileTo(AppData.ci.GetFolder(af), filter, checkFileExists, nameWithExt);
         }
 
         public static string SelectPathToSaveFileTo(AppFolders af, string filter, bool checkFileExists)
         {
-            return SelectPathToSaveFileTo(AppData.GetFolder(af), filter, checkFileExists);
+            return SelectPathToSaveFileTo(AppData.ci.GetFolder(af), filter, checkFileExists);
         }
 
         public static string SelectPathToSaveFileTo(string initialDirectory, string filter, bool checkFileExists)
@@ -42,7 +42,7 @@ namespace sunamo
         public static string SelectPathToSaveFileTo(string initialDirectory, string filter, bool checkFileExists, string nameWithExt)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
+            sfd.CustomPlaces.Add(new FileDialogCustomPlace(FS.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             sfd.SupportMultiDottedExtensions = true;
             sfd.InitialDirectory = initialDirectory;
             sfd.CheckPathExists = true;
@@ -167,7 +167,7 @@ namespace sunamo
         /// <returns></returns>
         public static string SelectOfFile(AppFolders initialFolder)
         {
-            return SelectOfFile(AppData.GetFolder(initialFolder));
+            return SelectOfFile(AppData.ci.GetFolder(initialFolder));
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace sunamo
         private static string[] SelectOfFiles(string filter, string initialDirectory, bool multiselect)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
+            ofd.CustomPlaces.Add(new FileDialogCustomPlace(FS.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             ofd.AddExtension = false;
             ofd.InitialDirectory = initialDirectory;
             //ofd.AutoUpgradeEnabled = true;

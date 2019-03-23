@@ -324,7 +324,7 @@ public static void CopyStream(Stream input, Stream output)
     }
 
 /// <summary>
-        /// Use this than Path.Combine which if argument starts with backslash ignore all arguments before this
+        /// Use this than FS.Combine which if argument starts with backslash ignore all arguments before this
         /// </summary>
         /// <param name="upFolderName"></param>
         /// <param name="dirNameDecoded"></param>
@@ -401,7 +401,7 @@ public static long GetFileSize(string item)
             string p = FS.GetDirectoryName(orig);
             string fn = Path.GetFileNameWithoutExtension(orig);
             string e = FS.GetExtension(orig);
-            return Path.Combine(p, fn + whatInsert + e);
+            return FS.Combine(p, fn + whatInsert + e);
         }
 
 public static string DeleteWrongCharsInDirectoryName(string p)

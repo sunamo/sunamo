@@ -25,7 +25,7 @@ public class ApplicationDataContainerList : IEnumerable
 
     public ApplicationDataContainerList(FrameworkElement fw)
     {
-        Init(AppData.GetFile(AppFolders.Controls, fw.Name));
+        Init(AppData.ci.GetFile(AppFolders.Controls, fw.Name));
     }
 
     /// <summary>
