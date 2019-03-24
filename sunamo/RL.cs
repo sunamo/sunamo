@@ -40,7 +40,7 @@ using System.Text;
         public static Langs l = Langs.en;
         static Dictionary<string, string> en = new Dictionary<string, string>();
         static Dictionary<string, string> cs = new Dictionary<string, string>();
-        public static IResourceHelper loader = null;
+    public static IResourceHelper loader = null;
         static int langsLength = 0;
 
         static RL()

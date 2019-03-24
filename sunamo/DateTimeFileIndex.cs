@@ -115,16 +115,55 @@ namespace desktop
             }
         }
 
+        FileEntriesDuplicitiesStrategy GetFileEntriesDuplicitiesStrategy(string fnwoe, out int? serie, out int hour , out int minute, out string postfix)
+        {
+            serie = null;
+            minute = hour = 0;
+            if (fnwoe[11] == 'S')
+            {
+                var parts = SH.Split(fnwoe, "_");
+                serie = int.Parse( parts[4]);
+                postfix = SH.JoinFromIndex(5, "_", parts);
+                return FileEntriesDuplicitiesStrategy.Serie;
+            }
+            else 
+            {
+                string t = fnwoe.Substring(11, 5);
+                var parts = SH.Split(t, "_");
+                hour = int.Parse(parts[0]);
+                minute= int.Parse(parts[1]);
+                postfix = SH.JoinFromIndex(5, "_", parts);
+                return FileEntriesDuplicitiesStrategy.Time;
+            }
+        }
+
         public FileNameWithDateTime CreateObjectFileNameWithDateTime(string row1, string row2, string item)
         {
+            FileNameWithDateTime add = new FileNameWithDateTime(null, null);
+
+            var fnwoe = FS.GetFileNameWithoutExtension(item);
             #region Copy for inspire
-            //add.dt = date;
-            //add.serie = serie;
-            //add.name = postfix;
-            //add.fnwoe = DeleteWrongCharsInFileName(fnwoe); 
+            //2019_03_23_S_0_Pustkovec
+
+
+            string dateS = fnwoe.Substring(0, 10);
+            add.dt = DateTime.ParseExact(dateS, "yyyy_MM_dd", null);
+
+
+            int? serie;
+            int hour;
+            int minute;
+            string postfix;
+            var strategy = GetFileEntriesDuplicitiesStrategy(fnwoe, out serie, out hour, out minute, out postfix);
+
+            add.serie = serie;
+            add.dt.AddMinutes(minute);
+            add.dt.AddHours(hour);
+            add.name = postfix;
+            add.fnwoe = DeleteWrongCharsInFileName(fnwoe);
             #endregion
 
-            return null;
+            return add;
         }
 
         private static string GetDisplayText(DateTime date, int? serie, Langs l)

@@ -708,8 +708,8 @@ public static List<int> GetVariablesInString(string innerHtml)
         }
 
 
-
-        return text.Split(CA.ToListString(deli).ToArray(), stringSplitOptions).ToList();
+        var deli2 = CA.ToListString(deli).ToArray();
+        return text.Split(deli2, stringSplitOptions).ToList();
     }
 
 

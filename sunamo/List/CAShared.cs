@@ -70,9 +70,13 @@ public  static partial class CA
 
     public static List<string> ToListString(params object[] enumerable)
     {
-        
+        IEnumerable ienum = enumerable;
+        if (enumerable.Count() == 1 && enumerable[0] is IEnumerable)
+        {
+            ienum = (IEnumerable)enumerable[0];
+        }
         List<string> result = new List<string>();
-        foreach (var item in enumerable)
+        foreach (var item in ienum)
         {
             result.Add(item.ToString());
         }

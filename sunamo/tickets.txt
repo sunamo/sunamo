@@ -247,6 +247,7 @@ t0067 denied decompiling of my code
 t0068 all files which isnt included in projects include
 t0069 xml namespaces with automatic parsing 
 t0070 d:\pa\_obfuscators\
+t0071 find the best fotovoltaic panel
 
 parse header for parsing serie of car: https://en.wikipedia.org/wiki/Opel_Zafira
 

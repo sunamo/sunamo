@@ -15,30 +15,9 @@ namespace sunamo.Essential
 
         public void DumpObject(string name, object o, DumpProvider d, params string[] onlyNames)
         {
-            string dump = null;
-            switch (d)
-            {
-                case DumpProvider.Reflection:
-                    dump = SH.Join( RH.GetValuesOfProperty(o, onlyNames), Environment.NewLine);
-                    break;
-                case DumpProvider.Yaml:
-                    dump = YamlHelper.DumpAsYaml(o);
-                    break;
-                case DumpProvider.Microsoft:
-                    dump = JavascriptSerialization.InstanceMs.Serialize(o);
-                    break;
-                case DumpProvider.Newtonsoft:
-                    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
-                    break;
-                case DumpProvider.ObjectDumper:
-                    dump = RH.DumpAsString(name, o);
-                    break;
-                default:
-                    ThrowExceptions.NotImplementedCase(type, "DumpObject");
-                    break;
-            }
+            var dump = RH.DumpAsString(name, o, d, onlyNames);
 
-            WriteLine( name + Environment.NewLine + dump);
+            WriteLine(dump);
             WriteLine(" ");
         }
 
