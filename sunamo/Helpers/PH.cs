@@ -28,8 +28,6 @@ public class PH
         }
     }
 
-
-
     private static string NormalizeUri(string v)
     {
         // Without this cant search for google apps
@@ -40,6 +38,7 @@ public class PH
     public static void Uri(string v)
     {
         v = NormalizeUri(v);
+        v = v.Trim();
         Process.Start(v);
     }
 
@@ -73,8 +72,6 @@ public class PH
             }
             Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));
         }
-
-    
 
     public static void StartAllUri(List<string> carModels, string v)
     {

@@ -1,5 +1,6 @@
 ﻿using sunamo.Values;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -62,15 +63,29 @@ public static class UriWebServices
     /// </summary>
     public static class AdsMsRegion
     {
+        /*
+Template for which I will find, have to be in derivates the same:
+
+1) bazos.cz
+2) hyperinzerce.cz
+3) bazar.cz
+4) sbazar.cz
+5) avizo.cz
+6) letgo.cz
+7) aukro.cz
+         */
+
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "http://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s";
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
+
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%s";
 
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz };
+        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -132,14 +147,27 @@ public static class UriWebServices
     /// </summary>
     public static class AdsWholeCR
     {
+        /*
+Template for which I will find, have to be in derivates the same:
+
+1) bazos.cz
+2) hyperinzerce.cz
+3) bazar.cz
+4) sbazar.cz
+5) avizo.cz
+6) letgo.cz
+7) aukro.cz
+ */
+
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         public const string letGoCz = "https://www.letgo.cz/items/q-%s";
-        
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz };
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s";
+
+        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -191,6 +219,27 @@ public static class UriWebServices
             return FromChromeReplacement(letGoCz, what);
         }
 
+
+    }
+
+    public static class SolarShops
+    {
+        static List<string> shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
+
+        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%s";
+        public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
+        
+        public const string karavan3nec = @"http://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
+        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%s";
+        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%s";
+        public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
+        public const string emerxCz = @"https://www.emerx.cz/hledani?s=%s&submit_=HLEDAT&do=searchForm-submit";
+        // not search term in uri
+        //public const string vpCentrumCz = @"https://www.vpcentrum.eu/index.php?route=product/search&filter_name=Hledat";
+        // not search term in uri
+        //public const string dexhalCz = @"https://dexhal.cz/search?controller=search&orderby=position&orderway=desc&search_query=s&submit_search=Hledat";
+
+        public static readonly List<string> All = CA.ToListString(mulacCz, solarEshop, karavan3nec, campiShopCz, gesCz, dstechnikCz, emerxCz);
 
     }
 
@@ -294,11 +343,11 @@ public static class UriWebServices
 
     public const string chromeSearchstringReplacement = "%s";
 
-    public static void SearchInAll(string[] array, string what)
+    public static void SearchInAll(IEnumerable array, string what)
     {
         foreach (var item in array)
         {
-            string uri = UriWebServices.FromChromeReplacement(item, what);
+            string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
             Process.Start(uri);
         }
     }
