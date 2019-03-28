@@ -105,7 +105,7 @@ public static class AllChars
 
     public const char tab = '\t';
     public const char nl = '\n';
-    public const char cr = '\t';
+    public const char cr = '\r';
     public const char bs = '\\';
     
     public const char comma = ',';
