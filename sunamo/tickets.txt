@@ -248,6 +248,8 @@ t0068 all files which isnt included in projects include
 t0069 xml namespaces with automatic parsing 
 t0070 d:\pa\_obfuscators\
 t0071 find the best fotovoltaic panel
+t0072 find and download fotohints
+
 
 parse header for parsing serie of car: https://en.wikipedia.org/wiki/Opel_Zafira
 
@@ -325,3 +327,17 @@ LearnTransactSql - pokročilé skripty pro T-sql. je to jen v SQL, ne v Project,
 Your computer appears to be correctly configured, but the device or resource (DNS server) is not responding
 
 search for cache in c, is in vain backuping to W:, n.\nuget
+
+26 * 19=
+
+zkusti otevřít všechny moje projekty vsts, u některého se mi zobrazil i bez loginu
+jak můžu přispívat do sunamo pod radek.jancik@sunamo.cz když není mezi 2mi members
+
+ "https://www.google.cz/search?hl=cs&q=%22607 239 776%22"
+ "https://www.google.cz/search?hl=cs&q=%22607239776%22"
+
+https://www.google.cz/search?hl=cs&q=%22607%20239%20776%22
+ https://www.google.cz/search?hl=cs&q=%22607239776%22
+
+ https://www.google.cz/search?hl=cs&q=%22607239776%22
+

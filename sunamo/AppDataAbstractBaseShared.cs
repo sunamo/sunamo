@@ -7,7 +7,7 @@ namespace sunamo
 {
     public  abstract partial class AppDataAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
-        protected abstract StorageFolder GetRootFolder();
+        public abstract StorageFolder GetRootFolder();
 
         protected abstract void SaveFile(string content, StorageFile sf);
 

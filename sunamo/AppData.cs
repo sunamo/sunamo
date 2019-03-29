@@ -48,11 +48,11 @@ using System.Text;
             TF.AppendToFile(content, sf);
         }
 
-        /// <summary>
-        /// Ending with name of app
-        /// </summary>
-        /// <returns></returns>
-        protected override string GetRootFolder()
+    /// <summary>
+    /// Ending with name of app
+    /// </summary>
+    /// <returns></returns>
+    public override string GetRootFolder()
         {
             string r = AppData.ci.GetFolderWithAppsFiles();
             rootFolder = TF.ReadFile(r);

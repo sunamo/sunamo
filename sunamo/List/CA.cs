@@ -29,7 +29,11 @@ public static partial  class CA
             JoinForGoogleSheetRow(sb, item.ItemArray);
         }
 
-        return sb.ToString();
+
+
+        string vr = sb.ToString();
+        DebugLogger.Instance.WriteLine(vr);
+        return vr;
     }
 
     public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)

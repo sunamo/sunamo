@@ -114,7 +114,15 @@ public static class AllChars
     public const char apostrophe = '\'';
 
     public const char sc = ';';
+    /// <summary>
+    /// quotation marks
+    /// </summary>
     public const char qm = '"';
+
+    /// <summary>
+    /// Question
+    /// </summary>
+    public const char q = '?';
     /// <summary>
     /// Left bracket
     /// </summary>

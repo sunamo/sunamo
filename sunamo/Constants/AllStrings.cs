@@ -7,6 +7,10 @@ namespace sunamo.Constants
     public class AllStrings
     {
         /// <summary>
+        /// Question mark
+        /// </summary>
+        public const string q = "?";
+        /// <summary>
         /// double dots
         /// </summary>
         public const string dd = "..";
@@ -44,7 +48,7 @@ namespace sunamo.Constants
 
         public const string tab = "\t";
         public const string nl = "\n";
-        public const string cr = "\t";
+        public const string cr = "\r";
         public const string bs = "\\";
         public const string slash = "/";
 

@@ -2,6 +2,7 @@
 using HtmlAgilityPack;
 using sunamo.Helpers;
 using sunamo.Html;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -42,7 +43,7 @@ public static partial class HttpRequestHelper
     }
 
         /// <summary>
-        /// A2 can be null
+        /// A2 can be null (if dont have duplicated extension, set null)
         /// </summary>
         /// <param name = "href"></param>
         /// <param name = "DontHaveAllowedExtension"></param>
@@ -63,6 +64,7 @@ public static partial class HttpRequestHelper
         if (string.IsNullOrWhiteSpace(ext))
         {
             ext = FS.GetExtension(href);
+            ext = SH.RemoveAfterFirst(ext, AllChars.q);
         }
 
         fn = SH.RemoveAfterFirst(fn, '?');
@@ -77,5 +79,10 @@ public static partial class HttpRequestHelper
         return ext;
     }
 
-    
+    public static void Download(string uri, BoolString DontHaveAllowedExtension, string path)
+    {
+        string p, fn, ext;
+        FS.GetPathAndFileNameWithoutExtension(path, out p, out fn, out ext);
+        Download(uri, null, p, fn, FS.GetExtension(path));
+    }
 }
