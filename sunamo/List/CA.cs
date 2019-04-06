@@ -756,7 +756,7 @@ public static partial  class CA
 
     /// <summary>
     /// Direct edit collection
-    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje
+    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje (ale pouze pro porovnání, v kolekci nechá)
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>

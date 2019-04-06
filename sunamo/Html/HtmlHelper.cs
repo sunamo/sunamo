@@ -29,7 +29,7 @@ using System.Xml;
         /// <returns></returns>
         public static string ToXml(string xml, bool odstranitXmlDeklaraci)
         {
-            HtmlDocument doc = new HtmlDocument();
+            HtmlDocument doc = HtmlAgilityHelper.CreateHtmlDocument();
             //doc.Encoding = Encoding.UTF8;
             doc.LoadHtml(xml);
             StringWriter sw = new StringWriter();
@@ -271,7 +271,7 @@ using System.Xml;
     public static string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
-            HtmlDocument doc = new HtmlDocument();
+            HtmlDocument doc = HtmlAgilityHelper.CreateHtmlDocument();
             //hd.Encoding = Encoding.UTF8;
             doc.LoadHtml(s);
             HtmlNode htmlNode = doc.DocumentNode;

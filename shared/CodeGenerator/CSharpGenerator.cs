@@ -612,7 +612,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, string type, IList<string> whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, string type, List<string> whereIsUsed2, bool wrapToHyphens)
     {
         string objectIdentificator = "";
         if (timeObjectName != null)
@@ -636,7 +636,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <param name="type"></param>
     /// <param name="whereIsUsed2"></param>
     /// <param name="wrapToHyphens"></param>
-    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, Type type, IList<string> whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, Type type, List<string> whereIsUsed2, bool wrapToHyphens)
     {
         AddValuesViaAddRange(tabCount, timeObjectName, v, type.FullName, whereIsUsed2, wrapToHyphens);
         sb.AppendLine();

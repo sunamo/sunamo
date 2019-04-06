@@ -8,7 +8,13 @@ using System.Linq;
 
     public partial class UH
     {
-
+        public static string HostUriToPascalConvention(string s)
+        {
+        var uri = new Uri(s);
+         var result = SH.ReplaceAll( uri.Host, " ", ".");
+        result = ConvertPascalConvention.ToConvention(result);
+        return SH.FirstCharUpper( result);
+        }
 
         private static string GetUriSafeString2(string title)
         {

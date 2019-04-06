@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using sunamo;
+using sunamo.Html;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ using System.Xml;
 /// </summary>
 public class HtmlDocument2
 {
-    HtmlDocument hd = new HtmlDocument();
+    HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
     string html = null;
 
     public void Load(string path)
@@ -191,7 +192,6 @@ public class HtmlDocument2
     /// <returns></returns>
     public  string RemoveAllTags(string p)
     {
-
         return HtmlHelper.RemoveAllTags(p);
     }
     #endregion

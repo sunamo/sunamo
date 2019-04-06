@@ -12,6 +12,11 @@ namespace sunamo.Html
     {
         static Type type = typeof(HtmlHelperText);
 
+        /// <summary>
+        /// Get type of tag (paired ended, paired not ended, non paired)
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         public static HtmlTagSyntax GetSyntax(ref string tag)
         {
             ThrowExceptions.InvalidParameter(type, "GetSyntax", (string)tag, "tag");
@@ -62,6 +67,77 @@ namespace sunamo.Html
             }
 
             return result;
+        }
+
+        public static string ConvertTextToHtml(string text)
+        {
+            var lines = SH.GetLines(text);
+
+            CA.RemoveStringsEmpty2(lines);
+
+            var endP = "</p>";
+
+            CA.ChangeContent(lines, AddIntoParagraph );
+
+            var result = SH.JoinNL(lines);
+            result = SH.ReplaceAll(result, endP + AllStrings.cr + AllStrings.nl, endP);
+            return result;
+        }
+
+        static string AddIntoParagraph(string s)
+        {
+            const string spaceDash = " -";
+
+            if (s.Contains(spaceDash))
+            {
+                s = "<b>" + s;
+
+                s = s.Replace(spaceDash, "</b>" + spaceDash);
+            }
+
+            //string s2 = string.Empty;
+            if (s[0] == AllChars.lt)
+            {
+                var tag = HtmlHelperText.GetFirstTag(s).ToLower();
+
+                if (AllLists.PairingTagsDontWrapToParagraph.Contains(tag))
+                {
+                    return s;
+                }
+                if (tag.StartsWith("/"))
+                {
+                    if (AllLists.PairingTagsDontWrapToParagraph.Contains(tag.Substring(1)))
+                    {
+                        return s;
+                    }
+                }
+
+                //s2 = s.Substring(1);
+            }
+            return WrapWith(s, "p");
+        }
+
+        /// <summary>
+        /// A2 only name like p, title etc.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private static string WrapWith(string s, string p)
+        {
+            return "<" + p + ">" + s + "</" + p + ">";
+        }
+
+        private static string GetFirstTag(string s)
+        {
+            var between = SH.GetTextBetween(s, AllStrings.lt, AllStrings.gt);
+
+            if (between.Contains(AllStrings.space))
+            {
+                return SH.GetToFirst(between, AllStrings.space);
+            }
+            return between;
+
         }
     }
 }

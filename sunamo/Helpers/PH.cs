@@ -28,6 +28,26 @@ public class PH
         }
     }
 
+    /// <summary>
+    /// For search one term in all uris use UriWebServices.SearchInAll
+    /// </summary>
+    /// <param name="carModels"></param>
+    /// <param name="v"></param>
+    public static void StartAllUri(List<string> carModels, string v)
+    {
+        foreach (var item in carModels)
+        {
+            Uri(UH.AppendHttpIfNotExists(UriWebServices.FromChromeReplacement(v, item)));
+        }
+    }
+
+    public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
+    {
+        carModels = CA.ChangeContent(carModels, spritMonitor);
+        carModels = CA.ChangeContent(carModels, NormalizeUri);
+        StartAllUri(carModels);
+    }
+
     private static string NormalizeUri(string v)
     {
         // Without this cant search for google apps
@@ -73,18 +93,7 @@ public class PH
             Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));
         }
 
-    public static void StartAllUri(List<string> carModels, string v)
-    {
-        //
-        throw new NotImplementedException();
-    }
-
-    public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
-    {
-        carModels = CA.ChangeContent(carModels, spritMonitor);
-        carModels = CA.ChangeContent(carModels, NormalizeUri);
-        StartAllUri(carModels);
-    }
+    
 
     public static void OpenInBrowser(string uri)
     {

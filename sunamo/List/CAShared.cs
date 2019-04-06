@@ -68,20 +68,7 @@ public  static partial class CA
         return h;
     }
 
-    public static List<string> ToListString(params object[] enumerable)
-    {
-        IEnumerable ienum = enumerable;
-        if (enumerable.Count() == 1 && enumerable[0] is IEnumerable)
-        {
-            ienum = (IEnumerable)enumerable[0];
-        }
-        List<string> result = new List<string>();
-        foreach (var item in ienum)
-        {
-            result.Add(item.ToString());
-        }
-        return result;
-    }
+    
 
     
 
@@ -104,27 +91,59 @@ public  static partial class CA
         return p;
     }
 
+    /// <summary>
+    /// Just call ToListString
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <returns></returns>
+    public static List<string> ToListString(params object[] enumerable)
+    {
+        IEnumerable ienum = enumerable;
+        return ToListString(ienum);
+    }
+
+    /// <summary>
+    /// Must be private - to use only internal in CA
+    /// bcoz Cast() not working
+    /// Dont make any type checking - could be done before
+    /// </summary>
+    /// <returns></returns>
+    private static List<string> ToListString2(IEnumerable enumerable)
+    {
+        List<string> result = new List<string>(enumerable.Count());
+        foreach (var item in enumerable)
+        {
+            if (item == null)
+            {
+                result.Add("(null)");
+            }
+            else
+            {
+                result.Add(item.ToString());
+            }
+        }
+        return result;
+    }
+
     public static List<string> ToListString(IEnumerable enumerable)
     {
-
-        List<string> result = new List<string>();
+        List<string> result = null;
         if (enumerable is IEnumerable<char>)
         {
+            result = new List<string>(1);
             result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
+        {
+            result = ((IEnumerable<string>)enumerable.FirstOrNull()).ToList();
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+        {
+            result = ToListString2( ((IEnumerable)enumerable.FirstOrNull()));
         }
         else
         {
-            foreach (var item in enumerable)
-            {
-                if (item == null)
-                {
-                    result.Add("(null)");
-                }
-                else
-                {
-                    result.Add(item.ToString());
-                }
-            }
+            return ToListString2(enumerable);
         }
         return result;
     }
@@ -145,7 +164,13 @@ public  static partial class CA
         list[j] = temp;
     }
 
-public static List<T> ToList<T>(params T[] f)
+    /// <summary>
+    /// Simply create new list in ctor from A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="f"></param>
+    /// <returns></returns>
+    public static List<T> ToList<T>(params T[] f)
     {
         return new List<T>(f);
     }
@@ -367,15 +392,27 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
         return files_in;
     }
 
-public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
+    public static List<string> WrapWith(List<string> whereIsUsed2, string v)
     {
-        List<string> result = new List<string>();
+        return WrapWith(whereIsUsed2, v, v);
+    }
+
+    /// <summary>
+    /// direct edit
+    /// </summary>
+    /// <param name="whereIsUsed2"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static List<string> WrapWith(List<string> whereIsUsed2, string before, string after)
+    {
         for (int i = 0; i < whereIsUsed2.Count; i++)
         {
-            result.Add(v + whereIsUsed2[i] + v);
+            whereIsUsed2[i] = before + whereIsUsed2[i] + after;
         }
-        return result;
+        return whereIsUsed2;
     }
+
+
 
 public static List<string> WrapWithQm(List<string> value)
     {

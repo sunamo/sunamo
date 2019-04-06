@@ -17,7 +17,7 @@ namespace SunamoGpx
         /// <returns></returns>
         public static List<Waypoint> ParseGpxFile(string  content)
         {
-            //HtmlDocument hd = new HtmlDocument();
+            //HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
             //hd.LoadHtml(TF.ReadFile(file));
 
             //var wpts = HtmlAgilityHelper.Nodes(hd.DocumentNode, true, "wpt");

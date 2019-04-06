@@ -115,4 +115,17 @@ public static partial class CSharpHelper
 
         return lines;
     }
+
+    public static string GenerateConstants(int tabCount, Func<string, string> changeInput, List<string> input)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        foreach (var item in input)
+        {
+            var name = changeInput(item);
+
+            csg.Field(tabCount, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, string.Empty);
+        }
+
+        return csg.ToString();
+    }
 }

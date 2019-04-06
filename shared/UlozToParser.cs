@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using sunamo;
 using sunamo.Helpers;
+using sunamo.Html;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ public class UlozTo
     {
         string html = await HttpClientHelper.GetResponseText(niceUri, HttpMethod.Get, new HttpRequestData());
 
-        HtmlDocument hd = new HtmlDocument();
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         hd.LoadHtml(html);
 
         SortedDictionary<int, Uri> quality = new SortedDictionary<int, Uri>();

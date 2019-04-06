@@ -9,7 +9,7 @@ public static class HtmlDocumentS
 
     public static HtmlNode Load(string path)
     {
-        HtmlDocument hd = new HtmlDocument();
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         //hd.Encoding = Encoding.UTF8;
         html2 = File.ReadAllText(path);
         html2 = WebUtility.HtmlDecode(html2);
@@ -20,7 +20,7 @@ public static class HtmlDocumentS
     
     public static HtmlNode LoadHtml(string html)
     {
-        HtmlDocument hd = new HtmlDocument();
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         //hd.Encoding = Encoding.UTF8;
         html = WebUtility.HtmlDecode(html);
         html2 = html;

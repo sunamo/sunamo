@@ -18,6 +18,8 @@ using System.Text.RegularExpressions;
 
 public static partial class SH
 {
+
+
     public static string ReplaceWhiteSpacesAndTrim(string p)
     {
         return ReplaceWhiteSpaces(p).Trim();
@@ -1839,9 +1841,9 @@ public static partial class SH
         return false;
     }
 
-    
 
-    
+
+
 
     
 

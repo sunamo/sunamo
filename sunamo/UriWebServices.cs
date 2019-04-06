@@ -17,6 +17,28 @@ public static class UriWebServices
         }
     }
 
+    public static class RemoteJobs
+    {
+        public const string WwwFlexjobsCom = "https://www.flexjobs.com/search?search=%s&location=";
+        public const string AngelCo = "https://angel.co/jobs#find/f!%7B%22remote%22%3Atrue%2C%22keywords%22%3A%5B%22%s%22%5D%7D";
+        public const string TalentHubstaffCom = "https://talent.hubstaff.com/search/jobs?search%5Bkeywords%5D=%s&page=1&search%5Btype%5D=&search%5Blast_slider%5D=&search%5Bnewer_than%5D=&search%5Bnewer_than%5D=&search%5Bpayrate_start%5D=1&search%5Bpayrate_end%5D=100%2B&search%5Bpayrate_null%5D=0&search%5Bpayrate_null%5D=1&search%5Bbudget_start%5D=1&search%5Bbudget_end%5D=100000%2B&search%5Bbudget_null%5D=0&search%5Bbudget_null%5D=1&search%5Bexperience_level%5D=-1&search%5Bcountries%5D%5B%5D=&search%5Blanguages%5D%5B%5D=&search%5Bsort_by%5D=relevance";
+        // not fulltext, always search only for exact position https://pangian.com/job-travel-remote/
+        //public const string PangianCom = "";
+        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%s";
+        // https://remote.co/search-results/?cx=009859377982936732048%3Awihm_nznrgm
+        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%s";
+        public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
+        public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
+        //https://remoteok.io/remote-virtual-assistant-jobs
+        public const string RemoteokIo = "https://remoteok.io/";
+        //https://www.workingnomads.co/jobs
+        public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
+
+        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%s";
+
+        public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
+    }
+
     public static class SpiceMarks
     {
         static List<string> list = null;
