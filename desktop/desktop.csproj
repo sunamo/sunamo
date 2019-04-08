@@ -90,6 +90,9 @@
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
+      <DependentUpon>SelectOneValue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
@@ -330,6 +333,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Input\EnterOneValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectOneValue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

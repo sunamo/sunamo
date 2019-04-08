@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 /// </summary>
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
+    public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
+
     public dynamic Abstract
     {
         get
@@ -29,17 +31,25 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
     }
 
+    public abstract StorageFolder GetSunamoFolder();
+
     string fileFolderWithAppsFiles = "";
 
     public AppDataBase()
     {
     }
 
+    public abstract string GetCommonSettings(string key);
+
+    public abstract void SetCommonSettings(string key, string value);
+
+    public abstract string GetFileCommonSettings(string key);
+
     public string GetFolderWithAppsFiles()
     {
         //Common(true)
         string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
-        fileFolderWithAppsFiles = FS.Combine(slozka, "folderWithAppsFiles.txt");
+        fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
         FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
         return fileFolderWithAppsFiles;
     }

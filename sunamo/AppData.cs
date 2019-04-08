@@ -3,6 +3,8 @@ using sunamo.Essential;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
     public class AppData : AppDataAbstractBase<string, string>
@@ -39,7 +41,7 @@ using System.Text;
 
         public override bool IsRootFolderNull()
         {
-        var def = default(string);
+            var def = default(string);
             return EqualityComparer<string>.Default.Equals(rootFolder, def);
         }
 
@@ -48,18 +50,15 @@ using System.Text;
             TF.AppendToFile(content, sf);
         }
 
+
+
     /// <summary>
     /// Ending with name of app
     /// </summary>
     /// <returns></returns>
     public override string GetRootFolder()
         {
-            string r = AppData.ci.GetFolderWithAppsFiles();
-            rootFolder = TF.ReadFile(r);
-            if (string.IsNullOrWhiteSpace(rootFolder))
-            {
-                rootFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
-            }
+        rootFolder = GetSunamoFolder();
 
             RootFolder = FS.Combine(rootFolder, ThisApp.Name);
             FS.CreateDirectory(RootFolder);
@@ -75,5 +74,40 @@ using System.Text;
         {
             throw new NotImplementedException();
         }
+
+    public override string GetSunamoFolder()
+    {
+        string r = AppData.ci.GetFolderWithAppsFiles();
+        string sunamoFolder = TF.ReadFile(r);
+        if (string.IsNullOrWhiteSpace(sunamoFolder))
+        {
+            sunamoFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
+        }
+        return sunamoFolder;
     }
+    //
+    /// <summary>
+    /// Without ext because all is crypted and in bytes
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public override string GetFileCommonSettings(string key)
+    {
+        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), key);
+    
+    }
+
+    public override string GetCommonSettings(string key)
+    {
+        var file = GetFileCommonSettings(key);
+        return Encoding.UTF8.GetString( CryptHelper.RijndaelBytes.Instance.Decrypt(TF.ReadAllBytes(file)).ToArray());
+        
+    }
+
+    public override void SetCommonSettings(string key, string value)
+    {
+        var file = GetFileCommonSettings(key);
+        TF.WriteAllBytes(file, CryptHelper.RijndaelBytes.Instance.Encrypt(Encoding.UTF8.GetBytes( value).ToList()));
+    }
+}
 

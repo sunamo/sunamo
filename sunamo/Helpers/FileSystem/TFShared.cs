@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -93,7 +94,7 @@ public static void SaveFile(string obsah, string soubor)
         TF.SaveFile( content, pathCsproj);
     }
 
-    internal static void SaveFile(string content, StorageFile storageFile)
+    public static void SaveFile(string content, StorageFile storageFile)
     {
         TF.SaveFile(content, storageFile.FullPath());
         
@@ -111,5 +112,15 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
             FS.CreateUpfoldersPsysicallyUnlessThere(path);
             File.WriteAllText(path, "");
         }
+    }
+
+    public static void WriteAllBytes(string file, List<byte> b)
+    {
+        File.WriteAllBytes(file, b.ToArray());
+    }
+
+    public static List< byte> ReadAllBytes(string file)
+    {
+        return File.ReadAllBytes(file).ToList();
     }
 }

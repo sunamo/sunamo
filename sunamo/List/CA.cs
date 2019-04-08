@@ -246,21 +246,6 @@ public static partial  class CA
         return t;
     }
 
-    /// <summary>
-    /// better is use first or default, because here I also have to use default(T)
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    public static T FirstOrNull<T>(List<T> list)
-    {
-        if (list.Count > 0)
-        {
-            return list[0];
-        }
-        return default(T);
-    }
-
     public static List<string> DummyElementsCollection(int count)
     {
         return Enumerable.Repeat<string>(string.Empty, count).ToList();   
@@ -550,15 +535,21 @@ public static partial  class CA
 
     /// <summary>
     /// Remove elements starting with A1
+    /// Direct edit
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
     /// <returns></returns>
-    public static List<string> RemoveStartingWith(string start, List<string> mySites)
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool trimBeforeFinding = false)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (mySites[i].StartsWith(start))
+            var val = mySites[i];
+            if (trimBeforeFinding)
+            {
+                val = val.Trim();
+            }
+            if (val.StartsWith(start))
             {
                 mySites.RemoveAt(i);
             }

@@ -222,10 +222,10 @@ t0063 převést Dívčí jména dle abecedy do plain textu
 t0064 Money from fraudsters
 t0065 find job in global gwi or other foreign company
 t0066 Roslyn
-t0067 denied decompiling of my code
+t0067 denied decompiling of my code, d:\pa\_obfuscators\
 t0068 all files which isnt included in projects include
 t0069 xml namespaces with automatic parsing 
-t0070 d:\pa\_obfuscators\
+t0070 
 t0071 find the best fotovoltaic panel
 t0072 find and download fotohints
 t0073 Learn Go

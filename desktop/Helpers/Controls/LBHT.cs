@@ -132,7 +132,8 @@ namespace desktop
 
         public void AddRange(params object[] list)
         {
-            foreach (var item in list)
+            var enu = CA.ToEnumerable(list);
+            foreach (var item in enu)
             {
                 lb.Items.Add(item);
             }

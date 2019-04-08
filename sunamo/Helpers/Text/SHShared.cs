@@ -1444,4 +1444,24 @@ public static string TrimNewLineAndTab(string lyricsFirstOriginal)
     {
         return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
     }
+
+public static List<string> SplitByWhiteSpaces(string s)
+    {
+        return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
+    }
+
+public static bool TrimIfStartsWith(ref string s, string p)
+    {
+        if (s.StartsWith(p))
+        {
+            s = s.Substring(p.Length);
+            return true;
+        }
+        return false;
+    }
+
+public static string DoubleSpacesToSingle(string v)
+    {
+        return SH.ReplaceAll2(v, " ", "  ");
+    }
 }

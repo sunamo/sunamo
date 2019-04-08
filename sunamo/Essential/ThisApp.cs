@@ -27,7 +27,7 @@ namespace sunamo.Essential
         public static event SetStatusDelegate StatusSetted;
 
         public static void SetStatus(TypeOfMessage st, string status, params object[] args)
-            {
+        {
             var format = SH.Format2(status, args);
             if (format.Trim() != string.Empty)
             {
@@ -35,6 +35,10 @@ namespace sunamo.Essential
             }
          }
 
-        
+        public static void StatusFromText(string v)
+        {
+            var tom = AspNet.IsStatusMessage(ref v);
+            SetStatus(tom, v);
+        }
     }
 }

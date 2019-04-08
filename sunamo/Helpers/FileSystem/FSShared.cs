@@ -503,9 +503,14 @@ public static List<string> GetFolders(string folder)
             return GetFolders(folder, SearchOption.TopDirectoryOnly);
         }
 
-    public static List<string> GetFolders(string folder, string masc, SearchOption so)
+    public static List<string> GetFolders(string folder, string masc, SearchOption so, bool trimA1 = false)
     {
-        return Directory.GetDirectories(folder, masc, so).ToList();
+        var dirs = Directory.GetDirectories(folder, masc, so).ToList();
+        if (trimA1)
+        {
+            CA.Replace(dirs, folder, string.Empty);
+        }
+        return dirs;
     }
 public static List<string> GetFolders(string folder, SearchOption so)
         {

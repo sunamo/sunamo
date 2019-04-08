@@ -6,36 +6,56 @@ namespace sunamo
 {
     public class GoogleAppsMailbox
     {
+        public const string noreply_scz_mail = "noreply@sunamo.cz";
+
         /// <summary>
         /// Řetězec, který se objeví u příjemce jako odesílatel. Nemusí to být mailová adresa.
         /// </summary>
-        string fromName = null;
+         string fromName = null;
         /// <summary>
         /// Povinný. Celá adresa emailu který jste si nastavili na https://ks.aspone.cz/ 
         /// </summary>
-        string userName = null;
+         string fromEmail = null;
         /// <summary>
         /// Povinný. Heslo k mailu userName, které se taktéž nastavuje na https://ks.aspone.cz/
         /// </summary>
-        string password = "Y7bdnfycg93641";
+        string password = null;
         public string mailOfAdmin = null;
 
+        public string Password
+        {
+            set
+            {
+                password = value;
+            }
+        }
+
+        public static GoogleAppsMailbox noreply_scz = new GoogleAppsMailbox(noreply_scz_mail, noreply_scz_mail, null, AppData.ci.GetCommonSettings(CommonSettingsKeys.noreply_scz));
+        public static GoogleAppsMailbox rj_scz = new GoogleAppsMailbox("Radek Jančík", "radek.jancik@sunamo.cz", null, AppData.ci.GetCommonSettings(CommonSettingsKeys.rj_scz));
 
 
         /// <summary>
-        /// Do A3 se ve výchozí stavu předává GeneralCells.EmailOfUser(1)
+        /// For sending from noreply@sunamo.cz
         /// </summary>
-        /// <param name="fromName"></param>
-        /// <param name="userName"></param>
-        /// <param name="mailOfAdmin"></param>
-        public GoogleAppsMailbox(string fromName, string userName, string mailOfAdmin)
+        public GoogleAppsMailbox()
         {
-            this.fromName = fromName;
-            this.userName = userName;
-            this.mailOfAdmin = mailOfAdmin;
+
         }
 
-
+        /// <summary>
+        /// Do A3 se ve výchozí stavu předává GeneralCells.EmailOfUser(1). Can be null, its used in scz to send mails to webmaster
+        /// Dont forget set password for A2 or use without-parametric ctor
+        /// </summary>
+        /// <param name="fromName"></param>
+        /// <param name="fromEmail"></param>
+        /// <param name="mailOfAdmin"></param>
+        public GoogleAppsMailbox(string fromName, string fromEmail, string mailOfAdmin, string password = null)
+        {
+            this.fromName = fromName;
+            this.fromEmail = fromEmail;
+            this.mailOfAdmin = mailOfAdmin;
+            this.password = password;
+        }
 
         /// <summary>
         /// Do A1, A2, A3 se může zadat více adres, stačí je oddělit středníkem
@@ -48,18 +68,18 @@ namespace sunamo
         /// <param name="htmlBody"></param>
         /// <param name="attachments"></param>
         /// <returns></returns>
-        public string SendEmail(string to, string cc, string bcc, string replyTo, string subject, string htmlBody, params string[] attachments)
+        public string SendEmail(string to, string cc, string bcc, string replyTo, string subject, string body, bool htmlBody, params string[] attachments)
         {
             string emailStatus = string.Empty;
 
             SmtpClient client = new SmtpClient();
             client.EnableSsl = true; //Mail aspone nefunguje na SSL zatím, pokud byste zde dali true, tak vám vznikne výjimka se zprávou Server does not support secure connections.
-            client.Credentials = new System.Net.NetworkCredential(userName, password);
+            client.Credentials = new System.Net.NetworkCredential(fromEmail, password);
             client.Port = 587; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
             client.Host = "smtp.gmail.com"; //Adresa smtp serveru. Může končit buď na název vašeho webu nebo na aspone.cz. Zadává se bez protokolu, jak je zvykem
             MailMessage mail = new MailMessage();
 
-            MailAddress ma = new MailAddress(userName, fromName);
+            MailAddress ma = new MailAddress(fromEmail, fromName);
             mail.From = ma;
             if (replyTo == "")
             {
@@ -148,8 +168,8 @@ namespace sunamo
             #endregion
 
             mail.Subject = subject;
-            mail.Body = htmlBody;
-            mail.IsBodyHtml = true;
+            mail.Body =  body;
+            mail.IsBodyHtml = htmlBody;
 
             foreach (var item in attachments)
             {

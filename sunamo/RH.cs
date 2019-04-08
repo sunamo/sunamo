@@ -231,17 +231,24 @@ namespace sunamo
         {
             var types = assembly.GetTypes();
             return types.Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
-        } 
+        }
         #endregion
 
         #region Get types of class
+        /// <summary>
+        /// Return FieldInfo, so will be useful extract Name etc. 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static List<FieldInfo> GetConsts(Type type)
         {
             FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static | 
                 // return protected/public but not private
                 BindingFlags.FlattenHierarchy);
 
-            return fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
+            
+            var withType = fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
+            return withType;
         }
         #endregion
 

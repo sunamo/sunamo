@@ -96,8 +96,9 @@ public class ComboBoxHelper
     /// <param name="o"></param>
     public void AddValuesOfArrayAsItems(RoutedEventHandler eh, params object[] o)
         {
+        var enu = CA.ToList<object>(o);
             int i = 0;
-            foreach (object item in o)
+            foreach (object item in enu)
             {
                 cb.Items.Add(item);
                 i++;

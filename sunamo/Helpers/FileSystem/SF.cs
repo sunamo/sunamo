@@ -77,7 +77,9 @@ public static partial class SF
 
     public static void ReadFileOfSettingsOther(string fileNameOrPath)
     {
-        var lines = SH.GetLines(AppData.ci.ReadFileOfSettingsOther(fileNameOrPath));
+        // COmmented, app data not should be in *.web. pass directly as arg
+        List<string> lines = null;
+            //SH.GetLines(AppData.ci.ReadFileOfSettingsOther(fileNameOrPath));
         if (lines.Count > 1)
         {
             int delimiterInt;

@@ -19,7 +19,6 @@ using System.Text.RegularExpressions;
 public static partial class SH
 {
 
-
     public static string ReplaceWhiteSpacesAndTrim(string p)
     {
         return ReplaceWhiteSpaces(p).Trim();
@@ -440,7 +439,7 @@ public static partial class SH
         //return p.Substring(begin+1, end - begin - 1);
     }
 
-    public static string GetTextBetween(string p, string after, string before)
+    public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
     {
         string vr = null;
         int p2 = p.IndexOf(after);
@@ -456,7 +455,10 @@ public static partial class SH
         }
         else
         {
-            ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
+            if (throwExceptionIfNotContains)
+            {
+                ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
+            }
         }
 
         return vr;
@@ -915,13 +917,6 @@ public static partial class SH
             return s == "";
         }
         return true;
-    }
-
-    
-
-    public static string DoubleSpacesToSingle(string v)
-    {
-        return SH.ReplaceAll2(v, " ", "  ");
     }
 
     public static string AddEmptyLines(string content, int addRowsDuringScrolling)
@@ -1839,17 +1834,6 @@ public static partial class SH
         }
         ContainsFromEndResult = -1;
         return false;
-    }
-
-
-
-
-
-    
-
-    public static List<string> SplitByWhiteSpaces(string s)
-    {
-        return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
     }
 
     public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool comma)

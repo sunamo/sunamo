@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 public  static partial class CA
@@ -125,6 +126,41 @@ public  static partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Simply create new list in ctor from A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="f"></param>
+    /// <returns></returns>
+    public static List<T> ToList<T>(params T[] f)
+    {
+        IEnumerable enu = f;
+        return ToList<T>(enu);
+    }
+
+    public static List<T> ToList<T>(IEnumerable enumerable)
+    {
+        List<T> result = null;
+        //if (enumerable is IEnumerable<char>)
+        //{
+        //    result = new List<T>(1);
+        //    result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+        //}
+        if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<object>)
+        {
+            result = ToListT2<T>((IEnumerable<object>)enumerable.FirstOrNull());
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+        {
+            result = ToListT2<T>(((IEnumerable)enumerable.FirstOrNull()));
+        }
+        else
+        {
+            return ToListT2<T>(enumerable);
+        }
+        return result;
+    }
+
     public static List<string> ToListString(IEnumerable enumerable)
     {
         List<string> result = null;
@@ -148,6 +184,28 @@ public  static partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Must be private - to use only internal in CA
+    /// bcoz Cast() not working
+    /// Dont make any type checking - could be done before
+    /// </summary>
+    /// <returns></returns>
+    private static List<T> ToListT2<T>(IEnumerable enumerable)
+    {
+        List<T> result = new List<T>(enumerable.Count());
+        foreach (var item in enumerable)
+        {
+            if (item == null)
+            {
+                result.Add(default(T));
+            }
+            else
+            {
+                result.Add((T)item);
+            }
+        }
+        return result;
+    }
 
     public static T[] ToArrayT<T>(params T[] aB)
     {
@@ -164,17 +222,7 @@ public  static partial class CA
         list[j] = temp;
     }
 
-    /// <summary>
-    /// Simply create new list in ctor from A1
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="f"></param>
-    /// <returns></returns>
-    public static List<T> ToList<T>(params T[] f)
-    {
-        return new List<T>(f);
-    }
-
+   
     public static List<string> TrimStart(char backslash, List<string> s)
     {
         for (int i = 0; i < s.Count; i++)
@@ -287,12 +335,26 @@ public static string[] Trim(string[] l)
         return list.ToArray();
     }
 
-public static void Replace(List<string> files_in, string what, string forWhat)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="what"></param>
+    /// <param name="forWhat"></param>
+    public static void Replace(List<string> files_in, string what, string forWhat)
     {
         CA.ChangeContent(files_in, SH.Replace, what, forWhat);
     }
 
-private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
+    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
     {
         List<TResult> result = new List<TResult>(files_in.Count);
         for (int i = 0; i < files_in.Count; i++)
@@ -320,7 +382,13 @@ private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<
         }
         return result;
     }
-/// <summary>
+
+    internal static void RemoveAfterFirst(List<FieldInfo> withType)
+    {
+        
+    }
+
+    /// <summary>
     /// Direct edit
     /// </summary>
     /// <param name="files_in"></param>
@@ -367,6 +435,17 @@ private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<
         }
         return files_in;
     }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="Arg1"></typeparam>
+    /// <typeparam name="Arg2"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <param name="arg1"></param>
+    /// <param name="arg2"></param>
+    /// <returns></returns>
 public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
     {
         for (int i = 0; i < files_in.Count; i++)
@@ -375,6 +454,7 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
         }
         return files_in;
     }
+
 /// <summary>
     /// Direct edit input collection
     /// </summary>
@@ -730,5 +810,20 @@ public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
 public static string[] TrimEnd(string[] sf, params char[] toTrim)
     {
         return TrimEnd(new List<string>(sf), toTrim).ToArray();
+    }
+
+/// <summary>
+    /// better is use first or default, because here I also have to use default(T)
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    public static T FirstOrNull<T>(List<T> list)
+    {
+        if (list.Count > 0)
+        {
+            return list[0];
+        }
+        return default(T);
     }
 }

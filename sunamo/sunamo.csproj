@@ -12,6 +12,8 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlAgilityHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AspNet.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Data\ExternalLoginResult.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Generators\XmlTemplates.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Generators\SpecialFolders.cs" Link="" />
