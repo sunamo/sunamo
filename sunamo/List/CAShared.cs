@@ -212,7 +212,7 @@ public  static partial class CA
         return aB;
     }
 
-[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Swap<T>(this IList<T> list, int i, int j)
     {
         if (i == j)   //This check is not required but Partition function may make many calls so its for perf reason
@@ -222,7 +222,25 @@ public  static partial class CA
         list[j] = temp;
     }
 
-   
+    /// <summary>
+    /// Return first of A2 if stars with any of A1. Otherwise null
+    /// </summary>
+    /// <param name="item2"></param>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
+    public static string StartWith(string item2, params string[] v1)
+    {
+        foreach (var item in v1)
+        {
+            if (item.StartsWith(item))
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public static List<string> TrimStart(char backslash, List<string> s)
     {
         for (int i = 0; i < s.Count; i++)

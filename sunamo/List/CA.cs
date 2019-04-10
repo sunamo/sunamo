@@ -222,7 +222,7 @@ public static partial  class CA
     }
 
     /// <summary>
-    /// Return first of A1 if stars with any of A2. Otherwise null
+    /// Return A2 if start something with A1
     /// </summary>
     /// <param name="suMethods"></param>
     /// <param name="line"></param>

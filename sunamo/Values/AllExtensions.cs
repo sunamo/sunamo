@@ -722,7 +722,7 @@ namespace sunamo
         public const string fla = ".fla";
         [TypeOfExtension(TypeOfExtension.source_code)]
         public const string java = ".java";
-
-
+        [TypeOfExtension(TypeOfExtension.source_code)]
+        public static string go = ".go";
     }
 }
