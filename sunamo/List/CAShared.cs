@@ -241,6 +241,31 @@ public  static partial class CA
         return null;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static List<string> TrimStart(string backslash, List<string> s)
+    {
+        for (int i = 0; i < s.Count; i++)
+        {
+            if (s[i].StartsWith(backslash))
+            {
+                s[i] = s[i].Substring(backslash.Length);
+            }
+            
+        }
+        return s;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static List<string> TrimStart(char backslash, List<string> s)
     {
         for (int i = 0; i < s.Count; i++)
@@ -250,6 +275,12 @@ public  static partial class CA
         return s;
     }
 
+    /// <summary>
+    /// Non direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static string[] TrimStart(char backslash, params string[] s)
     {
         return TrimStart(backslash, s.ToList()).ToArray();

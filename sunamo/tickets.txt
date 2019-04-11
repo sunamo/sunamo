@@ -165,6 +165,8 @@ t0011 saving control's data and statepersistently d:\Documents\Visual Studio 201
 t0012 Create generic method Average
 
 t0013 obnovit fotky, potrebuji je do bytu
+123cense;
+wobbuffet
 
 t0014 make CalculateDifferencesBetweenTwoDateTimes for use with any delimiter
 t0015 ClipboardWatcher show captured texts
