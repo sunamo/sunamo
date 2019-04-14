@@ -55,7 +55,7 @@ using System.IO;
         /// </summary>
         public string FullPath
         {
-            get { return Path.Combine(PathToItem, Item); }
+            get { return FS.Combine(PathToItem, Item); }
             set 
             { 
                 cestapolozka = value;

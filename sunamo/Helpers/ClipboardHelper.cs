@@ -71,4 +71,10 @@ public class ClipboardHelper
 	{
 		Instance.SetText(stringBuilder.ToString());
 	}
+
+    public static List<string> GetLinesAllWhitespaces()
+    {
+        var t = GetText();
+        return SH.SplitByWhiteSpaces(t);
+    }
 }

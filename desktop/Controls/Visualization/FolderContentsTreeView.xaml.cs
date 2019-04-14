@@ -95,7 +95,7 @@ namespace desktop.Controls
                 try
                 {
                     string folder = ((FileSystemEntry)item.Tag).path.ToString();
-                    foreach (string s in Directory.GetDirectories(folder))
+                    foreach (string s in FS.GetFolders(folder))
                     {
                         AddTviFolderTo(s, item);
                     }

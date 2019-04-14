@@ -15,16 +15,6 @@ public partial class DTHelper
         return DTHelperCode.DateToStringjQueryDatePicker(dt);
     }
 
-    public static string DateToStringAngularDate(DateTime dt)
-    {
-        return DTHelperCode.DateToStringAngularDate(dt);
-    }
-
-    public static string TimeToStringAngularTime(DateTime dt)
-    {
-        return DTHelperCode.TimeToStringAngularTime(dt);
-    }
-
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
         return DTHelperCode.DateAndTimeToStringAngularDateTime(dt);
@@ -87,10 +77,6 @@ public partial class DTHelper
         return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
     }
 
-    public static DateTime StringToDateTimeFormalizeDate(string p)
-    {
-        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);    }
-
     public static string DateTimeToStringFormalizeDate(DateTime dt)
     {
         return DTHelperFormalized.DateTimeToStringFormalizeDate(dt);
@@ -138,16 +124,6 @@ public partial class DTHelper
         return DTHelperGeneral.DateTimeToSecondsOnlyTime(t);
     }
 
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        return DTHelperGeneral.MakeUpTo2NumbersToZero(p);
-    }
-
-    public static string DateToString(DateTime p, Langs l)
-    {
-        return DTHelperMulti.DateToString(p, l);
-    }
-
 
 
     public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)
@@ -175,11 +151,6 @@ public partial class DTHelper
     public static DateTime? ParseDateMonthDayYear(string p)
     {
         return DTHelperMulti.ParseDateMonthDayYear(p);
-    }
-
-    public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
-    {
-        return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }
 
     public static string DateTimeToFileName(DateTime dt)

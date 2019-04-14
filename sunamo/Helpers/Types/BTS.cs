@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -15,6 +16,15 @@ public static partial class BTS
     public static bool TryParseBool(string trim)
     {
         return bool.TryParse(trim, out lastBool);
+    }
+
+    public static string NullToStringOrDefault(object n, string v)
+    {
+        if (n != null)
+        {
+            return " " + v;
+        }
+        return " (null)";
     }
 
 
@@ -376,14 +386,15 @@ public static partial class BTS
     #endregion
 
     #region byte[] <> string
-    public static byte[] ConvertFromUtf8ToBytes(string vstup)
+    public static List<byte> ConvertFromUtf8ToBytes(string vstup)
     {
-        return Encoding.UTF8.GetBytes(vstup);
+        return Encoding.UTF8.GetBytes(vstup).ToList();
     }
 
-    public static string ConvertFromBytesToUtf8(byte[] bajty)
+    public static string ConvertFromBytesToUtf8(List< byte> bajty)
     {
-        return Encoding.UTF8.GetString(bajty);
+        NH.RemoveEndingZeroPadding(bajty);
+        return Encoding.UTF8.GetString(bajty.ToArray());
     }
     #endregion
 
@@ -746,11 +757,11 @@ public static partial class BTS
         #endregion
 
 
-        public static byte[] ClearEndingsBytes(byte[] plainTextBytes)
+        public static List<byte> ClearEndingsBytes(List<byte> plainTextBytes)
         {
             List<byte> bytes = new List<byte>();
             bool pridavat = false;
-            for (int i = plainTextBytes.Length - 1; i >= 0; i--)
+            for (int i = plainTextBytes.Length() - 1; i >= 0; i--)
             {
                 if (!pridavat && plainTextBytes[i] != 0)
                 {
@@ -766,12 +777,12 @@ public static partial class BTS
             }
             if (bytes.Count == 0)
             {
-                for (int i = 0; i < plainTextBytes.Length; i++)
+                for (int i = 0; i < plainTextBytes.Length(); i++)
                 {
                     plainTextBytes[i] = 0;
                 }
                 return plainTextBytes;
             }
-            return bytes.ToArray();
+            return bytes;
         }
     }

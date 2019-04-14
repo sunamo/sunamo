@@ -195,18 +195,18 @@ public class MSColumnsDB : List<MSSloupecDB>
         }
         string nameCs = null;
         string cs = GetCsTableRow(signed, nazevTabulky, dbPrefix, out nameCs);
-        string Path = System.IO.Path.Combine(folderSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
+        string Path = FS.Combine(folderSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
         string PathSczAdmin = null;
         if (folderSunamoCzAdminSaveToDirectoryName != null)
         {
-            PathSczAdmin = System.IO.Path.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
+            PathSczAdmin = FS.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
         }
         string csBase = GetCsTableRowBase(nazevTabulky, dbPrefix);
-        string PathBase = System.IO.Path.Combine(folderSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
+        string PathBase = FS.Combine(folderSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
         string PathSczBaseAdmin = null;
         if (folderSunamoCzAdminSaveToDirectoryName != null)
         {
-            PathSczBaseAdmin = System.IO.Path.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
+            PathSczBaseAdmin = FS.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
         }
 
         FS.CreateUpfoldersPsysicallyUnlessThere(Path);

@@ -25,7 +25,7 @@ public class ApplicationDataContainerList : IEnumerable
 
     public ApplicationDataContainerList(FrameworkElement fw)
     {
-        Init(AppData.GetFile(AppFolders.Controls, fw.Name));
+        Init(AppData.ci.GetFile(AppFolders.Controls, fw.Name));
     }
 
     /// <summary>
@@ -41,8 +41,8 @@ public class ApplicationDataContainerList : IEnumerable
             content = content.Substring(0, content.Length - 1);
         }
         
-        string[] d = SH.SplitNone(content, "|");
-        int to = (d.Length / 3) * 3;
+        var d = SH.SplitNone(content, "|");
+        int to = (d.Length() / 3) * 3;
         for (int i = 0; i < to; )
         {
             string key = d[i++];

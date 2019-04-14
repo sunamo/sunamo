@@ -21,14 +21,14 @@ public class FileBasedTable
 
     public static void CreatePathsIfNotExistsSbf(string table, params string[] columns)
     {
-        string tablePath = Path.Combine(HostingEnvironment.ApplicationPhysicalPath, "_", "sbf", table);
+        string tablePath = FS.Combine(HostingEnvironment.ApplicationPhysicalPath, "_", "sbf", table);
         if (!FS.ExistsDirectory(tablePath))
         {
             Directory.CreateDirectory(tablePath);
         }
         foreach (string item in columns)
         {
-            string columnPath = Path.Combine(tablePath, item);
+            string columnPath = FS.Combine(tablePath, item);
             if (!FS.ExistsDirectory(columnPath))
             {
                 Directory.CreateDirectory(columnPath);

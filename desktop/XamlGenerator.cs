@@ -63,6 +63,46 @@ namespace desktop
             WriteColumnDefinitions(cds);
         }
 
+        /// <summary>
+        /// Xaml code write to XMlGenerator, return c# code 
+        /// </summary>
+        /// <param name="headers"></param>
+        /// <param name="methodHandlers"></param>
+        /// <returns></returns>
+        public string MenuItems(List<string> headers, bool methodHandlers)
+        {
+            List<string> headersInPascal = new List<string>(headers.Count);
+
+            foreach (var item in headers)
+            {
+                var inPascal = ConvertPascalConvention.ToConvention(item);
+                headersInPascal.Add(inPascal);
+                string menuItemName = "mi" + inPascal;
+
+                string method = string.Empty;
+                if (methodHandlers)
+                {
+                    method = "mi" + inPascal + "_Click";
+                }
+
+                WriteTagWithAttrs("MenuItem", "x:Name", menuItemName, "Header", item, "Click", method);
+                TerminateTag("MenuItem");
+            }
+
+            if (methodHandlers)
+            {
+                CSharpGenerator csg = new CSharpGenerator();
+
+                foreach (var item in headersInPascal)
+                {
+                    csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs e");
+                }
+
+                return csg.ToString();
+            }
+
+            return string.Empty;
+        }
 
         public void WriteColumnDefinitions(List<string> cd)
         {

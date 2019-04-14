@@ -1,14 +1,6 @@
 ﻿using System;
 public static partial class NormalizeNumbers
 {
-    public static ushort NormalizeShort(short p)
-    {
-        int p2 = (int)p;
-        int sm = (int)short.MaxValue;
-        ushort nt = (ushort)(p2 + sm + 1);
-        //nt++;
-        return nt;
-    }
 
     public static ulong NormalizeLong(long p)
     {

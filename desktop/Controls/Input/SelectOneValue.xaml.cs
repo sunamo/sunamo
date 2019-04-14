@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace desktop.Controls.Input
+{
+    /// <summary>
+    /// Interaction logic for SelectOneValue.xaml
+    /// </summary>
+    public partial class SelectOneValue : UserControl, IUserControlInWindow, IUserControlWithResult
+    {
+        ComboBoxHelper<string> cbEnteredHelper = null;
+
+        public SelectOneValue(bool allowCustomEntry, string whatEnter, params object[] items)
+        {
+            InitializeComponent();
+
+            cbEnteredHelper = new ComboBoxHelper<string>(cbEntered);
+            cbEntered.IsEditable = allowCustomEntry;
+
+            cbEnteredHelper.AddValuesOfArrayAsItems(items);
+
+            Init(whatEnter);
+        }
+
+        public void Init(string whatEnter)
+        {
+            tbWhatEnter.Text = "Enter or select " + whatEnter;
+        }
+
+        private void CbEntered_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void btnEnter_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+
+            if (AfterEnteredValue(cbEntered))
+            {
+                if (Finished != null)
+                {
+                    // Stupid, see comment to ParentWindow.DialogResult
+                    //ParentWindow.DialogResult = true;
+                    Finished(cbEntered.Text);
+                }
+                DialogResult = true;
+            }
+        }
+
+        public bool? DialogResult
+        {
+            set
+            {
+                if (ChangeDialogResult != null)
+                {
+                    ChangeDialogResult(value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Very stupid, if was set ParentWIndow.DialogResult was set here, then "'DialogResult can be set only after Window is created and shown as dialog.'" occured
+        /// Right approach is call here Finished which has registered WindowWithUserControl, which will set DialogResult itself
+        /// </summary>
+        public WindowWithUserControl ParentWindow { set { } }
+
+        private bool AfterEnteredValue(ComboBox cbEntered)
+        {
+            cbEntered.Text = cbEntered.Text.Trim();
+            if (cbEntered.Text != "")
+            {
+                return true;
+            }
+            cbEntered.BorderThickness = new Thickness(2);
+            cbEntered.BorderBrush = new SolidColorBrush(Colors.Red);
+            return false;
+        }
+
+        private void cbEntered_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (AfterEnteredValue(cbEntered))
+                {
+                    if (Finished != null)
+                    {
+                        Finished(cbEntered.Text);
+                    }
+                }
+            }
+        }
+
+        public void Accept(object input)
+        {
+            cbEntered.Text = input.ToString();
+            ButtonHelper.PerformClick(btnEnter);
+            // Cant be, window must be already showned as dialog
+            //DialogResult = true;
+        }
+
+        public event VoidObject Finished;
+        public event VoidBoolNullable ChangeDialogResult;
+    }
+}

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 public  static partial class CA
@@ -68,15 +69,7 @@ public  static partial class CA
         return h;
     }
 
-    public static List<string> ToListString(params object[] enumerable)
-    {
-        List<string> result = new List<string>();
-        foreach (var item in enumerable)
-        {
-            result.Add(item.ToString());
-        }
-        return result;
-    }
+    
 
     
 
@@ -99,38 +92,127 @@ public  static partial class CA
         return p;
     }
 
-    public static List<string> ToListString(IEnumerable enumerable)
+    /// <summary>
+    /// Just call ToListString
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <returns></returns>
+    public static List<string> ToListString(params object[] enumerable)
     {
+        IEnumerable ienum = enumerable;
+        return ToListString(ienum);
+    }
 
-        List<string> result = new List<string>();
-        if (enumerable is IEnumerable<char>)
+    /// <summary>
+    /// Must be private - to use only internal in CA
+    /// bcoz Cast() not working
+    /// Dont make any type checking - could be done before
+    /// </summary>
+    /// <returns></returns>
+    private static List<string> ToListString2(IEnumerable enumerable)
+    {
+        List<string> result = new List<string>(enumerable.Count());
+        foreach (var item in enumerable)
         {
-            result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
-        }
-        else
-        {
-            foreach (var item in enumerable)
+            if (item == null)
             {
-                if (item == null)
-                {
-                    result.Add("(null)");
-                }
-                else
-                {
-                    result.Add(item.ToString());
-                }
+                result.Add("(null)");
+            }
+            else
+            {
+                result.Add(item.ToString());
             }
         }
         return result;
     }
 
+    /// <summary>
+    /// Simply create new list in ctor from A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="f"></param>
+    /// <returns></returns>
+    public static List<T> ToList<T>(params T[] f)
+    {
+        IEnumerable enu = f;
+        return ToList<T>(enu);
+    }
+
+    public static List<T> ToList<T>(IEnumerable enumerable)
+    {
+        List<T> result = null;
+        //if (enumerable is IEnumerable<char>)
+        //{
+        //    result = new List<T>(1);
+        //    result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+        //}
+        if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<object>)
+        {
+            result = ToListT2<T>((IEnumerable<object>)enumerable.FirstOrNull());
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+        {
+            result = ToListT2<T>(((IEnumerable)enumerable.FirstOrNull()));
+        }
+        else
+        {
+            return ToListT2<T>(enumerable);
+        }
+        return result;
+    }
+
+    public static List<string> ToListString(IEnumerable enumerable)
+    {
+        List<string> result = null;
+        if (enumerable is IEnumerable<char>)
+        {
+            result = new List<string>(1);
+            result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
+        {
+            result = ((IEnumerable<string>)enumerable.FirstOrNull()).ToList();
+        }
+        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+        {
+            result = ToListString2( ((IEnumerable)enumerable.FirstOrNull()));
+        }
+        else
+        {
+            return ToListString2(enumerable);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Must be private - to use only internal in CA
+    /// bcoz Cast() not working
+    /// Dont make any type checking - could be done before
+    /// </summary>
+    /// <returns></returns>
+    private static List<T> ToListT2<T>(IEnumerable enumerable)
+    {
+        List<T> result = new List<T>(enumerable.Count());
+        foreach (var item in enumerable)
+        {
+            if (item == null)
+            {
+                result.Add(default(T));
+            }
+            else
+            {
+                result.Add((T)item);
+            }
+        }
+        return result;
+    }
 
     public static T[] ToArrayT<T>(params T[] aB)
     {
         return aB;
     }
 
-[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Swap<T>(this IList<T> list, int i, int j)
     {
         if (i == j)   //This check is not required but Partition function may make many calls so its for perf reason
@@ -140,11 +222,50 @@ public  static partial class CA
         list[j] = temp;
     }
 
-public static List<T> ToList<T>(params T[] f)
+    /// <summary>
+    /// Return first of A2 if stars with any of A1. Otherwise null
+    /// </summary>
+    /// <param name="item2"></param>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
+    public static string StartWith(string item2, params string[] v1)
     {
-        return new List<T>(f);
+        foreach (var item in v1)
+        {
+            if (item.StartsWith(item))
+            {
+                return item;
+            }
+        }
+        return null;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static List<string> TrimStart(string backslash, List<string> s)
+    {
+        for (int i = 0; i < s.Count; i++)
+        {
+            if (s[i].StartsWith(backslash))
+            {
+                s[i] = s[i].Substring(backslash.Length);
+            }
+            
+        }
+        return s;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static List<string> TrimStart(char backslash, List<string> s)
     {
         for (int i = 0; i < s.Count; i++)
@@ -154,6 +275,12 @@ public static List<T> ToList<T>(params T[] f)
         return s;
     }
 
+    /// <summary>
+    /// Non direct edit
+    /// </summary>
+    /// <param name="backslash"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static string[] TrimStart(char backslash, params string[] s)
     {
         return TrimStart(backslash, s.ToList()).ToArray();
@@ -257,12 +384,26 @@ public static string[] Trim(string[] l)
         return list.ToArray();
     }
 
-public static void Replace(List<string> files_in, string what, string forWhat)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="what"></param>
+    /// <param name="forWhat"></param>
+    public static void Replace(List<string> files_in, string what, string forWhat)
     {
         CA.ChangeContent(files_in, SH.Replace, what, forWhat);
     }
 
-private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <returns></returns>
+    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
     {
         List<TResult> result = new List<TResult>(files_in.Count);
         for (int i = 0; i < files_in.Count; i++)
@@ -290,7 +431,13 @@ private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<
         }
         return result;
     }
-/// <summary>
+
+    internal static void RemoveAfterFirst(List<FieldInfo> withType)
+    {
+        
+    }
+
+    /// <summary>
     /// Direct edit
     /// </summary>
     /// <param name="files_in"></param>
@@ -337,6 +484,17 @@ private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<
         }
         return files_in;
     }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="Arg1"></typeparam>
+    /// <typeparam name="Arg2"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <param name="arg1"></param>
+    /// <param name="arg2"></param>
+    /// <returns></returns>
 public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
     {
         for (int i = 0; i < files_in.Count; i++)
@@ -345,6 +503,7 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
         }
         return files_in;
     }
+
 /// <summary>
     /// Direct edit input collection
     /// </summary>
@@ -362,15 +521,27 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
         return files_in;
     }
 
-public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
+    public static List<string> WrapWith(List<string> whereIsUsed2, string v)
     {
-        List<string> result = new List<string>();
+        return WrapWith(whereIsUsed2, v, v);
+    }
+
+    /// <summary>
+    /// direct edit
+    /// </summary>
+    /// <param name="whereIsUsed2"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static List<string> WrapWith(List<string> whereIsUsed2, string before, string after)
+    {
         for (int i = 0; i < whereIsUsed2.Count; i++)
         {
-            result.Add(v + whereIsUsed2[i] + v);
+            whereIsUsed2[i] = before + whereIsUsed2[i] + after;
         }
-        return result;
+        return whereIsUsed2;
     }
+
+
 
 public static List<string> WrapWithQm(List<string> value)
     {
@@ -551,5 +722,157 @@ public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
         lb.AddRange(pass);
         lb.AddRange(salt);
         return lb;
+    }
+
+public static bool Contains(int idUser, int[] onlyUsers)
+    {
+        foreach (int item in onlyUsers)
+        {
+            if (item == idUser)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+/// <summary>
+    /// G zda se alespoň 1 prvek A2 == A1
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="availableValues"></param>
+    /// <returns></returns>
+    public static bool Contains(string value, List<string> availableValues)
+    {
+        foreach (var item in availableValues)
+        {
+            if (item == value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+public static IEnumerable<string> ToEnumerable(params string[] p)
+    {
+        return p;
+    }
+
+public static T[] JumbleUp<T>(T[] b)
+    {
+        int bl = b.Length;
+        for (int i = 0; i < bl; ++i)
+        {
+            int index1 = (RandomHelper.RandomInt() % bl);
+            int index2 = (RandomHelper.RandomInt() % bl);
+
+            T temp = b[index1];
+            b[index1] = b[index2];
+            b[index2] = temp;
+        }
+        return b;
+    }
+public static List<T> JumbleUp<T>(List<T> b)
+    {
+        int bl = b.Count;
+        for (int i = 0; i < bl; ++i)
+        {
+            int index1 = (RandomHelper.RandomInt() % bl);
+            int index2 = (RandomHelper.RandomInt() % bl);
+
+            T temp = b[index1];
+            b[index1] = b[index2];
+            b[index2] = temp;
+        }
+        return b;
+    }
+
+
+
+
+
+public static bool HasIndex(int dex, Array col)
+    {
+        return col.Length > dex;
+    }
+public static bool HasIndex(int p, IEnumerable nahledy)
+    {
+        if (p < 0)
+        {
+            throw new Exception("Chybný parametr p");
+        }
+        if (nahledy.Count() > p)
+        {
+            return true;
+        }
+        return false;
+    }
+
+public static int GetLength(IList where)
+    {
+        if (where == null)
+        {
+            return 0;
+        }
+        return where.Count;
+    }
+
+/// <summary>
+    /// Is same as ContainsElement, only have switched arguments
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="p"></param>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
+    {
+        foreach (T item in list)
+        {
+            if (EqualityComparer<T>.Default.Equals(p, item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+    {
+        return IsEqualToAnyElement(p, prvky.ToList());
+    }
+
+public static object[] JoinVariableAndArray(object p, object[] sloupce)
+    {
+        List<object> o = new List<object>();
+        o.Add(p);
+        o.AddRange(sloupce);
+        return o.ToArray();
+    }
+
+public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
+    {
+        for (int i = 0; i < sf.Count; i++)
+        {
+            sf[i] = sf[i].TrimEnd(toTrim);
+        }
+        return sf;
+    }
+public static string[] TrimEnd(string[] sf, params char[] toTrim)
+    {
+        return TrimEnd(new List<string>(sf), toTrim).ToArray();
+    }
+
+/// <summary>
+    /// better is use first or default, because here I also have to use default(T)
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    public static T FirstOrNull<T>(List<T> list)
+    {
+        if (list.Count > 0)
+        {
+            return list[0];
+        }
+        return default(T);
     }
 }

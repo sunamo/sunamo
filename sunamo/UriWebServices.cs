@@ -1,8 +1,10 @@
 ﻿using sunamo.Values;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 public static class UriWebServices
@@ -13,6 +15,28 @@ public static class UriWebServices
         {
             //UriWebServices.SearchInAll(RepairMobileValues.allRepairKitShops, what);
         }
+    }
+
+    public static class RemoteJobs
+    {
+        public const string WwwFlexjobsCom = "https://www.flexjobs.com/search?search=%s&location=";
+        public const string AngelCo = "https://angel.co/jobs#find/f!%7B%22remote%22%3Atrue%2C%22keywords%22%3A%5B%22%s%22%5D%7D";
+        public const string TalentHubstaffCom = "https://talent.hubstaff.com/search/jobs?search%5Bkeywords%5D=%s&page=1&search%5Btype%5D=&search%5Blast_slider%5D=&search%5Bnewer_than%5D=&search%5Bnewer_than%5D=&search%5Bpayrate_start%5D=1&search%5Bpayrate_end%5D=100%2B&search%5Bpayrate_null%5D=0&search%5Bpayrate_null%5D=1&search%5Bbudget_start%5D=1&search%5Bbudget_end%5D=100000%2B&search%5Bbudget_null%5D=0&search%5Bbudget_null%5D=1&search%5Bexperience_level%5D=-1&search%5Bcountries%5D%5B%5D=&search%5Blanguages%5D%5B%5D=&search%5Bsort_by%5D=relevance";
+        // not fulltext, always search only for exact position https://pangian.com/job-travel-remote/
+        //public const string PangianCom = "";
+        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%s";
+        // https://remote.co/search-results/?cx=009859377982936732048%3Awihm_nznrgm
+        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%s";
+        public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
+        public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
+        //https://remoteok.io/remote-virtual-assistant-jobs
+        public const string RemoteokIo = "https://remoteok.io/";
+        //https://www.workingnomads.co/jobs
+        public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
+
+        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%s";
+
+        public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
     }
 
     public static class SpiceMarks
@@ -61,15 +85,29 @@ public static class UriWebServices
     /// </summary>
     public static class AdsMsRegion
     {
+        /*
+Template for which I will find, have to be in derivates the same:
+
+1) bazos.cz
+2) hyperinzerce.cz
+3) bazar.cz
+4) sbazar.cz
+5) avizo.cz
+6) letgo.cz
+7) aukro.cz
+         */
+
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "http://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s";
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
+
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%s";
 
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz };
+        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -131,14 +169,27 @@ public static class UriWebServices
     /// </summary>
     public static class AdsWholeCR
     {
+        /*
+Template for which I will find, have to be in derivates the same:
+
+1) bazos.cz
+2) hyperinzerce.cz
+3) bazar.cz
+4) sbazar.cz
+5) avizo.cz
+6) letgo.cz
+7) aukro.cz
+ */
+
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
         public const string letGoCz = "https://www.letgo.cz/items/q-%s";
-        
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz };
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s";
+
+        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -190,6 +241,27 @@ public static class UriWebServices
             return FromChromeReplacement(letGoCz, what);
         }
 
+
+    }
+
+    public static class SolarShops
+    {
+        static List<string> shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
+
+        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%s";
+        public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
+        
+        public const string karavan3nec = @"http://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
+        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%s";
+        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%s";
+        public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
+        public const string emerxCz = @"https://www.emerx.cz/hledani?s=%s&submit_=HLEDAT&do=searchForm-submit";
+        // not search term in uri
+        //public const string vpCentrumCz = @"https://www.vpcentrum.eu/index.php?route=product/search&filter_name=Hledat";
+        // not search term in uri
+        //public const string dexhalCz = @"https://dexhal.cz/search?controller=search&orderby=position&orderway=desc&search_query=s&submit_search=Hledat";
+
+        public static readonly List<string> All = CA.ToListString(mulacCz, solarEshop, karavan3nec, campiShopCz, gesCz, dstechnikCz, emerxCz);
 
     }
 
@@ -245,6 +317,37 @@ public static class UriWebServices
         public const string dk = "https://www.databazeknih.cz/search?q=%s&hledat=";
     }
 
+    /// <summary>
+    /// Is possible user also OpenInBrowser.OpenCachesFromCacheList
+    /// </summary>
+    public class GeoCachingComSite
+    {
+        public static string CacheDetails(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/cache_details.aspx?guid=" + cacheGuid;
+        }
+
+        public static string Gallery(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/gallery.aspx?guid=" + cacheGuid;
+        }
+
+        public static string Log(string cacheGuid)
+        {
+            return "http://www.geocaching.com/seek/log.aspx?guid=" + cacheGuid;
+        }
+
+        public static string CoordsInfo(string f)
+        {
+            return "http://coords.info/" + f;
+        }
+
+        public static string GC(string f)
+        {
+            return "http://coords.info/GC" + f;
+        }
+    }
+
     public static string KmoAll(string item)
     {
         return FromChromeReplacement("", item);
@@ -262,11 +365,11 @@ public static class UriWebServices
 
     public const string chromeSearchstringReplacement = "%s";
 
-    public static void SearchInAll(string[] array, string what)
+    public static void SearchInAll(IEnumerable array, string what)
     {
         foreach (var item in array)
         {
-            string uri = UriWebServices.FromChromeReplacement(item, what);
+            string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
             Process.Start(uri);
         }
     }
@@ -346,10 +449,7 @@ public static class UriWebServices
         return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode( term));
     }
 
-    public static string CoordsInfo(string f)
-    {
-        return "http://coords.info/" + f;
-    }
+    
 
     /// <summary>
     /// Already new radekjancik
@@ -370,5 +470,47 @@ public static class UriWebServices
     public static string MapyCz(string v)
     {
         return FromChromeReplacement( "https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
+    }
+
+    /// <summary>
+    /// Summary description for YouTube
+    /// </summary>
+    public static class YouTube
+    {
+        public static string GetLinkToVideo(string kod)
+        {
+            return "http://www.youtube.com/watch?v=" + kod;
+        }
+
+        public static string GetHtmlAnchor(string kod)
+        {
+            return "<a href='" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
+        }
+
+        public static string ReplaceOperators(string vstup)
+        {
+            return SH.ReplaceAll(vstup, "", "OR", "+", "-", "\"", "*");
+        }
+
+        public static string GetLinkToSearch(string co)
+        {
+            return "http://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
+        }
+
+        /// <summary>
+        /// G null pokud se YT kód nepodaří získat
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
+        public static string ParseYtCode(string uri)
+        {
+            Regex regex = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");
+            var match = regex.Match(uri);
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            return null;
+        }
     }
 }

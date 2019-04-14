@@ -14,15 +14,15 @@ public static class AF
     public static string GetFile(AppFolders af, string file)
     {
         string vr = HostingEnvironment.MapPath("~/_");
-        vr = Path.Combine(vr, af.ToString());
-        vr = Path.Combine(vr, file);
+        vr = FS.Combine(vr, af.ToString());
+        vr = FS.Combine(vr, file);
         return vr;
     }
 
     public static string GetFolder(AppFolders af)
     {
         string vr = HttpContext.Current.Request.MapPath("M");
-        vr = Path.Combine(vr, af.ToString());
+        vr = FS.Combine(vr, af.ToString());
         return vr;
     }
 }

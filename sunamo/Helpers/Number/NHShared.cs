@@ -34,4 +34,25 @@ public static string MakeUpTo2NumbersToZero(int p)
         vr.Add(to);
         return vr;
     }
+
+public static float RoundAndReturnInInputType(float ugtKm, int v)
+    {
+        string vr = Math.Round(ugtKm, v).ToString();
+        return float.Parse(vr);
+    }
+
+    internal static void RemoveEndingZeroPadding(List<byte> bajty)
+    {
+        for (int i = bajty.Count - 1; i >= 0; i--)
+        {
+            if (bajty[i] == 0)
+            {
+                bajty.RemoveAt(i);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
 }

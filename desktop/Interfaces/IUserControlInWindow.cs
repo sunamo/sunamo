@@ -26,6 +26,9 @@ public interface IControlWithResult
     void Accept(object input);
 }
 
+/// <summary>
+/// Is the same as IUserControlWithResult
+/// </summary>
 public interface IUserControlInWindow : IUserControlWithResult
 {
    

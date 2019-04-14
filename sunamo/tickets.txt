@@ -1,17 +1,34 @@
-﻿občas to tady zredukovat:
+﻿https://github.com/Microsoft/vscode-go/issues/1211
+mělo by to tam být!!!
+
+občas to tady zredukovat:
 nakládání s omezeným časem
 zábrana proti rozptylování
 stanovení osobních cílů
 obrana před stresem a ztrátou energie
 hledání produktivních zvyklostí
 
+login to all ms accounts, when at any will need accept on auth disable two way
 
+jsem na baculky
 
+https://www.youtube.com/watch?v=MYLrpegMSG4
+https://www.youtube.com/results?search_query=%C5%A1%C3%A1hl+na+prsa+1000+d%C3%ADvk%C3%A1m&page=&utm_source=opensearch
+
+https://www.facebook.com/OVAtrip
+
+scan &go v mobilu, nepotřebují vyzvedávat kartičku 
 You haven't added any Discord servers
 
+na cenu chodit ke kožnímu? nebo existuje něco na to volně prodejné ?
 ---
 SelectValuesOfColumnAllRowsInt
 ---
+natřít auto zespodu 
+využití rampy zdarma 
+
+213.192.5.221
+
 auta
 karavan
 
@@ -76,10 +93,7 @@ vytvořit video s popisem co se dělo v černobylo,
 
 udělat pořádek v tom co se uploaduje, je tam stále mnoho temp souborů z _
 
-.nuget in c:\n 
-Castle aspires to simplify the development of enterprise and web applications. - find another
 
-make https://github.com/KirillOsenkov/SourceBrowser for searchin in my code
 
 nuget.smbsrc.net - If the authors of the NuGet package publish symbol & source packages (to nuget.smbsrc.net), these can be downloaded via "SourceLink" in VS (Enabled via Options > Debugging > General > Enable source server support). 
 
@@ -90,8 +104,6 @@ existuje stránka kde bych zadal telefonní číslo a dostal bych cenu za minutu
 Lze poznat či se nějak bránit při přepojení aby to nebylo na extrémně dražší linku?
 
 roslyn codetextbox
-
-92,98,99,100,105,106
 
 replace global::System.Web.UI.WebControls.TextBox for global::System.Web.UI.HtmlControls.HtmlInputText
 
@@ -110,34 +122,15 @@ přidat volání base do On metod
 
 udělat porovnání na hash nebo datum poslední změny (méně náročnější ael nevím zda se nebude uplodovat pak vše). na velikost to není spolehlivé, assembly má tutéž velikost ale web nefunguje.
 
-udělat výpis a resume tidy knihoven!!
-znovu lyrics a ted už musí být všechno OK!!!! od toho ten kód mám ať udělá vše za mě. 
-
 SunamoPage nesmí být odvozena od Page. Nebo aspon se v ní nesmí pracovat se this / base. není to stránka v pravém slova smyslu, nevyvoláváají se žádné události, jen to zpracovává kód
-
-vyzkouset nakupování v itesco, obnovil jsem heslo na sunamocz@gmail.com a sunamo@seznam.cz 
 
 najít metody na On nebo Page_ a nejsou public. Když jsou v samostatné assembly nezavolají se.
 
-aliens 1:43
-
-cmd /c mklink /H "d:\Documents\Visual Studio 2017\Projects\AllProjectsSearch\AllProjectsSearch\Fonts\FontAwesome.otf" "d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Fonts\FontAwesome.otf"
 
 registrovat na jepsano.net, takhle mam skoro 1000 uzivatelu, musi byt nutnost overit mail
 
-use mysql;
-UPDATE user SET authentication_string = password("hekaPuC4") where User='root';
-FLUSH PRIVILEGES;
-
- mysql -u root -p jpn --single-transaction jpn > jpn.sql
 
  mestske byty havirov
-
- vypocist nemocenskou, z ceho se skladala:
- Nemocenské 28.12.18-30.12.18, denní dávka od 15.dne 576 Kč, DVZ 960 Kč , zánik nároku na výplatu 30.12.18. 
- 1728/4=432
-
- jste na nemocenske? a na co?
 
  ostatní koleje v ČR, kolik je aktuálně obsazených
 
@@ -172,6 +165,8 @@ t0011 saving control's data and statepersistently d:\Documents\Visual Studio 201
 t0012 Create generic method Average
 
 t0013 obnovit fotky, potrebuji je do bytu
+123cense;
+wobbuffet
 
 t0014 make CalculateDifferencesBetweenTwoDateTimes for use with any delimiter
 t0015 ClipboardWatcher show captured texts
@@ -233,9 +228,15 @@ t0061 merge DateTimeFileIndex with FileNameGenerator
 t0062 TODO: implement DateTimeFileIndex.CreateObjectFileNameWithDateTime
 t0063 převést Dívčí jména dle abecedy do plain textu
 t0064 Money from fraudsters
-t0065 find job in global gwi
+t0065 find job in global gwi or other foreign company
 t0066 Roslyn
-
+t0067 denied decompiling of my code, d:\pa\_obfuscators\
+t0068 all files which isnt included in projects include
+t0069 xml namespaces with automatic parsing 
+t0070 
+t0071 find the best fotovoltaic panel
+t0072 find and download fotohints
+t0073 Learn Go
 
 
 parse header for parsing serie of car: https://en.wikipedia.org/wiki/Opel_Zafira
@@ -314,3 +315,17 @@ LearnTransactSql - pokročilé skripty pro T-sql. je to jen v SQL, ne v Project,
 Your computer appears to be correctly configured, but the device or resource (DNS server) is not responding
 
 search for cache in c, is in vain backuping to W:, n.\nuget
+
+26 * 19=
+
+zkusti otevřít všechny moje projekty vsts, u některého se mi zobrazil i bez loginu
+jak můžu přispívat do sunamo pod radek.jancik@sunamo.cz když není mezi 2mi members
+
+ "https://www.google.cz/search?hl=cs&q=%22607 239 776%22"
+ "https://www.google.cz/search?hl=cs&q=%22607239776%22"
+
+https://www.google.cz/search?hl=cs&q=%22607%20239%20776%22
+ https://www.google.cz/search?hl=cs&q=%22607239776%22
+
+ https://www.google.cz/search?hl=cs&q=%22607239776%22
+

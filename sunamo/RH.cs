@@ -231,17 +231,24 @@ namespace sunamo
         {
             var types = assembly.GetTypes();
             return types.Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
-        } 
+        }
         #endregion
 
         #region Get types of class
+        /// <summary>
+        /// Return FieldInfo, so will be useful extract Name etc. 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static List<FieldInfo> GetConsts(Type type)
         {
             FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static | 
                 // return protected/public but not private
                 BindingFlags.FlattenHierarchy);
 
-            return fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
+            
+            var withType = fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
+            return withType;
         }
         #endregion
 
@@ -251,13 +258,41 @@ namespace sunamo
         /// <param name="name"></param>
         /// <param name="o"></param>
         /// <returns></returns>
-        public static string DumpAsString(string name, object o)
+        public static string DumpAsString(string name, object o, DumpProvider d, params string[] onlyNames)
         {
 
             // When I was serializing ISymbol, execution takes unlimited time here
             //return o.DumpToString(name);
+            string dump = null;
+            switch (d)
+            {
+                case DumpProvider.Reflection:
+                    dump = SH.Join(RH.GetValuesOfProperty(o, onlyNames), Environment.NewLine);
+                    break;
+                case DumpProvider.Yaml:
+                    dump = YamlHelper.DumpAsYaml(o);
+                    break;
+                case DumpProvider.Microsoft:
+                    dump = JavascriptSerialization.InstanceMs.Serialize(o);
+                    break;
+                case DumpProvider.Newtonsoft:
+                    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
+                    break;
+                case DumpProvider.ObjectDumper:
+                    dump = RH.DumpAsString(name, o);
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(type, "DumpAsString");
+                    break;
+            }
+
+            return name + Environment.NewLine + dump;
+        }
+
+        private static string DumpAsString(string name, object o)
+        {
             ThrowExceptions.NotImplementedCase(type, "DumpAsString");
-            return string.Empty;
+            return null;
         }
 
         public static string DumpListAsString(string name, IEnumerable o)

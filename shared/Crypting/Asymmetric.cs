@@ -90,8 +90,8 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromConfig()
             {
-                this.Modulus = Utils.GetConfigString(Asymmetric._KeyModulus, true);
-                this.Exponent = Utils.GetConfigString(Asymmetric._KeyExponent, true);
+                this.Modulus = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyModulus, true);
+                this.Exponent = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyExponent, true);
             }
 
             /// <summary>
@@ -103,8 +103,8 @@ namespace shared.Crypting
                 StringBuilder sb = new StringBuilder();
                 // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
                 StringBuilder _with1 = sb;
-                _with1.Append(Utils.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
-                _with1.Append(Utils.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
+                _with1.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
+                _with1.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
                 return sb.ToString();
             }
 
@@ -125,8 +125,8 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
-                this.Modulus = Utils.GetXmlElement(keyXml, "Modulus");
-                this.Exponent = Utils.GetXmlElement(keyXml, "Exponent");
+                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
+                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
             }
 
             /// <summary>
@@ -151,10 +151,10 @@ namespace shared.Crypting
                 // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
                 StringBuilder _with2 = sb;
                 // Mohl bych to zapsat pomoc� T RSAParameters ale nev�m jak by se to vypo��dalo s ve�ejn�m kl��em.
-                _with2.Append(Utils.WriteXmlNode(Asymmetric._ElementParent, false));
-                _with2.Append(Utils.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
-                _with2.Append(Utils.WriteXmlElement(Asymmetric._ElementExponent, this.Exponent));
-                _with2.Append(Utils.WriteXmlNode(Asymmetric._ElementParent, true));
+                _with2.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, false));
+                _with2.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
+                _with2.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementExponent, this.Exponent));
+                _with2.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, true));
                 return sb.ToString();
             }
 
@@ -213,14 +213,14 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromConfig()
             {
-                this.Modulus = Utils.GetConfigString(Asymmetric._KeyModulus, true);
-                this.Exponent = Utils.GetConfigString(Asymmetric._KeyExponent, true);
-                this.PrimeP = Utils.GetConfigString(Asymmetric._KeyPrimeP, true);
-                this.PrimeQ = Utils.GetConfigString(Asymmetric._KeyPrimeQ, true);
-                this.PrimeExponentP = Utils.GetConfigString(Asymmetric._KeyPrimeExponentP, true);
-                this.PrimeExponentQ = Utils.GetConfigString(Asymmetric._KeyPrimeExponentQ, true);
-                this.Coefficient = Utils.GetConfigString(Asymmetric._KeyCoefficient, true);
-                this.PrivateExponent = Utils.GetConfigString(Asymmetric._KeyPrivateExponent, true);
+                this.Modulus = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyModulus, true);
+                this.Exponent = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyExponent, true);
+                this.PrimeP = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyPrimeP, true);
+                this.PrimeQ = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyPrimeQ, true);
+                this.PrimeExponentP = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyPrimeExponentP, true);
+                this.PrimeExponentQ = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyPrimeExponentQ, true);
+                this.Coefficient = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyCoefficient, true);
+                this.PrivateExponent = UtilsNonNetStandard.GetConfigString(Asymmetric._KeyPrivateExponent, true);
             }
 
             /// <summary>
@@ -250,14 +250,14 @@ namespace shared.Crypting
                 StringBuilder sb = new StringBuilder();
                 // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
                 StringBuilder _with3 = sb;
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyPrimeP, this.PrimeP));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyPrimeQ, this.PrimeQ));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyPrimeExponentP, this.PrimeExponentP));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyPrimeExponentQ, this.PrimeExponentQ));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyCoefficient, this.Coefficient));
-                _with3.Append(Utils.WriteConfigKey(Asymmetric._KeyPrivateExponent, this.PrivateExponent));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyPrimeP, this.PrimeP));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyPrimeQ, this.PrimeQ));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyPrimeExponentP, this.PrimeExponentP));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyPrimeExponentQ, this.PrimeExponentQ));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyCoefficient, this.Coefficient));
+                _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyPrivateExponent, this.PrivateExponent));
                 return sb.ToString();
             }
 
@@ -278,14 +278,14 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
-                this.Modulus = Utils.GetXmlElement(keyXml, "Modulus");
-                this.Exponent = Utils.GetXmlElement(keyXml, "Exponent");
-                this.PrimeP = Utils.GetXmlElement(keyXml, "P");
-                this.PrimeQ = Utils.GetXmlElement(keyXml, "Q");
-                this.PrimeExponentP = Utils.GetXmlElement(keyXml, "DP");
-                this.PrimeExponentQ = Utils.GetXmlElement(keyXml, "DQ");
-                this.Coefficient = Utils.GetXmlElement(keyXml, "InverseQ");
-                this.PrivateExponent = Utils.GetXmlElement(keyXml, "D");
+                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
+                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
+                this.PrimeP = UtilsNonNetStandard.GetXmlElement(keyXml, "P");
+                this.PrimeQ = UtilsNonNetStandard.GetXmlElement(keyXml, "Q");
+                this.PrimeExponentP = UtilsNonNetStandard.GetXmlElement(keyXml, "DP");
+                this.PrimeExponentQ = UtilsNonNetStandard.GetXmlElement(keyXml, "DQ");
+                this.Coefficient = UtilsNonNetStandard.GetXmlElement(keyXml, "InverseQ");
+                this.PrivateExponent = UtilsNonNetStandard.GetXmlElement(keyXml, "D");
             }
 
             /// <summary>
@@ -297,16 +297,16 @@ namespace shared.Crypting
                 StringBuilder sb = new StringBuilder();
                 // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
                 StringBuilder _with4 = sb;
-                _with4.Append(Utils.WriteXmlNode(Asymmetric._ElementParent, false));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementExponent, this.Exponent));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementPrimeP, this.PrimeP));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementPrimeQ, this.PrimeQ));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementPrimeExponentP, this.PrimeExponentP));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementPrimeExponentQ, this.PrimeExponentQ));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementCoefficient, this.Coefficient));
-                _with4.Append(Utils.WriteXmlElement(Asymmetric._ElementPrivateExponent, this.PrivateExponent));
-                _with4.Append(Utils.WriteXmlNode(Asymmetric._ElementParent, true));
+                _with4.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, false));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementExponent, this.Exponent));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementPrimeP, this.PrimeP));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementPrimeQ, this.PrimeQ));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementPrimeExponentP, this.PrimeExponentP));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementPrimeExponentQ, this.PrimeExponentQ));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementCoefficient, this.Coefficient));
+                _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementPrivateExponent, this.PrivateExponent));
+                _with4.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, true));
                 return sb.ToString();
             }
 

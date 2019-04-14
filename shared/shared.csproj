@@ -24,7 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -93,7 +93,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\shared\Crypting\HashHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresISql5.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerSql5.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Helpers\CSharpHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\UlozToParser.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Threading\TimeThreadPool.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBase.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Helpers\XmlHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Threading\Downloading\InputDownload.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSTSPShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\GeneratorMsSqlShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\HttpRequestHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Collections\Converters\StringHexColorConverter.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
@@ -104,23 +115,12 @@
     <Compile Include="Collections\Converters\StringHexColorConverter.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
     <Compile Include="CodeGenerator\GeneratorCpp.cs" />
-    <Compile Include="Crypting\Asymmetric.cs" />
-    <Compile Include="Crypting\CryptData.cs" />
-    <Compile Include="Crypting\CryptHelper.cs" />
-    <Compile Include="Crypting\CryptHelper2.cs" />
-    <Compile Include="Crypting\CryptHelperAdvanced.cs" />
-    <Compile Include="Crypting\DataCrypt.cs" />
-    <Compile Include="Crypting\Hash.cs" />
-    <Compile Include="Crypting\HashHelper.cs" />
-    <Compile Include="Crypting\ICrypt.cs" />
-    <Compile Include="Crypting\Password.cs" />
-    <Compile Include="Crypting\ProtectedDataHelper.cs" />
-    <Compile Include="Crypting\Provider.cs" />
     <Compile Include="CodeGenerator\AccessModifiers.cs" />
     <Compile Include="CodeGenerator\EnumItem.cs" />
     <Compile Include="CodeGenerator\ModifiersConstructor.cs" />
     <Compile Include="CodeGenerator\CSharpGenerator.cs" />
-    <Compile Include="Crypting\Symmetric.cs" />
+    <Compile Include="Crypting\Asymmetric.cs" />
+    <Compile Include="Crypting\ProtectedDataHelper.cs" />
     <Compile Include="Crypting\Utils.cs" />
     <Compile Include="CsvHelper\CsvFile.cs" />
     <Compile Include="CsvHelper\CsvReader.cs" />
@@ -150,9 +150,6 @@
     <Compile Include="MSSQL\MSBaseRowTable.cs" />
     <Compile Include="MSSQL\MSColumnsDB.cs" />
     <Compile Include="MSSQL\MSDatabaseLayer.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerBaseShared.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerShared.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerSql5.cs" />
     <Compile Include="MSSQL\MSSloupec2.cs" />
     <Compile Include="MSSQL\MSSloupecDB.cs" />
@@ -206,7 +203,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="forms\" />
     <Folder Include="Helpers\Clipboard\" />
+    <Folder Include="Helpers\Http\" />
     <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>

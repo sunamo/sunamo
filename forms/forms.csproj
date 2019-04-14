@@ -99,6 +99,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Delegates\Delegates.cs" />
+    <Compile Include="EventHandlers.cs" />
     <Compile Include="Forms\AccessTokenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,7 +158,7 @@
     <Compile Include="Helpers\TSMIH.cs" />
     <Compile Include="Helpers\TSPBH.cs" />
     <Compile Include="Helpers\TSTBH.cs" />
-    <Compile Include="NotifyDoSchranky.cs" />
+    <Compile Include="NotifyToClipboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\DisplayImageUC.cs">
       <SubType>UserControl</SubType>

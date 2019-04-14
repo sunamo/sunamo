@@ -29,7 +29,11 @@ public static partial  class CA
             JoinForGoogleSheetRow(sb, item.ItemArray);
         }
 
-        return sb.ToString();
+
+
+        string vr = sb.ToString();
+        DebugLogger.Instance.WriteLine(vr);
+        return vr;
     }
 
     public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
@@ -95,6 +99,14 @@ public static partial  class CA
         return abl;
     }
 
+    /// <summary>
+    /// Return whether all of A1 are in A2
+    /// Not all from A2 must be A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="searchTerms"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static bool IsEqualToAllElement<T>(List<T> searchTerms, List<T> key)
     {
         foreach (var item in searchTerms)
@@ -186,13 +198,6 @@ public static partial  class CA
 
     }
 
-    
-
-    public static bool HasIndex(int dex, Array col)
-    {
-        return col.Length > dex;
-    }
-
     public static List<string> OnlyFirstCharUpper(List<string> list)
     {
         return ChangeContent(list, SH.OnlyFirstCharUpper);
@@ -217,7 +222,7 @@ public static partial  class CA
     }
 
     /// <summary>
-    /// Return first of A1 if stars with any of A2. Otherwise null
+    /// Return A2 if start something with A1
     /// </summary>
     /// <param name="suMethods"></param>
     /// <param name="line"></param>
@@ -239,21 +244,6 @@ public static partial  class CA
         List<T> t = new List<T>();
         t.Add(el);
         return t;
-    }
-
-    /// <summary>
-    /// better is use first or default, because here I also have to use default(T)
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    public static T FirstOrNull<T>(List<T> list)
-    {
-        if (list.Count > 0)
-        {
-            return list[0];
-        }
-        return default(T);
     }
 
     public static List<string> DummyElementsCollection(int count)
@@ -405,20 +395,6 @@ public static partial  class CA
         return celkove;
     }
 
-    public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
-    {
-        for (int i = 0; i < sf.Count; i++)
-        {
-            sf[i] = sf[i].TrimEnd(toTrim);
-        }
-        return sf;
-    }
-
-    public static string[] TrimEnd(string[] sf, params char[] toTrim)
-    {
-        return TrimEnd(new List<string>(sf), toTrim).ToArray();
-    }
-
     public static bool HasIndexWithoutException(int p, IList nahledy)
     {
         if (p < 0)
@@ -426,28 +402,6 @@ public static partial  class CA
             return false;
         }
         if (nahledy.Count > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static int GetLength(IList where)
-    {
-        if (where == null)
-        {
-            return 0;
-        }
-        return where.Count;
-    }
-
-    public static bool HasIndex(int p, IEnumerable nahledy)
-    {
-        if (p < 0)
-        {
-            throw new Exception("Chybný parametr p");
-        }
-        if (nahledy.Count() > p)
         {
             return true;
         }
@@ -469,26 +423,6 @@ public static partial  class CA
     public static bool MatchWildcard(List<string> list, string file)
     {
         return list.Any(d => SH.MatchWildcard(file, d));
-    }
-
-    public static object[] JoinVariableAndArray(object p, object[] sloupce)
-    {
-        List<object> o = new List<object>();
-        o.Add(p);
-        o.AddRange(sloupce);
-        return o.ToArray();
-    }
-
-    public static bool Contains(int idUser, int[] onlyUsers)
-    {
-        foreach (int item in onlyUsers)
-        {
-            if (item == idUser)
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static int IndexOfValue(List<int> allWidths, int width)
@@ -601,15 +535,21 @@ public static partial  class CA
 
     /// <summary>
     /// Remove elements starting with A1
+    /// Direct edit
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
     /// <returns></returns>
-    public static List<string> RemoveStartingWith(string start, List<string> mySites)
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool trimBeforeFinding = false)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (mySites[i].StartsWith(start))
+            var val = mySites[i];
+            if (trimBeforeFinding)
+            {
+                val = val.Trim();
+            }
+            if (val.StartsWith(start))
             {
                 mySites.RemoveAt(i);
             }
@@ -644,24 +584,6 @@ public static partial  class CA
         foreach (var item in v)
         {
             if (t.EndsWith(item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// G zda se alespoň 1 prvek A2 == A1
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="availableValues"></param>
-    /// <returns></returns>
-    public static bool Contains(string value, List<string> availableValues)
-    {
-        foreach (var item in availableValues)
-        {
-            if (item == value)
             {
                 return true;
             }
@@ -825,7 +747,7 @@ public static partial  class CA
 
     /// <summary>
     /// Direct edit collection
-    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje
+    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje (ale pouze pro porovnání, v kolekci nechá)
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
@@ -951,30 +873,6 @@ public static partial  class CA
     }
 
     /// <summary>
-    /// Is same as ContainsElement, only have switched arguments
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="p"></param>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
-    {
-        foreach (T item in list)
-        {
-            if (EqualityComparer<T>.Default.Equals(p, item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
-    {
-        return IsEqualToAnyElement(p, prvky.ToList());
-    }
-
-    /// <summary>
     /// Index A2 a další bude již v poli A4
     /// </summary>
     /// <param name="p1"></param>
@@ -1071,36 +969,6 @@ public static partial  class CA
         return true;
     }
 
-    public static T[] JumbleUp<T>(T[] b)
-    {
-        int bl = b.Length;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
-    public static List<T> JumbleUp<T>(List<T> b)
-    {
-        int bl = b.Count;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
     /// <summary>
     /// V prvním indexu jsou řádky, v druhém sloupce
     /// </summary>
@@ -1125,14 +993,6 @@ public static partial  class CA
         }
 
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
-    }
-
-
-    
-
-    public static IEnumerable<string> ToEnumerable(params string[] p)
-    {
-        return p;
     }
 
     public static List<object> ToObject(IEnumerable enumerable)

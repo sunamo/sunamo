@@ -1,6 +1,7 @@
 ﻿
 using sunamo.Values;
 using System;
+using System.Collections;
 /// <summary>
 /// Number Helper Class
 /// </summary>
@@ -13,6 +14,7 @@ public static partial class NH
 
     /// <summary>
     /// Note: specified list would be mutated in the process.
+    /// Working excellent
     /// </summary>
     public static T Median<T>(this IList<T> list) where T : IComparable<T>
     {
@@ -26,9 +28,45 @@ public static partial class NH
         return list.NthOrderStatistic(mid);
     }
 
+    /// <summary>
+    /// Working excellent
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public static double Median2<T>(IEnumerable<T> numbers) 
+    {
+        int numberCount = numbers.Count();
+        int halfIndex = numbers.Count() / 2;
+        var sortedNumbers = numbers.OrderBy(n => n);
+        double median;
+        if ((numberCount % 2) == 0)
+        {
+            var d = sortedNumbers.ElementAt(halfIndex);
+            var d2 = sortedNumbers.ElementAt((halfIndex - 1));
+            median = Sum(CA.ToListString( d,d2)) / 2;
+        }
+        else
+        {
+            median = double.Parse( sortedNumbers.ElementAt(halfIndex).ToString());
+        }
+        return median;
+    }
+
     public static T Average<T>(List<T> list)
     {
         return Average<T>(Sum<T>(list), list.Count);
+    }
+
+    public static double Sum(List<string> list)
+    {
+        double result = 0;
+        foreach (var item in list)
+        {
+            var d = double.Parse(item);
+            result += d;
+        }
+        return result;
     }
 
     public static T Sum<T>(List<T> list)
@@ -149,12 +187,6 @@ public static partial class NH
     public static double ReturnTheNearestSmallIntegerNumber(double d)
     {
         return (double)Convert.ToInt32(d);
-    }
-
-    public static float RoundAndReturnInInputType(float ugtKm, int v)
-    {
-        string vr = Math.Round(ugtKm, v).ToString();
-        return float.Parse(vr);
     }
 
     public static List<int> Invert(List<int> arr, int changeTo, int finalCount)

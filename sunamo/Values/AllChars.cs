@@ -66,6 +66,7 @@ public static class AllChars
     // my extension
     public static readonly List<char> generalChars = null;
 
+    public const char exclamation = '!';
     public const char pipe = '|';
 
     public const char cbl = '{';
@@ -104,7 +105,7 @@ public static class AllChars
 
     public const char tab = '\t';
     public const char nl = '\n';
-    public const char cr = '\t';
+    public const char cr = '\r';
     public const char bs = '\\';
     
     public const char comma = ',';
@@ -113,7 +114,15 @@ public static class AllChars
     public const char apostrophe = '\'';
 
     public const char sc = ';';
+    /// <summary>
+    /// quotation marks
+    /// </summary>
     public const char qm = '"';
+
+    /// <summary>
+    /// Question
+    /// </summary>
+    public const char q = '?';
     /// <summary>
     /// Left bracket
     /// </summary>

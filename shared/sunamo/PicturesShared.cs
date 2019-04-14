@@ -17,10 +17,35 @@ using sunamo.Essential;
     {
         private static Regex r = new Regex(":");
 
-        
+    public static void ChangeResolution(string path, float dpix, float dpiy)
+    {
+        Bitmap OriginalBitmap = new Bitmap(path);
+        int old_wid = OriginalBitmap.Width;
+        int old_hgt = OriginalBitmap.Height;
+        int new_wid = old_wid;
+        int new_hgt = new_wid;
 
-		public static ImageFormat GetImageFormatFromExtension2(string ext)
+        using (Bitmap bm = new Bitmap(new_wid, new_hgt))
+        {
+            System.Drawing.Point[] points =
+            {
+                new System.Drawing.Point(0, 0),
+                new System.Drawing.Point(new_wid, 0),
+                new System.Drawing.Point(0, new_hgt),
+            };
+            using (Graphics gr = Graphics.FromImage(bm))
+            {
+                gr.DrawImage(OriginalBitmap, points);
+            }
+            bm.SetResolution(dpix, dpiy);
+            SaveImage(FS.ChangeExtension( path, ".jpg", false), bm, GetImageFormatFromExtension2(FS.GetExtension(path)));
+        }
+
+    }
+
+    public static ImageFormat GetImageFormatFromExtension2(string ext)
 		{
+        ext = ext.TrimStart(AllChars.dot);
 			if (ext == "jpeg")
 			{
 				return ImageFormat.Jpeg;

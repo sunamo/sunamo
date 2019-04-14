@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using sunamo;
+using System.Linq;
 
 public class PH
     {
@@ -27,7 +28,25 @@ public class PH
         }
     }
 
+    /// <summary>
+    /// For search one term in all uris use UriWebServices.SearchInAll
+    /// </summary>
+    /// <param name="carModels"></param>
+    /// <param name="v"></param>
+    public static void StartAllUri(List<string> carModels, string v)
+    {
+        foreach (var item in carModels)
+        {
+            Uri(UH.AppendHttpIfNotExists(UriWebServices.FromChromeReplacement(v, item)));
+        }
+    }
 
+    public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
+    {
+        carModels = CA.ChangeContent(carModels, spritMonitor);
+        carModels = CA.ChangeContent(carModels, NormalizeUri);
+        StartAllUri(carModels);
+    }
 
     private static string NormalizeUri(string v)
     {
@@ -36,9 +55,10 @@ public class PH
         return v;
     }
 
-    private static void Uri(string v)
+    public static void Uri(string v)
     {
         v = NormalizeUri(v);
+        v = v.Trim();
         Process.Start(v);
     }
 
@@ -55,7 +75,7 @@ public class PH
             switch (prohlizec)
             {
                 case Browsers.Chrome:
-                    b = @"C:\Users\sunamo\AppData\Local\Google\Chrome\Application\chrome.exe";
+                    b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
                     break;
                 case Browsers.Firefox:
                     b = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
@@ -75,16 +95,15 @@ public class PH
 
     
 
-    public static void StartAllUri(List<string> carModels, string v)
+    public static void OpenInBrowser(string uri)
     {
-        //
-        throw new NotImplementedException();
+         OpenInBrowser(Browsers.Chrome, uri);
     }
 
-    public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
+    public static bool IsAlreadyRunning(string name)
     {
-        carModels = CA.ChangeContent(carModels, spritMonitor);
-        carModels = CA.ChangeContent(carModels, NormalizeUri);
-        StartAllUri(carModels);
+        var pr = Process.GetProcessesByName(name).Select(d => d.ProcessName);
+        //var processes = Process.GetProcesses(name).Where(s => s.ProcessName.Contains(name)).Select(d => d.ProcessName);
+        return pr.Count() > 1;
     }
 }

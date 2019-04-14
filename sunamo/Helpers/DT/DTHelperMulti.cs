@@ -5,19 +5,6 @@ using System.Text;
 
     public partial class DTHelperMulti
     {
-        /// <summary>
-        /// Vrátí datum v českém formátu(například 21.6.1989)
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string DateToString(DateTime p, Langs l)
-        {
-            if (l == Langs.cs)
-            {
-                return p.Day + "." + p.Month + "." + p.Year;
-            }
-            return p.Month + "/" + p.Day + "/" + p.Year;
-        }
 
         /// <summary>
         /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
@@ -506,7 +493,7 @@ using System.Text;
         /// <returns></returns>
         public static DateTime? ParseDateMonthDayYear(string p)
         {
-            string[] s = SH.SplitNone(p, "/");
+            var s = SH.SplitNone(p, "/");
             DateTime vr;
             if (DateTime.TryParse(s[1] + "." + s[0] + "." + s[2], out vr))
             {

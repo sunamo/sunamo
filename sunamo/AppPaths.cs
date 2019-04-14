@@ -19,7 +19,7 @@ using System.Threading.Tasks;
         }
         public static string GetFileInStartupPath(string file)
         {
-            return System.IO.Path.Combine(GetStartupPath(), file);
+            return FS.Combine(GetStartupPath(), file);
             
         }
     }

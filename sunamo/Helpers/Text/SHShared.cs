@@ -1,4 +1,8 @@
-﻿using sunamo.Constants;
+﻿using sunamo;
+using sunamo.Enums;
+using System.Diagnostics;
+using System.Globalization;
+using sunamo.Constants;
 using sunamo.Essential;
 using sunamo.Values;
 using System;
@@ -8,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public static partial class SH
 {
@@ -40,10 +45,9 @@ public static partial class SH
         return JoinString(delimiter, parts);
     }
 
-    public static List<string> Split(string text, params string[] deli)
-    {
-        return text.Split(deli, StringSplitOptions.RemoveEmptyEntries).ToList();
-    }
+    
+
+
 
     /// <summary>
     /// Get null if count of getted parts was under A2.
@@ -126,10 +130,7 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
-    public static List<string> Split(string parametry, char v)
-    {
-        return Split(parametry, v.ToString());
-    }
+    
 
     /// <summary>
     /// In difference with ReplaceAll2, A3 is params
@@ -197,7 +198,7 @@ public static partial class SH
         for (int Index = 0; Index < (vcem.Length - co.Length) + 1; Index++)
         {
             var subs = vcem.Substring(Index, co.Length);
-            DebugLogger.Instance.WriteLine(subs);
+            //DebugLogger.Instance.WriteLine(subs);
             // non-breaking space. &nbsp; code 160
             // 32 space
             char ch = subs[0];
@@ -676,7 +677,12 @@ public static List<int> GetVariablesInString(string innerHtml)
         return slovo != SH.TextWithoutDiacritic(slovo);
     }
 
-public static List<string> SplitNone(string text, params char[] deli)
+    public static List<string> Split(string parametry, params object[] deli)
+    {
+        return Split(StringSplitOptions.RemoveEmptyEntries, parametry, deli);
+    }
+
+    public static List<string> SplitNone(string text, params object[] deli)
     {
         return Split(StringSplitOptions.None, text, deli);
     }
@@ -689,7 +695,7 @@ public static List<string> SplitNone(string text, params char[] deli)
     /// <param name="text"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
-    private static List<string> Split(StringSplitOptions stringSplitOptions, string text, params char[] deli)
+    private static List<string> Split(StringSplitOptions stringSplitOptions, string text, params object[] deli)
     {
         if (deli == null || deli.Count() == 0)
         {
@@ -703,8 +709,11 @@ public static List<string> SplitNone(string text, params char[] deli)
             }
         }
 
-        return text.Split(deli, stringSplitOptions).ToList();
+
+        var deli2 = CA.ToListString(deli).ToArray();
+        return text.Split(deli2, stringSplitOptions).ToList();
     }
+
 
     /// <summary>
     /// Simply return from string.Format. SH.Format is more intelligent
@@ -712,7 +721,7 @@ public static List<string> SplitNone(string text, params char[] deli)
     /// <param name="template"></param>
     /// <param name="args"></param>
     /// <returns></returns>
-public static string Format2(string template, params object[] args)
+    public static string Format2(string template, params object[] args)
     {
         if (template.Contains("{0"))
         {
@@ -961,5 +970,498 @@ public static string GetString(IEnumerable o, string p)
             sb.Append(SH.ListToString( item) + p);
         }
         return sb.ToString();
+    }
+
+    internal static bool IsNegation(ref string contains)
+    {
+        if (contains[0] == AllChars.exclamation)
+        {
+            contains = contains.Substring(1);
+            return true;
+        }
+        return false;
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pred"></param>
+    /// <param name="za"></param>
+    /// <param name="text"></param>
+    /// <param name="or"></param>
+    public static void GetPartsByLocation(out string pred, out string za, string text, char or)
+    {
+        int dex = text.IndexOf(or);
+        SH.GetPartsByLocation(out pred, out za, text, dex);
+    }
+/// <summary>
+    /// Into A1,2 never put null
+    /// </summary>
+    /// <param name="pred"></param>
+    /// <param name="za"></param>
+    /// <param name="text"></param>
+    /// <param name="pozice"></param>
+    public static void GetPartsByLocation(out string pred, out string za, string text, int pozice)
+    {
+        if (pozice == -1)
+        {
+            pred = text;
+            za = "";
+        }
+        else
+        {
+            pred = text.Substring(0, pozice);
+            za = text.Substring(pozice + 1);
+        }
+
+        
+    }
+
+public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
+    {
+        List<string> na2Cislice = new List<string>();
+        foreach (var item in parts)
+        {
+            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
+        }
+        return JoinIEnumerable(p, na2Cislice);
+    }
+
+public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
+    {
+        bool replaced;
+        return ReplaceOnceIfStartedWith(what, replaceWhat, zaCo, out replaced);
+    }
+public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
+    {
+        replaced = false;
+        if (what.StartsWith(replaceWhat))
+        {
+            replaced = true;
+            return SH.ReplaceOnce(what, replaceWhat, zaCo);
+        }
+        return what;
+    }
+
+public static string RemoveLastChar(string artist)
+    {
+        return artist.Substring(0, artist.Length - 1);
+    }
+
+/// <summary>
+    /// Údajně detekuje i japonštinu a podpobné jazyky
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static bool IsChinese(string text)
+    {
+        var hiragana = GetCharsInRange(text, 0x3040, 0x309F);
+        if (hiragana )
+        {
+            return true;
+        }
+        var katakana = GetCharsInRange(text, 0x30A0, 0x30FF);
+        if (katakana )
+        {
+            return true;
+        }
+        var kanji = GetCharsInRange(text, 0x4E00, 0x9FBF);
+        if (kanji )
+        {
+            return true;
+        }
+
+        if (text.Any(c => c >= 0x20000 && c <= 0xFA2D))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+public static string SubstringIfAvailable(string input, int lenght)
+    {
+        if (input.Length > lenght)
+        {
+            return input.Substring(0, lenght);
+        }
+        return input;
+    }
+
+/// <summary>
+    /// Nevraci znaky na indexech ale zda nektere znaky maji rozsah char definovany v A2,3
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
+    /// <returns></returns>
+    public static  bool GetCharsInRange(string text, int min, int max)
+    {
+        return text.Where(e => e >= min && e <= max).Count() != 0;
+    }
+
+public static string JoinWithoutTrim(object p, IList parts)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (object item in parts)
+        {
+            sb.Append(item.ToString() + p);
+        }
+        return sb.ToString();
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="nazevPP"></param>
+    /// <param name="only"></param>
+    /// <returns></returns>
+    public static string FirstCharUpper(string nazevPP, bool only = false)
+    {
+        if (nazevPP != null)
+        {
+            string sb = nazevPP.Substring(1);
+            if (only)
+            {
+                sb = sb.ToLower();
+            }
+            return nazevPP[0].ToString().ToUpper() + sb;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// POZOR, tato metoda se změnila, nyní automaticky přičítá k indexu od 1
+    /// When I want to include delimiter, add to A3 +1
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <param name="p"></param>
+    /// <param name="p_3"></param>
+    /// <returns></returns>
+    public static string Substring(string sql, int indexFrom, int indexTo)
+    {
+        if (sql == null)
+        {
+            return null;
+        }
+        int tl = sql.Length;
+        if (tl > indexFrom)
+        {
+            if (tl > indexTo)
+            {
+                return sql.Substring(indexFrom, indexTo - indexFrom);
+            }
+        }
+        return null;
+    }
+
+public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
+    {
+        var split = SH.SplitNone(p1, delimiter);
+        return CA.RemoveDuplicitiesList<string>(split);
+    }
+
+public static string JoinSpace(IEnumerable parts)
+    {
+        return SH.JoinString(AllStrings.space, parts);
+    }
+
+public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
+    {
+        if (squareBrackets)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '[', ']');
+        }
+        if (parentheses)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '(', ')');
+        }
+        if (braces)
+        {
+            title = RemoveBetweenAndEdgeChars(title, '{', '}');
+        }
+        title = ReplaceAll(title, "", "  ").Trim();
+        return title;
+    }
+
+public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
+    {
+        Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
+        return regex.Replace(s, string.Empty);
+    }
+
+/// <summary>
+    /// Je dobré před voláním této metody převést bílé znaky v A1 na mezery
+    /// </summary>
+    /// <param name="celyObsah"></param>
+    /// <param name="stred"></param>
+    /// <param name="naKazdeStrane"></param>
+    /// <returns></returns>
+    public static string XCharsBeforeAndAfterWholeWords(string celyObsah, int stred, int naKazdeStrane)
+    {
+        StringBuilder prava = new StringBuilder();
+        StringBuilder slovo = new StringBuilder();
+        
+        // Teď to samé udělám i pro levou stranu
+        StringBuilder leva = new StringBuilder();
+        for (int i = stred - 1; i >= 0; i--)
+        {
+            char ch = celyObsah[i];
+            if (ch == ' ')
+            {
+                string ts = slovo.ToString();
+                slovo.Clear();
+                if (ts != "")
+                {
+
+                    leva.Insert(0, ts + " ");
+                    if (leva.Length + " ".Length + ts.Length > naKazdeStrane)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+            }
+            else
+            {
+                slovo.Insert(0, ch);
+            }
+        }
+        string l = slovo.ToString() + " " + leva.ToString().TrimEnd(' ');
+        l = l.TrimEnd(' ');
+        naKazdeStrane += naKazdeStrane - l.Length;
+        slovo.Clear();
+        // Počítám po pravé straně započítám i to středové písmenko
+        for (int i = stred; i < celyObsah.Length; i++)
+        {
+            char ch = celyObsah[i];
+            if (ch == ' ')
+            {
+                string ts = slovo.ToString();
+                slovo.Clear();
+                if (ts != "")
+                {
+
+                    prava.Append(" " + ts);
+                    if (prava.Length + " ".Length + ts.Length > naKazdeStrane)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+            }
+            else
+            {
+                slovo.Append(ch);
+            }
+        }
+        
+        string p = prava.ToString().TrimStart(' ') + " " + slovo.ToString();
+        p = p.TrimStart(' ');
+        string vr = "";
+        if (celyObsah.Contains(l + " ") && celyObsah.Contains(" " + p))
+        {
+            vr = l + " " + p;
+        }
+        else
+        {
+            vr = l + p;
+        }
+        return vr;
+    }
+
+/// <summary>
+    /// Do výsledku zahranu i mezery a punktační znaménka 
+    /// </summary>
+    /// <param name="veta"></param>
+    /// <returns></returns>
+    public static string[] SplitBySpaceAndPunctuationCharsLeave(string veta)
+    {
+        List<string> vr = new List<string>();
+        vr.Add("");
+        foreach (var item in veta)
+        {
+            bool jeMezeraOrPunkce = false;
+            foreach (var item2 in spaceAndPuntactionChars)
+            {
+                if (item == item2)
+                {
+                    jeMezeraOrPunkce = true;
+                    break;
+                }
+            }
+
+            if (jeMezeraOrPunkce)
+            {
+                if (vr[vr.Count - 1] == "")
+                {
+                vr[vr.Count - 1] += item.ToString();    
+                }
+                else
+                {
+                    vr.Add(item.ToString());
+                }
+                
+                vr.Add("");
+            }
+            else
+            {
+                vr[vr.Count - 1] += item.ToString();
+            }
+        }
+        return vr.ToArray();
+    }
+
+/// <summary>
+    /// Vše tu funguje výborně
+    /// G text z A1, ktery bude obsahovat max A2 písmen - ne slov, protože někdo tam může vložit příliš dlouhé slova a nevypadalo by to pak hezky.
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
+    /// <returns></returns>
+    public static string ShortForLettersCountThreeDotsReverse(string p, int p_2)
+    {
+        p = p.Trim();
+        int pl = p.Length;
+        bool jeDelsiA1 = p_2 <= pl;
+
+
+        if (jeDelsiA1)
+        {
+            if (SH.IsInLastXCharsTheseLetters(p, p_2, ' '))
+            {
+                int dexMezery = 0;
+                string d = p; //p.Substring(p.Length - zkratitO);
+                int to = d.Length;
+
+                int napocitano = 0;
+                for (int i = to - 1; i >= 0; i--)
+                {
+                    napocitano++;
+
+                    if (d[i] == ' ')
+                    {
+                        if (napocitano >= p_2)
+                        {
+                            break;
+                        }
+
+                        dexMezery = i;
+                    }
+                }
+                    d = d.Substring(dexMezery + 1);
+                    if (d.Trim() != "")
+                    {
+                        d = " ... " + d;
+                    }
+                    return d;
+                //}
+            }
+            else
+            {
+                return " ... " + p.Substring(p.Length - p_2);
+            }
+        }
+
+        return p;
+    }
+
+public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObsah, params string[] hledaneSlova)
+    {
+        if (hledaneSlova == null || hledaneSlova.Length == 0)
+        {
+            return new List<FromToWord>();
+           
+        }
+        celyObsah = celyObsah.ToLower();
+        List<FromToWord> vr = new List<FromToWord>();
+        int l = celyObsah.Length;
+        for (int i = 0; i < l; i++)
+        {
+            foreach (string item in hledaneSlova)
+            {
+                bool vsechnoStejne = true;
+                int pridat = 0;
+                while (pridat < item.Length)
+                {
+                    
+                    int dex = i + pridat;
+                    if (l > dex)
+                    {
+                        if (celyObsah[dex] != item[pridat])
+                        {
+                            vsechnoStejne = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        vsechnoStejne = false;
+                        break;
+                    }
+                    pridat++;
+                }
+                if (vsechnoStejne)
+                {
+                    FromToWord ftw = new FromToWord();
+                    ftw.from = i;
+                    ftw.to = i + pridat - 1;
+                    ftw.word = item;
+                    vr.Add(ftw);
+                    i += pridat;
+                    break;
+                }
+            }
+        }
+        return vr;
+    }
+
+private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] letters)
+    {
+        
+        for (int i = p.Length - 1; i >= pl; i--)
+        {
+            foreach (var item in letters)
+            {
+                if (p[i] == item)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+
+public static string TrimNewLineAndTab(string lyricsFirstOriginal)
+    {
+        return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
+    }
+
+public static List<string> SplitByWhiteSpaces(string s)
+    {
+        return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
+    }
+
+public static bool TrimIfStartsWith(ref string s, string p)
+    {
+        if (s.StartsWith(p))
+        {
+            s = s.Substring(p.Length);
+            return true;
+        }
+        return false;
+    }
+
+public static string DoubleSpacesToSingle(string v)
+    {
+        return SH.ReplaceAll2(v, " ", "  ");
     }
 }

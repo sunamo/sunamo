@@ -350,7 +350,7 @@ namespace sunamo.Generators
 
         public void Fetch()
         {
-            Git("merge");
+            Git("fetch");
             AppendLine();
         }
 

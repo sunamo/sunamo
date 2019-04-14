@@ -82,45 +82,6 @@ public static partial class CSharpHelper
         return csg.ToString().Trim();
     }
 
-    public static object DefaultValueForTypeObject(string type)
-    {
-        if (type.Contains("."))
-        {
-            type = ConvertTypeShortcutFullName.ToShortcut(type);
-        }
-
-        switch (type)
-        {
-            case "string":
-                return "\"\"";
-            case "bool":
-                return false;
-            case "float":
-            case "double":
-            case "int":
-            case "long":
-            case "short":
-            case "decimal":
-            case "sbyte":
-                return -1;
-            case "byte":
-            case "ushort":
-            case "uint":
-            case "ulong":
-                return 0;
-            case "DateTime":
-                // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
-                return SqlServerHelper.DateTimeMinVal;
-            case "char":
-                throw new Exception("Nepodporovaný typ");
-            case "byte[]":
-                // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
-                return null;
-        }
-
-        throw new Exception("Nepodporovaný typ");
-    }
-
     /// <summary>
     /// Return also List because Array isn't use
     /// </summary>
@@ -153,5 +114,18 @@ public static partial class CSharpHelper
         }
 
         return lines;
+    }
+
+    public static string GenerateConstants(int tabCount, Func<string, string> changeInput, List<string> input)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        foreach (var item in input)
+        {
+            var name = changeInput(item);
+
+            csg.Field(tabCount, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, string.Empty);
+        }
+
+        return csg.ToString();
     }
 }

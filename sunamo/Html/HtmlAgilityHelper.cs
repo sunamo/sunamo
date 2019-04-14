@@ -221,12 +221,7 @@ namespace sunamo.Html
 
         public static string ReplacePlainUriForAnchors(string input)
         {
-            HtmlDocument hd = new HtmlDocument();
-            hd.OptionOutputOriginalCase = true;
-            hd.OptionAutoCloseOnEnd = false;
-            hd.OptionOutputAsXml = false;
-            hd.OptionFixNestedTags = false;
-            hd.OptionCheckSyntax = false;
+            HtmlDocument hd = CreateHtmlDocument();
 
             return ReplacePlainUriForAnchors(hd, input);
         }

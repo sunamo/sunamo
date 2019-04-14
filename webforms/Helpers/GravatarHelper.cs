@@ -16,9 +16,9 @@ public static class GravatarHelper
     {
         if (FS.ExistsFile(GetGravatarPath(nick)))
         {
-            return web.UH.GetWebUri(p, folderAvatars, nick + avatareExt);
+            return UA.GetWebUri(p, folderAvatars, nick + avatareExt);
         }
-        return web.UH.GetWebUri(p, "img", "gravatar_logo_28x28.jpg");
+        return UA.GetWebUri(p, "img", "gravatar_logo_28x28.jpg");
     }
 
     public static string GetGravatarPath(string nick)

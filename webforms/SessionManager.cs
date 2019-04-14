@@ -97,7 +97,8 @@ public static class SessionManager
         try
         {
             manager.SaveSessionID(Context, newId, out isRedir, out isAdd);
-            HttpApplication ctx = (HttpApplication)HttpContext.Current.ApplicationInstance;
+            
+             var ctx = HttpContext.Current.ApplicationInstance;
             HttpModuleCollection mods = ctx.Modules;
             System.Web.SessionState.SessionStateModule ssm = (SessionStateModule)mods.Get("Session");
             System.Reflection.FieldInfo[] fields = ssm.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);

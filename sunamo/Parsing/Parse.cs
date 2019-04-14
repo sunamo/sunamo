@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Parsing
-{
+
     public class Parse
     {
         public class Byte
@@ -87,4 +86,3 @@ namespace sunamo.Parsing
 
         }
     }
-}

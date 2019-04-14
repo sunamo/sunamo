@@ -9,8 +9,15 @@ using System.Windows.Media;
 
 namespace desktop
 {
+    /// <summary>
+    /// Combined with Window. Dont use Window due to WpfApp.mp
+    /// </summary>
     public interface IEssentialMainPage : IPanel
     {
         // cant be Title as in UC, because Window has own Property
+        bool CancelClosing { get; set; }
+
+        bool GetCancelClosing();
+        void SetCancelClosing(bool b);
     }
 }

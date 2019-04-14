@@ -130,7 +130,7 @@ public class SourceCodeIndexerRoslyn
         tree = null;
         root = null;
 
-        if (!RoslynHelper.AllowOnly(pathFile, false, false, false, false, false))
+        if (!RoslynHelper.AllowOnly(pathFile, false, true, true, false, false))
         {
             return false;
         }
@@ -147,12 +147,6 @@ public class SourceCodeIndexerRoslyn
                 // only would call ProcessFile again
                 watchers.Start(pathFile);
             }
-            
-
-            if (pathFile.Contains("Projects\\Projects"))
-            {
-                Debugger.Break();
-            }
 
             IEnumerable<NamespaceCodeElementsType> namespaceCodeElementsAll = EnumHelper.GetValues<NamespaceCodeElementsType>();
             IEnumerable<ClassCodeElementsType> classodeElementsAll = EnumHelper.GetValues<ClassCodeElementsType>();
@@ -162,14 +156,6 @@ public class SourceCodeIndexerRoslyn
 
             string fileContent = string.Empty;
             List<string> lines = TF.ReadAllLines(pathFile);
-            //for (int i = lines.Count - 1; i >= 0; i--)
-            //{
-            //    string line = lines[i].Trim();
-            //    if (line.StartsWith("#region ") || line.StartsWith("#endregion"))
-            //    {
-            //        lines.RemoveAt(i);
-            //    }
-            //}
 
             fileContent = SH.JoinNL(lines);
 
@@ -194,11 +180,6 @@ public class SourceCodeIndexerRoslyn
             FullFileIndex.Reverse();
 
             ThrowExceptions.DifferentCountInLists(type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
-
-            //for (int i = 0; i < lines.Count; i++)
-            //{
-            //    foundedLines.Add(pathFile, GetTU(lines[i], FullFileIndex[i]));
-            //}
 
             linesWithContent.Add(pathFile, lines);
             linesWithIndexes.Add(pathFile, FullFileIndex);
@@ -225,14 +206,9 @@ public class SourceCodeIndexerRoslyn
                     {
                         if (char.IsUpper(namespaceElementName[0]))
                         {
-                            if (namespaceElementName.Contains("ITableRow"))
-                            {
-
-                            }
-
                             NamespaceCodeElement element = new NamespaceCodeElement() { Index = FullFileIndex[indexes[i]], Name = namespaceElementName, Type = namespaceCodeElementType };
 
-                            DictionaryHelper.AddOrCreate<string, NamespaceCodeElement>(namespaceCodeElements, pathFile, element);
+                                DictionaryHelper.AddOrCreate<string, NamespaceCodeElement>(namespaceCodeElements, pathFile, element);
                         }
                     }
                 }
@@ -364,6 +340,11 @@ public class SourceCodeIndexerRoslyn
 
             foreach (var item2 in item.Value)
             {
+                if (item.Key.Contains("ItemWithCount"))
+                {
+
+                }
+
                 if (makeChecking)
                 {
                     add = false;
@@ -381,7 +362,7 @@ public class SourceCodeIndexerRoslyn
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, searchStrategy))
+                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
                     {
                         d.Add(item2);
                     }
@@ -417,7 +398,7 @@ public class SourceCodeIndexerRoslyn
 
                 if (add)
                 {
-                    if (SH.Contains(item2.Name, text, searchStrategy))
+                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
                     {
                         d.Add(item2);
                     }

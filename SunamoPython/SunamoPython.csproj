@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ProjectGuid>{41D346ED-5E62-4C0E-820A-0C207701C8A2}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="2.7.9" />
+    <PackageReference Include="IronPython.Interpreter" Version="2.7.4" />
+    <PackageReference Include="IronPython.StdLib" Version="2.7.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

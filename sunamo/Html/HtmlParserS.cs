@@ -3,13 +3,13 @@ using sunamo.Html;
 using System.IO;
 using System.Net;
 
-public static class HtmlParserS
+public static class HtmlDocumentS
 {
     static string html2 = null;
 
     public static HtmlNode Load(string path)
     {
-        HtmlDocument hd = new HtmlDocument();
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         //hd.Encoding = Encoding.UTF8;
         html2 = File.ReadAllText(path);
         html2 = WebUtility.HtmlDecode(html2);
@@ -20,7 +20,7 @@ public static class HtmlParserS
     
     public static HtmlNode LoadHtml(string html)
     {
-        HtmlDocument hd = new HtmlDocument();
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
         //hd.Encoding = Encoding.UTF8;
         html = WebUtility.HtmlDecode(html);
         html2 = html;

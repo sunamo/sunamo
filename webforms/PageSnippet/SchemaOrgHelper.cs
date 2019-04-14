@@ -8,10 +8,10 @@ public static class SchemaOrgHelper
 
         if (ps.image == "")
         {
-            ps.image = web.UH.GetWebUri3(ss.Request, "img/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
+            ps.image = UA.GetWebUri3(ss.Request, "img/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
         }
 
-        //pageSnippet.image = UH.GetWebUri3(ss.Request, "img/EmptyPixel.gif");
+        //pageSnippet.image = UA.GetWebUri3(ss.Request, "img/EmptyPixel.gif");
         if (ps.image != "")
         {
             image = ",\"image\": \"" + ps.image + "\"";

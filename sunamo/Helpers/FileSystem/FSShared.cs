@@ -4,6 +4,7 @@ using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -323,7 +324,7 @@ public static void CopyStream(Stream input, Stream output)
     }
 
 /// <summary>
-        /// Use this than Path.Combine which if argument starts with backslash ignore all arguments before this
+        /// Use this than FS.Combine which if argument starts with backslash ignore all arguments before this
         /// </summary>
         /// <param name="upFolderName"></param>
         /// <param name="dirNameDecoded"></param>
@@ -400,7 +401,7 @@ public static long GetFileSize(string item)
             string p = FS.GetDirectoryName(orig);
             string fn = Path.GetFileNameWithoutExtension(orig);
             string e = FS.GetExtension(orig);
-            return Path.Combine(p, fn + whatInsert + e);
+            return FS.Combine(p, fn + whatInsert + e);
         }
 
 public static string DeleteWrongCharsInDirectoryName(string p)
@@ -441,5 +442,92 @@ public static string DeleteWrongCharsInFileName(string p, bool isPath)
             }
 
             return sb.ToString();
+        }
+
+public static bool ContainsInvalidPathCharForPartOfMapPath(string p)
+        {
+            foreach (var item in invalidCharsForMapPath)
+            {
+                if (p.IndexOf(item) != -1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+/// <summary>
+        /// Odstraňuje samozřejmě ve výjimce
+        /// </summary>
+        /// <param name="path"></param>
+        public static void DeleteFileIfExists(string path)
+        {
+            if (FS.ExistsFile(path))
+            {
+                File.Delete(path);
+            }
+        }
+
+public static string[] OnlyNames(string[] files2)
+        {
+            return OnlyNames(CA.ToListString(files2)).ToArray();
+        }
+/// <summary>
+        /// Returns with extension
+        /// POZOR: Na rozdíl od stejné metody v swf tato metoda vrací úplně nové pole a nemodifikuje A1
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public static List<string> OnlyNames(List<string> files2)
+        {
+            List<string> files = new List<string>(files2.Count);
+            for (int i = 0; i < files2.Count; i++)
+            {
+                files.Add(Path.GetFileName(files2[i]));
+            }
+            return files;
+        }
+public static string[] OnlyNames(string appendToStart, string[] fullPaths)
+        {
+            string[] ds = new string[fullPaths.Length];
+            for (int i = 0; i < fullPaths.Length; i++)
+            {
+                ds[i] = appendToStart + Path.GetFileName(fullPaths[i]);
+            }
+            return ds;
+        }
+
+public static List<string> GetFolders(string folder)
+        {
+            return GetFolders(folder, SearchOption.TopDirectoryOnly);
+        }
+
+    public static List<string> GetFolders(string folder, string masc, SearchOption so, bool trimA1 = false)
+    {
+        var dirs = Directory.GetDirectories(folder, masc, so).ToList();
+        if (trimA1)
+        {
+            CA.Replace(dirs, folder, string.Empty);
+        }
+        return dirs;
+    }
+public static List<string> GetFolders(string folder, SearchOption so)
+        {
+        return GetFolders(folder, "*", so);
+        }
+public static List<string> GetFolders(string v, string contains)
+        {
+            var folders = GetFolders(v);
+            folders = CA.TrimEnd(folders, '\\');
+            for (int i = folders.Count - 1; i >= 0; i--)
+            {
+                if (!Path.GetFileName(folders[i]).Contains(contains))
+                {
+                    folders.RemoveAt(i);
+                }
+            }
+
+            return folders;
         }
 }

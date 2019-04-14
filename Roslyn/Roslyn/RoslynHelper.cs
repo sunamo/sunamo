@@ -321,6 +321,13 @@ namespace Roslyn
             //return nsShared.FindNode(cl.FullSpan, false, true).WithoutLeadingTrivia().WithoutTrailingTrivia();
         }
 
+        /// <summary>
+        /// NSN
+        /// </summary>
+        /// <param name="cl2"></param>
+        /// <param name="method"></param>
+        /// <param name="keepDirectives"></param>
+        /// <returns></returns>
         public static ClassDeclarationSyntax RemoveNode(ClassDeclarationSyntax cl2, SyntaxNode method, SyntaxRemoveOptions keepDirectives)
         {
             #region MyRegion
@@ -345,6 +352,24 @@ namespace Roslyn
             #endregion
         }
 
+        public static List<string> Usings(object t)
+        {
+            List<string> lines;
+            return Usings(t, out lines);
+        }
+
+        public static List<string> Usings(object t, out List<string> lines)
+        {
+            string text = null;
+            if (t is SyntaxTree || t is string)
+            {
+                text = t.ToString();
+            }
+
+            lines = SH.GetLines(text);
+            return RoslynParser.Usings(lines).c;
+        }
+
         /// <summary>
         /// Return null if 
         /// Into A2 insert first member of A1 - Namespace/Class
@@ -358,15 +383,18 @@ namespace Roslyn
             ns = null;
             ClassDeclarationSyntax helloWorldDeclaration = null;
 
-            var root = (CompilationUnitSyntax)root2;
+            //(CompilationUnitSyntax)
+            var root = root2;
             //var root = (CompilationUnitSyntax)tree.GetRoot();
 
-            if (root.ChildNodes().OfType<ClassDeclarationSyntax>().Count() > 1)
+            // Returns usings and ns
+            var childNodes = root.ChildNodes();
+            if (childNodes.OfType<ClassDeclarationSyntax>().Count() > 1)
             {
                 return null;
             }
             SyntaxNode firstMember = null;
-            firstMember = root.Members[0]; 
+            firstMember = ChildNodes.NamespaceOrClass(root);
             //firstMember = (SyntaxNode)root.ChildNodes().OfType<NamespaceDeclarationSyntax>().FirstOrNull();
             //if (firstMember == null)
             //{
@@ -398,13 +426,13 @@ namespace Roslyn
             return helloWorldDeclaration;
         }
 
-        public static List<string> HeadersOfMethod(IEnumerable<SyntaxNode> enumerable)
+        public static List<string> HeadersOfMethod(IEnumerable<SyntaxNode> enumerable, bool alsoModifier = true)
         {
             List<string> clMethodsSharedNew = new List<string>();
 
             foreach (MethodDeclarationSyntax m in enumerable)
             {
-                string h = RoslynHelper.GetHeaderOfMethod(m);
+                string h = RoslynHelper.GetHeaderOfMethod(m, alsoModifier);
                 clMethodsSharedNew.Add(h);
                 int i = 0;
             }
@@ -412,16 +440,28 @@ namespace Roslyn
             return clMethodsSharedNew;
         }
 
-        public static string GetHeaderOfMethod(MethodDeclarationSyntax m)
+        public static SyntaxNode WithoutAllTrivia(SyntaxNode sn)
         {
+            return sn.WithoutLeadingTrivia().WithoutTrailingTrivia();
+        }
+
+        public static string GetHeaderOfMethod(MethodDeclarationSyntax m, bool alsoModifier = true)
+        {
+            m = m.WithoutTrivia();
             InstantSB sb = new InstantSB(AllStrings.space);
+
+            if (alsoModifier)
+            {
+                sb.AddItem(RoslynParser.GetAccessModifiers(m.Modifiers));
+            }
+
             bool isStatic = RoslynHelper.IsStatic(m.Modifiers);
             if (isStatic)
             {
                 sb.AddItem("static");
             }
-            sb.AddItem(m.ReturnType.ToFullString());
-            sb.AddItem(m.Identifier.Text);
+            sb.AddItem(m.ReturnType.WithoutTrivia().ToFullString());
+            sb.AddItem(m.Identifier.WithoutTrivia().Text);
             // in brackets, newline
             //string parameters = m.ParameterList.ToFullString(); 
             // only text
@@ -430,6 +470,54 @@ namespace Roslyn
 
             string s = sb.ToString();
             return s;
+        }
+
+        /// <summary>
+        /// CompilationUnitSyntax is also SyntaxNode 
+        /// After line must be A1 = A2 or some RoslynHelper.Get* methods
+        /// </summary>
+        /// <param name="cl"></param>
+        /// <param name="cl2"></param>
+        /// <param name="root"></param>
+        public static void ReplaceNode(SyntaxNode cl, SyntaxNode cl2, out SyntaxNode root) 
+        {
+            ReplaceNode<SyntaxNode>(cl, cl2, out root);
+        }
+
+        /// <summary>
+        /// CompilationUnitSyntax is also SyntaxNode
+        /// After line must be A1 = A2
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cl"></param>
+        /// <param name="cl2"></param>
+        /// <returns></returns>
+        public static T ReplaceNode<T>(SyntaxNode cl, SyntaxNode cl2, out SyntaxNode root) where T : SyntaxNode
+        {
+            bool first = true;
+            T result = default(T);
+            while (cl is SyntaxNode)
+            {
+                if (cl.Parent == null)
+                {
+                    break;
+                }
+                cl = cl.Parent.ReplaceNode(cl, cl2);
+                
+                if (first)
+                {
+                    result = (T)cl2;
+                    first = false;
+                }
+                cl2 = cl;
+                cl = cl.Parent;
+            }
+            root = cl2;
+            if (result== null)
+            {
+
+            }
+            return result;
         }
 
         private static string GetParameters(ParameterListSyntax parameterList)
@@ -445,9 +533,18 @@ namespace Roslyn
             return r;
         }
 
+
+
         public static bool IsStatic(SyntaxTokenList modifiers)
         {
+            
             return modifiers.Where(e => e.Value.ToString() == "static").Count() > 0;
+        }
+
+        internal static string NameWithoutGeneric(string name)
+        {
+            
+            return SH.RemoveAfterFirst(name, "<");
         }
     }
 }
