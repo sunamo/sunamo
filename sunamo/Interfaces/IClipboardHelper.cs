@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using sunamo.Generators.Text;
 
+/// <summary>
+/// Must be in sunamo, is used in win and apps
+/// </summary>
 public interface IClipboardHelper
     {
 		string GetText();
