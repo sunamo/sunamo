@@ -22,14 +22,14 @@ namespace desktop.Controls.Input
     {
         ComboBoxHelper<string> cbEnteredHelper = null;
 
-        public SelectOneValue(bool allowCustomEntry, string whatEnter, params object[] items)
+        public SelectOneValue(bool allowCustomEntry, string whatEnter, Func<object, string> toMakeNameInTWithName, params object[] items)
         {
             InitializeComponent();
 
             cbEnteredHelper = new ComboBoxHelper<string>(cbEntered);
             cbEntered.IsEditable = allowCustomEntry;
 
-            cbEnteredHelper.AddValuesOfArrayAsItems(items);
+            cbEnteredHelper.AddValuesOfArrayAsItems(toMakeNameInTWithName, null, items);
 
             Init(whatEnter);
         }

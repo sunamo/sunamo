@@ -9,69 +9,69 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 public class VisualTreeHelpers
+{
+    /// <summary>
+    /// Returns the first ancester of specified type
+    /// </summary>
+    public static T FindAncestor<T>(DependencyObject current)
+    where T : DependencyObject
     {
-        /// <summary>
-        /// Returns the first ancester of specified type
-        /// </summary>
-        public static T FindAncestor<T>(DependencyObject current)
-        where T : DependencyObject
+        current = VisualTreeHelper.GetParent(current);
+
+        while (current != null)
         {
+            if (current is T)
+            {
+                return (T)current;
+            }
             current = VisualTreeHelper.GetParent(current);
+        };
+        return null;
+    }
 
-            while (current != null)
-            {
-                if (current is T)
-                {
-                    return (T)current;
-                }
-                current = VisualTreeHelper.GetParent(current);
-            };
-            return null;
-        }
-
-        /// <summary>
-        /// Returns a specific ancester of an object
-        /// </summary>
-        public static T FindAncestor<T>(DependencyObject current, T lookupItem)
-        where T : DependencyObject
+    /// <summary>
+    /// Returns a specific ancester of an object
+    /// </summary>
+    public static T FindAncestor<T>(DependencyObject current, T lookupItem)
+    where T : DependencyObject
+    {
+        while (current != null)
         {
-            while (current != null)
+            if (current is T && current == lookupItem)
             {
-                if (current is T && current == lookupItem)
-                {
-                    return (T)current;
-                }
-                current = VisualTreeHelper.GetParent(current);
-            };
-            return null;
-        }
+                return (T)current;
+            }
+            current = VisualTreeHelper.GetParent(current);
+        };
+        return null;
+    }
 
-        /// <summary>
-        /// Finds an ancestor object by name and type
-        /// </summary>
-        public static T FindAncestor<T>(DependencyObject current, string parentName)
-        where T : DependencyObject
+    /// <summary>
+    /// Finds an ancestor object by name and type
+    /// </summary>
+    public static T FindAncestor<T>(DependencyObject current, string parentName)
+    where T : DependencyObject
+    {
+        while (current != null)
         {
-            while (current != null)
+            if (!string.IsNullOrEmpty(parentName))
             {
-                if (!string.IsNullOrEmpty(parentName))
-                {
-                    var frameworkElement = current as FrameworkElement;
-                    if (current is T && frameworkElement != null && frameworkElement.Name == parentName)
-                    {
-                        return (T)current;
-                    }
-                }
-                else if (current is T)
+                var frameworkElement = current as FrameworkElement;
+                if (current is T && frameworkElement != null && frameworkElement.Name == parentName)
                 {
                     return (T)current;
                 }
-                current = VisualTreeHelper.GetParent(current);
-            };
+            }
+            else if (current is T)
+            {
+                return (T)current;
+            }
+            current = VisualTreeHelper.GetParent(current);
+        };
 
-            return null;
+        return null;
 
-        }
+    }
 
     public static List<T> FindDescendents2<T>(DataGrid dtGrid)
     {
@@ -81,7 +81,7 @@ public class VisualTreeHelpers
         count = VisualTreeHelper.GetChildrenCount(child);
 
         // scrollviewer
-         child = VisualTreeHelper.GetChild(child, 0);
+        child = VisualTreeHelper.GetChild(child, 0);
         count = VisualTreeHelper.GetChildrenCount(child);
 
         // button
@@ -183,7 +183,7 @@ public class VisualTreeHelpers
     /// <param name="vr"></param>
     /// <param name="depObj"></param>
     /// <returns></returns>
-     static IEnumerable<T> FindDescendents<T>(List<T> vr, DependencyObject depObj) where T : DependencyObject
+    static IEnumerable<T> FindDescendents<T>(List<T> vr, DependencyObject depObj) where T : DependencyObject
     {
         if (depObj != null)
         {
@@ -194,11 +194,9 @@ public class VisualTreeHelpers
                 if (vr != null)
                 {
                     if (child != null && RH.IsOrIsDeriveFromBaseClass(child.GetType(), typeof(T)))
-                {
-                    
+                    {
                         vr.Add((T)child);
                     }
-                    
                 }
 
                 var desc = FindDescendents<T>(null, child).ToList();

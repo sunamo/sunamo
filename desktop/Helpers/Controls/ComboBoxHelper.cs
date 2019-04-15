@@ -90,17 +90,38 @@ public class ComboBoxHelper
     }
 
     /// <summary>
-    /// A1 was handler of MouseDown, now without using. Use second method without A1. 
+    /// A1 is out of using - set null
     /// </summary>
     /// <param name="eh"></param>
     /// <param name="o"></param>
     public void AddValuesOfArrayAsItems(RoutedEventHandler eh, params object[] o)
+    {
+        AddValuesOfArrayAsItems(null, eh, o);
+    }
+
+    /// <summary>
+    /// A2 was handler of MouseDown, now without using - set null. 
+    /// </summary>
+    /// <param name="eh"></param>
+    /// <param name="o"></param>
+    public void AddValuesOfArrayAsItems(Func<object, string> toMakeNameInTWithName, RoutedEventHandler eh, params object[] o)
         {
         var enu = CA.ToList<object>(o);
             int i = 0;
             foreach (object item in enu)
             {
+            if (toMakeNameInTWithName != null)
+            {
+                TWithName<object> t = new TWithName<object>();
+                t.name = toMakeNameInTWithName.Invoke(item);
+                t.t = item;
+                cb.Items.Add(t);
+            }
+            else
+            {
                 cb.Items.Add(item);
+            }
+                
                 i++;
             }
         }

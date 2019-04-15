@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -44,10 +48,15 @@ namespace desktop
 
         public static DataGridRow GetRow(DataGrid dataGrid1, int index)
         {
+            if (dataGrid1.ItemContainerGenerator.Status == GeneratorStatus.NotStarted)
+            {
+                dataGrid1.UpdateLayout();
+            }
+
             DataGridRow row = (DataGridRow)dataGrid1.ItemContainerGenerator.ContainerFromIndex(index);
             if (row == null)
             {
-                dataGrid1.UpdateLayout();
+                ;
                 dataGrid1.ScrollIntoView(dataGrid1.Items[index]);
                 row = (DataGridRow)dataGrid1.ItemContainerGenerator.ContainerFromIndex(index);
             }
@@ -128,5 +137,67 @@ namespace desktop
             }
             return vr.ToString();
         }
+
+        public static List<DataGridRow> GetDataGridRows(DataGrid dataGrid)
+        {
+            if (dataGrid.ItemContainerGenerator.Status == GeneratorStatus.NotStarted)
+            {
+                dataGrid.UpdateLayout();
+            }
+            List<DataGridRow> vr = new List<DataGridRow>();
+            for (int i = 0; i < dataGrid.Items.Count; i++)
+            {
+                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator
+                                                           .ContainerFromIndex(i);
+                vr.Add(row);
+            }
+            return vr;
+        }
+
+        public static void AddRows(DataGrid dtGrid, List<object> list, List<IList> o, params string[] columns)
+        {
+            foreach (var item in columns)
+            {
+
+                dtGrid.Columns.Add(DataGridHelper.NewTextColumn(item, null));
+            }
+
+            dtGrid.ItemsSource = o;
+        }
+
+        public static void EnableSorting(DataGrid dtGrid, bool v)
+        {
+            foreach (var item in dtGrid.Columns)
+            {
+                item.CanUserSort = v;
+            }
+        }
+
+        public static void SortDataGrid(DataGrid dataGrid, DataGridColumn column, ListSortDirection? sortDirection)
+        {
+            // Clear current sort descriptions
+            dataGrid.Items.SortDescriptions.Clear();
+
+            var sortDirection2 = ListSortDirection.Ascending;
+
+            if (sortDirection.HasValue)
+            {
+                sortDirection2 = sortDirection.Value;
+            }
+
+            // Add the new sort description
+            dataGrid.Items.SortDescriptions.Add(new SortDescription(column.SortMemberPath, sortDirection2));
+
+            // Apply sort
+            foreach (var col in dataGrid.Columns)
+            {
+                col.SortDirection = null;
+            }
+            column.SortDirection = sortDirection;
+
+            // Refresh items to display sort
+            dataGrid.Items.Refresh();
+        }
     }
+    
 }

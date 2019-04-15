@@ -29,7 +29,7 @@ public partial class TF
         var bom = new byte[4];
 
         file.Read(bom, 0, 4);
-        return EncodingHelper.DetectEncoding(bom);
+        return EncodingHelper.DetectEncoding(new List<byte>( bom));
     } 
 
     static void AppendToStartOfFileIfDontContains(List<string> files, string append)

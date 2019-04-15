@@ -1,12 +1,220 @@
-﻿https://github.com/Microsoft/vscode-go/issues/1211
-mělo by to tam být!!!
-
-občas to tady zredukovat:
+﻿občas to tady zredukovat:
 nakládání s omezeným časem
 zábrana proti rozptylování
 stanovení osobních cílů
 obrana před stresem a ztrátou energie
 hledání produktivních zvyklostí
+
+UWP:
+ControlHelper.GetMinimumSize - call only measure
+GetMinimumHeightMaximumWidth
+
+FrameworkElementHelper.SizeToContent - call measure and arrange
+
+=(1368-466)/2
+
+2560*1440
+
+1047*
+
+448+466+448=1368
+104+1044+466 2554
+---
+1,2560,1368
+Hor offset:1047
+Ver offset:446
+
+1047+1047+466=2560
+---
+
+factor 2,2560*1440 
+1280,648
+
+1280=523+523+234
+
+Hor offset:261.75
+Ver offset:103.75
+
+441=104+104+233
+
+1281=524+524+233
+
+
+Dejme tomu že scale factor nepotřebuji. Pak bude na všech scale factorech stejně velký popup. Důležité bude jen posunovat správně do prava/leva.
+
+problém je v že se nezvětší popup jak by 
+
+2018-1-31.csv
+2018-10-21.csv
+2018-12-27.csv
+2018-2-18.csv
+2018-2-5.csv
+2018-3-19.csv
+2018-3-9.csv
+2018-4-10.csv
+2018-5-15.csv
+2018-5-22.csv
+2018-5-28.csv
+2018-6-20.csv
+2018-6-21.csv
+2018-6-22.csv
+2018-6-29.csv
+2018-6-4.csv
+2018-7-21.csv
+2018-7-9.csv
+2018-8-13.csv
+2018-8-30.csv
+2019-1-15.csv
+2019-3-12.csv
+2019-3-13.csv
+2019-3-22.csv
+2019-3-4.csv
+2019-3-9.
+
+GC1TCJD Soutok gorolskych rek I. Lomna - Olza
+GC1JWRK Mekka vsech Gorolu
+GC2X3P1 Potok Kotelnice
+GC2GT71 Horska chata Bahenec
+GC2XR9H Prirodni rezervace Plenisko
+GC2ARCC Beskydmountains, Kiczory 989 m.n.m.
+GC62D4J Skały/Skaly
+GC75GCH Hranicni kameny na Ostre
+
+GC5RED6 Kody a hlavolamy #1
+GC5T9EF Kody a hlavolamy #2
+GC5WTPE Kody a hlavolamy #3
+GC56HGD U kowiora
+GC1M1P7 Gorolski kacor 2008
+GC1PGN3 Cycki
+GC7WZJ8 Odpoczynek pod Filipką/Resting place under Filipka
+GC2C2WA Nydek Hluchova - Kolibiska
+GC2GT87 Grunicek - sedlo
+GC3MPF8 Praseci hora
+GC2F44H Mravenci v Rohovci
+GC65W1P Kody a hlavolamy #5
+GC71G4F Zeleny most
+GC6XGEP Cimrman vynalezce
+GC1K4DX Loucka - zapomenuta hora
+GC6KRRB Daglezja
+GC2AC9R Beskydmountains, Velky Sosov 886 m.n.m.
+GC5H028 Beskydmountains ,Cieslar 921 m.n.m. - verze2
+GC3A4V2 Pohadkovy sirotek - Filipka
+
+je to na indexu 11, á
+
+znaků mi napočítal Google Docs 234
+First line: 239 187 191 97 114 98 105 116 114 97 114 121 44 110 195 131 194 161 104 111 100 110 195 131 194 189
+Wrong char: 239 187 191   195 131 194 161
+right UTF8: 239 187 191 195 161
+
+Vypadá to jako UTF8 dle hlavičky
+11 znaků má po 1 bajtu
+pak á má bajtů 4 (195 131 194 161)
+ale přiřom by měl mít jen 2 (195 161)
+
+239 187 191 97 114 98 105 116 114 97 114 121 44 110 195 161 104 111 100 110 195 189
+
+postup je v conapp1
+
+2018-5-22,2018-5-15 ač není v utf8, je diakriticky správně
+
+UDĚLAT ANALÝZU TOHO CO JSEM DĚLAL
+
+co dál je ve WpfApp1
+
+pomala rozcvicka
+
+co mam v mobilu, enkodovat a stahnout dalsi
+zavolat domince
+vybrat kde jit
+koupit listek na vlak
+jit, at toho stihnu co nejvice
+
+AppData,AppDataApps - AppDataAbstractBase,AppDataAppsAbstractBase - AppDataBase
+
+
+
+ve 2 se to lépe táhne dobrovolnice
+
+Hledal jsem pro InvalidateArrange, našlo mi to v WpfApp.cs na řádku 189, přitom existoval jen zakomentovaný na řádku 133
+
+
+Measure save to DesiredSize
+pak se volá Arrange s finalRect jež se uloží v Measure 
+
+My own panel: ‘V’ shaped layout  - working only with odd (lichý) počet elementů
+
+
+
+přidat všechny soubory co nejsou v csproj aby se kompilovala. při commitu často chce pull a merge a stáhne se mi neupdatovaný csproj
+
+find encoding of 2017-1-13.csv, qe have auto detect but still wrong 
+audio books about business in English, then to parents and mountains 
+vykrást instagram bohatého, s auty a modelky, test 
+download another fun as video
+https://www.youtube.com/watch?v=J9mQqb8FQPs&list=PLF5E8037B5A504E1C&index=14 trampske perly
+***
+TELE TELE
+https://www.youtube.com/user/CherryGT 2005 1,6 dil
+2007 14,
+
+HEVLEX KANÁL KANÁL. https://www.youtube.com/watch?v=o626puZBYhY&list=PLJTBj1OpYvuznsXO5htbUOUhlRwVyYhnP - 68,69
+***
+usage and returns in desktop.DisplayHelper
+
+all izer videos make as 0b file, to avoid download it again 
+transcribe points from begin of second capitol four hour work week in english and nexts
+
+add ads for gc again , gc is one of the best 
+
+akce v okolí!!! na tom není nic težkého!!!
+
+passive voice with was: screen 9:41pm 
+sort English screenshots via Irfanview, one category irregular verbs 
+download photos of actors, https://www.csfd.cz/film/23443-svetaci/prehled/, poznavat
+meetup.com 
+
+dl videos všesokolský slet 2018
+
+electronic version of four hour blog, find all uri by regex, explore 
+
+cleaning in bookmarks 
+saving user data in wpf, it's downloaded in vs
+hledám dívku které bych mohl poskytnout ubytování 
+photo to amateri 
+calculate to car 
+vybusne sporty, vysoko intenzivní cvičení:resultruntastic ,free lapix 
+
+
+yi home is installed, make working ape
+all review of apps to drive from backup, now I'm finding new alarm but don't want to do reseArch again 
+
+find new alarm for Xtreme alarm clock - don't allow play any music. 
+single artist 
+one song 
+creAte own playlist - but in add new songs are available alreAdy added 
+--
+every week look at new movies in cinema, jak jsou mladé ciganky co jezdí většinou ve dvou jim aspoň budu mít co říct 
+co jsou měsíčkyo 
+ostříhat chlupy v nose 
+k čemu jsou ty žluté bembajs foto 
+count and write towels - on college  coarse green, 6x soft globus, 6x tesco, 1x lidl, 2xikea
+zvazit tiskarnu, brasnu
+zmerit velikost skříní, nádob zda se vždy všechny pohodově vejdou 
+ foil company 
+---
+udělat už pořádek v těch kontaktech.chci napsat Tomovi zavadskemu a nemůžu. 
+stylus sx218 epson 
+develop concentration, exists many technics for it. without fully concentrationrr4 is any work useless
+repair jepsano.net, in all browsers with www. show bad page
+
+
+all KCT action from NET to cal
+najit / vymyslet historky z disco, abych mel pak co rikat kdyz se seznamuji.
+
+
+
+
 
 login to all ms accounts, when at any will need accept on auth disable two way
 
@@ -78,8 +286,7 @@ car
 mzdy
 time trackery
 holici strojky uspora
-vybrat penize, rozměnit na 100, schovat
-tieto payslip
+
 bible quiz flash
 cleaning number
 price dancing 
@@ -93,6 +300,15 @@ vytvořit video s popisem co se dělo v černobylo,
 
 udělat pořádek v tom co se uploaduje, je tam stále mnoho temp souborů z _
 
+android default for csv
+backup English app to huawei. write step by step tutorial. I really can't repeat the situation after I have bought new phone !!
+compare of alarms, for example dismiss without unlock, alarm clock extreme still open ad in stopwatch 
+mapy.cz jak zadávat souřadnic, app to copy to clipboard 
+huawei smart wifi 
+
+koleje nabídka kanc prostor 
+sauna na kolejích 
+cisco certifikát 4 levels 
 
 
 nuget.smbsrc.net - If the authors of the NuGet package publish symbol & source packages (to nuget.smbsrc.net), these can be downloaded via "SourceLink" in VS (Enabled via Options > Debugging > General > Enable source server support). 
@@ -165,8 +381,6 @@ t0011 saving control's data and statepersistently d:\Documents\Visual Studio 201
 t0012 Create generic method Average
 
 t0013 obnovit fotky, potrebuji je do bytu
-123cense;
-wobbuffet
 
 t0014 make CalculateDifferencesBetweenTwoDateTimes for use with any delimiter
 t0015 ClipboardWatcher show captured texts

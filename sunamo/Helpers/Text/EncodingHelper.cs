@@ -15,9 +15,9 @@ namespace sunamo.Helpers
         /// </summary>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static Encoding DetectEncoding(byte[] bom)
+        public static Encoding DetectEncoding(List<byte> bom)
         {
-            if (bom.Length > 3)
+            if (bom.Count > 3)
             {
                 byte first = bom[0];
                 byte second = bom[1];
@@ -75,13 +75,13 @@ namespace sunamo.Helpers
             public static char SUB = (char)26; // Substitute
         }
 
-        public static string ConvertTo(int destEncCodepage, byte[] input, string badCharsReplaceFor)
+        public static string ConvertTo(int destEncCodepage, List<byte> input, string badCharsReplaceFor)
         {
             Encoding srcEnc = DetectEncoding(input);
 
             Encoding destEnc = Encoding.GetEncoding(destEncCodepage, new EncoderReplacementFallback(badCharsReplaceFor), new DecoderReplacementFallback(badCharsReplaceFor));
 
-            return destEnc.GetString( Encoding.Convert(srcEnc, destEnc, input));
+            return destEnc.GetString( Encoding.Convert(srcEnc, destEnc, input.ToArray()));
         }
     }
 }

@@ -41,6 +41,30 @@ public static partial class BTS
     }
 
     /// <summary>
+    /// Check for null in A2
+    /// </summary>
+    /// <param name="tag2"></param>
+    /// <param name="tag"></param>
+    /// <returns></returns>
+    public static bool CompareAsObjectAndString(object tag2, object tag)
+    {
+        bool same = false;
+        if (tag2 != null)
+        {
+            if (tag == tag2)
+            {
+                same = true;
+            }
+            else if (tag.ToString() == tag2.ToString())
+            {
+                same = true;
+            }
+        }
+        return same;
+
+    }
+
+    /// <summary>
     ///  G zda  prvky A2 - Ax jsou hodnoty A1.
     /// </summary>
     /// <param name="hodnota"></param>

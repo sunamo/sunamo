@@ -31,7 +31,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
     }
 
-    public abstract StorageFolder GetSunamoFolder();
+    
 
     string fileFolderWithAppsFiles = "";
 
@@ -39,11 +39,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     {
     }
 
-    public abstract string GetCommonSettings(string key);
 
-    public abstract void SetCommonSettings(string key, string value);
-
-    public abstract string GetFileCommonSettings(string key);
 
     public string GetFolderWithAppsFiles()
     {
@@ -72,8 +68,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
             throw new Exception("Není vyplněno název aplikace.");
         }
     }
-
-    
 
     /// <summary>
     /// If file A1 dont exists, then create him with empty content and G SE. When optained file/folder doesnt exists, return SE

@@ -199,7 +199,34 @@ namespace sunamo
                 }
             }
             return null;
-        } 
+        }
+
+        /// <summary>
+        /// Check whether A1 is or is derived from A2
+        /// </summary>
+        /// <param name="type1"></param>
+        /// <param name="type2"></param>
+        /// <returns></returns>
+        public static bool IsOrIsDeriveFromBaseClass(Type children, Type parent)
+        {
+            if (children == null)
+            {
+                ThrowExceptions.IsNull(type, "IsOrIsDeriveFromBaseClass", "children", children);
+            }
+            while (true)
+            {
+                if (children == null)
+                {
+                    return false;
+                }
+                if (children == parent)
+                {
+                    return true;
+                }
+                children = children.BaseType;
+            }
+            return false;
+        }
         #endregion
 
         #region FullName

@@ -1,14 +1,16 @@
-﻿using System;
+﻿using sunamo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 public class FrameworkElementHelper
 {
-
+    static Type type = typeof(FrameworkElementHelper);
 
     public static Size GetMaxContentSize(FrameworkElement fe)
     {
@@ -43,6 +45,49 @@ public class FrameworkElementHelper
     public static T FindName<T>(FrameworkElement element, string controlNamePrefix, int serie)
     {
         return FindName<T>(element, controlNamePrefix + serie);
+    }
+
+    static bool IsContentControl(object customControl)
+    {
+        return RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(ContentControl));
+    }
+
+    static bool IsPanel(object customControl)
+    {
+        return RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel));
+    }
+
+    internal static T FindByTag<T>(object customControl, object v) where T : FrameworkElement
+    {
+        if (RH.IsOrIsDeriveFromBaseClass( customControl.GetType(), typeof(ContentControl)))
+        {
+            ContentControl c = (ContentControl)customControl;
+            return FindByTag<T>(c.Content, v);
+        }
+        else if (RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel)))
+        {
+            Panel c = (Panel)customControl;
+            foreach (var item in c.Children)
+            {
+                if (RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel)) || )
+                {
+
+                }
+                if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(FrameworkElement)))
+                {
+                    FrameworkElement fw = (FrameworkElement)item;
+                    if (BTS.CompareAsObjectAndString(fw.Tag, v))
+                    {
+                        return (T)fw;
+                    }
+                }
+            }
+        }
+        else
+        {
+            ThrowExceptions.Custom(type, "", "customControl is not ContentControl or Panel");
+        }
+        return default(T);
     }
 
     public static T FindName<T>(FrameworkElement element, string controlName)

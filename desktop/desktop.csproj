@@ -210,6 +210,7 @@
     <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
     <Compile Include="Helpers\Content\EmbeddedResourcesH.cs" />
     <Compile Include="Helpers\Content\ResourcesH.cs" />
@@ -284,6 +285,7 @@
     <Compile Include="TrialManager.cs" />
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
+    <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
     <Compile Include="Windows\EnterValueForm.xaml.cs">
       <DependentUpon>EnterValueForm.xaml</DependentUpon>
