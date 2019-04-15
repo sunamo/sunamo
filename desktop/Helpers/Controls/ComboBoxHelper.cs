@@ -28,6 +28,15 @@ public class ComboBoxHelper
         }
     }
 
+    public static object ValueFromTWithNameOrObject(object o)
+    {
+        if (o is TWithName<object>)
+        {
+            return ((TWithName<object>)o).t;
+        }
+        return o;
+    }
+
     public static void SetFocus(ComboBox comboBox1)
     {
         Keyboard.Focus(comboBox1);
@@ -57,7 +66,8 @@ public class ComboBoxHelper
         {
             get
             {
-                return SelectedO.ToString();
+            // not need ValueFromTWithNameOrObject, TWithName has ToString
+            return SelectedO.ToString();
             }
         }
 
@@ -81,7 +91,8 @@ public class ComboBoxHelper
         void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedO = cb.SelectedItem;
-            cb.ToolTip = originalToolTipText + " " + SelectedO.ToString();
+        // not need ValueFromTWithNameOrObject, TWithName has ToString
+        cb.ToolTip = originalToolTipText + " " + SelectedO.ToString();
         }
 
     public void AddValuesOfArrayAsItems(params object[] o)

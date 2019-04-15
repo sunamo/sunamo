@@ -117,6 +117,7 @@
     <Compile Include="Controls\ToggleSwitch\Utils\ActualSizePropertyProxy.cs" />
     <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
     <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
+    <Compile Include="DataTableHelper.cs" />
     <Compile Include="Data\BorderData.cs" />
     <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="ExceptionStrings.cs" />

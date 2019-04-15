@@ -120,12 +120,13 @@ namespace desktop.Controls
         }
 
         /// <summary>
-        /// A1 = string
+        /// A1 = string, cant be null
         /// </summary>
         /// <param name="input"></param>
         public void Accept(object input)
         {
             selectFolder.SelectedFolder = input.ToString();
+            ChangeDialogResult(true);
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
         }

@@ -93,7 +93,20 @@ public class PH
             Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));
         }
 
-    
+    /// <summary>
+    /// A1 without extension
+    /// </summary>
+    /// <param name="name"></param>
+    public static int Terminate(string name)
+    {
+        int deleted = 0;
+        foreach (var process in Process.GetProcessesByName(name))
+        {
+            process.Kill();
+            deleted++;
+        }
+        return deleted;
+    }
 
     public static void OpenInBrowser(string uri)
     {

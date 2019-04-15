@@ -49,7 +49,16 @@ public class FrameworkElementHelper
 
     static bool IsContentControl(object customControl)
     {
-        return RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(ContentControl));
+        if( RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(ContentControl)))
+        {
+            var contentControl = (ContentControl)customControl;
+            if (RH.IsOrIsDeriveFromBaseClass( contentControl.Content.GetType(), typeof(FrameworkElement)))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     static bool IsPanel(object customControl)
@@ -59,19 +68,19 @@ public class FrameworkElementHelper
 
     internal static T FindByTag<T>(object customControl, object v) where T : FrameworkElement
     {
-        if (RH.IsOrIsDeriveFromBaseClass( customControl.GetType(), typeof(ContentControl)))
+        if (IsContentControl(customControl))
         {
             ContentControl c = (ContentControl)customControl;
             return FindByTag<T>(c.Content, v);
         }
-        else if (RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel)))
+        else if (IsPanel(customControl))
         {
             Panel c = (Panel)customControl;
             foreach (var item in c.Children)
             {
-                if (RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel)) || )
+                if (IsPanel(item) || IsContentControl(item))
                 {
-
+                    return FindByTag<T>(item, v);
                 }
                 if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(FrameworkElement)))
                 {

@@ -40,6 +40,8 @@ public  static partial class CA
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
     }
 
+    
+
     /// <summary>
     /// direct edit
     /// Remove duplicities from A1
@@ -634,27 +636,38 @@ public static List<short> ToShort(IEnumerable enumerable)
         return result;
     }
 
-/// <summary>
+    public static List<T> ToNumber<T>(Func<string, T> parse, IEnumerable enumerable)
+    {
+        List<T> result = new List<T>();
+        foreach (var item in enumerable)
+        {
+            result.Add(parse.Invoke(item.ToString()));
+        }
+        return result;
+    }
+
+    /// <summary>
     /// Pokud potřebuješ vrátit null když něco nebude sedět, použij ToInt s parametry nebo ToIntMinRequiredLength
     /// </summary>
     /// <param name="altitudes"></param>
     /// <returns></returns>
     public static List<int> ToInt(IEnumerable enumerable)
     {
-        List<int> result = new List<int>();
-        foreach (var item in enumerable)
-        {
-            result.Add(int.Parse(item.ToString()));
-        }
-        return result;
+        return ToNumber<int>(int.Parse, enumerable);
     }
-/// <summary>
-    /// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
+
     public static List<int> ToInt(IEnumerable enumerable, int requiredLength)
+    {
+        return ToNumber<int>(BTS.TryParseInt, enumerable, requiredLength);
+    }
+
+/// <summary>
+/// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
+/// </summary>
+/// <param name="altitudes"></param>
+/// <param name="requiredLength"></param>
+/// <returns></returns>
+    public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IEnumerable enumerable, int requiredLength)
     {
         int enumerableCount = enumerable.Count();
         if (enumerableCount != requiredLength)
@@ -662,13 +675,14 @@ public static List<short> ToShort(IEnumerable enumerable)
             return null;
         }
 
-        List<int> result = new List<int>();
-        int y = 0;
+        List<T> result = new List<T>();
+        T y = default(T);
         foreach (var item in enumerable)
         {
-            if (int.TryParse(item.ToString(), out y))
+            var yy = tryParse.Invoke(item.ToString(), y);
+            if (!EqualityComparer<T>.Default.Equals( yy , y))
             {
-                result.Add(y);
+                result.Add(yy);
             }
             else
             {
@@ -677,40 +691,47 @@ public static List<short> ToShort(IEnumerable enumerable)
         }
         return result;
     }
-/// <summary>
-    /// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
+
     public static List<int> ToInt(IEnumerable altitudes, int requiredLength, int startFrom)
     {
-        int finalLength = altitudes.Count() - startFrom;
+        return ToNumber<int>(BTS.TryParseInt, altitudes, requiredLength, startFrom);
+    }
+
+/// <summary>
+/// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
+/// </summary>
+/// <param name="altitudes"></param>
+/// <param name="requiredLength"></param>
+/// <returns></returns>
+    public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IEnumerable altitudes, int requiredLength, T startFrom) where T : IComparable
+    {
+        int finalLength = altitudes.Count() - int.Parse( startFrom.ToString());
         if (finalLength < requiredLength)
         {
             return null;
         }
-        List<int> vr = new List<int>(finalLength);
+        List<T> vr = new List<T>(finalLength);
 
-        int i = 0;
+        T i = default(T);
         foreach (var item in altitudes)
         {
-            if (i < startFrom)
+            if (i.CompareTo(startFrom) !=0)
             {
                 continue;
             }
 
-            int y = 0;
-            if (int.TryParse(item.ToString(), out y))
+            T y = default(T);
+            var yy = tryParse.Invoke(item.ToString(), y);
+            if (!EqualityComparer<T>.Default.Equals(yy, y))
             {
-                vr.Add(y);
+                vr.Add(yy);
             }
             else
             {
                 return null;
             }
 
-            i++;
+            
         }
 
         return vr;

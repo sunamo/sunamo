@@ -27,7 +27,7 @@ public class ComboBoxHelper<T> : ComboBoxHelper
     {
         get
         {
-            return (T)SelectedO;
+            return (T)ComboBoxHelper.ValueFromTWithNameOrObject( SelectedO);
         }
 
 

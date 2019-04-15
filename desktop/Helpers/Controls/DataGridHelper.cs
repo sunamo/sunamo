@@ -158,9 +158,10 @@ namespace desktop
         {
             foreach (var item in columns)
             {
-
                 dtGrid.Columns.Add(DataGridHelper.NewTextColumn(item, null));
             }
+
+
 
             dtGrid.ItemsSource = o;
         }
