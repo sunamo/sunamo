@@ -83,5 +83,35 @@ namespace sunamo.Helpers
 
             return destEnc.GetString( Encoding.Convert(srcEnc, destEnc, input.ToArray()));
         }
+
+        public static Dictionary<int, string> ConvertToAllAvailableEncodings(byte[] buffer)
+        {
+            
+
+            Dictionary<int, string> v = new Dictionary<int, string>();
+
+            Encoding e = null;
+
+            var encs = Encoding.GetEncodings();
+            foreach (var item in encs)
+            {
+                 e = item.GetEncoding();
+                v.Add(e.CodePage, Encoding.UTF8.GetString( Encoding.Convert(e,Encoding.UTF8, buffer)));
+            }
+
+            
+            e = Encoding.GetEncoding("latin1");
+            v.Remove(e.CodePage);
+            v.Add(e.CodePage, Encoding.UTF8.GetString(Encoding.Convert(e, Encoding.UTF8, buffer)));
+
+            //using (System.IO.FileStream output = new System.IO.FileStream(outFileName,
+            //                                     System.IO.FileMode.Create,
+            //                                     System.IO.FileAccess.Write))
+            //{
+            //    output.Write(converted, 0, converted.Length);
+            //}
+
+            return v;
+        }
     }
 }

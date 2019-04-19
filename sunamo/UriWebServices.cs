@@ -7,6 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
+/// <summary>
+/// vše co je s adresou musím encodovat
+/// </summary>
 public static class UriWebServices
 {
     public static class RepairMobile
@@ -348,6 +351,19 @@ Template for which I will find, have to be in derivates the same:
         }
     }
 
+    public class Facebook
+    {
+        public static string FacebookProfile(string nick)
+        {
+            return "http://www.facebook.com/" + nick;
+        }
+
+        public static string FbTopSearch(string q)
+        {
+            return UriWebServices.FromChromeReplacement("https://www.facebook.com/search/top/?q=%s&epa=SEARCH_BOX", q);
+        }
+    }
+
     public static string KmoAll(string item)
     {
         return FromChromeReplacement("", item);
@@ -374,10 +390,7 @@ Template for which I will find, have to be in derivates the same:
         }
     }
 
-    public static string FacebookProfile(string nick)
-    {
-        return "http://www.facebook.com/" + nick;
-    }
+    
 
     public static string TwitterProfile(string nick)
     {
@@ -391,7 +404,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string WebShare(string item)
     {
-        return "https://webshare.cz/#/search?what=" + item;
+        return "https://webshare.cz/#/search?what=" + UrlEncode( item);
     }
 
     public static string YouTubeProfile(string nick)
@@ -435,13 +448,13 @@ Template for which I will find, have to be in derivates the same:
     public static string GoogleSearch(string s)
     {
         // q for reviews in czech and not translated 
-        return "https://www.google.cz/search?hl=cs&q=" + s;
+        return "https://www.google.cz/search?hl=cs&q=" + UrlEncode( s);
     }
 
     public static string GoogleSearchSite(string site, string v)
     {
         //https://www.google.cz/search?q=site%3Asunamo.cz+s
-        return  "https://www.google.cz/search?q=site%3A" + site + "+" + v;
+        return  "https://www.google.cz/search?q=site%3A" + site + "+" + UrlEncode( v);
     }
 
     public static string FromChromeReplacement(string uri, string term)
@@ -472,6 +485,11 @@ Template for which I will find, have to be in derivates the same:
         return FromChromeReplacement( "https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
     }
 
+    public static string UrlEncode(string s)
+    {
+        return UH.UrlEncode(s);
+    }
+
     /// <summary>
     /// Summary description for YouTube
     /// </summary>
@@ -496,6 +514,8 @@ Template for which I will find, have to be in derivates the same:
         {
             return "http://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
         }
+
+        
 
         /// <summary>
         /// G null pokud se YT kód nepodaří získat

@@ -1,4 +1,5 @@
 ﻿using sunamo.Data;
+using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -122,5 +123,26 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
     public static List< byte> ReadAllBytes(string file)
     {
         return File.ReadAllBytes(file).ToList();
+
+        using (System.IO.FileStream input = new System.IO.FileStream(file,
+                                    System.IO.FileMode.Open,
+                                    System.IO.FileAccess.Read))
+        {
+            byte[] buffer = new byte[input.Length];
+
+            int readLength = 0;
+
+            while (readLength < buffer.Length)
+                readLength += input.Read(buffer, readLength, buffer.Length - readLength);
+
+            return buffer.ToList();
+        }
+
+        
+    }
+
+    public static void WriteAllText(string file, string content)
+    {
+        File.WriteAllText(file, content);
     }
 }

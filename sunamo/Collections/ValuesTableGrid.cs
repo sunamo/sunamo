@@ -35,9 +35,11 @@ namespace sunamo.Collections
             var s = exists[0];
             for (int i = 0; i < s.Count; i++)
             {
-                DataRow newRow = newTable.NewRow();
+                DataRow newRow = newTable.NewRow() ;
 
-                newRow[0] = captions[i];
+                var caption = CA.GetIndex( captions,i);
+                newRow[0] = caption == null ? string.Empty : caption.ToString();
+
                 for (int j = 0; j < exists.Count; j++)
                     newRow[j + 1] = exists[j][i];
                 newTable.Rows.Add(newRow);

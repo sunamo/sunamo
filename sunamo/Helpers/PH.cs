@@ -59,7 +59,14 @@ public class PH
     {
         v = NormalizeUri(v);
         v = v.Trim();
-        Process.Start(v);
+        if (System.Uri.IsWellFormedUriString(v, UriKind.Absolute))
+        {
+            Process.Start(v);
+        }
+        else
+        {
+            DebugLogger.Instance.WriteLine("Wasnt in right format: " + v);
+        }
     }
 
     public static void SaveAndOpenInBrowser(Browsers prohlizec, string htmlKod)

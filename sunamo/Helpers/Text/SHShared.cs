@@ -155,6 +155,59 @@ public static partial class SH
         return vstup;
     }
 
+    public static bool IsValidISO(string input)
+    {
+        // ISO-8859-1 je to samé jako latin1 https://en.wikipedia.org/wiki/ISO/IEC_8859-1
+        byte[] bytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(input);
+        String result = Encoding.GetEncoding("ISO-8859-1").GetString(bytes);
+        return String.Equals(input, result);
+    }
+
+    /// <summary>
+    /// když je v souboru rozsypaný čaj, přečíst přes TF.ReadFile, převést přes SH.ChangeEncodingProcessWrongCharacters. Pokud u žádného není text smysluplný, je to beznadějně poškozené. 
+    /// V opačném případě 10 kódování by mělo být v pořádku.
+    /// </summary>
+    /// <param name="c"></param>
+    /// <param name="oldEncoding"></param>
+    /// <returns></returns>
+    public static bool ChangeEncodingProcessWrongCharacters(ref string c, Encoding oldEncoding)
+    {
+        if (IsValidISO(c))
+        {
+            var b = oldEncoding.GetBytes(c);
+            c = Encoding.UTF8.GetString(b);
+            return true;
+        }
+        else
+        {
+            // ý musí být před í, ě před č
+            c = SH.ReplaceManyFromString(c, @"Ã©,ý
+Ã½,ý
+Ă˝,é
+Å¥,š
+Ĺ,ř
+Ã¡,á
+Åˆ,ň
+Å¡,š
+Ä›,ě
+Å¯,ů
+Å¾,ž
+Ãº,ú
+Å™,ř
+Ã,í
+Ä,č
+", ",");
+            return true;
+        }
+        return false;
+    }
+
+    public static bool ChangeEncodingProcessWrongCharacters(ref string c)
+    {
+        return ChangeEncodingProcessWrongCharacters(ref c, Encoding.GetEncoding("latin1"));
+    }
+
+
     public static string ReplaceByIndex(string s, string zaCo, int v, int length)
     {
         s = s.Remove(v, length);
@@ -466,7 +519,8 @@ public static string Format(string status, params object[] args)
     }
 
 /// <summary>
-    /// Whether A1 contains any from a3. if a2 and A3 contains only 1 element, check for contains these first element
+    /// Return which a3 is contained in A1. if a2 and A3 contains only 1 element, check for contains these first element
+    /// If contains more elements, wasnts check
     /// Return elements from A3 which is contained
     /// </summary>
     /// <param name="item"></param>
@@ -556,7 +610,60 @@ public static bool ContainsVariable(char p, char k, string innerHtml)
         return false;
     }
 
-public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
+    public static string ReplaceManyFromString(string input, string v, string delimiter)
+    {
+        string methodName = "ReplaceManyFromString";
+        var l = SH.GetLines(v);
+        foreach (var item in l)
+        {
+            var p = SH.Split(item, delimiter);
+            CA.Trim(p);
+            string from, to;
+            from = to = null;
+            
+            if (p.Count > 0)
+            {
+                from = p[0];
+            }
+            else
+            {
+                ThrowExceptions.Custom(type, methodName, item + " hasn't from");
+            }
+            
+            if (p.Length() > 1)
+            {
+                to = p[1];
+            }
+            else
+            {
+                ThrowExceptions.Custom(type, methodName, item + " hasn't to");
+            }
+
+            if ( SH.IsWildcard(item) )
+            {
+                Wildcard wc = new Wildcard(from);
+                var occurences = wc.Matches(input);
+                foreach (Match  m in occurences)
+                {
+                    var result = m.Result("abc");
+                    var groups = m.Groups;
+                    var captues = m.Captures;
+                    var value = m.Value;
+                    
+                }
+            }
+            else
+            {
+                //Wildcard wildcard = new Wildcard();
+                input = SH.ReplaceAll(input, to, from);
+            }
+            
+        }
+
+        return input;
+    }
+
+    public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
         return ReplaceVariables('{', '}', innerHtml, _dataBinding, actualRow);
     }

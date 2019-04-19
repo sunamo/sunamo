@@ -34,7 +34,7 @@ public class MenuItemHelper
 
     public static MenuItem CreateNew(string header, RoutedEventHandler clickHandler)
     {
-        MenuItem menuItem = new MenuItem();
+        MenuItem menuItem = CreateNew(header);
         menuItem.Click += clickHandler;
         return menuItem;
     }

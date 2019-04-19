@@ -1433,6 +1433,17 @@ public static partial class SH
         return p;
     }
 
+    public static bool IsWildcard(string text)
+    {
+        return SH.ContainsAny(text, false, CA.ToEnumerable("?", "*")).Count > 1;
+    }
+
+    /// <summary>
+    /// Whether A1 is under A2
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="mask"></param>
+    /// <returns></returns>
     public static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, '?', '*');

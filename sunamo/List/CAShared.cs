@@ -40,7 +40,26 @@ public  static partial class CA
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
     }
 
-    
+    /// <summary>
+    /// Return null if A1 will be null
+    /// </summary>
+    /// <param name="captions"></param>
+    /// <param name="i"></param>
+    /// <returns></returns>
+    internal static object GetIndex(List<string> captions, int i)
+    {
+        if (captions == null)
+        {
+            return null;
+        }
+        if (!HasIndex(i, captions))
+        {
+            return null;
+        }
+        return captions[i];
+    }
+
+
 
     /// <summary>
     /// direct edit

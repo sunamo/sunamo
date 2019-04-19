@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
@@ -147,8 +148,20 @@ namespace desktop
             List<DataGridRow> vr = new List<DataGridRow>();
             for (int i = 0; i < dataGrid.Items.Count; i++)
             {
-                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator
-                                                           .ContainerFromIndex(i);
+                var d = dataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+
+                
+
+                if (d == null)
+                {
+                    // These 2 lines help get all DataGridRow but wont work if is working with templates (like checkbox)
+                    //dataGrid.UpdateLayout();
+                    //dataGrid.ScrollIntoView(dataGrid.Items[i]);
+                    d = dataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+                }
+
+
+                DataGridRow row = (DataGridRow)d;
                 vr.Add(row);
             }
             return vr;
@@ -161,13 +174,12 @@ namespace desktop
                 dtGrid.Columns.Add(DataGridHelper.NewTextColumn(item, null));
             }
 
-
-
             dtGrid.ItemsSource = o;
         }
 
         public static void EnableSorting(DataGrid dtGrid, bool v)
         {
+            dtGrid.CanUserSortColumns = v;
             foreach (var item in dtGrid.Columns)
             {
                 item.CanUserSort = v;

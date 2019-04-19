@@ -1,17 +1,10 @@
-RandomHelper:
-RandomString
-RandomBytes
-
-SH:
-public static string SubstringIfAvailable(string input, int lenght)
-GetCharsInRange
-RemoveLastChar
-IsChinese
-
-CA:
-HasIndex 2x
-IsEqualToAnyElement 2x
-GetLength
-
-UH:
-GetUriSafeString
+﻿Ã¡,á
+Å¡,š
+Ä›,ě
+Å¯,ů
+Ã,í
+Ãº,ú
+Ã½,ý
+Å™,ř
+Ä,č
+Å¾,ž
