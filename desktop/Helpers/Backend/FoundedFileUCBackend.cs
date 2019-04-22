@@ -25,6 +25,7 @@ namespace desktop.Helpers.Backend
 
         /// <summary>
         /// A1 and A3 can be null - ReviewRestoredSourceFilesUC
+        /// A5 = Consts.addRowsToCodeTextBoxDuringScrolling
         /// </summary>
         /// <param name="selectedCastHelperString"></param>
         /// <param name="txtContent"></param>

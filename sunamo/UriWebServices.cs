@@ -20,6 +20,24 @@ public static class UriWebServices
         }
     }
 
+    public static class CdnProviders
+    {
+        //
+        public const string cdnjs = "https://api.cdnjs.com/libraries?search=%s";
+        /// <summary>
+        /// Search for everything on npm
+        /// </summary>
+        public const string unpkg = "https://www.npmjs.com/search?q=%s";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+        //public const string cdnjs = "";
+
+        public static readonly List<string> All = CA.ToListString(cdnjs, unpkg);
+
+    }
+
     public static class RemoteJobs
     {
         public const string WwwFlexjobsCom = "https://www.flexjobs.com/search?search=%s&location=";

@@ -199,17 +199,8 @@ SunamoPage nesmí být odvozena od Page. Nebo aspon se v ní nesmí pracovat se 
 
 najít metody na On nebo Page_ a nejsou public. Když jsou v samostatné assembly nezavolají se.
 
-
 registrovat na jepsano.net, takhle mam skoro 1000 uzivatelu, musi byt nutnost overit mail
 
-
- mestske byty havirov
-
- ostatní koleje v ČR, kolik je aktuálně obsazených
-
-22-12-0-0-21-1
-
-https://www.mra.cz/
 App pro sql syntaxi kde je volana, viz seznam procedur a funkci v sql
 tiketovací System a sledovac casu 
 
@@ -308,6 +299,7 @@ t0070 repair encoding of words.
 t0071 find the best fotovoltaic panel
 t0072 find and download fotohints
 t0073 Learn Go
+t0074 books opel zafira
 
 inz na amatéry, žena z prahy - prod kalhoty, porno časáky, záloha
 

@@ -6,8 +6,16 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
+/// <summary>
+/// Key is filename
+/// Value is ApplicationDataContainerList (every instance has unique file)
+/// </summary>
 public class ApplicationDataContainer : ApplicationDataConsts
 {
+    /// <summary>
+    /// In key are control
+    /// In value its saved values
+    /// </summary>
     public Dictionary<object, ApplicationDataContainerList> data = new Dictionary<object, ApplicationDataContainerList>();
     readonly Type type = typeof(Type);
     string file = "";
@@ -27,14 +35,14 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     }
 
-    public ApplicationDataContainerList Values
-    {
-        get
-        {
-            var list = data[file];
-            return list;
-        }
-    }
+    //public ApplicationDataContainerList Values
+    //{
+    //    get
+    //    {
+    //        var list = data[file];
+    //        return list;
+    //    }
+    //}
 
     public void Add(ComboBox cb)
     {

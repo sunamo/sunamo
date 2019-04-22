@@ -99,26 +99,29 @@ public partial class FS
 
         public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool replaceSimple)
         {
-        bool c = files.Contains(@"d:\Documents\vs\sunamo.cz\sunamo.cz-later\sunamo.cz-later\Kocicky\Photo.aspx.cs");
-            foreach (var item in files)
+        
+        foreach (var item in files)
+        {
+            if (!EncodingHelper.isBinary(item))
             {
                 var content = TF.ReadFile(item);
                 if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
                 {
                     for (int i = 0; i < replaceFrom.Count; i++)
                     {
-                    if (replaceSimple)
-                    {
-                        content = content.Replace(replaceFrom[i], replaceTo[i]);
-                    }
-                    else
-                    {
-                        content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
-                    }
+                        if (replaceSimple)
+                        {
+                            content = content.Replace(replaceFrom[i], replaceTo[i]);
+                        }
+                        else
+                        {
+                            content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                        }
                     }
                     TF.SaveFile(content, item);
                 }
             }
+        }
         }
 
         /// <summary>
@@ -195,7 +198,11 @@ public partial class FS
 
         public static string MascFromExtension(string ext = AllStrings.asterisk)
         {
+        if (!ext.StartsWith("*."))
+        {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
+        }
+        return ext;
         }
 
         public static IEnumerable<string> GetFiles(string folderPath, bool recursive)
@@ -892,14 +899,27 @@ public partial class FS
             return FS.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
         }
 
-        /// <summary>
-        /// A1 have to be with ending backslash
-        /// </summary>
-        /// <param name="folder"></param>
-        /// <param name="mask"></param>
-        /// <param name="searchOption"></param>
-        /// <returns></returns>
-        public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
+    public static List<string> AllFilesInFolders(IEnumerable<string> folders,IEnumerable<string> exts, SearchOption so)
+    {
+        List<string> files = new List<string>();
+        foreach (var item in folders)
+        {
+            foreach (var ext in exts)
+            {
+                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(ext), so));
+            }
+        }
+        return files;
+    }
+
+    /// <summary>
+    /// A1 have to be with ending backslash
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="mask"></param>
+    /// <param name="searchOption"></param>
+    /// <returns></returns>
+    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
         {
             var list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
             if (trimA1)
@@ -1207,7 +1227,7 @@ public partial class FS
             ThrowExceptions.NoPassedFolders(type, "AllExtensionsInFolders", folders);
 
             List<string> vr = new List<string>();
-            List<string> files = AllFilesInFolders(so, folders);
+            List<string> files = AllFilesInFolders(CA.ToListString(folders), CA.ToListString("*."), so);
 
             files = new List<string>(OnlyExtensionsToLower(files));
             foreach (var item in files)
@@ -1220,15 +1240,7 @@ public partial class FS
             return vr;
         }
 
-        public static List<string> AllFilesInFolders(SearchOption so, params string[] v)
-        {
-            List<string> files = new List<string>();
-            foreach (var item in v)
-            {
-                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(), so));
-            }
-            return files;
-        }
+        
 
     public static string replaceIncorrectFor = string.Empty;
 

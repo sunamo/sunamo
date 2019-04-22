@@ -13,7 +13,7 @@ public class JavaScriptPaths
     public const string jQueryEasings = "js/jquery/jquery.easings.min.js";
     public const string jQueryTouchSwipe = "js/jquery/jquery.touchSwipe.min.js";
     
-    public const string jQuerySpinner = "js/jquery/jquery.spinner.min.js";
+    public const string jQuerySpinner = "node_modules/jquery.spinner/dist/js/jquery.spinner.min.js";
     public const string Mousetrap = "js/mousetrap.min.js";
     public const string Web_HtmlGenerator = "ts/Web/HtmlGenerator.js";
     public const string Web_Clipboard = "ts/Web/Clipboard.js";

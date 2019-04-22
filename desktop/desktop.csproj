@@ -90,6 +90,9 @@
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectMoreFolders.xaml.cs">
+      <DependentUpon>SelectMoreFolders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
       <DependentUpon>SelectOneValue.xaml</DependentUpon>
     </Compile>
@@ -303,6 +306,7 @@
     <Compile Include="Windows\WindowResult.cs" />
     <Compile Include="Windows\WindowWithUserControl.cs" />
     <Compile Include="WpfControlGenerator.cs" />
+    <Compile Include="WpfScreen.cs" />
     <Compile Include="XamlDisplay.cs" />
     <Compile Include="XamlGenerator.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />
@@ -336,6 +340,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Input\EnterOneValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectMoreFolders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

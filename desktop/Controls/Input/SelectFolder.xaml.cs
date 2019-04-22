@@ -1,4 +1,5 @@
-﻿using sunamo;
+﻿using desktop.AwesomeFont;
+using sunamo;
 using sunamo.Constants;
 using sunamo.Essential;
 using System;
@@ -28,6 +29,8 @@ namespace desktop.Controls
 
         //public event VoidString FolderSelected;
         public event VoidString FolderChanged;
+        public event VoidT<SelectFolder> FolderRemoved;
+
         public SelectFolder()
         {
             InitializeComponent();
@@ -39,6 +42,13 @@ namespace desktop.Controls
             cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
             
 #endif
+
+            Loaded += SelectFolder_Loaded;
+        }
+
+        private async void SelectFolder_Loaded(object sender, RoutedEventArgs e)
+        {
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnRemoveFolder, "\uf00d");
         }
 
         public void Validate(TextBlock tbFolder)
@@ -83,6 +93,8 @@ namespace desktop.Controls
 
             
         }
+
+        
 
         private void CbDefaultFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -144,6 +156,14 @@ namespace desktop.Controls
 
         private void txtFolder_TextChanged(object sender, TextChangedEventArgs e)
         {
+        }
+
+        private void BtnRemoveFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (FolderRemoved != null)
+            {
+                FolderRemoved(this);
+            }
         }
     }
 }

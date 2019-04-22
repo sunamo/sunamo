@@ -8,7 +8,9 @@ using System.Windows;
 
 public class WindowHelper
     {
-        public static bool? SetDialogResult(Window w, bool dialog, bool? dialogResult)
+
+
+    public static bool? SetDialogResult(Window w, bool dialog, bool? dialogResult)
         {
         if (dialog)
         {

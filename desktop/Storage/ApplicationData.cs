@@ -2,6 +2,9 @@
 using sunamo;
 using System;
 using System.IO;
+/// <summary>
+/// Create file data.dat in Local and Roaming but in no one app is use
+/// </summary>
 public class ApplicationData
 {
     static ApplicationData()

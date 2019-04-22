@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows;
 
 
+/// <summary>
+/// Storage for properties of single control
+/// </summary>
 public class ApplicationDataContainerList : IEnumerable
 {
     string path = null;

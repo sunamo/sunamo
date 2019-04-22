@@ -57,14 +57,14 @@ namespace desktop.Helpers.Backend
         int addRowsDuringScrolling = 0;
 
         /// <summary>
-        /// 
+        /// A3 = Consts.addRowsToCodeTextBoxDuringScrolling
         /// </summary>
         /// <param name="searchData"></param>
-        /// <param name="txtTextBoxState"></param>
+        /// <param name="tbTextBoxState"></param>
         /// <param name="txtContent"></param>
-        public TextBoxBackend(TextBlock txtTextBoxState, TextBox txtContent, int addRowsDuringScrolling)
+        public TextBoxBackend(TextBlock tbTextBoxState, TextBox txtContent, int addRowsDuringScrolling)
         {
-            this.txtTextBoxState = txtTextBoxState;
+            this.txtTextBoxState = tbTextBoxState;
             this.txtContent = txtContent;
             this.addRowsDuringScrolling = addRowsDuringScrolling;
             // Is changed also when just moved cursor (mouse, arrows)
@@ -183,16 +183,23 @@ namespace desktop.Helpers.Backend
             }
         }
 
+        /// <summary>
+        /// Must be called in Loaded or after
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="length"></param>
         public void Highlight(int from, int length)
         {
             if (from != -1)
             {
+                txtContent.Focus();
                 txtContent.Select(from, length);
             }
             
         }
 
         /// <summary>
+        /// Must be called in Loaded or after
         /// A1 -1, because highlighting can be processed only after and index was already increment
         /// </summary>
         public void Highlight(int actualSearchedResult)

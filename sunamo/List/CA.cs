@@ -821,14 +821,21 @@ public static partial  class CA
 
     public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
     {
+        string contained = null;
+        return IsSomethingTheSame(ext, p1, ref contained);
+    }
+
+    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1, ref string contained)
+    {
         foreach (var item in p1)
         {
             if (item == ext)
             {
+                contained = item;
                 return true;
             }
         }
-
+       
         return false;
     }
 

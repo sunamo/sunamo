@@ -20,6 +20,15 @@ public  static partial class CA
         return false;
     }
 
+    public static void AddSuffix(List<string> headers, string v)
+    {
+        for (int i = 0; i < headers.Count; i++)
+        {
+            headers[i] = headers[i] + v;
+        }    
+        
+    }
+
     public static List<string> CreateListStringWithReverse(int reverse, params string[] v)
     {
         List<string> vs = new List<string>(reverse + v.Length);

@@ -18,7 +18,11 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for FolderContentsTreeView.xaml
+    /// I have 3 TreeViews:
+    /// desktop.Controls.FolderContentsTreeView - used in AllProjectsSearch\Wins\DuplicateSolutionsWindow.xaml. With icons but without checkboxes
+    /// SunamoTreeView - very nice, load whole fs structure, example in OptimalAllocationSizeUnit. Without icons but with checkboxes
+    /// HostingManagerTreeView - Pracuje s DB a FolderEntryDB/FileEntryDB
+    /// 
     /// </summary>
     public partial class FolderContentsTreeView : UserControl
     {

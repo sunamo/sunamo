@@ -7,15 +7,17 @@ using System.Collections;
 using System.Linq;
 using sunamo.Constants;
 /// <summary>
-/// Is not allowed write empty elements - split of strings is running with  StringSplitOptions.RemoveEmptyEntries
+/// Is not allowed write empty elements - split of strings is running with StringSplitOptions.RemoveEmptyEntries
 /// Tato třída je zde pouze kvůli GetTablesInDatabaseExportHandler.ashx.cs a General/ImportTables.aspx.cs
 /// Snaž se tuto třídu nikdy nevyužívat a naopak vše ukládat do db, popř. stf/sbf
 /// 
 /// </summary>
 public static partial class SF
 {
+    static SerializeContentArgs contentArgs = new SerializeContentArgs();
+
     /// <summary>
-    /// 
+    /// Get all elements from A1
     /// </summary>
     /// <param name = "var"></param>
     /// <returns></returns>
@@ -25,7 +27,7 @@ public static partial class SF
         return SH.SplitNone(var, oddelovaciZnak);
     }
 
-    static SerializeContentArgs contentArgs = new SerializeContentArgs();
+    
     public static string PrepareToSerialization(params string[] o)
     {
         StringBuilder sb = new StringBuilder();

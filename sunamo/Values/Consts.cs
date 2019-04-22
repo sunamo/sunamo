@@ -8,9 +8,12 @@ namespace sunamo.Values
 {
     public static partial  class Consts
     {
-        
+        /// <summary>
+        /// Here because is use in WpfApp1, AllProjectsSearch etc.
+        /// </summary>
+        public const int addRowsToCodeTextBoxDuringScrolling = 0;
 
-        
+
 
     }
 }
