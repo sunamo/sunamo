@@ -111,6 +111,7 @@ public class ComboBoxHelper
     }
 
     /// <summary>
+    /// A1 can be null
     /// A2 was handler of MouseDown, now without using - set null. 
     /// </summary>
     /// <param name="eh"></param>

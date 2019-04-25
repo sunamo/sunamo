@@ -22,6 +22,13 @@ namespace desktop.Controls.Input
     {
         ComboBoxHelper<string> cbEnteredHelper = null;
 
+        /// <summary>
+        /// A2 can be null
+        /// </summary>
+        /// <param name="allowCustomEntry"></param>
+        /// <param name="whatEnter"></param>
+        /// <param name="toMakeNameInTWithName"></param>
+        /// <param name="items"></param>
         public SelectOneValue(bool allowCustomEntry, string whatEnter, Func<object, string> toMakeNameInTWithName, params object[] items)
         {
             InitializeComponent();

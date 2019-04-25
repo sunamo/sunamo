@@ -7,5 +7,7 @@ using System.Text;
     {
         public const string noreply_scz = "noreply_scz";
     public const string rj_scz = "rj_scz";
+    public const string ftp_test_pw = "ftp_test_pw";
+    public const string ftp_test_user = "ftp_test_user";
 }
 

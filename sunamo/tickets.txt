@@ -15,6 +15,15 @@ obrana před stresem a ztrátou energie
 hledání produktivních zvyklostí
 hlavně všechno dělat pomalu, žádné stresy
 
+replace every NotImplementedException for NoImplementedException
+
+CleanUp HtmlGenerator2 to use HtmlGeneratorList
+
+zvetsit textbox fix
+wrap 
+zobrazit title
+
+
 vytvořit video s popisem co se dělo v černobylo, 
 
 replace global::System.Web.UI.WebControls.TextBox for global::System.Web.UI.HtmlControls.HtmlInputText
