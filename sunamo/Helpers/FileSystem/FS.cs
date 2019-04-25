@@ -38,10 +38,18 @@ public partial class FS
             var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
             foreach (var item in files)
             {
-                if (FS.GetFileSize(item) == 0)
+            var fs = FS.GetFileSize(item);
+                if (fs == 0)
                 {
                     FS.TryDeleteFile(item);
                 }
+            else if (fs < 4)
+            {
+                if (TF.ReadFile(item).Trim() == string.Empty)
+                {
+                    FS.TryDeleteFile(item);
+                }
+            }
             }
         }
 
