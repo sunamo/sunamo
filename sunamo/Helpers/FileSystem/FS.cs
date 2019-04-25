@@ -24,8 +24,16 @@ public partial class FS
             return ReplaceIncorrectCharactersFile(dt.ToString());
 
         }
+    internal static Task DeleteFile(StorageFile t)
+    {
+        throw new NotImplementedException();
+    }
 
-        public static void DeleteEmptyFiles(string folder, SearchOption so)
+    internal async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
+    {
+        return new StorageFile(folder.fullPath, v);
+    }
+    public static void DeleteEmptyFiles(string folder, SearchOption so)
         {
             var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
             foreach (var item in files)

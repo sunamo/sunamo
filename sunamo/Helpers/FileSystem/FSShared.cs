@@ -156,15 +156,7 @@ public partial class FS
         }
     }
 
-    internal static Task DeleteFile(StorageFile t)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
-    {
-        return new StorageFile(folder.fullPath, v);
-    }
+    
 
     /// <summary>
     /// Create all upfolders of A1 with, if they dont exist 
