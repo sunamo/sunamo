@@ -28,6 +28,16 @@ public class PH
         }
     }
 
+    public static List<string> GetProcessesNames(bool lower)
+    {
+        var p = Process.GetProcesses().Select(d=> d.ProcessName).ToList();
+        if (lower)
+        {
+            CA.ToLower(p);
+        }
+        return p;
+    }
+
     /// <summary>
     /// For search one term in all uris use UriWebServices.SearchInAll
     /// </summary>

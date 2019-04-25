@@ -271,12 +271,18 @@ public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string
 
         }
 
-/// <summary>
-        /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string StripAllTags(string p)
+    public static string ConvertHtmlToText(string h)
+    {
+        h = SH.ReplaceAll(h, string.Empty, "<br>", "<br />", "<br/>");
+        return h;
+    }
+
+    /// <summary>
+    /// Nahradí každý text <*> za SE. Vnitřní ne-xml obsah nechá být.
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string StripAllTags(string p)
         {
             return StripAllTags(p, AllStrings.doubleSpace);
         }

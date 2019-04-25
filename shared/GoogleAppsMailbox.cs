@@ -11,11 +11,11 @@ namespace sunamo
         /// <summary>
         /// Řetězec, který se objeví u příjemce jako odesílatel. Nemusí to být mailová adresa.
         /// </summary>
-         string fromName = null;
+        public string fromName = null;
         /// <summary>
         /// Povinný. Celá adresa emailu který jste si nastavili na https://ks.aspone.cz/ 
         /// </summary>
-         string fromEmail = null;
+        public string fromEmail = null;
         /// <summary>
         /// Povinný. Heslo k mailu userName, které se taktéž nastavuje na https://ks.aspone.cz/
         /// </summary>

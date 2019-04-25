@@ -618,6 +618,11 @@ public static List<long> ToLong(IEnumerable enumerable)
         return result;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="slova"></param>
+    /// <returns></returns>
 public static List<string> ToLower(List<string> slova)
     {
         for (int i = 0; i < slova.Count; i++)
