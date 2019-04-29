@@ -17,20 +17,22 @@ namespace desktop
     /// <summary>
     /// Interaction logic for EnterValueForm.xaml
     /// </summary>
-    public partial class EnterValueForm : Window, IResult
+    public partial class EnterOneValueWindow : Window
     {
-        public EnterValueForm(string whatEnter)
+        /// <summary>
+        /// access to everything via enterOneValueUC
+        /// </summary>
+        /// <param name="whatEnter"></param>
+        public EnterOneValueWindow(string whatEnter)
         {
             InitializeComponent();
             enterOneValueUC.Init(whatEnter);
-            enterOneValueUC.Finished += EnterOneValueUC_Finished;
+            enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
         }
 
-        private void EnterOneValueUC_Finished(object o)
+        private void EnterOneValueUC_ChangeDialogResult(bool? b)
         {
-            Finished(o);
+            Close();
         }
-
-        public event VoidObject Finished;
     }
 }

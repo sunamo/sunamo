@@ -9,7 +9,7 @@ namespace Roslyn
     {
         static Type type = typeof(RoslynComparer);
 
-        internal static bool Modifiers(SyntaxTokenList modifiers1, SyntaxTokenList modifiers2)
+        public static bool Modifiers(SyntaxTokenList modifiers1, SyntaxTokenList modifiers2)
         {
             if (modifiers1.Count != modifiers2.Count)
             {

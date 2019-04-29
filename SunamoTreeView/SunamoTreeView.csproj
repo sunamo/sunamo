@@ -68,6 +68,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.notmine\SunamoMvvm\SunamoMvvm.csproj">
+      <Project>{14fec151-b84d-4d45-ba3c-3b7ffaf25385}</Project>
+      <Name>SunamoMvvm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\desktop\desktop.csproj">
       <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
       <Name>desktop</Name>
@@ -75,10 +79,6 @@
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SunamoMvvm\SunamoMvvm.csproj">
-      <Project>{14fec151-b84d-4d45-ba3c-3b7ffaf25385}</Project>
-      <Name>SunamoMvvm</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{d7a02dd4-56c0-41a4-9ea5-5747c3096797}</Project>

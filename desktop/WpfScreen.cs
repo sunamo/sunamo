@@ -43,7 +43,7 @@ public class WpfScreen
 
     private readonly Screen screen;
 
-    internal WpfScreen(System.Windows.Forms.Screen screen)
+    public WpfScreen(System.Windows.Forms.Screen screen)
     {
         this.screen = screen;
     }

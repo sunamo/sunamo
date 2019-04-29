@@ -291,8 +291,8 @@
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
-    <Compile Include="Windows\EnterValueForm.xaml.cs">
-      <DependentUpon>EnterValueForm.xaml</DependentUpon>
+    <Compile Include="Windows\EnterOneValueWindow.xaml.cs">
+      <DependentUpon>EnterOneValueWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
@@ -467,7 +467,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\EnterValueForm.xaml">
+    <Page Include="Windows\EnterOneValueWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

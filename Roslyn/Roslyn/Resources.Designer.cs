@@ -24,7 +24,7 @@ namespace Roslyn
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
+    public class Resources
     {
 
         private static global::System.Resources.ResourceManager resourceMan;
@@ -32,7 +32,7 @@ namespace Roslyn
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
+        public Resources()
         {
         }
 
@@ -40,7 +40,7 @@ namespace Roslyn
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
+        public static global::System.Resources.ResourceManager ResourceManager
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Roslyn
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
+        public static global::System.Globalization.CultureInfo Culture
         {
             get
             {
@@ -73,7 +73,7 @@ namespace Roslyn
         /// <summary>
         ///   Looks up a localized string similar to Type names should be all uppercase..
         /// </summary>
-        internal static string AnalyzerDescription
+        public static string AnalyzerDescription
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Roslyn
         /// <summary>
         ///   Looks up a localized string similar to Type name &apos;{0}&apos; contains lowercase letters.
         /// </summary>
-        internal static string AnalyzerMessageFormat
+        public static string AnalyzerMessageFormat
         {
             get
             {
@@ -95,7 +95,7 @@ namespace Roslyn
         /// <summary>
         ///   Looks up a localized string similar to Type name contains lowercase letters.
         /// </summary>
-        internal static string AnalyzerTitle
+        public static string AnalyzerTitle
         {
             get
             {

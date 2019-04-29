@@ -12,6 +12,21 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\PasswordShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\HashHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataBaseShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataAppsAbstractBaseShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataAbstractBaseShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\HashHelperSharedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\QSHelperSharedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\QSHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\FileMoveCollisionOption.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCodeSharedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedSharedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlAssistantSharedShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlAssistant.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\IClipboardHelperApps.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlAgilityHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\AspNet.cs" Link="" />

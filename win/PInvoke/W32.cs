@@ -96,6 +96,9 @@ public class W32
     [DllImport("gdi32.dll", SetLastError = true)]
     public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
 
+    [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]
+    public static extern short GetKeyState(int keyCode);
+
     [DllImport("user32.dll", SetLastError = true)]
     public static extern bool SetClipboardData(uint uFormat, IntPtr data);
 

@@ -18,14 +18,7 @@ public static partial class BTS
         return bool.TryParse(trim, out lastBool);
     }
 
-    public static string NullToStringOrDefault(object n, string v)
-    {
-        if (n != null)
-        {
-            return " " + v;
-        }
-        return " (null)";
-    }
+    
 
 
     #endregion

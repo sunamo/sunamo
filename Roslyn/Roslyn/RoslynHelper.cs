@@ -541,7 +541,7 @@ namespace Roslyn
             return modifiers.Where(e => e.Value.ToString() == "static").Count() > 0;
         }
 
-        internal static string NameWithoutGeneric(string name)
+        public static string NameWithoutGeneric(string name)
         {
             
             return SH.RemoveAfterFirst(name, "<");

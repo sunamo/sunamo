@@ -66,7 +66,7 @@ public class FrameworkElementHelper
         return RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel));
     }
 
-    internal static T FindByTag<T>(object customControl, object v) where T : FrameworkElement
+    public static T FindByTag<T>(object customControl, object v) where T : FrameworkElement
     {
         if (IsContentControl(customControl))
         {

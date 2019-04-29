@@ -41,7 +41,7 @@ public static float RoundAndReturnInInputType(float ugtKm, int v)
         return float.Parse(vr);
     }
 
-    internal static void RemoveEndingZeroPadding(List<byte> bajty)
+    public static void RemoveEndingZeroPadding(List<byte> bajty)
     {
         for (int i = bajty.Count - 1; i >= 0; i--)
         {

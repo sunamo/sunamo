@@ -11,7 +11,6 @@ using System.Threading;
 using win;
 // if app isnt STA, raise exception
 //using System.Windows;
-using desktop.Essential;
 // if app isnt STA, return empty. 
 using System.Windows.Forms;
 using System.Windows.Interop;

@@ -22,6 +22,12 @@ namespace desktop.Controls.Input
     public partial class SelectMoreFolders : UserControl
     {
         public event VoidVoid SaveSetAsTemplate;
+        /// <summary>
+        /// Only adding folder with empty path
+        /// </summary>
+        public event Action<object, List<string>> FolderAdded;
+        public event Action<object, List<string>> FolderChanged;
+        public event Action<object, List<string>> FolderRemoved;
 
         public SelectMoreFolders()
         {
@@ -46,13 +52,32 @@ namespace desktop.Controls.Input
             sf.SelectedFolder = folder;
             sf.btnRemoveFolder.Visibility = Visibility.Visible;
             sf.FolderRemoved += Sf_FolderRemoved;
+            sf.FolderChanged += Sf_FolderChanged;
             
             spFolders.Children.Add(sf);
+            if (FolderAdded != null)
+            {
+                FolderAdded(this, SelectedFolders());
+            }
+            // Must be called after sf is on panel and has registered Sf_FolderChanged, because control for FolderChanged != null
+            Sf_FolderChanged(folder);
         }
 
-        private void Sf_FolderRemoved(SelectFolder t)
+        private void Sf_FolderChanged(string s)
+        {
+            if (FolderChanged != null)
+            {
+                FolderChanged(this, SelectedFolders());
+            }
+        }
+
+        public void Sf_FolderRemoved(SelectFolder t)
         {
             spFolders.Children.Remove(t);
+            if (FolderRemoved != null)
+            {
+                FolderRemoved(this, SelectedFolders());
+            }
         }
 
         async void SetAwesomeIcons()
@@ -92,6 +117,14 @@ namespace desktop.Controls.Input
             Validate(tbFolder, this);
         }
 
+        public void RemoveAllFolders()
+        {
+            for (int i = spFolders.Children.Count - 1; i >= 0; i--)
+            {
+                Sf_FolderRemoved((SelectFolder)spFolders.Children[i]);
+            }
+        }
+
         /// <summary>
         /// Validate before call
         /// </summary>
@@ -101,7 +134,12 @@ namespace desktop.Controls.Input
             List<string> result = new List<string>();
             foreach (SelectFolder item in spFolders.Children)
             {
-                result.Add(item.SelectedFolder);
+                // Here I can eliminate empty strings, during Validate is calling Validate on every control, not use this method
+                if (item.SelectedFolder != string.Empty)
+                {
+                    result.Add(item.SelectedFolder);
+                }
+                
             }
             return result;
         }

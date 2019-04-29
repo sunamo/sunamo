@@ -41,7 +41,7 @@ namespace Roslyn
             return (ClassDeclarationSyntax)n.ChildNodes().OfType<ClassDeclarationSyntax>().FirstOrNull();
         }
 
-        internal static SyntaxNode NamespaceOrClass(SyntaxNode root)
+        public static SyntaxNode NamespaceOrClass(SyntaxNode root)
         {
             var ns = Namespace(root);
             if (ns != null)

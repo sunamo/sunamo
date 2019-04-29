@@ -54,8 +54,6 @@ namespace desktop.Controls
         public void Validate(TextBlock tbFolder)
         {
             SelectFolder.Validate(tbFolder, this);
-            
-            
         }
 
         /// <summary>
@@ -104,6 +102,7 @@ namespace desktop.Controls
 
         /// <summary>
         /// Nastaví složku pouze když složka bude existovat na disku
+        /// When not, set SE
         /// </summary>
         public string SelectedFolder
         {
@@ -113,6 +112,7 @@ namespace desktop.Controls
             }
             set
             {
+                OnFolderChanged(value);
                 if (FS.ExistsDirectory(value))
                 {
                     //FireFolderChanged = false;
@@ -147,10 +147,15 @@ namespace desktop.Controls
             if (folder != null)
             {
                 txtFolder.Text = folder;
-                if (FolderChanged != null)
-                {
-                    FolderChanged(folder);
-                }
+                OnFolderChanged(folder);
+            }
+        }
+
+        private void OnFolderChanged(string folder)
+        {
+            if (FolderChanged != null)
+            {
+                FolderChanged(folder);
             }
         }
 

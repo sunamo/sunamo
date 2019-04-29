@@ -25,7 +25,7 @@ namespace Roslyn
 
         static Type type = null;
 
-        internal static MethodDeclarationSyntax Method(string item)
+        public static MethodDeclarationSyntax Method(string item)
         {
             item = item + "{}";
             //StringReader sr = new StringReader(item);

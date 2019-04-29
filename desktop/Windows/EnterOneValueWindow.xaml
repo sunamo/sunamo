@@ -1,4 +1,4 @@
-﻿<Window x:Class="desktop.EnterValueForm"
+﻿<Window x:Class="desktop.EnterOneValueWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,5 +7,5 @@
         xmlns:desktopControlsInput="clr-namespace:desktop.Controls.Input"
         SizeToContent="WidthAndHeight"
              d:DesignHeight="150" d:DesignWidth="400" Width="400" Height="150">
-    <desktopControlsInput:EnterOneValueUC x:Name="enterOneValueUC"></desktopControlsInput:EnterOneValueUC>
+    <desktopControlsInput:EnterOneValueUC x:Name="enterOneValueUC" x:FieldModifier="public"></desktopControlsInput:EnterOneValueUC>
 </Window>

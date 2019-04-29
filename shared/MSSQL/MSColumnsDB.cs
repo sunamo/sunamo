@@ -14,6 +14,18 @@ public class MSColumnsDB : List<MSSloupecDB>
     string replaceMSinMSStoredProceduresI = null;
     static string _tableNameField = "_tableName";
 
+    #region ctors
+    public MSColumnsDB(bool signed, params MSSloupecDB[] p)
+    {
+        this.signed = signed;
+        this.AddRange(p);
+    }
+
+    public MSColumnsDB(params MSSloupecDB[] p)
+    {
+        this.AddRange(p);
+    }
+
     /// <summary>
     /// A1 od jakých rozhraní a tříd by měla být odvozena třída TableRow
     /// </summary>
@@ -33,6 +45,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         this.replaceMSinMSStoredProceduresI = replaceMSinMSStoredProceduresI;
         this.AddRange(p);
     }
+    #endregion
 
     /// <summary>
     /// 
@@ -78,16 +91,7 @@ public class MSColumnsDB : List<MSSloupecDB>
 
 
 
-    public MSColumnsDB(bool signed, params MSSloupecDB[] p)
-    {
-        this.signed = signed;
-        this.AddRange(p);
-    }
-
-    public MSColumnsDB(params MSSloupecDB[] p)
-    {
-        this.AddRange(p);
-    }
+    
 
     public string GetTROfColumns()
     {
@@ -105,26 +109,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         return sb.ToString().TrimEnd(',') + ")";
     }
 
-    /// <summary>
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
-    {
-        string sql = GeneratorMsSql.CreateTable(table, this, dynamicTables, conn);
-        SqlCommand comm = new SqlCommand(sql, conn);
-        return comm;
-    }
-
-    /// <summary>
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    /// <param name="table"></param>
-    /// <param name="dynamicTables"></param>
-    /// <returns></returns>
-    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables)
-    {
-        return GetSqlCreateTable(table, dynamicTables, MSDatabaseLayer.conn);
-    }
+  
 
     /// <summary>
     /// Vyplň A2 na SE pokud chceš všechny sloupce
@@ -288,7 +273,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         List<string> paramsForCtor = new List<string>(this.Count * 2);
         foreach (MSSloupecDB item in this)
         {
-            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type);
+            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
             string name = item.Name;
             paramsForCtor.Add(typ);
             paramsForCtor.Add(name);
@@ -303,7 +288,7 @@ public class MSColumnsDB : List<MSSloupecDB>
 
         foreach (MSSloupecDB item in this)
         {
-            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type);
+            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
             string name = item.Name;
             if (first)
             {
@@ -442,7 +427,7 @@ ParseRow(o);");
 
         foreach (MSSloupecDB item in this)
         {
-            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type);
+            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
             string name = item.Name;
 
             string fn = FirstCharLower(name);
@@ -472,7 +457,7 @@ ParseRow(o);");
         for (int i = 0; i < this.Count; i++)
         {
             MSSloupecDB item = this[i];
-            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type) + "(o," + i.ToString() + ");");
+            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
 
         }
         // Na závěr každé metody nesmí být AppendLine
@@ -592,7 +577,7 @@ using System.Collections.Generic;
         List<string> temp2 = new List<string>();
         foreach (MSSloupecDB item in this)
         {
-            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type);
+            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
             string name = item.Name;
             if (first)
             {
@@ -632,7 +617,7 @@ using System.Collections.Generic;
         List<string> paramsForCtor = new List<string>(this.Count * 2);
         foreach (MSSloupecDB item in this)
         {
-            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type);
+            string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
             string name = item.Name;
 
             paramsForCtor.Add(typ);
@@ -931,7 +916,7 @@ ParseRow(o);");
             numero = false;
             nultyParametr = "";
             nameOfVariable = SH.Copy(nvc);
-            switch (item.Type)
+            switch (item.Type2)
             {
                 case SqlDbType.NChar:
                 case SqlDbType.NText:
@@ -1104,6 +1089,27 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
     public SqlCommand GetSqlCreateTable(string nazevTabulky)
     {
         return GetSqlCreateTable(nazevTabulky, false);
+    }
+
+    /// <summary>
+    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
+    /// </summary>
+    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
+    {
+        string sql = GeneratorMsSql.CreateTable(table, this, dynamicTables, conn);
+        SqlCommand comm = new SqlCommand(sql, conn);
+        return comm;
+    }
+
+    /// <summary>
+    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="dynamicTables"></param>
+    /// <returns></returns>
+    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables)
+    {
+        return GetSqlCreateTable(table, dynamicTables, MSDatabaseLayer.conn);
     }
 
     public static MSColumnsDB IDName(int p)

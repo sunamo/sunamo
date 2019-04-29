@@ -223,6 +223,14 @@ namespace sunamo
                 {
                     return true;
                 }
+                foreach (var inter in children.GetInterfaces())
+                {
+                    if (inter == parent)
+                    {
+                        return true;
+                    }
+                }
+
                 children = children.BaseType;
             }
             return false;

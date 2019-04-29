@@ -53,10 +53,6 @@ namespace desktop.Controls.Input
             
             if (AfterEnteredValue(txtEnteredText))
             {
-                if (Finished != null)
-                {
-                    Finished(txtEnteredText.Text);
-                }
                 DialogResult = true;
             }
         }
@@ -90,10 +86,7 @@ namespace desktop.Controls.Input
             {
                 if (AfterEnteredValue(txtEnteredText))
                 {
-                    if (Finished != null)
-                    {
-                        Finished(txtEnteredText.Text);
-                    }
+                    DialogResult = true;
                 }
             }
         }
@@ -106,7 +99,7 @@ namespace desktop.Controls.Input
             //DialogResult = true;
         }
 
-        public event VoidObject Finished;
+        
         public event VoidBoolNullable ChangeDialogResult;
     }
 }

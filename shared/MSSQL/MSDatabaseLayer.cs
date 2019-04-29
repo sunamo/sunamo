@@ -6,8 +6,9 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web;
 
-public partial class MSDatabaseLayer
+public partial class MSDatabaseLayer 
 {
+    public static MSDatabaseLayerInstance ci = new MSDatabaseLayerInstance();
 
     public static SqlConnection conn
     {
@@ -132,32 +133,31 @@ public partial class MSDatabaseLayer
     /// 1) aby se rychleji získavali popisy daných datových typů
     /// 2) aby jsem odlišil a zaznamenal typy které chci používat a které nikoliv
     /// </summary>
-    public static Dictionary<SqlDbType, string> usedTa = new Dictionary<SqlDbType, string>();
-    public static Dictionary<SqlDbType, string> hiddenTa = new Dictionary<SqlDbType, string>();
+    public static Dictionary<SqlDbType2, string> usedTa = new Dictionary<SqlDbType2, string>();
+    public static Dictionary<SqlDbType2, string> hiddenTa = new Dictionary<SqlDbType2, string>();
 
     static MSDatabaseLayer()
     {
-        usedTa.Add(SqlDbType.SmallDateTime, "Datum a čas");
-        usedTa.Add(SqlDbType.Real, "Číslo s desetinnou čárkou");
-        usedTa.Add(SqlDbType.Int, "Číslo bez desetinné čárky v rozsahu od -2,147,483,648 do 2,147,483,647");
-        usedTa.Add(SqlDbType.NVarChar, "Omezený řetězec na max. 4000 znaků");
-        usedTa.Add(SqlDbType.Bit, "Duální hodnota pravda/nepravda");
-        usedTa.Add(SqlDbType.TinyInt, "Číslo bez desetinné čárky v rozsahu od 0 do 255");
-        usedTa.Add(SqlDbType.SmallInt, "Číslo bez desetinné čárky v rozsahu od -32,768 do 32,767");
-        usedTa.Add(SqlDbType.Binary, "Zápis bajtů v rozmezí velikosti 1-8000");
-
-
-
+        usedTa.Add(SqlDbType2.SmallDateTime, "Datum a čas");
+        usedTa.Add(SqlDbType2.Real, "Číslo s desetinnou čárkou");
+        usedTa.Add(SqlDbType2.Int, "Číslo bez desetinné čárky v rozsahu od -2,147,483,648 do 2,147,483,647");
+        usedTa.Add(SqlDbType2.NVarChar, "Omezený řetězec na max. 4000 znaků");
+        usedTa.Add(SqlDbType2.Bit, "Duální hodnota pravda/nepravda");
+        usedTa.Add(SqlDbType2.TinyInt, "Číslo bez desetinné čárky v rozsahu od 0 do 255");
+        usedTa.Add(SqlDbType2.SmallInt, "Číslo bez desetinné čárky v rozsahu od -32,768 do 32,767");
+        usedTa.Add(SqlDbType2.Binary, "Zápis bajtů v rozmezí velikosti 1-8000");
 
         // Je to sice nejlepší možná varianta(Text) pro ukládání textů, ale i tak to NEpatří do DB
-        hiddenTa.Add(SqlDbType.Text, "Neomezený řetězec");
-        hiddenTa.Add(SqlDbType.VarChar, "Omezený řetězec na 8000 znaků");
-        hiddenTa.Add(SqlDbType.NText, "Omezený řetězec na 1073741823");
-        hiddenTa.Add(SqlDbType.VarBinary, "Zápis bajtů v rozmezí velikosti 1-8000");
-        hiddenTa.Add(SqlDbType.Image, "Zápis bajtů v rozmezí velikosti 0-2147483647");
+        //hiddenTa.Add(SqlDbType2.Text, "Neomezený řetězec");
+        hiddenTa.Add(SqlDbType2.VarChar, "Omezený řetězec na 8000 znaků");
+        //hiddenTa.Add(SqlDbType2.NText, "Omezený řetězec na 1073741823");
+        //hiddenTa.Add(SqlDbType2.VarBinary, "Zápis bajtů v rozmezí velikosti 1-8000");
+        //hiddenTa.Add(SqlDbType2.Image, "Zápis bajtů v rozmezí velikosti 0-2147483647");
 
-        hiddenTa.Add(SqlDbType.Char, "Řetězec non-unicode s pevnou šířkou do velikosti 8000 znaků");
-        hiddenTa.Add(SqlDbType.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
+        hiddenTa.Add(SqlDbType2.Char, "Řetězec non-unicode s pevnou šířkou do velikosti 8000 znaků");
+        hiddenTa.Add(SqlDbType2.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
+
+        ;
 
     }
 

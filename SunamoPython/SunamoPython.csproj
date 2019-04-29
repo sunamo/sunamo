@@ -12,6 +12,7 @@
     <PackageReference Include="IronPython" Version="2.7.9" />
     <PackageReference Include="IronPython.Interpreter" Version="2.7.4" />
     <PackageReference Include="IronPython.StdLib" Version="2.7.9" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Scripting">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ public  static partial class CA
     /// <param name="captions"></param>
     /// <param name="i"></param>
     /// <returns></returns>
-    internal static object GetIndex(List<string> captions, int i)
+    public static object GetIndex(List<string> captions, int i)
     {
         if (captions == null)
         {
@@ -122,19 +123,11 @@ public  static partial class CA
         return p;
     }
 
-    /// <summary>
-    /// Just call ToListString
-    /// </summary>
-    /// <param name="enumerable"></param>
-    /// <returns></returns>
-    public static List<string> ToListString(params object[] enumerable)
-    {
-        IEnumerable ienum = enumerable;
-        return ToListString(ienum);
-    }
+   
 
     /// <summary>
-    /// Must be private - to use only internal in CA
+    /// Convert IEnumerable to List<string> Nothing more, nothing less
+    /// Must be private - to use only public in CA
     /// bcoz Cast() not working
     /// Dont make any type checking - could be done before
     /// </summary>
@@ -156,6 +149,17 @@ public  static partial class CA
         return result;
     }
 
+    public static List<string> Join(params object[] o)
+    {
+        List<string> result = new List<string>();
+        foreach (var item in o)
+        {
+            result.AddRange(CA.ToListString(item));
+        }
+
+        return result;
+    }
+
     /// <summary>
     /// Simply create new list in ctor from A1
     /// </summary>
@@ -167,6 +171,8 @@ public  static partial class CA
         IEnumerable enu = f;
         return ToList<T>(enu);
     }
+
+    
 
     public static List<T> ToList<T>(IEnumerable enumerable)
     {
@@ -191,31 +197,66 @@ public  static partial class CA
         return result;
     }
 
-    public static List<string> ToListString(IEnumerable enumerable)
+    /// <summary>
+    /// Just call ToListString
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <returns></returns>
+    public static List<string> ToListString(params object[] enumerable)
+    {
+        IEnumerable ienum = enumerable;
+        return ToListString(ienum);
+    }
+
+    /// <summary>
+    /// Just 3 cases of working:
+    /// IEnumerable<char> => string
+    /// IEnumerable<string> => List<string>
+    /// IEnumerable => List<string>
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <returns></returns>
+    public static List<string> ToListString(IEnumerable enumerable2)
     {
         List<string> result = null;
-        if (enumerable is IEnumerable<char>)
+        result = new List<string>();
+        foreach (object item in enumerable2)
         {
-            result = new List<string>(1);
-            result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
-        }
-        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
-        {
-            result = ((IEnumerable<string>)enumerable.FirstOrNull()).ToList();
-        }
-        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
-        {
-            result = ToListString2( ((IEnumerable)enumerable.FirstOrNull()));
-        }
-        else
-        {
-            return ToListString2(enumerable);
+            if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
+            {
+                var enumerable = (IEnumerable)item;
+                var type = enumerable.GetType();
+                if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
+                {
+                    // IEnumerable<char> => string
+
+                    result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+                }
+                else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
+                {
+                    // IEnumerable<string> => List<string>
+                    result.AddRange(((IEnumerable<string>)enumerable.FirstOrNull()).ToList());
+                }
+                else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+                {
+                    result.AddRange(ToListString2(((IEnumerable)enumerable.FirstOrNull())));
+                }
+                else
+                {
+                    // IEnumerable => List<string>
+                    result.AddRange(ToListString2(enumerable));
+                }
+            }
+            else
+            {
+                result.Add(item.ToString());
+            }
         }
         return result;
     }
 
     /// <summary>
-    /// Must be private - to use only internal in CA
+    /// Must be private - to use only public in CA
     /// bcoz Cast() not working
     /// Dont make any type checking - could be done before
     /// </summary>
@@ -279,6 +320,11 @@ public  static partial class CA
     /// <returns></returns>
     public static List<string> TrimStart(string backslash, List<string> s)
     {
+        string methodName = "TrimStart";
+
+        ThrowExceptions.IsNull(type, methodName, "backslash", backslash);
+        ThrowExceptions.IsNull(type, methodName, "s", s);
+
         for (int i = 0; i < s.Count; i++)
         {
             if (s[i].StartsWith(backslash))
@@ -462,7 +508,7 @@ public static string[] Trim(string[] l)
         return result;
     }
 
-    internal static void RemoveAfterFirst(List<FieldInfo> withType)
+    public static void RemoveAfterFirst(List<FieldInfo> withType)
     {
         
     }
@@ -894,11 +940,15 @@ public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
         return IsEqualToAnyElement(p, prvky.ToList());
     }
 
-public static object[] JoinVariableAndArray(object p, object[] sloupce)
+public static object[] JoinVariableAndArray(object p, IEnumerable sloupce)
     {
         List<object> o = new List<object>();
         o.Add(p);
-        o.AddRange(sloupce);
+        foreach (var item in sloupce)
+        {
+            o.Add(item);
+        }
+        
         return o.ToArray();
     }
 

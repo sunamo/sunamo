@@ -24,12 +24,12 @@ public partial class FS
             return ReplaceIncorrectCharactersFile(dt.ToString());
 
         }
-    internal static Task DeleteFile(StorageFile t)
+    public static Task DeleteFile(StorageFile t)
     {
         throw new NotImplementedException();
     }
 
-    internal async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
+    public async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
     {
         return new StorageFile(folder.fullPath, v);
     }
@@ -247,80 +247,6 @@ public partial class FS
             }
             return item;
         }
-
-        public static void CopyFile(string jsFiles, string v)
-        {
-            File.Copy(jsFiles, v, true);
-        }
-
-    public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileMoveCollisionOption co)
-    {
-        item = Consts.UncLongPath + item;
-        MakeUncLongPath(ref fileTo);
-        FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-        if (FS.ExistsFile(fileTo))
-        {
-            if (co == FileMoveCollisionOption.AddFileSize)
-            {
-                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
-                if (FS.ExistsFile(newFn))
-                {
-                    File.Delete(item);
-                    return;
-                }
-                fileTo = newFn;
-            }
-            else if (co == FileMoveCollisionOption.AddSerie)
-            {
-                int serie = 1;
-                while (true)
-                {
-                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
-                    if (!FS.ExistsFile(newFn))
-                    {
-                        fileTo = newFn;
-                        break;
-                    }
-                    serie++;
-                }
-            }
-            else if (co == FileMoveCollisionOption.DiscardFrom)
-            {
-                File.Delete(item);
-                return;
-            }
-            else if (co == FileMoveCollisionOption.Overwrite)
-            {
-                File.Delete(fileTo);
-            }
-            else if (co == FileMoveCollisionOption.LeaveLarger)
-            {
-                long fsFrom = FS.GetFileSize(item);
-                long fsTo = FS.GetFileSize(fileTo);
-                if (fsFrom > fsTo)
-                {
-                    File.Delete(fileTo);
-                }
-                else //if (fsFrom < fsTo)
-                {
-                    File.Delete(item);
-                    return;
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// A2 is path of target file
-    /// </summary>
-    /// <param name="item"></param>
-    /// <param name="fileTo"></param>
-    /// <param name="co"></param>
-    public static void CopyFile(string item, string fileTo, FileMoveCollisionOption co)
-    {
-        CopyMoveFilePrepare(ref item, ref fileTo, co);
-        File.Copy(item, fileTo);
-    }
 
     public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
         {
@@ -1580,20 +1506,6 @@ public partial class FS
             }
         }
 
-        
-
-        /// <summary>
-        /// If path ends with backslash, FS.GetDirectoryName returns empty string
-        /// </summary>
-        /// <param name="rp"></param>
-        /// <returns></returns>
-        public static string GetFileName(string rp)
-        {
-            rp = rp.TrimEnd(AllChars.bs);
-            int dex = rp.LastIndexOf(AllChars.bs);
-            return rp.Substring(dex + 1);
-        }
-
         /// <summary>
         /// Keys returns with normalized ext
         /// In case zero files of ext wont be included in dict
@@ -1947,29 +1859,6 @@ public partial class FS
         {
             string cesta = FS.GetDirectoryName(item);
             string nova = FS.Combine(cesta, g);
-
-            if (physically)
-            {
-                try
-                {
-                    if (FS.ExistsFile(nova))
-                    {
-                        File.Delete(nova);
-                    }
-                    File.Move(item, nova);
-                }
-                catch
-                {
-                }
-            }
-            return nova;
-        }
-
-        public static string ChangeExtension(string item, string newExt, bool physically)
-        {
-            string cesta = FS.GetDirectoryName(item);
-            string fnwoe = Path.GetFileNameWithoutExtension(item);
-            string nova = FS.Combine(cesta, fnwoe + newExt);
 
             if (physically)
             {

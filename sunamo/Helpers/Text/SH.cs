@@ -18,6 +18,101 @@ using System.Text.RegularExpressions;
 
 public static partial class SH
 {
+    public static string ReplaceManyFromString(string input, string v, string delimiter)
+    {
+        string methodName = "ReplaceManyFromString";
+        var l = SH.GetLines(v);
+        foreach (var item in l)
+        {
+            var p = SH.Split(item, delimiter);
+            CA.Trim(p);
+            string from, to;
+            from = to = null;
+
+            if (p.Count > 0)
+            {
+                from = p[0];
+            }
+            else
+            {
+                ThrowExceptions.Custom(type, methodName, item + " hasn't from");
+            }
+
+            if (p.Length() > 1)
+            {
+                to = p[1];
+            }
+            else
+            {
+                ThrowExceptions.Custom(type, methodName, item + " hasn't to");
+            }
+
+            if (SH.IsWildcard(item))
+            {
+                Wildcard wc = new Wildcard(from);
+                var occurences = wc.Matches(input);
+                foreach (Match m in occurences)
+                {
+                    var result = m.Result("abc");
+                    var groups = m.Groups;
+                    var captues = m.Captures;
+                    var value = m.Value;
+
+                }
+            }
+            else
+            {
+                //Wildcard wildcard = new Wildcard();
+                input = SH.ReplaceAll(input, to, from);
+            }
+
+        }
+
+        return input;
+    }
+    public static bool ChangeEncodingProcessWrongCharacters(ref string c)
+    {
+        return ChangeEncodingProcessWrongCharacters(ref c, Encoding.GetEncoding("latin1"));
+    }
+
+    /// <summary>
+    /// když je v souboru rozsypaný čaj, přečíst přes TF.ReadFile, převést přes SH.ChangeEncodingProcessWrongCharacters. Pokud u žádného není text smysluplný, je to beznadějně poškozené. 
+    /// V opačném případě 10 kódování by mělo být v pořádku.
+    /// </summary>
+    /// <param name="c"></param>
+    /// <param name="oldEncoding"></param>
+    /// <returns></returns>
+    public static bool ChangeEncodingProcessWrongCharacters(ref string c, Encoding oldEncoding)
+    {
+        if (IsValidISO(c))
+        {
+            var b = oldEncoding.GetBytes(c);
+            c = Encoding.UTF8.GetString(b);
+            return true;
+        }
+        else
+        {
+            // ý musí být před í, ě před č
+            c = SH.ReplaceManyFromString(c, @"Ã©,ý
+Ã½,ý
+Ă˝,é
+Å¥,š
+Ĺ,ř
+Ã¡,á
+Åˆ,ň
+Å¡,š
+Ä›,ě
+Å¯,ů
+Å¾,ž
+Ãº,ú
+Å™,ř
+Ã,í
+Ä,č
+", ",");
+            return true;
+        }
+        return false;
+    }
 
     public static string ReplaceWhiteSpacesAndTrim(string p)
     {

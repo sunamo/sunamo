@@ -19,6 +19,31 @@ public static partial class SH
     public const String diacritic = "áčďéěíňóšťúůýřžÁČĎÉĚÍŇÓŠŤÚŮÝŘŽ";
     static Type type = typeof(SH);
 
+    public static string NullToStringOrDefault(object n)
+    {
+        return NullToStringOrDefault(n, null);
+    }
+
+    public static string NullToStringOrDefault(object n, string v)
+    {
+        if (v == null)
+        {
+            if (n == null)
+            {
+                v = "(null)";
+            }
+            else
+            {
+                v = n.ToString();
+            }
+        }
+        if (n != null)
+        {
+            return " " + v;
+        }
+        return " (null)";
+    }
+
     public static string MakeUpToXChars(int p, int p_2)
     {
         StringBuilder sb = new StringBuilder();
@@ -163,50 +188,9 @@ public static partial class SH
         return String.Equals(input, result);
     }
 
-    /// <summary>
-    /// když je v souboru rozsypaný čaj, přečíst přes TF.ReadFile, převést přes SH.ChangeEncodingProcessWrongCharacters. Pokud u žádného není text smysluplný, je to beznadějně poškozené. 
-    /// V opačném případě 10 kódování by mělo být v pořádku.
-    /// </summary>
-    /// <param name="c"></param>
-    /// <param name="oldEncoding"></param>
-    /// <returns></returns>
-    public static bool ChangeEncodingProcessWrongCharacters(ref string c, Encoding oldEncoding)
-    {
-        if (IsValidISO(c))
-        {
-            var b = oldEncoding.GetBytes(c);
-            c = Encoding.UTF8.GetString(b);
-            return true;
-        }
-        else
-        {
-            // ý musí být před í, ě před č
-            c = SH.ReplaceManyFromString(c, @"Ã©,ý
-Ã½,ý
-Ă˝,é
-Å¥,š
-Ĺ,ř
-Ã¡,á
-Åˆ,ň
-Å¡,š
-Ä›,ě
-Å¯,ů
-Å¾,ž
-Ãº,ú
-Å™,ř
-Ã,í
-Ä,č
-", ",");
-            return true;
-        }
-        return false;
-    }
+    
 
-    public static bool ChangeEncodingProcessWrongCharacters(ref string c)
-    {
-        return ChangeEncodingProcessWrongCharacters(ref c, Encoding.GetEncoding("latin1"));
-    }
-
+   
 
     public static string ReplaceByIndex(string s, string zaCo, int v, int length)
     {
@@ -610,58 +594,7 @@ public static bool ContainsVariable(char p, char k, string innerHtml)
         return false;
     }
 
-    public static string ReplaceManyFromString(string input, string v, string delimiter)
-    {
-        string methodName = "ReplaceManyFromString";
-        var l = SH.GetLines(v);
-        foreach (var item in l)
-        {
-            var p = SH.Split(item, delimiter);
-            CA.Trim(p);
-            string from, to;
-            from = to = null;
-            
-            if (p.Count > 0)
-            {
-                from = p[0];
-            }
-            else
-            {
-                ThrowExceptions.Custom(type, methodName, item + " hasn't from");
-            }
-            
-            if (p.Length() > 1)
-            {
-                to = p[1];
-            }
-            else
-            {
-                ThrowExceptions.Custom(type, methodName, item + " hasn't to");
-            }
-
-            if ( SH.IsWildcard(item) )
-            {
-                Wildcard wc = new Wildcard(from);
-                var occurences = wc.Matches(input);
-                foreach (Match  m in occurences)
-                {
-                    var result = m.Result("abc");
-                    var groups = m.Groups;
-                    var captues = m.Captures;
-                    var value = m.Value;
-                    
-                }
-            }
-            else
-            {
-                //Wildcard wildcard = new Wildcard();
-                input = SH.ReplaceAll(input, to, from);
-            }
-            
-        }
-
-        return input;
-    }
+    
 
     public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
@@ -880,15 +813,20 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
         return sb.ToString();
     }
 
-/// <summary>
+    /// <summary>
     /// If A1 is string, return A1
     /// If IEnumerable, return joined by comma
     /// For inner collection use CA.TwoDimensionParamsIntoOne
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string ListToString(object value)
+    public static string ListToString(object value, object delimiter = null)
     {
+        var delimiterS = AllStrings.comma;
+        if (delimiter != null)
+        {
+            delimiterS = delimiter.ToString();
+        }
         if (value == null)
         {
             return "(null)";
@@ -896,16 +834,16 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
         string text;
         var valueType = value.GetType();
         text = value.ToString();
-        if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder)
+        if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder && !(value is IEnumerable<char>))
         {
             var enumerable = CA.ToListString(value as IEnumerable);
-            CA.Replace(enumerable, AllStrings.comma, AllStrings.space);
-            text = SH.Join(AllChars.comma, enumerable);
+            CA.Replace(enumerable, delimiterS, AllStrings.space);
+            text = SH.Join(delimiter, enumerable);
         }
         return text;
     }
 
-/// <summary>
+    /// <summary>
     /// Musi mit sudy pocet prvku
     /// Pokud sudý [0], [2], ... bude mít aspoň jeden nebílý znak, pak se přidá lichý [1], [3] i sudý ve dvojicích. jinak nic
     /// </summary>
@@ -1079,7 +1017,7 @@ public static string GetString(IEnumerable o, string p)
         return sb.ToString();
     }
 
-    internal static bool IsNegation(ref string contains)
+    public static bool IsNegation(ref string contains)
     {
         if (contains[0] == AllChars.exclamation)
         {

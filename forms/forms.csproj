@@ -158,7 +158,6 @@
     <Compile Include="Helpers\TSMIH.cs" />
     <Compile Include="Helpers\TSPBH.cs" />
     <Compile Include="Helpers\TSTBH.cs" />
-    <Compile Include="NotifyToClipboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\DisplayImageUC.cs">
       <SubType>UserControl</SubType>

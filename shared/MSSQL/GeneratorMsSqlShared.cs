@@ -381,10 +381,10 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
          * t == System.Data.SqlDbType.Decimal ||
          */
         if (
-            t == System.Data.SqlDbType.VarChar || 
-            t == System.Data.SqlDbType.Char || 
-            t == System.Data.SqlDbType.NVarChar || 
-            t == System.Data.SqlDbType.NChar
+            t == SqlDbType2.VarChar || 
+            t == SqlDbType2.Char || 
+            t == SqlDbType2.NVarChar || 
+            t == SqlDbType2.NChar
             )
         {
             // Musí to být AI, protože když bych měl slovo è, SQL Server by mi vrátil že neexistuje ale když bych ho chtěl vložit, udělal by z něho "e" a vrátil by chybu

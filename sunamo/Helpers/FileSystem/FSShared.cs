@@ -83,6 +83,17 @@ public partial class FS
     }
 
     /// <summary>
+    /// Copy file A1 into A2
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="nad"></param>
+    public static void CopyTo(string v, string nad)
+    {
+        var fileTo = FS.Combine(nad, FS.GetFileName(v));
+        CopyFile(v, fileTo);
+    }
+
+    /// <summary>
     /// Convert to UNC path
     /// </summary>
     /// <param name="item"></param>
@@ -521,5 +532,113 @@ public static List<string> GetFolders(string v, string contains)
             }
 
             return folders;
+        }
+
+/// <summary>
+        /// If path ends with backslash, FS.GetDirectoryName returns empty string
+        /// </summary>
+        /// <param name="rp"></param>
+        /// <returns></returns>
+        public static string GetFileName(string rp)
+        {
+            rp = rp.TrimEnd(AllChars.bs);
+            int dex = rp.LastIndexOf(AllChars.bs);
+            return rp.Substring(dex + 1);
+        }
+
+public static void CopyFile(string jsFiles, string v)
+        {
+            File.Copy(jsFiles, v, true);
+        }
+/// <summary>
+    /// A2 is path of target file
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="fileTo"></param>
+    /// <param name="co"></param>
+    public static void CopyFile(string item, string fileTo, FileMoveCollisionOption co)
+    {
+        CopyMoveFilePrepare(ref item, ref fileTo, co);
+        File.Copy(item, fileTo);
+    }
+
+public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileMoveCollisionOption co)
+    {
+        item = Consts.UncLongPath + item;
+        MakeUncLongPath(ref fileTo);
+        FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
+        if (FS.ExistsFile(fileTo))
+        {
+            if (co == FileMoveCollisionOption.AddFileSize)
+            {
+                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
+                if (FS.ExistsFile(newFn))
+                {
+                    File.Delete(item);
+                    return;
+                }
+                fileTo = newFn;
+            }
+            else if (co == FileMoveCollisionOption.AddSerie)
+            {
+                int serie = 1;
+                while (true)
+                {
+                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
+                    if (!FS.ExistsFile(newFn))
+                    {
+                        fileTo = newFn;
+                        break;
+                    }
+                    serie++;
+                }
+            }
+            else if (co == FileMoveCollisionOption.DiscardFrom)
+            {
+                File.Delete(item);
+                return;
+            }
+            else if (co == FileMoveCollisionOption.Overwrite)
+            {
+                File.Delete(fileTo);
+            }
+            else if (co == FileMoveCollisionOption.LeaveLarger)
+            {
+                long fsFrom = FS.GetFileSize(item);
+                long fsTo = FS.GetFileSize(fileTo);
+                if (fsFrom > fsTo)
+                {
+                    File.Delete(fileTo);
+                }
+                else //if (fsFrom < fsTo)
+                {
+                    File.Delete(item);
+                    return;
+                }
+            }
+        }
+    }
+
+public static string ChangeExtension(string item, string newExt, bool physically)
+        {
+            string cesta = FS.GetDirectoryName(item);
+            string fnwoe = Path.GetFileNameWithoutExtension(item);
+            string nova = FS.Combine(cesta, fnwoe + newExt);
+
+            if (physically)
+            {
+                try
+                {
+                    if (FS.ExistsFile(nova))
+                    {
+                        File.Delete(nova);
+                    }
+                    File.Move(item, nova);
+                }
+                catch
+                {
+                }
+            }
+            return nova;
         }
 }

@@ -82,7 +82,7 @@ using System.Text;
             return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
         }
 
-    internal static object MoreThanOneElement(string before, string listName, int count)
+    public static object MoreThanOneElement(string before, string listName, int count)
     {
         if (count > 1)
         {
@@ -100,7 +100,25 @@ using System.Text;
             return null;
         }
 
-        public static string DoesntHaveRequiredType(string v, string variableName)
+    internal static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
+    {
+        List<string> foundedUnallowed = new List<string>();
+        foreach (var item in unallowedStrings)
+        {
+            if (input.Contains(item))
+            {
+                foundedUnallowed.Add(item);
+            }
+        }
+
+        if (foundedUnallowed.Count > 0)
+        {
+            return CheckBefore(before) + input + " contains unallowed chars: " + SH.Join(unallowedStrings, " ");
+        }
+        return null;
+    }
+
+    public static string DoesntHaveRequiredType(string before, string variableName)
         {
             return variableName + "Doesn't have required type.";
         }
@@ -194,7 +212,7 @@ using System.Text;
             return null;
         }
 
-    internal static object Custom(string before, string message)
+    public static object Custom(string before, string message)
     {
         return CheckBefore(before) + message;
     }
@@ -207,7 +225,7 @@ using System.Text;
     /// <param name="before2"></param>
     /// <param name="after"></param>
     /// <returns></returns>
-    internal static object ElementWasntRemoved(string before, string detailLocation, int before2, int after)
+    public static object ElementWasntRemoved(string before, string detailLocation, int before2, int after)
     {
         if (before2 == after)
         {
@@ -216,7 +234,7 @@ using System.Text;
         return null;
     }
 
-    internal static string NotContains(string before, string originalText, params string[] shouldContains)
+    public static string NotContains(string before, string originalText, params string[] shouldContains)
         {
             List<string> notContained = new List<string>();
             foreach (var item in shouldContains)

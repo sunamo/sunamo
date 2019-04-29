@@ -16,6 +16,39 @@ using System.Web;
 /// </summary>
 public static partial class HttpRequestHelper
 {
+    /// <summary>
+    /// Musí být v shared.web? ten HttpRequest je samozřejmě nekompatibilní
+    /// Přesunul jsem metodu zpátky do shared
+    /// Vrátí null pokud se nepodaří zjistit IP adresa
+    /// </summary>
+    /// <param name="Request"></param>
+    /// <returns></returns>
+    public static string GetUserIPString(HttpRequest Request)
+    {
+        string vr =Request.ServerVariables["REMOTE_ADDR"];
+        if (vr == "::1")
+        {
+            vr = "127.0.0.1";
+        }
+        if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, ".") != 3)
+        {
+            string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipList))
+            {
+
+                vr = ipList.Split(',')[0];
+                if (SH.OccurencesOfStringIn(vr, ".") != 3)
+                {
+                    return null;
+                }
+                return vr;
+            }
+        }
+        return vr;
+    }
+
+
     public static bool IsNotFound(object uri)
     {
         HttpWebResponse r;

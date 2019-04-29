@@ -70,6 +70,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName), arrayName, dex, valueElement, unallowedStrings));
     }
 
+    public static void StringContainsUnallowedSubstrings(Type type, string methodName, string input, params string[] unallowedStrings)
+    {
+        ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName), input, unallowedStrings));
+    }
+
     public static void InvalidParameter(object type, string methodName, string mayUrlDecoded, string typeOfInput)
     {
         ThrowIsNotNull(Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName), mayUrlDecoded, typeOfInput));
@@ -86,6 +91,8 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode( type, methodName)));
     }
+
+   
     #endregion
 
     #region Without locating executing code
@@ -147,6 +154,7 @@ public class ThrowExceptions
     {
         if (exception != null)
         {
+            
             throw new Exception(exception);
         }
     }
@@ -164,7 +172,7 @@ public class ThrowExceptions
         }
     }
 
-    internal static void NotContains(Type type, string v, string p, params string[] after)
+    public static void NotContains(Type type, string v, string p, params string[] after)
     {
         ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
     }

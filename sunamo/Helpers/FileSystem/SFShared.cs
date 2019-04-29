@@ -7,6 +7,7 @@ using System.Collections;
 using System.Linq;
 using sunamo.Constants;
 
-public static partial class SF{ 
-
+public static partial class SF
+{
+    
 }

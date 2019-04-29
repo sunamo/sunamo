@@ -20,7 +20,7 @@ public class DataTableHelper
         dt.Columns.Add(dc);
     }
 
-    internal static void NewColumn(DataTable dt, int v, IList<string> columns, IList f)
+    public static void NewColumn(DataTable dt, int v, IList<string> columns, IList f)
     {
         NewColumn(dt, columns[v], f[v]);
     }

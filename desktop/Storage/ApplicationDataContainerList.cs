@@ -183,10 +183,9 @@ public class ApplicationDataContainerList : IEnumerable
         return false;
     }
 
-    public List<string> GetListString(string dataContext)
+    public List<string> GetListString(string dataContext, string delimiter = AllStrings.comma)
     {
-        
-        return DeserializeList(data.ContainsKey(dataContext) ? this[dataContext] : null );
+        return DeserializeList(data.ContainsKey(dataContext) ? this[dataContext] : null ,delimiter);
     }
 
     public string GetString(string text)
@@ -202,15 +201,19 @@ public class ApplicationDataContainerList : IEnumerable
         }
     }
 
-    List<string> DeserializeList(object value)
+    List<string> DeserializeList(object value, string delimiter = AllStrings.comma)
     {
         if (value == null)
         {
             return new List<string>();
         }
+        if (value.ToString().Trim() == string.Empty)
+        {
+            return new List<string>();
+        }
 
         var list2 = CA.ToListString(value as IEnumerable);
-        return SF.GetAllElementsLine(list2[0], AllChars.comma).ToList();
+        return SF.GetAllElementsLine(list2[0], delimiter).ToList();
     }
 
     public void Nuke()
