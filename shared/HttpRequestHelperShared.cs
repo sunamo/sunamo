@@ -40,7 +40,7 @@ public static partial class HttpRequestHelper{
             hrd = new HttpRequestData();
         }
 
-        int dex = address.IndexOf('?');
+        int dex = address.IndexOf(AllChars.q);
         string adressCopy = address;
         if (method.Method.ToUpper() == "POST")
         {

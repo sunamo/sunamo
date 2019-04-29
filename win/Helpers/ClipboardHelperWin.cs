@@ -106,7 +106,7 @@ public class ClipboardHelperWin : IClipboardHelper
         {
             string t = item.Trim();
 
-            if (t.EndsWith(":"))
+            if (t.EndsWith(AllStrings.colon))
             {
                 sb.AppendLine(item);
             }

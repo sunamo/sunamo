@@ -111,7 +111,7 @@ using System.IO;
         /// <returns></returns>
         public string ReturnInLevel(int index, string vstup)
         {
-            var tokeny = SH.Split(vstup, "\\");
+            var tokeny = SH.Split(vstup, AllStrings.bs);
             
             return tokeny[index];
         }

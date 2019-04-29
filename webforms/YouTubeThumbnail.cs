@@ -17,7 +17,7 @@ public abstract class YouTubeThumbnail
     /// <returns></returns>
     public string GetUri(int idSong, int poradi)
     {
-        //return UA.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
+        //return UA.GetWebUri(p, "temp/" + idVideo + AllStrings.slash+poradi+".jpg")
         return "'" + GetBaseUri(idSong, poradi) + "'";
     }
 
@@ -29,7 +29,7 @@ public abstract class YouTubeThumbnail
     /// <returns></returns>
     public string GetUri2(int idSong, int poradi)
     {
-        //return UA.GetWebUri(p, "temp/" + idVideo + "/"+poradi+".jpg")
+        //return UA.GetWebUri(p, "temp/" + idVideo + AllStrings.slash+poradi+".jpg")
         return GetBaseUri(idSong, poradi);
     }
 
@@ -108,7 +108,7 @@ public abstract class YouTubeThumbnail
     public string AllFilesRelativeUriJavascriptArray(string nameArray, int idSong, out string uriImage1)
     {
         StringBuilder vr = new StringBuilder();
-        vr.Append(nameArray + "[" + idSong + "] = [");
+        vr.Append(nameArray + AllStrings.lsf + idSong + "] = [");
         string path = GetPath(idSong, 1);
 
         if (FS.ExistsFile(path))
@@ -124,7 +124,7 @@ public abstract class YouTubeThumbnail
         path = GetPath(idSong, 2);
         if (FS.ExistsFile(path))
         {
-            vr.Append(GetUri(idSong, 2) + ",");
+            vr.Append(GetUri(idSong, 2) + AllStrings.comma);
 
         }
         else
@@ -134,7 +134,7 @@ public abstract class YouTubeThumbnail
         path = GetPath(idSong, 3);
         if (FS.ExistsFile(path))
         {
-            vr.Append(GetUri(idSong, 3) + ",");
+            vr.Append(GetUri(idSong, 3) + AllStrings.comma);
         }
         else
         {
@@ -142,7 +142,7 @@ public abstract class YouTubeThumbnail
         }
         string r = vr.ToString();
         int l = r.Length - 1;
-        if (r[l] == ',')
+        if (r[l] == AllChars.comma)
         {
             r = r.Substring(0, l);
         }
@@ -182,7 +182,7 @@ public abstract class YouTubeThumbnail
 
     string UriOfThumbnail(string ytCode, int poradi)
     {
-        return "http://img.youtube.com/vi/" + ytCode + "/" + poradi + ".jpg";
+        return "http://img.youtube.com/vi/" + ytCode + AllStrings.slash + poradi + ".jpg";
     }
 
     public void Save(int idSong, int poradi, Image toSave)

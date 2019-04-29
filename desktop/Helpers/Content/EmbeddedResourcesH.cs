@@ -35,7 +35,7 @@ public class EmbeddedResourcesH : IResourceHelper
 
         string GetResourceName(string name)
         {
-            name = SH.Join(AllChars.dot, ThisApp.Name, SH.ReplaceAll( name, ".", "/"));
+            name = SH.Join(AllChars.dot, ThisApp.Name, SH.ReplaceAll( name, AllStrings.dot, AllStrings.slash));
         return name;
         }
 

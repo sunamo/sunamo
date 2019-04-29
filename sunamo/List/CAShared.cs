@@ -149,6 +149,14 @@ public  static partial class CA
         return result;
     }
 
+    public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
+    {
+        foreach (var item in list)
+        {
+            RemoveWhichContains(files, item, wildcard);
+        }
+    }
+
     public static List<string> Join(params object[] o)
     {
         List<string> result = new List<string>();

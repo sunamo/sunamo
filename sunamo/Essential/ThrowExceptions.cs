@@ -133,7 +133,7 @@ public class ThrowExceptions
             typeFullName = t.FullName;
         }
 
-        return string.Concat(typeFullName, ".", methodName);
+        return string.Concat(typeFullName, AllStrings.dot, methodName);
     }
 
     /// <summary>

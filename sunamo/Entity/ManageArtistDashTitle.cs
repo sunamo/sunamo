@@ -15,7 +15,7 @@ public class ManageArtistDashTitle
     /// <param name="remix"></param>
     public static void GetArtistTitleRemix(string item, out string název, out string title, out string remix)
     {
-        string[] toks = item.Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+        string[] toks = item.Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
         název = title = "";
         if (toks.Length == 0)
         {
@@ -32,14 +32,14 @@ public class ManageArtistDashTitle
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < toks.Length; i++)
             {
-                sb.Append(toks[i] + "-");
+                sb.Append(toks[i] + AllStrings.dash);
             }
-            VratTitleRemix(sb.ToString().TrimEnd('-'), out title, out remix);
+            VratTitleRemix(sb.ToString().TrimEnd(AllChars.dash), out title, out remix);
         }
     }
 
     /// <summary>
-    /// První písmeno, písmena po ' ' a "-" budou velkým.
+    /// První písmeno, písmena po AllChars.space a AllStrings.dash budou velkým.
     /// </summary>
     /// <param name="názevSouboru"></param>
     /// <param name="p"></param>
@@ -52,7 +52,7 @@ public class ManageArtistDashTitle
         ch[dex + 1] = char.ToUpper(ch[dex + 1]);
         for (int i = 1; i < ch.Length; i++)
         {
-            if (ch[i] == ' ')
+            if (ch[i] == AllChars.space)
             {
                 try
                 {
@@ -62,7 +62,7 @@ public class ManageArtistDashTitle
                 {
                 }
             }
-            else if (ch[i] == '-')
+            else if (ch[i] == AllChars.dash)
             {
                 try
                 {
@@ -72,7 +72,7 @@ public class ManageArtistDashTitle
                 {
                 }
             }
-            else if (ch[i] == '[')
+            else if (ch[i] == AllChars.lsf)
             {
                 try
                 {
@@ -82,7 +82,7 @@ public class ManageArtistDashTitle
                 {
                 }
             }
-            else if (ch[i] == '(')
+            else if (ch[i] == AllChars.lb)
             {
                 try
                 {
@@ -108,8 +108,8 @@ public class ManageArtistDashTitle
     {
         title = p;
         remix = "";
-        int firstHranata = p.IndexOf('[');
-        int firstNormal = p.IndexOf('(');
+        int firstHranata = p.IndexOf(AllChars.lsf);
+        int firstNormal = p.IndexOf(AllChars.lb);
         if (firstHranata == -1 && firstNormal != -1)
         {
             VratRozdeleneByVcetne(p, firstNormal, out title, out remix);
@@ -152,10 +152,10 @@ public class ManageArtistDashTitle
     /// <returns></returns>
     public static string ReplaceAllHyphensExceptTheFirst(string p, string cimNahradit)
     {
-        int dex = p.IndexOf('-');
-        p = p.Replace('-', ' ');
+        int dex = p.IndexOf(AllChars.dash);
+        p = p.Replace(AllChars.dash, AllChars.space);
         char[] j = p.ToCharArray();
-        j[dex] = '-';
+        j[dex] = AllChars.dash;
         return new string(j);
     }
 
@@ -181,7 +181,7 @@ public class ManageArtistDashTitle
     public static void GetArtistTitle(string item, out string název, out string title)
     {
         // Path.GetFileNameWithoutExtension()
-        string[] toks = System.IO.Path.GetFileNameWithoutExtension( item).Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+        string[] toks = System.IO.Path.GetFileNameWithoutExtension( item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
         název = title = "";
         if (toks.Length == 0)
         {
@@ -198,9 +198,9 @@ public class ManageArtistDashTitle
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < toks.Length; i++)
             {
-                sb.Append(toks[i] + "-");
+                sb.Append(toks[i] + AllStrings.dash);
             }
-            title = sb.ToString().TrimEnd('-');
+            title = sb.ToString().TrimEnd(AllChars.dash);
         }
     }
 
@@ -211,16 +211,16 @@ public class ManageArtistDashTitle
     /// <returns></returns>
     public static string Reverse(string text)
     {
-        string[] d = text.Split('-');
+        string[] d = text.Split(AllChars.dash);
         string temp = d[0];
         d[0] = d[d.Length - 1];
         d[d.Length - 1] = temp;
         StringBuilder sb = new StringBuilder();
         foreach (string item in d)
         {
-            sb.Append(item + "-");
+            sb.Append(item + AllStrings.dash);
         }
-        return sb.ToString().TrimEnd('-');
+        return sb.ToString().TrimEnd(AllChars.dash);
     }
 
     /// <summary>

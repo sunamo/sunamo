@@ -65,7 +65,7 @@ namespace desktop.Controls
         private void AddTviFolderTo(string s, ItemsControl to)
         {
             TreeViewItem subfolder = new TreeViewItem();
-            subfolder.Header = s.Substring(s.LastIndexOf("\\") + 1);
+            subfolder.Header = s.Substring(s.LastIndexOf(AllStrings.bs) + 1);
             subfolder.Tag = new FileSystemEntry { file = false, path = s }; ;
             subfolder.FontWeight = FontWeights.Normal;
             subfolder.Items.Add(dummyNode);
@@ -80,7 +80,7 @@ namespace desktop.Controls
         private void AddTviFileTo(string s, ItemsControl to)
         {
             TreeViewItem subfiles = new TreeViewItem();
-            subfiles.Header = s.Substring(s.LastIndexOf("\\") + 1);
+            subfiles.Header = s.Substring(s.LastIndexOf(AllStrings.bs) + 1);
             subfiles.Tag = new FileSystemEntry { file = true, path = s };
             subfiles.FontWeight = FontWeights.Normal;
             if (useDictionary)

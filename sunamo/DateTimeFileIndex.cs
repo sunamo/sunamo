@@ -42,7 +42,7 @@ namespace desktop
         /// <param name="row2"></param>
         public FileNameWithDateTime(string row1, string row2)
         {
-            this.displayText = row1 + " " + row2;
+            this.displayText = row1 + AllStrings.space + row2;
             this.row1 = row1;
             this.row2 = row2;
         }
@@ -96,7 +96,7 @@ namespace desktop
             {
                 throw new Exception("Not supported strategy of saving files.");
             }
-            mask +=  "*" + ext;
+            mask +=  AllStrings.asterisk + ext;
             var files2 = FS.GetFiles(folder.fullPath, mask, SearchOption.TopDirectoryOnly);
 
             foreach (var item in files2)
@@ -121,18 +121,18 @@ namespace desktop
             minute = hour = 0;
             if (fnwoe[11] == 'S')
             {
-                var parts = SH.Split(fnwoe, "_");
+                var parts = SH.Split(fnwoe, AllStrings.us);
                 serie = int.Parse( parts[4]);
-                postfix = SH.JoinFromIndex(5, "_", parts);
+                postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
                 return FileEntriesDuplicitiesStrategy.Serie;
             }
             else 
             {
                 string t = fnwoe.Substring(11, 5);
-                var parts = SH.Split(t, "_");
+                var parts = SH.Split(t, AllStrings.us);
                 hour = int.Parse(parts[0]);
                 minute= int.Parse(parts[1]);
-                postfix = SH.JoinFromIndex(5, "_", parts);
+                postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
                 return FileEntriesDuplicitiesStrategy.Time;
             }
         }
@@ -179,7 +179,7 @@ namespace desktop
                 string addSer = "";
                 if (ser != 0)
                 {
-                    addSer = " (" + ser + ")";
+                    addSer = " (" + ser + AllStrings.rb;
                 }
                 displayText = DTHelper.DateToString(date, l) + addSer;
             }
@@ -199,7 +199,7 @@ namespace desktop
 
         string DeleteWrongCharsInFileName(string fnwoe)
         {
-            return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), "_", " ");
+            return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.us, AllStrings.space);
         }
 
         public async void DeleteFile(FileNameWithDateTime o)
@@ -252,7 +252,7 @@ namespace desktop
                 {
                     max = 1;
                 }
-                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + "_" + name;
+                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.us + name;
             }
             else
             {

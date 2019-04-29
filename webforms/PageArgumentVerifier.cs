@@ -356,11 +356,11 @@ public static class PageArgumentVerifier
     /// <param name="sunamoPage"></param>
     public static void GetIDWebAndNameOfPage(out byte IDWeb, out string stranka, string df)
     {
-        if (df[0] == '/')
+        if (df[0] == AllChars.slash)
         {
             df = df.Substring(1);
         }
-        var tokeny = SH.Split(df, "/");
+        var tokeny = SH.Split(df, AllStrings.slash);
         if (tokeny[0].Length == 3)
         {
             IDWeb = (byte)((MySitesShort)Enum.Parse(typeof(MySitesShort), tokeny[0], true));
@@ -393,7 +393,7 @@ public static class PageArgumentVerifier
                 bool obsahujeTecku = false;
                 for (int i = stranka.Length - 1; i >= 0; i--)
                 {
-                    if (stranka[i] == '.')
+                    if (stranka[i] == AllChars.dot)
                     {
                         obsahujeTecku = true;
                         break;
@@ -414,7 +414,7 @@ public static class PageArgumentVerifier
             IDWeb = 8;
             stranka = "";
         }
-        tokeny = SH.SplitToParts(df, 2, "/");
+        tokeny = SH.SplitToParts(df, 2, AllStrings.slash);
         stranka = tokeny[1].ToLower();
     }
 
@@ -473,7 +473,7 @@ public class PageArgumentName
     /// <param name="availableValues"></param>
     public PageArgumentName(PageArgumentType type, string value, bool isCompulsory, string availableValues) : this(type, value, isCompulsory)
     {
-        this.availableValues = SH.Split(availableValues, ',');
+        this.availableValues = SH.Split(availableValues, AllChars.comma);
     }
 
     public PageArgumentType type = PageArgumentType.None;

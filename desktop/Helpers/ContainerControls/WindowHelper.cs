@@ -37,7 +37,7 @@ public class WindowHelper
     {
         if (methodName != string.Empty)
         {
-            methodName += " ";
+            methodName += AllStrings.space;
         }
         string dump = null;
         //dump = YamlHelper.DumpAsYaml(e);
@@ -48,6 +48,17 @@ public class WindowHelper
         window.ShowDialog();
     }
 
-    
+    public static void ShowDialog(WindowWithUserControl windowWithUserControl)
+    {
+        if (windowWithUserControl.DialogResult == null)
+        {
+            // 'Cannot set Visibility or call Show, ShowDialog, or WindowInteropHelper.EnsureHandle after a Window has closed.'
+            /*
+             e.Cancel = true;
+        this.Visibility = Visibility.Hidden;
+             */
+            windowWithUserControl.ShowDialog();
+        }
+    }
 }
 

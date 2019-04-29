@@ -152,7 +152,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                         {
                             SunamoSearchDataInt ssd = f[dex];
                             ssd.Add(w);
-                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + AllStrings.space + ssd.idEntity);
                         }
                     }
                     //i++;
@@ -205,7 +205,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                     {
                         SunamoSearchDataInt ssd = f[dex];
                         ssd.Add(w);
-                        //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                        //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + AllStrings.space + ssd.idEntity);
                     }
                 }
                 //i++;
@@ -257,7 +257,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                         {
                             SunamoSearchDataInt ssd = f[dex];
                             ssd.Add(w);
-                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + AllStrings.space + ssd.idEntity);
                         }
                     }
                     //i++;

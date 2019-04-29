@@ -20,6 +20,6 @@ public static string ConvertToVarChar(string maybeUnicode)
             }
         }
 
-        return SH.ReplaceAll(sb.ToString(), " ", "  ");
+        return SH.ReplaceAll(sb.ToString(), AllStrings.space, AllStrings.doubleSpace);
     }
 }

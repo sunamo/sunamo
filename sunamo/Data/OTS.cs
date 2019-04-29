@@ -13,6 +13,6 @@
 
     public override string ToString()
     {
-        return A.ToString() + " " + B.ToString();
+        return A.ToString() + AllStrings.space + B.ToString();
     }
 }

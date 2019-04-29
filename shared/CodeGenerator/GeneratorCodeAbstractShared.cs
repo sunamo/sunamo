@@ -21,7 +21,7 @@ public abstract partial class GeneratorCodeAbstract{
         //sb.AppendLine();
         AddTab(tabCount);
         //sb.AppendLine();
-        sb.AppendLine("}");
+        sb.AppendLine(AllStrings.cbr);
 
     }
 
@@ -34,18 +34,18 @@ public abstract partial class GeneratorCodeAbstract{
         // Line always ending previous command
         //sb.AppendLine();
         AddTab(tabCount);
-        sb.AppendLine("{");
+        sb.AppendLine(AllStrings.cbl);
         //sb.AppendLine();
     }
 
     public void StartParenthesis()
     {
-        sb.AddItem((object)"(");
+        sb.AddItem((object)AllStrings.lb);
     }
 
     public void EndParenthesis()
     {
-        sb.AddItem((object)")");
+        sb.AddItem((object)AllStrings.rb);
     }
 
     public void AppendLine()
@@ -92,7 +92,7 @@ public abstract partial class GeneratorCodeAbstract{
         AssignValue(tabCount, objectName, variable, vs, addToHyphens);
     }
 
-    protected InstantSB sb = new InstantSB(" ");
+    protected InstantSB sb = new InstantSB(AllStrings.space);
 
     /// <summary>
     /// Use ToString() instead of public access
@@ -102,7 +102,7 @@ public abstract partial class GeneratorCodeAbstract{
     public override string ToString()
     {
         string vr = sb.ToString();
-        sb = new InstantSB(" ");
+        sb = new InstantSB(AllStrings.space);
         return vr;
     }
 

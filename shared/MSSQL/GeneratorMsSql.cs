@@ -111,7 +111,7 @@ public partial class GeneratorMsSql
         }
         if (orderBy != null)
         {
-            sb.Append("ORDER BY " + orderBy + " ");
+            sb.Append("ORDER BY " + orderBy + AllStrings.space);
         }
         comm.CommandText = sb.ToString();
         return comm;

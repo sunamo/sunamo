@@ -22,12 +22,12 @@ namespace sunamo.CodeGenerator
         {
             AddTab2(tabCount, "");
             sb.AddItem(cn);
-            sb.AppendLine(name + ";");
+            sb.AppendLine(name + AllStrings.sc);
         }
 
         public void MapNonStringNonString(int tabCount, string mapName, string keyType, string valueType, Dictionary<string, string> nameCommentEnums)
         {
-            string cn = "map<" + keyType + ", " + valueType + ">";
+            string cn = "map<" + keyType + ", " + valueType + AllStrings.gt;
             NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
@@ -37,13 +37,13 @@ namespace sunamo.CodeGenerator
 
         public void VectorCustom(int tabsCount, string vectorName, string customType, Dictionary<string, string> dict)
         {
-            string cn = "vector<" + customType + ">";
+            string cn = "vector<" + customType + AllStrings.gt;
             NewVariable(tabsCount, AccessModifiers.Private, cn, vectorName, true);
             Append(tabsCount, vectorName + "=");
-            Append(0, "{");
+            Append(0, AllStrings.cbl);
             foreach (var item in dict)
             {
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + ",");
+                Append(0, "{\"" + item.Key + "\", \"" + item.Value + AllStrings.cbr + AllStrings.comma);
             }
             AppendLine(0, "};");
         }
@@ -52,12 +52,12 @@ namespace sunamo.CodeGenerator
         {
             AddTab2(tabsCount, "");
             sb.AddItem(customType);
-            Append(tabsCount, arrayName + "[" + dict.Count + "]=");
-            Append(0, "{");
+            Append(tabsCount, arrayName + AllStrings.lsf + dict.Count + "]=");
+            Append(0, AllStrings.cbl);
             foreach (var item in dict)
             {
-                string d = (item.Key == dict.Last().Key ? "" : ",");
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + d);
+                string d = (item.Key == dict.Last().Key ? "" : AllStrings.comma);
+                Append(0, "{\"" + item.Key + "\", \"" + item.Value + AllStrings.cbr + d);
             }
             AppendLine(0, "};");
         }

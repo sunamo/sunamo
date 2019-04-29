@@ -334,7 +334,7 @@ public partial class FS
                     int serie = 1;
                     while (true)
                     {
-                        string newFn = nameWithoutSerie + " (" + serie + ")";
+                        string newFn = nameWithoutSerie + " (" + serie + AllStrings.rb;
                         if (!FS.ExistsDirectory(newFn))
                         {
 
@@ -367,7 +367,7 @@ public partial class FS
 
         public static string CreateNewFolderPathWithEndingNextTo(string folder, string ending)
         {
-            string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + "\\";
+            string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + AllStrings.bs;
             string folderWithCaretFiles = pathToFolder + Path.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
 
             return folderWithCaretFiles;
@@ -450,7 +450,7 @@ public partial class FS
         /// <param name="folder"></param>
         public static void RemoveDiacriticInFileSystemEntryNames(string folder)
         {
-            List<string> folders = new List<string>(FS.GetFolders(folder, "*", SearchOption.AllDirectories));
+            List<string> folders = new List<string>(FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories));
             folders.Reverse();
             foreach (string item in folders)
             {
@@ -471,7 +471,7 @@ public partial class FS
                     Directory.Move(item, realnewpath);
                 }
             }
-            string[] files = Directory.GetFiles(folder, "*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (string item in files)
             {
                 string directory = FS.GetDirectoryName(item);
@@ -612,7 +612,7 @@ public partial class FS
         {
             string p2, fn;
             GetPathAndFileName(oldPath, out p2, out fn);
-            string vr = p2 + "\\" + fn.Replace(what, forWhat);
+            string vr = p2 + AllStrings.bs + fn.Replace(what, forWhat);
             return vr;
         }
 
@@ -813,11 +813,11 @@ public partial class FS
 
         public static List<ItemWithCount<string>> DirectoriesWithToken(string v, AscDesc sb)
         {
-            var dirs = FS.GetFolders(v, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(v, AllStrings.asterisk, SearchOption.AllDirectories);
             List<ItemWithCount<string>> vr = new List<ItemWithCount<string>>();
             foreach (var item in dirs)
             {
-                vr.Add(new ItemWithCount<string> { t = item, count = SH.OccurencesOfStringIn(item, "\\") });
+                vr.Add(new ItemWithCount<string> { t = item, count = SH.OccurencesOfStringIn(item, AllStrings.bs) });
             }
             if (sb == AscDesc.Asc)
             {
@@ -838,7 +838,7 @@ public partial class FS
         /// <returns></returns>
         public static List<string> GetFiles(string path)
         {
-            return FS.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
+            return FS.GetFiles(path, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
         }
 
     public static List<string> AllFilesInFolders(IEnumerable<string> folders,IEnumerable<string> exts, SearchOption so)
@@ -891,7 +891,7 @@ public partial class FS
                     int serie = 1;
                     while (true)
                     {
-                        string newFn = nova + " (" + serie + ")";
+                        string newFn = nova + " (" + serie + AllStrings.rb;
                         if (!FS.ExistsDirectory(newFn))
                         {
                             vr = "Folder has been renamed to " + Path.GetFileName(newFn);
@@ -911,7 +911,7 @@ public partial class FS
                 }
             }
 
-            string[] files = Directory.GetFiles(item, "*", SearchOption.TopDirectoryOnly);
+            string[] files = Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
             FS.CreateFoldersPsysicallyUnlessThere(nova);
             foreach (var item2 in files)
             {
@@ -942,11 +942,11 @@ public partial class FS
             int fse = 0;
             if (folders)
             {
-                fse += FS.GetFolders(item, "*", SearchOption.TopDirectoryOnly).Length();
+                fse += FS.GetFolders(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
             }
             if (files)
             {
-                fse += Directory.GetFiles(item, "*", SearchOption.TopDirectoryOnly).Length();
+                fse += Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
             }
             return fse == 0;
         }
@@ -960,7 +960,7 @@ public partial class FS
         public static void MoveAllRecursivelyAndThenDirectory(string p, string to, FileMoveCollisionOption co)
         {
             MoveAllFilesRecursively(p, to, co, null);
-            var dirs = FS.GetFolders(p, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
             for (int i = dirs.Length() - 1; i >= 0; i--)
             {
                 Directory.Delete(dirs[i], false);
@@ -987,7 +987,7 @@ public partial class FS
     /// <param name="contains"></param>
     private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains)
     {
-        string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
         foreach (var item in files)
         {
             if (!string.IsNullOrEmpty( contains ))
@@ -1089,12 +1089,12 @@ public partial class FS
         public static void DeleteAllRecursivelyAndThenDirectory(string p)
         {
 
-            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 File.Delete(item);
             }
-            var dirs = FS.GetFolders(p, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
             for (int i = dirs.Length() - 1; i >= 0; i--)
             {
                 Directory.Delete(dirs[i], false);
@@ -1279,8 +1279,8 @@ public partial class FS
             }
             if (!string.IsNullOrEmpty(replaceAllOfThisThen))
             {
-                t = SH.ReplaceAll(t, " ", replaceAllOfThisThen);
-                t = SH.ReplaceAll(t, " ", "  ");
+                t = SH.ReplaceAll(t, AllStrings.space, replaceAllOfThisThen);
+                t = SH.ReplaceAll(t, AllStrings.space, AllStrings.doubleSpace);
             }
             return t;
         }
@@ -1292,10 +1292,10 @@ public partial class FS
         /// <returns></returns>
         public static string RepairFilter(string filter)
         {
-            if (!filter.Contains("|"))
+            if (!filter.Contains(AllStrings.pipe))
             {
-                filter = filter.TrimStart('*');
-                return "*" + filter + "|" + "*" + filter;
+                filter = filter.TrimStart(AllChars.asterisk);
+                return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
             }
             return filter;
         }
@@ -1433,12 +1433,12 @@ public partial class FS
             {
                 int dex = g.IndexOf(AllChars.dash);
 
-                if (g[g.Length - 3] == '-')
+                if (g[g.Length - 3] == AllChars.dash)
                 {
                     serie = int.Parse(g.Substring(g.Length - 2));
                     g = g.Substring(0, g.Length - 3);
                 }
-                else if (g[g.Length - 2] == '-')
+                else if (g[g.Length - 2] == AllChars.dash)
                 {
                     serie = int.Parse(g.Substring(g.Length - 1));
                     g = g.Substring(0, g.Length - 2);
@@ -1486,7 +1486,7 @@ public partial class FS
         {
             while (true)
             {
-                int dex = g.LastIndexOf('_');
+                int dex = g.LastIndexOf(AllChars.us);
                 if (dex != -1)
                 {
                     string serieS = g.Substring(dex + 1);
@@ -1519,7 +1519,7 @@ public partial class FS
             foreach (var item in extensions)
             {
                 string ext = FS.NormalizeExtension(item);
-                string[] files = Directory.GetFiles(folderFrom, "*" + ext, SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(folderFrom, AllStrings.asterisk + ext, SearchOption.AllDirectories);
                 if (files.Length != 0)
                 {
                     dict.Add(ext, files);
@@ -1537,7 +1537,7 @@ public partial class FS
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static string NormalizeExtension(string item)
         {
-            return "." + item.TrimStart('.');
+            return AllStrings.dot + item.TrimStart(AllChars.dot);
         }
 
         public static string GetNormalizedExtension(string filename)
@@ -1571,7 +1571,7 @@ public partial class FS
 
             if (files)
             {
-                string[] files2 = Directory.GetFiles(folder, "*", SearchOption.AllDirectories);
+                string[] files2 = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
                 foreach (var item in files2)
                 {
                     string filePath = item;
@@ -1762,7 +1762,7 @@ public partial class FS
 
             dalsi++;
 
-            return FS.Combine(slozka, fn + "_" + dalsi + ext);
+            return FS.Combine(slozka, fn + AllStrings.us + dalsi + ext);
         }
 
         public static void CreateDirectoryIfNotExists(string p)

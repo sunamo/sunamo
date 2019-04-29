@@ -25,6 +25,6 @@ public static class GravatarHelper
     {
         string cesta = nick + avatareExt;
         
-        return GeneralHelper.MapPath(folderAvatars + "/" + cesta);
+        return GeneralHelper.MapPath(folderAvatars + AllStrings.slash + cesta);
     }
 }

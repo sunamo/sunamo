@@ -46,24 +46,24 @@ namespace SunamoFtp
                 firstTokenMustExists = true;
 
             }
-            if (initialDirectory.Contains("\\"))
+            if (initialDirectory.Contains(AllStrings.bs))
             {
-                delimiter = "\\";
+                delimiter = AllStrings.bs;
             }
             else
             {
-                delimiter = "/";
+                delimiter = AllStrings.slash;
                 if (initialDirectory.Contains(delimiter))
                 {
-                    if (initialDirectory.StartsWith("/"))
+                    if (initialDirectory.StartsWith(AllStrings.slash))
                     {
                         throw new Exception("Počáteční složka nemůže začínat s lomítkem na začátku");
-                        int druhy = initialDirectory.IndexOf('/', 1);
+                        int druhy = initialDirectory.IndexOf(AllChars.slash, 1);
                         firstToken = initialDirectory.Substring(0, druhy);
                     }
                     else
                     {
-                        int prvni = initialDirectory.IndexOf('/');
+                        int prvni = initialDirectory.IndexOf(AllChars.slash);
                         firstToken = initialDirectory.Substring(0, prvni);
                     }
                 }
@@ -129,7 +129,7 @@ namespace SunamoFtp
                 }
                 else
                 {
-                    return "/";
+                    return AllStrings.slash;
                 }
             }
             set

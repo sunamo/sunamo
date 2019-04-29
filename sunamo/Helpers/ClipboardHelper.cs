@@ -60,6 +60,7 @@ public class ClipboardHelper
         }
     }
 
+    
 
     public static void SetText(string s)
     {

@@ -17,6 +17,6 @@ using System.Web;
     {
         string pridat = "";
         //pridat = "Handler.ashx";
-        return @"function " + nameOfFunction + "(" + SH.Join(',', args) + ") {" + Environment.NewLine + "return ajaxGet(" + QSHelperWebForms.VratQSSimple2(ms, countUp, nameOfFunction + pridat, args) + ");" + Environment.NewLine + "}";
+        return @"function " + nameOfFunction + AllStrings.lb + SH.Join(AllChars.comma, args) + ") {" + Environment.NewLine + "return ajaxGet(" + QSHelperWebForms.VratQSSimple2(ms, countUp, nameOfFunction + pridat, args) + ");" + Environment.NewLine + AllStrings.cbr;
     }
 }

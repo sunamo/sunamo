@@ -20,7 +20,7 @@ public class ComboBoxHelper<T> : ComboBoxHelper
         AddValuesOfEnumAsItems(bs);
         SelectedO = defaultValue;
         tsddb.SelectedItem = defaultValue;
-        tsddb.ToolTip = originalToolTipText + " " + defaultValue.ToString();
+        tsddb.ToolTip = originalToolTipText + AllStrings.space + defaultValue.ToString();
     }
 
     public T SelectedT

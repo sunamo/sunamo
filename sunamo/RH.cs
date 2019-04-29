@@ -245,7 +245,7 @@ namespace sunamo
 
         public static string FullNameOfClassEndsDot(Type v)
         {
-            return v.FullName + ".";
+            return v.FullName + AllStrings.dot;
         }
 
         public static string FullPathCodeEntity(Type t)
@@ -257,7 +257,7 @@ namespace sunamo
         {
             string methodName = method.Name;
             string type = method.ReflectedType.Name;
-            return SH.ConcatIfBeforeHasValue(type, ".", methodName, ":");
+            return SH.ConcatIfBeforeHasValue(type, AllStrings.dot, methodName, AllStrings.colon);
         }
         #endregion
 

@@ -817,7 +817,7 @@ private string ExecuteScalarString(SqlCommand comm)
             return "";
         }
 
-        return o.ToString().TrimEnd(' ');
+        return o.ToString().TrimEnd(AllChars.space);
     }
 
 private List<short> ReadValuesShort(SqlCommand comm)

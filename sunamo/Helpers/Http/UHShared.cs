@@ -26,17 +26,17 @@ public partial class UH
                 {
                     continue;
                 }
-                if (item[item.Length - 1] == '/')
+                if (item[item.Length - 1] == AllChars.slash)
                 {
                     vr.Append(item);
                 }
                 else
                 {
-                    vr.Append(item + '/');
+                    vr.Append(item + AllChars.slash);
                 }
-                //vr.Append(item.TrimEnd('/') + "/");
+                //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
             }
-            return vr.ToString().TrimEnd('/');
+            return vr.ToString().TrimEnd(AllChars.slash);
         }
     
 public static string UrlEncode(string co)
@@ -46,8 +46,8 @@ public static string UrlEncode(string co)
 
 public static string GetFileName(string rp)
     {
-        rp = rp.TrimEnd('/');
-        int dex = rp.LastIndexOf('/');
+        rp = rp.TrimEnd(AllChars.slash);
+        int dex = rp.LastIndexOf(AllChars.slash);
         return rp.Substring(dex + 1);
     }
 
@@ -57,9 +57,9 @@ public static string GetUriSafeString(string title)
 
             title = SH.TextWithoutDiacritic(title);
             // replace spaces with single dash
-            title = Regex.Replace(title, @"\s+", "-");
+            title = Regex.Replace(title, @"\s+", AllStrings.dash);
             // if we end up with multiple dashes, collapse to single dash            
-            title = Regex.Replace(title, @"\-{2,}", "-");
+            title = Regex.Replace(title, @"\-{2,}", AllStrings.dash);
 
             // make it all lower case
             title = title.ToLower();
@@ -68,16 +68,16 @@ public static string GetUriSafeString(string title)
             // remove anything that is not letters, numbers, dash, or space
             title = Regex.Replace(title, @"[^a-z0-9\-\s]", "");
             // replace spaces
-            title = title.Replace(' ', '-');
+            title = title.Replace(AllChars.space, AllChars.dash);
             // collapse dashes
-            title = Regex.Replace(title, @"-{2,}", "-");
+            title = Regex.Replace(title, @"-{2,}", AllStrings.dash);
             // trim excessive dashes at the beginning
-            title = title.TrimStart(new char[] { '-' });
+            title = title.TrimStart(new char[] { AllChars.dash });
             // if it's too long, clip it
             if (title.Length > 80)
                 title = title.Substring(0, 79);
             // remove trailing dashes
-            title = title.TrimEnd(new char[] { '-' });
+            title = title.TrimEnd(new char[] { AllChars.dash });
             return title;
         }
 public static string GetUriSafeString(string title, int maxLenght)
@@ -86,9 +86,9 @@ public static string GetUriSafeString(string title, int maxLenght)
 
             title = SH.TextWithoutDiacritic(title);
             // replace spaces with single dash
-            title = Regex.Replace(title, @"\s+", "-");
+            title = Regex.Replace(title, @"\s+", AllStrings.dash);
             // if we end up with multiple dashes, collapse to single dash            
-            title = Regex.Replace(title, @"\-{2,}", "-");
+            title = Regex.Replace(title, @"\-{2,}", AllStrings.dash);
 
             // make it all lower case
             title = title.ToLower();
@@ -97,14 +97,14 @@ public static string GetUriSafeString(string title, int maxLenght)
             // remove anything that is not letters, numbers, dash, or space
             title = Regex.Replace(title, @"[^a-z0-9\-\s]", "");
             // replace spaces
-            title = title.Replace(' ', '-');
+            title = title.Replace(AllChars.space, AllChars.dash);
             // collapse dashes
-            title = Regex.Replace(title, @"-{2,}", "-");
+            title = Regex.Replace(title, @"-{2,}", AllStrings.dash);
             // trim excessive dashes at the beginning
-            title = title.TrimStart(new char[] { '-' });
+            title = title.TrimStart(new char[] { AllChars.dash });
             // remove trailing dashes
-            title = title.TrimEnd(new char[] { '-' });
-            title = SH.ReplaceAll(title, "-", "--");
+            title = title.TrimEnd(new char[] { AllChars.dash });
+            title = SH.ReplaceAll(title, AllStrings.dash, "--");
             // if it's too long, clip it
             if (title.Length > maxLenght)
                 title = title.Substring(0, maxLenght);
@@ -145,7 +145,7 @@ public static string UrlDecodeWithRemovePathSeparatorCharacter(string pridat)
 
 public static string GetPageNameFromUri(Uri uri)
         {
-            int nt = uri.PathAndQuery.IndexOf("?");
+            int nt = uri.PathAndQuery.IndexOf(AllStrings.q);
             if (nt != -1)
             {
                 return uri.PathAndQuery.Substring(0, nt);
@@ -156,7 +156,7 @@ public static string GetPageNameFromUri(string atr, string p)
         {
             if (!atr.StartsWith("http://") && !atr.StartsWith("https://"))
             {
-                return GetPageNameFromUri(new Uri("http://" + p + "/" + atr.TrimStart('/')));
+                return GetPageNameFromUri(new Uri("http://" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
             }
             return GetPageNameFromUri(new Uri(atr));
         }

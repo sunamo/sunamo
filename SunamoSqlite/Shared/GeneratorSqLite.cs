@@ -29,11 +29,11 @@ namespace DocArch.SqLite
                 sb.AppendFormat("CREATE TABLE {0}(", table);
                 foreach (SloupecDB var in sloupce)
                 {
-                    sb.Append(GeneratorSqLite.Column(var, table, dynamicTables) + ",");
+                    sb.Append(GeneratorSqLite.Column(var, table, dynamicTables) + AllStrings.comma);
                 }
                 string dd = sb.ToString();
-                dd = dd.TrimEnd(',');
-                string vr = dd + ")";
+                dd = dd.TrimEnd(AllChars.comma);
+                string vr = dd + AllStrings.rb;
                 //vr);
                 return vr;
             }
@@ -42,7 +42,7 @@ namespace DocArch.SqLite
 
         private static string Column(SloupecDB var, string inTable, bool dynamicTables)
         {
-            InstantSB sb = new InstantSB(" ");
+            InstantSB sb = new InstantSB(AllStrings.space);
 
             sb.AddItem((object)var.Name);
             sb.AddItem((object)(var.Type + var.Delka));
@@ -78,9 +78,9 @@ namespace DocArch.SqLite
                     ThrowExceptions.Custom(type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
 
                     //sb.AddItem((object)"CONSTRAINT");
-                    //sb.AddItem((object)("fk_" + var.Name + "_" + inTable + "_" + var.referencesTable + "_" + var.referencesColumn));
+                    //sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));
                     //sb.AddItem((object)"FOREIGN KEY REFERENCES");
-                    //sb.AddItem((object)(var.referencesTable + "(" + var.referencesColumn + ")"));
+                    //sb.AddItem((object)(var.referencesTable + AllStrings.lb + var.referencesColumn + AllStrings.rb));
                 }
             }
 

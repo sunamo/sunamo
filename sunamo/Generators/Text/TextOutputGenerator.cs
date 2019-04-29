@@ -10,7 +10,7 @@ using System.Text;
 /// </summary>
 public class TextOutputGenerator
 {
-    readonly static string znakNadpisu = "*";
+    readonly static string znakNadpisu = AllStrings.asterisk;
     public TextBuilder sb = new TextBuilder();
     public string prependEveryNoWhite
     {
@@ -133,7 +133,7 @@ public class TextOutputGenerator
     {
         if (insertCount)
         {
-            header += " (" + files1.Count() + ")";
+            header += " (" + files1.Count() + AllStrings.rb;
         }
         if (headerWrappedEmptyLines)
         {

@@ -187,12 +187,12 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, params string[] selectSloupce)
     {
-        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(',', selectSloupce), p));
+        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(AllChars.comma, selectSloupce), p));
     }
 
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, List<string> ziskaneSloupce, string idColumnName, int idColumnValue)
     {
-        string nazvy = SH.Join(',', ziskaneSloupce.ToArray());
+        string nazvy = SH.Join(AllChars.comma, ziskaneSloupce.ToArray());
 
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", nazvy, p) + GeneratorMsSql.SimpleWhere(idColumnName));
         AddCommandParameter(comm, 0, idColumnValue);
@@ -521,7 +521,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
-        aktual += hodnotaAppend + ",";
+        aktual += hodnotaAppend + AllStrings.comma;
         return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
     }
 
@@ -538,11 +538,11 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         if (!d.Contains(hodnotaAppend))
         {
-            aktual += hodnotaAppend + ",";
-            string save = SH.Join(',', d.ToArray());
+            aktual += hodnotaAppend + AllStrings.comma;
+            string save = SH.Join(AllChars.comma, d.ToArray());
 
             return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
         }
@@ -556,9 +556,9 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecCut).ToString();
         aktual = aktual.Trim();
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         d.Remove(hodnotaCut);
-        string save = SH.Join(',', d.ToArray());
+        string save = SH.Join(AllChars.comma, d.ToArray());
         return UpdateOneRow(tran, tableName, sloupecCut, save, sloupecID, hodnotaID);
     }
 
@@ -804,7 +804,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<string> SelectGetAllTablesInDB(SqlTransaction tran)
     {
         List<string> vr = new List<string>();
-        DataTable dt = SelectDataTableWithWhere(tran, "INFORMATION_SCHEMA.TABLES", "*", "TABLE_TYPE", "BASE TABLE");
+        DataTable dt = SelectDataTableWithWhere(tran, "INFORMATION_SCHEMA.TABLES", AllStrings.asterisk, "TABLE_TYPE", "BASE TABLE");
         foreach (DataRow item in dt.Rows)
         {
             vr.Add(item.ItemArray[2].ToString());
@@ -966,7 +966,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 
     public void InsertToTable3(SqlTransaction tran, string table, string sloupce, string valuesParams, object[] values)
     {
-        SqlCommand comm = new SqlCommand("INSERT INTO " + table + " " + sloupce + " VALUES " + valuesParams);
+        SqlCommand comm = new SqlCommand("INSERT INTO " + table + AllStrings.space + sloupce + " VALUES " + valuesParams);
         for (int i = 0; i < values.Length; i++)
         {
             AddCommandParameter(comm, i, values[i]);

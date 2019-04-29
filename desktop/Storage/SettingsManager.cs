@@ -59,7 +59,7 @@ namespace desktop.Storage
                     }
                     else
                     {
-                        //element.Key.SetValue(element.Value, def[sender.Name + "." + element.Key.Name]);
+                        //element.Key.SetValue(element.Value, def[sender.Name + AllStrings.dot + element.Key.Name]);
                         object value = null;
                         try
                         {
@@ -94,7 +94,7 @@ namespace desktop.Storage
         {
             if (false)
             {
-                return sender.Name + "." + fw.GetType().FullName;
+                return sender.Name + AllStrings.dot + fw.GetType().FullName;
             }
             StringBuilder sb = new StringBuilder();
             sb.Append(fw.Name);
@@ -140,7 +140,7 @@ namespace desktop.Storage
                     {
 
                     }
-                    //def[sender.Name + "." + element.Key.Name] = value;
+                    //def[sender.Name + AllStrings.dot + element.Key.Name] = value;
 
                 }
 

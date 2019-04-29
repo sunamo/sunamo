@@ -38,16 +38,16 @@ public class QSHelperWebForms
     public static string VratQSSimple2(MySitesShort ms, int countUp, string adresa, string[] p)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(countUp.ToString() + ",");
-        sb.Append(((byte)ms).ToString() + ",");
+        sb.Append(countUp.ToString() + AllStrings.comma);
+        sb.Append(((byte)ms).ToString() + AllStrings.comma);
         sb.Append("'");
         sb.Append(adresa);
         sb.Append("',");
         QSHelper.GetArray(p, sb, true);
-        sb.Append(",");
+        sb.Append(AllStrings.comma);
         QSHelper.GetArray(p, sb, false);
 
-        string vr = sb.ToString();//.TrimEnd('&', '\'', '+');
+        string vr = sb.ToString();//.TrimEnd('&', AllChars.bs', AllChars.plus);
         return vr;
     }
 
@@ -64,20 +64,20 @@ public class QSHelperWebForms
         StringBuilder sb = new StringBuilder();
         if (ms != MySitesShort.Nope)
         {
-            //sb.Append("'../" + ms.ToString() + "_");
+            //sb.Append("'../" + ms.ToString() + AllStrings.us);
             sb.Append("'");
             for (int i = 0; i < countUp; i++)
             {
-                sb.Append("../");
+                sb.Append(AllStrings.dds);
             }
-            sb.Append(ms.ToString() + "_");
+            sb.Append(ms.ToString() + AllStrings.us);
         }
         else
         {
             sb.Append("'../");
         }
 
-        sb.Append(adresa + "?");
+        sb.Append(adresa + AllStrings.q);
         int to = (p.Length / 2) * 2;
         for (int i = 0; i < to; i++)
         {
@@ -85,7 +85,7 @@ public class QSHelperWebForms
             string v = k; //p[++i].ToString();
             sb.Append(k + "=' + encodeURIComponent(" + v + ") +'&");
         }
-        string vr = sb.ToString();//.TrimEnd('&', '\'', '+');
+        string vr = sb.ToString();//.TrimEnd('&', AllChars.bs', AllChars.plus);
         if (p.Length == 0)
         {
             vr = vr.Substring(0, vr.Length - 1) + "'";

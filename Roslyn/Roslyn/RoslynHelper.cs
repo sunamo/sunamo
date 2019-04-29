@@ -466,7 +466,7 @@ namespace Roslyn
             //string parameters = m.ParameterList.ToFullString(); 
             // only text
             string p2 = GetParameters(m.ParameterList);
-            sb.AddItem("(" + p2 + ")");
+            sb.AddItem(AllStrings.lb + p2 + AllStrings.rb);
 
             string s = sb.ToString();
             return s;
@@ -544,7 +544,7 @@ namespace Roslyn
         public static string NameWithoutGeneric(string name)
         {
             
-            return SH.RemoveAfterFirst(name, "<");
+            return SH.RemoveAfterFirst(name, AllStrings.lt);
         }
     }
 }

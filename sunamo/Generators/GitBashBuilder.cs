@@ -14,6 +14,7 @@ namespace sunamo.Generators
     /// </summary>
     public  class GitBashBuilder
     {
+        static Type type = typeof(GitBashBuilder);
         public TextBuilder sb = new TextBuilder();
 
         public GitBashBuilder()
@@ -48,6 +49,7 @@ namespace sunamo.Generators
         /// 
         /// A2 - full path or name in Projects folder
         /// A3 - with or without full path, without extension, can be slash and backslash
+        /// A5 - must be filled, because is stripped all extension then passed will be suffixed
         /// </summary>
         /// <param name="tlb"></param>
         /// <param name="solution"></param>
@@ -57,7 +59,7 @@ namespace sunamo.Generators
         public static string GenerateCommandForGit(TypedLoggerBase tlb, string solution, List<string> linesFiles, out bool anyError, string searchOnlyWithExtension, string command)
         {
             var filesToCommit = GitBashBuilder.PrepareFilesToSimpleGitFormat(tlb, solution, linesFiles, out anyError, searchOnlyWithExtension);
-            if (filesToCommit == null)
+            if (filesToCommit == null || filesToCommit.Count == 0 )
             {
                 return "";
             }
@@ -68,8 +70,33 @@ namespace sunamo.Generators
         }
 
         /// <summary>
+        /// A2 - must be filled, because is stripped all extension then passed will be suffixed
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="typedExt"></param>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public static string CheckoutWithExtension(string folder, string typedExt, List<string> files)
+        {
+            ThrowExceptions.IsNull(type, "EnterValueFormCheckoutAllWithExtension_Finished", "typedExt", typedExt);
+
+            GitBashBuilder bashBuilder = new GitBashBuilder();
+            bool anyError = false;
+            var filesToCommit = GitBashBuilder.PrepareFilesToSimpleGitFormat(TypedSunamoLogger.Instance, folder, files, out anyError, typedExt);
+            if (filesToCommit == null)
+            {
+                SunamoTemplateLogger.Instance.SomeErrorsOccuredSeeLog();
+            }
+
+            //string result = GitBashBuilder.CreateGitCommandForFiles("checkout", new StringBuilder(), filesToCommit);
+            string result = GitBashBuilder.GenerateCommandForGit(TypedSunamoLogger.Instance, folder, files, out anyError, typedExt, "checkout");
+
+            return result;
+        }
+
+        /// <summary>
         /// A2 - path in which search for files by extension
-        /// A4 - must be filled, because is stripped all extension then passed will be suffixed
+        /// A5 - must be filled, because is stripped all extension then passed will be suffixed
         /// </summary>
         /// <param name="tlb"></param>
         /// <param name="solution"></param>
@@ -211,7 +238,7 @@ namespace sunamo.Generators
 
         public static string CreateGitCommandForFiles(string command, StringBuilder sb, List<string> linesFiles)
         {
-            return Git(sb, command + " " + SH.Join(AllChars.space, linesFiles));
+            return Git(sb, command + AllStrings.space + SH.Join(AllChars.space, linesFiles));
         }
 
         public void Cd(string key)
@@ -332,7 +359,7 @@ namespace sunamo.Generators
 
         private void Arg(string v)
         {
-            Append("-" + v);
+            Append(AllStrings.dash + v);
         }
 
         public void Remote(string arg)

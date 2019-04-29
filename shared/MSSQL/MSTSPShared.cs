@@ -37,7 +37,7 @@ public partial class MSTSP
     /// </summary>
     public DataTable SelectDataTableSelective(SqlTransaction tran, string tabulka, string sloupec, object hodnota)
     {
-        SqlCommand comm = new SqlCommand(GeneratorMsSql.SimpleWhere("*", tabulka, sloupec), conn);
+        SqlCommand comm = new SqlCommand(GeneratorMsSql.SimpleWhere(AllStrings.asterisk, tabulka, sloupec), conn);
         AddCommandParameter(comm, 0, hodnota);
         return SelectDataTable(tran, comm);
     }

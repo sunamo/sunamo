@@ -83,7 +83,7 @@ namespace sunamo.Indexing.FileSystem
             actualFolderID++;
             directories.Add(folder);
 
-            var dirs = FS.GetFolders(folder, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories);
             List<string> fils = new List<string>();
 
             foreach (var item in dirs)

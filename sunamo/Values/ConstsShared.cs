@@ -53,10 +53,10 @@ namespace sunamo.Values
         public const float zeroFloat = 0;
 
 
-        public static readonly string[] numberPoints = new string[] { ",", "." };
+        public static readonly string[] numberPoints = new string[] { AllStrings.comma, AllStrings.dot };
 
         #region Names here must be the same as in AllChars
-        public const string bs = "\\";
+        public const string bs = AllStrings.bs;
         public const string tab = "\t";
         public const string nl = "\n";
         public const string cr = "\t";

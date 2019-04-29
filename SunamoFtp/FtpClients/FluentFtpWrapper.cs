@@ -40,10 +40,10 @@ namespace SunamoFtp
             // begin connecting to the server
             client.Connect();
 
-            Console.WriteLine( client.GetChmod("/"));
+            Console.WriteLine( client.GetChmod(AllStrings.slash));
 
             // get a list of files and directories in the "/htdocs" folder
-            foreach (FtpListItem item in client.GetListing("/"))
+            foreach (FtpListItem item in client.GetListing(AllStrings.slash))
             {
 
                 // if this is a file

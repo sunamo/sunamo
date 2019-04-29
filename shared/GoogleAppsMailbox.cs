@@ -93,9 +93,9 @@ namespace sunamo
             mail.Sender = ma;
 
             #region Recipient
-            if (to.Contains(";"))
+            if (to.Contains(AllStrings.sc))
             {
-                string[] _EmailsTO = to.Split(";".ToCharArray());
+                string[] _EmailsTO = to.Split(AllStrings.sc.ToCharArray());
                 for (int i = 0; i < _EmailsTO.Length; i++)
                 {
                     if (!string.IsNullOrWhiteSpace(_EmailsTO[i]))
@@ -124,9 +124,9 @@ namespace sunamo
             #endregion
 
             #region Carbon copy
-            if (cc.Contains(";"))
+            if (cc.Contains(AllStrings.sc))
             {
-                string[] _EmailsCC = cc.Split(";".ToCharArray());
+                string[] _EmailsCC = cc.Split(AllStrings.sc.ToCharArray());
                 for (int i = 0; i < _EmailsCC.Length; i++)
                 {
                     if (!string.IsNullOrWhiteSpace(_EmailsCC[i]))
@@ -150,9 +150,9 @@ namespace sunamo
 
             #region Blind Carbon copy
             //BCC
-            if (bcc.Contains(";"))
+            if (bcc.Contains(AllStrings.sc))
             {
-                string[] _EmailsBCC = bcc.Split(";".ToCharArray());
+                string[] _EmailsBCC = bcc.Split(AllStrings.sc.ToCharArray());
                 for (int i = 0; i < _EmailsBCC.Length; i++)
                 {
                     mail.Bcc.Add(new MailAddress(_EmailsBCC[i]));

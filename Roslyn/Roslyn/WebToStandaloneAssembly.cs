@@ -152,11 +152,11 @@ namespace {0}
                         genUs.Using(item);
                     }
                     genUs.AppendLine();
-                    genUs.Namespace(0, ("sunamo.cz." + ns).TrimEnd('.'));
+                    genUs.Namespace(0, ("sunamo.cz." + ns).TrimEnd(AllChars.dot));
 
 
                     contentFileNew.Insert(0, genUs.ToString());
-                    contentFileNew.Add("}");
+                    contentFileNew.Add(AllStrings.cbr);
 
                     string content = GetContentOfPageCsFile(nsX, fnwoeAspxCs, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
                     content = SH.ReplaceAll(content, string.Empty, "CreateEmpty();");

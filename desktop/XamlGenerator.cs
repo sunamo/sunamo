@@ -135,7 +135,7 @@ namespace desktop
         {
             string vr = sb.ToString();
             // xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"
-            vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
+            vr = SH.ReplaceFirstOccurences(vr, AllStrings.gt, " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
             var vrR = (T)XamlReader.Parse(vr);
             return vrR;
         }    

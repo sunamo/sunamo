@@ -113,8 +113,8 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
          string zbylaCesta = null;
          // TODO: Pridat kontrolu, zda tomu tak je
          string pred = null;
-         SH.GetPartsByLocation(out pred, out zbylaCesta, cesta, cesta.IndexOf("\\"));
-         var tokeny = SH.Split(zbylaCesta, "\\");
+         SH.GetPartsByLocation(out pred, out zbylaCesta, cesta, cesta.IndexOf(AllStrings.bs));
+         var tokeny = SH.Split(zbylaCesta, AllStrings.bs);
          Type pe = typeof(Registry);
          FieldInfo[] fi = pe.GetFields();
          RegistryKey vratit = null;
@@ -198,7 +198,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
     /// M nekontroluje, zda se jedna o H a muze vratit posledni token cesty.
     /// </summary>
     /// <param name="hodnota"></param>
-    /// <param name="?"></param>
+    /// <param name=AllStrings.q></param>
     /// <returns></returns>
     static string ExtractPathFromPath(out string hodnota, string cesta)
     {
@@ -251,7 +251,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
 
     public static void GetHkeyAndPath(string p, out string hkey, out string key)
     {
-         SH.GetPartsByLocation(out hkey, out key, p, '\\');
+         SH.GetPartsByLocation(out hkey, out key, p, AllChars.bs);
     }
 }
 

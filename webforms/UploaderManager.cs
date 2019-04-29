@@ -79,10 +79,10 @@ public class UploaderManager
         toFolderTempSlash = GeneralHelper.GetRandomGuidFolderInRawUploads(idUser, "PhotosTemp", false);
         this.idAlbum = idAlbum;
         //this.mss = mss;
-        exts = SH.Split(allowedExtension, ',');
-        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\";
+        exts = SH.Split(allowedExtension, AllChars.comma);
+        this.pathAlbumFinal = pathAlbumFinal.TrimEnd(AllChars.bs) + AllStrings.bs;
+        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd(AllChars.bs) + AllStrings.bs;
+        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd(AllChars.bs) + AllStrings.bs;
         this.idUser = idUser;
         this.borderColor = borderColor;
         this.workWithDatabase = workWithDatabase;
@@ -348,9 +348,9 @@ public class UploaderManager
         {
             fn = fn.Replace("__", "");
         }
-        if (fileName.Contains("|"))
+        if (fileName.Contains(AllStrings.pipe))
         {
-            fn = fn.Replace("|", "");
+            fn = fn.Replace(AllStrings.pipe, "");
         }
         fn = FS.DeleteWrongCharsInFileName(fn, false);
         fn = FS.DeleteWrongCharsInDirectoryName(fn);
@@ -404,7 +404,7 @@ public class UploaderManager
         string pridat = "";
         if (!string.IsNullOrEmpty(code))
         {
-            pridat = code + "\\";
+            pridat = code + AllStrings.bs;
         }
         final = pathAlbumFinal + pridat + fn;
         finalMin = pathAlbumFinalMin  + pridat + fn;

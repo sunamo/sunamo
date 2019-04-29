@@ -44,12 +44,12 @@ namespace DocArch.SqLite
             {
                 string nahraditCim = ReplaceValueOnlyOne(p);
 
-                f = f.Replace("{" + i.ToString() + "}", nahraditCim);
+                f = f.Replace(AllStrings.cbl + i.ToString() + AllStrings.cbr, nahraditCim);
 
             }
             else
             {
-                f = f.Replace("{" + i.ToString() + "}", "NULL");
+                f = f.Replace(AllStrings.cbl + i.ToString() + AllStrings.cbr, "NULL");
             }
             return f;
         }
@@ -62,7 +62,7 @@ namespace DocArch.SqLite
                 if (p.GetType() == typeof(string))
                 {
                     // Musím vrátit hned protoZe na konci mi to replacuje uvozovky
-                    return "'" + nahraditCim.Replace('\'', ' ') + "'";
+                    return "'" + nahraditCim.Replace(AllChars.bs, AllChars.space) + "'";
                 }
                 else if (p.GetType() == typeof(bool))
                 {
@@ -91,7 +91,7 @@ namespace DocArch.SqLite
                 }
                 else if (p.GetType() == typeof(double))
                 {
-                    nahraditCim = nahraditCim.Replace(",", ".");
+                    nahraditCim = nahraditCim.Replace(AllStrings.comma, AllStrings.dot);
                 }
                 return nahraditCim.Replace("'", "");
 
@@ -106,24 +106,24 @@ namespace DocArch.SqLite
         public string GetValues(params object[] sloupce)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("(");
+            sb.Append(AllStrings.lb);
             foreach (object var in sloupce)
             {
-                sb.Append(ReplaceValueOnlyOne(var) + ",");
+                sb.Append(ReplaceValueOnlyOne(var) + AllStrings.comma);
             }
-            string vr = sb.ToString().TrimEnd(',') + ")";
+            string vr = sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
             return vr;
         }
 
         public string GetColumns(string[] sloupce)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("(");
+            sb.Append(AllStrings.lb);
             foreach (String var in sloupce)
             {
-                sb.Append(var + ",");
+                sb.Append(var + AllStrings.comma);
             }
-            string vr = sb.ToString().TrimEnd(',') + ")";
+            string vr = sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
             return vr;
         }
 
@@ -131,12 +131,12 @@ namespace DocArch.SqLite
         {
             string[] sloupce = StoredProceduresSqliteI.ci.VratNazvySloupcuTabulky(tabulka);
             StringBuilder sb = new StringBuilder();
-            sb.Append("(");
+            sb.Append(AllStrings.lb);
             foreach (String var in sloupce)
             {
-                sb.Append(var + ",");
+                sb.Append(var + AllStrings.comma);
             }
-            string vr = sb.ToString().TrimEnd(',') + ")";
+            string vr = sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
             return vr;
         }
 
@@ -144,12 +144,12 @@ namespace DocArch.SqLite
         {
 
             StringBuilder sb = new StringBuilder();
-            //sb.Append("(");
+            //sb.Append(AllStrings.lb);
             foreach (String var in sloupce)
             {
-                sb.Append(var + ",");
+                sb.Append(var + AllStrings.comma);
             }
-            string vr = sb.ToString().TrimEnd(',');// +")";
+            string vr = sb.ToString().TrimEnd(AllChars.comma);// +AllStrings.rb;
             return vr;
         }
 

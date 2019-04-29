@@ -41,7 +41,7 @@ namespace desktop.Helpers
             var d = 100d / (double)columns;
             for (int i = 0; i < columns; i++)
             {
-                result.Add(d + "*");
+                result.Add(d + AllStrings.asterisk);
             }
             return result;
         }

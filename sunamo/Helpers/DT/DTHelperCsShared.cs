@@ -13,7 +13,7 @@ using System.Text;
         /// <returns></returns>
         public static string DateToStringWithDayOfWeekCS(DateTime dt)
         {
-            return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year;
+            return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ using System.Text;
 
 public static string ToShortTime(DateTime value)
         {
-            return value.Hour + ":" + DTHelperGeneral.MakeUpTo2NumbersToZero( value.Minute);
+            return value.Hour + AllStrings.colon + DTHelperGeneral.MakeUpTo2NumbersToZero( value.Minute);
         }
         
 /// <summary>
@@ -59,11 +59,11 @@ public static string ToShortTime(DateTime value)
         public static DateTime ParseTimeCzech(string t)
         {
             var vr = DateTime.MinValue;
-            var parts = SH.Split(t, ':');
+            var parts = SH.Split(t, AllChars.colon);
             if (parts.Count == 2)
             {
                 t += ":00";
-                parts = SH.Split(t, ':');
+                parts = SH.Split(t, AllChars.colon);
             }
             int hours = -1;
             int minutes = -1;
@@ -94,7 +94,7 @@ public static string ToShortTime(DateTime value)
 public static DateTime ParseDateCzech(string input)
         {
             DateTime vr = DateTime.MinValue;
-            var parts = SH.Split(input, '.');
+            var parts = SH.Split(input, AllChars.dot);
             var day = -1;
             var month = -1;
             var year = -1;

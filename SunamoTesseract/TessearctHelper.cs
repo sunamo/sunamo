@@ -63,7 +63,7 @@ namespace SunamoTesseract
                 info.Arguments =
                     "/c tesseract.exe " +
                     // Image file.
-                    tempImageFile + " " +
+                    tempImageFile + AllStrings.space +
                     // Output file (tesseract add '.txt' at the end)
                     tempOutputFile +
                     // Languages.

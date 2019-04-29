@@ -34,7 +34,7 @@ namespace sunamo
             }
             try
             {
-                hexEncoded = hexEncoded.Replace("X'", "").TrimEnd('\''); ;
+                hexEncoded = hexEncoded.Replace("X'", "").TrimEnd(AllChars.bs); ;
 
                 int l = Convert.ToInt32(hexEncoded.Length / 2);
                 byte[] b = new byte[l];

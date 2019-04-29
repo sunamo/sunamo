@@ -104,14 +104,14 @@ namespace sunamo
                 {
                     if (actual.Language == 0)
                     {
-                        vr = cs0 + " - " + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                        vr = cs0 + AllStrings.swda + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
                     }
                 }
                 else //if (depending.TwoLetterISOLanguageName == "en")
                 {
                     if (actual.Language == 0)
                     {
-                        vr = en0 + " - " + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                        vr = en0 + AllStrings.swda + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
                     }
                 }
             }

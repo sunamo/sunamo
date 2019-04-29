@@ -30,6 +30,6 @@ public static class TempHelper
 
     public static string GetRelativePath(int idUser, MySitesShort mss, string file)
     {
-        return "_\\temp\\U" + idUser + "\\" + mss + "\\" + file;
+        return "_\\temp\\U" + idUser + AllStrings.bs + mss + AllStrings.bs + file;
     }
 }

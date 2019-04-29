@@ -15,7 +15,7 @@ using sunamo.Essential;
 
     public class PicturesShared
     {
-        private static Regex r = new Regex(":");
+        private static Regex r = new Regex(AllStrings.colon);
 
     public static void ChangeResolution(string path, float dpix, float dpiy)
     {
@@ -123,7 +123,7 @@ using sunamo.Essential;
                     if (item.Id == propId)
                     {
                         PropertyItem propItem = myImage.GetPropertyItem(propId);
-                        string dateTaken = r.Replace(Encoding.UTF8.GetString(propItem.Value), "-", 2);
+                        string dateTaken = r.Replace(Encoding.UTF8.GetString(propItem.Value), AllStrings.dash, 2);
                         return DateTime.Parse(dateTaken);
                     }
                 }

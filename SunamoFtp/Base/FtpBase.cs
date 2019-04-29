@@ -21,7 +21,7 @@ namespace SunamoFtp
         {
             ps = new PathSelector("");
             remoteHost = string.Empty;
-            //remotePath = ".";
+            //remotePath = AllStrings.dot;
             remoteUser = string.Empty;
             remotePass = string.Empty;
             remotePort = 21;
@@ -183,7 +183,7 @@ namespace SunamoFtp
 
         public  string GetActualPath()
         {
-            return UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+            return UH.Combine(true, remoteHost + AllStrings.colon + remotePort, ps.ActualPath);
         }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace SunamoFtp
         /// <returns></returns>
         public string GetActualPath(string dirName)
         {
-            string s = UH.Combine(true, remoteHost + ":" + remotePort, UH.Combine(true, ps.ActualPath, dirName));
-            return s.TrimEnd('/');
+            string s = UH.Combine(true, remoteHost + AllStrings.colon + remotePort, UH.Combine(true, ps.ActualPath, dirName));
+            return s.TrimEnd(AllChars.slash);
         }
 
 
@@ -272,13 +272,13 @@ namespace SunamoFtp
                 string actualPath = ps.ActualPath;
                 foreach (string item in fse)
                 {
-                    string size = SH.JoinFromIndex(4, ' ', SH.Split(item, " "));
+                    string size = SH.JoinFromIndex(4, AllChars.space, SH.Split(item, AllStrings.space));
                     char fz = item[0];
-                    if (fz == '-')
+                    if (fz == AllChars.dash)
                     {
                         if (size != "0")
                         {
-                            folderSizeRec += ulong.Parse(size.Substring(0, size.IndexOf(' ') + 1));
+                            folderSizeRec += ulong.Parse(size.Substring(0, size.IndexOf(AllChars.space) + 1));
                         }
 
                         if (vr.ContainsKey(actualPath))
@@ -294,7 +294,7 @@ namespace SunamoFtp
                     }
                     else if (fz == 'd')
                     {
-                        string folderName2 = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                        string folderName2 = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
                         if (!FtpHelper.IsThisOrUp(folderName2))
                         {
                             if (slozkyNeuploadovatAVS.Contains(folderName2) && ps.ActualPath == MainWindow.WwwSlash)
@@ -359,7 +359,7 @@ namespace SunamoFtp
         /// <param name="_FTPPass">FTP login password</param>
         public void UploadFile(string _FileName)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/", UH.Combine(true, ps.ActualPath, FS.GetFileName(_FileName)));
+            String _UploadPath = UH.Combine(false, remoteHost + AllStrings.colon + remotePort + AllStrings.slash, UH.Combine(true, ps.ActualPath, FS.GetFileName(_FileName)));
             if (reallyUpload)
             {
                 UploadFileMain(_FileName, _UploadPath);
@@ -378,7 +378,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool UploadFile(string fullFilePath, string actualFtpPath)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/" + "/", UH.Combine(false, actualFtpPath, FS.GetFileName(fullFilePath)));
+            String _UploadPath = UH.Combine(false, remoteHost + AllStrings.colon + remotePort + AllStrings.slash + AllStrings.slash, UH.Combine(false, actualFtpPath, FS.GetFileName(fullFilePath)));
             var vr = true;
             if (reallyUpload)
             {
@@ -400,7 +400,7 @@ namespace SunamoFtp
         {
             string nazevSlozky = Path.GetFileName(slozkaFrom);
             string pathFolder = UH.Combine(true, ps.ActualPath, nazevSlozky);
-            slozkaFrom = slozkaFrom.TrimEnd('\\');
+            slozkaFrom = slozkaFrom.TrimEnd(AllChars.bs);
             string[] soubory = Directory.GetFiles(slozkaFrom);
             var slozky = FS.GetFolders(slozkaFrom);
 

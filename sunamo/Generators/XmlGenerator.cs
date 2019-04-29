@@ -61,7 +61,7 @@ public  class XmlGenerator
         {
             string text = args[i];
             object hodnota = args[++i];
-                sb.AppendFormat("{0}=\"{1}\" ", text, hodnota);
+                sb.AppendFormat("{0}=\"{1}\"", text, hodnota);
         }
         sb.Append(" />");
     }
@@ -127,9 +127,9 @@ public  class XmlGenerator
         sb.AppendFormat("<{0} ", p);
         for (int i = 0; i < p_2.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", p_2[i], p_2[++i]);
+            sb.AppendFormat("{0}=\"{1}\"", p_2[i], p_2[++i]);
         }
-        sb.Append(">");
+        sb.Append(AllStrings.gt);
         string r = sb.ToString();
         if (useStack)
         {

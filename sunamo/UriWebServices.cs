@@ -305,7 +305,7 @@ Template for which I will find, have to be in derivates the same:
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
-        string d = "cng overview -\"/detail/\" " + car;
+        string d = "cng overview -\"/detail/\"" + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
 
@@ -446,7 +446,7 @@ Template for which I will find, have to be in derivates the same:
     public static string GoogleMaps(string coordsOrAddress, string center, string zoom)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("https://maps.google.com/maps?q=" + coordsOrAddress.Replace(" ", "+") + "&hl=cs&ie=UTF8&t=h");
+        sb.Append("https://maps.google.com/maps?q=" + coordsOrAddress.Replace(AllStrings.space, "+") + "&hl=cs&ie=UTF8&t=h");
         if (!string.IsNullOrEmpty(center))
         {
             sb.Append("&ll=" + center);
@@ -525,7 +525,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string ReplaceOperators(string vstup)
         {
-            return SH.ReplaceAll(vstup, "", "OR", "+", "-", "\"", "*");
+            return SH.ReplaceAll(vstup, "", "OR", "+", AllStrings.dash, AllStrings.qm, AllStrings.asterisk);
         }
 
         public static string GetLinkToSearch(string co)

@@ -34,7 +34,7 @@ public class MSSloupec2
                 int CHARACTER_MAXIMUM_LENGTH = MSTableRowParse.GetInt(o, 3);
                 if (CHARACTER_MAXIMUM_LENGTH != -1)
                 {
-                    zav = "(" + CHARACTER_MAXIMUM_LENGTH + ")";    
+                    zav = AllStrings.lb + CHARACTER_MAXIMUM_LENGTH + AllStrings.rb;    
                 }
                 else
                 {

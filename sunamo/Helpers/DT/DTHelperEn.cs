@@ -22,7 +22,7 @@ using System.Text;
             int days = -1;
             int number = -1;
 
-            var arg = SH.SplitNone(AddedAgo, "_");
+            var arg = SH.SplitNone(AddedAgo, AllStrings.us);
             if (arg.Length() == 2)
             {
                 TryParse.Integer dt = new TryParse.Integer();

@@ -51,7 +51,7 @@ namespace F.WF
                 }
             }
 
-            label1.Text += whatSearchAndReplace + ":";
+            label1.Text += whatSearchAndReplace + AllStrings.colon;
             numberTextBoxMona1.Text = old.ToString();
             numberTextBoxMona2.Text = novy.ToString();
         }

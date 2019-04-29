@@ -11,7 +11,7 @@ using System.Linq;
         public static string HostUriToPascalConvention(string s)
         {
         var uri = new Uri(s);
-         var result = SH.ReplaceAll( uri.Host, " ", ".");
+         var result = SH.ReplaceAll( uri.Host, AllStrings.space, AllStrings.dot);
         result = ConvertPascalConvention.ToConvention(result);
         return SH.FirstCharUpper( result);
         }
@@ -27,16 +27,16 @@ using System.Linq;
             // remove any leading or trailing spaces left over
             title = title.Trim();
             // replace spaces with single dash
-            title = Regex.Replace(title, @"\s+", "-");
+            title = Regex.Replace(title, @"\s+", AllStrings.dash);
             // if we end up with multiple dashes, collapse to single dash            
-            title = Regex.Replace(title, @"\-{2,}", "-");
+            title = Regex.Replace(title, @"\-{2,}", AllStrings.dash);
             // make it all lower case
             title = title.ToLower();
             // if it's too long, clip it
             if (title.Length > 80)
                 title = title.Substring(0, 79);
             // remove trailing dash, if there is one
-            if (title.EndsWith("-"))
+            if (title.EndsWith(AllStrings.dash))
                 title = title.Substring(0, title.Length - 1);
             return title;
         }
@@ -73,11 +73,11 @@ using System.Linq;
         /// <returns></returns>
         public static string Combine(bool dir, params string[] p)
         {
-            string vr = SH.Join('/', p).Replace("///", "/").Replace("//", "/").TrimEnd('/').Replace(":/", "://");
+            string vr = SH.Join(AllChars.slash, p).Replace("///", AllStrings.slash).Replace("//", AllStrings.slash).TrimEnd(AllChars.slash).Replace(":/", "://");
             if (dir)
             {
 
-                vr += "/";
+                vr += AllStrings.slash;
             }
             return vr;
         }
@@ -91,13 +91,13 @@ using System.Linq;
         /// <returns></returns>
         public static string GetDirectoryName(string rp)
         {
-            if (rp != "/")
+            if (rp != AllStrings.slash)
             {
-                rp = rp.TrimEnd('/');
+                rp = rp.TrimEnd(AllChars.slash);
             }
 
 
-            int dex = rp.LastIndexOf('/');
+            int dex = rp.LastIndexOf(AllChars.slash);
             if (dex != -1)
             {
                 return rp.Substring(0, dex + 1);
@@ -115,8 +115,8 @@ using System.Linq;
 
         public static string InsertBetweenPathAndFile(string uri, string vlozit)
         {
-            var s = SH.Split(uri, "/");
-            s[s.Count - 2] += "/" + vlozit;
+            var s = SH.Split(uri, AllStrings.slash);
+            s[s.Count - 2] += AllStrings.slash + vlozit;
             //Uri uri2 = new Uri(uri);
             string vr = null;
             vr = Join(s);
@@ -125,7 +125,7 @@ using System.Linq;
 
         private static string Join(params object[] s)
         {
-            return SH.Join('/', s);
+            return SH.Join(AllChars.slash, s);
         }
 
 
@@ -151,7 +151,7 @@ using System.Linq;
                 {
                     continue;
                 }
-                if (item[item.Length - 1] == '/')
+                if (item[item.Length - 1] == AllChars.slash)
                 {
                     vr.Append(item);
                 }
@@ -163,10 +163,10 @@ using System.Linq;
                     }
                     else
                     {
-                        vr.Append(item + '/');
+                        vr.Append(item + AllChars.slash);
                     }
                 }
-                //vr.Append(item.TrimEnd('/') + "/");
+                //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
             }
             return vr.ToString();
         }
@@ -244,7 +244,7 @@ using System.Linq;
         public static string RemoveHostAndProtocol(Uri uri)
         {
             string p = RemovePrefixHttpOrHttps(uri.ToString());
-            int dex = p.IndexOf('/');
+            int dex = p.IndexOf(AllChars.slash);
             return p.Substring(dex);
         }
 

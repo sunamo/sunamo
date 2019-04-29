@@ -21,7 +21,7 @@ public static partial class HtmlHelper
 
 public static string PrepareToAttribute(string title)
         {
-            return title.Replace('\"', '\'');
+            return title.Replace(AllChars.qm, AllChars.bs);
         }
 
 
@@ -46,7 +46,7 @@ public static string PrepareToAttribute(string title)
 
 public static string ClearSpaces(string dd)
         {
-            return dd.Replace("&nbsp;", " ").Replace("  ", " ");
+            return dd.Replace("&nbsp;", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
         }
 
 private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
@@ -151,8 +151,8 @@ public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string
         /// <returns></returns>
         public static string TrimOpenAndEndTags(string html, string nameOfTag)
         {
-            html = html.Replace("<" + nameOfTag + ">", "");
-            html = html.Replace("</" + nameOfTag + ">", "");
+            html = html.Replace(AllStrings.lt + nameOfTag + AllStrings.gt, "");
+            html = html.Replace("</" + nameOfTag + AllStrings.gt, "");
             return html;
         }
 
@@ -234,7 +234,7 @@ public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string
 
                     int naKazdeStrane = maxPocetPismenNaVetu / 2;
 
-                    string veta = SH.XCharsBeforeAndAfterWholeWords(SH.ReplaceAll(celyObsah, " ", CA.ToListString(AllChars.whiteSpacesChars).ToArray()), stred, naKazdeStrane);
+                    string veta = SH.XCharsBeforeAndAfterWholeWords(SH.ReplaceAll(celyObsah, AllStrings.space, CA.ToListString(AllChars.whiteSpacesChars).ToArray()), stred, naKazdeStrane);
 
                     // Teď zvýrazním nalezené slova
                     string[] slova = SH.SplitBySpaceAndPunctuationCharsLeave(veta);

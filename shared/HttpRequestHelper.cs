@@ -30,15 +30,15 @@ public static partial class HttpRequestHelper
         {
             vr = "127.0.0.1";
         }
-        if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, ".") != 3)
+        if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
         {
             string ipList = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (!string.IsNullOrEmpty(ipList))
             {
 
-                vr = ipList.Split(',')[0];
-                if (SH.OccurencesOfStringIn(vr, ".") != 3)
+                vr = ipList.Split(AllChars.comma)[0];
+                if (SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
                 {
                     return null;
                 }
@@ -100,7 +100,7 @@ public static partial class HttpRequestHelper
             ext = SH.RemoveAfterFirst(ext, AllChars.q);
         }
 
-        fn = SH.RemoveAfterFirst(fn, '?');
+        fn = SH.RemoveAfterFirst(fn, AllChars.q);
         string path = FS.Combine(folder2, fn + ext);
         FS.CreateFoldersPsysicallyUnlessThere(folder2);
         if (!FS.ExistsFile(path))

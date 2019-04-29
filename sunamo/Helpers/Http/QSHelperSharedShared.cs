@@ -25,10 +25,10 @@ public static void GetArray(string[] p, StringBuilder sb, bool uvo)
             for (int i = 0; i < to; i++)
             {
                 string k = p[i].ToString();
-                sb.Append("\"" + k + "\"");
+                sb.Append(AllStrings.qm + k + AllStrings.qm);
                 if (to2 != i)
                 {
-                    sb.Append(",");
+                    sb.Append(AllStrings.comma);
                 }
             }
         }
@@ -40,11 +40,11 @@ public static void GetArray(string[] p, StringBuilder sb, bool uvo)
                 sb.Append("ToString(" + k + ").toString()");
                 if (to2 != i)
                 {
-                    sb.Append(",");
+                    sb.Append(AllStrings.comma);
                 }
             }
         }
 
-        sb.Append(")");
+        sb.Append(AllStrings.rb);
     }
 }

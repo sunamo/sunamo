@@ -53,7 +53,7 @@ public class SunamoPage : System.Web.UI.Page
         string csPage = SunamoPage.GetName(cl, 2);
         string PagePage = MySitesConverter.ConvertFrom(MySitesConverter.ConvertFrom(sa));
 
-        return "css/" + PagePage + "/" + csPage + ".css";
+        return "css/" + PagePage + AllStrings.slash + csPage + ".css";
     }
 
     public string Js(object cl)
@@ -61,7 +61,7 @@ public class SunamoPage : System.Web.UI.Page
         string csPage = SunamoPage.GetName(cl, 2);
         string PagePage = sa.ToString();
 
-        return "ts/" + PagePage + "/" + csPage + ".js";
+        return "ts/" + PagePage + AllStrings.slash + csPage + ".js";
     }
 
     
@@ -240,7 +240,7 @@ public class SunamoPage : System.Web.UI.Page
             {
                 r = RegexHelper.rHtmlScript.Replace(r, "");
                 r = RegexHelper.rHtmlComment.Replace(r, "");
-                r = SH.ReplaceAll2(r, " ", "  ");
+                r = SH.ReplaceAll2(r, AllStrings.space, AllStrings.doubleSpace);
                 b = true;
             }
             else if (type == Consts.tInt)
@@ -371,7 +371,7 @@ public class SunamoPage : System.Web.UI.Page
     /// <param name="scriptsUri"></param>
     protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
-        string hostWithHttp = "http://" + Request.Url.Host + "/";
+        string hostWithHttp = "http://" + Request.Url.Host + AllStrings.slash;
 
         if (scriptsUri == null)
         {

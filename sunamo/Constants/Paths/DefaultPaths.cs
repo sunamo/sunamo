@@ -23,7 +23,7 @@ namespace sunamo.Constants
         public const string ProjectsFolderNameSlash = "Projects\\";
         public static string sunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
 
-        public static string vs = @"d:\vs\";
+        public static string vs = @"d:\Documents\Visual Studio 2017\Projects\";
         public static string vsDocuments = FS.Combine(DefaultPaths.Documents, @"vs\");
         public static string vs17 = @"d:\vs17\";
         public static string vs17Documents = FS.Combine(DefaultPaths.Documents, @"vs17\");

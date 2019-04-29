@@ -89,7 +89,8 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
     void uc_ChangeDialogResult(bool? b)
     {
-        DialogResult = b;
+        // Throwed exception, output is captured by ChangeDialogResult
+        //DialogResult = b;
         if (ChangeDialogResult != null)
         {
             ChangeDialogResult(b);
@@ -98,7 +99,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
     public static void AvailableShortcut(Dictionary<string, string> dictionary)
     {
-        ShowTextResult result = new ShowTextResult(SH.JoinDictionary(dictionary, " - "));
+        ShowTextResult result = new ShowTextResult(SH.JoinDictionary(dictionary, AllStrings.swda));
 
         WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.NoResize);
         window.ShowDialog();

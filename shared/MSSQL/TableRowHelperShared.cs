@@ -12,7 +12,7 @@
 
         if (value.Length > maxlenght)
         {
-            return name + " " + "musí být kratší než/rovno " + maxlenght + " znaků";
+            return name + AllStrings.space + "musí být kratší než/rovno " + maxlenght + " znaků";
         }
 
         return "";

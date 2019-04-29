@@ -209,7 +209,7 @@ public static partial class BTS
     public static float ParseFloat(string ratingS)
     {
         float vr = float.MinValue;
-        ratingS = ratingS.Replace(',', '.');
+        ratingS = ratingS.Replace(AllChars.comma, AllChars.dot);
         if (float.TryParse(ratingS, out vr))
         {
             return vr;
@@ -635,7 +635,7 @@ public static partial class BTS
             string hour = SH.MakeUpToXChars(dateTime.Hour, 2);
             string minutes = SH.MakeUpToXChars(dateTime.Minute, 2);
             string seconds = SH.MakeUpToXChars(dateTime.Second, 2);
-            return day + "." + month + "." + year + " " + hour + ":" + minutes + ":" + seconds;// +":" + miliseconds;
+            return day + AllStrings.dot + month + AllStrings.dot + year + AllStrings.space + hour + AllStrings.colon + minutes + AllStrings.colon + seconds;// +AllStrings.colon + miliseconds;
         }
 
         public static string SameLenghtAllDates(DateTime dateTime)
@@ -643,7 +643,7 @@ public static partial class BTS
             string year = dateTime.Year.ToString();
             string month = SH.MakeUpToXChars(dateTime.Month, 2);
             string day = SH.MakeUpToXChars(dateTime.Day, 2);
-            return day + "." + month + "." + year; // +" " + hour + ":" + minutes + ":" + seconds;// +":" + miliseconds;
+            return day + AllStrings.dot + month + AllStrings.dot + year; // +AllStrings.space + hour + AllStrings.colon + minutes + AllStrings.colon + seconds;// +AllStrings.colon + miliseconds;
         }
 
         public static string SameLenghtAllTimes(DateTime dateTime)
@@ -651,12 +651,12 @@ public static partial class BTS
             string hour = SH.MakeUpToXChars(dateTime.Hour, 2);
             string minutes = SH.MakeUpToXChars(dateTime.Minute, 2);
             string seconds = SH.MakeUpToXChars(dateTime.Second, 2);
-            return hour + ":" + minutes + ":" + seconds;// +":" + miliseconds;
+            return hour + AllStrings.colon + minutes + AllStrings.colon + seconds;// +AllStrings.colon + miliseconds;
         }
 
         public static string UsaDateTimeToString(DateTime d)
         {
-            return d.Month + "/" + d.Day + "/" + d.Year + " " + d.Hour + ":" + d.Minute + ":" + d.Second;// +":" + miliseconds;
+            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + d.Hour + AllStrings.colon + d.Minute + AllStrings.colon + d.Second;// +AllStrings.colon + miliseconds;
         }
 
         public static bool EqualDateWithoutTime(DateTime dt1, DateTime dt2)

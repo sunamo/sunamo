@@ -27,7 +27,7 @@ namespace tempConsole
             ftpDll.DebugActualFolder();
             ftpDll.DebugAllEntries();
             
-            ftp.CreateFolder("/" + folder);
+            ftp.CreateFolder(AllStrings.slash + folder);
             ftp.ChangeFolder(folder);
             ftpDll.DebugActualFolder();
             ftp.UploadFiles("D:\a.txt");

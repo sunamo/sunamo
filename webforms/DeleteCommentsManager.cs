@@ -16,10 +16,10 @@ public  class DeleteCommentsManager
         {
             this.mss = mss;
             string ms = mss.ToString();
-            tableComments = ms + "_" + ms + "Comments";
-            tableCommentsThumbsUp = ms + "_" + ms + "CommentsThumbsUp";
-            tableCommentsThumbsDown = ms + "_" + ms + "CommentsThumbsDown";
-            tableCommentsSpamVotes = ms + "_" + ms + "CommentsSpamVotes";
+            tableComments = ms + AllStrings.us + ms + "Comments";
+            tableCommentsThumbsUp = ms + AllStrings.us + ms + "CommentsThumbsUp";
+            tableCommentsThumbsDown = ms + AllStrings.us + ms + "CommentsThumbsDown";
+            tableCommentsSpamVotes = ms + AllStrings.us + ms + "CommentsSpamVotes";
         }
         else
         {

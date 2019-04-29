@@ -61,7 +61,7 @@ public class UlozTo
     {
 
 
-        var sp = SH.Split(uri, "/", "?", "=", ".", "&");
+        var sp = SH.Split(uri, AllStrings.slash, AllStrings.q, "=", AllStrings.dot, "&");
         if (sp.Count > 10)
         {
             StringBuilder errors = new StringBuilder();
@@ -149,7 +149,7 @@ public class UlozTo
 
     public static string ToUri(UlozToMediaUriParts ut)
     {
-        return "http://"+ut.server+".uloz.to/"+ut.part1+"/"+ut.part2+"/"+ut.part3+"/"+ut.fileCode+"."+ut.maxQuality+"."+ut.ext+"?fileId=" + ut.fileId;
+        return "http://"+ut.server+".uloz.to/"+ut.part1+AllStrings.slash+ut.part2+AllStrings.slash+ut.part3+AllStrings.slash+ut.fileCode+AllStrings.dot+ut.maxQuality+AllStrings.dot+ut.ext+"?fileId=" + ut.fileId;
     }
 
     public static string GetNiceUri(bool live, string code, string name)
@@ -159,7 +159,7 @@ public class UlozTo
         {
             liveS = "live/";
         }
-        return "http://uloz.to/" + liveS + code + "/" + name;
+        return "http://uloz.to/" + liveS + code + AllStrings.slash + name;
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class UlozTo
     /// <returns></returns>
     public static UlozToNiceUriParts ParseNiceUri(string niceUri)
     {
-        List<string> sp = new List<string>( SH.Split( UH.GetPageNameFromUri(new Uri(niceUri)), "/"));
+        List<string> sp = new List<string>( SH.Split( UH.GetPageNameFromUri(new Uri(niceUri)), AllStrings.slash));
         string live = "live";
         if (sp[0] == live)
         {

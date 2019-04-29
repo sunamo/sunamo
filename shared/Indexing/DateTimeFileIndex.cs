@@ -76,9 +76,9 @@
 //            {
 //                throw new Exception("Nepodporovaná strategie ukládání.");
 //            }
-//            mask += "*";
+//            mask += AllStrings.asterisk;
 //            #region MyRegion
-//            string[] f = Directory.GetFiles(folder, "*" + ext, SearchOption.TopDirectoryOnly);
+//            string[] f = Directory.GetFiles(folder, AllStrings.asterisk + ext, SearchOption.TopDirectoryOnly);
 //            foreach (var item in f)
 //            {
 //                string fnwoe = Path.GetFileNameWithoutExtension(item);
@@ -123,7 +123,7 @@
 //        {
 //            if (postfix != "")
 //            {
-//                postfix = " " + postfix;
+//                postfix = AllStrings.space + postfix;
 //            }
 //            string displayText;
 //            if (serie == null)
@@ -136,7 +136,7 @@
 //                string addSer = "";
 //                if (ser != 0)
 //                {
-//                    addSer = " (" + ser + ")";
+//                    addSer = " (" + ser + AllStrings.rb;
 //                }
 //                displayText = DTHelper.DateToString(date, l) + addSer + postfix;
 //            }
@@ -201,7 +201,7 @@
 //                {
 //                    max = 1;
 //                }
-//                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + "_" + name;
+//                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.us + name;
 //            }
 //            else
 //            {

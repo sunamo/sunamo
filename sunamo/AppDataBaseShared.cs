@@ -60,7 +60,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// <param name = "path"></param>
     public string ReadFileOfSettingsOther(string path)
     {
-        if (!path.Contains("\\") && !path.Contains("/"))
+        if (!path.Contains(AllStrings.bs) && !path.Contains(AllStrings.slash))
         {
             path = AppData.ci.GetFile(AppFolders.Settings, path);
         }

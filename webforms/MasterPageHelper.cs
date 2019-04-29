@@ -26,7 +26,7 @@ public class MasterPageHelper
         string pridat = "";
         if (!isRoot)
         {
-            pridat += "../";
+            pridat += AllStrings.dds;
         }
     }
 
@@ -42,10 +42,10 @@ public class MasterPageHelper
         bool isRoot =MasterPageHelper.IsRoot(page);
         WriteGeneralCodeBase(page, writeGaTrackingCode);
         StringBuilder pridat = new StringBuilder();
-        int pocet = SH.OccurencesOfStringIn(page.Request.FilePath, "/");
+        int pocet = SH.OccurencesOfStringIn(page.Request.FilePath, AllStrings.slash);
         for (int i = 1; i < pocet; i++)
         {
-            pridat.Append("../");
+            pridat.Append(AllStrings.dds);
         }
 
         if (pocet > 2)
@@ -73,7 +73,7 @@ public class MasterPageHelper
                         LiteralControl sc = item as LiteralControl;
                         if (sc.Text.Contains("<script ") && !sc.Text.Contains("src=\"http"))
                         {
-                            sc.Text = sc.Text.Replace("src=\"", "src=\"../");
+                            sc.Text = sc.Text.Replace("src=\"", "src=\AllStrings.dds);
                         }
 
                     }
@@ -118,8 +118,8 @@ public class MasterPageHelper
 
     public static bool IsRoot(SunamoPage page)
     {
-        //return HttpContext.Current.Request.Path.IndexOf('/', 1) == -1;
-        return page.Request.Path.IndexOf('/', 1) == -1;
+        //return HttpContext.Current.Request.Path.IndexOf(AllChars.slash, 1) == -1;
+        return page.Request.Path.IndexOf(AllChars.slash, 1) == -1;
     }
 
     public static string GetNameOfWeb(MySites sa, HttpRequest Request)
@@ -136,7 +136,7 @@ public class MasterPageHelper
             }
             else
             {
-                return sa.ToString().ToLower() + "." + SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
+                return sa.ToString().ToLower() + AllStrings.dot + SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
             }
         }
     }

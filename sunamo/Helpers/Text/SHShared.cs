@@ -39,7 +39,7 @@ public static partial class SH
         }
         if (n != null)
         {
-            return " " + v;
+            return AllStrings.space + v;
         }
         return " (null)";
     }
@@ -240,7 +240,7 @@ public static partial class SH
             // 32 space
             char ch = subs[0];
             char ch2 = co[0];
-            if (subs == " ")
+            if (subs == AllStrings.space)
             {
 
             }
@@ -303,7 +303,7 @@ public static partial class SH
 
         if (jeDelsiA1)
         {
-            if (SH.IsInFirstXCharsTheseLetters(p, p_2, ' '))
+            if (SH.IsInFirstXCharsTheseLetters(p, p_2, AllChars.space))
             {
                 int dexMezery = 0;
                 string d = p; //p.Substring(p.Length - zkratitO);
@@ -315,7 +315,7 @@ public static partial class SH
 
                     napocitano++;
 
-                    if (d[i] == ' ')
+                    if (d[i] == AllChars.space)
                     {
                         if (napocitano >= p_2)
                         {
@@ -437,9 +437,9 @@ public static string Format(string status, params object[] args)
             return string.Empty;
         }
         v = NormalizeString(v);
-        var p = SH.Split(v, " ");
-        p[0] = "(" + p[0] + ")";
-        return SH.Join(p, " ");
+        var p = SH.Split(v, AllStrings.space);
+        p[0] = AllStrings.lb + p[0] + AllStrings.rb;
+        return SH.Join(p, AllStrings.space);
     }
 
     /// <summary>
@@ -457,8 +457,8 @@ public static string Format(string status, params object[] args)
         var result = SH.Format2(templateHandler, args);
         const string replacement = "{        }";
         result = SH.ReplaceAll2(result, replacement, "[]");
-        result = SH.ReplaceAll2(result, "{", lsf);
-        result = SH.ReplaceAll2(result, "}", rsf);
+        result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
+        result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
         result = SH.ReplaceAll2(result, replacement, "{}");
         return result;
     }
@@ -546,7 +546,7 @@ public static string JoinNL(params string[] parts)
 
 public static bool ContainsVariable( string innerHtml)
     {
-        return ContainsVariable('{', '}', innerHtml);
+        return ContainsVariable(AllChars.cbl, AllChars.cbr, innerHtml);
     }
 public static bool ContainsVariable(char p, char k, string innerHtml)
     {
@@ -598,7 +598,7 @@ public static bool ContainsVariable(char p, char k, string innerHtml)
 
     public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
-        return ReplaceVariables('{', '}', innerHtml, _dataBinding, actualRow);
+        return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);
     }
 public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
@@ -649,7 +649,7 @@ public static string ReplaceVariables(char p, char k, string innerHtml, List<Str
 
 public static List<int> GetVariablesInString(string innerHtml)
     {
-        return GetVariablesInString('{', '}', innerHtml);
+        return GetVariablesInString(AllChars.cbl, AllChars.cbr, innerHtml);
     }
 /// <summary>
     /// 
@@ -784,7 +784,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         // this was original implementation but dont know why isnt used string.format
         for (int i = 0; i < args.Length; i++)
         {
-            template = SH.ReplaceAll2(template, args[i].ToString(), "{" + i + "}");
+            template = SH.ReplaceAll2(template, args[i].ToString(), AllStrings.cbl + i + AllStrings.cbr);
         }
         return template;
     }
@@ -970,7 +970,7 @@ public static bool ContainsOtherChatThanLetterAndDigit(string p)
         }
         return false;
     }
-    public static char[] spaceAndPuntactionChars = new char[] { ' ', '-', '.', ',', ';', ':', '!', '?', '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', '\'', '(', ')', '[', ']', '{', '}', '〈', '〉', '<', '>', '/', '\\', '|', '”', '\"', '~', '°', '+', '@', '#', '$', '%', '^', '&', '*', '=', '_', 'ˇ', '¨', '¤', '÷', '×', '˝' };
+    public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.exclamation, AllChars.q, '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr, '〈', '〉', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.pipe, '”', AllChars.qm, '~', '°', AllChars.plus, '@', '#', '$', AllChars.modulo, '^', '&', AllChars.asterisk, '=', AllChars.us, 'ˇ', '¨', '¤', '÷', '×', '˝' };
 
     public static void Init()
     {
@@ -1215,17 +1215,17 @@ public static string RemoveBracketsAndHisContent(string title, bool squareBracke
     {
         if (squareBrackets)
         {
-            title = RemoveBetweenAndEdgeChars(title, '[', ']');
+            title = RemoveBetweenAndEdgeChars(title, AllChars.lsf, AllChars.rsf);
         }
         if (parentheses)
         {
-            title = RemoveBetweenAndEdgeChars(title, '(', ')');
+            title = RemoveBetweenAndEdgeChars(title, AllChars.lb, AllChars.rb);
         }
         if (braces)
         {
-            title = RemoveBetweenAndEdgeChars(title, '{', '}');
+            title = RemoveBetweenAndEdgeChars(title, AllChars.cbl, AllChars.cbr);
         }
-        title = ReplaceAll(title, "", "  ").Trim();
+        title = ReplaceAll(title, "", AllStrings.doubleSpace).Trim();
         return title;
     }
 
@@ -1252,15 +1252,15 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
         for (int i = stred - 1; i >= 0; i--)
         {
             char ch = celyObsah[i];
-            if (ch == ' ')
+            if (ch == AllChars.space)
             {
                 string ts = slovo.ToString();
                 slovo.Clear();
                 if (ts != "")
                 {
 
-                    leva.Insert(0, ts + " ");
-                    if (leva.Length + " ".Length + ts.Length > naKazdeStrane)
+                    leva.Insert(0, ts + AllStrings.space);
+                    if (leva.Length + AllStrings.space.Length + ts.Length > naKazdeStrane)
                     {
                         break;
                     }
@@ -1275,23 +1275,23 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                 slovo.Insert(0, ch);
             }
         }
-        string l = slovo.ToString() + " " + leva.ToString().TrimEnd(' ');
-        l = l.TrimEnd(' ');
+        string l = slovo.ToString() + AllStrings.space + leva.ToString().TrimEnd(AllChars.space);
+        l = l.TrimEnd(AllChars.space);
         naKazdeStrane += naKazdeStrane - l.Length;
         slovo.Clear();
         // Počítám po pravé straně započítám i to středové písmenko
         for (int i = stred; i < celyObsah.Length; i++)
         {
             char ch = celyObsah[i];
-            if (ch == ' ')
+            if (ch == AllChars.space)
             {
                 string ts = slovo.ToString();
                 slovo.Clear();
                 if (ts != "")
                 {
 
-                    prava.Append(" " + ts);
-                    if (prava.Length + " ".Length + ts.Length > naKazdeStrane)
+                    prava.Append(AllStrings.space + ts);
+                    if (prava.Length + AllStrings.space.Length + ts.Length > naKazdeStrane)
                     {
                         break;
                     }
@@ -1307,12 +1307,12 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
             }
         }
         
-        string p = prava.ToString().TrimStart(' ') + " " + slovo.ToString();
-        p = p.TrimStart(' ');
+        string p = prava.ToString().TrimStart(AllChars.space) + AllStrings.space + slovo.ToString();
+        p = p.TrimStart(AllChars.space);
         string vr = "";
-        if (celyObsah.Contains(l + " ") && celyObsah.Contains(" " + p))
+        if (celyObsah.Contains(l + AllStrings.space) && celyObsah.Contains(AllStrings.space + p))
         {
-            vr = l + " " + p;
+            vr = l + AllStrings.space + p;
         }
         else
         {
@@ -1380,7 +1380,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
 
         if (jeDelsiA1)
         {
-            if (SH.IsInLastXCharsTheseLetters(p, p_2, ' '))
+            if (SH.IsInLastXCharsTheseLetters(p, p_2, AllChars.space))
             {
                 int dexMezery = 0;
                 string d = p; //p.Substring(p.Length - zkratitO);
@@ -1391,7 +1391,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                 {
                     napocitano++;
 
-                    if (d[i] == ' ')
+                    if (d[i] == AllChars.space)
                     {
                         if (napocitano >= p_2)
                         {
@@ -1487,7 +1487,7 @@ private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] l
 
 public static string TrimNewLineAndTab(string lyricsFirstOriginal)
     {
-        return lyricsFirstOriginal.Replace("\t", " ").Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
+        return lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
     }
 
 public static List<string> SplitByWhiteSpaces(string s)
@@ -1507,6 +1507,6 @@ public static bool TrimIfStartsWith(ref string s, string p)
 
 public static string DoubleSpacesToSingle(string v)
     {
-        return SH.ReplaceAll2(v, " ", "  ");
+        return SH.ReplaceAll2(v, AllStrings.space, AllStrings.doubleSpace);
     }
 }

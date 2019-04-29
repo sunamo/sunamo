@@ -122,7 +122,7 @@ public partial class GeneratorMsSql{
         StringBuilder sb = new StringBuilder();
         sb.Append("SELECT TOP(1) " + vracenySloupec);
         sb.Append(" FROM " + table);
-        sb.Append(" ");
+        sb.Append(AllStrings.space);
         return sb.ToString();
     }
 
@@ -342,11 +342,11 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
             sb.AppendFormat("CREATE TABLE {0}(", table);
             foreach (MSSloupecDB var in sloupce)
             {
-                sb.Append(GeneratorMsSql.Column(var, table, dynamicTables) + ",");
+                sb.Append(GeneratorMsSql.Column(var, table, dynamicTables) + AllStrings.comma);
             }
             string dd = sb.ToString();
-            dd = dd.TrimEnd(',');
-            string vr = dd + ")";
+            dd = dd.TrimEnd(AllChars.comma);
+            string vr = dd + AllStrings.rb;
             //vr);
             return vr;
         }
@@ -362,7 +362,7 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
     /// <returns></returns>
     private static string Column(MSSloupecDB var, string inTable, bool dynamicTables)
     {
-        InstantSB sb = new InstantSB(" ");
+        InstantSB sb = new InstantSB(AllStrings.space);
 
         sb.AddItem((object)var.Name);
         sb.AddItem((object)(var.Type + var.Delka));
@@ -416,9 +416,9 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
             if (var.referencesTable != null)
             {
                 sb.AddItem((object)"CONSTRAINT");
-                sb.AddItem((object)("fk_" + var.Name + "_" + inTable + "_" + var.referencesTable + "_" + var.referencesColumn));
+                sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));
                 sb.AddItem((object)"FOREIGN KEY REFERENCES");
-                sb.AddItem((object)(var.referencesTable + "(" + var.referencesColumn + ")"));
+                sb.AddItem((object)(var.referencesTable + AllStrings.lb + var.referencesColumn + AllStrings.rb));
             }
         }
 
@@ -430,12 +430,12 @@ public static string GetValuesDirect(int i2, int to)
     {
         to += i2;
         StringBuilder sb = new StringBuilder();
-        sb.Append("(");
+        sb.Append(AllStrings.lb);
         for (int i = i2; i < to; i++)
         {
-            sb.Append("@p" + (i).ToString() + ",");
+            sb.Append("@p" + (i).ToString() + AllStrings.comma);
         }
-        return sb.ToString().TrimEnd(',') + ")";
+        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
 
 /// <summary>
@@ -458,7 +458,7 @@ public static string GetValuesDirect(int i2, int to)
             else
             {
                 // TODO: Zjistit si zda se tu skutečně dává AND
-                sb.Append(",");
+                sb.Append(AllStrings.comma);
             }
             sb.Append(SH.Format2(" {0} = @p" + p.ToString(), var.A));
             p++;
@@ -479,7 +479,7 @@ public static string CombinedWhereOR(AB[] where, ref int p)
         }
         else
         {
-            sb.Append("(");
+            sb.Append(AllStrings.lb);
         }
         
         bool první = true;
@@ -500,7 +500,7 @@ public static string CombinedWhereOR(AB[] where, ref int p)
         }
         if (pCopy != 0)
         {
-            sb.Append(")");
+            sb.Append(AllStrings.rb);
         }
         return sb.ToString();
     }
@@ -530,7 +530,7 @@ public static string CombinedWhereOR(AB[] where)
 
 public static string OutputDeleted(string sloupceJezVratit)
     {
-        var cols = SH.Split(sloupceJezVratit, ",");
+        var cols = SH.Split(sloupceJezVratit, AllStrings.comma);
         if (cols.Count != 0)
         {
             cols = CA.Trim(cols);
@@ -538,13 +538,13 @@ public static string OutputDeleted(string sloupceJezVratit)
             sb.Append(" OUTPUT ");
             foreach (var item in cols)
             {
-                sb.Append("DELETED." + item + ",");
+                sb.Append("DELETED." + item + AllStrings.comma);
             }
-            return sb.ToString().TrimEnd(',');
+            return sb.ToString().TrimEnd(AllChars.comma);
         }
         else
         {
-            return " ";
+            return AllStrings.space;
         }
     }
 }

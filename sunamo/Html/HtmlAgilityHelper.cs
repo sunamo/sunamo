@@ -44,7 +44,7 @@ namespace sunamo.Html
         /// <returns></returns>
         private static bool HasTagName(HtmlNode hn, string tag)
         {
-            if (tag == "*")
+            if (tag == AllStrings.asterisk)
             {
                 return true;
             }
@@ -53,7 +53,7 @@ namespace sunamo.Html
 
         private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
-            if (hodnotaAtributu == "*")
+            if (hodnotaAtributu == AllStrings.asterisk)
             {
                 return true;
             }
@@ -338,7 +338,7 @@ namespace sunamo.Html
 
             List<HtmlNode> vr = new List<HtmlNode>();
             List<HtmlNode> allNodes = new List<HtmlNode>();
-            RecursiveReturnTags(allNodes, node, true, false, "*");
+            RecursiveReturnTags(allNodes, node, true, false, AllStrings.asterisk);
             foreach (var item in allNodes)
             {
                 if (item.Name == "#text")

@@ -113,7 +113,7 @@ using System.Text;
 
         if (foundedUnallowed.Count > 0)
         {
-            return CheckBefore(before) + input + " contains unallowed chars: " + SH.Join(unallowedStrings, " ");
+            return CheckBefore(before) + input + " contains unallowed chars: " + SH.Join(unallowedStrings, AllStrings.space);
         }
         return null;
     }
@@ -175,7 +175,7 @@ using System.Text;
         {
             if (countfc != countsc)
             {
-                return CheckBefore( before) + " Different count elements in collection " + string.Concat(namefc + " - " + countfc) + " vs. " + string.Concat(namesc + " - " + countsc);
+                return CheckBefore( before) + " Different count elements in collection " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
             }
 
             return null;
@@ -206,7 +206,7 @@ using System.Text;
             List<string> foundedUnallowed = SH.ContainsAny(valueElement, false, unallowedStrings);
             if (foundedUnallowed.Count != 0)
             {
-                return CheckBefore( before) + " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(',', unallowedStrings);
+                return CheckBefore( before) + " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
             }
 
             return null;
@@ -245,7 +245,7 @@ using System.Text;
                 }
             }
 
-            return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, ",");
+            return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
         }
 
         public static string NoPassedFolders(string before, IEnumerable folders)

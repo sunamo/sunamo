@@ -42,7 +42,7 @@ public  class ErrorMessageGenerator
         for (; y < i; y++)
         {
             string em = GetErrorMessage(chyby[y]);
-            vypis.AppendLine(chybneSoubory[y] + " - " + em);
+            vypis.AppendLine(chybneSoubory[y] + AllStrings.swda + em);
         }
 
         string priChybe = null;
@@ -64,7 +64,7 @@ public  class ErrorMessageGenerator
             for (; y < chybneSoubory.Count; y++)
             {
                 string em = GetErrorMessage(chyby[y]);
-                triTecky.AppendLine(chybneSoubory[i] + " - " + em);
+                triTecky.AppendLine(chybneSoubory[i] + AllStrings.swda + em);
             }
             triTecky.AppendLine(priChybe);
         }

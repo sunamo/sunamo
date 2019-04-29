@@ -207,7 +207,7 @@ public class MenuItemWithSubitemsHelper
             {
                 selectedO = tsmi;
             }
-            tsddb.ToolTip = originalToolTipText + " " + SelectedO.ToString();
+            tsddb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
 
         if (MenuItemChecked != null)
         {
@@ -253,11 +253,11 @@ public class MenuItemWithSubitemsHelper
             {
                 pristePokracovatDesitky = 0;
                 string category = item.ToString();
-                string categoryPipe = category + "|";
+                string categoryPipe = category + AllStrings.pipe;
                 MenuItem tsmi = new MenuItem();
                 tsmi.Header = category;
 
-                var stovkyDivided = SH.Split(stovky[i].ToString(), '|');
+                var stovkyDivided = SH.Split(stovky[i].ToString(), AllChars.pipe);
 
                 List< String> stovkyActual = new List<String>();
                 StringBuilder stovkyActualTemp = new StringBuilder();
@@ -267,11 +267,11 @@ public class MenuItemWithSubitemsHelper
                     {
                         stovkyActual.Add(stovkyActualTemp.ToString());
                         stovkyActualTemp.Clear();
-                        stovkyActualTemp.Append(stovkyDivided[y] + ",");
+                        stovkyActualTemp.Append(stovkyDivided[y] + AllStrings.comma);
                     }
                     else
                     {
-                        stovkyActualTemp.Append(stovkyDivided[y] + ",");
+                        stovkyActualTemp.Append(stovkyDivided[y] + AllStrings.comma);
                     }
                     //
                 }
@@ -285,13 +285,13 @@ public class MenuItemWithSubitemsHelper
                 {
 
                     MenuItem tsmiStovky = new MenuItem();
-                    tsmiStovky.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Count).ToString() ;
+                    tsmiStovky.Header = (pristePokracovatStovky + 1).ToString() + AllStrings.swda + (pristePokracovatStovky + SH.Split(idcka, AllStrings.comma).Count).ToString() ;
                     
                     List< List<MenuItem>> kVlozeniDoDesitky = new List< List<MenuItem>>();
                     List<StringBuilder> idckaDesitky = new List<StringBuilder>();
                     kVlozeniDoDesitky.Add(new List<MenuItem>());
                     idckaDesitky.Add(new StringBuilder());
-                    var jednotkyDivided = SH.Split(idcka, ",");
+                    var jednotkyDivided = SH.Split(idcka, AllStrings.comma);
                     int indexNaKteryUkladatDesitky = 0;
                     foreach (var jednotka in jednotkyDivided)
                     {
@@ -299,7 +299,7 @@ public class MenuItemWithSubitemsHelper
                         tsmiJednotky.Header = (pristePokracovatJednotky + 1).ToString();
                         pristePokracovatJednotky++;
                         tsmiJednotky.Command = cmd3;
-                        tsmiJednotky.CommandParameter = tsmiJednotky.Header.ToString() + "|" + categoryPipe + jednotka;
+                        tsmiJednotky.CommandParameter = tsmiJednotky.Header.ToString() + AllStrings.pipe + categoryPipe + jednotka;
 
                         var  o = (pristePokracovatJednotky - 1);
                         if (o % 10 == 0 && o % 100 != 0 && o != 0)
@@ -309,7 +309,7 @@ public class MenuItemWithSubitemsHelper
                             idckaDesitky.Add(new StringBuilder());        
                         }
                         kVlozeniDoDesitky[indexNaKteryUkladatDesitky].Add(tsmiJednotky);
-                        idckaDesitky[indexNaKteryUkladatDesitky].Append(jednotka + ",");
+                        idckaDesitky[indexNaKteryUkladatDesitky].Append(jednotka + AllStrings.comma);
                     }
 
                     for (int t = 0; t < kVlozeniDoDesitky.Count; t++)
@@ -327,19 +327,19 @@ public class MenuItemWithSubitemsHelper
                     {
                         var u =idckaDesitky[e].ToString();
                         e++;
-                        var desitkyPouze = SH.Split(u, ",");
+                        var desitkyPouze = SH.Split(u, AllStrings.comma);
                         MenuItem tsmiDesitky = new MenuItem();
-                        tsmiDesitky.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
+                        tsmiDesitky.Header = (pristePokracovatDesitky + 1).ToString() + AllStrings.swda + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         foreach (var item4 in item3)
                         {
                             tsmiDesitky.Items.Add(item4);
                         }
 
                         MenuItem tsmiDesitky2 = new MenuItem();
-                        tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + " - " + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
+                        tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + AllStrings.swda + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         tsmiDesitky2.Command = cmd2;
                         //  
-                        tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + "|" + categoryPipe + u;
+                        tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + AllStrings.pipe + categoryPipe + u;
 
                         tsmiStovky.Items.Add(tsmiDesitky2);
 
@@ -348,12 +348,12 @@ public class MenuItemWithSubitemsHelper
                     }
 
                     MenuItem tsmiStovky2 = new MenuItem();
-                    tsmiStovky2.Header = (pristePokracovatStovky + 1).ToString() + " - " + (pristePokracovatStovky + SH.Split(idcka, ",").Count).ToString();
+                    tsmiStovky2.Header = (pristePokracovatStovky + 1).ToString() + AllStrings.swda + (pristePokracovatStovky + SH.Split(idcka, AllStrings.comma).Count).ToString();
 
                     pristePokracovatStovky += 100;
                     tsmiStovky2.Command = cmd1;
                     //
-                    tsmiStovky2.CommandParameter =tsmiStovky2.Header.ToString() + "|" + categoryPipe  + idcka;
+                    tsmiStovky2.CommandParameter =tsmiStovky2.Header.ToString() + AllStrings.pipe + categoryPipe  + idcka;
                     tsmi.Items.Add(tsmiStovky2);
 
                     tsmi.Items.Add(tsmiStovky);

@@ -104,7 +104,7 @@ namespace sunamo.Html
                 {
                     return s;
                 }
-                if (tag.StartsWith("/"))
+                if (tag.StartsWith(AllStrings.slash))
                 {
                     if (AllLists.PairingTagsDontWrapToParagraph.Contains(tag.Substring(1)))
                     {
@@ -125,7 +125,7 @@ namespace sunamo.Html
         /// <returns></returns>
         private static string WrapWith(string s, string p)
         {
-            return "<" + p + ">" + s + "</" + p + ">";
+            return AllStrings.lt + p + AllStrings.gt + s + "</" + p + AllStrings.gt;
         }
 
         private static string GetFirstTag(string s)

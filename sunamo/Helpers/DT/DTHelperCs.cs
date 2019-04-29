@@ -12,7 +12,7 @@ using System.Text;
         public static string AppendToFrontOnlyTime(string defin)
         {
             DateTime dt = DateTime.Now;
-            return NH.MakeUpTo2NumbersToZero(dt.Hour) + ":" + NH.MakeUpTo2NumbersToZero(dt.Minute) + ":" + NH.MakeUpTo2NumbersToZero(dt.Second) + ":" + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + " " + defin;
+            return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.colon + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + AllStrings.space + defin;
         }
 
 
@@ -21,7 +21,7 @@ using System.Text;
 
         public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
         {
-            return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + " - " + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
+            return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
         }
 
 
@@ -175,7 +175,7 @@ using System.Text;
         /// <returns></returns>
         public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
         {
-            return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + "." + dt.Month + "." + dt.Year + " " + NH.MakeUpTo2NumbersToZero(dt.Hour) + ":" + NH.MakeUpTo2NumbersToZero(dt.Minute);
+            return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
         }
 
         

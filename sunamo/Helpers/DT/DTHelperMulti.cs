@@ -460,7 +460,7 @@ using System.Text;
                 }
             }
 
-            string s = SH.Join(' ', vr);
+            string s = SH.Join(AllChars.space, vr);
 
             return s;
         }
@@ -483,7 +483,7 @@ using System.Text;
                 dayOfWeek = DTConstants.daysInWeekCS[day];
             }
 
-            return DateToString(dateTime, l) + " (" + dayOfWeek + ")";
+            return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
         }
 
         /// <summary>
@@ -493,9 +493,9 @@ using System.Text;
         /// <returns></returns>
         public static DateTime? ParseDateMonthDayYear(string p)
         {
-            var s = SH.SplitNone(p, "/");
+            var s = SH.SplitNone(p, AllStrings.slash);
             DateTime vr;
-            if (DateTime.TryParse(s[1] + "." + s[0] + "." + s[2], out vr))
+            if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
             {
                 return vr;
             }

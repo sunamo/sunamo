@@ -252,7 +252,7 @@ namespace SunamoFtp
             foreach (string item in fse)
             {
                 char fz = item[0];
-                if (fz == '-')
+                if (fz == AllChars.dash)
                 {
                     if (vr.ContainsKey(actualPath))
                     {
@@ -267,18 +267,18 @@ namespace SunamoFtp
                 }
                 else if (fz == 'd')
                 {
-                    string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                    string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
                     //DebugLogger.Instance.WriteLine("Název alba22: " + folderName);
                     if (!FtpHelper.IsThisOrUp(folderName))
                     {
                         if (vr.ContainsKey(actualPath))
                         {
-                            vr[actualPath].Add(item + "/");
+                            vr[actualPath].Add(item + AllStrings.slash);
                         }
                         else
                         {
                             List<string> ppk = new List<string>();
-                            ppk.Add(item + "/");
+                            ppk.Add(item + AllStrings.slash);
                             vr.Add(actualPath, ppk);
                         }
                         base.getFSEntriesListRecursively(slozkyNeuploadovatAVS, projeteSlozky, vr, ps.ActualPath, folderName);
@@ -301,12 +301,12 @@ namespace SunamoFtp
                     foreach (string item in fse)
                     {
                         char fz = item[0];
-                        if (fz == '-')
+                        if (fz == AllChars.dash)
                         {
                         }
                         else if (fz == 'd')
                         {
-                            string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                            string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
                             if (!FtpHelper.IsThisOrUp(folderName))
                             {
                                 if (vr.ContainsKey(actualPath))
@@ -738,7 +738,7 @@ namespace SunamoFtp
             #endregion
 
             #region Pokud neexistuje, vytvořím jej a hned zavřu. Načtu jej do FS s FileMode Open
-            OnNewStatus("Downloading file " + remFileName + " from " + remoteHost + "/" + remotePath);
+            OnNewStatus("Downloading file " + remFileName + " from " + remoteHost + AllStrings.slash + remotePath);
 
             if (!FS.ExistsFile(locFileName))
             {
@@ -1167,7 +1167,7 @@ namespace SunamoFtp
         /// <param name="dirName"></param>
         public override void CreateDirectoryIfNotExists(string dirName)
         {
-            if (dirName == "." || dirName == "..")
+            if (dirName == AllStrings.dot || dirName == AllStrings.dd)
             {
                 return;
             }
@@ -1192,7 +1192,7 @@ namespace SunamoFtp
             }
             if (dirName != "")
             {
-                if (dirName[dirName.Length - 1] == "/"[0])
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -1213,7 +1213,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Count;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -1247,7 +1247,7 @@ namespace SunamoFtp
                 {
                     throw new IOException(reply.Substring(4));
                 }
-                if (dirName == "..")
+                if (dirName == AllStrings.dd)
                 {
                     ps.RemoveLastToken();
                 }
@@ -1359,7 +1359,7 @@ namespace SunamoFtp
             }
 
             //Když na 3. straně není mezera, zavolám tuto M znovu
-            if (!mes.Substring(3, 1).Equals(" "))
+            if (!mes.Substring(3, 1).Equals(AllStrings.space))
             {
                 return readLine();
             }
@@ -1483,8 +1483,8 @@ namespace SunamoFtp
             #endregion
 
             #region Získám IP adresu v řetězci z reply
-            int index1 = reply.IndexOf('(');
-            int index2 = reply.IndexOf(')');
+            int index1 = reply.IndexOf(AllChars.lb);
+            int index2 = reply.IndexOf(AllChars.rb);
             string ipData = reply.Substring(index1 + 1, index2 - index1 - 1);
             int[] parts = new int[6];
 
@@ -1500,13 +1500,13 @@ namespace SunamoFtp
                 char ch = Char.Parse(ipData.Substring(i, 1));
                 if (Char.IsDigit(ch))
                     buf += ch;
-                else if (ch != ',')
+                else if (ch != AllChars.comma)
                 {
                     throw new IOException("Malformed PASV reply: " + reply);
                 }
 
                 #region Pokud je poslední znak čárka,
-                if (ch == ',' || i + 1 == len)
+                if (ch == AllChars.comma || i + 1 == len)
                 {
 
                     try
@@ -1522,8 +1522,8 @@ namespace SunamoFtp
                 #endregion
             }
 
-            string ipAddress = parts[0] + "." + parts[1] + "." +
-              parts[2] + "." + parts[3];
+            string ipAddress = parts[0] + AllStrings.dot + parts[1] + AllStrings.dot +
+              parts[2] + AllStrings.dot + parts[3];
             #endregion
 
             #region Port získám tak čtvrtou část ip adresy bitově posunu o 8 a sečtu s pátou částí. Získám Socket, O IPEndPoint a pokusím se připojit na tento objekt.

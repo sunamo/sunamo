@@ -27,12 +27,12 @@ public partial class MSDatabaseLayer
     public static string GetValuesDirect(int to)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("(");
+        sb.Append(AllStrings.lb);
         for (int i = 0; i < to; i++)
         {
-            sb.Append("@p" + (i).ToString() + ",");
+            sb.Append("@p" + (i).ToString() + AllStrings.comma);
         }
-        return sb.ToString().TrimEnd(',') + ")";
+        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
 
     /// <summary>
@@ -119,13 +119,13 @@ public partial class MSDatabaseLayer
     public static string GetValues2(object[] sloupce)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("(");
+        sb.Append(AllStrings.lb);
         int to = sloupce.Length;
         for (int i = 0; i < to; i++)
         {
-            sb.Append("@p" + (i).ToString() + ",");
+            sb.Append("@p" + (i).ToString() + AllStrings.comma);
         }
-        return sb.ToString().TrimEnd(',') + ")";
+        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
 
     /// <summary>
@@ -340,7 +340,7 @@ public partial class MSDatabaseLayer
         {
             return SqlDbType.VarBinary;
         }
-        var d = SH.SplitNone(trim, ",");
+        var d = SH.SplitNone(trim, AllStrings.comma);
         if (d.Length() == 2)
         {
             if (BTS.IsInt(d[0]) && BTS.IsInt(d[1]))
@@ -606,13 +606,13 @@ public partial class MSDatabaseLayer
     public static string GetValues1(params object[] sloupce)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("(");
+        sb.Append(AllStrings.lb);
         int to = sloupce.Length + 1;
         for (int i = 1; i < to; i++)
         {
-            sb.Append("@p" + (i).ToString() + ",");
+            sb.Append("@p" + (i).ToString() + AllStrings.comma);
         }
-        return sb.ToString().TrimEnd(',') + ")";
+        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
 
 

@@ -34,7 +34,7 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
     {
         
         string hex = BitConverter.ToString(ba);
-        return hex.Replace("-", "");
+        return hex.Replace(AllStrings.dash, "");
     }
 
     public static string ConvertToWoAlpha(Color u)

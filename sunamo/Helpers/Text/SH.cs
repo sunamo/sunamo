@@ -108,7 +108,7 @@ public static partial class SH
 Å™,ř
 Ã,í
 Ä,č
-", ",");
+", AllStrings.comma);
             return true;
         }
         return false;
@@ -121,7 +121,7 @@ public static partial class SH
 
     public static string ReplaceWhiteSpaces(string p)
     {
-        return ReplaceWhiteSpacesWithoutSpaces(p).Replace(" ", "");
+        return ReplaceWhiteSpacesWithoutSpaces(p).Replace(AllStrings.space, "");
     }
 
     public static string ReplaceWhiteSpacesWithoutSpaces(string p)
@@ -184,7 +184,7 @@ public static partial class SH
                 sb.Insert(dxsColons[i] + 1, AllStrings.space);
             }
 
-            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), colon + "  ");
+            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), colon + AllStrings.doubleSpace);
             for (int i = dxsColons.Count - 1; i >= 0; i--)
             {
                 sb.Remove(dxsColons[i] + 1, 1);
@@ -199,7 +199,7 @@ public static partial class SH
                 sb.Insert(dxsColons[i], AllStrings.space);
             }
 
-            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), "  " + colon);
+            dxsColons = SH.ReturnOccurencesOfString(sb.ToString(), AllStrings.doubleSpace + colon);
             for (int i = dxsColons.Count - 1; i >= 0; i--)
             {
                 sb.Remove(dxsColons[i], 1);
@@ -224,7 +224,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                throw new Exception("Nahrazovaný prvek " + item + " je prvkem jímž se nahrazuje + " + zaCo + ".");
+                throw new Exception("Nahrazovaný prvek " + item + " je prvkem jímž se nahrazuje + " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -566,7 +566,7 @@ public static partial class SH
 
     public static string ReplaceAllDoubleSpaceToSingle(string arg)
     {
-        return SH.ReplaceAll2(arg, " ", "  ");
+        return SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
     }
 
     /// <summary>
@@ -796,7 +796,7 @@ public static partial class SH
     {
         title = remix = null;
         p = p.Trim();
-        if (p[p.Length - 1] != ']')
+        if (p[p.Length - 1] != AllChars.rsf)
         {
             return false;
         }
@@ -805,7 +805,7 @@ public static partial class SH
             p = p.Substring(0, p.Length - 1);
         }
 
-        int firstHranata = p.LastIndexOf('[');
+        int firstHranata = p.LastIndexOf(AllChars.lsf);
 
         if (firstHranata == -1)
         {
@@ -862,10 +862,10 @@ public static partial class SH
 
     public static string RemoveBracketsWithTextCaseInsensitive(string vr, string zaCo, params string[] co)
     {
-        vr = ReplaceAll(vr, "(", "( ");
-        vr = ReplaceAll(vr, "]", " ]");
-        vr = ReplaceAll(vr, ")", " )");
-        vr = ReplaceAll(vr, "[", "[ ");
+        vr = ReplaceAll(vr, AllStrings.lb, "( ");
+        vr = ReplaceAll(vr, AllStrings.rsf, " ]");
+        vr = ReplaceAll(vr, AllStrings.rb, " )");
+        vr = ReplaceAll(vr, AllStrings.lsf, "[ ");
         for (int i = 0; i < co.Length; i++)
         {
             vr = Regex.Replace(vr, co[i], zaCo, RegexOptions.IgnoreCase);
@@ -898,18 +898,18 @@ public static partial class SH
         while (true)
         {
             bool neco = false;
-            if (vr.StartsWith("("))
+            if (vr.StartsWith(AllStrings.lb))
             {
-                int ss = vr.IndexOf(")");
+                int ss = vr.IndexOf(AllStrings.rb);
                 if (ss != -1 && ss != vr.Length - 1)
                 {
                     neco = true;
                     vr = vr.Substring(ss + 1);
                 }
             }
-            else if (vr.StartsWith("["))
+            else if (vr.StartsWith(AllStrings.lsf))
             {
-                int ss = vr.IndexOf("]");
+                int ss = vr.IndexOf(AllStrings.rsf);
                 if (ss != -1 && ss != vr.Length - 1)
                 {
                     neco = true;
@@ -1498,7 +1498,7 @@ public static partial class SH
     public static string GetFirstWord(string p)
     {
         p = p.Trim();
-        int dex = p.IndexOf(' ');
+        int dex = p.IndexOf(AllChars.space);
         if (dex != -1)
         {
             return p.Substring(0, dex);
@@ -1509,7 +1509,7 @@ public static partial class SH
     public static string GetLastWord(string p)
     {
         p = p.Trim();
-        int dex = p.LastIndexOf(' ');
+        int dex = p.LastIndexOf(AllChars.space);
         if (dex != -1)
         {
             return p.Substring(dex).Trim();    
@@ -1520,7 +1520,7 @@ public static partial class SH
     public static string GetWithoutLastWord(string p)
     {
         p = p.Trim();
-        int dex = p.LastIndexOf(' ');
+        int dex = p.LastIndexOf(AllChars.space);
         if (dex != -1)
         {
             return p.Substring(0, dex);    
@@ -1530,7 +1530,7 @@ public static partial class SH
 
     public static bool IsWildcard(string text)
     {
-        return SH.ContainsAny(text, false, CA.ToEnumerable("?", "*")).Count > 1;
+        return SH.ContainsAny(text, false, CA.ToEnumerable(AllStrings.q, AllStrings.asterisk)).Count > 1;
     }
 
     /// <summary>
@@ -1541,7 +1541,7 @@ public static partial class SH
     /// <returns></returns>
     public static bool MatchWildcard(string name, string mask)
     {
-        return IsMatchRegex(name, mask, '?', '*');
+        return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
     }
 
     public static string DeleteCharsOutOfAscii(string s)
@@ -1563,7 +1563,7 @@ public static partial class SH
         string escapedSingle = Regex.Escape(new string(singleWildcard, 1));
         string escapedMultiple = Regex.Escape(new string(multipleWildcard, 1));
         pat = Regex.Escape(pat);
-        pat = pat.Replace(escapedSingle, ".");
+        pat = pat.Replace(escapedSingle, AllStrings.dot);
         pat = "^" + pat.Replace(escapedMultiple, ".*") + "$";
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);
@@ -1602,14 +1602,14 @@ public static partial class SH
         {
             for (int i = 0; i < s.Count; i++)
             {
-                s[i] = SH.ReplaceAll(s[i], " ", "\r", "\n", Environment.NewLine);
+                s[i] = SH.ReplaceAll(s[i], AllStrings.space, "\r", "\n", Environment.NewLine);
             }
         }
         if (moreSpacesForOne)
         {
             for (int i = 0; i < s.Count; i++)
             {
-                s[i] = SH.ReplaceAll2(s[i], " ", "  ");
+                s[i] = SH.ReplaceAll2(s[i], AllStrings.space, AllStrings.doubleSpace);
             }
         }
         if (trim)
@@ -1618,7 +1618,7 @@ public static partial class SH
         }
         if (escapeQuoations)
         {
-            string rep = "\"";
+            string rep = AllStrings.qm;
 
             for (int i = 0; i < s.Count; i++)
             {
@@ -1910,7 +1910,7 @@ public static partial class SH
 
     public static string AdvancedTrim(string p)
     {
-        return p.Replace("  ", " ").Trim();
+        return p.Replace(AllStrings.doubleSpace, AllStrings.space).Trim();
 
     }
 
@@ -1948,7 +1948,7 @@ public static partial class SH
         l.AddRange(spaceAndPuntactionChars);
         if (!comma)
         {
-            l.Remove(',');
+            l.Remove(AllChars.comma);
         }
         return l.ToArray();
     }
@@ -1986,7 +1986,7 @@ public static partial class SH
     {
         item2 = item2.Trim();
         //return item2.Substring(
-        int dex = item2.IndexOf(' ');
+        int dex = item2.IndexOf(AllChars.space);
         if (dex != -1)
         {
             return item2.Substring(dex + 1);
@@ -2135,7 +2135,7 @@ public static partial class SH
     /// <returns></returns>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CA.WrapWithIf(StringDelegates.IsNumber, true, " ", "\"", parts);
+        parts = CA.WrapWithIf(StringDelegates.IsNumber, true, AllStrings.space, AllStrings.qm, parts);
         return Join(delimiter, parts);
     }
 

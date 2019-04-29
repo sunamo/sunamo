@@ -12,7 +12,7 @@ using System.Linq;
 
 public static class CL 
 {
-    readonly static string charOfHeader = "*";
+    readonly static string charOfHeader = AllStrings.asterisk;
 
     #region base
     static CL()
@@ -67,7 +67,7 @@ public static class CL
     {
         int currentLineCursor = Console.CursorTop;
         Console.SetCursorPosition(0, Console.CursorTop);
-        Console.Write(new string(' ', Console.WindowWidth));
+        Console.Write(new string(AllChars.space, Console.WindowWidth));
         Console.SetCursorPosition(0, currentLineCursor);
     }
 
@@ -81,7 +81,7 @@ public static class CL
         int leftCursor = Console.CursorLeft + leftCursorAdd +1;
 
         Console.SetCursorPosition(leftCursor, Console.CursorTop);
-        Console.Write(new string(' ', Console.WindowWidth + leftCursorAdd));
+        Console.Write(new string(AllChars.space, Console.WindowWidth + leftCursorAdd));
         Console.SetCursorPosition(leftCursor, currentLineCursor);
     }
 
@@ -333,7 +333,7 @@ public static class CL
         Console.WriteLine();
         for (int i = 0; i < variants.Count; i++)
         {
-            Console.WriteLine("[" + i + "]" + "    " + variants[i]);
+            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + variants[i]);
         }
         
         return UserMustTypeNumber(what, variants.Count - 1);
@@ -351,7 +351,7 @@ public static class CL
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
-            Console.WriteLine("[" + i + "]" + "    " + kvp.Key);
+            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + kvp.Key);
             i++;
         }
         #endregion

@@ -22,7 +22,7 @@ public static class OpenGraphHelper
 
             if (ps.image == "")
             {
-                ps.image = UA.GetWebUri3(page.Request, "img/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
+                ps.image = UA.GetWebUri3(page.Request, "img/" + ms.ToString() + AllStrings.slash + "ImplicitShareImage.jpg");
             }
 
             var imageUri = new HtmlMeta { Content = ps.image };

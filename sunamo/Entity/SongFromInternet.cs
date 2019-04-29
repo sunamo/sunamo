@@ -234,7 +234,7 @@ namespace sunamo
             sb.Append(TitleInConvention());
             if (remix.Count != 0)
             {
-                sb.Append("[" + RemixInConvention() + "]");
+                sb.Append(AllStrings.lsf + RemixInConvention() + AllStrings.rsf);
             }
             return sb.ToString();
         }
@@ -263,10 +263,10 @@ namespace sunamo
         public override string ToString()
         {
             StringBuilder vr = new StringBuilder();
-            vr.Append(Artist() + "-" + Title());
+            vr.Append(Artist() + AllStrings.dash + Title());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + Remix() + "]");
+                vr.Append(" [" + Remix() + AllStrings.rsf);
             }
             return vr.ToString();
         }
@@ -274,17 +274,17 @@ namespace sunamo
         public  string ToConventionString()
         {
             StringBuilder vr = new StringBuilder();
-            vr.Append(ArtistInConvention() + "-" + TitleInConvention());
+            vr.Append(ArtistInConvention() + AllStrings.dash + TitleInConvention());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + RemixInConvention() + "]");
+                vr.Append(" [" + RemixInConvention() + AllStrings.rsf);
             }
             return vr.ToString();
         }
 
         private IEnumerable<string> SplitRemix(string u)
         {
-            List<string> gg = u.Split(new string[] { " ", ",", "-", "[", "]", "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> gg = u.Split(new string[] { AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb }, StringSplitOptions.RemoveEmptyEntries).ToList();
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {
@@ -295,7 +295,7 @@ namespace sunamo
 
         private IEnumerable<string> SplitNazevTitle(string u)
         {
-            List<string> gg = u.Split(new string[] { " ", ",", "-" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> gg = u.Split(new string[] { AllStrings.space, AllStrings.comma, AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries).ToList();
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {

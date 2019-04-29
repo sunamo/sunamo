@@ -17,7 +17,7 @@ public partial class UtilsNonNetStandard
     public static string GetXmlElement(string xml, string element)
     {
         Match m = null;
-        m = Regex.Match(xml, "<" + element + ">(?<Element>[^>]*)</" + element + ">", RegexOptions.IgnoreCase);
+        m = Regex.Match(xml, AllStrings.lt + element + ">(?<Element>[^>]*)</" + element + AllStrings.gt, RegexOptions.IgnoreCase);
         if (m == null)
         {
             throw new Exception("Could not find <" + element + "></" + element + "> in provided Public Key XML.");

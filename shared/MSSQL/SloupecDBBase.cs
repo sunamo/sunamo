@@ -70,7 +70,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
         }
         set
         {
-            int dex = value.IndexOf('(');
+            int dex = value.IndexOf(AllChars.lb);
             if (dex != -1)
             {
                 _nazev = value.Substring(0, dex);
@@ -166,7 +166,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(databaseLayer.usedTa[ typ] + " " + _nazev);
+        sb.Append(databaseLayer.usedTa[ typ] + AllStrings.space + _nazev);
         if (referencesTable != null)
         {
             sb.Append(" odkazuje na " + ReferencesTo());

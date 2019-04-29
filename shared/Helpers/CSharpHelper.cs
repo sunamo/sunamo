@@ -7,7 +7,7 @@ public static partial class CSharpHelper
 
     public static string DefaultValueForTypeSqLite(string type)
     {
-        if (type.Contains("."))
+        if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
@@ -15,7 +15,7 @@ public static partial class CSharpHelper
         switch (type)
         {
             case "TEXT":
-                return "\"\"";
+                return AllStrings.qm;
             case "INTEGER":
                 return int.MaxValue.ToString();
             case "REAL":

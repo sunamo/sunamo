@@ -130,7 +130,7 @@ public class DictionarySort<T, U>
                     return item.Key;
                 }
             }
-            //////////ObjectHelper.ci.VratTR(item.Key) + " - " + ObjectHelper.ci.VratTR(item.Value));
+            //////////ObjectHelper.ci.VratTR(item.Key) + AllStrings.swda + ObjectHelper.ci.VratTR(item.Value));
         }
 
         foreach (KeyValuePair<T, U> item in l)

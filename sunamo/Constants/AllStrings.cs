@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Constants
-{
+
     public class AllStrings
     {
         /// <summary>
@@ -80,4 +79,3 @@ namespace sunamo.Constants
         public static string cs2 = ": ";
         public const string bs2 = "\b";
     }
-}

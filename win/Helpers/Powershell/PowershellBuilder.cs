@@ -58,7 +58,7 @@ namespace win.Helpers.Powershell
         /// <returns></returns>
         public string Cd(string path)
         {
-            sb.AppendLine("cd \"" + path + "\"");
+            sb.AppendLine("cd \"" + path + AllStrings.qm);
             return sb.ToString();
         }
 

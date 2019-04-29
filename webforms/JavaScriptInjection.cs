@@ -109,7 +109,7 @@ public class JavaScriptInjection
     public static void RegisterClientScriptInnerHtml(SunamoPage page, string functionName, string src)
     {
         RegisterClientScriptInnerHtml(page, "function " + functionName + @"() {
-" + src + "}");
+" + src + AllStrings.cbr);
     }
 
     public static void RegisterClientScriptInnerHtml(SunamoPage page, string src)
@@ -145,7 +145,7 @@ public class JavaScriptInjection
             {
                 sb.Append("text/javascript");
             }
-            sb.Append("\"");
+            sb.Append(AllStrings.qm);
             // charset=\"utf-16\"
             sb.Append(" src=\"");
             sb.Append(hostWithHttp + item);
@@ -178,23 +178,23 @@ public class JavaScriptInjection
             sb.Append(" type=\"");
                 sb.Append("text/javascript");
             //}
-            sb.Append("\"");
+            sb.Append(AllStrings.qm);
 
-            if ((hostWithHttp.StartsWith("http://") || item.StartsWith("https://")) && !item.Contains("{") && !item.Contains("["))
+            if ((hostWithHttp.StartsWith("http://") || item.StartsWith("https://")) && !item.Contains(AllStrings.cbl) && !item.Contains(AllStrings.lsf))
             {
                 if (item == JavaScriptPaths.RequireJS)
                 {
                     var fileName = UH.GetFileName(page.Request.CurrentExecutionFilePath).Replace(".aspx", "");
-                    sb.Append(" data-main=\"http://localhost/ts/" + sa + "/" + fileName + ".js\" type=\"module\"");
+                    sb.Append(" data-main=\"http://localhost/ts/" + sa + AllStrings.slash + fileName + ".js\" type=\"module\"");
                 }
                 // charset=\"utf-16\"
                 sb.Append(" src=\"");
                 sb.Append(hostWithHttp + item ); //+ "?nocache"
-                sb.Append("\">");
+                sb.Append("\AllStrings.gt);
             }
             else
             {
-                sb.AppendLine(">");
+                sb.AppendLine(AllStrings.gt);
                 sb.Append(item);
             }
             sb.Append("</script>");
@@ -208,7 +208,7 @@ public class JavaScriptInjection
         StringBuilder sb = new StringBuilder();
         sb.Append("<script type=\"");
         sb.Append("text/javascript");
-        sb.Append("\">");
+        sb.Append("\AllStrings.gt);
         sb.Append(javaScript);
         sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
@@ -220,7 +220,7 @@ public class JavaScriptInjection
         StringBuilder sb = new StringBuilder();
         sb.Append("<script type=\"");
         sb.Append(type);
-        sb.Append("\">");
+        sb.Append("\AllStrings.gt);
         sb.Append(script);
         sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
@@ -229,7 +229,7 @@ public class JavaScriptInjection
 
     public static void InitTinyMCE(SunamoPage sp)
     {
-        //cleanup_callback : " + SH.Format2("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", "\"") + @"
+        //cleanup_callback : " + SH.Format2("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", AllStrings.qm) + @"
         InjectInternalScript(sp, @"$(document).ready(function () {
             tinymce.init({
     selector: '#txtTinymce',

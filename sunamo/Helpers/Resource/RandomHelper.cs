@@ -97,7 +97,7 @@ public static partial class RandomHelper
         if (z != 0)
         {
             string zaCarkou = RandomHelper.RandomNumberString(z);
-            vr = float.Parse(predCarkou + "." + zaCarkou);
+            vr = float.Parse(predCarkou + AllStrings.dot + zaCarkou);
         }
         else
         {

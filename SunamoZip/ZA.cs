@@ -29,9 +29,9 @@ public class ZA
     
     private string getRelativePath2(string filePath, string basePath)
     {
-        if (!basePath.EndsWith("\\"))
+        if (!basePath.EndsWith(AllStrings.bs))
         {
-            basePath += "\\";
+            basePath += AllStrings.bs;
         }
         return filePath.Replace(basePath, "");
     }
@@ -101,7 +101,7 @@ public class ZA
                 Stream zipStream = zf.GetInputStream(zipEntry);
 
                 // Manipulate the output filename here as desired.
-                String fullZipToPath = FS.Combine(outFolder, entryFileName).TrimEnd('\\');
+                String fullZipToPath = FS.Combine(outFolder, entryFileName).TrimEnd(AllChars.bs);
                 string directoryName = FS.GetDirectoryName(fullZipToPath);
                 if (directoryName.Length > 0)
                     FS.CreateDirectory(directoryName);
@@ -146,7 +146,7 @@ public class ZA
 
     private string[] VratSouboryRek(string slozku)
     {
-        return Directory.GetFiles(slozku, "*", SearchOption.AllDirectories);
+        return Directory.GetFiles(slozku, AllStrings.asterisk, SearchOption.AllDirectories);
     }
 
     public void CreateArchive(string slozka, string[] soubory)

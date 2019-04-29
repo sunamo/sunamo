@@ -48,7 +48,7 @@ public class SocialShareButtons
         {
             if (p.PathAndQuery.ToLower().StartsWith("/default.aspx"))
             {
-                return "http://" + Consts.WwwCz + "/";
+                return "http://" + Consts.WwwCz + AllStrings.slash;
             }
         }
         // Toto nevím jestli někdy může nastat, nemělo by
@@ -106,16 +106,16 @@ public class SocialShareButtons
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = " + "\"/" + "/connect.facebook.net/en_US/all.js#xfbml=1\";" + Environment.NewLine +
+  js.src = " + "\AllStrings.slash + "/connect.facebook.net/en_US/all.js#xfbml=1\AllStrings.sc + Environment.NewLine +
   @"fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>";
-        html.InnerHtml = SH.Format2("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri( page.Request.Url), "http://" + page.Request.Url.Host + "/");
+        html.InnerHtml = SH.Format2("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri( page.Request.Url), "http://" + page.Request.Url.Host + AllStrings.slash);
     }
 
 
 
     public static void SetTweetHtml(SunamoPage page, HtmlGenericControl html)
     {
-        html.InnerHtml = "<a href=\"https://twitter.com/share\"  style=\"min-width: 100px;\"  data-url=\"{0}\" class=\"naStred twitter-share-button\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');</script>".Replace("{0}", GetUri(page.Request.Url));
+        html.InnerHtml = "<a href=\"https://twitter.com/share\"  style=\"min-width: 100px;\"  data-url=\"{0}\" class=\"naStred twitter-share-button\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'scriptAllChars.commatwitter-wjs');</script>".Replace("{0}", GetUri(page.Request.Url));
     }
 }

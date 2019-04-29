@@ -19,7 +19,7 @@ public static class HttpHelper
             string port = "";
             if (uri.Port != 80)
             {
-                port = ":" + uri.Port;
+                port = AllStrings.colon + uri.Port;
             }
 
             Response.AddHeader("Access-Control-Allow-Origin", uri.Scheme + Uri.SchemeDelimiter + uri.Host + port);
@@ -27,7 +27,7 @@ public static class HttpHelper
         if (Request.HttpMethod == "OPTIONS")
         {
             Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            //Response.AddHeader("Access-Control-Allow-Headers", "*");
+            //Response.AddHeader("Access-Control-Allow-Headers", AllStrings.asterisk);
             Response.AddHeader("Access-Control-Max-Age", "1728000");
             Response.Flush();
             Response.End();

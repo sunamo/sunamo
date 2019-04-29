@@ -14,7 +14,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public static bool IsThisOrUp(string folderName2)
         {
-            return folderName2 == "." || folderName2 == "..";
+            return folderName2 == AllStrings.dot || folderName2 == AllStrings.dd;
         }
 
         /// <summary>
@@ -49,14 +49,14 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry)
         {
             string fileName = null;
-            var tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
 
         public static FileSystemType IsFile(string entry, out string fileName)
         {
-            var tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
@@ -64,7 +64,7 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry, out string fileName, out long length)
         {
             //drw-rw-rw-   1 user     group           0 Nov 21 18:03 App_Data
-            var tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             length = long.Parse(tokeny[4]);
 
@@ -73,10 +73,10 @@ namespace SunamoFtp
 
         private static FileSystemType IsFileShared(string entry, List<string> tokeny, out string fileName)
         {
-            fileName = SH.JoinFromIndex(8, ' ', tokeny);
+            fileName = SH.JoinFromIndex(8, AllChars.space, tokeny);
             FileSystemType isFile = FileSystemType.File;
             char f = entry[0];
-            if (f == '-')
+            if (f == AllChars.dash)
             {
 
             }

@@ -61,7 +61,7 @@ public class PH
     private static string NormalizeUri(string v)
     {
         // Without this cant search for google apps
-        v = SH.ReplaceAll(v, "%22", "\"");
+        v = SH.ReplaceAll(v, "%22", AllStrings.qm);
         return v;
     }
 

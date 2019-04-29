@@ -19,7 +19,7 @@ namespace forms
             originalToolTipText = tsddb.ToolTipText;
             AddValuesOfEnumAsItems(bs);
             SelectedO = defaultValue;
-            tsddb.ToolTipText = originalToolTipText + " " + defaultValue.ToString();
+            tsddb.ToolTipText = originalToolTipText + AllStrings.space + defaultValue.ToString();
         }
 
         public T SelectedT
@@ -99,7 +99,7 @@ namespace forms
             {
                 SelectedO = tsmi;
             }
-            tsddb.ToolTipText = originalToolTipText + " " + SelectedO.ToString();
+            tsddb.ToolTipText = originalToolTipText + AllStrings.space + SelectedO.ToString();
         }
 
         public void AddValuesOfArrayAsItems(EventHandler eh, params object[] o)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
     public class ConvertDateTimeToFileNamePostfix
     {
-        static char delimiter = '_';
+        static char delimiter = AllChars.us;
 
         /// <summary>
         /// Převede z data na název souboru bez přípony
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
         /// <returns></returns>
         public static string ToConvention(string postfix, DateTime dt, bool time)
         {
-            //postfix = SH.ReplaceAll(postfix, " ", "_");
+            //postfix = SH.ReplaceAll(postfix, AllStrings.space, AllStrings.us);
             return DTHelper.DateTimeToFileName(dt, time) + delimiter + postfix;
         }
 

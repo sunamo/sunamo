@@ -166,13 +166,13 @@ namespace desktop
 
         public static void appendToTextBlockText(TextBlock lbl, string text)
         {
-            lbl.Text = lbl.Text + " " + text;
+            lbl.Text = lbl.Text + AllStrings.space + text;
             lbl.ToolTip = lbl.Text;
         }
 
         public static void appendToTextBoxText(TextBox tb, string text)
         {
-            tb.Text = tb.Text + " " + text;
+            tb.Text = tb.Text + AllStrings.space + text;
             tb.ToolTip = tb.Text;
         }
 

@@ -27,11 +27,11 @@ public partial class DTHelperMulti{
 
         if (l == Langs.cs)
         {
-            return d.Day + "." + d.Month + "." + d.Year + " " + NH.MakeUpTo2NumbersToZero(d.Hour) + ":" + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
         }
         else
         {
-            return d.Month + "/" + d.Day + "/" + d.Year + " " + NH.MakeUpTo2NumbersToZero(d.Hour) + ":" + NH.MakeUpTo2NumbersToZero(d.Minute);
+            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
         }
 
     }
@@ -44,7 +44,7 @@ public static DateTime IsValidDateText(string r)
             r = r.Trim();
             if (r != "")
             {
-                var indexTecky = r.IndexOf('.');
+                var indexTecky = r.IndexOf(AllChars.dot);
                 if (indexTecky != -1)
                 {
                     dt = DTHelperCs.ParseDateCzech(r);
@@ -61,14 +61,14 @@ public static DateTime IsValidDateText(string r)
 public static DateTime IsValidDateTimeText(string datum)
         {
             DateTime vr = DateTime.MinValue;
-            int indexMezery = datum.IndexOf(' ');
+            int indexMezery = datum.IndexOf(AllChars.space);
             if (indexMezery != -1)
             {
                 var datum2 = DateTime.Today;
                 var cas2 = DateTime.Today;
                 var datum3 = datum.Substring(0, indexMezery);
                 var cas3 = datum.Substring(indexMezery + 1);
-                if (datum3.IndexOf('.') != -1)
+                if (datum3.IndexOf(AllChars.dot) != -1)
                 {
                     datum2 = DTHelperCs.ParseDateCzech(datum3);
                 }
@@ -77,7 +77,7 @@ public static DateTime IsValidDateTimeText(string datum)
                     datum2 = DTHelperEn.ParseDateUSA(datum3);
                 }
 
-                if (cas3.IndexOf(' ') == -1)
+                if (cas3.IndexOf(AllChars.space) == -1)
                 {
                     cas2 = DTHelperCs.ParseTimeCzech(cas3);
                 }
@@ -103,7 +103,7 @@ public static DateTime IsValidTimeText(string r)
             r = r.Trim();
             if (r != "")
             {
-                var indexMezery = r.IndexOf(' ');
+                var indexMezery = r.IndexOf(AllChars.space);
                 if (indexMezery == -1)
                 {
                     dt = DTHelperCs.ParseTimeCzech(r);
@@ -125,8 +125,8 @@ public static DateTime IsValidTimeText(string r)
         {
             if (l == Langs.cs)
             {
-                return p.Day + "." + p.Month + "." + p.Year;
+                return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
             }
-            return p.Month + "/" + p.Day + "/" + p.Year;
+            return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
         }
 }

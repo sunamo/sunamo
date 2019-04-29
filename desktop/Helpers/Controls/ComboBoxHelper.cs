@@ -92,7 +92,7 @@ public class ComboBoxHelper
         {
             SelectedO = cb.SelectedItem;
         // not need ValueFromTWithNameOrObject, TWithName has ToString
-        cb.ToolTip = originalToolTipText + " " + SelectedO.ToString();
+        cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
         }
 
     public void AddValuesOfArrayAsItems(params object[] o)

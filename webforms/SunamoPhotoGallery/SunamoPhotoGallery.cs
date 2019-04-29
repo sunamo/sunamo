@@ -34,7 +34,7 @@ public class SunamoPhotoGallery
     /// <param name="a11insertBetweenPhotoAndID">A11 se vyplňuje na řetězec (klidně i prázdný) pouze u RoutedPages(je to signál pro web aby vygeneroval cestu A12+A11 a ne Photo.aspx?...</param>
     /// <param name="a12fullPathToPhotoInclude">A12 se ignoruje pokud A11 bude SE nebo null. Pokud se zadává, tak s Photo/ v případě routed pages nebo Photo.aspx?arg=. Ideální je nastavit A1 na / a A2 na cestu nekončící lomítkem(/). Je to sice diskriminační pro neroutované stránky Photo, ale co už...</param>
     /// <param name="a13fotoGalerieTnFileClass">A13 je název css třídy v Shared.css, aby border obrázků nebyl například na casdmladez webu světle zelený, když pozadí komentářů jsou bílé. Pokud chceš výchozí barvu, nastav na SE nebo ""</param>
-    /// <param name="a14PhotosWithName">Používá se u routed pages, kde tato hodnota bude bude za A12 + A11.TrimEnd('/').TrimStart('/') + "/". Tam kde nepotřebuješ název ale jen ID fotky použij A8.</param>
+    /// <param name="a14PhotosWithName">Používá se u routed pages, kde tato hodnota bude bude za A12 + A11.TrimEnd(AllChars.slash).TrimStart(AllChars.slash) + AllStrings.slash. Tam kde nepotřebuješ název ale jen ID fotky použij A8.</param>
     public SunamoPhotoGallery(string a1upFolderUri, string a2mainPhotoUpFullPath, string a3upFolderName, string[] a4folders, string[] a5mainPhotos, string[] a6folderNames, string[] a7files, string[] a8idPhotos, string[] a9filesNames, bool a10SelectingPhotos, string a11insertBetweenPhotoAndID, string a12fullPathToPhotoInclude, string a13fotoGalerieTnFileClass, string[] a14PhotosWithName, object a15spOrRequest, string a16appendToPhotoUri, bool[] a17privateAlbums)
     {
         HttpRequest req = null;
@@ -153,7 +153,7 @@ public class SunamoPhotoGallery
             else
             {
                 //"Photo/"
-                hg.WriteTagWithAttr("a", "href", a12fullPathToPhotoInclude + a11insertBetweenPhotoAndID.TrimEnd('/').TrimStart('/') + "/" + UH.UrlEncode(idPhotoWithName) + a16appendToPhotoUri);
+                hg.WriteTagWithAttr("a", "href", a12fullPathToPhotoInclude + a11insertBetweenPhotoAndID.TrimEnd(AllChars.slash).TrimStart(AllChars.slash) + AllStrings.slash + UH.UrlEncode(idPhotoWithName) + a16appendToPhotoUri);
             }
             if (a10SelectingPhotos)
             {

@@ -133,7 +133,7 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                string ma = GetActualPath(dirName).TrimEnd('/');
+                string ma = GetActualPath(dirName).TrimEnd(AllChars.slash);
                 OnNewStatus("Mažu adresář " + ma);
 
                 FtpWebRequest clsRequest = null;
@@ -315,7 +315,7 @@ namespace SunamoFtp
                                     }
                                 }
                                 goToUpFolderForce();
-                                rmdir(new List<string>(), Path.GetFileName(item2.Key.TrimEnd('/')));
+                                rmdir(new List<string>(), Path.GetFileName(item2.Key.TrimEnd(AllChars.slash)));
                             }
                         }
                     }
@@ -420,8 +420,8 @@ namespace SunamoFtp
 
             if (dirName != "")
             {
-                dirName = Path.GetFileName(dirName.TrimEnd('/'));
-                if (dirName[dirName.Length - 1] == "/"[0])
+                dirName = Path.GetFileName(dirName.TrimEnd(AllChars.slash));
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -442,7 +442,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Count;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -478,7 +478,7 @@ namespace SunamoFtp
             // Trim slash from end in dirName variable
             if (dirName != "")
             {
-                if (dirName[dirName.Length - 1] == "/"[0])
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -499,7 +499,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Count;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -530,7 +530,7 @@ namespace SunamoFtp
             else
             {
 
-                if (dirName == "..")
+                if (dirName == AllStrings.dd)
                 {
                     ps.RemoveLastToken();
                 }
@@ -625,7 +625,7 @@ namespace SunamoFtp
                 StreamReader reader = null;
                 FtpWebResponse response = null;
 
-                String _Path = UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+                String _Path = UH.Combine(true, remoteHost + AllStrings.colon + remotePort, ps.ActualPath);
                 try
                 {
                     // Get the object used to communicate with the server.
@@ -962,7 +962,7 @@ namespace SunamoFtp
             foreach (string item in fse)
             {
                 char fz = item[0];
-                if (fz == '-')
+                if (fz == AllChars.dash)
                 {
                     if (vr.ContainsKey(actualPath))
                     {
@@ -977,18 +977,18 @@ namespace SunamoFtp
                 }
                 else if (fz == 'd')
                 {
-                    string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                    string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
 
                     if (!FtpHelper.IsThisOrUp(folderName))
                     {
                         if (vr.ContainsKey(actualPath))
                         {
-                            vr[actualPath].Add(item + "/");
+                            vr[actualPath].Add(item + AllStrings.slash);
                         }
                         else
                         {
                             List<string> ppk = new List<string>();
-                            ppk.Add(item + "/");
+                            ppk.Add(item + AllStrings.slash);
                             vr.Add(actualPath, ppk);
                         }
                         base.getFSEntriesListRecursively(slozkyNeuploadovatAVS, projeteSlozky, vr, ps.ActualPath, folderName);

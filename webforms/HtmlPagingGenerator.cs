@@ -211,7 +211,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
                 if (zobrazitBefore)
                 {
                     hg.WriteTagWithAttr("div", "class", "item");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrevRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + 1 + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrevRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + 1 + ");return false;");
                     hg.WriteRaw(textBeforeRapid);
                     hg.TerminateTag("a");
                     hg.TerminateTag("div");
@@ -222,7 +222,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
                         to = 1;
                     }
                     hg.WriteTagWithAttr("div", "class", "item");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrev", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + to + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrev", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + to + ");return false;");
                     hg.WriteRaw(textBefore);
                     hg.TerminateTag("a");
                     hg.TerminateTag("div");
@@ -246,13 +246,13 @@ public class HtmlPagingGenerator //: HtmlGenerator
                 {
 
                     hg.WriteTagWithAttr("div", "class", "item");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorNext", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + (aktStrana + 1).ToString() + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorNext", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + (aktStrana + 1).ToString() + ");return false;");
                     hg.WriteRaw(textNext);
                     hg.TerminateTag("a");
                     hg.TerminateTag("div");
                     //hg.WriteRaw("&nbsp;&nbsp;");
                     hg.WriteTagWithAttr("div", "class", "item");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + pocetStranek + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + pocetStranek + ");return false;");
                     hg.WriteRaw(textNextRapid);
                     hg.TerminateTag("a");
 
@@ -363,7 +363,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
                 if (zobrazitBefore)
                 {
                     hg.WriteTagWithAttr("li", "class", "waves-effect");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrevRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + 1 + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrevRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + 1 + ");return false;");
                     hg.WriteRaw(textBeforeRapid);
                     hg.TerminateTag("a");
                     hg.TerminateTag("li");
@@ -374,7 +374,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
                         to = 1;
                     }
                     hg.WriteTagWithAttr("li", "class", "waves-effect");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrev", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + to + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorPrev", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + to + ");return false;");
                     hg.WriteRaw(textBefore);
                     hg.TerminateTag("a");
                     hg.TerminateTag("li");
@@ -398,13 +398,13 @@ public class HtmlPagingGenerator //: HtmlGenerator
                 {
 
                     hg.WriteTagWithAttr("li", "class", "waves-effect");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorNext", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + (aktStrana + 1).ToString() + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorNext", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + (aktStrana + 1).ToString() + ");return false;");
                     hg.WriteRaw(textNext);
                     hg.TerminateTag("a");
                     hg.TerminateTag("li");
                     //hg.WriteRaw("&nbsp;&nbsp;");
                     hg.WriteTagWithAttr("li", "class", "waves-effect");
-                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + pocetStranek + ");return false;");
+                    hg.WriteTagWithAttrs("a", "runat", "server", "id", "anchorRapid", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + pocetStranek + ");return false;");
                     hg.WriteRaw(textNextRapid);
                     hg.TerminateTag("a");
 
@@ -429,7 +429,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
             hg.WriteTagWithAttr("li", "class", "waves-effect");
             if (klikaci)
             {
-                hg.WriteTagWithAttrs("a", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + item + ");return false;");
+                hg.WriteTagWithAttrs("a", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + item + ");return false;");
             }
             else
             {
@@ -444,7 +444,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
             {
                 //hg.TerminateTag("span");
             }
-            //hg.WriteRaw(" ");
+            //hg.WriteRaw(AllStrings.space);
             hg.TerminateTag("li");
         }
         else if (cssfw == CssFramework.Metro)
@@ -452,7 +452,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
             hg.WriteTagWithAttr("div", "class", "item");
             if (klikaci)
             {
-                hg.WriteTagWithAttrs("a", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + "(" + item + ");return false;", "class", "strankovani");
+                hg.WriteTagWithAttrs("a", "href", "javascript:", "onclick", "preskocNaStranku" + msss + unique + AllStrings.lb + item + ");return false;", "class", "strankovani");
             }
             else
             {
@@ -467,7 +467,7 @@ public class HtmlPagingGenerator //: HtmlGenerator
             {
                 //hg.TerminateTag("span");
             }
-            //hg.WriteRaw(" ");
+            //hg.WriteRaw(AllStrings.space);
             hg.TerminateTag("div");
         }
         return item;

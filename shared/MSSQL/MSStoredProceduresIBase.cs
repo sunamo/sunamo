@@ -324,7 +324,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace("(", "(newid(),")));
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace(AllStrings.lb, "(newid(),")));
         int to = sloupce.Length;
         for (int i = 0; i < to; i++)
         {
@@ -417,7 +417,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         if (orderBy != "")
         {
-            orderBy = " " + orderBy;
+            orderBy = AllStrings.space + orderBy;
         }
 
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.SimpleWhere(whereSloupec) + orderBy);
@@ -429,7 +429,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         if (orderBy != "")
         {
-            orderBy = " " + orderBy;
+            orderBy = AllStrings.space + orderBy;
         }
 
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(where, whereIsNot, null, null) + orderBy);
@@ -506,7 +506,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             while (r.Read())
             {
-                string o = r.GetString(0).TrimEnd(' ');
+                string o = r.GetString(0).TrimEnd(AllChars.space);
                 //Type t = val.GetType();
                 vr.Add(o);
             }
@@ -594,7 +594,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableSelectiveLikeContains(string tabulka, string nazvySloupcu, string sloupecID, string textPartOfCity)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} LIKE '%' + @p0 + '%'", nazvySloupcu, tabulka, sloupecID));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} LIKE AllChars.modulo + @p0 + AllChars.modulo", nazvySloupcu, tabulka, sloupecID));
         AddCommandParameter(comm, 0, textPartOfCity);
         //NT
         return this.SelectDataTable(comm);
@@ -1013,11 +1013,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public int UpdateAppendStringValueCheckExistsOneRow(string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
     {
         string aktual = SelectCellDataTableStringOneRow(tableName, sloupecAppend, sloupecID, hodnotaID);
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         if (!d.Contains(hodnotaAppend))
         {
-            aktual += hodnotaAppend + ",";
-            string save = SH.Join(',', d.ToArray());
+            aktual += hodnotaAppend + AllStrings.comma;
+            string save = SH.Join(AllChars.comma, d.ToArray());
             return UpdateOneRow(tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
         }
 
@@ -1038,9 +1038,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public int UpdateCutStringValue(string tableName, string sloupecCut, string hodnotaCut, string sloupecID, object hodnotaID)
     {
         string aktual = SelectCellDataTableStringOneRow(tableName, sloupecCut, sloupecID, hodnotaID);
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         d.Remove(hodnotaCut);
-        string save = SH.JoinWithoutTrim(",", d);
+        string save = SH.JoinWithoutTrim(AllStrings.comma, d);
         return UpdateOneRow(tableName, sloupecCut, save, sloupecID, hodnotaID);
     }
 
@@ -1400,7 +1400,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool? SelectCellDataTableNullableBoolOneRow(string table, string vracenySloupec, params AB[] abc)
     {
-        string sql = "SELECT TOP(1) " + vracenySloupec + " FROM " + table + " " + GeneratorMsSql.CombinedWhere(abc);
+        string sql = "SELECT TOP(1) " + vracenySloupec + " FROM " + table + AllStrings.space + GeneratorMsSql.CombinedWhere(abc);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameteres(comm, 0, abc);
         return ExecuteScalarNullableBool(comm);
@@ -1463,7 +1463,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLimitLastRows(string tableName, int limit, string sloupecID, params AB[] abc)
     {
-        return SelectDataTableLimitLastRows(tableName, limit, "*", sloupecID, abc);
+        return SelectDataTableLimitLastRows(tableName, limit, AllStrings.asterisk, sloupecID, abc);
     }
 
     /// <summary>

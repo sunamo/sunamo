@@ -18,7 +18,7 @@ namespace sunamo.Essential
             var dump = RH.DumpAsString(name, o, d, onlyNames);
 
             WriteLine(dump);
-            WriteLine(" ");
+            WriteLine(AllStrings.space);
         }
 
         public void DumpObjects(string name, IEnumerable o, DumpProvider d, params string[] onlyNames)
@@ -62,7 +62,7 @@ namespace sunamo.Essential
 
         public  void TwoState(bool ret, params object[] toAppend)
         {
-            WriteLine(ret.ToString() + "," + SH.Join(',', toAppend));
+            WriteLine(ret.ToString() + AllStrings.comma + SH.Join(AllChars.comma, toAppend));
         }
 
         public void WriteArgs(params object[] args)
@@ -105,7 +105,7 @@ namespace sunamo.Essential
 
         public  void WriteNumberedList(string what, List<string> list, bool numbered)
         {
-            writeLineDelegate.Invoke(what + ":");
+            writeLineDelegate.Invoke(what + AllStrings.colon);
             for (int i = 0; i < list.Count; i++)
             {
                 if (numbered)

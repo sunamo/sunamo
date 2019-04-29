@@ -183,12 +183,12 @@ public class CyclingCollection<T> : IStatusBroadcaster
         sb.Append(ActualIndex + 1);
         if (_MakesSpaces)
         {
-            sb.Append(" ");
+            sb.Append(AllStrings.space);
         }
-        sb.Append("/");
+        sb.Append(AllStrings.slash);
         if (_MakesSpaces)
         {
-            sb.Append(" ");
+            sb.Append(AllStrings.space);
         }
         sb.Append(c.Count.ToString());
         return sb.ToString();

@@ -18,8 +18,8 @@ namespace sunamo.Helpers.FileSystem
             {
                 var lines = File.ReadAllLines(item);
                 string line = lines[0].Trim();
-                line = line.Substring(line.IndexOf(' ') + 1).ToLower();
-                sb.AppendLine(lines[1] + " - " + SH.FirstCharUpper(line));
+                line = line.Substring(line.IndexOf(AllChars.space) + 1).ToLower();
+                sb.AppendLine(lines[1] + AllStrings.swda + SH.FirstCharUpper(line));
             }
 
             return sb.ToString();

@@ -49,7 +49,7 @@ namespace webforms
                 var e = new List<string>(Enum.GetNames(typeof(MySitesShort)));
                 for (int i = 0; i < e.Count; i++)
                 {
-                    e[i] = e[i] + "_";
+                    e[i] = e[i] + AllStrings.us;
                 }
 
                 foreach (var item in d)
@@ -71,9 +71,9 @@ namespace webforms
             }
             else
             {
-                p = p + "_";
+                p = p + AllStrings.us;
 
-                SqlCommand comm = new SqlCommand(SH.Format2("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = @p0 AND TABLE_NAME LIKE @p1 + '%'"));
+                SqlCommand comm = new SqlCommand(SH.Format2("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = @p0 AND TABLE_NAME LIKE @p1 + AllChars.modulo"));
                 global::MSStoredProceduresI.AddCommandParameter(comm, 0, "BASE TABLE");
                 global::MSStoredProceduresI.AddCommandParameter(comm, 1, p);
                 DataTable dt = global::MSStoredProceduresI.ci.SelectDataTable(comm);

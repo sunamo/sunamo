@@ -85,7 +85,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
     public void Add(SelectMoreFolders txtFolders)
     {
         var adcl = AddFrameworkElement(txtFolders);
-        var folders = adcl.GetListString(SelectedFolders, "*");
+        var folders = adcl.GetListString(SelectedFolders, AllStrings.asterisk);
         foreach (var item in folders)
         {
             txtFolders.AddFolder(item);
@@ -109,7 +109,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
     {
         SelectMoreFolders chb = sender as SelectMoreFolders;
         // bcoz every line has strictly structure - name|type|data. Never be | in data
-        Set( sender,SelectedFolders, SF.PrepareToSerialization(selectedFolders, "*"));
+        Set( sender,SelectedFolders, SF.PrepareToSerialization(selectedFolders, AllStrings.asterisk));
         
         SaveControl(chb);
     }
@@ -121,7 +121,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     private void Set(object sender, string key, object v)
     {
-        ThrowExceptions.StringContainsUnallowedSubstrings(type, "Set", v.ToString(), "|");
+        ThrowExceptions.StringContainsUnallowedSubstrings(type, "Set", v.ToString(), AllStrings.pipe);
         data[sender][key] = v;
     }
 

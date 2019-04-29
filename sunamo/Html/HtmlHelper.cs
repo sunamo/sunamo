@@ -62,23 +62,23 @@ using System.Xml;
         {
             List<string> jizNahrazeno = new List<string>();
             var pol = CA.ToEnumerable("br", "hr", "img", "meta", "input", "iframe");
-            MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
+            MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*AllChars.lsf\"]*|[^'\">])+>");
             List<string> col = new List<string>(pol);
 
-            //<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>
+            //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>
             foreach (Match item in mc)
             {
-                string d = item.Value.Replace(" >", ">");
+                string d = item.Value.Replace(" >", AllStrings.gt);
                 string tag = "";
-                if (item.Value.Contains(" "))
+                if (item.Value.Contains(AllStrings.space))
                 {
-                    tag = SH.GetFirstPartByLocation(item.Value, ' ');
+                    tag = SH.GetFirstPartByLocation(item.Value, AllChars.space);
                 }
                 else
                 {
-                    tag = d.Replace("/", "").Replace(">", "");
+                    tag = d.Replace(AllStrings.slash, "").Replace(AllStrings.gt, "");
                 }
-                tag = tag.TrimStart('<').Trim().ToLower();
+                tag = tag.TrimStart(AllChars.lt).Trim().ToLower();
                 if (col.Contains(tag))
                 {
                     if (!item.Value.Contains("/>"))
@@ -115,7 +115,7 @@ using System.Xml;
         /// <returns></returns>
         public static string StripAllTagsSpace(string p)
         {
-            return Regex.Replace(p, @"<[^>]*>", " ");
+            return Regex.Replace(p, @"<[^>]*>", AllStrings.space);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ using System.Xml;
 
     private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
-            if (hodnotaAtributu == "*")
+            if (hodnotaAtributu == AllStrings.asterisk)
             {
                 return true;
             }
@@ -195,7 +195,7 @@ using System.Xml;
     /// <returns></returns>
     private static bool HasTagName(HtmlNode hn, string tag)
         {
-            if (tag == "*")
+            if (tag == AllStrings.asterisk)
             {
                 return true;
             }
@@ -322,14 +322,14 @@ using System.Xml;
         {
             Dictionary<string, string> vr = new Dictionary<string, string>();
             string at = GetValueOfAttribute("style", item);
-            if (at.Contains(";"))
+            if (at.Contains(AllStrings.sc))
             {
-                var d = SH.Split(at, ";");
+                var d = SH.Split(at, AllStrings.sc);
                 foreach (string item2 in d)
                 {
-                    if (item2.Contains(":"))
+                    if (item2.Contains(AllStrings.colon))
                     {
-                        var r = SH.SplitNone(item2, ":");
+                        var r = SH.SplitNone(item2, AllStrings.colon);
                         vr.Add(r[0].Trim().ToLower(), r[1].Trim().ToLower());
                     }
                 }
@@ -819,7 +819,7 @@ using System.Xml;
         {
             List<HtmlNode> vr = new List<HtmlNode>();
 
-            RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, htmlNode, tag, "class", t, " ");
+            RecursiveReturnTagsWithContainsAttrWithSplittedElement(vr, htmlNode, tag, "class", t, AllStrings.space);
             return vr;
         }
     }

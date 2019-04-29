@@ -240,7 +240,7 @@ namespace desktop
                 if (p2 != "" && p1 != "")
                 {
                     Bold(p1);
-                    Run(" " + p2);
+                    Run(AllStrings.space + p2);
                     LineBreak();
                 }
             }

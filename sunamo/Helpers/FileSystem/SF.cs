@@ -18,8 +18,8 @@ using sunamo.Constants;
 public static partial class SF
 {
     static SerializeContentArgs contentArgs = new SerializeContentArgs();
-    public const string replaceForSeparatorString = "_";
-    public static readonly char replaceForSeparatorChar = '_';
+    public const string replaceForSeparatorString = AllStrings.us;
+    public static readonly char replaceForSeparatorChar = AllChars.us;
     public static int keyCodeSeparator
     {
         get
@@ -54,7 +54,7 @@ public static partial class SF
 
     static SF()
     {
-        contentArgs.separatorString = "|";
+        contentArgs.separatorString = AllStrings.pipe;
     }
     /// <summary>
     /// 
@@ -117,13 +117,13 @@ public static partial class SF
         return vr;
     }
 
-    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = '|')
+    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = AllChars.pipe)
     {
         string oz = oddelovaciZnak.ToString();
         List<List<string>> vr = new List<List<string>>();
         string[] lines = File.ReadAllLines(file);
         lines = CA.Trim(lines);
-        hlavicka = SF.GetAllElementsLine(lines[0], '\'');
+        hlavicka = SF.GetAllElementsLine(lines[0], AllChars.bs);
         int musiByt = SH.OccurencesOfStringIn(lines[0], oz);
         int nalezeno = 0;
         StringBuilder jedenRadek = new StringBuilder();
@@ -134,7 +134,7 @@ public static partial class SF
             if (nalezeno == musiByt)
             {
                 nalezeno = 0;
-                var columns = SF.GetAllElementsLine(jedenRadek.ToString(), '\'');
+                var columns = SF.GetAllElementsLine(jedenRadek.ToString(), AllChars.bs);
                 jedenRadek = new StringBuilder();
                 vr.Add(columns);
             }
@@ -152,7 +152,7 @@ public static partial class SF
     {
         if (oddelovaciZnak == null)
         {
-            oddelovaciZnak = '|';
+            oddelovaciZnak = AllChars.pipe;
         }
         // Musí tu být none, protože pak když někde nic nebylo, tak mi to je nevrátilo a progran vyhodil IndexOutOfRangeException
         return SH.SplitNone(var, oddelovaciZnak);

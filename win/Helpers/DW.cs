@@ -95,12 +95,12 @@ namespace sunamo
         /// <param name="masc"></param>
         public static void UpdateDefaultFilter(string description, string masc)
         {
-            filterDefault = description + "|" + masc;
+            filterDefault = description + AllStrings.pipe + masc;
         }
 
         public static string GetFilter(string description, string masc)
         {
-            return description + "|" + masc;
+            return description + AllStrings.pipe + masc;
         }
 
 

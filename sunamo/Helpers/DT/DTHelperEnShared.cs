@@ -11,7 +11,7 @@ public partial class DTHelperEn{
         public static DateTime ParseDateUSA(string input)
         {
             DateTime vr = DateTime.MinValue;
-            var parts = SH.Split(input, '/');
+            var parts = SH.Split(input, AllChars.slash);
             var day = -1;
             var month = -1;
             var year = -1;
@@ -42,7 +42,7 @@ public partial class DTHelperEn{
 public static DateTime ParseTimeUSA(string t)
         {
             var vr = DateTime.MinValue;
-            var parts2 = SH.Split(t, ' ');
+            var parts2 = SH.Split(t, AllChars.space);
             if (parts2.Count == 2)
             {
                 var pm = false;
@@ -54,11 +54,11 @@ public static DateTime ParseTimeUSA(string t)
                         pm = true;
                     }
                     var t2 = parts2[0];
-                    var parts = SH.Split(t2, ':');
+                    var parts = SH.Split(t2, AllChars.colon);
                     if (parts.Count == 2)
                     {
                         t += ":00";
-                        parts = SH.Split(t, ':');
+                        parts = SH.Split(t, AllChars.colon);
                     }
                     int hours = -1;
                     int minutes = -1;

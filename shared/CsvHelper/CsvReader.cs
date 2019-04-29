@@ -281,7 +281,7 @@ using System.Text;
                 // If we are not currently inside a column
                 if (!inColumn)
                 {
-                    if (character == '"')
+                    if (character == AllChars.qm)
                         inQuotes = true;
                     else
                         _columnBuilder.Append(character);
@@ -293,13 +293,13 @@ using System.Text;
                 // If we are in between double quotes
                 if (inQuotes)
                 {
-                    if (character == '"' && ((line.Length > (i + 1) && line[i + 1] == delimiter) || ((i + 1) == line.Length)))
+                    if (character == AllChars.qm && ((line.Length > (i + 1) && line[i + 1] == delimiter) || ((i + 1) == line.Length)))
                     {
                         inQuotes = false;
                         inColumn = false;
                         i++;
                     }
-                    else if (character == '"' && line.Length > (i + 1) && line[i + 1] == '"')
+                    else if (character == AllChars.qm && line.Length > (i + 1) && line[i + 1] == AllChars.qm)
                         i++;
                 }
                 else if (character == delimiter)

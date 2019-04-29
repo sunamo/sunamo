@@ -135,8 +135,8 @@ namespace SunamoTreeView
         private IEnumerable<string> GetThisAndUnderFiles(string p)
         {
             //List<string> dd = new List<string>();
-            byte bl = ((byte)p.Split('\\').Length);
-            if (!p.EndsWith("\\"))
+            byte bl = ((byte)p.Split(AllChars.bs).Length);
+            if (!p.EndsWith(AllStrings.bs))
             {
                 bl++;    
             }

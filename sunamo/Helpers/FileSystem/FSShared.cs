@@ -20,9 +20,9 @@ public partial class FS
     static FS()
     {
         invalidPathChars = new List<char>(Path.GetInvalidPathChars());
-        if (!invalidPathChars.Contains('/'))
+        if (!invalidPathChars.Contains(AllChars.slash))
         {
-            invalidPathChars.Add('/');
+            invalidPathChars.Add(AllChars.slash);
         }
         if (!invalidPathChars.Contains(AllChars.bs))
         {
@@ -44,12 +44,12 @@ public partial class FS
             }
         }
 
-        invalidCharsForMapPath.Remove('/');
+        invalidCharsForMapPath.Remove(AllChars.slash);
 
         invalidFileNameCharsWithoutDelimiterOfFolders = new List<char>(invalidFileNameChars.ToArray());
 
         invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.bs);
-        invalidFileNameCharsWithoutDelimiterOfFolders.Remove('/');
+        invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.slash);
     }
 
     /// <summary>
@@ -265,7 +265,7 @@ public partial class FS
         public static string GetExtension(string v)
         {
             string result = "";
-            int lastDot = v.LastIndexOf('.');
+            int lastDot = v.LastIndexOf(AllChars.dot);
             if (lastDot == -1)
             {
                 return string.Empty;
@@ -353,7 +353,7 @@ public static string WithEndSlash(string v)
 
 public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
         {
-            path = path.Replace("\\\\", "\\");
+            path = path.Replace("\\\\", AllStrings.bs);
             if (!FS.ExistsFile(path))
             {
                 using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
@@ -517,12 +517,12 @@ public static List<string> GetFolders(string folder)
     }
 public static List<string> GetFolders(string folder, SearchOption so)
         {
-        return GetFolders(folder, "*", so);
+        return GetFolders(folder, AllStrings.asterisk, so);
         }
 public static List<string> GetFolders(string v, string contains)
         {
             var folders = GetFolders(v);
-            folders = CA.TrimEnd(folders, '\\');
+            folders = CA.TrimEnd(folders, AllChars.bs);
             for (int i = folders.Count - 1; i >= 0; i--)
             {
                 if (!Path.GetFileName(folders[i]).Contains(contains))
@@ -571,7 +571,7 @@ public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileM
         {
             if (co == FileMoveCollisionOption.AddFileSize)
             {
-                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " " + FS.GetFileSize(item));
+                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, AllStrings.space + FS.GetFileSize(item));
                 if (FS.ExistsFile(newFn))
                 {
                     File.Delete(item);
@@ -584,7 +584,7 @@ public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileM
                 int serie = 1;
                 while (true)
                 {
-                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
+                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + AllStrings.rb);
                     if (!FS.ExistsFile(newFn))
                     {
                         fileTo = newFn;

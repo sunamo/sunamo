@@ -21,7 +21,7 @@ namespace desktop.Controls.Mouse
     /// </summary>
     public partial class InsertLetterAfterMouseDownUC : UserControl, IUserControlInWindow
     {
-        public string ToInsert = "\\";
+        public string ToInsert = AllStrings.bs;
 
         public bool? DialogResult {
             set

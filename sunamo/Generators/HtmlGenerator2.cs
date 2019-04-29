@@ -114,7 +114,7 @@ public  class HtmlGenerator2 : HtmlGenerator
             {
                 appendStyle = "color:white;";
             }
-            string datum = i + "." + mesic + ".";
+            string datum = i + AllStrings.dot + mesic + AllStrings.dot;
             hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare " + pridatTridu, "style", appendStyle + "background-color:" + colors[i-1]);
             //hg.WriteTag("td");
             hg.WriteRaw("<b>" + datum + "</b>");
@@ -505,7 +505,7 @@ public  class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] list, string appendClass)
     {
-        return "<ul static class=\"textVlevo " + appendClass + "\">" + GetForUlWoCheckDuplicate(list) + "</ul>";
+        return "<ul static class=\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "</ul>";
     }
 
     /// <summary>
@@ -568,12 +568,12 @@ public  class HtmlGenerator2 : HtmlGenerator
     public static string Anchor(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + "\">" + www + "</a>";
+        return "<a href=\"" + http + AllStrings.gt + www + "</a>";
     }
 
     public static string AnchorMailto(string t)
     {
-        return "<a href=\"mailto:" + t + "\">" + t + "</a>";
+        return "<a href=\"mailto:" + t + AllStrings.gt + t + "</a>";
     }
 
     /// <summary>
@@ -585,13 +585,13 @@ public  class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + "\">" + SH.ReplaceOnce(SH.ReplaceOnce(www, "http://", ""), "https://", "") + "</a>";
+        return "<a href=\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "http://", ""), "https://", "") + "</a>";
     }
 
     public static string AnchorWithHttp(string www, string text)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + "\">" + text + "</a>";
+        return "<a href=\"" + http + AllStrings.gt + text + "</a>";
     }
 
     public static string AnchorWithHttp(bool targetBlank, string www, string text)
@@ -609,7 +609,7 @@ public  class HtmlGenerator2 : HtmlGenerator
         {
             return "<a href=\"" + http + "\" target=\"_blank\">" + text + "</a>";
         }
-        return "<a href=\"" + http + "\">" + text + "</a>";
+        return "<a href=\"" + http + AllStrings.gt + text + "</a>";
     }
 
     public static string GetRadioButtonsWoCheckDuplicate(string nameOfRBs, List<string> idcka, List<string> nazvy)
@@ -662,7 +662,7 @@ public  class HtmlGenerator2 : HtmlGenerator
         HtmlGenerator hg = new HtmlGenerator();
         foreach (var item in dWordCount)
         {
-            string bezmezer = item.Key.Replace(" ", "");
+            string bezmezer = item.Key.Replace(AllStrings.space, "");
             hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript:" + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
             hg.WriteRaw(item.Key);
             hg.TerminateTag("a");
@@ -706,7 +706,7 @@ public  class HtmlGenerator2 : HtmlGenerator
     
     public static string ShortForLettersCount(string p1, int p2)
     {
-        p1 = p1.Replace("  ", " ");
+        p1 = p1.Replace(AllStrings.doubleSpace, AllStrings.space);
         if (p1.Length > p2)
         {
             string whatLeave = SH.ShortForLettersCount(p1, p2);
@@ -727,7 +727,7 @@ public  class HtmlGenerator2 : HtmlGenerator
         HtmlGenerator hg = new HtmlGenerator();
         if (idCheckBoxes.Count != list.Count)
         {
-            throw new Exception("Nestejný počet parametrů v metodě GetForCheckBoxListWoCheckDuplicate "+ idCheckBoxes.Count + ":" + list.Count);
+            throw new Exception("Nestejný počet parametrů v metodě GetForCheckBoxListWoCheckDuplicate "+ idCheckBoxes.Count + AllStrings.colon + list.Count);
         }
 
         for (int i = 0; i < idCheckBoxes.Count; i++)
@@ -754,7 +754,7 @@ public  class HtmlGenerator2 : HtmlGenerator
         hg.WriteTagWithAttr("button", a1, v1);
         hg.WriteTagWithAttr("i", "class", "icon-remove");
         hg.TerminateTag("i");
-        hg.WriteRaw(" " + text);
+        hg.WriteRaw(AllStrings.space + text);
         hg.TerminateTag("button");
     }
 
@@ -765,7 +765,7 @@ public  class HtmlGenerator2 : HtmlGenerator
 
     public static string AnchorWithCustomLabel(string uri, string text)
     {
-        return "<a href=\"" + uri + "\">" + text + "</a>";
+        return "<a href=\"" + uri + AllStrings.gt + text + "</a>";
     }
 
     public static string AllMonthsTable(List<string> AllYearsHtmlBoxes, List<string> AllMonthsBoxColors)

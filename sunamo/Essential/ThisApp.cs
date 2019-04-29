@@ -18,7 +18,7 @@ namespace sunamo.Essential
         {
             get
             {
-                return "_" + Name;
+                return AllStrings.us + Name;
             }
         }
 

@@ -22,11 +22,11 @@ namespace DocArch.SqLite
             string sql = null;
             object o = dr.GetValue(0);
             sql = o.ToString();
-            string s = SH.Substring(sql, sql.IndexOf('(') + 1, sql.LastIndexOf(')') - 1);
-            string[] sloupce = s.Split(',');
+            string s = SH.Substring(sql, sql.IndexOf(AllChars.lb) + 1, sql.LastIndexOf(AllChars.rb) - 1);
+            string[] sloupce = s.Split(AllChars.comma);
             for (int i = 0; i < sloupce.Length; i++)
             {
-                string[] g = sloupce[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                string[] g = sloupce[i].Split(new string[] { AllStrings.space }, StringSplitOptions.RemoveEmptyEntries);
                 vr.Add(g[0]);
             }
             return vr.ToArray();

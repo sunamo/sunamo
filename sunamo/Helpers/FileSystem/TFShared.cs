@@ -18,6 +18,7 @@ public partial class TF
     public static string ReadFile(string s)
     {
         FS.MakeUncLongPath(ref s);
+
         if (FS.ExistsFile(s))
         {
             while (true)

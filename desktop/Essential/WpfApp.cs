@@ -85,7 +85,7 @@ namespace desktop.Essential
         #region Sync
         private static void SetStatus(TypeOfMessage st, string status)
         {
-            status = DateTime.Now.ToShortTimeString() + " " + status;
+            status = DateTime.Now.ToShortTimeString() + AllStrings.space + status;
             Color fg = StatusHelper.GetForegroundBrushOfTypeOfMessage(st);
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)

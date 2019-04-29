@@ -54,9 +54,9 @@ using System.Xml.Linq;
         {
             List<XElement> vr = new List<XElement>();
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.DescendantsAndSelf())
                 {
@@ -82,9 +82,9 @@ using System.Xml.Linq;
         public static XElement GetElementOfNameWithAttr(XElement node, string nazev, string attr, string value)
         {
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.Elements())
                 {
@@ -123,9 +123,9 @@ using System.Xml.Linq;
         {
             string p, z;
             //bool ns = true;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.DescendantsAndSelf())
                 {
@@ -152,7 +152,7 @@ using System.Xml.Linq;
         {
             StringBuilder sb = new StringBuilder();
             string xml = XHelper.GetXml(p);
-            MatchCollection mc = Regex.Matches(xml, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
+            MatchCollection mc = Regex.Matches(xml, "<(?:\"[^\"]*\"['\"]*|'[^']*AllChars.lsf\"]*|[^'\">])+>");
             List<string> nahrazeno = new List<string>();
             foreach (Match item in mc)
             {
@@ -178,9 +178,9 @@ using System.Xml.Linq;
         public static XElement GetElementOfName(XElement node, string nazev)
         {
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.Elements())
                 {
@@ -216,7 +216,7 @@ using System.Xml.Linq;
         {
             string p, z;
 
-            SH.GetPartsByLocation(out p, out z, nazev, ':');
+            SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
             p = XHelper.ns[p];
             if (xName.LocalName == z && xName.NamespaceName == p)
             {
@@ -233,7 +233,7 @@ using System.Xml.Linq;
         {
             for (int i = 0; i < p.Length; i++)
             {
-                //.TrimEnd('/') + "/"
+                //.TrimEnd(AllChars.slash) + AllStrings.slash
                 ns.Add(p[i].Replace("xmlns:", ""), p[++i]);
             }
         }

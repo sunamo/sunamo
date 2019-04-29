@@ -26,7 +26,7 @@ public static class ConvertRot21
         abc.Add(new ABT<char, char>('c', 'd'));
         abc.Add(new ABT<char, char>('d', 'i'));
         abc.Add(new ABT<char, char>('e', '0'));
-        abc.Add(new ABT<char, char>('f', '*'));
+        abc.Add(new ABT<char, char>('f', AllChars.asterisk));
         abc.Add(new ABT<char, char>('g', 'T'));
         abc.Add(new ABT<char, char>('h', 'h'));
         abc.Add(new ABT<char, char>('i', '2'));
@@ -54,7 +54,7 @@ public static class ConvertRot21
         abc.Add(new ABT<char, char>('E', 'a'));
         abc.Add(new ABT<char, char>('F', 'H'));
         abc.Add(new ABT<char, char>('G', '^'));
-        abc.Add(new ABT<char, char>('H', '!'));
+        abc.Add(new ABT<char, char>('H', AllChars.exclamation));
         abc.Add(new ABT<char, char>('I', '&'));
         abc.Add(new ABT<char, char>('J', '5'));
         abc.Add(new ABT<char, char>('K', '$'));
@@ -73,16 +73,16 @@ public static class ConvertRot21
         abc.Add(new ABT<char, char>('X', '4'));
         abc.Add(new ABT<char, char>('Y', 'k'));
         abc.Add(new ABT<char, char>('Z', 'y'));
-        abc.Add(new ABT<char, char>('!', 'X'));
+        abc.Add(new ABT<char, char>(AllChars.exclamation, 'X'));
         abc.Add(new ABT<char, char>('@', 'q'));
-        abc.Add(new ABT<char, char>('#', '%'));
+        abc.Add(new ABT<char, char>('#', AllChars.modulo));
         abc.Add(new ABT<char, char>('$', '1'));
-        abc.Add(new ABT<char, char>('%', '?'));
+        abc.Add(new ABT<char, char>(AllChars.modulo, AllChars.q));
         abc.Add(new ABT<char, char>('^', 'b'));
         abc.Add(new ABT<char, char>('&', 'o'));
-        abc.Add(new ABT<char, char>('*', '_'));
-        abc.Add(new ABT<char, char>('?', 'R'));
-        abc.Add(new ABT<char, char>('_', '3'));
+        abc.Add(new ABT<char, char>(AllChars.asterisk, AllChars.us));
+        abc.Add(new ABT<char, char>(AllChars.q, 'R'));
+        abc.Add(new ABT<char, char>(AllChars.us, '3'));
         abc.Add(new ABT<char, char>('~', 'A'));
 
 

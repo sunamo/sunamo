@@ -14,7 +14,7 @@ public partial class QSHelper
     /// <returns></returns>
     public static string GetParameter(string uri, string nameParam)
     {
-        var main = SH.Split(uri, "?", "&");
+        var main = SH.Split(uri, AllStrings.q, "&");
         foreach (string var in main)
         {
             var v = SH.Split(var, "=");
@@ -37,7 +37,7 @@ public partial class QSHelper
     public static string GetQS(string adresa, params object[] p)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(adresa + "?");
+        sb.Append(adresa + AllStrings.q);
         int to = (p.Length / 2) * 2;
         for (int i = 0; i < p.Length; i++)
         {

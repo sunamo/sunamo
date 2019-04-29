@@ -44,10 +44,10 @@ namespace SunamoTreeView
                     var item = new Item
                     {
                         Name = directory.Name,
-                        Path = directory.FullName + "\\",
+                        Path = directory.FullName + AllStrings.bs,
                         Items = GetItems(directory.FullName),
                         IsDirectory = true,
-                        TokensCount = (byte)directory.FullName.Split('\\').Length
+                        TokensCount = (byte)directory.FullName.Split(AllChars.bs).Length
 
                     };
 
@@ -77,7 +77,7 @@ namespace SunamoTreeView
                         Name = file.Name,
                         Path = file.FullName,
                         IsDirectory = false,
-                        TokensCount = (byte)file.FullName.Split('\\').Length
+                        TokensCount = (byte)file.FullName.Split(AllChars.bs).Length
                     };
                     LastItemsNonHiearchic.Add(item);
                     items.Add(item);

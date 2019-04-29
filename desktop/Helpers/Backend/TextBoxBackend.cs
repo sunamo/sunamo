@@ -109,7 +109,7 @@ namespace desktop.Helpers.Backend
          
         private void SetTextBoxState()
         {
-            txtTextBoxState.Text = (SH.Join("  ", state.textActualFile, state.textSearchedResult) + " Line: " + (actualLine+1)).Trim();
+            txtTextBoxState.Text = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " Line: " + (actualLine+1)).Trim();
         }
 
         public void JumpToNextSearchedResult(int addLines)

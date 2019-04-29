@@ -7,14 +7,14 @@ public static partial class CSharpHelper{
 
 public static string DefaultValueForType(string type)
     {
-        if (type.Contains("."))
+        if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
         switch (type)
         {
             case "string":
-                return "\"\"";
+                return AllStrings.qm;
             case "bool":
                 return "false";
             case "float":
@@ -46,7 +46,7 @@ public static string DefaultValueForType(string type)
 
 public static object DefaultValueForTypeObject(string type)
     {
-        if (type.Contains("."))
+        if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
@@ -54,7 +54,7 @@ public static object DefaultValueForTypeObject(string type)
         switch (type)
         {
             case "string":
-                return "\"\"";
+                return AllStrings.qm;
             case "bool":
                 return false;
             case "float":

@@ -18,10 +18,10 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AddItem((object)("public class " + className));
         if (derive.Length != 0)
         {
-            sb.AddItem((object)":");
+            sb.AddItem((object)AllStrings.colon);
             for (int i = 0; i < derive.Length - 1; i++)
             {
-                sb.AddItem((object)(derive[i] + ","));
+                sb.AddItem((object)(derive[i] + AllStrings.comma));
             }
             sb.AddItem((object)derive[derive.Length - 1]);
         }
@@ -75,7 +75,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     public void Attribute(int tabCount, string name, string attrs)
     {
         AddTab(tabCount);
-        sb.AppendLine("[" + name + "(" + attrs + ")]");
+        sb.AppendLine(AllStrings.lsf + name + AllStrings.lb + attrs + ")]");
     }
 
     public void Field(int tabCount, AccessModifiers _public, bool _static, VariableModifiers variableModifiers, string type, string name, bool addHyphensToValue, string value)
@@ -109,7 +109,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AddItem((object)"=");
             if (oio == ObjectInitializationOptions.Hyphens)
             {
-                value = "\"" + value + "\"";
+                value = AllStrings.qm + value + AllStrings.qm;
             }
         else if (oio == ObjectInitializationOptions.NewAssign)
         {
@@ -118,7 +118,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
         sb.AddItem((object)value);
         //}
-        sb.AddItem((object)";");
+        sb.AddItem((object)AllStrings.sc);
             sb.AppendLine();
     }
 
@@ -129,7 +129,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         ReturnTypeName(type, name);
         DefaultValue(type, defaultValue);
         sb.RemoveEndDelimiter();
-        sb.AddItem((object)";");
+        sb.AddItem((object)AllStrings.sc);
         sb.AppendLine();
         //this.sb.AddItem(sb.ToString());
     }
@@ -167,14 +167,14 @@ public class CSharpGenerator : GeneratorCodeAbstract
             }
             else if (cl && !lsf)
             {
-                if (contentFileNew[i].Contains("{"))
+                if (contentFileNew[i].Contains(AllStrings.cbl))
                 {
                     lsf = true;
                 }
             }
             else if (cl && lsf)
             {
-                if (contentFileNew[i].Contains("}"))
+                if (contentFileNew[i].Contains(AllStrings.cbr))
                 {
                     contentFileNew.InsertRange(i, insertedLines);
                     break;
@@ -188,7 +188,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         sb.AddItem("namespace " + ns);
         sb.AppendLine();
-        sb.AddItem("{");
+        sb.AddItem(AllStrings.cbl);
         sb.AppendLine();
     }
 
@@ -232,7 +232,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             nazevParams.Add(nazevParam);
             if (i != args.Length - 1)
             {
-                sb.AddItem((object)(nazevParam + ","));
+                sb.AddItem((object)(nazevParam + AllStrings.comma));
             }
             else
             {
@@ -270,7 +270,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             nazevParams.Add(nazevParam);
             if (i != args.Length - 1)
             {
-                sb.AddItem((object)(nazevParam + ","));
+                sb.AddItem((object)(nazevParam + AllStrings.comma));
             }
             else
             {
@@ -281,7 +281,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         EndParenthesis();
         if (!isBase)
         {
-            sb.AddItem((object)(": base(" + SH.Join(',', nazevParams.ToArray()) + ")"));
+            sb.AddItem((object)(": base(" + SH.Join(AllChars.comma, nazevParams.ToArray()) + AllStrings.rb));
         }
         
         StartBrace(tabCount);
@@ -292,7 +292,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
                 
                 This(tabCount, item);
                 sb.AddItem((object)"=");
-                sb.AddItem((object)(item + ";"));
+                sb.AddItem((object)(item + AllStrings.sc));
                 sb.AppendLine();
             }
         }
@@ -315,7 +315,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             sb.AddItem((object)"get");
             StartBrace(tabCount + 1);
             AddTab(tabCount + 2);
-            sb.AddItem((object)("return " + field + ";"));
+            sb.AddItem((object)("return " + field + AllStrings.sc));
             sb.AppendLine();
             EndBrace(tabCount + 1);
         }
@@ -389,11 +389,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         if (!usings.StartsWith("using "))
         {
-            usings = "using " + usings + ";";
+            usings = "using " + usings + AllStrings.sc;
         }
         else if(!usings.EndsWith(AllStrings.sc))
         {
-            usings += ";";
+            usings += AllStrings.sc;
         }
         
         sb.AddItem(usings);
@@ -416,7 +416,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     public void If(int tabCount, string podminka)
     {
         AddTab(tabCount);
-        sb.AppendLine( "if(" + podminka + ")");
+        sb.AppendLine( "if(" + podminka + AllStrings.rb);
         StartBrace(tabCount);
     }
 
@@ -440,7 +440,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         foreach (var item in nameCommentEnums)
         {
             XmlSummary(tabCount + 1, item.Value);
-            this.AppendLine(tabCount + 1, item.Key + ",");
+            this.AppendLine(tabCount + 1, item.Key + AllStrings.comma);
         }
         EndBrace(tabCount);
     }
@@ -457,14 +457,14 @@ public class CSharpGenerator : GeneratorCodeAbstract
         string zav = "";
         if (inParentheses != null)
         {
-            zav = "(" + inParentheses + ")";
+            zav = AllStrings.lb + inParentheses + AllStrings.rb;
         }
-        this.AppendLine(tabCount, "[" + name + zav + "]");
+        this.AppendLine(tabCount, AllStrings.lsf + name + zav + AllStrings.rsf);
     }
 
     public void List(int tabCount, string genericType, string listName, List<string> list)
     {
-        string cn = "List<"+genericType+">";
+        string cn = "List<"+genericType+AllStrings.gt;
         NewVariable(tabCount, AccessModifiers.Private, cn, listName, false);
         list = CA.WrapWith(list, AllStrings.qm);
         AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
@@ -482,11 +482,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
     #region Dictionary
     public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums)
     {
-        string cn = "Dictionary<" + typeof(T).FullName + ", " + typeof(U).FullName + ">";
+        string cn = "Dictionary<" + typeof(T).FullName + ", " + typeof(U).FullName + AllStrings.gt;
         NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
         foreach (var item in nameCommentEnums)
         {
-            this.AppendLine(tabCount, nameDictionary + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
+            this.AppendLine(tabCount, nameDictionary + ".Add(" + item.Key.ToString().Replace(AllChars.comma, AllChars.dot) + ", " + item.Value.ToString().Replace(AllChars.comma, AllChars.dot) + ");");
         }
     }
 
@@ -518,7 +518,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
         }
-        string cn = "Dictionary<string, "+valueType+">";
+        string cn = "Dictionary<string, "+valueType+AllStrings.gt;
         NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
         AppendLine();
         CreateInstance(cn, nameDictionary);
@@ -586,7 +586,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
                 hex = "=" + item.Hex;
             }
 
-            this.AppendLine(tabCount + 1, item.Name + hex + ",");
+            this.AppendLine(tabCount + 1, item.Name + hex + AllStrings.comma);
         }
         EndBrace(tabCount);
     }
@@ -601,14 +601,14 @@ public class CSharpGenerator : GeneratorCodeAbstract
     public void AssignValue(int tabCount, string objectName, string variable, string value, bool addToHyphens)
     {
         AddTab(tabCount);
-        sb.AddItem((object)(objectName + "." + variable));
+        sb.AddItem((object)(objectName + AllStrings.dot + variable));
         sb.AddItem((object)"=");
         if (addToHyphens)
         {
-            value = SH.WrapWith(value, '"');
+            value = SH.WrapWith(value, AllChars.qm);
         }
 
-        sb.AddItem((object)(value + ";"));
+        sb.AddItem((object)(value + AllStrings.sc));
         sb.AppendLine();
     }
 
@@ -617,14 +617,14 @@ public class CSharpGenerator : GeneratorCodeAbstract
         string objectIdentificator = "";
         if (timeObjectName != null)
         {
-            objectIdentificator = timeObjectName + ".";
+            objectIdentificator = timeObjectName + AllStrings.dot;
         }
         if (wrapToHyphens)
         {
-            whereIsUsed2 = CA.WrapWith(whereIsUsed2, "\"");
+            whereIsUsed2 = CA.WrapWith(whereIsUsed2, AllStrings.qm);
         }
         AddTab(tabCount);
-        sb.AddItem((object)(objectIdentificator + v + ".AddRange(new " + type + "[] { " + SH.JoinIEnumerable(',', whereIsUsed2) + "});"));
+        sb.AddItem((object)(objectIdentificator + v + ".AddRange(new " + type + "[] { " + SH.JoinIEnumerable(AllChars.comma, whereIsUsed2) + "});"));
     }
 
     /// <summary>

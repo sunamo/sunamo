@@ -11,7 +11,7 @@ namespace sunamo.Html
     {
         public static string ConvertTextToHtmlWithAnchors(string p)
         {
-            var d = SH.SplitNone(HtmlHelper.ConvertTextToHtml(p), ' ');
+            var d = SH.SplitNone(HtmlHelper.ConvertTextToHtml(p), AllChars.space);
             for (int i = 0; i < d.Length(); i++)
             {
                 if (d[i].StartsWith("http://") || d[i].StartsWith("https://"))
@@ -19,7 +19,7 @@ namespace sunamo.Html
                     d[i] = HtmlGenerator2.AnchorWithHttp(d[i]);
                 }
             }
-            return SH.Join(' ', d);
+            return SH.Join(AllChars.space, d);
         }
     }
 }

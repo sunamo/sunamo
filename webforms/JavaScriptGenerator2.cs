@@ -22,7 +22,7 @@ namespace webforms
         /// <returns></returns>
         public static string JQueryAjaxForHandlerShowMessage(string successMessage, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
         {
-            return @"function " + nameOfFunction + "(" + SH.Join(',', args) + @") {successMessage = ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");zobrazZpravu('" + successMessage + @"'); return false;}";
+            return @"function " + nameOfFunction + AllStrings.lb + SH.Join(AllChars.comma, args) + @") {successMessage = ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");zobrazZpravu('" + successMessage + @"'); return false;}";
         }
 
         public static object jQueryAutocompleteData(DataRowCollection dr)
@@ -32,9 +32,9 @@ namespace webforms
             sb.AppendLine(" [ ");
             foreach (DataRow item in dr)
             {
-                sb.AppendLine("{");
-                sb.AppendLine(" value: \"" + item.ItemArray[0].ToString() + "\",");
-                sb.AppendLine(" label: \"" + item.ItemArray[1].ToString() + "\"");
+                sb.AppendLine(AllStrings.cbl);
+                sb.AppendLine(" value: \"" + item.ItemArray[0].ToString() + "\AllStrings.comma);
+                sb.AppendLine(" label: \"" + item.ItemArray[1].ToString() + AllStrings.qm);
                 sb.AppendLine("},");
             }
             string vr = sb.ToString().Substring(0, sb.Length - 3) + "];";
@@ -43,7 +43,7 @@ namespace webforms
 
         internal static string JQueryAjaxForHandler(MySitesShort ms, int countUp, string nameOfFunction, string[] args)
         {
-            return @"function " + nameOfFunction + "(" + SH.Join(',', args) + @") {ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");return false;}";
+            return @"function " + nameOfFunction + AllStrings.lb + SH.Join(AllChars.comma, args) + @") {ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");return false;}";
         }
     }
 }

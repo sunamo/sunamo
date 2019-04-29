@@ -18,10 +18,10 @@ public class XmlGeneratorSelective : XmlGenerator
             string nameAtt = p_2[i * 2];
             if (!vynechat.Contains(nameAtt))
             {
-                sb.AppendFormat("{0}=\"{1}\" ", nameAtt, p_2[i*2+1]);    
+                sb.AppendFormat("{0}=\"{1}\"", nameAtt, p_2[i*2+1]);    
             }
         }
-        sb.Append(">");
+        sb.Append(AllStrings.gt);
     }
 
     public override string ToString()

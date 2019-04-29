@@ -10,7 +10,7 @@ public partial class DTHelperCode{
         /// <returns></returns>
         public static string TimeToStringAngularTime(DateTime dt)
         {
-            return NH.MakeUpTo2NumbersToZero(dt.Hour) + ":" + NH.MakeUpTo2NumbersToZero(dt.Minute) + ":" + NH.MakeUpTo2NumbersToZero(dt.Second);
+            return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
         }
 
 public static string DateToStringAngularDate(DateTime dt)
