@@ -9,7 +9,7 @@ public static partial class SunamoPageHelper
     #region Lst
     public static string WebTitle(MySites sa, HttpRequest Request)
     {
-        return AllStrings.swda + MasterPageHelper.GetNameOfWeb(sa, Request);
+        return " - " + MasterPageHelper.GetNameOfWeb(sa, Request);
     }
 
     public static string DescriptionOfSite(byte sda)
@@ -60,13 +60,13 @@ public static partial class SunamoPageHelper
         sb.WriteRaw("radek.jancik@sunamo.cz");
         sb.TerminateTag("a");
 
-        sb.WriteRaw(AllStrings.swda);
+        sb.WriteRaw(" - ");
 
         //sb.WriteTagWithAttr("a", "href", "https://www.microsoft.com/cs-cz/store/apps/geocaching-tool/9nblggh5jqtz");
         //sb.WriteRaw("Moje Windows 10 aplikace pro GeoCaching");
         //sb.TerminateTag("a");
 
-        //sb.WriteRaw(AllStrings.swda);
+        //sb.WriteRaw(" - ");
 
         sb.WriteTagWithAttr("a", "href", "http://jepsano.net");
         sb.WriteRaw("CZ Blog");

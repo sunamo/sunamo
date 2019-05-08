@@ -33,7 +33,7 @@ namespace webforms.Helpers
             {
                 if (Enum.TryParse<MySitesShort>(table.Substring(0, 3), false, out mss))
                 {
-                    if (table[3] == AllChars.us)
+                    if (table[3] == '_')
                     {
                         pok = true;
                     }

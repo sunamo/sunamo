@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace research
+
+public interface IWindowOpener
 {
-    partial class Program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
+    WindowWithUserControl windowWithUserControl { get; set; }
 }
+

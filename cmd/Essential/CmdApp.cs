@@ -27,6 +27,7 @@ namespace cmd.Essential
             InitApp.TypedLogger = TypedConsoleLogger.Instance;
         }
 
+
         public static void EnableDesktopLogging(bool v)
         {
             if (v)

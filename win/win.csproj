@@ -38,8 +38,13 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="desktop">
-      <HintPath>..\desktop\bin\Release\desktop.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.8.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.IWshRuntimeLibrary">
+      <HintPath>..\SunamoWindowsOS\obj\Debug\Interop.IWshRuntimeLibrary.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -66,18 +71,14 @@
     <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="JunctionPoint.cs" />
+    <Compile Include="ParseSpecial.cs" />
     <Compile Include="PInvoke\IconExtractor.cs" />
     <Compile Include="PInvoke\KnownFoldersGuid.cs" />
     <Compile Include="PInvoke\SHFILEINFO.cs" />
     <Compile Include="PInvoke\W32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ClipboardHelperWin.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{85C87766-58CE-4A02-AC0D-372C74C47C72}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
+    <Compile Include="WindowsOSHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -92,6 +93,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Interop.IWshRuntimeLibrary.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\shared\shared.csproj">
+      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{0f7d74db-c73d-4b96-8176-96c0867750d1}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

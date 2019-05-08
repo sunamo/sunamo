@@ -244,10 +244,10 @@ public class GeneralHelper
         string toFolderTempSlash = "";
         while (true)
         {
-            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + AllStrings.slash + webAndType + AllStrings.slash + Guid.NewGuid().ToString());// + AllStrings.bs;
+            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\";
             if (!FS.ExistsDirectory(toFolderTempSlash))
             {
-                toFolderTempSlash += AllStrings.bs;
+                toFolderTempSlash += "\\";
                 break;
             }
         }
@@ -272,7 +272,7 @@ public class GeneralHelper
             rc = RandomHelper.RandomStringWithoutSpecial(20);
             folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
         }
-        return folder + AllStrings.bs;
+        return folder + "\\";
     }
 
     public static string GetOrCreateCityFromDictionary(Dictionary<int, string> artistsNames, int oEventIDArtistHeadliner)
@@ -320,11 +320,11 @@ public class GeneralHelper
         ip = null;
         int idIP = int.MaxValue;
         string ip2 = HttpRequestHelper.GetUserIPString(Request);
-        if (ip2.TrimStart(AllChars.colon) == "1")
+        if (ip2.TrimStart(':') == "1")
         {
             ip2 = "127.0.0.1";
         }
-        var ips = SH.Split(ip2, AllStrings.dot);
+        var ips = SH.Split(ip2, ".");
         if (ips.Count == 4)
         {
             ip = new byte[4];
@@ -420,7 +420,7 @@ public class GeneralHelper
     /// <param name="ddlStates"></param>
     /// <param name="ddlRegions"></param>
     /// <param name="ddlDistricts"></param>
-    /// <param name=AllStrings.q></param>
+    /// <param name="?"></param>
     /// <param name="nultaPolozkaStat"></param>
     /// <param name="nultaPolozkaRegion"></param>
     /// <param name="nultaPolozkaDistrict"></param>
@@ -1207,15 +1207,15 @@ public class GeneralHelper
     {
         
         nameOfPhotoStf = FS.DeleteWrongCharsInFileName(nameOfPhotoStf, isPath);
-        nameOfPhotoStf = SH.ReplaceAll(nameOfPhotoStf, AllStrings.space, "+");
-        nameOfPhotoStf = SH.ReplaceAll(nameOfPhotoStf, AllStrings.space, AllStrings.doubleSpace);
+        nameOfPhotoStf = SH.ReplaceAll(nameOfPhotoStf, " ", "+");
+        nameOfPhotoStf = SH.ReplaceAll(nameOfPhotoStf, " ", "  ");
         nameOfPhotoStf = WebUtility.UrlDecode(nameOfPhotoStf);
         return nameOfPhotoStf.Trim() ;
     }
 
     public static string TimeSpanToString(TimeSpan time)
     {
-        return SH.JoinMakeUpTo2NumbersToZero(AllChars.colon,  time.Hours, time.Minutes, time.Seconds);
+        return SH.JoinMakeUpTo2NumbersToZero(':',  time.Hours, time.Minutes, time.Seconds);
     }
 
     public static int IDOfCity_Name(string mesto)

@@ -5,7 +5,7 @@ public class FileBasedTable
 {
     public static byte[] GetSbf(string table, string column, int id)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + AllStrings.bs + column + AllStrings.bs + id.ToString() + ".sbf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
         if (!FS.ExistsFile(file))
         {
             return new byte[0];
@@ -15,13 +15,13 @@ public class FileBasedTable
 
     public static void SetSbf(string table, string column, int id, byte[] value)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + AllStrings.bs + column + AllStrings.bs + id.ToString() + ".sbf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
         File.WriteAllBytes(file, value);
     }
 
     public static void CreatePathsIfNotExistsSbf(string table, params string[] columns)
     {
-        string tablePath = FS.Combine(HostingEnvironment.ApplicationPhysicalPath, AllStrings.us, "sbf", table);
+        string tablePath = FS.Combine(HostingEnvironment.ApplicationPhysicalPath, "_", "sbf", table);
         if (!FS.ExistsDirectory(tablePath))
         {
             Directory.CreateDirectory(tablePath);
@@ -38,7 +38,7 @@ public class FileBasedTable
 
     public static void DeleteSbf(string table, string column, int id)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + AllStrings.bs + column + AllStrings.bs + id.ToString() + ".stf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".stf";
         File.Delete(file);
     }
 

@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 
 public  static partial class CA
 {
+    static Type type = typeof(CA);
+
     public static bool IsEmptyOrNull(IEnumerable mustBe)
     {
         if (mustBe == null)
@@ -149,13 +151,7 @@ public  static partial class CA
         return result;
     }
 
-    public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
-    {
-        foreach (var item in list)
-        {
-            RemoveWhichContains(files, item, wildcard);
-        }
-    }
+    
 
     public static List<string> Join(params object[] o)
     {
@@ -228,37 +224,45 @@ public  static partial class CA
     {
         List<string> result = null;
         result = new List<string>();
-        foreach (object item in enumerable2)
+        if (enumerable2.GetType() != typeof(string))
         {
-            if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
+            foreach (object item in enumerable2)
             {
-                var enumerable = (IEnumerable)item;
-                var type = enumerable.GetType();
-                if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
+                // !(item is string)  - not working
+                if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
                 {
-                    // IEnumerable<char> => string
+                    var enumerable = (IEnumerable)item;
+                    var type = enumerable.GetType();
+                    if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
+                    {
+                        // IEnumerable<char> => string
 
-                    result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
-                }
-                else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
-                {
-                    // IEnumerable<string> => List<string>
-                    result.AddRange(((IEnumerable<string>)enumerable.FirstOrNull()).ToList());
-                }
-                else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
-                {
-                    result.AddRange(ToListString2(((IEnumerable)enumerable.FirstOrNull())));
+                        result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+                    }
+                    else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
+                    {
+                        // IEnumerable<string> => List<string>
+                        result.AddRange(((IEnumerable<string>)enumerable.FirstOrNull()).ToList());
+                    }
+                    else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+                    {
+                        result.AddRange(ToListString2(((IEnumerable)enumerable.FirstOrNull())));
+                    }
+                    else
+                    {
+                        // IEnumerable => List<string>
+                        result.AddRange(ToListString2(enumerable));
+                    }
                 }
                 else
                 {
-                    // IEnumerable => List<string>
-                    result.AddRange(ToListString2(enumerable));
+                    result.Add(item.ToString());
                 }
             }
-            else
-            {
-                result.Add(item.ToString());
-            }
+        }
+        else
+        {
+            result.Add(enumerable2.ToString());
         }
         return result;
     }

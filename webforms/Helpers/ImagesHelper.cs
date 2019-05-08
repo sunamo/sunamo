@@ -13,7 +13,7 @@ namespace web
             {
                 if (IsInAlbumFormat(item))
                 {
-                    AllPhotos.AddRange(Directory.GetFiles(item, AllStrings.asterisk, SearchOption.AllDirectories));
+                    AllPhotos.AddRange(Directory.GetFiles(item, "*", SearchOption.AllDirectories));
                 }
 
             }
@@ -21,7 +21,7 @@ namespace web
             {
                 if (IsInAlbumFormat(item))
                 {
-                    AllPhotos.AddRange(Directory.GetFiles(item, AllStrings.asterisk, SearchOption.AllDirectories));
+                    AllPhotos.AddRange(Directory.GetFiles(item, "*", SearchOption.AllDirectories));
                 }
             }
 

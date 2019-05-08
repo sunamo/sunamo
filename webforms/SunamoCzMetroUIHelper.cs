@@ -49,9 +49,9 @@ public class SunamoCzMetroUIHelper
         sb.AppendFormat("<{0} ", nazevTagu);
         for (int i = 0; i < atrrs.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\AllStrings.space, atrrs[i], atrrs[++i]);
+            sb.AppendFormat("{0}=\"{1}\" ", atrrs[i], atrrs[++i]);
         }
-        sb.Append(AllStrings.gt);
+        sb.Append(">");
 
         sb.Append(text);
         sb.AppendFormat("</{0}>", nazevTagu);
@@ -250,7 +250,7 @@ public class SunamoCzMetroUIHelper
                 hg.WriteNonPairTagWithAttrs("img", "src", GravatarHelper.GetGravatarUri(Request, lu.login), "alt", lu.login, "width", "28", "height", "28");
                 //hg.TerminateTag("a");
             }
-            hg.WriteRaw(AllStrings.space + lu.login);
+            hg.WriteRaw(" " + lu.login);
 
 
             hg.TerminateTag("a");

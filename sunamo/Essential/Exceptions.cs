@@ -217,6 +217,11 @@ using System.Text;
         return CheckBefore(before) + message;
     }
 
+    internal static object FolderCantBeRemoved(string v, string folder)
+    {
+        return CheckBefore(v) + "Can't delete folder: " + folder;
+    }
+
     /// <summary>
     /// Check whether in A3,4 is same count of elements
     /// </summary>
@@ -234,6 +239,13 @@ using System.Text;
         return null;
     }
 
+    /// <summary>
+    /// Verify whether A2 contains A3
+    /// </summary>
+    /// <param name="before"></param>
+    /// <param name="originalText"></param>
+    /// <param name="shouldContains"></param>
+    /// <returns></returns>
     public static string NotContains(string before, string originalText, params string[] shouldContains)
         {
             List<string> notContained = new List<string>();
@@ -245,6 +257,10 @@ using System.Text;
                 }
             }
 
+        if (notContained.Count == 0)
+        {
+            return null;
+        }
             return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
         }
 

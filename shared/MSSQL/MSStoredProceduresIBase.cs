@@ -9,17 +9,7 @@ using sunamo;
 using sunamo.Values;
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
-    /// <summary>
-    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="sloupec"></param>
-    /// <returns></returns>
-    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
-        return ReadValuesInt(comm);
-    }
+
 
     protected MSStoredProceduresIBase()
     {

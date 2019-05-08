@@ -92,7 +92,7 @@ public static class PageHelperBase
             string trimmed = arg.Trim();
             if (trimmed.Length > 0)
             {
-                if (DateTime.TryParse(trimmed.Replace(AllChars.us, AllChars.dot), out result))
+                if (DateTime.TryParse(trimmed.Replace('_', '.'), out result))
                 {
                     return vr;
                 }
@@ -293,9 +293,9 @@ public static class PageHelperBase
             string trimmed = arg.Trim();
             if (trimmed.Length > 0)
             {
-                if (trimmed.Contains(AllStrings.comma))
+                if (trimmed.Contains(","))
                 {
-                    result = SH.Split(trimmed, AllStrings.comma);
+                    result = SH.Split(trimmed, ",");
                     return vr;
                 }
                 else
@@ -332,9 +332,9 @@ public static class PageHelperBase
             string trimmed = HttpUtility.UrlDecode(arg.Trim());
             if (trimmed.Length > 0)
             {
-                if (trimmed.Contains(AllStrings.pipe))
+                if (trimmed.Contains("|"))
                 {
-                    result = SH.Split(trimmed, AllStrings.pipe);
+                    result = SH.Split(trimmed, "|");
                     return vr;
                 }
                 else
@@ -532,8 +532,8 @@ public static class PageHelperBase
         return GetErrorDescriptionNumeric(dd, argname, minValue, maxValue);
     }
 
-    static string dtMinS = DateTime.MinValue.ToShortDateString() + AllStrings.space + DateTime.MinValue.ToLongTimeString() + ":000";
-    static string dtMaxS = DateTime.MaxValue.ToShortDateString() + AllStrings.space + DateTime.MaxValue.ToLongTimeString() + ":999";
+    static string dtMinS = DateTime.MinValue.ToShortDateString() + " " + DateTime.MinValue.ToLongTimeString() + ":000";
+    static string dtMaxS = DateTime.MaxValue.ToShortDateString() + " " + DateTime.MaxValue.ToLongTimeString() + ":999";
 
     public static string GetErrorDescriptionDateTime(ResultCheckWebArgument dd, string argname)
     {
@@ -546,7 +546,7 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale nebyl v rozmezí " + minValue + AllStrings.dash + maxValue + "";
+                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale nebyl v rozmezí " + minValue + "-" + maxValue + "";
                 break;
             case ResultCheckWebArgument.Empty:
                 vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";

@@ -475,7 +475,7 @@ public partial class MSDatabaseLayer
 
     
 
-    public static void AssignConnectionStringScz(HttpApplication app)
+    public static void AssignConnectionStringScz()
     {
 
         AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True;");

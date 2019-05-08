@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+
 using sunamo.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,39 @@ public static partial class HttpRequestHelper{
         HttpWebResponse response;
         return GetResponseText(address, method, hrd, out response);
     }
+    public static IPAddress GetUserIP(HttpRequest Request)
+    {
+        IPAddress vr = null;
+        //return (IPAddress)System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0);
+        if (!IPAddress.TryParse(GetUserIPString(Request), out vr))
+        {
+            return null;
+        }
+        return vr;
+    }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name = "address"></param>
+/// <returns></returns>
+public static Stream GetResponseStream(string address, HttpMethod method)
+{
+
+    var request = (HttpWebRequest)WebRequest.Create(address);
+    request.Method = method.Method;
+    HttpWebResponse response = null;
+    try
+    {
+        response = (HttpWebResponse)request.GetResponse();
+    }
+    catch (System.Exception)
+    {
+        return null;
+    }
+
+    return response.GetResponseStream();
+}
 /// <summary>
 /// A3 can be null
 /// Dont forger Dispose on A4
@@ -32,7 +65,7 @@ public static partial class HttpRequestHelper{
 /// <param name = "method"></param>
 /// <param name = "hrd"></param>
 /// <returns></returns>
-    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
     {
         response = null;
         if (hrd == null)
@@ -166,5 +199,37 @@ public static partial class HttpRequestHelper{
                 }
             }
         }
+    }
+
+/// <summary>
+    /// Musí být v shared.web? ten HttpRequest je samozřejmě nekompatibilní
+    /// Přesunul jsem metodu zpátky do shared
+    /// Vrátí null pokud se nepodaří zjistit IP adresa
+    /// </summary>
+    /// <param name="Request"></param>
+    /// <returns></returns>
+    public static string GetUserIPString(HttpRequest Request)
+    {
+        string vr = null; // Request.ServerVariables["REMOTE_ADDR"];
+        if (vr == "::1")
+        {
+            vr = "127.0.0.1";
+        }
+        if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
+        {
+            string ipList = null;// Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipList))
+            {
+
+                vr = ipList.Split(AllChars.comma)[0];
+                if (SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
+                {
+                    return null;
+                }
+                return vr;
+            }
+        }
+        return vr;
     }
 }

@@ -40,8 +40,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
 
-        
-
         this.ResizeMode = rm;
         // Původně bylo WidthAndHeight
         this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
@@ -69,10 +67,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         dock.Children.Add(userControl);
 
         Activate();
-
-
-
-        
 
         // V InvalidateMeasure není volání na žádné Invalidate
         InvalidateMeasure();

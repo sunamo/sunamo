@@ -53,6 +53,8 @@ public partial class FS
             }
         }
 
+        
+
         public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace, bool pairLinesInFromAndTo)
         {
         if (pairLinesInFromAndTo)
@@ -66,6 +68,7 @@ public partial class FS
         else
         {
             ReplaceInAllFiles(CA.ToListString( from),  CA.ToListString( to), files, useSimpleReplace);
+
         }
             
         }
@@ -113,6 +116,13 @@ public partial class FS
             ReplaceInAllFiles(replaceFrom, replaceTo, files, replaceSimple);
         }
 
+    /// <summary>
+    /// A4 - whether use s.Contains. A4 - SH.ReplaceAll2
+    /// </summary>
+    /// <param name="replaceFrom"></param>
+    /// <param name="replaceTo"></param>
+    /// <param name="files"></param>
+    /// <param name="replaceSimple"></param>
         public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool replaceSimple)
         {
         
@@ -801,9 +811,11 @@ public partial class FS
         {
             List<ItemWithCount<string>> dirs = FS.DirectoriesWithToken(v, AscDesc.Desc);
 
-            foreach (var item in dirs)
+
+        foreach (var item in dirs)
             {
-                if (FS.IsDirectoryEmpty(item.t, true, true))
+
+            if (FS.IsDirectoryEmpty(item.t, true, true))
                 {
                     FS.TryDeleteDirectory(item.t);
                 }

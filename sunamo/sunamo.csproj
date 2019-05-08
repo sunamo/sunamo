@@ -12,6 +12,8 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NormalizeNumbers.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ViewTable.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\PasswordShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\HashHelperShared.cs" Link="" />

@@ -13,7 +13,7 @@ using System.Text;
 
 public static partial  class CA
 {
-    static Type type = typeof(CA);
+    
 
     public static string SwitchForGoogleSheets(List<string> captions, List<List<string>> exists)
     {
@@ -340,7 +340,13 @@ public static partial  class CA
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
     }
-
+    public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
+    {
+        foreach (var item in list)
+        {
+            RemoveWhichContains(files, item, wildcard);
+        }
+    }
     public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
     {
         if (wildcard)

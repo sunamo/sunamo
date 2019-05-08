@@ -228,6 +228,8 @@ public static partial class SH
         return s;
     }
 
+    
+
     public static List<int> ReturnOccurencesOfString(string vcem, string co)
     {
         vcem = NormalizeString(vcem);
@@ -461,6 +463,22 @@ public static string Format(string status, params object[] args)
         result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
         result = SH.ReplaceAll2(result, replacement, "{}");
         return result;
+    }
+
+    public static string ReplaceAll2(bool replaceSimple, string vstup, string zaCo, string co, bool pairLines)
+    {
+        if (pairLines)
+        {
+            var from2 = SH.Split(co, Environment.NewLine);
+            var to2 = SH.Split(zaCo, Environment.NewLine);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+
+            return ReplaceAll2(replaceSimple, vstup, co, zaCo);
+        }
+        else
+        {
+            return ReplaceAll2(vstup, zaCo, co);
+        }
     }
 
     public static string ReplaceAll2(bool replaceSimple, string vstup, string zaCo, string co)

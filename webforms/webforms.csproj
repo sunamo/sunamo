@@ -56,42 +56,13 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SqlClient, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.cz\packages\System.Data.SqlClient.4.5.0\lib\net461\System.Data.SqlClient.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\sunamo.web\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -105,16 +76,49 @@
     <Compile Include="..\..\sunamo\webforms\Logins.cs" Link="" />
     <Compile Include="..\..\sunamo\webforms\LoginsShared.cs" Link="" />
     <Compile Include="AF.cs" />
+    <Compile Include="AngularJsHelper.cs" />
+    <Compile Include="Controls\Anchor.cs" />
+    <Compile Include="Controls\BaseControl.cs" />
+    <Compile Include="Controls\CustomControl.cs" />
+    <Compile Include="Controls\Img.cs" />
+    <Compile Include="Controls\InputButton.cs" />
+    <Compile Include="Controls\InputCheckBox.cs" />
+    <Compile Include="Controls\InputFile.cs" />
+    <Compile Include="Controls\InputImageButton.cs" />
+    <Compile Include="Controls\InputText.cs" />
+    <Compile Include="Controls\Span.cs" />
+    <Compile Include="Controls\Textarea.cs" />
+    <Compile Include="CssGeneration.cs" />
+    <Compile Include="Data\BlockedUser.cs" />
+    <Compile Include="Data\Location.cs" />
     <Compile Include="Data\LoginResponse.cs" />
     <Compile Include="Data\LyricsWithRating.cs" />
+    <Compile Include="Data\SendMailData.cs" />
     <Compile Include="Data\TagWithUri.cs" />
+    <Compile Include="Data\WebCollections.cs" />
+    <Compile Include="Enums\HtmlControls.cs" />
     <Compile Include="Enums\LoginResponseType.cs" />
+    <Compile Include="Enums\MailSettings.cs" />
+    <Compile Include="Enums\ModeOfPage.cs" />
+    <Compile Include="Enums\PageArgumentType.cs" />
     <Compile Include="Enums\WhatCopyHostingLocal.cs" />
+    <Compile Include="EnumToString.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="General\DontCopy2\TableRowCzechNameDays.cs" />
+    <Compile Include="General\DontCopyBase\TableRowCzechNameDaysBase.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\JustifiedGalleryHelper.cs" />
+    <Compile Include="Helpers\MaterializeHelper.cs" />
+    <Compile Include="Helpers\MetroUIHelper.cs" />
     <Compile Include="Helpers\MySitesShortHelper.cs" />
+    <Compile Include="Helpers\TinyMCEHelper.cs" />
     <Compile Include="Helpers\UA.cs" />
     <Compile Include="Interfaces\IPageCs.cs" />
     <Compile Include="Interfaces\IPageResources.cs" />
+    <Compile Include="Interfaces\ISetSchema.cs" />
+    <Compile Include="InternetProtocols.cs" />
+    <Compile Include="JavaScriptGenerator2 %282%29.cs" />
+    <Compile Include="JavaScriptPaths.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
     <Compile Include="Converters\MySitesConverter.cs" />
     <Compile Include="CookieNames.cs" />
@@ -226,6 +230,7 @@
     <Compile Include="Me\MeUri.cs" />
     <Compile Include="MultiColorLine.cs" />
     <Compile Include="NameValueCollectionParserGet.cs" />
+    <Compile Include="NodeModulesPaths.cs" />
     <Compile Include="PageArgumentVerifier.cs" />
     <Compile Include="PageHelper.cs" />
     <Compile Include="PageHelperBase.cs" />
@@ -251,8 +256,14 @@
     <Compile Include="StateMessage.cs" />
     <Compile Include="StyleInjection.cs" />
     <Compile Include="StyleInjectionResponse.cs" />
+    <Compile Include="Styles.cs" />
+    <Compile Include="StyleSheetPaths.cs" />
     <Compile Include="SunamoCzHelper.cs" />
     <Compile Include="SunamoCzMetroUIHelper.cs" />
+    <Compile Include="SunamoGridView\SunamoGridView.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewCell.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewColumn.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewRow.cs" />
     <Compile Include="SunamoMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -268,41 +279,33 @@
     <Compile Include="Tables.cs" />
     <Compile Include="TempHelper.cs" />
     <Compile Include="UploaderManager.cs" />
+    <Compile Include="Values\CookieNames.cs" />
     <Compile Include="WaitingManagerAspx.cs" />
     <Compile Include="WaitingManagerAspxPagesID.cs" />
     <Compile Include="WebPage2.cs" />
+    <Compile Include="WwwRootPaths.cs" />
+    <Compile Include="YouTubeScript.cs" />
     <Compile Include="YouTubeThumbnail.cs" />
-    <None Include="packages.config" />
+    <None Include="HtmlGenerators\ExpandingMenu.js.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo.web\shared.web\shared.web.csproj">
-      <Project>{3322f417-812e-434c-b993-b696c972c54b}</Project>
+      <Project>{c30f4751-4d06-48ff-9020-da6297b8cb7d}</Project>
       <Name>shared.web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
-      <Project>{b5a43071-45f0-4f14-8513-466c67cf8806}</Project>
+      <Project>{fa243759-2a0c-4f82-85fd-85b2bc6e89b9}</Project>
       <Name>sunamo.web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\web\web.csproj">
-      <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>
-      <Name>web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Collections\" />
     <Folder Include="General\DontCopyBaseEx\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlGenerators\ExpandingMenu.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
-    <Error Condition="!Exists('..\..\webelieve.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\webelieve.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
-    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
-  </Target>
-  <Import Project="..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\..\webelieve.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\webelieve.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

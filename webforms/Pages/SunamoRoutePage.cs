@@ -3,7 +3,7 @@ using System.Web;
 
 public class SunamoRoutePage 
 {
-    public const string Up = AllStrings.dds;
+    public const string Up = "../";
 
     // TODO: RIGHTUP
     public static string GetRightUp(int CountUp)
@@ -14,7 +14,7 @@ public class SunamoRoutePage
 
     public static string GetRightUp(HttpRequest hr)
     {
-        int CountUp = SH.OccurencesOfStringIn(hr.FilePath, AllStrings.slash);
+        int CountUp = SH.OccurencesOfStringIn(hr.FilePath, "/");
         if (CountUp == 0 )
         {
             return "";
@@ -34,7 +34,7 @@ public class SunamoRoutePage
 
     public static string GetRightUpRoot(HttpRequest hr)
     {
-        return AllStrings.slash;
+        return "/";
         //return vr;
     }
 }

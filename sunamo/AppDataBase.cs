@@ -12,26 +12,22 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
     public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
 
-    public dynamic Abstract
+    /// <summary>
+    /// If file A1 dont exists or have empty content, then create him with empty content and G SE
+    /// </summary>
+    /// <param name = "path"></param>
+    public string ReadFileOfSettingsOther(string path)
     {
-        get
+        if (!path.Contains(AllStrings.bs) && !path.Contains(AllStrings.slash))
         {
-            if (this is AppDataAbstractBase<StorageFolder, StorageFile>)
-            {
-                return (AppDataAbstractBase<StorageFolder, StorageFile>)this;
-            }
-            else if (this is AppDataAppsAbstractBase<StorageFolder, StorageFile>)
-            {
-                return (AppDataAppsAbstractBase<StorageFolder, StorageFile>)this;
-            }
-            else
-            {
-                return null;
-            }
+            path = AppData.ci.GetFile(AppFolders.Settings, path);
         }
+
+        TF.CreateEmptyFileWhenDoesntExists(path);
+        return TF.ReadFile(path);
     }
 
-    
+
 
     string fileFolderWithAppsFiles = "";
 

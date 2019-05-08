@@ -85,11 +85,11 @@ public class GeneralLayer //: ISpecificLayer
         s.Add(Tables.Users, new MSColumnsDB(
             MSSloupecDB.CI(SqlDbType2.Int, "ID", true),
             MSSloupecDB.CI(SqlDbType2.Char, "SessionID(24)", false, false),
-            MSSloupecDB.CI(SqlDbType2.VarChar, "Login(" + delkaLogin + AllStrings.rb, false, true),
-            MSSloupecDB.CI(SqlDbType2.VarChar, "Email(" + delkaEmail + AllStrings.rb, false, false),
+            MSSloupecDB.CI(SqlDbType2.VarChar, "Login(" + delkaLogin + ")", false, true),
+            MSSloupecDB.CI(SqlDbType2.VarChar, "Email(" + delkaEmail + ")", false, false),
             MSSloupecDB.CI(SqlDbType2.SmallDateTime, "LastSeen", false, false),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecQue(" + delkaSecQue + AllStrings.rb, false, false),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecAns(" + delkaSecAns + AllStrings.rb, false, false),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecQue(" + delkaSecQue + ")", false, false),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecAns(" + delkaSecAns + ")", false, false),
             //MSSloupecDB.CI(SqlDbType2.Bit, "CanReset", false, false),
             MSSloupecDB.CI(SqlDbType2.Bit, "Sex", false, false),
             // Pokud bude nastaveno na MinVal, znamená to že uživatel své datum narození nevyplnil
@@ -132,12 +132,12 @@ public class GeneralLayer //: ISpecificLayer
             MSSloupecDB.CI(SqlDbType2.Int, "ID", true),
             // Před uložením kódu vždy zkontroluj, zda kód není již v DB. Posílat se bude pouze kód
             MSSloupecDB.CI(SqlDbType2.Char, "Code(24)", false, true),
-            MSSloupecDB.CI(SqlDbType2.VarChar, "Login(" + delkaLogin + AllStrings.rb),
+            MSSloupecDB.CI(SqlDbType2.VarChar, "Login(" + delkaLogin + ")"),
             MSSloupecDB.CI(SqlDbType2.VarChar, "Olseh(20)"),
-            MSSloupecDB.CI(SqlDbType2.VarChar, "Email(" + delkaEmail + AllStrings.rb),
+            MSSloupecDB.CI(SqlDbType2.VarChar, "Email(" + delkaEmail + ")"),
             MSSloupecDB.CI(SqlDbType2.SmallDateTime, "DeleteOn"),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecQue(" + delkaSecQue + AllStrings.rb),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecAns(" + delkaSecAns + AllStrings.rb),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecQue(" + delkaSecQue + ")"),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "SecAns(" + delkaSecAns + ")"),
             //MSSloupecDB.CI(SqlDbType2.Bit, "CanReset"),
             MSSloupecDB.CI(SqlDbType2.Bit, "Sex"),
             MSSloupecDB.CI(SqlDbType2.SmallDateTime, "DateBorn"),
@@ -277,7 +277,7 @@ public class GeneralLayer //: ISpecificLayer
 
         s.Add(Tables.LoginAttempt, new MSColumnsDB(
             MSSloupecDB.CI(SqlDbType2.Int, "ID"),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "Login(" + delkaLogin + AllStrings.rb, false, false),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "Login(" + delkaLogin + ")", false, false),
             MSSloupecDB.CI(SqlDbType2.SmallDateTime, "DT"),
             MSSloupecDB.CI(SqlDbType2.TinyInt, "Count")
             ));

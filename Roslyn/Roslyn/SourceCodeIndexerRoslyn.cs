@@ -26,6 +26,16 @@ public class SourceCodeIndexerRoslyn
     public Dictionary<string, List<string>> linesWithContent = new Dictionary<string, List<string>>();
     public Dictionary<string, List<int>> linesWithIndexes = new Dictionary<string, List<int>>();
 
+    public void Nuke()
+    {
+        linesWithContent.Clear();
+        linesWithIndexes.Clear();
+        sourceFileTrees.Clear();
+        namespaceCodeElements.Clear();
+        classCodeElements.Clear();
+
+    }
+
     /// <summary>
     /// Type of NamespaceCodeElementsType
     /// </summary>
@@ -43,7 +53,7 @@ public class SourceCodeIndexerRoslyn
     /// </summary>
     NamespaceCodeElementsType allNamespaceCodeElements = NamespaceCodeElementsType.Class;
     ClassCodeElementsType allClassCodeElements = ClassCodeElementsType.Method;
-    //ClassCodeElements allClassCodeElements = ClassCodeElements.
+    
     /// <summary>
     /// Map NamespaceCodeElementsType to keywords used in C#
     /// </summary>

@@ -1,4 +1,4 @@
-﻿using Kent.Boogaart.MVVM;
+﻿using SunamoMvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

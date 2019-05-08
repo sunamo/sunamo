@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public interface IUserControl : IPanel
+    public interface IUserControl : IPanel, IWindowOpener
     {
     string Title { get; }
+    void Init();
+
     // Stupid, better is doing that on ctor
     //void OnClosing();
 }

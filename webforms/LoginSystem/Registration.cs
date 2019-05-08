@@ -43,7 +43,7 @@ namespace webforms
             {
                 sb.AddItem("Login 'all' je vyhrazen pro jiné účely.");
             }
-            if (Login.Contains(AllStrings.space))
+            if (Login.Contains(" "))
             {
                 sb.AddItem("Přezdívka nemůže obsahovat mezery");
             }
@@ -66,7 +66,7 @@ namespace webforms
             {
                 sb.AddItem("Přezdívka nemůže být null");
             }
-            if (Heslo.Contains(AllStrings.space))
+            if (Heslo.Contains(" "))
             {
                 sb.AddItem("Heslo nemůže obsahovat mezery");
             }
@@ -81,9 +81,9 @@ namespace webforms
             ch.AddRange(AllChars.lowerChars);
             ch.AddRange(AllChars.upperChars);
             ch.AddRange(AllChars.numericChars);
-            ch.Add(AllChars.us);
-            ch.Add(AllChars.dot);
-            ch.Add(AllChars.dash);
+            ch.Add('_');
+            ch.Add('.');
+            ch.Add('-');
 
             foreach (char item in Login)
             {

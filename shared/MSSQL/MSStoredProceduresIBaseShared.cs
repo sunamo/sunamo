@@ -1333,7 +1333,17 @@ private short ExecuteScalarShort(bool signed, SqlCommand comm)
             throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
         }
     }
-
+    /// <summary>
+    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="sloupec"></param>
+    /// <returns></returns>
+    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
+        return ReadValuesInt(comm);
+    }
     /// <summary>
     /// Nedá se použít na desetinné typy
     /// Vrátí mi nejmenší volné číslo tabulky A1

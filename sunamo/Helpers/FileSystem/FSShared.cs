@@ -212,6 +212,30 @@ public partial class FS
         }
     }
 
+    /// <summary>
+    /// change all first (drive) letter to uppercase
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="folderWithProjectsFolders"></param>
+    /// <param name="folderWithTemporaryMovedContentWithoutBackslash"></param>
+    /// <returns></returns>
+    public static string ReplaceDirectoryThrowExceptionIfFromDoesntExists(string p, string folderWithProjectsFolders, string folderWithTemporaryMovedContentWithoutBackslash)
+    {
+        p = SH.FirstCharUpper(p);
+        folderWithProjectsFolders = SH.FirstCharUpper(folderWithProjectsFolders);
+        folderWithTemporaryMovedContentWithoutBackslash = SH.FirstCharUpper(folderWithTemporaryMovedContentWithoutBackslash);
+
+        if (!ThrowExceptions.NotContains(type, "ReplaceDirectoryThrowExceptionIfFromDoesntExists", p, folderWithProjectsFolders))
+        {
+            // Here can never accomplish when exc was throwed
+            return p;
+        }
+
+        // Here can never accomplish when exc was throwed
+        return p.Replace(folderWithProjectsFolders, folderWithTemporaryMovedContentWithoutBackslash);
+
+    }
+
     public static List<string> OnlyNamesWithoutExtension(List<string> p)
     {
         for (int i = 0; i < p.Count; i++)
@@ -595,7 +619,8 @@ public static void CopyMoveFilePrepare(ref string item, ref string fileTo, FileM
             }
             else if (co == FileMoveCollisionOption.DiscardFrom)
             {
-                File.Delete(item);
+                // Cant delete from because then is file deleting
+                //File.Delete(item);
                 return;
             }
             else if (co == FileMoveCollisionOption.Overwrite)

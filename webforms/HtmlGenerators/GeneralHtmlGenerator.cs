@@ -14,7 +14,7 @@ namespace web
             {
                 add = "x";
             }
-            return "<b>Počet shlédnutí dnes: </b>" + sp.today + add + AllStrings.space + AnchorToShowViews(sp);
+            return "<b>Počet shlédnutí dnes: </b>" + sp.today + add + " " + AnchorToShowViews(sp);
         }
 
         public static string AnchorToShowViews(SunamoPage sp)

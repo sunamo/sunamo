@@ -18,6 +18,25 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// </summary>
     protected StorageFolder rootFolder = default(StorageFolder);
 
+    public dynamic Abstract
+    {
+        get
+        {
+            if (this is AppDataAbstractBase<StorageFolder, StorageFile>)
+            {
+                return (AppDataAbstractBase<StorageFolder, StorageFile>)this;
+            }
+            else if (this is AppDataAppsAbstractBase<StorageFolder, StorageFile>)
+            {
+                return (AppDataAppsAbstractBase<StorageFolder, StorageFile>)this;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+
     /// <summary>
     /// Tato cesta je již s ThisApp.Name
     /// Set používej s rozvahou a vždy se ujisti zda nenastavuješ na SE(null moc nevadí, v takovém případě RootFolder bude vracet složku v dokumentech)
@@ -54,20 +73,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         return sunamo2;
     }
 
-    /// <summary>
-    /// If file A1 dont exists or have empty content, then create him with empty content and G SE
-    /// </summary>
-    /// <param name = "path"></param>
-    public string ReadFileOfSettingsOther(string path)
-    {
-        if (!path.Contains(AllStrings.bs) && !path.Contains(AllStrings.slash))
-        {
-            path = AppData.ci.GetFile(AppFolders.Settings, path);
-        }
-
-        TF.CreateEmptyFileWhenDoesntExists(path);
-        return TF.ReadFile(path);
-    }
+   
 
     
 

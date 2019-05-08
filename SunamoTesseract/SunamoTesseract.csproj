@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{c0ecd3ea-2687-497e-b9d8-3a4b02927128}</Project>
+      <Project>{2620e3e2-a2b1-451d-aa2c-05ebe39773c4}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>

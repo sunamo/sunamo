@@ -150,13 +150,20 @@ public class ThrowExceptions
         }
     }
 
-    public static void ThrowIsNotNull(string exception)
+    /// <summary>
+    /// true if everything is OK
+    /// false if some error occured
+    /// </summary>
+    /// <param name="exception"></param>
+    public static bool ThrowIsNotNull(string exception)
     {
         if (exception != null)
         {
             
             throw new Exception(exception);
+            return false;
         }
+        return true;
     }
 
     public static void NoPassedFolders(Type type, string v, IEnumerable folders)
@@ -172,9 +179,18 @@ public class ThrowExceptions
         }
     }
 
-    public static void NotContains(Type type, string v, string p, params string[] after)
+    /// <summary>
+    /// Verify whether A3 contains A4
+    /// true if everything is OK
+    /// false if some error occured
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="v"></param>
+    /// <param name="p"></param>
+    /// <param name="after"></param>
+    public static bool NotContains(Type type, string v, string p, params string[] after)
     {
-        ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
+        return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
     }
 
     public static void DirectoryWasntFound(Type type, string methodName, string folder1)
@@ -198,8 +214,13 @@ public class ThrowExceptions
     public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
     {
        
-            ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName), detailLocation, before, after));
+         ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName), detailLocation, before, after));
         
+    }
+
+    public static void FolderCantBeRemoved(Type type, string methodName, string folder)
+    {
+        ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName), folder));
     }
 
 
