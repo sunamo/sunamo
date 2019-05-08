@@ -1,5 +1,4 @@
 # sunamo
 My shared libraries for all apps &amp; devices
 
-![a](D:\Desktop\a.jpg)
-
+![Sunamo Solution schema](http://sunamo.cz/_/i/sunamoSolutionSchema.jpg)
