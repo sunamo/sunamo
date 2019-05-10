@@ -18,7 +18,7 @@ using static CryptHelper;
 /// Wrapper aroung CryptHelper2 class - 
 /// Instead of CryptHelper2 use string
 /// </summary>
-public class CryptHelper : ICryptHelper
+public partial class CryptHelper : ICryptHelper
 {
     ICryptBytes crypt = null;
 
@@ -119,21 +119,7 @@ public class CryptHelper : ICryptHelper
         }
     }
 
-    public class Rijndael : ICryptString
-    {
-        public RijndaelBytes rijndaelBytes = new RijndaelBytes();
-
-        public string Decrypt(string v)
-        {
-            return BTS.ConvertFromBytesToUtf8(rijndaelBytes.Decrypt(BTS.ConvertFromUtf8ToBytes(v)));
-        }
-
-        public string Encrypt(string v)
-        {
-            return BTS.ConvertFromBytesToUtf8(rijndaelBytes.Encrypt(BTS.ConvertFromUtf8ToBytes(v)));
-        }
-
-    }
+    
 
     /// <summary>
     /// Used for common apps settings

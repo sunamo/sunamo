@@ -146,4 +146,9 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
     {
         File.WriteAllText(file, content);
     }
+
+public static void AppendToFile(string obsah, string soubor)
+    {
+        SaveFile(obsah, soubor, true);
+    }
 }

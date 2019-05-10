@@ -82,4 +82,20 @@ public static object DefaultValueForTypeObject(string type)
 
         throw new Exception("Nepodporovaný typ");
     }
+
+public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)
+    {
+        CSharpGenerator genCS = new CSharpGenerator();
+        genCS.StartClass(0, AccessModifiers.Private, false, nameClass);
+        genCS.Field(1, AccessModifiers.Private, false, VariableModifiers.None, "Dictionary&lt;string, string&gt;", "dict", false, "new Dictionary&lt;string, string&gt;()");
+        CSharpGenerator inner = new CSharpGenerator();
+        foreach (var item in keys)
+        {
+            inner.AppendLine(2, "dict.Add(\"{0}\", \"{1}\");", item, randomValue.Invoke());
+        }
+
+        genCS.Ctor(1, ModifiersConstructor.Private, nameClass, inner.ToString());
+        genCS.EndBrace(0);
+        return genCS.ToString();
+    }
 }

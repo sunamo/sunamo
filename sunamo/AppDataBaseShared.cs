@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 public abstract partial class AppDataBase<StorageFolder, StorageFile> 
 {
-    
+    string fileFolderWithAppsFiles = "";
+    public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
 
     /// <summary>
     /// After startup will setted up in AppData/Roaming
@@ -77,4 +78,13 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
 
     
 
+
+public string GetFolderWithAppsFiles()
+    {
+        //Common(true)
+        string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
+        fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
+        FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
+        return fileFolderWithAppsFiles;
+    }
 }

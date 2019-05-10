@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 /// </summary>
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
-    public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
 
     /// <summary>
     /// If file A1 dont exists or have empty content, then create him with empty content and G SE
@@ -29,21 +28,9 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
 
 
 
-    string fileFolderWithAppsFiles = "";
 
     public AppDataBase()
     {
-    }
-
-
-
-    public string GetFolderWithAppsFiles()
-    {
-        //Common(true)
-        string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
-        fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
-        FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
-        return fileFolderWithAppsFiles;
     }
 
     public async Task CreateAppFoldersIfDontExists()

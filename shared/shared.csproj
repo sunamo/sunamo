@@ -93,8 +93,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\WriterEventLogShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\shared\Helpers\XmlHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerInstance.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseSharedShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayer.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresISql5.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerSql5.cs" Link="" />
@@ -194,6 +195,7 @@
     <Compile Include="Unsafe.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
+    <Compile Include="WriterEventLogShared.cs" />
     <Compile Include="XH.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />

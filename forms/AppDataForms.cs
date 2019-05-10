@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace forms.Essential
 { }
-
+ 
 // TODO: Later uncomment, now I can't because have ComboBox and sunamo.AppData must be without namespace
 //namespace forms
 //{

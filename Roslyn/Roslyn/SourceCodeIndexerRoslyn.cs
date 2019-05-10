@@ -121,6 +121,11 @@ public class SourceCodeIndexerRoslyn
         CompilationUnitSyntax root;
         if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions, fromFileSystemWatcher))
         {
+            if (sourceFileTrees.ContainsKey(pathFile))
+            {
+                sourceFileTrees.Remove(pathFile);
+            }
+
             sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = tree });
         }
     }
@@ -191,7 +196,19 @@ public class SourceCodeIndexerRoslyn
 
             ThrowExceptions.DifferentCountInLists(type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
 
+            // Probably was add on background again due to watch for changes
+
+            if (linesWithContent.ContainsKey(pathFile))
+            {
+                linesWithContent.Remove(pathFile);
+            }
+
             linesWithContent.Add(pathFile, lines);
+
+            if (linesWithIndexes.ContainsKey(pathFile))
+            {
+                linesWithIndexes.Remove(pathFile);
+            }
             linesWithIndexes.Add(pathFile, FullFileIndex);
 
             foreach (var item in namespaceCodeElementsAll)

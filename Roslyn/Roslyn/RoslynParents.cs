@@ -12,7 +12,11 @@ namespace Roslyn
         public void Add(string where, SyntaxNode n)
         {
             //this.n.Add(where, n);
-            DebugLogger.Instance.WriteLine(where + SH.NullToStringOrDefault(n.Parent, ("not null"))); 
+            if (n != null)
+            {
+                DebugLogger.Instance.WriteLine(where + SH.NullToStringOrDefault(n.Parent, ("not null")));
+            }
+            
         }
     }
 }

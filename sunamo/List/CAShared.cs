@@ -991,4 +991,32 @@ public static string[] TrimEnd(string[] sf, params char[] toTrim)
         }
         return default(T);
     }
+
+/// <summary>
+    /// Is same as IsEqualToAnyElement, only have switched elements
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public static bool ContainsElement<T>(IEnumerable<T> list, T t)
+    {
+        foreach (T item in list)
+        {
+            if (!Comparer<T>.Equals(item, t))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+public static List<string> WithoutDiacritic(List<string> nazev)
+    {
+        for (int i = 0; i < nazev.Count; i++)
+        {
+            nazev[i] = SH.TextWithoutDiacritic(nazev[i]);
+        }
+        return nazev;
+    }
 }

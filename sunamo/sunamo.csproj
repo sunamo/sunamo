@@ -12,6 +12,25 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\ISunamoComparer.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\SongFromInternet.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Values\AllExtensions.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\TypeOfExtension.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\CryptHelper2Shared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\CryptData.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\Provider.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AspNetShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\AllExtensionsHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\SerieStyle.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\DirectoryCreateCollisionOption.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Parsing\Parse.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\ThisApp.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\ICrypt.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\CryptHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\CryptHelperShared.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Values\CommonSettingsKeys.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\AppData.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NormalizeNumbers.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ViewTable.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" Link="" />

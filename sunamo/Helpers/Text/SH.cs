@@ -526,14 +526,6 @@ public static partial class SH
         return v1;
     }
 
-    public static string GetTextBetweenTwoChars(string p, int begin, int end)
-    {
-        // a(1) - 1,3
-        return p.Substring(begin + 1, end - begin - 1);
-        // originally
-        //return p.Substring(begin+1, end - begin - 1);
-    }
-
     public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
     {
         string vr = null;
@@ -759,22 +751,6 @@ public static partial class SH
             return false;
         }
         return true;
-    }
-
-    /// <summary>
-    /// Originally named TrimWithEnd
-    /// Pokud A1 končí na A2, ořežu A2
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="ext"></param>
-    /// <returns></returns>
-    public static string TrimEnd(string name, string ext)
-    {
-        while (name.EndsWith(ext))
-        {
-            return name.Substring(0, name.Length - ext.Length);
-        }
-        return name;
     }
 
     public static string ReplaceSecondAndNextOccurencesOfStringFrom(string vcem2, string co, string zaCo, int overallCountOfA2)
@@ -1637,22 +1613,6 @@ public static partial class SH
             s = SH.ReplaceByIndex(s, zaCo, occ[i], co.Length);
         }
         return s;
-    }
-
-    public static bool IsNumber(string str, params char[] nextAllowedChars)
-    {
-        foreach (var item in str)
-        {
-            if (!char.IsNumber(item))
-            {
-                if (!CA.ContainsElement<char>(nextAllowedChars, item))
-                {
-                    return false;
-                }
-            }
-        }
-        
-        return true;
     }
 
     public static string ReplaceLastOccurenceOfString(string text, string co, string čím)

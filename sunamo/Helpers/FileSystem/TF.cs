@@ -81,11 +81,6 @@ public partial class TF
         return ReadAllLines(file);
     }
 
-    public static void AppendToFile(string obsah, string soubor)
-    {
-        SaveFile(obsah, soubor, true);
-    }
-
     static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
     {
         foreach (var item in files)
