@@ -382,19 +382,6 @@ public static partial  class CA
         return celkove;
     }
 
-    public static bool HasIndexWithoutException(int p, IList nahledy)
-    {
-        if (p < 0)
-        {
-            return false;
-        }
-        if (nahledy.Count > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
         for (int i = 0; i < whereIsUsed2.Length; i++)
@@ -628,18 +615,7 @@ public static partial  class CA
         return false;
     }
 
-    public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
-    {
-        if (p < 0)
-        {
-            return false;
-        }
-        if (nahledy.Count > p && nahledy[p] == item)
-        {
-            return true;
-        }
-        return false;
-    }
+
 
 
 

@@ -18,6 +18,9 @@ namespace sunamo.Constants
         public static string sczPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz\");
         public static string sczOldPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz-old\");
         public static string sczNsnPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz-nsn\");
+        /// <summary>
+        /// Ended with backslash
+        /// </summary>
         public static string sczRootPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\");
 
         public const string ProjectsFolderNameSlash = "Projects\\";

@@ -12,6 +12,11 @@
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IResourceHelper.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\RL.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlTableParser.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\XmlGeneratorResources.cs" Link="" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\ITypeScriptGenerator.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\ISunamoComparer.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Entity\SongFromInternet.cs" Link="" />
@@ -124,6 +129,9 @@
     <Folder Include="Helpers\Net\" />
     <Folder Include="Helpers\Runtime\" />
     <Folder Include="Mixins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunamoLocalization\SunamoLocalization.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

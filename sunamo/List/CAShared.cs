@@ -1019,4 +1019,30 @@ public static List<string> WithoutDiacritic(List<string> nazev)
         }
         return nazev;
     }
+
+public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
+    {
+        if (p < 0)
+        {
+            return false;
+        }
+        if (nahledy.Count > p && nahledy[p] == item)
+        {
+            return true;
+        }
+        return false;
+    }
+
+public static bool HasIndexWithoutException(int p, IList nahledy)
+    {
+        if (p < 0)
+        {
+            return false;
+        }
+        if (nahledy.Count > p)
+        {
+            return true;
+        }
+        return false;
+    }
 }

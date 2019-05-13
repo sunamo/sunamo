@@ -33,7 +33,7 @@ public class EmbeddedResourcesH : IResourceHelper
         }
     }
 
-        string GetResourceName(string name)
+        public string GetResourceName(string name)
         {
             name = SH.Join(AllChars.dot, ThisApp.Name, SH.ReplaceAll( name, AllStrings.dot, AllStrings.slash));
         return name;
@@ -42,8 +42,6 @@ public class EmbeddedResourcesH : IResourceHelper
         public BitmapImage GetBitmapImageSource(string name)
         {
             var imageSource = new BitmapImage();
-
-            
 
             using (var stream = entryAssembly.GetManifestResourceStream(GetResourceName(name)))
             {
@@ -58,11 +56,19 @@ public class EmbeddedResourcesH : IResourceHelper
 
         public string GetString(string name)
         {
+
             return Encoding.UTF8.GetString(FS.StreamToArrayBytes(GetStream(name)));
         }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     public Stream GetStream(string name)
     {
-        return entryAssembly.GetManifestResourceStream(GetResourceName(name));
+        var s = GetResourceName(name);
+        var vr = entryAssembly.GetManifestResourceStream(s);
+        return vr;
     }
 }

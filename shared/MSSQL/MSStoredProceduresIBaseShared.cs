@@ -43,6 +43,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         this.conn = conn;
     }
 
+  
+
     /// <summary>
     /// Tato metoda má navíc možnost specifikovat simple where.
     /// </summary>
@@ -55,8 +57,24 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.SimpleWhere(idColumn)));
         AddCommandParameter(comm, 0, idValue);
-        return ReadValuesInt(comm);
+        return ReadValuesInt(comm, true);
     }
+
+    public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
+        AddCommandParameteresCombinedArrays(comm, 0, whereIs.ToArray(), whereIsNot.ToArray(), null, null);
+        return ReadValuesInt( comm, signed);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="sloupec"></param>
+    /// <param name="whereIs"></param>
+    /// <param name="whereIsNot"></param>
+    /// <returns></returns>
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
@@ -356,7 +374,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return comm.ExecuteReader(CommandBehavior.Default);
     }
 
-    private List<int> ReadValuesInt(SqlCommand comm)
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="comm"></param>
+    /// <param name="signed"></param>
+    /// <returns></returns>
+    private List<int> ReadValuesInt(SqlCommand comm, bool signed = true)
     {
         List<int> vr = new List<int>();
         SqlDataReader r = null;
@@ -365,9 +389,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             while (r.Read())
             {
-                int o = r.GetInt32(0);
+                var o = r.GetValue(0);
+                //int o = r.GetInt32(0);
                 //Type t = val.GetType();
-                vr.Add(o);
+                
+                vr.Add(GetSignedInt(signed, o));
             }
         }
 
@@ -791,6 +817,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private int ExecuteScalarInt(bool signed, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
+        return GetSignedInt(signed, o);
+    }
+
+    private static int GetSignedInt(bool signed, object o)
+    {
         if (o == null)
         {
             if (signed)

@@ -11,7 +11,9 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     /// <param name="sloupecDb"></param>
     static SloupecDBBase()
     {
-        
+        MSDatabaseLayer.SetFactoryColumnDb();
+        // cant set up because its abstract
+        //factoryColumnDB = MSFactoryColumnDB.Instance;
     }
 
     #region MyRegion

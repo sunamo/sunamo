@@ -1567,4 +1567,90 @@ public static string GetTextBetweenTwoChars(string p, int begin, int end)
         // originally
         //return p.Substring(begin+1, end - begin - 1);
     }
+
+public static string ReplaceWhiteSpacesWithoutSpaces(string p)
+    {
+        return ReplaceWhiteSpacesWithoutSpaces(p, "");
+    }
+public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWith = "")
+    {
+        return p.Replace("\r", replaceWith).Replace("\n", replaceWith).Replace("\t", replaceWith);
+    }
+
+public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool trim, bool escapeQuoations, params string[] deli)
+    {
+        var s = SH.Split(v, deli);
+        if (replaceNewLineBySpace)
+        {
+            for (int i = 0; i < s.Count; i++)
+            {
+                s[i] = SH.ReplaceAll(s[i], AllStrings.space, "\r", "\n", Environment.NewLine);
+            }
+        }
+        if (moreSpacesForOne)
+        {
+            for (int i = 0; i < s.Count; i++)
+            {
+                s[i] = SH.ReplaceAll2(s[i], AllStrings.space, AllStrings.doubleSpace);
+            }
+        }
+        if (trim)
+        {
+            s = CA.Trim(s);
+        }
+        if (escapeQuoations)
+        {
+            string rep = AllStrings.qm;
+
+            for (int i = 0; i < s.Count; i++)
+            {
+                    s[i] = SH.ReplaceFromEnd(s[i], "\\\"", rep);
+                //}
+            }
+        }
+        return s;
+    }
+
+public static string TrimStartAndEnd(string v, string s, string e)
+    {
+        v = TrimEnd(v, e);
+        v = TrimStart(v, s);
+        
+        return v;
+    }
+
+public static string TrimStart(string v, string s)
+    {
+        while (v.StartsWith(s))
+        {
+            v = v.Substring(s.Length);
+        }
+        return v;
+    }
+
+public static string ReplaceFromEnd(string s, string zaCo, string co)
+    {
+        List<int> occ = SH.ReturnOccurencesOfString(s, co);
+        for (int i = occ.Count - 1; i >= 0; i--)
+        {
+            s = SH.ReplaceByIndex(s, zaCo, occ[i], co.Length);
+        }
+        return s;
+    }
+
+/// <summary>
+    /// Vrátí prázdný řetězec pokud nebude nalezena mezera.
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string GetFirstWord(string p)
+    {
+        p = p.Trim();
+        int dex = p.IndexOf(AllChars.space);
+        if (dex != -1)
+        {
+            return p.Substring(0, dex);
+        }
+        return "";
+    }
 }

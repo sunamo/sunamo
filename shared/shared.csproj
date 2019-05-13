@@ -211,7 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{0f7d74db-c73d-4b96-8176-96c0867750d1}</Project>
+      <Project>{94d983cc-4204-4270-aa27-eb86a6d84ca8}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>

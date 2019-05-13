@@ -222,19 +222,9 @@ public partial class FS
             return fullPath + ext;
         }
 
-        public static string MascFromExtension(string ext = AllStrings.asterisk)
-        {
-        if (!ext.StartsWith("*."))
-        {
-            return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
-        }
-        return ext;
-        }
 
-        public static IEnumerable<string> GetFiles(string folderPath, bool recursive)
-        {
-            return FS.GetFiles(folderPath, FS.MascFromExtension(), recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
-        }
+
+
 
         public static void CreateFileIfDoesntExists(string path)
         {
@@ -787,15 +777,6 @@ public partial class FS
             return vr;
         }
 
-        /// <summary>
-        /// No recursive, all extension
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static List<string> GetFiles(string path)
-        {
-            return FS.GetFiles(path, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
-        }
 
     public static List<string> AllFilesInFolders(IEnumerable<string> folders,IEnumerable<string> exts, SearchOption so)
     {
@@ -810,22 +791,6 @@ public partial class FS
         return files;
     }
 
-    /// <summary>
-    /// A1 have to be with ending backslash
-    /// </summary>
-    /// <param name="folder"></param>
-    /// <param name="mask"></param>
-    /// <param name="searchOption"></param>
-    /// <returns></returns>
-    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
-        {
-            var list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
-            if (trimA1)
-            {
-                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
-            }
-            return list;
-        }
 
         /// <summary>
         /// A1 i A2 musí končit backslashem
@@ -1004,18 +969,6 @@ public partial class FS
         public static void DeleteFilesWithSameContent(List<string> files)
         {
             DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
-        }
-
-        /// <summary>
-        /// A2 is path of target file
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="fileTo"></param>
-        /// <param name="co"></param>
-        public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
-        {
-        CopyMoveFilePrepare(ref item, ref fileTo, co);
-        File.Move(item, fileTo);
         }
 
         public static Dictionary<string, List<string>> SortPathsByFileName(string[] allCsFilesInFolder, bool onlyOneExtension)

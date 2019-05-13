@@ -8,7 +8,7 @@ using System.Text;
     /// <summary>
     /// Whole class copied from apps - want to use RL in any type of my apps
     /// </summary>
-    public class RL
+    public partial class RL
     {
         /// <summary>
         /// Pokud chceš používat tuto třídu, musíš zároveň prvně zavolat RL.Initialize()
@@ -24,8 +24,25 @@ using System.Text;
 
         }
 
+    /// <summary>
+    /// Pro webové aplikace kde se jazyk mění s každým uživatelem
+    /// </summary>
+    /// <param name="k"></param>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static string GetStringByLang(string k, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return RLData.en[k];
+        }
+        return RLData.cs[k];
+    }
+
         public static string GetString(string k)
         {
+
+
             return loader.GetString(k);
         }
 
@@ -38,16 +55,14 @@ using System.Text;
         /// Musí to být výčet protože aplikace může mít více jazyků
         /// </summary>
         public static Langs l = Langs.en;
-        static Dictionary<string, string> en = new Dictionary<string, string>();
-        static Dictionary<string, string> cs = new Dictionary<string, string>();
+        
     public static IResourceHelper loader = null;
         static int langsLength = 0;
-
-        static RL()
+    
+    static RL()
         {
             langsLength = Enum.GetValues(typeof(Langs)).Length;
         }
-
 
         public static void Initialize(Langs l)
         {

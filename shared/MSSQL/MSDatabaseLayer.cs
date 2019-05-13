@@ -18,6 +18,8 @@ public partial class MSDatabaseLayer
         }
     }
 
+    
+
     /// <summary>
     /// Direct znamená že mohu přímo zadat počet parametrů které si přeji vytvořit
     /// Parametr s číslem A1 už ve výsledku nebude.
@@ -157,8 +159,13 @@ public partial class MSDatabaseLayer
         hiddenTa.Add(SqlDbType2.Char, "Řetězec non-unicode s pevnou šířkou do velikosti 8000 znaků");
         hiddenTa.Add(SqlDbType2.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
 
-        ;
+        SetFactoryColumnDb();
+        
+    }
 
+    internal static void SetFactoryColumnDb()
+    {
+        SloupecDBBase<MSSloupecDB, SqlDbType2>.factoryColumnDB = MSFactoryColumnDB.Instance;
     }
 
     /// <summary>

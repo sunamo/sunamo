@@ -258,7 +258,7 @@ public class SunamoCzMetroUIHelper
         else
         {
             hg.WriteTagWith2Attrs("a", "class", "app-bar-element", "href", buttonUserOnClick);
-            hg.WriteRaw("Nepřihlášený uživatel");
+            hg.WriteRaw("Sign in");
             hg.TerminateTag("a");
         }
         hg.TerminateTag("li");
