@@ -24,20 +24,7 @@ using System.Text;
 
         }
 
-    /// <summary>
-    /// Pro webové aplikace kde se jazyk mění s každým uživatelem
-    /// </summary>
-    /// <param name="k"></param>
-    /// <param name="l"></param>
-    /// <returns></returns>
-    public static string GetStringByLang(string k, Langs l)
-    {
-        if (l == Langs.en)
-        {
-            return RLData.en[k];
-        }
-        return RLData.cs[k];
-    }
+    
 
         public static string GetString(string k)
         {
@@ -46,9 +33,6 @@ using System.Text;
             return loader.GetString(k);
         }
 
-        private static class XmlLocalisationInterchangeFileFormat
-        {
-        }
 
         /// <summary>
         /// Globální proměnná pro nastavení jazyka celé app

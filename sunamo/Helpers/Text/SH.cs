@@ -279,7 +279,68 @@ public static partial class SH
         return text;
     }
 
+    internal static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
+    {
+        return Contains(input, term, enoughIsContainsAttribute ? SearchStrategy.AnySpaces : SearchStrategy.ExactlyName, caseSensitive);
+    }
+
     /// <summary>
+    /// SearchStrategy.AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="term"></param>
+    /// <param name="searchStrategy"></param>
+    /// <param name="caseSensitive"></param>
+    /// <returns></returns>
+    public static bool Contains(string input, string term, SearchStrategy searchStrategy, bool caseSensitive)
+    {
+        if (term != "")
+        {
+            if (searchStrategy == SearchStrategy.ExactlyName)
+            {
+                if (caseSensitive )
+                {
+                    return input == term;
+                }
+                else
+                {
+                    return input.ToLower() == term.ToLower();
+                }
+            }
+            else
+            {
+                if (searchStrategy == SearchStrategy.FixedSpace)
+                {
+                    if (caseSensitive)
+                    {
+                        return input.Contains(term);
+                    }
+                    else
+                    {
+                        return input.ToLower().Contains(term.ToLower());
+                    }
+                }
+                else
+                {
+                    if (caseSensitive)
+                    {
+                        var allWords = SH.Split(term, AllStrings.space);
+                        return SH.ContainsAll(input, allWords);
+                    }
+                    else
+                    {
+                        var allWords = SH.Split(term, AllStrings.space);
+                        CA.ToLower(allWords);
+                        return SH.ContainsAll(input.ToLower(), allWords);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Default for 
     /// A1 = search for exact occur. otherwise split both to words
     /// Control for string.Empty, because otherwise all results are true
     /// </summary>
@@ -288,26 +349,7 @@ public static partial class SH
     /// <returns></returns>
     public static bool Contains(string input, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
-        if (term != "")
-        {
-            if (searchStrategy == SearchStrategy.ExactlyName)
-            {
-                return input == term;
-            }
-            else
-            {
-                if (searchStrategy == SearchStrategy.FixedSpace)
-                {
-                    return input.Contains(term);
-                }
-                else
-                {
-                    var allWords = SH.Split(term, AllStrings.space);
-                    return SH.ContainsAll(input, allWords);
-                }
-            }
-        }
-        return false;
+        return Contains(input, term, searchStrategy, true);
     }
 
     
@@ -463,6 +505,12 @@ public static partial class SH
         return true;
     }
 
+    /// <summary>
+    /// Return whether A1 contains all from A2
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="allWords"></param>
+    /// <returns></returns>
     public static bool ContainsAll(string input, IEnumerable<string> allWords)
     {
         foreach (var item in allWords)

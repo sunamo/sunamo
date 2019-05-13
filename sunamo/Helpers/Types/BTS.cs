@@ -397,7 +397,18 @@ public static partial class BTS
         return No;
     }
 
+    public static string BoolToString(bool p, bool lower = false)
+    {
+        string vr = null;
+        if (p)
+            vr = Yes;
+        else
+        {
+            vr = No;
+        }
 
+        return vr.ToLower();
+    }
 
 
     #endregion
@@ -614,11 +625,25 @@ public static partial class BTS
         }
     #endregion
 
-    public static string BoolToStringCs(bool p)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string BoolToStringCs(bool p, bool lower = false)
     {
-        if (p) return "Ano";
-        return "Ne";
+        string vr = null;
+        if (p)
+            vr = "Ano";
+        else
+        {
+            vr = "Ne";
+        }
+
+        return vr.ToLower();
     }
+
+    
 
     #region Ostatní
     /// <summary>

@@ -2,5 +2,5 @@
 using System.Xml;
 public static partial class XmlHelper
 {
-
+    
 }

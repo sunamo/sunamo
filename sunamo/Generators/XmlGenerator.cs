@@ -127,7 +127,7 @@ public  class XmlGenerator
         sb.AppendFormat("<{0} ", p);
         for (int i = 0; i < p_2.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\"", p_2[i], p_2[++i]);
+            sb.AppendFormat("{0}=\"{1}\" ", p_2[i], p_2[++i]);
         }
         sb.Append(AllStrings.gt);
         string r = sb.ToString();

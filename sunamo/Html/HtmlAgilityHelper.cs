@@ -59,6 +59,7 @@ namespace sunamo.Html
             }
             bool contains = false;
             var attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);
+
             if (enoughIsContainsAttribute)
             {
                 contains = attrValue.Contains(hodnotaAtributu);

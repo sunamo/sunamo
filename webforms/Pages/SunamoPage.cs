@@ -83,6 +83,22 @@ public class SunamoPage : System.Web.UI.Page
         }
         
     }
+
+    /// <summary>
+    /// Pro webové aplikace kde se jazyk mění s každým uživatelem
+    /// </summary>
+    /// <param name="k"></param>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public string GetString(string k, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return RLData.en[k];
+        }
+        return RLData.cs[k];
+    }
+
     //public new HttpHead Header => HttpContext.Current.
 
     /// <summary>

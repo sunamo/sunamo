@@ -43,7 +43,7 @@ public class XlfResourcesH
                     }
                     else if (lang.StartsWith("en"))
                     {
-                        RLData.cs.Add(u.Id, u.Target);
+                        RLData.en.Add(u.Id, u.Target);
                     }
                     else
                     {

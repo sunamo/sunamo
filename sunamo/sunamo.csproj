@@ -131,9 +131,6 @@
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SunamoLocalization\SunamoLocalization.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>

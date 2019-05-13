@@ -70,10 +70,6 @@ public static partial class SH
         return JoinString(delimiter, parts);
     }
 
-    
-
-
-
     /// <summary>
     /// Get null if count of getted parts was under A2.
     /// Automatically add empty padding items at end if got lower than A2

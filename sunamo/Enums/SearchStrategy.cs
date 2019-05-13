@@ -5,8 +5,17 @@ using System.Text;
 
     public enum SearchStrategy
     {
+    /// <summary>
+    /// Contains
+    /// </summary>
         FixedSpace,
+        /// <summary>
+        /// 
+        /// </summary>
         AnySpaces,
-        ExactlyName
-    }
+    /// <summary>
+    /// Is exactly the same
+    /// </summary>
+    ExactlyName
+}
 
