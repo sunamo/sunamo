@@ -11,10 +11,10 @@
     </StackPanel>-->
 
 
-    <ListBox ItemsSource="{Binding TheList}">
+    <ListBox ItemsSource="{Binding chbAdded}">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding TheText}"/>
+                <CheckBox IsChecked="{Binding IsSelected}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

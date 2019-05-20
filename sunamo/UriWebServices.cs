@@ -20,6 +20,16 @@ public static class UriWebServices
         }
     }
 
+    public static class AutomotiveSpareParts
+    {
+        public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
+        public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%s";
+        public const string wwwNahradniDilyZhCz = "http://www.nahradni-dily-zh.cz/search.asp?searchinput=%s";
+        public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%s";
+        public static List<string>  All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
+
+    }
+
     public static class CdnProviders
     {
         //
@@ -58,6 +68,23 @@ public static class UriWebServices
         public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%s";
 
         public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
+    }
+
+    public static class SexShops
+    {
+        public const string wwwRuzovyslonCz = "https://www.ruzovyslon.cz/hledani?_submit=Hledat&s=%s&do=searchForm-submit";
+        public const string wwwEroticcityCz = "https://www.eroticcity.cz/vyhledavani.html?q=%s";
+        public const string wwwSexshopikCz = "https://www.sexshopik.cz/vyhledavani/?search%5Bquery%5D=%s";
+        public const string wwwSexShopCz = "https://www.sex-shop69.cz/search/search?st_search%5Bsearch%5D=%s&st_search%5Band_search%5D=1&st_search%5Bdetail%5D=";
+        public const string intimmShopCz = "https://intimm-shop.cz/vyhledavani?controller=search&orderby=position&orderway=desc&search_query=%s&submit_search=";
+        public const string wwwEroticstoreCz = "https://www.eroticstore.cz/vysledky-hledani/?search=%s";
+        public const string wwwNejlevnejsierotickepomuckyCz = "https://www.nejlevnejsierotickepomucky.cz/vyhledavani/?string=%s";
+        public const string wwwWillistoreCz = "https://www.willistore.cz/?controller=search&orderby=position&orderway=desc&q=%s&submit_search=";
+        public const string wwwVibratoryOnlineCz = "https://www.vibratory-online.cz/hledat/?search=%s&searchButton.x=0&searchButton.y=0";
+        public const string wwwLuxusnipradloCz = "https://www.luxusnipradlo.cz/hledani/?q=%s";
+        public const string eKondomyCz = "https://e-kondomy.cz/catalogsearch/result/?q=%s";
+
+        public static List<string> All = CA.ToListString(wwwRuzovyslonCz, wwwEroticcityCz, wwwSexshopikCz, wwwSexShopCz, intimmShopCz, wwwEroticstoreCz, wwwNejlevnejsierotickepomuckyCz, wwwWillistoreCz, wwwVibratoryOnlineCz, wwwLuxusnipradloCz, eKondomyCz);
     }
 
     public static class SpiceMarks

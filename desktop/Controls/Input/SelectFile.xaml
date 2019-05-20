@@ -6,8 +6,19 @@
              xmlns:local="clr-namespace:desktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Orientation="Vertical">
+    <!--5 pro celý + 5 pro každý control = 10. padding will be same as in wpf textbox-->
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="btnRemoveFile" x:FieldModifier="public" Visibility="Collapsed" Click="BtnRemoveFile_Click"></Button>
+       
+    <StackPanel Orientation="Vertical" Grid.Column="1">
         <TextBlock x:Name="tbSelectedFile"></TextBlock>
         <Button x:Name="btnSelectFile" Click="btnSelectFile_Click" Content="Select file"></Button>
     </StackPanel>
+
+    </Grid>
 </UserControl>

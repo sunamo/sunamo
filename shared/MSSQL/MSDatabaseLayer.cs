@@ -163,7 +163,7 @@ public partial class MSDatabaseLayer
         
     }
 
-    internal static void SetFactoryColumnDb()
+    public static void SetFactoryColumnDb()
     {
         SloupecDBBase<MSSloupecDB, SqlDbType2>.factoryColumnDB = MSFactoryColumnDB.Instance;
     }

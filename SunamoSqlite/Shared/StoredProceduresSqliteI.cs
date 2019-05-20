@@ -34,7 +34,7 @@ namespace DocArch.SqLite
 
         
 
-        internal bool SelectExistsTable(string table, SQLiteConnection conn)
+        public bool SelectExistsTable(string table, SQLiteConnection conn)
         {
             var val = ExecuteNonQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='" + table + "';");
             return val != -1;

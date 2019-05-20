@@ -72,13 +72,17 @@ using System.Xml.Linq;
         return GetElementsOfNameWithAttrWorker(group, tag, attr, value, true, caseSensitive);
     }
 
-    internal static void AddXmlNamespaces(XmlNamespaceManager nsmgr)
+    public static void AddXmlNamespaces(XmlNamespaceManager nsmgr)
     {
         foreach (string item in nsmgr)
         {
             // Jaký je typ item, at nemusím používat slovník
             var v = nsmgr.LookupNamespace(item);
-            ns.Add(item, v);
+            if (!ns.ContainsKey(item))
+            {
+                ns.Add(item, v);
+            }
+            
             int o = 0;
         }
     }
@@ -219,7 +223,7 @@ using System.Xml.Linq;
             return sb.ToString().Replace(deli + deli, deli);
         }
 
-    internal static IEnumerable<XElement> GetElementsOfName(XElement node, string nazev)
+    public static IEnumerable<XElement> GetElementsOfName(XElement node, string nazev)
     {
         List<XElement> result = new List<XElement>();
 

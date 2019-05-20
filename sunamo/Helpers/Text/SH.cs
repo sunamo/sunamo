@@ -279,7 +279,7 @@ public static partial class SH
         return text;
     }
 
-    internal static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
+    public static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
     {
         return Contains(input, term, enoughIsContainsAttribute ? SearchStrategy.AnySpaces : SearchStrategy.ExactlyName, caseSensitive);
     }

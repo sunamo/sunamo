@@ -18,14 +18,14 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Collections
 {
     /// <summary>
-    /// Interaction logic for CheckBoxListUC.xaml
+    /// for ChangeDialogResult return always null - must check returned values through via CheckedIndexes()
     /// </summary>
     public partial class CheckBoxListUC : UserControl, IUserControlInWindow
     {
-        public ObservableCollection<ABT<string, bool>> TheList { get; set; }
+        //public ObservableCollection<ABT<string, bool>> TheList { get; set; }
         public bool? DialogResult { set => throw new NotImplementedException(); }
 
-        List<CheckBox> chbAdded = new List<CheckBox>();
+        public ObservableCollection<CheckBox> chbAdded { get; set; }
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -35,18 +35,27 @@ namespace desktop.Controls.Collections
         }
 
         public void Init(List<string> list)
-        {
-            TheList = new ObservableCollection<ABT<string, bool>>();
+        { 
+            chbAdded = new ObservableCollection<CheckBox>();
+            //TheList = new ObservableCollection<ABT<string, bool>>();
 
             foreach (var item in list)
             {
                 var chb = CheckBoxHelper.Get(item);
+                chb.Tag = ControlNameGenerator.GetSeries(chb.GetType());
+                //chb.Checked += Chb_Click;
+                //chb.Unchecked += Chb_Click;
                 chbAdded.Add(chb);
 
-                TheList.Add(new ABT<string, bool>(item, false));
+                //TheList.Add(new ABT<string, bool>(item, false));
             }
 
             this.DataContext = this;
+        }
+
+        private void Chb_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         public IEnumerable<int> CheckedIndexes()
@@ -57,6 +66,31 @@ namespace desktop.Controls.Collections
         public void Accept(object input)
         {
             throw new NotImplementedException();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            s(sender,true);
+
+            ChangeDialogResult(null);
+        }
+
+        private void s(object sender, bool b)
+        {
+            var s = ((FrameworkElement)sender);
+            var name = s.Tag;
+            var where = chbAdded.Where(d => d.Tag == s.Tag);
+
+            foreach (var item in where)
+            {
+                item.IsChecked = b;
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            s(sender, false);
+            ChangeDialogResult(null);
         }
     }
 }

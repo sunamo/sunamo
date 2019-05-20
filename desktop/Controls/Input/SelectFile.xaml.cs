@@ -23,10 +23,32 @@ namespace desktop.Controls
     /// </summary>
     public partial class SelectFile : UserControl
     {
+        /// <summary>
+        /// In folder has hame Folder*Changed* but there already exists FileSelected
+        /// </summary>
+        public event VoidString FileSelected;
+        public event VoidT<SelectFile> FileRemoved;
+
         public SelectFile()
         {
             InitializeComponent();
             SelectedFile = "";
+        }
+
+        private void BtnRemoveFile_Click(object sender, RoutedEventArgs e)
+        {
+            if (FileRemoved != null)
+            {
+                FileRemoved(this);
+            }
+        }
+
+        private void OnFileChanged(string File)
+        {
+            if (FileSelected != null)
+            {
+                FileSelected(File);
+            }
         }
 
         private void SetSelectedFile(string v)
@@ -38,8 +60,6 @@ namespace desktop.Controls
             selectedFile = v;
             tbSelectedFile.Text = "Selected file: " + v;
         }
-
-        public event VoidString FileSelected;
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)
         {
@@ -74,6 +94,7 @@ namespace desktop.Controls
             }
             set
             {
+                OnFileChanged(value);
                 SetSelectedFile(value);
             }
         }

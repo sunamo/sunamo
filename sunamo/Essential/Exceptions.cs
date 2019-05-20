@@ -100,7 +100,7 @@ using System.Text;
             return null;
         }
 
-    internal static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
+    public static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
     {
         List<string> foundedUnallowed = new List<string>();
         foreach (var item in unallowedStrings)
@@ -217,7 +217,7 @@ using System.Text;
         return CheckBefore(before) + message;
     }
 
-    internal static object FolderCantBeRemoved(string v, string folder)
+    public static object FolderCantBeRemoved(string v, string folder)
     {
         return CheckBefore(v) + "Can't delete folder: " + folder;
     }

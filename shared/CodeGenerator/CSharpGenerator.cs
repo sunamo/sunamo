@@ -462,12 +462,23 @@ public class CSharpGenerator : GeneratorCodeAbstract
         this.AppendLine(tabCount, AllStrings.lsf + name + zav + AllStrings.rsf);
     }
 
-    public void List(int tabCount, string genericType, string listName, List<string> list)
+    public void List(int tabCount, string genericType, string listName, List<string> list, bool addHyphens = true)
     {
         string cn = "List<"+genericType+AllStrings.gt;
         NewVariable(tabCount, AccessModifiers.Private, cn, listName, false);
-        list = CA.WrapWith(list, AllStrings.qm);
-        AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
+        if (addHyphens)
+        {
+            list = CA.WrapWith(list, AllStrings.qm);
+        }
+        if (genericType == "string")
+        {
+            AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(list, AllChars.comma) + ");");
+        }
+        else
+        {
+            AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
+        }
+        
         
     }
 

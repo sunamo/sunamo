@@ -11,6 +11,18 @@ namespace SunamoCode
 {
     public class XmlLocalisationInterchangeFileFormat
     {
+        public static Langs GetLangFromFilename(string s)
+        {
+            s = Path.GetFileNameWithoutExtension(s);
+            var parts = SH.Split(s, AllChars.dot);
+            string last = parts[parts.Count - 1].ToLower();
+            if (last.StartsWith("cs"))
+            {
+                return Langs.cs;
+            }
+            return Langs.en;
+        }
+
         /// <summary>
         /// A1 je xml s nepreparovaným obsahem
         /// </summary>
@@ -89,7 +101,9 @@ namespace SunamoCode
             XHelper.AddXmlNamespaces(h.nsmgr);
 
             XElement xliff = XHelper.GetElementOfName(xd, "xliff");
-            XElement file = XHelper.GetElementsOfNameWithAttrContains(xliff, "file", "original", toL.ToString(), false).First();
+            var allElements = XHelper.GetElementsOfNameWithAttrContains(xliff, "file", "target-language", toL.ToString(), false);
+            var resources = allElements.Where(d => XHelper.Attr(d, "original").Contains("/RESOURCES/"));
+            XElement file = resources.First();
             XElement body = XHelper.GetElementOfName(file, "body");
             XElement group = XHelper.GetElementOfName(body, "group");
 

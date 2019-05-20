@@ -4,6 +4,23 @@ using System.Collections;
 using System.Collections.Generic;
 public static partial class CSharpHelper
 {
+    public static string CreateConstsForSearchUris(List<string> uris)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        List<string> all = new List<string>();
+
+        foreach (var item in uris)
+        {
+            Uri u = new Uri(item);
+            string name = ConvertPascalConvention.ToConvention(u.Host);
+            csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, item);
+            all.Add(name);
+        }
+
+        csg.List(2, "string", "All", all, false);
+
+        return csg.ToString();
+    }
 
     public static string DefaultValueForTypeSqLite(string type)
     {

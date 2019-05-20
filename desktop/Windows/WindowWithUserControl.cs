@@ -1,5 +1,6 @@
 ﻿using desktop;
 using desktop.Controls;
+using desktop.Controls.Collections;
 using desktop.Essential;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ public class WindowWithUserControl : Window, IUserControlWithResult
     UserControl userControl = null;
     DockPanel dock = null;
     IUserControlInWindow uc = null;
+    IUserControlWithResult userControlWithResult = null;
+    DialogButtons dialogButtons = null;
 
     public WindowWithUserControl(IUserControlInWindow uc, ResizeMode rm, bool addDialogButtons = false)
     {
@@ -34,11 +37,22 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         //dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
         //dock.Children.Add(dialogButtons);
 
+        
         TextBlock textBlockStatus = TextBlockHelper.Get("");
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
         statusBar.Items.Add(textBlockStatus);
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
+
+        if (addDialogButtons)
+        {
+            dialogButtons = new DialogButtons();
+            dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
+            DockPanel.SetDock(dialogButtons, Dock.Bottom);
+            dock.Children.Add(dialogButtons);
+            
+        }
+
 
         this.ResizeMode = rm;
         // Původně bylo WidthAndHeight
@@ -54,6 +68,43 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         Loaded += WindowWithUserControl_Loaded;
     }
 
+    private void DialogButtons_ChangeDialogResult(bool? b)
+    {
+        UserControlWithResult_ChangeDialogResult(b);
+    }
+
+    private void UserControlWithResult_ChangeDialogResult(bool? b)
+    {
+        
+
+        if (uc is CheckBoxListUC)
+        {
+            CheckBoxListUC checkBoxListUC = (CheckBoxListUC)uc;
+
+            var checked2 = checkBoxListUC.CheckedIndexes();
+            if (checked2.Count() >0)
+            {
+                dialogButtons.IsEnabledBtnOk = true;
+            }
+            else
+            {
+                dialogButtons.IsEnabledBtnOk = false;
+            }
+        }
+        else
+        {
+
+        }
+
+        if (dialogButtons != null)
+        {
+            if (dialogButtons.clickedOk)
+            {
+                uc_ChangeDialogResult(b);
+            }
+        }
+    }
+
     private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
         uc.ChangeDialogResult += uc_ChangeDialogResult;
@@ -65,6 +116,14 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         userControl.HorizontalContentAlignment = HorizontalAlignment.Stretch;
 
         dock.Children.Add(userControl);
+
+        if (userControl is IUserControlWithResult)
+        {
+            userControlWithResult = (IUserControlWithResult)userControl;
+            userControlWithResult.ChangeDialogResult += UserControlWithResult_ChangeDialogResult;
+            uc.ChangeDialogResult -= uc_ChangeDialogResult;
+        }
+
 
         Activate();
 
