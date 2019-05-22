@@ -151,7 +151,10 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
-    
+    public static string ReplaceAll( string vstup, string zaCo, params string[] co)
+    {
+        return ReplaceAll(true, vstup, zaCo, co);
+    }
 
     /// <summary>
     /// In difference with ReplaceAll2, A3 is params
@@ -160,20 +163,35 @@ public static partial class SH
     /// <param name="zaCo"></param>
     /// <param name="co"></param>
     /// <returns></returns>
-    public static string ReplaceAll(string vstup, string zaCo, params string[] co)
+    public static string ReplaceAll(bool replaceSimple, string vstup, string zaCo, params string[] co)
     {
 
-        for (int i = 0; i < co.Length; i++)
+        //for (int i = 0; i < co.Length; i++)
+        //{
+        //    string what = co[i];
+        //    int whatLength = what.Length;
+        //    List<int> nt = SH.ReturnOccurencesOfString(vstup, what);
+        //    for (int y = nt.Count - 1; y >= 0; y--)
+        //    {
+        //        vstup = SH.ReplaceByIndex(vstup, zaCo, nt[y], whatLength);
+        //    }
+        //}
+        //return vstup;
+
+        StringBuilder sb = new StringBuilder(vstup);
+        foreach (var item in co)
         {
-            string what = co[i];
-            int whatLength = what.Length;
-            List<int> nt = SH.ReturnOccurencesOfString(vstup, what);
-            for (int y = nt.Count - 1; y >= 0; y--)
+            sb = sb.Replace(item, zaCo);
+            if (!replaceSimple)
             {
-                vstup = SH.ReplaceByIndex(vstup, zaCo, nt[y], whatLength);
+                while (sb.ToString().Contains(item))
+                {
+                    sb = sb.Replace(item, zaCo);
+                }
             }
         }
-        return vstup;
+
+        return sb.ToString();
     }
 
     public static bool IsValidISO(string input)
@@ -382,6 +400,8 @@ public static partial class SH
         return input.Substring(0, pos) + zaco + input.Substring(pos + what.Length);
     }
 
+    static bool initDiactitic = false;
+
     /// <summary>
     /// G text bez dia A1.
     /// </summary>
@@ -389,7 +409,18 @@ public static partial class SH
     /// <returns></returns>
     public static string TextWithoutDiacritic(string sDiakritik)
     {
-        return Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(sDiakritik));
+        if (!initDiactitic)
+        {
+            System.Text.EncodingProvider provider = System.Text.CodePagesEncodingProvider.Instance;
+            Encoding.RegisterProvider(provider);
+
+            DebugLogger.Instance.WriteLine("Encoding registered");
+
+            initDiactitic = true;
+        }
+
+        //originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
+        return Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(sDiakritik));
     }
 
 
@@ -477,11 +508,13 @@ public static string Format(string status, params object[] args)
         }
     }
 
+    
+
     public static string ReplaceAll2(bool replaceSimple, string vstup, string zaCo, string co)
     {
         if (replaceSimple)
         {
-            return vstup.Replace(co, zaCo);
+            return SH.ReplaceAll(replaceSimple, vstup, zaCo, co);// vstup.Replace(co, zaCo);
         }
         else
         {
@@ -495,12 +528,10 @@ public static string Format(string status, params object[] args)
             {
                 throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
             }
-            while (vstup.Contains(co))
-            {
-                vstup = vstup.Replace(co, zaCo);
-            }
 
-            return vstup;
+            return SH.ReplaceAll(replaceSimple, vstup, zaCo, co);
+
+            
         }
     }
 
@@ -728,6 +759,7 @@ public static List<int> GetVariablesInString(string innerHtml)
     /// <returns></returns>
     public static bool ContainsDiacritic(string slovo)
     {
+
         return slovo != SH.TextWithoutDiacritic(slovo);
     }
 

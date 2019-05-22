@@ -15,7 +15,7 @@
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
 
-      <trans-unit id="Removed" translate="yes" xml:space="preserve"><source></source><target state="translated">Odebráno</target></trans-unit></group>
+      
     </body>
   </file>
 </xliff>

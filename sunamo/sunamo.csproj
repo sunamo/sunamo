@@ -136,9 +136,11 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Net\" />
+    <Folder Include="Helpers\NewFolder\" />
     <Folder Include="Helpers\Runtime\" />
     <Folder Include="Mixins\" />
   </ItemGroup>

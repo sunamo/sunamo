@@ -19,11 +19,13 @@ public class WindowWithUserControl : Window, IUserControlWithResult
     IUserControlInWindow uc = null;
     IUserControlWithResult userControlWithResult = null;
     DialogButtons dialogButtons = null;
+    bool addDialogButtons = false;
 
     public WindowWithUserControl(IUserControlInWindow uc, ResizeMode rm, bool addDialogButtons = false)
     {
         this.Closed += WindowWithUserControl_Closed;
         this.uc = uc;
+        this.addDialogButtons = addDialogButtons;
 
         dock = new DockPanel();
         dock.LastChildFill = true;
@@ -53,7 +55,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult
             
         }
 
-
         this.ResizeMode = rm;
         // Původně bylo WidthAndHeight
         this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
@@ -75,8 +76,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
     private void UserControlWithResult_ChangeDialogResult(bool? b)
     {
-        
-
         if (uc is CheckBoxListUC)
         {
             CheckBoxListUC checkBoxListUC = (CheckBoxListUC)uc;
@@ -121,9 +120,13 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         {
             userControlWithResult = (IUserControlWithResult)userControl;
             userControlWithResult.ChangeDialogResult += UserControlWithResult_ChangeDialogResult;
-            uc.ChangeDialogResult -= uc_ChangeDialogResult;
+            
         }
 
+        if (addDialogButtons)
+        {
+            uc.ChangeDialogResult -= uc_ChangeDialogResult;
+        }
 
         Activate();
 

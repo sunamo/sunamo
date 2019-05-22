@@ -92,8 +92,6 @@ namespace desktop.Controls
             
         }
 
-        
-
         private void CbDefaultFolders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = sender as ComboBox;

@@ -1,4 +1,5 @@
-﻿using sunamo;
+﻿using desktop.AwesomeFont;
+using sunamo;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,13 @@ namespace desktop.Controls
         {
             InitializeComponent();
             SelectedFile = "";
+
+            Loaded += SelectFile_Loaded;
+        }
+
+        private void SelectFile_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetAwesomeIcons();
         }
 
         private void BtnRemoveFile_Click(object sender, RoutedEventArgs e)
@@ -41,6 +49,11 @@ namespace desktop.Controls
             {
                 FileRemoved(this);
             }
+        }
+
+        async void SetAwesomeIcons()
+        {
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnRemoveFile, "\uf00d");
         }
 
         private void OnFileChanged(string File)

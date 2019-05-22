@@ -37,7 +37,6 @@ namespace desktop.Controls.Input
         public event Action<object, List<string>> FileChanged;
         public event Action<object, List<string>> FileRemoved;
 
-
         private void SelectMoreFiles_Loaded(object sender, RoutedEventArgs e)
         {
             SetAwesomeIcons();
@@ -86,7 +85,6 @@ namespace desktop.Controls.Input
         {
             await AwesomeFontControls.SetAwesomeFontSymbol(btnAddFile, "\uf07c New");
             await AwesomeFontControls.SetAwesomeFontSymbol(btnAddAsTemplate, "\uf022 Save set as template");
-
         }
 
         private void BtnAddFile_Click(object sender, RoutedEventArgs e)

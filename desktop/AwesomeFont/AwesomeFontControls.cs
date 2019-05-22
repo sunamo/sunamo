@@ -22,8 +22,8 @@ namespace desktop.AwesomeFont
                 txtSearchIcon.Content = v;
             });
         }
-
-            public static async Task SetAwesomeFontSymbol(TextBlock txtSearchIcon, string v)
+         
+        public static async Task SetAwesomeFontSymbol(TextBlock txtSearchIcon, string v)
         {
             await WpfApp.cd.InvokeAsync(() =>
             {

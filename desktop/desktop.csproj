@@ -219,9 +219,6 @@
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
-    <Compile Include="Helpers\Content\EmbeddedResourcesH.cs" />
-    <Compile Include="Helpers\Content\ResourcesH.cs" />
-    <Compile Include="Helpers\Content\XlfResourcesH.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\CheckBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
