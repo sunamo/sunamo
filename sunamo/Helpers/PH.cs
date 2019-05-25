@@ -125,6 +125,16 @@ public class PH
         return deleted;
     }
 
+    /// <summary>
+    /// Start all uri in clipboard, splitted by whitespace
+    /// </summary>
+    public static void StartAllUri()
+    {
+        var text = ClipboardHelper.GetText();
+        var uris = SH.SplitByWhiteSpaces(text);
+        StartAllUri(uris);
+    }
+
     public static void OpenInBrowser(string uri)
     {
          OpenInBrowser(Browsers.Chrome, uri);

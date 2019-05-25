@@ -24,6 +24,7 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Constants\XlfKeys.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IResourceHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\RL.cs" Link="" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlTableParser.cs" Link="" />
@@ -134,6 +135,7 @@
     <None Remove="Converters\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="fmdev.XliffParser" Version="0.5.6" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />

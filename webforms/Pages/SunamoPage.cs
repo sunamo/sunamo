@@ -29,6 +29,13 @@ public class SunamoPage : System.Web.UI.Page
         }
     }
 
+    protected Dictionary<string, string> en
+    {
+        get
+        {
+            return RLData.en;
+        }
+    }
 
     public new HttpRequest Request => HttpContext.Current.Request;
     public new HttpResponse Response => HttpContext.Current.Response;

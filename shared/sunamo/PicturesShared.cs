@@ -15,7 +15,9 @@ using sunamo.Essential;
 
     public class PicturesShared
     {
-        private static Regex r = new Regex(AllStrings.colon);
+    
+
+    private static Regex r = new Regex(AllStrings.colon);
 
     public static void ChangeResolution(string path, float dpix, float dpiy)
     {

@@ -16,54 +16,220 @@ using System.Threading.Tasks;
             messageIfEmpty = MessageIfEmpty("data");
         }
 
-        public const string NotImplementedPleaseContactWebAdmin = "Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.";
-        public const string ScIsNotTheSame = "error: Nesouhlasilo sc. ";
-        public const string UnvalidSession = "error: Špatné údaje o přihlášení - odhlašte se a přihlašte se znovu. ";
-        public const string DetailsClickSurveyAspxLabel = "Kdy bylo kliknuto na odpovědi v této anketě";
-        public const string AddAsRsvp = "Přijdu to zkouknout";
-        public const string RemoveAsRsvp = "Bohužel mi to nevyjde";
-        public const string AddAsRsvpSuccess = "Accept :)";
-        public const string RemoveAsRsvpSuccess = "Tak snad někdy příště..";
+	public static string EditUserAccount 		{
+		get 		{
+			return RLData.en["EditUserAccount"]; 
+		}
+	}
 
-        public const string AddToFavorites = "Přidat do oblíbených";
-        public const string RemoveFromFavorites = "Odstranit z oblíbených";
-        public const string AddToFavoritesSuccess = "Přidáno do oblíbených!";
-        public const string RemoveFromFavoritesSuccess = "Odebráno z oblíbených";
-        public const string Success = "success";
-        public const string Error = "error";
-        public const string UnauthorizedOperation = "Na tuto stránku jste se dostali, protože jste se pokusili načíst stránku, nebo provést jinou operaci, ke které nemáte povolení nebo která není v tomto kontextu aplikovatelná.";
+	public static string UserDetail 		{
+		get 		{
+			return RLData.en["UserDetail"]; 
+		}
+	}
+
+	public static string ErrorSerie255 		{
+		get 		{
+			return RLData.en["ErrorSerie255"]; 
+		}
+	}
+
+	public static string ErrorSerie0 		{
+		get 		{
+			return RLData.en["ErrorSerie0"]; 
+		}
+	}
+
+	public static string ViewLastWeek 		{
+		get 		{
+			return RLData.en["ViewLastWeek"]; 
+		}
+	}
+
+	public static string YouAreNotLogged 		{
+		get 		{
+			return RLData.en["YouAreNotLogged"]; 
+		}
+	}
+
+	public static string YouAreBlocked 		{
+		get 		{
+			return RLData.en["YouAreBlocked"]; 
+		}
+	}
+
+	public static string TurnOnSelectingPhotos 		{
+		get 		{
+			return RLData.en["TurnOnSelectingPhotos"]; 
+		}
+	}
+
+	public static string TurnOffSelectingPhotos 		{
+		get 		{
+			return RLData.en["TurnOffSelectingPhotos"]; 
+		}
+	}
+
+	public static string StringNotFound 		{
+		get 		{
+			return RLData.en["StringNotFound"]; 
+		}
+	}
+
+	public static string NoRightArgumentsToPage 		{
+		get 		{
+			return RLData.en["NoRightArgumentsToPage"]; 
+		}
+	}
+
+	public static string YouAreNotLoggedAsWebAdmin 		{
+		get 		{
+			return RLData.en["YouAreNotLoggedAsWebAdmin"]; 
+		}
+	}
+
+	public static string YouHaveNotValidIPv4Address 		{
+		get 		{
+			return RLData.en["YouHaveNotValidIPv4Address"]; 
+		}
+	}
+
+	public static string UriTooShort 		{
+		get 		{
+			return RLData.en["UriTooShort"]; 
+		}
+	}
+
+	public static string UriTooLong 		{
+		get 		{
+			return RLData.en["UriTooLong"]; 
+		}
+	}
+
+	public static string CustomShortUriOccupatedYet 		{
+		get 		{
+			return RLData.en["CustomShortUriOccupatedYet"]; 
+		}
+	}
+
+	public static string LinkSuccessfullyShorted 		{
+		get 		{
+			return RLData.en["LinkSuccessfullyShorted"]; 
+		}
+	}
+
+	public static string scFixed 		{
+		get 		{
+			return RLData.en["scFixed"]; 
+		}
+	}
+
+	public static string UnauthorizedOperation 		{
+		get 		{
+			return RLData.en["UnauthorizedOperation"]; 
+		}
+	}
+
+	public static string Error 		{
+		get 		{
+			return RLData.en["Error"]; 
+		}
+	}
+
+	public static string Success 		{
+		get 		{
+			return RLData.en["Success"]; 
+		}
+	}
+
+	public static string RemoveFromFavoritesSuccess 		{
+		get 		{
+			return RLData.en["RemoveFromFavoritesSuccess"]; 
+		}
+	}
+
+	public static string AddToFavoritesSuccess 		{
+		get 		{
+			return RLData.en["AddToFavoritesSuccess"]; 
+		}
+	}
+
+	public static string RemoveFromFavorites 		{
+		get 		{
+			return RLData.en["RemoveFromFavorites"]; 
+		}
+	}
+
+	public static string AddToFavorites 		{
+		get 		{
+			return RLData.en["AddToFavorites"]; 
+		}
+	}
+
+	public static string RemoveAsRsvpSuccess 		{
+		get 		{
+			return RLData.en["RemoveAsRsvpSuccess"]; 
+		}
+	}
+
+	public static string AddAsRsvpSuccess 		{
+		get 		{
+			return RLData.en["AddAsRsvpSuccess"]; 
+		}
+	}
+
+	public static string RemoveAsRsvp 		{
+		get 		{
+			return RLData.en["RemoveAsRsvp"]; 
+		}
+	}
+
+	public static string AddAsRsvp 		{
+		get 		{
+			return RLData.en["AddAsRsvp"]; 
+		}
+	}
+
+	public static string DetailsClickSurveyAspxLabel 		{
+		get 		{
+			return RLData.en["DetailsClickSurveyAspxLabel"]; 
+		}
+	}
+
+	public static string UnvalidSession 		{
+		get 		{
+			return RLData.en["UnvalidSession"]; 
+		}
+	}
+
+	public static string ScIsNotTheSame 		{
+		get 		{
+			return RLData.en["ScIsNotTheSame"]; 
+		}
+	}
+
+	public static string NotImplementedPleaseContactWebAdmin 		{
+		get 		{
+			return RLData.en["NotImplementedPleaseContactWebAdmin"]; 
+		}
+	}
+
+
+
         /// <summary>
         /// Kód, kterým se kontroluje pravost uživatele různých služeb, hlavně u těch kde se já nemusím přihlašovat(jednoduché desktopové apps, atd.)
         /// </summary>
-        public const string scFixed = "1pr2qyfsagraqjv4uypgho5o";
         /// <summary>
         /// Toto nikdy nepoužívat, je to tu jen abych mohl ukončit metodu returnem.
         /// </summary>
-        public const string LinkSuccessfullyShorted = "Odkaz byl úspěšně zkrácen";
-        public const string CustomShortUriOccupatedYet = "Tento krátký odkaz byl již zabrán";
-        public const string UriTooLong = "Adresa byla delší než 512 znaků";
-        public const string UriTooShort = "Web obdržel adresu která byla prázdná";
-        public const string YouHaveNotValidIPv4Address = "Nemáte platnou adresu IPv4";
         /// <summary>
         /// Nebyly nalezeny žádné data k zobrazení
         /// </summary>
         public static string messageIfEmpty = null;
-        public const string YouAreNotLoggedAsWebAdmin = "Nebyl jste přihlášen jako admin stránek";
-        public const string NoRightArgumentsToPage = "Do stránky nebyl předán správný počet parametrů a/nebo se správnými hodnotami";
-        public const string StringNotFound = "Řetězen nebyl nalezen";
 
         public static string MessageIfEmpty(string p)
         {
             return "Nebyly nalezeny žádné " + p + " k zobrazení";
         }
 
-        public const string TurnOffSelectingPhotos = "Vypni režim označování fotek";
-        public const string TurnOnSelectingPhotos = "Zapni režim označování fotek";
-        public const string YouAreBlocked = "error: Byly jste zablokování dle IP adresy nebo nicku, požadovanou operaci nemůžete provést";
-        public const string YouAreNotLogged = "error: Nebyly jste přihlášení";
-        public const string ViewLastWeek = "Shlédnutí stránky za posledních 7 dní(počítá se den zpětně, to znamená že dnešní přístupy se zobrazí až zítra): ";
-        public const string ErrorSerie0 = "error: Uri ze které byl volán tento handler nebyla v databázi.";
-        public const string ErrorSerie255 = "error: Buď stránka poslala špatné parametry URI entityTableId a entityId, nebo entita s těmito parametry nebyla v databázi nalezena.";
-        public const string UserDetail = "Detail uživatele";
-        public const string EditUserAccount = "Editace uživatelského účtu";
     }

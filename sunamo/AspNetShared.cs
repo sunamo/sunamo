@@ -1,4 +1,6 @@
-﻿public static partial class AspNet{
+﻿using System;
+
+public static partial class AspNet{
     const string error = "error:";
     const string warning = "warning:";
     const string success = "success:";
@@ -39,4 +41,6 @@
 
         return TypeOfMessage.Ordinal;
     }
+
+    
 }

@@ -1,0 +1,260 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+public class XlfKeys
+{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public const string Register = "Register" ; 
+
+	public const string DoYouWantToSendASecurityQuestionAndAnswerToMail = "DoYouWantToSendASecurityQuestionAndAnswerToMail" ; 
+
+	public const string ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion = "ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion" ; 
+
+	public const string DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters = "DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" ; 
+
+	public const string ResponseToSecurityQuestion = "ResponseToSecurityQuestion" ; 
+
+	public const string SecurityQuestion = "SecurityQuestion" ; 
+
+	public const string ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly = "ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly" ; 
+
+	public const string DoYouWantToSendAPasswordToMail = "DoYouWantToSendAPasswordToMail" ; 
+
+	public const string DoYouWishToSendALoginNameToTheMail = "DoYouWishToSendALoginNameToTheMail" ; 
+
+	public const string PasswordASecondTime = "PasswordASecondTime" ; 
+
+	public const string generateARandomStrongPassword = "generateARandomStrongPassword" ; 
+
+	public const string lblPassword = "lblPassword" ; 
+
+	public const string txtLoginHintInnerHtml = "txtLoginHintInnerHtml" ; 
+
+	public const string txtLogin = "txtLogin" ; 
+
+	public const string uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed = "uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed" ; 
+
+	public const string btnLogin = "btnLogin" ; 
+
+	public const string btnGenerateNewPassword = "btnGenerateNewPassword" ; 
+
+	public const string YouMustEnterYourLoginNameForTheNextStep = "YouMustEnterYourLoginNameForTheNextStep" ; 
+
+	public const string PageLoad = "PageLoad" ; 
+
+	public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures" ; 
+
+	public const string LoginWillBePernamentUntilYouSignedOut = "LoginWillBePernamentUntilYouSignedOut" ; 
+
+	public const string GenerateNewPassword = "GenerateNewPassword" ; 
+
+	public const string SignIn = "SignIn" ; 
+
+	public const string TheCodeParameterWasNotTheCorrectLength = "TheCodeParameterWasNotTheCorrectLength" ; 
+
+	public const string wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect = "wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect" ; 
+
+	public const string Code = "Code" ; 
+
+	public const string AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated = "AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated" ; 
+
+	public const string SexCannotBeLeftBlank = "SexCannotBeLeftBlank" ; 
+
+	public const string HereYouCanEditYourUserProfileWithGeneralInformation = "HereYouCanEditYourUserProfileWithGeneralInformation" ; 
+
+	public const string EditingAnExistingUser = "EditingAnExistingUser" ; 
+
+	public const string Woman = "Woman" ; 
+
+	public const string SaveChanges = "SaveChanges" ; 
+
+	public const string YourLabel = "YourLabel" ; 
+
+	public const string IfYouEnterAWrongValueIsSaved = "IfYouEnterAWrongValueIsSaved" ; 
+
+	public const string andThisPageImportantForYouToDisplayHTMLCorrectlyEnterInPixels = "andThisPageImportantForYouToDisplayHTMLCorrectlyEnterInPixels" ; 
+
+	public const string AboutYou = "AboutYou" ; 
+
+	public const string PageWidth = "PageWidth" ; 
+
+	public const string IDoNotWishToReceiveAnyMailsFromUsersOrApplications = "IDoNotWishToReceiveAnyMailsFromUsersOrApplications" ; 
+
+	public const string OnlyApplicationsFromThisSiteCanSendMailToMeNotIndividualUsers = "OnlyApplicationsFromThisSiteCanSendMailToMeNotIndividualUsers" ; 
+
+	public const string EveryoneCanWriteMeMailButNoOneCanSeeMyMailAddress = "EveryoneCanWriteMeMailButNoOneCanSeeMyMailAddress" ; 
+
+	public const string EveryoneCanViewMyMail = "EveryoneCanViewMyMail" ; 
+
+	public const string EmailSettings = "EmailSettings" ; 
+
+	public const string Man = "Man" ; 
+
+	public const string VoluntaryItems = "VoluntaryItems" ; 
+
+	public const string Birthdate = "Birthdate" ; 
+
+	public const string RequiredItems = "RequiredItems" ; 
+
+	public const string YouAreNotLoggedIn = "YouAreNotLoggedIn" ; 
+
+	public const string NoNickWasFoundForYourUserNumber = "NoNickWasFoundForYourUserNumber" ; 
+
+	public const string FailedToSaveProfileImagePleaseTryAgain = "FailedToSaveProfileImagePleaseTryAgain" ; 
+
+	public const string ProfileImageChangedSuccessfully = "ProfileImageChangedSuccessfully" ; 
+
+	public const string ChangeProfilePicture = "ChangeProfilePicture" ; 
+
+	public const string UpdateYourProfilePictureToSunamoCz = "UpdateYourProfilePictureToSunamoCz" ; 
+
+	public const string ClickTheButtonToUploadANewProfilePictureToSunamoCz = "ClickTheButtonToUploadANewProfilePictureToSunamoCz" ; 
+
+	public const string ChangeYourProfilePictureOn = "ChangeYourProfilePictureOn" ; 
+
+	public const string ChangeAccountEmail = "ChangeAccountEmail" ; 
+
+	public const string andYouCanTDoItAnymore = "andYouCanTDoItAnymore" ; 
+
+	public const string YouHaveAlreadyChangedYourMailTimesFrom = "YouHaveAlreadyChangedYourMailTimesFrom" ; 
+
+	public const string TheOldMailIsNoDifferentFromTheNewOne = "TheOldMailIsNoDifferentFromTheNewOne" ; 
+
+	public const string ThePasswordForTheLoggedInUserDidNotMatch = "ThePasswordForTheLoggedInUserDidNotMatch" ; 
+
+	public const string ThisEmailIsAlreadyAssignedToAnotherUser = "ThisEmailIsAlreadyAssignedToAnotherUser" ; 
+
+	public const string TheTextYouEnteredDoesNotMatchTheEmailFormat = "TheTextYouEnteredDoesNotMatchTheEmailFormat" ; 
+
+	public const string ChangeEmail = "ChangeEmail" ; 
+
+	public const string TheUserCouldNotBeReactivatedBecauseTheUserWithTheGivenUidAndCodeWasNotFoundInDB = "TheUserCouldNotBeReactivatedBecauseTheUserWithTheGivenUidAndCodeWasNotFoundInDB" ; 
+
+	public const string UserReactivatedSuccessfullyYouCanNowSubscribeWithTheNewMail = "UserReactivatedSuccessfullyYouCanNowSubscribeWithTheNewMail" ; 
+
+	public const string signIn = "signIn" ; 
+
+	public const string YourAccountHasBeenSuccessfullyActivatedNowYouCan = "YourAccountHasBeenSuccessfullyActivatedNowYouCan" ; 
+
+	public const string HereYouCanActivateYourUserAccountAfterRegistration = "HereYouCanActivateYourUserAccountAfterRegistration" ; 
+
+	public const string ActivatingAUserAccount = "ActivatingAUserAccount" ; 
+
+	public const string ChangeYourEmail = "ChangeYourEmail" ; 
+
+	public const string EditingYourProfile = "EditingYourProfile" ; 
+
+	public const string ChangeTheProfilePicture = "ChangeTheProfilePicture" ; 
+
+	public const string ActivitiesAndUserInformation = "ActivitiesAndUserInformation" ; 
+
+	public const string UserNotFound = "UserNotFound" ; 
+
+	public const string City = "City" ; 
+
+	public const string Disctict = "Disctict" ; 
+
+	public const string Region = "Region" ; 
+
+	public const string State = "State" ; 
+
+	public const string Age = "Age" ; 
+
+	public const string Sex = "Sex" ; 
+
+	public const string LastWasHere = "LastWasHere" ; 
+
+	public const string User = "User" ; 
+
+	public const string WhenWasTheLastTimeTheUserWasOnlineWhatDidHeHitOnHimselfYouCanFindItHere = "WhenWasTheLastTimeTheUserWasOnlineWhatDidHeHitOnHimselfYouCanFindItHere" ; 
+
+	public const string TheUnUserNameParameterWasNotFoundInTheAddressTheApplicationDoesNotKnowWhichProfileToDisplay = "TheUnUserNameParameterWasNotFoundInTheAddressTheApplicationDoesNotKnowWhichProfileToDisplay" ; 
+
+	public const string Password = "Password" ; 
+
+	public const string YouShouldCheckYourEmailSeveralTimesToSeeIfItIsCorrectYouWillNotLogInAgainWithoutReactivatingYourEmail = "YouShouldCheckYourEmailSeveralTimesToSeeIfItIsCorrectYouWillNotLogInAgainWithoutReactivatingYourEmail" ; 
+
+	public const string characters = "characters" ; 
+
+	public const string NewEmail = "NewEmail" ; 
+
+	public const string ActivateAccount = "ActivateAccount" ; 
+
+	public const string ActivatingCode = "ActivatingCode" ; 
+
+	public const string ChangingThePassword = "ChangingThePassword" ; 
+
+	public const string TheUserSPersonalLabel = "TheUserSPersonalLabel" ; 
+
+	public const string ChangePassword = "ChangePassword" ; 
+
+	public const string NewPasswordAgain = "NewPasswordAgain" ; 
+
+	public const string NewPassword = "NewPassword" ; 
+
+	public const string Error = "Error" ; 
+	public const string Success = "Success" ; 
+	public const string AddAsRsvpSuccess = "AddAsRsvpSuccess" ; 
+	public const string NotImplementedPleaseContactWebAdmin = "NotImplementedPleaseContactWebAdmin" ; 
+	public const string EditUserAccount = "EditUserAccount" ; 
+	public const string UserDetail = "UserDetail" ; 
+	public const string ErrorSerie255 = "ErrorSerie255" ; 
+	public const string ErrorSerie0 = "ErrorSerie0" ; 
+	public const string ViewLastWeek = "ViewLastWeek" ; 
+	public const string YouAreNotLogged = "YouAreNotLogged" ; 
+	public const string YouAreBlocked = "YouAreBlocked" ; 
+	public const string TurnOnSelectingPhotos = "TurnOnSelectingPhotos" ; 
+	public const string TurnOffSelectingPhotos = "TurnOffSelectingPhotos" ; 
+	public const string StringNotFound = "StringNotFound" ; 
+	public const string NoRightArgumentsToPage = "NoRightArgumentsToPage" ; 
+	public const string YouAreNotLoggedAsWebAdmin = "YouAreNotLoggedAsWebAdmin" ; 
+	public const string YouHaveNotValidIPv4Address = "YouHaveNotValidIPv4Address" ; 
+	public const string UriTooShort = "UriTooShort" ; 
+	public const string UriTooLong = "UriTooLong" ; 
+	public const string CustomShortUriOccupatedYet = "CustomShortUriOccupatedYet" ; 
+	public const string LinkSuccessfullyShorted = "LinkSuccessfullyShorted" ; 
+	public const string scFixed = "scFixed" ; 
+	public const string UnauthorizedOperation = "UnauthorizedOperation" ; 
+	public const string RemoveFromFavoritesSuccess = "RemoveFromFavoritesSuccess" ; 
+	public const string AddToFavoritesSuccess = "AddToFavoritesSuccess" ; 
+	public const string RemoveFromFavorites = "RemoveFromFavorites" ; 
+	public const string AddToFavorites = "AddToFavorites" ; 
+	public const string RemoveAsRsvpSuccess = "RemoveAsRsvpSuccess" ; 
+	public const string RemoveAsRsvp = "RemoveAsRsvp" ; 
+	public const string AddAsRsvp = "AddAsRsvp" ; 
+	public const string DetailsClickSurveyAspxLabel = "DetailsClickSurveyAspxLabel" ; 
+	public const string UnvalidSession = "UnvalidSession" ; 
+	public const string ScIsNotTheSame = "ScIsNotTheSame" ; 
+	public const string CurrentPassword = "CurrentPassword" ; 
+
+    
+}

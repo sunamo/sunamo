@@ -11,6 +11,14 @@ namespace Roslyn
 {
     public class WebToStandaloneAssembly
     {
+        // zjistit zda můžu nějak vytvářet patarmety konstruktoru nebo položky
+
+        /// <summary>
+        /// ctorArgs is interesting
+        /// </summary>
+        /// <param name="csClass"></param>
+        /// <param name="ctorArgs"></param>
+        /// <returns></returns>
         string GetContentOfNewAspxCs(string csClass, string ctorArgs)
         {
             //CSharpGenerator genAspxCs = new CSharpGenerator();
@@ -32,6 +40,19 @@ namespace Roslyn
             return SH.Format2(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
         }
 
+        /// <summary>
+        /// ctorArgs,ctorInner should be interesting for me
+        /// </summary>
+        /// <param name="nsX"></param>
+        /// <param name="className"></param>
+        /// <param name="variables"></param>
+        /// <param name="usings"></param>
+        /// <param name="ctorArgs"></param>
+        /// <param name="ctorInner"></param>
+        /// <param name="baseClassCs"></param>
+        /// <param name="nsBaseClassCs"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         string GetContentOfPageCsFile(string nsX, string className, string variables, string usings, string ctorArgs, string ctorInner, string baseClassCs, string nsBaseClassCs, string code)
         {
             string template = SH.Format2(@"{3}
@@ -50,7 +71,8 @@ namespace {0}
 
         [0]
     ]
-]", AllStrings.lsf, AllStrings.rsf, nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs);
+]", AllStrings.lsf, AllStrings.rsf, 
+nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs);
             template = SH.Format2(template, code);
             return template;
         }
@@ -73,9 +95,10 @@ namespace {0}
                 CollectionWithoutDuplicates<string> usings;
                 if (FS.ExistsFile(designer) && !FS.ExistsFile(fullPathTo))
                 {
-                    #region Get variables in designer
+                    #region Get variables in designer and *.aspx.cs
                     var designerContent = TF.ReadFile(designer);
                     var fileAspxCsContent = TF.ReadFile(fileAspxCs);
+                    // Move all html controls and variables from *.aspx.cs - everything must be in *Cs.cs
                     var dict = RoslynParser.GetVariablesInCsharp(RoslynHelper.GetSyntaxTree(designerContent).GetRoot(), SH.GetLines(fileAspxCsContent), out usings);
                     usings.Add(ns);
                     #endregion

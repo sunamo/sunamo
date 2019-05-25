@@ -254,7 +254,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QSHelpers.cs" />
     <Compile Include="RequestValidator.cs" />
-    <Compile Include="RLData.cs" />
     <Compile Include="RoutePageHelper.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="ShareButtons.cs" />
@@ -289,9 +288,9 @@
     <Compile Include="Values\CookieNames.cs" />
     <Compile Include="WaitingManagerAspx.cs" />
     <Compile Include="WaitingManagerAspxPagesID.cs" />
+    <Compile Include="WebFormsHelper.cs" />
     <Compile Include="WebPage2.cs" />
     <Compile Include="WwwRootPaths.cs" />
-    <Compile Include="XlfResourcesH.cs" />
     <Compile Include="YouTubeScript.cs" />
     <Compile Include="YouTubeThumbnail.cs" />
     <None Include="HtmlGenerators\ExpandingMenu.js.map" />
@@ -305,10 +304,6 @@
     <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
       <Project>{fa243759-2a0c-4f82-85fd-85b2bc6e89b9}</Project>
       <Name>sunamo.web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
-      <Project>{d22e9965-237d-4836-b038-62a5254b1118}</Project>
-      <Name>SunamoCode</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

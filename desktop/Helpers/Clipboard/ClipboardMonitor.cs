@@ -22,12 +22,16 @@ namespace sunamo.Clipboard
 		 static bool _pernamentlyBlock = false;
 		 static bool? _monitor = true;
 		/// <summary>
-		/// If true, in first clipboard change change its value = false and monitor = null. In second monitor = true and in third is clipboard watching.
+		/// If true, 
+        /// in first clipboard change change its value = false and monitor = null. 
+        /// In second monitor = true and 
+        /// in third is clipboard watching.
 		/// </summary>
 		 static bool _afterSet = false;
 
         /// <summary>
-        /// First is setted to false, after first save to clipboart auto to true
+        /// First is setted to false, 
+        /// after first save to clipboard auto to true
         /// </summary>
         public bool? monitor { get =>  _monitor; set => _monitor = value; }
         public bool afterSet { get => _afterSet; set => _afterSet = value; }

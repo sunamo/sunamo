@@ -157,6 +157,14 @@ namespace Roslyn
             return result;
         }
 
+        public static ABC GetVariablesInCsharp(SyntaxNode root)
+        {
+            List<string> lines = new List<string>();
+            CollectionWithoutDuplicates<string> usings;
+
+            return GetVariablesInCsharp(root, lines, out usings);
+        }
+
         /// <summary>
         /// </summary>
         /// <param name="root"></param>
@@ -232,5 +240,7 @@ namespace Roslyn
             }
             return string.Empty;
         }
+
+        
     }
 }

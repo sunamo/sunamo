@@ -45,11 +45,13 @@ namespace SunamoCode
 
             XHelper.AddXmlNamespaces(h.nsmgr);
 
+            
+
             XElement xliff = XHelper.GetElementOfName(xd, "xliff");
             XElement file = XHelper.GetElementOfName(xliff,  "file");
             XElement body = XHelper.GetElementOfName(file, "body");
             XElement group = XHelper.GetElementOfName(body, "group");
-            IEnumerable<XElement> trans_units = XHelper.GetElementsOfName(group, "trans-unit");
+            IEnumerable<XElement> trans_units = XHelper.GetElementsOfName(group, tTransUnit);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in trans_units)
             {
@@ -62,6 +64,8 @@ namespace SunamoCode
 
             xd.Save(fn);
         }
+
+        const string tTransUnit = "trans-unit";
 
         private static void TrimValueIfNot(XElement source)
         {
@@ -107,6 +111,13 @@ namespace SunamoCode
             XElement body = XHelper.GetElementOfName(file, "body");
             XElement group = XHelper.GetElementOfName(body, "group");
 
+            var exists = XHelper.GetElementOfNameWithAttr(group, tTransUnit, "id", pascal);
+
+            if (exists != null)
+            {
+                return;
+            }
+
             TransUnit tu = new TransUnit();
             tu.id = pascal;
             tu.source = originalSource;
@@ -119,7 +130,6 @@ namespace SunamoCode
             //xd.CreateWriter();
             XElement xe = XElement.Parse(xml);
             xe = XHelper.MakeAllElementsWithDefaultNs(xe);
-
 
             group.Add(xe);
             //var after = group.Value;

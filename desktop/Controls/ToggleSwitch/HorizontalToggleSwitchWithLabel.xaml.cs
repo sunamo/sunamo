@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Clipboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// desktopControlsToggleSwitch
 namespace desktop.Controls.ToggleSwitch
 {
     /// <summary>
@@ -20,9 +22,13 @@ namespace desktop.Controls.ToggleSwitch
     /// </summary>
     public partial class HorizontalToggleSwitchWithLabel : UserControl
     {
+        
+
         public HorizontalToggleSwitchWithLabel()
         {
             InitializeComponent();
         }
+
+        
     }
 }

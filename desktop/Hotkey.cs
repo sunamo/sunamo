@@ -30,6 +30,8 @@ namespace UnManaged
         public Action<HotKey> Action { get; private set; }
         public int Id { get; set; }
 
+        public object Tag = null;
+
         // ******************************************************************
         public HotKey(Key k, KeyModifier keyModifiers, Action<HotKey> action, bool register = true)
         {

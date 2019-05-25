@@ -400,31 +400,31 @@ public static partial class SH
         return input.Substring(0, pos) + zaco + input.Substring(pos + what.Length);
     }
 
-    static bool initDiactitic = false;
+    //static bool initDiactitic = false;
 
     /// <summary>
+    /// Another method is RemoveDiacritics
     /// G text bez dia A1.
     /// </summary>
     /// <param name="sDiakritik"></param>
     /// <returns></returns>
     public static string TextWithoutDiacritic(string sDiakritik)
     {
-        if (!initDiactitic)
-        {
-            System.Text.EncodingProvider provider = System.Text.CodePagesEncodingProvider.Instance;
-            Encoding.RegisterProvider(provider);
+        //if (!initDiactitic)
+        //{
+        //    System.Text.EncodingProvider provider = System.Text.CodePagesEncodingProvider.Instance;
+        //    Encoding.RegisterProvider(provider);
 
-            DebugLogger.Instance.WriteLine("Encoding registered");
+        //    initDiactitic = true;
+        //}
 
-            initDiactitic = true;
-        }
+        ////originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
+        //return Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(sDiakritik));
 
-        //originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
-        return Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(sDiakritik));
+        // FormC - followed by replacement of sequences
+        // As default using FormC
+        return sDiakritik.Normalize(NormalizationForm.FormC);
     }
-
-
-
 
     /// <summary>
     /// If input has curly bracket but isnt in right format, return A1. Otherwise apply string.Format. 
@@ -434,7 +434,7 @@ public static partial class SH
     /// <param name="status"></param>
     /// <param name="args"></param>
     /// <returns></returns>
-public static string Format(string status, params object[] args)
+    public static string Format(string status, params object[] args)
     {
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
         {

@@ -13,14 +13,19 @@ public class TextLang
     const string Wiki280Profile = "Profiles/Wiki280.profile.xml";
     const string cs = "cs";
     const string en = "en";
+    static bool initialized = false;
 
     /// <summary>
     /// must be in _Loaded event
     /// </summary>
     public static void Init()
     {
-        var ass = typeof(TextLang).Assembly;
-        resources = new EmbeddedResourcesH(ass, ass.GetName().Name);
+        if (!initialized)
+        {
+            var ass = typeof(TextLang).Assembly;
+            resources = new EmbeddedResourcesH(ass, ass.GetName().Name);
+            initialized = true;
+        }
     }
 
     /// <summary>
@@ -78,7 +83,7 @@ public class TextLang
     /// <returns></returns>
     public static bool IsCzech(string text)
     {
-        DebugLogger.Instance.WriteLine("Encoding preregistered");
+        
         if (SH.ContainsDiacritic(text))
         {
             return true;

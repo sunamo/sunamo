@@ -73,6 +73,11 @@ public class EmbeddedResourcesH : IResourceHelper
             return imageSource;
         }
 
+    /// <summary>
+    /// If it's file, return its content
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
         public string GetString(string name)
         {
 

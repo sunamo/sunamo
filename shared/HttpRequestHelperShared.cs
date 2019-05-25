@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿
 
 using sunamo.Helpers;
 using System.Collections.Generic;
@@ -24,6 +24,7 @@ public static partial class HttpRequestHelper{
         HttpWebResponse response;
         return GetResponseText(address, method, hrd, out response);
     }
+
     public static IPAddress GetUserIP(HttpRequest Request)
     {
         IPAddress vr = null;
@@ -57,6 +58,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 
     return response.GetResponseStream();
 }
+
 /// <summary>
 /// A3 can be null
 /// Dont forger Dispose on A4
@@ -210,14 +212,14 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
     /// <returns></returns>
     public static string GetUserIPString(HttpRequest Request)
     {
-        string vr = null; // Request.ServerVariables["REMOTE_ADDR"];
+        string vr =  Request.ServerVariables["REMOTE_ADDR"];
         if (vr == "::1")
         {
             vr = "127.0.0.1";
         }
         if (string.IsNullOrWhiteSpace(vr) || SH.OccurencesOfStringIn(vr, AllStrings.dot) != 3)
         {
-            string ipList = null;// Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string ipList =  Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (!string.IsNullOrEmpty(ipList))
             {
