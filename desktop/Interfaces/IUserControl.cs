@@ -6,7 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public interface IUserControl : IPanel, IWindowOpener
+/// <summary>
+/// Maybe will be desirable IWindowOpener
+/// </summary>
+public interface IUserControl : IPanel
     {
     string Title { get; }
     void Init();

@@ -1,6 +1,7 @@
 ﻿using sunamo;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 /// <summary>
@@ -18,6 +19,21 @@ public  class HtmlGenerator2 : HtmlGenerator
             colors.Add(null);
         }
         return Calendar(htmlBoxesEveryDay, colors, year, mesic);
+    }
+
+    public static string GenerateHtmlCheckBoxesFromFiles(string path, string masc, SearchOption so)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+
+        var files = FS.GetFiles(path, masc, so);
+        foreach (var item in files)
+        {
+            hg.WriteTagWithAttrs("input", "type", "checkbox");
+            hg.WriteRaw(FS.GetFileName(item));
+            hg.WriteBr();
+        }
+
+        return hg.ToString();
     }
 
     public static string Calendar(List<string> htmlBoxesEveryDay, List<string> colors, int year, int mesic)

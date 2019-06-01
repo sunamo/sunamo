@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Reflection;
 
@@ -84,6 +85,11 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName), nameCollection, element));
     }
+
+    internal static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
+    {
+        ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName), argName, argValue));
+    }
     #endregion
 
     #region Without parameters
@@ -159,7 +165,12 @@ public class ThrowExceptions
     {
         if (exception != null)
         {
-            
+#if ASPNET
+            //if (HttpRuntime.AppDomainAppId != null)
+            //{
+                Debugger.Break();
+            //}
+#endif
             throw new Exception(exception);
             return false;
         }
@@ -224,7 +235,7 @@ public class ThrowExceptions
     }
 
 
-    #endregion
+#endregion
 
 
 }

@@ -1,15 +1,49 @@
-﻿using System;
+﻿using sunamo.Html;
+using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Web;
 
 public class TransUnit
 {
     public string id;
     public bool translate;
     public string xml_space;
-    public string source;
-    public string target;
+    
+
+    string _source;
+
+    public string source
+    {
+        get
+        {
+            return _source;
+        }
+        set
+        {
+            value = SH.DecodeSlashEncodedString(value);
+            value = HtmlAssistant.TrimInnerHtml(value);
+            value = HttpUtility.HtmlEncode(value);
+            
+            _source = value;
+        }
+    }
+
+    string _target;
+    public string target
+    {
+        get
+        {
+            return _target;
+        }
+        set
+        {
+            value = SH.DecodeSlashEncodedString(value);
+            value = HtmlAssistant.TrimInnerHtml(value);
+            value = HttpUtility.HtmlEncode(value);
+            _target = value; 
+        }
+    }
 
     const string tTransUnit = "trans-unit";
 

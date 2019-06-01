@@ -727,12 +727,41 @@ public static List<short> ToShort(IEnumerable enumerable)
         return result;
     }
 
-    public static List<T> ToNumber<T>(Func<string, T> parse, IEnumerable enumerable)
+    public static List<T> ToNumber<T>(Func<string, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true)
     {
         List<T> result = new List<T>();
         foreach (var item in enumerable)
         {
-            result.Add(parse.Invoke(item.ToString()));
+            if (item.ToString() == "NA")
+            {
+
+            }
+
+            if (SH.IsNumber(item.ToString()))
+            {
+
+            var number = parse.Invoke(item.ToString());
+            
+                result.Add(number);
+            }
+
+        }
+        return result;
+    }
+
+    public static List<T> ToNumber<T>(Func<string, bool, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true) 
+    {
+        List<T> result = new List<T>();
+        foreach (var item in enumerable)
+        {
+            
+
+            var number = parse.Invoke(item.ToString(), mustBeAllNumbers);
+            if (number.ToString() == int.MinValue.ToString())
+            {
+                result.Add(number);
+            }
+            
         }
         return result;
     }
@@ -1007,6 +1036,10 @@ public static string[] TrimEnd(string[] sf, params char[] toTrim)
             {
                 return false;
             }
+        }
+        if (list.Count() == 0)
+        {
+            return false;
         }
         return true;
     }

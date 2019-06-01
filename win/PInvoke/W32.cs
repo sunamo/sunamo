@@ -3,6 +3,7 @@ using System;
 using sunamo.PInvoke;
 
 /// <summary>
+/// 
 /// SetLastError = true should be specified always, then I can get error value from Marshal.GetLastWin32Error. 
 /// https://stackoverflow.com/a/17918729/9327173
 /// </summary>

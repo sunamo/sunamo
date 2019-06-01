@@ -157,6 +157,12 @@ namespace Roslyn
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="wrapIntoClass"></param>
+        /// <returns></returns>
         public static ABC GetVariablesInCsharp(SyntaxNode root)
         {
             List<string> lines = new List<string>();

@@ -72,8 +72,24 @@ namespace Roslyn
             return true;
         }
 
-        public static SyntaxTree GetSyntaxTree(string code)
+        public static string WrapIntoClass(string code)
         {
+            return "class Dummy {" + code + "}";
+        }
+
+        /// <summary>
+        /// A2 - first must be class or namespace
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="wrapIntoClass"></param>
+        /// <returns></returns>
+        public static SyntaxTree GetSyntaxTree(string code, bool wrapIntoClass = false)
+        {
+            if (wrapIntoClass)
+            {
+                code = WrapIntoClass(code);
+            }
+
             return CSharpSyntaxTree.ParseText(code);
         }
 

@@ -117,6 +117,9 @@ public partial class FS
     /// <returns></returns>
     public static string GetDirectoryName(string rp)
     {
+        
+        ThrowExceptions.IsNullOrEmpty(type, "GetDirectoryName", "rp", rp);
+
         rp = rp.TrimEnd(AllChars.bs);
         int dex = rp.LastIndexOf(AllChars.bs);
         if (dex != -1)
@@ -132,6 +135,8 @@ public partial class FS
     /// <param name="nad"></param>
     public static void CreateFoldersPsysicallyUnlessThere(string nad)
     {
+        ThrowExceptions.IsNullOrEmpty(type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
+
         FS.MakeUncLongPath(ref nad);
         if (FS.ExistsDirectory(nad))
         {
@@ -913,7 +918,7 @@ public static string MascFromExtension(string ext = AllStrings.asterisk)
         return ext;
         }
 
-public static IEnumerable<string> GetFiles(string folderPath, bool recursive)
+public static List<string> GetFiles(string folderPath, bool recursive)
         {
             return FS.GetFiles(folderPath, FS.MascFromExtension(), recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
         }

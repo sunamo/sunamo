@@ -258,6 +258,20 @@ public static partial class BTS
         return def;
     }
 
+    public static int ParseInt(string entry, bool mustBeAllNumbers)
+    {
+        int d;
+        if (!int.TryParse(entry, out d))
+        {
+            if (mustBeAllNumbers)
+            {
+                return int.MinValue;
+            }
+        }
+
+        return d;
+    }
+
     public static int ParseInt(string entry, int _default)
     {
         int lastInt2 = 0;

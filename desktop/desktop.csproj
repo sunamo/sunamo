@@ -214,7 +214,6 @@
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
     <Compile Include="Helpers\BaseControls\UIElementHelper.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
@@ -261,6 +260,7 @@
     <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Hotkey.cs" />
     <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
+    <Compile Include="Interfaces\IHideToTray.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
@@ -495,7 +495,6 @@
     <Folder Include="Helpers\Content\EmbeddedResources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClipboardMonitor.txt" />
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Large.png" />
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Small.png" />
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.VisualStudio.bmp" />

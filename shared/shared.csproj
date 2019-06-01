@@ -196,6 +196,8 @@
     <Compile Include="Threading\TimeThreadPool.cs" />
     <Compile Include="UlozToParser.cs" />
     <Compile Include="Unsafe.cs" />
+    <Compile Include="Values\AllHtmlTags.cs" />
+    <Compile Include="Values\AllHtmlAttrs.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />

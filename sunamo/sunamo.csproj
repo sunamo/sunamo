@@ -147,6 +147,9 @@
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Diacritics">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\netstandard2.0\Diacritics.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>

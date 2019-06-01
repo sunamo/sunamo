@@ -14,9 +14,11 @@ using win;
 // if app isnt STA, return empty. 
 using System.Windows.Forms;
 using System.Windows.Interop;
+using sunamo.Clipboard;
 //using System.Windows;
 
 /// <summary>
+/// Must be in win due to ClipboardMonitor which uses W32 methods
 /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
 /// Use in ClipboardAsync and ClipboardHelperWin only System.Windows.Forms, not System.Windows which have very similar interface.
 /// </summary>
@@ -33,6 +35,7 @@ public class ClipboardHelperWin : IClipboardHelper
 
     private ClipboardHelperWin()
     {
+        clipboardMonitor = ClipboardMonitor.Instance;
     }
      
     #region Get,Set
@@ -45,8 +48,7 @@ public class ClipboardHelperWin : IClipboardHelper
     {
         if (clipboardMonitor != null)
         {
-            clipboardMonitor.monitor = null;
-            clipboardMonitor.afterSet = true;
+            clipboardMonitor.afterSet = null;
         }
 
         if (!string.IsNullOrWhiteSpace(v))
@@ -61,7 +63,6 @@ public class ClipboardHelperWin : IClipboardHelper
             //}).Start();
             //});
         }
-        
     }
 
     /// <summary>
@@ -83,6 +84,11 @@ public class ClipboardHelperWin : IClipboardHelper
 
     public void SetText2(string s)
     {
+        if (clipboardMonitor != null)
+        {
+            clipboardMonitor.afterSet = null;
+        }
+
         // Nastavím text a místo toho se mi  uloží nějaký úplně starý
         Clipboard.SetText(s);
     }
@@ -162,6 +168,11 @@ public class ClipboardHelperWin : IClipboardHelper
 
     public void SetText3(string s)
     {
+        if (clipboardMonitor != null)
+        {
+            clipboardMonitor.afterSet = null;
+        }
+
         Thread thread = new Thread(() => Clipboard.SetText(s));
         thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
         thread.Start();

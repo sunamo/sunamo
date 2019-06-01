@@ -936,10 +936,23 @@ public partial class FS
         }
     }
 
+    /// <summary>
+    /// Unit tests = OK
+    /// </summary>
+    /// <param name="files"></param>
     public static void DeleteFilesWithSameContentBytes(List<string> files)
         {
             DeleteFilesWithSameContentWorking<byte[], byte>(files, File.ReadAllBytes);
         }
+
+    /// <summary>
+    /// Unit tests = OK
+    /// </summary>
+    /// <param name="files"></param>
+    public static void DeleteDuplicatedImages(List<string> files)
+        {
+        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps. ");
+        }        
 
         public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T > readFunc)
         {

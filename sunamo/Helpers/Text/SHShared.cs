@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using Diacritics.Extensions;
 
 public static partial class SH
 {
@@ -400,7 +401,7 @@ public static partial class SH
         return input.Substring(0, pos) + zaco + input.Substring(pos + what.Length);
     }
 
-    //static bool initDiactitic = false;
+    static bool initDiactitic = false;
 
     /// <summary>
     /// Another method is RemoveDiacritics
@@ -410,49 +411,29 @@ public static partial class SH
     /// <returns></returns>
     public static string TextWithoutDiacritic(string sDiakritik)
     {
+        return sDiakritik.RemoveDiacritics();
+        #region Without this in .NET Core (unit tests etc.) throw expection ''ISO-8859-8' is not a supported encoding name. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method.
+        // but also with this don't throw exception but no working Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(sDiakritik));
         //if (!initDiactitic)
         //{
         //    System.Text.EncodingProvider provider = System.Text.CodePagesEncodingProvider.Instance;
         //    Encoding.RegisterProvider(provider);
 
         //    initDiactitic = true;
-        //}
+        //} 
+        #endregion
 
-        ////originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
-        //return Encoding.UTF8.GetString(Encoding.GetEncoding(1252).GetBytes(sDiakritik));
+        //originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
+        //return Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(sDiakritik));
 
         // FormC - followed by replacement of sequences
         // As default using FormC
-        return sDiakritik.Normalize(NormalizationForm.FormC);
+        //return sDiakritik.Normalize(NormalizationForm.FormC);
+
+        //return RemoveDiacritics(sDiakritik);
     }
 
-    /// <summary>
-    /// If input has curly bracket but isnt in right format, return A1. Otherwise apply string.Format. 
-    /// SH.Format2 return string.Format always
-    /// Wont working if contains {0} and another non-format replacement. For this case of use is there Format3
-    /// </summary>
-    /// <param name="status"></param>
-    /// <param name="args"></param>
-    /// <returns></returns>
-    public static string Format(string status, params object[] args)
-    {
-        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
-        {
-            return status;
-        }
-        else
-        {
-            try
-            {
-                return string.Format(status, args);
-            }
-            catch (Exception ex)
-            {
-                return status;
-                
-            }
-        }
-    }
+  
 
     /// <summary>
     /// Insert prefix starting with + 
@@ -803,20 +784,31 @@ public static List<int> GetVariablesInString(string innerHtml)
 
     /// <summary>
     /// Simply return from string.Format. SH.Format is more intelligent
+    /// If input has curly bracket but isnt in right format, return A1. Otherwise apply string.Format. 
+    /// SH.Format2 return string.Format always
+    /// Wont working if contains {0} and another non-format replacement. For this case of use is there Format3
     /// </summary>
     /// <param name="template"></param>
     /// <param name="args"></param>
     /// <returns></returns>
-    public static string Format2(string template, params object[] args)
+    public static string Format2(string status, params object[] args)
     {
-        if (template.Contains("{0"))
+        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
         {
-
-
-            //now is, also due to use {0:X2} etc
-            return string.Format(template, args);
+            return status;
         }
-        return template;
+        else
+        {
+            try
+            {
+                return string.Format(status, args);
+            }
+            catch (Exception ex)
+            {
+                return status;
+
+            }
+        }
     }
 
     /// <summary>
@@ -1680,5 +1672,13 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
             return p.Substring(0, dex);
         }
         return "";
+    }
+
+    public static string DecodeSlashEncodedString(string value)
+    {
+        value = SH.ReplaceAll(value, "\\", "\\\\");
+        value = SH.ReplaceAll(value, "\"", "\\\"");
+        value = SH.ReplaceAll(value, "\'", "\\\'");
+        return value;
     }
 }

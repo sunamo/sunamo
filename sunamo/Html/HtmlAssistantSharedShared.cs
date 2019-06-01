@@ -23,4 +23,19 @@ public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim =
 
         return string.Empty;
     }
+
+    public static string TrimInnerHtml(string value)
+    {
+        HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
+        hd.LoadHtml(value);
+        foreach (var item in hd.DocumentNode.DescendantsAndSelf())
+        {
+            if (item.NodeType == HtmlNodeType.Element)
+            {
+                item.InnerHtml = item.InnerHtml.Trim();
+            }
+            
+        }
+        return hd.DocumentNode.OuterHtml;
+    }
 }

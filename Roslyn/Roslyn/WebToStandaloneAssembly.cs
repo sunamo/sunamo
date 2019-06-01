@@ -11,10 +11,8 @@ namespace Roslyn
 {
     public class WebToStandaloneAssembly
     {
-        // zjistit zda můžu nějak vytvářet patarmety konstruktoru nebo položky
-
         /// <summary>
-        /// ctorArgs is interesting
+        /// 
         /// </summary>
         /// <param name="csClass"></param>
         /// <param name="ctorArgs"></param>
@@ -41,7 +39,7 @@ namespace Roslyn
         }
 
         /// <summary>
-        /// ctorArgs,ctorInner should be interesting for me
+        /// 
         /// </summary>
         /// <param name="nsX"></param>
         /// <param name="className"></param>

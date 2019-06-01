@@ -5,33 +5,107 @@ using System.Text;
 
 public class XlfKeys
 {
+	
 
+	
 
+	public const string ChangingMailOnTheWeb = "ChangingMailOnTheWeb" ; 
 
+	public const string ClickThisCodeToCompleteTheReactivation = "ClickThisCodeToCompleteTheReactivation" ; 
 
+	public const string YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount = "YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount" ; 
 
+	public const string ProblemOnTheWeb = "ProblemOnTheWeb" ; 
 
+	public const string AdditionalDescription = "AdditionalDescription" ; 
 
+	public const string Method = "Method" ; 
 
+	public const string Class = "Class" ; 
 
+	public const string WebRegistrationSuccessful = "WebRegistrationSuccessful" ; 
 
+	public const string copyToClipboardAndEnterItAt = "copyToClipboardAndEnterItAt" ; 
 
+	public const string AlternativelyYouCanCode = "AlternativelyYouCanCode" ; 
 
+	public const string ClickOnThisCodeToCompleteTheRegistration = "ClickOnThisCodeToCompleteTheRegistration" ; 
 
+	public const string YourPasswordIs = "YourPasswordIs" ; 
 
+	public const string YourLoginNameSounds = "YourLoginNameSounds" ; 
 
+	public const string YourAnswerToTheSecurityQuestionIs = "YourAnswerToTheSecurityQuestionIs" ; 
 
+	public const string YourSecurityQuestionIs = "YourSecurityQuestionIs" ; 
 
+	public const string ThankYouForRegisteringOnTheServer = "ThankYouForRegisteringOnTheServer" ; 
 
+	public const string CreateANewPasswordForYourSecurityResponse = "CreateANewPasswordForYourSecurityResponse" ; 
 
+	public const string FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou = "FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou" ; 
 
+	public const string someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou = "someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou" ; 
 
+	public const string HelloFrom = "HelloFrom" ; 
 
+	public const string BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided = "BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided" ; 
 
+	public const string YouDidNotSelectYourMailSettings = "YouDidNotSelectYourMailSettings" ; 
 
+	public const string SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb = "SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb" ; 
 
+	public const string NewUserRegistration = "NewUserRegistration" ; 
 
+	public const string TheSpecifiedUserNumberWasNotAValidIntNumber = "TheSpecifiedUserNumberWasNotAValidIntNumber" ; 
 
+	public const string AUserWithThisIDInDBWasNotFound = "AUserWithThisIDInDBWasNotFound" ; 
+
+	public const string hasNoRequestToChangeEmail = "hasNoRequestToChangeEmail" ; 
+
+	public const string EmailWasSuccessfullySentToYourNewEmailAddress = "EmailWasSuccessfullySentToYourNewEmailAddress" ; 
+
+	public const string CanTSignInAfterChangingYourEmailTryThisPage = "CanTSignInAfterChangingYourEmailTryThisPage" ; 
+
+	public const string SendReactivationEmail = "SendReactivationEmail" ; 
+
+	public const string ResendActivationEmail = "ResendActivationEmail" ; 
+
+	public const string TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase = "TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase" ; 
+
+	public const string ThisLoginWasNotFoundInTheDatabase = "ThisLoginWasNotFoundInTheDatabase" ; 
+
+	public const string hasBeenResubmittedSuccessfully = "hasBeenResubmittedSuccessfully" ; 
+
+	public const string ActivationEmailForNickname = "ActivationEmailForNickname" ; 
+
+	public const string TheActivationEmailWasSentBackTo = "TheActivationEmailWasSentBackTo" ; 
+
+	public const string DidYouMissYourActivationEmailThisPageMayHelp = "DidYouMissYourActivationEmailThisPageMayHelp" ; 
+
+	public const string doesNotExistInTheDatabase = "doesNotExistInTheDatabase" ; 
+
+	public const string wasNotFoundWeCannotGenerateANewPasswordForYou = "wasNotFoundWeCannotGenerateANewPasswordForYou" ; 
+
+	public const string hasDisabledPasswordRecoveryOption = "hasDisabledPasswordRecoveryOption" ; 
+
+	public const string TheAnswerToTheSecurityQuestionWasNotAccepted = "TheAnswerToTheSecurityQuestionWasNotAccepted" ; 
+
+	public const string ANewPasswordHasBeenSentToYourEmail = "ANewPasswordHasBeenSentToYourEmail" ; 
+
+	public const string NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword = "NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" ; 
+
+	public const string NoLoginEmailSpecifiedEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword = "NoLoginEmailSpecifiedEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" ; 
+
+	public const string HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword = "HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword" ; 
+
+	public const string ResetYourAccountPassword = "ResetYourAccountPassword" ; 
+
+	public const string HtmlGenericControlPPleaseAnswerThisSecurityQuestionToGenerateANewPasswordHtmlButtonBtnSubmit = "HtmlGenericControlPPleaseAnswerThisSecurityQuestionToGenerateANewPasswordHtmlButtonBtnSubmit" ; 
+
+	public const string GenerateANewPassword = "GenerateANewPassword" ; 
+
+	public const string PleaseAnswerThisSecurityQuestionToGenerateANewPassword = "PleaseAnswerThisSecurityQuestionToGenerateANewPassword" ; 
 
 	public const string Register = "Register" ; 
 
@@ -55,17 +129,9 @@ public class XlfKeys
 
 	public const string generateARandomStrongPassword = "generateARandomStrongPassword" ; 
 
-	public const string lblPassword = "lblPassword" ; 
-
-	public const string txtLoginHintInnerHtml = "txtLoginHintInnerHtml" ; 
-
-	public const string txtLogin = "txtLogin" ; 
 
 	public const string uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed = "uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed" ; 
 
-	public const string btnLogin = "btnLogin" ; 
-
-	public const string btnGenerateNewPassword = "btnGenerateNewPassword" ; 
 
 	public const string YouMustEnterYourLoginNameForTheNextStep = "YouMustEnterYourLoginNameForTheNextStep" ; 
 

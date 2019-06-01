@@ -442,6 +442,7 @@ public static partial class SH
 
     /// <summary>
     /// Remove also A2
+    /// Don't trim
     /// </summary>
     /// <param name="t"></param>
     /// <param name="ch"></param>
@@ -1571,30 +1572,40 @@ public static partial class SH
         return reg.IsMatch(str);
     }
 
-    
 
-    
+
+
 
     /// <summary>
-    /// 
+    /// Not working for czech, same as https://stackoverflow.com/a/249126
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
     public static string RemoveDiacritics(string text)
     {
-        var normalizedString = text.Normalize(NormalizationForm.FormD);
-        var stringBuilder = new StringBuilder();
 
-        foreach (var c in normalizedString)
+        String normalizedString = text.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
         {
-            var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
-            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            switch (CharUnicodeInfo.GetUnicodeCategory(c))
             {
-                stringBuilder.Append(c);
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.DecimalDigitNumber:
+                    stringBuilder.Append(c);
+                    break;
+                case UnicodeCategory.SpaceSeparator:
+                case UnicodeCategory.ConnectorPunctuation:
+                case UnicodeCategory.DashPunctuation:
+                    stringBuilder.Append('_');
+                    break;
             }
         }
-
-        return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        string result = stringBuilder.ToString();
+        return String.Join("_", result.Split(new char[] { '_' }
+            , StringSplitOptions.RemoveEmptyEntries)); // remove duplicate underscores
     }
 
 

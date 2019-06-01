@@ -122,9 +122,29 @@ using System.Text;
         {
             return variableName + "Doesn't have required type.";
         }
-        #endregion
 
-        public static string CheckBackslashEnd(string before, string r)
+    internal static string IsNullOrEmpty(string before, string argName, string argValue)
+    {
+        if (argValue == null)
+        {
+            return CheckBefore(before) + argName + "is null";
+        }
+        else if(argValue == string.Empty)
+        {
+            return CheckBefore(before) + argName + "is empty (without trim)";
+        }
+        else if (argValue.Trim() == string.Empty)
+        {
+            return CheckBefore(before) + argName + "is empty (with trim)";
+        }
+
+        return null;
+    }
+
+
+    #endregion
+
+    public static string CheckBackslashEnd(string before, string r)
         {
             if (r.Length != 0)
             {

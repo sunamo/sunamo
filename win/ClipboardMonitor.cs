@@ -1,6 +1,4 @@
-﻿#region Mono
-using desktop.Essential;
-using desktop.Interfaces;
+﻿
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -20,24 +18,21 @@ namespace sunamo.Clipboard
         public static ClipboardMonitor Instance = new ClipboardMonitor();
 
 		 static bool _pernamentlyBlock = false;
-		 static bool? _monitor = true;
-		/// <summary>
-		/// If true, 
-        /// in first clipboard change change its value = false and monitor = null. 
-        /// In second monitor = true and 
-        /// in third is clipboard watching.
-		/// </summary>
-		 static bool _afterSet = false;
+		 static bool? _afterSet = false;
 
         /// <summary>
-        /// First is setted to false, 
-        /// after first save to clipboard auto to true
+        /// Helper variable which change only IClipboardHelper and IClipboardMonitor
+        /// after set to clipboard is set to null
+        /// then is set to true
+        /// on last is set to false
+        /// everything is ready to use, developer must only call ClipboardHelper.SetText, nothing else
         /// </summary>
-        public bool? monitor { get =>  _monitor; set => _monitor = value; }
-        public bool afterSet { get => _afterSet; set => _afterSet = value; }
+        public bool? afterSet { get => _afterSet; set => _afterSet = value; }
         public bool pernamentlyBlock { get => _pernamentlyBlock; set => _pernamentlyBlock = value; }
 
-        // Don't exists in mono
+        /// <summary>
+        /// Don't exists in mono
+        /// </summary>
         private HwndSource hwndSource = new HwndSource(0, 0, 0, 0, 0, 0, 0, null, W32.HWND_MESSAGE);
 
         private ClipboardMonitor()
@@ -59,9 +54,7 @@ namespace sunamo.Clipboard
         /// </summary>
         const long wParamRight = 5;
         long lastWParam = 0;
-
-
-        string last = null;
+        public static string last = null;
 
 		private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
@@ -70,34 +63,19 @@ namespace sunamo.Clipboard
             if (!pernamentlyBlock)
 			{
                 handled = true;
-                //bool avoidTwoTimes = lastWParam == wParamChromeOmnibox;
-                //lastWParam = wParam.ToInt64();
-                //if (avoidTwoTimes)
-                //{
-                //    lastWParam = wParamRight;
-                //    return IntPtr.Zero;
-                //}
 
-                if (afterSet)
-				{
-					afterSet = false;
-                    // With this I never on second attempt invoke event, because its jump into 3th case of this if
-					//monitor = null;
-				}
-                #region MyRegion
-                //else if (monitor.HasValue && !monitor.Value)
-                //{
-                //    monitor = null;
-                //}
-                //else if (!monitor.HasValue)
-                //{
-                //    monitor = true;
-                //} 
-                #endregion
-                else if (monitor.HasValue && monitor.Value)
-				{
-					if (msg == W32.WM_CLIPBOARDUPDATE)
-					{
+                if (afterSet == null)
+                {
+                    afterSet = true;
+                }
+                else if (afterSet == true)
+                {
+                    afterSet = false;
+                }
+                else
+                {
+                    if (msg == W32.WM_CLIPBOARDUPDATE)
+                    {
                         if (last == null)
                         {
                             CopyToClipboard();
@@ -114,15 +92,8 @@ namespace sunamo.Clipboard
                                 last = null;
                             }
                         }
-                        // After second calling app will be crash and no unhandled exception is generated
-                        // ClipboardHelper also is working perfectly with that
-                        
-                            
-                        
-
-					}
-				}
-				
+                    }
+                }
             }
 
             return IntPtr.Zero;
@@ -130,8 +101,12 @@ namespace sunamo.Clipboard
 
         private void CopyToClipboard()
         {
-            // Will be add all lines again if wont check for permanently block
-            ClipboardContentChanged();
+            if (ClipboardContentChanged != null)
+            {
+                // Will be add all lines again if wont check for permanently block
+                ClipboardContentChanged();
+            }
+            
             last = ClipboardHelper.GetText();
         }
 
@@ -141,4 +116,3 @@ namespace sunamo.Clipboard
         public event VoidVoid ClipboardContentChanged;
 	}
 }
-#endregion

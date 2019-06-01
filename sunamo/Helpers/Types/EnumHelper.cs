@@ -54,6 +54,7 @@ public static partial class EnumHelper
     }
 
     /// <summary>
+    /// If A1, will start from [1]. Otherwise from [0]
     /// Get all without zero and All.
     /// </summary>
     /// <typeparam name = "T"></typeparam>
@@ -155,6 +156,15 @@ public static partial class EnumHelper
         }
     }
 
+    /// <summary>
+    /// If A1, will start from [1]. Otherwise from [0]
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="secondIsAll"></param>
+    /// <param name="def"></param>
+    /// <param name="valuesInverted"></param>
+    /// <param name="result"></param>
+    /// <param name="max"></param>
     private static void GetValuesOfEnum<T>(bool secondIsAll, out int def, out int[] valuesInverted, out List<T> result, out int max)
         where T : struct
     {

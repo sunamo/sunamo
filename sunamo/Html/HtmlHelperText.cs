@@ -40,6 +40,13 @@ namespace sunamo.Html
             return HtmlTagSyntax.Start;
         }
 
+        public static string TrimInnerOfEncodedHtml(string value)
+        {
+            value = SH.ReplaceAll(value, "&gt;", "&gt; ");
+            value = SH.ReplaceAll(value, "&lt;", " &lt;");
+            return value;
+        }
+
         public static List<string> GetContentOfTags(string text, string pre)
         {
             List<string> result = new List<string>();
