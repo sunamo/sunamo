@@ -78,7 +78,9 @@ public partial class FS
         if (!path.StartsWith(Consts.UncLongPath))
         {
             // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
-            //path = Consts.UncLongPath + path;
+#if !ASPNET
+            path = Consts.UncLongPath + path;
+#endif
         }
         return path;
     }
@@ -108,6 +110,8 @@ public partial class FS
         // FS.ExistsDirectory if pass SE or only start of Unc return false
         return Directory.Exists(MakeUncLongPath(item));
     }
+
+    
 
     /// <summary>
     /// Works with and without end backslash

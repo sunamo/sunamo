@@ -285,7 +285,9 @@ public static partial class SH
     }
 
     /// <summary>
-    /// SearchStrategy.AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// ExactlyName - ==
+    /// FixedSpace - simple contains
     /// </summary>
     /// <param name="input"></param>
     /// <param name="term"></param>
@@ -340,7 +342,10 @@ public static partial class SH
     }
 
     /// <summary>
-    /// Default for 
+    /// AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// ExactlyName - ==
+    /// FixedSpace - simple contains
+    /// 
     /// A1 = search for exact occur. otherwise split both to words
     /// Control for string.Empty, because otherwise all results are true
     /// </summary>

@@ -7,6 +7,7 @@ public static partial class AspNet{
     const string info = "info:";
     const string information = "information:";
     const string appeal = "appeal:";
+
     /// <summary>
     /// If dont start with none, return Ordinal
     /// </summary>

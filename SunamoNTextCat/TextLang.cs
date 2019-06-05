@@ -83,7 +83,11 @@ public class TextLang
     /// <returns></returns>
     public static bool IsCzech(string text)
     {
-        
+        if (text == "Hello")
+        {
+            return false;
+        }
+
         if (SH.ContainsDiacritic(text))
         {
             return true;

@@ -13,8 +13,6 @@ using System.Text;
 
 public static partial  class CA
 {
-    
-
     public static string SwitchForGoogleSheets(List<string> captions, List<List<string>> exists)
     {
         ValuesTableGrid<string> vtg = new ValuesTableGrid<string>(exists);
@@ -28,8 +26,6 @@ public static partial  class CA
         {
             JoinForGoogleSheetRow(sb, item.ItemArray);
         }
-
-
 
         string vr = sb.ToString();
         DebugLogger.Instance.WriteLine(vr);
@@ -291,6 +287,15 @@ public static partial  class CA
         return result;
     }
 
+    /// <summary>
+    /// AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// ExactlyName - ==
+    /// FixedSpace - simple contains
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="term"></param>
+    /// <param name="searchStrategy"></param>
+    /// <returns></returns>
     public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         List<int> result = new List<int>();
@@ -773,12 +778,29 @@ public static partial  class CA
         return vr;
     }
 
+    /// <summary>
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement
+    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// </summary>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <returns></returns>
     public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
     {
         string contained = null;
         return IsSomethingTheSame(ext, p1, ref contained);
     }
 
+    /// <summary>
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement
+    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// </summary>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <param name="contained"></param>
+    /// <returns></returns>
     public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1, ref string contained)
     {
         foreach (var item in p1)

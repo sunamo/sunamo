@@ -9,6 +9,10 @@ public class XlfKeys
 
 	
 
+	public const string Hello = "Hello" ; 
+
+	public const string Hi = "Hi" ; 
+
 	public const string ChangingMailOnTheWeb = "ChangingMailOnTheWeb" ; 
 
 	public const string ClickThisCodeToCompleteTheReactivation = "ClickThisCodeToCompleteTheReactivation" ; 

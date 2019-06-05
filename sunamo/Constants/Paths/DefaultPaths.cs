@@ -38,7 +38,10 @@ namespace sunamo.Constants
         public static string Test_MoveClassElementIntoSharedFileUC = "d:\\_Test\\AllProjectSearch\\MoveClassElementIntoSharedFileUC\\";
 
         public static List<string> AllPathsToProjects = CA.ToListString(Test_MoveClassElementIntoSharedFileUC, vs, vsDocuments, vs17 + ProjectsFolderNameSlash, vs17Documents + ProjectsFolderNameSlash, NormalizePathToFolder);
-        
+
+        public const string SyncArchived = @"d:\SyncArchived\";
+        public const string SyncArchivedText = @"d:\SyncArchived\Text\";
+        public const string SyncArchivedDrive = @"d:\SyncArchived\Drive\";
 
         public static string[] All = new string[] { Documents, Docs, Downloads, Music2 };
         

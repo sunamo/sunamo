@@ -1021,8 +1021,10 @@ public static string[] TrimEnd(string[] sf, params char[] toTrim)
         return default(T);
     }
 
-/// <summary>
-    /// Is same as IsEqualToAnyElement, only have switched elements
+    /// <summary>
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement - at least one element must contains.
+    /// IsSomethingTheSame - only for string.   
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
@@ -1030,18 +1032,19 @@ public static string[] TrimEnd(string[] sf, params char[] toTrim)
     /// <returns></returns>
     public static bool ContainsElement<T>(IEnumerable<T> list, T t)
     {
-        foreach (T item in list)
-        {
-            if (!Comparer<T>.Equals(item, t))
-            {
-                return false;
-            }
-        }
         if (list.Count() == 0)
         {
             return false;
         }
-        return true;
+        foreach (T item in list)
+        {
+            if (Comparer<T>.Equals(item, t))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
 public static List<string> WithoutDiacritic(List<string> nazev)

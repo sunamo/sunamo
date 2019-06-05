@@ -899,6 +899,8 @@ public partial class FS
             CopyMoveAllFilesRecursively(p, to, co, false, contains);
         }
 
+    
+
     /// <summary>
     /// If want use which not contains, prefix A4 with !
     /// </summary>
@@ -911,7 +913,7 @@ public partial class FS
         string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
         foreach (var item in files)
         {
-            if (!string.IsNullOrEmpty( contains ))
+            if (!string.IsNullOrEmpty(contains))
             {
                 bool negation = SH.IsNegation(ref contains);
 
@@ -919,20 +921,25 @@ public partial class FS
                 {
                     continue;
                 }
-                else if(!negation && !item.Contains(contains))
+                else if (!negation && !item.Contains(contains))
                 {
                     continue;
                 }
             }
-            string fileTo = to + item.Substring(p.Length);
-            if (move)
-            {
-                MoveFile(item, fileTo, co);
-            }
-            else
-            {
-                CopyFile(item, fileTo, co);
-            }
+            MoveOrCopy(p, to, co, move, item);
+        }
+    }
+
+    private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, bool move, string item)
+    {
+        string fileTo = to + item.Substring(p.Length);
+        if (move)
+        {
+            MoveFile(item, fileTo, co);
+        }
+        else
+        {
+            CopyFile(item, fileTo, co);
         }
     }
 
@@ -1502,6 +1509,7 @@ public partial class FS
 
         public static void CreateDirectoryIfNotExists(string p)
         {
+        MakeUncLongPath(ref p);
             if (!FS.ExistsDirectory(p))
             {
                 Directory.CreateDirectory(p);
