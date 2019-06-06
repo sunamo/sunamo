@@ -9,6 +9,124 @@ public class XlfKeys
 
 	
 
+	public const string NewComment = "NewComment" ; 
+
+	public const string YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail = "YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" ; 
+
+	public const string newContentCommentAdded = "newContentCommentAdded" ; 
+
+	public const string sczComments = "sczComments" ; 
+
+	public const string OnThePage = "OnThePage" ; 
+
+	public const string PageRecommendations = "PageRecommendations" ; 
+
+	public const string TheAboveMentionedUserRecommendsThisPageToYou = "TheAboveMentionedUserRecommendsThisPageToYou" ; 
+
+	public const string forYou = "forYou" ; 
+
+	public const string verifiedEmail = "verifiedEmail" ; 
+
+	public const string UserRecommendations = "UserRecommendations" ; 
+
+	public const string RequestRemovalOfUserComments = "RequestRemovalOfUserComments" ; 
+
+	public const string fromTheseSites = "fromTheseSites" ; 
+
+	public const string UserIsRequestingRemovalOfUserComments = "UserIsRequestingRemovalOfUserComments" ; 
+
+	public const string AddADomain = "AddADomain" ; 
+
+	public const string thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain = "thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain" ; 
+
+	public const string YouShouldDoItBy = "YouShouldDoItBy" ; 
+
+	public const string andEnterTheCodeHere = "andEnterTheCodeHere" ; 
+
+	public const string visitThePage = "visitThePage" ; 
+
+	public const string or = "or" ; 
+
+	public const string click = "click" ; 
+
+	public const string FurthermoreItIsNecessaryToVerifyManually = "FurthermoreItIsNecessaryToVerifyManually" ; 
+
+	public const string ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage = "ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage" ; 
+
+	public const string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain" ; 
+
+	public const string fromThePlan = "fromThePlan" ; 
+
+	public const string Den = "Den" ; 
+
+	public const string fromTheReadingPlan = "fromTheReadingPlan" ; 
+
+	public const string day = "day" ; 
+
+	public const string ReadVersesForToday = "ReadVersesForToday" ; 
+
+	public const string weHaveTheVersesForYouToday = "weHaveTheVersesForYouToday" ; 
+
+	public const string RequestForReadingPlanApproval = "RequestForReadingPlanApproval" ; 
+
+	public const string whereToFindMoreInformation = "whereToFindMoreInformation" ; 
+
+	public const string approvalPage = "approvalPage" ; 
+
+	public const string ToApproveItGoTo = "ToApproveItGoTo" ; 
+
+	public const string ANewReadingPlanWasCreated = "ANewReadingPlanWasCreated" ; 
+
+	public const string itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors = "itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" ; 
+
+	public const string YouCanNowAssignVersesToIt = "YouCanNowAssignVersesToIt" ; 
+
+	public const string WellDoneStageOfYourReadingPlanWasApproved = "WellDoneStageOfYourReadingPlanWasApproved" ; 
+
+	public const string Refusal = "Refusal" ; 
+
+	public const string itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged = "itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged" ; 
+
+	public const string OjojUnfortunatelyYourReadingPlan = "OjojUnfortunatelyYourReadingPlan" ; 
+
+	public const string Approval = "Approval" ; 
+
+	public const string NowYouCanStartReadingItOn = "NowYouCanStartReadingItOn" ; 
+
+	public const string WellDoneYourReadingPlanWasApproved = "WellDoneYourReadingPlanWasApproved" ; 
+
+	public const string ZdravíčkoZ = "ZdravíčkoZ" ; 
+
+	public const string emailTo = "emailTo" ; 
+
+	public const string planName = "planName" ; 
+
+	public const string planID = "planID" ; 
+
+	public const string approved = "approved" ; 
+
+	public const string readPlan = "readPlan" ; 
+
+	public const string TitleApprovalApplication = "TitleApprovalApplication" ; 
+
+	public const string TheUserRequestsTheReadPlanApproval = "TheUserRequestsTheReadPlanApproval" ; 
+
+	public const string namePlan = "namePlan" ; 
+
+	public const string idPlan = "idPlan" ; 
+
+	public const string IWishYouMySitesToBeOfBenefitAndJoy = "IWishYouMySitesToBeOfBenefitAndJoy" ; 
+
+	public const string hg = "hg" ; 
+
+	public const string reTrueUid = "reTrueUid" ; 
+
+	public const string fontWeightBolder = "fontWeightBolder" ; 
+
+	public const string NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage = "NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage" ; 
+
+	public const string success = "success" ; 
+
 	public const string Hello = "Hello" ; 
 
 	public const string Hi = "Hi" ; 

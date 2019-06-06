@@ -39,10 +39,25 @@ using System.Text;
             return FS.ExistsDirectory(rootFolder);
         }
 
-        public override bool IsRootFolderNull()
+    public string ReadFolderWithAppsFilesOrDefault(string s)
+    {
+        var content = TF.ReadFile(s);
+        if (content == string.Empty)
+        {
+            return RootFolderCommon(false);
+        }
+        return content;
+    }
+
+    public override bool IsRootFolderNull()
         {
             var def = default(string);
-            return EqualityComparer<string>.Default.Equals(rootFolder, def);
+            if(! EqualityComparer<string>.Default.Equals(rootFolder, def))
+            {
+            // is not null
+            return rootFolder == string.Empty;
+            }
+        return true;
         }
 
         public override void AppendToFile(string content, string sf)
@@ -79,6 +94,9 @@ using System.Text;
     {
         string r = AppData.ci.GetFolderWithAppsFiles();
         string sunamoFolder = TF.ReadFile(r);
+
+        
+
         if (string.IsNullOrWhiteSpace(sunamoFolder))
         {
             sunamoFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
@@ -89,11 +107,11 @@ using System.Text;
     /// <summary>
     /// Without ext because all is crypted and in bytes
     /// </summary>
-    /// <param name="key"></param>
+    /// <param name="filename"></param>
     /// <returns></returns>
-    public override string GetFileCommonSettings(string key)
+    public override string GetFileCommonSettings(string filename)
     {
-        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), key);
+        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), filename);
     
     }
 

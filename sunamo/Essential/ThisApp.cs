@@ -31,7 +31,16 @@ namespace sunamo.Essential
             var format = SH.Format2(status, args);
             if (format.Trim() != string.Empty)
             {
-                StatusSetted(st, format);
+                if (StatusSetted == null)
+                {
+                    // For unit tests
+                    DebugLogger.Instance.WriteLine(st + ": " + format);
+                }
+                else
+                {
+                    StatusSetted(st, format);
+                }
+                
             }
          }
 

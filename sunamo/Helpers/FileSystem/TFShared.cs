@@ -19,20 +19,24 @@ public partial class TF
     {
         FS.MakeUncLongPath(ref s);
 
+        string result = string.Empty;
+
         if (FS.ExistsFile(s))
         {
             while (true)
             {
                 try
                 {
-                    return File.ReadAllText(s, Encoding.UTF8);
+                    result = File.ReadAllText(s, Encoding.UTF8);
+                    break;
                 }
                 catch (Exception ex)
                 {
-
+                    Thread.Sleep(500);
+                    
                     
                 }
-                Thread.Sleep(500);
+                
             }
             
         }
@@ -41,7 +45,7 @@ public partial class TF
             File.WriteAllText(s, "", Encoding.UTF8);
         }
 
-        return "";
+        return result;
     }
 
 static void SaveFile(string obsah, string soubor, bool pripsat)

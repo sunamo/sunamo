@@ -79,6 +79,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\desktop\desktop.csproj">
+      <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
+      <Name>desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

@@ -41,7 +41,7 @@ public class TextLang
         var languages = identifier.Identify(text);
         
 
-        DebugLogger.Instance.DumpObject("", languages, DumpProvider.Yaml);
+        //DebugLogger.Instance.DumpObject("", languages, DumpProvider.Yaml);
 
         return languages.Select(d => d.Item1).ToList();
 

@@ -50,6 +50,7 @@ public class ClipboardHelper
 
     public  static List<string> GetLines()
     {
+#if !UNITTEST
         if (Instance == null)
         {
             return InstanceApps.GetLines().Result;
@@ -58,12 +59,14 @@ public class ClipboardHelper
         {
             return Instance.GetLines();
         }
+#endif
     }
 
     
 
     public static void SetText(string s)
     {
+#if !UNITTEST
         if (Instance == null)
         {
             InstanceApps.SetText(s);
@@ -72,6 +75,7 @@ public class ClipboardHelper
         {
             Instance.SetText(s);
         }
+#endif
     }
 
     public static void SetText2(string s)

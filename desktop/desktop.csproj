@@ -293,13 +293,16 @@
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
+    <Compile Include="UserControls\AboutApp.xaml.cs">
+      <DependentUpon>AboutApp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EnterOneValueWindow.xaml.cs">
       <DependentUpon>EnterOneValueWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LoginUc.xaml.cs">
+    <Compile Include="UserControls\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NotificationWindow.xaml.cs">
@@ -473,6 +476,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\AboutApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\EnterOneValueWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -481,7 +488,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\LoginUc.xaml">
+    <Page Include="UserControls\LoginUc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
