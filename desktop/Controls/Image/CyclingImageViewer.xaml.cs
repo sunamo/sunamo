@@ -71,12 +71,12 @@ namespace desktop
             if (e.Key == Key.Left)
             {
                 Before();
-                OnNewStatus("Bylo přesunuto zpět na fotku " + imagesPath.ToString());
+                OnNewStatus("Bylo přesunuto zpět na fotku" + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Right)
             {
                 Next();
-                OnNewStatus("Bylo přesunuto vpřed na fotku " + imagesPath.ToString());
+                OnNewStatus("Bylo přesunuto vpřed na fotku" + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Enter)
             {
@@ -85,7 +85,7 @@ namespace desktop
                 Next();
                 if (b == "success")
                 {
-                    OnNewStatus("Byl zmenšen obrázek {0} a nastaven obrázek v dalším pořadí - {1} ({2})", System.IO.Path.GetFileName(copy), System.IO.Path.GetFileName(ActualFile), imagesPath.ToString());    
+                    OnNewStatus("Byl zmenšen obrázek {0} a nastaven obrázek v dalším pořadí - {1} ({2" + "})", System.IO.Path.GetFileName(copy), System.IO.Path.GetFileName(ActualFile), imagesPath.ToString());    
                 }
                 
             }
@@ -94,7 +94,7 @@ namespace desktop
         public void ClearCollection()
         {
             imagesPath.Clear();
-            OnNewStatus("Kolekce obrázků byla vymazána.");
+            OnNewStatus("Kolekce obrázků byla vymazána" + ".");
         }
 
         public void AddImages(List<string> value)
@@ -103,11 +103,11 @@ namespace desktop
             {
                 imagesPath.AddRange(value);
                 ActualFile = imagesPath.SetIretation(0);
-                OnNewStatusAppend("Místo toho bylo načteno {0} nových obrázků.", value.Count);
+                OnNewStatusAppend("Místo toho bylo načteno {0} nových obrázků" + ".", value.Count);
             }
             else
             {
-                OnNewStatusAppend("Nebyly načteny další obrázky, protože zadaná složka žádné obrázky neobsahovala.");
+                OnNewStatusAppend("Nebyly načteny další obrázky, protože zadaná složka žádné obrázky neobsahovala" + ".");
             }
         }
 

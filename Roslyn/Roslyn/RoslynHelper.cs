@@ -74,7 +74,7 @@ namespace Roslyn
 
         public static string WrapIntoClass(string code)
         {
-            return "class Dummy {" + code + "}";
+            return "class Dummy" + " {" + code + "}";
         }
 
         /// <summary>

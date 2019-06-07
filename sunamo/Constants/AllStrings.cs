@@ -78,4 +78,7 @@ using System.Text;
         /// </summary>
         public static string cs2 = ": ";
         public const string bs2 = "\b";
+    public const string hashtag = "#";
+    public const string equal = "=";
+    public const string ampersand = "&";
     }

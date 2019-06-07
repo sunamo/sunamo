@@ -152,7 +152,7 @@ namespace desktop
         {
             if (value > 100)
             {
-                //throw new Exception("Hodnota pro ProgressBar nemůže být vyšší než 100.");
+                //throw new Exception("Hodnota pro ProgressBar nemůže být vyšší než 100" + ".");
                 value = 100;
             }
             pb.Value = value;

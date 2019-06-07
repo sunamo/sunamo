@@ -41,7 +41,7 @@ namespace desktop.Controls
                 v = "None";
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + v;
+            tbSelectedFile.Text = "Selected file" + ": " + v;
         }
 
         public event VoidStringBitmapBitmapSource FileSelected;

@@ -45,7 +45,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "What do you want proceed?";
+            this.label1.Text = "What do you want proceed" + "?";
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(441, 310);
             this.button1.Name = "button1";

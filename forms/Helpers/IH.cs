@@ -117,7 +117,7 @@ namespace forms
         {
             if (value > 100)
             {
-                throw new Exception("Hodnota pro ProgressBar nem��e b�t vy��� ne� 100.");
+                throw new Exception("Hodnota pro ProgressBar nem��e b�t vy��� ne� 100" + ".");
                 //value = 100;
             }
             p.Value = value;

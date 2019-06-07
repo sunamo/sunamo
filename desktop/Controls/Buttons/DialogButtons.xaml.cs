@@ -91,7 +91,7 @@ namespace desktop.Controls
 
         public void Accept(object input)
         {
-            throw new Exception("Only buttons cant be accepted, because hasnt data for accept.");
+            throw new Exception("Only buttons cant be accepted, because hasnt data for accept" + ".");
         }
     }
 }

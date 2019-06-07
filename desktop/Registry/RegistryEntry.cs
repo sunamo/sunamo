@@ -96,7 +96,7 @@ using System.IO;
             {
                 if (throwExceptionIfNotGettingValues)
                 {
-                    throw new Exception("Failed to get the item from the registry.");
+                    throw new Exception("Failed to get the item from the registry" + ".");
                 }
             }
         } 

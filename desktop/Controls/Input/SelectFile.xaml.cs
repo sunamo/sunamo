@@ -71,7 +71,7 @@ namespace desktop.Controls
                 v = "None";
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + v;
+            tbSelectedFile.Text = "Selected file" + ": " + v;
         }
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)

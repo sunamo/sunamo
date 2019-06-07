@@ -96,20 +96,20 @@ namespace desktop.Helpers.Backend
 
         public void SetActualFile(string file)
         {
-            state.textActualFile = "File: " + file;
+            state.textActualFile = "File" + ": " + file;
             SetTextBoxState();
         }
 
         public void SetActualLine(int line)
         {
             _actualLine = line++;
-            state.textActualFile = "Line: " + _actualLine;
+            state.textActualFile = "Line" + ": " + _actualLine;
             SetTextBoxState();
         }
          
         private void SetTextBoxState()
         {
-            txtTextBoxState.Text = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " Line: " + (actualLine+1)).Trim();
+            txtTextBoxState.Text = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + "Line" + ": " + (actualLine+1)).Trim();
         }
 
         public void JumpToNextSearchedResult(int addLines)
@@ -162,7 +162,7 @@ namespace desktop.Helpers.Backend
             {
                 TextBoxHelper.ScrollToLine(txtContent, line);
             }
-            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line " + line);
+            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line" + " " + line);
             SetTextBoxState();
         }
 

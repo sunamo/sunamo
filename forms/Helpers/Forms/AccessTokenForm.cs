@@ -52,7 +52,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select browser to open OAuth:";
+            this.label1.Text = "Select browser to open OAuth" + ":";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(16, 30);
             this.comboBox1.Name = "comboBox1";
@@ -63,7 +63,7 @@ namespace F.WF
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Paste given access token:";
+            this.label2.Text = "Paste given access token" + ":";
             this.textBox1.Location = new System.Drawing.Point(19, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(146, 20);

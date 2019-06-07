@@ -83,7 +83,9 @@ public static class AllChars
     /// right square fowl ]
     /// </summary>
     public const char rsf = ']';
-
+    public const char hashtag = '#';
+    public const char equal = '=';
+    public const char ampersand = '&';
 
     #region Generic chars
     public static readonly char notNumber;

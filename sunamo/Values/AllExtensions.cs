@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace sunamo
-{
+
     public class AllExtensions
     {
 
@@ -725,4 +724,3 @@ namespace sunamo
         [TypeOfExtension(TypeOfExtension.source_code)]
         public static string go = ".go";
     }
-}

@@ -9,6 +9,8 @@ public class XlfKeys
 
 	
 
+	public const string LineLineTxtLinesTxtLineCount = "LineLineTxtLinesTxtLineCount" ; 
+
 	public const string NewComment = "NewComment" ; 
 
 	public const string YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail = "YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" ; 

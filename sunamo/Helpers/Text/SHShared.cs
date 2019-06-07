@@ -361,6 +361,29 @@ public static partial class SH
         return p;
     }
 
+    public static bool ContainsOnlyCase(string between, bool upper)
+    {
+        foreach (var item in between)
+        {
+            if (upper)
+            {
+                if (!char.IsUpper(item))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (!char.IsLower(item))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     /// <summary>
     /// Automaticky ořeže poslední znad A1
     /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero

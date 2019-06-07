@@ -99,9 +99,9 @@ public static class CL
         string z = "";
         if (append)
         {
-            whatOrTextWithoutEndingDot = "Enter " + whatOrTextWithoutEndingDot + "";
+            whatOrTextWithoutEndingDot = "Enter" + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". For loading from clipboard leave empty input. For exit press esc.";
+        whatOrTextWithoutEndingDot += ". " + "For loading from clipboard leave empty input. For exit press esc" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -154,7 +154,7 @@ public static class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information("App loaded from clipboard : " + z);
+            TypedConsoleLogger.Instance.Information("App loaded from clipboard " + ": " + z);
         }
         return z;
     }
@@ -247,7 +247,7 @@ public static class CL
     /// <returns></returns>
     public static bool UserMustTypeYesNo(string text)
     {
-        string entered = UserMustType(text + " (Yes/No) ", false);
+        string entered = UserMustType(text + " (" + "Yes/No" + ") ", false);
         char znak = entered[0];
         if (char.ToLower(entered[0]) == 'y')
         {
@@ -263,7 +263,7 @@ public static class CL
     /// <returns></returns>
     public static DialogResult DoYouWantToContinue(string text)
     {
-        text = "Do you want to continue?";
+        text = "Do you want to continue" + "?";
 
         TypedConsoleLogger.Instance.Warning(text);
         bool z = UserMustTypeYesNo(text);
@@ -296,7 +296,7 @@ public static class CL
     /// <param name="appeal"></param>
     public static void AppealEnter(string appeal)
     {
-        Appeal(appeal + ". Then press enter.");
+        Appeal(appeal + ". " + "Then press enter" + ".");
         Console.ReadLine();
     }
 
@@ -347,7 +347,7 @@ public static class CL
     public static void SelectFromVariants(Dictionary<string, EmptyHandler> actions)
     {
         #region Print on console avialable operations
-        string appeal = "Select action:";
+        string appeal = "Select action" + ":";
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
@@ -389,7 +389,7 @@ public static class CL
     public static void PerformAction(Dictionary<string, EventHandler> actions, object sender)
     {
         var listOfActions = NamesOfActions(actions);
-        int selected = SelectFromVariants(listOfActions, "Select action to proceed:");
+        int selected = SelectFromVariants(listOfActions, "Select action to proceed" + ":");
         string ind = listOfActions[selected];
         EventHandler eh = actions[ind];
         eh.Invoke(sender, EventArgs.Empty);
