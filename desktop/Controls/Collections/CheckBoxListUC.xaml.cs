@@ -75,6 +75,11 @@ namespace desktop.Controls.Collections
             ChangeDialogResult(null);
         }
 
+        /// <summary>
+        /// Save IsChecked to elements in chbAdded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="b"></param>
         private void s(object sender, bool b)
         {
             var s = ((FrameworkElement)sender);

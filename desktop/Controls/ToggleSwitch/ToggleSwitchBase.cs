@@ -37,7 +37,7 @@ namespace desktop.Controls.ToggleSwitch
 	[TemplatePart(Name = SwitchThumbPart, Type = typeof(Thumb))]
 	[TemplatePart(Name = SwitchRootPart, Type = typeof(FrameworkElement))]
 	[TemplatePart(Name = SwitchTrackPart, Type = typeof(FrameworkElement))]
-	[Description(" " + " control which when clicked or dragged toggles between on and off states" + ".")]
+	[Description(" " + " " + "control which when clicked or dragged toggles between on and off states" + ".")]
 	public abstract class ToggleSwitchBase : Control
 	{
 		#region Constants

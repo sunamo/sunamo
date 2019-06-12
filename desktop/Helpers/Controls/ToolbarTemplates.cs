@@ -20,7 +20,7 @@ namespace desktop.Helpers.Controls
             Image image = new Image();
             //image.Source =  BitmapSourceHelper.;
             
-            //miShowControls.Header = "Available shortcuts." + "..";
+            //miShowControls.Header = "Available shortcuts" + "." + "..";
         }
     }
 }

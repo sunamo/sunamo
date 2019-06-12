@@ -16,7 +16,7 @@ namespace desktop.Helpers.Controls
             {
                 WindowWithUserControl.AvailableShortcut(dictionary2);
             };
-            miShowControls.Header = "Available shortcuts." + "..";
+            miShowControls.Header = "Available shortcuts" + "." + "..";
             return miShowControls;
         }
     }

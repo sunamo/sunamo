@@ -53,7 +53,7 @@ namespace Google.Apis.YouTube.Samples
             var newPlaylist = new Playlist();
             newPlaylist.Snippet = new PlaylistSnippet();
             newPlaylist.Snippet.Title = name;
-            newPlaylist.Snippet.Description = " " + " playlist created with the YouTube API v3";
+            newPlaylist.Snippet.Description = " " + " " + "playlist created with the YouTube API v3";
             newPlaylist.Status = new PlaylistStatus();
             newPlaylist.Status.PrivacyStatus = "public";
             newPlaylist = await youtubeService.Playlists.Insert(newPlaylist, "snippet,status").ExecuteAsync();
@@ -71,7 +71,7 @@ namespace Google.Apis.YouTube.Samples
                 newPlaylistItem = await youtubeService.PlaylistItems.Insert(newPlaylistItem, "snippet").ExecuteAsync();
 
                 Console.WriteLine("Added" + " " + item);
-                //Console.WriteLine("Playlist item id {0} was added to playlist id {1" + "}.", newPlaylistItem.Id, newPlaylist.Id);
+                //Console.WriteLine("Playlist item id {0} was added to playlist id {" + "{" + "}.", newPlaylistItem.Id, newPlaylist.Id);
             }
         }
     }

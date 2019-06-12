@@ -154,7 +154,7 @@ public static class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information("App loaded from clipboard " + ": " + z);
+            TypedConsoleLogger.Instance.Information("App loaded from clipboard" + " " + ": " + z);
         }
         return z;
     }

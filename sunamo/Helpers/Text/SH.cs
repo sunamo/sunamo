@@ -18,6 +18,18 @@ using System.Text.RegularExpressions;
 
 public static partial class SH
 {
+    /// <summary>
+    /// Return index, therefore x-1
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public static int GetLineIndexFromCharIndex(string input, int pos)
+    {
+        var lineNumber = input.Take(pos).Count(c => c == '\n') + 1;
+        return lineNumber - 1;
+    }
+
     public static string ReplaceManyFromString(string input, string v, string delimiter)
     {
         string methodName = "ReplaceManyFromString";
