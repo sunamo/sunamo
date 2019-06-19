@@ -11,9 +11,23 @@ using System.Threading.Tasks;
 
 namespace SunamoTesseract
 {
+    /// <summary>
+    /// Denik ostravaka:
+    /// nemůžu to získat z webu, není to rozdělené na kategorie, příspěvky nejsou někdy v knize
+    ///musi to byt naskenovane, nejlepe po jednom při focení nebo skenování po více to nikdy není rovné
+    ///skenovane bez roztřesení
+    ///musí to být rovně, irfanview to umí narovnat
+    ///nedává to moc dobře tečky, musí se překrýt bílou, jinak to hází komplet nesmyslné texty
+    /// </summary>
     public class TessearctHelper
     {
-        public static string ParseText(string path)
+        /// <summary>
+        /// lang: cse, eng
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="lang"></param>
+        /// <returns></returns>
+        public static string ParseText(string path, string lang = "ces")
         {
             var va = "TESSDATA_PREFIX";
             Environment.SetEnvironmentVariable(va, @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\tesseract-master.1153\tessdata\");
@@ -41,7 +55,7 @@ namespace SunamoTesseract
                 imageFile = File.ReadAllBytes(path);
             }
             
-            var text = TessearctHelper.ParseText(tesseractPath, imageFile, "eng").Trim(); ;
+            var text = TessearctHelper.ParseText(tesseractPath, imageFile, lang).Trim(); ;
             return text;
         }
 

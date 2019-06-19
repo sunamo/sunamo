@@ -77,7 +77,13 @@ namespace desktop
             //Initialize(af, ext, ds, addPostfix);
         }
 
-        public async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, bool addPostfix)
+        /// <summary>
+        /// A4 was nowhere used, deleted
+        /// </summary>
+        /// <param name="af"></param>
+        /// <param name="ext"></param>
+        /// <param name="ds"></param>
+        public async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds)
         {
             this.ds = ds;
             this.folder = new StorageFolder( AppData.ci.GetFolder(af));
@@ -113,6 +119,8 @@ namespace desktop
             {
                 InitComplete(files);
             }
+
+
         }
 
         FileEntriesDuplicitiesStrategy GetFileEntriesDuplicitiesStrategy(string fnwoe, out int? serie, out int hour , out int minute, out string postfix)

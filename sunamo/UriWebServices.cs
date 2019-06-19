@@ -10,7 +10,7 @@ using System.Web;
 /// <summary>
 /// vše co je s adresou musím encodovat
 /// </summary>
-public static class UriWebServices
+public partial class UriWebServices
 {
     public static class RepairMobile
     {

@@ -102,9 +102,17 @@ public  static partial class CA
         return h;
     }
 
-    
-
-    
+    public static List<T> ReplaceNullFor<T>(List<T> l, T empty) where T : class
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            if (l[i] == null)
+            {
+                l[i] = empty;
+            }
+        }
+        return l;
+    }
 
     public static IEnumerable ToEnumerable(params object[] p)
     {

@@ -8,6 +8,19 @@ using System.Web;
 
 public partial class HtmlAssistant
 {
+    public static List<string> SplitByBr(string input)
+    {
+        return SplitByTag(input, "br");
+    }
+
+    public static List< string> SplitByTag(string input, string d)
+    {
+        var ih = input;
+        ih = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(ih);
+        var lines = SH.Split(ih, HtmlTagTemplates.br);
+        return lines;
+    }
+
     public static void SetAttribute(HtmlNode node, string atr, string hod)
     {
         object o = null;

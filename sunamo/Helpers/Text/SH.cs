@@ -82,6 +82,7 @@ public static partial class SH
 
         return input;
     }
+
     public static bool ChangeEncodingProcessWrongCharacters(ref string c)
     {
         return ChangeEncodingProcessWrongCharacters(ref c, Encoding.GetEncoding("latin1"));
@@ -136,10 +137,6 @@ public static partial class SH
         return ReplaceWhiteSpacesWithoutSpaces(p).Replace(AllStrings.space, "");
     }
 
-
-
-
-
     public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
     {
         return JoinKeyValueCollection(dict.Keys, dict.Values, delimiterBetweenKeyAndValue, delimAfter);
@@ -161,8 +158,6 @@ public static partial class SH
         
         return SH.TrimEnd( sb.ToString(), delimAfter);
     }
-
-
 
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
     {

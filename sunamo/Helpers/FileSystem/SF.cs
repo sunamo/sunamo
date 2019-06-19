@@ -172,50 +172,9 @@ public static partial class SF
         return null;
     }
 
-    public static string PrepareToSerialization(params string[] o)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (object item in o)
-        {
-            sb.Append(item + separatorString);
-        }
+   
 
-        //.TrimEnd(separatorChar) nen� t�eba, kdy� byly na konci pr�zdn�, odstranilo mi to je v�echny, a ten jeden nav�c tam nevad�, stejn� ho odstran� RemoveEmptyEntries
-        return sb.ToString();
-    }
-    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
-    {
-        return SH.GetString(o, separator);
-    }
-
-    /// <summary>
-    /// Vrátí bez poslední 
-    /// If need to combine string and IEnumerable, lets use CA.Join
-    /// </summary>
-    /// <param name = "o"></param>
-    /// <returns></returns>
-    public static string PrepareToSerialization2(IEnumerable o, string separator = AllStrings.pipe)
-    {
-        
-        string vr = SH.GetString(o, separator.ToString());
-        if (vr.Length > 0)
-        {
-            return vr.Substring(0, vr.Length - 1);
-        }
-
-        return vr;
-    }
-
-    /// <summary>
-    /// IEnumerable Must have type to use ToArray()
-    /// If need to combine string and IEnumerable, lets use CA.Join
-    /// </summary>
-    /// <param name = "o"></param>
-    /// <returns></returns>
-    public static string PrepareToSerializationList(IEnumerable<string> o, string separator = AllStrings.pipe)
-    {
-        return SH.GetString(o.ToArray(), separator);
-    }
+    
 
     /// <summary>
     /// Read text with first delimitech which automatically delimite
@@ -236,10 +195,61 @@ public static partial class SF
         }
     }
 
+    /// <summary>
+    /// Vrátí bez poslední 
+    /// If need to combine string and IEnumerable, lets use CA.Join
+    /// </summary>
+    /// <param name = "o"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization2(IEnumerable o, string separator = AllStrings.pipe)
+    {
+        return PrepareToSerializationWorker(o, true, separator);
+    }
+
+    private static string PrepareToSerializationWorker(IEnumerable o, bool removeLast, string separator)
+    {
+        string vr = SH.GetString(o, separator.ToString());
+        if (removeLast)
+        {
+            if (vr.Length > 0)
+            {
+                return vr.Substring(0, vr.Length - 1);
+            }
+        }
+
+        return vr;
+    }
+
+    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
+    {
+        return PrepareToSerializationWorker(o, false, separator);
+    }
+
+    /// <summary>
+    /// Return with last |
+    /// </summary>
+    /// <param name="o"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization(params string[] o)
+    {
+        return PrepareToSerializationWorker(o, false, AllStrings.pipe);
+    }
+
     public static void WriteAllElementsToFile(string VybranySouborLogu, string[][] p)
     {
         StringBuilder sb = new StringBuilder();
         foreach (string[] item in p)
+        {
+            sb.AppendLine(PrepareToSerialization(item));
+        }
+
+        File.WriteAllText(VybranySouborLogu, sb.ToString());
+    }
+
+    public static void WriteAllElementsToFile(string VybranySouborLogu, List<List<string>> p)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in p)
         {
             sb.AppendLine(PrepareToSerialization(item));
         }

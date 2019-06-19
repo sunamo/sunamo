@@ -51,15 +51,25 @@ using System.Linq;
             return false;
         }
 
-        public static bool IsValidUriAndDomainIs(string p, string domain)
+    /// <summary>
+    /// A2 can be * - then return true for any domain
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="domain"></param>
+    /// <returns></returns>
+        public static bool IsValidUriAndDomainIs(string p, string domain, out bool surelyDomain)
         {
             string p2 = AppendHttpIfNotExists(p);
             Uri uri = null;
+        surelyDomain = false;
+
+        // Nema smysl hledat na přípony souborů, vrátil bych false pro to co by možná byla doména. Dnes už doména může být opravdu jakákoliv
 
             if (Uri.TryCreate(p2, UriKind.Absolute, out uri))
             {
-                if (uri.Host == domain)
+                if (uri.Host == domain || domain == "*")
                 {
+
                     return true;
                 }
             }

@@ -139,7 +139,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         if (defaultValue)
         {
             sb.AddItem((object)"=");
-            sb.AddItem((object)CSharpHelper.DefaultValueForType(type));
+            sb.AddItem((object)CSharpHelperSunamo.DefaultValueForType(type));
         }
     }
     

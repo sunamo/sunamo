@@ -249,9 +249,19 @@ public partial class FS
         }
 
     public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
+    {
+        FS.WithEndSlash(ref pathDownload);
+        FS.WithEndSlash(ref pathVideos0Kb);
+
+        var files = FS.GetFiles(pathDownload);
+        foreach (var item in files)
         {
-            ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
+            var path = item.Replace(pathDownload, pathVideos0Kb);
+
+            FS.CreateUpfoldersPsysicallyUnlessThere(path);
+            TF.WriteAllText(path, string.Empty);
         }
+     }
 
         /// <summary>
         /// Without path

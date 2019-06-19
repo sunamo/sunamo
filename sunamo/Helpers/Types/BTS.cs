@@ -394,7 +394,12 @@ public static partial class BTS
     /// <returns></returns>
     public static bool IntToBool(object v)
     {
-        return Convert.ToBoolean(int.Parse(v.ToString()));
+        var s = v.ToString().Trim();
+        if (s == string.Empty)
+        {
+            return false;
+        }
+        return Convert.ToBoolean(int.Parse(s));
     }
 
     private const string Yes = "Yes";

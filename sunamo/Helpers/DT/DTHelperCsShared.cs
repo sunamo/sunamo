@@ -43,10 +43,15 @@ using System.Text;
             throw new Exception("Neznámý den v týdnu");
         }
 
+    internal static string ToShortTimeFromSeconds(int from)
+    {
+        var dt = DateTime.MinValue;
+        dt = dt.AddSeconds(from);
 
-    
+        return ToShortTime(dt);
+    }
 
-public static string ToShortTime(DateTime value)
+    public static string ToShortTime(DateTime value)
         {
             return value.Hour + AllStrings.colon + DTHelperGeneral.MakeUpTo2NumbersToZero( value.Minute);
         }

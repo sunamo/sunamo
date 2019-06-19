@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using sunamo.Constants;
 using sunamo.Html;
+using sunamo.Values;
 using sunamo.Xml;
 using System;
 using System.Collections.Generic;
@@ -61,9 +62,9 @@ using System.Xml;
         public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
         {
             List<string> jizNahrazeno = new List<string>();
-            var pol = CA.ToEnumerable("br", "hr", "img", "meta", "input", "iframe");
+            
             MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*AllChars.lsf\"]*|[^'\">])+>");
-            List<string> col = new List<string>(pol);
+            List<string> col = new List<string>(AllLists.HtmlNonPairTags);
 
             //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>
             foreach (Match item in mc)

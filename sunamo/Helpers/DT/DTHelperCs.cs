@@ -162,12 +162,6 @@ using System.Text;
             }
         }
 
-        
-
-        
-
-        
-
         /// <summary>
         /// Tato metoda vrací i čas, proto má v názvu i Time
         /// </summary>

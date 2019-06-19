@@ -104,7 +104,7 @@ public class PH
                     b = @"C:\Program Files (x86)\Internet Explorer\iexplore.exe";
                     break;
                 default:
-                    throw new Exception("Neimplementovan� prohl�e�");
+                    throw new Exception("Neimplementovany prohl�e�");
                     break;
             }
             Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));
