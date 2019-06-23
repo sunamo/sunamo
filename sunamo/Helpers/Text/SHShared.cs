@@ -435,7 +435,6 @@ public static partial class SH
     public static string TextWithoutDiacritic(string sDiakritik)
     {
         return sDiakritik.RemoveDiacritics();
-        #region Without this in .NET Core (unit tests etc.) throw expection ''ISO-8859-8' is not a supported encoding name. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method.
         // but also with this don't throw exception but no working Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(sDiakritik));
         //if (!initDiactitic)
         //{
@@ -444,7 +443,6 @@ public static partial class SH
 
         //    initDiactitic = true;
         //} 
-        #endregion
 
         //originally was "ISO-8859-8" but not working in .net standard. 1252 is eqvivalent
         //return Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-8").GetBytes(sDiakritik));
@@ -1031,6 +1029,10 @@ public static bool ContainsOtherChatThanLetterAndDigit(string p)
         }
         return false;
     }
+
+    /// <summary>
+    /// Dont contains 
+    /// </summary>
     public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.exclamation, AllChars.q, '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr, '〈', '〉', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.pipe, '”', AllChars.qm, '~', '°', AllChars.plus, '@', '#', '$', AllChars.modulo, '^', '&', AllChars.asterisk, '=', AllChars.us, 'ˇ', '¨', '¤', '÷', '×', '˝' };
 
     public static void Init()
@@ -1703,5 +1705,35 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
         value = SH.ReplaceAll(value, "\"", "\\\"");
         value = SH.ReplaceAll(value, "\'", "\\\'");
         return value;
+    }
+
+/// <summary>
+    /// Pokud něco nebude číslo, program vyvolá výjimku, protože parsuje metodou int.Parse
+    /// </summary>
+    /// <param name="stringToSplit"></param>
+    /// <param name="delimiter"></param>
+    /// <returns></returns>
+    public static List<int> SplitToIntList(string stringToSplit, params string[] delimiter)
+    {
+        var f = SH.Split(stringToSplit, delimiter);
+        List<int> nt = new List<int>(f.Count);
+        foreach (string item in f)
+        {
+            nt.Add(int.Parse(item));
+        }
+        return nt;
+    }
+
+/// <summary>
+    /// Oddělovač může být pouze jediný znak, protože se to pak předává do metody s parametrem int!
+    /// </summary>
+    /// <param name="p1"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
+    public static string GetFirstPartByLocation(string p1, char deli)
+    {
+        string p, z;
+        GetPartsByLocation(out p, out z, p1, p1.IndexOf(deli));
+        return p;
     }
 }

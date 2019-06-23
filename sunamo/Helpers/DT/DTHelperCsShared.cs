@@ -43,7 +43,7 @@ using System.Text;
             throw new Exception("Neznámý den v týdnu");
         }
 
-    internal static string ToShortTimeFromSeconds(int from)
+    public static string ToShortTimeFromSeconds(int from)
     {
         var dt = DateTime.MinValue;
         dt = dt.AddSeconds(from);

@@ -76,6 +76,7 @@ public  static partial class CA
     /// <summary>
     /// direct edit
     /// Remove duplicities from A1
+    /// In output is from every one instance
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
@@ -742,10 +743,10 @@ public static List<short> ToShort(IEnumerable enumerable)
         {
             if (item.ToString() == "NA")
             {
-
+                continue;
             }
 
-            if (SH.IsNumber(item.ToString()))
+            if (SH.IsNumber(item.ToString(), ',', '.'))
             {
 
             var number = parse.Invoke(item.ToString());

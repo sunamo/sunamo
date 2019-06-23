@@ -302,7 +302,7 @@
       <Name>shared.web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
-      <Project>{fa243759-2a0c-4f82-85fd-85b2bc6e89b9}</Project>
+      <Project>{460d83d6-ba95-4d9a-9245-02efdb823d65}</Project>
       <Name>sunamo.web</Name>
     </ProjectReference>
   </ItemGroup>

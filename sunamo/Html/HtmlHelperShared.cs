@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using sunamo.Values;
 
 public static partial class HtmlHelper
     {
@@ -556,5 +557,44 @@ private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtri
                 contains = attrValue == hodnotaAtributu;
             }
             return contains;
+        }
+
+public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
+        {
+            List<string> jizNahrazeno = new List<string>();
+            
+            MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*AllChars.lsf\"]*|[^'\">])+>");
+            List<string> col = new List<string>(AllLists.HtmlNonPairTags);
+
+            //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>
+            foreach (Match item in mc)
+            {
+                string d = item.Value.Replace(" >", AllStrings.gt);
+                string tag = "";
+                if (item.Value.Contains(AllStrings.space))
+                {
+                    tag = SH.GetFirstPartByLocation(item.Value, AllChars.space);
+                }
+                else
+                {
+                    tag = d.Replace(AllStrings.slash, "").Replace(AllStrings.gt, "");
+                }
+                tag = tag.TrimStart(AllChars.lt).Trim().ToLower();
+                if (col.Contains(tag))
+                {
+                    if (!item.Value.Contains("/>"))
+                    {
+                        if (!jizNahrazeno.Contains(item.Value))
+                        {
+                            jizNahrazeno.Add(item.Value);
+                            string nc = item.Value.Substring(0, item.Value.Length - 1) + " />";
+                            vstup = vstup.Replace(item.Value, nc);
+                        }
+                    }
+                }
+
+
+            }
+            return vstup;
         }
 }

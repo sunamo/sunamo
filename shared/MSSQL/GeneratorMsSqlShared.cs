@@ -331,9 +331,9 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
     /// <param name="sloupce"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string CreateTable(string table, MSColumnsDB sloupce,  bool dynamicTables, SqlConnection conn)
+    public static string CreateTable(string table, object sloupce2,  bool dynamicTables, SqlConnection conn)
     {
-
+        var sloupce = (MSColumnsDB)sloupce2;
 
         StringBuilder sb = new StringBuilder();
         bool exists = MSStoredProceduresI.ci.SelectExistsTable(table, conn);

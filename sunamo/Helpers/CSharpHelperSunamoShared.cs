@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-public partial class CSharpHelperSunamo
-{
-    /// <summary>
-    /// Nonsense, cant type too many different output types to T. 
-    /// Must cast manually
-    /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "t"></param>
-    /// <returns></returns>
-    public static object DefaultValueForTypeT<T>(T t)
+
+public partial class CSharpHelperSunamo{ 
+public static string DefaultValueForType(string type)
     {
-        var type = t.GetType().FullName;
         if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
@@ -21,9 +13,9 @@ public partial class CSharpHelperSunamo
         switch (type)
         {
             case "string":
-                return string.Empty;
+                return AllStrings.qm + AllStrings.qm;
             case "bool":
-                return false;
+                return "false";
             case "float":
             case "double":
             case "int":
@@ -31,20 +23,20 @@ public partial class CSharpHelperSunamo
             case "short":
             case "decimal":
             case "sbyte":
-                return -1;
+                return "-1";
             case "byte":
             case "ushort":
             case "uint":
             case "ulong":
-                return 0;
+                return "0";
             case "DateTime":
                 // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
-                return SqlServerHelper.DateTimeMinVal;
+                return "SqlServerHelper.DateTimeMinVal";
             case "byte[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
-                return null;
+                return "null";
             case "Guid":
-                return Guid.Empty;
+                return "Guid.Empty";
             case "char":
                 throw new Exception("Nepodporovaný typ");
         }

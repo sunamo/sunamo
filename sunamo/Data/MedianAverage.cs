@@ -10,10 +10,11 @@ namespace sunamo.Data
         public T average;
         public T min;
         public T max;
+        public int count;
 
         public override string ToString()
         {
-            return $"Median: {median}, Average: {average}, Min: {min}, Max: {max}";
+            return $"Count: {count}, Median: {median}, Average: {average}, Min: {min}, Max: {max}";
         }
     }
 }

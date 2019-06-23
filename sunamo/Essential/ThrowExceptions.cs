@@ -71,7 +71,12 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName), arrayName, dex, valueElement, unallowedStrings));
     }
 
-    public static void StringContainsUnallowedSubstrings(Type type, string methodName, string input, params string[] unallowedStrings)
+    public static void OnlyOneElement(object type, string methodName, string colName, IEnumerable list)
+    {
+        ThrowIsNotNull(Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName), colName, list));
+    }
+
+    public static void StringContainsUnallowedSubstrings(object type, string methodName, string input, params string[] unallowedStrings)
     {
         ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName), input, unallowedStrings));
     }
@@ -86,7 +91,7 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName), nameCollection, element));
     }
 
-    internal static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
+    public static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
     {
         ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName), argName, argValue));
     }

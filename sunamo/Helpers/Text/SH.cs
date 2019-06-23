@@ -1071,22 +1071,6 @@ public static partial class SH
         return v;
     }
 
-    
-    
-
-    /// <summary>
-    /// Oddělovač může být pouze jediný znak, protože se to pak předává do metody s parametrem int!
-    /// </summary>
-    /// <param name="p1"></param>
-    /// <param name="deli"></param>
-    /// <returns></returns>
-    public static string GetFirstPartByLocation(string p1, char deli)
-    {
-        string p, z;
-        GetPartsByLocation(out p, out z, p1, p1.IndexOf(deli));
-        return p;
-    }
-
 
     public static bool EndsWithNumber(string nameSolution)
     {
@@ -1818,25 +1802,6 @@ public static partial class SH
             s = s.Substring(2, s.Length - 2);
         }
         return s;
-    }
-
-    
-
-    /// <summary>
-    /// Pokud něco nebude číslo, program vyvolá výjimku, protože parsuje metodou int.Parse
-    /// </summary>
-    /// <param name="stringToSplit"></param>
-    /// <param name="delimiter"></param>
-    /// <returns></returns>
-    public static List<int> SplitToIntList(string stringToSplit, params string[] delimiter)
-    {
-        var f = SH.Split(stringToSplit, delimiter);
-        List<int> nt = new List<int>(f.Count);
-        foreach (string item in f)
-        {
-            nt.Add(int.Parse(item));
-        }
-        return nt;
     }
 
     public static List<int> SplitToIntListNone(string stringToSplit, params string[] delimiter)

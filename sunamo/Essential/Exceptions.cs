@@ -100,6 +100,15 @@ using System.Text;
             return null;
         }
 
+    public static object OnlyOneElement(string before, string colName, IEnumerable list)
+    {
+        if (list.Count() ==1)
+        {
+            return CheckBefore(before) + colName + " has only one element";
+        }
+        return null;
+    }
+
     public static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
     {
         List<string> foundedUnallowed = new List<string>();
@@ -123,7 +132,7 @@ using System.Text;
             return variableName + "Doesn't have required type.";
         }
 
-    internal static string IsNullOrEmpty(string before, string argName, string argValue)
+    public static string IsNullOrEmpty(string before, string argName, string argValue)
     {
         if (argValue == null)
         {

@@ -7,6 +7,45 @@ using sunamo.Values;
 
 public class CSharpGenerator : GeneratorCodeAbstract
 {
+    #region Make problem during translate
+    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
+    {
+        string cn = "Dictionary<string, string>";
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
+        foreach (var item in nameCommentEnums)
+        {
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
+        }
+    }
+
+    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
+    {
+        string valueType = null;
+        if (dict.Count > 0)
+        {
+            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
+        }
+        string cn = "Dictionary<string, " + valueType + AllStrings.gt;
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        AppendLine();
+        CreateInstance(cn, nameDictionary);
+
+        foreach (var item in dict)
+        {
+            string value = null;
+            if (item.Value.GetType() == Consts.tString)
+            {
+                value = SH.WrapWithQm(item.Value.ToString());
+            }
+            else
+            {
+                value = item.Value.ToString();
+            }
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", " + value + ");");
+        }
+    }
+    #endregion
+
     public CSharpGenerator()
     {
     }
@@ -501,15 +540,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
     }
 
-    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
-    {
-        string cn = "Dictionary<string, string>";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
-        foreach (var item in nameCommentEnums)
-        {
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
-        }
-    }
+    
 
     public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result)
     {
@@ -522,32 +553,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
     }
 
-    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
-    {
-        string valueType = null;
-        if (dict.Count > 0)
-        {
-            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
-        }
-        string cn = "Dictionary<string, "+valueType+AllStrings.gt;
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
-        AppendLine();
-        CreateInstance(cn, nameDictionary);
-        
-        foreach (var item in dict)
-        {
-            string value = null;
-            if (item.Value.GetType() == Consts.tString)
-            {
-                value = SH.WrapWithQm(item.Value.ToString());
-            }
-            else
-            {
-                value = item.Value.ToString();
-            }
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", " + value + ");");
-        }
-    }
+    
 
     
     #endregion

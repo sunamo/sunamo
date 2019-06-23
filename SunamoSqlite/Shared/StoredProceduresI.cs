@@ -32,7 +32,7 @@ namespace DocArch.SqLite
             return vr.ToArray();
         }
 
-        internal bool SelectExistsTable(string table, SQLiteConnection conn)
+        public bool SelectExistsTable(string table, SQLiteConnection conn)
         {
             return ExecuteNonQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='" + table + "';") != 0;
         }
