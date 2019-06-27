@@ -37,10 +37,10 @@ public class SunamoCzMetroUIHelper
         string text = "";
         text = domain.ToString();
         sb.Append("<li>");
-        string host = sp.Request.Url.Host.Replace("www.", "");
+        string host = sp.Request.Url.Host.Replace("www" + ".", "");
         WriteTagWithAttrs(sb, "a", text, "href", UA.GetWebUri2(sp, text, host == Consts.localhost, host));
 
-        sb.Append("</li>");
+        sb.Append("/" + "/li>");
         return sb.ToString();
     }
 
@@ -93,7 +93,7 @@ public class SunamoCzMetroUIHelper
         }
 
         #region Writing list of websites
-        hg.WriteTagWithAttrs("ul", "class", "d-menu", "data-role", "dropdown", "style", "display: none;");
+        hg.WriteTagWithAttrs("ul", "class", "-" + "-menu", "data-role", "dropdown", "style", "display: none;");
         foreach (MySites item in Enum.GetValues(typeof(MySites)))
         {
             //1
@@ -191,7 +191,7 @@ public class SunamoCzMetroUIHelper
 
         #region Main page of web
         hg.WriteTag("li");
-        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aGoToMainPage", "title", "Jdi na hlavní stránku " + aActualWebInnerHtml);
+        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aGoToMainPage", "title", "Jdi na hlavní stránku" + " " + aActualWebInnerHtml);
         hg.WriteTagWithAttr("span", "class", "mif-history");
         hg.TerminateTag("span");
         hg.TerminateTag("a");
@@ -230,11 +230,11 @@ public class SunamoCzMetroUIHelper
 
         if (logined)
         {
-            buttonUserOnClick = "javascript:location.replace('http://" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
+            buttonUserOnClick = "javascript:location.replace('http:" + "//" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
         }
         else
         {
-            buttonUserOnClick = "javascript:location.replace('" + linkLogin + "');";
+            buttonUserOnClick = "javascript:location.replace(" + "'" + linkLogin + "');";
         }
 
         #region MyRegion

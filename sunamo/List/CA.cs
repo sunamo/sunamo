@@ -923,7 +923,7 @@ public static partial  class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
+        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
     
@@ -975,7 +975,7 @@ public static partial  class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
+        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
     public static List<object> ToObject(IEnumerable enumerable)

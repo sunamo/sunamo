@@ -19,8 +19,8 @@ using System.Threading.Tasks;
         /// <param name="assemblyName"></param>
         public static void SetAssemblyNameForWpfApps(string assemblyName)
         {
-            protocol += AllStrings.slash + assemblyName + ";component/";
-            //protocol = "pack://" + assemblyName + ";component/";
+            protocol += AllStrings.slash + assemblyName + ";" + "component" + "/";
+            //protocol = "pack://" + assemblyName + ";" + "component" + "/";
         }
 
         public static void RegisterPackProtocol()

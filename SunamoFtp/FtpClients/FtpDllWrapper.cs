@@ -39,12 +39,12 @@ namespace SunamoFtp
 
         public override void DebugActualFolder()
         {
-			InitApp.Logger.WriteLine("Actual dir:", Client.GetCurrentFolder());
+			InitApp.Logger.WriteLine("Actual dir" + ":", Client.GetCurrentFolder());
         }
 
         public override void DebugAllEntries()
         {
-			InitApp.Logger.WriteLine("All file entries:");
+			InitApp.Logger.WriteLine("All file entries" + ":");
 			Client.GetList().ForEach(d => InitApp.Logger.WriteLine(d.Name));
             
         }

@@ -48,7 +48,7 @@ public partial class Logins
         }
         else
         {
-            zpravaVen = "Nejste přihlášený/á";
+            zpravaVen = "Nejste přihlášený/" + "";
             return false;
         }
 
@@ -113,11 +113,11 @@ public partial class Logins
         string z = "";
         if (zbyva == 0)
         {
-            z = " Už vám nezbývají žádné pokusy o přihlášení, zkuste to znovu za hodinu. ";
+            z = " " + "Už vám nezbývají žádné pokusy o přihlášení, zkuste to znovu za hodinu" + ". ";
         }
         else
         {
-            z = "Už vám zbývá jen " + zbyva + " pokusů o přihlášení. ";
+            z = "Už vám zbývá jen" + " " + zbyva + " " + "pokusů o přihlášení" + ". ";
         }
 
         return z;

@@ -48,7 +48,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
         else
         {
-            throw new Exception("Není vyplněno název aplikace.");
+            throw new Exception("Není vyplněno název aplikace" + ".");
         }
     }
 

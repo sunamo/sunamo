@@ -34,9 +34,9 @@ public partial class GeneratorMsSql
         SqlCommand comm = new SqlCommand();
         StringBuilder sb = new StringBuilder();
         sb.Append(commandBeforeWhere);
-        if (!commandBeforeWhere.Contains(" WHERE "))
+        if (!commandBeforeWhere.Contains(" " + "WHERE" + " "))
         {
-        sb.Append(" WHERE ");    
+        sb.Append(" " + "WHERE" + " ");    
         }
         
         bool první = true;
@@ -111,7 +111,7 @@ public partial class GeneratorMsSql
         }
         if (orderBy != null)
         {
-            sb.Append("ORDER BY " + orderBy + AllStrings.space);
+            sb.Append("ORDER BY" + " " + orderBy + AllStrings.space);
         }
         comm.CommandText = sb.ToString();
         return comm;

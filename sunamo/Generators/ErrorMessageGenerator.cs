@@ -27,11 +27,11 @@ public  class ErrorMessageGenerator
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            vypis.AppendLine("V těchto souborech se vyskytly tyto chyby: ");
+            vypis.AppendLine(" " + " těchto souborech se vyskytly tyto chyby" + ": ");
         }
         else
         {
-            vypis.AppendLine("In these files the following errors occurred: ");
+            vypis.AppendLine("In these files the following errors occurred" + ": ");
         }
 
         if (chybneSoubory.Count < i)

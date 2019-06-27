@@ -38,7 +38,7 @@ public static object DefaultValueForTypeObject(string type)
                 return SqlServerHelper.DateTimeMinVal;
             case "char":
                 throw new Exception("Nepodporovaný typ");
-            case "byte[]":
+            case "byte" + "[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return null;
         }
@@ -50,7 +50,7 @@ public static string Dictionary(string nameClass, List<string> keys, StringVoid 
     {
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameClass);
-        genCS.Field(1, AccessModifiers.Private, false, VariableModifiers.None, "Dictionary&lt;string, string&gt;", "dict", false, "new Dictionary&lt;string, string&gt;()");
+        genCS.Field(1, AccessModifiers.Private, false, VariableModifiers.None, "Dictionary&lt;string, string&gt" + ";", "dict", false, "new Dictionary&lt;string, string&gt;()");
         CSharpGenerator inner = new CSharpGenerator();
         foreach (var item in keys)
         {

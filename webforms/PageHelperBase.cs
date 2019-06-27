@@ -546,13 +546,13 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale nebyl v rozmezí " + minValue + "-" + maxValue + "";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale nebyl v rozmezí" + " " + minValue + "-" + maxValue + "";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -568,13 +568,13 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale nebyl v hodnotě True nebo False";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale nebyl v hodnotě True nebo False";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -613,10 +613,10 @@ public static class PageHelperBase
                 vr = "error: Web zřejmě zavolal špatnou metodu - na obyčejný řetězec se nemůže aplikovat chyba WrongRange";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -643,10 +643,10 @@ public static class PageHelperBase
                 vr = "error: Web zřejmě zavolal špatnou metodu - na obyčejný řetězec se nemůže aplikovat chyba WrongRange";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI. Je důležité dodržovat přesné velikosti písmen a nepozměňovat nijak adresu URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI. Je důležité dodržovat přesné velikosti písmen a nepozměňovat nijak adresu URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -662,13 +662,13 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Byl zadán text do argumentu " + argname + " ale nebyla to platná adresa URI nebo měla delší než povolenou délku nebo v ní nebyl nalezen oddělovač";
+                vr = "error: Byl zadán text do argumentu" + " " + argname + " " + "ale nebyla to platná adresa URI nebo měla delší než povolenou délku nebo v ní nebyl nalezen oddělovač";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -684,13 +684,13 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale nebyl v něm nalezen oddělovač(pipe, čárka, etc.)";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale nebyl v něm nalezen oddělovač(pipe, čárka, etc." + "";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");
@@ -706,13 +706,13 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument " + argname + " nebyla uri ve správném formátu";
+                vr = "error: Argument" + " " + argname + " " + "nebyla uri ve správném formátu";
                 break;
             case ResultCheckWebArgument.Empty:
-                vr = "error: Argument " + argname + " byl nalezen v adrese URI ale prázdný";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";
                 break;
             case ResultCheckWebArgument.NotFound:
-                vr = "error: Argument " + argname + " nebyl nalezen v adrese URI";
+                vr = "error: Argument" + " " + argname + " " + "nebyl nalezen v adrese URI";
                 break;
             case ResultCheckWebArgument.AllOk:
                 throw new Exception("Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu");

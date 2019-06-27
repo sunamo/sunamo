@@ -31,7 +31,7 @@ namespace sunamo.CodeGenerator
             NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(tabCount, mapName + ".insert({" + item.Key + ", " + item.Value + "});");
+                AppendLine(tabCount, mapName + "." + "insert(" + "{" + item.Key + ", " + item.Value + "});");
             }
         }
 

@@ -101,7 +101,7 @@ public static class CL
         {
             whatOrTextWithoutEndingDot = "Enter" + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". " + "For loading from clipboard leave empty input. For exit press esc" + ".";
+        whatOrTextWithoutEndingDot += ". " + "For exit enter -1" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -248,6 +248,15 @@ public static class CL
     public static bool UserMustTypeYesNo(string text)
     {
         string entered = UserMustType(text + " (" + "Yes/No" + ") ", false);
+        // was pressed esc etc.
+        if (entered == null)
+        {
+            return false;
+        }
+        if (entered == "-1")
+        {
+            return false;
+        }
         char znak = entered[0];
         if (char.ToLower(entered[0]) == 'y')
         {
@@ -399,9 +408,12 @@ public static class CL
     {
         List<string> listOfActions =  actions.Keys.ToList();
         int selected = SelectFromVariants(listOfActions, "Select action to proceed");
-        string ind = listOfActions[selected];
-        var eh = actions[ind];
-        eh.Invoke();
+        if (selected != -1)
+        {
+            string ind = listOfActions[selected];
+            var eh = actions[ind];
+            eh.Invoke();
+        }
     }
 
 

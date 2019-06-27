@@ -7,17 +7,17 @@ public static class MeUri
 {
     public static string Login(SunamoPage p)
     {
-        return "http://" + p.Request.Url.Host + "/Me/Login.aspx";
+        return "http:" + "//" + p.Request.Url.Host + "/Me/Login.aspx";
     }
 
     public static string Logout(SunamoPage p)
     {
-        return "http://" + p.Request.Url.Host + "/Me/Logout.aspx";
+        return "http:" + "//" + p.Request.Url.Host + "/Me/Logout.aspx";
     }
 
     public static string User(HttpRequest req, string un)
     {
-        return "http://" + req.Url.Host + "/Me/User.aspx?un=" + un;
+        return "http:" + "//" + req.Url.Host + "/Me/User.aspx?un=" + un;
     }
 
 

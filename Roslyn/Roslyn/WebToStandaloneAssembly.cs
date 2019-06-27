@@ -107,7 +107,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                     var cl = RoslynHelper.GetClass(tree.GetRoot());
                     if (cl == null)
                     {
-                        Console.WriteLine(fnwoeAspxCs + " contains more classes");
+                        Console.WriteLine(fnwoeAspxCs + " " + "contains more classes");
                         continue;
                     }
 
@@ -122,7 +122,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                         //cl.Members.Remove(item);
                         if (i == 0)
                         {
-                            var firstTree = CSharpSyntaxTree.ParseText("            public " + fnwoeAspxCs + "Cs cs;");
+                            var firstTree = CSharpSyntaxTree.ParseText("  " + "          public" + " " + fnwoeAspxCs + "Cs cs" + ";");
                             firstNode = firstTree.GetRoot().ChildNodes().First();
                             cl = cl.ReplaceNode(item, firstNode);
                         }
@@ -173,7 +173,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                         genUs.Using(item);
                     }
                     genUs.AppendLine();
-                    genUs.Namespace(0, ("sunamo.cz." + ns).TrimEnd(AllChars.dot));
+                    genUs.Namespace(0, ("sunamo.cz" + "." + ns).TrimEnd(AllChars.dot));
 
 
                     contentFileNew.Insert(0, genUs.ToString());

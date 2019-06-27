@@ -26,7 +26,7 @@ using System.Text;
 
 
         /// <summary>
-        /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
+        /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku " " + " den"
         /// A3 bylo původně SqlServerHelper.DateTimeMinVal
         /// </summary>
         /// <param name="dateTime"></param>
@@ -54,7 +54,7 @@ using System.Text;
                     {
                         if (tt.Days == 1)
                         {
-                            return "1 den";
+                            return " " + " den";
                         }
                         else if (tt.Days < 5 && tt.Days > 1)
                         {
@@ -66,44 +66,44 @@ using System.Text;
                             {
                                 if (tt.Hours == 1)
                                 {
-                                    return tt.Hours + " hodina";
+                                    return tt.Hours + " " + "hodina";
                                 }
                                 else if (tt.Hours > 1 && tt.Hours < 5)
                                 {
-                                    return tt.Hours + " hodiny";
+                                    return tt.Hours + " " + "hodiny";
                                 }
                                 else if (tt.Hours > 4)
                                 {
-                                    return tt.Hours + " hodin";
+                                    return tt.Hours + " " + "hodin";
                                 }
                                 else
                                 {
                                     // Hodin je méně než 1
                                     if (tt.Minutes == 1)
                                     {
-                                        return tt.Minutes + " minuta";
+                                        return tt.Minutes + " " + "minuta";
                                     }
                                     else if (tt.Minutes > 1 && tt.Minutes < 5)
                                     {
-                                        return tt.Minutes + " minuty";
+                                        return tt.Minutes + " " + "minuty";
                                     }
                                     else if (tt.Minutes > 4)
                                     {
-                                        return tt.Minutes + " minut";
+                                        return tt.Minutes + " " + "minut";
                                     }
                                     else //if (tt.Minutes == 0)
                                     {
                                         if (tt.Seconds == 1)
                                         {
-                                            return tt.Seconds + " sekunda";
+                                            return tt.Seconds + " " + "sekunda";
                                         }
                                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                                         {
-                                            return tt.Seconds + " sekundy";
+                                            return tt.Seconds + " " + "sekundy";
                                         }
                                         else //if (tt.Seconds > 4)
                                         {
-                                            return tt.Seconds + " sekund";
+                                            return tt.Seconds + " " + "sekund";
                                         }
 
                                     }
@@ -117,44 +117,44 @@ using System.Text;
                     }
                     else if (totalWeeks == 1)
                     {
-                        return totalWeeks + " týden";
+                        return totalWeeks + " " + "týden";
                     }
                     else if (totalWeeks < 5 && totalWeeks > 1)
                     {
-                        return totalWeeks + " týdny";
+                        return totalWeeks + " " + "týdny";
                     }
                     else
                     {
-                        return totalWeeks + " týdnů";
+                        return totalWeeks + " " + "týdnů";
                     }
                 }
                 else
                 {
                     if (months == 1)
                     {
-                        return months + " měsíc";
+                        return months + " " + "měsíc";
                     }
                     else if (months > 1 && months < 5)
                     {
-                        return months + " měsíce";
+                        return months + " " + "měsíce";
                     }
                     else
                     {
-                        return months + " měsíců";
+                        return months + " " + "měsíců";
                     }
                 }
             }
             else if (age == 1)
             {
-                return "1 rok";
+                return " " + " rok";
             }
             else if (age > 1 && age < 5)
             {
-                return age + " roky";
+                return age + " " + "roky";
             }
             else if (age > 4 || age == 0)
             {
-                return age + " roků";
+                return age + " " + "roků";
             }
             else
             {

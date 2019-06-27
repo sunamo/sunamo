@@ -7,7 +7,7 @@ public class CSharpParser
 {
     public const string c = "const string";
     public const string eq = "=";
-    public const string p = "public ";
+    public const string p = "public" + " ";
 
     public static List<string> ParseConsts(List<string> lines, out int first)
     {

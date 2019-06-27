@@ -7,12 +7,12 @@
     {
         if (value.Trim().Length == 0)
         {
-            return "Do políčka " + name + " musíte zadat nějaký text";
+            return "Do políčka" + " " + name + " " + "musíte zadat nějaký text";
         }
 
         if (value.Length > maxlenght)
         {
-            return name + AllStrings.space + "musí být kratší než/rovno " + maxlenght + " znaků";
+            return name + AllStrings.space + "musí být kratší než/rovno" + " " + maxlenght + " " + "znaků";
         }
 
         return "";

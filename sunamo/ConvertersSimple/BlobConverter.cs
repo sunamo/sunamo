@@ -48,11 +48,11 @@ namespace sunamo
             {
                 if (AppLangHelper.currentUICulture.TwoLetterISOLanguageName == "cs")
                 {
-                    throw new FormatException("Zadaný řetězec se nezdá být šestnáctkově kódováný:");
+                    throw new FormatException("Zadaný řetězec se nezdá být šestnáctkově kódováný" + ":");
                 }
                 else
                 {
-                    throw new FormatException("The provided string does not appear to be Hex encoded:" + hexEncoded, ex);
+                    throw new FormatException("The provided string does not appear to be Hex encoded" + ":" + hexEncoded, ex);
                 }
             }
         }

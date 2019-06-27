@@ -15,7 +15,7 @@ namespace sunamo.Values
         /// "x "
         /// </summary>
         public const string xs = "x ";
-        public const string Exception = "Exception: ";
+        public const string Exception = "Exception" + ": ";
 
         public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
             AllExtensions.bmp,
@@ -30,12 +30,12 @@ namespace sunamo.Values
 
         public const string nulled = "(null)";
 
-        public const string HttpLocalhostSlash = "http://localhost/";
-        public const string HttpSunamoCzSlash = "http://www.sunamo.cz/";
+        public const string HttpLocalhostSlash = "http://localhost" + "/";
+        public const string HttpSunamoCzSlash = "http://www.sunamo.cz" + "/";
         public readonly static string localhost = "localhost";
 
-        public static string HttpWwwCzSlash = "http://www.sunamo.cz/";
-        public static string HttpCzSlash = "http://sunamo.cz/";
+        public static string HttpWwwCzSlash = "http://www.sunamo.cz" + "/";
+        public static string HttpCzSlash = "http://sunamo.cz" + "/";
         public static string HttpWwwCz = "http://www.sunamo.cz";
 
         public const string scz = "sunamo.cz";
@@ -43,11 +43,11 @@ namespace sunamo.Values
         public static string Cz = "http://sunamo.cz";
         public static string WwwCz = "http://www.sunamo.cz";
 
-        public static string CzSlash = "http://sunamo.cz/";
-        public static string DotCzSlash = ".sunamo.cz/";
+        public static string CzSlash = "http://sunamo.cz" + "/";
+        public static string DotCzSlash = "." + "sunamo.cz" + "/";
         public static string DotCz = ".sunamo.cz";
 
-        public static string http = "http://";
+        public static string http = "http:" + "//";
         public const double zeroDouble = 0;
         public const int zeroInt = 0;
         public const float zeroFloat = 0;

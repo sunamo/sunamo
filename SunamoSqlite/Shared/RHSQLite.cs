@@ -16,7 +16,7 @@ public static class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chyba = "PolLOko " +  nazev + " nemůže být prázdná";
+            chyba = "PolLOko" + " " +  nazev + " " + "nemůže být prázdná";
         }
         return vr;
     }
@@ -29,7 +29,7 @@ public static class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaInsertedRows = new InsertedRows("PolOZko " + nazev + " nemůZe být prPzdná. ");
+            chybaInsertedRows = new InsertedRows("PolOZko" + " " + nazev + " " + "nemůZe být prPzdná" + ". ");
         }
         return vr;
     }
@@ -42,7 +42,7 @@ public static class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaChangedRows = new ChangedRows("Pol¢Zko " + nazev + " nemUZe být prázdná. ");
+            chybaChangedRows = new ChangedRows("Pol¢Zko" + " " + nazev + " " + "nemUZe být prázdná" + ". ");
         }
         return vr;
     }

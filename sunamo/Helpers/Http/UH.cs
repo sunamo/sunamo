@@ -193,11 +193,11 @@ using System.Linq;
         public static bool HasHttpProtocol(string p)
         {
             p = p.ToLower();
-            if (p.StartsWith("http://"))
+            if (p.StartsWith("http:" + "//"))
             {
                 return true;
             }
-            if (p.StartsWith("https://"))
+            if (p.StartsWith("https:" + "//"))
             {
                 return true;
             }
@@ -206,8 +206,8 @@ using System.Linq;
 
         public static string RemovePrefixHttpOrHttps(string t)
         {
-            t = t.Replace("http://", "");
-            t = t.Replace("https://", "");
+            t = t.Replace("http:" + "//", "");
+            t = t.Replace("https:" + "//", "");
             return t;
         }
 
@@ -221,16 +221,16 @@ using System.Linq;
         public static string RemovePrefixHttpOrHttps(string t, out string protocol)
         {
 
-            if (t.Contains("http://"))
+            if (t.Contains("http:" + "//"))
             {
-                protocol = "http://";
-                t = t.Replace("http://", "");
+                protocol = "http:" + "//";
+                t = t.Replace("http:" + "//", "");
                 return t;
             }
-            if (t.Contains("https://"))
+            if (t.Contains("https:" + "//"))
             {
-                protocol = "https://";
-                t = t.Replace("https://", "");
+                protocol = "https:" + "//";
+                t = t.Replace("https:" + "//", "");
                 return t;
             }
             protocol = "";

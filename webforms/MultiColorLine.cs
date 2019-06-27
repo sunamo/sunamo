@@ -24,10 +24,10 @@ public class MultiColorLine
         int bl = sirky.Length -1;
         for (int i = 0; i < bl; i++)
         {
-            hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[i] + "%;background-color:" + colors[i]);
+            hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[i] + "%;" + "background-color" + ":" + colors[i]);
             hg.TerminateTag("div");
         }
-        hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[bl] + "%;background-color:" + colors[bl] + ";float:right;");
+        hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[bl] + "%;" + "background-color" + ":" + colors[bl] + ";" + "float:right" + ";");
         hg.TerminateTag("div");
         return hg.ToString();
     }
@@ -44,10 +44,10 @@ public class MultiColorLine
         bl--;
         for (int i = 0; i < bl; i++)
         {
-            hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[i] + "%;background-color:" + colors[i]);
+            hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[i] + "%;" + "background-color" + ":" + colors[i]);
             hg.TerminateTag("div");
         }
-        hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[bl] + "%;background-color:" + colors[bl] + ";float:right;");
+        hg.WriteTagWith2Attrs("div", "class", "castBarevneListy", "style", "width:" + sirky[bl] + "%;" + "background-color" + ":" + colors[bl] + ";" + "float:right" + ";");
         hg.TerminateTag("div");
         return hg.ToString();
     }

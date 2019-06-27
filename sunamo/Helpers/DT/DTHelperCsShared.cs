@@ -157,7 +157,7 @@ public static DateTime ParseDateCzech(string input)
                     {
                         if (tt.Days == 1)
                         {
-                            return tt.Days + " dnem";
+                            return tt.Days + " " + "dnem";
                         }
                         else if (tt.Days < 5 && tt.Days > 1)
                         {
@@ -169,44 +169,44 @@ public static DateTime ParseDateCzech(string input)
                             {
                                 if (tt.Hours == 1)
                                 {
-                                    return tt.Hours + " hodinou";
+                                    return tt.Hours + " " + "hodinou";
                                 }
                                 else if (tt.Hours > 1 && tt.Hours < 5)
                                 {
-                                    return tt.Hours + " hodinami";
+                                    return tt.Hours + " " + "hodinami";
                                 }
                                 else if (tt.Hours > 4)
                                 {
-                                    return tt.Hours + " hodinami";
+                                    return tt.Hours + " " + "hodinami";
                                 }
                                 else
                                 {
                                     // Hodin je méně než 1
                                     if (tt.Minutes == 1)
                                     {
-                                        return tt.Minutes + " minutou";
+                                        return tt.Minutes + " " + "minutou";
                                     }
                                     else if (tt.Minutes > 1 && tt.Minutes < 5)
                                     {
-                                        return tt.Minutes + " minutami";
+                                        return tt.Minutes + " " + "minutami";
                                     }
                                     else if (tt.Minutes > 4)
                                     {
-                                        return tt.Minutes + " minutami";
+                                        return tt.Minutes + " " + "minutami";
                                     }
                                     else //if (tt.Minutes == 0)
                                     {
                                         if (tt.Seconds == 1)
                                         {
-                                            return tt.Seconds + " sekundou";
+                                            return tt.Seconds + " " + "sekundou";
                                         }
                                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                                         {
-                                            return tt.Seconds + " sekundami";
+                                            return tt.Seconds + " " + "sekundami";
                                         }
                                         else //if (tt.Seconds > 4)
                                         {
-                                            return tt.Seconds + " sekundami";
+                                            return tt.Seconds + " " + "sekundami";
                                         }
 
                                     }
@@ -214,7 +214,7 @@ public static DateTime ParseDateCzech(string input)
                             }
                             else
                             {
-                                return "1 dnem";
+                                return " " + " dnem";
                             }
                         }
 
@@ -222,44 +222,44 @@ public static DateTime ParseDateCzech(string input)
                     }
                     else if (totalWeeks == 1)
                     {
-                        return totalWeeks + " týdnem";
+                        return totalWeeks + " " + "týdnem";
                     }
                     else if (totalWeeks < 5 && totalWeeks > 1)
                     {
-                        return totalWeeks + " týdny";
+                        return totalWeeks + " " + "týdny";
                     }
                     else
                     {
-                        return totalWeeks + " týdny";
+                        return totalWeeks + " " + "týdny";
                     }
                 }
                 else
                 {
                     if (months == 1)
                     {
-                        return months + " měsícem";
+                        return months + " " + "měsícem";
                     }
                     else if (months > 1 && months < 5)
                     {
-                        return months + " měsíci";
+                        return months + " " + "měsíci";
                     }
                     else
                     {
-                        return months + " měsíců";
+                        return months + " " + "měsíců";
                     }
                 }
             }
             else if (age == 1)
             {
-                return "1 rokem";
+                return " " + " rokem";
             }
             else if (age > 1 && age < 5)
             {
-                return age + " roky";
+                return age + " " + "roky";
             }
             else if (age > 4 || age == 0)
             {
-                return age + " roky";
+                return age + " " + "roky";
             }
             else
             {

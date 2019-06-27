@@ -106,7 +106,7 @@ namespace SunamoCode
 
             XElement xliff = XHelper.GetElementOfName(xd, "xliff");
             var allElements = XHelper.GetElementsOfNameWithAttrContains(xliff, "file", "target-language", toL.ToString(), false);
-            var resources = allElements.Where(d => XHelper.Attr(d, "original").Contains("/RESOURCES/"));
+            var resources = allElements.Where(d => XHelper.Attr(d, "original").Contains("/" + "RESOURCES" + "/"));
             XElement file = resources.First();
             XElement body = XHelper.GetElementOfName(file, "body");
             XElement group = XHelper.GetElementOfName(body, "group");

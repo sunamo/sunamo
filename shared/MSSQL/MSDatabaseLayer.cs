@@ -62,7 +62,7 @@ public partial class MSDatabaseLayer
         }
         else if (p.GetType() == Consts.tBinary)
         {
-            return "byte[]";
+            return "byte" + "[]";
         }
         else if (p.GetType() == Consts.tFloat)
         {
@@ -207,7 +207,7 @@ public partial class MSDatabaseLayer
         }
         else if (p == Consts.tBinary)
         {
-            return "byte[]";
+            return "byte" + "[]";
         }
         else if (p == Consts.tFloat)
         {
@@ -299,7 +299,7 @@ public partial class MSDatabaseLayer
             case SqlDbType.Binary:
             case SqlDbType.VarBinary:
             case SqlDbType.Image:
-                return "byte[]";
+                return "byte" + "[]";
 
             case SqlDbType.SmallMoney:
             case SqlDbType.Money:
@@ -485,7 +485,7 @@ public partial class MSDatabaseLayer
     public static void AssignConnectionStringScz()
     {
 
-        AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True;");
+        AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True" + ";");
     }
 
     public static void AssignConnectionString(string cs2)
@@ -581,7 +581,7 @@ public partial class MSDatabaseLayer
         {
             cs += ";Database=" + database;
         }
-        cs += ";Integrated Security=True;MultipleActiveResultSets=True;";
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";";
         _conn = new SqlConnection(cs);
         try
         {

@@ -141,7 +141,7 @@ public class SunamoPhotoSwipeGallery
                     append = "#&gid=" + a18gid + "&pid=" + (i);
                 }
                 
-                hg.WriteTagWith2Attrs("a", "href", UA.GetWebUri3(req, a20uri + append), "target", "_blank");
+                hg.WriteTagWith2Attrs("a", "href", UA.GetWebUri3(req, a20uri + append), "target", "_" + "blank");
 
                 hg.WriteNonPairTagWithAttrs("img", "src", a7files[i], "alt", a9filesNames[i], "class", a13fotoGalerieTnFileClass);
                 hg.TerminateTag("a");

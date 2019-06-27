@@ -43,7 +43,7 @@ public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, 
                                 if (email != "")
                                 {
                                     DateTime dateChanged = global::MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.UsersReactivates, "DateChanged", global::SqlServerHelper.DateTimeMinVal, CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
-                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
+                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před" + " " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
                                 }
 
                                 string sc = "";
@@ -83,12 +83,12 @@ public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, 
                     }
                     else
                     {
-                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné.");
+                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné" + ".");
                     }
                 }
                 else
                 {
-                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů. ");
+                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů" + ". ");
                 }
             }
             else

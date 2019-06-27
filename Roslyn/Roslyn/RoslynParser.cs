@@ -25,6 +25,22 @@ namespace Roslyn
 
         static Type type = null;
 
+        public static bool IsCSharpCode(string input)
+        {
+            SyntaxTree d = null;
+            try
+            {
+                d = CSharpSyntaxTree.ParseText(input);
+            }
+            catch (Exception ex)
+            {
+                // throwed Method not found: 'Boolean Microsoft.CodeAnalysis.StackGuard.IsInsufficientExecutionStackException(System.Exception)'.' for non cs code
+                
+            }
+            var s = d.GetText().ToString();
+            return d != null;
+        }
+
         public static MethodDeclarationSyntax Method(string item)
         {
             item = item + "{}";
@@ -88,7 +104,7 @@ namespace Roslyn
                 sb.AppendLine(file2.Key);
                 foreach (var method in file2.Value)
                 {
-                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page_"))
+                    if (method.Name.StartsWith("On") || method.Name.StartsWith("Page" + "_"))
                     {
                         sb.AppendLine(method.Name);
                     }
@@ -192,7 +208,7 @@ namespace Roslyn
                 //Console.WriteLine(variableDeclaration.Variables.First().Identifier.);
                 //Console.WriteLine(variableDeclaration.Variables.First().Identifier.Value);
                 string variableName = variableDeclaration.Declaration.Type.ToString();
-                variableName = SH.ReplaceOnce(variableName, "global::", "");
+                variableName = SH.ReplaceOnce(variableName, "global" + "::", "");
                 int lastIndex = variableName.LastIndexOf(AllChars.dot);
                 string ns, cn;
                 SH.GetPartsByLocation(out ns, out cn, variableName, lastIndex);
@@ -213,7 +229,7 @@ namespace Roslyn
                 var line = item.Trim();
                 if (line != string.Empty)
                 {
-                    if (line.StartsWith("using "))
+                    if (line.StartsWith("using" + " "))
                     {
                         usings.Add(line);
                     }

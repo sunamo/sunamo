@@ -38,7 +38,7 @@ public class FileBasedTable
 
     public static void DeleteSbf(string table, string column, int id)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".stf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + "." + "stf";
         File.Delete(file);
     }
 

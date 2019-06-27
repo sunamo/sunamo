@@ -23,7 +23,7 @@ public class GeneralHelper
 
     public static string GetPhotoPathImgUri(HttpRequest Request, string fileName)
     {
-        return UH.CombineTrimEndSlash("http://" + Request.Url.Host, "img", fileName);
+        return UH.CombineTrimEndSlash("http:" + "//" + Request.Url.Host, "img", fileName);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class GeneralHelper
     {
         if (distance.Length != times.Length)
         {
-            throw new Exception("Kolekce vzdáleností a časů nemají stejný počet prvků.");
+            throw new Exception("Kolekce vzdáleností a časů nemají stejný počet prvků" + ".");
         }
         Speed[] vr = new Speed[distance.Length];
         vr[0] = new Speed();

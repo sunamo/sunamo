@@ -34,11 +34,11 @@ public static class BitmapImageHelper
 		string cesta = "";
 		if (disabled)
 		{
-			cesta = "i/d/";
+			cesta = "/" + "/d" + "/";
 		}
 		else
 		{
-			cesta = "i/e/";
+			cesta = "/" + "/e" + "/";
 		}
 		cesta += appPic.ToString() + ".png";
 		return MsAppx(cesta);

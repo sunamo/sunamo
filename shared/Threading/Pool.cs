@@ -16,7 +16,7 @@ namespace SimpleThreadPool
             this._workers = new List<Thread>();
             for (var i = 0; i < size; ++i)
             {
-                var worker = new Thread(this.Worker) { Name = string.Concat("Worker ", i) };
+                var worker = new Thread(this.Worker) { Name = string.Concat("Worker" + " ", i) };
                 worker.Start();
                 this._workers.Add(worker);
             }

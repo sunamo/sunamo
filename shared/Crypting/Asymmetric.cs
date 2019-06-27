@@ -57,7 +57,7 @@ namespace shared.Crypting
         private const string _KeyPrivateExponent = "PrivateKey.D";
         #endregion
 
-        #region "  PublicKey class"
+        #region "  " + "PublicKey class"
         /// <summary>
         /// Represents a public encryption key. Intended to be shared, it 
         /// contains only the Modulus and Exponent.
@@ -172,7 +172,7 @@ namespace shared.Crypting
         }
         #endregion
 
-        #region "  PrivateKey class"
+        #region "  " + "PrivateKey class"
 
         /// <summary>
         /// Represents a private encryption key. Not intended to be shared, as it 
@@ -324,7 +324,7 @@ namespace shared.Crypting
 
             public static string FromFile(string p)
             {
-                throw new Exception("The method or operation is not implemented.");
+                throw new Exception("The method or operation is not implemented" + ".");
             }
         }
 
@@ -501,7 +501,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("bad length") > -1)
                 {
-                    throw new CryptographicException("Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption.", ex);
+                    throw new CryptographicException("Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption" + ".", ex);
                 }
                 else
                 {
@@ -607,7 +607,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
                 {
-                    throw new Exception("Unable to obtain Cryptographic Service Provider. " + "Either the permissions are incorrect on the " + "'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " does not have access to this folder.", ex);
+                    throw new Exception("Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".", ex);
                 }
                 else
                 {

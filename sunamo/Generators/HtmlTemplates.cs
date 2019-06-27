@@ -4,7 +4,7 @@ public static partial  class HtmlTemplates
 {
     public static string HiddenField(string id, string value)
     {
-        string format = "<input type='hidden' id='" + id + "' value='" + value + "' />";
+        string format = "<input type='hidden' id=" + "'" + id + "' " + "value=" + "'" + value + "' />";
         return format;
         //HtmlInjection.InjectInternalToHead(page, format);
     }
@@ -13,10 +13,10 @@ public static partial  class HtmlTemplates
     /// <summary>
     /// Toto se m��e pou��vat pouze kdy� nechce� nic zadat do head, jinak pou�ij ostatn� konstanty zde
     /// </summary>
-    public const string htmlEndTitleBody = "</title></head><body>";
-    public const string htmlEndTitle = "</title>";
-    public const string htmlEndHeadBody = "</head><body>";
-    public const string htmlEnd = "</body></html>";
+    public const string htmlEndTitleBody = "/" + "/title></head><body>";
+    public const string htmlEndTitle = "/" + "/title>";
+    public const string htmlEndHeadBody = "/" + "/head><body>";
+    public const string htmlEnd = "/" + "/body></html>";
 
     public static string GetH2(string title)
     {
@@ -33,9 +33,9 @@ public static partial  class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td>" + name + ": </td><td>" + value + "</td></tr>";
+            return "<tr><td>" + name + ": " + "</td><td>" + value + "/" + "/td></tr>";
         }
-        return "<tr><td>" + name + " </td><td>" + value + "</td></tr>";
+        return "<tr><td>" + name + " " + "</td><td>" + value + "/" + "/td></tr>";
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -48,9 +48,9 @@ public static partial  class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td colspan='2'><b>" + name + ": </b></td></tr><tr><td colspan='2'>" + value + "</td></tr>";
+            return "<tr><td colspan='2'><b>" + name + ": " + "</b></td></tr><tr><td colspan='2'" + "" + value + "/" + "/td></tr>";
         }
-        return "<tr><td colspan='2'><b>" + name + " </b></td></tr><tr><td colspan='2'>" + value + "</td></tr>";
+        return "<tr><td colspan='2'><b>" + name + " " + "</b></td></tr><tr><td colspan='2'" + "" + value + "/" + "/td></tr>";
     }
 
 }

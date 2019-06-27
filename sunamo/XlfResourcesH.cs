@@ -67,7 +67,7 @@ public class XlfResourcesH
                         }
                         else
                         {
-                            throw new Exception("Unvalid file " + file + ", please delete it");
+                            throw new Exception("Unvalid file" + " " + file + ", " + "please delete it");
                         }
                     }
                 }

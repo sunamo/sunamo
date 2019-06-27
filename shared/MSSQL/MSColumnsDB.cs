@@ -12,7 +12,7 @@ public class MSColumnsDB : List<MSSloupecDB>
     bool signed = false;
     string derived = null;
     string replaceMSinMSStoredProceduresI = null;
-    static string _tableNameField = "_tableName";
+    static string _tableNameField = "_" + "tableName";
 
     #region ctors
     public MSColumnsDB(bool signed, params MSSloupecDB[] p)
@@ -122,7 +122,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         CSharpGenerator csg = new CSharpGenerator();
 
         csg.AppendLine(2, "DataTable dt = MSStoredProceduresI.ci.SelectDataTableSelective(\"" + tableNameWithPrefix + "\");");
-        csg.AppendLine(2, "int radku = dt.Rows.Count;");
+        csg.AppendLine(2, "int radku = dt.Rows.Count" + ";");
         List<string> s = new List<string>();
         List<string> ss = new List<string>();
         foreach (MSSloupecDB item in this)
@@ -135,13 +135,13 @@ public class MSColumnsDB : List<MSSloupecDB>
 
         csg.AppendLine(2, "");
         csg.AppendLine(2, "");
-        csg.AppendLine(2, "int i = 0;");
+        csg.AppendLine(2, "int i = 0" + ";");
         csg.AppendLine(2, "foreach (DataRow item in dt.Rows)");
         csg.StartBrace(2);
-        csg.AppendLine(3, "object[] o = item.ItemArray;");
+        csg.AppendLine(3, "object[] o = item.ItemArray" + ";");
         for (int i = 0; i < this.Count; i++)
         {
-            csg.AppendLine(3, ss[i] + "[i] = o[" + i.ToString() + "].ToString();");
+            csg.AppendLine(3, ss[i] + "[" + "i] = o" + "[" + i.ToString() + "].ToString();");
         }
         csg.AppendLine(3, "i++;");
         csg.EndBrace(2);
@@ -228,7 +228,7 @@ public class MSColumnsDB : List<MSSloupecDB>
             TF.SaveFile(csBase, PathSczBaseAdmin);
         }
         TF.SaveFile(csBase, PathBase);
-        return "Uloženo do souboru " + Path;
+        return "Uloženo do souboru" + " " + Path;
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         }
 
         bool isDynamicTable = false;
-        if (nazevTabulky.Contains(AllStrings.us))
+        if (nazevTabulky.Contains("_"))
         {
             isDynamicTable = true;
             nazevTabulky = ConvertPascalConvention.ToConvention(nazevTabulky);
@@ -308,11 +308,11 @@ public class MSColumnsDB : List<MSSloupecDB>
             {
                 nameFields.Add(FirstCharLower(name));
                 // Používá se při update
-                temp.Add(AllStrings.qm + name + AllStrings.qm);
+                temp.Add("\"" + name + "\"");
                 temp.Add(name);
             }
         }
-        string seznamNameValue = SH.Join(AllChars.comma, temp.ToArray());
+        string seznamNameValue = SH.Join(',', temp.ToArray());
         bool isOtherColumnID = IsOtherColumnID;
         CSharpGenerator csg = new CSharpGenerator();
 
@@ -336,14 +336,14 @@ ParseRow(o);");
         {
             if (isOtherColumnID)
             {
-                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = MSTSP.ci.InsertToRow2(trans,TableName,\"" + sloupecID + AllStrings.comma + SH.Join(AllChars.comma, nameFields.ToArray()) + @");
-            return " + sloupecID + AllStrings.sc);
+                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = MSTSP.ci.InsertToRow2(trans,TableName,\"" + sloupecID + "\"," + SH.Join(',', nameFields.ToArray()) + @");
+            return " + sloupecID + ";");
                 csg.Method(1, "public " + sloupecIDTyp + " InsertToTable(SqlTransaction trans)", innerInsertToTable);
             }
             else
             {
-                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + @" = MSTSP.ci.InsertToRow(trans,TableName," + SH.Join(AllChars.comma, nameFields.ToArray()) + @");
-            return " + sloupecID + AllStrings.sc);
+                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + @" = MSTSP.ci.InsertToRow(trans,TableName," + SH.Join(',', nameFields.ToArray()) + @");
+            return " + sloupecID + ";");
                 csg.Method(1, "public " + sloupecIDTyp + " InsertToTable(SqlTransaction trans)", innerInsertToTable);
             }
         }
@@ -351,19 +351,19 @@ ParseRow(o);");
         {
             if (isOtherColumnID)
             {
-                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + sloupecIDTyp + ")MSTSP.ci.InsertToRow2(trans,TableName,\"" + sloupecID + AllStrings.comma + SH.Join(AllChars.comma, nameFields.ToArray()) + @");
-            return " + sloupecID + AllStrings.sc);
+                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + sloupecIDTyp + ")MSTSP.ci.InsertToRow2(trans,TableName,\"" + sloupecID + "\"," + SH.Join(',', nameFields.ToArray()) + @");
+            return " + sloupecID + ";");
                 csg.Method(1, "public " + sloupecIDTyp + " InsertToTable(SqlTransaction trans)", innerInsertToTable);
             }
             else
             {
-                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + @" = (" + sloupecIDTyp + ")MSTSP.ci.InsertToRow(trans,TableName," + SH.Join(AllChars.comma, nameFields.ToArray()) + @");
-            return " + sloupecID + AllStrings.sc);
+                string innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + @" = (" + sloupecIDTyp + ")MSTSP.ci.InsertToRow(trans,TableName," + SH.Join(',', nameFields.ToArray()) + @");
+            return " + sloupecID + ";");
                 csg.Method(1, "public " + sloupecIDTyp + " InsertToTable(SqlTransaction trans)", innerInsertToTable);
             }
         }
 
-        string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSTSP.ci.InsertToRow3(trans,TableName, " + sloupecID + AllStrings.comma + SH.Join(AllChars.comma, nameFields.ToArray()) + ");");
+        string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSTSP.ci.InsertToRow3(trans,TableName, " + sloupecID + "," + SH.Join(',', nameFields.ToArray()) + ");");
         csg.Method(1, "public void InsertToTable3(SqlTransaction trans)", innerInsertToTable3);
 
 
@@ -372,6 +372,7 @@ ParseRow(o);");
 
         return csg.ToString();
     }
+
 
     /// <summary>
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
@@ -395,7 +396,7 @@ ParseRow(o);");
     public string GetCsTableRowBase(string nazevTabulky, string dbPrefix, out string tableName)
     {
         string dbPrefix2 = dbPrefix;
-        if (dbPrefix2 == "Nope_")
+        if (dbPrefix2 == "Nope" + "_")
         {
             dbPrefix2 = "";
         }
@@ -445,7 +446,7 @@ ParseRow(o);");
         }
         else
         {
-            csg.Property(1, AccessModifiers.Protected, false, "string", "TableName", true, false, "Tables." + dbPrefix2 + nazevTabulky);
+            csg.Property(1, AccessModifiers.Protected, false, "string", "TableName", true, false, "Tables" + "." + dbPrefix2 + nazevTabulky);
         }
 
         CSharpGenerator innerParseRow = new CSharpGenerator();
@@ -457,7 +458,7 @@ ParseRow(o);");
         for (int i = 0; i < this.Count; i++)
         {
             MSSloupecDB item = this[i];
-            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
+            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " " + "= MSTableRowParse" + "." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
 
         }
         // Na závěr každé metody nesmí být AppendLine
@@ -504,13 +505,13 @@ using System.Collections.Generic;
     {
         isDynamicTable = false;
         dbPrefix2 = dbPrefix;
-        if (dbPrefix2 == "Nope_")
+        if (dbPrefix2 == "Nope" + "_")
         {
             dbPrefix2 = "";
         }
         // OBSAHUJE I PREFIX, TAKŽE TŘEBA Koc_
         string nazevTabulkyCopy = SH.Copy(nazevTabulky);
-        string niMethod = CSharpGenerator.AddTab(2, "throw new NotImplementedException();");
+        string niMethod = CSharpGenerator.AddTab(2, "throw new NotImplementedException()" + ";");
         
         // ZBAVÍM TABULKU nazevTabulky PREFIXU, ČILI NEOBSAHUJE NAPŘ. Koc_
         if (nazevTabulky.StartsWith(dbPrefix))
@@ -557,10 +558,10 @@ using System.Collections.Generic;
         csg.Using(usings);
         //, "ITableRow<" + MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(this[0].Type) + AllStrings.gt
         string implements = tableName + "Base";
-        string am = "public ";
+        string am = "public" + " ";
         if (derived != null)
         {
-            am = "public ";
+            am = "public" + " ";
             implements += AllStrings.comma + derived;
         }
         csg.StartClass(0, AccessModifiers.Public, false, tableName, implements);
@@ -593,7 +594,7 @@ using System.Collections.Generic;
                 else
                 {
                     // Je to například IDMisters
-                    throw new Exception("V prvním sloupci není řádek ID nebo ID*");
+                    throw new Exception(" " + " prvním sloupci není řádek ID nebo ID" + "*");
                 }
             }
             else
@@ -651,7 +652,7 @@ ParseRow(o);");
         }
         if (nameFields.Count == 0)
         {
-            throw new Exception("Tabulka nemůže mít jen 1 sloupec.");
+            throw new Exception("Tabulka nemůže mít jen 1 sloupec" + ".");
         }
         else
         {
@@ -666,10 +667,10 @@ ParseRow(o);");
              CreateMethodInsert1(csg, am, sloupecID, typSloupecID, seznamNameValueBezPrvniho, signed2);
 
             string innerInsertToTable2 = CSharpGenerator.AddTab(2, sloupecID + "=(" + sloupecIDTyp + ")MSStoredProceduresI.ci.Insert2" + pridatDoNazvuMetody + "(TableName,\"" + sloupecID + "\",typeof(" + sloupecIDTyp + ")," + seznamNameValueBezPrvniho + ");");
-            innerInsertToTable2 += CSharpGenerator.AddTab(2, "return " + sloupecID + AllStrings.sc);
-            csg.Method(1, am + sloupecIDTyp + " InsertToTable2()", innerInsertToTable2);
+            innerInsertToTable2 += CSharpGenerator.AddTab(2, "return" + " " + sloupecID + AllStrings.sc);
+            csg.Method(1, am + sloupecIDTyp + " " + "InsertToTable2()", innerInsertToTable2);
 
-            string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSStoredProceduresI.ci.Insert" + pridatDoNazvuMetody + "4(TableName, " + seznamNameValue + ");");
+            string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSStoredProceduresI.ci.Insert" + pridatDoNazvuMetody + "4(TableName" + ", " + seznamNameValue + ");");
             csg.Method(1, am + "void InsertToTable3(" + sloupecIDTyp + AllStrings.space + sloupecID + AllStrings.rb, innerInsertToTable3);
 
 
@@ -728,12 +729,12 @@ ParseRow(o);");
             {
                 if (this[0].Name == "ID")
                 {
-                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables." +  nazevTabulky + ", id);"));
+                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables" + "." +  nazevTabulky + ", " + "id)" + ";"));
                 }
                 else
                 {
                     //csg.Method("public static string Get" + nazevTabulkyJC + "Name(int id)", "return MSStoredProceduresI.ci.SelectValueOfIDOrSE(\"" + nazevTabulkyCopy + "\", id, \"" + this[0].Name + "\");");
-                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables." +  nazevTabulky + ", id,\"" + this[0].Name + "\");"));
+                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables" + "." +  nazevTabulky + ", id,\"" + this[0].Name + "\");"));
                 }
             }
         }
@@ -758,13 +759,13 @@ ParseRow(o);");
         string innerInsertToTable = "";
         if (!signed2)
         {
-            innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + typSloupecIDS + ")MSStoredProceduresI.ci.Insert(TableName, typeof(" + typSloupecIDS + "),\"" + sloupecID + AllStrings.comma + SH.Join(AllChars.comma, seznamNameValueBezPrvniho) + @");
-            return " + sloupecID + AllStrings.sc);
+            innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + typSloupecIDS + ")MSStoredProceduresI.ci.Insert(TableName, typeof(" + typSloupecIDS + "),\"" + sloupecID + "\"," + SH.Join(',', seznamNameValueBezPrvniho) + @");
+            return " + sloupecID + ";");
         }
         else
         {
-            innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + typSloupecIDS + ")MSStoredProceduresI.ci.InsertSigned(TableName, typeof(" + typSloupecIDS + "),\"" + sloupecID + AllStrings.comma + seznamNameValueBezPrvniho + @");
-            return " + sloupecID + AllStrings.sc);
+            innerInsertToTable = CSharpGenerator.AddTab(2, sloupecID + " = (" + typSloupecIDS + ")MSStoredProceduresI.ci.InsertSigned(TableName, typeof(" + typSloupecIDS + "),\"" + sloupecID + "\"," + seznamNameValueBezPrvniho + @");
+            return " + sloupecID + ";");
         }
         csg.Method(1, am + typSloupecIDS + " InsertToTable()", innerInsertToTable);
     }
@@ -787,7 +788,7 @@ ParseRow(o);");
         {
             csg2.Ctor(1, ModifiersConstructor.Public, tableName, "");
         }
-        csg2.Ctor(1, ModifiersConstructor.Public, tableName, ctor1Inner.ToString(), "object[]", "o");
+        csg2.Ctor(1, ModifiersConstructor.Public, tableName, ctor1Inner.ToString(), "object" + "[]", "o");
 
         List<string> paramsForCtorWithoutID = new List<string>();
         if (paramsForCtor.Count != 0)
@@ -962,7 +963,7 @@ ParseRow(o);");
                     break;
                 case SqlDbType.DateTimeOffset:
                 case SqlDbType.Timestamp:
-                    throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován.");
+                    throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován" + ".");
 
                 case SqlDbType.Real:
                 case SqlDbType.Float:
@@ -977,14 +978,14 @@ ParseRow(o);");
 
 
                 case SqlDbType.Structured:
-                    throw new NotSupportedException("Strukturované datové typy nejsou podporovány.");
+                    throw new NotSupportedException("Strukturované datové typy nejsou podporovány" + ".");
                     
 
                 case SqlDbType.Udt:
-                    throw new NotSupportedException("Univerzální datové typy nejsou podporovány.");
+                    throw new NotSupportedException("Univerzální datové typy nejsou podporovány" + ".");
                     
                 case SqlDbType.Variant:
-                    throw new NotSupportedException("Variantní datové typy nejsou podporovány.");
+                    throw new NotSupportedException("Variantní datové typy nejsou podporovány" + ".");
                     
                 case SqlDbType.Xml:
                     throw new NotSupportedException("Xml datový typ není podporován");
@@ -998,18 +999,18 @@ ParseRow(o);");
                 {
                     csgDisplayInfo.If(3, nameOfVariable + " != -1");
                 }
-                csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "SetP(" + nameOfVariable + ", lbl" + item.Name + ", p" + item.Name + ");"));
+                csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "SetP(" + nameOfVariable + ", " + "lbl" + item.Name + ", p" + item.Name + ");"));
                 if (numero)
                 {
                     csgDisplayInfo.EndBrace(3);
                     csgDisplayInfo.Else(3);
-                    csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "p" + item.Name + ".Visible = false;"));
+                    csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "p" + item.Name + "." + "Visible = false" + ";"));
                     csgDisplayInfo.EndBrace(3);
                 }
             }
             else
             {
-                csgDisplayInfo.AppendLine(3, "SetPDateTime(" + nultyParametr + nameOfVariable + ", lbl" + item.Name + ", p" + item.Name + ");");
+                csgDisplayInfo.AppendLine(3, "SetPDateTime(" + nultyParametr + nameOfVariable + ", " + "lbl" + item.Name + ", p" + item.Name + ");");
             }
         }
 
@@ -1017,7 +1018,7 @@ ParseRow(o);");
 
         csg.Method(2, "private void SetP(string p, HtmlGenericControl lblName, HtmlGenericControl pName)",
 CSharpGenerator.AddTab(3, @"string t = p.Trim();
-        if (t != " + AllStrings.qm + @")
+        if (t !=" + " " + AllStrings.qm + @")
         {
             lblName.InnerHtml = t;
             pName.Visible = true;
@@ -1046,7 +1047,7 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
 
         csg.Method(2, "private void SetVisible(bool b)", CSharpGenerator.AddTab(3, @"divButtons.Visible = b;
         h1.Visible = b;
-        entityInfo.Visible = b;"));
+        entityInfo.Visible = b" + ";"));
 
         return csg.ToString();
     }

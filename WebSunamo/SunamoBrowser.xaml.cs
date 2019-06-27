@@ -61,7 +61,7 @@ namespace WebSunamo
         /// <param name="loadCompleted"></param>
         public void Initialize(string TextCustomButton, string homeAdressWithoutHttp)
         {
-            homeUrl = new Uri("http://" + homeAdressWithoutHttp);
+            homeUrl = new Uri("http:" + "//" + homeAdressWithoutHttp);
 
             webControl.LoadCompleted += WebControl_LoadCompleted;
 
@@ -77,7 +77,7 @@ namespace WebSunamo
                 webControl.Source = new Uri("https://samoobsluha.tescomobile.cz/selfcare/sc/history?msisdn=" + cislo + "&filteringAttributesCallList.page=1&anchorValue=anchorValueCallList&render=renderLists#anchorValueCallList");
                 return;
             }
-            if (HTML.Contains("<body "))
+            if (HTML.Contains("<body" + " "))
             {
 
 

@@ -38,7 +38,7 @@ public class XH
     public static string ReplaceAmpInString(string xml)
     {
         Regex badAmpersand = new Regex("&(?![a-zA-Z]{2,6};|#[0-9]{2,4};)");
-        const string goodAmpersand = "&amp;";
+        const string goodAmpersand = "&" + "amp" + ";";
         return badAmpersand.Replace(xml, goodAmpersand);
     }
 

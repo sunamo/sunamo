@@ -41,7 +41,7 @@ namespace webforms
 
             if (Login.ToLower() == "all")
             {
-                sb.AddItem("Login 'all' je vyhrazen pro jiné účely.");
+                sb.AddItem("Login 'all' je vyhrazen pro jiné účely" + ".");
             }
             if (Login.Contains(" "))
             {
@@ -138,7 +138,7 @@ namespace webforms
 
             if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::SqlServerHelper.DateTimeMinVal)
             {
-                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-).");
+                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-)" + ".");
             }
 
             string vr = sb.ToString();

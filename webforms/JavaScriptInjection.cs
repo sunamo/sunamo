@@ -108,7 +108,7 @@ public class JavaScriptInjection
 
     public static void RegisterClientScriptInnerHtml(SunamoPage page, string functionName, string src)
     {
-        RegisterClientScriptInnerHtml(page, "function " + functionName + @"() {
+        RegisterClientScriptInnerHtml(page, "function" + " " + functionName + @"() {
 " + src + "}");
     }
 
@@ -180,7 +180,7 @@ public class JavaScriptInjection
             //}
             sb.Append("\"");
 
-            if ((hostWithHttp.StartsWith("http://") || item.StartsWith("https://")) && !item.Contains("{") && !item.Contains("["))
+            if ((hostWithHttp.StartsWith("http:" + "//") || item.StartsWith("https:" + "//")) && !item.Contains("{") && !item.Contains("["))
             {
                 if (item == JavaScriptPaths.RequireJS)
                 {
@@ -197,7 +197,7 @@ public class JavaScriptInjection
                 sb.AppendLine(">");
                 sb.Append(item);
             }
-            sb.Append("</script>");
+            sb.Append("/" + "/script>");
             LiteralControl lc = new LiteralControl(sb.ToString());
             page.Page.Header.Controls.AddAt(0, lc);
         }
@@ -210,7 +210,7 @@ public class JavaScriptInjection
         sb.Append("text/javascript");
         sb.Append("\">");
         sb.Append(javaScript);
-        sb.Append("</script>");
+        sb.Append("/" + "/script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
         page.Page.Header.Controls.Add(lc);
     }
@@ -222,7 +222,7 @@ public class JavaScriptInjection
         sb.Append(type);
         sb.Append("\">");
         sb.Append(script);
-        sb.Append("</script>");
+        sb.Append("/" + "/script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
         page.Page.Header.Controls.Add(lc);
     }
@@ -253,14 +253,14 @@ var myColorScheme = {
     };
 
       $('#nanoGallery3').nanoGallery({
-          itemsBaseURL:'" + baseUri+ @"',
+          itemsBaseURL:'" + baseUri+ @"'," + "
 thumbnailHoverEffect: 'borderLighter',
         colorScheme: myColorScheme,
 thumbnailHeight: 168,
 thumbnailWidth: 300,
 viewerFullscreen: true
       });
-  });");
+  })" + ";");
     }
 
     public static void InitNanoGallery(SunamoPage page, string baseUri, List<string> photosUri, List<string> photosUriTn, List<string> photosDesc)
@@ -291,15 +291,15 @@ var myColorScheme = {
     };
 
       $('#nanoGallery3').nanoGallery({
-itemsBaseURL:'" + baseUri + @"',
-items:[" +items+ @"],
+itemsBaseURL:'" + baseUri + @"'," + "
+items" + ":[" +items+ @"]," + "
 thumbnailHoverEffect: 'borderLighter',
 colorScheme: myColorScheme,
 thumbnailHeight: 168,
 thumbnailWidth: 300,
 viewerFullscreen: true
 });
-});");
+})" + ";");
     }
 
     public static void InitNanoGalleryJustifiedlayout(SunamoPage page, string baseUri)

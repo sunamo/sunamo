@@ -60,7 +60,7 @@ public class SunamoPage : System.Web.UI.Page
         string csPage = SunamoPage.GetName(cl, 2);
         string PagePage = MySitesConverter.ConvertFrom(MySitesConverter.ConvertFrom(sa));
 
-        return "css/" + PagePage + "/" + csPage + ".css";
+        return "css" + "/" + PagePage + "/" + csPage + ".css";
     }
 
     public string Js(object cl)
@@ -394,7 +394,7 @@ public class SunamoPage : System.Web.UI.Page
     /// <param name="scriptsUri"></param>
     protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
-        string hostWithHttp = "http://" + Request.Url.Host + "/";
+        string hostWithHttp = "http:" + "//" + Request.Url.Host + "/";
 
         if (scriptsUri == null)
         {
@@ -560,7 +560,7 @@ public class SunamoPage : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                throw new Exception("Cant set Title: " + Exceptions.TextOfExceptions(ex));
+                throw new Exception("Cant set Title" + ": " + Exceptions.TextOfExceptions(ex));
                 // Page dont have <head runat='server'>
             }
         }

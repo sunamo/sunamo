@@ -22,7 +22,7 @@ namespace webforms
         /// <returns></returns>
         public static string JQueryAjaxForHandlerShowMessage(string successMessage, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
         {
-            return @"function " + nameOfFunction + "(" + SH.Join(',', args) + @") {successMessage = ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");zobrazZpravu('" + successMessage + @"'); return false;}";
+            return @"function" + " " + nameOfFunction + "(" + SH.Join(',', args) + @" " + " {successMessage = ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ";" + ";zobrazZpravu(" + "'" + successMessage + @"'" + "); return false" + ";}";
         }
 
         public static object jQueryAutocompleteData(DataRowCollection dr)
@@ -43,7 +43,7 @@ namespace webforms
 
         public static string JQueryAjaxForHandler(MySitesShort ms, int countUp, string nameOfFunction, string[] args)
         {
-            return @"function " + nameOfFunction + "(" + SH.Join(',', args) + @") {ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");return false;}";
+            return @"function" + " " + nameOfFunction + "(" + SH.Join(',', args) + @" " + " {ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ";" + ";return false" + ";}";
         }
     }
 }

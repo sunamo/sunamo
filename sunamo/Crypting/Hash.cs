@@ -145,7 +145,7 @@ namespace shared.Crypting
             return _HashValue;
         }
 
-        #region "  CRC32 HashAlgorithm"
+        #region "  " + "CRC32 HashAlgorithm"
         /// <summary>
         /// Vlastn� t��da pro po��t�n� CRC32 Hashe
         /// </summary>

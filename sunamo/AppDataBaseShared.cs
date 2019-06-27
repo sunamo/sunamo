@@ -48,7 +48,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         {
             if (Abstract.IsRootFolderNull())
             {
-                throw new Exception("Složka ke souborům aplikace nebyla zadána.");
+                throw new Exception("Složka ke souborům aplikace nebyla zadána" + ".");
             }
 
             return rootFolder;

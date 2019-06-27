@@ -27,7 +27,7 @@ public partial class GeneratorMsSql{
                 }
                 else
                 {
-                    sb.Append(" WHERE ");
+                    sb.Append(" " + "WHERE" + " ");
                 }
             }
             bool první = true;
@@ -62,9 +62,9 @@ public partial class GeneratorMsSql{
     public static string SimpleWhereOneRow(string vracenySloupec, string table, string idColumnName)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1) " + vracenySloupec);
-        sb.Append(" FROM " + table);
-        sb.Append(" WHERE ");
+        sb.Append("SELECT TOP(1)" + " " + vracenySloupec);
+        sb.Append(" " + "FROM" + " " + table);
+        sb.Append(" " + "WHERE" + " ");
         sb.Append(SH.Format2(" {0} = @p0 ", idColumnName));
         return sb.ToString();
     }
@@ -79,7 +79,7 @@ public partial class GeneratorMsSql{
     public static string SimpleWhere(string sloupec)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
+        sb.Append(" " + "WHERE" + " ");
         sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
@@ -87,16 +87,16 @@ public partial class GeneratorMsSql{
     public static string SimpleWhere(string sloupec, int pocetJizPridanychParametru)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
+        sb.Append(" " + "WHERE" + " ");
         sb.Append(SH.Format2(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
         return sb.ToString();
     }
     public static string SimpleWhere(string columns, string tabulka, string sloupec)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT " + columns);
-        sb.Append(" FROM " + tabulka);
-        sb.Append(" WHERE ");
+        sb.Append("SELECT" + " " + columns);
+        sb.Append(" " + "FROM" + " " + tabulka);
+        sb.Append(" " + "WHERE" + " ");
         sb.Append(SH.Format2(" {0} = @p0 ", sloupec));
         return sb.ToString();
     }
@@ -106,22 +106,22 @@ public partial class GeneratorMsSql{
         {
             return "";
         }
-        string vr = " ORDER BY " + orderByColumn;
+        string vr = " " + "ORDER BY" + " " + orderByColumn;
         if (sortOrder == SortOrder.Ascending)
         {
             vr += " ASC";
         }
         else
         {
-            vr += " DESC";
+            vr += " " + "DESC";
         }
         return vr;
     }
     public static string SimpleSelectOneRow(string vracenySloupec, string table)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1) " + vracenySloupec);
-        sb.Append(" FROM " + table);
+        sb.Append("SELECT TOP(1)" + " " + vracenySloupec);
+        sb.Append(" " + "FROM" + " " + table);
         sb.Append(AllStrings.space);
         return sb.ToString();
     }
@@ -139,7 +139,7 @@ public partial class GeneratorMsSql{
         {
             if (where.Length > 0)
             {
-                sb.Append(" WHERE ");
+                sb.Append(" " + "WHERE" + " ");
             }
 
             bool první = true;
@@ -241,7 +241,7 @@ public partial class GeneratorMsSql{
         if (asponNeco)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(" WHERE ");
+            sb.Append(" " + "WHERE" + " ");
             bool první = true;
             int p = 0;
             if (where != null)
@@ -317,9 +317,9 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
         string t1 = "";
         if (top1)
         {
-            t1 = "TOP(1) ";
+            t1 = "TOP(1)" + " ";
         }
-        return "SELECT " + t1 + nazvySloupcu + " FROM " + tabulka + CombinedWhere(ab);
+        return "SELECT" + " " + t1 + nazvySloupcu + " " + "FROM" + " " + tabulka + CombinedWhere(ab);
     }
 
 /// <summary>
@@ -474,7 +474,7 @@ public static string CombinedWhereOR(AB[] where, ref int p)
         {
             if (where.Length != 0)
             {
-                sb.Append(" WHERE ");
+                sb.Append(" " + "WHERE" + " ");
             }
         }
         else
@@ -507,7 +507,7 @@ public static string CombinedWhereOR(AB[] where, ref int p)
 public static string CombinedWhereOR(AB[] where)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(" WHERE ");
+        sb.Append(" " + "WHERE" + " ");
         bool první = true;
         int p = 0;
 
@@ -535,10 +535,10 @@ public static string OutputDeleted(string sloupceJezVratit)
         {
             cols = CA.Trim(cols);
             StringBuilder sb = new StringBuilder();
-            sb.Append(" OUTPUT ");
+            sb.Append(" " + "OUTPUT" + " ");
             foreach (var item in cols)
             {
-                sb.Append("DELETED." + item + AllStrings.comma);
+                sb.Append("DELETED" + "." + item + AllStrings.comma);
             }
             return sb.ToString().TrimEnd(AllChars.comma);
         }

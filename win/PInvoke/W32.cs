@@ -46,6 +46,9 @@ public class W32
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern uint GetLastError();
 
+    [DllImport("Kernel32.Dll", EntryPoint = "Wow64EnableWow64FsRedirection")]
+    public static extern bool EnableWow64FSRedirection(bool enable);
+
     [DllImport("user32.dll", SetLastError = true)]
     public static extern IntPtr GetClipboardData(uint uFormat);
 

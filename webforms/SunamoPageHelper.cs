@@ -21,11 +21,11 @@ public static partial class SunamoPageHelper
         }
         else if (sda == (byte)MySitesShort.Geo)
         {
-            desc = "Geocaching je hra na pomezí sportu a turistiky, která spočívá v použití navigačního systému GPS při hledání skryté schránky nazývané cache (v češtině psáno i keš), o níž jsou známy její zeměpisné souřadnice (v systému WGS 84). Při hledání se používají turistické přijímače GPS. Člověk zabývající se geocachingem bývá označován slovem geocacher, česky též geokačer nebo prostě kačer. Po objevení cache, zapsání se do logbooku a případné výměně obsahu ji nálezce opět uschová a zamaskuje.";
+            desc = "Geocaching je hra na pomezí sportu a turistiky, která spočívá v použití navigačního systému GPS při hledání skryté schránky nazývané cache (v češtině psáno i keš), o níž jsou známy její zeměpisné souřadnice (v systému WGS 84). Při hledání se používají turistické přijímače GPS. Člověk zabývající se geocachingem bývá označován slovem geocacher, česky též geokačer nebo prostě kačer. Po objevení cache, zapsání se do logbooku a případné výměně obsahu ji nálezce opět uschová a zamaskuje" + ".";
         }
         else if (sda == (byte)MySitesShort.Nope)
         {
-            desc = "Stránky člověka s nickem sunamo. Texty písní, Aplikace pro Windows a mnoho dalšího. Dále pak listingy některých kešek z geocaching.com, Zkracovač odkazů, Fotogalerie.";
+            desc = "Stránky člověka s nickem sunamo. Texty písní, Aplikace pro Windows a mnoho dalšího. Dále pak listingy některých kešek z geocaching.com, Zkracovač odkazů, Fotogalerie" + ".";
         }
         else
         {
@@ -55,7 +55,7 @@ public static partial class SunamoPageHelper
     public static string GetFooterHtml(MySites ms)
     {
         HtmlGenerator sb = new HtmlGenerator();
-        sb.WriteRaw("(c) 2012 - 2019 with ❤ ");
+        sb.WriteRaw("(c) 2012 - 2019 with ❤" + " ");
         sb.WriteTagWithAttr("a", "href", "mailto:radek.jancik@sunamo.cz");
         sb.WriteRaw("radek.jancik@sunamo.cz");
         sb.TerminateTag("a");
@@ -74,7 +74,7 @@ public static partial class SunamoPageHelper
 
         
 
-        sb.WriteRaw(" All rights reserved");
+        sb.WriteRaw(" " + "All rights reserved");
 
         return sb.ToString();
     }

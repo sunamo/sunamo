@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 public static class GravatarHelper
 {
-    public const string folderAvatars = "_/temp/avatars";
+    public const string folderAvatars = "_/" + "temp/avatars";
     const string avatareExt = ".jpg";
 
     /// <summary>

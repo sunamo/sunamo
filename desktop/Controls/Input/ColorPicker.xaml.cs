@@ -60,14 +60,14 @@ namespace desktop
 
             if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
             {
-                ATextBlock.Text = "Průhlednost:";
+                ATextBlock.Text = "Průhlednost" + ":";
                 RTextBlock.Text = "Červená barevná složka" + ":";
                 GTextBlock.Text = "Zelená barevná složka" + ":";
                 BTextBlock.Text = "Modrá barevná složka" + ":";
             }
             else
             {
-                ATextBlock.Text = "Opacity:";
+                ATextBlock.Text = "Opacity" + ":";
                 RTextBlock.Text = "Red color component" + ":";
                 GTextBlock.Text = "Green color component" + ":";
                 BTextBlock.Text = "Blue color component" + ":";

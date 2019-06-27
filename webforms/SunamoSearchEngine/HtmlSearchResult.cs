@@ -82,7 +82,7 @@ public class HtmlSearchResult
     {
         if (item.words != "")
         {
-            this.meta = "Nalezeny tyto slova: " + item.words;
+            this.meta = "Nalezeny tyto slova" + ": " + item.words;
         }
         
     }

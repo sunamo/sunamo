@@ -23,7 +23,7 @@ public static class JunctionPoint
     /// <returns></returns>
     public static List<string> MklinkH(string source, string target)
     {
-        string command = "cmd /c mklink /H " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        string command = "cmd /c mklink /H" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;
     }
@@ -219,12 +219,12 @@ public static class JunctionPoint
             targetDir = Path.GetFullPath(targetDir);
 
             if (!FS.ExistsDirectory(targetDir))
-                throw new IOException("Target path does not exist or is not a directory.");
+                throw new IOException("Target path does not exist or is not a directory" + ".");
 
             if (FS.ExistsDirectory(junctionPoint))
             {
                 if (!overwrite)
-                    throw new IOException("Directory already exists and overwrite parameter is false.");
+                    throw new IOException("Directory already exists and overwrite parameter is false" + ".");
             }
             else
             {
@@ -258,7 +258,7 @@ public static class JunctionPoint
                         inBuffer, targetDirBytes.Length + 20, IntPtr.Zero, 0, out bytesReturned, IntPtr.Zero);
 
                     if (!result)
-                        ThrowLastWin32Error("Unable to create junction point.");
+                        ThrowLastWin32Error("Unable to create junction point" + ".");
                 }
                 finally
                 {
@@ -304,7 +304,7 @@ public static class JunctionPoint
                         inBuffer, 8, IntPtr.Zero, 0, out bytesReturned, IntPtr.Zero);
 
                     if (!result)
-                        ThrowLastWin32Error("Unable to delete junction point.");
+                        ThrowLastWin32Error("Unable to delete junction point" + ".");
                 }
                 finally
                 {
@@ -317,7 +317,7 @@ public static class JunctionPoint
                 }
                 catch (IOException ex)
                 {
-                    throw new IOException("Unable to delete junction point.", ex);
+                    throw new IOException("Unable to delete junction point" + ".", ex);
                 }
             }
         }
@@ -381,7 +381,7 @@ public static class JunctionPoint
                     if (error == ERROR_NOT_A_REPARSE_POINT)
                         return null;
 
-                    ThrowLastWin32Error("Unable to get information about junction point.");
+                    ThrowLastWin32Error("Unable to get information about junction point" + ".");
                 }
 
                 REPARSE_DATA_BUFFER reparseDataBuffer = (REPARSE_DATA_BUFFER)
@@ -412,7 +412,7 @@ public static class JunctionPoint
                 EFileAttributes.BackupSemantics | EFileAttributes.OpenReparsePoint, IntPtr.Zero), true);
 
             if (Marshal.GetLastWin32Error() != 0)
-                ThrowLastWin32Error("Unable to open reparse point.");
+                ThrowLastWin32Error("Unable to open reparse point" + ".");
 
             return reparsePointHandle;
         }

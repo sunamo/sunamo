@@ -155,7 +155,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableAllRows(SqlTransaction tran, string table)
     {
-        return SelectDataTable(tran, "SELECT * FROM " + table);
+        return SelectDataTable(tran, "SELECT * FROM" + " " + table);
     }
 
 
@@ -167,7 +167,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -177,7 +177,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -267,7 +267,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public object[] SelectOneRow(SqlTransaction tran, string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         // Index nemůže být ani pole bajtů ani null takže to je v pohodě
-        DataTable dt = SelectDataTable(tran, "SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
+        DataTable dt = SelectDataTable(tran, "SELECT TOP(1) * FROM" + " " + TableName + " " + "WHERE" + " " + nazevSloupce + " = @p0", hodnotaSloupce);
         if (dt.Rows.Count == 0)
         {
             return null; // CA.CreateEmptyArray(pocetSloupcu);
@@ -625,7 +625,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public bool Delete(SqlTransaction tran, string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhere(where);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(tran, comm);
 
@@ -769,7 +769,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <returns></returns>
     public int SelectLastIDFromTable(SqlTransaction tran, string p, string sloupecID)
     {
-        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
+        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p)).ToString();
         if (dd == "")
         {
             return 0;
@@ -792,7 +792,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int SelectFindOutNumberOfRows(SqlTransaction tran, string tabulka)
     {
-        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM " + tabulka, MSDatabaseLayer.conn, tran);
+        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka, MSDatabaseLayer.conn, tran);
         //comm.Transaction = tran;
         string s = comm.ExecuteScalar().ToString();
         return int.Parse(s);
@@ -856,7 +856,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         if (SelectExistsTable(tran, table))
         {
-            return ExecuteNonQuery(tran, new SqlCommand("DROP TABLE " + table));
+            return ExecuteNonQuery(tran, new SqlCommand("DROP TABLE" + " " + table));
         }
         return 0;
     }
@@ -866,7 +866,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         List<string> dd = SelectGetAllTablesInDB(tran);
         foreach (string item in dd)
         {
-            ExecuteNonQuery(tran, new SqlCommand("DROP TABLE " + item));
+            ExecuteNonQuery(tran, new SqlCommand("DROP TABLE" + " " + item));
         }
     }
 
@@ -904,7 +904,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 
     public object SelectValueOfIDOneRow(SqlTransaction tran, string tabulka, string idColumnName, int idColumnValue, string vracenySloupec)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(1) " + vracenySloupec + " FROM " + tabulka + " WHERE " + idColumnName + " = @p0");
+        SqlCommand comm = new SqlCommand("SELECT TOP(1)" + " " + vracenySloupec + " " + "FROM" + " " + tabulka + " " + "WHERE" + " " + idColumnName + " = @p0");
         AddCommandParameter(comm, 0, idColumnValue);
         //comm.Connection = conn;
         DataTable dt = SelectDataTable(tran, comm);
@@ -966,7 +966,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 
     public void InsertToTable3(SqlTransaction tran, string table, string sloupce, string valuesParams, object[] values)
     {
-        SqlCommand comm = new SqlCommand("INSERT INTO " + table + AllStrings.space + sloupce + " VALUES " + valuesParams);
+        SqlCommand comm = new SqlCommand("INSERT INTO" + " " + table + AllStrings.space + sloupce + " " + "VALUES" + " " + valuesParams);
         for (int i = 0; i < values.Length; i++)
         {
             AddCommandParameter(comm, i, values[i]);

@@ -62,16 +62,16 @@ namespace web
             string id = idAnswer.ToString();
             string barvaHex = DatabaseRows.colors[idColor].hex;
             hg.WriteTagWith2Attrs("div", "class", "bunkaTabulky", "id", "divSurveyAnswerRow" + id);
-            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaNazev + ";color:" + barvaHex + ";display: inline-block;text-align: center;", "id", "divAnswerName" + id);
+            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaNazev + ";" + "color" + ":" + barvaHex + ";" + "display: inline-block;text-align: center" + ";", "id", "divAnswerName" + id);
             hg.WriteRaw(name);
             hg.TerminateTag("div");
 
 
-            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaVoteCount + ";color:" + barvaHex + ";display: inline-block;text-align: center;", "id", "divAnswerVoteCount" + id);
+            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaVoteCount + ";" + "color" + ":" + barvaHex + ";" + "display: inline-block;text-align: center" + ";", "id", "divAnswerVoteCount" + id);
             hg.WriteRaw(voteCountS);
             hg.TerminateTag("div");
 
-            hg.WriteTagWithAttr("div", "style", "width: " + Constants.sirkaButtony + ";color:black;display: inline-block;text-align: center;");
+            hg.WriteTagWithAttr("div", "style", "width: " + Constants.sirkaButtony + ";" + "color:black;display: inline-block;text-align: center" + ";");
             //hg.WriteRaw("Editovací tlačítka");
             hg.WriteTagWithAttr("a", "href", "DetailsClickSurvey.aspx");
             hg.WriteNonPairTagWithAttrs("img", "alt", "Kdy bylo kliknuto na odpovědi v této anketě", "src", "../img/stats.png");

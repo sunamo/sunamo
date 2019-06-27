@@ -1,12 +1,12 @@
 ﻿using System;
 
 public static partial class AspNet{
-    const string error = "error:";
-    const string warning = "warning:";
-    const string success = "success:";
-    const string info = "info:";
-    const string information = "information:";
-    const string appeal = "appeal:";
+    const string error = "error" + ":";
+    const string warning = "warning" + ":";
+    const string success = "success" + ":";
+    const string info = "info" + ":";
+    const string information = "information" + ":";
+    const string appeal = "appeal" + ":";
 
     /// <summary>
     /// If dont start with none, return Ordinal

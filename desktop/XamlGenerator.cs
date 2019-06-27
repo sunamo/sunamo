@@ -82,10 +82,10 @@ namespace desktop
                 string method = string.Empty;
                 if (methodHandlers)
                 {
-                    method = "mi" + inPascal + "_Click";
+                    method = "mi" + inPascal + "_" + "Click";
                 }
 
-                WriteTagWithAttrs("MenuItem", "x:Name", menuItemName, "Header", item, "Click", method);
+                WriteTagWithAttrs("MenuItem", "x:" + "Name", menuItemName, "Header", item, "Click", method);
                 TerminateTag("MenuItem");
             }
 
@@ -95,7 +95,7 @@ namespace desktop
 
                 foreach (var item in headersInPascal)
                 {
-                    csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs e");
+                    csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_" + "Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs " + "");
                 }
 
                 return csg.ToString();

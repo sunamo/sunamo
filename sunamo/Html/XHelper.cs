@@ -356,7 +356,7 @@ using System.Xml.Linq;
             for (int i = 0; i < p.Length; i++)
             {
                 //.TrimEnd(AllChars.slash) + AllStrings.slash
-                ns.Add(p[i].Replace("xmlns:", ""), p[++i]);
+                ns.Add(p[i].Replace("xmlns" + ":", ""), p[++i]);
             }
         }
 

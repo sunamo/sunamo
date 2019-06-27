@@ -23,7 +23,7 @@ namespace sunamo.Essential
         #region Success
         public void CopiedToClipboard(string what)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Success, what + " was successfully copied to clipboard.");
+            writeLineDelegate.Invoke(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
         }
         #endregion
 
@@ -35,19 +35,19 @@ namespace sunamo.Essential
 
         public void FolderDontExists(string folder)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder " + folder + " doesn't exists.");
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder" + " " + folder + " " + "doesn't exists" + ".");
         }
 
         public void FileDontExists(string selectedFile)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Error, "File " + selectedFile + " doesn't exists.");
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "File" + " " + selectedFile + " " + "doesn't exists" + ".");
         }
         #endregion
 
         #region Information
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again.");
+            writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");
         }
 
         public void OperationWasStopped()
@@ -68,7 +68,7 @@ namespace sunamo.Essential
         /// <param name="fn"></param>
         public void SuccessfullyResized(string fn)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Information, "Successfully resized to " + fn);
+            writeLineDelegate.Invoke(TypeOfMessage.Information, "Successfully resized to" + " " + fn);
         }
 
         string FullNameOfExecutedCode(object type, string methodName)
@@ -136,7 +136,7 @@ namespace sunamo.Essential
         public void MustHaveValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " must have value");
+            writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " " + "must have value");
         }
         #endregion
     }

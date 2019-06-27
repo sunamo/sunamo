@@ -8,7 +8,7 @@ public static class SchemaOrgHelper
 
         if (ps.image == "")
         {
-            ps.image = UA.GetWebUri3(ss.Request, "img/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
+            ps.image = UA.GetWebUri3(ss.Request, "img" + "/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
         }
 
         //pageSnippet.image = UA.GetWebUri3(ss.Request, "img/EmptyPixel.gif");

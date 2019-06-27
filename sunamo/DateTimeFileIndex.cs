@@ -100,7 +100,7 @@ namespace desktop
             }
             else
             {
-                throw new Exception("Not supported strategy of saving files.");
+                throw new Exception("Not supported strategy of saving files" + ".");
             }
             mask +=  AllStrings.asterisk + ext;
             var files2 = FS.GetFiles(folder.fullPath, mask, SearchOption.TopDirectoryOnly);

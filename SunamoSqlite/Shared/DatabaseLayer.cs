@@ -98,7 +98,7 @@ public class DatabaseLayer
         }
         catch (Exception ex)
         {
-            throw new System.FormatException("The provided string does not appear to be Hex encoded:" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            throw new System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
         }
 
     }
@@ -147,10 +147,10 @@ public class DatabaseLayer
         else
         {
             //"Data Source=F:\Mona\sunamo\DocArch\Data\DocArch.db3;Version=3;Password=olsehheslo;"
-            string cs = "Data Source=" + dbFile + ";Version=3;";
+            string cs = "Data Source=" + dbFile + ";" + "Version=3" + ";";
             if (zaheslovat)
             {
-                cs += "Password=olsehheslo;";
+                cs += "Password=olsehheslo" + ";";
             }
             conn = new SQLiteConnection(cs);
             conn.Open();

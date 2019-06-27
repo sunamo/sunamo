@@ -64,7 +64,7 @@ namespace win.Helpers.Powershell
 
         public void CmdC(string v)
         {
-            sb.AppendLine("cmd /c " + v);
+            sb.AppendLine("cmd /c" + " " + v);
         }
 
         public override string ToString()

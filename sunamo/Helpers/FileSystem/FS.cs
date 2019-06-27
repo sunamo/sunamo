@@ -829,7 +829,7 @@ public partial class FS
                         string newFn = nova + " (" + serie + AllStrings.rb;
                         if (!FS.ExistsDirectory(newFn))
                         {
-                            vr = "Folder has been renamed to " + Path.GetFileName(newFn);
+                            vr = "Folder has been renamed to" + " " + Path.GetFileName(newFn);
                             nova = newFn;
                             break;
                         }
@@ -972,7 +972,7 @@ public partial class FS
     /// <param name="files"></param>
     public static void DeleteDuplicatedImages(List<string> files)
         {
-        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps. ");
+        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
         }        
 
         public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T > readFunc)
@@ -1412,7 +1412,7 @@ public partial class FS
             }
             catch
             {
-                ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted: " + item);
+                ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted" + ": " + item);
                 return false;
             }
         }

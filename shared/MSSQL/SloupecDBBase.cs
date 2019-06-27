@@ -147,15 +147,15 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     public string InfoToTextBox()
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Datový typ: " + databaseLayer.usedTa[ typ]);
-        sb.AppendLine("Název: " + _nazev);
-        sb.AppendLine("Je primárním klíčem: " + BTS.BoolToStringCs(primaryKey));
-        sb.AppendLine("Nemusí být zadána: " + BTS.BoolToStringCs(canBeNull));
-        sb.AppendLine("Musí být jedinečná: " + BTS.BoolToStringCs(mustBeUnique));
+        sb.AppendLine("Datový typ" + ": " + databaseLayer.usedTa[ typ]);
+        sb.AppendLine("Název" + ": " + _nazev);
+        sb.AppendLine("Je primárním klíčem" + ": " + BTS.BoolToStringCs(primaryKey));
+        sb.AppendLine("Nemusí být zadána" + ": " + BTS.BoolToStringCs(canBeNull));
+        sb.AppendLine("Musí být jedinečná" + ": " + BTS.BoolToStringCs(mustBeUnique));
         sb.AppendLine();
         if (referencesTable != null)
         {
-            sb.AppendLine("Odkazuje na tabulku[sloupec]:");
+            sb.AppendLine("Odkazuje na tabulku[sloupec" + "]:");
             sb.AppendLine(ReferencesTo());
         }
         return sb.ToString();
@@ -171,7 +171,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
         sb.Append(databaseLayer.usedTa[ typ] + AllStrings.space + _nazev);
         if (referencesTable != null)
         {
-            sb.Append(" odkazuje na " + ReferencesTo());
+            sb.Append(" " + "odkazuje na" + " " + ReferencesTo());
         }
         return sb.ToString();
     }

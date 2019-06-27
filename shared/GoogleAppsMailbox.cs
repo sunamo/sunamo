@@ -105,7 +105,7 @@ namespace sunamo
                 }
                 if (mail.To.Count == 0)
                 {
-                    emailStatus = "error: Nebyl zadán primární příjemce zprávy. ";
+                    emailStatus = "error: Nebyl zadán primární příjemce zprávy" + ". ";
                     return emailStatus;
                 }
             }
@@ -117,7 +117,7 @@ namespace sunamo
                 }
                 else
                 {
-                    emailStatus = "error: Nebyl zadán primární příjemce zprávy. ";
+                    emailStatus = "error: Nebyl zadán primární příjemce zprávy" + ". ";
                     return emailStatus;
                 }
             }
@@ -188,7 +188,7 @@ namespace sunamo
             }
             catch (Exception ex)
             {
-                emailStatus = "error: ";
+                emailStatus = "error" + ": ";
                 if (ex.Message != null)
                 {
                     emailStatus += ex.Message + ". ";

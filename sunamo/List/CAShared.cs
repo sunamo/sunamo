@@ -949,7 +949,7 @@ public static bool HasIndex(int p, IEnumerable nahledy)
     {
         if (p < 0)
         {
-            throw new Exception("Chybný parametr p");
+            throw new Exception("Chybný parametr " + "");
         }
         if (nahledy.Count() > p)
         {

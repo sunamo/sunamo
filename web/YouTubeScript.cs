@@ -140,7 +140,7 @@ frameborder="0" allowFullScreen></iframe>
             int Start)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(@"<embed src='http://www.youtube.com/v/");
+        sb.Append(@"<embed src='http://www.youtube.com/v" + "/");
 
         // select the youTube item to play
         sb.Append(id);
@@ -169,20 +169,20 @@ frameborder="0" allowFullScreen></iframe>
         sb.Append("' ");
 
 
-        sb.Append("type='application/x-shockwave-flash' ");
+        sb.Append("type='application/x-shockwave-flash" + "' ");
 
         // add id
         sb.Append("id='youTubePlayer" + DateTime.Now.Millisecond.ToString() + "' ");
-        sb.Append("allowscriptaccess='never' enableJavascript ='false' ");
+        sb.Append("allowscriptaccess='never' enableJavascript ='false" + "' ");
 
         // set parameters: allowfullscreen
-        sb.Append("allowfullscreen='true' ");
+        sb.Append("allowfullscreen='true" + "' ");
 
         // set width
-        sb.Append("width='" + W.ToString() + "' ");
+        sb.Append("width=" + "'" + W.ToString() + "' ");
 
         // set height
-        sb.Append("height='" + H.ToString() + "' ");
+        sb.Append("height=" + "'" + H.ToString() + "' ");
 
         sb.Append(@"></embed>");
 

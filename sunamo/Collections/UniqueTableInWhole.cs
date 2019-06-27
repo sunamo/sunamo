@@ -73,7 +73,7 @@ namespace sunamo.Collections
         {
             if (!columns && !rows)
             {
-                throw new Exception("Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false.");
+                throw new Exception("Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false" + ".");
             }
 
             int rowsCount = this.rows.GetLength(0);

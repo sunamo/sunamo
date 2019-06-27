@@ -26,6 +26,48 @@ namespace win.Helpers.Powershell
 			return output;
 		}
 
+        /// <summary>
+        /// If in A1 will be full path specified = 'The system cannot find the file specified'
+        /// A1 if dont contains extension, append exe
+        /// </summary>
+        /// <param name="exeFileNameWithoutPath"></param>
+        /// <param name="arguments"></param>
+        /// <returns></returns>
+        public static List<string> InvokeProcess(string exeFileNameWithoutPath, string arguments)
+        {
+            FS.AddExtensionIfDontHave(exeFileNameWithoutPath, AllExtensions.exe);
+
+            //Create process
+            System.Diagnostics.Process pProcess = new System.Diagnostics.Process();
+
+            // Must contains only filename, not full path
+            pProcess.StartInfo.FileName = exeFileNameWithoutPath;
+
+            //strCommandParameters are parameters to pass to program
+            pProcess.StartInfo.Arguments = arguments;
+
+            pProcess.StartInfo.UseShellExecute = false;
+
+            //Set output of program to be written to process output stream
+            pProcess.StartInfo.RedirectStandardOutput = true;
+
+            //Optional, recommended do not enter, then old value is not deleted and both paths is combined
+            //pProcess.StartInfo.WorkingDirectory = ;
+
+            //Start the process
+            pProcess.Start();
+            W32.EnableWow64FSRedirection(true);
+
+            //Get program output
+            string strOutput = pProcess.StandardOutput.ReadToEnd();
+
+            //Wait for process to finish
+            pProcess.WaitForExit();
+
+            var result = SH.GetLines(strOutput);
+            return result;
+        }
+
         public static List<string> InvokeSingle(string command)
         {
             return Invoke(CA.ToListString(command))[0];

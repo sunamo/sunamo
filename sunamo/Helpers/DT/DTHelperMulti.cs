@@ -44,7 +44,7 @@ using System.Text;
                             }
                             else
                             {
-                                return tt.Days + " days";
+                                return tt.Days + " " + "days";
                             }
                         }
                         else
@@ -55,33 +55,33 @@ using System.Text;
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodinu";
+                                        return tt.Hours + " " + "hodinu";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hour";
+                                        return tt.Hours + " " + "hour";
                                     }
                                 }
                                 else if (tt.Hours > 1 && tt.Hours < 5)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodiny";
+                                        return tt.Hours + " " + "hodiny";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hours";
+                                        return tt.Hours + " " + "hours";
                                     }
                                 }
                                 else if (tt.Hours > 4)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodin";
+                                        return tt.Hours + " " + "hodin";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hours";
+                                        return tt.Hours + " " + "hours";
                                     }
                                 }
                                 else
@@ -91,33 +91,33 @@ using System.Text;
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minutu";
+                                            return tt.Minutes + " " + "minutu";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minute";
+                                            return tt.Minutes + " " + "minute";
                                         }
                                     }
                                     else if (tt.Minutes > 1 && tt.Minutes < 5)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minuty";
+                                            return tt.Minutes + " " + "minuty";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minutes";
+                                            return tt.Minutes + " " + "minutes";
                                         }
                                     }
                                     else if (tt.Minutes > 4)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minut";
+                                            return tt.Minutes + " " + "minut";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minutes";
+                                            return tt.Minutes + " " + "minutes";
                                         }
                                     }
                                     else //if (tt.Minutes == 0)
@@ -126,33 +126,33 @@ using System.Text;
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekundu";
+                                                return tt.Seconds + " " + "sekundu";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " second";
+                                                return tt.Seconds + " " + "second";
                                             }
                                         }
                                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekundy";
+                                                return tt.Seconds + " " + "sekundy";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " seconds";
+                                                return tt.Seconds + " " + "seconds";
                                             }
                                         }
                                         else //if (tt.Seconds > 4)
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekund";
+                                                return tt.Seconds + " " + "sekund";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " seconds";
+                                                return tt.Seconds + " " + "seconds";
                                             }
                                         }
 
@@ -176,33 +176,33 @@ using System.Text;
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týden";
+                            return totalWeeks + " " + "týden";
                         }
                         else
                         {
-                            return totalWeeks + " week";
+                            return totalWeeks + " " + "week";
                         }
                     }
                     else if (totalWeeks < 5 && totalWeeks > 1)
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týdny";
+                            return totalWeeks + " " + "týdny";
                         }
                         else
                         {
-                            return totalWeeks + " weeks";
+                            return totalWeeks + " " + "weeks";
                         }
                     }
                     else
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týdnů";
+                            return totalWeeks + " " + "týdnů";
                         }
                         else
                         {
-                            return totalWeeks + " weeks";
+                            return totalWeeks + " " + "weeks";
                         }
                     }
                 }
@@ -212,33 +212,33 @@ using System.Text;
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíc";
+                            return months + " " + "měsíc";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
                     }
                     else if (months > 1 && months < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíce";
+                            return months + " " + "měsíce";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
                     }
                     else
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíců";
+                            return months + " " + "měsíců";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
 
                     }
@@ -248,33 +248,33 @@ using System.Text;
             {
                 if (l == Langs.cs)
                 {
-                    return "1 rok";
+                    return " " + " rok";
                 }
                 else
                 {
-                    return "1 year";
+                    return " " + " year";
                 }
             }
             else if (age > 1 && age < 5)
             {
                 if (l == Langs.cs)
                 {
-                    return age + " roky";
+                    return age + " " + "roky";
                 }
                 else
                 {
-                    return age + " years";
+                    return age + " " + "years";
                 }
             }
             else if (age > 4 || age == 0)
             {
                 if (l == Langs.cs)
                 {
-                    return age + " roků";
+                    return age + " " + "roků";
                 }
                 else
                 {
-                    return age + " years";
+                    return age + " " + "years";
                 }
             }
             else
@@ -310,33 +310,33 @@ using System.Text;
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodinu");
+                    vr.Add(tt.Hours + " " + "hodinu");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hour");
+                    vr.Add(tt.Hours + " " + "hour");
                 }
             }
             else if (tt.Hours > 1 && tt.Hours < 5)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodiny");
+                    vr.Add(tt.Hours + " " + "hodiny");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hours");
+                    vr.Add(tt.Hours + " " + "hours");
                 }
             }
             else if (tt.Hours > 4)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodin");
+                    vr.Add(tt.Hours + " " + "hodin");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hours");
+                    vr.Add(tt.Hours + " " + "hours");
                 }
             }
             else
@@ -346,33 +346,33 @@ using System.Text;
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minutu");
+                        vr.Add(tt.Minutes + " " + "minutu");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minute");
+                        vr.Add(tt.Minutes + " " + "minute");
                     }
                 }
                 else if (tt.Minutes > 1 && tt.Minutes < 5)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minuty");
+                        vr.Add(tt.Minutes + " " + "minuty");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minutes");
+                        vr.Add(tt.Minutes + " " + "minutes");
                     }
                 }
                 else if (tt.Minutes > 4)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minut");
+                        vr.Add(tt.Minutes + " " + "minut");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minutes");
+                        vr.Add(tt.Minutes + " " + "minutes");
                     }
                 }
                 else //if (tt.Minutes == 0)
@@ -381,33 +381,33 @@ using System.Text;
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekundu");
+                            vr.Add(tt.Seconds + " " + "sekundu");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " second");
+                            vr.Add(tt.Seconds + " " + "second");
                         }
                     }
                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekundy");
+                            vr.Add(tt.Seconds + " " + "sekundy");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " seconds");
+                            vr.Add(tt.Seconds + " " + "seconds");
                         }
                     }
                     else if (tt.Seconds > 4)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekund");
+                            vr.Add(tt.Seconds + " " + "sekund");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " seconds");
+                            vr.Add(tt.Seconds + " " + "seconds");
                         }
                     }
                     else
@@ -416,44 +416,44 @@ using System.Text;
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekundu");
+                                vr.Add(tt.Milliseconds + " " + "milisekundu");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " millisecond");
+                                vr.Add(tt.Milliseconds + " " + "millisecond");
                             }
                         }
                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekundy");
+                                vr.Add(tt.Milliseconds + " " + "milisekundy");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                         else if (tt.Seconds > 4)
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekund");
+                                vr.Add(tt.Milliseconds + " " + "milisekund");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                         else
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekund");
+                                vr.Add(tt.Milliseconds + " " + "milisekund");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                     }

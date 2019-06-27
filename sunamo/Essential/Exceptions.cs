@@ -41,7 +41,7 @@ using System.Text;
         /// </summary>
         public static string FileHasWrongExtension(string fnOri)
         {
-            return "File " + fnOri + " has wrong file extension";
+            return "File" + " " + fnOri + " " + "has wrong file extension";
         }
 
         public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)
@@ -73,20 +73,20 @@ using System.Text;
             {
                 return null;
             }
-            return CheckBefore(before) + " Doesn't exists: " + fulLPath;
+            return CheckBefore(before) + " " + "Doesn't exists" + ": " + fulLPath;
         }
 
         #region Without parameters
         public static string NotImplementedCase( string before)
         {
-            return CheckBefore( before) + "Not implemented case. public program error. Please contact developer.";
+            return CheckBefore( before) + "Not implemented case. public program error. Please contact developer" + ".";
         }
 
     public static object MoreThanOneElement(string before, string listName, int count)
     {
         if (count > 1)
         {
-            return CheckBefore(before) + listName + " has " + count + " elements, which is more than 1";
+            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than " + "";
         }
         return null;
     }
@@ -95,7 +95,7 @@ using System.Text;
         {
             if (string.IsNullOrWhiteSpace(nameFromProperty))
             {
-                return CheckBefore(before) + nameControl + " doesnt have setted Name";
+                return CheckBefore(before) + nameControl + " " + "doesnt have setted Name";
             }
             return null;
         }
@@ -104,7 +104,7 @@ using System.Text;
     {
         if (list.Count() ==1)
         {
-            return CheckBefore(before) + colName + " has only one element";
+            return CheckBefore(before) + colName + " " + "has only one element";
         }
         return null;
     }
@@ -122,14 +122,14 @@ using System.Text;
 
         if (foundedUnallowed.Count > 0)
         {
-            return CheckBefore(before) + input + " contains unallowed chars: " + SH.Join(unallowedStrings, AllStrings.space);
+            return CheckBefore(before) + input + " " + "contains unallowed chars" + ": " + SH.Join(unallowedStrings, AllStrings.space);
         }
         return null;
     }
 
     public static string DoesntHaveRequiredType(string before, string variableName)
         {
-            return variableName + "Doesn't have required type.";
+            return variableName + "Doesn't have required type" + ".";
         }
 
     public static string IsNullOrEmpty(string before, string argName, string argValue)
@@ -159,7 +159,7 @@ using System.Text;
             {
                 if (r[r.Length - 1] != AllChars.bs)
                 {
-                    return CheckBefore( before) + "String has not been in path format!";
+                    return CheckBefore( before) + "String has not been in path format" + "!";
                 }
             }
 
@@ -168,12 +168,12 @@ using System.Text;
 
         public static object IsNotAllowed(string before, string what)
         {
-            return CheckBefore(before) + what + " is not allowed.";
+            return CheckBefore(before) + what + " " + "is not allowed" + ".";
         }
 
         public static string FileWasntFoundInDirectory(string before, string directory, string fileName)
         {
-            return CheckBefore(before) + "File "+fileName+" wasn't found in " + directory;
+            return CheckBefore(before) + "File" + " "+fileName+" " + "wasn't found in" + " " + directory;
         }
 
         public static string FileWasntFoundInDirectory(string before, string fullPath)
@@ -196,7 +196,7 @@ using System.Text;
         #region Called from TemplateLoggerBase
         public static string NotEvenNumberOfElements(string before, string nameOfCollection)
         {
-            return CheckBefore(before) + nameOfCollection + " have odd elements count";
+            return CheckBefore(before) + nameOfCollection + " " + "have odd elements count";
         } 
         #endregion
 
@@ -204,7 +204,7 @@ using System.Text;
         {
             if (countfc != countsc)
             {
-                return CheckBefore( before) + " Different count elements in collection " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
+                return CheckBefore( before) + " " + "Different count elements in collection" + " " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
             }
 
             return null;
@@ -212,14 +212,14 @@ using System.Text;
 
         public static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
         {
-            return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " with null value"; 
+            return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " " + "with null value"; 
         }
 
         public static string IsNull(string before, string variableName, object variable)
         {
             if (variable == null)
             {
-                return CheckBefore(before) + variable + " is null.";
+                return CheckBefore(before) + variable + " " + "is null" + ".";
             }
 
             return null;
@@ -227,7 +227,7 @@ using System.Text;
 
         public static string ToManyElementsInCollection(string before, int max, int actual, string nameCollection)
         {
-            return CheckBefore(before) + actual + " elements in " + nameCollection + ", maximum is " + max;
+            return CheckBefore(before) + actual + " " + "elements in" + " " + nameCollection + ", " + "maximum is" + " " + max;
         }
 
         public static string ArrayElementContainsUnallowedStrings(string before, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
@@ -235,7 +235,7 @@ using System.Text;
             List<string> foundedUnallowed = SH.ContainsAny(valueElement, false, unallowedStrings);
             if (foundedUnallowed.Count != 0)
             {
-                return CheckBefore( before) + " Element of " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
+                return CheckBefore( before) + " " + "Element of" + " " + arrayName + " " + "with value" + " " + valueElement + " " + "contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
             }
 
             return null;
@@ -248,7 +248,7 @@ using System.Text;
 
     public static object FolderCantBeRemoved(string v, string folder)
     {
-        return CheckBefore(v) + "Can't delete folder: " + folder;
+        return CheckBefore(v) + "Can't delete folder" + ": " + folder;
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ using System.Text;
     {
         if (before2 == after)
         {
-            return CheckBefore(before) + "Element wasnt removed during: " + detailLocation;
+            return CheckBefore(before) + "Element wasnt removed during" + ": " + detailLocation;
         }
         return null;
     }
@@ -290,7 +290,7 @@ using System.Text;
         {
             return null;
         }
-            return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
+            return CheckBefore(before) + originalText + " " + "dont contains" + ": " + SH.Join(notContained, AllStrings.comma);
         }
 
         public static string NoPassedFolders(string before, IEnumerable folders)
@@ -306,7 +306,7 @@ using System.Text;
         {
             if (!FS.ExistsDirectory(directory))
             {
-                return CheckBefore(before) + "Directory " + directory + " wasn't found.";
+                return CheckBefore(before) + "Directory" + " " + directory + " " + "wasn't found" + ".";
             }
 
             return null;
@@ -316,7 +316,7 @@ using System.Text;
         {
             if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))
             {
-                return CheckBefore( before) + mayUrlDecoded + " is url endoded " + typeOfInput;
+                return CheckBefore( before) + mayUrlDecoded + " " + "is url endoded" + " " + typeOfInput;
             }
 
             return null;
@@ -324,12 +324,12 @@ using System.Text;
 
         public static string ElementCantBeFound(string before, string nameCollection, string element)
         {
-            return CheckBefore( before) + element + "cannot be found in " + nameCollection;
+            return CheckBefore( before) + element + "cannot be found in" + " " + nameCollection;
         }
 
         public static string MoreCandidates(string before, List<string> list, string item)
         {
-            return CheckBefore(before) + "Under " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
+            return CheckBefore(before) + "Under" + " " + item + " " + "is more candidates" + ": " + Environment.NewLine + SH.JoinNL(list);
         }
 
         public static string BadMappedXaml(string before, string nameControl, string additionalInfo)

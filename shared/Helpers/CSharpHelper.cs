@@ -57,7 +57,7 @@ public static partial class CSharpHelper
         gen.Region(pocetTabu, "Airplane companies");
         if (checkForNull)
         {
-            gen.If(pocetTabu, nameDictionary + " == null");
+            gen.If(pocetTabu, nameDictionary + " " + "== null");
         }
 
         gen.DictionaryStringObject(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
@@ -108,7 +108,7 @@ public static partial class CSharpHelper
         for (int i = lines.Count - 1; i >= 0; i--)
         {
             string line = lines[i].Trim();
-            if (line.StartsWith("#region ") || line.StartsWith("#endregion"))
+            if (line.StartsWith("#" + "region" + " ") || line.StartsWith("#endregion"))
             {
                 lines.RemoveAt(i);
             }

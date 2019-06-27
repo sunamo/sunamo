@@ -23,9 +23,9 @@ public partial class UriWebServices
     public static class AutomotiveSpareParts
     {
         public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
-        public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%s";
-        public const string wwwNahradniDilyZhCz = "http://www.nahradni-dily-zh.cz/search.asp?searchinput=%s";
-        public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%s";
+        public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%" + "";
+        public const string wwwNahradniDilyZhCz = "http://www.nahradni-dily-zh.cz/search.asp?searchinput=%" + "";
+        public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%" + "";
         public static List<string>  All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
 
     }
@@ -33,11 +33,11 @@ public partial class UriWebServices
     public static class CdnProviders
     {
         //
-        public const string cdnjs = "https://api.cdnjs.com/libraries?search=%s";
+        public const string cdnjs = "https://api.cdnjs.com/libraries?search=%" + "";
         /// <summary>
         /// Search for everything on npm
         /// </summary>
-        public const string unpkg = "https://www.npmjs.com/search?q=%s";
+        public const string unpkg = "https://www.npmjs.com/search?q=%" + "";
         //public const string cdnjs = "";
         //public const string cdnjs = "";
         //public const string cdnjs = "";
@@ -55,17 +55,17 @@ public partial class UriWebServices
         public const string TalentHubstaffCom = "https://talent.hubstaff.com/search/jobs?search%5Bkeywords%5D=%s&page=1&search%5Btype%5D=&search%5Blast_slider%5D=&search%5Bnewer_than%5D=&search%5Bnewer_than%5D=&search%5Bpayrate_start%5D=1&search%5Bpayrate_end%5D=100%2B&search%5Bpayrate_null%5D=0&search%5Bpayrate_null%5D=1&search%5Bbudget_start%5D=1&search%5Bbudget_end%5D=100000%2B&search%5Bbudget_null%5D=0&search%5Bbudget_null%5D=1&search%5Bexperience_level%5D=-1&search%5Bcountries%5D%5B%5D=&search%5Blanguages%5D%5B%5D=&search%5Bsort_by%5D=relevance";
         // not fulltext, always search only for exact position https://pangian.com/job-travel-remote/
         //public const string PangianCom = "";
-        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%s";
+        public const string RemoteCom = "https://remote.com/jobs/browse?keyword=%" + "";
         // https://remote.co/search-results/?cx=009859377982936732048%3Awihm_nznrgm
-        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%s";
+        public const string RemoteCo = "https://remote.co/remote-jobs/search/?search_keywords=%" + "";
         public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
         public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
         //https://remoteok.io/remote-virtual-assistant-jobs
-        public const string RemoteokIo = "https://remoteok.io/";
+        public const string RemoteokIo = "https://remoteok.io" + "/";
         //https://www.workingnomads.co/jobs
         public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
 
-        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%s";
+        public const string StackoverflowCom = "https://stackoverflow.com/jobs?q=%" + "";
 
         public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
     }
@@ -73,16 +73,16 @@ public partial class UriWebServices
     public static class SexShops
     {
         public const string wwwRuzovyslonCz = "https://www.ruzovyslon.cz/hledani?_submit=Hledat&s=%s&do=searchForm-submit";
-        public const string wwwEroticcityCz = "https://www.eroticcity.cz/vyhledavani.html?q=%s";
+        public const string wwwEroticcityCz = "https://www.eroticcity.cz/vyhledavani.html?q=%" + "";
         public const string wwwSexshopikCz = "https://www.sexshopik.cz/vyhledavani/?search%5Bquery%5D=%s";
         public const string wwwSexShopCz = "https://www.sex-shop69.cz/search/search?st_search%5Bsearch%5D=%s&st_search%5Band_search%5D=1&st_search%5Bdetail%5D=";
         public const string intimmShopCz = "https://intimm-shop.cz/vyhledavani?controller=search&orderby=position&orderway=desc&search_query=%s&submit_search=";
-        public const string wwwEroticstoreCz = "https://www.eroticstore.cz/vysledky-hledani/?search=%s";
-        public const string wwwNejlevnejsierotickepomuckyCz = "https://www.nejlevnejsierotickepomucky.cz/vyhledavani/?string=%s";
+        public const string wwwEroticstoreCz = "https://www.eroticstore.cz/vysledky-hledani/?search=%" + "";
+        public const string wwwNejlevnejsierotickepomuckyCz = "https://www.nejlevnejsierotickepomucky.cz/vyhledavani/?string=%" + "";
         public const string wwwWillistoreCz = "https://www.willistore.cz/?controller=search&orderby=position&orderway=desc&q=%s&submit_search=";
         public const string wwwVibratoryOnlineCz = "https://www.vibratory-online.cz/hledat/?search=%s&searchButton.x=0&searchButton.y=0";
-        public const string wwwLuxusnipradloCz = "https://www.luxusnipradlo.cz/hledani/?q=%s";
-        public const string eKondomyCz = "https://e-kondomy.cz/catalogsearch/result/?q=%s";
+        public const string wwwLuxusnipradloCz = "https://www.luxusnipradlo.cz/hledani/?q=%" + "";
+        public const string eKondomyCz = "https://e-kondomy.cz/catalogsearch/result/?q=%" + "";
 
         public static List<string> All = CA.ToListString(wwwRuzovyslonCz, wwwEroticcityCz, wwwSexshopikCz, wwwSexShopCz, intimmShopCz, wwwEroticstoreCz, wwwNejlevnejsierotickepomuckyCz, wwwWillistoreCz, wwwVibratoryOnlineCz, wwwLuxusnipradloCz, eKondomyCz);
     }
@@ -110,11 +110,11 @@ public partial class UriWebServices
         /// <summary>
         /// eb
         /// </summary>
-        public const string ebay = "https://www.ebay.com/sch/i.html?_nkw=%s";
+        public const string ebay = "https://www.ebay.com/sch/i.html?_nkw=%" + "";
         /// <summary>
         /// wt
         /// </summary>
-        public const string witrigs = "https://www.witrigs.com/searchautocomplete/autoresult?q=%s";
+        public const string witrigs = "https://www.witrigs.com/searchautocomplete/autoresult?q=%" + "";
         /// <summary>
         /// ae
         /// </summary>
@@ -146,14 +146,14 @@ Template for which I will find, have to be in derivates the same:
          */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "http://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
+        public const string hyperinzerceCz = "http://moravskoslezsky-kraj.hyperinzerce.cz/%s" + "/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%" + "";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
-        public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s";
+        public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%" + "";
         public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
 
-        public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%s";
+        public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%" + "";
 
         public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
@@ -230,12 +230,12 @@ Template for which I will find, have to be in derivates the same:
  */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
+        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s" + "/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s";
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%" + "";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
-        public const string letGoCz = "https://www.letgo.cz/items/q-%s";
-        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s";
+        public const string letGoCz = "https://www.letgo.cz/items/q-%" + "";
+        public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%" + "";
 
         public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
@@ -296,12 +296,12 @@ Template for which I will find, have to be in derivates the same:
     {
         static List<string> shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
 
-        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%s";
+        public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%" + "";
         public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
         
         public const string karavan3nec = @"http://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
-        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%s";
-        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%s";
+        public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%" + "";
+        public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%" + "";
         public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
         public const string emerxCz = @"https://www.emerx.cz/hledani?s=%s&submit_=HLEDAT&do=searchForm-submit";
         // not search term in uri
@@ -343,7 +343,7 @@ Template for which I will find, have to be in derivates the same:
     /// <returns></returns>
     private static string GoogleMaps(string item)
     {
-        return FromChromeReplacement( "https://www.google.com/maps/place/%s", item);
+        return FromChromeReplacement( "https://www.google.com/maps/place/%" + "", item);
     }
 
     public static class Libraries
@@ -387,7 +387,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string CoordsInfo(string f)
         {
-            return "http://coords.info/" + f;
+            return "http://coords.info" + "/" + f;
         }
 
         public static string GC(string f)
@@ -400,7 +400,7 @@ Template for which I will find, have to be in derivates the same:
     {
         public static string FacebookProfile(string nick)
         {
-            return "http://www.facebook.com/" + nick;
+            return "http://www.facebook.com" + "/" + nick;
         }
 
         public static string FbTopSearch(string q)
@@ -439,7 +439,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string TwitterProfile(string nick)
     {
-        return "http://www.twitter.com/" + nick;
+        return "http://www.twitter.com" + "/" + nick;
     }
 
     public static string SearchGitHub(string item)
@@ -454,12 +454,12 @@ Template for which I will find, have to be in derivates the same:
 
     public static string YouTubeProfile(string nick)
     {
-        return "http://www.youtube.com/c/" + nick;
+        return "http://www.youtube.com/c" + "/" + nick;
     }
 
     public static string GooglePlusProfile(string nick)
     {
-        return "http://www.google.com/+" + nick;
+        return "http://www.google.com/" + "" + nick;
     }
 
     public static void GoogleSearchInAllSite(List<string> allRepairKitShops, string v)
@@ -517,7 +517,7 @@ Template for which I will find, have to be in derivates the same:
     /// <returns></returns>
     public static string GitRepoInVsts(string slnName)
     {
-        return "https://radekjancik.visualstudio.com/_git/" + HttpUtility.UrlEncode( slnName);
+        return "https://radekjancik.visualstudio.com/_git" + "/" + HttpUtility.UrlEncode( slnName);
     }
 
     public static string GoogleImFeelingLucky(string v)
@@ -547,7 +547,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string GetHtmlAnchor(string kod)
         {
-            return "<a href='" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
+            return "<a href=" + "'" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
         }
 
         public static string ReplaceOperators(string vstup)

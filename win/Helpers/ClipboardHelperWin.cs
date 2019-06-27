@@ -102,7 +102,7 @@ public class ClipboardHelperWin : IClipboardHelper
 
     public void GetFirstWordOfList()
     {
-        Console.WriteLine("Copy text to clipboard.");
+        Console.WriteLine("Copy text to clipboard" + ".");
         Console.ReadLine();
 
         StringBuilder sb = new StringBuilder();

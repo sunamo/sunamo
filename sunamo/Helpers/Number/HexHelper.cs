@@ -59,7 +59,7 @@ public static class HexHelper
         }
         catch (Exception ex)
         {
-            throw new System.FormatException("The provided string does not appear to be Hex encoded:" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            throw new System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
         }
     }
 }

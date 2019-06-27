@@ -171,7 +171,7 @@ using System.Text;
         private void Initialise(Stream stream, Encoding encoding)
         {
             if (stream == null)
-                throw new ArgumentNullException("The supplied stream is null.");
+                throw new ArgumentNullException("The supplied stream is null" + ".");
 
             _stream = stream;
             _stream.Position = 0;
@@ -187,7 +187,7 @@ using System.Text;
         private void Initialise(Encoding encoding, string csvContent)
         {
             if (csvContent == null)
-                throw new ArgumentNullException("The supplied csvContent is null.");
+                throw new ArgumentNullException("The supplied csvContent is null" + ".");
 
             _encoding = (encoding ?? Encoding.UTF8);
 

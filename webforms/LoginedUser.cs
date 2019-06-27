@@ -105,7 +105,7 @@ public class LoginedUser
                                 }
                                 else
                                 {
-                                    throw new Exception("Do metody LoginedUser.ID() se nedostal ani parametr HttpContext, ani SunamoPage.");
+                                    throw new Exception("Do metody LoginedUser.ID() se nedostal ani parametr HttpContext, ani SunamoPage" + ".");
                                 }
                                 
                                 return loginID;

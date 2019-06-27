@@ -27,7 +27,7 @@ public partial class CryptHelper : ICryptHelper
         switch (provider)
         {
             case Provider.DES:
-                throw new NotSupportedException("Symetrické šifrování DES není podporováno.");
+                throw new NotSupportedException("Symetrické šifrování DES není podporováno" + ".");
             case Provider.RC2:
                 //crypt = new CryptHelper.RC2();
                 break;

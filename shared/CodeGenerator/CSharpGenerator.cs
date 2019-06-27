@@ -25,7 +25,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
         }
-        string cn = "Dictionary<string, " + valueType + AllStrings.gt;
+        string cn = "Dictionary<string" + ", " + valueType + AllStrings.gt;
         NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
         AppendLine();
         CreateInstance(cn, nameDictionary);
@@ -54,7 +54,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         AddTab(tabCount);
         PublicStatic(_public, _static);
-        sb.AddItem((object)("public class " + className));
+        sb.AddItem((object)("public class" + " " + className));
         if (derive.Length != 0)
         {
             sb.AddItem((object)AllStrings.colon);
@@ -96,7 +96,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            throw new Exception("Neimplementovaná výjimka v metodě WriteAccessModifiers.");
+            throw new Exception("Neimplementovaná výjimka v metodě WriteAccessModifiers" + ".");
         }
     }
 
@@ -107,7 +107,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void Region(int tabCount, string v)
     {
-        AppendLine(tabCount, "#region " + v);
+        AppendLine(tabCount, "#" + "region" + " " + v);
         
     }
 
@@ -197,7 +197,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             if (!cl)
             {
                 // can be public / public partial
-                if (contentFileNew[i].Contains(" class "))
+                if (contentFileNew[i].Contains(" " + "class" + " "))
                 {
                     contentFileNew[i] = contentFileNew[i].Replace(ns + "Page", "Page");
                     classIndex = i;
@@ -225,7 +225,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void Namespace(int tabCount, string ns)
     {
-        sb.AddItem("namespace " + ns);
+        sb.AddItem("namespace" + " " + ns);
         sb.AppendLine();
         sb.AddItem(AllStrings.cbl);
         sb.AppendLine();
@@ -320,7 +320,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         EndParenthesis();
         if (!isBase)
         {
-            sb.AddItem((object)(": base(" + SH.Join(AllChars.comma, nazevParams.ToArray()) + AllStrings.rb));
+            sb.AddItem((object)(": " + "base(" + SH.Join(AllChars.comma, nazevParams.ToArray()) + AllStrings.rb));
         }
         
         StartBrace(tabCount);
@@ -354,7 +354,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             sb.AddItem((object)"get");
             StartBrace(tabCount + 1);
             AddTab(tabCount + 2);
-            sb.AddItem((object)("return " + field + AllStrings.sc));
+            sb.AddItem((object)("return" + " " + field + AllStrings.sc));
             sb.AppendLine();
             EndBrace(tabCount + 1);
         }
@@ -365,7 +365,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             
             StartBrace(tabCount + 1);
             AddTab(tabCount + 2);
-            sb.AddItem((object)(field + " = value;"));
+            sb.AddItem((object)(field + " " + "= value" + ";"));
             sb.AppendLine();
             EndBrace(tabCount + 1);
         }
@@ -426,9 +426,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <param name="usings"></param>
     public void Using(string usings)
     {
-        if (!usings.StartsWith("using "))
+        if (!usings.StartsWith("using" + " "))
         {
-            usings = "using " + usings + AllStrings.sc;
+            usings = "using" + " " + usings + AllStrings.sc;
         }
         else if(!usings.EndsWith(AllStrings.sc))
         {
@@ -474,7 +474,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         WriteAccessModifiers(_public);
         int tabCount = 1;
         AddTab(tabCount);
-        sb.AddItem((object)("enum " + nameEnum));
+        sb.AddItem((object)("enum" + " " + nameEnum));
         StartBrace(tabCount);
         foreach (var item in nameCommentEnums)
         {
@@ -511,11 +511,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         if (genericType == "string")
         {
-            AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(list, AllChars.comma) + ");");
+            AppendLine(tabCount, listName + " " + "= CA.ToListString(" + SH.Join(list, AllChars.comma) + ");");
         }
         else
         {
-            AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
+            AppendLine(tabCount, listName + " " + "= new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
         }
         
         
@@ -526,7 +526,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     public void This(int tabCount, string item)
     {
         
-        Append(tabCount, "this." + item);
+        Append(tabCount, "this" + "." + item);
     }
 
     #region Dictionary
@@ -536,7 +536,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
         foreach (var item in nameCommentEnums)
         {
-            this.AppendLine(tabCount, nameDictionary + ".Add(" + item.Key.ToString().Replace(AllChars.comma, AllChars.dot) + ", " + item.Value.ToString().Replace(AllChars.comma, AllChars.dot) + ");");
+            this.AppendLine(tabCount, nameDictionary + "." + "Add(" + item.Key.ToString().Replace(AllChars.comma, AllChars.dot) + ", " + item.Value.ToString().Replace(AllChars.comma, AllChars.dot) + ");");
         }
     }
 
@@ -572,21 +572,21 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            sb.AddItem((object)"= null;");
+            sb.AddItem((object)" " + " null" + ";");
         }
         sb.AppendLine();
     }
 
     private void CreateInstance(string className, string variableName)
     {
-        sb.AddItem((object)(variableName + " = new " + className + "();"));
+        sb.AddItem((object)(variableName + " " + "= new" + " " + className + "();"));
     }
 
     public void Enum(int tabCount, AccessModifiers _public, string nameEnum, List<EnumItem> enumItems)
     {  
         WriteAccessModifiers(_public);
         AddTab(tabCount);
-        sb.AddItem((object)("enum " + nameEnum));
+        sb.AddItem((object)("enum" + " " + nameEnum));
         StartBrace(tabCount);
         foreach (var item in enumItems)
         {
@@ -641,7 +641,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
             whereIsUsed2 = CA.WrapWith(whereIsUsed2, AllStrings.qm);
         }
         AddTab(tabCount);
-        sb.AddItem((object)(objectIdentificator + v + ".AddRange(new " + type + "[] { " + SH.JoinIEnumerable(AllChars.comma, whereIsUsed2) + "});"));
+        sb.AddItem((object)(objectIdentificator + v + "." + "AddRange(new" + " " + type + "[] { " + SH.JoinIEnumerable(AllChars.comma, whereIsUsed2) + "});"));
     }
 
     /// <summary>

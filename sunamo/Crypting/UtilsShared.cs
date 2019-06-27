@@ -40,7 +40,7 @@ public partial class Utils{
         }
         catch (System.FormatException ex)
         {
-            throw new System.FormatException("The provided string does not appear to be Base64 encoded:" + Environment.NewLine + base64Encoded + Environment.NewLine, ex);
+            throw new System.FormatException("The provided string does not appear to be Base64 encoded" + ":" + Environment.NewLine + base64Encoded + Environment.NewLine, ex);
         }
     }
 
@@ -83,7 +83,7 @@ public partial class Utils{
         }
         catch (Exception ex)
         {
-            throw new System.FormatException("The provided string does not appear to be Hex encoded:" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            throw new System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
         }
     }
 }

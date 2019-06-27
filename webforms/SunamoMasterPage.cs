@@ -158,7 +158,7 @@ public  class SunamoMasterPage : System.Web.UI.MasterPage
         }
         else
         {
-            cookie = new HttpCookie("localhost." + nameOfCookie);
+            cookie = new HttpCookie("localhost" + "." + nameOfCookie);
         }
 
         //Add key-values in the cookie

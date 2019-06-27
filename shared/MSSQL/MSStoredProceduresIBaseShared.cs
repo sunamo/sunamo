@@ -418,7 +418,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public int Delete(string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhere(where);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(comm);
         return f;
@@ -495,8 +495,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableSelective(string table, string vraceneSloupce, AB[] where, AB[] whereIsNot)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT " + vraceneSloupce);
-        sb.Append(" FROM " + table);
+        sb.Append("SELECT" + " " + vraceneSloupce);
+        sb.Append(" " + "FROM" + " " + table);
         int dd = 0;
         sb.Append(GeneratorMsSql.CombinedWhere(where, ref dd));
         sb.Append(GeneratorMsSql.CombinedWhereNotEquals(where != null, ref dd, whereIsNot));
@@ -510,8 +510,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableSelective(string table, string vraceneSloupce, AB[] where, AB[] whereIsNot, AB[] greaterThan, AB[] lowerThan)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT " + vraceneSloupce);
-        sb.Append(" FROM " + table);
+        sb.Append("SELECT" + " " + vraceneSloupce);
+        sb.Append(" " + "FROM" + " " + table);
         sb.Append(GeneratorMsSql.CombinedWhere(where, whereIsNot, greaterThan, lowerThan));
         //string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
         SqlCommand comm = new SqlCommand(sb.ToString());
@@ -596,8 +596,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public string SelectCellDataTableStringOneRow(string table, string vracenySloupec, AB[] where, AB[] whereIsNot)
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1) " + vracenySloupec);
-        sb.Append(" FROM " + table);
+        sb.Append("SELECT TOP(1)" + " " + vracenySloupec);
+        sb.Append(" " + "FROM" + " " + table);
         int dd = 0;
         sb.Append(GeneratorMsSql.CombinedWhere(where, ref dd));
         sb.Append(GeneratorMsSql.CombinedWhereNotEquals(where.Length != 0, ref dd, whereIsNot));
@@ -678,7 +678,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public bool DeleteOneRow(string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhere(where);
-        SqlCommand comm = new SqlCommand("DELETE TOP(1) FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE TOP(1) FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(comm);
         return f == 1;
@@ -696,11 +696,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
     public long SelectCount(string table)
     {
-        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM " + table));
+        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM" + " " + table));
     }
     public long SelectCount(string table, params AB[] abc)
     {
-        SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM " + table + GeneratorMsSql.CombinedWhere(abc));
+        SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM" + " " + table + GeneratorMsSql.CombinedWhere(abc));
         AddCommandParameteres(comm, 0, abc);
         return Convert.ToInt64(ExecuteScalar(comm));
     }
@@ -978,7 +978,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public object[] SelectOneRowForTableRow(string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         // Index nemůže být ani pole bajtů ani null takže to je v pohodě
-        DataTable dt = SelectDataTable("SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
+        DataTable dt = SelectDataTable("SELECT TOP(1) * FROM" + " " + TableName + " " + "WHERE" + " " + nazevSloupce + " = @p0", hodnotaSloupce);
         if (dt.Rows.Count == 0)
         {
             return null; // CA.CreateEmptyArray(pocetSloupcu);
@@ -1204,7 +1204,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableAllRows(string table)
     {
-        return SelectDataTable("SELECT * FROM " + table);
+        return SelectDataTable("SELECT * FROM" + " " + table);
     }
 
     /// <summary>
@@ -1214,7 +1214,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public object[] SelectOneRow(string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         // Index nemůže být ani pole bajtů ani null takže to je v pohodě
-        DataTable dt = SelectDataTable("SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
+        DataTable dt = SelectDataTable("SELECT TOP(1) * FROM" + " " + TableName + " " + "WHERE" + " " + nazevSloupce + " = @p0", hodnotaSloupce);
         if (dt.Rows.Count == 0)
         {
             return null; // CA.CreateEmptyArray(pocetSloupcu);
@@ -1232,13 +1232,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DateTime SelectMaxDateTime(string table, string column, AB[] whereIs, AB[] whereIsNot, DateTime getIfNotFound)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
         return ExecuteScalarDateTime(getIfNotFound, comm);
     }
     public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(ab));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(ab));
         AddCommandParameteres(comm, 0, ab);
         return ExecuteScalarDateTime(DateTime.MinValue, comm);
     }
@@ -1257,11 +1257,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return int.MinValue;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
     }
     public int SelectMaxIntMinValue(string table, string sloupec, params AB[] aB)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
         AddCommandParameteres(comm, 0, aB);
         return ExecuteScalarInt(true, comm);
     }
@@ -1270,7 +1270,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         if (SelectExistsTable(table))
         {
-            return ExecuteNonQuery(new SqlCommand("DROP TABLE " + table));
+            return ExecuteNonQuery(new SqlCommand("DROP TABLE" + " " + table));
         }
 
         return 0;
@@ -1413,7 +1413,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
         else
         {
-            throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+            throw new Exception(" " + " klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
         }
     }
     /// <summary>
@@ -1440,7 +1440,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public object SelectLastIDFromTableSigned(bool signed, string p, Type idt, string sloupecID, out bool totalLower)
     {
         totalLower = false;
-        string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
+        string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p)).ToString();
         if (dd == "")
         {
             totalLower = true;
@@ -1471,7 +1471,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             }
             else
             {
-                throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+                throw new Exception(" " + " klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
             }
         }
 
@@ -1583,7 +1583,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<short> SelectGroupByShort(bool signed, string table, string GroupByColumn, string IDColumnName, object IDColumnValue)
     {
-        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.SimpleWhere(IDColumnName) + " group by " + GroupByColumn;
+        string sql = "select" + " " + GroupByColumn + " " + "from" + " " + table + GeneratorMsSql.SimpleWhere(IDColumnName) + " " + "group by" + " " + GroupByColumn;
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameter(comm, 0, IDColumnValue);
         return ReadValuesShort(comm);
@@ -1607,7 +1607,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object[] SelectSelectiveOneRow(string table, string vratit, params AB[] ab)
     {
-        string sql = "SELECT TOP(1) " + vratit + " FROM " + table;
+        string sql = "SELECT TOP(1)" + " " + vratit + " " + "FROM" + " " + table;
         sql += GeneratorMsSql.CombinedWhere(ab);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, ab);
@@ -1649,7 +1649,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         AB[] whereSmallerThan = CA.ToArrayT<AB>(AB.Get(nameColumnSmallerThan, valueColumnSmallerThan));
         string whereS = GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, whereSmallerThan);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + GeneratorMsSql.OutputDeleted(sloupceJezVratit) + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + GeneratorMsSql.OutputDeleted(sloupceJezVratit) + whereS);
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, whereSmallerThan);
         DataTable dt = SelectDataTable(comm);
         return dt;
@@ -1657,7 +1657,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public DataTable DeleteWithOutput(string TableName, string sloupceJezVratit, string idColumn, object idValue)
     {
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + GeneratorMsSql.OutputDeleted(sloupceJezVratit) + GeneratorMsSql.SimpleWhere(idColumn));
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + GeneratorMsSql.OutputDeleted(sloupceJezVratit) + GeneratorMsSql.SimpleWhere(idColumn));
         AddCommandParameter(comm, 0, idValue);
         DataTable dt = SelectDataTable(comm);
         return dt;
@@ -1791,7 +1791,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         AB[] whereSmallerThan = CA.ToArrayT<AB>(AB.Get(nameColumnSmallerThan, valueColumnSmallerThan));
         string whereS = GeneratorMsSql.CombinedWhere(where, null, null, whereSmallerThan);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameteresCombinedArrays(comm, 0, where, null, null, whereSmallerThan);
         int f = ExecuteNonQuery(comm);
         return f;
@@ -1801,7 +1801,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         AB[] whereSmallerThan = CA.ToArrayT<AB>(AB.Get(nameColumnLargerThan, valueColumnLargerThan));
         string whereS = GeneratorMsSql.CombinedWhere(where, null, whereSmallerThan, null);
-        SqlCommand comm = new SqlCommand("select " + columnReturn + " FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("select" + " " + columnReturn + " " + "FROM" + " " + TableName + whereS);
         AddCommandParameteresCombinedArrays(comm, 0, where, null, whereSmallerThan, null);
         return ReadValuesInt(comm);
     }
@@ -1810,7 +1810,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         AB[] whereSmallerThan = CA.ToArrayT<AB>(AB.Get(nameColumnLargerThan, valueColumnLargerThan));
         string whereS = GeneratorMsSql.CombinedWhere(where, null, null, whereSmallerThan);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameteresCombinedArrays(comm, 0, where, null, whereSmallerThan, null);
         int f = ExecuteNonQuery(comm);
         return f;
@@ -1825,7 +1825,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public int DeleteOR(string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhereOR(where);
-        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(comm);
         return f;
@@ -1836,7 +1836,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         List<string> dd = SelectGetAllTablesInDB();
         foreach (string item in dd)
         {
-            ExecuteNonQuery(new SqlCommand("DROP TABLE " + item));
+            ExecuteNonQuery(new SqlCommand("DROP TABLE" + " " + item));
         }
     }
 
@@ -1944,7 +1944,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         sloupce = CA.TwoDimensionParamsIntoOne(sloupce);
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace(AllStrings.lb, "(newid(),")));
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace(AllStrings.lb, "(newid()" + ",")));
         int to = sloupce.Length;
         for (int i = 0; i < to; i++)
         {
@@ -2059,12 +2059,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int RandomValueFromColumnInt(string table, string column)
     {
-        return ExecuteScalarInt(true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
+        return ExecuteScalarInt(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top 1" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     public short RandomValueFromColumnShort(string table, string column)
     {
-        return ExecuteScalarShort(true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
+        return ExecuteScalarShort(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top 1" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     /// <summary>
@@ -2160,7 +2160,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public void sp_rename(string table)
     {
         DropTableIfExists(table);
-        SqlCommand comm = new SqlCommand("EXEC sp_rename 'dbo." + table + "2', '" + table + "'");
+        SqlCommand comm = new SqlCommand("EXEC sp_rename 'dbo" + "." + table + "2', '" + table + "'");
         ExecuteNonQuery(comm);
     }
 
@@ -2199,7 +2199,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }
@@ -2222,7 +2222,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public DataTable SelectAllRowsOfColumnsAB(string table, string vratit, ABC abObsahuje, ABC abNeobsahuje, ABC abVetsiNez, ABC abMensiNez)
     {
-        string sql = "SELECT " + vratit + " FROM " + table;
+        string sql = "SELECT" + " " + vratit + " " + "FROM" + " " + table;
         sql += GeneratorMsSql.CombinedWhere(abObsahuje, abNeobsahuje, abVetsiNez, abMensiNez);
         SqlCommand comm = new SqlCommand(sql);
         int i = 0;
@@ -2245,7 +2245,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableLimitLastRows(string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
     {
         //SELECT TOP 1000 * FROM [SomeTable] ORDER BY MySortColumn DESC
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + columns + " FROM " + tableName + GeneratorMsSql.CombinedWhere(where) + " ORDER BY " + sloupecOrder + " DESC");
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + columns + " " + "FROM" + " " + tableName + GeneratorMsSql.CombinedWhere(where) + " " + "ORDER BY" + " " + sloupecOrder + " " + "DESC");
         AddCommandParameteres(comm, 0, where);
         return SelectDataTable(comm);
     }
@@ -2262,7 +2262,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableLimitLastRows(string tableName, int limit, string columns, string sloupecOrder, AB[] whereIs, AB[] whereIsNot, AB[] whereGreaterThan, AB[] whereLowerThan)
     {
         //SELECT TOP 1000 * FROM [SomeTable] ORDER BY MySortColumn DESC
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + columns + " FROM " + tableName + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, whereGreaterThan, whereLowerThan) + " ORDER BY " + sloupecOrder + " DESC");
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + columns + " " + "FROM" + " " + tableName + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, whereGreaterThan, whereLowerThan) + " " + "ORDER BY" + " " + sloupecOrder + " " + "DESC");
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, whereGreaterThan, whereLowerThan);
         return SelectDataTable(comm);
     }
@@ -2288,7 +2288,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLimitColumns(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + sloupce + " FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + sloupce + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }
@@ -2296,7 +2296,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params object[] fixniHodnotyOdNuly)
     {
         fixniHodnotyOdNuly = CA.TwoDimensionParamsIntoOne(fixniHodnotyOdNuly);
-        return SelectDataTable("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly, fixniHodnotyOdNuly);
+        return SelectDataTable("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly, fixniHodnotyOdNuly);
     }
 
     /// <summary>
@@ -2314,7 +2314,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableLimitLastRowsInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, int limit, string sloupecPodleKterehoRadit, AB[] whereIs, AB[] whereIsNot, params object[] hodnotyOdNuly)
     {
         hodnotyOdNuly = CA.TwoDimensionParamsIntoOne(hodnotyOdNuly);
-        SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " ORDER BY " + sloupecPodleKterehoRadit + " DESC");
+        SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " " + "ORDER BY" + " " + sloupecPodleKterehoRadit + " " + "DESC");
         AddCommandParameteres(comm, 0, hodnotyOdNuly);
         AddCommandParameteresCombinedArrays(comm, hodnotyOdNuly.Length, whereIs, whereIsNot, null, null);
         return SelectDataTable(comm);
@@ -2322,7 +2322,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, AB[] whereIs, AB[] whereIsNot)
     {
-        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
+        SqlCommand comm = new SqlCommand("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
         return SelectDataTable(comm);
     }
@@ -2339,7 +2339,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
+        SqlCommand comm = new SqlCommand("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
         AddCommandParameterFromAbc(comm, where);
         return SelectDataTable(comm);
     }
@@ -2350,14 +2350,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public object[] SelectOneRowInnerJoinReader(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
+        SqlCommand comm = new SqlCommand("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
         AddCommandParameterFromAbc(comm, where);
         return SelectRowReader(comm);
     }
 
     public object[] SelectOneRowInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
+        SqlCommand comm = new SqlCommand("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(where));
         AddCommandParameterFromAbc(comm, where);
         DataTable dt = SelectDataTable(comm);
         if (dt.Rows.Count == 0)
@@ -2373,7 +2373,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly)
     {
-        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly);
+        SqlCommand comm = new SqlCommand("select" + " " + sloupceJezZiskavat + " " + "from" + " " + tableFromWithShortVersion + " " + "inner join" + " " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly);
         //AddCommandParameterFromAbc(comm, where);
         return SelectDataTable(comm);
     }
@@ -2634,7 +2634,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public DataTable SelectDateTableGroupBy(string table, string columns, string groupByColumns)
     {
-        string sql = "select " + columns + " from " + table + " group by " + groupByColumns;
+        string sql = "select" + " " + columns + " " + "from" + " " + table + " " + "group by" + " " + groupByColumns;
         SqlCommand comm = new SqlCommand(sql);
         //AddCommandParameter(comm, 0, IDColumnValue);
         return SelectDataTable(comm);
@@ -2703,7 +2703,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long SelectLastIDFromTable(string p, string sloupecID)
     {
-        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p));
+        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p));
     }
 
     public int SelectFirstAvailableIntIndex(bool signed, string table, string column)
@@ -2779,7 +2779,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return short.MinValue;
         }
 
-        return ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        return ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
     }
 
     /// <summary>
@@ -2795,12 +2795,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return 0;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
     }
 
     public short SelectMinShortMinValue(string table, string sloupec, params AB[] aB)
     {
-        SqlCommand comm = new SqlCommand("SELECT MIN(" + sloupec + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB));
+        SqlCommand comm = new SqlCommand("SELECT MIN(" + sloupec + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
         AddCommandParameteres(comm, 0, aB);
         return ExecuteScalarShort(true, comm);
     }
@@ -2813,7 +2813,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
 
         ABC abc = new ABC(aB);
-        return Convert.ToByte(ExecuteScalar("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs()));
+        return Convert.ToByte(ExecuteScalar("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs()));
     }
 
     public int SelectMinInt(string table, string column)
@@ -2823,7 +2823,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return 0;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MIN(" + column + ") FROM " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MIN(" + column + " " + " FROM" + " " + table));
     }
 
     public Guid SelectNewId()
@@ -2839,12 +2839,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return -1;
         }
 
-        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM " + table));
+        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM" + " " + table));
     }
 
     public List<long> SelectGroupByLong(string table, string GroupByColumn, params AB[] where)
     {
-        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
+        string sql = "select" + " " + GroupByColumn + " " + "from" + " " + table + GeneratorMsSql.CombinedWhere(where);
         SqlCommand comm = new SqlCommand(sql);
         //AddCommandParameter(comm, 0, IDColumnValue);
         AddCommandParameterFromAbc(comm, where);
@@ -2853,7 +2853,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public List<int> SelectGroupByInt(string table, string GroupByColumn, params AB[] where)
     {
-        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
+        string sql = "select" + " " + GroupByColumn + " " + "from" + " " + table + GeneratorMsSql.CombinedWhere(where);
         SqlCommand comm = new SqlCommand(sql);
         //AddCommandParameter(comm, 0, IDColumnValue);
         AddCommandParameterFromAbc(comm, where);
@@ -2862,7 +2862,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public List<long> SelectGroupByLong(bool signed, string table, string GroupByColumn, string IDColumnName, object IDColumnValue)
     {
-        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.SimpleWhere(IDColumnName) + " group by " + GroupByColumn;
+        string sql = "select" + " " + GroupByColumn + " " + "from" + " " + table + GeneratorMsSql.SimpleWhere(IDColumnName) + " " + "group by" + " " + GroupByColumn;
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameter(comm, 0, IDColumnValue);
         return ReadValuesLong(comm);
@@ -2878,7 +2878,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public uint SelectSumOfViewCount(string table, long idEntity)
     {
-        SqlCommand comm = new SqlCommand("select SUM(ViewCount) from " + table + " where EntityID = @p0");
+        SqlCommand comm = new SqlCommand("select SUM(ViewCount) from" + " " + table + " " + "where EntityID = @p0");
         //SqlCommand comm2 = new SqlCommand("select count(*) as AccValue from PageViews where Date <= @p0 AND Date >= @p1 AND IDPage = @p2");
         AddCommandParameter(comm, 0, idEntity);
         object o = ExecuteScalar(comm);
@@ -2915,7 +2915,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int SelectFindOutNumberOfRows(string tabulka)
     {
-        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM " + tabulka);
+        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka);
         //comm.Transaction = tran;
         return Convert.ToInt32(ExecuteScalar(comm));
     }
@@ -2951,7 +2951,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public object[] SelectRowReaderLimit(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + sloupce + " FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + sloupce + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectRowReader(comm);
     }
@@ -3008,7 +3008,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool? SelectCellDataTableNullableBoolOneRow(string table, string vracenySloupec, params AB[] abc)
     {
-        string sql = "SELECT TOP(1) " + vracenySloupec + " FROM " + table + AllStrings.space + GeneratorMsSql.CombinedWhere(abc);
+        string sql = "SELECT TOP(1)" + " " + vracenySloupec + " " + "FROM" + " " + table + AllStrings.space + GeneratorMsSql.CombinedWhere(abc);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameteres(comm, 0, abc);
         return ExecuteScalarNullableBool(comm);
@@ -3109,7 +3109,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }

@@ -49,14 +49,14 @@ namespace sunamo.Essential
         
         public void WriteCount(string collectionName, IEnumerable list)
         {
-            WriteLine(collectionName + " count: " + list.Count());
+            WriteLine(collectionName + " " + "count" + ": " + list.Count());
             
         }
 
 
         public void WriteList(string collectionName, List<string> list)
         {
-            WriteLine(collectionName + " elements:");
+            WriteLine(collectionName + " " + "elements" + ":");
             WriteList(list);
         }
 

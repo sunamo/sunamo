@@ -132,7 +132,7 @@ public class UploaderManager
             if (tp.TryParseInt(s))
             {
                 vr.Add(s);
-                hg.WriteRaw("Soubor " + e.FileName + " úspěšně nauploadován");
+                hg.WriteRaw("Soubor" + " " + e.FileName + " " + "úspěšně nauploadován");
             }
             else
             {
@@ -182,7 +182,7 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Maximální počet obrázků na 1 uživatele je " + maxFilesCountOnAccount + ". Vy jste tohoto limitu již dosáhli a soubor " + e.FileName + " nebude nauploadován";
+                    return "Maximální počet obrázků na 1 uživatele je" + " " + maxFilesCountOnAccount + ". " + "Vy jste tohoto limitu již dosáhli a soubor" + " " + e.FileName + " " + "nebude nauploadován";
                 }
             }
         }
@@ -194,7 +194,7 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor " + e.FileName + " nemá správnou příponu.";
+            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
         }
 
         to = toFolderTempSlash + fn;
@@ -213,7 +213,7 @@ public class UploaderManager
                 {
                     allOk = false;
                 }
-                return "Soubor " + to + " již existoval a nepodařilo se jej smazat.";
+                return "Soubor" + " " + to + " " + "již existoval a nepodařilo se jej smazat" + ".";
             }
         }
         e.SaveAs(to);
@@ -224,24 +224,24 @@ public class UploaderManager
         }
         catch
         {
-            return "error: Z nauploadovaného souboru " + Path.GetFileName(to) + " se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
+            return "error: Z nauploadovaného souboru" + " " + Path.GetFileName(to) + " " + "se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
         }
 
 
 
         if (!bmp.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
         {
-            return "error: Obrázek nebyl ve formátu JPEG.";
+            return "error: Obrázek nebyl ve formátu JPEG" + ".";
         }
         // || bmp.Height > bmp.Width
-        if (e.FileName.StartsWith("DSC_") )
+        if (e.FileName.StartsWith("DSC" + "_") )
         {
             bmp.RotateFlip(RotateFlipType.Rotate90FlipX);
         }
         originalSize = (int)FS.GetFileSize(to);
         if (controlSize)
         {
-            string toMiddle = FS.InsertBetweenFileNameAndExtension(to, "_middle");
+            string toMiddle = FS.InsertBetweenFileNameAndExtension(to, "_" + "middle");
             if (FS.ExistsFile(toMiddle))
             {
                 try
@@ -254,7 +254,7 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Soubor " + toMiddle + " již existoval a nepodařilo se jej smazat.";
+                    return "Soubor" + " " + toMiddle + " " + "již existoval a nepodařilo se jej smazat" + ".";
                 }
             }
 
@@ -274,7 +274,7 @@ public class UploaderManager
                         {
                             allOk = false;
                         }
-                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor " + e.FileName + " nebude nauploadován.";
+                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor" + " " + e.FileName + " " + "nebude nauploadován" + ".";
                     }
                 }
         }
@@ -298,7 +298,7 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor " + e.FileName + " nemá správnou příponu.";
+            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
         }
         to = toFolderTempSlash + fn;
 
@@ -415,15 +415,15 @@ public class UploaderManager
         {
             if (FS.ExistsFile(final))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + final + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + final + " " + "již existoval";
             }
             if (FS.ExistsFile(finalMin))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + finalMin + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + finalMin + " " + "již existoval";
             }
             if (FS.ExistsFile(finalMinOpt))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + finalMinOpt + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + finalMinOpt + " " + "již existoval";
             }
         }
         else

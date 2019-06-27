@@ -16,7 +16,7 @@ public class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chyba = "Pol��ko " +  nazev + " nem��e b�t pr�zdn�";
+            chyba = "Pol��ko" + " " +  nazev + " " + "nem��e b�t pr�zdn�";
         }
         return vr;
     }
@@ -29,7 +29,7 @@ public class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaInsertedRows = new InsertedRows("Pol��ko " + nazev + " nem��e b�t pr�zdn�. ");
+            chybaInsertedRows = new InsertedRows("Pol��ko" + " " + nazev + " " + "nem��e b�t pr�zdn�" + ". ");
         }
         return vr;
     }
@@ -42,7 +42,7 @@ public class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaChangedRows = new ChangedRows("Pol��ko " + nazev + " nem��e b�t pr�zdn�. ");
+            chybaChangedRows = new ChangedRows("Pol��ko" + " " + nazev + " " + "nem��e b�t pr�zdn�" + ". ");
         }
         return vr;
     }

@@ -42,7 +42,7 @@ public static partial class SH
         {
             return AllStrings.space + v;
         }
-        return " (null)";
+        return " " + "(null)";
     }
 
     public static string MakeUpToXChars(int p, int p_2)
@@ -198,8 +198,8 @@ public static partial class SH
     public static bool IsValidISO(string input)
     {
         // ISO-8859-1 je to samé jako latin1 https://en.wikipedia.org/wiki/ISO/IEC_8859-1
-        byte[] bytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(input);
-        String result = Encoding.GetEncoding("ISO-8859-1").GetString(bytes);
+        byte[] bytes = Encoding.GetEncoding("ISO-8859-" + "").GetBytes(input);
+        String result = Encoding.GetEncoding("ISO-8859-" + "").GetString(bytes);
         return String.Equals(input, result);
     }
 
@@ -406,7 +406,7 @@ public static partial class SH
     public static string ReplaceOnce(string input, string what, string zaco)
     {
 
-        if (input.Contains("na rozdíl od 4"))
+        if (input.Contains("na rozdíl od " + ""))
         {
 
         }
@@ -524,7 +524,7 @@ public static partial class SH
 
             if (zaCo.Contains(co))
             {
-                throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje.");
+                throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje" + ".");
             }
             if (co == zaCo)
             {
@@ -1701,6 +1701,7 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
 
     public static string DecodeSlashEncodedString(string value)
     {
+        // was added " + "; after 1,2 line and " + " after 2,3
         value = SH.ReplaceAll(value, "\\", "\\\\");
         value = SH.ReplaceAll(value, "\"", "\\\"");
         value = SH.ReplaceAll(value, "\'", "\\\'");

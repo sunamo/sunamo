@@ -36,7 +36,7 @@ public class UlozTo
             {
                 continue;
             }
-            qUri = qUri.Replace("hraj('", "").Replace("',$(this));", "");
+            qUri = qUri.Replace("hraj(" + "'", "").Replace("'," + "$(this))" + ";", "");
 
             try
             {
@@ -149,7 +149,7 @@ public class UlozTo
 
     public static string ToUri(UlozToMediaUriParts ut)
     {
-        return "http://"+ut.server+".uloz.to/"+ut.part1+AllStrings.slash+ut.part2+AllStrings.slash+ut.part3+AllStrings.slash+ut.fileCode+AllStrings.dot+ut.maxQuality+AllStrings.dot+ut.ext+"?fileId=" + ut.fileId;
+        return "http:" + "//"+ut.server+"." + "uloz.to" + "/"+ut.part1+AllStrings.slash+ut.part2+AllStrings.slash+ut.part3+AllStrings.slash+ut.fileCode+AllStrings.dot+ut.maxQuality+AllStrings.dot+ut.ext+"?fileId=" + ut.fileId;
     }
 
     public static string GetNiceUri(bool live, string code, string name)
@@ -157,9 +157,9 @@ public class UlozTo
         string liveS = "";
         if (live)
         {
-            liveS = "live/";
+            liveS = "live" + "/";
         }
-        return "http://uloz.to/" + liveS + code + AllStrings.slash + name;
+        return "http://uloz.to" + "/" + liveS + code + AllStrings.slash + name;
     }
 
     /// <summary>

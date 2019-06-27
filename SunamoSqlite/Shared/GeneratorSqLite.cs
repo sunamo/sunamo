@@ -91,7 +91,7 @@ namespace DocArch.SqLite
         public static object CombinedWhere(AB[] aB)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(" WHERE ");
+            sb.Append(" " + "WHERE" + " ");
             bool první = true;
             foreach (AB var in aB)
             {

@@ -18,14 +18,14 @@ public class JustifiedGalleryHelper
     {
         if (alts.Length != images.Length)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci alts(" + alts.Length + ") nesouhlasí s počtem prvků v kolekci images("+images.Length + AllStrings.rb);
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci alts(" + alts.Length + " " + " nesouhlasí s počtem prvků v kolekci images("+images.Length + AllStrings.rb);
         }
 
         if (anchors != null)
         {
             if (anchors.Length != alts.Length)
             {
-                throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci anchors(" + anchors.Length + ") nesouhlasí s počtem prvků v kolekci alts(" + alts.Length + AllStrings.rb);
+                throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci anchors(" + anchors.Length + " " + " nesouhlasí s počtem prvků v kolekci alts(" + alts.Length + AllStrings.rb);
             }
         }
 
@@ -54,19 +54,19 @@ public class JustifiedGalleryHelper
     {
         if (photosNames2.Count != javacript.Count)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + ") nesouhlasí s počtem prvků v kolekci alts(" + javacript.Count + AllStrings.rb);
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " nesouhlasí s počtem prvků v kolekci alts(" + javacript.Count + AllStrings.rb);
         }
 
         if (photosNames2.Count != imagesTn.Count)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + ") nesouhlasí s počtem prvků v kolekci imagesTn(" + imagesTn.Count + AllStrings.rb);
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " nesouhlasí s počtem prvků v kolekci imagesTn(" + imagesTn.Count + AllStrings.rb);
         }
 
         HtmlGenerator hg = new HtmlGenerator();
         int c = javacript.Count;
         for (int i = 0; i < c; i++)
         {
-            hg.WriteTagWithAttr("a", "href", "javascript:" + javacript[i]);
+            hg.WriteTagWithAttr("a", "href", "javascript" + ":" + javacript[i]);
             hg.WriteNonPairTagWithAttrs("img", "alt", photosNames2[i] , "src", imagesTn[i]);
             hg.TerminateTag("a");
         }

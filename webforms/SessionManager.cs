@@ -106,8 +106,8 @@ public static class SessionManager
             System.Reflection.FieldInfo rqIdField = null, rqLockIdField = null, rqStateNotFoundField = null;
             foreach (System.Reflection.FieldInfo field in fields)
             {
-                if (field.Name.Equals("_store")) store = (SessionStateStoreProviderBase)field.GetValue(ssm);
-                if (field.Name.Equals("_rqId")) rqIdField = field;
+                if (field.Name.Equals("_" + "store")) store = (SessionStateStoreProviderBase)field.GetValue(ssm);
+                if (field.Name.Equals("_" + "rqId")) rqIdField = field;
                 if (field.Name.Equals("_rqLockId")) rqLockIdField = field;
                 if (field.Name.Equals("_rqSessionStateNotFound")) rqStateNotFoundField = field;
             }

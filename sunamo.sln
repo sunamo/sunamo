@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDataTranslate", "..\Creden
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDataYoutube", "..\Credentials\GDataYoutube\GDataYoutube.csproj", "{CABC2FF3-8550-4807-BA0D-C5435BE3F995}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoLinguist", "SunamoLinguist\SunamoLinguist.csproj", "{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -393,6 +395,18 @@ Global
 		{CABC2FF3-8550-4807-BA0D-C5435BE3F995}.Release|x64.Build.0 = Release|Any CPU
 		{CABC2FF3-8550-4807-BA0D-C5435BE3F995}.Release|x86.ActiveCfg = Release|Any CPU
 		{CABC2FF3-8550-4807-BA0D-C5435BE3F995}.Release|x86.Build.0 = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|x64.Build.0 = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Debug|x86.Build.0 = Debug|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x64.ActiveCfg = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x64.Build.0 = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.ActiveCfg = Release|Any CPU
+		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,7 +75,7 @@ namespace SunamoTesseract
                 info.UseShellExecute = false;
                 info.FileName = "cmd.exe";
                 info.Arguments =
-                    "/c tesseract.exe " +
+                    "/" + "c tesseract.exe" + " " +
                     // Image file.
                     tempImageFile + AllStrings.space +
                     // Output file (tesseract add '.txt' at the end)
@@ -93,7 +93,7 @@ namespace SunamoTesseract
                 }
                 else
                 {
-                    throw new Exception("Error. Tesseract stopped with an error code = " + process.ExitCode);
+                    throw new Exception("Error. Tesseract stopped with an error code =" + " " + process.ExitCode);
                 }
             }
             finally

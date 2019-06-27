@@ -10,24 +10,24 @@ public class UA
     #region From UH - must be in webforms because in sunamo isnt Page, HttpRequest, etc. And UHSharedShared is not nice, or is confusing
     public static string GetWebUri2(SunamoPage sp, MySites item2)
     {
-        string host = sp.Request.Url.Host.Replace("www.", "");
+        string host = sp.Request.Url.Host.Replace("www" + ".", "");
         bool localHost = host == "localhost";
         if (localHost)
         {
             return GetWebUri3(sp, item2.ToString().ToLower());
         }
 
-        return "http://" + item2.ToString().ToLower() + "." + host;
+        return "http:" + "//" + item2.ToString().ToLower() + "." + host;
     }
 
     public static string GetWebUriWithoutHttp(SunamoPage sp)
     {
-        return sp.Request.Url.Host.Replace("www.", "");
+        return sp.Request.Url.Host.Replace("www" + ".", "");
     }
 
     public static string AppendSiteNameIfNotExists(HttpRequest p1, string p2)
     {
-        return p1.Url.Host.Replace("www.", "") + "/" + p2.TrimStart('/');
+        return p1.Url.Host.Replace("www" + ".", "") + "/" + p2.TrimStart('/');
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class UA
     /// <returns></returns>
     public static string GetWebUri(HttpRequest p1, string p2, string p3)
     {
-        return "http://" + p1.Url.Host.Replace("www.", "") + "/" + p2 + "/" + p3;
+        return "http:" + "//" + p1.Url.Host.Replace("www" + ".", "") + "/" + p2 + "/" + p3;
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public class UA
     /// <returns></returns>
     public static string GetWebUri(SunamoPage p1, string p2, string p3)
     {
-        return "http://" + p1.Request.Url.Host.Replace("www.", "") + "/" + p2 + "/" + p3;
+        return "http:" + "//" + p1.Request.Url.Host.Replace("www" + ".", "") + "/" + p2 + "/" + p3;
     }
 
     /// <summary>
@@ -76,12 +76,12 @@ public class UA
     /// <returns></returns>
     public static string GetWebUri(SunamoPage p1, string p2)
     {
-        return "http://" + p1.Request.Url.Host.Replace("www.", "") + "/" + p2.TrimStart('/');
+        return "http:" + "//" + p1.Request.Url.Host.Replace("www" + ".", "") + "/" + p2.TrimStart('/');
     }
 
     public static string GetWebUri(HttpRequest Request, string p2)
     {
-        return "http://" + Request.Url.Host.Replace("www.", "") + "/" + p2.TrimStart('/');
+        return "http:" + "//" + Request.Url.Host.Replace("www" + ".", "") + "/" + p2.TrimStart('/');
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public class UA
     /// <returns></returns>
     public static string GetWebUri3(SunamoPage p1, string p2)
     {
-        return "http://" + p1.Request.Url.Host + "/" + p2.TrimStart('/');
+        return "http:" + "//" + p1.Request.Url.Host + "/" + p2.TrimStart('/');
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class UA
     /// <returns></returns>
     public static string GetWebUri3(HttpRequest Request, string p2)
     {
-        return "http://" + Request.Url.Host + "/" + p2.TrimStart('/');
+        return "http:" + "//" + Request.Url.Host + "/" + p2.TrimStart('/');
     }
 
     public static string GetWithProtocol(byte protocol, string p2)

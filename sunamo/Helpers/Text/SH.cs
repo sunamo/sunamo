@@ -47,7 +47,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " hasn't from");
+                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't from");
             }
 
             if (p.Length() > 1)
@@ -56,7 +56,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " hasn't to");
+                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't to");
             }
 
             if (SH.IsWildcard(item))
@@ -225,7 +225,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                throw new Exception("Nahrazovaný prvek " + item + " je prvkem jímž se nahrazuje + " + zaCo + AllStrings.dot);
+                throw new Exception("Nahrazovaný prvek" + " " + item + " " + "je prvkem jímž se nahrazuje +" + " " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -1939,7 +1939,7 @@ public static partial class SH
     {
         if (p < 0)
         {
-            throw new Exception("Chybný parametr p");
+            throw new Exception("Chybný parametr " + "");
         }
         if (nahledy.Length > p)
         {

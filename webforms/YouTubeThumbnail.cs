@@ -182,7 +182,7 @@ public abstract class YouTubeThumbnail
 
     string UriOfThumbnail(string ytCode, int poradi)
     {
-        return "http://img.youtube.com/vi/" + ytCode + "/" + poradi + ".jpg";
+        return "http://img.youtube.com/vi" + "/" + ytCode + "/" + poradi + ".jpg";
     }
 
     public void Save(int idSong, int poradi, Image toSave)

@@ -34,7 +34,7 @@ namespace DocArch.SqLite
 
         public bool SelectExistsTable(string table, SQLiteConnection conn)
         {
-            return ExecuteNonQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='" + table + "';") != 0;
+            return ExecuteNonQuery("SELECT name FROM sqlite_master WHERE type='table' AND name=" + "'" + table + "';") != 0;
         }
 
         public DataTable GetDataTable(string sql)
@@ -59,7 +59,7 @@ namespace DocArch.SqLite
 
         public DataTable GetDataTableAllRows(string p)
         {
-            return GetDataTable("SELECT * FROM " + p);
+            return GetDataTable("SELECT * FROM" + " " + p);
         }
 
         /// <summary>
@@ -101,12 +101,12 @@ namespace DocArch.SqLite
         public DataTable GetDataTableSelective(string tabulka, string sloupec, object hodnota)
         {
 
-            return GetDataTable("SELECT * FROM " + tabulka + " WHERE " + sloupec + " = " + StoredProcedures.ci.ReplaceValueOnlyOne(hodnota));
+            return GetDataTable("SELECT * FROM" + " " + tabulka + " " + "WHERE" + " " + sloupec + " = " + StoredProcedures.ci.ReplaceValueOnlyOne(hodnota));
         }
 
         private DataTable GetDataTableSelective(string tabulka, string sloupecID, int id, string hledanySloupec)
         {
-            return GetDataTable("SELECT " + hledanySloupec + " FROM " + tabulka + " WHERE " + sloupecID + " = " + StoredProcedures.ci.ReplaceValueOnlyOne(id));
+            return GetDataTable("SELECT" + " " + hledanySloupec + " " + "FROM" + " " + tabulka + " " + "WHERE" + " " + sloupecID + " = " + StoredProcedures.ci.ReplaceValueOnlyOne(id));
         }
 
         /// <summary>
