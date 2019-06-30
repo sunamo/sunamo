@@ -32,7 +32,7 @@ public class DisplayImageUC : UserControl
         {
             base.OnResize(e);
 
-            // Pro jistotu to je nastaven� na vy��� ne� 200
+            // Pro jistotu to je nastavene na vyssi nez 200
             if (ClientSize.Width > 210)
             {
 

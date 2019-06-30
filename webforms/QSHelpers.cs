@@ -83,7 +83,7 @@ public class QSHelperWebForms
         {
             string k = p[i].ToString();
             string v = k; //p[++i].ToString();
-            sb.Append(k + "'" + "' + encodeURIComponent(" + v + ") +'&");
+            sb.Append(k + "'" + "' " + "+ encodeURIComponent(" + v + ") +'&");
         }
         string vr = sb.ToString();//.TrimEnd('&', '\'', '+');
         if (p.Length == 0)

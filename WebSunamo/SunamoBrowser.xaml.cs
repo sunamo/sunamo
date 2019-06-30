@@ -61,7 +61,7 @@ namespace WebSunamo
         /// <param name="loadCompleted"></param>
         public void Initialize(string TextCustomButton, string homeAdressWithoutHttp)
         {
-            homeUrl = new Uri("http:" + "//" + homeAdressWithoutHttp);
+            homeUrl = new Uri("http" + ":" + "//" + homeAdressWithoutHttp);
 
             webControl.LoadCompleted += WebControl_LoadCompleted;
 

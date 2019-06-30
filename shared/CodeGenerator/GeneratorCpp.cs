@@ -22,28 +22,28 @@ namespace sunamo.CodeGenerator
         {
             AddTab2(tabCount, "");
             sb.AddItem(cn);
-            sb.AppendLine(name + AllStrings.sc);
+            sb.AppendLine(name + ";");
         }
 
         public void MapNonStringNonString(int tabCount, string mapName, string keyType, string valueType, Dictionary<string, string> nameCommentEnums)
         {
-            string cn = "map<" + keyType + ", " + valueType + AllStrings.gt;
+            string cn = "map<" + keyType + ", " + valueType + ">";
             NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(tabCount, mapName + "." + "insert(" + "{" + item.Key + ", " + item.Value + "});");
+                AppendLine(tabCount, mapName + ".insert({" + item.Key + ", " + item.Value + "});");
             }
         }
 
         public void VectorCustom(int tabsCount, string vectorName, string customType, Dictionary<string, string> dict)
         {
-            string cn = "vector<" + customType + AllStrings.gt;
+            string cn = "vector<" + customType + ">";
             NewVariable(tabsCount, AccessModifiers.Private, cn, vectorName, true);
             Append(tabsCount, vectorName + "=");
-            Append(0, AllStrings.cbl);
+            Append(0, "{");
             foreach (var item in dict)
             {
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + AllStrings.cbr + AllStrings.comma);
+                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + ",");
             }
             AppendLine(0, "};");
         }
@@ -52,12 +52,12 @@ namespace sunamo.CodeGenerator
         {
             AddTab2(tabsCount, "");
             sb.AddItem(customType);
-            Append(tabsCount, arrayName + AllStrings.lsf + dict.Count + "]=");
-            Append(0, AllStrings.cbl);
+            Append(tabsCount, arrayName + "[" + dict.Count + "]=");
+            Append(0, "{");
             foreach (var item in dict)
             {
-                string d = (item.Key == dict.Last().Key ? "" : AllStrings.comma);
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + AllStrings.cbr + d);
+                string d = (item.Key == dict.Last().Key ? "" : ",");
+                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + d);
             }
             AppendLine(0, "};");
         }

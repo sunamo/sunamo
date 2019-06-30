@@ -101,7 +101,7 @@ namespace SunamoFtp
 
         public static bool IsSchemaFtp(string remFileName)
         {
-            return remFileName.StartsWith("ftp:" + "//");
+            return remFileName.StartsWith("ftp" + ":" + "//");
         }
 
         public static IEnumerable<string> GetDirectories(string[] fse)
@@ -120,7 +120,7 @@ namespace SunamoFtp
 
         public static string ReplaceSchemaFtp(string remoteHost2)
         {
-            return remoteHost2.Replace("ftp:" + "//", "");
+            return remoteHost2.Replace("ftp" + ":" + "//", "");
         }
     }
 }

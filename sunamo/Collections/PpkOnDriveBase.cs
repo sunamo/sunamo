@@ -7,7 +7,7 @@ using System;
 /// Kolekce na retezce.
 ///  V kazdem programu doporucuji pouzivat jen jedinou instanci protoze jinak jinak se mohou ukoncoval nelogicky.
 /// Tuto PPk uzivej jen na nacteni nebo uulozeni, ale nikdy ne soucasne.
-/// Mus� to b�t duplikovan�, proto�e string ned�d� od IParser a bez n� nem�m jak p�idat nov� metody :-(
+/// Musi to byt duplikovane, proto�e string ned�d� od IParser a bez n� nem�m jak p�idat nov� metody :-(
 /// </summary>
 public abstract class PpkOnDriveBase<T> : List<T>
 {

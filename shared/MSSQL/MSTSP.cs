@@ -167,7 +167,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -177,7 +177,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -769,7 +769,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <returns></returns>
     public int SelectLastIDFromTable(SqlTransaction tran, string p, string sloupecID)
     {
-        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p)).ToString();
+        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + " " + " " + "FROM" + " " + p)).ToString();
         if (dd == "")
         {
             return 0;

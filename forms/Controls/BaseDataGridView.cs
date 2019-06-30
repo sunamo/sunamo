@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 /// <summary>
-/// Pak je t�eba p�ekr�t jen metody:
+/// Pak je treba prekryt jen metody:
 /// 
-/// OnCellBeginEdit - pokud edituji sloupec kter� nem��u zastavit. Pokud sloupec editovat m��u, ulo�it p�vodn� hodnotu
-/// OnDataError - Nastavit p�vodn� hodnotu. Mo�n� to je trochu slo�it�j��, kdy�tak se koukni do ParsovacCammin
-/// OnCurrentCellDirtyStateChanged - pouze zavol�m this.CommitEdit(DataGridViewDataErrorContexts.Commit); Tuto metodu je bezpodm�nen�n� nutn� zavolat, jinak se minim�ln� posledn� editovan� hodnota neulo��!!
-/// OnCellValueChanged - pokud se nepoda�� vyparsovat nov� hodnota, ulo��m starou
+/// OnCellBeginEdit - pokud edituji sloupec ktery nemuzu zastavit. Pokud sloupec editovat muzu, ulozit puvodni hodnotu
+/// OnDataError - Nastavit puvodni hodnotu. Mozna to je trochu slozitejsi, kdyztak se koukni do ParsovacCammin
+/// OnCurrentCellDirtyStateChanged - pouze zavolam this.CommitEdit(DataGridViewDataErrorContexts.Commit); Tuto metodu je bezpodminenene nutne zavolat, jinak se minimalne posledni editovany hodnota neulozi!!
+/// OnCellValueChanged - pokud se nepodari vyparsovat nova hodnota, ulozim starou
 /// </summary>
 public class BaseDataGridView : DataGridView
 {
     /// <summary>
-    /// Je tu proto �e pozd�ji bych cht�l to automatizovat ud�lostmi kter� jsou ve komentu t��dy
+    /// Je tu proto ze pozdeji bych chtel to automatizovat udalostmi ktere jsou ve komentu tridy
     /// </summary>
     int poradiSloupcu = 0;
 

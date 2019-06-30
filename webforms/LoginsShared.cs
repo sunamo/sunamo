@@ -9,8 +9,9 @@ using System.Web;
 using System.Web.SessionState;
 using System.Web.UI;
 
-public partial class Logins{ 
-public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, string heslo2, bool rememberUser2, bool rememberPass, string continueUri)
+public partial class Logins
+{
+    public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, string heslo2, bool rememberUser2, bool rememberPass, string continueUri)
     {
         if (SunamoPageHelper.IsIpAddressRight(page) != null)
         {
@@ -43,7 +44,7 @@ public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, 
                                 if (email != "")
                                 {
                                     DateTime dateChanged = global::MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.UsersReactivates, "DateChanged", global::SqlServerHelper.DateTimeMinVal, CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
-                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před" + " " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
+                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
                                 }
 
                                 string sc = "";
@@ -73,7 +74,7 @@ public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, 
                             {
                                 string z = UnsuccessfulLoginAptempt(login, pocetPokusu);
                                 return new LoginResponse(LoginResponseType.Warning, "Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\"Register.aspx?ReturnUrl=" + UH.UrlEncode(continueUri) + "\">registrovat</a>? " + z);
-                            //Warning("Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\"Register.aspx?ReturnUrl=" + UH.UrlEncode(ContinueUri.Value) + "\">registrovat</a>?");
+                                //Warning("Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\"Register.aspx?ReturnUrl=" + UH.UrlEncode(ContinueUri.Value) + "\">registrovat</a>?");
                             }
                         }
                         else
@@ -83,18 +84,18 @@ public static LoginResponse LoginCommonAllPages(SunamoPage page, string login2, 
                     }
                     else
                     {
-                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné" + ".");
+                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné.");
                     }
                 }
                 else
                 {
-                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů" + ". ");
+                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů. ");
                 }
             }
             else
             {
                 return new LoginResponse(LoginResponseType.Alert, Logins.GetRegLogSysStatus());
-            //JavascriptInjection.alert(Logins.GetRegLogSysStatus(), Page);
+                //JavascriptInjection.alert(Logins.GetRegLogSysStatus(), Page);
             }
         }
         else

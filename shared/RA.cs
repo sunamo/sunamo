@@ -31,8 +31,8 @@ public class RA
         }
 
         /// <summary>
-        /// Abstraktn� u� nikdy ned�lej, prost� mus� tu metodu p�ekr�t a ozna�it za static a zavolat v statick�m konstruktoru, pokud chce� ji volat ihned p�i vytvo�en� statick� instance nebo ji chce� t�eba volat v F1.
-        /// T��da vrac� string aby jsi j� mohl inicializovat t�eba A1.
+        /// Abstraktni uz nikdy nedelej, proste musi tu metodu prekryt a oznacit za static a zavolat v statickem konstruktoru, pokud chces ji volat ihned pri vytvoreni staticke instance nebo ji chces treba volat v F1.
+        /// Trida vraci string aby jsi ji mohl inicializovat treba A1.
         /// </summary>
         public virtual string CreateDefaultValues()
         {
@@ -60,7 +60,7 @@ public class RA
         }
 
         /// <summary>
-        /// Pokud kl�� A1 nebude nalezen, G "".
+        /// Pokud klk A1 nebude nalezen, G "".
         /// </summary>
         /// <param name="Login"></param>
         /// <returns></returns>

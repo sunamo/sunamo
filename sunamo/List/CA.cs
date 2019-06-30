@@ -13,6 +13,13 @@ using System.Text;
 
 public static partial  class CA
 {
+    /// <summary>
+    /// A1 are column names for ValuesTableGrid (not letter sorted a,b,.. but left column (Name, Rating, etc.)
+    /// A2 are data
+    /// </summary>
+    /// <param name="captions"></param>
+    /// <param name="exists"></param>
+    /// <returns></returns>
     public static string SwitchForGoogleSheets(List<string> captions, List<List<string>> exists)
     {
         ValuesTableGrid<string> vtg = new ValuesTableGrid<string>(exists);
@@ -343,15 +350,15 @@ public static partial  class CA
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\")
+                //if (item == @"\\obj\\\\\\")
                 //{
-                //    if (files1[i].Contains(@"\obj\"))
+                //    if (files1[i].Contains(@"\obj\\\\\"))
                 //    {
                 //        Debugger.Break();
                 //    }
                 //}
 
-                //if (files1[i].Contains(@"\obj\"))
+                //if (files1[i].Contains(@"\obj\\\\\"))
                 //{
                 //    Debugger.Break();
                 //}

@@ -18,7 +18,7 @@ namespace sunamo
         {
             if (zmenaO == 0)
             {
-                throw new Exception("Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value " + "");
+                throw new Exception("Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value" + " " + "");
             }
 
                 zmenaO /= d.Count;

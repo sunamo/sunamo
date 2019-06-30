@@ -23,7 +23,7 @@ namespace F.WF
         //}
 
         ///// <summary>
-        ///// A1 je vhodn� tehdy kdy� nap��klad pou�t�m python skripty, ve kter�ch nem��u ov��it zda se mi poda�ilo nalogovat
+        ///// A1 je vhodna tehdy kdyz napriklad poustim python skripty, ve kterych nemuzu overit zda se mi podarilo nalogovat
         ///// </summary>
         ///// <param name="internalSaveLogic"></param>
         //public DialogLogin(bool internalSaveLogic)

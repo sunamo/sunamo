@@ -225,7 +225,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                throw new Exception("Nahrazovaný prvek" + " " + item + " " + "je prvkem jímž se nahrazuje +" + " " + zaCo + AllStrings.dot);
+                throw new Exception("Nahrazovaný prvek" + " " + item + " " + "je prvkem jímž se nahrazuje " + "" + " " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -1858,11 +1858,11 @@ public static partial class SH
         return false;
     }
 
-    public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool comma)
+    public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool commaInclude)
     {
         List<char> l = new List<char>();
         l.AddRange(spaceAndPuntactionChars);
-        if (!comma)
+        if (!commaInclude)
         {
             l.Remove(AllChars.comma);
         }
@@ -1939,7 +1939,7 @@ public static partial class SH
     {
         if (p < 0)
         {
-            throw new Exception("Chybný parametr " + "");
+            throw new Exception("Chybný parametr" + " " + "");
         }
         if (nahledy.Length > p)
         {

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 namespace forms
 {
     /// <summary>
-    /// T��da pro snadn�j�� u�it� ToolStripProgressBar
+    /// Trida pro snadnejsi uziti ToolStripProgressBar
     /// </summary>
     public class TSPBH
     {

@@ -27,7 +27,7 @@ public  class ErrorMessageGenerator
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            vypis.AppendLine(" " + " těchto souborech se vyskytly tyto chyby" + ": ");
+            vypis.AppendLine(" " + " " + "těchto souborech se vyskytly tyto chyby" + ": ");
         }
         else
         {

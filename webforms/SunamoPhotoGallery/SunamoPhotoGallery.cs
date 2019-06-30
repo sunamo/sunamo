@@ -148,7 +148,7 @@ public class SunamoPhotoGallery
             }
             else if (a11insertBetweenPhotoAndID == "")
             {
-                hg.WriteTagWithAttr("a", "href", ".." + "/Photo" + "/" + idPhoto + a16appendToPhotoUri);
+                hg.WriteTagWithAttr("a", "href", ".." + "/" + "Photo" + "/" + idPhoto + a16appendToPhotoUri);
             }
             else
             {

@@ -229,7 +229,7 @@ using System.Threading.Tasks;
 
         public static string MessageIfEmpty(string p)
         {
-            return "Nebyly nalezeny žádné" + " " + p + " " + "k zobrazení";
+            return "Nebyly nalezeny žádné" + " " + p + " " + " " + " zobrazení";
         }
 
     }

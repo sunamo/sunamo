@@ -15,7 +15,7 @@ namespace sunamo.Helpers
             FS.CreateFoldersPsysicallyUnlessThere(sourceDirectory);
 
             var shell =  new WshShell();
-            var shortCutLinkFilePath = FS.Combine(sourceDirectory, @"\"+fn+  ".lnk");
+            var shortCutLinkFilePath = FS.Combine(sourceDirectory, @"\\\\\"+fn+  ".lnk");
             if (!FS.ExistsFile(shortCutLinkFilePath))
             {
                 var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);

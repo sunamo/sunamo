@@ -580,10 +580,16 @@ public static List<string> GetFolders(string v, string contains)
             return rp.Substring(dex + 1);
         }
 
+    /// <summary>
+    /// Copy file by ordinal way 
+    /// </summary>
+    /// <param name="jsFiles"></param>
+    /// <param name="v"></param>
 public static void CopyFile(string jsFiles, string v)
         {
             File.Copy(jsFiles, v, true);
         }
+
 /// <summary>
     /// A2 is path of target file
     /// </summary>

@@ -394,7 +394,7 @@ public class SunamoPage : System.Web.UI.Page
     /// <param name="scriptsUri"></param>
     protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
-        string hostWithHttp = "http:" + "//" + Request.Url.Host + "/";
+        string hostWithHttp = "http" + ":" + "//" + Request.Url.Host + "/";
 
         if (scriptsUri == null)
         {

@@ -8,7 +8,7 @@ using Microsoft.VisualBasic;
 
 
     /// <summary>
-    /// Pro spr�vnou funk�nost nutno importovat Microsoft.VisualBasic
+    /// Pro sprAvnou funkCnost nutno importovat Microsoft.VisualBasic
     /// </summary>
     public class TrialManager
     {

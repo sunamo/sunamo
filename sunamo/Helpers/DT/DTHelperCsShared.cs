@@ -214,7 +214,7 @@ public static DateTime ParseDateCzech(string input)
                             }
                             else
                             {
-                                return " " + " dnem";
+                                return " " + " " + "dnem";
                             }
                         }
 
@@ -251,7 +251,7 @@ public static DateTime ParseDateCzech(string input)
             }
             else if (age == 1)
             {
-                return " " + " rokem";
+                return " " + " " + "rokem";
             }
             else if (age > 1 && age < 5)
             {

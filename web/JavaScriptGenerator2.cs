@@ -13,7 +13,7 @@ namespace webforms
         public static string GenerateItemsForPhotoSwipe(List<ImageWithSize> iws)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("items =" + " [");
+            sb.Append("items " + "" + " [");
             int poradi = 0;
             //sb.Append(@"{src:'',w:0,h:0,pid:0},");
             for (int i = 0; i < iws.Count - 1; i++)
@@ -55,7 +55,7 @@ namespace webforms
             sb.Append("$(document).ready(function()" + " {");
             for (int i = 0; i < idBadges.Count; i++)
             {
-                sb.Append("$('#iosBadge" + idBadges[i] + "'" + ").iosbadge({ theme:" + " '" + theme + "'," + " size: 22, content:" + " '" + values[i] + "' });");
+                sb.Append("$('#iosBadge" + idBadges[i] + "'" + "." + ".iosbadge({ theme" + ":" + " '" + theme + "'," + " " + "size: 22, content" + ":" + " '" + values[i] + "' });");
             }
             sb.Append("});");
             return sb.ToString();
@@ -70,7 +70,7 @@ namespace webforms
         public static string ImagesForSunamoPhotoGalleryViewer(string nameArray, List<string> base64)
         {
             StringBuilder vr = new StringBuilder();
-            vr.Append(@"" + nameArray + @" " + "= new Array()" + ";");
+            vr.Append(@"" + nameArray + @" " + " " + " new Array()" + ";");
             int i = 0;
             foreach (var item in base64)
             {
@@ -92,8 +92,8 @@ namespace webforms
             string bef = "";
             if (createNewArray)
             {
-                bef = "var " + nameArray + @" " + "= new Array();var vsechnyObrazky = null;
-var nameArray =" + " '" + sameTextInIDs + @"';";
+                bef = "var " + nameArray + @" " + " " + " new Array();var vsechnyObrazky = null;
+var nameArray " + "" + " '" + sameTextInIDs + @"';";
             }
             return bef + @"$(document).ready(function () {
     setInterval(changeImage, 5000);
@@ -118,7 +118,7 @@ function changeImage() {
             }
             else {
                 if (" + nameArray + @"[" + "id]) {
-                    var pocetObrazku =" + " " + nameArray + @"[" + "id].length;
+                    var pocetObrazku " + "" + " " + nameArray + @"[" + "id].length;
                     if (pocetObrazku != 0) {
                         var nastaveno = false;
 
@@ -137,7 +137,7 @@ function changeImage() {
                     }
                 }
             }
-        " + "}}";
+      " + "  " + "}}";
         }
 
 
@@ -154,20 +154,20 @@ function changeImage() {
             {
                 lineChart.AppendLine(SH.Format2("['{0}', {1}],", item.Key, item.Value));
             }
-            lineChart.Append(@"]" + ");
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title:" + " '");
+                title" + ":" + " '");
             lineChart.Append(title);
             lineChart.Append(@"'," + "
-                is3D: true,
+" + "                is3D: true,
             };
 
             var chart = new google.visualization.PieChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
             lineChart.Append(@"'" + "));
             chart.draw(data, options);
-       " + " }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -183,20 +183,20 @@ function changeImage() {
             {
                 lineChart.AppendLine(SH.Format2("['{0}', {1}],", coSePorovnavaHodnoty[i], jednotkaHodnotyPorovnavaniHodnoty[i]));
             }
-            lineChart.Append(@"]" + ");
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title:" + " '");
+                title" + ":" + " '");
             lineChart.Append(title);
             lineChart.Append(@"'," + "
-                is3D: true,
+" + "                is3D: true,
             };
 
             var chart = new google.visualization.PieChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
             lineChart.Append(@"'" + "));
             chart.draw(data, options);
-       " + " }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -212,19 +212,19 @@ function changeImage() {
             {
                 lineChart.AppendLine(SH.Format2("['{0}', {1}],", osaXPopisky[i], osaXHodnoty[i]));
             }
-            lineChart.Append(@"]" + ");
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title:" + " '");
+                title" + ":" + " '");
             lineChart.Append(title);
             lineChart.Append(@"'" + "
-            };
+ " + "           };
 
             var chart = new google.visualization.LineChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
             lineChart.Append(@"'" + "));
             chart.draw(data, options);
-       " + " }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -239,7 +239,7 @@ function changeImage() {
         public static string alertWithCloseWindow(string message)
         {
             string cleanMessage = message.Replace("'", "\\'");
-            string script = "alert(" + "'" + cleanMessage + "'" + ");window.close()" + ";";
+            string script = "alert(" + "'" + cleanMessage + "'" + ";" + ";window.close()" + ";";
             return script;
         }
 
@@ -254,12 +254,12 @@ function changeImage() {
 
         public static string Redirect(string p, string uri)
         {
-            return "<script type='text/javascript'>function" + " " + p + "() { window.location.href=" + "'" + uri + "';" + " }</script>";
+            return "<script type='text/javascript'>function" + " " + p + "() { window.location.href=" + "'" + uri + "';" + " }" + "</script>";
         }
 
         public static string ScriptTag(string p)
         {
-            return Environment.NewLine + Environment.NewLine + "<script type='text/javascript'" + "" + p + "/" + "/script>" + Environment.NewLine + Environment.NewLine;
+            return Environment.NewLine + Environment.NewLine + "<script type='text/javascript" + "'" + "" + p + "/" + "/" + "script>" + Environment.NewLine + Environment.NewLine;
         }
 
         public static string jQueryAutocompleteData(string p, List<AB> abc)
@@ -269,8 +269,8 @@ function changeImage() {
             foreach (var item in abc)
             {
                 sb.AppendLine("{");
-                sb.AppendLine(" value: \"" + item.A + "\",");
-                sb.AppendLine(" label: \"" + item.B.ToString() + "\"");
+                sb.AppendLine(" value: \\\\\"" " + "+ item.A +" + " "\\\\\",");
+                sb.AppendLine(" label: \\\\\"" " + "+ item.B.ToString() +" + " "\\\\\"");
                 sb.AppendLine("},");
             }
             return sb.ToString().Substring(0, sb.Length - 3) + "];";

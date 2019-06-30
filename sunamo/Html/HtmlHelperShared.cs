@@ -14,7 +14,7 @@ public static partial class HtmlHelper
     {
     public static string ConvertTextToHtml(string p)
     {
-        p = p.Replace(Environment.NewLine, "<br /" + "");
+        p = p.Replace(Environment.NewLine, "<br" + " /" + "");
         return p;
     }
 
@@ -26,12 +26,12 @@ public static string PrepareToAttribute(string title)
 
     public static string ReplaceAllFontCase(string r)
         {
-            string za = "<br /" + "";
+            string za = "<br" + " /" + "";
             r = r.Replace("<BR />", za);
             r = r.Replace("<bR />", za);
             r = r.Replace("<Br />", za);
 
-            r = r.Replace("<br/" + "", za);
+            r = r.Replace("<br" + "/" + "", za);
             r = r.Replace("<BR/>", za);
             r = r.Replace("<bR/>", za);
             r = r.Replace("<Br/>", za);
@@ -272,7 +272,7 @@ public static HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameOfTag, string
 
     public static string ConvertHtmlToText(string h)
     {
-        h = SH.ReplaceAll(h, string.Empty, "<br>", "<br /" + "", "<br/" + "");
+        h = SH.ReplaceAll(h, string.Empty, "<br>", "<br" + " /" + "", "<br" + "/" + "");
         return h;
     }
 
@@ -563,7 +563,7 @@ public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
         {
             List<string> jizNahrazeno = new List<string>();
             
-            MatchCollection mc = Regex.Matches(vstup, "<(?:\"[^\"]*\"['\"]*|'[^']*AllChars.lsf\"]*|[^'\">])+>");
+            MatchCollection mc = Regex.Matches(vstup, "<(?:\\\\\"[^\\\\\"]*\\\\\"['\\\\\"]*|'[^']*AllChars.lsf\\\\\"]*|[^'\\\\\">])+>");
             List<string> col = new List<string>(AllLists.HtmlNonPairTags);
 
             //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>

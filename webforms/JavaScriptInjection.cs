@@ -13,7 +13,7 @@ using webforms;
 /// </summary>
 public class JavaScriptInjection
 {
-    
+
 
     /// <summary> 
     /// Shows a client-side JavaScript alert in the browser. 
@@ -43,12 +43,12 @@ public class JavaScriptInjection
     }
 
     public static void InjectGooglePieChart3D(SunamoPage page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, IEnumerable<KeyValuePair<string, int>> d)
-    {   
+    {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2.GooglePieChart3D(idElement, title, coSePorovnava, jednotkaHodnotyPorovnavani, d));
     }
 
     public static void InjectGooglePieChart3D(SunamoPage page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, List<string> coSePorovnavaHodnoty, List<string> jednotkaHodnotyPorovnavaniHodnoty)
-    { 
+    {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2.GooglePieChart3D(idElement, title, coSePorovnava, jednotkaHodnotyPorovnavani, coSePorovnavaHodnoty, jednotkaHodnotyPorovnavaniHodnoty));
     }
 
@@ -96,9 +96,9 @@ public class JavaScriptInjection
         RegisterClientScriptInnerHtml(page, functionName, JavaScriptGenerator2.FunctionOpenNewTab(uri));
     }
 
-    public static void InjectJQueryAjaxForHandler( SunamoPage page, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
+    public static void InjectJQueryAjaxForHandler(SunamoPage page, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
     {
-            RegisterClientScriptInnerHtml(page, JavaScriptGenerator2WebForms.JQueryAjaxForHandler(ms, countUp, nameOfFunction, args));
+        RegisterClientScriptInnerHtml(page, JavaScriptGenerator2WebForms.JQueryAjaxForHandler(ms, countUp, nameOfFunction, args));
     }
 
     public static void InjectJQueryAjaxForHandlerShowMessage(string successMessage, int countUp, SunamoPage page, MySitesShort ms, string nameOfFunction, params string[] args)
@@ -108,7 +108,7 @@ public class JavaScriptInjection
 
     public static void RegisterClientScriptInnerHtml(SunamoPage page, string functionName, string src)
     {
-        RegisterClientScriptInnerHtml(page, "function" + " " + functionName + @"() {
+        RegisterClientScriptInnerHtml(page, "function " + functionName + @"() {
 " + src + "}");
     }
 
@@ -125,7 +125,7 @@ public class JavaScriptInjection
         page.Header.Controls.Add(si);
     }
 
-    
+
 
     /// <summary>
     /// Automaticky vkládá do stránky všechny JS definované v SunamoPage.includeScripts
@@ -169,18 +169,18 @@ public class JavaScriptInjection
                 sa = AllStrings.us;
             }
         }
-        
+
 
         foreach (var item in p2)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<script");
             sb.Append(" type=\"");
-                sb.Append("text/javascript");
+            sb.Append("text/javascript");
             //}
             sb.Append("\"");
 
-            if ((hostWithHttp.StartsWith("http:" + "//") || item.StartsWith("https:" + "//")) && !item.Contains("{") && !item.Contains("["))
+            if ((hostWithHttp.StartsWith("http://") || item.StartsWith("https://")) && !item.Contains("{") && !item.Contains("["))
             {
                 if (item == JavaScriptPaths.RequireJS)
                 {
@@ -189,7 +189,7 @@ public class JavaScriptInjection
                 }
                 // charset=\"utf-16\"
                 sb.Append(" src=\"");
-                sb.Append(hostWithHttp + item ); //+ "?nocache"
+                sb.Append(hostWithHttp + item); //+ "?nocache"
                 sb.Append("\">");
             }
             else
@@ -197,7 +197,7 @@ public class JavaScriptInjection
                 sb.AppendLine(">");
                 sb.Append(item);
             }
-            sb.Append("/" + "/script>");
+            sb.Append("</script>");
             LiteralControl lc = new LiteralControl(sb.ToString());
             page.Page.Header.Controls.AddAt(0, lc);
         }
@@ -210,7 +210,7 @@ public class JavaScriptInjection
         sb.Append("text/javascript");
         sb.Append("\">");
         sb.Append(javaScript);
-        sb.Append("/" + "/script>");
+        sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
         page.Page.Header.Controls.Add(lc);
     }
@@ -222,7 +222,7 @@ public class JavaScriptInjection
         sb.Append(type);
         sb.Append("\">");
         sb.Append(script);
-        sb.Append("/" + "/script>");
+        sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
         page.Page.Header.Controls.Add(lc);
     }
@@ -253,14 +253,14 @@ var myColorScheme = {
     };
 
       $('#nanoGallery3').nanoGallery({
-          itemsBaseURL:'" + baseUri+ @"'," + "
+          itemsBaseURL:'" + baseUri + @"',
 thumbnailHoverEffect: 'borderLighter',
         colorScheme: myColorScheme,
 thumbnailHeight: 168,
 thumbnailWidth: 300,
 viewerFullscreen: true
       });
-  })" + ";");
+  });");
     }
 
     public static void InitNanoGallery(SunamoPage page, string baseUri, List<string> photosUri, List<string> photosUriTn, List<string> photosDesc)
@@ -291,15 +291,15 @@ var myColorScheme = {
     };
 
       $('#nanoGallery3').nanoGallery({
-itemsBaseURL:'" + baseUri + @"'," + "
-items" + ":[" +items+ @"]," + "
+itemsBaseURL:'" + baseUri + @"',
+items:[" + items + @"],
 thumbnailHoverEffect: 'borderLighter',
 colorScheme: myColorScheme,
 thumbnailHeight: 168,
 thumbnailWidth: 300,
 viewerFullscreen: true
 });
-})" + ";");
+});");
     }
 
     public static void InitNanoGalleryJustifiedlayout(SunamoPage page, string baseUri)

@@ -11,7 +11,7 @@ namespace shared.Crypting
     /// use the .Text property to set/get a string representation 
     /// use the .Hex property to set/get a string-based Hexadecimal representation 
     /// use the .Base64 to set/get a string-based Base64 representation 
-    /// T��da kter� uchov�v� bajty a p�ev�d� je mezi r�zn�mi form�ty.
+    /// Trida ktera uchovava bajty a p�ev�d� je mezi r�zn�mi form�ty.
     /// </summary>
     public class DataCrypt
     {

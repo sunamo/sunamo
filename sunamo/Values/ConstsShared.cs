@@ -47,7 +47,7 @@ namespace sunamo.Values
         public static string DotCzSlash = "." + "sunamo.cz" + "/";
         public static string DotCz = ".sunamo.cz";
 
-        public static string http = "http:" + "//";
+        public static string http = "http" + ":" + "//";
         public const double zeroDouble = 0;
         public const int zeroInt = 0;
         public const float zeroFloat = 0;
@@ -62,6 +62,9 @@ namespace sunamo.Values
         public const string cr = "\t";
         #endregion
 
+        /// <summary>
+        /// \\?\
+        /// </summary>
         public const string UncLongPath = @"\\?\";
         public const string @sunamo = "sunamo";
 

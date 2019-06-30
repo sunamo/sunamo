@@ -18,14 +18,14 @@ public class JustifiedGalleryHelper
     {
         if (alts.Length != images.Length)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci alts(" + alts.Length + " " + " nesouhlasí s počtem prvků v kolekci images("+images.Length + ")");
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci alts(" + alts.Length + " " + " " + "nesouhlasí s počtem prvků v kolekci images("+images.Length + ")");
         }
 
         if (anchors != null)
         {
             if (anchors.Length != alts.Length)
             {
-                throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci anchors(" + anchors.Length + " " + " nesouhlasí s počtem prvků v kolekci alts(" + alts.Length + ")");
+                throw new Exception("JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci anchors(" + anchors.Length + " " + " " + "nesouhlasí s počtem prvků v kolekci alts(" + alts.Length + ")");
             }
         }
 
@@ -54,12 +54,12 @@ public class JustifiedGalleryHelper
     {
         if (photosNames2.Count != javacript.Count)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " nesouhlasí s počtem prvků v kolekci alts(" + javacript.Count + ")");
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " " + "nesouhlasí s počtem prvků v kolekci alts(" + javacript.Count + ")");
         }
 
         if (photosNames2.Count != imagesTn.Count)
         {
-            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " nesouhlasí s počtem prvků v kolekci imagesTn(" + imagesTn.Count + ")");
+            throw new Exception("JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(" + photosNames2.Count + " " + " " + "nesouhlasí s počtem prvků v kolekci imagesTn(" + imagesTn.Count + ")");
         }
 
         HtmlGenerator hg = new HtmlGenerator();

@@ -175,7 +175,7 @@ public static partial class EnumHelper
         }
 
         if (typeof(T).BaseType != typeof(Enum))
-            throw new ArgumentException(" " + " must be an Enum type");
+            throw new ArgumentException(" " + " " + "must be an Enum type");
         var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
         valuesInverted = values.Select(v => ~v).ToArray();
         result = new List<T>();

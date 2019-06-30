@@ -9,7 +9,7 @@ public class DisplayTextUC : UserControl
     TextBoxForms txt2 = new TextBoxForms();
 
     /// <summary>
-    /// Kdy� A2 will be null, Panel2 will be collapsed
+    /// Kdyz A2 will be null, Panel2 will be collapsed
     /// </summary>
     /// <param name="text"></param>
     /// <param name="text2"></param>
@@ -54,7 +54,7 @@ public class DisplayTextUC : UserControl
     }
 
     /// <summary>
-    /// Nastavuje text pomoc� Invoke
+    /// Nastavuje text pomoci Invoke
     /// </summary>
     public string Content
     {
@@ -74,7 +74,7 @@ public class DisplayTextUC : UserControl
         base.OnResize(e);
         if (true)
         {
-            // Pro jistotu to je nastaven� na vy��� ne� 200
+            // Pro jistotu to je nastavene na vyssi nez 200
             if (ClientSize.Width > 210)
             {
 

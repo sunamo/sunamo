@@ -54,7 +54,7 @@ public static string Dictionary(string nameClass, List<string> keys, StringVoid 
         CSharpGenerator inner = new CSharpGenerator();
         foreach (var item in keys)
         {
-            inner.AppendLine(2, "dict.Add(\"{0}\", \"{1}\");", item, randomValue.Invoke());
+            inner.AppendLine(2, "dict.Add(\\\\\"{0}\\\\\", \\\\\"{1}\\\\\");", item, randomValue.Invoke());
         }
 
         genCS.Ctor(1, ModifiersConstructor.Private, nameClass, inner.ToString());

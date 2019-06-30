@@ -18,7 +18,9 @@ public static string MakeUpTo2NumbersToZero(int p)
     }
 
 
-/// <summary>
+
+
+    /// <summary>
     /// Vytvoří interval od A1 do A2 včetně
     /// </summary>
     /// <param name="od"></param>

@@ -15,7 +15,7 @@ namespace forms
 
 
     /// <summary>
-    /// Pak p��mo z k�du kde m�m ty prvky to vol�m t�eba takto:
+    /// Pak ppimo z kodu kde mam ty prvky to volam treba takto:
     /// this.BeginInvoke(delegateStatusUpdate, lblResult, "Preview Loaded");
     /// 
     /// </summary>
@@ -117,7 +117,7 @@ namespace forms
         {
             if (value > 100)
             {
-                throw new Exception("Hodnota pro ProgressBar nem��e b�t vy��� ne� 100" + ".");
+                throw new Exception("Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
                 //value = 100;
             }
             p.Value = value;

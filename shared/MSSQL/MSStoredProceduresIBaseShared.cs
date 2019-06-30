@@ -1232,13 +1232,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DateTime SelectMaxDateTime(string table, string column, AB[] whereIs, AB[] whereIsNot, DateTime getIfNotFound)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " " + "FROM" + " " + table + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
         return ExecuteScalarDateTime(getIfNotFound, comm);
     }
     public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(ab));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + " " + " " + "FROM" + " " + table + GeneratorMsSql.CombinedWhere(ab));
         AddCommandParameteres(comm, 0, ab);
         return ExecuteScalarDateTime(DateTime.MinValue, comm);
     }
@@ -1257,11 +1257,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return int.MinValue;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " " + "FROM" + " " + table));
     }
     public int SelectMaxIntMinValue(string table, string sloupec, params AB[] aB)
     {
-        SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
+        SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + " " + " " + "FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
         AddCommandParameteres(comm, 0, aB);
         return ExecuteScalarInt(true, comm);
     }
@@ -1413,7 +1413,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
         else
         {
-            throw new Exception(" " + " klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
+            throw new Exception(" " + " " + "klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
         }
     }
     /// <summary>
@@ -1440,7 +1440,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public object SelectLastIDFromTableSigned(bool signed, string p, Type idt, string sloupecID, out bool totalLower)
     {
         totalLower = false;
-        string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p)).ToString();
+        string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + " " + " " + "FROM" + " " + p)).ToString();
         if (dd == "")
         {
             totalLower = true;
@@ -1471,7 +1471,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             }
             else
             {
-                throw new Exception(" " + " klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
+                throw new Exception(" " + " " + "klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ" + " " + idt.FullName.ToString());
             }
         }
 
@@ -2059,12 +2059,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int RandomValueFromColumnInt(string table, string column)
     {
-        return ExecuteScalarInt(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top 1" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
+        return ExecuteScalarInt(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     public short RandomValueFromColumnShort(string table, string column)
     {
-        return ExecuteScalarShort(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top 1" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
+        return ExecuteScalarShort(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     /// <summary>
@@ -2199,7 +2199,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }
@@ -2703,7 +2703,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long SelectLastIDFromTable(string p, string sloupecID)
     {
-        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + sloupecID + " " + " FROM" + " " + p));
+        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + sloupecID + " " + " " + "FROM" + " " + p));
     }
 
     public int SelectFirstAvailableIntIndex(bool signed, string table, string column)
@@ -2779,7 +2779,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return short.MinValue;
         }
 
-        return ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
+        return ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + " " + " " + "FROM" + " " + table));
     }
 
     /// <summary>
@@ -2795,12 +2795,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return 0;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " FROM" + " " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + " " + " " + "FROM" + " " + table));
     }
 
     public short SelectMinShortMinValue(string table, string sloupec, params AB[] aB)
     {
-        SqlCommand comm = new SqlCommand("SELECT MIN(" + sloupec + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
+        SqlCommand comm = new SqlCommand("SELECT MIN(" + sloupec + " " + " " + "FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB));
         AddCommandParameteres(comm, 0, aB);
         return ExecuteScalarShort(true, comm);
     }
@@ -2813,7 +2813,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
 
         ABC abc = new ABC(aB);
-        return Convert.ToByte(ExecuteScalar("SELECT MAX(" + column + " " + " FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs()));
+        return Convert.ToByte(ExecuteScalar("SELECT MAX(" + column + " " + " " + "FROM" + " " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs()));
     }
 
     public int SelectMinInt(string table, string column)
@@ -2823,7 +2823,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             return 0;
         }
 
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MIN(" + column + " " + " FROM" + " " + table));
+        return ExecuteScalarInt(true, new SqlCommand("SELECT MIN(" + column + " " + " " + "FROM" + " " + table));
     }
 
     public Guid SelectNewId()
@@ -3109,7 +3109,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " * FROM" + " " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }

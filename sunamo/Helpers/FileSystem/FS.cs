@@ -46,7 +46,7 @@ public partial class FS
         if (!deleted)
         {
             // confuse me, dir can exists
-            FS.CreateDirectory(withEndFlash + "1\\");
+            FS.CreateDirectory(withEndFlash + "1\\\\\\");
         }
         else
         {

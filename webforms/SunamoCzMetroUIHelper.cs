@@ -40,7 +40,7 @@ public class SunamoCzMetroUIHelper
         string host = sp.Request.Url.Host.Replace("www" + ".", "");
         WriteTagWithAttrs(sb, "a", text, "href", UA.GetWebUri2(sp, text, host == Consts.localhost, host));
 
-        sb.Append("/" + "/li>");
+        sb.Append("/" + "/" + "li>");
         return sb.ToString();
     }
 
@@ -49,7 +49,7 @@ public class SunamoCzMetroUIHelper
         sb.AppendFormat("<{0} ", nazevTagu);
         for (int i = 0; i < atrrs.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", atrrs[i], atrrs[++i]);
+            sb.AppendFormat("{0}=\\\\\"{1}\\\\\" ", atrrs[i], atrrs[++i]);
         }
         sb.Append(">");
 
@@ -93,7 +93,7 @@ public class SunamoCzMetroUIHelper
         }
 
         #region Writing list of websites
-        hg.WriteTagWithAttrs("ul", "class", "-" + "-menu", "data-role", "dropdown", "style", "display: none;");
+        hg.WriteTagWithAttrs("ul", "class", "-" + "-" + "menu", "data-role", "dropdown", "style", "display: none;");
         foreach (MySites item in Enum.GetValues(typeof(MySites)))
         {
             //1
@@ -230,7 +230,7 @@ public class SunamoCzMetroUIHelper
 
         if (logined)
         {
-            buttonUserOnClick = "javascript:location.replace('http:" + "//" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
+            buttonUserOnClick = "javascript:location.replace('http" + ":" + "//" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
         }
         else
         {

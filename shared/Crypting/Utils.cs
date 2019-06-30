@@ -12,7 +12,7 @@ public partial class UtilsNonNetStandard
 
     /// <summary>
     /// retrieve an element from an XML string
-    /// V XML A1 najde p�rov� prvek A2 a vr�t� jeho obsah. Pokud nenajde, VV.
+    /// V XML A1 najde parove prvek A2 a vrata jeho obsah. Pokud nenajde, VV.
     /// </summary>
     public static string GetXmlElement(string xml, string element)
     {
@@ -20,7 +20,7 @@ public partial class UtilsNonNetStandard
         m = Regex.Match(xml, AllStrings.lt + element + ">(?<Element>[^>]*)<" + "/" + element + AllStrings.gt, RegexOptions.IgnoreCase);
         if (m == null)
         {
-            throw new Exception("Could not find " + "" + element + "></" + element + " " + " in provided Public Key XML" + ".");
+            throw new Exception("Could not find" + " " + "" + element + "></" + element + " " + " " + "in provided Public Key XML" + ".");
         }
 
         return m.Groups["Element"].ToString();
@@ -28,7 +28,7 @@ public partial class UtilsNonNetStandard
 
     /// <summary>
     /// Returns the specified string value from the application .config file
-    /// G �et�zec z ConfigurationManager.AppSettings kl��e A1. Pokud se nepoda�� z�skat a A2, VV
+    /// G retezec z ConfigurationManager.AppSettings klice A1. Pokud se nepodari ziskat a A2, VV
     /// </summary>
     public static string GetConfigString(string key, bool isRequired)
     {
@@ -37,7 +37,7 @@ public partial class UtilsNonNetStandard
         {
             if (isRequired)
             {
-                throw new ConfigurationErrorsException("key " + "" + key + " " + " is missing from .config file");
+                throw new ConfigurationErrorsException("key " + "" + key + " " + " " + "is missing from .config file");
             }
             else
             {
@@ -51,14 +51,14 @@ public partial class UtilsNonNetStandard
     }
 
     /// <summary>
-    /// Vr�t� mi �et�zec <add key =  \ " A1 \ " value  =  \ " A2 \ "/>
+    /// Vrati mi retezec <add key =  \ " A1 \ " value  =  \ " A2 \ "/>
     /// </summary>
     /// <param name = "key"></param>
     /// <param name = "value"></param>
     /// <returns></returns>
     public static string WriteConfigKey(string key, string value)
     {
-        string s = "<add key=\"{0}\" value=\"{1}\" />" + Environment.NewLine;
+        string s = "<add key=\\\\\"{0}\\\\\" value=\\\\\"{1}\\\\\" />" + Environment.NewLine;
         return SH.Format2(s, key, value);
     }
 
@@ -75,7 +75,7 @@ public partial class UtilsNonNetStandard
     }
 
     /// <summary>
-    /// Pokud A2, vr�t� mi ukon. tag A1, jinak po�. tag A1.
+    /// Pokud A2, vrati mi ukon. tag A1, jinak poc. tag A1.
     /// </summary>
     /// <param name = "element"></param>
     /// <param name = "isClosing"></param>

@@ -23,7 +23,7 @@ public static class JunctionPoint
     /// <returns></returns>
     public static List<string> MklinkH(string source, string target)
     {
-        string command = "cmd /c mklink /H" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        string command = "cmd /c mklink /" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;
     }
@@ -77,7 +77,7 @@ public static class JunctionPoint
         /// This prefix indicates to NTFS that the path is to be treated as a non-interpreted
         /// path in the virtual file system.
         /// </summary>
-        private const string NonInterpretedPathPrefix = @"\??\";
+        private const string NonInterpretedPathPrefix = @"\??\\\\\";
 
         [Flags]
         private enum EFileAccess : uint

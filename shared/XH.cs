@@ -25,8 +25,8 @@ public class XH
     /// <returns></returns>
     public static string ReplaceSpecialHtmlEntity(string vstup)
     {
-        vstup = vstup.Replace("&rsquo;", "'");//�
-        vstup = vstup.Replace("&lsquo;", "'"); //�
+        vstup = vstup.Replace("&rsquo;", "'");//
+        vstup = vstup.Replace("&lsquo;", "'"); //¢
         return vstup;
     }
 
@@ -43,8 +43,8 @@ public class XH
     }
 
     /// <summary>
-    /// Do A2 se vkl�d� ji� hotov� xml, nikoliv soubor.
-    /// G posledn� dite, to znamen� �e p�i parsov�n� cel�ho dokumentu vrac� root.
+    /// Do A2 se vklzda jiz hotove xml, nikoliv soubor.
+    /// G posledni dite, to znamena ze pri parsovani celeho dokumentu vraci root.
     /// </summary>
     /// <param name="soubor"></param>
     /// <returns></returns>
@@ -56,7 +56,7 @@ public class XH
     }
 
     /// <summary>
-    /// Vrac� FirstChild, p�i parsaci cel�ho dokumentu tak vrac� xml deklaraci.
+    /// Vraci FirstChild, pri parsaci celeho dokumentu tak vraci xml deklaraci.
     /// A2 should be entered otherwise can occur error "different XmlDocument context"
     /// </summary>
     /// <param name="soubor"></param>

@@ -35,22 +35,35 @@ namespace desktop.Controls.Collections
         }
 
         public void Init(List<string> list)
-        { 
+        {
+            dynamic colButtons = new object();
+            //colButtons.Added += ColButtons_Added;
+
             chbAdded = new ObservableCollection<CheckBox>();
             //TheList = new ObservableCollection<ABT<string, bool>>();
 
             foreach (var item in list)
             {
-                var chb = CheckBoxHelper.Get(item);
-                chb.Tag = ControlNameGenerator.GetSeries(chb.GetType());
-                //chb.Checked += Chb_Click;
-                //chb.Unchecked += Chb_Click;
-                chbAdded.Add(chb);
+                AddCheckbox(item);
 
                 //TheList.Add(new ABT<string, bool>(item, false));
             }
 
             this.DataContext = this;
+        }
+
+        private void AddCheckbox(string item)
+        {
+            var chb = CheckBoxHelper.Get(item);
+            chb.Tag = ControlNameGenerator.GetSeries(chb.GetType());
+            //chb.Checked += Chb_Click;
+            //chb.Unchecked += Chb_Click;
+            chbAdded.Add(chb);
+        }
+
+        private void ColButtons_Added(string s)
+        {
+            AddCheckbox(s);
         }
 
         private void Chb_Click(object sender, RoutedEventArgs e)

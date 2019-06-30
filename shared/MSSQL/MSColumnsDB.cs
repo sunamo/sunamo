@@ -12,19 +12,7 @@ public class MSColumnsDB : List<MSSloupecDB>
     bool signed = false;
     string derived = null;
     string replaceMSinMSStoredProceduresI = null;
-    static string _tableNameField = "_" + "tableName";
-
-    #region ctors
-    public MSColumnsDB(bool signed, params MSSloupecDB[] p)
-    {
-        this.signed = signed;
-        this.AddRange(p);
-    }
-
-    public MSColumnsDB(params MSSloupecDB[] p)
-    {
-        this.AddRange(p);
-    }
+    static string _tableNameField = "_tableName";
 
     /// <summary>
     /// A1 od jakých rozhraní a tříd by měla být odvozena třída TableRow
@@ -45,7 +33,6 @@ public class MSColumnsDB : List<MSSloupecDB>
         this.replaceMSinMSStoredProceduresI = replaceMSinMSStoredProceduresI;
         this.AddRange(p);
     }
-    #endregion
 
     /// <summary>
     /// 
@@ -75,7 +62,7 @@ public class MSColumnsDB : List<MSSloupecDB>
 
     private static bool IsDynamic(string p, string tablePrefix)
     {
-        //List<int> nt = SH.ReturnOccurencesOfString(p, AllStrings.us);
+        //List<int> nt = SH.ReturnOccurencesOfString(p, "_");
         string d = null;
         if (p.StartsWith(tablePrefix) && tablePrefix != "")
         {
@@ -86,12 +73,21 @@ public class MSColumnsDB : List<MSSloupecDB>
             d = p;
         }
 
-        return d.Contains(AllStrings.us);
+        return d.Contains("_");
     }
 
 
 
-    
+    public MSColumnsDB(bool signed, params MSSloupecDB[] p)
+    {
+        this.signed = signed;
+        this.AddRange(p);
+    }
+
+    public MSColumnsDB(params MSSloupecDB[] p)
+    {
+        this.AddRange(p);
+    }
 
     public string GetTROfColumns()
     {
@@ -100,16 +96,35 @@ public class MSColumnsDB : List<MSSloupecDB>
         {
             throw new Exception("Nebyly nalezeny žádné sloupce");
         }
-        sb.Append(AllStrings.lb);
+        sb.Append("(");
         foreach (MSSloupecDB item in this)
         {
-            sb.Append(item.Name + AllStrings.comma);
+            sb.Append(item.Name + ",");
 
         }
-        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
+        return sb.ToString().TrimEnd(',') + ")";
     }
 
-  
+    /// <summary>
+    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
+    /// </summary>
+    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
+    {
+        string sql = GeneratorMsSql.CreateTable(table, this, dynamicTables, conn);
+        SqlCommand comm = new SqlCommand(sql, conn);
+        return comm;
+    }
+
+    /// <summary>
+    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="dynamicTables"></param>
+    /// <returns></returns>
+    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables)
+    {
+        return GetSqlCreateTable(table, dynamicTables, MSDatabaseLayer.conn);
+    }
 
     /// <summary>
     /// Vyplň A2 na SE pokud chceš všechny sloupce
@@ -122,7 +137,7 @@ public class MSColumnsDB : List<MSSloupecDB>
         CSharpGenerator csg = new CSharpGenerator();
 
         csg.AppendLine(2, "DataTable dt = MSStoredProceduresI.ci.SelectDataTableSelective(\"" + tableNameWithPrefix + "\");");
-        csg.AppendLine(2, "int radku = dt.Rows.Count" + ";");
+        csg.AppendLine(2, "int radku = dt.Rows.Count;");
         List<string> s = new List<string>();
         List<string> ss = new List<string>();
         foreach (MSSloupecDB item in this)
@@ -135,18 +150,18 @@ public class MSColumnsDB : List<MSSloupecDB>
 
         csg.AppendLine(2, "");
         csg.AppendLine(2, "");
-        csg.AppendLine(2, "int i = 0" + ";");
+        csg.AppendLine(2, "int i = 0;");
         csg.AppendLine(2, "foreach (DataRow item in dt.Rows)");
         csg.StartBrace(2);
-        csg.AppendLine(3, "object[] o = item.ItemArray" + ";");
+        csg.AppendLine(3, "object[] o = item.ItemArray;");
         for (int i = 0; i < this.Count; i++)
         {
-            csg.AppendLine(3, ss[i] + "[" + "i] = o" + "[" + i.ToString() + "].ToString();");
+            csg.AppendLine(3, ss[i] + "[i] = o[" + i.ToString() + "].ToString();");
         }
         csg.AppendLine(3, "i++;");
         csg.EndBrace(2);
 
-        csg.AppendLine(2, "SunamoGridView sgv = new SunamoGridView({0});", SH.Join(AllChars.comma, ss.ToArray()));
+        csg.AppendLine(2, "SunamoGridView sgv = new SunamoGridView({0});", SH.Join(',', ss.ToArray()));
 
         csg.AppendLine(2, "");
         csg.AppendLine(2, "");
@@ -228,7 +243,7 @@ public class MSColumnsDB : List<MSSloupecDB>
             TF.SaveFile(csBase, PathSczBaseAdmin);
         }
         TF.SaveFile(csBase, PathBase);
-        return "Uloženo do souboru" + " " + Path;
+        return "Uloženo do souboru " + Path;
     }
 
     /// <summary>
@@ -373,7 +388,6 @@ ParseRow(o);");
         return csg.ToString();
     }
 
-
     /// <summary>
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
     /// </summary>
@@ -396,7 +410,7 @@ ParseRow(o);");
     public string GetCsTableRowBase(string nazevTabulky, string dbPrefix, out string tableName)
     {
         string dbPrefix2 = dbPrefix;
-        if (dbPrefix2 == "Nope" + "_")
+        if (dbPrefix2 == "Nope_")
         {
             dbPrefix2 = "";
         }
@@ -409,7 +423,7 @@ ParseRow(o);");
             nazevTabulky = nazevTabulky.Substring(dbPrefix.Length);
         }
         bool isDynamicTable = false;
-        if (nazevTabulky.Contains(AllStrings.us))
+        if (nazevTabulky.Contains("_"))
         {
             isDynamicTable = true;
             nazevTabulky = ConvertPascalConvention.ToConvention(nazevTabulky);
@@ -446,7 +460,7 @@ ParseRow(o);");
         }
         else
         {
-            csg.Property(1, AccessModifiers.Protected, false, "string", "TableName", true, false, "Tables" + "." + dbPrefix2 + nazevTabulky);
+            csg.Property(1, AccessModifiers.Protected, false, "string", "TableName", true, false, "Tables." + dbPrefix2 + nazevTabulky);
         }
 
         CSharpGenerator innerParseRow = new CSharpGenerator();
@@ -454,15 +468,15 @@ ParseRow(o);");
         //innerParseRow.AppendLine(2, "base.o = o;");
         innerParseRow.AppendLine(2, "if (o != null)");
 
-        innerParseRow.AppendLine(2, AllStrings.cbl);
+        innerParseRow.AppendLine(2, "{");
         for (int i = 0; i < this.Count; i++)
         {
             MSSloupecDB item = this[i];
-            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " " + "= MSTableRowParse" + "." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
+            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
 
         }
         // Na závěr každé metody nesmí být AppendLine
-        innerParseRow.Append(2, AllStrings.cbr);
+        innerParseRow.Append(2, "}");
         // Musí být internal, protože když získám DataTable, jak ji mám pak co nejrychleji napasovat na nějaký objekt?
         csg.Method(2, "protected void ParseRow(object[] o)", innerParseRow.ToString());
 
@@ -496,7 +510,7 @@ using System.Collections.Generic;
     }
 
     /// <summary>
-    /// Do A1 se dává prostě klíč ze slovníku, do A2 mss.ToString() + AllStrings.us
+    /// Do A1 se dává prostě klíč ze slovníku, do A2 mss.ToString() + "_"
     /// </summary>
     /// <param name="nazevTabulky"></param>
     /// <param name="dbPrefix"></param>
@@ -505,20 +519,20 @@ using System.Collections.Generic;
     {
         isDynamicTable = false;
         dbPrefix2 = dbPrefix;
-        if (dbPrefix2 == "Nope" + "_")
+        if (dbPrefix2 == "Nope_")
         {
             dbPrefix2 = "";
         }
         // OBSAHUJE I PREFIX, TAKŽE TŘEBA Koc_
         string nazevTabulkyCopy = SH.Copy(nazevTabulky);
-        string niMethod = CSharpGenerator.AddTab(2, "throw new NotImplementedException()" + ";");
+        string niMethod = CSharpGenerator.AddTab(2, "throw new NotImplementedException();");
         
         // ZBAVÍM TABULKU nazevTabulky PREFIXU, ČILI NEOBSAHUJE NAPŘ. Koc_
         if (nazevTabulky.StartsWith(dbPrefix))
         {
             nazevTabulky = nazevTabulky.Substring(dbPrefix.Length);
         }
-        if (nazevTabulky.Contains(AllStrings.us))
+        if (nazevTabulky.Contains("_"))
         {
             isDynamicTable = true;
             nazevTabulky = ConvertPascalConvention.ToConvention(nazevTabulky);
@@ -556,13 +570,13 @@ using System.Collections.Generic;
         tableName = GetNameTableRow(nazevTabulky, dbPrefix, out isDynamicTable, out nazevTabulkyJC, out dbPrefix2);
 
         csg.Using(usings);
-        //, "ITableRow<" + MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(this[0].Type) + AllStrings.gt
+        //, "ITableRow<" + MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(this[0].Type) + ">"
         string implements = tableName + "Base";
-        string am = "public" + " ";
+        string am = "public ";
         if (derived != null)
         {
-            am = "public" + " ";
-            implements += AllStrings.comma + derived;
+            am = "public ";
+            implements += "," + derived;
         }
         csg.StartClass(0, AccessModifiers.Public, false, tableName, implements);
 
@@ -594,7 +608,7 @@ using System.Collections.Generic;
                 else
                 {
                     // Je to například IDMisters
-                    throw new Exception(" " + " prvním sloupci není řádek ID nebo ID" + "*");
+                    throw new Exception("V prvním sloupci není řádek ID nebo ID*");
                 }
             }
             else
@@ -605,9 +619,9 @@ using System.Collections.Generic;
             }
             temp.Add(name);
         }
-        seznamNameValue = SH.Join(AllChars.comma, temp.ToArray());
-        string seznamNameValueBezPrvniho = SH.Join(AllChars.comma, nameFields.ToArray());
-        string nazvySloupcuBezPrvnihoVZavorkach = AllStrings.lb + SH.Join(AllChars.comma, temp2.ToArray()) + AllStrings.rb;
+        seznamNameValue = SH.Join(',', temp.ToArray());
+        string seznamNameValueBezPrvniho = SH.Join(',', nameFields.ToArray());
+        string nazvySloupcuBezPrvnihoVZavorkach = "(" + SH.Join(',', temp2.ToArray()) + ")";
 
         /*
          * TableName je již s TableRow, který slouží k vytváření K
@@ -652,7 +666,7 @@ ParseRow(o);");
         }
         if (nameFields.Count == 0)
         {
-            throw new Exception("Tabulka nemůže mít jen 1 sloupec" + ".");
+            throw new Exception("Tabulka nemůže mít jen 1 sloupec.");
         }
         else
         {
@@ -661,17 +675,17 @@ ParseRow(o);");
             if (typSloupecID != typeof(long))
             {
 
-                pretypovaniInsert = AllStrings.lb + sloupecIDTyp + AllStrings.rb;
+                pretypovaniInsert = "(" + sloupecIDTyp + ")";
             }
 
              CreateMethodInsert1(csg, am, sloupecID, typSloupecID, seznamNameValueBezPrvniho, signed2);
 
             string innerInsertToTable2 = CSharpGenerator.AddTab(2, sloupecID + "=(" + sloupecIDTyp + ")MSStoredProceduresI.ci.Insert2" + pridatDoNazvuMetody + "(TableName,\"" + sloupecID + "\",typeof(" + sloupecIDTyp + ")," + seznamNameValueBezPrvniho + ");");
-            innerInsertToTable2 += CSharpGenerator.AddTab(2, "return" + " " + sloupecID + AllStrings.sc);
-            csg.Method(1, am + sloupecIDTyp + " " + "InsertToTable2()", innerInsertToTable2);
+            innerInsertToTable2 += CSharpGenerator.AddTab(2, "return " + sloupecID + ";");
+            csg.Method(1, am + sloupecIDTyp + " InsertToTable2()", innerInsertToTable2);
 
-            string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSStoredProceduresI.ci.Insert" + pridatDoNazvuMetody + "4(TableName" + ", " + seznamNameValue + ");");
-            csg.Method(1, am + "void InsertToTable3(" + sloupecIDTyp + AllStrings.space + sloupecID + AllStrings.rb, innerInsertToTable3);
+            string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSStoredProceduresI.ci.Insert" + pridatDoNazvuMetody + "4(TableName, " + seznamNameValue + ");");
+            csg.Method(1, am + "void InsertToTable3(" + sloupecIDTyp + " " + sloupecID + ")", innerInsertToTable3);
 
 
         }
@@ -724,17 +738,17 @@ ParseRow(o);");
         if (this.Count > 1)
         {
             MSSloupecDB sloupec = this[1];
-            //&& !nazevTabulky.Contains(AllStrings.us)
+            //&& !nazevTabulky.Contains("_")
             if (sloupec.Name == "Name"  && !isDynamicTable)
             {
                 if (this[0].Name == "ID")
                 {
-                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables" + "." +  nazevTabulky + ", " + "id)" + ";"));
+                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables." +  nazevTabulky + ", id);"));
                 }
                 else
                 {
                     //csg.Method("public static string Get" + nazevTabulkyJC + "Name(int id)", "return MSStoredProceduresI.ci.SelectValueOfIDOrSE(\"" + nazevTabulkyCopy + "\", id, \"" + this[0].Name + "\");");
-                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables" + "." +  nazevTabulky + ", id,\"" + this[0].Name + "\");"));
+                    csg.Method(1, "public static string Get" + nazevTabulkyJC + "Name(" + sloupecIDTyp + " id)", CSharpGenerator.AddTab(2, "return MSStoredProceduresI.ci.SelectNameOfID(Tables." +  nazevTabulky + ", id,\"" + this[0].Name + "\");"));
                 }
             }
         }
@@ -788,7 +802,7 @@ ParseRow(o);");
         {
             csg2.Ctor(1, ModifiersConstructor.Public, tableName, "");
         }
-        csg2.Ctor(1, ModifiersConstructor.Public, tableName, ctor1Inner.ToString(), "object" + "[]", "o");
+        csg2.Ctor(1, ModifiersConstructor.Public, tableName, ctor1Inner.ToString(), "object[]", "o");
 
         List<string> paramsForCtorWithoutID = new List<string>();
         if (paramsForCtor.Count != 0)
@@ -926,7 +940,7 @@ ParseRow(o);");
                 case SqlDbType.UniqueIdentifier:
                 case SqlDbType.VarChar:
                     // Nechat tak, už by měl být string, akorát u UniqueIdentifier si toho nejsem úplně jistý ale to by šlo vylepšit.
-                    nameOfVariable += AllStrings.dot + item.Name;
+                    nameOfVariable += "." + item.Name;
                     break;
                 case SqlDbType.SmallInt:
                 case SqlDbType.SmallMoney:
@@ -936,38 +950,38 @@ ParseRow(o);");
                 case SqlDbType.TinyInt:
                 case SqlDbType.BigInt:
                     numero = true;
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name;// + ".ToString()";
+                    nameOfVariable = nameOfVariable + "." + item.Name;// + ".ToString()";
                     break;
                 case SqlDbType.Char:
                     // Nechat tak, když se bude jednat o ID(ve většině případů) tak se to bude muset ještě projet nějakou metodou, protože Kompilátor to podtrhne a vyhodí chybu
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name;// + ".ToString()";
+                    nameOfVariable = nameOfVariable + "." + item.Name;// + ".ToString()";
                     break;
 
                 case SqlDbType.Bit:
-                    nameOfVariable += AllStrings.dot + item.Name;
+                    nameOfVariable += "." + item.Name;
                     // Nechat tak, kompilátor vyhodí chybu, uživatel musí nastavit vlastní metodu
                     break;
                 case SqlDbType.Date:
-                    nultyParametr = nameOfVariable + AllStrings.dot + item.Name + AllStrings.comma;
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name + ".ToShortDateString()";
+                    nultyParametr = nameOfVariable + "." + item.Name + ",";
+                    nameOfVariable = nameOfVariable + "." + item.Name + ".ToShortDateString()";
                     break;
                 case SqlDbType.DateTime:
                 case SqlDbType.DateTime2:
                 case SqlDbType.SmallDateTime:
-                    nultyParametr = nameOfVariable + AllStrings.dot + item.Name + AllStrings.comma;
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name + ".ToString()";
+                    nultyParametr = nameOfVariable + "." + item.Name + ",";
+                    nameOfVariable = nameOfVariable + "." + item.Name + ".ToString()";
                     break;
                 case SqlDbType.Time:
-                    nultyParametr = nameOfVariable + AllStrings.dot + item.Name + AllStrings.comma;
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name + ".ToShortTimeString()";
+                    nultyParametr = nameOfVariable + "." + item.Name + ",";
+                    nameOfVariable = nameOfVariable + "." + item.Name + ".ToShortTimeString()";
                     break;
                 case SqlDbType.DateTimeOffset:
                 case SqlDbType.Timestamp:
-                    throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován" + ".");
+                    throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován.");
 
                 case SqlDbType.Real:
                 case SqlDbType.Float:
-                    nameOfVariable = nameOfVariable + AllStrings.dot + item.Name + ".ToString()";
+                    nameOfVariable = nameOfVariable + "." + item.Name + ".ToString()";
                     break;
 
                 case SqlDbType.Image:
@@ -978,14 +992,14 @@ ParseRow(o);");
 
 
                 case SqlDbType.Structured:
-                    throw new NotSupportedException("Strukturované datové typy nejsou podporovány" + ".");
+                    throw new NotSupportedException("Strukturované datové typy nejsou podporovány.");
                     
 
                 case SqlDbType.Udt:
-                    throw new NotSupportedException("Univerzální datové typy nejsou podporovány" + ".");
+                    throw new NotSupportedException("Univerzální datové typy nejsou podporovány.");
                     
                 case SqlDbType.Variant:
-                    throw new NotSupportedException("Variantní datové typy nejsou podporovány" + ".");
+                    throw new NotSupportedException("Variantní datové typy nejsou podporovány.");
                     
                 case SqlDbType.Xml:
                     throw new NotSupportedException("Xml datový typ není podporován");
@@ -999,18 +1013,18 @@ ParseRow(o);");
                 {
                     csgDisplayInfo.If(3, nameOfVariable + " != -1");
                 }
-                csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "SetP(" + nameOfVariable + ", " + "lbl" + item.Name + ", p" + item.Name + ");"));
+                csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "SetP(" + nameOfVariable + ", lbl" + item.Name + ", p" + item.Name + ");"));
                 if (numero)
                 {
                     csgDisplayInfo.EndBrace(3);
                     csgDisplayInfo.Else(3);
-                    csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "p" + item.Name + "." + "Visible = false" + ";"));
+                    csgDisplayInfo.AppendLine(0, CSharpGenerator.AddTab(4, "p" + item.Name + ".Visible = false;"));
                     csgDisplayInfo.EndBrace(3);
                 }
             }
             else
             {
-                csgDisplayInfo.AppendLine(3, "SetPDateTime(" + nultyParametr + nameOfVariable + ", " + "lbl" + item.Name + ", p" + item.Name + ");");
+                csgDisplayInfo.AppendLine(3, "SetPDateTime(" + nultyParametr + nameOfVariable + ", lbl" + item.Name + ", p" + item.Name + ");");
             }
         }
 
@@ -1018,7 +1032,7 @@ ParseRow(o);");
 
         csg.Method(2, "private void SetP(string p, HtmlGenericControl lblName, HtmlGenericControl pName)",
 CSharpGenerator.AddTab(3, @"string t = p.Trim();
-        if (t !=" + " " + AllStrings.qm + @")
+        if (t != " + "\"\"" + @")
         {
             lblName.InnerHtml = t;
             pName.Visible = true;
@@ -1035,7 +1049,7 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
             return;
         }
         string t = p.Trim();
-        if (t != " + AllStrings.qm + @")
+        if (t != " + "\"\"" + @")
         {
             lblName.InnerHtml = t;
             pName.Visible = true;
@@ -1047,7 +1061,7 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
 
         csg.Method(2, "private void SetVisible(bool b)", CSharpGenerator.AddTab(3, @"divButtons.Visible = b;
         h1.Visible = b;
-        entityInfo.Visible = b" + ";"));
+        entityInfo.Visible = b;"));
 
         return csg.ToString();
     }
@@ -1092,32 +1106,11 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
         return GetSqlCreateTable(nazevTabulky, false);
     }
 
-    /// <summary>
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
-    {
-        string sql = GeneratorMsSql.CreateTable(table, this, dynamicTables, conn);
-        SqlCommand comm = new SqlCommand(sql, conn);
-        return comm;
-    }
-
-    /// <summary>
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    /// <param name="table"></param>
-    /// <param name="dynamicTables"></param>
-    /// <returns></returns>
-    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables)
-    {
-        return GetSqlCreateTable(table, dynamicTables, MSDatabaseLayer.conn);
-    }
-
     public static MSColumnsDB IDName(int p)
     {
         return new MSColumnsDB(
             MSSloupecDB.CI(SqlDbType2.Int, "ID", true),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + AllStrings.rb, false, true)
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + ")", false, true)
             );
     }
 
@@ -1125,7 +1118,7 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
     {
         return new MSColumnsDB(
             MSSloupecDB.CI(SqlDbType2.TinyInt, "ID", true),
-            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + AllStrings.rb, false, true)
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + ")", false, true)
             );
     }
 

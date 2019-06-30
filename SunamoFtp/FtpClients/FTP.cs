@@ -673,12 +673,12 @@ namespace SunamoFtp
             if (mode)
             {
                 OnNewStatus("Nastavuji binární mód přenosu");
-                sendCommand("TYPE " + "");
+                sendCommand("TYPE" + " " + "");
             }
             else
             {
                 OnNewStatus("Nastavuji ASCII mód přenosu");
-                sendCommand("TYPE " + "");
+                sendCommand("TYPE" + " " + "");
             }
             if (retValue != 200)
             {
@@ -1084,7 +1084,7 @@ namespace SunamoFtp
         /// <param name="newFileName"></param>
         public override void renameRemoteFile(string oldFileName, string newFileName)
         {
-            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor z" + " " + oldFileName + " na " + newFileName);
+            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor " + "" + " " + oldFileName + " na " + newFileName);
             if (!logined)
             {
                 login();
@@ -1279,7 +1279,7 @@ namespace SunamoFtp
             }
 
             cleanup();
-            OnNewStatus("Closing." + "..");
+            OnNewStatus("Closing" + "." + "..");
         }
 
         /// <summary>

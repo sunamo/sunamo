@@ -684,7 +684,7 @@ public static class PageHelperBase
         switch (dd)
         {
             case ResultCheckWebArgument.WrongRange:
-                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale nebyl v něm nalezen oddělovač(pipe, čárka, etc." + "";
+                vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale nebyl v něm nalezen oddělovač(pipe, čárka, etc" + "." + "";
                 break;
             case ResultCheckWebArgument.Empty:
                 vr = "error: Argument" + " " + argname + " " + "byl nalezen v adrese URI ale prázdný";

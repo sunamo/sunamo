@@ -8,7 +8,7 @@ using sunamo;
 namespace forms
 {
     /// <summary>
-    /// POmocn� t��da pro pr�ci s v�ce checkboxy(ale ne CheckedListBox)
+    /// POmocna trida pro praci s vice checkboxy(ale ne CheckedListBox)
     /// </summary>
     public class CHBH
     {

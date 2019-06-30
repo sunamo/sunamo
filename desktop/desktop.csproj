@@ -74,6 +74,9 @@
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
+    <Compile Include="Controls\Buttons\ImageButtons.xaml.cs">
+      <DependentUpon>ImageButtons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\CheckBoxListUC.xaml.cs">
       <DependentUpon>CheckBoxListUC.xaml</DependentUpon>
     </Compile>
@@ -326,8 +329,16 @@
       <Project>{94D983CC-4204-4270-AA27-EB86A6D84CA8}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\win\win.csproj">
+      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
+      <Name>win</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Buttons\ImageButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Collections\CheckBoxListUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

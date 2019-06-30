@@ -38,7 +38,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
         #region Polkud A2, vsechny je rek projdu a 
         if (vsechnyHodnoty)
         {
-            throw new Exception("Nesm� se zad�vat s A2 true");
+            throw new Exception("Nesmi se zadavat s A2 true");
             //vratit.AddRange(VsechnyKlice(klic));
         } 
         #endregion

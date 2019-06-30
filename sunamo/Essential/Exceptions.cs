@@ -86,7 +86,7 @@ using System.Text;
     {
         if (count > 1)
         {
-            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than " + "";
+            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than" + " " + "";
         }
         return null;
     }

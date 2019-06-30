@@ -32,16 +32,15 @@ namespace desktop.Controls.Collections
 
         private async void LoggerUC_Loaded(object sender, RoutedEventArgs e)
         {
-            await AwesomeFontControls.SetAwesomeFontSymbol(btnClear, "\uf00d");
-            await AwesomeFontControls.SetAwesomeFontSymbol(btnCopyToClipboard, "\uf0c5");
+            
         }
 
-        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        private void BtnClear_Click()
         {
             lbLogs.Children.Clear();
         }
 
-        private void BtnCopyToClipboard_Click(object sender, RoutedEventArgs e)
+        private void BtnCopyToClipboard_Click()
         {
             List<string> result = new List<string>(lbLogs.Children.Count);
             foreach (var item in lbLogs.Children)

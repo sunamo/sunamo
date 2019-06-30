@@ -105,6 +105,17 @@ public partial class UriWebServices
         }
     }
 
+    public static class CashBack
+    {
+        public const string vratnepenize = "https://www.vratnepenize.cz/zbozi/hledej?g=%s";
+        public const string tipli = "https://www.tipli.cz/hledat/%s";
+        public const string plnapenezenka = "https://www.plnapenezenka.cz/hledej/%s";
+
+        public static readonly List<string> All = CA.ToListString(vratnepenize, tipli, plnapenezenka);
+
+
+    }
+
     public static class EnglishMobileParts
     {
         /// <summary>
@@ -332,7 +343,7 @@ Template for which I will find, have to be in derivates the same:
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
-        string d = "cng overview -\"/detail/\"" + car;
+        string d = "cng overview -\\\\\"/detail/\\\\\"" + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
 

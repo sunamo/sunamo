@@ -219,7 +219,7 @@ namespace SunamoFtp
 
             var directories = FS.GetFolders(slozkaNaLocalu);
             string[] files = Directory.GetFiles(slozkaNaLocalu);
-            OnNewStatus("Uploaduji všechny soubory " + "" + files.Length + " " + " do složky ftp serveru" + " " + ps.ActualPath);
+            OnNewStatus("Uploaduji všechny soubory" + " " + "" + files.Length + " " + " " + "do složky ftp serveru" + " " + ps.ActualPath);
 
             if (!UploadFiles(files))
             {
@@ -263,7 +263,7 @@ namespace SunamoFtp
             string nextPath = UH.Combine(true, ps.ActualPath, folderName);
             if (!projiteSlozky.Contains(nextPath))
             {
-                NewStatus("Složka do které se mělo přejít " + "" + nextPath + " " + " ještě nebyla v projeté kolekci");
+                NewStatus("Složka do které se mělo přejít" + " " + "" + nextPath + " " + " " + "ještě nebyla v projeté kolekci");
                 ps.AddToken(folderName);
                 projiteSlozky.Add(nextPath);
 
@@ -329,7 +329,7 @@ namespace SunamoFtp
             }
             else
             {
-                NewStatus("Složka do které se mělo přejít " + "" + nextPath + " " + " již byla v projeté kolekci");
+                NewStatus("Složka do které se mělo přejít" + " " + "" + nextPath + " " + " " + "již byla v projeté kolekci");
             }
 
             //ps.ActualPath = p;
@@ -404,7 +404,7 @@ namespace SunamoFtp
             string[] soubory = Directory.GetFiles(slozkaFrom);
             var slozky = FS.GetFolders(slozkaFrom);
 
-            NewStatus("Uploaduji všechny soubory " + "" + soubory.Length + " " + " do složky ftp serveru" + " " + pathFolder);
+            NewStatus("Uploaduji všechny soubory" + " " + "" + soubory.Length + " " + " " + "do složky ftp serveru" + " " + pathFolder);
 
             CreateDirectoryIfNotExists(nazevSlozky);
             foreach (var item in soubory)

@@ -4,13 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:desktop.Controls.Collections"
+             xmlns:desktopControlButtons="clr-namespace:desktop.Controls.Buttons"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!--<StackPanel x:Name="spCheckBoxes">
             
     </StackPanel>-->
 
-
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+    
     <ListBox ItemsSource="{Binding chbAdded}">
         <ListBox.ItemTemplate>
             <DataTemplate>
@@ -18,4 +24,8 @@
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>
+
+        <!--<desktopControlButtons:CollectionButtonsUC Grid.Row="1" x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:CollectionButtonsUC>-->
+        
+    </Grid>
 </UserControl>

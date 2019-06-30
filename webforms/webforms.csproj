@@ -123,7 +123,7 @@
     <Compile Include="Interfaces\IPageResources.cs" />
     <Compile Include="Interfaces\ISetSchema.cs" />
     <Compile Include="InternetProtocols.cs" />
-    <Compile Include="JavaScriptGenerator2 %282%29.cs" />
+    <Compile Include="JavaScriptGenerator2.cs" />
     <Compile Include="JavaScriptPaths.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
     <Compile Include="Converters\MySitesConverter.cs" />
@@ -224,7 +224,7 @@
     <Compile Include="Helpers\ImagesHelper.cs" />
     <Compile Include="HtmlPagingGenerator.cs" />
     <Compile Include="Interfaces\IHttpHandlerSession.cs" />
-    <Compile Include="JavaScriptGenerator2.cs" />
+    <Compile Include="JavaScriptGenerator2WebForms.cs" />
     <Compile Include="JavaScriptGenerator.cs" />
     <Compile Include="JavaScriptInjection.cs" />
     <Compile Include="JavaScriptInjectionResponse.cs" />

@@ -8,13 +8,33 @@ using System.Linq;
 
     public partial class UH
     {
+        public static Uri CreateUri(string s)
+    {
+        try
+        {
+            return new Uri(s);
+        }
+        catch (Exception)
+        {
+
+            return null;
+        }
+    }
+
         public static string HostUriToPascalConvention(string s)
         {
-        var uri = new Uri(s);
+        // Uri must be checked always before passed into method. Then I would make same checks again and again
+        var uri = CreateUri(s);
          var result = SH.ReplaceAll( uri.Host, AllStrings.space, AllStrings.dot);
         result = ConvertPascalConvention.ToConvention(result);
         return SH.FirstCharUpper( result);
         }
+
+    public static string GetHost(string s)
+    {
+        var u = CreateUri(s);
+        return u.Host;
+    }
 
         private static string GetUriSafeString2(string title)
         {
@@ -193,11 +213,11 @@ using System.Linq;
         public static bool HasHttpProtocol(string p)
         {
             p = p.ToLower();
-            if (p.StartsWith("http:" + "//"))
+            if (p.StartsWith("http" + ":" + "//"))
             {
                 return true;
             }
-            if (p.StartsWith("https:" + "//"))
+            if (p.StartsWith("https" + ":" + "//"))
             {
                 return true;
             }
@@ -206,8 +226,8 @@ using System.Linq;
 
         public static string RemovePrefixHttpOrHttps(string t)
         {
-            t = t.Replace("http:" + "//", "");
-            t = t.Replace("https:" + "//", "");
+            t = t.Replace("http" + ":" + "//", "");
+            t = t.Replace("https" + ":" + "//", "");
             return t;
         }
 
@@ -221,16 +241,16 @@ using System.Linq;
         public static string RemovePrefixHttpOrHttps(string t, out string protocol)
         {
 
-            if (t.Contains("http:" + "//"))
+            if (t.Contains("http" + ":" + "//"))
             {
-                protocol = "http:" + "//";
-                t = t.Replace("http:" + "//", "");
+                protocol = "http" + ":" + "//";
+                t = t.Replace("http" + ":" + "//", "");
                 return t;
             }
-            if (t.Contains("https:" + "//"))
+            if (t.Contains("https" + ":" + "//"))
             {
-                protocol = "https:" + "//";
-                t = t.Replace("https:" + "//", "");
+                protocol = "https" + ":" + "//";
+                t = t.Replace("https" + ":" + "//", "");
                 return t;
             }
             protocol = "";
@@ -262,7 +282,7 @@ using System.Linq;
         {
             hostnameEndsWith = hostnameEndsWith.ToLower();
             pathContaint = pathContaint.ToLower();
-            Uri uri = new Uri(source.ToString().ToLower());
+            Uri uri = CreateUri(source.ToString().ToLower());
             if (uri.Host.EndsWith(hostnameEndsWith))
             {
                 if (UH.GetFilePathAsHttpRequest(uri).Contains(pathContaint))

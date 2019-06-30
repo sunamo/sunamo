@@ -80,9 +80,9 @@ public class UploaderManager
         this.idAlbum = idAlbum;
         //this.mss = mss;
         exts = SH.Split(allowedExtension, ',');
-        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\";
+        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\\\\\";
+        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\\\\\";
+        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\\\\\";
         this.idUser = idUser;
         this.borderColor = borderColor;
         this.workWithDatabase = workWithDatabase;
@@ -404,7 +404,7 @@ public class UploaderManager
         string pridat = "";
         if (!string.IsNullOrEmpty(code))
         {
-            pridat = code + "\\";
+            pridat = code + "\\\\\\";
         }
         final = pathAlbumFinal + pridat + fn;
         finalMin = pathAlbumFinalMin  + pridat + fn;

@@ -11,7 +11,7 @@ public partial class UH
         string p2 = p;
         if (!p.StartsWith("http"))
         {
-            p2 = "http:" + "//" + p;
+            p2 = "http" + ":" + "//" + p;
         }
 
         return p2;
@@ -154,9 +154,9 @@ public static string GetPageNameFromUri(Uri uri)
         }
 public static string GetPageNameFromUri(string atr, string p)
         {
-            if (!atr.StartsWith("http:" + "//") && !atr.StartsWith("https:" + "//"))
+            if (!atr.StartsWith("http" + ":" + "//") && !atr.StartsWith("https" + ":" + "//"))
             {
-                return GetPageNameFromUri(new Uri("http:" + "//" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
+                return GetPageNameFromUri(new Uri("http" + ":" + "//" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
             }
             return GetPageNameFromUri(new Uri(atr));
         }

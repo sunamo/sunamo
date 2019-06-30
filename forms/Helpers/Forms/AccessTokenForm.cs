@@ -103,7 +103,7 @@ namespace F.WF
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Mus�te z�skat AccessToken");
+                System.Windows.Forms.MessageBox.Show("Musite ziskat AccessToken");
             }
         }
 

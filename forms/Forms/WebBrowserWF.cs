@@ -131,7 +131,7 @@ public partial class WebBrowserWF : Form
         {
             reload = false;
             backnext.Add(false);
-            webView.Navigate(new Uri("http:" + "//" + homeAdressWithoutHttp));
+            webView.Navigate(new Uri("http" + ":" + "//" + homeAdressWithoutHttp));
         }
 
         private void btnCustom_Click_1(object sender, EventArgs e)

@@ -8,7 +8,7 @@ public static class SchemaOrgHelper
 
         if (ps.image == "")
         {
-            ps.image = UA.GetWebUri3(ss.Request, "img" + "/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
+            ps.image = UA.GetWebUri3(ss.Request, "img/" + ms.ToString() + "/" + "ImplicitShareImage.jpg");
         }
 
         //pageSnippet.image = UA.GetWebUri3(ss.Request, "img/EmptyPixel.gif");
@@ -16,11 +16,11 @@ public static class SchemaOrgHelper
         {
             image = ",\"image\": \"" + ps.image + "\"";
         }
-        
+
 
 
         //<script type='application/ld+json'></script>
-        string s = "{\"@context\": \"http://schema.org\",\"@type\": \"Thing\",\"name\": \"" + ps.title + "\",\"description\": \"" + ps.description + "\""+image+"}";
+        string s = "{\"@context\": \"http://schema.org\",\"@type\": \"Thing\",\"name\": \"" + ps.title + "\",\"description\": \"" + ps.description + "\"" + image + "}";
         JavaScriptInjection.InjectInternalScript(ss, s, "application/ld+json");
     }
 

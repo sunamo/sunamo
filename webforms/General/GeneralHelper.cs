@@ -23,7 +23,7 @@ public class GeneralHelper
 
     public static string GetPhotoPathImgUri(HttpRequest Request, string fileName)
     {
-        return UH.CombineTrimEndSlash("http:" + "//" + Request.Url.Host, "img", fileName);
+        return UH.CombineTrimEndSlash("http" + ":" + "//" + Request.Url.Host, "img", fileName);
     }
 
     /// <summary>
@@ -244,10 +244,10 @@ public class GeneralHelper
         string toFolderTempSlash = "";
         while (true)
         {
-            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\";
+            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\\\\\";
             if (!FS.ExistsDirectory(toFolderTempSlash))
             {
-                toFolderTempSlash += "\\";
+                toFolderTempSlash += "\\\\\\";
                 break;
             }
         }
@@ -272,7 +272,7 @@ public class GeneralHelper
             rc = RandomHelper.RandomStringWithoutSpecial(20);
             folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
         }
-        return folder + "\\";
+        return folder + "\\\\\\";
     }
 
     public static string GetOrCreateCityFromDictionary(Dictionary<int, string> artistsNames, int oEventIDArtistHeadliner)

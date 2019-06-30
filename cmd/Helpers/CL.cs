@@ -101,7 +101,7 @@ public static class CL
         {
             whatOrTextWithoutEndingDot = "Enter" + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". " + "For exit enter -1" + ".";
+        whatOrTextWithoutEndingDot += ". " + "For exit enter -1" + "" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();

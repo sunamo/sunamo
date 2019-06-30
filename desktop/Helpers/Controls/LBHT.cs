@@ -16,7 +16,7 @@ namespace desktop
     public class LBHT<T> : LBH
     {
         /// <summary>
-        /// V�choz� pro A2 bylo SelectionMode.Extended
+        /// Vychozy pro A2 bylo SelectionMode.Extended
         /// </summary>
         /// <param name="lb"></param>
         /// <param name="sm"></param>
@@ -50,7 +50,7 @@ namespace desktop
             }
             else if (lb.SelectedItem is FrameworkElement)
             {
-                // Vlastnost Tag je ve t��d� FrameworkElement
+                // Vlastnost Tag je ve tzd FrameworkElement
                 FrameworkElement fw = lb.SelectedItem as FrameworkElement;
                 if (fw.Tag is T)
                 {
@@ -186,7 +186,7 @@ namespace desktop
         #region base
         /// <summary>
         /// EK, OOP.
-        /// V�choz� pro A2 bylo SelectionMode.Extended
+        /// Vychozy pro A2 bylo SelectionMode.Extended
         /// </summary>
         /// <param name="lb"></param>
         public LBH(ListBox lb, SelectionMode sm)

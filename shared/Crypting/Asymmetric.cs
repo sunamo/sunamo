@@ -20,18 +20,18 @@ namespace shared.Crypting
     public class Asymmetric
     {
         /// <summary>
-        /// Provider �ifrov�n� RSA
+        /// Provider sifrovani RSA
         /// </summary>
         private RSACryptoServiceProvider _rsa;
         /// <summary>
-        /// V�choz� jm�no kontejneru, ve kter�m se bude uchov�vat kl��.
+        /// Vychozy jmeno kontejneru, ve kterem se bude uchovavat klic.
         /// </summary>
         private string _KeyContainerName = "Encryption.AsymmetricEncryption.DefaultContainerName";
         /// <summary>
-        /// V�choz� velikost kl��e v bytech.
+        /// Vychozi velikost klice v bytech.
         /// </summary>
         private int _KeySize = 1024;
-        #region N�zvy element� pro ukl�d�n� do XML
+        #region Nazvy elementu pro ukladani do XML
         private const string _ElementParent = "RSAKeyValue";
         private const string _ElementModulus = "Modulus";
         private const string _ElementExponent = "Exponent";
@@ -45,7 +45,7 @@ namespace shared.Crypting
         private const string _ElementPrivateExponent = "D";
         #endregion
         // - http://forum.java.sun.com/thread.jsp?forum=9&thread=552022&tstart=0&trange=15 
-        #region N�zvy element� pro ukl�d�n� do CM.AS
+        #region Nazvy elementu pro ukladani do CM.AS
         private const string _KeyModulus = "PublicKey.Modulus";
         private const string _KeyExponent = "PublicKey.Exponent";
         private const string _KeyPrimeP = "PrivateKey.P";
@@ -61,7 +61,7 @@ namespace shared.Crypting
         /// <summary>
         /// Represents a public encryption key. Intended to be shared, it 
         /// contains only the Modulus and Exponent.
-        /// T��da ve�ejn�ho kl��e. M� metody pro na�ten� a ulo�en� z/do r�zn�ch zdroj�.
+        /// Ttrda verejneho klice. Ma metody pro nacteni a ulozeni z/do ruznych zdroju.
         /// </summary>
         public class PublicKey
         {
@@ -76,7 +76,7 @@ namespace shared.Crypting
             }
 
             /// <summary>
-            /// EK. Na�tu z XML A1 obsahy tag� Modulus a Exponent a ulo��m je do stejn� pojm. VV
+            /// EK. Nactu z XML A1 obsahy tagu Modulus a Exponent a ulozim je do stejne pojm. VV
             /// </summary>
             /// <param name="KeyXml"></param>
             public PublicKey(string KeyXml)
@@ -86,7 +86,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Load public key from App.config or Web.config file
-            /// Ulo��m do PP z CM.AS
+            /// Ulozim do PP z CM.AS
             /// </summary>
             public void LoadFromConfig()
             {
@@ -96,12 +96,12 @@ namespace shared.Crypting
 
             /// <summary>
             /// Returns *.config file XML section representing this public key
-            /// Vr�t�m 2x tax Add s argumenty PP Modulus a Exponent
+            /// Vratim 2x tax Add s argumenty PP Modulus a Exponent
             /// </summary>
             public string ToConfigSection()
             {
                 StringBuilder sb = new StringBuilder();
-                // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
+                // TODO: Nevim zda bych nemel vytvorit novou instanci SB
                 StringBuilder _with1 = sb;
                 _with1.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
                 _with1.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
@@ -110,7 +110,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Writes the *.config file representation of this public key to a file
-            /// P�ep�u A1 2x tagem Add s argumenty PP Modulus a Exponent
+            /// Prepnu A1 2x tagem Add s argumenty PP Modulus a Exponent
             /// </summary>
             public void ExportToConfigFile(string filePath)
             {
@@ -121,7 +121,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Loads the public key from its XML string
-            /// Na�tu z XML A1 obsahy tag� Modulus a Exponent a ulo��m je do stejn� pojm. VV
+            /// Nactu z XML A1 obsahy tagu Modulus a Exponent a ulozim je do stejne pojm. VV
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
@@ -131,7 +131,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Converts this public key to an RSAParameters object
-            /// Vr�t� mi pp Modulus a Exponent v O RSAParameters
+            /// Vrati mi pp Modulus a Exponent v O RSAParameters
             /// </summary>
             public RSAParameters ToParameters()
             {
@@ -143,14 +143,14 @@ namespace shared.Crypting
 
             /// <summary>
             /// Converts this public key to its XML string representation
-            /// Vr�t� mi Tagy PP Modulus a Exponent v Tagu RSAKeyValue
+            /// Vrati mi Tagy PP Modulus a Exponent v Tagu RSAKeyValue
             /// </summary>
             public string ToXml()
             {
                 StringBuilder sb = new StringBuilder();
-                // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
+                // TODO: Nevim zda bych nemel vytvoiit novou instanci SB
                 StringBuilder _with2 = sb;
-                // Mohl bych to zapsat pomoc� T RSAParameters ale nev�m jak by se to vypo��dalo s ve�ejn�m kl��em.
+                // Mohl bych to zapsat pomoci T RSAParameters ale nevim jak by se to vyporadalo s verejnym klicem.
                 _with2.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, false));
                 _with2.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
                 _with2.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementExponent, this.Exponent));
@@ -160,7 +160,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Writes the Xml representation of this public key to a file
-            /// P�ep�e A1 Tagy PP Modulus a Exponent v Tagu RSAKeyValue
+            /// Prepne A1 Tagy PP Modulus a Exponent v Tagu RSAKeyValue
             /// </summary>
             public void ExportToXmlFile(string filePath)
             {
@@ -180,7 +180,7 @@ namespace shared.Crypting
         /// </summary>
         public class PrivateKey
         {
-            #region P�evedou se na base64 a vlo�� se do objektu RSAParameters
+            #region Prevedou se na base64 a vlozi se do objektu RSAParameters
             public string Modulus;
             public string Exponent;
             public string PrimeP;
@@ -199,7 +199,7 @@ namespace shared.Crypting
             }
 
             /// <summary>
-            /// Na�tu z XML A1 obsahy tag� Modulus a Exponent a dal�� tagy a ulo��m je do stejn� pojm. VV
+            /// Nactu z XML A1 obsahy tagu Modulus a Exponent a dalsi tagy a ulozim je do stejne pojm. VV
             /// </summary>
             /// <param name="keyXml"></param>
             public PrivateKey(string keyXml)
@@ -209,7 +209,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Load private key from App.config or Web.config file
-            /// Ulo��m do PPs z CM.AS
+            /// Ulozim do PPs z CM.AS
             /// </summary>
             public void LoadFromConfig()
             {
@@ -225,7 +225,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Converts this private key to an RSAParameters object
-            /// P�evedu PPs z Base64 a vlo��m do O RSAParameter, kter� G 
+            /// Prevedu PPs z Base64 a vlozim do O RSAParameter, ktere G 
             /// </summary>
             public RSAParameters ToParameters()
             {
@@ -243,12 +243,12 @@ namespace shared.Crypting
 
             /// <summary>
             /// Returns *.config file XML section representing this private key
-            /// Vr�t�m xx tax Add s argumenty PP Modulus a Exponent
+            /// Vratim xx tax Add s argumenty PP Modulus a Exponent
             /// </summary>
             public string ToConfigSection()
             {
                 StringBuilder sb = new StringBuilder();
-                // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
+                // TODO: Nevim zda bych nemel vytvorit novou instanci SB
                 StringBuilder _with3 = sb;
                 _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyModulus, this.Modulus));
                 _with3.Append(UtilsNonNetStandard.WriteConfigKey(Asymmetric._KeyExponent, this.Exponent));
@@ -263,7 +263,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Writes the *.config file representation of this private key to a file
-            /// P�ep�u A1 2x tagem Add s argumenty PP Modulus a Exponent a dal��
+            /// Prepnu A1 2x tagem Add s argumenty PP Modulus a Exponent a dalsi
             /// </summary>
             public void ExportToConfigFile(string strFilePath)
             {
@@ -274,7 +274,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Loads the private key from its XML string
-            /// Na�tu z XML A1 obsahy tag� Modulus a Exponent a dal�� tagy a ulo��m je do stejn� pojm. VV
+            /// Nactu z XML A1 obsahy tagu Modulus a Exponent a dalsi tagy a ulozim je do stejne pojm. VV
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
@@ -290,12 +290,12 @@ namespace shared.Crypting
 
             /// <summary>
             /// Converts this private key to its XML string representation
-            /// Vr�t� mi Tagy PP Modulus a Exponent a dal�� v Tagu RSAKeyValue
+            /// Vrati mi Tagy PP Modulus a Exponent a dalsi v Tagu RSAKeyValue
             /// </summary>
             public string ToXml()
             {
                 StringBuilder sb = new StringBuilder();
-                // TODO: Nev�m zda bych nem�l vytvo�it novou instanci SB
+                // TODO: Nevim zda bych nemel vytvorit novou instanci SB
                 StringBuilder _with4 = sb;
                 _with4.Append(UtilsNonNetStandard.WriteXmlNode(Asymmetric._ElementParent, false));
                 _with4.Append(UtilsNonNetStandard.WriteXmlElement(Asymmetric._ElementModulus, this.Modulus));
@@ -312,7 +312,7 @@ namespace shared.Crypting
 
             /// <summary>
             /// Writes the Xml representation of this private key to a file
-            /// P�ep�e A1 Tagy PP Modulus a Exponent a dal�� v Tagu RSAKeyValue
+            /// Prepte A1 Tagy PP Modulus a Exponent a dalsi v Tagu RSAKeyValue
             /// </summary>
             public void ExportToXmlFile(string filePath)
             {
@@ -333,7 +333,7 @@ namespace shared.Crypting
         /// <summary>
         /// Instantiates a new asymmetric encryption session using the default key size; 
         /// this is usally 1024 bits
-        /// Vytvo��m obejkt _rsa se kter�m budu prov�d�t �ifrovac� operace
+        /// Vytvorim obejkt _rsa se kterem budu provadet sifrovaci operace
         /// </summary>
         public Asymmetric()
         {
@@ -342,7 +342,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Instantiates a new asymmetric encryption session using a specific key size
-        /// OOP A1 _KeySize a do _rsa vlo��m provider M GetRSAProvider. Vytvo��m instance pro novou asymetrickou krypt. session s velikost� kl��e A1
+        /// OOP A1 _KeySize a do _rsa vlozim provider M GetRSAProvider. Vytvorim instance pro novou asymetrickou krypt. session s velikostm klice A1
         /// </summary>
         public Asymmetric(int keySize)
         {
@@ -355,8 +355,8 @@ namespace shared.Crypting
         /// key on disk; this is an 
         /// unavoidable side effect of the underlying 
         /// Microsoft CryptoAPI. 
-        /// Nastav� jm�no kontejneru na kl�� u��van�ho k uchov�n� tohoto kl��e na disku.
-        /// Toto je vedlej�� efekt n�zko�rov�ov� Microsoft CryptoAPI
+        /// Nastavi jmeno kontejneru na klic ussvansho k uchovani tohoto klice na disku.
+        /// Toto je vedlejsi efekt nizkourovnove Microsoft CryptoAPI
         /// </summary>
         /// <remarks>
         /// http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/q322/3/71.asp&amp;NoWebContent=1
@@ -369,7 +369,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the current key size, in bits
-        /// G akt. velikost kl��e
+        /// G akt. velikost klice
         /// </summary>
         public int KeySizeBits
         {
@@ -378,7 +378,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the maximum supported key size, in bits
-        /// Vr�t�m max. velikost kl��e v bitech dle _rsa.LegalKeySizes[0]
+        /// Vratim max. velikost klice v bitech dle _rsa.LegalKeySizes[0]
         /// </summary>
         public int KeySizeMaxBits
         {
@@ -387,7 +387,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the minimum supported key size, in bits
-        /// Vr�t�m min. velikost kl��e v bitech dle _rsa.LegalKeySizes[0]
+        /// Vratim min. velikost klice v bitech dle _rsa.LegalKeySizes[0]
         /// </summary>
         public int KeySizeMinBits
         {
@@ -396,7 +396,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns valid key step sizes, in bits
-        /// Vr�t�m  velikost kroku v bitech dle _rsa.LegalKeySizes[0]
+        /// Vratim  velikost kroku v bitech dle _rsa.LegalKeySizes[0]
         /// </summary>
         public int KeySizeStepBits
         {
@@ -405,7 +405,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the default public key as stored in the *.config file
-        /// Vr�t�m PublicKey z CM.AS a G
+        /// Vratim PublicKey z CM.AS a G
         /// </summary>
         public PublicKey DefaultPublicKey
         {
@@ -419,7 +419,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the default private key as stored in the *.config file
-        /// Vr�t�m PrivateKey z CM.AS a G
+        /// Vratim PrivateKey z CM.AS a G
         /// </summary>
         public PrivateKey DefaultPrivateKey
         {
@@ -433,8 +433,8 @@ namespace shared.Crypting
 
         /// <summary>
         /// Generates a new public/private key pair as objects
-        /// VO RSA a vlo��m do As ve�ejn� a p�iv�tn� kl��, kter� vygeneruji v t�to t��d�.
-        /// Vlo��m do typovan�ch objekt�
+        /// VO RSA a vlozim do As verejne a privitni klic, ktere vygeneruji v teto ttide.
+        /// Vlozim do typovanych objektu
         /// </summary>
         public void GenerateNewKeyset(ref PublicKey publicKey, ref PrivateKey privateKey)
         {
@@ -447,7 +447,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Generates a new public/private key pair as XML strings
-        /// VO RSA a vlo��m do As ve�ejn� a p�iv�tn� kl��, kter� vygeneruji v t�to t��d�.
+        /// VO RSA a vlozim do As veeejne a privatni klic, ktery vygeneruji v teto tride.
         /// </summary>
         public void GenerateNewKeyset(ref string publicKeyXML, ref string privateKeyXML)
         {
@@ -458,7 +458,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts data using the default public key
-        /// Zakryptuje A1 kl��em v DefaultPublicKey 
+        /// Zakryptuje A1 klicem v DefaultPublicKey 
         /// </summary>
         public DataCrypt Encrypt(DataCrypt d)
         {
@@ -468,7 +468,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts data using the provided public key
-        /// P�evede A2 na parametr, kter� vlo�� do _rsa a za�ifruje A2.
+        /// Prevede A2 na parametr, ktery vlozi do _rsa a zasifruje A2.
         /// </summary>
         public DataCrypt Encrypt(DataCrypt d, PublicKey publicKey)
         {
@@ -478,7 +478,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts data using the provided public key as XML
-        /// Na�te z xml A2 kl�� a za�ifruje A1
+        /// Nacte z xml A2 klic a zasifruje A1
         /// </summary>
         public DataCrypt Encrypt(DataCrypt d, string publicKeyXML)
         {
@@ -487,7 +487,7 @@ namespace shared.Crypting
         }
 
         /// <summary>
-        /// Dekryptuje A1, VV p�i nezdaru.
+        /// Dekryptuje A1, VV pri nezdaru.
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
@@ -512,7 +512,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts data using the default private key
-        /// Na�te kl�� z CM.AS a dekryptuje A1 s t�mto kl��em.
+        /// Nacte klic z CM.AS a dekryptuje A1 s timto klicem.
         /// </summary>
         public DataCrypt Decrypt(DataCrypt encryptedDataCrypt)
         {
@@ -523,7 +523,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts data using the provided private key
-        /// Importuji kl�� A2 jako parametr do _rsa
+        /// Importuji klic A2 jako parametr do _rsa
         /// Dekryptuje A1.
         /// </summary>
         public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, PrivateKey PrivateKey)
@@ -534,7 +534,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts data using the provided private key as XML
-        /// Na�te kl�� z xml A2 - pou��v� intern� .net metodu.
+        /// Nacte klic z xml A2 - pouziva interni .net metodu.
         /// Dekryptuje data A1.
         /// </summary>
         public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, string PrivateKeyXML)
@@ -544,7 +544,7 @@ namespace shared.Crypting
         }
 
         /// <summary>
-        /// Na�tu do O _rsa ze XML A1 net metodou. A2 slou�� k tomu aby se vypsalo ve v�jimce jak� kl�� se nezda�iloi na��st. 
+        /// Nactu do O _rsa ze XML A1 net metodou. A2 slouzi k tomu aby se vypsalo ve vyjimce jaky klic se nezdariloi nacist. 
         /// </summary>
         /// <param name="keyXml"></param>
         /// <param name="isPrivate"></param>
@@ -570,7 +570,7 @@ namespace shared.Crypting
         }
 
         /// <summary>
-        /// Dekryptuje data v A1 pomoc� RSA
+        /// Dekryptuje data v A1 pomoci RSA
         /// </summary>
         /// <param name="encryptedDataCrypt"></param>
         /// <returns></returns>
@@ -582,9 +582,9 @@ namespace shared.Crypting
         /// <summary>
         /// gets the default RSA provider using the specified key size; 
         /// note that Microsoft's CryptoAPI has an underlying file system dependency that is unavoidable
-        /// Inicializuji krypt. t��du RSA s PP a  _KeySize a _KeyContainerName
-        /// Kl�� se bude uchov�vat v ulo�i�ti kl��� PC, nikoliv v u�. profilu
-        /// Pokud se nepoda�� na��st, VV
+        /// Inicializuji krypt. ttidu RSA s PP a  _KeySize a _KeyContainerName
+        /// Klic se bude uchovavat v ulozisti klice PC, nikoliv v uz. profilu
+        /// Pokud se nepodari nacist, VV
         /// </summary>
         /// <remarks>
         /// http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/q322/3/71.asp&amp;NoWebContent=1
@@ -599,7 +599,7 @@ namespace shared.Crypting
                 csp.KeyContainerName = _KeyContainerName;
                 rsa = new RSACryptoServiceProvider(_KeySize, csp);
                 rsa.PersistKeyInCsp = false;
-                // Kl�� se bude uchov�vat v ulo�i�ti kl��� PC, nikoliv v u�. profilu
+                // Klic se bude uchovavat v ulozisti klice PC, nikoliv v uc. profilu
                 RSACryptoServiceProvider.UseMachineKeyStore = true;
                 return rsa;
             }

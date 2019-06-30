@@ -48,7 +48,7 @@ using System.Text;
             }
             this.watcherInfo = info;
 
-            // Zaregistruj� se pouze ty handlery zm�n, kter� si budu p��t v prom�nn� ChangesFilters v��tu NotifyFilters
+            // Zaregistruje se pouze ty handlery zmen, ktere si budu pt v promenne ChangesFilters vyctu NotifyFilters
             Initialize();
         }
 
@@ -123,7 +123,7 @@ using System.Text;
         /// Initializes this oibject by creating all of the required public 
         /// FileSystemWatcher objects necessary to mointor the folder/file for the 
         /// desired changes
-        /// Zaregistruj� se pouze ty handlery zm�n, kter� si budu p��t v prom�nn� ChangesFilters v��tu NotifyFilters
+        /// Zaregistruje se pouze ty handlery zmen, ktere si budu psat v promenne ChangesFilters vyctu NotifyFilters
         /// </summary>
         private void Initialize()
         {

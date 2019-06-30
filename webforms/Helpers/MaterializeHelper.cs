@@ -8,7 +8,7 @@ public static class MaterializeHelper
         HtmlGenerator hg = new HtmlGenerator();
         if (anchors.Count != chips.Count)
         {
-            throw new Exception(" " + " kolekci anchors je" + " " + anchors.Count + " " + "prvků, v kolekci chips" + " " + chips.Count);
+            throw new Exception(" " + " " + "kolekci anchors je" + " " + anchors.Count + " " + "prvků, v kolekci chips" + " " + chips.Count);
         }
         for (int i = 0; i < chips.Count; i++)
         {

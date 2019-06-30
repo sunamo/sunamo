@@ -7,7 +7,7 @@ namespace web
         public List<string> GetAllImages()
         {
             List<string> AllPhotos = new List<string>();
-            var directoriesKocicky = FS.GetFolders(GeneralHelper.MapPath("_/" + "i/Kocicky"));
+            var directoriesKocicky = FS.GetFolders(GeneralHelper.MapPath("_/" + "/" + "/Kocicky"));
             var directoriesSda = FS.GetFolders(GeneralHelper.MapPath("_/i/CasdMladez"));
             foreach (var item in directoriesKocicky)
             {

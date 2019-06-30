@@ -48,7 +48,7 @@ public partial class Logins
         }
         else
         {
-            zpravaVen = "Nejste přihlášený/" + "";
+            zpravaVen = "Nejste přihlášený" + "/" + "";
             return false;
         }
 

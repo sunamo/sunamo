@@ -7,15 +7,15 @@ using sunamo.Essential;
 public class SearchingInLbWPF
 {
     /// <summary>
-    /// ListBox ve kter�m se ukazuj� v�sledky
+    /// ListBox ve kterEm se ukazujI vYsledky
     /// </summary>
     ListBox lb = null;
     /// <summary>
-    /// TextBox do kter�ho byl zadan� hledan� v�raz
+    /// TextBox do kterEho byl zadanY hledanY vYraz
     /// </summary>
     TextBox tstb = null;
     /// <summary>
-    /// V�choz� polo�ky. Nahraje se do LB po stornov�n� hled�n�.
+    /// VYchozY poloZky. Nahraje se do LB po stornovAnI hledání.
     /// </summary>
     public object[] oc = null;
     string searchOnlyFromLastOccurenceOf = null;
