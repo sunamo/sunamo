@@ -12,34 +12,124 @@ using sunamo.Helpers;
 using sunamo.Essential;
 using sunamo.Constants;
 using System.Diagnostics;
+using sunamo;
 
-namespace sunamo
-{
-    public class FS
+public partial class FS
     {
-        static List<char> invalidPathChars = null;
-        static Type type = typeof(FS);
+    #region Making problem in translate
+    /// <summary>
+    /// Delete whole folder A1. If fail, only "1" subdir
+    /// </summary>
+    /// <param name="repairedBlogPostsFolder"></param>
+    /// <returns></returns>
+    public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
+    {
+        int resultSerie = 1;
+        var folders = FS.GetFolders(repairedBlogPostsFolder);
 
-        static List<char> invalidFileNameChars = null;
-        static List<char> invalidCharsForMapPath = null;
-        static List<char> invalidFileNameCharsWithoutDelimiterOfFolders = null;
+        bool deleted = true;
+        // 0 or 1
+        if (folders.Length() < 2)
+        {
+            try
+            {
+                Directory.Delete(repairedBlogPostsFolder, true);
+            }
+            catch (Exception)
+            {
+                deleted = false;
+            }
+        }
 
-        
+        string withEndFlash = FS.WithEndSlash(repairedBlogPostsFolder);
 
-        public static void DeleteEmptyFiles(string folder, SearchOption so)
+        if (!deleted)
+        {
+            // confuse me, dir can exists
+            FS.CreateDirectory(withEndFlash + "1\\\\\\");
+        }
+        else
+        {
+            // When deleting will be successful, create new dir
+            TextOutputGenerator generator = new TextOutputGenerator();
+            generator.sb.Append(withEndFlash);
+            generator.sb.CanUndo = true;
+            for (; resultSerie < int.MaxValue; resultSerie++)
+            {
+                generator.sb.Append(resultSerie);
+                string newDirectory = generator.ToString();
+                if (!FS.ExistsDirectory(newDirectory))
+                {
+                    Directory.CreateDirectory(newDirectory);
+                    break;
+                }
+                generator.Undo();
+            }
+        }
+
+        return resultSerie;
+    } 
+    #endregion
+
+
+    public static string GetActualDateTime()
+        {
+            DateTime dt = DateTime.Now;
+            return ReplaceIncorrectCharactersFile(dt.ToString());
+
+        }
+    public static Task DeleteFile(StorageFile t)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
+    {
+        return new StorageFile(folder.fullPath, v);
+    }
+    public static void DeleteEmptyFiles(string folder, SearchOption so)
         {
             var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
             foreach (var item in files)
             {
-                if (FS.GetFileSize(item) == 0)
+            var fs = FS.GetFileSize(item);
+                if (fs == 0)
+                {
+                    FS.TryDeleteFile(item);
+                }
+            else if (fs < 4)
+            {
+                if (TF.ReadFile(item).Trim() == string.Empty)
                 {
                     FS.TryDeleteFile(item);
                 }
             }
+            }
+        }
+
+        
+
+        public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace, bool pairLinesInFromAndTo)
+        {
+        if (pairLinesInFromAndTo)
+        {
+            var from2 = SH.Split(from, Environment.NewLine);
+            var to2 = SH.Split(to, Environment.NewLine);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+
+            ReplaceInAllFiles(from2, to2, files, useSimpleReplace);
+        }
+        else
+        {
+            ReplaceInAllFiles(CA.ToListString( from),  CA.ToListString( to), files, useSimpleReplace);
+
+        }
+            
         }
 
         /// <summary>
-        /// A2 can be null
+        /// either A1 or A2 can be null
+        /// When A2 is null, will get from file path A1
         /// </summary>
         /// <param name="item"></param>
         /// <param name="folder"></param>
@@ -74,22 +164,45 @@ namespace sunamo
             return result;
         }
 
-        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
+        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool dontReplaceAll)
         {
             var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
             ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
-            foreach (var item in files)
+            ReplaceInAllFiles(replaceFrom, replaceTo, files, dontReplaceAll);
+        }
+
+    /// <summary>
+    /// A4 - whether use s.Contains. A4 - SH.ReplaceAll2
+    /// </summary>
+    /// <param name="replaceFrom"></param>
+    /// <param name="replaceTo"></param>
+    /// <param name="files"></param>
+    /// <param name="dontReplaceAll"></param>
+        public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool dontReplaceAll)
+        {
+        
+        foreach (var item in files)
+        {
+            if (!EncodingHelper.isBinary(item))
             {
                 var content = TF.ReadFile(item);
                 if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
                 {
                     for (int i = 0; i < replaceFrom.Count; i++)
                     {
-                        content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                        if (dontReplaceAll)
+                        {
+                            content = content.Replace(replaceFrom[i], replaceTo[i]);
+                        }
+                        else
+                        {
+                            content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
+                        }
                     }
                     TF.SaveFile(content, item);
                 }
             }
+        }
         }
 
         /// <summary>
@@ -119,6 +232,17 @@ namespace sunamo
             }
         }
 
+        public static string RemoveFile(string fullPathCsproj)
+        {
+            // Most effecient way to handle csproj and dir
+            var ext = FS.GetExtension(fullPathCsproj);
+            if (ext != string.Empty)
+            {
+                fullPathCsproj = FS.GetDirectoryName(fullPathCsproj);
+            }
+            return FS.WithoutEndSlash( fullPathCsproj);
+        }
+
         public static string AddExtensionIfDontHave(string file, string ext)
         {
             // For *.* and git paths {dir}/*
@@ -134,15 +258,7 @@ namespace sunamo
             return file;
         }
 
-        /// <summary>
-        /// Convert to UNC path
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        public static bool ExistsDirectory(string item)
-        {
-            return Directory.Exists(MakeUncLongPath(item));
-        }
+        
 
         /// <summary>
         /// Create folder hiearchy and write
@@ -155,64 +271,53 @@ namespace sunamo
             File.WriteAllText(path, content);
         }
 
-        public static void CopyStream(Stream input, Stream output)
+        public static string MakeFromLastPartFile(string fullPath, string ext)
         {
-            byte[] buffer = new byte[8 * 1024];
-            int len;
-            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
+            FS.WithoutEndSlash(ref fullPath);
+            return fullPath + ext;
+        }
+
+
+
+
+
+        public static void CreateFileIfDoesntExists(string path)
+        {
+            if (!FS.ExistsFile(path))
             {
-                output.Write(buffer, 0, len);
+                File.CreateText(path);
             }
         }
 
-        public static string MascFromExtension(string ext = AllStrings.asterisk)
+        /// <summary>
+        /// Remove all extensions, not only one
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static string GetFileNameWithoutExtensions(string item)
         {
-            return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
-        }
-
-        internal static IEnumerable<string> GetFiles(string folderPath, bool v)
-        {
-            return FS.GetFiles(folderPath, FS.MascFromExtension(), v ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
-        }
-
-        public static List<string> GetFolders(string folder)
-        {
-            return GetFolders(folder, SearchOption.TopDirectoryOnly);
-        }
-
-        public static List<string> GetFolders(string folder, SearchOption so)
-        {
-            return new List<string>(Directory.GetDirectories(folder, "*", so));
-        }
-
-        public static void CopyFile(string jsFiles, string v)
-        {
-            File.Copy(jsFiles, v, true);
-        }
-
-        
-
-        public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
-        {
-            ThrowExceptions.NotImplementedCase(type, "CopyAs0KbFiles");
-        }
-
-        public static List<string> GetFolders(string v, string contains)
-        {
-            var folders = GetFolders(v);
-            folders = CA.TrimEnd(folders, '\\');
-            for (int i = folders.Count - 1; i >= 0; i--)
+            while (Path.HasExtension(item))
             {
-                if (!Path.GetFileName(folders[i]).Contains(contains))
-                {
-                    folders.RemoveAt(i);
-                }
+                item = FS.GetFileNameWithoutExtension(item);
             }
-
-            return folders;
+            return item;
         }
 
-        #region Create to avoid adding System.IO and using without ns colliding
+    public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
+    {
+        FS.WithEndSlash(ref pathDownload);
+        FS.WithEndSlash(ref pathVideos0Kb);
+
+        var files = FS.GetFiles(pathDownload);
+        foreach (var item in files)
+        {
+            var path = item.Replace(pathDownload, pathVideos0Kb);
+
+            FS.CreateUpfoldersPsysicallyUnlessThere(path);
+            TF.WriteAllText(path, string.Empty);
+        }
+     }
+
         /// <summary>
         /// Without path
         /// </summary>
@@ -257,35 +362,6 @@ namespace sunamo
         }
 
         /// <summary>
-        /// ALL EXT. HAVE TO BE ALWAYS LOWER
-        /// Return in lowercase
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static string GetExtension(string v)
-        {
-            string result = "";
-            int lastDot = v.LastIndexOf('.');
-            if (lastDot == -1)
-            {
-                return string.Empty;
-            }
-            int lastSlash = v.LastIndexOf(AllChars.stroke);
-            int lastBs = v.LastIndexOf(AllChars.bs);
-            if (lastSlash > lastDot)
-            {
-                return string.Empty;
-            }
-            if (lastBs > lastDot)
-            {
-                return string.Empty;
-            }
-            result = v.Substring(lastDot).ToLower();
-
-            return result;
-        }
-
-        /// <summary>
         /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
         /// if have more extension, remove just one
         /// </summary>
@@ -297,120 +373,16 @@ namespace sunamo
         }
 
 
-        #endregion
-
-
-        #region Methods to avoid adding System.IO - often is colliding with other
-        /// <summary>
-        /// All occurences Path's method in sunamo replaced
-        /// </summary>
-        /// <param name="v"></param>
-        public static void CreateDirectory(string v)
-        {
-            Directory.CreateDirectory(v);
-        }
-
-        public static void CreateDirectory(string v, DirectoryCreateCollisionOption whenExists, SerieStyle serieStyle)
-        {
-            if (Directory.Exists(v))
-            {
-                bool hasSerie;
-                string nameWithoutSerie = FS.GetNameWithoutSeries(v, false, out hasSerie, serieStyle);
-                if (hasSerie)
-                {
-
-                }
-                if (whenExists == DirectoryCreateCollisionOption.AddSerie)
-                {
-                    int serie = 1;
-                    while (true)
-                    {
-                        string newFn = nameWithoutSerie + " (" + serie + ")";
-                        if (!Directory.Exists(newFn))
-                        {
-
-                            nameWithoutSerie = newFn;
-                            break;
-                        }
-                        serie++;
-                    }
-                }
-                else if (whenExists == DirectoryCreateCollisionOption.Delete)
-                {
-
-                }
-                else if (whenExists == DirectoryCreateCollisionOption.Overwrite)
-                {
-
-                }
-                else
-                {
-                    ThrowExceptions.NotImplementedCase(type, "CreateDirectory");
-                }
-            }
-            else
-            {
-                Directory.CreateDirectory(v);
-            }
-        }
-        #endregion
-
-
 
         public static string CreateNewFolderPathWithEndingNextTo(string folder, string ending)
         {
-            string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + "\\";
+            string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + AllStrings.bs;
             string folderWithCaretFiles = pathToFolder + Path.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
 
             return folderWithCaretFiles;
         }
 
-        public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
-        {
-            int resultSerie = 1;
-            string[] folders = Directory.GetDirectories(repairedBlogPostsFolder);
-
-            bool deleted = true;
-            // 0 or 1
-            if (folders.Length < 2)
-            {
-                try
-                {
-                    Directory.Delete(repairedBlogPostsFolder, true);
-                }
-                catch (Exception)
-                {
-                    deleted = false;
-                }
-            }
-
-            string withEndFlash = FS.WithEndSlash(repairedBlogPostsFolder);
-
-            if (!deleted)
-            {
-
-                FS.CreateDirectory(withEndFlash + "1\\");
-            }
-            else
-            {
-                TextOutputGenerator generator = new TextOutputGenerator();
-                generator.sb.Append(withEndFlash);
-                generator.sb.CanUndo = true;
-                for (; resultSerie < int.MaxValue; resultSerie++)
-                {
-                    generator.sb.Append(resultSerie);
-                    string newDirectory = generator.ToString();
-                    if (!Directory.Exists(newDirectory))
-                    {
-                        Directory.CreateDirectory(newDirectory);
-                        break;
-                    }
-                    generator.Undo();
-                }
-            }
-
-            return resultSerie;
-        }
+        
 
         public static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
         {
@@ -436,7 +408,7 @@ namespace sunamo
         /// <param name="folder"></param>
         public static void RemoveDiacriticInFileSystemEntryNames(string folder)
         {
-            List<string> folders = new List<string>(Directory.GetDirectories(folder, "*", SearchOption.AllDirectories));
+            List<string> folders = new List<string>(FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories));
             folders.Reverse();
             foreach (string item in folders)
             {
@@ -445,11 +417,11 @@ namespace sunamo
                 if (SH.ContainsDiacritic(filename))
                 {
                     filename = SH.TextWithoutDiacritic(filename);
-                    string newpath = Path.Combine(directory, filename);
+                    string newpath = FS.Combine(directory, filename);
                     string realnewpath = SH.Copy(newpath).TrimEnd(AllChars.bs);
                     string realnewpathcopy = SH.Copy(realnewpath);
                     int i = 0;
-                    while (Directory.Exists(realnewpath))
+                    while (FS.ExistsDirectory(realnewpath))
                     {
                         realnewpath = realnewpathcopy + i.ToString();
                         i++;
@@ -457,7 +429,7 @@ namespace sunamo
                     Directory.Move(item, realnewpath);
                 }
             }
-            string[] files = Directory.GetFiles(folder, "*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (string item in files)
             {
                 string directory = FS.GetDirectoryName(item);
@@ -468,7 +440,7 @@ namespace sunamo
                     string newpath = null;
                     try
                     {
-                        newpath = Path.Combine(directory, filename);
+                        newpath = FS.Combine(directory, filename);
                     }
                     catch (Exception)
                     {
@@ -478,9 +450,9 @@ namespace sunamo
 
                     string realNewPath = SH.Copy(newpath);
                     int vlozeno = 0;
-                    while (File.Exists(realNewPath))
+                    while (FS.ExistsFile(realNewPath))
                     {
-                        realNewPath = sunamo.FS.InsertBetweenFileNameAndExtension(newpath, vlozeno.ToString());
+                        realNewPath = FS.InsertBetweenFileNameAndExtension(newpath, vlozeno.ToString());
                         vlozeno++;
                     }
                     File.Move(item, realNewPath);
@@ -598,7 +570,7 @@ namespace sunamo
         {
             string p2, fn;
             GetPathAndFileName(oldPath, out p2, out fn);
-            string vr = p2 + "\\" + fn.Replace(what, forWhat);
+            string vr = p2 + AllStrings.bs + fn.Replace(what, forWhat);
             return vr;
         }
 
@@ -785,13 +757,15 @@ namespace sunamo
         /// <param name="v"></param>
         public static void DeleteAllEmptyDirectories(string v)
         {
-            List<ItemWithCount<string>> dirs = sunamo.FS.DirectoriesWithToken(v, AscDesc.Desc);
+            List<ItemWithCount<string>> dirs = FS.DirectoriesWithToken(v, AscDesc.Desc);
 
-            foreach (var item in dirs)
+
+        foreach (var item in dirs)
             {
-                if (sunamo.FS.IsDirectoryEmpty(item.t, true, true))
+
+            if (FS.IsDirectoryEmpty(item.t, true, true))
                 {
-                    sunamo.FS.TryDeleteDirectory(item.t);
+                    FS.TryDeleteDirectory(item.t);
                 }
 
             }
@@ -799,11 +773,11 @@ namespace sunamo
 
         public static List<ItemWithCount<string>> DirectoriesWithToken(string v, AscDesc sb)
         {
-            string[] dirs = Directory.GetDirectories(v, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(v, AllStrings.asterisk, SearchOption.AllDirectories);
             List<ItemWithCount<string>> vr = new List<ItemWithCount<string>>();
             foreach (var item in dirs)
             {
-                vr.Add(new ItemWithCount<string> { t = item, count = SH.OccurencesOfStringIn(item, "\\") });
+                vr.Add(new ItemWithCount<string> { t = item, count = SH.OccurencesOfStringIn(item, AllStrings.bs) });
             }
             if (sb == AscDesc.Asc)
             {
@@ -817,32 +791,20 @@ namespace sunamo
             return vr;
         }
 
-        /// <summary>
-        /// No recursive, all extension
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static List<string> GetFiles(string path)
-        {
-            return FS.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
-        }
 
-        /// <summary>
-        /// A1 have to be with ending backslash
-        /// </summary>
-        /// <param name="folder"></param>
-        /// <param name="mask"></param>
-        /// <param name="searchOption"></param>
-        /// <returns></returns>
-        public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
+    public static List<string> AllFilesInFolders(IEnumerable<string> folders,IEnumerable<string> exts, SearchOption so)
+    {
+        List<string> files = new List<string>();
+        foreach (var item in folders)
         {
-            var list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
-            if (trimA1)
+            foreach (var ext in exts)
             {
-                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(ext), so));
             }
-            return list;
         }
+        return files;
+    }
+
 
         /// <summary>
         /// A1 i A2 musí končit backslashem
@@ -857,17 +819,17 @@ namespace sunamo
         public static string MoveDirectoryNoRecursive(string item, string nova, DirectoryMoveCollisionOption co, FileMoveCollisionOption co2)
         {
             string vr = null;
-            if (Directory.Exists(nova))
+            if (FS.ExistsDirectory(nova))
             {
                 if (co == DirectoryMoveCollisionOption.AddSerie)
                 {
                     int serie = 1;
                     while (true)
                     {
-                        string newFn = nova + " (" + serie + ")";
-                        if (!Directory.Exists(newFn))
+                        string newFn = nova + " (" + serie + AllStrings.rb;
+                        if (!FS.ExistsDirectory(newFn))
                         {
-                            vr = "Folder has been renamed to " + Path.GetFileName(newFn);
+                            vr = "Folder has been renamed to" + " " + Path.GetFileName(newFn);
                             nova = newFn;
                             break;
                         }
@@ -884,8 +846,8 @@ namespace sunamo
                 }
             }
 
-            string[] files = Directory.GetFiles(item, "*", SearchOption.TopDirectoryOnly);
-            sunamo.FS.CreateFoldersPsysicallyUnlessThere(nova);
+            string[] files = Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
+            FS.CreateFoldersPsysicallyUnlessThere(nova);
             foreach (var item2 in files)
             {
 
@@ -902,9 +864,9 @@ namespace sunamo
 
             }
 
-            if (sunamo.FS.IsDirectoryEmpty(item, true, true))
+            if (FS.IsDirectoryEmpty(item, true, true))
             {
-                sunamo.FS.TryDeleteDirectory(item);
+                FS.TryDeleteDirectory(item);
             }
 
             return vr;
@@ -915,11 +877,11 @@ namespace sunamo
             int fse = 0;
             if (folders)
             {
-                fse += Directory.GetDirectories(item, "*", SearchOption.TopDirectoryOnly).Length;
+                fse += FS.GetFolders(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
             }
             if (files)
             {
-                fse += Directory.GetFiles(item, "*", SearchOption.TopDirectoryOnly).Length;
+                fse += Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
             }
             return fse == 0;
         }
@@ -932,24 +894,86 @@ namespace sunamo
         /// <param name="to"></param>
         public static void MoveAllRecursivelyAndThenDirectory(string p, string to, FileMoveCollisionOption co)
         {
-            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
-            foreach (var item in files)
-            {
-                string fileTo = to + item.Substring(p.Length);
-                MoveFile(item, fileTo, co);
-            }
-            string[] dirs = Directory.GetDirectories(p, "*", SearchOption.AllDirectories);
-            for (int i = dirs.Length - 1; i >= 0; i--)
+            MoveAllFilesRecursively(p, to, co, null);
+            var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
+            for (int i = dirs.Length() - 1; i >= 0; i--)
             {
                 Directory.Delete(dirs[i], false);
             }
             Directory.Delete(p, false);
         }
 
-        public static void DeleteFilesWithSameContentBytes(List<string> files)
+        public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
+        {
+            CopyMoveAllFilesRecursively(p, to, co, true, contains);
+        }
+
+        public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
+        {
+            CopyMoveAllFilesRecursively(p, to, co, false, contains);
+        }
+
+    
+
+    /// <summary>
+    /// If want use which not contains, prefix A4 with !
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="to"></param>
+    /// <param name="co"></param>
+    /// <param name="contains"></param>
+    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains)
+    {
+        string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
+        foreach (var item in files)
+        {
+            if (!string.IsNullOrEmpty(contains))
+            {
+                bool negation = SH.IsNegation(ref contains);
+
+                if (negation && item.Contains(contains))
+                {
+                    continue;
+                }
+                else if (!negation && !item.Contains(contains))
+                {
+                    continue;
+                }
+            }
+            MoveOrCopy(p, to, co, move, item);
+        }
+    }
+
+    private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, bool move, string item)
+    {
+        string fileTo = to + item.Substring(p.Length);
+        if (move)
+        {
+            MoveFile(item, fileTo, co);
+        }
+        else
+        {
+            CopyFile(item, fileTo, co);
+        }
+    }
+
+    /// <summary>
+    /// Unit tests = OK
+    /// </summary>
+    /// <param name="files"></param>
+    public static void DeleteFilesWithSameContentBytes(List<string> files)
         {
             DeleteFilesWithSameContentWorking<byte[], byte>(files, File.ReadAllBytes);
         }
+
+    /// <summary>
+    /// Unit tests = OK
+    /// </summary>
+    /// <param name="files"></param>
+    public static void DeleteDuplicatedImages(List<string> files)
+        {
+        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
+        }        
 
         public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T > readFunc)
         {
@@ -979,87 +1003,6 @@ namespace sunamo
         public static void DeleteFilesWithSameContent(List<string> files)
         {
             DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
-
-        }
-
-        public static string MakeUncLongPath( string path)
-        {
-            return MakeUncLongPath(ref path);
-        }
-
-        public static string MakeUncLongPath(ref string path)
-        {
-            if (!path.StartsWith(Consts.UncLongPath))
-            {
-                path = Consts.UncLongPath + path;
-            }
-            return path;
-        }
-
-        /// <summary>
-        /// A2 is path of target file
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="fileTo"></param>
-        /// <param name="co"></param>
-        public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
-        {
-            item = Consts.UncLongPath + item;
-            MakeUncLongPath(ref fileTo);
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
-            if (File.Exists(fileTo))
-            {
-                if (co == FileMoveCollisionOption.AddFileSize)
-                {
-                    string newFn = sunamo.FS.InsertBetweenFileNameAndExtension(fileTo, " " + sunamo.FS.GetFileSize(item));
-                    if (File.Exists(newFn))
-                    {
-                        File.Delete(item);
-                        return;
-                    }
-                    fileTo = newFn;
-                }
-                else if (co == FileMoveCollisionOption.AddSerie)
-                {
-                    int serie = 1;
-                    while (true)
-                    {
-                        string newFn = sunamo.FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + ")");
-                        if (!File.Exists(newFn))
-                        {
-                            fileTo = newFn;
-                            break;
-                        }
-                        serie++;
-                    }
-                }
-                else if (co == FileMoveCollisionOption.DiscardFrom)
-                {
-                    File.Delete(item);
-                    return;
-                }
-                else if (co == FileMoveCollisionOption.Overwrite)
-                {
-                    File.Delete(fileTo);
-                }
-                else if (co == FileMoveCollisionOption.LeaveLarger)
-                {
-                    long fsFrom = sunamo.FS.GetFileSize(item);
-                    long fsTo = sunamo.FS.GetFileSize(fileTo);
-                    if (fsFrom > fsTo)
-                    {
-                        File.Delete(fileTo);
-
-                    }
-                    else //if (fsFrom < fsTo)
-                    {
-                        File.Delete(item);
-                        return;
-                    }
-
-                }
-            }
-            File.Move(item, fileTo);
         }
 
         public static Dictionary<string, List<string>> SortPathsByFileName(string[] allCsFilesInFolder, bool onlyOneExtension)
@@ -1089,13 +1032,13 @@ namespace sunamo
         public static void DeleteAllRecursivelyAndThenDirectory(string p)
         {
 
-            string[] files = Directory.GetFiles(p, "*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 File.Delete(item);
             }
-            string[] dirs = Directory.GetDirectories(p, "*", SearchOption.AllDirectories);
-            for (int i = dirs.Length - 1; i >= 0; i--)
+            var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
+            for (int i = dirs.Length() - 1; i >= 0; i--)
             {
                 Directory.Delete(dirs[i], false);
             }
@@ -1156,48 +1099,7 @@ namespace sunamo
             return vr;
         }
 
-        /// <summary>
-        /// Create all upfolders of A1 with, if they dont exist 
-        /// A2 zdali je A1 folder. Pokud je A1 soubor, dej false.
-        /// Tuto metodu s parametrem false můžeš používat stejně jako CreateUpfoldersPsysicallyUnlessThere s 1 parametrem, tato ale bude o něco málo rychlejší.
-        /// </summary>
-        /// <param name="nad"></param>
-        public static void CreateFoldersPsysicallyUnlessThere(string nad, bool isFolder)
-        {
-            if (Directory.Exists(nad))
-            {
-                return;
-            }
-            else
-            {
-                List<string> slozkyKVytvoreni = new List<string>();
-                if (isFolder)
-                {
-                    slozkyKVytvoreni.Add(nad);
-                }
-
-                while (true)
-                {
-                    nad = sunamo.FS.GetDirectoryName(nad);
-
-                    if (Directory.Exists(nad))
-                    {
-                        break;
-                    }
-
-                    string kopia = nad;
-                    slozkyKVytvoreni.Add(kopia);
-                }
-                slozkyKVytvoreni.Reverse();
-                foreach (string item in slozkyKVytvoreni)
-                {
-                    if (!Directory.Exists(item))
-                    {
-                        Directory.CreateDirectory(item);
-                    }
-                }
-            }
-        }
+        
 
         /// <summary>
         /// files as .bowerrc return whole
@@ -1210,7 +1112,7 @@ namespace sunamo
             ThrowExceptions.NoPassedFolders(type, "AllExtensionsInFolders", folders);
 
             List<string> vr = new List<string>();
-            List<string> files = AllFilesInFolders(so, folders);
+            List<string> files = AllFilesInFolders(CA.ToListString(folders), CA.ToListString("*."), so);
 
             files = new List<string>(OnlyExtensionsToLower(files));
             foreach (var item in files)
@@ -1223,17 +1125,16 @@ namespace sunamo
             return vr;
         }
 
-        public static List<string> AllFilesInFolders(SearchOption so, params string[] v)
-        {
-            List<string> files = new List<string>();
-            foreach (var item in v)
-            {
-                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(), so));
-            }
-            return files;
-        }
+        
 
-        public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisThen, string replaceForThis)
+    public static string replaceIncorrectFor = string.Empty;
+
+    /// <summary>
+    /// Replacement can be configured with replaceIncorrectFor
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string ReplaceIncorrectCharactersFile(string p)
         {
             string t = p;
             foreach (char item in Path.GetInvalidFileNameChars())
@@ -1245,12 +1146,45 @@ namespace sunamo
                     {
                         sb.Append(item2);
                     }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
                 }
                 t = sb.ToString();
             }
-            if (!string.IsNullOrEmpty(replaceAllOfThisThen))
+            return t;
+        }
+
+    /// <summary>
+    /// A3 is applicable only for A2. In general is use replaceIncorrectFor
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="replaceAllOfThisByA3"></param>
+    /// <param name="replaceForThis"></param>
+    /// <returns></returns>
+    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisByA3, string replaceForThis)
+        {
+            string t = p;
+            foreach (char item in Path.GetInvalidFileNameChars())
             {
-                t = SH.ReplaceAll(t, replaceForThis, replaceAllOfThisThen);
+                StringBuilder sb = new StringBuilder();
+                foreach (char item2 in t)
+                {
+                    if (item != item2)
+                    {
+                        sb.Append(item2);
+                    }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
+                }
+                t = sb.ToString();
+            }
+            if (!string.IsNullOrEmpty(replaceAllOfThisByA3))
+            {
+                t = SH.ReplaceAll(t, replaceForThis, replaceAllOfThisByA3);
 
             }
             return t;
@@ -1279,13 +1213,17 @@ namespace sunamo
                     {
                         sb.Append(item2);
                     }
+                else
+                {
+                    sb.Append(replaceIncorrectFor);
+                }
                 }
                 t = sb.ToString();
             }
             if (!string.IsNullOrEmpty(replaceAllOfThisThen))
             {
-                t = SH.ReplaceAll(t, " ", replaceAllOfThisThen);
-                t = SH.ReplaceAll(t, " ", "  ");
+                t = SH.ReplaceAll(t, AllStrings.space, replaceAllOfThisThen);
+                t = SH.ReplaceAll(t, AllStrings.space, AllStrings.doubleSpace);
             }
             return t;
         }
@@ -1297,10 +1235,10 @@ namespace sunamo
         /// <returns></returns>
         public static string RepairFilter(string filter)
         {
-            if (!filter.Contains("|"))
+            if (!filter.Contains(AllStrings.pipe))
             {
-                filter = filter.TrimStart('*');
-                return "*" + filter + "|" + "*" + filter;
+                filter = filter.TrimStart(AllChars.asterisk);
+                return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
             }
             return filter;
         }
@@ -1317,262 +1255,11 @@ namespace sunamo
             return GetFileNameWithoutExtension(s).ToLower();
         }
 
-        /// <summary>
-        /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
-        /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
-        /// Works for brackets, not dash 
-        /// </summary>
-        public static string GetNameWithoutSeries(string p, bool path)
+        public static string AddUpfoldersToRelativePath(int i, string file, char delimiter)
         {
-            int serie;
-            bool hasSerie = false;
-            return GetNameWithoutSeries(p, path, out hasSerie, SerieStyle.Brackets, out serie);
-        }
-
-        //public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
-        //{
-        //    int serie;
-        //    return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
-        //}
-
-        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle)
-        {
-            int serie;
-            return GetNameWithoutSeries(p, path, out hasSerie, serieStyle, out serie);
-        }
-
-        /// <summary>
-        /// 
-        /// Vrací vždy s příponou
-        /// Do A1 se dává buď celá cesta ke souboru, nebo jen jeho název(může být i včetně neomezeně přípon)
-        /// A2 říká, zda se má vrátit plná cesta ke souboru A1, upraví se pouze samotný název souboru
-        /// When file has unknown extension, return SE
-        /// Default for A4 was bracket
-        /// </summary>
-        /// <param name="p"></param>
-        /// <param name="path"></param>
-        /// <param name="hasSerie"></param>
-        /// <returns></returns>
-        public static string GetNameWithoutSeries(string p, bool path, out bool hasSerie, SerieStyle serieStyle, out int serie)
-        {
-            serie = -1;
-            hasSerie = false;
-            string dd = sunamo.FS.WithEndSlash(FS.GetDirectoryName(p));
-            StringBuilder sbExt = new StringBuilder();
-            string ext = FS.GetExtension(p);
-            p = SH.TrimEnd(p, ext);
-            sbExt.Append(ext);
-            int pocetSerii = 0;
-
-            while (true)
-            {
-                ext = FS.GetExtension(p);
-                if (ext == string.Empty)
-                {
-                    break;
-                }
-
-                if (p.Contains(AllStrings.us))
-                {
-                    RemoveSerieUnderscore(ref serie, ref p, ref pocetSerii);
-                }
-
-                ext = FS.GetExtension(p);
-                if (ext == string.Empty)
-                {
-                    break;
-                }
-
-                sbExt.Insert(0, ext);
-                p = SH.TrimEnd(p, ext);
-                // better than in cycle remove extensions - resistant to file with many extensions Image-2015-01-27-at-8.09.26-PM
-                if (AllExtensionsHelper.FindTypeWithDot(ext) == TypeOfExtension.other)
-                {
-                    return "";
-                }
-            }
-            ext = sbExt.ToString();
-
-            string g = p;
-
-            if (dd.Length != 0)
-            {
-                g = g.Substring(dd.Length);
-            }
-
-            // Nejdříve ořežu všechny přípony a to i tehdy, má li soubor více přípon
+            var jumpUp = AllStrings.dd + delimiter;
             
-            if (serieStyle == SerieStyle.Brackets || serieStyle == SerieStyle.All)
-            {
-                while (true)
-                {
-                    g = g.Trim();
-                    int lb = g.LastIndexOf(AllChars.lb);
-                    int rb = g.LastIndexOf(AllChars.rb);
-
-                    if (lb != -1 && rb != -1)
-                    {
-                        string between = SH.GetTextBetweenTwoChars(g, lb, rb);
-                        if (SH.IsNumber(between))
-                        {
-                            serie = int.Parse(between);
-                            pocetSerii++;
-                            // s - 4, on end (1) - 
-                            g = g.Substring(0, lb);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-
-                }
-            }
-
-            if (serieStyle == SerieStyle.Dash || serieStyle == SerieStyle.All)
-            {
-                int dex = g.IndexOf(AllChars.dash);
-
-                if (g[g.Length - 3] == '-')
-                {
-                    serie = int.Parse(g.Substring(g.Length - 2));
-                    g = g.Substring(0, g.Length - 3);
-                }
-                else if (g[g.Length - 2] == '-')
-                {
-                    serie = int.Parse(g.Substring(g.Length - 1));
-                    g = g.Substring(0, g.Length - 2);
-
-                }
-                // To true hasSerie
-                pocetSerii++;
-
-            }
-
-            if (serieStyle == SerieStyle.Underscore || serieStyle == SerieStyle.All)
-            {
-                RemoveSerieUnderscore(ref serie, ref g, ref pocetSerii);
-
-            }
-
-            if (pocetSerii != 0)
-            {
-                hasSerie = true;
-            }
-            g = g.Trim();
-            if (path)
-            {
-                return dd + g + ext;
-            }
-            return g + ext;
-        }
-
-        public static string AddUpfoldersToRelativePath(int i, string file)
-        {
-            return SH.JoinTimes(i, AllStrings.dds) + file;
-            
-        }
-
-        public static string RemoveSerieUnderscore(string d)
-        {
-            int serie = 0;
-            int pocetSerii = 0;
-            RemoveSerieUnderscore(ref serie, ref d, ref pocetSerii);
-            return d;
-        }
-
-        private static void RemoveSerieUnderscore(ref int serie, ref string g, ref int pocetSerii)
-        {
-            while (true)
-            {
-                int dex = g.LastIndexOf('_');
-                if (dex != -1)
-                {
-                    string serieS = g.Substring(dex + 1);
-                    g = g.Substring(0, dex);
-
-                    if (int.TryParse(serieS, out serie))
-                    {
-
-                        pocetSerii++;
-                    }
-
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Use this than Path.Combine which if argument starts with backslash ignore all arguments before this
-        /// </summary>
-        /// <param name="upFolderName"></param>
-        /// <param name="dirNameDecoded"></param>
-        /// <returns></returns>
-        public static string Combine(params string[] s)
-        {
-            s = CA.TrimStart(AllChars.bs, s);
-            return Path.Combine(s);
-        }
-
-        public static string WithoutEndSlash(string v)
-        {
-            return WithoutEndSlash(ref v);
-        }
-
-        public static string WithoutEndSlash(ref string v)
-        {
-            return v.TrimEnd(AllChars.bs);
-        }
-
-        public static string WithEndSlash(ref string v)
-        {
-            if (v != string.Empty)
-            {
-                v = v.TrimEnd(AllChars.bs) + AllChars.bs;
-            }
-            return v;
-        }
-
-        public static string WithEndSlash(string v)
-        {
-            return WithEndSlash(ref v);
-        }
-
-        /// <summary>
-        /// Works with and without end backslash
-        /// Return with backslash
-        /// </summary>
-        /// <param name="rp"></param>
-        /// <returns></returns>
-        public static string GetDirectoryName(string rp)
-        {
-            rp = rp.TrimEnd(AllChars.bs);
-            int dex = rp.LastIndexOf(AllChars.bs);
-            if (dex != -1)
-            {
-                return rp.Substring(0, dex + 1);
-            }
-            return "";
-        }
-
-        /// <summary>
-        /// If path ends with backslash, FS.GetDirectoryName returns empty string
-        /// </summary>
-        /// <param name="rp"></param>
-        /// <returns></returns>
-        public static string GetFileName(string rp)
-        {
-            rp = rp.TrimEnd(AllChars.bs);
-            int dex = rp.LastIndexOf(AllChars.bs);
-            return rp.Substring(dex + 1);
+            return SH.JoinTimes(i, jumpUp) + file;
         }
 
         /// <summary>
@@ -1588,7 +1275,7 @@ namespace sunamo
             foreach (var item in extensions)
             {
                 string ext = FS.NormalizeExtension(item);
-                string[] files = Directory.GetFiles(folderFrom, "*" + ext, SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(folderFrom, AllStrings.asterisk + ext, SearchOption.AllDirectories);
                 if (files.Length != 0)
                 {
                     dict.Add(ext, files);
@@ -1606,7 +1293,7 @@ namespace sunamo
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static string NormalizeExtension(string item)
         {
-            return "." + item.TrimStart('.');
+            return AllStrings.dot + item.TrimStart(AllChars.dot);
         }
 
         public static string GetNormalizedExtension(string filename)
@@ -1614,61 +1301,33 @@ namespace sunamo
             return NormalizeExtension(filename);
         }
 
-        static FS()
-        {
-            invalidPathChars = new List<char>(Path.GetInvalidPathChars());
-            if (!invalidPathChars.Contains('/'))
-            {
-                invalidPathChars.Add('/');
-            }
-            if (!invalidPathChars.Contains(AllChars.bs))
-            {
-                invalidPathChars.Add(AllChars.bs);
-            }
-            invalidFileNameChars = new List<char>(Path.GetInvalidFileNameChars());
-            for (char i = (char)65529; i < 65534; i++)
-            {
-                invalidFileNameChars.Add(i);
-            }
+        
 
-            invalidCharsForMapPath = new List<char>();
-            invalidCharsForMapPath.AddRange(invalidFileNameChars.ToArray());
-            foreach (var item in Path.GetInvalidFileNameChars())
-            {
-                if (!invalidCharsForMapPath.Contains(item))
-                {
-                    invalidCharsForMapPath.Add(item);
-                }
-            }
+    public static long ModifiedinUnix(string dsi)
+    {
+        return (long)(File.GetLastWriteTimeUtc(dsi).Subtract(DTConstants.UnixFsStart)).TotalSeconds;
+    }
 
-            invalidCharsForMapPath.Remove('/');
-
-            invalidFileNameCharsWithoutDelimiterOfFolders = new List<char>(invalidFileNameChars.ToArray());
-
-            invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.bs);
-            invalidFileNameCharsWithoutDelimiterOfFolders.Remove('/');
-        }
-
-        public static void ReplaceDiacriticRecursive(string folder, bool dirs, bool files, DirectoryMoveCollisionOption fo, FileMoveCollisionOption co)
+    public static void ReplaceDiacriticRecursive(string folder, bool dirs, bool files, DirectoryMoveCollisionOption fo, FileMoveCollisionOption co)
         {
             if (dirs)
             {
-                List<ItemWithCount<string>> dires = sunamo.FS.DirectoriesWithToken(folder, AscDesc.Desc);
+                List<ItemWithCount<string>> dires = FS.DirectoriesWithToken(folder, AscDesc.Desc);
                 foreach (var item in dires)
                 {
-                    var dirPath = sunamo.FS.WithoutEndSlash(item.t);
+                    var dirPath = FS.WithoutEndSlash(item.t);
                     string dirName = Path.GetFileName(dirPath);
                     if (SH.ContainsDiacritic(dirName))
                     {
                         string dirNameWithoutDiac = SH.TextWithoutDiacritic(dirName);
-                        sunamo.FS.RenameDirectory(item.t, dirNameWithoutDiac, fo, co);
+                        FS.RenameDirectory(item.t, dirNameWithoutDiac, fo, co);
                     }
                 }
             }
 
             if (files)
             {
-                string[] files2 = Directory.GetFiles(folder, "*", SearchOption.AllDirectories);
+                string[] files2 = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
                 foreach (var item in files2)
                 {
                     string filePath = item;
@@ -1676,7 +1335,7 @@ namespace sunamo
                     if (SH.ContainsDiacritic(fileName))
                     {
                         string dirNameWithoutDiac = SH.TextWithoutDiacritic(fileName);
-                        sunamo.FS.RenameFile(item, dirNameWithoutDiac, co);
+                        FS.RenameFile(item, dirNameWithoutDiac, co);
                     }
 
                 }
@@ -1691,7 +1350,7 @@ namespace sunamo
         /// <param name="co"></param>
         public static void RenameFile(string item, string dirNameWithoutDiac, FileMoveCollisionOption co)
         {
-            sunamo.FS.MoveFile(item, sunamo.FS.ChangeFilename(item, dirNameWithoutDiac, false), co);
+            FS.MoveFile(item, FS.ChangeFilename(item, dirNameWithoutDiac, false), co);
         }
 
         /// <summary>
@@ -1703,9 +1362,9 @@ namespace sunamo
         public static string RenameDirectory(string path, string newname, DirectoryMoveCollisionOption co, FileMoveCollisionOption fo)
         {
             string vr = null;
-            path = sunamo.FS.WithoutEndSlash(path);
+            path = FS.WithoutEndSlash(path);
             string cesta = FS.GetDirectoryName(path);
-            string nova = Path.Combine(cesta, newname);
+            string nova = FS.Combine(cesta, newname);
 
             vr = MoveDirectoryNoRecursive(path, nova, co, fo);
             return vr;
@@ -1753,7 +1412,7 @@ namespace sunamo
             }
             catch
             {
-                ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted: " + item);
+                ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted" + ": " + item);
                 return false;
             }
         }
@@ -1771,32 +1430,6 @@ namespace sunamo
                 message = ex.Message;
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Vrátí cestu a název souboru s ext
-        /// </summary>
-        /// <param name="fn"></param>
-        /// <param name="path"></param>
-        /// <param name="file"></param>
-        public static void GetPathAndFileName(string fn, out string path, out string file)
-        {
-            path = FS.GetDirectoryName(fn);
-            file = Path.GetFileName(fn);
-        }
-
-        /// <summary>
-        /// Vrátí cestu a název souboru s ext a ext
-        /// </summary>
-        /// <param name="fn"></param>
-        /// <param name="path"></param>
-        /// <param name="file"></param>
-        /// <param name="ext"></param>
-        public static void GetPathAndFileName(string fn, out string path, out string file, out string ext)
-        {
-            path = FS.GetDirectoryName(fn) + AllChars.bs;
-            file = Path.GetFileName(fn);
-            ext = FS.GetExtension(file);
         }
 
         /// <summary>
@@ -1885,28 +1518,15 @@ namespace sunamo
 
             dalsi++;
 
-            return Path.Combine(slozka, fn + "_" + dalsi + ext);
+            return FS.Combine(slozka, fn + AllStrings.us + dalsi + ext);
         }
 
         public static void CreateDirectoryIfNotExists(string p)
         {
-            if (!Directory.Exists(p))
+        MakeUncLongPath(ref p);
+            if (!FS.ExistsDirectory(p))
             {
                 Directory.CreateDirectory(p);
-            }
-        }
-
-        public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
-        {
-            path = path.Replace("\\\\", "\\");
-            if (!File.Exists(path))
-            {
-                using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
-                {
-                    byte[] matriz = mss.ToArray();
-                    fs.Write(matriz, 0, matriz.Length);
-                }
-
             }
         }
 
@@ -1915,45 +1535,12 @@ namespace sunamo
 
             using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
             {
-                sunamo.FS.CopyStream(s, fs);
+                FS.CopyStream(s, fs);
                 fs.Flush();
 
             }
 
 
-        }
-
-        public static long GetFileSize(string item)
-        {
-            FileInfo fi = null;
-            try
-            {
-                fi = new FileInfo(item);
-            }
-            catch (Exception)
-            {
-                // Například příliš dlouhý název souboru
-                return 0;
-            }
-            if (fi.Exists)
-            {
-                return fi.Length;
-            }
-            return 0;
-        }
-
-        /// <summary>
-        /// Vrátí vč. cesty
-        /// </summary>
-        /// <param name="orig"></param>
-        /// <param name="whatInsert"></param>
-        /// <returns></returns>
-        public static string InsertBetweenFileNameAndExtension(string orig, string whatInsert)
-        {
-            string p = FS.GetDirectoryName(orig);
-            string fn = Path.GetFileNameWithoutExtension(orig);
-            string e = FS.GetExtension(orig);
-            return Path.Combine(p, fn + whatInsert + e);
         }
         /// <summary>
         /// Vratí bez cesty, pouze název souboru
@@ -1965,98 +1552,10 @@ namespace sunamo
         {
             string fn = Path.GetFileNameWithoutExtension(orig);
             string e = FS.GetExtension(orig);
-            return Path.Combine(fn + whatInsert + e);
-        }
-        /// <summary>
-        /// Create all upfolders of A1, if they dont exist 
-        /// </summary>
-        /// <param name="nad"></param>
-        public static void CreateUpfoldersPsysicallyUnlessThere(string nad)
-        {
-            CreateFoldersPsysicallyUnlessThere(FS.GetDirectoryName(nad));
+            return FS.Combine(fn + whatInsert + e);
         }
 
-        /// <summary>
-        /// Create all upfolders of A1 with, if they dont exist 
-        /// </summary>
-        /// <param name="nad"></param>
-        public static void CreateFoldersPsysicallyUnlessThere(string nad)
-        {
-            FS.MakeUncLongPath(ref nad);
-            if (Directory.Exists(nad))
-            {
-                return;
-            }
-            else
-            {
-                List<string> slozkyKVytvoreni = new List<string>();
-                slozkyKVytvoreni.Add(nad);
-
-                while (true)
-                {
-                    nad = FS.GetDirectoryName(nad);
-
-                    // TODO: Tady to nefunguje pro UWP/UAP apps protoze nemaji pristup k celemu disku. Zjistit co to je UWP/UAP/... a jak v nem ziskat/overit jakoukoliv slozku na disku
-                    if (Directory.Exists(nad))
-                    {
-                        break;
-                    }
-
-                    string kopia = nad;
-                    slozkyKVytvoreni.Add(kopia);
-                }
-
-                slozkyKVytvoreni.Reverse();
-                foreach (string item in slozkyKVytvoreni)
-                {
-                    string folder = FS.MakeUncLongPath( item);
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-                }
-            }
-        }
-
-        public static string[] OnlyNames(string[] files2)
-        {
-            return OnlyNames(CA.ToListString(files2)).ToArray();
-        }
-
-        /// <summary>
-        /// Returns with extension
-        /// POZOR: Na rozdíl od stejné metody v swf tato metoda vrací úplně nové pole a nemodifikuje A1
-        /// </summary>
-        /// <param name="files"></param>
-        /// <returns></returns>
-        public static List<string> OnlyNames(List<string> files2)
-        {
-            List<string> files = new List<string>(files2.Count);
-            for (int i = 0; i < files2.Count; i++)
-            {
-                files.Add(Path.GetFileName(files2[i]));
-            }
-            return files;
-        }
-
-        public static List<string> OnlyNamesWithoutExtension(List<string> p)
-        {
-            for (int i = 0; i < p.Count; i++)
-            {
-                p[i] = Path.GetFileNameWithoutExtension(p[i]);
-            }
-            return p;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string[] OnlyNamesWithoutExtension(string[] p)
-        {
-            return OnlyNamesWithoutExtension(new List<string>(p)).ToArray();
-        }
+        
 
         public static string[] OnlyNamesWithoutExtensionCopy(List<string> p2)
         {
@@ -2068,46 +1567,6 @@ namespace sunamo
             return p;
         }
 
-        public static string DeleteWrongCharsInFileName(string p, bool isPath)
-        {
-            List<char> invalidFileNameChars2 = null;
-
-            if (isPath)
-            {
-                invalidFileNameChars2 = invalidFileNameCharsWithoutDelimiterOfFolders;
-            }
-            else
-            {
-                invalidFileNameChars2 = invalidFileNameChars;
-            }
-
-            StringBuilder sb = new StringBuilder();
-            foreach (char item in p)
-            {
-                if (!invalidFileNameChars2.Contains(item))
-                {
-                    sb.Append(item);
-                }
-            }
-
-            return sb.ToString();
-        }
-
-        public static string DeleteWrongCharsInDirectoryName(string p)
-        {
-
-            StringBuilder sb = new StringBuilder();
-            foreach (char item in p)
-            {
-                if (!invalidPathChars.Contains(item))
-                {
-                    sb.Append(item);
-                }
-
-            }
-            return sb.ToString();
-        }
-
         public static string[] OnlyNamesWithoutExtension(string appendToStart, string[] fullPaths)
         {
             string[] ds = new string[fullPaths.Length];
@@ -2116,28 +1575,6 @@ namespace sunamo
                 ds[i] = appendToStart + Path.GetFileNameWithoutExtension(fullPaths[i]);
             }
             return ds;
-        }
-
-        public static string[] OnlyNames(string appendToStart, string[] fullPaths)
-        {
-            string[] ds = new string[fullPaths.Length];
-            for (int i = 0; i < fullPaths.Length; i++)
-            {
-                ds[i] = appendToStart + Path.GetFileName(fullPaths[i]);
-            }
-            return ds;
-        }
-
-        /// <summary>
-        /// Odstraňuje samozřejmě ve výjimce
-        /// </summary>
-        /// <param name="path"></param>
-        public static void DeleteFileIfExists(string path)
-        {
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
         }
 
         public static bool TryDeleteDirectory(string v)
@@ -2153,19 +1590,6 @@ namespace sunamo
             }
         }
 
-        public static bool ContainsInvalidPathCharForPartOfMapPath(string p)
-        {
-            foreach (var item in invalidCharsForMapPath)
-            {
-                if (p.IndexOf(item) != -1)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         /// <summary>
         /// Pokud hledáš metodu ReplacePathToFile, je to tato. Sloučeny protože dělali totéž.
         /// </summary>
@@ -2174,10 +1598,10 @@ namespace sunamo
         /// <returns></returns>
         public static string ChangeDirectory(string fileName, string changeFolderTo)
         {
-            string p = sunamo.FS.GetDirectoryName(fileName);
-            string fn = sunamo.FS.GetFileName(fileName);
+            string p = FS.GetDirectoryName(fileName);
+            string fn = FS.GetFileName(fileName);
 
-            return Path.Combine(changeFolderTo, fn);
+            return FS.Combine(changeFolderTo, fn);
         }
 
         /// <summary>
@@ -2191,36 +1615,13 @@ namespace sunamo
         public static string ChangeFilename(string item, string g, bool physically)
         {
             string cesta = FS.GetDirectoryName(item);
-            string nova = Path.Combine(cesta, g);
+            string nova = FS.Combine(cesta, g);
 
             if (physically)
             {
                 try
                 {
-                    if (File.Exists(nova))
-                    {
-                        File.Delete(nova);
-                    }
-                    File.Move(item, nova);
-                }
-                catch
-                {
-                }
-            }
-            return nova;
-        }
-
-        public static string ChangeExtension(string item, string newExt, bool physically)
-        {
-            string cesta = FS.GetDirectoryName(item);
-            string fnwoe = Path.GetFileNameWithoutExtension(item);
-            string nova = Path.Combine(cesta, fnwoe + newExt);
-
-            if (physically)
-            {
-                try
-                {
-                    if (File.Exists(nova))
+                    if (FS.ExistsFile(nova))
                     {
                         File.Delete(nova);
                     }
@@ -2233,4 +1634,3 @@ namespace sunamo
             return nova;
         }
     }
-}

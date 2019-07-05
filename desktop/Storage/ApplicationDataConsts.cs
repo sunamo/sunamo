@@ -11,5 +11,8 @@ namespace desktop.Storage
         public readonly string DataContext = "DataContext";
         public readonly string IsChecked = "IsChecked";
         public readonly string ItemsSource = "ItemsSource";
+        public readonly string Text = "Text";
+        public readonly string SelectedFolders = "SelectedFolders";
+        public readonly string chbAdded = "chbAdded";
     }
 }

@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public enum SerializationLibrary
-{
-    Microsoft,
-    Newtonsoft
-}
+
 
 public class JavascriptSerialization
 {
+    public static JavascriptSerialization InstanceMs = new JavascriptSerialization(SerializationLibrary.Microsoft);
+    public static JavascriptSerialization InstanceNewtonSoft = new JavascriptSerialization(SerializationLibrary.Newtonsoft);
+
     SerializationLibrary sl = SerializationLibrary.Newtonsoft;
     /// <summary>
     /// Výchozí pro A1 je Microsoft
@@ -39,12 +38,12 @@ public class JavascriptSerialization
 
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
-        throw new Exception("System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps.");
+        throw new Exception("System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
     }
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
-        throw new NotImplementedException("Else if with enum value " + sl + " in JavascriptSerialization." + v);
+        throw new NotImplementedException("Else if with enum value" + " " + sl + " " + "in JavascriptSerialization" + "." + v);
     }
 
     public object Deserialize(String o, Type targetType)

@@ -1,62 +1,10 @@
-﻿using System;
+﻿using sunamo.Helpers.DT;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Helpers.DT
-{
-    public class DTHelperMulti
+    public partial class DTHelperMulti
     {
-        /// <summary>
-        /// Vrátí datum v českém formátu(například 21.6.1989)
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static string DateToString(DateTime p, Langs l)
-        {
-            if (l == Langs.cs)
-            {
-                return p.Day + "." + p.Month + "." + p.Year;
-            }
-            return p.Month + "/" + p.Day + "/" + p.Year;
-        }
-
-        public static DateTime IsValidDateText(string r)
-        {
-            DateTime dt = DateTime.MinValue;
-            r = r.Trim();
-            if (r != "")
-            {
-                var indexTecky = r.IndexOf('.');
-                if (indexTecky != -1)
-                {
-                    dt = DTHelperCs.ParseDateCzech(r);
-                }
-                else
-                {
-                    dt = DTHelperEn.ParseDateUSA(r);
-                }
-            }
-            return dt;
-        }
-
-        public static DateTime IsValidTimeText(string r)
-        {
-            DateTime dt = DateTime.MinValue;
-            r = r.Trim();
-            if (r != "")
-            {
-                var indexMezery = r.IndexOf(' ');
-                if (indexMezery == -1)
-                {
-                    dt = DTHelperCs.ParseTimeCzech(r);
-                }
-                else
-                {
-                    dt = DTHelperEn.ParseTimeUSA(r);
-                }
-            }
-            return dt;
-        }
 
         /// <summary>
         /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
@@ -96,7 +44,7 @@ namespace sunamo.Helpers.DT
                             }
                             else
                             {
-                                return tt.Days + " days";
+                                return tt.Days + " " + "days";
                             }
                         }
                         else
@@ -107,33 +55,33 @@ namespace sunamo.Helpers.DT
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodinu";
+                                        return tt.Hours + " " + "hodinu";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hour";
+                                        return tt.Hours + " " + "hour";
                                     }
                                 }
                                 else if (tt.Hours > 1 && tt.Hours < 5)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodiny";
+                                        return tt.Hours + " " + "hodiny";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hours";
+                                        return tt.Hours + " " + "hours";
                                     }
                                 }
                                 else if (tt.Hours > 4)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Hours + " hodin";
+                                        return tt.Hours + " " + "hodin";
                                     }
                                     else
                                     {
-                                        return tt.Hours + " hours";
+                                        return tt.Hours + " " + "hours";
                                     }
                                 }
                                 else
@@ -143,33 +91,33 @@ namespace sunamo.Helpers.DT
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minutu";
+                                            return tt.Minutes + " " + "minutu";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minute";
+                                            return tt.Minutes + " " + "minute";
                                         }
                                     }
                                     else if (tt.Minutes > 1 && tt.Minutes < 5)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minuty";
+                                            return tt.Minutes + " " + "minuty";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minutes";
+                                            return tt.Minutes + " " + "minutes";
                                         }
                                     }
                                     else if (tt.Minutes > 4)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Minutes + " minut";
+                                            return tt.Minutes + " " + "minut";
                                         }
                                         else
                                         {
-                                            return tt.Minutes + " minutes";
+                                            return tt.Minutes + " " + "minutes";
                                         }
                                     }
                                     else //if (tt.Minutes == 0)
@@ -178,33 +126,33 @@ namespace sunamo.Helpers.DT
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekundu";
+                                                return tt.Seconds + " " + "sekundu";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " second";
+                                                return tt.Seconds + " " + "second";
                                             }
                                         }
                                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekundy";
+                                                return tt.Seconds + " " + "sekundy";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " seconds";
+                                                return tt.Seconds + " " + "seconds";
                                             }
                                         }
                                         else //if (tt.Seconds > 4)
                                         {
                                             if (l == Langs.cs)
                                             {
-                                                return tt.Seconds + " sekund";
+                                                return tt.Seconds + " " + "sekund";
                                             }
                                             else
                                             {
-                                                return tt.Seconds + " seconds";
+                                                return tt.Seconds + " " + "seconds";
                                             }
                                         }
 
@@ -228,33 +176,33 @@ namespace sunamo.Helpers.DT
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týden";
+                            return totalWeeks + " " + "týden";
                         }
                         else
                         {
-                            return totalWeeks + " week";
+                            return totalWeeks + " " + "week";
                         }
                     }
                     else if (totalWeeks < 5 && totalWeeks > 1)
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týdny";
+                            return totalWeeks + " " + "týdny";
                         }
                         else
                         {
-                            return totalWeeks + " weeks";
+                            return totalWeeks + " " + "weeks";
                         }
                     }
                     else
                     {
                         if (l == Langs.cs)
                         {
-                            return totalWeeks + " týdnů";
+                            return totalWeeks + " " + "týdnů";
                         }
                         else
                         {
-                            return totalWeeks + " weeks";
+                            return totalWeeks + " " + "weeks";
                         }
                     }
                 }
@@ -264,33 +212,33 @@ namespace sunamo.Helpers.DT
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíc";
+                            return months + " " + "měsíc";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
                     }
                     else if (months > 1 && months < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíce";
+                            return months + " " + "měsíce";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
                     }
                     else
                     {
                         if (l == Langs.cs)
                         {
-                            return months + " měsíců";
+                            return months + " " + "měsíců";
                         }
                         else
                         {
-                            return months + " months";
+                            return months + " " + "months";
                         }
 
                     }
@@ -300,33 +248,33 @@ namespace sunamo.Helpers.DT
             {
                 if (l == Langs.cs)
                 {
-                    return "1 rok";
+                    return " " + " rok";
                 }
                 else
                 {
-                    return "1 year";
+                    return " " + " " + "year";
                 }
             }
             else if (age > 1 && age < 5)
             {
                 if (l == Langs.cs)
                 {
-                    return age + " roky";
+                    return age + " " + "roky";
                 }
                 else
                 {
-                    return age + " years";
+                    return age + " " + "years";
                 }
             }
             else if (age > 4 || age == 0)
             {
                 if (l == Langs.cs)
                 {
-                    return age + " roků";
+                    return age + " " + "roků";
                 }
                 else
                 {
-                    return age + " years";
+                    return age + " " + "years";
                 }
             }
             else
@@ -362,33 +310,33 @@ namespace sunamo.Helpers.DT
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodinu");
+                    vr.Add(tt.Hours + " " + "hodinu");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hour");
+                    vr.Add(tt.Hours + " " + "hour");
                 }
             }
             else if (tt.Hours > 1 && tt.Hours < 5)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodiny");
+                    vr.Add(tt.Hours + " " + "hodiny");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hours");
+                    vr.Add(tt.Hours + " " + "hours");
                 }
             }
             else if (tt.Hours > 4)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Hours + " hodin");
+                    vr.Add(tt.Hours + " " + "hodin");
                 }
                 else
                 {
-                    vr.Add(tt.Hours + " hours");
+                    vr.Add(tt.Hours + " " + "hours");
                 }
             }
             else
@@ -398,33 +346,33 @@ namespace sunamo.Helpers.DT
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minutu");
+                        vr.Add(tt.Minutes + " " + "minutu");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minute");
+                        vr.Add(tt.Minutes + " " + "minute");
                     }
                 }
                 else if (tt.Minutes > 1 && tt.Minutes < 5)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minuty");
+                        vr.Add(tt.Minutes + " " + "minuty");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minutes");
+                        vr.Add(tt.Minutes + " " + "minutes");
                     }
                 }
                 else if (tt.Minutes > 4)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " minut");
+                        vr.Add(tt.Minutes + " " + "minut");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " minutes");
+                        vr.Add(tt.Minutes + " " + "minutes");
                     }
                 }
                 else //if (tt.Minutes == 0)
@@ -433,33 +381,33 @@ namespace sunamo.Helpers.DT
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekundu");
+                            vr.Add(tt.Seconds + " " + "sekundu");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " second");
+                            vr.Add(tt.Seconds + " " + "second");
                         }
                     }
                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekundy");
+                            vr.Add(tt.Seconds + " " + "sekundy");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " seconds");
+                            vr.Add(tt.Seconds + " " + "seconds");
                         }
                     }
                     else if (tt.Seconds > 4)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " sekund");
+                            vr.Add(tt.Seconds + " " + "sekund");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " seconds");
+                            vr.Add(tt.Seconds + " " + "seconds");
                         }
                     }
                     else
@@ -468,51 +416,51 @@ namespace sunamo.Helpers.DT
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekundu");
+                                vr.Add(tt.Milliseconds + " " + "milisekundu");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " millisecond");
+                                vr.Add(tt.Milliseconds + " " + "millisecond");
                             }
                         }
                         else if (tt.Seconds > 1 && tt.Seconds < 5)
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekundy");
+                                vr.Add(tt.Milliseconds + " " + "milisekundy");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                         else if (tt.Seconds > 4)
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekund");
+                                vr.Add(tt.Milliseconds + " " + "milisekund");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                         else
                         {
                             if (l == Langs.cs)
                             {
-                                vr.Add(tt.Milliseconds + " milisekund");
+                                vr.Add(tt.Milliseconds + " " + "milisekund");
                             }
                             else
                             {
-                                vr.Add(tt.Milliseconds + " milliseconds");
+                                vr.Add(tt.Milliseconds + " " + "milliseconds");
                             }
                         }
                     }
                 }
             }
 
-            string s = SH.Join(' ', vr);
+            string s = SH.Join(AllChars.space, vr);
 
             return s;
         }
@@ -535,10 +483,9 @@ namespace sunamo.Helpers.DT
                 dayOfWeek = DTConstants.daysInWeekCS[day];
             }
 
-            return DateToString(dateTime, l) + " (" + dayOfWeek + ")";
+            return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
         }
 
-        #region Parse EN->CZ
         /// <summary>
         /// Vyparsuje datum ve formátu měsíc/den/rok
         /// </summary>
@@ -546,85 +493,14 @@ namespace sunamo.Helpers.DT
         /// <returns></returns>
         public static DateTime? ParseDateMonthDayYear(string p)
         {
-            string[] s = SH.SplitNone(p, "/");
+            var s = SH.SplitNone(p, AllStrings.slash);
             DateTime vr;
-            if (DateTime.TryParse(s[1] + "." + s[0] + "." + s[2], out vr))
+            if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
             {
                 return vr;
             }
             return null;
         }
-        #endregion
-
-        /// <summary>
-        /// Vrátí datum a čas v českém formátu bez ms a s
-        /// </summary>
-        /// <param name="d"></param>
-        /// <returns></returns>
-        public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
-        {
-            if (d == dtMinVal)
-            {
-                if (l == Langs.cs)
-                {
-                    return "Nebylo uvedeno";
-                }
-                else
-                {
-                    return "Not indicated";
-                }
-            }
-
-            if (l == Langs.cs)
-            {
-                return d.Day + "." + d.Month + "." + d.Year + " " + NH.MakeUpTo2NumbersToZero(d.Hour) + ":" + NH.MakeUpTo2NumbersToZero(d.Minute);
-            }
-            else
-            {
-                return d.Month + "/" + d.Day + "/" + d.Year + " " + NH.MakeUpTo2NumbersToZero(d.Hour) + ":" + NH.MakeUpTo2NumbersToZero(d.Minute);
-            }
-
-        }
-
-        public static DateTime IsValidDateTimeText(string datum)
-        {
-            DateTime vr = DateTime.MinValue;
-            int indexMezery = datum.IndexOf(' ');
-            if (indexMezery != -1)
-            {
-                var datum2 = DateTime.Today;
-                var cas2 = DateTime.Today;
-                var datum3 = datum.Substring(0, indexMezery);
-                var cas3 = datum.Substring(indexMezery + 1);
-                if (datum3.IndexOf('.') != -1)
-                {
-                    datum2 = DTHelperCs.ParseDateCzech(datum3);
-                }
-                else
-                {
-                    datum2 = DTHelperEn.ParseDateUSA(datum3);
-                }
-
-                if (cas3.IndexOf(' ') == -1)
-                {
-                    cas2 = DTHelperCs.ParseTimeCzech(cas3);
-                }
-                else
-                {
-                    cas2 = DTHelperEn.ParseTimeUSA(cas3);
-                }
-
-                if (datum2 != DateTime.MinValue && cas2 != DateTime.MinValue)
-                {
-                    vr = new DateTime(datum2.Year, datum2.Month, datum2.Day, cas2.Hour, cas2.Minute, cas2.Second);
-                }
-
-
-            }
-
-            return vr;
-        }
 
 
     }
-}

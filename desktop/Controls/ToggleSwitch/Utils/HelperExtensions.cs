@@ -2,7 +2,7 @@
 
 namespace desktop.Controls.ToggleSwitch.Utils
 {
-	internal static class HelperExtensions
+	public static class HelperExtensions
 	{
 		public static T Clamp<T>(this T val, T min, T max) where T : IComparable<T>
 		{

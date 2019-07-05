@@ -14,7 +14,17 @@ namespace desktop
     {
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
-        public static bool validated;
+        public static bool validated
+        {
+            set
+            {
+                TextBoxExtensions.validated = value;
+            }
+            get
+            {
+                return TextBoxExtensions.validated;
+            }
+        }
 
         static TextBoxHelper()
         {
@@ -70,7 +80,19 @@ namespace desktop
 
         private static void ScrollToLineWorking(TextBox txt, int line)
         {
-            txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+
+            try
+            {
+                /*Snažil jsem opravit 
+                 * problém s napovídáním, mám git status, napíšu git, znovu mi to doplní status, mezerník a GetCharacterIndexFromLineIndex(Int32 lineIndex)\r\n   at desktop.TextBoxHelper.ScrollToLineWorking(TextBox txt, Int32 line)\r\n   at desktop.TextBoxHelper.ScrollToLin. 
+                 * poprvé se to projevilo, podruhé už ne, tak to jednoduše zakomentuji
+                 */ 
+                txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
+            }
+            catch (Exception)
+            {
+                return;
+            }
             txt.SelectionLength = txt.GetLineLength(line);
             txt.CaretIndex = txt.SelectionStart;
             txt.ScrollToLine(line);
@@ -139,32 +161,14 @@ namespace desktop
         }
 
         /// <summary>
-        /// Before first calling I have to set validated = true
+        /// Instead of this use instance 
         /// </summary>
-        /// <param name="validated"></param>
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
         public static void Validate(TextBlock tb, TextBox control, bool trim = true)
         {
-            if (!validated)
-            {
-                return;
-            }
-            string text = control.Text;
-            if (trim)
-            {
-                text = text.Trim();
-            }
-            if (text == string.Empty)
-            {
-                InitApp.TemplateLogger.MustHaveValue(tb.Text);
-                validated = false;
-            }
-            else
-            {
-                validated = true;
-            }
+            control.Validate(tb, trim);
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)

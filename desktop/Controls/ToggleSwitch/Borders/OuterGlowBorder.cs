@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="OuterGlowBorder.cs" company="Microsoft Corporation copyright 2008.">
+// <copyright file="OuterGlowBorder.cs" company="Microsoft Corporation copyright 2008" + ".">
 // (c) 2008 Microsoft Corporation. All rights reserved.
 // This source is subject to the Microsoft Public License.
 // See http://www.microsoft.com/resources/sharedsource/licensingbasics/sharedsourcelicenses.mspx.
@@ -107,7 +107,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// <summary>
 		/// Gets or sets a value indicating whether the content is clipped.
 		/// </summary>
-		[Category("Appearance"), Description("Sets whether the content is clipped or not.")]
+		[Category("Appearance"), Description("Sets whether the content is clipped or not" + ".")]
 		public bool ClipContent
 		{
 			get
@@ -123,7 +123,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// <summary>
 		/// Gets or sets the outer glow opacity.
 		/// </summary>
-		[Category("Appearance"), Description("The outer glow opacity.")]
+		[Category("Appearance"), Description("The outer glow opacity" + ".")]
 		public double OuterGlowOpacity
 		{
 			get
@@ -139,7 +139,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// <summary>
 		/// Gets or sets the outer glow size.
 		/// </summary>
-		[Category("Appearance"), Description("The outer glow size.")]
+		[Category("Appearance"), Description("The outer glow size" + ".")]
 		public double OuterGlowSize
 		{
 			get
@@ -158,7 +158,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// <summary>
 		/// Gets or sets the outer glow color.
 		/// </summary>
-		[Category("Appearance"), Description("The outer glow color.")]
+		[Category("Appearance"), Description("The outer glow color" + ".")]
 		public Color OuterGlowColor
 		{
 			get
@@ -176,7 +176,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Gets or sets the border corner radius.
 		/// This is a thickness, as there is a problem parsing CornerRadius types.
 		/// </summary>
-		[Category("Appearance"), Description("Sets the corner radius on the border.")]
+		[Category("Appearance"), Description("Sets the corner radius on the border" + ".")]
 		public CornerRadius CornerRadius
 		{
 			get
@@ -197,7 +197,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Gets or sets the border corner radius.
 		/// This is a thickness, as there is a problem parsing CornerRadius types.
 		/// </summary>
-		[Category("Appearance"), Description("Sets the corner radius on the border.")]
+		[Category("Appearance"), Description("Sets the corner radius on the border" + ".")]
 		public CornerRadius ShadowCornerRadius
 		{
 			get
@@ -232,7 +232,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Updates the glow size.
 		/// </summary>
 		/// <param name="size">The new size.</param>
-		internal void UpdateGlowSize(double size)
+		public void UpdateGlowSize(double size)
 		{
 			if (_outerGlowBorder != null)
 			{
@@ -244,7 +244,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Updates the outer glow color.
 		/// </summary>
 		/// <param name="color">The new color.</param>
-		internal void UpdateGlowColor(Color color)
+		public void UpdateGlowColor(Color color)
 		{
 			if (_shadowVertical1 != null)
 			{

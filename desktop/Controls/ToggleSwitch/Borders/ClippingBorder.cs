@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ClippingBorder.cs" company="Microsoft Corporation copyright 2008.">
+// <copyright file="ClippingBorder.cs" company="Microsoft Corporation copyright 2008" + ".">
 // (c) 2008 Microsoft Corporation. All rights reserved.
 // This source is subject to the Microsoft Public License.
 // See http://www.microsoft.com/resources/sharedsource/licensingbasics/sharedsourcelicenses.mspx.
@@ -92,7 +92,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Gets or sets the border corner radius.
 		/// This is a thickness, as there is a problem parsing CornerRadius types.
 		/// </summary>
-		[Category("Appearance"), Description("Sets the corner radius on the border.")]
+		[Category("Appearance"), Description("Sets the corner radius on the border" + ".")]
 		public CornerRadius CornerRadius
 		{
 			get
@@ -109,7 +109,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// <summary>
 		/// Gets or sets a value indicating whether the content is clipped.
 		/// </summary>
-		[Category("Appearance"), Description("Sets whether the content is clipped or not.")]
+		[Category("Appearance"), Description("Sets whether the content is clipped or not" + ".")]
 		public bool ClipContent
 		{
 			get
@@ -154,7 +154,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Sets the corner radius.
 		/// </summary>
 		/// <param name="newCornerRadius">The new corner radius.</param>
-		internal void UpdateCornerRadius(CornerRadius newCornerRadius)
+		public void UpdateCornerRadius(CornerRadius newCornerRadius)
 		{
 			if (_border != null)
 			{
@@ -188,7 +188,7 @@ namespace desktop.Controls.ToggleSwitch.Borders
 		/// Updates whether the content is clipped.
 		/// </summary>
 		/// <param name="clipContent">Whether the content is clipped.</param>
-		internal void UpdateClipContent(bool clipContent)
+		public void UpdateClipContent(bool clipContent)
 		{
 			if (clipContent)
 			{

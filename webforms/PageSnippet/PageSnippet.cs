@@ -1,6 +1,6 @@
 ﻿
 using sunamo;
-using sunamo.Html;
+
 using web;
 
 public class PageSnippet
@@ -58,7 +58,7 @@ public class PageSnippet
     {
         this.title = title;
         this.description = description;
-        this.image = web.UH.GetWebUri3(sp, "img/" + image.ToString() + "/WordCloud.jpg");
+        this.image = UA.GetWebUri3(sp, "img" + "/" + image.ToString() + "/WordCloud.jpg");
     }
 
 }

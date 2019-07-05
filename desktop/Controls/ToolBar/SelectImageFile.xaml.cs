@@ -40,7 +40,7 @@ namespace desktop.Controls
                 v = "None";
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + v;
+            tbSelectedFile.Text = "Selected file" + ": " + v;
         }
 
         public event VoidStringBitmapBitmapImage FileSelected;
@@ -51,12 +51,12 @@ namespace desktop.Controls
             file = DW.SelectOfFile(Environment.SpecialFolder.DesktopDirectory);
             if (file != null)
             {
-                if (File.Exists(file))
+                if (FS.ExistsFile(file))
                 {
                     SelectedFile = file;
                         if (bi == null)
                     {
-                        if (File.Exists(file))
+                        if (FS.ExistsFile(file))
                         {
                             bi = new BitmapImage(new Uri(file));
                         }

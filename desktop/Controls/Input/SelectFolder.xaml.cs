@@ -1,4 +1,5 @@
-﻿using sunamo;
+﻿using desktop.AwesomeFont;
+using sunamo;
 using sunamo.Constants;
 using sunamo.Essential;
 using System;
@@ -28,6 +29,8 @@ namespace desktop.Controls
 
         //public event VoidString FolderSelected;
         public event VoidString FolderChanged;
+        public event VoidT<SelectFolder> FolderRemoved;
+
         public SelectFolder()
         {
             InitializeComponent();
@@ -39,10 +42,23 @@ namespace desktop.Controls
             cbDefaultFolders.SelectionChanged += CbDefaultFolders_SelectionChanged;
             
 #endif
+
+            Loaded += SelectFolder_Loaded;
+        }
+
+        private async void SelectFolder_Loaded(object sender, RoutedEventArgs e)
+        {
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnRemoveFolder, "\uf00d");
+        }
+
+        public void Validate(TextBlock tbFolder)
+        {
+            SelectFolder.Validate(tbFolder, this);
         }
 
         /// <summary>
         /// Before first calling I have to set validated = true
+        /// Its instance to avoid include another namespace
         /// </summary>
         /// <param name="validated"></param>
         /// <param name="tb"></param>
@@ -63,7 +79,7 @@ namespace desktop.Controls
                 InitApp.TemplateLogger.MustHaveValue(tb.Text);
                 validated = false;
             }
-            else if (!Directory.Exists(text))
+            else if (!FS.ExistsDirectory(text))
             {
                 InitApp.TemplateLogger.FolderDontExists(text);
                 validated = false;
@@ -72,6 +88,7 @@ namespace desktop.Controls
             {
                 validated = true;
             }
+
             
         }
 
@@ -83,6 +100,7 @@ namespace desktop.Controls
 
         /// <summary>
         /// Nastaví složku pouze když složka bude existovat na disku
+        /// When not, set SE
         /// </summary>
         public string SelectedFolder
         {
@@ -92,7 +110,8 @@ namespace desktop.Controls
             }
             set
             {
-                if (Directory.Exists(value))
+                OnFolderChanged(value);
+                if (FS.ExistsDirectory(value))
                 {
                     //FireFolderChanged = false;
                     txtFolder.Text = value;
@@ -126,15 +145,28 @@ namespace desktop.Controls
             if (folder != null)
             {
                 txtFolder.Text = folder;
-                if (FolderChanged != null)
-                {
-                    FolderChanged(folder);
-                }
+                OnFolderChanged(folder);
+            }
+        }
+
+        private void OnFolderChanged(string folder)
+        {
+            if (FolderChanged != null)
+            {
+                FolderChanged(folder);
             }
         }
 
         private void txtFolder_TextChanged(object sender, TextChangedEventArgs e)
         {
+        }
+
+        private void BtnRemoveFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (FolderRemoved != null)
+            {
+                FolderRemoved(this);
+            }
         }
     }
 }

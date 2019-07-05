@@ -73,7 +73,7 @@ namespace webforms
             {
                 p = p + "_";
 
-                SqlCommand comm = new SqlCommand(string.Format("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = @p0 AND TABLE_NAME LIKE @p1 + '%'"));
+                SqlCommand comm = new SqlCommand(SH.Format2("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = @p0 AND TABLE_NAME LIKE @p1 +" + " '" + "%'"));
                 global::MSStoredProceduresI.AddCommandParameter(comm, 0, "BASE TABLE");
                 global::MSStoredProceduresI.AddCommandParameter(comm, 1, p);
                 DataTable dt = global::MSStoredProceduresI.ci.SelectDataTable(comm);

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 /// M IPrevedPpk zatim nejsou impl.
 /// 
 /// </summary>
-class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
+public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
 {
     #region DPP
     /// <summary>
@@ -38,7 +38,7 @@ class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
         #region Polkud A2, vsechny je rek projdu a 
         if (vsechnyHodnoty)
         {
-            throw new Exception("Nesm� se zad�vat s A2 true");
+            throw new Exception("Nesmi se zadavat s A2 true");
             //vratit.AddRange(VsechnyKlice(klic));
         } 
         #endregion
@@ -113,8 +113,8 @@ class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
          string zbylaCesta = null;
          // TODO: Pridat kontrolu, zda tomu tak je
          string pred = null;
-         SH.GetPartsByLocation(out pred, out zbylaCesta, cesta, cesta.IndexOf("\\"));
-         string[] tokeny = SH.Split(zbylaCesta, "\\");
+         SH.GetPartsByLocation(out pred, out zbylaCesta, cesta, cesta.IndexOf(AllStrings.bs));
+         var tokeny = SH.Split(zbylaCesta, AllStrings.bs);
          Type pe = typeof(Registry);
          FieldInfo[] fi = pe.GetFields();
          RegistryKey vratit = null;
@@ -176,7 +176,7 @@ class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
     /// <returns></returns>
     public static string CombinePaths(string s1, string s2)
     {
-        return Path.Combine(s1, s2);
+        return FS.Combine(s1, s2);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
     /// M nekontroluje, zda se jedna o H a muze vratit posledni token cesty.
     /// </summary>
     /// <param name="hodnota"></param>
-    /// <param name="?"></param>
+    /// <param name=AllStrings.q></param>
     /// <returns></returns>
     static string ExtractPathFromPath(out string hodnota, string cesta)
     {
@@ -251,7 +251,7 @@ class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaRegistru>
 
     public static void GetHkeyAndPath(string p, out string hkey, out string key)
     {
-         SH.GetPartsByLocation(out hkey, out key, p, '\\');
+         SH.GetPartsByLocation(out hkey, out key, p, AllChars.bs);
     }
 }
 

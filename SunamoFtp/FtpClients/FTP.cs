@@ -108,7 +108,7 @@ namespace SunamoFtp
         /// <param name="remotePath"></param>
         public void setRemotePath(string remotePath)
         {
-            OnNewStatus("Byl nastavena cesta ftp na " + remotePath);
+            OnNewStatus("Byl nastavena cesta ftp na" + " " + remotePath);
             if (remotePath == ftpClient.WwwSlash)
             {
                 if (ps.ActualPath != ftpClient.WwwSlash)
@@ -158,7 +158,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public string[] getFileList(string mask)
         {
-            OnNewStatus("Získávám seznam souborů ze složky " + ps.ActualPath + " příkazem NLST");
+            OnNewStatus("Získávám seznam souborů ze složky" + " " + ps.ActualPath + " " + "příkazem NLST");
             #region MyRegion
             if (!logined)
             {
@@ -167,7 +167,7 @@ namespace SunamoFtp
 
             Socket cSocket = createDataSocket();
 
-            sendCommand("NLST " + mask);
+            sendCommand("NLST" + " " + mask);
 
             if (!(retValue == 150 || retValue == 125))
             {
@@ -209,28 +209,28 @@ namespace SunamoFtp
         {
             if (FtpLogging.GoToUpFolder)
             {
-                OnNewStatus("Přecházím do nadsložky " + ps.ActualPath);
+                OnNewStatus("Přecházím do nadsložky" + " " + ps.ActualPath);
             }
-            this.sendCommand("CWD ..");
+            this.sendCommand("CWD " + "..");
             ps.RemoveLastTokenForce();
             NewStatusNewFolder();
         }
 
         private void NewStatusNewFolder()
         {
-            OnNewStatus("Nová složka je " + ps.ActualPath);
+            OnNewStatus("Nová složka je" + " " + ps.ActualPath);
         }
 
         public override void goToUpFolder()
         {
             if (ps.CanGoToUpFolder)
             {
-                this.sendCommand("CWD ..");
+                this.sendCommand("CWD " + "..");
                 ps.RemoveLastToken();
             }
             else
             {
-                OnNewStatus("Program nemohl přejít do nadsložky.");
+                OnNewStatus("Program nemohl přejít do nadsložky" + ".");
             }
         }
 
@@ -248,11 +248,11 @@ namespace SunamoFtp
             string[] fse = ListDirectoryDetails();
 
             string actualPath = ps.ActualPath;
-            OnNewStatus("Získávám rekurzivní seznam souborů ze složky " + actualPath);
+            OnNewStatus("Získávám rekurzivní seznam souborů ze složky" + " " + actualPath);
             foreach (string item in fse)
             {
                 char fz = item[0];
-                if (fz == '-')
+                if (fz == AllChars.dash)
                 {
                     if (vr.ContainsKey(actualPath))
                     {
@@ -267,18 +267,18 @@ namespace SunamoFtp
                 }
                 else if (fz == 'd')
                 {
-                    string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
-                    //Debug.Print("Název alba22: " + folderName);
+                    string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
+                    //DebugLogger.Instance.WriteLine("Název alba22: " + folderName);
                     if (!FtpHelper.IsThisOrUp(folderName))
                     {
                         if (vr.ContainsKey(actualPath))
                         {
-                            vr[actualPath].Add(item + "/");
+                            vr[actualPath].Add(item + AllStrings.slash);
                         }
                         else
                         {
                             List<string> ppk = new List<string>();
-                            ppk.Add(item + "/");
+                            ppk.Add(item + AllStrings.slash);
                             vr.Add(actualPath, ppk);
                         }
                         base.getFSEntriesListRecursively(slozkyNeuploadovatAVS, projeteSlozky, vr, ps.ActualPath, folderName);
@@ -301,12 +301,12 @@ namespace SunamoFtp
                     foreach (string item in fse)
                     {
                         char fz = item[0];
-                        if (fz == '-')
+                        if (fz == AllChars.dash)
                         {
                         }
                         else if (fz == 'd')
                         {
-                            string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                            string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
                             if (!FtpHelper.IsThisOrUp(folderName))
                             {
                                 if (vr.ContainsKey(actualPath))
@@ -337,7 +337,7 @@ namespace SunamoFtp
 
         public override void goToPath(string remoteFolder)
         {
-            if (remoteFolder.Contains("/Kocicky/"))
+            if (remoteFolder.Contains("/" + "Kocicky" + "/"))
             {
                 int i = 0;
                 int ii = i;
@@ -348,7 +348,7 @@ namespace SunamoFtp
             }
             if (FtpLogging.GoToFolder)
             {
-                OnNewStatus("Přecházím do složky " + remoteFolder);
+                OnNewStatus("Přecházím do složky" + " " + remoteFolder);
             }
             
 
@@ -366,7 +366,7 @@ namespace SunamoFtp
                 if (remoteFolder.StartsWith(actualPath))
                 {
                     remoteFolder = remoteFolder.Substring(actualPath.Length);
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
                     foreach (string item in tokens)
                     {
                         CreateDirectoryIfNotExists(item);
@@ -376,8 +376,8 @@ namespace SunamoFtp
                 else
                 {
                     this.setRemotePath(ftpClient.WwwSlash);
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
-                    for (int i = ps.indexZero; i < tokens.Length; i++)
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    for (int i = ps.indexZero; i < tokens.Count; i++)
                     {
                         CreateDirectoryIfNotExists(tokens[i]);
                     }
@@ -398,14 +398,14 @@ namespace SunamoFtp
         public override long getFileSize(string fileName)
         {
 
-            OnNewStatus("Pokouším se získat velikost souboru " + UH.Combine(false, ps.ActualPath, fileName));
+            OnNewStatus("Pokouším se získat velikost souboru" + " " + UH.Combine(false, ps.ActualPath, fileName));
 
             if (!logined)
             {
                 login();
             }
 
-            sendCommand("SIZE " + fileName);
+            sendCommand("SIZE" + " " + fileName);
             long size = 0;
 
             if (retValue == 213)
@@ -440,17 +440,17 @@ namespace SunamoFtp
             }
             catch (Exception ex)
             {
-                OnNewStatus("Couldn't connect to remote server: " + ex.Message);
+                OnNewStatus("Couldn't connect to remote server" + ": " + ex.Message);
                 return;
-                //throw new IOException("Couldn't connect to remote server: " + ex.Message);
+                //throw new IOException("Couldn't connect to remote server" + ": " + ex.Message);
             }
             #endregion
 
             #region Poté se přihlásím příkazem remoteUser
             if (debug)
-                OnNewStatus("USER " + remoteUser);
+                OnNewStatus("USER" + " " + remoteUser);
 
-            sendCommand2("USER " + remoteUser);
+            sendCommand2("USER" + " " + remoteUser);
 
             if (!(retValue == 331 || retValue == 230))
             {
@@ -466,7 +466,7 @@ namespace SunamoFtp
                 if (debug)
                     OnNewStatus("PASS xxx");
 
-                sendCommand2("PASS " + remotePass);
+                sendCommand2("PASS" + " " + remotePass);
                 if (!(retValue == 230 || retValue == 202))
                 {
                     cleanup();
@@ -480,11 +480,11 @@ namespace SunamoFtp
             if (logined)
             {
 
-                OnNewStatus("Logined to " + remoteHost);
+                OnNewStatus("Logined to" + " " + remoteHost);
             }
             else
             {
-                OnNewStatus("Not logined to " + remoteHost);
+                OnNewStatus("Not logined to" + " " + remoteHost);
             }
         }
 
@@ -673,12 +673,12 @@ namespace SunamoFtp
             if (mode)
             {
                 OnNewStatus("Nastavuji binární mód přenosu");
-                sendCommand("TYPE I");
+                sendCommand("TYPE" + " " + "");
             }
             else
             {
                 OnNewStatus("Nastavuji ASCII mód přenosu");
-                sendCommand("TYPE A");
+                sendCommand("TYPE" + " " + "");
             }
             if (retValue != 200)
             {
@@ -699,9 +699,9 @@ namespace SunamoFtp
         /// <param name="resume"></param>
         public override bool download(string remFileName, string locFileName, Boolean deleteLocalIfExists)
         {
-            OnNewStatus("Stahuji " + UH.Combine(false, ps.ActualPath, remFileName));
+            OnNewStatus("Stahuji" + " " + UH.Combine(false, ps.ActualPath, remFileName));
 
-            if (File.Exists(locFileName))
+            if (FS.ExistsFile(locFileName))
             {
                 if (deleteLocalIfExists)
                 {
@@ -711,13 +711,13 @@ namespace SunamoFtp
                     }
                     catch (Exception)
                     {
-                        OnNewStatus("Soubor " + remFileName + " nemohl být stažen, protože soubor " + locFileName + " nešel smazat");
+                        OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "nešel smazat");
                         return false;
                     }
                 }
                 else
                 {
-                    OnNewStatus("Soubor " + remFileName + " nemohl být stažen, protože soubor " + locFileName + " existoval již na disku a nebylo povoleno jeho smazání");
+                    OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "existoval již na disku a nebylo povoleno jeho smazání");
                     return false;
                 }
             }
@@ -738,9 +738,9 @@ namespace SunamoFtp
             #endregion
 
             #region Pokud neexistuje, vytvořím jej a hned zavřu. Načtu jej do FS s FileMode Open
-            OnNewStatus("Downloading file " + remFileName + " from " + remoteHost + "/" + remotePath);
+            OnNewStatus("Downloading file" + " " + remFileName + " " + "from" + " " + remoteHost + AllStrings.slash + remotePath);
 
-            if (!File.Exists(locFileName))
+            if (!FS.ExistsFile(locFileName))
             {
                 Stream st = File.Create(locFileName);
                 st.Close();
@@ -761,7 +761,7 @@ namespace SunamoFtp
 
                 if (offset > 0)
                 {
-                    sendCommand("REST " + offset);
+                    sendCommand("REST" + " " + offset);
                     if (retValue != 350)
                     {
                         offset = 0;
@@ -774,7 +774,7 @@ namespace SunamoFtp
                 {
                     if (debug)
                     {
-                        OnNewStatus("seeking to " + offset);
+                        OnNewStatus("seeking to" + " " + offset);
                     }
                     long npos = output.Seek(offset, SeekOrigin.Begin);
                     OnNewStatus("new pos=" + npos);
@@ -783,7 +783,7 @@ namespace SunamoFtp
             }
 
             #region Pošlu příkaz RETR a všechny přijaté bajty zapíšu
-            sendCommand("RETR " + UH.GetFileName(remFileName));
+            sendCommand("RETR" + " " + UH.GetFileName(remFileName));
 
             if (!(retValue == 150 || retValue == 125))
             {
@@ -875,7 +875,7 @@ namespace SunamoFtp
             #region Pokud je tam nějaký offset, pošlu opět příkaz rest s offsetem, abych nastavil od čeho budu uploadovat
             if (offset > 0)
             {
-                sendCommand("REST " + offset);
+                sendCommand("REST" + " " + offset);
                 if (retValue != 350)
                 {
                     offset = 0;
@@ -884,7 +884,7 @@ namespace SunamoFtp
             #endregion
 
             #region Pošlu příkaz STOR s jménem souboru a zapíšu všechny bajty z souboru do bufferu byte[]
-            sendCommand("STOR " + sunamo.FS.GetFileName(fileName));
+            sendCommand("STOR" + " " + FS.GetFileName(fileName));
 
             if (!(retValue == 125 || retValue == 150))
             {
@@ -905,12 +905,12 @@ namespace SunamoFtp
 
                 if (debug)
                 {
-                    OnNewStatus("seeking to " + offset);
+                    OnNewStatus("seeking to" + " " + offset);
                 }
                 input.Seek(offset, SeekOrigin.Begin);
             }
 
-            OnNewStatus("Uploading file " + fileName + " to " + remotePath);
+            OnNewStatus("Uploading file" + " " + fileName + " to " + remotePath);
 
             if (cSocket.Connected)
             {
@@ -970,7 +970,7 @@ namespace SunamoFtp
         /// <param name="resume"></param>
         public void upload(string fileName, Boolean resume, byte[] fileContents)
         {
-            OnNewStatus("Uploaduji " + UH.Combine(false, ps.ActualPath, fileName));
+            OnNewStatus("Uploaduji" + " " + UH.Combine(false, ps.ActualPath, fileName));
             #region Tento kód mi nedovolil často nauploadovat ani jeden soubor, takže ho nahradím speciálními třídami .net
             #region Pokud nejsem nalogovaný, přihlásím se.
             if (!logined)
@@ -1001,14 +1001,14 @@ namespace SunamoFtp
             #region Pošlu příkaz REST s offsetem a poté už STOR
             if (offset > 0)
             {
-                sendCommand("REST " + offset);
+                sendCommand("REST" + " " + offset);
                 if (retValue != 350)
                 {
                     offset = 0;
                 }
             }
 
-            sendCommand("STOR " + sunamo.FS.GetFileName(fileName));
+            sendCommand("STOR" + " " + FS.GetFileName(fileName));
 
             if (!(retValue == 125 || retValue == 150))
             {
@@ -1024,12 +1024,12 @@ namespace SunamoFtp
             {
                 if (debug)
                 {
-                    OnNewStatus("seeking to " + offset);
+                    OnNewStatus("seeking to" + " " + offset);
                 }
                 input.Seek(offset, SeekOrigin.Begin);
             }
 
-            OnNewStatus("Uploading file " + fileName + " to " + remotePath);
+            OnNewStatus("Uploading file" + " " + fileName + " to " + remotePath);
 
             while ((bytes = input.Read(buffer, 0, buffer.Length)) > 0)
             {
@@ -1062,17 +1062,17 @@ namespace SunamoFtp
         /// <param name="fileName"></param>
         public override bool deleteRemoteFile(string fileName)
         {
-            OnNewStatus("Odstraňuji ze ftp serveru soubor " + UH.Combine(false, ps.ActualPath, fileName));
+            OnNewStatus("Odstraňuji ze ftp serveru soubor" + " " + UH.Combine(false, ps.ActualPath, fileName));
             if (!logined)
             {
                 login();
             }
 
-            sendCommand("DELE " + fileName);
+            sendCommand("DELE" + " " + fileName);
 
             if (retValue != 250)
             {
-                sendCommand("DELE " + WebUtility.UrlDecode(fileName));
+                sendCommand("DELE" + " " + WebUtility.UrlDecode(fileName));
             }
             return true;
         }
@@ -1084,20 +1084,20 @@ namespace SunamoFtp
         /// <param name="newFileName"></param>
         public override void renameRemoteFile(string oldFileName, string newFileName)
         {
-            OnNewStatus("Ve složce " + ps.ActualPath + " přejmenovávám soubor z " + oldFileName + " na " + newFileName);
+            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor " + "" + " " + oldFileName + " na " + newFileName);
             if (!logined)
             {
                 login();
             }
 
-            sendCommand("RNFR " + oldFileName);
+            sendCommand("RNFR" + " " + oldFileName);
 
             if (retValue != 350)
             {
                 throw new IOException(reply.Substring(4));
             }
 
-            sendCommand("RNTO " + newFileName);
+            sendCommand("RNTO" + " " + newFileName);
             if (retValue != 250)
             {
                 throw new IOException(reply.Substring(4));
@@ -1114,7 +1114,7 @@ namespace SunamoFtp
         /// <param name="dirName"></param>
         public override bool mkdir(string dirName)
         {
-            OnNewStatus("Vytvářím adresář " + UH.Combine(true, ps.ActualPath, dirName));
+            OnNewStatus("Vytvářím adresář" + " " + UH.Combine(true, ps.ActualPath, dirName));
             if (!logined)
             {
                 login();
@@ -1136,7 +1136,7 @@ namespace SunamoFtp
         /// <param name="dirName"></param>
         public override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
         {
-            OnNewStatus("Mažu adresář " + UH.Combine(true, ps.ActualPath, dirName));
+            OnNewStatus("Mažu adresář" + " " + UH.Combine(true, ps.ActualPath, dirName));
             if (!logined)
             {
                 login();
@@ -1167,7 +1167,7 @@ namespace SunamoFtp
         /// <param name="dirName"></param>
         public override void CreateDirectoryIfNotExists(string dirName)
         {
-            if (dirName == "." || dirName == "..")
+            if (dirName == AllStrings.dot || dirName == AllStrings.dd)
             {
                 return;
             }
@@ -1192,7 +1192,7 @@ namespace SunamoFtp
             }
             if (dirName != "")
             {
-                if (dirName[dirName.Length - 1] == "/"[0])
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -1213,7 +1213,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Length;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -1247,7 +1247,7 @@ namespace SunamoFtp
                 {
                     throw new IOException(reply.Substring(4));
                 }
-                if (dirName == "..")
+                if (dirName == AllStrings.dd)
                 {
                     ps.RemoveLastToken();
                 }
@@ -1279,7 +1279,7 @@ namespace SunamoFtp
             }
 
             cleanup();
-            OnNewStatus("Closing...");
+            OnNewStatus("Closing" + "." + "..");
         }
 
         /// <summary>
@@ -1359,7 +1359,7 @@ namespace SunamoFtp
             }
 
             //Když na 3. straně není mezera, zavolám tuto M znovu
-            if (!mes.Substring(3, 1).Equals(" "))
+            if (!mes.Substring(3, 1).Equals(AllStrings.space))
             {
                 return readLine();
             }
@@ -1483,8 +1483,8 @@ namespace SunamoFtp
             #endregion
 
             #region Získám IP adresu v řetězci z reply
-            int index1 = reply.IndexOf('(');
-            int index2 = reply.IndexOf(')');
+            int index1 = reply.IndexOf(AllChars.lb);
+            int index2 = reply.IndexOf(AllChars.rb);
             string ipData = reply.Substring(index1 + 1, index2 - index1 - 1);
             int[] parts = new int[6];
 
@@ -1500,13 +1500,13 @@ namespace SunamoFtp
                 char ch = Char.Parse(ipData.Substring(i, 1));
                 if (Char.IsDigit(ch))
                     buf += ch;
-                else if (ch != ',')
+                else if (ch != AllChars.comma)
                 {
-                    throw new IOException("Malformed PASV reply: " + reply);
+                    throw new IOException("Malformed PASV reply" + ": " + reply);
                 }
 
                 #region Pokud je poslední znak čárka,
-                if (ch == ',' || i + 1 == len)
+                if (ch == AllChars.comma || i + 1 == len)
                 {
 
                     try
@@ -1516,14 +1516,14 @@ namespace SunamoFtp
                     }
                     catch (Exception)
                     {
-                        throw new IOException("Malformed PASV reply: " + reply);
+                        throw new IOException("Malformed PASV reply" + ": " + reply);
                     }
                 }
                 #endregion
             }
 
-            string ipAddress = parts[0] + "." + parts[1] + "." +
-              parts[2] + "." + parts[3];
+            string ipAddress = parts[0] + AllStrings.dot + parts[1] + AllStrings.dot +
+              parts[2] + AllStrings.dot + parts[3];
             #endregion
 
             #region Port získám tak čtvrtou část ip adresy bitově posunu o 8 a sečtu s pátou částí. Získám Socket, O IPEndPoint a pokusím se připojit na tento objekt.
@@ -1580,7 +1580,7 @@ namespace SunamoFtp
                 {
                     DeleteRecursively(slozkyNeuploadovatAVS, fn, i, td);
                 }
-                ////Debug.Print(item2);
+                ////DebugLogger.Instance.WriteLine(item2);
             }
             goToUpFolderForce();
             rmdir(slozkyNeuploadovatAVS, dirName);

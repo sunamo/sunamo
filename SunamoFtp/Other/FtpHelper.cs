@@ -14,7 +14,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public static bool IsThisOrUp(string folderName2)
         {
-            return folderName2 == "." || folderName2 == "..";
+            return folderName2 == AllStrings.dot || folderName2 == AllStrings.dd;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public static bool IsFileOnHosting(string item2, string[] fse, long fileLenght)
         {
-            item2 = sunamo.FS.GetFileName(item2);
+            item2 = FS.GetFileName(item2);
             foreach (string item in fse)
             {
                 long fl = 0;
@@ -49,14 +49,14 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry)
         {
             string fileName = null;
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
 
         public static FileSystemType IsFile(string entry, out string fileName)
         {
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             return isFile;
         }
@@ -64,19 +64,19 @@ namespace SunamoFtp
         public static FileSystemType IsFile(string entry, out string fileName, out long length)
         {
             //drw-rw-rw-   1 user     group           0 Nov 21 18:03 App_Data
-            string[] tokeny = SH.Split(entry, " ");
+            var tokeny = SH.Split(entry, AllStrings.space);
             FileSystemType isFile = IsFileShared(entry, tokeny, out fileName);
             length = long.Parse(tokeny[4]);
 
             return isFile;
         }
 
-        private static FileSystemType IsFileShared(string entry, string[] tokeny, out string fileName)
+        private static FileSystemType IsFileShared(string entry, List<string> tokeny, out string fileName)
         {
-            fileName = SH.JoinFromIndex(8, ' ', tokeny);
+            fileName = SH.JoinFromIndex(8, AllChars.space, tokeny);
             FileSystemType isFile = FileSystemType.File;
             char f = entry[0];
-            if (f == '-')
+            if (f == AllChars.dash)
             {
 
             }
@@ -101,7 +101,7 @@ namespace SunamoFtp
 
         public static bool IsSchemaFtp(string remFileName)
         {
-            return remFileName.StartsWith("ftp://");
+            return remFileName.StartsWith("ftp" + ":" + "//");
         }
 
         public static IEnumerable<string> GetDirectories(string[] fse)
@@ -120,7 +120,7 @@ namespace SunamoFtp
 
         public static string ReplaceSchemaFtp(string remoteHost2)
         {
-            return remoteHost2.Replace("ftp://", "");
+            return remoteHost2.Replace("ftp" + ":" + "//", "");
         }
     }
 }

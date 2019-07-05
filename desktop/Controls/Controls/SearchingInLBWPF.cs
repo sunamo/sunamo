@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System;
 using System.Windows.Input;
+using sunamo.Essential;
+
 public class SearchingInLbWPF
 {
-    TextBlock txtSearch = null;
     /// <summary>
-    /// ListBox ve kter�m se ukazuj� v�sledky
+    /// ListBox ve kterEm se ukazujI vYsledky
     /// </summary>
     ListBox lb = null;
     /// <summary>
-    /// TextBox do kter�ho byl zadan� hledan� v�raz
+    /// TextBox do kterEho byl zadanY hledanY vYraz
     /// </summary>
     TextBox tstb = null;
     /// <summary>
-    /// V�choz� polo�ky. Nahraj� se do LB po stornov�n� hled�n�.
+    /// VYchozY poloZky. Nahraje se do LB po stornovAnI hledání.
     /// </summary>
     public object[] oc = null;
     string searchOnlyFromLastOccurenceOf = null;
@@ -24,11 +25,11 @@ public class SearchingInLbWPF
     /// </summary>
     /// <param name="lb"></param>
     /// <param name="tstb"></param>
-    public SearchingInLbWPF(ListBox lb, TextBox tstb, Button toolStripButton2, MenuItem tsmi, TextBlock txtSearch, string searchOnlyFromLastOccurenceOf)
+    public SearchingInLbWPF(ListBox lb, TextBox tstb, Button toolStripButton2, MenuItem tsmi, string searchOnlyFromLastOccurenceOf)
     {
         this.lb = lb;
         this.tstb = tstb;
-        this.txtSearch = txtSearch;
+        
         this.searchOnlyFromLastOccurenceOf = searchOnlyFromLastOccurenceOf;
         tstb.TextChanged += tstb_TextChanged;
         tstb.KeyDown += tstb_KeyDown;
@@ -41,8 +42,6 @@ public class SearchingInLbWPF
         }
         oc = f.ToArray();
     }
-
-    
 
     void tsmi_Click(object sender, System.Windows.RoutedEventArgs e)
     {
@@ -106,13 +105,13 @@ public class SearchingInLbWPF
                 }
             }
             lb.Items.Clear();
-            txtSearch.Text = "Bylo nalezeno " + nechat.Count + " polo�ek. ";
+            ThisApp.SetStatus(TypeOfMessage.Information, "Was founded" + " " + nechat.Count + " " + "items" + ". ");
             AddRangeToListBox(nechat.ToArray());
         }
         else
         {
             lb.Items.Clear();
-            txtSearch.Text = "Bylo zastaveno hled�n�. ";
+            ThisApp.SetStatus(TypeOfMessage.Information, "Searching was stopped" + ".");
             AddRangeToListBox(oc);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sunamo.Constants;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -13,25 +14,40 @@ namespace sunamo.Essential
         {
             this.writeLineDelegate = writeLineDelegate;
         }
-        
+
+        public void EndRunTime()
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Ordinal, Messages.AppWillBeTerminated);
+        }
+
         #region Success
         public void CopiedToClipboard(string what)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Success, what + " was successfully copied to clipboard.");
+            writeLineDelegate.Invoke(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
         }
         #endregion
 
         #region Error
+        public void SomeErrorsOccuredSeeLog()
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "Some errors occured, see log");
+        }
+
         public void FolderDontExists(string folder)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder " + folder + " doesn't exists.");
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder" + " " + folder + " " + "doesn't exists" + ".");
+        }
+
+        public void FileDontExists(string selectedFile)
+        {
+            writeLineDelegate.Invoke(TypeOfMessage.Error, "File" + " " + selectedFile + " " + "doesn't exists" + ".");
         }
         #endregion
 
         #region Information
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again.");
+            writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");
         }
 
         public void OperationWasStopped()
@@ -44,13 +60,15 @@ namespace sunamo.Essential
             writeLineDelegate.Invoke(TypeOfMessage.Information, "Please enter right input data");
         }
 
+        
+
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
         /// </summary>
         /// <param name="fn"></param>
         public void SuccessfullyResized(string fn)
         {
-            writeLineDelegate.Invoke(TypeOfMessage.Information, "Successfully resized to " + fn);
+            writeLineDelegate.Invoke(TypeOfMessage.Information, "Successfully resized to" + " " + fn);
         }
 
         string FullNameOfExecutedCode(object type, string methodName)
@@ -66,7 +84,7 @@ namespace sunamo.Essential
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        internal bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
+        public bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
         {
             if (args.Count() % 2 == 1)
             {
@@ -84,7 +102,7 @@ namespace sunamo.Essential
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        internal bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
+        public bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
         {
             List<int> nulled = CA.IndexesWithNullOrEmpty(args);
 
@@ -103,7 +121,7 @@ namespace sunamo.Essential
         /// <param name="methodName"></param>
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
-        internal bool AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
+        public bool AnyElementIsNull(Type type, string methodName, string nameOfCollection, object[] args)
         {
             List<int> nulled = CA.IndexesWithNull(args);
 
@@ -118,7 +136,7 @@ namespace sunamo.Essential
         public void MustHaveValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " must have value");
+            writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " " + "must have value");
         }
         #endregion
     }

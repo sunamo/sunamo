@@ -152,7 +152,7 @@ namespace desktop
         {
             if (value > 100)
             {
-                //throw new Exception("Hodnota pro ProgressBar nemůže být vyšší než 100.");
+                //throw new Exception("Hodnota pro ProgressBar nemůže být vyšší než 100" + ".");
                 value = 100;
             }
             pb.Value = value;
@@ -166,13 +166,13 @@ namespace desktop
 
         public static void appendToTextBlockText(TextBlock lbl, string text)
         {
-            lbl.Text = lbl.Text + " " + text;
+            lbl.Text = lbl.Text + AllStrings.space + text;
             lbl.ToolTip = lbl.Text;
         }
 
         public static void appendToTextBoxText(TextBox tb, string text)
         {
-            tb.Text = tb.Text + " " + text;
+            tb.Text = tb.Text + AllStrings.space + text;
             tb.ToolTip = tb.Text;
         }
 

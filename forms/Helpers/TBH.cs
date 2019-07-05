@@ -5,7 +5,7 @@ namespace forms
     public class TBH
     {
         /// <summary>
-        /// Toto nepou��vej, m�sto toho pou�ij ovl�dac� prvek TextBoxForms
+        /// Toto nepouzivej, misto toho pouzij ovladace prvek TextBoxForms
         /// </summary>
         /// <param name="txt"></param>
         public static void RegisterHandlerSelectAll(TextBox txt)

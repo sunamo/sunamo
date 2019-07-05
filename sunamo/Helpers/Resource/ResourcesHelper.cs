@@ -11,8 +11,9 @@ namespace sunamo.Helpers
 {
     /// <summary>
     /// Load from files *.resources
+    /// usage: ThisApp.Resources = ResourcesHelper.Create("sunamo.Properties.Resources", typeof(ResourcesHelper).Assembly)
     /// </summary>
-    public  class ResourcesHelper
+    public class ResourcesHelper
     {
         private ResourceManager rm = null;
 

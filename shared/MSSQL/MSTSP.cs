@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
+public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 {
     public object[] SelectDataTableOneRow(SqlTransaction tran, string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         return SelectOneRow(tran, TableName, nazevSloupce, hodnotaSloupce);
     }
-
 
     // Duplikátní metoda
     /// <summary>
@@ -22,35 +21,10 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="id"></param>
     /// <param name="hledanySloupec"></param>
     /// <returns></returns>
-    public string SelectCellDataTableString( SqlTransaction tran, string table, string sloupecID, object id, string hledanySloupec)
+    public string SelectCellDataTableString(SqlTransaction tran, string table, string sloupecID, object id, string hledanySloupec)
     {
         DataTable dt = SelectDataTableSelective(tran, table, sloupecID, id, hledanySloupec);
         return GetCellDataTableString(dt, 0, 0);
-    }
-
-    public List<int> SelectValuesOfColumnInt( SqlTransaction tran, string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
-        AddCommandParameter(comm, 0, hodnota);
-        //SQLiteCommand comm = new SQLiteCommand(sql, conn);
-        List<int> vr = new List<int>();
-
-        DataTable dt = SelectDataTable(tran, comm);
-        foreach (DataRow item in dt.Rows)
-        {
-            object[] o = item.ItemArray; ;
-            if (o[0] == DBNull.Value)
-            {
-                vr.Add(-1);
-            }
-            else
-            {
-                vr.Add(int.Parse(o[0].ToString()));
-            }
-            //}
-        }
-        //return SelectValuesOfColumnAllRowsInt(comm);
-        return vr;
     }
 
     /// <summary>
@@ -173,80 +147,27 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return -1;
     }
 
-    public SqlConnection conn
-    {
-        get { return MSDatabaseLayer.conn; }
-    }
 
-    /// <summary>
-    /// Conn nastaví automaticky
-    /// </summary>
-    /// <param name="sql"></param>
-    /// <returns></returns>
-    public DataTable SelectDataTable(SqlTransaction tran, SqlCommand comm)
-    {
-        DataTable dt = new DataTable();
-        comm.Connection = conn;
-        comm.Transaction = tran;
-        SqlDataAdapter adapter = new SqlDataAdapter(comm);
-        adapter.Fill(dt);
-        return dt;
-    }
+
 
     /// <summary>
     /// 
     /// </summary>
     public DataTable SelectDataTableAllRows(SqlTransaction tran, string table)
     {
-        return SelectDataTable(tran, "SELECT * FROM " + table);
+        return SelectDataTable(tran, "SELECT * FROM" + " " + table);
     }
 
-    /// <summary>
-    /// Conn nastaví automaticky
-    /// </summary>
-    public DataTable SelectDataTableSelective(SqlTransaction tran, string tabulka, string sloupecID, object id, string hledanySloupec)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, sloupecID));
-        AddCommandParameter(comm, 0, id);
-        //NT
-        return this.SelectDataTable(tran, comm);
-    }
 
-    /// <summary>
-    /// Conn nastaví automaticky
-    /// </summary>
-    public DataTable SelectDataTableSelective(SqlTransaction tran, string TableName, AB[] where, string nazvySloupcu)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", nazvySloupcu, TableName, GeneratorMsSql.CombinedWhere(where)));
-        AddCommandParameterFromAbc(comm, where);
-        //NTd
-        return this.SelectDataTable(tran, comm);
-    }
 
-    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
-    {
-        for (int i = 0; i < where.Length; i++)
-        {
-            AddCommandParameter(comm, i, where[i].B);
-        }
-    }
 
-    /// <summary>
-    /// Conn nastaví automaticky
-    /// </summary>
-    public DataTable SelectDataTableSelective(SqlTransaction tran, string tabulka, string sloupec, object hodnota)
-    {
-        SqlCommand comm = new SqlCommand(GeneratorMsSql.SimpleWhere("*", tabulka, sloupec), conn);
-        AddCommandParameter(comm, 0, hodnota);
-        return SelectDataTable(tran, comm);
-    }
 
     /// <summary>
     /// 
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -256,7 +177,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
@@ -266,12 +187,12 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, params string[] selectSloupce)
     {
-        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(',', selectSloupce), p));
+        return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(AllChars.comma, selectSloupce), p));
     }
 
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, List<string> ziskaneSloupce, string idColumnName, int idColumnValue)
     {
-        string nazvy = SH.Join(',', ziskaneSloupce.ToArray());
+        string nazvy = SH.Join(AllChars.comma, ziskaneSloupce.ToArray());
 
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", nazvy, p) + GeneratorMsSql.SimpleWhere(idColumnName));
         AddCommandParameter(comm, 0, idColumnValue);
@@ -346,7 +267,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public object[] SelectOneRow(SqlTransaction tran, string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         // Index nemůže být ani pole bajtů ani null takže to je v pohodě
-        DataTable dt = SelectDataTable(tran, "SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
+        DataTable dt = SelectDataTable(tran, "SELECT TOP(1) * FROM" + " " + TableName + " " + "WHERE" + " " + nazevSloupce + " = @p0", hodnotaSloupce);
         if (dt.Rows.Count == 0)
         {
             return null; // CA.CreateEmptyArray(pocetSloupcu);
@@ -387,32 +308,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             else
             {
                 vr.Add(null);
-            }
-        }
-        return vr;
-    }
-
-    /// <summary>
-    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="sloupec"></param>
-    /// <returns></returns>
-    public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string sloupec)
-    {
-        List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
-        DataTable dt = SelectDataTable(tran, comm);
-        foreach (DataRow var in dt.Rows)
-        {
-            object o = var.ItemArray[0];
-            if (o != DBNull.Value)
-            {
-                vr.Add(int.Parse(o.ToString()));
-            }
-            else
-            {
-                vr.Add(-1);
             }
         }
         return vr;
@@ -496,7 +391,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         SqlCommand c = new SqlCommand(string.Format("SELECT (ID) FROM {0} WHERE {1} = @p0", tabulka, nazevSloupce), conn, tran);
         AddCommandParameter(c, 0, hodnotaSloupce);
-        #region Pomocí DataTable
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter(c);
 
@@ -515,7 +409,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             return int.MinValue;
         }
-        #endregion
 
         return int.MinValue;
     }
@@ -568,8 +461,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return GetCellDataTableString(SelectDataTableSelective(tran, tabulka, idColumn, idValue), 0, 1);
     }
 
-    #region Je použitelné pouze když druhý sloupec je bool/int/atd. - v praxi prakticky nikdy, navíc zranitelné pokud se změní tabulky
-    #endregion
 
 
 
@@ -630,7 +521,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
-        aktual += hodnotaAppend + ",";
+        aktual += hodnotaAppend + AllStrings.comma;
         return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
     }
 
@@ -647,11 +538,11 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         if (!d.Contains(hodnotaAppend))
         {
-            aktual += hodnotaAppend + ",";
-            string save = SH.Join(',', d.ToArray());
+            aktual += hodnotaAppend + AllStrings.comma;
+            string save = SH.Join(AllChars.comma, d.ToArray());
 
             return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
         }
@@ -665,9 +556,9 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecCut).ToString();
         aktual = aktual.Trim();
-        List<string> d = new List<string>(SH.Split(aktual, ","));
+        List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         d.Remove(hodnotaCut);
-        string save = SH.Join(',', d.ToArray());
+        string save = SH.Join(AllChars.comma, d.ToArray());
         return UpdateOneRow(tran, tableName, sloupecCut, save, sloupecID, hodnotaID);
     }
 
@@ -734,7 +625,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public bool Delete(SqlTransaction tran, string TableName, params AB[] where)
     {
         string whereS = GeneratorMsSql.CombinedWhere(where);
-        SqlCommand comm = new SqlCommand( "DELETE FROM " + TableName + whereS);
+        SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(tran, comm);
 
@@ -869,39 +760,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         comm.ExecuteNonQuery();
     }
 
-    /// <summary>
-    /// a2 je X jako v příkazu @pX
-    /// </summary>
-    /// <param name="comm"></param>
-    /// <param name="i"></param>
-    /// <param name="o"></param>
-    public static void AddCommandParameter(SqlCommand comm, int i, object o)
-    {
-        if (o == null)
-        {
-            // Pokud chcete uložit null do DB, musíte nastavit hodnotu parametru na DBNull.Value
-            comm.Parameters.AddWithValue("@p" + i.ToString(), DBNull.Value);
-        }
-        else if (o.GetType() == typeof(SqlParameter))
-        {
-            // Pokud chcete uložit null do Image, nezbývá vám nic jiného než jako hodnotu dát SqlParameter, kde zadáte SqlDbType a value[object]
-            SqlParameter param = (SqlParameter)o;
-            param.ParameterName = "@p" + i.ToString();
-            comm.Parameters.Add(param);
-        }
-        else if (o.GetType() == typeof(byte[]))
-        {
-            // Pokud chcete uložit pole bajtů, musíte nejdřív vytvořit parametr s typem v DB(já používám vždy Image) a teprve pak nastavit hodnotu
-            SqlParameter param = comm.Parameters.Add("@p" + i.ToString(), SqlDbType.Binary);
-            param.Value = o;
-        }
-        else
-        {
-            // Pro všechny ostatní případy, zavolám metodu, jejíž část jsem si vypůjčil ze podobné metody pro SQLite a kterou přikládám níže
-            comm.Parameters.AddWithValue("@p" + i.ToString(), o);
-        }
-    }
-
 
     /// <summary>
     /// Vrací skutečně nejvyšší ID, proto když chceš pomocí ní ukládat do DB, musíš si to číslo inkrementovat
@@ -911,7 +769,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <returns></returns>
     public int SelectLastIDFromTable(SqlTransaction tran, string p, string sloupecID)
     {
-        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
+        string dd = ExecuteScalar(tran, new SqlCommand("SELECT MAX(" + sloupecID + " " + " " + "FROM" + " " + p)).ToString();
         if (dd == "")
         {
             return 0;
@@ -934,7 +792,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// </summary>
     public int SelectFindOutNumberOfRows(SqlTransaction tran, string tabulka)
     {
-        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM " + tabulka, MSDatabaseLayer.conn, tran);
+        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka, MSDatabaseLayer.conn, tran);
         //comm.Transaction = tran;
         string s = comm.ExecuteScalar().ToString();
         return int.Parse(s);
@@ -946,7 +804,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public List<string> SelectGetAllTablesInDB(SqlTransaction tran)
     {
         List<string> vr = new List<string>();
-        DataTable dt = SelectDataTableWithWhere(tran, "INFORMATION_SCHEMA.TABLES", "*", "TABLE_TYPE", "BASE TABLE");
+        DataTable dt = SelectDataTableWithWhere(tran, "INFORMATION_SCHEMA.TABLES", AllStrings.asterisk, "TABLE_TYPE", "BASE TABLE");
         foreach (DataRow item in dt.Rows)
         {
             vr.Add(item.ItemArray[2].ToString());
@@ -992,30 +850,13 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return dt.Rows.Count != 0;
     }
 
-    /// <summary>
-    /// A1 jsou hodnoty bez převedení AddCommandParameter nebo ReplaceValueOnlyOne
-    /// Conn nastaví automaticky
-    /// </summary>
-    /// <param name="sql"></param>
-    /// <param name="_params"></param>
-    /// <returns></returns>
-    private DataTable SelectDataTable(SqlTransaction tran, string sql, params object[] _params)
-    {
-        SqlCommand comm = new SqlCommand(sql);
-        for (int i = 0; i < _params.Length; i++)
-        {
-            AddCommandParameter(comm, i, _params[i]);
-        }
-        return SelectDataTable(tran, comm);
-        //return SelectDataTable(string.Format(sql, _params));
-    }
 
 
     public int DropTableIfExists(SqlTransaction tran, string table)
     {
         if (SelectExistsTable(tran, table))
         {
-            return ExecuteNonQuery(tran, new SqlCommand("DROP TABLE " + table));
+            return ExecuteNonQuery(tran, new SqlCommand("DROP TABLE" + " " + table));
         }
         return 0;
     }
@@ -1025,7 +866,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         List<string> dd = SelectGetAllTablesInDB(tran);
         foreach (string item in dd)
         {
-            ExecuteNonQuery(tran, new SqlCommand("DROP TABLE " + item));
+            ExecuteNonQuery(tran, new SqlCommand("DROP TABLE" + " " + item));
         }
     }
 
@@ -1050,7 +891,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         ExecuteNonQuery(tran, comm);
     }
 
-    
+
 
 
 
@@ -1063,7 +904,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 
     public object SelectValueOfIDOneRow(SqlTransaction tran, string tabulka, string idColumnName, int idColumnValue, string vracenySloupec)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(1) " + vracenySloupec + " FROM " + tabulka + " WHERE " + idColumnName + " = @p0");
+        SqlCommand comm = new SqlCommand("SELECT TOP(1)" + " " + vracenySloupec + " " + "FROM" + " " + tabulka + " " + "WHERE" + " " + idColumnName + " = @p0");
         AddCommandParameter(comm, 0, idColumnValue);
         //comm.Connection = conn;
         DataTable dt = SelectDataTable(tran, comm);
@@ -1092,61 +933,6 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         Update(tran, table, sloupecKUpdate, pridej, sloupecID, id);
         return pridej;
-    }
-
-    /// <summary>
-    /// Tato metoda má navíc možnost specifikovat simple where.
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="hledanySloupec"></param>
-    /// <param name="idColumn"></param>
-    /// <param name="idValue"></param>
-    /// <returns></returns>
-    public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string hledanySloupec, string idColumn, object idValue)
-    {
-        List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", hledanySloupec, tabulka, idColumn));
-        AddCommandParameter(comm, 0, idValue);
-        DataTable dt = SelectDataTable(tran, comm);
-        foreach (DataRow var in dt.Rows)
-        {
-            object o = var.ItemArray[0];
-            if (o != DBNull.Value)
-            {
-                vr.Add(int.Parse(o.ToString()));
-            }
-            else
-            {
-                vr.Add(-1);
-            }
-        }
-        return vr;
-    }
-
-    public List<int> SelectValuesOfColumnAllRowsInt(SqlTransaction tran, string tabulka, string hledanySloupec, params AB[] aB)
-    {
-        string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
-
-        List<int> vr = new List<int>();
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
-        for (int i = 0; i < aB.Length; i++)
-        {
-            AddCommandParameter(comm, i, aB[i].B);
-        }
-        DataTable dt = SelectDataTable(tran, comm);
-        foreach (DataRow var in dt.Rows)
-        {
-            object o = var.ItemArray[0];
-            if (o != DBNull.Value)
-            {
-                vr.Add(int.Parse(o.ToString()));
-            }
-            else
-            {
-                vr.Add(-1);
-            }
-        }
-        return vr;
     }
 
 
@@ -1180,7 +966,7 @@ public class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 
     public void InsertToTable3(SqlTransaction tran, string table, string sloupce, string valuesParams, object[] values)
     {
-        SqlCommand comm = new SqlCommand("INSERT INTO " + table + " " + sloupce + " VALUES " + valuesParams);
+        SqlCommand comm = new SqlCommand("INSERT INTO" + " " + table + AllStrings.space + sloupce + " " + "VALUES" + " " + valuesParams);
         for (int i = 0; i < values.Length; i++)
         {
             AddCommandParameter(comm, i, values[i]);

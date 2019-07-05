@@ -7,6 +7,7 @@ public class LimitedTimer
     int odbylo = 0;
     public event VoidVoid Tick;
 
+
     public LimitedTimer(int ms, int pocet, Action a)
     {
         t = new System.Timers.Timer(ms);
@@ -22,10 +23,14 @@ public class LimitedTimer
         odbylo++;
 
         a.Invoke();
-        Tick();
+        if (Tick != null)
+        {
+            Tick();
+        }
+        
         if (pocet == odbylo)
         {
-            //Debug.Print(pocet.ToString());
+            //DebugLogger.Instance.WriteLine(pocet.ToString());
             t.Stop();
         }
     }

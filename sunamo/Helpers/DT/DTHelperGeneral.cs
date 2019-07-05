@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace sunamo.Helpers.DT
-{
-    public class DTHelperGeneral
+    public partial class DTHelperGeneral
     {
+    /// <summary>
+    /// Find four digit letter in any string
+    /// </summary>
+    /// <returns></returns>
+    public static string ParseYear(string s)
+    {
+        
+        var p = SH.Split(s, AllChars.dash, AllChars.slash);
+        foreach (var item in p)
+        {
+            if (item.Length == 4)
+            {
+                if (SH.IsNumber(item))
+                {
+                    return item;
+                }
+            }
+        }
+        return string.Empty;
+    }
+
         public static string TimeInMsToSeconds(Stopwatch p)
         {
             p.Stop();
@@ -23,29 +42,6 @@ namespace sunamo.Helpers.DT
         {
             DateTime dt = DateTime.Today;
             return dt.AddHours(DateTime.Now.Hour);
-        }
-
-        #region General
-        /// <summary>
-        /// A2 bylo původně MSStoredProceduresI.DateTimeMinVal
-        /// </summary>
-        /// <param name="bday"></param>
-        /// <returns></returns>
-        public static byte CalculateAge(DateTime bday, DateTime dtMinVal)
-        {
-            if (bday == dtMinVal)
-            {
-                return 255;
-            }
-            DateTime today = DateTime.Today;
-            int age = today.Year - bday.Year;
-            if (bday > today.AddYears(-age)) age--;
-            byte vr = (byte)age;
-            if (vr == 255)
-            {
-                return 0;
-            }
-            return vr;
         }
 
         public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
@@ -105,31 +101,12 @@ namespace sunamo.Helpers.DT
             return false;
         }
 
-        #region Seconds in
-        public static long SecondsInMonth(DateTime dt)
-        {
-            return DTConstants.secondsInDay * DateTime.DaysInMonth(dt.Year, dt.Month);
-        }
-
-        public static long SecondsInYear(int year)
-        {
-            long mal = 365;
-            if (DateTime.IsLeapYear(year))
-            {
-                mal = 366;
-            }
-
-            return mal * DTConstants.secondsInDay;
-        }
-        #endregion
-
         public static DateTime SetToday(DateTime ugtFirstStep)
         {
             DateTime t = DateTime.Today;
             return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
         }
 
-        #endregion
         /// <summary>
         /// Počítá pouze čas, vrátí jako nenormalizovaný int
         /// </summary>
@@ -141,18 +118,10 @@ namespace sunamo.Helpers.DT
             vr += t.Minute * DTConstants.secondsInMinute;
             vr += t.Second;
             vr *= TimeSpan.TicksPerSecond;
-            //vr += MSStoredProceduresI.DateTimeMinVal
+            //vr += SqlServerHelper.DateTimeMinVal
             return vr;
         }
 
-        public static string MakeUpTo2NumbersToZero(int p)
-        {
-            if (p.ToString().Length == 1)
-            {
-                return "0" + p;
-            }
-            return p.ToString();
-        }
 
         public static DateTime Create(string day, string month, string hour, string minute)
         {
@@ -168,4 +137,3 @@ namespace sunamo.Helpers.DT
             return today;
         }
     }
-}

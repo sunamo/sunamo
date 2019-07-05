@@ -38,6 +38,11 @@ namespace desktop.Controls
 
         public event VoidBoolNullable ChangeDialogResult;
 
+        public void Accept(object input)
+        {
+            DialogResult = true;
+        }
+
         private void resultButtons_AllRightClick()
         {
             DialogResult = true;

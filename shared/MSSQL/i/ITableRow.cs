@@ -6,15 +6,15 @@ public interface ITableRow
 }
 
     /// <summary>
-    /// Generick� I je typ kter� vrac� metoda InsertToTable
-    /// MYSL�M �E TE� U� TU JE V�E POT�EBN�, PROTO TU ��DN� JIN� V�CI JAKO NAP��KLAD TA POSLEDN� ZAKOMENTOVAN� METODA NEP�ID�VEJ
-    /// ZAPRV� SI VA� SV�HO �ASU A ZA DRUH� TO BUDE V�T�INOU DUPLIKACE
+    /// Genericky I je typ ktery vraci metoda InsertToTable
+    /// MYSLIM ZE TED UZ TU JE VSE POTREBNE, PROTO TU ZADNE JINE VECI JAKO NAPRIKLAD TA POSLEDNI ZAKOMENTOVANA METODA NEPRIDAVEJ
+    /// ZAPRVE SI VAS SVEHO CASU A ZA DRUHE TO BUDE VETSINOU DUPLIKACE
     /// </summary>
 public interface ITableRow<I>
     {
         /// <summary>
-        /// Bude� muset kontrolovat s�m na UNIQUE, PRIMARY KEY atd.
-        /// ID se v�dy d�v� a� v t�to metod�, jinde nen� povoleno ID zji��ovat.
+        /// Budes muset kontrolovat sam na UNIQUE, PRIMARY KEY atd.
+        /// ID se vzdy dava az v teto metode, jinde neni povoleno ID zjistovat.
         /// </summary>
         /// <returns></returns>
         I InsertToTable();

@@ -1,15 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Win32.SafeHandles;
 using sunamo;
+using win.Helpers.Powershell;
 
 /// <summary>
 /// Provides access to NTFS junction points in .Net.
 /// </summary>
 public static class JunctionPoint
     {
+
+    /// <summary>
+    /// If exists, will rewrite.
+    /// /J vytváří vždy adresář, jde pak dle toho poznat i ve FS
+    /// /H pracuje adekvátně se soubory
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public static List<string> MklinkH(string source, string target)
+    {
+        string command = "cmd /c mklink /" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        List<string> output = PowershellRunner.InvokeSingle(command);
+        return output;
+    }
+
         /// <summary>
         /// The file or directory is not a reparse point.
         /// </summary>
@@ -59,7 +77,7 @@ public static class JunctionPoint
         /// This prefix indicates to NTFS that the path is to be treated as a non-interpreted
         /// path in the virtual file system.
         /// </summary>
-        private const string NonInterpretedPathPrefix = @"\??\";
+        private const string NonInterpretedPathPrefix = @"\??\\\\\";
 
         [Flags]
         private enum EFileAccess : uint
@@ -185,11 +203,11 @@ public static class JunctionPoint
             IntPtr hTemplateFile);
 
         /// <summary>
-        /// For files use mklink
+        /// For files use mklink, this can be use only for directory
         /// Creates a junction point from the specified directory to the specified target directory.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         /// <param name="targetDir">The target directory</param>
@@ -200,17 +218,17 @@ public static class JunctionPoint
         {
             targetDir = Path.GetFullPath(targetDir);
 
-            if (!Directory.Exists(targetDir))
-                throw new IOException("Target path does not exist or is not a directory.");
+            if (!FS.ExistsDirectory(targetDir))
+                throw new IOException("Target path does not exist or is not a directory" + ".");
 
-            if (Directory.Exists(junctionPoint))
+            if (FS.ExistsDirectory(junctionPoint))
             {
                 if (!overwrite)
-                    throw new IOException("Directory already exists and overwrite parameter is false.");
+                    throw new IOException("Directory already exists and overwrite parameter is false" + ".");
             }
             else
             {
-                sunamo.FS.CreateDirectory(junctionPoint);
+                FS.CreateDirectory(junctionPoint);
             }
 
             using (SafeFileHandle handle = OpenReparsePoint(junctionPoint, EFileAccess.GenericWrite))
@@ -240,7 +258,7 @@ public static class JunctionPoint
                         inBuffer, targetDirBytes.Length + 20, IntPtr.Zero, 0, out bytesReturned, IntPtr.Zero);
 
                     if (!result)
-                        ThrowLastWin32Error("Unable to create junction point.");
+                        ThrowLastWin32Error("Unable to create junction point" + ".");
                 }
                 finally
                 {
@@ -254,14 +272,14 @@ public static class JunctionPoint
         /// Does nothing if the junction point does not exist.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         public static void Delete(string junctionPoint)
         {
-            if (!Directory.Exists(junctionPoint))
+            if (!FS.ExistsDirectory(junctionPoint))
             {
-                if (File.Exists(junctionPoint))
+                if (FS.ExistsFile(junctionPoint))
                     throw new IOException("Path is not a junction point.");
 
                 return;
@@ -286,7 +304,7 @@ public static class JunctionPoint
                         inBuffer, 8, IntPtr.Zero, 0, out bytesReturned, IntPtr.Zero);
 
                     if (!result)
-                        ThrowLastWin32Error("Unable to delete junction point.");
+                        ThrowLastWin32Error("Unable to delete junction point" + ".");
                 }
                 finally
                 {
@@ -299,7 +317,7 @@ public static class JunctionPoint
                 }
                 catch (IOException ex)
                 {
-                    throw new IOException("Unable to delete junction point.", ex);
+                    throw new IOException("Unable to delete junction point" + ".", ex);
                 }
             }
         }
@@ -314,7 +332,7 @@ public static class JunctionPoint
         /// or some other error occurs</exception>
         public static bool Exists(string path)
         {
-            if (! Directory.Exists(path))
+            if (! FS.ExistsDirectory(path))
                 return false;
 
             using (SafeFileHandle handle = OpenReparsePoint(path, EFileAccess.GenericRead))
@@ -328,7 +346,7 @@ public static class JunctionPoint
         /// Gets the target of the specified junction point.
         /// </summary>
         /// <remarks>
-        /// Only works on NTsunamo.FS.
+        /// Only works on NTFS.
         /// </remarks>
         /// <param name="junctionPoint">The junction point path</param>
         /// <returns>The target of the junction point</returns>
@@ -363,7 +381,7 @@ public static class JunctionPoint
                     if (error == ERROR_NOT_A_REPARSE_POINT)
                         return null;
 
-                    ThrowLastWin32Error("Unable to get information about junction point.");
+                    ThrowLastWin32Error("Unable to get information about junction point" + ".");
                 }
 
                 REPARSE_DATA_BUFFER reparseDataBuffer = (REPARSE_DATA_BUFFER)
@@ -394,7 +412,7 @@ public static class JunctionPoint
                 EFileAttributes.BackupSemantics | EFileAttributes.OpenReparsePoint, IntPtr.Zero), true);
 
             if (Marshal.GetLastWin32Error() != 0)
-                ThrowLastWin32Error("Unable to open reparse point.");
+                ThrowLastWin32Error("Unable to open reparse point" + ".");
 
             return reparsePointHandle;
         }

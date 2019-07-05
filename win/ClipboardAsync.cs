@@ -10,9 +10,10 @@ using System.Windows.Forms;
 namespace win
 {
     /// <summary>
+    /// Nepoužívat, 1) celá třída vypadá jak by ji psal totální amatér. 2) havaruje mi to app a nevyhodi pritom zadnou UnhaldedException
     /// Use in ClipboardAsync and ClipboardHelperWin only System.Windows.Forms, not System.Windows which have very similar interface.
     /// </summary>
-    public class ClipboardAsync
+    public class ClipboardAsync 
     {
 
         private string _GetText;
@@ -41,8 +42,11 @@ namespace win
         {
             ClipboardAsync instance = new ClipboardAsync();
             Thread staThread = new Thread(instance._thGetText);
+            
+            //Without STA get only empty string
             staThread.SetApartmentState(ApartmentState.STA);
             staThread.Start();
+            // PRESNE TADY TO PADA
             staThread.Join();
             return instance._GetText;
         }

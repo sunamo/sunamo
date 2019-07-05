@@ -1,5 +1,5 @@
 ﻿
-using shared.Extensions;
+
 using sunamo;
 using sunamo.Data;
 using System;
@@ -49,7 +49,7 @@ public class UploaderManager
         }
     }
     int idUser = -1;
-    string[] exts = null;
+    List<string> exts = null;
     string toFolderTempSlash = null;
     Color borderColor = Color.AliceBlue;
     bool workWithDatabase = false;
@@ -80,9 +80,9 @@ public class UploaderManager
         this.idAlbum = idAlbum;
         //this.mss = mss;
         exts = SH.Split(allowedExtension, ',');
-        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\";
-        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\";
+        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\\\\\";
+        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\\\\\";
+        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\\\\\";
         this.idUser = idUser;
         this.borderColor = borderColor;
         this.workWithDatabase = workWithDatabase;
@@ -132,7 +132,7 @@ public class UploaderManager
             if (tp.TryParseInt(s))
             {
                 vr.Add(s);
-                hg.WriteRaw("Soubor " + e.FileName + " úspěšně nauploadován");
+                hg.WriteRaw("Soubor" + " " + e.FileName + " " + "úspěšně nauploadován");
             }
             else
             {
@@ -182,7 +182,7 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Maximální počet obrázků na 1 uživatele je " + maxFilesCountOnAccount + ". Vy jste tohoto limitu již dosáhli a soubor " + e.FileName + " nebude nauploadován";
+                    return "Maximální počet obrázků na 1 uživatele je" + " " + maxFilesCountOnAccount + ". " + "Vy jste tohoto limitu již dosáhli a soubor" + " " + e.FileName + " " + "nebude nauploadován";
                 }
             }
         }
@@ -194,14 +194,14 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor " + e.FileName + " nemá správnou příponu.";
+            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
         }
 
         to = toFolderTempSlash + fn;
         
         FS.CreateUpfoldersPsysicallyUnlessThere(to);
-        //string final = Path.Combine(to, fn);
-        if (File.Exists(to))
+        //string final = FS.Combine(to, fn);
+        if (FS.ExistsFile(to))
         {
             try
             {
@@ -213,7 +213,7 @@ public class UploaderManager
                 {
                     allOk = false;
                 }
-                return "Soubor " + to + " již existoval a nepodařilo se jej smazat.";
+                return "Soubor" + " " + to + " " + "již existoval a nepodařilo se jej smazat" + ".";
             }
         }
         e.SaveAs(to);
@@ -224,25 +224,25 @@ public class UploaderManager
         }
         catch
         {
-            return "error: Z nauploadovaného souboru " + Path.GetFileName(to) + " se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
+            return "error: Z nauploadovaného souboru" + " " + Path.GetFileName(to) + " " + "se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
         }
 
 
 
         if (!bmp.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
         {
-            return "error: Obrázek nebyl ve formátu JPEG.";
+            return "error: Obrázek nebyl ve formátu JPEG" + ".";
         }
         // || bmp.Height > bmp.Width
-        if (e.FileName.StartsWith("DSC_") )
+        if (e.FileName.StartsWith("DSC" + "_") )
         {
             bmp.RotateFlip(RotateFlipType.Rotate90FlipX);
         }
         originalSize = (int)FS.GetFileSize(to);
         if (controlSize)
         {
-            string toMiddle = FS.InsertBetweenFileNameAndExtension(to, "_middle");
-            if (File.Exists(toMiddle))
+            string toMiddle = FS.InsertBetweenFileNameAndExtension(to, "_" + "middle");
+            if (FS.ExistsFile(toMiddle))
             {
                 try
                 {
@@ -254,14 +254,14 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Soubor " + toMiddle + " již existoval a nepodařilo se jej smazat.";
+                    return "Soubor" + " " + toMiddle + " " + "již existoval a nepodařilo se jej smazat" + ".";
                 }
             }
 
 
                 
-                Size s = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
-            shared.Pictures.TransformImage(bmp, s.Width, s.Height, toMiddle);
+                Size s = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
+            PicturesShared.TransformImage(bmp, s.Width, s.Height, toMiddle);
                 if (idUser != 1)
                 {
                     long size = FS.GetFileSize(toMiddle);
@@ -274,7 +274,7 @@ public class UploaderManager
                         {
                             allOk = false;
                         }
-                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor " + e.FileName + " nebude nauploadován.";
+                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor" + " " + e.FileName + " " + "nebude nauploadován" + ".";
                     }
                 }
         }
@@ -298,7 +298,7 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor " + e.FileName + " nemá správnou příponu.";
+            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
         }
         to = toFolderTempSlash + fn;
 
@@ -326,11 +326,11 @@ public class UploaderManager
         ext = Path.GetExtension(fileName).ToUpper();
         fn = fn.Substring(0, fn.Length - ext.Length) + ext;
         bool preskocNaDalsi = true;
-        if (exts.Length == 0)
+        if (exts.Count == 0)
         {
             preskocNaDalsi = false;
         }
-        for (int i = 0; i < exts.Length; i++)
+        for (int i = 0; i < exts.Count; i++)
         {
             if (ext == exts[i])
             {
@@ -404,7 +404,7 @@ public class UploaderManager
         string pridat = "";
         if (!string.IsNullOrEmpty(code))
         {
-            pridat = code + "\\";
+            pridat = code + "\\\\\\";
         }
         final = pathAlbumFinal + pridat + fn;
         finalMin = pathAlbumFinalMin  + pridat + fn;
@@ -413,22 +413,22 @@ public class UploaderManager
         finalMinOpt = FS.InsertBetweenFileNameAndExtension(finalMinOpt, "_to");
         if (stopIfFinalOrFinalMinExists)
         {
-            if (File.Exists(final))
+            if (FS.ExistsFile(final))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + final + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + final + " " + "již existoval";
             }
-            if (File.Exists(finalMin))
+            if (FS.ExistsFile(finalMin))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + finalMin + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + finalMin + " " + "již existoval";
             }
-            if (File.Exists(finalMinOpt))
+            if (FS.ExistsFile(finalMinOpt))
             {
-                return "Upload souboru byl zastaven, neboť soubor " + finalMinOpt + " již existoval";
+                return "Upload souboru byl zastaven, neboť soubor" + " " + finalMinOpt + " " + "již existoval";
             }
         }
         else
         {
-            if (File.Exists(final) || File.Exists(finalMin) || File.Exists(finalMinOpt))
+            if (FS.ExistsFile(final) || FS.ExistsFile(finalMin) || FS.ExistsFile(finalMinOpt))
             {
                 nahrazenySoubory = true;
             }
@@ -440,8 +440,8 @@ public class UploaderManager
         bmp = new Bitmap(to);
         if (bmp.Width > convertToMaxWidth)
         {
-            Size s = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
-            shared.Pictures.TransformImage(bmp, s.Width, s.Height, final);
+            Size s = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, convertToMaxWidth).ToSystemDrawing();
+            PicturesShared.TransformImage(bmp, s.Width, s.Height, final);
             bmp = (Image)System.Drawing.Image.FromFile(final);//.Clone();
         }
         else

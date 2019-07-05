@@ -122,7 +122,7 @@ using System.Threading;
             {
                 if (this.IsNetworkAvailable)
                 {
-                    if (!Directory.Exists(base.Path))
+                    if (!FS.ExistsDirectory(base.Path))
                     {
                         this.IsNetworkAvailable = false;
                         RaiseEventNetworkPathAvailablity();
@@ -130,7 +130,7 @@ using System.Threading;
                 }
                 else
                 {
-                    if (Directory.Exists(base.Path))
+                    if (FS.ExistsDirectory(base.Path))
                     {
                         this.IsNetworkAvailable = true;
                         RaiseEventNetworkPathAvailablity();

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace sunamo
 {
-    class PhotoFileNameConvention
+    public class PhotoFileNameConvention
     {
         public string text = "";
         public uint? number = null;
         #region Constanty - začátek názvů souborů fotek které jsou ve konvenci písmeno/a + číslo - všechno musím kontrolovat také na malé
         public const string DSC = "DSC";
-        public const string DSC_ = "DSC_";
+        public const string DSC_ = "DSC" + "_";
         
         public const string DSCN = "DSCN";
         public const string YDXJ = "YDXJ";

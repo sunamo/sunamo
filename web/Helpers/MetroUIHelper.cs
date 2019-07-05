@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-
+﻿using HtmlAgilityPack;
+using System.Collections.Generic;
+using System.Text;
 
 public static class MetroUIHelper
 {
@@ -34,8 +35,6 @@ public static class MetroUIHelper
         return vr;
     }
 
-    
-     
     /// <summary>
     /// Barvy pozadí které by měli mít popředí bílé
     /// </summary>

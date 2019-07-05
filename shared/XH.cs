@@ -25,8 +25,8 @@ public class XH
     /// <returns></returns>
     public static string ReplaceSpecialHtmlEntity(string vstup)
     {
-        vstup = vstup.Replace("&rsquo;", "'");//�
-        vstup = vstup.Replace("&lsquo;", "'"); //�
+        vstup = vstup.Replace("&rsquo;", "'");//
+        vstup = vstup.Replace("&lsquo;", "'"); //¢
         return vstup;
     }
 
@@ -38,13 +38,13 @@ public class XH
     public static string ReplaceAmpInString(string xml)
     {
         Regex badAmpersand = new Regex("&(?![a-zA-Z]{2,6};|#[0-9]{2,4};)");
-        const string goodAmpersand = "&amp;";
+        const string goodAmpersand = "&" + "amp" + ";";
         return badAmpersand.Replace(xml, goodAmpersand);
     }
 
     /// <summary>
-    /// Do A2 se vkl�d� ji� hotov� xml, nikoliv soubor.
-    /// G posledn� dite, to znamen� �e p�i parsov�n� cel�ho dokumentu vrac� root.
+    /// Do A2 se vklzda jiz hotove xml, nikoliv soubor.
+    /// G posledni dite, to znamena ze pri parsovani celeho dokumentu vraci root.
     /// </summary>
     /// <param name="soubor"></param>
     /// <returns></returns>
@@ -56,15 +56,22 @@ public class XH
     }
 
     /// <summary>
-    /// Vrac� FirstChild, p�i parsaci cel�ho dokumentu tak vrac� xml deklaraci.
+    /// Vraci FirstChild, pri parsaci celeho dokumentu tak vraci xml deklaraci.
+    /// A2 should be entered otherwise can occur error "different XmlDocument context"
     /// </summary>
     /// <param name="soubor"></param>
     /// <param name="xnm"></param>
     /// <returns></returns>
-    public static XmlNode ReturnXmlNode(string xml)
+    public static XmlNode ReturnXmlNode(string xml, XmlDocument xdoc2 = null)
     {
+        XmlDocument xdoc = null;
         //XmlTextReader xtr = new XmlTextReader(
-        XmlDocument xdoc = new XmlDocument();
+        if (xdoc == null)
+        {
+            xdoc = new XmlDocument();
+        }
+
+        
         xdoc.LoadXml(xml);
 
         //xdoc.Load(soubor);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -33,7 +34,7 @@ public class MenuItemHelper
 
     public static MenuItem CreateNew(string header, RoutedEventHandler clickHandler)
     {
-        MenuItem menuItem = new MenuItem();
+        MenuItem menuItem = CreateNew(header);
         menuItem.Click += clickHandler;
         return menuItem;
     }

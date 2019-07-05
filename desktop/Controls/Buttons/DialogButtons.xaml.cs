@@ -55,6 +55,8 @@ namespace desktop.Controls
             }
         }
 
+        public bool clickedOk = false;
+
         public bool IsEnabledBtnApply
         {
             set
@@ -71,7 +73,6 @@ namespace desktop.Controls
             }
         }
 
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
@@ -79,12 +80,18 @@ namespace desktop.Controls
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            clickedOk = true;
             DialogResult = true;
         }
 
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = null;
+        }
+
+        public void Accept(object input)
+        {
+            throw new Exception("Only buttons cant be accepted, because hasnt data for accept" + ".");
         }
     }
 }

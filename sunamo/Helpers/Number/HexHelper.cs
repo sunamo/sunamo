@@ -22,7 +22,7 @@ public static class HexHelper
     /// converts an array of bytes to a string Hex representation
     /// Převedu pole bytů A1 na hexadecimální řetězec.
     /// </summary>
-    static public string ToHex(byte[] ba)
+    static string ToHex(byte[] ba)
     {
         if (ba == null || ba.Length == 0)
         {
@@ -32,7 +32,7 @@ public static class HexHelper
         StringBuilder sb = new StringBuilder();
         foreach (byte b in ba)
         {
-            sb.Append(string.Format(HexFormat, b));
+            sb.Append(SH.Format2(HexFormat, b));
         }
         return sb.ToString();
     }
@@ -41,7 +41,7 @@ public static class HexHelper
     /// converts from a string Hex representation to an array of bytes
     /// Převedu řetězec v hexadeximální formátu A1 na pole bytů. Pokud nebude hex formát(napříkal nebude mít sudý počet znaků), VV
     /// </summary>
-    static public byte[] FromHex(string hexEncoded)
+    static byte[] FromHex(string hexEncoded)
     {
         if (hexEncoded == null || hexEncoded.Length == 0)
         {
@@ -59,7 +59,7 @@ public static class HexHelper
         }
         catch (Exception ex)
         {
-            throw new System.FormatException("The provided string does not appear to be Hex encoded:" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            throw new System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
         }
     }
 }

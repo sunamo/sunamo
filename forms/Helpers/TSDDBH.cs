@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace forms
 {
     /// <summary>
-    /// Generick� t��da t��dy TSDDBH - ToolStripDropDownButtonHelper
+    /// Genericky trida ttrdy TSDDBH - ToolStripDropDownButtonHelper
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class TSDDBHT<T> : TSDDBH
@@ -19,7 +19,7 @@ namespace forms
             originalToolTipText = tsddb.ToolTipText;
             AddValuesOfEnumAsItems(bs);
             SelectedO = defaultValue;
-            tsddb.ToolTipText = originalToolTipText + " " + defaultValue.ToString();
+            tsddb.ToolTipText = originalToolTipText + AllStrings.space + defaultValue.ToString();
         }
 
         public T SelectedT
@@ -40,8 +40,8 @@ namespace forms
         protected ToolStripMenuItem prev = new ToolStripMenuItem();
         protected string originalToolTipText = "";
         /// <summary>
-        /// Objekt, ve kter�m je v�dy aktu�ln� zda v tsddb n�co je
-        /// Tak�e se nelekni �e to je promm�n�
+        /// Objekt, ve kterim je vzdy aktualne zda v tsddb neco je
+        /// Takze se nelekni ze to je prommena
         /// </summary>
         public object SelectedO = null;
 
@@ -99,7 +99,7 @@ namespace forms
             {
                 SelectedO = tsmi;
             }
-            tsddb.ToolTipText = originalToolTipText + " " + SelectedO.ToString();
+            tsddb.ToolTipText = originalToolTipText + AllStrings.space + SelectedO.ToString();
         }
 
         public void AddValuesOfArrayAsItems(EventHandler eh, params object[] o)

@@ -29,7 +29,7 @@ namespace desktop.Helpers.Backend
         public event VoidInt ScrollToLine;
         public event VoidVoid EndOfFilteredLines;
 
-        public List<int> actualFileSearchOccurences
+        public List<FoundedCodeElement> actualFileSearchOccurences
         {
             get
             {
@@ -57,14 +57,14 @@ namespace desktop.Helpers.Backend
         int addRowsDuringScrolling = 0;
 
         /// <summary>
-        /// 
+        /// A3 = Consts.addRowsToCodeTextBoxDuringScrolling
         /// </summary>
         /// <param name="searchData"></param>
-        /// <param name="txtTextBoxState"></param>
+        /// <param name="tbTextBoxState"></param>
         /// <param name="txtContent"></param>
-        public TextBoxBackend(TextBlock txtTextBoxState, TextBox txtContent, int addRowsDuringScrolling)
+        public TextBoxBackend(TextBlock tbTextBoxState, TextBox txtContent, int addRowsDuringScrolling)
         {
-            this.txtTextBoxState = txtTextBoxState;
+            this.txtTextBoxState = tbTextBoxState;
             this.txtContent = txtContent;
             this.addRowsDuringScrolling = addRowsDuringScrolling;
             // Is changed also when just moved cursor (mouse, arrows)
@@ -96,20 +96,20 @@ namespace desktop.Helpers.Backend
 
         public void SetActualFile(string file)
         {
-            state.textActualFile = "File: " + file;
+            state.textActualFile = "File" + ": " + file;
             SetTextBoxState();
         }
 
         public void SetActualLine(int line)
         {
             _actualLine = line++;
-            state.textActualFile = "Line: " + _actualLine;
+            state.textActualFile = "Line" + ": " + _actualLine;
             SetTextBoxState();
         }
          
         private void SetTextBoxState()
         {
-            txtTextBoxState.Text = (SH.Join("  ", state.textActualFile, state.textSearchedResult) + " Line: " + (actualLine+1)).Trim();
+            txtTextBoxState.Text = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + "Line" + ": " + (actualLine+1)).Trim();
         }
 
         public void JumpToNextSearchedResult(int addLines)
@@ -134,7 +134,7 @@ namespace desktop.Helpers.Backend
                 int serie = actualSearchedResult + 1;
                 SetTbSearchedResult(serie, actualFileSearchOccurences.Count);
                 
-                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult], addRowsDuringScrolling);
+                ScrollToLineMethod(actualFileSearchOccurences[ actualSearchedResult].Line, addRowsDuringScrolling);
                 
                 actualSearchedResult++;
             }
@@ -162,7 +162,7 @@ namespace desktop.Helpers.Backend
             {
                 TextBoxHelper.ScrollToLine(txtContent, line);
             }
-            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line " + line);
+            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line" + " " + line);
             SetTextBoxState();
         }
 
@@ -180,8 +180,32 @@ namespace desktop.Helpers.Backend
             else
             {
                 ScrollToLineMethod(newLine, addRowsDuringScrolling);
-                
             }
+        }
+
+        /// <summary>
+        /// Must be called in Loaded or after
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="length"></param>
+        public void Highlight(int from, int length)
+        {
+            if (from != -1)
+            {
+                txtContent.Focus();
+                txtContent.Select(from, length);
+            }
+            
+        }
+
+        /// <summary>
+        /// Must be called in Loaded or after
+        /// A1 -1, because highlighting can be processed only after and index was already increment
+        /// </summary>
+        public void Highlight(int actualSearchedResult)
+        {
+            var r = searchCodeElementsUCData.actualFileSearchOccurences[actualSearchedResult];
+            Highlight(r.From, r.Lenght);
         }
     }
 }

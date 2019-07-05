@@ -19,7 +19,7 @@ public class GeneralLayer //: ISpecificLayer
     /// <summary>
     /// Zobtrazuje se pouze, když je AllowedRegLogSys false
     /// </summary>
-    public static string RegLogSysStatus = "Omlouvám se, ale přihlašovácí a registrační systém právě probíhá aktualizací. Zkuste to prosím znovu zítra nebo za pár hodin."; 
+    public static string RegLogSysStatus = "Omlouvám se, ale přihlašovácí a registrační systém právě probíhá aktualizací. Zkuste to prosím znovu zítra nebo za pár hodin" + "."; 
     #endregion
 
     public static void ClearAndCreateTables()

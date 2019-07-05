@@ -14,7 +14,7 @@ namespace WebSunamo
     /// <summary>
     /// Interaction logic for SunamoBrowser.xaml
     /// </summary>
-    public partial class SunamoBrowser : UserControl, ISunamoBrowser<Control>
+    public partial class SunamoBrowser : UserControl, ISunamoBrowser<Control>, IControlWithResult
     {
         public SunamoBrowser()
         {
@@ -61,7 +61,7 @@ namespace WebSunamo
         /// <param name="loadCompleted"></param>
         public void Initialize(string TextCustomButton, string homeAdressWithoutHttp)
         {
-            homeUrl = new Uri("http://" + homeAdressWithoutHttp);
+            homeUrl = new Uri("http" + ":" + "//" + homeAdressWithoutHttp);
 
             webControl.LoadCompleted += WebControl_LoadCompleted;
 
@@ -77,7 +77,7 @@ namespace WebSunamo
                 webControl.Source = new Uri("https://samoobsluha.tescomobile.cz/selfcare/sc/history?msisdn=" + cislo + "&filteringAttributesCallList.page=1&anchorValue=anchorValueCallList&render=renderLists#anchorValueCallList");
                 return;
             }
-            if (HTML.Contains("<body "))
+            if (HTML.Contains("<body" + " "))
             {
 
 
@@ -142,11 +142,8 @@ namespace WebSunamo
             set { border.BorderBrush = value; }
         }
 
-
-        public event RoutedEventHandler ClickCancel;
-
-        public event RoutedEventHandler ClickOK;
         public event VoidT<Control> ShowPopup;
+        public event VoidBoolNullable ChangeDialogResult;
 
         public string xName
         {
@@ -166,6 +163,8 @@ namespace WebSunamo
             }
         }
 
+        public bool? DialogResult { set => ChangeDialogResult(value); }
+
         private void txtAddress_KeyUp_1(object sender, System.Windows.Input.KeyEventArgs e)
         {
             #region Old
@@ -178,6 +177,11 @@ namespace WebSunamo
         }
 
         public Task<HtmlDocument> GetHtmlDocument()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Accept(object input)
         {
             throw new NotImplementedException();
         }

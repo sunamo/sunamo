@@ -1,9 +1,13 @@
-﻿using sunamo.Essential;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Reflection;
+
+namespace sunamo.Essential
+{ }
 
 public class ThrowExceptions
 {
@@ -16,6 +20,11 @@ public class ThrowExceptions
     public static void FileExists(object type, string methodName, string fulLPath)
     {
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName), fulLPath));
+    }
+
+    public static void HaveAllInnerSameCount(Type type, string methodName, List<List<string>> elements)
+    {
+        ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName), elements));
     }
 
     /// <summary>
@@ -42,9 +51,14 @@ public class ThrowExceptions
         DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
     }
 
-    internal static void IsNotAllowed(Type type, string methodName, string what)
+    public static void IsNotAllowed(Type type, string methodName, string what)
     {
         ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName), what));
+    }
+
+    public static void MoreThanOneElement(Type type, string methodName, string listName, int count)
+    {
+        ThrowIsNotNull(Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName), listName, count));
     }
 
     public static void IsNull(object type, string methodName, string variableName, object variable)
@@ -57,6 +71,16 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName), arrayName, dex, valueElement, unallowedStrings));
     }
 
+    public static void OnlyOneElement(object type, string methodName, string colName, IEnumerable list)
+    {
+        ThrowIsNotNull(Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName), colName, list));
+    }
+
+    public static void StringContainsUnallowedSubstrings(object type, string methodName, string input, params string[] unallowedStrings)
+    {
+        ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName), input, unallowedStrings));
+    }
+
     public static void InvalidParameter(object type, string methodName, string mayUrlDecoded, string typeOfInput)
     {
         ThrowIsNotNull(Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName), mayUrlDecoded, typeOfInput));
@@ -66,6 +90,11 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName), nameCollection, element));
     }
+
+    public static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
+    {
+        ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName), argName, argValue));
+    }
     #endregion
 
     #region Without parameters
@@ -73,6 +102,8 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode( type, methodName)));
     }
+
+   
     #endregion
 
     #region Without locating executing code
@@ -113,7 +144,7 @@ public class ThrowExceptions
             typeFullName = t.FullName;
         }
 
-        return string.Concat(typeFullName, ".", methodName);
+        return string.Concat(typeFullName, AllStrings.dot, methodName);
     }
 
     /// <summary>
@@ -130,15 +161,29 @@ public class ThrowExceptions
         }
     }
 
-    public static void ThrowIsNotNull(string exception)
+    /// <summary>
+    /// true if everything is OK
+    /// false if some error occured
+    /// </summary>
+    /// <param name="exception"></param>
+    public static bool ThrowIsNotNull(string exception)
     {
         if (exception != null)
         {
-            throw new Exception(exception);
+#if ASPNET
+            //if (HttpRuntime.AppDomainAppId != null)
+            //{
+                Debugger.Break();
+            //}
+#endif
+            DebugLogger.Instance.WriteLine(exception);
+            //throw new Exception(exception);
+            return false;
         }
+        return true;
     }
 
-    internal static void NoPassedFolders(Type type, string v, IEnumerable folders)
+    public static void NoPassedFolders(Type type, string v, IEnumerable folders)
     {
         ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v), folders));   
     }
@@ -151,8 +196,52 @@ public class ThrowExceptions
         }
     }
 
+    /// <summary>
+    /// Verify whether A3 contains A4
+    /// true if everything is OK
+    /// false if some error occured
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="v"></param>
+    /// <param name="p"></param>
+    /// <param name="after"></param>
+    public static bool NotContains(Type type, string v, string p, params string[] after)
+    {
+        return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
+    }
 
-    #endregion
+    public static void DirectoryWasntFound(Type type, string methodName, string folder1)
+    {
+        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode( type, methodName), folder1));
+    }
+
+    public static void Custom(object type, string methodName, string message)
+    {
+        ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName), message));
+    }
+
+    /// <summary>
+    /// Throw exc A4,5 is same count of elements
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="detailLocation"></param>
+    /// <param name="before"></param>
+    /// <param name="after"></param>
+    public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
+    {
+       
+         ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName), detailLocation, before, after));
+        
+    }
+
+    public static void FolderCantBeRemoved(Type type, string methodName, string folder)
+    {
+        ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName), folder));
+    }
+
+
+#endregion
 
 
 }

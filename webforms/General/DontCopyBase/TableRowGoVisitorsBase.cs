@@ -6,7 +6,7 @@ using System.Collections.Generic;
  public class TableRowGoVisitorsBase 
  {
  	 public long ID = -1 ; 
- 	 public DateTime DT = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime DT = SqlServerHelper.DateTimeMinVal ; 
  	 public int IDGo = -1 ; 
  	 public byte IDBrowser = 0 ; 
  	 public long IDHostName = -1 ; 

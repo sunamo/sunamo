@@ -32,6 +32,8 @@
 
     public class Integer
     {
+        public static Integer Instance = new Integer();
+
         public int lastInt = -1;
 
         /// <summary>

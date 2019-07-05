@@ -14,9 +14,22 @@
         </Grid.RowDefinitions>
 
         <desktopControls:SelectFolder x:Name="selectFolder" FolderChanged="selectFolder_FolderChanged"></desktopControls:SelectFolder>
+        
         <local:DialogButtons Grid.Row="1" x:Name="cDialogButtons" ChangeDialogResult="cDialogButtons_ChangeDialogResult">
             <local:DialogButtons.CustomControl>
-                <CheckBox Content="Don't ask again"></CheckBox>
+                <StackPanel Orientation="Vertical">
+                <CheckBox Content="Don't ask again" Tag="chbDontAskAgain"></CheckBox>
+                    <CheckBox Content="Files from subfolders" Tag="chbFilesFromSubfolders"></CheckBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text=" Masc: "></TextBlock>
+                    <TextBox Grid.Column="1" Tag="txtMasc"></TextBox>
+                </Grid>
+                </StackPanel>
             </local:DialogButtons.CustomControl>
         </local:DialogButtons>
     </Grid>

@@ -1,5 +1,8 @@
 ﻿using System.Text;
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
 public class ConvertPascalConvention //: IConvertConvention
 {
     /// <summary>
@@ -7,9 +10,9 @@ public class ConvertPascalConvention //: IConvertConvention
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string FromConvention(string p)
+    public static string FromConvention(string p, bool allLettersExceptFirstLower)
     {
-        throw new NotImplementedException();
+        return SH.FirstCharUpper( Regex.Replace(p, "[a-z][A-Z]", m => $"{m.Value[0]} {char.ToLower(m.Value[1])}").ToLower());
     }
 
     /// <summary>
@@ -60,6 +63,16 @@ public class ConvertPascalConvention //: IConvertConvention
             }
         }
         return sb.ToString();
+    }
+
+    public static List<string> FromConvention(List<string> list, bool allLettersExceptFirstLower)
+    {
+        CA.Trim(list);
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i] = FromConvention(list[i], allLettersExceptFirstLower);
+        }
+        return list;
     }
 }
 

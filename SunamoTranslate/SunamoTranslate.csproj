@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="InsertIntoXlfAndConstantCsUC-8fd66218c999.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Api.Gax.Rest" Version="2.6.0" />
+    <PackageReference Include="Google.Apis.Translate.v2" Version="1.38.0.875" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.4.0-beta01" />
+    <PackageReference Include="Google.Cloud.Translation.V2" Version="1.2.0-beta01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\GDataTranslate\GDataTranslate.csproj" />
+    <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -75,7 +75,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Zadejte hodnotu a stisknete. enter:";
+            this.label1.Text = "Zadejte hodnotu a stisknete. enter" + ":";
             // 
             // EnterValueEventForm
             // 
@@ -155,8 +155,8 @@ namespace F.WF
         public EnterValueEventForm(string label)
             : this()
         {
-            Text = "Enter " + label;
-            label1.Text = "Enter " + label + " and press enter: ";
+            Text = "Enter" + " " + label;
+            label1.Text = "Enter" + " " + label + " " + "and press enter" + ": ";
         }
 
         /// <summary>

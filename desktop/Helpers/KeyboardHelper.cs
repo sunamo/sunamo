@@ -1,6 +1,7 @@
 ﻿using sunamo.Essential;
 using System;
 using System.Diagnostics;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace sunamo
@@ -22,6 +23,7 @@ namespace sunamo
             ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
             bool modifierPresent = modifierInt > 0;
 
+            // Tady v Keyboard.IsKeyUp to prochází jakémkoliv textu
             bool result = Keyboard.IsKeyUp(key) && modifierPresent;
             return result;
         }
@@ -70,6 +72,21 @@ mam 3, d0, u1 - nechapu */
             bool result = keyPressed && modifierPresent;
             
             return result;
+        }
+
+        public static bool IsNumLock()
+        {
+            return (((ushort)W32.GetKeyState(0x90)) & 0xffff) != 0;
+        }
+
+        public static bool IsCapsLock()
+        {
+            return (((ushort)W32.GetKeyState(0x14)) & 0xffff) != 0;
+        }
+
+        public static bool IsScrollLock()
+        {
+            return (((ushort)W32.GetKeyState(0x91)) & 0xffff) != 0;
         }
 
         public static bool KeyWithNoneModifier(KeyEventArgs e, Key key)

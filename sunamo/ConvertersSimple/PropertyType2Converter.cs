@@ -7,7 +7,7 @@ using sunamo.Enums;
 
 namespace sunamo
 {
-    class PropertyType2Converter : ISimpleConverter<PropertyType2, string>
+    public class PropertyType2Converter : ISimpleConverter<PropertyType2, string>
     {
 
         public PropertyType2 ConvertTo(string u)

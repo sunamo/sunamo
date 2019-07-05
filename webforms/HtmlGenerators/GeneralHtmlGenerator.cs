@@ -19,7 +19,7 @@ namespace web
 
         public static string AnchorToShowViews(SunamoPage sp)
         {
-            return "<a href =\"" + UH.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string AnchorToShowViews(SunamoPage sp, int idPage)
@@ -28,12 +28,12 @@ namespace web
             {
                 return "";
             }
-            return "<a href =\"" + UH.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountToday(SunamoPage sp)
         {
-            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\"" + UH.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountOverall(SunamoPage sp)
@@ -89,8 +89,8 @@ namespace web
         }
         public static string AnchorWithHttp(HttpRequest req, bool targetBlank, string www, string text)
         {
-            string http = UH.AppendSiteNameIfNotExists(req, www);
-            http = sunamo.UH.AppendHttpIfNotExists(http);
+            string http = UA.AppendSiteNameIfNotExists(req, www);
+            http = UH.AppendHttpIfNotExists(http);
             return HtmlGenerator2.AnchorWithHttpCore(targetBlank, text, http);
         }
         public static string GetNovelty(string HtmlContent, DateTime DT, String User)

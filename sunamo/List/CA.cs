@@ -1,16 +1,48 @@
 ﻿
-using sunamo.Constants;
-using sunamo.Extensions;
+using sunamo.Collections;
+using sunamo.Data;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 
-public static class CA
+public static partial  class CA
 {
-    static Type type = typeof(CA);
+    /// <summary>
+    /// A1 are column names for ValuesTableGrid (not letter sorted a,b,.. but left column (Name, Rating, etc.)
+    /// A2 are data
+    /// </summary>
+    /// <param name="captions"></param>
+    /// <param name="exists"></param>
+    /// <returns></returns>
+    public static string SwitchForGoogleSheets(List<string> captions, List<List<string>> exists)
+    {
+        ValuesTableGrid<string> vtg = new ValuesTableGrid<string>(exists);
+        vtg.captions = captions;
+
+        DataTable dt = vtg.SwitchRowsAndColumn();
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (DataRow item in dt.Rows)
+        {
+            JoinForGoogleSheetRow(sb, item.ItemArray);
+        }
+
+        string vr = sb.ToString();
+        DebugLogger.Instance.WriteLine(vr);
+        return vr;
+    }
+
+    public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
+    {
+        sb.AppendLine(SH.Join(AllChars.tab, en));
+    }
 
     public static string GetNumberedList(List<string> input)
     {
@@ -36,18 +68,62 @@ public static class CA
 
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Swap<T>(this IList<T> list, int i, int j)
+    public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
     {
-        if (i == j)   //This check is not required but Partition function may make many calls so its for perf reason
-            return;
-        var temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
+        List<string> existsIn1 = new List<string>();
+        List<string> existsIn2 = new List<string>();
+
+        int dex = -1;
+
+        for (int i = c2.Count - 1; i >= 0; i--)
+        {
+            string item = c2[i];
+            dex = c1.IndexOf(item);
+            if (dex == -1)
+            {
+                existsIn2.Add(item);
+            }
+        }
+
+        for (int i = c1.Count - 1; i >= 0; i--)
+        {
+            string item = c1[i];
+            dex = c2.IndexOf(item);
+            if (dex == -1)
+            {
+                existsIn1.Add(item);
+            }
+        }
+
+        ABL<string, string> abl = new ABL<string, string>();
+        abl.a = existsIn1;
+        abl.b = existsIn2;
+
+        return abl;
     }
 
     /// <summary>
-    /// 
+    /// Return whether all of A1 are in A2
+    /// Not all from A2 must be A1
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="searchTerms"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public static bool IsEqualToAllElement<T>(List<T> searchTerms, List<T> key)
+    {
+        foreach (var item in searchTerms)
+        {
+            if (!CA.IsEqualToAnyElement<T>(item, key))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Return what exists in both
     /// Modify both A1 and A2 - keep only which is only in one
     /// </summary>
     /// <param name="c1"></param>
@@ -85,17 +161,15 @@ public static class CA
         return existsInBoth;
     }
 
-    internal static void AppendToLastElement(List<string> list, string s)
+    public static List<string> PaddingByEmptyString(List<string> list, int columns)
     {
-        if (list.Count >0 )
+        for (int i = list.Count - 1; i < columns-1; i++)
         {
-            list[list.Count - 1] += s;
+            list.Add(string.Empty);
         }
-        else
-        {
-            list.Add(s);
-        }
+        return list;
     }
+    
 
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {
@@ -127,16 +201,6 @@ public static class CA
 
     }
 
-    public static bool HasIndex(int dex, Array col)
-    {
-        return col.Length > dex;
-    }
-
-    public static List<T> ToList<T>(params T[] f)
-    {
-        return new List<T>(f);
-    }
-
     public static List<string> OnlyFirstCharUpper(List<string> list)
     {
         return ChangeContent(list, SH.OnlyFirstCharUpper);
@@ -147,71 +211,35 @@ public static class CA
         return od >= index && to <= index;
     }
 
-    /// <summary>
-    /// For all types
-    /// </summary>
-    /// <param name="times"></param>
-    /// <returns></returns>
-    public static List<int> IndexesWithNull(IEnumerable times) 
+
+    public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
     {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
+        for (int i = input.Count - 1; i >= 0; i--)
         {
-            if (item == null)
+            if (pred.Invoke( input[i], arg))
             {
-                nulled.Add(i);
+                input.RemoveAt(i);
             }
-            i++;
         }
 
-        return nulled;
     }
 
     /// <summary>
-    /// Only for structs
+    /// Return A2 if start something with A1
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="times"></param>
+    /// <param name="suMethods"></param>
+    /// <param name="line"></param>
     /// <returns></returns>
-    public static List<int> IndexesWithNull<T>(List<Nullable<T>> times) where T : struct
+    public static string StartWith(List<string> suMethods, string line)
     {
-
-        List<int> nulled = new List<int>();
-        for (int i = 0; i < times.Count; i++)
+        foreach (var method in suMethods)
         {
-            T? t = new Nullable<T>(times[i].Value);
-            if (!t.HasValue)
+            if (line.StartsWith(method))
             {
-                nulled.Add(i);
+                return line;
             }
         }
-        return nulled;
-    }
-
-    /// <summary>
-    /// Dont trim
-    /// </summary>
-    /// <param name="times"></param>
-    /// <returns></returns>
-    internal static List<int> IndexesWithNullOrEmpty(IEnumerable times)
-    {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
-        {
-            if (item == null)
-            {
-                nulled.Add(i);
-            }
-            else if(item.ToString() == string.Empty)
-            {
-                nulled.Add(i);
-            }
-            i++;
-        }
-
-        return nulled;
+        return null;
     }
 
     public static List<T> CreateListAndInsertElement<T>(T el)
@@ -221,36 +249,9 @@ public static class CA
         return t;
     }
 
-    /// <summary>
-    /// better is use first or default, because here I also have to use default(T)
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <returns></returns>
-    internal static T FirstOrNull<T>(List<T> list)
-    {
-        if (list.Count > 0)
-        {
-            return list[0];
-        }
-        return default(T);
-    }
-
     public static List<string> DummyElementsCollection(int count)
     {
         return Enumerable.Repeat<string>(string.Empty, count).ToList();   
-    }
-
-    public static bool ContainsElement<T>(IEnumerable<T> list, T t)
-    {
-        foreach (T item in list)
-        {
-            if (!Comparer<T>.Equals(item, t))
-            {
-                return false;
-            }
-        }
-        return true;
     }
 
     public static List<string> ReturnWhichContains(List<string> lines, string term)
@@ -277,13 +278,38 @@ public static class CA
         return result;
     }
 
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, bool fixedSpace = true)
+    private static IEnumerable<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, T value)
+    {
+        List<int> result = new List<int>();
+        int i = 0;
+        foreach (var item in parts)
+        {
+            if (EqualityComparer<T>.Default.Equals(item, value))
+            {
+                result.Add(i);
+            }
+            i++;
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// AnySpaces - split A2 by spaces and A1 must contains all parts
+    /// ExactlyName - ==
+    /// FixedSpace - simple contains
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="term"></param>
+    /// <param name="searchStrategy"></param>
+    /// <returns></returns>
+    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         List<int> result = new List<int>();
         int i = 0;
             foreach (var item in value)
             {
-                if (SH.Contains( item, term, fixedSpace))
+                if (SH.Contains( item, term, searchStrategy))
                 {
                     result.Add(i);
                 }
@@ -307,7 +333,13 @@ public static class CA
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
     }
-
+    public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
+    {
+        foreach (var item in list)
+        {
+            RemoveWhichContains(files, item, wildcard);
+        }
+    }
     public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
     {
         if (wildcard)
@@ -318,15 +350,15 @@ public static class CA
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\")
+                //if (item == @"\\obj\\\\\\")
                 //{
-                //    if (files1[i].Contains(@"\obj\"))
+                //    if (files1[i].Contains(@"\obj\\\\\"))
                 //    {
                 //        Debugger.Break();
                 //    }
                 //}
 
-                //if (files1[i].Contains(@"\obj\"))
+                //if (files1[i].Contains(@"\obj\\\\\"))
                 //{
                 //    Debugger.Break();
                 //}
@@ -362,66 +394,6 @@ public static class CA
         return celkove;
     }
 
-    public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
-    {
-        for (int i = 0; i < sf.Count; i++)
-        {
-            sf[i] = sf[i].TrimEnd(toTrim);
-        }
-        return sf;
-    }
-
-    public static string[] TrimEnd(string[] sf, params char[] toTrim)
-    {
-        return TrimEnd(new List<string>(sf), toTrim).ToArray();
-    }
-
-    #region input Object IEnumerable
-    public static bool HasIndexWithoutException(int p, IList nahledy)
-    {
-        if (p < 0)
-        {
-            return false;
-        }
-        if (nahledy.Count > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static int GetLength(IList where)
-    {
-        if (where == null)
-        {
-            return 0;
-        }
-        return where.Count;
-    }
-
-    public static bool HasIndex(int p, IEnumerable nahledy)
-    {
-        if (p < 0)
-        {
-            throw new Exception("Chybný parametr p");
-        }
-        if (nahledy.Count() > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static List<string> WrapWith(IList<string> whereIsUsed2, string v)
-    {
-        List<string> result = new List<string>();
-        for (int i = 0; i < whereIsUsed2.Count; i++)
-        {
-            result.Add(v + whereIsUsed2[i] + v);
-        }
-        return result;
-    }
-
     public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
         for (int i = 0; i < whereIsUsed2.Length; i++)
@@ -439,28 +411,6 @@ public static class CA
         return list.Any(d => SH.MatchWildcard(file, d));
     }
 
-    public static object[] JoinVariableAndArray(object p, object[] sloupce)
-    {
-        List<object> o = new List<object>();
-        o.Add(p);
-        o.AddRange(sloupce);
-        return o.ToArray();
-    }
-    #endregion
-
-    #region input Numeric IEnumerable
-    public static bool Contains(int idUser, int[] onlyUsers)
-    {
-        foreach (int item in onlyUsers)
-        {
-            if (item == idUser)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static int IndexOfValue(List<int> allWidths, int width)
     {
         for (int i = 0; i < allWidths.Count; i++)
@@ -473,32 +423,7 @@ public static class CA
         return -1;
     }
 
-    public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
-    {
-        List<byte> lb = new List<byte>(pass.Length + salt.Length);
-        lb.AddRange(pass);
-        lb.AddRange(salt);
-        return lb;
-    }
 
-    public static bool AreTheSame(byte[] p, byte[] p2)
-    {
-        if (p.Length != p2.Length)
-        {
-            return false;
-        }
-        for (int i = 0; i < p.Length; i++)
-        {
-            if (p[i] != p2[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    #endregion
-
-    #region input String IEnumerable
     public static bool HasFirstItemLength(string[] notContains)
     {
         string t = "";
@@ -508,43 +433,6 @@ public static class CA
         }
         return t.Length > 0;
     }
-
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <param name="l"></param>
-    /// <returns></returns>
-    public static List<string> Trim(List<string> l)
-    {
-        for (int i = 0; i < l.Count; i++)
-        {
-            l[i] = l[i].Trim();
-        }
-        return l;
-    }
-
-
-    internal static bool IsEmptyOrNull(IEnumerable mustBe)
-    {
-        if (mustBe == null)
-        {
-            return true;
-        }
-        else if (mustBe.Count() == 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public static string[] Trim(string[] l)
-    {
-        var list = CA.ToListString(l);
-        CA.Trim(list);
-        return list.ToArray();
-    }
-
-
 
     public static string[] EnsureBackslash(string[] eb)
     {
@@ -617,7 +505,7 @@ public static class CA
         }
         for (int i = 0; i < list.Count; i++)
         {
-            list[i] = sunamo.FS.WithEndSlash(list[i]);
+            list[i] = FS.WithEndSlash(list[i]);
         }
         return folders;
     }
@@ -626,36 +514,33 @@ public static class CA
     {
         for (int i = 0; i < folders.Length; i++)
         {
-            folders[i] = sunamo.FS.WithoutEndSlash(folders[i]);
+            folders[i] = FS.WithoutEndSlash(folders[i]);
         }
         return folders;
     }
 
     /// <summary>
     /// Remove elements starting with A1
+    /// Direct edit
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
     /// <returns></returns>
-    public static List<string> RemoveStartingWith(string start, List<string> mySites)
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool trimBeforeFinding = false)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
-            if (mySites[i].StartsWith(start))
+            var val = mySites[i];
+            if (trimBeforeFinding)
+            {
+                val = val.Trim();
+            }
+            if (val.StartsWith(start))
             {
                 mySites.RemoveAt(i);
             }
         }
         return mySites;
-    }
-
-    public static List<string> ToLower(List<string> slova)
-    {
-        for (int i = 0; i < slova.Count; i++)
-        {
-            slova[i] = slova[i].ToLower();
-        }
-        return slova;
     }
 
     public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
@@ -667,6 +552,18 @@ public static class CA
         }
         return result.c;
     }
+
+    private static List<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
+    {
+        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
+        foreach (var item in mustBeEqual)
+        {
+            result.AddRange(ReturnWhichAreEqualIndexes<T>(parts, item));
+        }
+        return result.c;
+    }
+
+    
 
     public static bool AnyElementEndsWith(string t, params string[] v)
     {
@@ -680,29 +577,11 @@ public static class CA
         return false;
     }
 
-    /// <summary>
-    /// G zda se alespoň 1 prvek A2 == A1
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="availableValues"></param>
-    /// <returns></returns>
-    public static bool Contains(string value, string[] availableValues)
-    {
-        foreach (var item in availableValues)
-        {
-            if (item == value)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static List<string> JoinArrayAndArrayString(string[] a, params string[] p)
+    public static List<string> JoinArrayAndArrayString(IEnumerable<string> a, IEnumerable<string> p)
     {
         if (a != null)
         {
-            List<string> d = new List<string>(a.Length + p.Length);
+            List<string> d = new List<string>(a.Length() + p.Length());
             d.AddRange(a);
             d.AddRange(p);
             return d;
@@ -710,13 +589,9 @@ public static class CA
         return new List<string>(p);
     }
 
-    public static List<string> WrapWithQm(List<string> value)
+    public static List<string> JoinArrayAndArrayString(IEnumerable<string> a, params string[] p)
     {
-        for (int i = 0; i < value.Count; i++)
-        {
-            value[i] = SH.WrapWithQm(value[i]);
-        }
-        return value;
+        return JoinArrayAndArrayString(a, p.ToList());
     }
 
     public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
@@ -752,18 +627,7 @@ public static class CA
         return false;
     }
 
-    public static bool HasIndexWithValueWithoutException(int p, string[] nahledy, string item)
-    {
-        if (p < 0)
-        {
-            return false;
-        }
-        if (nahledy.Length > p && nahledy[p] == item)
-        {
-            return true;
-        }
-        return false;
-    }
+
 
 
 
@@ -795,15 +659,6 @@ public static class CA
             }
         }
         return false;
-    }
-
-    public static List<string> WithoutDiacritic(List<string> nazev)
-    {
-        for (int i = 0; i < nazev.Count; i++)
-        {
-            nazev[i] = SH.TextWithoutDiacritic(nazev[i]);
-        }
-        return nazev;
     }
 
     /// <summary>
@@ -838,11 +693,6 @@ public static class CA
         return dd.ToArray();
     }
 
-    public static void Replace(List<string> files_in, string what, string forWhat)
-    {
-        CA.ChangeContent(files_in, SH.Replace, what, forWhat);
-    }
-
     /// <summary>
     /// Direct edit collection
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
@@ -863,7 +713,7 @@ public static class CA
 
     /// <summary>
     /// Direct edit collection
-    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje
+    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje (ale pouze pro porovnání, v kolekci nechá)
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
@@ -902,29 +752,6 @@ public static class CA
 
     }
 
-    /// <summary>
-    /// Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
-    /// </summary>
-    /// <param name="ss"></param>
-    /// <returns></returns>
-    public static string[] ToLower(string[] ss, bool createNewArray = false)
-    {
-        string[] outArr = ss;
-
-        if (createNewArray)
-        {
-            outArr = new string[ss.Length];
-        }
-
-        for (int i = 0; i < ss.Length; i++)
-        {
-            outArr[i] = ss[i].ToLower();
-
-        }
-        return outArr;
-
-    }
-
     public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
         int delkaNejdelsiho = 0;
@@ -958,21 +785,43 @@ public static class CA
         return vr;
     }
 
+    /// <summary>
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement
+    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// </summary>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <returns></returns>
     public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1)
+    {
+        string contained = null;
+        return IsSomethingTheSame(ext, p1, ref contained);
+    }
+
+    /// <summary>
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement
+    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// </summary>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <param name="contained"></param>
+    /// <returns></returns>
+    public static bool IsSomethingTheSame(string ext, IEnumerable<string> p1, ref string contained)
     {
         foreach (var item in p1)
         {
             if (item == ext)
             {
+                contained = item;
                 return true;
             }
         }
-
+       
         return false;
     }
-    #endregion
 
-    #region input Generic IEnumerable
     public static T[,] OneDimensionArrayToTwoDirection<T>(T[] flatArray, int width)
     {
         int height = (int)Math.Ceiling(flatArray.Length / (double)width);
@@ -1011,28 +860,6 @@ public static class CA
             }
         }
         return vr;
-    }
-
-    public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
-    {
-        foreach (T item in list)
-        {
-            if (EqualityComparer<T>.Default.Equals(p, item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
-    {
-        return IsEqualToAnyElement(p, prvky.ToList());
-    }
-
-    public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)
-    {
-        return sloupce.SequenceEqual(sloupce2);
     }
 
     /// <summary>
@@ -1103,48 +930,10 @@ public static class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
+        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
-    /// <summary>
-    /// direct edit
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="idKesek"></param>
-    /// <returns></returns>
-    public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek)
-    {
-        List<T> foundedDuplicities;
-        return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
-    }
-
-    /// <summary>
-    /// direct edit
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="idKesek"></param>
-    /// <param name="foundedDuplicities"></param>
-    /// <returns></returns>
-    public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek, out List<T> foundedDuplicities)
-    {
-        foundedDuplicities = new List<T>();
-        List<T> h = new List<T>();
-        for (int i = idKesek.Count - 1; i >= 0; i--)
-        {
-            var item = idKesek[i];
-            if (!h.Contains(item))
-            {
-                h.Add(item);
-            }
-            else
-            {
-                idKesek.RemoveAt(i);
-                foundedDuplicities.Add(item);
-            }
-        }
-        
-        return h;
-    }
+    
 
     public static bool IsAllTheSame<T>(T ext, IList<T> p1)
     {
@@ -1170,36 +959,6 @@ public static class CA
         return true;
     }
 
-    public static T[] JumbleUp<T>(T[] b)
-    {
-        int bl = b.Length;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
-    public static List<T> JumbleUp<T>(List<T> b)
-    {
-        int bl = b.Count;
-        for (int i = 0; i < bl; ++i)
-        {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
-
-            T temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
-        }
-        return b;
-    }
-
     /// <summary>
     /// V prvním indexu jsou řádky, v druhém sloupce
     /// </summary>
@@ -1223,99 +982,7 @@ public static class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray();");
-    }
-    #endregion
-
-    #region To Array (without change) - output Generic
-    public static T[] ToArrayT<T>(params T[] aB)
-    {
-        return aB;
-    }
-    #endregion
-
-    public static IEnumerable ToEnumerable(params object[] p)
-    {
-        if (p.Count() == 0)
-        {
-            return new List<string>();
-        }
-
-        if (p[0] is IEnumerable)
-        {
-            return (IEnumerable)p.First();
-        }
-        return p;
-    }
-
-    public static IEnumerable<string> ToEnumerable(params string[] p)
-    {
-        return p;
-    }
-
-    /// <summary>
-    /// Pokud potřebuješ vrátit null když něco nebude sedět, použij ToInt s parametry nebo ToIntMinRequiredLength
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable enumerable)
-    {
-        List<int> result = new List<int>();
-        foreach (var item in enumerable)
-        {
-            result.Add(int.Parse(item.ToString()));
-        }
-        return result;
-    }
-
-    public static List<long> ToLong(IEnumerable enumerable)
-    {
-        List<long> result = new List<long>();
-        foreach (var item in enumerable)
-        {
-            result.Add(long.Parse(item.ToString()));
-        }
-        return result;
-    }
-
-    public static List<string> ToListString(params object[] enumerable)
-    {
-        List<string> result = new List<string>();
-        foreach (var item in enumerable)
-        {
-            result.Add(item.ToString());
-        }
-        return result;
-    }
-
-    public static List<string> ToListString(IEnumerable enumerable)
-    {
-        
-        List<string> result = new List<string>();
-        if (enumerable is IEnumerable<char>)
-        {
-            result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
-        }
-        else
-        {
-            foreach (var item in enumerable)
-            {
-                result.Add(item.ToString());
-            }
-        }
-        return result;
-    }
-
-
-
-    public static List<short> ToShort(IEnumerable enumerable)
-    {
-        List<short> result = new List<short>();
-        foreach (var item in enumerable)
-        {
-            result.Add(short.Parse(item.ToString()));
-        }
-        return result;
+        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
     public static List<object> ToObject(IEnumerable enumerable)
@@ -1326,75 +993,6 @@ public static class CA
             result.Add(item);
         }
         return result;
-    }
-
-    /// <summary>
-    /// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable enumerable, int requiredLength)
-    {
-        int enumerableCount = enumerable.Count();
-        if (enumerableCount != requiredLength)
-        {
-            return null;
-        }
-
-        List<int> result = new List<int>();
-        int y = 0;
-        foreach (var item in enumerable)
-        {
-            if (int.TryParse(item.ToString(), out y))
-            {
-                result.Add(y);
-            }
-            else
-            {
-                return null;
-            }
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
-    public static List<int> ToInt(IEnumerable altitudes, int requiredLength, int startFrom)
-    {
-        int finalLength = altitudes.Count() - startFrom;
-        if (finalLength < requiredLength)
-        {
-            return null;
-        }
-        List<int> vr = new List<int>(finalLength);
-
-        int i = 0;
-        foreach (var item in altitudes)
-        {
-            if (i < startFrom)
-            {
-                continue;
-            }
-
-            int y = 0;
-            if (int.TryParse(item.ToString(), out y))
-            {
-                vr.Add(y);
-            }
-            else
-            {
-                return null;
-            }
-
-            i++;
-        }
-
-        return vr;
     }
 
     /// <summary>
@@ -1426,21 +1024,6 @@ public static class CA
         return result;
     }
 
-    #region To Array (without change) - output Object type
-
-    public static List<string> TrimStart(char backslash, List<string> s)
-    {
-        for (int i = 0; i < s.Count; i++)
-        {
-            s[i] = s[i].TrimStart(backslash);
-        }
-        return s;
-    }
-
-    public static string[] TrimStart(char backslash, params string[] s)
-    {
-        return TrimStart(backslash, s.ToList()).ToArray();
-    }
 
     /// <summary>
     /// Change elements count in collection to A2
@@ -1512,76 +1095,12 @@ public static class CA
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
         {
-            globallyInstalledTsDefinitions[i] = string.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
+            globallyInstalledTsDefinitions[i] = SH.Format2(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
     }
 
-    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            result.Add( func.Invoke(files_in[i]));
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// TResult is the same type as T1 (output collection is the same generic as input)
-    /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="T2"></typeparam>
-    /// <typeparam name="TResult"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <returns></returns>
-    private static List<TResult> ChangeContent<T1, T2, TResult>(Func<T1, T2, TResult> func, List<T1> files_in, T2 t2)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            // Fully generic - no strict string can't return the same collection
-            result.Add( func.Invoke(files_in[i], t2));
-        }
-        return result;
-    }
-
-    public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i]);
-        }
-        return files_in;
-    }
-
-    public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg1, arg2);
-        }
-        return files_in;
-    }
-
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <typeparam name="Arg1"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <param name="arg"></param>
-    /// <returns></returns>
-    public static List<string> ChangeContent<Arg1>(List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg);
-        }
-        return files_in;
-    }
-    #endregion
+    
 
 
 }

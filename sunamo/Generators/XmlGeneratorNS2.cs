@@ -11,7 +11,7 @@ using System.Diagnostics;
 /// Element - prvek kter�mu se zapisuj� ihned i innerObsah. M��e b�t i pr�zdn�.
 /// Tag - prvek kter�mu to mohu zapsat pozd�ji nebo v�bec.
 /// </summary>
-public class XmlGeneratorNS2
+public  class XmlGeneratorNS2
 {
     protected StringBuilder sb = new StringBuilder();
      string ns = null;
@@ -40,7 +40,7 @@ public class XmlGeneratorNS2
 
     public void WriteTagWithAttr(string tag, string atribut, string hodnota)
     {
-        sb.AppendFormat("<" + ns + "{0} {1}=\"{2}\">", tag, atribut, hodnota);
+        sb.AppendFormat(AllStrings.lt + ns + "{0} {1}=\"{2}\">", tag, atribut, hodnota);
     }
 
     public void WriteRaw(string p)
@@ -55,7 +55,7 @@ public class XmlGeneratorNS2
 
     public void WriteTag(string p)
     {
-        sb.AppendFormat("<" + ns + "{0}>", p);
+        sb.AppendFormat(AllStrings.lt + ns + "{0}>", p);
     }
 
     public override string ToString()
@@ -70,23 +70,23 @@ public class XmlGeneratorNS2
     /// <param name="p_2"></param>
     public void WriteTagWithAttrs(string p, params string[] p_2)
     {
-        sb.AppendFormat("<" + ns + "{0} ", p);
+        sb.AppendFormat(AllStrings.lt + ns + "{0} ", p);
         for (int i = 0; i < p_2.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", p_2[i], p_2[++i]);
+            sb.AppendFormat("{0}=\"{1}\"", p_2[i], p_2[++i]);
         }
-        sb.Append(">");
+        sb.Append(AllStrings.gt);
 
     }
 
     public void WriteElement(string nazev, string inner)
     {
-        sb.AppendFormat("<" + ns + "{0}>{1}</" + ns + "{0}>", nazev, inner);
+        sb.AppendFormat(AllStrings.lt + ns + "{0}>{1}</" + ns + "{0}>", nazev, inner);
     }
 
     public void WriteElementCData(string nazev, string cdata)
     {
-        sb.AppendFormat("<" + ns + "{0}><![CDATA[{1}]]></" + ns + "{0}>", nazev, cdata);
+        sb.AppendFormat(AllStrings.lt + ns + "{0}><![CDATA[{1}]]></" + ns + "{0}>", nazev, cdata);
     }
 
     public void WriteXmlDeclaration()
@@ -96,7 +96,8 @@ public class XmlGeneratorNS2
 
     public void WriteTagWith2Attrs(string p, string p_2, string p_3, string p_4, string p_5)
     {
-        sb.AppendFormat("<" + ns + "{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2, p_3, p_4, p_5);
+        //{0} {1}=\"{2}\" {3}=\"{4}\">
+        sb.AppendFormat(AllStrings.lt + ns + "{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2, p_3, p_4, p_5);
     }
 
     public static string WriteSimpleTagS(string ns, string tag, params string[] p)
@@ -115,15 +116,15 @@ public class XmlGeneratorNS2
 
     public void WriteSimpleTag(string tag)
     {
-        sb.AppendFormat("<" + ns + "{0} />", tag);
+        sb.AppendFormat(AllStrings.lt + ns + "{0} />", tag);
     }
 
     public void WriteSimpleTag(string tag, params string[] p_2)
     {
-        sb.AppendFormat("<" + ns + "{0} ", tag);
+        sb.AppendFormat(AllStrings.lt + ns + "{0} ", tag);
         for (int i = 0; i < p_2.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", p_2[i], p_2[++i]);
+            sb.AppendFormat("{0}=\"{1}\"", p_2[i], p_2[++i]);
         }
         sb.Append(" />");
     }

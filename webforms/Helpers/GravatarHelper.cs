@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 public static class GravatarHelper
 {
-    public const string folderAvatars = "_/temp/avatars";
+    public const string folderAvatars = "_/" + "temp/avatars";
     const string avatareExt = ".jpg";
 
     /// <summary>
@@ -14,11 +14,11 @@ public static class GravatarHelper
     /// <returns></returns>
     public static string GetGravatarUri(HttpRequest p, string nick)
     {
-        if (File.Exists(GetGravatarPath(nick)))
+        if (FS.ExistsFile(GetGravatarPath(nick)))
         {
-            return web.UH.GetWebUri(p, folderAvatars, nick + avatareExt);
+            return UA.GetWebUri(p, folderAvatars, nick + avatareExt);
         }
-        return web.UH.GetWebUri(p, "img", "gravatar_logo_28x28.jpg");
+        return UA.GetWebUri(p, "img", "gravatar_logo_28x28.jpg");
     }
 
     public static string GetGravatarPath(string nick)

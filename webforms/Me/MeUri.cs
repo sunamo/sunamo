@@ -5,19 +5,19 @@ using System.Web.UI;
 /// </summary>
 public static class MeUri
 {
-    public static string Login(Page p)
+    public static string Login(SunamoPage p)
     {
-        return "http://" + p.Request.Url.Host + "/Me/Login.aspx";
+        return "http" + ":" + "//" + p.Request.Url.Host + "/Me/Login.aspx";
     }
 
-    public static string Logout(Page p)
+    public static string Logout(SunamoPage p)
     {
-        return "http://" + p.Request.Url.Host + "/Me/Logout.aspx";
+        return "http" + ":" + "//" + p.Request.Url.Host + "/Me/Logout.aspx";
     }
 
     public static string User(HttpRequest req, string un)
     {
-        return "http://" + req.Url.Host + "/Me/User.aspx?un=" + un;
+        return "http" + ":" + "//" + req.Url.Host + "/Me/User.aspx?un=" + un;
     }
 
 
@@ -26,7 +26,7 @@ public static class MeUri
 
     private static string GetWebUri(SunamoPage sp, string p)
     {
-        return web.UH.GetWebUri(sp, "Me/" + p);
+        return UA.GetWebUri(sp, "Me/" + p);
     }
 
     public static string ChangeProfilePicture(SunamoPage sp)
@@ -34,12 +34,12 @@ public static class MeUri
         return GetWebUri(sp, "ChangeProfilePicture.aspx");
     }
 
-    public static string LoginWithReturnUrl(Page p)
+    public static string LoginWithReturnUrl(SunamoPage p)
     {
         return SunamoCzMetroUIHelper.GetAnchorWithReturnUri(MeUri.Login(p), p.Request);
     }
 
-    public static string LogoutWithReturnUrl(Page p)
+    public static string LogoutWithReturnUrl(SunamoPage p)
     {
         return SunamoCzMetroUIHelper.GetAnchorWithReturnUri(MeUri.Logout(p), p.Request);
     }

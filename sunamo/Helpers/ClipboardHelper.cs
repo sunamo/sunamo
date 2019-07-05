@@ -1,59 +1,193 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using sunamo;
 using sunamo.Generators.Text;
 
-public  class ClipboardHelper
+/// <summary>
+/// Cant add another methods with Task and normal - methods have same signature, despite return were different
+/// </summary>
+public class ClipboardHelper 
 {
-	public static  IClipboardHelper Instance = null;
+    public  static IClipboardHelper Instance = null;
+    public  static IClipboardHelperApps InstanceApps = null;
 
-	private ClipboardHelper()
-	{
-	}
+    private ClipboardHelper() { }
 
-	public static  string GetText()
-	{
-		return Instance.GetText();
-	}
+    public  static bool ContainsText()
+    {
+        if (Instance == null)
+        {
+            return InstanceApps.ContainsText().Result;
+        }
+        else
+        {
+            return Instance.ContainsText();
+        }
+    }
 
-	public static  void SetText(string s)
-	{
-		Instance.SetText(s);
-	}
+    public  static string GetText()
+    {
+        if (Instance == null)
+        {
+            return  InstanceApps.GetText().Result;
+        }
+        else
+        {
+            return Instance.GetText();
+        }
+    }
 
-	public static void GetFirstWordOfList()
-	{
-		Instance.GetFirstWordOfList();
-	}
+    public  static List<string> GetLinesAllWhitespaces()
+    {
 
-	public static List<string> GetLines()
-	{
-		return Instance.GetLines();
-	}
+        var t =  GetText();
 
-	public static void SetList(List<string> d)
-	{
-		Instance.SetList(d);
-	}
 
-	public static void SetLines(List<string> lines)
-	{
-		Instance.SetLines(lines);
-	}
+        return SH.SplitByWhiteSpaces(t);
+    }
 
-	public static void CutFiles(params string[] selected)
-	{
-		Instance.CutFiles(selected);
-	}
+    public  static List<string> GetLines()
+    {
+#if !UNITTEST
+        if (Instance == null)
+        {
+            return InstanceApps.GetLines().Result;
+        }
+        else
+        {
+            return Instance.GetLines();
+        }
+#endif
+    }
 
-	public static void SetText(TextBuilder stringBuilder)
-	{
-		Instance.SetText(stringBuilder);
-	}
+    
 
-	public static void SetText(StringBuilder stringBuilder)
-	{
-		Instance.SetText(stringBuilder.ToString());
-	}
+    public static void SetText(string s)
+    {
+#if !UNITTEST
+        if (Instance == null)
+        {
+            InstanceApps.SetText(s);
+        }
+        else
+        {
+            Instance.SetText(s);
+        }
+#endif
+    }
+
+    public static void SetText2(string s)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetText2(s);
+        }
+        else
+        {
+            Instance.SetText2(s);
+        }
+    }
+
+
+    public static void GetFirstWordOfList()
+    {
+        if (Instance == null)
+        {
+            InstanceApps.GetFirstWordOfList();
+        }
+        else
+        {
+            Instance.GetFirstWordOfList();
+        }
+    }
+
+  
+    public static void SetList(List<string> d)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetList(d);
+        }
+        else
+        {
+            Instance.SetList(d);
+        }
+    }
+
+    public static void SetLines(List<string> lines)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetLines(lines);
+        }
+        else
+        {
+            Instance.SetLines(lines);
+        }
+    }
+
+    public static void CutFiles(params string[] selected)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.CutFiles(selected);
+        }
+        else
+        {
+            Instance.CutFiles(selected);
+        }
+    }
+
+    public static void SetText(TextBuilder stringBuilder)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetText(stringBuilder);
+        }
+        else
+        {
+            Instance.SetText(stringBuilder);
+        }
+    }
+
+    public static void SetText3(string s)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetText3(s);
+        }
+        else
+        {
+            Instance.SetText3(s);
+        }
+    }
+
+    public static void SetText(StringBuilder stringBuilder)
+    {
+        if (Instance == null)
+        {
+            InstanceApps.SetText(stringBuilder.ToString());
+        }
+        else
+        {
+            Instance.SetText(stringBuilder.ToString());
+        }
+    }
+
+    //public static string GetText()
+    //{
+    //    return Instance.GetText();
+    //}
+
+    //public static List<string> GetLines()
+    //{
+    //    return Instance.GetLines();
+    //}
+
+    //public static bool ContainsText()
+    //{
+    //    return Instance.ContainsText();
+    //}
 }

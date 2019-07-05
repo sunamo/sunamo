@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 
-public class HtmlTemplates
+public static partial  class HtmlTemplates
 {
     public static string HiddenField(string id, string value)
     {
-        string format = "<input type='hidden' id='" + id + "' value='" + value + "' />";
+        string format = "<input type='hidden' id=" + "'" + id + "' " + "value=" + "'" + value + "' />";
         return format;
         //HtmlInjection.InjectInternalToHead(page, format);
     }
@@ -13,14 +13,14 @@ public class HtmlTemplates
     /// <summary>
     /// Toto se m��e pou��vat pouze kdy� nechce� nic zadat do head, jinak pou�ij ostatn� konstanty zde
     /// </summary>
-    public const string htmlEndTitleBody = "</title></head><body>";
-    public const string htmlEndTitle = "</title>";
-    public const string htmlEndHeadBody = "</head><body>";
-    public const string htmlEnd = "</body></html>";
+    public const string htmlEndTitleBody = "/" + "/title></head><body>";
+    public const string htmlEndTitle = "/" + "/title>";
+    public const string htmlEndHeadBody = "/" + "/head><body>";
+    public const string htmlEnd = "/" + "/body></html>";
 
     public static string GetH2(string title)
     {
-        return "<h2 class=\"velkaPismena tl\">" + title + "</h2>";
+        return "<h2 static class=\"velkaPismena tl\">" + title + "</h2>";
     }
 
     public static string NameValueBr(string name, string value)
@@ -33,33 +33,24 @@ public class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td>" + name + ": </td><td>" + value + "</td></tr>";
+            return "<tr><td>" + name + ": " + "</td><td>" + value + "/" + "/td></tr>";
         }
-        return "<tr><td>" + name + " </td><td>" + value + "</td></tr>";
+        return "<tr><td>" + name + " " + "</td><td>" + value + "/" + "/td></tr>";
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string a(string href, string displayText)
     {
-        return "<a href=\"" + href + "\">" + displayText + "</a>";
+        return "<a href=\"" + href + AllStrings.gt + displayText + "</a>";
     }
 
     public static string trColspan2(string name, string value, bool pridavatDvojtecku)
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td colspan='2'><b>" + name + ": </b></td></tr><tr><td colspan='2'>" + value + "</td></tr>";
+            return "<tr><td colspan='2'><b>" + name + ": " + "</b></td></tr><tr><td colspan='2'" + "" + value + "/" + "/td></tr>";
         }
-        return "<tr><td colspan='2'><b>" + name + " </b></td></tr><tr><td colspan='2'>" + value + "</td></tr>";
+        return "<tr><td colspan='2'><b>" + name + " " + "</b></td></tr><tr><td colspan='2'" + "" + value + "/" + "/td></tr>";
     }
 
-    public static string Img(string src, string alt)
-    {
-        return $"<img src=\"{src}\" alt=\"{alt}\" />";
-    }
-
-    public static string Img(string src)
-    {
-        return $"<img src=\"{src}\" />";
-    }
 }

@@ -55,7 +55,7 @@ namespace forms
         }
 
         /// <summary>
-        /// Mus�m A1 vy�e�it takto, proto�e je poka�d� jinak typovan�: ListBox.ObjectCollection eg.
+        /// Musim A1 vyresit takto, protoze je pokazde jinak typovany: ListBox.ObjectCollection eg.
         /// </summary>
         /// <param name="countItems"></param>
         /// <param name="index"></param>

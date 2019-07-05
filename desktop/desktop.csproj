@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -55,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -66,15 +69,41 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\StatusesLogger.cs" Link="" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
+    <Compile Include="Controls\Buttons\ImageButtons.xaml.cs">
+      <DependentUpon>ImageButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Collections\CheckBoxListUC.xaml.cs">
+      <DependentUpon>CheckBoxListUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Collections\LoggerUC.xaml.cs">
+      <DependentUpon>LoggerUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\SunamoComboBox.cs" />
+    <Compile Include="Controls\Input\EnterOneValueUC.xaml.cs">
+      <DependentUpon>EnterOneValueUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Input\InputTwoColumnsUC.xaml.cs">
       <DependentUpon>InputTwoColumnsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\SelectManyFiles.xaml.cs">
+      <DependentUpon>SelectManyFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\SelectMoreFolders.xaml.cs">
+      <DependentUpon>SelectMoreFolders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
+      <DependentUpon>SelectOneValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
+      <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Result\FoundedFilesUC.xaml.cs">
       <DependentUpon>FoundedFilesUC.xaml</DependentUpon>
@@ -97,7 +126,9 @@
     <Compile Include="Controls\ToggleSwitch\Utils\ActualSizePropertyProxy.cs" />
     <Compile Include="Controls\ToggleSwitch\Utils\HelperExtensions.cs" />
     <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
+    <Compile Include="DataTableHelper.cs" />
     <Compile Include="Data\BorderData.cs" />
+    <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\Input\ColorPicker.xaml.cs">
@@ -168,6 +199,8 @@
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
+    <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="Extensions\UIElementExtensions.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
@@ -182,17 +215,21 @@
     <Compile Include="FontHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
+    <Compile Include="Helpers\BaseControls\UIElementHelper.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
-    <Compile Include="Helpers\Clipboard\ClipboardMonitor.cs" />
+    <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
+    <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
+    <Compile Include="Helpers\Controls\CheckBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
     <Compile Include="Helpers\BaseControls\ControlHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
-    <Compile Include="Helpers\DataGridHelper.cs" />
+    <Compile Include="Helpers\Controls\DataGridHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
     <Compile Include="Helpers\BaseControls\FrameworkElementHelper.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
@@ -202,19 +239,18 @@
     <Compile Include="Helpers\Controls\MenuItemHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
-    <Compile Include="Helpers\Pictures.cs" />
+    <Compile Include="Helpers\PicturesDesktop.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />
-    <Compile Include="Helpers\Resources\BitmapImageHelper.cs" />
-    <Compile Include="Helpers\Resources\BitmapImagesHelper.cs" />
-    <Compile Include="Helpers\Resources\DrawingImageHelper.cs" />
-    <Compile Include="Helpers\Resources\DrawingImagesHelper.cs" />
-    <Compile Include="Helpers\Resources\ImageHelper.cs" />
-    <Compile Include="Helpers\Resources\ImageHelperShared.cs" />
-    <Compile Include="Helpers\Resources\ImagesHelper.cs" />
-    <Compile Include="Helpers\Resources\ImageSourceHelper.cs" />
-    <Compile Include="Helpers\Resources\WritableBitmap.cs" />
+    <Compile Include="Helpers\Content\Resources\BitmapImageHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\BitmapImagesHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\DrawingImageHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\DrawingImagesHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\ImageHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\ImageHelperShared.cs" />
+    <Compile Include="Helpers\Content\Resources\ImagesHelper.cs" />
+    <Compile Include="Helpers\Content\Resources\ImageSourceHelper.cs" />
     <Compile Include="Helpers\SecureStringHelper.cs" />
     <Compile Include="Helpers\SizeH.cs" />
     <Compile Include="Helpers\Controls\TBH.cs" />
@@ -226,17 +262,20 @@
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
     <Compile Include="Hotkey.cs" />
-    <Compile Include="ImageHelperDesktop.cs" />
+    <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
+    <Compile Include="Interfaces\IHideToTray.cs" />
     <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
+    <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
-    <Compile Include="Interfaces\IUserControlWithMenuItems.cs" />
+    <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
+    <Compile Include="Interfaces\IWindowOpener.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DependencyObjectHelper.cs" />
+    <Compile Include="Helpers\BaseControls\DependencyObjectHelper.cs" />
     <Compile Include="Registry\RegistryEntries.cs" />
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
@@ -255,20 +294,28 @@
     <Compile Include="TrialManager.cs" />
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
+    <Compile Include="Values\TypesDesktop.cs" />
+    <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />
-    <Compile Include="Windows\EnterValueForm.xaml.cs">
-      <DependentUpon>EnterValueForm.xaml</DependentUpon>
+    <Compile Include="UserControls\AboutApp.xaml.cs">
+      <DependentUpon>AboutApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EnterOneValueWindow.xaml.cs">
+      <DependentUpon>EnterOneValueWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LoginUc.xaml.cs">
+    <Compile Include="UserControls\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\WindowResult.cs" />
     <Compile Include="Windows\WindowWithUserControl.cs" />
     <Compile Include="WpfControlGenerator.cs" />
-    <Compile Include="WpfHelper.cs" />
+    <Compile Include="WpfScreen.cs" />
     <Compile Include="XamlDisplay.cs" />
     <Compile Include="XamlGenerator.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />
@@ -280,7 +327,7 @@
       <Name>shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
+      <Project>{94D983CC-4204-4270-AA27-EB86A6D84CA8}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
     <ProjectReference Include="..\win\win.csproj">
@@ -289,9 +336,41 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Buttons\ImageButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\CheckBoxListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\LoggerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Input\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Input\EnterOneValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectManyFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectMoreFolders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectOneValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Result\FoundedFilesUC.xaml">
       <SubType>Designer</SubType>
@@ -344,6 +423,10 @@
     <Page Include="Controls\ToggleSwitch\HorizontalToggleSwitchWithLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToggleSwitch\ResourceDictionaries\ToggleSwitchResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ToggleSwitch\WPF\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -401,7 +484,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\EnterValueForm.xaml">
+    <Page Include="UserControls\AboutApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\EnterOneValueWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -409,19 +496,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\LoginUc.xaml">
+    <Page Include="UserControls\LoginUc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NotificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ftp\" />
+    <Folder Include="Helpers\Content\EmbeddedResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Large.png" />
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Small.png" />
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.VisualStudio.bmp" />
     <Content Include="Controls\ToggleSwitch\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

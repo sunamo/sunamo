@@ -91,20 +91,20 @@ namespace desktop
             else if (storageApplicationData == StorageApplicationData.TextFile)
             {
                 //IniFile ini = IniFile.InStartupPath();
-                string salt2 = TF.ReadFile( AppData.GetFile(AppFolders.Settings, "s.txt"));
+                string salt2 = TF.ReadFile( AppData.ci.GetFile(AppFolders.Settings, "s.txt"));
                 if (salt2 == "")
                 {
-                    TF.SaveFile(salt, AppData.GetFile(AppFolders.Settings, "s.txt"));
+                    TF.SaveFile(salt, AppData.ci.GetFile(AppFolders.Settings, "s.txt"));
                     salt2 = salt;
                 }
 
-                string encryptedH = TF.ReadFile( AppData.GetFile(AppFolders.Settings, "h.txt"));
+                string encryptedH = TF.ReadFile( AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
                 if (encryptedH != "")
                 {
                     this.txtHeslo.Password = Unsafe.ToInsecureString(ProtectedDataHelper.DecryptString(salt2, encryptedH));
                 }
 
-                this.txtLogin.Text = TF.ReadFile( AppData.GetFile(AppFolders.Settings, "l.txt"));
+                this.txtLogin.Text = TF.ReadFile( AppData.ci.GetFile(AppFolders.Settings, "l.txt"));
             }
             else if (storageApplicationData == StorageApplicationData.Config)
             {
@@ -169,20 +169,20 @@ namespace desktop
             {
                 if ((bool)chbRememberLogin.IsChecked)
                 {
-                    TF.SaveFile(this.txtLogin.Text, AppData.GetFile(AppFolders.Settings, "l.txt"));
+                    TF.SaveFile(this.txtLogin.Text, AppData.ci.GetFile(AppFolders.Settings, "l.txt"));
                     if ((bool)this.chbAutoLogin.IsChecked)
                     {
-                        TF.SaveFile( ProtectedDataHelper.EncryptString(TF.ReadFile(AppData.GetFile(AppFolders.Settings, "s.txt")), Unsafe.ToSecureString(this.txtHeslo.Password)), AppData.GetFile(AppFolders.Settings, "h.txt"));
+                        TF.SaveFile( ProtectedDataHelper.EncryptString(TF.ReadFile(AppData.ci.GetFile(AppFolders.Settings, "s.txt")), Unsafe.ToSecureString(this.txtHeslo.Password)), AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
                     }
                     else
                     {
-                        TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "h.txt"));
+                        TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
                     }
                 }
                 else
                 {
-                    TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "l.txt"));
-                    TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "h.txt"));
+                    TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "l.txt"));
+                    TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
                 }
             }
             else if (storageApplicationData == StorageApplicationData.Config)
@@ -227,8 +227,8 @@ namespace desktop
             }
             else if (storageApplicationData == StorageApplicationData.TextFile)
             {
-                TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "l.txt"));
-                TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "h.txt"));
+                TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "l.txt"));
+                TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
             }
             else
             {
@@ -249,7 +249,7 @@ namespace desktop
             }
             else if (storageApplicationData == StorageApplicationData.TextFile)
             {
-                TF.SaveFile("", AppData.GetFile(AppFolders.Settings, "h.txt"));
+                TF.SaveFile("", AppData.ci.GetFile(AppFolders.Settings, "h.txt"));
             }
             else if (storageApplicationData == StorageApplicationData.NoWhere)
             {

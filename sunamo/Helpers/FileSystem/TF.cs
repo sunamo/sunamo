@@ -5,29 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-public class TF
+public partial class TF
 {
-    /// <summary>
-    /// Precte soubor a vrati jeho obsah. Pokud soubor neexistuje, vytvori ho a vrati SE. 
-    /// </summary>
-    /// <param name="s"></param>
-    /// <returns></returns>
-    public static string ReadFile(string s)
-    {
-        FS.MakeUncLongPath(ref s);
-        if (File.Exists(s))
-        {
-            return File.ReadAllText(s, Encoding.UTF8);
-        }
-        else
-        {
-            File.WriteAllText(s, "", Encoding.UTF8);
-        }
+    
 
-        return "";
-    }
-
-    #region Encoding
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -48,9 +29,8 @@ public class TF
         var bom = new byte[4];
 
         file.Read(bom, 0, 4);
-        return EncodingHelper.DetectEncoding(bom);
+        return EncodingHelper.DetectEncoding(new List<byte>( bom));
     } 
-    #endregion
 
     static void AppendToStartOfFileIfDontContains(List<string> files, string append)
     {
@@ -69,28 +49,7 @@ public class TF
 
 
 
-    /// <summary>
-    /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
-    /// Vrátí všechny řádky vytrimované z A1, ale nikoliv deserializované
-    /// Every non empty line trim, every empty line don't return
-    /// </summary>
-    /// <param name="file"></param>
-    /// <returns></returns>
-    public static string[] GetAllLines(string file)
-    {
 
-        List<string> lines = TF.GetLines(file);
-        List<string> linesPpk = new List<string>();
-        for (int i = 0; i < lines.Count; i++)
-        {
-            string trim = lines[i].Trim();
-            if (trim != "")
-            {
-                linesPpk.Add(trim);
-            }
-        }
-        return linesPpk.ToArray();
-    }
 
     /// <summary>
     /// ...
@@ -117,46 +76,9 @@ public class TF
     
 
 
-    public static List<string> GetLines(string sobuor)
+    public static List<string> GetLines(string file)
     {
-        return ReadAllLines(sobuor);
-    }
-
-    public static void AppendToFile(string obsah, string soubor)
-    {
-        SaveFile(obsah, soubor, true);
-    }
-
-    public static void CreateEmptyFileWhenDoesntExists(string path)
-    {
-        if (!File.Exists(path))
-        {
-            sunamo.FS.CreateUpfoldersPsysicallyUnlessThere(path);
-            File.WriteAllText(path, "");
-        }
-    }
-
-    
-
-    static void SaveFile(string obsah, string soubor, bool pripsat)
-    {
-        if (soubor == null)
-        {
-            return;
-        }
-        if (pripsat)
-        {
-            File.AppendAllText(soubor, obsah, Encoding.UTF8);
-        }
-        else
-        {
-            File.WriteAllText(soubor, obsah, Encoding.UTF8);
-        }
-    }
-
-    public static void SaveFile(string obsah, string soubor)
-    {
-        SaveFile(obsah, soubor, false);
+        return ReadAllLines(file);
     }
 
     static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
@@ -178,9 +100,29 @@ public class TF
         }
     }
 
-    public static List<string> ReadAllLines(string file)
+    /// <summary>
+    /// Return all lines except empty
+    /// 
+    /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
+    /// Vrátí všechny řádky vytrimované z A1, ale nikoliv deserializované
+    /// Every non empty line trim, every empty line don't return
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
+    public static string[] GetAllLines(string file)
     {
-        return SH.GetLines(ReadFile(file));
+
+        List<string> lines = TF.GetLines(file);
+        List<string> linesPpk = new List<string>();
+        for (int i = 0; i < lines.Count; i++)
+        {
+            string trim = lines[i].Trim();
+            if (trim != "")
+            {
+                linesPpk.Add(trim);
+            }
+        }
+        return linesPpk.ToArray();
     }
 
     public static void SaveLines(List<string> list, string file)

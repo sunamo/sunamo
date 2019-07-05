@@ -44,7 +44,7 @@ public static class SHWithControls
         StringBuilder sbCelaSlova = new StringBuilder();
         foreach (char item in text)
         {
-            if (item == ' ')
+            if (item == AllChars.space)
             {
                 sbCelaSlova.Clear();
                 sbCelaSlova.Append(sb);

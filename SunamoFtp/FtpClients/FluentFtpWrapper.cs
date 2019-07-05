@@ -40,10 +40,10 @@ namespace SunamoFtp
             // begin connecting to the server
             client.Connect();
 
-            Console.WriteLine( client.GetChmod("/"));
+            Console.WriteLine( client.GetChmod(AllStrings.slash));
 
-            // get a list of files and directories in the "/htdocs" folder
-            foreach (FtpListItem item in client.GetListing("/"))
+            // get a list of files and directories in the "/" + "htdocs" folder
+            foreach (FtpListItem item in client.GetListing(AllStrings.slash))
             {
 
                 // if this is a file
@@ -67,7 +67,7 @@ namespace SunamoFtp
             var d = client.GetWorkingDirectory();
 
             client.CreateDirectory("htdocs2");
-            CreateDirectoryIfNotExists("/htdocs");
+            CreateDirectoryIfNotExists("/" + "htdocs");
 
             // upload a file
             client.UploadFile(@"D:\a.txt", "/htdocs/big.txt");
@@ -82,12 +82,12 @@ namespace SunamoFtp
             client.DeleteFile("/htdocs/big2.txt");
 
             // delete a folder recursively
-            client.DeleteDirectory("/htdocs/extras/");
+            client.DeleteDirectory("/" + "htdocs/extras" + "/");
 
             // check if a file exists
             if (client.FileExists("/htdocs/big2.txt")) { }
 
-            client.CreateDirectory("/htdocs/extras/");
+            client.CreateDirectory("/" + "htdocs/extras" + "/");
 
             // upload a file and retry 3 times before giving up
             client.RetryAttempts = 3;

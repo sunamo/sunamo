@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using sunamo.Data;
+using System.Collections.Generic;
 using System.Text;
 public static class ConvertRot12
 {
@@ -15,9 +16,9 @@ public static class ConvertRot12
         abc.Add(new ABT<char, char>('2', 'f'));
         abc.Add(new ABT<char, char>('3', '7'));
         abc.Add(new ABT<char, char>('4', 'Z'));
-        abc.Add(new ABT<char, char>('5', '.'));
+        abc.Add(new ABT<char, char>('5', AllChars.dot));
         abc.Add(new ABT<char, char>('6', '4'));
-        abc.Add(new ABT<char, char>('7', '_'));
+        abc.Add(new ABT<char, char>('7', AllChars.us));
         abc.Add(new ABT<char, char>('8', 'L'));
         abc.Add(new ABT<char, char>('9', 't'));
         abc.Add(new ABT<char, char>('0', '0'));
@@ -48,9 +49,9 @@ public static class ConvertRot12
         abc.Add(new ABT<char, char>('y', '5'));
         abc.Add(new ABT<char, char>('z', 'O'));
         #region Tyto 3 znaky zde mohou být, metody UH.UrlEncode ani HttpUtility.HtmlEncode je neenkodují
-        abc.Add(new ABT<char, char>('_', 'b'));
-        abc.Add(new ABT<char, char>('.', 'm'));
-        abc.Add(new ABT<char, char>('-', '-')); 
+        abc.Add(new ABT<char, char>(AllChars.us, 'b'));
+        abc.Add(new ABT<char, char>(AllChars.dot, 'm'));
+        abc.Add(new ABT<char, char>(AllChars.dash, AllChars.dash)); 
         #endregion
         abc.Add(new ABT<char, char>('A', 'Q'));
         abc.Add(new ABT<char, char>('B', 'e'));

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
     public class ConvertDateTimeToFileNamePrefix
     {
-        static char delimiter = '_';
+        static char delimiter = AllChars.us;
 
     /// <summary>
     /// Převede z data na název souboru bez přípony
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
     /// <returns></returns>
     public static string ToConvention(string prefix, DateTime dt, bool time)
         {
-        //prefix = SH.ReplaceAll(prefix, " ", "_");
+        //prefix = SH.ReplaceAll(prefix, AllStrings.space, AllStrings.us);
             return prefix + delimiter + DTHelper.DateTimeToFileName(dt, time);
         }
 

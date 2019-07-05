@@ -4,15 +4,15 @@ using System;
 public class SearchingInLbWF
 {
     /// <summary>
-    /// ListBox ve kter�m se ukazuj� v�sledky
+    /// ListBox ve kterem se ukazuji vysledky
     /// </summary>
     ListBox lb = null;
     /// <summary>
-    /// TextBox do kter�ho byl zadan� hledan� v�raz
+    /// TextBox do ktereho byl zadany hledany vyraz
     /// </summary>
     System.Windows.Forms.ToolStripTextBox tstb = null;
     /// <summary>
-    /// V�choz� polo�ky. Nahraj� se do LB po stornov�n� hled�n�.
+    /// Vychozy polozky. Nahraje se do LB po stornovani hledane.
     /// </summary>
     object[] oc = null;
 

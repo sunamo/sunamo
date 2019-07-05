@@ -36,6 +36,30 @@ namespace desktop.Controls
 
         public event VoidBoolNullable ChangeDialogResult;
 
+        public CheckBox chbDontAskAgain
+        {
+            get
+            {
+                return FrameworkElementHelper.FindByTag<CheckBox>(cDialogButtons.CustomControl, "chbDontAskAgain");
+            }
+        }
+
+        public TextBox txtMasc
+        {
+            get
+            {
+                return FrameworkElementHelper.FindByTag<TextBox>(cDialogButtons.CustomControl, "txtMasc");
+            }
+        }
+
+        public CheckBox chbFilesFromSubfolders
+        {
+            get
+            {
+                return FrameworkElementHelper.FindByTag<CheckBox>(cDialogButtons.CustomControl, "chbFilesFromSubfolders");
+            }
+        }
+
         public string SelectedFolder
         {
             get
@@ -80,7 +104,7 @@ namespace desktop.Controls
 
         private void selectFolder_FolderChanged(string s)
         {
-            if (Directory.Exists(s))
+            if (FS.ExistsDirectory(s))
             {
                 cDialogButtons.btnOk.IsEnabled = true;
             }
@@ -93,6 +117,23 @@ namespace desktop.Controls
         private void cDialogButtons_ChangeDialogResult(bool? b)
         {
             DialogResult = b;
+        }
+
+        /// <summary>
+        /// A1 = string, cant be null
+        /// </summary>
+        /// <param name="input"></param>
+        public void Accept(object input)
+        {
+            selectFolder.SelectedFolder = input.ToString();
+            ChangeDialogResult(true);
+            // Cant be, window must be already showned as dialog
+            //DialogResult = true;
+        }
+
+        public void SetControlsVisibility(bool v1, bool v2, bool v3, bool v4)
+        {
+            
         }
     }
 }

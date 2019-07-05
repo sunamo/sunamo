@@ -8,7 +8,7 @@ using System.Collections.Generic;
  	 public int IDPage = -1 ; 
  	 public byte IDTable = 0 ; 
  	 public int IDItem = -1 ; 
- 	 public DateTime Day = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime Day = SqlServerHelper.DateTimeMinVal ; 
  	 public int Views = -1 ; 
  	public TableRowPageNewBase ( object[] o )
 	{

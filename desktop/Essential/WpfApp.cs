@@ -1,8 +1,11 @@
-﻿using sunamo;
+﻿using shared;
+using sunamo;
 using sunamo.Essential;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -10,8 +13,21 @@ using System.Windows.Threading;
 
 namespace desktop.Essential
 {
-    public  class WpfApp 
+    public class WpfApp 
     {
+        static WpfApp()
+        {
+            EnableDesktopLogging(true);
+        }
+
+        public static void Shutdown(object o, EventArgs eh)
+        {
+            //WpfApp.mp.SetCancelClosing(false);
+            Application.Current.MainWindow.Close();
+        }
+
+        static DependencyProperty[] props = new DependencyProperty[] { TextBlock.ForegroundProperty, TextBlock.TextProperty };
+
         public static string SQLExpressInstanceName()
         {
             return Environment.MachineName;
@@ -22,32 +38,20 @@ namespace desktop.Essential
         {
             Debug.WriteLine(v);
         }
-#endif
+#endif 
 
-
-        // TODO: Pozustatek z apps, nikde ani neloguje, rozhodnout co s ni
-//        public  static void SetStatus(TypeOfMessage st, string status, bool alsoLb = true)
-//        {
-//#if DEBUG
-//            WriteDebug(status);
-//#endif
-//            //var tsc = new TaskCompletionSource();
-//            if (alsoLb)
-//            {
-//                if (beforeMessage == status)
-//                {
-//#if DEBUG
-//                    //Debugger.Break();
-//#else
-//                    return;
-//#endif
-//                }
-//            }
-//            beforeMessage = status;
-//            status = DTHelper.TimeToStringAngularTime(DateTime.Now) + " " + status;
-//        }
-
-            
+        /// <summary>
+        /// Alternatives are:
+        /// InitApp.SetDebugLogger
+        /// CmdApp.SetLogger
+        /// WpfApp.SetLogger
+        /// </summary>
+        public static void SetLogger()
+        {
+            InitApp.Logger = SunamoLogger.Instance;
+            InitApp.TemplateLogger = SunamoTemplateLogger.Instance;
+            InitApp.TypedLogger = TypedSunamoLogger.Instance;
+        }
 
         public static void SaveReferenceToTextBlockStatus(bool restore, TextBlock tbTemporaryLastErrorOrWarning, TextBlock tbTemporaryLastOtherMessage)
         {
@@ -69,34 +73,88 @@ namespace desktop.Essential
             }
         }
 
+        //static List<string> otherStatuses = new List<string>();
+        //static List<string> errorStatuses = new List<string>();
+
+        //public static void ClearRemembered()
+        //{
+        //    otherStatuses.Clear();
+        //    errorStatuses.Clear();
+        //}
+
         #region Sync
         private static void SetStatus(TypeOfMessage st, string status)
         {
-            status = DateTime.Now.ToShortTimeString() + " " + status;
-            Color fg = Colors.Black;
+            status = DateTime.Now.ToShortTimeString() + AllStrings.space + status;
+            Color fg = StatusHelper.GetForegroundBrushOfTypeOfMessage(st);
 
             if (st == TypeOfMessage.Error || st == TypeOfMessage.Warning)
             {
+                // tbLastErrorOrWarning must be defined otherwise wont be adding to lbLogsErrors also
+                //if (tbLastErrorOrWarning != null)
+                //{
+
                 SetForeground(tbLastErrorOrWarning, fg);
-                SetText(tbLastErrorOrWarning, status);
+                    SetText(tbLastErrorOrWarning, status);
+
+                    if (lbLogsErrors != null)
+                    {
+                        TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
+                        txt.ToolTip = tbLastErrorOrWarning.Text;
+                        lbLogsErrors.Children.Insert(0, txt);
+                    
+                    
+                }
+                //}
             }
             else
             {
-                SetForeground(tbLastOtherMessage, fg);
-                SetText(tbLastOtherMessage, status);
+                // tbLastOtherMessage must be defined otherwise wont be adding to lbLogsErrors also
+                //if (tbLastOtherMessage != null)
+                //{
+
+                    SetForeground(tbLastOtherMessage, fg);
+                    SetText(tbLastOtherMessage, status);
+
+                    if (lbLogsOthers != null)
+                    {
+                        TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastOtherMessage, props);
+                    
+                    cd.Invoke(() =>
+                    {
+                        txt.ToolTip = tbLastOtherMessage.Text;
+                        lbLogsOthers.Children.Insert(0, txt);
+                        
+                        //lbLogsOthers.InvalidateVisual();
+                        //lbLogsOthers.UpdateLayout();
+                        //lbLogsOthers.Children.Insert(0, new TextBlock());
+                        //lbLogsOthers.Children.RemoveAt(0);
+
+                        //lbLogsOthers.InvalidateArrange();
+                        //lbLogsOthers.UpdateLayout();
+                        //lbLogsOthers.
+                    }, DispatcherPriority.Render);
+                    }
+                //}
             }
         }
+
+
 
         public static void EnableDesktopLogging(bool v)
         {
             if (v)
             {
+                // because method was called two times 
+                ThisApp.StatusSetted -= ThisApp_StatusSetted;
                 ThisApp.StatusSetted += ThisApp_StatusSetted;
             }
             else
             {
                 ThisApp.StatusSetted -= ThisApp_StatusSetted;
             }
+
+
         }
 
         private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
@@ -104,14 +162,31 @@ namespace desktop.Essential
             SetStatus(t, message);
         }
 
+
+
         private static void SetForeground(TextBlock tbLastOtherMessage, Color color)
         {
-            tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+            if (tbLastOtherMessage != null)
+            {
+                WpfApp.cd.Invoke(() => { 
+                tbLastOtherMessage.Foreground = new SolidColorBrush(color);
+                }
+                );
+            }
+            
         }
 
         private static void SetText(TextBlock lblStatusDownload, string status)
         {
-            lblStatusDownload.Text = status;
+            if (lblStatusDownload != null)
+            {
+                // Must be invoke because after that I immediately load it on ListBox
+                WpfApp.cd.Invoke(() => {
+                    lblStatusDownload.Text = status;
+                }
+                );
+            }
+            
         } 
         #endregion
 
@@ -143,7 +218,6 @@ namespace desktop.Essential
 
         public async static Task SetTextAsync(TextBlock lblStatusDownload, string status)
         {
-
             await cd.InvokeAsync(() =>
             {
                 lblStatusDownload.Text = status;
@@ -159,8 +233,10 @@ namespace desktop.Essential
         static TextBlock tbLastOtherMessageSaved = null;
         static StackPanel lbLogsOthers = null;
         static StackPanel lbLogsErrors = null;
+
         public static Dispatcher cd = null;
         public static DispatcherPriority cdp = DispatcherPriority.Normal;
+        public static bool rememberStatuses;
 
         public static void SaveReferenceToLogsStackPanel(StackPanel _lbLogsOthers, StackPanel _lbLogsErrors)
         {

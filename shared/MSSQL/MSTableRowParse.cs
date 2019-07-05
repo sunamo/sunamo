@@ -7,7 +7,7 @@ public static class MSTableRowParse
     public static string GetString(object[] o, int p)
     {
         string vr = o[p].ToString();
-        return vr.TrimEnd(' ');
+        return vr.TrimEnd(AllChars.space);
     }
 
     public static int GetInt(object[] o, int p)

@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 
-namespace sunamo.Essential
-{
+//namespace sunamo.Essential
+//{
 
     /// <summary>
     /// Tento DebugLogger.Instance je ve sunamo, obsahuje jedinou metodu, kterou používej ve DebugLogger.Instance např. apps
@@ -21,24 +21,18 @@ namespace sunamo.Essential
 
         }
 
-
-
-
         public static void DebugWriteLine(TypeOfMessage tz, string text, params object[] args)
         {
-            Debug.WriteLine(tz.ToString() + AllStrings.cs2 + string.Format(text, args));
+            Debug.WriteLine(tz.ToString() + AllStrings.cs2 + SH.Format2(text, args));
         }
 
         public static void DebugWriteLine(string text, params object[] args)
         {
-            Debug.WriteLine(string.Format( text, args));
+            Debug.WriteLine(SH.Format2( text, args));
         }
 
         public static void Break()
         {
             Debugger.Break();
         }
-
-
     }
-}

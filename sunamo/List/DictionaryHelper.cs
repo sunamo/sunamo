@@ -2,9 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-public class DictionaryHelper
+public partial class DictionaryHelper
 {
     static Type type = typeof(DictionaryHelper);
+    public static List<KeyValuePair<T, int>> CountOfItems<T>(List<T> streets)
+    {
+        Dictionary<T, int> pairs = new Dictionary<T, int>();
+        foreach (var item in streets)
+        {
+            DictionaryHelper.AddOrPlus(pairs, item, 1);
+        }
+
+        var v = pairs.OrderByDescending(d => d.Value);
+        var r = v.ToList();
+        return r;
+    }
 
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
@@ -14,6 +26,7 @@ public class DictionaryHelper
         {
             result.Add(keys[i], values[i]);
         }
+
         return result;
     }
 
@@ -36,6 +49,7 @@ public class DictionaryHelper
         {
             DictionaryHelper.AddOrCreate<T, U, ColType>(result, item.Value, item.Key);
         }
+
         return result;
     }
 
@@ -46,23 +60,25 @@ public class DictionaryHelper
         {
             result.AddRange(lcCountry.Value);
         }
+
         return result;
     }
 
     /// <summary>
     /// Return p1 if exists key A2 with value no equal to A3
     /// </summary>
-    /// <param name="g"></param>
+    /// <param name = "g"></param>
     /// <returns></returns>
     private T FindIndexOfValue<T, U>(Dictionary<T, U> g, U p1, T p2)
     {
         foreach (KeyValuePair<T, U> var in g)
         {
-            if (Comparer<U>.Default.Compare( var.Value, p1) == ComparerHelper.Higher &&  Comparer<T>.Default.Compare( var.Key, p2) == ComparerHelper.Lower)
+            if (Comparer<U>.Default.Compare(var.Value, p1) == ComparerHelper.Higher && Comparer<T>.Default.Compare(var.Key, p2) == ComparerHelper.Lower)
             {
                 return var.Key;
             }
         }
+
         return default(T);
     }
 
@@ -73,6 +89,7 @@ public class DictionaryHelper
         {
             tu.Add(item.Key, item.Value);
         }
+
         return tu;
     }
 
@@ -80,11 +97,11 @@ public class DictionaryHelper
     /// Pokud A1 bude obsahovat skupinu pod názvem A2, vložím do této skupiny prvek A3
     /// Jinak do A1 vytvořím novou skupinu s klíčem A2 s hodnotou A3
     /// </summary>
-    /// <typeparam name="Key"></typeparam>
-    /// <typeparam name="Value"></typeparam>
-    /// <param name="sl"></param>
-    /// <param name="key"></param>
-    /// <param name="p"></param>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "p"></param>
     public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
     {
         AddOrCreate<Key, Value, object>(sl, key, value);
@@ -93,31 +110,28 @@ public class DictionaryHelper
     /// <summary>
     /// A3 is inner type of collection entries
     /// </summary>
-    /// <typeparam name="Key"></typeparam>
-    /// <typeparam name="Value"></typeparam>
-    /// <typeparam name="ColType"></typeparam>
-    /// <param name="sl"></param>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <typeparam name = "ColType"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "value"></param>
     public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value)
     {
         //T, byte[]
         if (key is IEnumerable && typeof(ColType) != typeof(object))
         {
             IEnumerable<ColType> keyE = key as IEnumerable<ColType>;
-
             bool contains = false;
             foreach (var item in sl)
             {
-                
-
                 IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
                 if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
                 {
                     contains = true;
                 }
-                
             }
+
             if (contains)
             {
                 foreach (var item in sl)
@@ -135,7 +149,6 @@ public class DictionaryHelper
                 ad.Add(value);
                 sl.Add(key, ad);
             }
-
         }
         else
         {
@@ -150,7 +163,6 @@ public class DictionaryHelper
                 sl.Add(key, ad);
             }
         }
-        
     }
 
     public static void AddOrCreateTimeSpan<Key>(Dictionary<Key, TimeSpan> sl, Key key, DateTime value)
@@ -174,16 +186,16 @@ public class DictionaryHelper
     /// <summary>
     /// In addition to method AddOrCreate, more is checking whether value in collection does not exists
     /// </summary>
-    /// <typeparam name="Key"></typeparam>
-    /// <typeparam name="Value"></typeparam>
-    /// <param name="sl"></param>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "value"></param>
     public static void AddOrCreateIfDontExists<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
     {
         if (sl.ContainsKey(key))
         {
-            if (!sl[key].Contains (value))
+            if (!sl[key].Contains(value))
             {
                 sl[key].Add(value);
             }
@@ -227,6 +239,7 @@ public class DictionaryHelper
         {
             vr.Add(item.Value.ToString());
         }
+
         return vr;
     }
 
@@ -237,10 +250,9 @@ public class DictionaryHelper
         {
             vr.Add(item.Value.ToString());
         }
+
         return vr;
     }
-
-    
 
     public static int AddToIndexAndReturnIncrementedInt<T>(int i, Dictionary<int, T> colors, T colorOnWeb)
     {
@@ -249,28 +261,10 @@ public class DictionaryHelper
         return i;
     }
 
-    public static short AddToIndexAndReturnIncrementedShort<T>(short i, Dictionary<short, T> colors, T colorOnWeb)
-    {
-        colors.Add(i, colorOnWeb);
-        i++;
-        return i;
-    }
-
-    public static Value GetFirstItem<Value>(Dictionary<string, Value> dict)
-    {
-        foreach (var item in dict)
-        {
-            return item.Value;
-        }
-        return default(Value);
-    }
-
     public static Dictionary<T1, T2> RemoveDuplicatedFromDictionaryByValues<T1, T2>(Dictionary<T1, T2> airPlaneCompanies, out Dictionary<T1, T2> twoTimes)
     {
         twoTimes = new Dictionary<T1, T2>();
-
         CollectionWithoutDuplicates<T2> processed = new CollectionWithoutDuplicates<T2>();
-
         foreach (var item in airPlaneCompanies.Keys.ToList())
         {
             T2 value = airPlaneCompanies[item];
@@ -279,8 +273,8 @@ public class DictionaryHelper
                 twoTimes.Add(item, value);
                 airPlaneCompanies.Remove(item);
             }
-            
         }
+
         return airPlaneCompanies;
     }
 }

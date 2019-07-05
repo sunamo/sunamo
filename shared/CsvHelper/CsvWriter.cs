@@ -19,7 +19,7 @@ public sealed class CsvWriter : IDisposable
 
         private StreamWriter _streamWriter;
         private bool _replaceCarriageReturnsAndLineFeedsFromFieldValues = true;
-        private string _carriageReturnAndLineFeedReplacement = ",";
+        private string _carriageReturnAndLineFeedReplacement = AllStrings.comma;
 
         #endregion Members
 
@@ -80,7 +80,7 @@ public sealed class CsvWriter : IDisposable
         /// <param name="encoding">Encoding</param>
         public void WriteCsv(CsvFile csvFile, string filePath, Encoding encoding)
         {
-            if (File.Exists(filePath))
+            if (FS.ExistsFile(filePath))
                 File.Delete(filePath);
 
             using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))
@@ -169,7 +169,7 @@ public sealed class CsvWriter : IDisposable
         /// <param name="encoding">Encoding</param>
         public void WriteCsv(DataTable dataTable, string filePath, Encoding encoding)
         {
-            if (File.Exists(filePath))
+            if (FS.ExistsFile(filePath))
                 File.Delete(filePath);
 
             using (StreamWriter writer = new StreamWriter(filePath, false, encoding ?? Encoding.UTF8))
@@ -278,9 +278,9 @@ public sealed class CsvWriter : IDisposable
         {
             for (int i = 0; i < fields.Count; i++)
             {
-                bool quotesRequired = fields[i].Contains(",");
-                bool escapeQuotes = fields[i].Contains("\"");
-                string fieldValue = (escapeQuotes ? fields[i].Replace("\"", "\"\"") : fields[i]);
+                bool quotesRequired = fields[i].Contains(AllStrings.comma);
+                bool escapeQuotes = fields[i].Contains(AllStrings.qm);
+                string fieldValue = (escapeQuotes ? fields[i].Replace(AllStrings.qm, AllStrings.qm) : fields[i]);
 
                 if (ReplaceCarriageReturnsAndLineFeedsFromFieldValues && (fieldValue.Contains("\r") || fieldValue.Contains("\n")))
                 {
@@ -290,10 +290,10 @@ public sealed class CsvWriter : IDisposable
                     fieldValue = fieldValue.Replace("\n", CarriageReturnAndLineFeedReplacement);
                 }
 
-                writer.Write(string.Format("{0}{1}{0}{2}", 
-                    (quotesRequired || escapeQuotes ? "\"" : string.Empty),
+                writer.Write(SH.Format2("{0}{1}{0}{2}", 
+                    (quotesRequired || escapeQuotes ? AllStrings.qm : string.Empty),
                     fieldValue, 
-                    ( i < (fields.Count - 1) ? "," : string.Empty)));
+                    ( i < (fields.Count - 1) ? AllStrings.comma : string.Empty)));
             }
 
             writer.WriteLine();

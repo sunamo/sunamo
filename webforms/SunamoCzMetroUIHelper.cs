@@ -11,7 +11,7 @@ public class SunamoCzMetroUIHelper
 {
     public static void SetHtmlMetroUpperBarV3(SunamoMasterPage smp, HtmlGenericControl horniLista, MySites domain)
     {
-        SunamoPage p = (SunamoPage)smp.Page;
+        SunamoPage p = SunamoMasterPage.CastToSunamoPage(smp.Page);
         SetHtmlMetroUpperBarV3(p, horniLista, domain);
     }
     private static void WriteLiWithAnchor(HtmlGenerator hgUlSettings, string link, string text)
@@ -37,10 +37,10 @@ public class SunamoCzMetroUIHelper
         string text = "";
         text = domain.ToString();
         sb.Append("<li>");
-        string host = sp.Request.Url.Host.Replace("www.", "");
-        WriteTagWithAttrs(sb, "a", text, "href", web.UH.GetWebUri2(sp, text, host == Consts.localhost, host));
+        string host = sp.Request.Url.Host.Replace("www" + ".", "");
+        WriteTagWithAttrs(sb, "a", text, "href", UA.GetWebUri2(sp, text, host == Consts.localhost, host));
 
-        sb.Append("</li>");
+        sb.Append("/" + "/" + "li>");
         return sb.ToString();
     }
 
@@ -49,7 +49,7 @@ public class SunamoCzMetroUIHelper
         sb.AppendFormat("<{0} ", nazevTagu);
         for (int i = 0; i < atrrs.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", atrrs[i], atrrs[++i]);
+            sb.AppendFormat("{0}=\\\\\"{1}\\\\\" ", atrrs[i], atrrs[++i]);
         }
         sb.Append(">");
 
@@ -69,11 +69,17 @@ public class SunamoCzMetroUIHelper
         bool logined = !(lu == null || luid == -1);
 
         HtmlGenerator hg = new HtmlGenerator();
+
+        #region v4
         // fixed-top
-        hg.WriteTagWithAttr("ul", "class", "app-bar");
-        hg.WriteTagWithAttr("li", "style", "list-style-type: none;");
-        hg.WriteTagWithAttr("ul", "class", "app-bar-menu");
-        hg.WriteTagWithAttr("li", "class", "active-container");
+        hg.WriteTagWith2Attrs("div", "data-role", "appbar", "data-expand-point", "md");
+        #endregion
+
+        #region MyRegion
+        hg.WriteTagWithAttr("ul", "class", "app-bar-menu place-left");
+
+        #region MyRegion
+        hg.WriteTag("li");
 
         hg.WriteTagWith2Attrs("a", "href", "#", "class", "dropdown-toggle");
         hg.WriteTagWithAttr("span", "class", "mif-menu");
@@ -86,11 +92,11 @@ public class SunamoCzMetroUIHelper
             aActualWebInnerHtml = "sunamo.cz";
         }
 
-        #region MyRegion
-        hg.WriteTagWithAttrs("ul", "class", "d-menu", "data-role", "dropdown", "style", "display: none;");
+        #region Writing list of websites
+        hg.WriteTagWithAttrs("ul", "class", "-" + "-" + "menu", "data-role", "dropdown", "style", "display: none;");
         foreach (MySites item in Enum.GetValues(typeof(MySites)))
         {
-
+            //1
             if (item == MySites.BibleServer)
             {
                 continue;
@@ -100,10 +106,33 @@ public class SunamoCzMetroUIHelper
             {
                 continue;
             }
+            // 3
+            if (item == MySites.GeoCaching)
+            {
+                continue;
+            }
+            // 4
+            if (item == MySites.Apps)
+            {
+                continue;
+            }
+            // 5
+            if (item == MySites.Photos)
+            {
+                continue;
+            }
+            // 6
+            if (item == MySites.Lyrics)
+            {
+                continue;
+            }
+
+            // 8
             if (item == MySites.Nope)
             {
                 continue;
             }
+
             if (item == MySites.ThunderBrigade)
             {
                 continue;
@@ -145,58 +174,72 @@ public class SunamoCzMetroUIHelper
             }
             hg.WriteRaw(GetLiOfUpperBarMetro(p, item));
         }
+        hg.TerminateTag("ul");
         #endregion
-        hg.TerminateTag("ul");
-        hg.TerminateTag("li");
-        hg.TerminateTag("ul");
 
-        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "href", "javascript:goToDomain();", "title", "Jdi na rozcestník všech webů");
+        hg.TerminateTag("li");
+        #endregion
+
+        #region MyRegion
+        hg.WriteTag("li");
+        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aGoToDomain", "title", "Jdi na rozcestník všech webů");
         hg.WriteTagWithAttr("span", "class", "mif-home");
         hg.TerminateTag("span");
         hg.TerminateTag("a");
+        hg.TerminateTag("li");
+        #endregion
 
-        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "href", "javascript:goToWeb();", "title", "Jdi na hlavní stránku " + aActualWebInnerHtml);
+        #region Main page of web
+        hg.WriteTag("li");
+        hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aGoToMainPage", "title", "Jdi na hlavní stránku" + " " + aActualWebInnerHtml);
         hg.WriteTagWithAttr("span", "class", "mif-history");
         hg.TerminateTag("span");
         hg.TerminateTag("a");
+        hg.TerminateTag("li");
+        #endregion
 
+        #region Send to human
+        hg.WriteTag("li");
         if (logined)
         {
-            hg.WriteTagWithAttrs("a", "class", "app-bar-element", "href", "javascript:sendPageToCloseHuman('" + p.Request.Url.ToString() + "');", "title", "Doporučit tuto stránku blízkému");
+            hg.WriteTagWithAttrs("a", "class", "app-bar-element", "id", "aSendPageToCloseHuman", "title", "Doporučit tuto stránku blízkému");
             hg.WriteTagWithAttr("span", "class", "mif-mail");
             hg.TerminateTag("span");
             hg.TerminateTag("a");
         }
+        hg.TerminateTag("li"); 
+        #endregion
 
+        hg.WriteTag("li");
         if (luid == 1)
         {
-            hg.WriteTagWith2Attrs("a", "class", "app-bar-element", "href", "javascript:showDebugInfo('" + p.Request.Url.Host + "', '" + p.Request.Url.ToString() + "');");
+            hg.WriteTagWith2Attrs("a", "class", "app-bar-element", "id", "aShowDebugInfo");
             hg.WriteTagWithAttr("span", "class", "mif-bug");
             hg.TerminateTag("span");
             hg.TerminateTag("a");
         }
-
-
-
-        #region MyRegion
-        string linkLogin = MeUri.LoginWithReturnUrl(p);
+        hg.TerminateTag("li");
+        
+        //app-bar-menu
+        hg.TerminateTag("ul"); 
         #endregion
 
-
-
-        hg.WriteTagWithAttr("div", "class", "place-right");
+        string linkLogin = MeUri.LoginWithReturnUrl(p);
 
         string buttonUserOnClick = "";
 
         if (logined)
         {
-            buttonUserOnClick = "javascript:location.replace('http://" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
+            buttonUserOnClick = "javascript:location.replace('http" + ":" + "//" + Request.Url.Host + "/Me/User.aspx?un=" + lu.login + "');";
         }
         else
         {
-            buttonUserOnClick = "javascript:location.replace('" + linkLogin + "');";
+            buttonUserOnClick = "javascript:location.replace(" + "'" + linkLogin + "');";
         }
 
+        #region MyRegion
+        hg.WriteTagWith2Attrs("ul", "class", "app-bar-menu right", "style", "margin-left: auto !important;margin-right: 0 !important;");
+        hg.WriteTag("li");
         if (logined)
         {
             //hg.WriteTagWithAttr("span", "class", "app-bar-element");
@@ -215,9 +258,12 @@ public class SunamoCzMetroUIHelper
         else
         {
             hg.WriteTagWith2Attrs("a", "class", "app-bar-element", "href", buttonUserOnClick);
-            hg.WriteRaw("Nepřihlášený uživatel");
+            hg.WriteRaw("Sign in");
             hg.TerminateTag("a");
         }
+        hg.TerminateTag("li");
+
+        hg.WriteTag("li");
         if (logined)
         {
             string aSignOutHRef = "";
@@ -235,16 +281,15 @@ public class SunamoCzMetroUIHelper
             hg.WriteTagWithAttr("span", "class", "mif-lock");
             hg.TerminateTag("span");
             hg.TerminateTag("a");
-
-
-
         }
-        #region MyRegion
-        #endregion
-        hg.TerminateTag("div");
         hg.TerminateTag("li");
-        hg.TerminateTag("ul");
-        //hg.TerminateTag("div");
+
+        hg.TerminateTag("ul"); 
+        #endregion
+
+
+        hg.TerminateTag("div");
+
         horniLista.InnerHtml = hg.ToString();
     }
 
@@ -258,7 +303,7 @@ public class SunamoCzMetroUIHelper
         string s = null;
         if (encode)
         {
-            s = sunamo.UH.UrlEncode(Request.Url.ToString());
+            s = UH.UrlEncode(Request.Url.ToString());
         }
         else
         {

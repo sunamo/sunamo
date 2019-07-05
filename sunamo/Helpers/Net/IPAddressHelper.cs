@@ -16,8 +16,8 @@ namespace sunamo.Helpers
         public static byte[] GetIPAddressInArray(string ip2)
         {
             byte[] ip = null;
-            string[] ips = SH.Split(ip2, ".");
-            if (ips.Length == 4)
+            var ips = SH.Split(ip2, ".");
+            if (ips.Length() == 4)
             {
                 ip = new byte[4];
                 for (int i = 0; i < 4; i++)

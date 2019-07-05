@@ -13,7 +13,7 @@ namespace webforms
         public string Heslo = null;
         public string HesloZnovu = null;
         public string Email = null;
-        public DateTime DateBorn = global::MSStoredProceduresI.DateTimeMinVal;
+        public DateTime DateBorn = global::SqlServerHelper.DateTimeMinVal;
         public string SecQ = "";
         public string SecA = "";
         public bool Sex = false;
@@ -41,7 +41,7 @@ namespace webforms
 
             if (Login.ToLower() == "all")
             {
-                sb.AddItem("Login 'all' je vyhrazen pro jiné účely.");
+                sb.AddItem("Login 'all' je vyhrazen pro jiné účely" + ".");
             }
             if (Login.Contains(" "))
             {
@@ -102,7 +102,7 @@ namespace webforms
                 sb.AddItem("Zadaná hesla nejsou shodná");
             }
 
-            return HtmlAreAllItemsOKCommon(true, Email, DateBorn, IDState, ref IDCity, mesto, sb);
+            return HtmlAreAllItemsOKCommon(true, Email, DateBorn, ref IDCity, mesto, sb);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace webforms
         /// <param name="mesto"></param>
         /// <param name="sb"></param>
         /// <returns></returns>
-        public static string HtmlAreAllItemsOKCommon(bool checkMailInDB, string Email, DateTime DateBorn, byte IDState, ref int IDCity, string mesto, HtmlSB sb)
+        public static string HtmlAreAllItemsOKCommon(bool checkMailInDB, string Email, DateTime DateBorn,  ref int IDCity, string mesto, HtmlSB sb)
         {
             // BasicTest20("Telefonní číslo", Telefon), 
             sb.AddItems(BasicTest40("Email", Email));
@@ -136,9 +136,9 @@ namespace webforms
                 }
             }
 
-            if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::MSStoredProceduresI.DateTimeMinVal)
+            if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::SqlServerHelper.DateTimeMinVal)
             {
-                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-).");
+                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-" + "" + ".");
             }
 
             string vr = sb.ToString();

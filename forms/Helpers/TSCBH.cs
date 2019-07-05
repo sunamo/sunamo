@@ -99,7 +99,7 @@ namespace forms
         public static void LoadFiles(AppFolders ap, string mask, ToolStripComboBox cb)
         {
             cb.Items.Clear();
-            string[] files = Directory.GetFiles(AppData.GetFolder(ap), mask);
+            string[] files = Directory.GetFiles(AppData.ci.GetFolder(ap), mask);
             files = FS.OnlyNames(files);
             cb.Items.AddRange(files);
         }

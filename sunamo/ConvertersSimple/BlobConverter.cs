@@ -21,7 +21,7 @@ namespace sunamo
             StringBuilder sb = new StringBuilder();
             foreach (byte b in ba)
             {
-                sb.Append(string.Format(HexFormat, b));
+                sb.Append(SH.Format2(HexFormat, b));
             }
             return "X'" + sb.ToString() + "'";
         }
@@ -34,7 +34,7 @@ namespace sunamo
             }
             try
             {
-                hexEncoded = hexEncoded.Replace("X'", "").TrimEnd('\''); ;
+                hexEncoded = hexEncoded.Replace("X'", "").TrimEnd(AllChars.bs); ;
 
                 int l = Convert.ToInt32(hexEncoded.Length / 2);
                 byte[] b = new byte[l];
@@ -48,11 +48,11 @@ namespace sunamo
             {
                 if (AppLangHelper.currentUICulture.TwoLetterISOLanguageName == "cs")
                 {
-                    throw new FormatException("Zadaný řetězec se nezdá být šestnáctkově kódováný:");
+                    throw new FormatException("Zadaný řetězec se nezdá být šestnáctkově kódováný" + ":");
                 }
                 else
                 {
-                    throw new FormatException("The provided string does not appear to be Hex encoded:" + hexEncoded, ex);
+                    throw new FormatException("The provided string does not appear to be Hex encoded" + ":" + hexEncoded, ex);
                 }
             }
         }

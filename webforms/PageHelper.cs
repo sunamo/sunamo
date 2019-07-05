@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 
 public static class PageHelper
@@ -79,7 +80,7 @@ public static class PageHelper
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(NameValueCollection nvc, string argname, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentCommaDelimiter(NameValueCollection nvc, string argname, out List<string> result)
     {
         return PageHelperBase.CheckStringArgumentCommaDelimiter(nvc.Get(argname), out result);
     }
@@ -90,7 +91,7 @@ public static class PageHelper
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(NameValueCollection nvc, string argname, out string[] result)
+    public static ResultCheckWebArgument CheckStringArgumentPipeDelimiter(NameValueCollection nvc, string argname, out List<string> result)
     {
         return PageHelperBase.CheckStringArgumentPipeDelimiter(nvc.Get(argname), out result);
     }

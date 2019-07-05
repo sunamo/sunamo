@@ -23,15 +23,15 @@ public class ZA
     /// <returns></returns>
     private string VratJmenoSouboruZip(string slozku)
     {
-        string soubor = Path.Combine(FS.GetDirectoryName(slozku), FS.GetFileNameWithoutExtensionLower(slozku) + ".zip");
+        string soubor = FS.Combine(FS.GetDirectoryName(slozku), FS.GetFileNameWithoutExtensionLower(slozku) + ".zip");
         return soubor;
     }
     
     private string getRelativePath2(string filePath, string basePath)
     {
-        if (!basePath.EndsWith("\\"))
+        if (!basePath.EndsWith(AllStrings.bs))
         {
-            basePath += "\\";
+            basePath += AllStrings.bs;
         }
         return filePath.Replace(basePath, "");
     }
@@ -58,7 +58,7 @@ public class ZA
 
                 try
                 {
-                    FileStream fs = new FileStream(Path.Combine(slozku, var), FileMode.Open);
+                    FileStream fs = new FileStream(FS.Combine(slozku, var), FileMode.Open);
                     byte[] fero = new byte[fs.Length];
                     fs.Read(fero, 0, (int)fs.Length);
                     fs.Flush();
@@ -85,7 +85,7 @@ public class ZA
 
     public void ExtractArchive(string archiveFilenameIn, string outFolder)
     {
-        if (!Directory.Exists(outFolder))
+        if (!FS.ExistsDirectory(outFolder))
         {
             FS.CreateDirectory(outFolder);
         }
@@ -101,7 +101,7 @@ public class ZA
                 Stream zipStream = zf.GetInputStream(zipEntry);
 
                 // Manipulate the output filename here as desired.
-                String fullZipToPath = Path.Combine(outFolder, entryFileName).TrimEnd('\\');
+                String fullZipToPath = FS.Combine(outFolder, entryFileName).TrimEnd(AllChars.bs);
                 string directoryName = FS.GetDirectoryName(fullZipToPath);
                 if (directoryName.Length > 0)
                     FS.CreateDirectory(directoryName);
@@ -133,7 +133,7 @@ public class ZA
     {
         string c = FS.GetDirectoryName(slozku);
         string s = FS.GetFileName(slozku).Replace(p, "");
-        return Path.Combine(c, s);
+        return FS.Combine(c, s);
     }
 
     
@@ -146,7 +146,7 @@ public class ZA
 
     private string[] VratSouboryRek(string slozku)
     {
-        return Directory.GetFiles(slozku, "*", SearchOption.AllDirectories);
+        return Directory.GetFiles(slozku, AllStrings.asterisk, SearchOption.AllDirectories);
     }
 
     public void CreateArchive(string slozka, string[] soubory)

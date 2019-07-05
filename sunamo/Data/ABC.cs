@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 public class ABC : List<AB>//, IEnumerable<AB>
 {
     public ABC()
@@ -20,15 +21,23 @@ public class ABC : List<AB>//, IEnumerable<AB>
         this.AddRange(abc);
     }
 
-    public object[] OnlyBs()
+    public List<object> OnlyBs()
     {
-        object[] o = new object[this.Count];
+        List<object> o = new List<object>(this.Count);
         for (int i = 0; i < this.Count; i++)
         {
-            o[i] = this[i].B;
+            o.Add( this[i].B);
         }
         return o;
     }
 
-    
+    public string[] OnlyAs()
+    {
+        string[] o = new string[this.Count];
+        for (int i = 0; i < this.Count; i++)
+        {
+            o[i] = this[i].A;
+        }
+        return o;
+    }
 }

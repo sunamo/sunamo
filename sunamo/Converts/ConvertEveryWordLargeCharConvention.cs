@@ -39,7 +39,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
                 if (char.IsUpper(item))
                 {
                     dalsiVelke = false;
-                    sb.Append(' ');
+                    sb.Append(AllChars.space);
                     sb.Append(item);
                     continue;
                 }
@@ -50,7 +50,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
                     {
                         if (!IsSpecialChar(sb[sb.Length - 1]))
                         {
-                            sb.Append(' ');
+                            sb.Append(AllChars.space);
                         }
                     }
                     sb.Append(char.ToUpper(item));
@@ -68,7 +68,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
                 }
                 else
                 {
-                    sb.Append(' ');
+                    sb.Append(AllChars.space);
                     continue;
                 }
             }
@@ -76,7 +76,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
             {
                 if (!char.IsUpper( sb[sb.Length- 1]))
                 {
-                    sb.Append(' ');    
+                    sb.Append(AllChars.space);    
                 }
                 sb.Append(item);
             }
@@ -97,18 +97,18 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
             }
             else
             {
-                sb.Append(' ');
+                sb.Append(AllChars.space);
                 dalsiVelke = true;
             }
         }
         string vr = sb.ToString().Trim();
 
-        vr = SH.ReplaceAll(vr, " ", "  ");
+        vr = SH.ReplaceAll(vr, AllStrings.space, AllStrings.doubleSpace);
         return vr;
     }
 
     private static bool IsSpecialChar(char item)
     {
-        return CA.IsEqualToAnyElement<char>(item, '\'', '(', ')', '[', ']', '.');
+        return CA.IsEqualToAnyElement<char>(item, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.dot);
     }
 }

@@ -22,42 +22,14 @@ namespace desktop
         public EnterValueForm(string whatEnter)
         {
             InitializeComponent();
-            tbWhatEnter.Text = "Enter " + whatEnter + " and press enter.";
-
+            enterOneValueUC.Init(whatEnter);
+            enterOneValueUC.Finished += EnterOneValueUC_Finished;
         }
 
-        private void btnEnter_Click_1(object sender, RoutedEventArgs e)
+        private void EnterOneValueUC_Finished(object o)
         {
-            if (AfterEnteredValue(txtEnteredText))
-            {
-                Finished(txtEnteredText.Text);
-            }
+            Finished(o);
         }
-
-        private bool AfterEnteredValue(TextBox txtEnteredText)
-        {
-            txtEnteredText.Text = txtEnteredText.Text.Trim();
-            if (txtEnteredText.Text != "")
-            {
-                return true;
-            }
-            txtEnteredText.BorderThickness = new Thickness(2);
-            txtEnteredText.BorderBrush = new SolidColorBrush( Colors.Red);
-            return false;
-        }
-
-        private void txtEnteredText_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (AfterEnteredValue(txtEnteredText))
-                {
-                    Finished(txtEnteredText.Text);
-                }
-            }
-        }
-
-
 
         public event VoidObject Finished;
     }

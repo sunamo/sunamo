@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Text;
 namespace forms
 {
-    public class LBHT_WF<T> : LBH_WF
+    public class LBHT<T> : LBH_WF
     {
-        public LBHT_WF(ListBox lbh)
+        public LBHT(ListBox lbh)
             : base(lbh)
         {
         }

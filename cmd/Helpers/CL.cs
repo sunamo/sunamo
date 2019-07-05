@@ -12,7 +12,7 @@ using System.Linq;
 
 public static class CL 
 {
-    readonly static string charOfHeader = "*";
+    readonly static string charOfHeader = AllStrings.asterisk;
 
     #region base
     static CL()
@@ -54,7 +54,7 @@ public static class CL
 
     #region Text
     /// <summary>
-    /// 
+    /// if fail, return empty string.
     /// </summary>
     /// <param name="what"></param>
     /// <returns></returns>
@@ -67,7 +67,7 @@ public static class CL
     {
         int currentLineCursor = Console.CursorTop;
         Console.SetCursorPosition(0, Console.CursorTop);
-        Console.Write(new string(' ', Console.WindowWidth));
+        Console.Write(new string(AllChars.space, Console.WindowWidth));
         Console.SetCursorPosition(0, currentLineCursor);
     }
 
@@ -81,11 +81,12 @@ public static class CL
         int leftCursor = Console.CursorLeft + leftCursorAdd +1;
 
         Console.SetCursorPosition(leftCursor, Console.CursorTop);
-        Console.Write(new string(' ', Console.WindowWidth + leftCursorAdd));
+        Console.Write(new string(AllChars.space, Console.WindowWidth + leftCursorAdd));
         Console.SetCursorPosition(leftCursor, currentLineCursor);
     }
 
     /// <summary>
+    /// if fail, return empty string.
     /// In A1 not end with :
     /// Return null when user force stop 
     /// A2 are acceptable chars. Can be null/empty for anything 
@@ -98,9 +99,9 @@ public static class CL
         string z = "";
         if (append)
         {
-            whatOrTextWithoutEndingDot = "Enter " + whatOrTextWithoutEndingDot + "";
+            whatOrTextWithoutEndingDot = "Enter" + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". For loading from clipboard leave empty input. For exit press esc.";
+        whatOrTextWithoutEndingDot += ". " + "For exit enter -1" + "" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -153,7 +154,7 @@ public static class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information("App loaded from clipboard : " + z);
+            TypedConsoleLogger.Instance.Information("App loaded from clipboard" + " " + ": " + z);
         }
         return z;
     }
@@ -222,7 +223,7 @@ public static class CL
     private static int UserMustTypeNumber(string what, int max)
     {
         int parsed = 1;
-        string entered = UserMustType(what, false, CA.ToListString(BT.GetNumberedListFromTo( 0, max)).ToArray());
+        string entered = UserMustType(what, false, CA.ToListString(BTS.GetNumberedListFromTo( 0, max)).ToArray());
         if (what == null)
         {
             return int.MinValue;
@@ -246,7 +247,16 @@ public static class CL
     /// <returns></returns>
     public static bool UserMustTypeYesNo(string text)
     {
-        string entered = UserMustType(text + " (Yes/No) ", false);
+        string entered = UserMustType(text + " (" + "Yes/No" + ") ", false);
+        // was pressed esc etc.
+        if (entered == null)
+        {
+            return false;
+        }
+        if (entered == "-1")
+        {
+            return false;
+        }
         char znak = entered[0];
         if (char.ToLower(entered[0]) == 'y')
         {
@@ -262,7 +272,7 @@ public static class CL
     /// <returns></returns>
     public static DialogResult DoYouWantToContinue(string text)
     {
-        text = "Do you want to continue?";
+        text = "Do you want to continue" + "?";
 
         TypedConsoleLogger.Instance.Warning(text);
         bool z = UserMustTypeYesNo(text);
@@ -295,7 +305,7 @@ public static class CL
     /// <param name="appeal"></param>
     public static void AppealEnter(string appeal)
     {
-        Appeal(appeal + ". Then press enter.");
+        Appeal(appeal + ". " + "Then press enter" + ".");
         Console.ReadLine();
     }
 
@@ -332,7 +342,7 @@ public static class CL
         Console.WriteLine();
         for (int i = 0; i < variants.Count; i++)
         {
-            Console.WriteLine("[" + i + "]" + "    " + variants[i]);
+            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + variants[i]);
         }
         
         return UserMustTypeNumber(what, variants.Count - 1);
@@ -346,11 +356,11 @@ public static class CL
     public static void SelectFromVariants(Dictionary<string, EmptyHandler> actions)
     {
         #region Print on console avialable operations
-        string appeal = "Select action:";
+        string appeal = "Select action" + ":";
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
-            Console.WriteLine("[" + i + "]" + "    " + kvp.Key);
+            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + kvp.Key);
             i++;
         }
         #endregion
@@ -388,7 +398,7 @@ public static class CL
     public static void PerformAction(Dictionary<string, EventHandler> actions, object sender)
     {
         var listOfActions = NamesOfActions(actions);
-        int selected = SelectFromVariants(listOfActions, "Select action to proceed:");
+        int selected = SelectFromVariants(listOfActions, "Select action to proceed" + ":");
         string ind = listOfActions[selected];
         EventHandler eh = actions[ind];
         eh.Invoke(sender, EventArgs.Empty);
@@ -398,9 +408,12 @@ public static class CL
     {
         List<string> listOfActions =  actions.Keys.ToList();
         int selected = SelectFromVariants(listOfActions, "Select action to proceed");
-        string ind = listOfActions[selected];
-        var eh = actions[ind];
-        eh.Invoke();
+        if (selected != -1)
+        {
+            string ind = listOfActions[selected];
+            var eh = actions[ind];
+            eh.Invoke();
+        }
     }
 
 
@@ -424,7 +437,7 @@ public static class CL
     public static void WriteLineFormat(string text, params object[] p)
     {
         Console.WriteLine();
-        Console.WriteLine(string.Format(text, p));
+        Console.WriteLine(SH.Format2(text, p));
     }
 
     /// <summary>

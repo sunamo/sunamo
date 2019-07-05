@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,10 +7,40 @@ namespace sunamo.Essential
 {
     public class LoggerBase
     {
-        // TODO: Make logger class as base and replace all occurences With Instance 
+        // TODO: Make logger public class as base and replace all occurences With Instance 
 
         VoidStringParamsObjects writeLineDelegate;
         public bool IsActive = true;
+        static Type type = typeof(LoggerBase);
+
+        public void DumpObject(string name, object o, DumpProvider d, params string[] onlyNames)
+        {
+            var dump = RH.DumpAsString(name, o, d, onlyNames);
+
+            WriteLine(dump);
+            WriteLine(AllStrings.space);
+        }
+
+        public void DumpObjects(string name, IEnumerable o, DumpProvider d, params string[] onlyNames)
+        {
+            int i = 0;
+            foreach (var item in o)
+            {
+                DumpObject(name + " #" + i, item, d, onlyNames);
+                i++;
+            }
+        }
+
+        /// <summary>
+        /// Only due to Old sfw apps
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="name"></param>
+        /// <param name="v2"></param>
+        public void WriteLineFormat(string v1, params string[] name)
+        {
+            WriteLine(v1, name);
+        }
 
         public LoggerBase(VoidStringParamsObjects writeLineDelegate)
         {
@@ -18,22 +49,20 @@ namespace sunamo.Essential
         
         public void WriteCount(string collectionName, IEnumerable list)
         {
-            WriteLine(collectionName + " count: " + list.Count());
+            WriteLine(collectionName + " " + "count" + ": " + list.Count());
             
         }
 
-        public void WriteList(string collectionName, IEnumerable list)
+
+        public void WriteList(string collectionName, List<string> list)
         {
-            WriteLine(collectionName + " elements:");
-            foreach (var item in list)
-            {
-                WriteLine(item.ToString());
-            }
+            WriteLine(collectionName + " " + "elements" + ":");
+            WriteList(list);
         }
 
         public  void TwoState(bool ret, params object[] toAppend)
         {
-            WriteLine(ret.ToString() + "," + SH.Join(',', toAppend));
+            WriteLine(ret.ToString() + AllStrings.comma + SH.Join(AllChars.comma, toAppend));
         }
 
         public void WriteArgs(params object[] args)
@@ -47,7 +76,17 @@ namespace sunamo.Essential
             {
                 writeLineDelegate.Invoke(text, args);
             }
-            
+        }
+        /// <summary>
+        /// for compatibility with Console.WriteLine 
+        /// </summary>
+        /// <param name="what"></param>
+        public void WriteLine(object what)
+        {
+            if (what != null)
+            {
+                WriteLine(SH.ListToString( what));
+            }
         }
 
         public  void WriteLine(string what, object text)
@@ -66,7 +105,7 @@ namespace sunamo.Essential
 
         public  void WriteNumberedList(string what, List<string> list, bool numbered)
         {
-            writeLineDelegate.Invoke(what + ":");
+            writeLineDelegate.Invoke(what + AllStrings.colon);
             for (int i = 0; i < list.Count; i++)
             {
                 if (numbered)

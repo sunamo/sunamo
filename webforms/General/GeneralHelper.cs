@@ -13,14 +13,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Hosting;
 using sunamo;
-using shared.Extensions;
-using sunamo.Essential;
 
 public class GeneralHelper
 {
+    static GeneralHelper()
+    {
+        
+    }
+
     public static string GetPhotoPathImgUri(HttpRequest Request, string fileName)
     {
-        return UH.CombineTrimEndSlash("http://" + Request.Url.Host, "img", fileName);
+        return UH.CombineTrimEndSlash("http" + ":" + "//" + Request.Url.Host, "img", fileName);
     }
 
     /// <summary>
@@ -33,7 +36,7 @@ public class GeneralHelper
     {
         if (distance.Length != times.Length)
         {
-            throw new Exception("Kolekce vzdáleností a časů nemají stejný počet prvků.");
+            throw new Exception("Kolekce vzdáleností a časů nemají stejný počet prvků" + ".");
         }
         Speed[] vr = new Speed[distance.Length];
         vr[0] = new Speed();
@@ -79,7 +82,7 @@ public class GeneralHelper
             if (bmp.Height > bmp.Width)
             {
                 // Menší je šířka, vypočtu optimální velikost obrázku, kde specifikuji výšku 168
-                sizeMin = Pictures.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
                 bool vypocistIVysku = false;
                 while (sizeMin.Width > GeneralConsts.tnWidth)
                 {
@@ -98,7 +101,7 @@ public class GeneralHelper
             }
             else if (bmp.Width > bmp.Height)
             {
-                sizeMin = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
                 bool vypocistISirku = false;
                 while (sizeMin.Height > GeneralConsts.tnHeight)
                 {
@@ -132,7 +135,7 @@ public class GeneralHelper
         {
             string tempMin = toFolderTempSlash + fnwoe + "_tn" + ext;
             FS.CreateUpfoldersPsysicallyUnlessThere(tempMin);
-            shared.Pictures.TransformImage(bmp, sizeMin.Width, sizeMin.Height, tempMin);
+            PicturesShared.TransformImage(bmp, sizeMin.Width, sizeMin.Height, tempMin);
             using (System.Drawing.Image bmpMin = Bitmap.FromFile(tempMin))
             {
                 using (Bitmap b2 = new Bitmap(GeneralConsts.tnWidth, GeneralConsts.tnHeight))
@@ -172,7 +175,7 @@ public class GeneralHelper
             if (bmp.Height > bmp.Width)
             {
                 // Menší je šířka, vypočtu optimální velikost obrázku, kde specifikuji výšku 168
-                sizeMin = Pictures.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSizeHeight(bmp.Width, bmp.Height, GeneralConsts.tnHeight).ToSystemDrawing();
                 bool vypocistIVysku = false;
                 while (sizeMin.Width > GeneralConsts.tnWidth)
                 {
@@ -191,7 +194,7 @@ public class GeneralHelper
             }
             else if (bmp.Width > bmp.Height)
             {
-                sizeMin = Pictures.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
+                sizeMin = PicturesSunamo.CalculateOptimalSize(bmp.Width, bmp.Height, GeneralConsts.tnWidth).ToSystemDrawing();
                 bool vypocistISirku = false;
                 while (sizeMin.Height > GeneralConsts.tnHeight)
                 {
@@ -225,7 +228,7 @@ public class GeneralHelper
         {
             string tempMin = toFolderTempSlash + fnwoe + "_tn" + ext;
             FS.CreateUpfoldersPsysicallyUnlessThere(tempMin);
-            shared.Pictures.TransformImage(bmp, sizeMin.Width, sizeMin.Height, finalMin);
+            PicturesShared.TransformImage(bmp, sizeMin.Width, sizeMin.Height, finalMin);
         }
     }
 
@@ -241,10 +244,10 @@ public class GeneralHelper
         string toFolderTempSlash = "";
         while (true)
         {
-            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\";
-            if (!Directory.Exists(toFolderTempSlash))
+            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\\\\\";
+            if (!FS.ExistsDirectory(toFolderTempSlash))
             {
-                toFolderTempSlash += "\\";
+                toFolderTempSlash += "\\\\\\";
                 break;
             }
         }
@@ -264,12 +267,12 @@ public class GeneralHelper
     {
         string rc =RandomHelper.RandomStringWithoutSpecial(20);
         string folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
-        while (Directory.Exists(folder))
+        while (FS.ExistsDirectory(folder))
         {
             rc = RandomHelper.RandomStringWithoutSpecial(20);
             folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
         }
-        return folder + "\\";
+        return folder + "\\\\\\";
     }
 
     public static string GetOrCreateCityFromDictionary(Dictionary<int, string> artistsNames, int oEventIDArtistHeadliner)
@@ -321,8 +324,8 @@ public class GeneralHelper
         {
             ip2 = "127.0.0.1";
         }
-        string[] ips = SH.Split(ip2, ".");
-        if (ips.Length == 4)
+        var ips = SH.Split(ip2, ".");
+        if (ips.Count == 4)
         {
             ip = new byte[4];
             for (int i = 0; i < 4; i++)
@@ -692,7 +695,7 @@ public class GeneralHelper
 
     public static string GetTableNameDistricts(byte idState, int idRegion)
     {
-        return string.Format("S{0}_R{1}_Districts", idState, idRegion);
+        return SH.Format2("S{0}_R{1}_Districts", idState, idRegion);
     }
 
 
@@ -738,6 +741,10 @@ public class GeneralHelper
         return GeneralColls.browsersIDs[Browsers.Other.ToString()];
         
     }
+    static List<string> darkColors = null;
+    
+
+
     static string[] colorsColorBar = new string[] { "#3FB1F0",
 "#FFFDFE",
 "#D8306E",
@@ -808,25 +815,32 @@ public class GeneralHelper
     /// <returns></returns>
     public static int CalculatePercentOfColorBar(int pocet, out List<string> barvyFinal, out byte[] b2)
     {
+        if (darkColors == null)
+        {
+            darkColors = new List<string>(CA.ToEnumerable("#0B0B3F", "#BB4C2E", "#20096E", "#8F750D", "#008E40", "#76D9DE", "#93B51D", "#C99397", "#70C2E5", "#BCE4F7", "#3B83D2", "#E96997", "#DEB086", "#C77341", "#6D7F2F", "#EC897B", "#AE485C", "#CC08C9", "#C04277", "#A74B89"));
+        }
+
         #region Initialize variable and collections
         barvyFinal = new List<string>(pocet);
-        List<string> colors = new List<string>(colorsColorBar);
+        List<string> colors = new List<string>(darkColors);
+        //colors.AddRange(darkColors);
         byte percent = 100;
         byte percent2 = 0;
         int pocet2 = pocet;
         pocet2--;
+        // b - percent of every generated color
         byte[] b = new byte[pocet];
-        // increases from 1 to 9, numbers of generated colors
+        // increases from 1 to 9, numbers of generated colors - 
         byte i = 1;
         #endregion
 
-        #region Select 9 random colors, substract maximum 1...9 = 45
+        #region Select 9 random colors, substract maximum 1...9 = 45%
         for (; i < 10; i++)
         {
             b[i - 1] = i;
             int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
             barvyFinal.Add(colors[indexBarvy]);
-            colors.RemoveAt(indexBarvy);
+            //colors.RemoveAt(indexBarvy);
             pocet--;
             percent2 += i;
             percent -= i;
@@ -854,7 +868,7 @@ public class GeneralHelper
             b[i - 1] = r;
             int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
             barvyFinal.Add(colors[indexBarvy]);
-            colors.RemoveAt(indexBarvy);
+            //colors.RemoveAt(indexBarvy);
             pocet--;
             percent2 += r;
             percent -= r;
@@ -883,7 +897,7 @@ public class GeneralHelper
                     b[dex] = 1;
                     indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
                     barvyFinal.Add(colors[indexBarvy]);
-                    colors.RemoveAt(indexBarvy);
+                    //colors.RemoveAt(indexBarvy);
                     pocet--;
                     if (pocet == 0)
                     {
@@ -908,8 +922,13 @@ public class GeneralHelper
             #region If I have space in b array, set as last element, otherwise add to first
             i++;
             int pomer = 100 - percent2;
+            if (pomer == 0)
+            {
+                DebugLogger.Break();
+            }
             if (b.Length == i + 1)
             {
+                
                 b[i] = (byte)pomer;
                 int indexBarvy = RandomHelper.RandomInt2(0, colors.Count);
                 barvyFinal.Add(colors[indexBarvy]);
@@ -933,12 +952,14 @@ public class GeneralHelper
             int pomer = nt - 100;
             b[8] -= (byte)pomer;
         }
+        if (nt < 100)
+        {
+            int pomer = 100 - nt ;
+            b[8] += (byte)pomer;
+        }
         #endregion
 
-        if (b.Length != barvyFinal.Count)
-        {
-               
-        }
+
         b2 = CA.JumbleUp<byte>(b);
         return pocet;
     }
@@ -972,7 +993,7 @@ public class GeneralHelper
         bool expiredSurvey = (DateExpired < DateTime.Now);
         if (expiredSurvey)
         {
-            if (DateExpired == MSStoredProceduresI.DateTimeMinVal)
+            if (DateExpired == SqlServerHelper.DateTimeMinVal)
             {
                 expiredSurvey = false;
             }
@@ -1061,6 +1082,7 @@ public class GeneralHelper
         {
             location.IDState = 0;
         }
+        
 
         if (location.IDState != 0)
         {
@@ -1115,7 +1137,7 @@ public class GeneralHelper
     {
         
         
-        byte[] ip = HttpRequestHelper.GetIPAddressInArray(httpRequest);
+        byte[] ip = IPAddressHelper.GetIPAddressInArray(httpRequest);
         if (ip == null)
         {
             return true;

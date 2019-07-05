@@ -2,19 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Extensions
-{
+
     public static class ListExtensions
     {
-        /// <summary>
-        /// Must be List due to working with indexes.
-        /// Partitions the given list around a pivot element such that all elements on left of pivot are <= pivot
-        /// and the ones at thr right are > pivot. This method can be used for sorting, N-order statistics such as
-        /// as median finding algorithms.
-        /// Pivot is selected ranodmly if random number generator is supplied else its selected as last element in the list.
-        /// Reference: Introduction to Algorithms 3rd Edition, Corman et al, pp 171
-        /// </summary>
-        public static int Partition<T>(this IList<T> list, int start, int end, Random rnd = null) where T : IComparable<T>
+        public static List<T> Add2<T>(this IList<T> list, T item)
+        {
+            list.Add(item);
+            return (List<T>)list;
+        }
+
+    public static List<T> Insert<T>(this IList<T> list, int dx,  T item )
+    {
+        list.Insert(dx, item);
+        return (List<T>)list;
+    }
+
+    
+
+    /// <summary>
+    /// Must be List due to working with indexes.
+    /// Partitions the given list around a pivot element such that all elements on left of pivot are <= pivot
+    /// and the ones at thr right are > pivot. This method can be used for sorting, N-order statistics such as
+    /// as median finding algorithms.
+    /// Pivot is selected ranodmly if random number generator is supplied else its selected as last element in the list.
+    /// Reference: Introduction to Algorithms 3rd Edition, Corman et al, pp 171
+    /// </summary>
+    public static int Partition<T>(this IList<T> list, int start, int end, Random rnd = null) where T : IComparable<T>
         {
             if (rnd != null)
                 list.Swap(end, rnd.Next(start, end + 1));
@@ -55,4 +68,4 @@ namespace sunamo.Extensions
             }
         }
     }
-}
+

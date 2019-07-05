@@ -150,28 +150,28 @@ using System.Text;
         #region Methods
 
         /// <summary>
-        /// Initialises the class to use a file
+        /// Initialises the public class to use a file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="encoding"></param>
         private void Initialise(string filePath, Encoding encoding)
         {
-            if (!File.Exists(filePath))
-                throw new FileNotFoundException(string.Format("The file '{0}' does not exist.", filePath));
+            if (!FS.ExistsFile(filePath))
+                throw new FileNotFoundException(SH.Format2("The file '{0}' does not exist.", filePath));
 
             _fileStream = File.OpenRead(filePath);
             Initialise(_fileStream, encoding);
         }
 
         /// <summary>
-        /// Initialises the class to use a stream
+        /// Initialises the public class to use a stream
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="encoding"></param>
         private void Initialise(Stream stream, Encoding encoding)
         {
             if (stream == null)
-                throw new ArgumentNullException("The supplied stream is null.");
+                throw new ArgumentNullException("The supplied stream is null" + ".");
 
             _stream = stream;
             _stream.Position = 0;
@@ -180,14 +180,14 @@ using System.Text;
         }
 
         /// <summary>
-        /// Initialies the class to use a string
+        /// Initialies the public class to use a string
         /// </summary>
         /// <param name="encoding"></param>
         /// <param name="csvContent"></param>
         private void Initialise(Encoding encoding, string csvContent)
         {
             if (csvContent == null)
-                throw new ArgumentNullException("The supplied csvContent is null.");
+                throw new ArgumentNullException("The supplied csvContent is null" + ".");
 
             _encoding = (encoding ?? Encoding.UTF8);
 
@@ -281,7 +281,7 @@ using System.Text;
                 // If we are not currently inside a column
                 if (!inColumn)
                 {
-                    if (character == '"')
+                    if (character == AllChars.qm)
                         inQuotes = true;
                     else
                         _columnBuilder.Append(character);
@@ -293,13 +293,13 @@ using System.Text;
                 // If we are in between double quotes
                 if (inQuotes)
                 {
-                    if (character == '"' && ((line.Length > (i + 1) && line[i + 1] == delimiter) || ((i + 1) == line.Length)))
+                    if (character == AllChars.qm && ((line.Length > (i + 1) && line[i + 1] == delimiter) || ((i + 1) == line.Length)))
                     {
                         inQuotes = false;
                         inColumn = false;
                         i++;
                     }
-                    else if (character == '"' && line.Length > (i + 1) && line[i + 1] == '"')
+                    else if (character == AllChars.qm && line.Length > (i + 1) && line[i + 1] == AllChars.qm)
                         i++;
                 }
                 else if (character == delimiter)

@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace forms.Essential
 { }
-
+ 
 // TODO: Later uncomment, now I can't because have ComboBox and sunamo.AppData must be without namespace
 //namespace forms
 //{
@@ -23,7 +23,7 @@ namespace forms.Essential
 //        public static void LoadFiles(AppFolders ap, string mask, ComboBox cb)
 //        {
 //            cb.Items.Clear();
-//            string[] files = Directory.GetFiles(AppData.GetFolder(ap), mask);
+//            string[] files = Directory.GetFiles(AppData.ci.GetFolder(ap), mask);
 //            files = FS.OnlyNames(files);
 //            foreach (var item in files)
 //            {

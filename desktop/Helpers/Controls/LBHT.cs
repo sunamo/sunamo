@@ -16,11 +16,11 @@ namespace desktop
     public class LBHT<T> : LBH
     {
         /// <summary>
-        /// V�choz� pro A2 bylo SelectionMode.Extended
+        /// Vychozy pro A2 bylo SelectionMode.Extended
         /// </summary>
         /// <param name="lb"></param>
         /// <param name="sm"></param>
-        public LBHT(ListBox lb, SelectionMode sm)
+        public LBHT(ListBox lb, SelectionMode sm = SelectionMode.Single)
             : base(lb, sm)
         {
             lb.SelectionChanged += Lb_SelectionChanged;
@@ -50,7 +50,7 @@ namespace desktop
             }
             else if (lb.SelectedItem is FrameworkElement)
             {
-                // Vlastnost Tag je ve t��d� FrameworkElement
+                // Vlastnost Tag je ve tzd FrameworkElement
                 FrameworkElement fw = lb.SelectedItem as FrameworkElement;
                 if (fw.Tag is T)
                 {
@@ -132,7 +132,8 @@ namespace desktop
 
         public void AddRange(params object[] list)
         {
-            foreach (var item in list)
+            var enu = CA.ToEnumerable(list);
+            foreach (var item in enu)
             {
                 lb.Items.Add(item);
             }
@@ -144,15 +145,29 @@ namespace desktop
         public void CopyToClipboard()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (object var in lb.Items)
+            foreach (IListBoxHelperItem var in lb.Items)
             {
                 sb.AppendLine(var.ToString());
             }
             ClipboardHelper.SetText(sb.ToString());
         }
 
+        public void CopyToClipboardShort()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (IListBoxHelperItem var in lb.Items)
+            {
+                sb.AppendLine(var.ShortName);
+            }
+            ClipboardHelper.SetText(sb.ToString());
+        }
+
         #region DPP
         public event VoidObject ItemRemoved;
+        /// <summary>
+        /// Dont register 
+        /// </summary>
+        public event VoidVoid ItemSelected;
         /// <summary>
         /// LB, na kt. se kont.
         /// </summary>
@@ -164,13 +179,14 @@ namespace desktop
 
         private void Lb_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            mb = e.ChangedButton;   
+            mb = e.ChangedButton; 
+            
         }
 
         #region base
         /// <summary>
         /// EK, OOP.
-        /// V�choz� pro A2 bylo SelectionMode.Extended
+        /// Vychozy pro A2 bylo SelectionMode.Extended
         /// </summary>
         /// <param name="lb"></param>
         public LBH(ListBox lb, SelectionMode sm)
@@ -180,6 +196,24 @@ namespace desktop
             lb.SelectionMode = sm;
             lb.KeyDown += new KeyEventHandler(lb_KeyDown);
             lb.PreviewMouseDown += Lb_MouseDown;
+            lb.SelectionChanged += Lb_SelectionChanged;
+
+        }
+
+        private void Lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Length() > 0)
+            {
+                Selected = e.AddedItems[0];
+                if (ItemSelected != null)
+                {
+                    ItemSelected();
+                }
+            }
+            else
+            {
+                Selected = null;
+            }
         }
 
         public bool Tag = false;
@@ -240,11 +274,11 @@ namespace desktop
             if (Selected is IListBoxHelperItem)
             {
                 IListBoxHelperItem lbi = Selected as IListBoxHelperItem;
-                ProcessHelper.Start(lbi.RunOne);
+                PH.Start(lbi.RunOne);
             }
             else
             {
-                ProcessHelper.Start(SelectedS);
+                PH.Start(SelectedS);
             }
         }
         #endregion

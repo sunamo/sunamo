@@ -9,8 +9,11 @@ using System.Windows.Media;
 
 namespace desktop
 {
-    public interface IEssentialMainPage 
+    /// <summary>
+    /// Combined with Window. Dont use Window due to WpfApp.mp
+    /// </summary>
+    public interface IEssentialMainPage : IPanel
     {
-
+        
     }
 }

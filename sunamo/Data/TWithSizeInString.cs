@@ -13,7 +13,7 @@ namespace sunamo.Data
 
         public override string ToString()
         {
-            return t + " (" + sizeS + ")";
+            return t + " (" + sizeS + AllStrings.rb;
 
         }
     }

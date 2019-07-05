@@ -65,7 +65,7 @@ namespace forms
         }
 
         /// <summary>
-        /// Nemus� volat tuto metodu, sta�� bohat� pou��t cb.SelectedIndex = p;
+        /// Nemusi volat tuto metodu, staci bohate pouzit cb.SelectedIndex = p;
         /// </summary>
         /// <param name="p"></param>
         public void NastavIndexVyctu(int p)

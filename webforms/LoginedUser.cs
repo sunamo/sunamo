@@ -37,7 +37,7 @@ public class LoginedUser
 
     public int ID(SunamoMasterPage smp)
     {
-        SunamoPage sp = (SunamoPage)smp.Page;
+        SunamoPage sp = SunamoMasterPage.CastToSunamoPage(smp.Page);
         LoginCookie lc = null;
 
         lc = SunamoMasterPage.GetLoginCookie(sp.Request);
@@ -95,7 +95,7 @@ public class LoginedUser
                             {
                                 if (sp != null)
                                 {
-                                    SunamoMasterPage smp = (SunamoMasterPage)sp.Master;
+                                    SunamoMasterPage smp = MasterPageHelper.GetSmp( sp);
                                     //smp.WritePernamentCookie()
                                     SessionManager.LoginUser(smp, login, loginID, sc);
                                 }
@@ -105,7 +105,7 @@ public class LoginedUser
                                 }
                                 else
                                 {
-                                    throw new Exception("Do metody LoginedUser.ID() se nedostal ani parametr HttpContext, ani SunamoPage.");
+                                    throw new Exception("Do metody LoginedUser.ID() se nedostal ani parametr HttpContext, ani SunamoPage" + ".");
                                 }
                                 
                                 return loginID;
@@ -116,7 +116,7 @@ public class LoginedUser
                                 {
                                     if (sp != null)
                                     {
-                                        SunamoMasterPage smp = (SunamoMasterPage)sp.Master;
+                                        SunamoMasterPage smp = MasterPageHelper.GetSmp( sp);
                                         SessionManager.LogoutUser(smp);
                                         smp.Logout();
                                     }

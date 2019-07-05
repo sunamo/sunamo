@@ -78,12 +78,12 @@ namespace sunamo.Indexing.FileSystem
         /// <param name="relativeDirectoryName"></param>
         public void AddFolderRecursively(string folder)
         {
-            folder = sunamo.FS.WithEndSlash(folder);
+            folder = FS.WithEndSlash(folder);
             basePath = folder;
             actualFolderID++;
             directories.Add(folder);
 
-            string[] dirs = Directory.GetDirectories(folder, "*", SearchOption.AllDirectories);
+            var dirs = FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories);
             List<string> fils = new List<string>();
 
             foreach (var item in dirs)
@@ -92,7 +92,7 @@ namespace sunamo.Indexing.FileSystem
                 AddFilesFromFolder(folder, item);
             }
 
-            AddFilesFromFolder(folder, sunamo.FS.WithoutEndSlash(folder));
+            AddFilesFromFolder(folder, FS.WithoutEndSlash(folder));
         }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace sunamo.Indexing.FileSystem
         {
             FolderItem fi = new FolderItem();
             fi.IDParent = actualFolderID;
-            fi.Name = sunamo.FS.GetFileName(p);
-            fi.Path = sunamo.FS.GetDirectoryName(p);
+            fi.Name = FS.GetFileName(p);
+            fi.Path = FS.GetDirectoryName(p);
             return fi;
         }
 
@@ -152,12 +152,12 @@ namespace sunamo.Indexing.FileSystem
             FileItem fi = new FileItem();
             //fi.IDDirectory = folders.Count;
             //fi.IDParent = actualFolderID;
-            fi.Name = sunamo.FS.GetFileName(p);
-            //fi.Path = sunamo.FS.GetDirectoryName(p);
+            fi.Name = FS.GetFileName(p);
+            //fi.Path = FS.GetDirectoryName(p);
 
             //if (relativeDirectoryName)
             //{
-            string relDirName = p.Replace(basePath, "");
+            string relDirName = FS.GetDirectoryName( p).Replace(basePath, "");
             if (!relativeDirectories.Contains(relDirName))
             {
                 relativeDirectories.Add(relDirName);
@@ -271,9 +271,9 @@ namespace sunamo.Indexing.FileSystem
                     int columnToInsert = relativeFilePathForEveryColumn[relativeFilePath];
                     string fullFilePath = relativeDirectories[file.IDRelativeDirectory] + file.Name;
 
-                    if (File.Exists(fullFilePath))
+                    if (FS.ExistsFile(fullFilePath))
                     {
-                        long l2 = sunamo.FS.GetFileSize(fullFilePath);
+                        long l2 = FS.GetFileSize(fullFilePath);
                         // To result set CheckBoxData - full path and size
                         vr[r, columnToInsert] = new CheckBoxData<TWithSize<string>> { t = new TWithSize<string> { t = fullFilePath, size = l2 } };
                     }

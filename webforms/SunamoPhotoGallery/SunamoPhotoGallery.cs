@@ -148,7 +148,7 @@ public class SunamoPhotoGallery
             }
             else if (a11insertBetweenPhotoAndID == "")
             {
-                hg.WriteTagWithAttr("a", "href", "../Photo/" + idPhoto + a16appendToPhotoUri);
+                hg.WriteTagWithAttr("a", "href", ".." + "/" + "Photo" + "/" + idPhoto + a16appendToPhotoUri);
             }
             else
             {
@@ -157,7 +157,7 @@ public class SunamoPhotoGallery
             }
             if (a10SelectingPhotos)
             {
-                hg.WriteNonPairTagWithAttrs("input", "type", "image", "onclick", "return selectImage('" + idPhoto + "');", "ondblclick", "return selectImage('" + idPhoto + "');",
+                hg.WriteNonPairTagWithAttrs("input", "type", "image", "onclick", "return selectImage(" + "'" + idPhoto + "');", "ondblclick", "return selectImage(" + "'" + idPhoto + "');",
                     "src", a7files[i], "alt", a9filesNames[i], "id", "img" + idPhoto, "class", a13fotoGalerieTnFileClass);
             }
             else

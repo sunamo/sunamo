@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 
-public static class SunamoPageHelper
+public static partial class SunamoPageHelper
 {
     #region Lst
     public static string WebTitle(MySites sa, HttpRequest Request)
@@ -21,11 +21,11 @@ public static class SunamoPageHelper
         }
         else if (sda == (byte)MySitesShort.Geo)
         {
-            desc = "Geocaching je hra na pomezí sportu a turistiky, která spočívá v použití navigačního systému GPS při hledání skryté schránky nazývané cache (v češtině psáno i keš), o níž jsou známy její zeměpisné souřadnice (v systému WGS 84). Při hledání se používají turistické přijímače GPS. Člověk zabývající se geocachingem bývá označován slovem geocacher, česky též geokačer nebo prostě kačer. Po objevení cache, zapsání se do logbooku a případné výměně obsahu ji nálezce opět uschová a zamaskuje.";
+            desc = "Geocaching je hra na pomezí sportu a turistiky, která spočívá v použití navigačního systému GPS při hledání skryté schránky nazývané cache (v češtině psáno i keš), o níž jsou známy její zeměpisné souřadnice (v systému WGS 84). Při hledání se používají turistické přijímače GPS. Člověk zabývající se geocachingem bývá označován slovem geocacher, česky též geokačer nebo prostě kačer. Po objevení cache, zapsání se do logbooku a případné výměně obsahu ji nálezce opět uschová a zamaskuje" + ".";
         }
         else if (sda == (byte)MySitesShort.Nope)
         {
-            desc = "Stránky člověka s nickem sunamo. Texty písní, Aplikace pro Windows a mnoho dalšího. Dále pak listingy některých kešek z geocaching.com, Zkracovač odkazů, Fotogalerie.";
+            desc = "Stránky člověka s nickem sunamo. Texty písní, Aplikace pro Windows a mnoho dalšího. Dále pak listingy některých kešek z geocaching.com, Zkracovač odkazů, Fotogalerie" + ".";
         }
         else
         {
@@ -49,32 +49,13 @@ public static class SunamoPageHelper
 
     #endregion
 
-    /// <summary>
-    /// Pokud ještě nebyla IP adresa zjištěna, zjistím ji 
-    /// Pokud IP adresa nebude mít 4 čísla byte nebo bude moje, vrátím null
-    /// </summary>
-    /// <returns></returns>
-    public static byte[] IsIpAddressRight(SunamoPage sp)
-    {
-        if (sp.ipAddress == null)
-        {
-            sp.ipAddress = HttpRequestHelper.GetUserIP(sp.Request);
-        }
-        if (sp.ipAddress == null)
-        {
-            return null;
-        }
-        else
-        {
-            return IsIpAddressRight(sp.ipAddress);
-        }
-    }
+    
     #endregion
 
     public static string GetFooterHtml(MySites ms)
     {
         HtmlGenerator sb = new HtmlGenerator();
-        sb.WriteRaw("(c) 2012 - 2017 ");
+        sb.WriteRaw("(c) 2012 - 2019 with " + "" + " ");
         sb.WriteTagWithAttr("a", "href", "mailto:radek.jancik@sunamo.cz");
         sb.WriteRaw("radek.jancik@sunamo.cz");
         sb.TerminateTag("a");
@@ -93,7 +74,7 @@ public static class SunamoPageHelper
 
         
 
-        sb.WriteRaw(" All rights reserved");
+        sb.WriteRaw(" " + "All rights reserved");
 
         return sb.ToString();
     }
@@ -106,6 +87,8 @@ public static class SunamoPageHelper
     {
         sp.WriteToDebugWithTime(rightUp + "Me/Login.aspx?ReturnUrl=" + UH.UrlEncode(sp.Request.Url.ToString()));
     }
+
+    
 
     /// <summary>
     /// Přesměruje na OffRegLogSys.aspx když je vypnuté přihlašovací a registrační systém.
@@ -189,7 +172,28 @@ public static class SunamoPageHelper
             sp.nameLoginedUser = GeneralCells.LoginOfUser(id); //lu.login;
         }
     }
-    
+
+    /// <summary>
+    /// Pokud ještě nebyla IP adresa zjištěna, zjistím ji 
+    /// Pokud IP adresa nebude mít 4 čísla byte nebo bude moje, vrátím null
+    /// </summary>
+    /// <returns></returns>
+    public static byte[] IsIpAddressRight(SunamoPage sp)
+    {
+        if (sp.ipAddress == null)
+        {
+            sp.ipAddress = HttpRequestHelper.GetUserIP(sp.Request);
+        }
+        if (sp.ipAddress == null)
+        {
+            return null;
+        }
+        else
+        {
+            return IsIpAddressRight(sp.ipAddress);
+        }
+    }
+
     /// <summary>
     /// Pokud IP adresa nebude mít 4 čísla byte, vrátím null
     /// </summary>
@@ -197,7 +201,7 @@ public static class SunamoPageHelper
     /// <returns></returns>
     private static byte[] IsIpAddressRight(IPAddress ipAddress)
     {
-        
+
 
         byte[] b = ipAddress.GetAddressBytes();
         if (b == null)

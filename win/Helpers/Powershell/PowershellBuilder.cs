@@ -58,13 +58,13 @@ namespace win.Helpers.Powershell
         /// <returns></returns>
         public string Cd(string path)
         {
-            sb.AppendLine("cd \"" + path + "\"");
+            sb.AppendLine("cd \"" + path + AllStrings.qm);
             return sb.ToString();
         }
 
         public void CmdC(string v)
         {
-            sb.AppendLine("cmd /c " + v);
+            sb.AppendLine("cmd /c" + " " + v);
         }
 
         public override string ToString()

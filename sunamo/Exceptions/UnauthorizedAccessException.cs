@@ -5,7 +5,7 @@ using System.Text;
 
 namespace sunamo
 {
-    class UnauthorizedAccess : Exception
+    public class UnauthorizedAccess : Exception
     {
     }
 }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
  	 public int IDUsers = -1 ; 
  	 public string Code = "" ; 
  	 public string Email = "" ; 
- 	 public DateTime DateChanged = MSStoredProceduresI.DateTimeMinVal ; 
+ 	 public DateTime DateChanged = SqlServerHelper.DateTimeMinVal ; 
  	 public byte ChangedTimes = 0 ; 
  	public TableRowUsersReactivatesBase ( object[] o )
 	{

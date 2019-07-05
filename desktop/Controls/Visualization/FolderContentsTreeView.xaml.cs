@@ -18,7 +18,11 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for FolderContentsTreeView.xaml
+    /// I have 3 TreeViews:
+    /// desktop.Controls.FolderContentsTreeView - used in AllProjectsSearch\Wins\DuplicateSolutionsWindow.xaml. With icons but without checkboxes
+    /// SunamoTreeView - very nice, load whole fs structure, example in OptimalAllocationSizeUnit. Without icons but with checkboxes
+    /// HostingManagerTreeView - Pracuje s DB a FolderEntryDB/FileEntryDB
+    /// 
     /// </summary>
     public partial class FolderContentsTreeView : UserControl
     {
@@ -61,7 +65,7 @@ namespace desktop.Controls
         private void AddTviFolderTo(string s, ItemsControl to)
         {
             TreeViewItem subfolder = new TreeViewItem();
-            subfolder.Header = s.Substring(s.LastIndexOf("\\") + 1);
+            subfolder.Header = s.Substring(s.LastIndexOf(AllStrings.bs) + 1);
             subfolder.Tag = new FileSystemEntry { file = false, path = s }; ;
             subfolder.FontWeight = FontWeights.Normal;
             subfolder.Items.Add(dummyNode);
@@ -76,7 +80,7 @@ namespace desktop.Controls
         private void AddTviFileTo(string s, ItemsControl to)
         {
             TreeViewItem subfiles = new TreeViewItem();
-            subfiles.Header = s.Substring(s.LastIndexOf("\\") + 1);
+            subfiles.Header = s.Substring(s.LastIndexOf(AllStrings.bs) + 1);
             subfiles.Tag = new FileSystemEntry { file = true, path = s };
             subfiles.FontWeight = FontWeights.Normal;
             if (useDictionary)
@@ -95,7 +99,7 @@ namespace desktop.Controls
                 try
                 {
                     string folder = ((FileSystemEntry)item.Tag).path.ToString();
-                    foreach (string s in Directory.GetDirectories(folder))
+                    foreach (string s in FS.GetFolders(folder))
                     {
                         AddTviFolderTo(s, item);
                     }

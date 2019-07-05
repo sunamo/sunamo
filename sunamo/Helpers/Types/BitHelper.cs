@@ -1,6 +1,6 @@
 ﻿namespace sunamo
 {
-    class BitHelper
+    public class BitHelper
     {
         public static bool StartsWith(byte[] b, params byte[] bytes)
         {

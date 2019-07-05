@@ -13,13 +13,13 @@ namespace webforms
         public static string GenerateItemsForPhotoSwipe(List<ImageWithSize> iws)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("items = [");
+            sb.Append("items " + "" + " [");
             int poradi = 0;
             //sb.Append(@"{src:'',w:0,h:0,pid:0},");
             for (int i = 0; i < iws.Count - 1; i++)
             {
                 var ws = iws[i];
-                sb.Append(@"{src:'" + ws.uri + "',w:" + ws.width + ",h:" + ws.height + ",pid:" + poradi++ + ",idb:" + ws.id + "},");
+                sb.Append(@"{" + "src" + ":'" + ws.uri + "',w:" + ws.width + ",h:" + ws.height + "," + "pid" + ":" + poradi++ + "," + "idb" + ":" + ws.id + "},");
                 if (ws.id == -1)
                 {
 
@@ -29,7 +29,7 @@ namespace webforms
             if (iws.Count > 0)
             {
                 var ws = iws[iws.Count - 1];
-                sb.Append(@"{src:'" + ws.uri + "',w:" + ws.width + ",h:" + ws.height + ",pid:" + poradi++ + ",idb:" + ws.id + "}");
+                sb.Append(@"{" + "src" + ":'" + ws.uri + "',w:" + ws.width + ",h:" + ws.height + "," + "pid" + ":" + poradi++ + "," + "idb" + ":" + ws.id + "}");
                 if (ws.id == -1)
                 {
 
@@ -52,10 +52,10 @@ namespace webforms
         public static string JsForIosBadge(string theme, List<string> idBadges, List<string> values)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("$(document).ready(function() {");
+            sb.Append("$(document).ready(function()" + " {");
             for (int i = 0; i < idBadges.Count; i++)
             {
-                sb.Append("$('#iosBadge" + idBadges[i] + "').iosbadge({ theme: '" + theme + "', size: 22, content: '" + values[i] + "' });");
+                sb.Append("$('#iosBadge" + idBadges[i] + "'" + "." + ".iosbadge({ theme" + ":" + " '" + theme + "'," + " " + "size: 22, content" + ":" + " '" + values[i] + "' });");
             }
             sb.Append("});");
             return sb.ToString();
@@ -70,7 +70,7 @@ namespace webforms
         public static string ImagesForSunamoPhotoGalleryViewer(string nameArray, List<string> base64)
         {
             StringBuilder vr = new StringBuilder();
-            vr.Append(@"" + nameArray + @" = new Array();");
+            vr.Append(@"" + nameArray + @" " + " " + " new Array()" + ";");
             int i = 0;
             foreach (var item in base64)
             {
@@ -92,8 +92,8 @@ namespace webforms
             string bef = "";
             if (createNewArray)
             {
-                bef = "var " + nameArray + @" = new Array();var vsechnyObrazky = null;
-var nameArray = '" + sameTextInIDs + @"';";
+                bef = "var " + nameArray + @" " + " " + " new Array();var vsechnyObrazky = null;
+var nameArray " + "" + " '" + sameTextInIDs + @"';";
             }
             return bef + @"$(document).ready(function () {
     setInterval(changeImage, 5000);
@@ -109,7 +109,7 @@ function changeImage() {
             var id = parseInt(j.attr('id').replace(nameArray, ''));
             var src = j.attr('src');
             if (src == '') {
-                if (" + nameArray + @"[id][0]) {
+                if (" + nameArray + @"[" + "id][0]) {
                     j.attr('src', GetWebUri(" + nameArray + @"[id][0]));
                 }
                 else {
@@ -117,13 +117,13 @@ function changeImage() {
                 }
             }
             else {
-                if (" + nameArray + @"[id]) {
-                    var pocetObrazku = " + nameArray + @"[id].length;
+                if (" + nameArray + @"[" + "id]) {
+                    var pocetObrazku " + "" + " " + nameArray + @"[" + "id].length;
                     if (pocetObrazku != 0) {
                         var nastaveno = false;
 
                         for (var y = 0; y < pocetObrazku; y++) {
-                            if (src.indexOf(" + nameArray + @"[id][y]) != -1) {
+                            if (src.indexOf(" + nameArray + @"[" + "id][y]) != -1) {
                                 if (y + 1 != pocetObrazku) {
                                     j.attr('src', GetWebUri(" + nameArray + @"[id][++y]));
                                     nastaveno = true;
@@ -132,12 +132,12 @@ function changeImage() {
                             }
                         }
                         if (!nastaveno) {
-                            j.attr('src', GetWebUri(" + nameArray + @"[id][0]));
+                            j.attr('src', GetWebUri(" + nameArray + @"[" + "id][0]));
                         }
                     }
                 }
             }
-        }}";
+      " + "  " + "}}";
         }
 
 
@@ -149,25 +149,25 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(string.Format("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
             foreach (var item in d)
             {
-                lineChart.AppendLine(string.Format("['{0}', {1}],", item.Key, item.Value));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", item.Key, item.Value));
             }
-            lineChart.Append(@"]);
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title: '");
+                title" + ":" + " '");
             lineChart.Append(title);
-            lineChart.Append(@"',
-                is3D: true,
+            lineChart.Append(@"'," + "
+" + "                is3D: true,
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('");
+            var chart = new google.visualization.PieChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
-            lineChart.Append(@"'));
+            lineChart.Append(@"'" + "));
             chart.draw(data, options);
-        }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -178,25 +178,25 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(string.Format("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", coSePorovnava, jednotkaHodnotyPorovnavani));
             for (int i = 0; i < coSePorovnavaHodnoty.Count; i++)
             {
-                lineChart.AppendLine(string.Format("['{0}', {1}],", coSePorovnavaHodnoty[i], jednotkaHodnotyPorovnavaniHodnoty[i]));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", coSePorovnavaHodnoty[i], jednotkaHodnotyPorovnavaniHodnoty[i]));
             }
-            lineChart.Append(@"]);
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title: '");
+                title" + ":" + " '");
             lineChart.Append(title);
-            lineChart.Append(@"',
-                is3D: true,
+            lineChart.Append(@"'," + "
+" + "                is3D: true,
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('");
+            var chart = new google.visualization.PieChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
-            lineChart.Append(@"'));
+            lineChart.Append(@"'" + "));
             chart.draw(data, options);
-        }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -207,24 +207,24 @@ function changeImage() {
         google.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([");
-            lineChart.AppendLine(string.Format("['{0}', '{1}'],", osaX, osaY));
+            lineChart.AppendLine(SH.Format2("['{0}', '{1}'],", osaX, osaY));
             for (int i = 0; i < osaXPopisky.Count; i++)
             {
-                lineChart.AppendLine(string.Format("['{0}', {1}],", osaXPopisky[i], osaXHodnoty[i]));
+                lineChart.AppendLine(SH.Format2("['{0}', {1}],", osaXPopisky[i], osaXHodnoty[i]));
             }
-            lineChart.Append(@"]);
+            lineChart.Append(@"]" + ";" + ";
 
             var options = {
-                title: '");
+                title" + ":" + " '");
             lineChart.Append(title);
-            lineChart.Append(@"'
-            };
+            lineChart.Append(@"'" + "
+ " + "           };
 
-            var chart = new google.visualization.LineChart(document.getElementById('");
+            var chart = new google.visualization.LineChart(document.getElementById(" + "'");
             lineChart.Append(idElement);
-            lineChart.Append(@"'));
+            lineChart.Append(@"'" + "));
             chart.draw(data, options);
-        }");
+     " + "  " + " }");
             return lineChart.ToString();
         }
 
@@ -232,14 +232,14 @@ function changeImage() {
         {
             // Cleans the message to allow single quotation marks 
             string cleanMessage = message.Replace("'", "\\'");
-            string script = "alert('" + cleanMessage + "');";
+            string script = "alert(" + "'" + cleanMessage + "');";
             return script;
         }
 
         public static string alertWithCloseWindow(string message)
         {
             string cleanMessage = message.Replace("'", "\\'");
-            string script = "alert('" + cleanMessage + "');window.close();";
+            string script = "alert(" + "'" + cleanMessage + "'" + ";" + ";window.close()" + ";";
             return script;
         }
 
@@ -254,12 +254,12 @@ function changeImage() {
 
         public static string Redirect(string p, string uri)
         {
-            return "<script type='text/javascript'>function " + p + "() { window.location.href='" + uri + "'; }</script>";
+            return "<script type='text/javascript'>function" + " " + p + "() { window.location.href=" + "'" + uri + "';" + " }" + "</script>";
         }
 
         public static string ScriptTag(string p)
         {
-            return Environment.NewLine + Environment.NewLine + "<script type='text/javascript'>" + p + "</script>" + Environment.NewLine + Environment.NewLine;
+            return Environment.NewLine + Environment.NewLine + "<script type='text/javascript" + "'" + "" + p + "/" + "/" + "script>" + Environment.NewLine + Environment.NewLine;
         }
 
         public static string jQueryAutocompleteData(string p, List<AB> abc)
@@ -269,8 +269,8 @@ function changeImage() {
             foreach (var item in abc)
             {
                 sb.AppendLine("{");
-                sb.AppendLine(" value: \"" + item.A + "\",");
-                sb.AppendLine(" label: \"" + item.B.ToString() + "\"");
+                sb.AppendLine(" value: \\\\\"" " + "+ item.A +" + " "\\\\\",");
+                sb.AppendLine(" label: \\\\\"" " + "+ item.B.ToString() +" + " "\\\\\"");
                 sb.AppendLine("},");
             }
             return sb.ToString().Substring(0, sb.Length - 3) + "];";

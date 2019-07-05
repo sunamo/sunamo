@@ -1,7 +1,7 @@
 ﻿using sunamo;
 using System;
 using System.IO;
-public static class SpecialFoldersHelper
+public static partial class SpecialFoldersHelper
 {
     /// <summary>
     /// Return root folder of AppData (as C:\Users\n\AppData\)
@@ -9,11 +9,7 @@ public static class SpecialFoldersHelper
     /// <returns></returns>
     public static string ApplicationData()
     {
-        return sunamo.FS.GetDirectoryName(AppDataRoaming());
+        return FS.GetDirectoryName(AppDataRoaming());
     }
 
-    public static string AppDataRoaming()
-    {
-        return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-    }
 }

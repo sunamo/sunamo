@@ -11,6 +11,11 @@ using System.Text;
 /// </summary>
 public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProceduresI<SqlConnection, SqlCommand>
 {
+    public MSStoredProceduresI(SqlConnection conn) : base(conn)
+    {
+
+    }
+
     public static void SetVariable(SqlConnection ci, string databaseName)
     {
         _ci.conn = ci;
@@ -40,5 +45,10 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
         {
             _ci = value;
         }
+    }
+
+    public static string ConvertToVarChar(string item)
+    {
+        return SqlServerHelper.ConvertToVarChar(item);
     }
 }

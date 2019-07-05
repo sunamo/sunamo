@@ -10,6 +10,7 @@ namespace sunamo.Enums
         Windows,
         Chrome,
         Web,
+        Wordpress,
         Developer
     }
 }

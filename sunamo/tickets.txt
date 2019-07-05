@@ -48,6 +48,8 @@ t0040 move sites to new sunamo.cz, need sth comment to compile, search in whole 
 t0041 process recovered sources codes and find all regions
 t0042 tidy up solutions, make exactly description to avoid dupliciting
 
+t0097 Remove all <Compile csproj - will include to compile all cs files
+
 live wallpaper
 
 data as mp3 to huawei 
@@ -58,6 +60,10 @@ replace in all C# files class name
 
 BEM, Flexbox
 leaflet
+
+print again bArcode 
+předávají se údaje o vlastníkovi kartu gastro pass 
+
 
 delete readme from DartGeoCaching, 
 napsat novou smlouvu o pronajmu bytu

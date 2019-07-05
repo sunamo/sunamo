@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.Values
 {
-    class GeoStates
+    public class GeoStates
     {
         public Dictionary<string, string> statesFullNames = null;
 

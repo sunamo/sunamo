@@ -10,8 +10,8 @@ namespace tempConsole
         private static void SetConnectionInfo(FtpAbstract ftpBase)
         {
             ftpBase.setRemoteHost("185.8.239.101");
-            ftpBase.setRemoteUser("defaultscz");
-            ftpBase.setRemotePass("hekaPuC4;");
+            ftpBase.setRemoteUser(AppData.ci.GetCommonSettings(CommonSettingsKeys.ftp_test_user));
+            ftpBase.setRemotePass(AppData.ci.GetCommonSettings(CommonSettingsKeys.ftp_test_pw));
         }
 
         public static void FtpDll()
@@ -27,7 +27,7 @@ namespace tempConsole
             ftpDll.DebugActualFolder();
             ftpDll.DebugAllEntries();
             
-            ftp.CreateFolder("/" + folder);
+            ftp.CreateFolder(AllStrings.slash + folder);
             ftp.ChangeFolder(folder);
             ftpDll.DebugActualFolder();
             ftp.UploadFiles("D:\a.txt");

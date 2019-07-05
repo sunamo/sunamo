@@ -17,9 +17,9 @@ namespace desktop.Storage
     /// <summary>
     /// Never use Settings class.
     /// Work only with my own coded property, no way to use with List, Dictionary, Array atd. 
-    /// Indexer of Settings class is used only on MY OWN CODED property, if not declare, not working
+    /// Indexer of Settings public class is used only on MY OWN CODED property, if not declare, not working
     /// I spent on that two days. 
-    /// Property was succesfully created but Settings.Defaut[PropertyName] on my own Settings class indexer dont working.
+    /// Property was succesfully created but Settings.Defaut[PropertyName] on my own Settings public class indexer dont working.
     /// EVEN IF I ADD do def.PropertyValues - WpfStateSettingsWin is in def.PropertyValues and def.Properties - but still NullRefenceException
     /// I Also tried DebuggerNonUserCodeAttribute and DefaultSettingValueAttribute, without result
     /// 
@@ -59,7 +59,7 @@ namespace desktop.Storage
                     }
                     else
                     {
-                        //element.Key.SetValue(element.Value, def[sender.Name + "." + element.Key.Name]);
+                        //element.Key.SetValue(element.Value, def[sender.Name + AllStrings.dot + element.Key.Name]);
                         object value = null;
                         try
                         {
@@ -94,7 +94,7 @@ namespace desktop.Storage
         {
             if (false)
             {
-                return sender.Name + "." + fw.GetType().FullName;
+                return sender.Name + AllStrings.dot + fw.GetType().FullName;
             }
             StringBuilder sb = new StringBuilder();
             sb.Append(fw.Name);
@@ -140,7 +140,7 @@ namespace desktop.Storage
                     {
 
                     }
-                    //def[sender.Name + "." + element.Key.Name] = value;
+                    //def[sender.Name + AllStrings.dot + element.Key.Name] = value;
 
                 }
 

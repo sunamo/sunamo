@@ -51,7 +51,7 @@ namespace F.WF
                 }
             }
 
-            label1.Text += whatSearchAndReplace + ":";
+            label1.Text += whatSearchAndReplace + AllStrings.colon;
             numberTextBoxMona1.Text = old.ToString();
             numberTextBoxMona2.Text = novy.ToString();
         }
@@ -71,19 +71,19 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Type values for replacing ";
+            this.label1.Text = "Type values for replacing" + " ";
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Old value:";
+            this.label2.Text = "Old value" + ":";
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "New value:";
+            this.label3.Text = "New value" + ":";
             this.numberTextBoxMona1.Location = new System.Drawing.Point(93, 61);
             this.numberTextBoxMona1.Name = "numberTextBoxMona1";
             this.numberTextBoxMona1.Size = new System.Drawing.Size(100, 20);
@@ -118,7 +118,7 @@ namespace F.WF
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ResizeImages";
-            this.Text = "Replace ";
+            this.Text = "Replace" + " ";
             this.Load += new System.EventHandler(this.ResizeImages_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

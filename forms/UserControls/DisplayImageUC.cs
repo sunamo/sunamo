@@ -19,7 +19,7 @@ public class DisplayImageUC : UserControl
             sc.Panel2.Controls.Add(infoOmage);
             sc.Panel1.Controls.Add(pbImage);
 
-            infoOmage.Text = forms.Pictures.InfoAbout(image);
+            infoOmage.Text = PicturesForms.InfoAbout(image);
             pbImage.Image = image;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -32,7 +32,7 @@ public class DisplayImageUC : UserControl
         {
             base.OnResize(e);
 
-            // Pro jistotu to je nastaven� na vy��� ne� 200
+            // Pro jistotu to je nastavene na vyssi nez 200
             if (ClientSize.Width > 210)
             {
 

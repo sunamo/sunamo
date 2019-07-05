@@ -67,7 +67,7 @@ namespace desktop
             {
 
             }
-            throw new Exception("NI SizeOfPaper.GetPaperSize()");
+            throw new Exception("NI SizeOfPaper.GetPaperSize" + "()");
         }
     }
 }

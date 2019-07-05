@@ -25,11 +25,11 @@ public static partial class GeneralConsts
     public static int HalfGb = 536870912;
     public const int maxFileCountOnAccount = 10000;
     //"css/Web.css",
-    public static readonly List<string> includeStyles = new List<string>(new string[] { "Shared/css/Shared.css", "Content/metro-icons.css", "Content/metro.css" });
+    public static readonly List<string> includeStyles = new List<string>(new string[] { StyleSheetPaths.cssShared, StyleSheetPaths.metroIcons, StyleSheetPaths.metro });
     // JavaScriptPaths.RequireJS  - byvavalo, uz nemuze byt protoze by se mi prilonkoval pres c# vstupni js soubor pro stranku
-    public static readonly List<string> includeScripts = new List<string>(new string[] { JavaScriptPaths.jQuery  });
+    public static readonly List<string> includeScripts = new List<string>(new string[] { JavaScriptPaths.MetroUi, JavaScriptPaths.jQuery });
     //public static readonly List<string> includeScriptsAsync = new List<string>() { };
-    public const string FbEventBaseUri = "https://www.facebook.com/events/";
+    public const string FbEventBaseUri = "https://www.facebook.com/events" + "/";
 
     
 }

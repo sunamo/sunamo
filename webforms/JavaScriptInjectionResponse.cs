@@ -8,7 +8,7 @@ public static class JavaScriptInjectionResponse
     /// </summary>
     /// <param name="page"></param>
     /// <param name="src"></param>
-    public static string RegisterClientScriptInnerHtml(Page page, string src)
+    public static string RegisterClientScriptInnerHtml(SunamoPage page, string src)
     {
         HtmlGenerator hg = new HtmlGenerator();
         hg.WriteTagWithAttr("script", "type", "text/javascript");
@@ -31,7 +31,7 @@ public static class JavaScriptInjectionResponse
     /// <param name="page"></param>
     /// <param name="getRightUpRoot"></param>
     /// <param name="p1"></param>
-    public static string InjectExternalScript(Page page, string getRightUpRoot, params string[] p1)
+    public static string InjectExternalScript(SunamoPage page, string getRightUpRoot, params string[] p1)
     {
         List<HtmlGenerator> list = new List<HtmlGenerator>(p1.Length);
         foreach (var item in p1)
@@ -67,7 +67,7 @@ public static class JavaScriptInjectionResponse
         return sb.ToString();
     }
 
-    public static string InjectInternalScript(Page page, string javaScript)
+    public static string InjectInternalScript(SunamoPage page, string javaScript)
     {
         return RegisterClientScriptInnerHtml(page, javaScript);
     }
@@ -77,7 +77,7 @@ public static class JavaScriptInjectionResponse
     /// </summary>
     /// <param name="page"></param>
     /// <param name="p1"></param>
-    public static string InjectExternalScriptUri(Page page, params string[] p1)
+    public static string InjectExternalScriptUri(SunamoPage page, params string[] p1)
     {
         List<HtmlGenerator> list = new List<HtmlGenerator>(p1.Length);
         foreach (var item in p1)

@@ -16,7 +16,7 @@ namespace sunamo.Data
                 return separatorString[0];
             }
         }
-        public  string separatorString = "|";
+        public  string separatorString = AllStrings.pipe;
 
         public  int keyCodeSeparator
         {

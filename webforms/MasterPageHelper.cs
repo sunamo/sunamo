@@ -18,9 +18,9 @@ public class MasterPageHelper
     /// <param name="page"></param>
     /// <param name="template"></param>
     /// <param name="writeGaTrackingCode"></param>
-    public static void WriteGeneralCode(Page page, bool template, bool writeGaTrackingCode)
+    public static void WriteGeneralCode(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
-        //SunamoPage sp = (SunamoPage)page;
+        
         bool isRoot = MasterPageHelper.IsRoot(page);
         WriteGeneralCodeBase(page, writeGaTrackingCode);
         string pridat = "";
@@ -36,9 +36,9 @@ public class MasterPageHelper
     /// <param name="page"></param>
     /// <param name="template"></param>
     /// <param name="writeGaTrackingCode"></param>
-    public static void WriteGeneralCodeRoute(Page page, bool template, bool writeGaTrackingCode)
+    public static void WriteGeneralCodeRoute(SunamoPage page, bool template, bool writeGaTrackingCode)
     {
-        //SunamoPage sp = (SunamoPage)page;
+        //SunamoPage sp = SunamoMasterPage.CastToSunamoPage(page;
         bool isRoot =MasterPageHelper.IsRoot(page);
         WriteGeneralCodeBase(page, writeGaTrackingCode);
         StringBuilder pridat = new StringBuilder();
@@ -71,7 +71,7 @@ public class MasterPageHelper
                     if (item is LiteralControl)
                     {
                         LiteralControl sc = item as LiteralControl;
-                        if (sc.Text.Contains("<script ") && !sc.Text.Contains("src=\"http"))
+                        if (sc.Text.Contains("<script" + " ") && !sc.Text.Contains("src=\"http"))
                         {
                             sc.Text = sc.Text.Replace("src=\"", "src=\"../");
                         }
@@ -82,25 +82,30 @@ public class MasterPageHelper
         
     }
 
-    public static SunamoMasterPage GetSmp(Page p)
+    public static SunamoMasterPage GetSmp(SunamoPage page)
     {
-        return (SunamoMasterPage)p.Master;
+        Page p = page;
+        if (page.Master == null)
+        {
+            p = page.Page;
+        }
+        return  (SunamoMasterPage)p.Master;
     }
 
     /// <summary>
     /// Vrátí null, jen pokud bude login null nebo WhiteSpaces
     /// </summary>
     /// <returns></returns>
-    public static LoginCookie GetLoginCookie(Page p)
+    public static LoginCookie GetLoginCookie(SunamoPage p)
     {
         return SunamoMasterPage.GetLoginCookie(p.Request);
     }
 
-    public static void AddFavicon(Page page, MySites ms)
+    public static void AddFavicon(SunamoPage page, MySites ms)
     {
         if (page.Header != null)
         {
-            var myHtmlLink = new HtmlLink { Href = "http://" + page.Request.Url.Host + "/img/" + ms.ToString() + "/favicon.ico" };
+            var myHtmlLink = new HtmlLink { Href = "http:" + "//" + page.Request.Url.Host + "/" + "img" + "/" + ms.ToString() + "/favicon.ico" };
             myHtmlLink.Attributes.Add("rel", "shortcut icon");
             myHtmlLink.Attributes.Add("type", "image/x-icon");
             page.Header.Controls.AddAt(0, myHtmlLink);
@@ -111,7 +116,7 @@ public class MasterPageHelper
 
     }
 
-    public static bool IsRoot(Page page)
+    public static bool IsRoot(SunamoPage page)
     {
         //return HttpContext.Current.Request.Path.IndexOf('/', 1) == -1;
         return page.Request.Path.IndexOf('/', 1) == -1;
@@ -125,23 +130,23 @@ public class MasterPageHelper
         }
         else
         {
-            if (sa != MySites.None)
+            if (sa == MySites.None)
             {
-                return SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
+                return SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www" + ".", "");
             }
             else
             {
-                return sa.ToString().ToLower() + "." + SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www.", "");
+                return sa.ToString().ToLower() + "." + SH.ReplaceOnceIfStartedWith(Request.Url.Host, "www" + ".", "");
             }
         }
     }
 
-    protected void LogoutUser(Page p, string web)
+    protected void LogoutUser(SunamoPage p, string web)
     {
         GetSmp(p).Logout();
     }
 
-    private static void WriteGeneralCodeBase(Page page, bool writeGaTrackingCode)
+    private static void WriteGeneralCodeBase(SunamoPage page, bool writeGaTrackingCode)
     {
         if (writeGaTrackingCode)
         {
@@ -156,10 +161,10 @@ public class MasterPageHelper
     /// </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    public static bool ReplaceWithCorrectFunction(Page page)
+    public static bool ReplaceWithCorrectFunction(SunamoPage page)
     {
         LoginedUser lu = SessionManager.GetLoginedUser(page);
-        if (lu.ID((SunamoPage)page) == 1)
+        if (lu.ID(SunamoMasterPage.CastToSunamoPage(page)) == 1)
         {
             return true;
         }

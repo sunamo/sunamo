@@ -22,7 +22,7 @@ public static class WebSwitchs
             case MySites.Eurostrip:
                 return int.MaxValue;
             default:
-                throw new Exception("Nebyl zadán maximální počet horizontálních odkazů v liště pro doménu " + ms.ToString());
+                throw new Exception("Nebyl zadán maximální počet horizontálních odkazů v liště pro doménu" + " " + ms.ToString());
         }
     }
 }

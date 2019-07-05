@@ -1,4 +1,6 @@
-﻿using sunamo;
+﻿using desktop.AwesomeFont;
+using sunamo;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,10 +24,44 @@ namespace desktop.Controls
     /// </summary>
     public partial class SelectFile : UserControl
     {
+        /// <summary>
+        /// In folder has hame Folder*Changed* but there already exists FileSelected
+        /// </summary>
+        public event VoidString FileSelected;
+        public event VoidT<SelectFile> FileRemoved;
+
         public SelectFile()
         {
             InitializeComponent();
             SelectedFile = "";
+
+            Loaded += SelectFile_Loaded;
+        }
+
+        private void SelectFile_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetAwesomeIcons();
+        }
+
+        private void BtnRemoveFile_Click(object sender, RoutedEventArgs e)
+        {
+            if (FileRemoved != null)
+            {
+                FileRemoved(this);
+            }
+        }
+
+        async void SetAwesomeIcons()
+        {
+            await AwesomeFontControls.SetAwesomeFontSymbol(btnRemoveFile, "\uf00d");
+        }
+
+        private void OnFileChanged(string File)
+        {
+            if (FileSelected != null)
+            {
+                FileSelected(File);
+            }
         }
 
         private void SetSelectedFile(string v)
@@ -35,17 +71,15 @@ namespace desktop.Controls
                 v = "None";
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + v;
+            tbSelectedFile.Text = "Selected file" + ": " + v;
         }
-
-        public event VoidString FileSelected;
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)
         {
             string file = DW.SelectOfFile(Environment.SpecialFolder.DesktopDirectory);
             if (file != null)
             {
-                if (File.Exists(file))
+                if (FS.ExistsFile(file))
                 {
                     SelectedFile = file;
                     FileSelected(file);
@@ -53,7 +87,17 @@ namespace desktop.Controls
             }
         }
 
+        public void Validate(TextBlock tbNewPath)
+        {
+            validated = FS.ExistsFile(this.SelectedFile);
+            if (!validated)
+            {
+                InitApp.TemplateLogger.FileDontExists(this.SelectedFile);
+            }
+        }
+
         string selectedFile = "";
+        public static bool validated;
 
         public string SelectedFile
         {
@@ -63,6 +107,7 @@ namespace desktop.Controls
             }
             set
             {
+                OnFileChanged(value);
                 SetSelectedFile(value);
             }
         }

@@ -3,9 +3,15 @@
 
 
 git.txt
+tickets.txt
+client_secret*.json
+
 
 # User-specific files
 *.suo
+*.snk
+*.key
+
 *.user
 *.userosscache
 *.sln.docstates

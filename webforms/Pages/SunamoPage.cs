@@ -1,20 +1,122 @@
-﻿using sunamo.Helpers;
+﻿using sunamo.Essential;
+using sunamo.Helpers;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
+using webforms.Interfaces;
+
 public class SunamoPage : System.Web.UI.Page
 {
+    public string pageName = string.Empty;
+    /// <summary>
+    /// In many pages is using Title
+    /// </summary>
+    public new string Title
+    {
+        get
+        {
+            return pageName;
+        }
+        set
+        {
+            pageName = value;
+        }
+    }
+
+    protected Dictionary<string, string> en
+    {
+        get
+        {
+            return RLData.en;
+        }
+    }
+
+    public new HttpRequest Request => HttpContext.Current.Request;
+    public new HttpResponse Response => HttpContext.Current.Response;
+    public new HtmlHead Header
+    {
+        get
+        {
+            try
+            {
+                return Page.Header;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+    }
+
+    public string Css(object cl)
+    {
+        // jméno stránky zjistit ze cl, jméno webu ze A1
+        string csPage = SunamoPage.GetName(cl, 2);
+        string PagePage = MySitesConverter.ConvertFrom(MySitesConverter.ConvertFrom(sa));
+
+        return "css" + "/" + PagePage + "/" + csPage + ".css";
+    }
+
+    public string Js(object cl)
+    {
+        string csPage = SunamoPage.GetName(cl, 2);
+        string PagePage = sa.ToString();
+
+        return "ts/" + PagePage + "/" + csPage + ".js";
+    }
+
+    
+
+    public static string GetName(object cl, int v)
+    {
+        string d = cl.GetType().Name;
+        string s = d.Substring(0, d.Length - v);
+        return s;
+    }
+
+    public new Page Page = null;
+    public new SunamoPage sunamoPage
+    {
+        get
+        {
+            
+            return SunamoMasterPage.CastToSunamoPage(Page);
+        }
+        
+    }
+
+    /// <summary>
+    /// Pro webové aplikace kde se jazyk mění s každým uživatelem
+    /// </summary>
+    /// <param name="k"></param>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public string GetString(string k, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return RLData.en[k];
+        }
+        return RLData.cs[k];
+    }
+
+    //public new HttpHead Header => HttpContext.Current.
+
+    /// <summary>
+    /// Used in Photo.aspx <%= hfs %>
+    /// </summary>
     public string hfs = "";
     protected string descriptionPage = "";
     public bool showComments = false;
     protected bool zapisTitle = true;
     /// <summary>
-    /// Ïs forbidden use this variable direct, always have to be used througt any method, e.g. PageArgumentVerifier.SetWriteRows() 
+    /// Ïs forbidden use Page variable direct, always have to be used througt any method, e.g. PageArgumentVerifier.SetWriteRows() 
     /// Variable is use nowhere in SunamoPage, it's here just for avoid declare in *Page every time
     /// </summary>
     public bool? writeRows = null;
@@ -28,8 +130,52 @@ public class SunamoPage : System.Web.UI.Page
     public uint overall = 0;
     public uint today = 0;
 
-    HtmlGenericControl _errors = null;
+    public SunamoPage()
+    {
+        //IPageCs cs = Page as IPageCs;
+
+        //if (cs != null)
+        //{
+        //    sunamoPage.PreInit += cs.SunamoPage_PreInit;
+        //    sunamoPage.Init += cs.SunamoPageCs_Init;
+        //    sunamoPage.InitComplete += cs.SunamoPageCs_InitComplete;
+        //    sunamoPage.PreLoad += cs.SunamoPageCs_PreLoad;
+        //    //}
+
+        //    // Load between two ifs
+        //    sunamoPage.Load += SunamoPage_Load;
+
+        ////if (cs != null)
+        ////{
+        //    sunamoPage.LoadComplete += cs.SunamoPageCs_LoadComplete;
+        //    sunamoPage.PreRender += cs.SunamoPageCs_PreRender;
+        //    sunamoPage.SaveStateComplete += cs.SunamoPageCs_SaveStateComplete;
+        //    // Render method, not event https://www.c-sharpcorner.com/uploadfile/61b832/Asp-Net-page-life-cycle-events/
+        //    sunamoPage.Unload += cs.SunamoPageCs_Unload;
+        //}
+    }
+
+    private void SunamoPage_Load(object sender, EventArgs e)
+    {
+        // Nevyvolá se v Cs třídě
+        //OnLoad(e);
+    }
+
     public HtmlGenericControl errors
+    {
+        get
+        {
+            return _errors;
+        }
+        set
+        {
+            _errors = value;
+            _errors.Visible = false;
+        }
+    }
+
+    HtmlGenericControl _errors = null;
+    public HtmlGenericControl errorsPlaceholder
     {
         get
         {
@@ -79,8 +225,8 @@ public class SunamoPage : System.Web.UI.Page
 
     protected void InsertPageSnippet(PageSnippet ps)
     {
-        SchemaOrgHelper.InsertBasicToPageHeader(this, ps, sa);
-        OpenGraphHelper.InsertBasicToPageHeader(this, ps, sa);
+        SchemaOrgHelper.InsertBasicToPageHeader(sunamoPage, ps, sa);
+        OpenGraphHelper.InsertBasicToPageHeader(sunamoPage, ps, sa);
     }
 
     protected PageSnippet InsertPageSnippet(string pageName, string desc)
@@ -90,8 +236,8 @@ public class SunamoPage : System.Web.UI.Page
             desc = SunamoPageHelper.DescriptionOfSite((byte)sa);
         }
         PageSnippet ps = new PageSnippet { title = pageName, description = desc };
-        SchemaOrgHelper.InsertBasicToPageHeader(this, ps, sa);
-        OpenGraphHelper.InsertBasicToPageHeader(this, ps, sa);
+        SchemaOrgHelper.InsertBasicToPageHeader(sunamoPage, ps, sa);
+        OpenGraphHelper.InsertBasicToPageHeader(sunamoPage, ps, sa);
         return ps;
     }
 
@@ -239,10 +385,21 @@ public class SunamoPage : System.Web.UI.Page
         return !string.IsNullOrWhiteSpace(cont);
     }
 
+    /// <summary>
+    /// My files should be as trailing - while adding to lately added will be more in front in html
+    /// </summary>
+    /// <param name="styles"></param>
+    /// <param name="scripts"></param>
+    /// <param name="stylesUri"></param>
+    /// <param name="scriptsUri"></param>
     protected void Include(List<string> styles, List<string> scripts, List<string> stylesUri, List<string> scriptsUri)
     {
-        string hostWithHttp = "http://" + Request.Url.Host + "/";
+        string hostWithHttp = "http" + ":" + "//" + Request.Url.Host + "/";
 
+        if (scriptsUri == null)
+        {
+            scriptsUri = new List<string>(1);
+        }
         if (idLoginedUser == 1)
         {
             if (Request.Url.Host.Contains(Consts.@sunamo))
@@ -250,21 +407,22 @@ public class SunamoPage : System.Web.UI.Page
                 scripts.Insert(0, "ts/Web/ShowDebugInfo.js");
             }
         }
-
-        if (scriptsUri == null)
+        else
         {
-            scriptsUri = new List<string>(1);
+            scriptsUri.Insert(0, "https://www.google-analytics.com/analytics.js");
         }
 
-        scriptsUri.Insert(0, "https://www.google-analytics.com/analytics.js");
-        JavaScriptInjection.InjectExternalScriptOnlySpecified(this, scriptsUri, "");
-        JavaScriptInjection.InjectExternalScriptOnlySpecified(this, scripts, hostWithHttp);
+        
+        
+        
+        JavaScriptInjection.InjectExternalScriptOnlySpecified(sunamoPage, scriptsUri, "");
+        JavaScriptInjection.InjectExternalScriptOnlySpecified(sunamoPage, scripts, hostWithHttp);
 
         if (stylesUri != null)
         {
-            StyleInjection.InjectExternalStyle(this, stylesUri, "");
+            StyleInjection.InjectExternalStyle(sunamoPage, stylesUri, "");
         }
-        StyleInjection.InjectExternalStyle(this, styles, hostWithHttp);
+        StyleInjection.InjectExternalStyle(sunamoPage, styles, hostWithHttp);
     }
 
     /// <summary>
@@ -285,7 +443,7 @@ public class SunamoPage : System.Web.UI.Page
     }
 
     /// <summary>
-    /// Before calling this method must be called FillIDUsers() to fill idLoginedUser variable
+    /// Before calling Page method must be called FillIDUsers() to fill idLoginedUser variable
     /// </summary>
     /// <returns></returns>
     protected bool IsLoginedUserAdmin()
@@ -293,9 +451,11 @@ public class SunamoPage : System.Web.UI.Page
         return idLoginedUser == 1;
     }
 
+    
+
     /// <summary>
     /// Can be used only in General pages because in pages of specific web I'll have site-specific Page is method like IsLoginedMisterWithID with table Koc_Misters / IsLoginedYouthWithID with Sda_Youths etc.
-    /// Before calling this method must be called FillIDUsers() to fill idLoginedUser variable
+    /// Before calling Page method must be called FillIDUsers() to fill idLoginedUser variable
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
@@ -312,9 +472,9 @@ public class SunamoPage : System.Web.UI.Page
     {
         if (idLoginedUser == -1)
         {
-            LoginedUser lu = SessionManager.GetLoginedUser(this);
+            LoginedUser lu = SessionManager.GetLoginedUser(sunamoPage);
 
-            int id = lu.ID(this);
+            int id = lu.ID(sunamoPage);
             if (id != -1)
             {
                 idLoginedUser = id;
@@ -325,27 +485,23 @@ public class SunamoPage : System.Web.UI.Page
         return true;
     }
 
-    public SunamoPage()
-    {
-    }
-
     public void WriteOld(PageArgumentName[] pans = null)
     {
-        PageArgumentVerifier.GetIDWebAndNameOfPage(out IDWeb, out namePage, this.Request.FilePath);
+        PageArgumentVerifier.GetIDWebAndNameOfPage(out IDWeb, out namePage, sunamoPage.Request.FilePath);
         if (pans != null && pans != PageArgumentName.EmptyArray)
         {
-            PageArgumentVerifier.SetWriteRows(this, pans);
+            PageArgumentVerifier.SetWriteRows(sunamoPage, pans);
         }
         else
         {
-            PageArgumentVerifier.SetWriteRows(this, PageArgumentName.EmptyArray);
+            PageArgumentVerifier.SetWriteRows(sunamoPage, PageArgumentName.EmptyArray);
         }
 
         if (writeRows.HasValue)
         {
             if (writeRows.Value)
             {
-                DayViewManager.IncrementOrInsertOld(this);
+                DayViewManager.IncrementOrInsertOld(sunamoPage);
             }
         }
     }
@@ -353,7 +509,7 @@ public class SunamoPage : System.Web.UI.Page
     protected bool RedirectOnRevitalization()
     {
         FillIDUsers();
-        if (idLoginedUser == 1 || SessionManager.GetLoginedUser(this).login == "katie91")
+        if (idLoginedUser == 1 || SessionManager.GetLoginedUser(sunamoPage).login == "katie91")
         {
 
         }
@@ -368,16 +524,15 @@ public class SunamoPage : System.Web.UI.Page
         return false;
     }
 
-    protected override void OnInit(EventArgs e)
-    {
-        base.OnInit(e);
 
+    public void CreateTitle()
+    {
         Request.Headers.Add(HttpKnownHeaderNames.CacheControl, "no-cache");
-    }
+        // if uncommentted -> StackOverflowException
+        //Page.OnLoad(EventArgs.Empty);
 
-    protected override void OnLoad(EventArgs e)
-    {
-        base.OnLoad(e);
+        //if (Page.Title == string.Empty || Page.Title[0] != AllChars.space)
+        //{
 
         // Must be here because then is processing MasterPage and there I need user ID. Dont change!
         FillIDUsers();
@@ -390,20 +545,22 @@ public class SunamoPage : System.Web.UI.Page
             }
         }
 
-        CreateTitle();
-    }
+        // In OnLoad() CreateTitle(); cannot be - Title wont be saved. Must be in aspx.cs
+        //CreateTitle();
 
-    public void CreateTitle()
-    {
+        // Page.OnLoad(), OnLoad() - call SunamoPage, not DeveloperPage as need
+        MasterPageHelper.AddFavicon(this, sa);
         if (zapisTitle)
         {
+            
             try
             {
-                Title = Title + SunamoPageHelper.WebTitle(sa, Request);
+                Page.Title = pageName + SunamoPageHelper.WebTitle(sa, Request);
                 zapisTitle = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw new Exception("Cant set Title" + ": " + Exceptions.TextOfExceptions(ex));
                 // Page dont have <head runat='server'>
             }
         }
@@ -412,16 +569,16 @@ public class SunamoPage : System.Web.UI.Page
     #region Events method
     public new void Error(string message)
     {
-        var page = this;
-        errors.Visible = true;
+        var page = sunamoPage;
+        errorsPlaceholder.Visible = true;
 
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/ko.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "error");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "error");
         if (callEventError)
         {
             if (ErrorEvent != null)
@@ -433,15 +590,15 @@ public class SunamoPage : System.Web.UI.Page
 
     public TypeOfMessage Warning(string message)
     {
-        var page = this;
-        errors.Visible = true;
+        var page = sunamoPage;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/warning.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "varovani");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "varovani");
         if (callEventWarning)
         {
             if (WarningEvent != null)
@@ -454,15 +611,15 @@ public class SunamoPage : System.Web.UI.Page
 
     public void Info(string message)
     {
-        var page = this;
-        errors.Visible = true;
+        var page = sunamoPage;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/info.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "info");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "info");
         if (callEventInfo)
         {
             if (InfoEvent != null)
@@ -474,15 +631,15 @@ public class SunamoPage : System.Web.UI.Page
 
     public void Success(string message)
     {
-        var page = this;
-        errors.Visible = true;
+        var page = sunamoPage;
+        errorsPlaceholder.Visible = true;
         StringBuilder sb = new StringBuilder();
         sb.Append(SunamoRoutePage.GetRightUpRoot(Request));
         sb.Append("img/ok.gif");
         string img = HtmlTemplates.Img(sb.ToString());
-        errors.InnerHtml = img + message;
-        errors.Attributes.Remove("class");
-        errors.Attributes.Add("class", "success");
+        errorsPlaceholder.InnerHtml = img + message;
+        errorsPlaceholder.Attributes.Remove("class");
+        errorsPlaceholder.Attributes.Add("class", "success");
         if (callEventSuccess)
         {
             if (SuccessEvent != null)

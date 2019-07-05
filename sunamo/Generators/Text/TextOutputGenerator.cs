@@ -10,7 +10,7 @@ using System.Text;
 /// </summary>
 public class TextOutputGenerator
 {
-    readonly static string znakNadpisu = "*";
+    readonly static string znakNadpisu = AllStrings.asterisk;
     public TextBuilder sb = new TextBuilder();
     public string prependEveryNoWhite
     {
@@ -56,16 +56,16 @@ public class TextOutputGenerator
     }
     #endregion
 
-    public  void WriteLineFormat(string text, params object[] p)
+    public  void AppendLineFormat(string text, params object[] p)
     {
         sb.AppendLine();
         
-        AppendLine(string.Format(text, p));
+        AppendLine(SH.Format2(text, p));
     }
 
-    public void Format(string text, params object[] p)
+    public void AppendFormat(string text, params object[] p)
     {
-        AppendLine(string.Format(text, p));
+        AppendLine(SH.Format2(text, p));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -108,6 +108,11 @@ public class TextOutputGenerator
         Paragraph(text, header);
     }
 
+    /// <summary>
+    /// For ordinary text use Append*
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="header"></param>
     public void Paragraph(string text, string header)
     {
         
@@ -128,7 +133,7 @@ public class TextOutputGenerator
     {
         if (insertCount)
         {
-            header += " (" + files1.Count() + ")";
+            header += " (" + files1.Count() + AllStrings.rb;
         }
         if (headerWrappedEmptyLines)
         {
@@ -149,7 +154,7 @@ public class TextOutputGenerator
         sb.AppendLine(string.Empty.PadLeft(v, paddingChar));
     }
 
-    internal void Undo()
+    public void Undo()
     {
         sb.Undo();
     }

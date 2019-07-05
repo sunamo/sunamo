@@ -41,7 +41,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Login:";
+            this.label1.Text = "Login" + ":";
             this.txtLogin.Location = new System.Drawing.Point(65, 10);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(100, 20);
@@ -55,12 +55,12 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Password:";
+            this.label2.Text = "Password" + ":";
             this.button1.Location = new System.Drawing.Point(12, 85);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Let\'s login!";
+            this.button1.Text = "Let\'s login" + "!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button2.Location = new System.Drawing.Point(93, 85);

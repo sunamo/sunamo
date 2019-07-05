@@ -28,7 +28,7 @@ namespace SunamoFtp
         {
             if (FtpLogging.GoToFolder)
             {
-                OnNewStatus("Přecházím do složky " + remoteFolder);
+                OnNewStatus("Přecházím do složky" + " " + remoteFolder);
             }
             
             string actualPath = ps.ActualPath;
@@ -43,7 +43,7 @@ namespace SunamoFtp
                 if (remoteFolder.StartsWith(actualPath))
                 {
                     remoteFolder = remoteFolder.Substring(actualPath.Length);
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
                     foreach (string item in tokens)
                     {
                         CreateDirectoryIfNotExists(item);
@@ -53,9 +53,9 @@ namespace SunamoFtp
                 else
                 {
                     ps.ActualPath = "";
-                    string[] tokens = SH.Split(remoteFolder, ps.Delimiter);
+                    var tokens = SH.Split(remoteFolder, ps.Delimiter);
                     int pridat = 0;
-                    for (int i = 0 + pridat; i < tokens.Length; i++)
+                    for (int i = 0 + pridat; i < tokens.Count; i++)
                     {
                         CreateDirectoryIfNotExists(tokens[i]);
                     }
@@ -74,7 +74,7 @@ namespace SunamoFtp
         /// <param name="newFileName"></param>
         public override void renameRemoteFile(string oldFileName, string newFileName)
         {
-            OnNewStatus("Ve složce " + ps.ActualPath + " přejmenovávám soubor z " + oldFileName + " na " + newFileName);
+            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor " + "" + " " + oldFileName + " na " + newFileName);
 
             if (pocetExc < maxPocetExc)
             {
@@ -94,7 +94,7 @@ namespace SunamoFtp
                 }
                 catch (Exception ex)
                 {
-                    OnNewStatus("Error rename file: " + ex.Message);
+                    OnNewStatus("Error rename file" + ": " + ex.Message);
                     pocetExc++;
                     renameRemoteFile(oldFileName, newFileName);
                 }
@@ -133,8 +133,8 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                string ma = GetActualPath(dirName).TrimEnd('/');
-                OnNewStatus("Mažu adresář " + ma);
+                string ma = GetActualPath(dirName).TrimEnd(AllChars.slash);
+                OnNewStatus("Mažu adresář" + " " + ma);
 
                 FtpWebRequest clsRequest = null;
                 StreamReader sr = null;
@@ -170,7 +170,7 @@ namespace SunamoFtp
                     {
                         response.Dispose();
                     }
-                    OnNewStatus("Error delete folder: " + ex.Message);
+                    OnNewStatus("Error delete folder" + ": " + ex.Message);
                     return rmdir(slozkyNeuploadovatAVS, dirName);
 
                 }
@@ -275,7 +275,7 @@ namespace SunamoFtp
                             DeleteRecursively(slozkyNeuploadovatAVS, fn, i, td);
 
                         }
-                        //Debug.Print(item2);
+                        //DebugLogger.Instance.WriteLine(item2);
                     }
                     //item.adresare.Add(ds);
                 }
@@ -315,7 +315,7 @@ namespace SunamoFtp
                                     }
                                 }
                                 goToUpFolderForce();
-                                rmdir(new List<string>(), Path.GetFileName(item2.Key.TrimEnd('/')));
+                                rmdir(new List<string>(), Path.GetFileName(item2.Key.TrimEnd(AllChars.slash)));
                             }
                         }
                     }
@@ -340,7 +340,7 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Získávám seznam souborů ze složky " + ps.ActualPath + " příkazem NLST");
+                OnNewStatus("Získávám seznam souborů ze složky" + " " + ps.ActualPath + " " + "příkazem NLST");
 
 
                 StringBuilder result = new StringBuilder();
@@ -376,7 +376,7 @@ namespace SunamoFtp
                     {
                         response.Dispose();
                     }
-                    OnNewStatus("Error get filelist: " + ex.Message);
+                    OnNewStatus("Error get filelist" + ": " + ex.Message);
                     if (pocetExc == 2)
                     {
                         pocetExc = 0;
@@ -420,8 +420,8 @@ namespace SunamoFtp
 
             if (dirName != "")
             {
-                dirName = Path.GetFileName(dirName.TrimEnd('/'));
-                if (dirName[dirName.Length - 1] == "/"[0])
+                dirName = Path.GetFileName(dirName.TrimEnd(AllChars.slash));
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -442,7 +442,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Length;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -478,7 +478,7 @@ namespace SunamoFtp
             // Trim slash from end in dirName variable
             if (dirName != "")
             {
-                if (dirName[dirName.Length - 1] == "/"[0])
+                if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);
                 }
@@ -499,7 +499,7 @@ namespace SunamoFtp
 
                 foreach (string item in fse)
                 {
-                    int tokens = SH.Split(item, " ").Length;
+                    int tokens = SH.Split(item, AllStrings.space).Count;
                     if (tokens < 8)
                     {
                         vseMa8 = false;
@@ -530,7 +530,7 @@ namespace SunamoFtp
             else
             {
 
-                if (dirName == "..")
+                if (dirName == AllStrings.dd)
                 {
                     ps.RemoveLastToken();
                 }
@@ -552,9 +552,9 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                string adr = sunamo.UH.Combine(true, ps.ActualPath, dirName);
+                string adr = UH.Combine(true, ps.ActualPath, dirName);
 
-                OnNewStatus("Vytvářím adresář " + adr);
+                OnNewStatus("Vytvářím adresář" + " " + adr);
                 FtpWebRequest reqFTP = null;
                 FtpWebResponse response = null;
                 Stream ftpStream = null;
@@ -587,7 +587,7 @@ namespace SunamoFtp
                         response.Dispose();
                     }
                     pocetExc++;
-                    OnNewStatus("Error create new dir: " + ex.Message);
+                    OnNewStatus("Error create new dir" + ": " + ex.Message);
                     return mkdir(dirName);
 
                 }
@@ -625,7 +625,7 @@ namespace SunamoFtp
                 StreamReader reader = null;
                 FtpWebResponse response = null;
 
-                String _Path = sunamo.UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+                String _Path = UH.Combine(true, remoteHost + AllStrings.colon + remotePort, ps.ActualPath);
                 try
                 {
                     // Get the object used to communicate with the server.
@@ -657,7 +657,7 @@ namespace SunamoFtp
                         response.Dispose();
                     }
                     pocetExc++;
-                    OnNewStatus("Command LIST error: " + ex.Message);
+                    OnNewStatus("Command LIST error" + ": " + ex.Message);
                     return ListDirectoryDetails();
                 }
                 finally
@@ -688,7 +688,7 @@ namespace SunamoFtp
             bool vr = true;
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Odstraňuji ze ftp serveru soubor " + sunamo.UH.Combine(false, ps.ActualPath, fileName));
+                OnNewStatus("Odstraňuji ze ftp serveru soubor" + " " + UH.Combine(false, ps.ActualPath, fileName));
                 FtpWebRequest reqFTP = null;
                 StreamReader sr = null;
                 Stream datastream = null;
@@ -716,7 +716,7 @@ namespace SunamoFtp
                 {
                     //vr = false;
                     pocetExc++;
-                    OnNewStatus("Error delete file: " + ex.Message);
+                    OnNewStatus("Error delete file" + ": " + ex.Message);
                     if (sr != null)
                     {
                         sr.Dispose();
@@ -768,7 +768,7 @@ namespace SunamoFtp
             long fileSize = 0;
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Pokouším se získat velikost souboru " + sunamo.UH.Combine(false, ps.ActualPath, fileName));
+                OnNewStatus("Pokouším se získat velikost souboru" + " " + UH.Combine(false, ps.ActualPath, fileName));
 
                 FtpWebRequest reqFTP = null;
                 Stream ftpStream = null;
@@ -786,7 +786,7 @@ namespace SunamoFtp
                 }
                 catch (Exception ex)
                 {
-                    OnNewStatus("Error get filesize: " + ex.Message);
+                    OnNewStatus("Error get filesize" + ": " + ex.Message);
                     if (ftpStream != null)
                     {
                         ftpStream.Dispose();
@@ -845,9 +845,9 @@ namespace SunamoFtp
                 return false;
             }
 
-            OnNewStatus("Stahuji " + remFileName);
+            OnNewStatus("Stahuji" + " " + remFileName);
 
-            if (File.Exists(locFileName))
+            if (FS.ExistsFile(locFileName))
             {
                 if (deleteLocalIfExists)
                 {
@@ -857,13 +857,13 @@ namespace SunamoFtp
                     }
                     catch (Exception)
                     {
-                        OnNewStatus("Soubor " + remFileName + " nemohl být stažen, protože soubor " + locFileName + " nešel smazat");
+                        OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "nešel smazat");
                         return false;
                     }
                 }
                 else
                 {
-                    OnNewStatus("Soubor " + remFileName + " nemohl být stažen, protože soubor " + locFileName + " existoval již na disku a nebylo povoleno jeho smazání");
+                    OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "existoval již na disku a nebylo povoleno jeho smazání");
                     return false;
                 }
             }
@@ -900,7 +900,7 @@ namespace SunamoFtp
                 }
                 catch (Exception ex)
                 {
-                    OnNewStatus("Error download file: " + ex.Message);
+                    OnNewStatus("Error download file" + ": " + ex.Message);
                     if (ftpStream != null)
                     {
                         ftpStream.Dispose();
@@ -958,11 +958,11 @@ namespace SunamoFtp
             string[] fse = ListDirectoryDetails();
 
             string actualPath = ps.ActualPath;
-            OnNewStatus("Získávám rekurzivní seznam souborů ze složky " + actualPath);
+            OnNewStatus("Získávám rekurzivní seznam souborů ze složky" + " " + actualPath);
             foreach (string item in fse)
             {
                 char fz = item[0];
-                if (fz == '-')
+                if (fz == AllChars.dash)
                 {
                     if (vr.ContainsKey(actualPath))
                     {
@@ -977,18 +977,18 @@ namespace SunamoFtp
                 }
                 else if (fz == 'd')
                 {
-                    string folderName = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                    string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
 
                     if (!FtpHelper.IsThisOrUp(folderName))
                     {
                         if (vr.ContainsKey(actualPath))
                         {
-                            vr[actualPath].Add(item + "/");
+                            vr[actualPath].Add(item + AllStrings.slash);
                         }
                         else
                         {
                             List<string> ppk = new List<string>();
-                            ppk.Add(item + "/");
+                            ppk.Add(item + AllStrings.slash);
                             vr.Add(actualPath, ppk);
                         }
                         base.getFSEntriesListRecursively(slozkyNeuploadovatAVS, projeteSlozky, vr, ps.ActualPath, folderName);
@@ -1010,7 +1010,7 @@ namespace SunamoFtp
         {
             if (FtpLogging.GoToUpFolder)
             {
-                OnNewStatus("Přecházím do nadsložky " + ps.ActualPath);
+                OnNewStatus("Přecházím do nadsložky" + " " + ps.ActualPath);
             }
             
             ps.RemoveLastTokenForce();
@@ -1028,7 +1028,7 @@ namespace SunamoFtp
             }
             else
             {
-                OnNewStatus("Nemohl jsem přejít do nadsložky.");
+                OnNewStatus("Nemohl jsem přejít do nadsložky" + ".");
             }
         }
 

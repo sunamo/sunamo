@@ -13,7 +13,12 @@ namespace mono
 		{
 		}
 
-		public void CutFiles(params string[] selected)
+        public bool ContainsText()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CutFiles(params string[] selected)
 		{
 			throw new NotImplementedException();
 		}
@@ -59,5 +64,15 @@ namespace mono
 		{
 			throw new NotImplementedException();
 		}
-	}
+
+        public void SetText2(string s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetText3(string s)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

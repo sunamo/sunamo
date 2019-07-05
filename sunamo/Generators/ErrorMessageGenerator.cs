@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-public class ErrorMessageGenerator
+public  class ErrorMessageGenerator
 {
     StringBuilder vypis = new StringBuilder();
     StringBuilder triTecky = new StringBuilder();
@@ -27,11 +27,11 @@ public class ErrorMessageGenerator
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            vypis.AppendLine("V těchto souborech se vyskytly tyto chyby: ");
+            vypis.AppendLine(" " + " " + "těchto souborech se vyskytly tyto chyby" + ": ");
         }
         else
         {
-            vypis.AppendLine("In these files the following errors occurred: ");
+            vypis.AppendLine("In these files the following errors occurred" + ": ");
         }
 
         if (chybneSoubory.Count < i)
@@ -42,7 +42,7 @@ public class ErrorMessageGenerator
         for (; y < i; y++)
         {
             string em = GetErrorMessage(chyby[y]);
-            vypis.AppendLine(chybneSoubory[y] + " - " + em);
+            vypis.AppendLine(chybneSoubory[y] + AllStrings.swda + em);
         }
 
         string priChybe = null;
@@ -64,7 +64,7 @@ public class ErrorMessageGenerator
             for (; y < chybneSoubory.Count; y++)
             {
                 string em = GetErrorMessage(chyby[y]);
-                triTecky.AppendLine(chybneSoubory[i] + " - " + em);
+                triTecky.AppendLine(chybneSoubory[i] + AllStrings.swda + em);
             }
             triTecky.AppendLine(priChybe);
         }

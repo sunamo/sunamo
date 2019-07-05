@@ -15,7 +15,7 @@ public class TT
     /// <returns></returns>
     public static string NameValue(string name, string value)
     {
-        return name.TrimEnd(':') + ": " + value;
+        return name.TrimEnd(AllChars.colon) + ": " + value;
     }
 
     public static string NameValue(ABC winrar, string delimiter)

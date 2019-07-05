@@ -14,21 +14,21 @@ public class SocialShareButtons
     /// <returns></returns>
     public static void SetPlusOneJS(HtmlGenericControl html)
     {
-        
+
     }
 
     /// <summary>
     /// Nwzapomeň že všude kde chceš mít FB like tlačítko musíš dát hned po tagu body <div id="fb-root"></div>
     /// </summary>
     /// <param name="page"></param>
-    public static void InjectLikeJS(Page page)
+    public static void InjectLikeJS(SunamoPage page)
     {
         //JavascriptInjection.RegisterClientScriptInclude(page, );
     }
 
-    public static void SetPlusOneHtml(Page page, HtmlGenericControl html)
+    public static void SetPlusOneHtml(SunamoPage page, HtmlGenericControl html)
     {
-        html.InnerHtml = "<div class=\"g-plusone\" data-annotation=\"bubble\" data-width=\"300\" data-recommendations=\"false\" data-annotation=\"none\" data-href=\""+ GetUri(page.Request.Url) +"\"></div>"
+        html.InnerHtml = "<div class=\"g-plusone\" data-annotation=\"bubble\" data-width=\"300\" data-recommendations=\"false\" data-annotation=\"none\" data-href=\"" + GetUri(page.Request.Url) + "\"></div>"
         + Environment.NewLine +
 "<script type=\"text/javascript\"" + @">
   window.___gcfg = {lang: 'cs'};
@@ -61,13 +61,13 @@ public class SocialShareButtons
     /// <param name="page"></param>
     /// <param name="first"></param>
     /// <param name="html"></param>
-    public static void SetLikeXfbml(Page page, HtmlGenericControl first, HtmlGenericControl html)
+    public static void SetLikeXfbml(SunamoPage page, HtmlGenericControl first, HtmlGenericControl html)
     {
         first.InnerHtml = "<div id=\"fb-root\"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>";
-        html.InnerHtml = string.Format("<fb:like href=\"{0}\" layout=\"box_count\" action=\"like\" show_faces=\"false\" share=\"false\"></fb:like>",  GetUri(page.Request.Url));
+        html.InnerHtml = SH.Format2("<fb:like href=\"{0}\" layout=\"box_count\" action=\"like\" show_faces=\"false\" share=\"false\"></fb:like>", GetUri(page.Request.Url));
     }
 
-    public static void SetLikeAttributes(Page page, HtmlGenericControl html)
+    public static void SetLikeAttributes(SunamoPage page, HtmlGenericControl html)
     {
         string adresa = HttpUtility.HtmlEncode(GetUri(page.Request.Url));
         html.Attributes.Add("data-href", adresa);
@@ -83,12 +83,12 @@ public class SocialShareButtons
     /// </summary>
     /// <param name="page"></param>
     /// <param name="html"></param>
-    public static void SetLikeIframe(Page page, HtmlGenericControl html)
+    public static void SetLikeIframe(SunamoPage page, HtmlGenericControl html)
     {
-        html.InnerHtml = "<iframe src=\"//www.facebook.com/plugins/like.php?href="+ UH.UrlEncode( GetUri(page.Request.Url)) + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; height:65px;\" allowTransparency=\"true\"></iframe>";
+        html.InnerHtml = "<iframe src=\"//www.facebook.com/plugins/like.php?href=" + UH.UrlEncode(GetUri(page.Request.Url)) + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; height:65px;\" allowTransparency=\"true\"></iframe>";
     }
 
-    public static void SetLikeHtml5(Page page, HtmlGenericControl html)
+    public static void SetLikeHtml5(SunamoPage page, HtmlGenericControl html)
     {
         html.Attributes["data-href"] = GetUri(page.Request.Url).Replace("&", "&amp;");
     }
@@ -99,7 +99,7 @@ public class SocialShareButtons
     /// <param name="page"></param>
     /// <param name="first"></param>
     /// <param name="html"></param>
-    public static void SetLikeHtml5(Page page, HtmlGenericControl first, HtmlGenericControl html)
+    public static void SetLikeHtml5(SunamoPage page, HtmlGenericControl first, HtmlGenericControl html)
     {
         first.InnerHtml = "<div id=\"fb-root\"></div>" + @"
 <script>(function(d, s, id) {
@@ -109,12 +109,12 @@ public class SocialShareButtons
   js.src = " + "\"/" + "/connect.facebook.net/en_US/all.js#xfbml=1\";" + Environment.NewLine +
   @"fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>";
-        html.InnerHtml = string.Format("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri( page.Request.Url), "http://" + page.Request.Url.Host + "/");
+        html.InnerHtml = SH.Format2("<div class=\"fb-like\" data-href=\"{0}\" data-layout=\"button_count\" data-width=\"{1}\" data-colorscheme=\"light\" data-layout=\"standard\" data-action=\"like\" data-show-faces=\"false\" data-send=\"false\"></div>", GetUri(page.Request.Url), "http://" + page.Request.Url.Host + "/");
     }
 
 
 
-    public static void SetTweetHtml(Page page, HtmlGenericControl html)
+    public static void SetTweetHtml(SunamoPage page, HtmlGenericControl html)
     {
         html.InnerHtml = "<a href=\"https://twitter.com/share\"  style=\"min-width: 100px;\"  data-url=\"{0}\" class=\"naStred twitter-share-button\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');</script>".Replace("{0}", GetUri(page.Request.Url));
     }

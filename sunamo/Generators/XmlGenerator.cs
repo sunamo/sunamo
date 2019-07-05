@@ -13,7 +13,7 @@ using HtmlAgilityPack;
 /// Element - prvek kterému se zapisují ihned i innerObsah. Může být i prázdný.
 /// Tag - prvek kterému to mohu zapsat později nebo vůbec.
 /// </summary>
-public class XmlGenerator
+public  class XmlGenerator
 {
     protected StringBuilder sb = new StringBuilder();
     bool useStack = false;
@@ -61,7 +61,7 @@ public class XmlGenerator
         {
             string text = args[i];
             object hodnota = args[++i];
-                sb.AppendFormat("{0}=\"{1}\" ", text, hodnota);
+                sb.AppendFormat("{0}=\"{1}\"", text, hodnota);
         }
         sb.Append(" />");
     }
@@ -70,7 +70,7 @@ public class XmlGenerator
 
     public void WriteCData(string innerCData)
     {
-        this.WriteRaw(string.Format("<![CDATA[{0}]]>", innerCData));
+        this.WriteRaw(SH.Format2("<![CDATA[{0}]]>", innerCData));
     }
 
     public void WriteTagWithAttr(string tag, string atribut, string hodnota, bool skipEmptyOrNull = false)
@@ -83,7 +83,7 @@ public class XmlGenerator
             }
         }
 
-        string r = string.Format("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
+        string r = SH.Format2("<{0} {1}=\"{2}\">", tag, atribut, hodnota);
         if (useStack)
         {
             stack.Push(r);
@@ -116,20 +116,41 @@ public class XmlGenerator
         return sb.ToString();
     }
 
+    public void WriteTagWithAttrs(string p, params string[] p_2)
+    {
+        WriteTagWithAttrs(true, p, p_2);
+    }
+
     /// <summary>
-    /// NI
+    /// Dont write attr with null
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p_2"></param>
-    public void WriteTagWithAttrs(string p, params string[] p_2)
+    public void WriteTagWithAttrsCheckNull(string p, params string[] p_2)
+    {
+        WriteTagWithAttrs(false, p, p_2); 
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
+     void WriteTagWithAttrs(bool appendNull, string p, params string[] p_2)
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("<{0} ", p);
         for (int i = 0; i < p_2.Length; i++)
         {
-            sb.AppendFormat("{0}=\"{1}\" ", p_2[i], p_2[++i]);
+            var attr = p_2[i];
+            var val = p_2[++i];
+            if ((val == null && appendNull) || val != null)
+            {
+                sb.AppendFormat("{0}=\"{1}\" ", attr, val);
+            }
+            
         }
-        sb.Append(">");
+        sb.Append(AllStrings.gt);
         string r = sb.ToString();
         if (useStack)
         {
@@ -151,7 +172,7 @@ public class XmlGenerator
     public void WriteTagWith2Attrs(string p, string p_2, string p_3, string p_4, string p_5)
     {
         
-        string r = string.Format("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
+        string r = SH.Format2("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2,p_3, p_4, p_5);
         if (useStack)
         {
             stack.Push(r);

@@ -11,7 +11,7 @@ public class PpkOnDrive : PpkOnDriveBase<string>
     /// </summary>
     public override void Load()
     {
-        if (File.Exists(soubor))
+        if (FS.ExistsFile(soubor))
         {
             this.AddRange(File.ReadAllLines(soubor));
         }

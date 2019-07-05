@@ -9,7 +9,7 @@ using System.Windows.Documents;
 
 namespace desktop
 {
-    class WRTBH : TextBlockHelperBase
+    public class WRTBH : TextBlockHelperBase
     {
         FontArgs fa = null;
         Thickness margin = new Thickness(0);
@@ -37,7 +37,7 @@ namespace desktop
 
         public void Run(string text)
         {
-            string[] slova = GetWords(text);
+            var slova = GetWords(text);
             foreach (var item in slova)
             {
                 Add(GetTextBlock(GetRun(item, fa)));
@@ -46,9 +46,9 @@ namespace desktop
 
 
 
-        private string[] GetWords(string text)
+        private List<string> GetWords(string text)
         {
-            return SH.SplitNone(text, " ");
+            return SH.SplitNone(text, AllStrings.space);
         }
 
         /// <summary>
@@ -60,15 +60,15 @@ namespace desktop
         {
             Add(GetTextBlock(GetHyperlink(text, uri, margin, padding, fa)));
             //Add(GetRichTextBlock( GetHyperlink(text, uri, margin, padding, fa)));
-            Add(GetTextBlock(GetRun(" ", fa)));
+            Add(GetTextBlock(GetRun(AllStrings.space, fa)));
         }
 
         public void Bold(string text)
         {
-            string[] slova = GetWords(text);
+            var slova = GetWords(text);
             foreach (var item in slova)
             {
-                Add(GetTextBlock(GetBold(item + "  ", fa)));
+                Add(GetTextBlock(GetBold(item + AllStrings.doubleSpace, fa)));
             }
         }
 
@@ -119,10 +119,10 @@ namespace desktop
 
         public void Italic(string p)
         {
-            string[] slova = GetWords(p);
+            var slova = GetWords(p);
             foreach (var item in slova)
             {
-                Add(GetTextBlock(GetItalic(item + "  ", fa)));
+                Add(GetTextBlock(GetItalic(item + AllStrings.doubleSpace, fa)));
             }
         }
     }

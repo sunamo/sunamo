@@ -9,13 +9,25 @@ namespace sunamo.Essential
     /// </summary>
     public class TypedLoggerBase
     {
-        
+        static Type type = typeof(TypedLoggerBase);
         private Action<TypeOfMessage, string, object[]> typedWriteLineDelegate;
 
         public TypedLoggerBase(Action<TypeOfMessage,string, object[]> typedWriteLineDelegate)
         {
             this.typedWriteLineDelegate = typedWriteLineDelegate;
         }
+
+        /// <summary>
+        /// Only due to Old sfw apps
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="name"></param>
+        /// <param name="v2"></param>
+        public void WriteLineFormat(string v1, params string[] name)
+        {
+            Ordinal(v1, name);
+        }
+
         #region 
         public void Success(string text, params object[] p)
         {
@@ -30,6 +42,45 @@ namespace sunamo.Essential
         {
             typedWriteLineDelegate.Invoke(TypeOfMessage.Warning, text, p);
         }
+
+        public void Appeal(string text, params string[] p)
+        {
+            typedWriteLineDelegate.Invoke(TypeOfMessage.Appeal, text, p);
+        }
+
+        public void Ordinal(string text, params string[] p)
+        {
+            typedWriteLineDelegate.Invoke(TypeOfMessage.Ordinal, text, p);
+        }
+
+        public void WriteLine(TypeOfMessage t, string m)
+        {
+            switch (t)
+            {
+                case TypeOfMessage.Error:
+                    Error(m);
+                    break;
+                case TypeOfMessage.Warning:
+                    Warning(m);
+                    break;
+                case TypeOfMessage.Information:
+                    Information(m);
+                    break;
+                case TypeOfMessage.Ordinal:
+                    Ordinal(m);
+                    break;
+                case TypeOfMessage.Appeal:
+                    Appeal(m);
+                    break;
+                case TypeOfMessage.Success:
+                    Success(m);
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(type, "WriteLine");
+                    break;
+            }
+        }
+
         public void Information(string text, params string[] p)
         {
             typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);

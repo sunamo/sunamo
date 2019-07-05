@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Constants
-{
+
     public class AllStrings
     {
+        /// <summary>
+        /// Question mark
+        /// </summary>
+        public const string q = "?";
         /// <summary>
         /// double dots
         /// </summary>
@@ -14,7 +17,21 @@ namespace sunamo.Constants
         /// double dots slash
         /// </summary>
         public const string dds = "../";
+    public const string ds = "./";
         public const string slashAsterisk = "/*";
+        public const string apostrophe = "'";
+
+        public const string lt = "<";
+        public const string gt = ">";
+
+        /// <summary>
+        /// left square fowl [
+        /// </summary>
+        public const string lsf = "[";
+        /// <summary>
+        /// right square fowl ]
+        /// </summary>
+        public const string rsf = "]";
 
         public const string pipe = "|";
 
@@ -31,7 +48,7 @@ namespace sunamo.Constants
 
         public const string tab = "\t";
         public const string nl = "\n";
-        public const string cr = "\t";
+        public const string cr = "\r";
         public const string bs = "\\";
         public const string slash = "/";
 
@@ -49,6 +66,9 @@ namespace sunamo.Constants
         /// </summary>
         public const string swda = " - ";
         public const string doubleSpace = "  ";
+        /// <summary>
+        /// " - "
+        /// </summary>
         public static string swd = " - ";
         /// <summary>
         /// comma space
@@ -59,5 +79,7 @@ namespace sunamo.Constants
         /// </summary>
         public static string cs2 = ": ";
         public const string bs2 = "\b";
+    public const string hashtag = "#";
+    public const string equal = "=";
+    public const string ampersand = "&";
     }
-}

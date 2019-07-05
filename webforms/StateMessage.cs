@@ -30,7 +30,7 @@ namespace web
                 default:
                     throw new Exception("Neznámý nebo neimplementovaný prvek výčtu TypeOfMessage");
             }
-            return sp.errors;
+            return sp.errorsPlaceholder;
         }
     }
 }

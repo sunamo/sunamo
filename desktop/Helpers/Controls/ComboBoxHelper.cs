@@ -28,6 +28,15 @@ public class ComboBoxHelper
         }
     }
 
+    public static object ValueFromTWithNameOrObject(object o)
+    {
+        if (o is TWithName<object>)
+        {
+            return ((TWithName<object>)o).t;
+        }
+        return o;
+    }
+
     public static void SetFocus(ComboBox comboBox1)
     {
         Keyboard.Focus(comboBox1);
@@ -57,7 +66,8 @@ public class ComboBoxHelper
         {
             get
             {
-                return SelectedO.ToString();
+            // not need ValueFromTWithNameOrObject, TWithName has ToString
+            return SelectedO.ToString();
             }
         }
 
@@ -81,7 +91,8 @@ public class ComboBoxHelper
         void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedO = cb.SelectedItem;
-            cb.ToolTip = originalToolTipText + " " + SelectedO.ToString();
+        // not need ValueFromTWithNameOrObject, TWithName has ToString
+        cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
         }
 
     public void AddValuesOfArrayAsItems(params object[] o)
@@ -90,16 +101,39 @@ public class ComboBoxHelper
     }
 
     /// <summary>
-    /// A1 was handler of MouseDown, now without using. Use second method without A1. 
+    /// A1 is out of using - set null
     /// </summary>
     /// <param name="eh"></param>
     /// <param name="o"></param>
     public void AddValuesOfArrayAsItems(RoutedEventHandler eh, params object[] o)
+    {
+        AddValuesOfArrayAsItems(null, eh, o);
+    }
+
+    /// <summary>
+    /// A1 can be null
+    /// A2 was handler of MouseDown, now without using - set null. 
+    /// </summary>
+    /// <param name="eh"></param>
+    /// <param name="o"></param>
+    public void AddValuesOfArrayAsItems(Func<object, string> toMakeNameInTWithName, RoutedEventHandler eh, params object[] o)
         {
+        var enu = CA.ToList<object>(o);
             int i = 0;
-            foreach (object item in o)
+            foreach (object item in enu)
+            {
+            if (toMakeNameInTWithName != null)
+            {
+                TWithName<object> t = new TWithName<object>();
+                t.name = toMakeNameInTWithName.Invoke(item);
+                t.t = item;
+                cb.Items.Add(t);
+            }
+            else
             {
                 cb.Items.Add(item);
+            }
+                
                 i++;
             }
         }

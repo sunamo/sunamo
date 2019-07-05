@@ -2,8 +2,8 @@
 using System;
 
 /// <summary>
-/// Tento OP nejde p�idat v Designeru, proto�e je generick�. 
-/// Pokud pot�ebuje� n�co p�idat v designeru, pracuj d�le s ComboBoxEnumHelper
+/// Tento OP nejde pridat v Designeru, protoze je genericky. 
+/// Pokud potrebujes neco pridat v designeru, pracuj dale s ComboBoxEnumHelper
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class ComboBoxEnum<T> : ComboBox

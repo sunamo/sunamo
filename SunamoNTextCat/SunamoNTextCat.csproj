@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Core14.profile.xml" />
+    <None Remove="Profiles\Wiki280.profile.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Profiles\Wiki280.profile.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NTextCat" Version="0.2.1.30" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NTextCat">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\net40\NTextCat.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

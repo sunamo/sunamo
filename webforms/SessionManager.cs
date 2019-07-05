@@ -97,7 +97,8 @@ public static class SessionManager
         try
         {
             manager.SaveSessionID(Context, newId, out isRedir, out isAdd);
-            HttpApplication ctx = (HttpApplication)HttpContext.Current.ApplicationInstance;
+            
+             var ctx = HttpContext.Current.ApplicationInstance;
             HttpModuleCollection mods = ctx.Modules;
             System.Web.SessionState.SessionStateModule ssm = (SessionStateModule)mods.Get("Session");
             System.Reflection.FieldInfo[] fields = ssm.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
@@ -105,8 +106,8 @@ public static class SessionManager
             System.Reflection.FieldInfo rqIdField = null, rqLockIdField = null, rqStateNotFoundField = null;
             foreach (System.Reflection.FieldInfo field in fields)
             {
-                if (field.Name.Equals("_store")) store = (SessionStateStoreProviderBase)field.GetValue(ssm);
-                if (field.Name.Equals("_rqId")) rqIdField = field;
+                if (field.Name.Equals("_" + "store")) store = (SessionStateStoreProviderBase)field.GetValue(ssm);
+                if (field.Name.Equals("_" + "rqId")) rqIdField = field;
                 if (field.Name.Equals("_rqLockId")) rqLockIdField = field;
                 if (field.Name.Equals("_rqSessionStateNotFound")) rqStateNotFoundField = field;
             }
@@ -183,14 +184,16 @@ public static class SessionManager
     /// </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    public static LoginedUser GetLoginedUser(Page page)
+    public static LoginedUser GetLoginedUser(SunamoPage page)
     {
         return GetLoginedUser(CastToSMP(page));
     }
 
-    private static SunamoMasterPage CastToSMP(Page page)
+    
+
+    private static SunamoMasterPage CastToSMP(SunamoPage page)
     {
-        return (SunamoMasterPage)page.Master;
+        return MasterPageHelper.GetSmp(page);
     }
 
     /// <summary>
@@ -198,7 +201,7 @@ public static class SessionManager
     /// </summary>
     /// <param name="login"></param>
     /// <param name="fce"></param>
-    public static void LoginUser(Page page, string login, int userId, string sc)
+    public static void LoginUser(SunamoPage page, string login, int userId, string sc)
     {
         LoginUser(CastToSMP(page), login, userId, sc);
     }
@@ -206,12 +209,12 @@ public static class SessionManager
     /// <summary>
     /// 
     /// </summary>
-    public static void LogoutUser(Page page)
+    public static void LogoutUser(SunamoPage page)
     {
         LogoutUser(CastToSMP(page));
     }
 
-    public static string GetValue(Page page, string nameOfValue)
+    public static string GetValue(SunamoPage page, string nameOfValue)
     {
         return GetValue(CastToSMP(page), nameOfValue);
     } 

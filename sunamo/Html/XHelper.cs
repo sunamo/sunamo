@@ -20,27 +20,92 @@ using System.Xml.Linq;
             return reader.ReadInnerXml();
         }
 
-        public static List<XElement> GetElementsOfNameWithAttr(System.Xml.Linq.XElement xElement, string tag, string attr, string value)
+    public static XElement MakeAllElementsWithDefaultNs(XElement settings)
+    {
+        var ns2 = XHelper.ns[string.Empty];
+
+        List<object> toInsert = new List<object>();
+
+        // shift ALL elements in the settings document into the target namespace
+        foreach (XElement e in settings.DescendantsAndSelf())
+        {
+            //e.Name =  e.Name.LocalName;
+            e.Name = XName.Get(e.Name.LocalName, ns2);
+        }
+
+        //foreach (var e in settings.Attributes())
+        //{
+        //    //e.Name = XName.Get(e.Name.LocalName, ns2);
+        //    toInsert.Add(e);
+        //}
+        //t
+
+        var vr = new XElement(XName.Get(settings.Name.LocalName, ns2), settings.Attributes(), settings.Descendants());
+        return vr;
+    }
+
+    public static XDocument CreateXDocument(string content)
+    {
+        var enB = BTS.ConvertFromUtf8ToBytes(content);
+        XDocument xd = null;
+        using (MemoryStream oStream = new MemoryStream(enB.ToArray()))
+        using (XmlReader oReader = XmlReader.Create(oStream))
+        {
+            xd = XDocument.Load(oReader);
+        }
+        return xd;
+    }
+
+    public static List<XElement> GetElementsOfNameWithAttr(System.Xml.Linq.XElement xElement, string tag, string attr, string value, bool caseSensitive)
+    {
+        return GetElementsOfNameWithAttrWorker(xElement, tag, attr, value, false, caseSensitive);
+    }
+
+        public static List<XElement> GetElementsOfNameWithAttrWorker(System.Xml.Linq.XElement xElement, string tag, string attr, string value, bool enoughIsContainsAttribute, bool caseSensitive)
         {
             List<XElement> vr = new List<XElement>();
             List<XElement> e = XHelper.GetElementsOfNameRecursive(xElement, tag);
             foreach (XElement item in e)
             {
-                if (XHelper.Attr(item, attr) == value)
+                
+                var attrValue = XHelper.Attr(item, attr);
+            
+                if (SH.Contains(attrValue, value, enoughIsContainsAttribute, caseSensitive))
                 {
                     vr.Add(item);
                 }
+                   
             }
             return vr;
         }
 
-        /// <summary>
-        /// Při nenalezení vrací null
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="attr"></param>
-        /// <returns></returns>
-        public static string Attr(XElement item, string attr)
+    public static IEnumerable<XElement> GetElementsOfNameWithAttrContains(XElement group, string tag, string attr, string value, bool caseSensitive = false)
+    {
+        return GetElementsOfNameWithAttrWorker(group, tag, attr, value, true, caseSensitive);
+    }
+
+    public static void AddXmlNamespaces(XmlNamespaceManager nsmgr)
+    {
+        foreach (string item in nsmgr)
+        {
+            // Jaký je typ item, at nemusím používat slovník
+            var v = nsmgr.LookupNamespace(item);
+            if (!ns.ContainsKey(item))
+            {
+                ns.Add(item, v);
+            }
+            
+            int o = 0;
+        }
+    }
+
+    /// <summary>
+    /// Při nenalezení vrací null
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="attr"></param>
+    /// <returns></returns>
+    public static string Attr(XElement item, string attr)
         {
             XAttribute xa = item.Attribute(XName.Get(attr));
             if (xa != null)
@@ -50,13 +115,15 @@ using System.Xml.Linq;
             return null;
         }
 
-        public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
+    
+
+    public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
         {
             List<XElement> vr = new List<XElement>();
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.DescendantsAndSelf())
                 {
@@ -82,9 +149,9 @@ using System.Xml.Linq;
         public static XElement GetElementOfNameWithAttr(XElement node, string nazev, string attr, string value)
         {
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.Elements())
                 {
@@ -113,19 +180,21 @@ using System.Xml.Linq;
             return null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static XElement GetElementOfNameRecursive(XElement node, string nazev)
+    
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static XElement GetElementOfNameRecursive(XElement node, string nazev)
         {
             string p, z;
             //bool ns = true;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.DescendantsAndSelf())
                 {
@@ -152,7 +221,7 @@ using System.Xml.Linq;
         {
             StringBuilder sb = new StringBuilder();
             string xml = XHelper.GetXml(p);
-            MatchCollection mc = Regex.Matches(xml, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
+            MatchCollection mc = Regex.Matches(xml, "<(?:\\\\\"[^\\\\\"]*\\\\\"['\\\\\"]*|'[^']*AllChars.lsf\\\\\"]*|[^'\\\\\">])+>");
             List<string> nahrazeno = new List<string>();
             foreach (Match item in mc)
             {
@@ -166,25 +235,55 @@ using System.Xml.Linq;
             return sb.ToString().Replace(deli + deli, deli);
         }
 
+    public static IEnumerable<XElement> GetElementsOfName(XElement node, string nazev)
+    {
+        List<XElement> result = new List<XElement>();
 
+        string p, z;
+        if (nazev.Contains(AllStrings.colon))
+        {
+            foreach (XElement item in node.Elements())
+            {
+                if (IsRightTag(item, nazev))
+                {
+                    result.Add(item);
+                }
+            }
+        }
+        else
+        {
+            foreach (XElement item in node.Elements())
+            {
+                if (item.Name.LocalName == nazev)
+                {
+                    result.Add(item);
+                }
+            }
+        }
+        return result;
+    }
 
-        /// <summary>
-        /// Získá element jména A2 v A1.
-        /// Umí pracovat v NS, stačí zadat zkratku namepsace jako ns:tab
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="nazev"></param>
-        /// <returns></returns>
-        public static XElement GetElementOfName(XElement node, string nazev)
+    /// <summary>
+    /// Získá element jména A2 v A1.
+    /// Umí pracovat v NS, stačí zadat zkratku namepsace jako ns:tab
+    /// </summary>
+    /// <param name="node"></param>
+    /// <param name="nazev"></param>
+    /// <returns></returns>
+    public static XElement GetElementOfName(XContainer node, string nazev)
         {
             string p, z;
-            if (nazev.Contains(":"))
+            if (nazev.Contains(AllStrings.colon))
             {
-                SH.GetPartsByLocation(out p, out z, nazev, ':');
+                SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
                 p = XHelper.ns[p];
                 foreach (XElement item in node.Elements())
                 {
 
+                if (IsRightTag(item, z, p))
+                {
+
+                }
                     if (item.Name.LocalName == z && item.Name.NamespaceName == p)
                     {
                         return item;
@@ -212,11 +311,22 @@ using System.Xml.Linq;
             return sw.ToString();
         }
 
-        public static bool IsRightTag(XName xName, string nazev)
+    public static bool IsRightTag(XElement xName, string nazev)
+    {
+        return IsRightTag(xName.Name, nazev);
+    }
+
+    /// <summary>
+    /// Will split A2 to LocalName and NamespaceName
+    /// </summary>
+    /// <param name="xName"></param>
+    /// <param name="nazev"></param>
+    /// <returns></returns>
+    public static bool IsRightTag(XName xName, string nazev)
         {
             string p, z;
 
-            SH.GetPartsByLocation(out p, out z, nazev, ':');
+            SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
             p = XHelper.ns[p];
             if (xName.LocalName == z && xName.NamespaceName == p)
             {
@@ -225,18 +335,50 @@ using System.Xml.Linq;
             return false;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="p"></param>
-        public static void AddXmlNamespaces(params string[] p)
+    public static bool IsRightTag(XElement xName, string localName, string namespaceName)
+    {
+        return IsRightTag(xName.Name, localName, namespaceName);
+    }
+
+    /// <summary>
+    /// Into A3 is passing shortcut
+    /// </summary>
+    /// <param name="xName"></param>
+    /// <param name="localName"></param>
+    /// <param name="namespaceName"></param>
+    /// <returns></returns>
+    public static bool IsRightTag(XName xName, string localName, string namespaceName)
+    {
+        string p, z;
+
+        namespaceName = XHelper.ns[namespaceName];
+        if (xName.LocalName == localName && xName.NamespaceName == namespaceName)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    public static void AddXmlNamespaces(params string[] p)
         {
             for (int i = 0; i < p.Length; i++)
             {
-                //.TrimEnd('/') + "/"
-                ns.Add(p[i].Replace("xmlns:", ""), p[++i]);
+                //.TrimEnd(AllChars.slash) + AllStrings.slash
+                ns.Add(p[i].Replace("xmlns" + ":", ""), p[++i]);
             }
         }
+
+    public static void AddXmlNamespaces(Dictionary<string, string> d)
+    {
+        foreach (var item in d)
+        {
+            ns.Add(item.Key, item.Value);
+        }
+    }
 
         public static XElement GetElementOfSecondLevel(XElement var, string first, string second)
         {

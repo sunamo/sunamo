@@ -8,7 +8,7 @@ using System.IO;
     /// <summary>
     /// Ukazuje na jedinou hodnotu. 
     /// Nabizi M ktere automaticky spojuji a rozdeluji.
-    /// Nabizi GS Metody. Sama o sob� nezapisuje nic do registru.
+    /// Nabizi GS Metody. Sama o sobe nezapisuje nic do registru.
     /// </summary>
     public class RegistryEntry //: IUroven
     {
@@ -55,7 +55,7 @@ using System.IO;
         /// </summary>
         public string FullPath
         {
-            get { return Path.Combine(PathToItem, Item); }
+            get { return FS.Combine(PathToItem, Item); }
             set 
             { 
                 cestapolozka = value;
@@ -96,7 +96,7 @@ using System.IO;
             {
                 if (throwExceptionIfNotGettingValues)
                 {
-                    throw new Exception("Failed to get the item from the registry.");
+                    throw new Exception("Failed to get the item from the registry" + ".");
                 }
             }
         } 
@@ -111,7 +111,7 @@ using System.IO;
         /// <returns></returns>
         public string ReturnInLevel(int index, string vstup)
         {
-            string[] tokeny = SH.Split(vstup, "\\");
+            var tokeny = SH.Split(vstup, AllStrings.bs);
             
             return tokeny[index];
         }

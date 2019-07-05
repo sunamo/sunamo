@@ -25,7 +25,7 @@ public class MenuItemWithSubitemsHelper<T> : MenuItemWithSubitemsHelper
         AddValuesOfEnumAsItems(bs, false);
         SelectedO = defaultValue;
         prev = GetItemWithTag(defaultValue);
-        tsddb.ToolTip = originalToolTipText + " " + defaultValue.ToString();
+        tsddb.ToolTip = originalToolTipText + AllStrings.space + defaultValue.ToString();
     }
 
     private MenuItem GetItemWithTag(T defaultValue)

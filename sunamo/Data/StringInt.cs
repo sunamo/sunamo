@@ -11,7 +11,7 @@ public class StringInt : Parsing<string, int>
     {
         if (obsah.Contains(SF.separatorString))
         {
-            string[] fd = SF.GetAllElementsLine(obsah);
+            var fd = SF.GetAllElementsLine(obsah);
             t1 = fd[0];
             t2 = int.Parse(fd[1]);
         }

@@ -6,7 +6,7 @@
 // </copyright>
 // <date>15-Sept-2011</date>
 // <author>Eric Jensen</author>
-// <summary>Base class for the toggle switch control.</summary>
+// <summary>Base public class for the toggle switch control.</summary>
 //-----------------------------------------------------------------------
 using System;
 using System.ComponentModel;
@@ -21,7 +21,7 @@ using desktop.Controls.ToggleSwitch.Utils;
 namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
-	/// Base class for the toggle switch control.
+	/// Base public class for the toggle switch control.
 	///</summary>
 	[TemplateVisualState(Name = NormalState, GroupName = CommonStates)]
 	[TemplateVisualState(Name = DisabledState, GroupName = CommonStates)]
@@ -37,7 +37,7 @@ namespace desktop.Controls.ToggleSwitch
 	[TemplatePart(Name = SwitchThumbPart, Type = typeof(Thumb))]
 	[TemplatePart(Name = SwitchRootPart, Type = typeof(FrameworkElement))]
 	[TemplatePart(Name = SwitchTrackPart, Type = typeof(FrameworkElement))]
-	[Description("A control which when clicked or dragged toggles between on and off states.")]
+	[Description(" " + " " + "control which when clicked or dragged toggles between on and off states" + ".")]
 	public abstract class ToggleSwitchBase : Control
 	{
 		#region Constants
@@ -208,7 +208,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The template applied to the <see cref="CheckedContent">Checked</see> and <see cref="UncheckedContent">Unchecked</see> content properties.
 		///</summary>
-		[Description("The template applied to the Checked and Unchecked content properties.")]
+		[Description("The template applied to the Checked and Unchecked content properties" + ".")]
 		public ControlTemplate ContentTemplate
 		{
 			get { return (ControlTemplate)GetValue(ContentTemplateProperty); }
@@ -254,7 +254,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the foreground of the checked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the foreground of the checked side of the toggle switch.")]
+		[Description("The brush used for the foreground of the checked side of the toggle switch" + ".")]
 		public Brush CheckedForeground
 		{
 			get { return (Brush)GetValue(CheckedForegroundProperty); }
@@ -274,7 +274,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the background of the checked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the background of the checked side of the toggle switch.")]
+		[Description("The brush used for the background of the checked side of the toggle switch" + ".")]
 		public Brush CheckedBackground
 		{
 			get { return (Brush)GetValue(CheckedBackgroundProperty); }
@@ -300,7 +300,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// The content shown on the unchecked side of the toggle switch.
 		///</summary>
 		[Category(CommonPropertiesCategory)]
-		[Description("The content shown on the unchecked side of the toggle switch.")]
+		[Description("The content shown on the unchecked side of the toggle switch" + ".")]
 		public object UncheckedContent
 		{
 			get { return GetValue(UncheckedContentProperty); }
@@ -320,7 +320,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the foreground of the Unchecked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the foreground of the Unchecked side of the toggle switch.")]
+		[Description("The brush used for the foreground of the Unchecked side of the toggle switch" + ".")]
 		public Brush UncheckedForeground
 		{
 			get { return (Brush)GetValue(UncheckedForegroundProperty); }
@@ -340,7 +340,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the background of the Unchecked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the background of the Unchecked side of the toggle switch.")]
+		[Description("The brush used for the background of the Unchecked side of the toggle switch" + ".")]
 		public Brush UncheckedBackground
 		{
 			get { return (Brush)GetValue(UncheckedBackgroundProperty); }
@@ -364,7 +364,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// This value must be within the range of 0.0 - 1.0. 
 		///</remarks>
 		[Category(CommonPropertiesCategory)]
-		[Description("Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state.")]
+		[Description("Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state" + ".")]
 		public double Elasticity
 		{
 			get { return ((double)GetValue(ElasticityProperty)).Clamp(0.0, 1.0); }
@@ -389,7 +389,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The <see cref="Thumb">thumb's</see> control template.
 		///</summary>
-		[Description("The thumb's control template.")]
+		[Description("The thumb's control template" + ".")]
 		public ControlTemplate ThumbTemplate
 		{
 			get { return (ControlTemplate)GetValue(ThumbTemplateProperty); }
@@ -409,7 +409,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used to fill the <see cref="Thumb">thumb</see>.
 		///</summary>
-		[Description("The brush used to fill the thumb.")]
+		[Description("The brush used to fill the thumb" + ".")]
 		public Brush ThumbBrush
 		{
 			get { return (Brush)GetValue(ThumbBrushProperty); }
@@ -435,7 +435,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// The size of the toggle switch's <see cref="Thumb">thumb</see>.
 		///</summary>
 		[Category(AppearanceCategory)]
-		[Description("The size of the toggle switch's thumb.")]
+		[Description("The size of the toggle switch's thumb" + ".")]
 		public double ThumbSize
 		{
 			get { return (double)GetValue(ThumbSizeProperty); }
@@ -461,7 +461,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// Gets or sets whether the control is in the checked state.
 		///</summary>
 		[Category(CommonPropertiesCategory)]
-		[Description("Gets or sets whether the control is in the checked state.")]
+		[Description("Gets or sets whether the control is in the checked state" + ".")]
 		public bool IsChecked
 		{
 			get { return (bool)GetValue(IsCheckedProperty); }
@@ -668,7 +668,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// <summary> 
 		/// Capture the mouse. 
 		/// </summary>
-		internal void CaptureMouseInternal()
+		public void CaptureMouseInternal()
 		{
 			if (!_isMouseCaptured)
 			{
@@ -679,7 +679,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// <summary>
 		/// Release mouse capture if we already had it. 
 		/// </summary>
-		protected internal void ReleaseMouseCaptureInternal()
+		protected  void ReleaseMouseCaptureInternal()
 		{
 			ReleaseMouseCapture();
 			_isMouseCaptured = false;

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.WindowsAPICodePack.Dialogs;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,12 @@ namespace sunamo
         #region PathToSaveFileTo
         public static string SelectPathToSaveFileTo(AppFolders af, string filter, bool checkFileExists, string nameWithExt)
         {
-            return SelectPathToSaveFileTo(AppData.GetFolder(af), filter, checkFileExists, nameWithExt);
+            return SelectPathToSaveFileTo(AppData.ci.GetFolder(af), filter, checkFileExists, nameWithExt);
         }
 
         public static string SelectPathToSaveFileTo(AppFolders af, string filter, bool checkFileExists)
         {
-            return SelectPathToSaveFileTo(AppData.GetFolder(af), filter, checkFileExists);
+            return SelectPathToSaveFileTo(AppData.ci.GetFolder(af), filter, checkFileExists);
         }
 
         public static string SelectPathToSaveFileTo(string initialDirectory, string filter, bool checkFileExists)
@@ -41,7 +42,7 @@ namespace sunamo
         public static string SelectPathToSaveFileTo(string initialDirectory, string filter, bool checkFileExists, string nameWithExt)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
+            sfd.CustomPlaces.Add(new FileDialogCustomPlace(FS.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             sfd.SupportMultiDottedExtensions = true;
             sfd.InitialDirectory = initialDirectory;
             sfd.CheckPathExists = true;
@@ -94,12 +95,12 @@ namespace sunamo
         /// <param name="masc"></param>
         public static void UpdateDefaultFilter(string description, string masc)
         {
-            filterDefault = description + "|" + masc;
+            filterDefault = description + AllStrings.pipe + masc;
         }
 
         public static string GetFilter(string description, string masc)
         {
-            return description + "|" + masc;
+            return description + AllStrings.pipe + masc;
         }
 
 
@@ -111,24 +112,31 @@ namespace sunamo
         /// </summary>
         /// <param name="rootFolder"></param>
         /// <returns></returns>
-        public static string SelectOfFolder(Environment.SpecialFolder rootFolder)
+        public static string SelectOfFolder(string rootFolder)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Vyberte si slozku";
-            // Here is available set this only way
-            fbd.RootFolder = rootFolder;
-            fbd.ShowNewFolderButton = true;
+            CommonOpenFileDialog fbd = new CommonOpenFileDialog();
 
-            if (fbd.ShowDialog() == DialogResult.OK)
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Title = "Select the folder";
+            // Here is available set this only way
+            fbd.IsFolderPicker = true;
+            fbd.InitialDirectory = rootFolder;
+
+            if (fbd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                return fbd.SelectedPath;
+                return fbd.FileName;
             }
 
             return null;
         }
+
+        public static string SelectOfFolder(Environment.SpecialFolder rootFolder)
+        {
+            return SelectOfFolder(Environment.GetFolderPath(rootFolder));
+        }
 #endregion
 
-#region SelectOfFile
+        #region SelectOfFile
         /// <summary>
         /// Filter is set do default - PP filterDefault
         /// InitialFolder is MyDocuments
@@ -159,7 +167,7 @@ namespace sunamo
         /// <returns></returns>
         public static string SelectOfFile(AppFolders initialFolder)
         {
-            return SelectOfFile(AppData.GetFolder(initialFolder));
+            return SelectOfFile(AppData.ci.GetFolder(initialFolder));
         }
 
         /// <summary>
@@ -243,7 +251,7 @@ namespace sunamo
         private static string[] SelectOfFiles(string filter, string initialDirectory, bool multiselect)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.CustomPlaces.Add(new FileDialogCustomPlace(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
+            ofd.CustomPlaces.Add(new FileDialogCustomPlace(FS.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
             ofd.AddExtension = false;
             ofd.InitialDirectory = initialDirectory;
             //ofd.AutoUpgradeEnabled = true;

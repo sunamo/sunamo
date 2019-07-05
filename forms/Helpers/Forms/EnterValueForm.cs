@@ -33,7 +33,7 @@ namespace F.WF
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Zadejte hodnotu a stisknete. enter:";
+            this.label1.Text = "Zadejte hodnotu a stisknete. enter" + ":";
             this.ClientSize = new System.Drawing.Size(326, 59);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.TextBox1);
@@ -72,8 +72,8 @@ namespace F.WF
         public EnterValueForm(string label)
             : this()
         {
-            Text = "Enter " + label;
-            label1.Text = "Enter " + label + " and press enter: ";
+            Text = "Enter" + " " + label;
+            label1.Text = "Enter" + " " + label + " " + "and press enter" + ": ";
 
         }
 

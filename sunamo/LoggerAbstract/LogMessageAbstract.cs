@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// <summary>
-/// Must be LoggerAbstract because same class exists in uap
+/// Must be LoggerAbstract because same public class exists in uap
 /// </summary>
 namespace sunamo.LoggerAbstract
 {

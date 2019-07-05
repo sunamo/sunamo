@@ -13,18 +13,18 @@ using webforms;
 /// </summary>
 public class JavaScriptInjection
 {
-    
+
 
     /// <summary> 
     /// Shows a client-side JavaScript alert in the browser. 
     /// </summary> 
     /// <param name="message">The message to appear in the alert.</param> 
-    public static void alert(string message, Page page)
+    public static void alert(string message, SunamoPage page)
     {
         alert("alert", message, page);
     }
 
-    public static void alertWithCloseWindow(string message, Page page)
+    public static void alertWithCloseWindow(string message, SunamoPage page)
     {
         string nameOfBlock = "alert";
         if (page != null && !page.ClientScript.IsClientScriptBlockRegistered(nameOfBlock))
@@ -34,7 +34,7 @@ public class JavaScriptInjection
         }
     }
 
-    public static void alertIfNotEmpty(string errorCat, Page koc_Default)
+    public static void alertIfNotEmpty(string errorCat, SunamoPage koc_Default)
     {
         if (errorCat != "")
         {
@@ -42,13 +42,13 @@ public class JavaScriptInjection
         }
     }
 
-    public static void InjectGooglePieChart3D(Page page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, IEnumerable<KeyValuePair<string, int>> d)
-    {   
+    public static void InjectGooglePieChart3D(SunamoPage page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, IEnumerable<KeyValuePair<string, int>> d)
+    {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2.GooglePieChart3D(idElement, title, coSePorovnava, jednotkaHodnotyPorovnavani, d));
     }
 
-    public static void InjectGooglePieChart3D(Page page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, List<string> coSePorovnavaHodnoty, List<string> jednotkaHodnotyPorovnavaniHodnoty)
-    { 
+    public static void InjectGooglePieChart3D(SunamoPage page, string idElement, string title, string coSePorovnava, string jednotkaHodnotyPorovnavani, List<string> coSePorovnavaHodnoty, List<string> jednotkaHodnotyPorovnavaniHodnoty)
+    {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2.GooglePieChart3D(idElement, title, coSePorovnava, jednotkaHodnotyPorovnavani, coSePorovnavaHodnoty, jednotkaHodnotyPorovnavaniHodnoty));
     }
 
@@ -63,7 +63,7 @@ public class JavaScriptInjection
     /// <param name="osaY"></param>
     /// <param name="osaXPopisky"></param>
     /// <param name="osaXHodnoty"></param>
-    public static void InjectGoogleLineChart(Page page, string idElement, string title, string osaX, string osaY, List<string> osaXPopisky, List<string> osaXHodnoty)
+    public static void InjectGoogleLineChart(SunamoPage page, string idElement, string title, string osaX, string osaY, List<string> osaXPopisky, List<string> osaXHodnoty)
     {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2.GoogleLineChart(idElement, title, osaX, osaY, osaXPopisky, osaXHodnoty));
     }
@@ -74,7 +74,7 @@ public class JavaScriptInjection
     /// <param name="nameOfBlock"></param>
     /// <param name="message"></param>
     /// <param name="page"></param>
-    public static void alert(string nameOfBlock, string message, Page page)
+    public static void alert(string nameOfBlock, string message, SunamoPage page)
     {
         // Checks if the handler is a Page and that the script isn't allready on the Page 
         if (page != null && !page.ClientScript.IsClientScriptBlockRegistered(nameOfBlock))
@@ -85,34 +85,34 @@ public class JavaScriptInjection
 
     }
 
-    public static void alert(Page page, string appendToStart, string message)
+    public static void alert(SunamoPage page, string appendToStart, string message)
     {
         alert(appendToStart + message, page);
 
     }
 
-    public static void InjectFunctionOpenNewTab(Page page, string functionName, string uri)
+    public static void InjectFunctionOpenNewTab(SunamoPage page, string functionName, string uri)
     {
         RegisterClientScriptInnerHtml(page, functionName, JavaScriptGenerator2.FunctionOpenNewTab(uri));
     }
 
-    public static void InjectJQueryAjaxForHandler( Page page, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
+    public static void InjectJQueryAjaxForHandler(SunamoPage page, int countUp, MySitesShort ms, string nameOfFunction, params string[] args)
     {
-            RegisterClientScriptInnerHtml(page, JavaScriptGenerator2WebForms.JQueryAjaxForHandler(ms, countUp, nameOfFunction, args));
+        RegisterClientScriptInnerHtml(page, JavaScriptGenerator2WebForms.JQueryAjaxForHandler(ms, countUp, nameOfFunction, args));
     }
 
-    public static void InjectJQueryAjaxForHandlerShowMessage(string successMessage, int countUp, Page page, MySitesShort ms, string nameOfFunction, params string[] args)
+    public static void InjectJQueryAjaxForHandlerShowMessage(string successMessage, int countUp, SunamoPage page, MySitesShort ms, string nameOfFunction, params string[] args)
     {
         RegisterClientScriptInnerHtml(page, JavaScriptGenerator2WebForms.JQueryAjaxForHandlerShowMessage(successMessage, countUp, ms, nameOfFunction, args));
     }
 
-    public static void RegisterClientScriptInnerHtml(Page page, string functionName, string src)
+    public static void RegisterClientScriptInnerHtml(SunamoPage page, string functionName, string src)
     {
         RegisterClientScriptInnerHtml(page, "function " + functionName + @"() {
 " + src + "}");
     }
 
-    public static void RegisterClientScriptInnerHtml(Page page, string src)
+    public static void RegisterClientScriptInnerHtml(SunamoPage page, string src)
     {
         System.Web.UI.HtmlControls.HtmlGenericControl si = new System.Web.UI.HtmlControls.HtmlGenericControl();
 
@@ -125,7 +125,7 @@ public class JavaScriptInjection
         page.Header.Controls.Add(si);
     }
 
-    
+
 
     /// <summary>
     /// Automaticky vkládá do stránky všechny JS definované v SunamoPage.includeScripts
@@ -135,7 +135,7 @@ public class JavaScriptInjection
     /// <param name="page"></param>
     /// <param name="getRightUpRoot"></param>
     /// <param name="p1"></param>
-    public static void InjectExternalScriptOnlySpecifiedAsync(Page page, List<string> p2, string hostWithHttp)
+    public static void InjectExternalScriptOnlySpecifiedAsync(SunamoPage page, List<string> p2, string hostWithHttp)
     {
         foreach (var item in p2)
         {
@@ -169,14 +169,14 @@ public class JavaScriptInjection
                 sa = AllStrings.us;
             }
         }
-        
+
 
         foreach (var item in p2)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<script");
             sb.Append(" type=\"");
-                sb.Append("text/javascript");
+            sb.Append("text/javascript");
             //}
             sb.Append("\"");
 
@@ -189,7 +189,7 @@ public class JavaScriptInjection
                 }
                 // charset=\"utf-16\"
                 sb.Append(" src=\"");
-                sb.Append(hostWithHttp + item ); //+ "?nocache"
+                sb.Append(hostWithHttp + item); //+ "?nocache"
                 sb.Append("\">");
             }
             else
@@ -199,11 +199,11 @@ public class JavaScriptInjection
             }
             sb.Append("</script>");
             LiteralControl lc = new LiteralControl(sb.ToString());
-            page.Header.Controls.AddAt(0, lc);
+            page.Page.Header.Controls.AddAt(0, lc);
         }
     }
 
-    public static void InjectInternalScript(Page page, string javaScript)
+    public static void InjectInternalScript(SunamoPage page, string javaScript)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("<script type=\"");
@@ -212,10 +212,10 @@ public class JavaScriptInjection
         sb.Append(javaScript);
         sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
-        page.Header.Controls.Add(lc);
+        page.Page.Header.Controls.Add(lc);
     }
 
-    public static void InjectInternalScript(Page page, string script, string type)
+    public static void InjectInternalScript(SunamoPage page, string script, string type)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("<script type=\"");
@@ -224,12 +224,12 @@ public class JavaScriptInjection
         sb.Append(script);
         sb.Append("</script>");
         LiteralControl lc = new LiteralControl(sb.ToString());
-        page.Header.Controls.Add(lc);
+        page.Page.Header.Controls.Add(lc);
     }
 
     public static void InitTinyMCE(SunamoPage sp)
     {
-        //cleanup_callback : " + string.Format("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", "\"") + @"
+        //cleanup_callback : " + SH.Format2("{0}myCustomCleanup{0},save_callback : {0}myCustomSaveContent{0}", "\"") + @"
         InjectInternalScript(sp, @"$(document).ready(function () {
             tinymce.init({
     selector: '#txtTinymce',
@@ -253,7 +253,7 @@ var myColorScheme = {
     };
 
       $('#nanoGallery3').nanoGallery({
-          itemsBaseURL:'" + baseUri+ @"',
+          itemsBaseURL:'" + baseUri + @"',
 thumbnailHoverEffect: 'borderLighter',
         colorScheme: myColorScheme,
 thumbnailHeight: 168,
@@ -263,7 +263,7 @@ viewerFullscreen: true
   });");
     }
 
-    public static void InitNanoGallery(Page page, string baseUri, List<string> photosUri, List<string> photosUriTn, List<string> photosDesc)
+    public static void InitNanoGallery(SunamoPage page, string baseUri, List<string> photosUri, List<string> photosUriTn, List<string> photosDesc)
     {
         StringBuilder sb = new StringBuilder();
 
@@ -292,7 +292,7 @@ var myColorScheme = {
 
       $('#nanoGallery3').nanoGallery({
 itemsBaseURL:'" + baseUri + @"',
-items:[" +items+ @"],
+items:[" + items + @"],
 thumbnailHoverEffect: 'borderLighter',
 colorScheme: myColorScheme,
 thumbnailHeight: 168,
@@ -302,7 +302,7 @@ viewerFullscreen: true
 });");
     }
 
-    public static void InitNanoGalleryJustifiedlayout(Page page, string baseUri)
+    public static void InitNanoGalleryJustifiedlayout(SunamoPage page, string baseUri)
     {
         InjectInternalScript(page, @"$(document).ready(function () {
 var myColorScheme = {

@@ -5,10 +5,25 @@ using System.Text;
 namespace sunamo.Essential
 {
     /// <summary>
-    /// Special class for variables which must be init on startup of every app
+    /// Special public class for variables which must be init on startup of every app
     /// </summary>
     public class InitApp
     {
+        /// <summary>
+        /// Alternatives are:
+        /// InitApp.SetDebugLogger
+        /// CmdApp.SetLogger
+        /// WpfApp.SetLogger
+        /// </summary>
+        public static void SetDebugLogger()
+        {
+            InitApp.Logger = DebugLogger.Instance;
+#if DEBUG
+            InitApp.TemplateLogger = DebugTemplateLogger.Instance;
+#endif
+            InitApp.TypedLogger = TypedDebugLogger.Instance;
+        }
+
         #region Must be set during app initializing
         public static IClipboardHelper Clipboard
         {

@@ -1,18 +1,30 @@
-﻿using sunamo.Extensions;
+﻿
 using sunamo.Values;
 using System;
+using System.Collections;
 /// <summary>
 /// Number Helper Class
 /// </summary>
 using System.Collections.Generic;
 using System.Linq;
 
-public static class NH
+public static partial class NH
 {
     static Type type = typeof(NH);
 
+    internal static int MinForLength(int length)
+    {
+        return int.Parse( "1".PadRight(4, '0'));
+    }
+
+    internal static int MaxForLength(int length)
+    {
+        return int.Parse("9".PadRight(4, '9'));
+    }
+
     /// <summary>
     /// Note: specified list would be mutated in the process.
+    /// Working excellent
     /// </summary>
     public static T Median<T>(this IList<T> list) where T : IComparable<T>
     {
@@ -26,9 +38,45 @@ public static class NH
         return list.NthOrderStatistic(mid);
     }
 
+    /// <summary>
+    /// Working excellent
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public static double Median2<T>(IEnumerable<T> numbers) 
+    {
+        int numberCount = numbers.Count();
+        int halfIndex = numbers.Count() / 2;
+        var sortedNumbers = numbers.OrderBy(n => n);
+        double median;
+        if ((numberCount % 2) == 0)
+        {
+            var d = sortedNumbers.ElementAt(halfIndex);
+            var d2 = sortedNumbers.ElementAt((halfIndex - 1));
+            median = Sum(CA.ToListString( d,d2)) / 2;
+        }
+        else
+        {
+            median = double.Parse( sortedNumbers.ElementAt(halfIndex).ToString());
+        }
+        return median;
+    }
+
     public static T Average<T>(List<T> list)
     {
         return Average<T>(Sum<T>(list), list.Count);
+    }
+
+    public static double Sum(List<string> list)
+    {
+        double result = 0;
+        foreach (var item in list)
+        {
+            var d = double.Parse(item);
+            result += d;
+        }
+        return result;
     }
 
     public static T Sum<T>(List<T> list)
@@ -39,16 +87,6 @@ public static class NH
             sum += item;
         }
         return sum;
-    }
-
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        string s = p.ToString();
-        if (s.Length == 1)
-        {
-            return "0" + p;
-        }
-        return s;
     }
 
     public static double Average(double gridWidth, double columnsCount)
@@ -145,23 +183,6 @@ public static class NH
         return vr;
     }
 
-    /// <summary>
-    /// Vytvoří interval od A1 do A2 včetně
-    /// </summary>
-    /// <param name="od"></param>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static List<int> GenerateIntervalInt(int od, int to)
-    {
-        List<int> vr = new List<int>();
-        for (int i = od; i < to; i++)
-        {
-            vr.Add(i);
-        }
-        vr.Add(to);
-        return vr;
-    }
-
     public static List<byte> GenerateIntervalByte(byte od, byte to)
     {
         List<byte> vr = new List<byte>();
@@ -176,12 +197,6 @@ public static class NH
     public static double ReturnTheNearestSmallIntegerNumber(double d)
     {
         return (double)Convert.ToInt32(d);
-    }
-
-    public static float RoundAndReturnInInputType(float ugtKm, int v)
-    {
-        string vr = Math.Round(ugtKm, v).ToString();
-        return float.Parse(vr);
     }
 
     public static List<int> Invert(List<int> arr, int changeTo, int finalCount)

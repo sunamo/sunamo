@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.Threading
 {
-    class ThreadPool
+    public class ThreadPool
     {
         /*
          * prijmout vlakno

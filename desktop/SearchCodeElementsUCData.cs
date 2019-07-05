@@ -15,16 +15,19 @@ using System.Windows.Controls;
         CheckBox chbSearchInContent;
         CheckBox chbSearchInPath;
         CheckBox chbSearchInCodeElementName;
-        public Dictionary<string, List<int>> founded;
+    /// <summary>
+    /// In key full path to file, in value lines
+    /// </summary>
+        public Dictionary<string, List<FoundedCodeElement>> founded;
         public string file = null;
 
-        public List<int> actualFileSearchOccurences
+        public List<FoundedCodeElement> actualFileSearchOccurences
         {
             get
             {
                 if (founded == null || file == null)
                 {
-                    return new List<int>();
+                    return new List<FoundedCodeElement>();
                 }
                 return founded[file];
             }

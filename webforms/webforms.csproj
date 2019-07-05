@@ -20,10 +20,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ASPNET</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet />
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet />
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -55,6 +56,15 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="fmdev.ResX, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\sunamo.cz\packages\fmdev.ResX.0.3.2\lib\net45\fmdev.ResX.dll</HintPath>
+    </Reference>
+    <Reference Include="fmdev.XliffParser, Version=0.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\sunamo.cz\packages\fmdev.XliffParser.0.5.6\lib\net45\fmdev.XliffParser.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -68,10 +78,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\webforms\Converters\MySitesConverter.cs" Link="" />
+    <Compile Include="..\..\sunamo\webforms\Logins.cs" Link="" />
+    <Compile Include="..\..\sunamo\webforms\LoginsShared.cs" Link="" />
     <Compile Include="AF.cs" />
+    <Compile Include="AngularJsHelper.cs" />
+    <Compile Include="Controls\Anchor.cs" />
+    <Compile Include="Controls\BaseControl.cs" />
+    <Compile Include="Controls\CustomControl.cs" />
+    <Compile Include="Controls\Img.cs" />
+    <Compile Include="Controls\InputButton.cs" />
+    <Compile Include="Controls\InputCheckBox.cs" />
+    <Compile Include="Controls\InputFile.cs" />
+    <Compile Include="Controls\InputImageButton.cs" />
+    <Compile Include="Controls\InputText.cs" />
+    <Compile Include="Controls\Span.cs" />
+    <Compile Include="Controls\Textarea.cs" />
+    <Compile Include="CssGeneration.cs" />
+    <Compile Include="Data\BlockedUser.cs" />
+    <Compile Include="Data\Location.cs" />
+    <Compile Include="Data\LoginResponse.cs" />
     <Compile Include="Data\LyricsWithRating.cs" />
+    <Compile Include="Data\SendMailData.cs" />
     <Compile Include="Data\TagWithUri.cs" />
+    <Compile Include="Data\WebCollections.cs" />
+    <Compile Include="Enums\HtmlControls.cs" />
+    <Compile Include="Enums\LoginResponseType.cs" />
+    <Compile Include="Enums\MailSettings.cs" />
+    <Compile Include="Enums\ModeOfPage.cs" />
+    <Compile Include="Enums\PageArgumentType.cs" />
+    <Compile Include="Enums\WhatCopyHostingLocal.cs" />
+    <Compile Include="EnumToString.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="General\DontCopy2\TableRowCzechNameDays.cs" />
+    <Compile Include="General\DontCopyBase\TableRowCzechNameDaysBase.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\JustifiedGalleryHelper.cs" />
+    <Compile Include="Helpers\MaterializeHelper.cs" />
+    <Compile Include="Helpers\MetroUIHelper.cs" />
     <Compile Include="Helpers\MySitesShortHelper.cs" />
+    <Compile Include="Helpers\TinyMCEHelper.cs" />
+    <Compile Include="Helpers\UA.cs" />
+    <Compile Include="Interfaces\IPageCs.cs" />
+    <Compile Include="Interfaces\IPageResources.cs" />
+    <Compile Include="Interfaces\ISetSchema.cs" />
+    <Compile Include="InternetProtocols.cs" />
+    <Compile Include="JavaScriptGenerator2.cs" />
+    <Compile Include="JavaScriptPaths.cs" />
     <Compile Include="MSStoredProceduresI.cs" />
     <Compile Include="Converters\MySitesConverter.cs" />
     <Compile Include="CookieNames.cs" />
@@ -162,8 +215,6 @@
     <Compile Include="Helpers\GravatarHelper.cs" />
     <Compile Include="Helpers\HttpHandlerHelper.cs" />
     <Compile Include="Helpers\HttpHelper.cs" />
-    <Compile Include="Helpers\HttpRequestHelper.cs" />
-    <Compile Include="Helpers\HttpRequestHelpers.cs" />
     <Compile Include="Helpers\ListItemHelper.cs" />
     <Compile Include="Helpers\SelectHelper.cs" />
     <Compile Include="Helpers\WLBH.cs" />
@@ -173,8 +224,8 @@
     <Compile Include="Helpers\ImagesHelper.cs" />
     <Compile Include="HtmlPagingGenerator.cs" />
     <Compile Include="Interfaces\IHttpHandlerSession.cs" />
-    <Compile Include="JavaScriptGenerator2.cs" />
-    <None Include="JavaScriptGeneratorcs" />
+    <Compile Include="JavaScriptGenerator2WebForms.cs" />
+    <Compile Include="JavaScriptGenerator.cs" />
     <Compile Include="JavaScriptInjection.cs" />
     <Compile Include="JavaScriptInjectionResponse.cs" />
     <Compile Include="LoginCookie.cs" />
@@ -185,6 +236,7 @@
     <Compile Include="Me\MeUri.cs" />
     <Compile Include="MultiColorLine.cs" />
     <Compile Include="NameValueCollectionParserGet.cs" />
+    <Compile Include="NodeModulesPaths.cs" />
     <Compile Include="PageArgumentVerifier.cs" />
     <Compile Include="PageHelper.cs" />
     <Compile Include="PageHelperBase.cs" />
@@ -210,8 +262,14 @@
     <Compile Include="StateMessage.cs" />
     <Compile Include="StyleInjection.cs" />
     <Compile Include="StyleInjectionResponse.cs" />
+    <Compile Include="Styles.cs" />
+    <Compile Include="StyleSheetPaths.cs" />
     <Compile Include="SunamoCzHelper.cs" />
     <Compile Include="SunamoCzMetroUIHelper.cs" />
+    <Compile Include="SunamoGridView\SunamoGridView.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewCell.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewColumn.cs" />
+    <Compile Include="SunamoGridView\SunamoGridViewRow.cs" />
     <Compile Include="SunamoMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -224,44 +282,38 @@
     <Compile Include="SunamoSearchEngine\SunamoSearchData.cs" />
     <Compile Include="SunamoSearchEngine\SunamoSearchEngine.cs" />
     <Compile Include="SunamoSearchEngine\SunamoSearchEngineTInt.cs" />
-    <Compile Include="SunamoSearchEngine\SunamoSearchEngineTLong.cs" />
     <Compile Include="Tables.cs" />
     <Compile Include="TempHelper.cs" />
-    <Compile Include="UH.cs" />
     <Compile Include="UploaderManager.cs" />
+    <Compile Include="Values\CookieNames.cs" />
     <Compile Include="WaitingManagerAspx.cs" />
     <Compile Include="WaitingManagerAspxPagesID.cs" />
+    <Compile Include="WebFormsHelper.cs" />
     <Compile Include="WebPage2.cs" />
+    <Compile Include="WwwRootPaths.cs" />
+    <Compile Include="YouTubeScript.cs" />
     <Compile Include="YouTubeThumbnail.cs" />
+    <None Include="HtmlGenerators\ExpandingMenu.js.map" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\shared\shared.csproj">
-      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
-      <Name>shared</Name>
+    <ProjectReference Include="..\..\sunamo.web\shared.web\shared.web.csproj">
+      <Project>{c30f4751-4d06-48ff-9020-da6297b8cb7d}</Project>
+      <Name>shared.web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\web\web.csproj">
-      <Project>{081e8a26-d382-4d5b-9013-01873735a3c5}</Project>
-      <Name>web</Name>
+    <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
+      <Project>{460d83d6-ba95-4d9a-9245-02efdb823d65}</Project>
+      <Name>sunamo.web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Collections\" />
     <Folder Include="General\DontCopyBaseEx\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlGenerators\ExpandingMenu.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
-    <Error Condition="!Exists('..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets'))" />
-  </Target>
-  <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\sunamo.cz\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

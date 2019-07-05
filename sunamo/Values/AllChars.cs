@@ -57,6 +57,7 @@ public static class AllChars
     // , 55296 mi taky vrátila metoda IsWhiteSpace vrátila, ale při znovu vytvoření pomocí tohoto kódu to vyhazovalo výjimku
     public static readonly List<int> whiteSpacesCodes = new List<int>(new int[] { 9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8232, 8233, 8239, 8287, 12288 });
     public static List<char> whiteSpacesChars = null;
+    public const char plus = '+';
 
     // my extension
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
@@ -65,38 +66,71 @@ public static class AllChars
     // my extension
     public static readonly List<char> generalChars = null;
 
+    public const char exclamation = '!';
     public const char pipe = '|';
 
     public const char cbl = '{';
     public const char cbr = '}';
+
+    public const char lt = '<';
+    public const char gt = '>';
+
+    /// <summary>
+    /// left square fowl [
+    /// </summary>
+    public const char lsf = '[';
+    /// <summary>
+    /// right square fowl ]
+    /// </summary>
+    public const char rsf = ']';
+    public const char hashtag = '#';
+    public const char equal = '=';
+    public const char ampersand = '&';
+
     #region Generic chars
     public static readonly char notNumber;
     #endregion
 
     #region Names here must be the same as in Consts
     public const char modulo = '%';
+    /// <summary>
+    /// char code 32
+    /// </summary>
     public const char space = ' ';
+    /// <summary>
+    /// Look similar as 32 space
+    /// </summary>
+    public const char nbsp = (char)160;
     public const char dash = '-';
     public const char colon = ':';
     public const char us = '_';
 
     public const char tab = '\t';
     public const char nl = '\n';
-    public const char cr = '\t';
+    public const char cr = '\r';
     public const char bs = '\\';
     
     public const char comma = ',';
     public const char dot = '.';
     public const char asterisk = '*';
-    
+    public const char apostrophe = '\'';
+
     public const char sc = ';';
+    /// <summary>
+    /// quotation marks
+    /// </summary>
     public const char qm = '"';
+
+    /// <summary>
+    /// Question
+    /// </summary>
+    public const char q = '?';
     /// <summary>
     /// Left bracket
     /// </summary>
     public const char lb = '(';
     public const char rb = ')';
-    public const char stroke = '/';
+    public const char slash = '/';
     /// <summary>
     /// backspace
     /// </summary>

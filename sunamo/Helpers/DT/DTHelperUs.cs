@@ -64,7 +64,7 @@ namespace sunamo.Helpers.DT
         /// <returns></returns>
         public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
         {
-            string[] sp = SH.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.us);
+            var sp = SH.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.us);
             if (time)
             {
                 if (CA.HasIndex(5, sp))
@@ -125,7 +125,7 @@ namespace sunamo.Helpers.DT
             postfix = "";
             serie = null;
 
-            string[] sp = SH.SplitToParts(fnwoe, 6, AllStrings.us);
+            var sp = SH.SplitToParts(fnwoe, 6, AllStrings.us);
 
             if (CA.HasIndex(5, sp))
             {
@@ -146,7 +146,7 @@ namespace sunamo.Helpers.DT
             {
                 return null;
             }
-            serie = BT.ParseInt(sp[4], null);
+            serie = BTS.ParseInt(sp[4], null);
 
 
             return new DateTime(date[0], date[1], date[2]);
@@ -160,7 +160,7 @@ namespace sunamo.Helpers.DT
         /// <returns></returns>
         public static DateTime? FileNameToDateTime(string fnwoe)
         {
-            string[] sp = SH.Split(fnwoe, AllStrings.us);
+            var sp = SH.Split(fnwoe, AllStrings.us);
             var dd = CA.ToInt(sp, 6);
             if (dd == null)
             {

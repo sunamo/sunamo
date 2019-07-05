@@ -14,7 +14,7 @@ namespace sunamo.Essential
 
         }
 
-        public static void WriteLine(string text, params object[] args)
+        private static void WriteLine(string text, params object[] args)
         {
             ThisApp.SetStatus(TypeOfMessage.Ordinal, text, args);
         }

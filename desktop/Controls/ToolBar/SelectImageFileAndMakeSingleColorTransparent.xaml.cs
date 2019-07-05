@@ -41,7 +41,7 @@ namespace desktop.Controls
                 v = "None";
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file: " + v;
+            tbSelectedFile.Text = "Selected file" + ": " + v;
         }
 
         public event VoidStringBitmapBitmapSource FileSelected;
@@ -53,7 +53,7 @@ namespace desktop.Controls
             file = DW.SelectOfFile(Environment.SpecialFolder.DesktopDirectory);
             if (file != null)
             {
-                if (File.Exists(file))
+                if (FS.ExistsFile(file))
                 {
                     SelectedFile = file;
                      bi = new BitmapImage(new Uri(file));
@@ -70,7 +70,7 @@ namespace desktop.Controls
                     bi.StreamSource = ms;
                     bi.EndInit();
                     var bs = bi;
-                    bmp = desktop.Pictures.BitmapImage2Bitmap(bs);
+                    bmp = PicturesDesktop.BitmapImage2Bitmap(bs);
                     //bmp.MakeTransparent(System.Drawing.Color.FromArgb(pxs[0, 0].Alpha, pxs[0, 0].Red, pxs[0, 0].Green, pxs[0, 0].Blue));
                     FileSelected(file, bmp, bs);
                 }

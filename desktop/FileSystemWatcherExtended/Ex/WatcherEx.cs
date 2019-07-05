@@ -5,8 +5,8 @@ using System.IO;
 using System.Text;
 
     /// <summary>
-    /// This is the main class (and the one you'll use directly). Create an instance of 
-    /// the class (passing in a WatcherInfo object for intialization), and then attach 
+    /// This is the main public class (and the one you'll use directly). Create an instance of 
+    /// the public class (passing in a WatcherInfo object for intialization), and then attach 
     /// event handlers to this object.  One or more watchers will be created to handle 
     /// the various events and filters, and will marshal these evnts into a single set 
     /// from which you can gather info.
@@ -48,7 +48,7 @@ using System.Text;
             }
             this.watcherInfo = info;
 
-            // Zaregistruj� se pouze ty handlery zm�n, kter� si budu p��t v prom�nn� ChangesFilters v��tu NotifyFilters
+            // Zaregistruje se pouze ty handlery zmen, ktere si budu pt v promenne ChangesFilters vyctu NotifyFilters
             Initialize();
         }
 
@@ -123,7 +123,7 @@ using System.Text;
         /// Initializes this oibject by creating all of the required public 
         /// FileSystemWatcher objects necessary to mointor the folder/file for the 
         /// desired changes
-        /// Zaregistruj� se pouze ty handlery zm�n, kter� si budu p��t v prom�nn� ChangesFilters v��tu NotifyFilters
+        /// Zaregistruje se pouze ty handlery zmen, ktere si budu psat v promenne ChangesFilters vyctu NotifyFilters
         /// </summary>
         private void Initialize()
         {
@@ -140,7 +140,7 @@ using System.Text;
             CreateWatcher(true, NotifyFilters.Security);
             CreateWatcher(true, NotifyFilters.Size);
 
-            ////Debug.WriteLine(string.Format("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
+            ////Debug.WriteLine(SH.Format2("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
         }
 
 

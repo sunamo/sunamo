@@ -21,7 +21,7 @@ namespace SunamoFtp
         {
             ps = new PathSelector("");
             remoteHost = string.Empty;
-            //remotePath = ".";
+            //remotePath = AllStrings.dot;
             remoteUser = string.Empty;
             remotePass = string.Empty;
             remotePort = 21;
@@ -37,7 +37,7 @@ namespace SunamoFtp
 
         public void OnNewStatusNewFolder()
         {
-            NewStatus("Nová složka je " + ps.ActualPath);
+            NewStatus("Nová složka je" + " " + ps.ActualPath);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace SunamoFtp
         {
             if (pocetExc < maxPocetExc)
             {
-                OnNewStatus("Uploaduji " + _UploadPath);
+                OnNewStatus("Uploaduji" + " " + _UploadPath);
 
                 System.IO.FileInfo _FileInfo = new System.IO.FileInfo(local);
                 System.IO.Stream _Stream = null;
@@ -114,7 +114,7 @@ namespace SunamoFtp
                 {
                     pocetExc++;
                     CleanUp.Streams(_Stream, _FileStream);
-                    OnNewStatus("Upload file error: " + ex.Message);
+                    OnNewStatus("Upload file error" + ": " + ex.Message);
                     return UploadFileMain(local, _UploadPath);
                 }
                 finally
@@ -134,7 +134,7 @@ namespace SunamoFtp
         #region Statuses
         public void OnUploadingNewStatus(string path)
         {
-            OnNewStatus("Uploaduji " + path + " bezpečnou metodou");
+            OnNewStatus("Uploaduji" + " " + path + " " + "bezpečnou metodou");
         }
         #endregion
 
@@ -170,7 +170,7 @@ namespace SunamoFtp
             foreach (string item in files)
             {
 
-                long fileSize = sunamo.FS.GetFileSize(item);
+                long fileSize = FS.GetFileSize(item);
                 if (!FtpHelper.IsFileOnHosting(item, fse, fileSize))
                 {
 
@@ -183,7 +183,7 @@ namespace SunamoFtp
 
         public  string GetActualPath()
         {
-            return UH.Combine(true, remoteHost + ":" + remotePort, ps.ActualPath);
+            return UH.Combine(true, remoteHost + AllStrings.colon + remotePort, ps.ActualPath);
         }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace SunamoFtp
         /// <returns></returns>
         public string GetActualPath(string dirName)
         {
-            string s = UH.Combine(true, remoteHost + ":" + remotePort, UH.Combine(true, ps.ActualPath, dirName));
-            return s.TrimEnd('/');
+            string s = UH.Combine(true, remoteHost + AllStrings.colon + remotePort, UH.Combine(true, ps.ActualPath, dirName));
+            return s.TrimEnd(AllChars.slash);
         }
 
 
@@ -217,9 +217,9 @@ namespace SunamoFtp
 
 
 
-            string[] directories = Directory.GetDirectories(slozkaNaLocalu);
+            var directories = FS.GetFolders(slozkaNaLocalu);
             string[] files = Directory.GetFiles(slozkaNaLocalu);
-            OnNewStatus("Uploaduji všechny soubory (" + files.Length + ") do složky ftp serveru " + ps.ActualPath);
+            OnNewStatus("Uploaduji všechny soubory" + " " + "" + files.Length + " " + " " + "do složky ftp serveru" + " " + ps.ActualPath);
 
             if (!UploadFiles(files))
             {
@@ -228,7 +228,7 @@ namespace SunamoFtp
 
             foreach (string item in directories)
             {
-                if (!uploadFolderRek(item, UH.Combine(false, slozkaNaHostingu, sunamo.FS.GetFileName(item))))
+                if (!uploadFolderRek(item, UH.Combine(false, slozkaNaHostingu, FS.GetFileName(item))))
                 {
                     return false;
                 }
@@ -263,7 +263,7 @@ namespace SunamoFtp
             string nextPath = UH.Combine(true, ps.ActualPath, folderName);
             if (!projiteSlozky.Contains(nextPath))
             {
-                NewStatus("Složka do které se mělo přejít (" + nextPath + ") ještě nebyla v projeté kolekci");
+                NewStatus("Složka do které se mělo přejít" + " " + "" + nextPath + " " + " " + "ještě nebyla v projeté kolekci");
                 ps.AddToken(folderName);
                 projiteSlozky.Add(nextPath);
 
@@ -272,13 +272,13 @@ namespace SunamoFtp
                 string actualPath = ps.ActualPath;
                 foreach (string item in fse)
                 {
-                    string size = SH.JoinFromIndex(4, ' ', SH.Split(item, " "));
+                    string size = SH.JoinFromIndex(4, AllChars.space, SH.Split(item, AllStrings.space));
                     char fz = item[0];
-                    if (fz == '-')
+                    if (fz == AllChars.dash)
                     {
                         if (size != "0")
                         {
-                            folderSizeRec += ulong.Parse(size.Substring(0, size.IndexOf(' ') + 1));
+                            folderSizeRec += ulong.Parse(size.Substring(0, size.IndexOf(AllChars.space) + 1));
                         }
 
                         if (vr.ContainsKey(actualPath))
@@ -294,7 +294,7 @@ namespace SunamoFtp
                     }
                     else if (fz == 'd')
                     {
-                        string folderName2 = SH.JoinFromIndex(8, ' ', SH.Split(item, " "));
+                        string folderName2 = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
                         if (!FtpHelper.IsThisOrUp(folderName2))
                         {
                             if (slozkyNeuploadovatAVS.Contains(folderName2) && ps.ActualPath == MainWindow.WwwSlash)
@@ -329,7 +329,7 @@ namespace SunamoFtp
             }
             else
             {
-                NewStatus("Složka do které se mělo přejít (" + nextPath + ") již byla v projeté kolekci");
+                NewStatus("Složka do které se mělo přejít" + " " + "" + nextPath + " " + " " + "již byla v projeté kolekci");
             }
 
             //ps.ActualPath = p;
@@ -359,7 +359,7 @@ namespace SunamoFtp
         /// <param name="_FTPPass">FTP login password</param>
         public void UploadFile(string _FileName)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/", UH.Combine(true, ps.ActualPath, sunamo.FS.GetFileName(_FileName)));
+            String _UploadPath = UH.Combine(false, remoteHost + AllStrings.colon + remotePort + AllStrings.slash, UH.Combine(true, ps.ActualPath, FS.GetFileName(_FileName)));
             if (reallyUpload)
             {
                 UploadFileMain(_FileName, _UploadPath);
@@ -378,7 +378,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool UploadFile(string fullFilePath, string actualFtpPath)
         {
-            String _UploadPath = UH.Combine(false, remoteHost + ":" + remotePort + "/" + "/", UH.Combine(false, actualFtpPath, sunamo.FS.GetFileName(fullFilePath)));
+            String _UploadPath = UH.Combine(false, remoteHost + AllStrings.colon + remotePort + AllStrings.slash + AllStrings.slash, UH.Combine(false, actualFtpPath, FS.GetFileName(fullFilePath)));
             var vr = true;
             if (reallyUpload)
             {
@@ -400,11 +400,11 @@ namespace SunamoFtp
         {
             string nazevSlozky = Path.GetFileName(slozkaFrom);
             string pathFolder = UH.Combine(true, ps.ActualPath, nazevSlozky);
-            slozkaFrom = slozkaFrom.TrimEnd('\\');
+            slozkaFrom = slozkaFrom.TrimEnd(AllChars.bs);
             string[] soubory = Directory.GetFiles(slozkaFrom);
-            string[] slozky = Directory.GetDirectories(slozkaFrom);
+            var slozky = FS.GetFolders(slozkaFrom);
 
-            NewStatus("Uploaduji všechny soubory (" + soubory.Length + ") do složky ftp serveru " + pathFolder);
+            NewStatus("Uploaduji všechny soubory" + " " + "" + soubory.Length + " " + " " + "do složky ftp serveru" + " " + pathFolder);
 
             CreateDirectoryIfNotExists(nazevSlozky);
             foreach (var item in soubory)
@@ -418,7 +418,7 @@ namespace SunamoFtp
 
             if (rek)
             {
-                if (slozky.Length == 0)
+                if (slozky.Length() == 0)
                 {
                     goToUpFolder();
                 }
@@ -428,7 +428,7 @@ namespace SunamoFtp
                     {
                         uploadFolderShared(item, rek, working);
                     }
-                    if (slozky.Length != 0)
+                    if (slozky.Length() != 0)
                     {
                         goToUpFolder();
                     }

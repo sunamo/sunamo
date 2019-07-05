@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="desktop.Controls.Collections.CheckBoxListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop.Controls.Collections"
+             xmlns:desktopControlButtons="clr-namespace:desktop.Controls.Buttons"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--<StackPanel x:Name="spCheckBoxes">
+            
+    </StackPanel>-->
+
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--//Source=l, Path=l-->
+        <!--ElementName=l, Path=l-->
+        <!--ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListUC}}, Path=l.l}"-->
+        <ListBox x:Name="lb">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+
+        <desktopControlButtons:ImageButtons Grid.Row="1" x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
+        
+    </Grid>
+</UserControl>

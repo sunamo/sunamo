@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DropShadowTextBlock.cs" company="Microsoft Corporation copyright 2008.">
+// <copyright file="DropShadowTextBlock.cs" company="Microsoft Corporation copyright 2008" + ".">
 // (c) 2008 Microsoft Corporation. All rights reserved.
 // This source is subject to the Microsoft Public License.
 // See http://www.microsoft.com/resources/sharedsource/licensingbasics/sharedsourcelicenses.mspx.
@@ -87,7 +87,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the drop shadow color.
         /// </summary>
-        [Category("Appearance"), Description("The drop shadow color.")]
+        [Category("Appearance"), Description("The drop shadow color" + ".")]
         public Color DropShadowColor
         {
             get
@@ -103,7 +103,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the drop shadow opacity.
         /// </summary>
-        [Category("Appearance"), Description("The drop shadow opacity.")]
+        [Category("Appearance"), Description("The drop shadow opacity" + ".")]
         public double DropShadowOpacity
         {
             get
@@ -119,7 +119,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the link text.
         /// </summary>
-        [Category("Common Properties"), Description("The text content.")]
+        [Category("Common Properties"), Description("The text content" + ".")]
         public string Text
         {
             get
@@ -135,7 +135,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the text decorations.
         /// </summary>
-        [Category("Common Properties"), Description("The text decorations.")]
+        [Category("Common Properties"), Description("The text decorations" + ".")]
         public TextDecorationCollection TextDecorations
         {
             get
@@ -151,7 +151,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the text wrapping.
         /// </summary>
-        [Category("Common Properties"), Description("Whether the text wraps.")]
+        [Category("Common Properties"), Description("Whether the text wraps" + ".")]
         public TextWrapping TextWrapping
         {
             get
@@ -167,7 +167,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the drop shadow distance.
         /// </summary>
-        [Category("Appearance"), Description("The drop shadow distance.")]
+        [Category("Appearance"), Description("The drop shadow distance" + ".")]
         public double DropShadowDistance
         {
             get
@@ -183,7 +183,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Gets or sets the drop shadow angle.
         /// </summary>
-        [Category("Appearance"), Description("The drop shadow angle.")]
+        [Category("Appearance"), Description("The drop shadow angle" + ".")]
         public double DropShadowAngle
         {
             get
@@ -234,7 +234,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Updates the drop shadow.
         /// </summary>
-        internal void UpdateDropShadowPosition()
+        public void UpdateDropShadowPosition()
         {
             if (_dropShadowTranslate != null)
             {
@@ -248,7 +248,7 @@ namespace desktop.Controls.ToggleSwitch
         /// <summary>
         /// Updates the drop shadow brush.
         /// </summary>
-        internal void UpdateDropShadowBrush()
+        public void UpdateDropShadowBrush()
         {
             if (_dropShadowBrush != null)
             {

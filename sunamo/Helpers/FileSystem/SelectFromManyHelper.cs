@@ -47,7 +47,7 @@ namespace sunamo.Helpers
             {
                 foreach (var item in files)
                 {
-                    filesWithSize.Add(item, sunamo.FS.GetSizeInAutoString(sunamo.FS.GetFileSize(item), sunamo.Enums.ComputerSizeUnits.B));
+                    filesWithSize.Add(item, FS.GetSizeInAutoString(FS.GetFileSize(item), sunamo.Enums.ComputerSizeUnits.B));
                 }
             }
         }
@@ -59,7 +59,7 @@ namespace sunamo.Helpers
 
             if (!sufficientFileName)
             {
-                this.defaultFileSize = sunamo.FS.GetSizeInAutoString(sunamo.FS.GetFileSize(defaultFileForLeave), sunamo.Enums.ComputerSizeUnits.B);
+                this.defaultFileSize = FS.GetSizeInAutoString(FS.GetFileSize(defaultFileForLeave), sunamo.Enums.ComputerSizeUnits.B);
             }
         }
 
@@ -79,7 +79,7 @@ namespace sunamo.Helpers
 
             foreach (var item in files)
             {
-                filesWithSize.Add(item.Key, sunamo.FS.GetSizeInAutoString(item.Value, sunamo.Enums.ComputerSizeUnits.B));
+                filesWithSize.Add(item.Key, FS.GetSizeInAutoString(item.Value, sunamo.Enums.ComputerSizeUnits.B));
             }
             selectFromManyControl.AddControls();
         } 

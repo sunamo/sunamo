@@ -33,7 +33,9 @@ using System.Text;
             {
                 includeSubFolders = value;
             }
-        }bool watchForError = false;
+        }
+
+    bool watchForError = false;
         public bool WatchForError
         {
             get

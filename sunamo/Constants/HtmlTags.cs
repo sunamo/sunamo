@@ -21,6 +21,8 @@ using System.Text;
     public const string body = "body";
     public const string ul = "ul";
     public const string ol = "ol";
-
+    public const string input = "input";
+    public const string button = "button";
+    public const string pre = "pre";
 }
 
