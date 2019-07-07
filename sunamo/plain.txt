@@ -1,1 +1,6 @@
-d:\_Test\sunamo\win\Helpers\Powershell\PowershellHelper\
+﻿Pravděpodobně chyba v aplikaci, pokoušíte se uložit do souboru v AppData položku typu {0} pod klíčem {1} která měla původně typ {
+Before members {before}, methods {before2
+{item} koření {spicyName}
+týden
+Musíte si nejdříve svůj účet aktivovat. Chcete <a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/Me/SendActivationEmailAgain.aspx?login=
+<b>Počet shlédnutí za posledních 7 dnů: </b>

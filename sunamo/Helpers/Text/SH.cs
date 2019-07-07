@@ -32,6 +32,11 @@ public static partial class SH
         var b = centerIndex - before;
         var a = centerIndex + centerString.Length + after;
 
+        if (ThisApp.check)
+        {
+
+        }
+
         StringBuilder sb = new StringBuilder();
 
         if (HasIndex(b, text, false))
@@ -680,7 +685,15 @@ public static partial class SH
         return true;
     }
 
-
+    public static string FirstLine(string item)
+    {
+        var lines = SH.GetLines(item);
+        if (lines.Count == 0)
+        {
+            return string.Empty;
+        }
+        return lines[0];
+    }
 
     public static bool HasTextRightFormat(string r, TextFormatData tfd)
     {

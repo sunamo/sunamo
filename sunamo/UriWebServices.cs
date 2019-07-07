@@ -343,7 +343,7 @@ Template for which I will find, have to be in derivates the same:
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
-        string d = "cng overview -\\\\\\\\\"/detail/\\\\\\\\\"" + car;
+        string d = "cng overview -\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/detail/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
 

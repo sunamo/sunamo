@@ -203,6 +203,19 @@ public static partial class SH
 
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
+        if (string.IsNullOrEmpty(zaCo))
+        {
+            return vstup;
+        }
+
+        foreach (var item in co)
+        {
+            if (string.IsNullOrEmpty(item))
+            {
+                return vstup;
+            }
+        }
+
         foreach (var item in co)
         {
             vstup = vstup.Replace( item, zaCo);
@@ -1608,7 +1621,7 @@ public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, b
 
             for (int i = 0; i < s.Count; i++)
             {
-                    s[i] = SH.ReplaceFromEnd(s[i], "\\\\\\\\\"", rep);
+                    s[i] = SH.ReplaceFromEnd(s[i], "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"", rep);
                 //}
             }
         }

@@ -33,7 +33,7 @@ namespace SunamoCode
             string enS = File.ReadAllText(fn);
             XmlNamespacesHolder h = new XmlNamespacesHolder();
             h.ParseAndRemoveNamespaces(enS);
-            //enS = enS.Replace(" version=\\\\\\\\\"1.2\\\\\\\\\" xmlns=\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2\\\\\\\\\" xmlns:xsi=\\\\\\\\\"http://www.w3.org/2001/XMLSchema-instance\\\\\\\\\" xsi:schemaLocation=\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd\\\\\\\\\"", "").Replace("\r\n", "");
+            //enS = enS.Replace(" version=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"1.2\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" xmlns=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" xmlns:xsi=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"http://www.w3.org/2001/XMLSchema-instance\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" xsi:schemaLocation=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"", "").Replace("\r\n", "");
             var enB = BTS.ConvertFromUtf8ToBytes(enS);
             XDocument xd;
 
@@ -94,7 +94,7 @@ namespace SunamoCode
 
             XmlNamespacesHolder h = new XmlNamespacesHolder();
             h.ParseAndRemoveNamespaces(enS);
-            //enS = enS.Replace(" version=\\\\\\\\\"1.2\\\\\\\\\" xmlns=\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2\\\\\\\\\" xmlns:xsi=\\\\\\\\\"http://www.w3.org/2001/XMLSchema-instance\\\\\\\\\" xsi:schemaLocation=\\\\\\\\\"urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd\\\\\\\\\"", "").Replace("\r\n", "");
+            
             
             XDocument xd = XHelper.CreateXDocument(fn);
 

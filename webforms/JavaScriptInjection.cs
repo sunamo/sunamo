@@ -13,7 +13,7 @@ using webforms;
 /// </summary>
 public class JavaScriptInjection
 {
-
+//
 
     /// <summary> 
     /// Shows a client-side JavaScript alert in the browser. 

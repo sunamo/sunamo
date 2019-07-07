@@ -59,12 +59,12 @@ namespace Roslyn
 
         public static bool AllowOnlyContains(string i, bool obj, bool bin)
         {
-            if (!obj && i.Contains(@"\obj\\\\\\\\\"))
+            if (!obj && i.Contains(@"\obj\"))
             {
                 return false;
             }
 
-            if (!bin && i.Contains(@"\bin\\\\\\\\\"))
+            if (!bin && i.Contains(@"\bin\"))
             {
                 return false;
             }

@@ -8,8 +8,6 @@ using System.Text.RegularExpressions;
 /// </summary>
 public partial class UtilsNonNetStandard
 {
-    
-
     /// <summary>
     /// retrieve an element from an XML string
     /// V XML A1 najde parove prvek A2 a vrata jeho obsah. Pokud nenajde, VV.
@@ -58,7 +56,7 @@ public partial class UtilsNonNetStandard
     /// <returns></returns>
     public static string WriteConfigKey(string key, string value)
     {
-        string s = "<add key=\\\\\\\\\"{0}\\\\\\\\\" value=\\\\\\\\\"{1}\\\\\\\\\" />" + Environment.NewLine;
+        string s = "<add key=\"{0}\" value=\"{1}\" />" + Environment.NewLine;
         return SH.Format2(s, key, value);
     }
 

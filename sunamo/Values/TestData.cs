@@ -18,6 +18,8 @@ using System.Text;
     public static readonly List<string> listA;
     public static readonly List<string> listB;
     public static readonly List<string> listC;
+    public static readonly List<int> list04;
+    public static readonly List<int> list59;
 
     static TestData()
     {
@@ -28,6 +30,9 @@ using System.Text;
         listA = new List<string>(CA.ToEnumerable(a));
         listB = new List<string>(CA.ToEnumerable(b));
         listC = new List<string>(CA.ToEnumerable(c));
+
+        list04 = CA.ToList<int>(0, 1, 2, 3, 4);
+        list59 = CA.ToList<int>(5,6,7,8,9);
     }
 
     public const int one = 1;

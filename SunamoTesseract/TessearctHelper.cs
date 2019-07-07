@@ -30,13 +30,13 @@ namespace SunamoTesseract
         public static string ParseText(string path, string lang = "ces")
         {
             var va = "TESSDATA_PREFIX";
-            Environment.SetEnvironmentVariable(va, @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\tesseract-master.1153\tessdata\\\\\\\\\");
+            Environment.SetEnvironmentVariable(va, @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\tesseract-master.1153\tessdata\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
             var env = Environment.GetEnvironmentVariable(va);
 
 
             var solutionDirectory = string.Empty;
             //solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
-            solutionDirectory = @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\\\\\\\\\";
+            solutionDirectory = @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\";
 
             var tesseractPath = solutionDirectory + @"tesseract-master.1153";
 

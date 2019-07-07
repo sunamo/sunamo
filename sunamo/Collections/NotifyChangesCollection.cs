@@ -12,6 +12,9 @@ public class NotifyChangesCollection<T> : IList<T>
     /// </summary>
     public Collection<T> l = null;
     public event Action<object, string, object> CollectionChanged;
+    /// <summary>
+    /// sender is chbl but in Tag are last clicked chb
+    /// </summary>
     object sender;
 
     public bool onAdd = true;
@@ -39,21 +42,21 @@ public class NotifyChangesCollection<T> : IList<T>
 
     public void Add(T item)
     {
-
+        l.Add(item);
         if (onAdd)
         {
-            l.Add(item); 
+            OnCollectionChanged(ListOperation.Add, item);
         }
-         OnCollectionChanged(ListOperation.Add, item);
     }
 
     public void Clear()
     {
+        l.Clear();
         if (onClear)
         {
-            l.Clear(); 
+            OnCollectionChanged(ListOperation.Clear, null);
         }
-        OnCollectionChanged(ListOperation.Clear, null);
+        
     }
 
     public bool Contains(T item)
@@ -116,6 +119,7 @@ public class NotifyChangesCollection<T> : IList<T>
         // Cant be null if I dont want save changes to drive
         if (CollectionChanged != null)
         {
+            // sender is chbl but in Tag are last clicked chb
             CollectionChanged(sender, op, data);
         }
         

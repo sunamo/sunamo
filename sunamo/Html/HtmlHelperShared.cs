@@ -563,7 +563,7 @@ public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
         {
             List<string> jizNahrazeno = new List<string>();
             
-            MatchCollection mc = Regex.Matches(vstup, "<(?:\\\\\\\\\"[^\\\\\\\\\"]*\\\\\\\\\"['\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\"]*|[^'\\\\\\\\\">])+>");
+            MatchCollection mc = Regex.Matches(vstup, "<(?:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"[^\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"['\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|[^'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">])+>");
             List<string> col = new List<string>(AllLists.HtmlNonPairTags);
 
             //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>

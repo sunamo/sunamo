@@ -24,15 +24,13 @@ namespace desktop.Controls.Buttons
     public partial class ImageButtons : UserControl
     {
         static Type type = typeof(ImageButtons);
-
+        List<Button> allButtons = null;
         public event VoidString Added;
         EnterOneValueWindow eov = null;
         public event VoidVoid CopyToClipboard;
         public event VoidVoid ClearAll;
         public event VoidVoid SelectAll;
         public event VoidVoid UnselectAll;
-
-
 
         public const string awesomeFontPath = "/Fonts/FontAwesome.otf#FontAwesome";
 
@@ -58,8 +56,9 @@ namespace desktop.Controls.Buttons
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            eov = new EnterOneValueWindow("item to insert");
+            eov = new EnterOneValueWindow("item to insert (one on line)");
             eov.enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
+            eov.IsMultiline = true;
             eov.ShowDialog();
         }
 
@@ -97,6 +96,21 @@ namespace desktop.Controls.Buttons
             SetVisibility(btnAdd, add);
             SetVisibility(btnSelectAll, selectAll);
             SetVisibility(btnUnselectAll, deselectAll);
+
+            allButtons = CA.ToList<Button>(btnCopyToClipboard, btnClear, btnAdd, btnSelectAll, btnUnselectAll);
+            this.Visibility = this.IsAllCollapsed() ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        public bool IsAllCollapsed()
+        {
+            foreach (var item in allButtons)
+            {
+                if (item.Visibility != Visibility.Collapsed)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         object data;

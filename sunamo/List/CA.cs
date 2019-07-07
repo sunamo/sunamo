@@ -351,14 +351,14 @@ public static partial  class CA
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\\\\\\\\\")
+                //if (item == @"\\obj\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
                 //{
-                //    if (files1[i].Contains(@"\obj    )               \\\\\\\\\"/    {
+                //    if (files1[i].Contains(@"\obj    )               \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/    {
                 //        Debugger.Break();
                 //    }
                 //}
 
-                //if (files1[i].Contains(@"\obj    )               \\\\\\\\\"/{
+                //if (files1[i].Contains(@"\obj    )               \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/{
                 //    Debugger.Break();
                 //}
 

@@ -26,6 +26,23 @@ namespace desktop.Controls.Input
             InitializeComponent();
         }
 
+        public bool IsMultiline
+        {
+            set
+            {
+                if (value)
+                {
+                    txtEnteredText.AcceptsReturn = true;
+                    txtEnteredText.Height = txtEnteredText.Height * 5;
+                }
+                else
+                {
+                    txtEnteredText.AcceptsReturn = false;
+                    txtEnteredText.Height /= 5;
+                }
+            }
+        }
+
         public EnterOneValueUC(string whatEnter) : this()
         {
             Init(whatEnter);

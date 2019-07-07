@@ -76,6 +76,15 @@ namespace sunamo.Html
             return result;
         }
 
+        public static bool IsCssDeclarationName(string decl)
+        {
+            if (AllLists.allCssKeys.Contains(decl))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static string ConvertTextToHtml(string text)
         {
             var lines = SH.GetLines(text);

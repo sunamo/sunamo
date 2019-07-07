@@ -221,7 +221,7 @@ using System.Xml.Linq;
         {
             StringBuilder sb = new StringBuilder();
             string xml = XHelper.GetXml(p);
-            MatchCollection mc = Regex.Matches(xml, "<(?:\\\\\\\\\"[^\\\\\\\\\"]*\\\\\\\\\"['\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\"]*|[^'\\\\\\\\\">])+>");
+            MatchCollection mc = Regex.Matches(xml, "<(?:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"[^\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"['\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|[^'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">])+>");
             List<string> nahrazeno = new List<string>();
             foreach (Match item in mc)
             {

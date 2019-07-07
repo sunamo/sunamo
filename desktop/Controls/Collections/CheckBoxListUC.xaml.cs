@@ -23,11 +23,25 @@ namespace desktop.Controls.Collections
     public partial class CheckBoxListUC : UserControl, IUserControlInWindow
     {
         #region IUserControlInWindow implementation
-        public bool? DialogResult { set => ChangeDialogResult(value); }
+        public bool? DialogResult
+        {
+            set
+            {
+                // because ChangeDialogResult is nowhere use and is set in CheckedIndexes, check for null
+                if (ChangeDialogResult != null)
+                {
+                    ChangeDialogResult(value);
+                }
+            }
+        }
         public void Accept(object input)
         {
 
         }
+
+        /// <summary>
+        /// For now is usage nowhere
+        /// </summary>
         public event VoidBoolNullable ChangeDialogResult;
         #endregion
 
@@ -36,12 +50,12 @@ namespace desktop.Controls.Collections
         public bool onCheck = true;
         public bool onUnCheck = true;
 
-
         public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear)
         {
             this.onCheck = onCheck;
             this.onUnCheck = onUnCheck;
             l.EventOn(onAdd, onRemove, onClear);
+
         }
 
         public CheckBoxListUC()
@@ -49,11 +63,13 @@ namespace desktop.Controls.Collections
             InitializeComponent();
         }
 
+        
+
         /// <summary>
         /// A1 can be null
         /// </summary>
         /// <param name="list"></param>
-        public void Init(List<string> list = null)
+        public void Init(List<string> list = null, bool defChecked = false)
         {
             l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
             l.CollectionChanged += L_CollectionChanged;
@@ -69,13 +85,23 @@ namespace desktop.Controls.Collections
             {
                 foreach (var item in list)
                 {
-                    AddCheckbox(item);
+                    AddCheckbox(item, defChecked);
                 }
             }
 
             this.DataContext = this;
 
-            l.CollectionChanged += L_CollectionChanged1;
+            l.CollectionChanged += L_CollectionChanged;
+
+            SizeChanged += CheckBoxListUC_SizeChanged;
+        }
+
+        private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var h = this.ActualHeight - colButtons.ActualHeight;
+            r0.Height = new GridLength(h);
+            lb.Height = h;
+            
         }
 
         /// <summary>
@@ -91,16 +117,13 @@ namespace desktop.Controls.Collections
             colButtons.Init(false, false, false, false, false);
         }
 
-        private void L_CollectionChanged1(object o, string operation, object data)
+        
+        private void L_CollectionChanged(object o, string operation, object data)
         {
             if (CollectionChanged != null)
             {
                 CollectionChanged(o, operation, data);
             }
-        }
-
-        private void L_CollectionChanged(object o, string operation, object data)
-        {
             DialogResult = CheckedIndexes().Count() > 0;
         }
 
@@ -122,18 +145,29 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public void AddCheckbox(string item)
+        public void AddCheckbox(string input, bool defChecked)
         {
-            var chb = CheckBoxHelper.Get(item);
-            
-            //chb.Checked += Chb_Click;
-            //chb.Unchecked += Chb_Click;
-            l.l.Add(chb);
+            var lines = SH.GetLines(input);
+
+            foreach (var item in lines)
+            {
+                var contents = l.Select(r => r.Content);
+                var contentString = CA.ToListString(contents);
+                if (CA.IsEqualToAnyElement<object>(item, contentString))
+                {
+                    continue;
+                }
+                var chb = CheckBoxHelper.Get(item);
+                chb.IsChecked = defChecked;
+                //chb.Checked += Chb_Click;
+                //chb.Unchecked += Chb_Click;
+                l.Add(chb);
+            }
         }
 
         private void ColButtons_Added(string s)
         {
-            AddCheckbox(s);
+            AddCheckbox(s, true);
         }
 
         public IEnumerable<int> CheckedIndexes()
@@ -147,7 +181,10 @@ namespace desktop.Controls.Collections
         {
             s(sender,true);
 
-            l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
+            if (onCheck)
+            {
+                l.OnCollectionChanged(CheckBoxListOperations.Check, sender); 
+            }
         }
 
         /// <summary>
@@ -159,7 +196,8 @@ namespace desktop.Controls.Collections
         {
             var s = ((FrameworkElement)sender);
             var name = s.Tag;
-            var where = l.l.Where(d => d.Tag == s.Tag);
+            Tag = sender;
+            var where = l.Where(d => d.Tag == s.Tag);
 
             foreach (var item in where)
             {
@@ -170,7 +208,10 @@ namespace desktop.Controls.Collections
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             s(sender, false);
-            l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender);
+            if (onUnCheck)
+            {
+                l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender); 
+            }
         }
 
         

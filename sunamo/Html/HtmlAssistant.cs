@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
+/// <summary>
+/// Only for methods which operate on HtmlAgiityHelper! 
+/// </summary>
 public partial class HtmlAssistant
 {
     public static List<string> SplitByBr(string input)

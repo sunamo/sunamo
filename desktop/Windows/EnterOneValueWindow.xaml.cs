@@ -30,6 +30,17 @@ namespace desktop
             enterOneValueUC.ChangeDialogResult += EnterOneValueUC_ChangeDialogResult;
         }
 
+        public bool IsMultiline
+        {
+            set
+            {
+                if (value)
+                {
+                    enterOneValueUC.IsMultiline = value;
+                }
+            }
+        }
+
         private void EnterOneValueUC_ChangeDialogResult(bool? b)
         {
             Close();

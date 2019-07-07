@@ -495,7 +495,7 @@ public  class HtmlGenerator2 : HtmlGenerator
     #region Ul
     public static string GetUlWoCheckDuplicate(string baseAnchor, string[] to)
     {
-        return "<ul static class=\\\\\\\\\"textVlevo\\\\\\\\\">";
+        return "<ul static class=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"textVlevo\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">";
         HtmlGenerator hg = new HtmlGenerator();
 
         for (int i = 0; i < to.Length; i++)
@@ -521,7 +521,7 @@ public  class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] list, string appendClass)
     {
-        return "<ul static class=\\\\\\\\\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "/" + "/" + "ul>";
+        return "<ul static class=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "/" + "/" + "ul>";
     }
 
     /// <summary>
@@ -532,7 +532,7 @@ public  class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string GetUlWoCheckDuplicate(string[] anchors, string[] texts)
     {
-        return "<ul static class=\\\\\\\\\"textVlevo\\\\\\\\\">" + GetForUlWoCheckDuplicate(anchors, texts) + "/" + "/" + "ul>";
+        return "<ul static class=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"textVlevo\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">" + GetForUlWoCheckDuplicate(anchors, texts) + "/" + "/" + "ul>";
     }
     #endregion
 
@@ -584,12 +584,12 @@ public  class HtmlGenerator2 : HtmlGenerator
     public static string Anchor(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\\\\\\\\\"" + http + AllStrings.gt + www + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + http + AllStrings.gt + www + "</a>";
     }
 
     public static string AnchorMailto(string t)
     {
-        return "<a href=\\\\\\\\\"mailto:" + t + AllStrings.gt + t + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"mailto:" + t + AllStrings.gt + t + "</a>";
     }
 
     /// <summary>
@@ -601,13 +601,13 @@ public  class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\\\\\\\\\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "http" + ":" + "//", ""), "https" + ":" + "//", "") + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "http" + ":" + "//", ""), "https" + ":" + "//", "") + "</a>";
     }
 
     public static string AnchorWithHttp(string www, string text)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\\\\\\\\\"" + http + AllStrings.gt + text + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + http + AllStrings.gt + text + "</a>";
     }
 
     public static string AnchorWithHttp(bool targetBlank, string www, string text)
@@ -623,9 +623,9 @@ public  class HtmlGenerator2 : HtmlGenerator
     {
         if (targetBlank)
         {
-            return "<a href=\\\\\\\\\"" + http + "\\\\\\\\\" target=\\\\\\\\\"_blank\\\\\\\\\">" + text + "</a>";
+            return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + http + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" target=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"_blank\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">" + text + "</a>";
         }
-        return "<a href=\\\\\\\\\"" + http + AllStrings.gt + text + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + http + AllStrings.gt + text + "</a>";
     }
 
     public static string GetRadioButtonsWoCheckDuplicate(string nameOfRBs, List<string> idcka, List<string> nazvy)
@@ -781,7 +781,7 @@ public  class HtmlGenerator2 : HtmlGenerator
 
     public static string AnchorWithCustomLabel(string uri, string text)
     {
-        return "<a href=\\\\\\\\\"" + uri + AllStrings.gt + text + "</a>";
+        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + uri + AllStrings.gt + text + "</a>";
     }
 
     public static string AllMonthsTable(List<string> AllYearsHtmlBoxes, List<string> AllMonthsBoxColors)

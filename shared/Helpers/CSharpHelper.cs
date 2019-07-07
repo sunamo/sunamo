@@ -31,7 +31,7 @@ public static partial class CSharpHelper
         switch (type)
         {
             case "string":
-                return "\\\\\\\\\"\\\\\\\\\"";
+                return "\"\"";
             case "bool":
                 return "false";
             case "float":

@@ -85,7 +85,7 @@ namespace sunamo
         /// <summary>
         /// Default is All Files|*.*
         /// </summary>
-        public static string filterDefault = "All Files|*.*";
+        public static string filterDefault = "All Files|" + "*" + ".*";
 
         #region Other
         /// <summary>

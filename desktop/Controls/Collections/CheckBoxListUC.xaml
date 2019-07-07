@@ -11,16 +11,16 @@
             
     </StackPanel>-->
 
-    <Grid x:Name="grid">
+    <Grid x:Name="grid" Background="Red">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*" x:Name="r0"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--//Source=l, Path=l-->
         <!--ElementName=l, Path=l-->
         <!--ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListUC}}, Path=l.l}"-->
-        <ListBox x:Name="lb">
+        <ListBox x:Name="lb" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" Background="Yellow">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
@@ -28,7 +28,7 @@
         </ListBox.ItemTemplate>
     </ListBox>
 
-        <desktopControlButtons:ImageButtons Grid.Row="1" x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
+        <desktopControlButtons:ImageButtons Grid.Row="1" Background="Blue" x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
         
     </Grid>
 </UserControl>

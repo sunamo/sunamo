@@ -71,9 +71,9 @@ public class MasterPageHelper
                     if (item is LiteralControl)
                     {
                         LiteralControl sc = item as LiteralControl;
-                        if (sc.Text.Contains("<script" + " ") && !sc.Text.Contains("src=\\\\\\\\\"http"))
+                        if (sc.Text.Contains("<script" + " ") && !sc.Text.Contains("src=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"http"))
                         {
-                            sc.Text = sc.Text.Replace("src=\\\\\\\\\"", "src=\\\\\\\\\"../");
+                            sc.Text = sc.Text.Replace("src=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"", "src=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"../");
                         }
 
                     }

@@ -65,14 +65,16 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
         this.ResizeMode = rm;
         // Původně bylo WidthAndHeight
-        this.SizeToContent = System.Windows.SizeToContent.WidthAndHeight;
-        this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
-        this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
+        this.SizeToContent = System.Windows.SizeToContent.Manual;
+        //this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
+        //this.MaxHeight = System.Windows.SystemParameters.PrimaryScreenHeight * 0.75d;
         this.Content = dock;
         this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
         this.VerticalContentAlignment = VerticalAlignment.Stretch;
         this.HorizontalAlignment = HorizontalAlignment.Stretch;
         this.VerticalAlignment = VerticalAlignment.Stretch;
+
+        AddUC();
 
         Loaded += WindowWithUserControl_Loaded;
     }
@@ -114,8 +116,15 @@ public class WindowWithUserControl : Window, IUserControlWithResult
 
     private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        
-        
+        //AddUC();
+
+        var chbl = (CompareInCheckBoxListUC)userControl;
+
+        Title = chbl.chblAutoYes.RenderSize.ToString();
+    }
+
+    private void AddUC()
+    {
         // TODO: Find method where is mass setted all aligments
         userControl.VerticalAlignment = VerticalAlignment.Stretch;
         userControl.VerticalContentAlignment = VerticalAlignment.Stretch;
@@ -128,7 +137,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         {
             userControlWithResult = (IUserControlWithResult)userControl;
             userControlWithResult.ChangeDialogResult += UserControlWithResult_ChangeDialogResult;
-            
+
         }
         if (userControl is IUserControlInWindow)
         {
@@ -142,7 +151,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult
             {
                 iUserControlInWindow.ChangeDialogResult -= uc_ChangeDialogResult;
             }
-            
+
         }
 
         Activate();

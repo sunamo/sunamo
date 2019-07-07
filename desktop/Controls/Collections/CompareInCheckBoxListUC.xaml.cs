@@ -20,9 +20,28 @@ namespace desktop.Controls.Collections
     /// </summary>
     public partial class CompareInCheckBoxListUC : UserControl, IUserControl, IUserControlInWindow
     {
+        List<CheckBoxListUC> chbls = null;
+
         public CompareInCheckBoxListUC()
         {
             InitializeComponent();
+
+            
+        }
+
+        private void CompareInCheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+            foreach (var item in chbls)
+            {
+                if (this.ActualHeight == 0)
+                {
+                    continue;
+                }
+                var size = item.ActualHeight;
+                item.Height = this.ActualHeight - r0.ActualHeight;
+            }
+            //r1.Height. = this.ActualHeight - r0.ActualHeight; 
         }
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
@@ -38,6 +57,20 @@ namespace desktop.Controls.Collections
 
         public void Init(List<string> c, List<string> notToTranslate)
         {
+            chbls = CA.ToList<CheckBoxListUC>(chblAutoYes, chblManuallyYes, chblManuallyNo, chblAutoNo);
+
+            foreach (var item in chbls)
+            {
+                item.HideAllButtons();
+            }
+
+            // First must call Init due to create instance of NotifyChangesCollection
+            chblAutoYes.Init( c, true);
+            chblManuallyYes.Init();
+            chblManuallyNo.Init();
+            chblAutoNo.Init(notToTranslate, false);
+
+
             chblAutoYes.EventOn(false, true, false, false, false);
             chblManuallyYes.EventOn(false, true, false, false, false);
             chblManuallyNo.EventOn(true, false, false, false, false);
@@ -48,13 +81,16 @@ namespace desktop.Controls.Collections
             chblManuallyNo.HideAllButtons();
             chblAutoNo.HideAllButtons();
 
-            chblAutoYes.Init(c);
-            chblAutoNo.Init(notToTranslate);
+            
 
             chblAutoYes.CollectionChanged += ChblAutoYes_CollectionChanged;
             chblManuallyYes.CollectionChanged += ChblManuallyYes_CollectionChanged;
             chblManuallyNo.CollectionChanged += ChblManuallyNo_CollectionChanged;
             chblAutoNo.CollectionChanged += ChblAutoNo_CollectionChanged;
+
+            SizeChanged += CompareInCheckBoxListUC_SizeChanged;
+
+            CompareInCheckBoxListUC_SizeChanged(null, null);
         }
 
         /// <summary>
@@ -93,19 +129,36 @@ namespace desktop.Controls.Collections
 
         private void MoveCheckBox(object sender, CheckBoxListUC from, CheckBoxListUC to)
         {
+            var fromName = from.Name;
+            var toName = to.Name;
+
             var c = ch(sender);
-            from.l.l.Remove(c);
+            var con = c.Content;
+            for (int i = from.l.l.Count - 1; i >= 0; i--)
+            {
+                if (from.l.l[i].Tag == c.Tag)
+                {
+                    from.l.l.RemoveAt(i);
+                    break;
+                }
+            }
+
+            //from.l.l.Remove(c);
+
+            c.Content = con;
+            // Tag is transfer OK
+            //var tag = c.Tag;
 
             // Switch of IsChecked will be perfomed after click
             to.l.l.Add(c);
-
-
+           
         }
 
         CheckBox ch(object o)
         {
-            var casted = (CheckBox)o;
-            return casted;
+            var casted = (CheckBoxListUC)o;
+            var chb = (CheckBox)casted.Tag;
+            return chb;
         }
 
         public List<string> ExcludeToProcess()

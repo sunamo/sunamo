@@ -19,7 +19,7 @@ namespace web
 
         public static string AnchorToShowViews(SunamoPage sp)
         {
-            return "<a href =\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string AnchorToShowViews(SunamoPage sp, int idPage)
@@ -28,12 +28,12 @@ namespace web
             {
                 return "";
             }
-            return "<a href =\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountToday(SunamoPage sp)
         {
-            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountOverall(SunamoPage sp)

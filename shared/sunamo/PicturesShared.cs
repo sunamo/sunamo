@@ -405,6 +405,16 @@ using sunamo.Essential;
         
 
 		#region Další PlaceToCenter metody - Používají WF třídu Image kterou ihned ukládají na disk a nevrací
+    /// <summary>
+    /// A2 = NSN
+    /// </summary>
+    /// <param name="img"></param>
+    /// <param name="ext"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="finalPath"></param>
+    /// <param name="writeToConsole"></param>
+    /// <returns></returns>
 		public static bool PlaceToCenter(Image img, string ext, int width, int height, string finalPath, bool writeToConsole)
 		{
 			string fnOri = "";
@@ -432,9 +442,9 @@ using sunamo.Essential;
 				//img = PicturesDesktop.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension2(ext));
 				if (img != null)
 				{
-					Bitmap bmp = new Bitmap(512, 384);
+					Bitmap bmp = new Bitmap(width, height);
 					Graphics dc = Graphics.FromImage(bmp);
-					dc.Clear(System.Drawing.Color.Transparent);
+					dc.Clear(System.Drawing.Color.White);
 					var p = new System.Drawing.RectangleF(new PointF(x, y), new SizeF(newWidth, newHeight));
 					dc.DrawImage(img, p);
 					img.Dispose();
