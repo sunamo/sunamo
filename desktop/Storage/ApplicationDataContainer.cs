@@ -89,7 +89,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         chbl.l.CollectionChanged += Chbl_CollectionChanged;
     }
 
-    private void Chbl_CollectionChanged(object sender)
+    private void Chbl_CollectionChanged(object sender, string operation, object data)
     {
         CheckBoxListUC chb = sender as CheckBoxListUC;
 

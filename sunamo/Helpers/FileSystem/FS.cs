@@ -109,23 +109,7 @@ public partial class FS
 
         
 
-        public static void ReplaceInAllFiles(string from, string to, List<string> files, bool useSimpleReplace, bool pairLinesInFromAndTo)
-        {
-        if (pairLinesInFromAndTo)
-        {
-            var from2 = SH.Split(from, Environment.NewLine);
-            var to2 = SH.Split(to, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
-
-            ReplaceInAllFiles(from2, to2, files, useSimpleReplace);
-        }
-        else
-        {
-            ReplaceInAllFiles(CA.ToListString( from),  CA.ToListString( to), files, useSimpleReplace);
-
-        }
-            
-        }
+        
 
         /// <summary>
         /// either A1 or A2 can be null
@@ -164,12 +148,34 @@ public partial class FS
             return result;
         }
 
-        public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool dontReplaceAll)
+
+
+
+
+    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo)
+    {
+        if (pairLinesInFromAndTo)
         {
-            var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
-            ReplaceInAllFiles(replaceFrom, replaceTo, files, dontReplaceAll);
+            var from2 = SH.Split(from, Environment.NewLine);
+            var to2 = SH.Split(to, Environment.NewLine);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+
+            ReplaceInAllFiles(from2, to2, files);
         }
+        else
+        {
+            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files);
+
+        }
+
+    }
+
+    public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
+    {
+        var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
+        ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+        ReplaceInAllFiles(replaceFrom, replaceTo, files);
+    }
 
     /// <summary>
     /// A4 - whether use s.Contains. A4 - SH.ReplaceAll2
@@ -178,9 +184,8 @@ public partial class FS
     /// <param name="replaceTo"></param>
     /// <param name="files"></param>
     /// <param name="dontReplaceAll"></param>
-        public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool dontReplaceAll)
-        {
-        
+    public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files)
+    {
         foreach (var item in files)
         {
             if (!EncodingHelper.isBinary(item))
@@ -190,27 +195,23 @@ public partial class FS
                 {
                     for (int i = 0; i < replaceFrom.Count; i++)
                     {
-                        if (dontReplaceAll)
-                        {
+                  
                             content = content.Replace(replaceFrom[i], replaceTo[i]);
-                        }
-                        else
-                        {
-                            content = SH.ReplaceAll2(content, replaceTo[i], replaceFrom[i]);
-                        }
+                      
                     }
                     TF.SaveFile(content, item);
                 }
             }
         }
-        }
+    }
 
-        /// <summary>
-        /// Jen kvuli starým aplikacím, at furt nenahrazuji.
-        /// </summary>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static string GetFileInStartupPath(string v)
+
+    /// <summary>
+    /// Jen kvuli starým aplikacím, at furt nenahrazuji.
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string GetFileInStartupPath(string v)
         {
             return AppPaths.GetFileInStartupPath(v);
         }
@@ -1031,7 +1032,8 @@ public partial class FS
         /// <param name="p"></param>
         public static void DeleteAllRecursivelyAndThenDirectory(string p)
         {
-
+        if (FS.ExistsDirectory(p))
+        {
             string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files)
             {
@@ -1044,7 +1046,7 @@ public partial class FS
             }
             Directory.Delete(p, false);
 
-
+        }
         }
 
         public static string[] OnlyExtensions(List<string> cesta)

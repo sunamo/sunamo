@@ -10,6 +10,24 @@ public  static partial class CA
 {
     static Type type = typeof(CA);
 
+    /// <summary>
+    /// Direct edit collection
+    /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
+    /// </summary>
+    /// <param name="mySites"></param>
+    /// <returns></returns>
+    public static List<string> RemoveStringsEmpty(List<string> mySites)
+    {
+        for (int i = mySites.Count - 1; i >= 0; i--)
+        {
+            if (mySites[i] == string.Empty)
+            {
+                mySites.RemoveAt(i);
+            }
+        }
+        return mySites;
+    }
+
     public static bool IsEmptyOrNull(IEnumerable mustBe)
     {
         if (mustBe == null)
@@ -314,18 +332,24 @@ public  static partial class CA
         list[j] = temp;
     }
 
+    public static string StartWith(string item2, params string[] v1)
+    {
+        return StartWith(item2, v1.ToList());
+    }
+
     /// <summary>
-    /// Return first of A2 if stars with any of A1. Otherwise null
+    /// Return first of A2 which starts with  A1. Otherwise null
+    /// Cant be use if A1 is shorter than A2 (text vs textarea)
     /// </summary>
     /// <param name="item2"></param>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
-    public static string StartWith(string item2, params string[] v1)
+    public static string StartWith(string item2, IEnumerable<string> v1)
     {
         foreach (var item in v1)
         {
-            if (item.StartsWith(item))
+            if (item.StartsWith(item2))
             {
                 return item;
             }

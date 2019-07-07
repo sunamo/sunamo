@@ -343,7 +343,7 @@ Template for which I will find, have to be in derivates the same:
     public static string SpritMonitor(string car)
     {
         // https://www.spritmonitor.de/en/overview/45-Skoda/1289-Citigo.html?fueltype=4
-        string d = "cng overview -\\\\\"/detail/\\\\\"" + car;
+        string d = "cng overview -\\\\\\\\\"/detail/\\\\\\\\\"" + car;
         return GoogleSearchSite("spritmonitor.de", d);
     }
 
@@ -529,6 +529,11 @@ Template for which I will find, have to be in derivates the same:
     public static string GitRepoInVsts(string slnName)
     {
         return "https://radekjancik.visualstudio.com/_git" + "/" + HttpUtility.UrlEncode( slnName);
+    }
+
+    public static string AzureRepoWebUI(string slnName)
+    {
+        return "https://dev.azure.com/radekjancik/" + HttpUtility.UrlEncode(slnName);
     }
 
     public static string GoogleImFeelingLucky(string v)

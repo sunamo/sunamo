@@ -11,8 +11,19 @@ public class NotifyChangesCollection<T> : IList<T>
     /// Its collection due to use also ObservableCollection and so
     /// </summary>
     public Collection<T> l = null;
-    public event VoidObject CollectionChanged;
+    public event Action<object, string, object> CollectionChanged;
     object sender;
+
+    public bool onAdd = true;
+    public bool onRemove = true;
+    public bool onClear = true;
+
+    public void EventOn(bool onAdd, bool onRemove, bool onClear)
+    {
+        this.onAdd = onAdd;
+        this.onRemove = onRemove;
+        this.onClear = onClear;
+    }
 
     public NotifyChangesCollection(object sender, Collection<T> c)
     {
@@ -28,14 +39,21 @@ public class NotifyChangesCollection<T> : IList<T>
 
     public void Add(T item)
     {
-         l.Add(item);
-         OnCollectionChanged();
+
+        if (onAdd)
+        {
+            l.Add(item); 
+        }
+         OnCollectionChanged(ListOperation.Add, item);
     }
 
     public void Clear()
     {
-        l.Clear();
-        OnCollectionChanged();
+        if (onClear)
+        {
+            l.Clear(); 
+        }
+        OnCollectionChanged(ListOperation.Clear, null);
     }
 
     public bool Contains(T item)
@@ -61,20 +79,26 @@ public class NotifyChangesCollection<T> : IList<T>
     public void Insert(int index, T item)
     {
         l.Insert(index, item);
-        OnCollectionChanged();
+        if (onAdd)
+        {
+            OnCollectionChanged(ListOperation.Insert, item); 
+        }
     }
 
     public bool Remove(T item)
     {
         bool vr = l.Remove(item);
-        OnCollectionChanged();
+        if (onRemove)
+        {
+            OnCollectionChanged(ListOperation.Remove, item); 
+        }
         return vr;
     }
 
     public void RemoveAt(int index)
     {
          l.RemoveAt(index);
-        OnCollectionChanged();
+        OnCollectionChanged(ListOperation.RemoveAt, index);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -82,12 +106,17 @@ public class NotifyChangesCollection<T> : IList<T>
         return l.GetEnumerator();
     }
 
-    public void OnCollectionChanged()
+    private void OnCollectionChanged(ListOperation op, object data)
+    {
+        OnCollectionChanged(op.ToString(), data);
+    }
+
+    public void OnCollectionChanged(string op, object data)
     {
         // Cant be null if I dont want save changes to drive
         if (CollectionChanged != null)
         {
-            CollectionChanged(sender);
+            CollectionChanged(sender, op, data);
         }
         
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ public class ClipboardHelper
         }
     }
 
-    public static void SetLines(List<string> lines)
+    public static void SetLines(IEnumerable lines)
     {
         if (Instance == null)
         {

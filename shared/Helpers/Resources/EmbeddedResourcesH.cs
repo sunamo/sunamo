@@ -11,13 +11,20 @@ using System.Windows.Media.Imaging;
 
 /// <summary>
 /// Must be in desktop due to BitmapImage
+/// Require assembly and default namespace. 
+/// Content is referred like with ResourcesH - with fs path
 /// </summary>
 public class EmbeddedResourcesH : IResourceHelper
     {
+    /*usage:
+uri = new Uri("Wpf.Tests.Resources.EmbeddedResource.txt", UriKind.Relative);
+uriJpg = new Uri("Wpf.Tests.Resources.EmbeddedResource.jpg", UriKind.Relative);
+     */
+
     /// <summary>
     /// For entry assembly
     /// </summary>
-        public static EmbeddedResourcesH ci = new EmbeddedResourcesH();
+    public static EmbeddedResourcesH ci = new EmbeddedResourcesH();
 
     /// <summary>
     /// 
@@ -37,7 +44,7 @@ public class EmbeddedResourcesH : IResourceHelper
         this.defaultNamespace = defaultNamespace;
     }
 
-           Assembly _entryAssembly = null;
+     Assembly _entryAssembly = null;
      string defaultNamespace;
 
      Assembly entryAssembly

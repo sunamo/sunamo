@@ -315,6 +315,13 @@ public class SourceCodeIndexerRoslyn
 
         foreach (var item in linesWithContent)
         {
+#if DEBUG
+            if (FS.GetFileName( item.Key) == "MainWindow.cs")
+            {
+
+            }
+#endif
+
             var indexes = linesWithIndexes[item.Key];
             include = false;
             // return with zero elements - in item.Value is only lines with content. I need lines with exactly content of file to localize searched results

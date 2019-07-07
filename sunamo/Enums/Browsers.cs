@@ -9,5 +9,6 @@ public enum Browsers : byte
     Firefox = 2,
     InternetExplorer = 3,
     Opera = 4,
-    IE = 5
+    Edge = 5,
+    Vivaldi = 6
 }

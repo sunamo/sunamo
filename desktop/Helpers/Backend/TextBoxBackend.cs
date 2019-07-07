@@ -150,9 +150,10 @@ namespace desktop.Helpers.Backend
             if (txtContent.LineCount > addLines && line > addLines)
             {
                 // -4 due to excepiton on txt.GetCharacterIndexFromLineIndex(line); - line was 244, but has only 243 lines
-                line += addLines - 2;
+                // commented, one is sure, condition txtContent.LineCount > addLines && line > addLines is wrong due to highlight wrong line (225 instead od 160)
+                //line += addLines - 2;
             }
-            
+
             if (ScrollToLine != null)
             {
                 ScrollToLine(line);

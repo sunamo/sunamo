@@ -122,7 +122,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                         //cl.Members.Remove(item);
                         if (i == 0)
                         {
-                            var firstTree = CSharpSyntaxTree.ParseText("  " + "  " + "        public" + " " + fnwoeAspxCs + "Cs cs" + ";");
+                            var firstTree = CSharpSyntaxTree.ParseText("  " + "  " + "  " + "  " + "    public" + " " + fnwoeAspxCs + "Cs cs" + ";");
                             firstNode = firstTree.GetRoot().ChildNodes().First();
                             cl = cl.ReplaceNode(item, firstNode);
                         }

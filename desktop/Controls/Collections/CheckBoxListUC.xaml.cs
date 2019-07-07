@@ -28,10 +28,21 @@ namespace desktop.Controls.Collections
         {
 
         }
-        public event VoidBoolNullable ChangeDialogResult; 
+        public event VoidBoolNullable ChangeDialogResult;
         #endregion
 
+        public event Action<object, string, object> CollectionChanged;
         public NotifyChangesCollection<CheckBox> l = null;
+        public bool onCheck = true;
+        public bool onUnCheck = true;
+
+
+        public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear)
+        {
+            this.onCheck = onCheck;
+            this.onUnCheck = onUnCheck;
+            l.EventOn(onAdd, onRemove, onClear);
+        }
 
         public CheckBoxListUC()
         {
@@ -47,7 +58,7 @@ namespace desktop.Controls.Collections
             l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
             l.CollectionChanged += L_CollectionChanged;
 
-            colButtons.Init(false, false, new VoidString( ColButtons_Added), true, true);
+            
 
             colButtons.SelectAll += ColButtons_SelectAll;
             colButtons.UnselectAll += ColButtons_UnselectAll;
@@ -63,9 +74,32 @@ namespace desktop.Controls.Collections
             }
 
             this.DataContext = this;
+
+            l.CollectionChanged += L_CollectionChanged1;
         }
 
-        private void L_CollectionChanged(object o)
+        /// <summary>
+        /// visible: add, selectAll, deselectAll
+        /// </summary>
+        public void DefaultButtonsInit()
+        {
+            colButtons.Init(false, false, new VoidString(ColButtons_Added), true, true);
+        }
+
+        public void HideAllButtons()
+        {
+            colButtons.Init(false, false, false, false, false);
+        }
+
+        private void L_CollectionChanged1(object o, string operation, object data)
+        {
+            if (CollectionChanged != null)
+            {
+                CollectionChanged(o, operation, data);
+            }
+        }
+
+        private void L_CollectionChanged(object o, string operation, object data)
         {
             DialogResult = CheckedIndexes().Count() > 0;
         }
@@ -113,7 +147,7 @@ namespace desktop.Controls.Collections
         {
             s(sender,true);
 
-            l.OnCollectionChanged();
+            l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
         }
 
         /// <summary>
@@ -136,9 +170,15 @@ namespace desktop.Controls.Collections
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             s(sender, false);
-            l.OnCollectionChanged();
+            l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender);
         }
 
         
+    }
+
+    public class CheckBoxListOperations
+    {
+        public const string Check = "Check";
+        public const string UnCheck = "UnCheck";
     }
 }

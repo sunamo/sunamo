@@ -15,6 +15,7 @@ using win;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using sunamo.Clipboard;
+using System.Collections;
 //using System.Windows;
 
 /// <summary>
@@ -134,7 +135,7 @@ public class ClipboardHelperWin : IClipboardHelper
         SetLines(d);
     }
 
-    public void SetLines(List<string> lines)
+    public void SetLines(IEnumerable lines)
     {
         string s = SH.JoinNL(lines);
         SetText(s);

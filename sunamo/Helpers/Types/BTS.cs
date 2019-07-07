@@ -2,6 +2,7 @@
 /// Base Types Static
 /// </summary>
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -523,7 +524,7 @@ public static partial class BTS
     #endregion
 
     #region Casting to List
-    public static List<int> CastToIntList(object[] d)
+    public static List<int> CastToIntList(IEnumerable d)
         {
             List<int> vr = new List<int>();
             foreach (string item in d)
@@ -533,12 +534,13 @@ public static partial class BTS
             return vr;
         }
 
-        /// <summary>
-        /// Pokud se cokoliv nepodaří přetypovat, vyhodí výjimku
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static List<int> CastCollectionStringToInt(string[] p)
+    /// <summary>
+    /// Pokud se cokoliv nepodaří přetypovat, vyhodí výjimku
+    /// Before use you can call RemoveNotNumber to avoid raise exception
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static List<int> CastCollectionStringToInt(string[] p)
         {
             List<int> vr = new List<int>();
             foreach (string item in p)
@@ -555,7 +557,28 @@ public static partial class BTS
             return vr;
         }
 
-        public static List<int> CastCollectionShortToInt(List<short> n)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+        public static void RemoveNotNumber(IList input)
+        {
+        for (int i = input.Count - 1; i >= 0; i--)
+        {
+            if (!SH.IsNumber(input[i].ToString()))
+            {
+                input.RemoveAt(i);
+            }
+        }
+        }
+
+    /// <summary>
+    /// Before use you can call RemoveNotNumber to avoid raise exception
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static List<int> CastCollectionShortToInt(List<short> n)
         {
             List<int> vr = new List<int>();
             for (int i = 0; i < n.Count; i++)
@@ -575,7 +598,10 @@ public static partial class BTS
             return vr;
         }
 
-        public static List<int> CastListShortToListInt(List<short> n)
+    /// <summary>
+    /// Before use you can call RemoveNotNumber to avoid raise exception
+    /// </summary>
+    public static List<int> CastListShortToListInt(List<short> n)
         {
             List<int> vr = new List<int>(n.Count);
             for (int i = 0; i < n.Count; i++)

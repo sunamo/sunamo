@@ -10,8 +10,8 @@ namespace sunamo.Constants
     public class DTFormats
     {
         #region Formats
-        public const string enShortDate = "/" + "/" + "d/yyy";
-        public const string enMyFormat = "-" + "-" + "M-yyy";
+        public const string enShortDate = "m/d/yyy";
+        public const string enMyFormat = "d-M-yyy";
         #endregion
     }
 }

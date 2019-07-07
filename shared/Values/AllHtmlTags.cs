@@ -5,6 +5,7 @@ using System.Web.UI;
 
 /// <summary>
 /// Must be in shared due to HtmlTextWriterTag in System.Web
+/// All is lower
 /// </summary>
 public class AllHtmlTags
 {

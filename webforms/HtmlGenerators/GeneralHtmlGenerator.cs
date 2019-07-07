@@ -19,7 +19,7 @@ namespace web
 
         public static string AnchorToShowViews(SunamoPage sp)
         {
-            return "<a href =\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string AnchorToShowViews(SunamoPage sp, int idPage)
@@ -28,12 +28,12 @@ namespace web
             {
                 return "";
             }
-            return "<a href =\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<a href =\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountToday(SunamoPage sp)
         {
-            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\">Zobrazit graf zobrazení za posledních 7 dní</a>");
+            return "<b>Počet shlédnutí dnes: </b>" + sp.today + " <a href=\\\\\\\\\"" + UA.GetWebUri3(sp, "ShowViews.aspx?idPage=" + sp.idPage + "\\\\\\\\\">Zobrazit graf zobrazení za posledních 7 dní</a>");
         }
 
         public static string ViewCountOverall(SunamoPage sp)
@@ -62,16 +62,16 @@ namespace web
             string id = idAnswer.ToString();
             string barvaHex = DatabaseRows.colors[idColor].hex;
             hg.WriteTagWith2Attrs("div", "class", "bunkaTabulky", "id", "divSurveyAnswerRow" + id);
-            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaNazev + ";color:" + barvaHex + ";display: inline-block;text-align: center;", "id", "divAnswerName" + id);
+            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaNazev + ";" + "color" + ":" + barvaHex + ";" + "display: inline-block;text-align: center" + ";", "id", "divAnswerName" + id);
             hg.WriteRaw(name);
             hg.TerminateTag("div");
 
 
-            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaVoteCount + ";color:" + barvaHex + ";display: inline-block;text-align: center;", "id", "divAnswerVoteCount" + id);
+            hg.WriteTagWith2Attrs("div", "style", "width: " + Constants.sirkaVoteCount + ";" + "color" + ":" + barvaHex + ";" + "display: inline-block;text-align: center" + ";", "id", "divAnswerVoteCount" + id);
             hg.WriteRaw(voteCountS);
             hg.TerminateTag("div");
 
-            hg.WriteTagWithAttr("div", "style", "width: " + Constants.sirkaButtony + ";color:black;display: inline-block;text-align: center;");
+            hg.WriteTagWithAttr("div", "style", "width: " + Constants.sirkaButtony + ";" + "color:black;display: inline-block;text-align: center" + ";");
             //hg.WriteRaw("Editovací tlačítka");
             hg.WriteTagWithAttr("a", "href", "DetailsClickSurvey.aspx");
             hg.WriteNonPairTagWithAttrs("img", "alt", "Kdy bylo kliknuto na odpovědi v této anketě", "src", "../img/stats.png");

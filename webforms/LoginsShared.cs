@@ -30,7 +30,7 @@ public partial class Logins
                     {
                         if (global::MSStoredProceduresI.ci.SelectExists(Tables.UsersActivates, "Login", login))
                         {
-                            return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet aktivovat. Chcete <a href=\"/Me/SendActivationEmailAgain.aspx?login=" + login + "\">znovu poslat</a> aktivační email?");
+                            return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet aktivovat. Chcete <a href=\\\\\\\\\"/Me/SendActivationEmailAgain.aspx?login=" + login + "\\\\\\\\\">znovu poslat</a> aktivační email?");
                         }
 
                         DateTime dt = DateTime.Today;
@@ -44,7 +44,7 @@ public partial class Logins
                                 if (email != "")
                                 {
                                     DateTime dateChanged = global::MSStoredProceduresI.ci.SelectCellDataTableDateTimeOneRow(Tables.UsersReactivates, "DateChanged", global::SqlServerHelper.DateTimeMinVal, CA.ToArrayT<AB>(AB.Get("IDUsers", idUser)), CA.ToArrayT<AB>(AB.Get("Code", "")));
-                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\">poslat znovu</a>?");
+                                    return new LoginResponse(LoginResponseType.Warning, "Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před" + " " + DTHelper.CalculateAgeAndAddRightStringKymCim(dateChanged, true, Langs.cs, global::SqlServerHelper.DateTimeMinVal) + " na " + GeneralCells.EmailOfUser(idUser) + ", uvedený jako nový email. Přejete si jej <a href=\\\\\\\\\"" + UA.GetWebUri(page, "Me/SendReactivationEmail.aspx?uid=" + idUser) + "\\\\\\\\\">poslat znovu</a>?");
                                 }
 
                                 string sc = "";
@@ -73,8 +73,8 @@ public partial class Logins
                             else
                             {
                                 string z = UnsuccessfulLoginAptempt(login, pocetPokusu);
-                                return new LoginResponse(LoginResponseType.Warning, "Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\"Register.aspx?ReturnUrl=" + UH.UrlEncode(continueUri) + "\">registrovat</a>? " + z);
-                                //Warning("Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\"Register.aspx?ReturnUrl=" + UH.UrlEncode(ContinueUri.Value) + "\">registrovat</a>?");
+                                return new LoginResponse(LoginResponseType.Warning, "Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\\\\\\\\\"Register.aspx?ReturnUrl=" + UH.UrlEncode(continueUri) + "\\\\\\\\\">registrovat</a>? " + z);
+                                //Warning("Špatná kombinace uživatelského jména a hesla. Chcete se <a href=\\\\\\\\\"Register.aspx?ReturnUrl=" + UH.UrlEncode(ContinueUri.Value) + "\\\\\\\\\">registrovat</a>?");
                             }
                         }
                         else
@@ -84,12 +84,12 @@ public partial class Logins
                     }
                     else
                     {
-                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné.");
+                        return new LoginResponse(LoginResponseType.Warning, "Uživatelské jméno ani heslo nemůže zůstat prázdné" + ".");
                     }
                 }
                 else
                 {
-                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů. ");
+                    return new LoginResponse(LoginResponseType.Warning, "Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů" + ". ");
                 }
             }
             else

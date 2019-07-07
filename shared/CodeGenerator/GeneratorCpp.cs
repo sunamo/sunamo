@@ -14,7 +14,7 @@ namespace sunamo.CodeGenerator
             NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(tabCount, mapName + ".insert({\"" + item.Key + "\", \"" + item.Value + "\"});");
+                AppendLine(tabCount, mapName + ".insert({\\\\\\\\\"" + item.Key + "\\\\\\\\\", \\\\\\\\\"" + item.Value + "\\\\\\\\\"});");
             }
         }
 
@@ -31,7 +31,7 @@ namespace sunamo.CodeGenerator
             NewVariable(tabCount, AccessModifiers.Private, cn, mapName, true);
             foreach (var item in nameCommentEnums)
             {
-                AppendLine(tabCount, mapName + ".insert({" + item.Key + ", " + item.Value + "});");
+                AppendLine(tabCount, mapName + "." + "insert(" + "{" + item.Key + ", " + item.Value + "});");
             }
         }
 
@@ -43,7 +43,7 @@ namespace sunamo.CodeGenerator
             Append(0, "{");
             foreach (var item in dict)
             {
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + ",");
+                Append(0, "{\\\\\\\\\"" + item.Key + "\\\\\\\\\", \\\\\\\\\"" + item.Value + "\\\\\\\\\"}" + ",");
             }
             AppendLine(0, "};");
         }
@@ -57,7 +57,7 @@ namespace sunamo.CodeGenerator
             foreach (var item in dict)
             {
                 string d = (item.Key == dict.Last().Key ? "" : ",");
-                Append(0, "{\"" + item.Key + "\", \"" + item.Value + "\"}" + d);
+                Append(0, "{\\\\\\\\\"" + item.Key + "\\\\\\\\\", \\\\\\\\\"" + item.Value + "\\\\\\\\\"}" + d);
             }
             AppendLine(0, "};");
         }

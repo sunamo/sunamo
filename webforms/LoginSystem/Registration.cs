@@ -138,7 +138,7 @@ namespace webforms
 
             if (DateBorn > global::MSStoredProceduresI.DateTimeMaxVal || DateBorn < global::SqlServerHelper.DateTimeMinVal)
             {
-                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné ;-" + "" + ".");
+                sb.AddItem("Datum narození nebylo v platném rozsahu. Zkuste zadat reálné" + " " + ";-" + "" + ".");
             }
 
             string vr = sb.ToString();

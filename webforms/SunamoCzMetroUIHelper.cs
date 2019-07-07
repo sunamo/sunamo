@@ -49,7 +49,7 @@ public class SunamoCzMetroUIHelper
         sb.AppendFormat("<{0} ", nazevTagu);
         for (int i = 0; i < atrrs.Length; i++)
         {
-            sb.AppendFormat("{0}=\\\\\"{1}\\\\\" ", atrrs[i], atrrs[++i]);
+            sb.AppendFormat("{0}=\\\\\\\\\"{1}\\\\\\\\\" ", atrrs[i], atrrs[++i]);
         }
         sb.Append(">");
 

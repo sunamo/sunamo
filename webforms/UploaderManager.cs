@@ -80,9 +80,9 @@ public class UploaderManager
         this.idAlbum = idAlbum;
         //this.mss = mss;
         exts = SH.Split(allowedExtension, ',');
-        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\\\\\";
-        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\\\\\";
-        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\\\\\";
+        this.pathAlbumFinal = pathAlbumFinal.TrimEnd('\\') + "\\\\\\\\\\";
+        this.pathAlbumFinalMin = pathAlbumFinalMin.TrimEnd('\\') + "\\\\\\\\\\";
+        this.pathAlbumFinalMinOpt = pathAlbumFinalMinOpt.TrimEnd('\\') + "\\\\\\\\\\";
         this.idUser = idUser;
         this.borderColor = borderColor;
         this.workWithDatabase = workWithDatabase;
@@ -113,8 +113,8 @@ public class UploaderManager
     }
 
     public string finalMinOpt = "";
-
-    public string ProcessFiles(IList<SunamoHttpPostedFile> files, out bool necoNauploadovano, out bool byloJizNeco, out List<string> vr)
+" + "
+ " + "   public string ProcessFiles(IList<SunamoHttpPostedFile> files, out bool necoNauploadovano, out bool byloJizNeco, out List<string> vr)
     {
         
         vr = new List<string>();
@@ -132,7 +132,7 @@ public class UploaderManager
             if (tp.TryParseInt(s))
             {
                 vr.Add(s);
-                hg.WriteRaw("Soubor" + " " + e.FileName + " " + "úspěšně nauploadován");
+                hg.WriteRaw("Soubor" + " " " + " " + " e.FileName " + "" + " " " + "úspěšně nauploadován");
             }
             else
             {
@@ -182,7 +182,7 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Maximální počet obrázků na 1 uživatele je" + " " + maxFilesCountOnAccount + ". " + "Vy jste tohoto limitu již dosáhli a soubor" + " " + e.FileName + " " + "nebude nauploadován";
+                    return "Maximální počet obrázků na 1 uživatele je" + " " " + " " + " maxFilesCountOnAccount " + "" + " ". " + "Vy jste tohoto limitu již dosáhli a soubor" + " " " + " " + " e.FileName " + "" + " " " + "nebude nauploadován";
                 }
             }
         }
@@ -194,7 +194,7 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
+            return "Soubor" + " " " + " " + " e.FileName " + "" + " " " + "nemá správnou příponu" + ".";
         }
 
         to = toFolderTempSlash + fn;
@@ -213,7 +213,7 @@ public class UploaderManager
                 {
                     allOk = false;
                 }
-                return "Soubor" + " " + to + " " + "již existoval a nepodařilo se jej smazat" + ".";
+                return "Soubor" + " " " + " " + " to " + "" + " " " + "již existoval a nepodařilo se jej smazat" + ".";
             }
         }
         e.SaveAs(to);
@@ -224,7 +224,7 @@ public class UploaderManager
         }
         catch
         {
-            return "error: Z nauploadovaného souboru" + " " + Path.GetFileName(to) + " " + "se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
+            return "error: Z nauploadovaného souboru" + " " " + " " + " Path.GetFileName(to) " + "" + " " " + "se nepodařilo vytvořit obrázek, soubor nebude nauploadován";
         }
 
 
@@ -232,7 +232,7 @@ public class UploaderManager
         if (!bmp.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
         {
             return "error: Obrázek nebyl ve formátu JPEG" + ".";
-        }
+" + "  " + "      }
         // || bmp.Height > bmp.Width
         if (e.FileName.StartsWith("DSC" + "_") )
         {
@@ -254,7 +254,7 @@ public class UploaderManager
                     {
                         allOk = false;
                     }
-                    return "Soubor" + " " + toMiddle + " " + "již existoval a nepodařilo se jej smazat" + ".";
+                    return "Soubor" + " " " + " " + " toMiddle " + "" + " " " + "již existoval a nepodařilo se jej smazat" + ".";
                 }
             }
 
@@ -274,12 +274,12 @@ public class UploaderManager
                         {
                             allOk = false;
                         }
-                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor" + " " + e.FileName + " " + "nebude nauploadován" + ".";
-                    }
+                        return "Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor" + " " " + " " + " e.FileName " + "" + " " " + "nebude nauploadován" + ".";
+" + "  " + "                  }
                 }
         }
         bmp.Dispose();
-        return "1";
+        return" + " "1";
     }
 
     /// <summary>
@@ -298,7 +298,7 @@ public class UploaderManager
             {
                 allOk = false;
             }
-            return "Soubor" + " " + e.FileName + " " + "nemá správnou příponu" + ".";
+            return "Soubor" + " " " + " " + " e.FileName " + "" + " " " + "nemá správnou příponu" + ".";
         }
         to = toFolderTempSlash + fn;
 
@@ -346,12 +346,12 @@ public class UploaderManager
         #region Nahrazování špatných znaků
         if (fileName.Contains("__"))
         {
-            fn = fn.Replace("__", "");
-        }
+            fn = fn.Replace("__", "";" + ";
+" + "        }
         if (fileName.Contains("|"))
         {
-            fn = fn.Replace("|", "");
-        }
+            fn = fn.Replace("|", "";" + ";
+" + "        }
         fn = FS.DeleteWrongCharsInFileName(fn, false);
         fn = FS.DeleteWrongCharsInDirectoryName(fn);
 
@@ -362,8 +362,8 @@ public class UploaderManager
     /// <summary>
     /// Je to veřejné, abych pak mohl zjistit například velikost nebo příponu(jpeg/jpg)
     /// </summary>
-    public string final = "";
-    public string finalMin = "";
+    public string final " + "" + " "";
+" + "  " + "  public string finalMin " + "" + " "";
     int convertToMaxWidth = 600;
     System.Drawing.Image bmp = null;
     /// <summary>
@@ -398,13 +398,13 @@ public class UploaderManager
         }
         if (!workWithDatabase && fileNameIsIDInTableRow)
         {
-            throw new Exception("Chcete použít pro jméno souboru ID z řádku tabulky ale máte !workWithDatabase");
-        }
+            throw new Exception("Chcete použít pro jméno souboru ID z řádku tabulky ale máte !workWithDatabase";" + ";
+" + "        }
         
-        string pridat = "";
-        if (!string.IsNullOrEmpty(code))
+        string pridat " + "" + " "";
+" + "  " + "      if (!string.IsNullOrEmpty(code))
         {
-            pridat = code + "\\\\\\";
+            pridat = code " + "" + " "\\\\\\\\\\";
         }
         final = pathAlbumFinal + pridat + fn;
         finalMin = pathAlbumFinalMin  + pridat + fn;

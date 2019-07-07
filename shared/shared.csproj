@@ -100,7 +100,6 @@
     <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayer.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresISql5.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerSql5.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\Helpers\CSharpHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\UlozToParser.cs" Link="" />
@@ -114,6 +113,7 @@
     <Compile Include="..\..\sunamo\shared\Collections\Converters\StringHexColorConverter.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseShared.cs" Link="" />
+    <Compile Include="CodeGenerator\CSharpClassesGenerator.cs" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstract.cs" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstractShared.cs" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Interfaces\IDatabaseLayer.cs" />
     <Compile Include="Interfaces\IFactoryColumnDB.cs" />
     <Compile Include="Interfaces\IXml.cs" />
+    <Compile Include="MSSQL\MSColumnsDBNotTranslateAble.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerInstance.cs" />
     <Compile Include="MSSQL\MSFactoryColumnDB.cs" />
     <Compile Include="MSSQL\MSSloupecDB.cs" />

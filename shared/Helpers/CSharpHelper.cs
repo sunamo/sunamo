@@ -31,7 +31,7 @@ public static partial class CSharpHelper
         switch (type)
         {
             case "string":
-                return "\"\"";
+                return "\\\\\\\\\"\\\\\\\\\"";
             case "bool":
                 return "false";
             case "float":
@@ -50,7 +50,7 @@ public static partial class CSharpHelper
             case "DateTime":
                 // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
                 return "SqlServerHelper.DateTimeMinVal";
-            case "byte[]":
+            case "byte" + "[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return "null";
             case "Guid":

@@ -226,6 +226,7 @@ public static partial  class CA
 
     /// <summary>
     /// Return A2 if start something with A1
+    /// Really different method than string, List<string>
     /// </summary>
     /// <param name="suMethods"></param>
     /// <param name="line"></param>
@@ -350,16 +351,14 @@ public static partial  class CA
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\\\\\")
+                //if (item == @"\\obj\\\\\\\\\\")
                 //{
-                //    if (files1[i].Contains(@"\obj\\\\\"))
-                //    {
+                //    if (files1[i].Contains(@"\obj    )               \\\\\\\\\"/    {
                 //        Debugger.Break();
                 //    }
                 //}
 
-                //if (files1[i].Contains(@"\obj\\\\\"))
-                //{
+                //if (files1[i].Contains(@"\obj    )               \\\\\\\\\"/{
                 //    Debugger.Break();
                 //}
 
@@ -406,6 +405,12 @@ public static partial  class CA
         return whereIsUsed2;
     }
 
+    /// <summary>
+    /// If some of A1 is match with A2
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="file"></param>
+    /// <returns></returns>
     public static bool MatchWildcard(List<string> list, string file)
     {
         return list.Any(d => SH.MatchWildcard(file, d));
@@ -676,12 +681,15 @@ public static partial  class CA
     }
 
     /// <summary>
+    /// Direct edit with List. With array is more diffucult, so not
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
     /// <param name="mySites"></param>
     /// <returns></returns>
     public static string[] RemoveStringsEmpty(string[] mySites)
     {
+        
+
         List<string> dd = new List<string>();
         foreach (string item in mySites)
         {
@@ -693,23 +701,7 @@ public static partial  class CA
         return dd.ToArray();
     }
 
-    /// <summary>
-    /// Direct edit collection
-    /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
-    /// </summary>
-    /// <param name="mySites"></param>
-    /// <returns></returns>
-    public static List<string> RemoveStringsEmpty(List<string> mySites)
-    {
-        for (int i = mySites.Count - 1; i >= 0; i--)
-        {
-            if (mySites[i] == string.Empty)
-            {
-                mySites.RemoveAt(i);
-            }
-        }
-        return mySites;
-    }
+    
 
     /// <summary>
     /// Direct edit collection

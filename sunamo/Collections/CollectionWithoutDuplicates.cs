@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 
@@ -21,6 +22,11 @@ System.Diagnostics.Debugger.Break();
     public CollectionWithoutDuplicates(int count)
     {
         c = new List<T>(count);
+    }
+
+    public CollectionWithoutDuplicates(IEnumerable<T> l)
+    {
+        c = l.ToList();
     }
 
     public bool Add(T t2)

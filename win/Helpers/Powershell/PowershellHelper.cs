@@ -46,7 +46,7 @@ namespace win.Helpers.Powershell
         }
 
         command = "wsl";
-        arguments = " bash -c \"github-linguist '" + linuxPath + "'\"";
+        arguments = " bash -c \\\\\\\\\"github-linguist '" + linuxPath + "'\\\\\\\\\"";
 
         var lines = PowershellRunner.InvokeProcess(command + ".exe", arguments);
 

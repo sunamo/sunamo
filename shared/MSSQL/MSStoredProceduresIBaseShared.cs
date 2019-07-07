@@ -2059,12 +2059,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int RandomValueFromColumnInt(string table, string column)
     {
-        return ExecuteScalarInt(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
+        return ExecuteScalarInt(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top" + " " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     public short RandomValueFromColumnShort(string table, string column)
     {
-        return ExecuteScalarShort(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
+        return ExecuteScalarShort(true, new SqlCommand("select" + " " + column + " " + "from" + " " + table + " " + "where" + " " + column + " " + "in (select top" + " " + "" + " " + column + " " + "from" + " " + table + " " + "order by newid())"));
     }
 
     /// <summary>
@@ -2199,7 +2199,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }
@@ -3109,7 +3109,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableLimit(string tableName, int limit)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " FROM" + " " + tableName);
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(comm);
     }

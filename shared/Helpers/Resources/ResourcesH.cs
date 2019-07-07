@@ -12,10 +12,22 @@ using System.Windows.Resources;
 
 /// <summary>
 /// Must be in desktop due to BitmapImage
+/// Dont require any initialization steps
+/// Path is entered like FS from project root
 /// </summary>
 public class ResourcesH : IResourceHelper
     {
-        public static ResourcesH ci = new ResourcesH();
+    /*
+            // Navigate to xaml page
+            Uri uri = new Uri("/Resources/Resource.txt", UriKind.Relative);
+            // absolute
+            Uri uriJpg = new Uri("pack://application:,,,/Wpf.Tests;component/Resources/Resource.jpg", UriKind.Absolute);
+            StreamResourceInfo info = Application.GetResourceStream(uri);
+            txtResource.Text = Encoding.UTF8.GetString(FS.StreamToArrayBytes(info.Stream));
+            imgResource.Source = new BitmapImage(uriJpg);
+     */
+
+    public static ResourcesH ci = new ResourcesH();
 
         private ResourcesH()
         {

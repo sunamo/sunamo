@@ -3,6 +3,32 @@ using System.Collections.Generic;
 using System.Text;
 public partial class CSharpHelperSunamo
 {
+    public static bool IsInterface(string item)
+    {
+        if (item[0] == 'I')
+        {
+            if (char.IsUpper(item[1]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static string ShortcutForControl(string name)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var item in name)
+        {
+            if (char.IsUpper(item))
+            {
+                sb.Append(item.ToString().ToLower());
+            }
+        }
+        return sb.ToString();
+    }
+
     /// <summary>
     /// Nonsense, cant type too many different output types to T. 
     /// Must cast manually

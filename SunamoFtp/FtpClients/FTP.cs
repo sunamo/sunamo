@@ -1084,7 +1084,7 @@ namespace SunamoFtp
         /// <param name="newFileName"></param>
         public override void renameRemoteFile(string oldFileName, string newFileName)
         {
-            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor " + "" + " " + oldFileName + " na " + newFileName);
+            OnNewStatus("Ve složce" + " " + ps.ActualPath + " " + "přejmenovávám soubor" + " " + "" + " " + oldFileName + " na " + newFileName);
             if (!logined)
             {
                 login();

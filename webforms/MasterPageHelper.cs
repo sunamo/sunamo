@@ -71,9 +71,9 @@ public class MasterPageHelper
                     if (item is LiteralControl)
                     {
                         LiteralControl sc = item as LiteralControl;
-                        if (sc.Text.Contains("<script" + " ") && !sc.Text.Contains("src=\"http"))
+                        if (sc.Text.Contains("<script" + " ") && !sc.Text.Contains("src=\\\\\\\\\"http"))
                         {
-                            sc.Text = sc.Text.Replace("src=\"", "src=\"../");
+                            sc.Text = sc.Text.Replace("src=\\\\\\\\\"", "src=\\\\\\\\\"../");
                         }
 
                     }
@@ -105,7 +105,7 @@ public class MasterPageHelper
     {
         if (page.Header != null)
         {
-            var myHtmlLink = new HtmlLink { Href = "http:" + "//" + page.Request.Url.Host + "/" + "img" + "/" + ms.ToString() + "/favicon.ico" };
+            var myHtmlLink = new HtmlLink { Href = "http" + ":" + "//" + page.Request.Url.Host + "/" + "img" + "/" + ms.ToString() + "/favicon.ico" };
             myHtmlLink.Attributes.Add("rel", "shortcut icon");
             myHtmlLink.Attributes.Add("type", "image/x-icon");
             page.Header.Controls.AddAt(0, myHtmlLink);

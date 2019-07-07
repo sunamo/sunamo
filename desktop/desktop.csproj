@@ -80,6 +80,9 @@
     <Compile Include="Controls\Collections\CheckBoxListUC.xaml.cs">
       <DependentUpon>CheckBoxListUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Collections\CompareInCheckBoxListUC.xaml.cs">
+      <DependentUpon>CompareInCheckBoxListUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\LoggerUC.xaml.cs">
       <DependentUpon>LoggerUC.xaml</DependentUpon>
     </Compile>
@@ -341,6 +344,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Collections\CheckBoxListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\CompareInCheckBoxListUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

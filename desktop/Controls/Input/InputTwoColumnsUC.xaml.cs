@@ -90,6 +90,7 @@ namespace desktop.Controls
                 if (!b.Value)
                 {
                     DialogResult = false;
+                    return;
                 }
             }
 

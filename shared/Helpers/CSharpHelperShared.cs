@@ -1,13 +1,13 @@
-﻿using sunamo;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public static partial class CSharpHelper{ 
 
-
-
-public static object DefaultValueForTypeObject(string type)
+public static partial class CSharpHelperShared
+{
+    public static object DefaultValueForTypeObject(string type)
     {
         if (type.Contains(AllStrings.dot))
         {
@@ -46,7 +46,7 @@ public static object DefaultValueForTypeObject(string type)
         throw new Exception("Nepodporovaný typ");
     }
 
-public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)
+    public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)
     {
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameClass);
@@ -54,7 +54,7 @@ public static string Dictionary(string nameClass, List<string> keys, StringVoid 
         CSharpGenerator inner = new CSharpGenerator();
         foreach (var item in keys)
         {
-            inner.AppendLine(2, "dict.Add(\\\\\"{0}\\\\\", \\\\\"{1}\\\\\");", item, randomValue.Invoke());
+            inner.AppendLine(2, "dict.Add(\\\\\\\\\"{0}\\\\\\\\\", \\\\\\\\\"{1}\\\\\\\\\");", item, randomValue.Invoke());
         }
 
         genCS.Ctor(1, ModifiersConstructor.Private, nameClass, inner.ToString());
@@ -62,3 +62,4 @@ public static string Dictionary(string nameClass, List<string> keys, StringVoid 
         return genCS.ToString();
     }
 }
+

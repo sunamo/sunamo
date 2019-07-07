@@ -29,7 +29,6 @@ using System.Collections.Generic;
         csg.Method(1, am + typSloupecIDS + " InsertToTable()", innerInsertToTable);
     }
 
-
     /// <summary>
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
     /// </summary>

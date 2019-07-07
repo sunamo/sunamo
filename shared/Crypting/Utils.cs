@@ -58,7 +58,7 @@ public partial class UtilsNonNetStandard
     /// <returns></returns>
     public static string WriteConfigKey(string key, string value)
     {
-        string s = "<add key=\\\\\"{0}\\\\\" value=\\\\\"{1}\\\\\" />" + Environment.NewLine;
+        string s = "<add key=\\\\\\\\\"{0}\\\\\\\\\" value=\\\\\\\\\"{1}\\\\\\\\\" />" + Environment.NewLine;
         return SH.Format2(s, key, value);
     }
 

@@ -178,7 +178,8 @@ public partial class FS
         }
     }
 
-    
+   
+
 
     /// <summary>
     /// Create all upfolders of A1 with, if they dont exist 
@@ -450,7 +451,7 @@ public static string WithEndSlash(string v)
 
 public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
         {
-            path = path.Replace("\\\\", AllStrings.bs);
+            path = path.Replace("\\", AllStrings.bs);
             if (!FS.ExistsFile(path))
             {
                 using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
@@ -1013,7 +1014,16 @@ public static List<string> GetFiles(string folderPath, bool recursive)
     /// <returns></returns>
     public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
         {
-            var list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
+        List<string> list = null;
+        try
+        {
+            list = new List<string>(Directory.GetFiles(folder, mask, searchOption));
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("GetFiles with path: " + folder, ex);
+            
+        }
             if (trimA1)
             {
                 list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));

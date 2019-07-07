@@ -152,58 +152,72 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
-    public static string ReplaceAll( string vstup, string zaCo, params string[] co)
-    {
-        return ReplaceAll(true, vstup, zaCo, co);
-    }
-
-    public static StringBuilder ReplaceAllSb(StringBuilder sb, string co, string zaCo)
-    {
-        return ReplaceAll(false, sb, zaCo, co);
-    }
-
-    public static string ReplaceAll(bool dontReplaceAll, string vstup, string zaCo, params string[] co)
-    {
-        StringBuilder sb = new StringBuilder(vstup);
-        return ReplaceAll(false, sb, zaCo, co).ToString();
-    }
-
-    /// <summary>
-    /// In difference with ReplaceAll2, A3 is params
-    /// 
-    /// </summary>
-    /// <param name="vstup"></param>
-    /// <param name="zaCo"></param>
-    /// <param name="co"></param>
-    /// <returns></returns>
-    private static StringBuilder ReplaceAll(bool dontReplaceAll, StringBuilder sb, string zaCo, params string[] co)
+    #region Replace methods
+    public static StringBuilder ReplaceAllSb(StringBuilder sb, string zaCo, params string[] co)
     {
         foreach (var item in co)
         {
-            sb = sb.Replace(item, zaCo);
-            if (!dontReplaceAll)
+            if (item == zaCo)
             {
-                while (sb.ToString().Contains(item))
-                {
-                    sb = sb.Replace(item, zaCo);
-                }
+                continue;
             }
+            sb = sb.Replace(item, zaCo);
+
         }
 
         return sb;
     }
 
+    public static string Replace(string t, string what, string forWhat)
+    {
+        return t.Replace(what, forWhat);
+    }
+
+    public static string ReplaceAll2(string vstup, string zaCo, string co, bool pairLines)
+    {
+        if (pairLines)
+        {
+            var from2 = SH.Split(co, Environment.NewLine);
+            var to2 = SH.Split(zaCo, Environment.NewLine);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+
+            return ReplaceAll2(vstup, co, zaCo);
+        }
+        else
+        {
+            return ReplaceAll2(vstup, zaCo, co);
+        }
+    }
+
+    /// <summary>
+    /// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <param name="zaCo"></param>
+    /// <param name="co"></param>
+    /// <returns></returns>
+    public static string ReplaceAll2(string vstup, string zaCo, string co)
+    {
+        return vstup.Replace( co, zaCo);
+    }
+
+    public static string ReplaceAll(string vstup, string zaCo, params string[] co)
+    {
+        foreach (var item in co)
+        {
+            vstup = vstup.Replace( item, zaCo);
+        }
+        return vstup;
+    } 
+    #endregion
+
     public static bool IsValidISO(string input)
     {
         // ISO-8859-1 je to samé jako latin1 https://en.wikipedia.org/wiki/ISO/IEC_8859-1
-        byte[] bytes = Encoding.GetEncoding("ISO-8859-" + "").GetBytes(input);
-        String result = Encoding.GetEncoding("ISO-8859-" + "").GetString(bytes);
+        byte[] bytes = Encoding.GetEncoding("ISO-8859" + "-" + "").GetBytes(input);
+        String result = Encoding.GetEncoding("ISO-8859" + "-" + "").GetString(bytes);
         return String.Equals(input, result);
     }
-
-    
-
-   
 
     public static string ReplaceByIndex(string s, string zaCo, int v, int length)
     {
@@ -404,7 +418,7 @@ public static partial class SH
     public static string ReplaceOnce(string input, string what, string zaco)
     {
 
-        if (input.Contains("na rozdíl od " + ""))
+        if (input.Contains("na rozdíl od" + " " + ""))
         {
 
         }
@@ -492,60 +506,9 @@ public static partial class SH
         return result;
     }
 
-    public static string ReplaceAll2(bool dontReplaceAll, string vstup, string zaCo, string co, bool pairLines)
-    {
-        if (pairLines)
-        {
-            var from2 = SH.Split(co, Environment.NewLine);
-            var to2 = SH.Split(zaCo, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
-
-            return ReplaceAll2(dontReplaceAll, vstup, co, zaCo);
-        }
-        else
-        {
-            return ReplaceAll2(vstup, zaCo, co);
-        }
-    }
-
     
 
-    public static string ReplaceAll2(bool dontReplaceAll, string vstup, string zaCo, string co)
-    {
-        if (dontReplaceAll)
-        {
-            return SH.ReplaceAll(dontReplaceAll, vstup, zaCo, co);// vstup.Replace(co, zaCo);
-        }
-        else
-        {
-            // needed, otherwise stack overflow
 
-            if (zaCo.Contains(co))
-            {
-                throw new Exception("Nahrazovaný prvek je prvkem jímž se nahrazuje" + ".");
-            }
-            if (co == zaCo)
-            {
-                throw new Exception("SH.ReplaceAll2 - parametry co a zaCo jsou stejné");
-            }
-
-            return SH.ReplaceAll(dontReplaceAll, vstup, zaCo, co);
-
-            
-        }
-    }
-
-/// <summary>
-/// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
-/// </summary>
-/// <param name="vstup"></param>
-/// <param name="zaCo"></param>
-/// <param name="co"></param>
-/// <returns></returns>
-    public static string ReplaceAll2(string vstup, string zaCo, string co)
-    {
-        return ReplaceAll2(false, vstup, zaCo, co);
-    }
 
 /// <summary>
     /// Return which a3 is contained in A1. if a2 and A3 contains only 1 element, check for contains these first element
@@ -927,10 +890,7 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
         return result.ToString();
     }
 
-public static string Replace(string t, string what, string forWhat)
-    {
-        return t.Replace(what, forWhat);
-    }
+
 
 /// <summary>
     /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
@@ -1648,7 +1608,7 @@ public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, b
 
             for (int i = 0; i < s.Count; i++)
             {
-                    s[i] = SH.ReplaceFromEnd(s[i], "\\\"", rep);
+                    s[i] = SH.ReplaceFromEnd(s[i], "\\\\\\\\\"", rep);
                 //}
             }
         }
