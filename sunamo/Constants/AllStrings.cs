@@ -55,6 +55,7 @@ using System.Text;
         public const string comma = ",";
         public const string dot = ".";
         public const string asterisk = "*";
+    
 
         /// <summary>
         /// semicolon
@@ -78,7 +79,8 @@ using System.Text;
         /// colon space
         /// </summary>
         public static string cs2 = ": ";
-        public const string bs2 = "\b";
+    public static char plus;
+    public const string bs2 = "\b";
     public const string hashtag = "#";
     public const string equal = "=";
     public const string ampersand = "&";

@@ -81,6 +81,26 @@ namespace desktop.Controls.Buttons
             InitializeComponent();
 
             SetAwesomeIcons();
+
+            SizeChanged += ImageButtons_SizeChanged;
+        }
+
+        private void ImageButtons_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+        }
+
+        public double HeightOfFirstVisibleButton()
+        {
+            foreach (var item in allButtons)
+            {
+                if (item.ActualHeight != 0)
+                {
+                    return item.ActualHeight;
+                }
+            }
+
+            return 0;
         }
 
         /// <summary>
@@ -99,6 +119,12 @@ namespace desktop.Controls.Buttons
 
             allButtons = CA.ToList<Button>(btnCopyToClipboard, btnClear, btnAdd, btnSelectAll, btnUnselectAll);
             this.Visibility = this.IsAllCollapsed() ? Visibility.Collapsed : Visibility.Visible;
+
+            foreach (var item in allButtons)
+            {
+                item.HorizontalAlignment = HorizontalAlignment.Center;
+                item.VerticalAlignment = VerticalAlignment.Center;
+            }
         }
 
         public bool IsAllCollapsed()

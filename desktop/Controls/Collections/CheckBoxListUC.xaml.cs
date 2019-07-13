@@ -63,8 +63,6 @@ namespace desktop.Controls.Collections
             InitializeComponent();
         }
 
-        
-
         /// <summary>
         /// A1 can be null
         /// </summary>
@@ -98,7 +96,7 @@ namespace desktop.Controls.Collections
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var h = this.ActualHeight - colButtons.ActualHeight;
+            var h = this.ActualHeight - colButtons.HeightOfFirstVisibleButton();
             r0.Height = new GridLength(h);
             lb.Height = h;
             

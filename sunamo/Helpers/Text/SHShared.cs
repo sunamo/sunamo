@@ -1577,7 +1577,14 @@ public static bool IsNumber(string str, params char[] nextAllowedChars)
         return true;
     }
 
-public static string GetTextBetweenTwoChars(string p, int begin, int end)
+    /// <summary>
+    /// Work like everybody excepts, from a {b} c return b
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="begin"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public static string GetTextBetweenTwoChars(string p, int begin, int end)
     {
         // a(1) - 1,3
         return p.Substring(begin + 1, end - begin - 1);
@@ -1621,7 +1628,7 @@ public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, b
 
             for (int i = 0; i < s.Count; i++)
             {
-                    s[i] = SH.ReplaceFromEnd(s[i], "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"", rep);
+                    s[i] = SH.ReplaceFromEnd(s[i], "\"", rep);
                 //}
             }
         }

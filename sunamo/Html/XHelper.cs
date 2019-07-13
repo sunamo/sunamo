@@ -217,12 +217,18 @@ using System.Xml.Linq;
             return null;
         }
 
+    /// <summary>
+    /// Is usage only in _Uap/SocialNetworksManager -> open for find out how looks input data and then move to RegexHelper
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="deli"></param>
+    /// <returns></returns>
         public static string ReturnValueAllSubElementsSeparatedBy(XElement p, string deli)
         {
             StringBuilder sb = new StringBuilder();
             string xml = XHelper.GetXml(p);
-            MatchCollection mc = Regex.Matches(xml, "<(?:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"[^\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"['\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|[^'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">])+>");
-            List<string> nahrazeno = new List<string>();
+        MatchCollection mc = Regex.Matches(xml, "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
+        List<string> nahrazeno = new List<string>();
             foreach (Match item in mc)
             {
                 if (!nahrazeno.Contains(item.Value))

@@ -1,6 +1,9 @@
 ﻿
 using System;
 using System.Text.RegularExpressions;
+/// <summary>
+/// Most NotTranslateAble class due to many regex and duplicated \
+/// </summary>
 public static class RegexHelper
 {
     public static Regex rHtmlScript = new Regex(@"<script[^>]*>[\s\S]*?</script>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -13,6 +16,7 @@ public static class RegexHelper
         Regex r = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
         return r.IsMatch(email);
     }
+
     public static Regex rUri = new Regex(@"(https?://[^\s]+)");
     //static Regex rUriOnlyOutsideTags = new Regex("https?:\/\/[^\s]*|<\/?\w+\b(?=\s|>)(?:='[^']*'|="[^ "]*" |=[^ '"][^\s>]*|[^>])*>|\&nbsp;John|(John)/gi");
     //static Regex rUriOnlyOutsideTags = new Regex("(text|simple)(?![^<]*>|[^<>]*</)");
@@ -26,6 +30,7 @@ public static class RegexHelper
     public static Regex isGuid = new Regex(@"^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$", RegexOptions.Compiled);
     public static Regex rImgTag = new Regex(@"<img\s+([^>]*)(.*?)[^>]*>");
     public static Regex rWpImgThumbnail = new Regex(@"(https?:\/\/([^\s]+)-([0-9]*)x([0-9]*).jpg)");
+    public static Regex rNonPairXmlTagsUnvalid = new Regex("<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
 
     public static bool IsColor(string entry)
     {

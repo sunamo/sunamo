@@ -62,11 +62,19 @@ public static partial class SunamoPageHelper
 
         sb.WriteRaw(" - ");
 
+        sb.WriteTagWithAttr("a", "href", "https://www.twitch.tv/sunamocz");
+        sb.WriteRaw("Watch how I'm coding");
+        sb.TerminateTag("a");
+
         //sb.WriteTagWithAttr("a", "href", "https://www.microsoft.com/cs-cz/store/apps/geocaching-tool/9nblggh5jqtz");
         //sb.WriteRaw("Moje Windows 10 aplikace pro GeoCaching");
         //sb.TerminateTag("a");
 
         //sb.WriteRaw(" - ");
+
+
+
+        sb.WriteRaw(" - ");
 
         sb.WriteTagWithAttr("a", "href", "http://jepsano.net");
         sb.WriteRaw("CZ Blog");

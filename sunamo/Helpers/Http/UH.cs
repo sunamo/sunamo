@@ -32,7 +32,7 @@ using System.Linq;
 
     public static string GetHost(string s)
     {
-        var u = CreateUri(s);
+        var u = CreateUri(AppendHttpIfNotExists( s));
         return u.Host;
     }
 

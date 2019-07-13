@@ -46,7 +46,8 @@ public partial class FS
         if (!deleted)
         {
             // confuse me, dir can exists
-            FS.CreateDirectory(withEndFlash + "1\\\\\\");
+            // Here seems to be OK on 8-7-19 (unit test)
+            FS.CreateDirectory(withEndFlash + @"1\" );
         }
         else
         {
@@ -259,8 +260,6 @@ public partial class FS
             return file;
         }
 
-        
-
         /// <summary>
         /// Create folder hiearchy and write
         /// </summary>
@@ -277,10 +276,6 @@ public partial class FS
             FS.WithoutEndSlash(ref fullPath);
             return fullPath + ext;
         }
-
-
-
-
 
         public static void CreateFileIfDoesntExists(string path)
         {
@@ -309,7 +304,7 @@ public partial class FS
         FS.WithEndSlash(ref pathDownload);
         FS.WithEndSlash(ref pathVideos0Kb);
 
-        var files = FS.GetFiles(pathDownload);
+        var files = FS.GetFiles(pathDownload, true);
         foreach (var item in files)
         {
             var path = item.Replace(pathDownload, pathVideos0Kb);

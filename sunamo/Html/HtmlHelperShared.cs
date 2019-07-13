@@ -12,6 +12,50 @@ using sunamo.Values;
 
 public static partial class HtmlHelper
     {
+    /// <summary>
+    /// Problematic with auto translate
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <returns></returns>
+    public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
+    {
+        List<string> jizNahrazeno = new List<string>();
+
+        MatchCollection mc = Regex.Matches(vstup, RegexHelper.rNonPairXmlTagsUnvalid.ToString());
+        List<string> col = new List<string>(AllLists.HtmlNonPairTags);
+
+        
+        foreach (Match item in mc)
+        {
+            string d = item.Value.Replace(" >", AllStrings.gt);
+            string tag = "";
+            if (item.Value.Contains(AllStrings.space))
+            {
+                tag = SH.GetFirstPartByLocation(item.Value, AllChars.space);
+            }
+            else
+            {
+                tag = d.Replace(AllStrings.slash, "").Replace(AllStrings.gt, "");
+            }
+            tag = tag.TrimStart(AllChars.lt).Trim().ToLower();
+            if (col.Contains(tag))
+            {
+                if (!item.Value.Contains("/>"))
+                {
+                    if (!jizNahrazeno.Contains(item.Value))
+                    {
+                        jizNahrazeno.Add(item.Value);
+                        string nc = item.Value.Substring(0, item.Value.Length - 1) + " />";
+                        vstup = vstup.Replace(item.Value, nc);
+                    }
+                }
+            }
+
+
+        }
+        return vstup;
+    }
+
     public static string ConvertTextToHtml(string p)
     {
         p = p.Replace(Environment.NewLine, "<br" + " /" + "");
@@ -559,42 +603,5 @@ private static bool HasTagAttr(HtmlNode item, string atribut, string hodnotaAtri
             return contains;
         }
 
-public static string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
-        {
-            List<string> jizNahrazeno = new List<string>();
-            
-            MatchCollection mc = Regex.Matches(vstup, "<(?:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"[^\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"['\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|'[^']*AllChars.lsf\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"]*|[^'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">])+>");
-            List<string> col = new List<string>(AllLists.HtmlNonPairTags);
 
-            //<(?:"[^"]*"['"]*|'[^']*AllChars.lsf"]*|[^'">])+>
-            foreach (Match item in mc)
-            {
-                string d = item.Value.Replace(" >", AllStrings.gt);
-                string tag = "";
-                if (item.Value.Contains(AllStrings.space))
-                {
-                    tag = SH.GetFirstPartByLocation(item.Value, AllChars.space);
-                }
-                else
-                {
-                    tag = d.Replace(AllStrings.slash, "").Replace(AllStrings.gt, "");
-                }
-                tag = tag.TrimStart(AllChars.lt).Trim().ToLower();
-                if (col.Contains(tag))
-                {
-                    if (!item.Value.Contains("/>"))
-                    {
-                        if (!jizNahrazeno.Contains(item.Value))
-                        {
-                            jizNahrazeno.Add(item.Value);
-                            string nc = item.Value.Substring(0, item.Value.Length - 1) + " />";
-                            vstup = vstup.Replace(item.Value, nc);
-                        }
-                    }
-                }
-
-
-            }
-            return vstup;
-        }
 }

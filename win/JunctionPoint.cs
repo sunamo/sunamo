@@ -73,11 +73,12 @@ public static class JunctionPoint
         /// </summary>
         private const uint IO_REPARSE_TAG_MOUNT_POINT = 0xA0000003;
 
-        /// <summary>
-        /// This prefix indicates to NTFS that the path is to be treated as a non-interpreted
-        /// path in the virtual file system.
-        /// </summary>
-        private const string NonInterpretedPathPrefix = @"\??\\\\\";
+    /// <summary>
+    /// \??\
+    /// This prefix indicates to NTFS that the path is to be treated as a non-interpreted
+    /// path in the virtual file system.
+    /// </summary>
+    private const string NonInterpretedPathPrefix = @"\??\";
 
         [Flags]
         private enum EFileAccess : uint

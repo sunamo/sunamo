@@ -41,7 +41,7 @@ namespace SunamoFtp
         /// <param name="initialDirectory"></param>
         public PathSelector(string initialDirectory)
         {
-            if (initialDirectory.Contains(":\\\\\\") || initialDirectory != "")
+            if (initialDirectory.Contains(":\\") || initialDirectory != "")
             {
                 firstTokenMustExists = true;
 

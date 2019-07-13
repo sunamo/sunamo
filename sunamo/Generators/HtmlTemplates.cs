@@ -9,7 +9,7 @@ public static partial  class HtmlTemplates
         //HtmlInjection.InjectInternalToHead(page, format);
     }
 
-    public const string htmlStartTitle = "<!DOCTYPE html PUBLIC \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"-//W3C//DTD XHTML 1.0 Transitional//EN\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"><html xmlns=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"http://www.w3.org/1999/xhtml\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ><head><title>";
+    public const string htmlStartTitle = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\" ><head><title>";
     /// <summary>
     /// Toto se m��e pou��vat pouze kdy� nechce� nic zadat do head, jinak pou�ij ostatn� konstanty zde
     /// </summary>
@@ -20,7 +20,7 @@ public static partial  class HtmlTemplates
 
     public static string GetH2(string title)
     {
-        return "<h2 static class=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"velkaPismena tl\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">" + title + "</h2>";
+        return "<h2 static class=\"velkaPismena tl\">" + title + "</h2>";
     }
 
     public static string NameValueBr(string name, string value)
@@ -41,7 +41,7 @@ public static partial  class HtmlTemplates
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string a(string href, string displayText)
     {
-        return "<a href=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"" + href + AllStrings.gt + displayText + "</a>";
+        return "<a href=\"" + href + AllStrings.gt + displayText + "</a>";
     }
 
     public static string trColspan2(string name, string value, bool pridavatDvojtecku)

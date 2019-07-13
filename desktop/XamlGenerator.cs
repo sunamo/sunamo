@@ -36,7 +36,7 @@ namespace desktop
                 for (int column = 0; column < columns; column++)
                 {
                     string cell = elements[row][column];
-                    cell = cell.Replace("><", $" Grid.Column=\\\\\"{column}\\\\\" Grid.Row=\\\\\"{row}\\\\\"><");
+                    cell = cell.Replace("><", $" Grid.Column=\"{column}\" Grid.Row=\"{row}\"><");
                     WriteRaw(cell);
                 }
             }
@@ -134,8 +134,7 @@ namespace desktop
         public T GetControl<T>()
         {
             string vr = sb.ToString();
-            // xmlns:x=\\\\\"http://schemas.microsoft.com/winfx/2006/xaml\\\\\"
-            vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\\\\\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\\\\\">");
+            vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
             var vrR = (T)XamlReader.Parse(vr);
             return vrR;
         }

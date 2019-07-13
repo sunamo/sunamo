@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 public partial class DictionaryHelper
 {
-    static Type type = typeof(DictionaryHelper);
+    
     public static List<KeyValuePair<T, int>> CountOfItems<T>(List<T> streets)
     {
         Dictionary<T, int> pairs = new Dictionary<T, int>();
@@ -16,18 +16,6 @@ public partial class DictionaryHelper
         var v = pairs.OrderByDescending(d => d.Value);
         var r = v.ToList();
         return r;
-    }
-
-    public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
-    {
-        ThrowExceptions.DifferentCountInLists(type, "GetDictionary", "keys", keys.Count, "values", values.Count);
-        Dictionary<Key, Value> result = new Dictionary<Key, Value>();
-        for (int i = 0; i < keys.Count; i++)
-        {
-            result.Add(keys[i], values[i]);
-        }
-
-        return result;
     }
 
     public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)

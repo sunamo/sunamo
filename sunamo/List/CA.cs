@@ -41,7 +41,12 @@ public static partial  class CA
 
     public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
     {
-        sb.AppendLine(SH.Join(AllChars.tab, en));
+        sb.AppendLine(JoinForGoogleSheetRow(en));
+    }
+
+    public static string JoinForGoogleSheetRow(IEnumerable en)
+    {
+        return SH.Join(AllChars.tab, en);
     }
 
     public static string GetNumberedList(List<string> input)
@@ -351,23 +356,10 @@ public static partial  class CA
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                //if (item == @"\\obj\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
-                //{
-                //    if (files1[i].Contains(@"\obj    )               \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/    {
-                //        Debugger.Break();
-                //    }
-                //}
-
-                //if (files1[i].Contains(@"\obj    )               \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"/{
-                //    Debugger.Break();
-                //}
-
-
                 if (Wildcard.IsMatch(files1[i], item))
                 {
                     files1.RemoveAt(i);
                 }
-
             }
         }
         else
