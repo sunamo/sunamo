@@ -1601,7 +1601,7 @@ public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWit
         return p.Replace("\r", replaceWith).Replace("\n", replaceWith).Replace("\t", replaceWith);
     }
 
-public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool trim, bool escapeQuoations, params string[] deli)
+public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool _trim, bool escapeQuoations, params string[] deli)
     {
         var s = SH.Split(v, deli);
         if (replaceNewLineBySpace)
@@ -1618,7 +1618,7 @@ public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, b
                 s[i] = SH.ReplaceAll2(s[i], AllStrings.space, AllStrings.doubleSpace);
             }
         }
-        if (trim)
+        if (_trim)
         {
             s = CA.Trim(s);
         }

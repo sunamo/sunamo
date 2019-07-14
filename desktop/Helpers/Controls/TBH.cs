@@ -1,4 +1,5 @@
 ﻿
+using desktop.Essential;
 using desktop.Helpers;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,25 @@ namespace desktop
     /// </summary>
     public class TextBlockHelper : TextBlockHelperBase
     {
+        public static void SetTextPostColon(TextBlock lblStatusDownload, string status)
+        {
+            status = SH.PostfixIfNotEmpty(status, AllStrings.colon);
+            SetText(lblStatusDownload, status);
+        }
+
+        public static void SetText(TextBlock lblStatusDownload, string status)
+        {
+            if (lblStatusDownload != null)
+            {
+                // Must be invoke because after that I immediately load it on ListBox
+                WpfApp.cd.Invoke(() => {
+                    lblStatusDownload.Text = status;
+                }
+                );
+            }
+
+        }
+
         #region Vypočítání optimální šířky dle velikosti
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();

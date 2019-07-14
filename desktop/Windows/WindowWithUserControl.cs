@@ -112,15 +112,15 @@ public class WindowWithUserControl : Window, IUserControlWithResult
                 uc_ChangeDialogResult(b);
             }
         }
+        else
+        {
+            uc_ChangeDialogResult(b);
+        }
     }
 
     private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        //AddUC();
 
-        var chbl = (CompareInCheckBoxListUC)userControl;
-
-        Title = chbl.chblAutoYes.RenderSize.ToString();
     }
 
     private void AddUC()

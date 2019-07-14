@@ -33,7 +33,7 @@ public class WindowHelper
         ShowExceptionWindow(e, Environment.NewLine);
     }
 
-    public static void ShowExceptionWindow(object e, string methodName = "")
+    public static string ShowExceptionWindow(object e, string methodName = "")
     {
         if (methodName != string.Empty)
         {
@@ -45,7 +45,9 @@ public class WindowHelper
 
         ShowTextResult result = new ShowTextResult(methodName + dump);
         WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
-        window.ShowDialog();
+        window.Show();
+
+        return dump;
     }
 
     public static void ShowDialog(WindowWithUserControl windowWithUserControl)

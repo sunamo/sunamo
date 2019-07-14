@@ -319,7 +319,12 @@ public static partial class SH
     {
         if (text.Length != 0)
         {
-            return text + postfix;
+            if (!text.EndsWith(postfix))
+            {
+
+
+                return text + postfix;
+            }
         }
         return text;
     }

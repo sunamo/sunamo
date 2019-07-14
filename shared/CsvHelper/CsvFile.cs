@@ -247,10 +247,10 @@ namespace desktop
         /// </summary>
         /// <param name="filePath">File path</param>
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(string filePath, bool hasHeaderRow, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(string filePath, bool hasHeaderRow, bool _trimColumns)
         {
-            Populate(filePath, null, hasHeaderRow, trimColumns);
+            Populate(filePath, null, hasHeaderRow, _trimColumns);
         }
 
         /// <summary>
@@ -259,10 +259,10 @@ namespace desktop
         /// <param name="filePath">File path</param>
         /// <param name="encoding">Encoding</param>
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(string filePath, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
         {
-            using (CsvReader reader = new CsvReader(filePath, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns })
+            using (CsvReader reader = new CsvReader(filePath, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
             {
                 PopulateCsvFile(reader);
             }
@@ -283,10 +283,10 @@ namespace desktop
         /// </summary>
         /// <param name="stream">Stream</param>
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(Stream stream, bool hasHeaderRow, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(Stream stream, bool hasHeaderRow, bool _trimColumns)
         {
-            Populate(stream, null, hasHeaderRow, trimColumns);
+            Populate(stream, null, hasHeaderRow, _trimColumns);
         }
 
         /// <summary>
@@ -295,10 +295,10 @@ namespace desktop
         /// <param name="stream">Stream</param>
         /// <param name="encoding">Encoding</param>
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(Stream stream, Encoding encoding, bool hasHeaderRow, bool _trimColumns)
         {
-            using (CsvReader reader = new CsvReader(stream, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns })
+            using (CsvReader reader = new CsvReader(stream, encoding) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
             {
                 PopulateCsvFile(reader);
             }
@@ -319,10 +319,10 @@ namespace desktop
         /// </summary>
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
         /// <param name="csvContent">Csv text</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(bool hasHeaderRow, string csvContent, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(bool hasHeaderRow, string csvContent, bool _trimColumns)
         {
-            Populate(hasHeaderRow, csvContent, null, trimColumns);
+            Populate(hasHeaderRow, csvContent, null, _trimColumns);
         }
 
         /// <summary>
@@ -331,10 +331,10 @@ namespace desktop
         /// <param name="hasHeaderRow">True if the file has a header row, otherwise false</param>
         /// <param name="csvContent">Csv text</param>
         /// <param name="encoding">Encoding</param>
-        /// <param name="trimColumns">True if column values should be trimmed, otherwise false</param>
-        public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool trimColumns)
+        /// <param name="_trimColumns">True if column values should be trimmed, otherwise false</param>
+        public void Populate(bool hasHeaderRow, string csvContent, Encoding encoding, bool _trimColumns)
         {
-            using (CsvReader reader = new CsvReader(encoding, csvContent) { HasHeaderRow = hasHeaderRow, TrimColumns = trimColumns })
+            using (CsvReader reader = new CsvReader(encoding, csvContent) { HasHeaderRow = hasHeaderRow, TrimColumns = _trimColumns })
             {
                 PopulateCsvFile(reader);
             }

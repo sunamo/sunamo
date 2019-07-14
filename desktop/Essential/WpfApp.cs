@@ -95,7 +95,7 @@ namespace desktop.Essential
                 //{
 
                 SetForeground(tbLastErrorOrWarning, fg);
-                    SetText(tbLastErrorOrWarning, status);
+                TextBlockHelper.SetText(tbLastErrorOrWarning, status);
 
                     if (lbLogsErrors != null)
                     {
@@ -114,7 +114,7 @@ namespace desktop.Essential
                 //{
 
                     SetForeground(tbLastOtherMessage, fg);
-                    SetText(tbLastOtherMessage, status);
+                    TextBlockHelper.SetText(tbLastOtherMessage, status);
 
                     if (lbLogsOthers != null)
                     {
@@ -176,18 +176,7 @@ namespace desktop.Essential
             
         }
 
-        private static void SetText(TextBlock lblStatusDownload, string status)
-        {
-            if (lblStatusDownload != null)
-            {
-                // Must be invoke because after that I immediately load it on ListBox
-                WpfApp.cd.Invoke(() => {
-                    lblStatusDownload.Text = status;
-                }
-                );
-            }
-            
-        } 
+       
         #endregion
 
         #region Async

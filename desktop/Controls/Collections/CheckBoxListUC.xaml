@@ -10,18 +10,19 @@
     <!--<StackPanel x:Name="spCheckBoxes">
             
     </StackPanel>-->
-
-    <Grid x:Name="grid" Background="Red">
+    <StackPanel Orientation="Vertical">
+    
+    <!--<Grid x:Name="grid" Background="Red">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" x:Name="r0"></RowDefinition>
             <RowDefinition ></RowDefinition>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
 
         <!--//Source=l, Path=l-->
         <!--ElementName=l, Path=l-->
         <!--ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListUC}}, Path=l.l}"-->
         <!--VerticalAlignment="Stretch"-->
-        <ListBox x:Name="lb" HorizontalContentAlignment="Stretch"  Background="Yellow" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+        <ListBox x:Name="lb" HorizontalContentAlignment="Stretch"   ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
@@ -29,7 +30,8 @@
         </ListBox.ItemTemplate>
     </ListBox>
 
-        <desktopControlButtons:ImageButtons Grid.Row="1" Background="Blue" x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
-        
-    </Grid>
+        <desktopControlButtons:ImageButtons Grid.Row="1"  x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
+
+    </StackPanel>
+    <!--</Grid>-->
 </UserControl>

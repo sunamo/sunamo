@@ -38,6 +38,8 @@ namespace desktop.Controls.Input
 
             cbEnteredHelper.AddValuesOfArrayAsItems(toMakeNameInTWithName, null, items);
 
+            cbEntered.SelectionChanged += CbEntered_Selected;
+
             Init(whatEnter);
         }
 
@@ -57,12 +59,7 @@ namespace desktop.Controls.Input
 
             if (AfterEnteredValue(cbEntered))
             {
-                if (Finished != null)
-                {
-                    // Stupid, see comment to ParentWindow.DialogResult
-                    //ParentWindow.DialogResult = true;
-                    Finished(cbEntered.Text);
-                }
+
                 DialogResult = true;
             }
         }
@@ -89,6 +86,7 @@ namespace desktop.Controls.Input
             cbEntered.Text = cbEntered.Text.Trim();
             if (cbEntered.Text != "")
             {
+                cbEntered.BorderThickness = new Thickness(0);
                 return true;
             }
             cbEntered.BorderThickness = new Thickness(2);
@@ -100,12 +98,21 @@ namespace desktop.Controls.Input
         {
             if (e.Key == Key.Enter)
             {
-                if (AfterEnteredValue(cbEntered))
+                
+            }
+        }
+
+        private void EnableBtn()
+        {
+            if (AfterEnteredValue(cbEntered))
+            {
+                if (cbEnteredHelper.Selected)
                 {
-                    if (Finished != null)
-                    {
-                        Finished(cbEntered.Text);
-                    }
+                    btnEnter.IsEnabled = true;
+                }
+                else
+                {
+                    btnEnter.IsEnabled = false;
                 }
             }
         }
@@ -118,7 +125,12 @@ namespace desktop.Controls.Input
             //DialogResult = true;
         }
 
-        public event VoidObject Finished;
+        
         public event VoidBoolNullable ChangeDialogResult;
+
+        private void CbEntered_Selected(object sender, RoutedEventArgs e)
+        {
+            EnableBtn();
+        }
     }
 }

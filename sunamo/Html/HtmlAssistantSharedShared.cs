@@ -7,13 +7,13 @@ using System.Text;
 using System.Web;
 
 public partial class HtmlAssistant{ 
-public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
+public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
         object o = divMain.Attributes[p];
         if (o != null)
         {
             string st = ((HtmlAttribute)o).Value;
-            if (trim)
+            if (_trim)
             {
                 st = st.Trim();
             }

@@ -1021,12 +1021,8 @@ public partial class FS
             return vr;
         }
 
-        /// <summary>
-        /// Vyhazuje výjimky, takže musíš volat v try-catch bloku
-        /// </summary>
-        /// <param name="p"></param>
-        public static void DeleteAllRecursivelyAndThenDirectory(string p)
-        {
+    public static void DeleteAllRecursively(string p, bool rootDirectoryToo = false)
+    {
         if (FS.ExistsDirectory(p))
         {
             string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
@@ -1039,9 +1035,22 @@ public partial class FS
             {
                 Directory.Delete(dirs[i], false);
             }
-            Directory.Delete(p, false);
+            if (rootDirectoryToo)
+            {
+                Directory.Delete(p, false);
+            }
+            
 
         }
+    }
+
+    /// <summary>
+    /// Vyhazuje výjimky, takže musíš volat v try-catch bloku
+    /// </summary>
+    /// <param name="p"></param>
+    public static void DeleteAllRecursivelyAndThenDirectory(string p)
+        {
+        DeleteAllRecursively(p, true);
         }
 
         public static string[] OnlyExtensions(List<string> cesta)

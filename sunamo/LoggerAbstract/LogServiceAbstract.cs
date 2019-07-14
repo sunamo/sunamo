@@ -20,10 +20,12 @@ namespace sunamo.LoggerAbstract
             return null;
         }
 
-        protected virtual async void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
+        public virtual async void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
         {
             
         }
+
+        public abstract  Task SaveToFile();
 
         protected abstract LogMessageAbstract<Color, StorageClass> CreateMessage();
 

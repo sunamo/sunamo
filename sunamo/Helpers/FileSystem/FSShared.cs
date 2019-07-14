@@ -604,10 +604,10 @@ public static List<string> GetFolders(string folder)
             return GetFolders(folder, SearchOption.TopDirectoryOnly);
         }
 
-    public static List<string> GetFolders(string folder, string masc, SearchOption so, bool trimA1 = false)
+    public static List<string> GetFolders(string folder, string masc, SearchOption so, bool _trimA1 = false)
     {
         var dirs = Directory.GetDirectories(folder, masc, so).ToList();
-        if (trimA1)
+        if (_trimA1)
         {
             CA.Replace(dirs, folder, string.Empty);
         }
@@ -644,12 +644,14 @@ public static List<string> GetFolders(string v, string contains)
             return rp.Substring(dex + 1);
         }
 
+    
+
     /// <summary>
     /// Copy file by ordinal way 
     /// </summary>
     /// <param name="jsFiles"></param>
     /// <param name="v"></param>
-public static void CopyFile(string jsFiles, string v)
+    public static void CopyFile(string jsFiles, string v)
         {
             File.Copy(jsFiles, v, true);
         }
@@ -1007,12 +1009,13 @@ public static List<string> GetFiles(string folderPath, bool recursive)
         }
 /// <summary>
     /// A1 have to be with ending backslash
+    /// A4 must have underscore otherwise is suggested while I try type true
     /// </summary>
     /// <param name="folder"></param>
     /// <param name="mask"></param>
     /// <param name="searchOption"></param>
     /// <returns></returns>
-    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool trimA1 = false)
+    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
         {
         List<string> list = null;
         try
@@ -1024,7 +1027,7 @@ public static List<string> GetFiles(string folderPath, bool recursive)
             throw new Exception("GetFiles with path: " + folder, ex);
             
         }
-            if (trimA1)
+            if (_trimA1)
             {
                 list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
             }

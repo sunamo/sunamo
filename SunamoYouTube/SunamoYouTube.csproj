@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.37.0.1488" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\GDataYoutube\GDataYoutube.csproj" />
+    <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+</Project>

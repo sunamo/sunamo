@@ -109,9 +109,9 @@ private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlN
             }
         }
 
-public static string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
+public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
-        return HtmlAssistant.GetValueOfAttribute(p, divMain, trim);
+        return HtmlAssistant.GetValueOfAttribute(p, divMain, _trim);
     }
 
 /// <summary>

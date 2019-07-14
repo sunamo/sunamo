@@ -1,5 +1,6 @@
 ﻿/// <summary>
 /// Dont use, instead of this IUserControlWithResult
+/// Only for closing is 
 /// </summary>
 public interface IResult
 {

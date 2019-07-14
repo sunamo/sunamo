@@ -7,28 +7,47 @@ using System.Windows.Controls;
 
 namespace desktop
 {
-    public class WindowResult : Window, IResult
+    /// <summary>
+    /// 2019-7-4 is use nowhere
+    /// </summary>
+    public class WindowResult : Window, IUserControlWithResult
     {
-        IResult iResult = null;
+        IUserControlWithResult iResult = null;
 
         public WindowResult(UserControl uc)
         {
-            if (uc is IResult)
+            if (uc is IUserControlWithResult)
             {
-                iResult = uc as IResult;
-                iResult.Finished += iResult_Finished;
+                iResult = uc as IUserControlWithResult;
+                iResult.ChangeDialogResult += IResult_ChangeDialogResult;
                 this.Width = uc.Width + 10;
                 this.Height = uc.Height + 40;
                 Content = uc;    
             }
         }
 
-        void iResult_Finished(object o)
+        private void IResult_ChangeDialogResult(bool? b)
         {
-            Finished(o);
+            DialogResult = b;
         }
 
+        public bool? DialogResult
+        {
+            set
+            {
+                if (ChangeDialogResult != null)
+                {
+                    ChangeDialogResult(value);
+                }
+            }
+        }
 
-        public event VoidObject Finished;
+        public void Accept(object input)
+        {
+            
+        }
+
+        
+        public event VoidBoolNullable ChangeDialogResult;
     }
 }

@@ -5,10 +5,22 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+/// <summary>
+/// Must use SelectionChanged of ComboBoxHelper, not ComboBox. Otherwise first in called in Control, then is set into Selected* properties and app goes wrong!!
+/// </summary>
 public class ComboBoxHelper
 {
     bool tagy = true;
     protected ComboBox cb = null;
+    public event SelectionChangedEventHandler SelectionChanged;
+
+    public ComboBox Cb
+    {
+        get
+        {
+            return cb;
+        }
+    }
 
     public static void AddRange2List(ComboBox cbInterpret, IList allInterprets)
     {
@@ -23,8 +35,6 @@ public class ComboBoxHelper
 
                 }
             }
-
-
         }
     }
 
@@ -43,6 +53,7 @@ public class ComboBoxHelper
     }
 
         protected string originalToolTipText = "";
+
         /// <summary>
         /// Objekt, ve kterém je vždy aktuální zda v tsddb něco je
         /// Takže se nelekni že to je promměná
@@ -58,7 +69,6 @@ public class ComboBoxHelper
                     return SelectedO.ToString().Trim() != "";
                 }
                 return false;
-
             }
         }
 
@@ -91,9 +101,16 @@ public class ComboBoxHelper
         void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedO = cb.SelectedItem;
-        // not need ValueFromTWithNameOrObject, TWithName has ToString
-        cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
+            // not need ValueFromTWithNameOrObject, TWithName has ToString
+            cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
+
+        SelectionChanged(sender, e);
         }
+
+    public void AddValuesOfEnumerableAsItems(IEnumerable l)
+    {
+        AddValuesOfArrayAsItems(null, null, l);
+    }
 
     public void AddValuesOfArrayAsItems(params object[] o)
     {
@@ -119,6 +136,10 @@ public class ComboBoxHelper
     public void AddValuesOfArrayAsItems(Func<object, string> toMakeNameInTWithName, RoutedEventHandler eh, params object[] o)
         {
         var enu = CA.ToList<object>(o);
+        if (enu[0].ToString().Trim() != string.Empty)
+        {
+            enu.Insert(0, string.Empty);
+        }
             int i = 0;
             foreach (object item in enu)
             {

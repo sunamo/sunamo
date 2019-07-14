@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="desktop.Controls.Input.SelectTwoValues"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop.Controls.Input"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        
+
+        <!--TextBlock on separate row to maximum space-->
+        <TextBlock x:Name="tbWhatEnter1" x:FieldModifier="public" Text="Lorem ipsum" Grid.Row="0" TextWrapping="Wrap" Margin="10,5,10,0"/>
+        <ComboBox x:Name="cbEntered1" KeyDown="CbEntered1_KeyDown"  x:FieldModifier="public" Grid.Row="1" FontSize="20" Margin="10,5,10,17" ></ComboBox>
+
+        <!--Intellisense suggest Selected but this is not event. SelectionChanged is right-->
+        <TextBlock x:Name="tbWhatEnter2" x:FieldModifier="public" Text="Lorem ipsum" Grid.Row="1" TextWrapping="Wrap" Margin="10,5,10,0"/>
+        <!--Must use SelectionChanged from Helper, because must set up variables!!!-->
+        <ComboBox x:Name="cbEntered2" KeyDown="CbEntered2_KeyDown" x:FieldModifier="public" Grid.Row="3" FontSize="20" Margin="10,5,10,17"></ComboBox>
+
+        <Button  Grid.Row="4" x:Name="btnEnter" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,5,10,17" Content="Enter" Click="BtnEnter_Click" ></Button>
+        
+        <TextBlock x:Name="tbHint" x:FieldModifier="public" Grid.Row="5"></TextBlock>
+    </StackPanel>
+</UserControl>

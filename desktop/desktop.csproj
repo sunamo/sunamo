@@ -105,6 +105,9 @@
     <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
       <DependentUpon>SelectOneValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectTwoValuesUC.xaml.cs">
+      <DependentUpon>SelectTwoValuesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,7 @@
     <Compile Include="Controls\ToggleSwitch\VerticalToggleSwitch.cs" />
     <Compile Include="DataTableHelper.cs" />
     <Compile Include="Data\BorderData.cs" />
+    <Compile Include="Data\DesktopSize.cs" />
     <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="ControlsGenerator.cs" />
@@ -275,6 +279,7 @@
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
+    <Compile Include="Interfaces\IUserControlWithSizeChange.cs" />
     <Compile Include="Interfaces\IWindowOpener.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -372,6 +377,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\SelectOneValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Input\SelectTwoValuesUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

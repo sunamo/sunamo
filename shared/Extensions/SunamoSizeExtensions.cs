@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public static partial class SunamoSizeExtensions
 {
-    public static System.Windows.Size ToSystemWindows(this sunamo.Data.SunamoSize ss)
+    public static System.Windows.Size ToSystemWindows(this SunamoSize ss)
     {
         return new System.Windows.Size(ss.Width, ss.Height);
     }

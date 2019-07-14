@@ -170,7 +170,6 @@
     <Compile Include="MSSQL\MSStoredProceduresI.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBaseShared2.cs" />
     <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
     <Compile Include="MSSQL\MSTableRowIDName.cs" />
     <Compile Include="MSSQL\MSTableRowParse.cs" />

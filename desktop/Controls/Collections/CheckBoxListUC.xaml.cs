@@ -20,7 +20,7 @@ namespace desktop.Controls.Collections
     /// <summary>
     /// for ChangeDialogResult return always null - must check returned values through via CheckedIndexes()
     /// </summary>
-    public partial class CheckBoxListUC : UserControl, IUserControlInWindow
+    public partial class CheckBoxListUC : UserControl, IUserControlInWindow, IUserControlWithSizeChange
     {
         #region IUserControlInWindow implementation
         public bool? DialogResult
@@ -34,6 +34,9 @@ namespace desktop.Controls.Collections
                 }
             }
         }
+
+        public string Title => "Check box list";
+
         public void Accept(object input)
         {
 
@@ -61,6 +64,13 @@ namespace desktop.Controls.Collections
         public CheckBoxListUC()
         {
             InitializeComponent();
+
+            Loaded += CheckBoxListUC_Loaded;
+        }
+
+        private void CheckBoxListUC_Loaded(object sender, RoutedEventArgs e)
+        {
+            //OnSizeChanged(new DesktopSize(ActualWidth, ActualHeight));
         }
 
         /// <summary>
@@ -69,6 +79,8 @@ namespace desktop.Controls.Collections
         /// <param name="list"></param>
         public void Init(List<string> list = null, bool defChecked = false)
         {
+            colButtons.MaxHeight = 16;
+
             l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
             l.CollectionChanged += L_CollectionChanged;
 
@@ -96,9 +108,7 @@ namespace desktop.Controls.Collections
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var h = this.ActualHeight - colButtons.HeightOfFirstVisibleButton();
-            r0.Height = new GridLength(h);
-            lb.Height = h;
+            OnSizeChanged(new DesktopSize( e.NewSize.Width, e.NewSize.Height));
             
         }
 
@@ -212,7 +222,24 @@ namespace desktop.Controls.Collections
             }
         }
 
-        
+        public void OnSizeChanged(DesktopSize s)
+        {
+            var firstButton = colButtons.HeightOfFirstVisibleButton();
+            var h = s.Height - firstButton;
+            //r0.Height = new GridLength(h);
+            lb.Height = lb.MaxHeight = lb.MinHeight = h;
+            lb.InvalidateVisual();
+
+            
+            
+            DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
+
+        }
+
+        public void Init()
+        {
+            Init(null, false);
+        }
     }
 
     public class CheckBoxListOperations

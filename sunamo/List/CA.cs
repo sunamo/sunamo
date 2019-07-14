@@ -523,12 +523,12 @@ public static partial  class CA
     /// <param name="start"></param>
     /// <param name="mySites"></param>
     /// <returns></returns>
-    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool trimBeforeFinding = false)
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool _trimBeforeFinding = false)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
             var val = mySites[i];
-            if (trimBeforeFinding)
+            if (_trimBeforeFinding)
             {
                 val = val.Trim();
             }

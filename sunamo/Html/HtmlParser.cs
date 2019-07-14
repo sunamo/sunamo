@@ -213,10 +213,10 @@ public class HtmlDocument2
 
     #region Get
 
-    public  string GetValueOfAttribute(string p, HtmlNode divMain, bool trim = false)
+    public  string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
 
-        return HtmlHelper.GetValueOfAttribute(p, divMain, trim);
+        return HtmlHelper.GetValueOfAttribute(p, divMain, _trim);
     }
     #endregion
 
