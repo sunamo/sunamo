@@ -144,7 +144,7 @@
     <Compile Include="Helpers\CSharpHelperShared.cs" />
     <Compile Include="Helpers\DrawingColorHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
-    <Compile Include="Helpers\Resources\EmbeddedResourcesH.cs" />
+    <Compile Include="Helpers\Resources\EmbeddedResourcesHShared.cs" />
     <Compile Include="Helpers\Resources\ResourcesH.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />

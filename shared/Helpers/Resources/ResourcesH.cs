@@ -14,6 +14,7 @@ using System.Windows.Resources;
 /// Must be in desktop due to BitmapImage
 /// Dont require any initialization steps
 /// Path is entered like FS from project root
+/// Must be in shared - required PresentationFramework.dll
 /// </summary>
 public class ResourcesH : IResourceHelper
     {

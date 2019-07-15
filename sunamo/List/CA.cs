@@ -260,12 +260,25 @@ public static partial  class CA
         return Enumerable.Repeat<string>(string.Empty, count).ToList();   
     }
 
+    /// <summary>
+    /// Return A1 which contains A2
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <param name="term"></param>
+    /// <returns></returns>
     public static List<string> ReturnWhichContains(List<string> lines, string term)
     {
         List<int> founded;
         return ReturnWhichContains(lines, term, out founded);
     }
 
+    /// <summary>
+    /// Return A1 which contains A2
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <param name="term"></param>
+    /// <param name="founded"></param>
+    /// <returns></returns>
     public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded)
     {
         founded = new List<int>();

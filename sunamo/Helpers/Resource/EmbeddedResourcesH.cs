@@ -7,10 +7,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+
 
 /// <summary>
-/// Must be in desktop due to BitmapImage
+/// 
 /// Require assembly and default namespace. 
 /// Content is referred like with ResourcesH - with fs path
 /// </summary>
@@ -18,7 +18,8 @@ public class EmbeddedResourcesH : IResourceHelper
     {
     /*usage:
 uri = new Uri("Wpf.Tests.Resources.EmbeddedResource.txt", UriKind.Relative);
-uriJpg = new Uri("Wpf.Tests.Resources.EmbeddedResource.jpg", UriKind.Relative);
+GetString(uri.ToString()) - the same string as passed in ctor Uri
+
      */
 
     /// <summary>
@@ -47,7 +48,7 @@ uriJpg = new Uri("Wpf.Tests.Resources.EmbeddedResource.jpg", UriKind.Relative);
      Assembly _entryAssembly = null;
      string defaultNamespace;
 
-     Assembly entryAssembly
+    protected Assembly entryAssembly
     {
         get
         {
@@ -65,20 +66,7 @@ uriJpg = new Uri("Wpf.Tests.Resources.EmbeddedResource.jpg", UriKind.Relative);
         return name;
         }
 
-        public BitmapImage GetBitmapImageSource(string name)
-        {
-            var imageSource = new BitmapImage();
-
-            using (var stream = entryAssembly.GetManifestResourceStream(GetResourceName(name)))
-            {
-
-                imageSource.BeginInit();
-                imageSource.StreamSource = stream;
-                imageSource.EndInit();
-            }
-
-            return imageSource;
-        }
+       
 
     /// <summary>
     /// If it's file, return its content
@@ -87,8 +75,9 @@ uriJpg = new Uri("Wpf.Tests.Resources.EmbeddedResource.jpg", UriKind.Relative);
     /// <returns></returns>
         public string GetString(string name)
         {
+        var s = GetStream(name);
 
-            return Encoding.UTF8.GetString(FS.StreamToArrayBytes(GetStream(name)));
+            return Encoding.UTF8.GetString(FS.StreamToArrayBytes(s));
         }
 
     /// <summary>

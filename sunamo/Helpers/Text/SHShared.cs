@@ -774,6 +774,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         var deli2 = CA.ToListString(deli).ToArray();
         var result = text.Split(deli2, stringSplitOptions).ToList();
         CA.RemoveStringsEmpty(result);
+        CA.Trim(result);
         return result;
     }
 

@@ -260,11 +260,16 @@ public  static partial class CA
                 {
                     var enumerable = (IEnumerable)item;
                     var type = enumerable.GetType();
-                    if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
+                    if (type == typeof(string))
+                    {
+                        result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+                    }
+                    else if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
                     {
                         // IEnumerable<char> => string
-
-                        result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
+                        //enumerable2 is not string, then I can add all to list
+                        result.AddRange(CA.ToListString2( enumerable));
+                        //
                     }
                     else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
                     {
@@ -332,6 +337,14 @@ public  static partial class CA
         list[j] = temp;
     }
 
+    /// <summary>
+    /// Return first of A2 which starts with  A1. Otherwise null
+    /// So, isnt finding occurences but find out something in A2 have right format. 
+    /// Method with shifted parameters working for searching occurences
+    /// </summary>
+    /// <param name="item2"></param>
+    /// <param name="v1"></param>
+    /// <returns></returns>
     public static string StartWith(string item2, params string[] v1)
     {
         return StartWith(item2, v1.ToList());
@@ -339,6 +352,8 @@ public  static partial class CA
 
     /// <summary>
     /// Return first of A2 which starts with  A1. Otherwise null
+    /// So, isnt finding occurences but find out something in A2 have right format. 
+    /// Method with shifted parameters working for searching occurences
     /// Cant be use if A1 is shorter than A2 (text vs textarea)
     /// </summary>
     /// <param name="item2"></param>

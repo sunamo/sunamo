@@ -61,8 +61,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDataYoutube", "..\Credenti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoLinguist", "SunamoLinguist\SunamoLinguist.csproj", "{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoYouTube", "SunamoYouTube\SunamoYouTube.csproj", "{BFEB6E2D-42AC-460C-B17B-C05493F2154A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -409,18 +407,6 @@ Global
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x64.Build.0 = Release|Any CPU
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.ActiveCfg = Release|Any CPU
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.Build.0 = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|x64.Build.0 = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Debug|x86.Build.0 = Debug|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|x64.ActiveCfg = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|x64.Build.0 = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|x86.ActiveCfg = Release|Any CPU
-		{BFEB6E2D-42AC-460C-B17B-C05493F2154A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

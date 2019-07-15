@@ -178,7 +178,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="isNotWhere"></param>
     /// <param name="greaterThanWhere"></param>
     /// <param name="lowerThanWhere"></param>
-    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i, AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere)
+    public static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i, AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere)
     {
         AddCommandParameteresArrays(comm, i, CA.ToArrayT<AB[]>(where, isNotWhere, greaterThanWhere, lowerThanWhere));
     }
