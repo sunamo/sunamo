@@ -1,4 +1,5 @@
-﻿using sunamo.Essential;
+﻿using sunamo;
+using sunamo.Essential;
 using sunamo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,11 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     /// </summary>
     private EmbeddedResourcesH()
         {
+        _entryAssembly = RH.AssemblyWithName(ThisApp.Name);
+        //Assembly.GetAssembly()
+            
         defaultNamespace = ThisApp.Name;
+        
         }
 
     /// <summary>
@@ -62,7 +67,7 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
 
         public string GetResourceName(string name)
         {
-            name = SH.Join(AllChars.dot, defaultNamespace, SH.ReplaceAll( name, AllStrings.dot, AllStrings.slash));
+            name = SH.Join(AllChars.dot, defaultNamespace, SH.ReplaceAll( name.TrimStart(AllChars.slash), AllStrings.dot, AllStrings.slash));
         return name;
         }
 

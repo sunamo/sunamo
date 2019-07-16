@@ -7,6 +7,8 @@ using sunamo.Values;
 
 public class CSharpGenerator : GeneratorCodeAbstract
 {
+    static Type type = typeof(CSharpGenerator);
+
     public CSharpGenerator()
     {
     }
@@ -39,6 +41,8 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     private void WriteAccessModifiers(AccessModifiers _public)
     {
+        string methodName = "WriteAccessModifiers";
+
         if (_public == AccessModifiers.Public)
         {
             sb.AddItem((object)"public");
@@ -57,7 +61,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            throw new Exception("Neimplementovaná výjimka v metodě WriteAccessModifiers.");
+            ThrowExceptions.NotImplementedCase(type, methodName);
         }
     }
 

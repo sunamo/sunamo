@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-    public class HtmlAttrValue
+/// <summary>
+/// Everything must be consts to use in AllHtmlAttrsValues
+/// </summary>
+public class HtmlAttrValue
     {
         public const string textCss = "text/css";
         public const string stylesheet = "stylesheet";
-        public static string server = "server";
-    public static string text = "text";
+        public const string server = "server";
+    public const string text = "text";
+    public const string radio = "radio";
+    public const string hoverable = "hoverable";
 }
 

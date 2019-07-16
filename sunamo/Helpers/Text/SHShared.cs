@@ -826,6 +826,10 @@ public static List<int> GetVariablesInString(string innerHtml)
 
     public static string FirstCharLower(string nazevPP)
     {
+        if (nazevPP.Length <2)
+        {
+            return nazevPP;
+        }
         string sb = nazevPP.Substring(1);
         return nazevPP[0].ToString().ToLower() + sb;
     }

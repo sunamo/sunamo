@@ -25,7 +25,8 @@ public class XH
     /// <returns></returns>
     public static string ReplaceSpecialHtmlEntity(string vstup)
     {
-        vstup = vstup.Replace("&rsquo;", "'");//
+        vstup = vstup.Replace("&rsquo;", "'");//
+
         vstup = vstup.Replace("&" + "lsquo" + ";", "'"); //¢
         return vstup;
     }

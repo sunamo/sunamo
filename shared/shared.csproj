@@ -198,6 +198,7 @@
     <Compile Include="Threading\TimeThreadPool.cs" />
     <Compile Include="UlozToParser.cs" />
     <Compile Include="Unsafe.cs" />
+    <Compile Include="Values\AllHtmlAttrsValues.cs" />
     <Compile Include="Values\AllHtmlTags.cs" />
     <Compile Include="Values\AllHtmlAttrs.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
@@ -221,6 +222,9 @@
       <Project>{94d983cc-4204-4270-aa27-eb86a6d84ca8}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources2\SystemWindowsControls.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

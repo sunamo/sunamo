@@ -16,6 +16,7 @@ public class ConvertPascalConvention //: IConvertConvention
     }
 
     /// <summary>
+    /// Wont include numbers
     /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
     /// písmena za odebranými znaky budou velké.
     /// hello world = helloWorld
@@ -74,6 +75,12 @@ public class ConvertPascalConvention //: IConvertConvention
         }
         return list;
     }
+
+    public static bool IsPascal(string r)
+    {
+        var s = ToConvention(r);
+        return r == s;
+    }
 }
 
 public class ConvertPascalConventionWithNumbers //: IConvertConvention
@@ -88,7 +95,14 @@ public class ConvertPascalConventionWithNumbers //: IConvertConvention
         throw new NotImplementedException();
     }
 
+    public static bool IsPascalWithNumber(string r)
+    {
+        var s = ToConvention(r);
+        return r == s;
+    }
+
     /// <summary>
+    /// Will include numbers
     /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
     /// písmena za odebranými znaky budou velké.
     /// hello world = helloWorld
@@ -145,6 +159,6 @@ public class ConvertPascalConventionWithNumbers //: IConvertConvention
                 dalsiVelke = true;
             }
         }
-        return sb.ToString();
+        return sb.ToString().Trim();
     }
 }

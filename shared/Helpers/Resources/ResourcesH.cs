@@ -11,14 +11,22 @@ using System.Windows.Resources;
 
 
 /// <summary>
-/// Must be in desktop due to BitmapImage
+/// CANT BE USED WITH UNIT TESTS. USE EmbeddedResourcesH
+/// 
 /// Dont require any initialization steps
 /// Path is entered like FS from project root
 /// Must be in shared - required PresentationFramework.dll
+/// 
+/// Cant load data from other than entry assembly
+/// 
+/// Assembly.GetEntryAssembly() returns null. Set the Application.ResourceAssembly property or use the pack://application:,,,/assemblyname;component/ syntax to specify the assembly to load the resource from.'
+/// Set Application.ResourceAssembly in unit tests is not allowed
+/// In non unit test app is not needed set Application.ResourceAssembly - automatically loading entry assembly (like AllProjectsSearch)
 /// </summary>
 public class ResourcesH : IResourceHelper
     {
     /*
+     * 
             // Navigate to xaml page
             Uri uri = new Uri("/Resources/Resource.txt", UriKind.Relative);
             // absolute
@@ -52,7 +60,8 @@ public class ResourcesH : IResourceHelper
 
     public Stream GetStream(string name)
     {
-        StreamResourceInfo info = Application.GetResourceStream(GetRelativeUri(name));
+        var uri = GetRelativeUri(name);
+        StreamResourceInfo info = Application.GetResourceStream(uri);
         return info.Stream;
     }
 }

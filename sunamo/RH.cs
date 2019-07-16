@@ -62,6 +62,17 @@ namespace sunamo
             }
         }
 
+        internal static Assembly AssemblyWithName(string name)
+        {
+            var ass = AppDomain.CurrentDomain.GetAssemblies();
+            var result = ass.Where(d => d.GetName().Name == name);
+            if (result.Count() == 0)
+            {
+                result = ass.Where(d => d.FullName == name);
+            }
+            return result.FirstOrDefault();
+        }
+
         /// <summary>
         /// Perform a deep Copy of the object.
         /// </summary>
