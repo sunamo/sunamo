@@ -25,8 +25,6 @@ namespace desktop.Controls.Collections
         public CompareInCheckBoxListUC()
         {
             InitializeComponent();
-
-            
         }
 
         private void CompareInCheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -55,7 +53,7 @@ namespace desktop.Controls.Collections
             
         }
 
-        public void Init(List<string> c, List<string> notToTranslate)
+        public void Init(List<string> autoYes, List<string> manuallyYes, List<string> manuallyNo, List<string> autoNo)
         {
             chbls = CA.ToList<CheckBoxListUC>(chblAutoYes, chblManuallyYes, chblManuallyNo, chblAutoNo);
 
@@ -65,10 +63,10 @@ namespace desktop.Controls.Collections
             }
 
             // First must call Init due to create instance of NotifyChangesCollection
-            chblAutoYes.Init( c, true);
+            chblAutoYes.Init( autoYes, true);
             chblManuallyYes.Init();
             chblManuallyNo.Init();
-            chblAutoNo.Init(notToTranslate, false);
+            chblAutoNo.Init(autoNo, false);
 
 
             chblAutoYes.EventOn(false, true, false, false, false);
@@ -91,6 +89,25 @@ namespace desktop.Controls.Collections
             SizeChanged += CompareInCheckBoxListUC_SizeChanged;
 
             CompareInCheckBoxListUC_SizeChanged(null, null);
+        }
+
+        string autoYes, manuallyYes, manuallyNo, autoNo = null;
+
+        /// <summary>
+        /// If I want save state to files, must be set up all four
+        /// </summary>
+        /// <param name="autoYes"></param>
+        /// <param name="manuallyYes"></param>
+        /// <param name="manuallyNo"></param>
+        /// <param name="autoNo"></param>
+        public void Init(string autoYes, string manuallyYes, string manuallyNo, string autoNo)
+        {
+            this.autoYes = autoYes;
+            this.manuallyYes = manuallyYes;
+            this.manuallyNo = manuallyNo;
+            this.autoNo = autoNo;
+
+            Init(TF.ReadAllLines(autoYes), TF.ReadAllLines(manuallyYes), TF.ReadAllLines(manuallyNo), TF.ReadAllLines(autoNo));
         }
 
         /// <summary>
@@ -118,6 +135,11 @@ namespace desktop.Controls.Collections
             MoveCheckBox(sender, chblManuallyYes, chblManuallyNo);
         }
 
+        public void Init(List<string> c1, List<string> c2)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Only uncheck
         /// </summary>
@@ -127,8 +149,12 @@ namespace desktop.Controls.Collections
             MoveCheckBox(sender, chblAutoYes, chblManuallyNo);
         }
 
+        int moved = 0;
+
         private void MoveCheckBox(object sender, CheckBoxListUC from, CheckBoxListUC to)
         {
+            moved++;
+
             var fromName = from.Name;
             var toName = to.Name;
 
@@ -151,7 +177,15 @@ namespace desktop.Controls.Collections
 
             // Switch of IsChecked will be perfomed after click
             to.l.l.Add(c);
-           
+
+            if (moved % 5 == 0)
+            {
+                TF.SaveLines(chblAutoYes.AllContent(), autoYes);
+                TF.SaveLines(chblManuallyYes.AllContent(), manuallyYes);
+                TF.SaveLines(chblManuallyNo.AllContent(), manuallyNo);
+                TF.SaveLines(chblAutoNo.AllContent(), autoNo);
+
+            }
         }
 
         CheckBox ch(object o)

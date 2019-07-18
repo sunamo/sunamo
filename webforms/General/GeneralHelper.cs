@@ -247,7 +247,7 @@ public class GeneralHelper
             toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\";
             if (!FS.ExistsDirectory(toFolderTempSlash))
             {
-                toFolderTempSlash += "\\";
+                toFolderTempSlash += @"\";
                 break;
             }
         }
@@ -272,7 +272,7 @@ public class GeneralHelper
             rc = RandomHelper.RandomStringWithoutSpecial(20);
             folder = GeneralHelper.MapPath("_/RawUploads/" + rc);
         }
-        return folder + "\\";
+        return folder + @"\";
     }
 
     public static string GetOrCreateCityFromDictionary(Dictionary<int, string> artistsNames, int oEventIDArtistHeadliner)

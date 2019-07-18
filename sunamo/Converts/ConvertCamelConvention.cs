@@ -31,11 +31,11 @@ public class ConvertCamelConventionWithNumbers
 {
     public static bool IsCamelWithNumber(string r)
     {
-        if (r.ToLower() == r)
+        if (r.ToLower() == r && !r.Contains(" "))
         {
-            return false;
+            return true;
         }
-        var s = ToConvention(r);
+        var s = ToConvention( r);
         
         return s == r;
     }

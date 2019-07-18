@@ -229,6 +229,12 @@ public static partial  class CA
 
     }
 
+    public static string StartWith(List<string> suMethods, string line)
+    {
+        string element = null;
+        return StartWith(suMethods, line, out element);
+    }
+
     /// <summary>
     /// Return A2 if start something with A1
     /// Really different method than string, List<string>
@@ -236,17 +242,22 @@ public static partial  class CA
     /// <param name="suMethods"></param>
     /// <param name="line"></param>
     /// <returns></returns>
-    public static string StartWith(List<string> suMethods, string line)
+    public static string StartWith(List<string> suMethods, string line, out string element)
     {
+        element = null;
+
         foreach (var method in suMethods)
         {
             if (line.StartsWith(method))
             {
+                element = method;
                 return line;
             }
         }
         return null;
     }
+
+
 
     public static List<T> CreateListAndInsertElement<T>(T el)
     {
@@ -574,7 +585,12 @@ public static partial  class CA
     }
 
     
-
+    /// <summary>
+    /// Return whether A1 contains with any of A2
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
     public static bool AnyElementEndsWith(string t, params string[] v)
     {
         foreach (var item in v)

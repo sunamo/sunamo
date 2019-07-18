@@ -33,4 +33,12 @@ using System.Windows.Controls;
         return v2;
     }
 
+    public static IEnumerable<object> CheckedContent(IEnumerable<CheckBox> chbs)
+    {
+        //chbs[0].IsChecked = true;
+        var indexes = chbs.Select((v, i) => new { v, i });
+        var where = indexes.Where(x => BTS.GetValueOfNullable(x.v.IsChecked));
+        return where.Select(d => d.v.Content);
     }
+
+}

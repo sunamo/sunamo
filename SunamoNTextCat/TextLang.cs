@@ -77,7 +77,7 @@ public class TextLang
     }
 
     /// <summary>
-    /// 
+    /// IF contains diacritic, return true
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>

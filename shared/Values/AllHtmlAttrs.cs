@@ -22,6 +22,8 @@ public class AllHtmlAttrs
             {
                 list.Add(item.ToLower());
             }
+
+            list.Sort(new SunamoComparerICompare.StringLength.Desc(SunamoComparer.StringLength.Instance));
         }
     }
 }

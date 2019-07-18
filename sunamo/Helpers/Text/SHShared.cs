@@ -227,8 +227,8 @@ public static partial class SH
     public static bool IsValidISO(string input)
     {
         // ISO-8859-1 je to samé jako latin1 https://en.wikipedia.org/wiki/ISO/IEC_8859-1
-        byte[] bytes = Encoding.GetEncoding("ISO-8859" + "-" + "").GetBytes(input);
-        String result = Encoding.GetEncoding("ISO-8859" + "-" + "").GetString(bytes);
+        byte[] bytes = Encoding.GetEncoding("ISO-8859" + "-" + "1").GetBytes(input);
+        String result = Encoding.GetEncoding("ISO-8859" + "-" + "1").GetString(bytes);
         return String.Equals(input, result);
     }
 

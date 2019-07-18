@@ -108,7 +108,8 @@ namespace desktop.Controls.Collections
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            OnSizeChanged(new DesktopSize( e.NewSize.Width, e.NewSize.Height));
+            // Cant be, otherwise set wrong size into checkbox and button will be out of window
+            //OnSizeChanged(new DesktopSize( e.NewSize.Width, e.NewSize.Height));
             
         }
 
@@ -183,7 +184,10 @@ namespace desktop.Controls.Collections
             return CheckBoxHelper.CheckedIndexes(l.l);
         }
 
-        
+        public IEnumerable<object> CheckedContent()
+        {
+            return CheckBoxHelper.CheckedContent(l.l);
+        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -193,6 +197,11 @@ namespace desktop.Controls.Collections
             {
                 l.OnCollectionChanged(CheckBoxListOperations.Check, sender); 
             }
+        }
+
+        internal List<string> AllContent()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

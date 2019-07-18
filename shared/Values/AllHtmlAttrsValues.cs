@@ -21,7 +21,8 @@ public class AllHtmlAttrsValues
             {
                 list.Add(item.GetValue(null).ToString());
             }
-            
+
+            list.Sort(new SunamoComparerICompare.StringLength.Desc(SunamoComparer.StringLength.Instance));
         }
     }
 }

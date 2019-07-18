@@ -68,6 +68,11 @@ public class TextOutputGenerator
         AppendLine(SH.Format2(text, p));
     }
 
+    public void AppendLine(StringBuilder text)
+    {
+        sb.AppendLine(text.ToString());
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void AppendLine(string text)
     {

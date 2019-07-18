@@ -8,6 +8,11 @@ using System.Text.RegularExpressions;
 
 namespace sunamo.Html
 {
+    /// <summary>
+    /// HtmlHelperText - for methods which NOT operate on HtmlAgiityHelper! 
+    /// HtmlAgilityHelper - getting new nodes
+    /// HtmlAssistant - Only for methods which operate on HtmlAgiityHelper! 
+    /// </summary>
     public class HtmlHelperText
     {
         static Type type = typeof(HtmlHelperText);
@@ -45,6 +50,12 @@ namespace sunamo.Html
             value = SH.ReplaceAll(value, "&" + "gt" + ";", "&" + "gt" + "; ");
             value = SH.ReplaceAll(value, "&" + "lt" + ";", " &" + "lt" + ";");
             return value;
+        }
+
+        public static bool IsHtmlEntity(string i)
+        {
+            i = i.TrimStart('&').TrimEnd(';');
+            return AllLists.htmlEntities.Contains(i);
         }
 
         public static List<string> GetContentOfTags(string text, string pre)

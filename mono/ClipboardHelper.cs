@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using sunamo;
@@ -45,7 +46,12 @@ namespace mono
 			throw new NotImplementedException();
 		}
 
-		public void SetList(List<string> d)
+        public void SetLines(IEnumerable lines)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetList(List<string> d)
 		{
 			throw new NotImplementedException();
 		}

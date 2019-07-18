@@ -7,7 +7,9 @@ using System.Text;
 using System.Web;
 
 /// <summary>
-/// Only for methods which operate on HtmlAgiityHelper! 
+/// HtmlHelperText - for methods which NOT operate on HtmlAgiityHelper! 
+/// HtmlAgilityHelper - getting new nodes
+/// HtmlAssistant - Only for methods which operate on HtmlAgiityHelper! 
 /// </summary>
 public partial class HtmlAssistant
 {

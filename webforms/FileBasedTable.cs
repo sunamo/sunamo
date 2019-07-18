@@ -5,7 +5,7 @@ public class FileBasedTable
 {
     public static byte[] GetSbf(string table, string column, int id)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + @"\" + column + @"\" + id.ToString() + ".sbf";
         if (!FS.ExistsFile(file))
         {
             return new byte[0];
@@ -15,7 +15,7 @@ public class FileBasedTable
 
     public static void SetSbf(string table, string column, int id, byte[] value)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + ".sbf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + @"\" + column + @"\" + id.ToString() + ".sbf";
         File.WriteAllBytes(file, value);
     }
 
@@ -38,7 +38,7 @@ public class FileBasedTable
 
     public static void DeleteSbf(string table, string column, int id)
     {
-        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + "\\" + column + "\\" + id.ToString() + "." + "stf";
+        string file = HostingEnvironment.ApplicationPhysicalPath + "_\\sbf\\" + table + @"\" + column + @"\" + id.ToString() + "." + "stf";
         File.Delete(file);
     }
 

@@ -451,7 +451,7 @@ public static string WithEndSlash(string v)
 
 public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
         {
-            path = path.Replace("\\", AllStrings.bs);
+            path = path.Replace(@"\", AllStrings.bs);
             if (!FS.ExistsFile(path))
             {
                 using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
@@ -575,6 +575,7 @@ public static string[] OnlyNames(string[] files2)
             return OnlyNames(CA.ToListString(files2)).ToArray();
         }
 /// <summary>
+/// No direct edit
         /// Returns with extension
         /// POZOR: Na rozdíl od stejné metody v swf tato metoda vrací úplně nové pole a nemodifikuje A1
         /// </summary>

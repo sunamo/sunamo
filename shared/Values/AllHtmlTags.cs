@@ -9,9 +9,10 @@ using System.Web.UI;
 /// </summary>
 public class AllHtmlTags
 {
+    /// <summary>
+    /// Sorted from longest to shortest due to comparing and finding right string
+    /// </summary>
     public static List<string> list = null;
-
-    
 
     public static void Initialize()
     {
@@ -24,6 +25,8 @@ public class AllHtmlTags
             {
                 list.Add(item.ToLower());
             }
+
+            list.Sort(new SunamoComparerICompare.StringLength.Desc(SunamoComparer.StringLength.Instance));
         }
     }
 }
