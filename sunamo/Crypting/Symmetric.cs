@@ -11,8 +11,8 @@ namespace shared.Crypting
     /// <summary>
     /// Symmetric encryption uses a single key to encrypt and decrypt. 
     /// Both parties (encryptor and decryptor) must share the same secret key.
-    /// Symetrick� �ifrov�n� pou��vaj�c� jeden kl�� pro krypt i dekrypt.
-    /// Ob� ��sti dekryptor i kryptor mus� sd�let stejn� kl��.
+    /// Symetricke sifrovani pouzivajici jeden klic pro krypt i dekrypt.
+    /// Obe casti dekryptor i kryptor musi sdilet stejny klic.
     /// </summary>
     public class Symmetric
     {
@@ -20,7 +20,7 @@ namespace shared.Crypting
         private const int _BufferSize = 2048;
 
         /// <summary>
-        /// Provide�i symetrick�ho �ifrov�n�.
+        /// Provideri symetrickeho sifrovani.
         /// </summary>
         public enum Provider
         {
@@ -55,8 +55,8 @@ namespace shared.Crypting
 
         /// <summary>
         /// Instantiates a new symmetric encryption object using the specified Provider.
-        /// Ulo��m do PP _crypto spr�vnou instanci dle A1. Vygeneruje n�hodn� kl�� a pokud !A2, tak i IV. Pokud A2, jako iV nastav�m _DefaultIntializationVector 
-        /// Automaticky vypo�te n�hodn� kl�� a ulo�� jej do PP Key.
+        /// Ulozim do PP _crypto spravnou instanci dle A1. Vygeneruje nahodny klic a pokud !A2, tak i IV. Pokud A2, jako iV nastavim _DefaultIntializationVector 
+        /// Automaticky vypocte nahodny klic a ulozi jej do PP Key.
         /// </summary>
         public Symmetric(Provider provider, bool useDefaultInitializationVector)
         {
@@ -93,8 +93,8 @@ namespace shared.Crypting
         /// <summary>
         /// Key size in bytes. We use the default key size for any given provider; if you 
         /// want to force a specific key size, set this property
-        /// Velikost kl��e v bajtech. My pou��v�me v�choz� velikost kl��e pro jak�hokoliv pou��van�ho providera. Pokud chce� nastavit vlastn� velikost kl��e, pou�ij tuto VV
-        /// Ukl�d� se do PP _crypto a _key, ale nep�en�� se na ��dn� bity - leda �e by si to ty objekty d�lali sami.
+        /// Velikost klice v bajtech. My pouzivame vychozi velikost klice pro jakohokoliv pouzivaneho providera. Pokud chces nastavit vlastni velikost klice, pouiij tuto VV
+        /// Uklada se do PP _crypto a _key, ale neprenes se na zadne bity - leda ze by si to ty objekty delali sami.
         /// </summary>
         public int KeySizeBytes
         {
@@ -109,8 +109,8 @@ namespace shared.Crypting
         /// <summary>
         /// Key size in bits. We use the default key size for any given provider; if you 
         /// want to force a specific key size, set this property
-        /// Velikost kl��e v bajtech. My pou��v�me v�choz� velikost kl��e pro jak�hokoliv pou��van�ho providera. Pokud chce� nastavit vlastn� velikost kl��e, pou�ij tuto VV
-        /// Ukl�d� se do PP _crypto a _key, ale nep�en�� se na ��dn� bajty - leda �e by si to ty objekty d�lali sami.
+        /// Velikost klice v bajtech. My pouzivame vychozi velikost klice pro jakohokoliv pouzivaneho providera. Pokud chces nastavit vlastni velikost klice, pouzij tuto VV
+        /// Uklada se do PP _crypto a _key, ale neprenes se na zadne bajty - leda ze by si to ty objekty delali sami.
         /// </summary>
         public int KeySizeBits
         {
@@ -124,7 +124,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// The key used to encrypt/decrypt data
-        /// GS kl��. P�i S nastav�m Min Max a Step hodnoty z _crypto.LegalKeySizes[0] p�evede na byty(/8)
+        /// GS klic. Pri S nastavim Min Max a Step hodnoty z _crypto.LegalKeySizes[0] prevede na byty(/8)
         /// </summary>
         public DataCrypt Key
         {
@@ -142,7 +142,7 @@ namespace shared.Crypting
         /// Using the default Cipher Block Chaining (CBC) mode, all data blocks are processed using
         /// the value derived from the previous block; the first data block has no previous data block
         /// to use, so it needs an InitializationVector to feed the first block
-        /// GS PP. P�i S ulo��m do IV do Min a Max Bytes stejnou hodnotu - osminu _crypto.BlockSize(�ili defakto velikost bloku
+        /// GS PP. Pri S ulozim do IV do Min a Max Bytes stejnou hodnotu - osminu _crypto.BlockSize(cili defakto velikost bloku
         /// </summary>
         public DataCrypt IntializationVector
         {
@@ -157,7 +157,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// generates a random Initialization Vector, if one was not provided
-        /// G n�hodn� IV
+        /// G nahodne IV
         /// </summary>
         public DataCrypt RandomInitializationVector()
         {
@@ -168,7 +168,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// generates a random Key, if one was not provided
-        /// Vygeneruje n�hodn� kl�� O _crypto a vr�t�m jej v O DataCrypt
+        /// Vygeneruje nahodny klic O _crypto a vratim jej v O DataCrypt
         /// </summary>
         public DataCrypt RandomKey()
         {
@@ -180,7 +180,7 @@ namespace shared.Crypting
         /// <summary>
         /// Ensures that _crypto object has valid Key and IV
         /// prior to any attempt to encrypt/decrypt anythingv
-        /// A2 zda se kryptuje. Pokud _key.IsEmpty a A2, vygeneruji do _crypto.Key n�hodn� kl��, jinak VV. To sam� jako s kl��em i s IV
+        /// A2 zda se kryptuje. Pokud _key.IsEmpty a A2, vygeneruji do _crypto.Key nahodny klic, jinak VV. To same jako s klicem i s IV
         /// </summary>
         private void ValidateKeyAndIv(bool isEncrypting)
         {
@@ -212,7 +212,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts the specified DataCrypt using provided key
-        /// Zak�duuji data A1 s kl��em A2. A2 OOP.
+        /// Zakoduuji data A1 s klicem A2. A2 OOP.
         /// </summary>
         public DataCrypt Encrypt(DataCrypt d, DataCrypt key)
         {
@@ -222,7 +222,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts the specified DataCrypt using preset key and preset initialization vector
-        /// Zkontroluji platnost kl��e a IV a pokud nebudou platn�, vygeneruji je. 
+        /// Zkontroluji platnost klice a IV a pokud nebudou platne, vygeneruji je. 
         /// Zakryptuji A1 objektem _crypto a G
         /// </summary>
         public DataCrypt Encrypt(DataCrypt d)
@@ -241,7 +241,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts the stream to memory using provided key and provided initialization vector
-        /// Zakryptuji proud A1 s kl��em A2 a IV A3. A2,3 OOP
+        /// Zakryptuji proud A1 s klicem A2 a IV A3. A2,3 OOP
         /// </summary>
         public DataCrypt Encrypt(Stream s, DataCrypt key, DataCrypt iv)
         {
@@ -252,7 +252,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts the stream to memory using specified key
-        /// Zakryptuji proud A1 s kl��em A1. A1 OOP
+        /// Zakryptuji proud A1 s klicem A1. A1 OOP
         /// </summary>
         public DataCrypt Encrypt(Stream s, DataCrypt key)
         {
@@ -262,7 +262,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Encrypts the specified stream to memory using preset key and preset initialization vector
-        /// Za�ifruje proud A1. Pokud neude platn� Iv nebo key, vygeneruji nov�.
+        /// Zasifruje proud A1. Pokud neude platny Iv nebo key, vygeneruji novy.
         /// </summary>
         public DataCrypt Encrypt(Stream s)
         {
@@ -288,7 +288,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts the specified data using provided key and preset initialization vector
-        /// Dekryptuje data A1 s kl��em A2 kter� OOP
+        /// Dekryptuje data A1 s klicem A2 ktery OOP
         /// </summary>
         public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, DataCrypt key)
         {
@@ -298,7 +298,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts the specified stream using provided key and preset initialization vector
-        /// Dekryptuje proud A1 s kl��em A2. A2 OOP
+        /// Dekryptuje proud A1 s klicem A2. A2 OOP
         /// </summary>
         public DataCrypt Decrypt(Stream encryptedStream, DataCrypt key)
         {
@@ -308,7 +308,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts the specified stream using preset key and preset initialization vector
-        /// Dekryptuje A1. Pokud kl�� a IV nebyly zad�ny, a budou pr�zdn�, VV
+        /// Dekryptuje A1. Pokud klic a IV nebyly zadany, a budou prazdne, VV
         /// </summary>
         public DataCrypt Decrypt(Stream encryptedStream)
         {
@@ -334,7 +334,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Decrypts the specified data using preset key and preset initialization vector
-        /// Dekryptuje data A1. Mus� b�t zad�n platn� kl�� a IV.
+        /// Dekryptuje data A1. Musi byt zadan platny klic a IV.
         /// </summary>
         public DataCrypt Decrypt(DataCrypt encryptedDataCrypt)
         {

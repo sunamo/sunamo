@@ -4,7 +4,7 @@ using System.Text;
 public partial class Utils{
     /// <summary>
     /// converts an array of bytes to a string Hex representation
-    /// P�evedu pole byt� A1 na hexadecim�ln� �et�zec.
+    /// Prevedu pole bytu A1 na hexadecimalni retezec.
     /// </summary>
     public static string ToHex(byte[] ba)
     {
@@ -25,7 +25,7 @@ public partial class Utils{
 
     /// <summary>
     /// converts from a string Base64 representation to an array of bytes
-    /// pokud je A1 null/L0, GN. Jinak se pokus�m p�ev�st na pole byt�-pokud A1 nebbude Base64 �et�zec, VV
+    /// pokud je A1 null/L0, GN. Jinak se pokusim prevest na pole bytu-pokud A1 nebbude Base64 retezec, VV
     /// </summary>
     public static byte[] FromBase64(string base64Encoded)
     {
@@ -46,7 +46,7 @@ public partial class Utils{
 
     /// <summary>
     /// converts from an array of bytes to a string Base64 representation
-    /// Pokud A1 null nebo L0, G SE. Jinak mi p�evede na Base64
+    /// Pokud A1 null nebo L0, G SE. Jinak mi prevede na Base64
     /// </summary>
     public static string ToBase64(byte[] b)
     {
@@ -60,7 +60,7 @@ public partial class Utils{
 
     /// <summary>
     /// converts from a string Hex representation to an array of bytes
-    /// P�evedu �et�zec v hexadexim�ln� form�tu A1 na pole byt�. Pokud nebude hex form�t(nap��kal nebude m�t sud� po�et znak�), VV
+    /// Prevedu retezec v hexadeximalni formatu A1 na pole bytu. Pokud nebude hex format(naprikal nebude mit sudy pocet znaku), VV
     /// </summary>
     public static byte[] FromHex(string hexEncoded)
     {

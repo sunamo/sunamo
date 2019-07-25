@@ -18,7 +18,7 @@ namespace shared.Crypting
     {
         /// <summary>
         /// Type of hash; some are security oriented, others are fast and simple
-        /// V��et mo�n�ch hashovac�ch provider� v .NETu
+        /// Vycet moznych hashovacich provideru v .NETu
         /// </summary>
         public enum Provider
         {
@@ -49,11 +49,11 @@ namespace shared.Crypting
         }
 
         /// <summary>
-        /// T��da pro po��t�n� Hashe
+        /// Trida pro pocitani Hashe
         /// </summary>
         private HashAlgorithm _Hash;
         /// <summary>
-        /// Naposledy vypo��tan� Hash
+        /// Naposledy vypocitani Hash
         /// </summary>
         private DataCrypt _HashValue = new DataCrypt();
 
@@ -94,7 +94,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Returns the previously calculated hash
-        /// G vypo��t�nou hodnotu hash.
+        /// G vypocitanou hodnotu hash.
         /// </summary>
         public DataCrypt Value
         {
@@ -103,7 +103,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Calculates hash on a stream of arbitrary length
-        /// Vypo��t� hash ze streamu A1.
+        /// Vypocity hash ze streamu A1.
         /// </summary>
         public DataCrypt Calculate(ref System.IO.Stream s)
         {
@@ -113,7 +113,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Calculates hash for fixed length <see cref="DataCrypt"/>
-        /// Vypo��t�m hash z A1 M CalculatePrivate a G
+        /// Vypocitam hash z A1 M CalculatePrivate a G
         /// </summary>
         public DataCrypt Calculate(DataCrypt d)
         {
@@ -124,8 +124,8 @@ namespace shared.Crypting
         /// Calculates hash for a string with a prefixed salt value. 
         /// A "salt" is random data prefixed to every hashed value to prevent 
         /// common dictionary attacks.
-        /// VLo��m do nov�ho pole o velikost A1+A2 nejd��ve A2 a hned za n�m A1. Vypo��t�m Hash M CalculatePrivate
-        /// Private znamen� �e ulo��m v�sledek do priv�tn� PP _HashValue
+        /// VLozim do noveho pole o velikost A1+A2 nejdrive A2 a hned za nim A1. Vypocitam Hash M CalculatePrivate
+        /// Private znamena ze ulozim vysledek do privatni PP _HashValue
         /// </summary>
         public DataCrypt Calculate(DataCrypt d, DataCrypt salt)
         {
@@ -137,7 +137,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Calculates hash for an array of bytes
-        /// Vypo��t�m Hash t��dou HashAlgorithm, ulo��m do _HashValue a G
+        /// Vypocitam Hash tridou HashAlgorithm, ulozim do _HashValue a G
         /// </summary>
         private DataCrypt CalculatePrivate(byte[] b)
         {
@@ -147,15 +147,15 @@ namespace shared.Crypting
 
         #region "  " + "CRC32 HashAlgorithm"
         /// <summary>
-        /// Vlastn� t��da pro po��t�n� CRC32 Hashe
+        /// Vlastni trida pro pocitani CRC32 Hashe
         /// </summary>
         private  class CRC32 : HashAlgorithm
         {
             private uint result = 0xffffffff;
             /// <summary>
-            /// Vypo�tu zbytek z p�edchoz�ho v�sledku a pak si logick�m OR vypo�tu index jeho� prvekm z [] crcLookup to za�ifruji 
-            /// U p�edchoz�ho v�sledku posledn� 2 ��sla (bajt), vyd�l�m to cel� 256 a vynuluji posledn�ch 6 znak�
-            /// Ud�l�m bitov� xor na poli  crcLookup s v�sledkem
+            /// Vypoctu zbytek z predchoziho vysledku a pak si logickem OR vypoctu index jehoz prvekm z [] crcLookup to zasifruji 
+            /// U predchoziho vysledku posledni 2 cisla (bajt), vydelim to cele 256 a vynuluji poslednich 6 znaku
+            /// Udelam bitovy xor na poli  crcLookup s vysledkem
             /// </summary>
             /// <param name="array"></param>
             /// <param name="ibStart"></param>
@@ -167,13 +167,13 @@ namespace shared.Crypting
                 {
                     lookup = (result & 0xff) ^ array[i];
                     result = ((result & 0xffffff00) / 0x100) & 0xffffff;
-                    // Ud�l�m bitov� xor na poli  crcLookup s v�sledkem
+                    // Udelam bitovy xor na poli  crcLookup s vysledkem
                     result = result ^ crcLookup[lookup];
                 }
             }
 
             /// <summary>
-            /// neguji bajty z v�sledku, obr�t�m je a reservuji a G
+            /// neguji bajty z vysledku, obratim je a reservuji a G
             /// </summary>
             /// <returns></returns>
             protected override byte[] HashFinal()
@@ -184,7 +184,7 @@ namespace shared.Crypting
             }
 
             /// <summary>
-            /// jako defaultn� v�sledek nastav� -1, hexadecim�ln� vyj�d�en� +1 je 0x1
+            /// jako defaultni vysledek nastavi -1, hexadecimalne vyjadrene +1 je 0x1
             /// </summary>
             public override void Initialize()
             {
@@ -193,7 +193,7 @@ namespace shared.Crypting
 
             #region crcLookup
             /// <summary>
-            /// Obsahuje 256 hex. ��sel, to znamen� �e velikost je 1024 bajt�
+            /// Obsahuje 256 hex. cisel, to znamena ze velikost je 1024 bajtu
             /// </summary>
             private uint[] crcLookup = {
                 0x0,

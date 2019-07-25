@@ -243,7 +243,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
                             }
                             else
                             {
-                                OnNewStatus("Nepodarilo se nacist prvek, pridejte n�jak� a akci opakujte");
+                                OnNewStatus("Nepodarilo se nacist prvek, pridejte nejake a akci opakujte");
                             }
                         }
                         

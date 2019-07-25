@@ -1,4 +1,5 @@
 ﻿using desktop.Helpers.Controls;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,17 +49,24 @@ namespace desktop.Controls.Collections
         public event VoidBoolNullable ChangeDialogResult;
         #endregion
 
+        public int Count => lb.Items.Count;
+
         public event Action<object, string, object> CollectionChanged;
         public NotifyChangesCollection<CheckBox> l = null;
-        public bool onCheck = true;
+        /// <summary>
+        /// Whether have raise CollectionChanged after check 
+        /// </summary>
+        public bool? onCheck = true;
         public bool onUnCheck = true;
+        public bool initialized = false;
+
+
 
         public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear)
         {
             this.onCheck = onCheck;
             this.onUnCheck = onUnCheck;
             l.EventOn(onAdd, onRemove, onClear);
-
         }
 
         public CheckBoxListUC()
@@ -79,31 +87,33 @@ namespace desktop.Controls.Collections
         /// <param name="list"></param>
         public void Init(List<string> list = null, bool defChecked = false)
         {
-            colButtons.MaxHeight = 16;
-
-            l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
-            l.CollectionChanged += L_CollectionChanged;
-
-            
-
-            colButtons.SelectAll += ColButtons_SelectAll;
-            colButtons.UnselectAll += ColButtons_UnselectAll;
-
-            lb.ItemsSource = l.l;
-
-            if (list != null)
+            if (!initialized)
             {
-                foreach (var item in list)
+                initialized = true;
+                colButtons.MaxHeight = 16;
+
+                l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
+                l.CollectionChanged += L_CollectionChanged;
+
+                colButtons.SelectAll += ColButtons_SelectAll;
+                colButtons.UnselectAll += ColButtons_UnselectAll;
+
+                lb.ItemsSource = l.l;
+
+                if (list != null)
                 {
-                    AddCheckbox(item, defChecked);
+                    foreach (var item in list)
+                    {
+                        AddCheckbox(item, defChecked);
+                    }
                 }
+
+                this.DataContext = this;
+
+                
+
+                SizeChanged += CheckBoxListUC_SizeChanged;
             }
-
-            this.DataContext = this;
-
-            l.CollectionChanged += L_CollectionChanged;
-
-            SizeChanged += CheckBoxListUC_SizeChanged;
         }
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -181,27 +191,28 @@ namespace desktop.Controls.Collections
 
         public IEnumerable<int> CheckedIndexes()
         {
-            return CheckBoxHelper.CheckedIndexes(l.l);
+            return CheckBoxListHelper.CheckedIndexes(l.l);
         }
 
         public IEnumerable<object> CheckedContent()
         {
-            return CheckBoxHelper.CheckedContent(l.l);
+            return CheckBoxListHelper.CheckedContent(l.l);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             s(sender,true);
 
-            if (onCheck)
+            if (onCheck.HasValue && onCheck.Value)
             {
-                l.OnCollectionChanged(CheckBoxListOperations.Check, sender); 
+                l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
+                
             }
         }
 
         internal List<string> AllContent()
         {
-            throw new NotImplementedException();
+            return CheckBoxListHelper.AllContent(l.l);
         }
 
         /// <summary>
@@ -211,15 +222,15 @@ namespace desktop.Controls.Collections
         /// <param name="b"></param>
         private void s(object sender, bool b)
         {
-            var s = ((FrameworkElement)sender);
-            var name = s.Tag;
-            Tag = sender;
-            var where = l.Where(d => d.Tag == s.Tag);
+                var s = ((FrameworkElement)sender);
+                var name = s.Tag;
+                Tag = sender;
+                var where = l.Where(d => d.Tag == s.Tag);
 
-            foreach (var item in where)
-            {
-                item.IsChecked = b;
-            }
+                foreach (var item in where)
+                {
+                    item.IsChecked = b;
+                }
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -231,18 +242,27 @@ namespace desktop.Controls.Collections
             }
         }
 
+        /// <summary>
+        /// new DesktopSize( columnGrowing.ActualWidth, rowGrowing.ActualHeight)
+        /// </summary>
+        /// <param name="s"></param>
         public void OnSizeChanged(DesktopSize s)
         {
-            var firstButton = colButtons.HeightOfFirstVisibleButton();
-            var h = s.Height - firstButton;
-            //r0.Height = new GridLength(h);
-            lb.Height = lb.MaxHeight = lb.MinHeight = h;
-            lb.InvalidateVisual();
+            if (Visibility != Visibility.Collapsed)
+            {
+                var firstButton = colButtons.HeightOfFirstVisibleButton();
+                var h = s.Height - firstButton;
+                //r0.Height = new GridLength(h);
+                lb.Height = lb.MaxHeight = lb.MinHeight = h;
+                //lb.InvalidateVisual();
+                //lb.Invali
 
-            
-            
-            DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
+                lb.UpdateLayout();
 
+                //DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
+
+                ThisApp.SetStatus(TypeOfMessage.Appeal, SH.Join(" , ", h, lb.ActualHeight.ToString(), lb.Height));
+            }
         }
 
         public void Init()

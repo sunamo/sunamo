@@ -17,9 +17,9 @@ public class NotifyChangesCollection<T> : IList<T>
     /// </summary>
     object sender;
 
-    public bool onAdd = true;
-    public bool onRemove = true;
-    public bool onClear = true;
+    public bool onAdd = false;
+    public bool onRemove = false;
+    public bool onClear = false;
 
     public void EventOn(bool onAdd, bool onRemove, bool onClear)
     {

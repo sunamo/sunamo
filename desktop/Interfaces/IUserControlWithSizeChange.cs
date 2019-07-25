@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IUserControlWithSizeChange : IUserControl
     {
-        void OnSizeChanged(DesktopSize maxSize);
+    /// <summary>
+    /// new DesktopSize( columnGrowing.ActualWidth, rowGrowing.ActualHeight)
+    /// </summary>
+    /// <param name="maxSize"></param>
+    void OnSizeChanged(DesktopSize maxSize);
     }
 

@@ -9,14 +9,14 @@ public class RHSQLite
 
     public static bool IsNullOrWhiteSpaceField(Type t, string vstup, string nazev)
     {
-        // t mus� b�t t��da ve kter� je A1, ne A1 samotn�!!
+        // t musi byt trida ve ktere je A1, ne A1 samotne!!
         FieldInfo fi =  t.GetField(nazev);
-        // Zde mus� b�t null
+        // Zde musi byt null
         string s = fi.GetValue(null).ToString();
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chyba = "Pol��ko" + " " +  nazev + " " + "nem��e b�t pr�zdn�";
+            chyba = "Polozko" + " " +  nazev + " " + "nemuze byt prazdna";
         }
         return vr;
     }
@@ -29,7 +29,7 @@ public class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaInsertedRows = new InsertedRows("Pol��ko" + " " + nazev + " " + "nem��e b�t pr�zdn�" + ". ");
+            chybaInsertedRows = new InsertedRows("Polozko" + " " + nazev + " " + "nemuze byt prazdna" + ". ");
         }
         return vr;
     }
@@ -42,7 +42,7 @@ public class RHSQLite
         bool vr = SH.IsNullOrWhiteSpace(s);
         if (vr)
         {
-            chybaChangedRows = new ChangedRows("Pol��ko" + " " + nazev + " " + "nem��e b�t pr�zdn�" + ". ");
+            chybaChangedRows = new ChangedRows("Polozko" + " " + nazev + " " + "nemuze byt prazdna" + ". ");
         }
         return vr;
     }

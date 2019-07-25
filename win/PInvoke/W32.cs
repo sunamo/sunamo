@@ -39,6 +39,9 @@ public class W32
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern IntPtr GlobalFree(IntPtr hMem);
 
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern uint EnumClipboardFormats(uint format);
+
     /// <summary>
     /// Use Marshal.GetLastWin32Error instead. https://stackoverflow.com/a/17918729/9327173
     /// </summary>

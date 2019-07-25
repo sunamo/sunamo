@@ -11,7 +11,7 @@ public static partial  class HtmlTemplates
 
     public const string htmlStartTitle = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\" ><head><title>";
     /// <summary>
-    /// Toto se m��e pou��vat pouze kdy� nechce� nic zadat do head, jinak pou�ij ostatn� konstanty zde
+    /// Toto se muze pouzivat pouze kdyz nechces nic zadat do head, jinak pouzij ostatni konstanty zde
     /// </summary>
     public const string htmlEndTitleBody = "/" + "/" + "title></head><body>";
     public const string htmlEndTitle = "/" + "/" + "title>";

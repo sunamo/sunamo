@@ -43,7 +43,9 @@ namespace desktop
 
         private void EnterOneValueUC_ChangeDialogResult(bool? b)
         {
-            Close();
+            // Close() + DialogResult = b - Dialog result can be only set when is show as the dialog
+            // Only DialogResult = b - works rightly with attach ChangeDialogResult or ShowDialog()
+            DialogResult = b;
         }
     }
 }

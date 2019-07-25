@@ -11,7 +11,7 @@ namespace shared.Crypting
     /// use the .Text property to set/get a string representation 
     /// use the .Hex property to set/get a string-based Hexadecimal representation 
     /// use the .Base64 to set/get a string-based Base64 representation 
-    /// Trida ktera uchovava bajty a p�ev�d� je mezi r�zn�mi form�ty.
+    /// Trida ktera uchovava bajty a prevede je mezi ruznymi formaty.
     /// </summary>
     public class DataCrypt
     {
@@ -26,12 +26,12 @@ namespace shared.Crypting
 
         /// <summary>
         /// Determines the default text encoding across ALL DataCrypt instances
-        /// V�choz� �k�dov�n�
+        /// Vychozi ekodovani
         /// </summary>
         public static System.Text.Encoding DefaultEncoding = System.Text.Encoding.GetEncoding("Windows-1252");
         /// <summary>
         /// Determines the default text encoding for this DataCrypt instance
-        /// K�dov�n� pro z�skav�n� string� a bajt�
+        /// Kodovani pro ziskavani stringu a bajtu
         /// </summary>
         public System.Text.Encoding Encoding = DefaultEncoding;
 
@@ -65,7 +65,7 @@ namespace shared.Crypting
         /// <summary>
         /// Creates new encryption data using the specified string and the 
         /// specified encoding to convert the string to a byte array.
-        /// Pokud je A1 v jin�m k�dov�n� ne� cp1250, pou�ij tento konstruktor
+        /// Pokud je A1 v jinem kodovani nez cp1250, pouzij tento konstruktor
         /// </summary>
         public DataCrypt(string s, System.Text.Encoding encoding)
         {
@@ -95,7 +95,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// allowed step interval, in bytes, for this data; if 0, no limit
-        /// NSN, pouze se do n� jednou ukl�d�
+        /// NSN, pouze se do ni jednou uklada
         /// </summary>
         public int StepBytes
         {
@@ -105,7 +105,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// allowed step interval, in bits, for this data; if 0, no limit
-        /// NSN, pouze se do n� jednou ukl�d�
+        /// NSN, pouze se do ni jednou uklada
         /// </summary>
         public int StepBits
         {
@@ -115,7 +115,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// minimum number of bytes allowed for this data; if 0, no limit
-        /// Minimim�ln� po�et bajt� v tomto O - PP _b
+        /// Minimimalni pocet bajtu v tomto O - PP _b
         /// </summary>
         public int MinBytes
         {
@@ -125,7 +125,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// minimum number of bits allowed for this data; if 0, no limit
-        /// Minim�ln� po�et byt� v t�to PP.
+        /// Minimalni pocet bytu v teto PP.
         /// </summary>
         public int MinBits
         {
@@ -135,7 +135,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// maximum number of bytes allowed for this data; if 0, no limit
-        /// Maxim�ln� po�et byt� v t�to PP.
+        /// Maximalni pocet bytu v teto PP.
         /// </summary>
         public int MaxBytes
         {
@@ -145,7 +145,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// maximum number of bits allowed for this data; if 0, no limit
-        /// Maxim�ln� po�et bit� v t�to PP.
+        /// Maximalni pocet bitu v teto PP.
         /// </summary>
         public int MaxBits
         {
@@ -156,8 +156,8 @@ namespace shared.Crypting
         /// <summary>
         /// Returns the byte representation of the data; 
         /// This will be padded to MinBytes and trimmed to MaxBytes as necessary!
-        /// Pokud M�m limit byt� a _b je nad limitem, ulo��m do _b jen bajty do limitu. 
-        /// Pokud m�m nopak v _b m�n� bajt� ne� je v _MinBytes, zkop�ruji bajty do pole byte[_MinBytes] a t�m je dopln�m.
+        /// Pokud Mam limit bytu a _b je nad limitem, ulozim do _b jen bajty do limitu. 
+        /// Pokud mam nopak v _b mene bajtu nez je v _MinBytes, zkopiruji bajty do pole byte[_MinBytes] a tam je doplnim.
         /// </summary>
         public byte[] Bytes
         {
@@ -188,8 +188,8 @@ namespace shared.Crypting
 
         /// <summary>
         /// Sets or returns text representation of bytes using the default text encoding
-        /// P�i S p�evedu do bajt� PP _b
-        /// P�i G z�sk�m �et�zec z pp _b - z�sk�m prvn� ��slo v _b a pokud bude 0 nebo v�t��, z�sk�m v�e do tohoto indexu z _b. Pokud bude _b null, G SE
+        /// Pri S prevedu do bajtu PP _b
+        /// Pri G ziskam retezec z pp _b - ziskam prvni cislo v _b a pokud bude 0 nebo vetsi, ziskam vse do tohoto indexu z _b. Pokud bude _b null, G SE
         /// </summary>
         public string Text
         {
@@ -217,7 +217,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Sets or returns Hex string representation of this data
-        /// P�evede z/na PP _b
+        /// Prevede z/na PP _b
         /// </summary>
         public string Hex
         {
@@ -227,7 +227,7 @@ namespace shared.Crypting
 
         /// <summary>
         /// Sets or returns Base64 string representation of this data
-        /// P�evede z/na PP _b
+        /// Prevede z/na PP _b
         /// </summary>
         public string Base64
         {

@@ -10,7 +10,7 @@
     <!--<StackPanel x:Name="spCheckBoxes">
             
     </StackPanel>-->
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
     
     <!--<Grid x:Name="grid" Background="Red">
         <Grid.RowDefinitions>
@@ -22,15 +22,22 @@
         <!--ElementName=l, Path=l-->
         <!--ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CheckBoxListUC}}, Path=l.l}"-->
         <!--VerticalAlignment="Stretch"-->
-        <ListBox x:Name="lb" HorizontalContentAlignment="Stretch"   ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
-        <ListBox.ItemTemplate>
+        <!--VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"-->
+        <!--important to show scrolling is just set up exactly height-->
+        <ListBox x:Name="lb"    ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
             <DataTemplate>
                 <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>
 
-        <desktopControlButtons:ImageButtons Grid.Row="1"  x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
+        <desktopControlButtons:ImageButtons Grid.Row="2"  x:Name="colButtons" x:FieldModifier="public"></desktopControlButtons:ImageButtons>
 
     </StackPanel>
     <!--</Grid>-->

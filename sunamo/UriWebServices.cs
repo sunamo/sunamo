@@ -552,6 +552,14 @@ Template for which I will find, have to be in derivates the same:
     /// </summary>
     public static class YouTube
     {
+        public static void SearchYouTubeSerialSerie(int parts, int serie, string name)
+        {
+            for (int i = 0; i < parts; i++)
+            {
+                PH.Start(YouTube.GetLinkToSearch(name + " " + serie + " x " + i));
+            }
+        }
+
         public static string GetLinkToVideo(string kod)
         {
             return "http://www.youtube.com/watch?v=" + kod;
@@ -572,8 +580,6 @@ Template for which I will find, have to be in derivates the same:
             return "http://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
         }
 
-        
-
         /// <summary>
         /// G null pokud se YT kód nepodaří získat
         /// </summary>
@@ -589,5 +595,13 @@ Template for which I will find, have to be in derivates the same:
             }
             return null;
         }
+    }
+
+    public static class CinemaMsk
+    {
+        public const string k3bohumin = "https://www.k3bohumin.cz/cz/search/?search_string=s";
+        public const string kosmos = "https://www.google.com/search?q=site%3Akinokosmos.cz+s";
+        public const string dkorlova = "https://www.google.com/search?q=site%3Adkorlova.cz+s";
+        public const string kinokarvina = "https://www.google.com/search?q=site%3Akinokarvina.cz+s";
     }
 }

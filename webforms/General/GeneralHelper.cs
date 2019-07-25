@@ -244,7 +244,7 @@ public class GeneralHelper
         string toFolderTempSlash = "";
         while (true)
         {
-            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());// + "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\";
+            toFolderTempSlash = GeneralHelper.MapPath("_/RawUploads/" + idUser + "/" + webAndType + "/" + Guid.NewGuid().ToString());
             if (!FS.ExistsDirectory(toFolderTempSlash))
             {
                 toFolderTempSlash += @"\";

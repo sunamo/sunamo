@@ -111,7 +111,7 @@ public class PH
                 b = @"C:\Users\n\AppData\Local\Vivaldi\Application\vivaldi.exe";
                 break;
             default:
-                    throw new Exception("Neimplementovany prohl�e�");
+                    throw new Exception("Neimplementovany prohliez");
                     break;
             }
             Process.Start(new ProcessStartInfo(b, NormalizeUri( s)));

@@ -12,15 +12,40 @@ using System.Windows.Controls.Primitives;
 /// <summary>
 /// With this is allowed use logging via ThisApp (has own statusbar)
 /// </summary>
-public class WindowWithUserControl : Window, IUserControlWithResult
+public class WindowWithUserControl : Window, IUserControlWithResult, IUserControlWithSizeChange
 {
     UserControl userControl = null;
     DockPanel dock = null;
     IUserControl uc = null;
     IUserControlInWindow iUserControlInWindow = null;
     IUserControlWithResult userControlWithResult = null;
-    DialogButtons dialogButtons = null;
+    
     bool addDialogButtons = false;
+    IUserControlWithSizeChange userControlWithSizeChange = null;
+
+    StatusBar statusBar = null;
+    DialogButtons dialogButtons = null;
+    Menu menu = null;
+
+    private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        var hMenu = ah(menu);
+        var staturBarH = ah(statusBar);
+        var dialogButtonsH = ah(dialogButtons);
+        var growingRow = ActualHeight - hMenu - staturBarH - dialogButtonsH ;
+        OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
+
+        Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
+    }
+
+    private double ah(FrameworkElement dialogButtons)
+    {
+        if (dialogButtons == null)
+        {
+            return 0;
+        }
+        return dialogButtons.ActualHeight;
+    }
 
     /// <summary>
     /// A1 can be IUserControlInWindow, if have own buttons for accepting
@@ -38,7 +63,28 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         dock = new DockPanel();
         dock.LastChildFill = true;
 
-        StatusBar statusBar = new StatusBar();
+        menu = new Menu();
+        DockPanel.SetDock(menu, Dock.Top);
+        dock.Children.Add(menu);
+
+        if (uc is IUserControlWithMenuItemsList)
+        {
+            IUserControlWithMenuItemsList userControlWithMenuItemsList = (IUserControlWithMenuItemsList)uc;
+
+            var miUc = MenuItemHelper.CreateNew(userControlWithMenuItemsList.Title);
+
+            foreach (var item in userControlWithMenuItemsList.MenuItems())
+            {
+                miUc.Items.Add(item);
+            }
+
+            miUc.UpdateLayout();
+            menu.Items.Add(miUc);
+        }
+
+        userControlWithSizeChange = uc as IUserControlWithSizeChange;
+
+        statusBar = new StatusBar();
         statusBar.Height = 25;
 
         // Stupid - I have to save reference to control, because contains data
@@ -77,7 +123,10 @@ public class WindowWithUserControl : Window, IUserControlWithResult
         AddUC();
 
         Loaded += WindowWithUserControl_Loaded;
+        SizeChanged += WindowWithUserControl_SizeChanged;
     }
+
+    
 
     private void DialogButtons_ChangeDialogResult(bool? b)
     {
@@ -194,6 +243,19 @@ public class WindowWithUserControl : Window, IUserControlWithResult
             iUserControlInWindow.Accept(input);
         }
 
+        
+    }
+
+    public void OnSizeChanged(DesktopSize maxSize)
+    {
+        if (userControlWithSizeChange != null)
+        {
+            userControlWithSizeChange.OnSizeChanged(maxSize);
+        }
+    }
+
+    public void Init()
+    {
         
     }
 }

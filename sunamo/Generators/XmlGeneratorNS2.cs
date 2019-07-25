@@ -6,10 +6,10 @@ using System.IO;
 using System.Diagnostics;
 
 /// <summary>
-/// Na�el jsem je�t� t��du DotXml ale ta umo��uje vytv��et jen dokumenty ke bude root ThisApp.Name
-/// A nebo moje vlastn� XML t��dy, ale ty um� vytv��et jen t��dy bez rozs�hlej��ho xml vno�en�.
-/// Element - prvek kter�mu se zapisuj� ihned i innerObsah. M��e b�t i pr�zdn�.
-/// Tag - prvek kter�mu to mohu zapsat pozd�ji nebo v�bec.
+/// Nasel jsem jeste tridu DotXml ale ta umoznuje vytvaret jen dokumenty ke bude root ThisApp.Name
+/// A nebo moje vlastni XML tridy, ale ty umi vytvaret jen tridy bez rozsahlejesho xml vnoreni.
+/// Element - prvek kteremu se zapisuje ihned i innerObsah. Muze byt i prazdne.
+/// Tag - prvek kteremu to mohu zapsat pozdeji nebo vubec.
 /// </summary>
 public  class XmlGeneratorNS2
 {

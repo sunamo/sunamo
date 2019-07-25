@@ -21,7 +21,6 @@ public class EmbeddedResourcesHShared : EmbeddedResourcesH
 
         using (var stream = entryAssembly.GetManifestResourceStream(GetResourceName(name)))
         {
-
             imageSource.BeginInit();
             imageSource.StreamSource = stream;
             imageSource.EndInit();

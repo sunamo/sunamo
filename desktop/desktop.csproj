@@ -230,6 +230,7 @@
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\CheckBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\CheckBoxListHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />

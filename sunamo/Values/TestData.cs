@@ -42,6 +42,6 @@ using System.Text;
     public static readonly List<int> list12 = CA.ToInt(CA.ToList<int>(1, 2));
     public static readonly List<int> list1 = CA.ToInt(CA.ToList<int>(1));
     public static readonly List<int> list2 = CA.ToInt(CA.ToList<int>(2));
-
+    public static readonly List<string> list100Items = LinearHelper.GetStringListFromTo(0, 99);
 }
 
