@@ -177,7 +177,7 @@ public class ThrowExceptions
             //}
 #endif
             DebugLogger.Instance.WriteLine(exception);
-            //throw new Exception(exception);
+            throw new Exception(exception);
             return false;
         }
         return true;

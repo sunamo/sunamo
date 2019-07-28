@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// Interaction logic for SelectOneValue.xaml
+    /// 
     /// </summary>
     public partial class SelectOneValue : UserControl, IUserControlInWindow, IUserControlWithResult
     {
@@ -43,6 +43,14 @@ namespace desktop.Controls.Input
             Init(whatEnter);
         }
 
+        public string SelectedItem
+        {
+            get
+            {
+                return cbEntered.Text;
+            }
+        }
+
         public void Init(string whatEnter)
         {
             tbWhatEnter.Text = "Enter or select" + " " + whatEnter;
@@ -55,11 +63,8 @@ namespace desktop.Controls.Input
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
         {
-            
-
             if (AfterEnteredValue(cbEntered))
             {
-
                 DialogResult = true;
             }
         }
@@ -83,7 +88,7 @@ namespace desktop.Controls.Input
 
         private bool AfterEnteredValue(ComboBox cbEntered)
         {
-            cbEntered.Text = cbEntered.Text.Trim();
+            cbEntered.Text = SelectedItem.Trim();
             if (cbEntered.Text != "")
             {
                 cbEntered.BorderThickness = new Thickness(0);
@@ -125,7 +130,6 @@ namespace desktop.Controls.Input
             //DialogResult = true;
         }
 
-        
         public event VoidBoolNullable ChangeDialogResult;
 
         private void CbEntered_Selected(object sender, RoutedEventArgs e)

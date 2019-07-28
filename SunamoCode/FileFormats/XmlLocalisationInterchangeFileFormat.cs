@@ -23,36 +23,19 @@ namespace SunamoCode
             return Langs.en;
         }
 
+
+
         /// <summary>
-        /// A1 je xml s nepreparovaným obsahem
+        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename(
+        /// A2 je xml s nepreparovaným obsahem
         /// </summary>
         /// <param name="enS"></param>
         /// <returns></returns>
-        public static void TrimStringResources(string fn)
+        public static void TrimStringResources(Langs toL, string fn)
         {
-            string enS = File.ReadAllText(fn);
-            XmlNamespacesHolder h = new XmlNamespacesHolder();
-            h.ParseAndRemoveNamespaces(enS);
-            var enB = BTS.ConvertFromUtf8ToBytes(enS);
-            XDocument xd;
-
-            using (MemoryStream oStream = new MemoryStream(enB.ToArray()))
-            using (XmlReader oReader = XmlReader.Create(oStream))
-            {
-                xd = XDocument.Load(oReader);
-            }
-
-            XHelper.AddXmlNamespaces(h.nsmgr);
-
-            
-
-            XElement xliff = XHelper.GetElementOfName(xd, "xliff");
-            XElement file = XHelper.GetElementOfName(xliff,  "file");
-            XElement body = XHelper.GetElementOfName(file, "body");
-            XElement group = XHelper.GetElementOfName(body, "group");
-            IEnumerable<XElement> trans_units = XHelper.GetElementsOfName(group, tTransUnit);
+            var d= GetTransUnits(toL, fn);
             List<XElement> tus = new List<XElement>();
-            foreach (XElement item in trans_units)
+            foreach (XElement item in d.trans_units)
             {
                 XElement source = item.Element(XName.Get("source"));
                 XElement target = item.Element(XName.Get("target"));
@@ -61,10 +44,39 @@ namespace SunamoCode
                 TrimValueIfNot(target);
             }
 
-            xd.Save(fn);
+            d.xd.Save(fn);
         }
 
-        const string tTransUnit = "trans-unit";
+        /// <summary>
+        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename(
+        /// A2 can be null
+        /// </summary>
+        /// <param name="fn"></param>
+        /// <param name="xd"></param>
+        /// <returns></returns>
+        public static XlfData GetTransUnits(Langs toL, string fn)
+        {
+            string enS = File.ReadAllText(fn);
+            XlfData d = new XlfData();
+
+            XmlNamespacesHolder h = new XmlNamespacesHolder();
+            h.ParseAndRemoveNamespaces(enS);
+
+            d. xd = XHelper.CreateXDocument(fn);
+
+            XHelper.AddXmlNamespaces(h.nsmgr);
+
+            XElement xliff = XHelper.GetElementOfName(d.xd, "xliff");
+            var allElements = XHelper.GetElementsOfNameWithAttrContains(xliff, "file", "target-language", toL.ToString(), false);
+            var resources = allElements.Where(d2 => XHelper.Attr(d2, "original").Contains("/" + "RESOURCES" + "/"));
+            XElement file = resources.First();
+            XElement body = XHelper.GetElementOfName(file, "body");
+            d.group = XHelper.GetElementOfName(body, "group");
+            d.trans_units = XHelper.GetElementsOfName(d.group, TransUnit.tTransUnit);
+
+            return d;
+        }
+
 
         private static void TrimValueIfNot(XElement source)
         {
@@ -88,27 +100,10 @@ namespace SunamoCode
         /// <param name="fn"></param>
         public static void Append(Langs toL, string originalSource, string translated, string pascal, string fn)
         {
-            string enS = File.ReadAllText(fn);
-            
+            var d = GetTransUnits(toL, fn);
 
-            XmlNamespacesHolder h = new XmlNamespacesHolder();
-            h.ParseAndRemoveNamespaces(enS);
-            
-            
-            XDocument xd = XHelper.CreateXDocument(fn);
-
-            
-
-            XHelper.AddXmlNamespaces(h.nsmgr);
-
-            XElement xliff = XHelper.GetElementOfName(xd, "xliff");
-            var allElements = XHelper.GetElementsOfNameWithAttrContains(xliff, "file", "target-language", toL.ToString(), false);
-            var resources = allElements.Where(d => XHelper.Attr(d, "original").Contains("/" + "RESOURCES" + "/"));
-            XElement file = resources.First();
-            XElement body = XHelper.GetElementOfName(file, "body");
-            XElement group = XHelper.GetElementOfName(body, "group");
-
-            var exists = XHelper.GetElementOfNameWithAttr(group, tTransUnit, "id", pascal);
+           
+            var exists = XHelper.GetElementOfNameWithAttr(d. group, TransUnit.tTransUnit, "id", pascal);
 
             if (exists != null)
             {
@@ -128,10 +123,12 @@ namespace SunamoCode
             XElement xe = XElement.Parse(xml);
             xe = XHelper.MakeAllElementsWithDefaultNs(xe);
 
-            group.Add(xe);
+            d.group.Add(xe);
             //var after = group.Value;
 
-            xd.Save(fn);
+            d.xd.Save(fn);
+
+            XHelper.FormatXml(fn);
         }
 
         

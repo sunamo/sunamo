@@ -45,12 +45,12 @@ public class TransUnit
         }
     }
 
-    const string tTransUnit = "trans-unit";
+    public const string tTransUnit = "trans-unit";
 
     public override string ToString()
     {
         XmlGenerator g = new XmlGenerator();
-        g.WriteTagWithAttrs(tTransUnit, "id", id, "translate", BTS.BoolToString(translate, true), "xml:space", "preserve");
+        g.WriteTagWithAttrs( tTransUnit, "id", id, "translate", BTS.BoolToString(translate, true), "xml:space", "preserve");
         g.WriteElement("source", source);
 
         g.WriteTagWithAttr("target", "state", "translated");

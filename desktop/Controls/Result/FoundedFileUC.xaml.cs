@@ -61,6 +61,14 @@ namespace desktop.Controls.Result
             this.MouseLeftButtonDown += FoundedFileUC_MouseLeftButtonDown;
         }
 
+        public UIElement SecondRow
+        {
+            set
+            {
+
+            }
+        }
+
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);

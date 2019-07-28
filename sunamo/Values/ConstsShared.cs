@@ -85,7 +85,10 @@ namespace sunamo.Values
         public static readonly Type tSbyte = typeof(sbyte);
         public static readonly Type tUshort = typeof(ushort);
         public static readonly Type tUint = typeof(uint);
-        public static readonly Type uUlong = typeof(ulong);
+        public static readonly Type tUlong = typeof(ulong);
+
+        public static readonly List<Type> allBasicTypes = CA.ToList<Type>(tObject, tString, tStringBuilder, tInt, tDateTime,
+            tDouble, tFloat, tChar, tBinary, tByte, tShort, tBinary, tLong, tDecimal, tSbyte, tUshort, tUint, tUlong);
         
     }
 }

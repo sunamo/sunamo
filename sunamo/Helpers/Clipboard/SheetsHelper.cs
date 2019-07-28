@@ -37,7 +37,7 @@ public class SheetsHelper
 
     public static List<string> GetRowCells(string ClipboardS)
     {
-        return SplitFromGoogleSheets();
+        return SplitFromGoogleSheets(ClipboardS);
     }
 
     /// <summary>

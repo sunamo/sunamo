@@ -122,7 +122,28 @@ public class XH
         );
     }
 
+    /// <summary>
+    /// A1 can be XML or path
+    /// </summary>
+    /// <param name="xml"></param>
+    /// <returns></returns>
+    public static XmlDocument LoadXml(string xml)
+    {
+        if (FS.ExistsFile(xml))
+        {
+            xml = TF.ReadFile(xml);
+        }
 
+        XmlDocument xd = new XmlDocument();
+        try
+        {
+            xd.LoadXml(xml);
+        }
+        catch (Exception)
+        {
 
-    
+            return null;
+        }
+        return xd;
+    }
 }

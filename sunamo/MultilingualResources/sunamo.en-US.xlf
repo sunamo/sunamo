@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+﻿<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -507,28 +506,1595 @@
           <target state="translated">Register</target>
         </trans-unit>
         <trans-unit id="PleaseAnswerThisSecurityQuestionToGenerateANewPassword" translate="yes" xml:space="preserve">
-          <source></source>
+          <source />
           <target state="translated">Please answer this security question to generate a new password</target>
         </trans-unit>
         <trans-unit id="GenerateANewPassword" translate="yes" xml:space="preserve">
-          <source></source>
+          <source />
           <target state="translated">Generate a new password</target>
         </trans-unit>
         <trans-unit id="HtmlGenericControlPPleaseAnswerThisSecurityQuestionToGenerateANewPasswordHtmlButtonBtnSubmit" translate="yes" xml:space="preserve">
-          <source></source>
+          <source />
           <target state="translated">HtmlGenericControl pPleaseAnswerThisSecurityQuestionToGenerateANewPassword, HtmlButton btnSubmit</target>
         </trans-unit>
         <trans-unit id="ResetYourAccountPassword" translate="yes" xml:space="preserve">
-          <source></source>
+          <source />
           <target state="translated">Reset your account password</target>
         </trans-unit>
         <trans-unit id="HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword" translate="yes" xml:space="preserve">
-          <source></source>
+          <source />
           <target state="translated">Here you can restore your account access if you forget your password</target>
         </trans-unit>
-
-      
-      <trans-unit id="NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">No login / email entered. Enter one of these on &lt;a href="Login.aspx"&gt;Login.aspx&lt;/a&gt; and click Generate New Password</target></trans-unit><trans-unit id="ANewPasswordHasBeenSentToYourEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">A new password has been sent to your email.</target></trans-unit><trans-unit id="TheAnswerToTheSecurityQuestionWasNotAccepted" translate="yes" xml:space="preserve"><source></source><target state="translated">The answer to the security question was not accepted.</target></trans-unit><trans-unit id="hasDisabledPasswordRecoveryOption" translate="yes" xml:space="preserve"><source></source><target state="translated">has disabled password recovery option</target></trans-unit><trans-unit id="wasNotFoundWeCannotGenerateANewPasswordForYou" translate="yes" xml:space="preserve"><source></source><target state="translated">was not found. We cannot generate a new password for you.</target></trans-unit><trans-unit id="doesNotExistInTheDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">does not exist in the database</target></trans-unit><trans-unit id="DidYouMissYourActivationEmailThisPageMayHelp" translate="yes" xml:space="preserve"><source></source><target state="translated">Did you miss your activation email? This page may help.</target></trans-unit><trans-unit id="TheActivationEmailWasSentBackTo" translate="yes" xml:space="preserve"><source></source><target state="translated">The activation email was sent back to</target></trans-unit><trans-unit id="ActivationEmailForNickname" translate="yes" xml:space="preserve"><source></source><target state="translated">Activation email for nickname</target></trans-unit><trans-unit id="hasBeenResubmittedSuccessfully" translate="yes" xml:space="preserve"><source></source><target state="translated">has been resubmitted successfully.</target></trans-unit><trans-unit id="ThisLoginWasNotFoundInTheDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">This login was not found in the database.</target></trans-unit><trans-unit id="TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">The specified mail was not found in the newly registered database.</target></trans-unit><trans-unit id="SendReactivationEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Send reactivation email</target></trans-unit><trans-unit id="CanTSignInAfterChangingYourEmailTryThisPage" translate="yes" xml:space="preserve"><source></source><target state="translated">Can't sign in after changing your email? Try this page.</target></trans-unit><trans-unit id="EmailWasSuccessfullySentToYourNewEmailAddress" translate="yes" xml:space="preserve"><source></source><target state="translated">Email was successfully sent to your new email address</target></trans-unit><trans-unit id="hasNoRequestToChangeEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">has no request to change email.</target></trans-unit><trans-unit id="AUserWithThisIDInDBWasNotFound" translate="yes" xml:space="preserve"><source></source><target state="translated">A user with this ID in DB was not found</target></trans-unit><trans-unit id="TheSpecifiedUserNumberWasNotAValidIntNumber" translate="yes" xml:space="preserve"><source></source><target state="translated">The specified user number was not a valid int number.</target></trans-unit><trans-unit id="NewUserRegistration" translate="yes" xml:space="preserve"><source></source><target state="translated">New user registration</target></trans-unit><trans-unit id="SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Sign up and get to know the great possibilities of the web</target></trans-unit><trans-unit id="YouDidNotSelectYourMailSettings" translate="yes" xml:space="preserve"><source></source><target state="translated">You did not select your mail settings.</target></trans-unit><trans-unit id="BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided" translate="yes" xml:space="preserve"><source></source><target state="translated">Before you can sign in, you must click the activation link that was sent to the email you provided</target></trans-unit><trans-unit id="HelloFrom" translate="yes" xml:space="preserve"><source></source><target state="translated">Hello from</target></trans-unit><trans-unit id="someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou" translate="yes" xml:space="preserve"><source></source><target state="translated">someone (probably yourself) knew the answer to your security question and generated a new password for you</target></trans-unit><trans-unit id="FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou" translate="yes" xml:space="preserve"><source></source><target state="translated">From now on, sign in with your new password. If this were repeated regularly, change your security question or contact the site admin who can block your password change over a security question for all people, including you.</target></trans-unit><trans-unit id="CreateANewPasswordForYourSecurityResponse" translate="yes" xml:space="preserve"><source></source><target state="translated">Create a new password for your security response</target></trans-unit><trans-unit id="ThankYouForRegisteringOnTheServer" translate="yes" xml:space="preserve"><source></source><target state="translated">Thank you for registering on the server</target></trans-unit><trans-unit id="YourSecurityQuestionIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Your security question is</target></trans-unit><trans-unit id="YourAnswerToTheSecurityQuestionIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Your answer to the security question is</target></trans-unit><trans-unit id="YourLoginNameSounds" translate="yes" xml:space="preserve"><source></source><target state="translated">Your login name sounds</target></trans-unit><trans-unit id="YourPasswordIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Your password is</target></trans-unit><trans-unit id="ClickOnThisCodeToCompleteTheRegistration" translate="yes" xml:space="preserve"><source></source><target state="translated">Click on this code to complete the registration</target></trans-unit><trans-unit id="AlternativelyYouCanCode" translate="yes" xml:space="preserve"><source></source><target state="translated">Alternatively, you can code</target></trans-unit><trans-unit id="copyToClipboardAndEnterItAt" translate="yes" xml:space="preserve"><source></source><target state="translated">copy to clipboard and enter it at</target></trans-unit><trans-unit id="WebRegistrationSuccessful" translate="yes" xml:space="preserve"><source></source><target state="translated">Web registration successful</target></trans-unit><trans-unit id="Class" translate="yes" xml:space="preserve"><source></source><target state="translated">Class</target></trans-unit><trans-unit id="Method" translate="yes" xml:space="preserve"><source></source><target state="translated">Method</target></trans-unit><trans-unit id="AdditionalDescription" translate="yes" xml:space="preserve"><source></source><target state="translated">Additional description</target></trans-unit><trans-unit id="ProblemOnTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Problem on the web</target></trans-unit><trans-unit id="YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount" translate="yes" xml:space="preserve"><source></source><target state="translated">You have asked or someone else to resubmit your activation email to your account.</target></trans-unit><trans-unit id="ClickThisCodeToCompleteTheReactivation" translate="yes" xml:space="preserve"><source></source><target state="translated">Click this code to complete the reactivation</target></trans-unit><trans-unit id="ChangingMailOnTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Changing mail on the web</target></trans-unit><trans-unit id="Hi" translate="yes" xml:space="preserve"><source></source><target state="translated">Hi</target></trans-unit><trans-unit id="Hello" translate="yes" xml:space="preserve"><source></source><target state="translated">Hello</target></trans-unit><trans-unit id="success" translate="yes" xml:space="preserve"><source></source><target state="translated">success</target></trans-unit><trans-unit id="NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage" translate="yes" xml:space="preserve"><source></source><target state="translated">Not implemented. Please contact the webmaster for this deficiency listed in the footer of each page</target></trans-unit><trans-unit id="fontWeightBolder" translate="yes" xml:space="preserve"><source></source><target state="translated">font-weight: bolder</target></trans-unit><trans-unit id="reTrueUid" translate="yes" xml:space="preserve"><source></source><target state="translated">re=True&amp;uid=</target></trans-unit><trans-unit id="hg" translate="yes" xml:space="preserve"><source></source><target state="translated">hg</target></trans-unit><trans-unit id="IWishYouMySitesToBeOfBenefitAndJoy" translate="yes" xml:space="preserve"><source></source><target state="translated">I wish you my sites to be of benefit and joy</target></trans-unit><trans-unit id="idPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">idPlan</target></trans-unit><trans-unit id="namePlan" translate="yes" xml:space="preserve"><source></source><target state="translated">namePlan</target></trans-unit><trans-unit id="TheUserRequestsTheReadPlanApproval" translate="yes" xml:space="preserve"><source></source><target state="translated">The user requests the read plan approval</target></trans-unit><trans-unit id="TitleApprovalApplication" translate="yes" xml:space="preserve"><source></source><target state="translated">Title approval application</target></trans-unit><trans-unit id="readPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">read plan</target></trans-unit><trans-unit id="approved" translate="yes" xml:space="preserve"><source></source><target state="translated">approved</target></trans-unit><trans-unit id="planID" translate="yes" xml:space="preserve"><source></source><target state="translated">planID</target></trans-unit><trans-unit id="planName" translate="yes" xml:space="preserve"><source></source><target state="translated">planName</target></trans-unit><trans-unit id="emailTo" translate="yes" xml:space="preserve"><source></source><target state="translated">emailTo</target></trans-unit><trans-unit id="ZdravíčkoZ" translate="yes" xml:space="preserve"><source></source><target state="translated">Zdravíčko z</target></trans-unit><trans-unit id="WellDoneYourReadingPlanWasApproved" translate="yes" xml:space="preserve"><source></source><target state="translated">Well done, your reading plan was approved</target></trans-unit><trans-unit id="NowYouCanStartReadingItOn" translate="yes" xml:space="preserve"><source></source><target state="translated">Now you can start reading it on</target></trans-unit><trans-unit id="Approval" translate="yes" xml:space="preserve"><source></source><target state="translated">Approval</target></trans-unit><trans-unit id="OjojUnfortunatelyYourReadingPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">Ojoj, unfortunately, your reading plan</target></trans-unit><trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged" translate="yes" xml:space="preserve"><source></source><target state="translated">it has not been approved and all you have done on it has been completely erased. Most often, this happens when the chosen verses are unsystematically or non-systematically arranged</target></trans-unit><trans-unit id="Refusal" translate="yes" xml:space="preserve"><source></source><target state="translated">Refusal</target></trans-unit><trans-unit id="WellDoneStageOfYourReadingPlanWasApproved" translate="yes" xml:space="preserve"><source></source><target state="translated">Well done, stage 1 of your reading plan was approved</target></trans-unit><trans-unit id="YouCanNowAssignVersesToIt" translate="yes" xml:space="preserve"><source></source><target state="translated">You can now assign verses to it</target></trans-unit><trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" translate="yes" xml:space="preserve"><source></source><target state="translated">it has not been approved and all you have done on it has been completely erased. Most often this happens when the chosen verses are unsystematically or non-thematically arranged, if the reading plan already exists or the reading plan has something that would not benefit other readers of this site. Also, approval may not occur if the reading plan contained a large number of grammatical errors</target></trans-unit><trans-unit id="ANewReadingPlanWasCreated" translate="yes" xml:space="preserve"><source></source><target state="translated">A new reading plan was created</target></trans-unit><trans-unit id="ToApproveItGoTo" translate="yes" xml:space="preserve"><source></source><target state="translated">To approve it, go to</target></trans-unit><trans-unit id="approvalPage" translate="yes" xml:space="preserve"><source></source><target state="translated">approval page</target></trans-unit><trans-unit id="whereToFindMoreInformation" translate="yes" xml:space="preserve"><source></source><target state="translated">where to find more information</target></trans-unit><trans-unit id="RequestForReadingPlanApproval" translate="yes" xml:space="preserve"><source></source><target state="translated">Request for reading plan approval</target></trans-unit><trans-unit id="weHaveTheVersesForYouToday" translate="yes" xml:space="preserve"><source></source><target state="translated">we have the verses for you today</target></trans-unit><trans-unit id="ReadVersesForToday" translate="yes" xml:space="preserve"><source></source><target state="translated">Read verses for today</target></trans-unit><trans-unit id="day" translate="yes" xml:space="preserve"><source></source><target state="translated">day=</target></trans-unit><trans-unit id="fromTheReadingPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">from the reading plan</target></trans-unit><trans-unit id="Den" translate="yes" xml:space="preserve"><source></source><target state="translated">Den</target></trans-unit><trans-unit id="fromThePlan" translate="yes" xml:space="preserve"><source></source><target state="translated">from the plan</target></trans-unit><trans-unit id="YouHaveRequestedToAddADomain" translate="yes" xml:space="preserve"><source></source><target state="translated">You have requested to add a domain</target></trans-unit><trans-unit id="ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage" translate="yes" xml:space="preserve"><source></source><target state="translated">To verify that your domain is yours, enter this HTML code (it's a hidden field that won't appear in design or text) to the home page</target></trans-unit><trans-unit id="FurthermoreItIsNecessaryToVerifyManually" translate="yes" xml:space="preserve"><source></source><target state="translated">Furthermore, it is necessary to verify manually</target></trans-unit><trans-unit id="click" translate="yes" xml:space="preserve"><source></source><target state="translated">click</target></trans-unit><trans-unit id="or" translate="yes" xml:space="preserve"><source></source><target state="translated">or</target></trans-unit><trans-unit id="visitThePage" translate="yes" xml:space="preserve"><source></source><target state="translated">visit the page</target></trans-unit><trans-unit id="andEnterTheCodeHere" translate="yes" xml:space="preserve"><source></source><target state="translated">and enter the code here</target></trans-unit><trans-unit id="YouShouldDoItBy" translate="yes" xml:space="preserve"><source></source><target state="translated">You should do it by</target></trans-unit><trans-unit id="thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain" translate="yes" xml:space="preserve"><source></source><target state="translated">then verification will no longer work and you will need to register the domain again</target></trans-unit><trans-unit id="AddADomain" translate="yes" xml:space="preserve"><source></source><target state="translated">Add a domain</target></trans-unit><trans-unit id="UserIsRequestingRemovalOfUserComments" translate="yes" xml:space="preserve"><source></source><target state="translated">User is requesting removal of user comments</target></trans-unit><trans-unit id="fromTheseSites" translate="yes" xml:space="preserve"><source></source><target state="translated">from these sites</target></trans-unit><trans-unit id="RequestRemovalOfUserComments" translate="yes" xml:space="preserve"><source></source><target state="translated">Request removal of user comments</target></trans-unit><trans-unit id="UserRecommendations" translate="yes" xml:space="preserve"><source></source><target state="translated">User recommendations</target></trans-unit><trans-unit id="verifiedEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">verified email</target></trans-unit><trans-unit id="forYou" translate="yes" xml:space="preserve"><source></source><target state="translated">for you</target></trans-unit><trans-unit id="TheAboveMentionedUserRecommendsThisPageToYou" translate="yes" xml:space="preserve"><source></source><target state="translated">The above mentioned user recommends this page to you</target></trans-unit><trans-unit id="PageRecommendations" translate="yes" xml:space="preserve"><source></source><target state="translated">Page Recommendations</target></trans-unit><trans-unit id="OnThePage" translate="yes" xml:space="preserve"><source></source><target state="translated">On the page</target></trans-unit><trans-unit id="sczComments" translate="yes" xml:space="preserve"><source></source><target state="translated">scz_comments</target></trans-unit><trans-unit id="newContentCommentAdded" translate="yes" xml:space="preserve"><source></source><target state="translated">new content comment added</target></trans-unit><trans-unit id="YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" translate="yes" xml:space="preserve"><source></source><target state="translated">You received this mail because you were registered to receive new comments. If you'd like to cancel your subscription, you can do so on the page that has the link at the beginning of the mail</target></trans-unit><trans-unit id="NewComment" translate="yes" xml:space="preserve"><source></source><target state="translated">New comment</target></trans-unit><trans-unit id="LineLineTxtLinesTxtLineCount" translate="yes" xml:space="preserve"><source></source><target state="translated">Line: {line} txt lines: {txt.LineCount</target></trans-unit></group>
+        <trans-unit id="NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No login / email entered. Enter one of these on &lt;a href="Login.aspx"&gt;Login.aspx&lt;/a&gt; and click Generate New Password</target>
+        </trans-unit>
+        <trans-unit id="ANewPasswordHasBeenSentToYourEmail" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A new password has been sent to your email.</target>
+        </trans-unit>
+        <trans-unit id="TheAnswerToTheSecurityQuestionWasNotAccepted" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The answer to the security question was not accepted.</target>
+        </trans-unit>
+        <trans-unit id="hasDisabledPasswordRecoveryOption" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">has disabled password recovery option</target>
+        </trans-unit>
+        <trans-unit id="wasNotFoundWeCannotGenerateANewPasswordForYou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">was not found. We cannot generate a new password for you.</target>
+        </trans-unit>
+        <trans-unit id="doesNotExistInTheDatabase" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">does not exist in the database</target>
+        </trans-unit>
+        <trans-unit id="DidYouMissYourActivationEmailThisPageMayHelp" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Did you miss your activation email? This page may help.</target>
+        </trans-unit>
+        <trans-unit id="TheActivationEmailWasSentBackTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The activation email was sent back to</target>
+        </trans-unit>
+        <trans-unit id="ActivationEmailForNickname" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Activation email for nickname</target>
+        </trans-unit>
+        <trans-unit id="hasBeenResubmittedSuccessfully" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">has been resubmitted successfully.</target>
+        </trans-unit>
+        <trans-unit id="ThisLoginWasNotFoundInTheDatabase" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">This login was not found in the database.</target>
+        </trans-unit>
+        <trans-unit id="TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The specified mail was not found in the newly registered database.</target>
+        </trans-unit>
+        <trans-unit id="SendReactivationEmail" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Send reactivation email</target>
+        </trans-unit>
+        <trans-unit id="CanTSignInAfterChangingYourEmailTryThisPage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Can't sign in after changing your email? Try this page.</target>
+        </trans-unit>
+        <trans-unit id="EmailWasSuccessfullySentToYourNewEmailAddress" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Email was successfully sent to your new email address</target>
+        </trans-unit>
+        <trans-unit id="hasNoRequestToChangeEmail" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">has no request to change email.</target>
+        </trans-unit>
+        <trans-unit id="AUserWithThisIDInDBWasNotFound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A user with this ID in DB was not found</target>
+        </trans-unit>
+        <trans-unit id="TheSpecifiedUserNumberWasNotAValidIntNumber" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The specified user number was not a valid int number.</target>
+        </trans-unit>
+        <trans-unit id="NewUserRegistration" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">New user registration</target>
+        </trans-unit>
+        <trans-unit id="SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Sign up and get to know the great possibilities of the web</target>
+        </trans-unit>
+        <trans-unit id="YouDidNotSelectYourMailSettings" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You did not select your mail settings.</target>
+        </trans-unit>
+        <trans-unit id="BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Before you can sign in, you must click the activation link that was sent to the email you provided</target>
+        </trans-unit>
+        <trans-unit id="HelloFrom" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hello from</target>
+        </trans-unit>
+        <trans-unit id="someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">someone (probably yourself) knew the answer to your security question and generated a new password for you</target>
+        </trans-unit>
+        <trans-unit id="FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">From now on, sign in with your new password. If this were repeated regularly, change your security question or contact the site admin who can block your password change over a security question for all people, including you.</target>
+        </trans-unit>
+        <trans-unit id="CreateANewPasswordForYourSecurityResponse" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Create a new password for your security response</target>
+        </trans-unit>
+        <trans-unit id="ThankYouForRegisteringOnTheServer" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Thank you for registering on the server</target>
+        </trans-unit>
+        <trans-unit id="YourSecurityQuestionIs" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Your security question is</target>
+        </trans-unit>
+        <trans-unit id="YourAnswerToTheSecurityQuestionIs" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Your answer to the security question is</target>
+        </trans-unit>
+        <trans-unit id="YourLoginNameSounds" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Your login name sounds</target>
+        </trans-unit>
+        <trans-unit id="YourPasswordIs" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Your password is</target>
+        </trans-unit>
+        <trans-unit id="ClickOnThisCodeToCompleteTheRegistration" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Click on this code to complete the registration</target>
+        </trans-unit>
+        <trans-unit id="AlternativelyYouCanCode" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Alternatively, you can code</target>
+        </trans-unit>
+        <trans-unit id="copyToClipboardAndEnterItAt" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">copy to clipboard and enter it at</target>
+        </trans-unit>
+        <trans-unit id="WebRegistrationSuccessful" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Web registration successful</target>
+        </trans-unit>
+        <trans-unit id="Class" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Class</target>
+        </trans-unit>
+        <trans-unit id="Method" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Method</target>
+        </trans-unit>
+        <trans-unit id="AdditionalDescription" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Additional description</target>
+        </trans-unit>
+        <trans-unit id="ProblemOnTheWeb" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Problem on the web</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You have asked or someone else to resubmit your activation email to your account.</target>
+        </trans-unit>
+        <trans-unit id="ClickThisCodeToCompleteTheReactivation" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Click this code to complete the reactivation</target>
+        </trans-unit>
+        <trans-unit id="ChangingMailOnTheWeb" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Changing mail on the web</target>
+        </trans-unit>
+        <trans-unit id="Hi" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hi</target>
+        </trans-unit>
+        <trans-unit id="Hello" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hello</target>
+        </trans-unit>
+        <trans-unit id="success" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">success</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Not implemented. Please contact the webmaster for this deficiency listed in the footer of each page</target>
+        </trans-unit>
+        <trans-unit id="fontWeightBolder" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">font-weight: bolder</target>
+        </trans-unit>
+        <trans-unit id="reTrueUid" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">re=True&amp;uid=</target>
+        </trans-unit>
+        <trans-unit id="hg" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">hg</target>
+        </trans-unit>
+        <trans-unit id="IWishYouMySitesToBeOfBenefitAndJoy" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">I wish you my sites to be of benefit and joy</target>
+        </trans-unit>
+        <trans-unit id="idPlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">idPlan</target>
+        </trans-unit>
+        <trans-unit id="namePlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">namePlan</target>
+        </trans-unit>
+        <trans-unit id="TheUserRequestsTheReadPlanApproval" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The user requests the read plan approval</target>
+        </trans-unit>
+        <trans-unit id="TitleApprovalApplication" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Title approval application</target>
+        </trans-unit>
+        <trans-unit id="readPlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">read plan</target>
+        </trans-unit>
+        <trans-unit id="approved" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">approved</target>
+        </trans-unit>
+        <trans-unit id="planID" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">planID</target>
+        </trans-unit>
+        <trans-unit id="planName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">planName</target>
+        </trans-unit>
+        <trans-unit id="emailTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">emailTo</target>
+        </trans-unit>
+        <trans-unit id="ZdravíčkoZ" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Zdravíčko z</target>
+        </trans-unit>
+        <trans-unit id="WellDoneYourReadingPlanWasApproved" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Well done, your reading plan was approved</target>
+        </trans-unit>
+        <trans-unit id="NowYouCanStartReadingItOn" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Now you can start reading it on</target>
+        </trans-unit>
+        <trans-unit id="Approval" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Approval</target>
+        </trans-unit>
+        <trans-unit id="OjojUnfortunatelyYourReadingPlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Ojoj, unfortunately, your reading plan</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">it has not been approved and all you have done on it has been completely erased. Most often, this happens when the chosen verses are unsystematically or non-systematically arranged</target>
+        </trans-unit>
+        <trans-unit id="Refusal" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Refusal</target>
+        </trans-unit>
+        <trans-unit id="WellDoneStageOfYourReadingPlanWasApproved" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Well done, stage 1 of your reading plan was approved</target>
+        </trans-unit>
+        <trans-unit id="YouCanNowAssignVersesToIt" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You can now assign verses to it</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">it has not been approved and all you have done on it has been completely erased. Most often this happens when the chosen verses are unsystematically or non-thematically arranged, if the reading plan already exists or the reading plan has something that would not benefit other readers of this site. Also, approval may not occur if the reading plan contained a large number of grammatical errors</target>
+        </trans-unit>
+        <trans-unit id="ANewReadingPlanWasCreated" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A new reading plan was created</target>
+        </trans-unit>
+        <trans-unit id="ToApproveItGoTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">To approve it, go to</target>
+        </trans-unit>
+        <trans-unit id="approvalPage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">approval page</target>
+        </trans-unit>
+        <trans-unit id="whereToFindMoreInformation" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">where to find more information</target>
+        </trans-unit>
+        <trans-unit id="RequestForReadingPlanApproval" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Request for reading plan approval</target>
+        </trans-unit>
+        <trans-unit id="weHaveTheVersesForYouToday" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">we have the verses for you today</target>
+        </trans-unit>
+        <trans-unit id="ReadVersesForToday" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Read verses for today</target>
+        </trans-unit>
+        <trans-unit id="day" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">day=</target>
+        </trans-unit>
+        <trans-unit id="fromTheReadingPlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">from the reading plan</target>
+        </trans-unit>
+        <trans-unit id="Den" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Den</target>
+        </trans-unit>
+        <trans-unit id="fromThePlan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">from the plan</target>
+        </trans-unit>
+        <trans-unit id="YouHaveRequestedToAddADomain" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You have requested to add a domain</target>
+        </trans-unit>
+        <trans-unit id="ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">To verify that your domain is yours, enter this HTML code (it's a hidden field that won't appear in design or text) to the home page</target>
+        </trans-unit>
+        <trans-unit id="FurthermoreItIsNecessaryToVerifyManually" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Furthermore, it is necessary to verify manually</target>
+        </trans-unit>
+        <trans-unit id="click" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">click</target>
+        </trans-unit>
+        <trans-unit id="or" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="visitThePage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">visit the page</target>
+        </trans-unit>
+        <trans-unit id="andEnterTheCodeHere" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">and enter the code here</target>
+        </trans-unit>
+        <trans-unit id="YouShouldDoItBy" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You should do it by</target>
+        </trans-unit>
+        <trans-unit id="thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">then verification will no longer work and you will need to register the domain again</target>
+        </trans-unit>
+        <trans-unit id="AddADomain" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Add a domain</target>
+        </trans-unit>
+        <trans-unit id="UserIsRequestingRemovalOfUserComments" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">User is requesting removal of user comments</target>
+        </trans-unit>
+        <trans-unit id="fromTheseSites" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">from these sites</target>
+        </trans-unit>
+        <trans-unit id="RequestRemovalOfUserComments" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Request removal of user comments</target>
+        </trans-unit>
+        <trans-unit id="UserRecommendations" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">User recommendations</target>
+        </trans-unit>
+        <trans-unit id="verifiedEmail" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">verified email</target>
+        </trans-unit>
+        <trans-unit id="forYou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">for you</target>
+        </trans-unit>
+        <trans-unit id="TheAboveMentionedUserRecommendsThisPageToYou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The above mentioned user recommends this page to you</target>
+        </trans-unit>
+        <trans-unit id="PageRecommendations" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Page Recommendations</target>
+        </trans-unit>
+        <trans-unit id="OnThePage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">On the page</target>
+        </trans-unit>
+        <trans-unit id="sczComments" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">scz_comments</target>
+        </trans-unit>
+        <trans-unit id="newContentCommentAdded" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">new content comment added</target>
+        </trans-unit>
+        <trans-unit id="YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You received this mail because you were registered to receive new comments. If you'd like to cancel your subscription, you can do so on the page that has the link at the beginning of the mail</target>
+        </trans-unit>
+        <trans-unit id="NewComment" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">New comment</target>
+        </trans-unit>
+        <trans-unit id="Transparency" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Transparency:</target>
+        </trans-unit>
+        <trans-unit id="Opacity" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Opacity:</target>
+        </trans-unit>
+        <trans-unit id="ComputerSizeUnitOutputHasBeenSpecifiedICannotChangeThisSetting" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">ComputerSizeUnit output has been specified, I cannot change this setting</target>
+        </trans-unit>
+        <trans-unit id="FolderHasBeenRenamedIt" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Folder has been renamed it</target>
+        </trans-unit>
+        <trans-unit id="OnlyForTestFilesForOtherApps" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Only for test files for other apps.</target>
+        </trans-unit>
+        <trans-unit id="FileCannotBeDeleted" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">File cannot be deleted:</target>
+        </trans-unit>
+        <trans-unit id="TargetPathDoesNotExistOrIsNotADirectory" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Target path does not exist or is not a directory.</target>
+        </trans-unit>
+        <trans-unit id="DirectoryAlreadyExistsAndOverwriteParameterIsFalse" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Directory already exists and overwrite parameter is false.</target>
+        </trans-unit>
+        <trans-unit id="UnableToCreateJunctionPoint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unable to create junction point.</target>
+        </trans-unit>
+        <trans-unit id="PathIsNotAJunctionPoint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Path is not a junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToDeleteJunctionPoint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unable to delete junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToGetInformationAboutJunctionPoint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unable to get information about junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToOpenReparsePoint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unable to open reparse point.</target>
+        </trans-unit>
+        <trans-unit id="enterTheCodeHere" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">enter the code here</target>
+        </trans-unit>
+        <trans-unit id="ofTheseSites" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">of these sites</target>
+        </trans-unit>
+        <trans-unit id="InTheClasuleOfMSStoredProceduresIBaseSelectLastIDFromTableSignedWasntFoundedType" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">In the clasule of MSStoredProceduresIBase2.SelectLastIDFromTableSigned wasnt founded type</target>
+        </trans-unit>
+        <trans-unit id="TypeNotFoundInIfIfInMSStoredProceduresIBaseSelectLastIDFromTableSigned" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Type not found in if if in MSStoredProceduresIBase2.SelectLastIDFromTableSigned</target>
+        </trans-unit>
+        <trans-unit id="ReplacedElement" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Replaced element</target>
+        </trans-unit>
+        <trans-unit id="isAnElementReplacingIt" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">is an element replacing it</target>
+        </trans-unit>
+        <trans-unit id="MismatchCountInInputArraysOfSHAllHaveRightFormat" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Mismatch count in input arrays of SH1.AllHaveRightFormat ()</target>
+        </trans-unit>
+        <trans-unit id="NoDelimiterSpecified" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No delimiter specified</target>
+        </trans-unit>
+        <trans-unit id="NoDelimiterDetermined" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No delimiter determined</target>
+        </trans-unit>
+        <trans-unit id="WrongParameter" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Wrong parameter</target>
+        </trans-unit>
+        <trans-unit id="Unlike" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unlike</target>
+        </trans-unit>
+        <trans-unit id="UninplementedBranch" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Uninplemented branch</target>
+        </trans-unit>
+        <trans-unit id="Enter" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Enter</target>
+        </trans-unit>
+        <trans-unit id="ForExitEnter" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">For exit enter</target>
+        </trans-unit>
+        <trans-unit id="AppLoadedFromClipboard" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">App loaded from clipboard</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantToContinue" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Do you want to continue</target>
+        </trans-unit>
+        <trans-unit id="ThenPressEnter" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Then press enter</target>
+        </trans-unit>
+        <trans-unit id="SelectAction" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Select action</target>
+        </trans-unit>
+        <trans-unit id="SelectActionToProceed" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Select action to proceed</target>
+        </trans-unit>
+        <trans-unit id="AllOfTheInputsMustBeFilled" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">All of the inputs must be filled</target>
+        </trans-unit>
+        <trans-unit id="OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Only buttons can be accepted because it has no data for accept</target>
+        </trans-unit>
+        <trans-unit id="Handler" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Handler</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxList" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Check box list</target>
+        </trans-unit>
+        <trans-unit id="Check" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Check</target>
+        </trans-unit>
+        <trans-unit id="DecideWhichToProcess" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Decide which to process</target>
+        </trans-unit>
+        <trans-unit id="Save" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Save</target>
+        </trans-unit>
+        <trans-unit id="WasFounded" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Was founded</target>
+        </trans-unit>
+        <trans-unit id="SearchingWasStopped" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Searching was stopped</target>
+        </trans-unit>
+        <trans-unit id="YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You cannot call SetInitialChecked twice for the same ToggleButton</target>
+        </trans-unit>
+        <trans-unit id="MovedBackToPhoto" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Moved back to photo</target>
+        </trans-unit>
+        <trans-unit id="MovedForwardToPhoto" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Moved forward to photo</target>
+        </trans-unit>
+        <trans-unit id="ImageCollectionDeleted" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Image collection deleted</target>
+        </trans-unit>
+        <trans-unit id="NewImagesLoadedInstead" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">{0} new images loaded instead</target>
+        </trans-unit>
+        <trans-unit id="NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No more images loaded because the specified folder did not contain any images</target>
+        </trans-unit>
+        <trans-unit id="RedColoredFolder" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Red colored folder</target>
+        </trans-unit>
+        <trans-unit id="GreenColorFolder" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Green color folder</target>
+        </trans-unit>
+        <trans-unit id="BlueColorFolder" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Blue color folder</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponent" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Red color component</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponent" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Green color component</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponent" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Blue color component</target>
+        </trans-unit>
+        <trans-unit id="ItNeedsMoreRowsThanItExists" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">It needs more rows than it exists</target>
+        </trans-unit>
+        <trans-unit id="None" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">None</target>
+        </trans-unit>
+        <trans-unit id="SelectedFile" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Selected file</target>
+        </trans-unit>
+        <trans-unit id="EnterOrSelect" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Enter or select</target>
+        </trans-unit>
+        <trans-unit id="Version" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Version</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Description</target>
+        </trans-unit>
+        <trans-unit id="IApps" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">/ i / Apps</target>
+        </trans-unit>
+        <trans-unit id="Likes" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Likes</target>
+        </trans-unit>
+        <trans-unit id="AccordingTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">According to</target>
+        </trans-unit>
+        <trans-unit id="UnimplementedSortAppsByBranch" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Unimplemented SortAppsBy branch</target>
+        </trans-unit>
+        <trans-unit id="App" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">../App/</target>
+        </trans-unit>
+        <trans-unit id="Download" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Download</target>
+        </trans-unit>
+        
+        <trans-unit id="TheFileForThisVersionHasNotBeenUploadedYet" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The file for this version has not been uploaded yet.</target>
+        </trans-unit>
+        <trans-unit id="MetaInformation" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Meta information</target>
+        </trans-unit>
+        <trans-unit id="CreationDate" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Creation date:</target>
+        </trans-unit>
+        <trans-unit id="ThisVersionDownloads" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">This version downloads:</target>
+        </trans-unit>
+        <trans-unit id="TheApplicationMustBeInstalled" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The application must be installed:</target>
+        </trans-unit>
+        <trans-unit id="ChangesChangelog" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Changes / Changelog</target>
+        </trans-unit>
+        <trans-unit id="ChangesForThisVersionHaveNotBeenSpecified" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Changes for this version have not been specified</target>
+        </trans-unit>
+        <trans-unit id="TheRecommendedVersionIsTheSameAsTheLatestVersion" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The recommended version is the same as the latest version</target>
+        </trans-unit>
+        <trans-unit id="NoteThatTheInformationOnTheInformationTabIsValidPrimarilyForTheRecommendedVersionAndThisNewerVersionMayNotMatchThisInformation" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Note that the information on the Information tab is valid primarily for the recommended version and this newer version may not match this information</target>
+        </trans-unit>
+        <trans-unit id="Views" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Views</target>
+        </trans-unit>
+        <trans-unit id="Color" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Color</target>
+        </trans-unit>
+        <trans-unit id="VersionDetectedInIncorrectURIFormatValidFormatIsDigitsSeparatedByComma" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Version detected in incorrect URI format - valid format is 4 digits separated by comma.</target>
+        </trans-unit>
+        <trans-unit id="FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">File has already been uploaded to this version. Uploading a new file will overwrite the existing one.</target>
+        </trans-unit>
+        <trans-unit id="Apps" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Apps /</target>
+        </trans-unit>
+        <trans-unit id="ParseUlozToLiveVideoUri" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Parse Uloz.to live video uri</target>
+        </trans-unit>
+        <trans-unit id="BadInputUri" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Bad input uri.</target>
+        </trans-unit>
+        <trans-unit id="ConvertHTMLToEntities" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Convert HTML to entities</target>
+        </trans-unit>
+        <trans-unit id="CreateUriWithQueryString" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Create uri with query string</target>
+        </trans-unit>
+        <trans-unit id="ToolsForDevelopers" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Tools for developers</target>
+        </trans-unit>
+        <trans-unit id="AwesomeFontSymbol" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Awesome Font symbol</target>
+        </trans-unit>
+        <trans-unit id="CreateHTMLForMetroCssUiGrid" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Create HTML for Metro Css Ui grid</target>
+        </trans-unit>
+        <trans-unit id="ReverseHTMLListOrder" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Reverse HTML list order</target>
+        </trans-unit>
+        <trans-unit id="Azure" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Azure</target>
+        </trans-unit>
+        <trans-unit id="ItSeemsATable" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">It seems a table</target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfRowsAndTheirLastIDsMatch" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> the number of rows and their last IDs match</target>
+        </trans-unit>
+        <trans-unit id="LastIDMatchesButSomeRowsAreMissing" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> Last ID matches, but some rows are missing</target>
+        </trans-unit>
+        <trans-unit id="SinceTheHostingTableWasEmptyIWillLoadEverythingTheTable" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Since the hosting table was empty, I will load everything, the table</target>
+        </trans-unit>
+        <trans-unit id="IsAnAssignmentYouMustDoThisManually" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> is an assignment. You must do this manually.</target>
+        </trans-unit>
+        <trans-unit id="ThereAreNoRowsOnTheASPoneSiteTheProgramWillLoadEverything" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> There are no rows on the ASPone site. The program will load everything.</target>
+        </trans-unit>
+        <trans-unit id="InsertingIntoTheTable" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Inserting into the table</target>
+        </trans-unit>
+        <trans-unit id="IDRows" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> ID rows</target>
+        </trans-unit>
+        <trans-unit id="IDLine" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> ID line</target>
+        </trans-unit>
+        <trans-unit id="OnTheLocalSQLServerIDLine" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> on the local SQL Server ID line</target>
+        </trans-unit>
+        <trans-unit id="ThereSLessRowsOnASPoneThanMeTheProgramWillTryToUploadNewRows" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> there's less rows on ASPone than me. The program will try to upload new rows.</target>
+        </trans-unit>
+        <trans-unit id="TheProgramWillNotRecordAnythingTable" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The program will not record anything, table</target>
+        </trans-unit>
+        <trans-unit id="ThereAreMoreRowsOnASPoneThanIDoTheProgramSkipsTheTable" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> there are more rows on ASPone than I do The program skips the table.</target>
+        </trans-unit>
+        <trans-unit id="NoCharacterFoundThatWasNotInAnyField" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No character found that was not in any field</target>
+        </trans-unit>
+        <trans-unit id="TheProvidedStringDoesNotAppearToBeHexEncoded" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The provided string does not appear to be Hex encoded:</target>
+        </trans-unit>
+        <trans-unit id="Import" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Import</target>
+        </trans-unit>
+        <trans-unit id="ExportFrom" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Export from</target>
+        </trans-unit>
+        <trans-unit id="ImportTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Import to</target>
+        </trans-unit>
+        <trans-unit id="FileTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">File to</target>
+        </trans-unit>
+        <trans-unit id="Joiner" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Joiner</target>
+        </trans-unit>
+        <trans-unit id="ThereWereOnlyValuesInRowExpectedNumberWas" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">There were only {1} values in row {0}, expected number was {2}.</target>
+        </trans-unit>
+        <trans-unit id="ErrorInsertingRow" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Error inserting row {0} - {1}</target>
+        </trans-unit>
+        <trans-unit id="ThereWereNoErrorsDuringTheImport" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">There were no errors during the import</target>
+        </trans-unit>
+        <trans-unit id="TableParameters" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Table parameters</target>
+        </trans-unit>
+        <trans-unit id="MaximumContentLengthInColumns" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Maximum content length in columns:</target>
+        </trans-unit>
+        <trans-unit id="MaximumValue" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">[Maximum value =</target>
+        </trans-unit>
+        <trans-unit id="NoMaskFileFound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No mask file found</target>
+        </trans-unit>
+        <trans-unit id="OnlyMaskFileFound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Only 1 mask file found</target>
+        </trans-unit>
+        <trans-unit id="TheProgramCannotContinueAndWillClose" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> , the program cannot continue and will close</target>
+        </trans-unit>
+        <trans-unit id="FileParsationError" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">File parsation error</target>
+        </trans-unit>
+        <trans-unit id="OnTheLine" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> on the line</target>
+        </trans-unit>
+        <trans-unit id="FileSuccessfullySavedTo" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">File successfully saved to</target>
+        </trans-unit>
+        <trans-unit id="Discard" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Discard</target>
+        </trans-unit>
+        <trans-unit id="ByteFile" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Byte file</target>
+        </trans-unit>
+        <trans-unit id="TextFile" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Text file</target>
+        </trans-unit>
+        <trans-unit id="GenesisGenGenesisGenMIMMojIMojMojzisMojzIMojzIMojzis" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Genesis | Gen | Genesis | Gen / 1 M / I M / 1 Moj / I Moj / 1 Mojzis / 1 Mojz / I Mojz / I Mojzis</target>
+        </trans-unit>
+        <trans-unit id="EnglishName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">English name</target>
+        </trans-unit>
+        <trans-unit id="GeneralCzechAbbreviation" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">General Czech abbreviation</target>
+        </trans-unit>
+        <trans-unit id="CzechName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Czech name</target>
+        </trans-unit>
+        <trans-unit id="OtherSupportedWriteVariants" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Other supported write variants</target>
+        </trans-unit>
+        <trans-unit id="Hints" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hints</target>
+        </trans-unit>
+        <trans-unit id="Caches" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Caches</target>
+        </trans-unit>
+        <trans-unit id="mapTypeIdGoogleMapsMapTypeIdTERRAIN" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">mapTypeId: google.maps.MapTypeId.TERRAIN</target>
+        </trans-unit>
+        <trans-unit id="centerNewGoogleMapsLatLng" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">center: new google.maps.LatLng (</target>
+        </trans-unit>
+        <trans-unit id="newGoogleMapsLatLng" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">new google.maps.LatLng (</target>
+        </trans-unit>
+        <trans-unit id="NewGoogleMapsLatLng" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">), new google.maps.LatLng (</target>
+        </trans-unit>
+        <trans-unit id="NewGoogleMapsPolyline" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated"> = new google.maps.Polyline ({</target>
+        </trans-unit>
+        <trans-unit id="bermudaTriangleNewGoogleMapsPolyline" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">bermudaTriangle = new google.maps.Polyline ({</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheCache" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The name of the cache</target>
+        </trans-unit>
+        <trans-unit id="Coordinates" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Coordinates</target>
+        </trans-unit>
+        <trans-unit id="Hint" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hint</target>
+        </trans-unit>
+        <trans-unit id="Size" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Size</target>
+        </trans-unit>
+        <trans-unit id="CacheType" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Cache type</target>
+        </trans-unit>
+        <trans-unit id="NoSheet" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">No sheet</target>
+        </trans-unit>
+        <trans-unit id="AllStates" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">All states</target>
+        </trans-unit>
+        <trans-unit id="AllRegions" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">All regions</target>
+        </trans-unit>
+        <trans-unit id="AllDistricts" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">All districts</target>
+        </trans-unit>
+        <trans-unit id="Difficulty" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Difficulty</target>
+        </trans-unit>
+        <trans-unit id="Terrain" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Terrain</target>
+        </trans-unit>
+        <trans-unit id="OnlyTheWebmasterCanAddCachesToTheSite" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Only the webmaster can add caches to the site</target>
+        </trans-unit>
+        <trans-unit id="Geocache" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Geocache |</target>
+        </trans-unit>
+        <trans-unit id="AltitudeInMNM" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Altitude in m.n.m.</target>
+        </trans-unit>
+        <trans-unit id="DistanceInM" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Distance in m</target>
+        </trans-unit>
+        <trans-unit id="SegmentDuration" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Segment duration</target>
+        </trans-unit>
+        <trans-unit id="SpeedInMS" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Speed in m / s</target>
+        </trans-unit>
+        <trans-unit id="DateAndTime" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Date and time</target>
+        </trans-unit>
+        <trans-unit id="Name" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Name</target>
+        </trans-unit>
+        <trans-unit id="Comment" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Comment</target>
+        </trans-unit>
+        <trans-unit id="Hidden" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hidden</target>
+        </trans-unit>
+        <trans-unit id="YouHavenTUploadedAnyGpxTracksYet" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">You haven't uploaded any gpx tracks yet</target>
+        </trans-unit>
+        <trans-unit id="Order" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Order</target>
+        </trans-unit>
+        <trans-unit id="FirstSegment" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">First segment</target>
+        </trans-unit>
+        <trans-unit id="LastSegment" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Last segment</target>
+        </trans-unit>
+        <trans-unit id="NumberOfSegments" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Number of segments</target>
+        </trans-unit>
+        <trans-unit id="UploadDate" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Upload date</target>
+        </trans-unit>
+        <trans-unit id="TheFileName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">The file name</target>
+        </trans-unit>
+        <trans-unit id="Statistics" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Statistics</target>
+        </trans-unit>
+        <trans-unit id="listsOfCaches" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">lists of caches</target>
+        </trans-unit>
+        <trans-unit id="ListOfCaches" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">List of caches</target>
+        </trans-unit>
+        <trans-unit id="District" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">District</target>
+        </trans-unit>
+        <trans-unit id="Public" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Public?</target>
+        </trans-unit>
+        <trans-unit id="ShowOnGoogleMaps" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Show on google maps</target>
+        </trans-unit>
+        <trans-unit id="Listing" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Listing</target>
+        </trans-unit>
+        <trans-unit id="ThisCacheIsTemporarilyUnavailableReadTheLogsBelowToReadTheStatusForThisCache" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">This cache is temporarily unavailable. Read the logs below to read the status for this cache.</target>
+        </trans-unit>
+        <trans-unit id="ThisCacheListingHasBeenArchived" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">This cache listing has been archived.</target>
+        </trans-unit>
+        <trans-unit id="SomePagesFailedToLoad" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Some pages failed to load</target>
+        </trans-unit>
+        <trans-unit id="AllCachesHaveBeenCorrectlyDetectedAsBeingDisabledOrEnabled" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">All caches have been correctly detected as being disabled or enabled</target>
+        </trans-unit>
+        <trans-unit id="UseTheGetAsyncMethod" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Use the GetAsync () method.</target>
+        </trans-unit>
+        <trans-unit id="UseTheSearchAsyncMethod" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Use the SearchAsync () method.</target>
+        </trans-unit>
+        <trans-unit id="UseTheBrowseAsyncMethod" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Use the BrowseAsync () method.</target>
+        </trans-unit>
+        <trans-unit id="TrackNotFound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Track not found</target>
+        </trans-unit>
+        <trans-unit id="ArtistNotFound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Artist not found</target>
+        </trans-unit>
+        <trans-unit id="Added" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Added</target>
+        </trans-unit>
+        <trans-unit id="YBdnfycg" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Y7bdnfycg9</target>
+        </trans-unit>
+        <trans-unit id="aLargeScaledAndEnergeticCombinationOfYorubaHighlifeJazzAndFunkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a large-scaled and energetic combination of Yoruba, highlife, jazz, and funk music.</target>
+        </trans-unit>
+        <trans-unit id="styleOfJazzInfluencedByTraditionalAfroCubanMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of jazz influenced by traditional Afro-Cuban music.</target>
+        </trans-unit>
+        <trans-unit id="umbrellaGenreTermForAfricanPopularMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">umbrella genre term for African popular music.</target>
+        </trans-unit>
+        <trans-unit id="IslamicVocalMusicUsuallySungACapella" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Islamic vocal music, usually sung a capella</target>
+        </trans-unit>
+        <trans-unit id="NigerianMusicOriginallyUsedByTheYorubaPeopleToWakeWorshipersAfterFastingDuringRamadan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Nigerian music originally used by the Yoruba people to wake worshipers after fasting during Ramadan.</target>
+        </trans-unit>
+        <trans-unit id="popMusicInformedByTraditionalArabicStyles" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">pop music informed by traditional arabic styles.</target>
+        </trans-unit>
+        <trans-unit id="rockMusicInformedByTraditionalArgentineStyles" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">rock music informed by traditional Argentine styles.</target>
+        </trans-unit>
+        <trans-unit id="EuropeanMusicFromTheLateMiddleAgesWhichAdvancedConceptsOfRhythm" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">European music from the Late Middle Ages, which advanced concepts of rhythm.</target>
+        </trans-unit>
+        <trans-unit id="styleOfFrenchMusicFromTheLateMiddleAgesRejectedByTheCatholicChurch" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of French music from the Late Middle Ages, rejected by the Catholic Church.</target>
+        </trans-unit>
+        <trans-unit id="styleOfFrenchMusicFromTheLateMiddleAges" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of French music from the Late Middle Ages.</target>
+        </trans-unit>
+        <trans-unit id="musicPerformedByMysticOrTravelingTurkishAzerbaijanGeorgianArmenianAndIranianBandsUsingVocalsAndTheSootPerformedSinceAncientTimes" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">music performed by mystic or traveling Turkish, Azerbaijan, Georgian, Armenian, and Iranian bands, using vocals and the soot, performed since ancient times.</target>
+        </trans-unit>
+        <trans-unit id="CountryMusicPerformedByAustralians" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Country Music Performed by Australians</target>
+        </trans-unit>
+        <trans-unit id="styleOfHardRockFoundedInAustralianNativeCityAndSuburbanPubsAndDrinkingEstablishments" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of hard rock founded in Australian native-city and suburban pubs and drinking establishments</target>
+        </trans-unit>
+        <trans-unit id="HipHopPerformedByAustralians" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hip Hop Performed by Australians</target>
+        </trans-unit>
+        <trans-unit id="styleOfSalvadorianBahianAndBrazilianMusicInformedByAfroCubanAndAfroBrazilianStyles" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of Salvadorian, Bahian, and Brazilian music informed by Afro-Cuban and Afro-Brazilian styles</target>
+        </trans-unit>
+        <trans-unit id="AfroDominicanStyleOfRockMusicThatBecamePopularAmongDominicanFarmers" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Afro-Dominican style of rock music that became popular among Dominican farmers</target>
+        </trans-unit>
+        <trans-unit id="aBritishStyleThatCombinedAlternativeRockAndAcidHouseOftenCreatingAPsychedelicAndFunkySound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a British style that combined alternative rock and acid house, often creating a psychedelic and funky sound</target>
+        </trans-unit>
+        <trans-unit id="aBrazilianRhythmicFormulaBuiltAroundTheZabumbaDrumThatLaterCombinedItselfWithElementsOfMestizoEuropeanAndAfricanStyles" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a Brazilian rhythmic formula built around the zabumba drum that later combined itself with elements of mestizo, european, and african styles</target>
+        </trans-unit>
+        <trans-unit id="ARawAndGrittyCountryStyleThatActsAsAReactionAgainstTheSlickOverproducedNashvilleSound" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A raw and gritty country style that acts as a reaction against the slick, overproduced Nashville sound</target>
+        </trans-unit>
+        <trans-unit id="SriLankanStyleThatBegunAmongTheAfroSinhaleseOrKariffCommunity" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Sri Lankan style that begun among the Afro-Sinhalese (or Kariff) community</target>
+        </trans-unit>
+        <trans-unit id="orchestralChineseStyleUsedByNaxiPeopleOftenFoundInTaoistOrConfucianCeremonies" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">orchestral Chinese style used by Naxi people, often found in Taoist or Confucian ceremonies</target>
+        </trans-unit>
+        <trans-unit id="InitiallyAnAcousticStyleOfMalianPopMusicPlayedAtGatheringsMainlyWeddingsWhichHasSinceBecomeMostlyElectronic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Initially an acoustic style of Malian pop music played at gatherings (mainly weddings), which has since become mostly electronic</target>
+        </trans-unit>
+        <trans-unit id="ThCenturyStyleOfFrenchAccordionBasedDanceMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">19th century style of French accordion-based dance music</target>
+        </trans-unit>
+        <trans-unit id="GuadeloupeanMusicMadeFromQuadrilleUsuallyPerformedAtBalls" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Guadeloupean music made from quadrille, usually performed at balls</target>
+        </trans-unit>
+        <trans-unit id="JavaneseAndBalineseStyleMadeOfXylophonesDrumsAndPluckedStrings" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Javanese and Balinese style made of xylophones, drums and plucked strings</target>
+        </trans-unit>
+        <trans-unit id="SerbianMusicMadeBySoldiersThatCombinedMilitaryBrassWithFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Serbian music made by soldiers that combined military brass with folk music</target>
+        </trans-unit>
+        <trans-unit id="ThThCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">13th-15th century Italian musical and poetic form based on an AbbaA structure that acted as a form of dance music</target>
+        </trans-unit>
+        <trans-unit id="specificStyleOfFrenchClassicalMusicCreatedToAccompanyTheBalletDance" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">specific style of French classical music created to accompany the ballet dance</target>
+        </trans-unit>
+        <trans-unit id="ColombianStyleBasedOnWaltzBrPoland" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Colombian style based on waltz &lt;br&gt; poland</target>
+        </trans-unit>
+        <trans-unit id="BrassBasedMexicanMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Brass-based Mexican music</target>
+        </trans-unit>
+        <trans-unit id="styleOfMalayOperaBasedOnIndianStylesIntroducedByImmigrants" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of Malay opera based on Indian styles introduced by immigrants</target>
+        </trans-unit>
+        <trans-unit id="CameroonianStyleOfAccordionMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Cameroonian style of accordion music</target>
+        </trans-unit>
+        <trans-unit id="styleOfWesternArtMusicMadeBetweenThAndThCenturies" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of Western art music made between 17th and 18th centuries</target>
+        </trans-unit>
+        <trans-unit id="stylesOfEDMWithBassDrumAndBassUKGarageAndDubstep" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">styles of EDM with bass, drum and bass, UK garage and dubstep</target>
+        </trans-unit>
+        <trans-unit id="CubanRumbaMusicThatIncorporatesBataAndGuaguanco" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Cuban rumba music that incorporates bata and guaguanco</target>
+        </trans-unit>
+        <trans-unit id="AnAfricanInfluencedStyleOfBrazilianSumba" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">An African-influenced style of Brazilian sumba</target>
+        </trans-unit>
+        <trans-unit id="AStyleOfFolkMusicEspeciallyInBengaliRegion" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A style of folk music, especially in Bengali region.</target>
+        </trans-unit>
+        <trans-unit id="CalifornianGenreFromTheSThatCombinedElementsOfAllPopularGenresAtTheTimeEspeciallyBigBandAndShagJazz" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Californian genre from the 1950s that combined elements of all popular genres at the time, especially big band and shag jazz</target>
+        </trans-unit>
+        <trans-unit id="styleOfChineseTraditionalMusicPopularInTaiwanAndTheProvinceOfZhangzhou" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of Chinese traditional music popular in Taiwan and the province of Zhangzhou</target>
+        </trans-unit>
+        <trans-unit id="ItalianOperaSinging" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Italian opera singing</target>
+        </trans-unit>
+        <trans-unit id="UrbanCameroonianMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Urban Cameroonian Music</target>
+        </trans-unit>
+        <trans-unit id="KenyanPopularMusicBasedOnLuoAndKikuyuFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Kenyan popular music based on Luo and Kikuyu folk music</target>
+        </trans-unit>
+        <trans-unit id="HeavilyExperimentalElectronicMusicThatKrautrockAndNewAgeMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Heavily Experimental Electronic Music That Krautrock and New Age Music</target>
+        </trans-unit>
+        <trans-unit id="HinduReligiousMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Hindu religious music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfSouthAsianAndBritishPopularStylesInitiallyDevelopedByPunjabiIndianEnglishAsACombinationOfTheirRespectiveCulturalStylesButLaterUsedToReferToAnySouthAsianEuropeanFusion" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">fusion of South Asian and British popular styles, initially developed by Punjabi Indian-English as a combination of their respective cultural styles, but later used to refer to any South Asian / European fusion</target>
+        </trans-unit>
+        <trans-unit id="GuadeloupeanFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Guadeloupean folk music</target>
+        </trans-unit>
+        <trans-unit id="ExtremeMetalKnownForItsLoFiRecordingShriekingVocalsUnconventionalSongStructuresAndDarkOrSupernaturalLyrics" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Extreme metal known for its lo-fi recording, shrieking vocals, unconventional song structures and dark or supernatural lyrics.</target>
+        </trans-unit>
+        <trans-unit id="AmericanCountryMusicMixedWithIrishAndScottishInfluences" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">American country music mixed with Irish and Scottish influences</target>
+        </trans-unit>
+        <trans-unit id="AfricanAmericanMusicFromTheMississippiDeltaArea" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">African-American music from the Mississippi Delta area</target>
+        </trans-unit>
+        <trans-unit id="electronicMusicWhereTheLeastPartOfTheMusicIsMadeUsingOldBitComputersGameConsolesAndLittleToyInstrumentsPopularChoicesAreTheCommodoreGameBoyAtariAndNintendoEntertainmentSystem" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">electronic music, where the least part of the music is made using old 8-bit computers, game consoles and little toy instruments. Popular choices are the Commodore 64, Game Boy, Atari 2600 and Nintendo Entertainment System.</target>
+        </trans-unit>
+        <trans-unit id="APopularFolkMusicOfAssamIndia" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A popular folk music of Assam, India</target>
+        </trans-unit>
+        <trans-unit id="AmazonianFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Amazonian folk music</target>
+        </trans-unit>
+        <trans-unit id="aWellKnownStyleOfBrazilianMusicAndLyricalFusionOfSambaAndJazz" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a well-known style of Brazilian music, and lyrical fusion of samba and jazz.</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfEDMKnownForItsDrumPatternAndHeavyUseOfTurntableScratching" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a style of EDM known for its 4/4 drum pattern and heavy use of turntable scratching</target>
+        </trans-unit>
+        <trans-unit id="FolkMusicOfBrittanyFranceFamousForItsUseOfWoodwind" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Folk music of Brittany, France, famous for its use of woodwind</target>
+        </trans-unit>
+        <trans-unit id="ADistinctiveStyleOfJazzAndLatinInspiredPopDevelopedInTheBrillBuildingOfNewYorkUSA" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A distinctive style of jazz and Latin-inspired pop developed in the Brill Building of New York, USA</target>
+        </trans-unit>
+        <trans-unit id="funkPerformedByBritishOftenInfluencedBySoulJazzAndCaribbeanMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">funk performed by British, often influenced by soul, jazz, and Caribbean music</target>
+        </trans-unit>
+        <trans-unit id="BritishRockMusicFromTheSThatSubvertedTheDepressingThemesOfTheThenPopularGrungeMovementInFavorOfJanglyOptimisticGuitarPopOftenTouchingThemesOfPartyingAndWorkingClassLife" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">British rock music from the 1990s that subverted the depressing themes of the then-popular grunge movement in favor of jangly, optimistic, guitar-pop, often touching themes of partying and working class life.</target>
+        </trans-unit>
+        <trans-unit id="BluesPerformedByBritishMusicians" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Blues Performed By British Musicians</target>
+        </trans-unit>
+        <trans-unit id="BritishMusiciansPrimarilyOfTheBeatMovementWhoBecamePopularInAmericaDuringTheS" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">British musicians, primarily of the beat movement, who became popular in America during the 1960s</target>
+        </trans-unit>
+        <trans-unit id="EDMPlayedInARhythmSyncopatedWithPunctuatedSnareBeats" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">EDM played in a 4/4 rhythm syncopated, with punctuated snare beats</target>
+        </trans-unit>
+        <trans-unit id="anAggressiveAndMetalInfluencedStyleOfDubstepPopularInAmerica" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">an aggressive and metal-influenced style of dubstep popular in America</target>
+        </trans-unit>
+        <trans-unit id="SoulMusicPerformedByLatinos" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Soul music performed by Latinos</target>
+        </trans-unit>
+        <trans-unit id="BelizeanMusicInspiredByEuropeanHarmoniesAfricanRhythmsAndTheCallAndResponseFormat" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Belizean music inspired by European harmonies, African rhythms, and the call-and-response format</target>
+        </trans-unit>
+        <trans-unit id="FusionOfEurodanceAndBubblegumPop" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Fusion Of Eurodance And Bubblegum Pop</target>
+        </trans-unit>
+        <trans-unit id="CameroonianEDMBornInTheBetiCommunity" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Cameroonian EDM, born in the Beti community</target>
+        </trans-unit>
+        <trans-unit id="JapaneseFolkMusicOftenPlayedAtPuppetTheaters" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Japanese folk music often played at puppet theaters</target>
+        </trans-unit>
+        <trans-unit id="StyleOfHighlifePlayedByGhanaianGermans" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Style of Highlife played by Ghanaian-Germans</target>
+        </trans-unit>
+        <trans-unit id="GroupOfFrenchBelgianAndDutchComposersActiveInTheThCenturyKnownForTheirSecularForms" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Group of French, Belgian, and Dutch composers active in the 15th century, known for their secular forms</target>
+        </trans-unit>
+        <trans-unit id="AustralianFolkMusicOftenDealingWithThemesOfAustralianSpiritAndRebellion" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Australian folk music often dealing with themes of Australian spirit and rebellion</target>
+        </trans-unit>
+        <trans-unit id="GreekMusicPerformedDuringTheByzantineEmpireKnownForItsEcclesiasticalForm" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Greek music performed during the Byzantine Empire, known for its ecclesiastical form</target>
+        </trans-unit>
+        <trans-unit id="RomanianFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Romanian folk music</target>
+        </trans-unit>
+        <trans-unit id="caTrù" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">ca trù</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfVietnameseChamberMusicPerformedByALutePlayerAndAGeishaEsqueFemaleSinger" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">a style of Vietnamese chamber music performed by a lute player and a geisha-esque female singer</target>
+        </trans-unit>
+        <trans-unit id="ModernVietnameseFolkOpera" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Modern Vietnamese folk opera</target>
+        </trans-unit>
+        <trans-unit id="RootsMusicOfLouisianaUSAInspiredByAcadianBalladsAndCreole" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Roots Music of Louisiana, USA, inspired by Acadian Ballads and Creole</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicPlayedDuringThePracticeOfMartialArtOfTheSameName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Trinidadian folk music played during the practice of martial art of the same name</target>
+        </trans-unit>
+        <trans-unit id="MacedonianFolkStyle" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Macedonian folk style</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicInspiredByBothAfricanAndFrenchStylesKnownForItsLyricsDealingWithRacistOppressionOfNativeTrinidadians" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Trinidadian folk music, inspired by both African and French styles, known for its lyrics dealing with racist oppression of native Trinidadians</target>
+        </trans-unit>
+        <trans-unit id="IndonesianFusionGenreCombiningSeveralFolkStylesWithPopMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Indonesian fusion genre, combining several folk styles with pop music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfAfricanAndUruguayanStylesDevelopedByAfricanUruguayanSlavesInTheThCentury" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">fusion of African and Uruguayan styles developed by African-Uruguayan Slaves in the 19th century</target>
+        </trans-unit>
+        <trans-unit id="groupOfBritishAvantGardeProgressiveRockAndJazzFusionMusiciansBasedInTheEnglishCityOfCanterburyKent" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">group of British avant-garde, progressive rock, and jazz fusion musicians based in the English city of Canterbury, Kent</target>
+        </trans-unit>
+        <trans-unit id="upbeatFormOfAndalusianFlamencoMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">upbeat form of andalusian flamenco music</target>
+        </trans-unit>
+        <trans-unit id="PortugueseBalladStyleFromMiddleAges" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Portuguese ballad style from Middle Ages</target>
+        </trans-unit>
+        <trans-unit id="PortugueseFolkMusicKnownForItsFarLeftPoliticalMessages" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Portuguese folk music known for its far-left political messages</target>
+        </trans-unit>
+        <trans-unit id="AnyChinesePopMusicSungInCantonese" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Any Chinese pop music sung in Cantonese</target>
+        </trans-unit>
+        <trans-unit id="ItalianMusicInNeapolitan" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Italian music in Neapolitan</target>
+        </trans-unit>
+        <trans-unit id="BrazilianMusicPlayedDuringPerformancesOfMartialArtOfTheSameName" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Brazilian music played during performances of martial art of the same name</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicOftenConsideredAnEarlyFormOfCalypso" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Trinidadian folk music, often considered an early form of calypso</target>
+        </trans-unit>
+        <trans-unit id="SouthernIndianClassicalMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Southern Indian classical music</target>
+        </trans-unit>
+        <trans-unit id="AFestiveSongOftenSungOnChristmasOrRarelyEaster" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">A festive song, often sung on Christmas or rarely Easter</target>
+        </trans-unit>
+        <trans-unit id="StyleOfRhythmPopularInKenyanAndZaireanMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Style of rhythm popular in Kenyan and Zairean music</target>
+        </trans-unit>
+        <trans-unit id="SudaneseFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Sudanese folk music</target>
+        </trans-unit>
+        <trans-unit id="folkMusicOfCeltsScotlandIrelandWalesIsleOfManFranceAndSpainAndOnceEngland" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">folk music of Celts, Scotland, Ireland, Wales, Isle of Man, France and Spain, and once England</target>
+        </trans-unit>
+        <trans-unit id="CelticInfluence" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Celtic influence</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndHipHopMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Fusion Of Celtic And Hip Hop Music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCelticAndHeavyMetalMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">fusion of Celtic and heavy metal music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndPunkRockMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Fusion Of Celtic And Punk Rock Music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndReggaeMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Fusion of Celtic and Reggae music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCelticAndRockMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">fusion of Celtic and rock music</target>
+        </trans-unit>
+        <trans-unit id="CubanFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Cuban folk music</target>
+        </trans-unit>
+        <trans-unit id="ArgentinianFolkAndDanceMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Argentinian folk and dance music</target>
+        </trans-unit>
+        <trans-unit id="musicOfTheSwahiliPeopleOfKenyaAndTanzania" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">music of the Swahili people of Kenya and Tanzania</target>
+        </trans-unit>
+        <trans-unit id="fusionOfBulgarianEthnoPopAndDanceMusicWithEasternAndArabicElementsPopularInSouthernBulgaria" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">fusion of Bulgarian ethno-pop and dance music with Eastern and Arabic elements, popular in Southern Bulgaria</target>
+        </trans-unit>
+        <trans-unit id="styleOfArgentinianMesopotamianAndBrazilianFolkMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">style of Argentinian, Mesopotamian, and Brazilian folk music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfAlternativeRockAndChamberMusic" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Fusion of alternative rock and chamber music</target>
+        </trans-unit>
+              <trans-unit id="NotImplementedPleaseContactTheWebmasterAboutThisDefectWhichIsListedInTheFooterOfEachPage" translate="yes" xml:space="preserve">
+          <source />
+          <target state="translated">Not implemented. Please contact the webmaster about this defect which is listed in the footer of each page.</target>
+        </trans-unit>
+      </group>
     </body>
   </file>
 </xliff>

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sunamo.Constants;
 using XliffParser;
 
 public class XlfResourcesH
@@ -22,15 +23,19 @@ public class XlfResourcesH
         SaveResouresToRL(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName));
     }
 
+    public static void SaveResouresToRLSunamo()
+    {
+        SaveResouresToRL(DefaultPaths.sunamoProject);
+    }
+
     /// <summary>
     /// A1 = CS-CZ or CS etc
     /// </summary>
     /// <param name="lang"></param>
     private static void SaveResouresToRL(string basePath, string lang)
     {
-        if (!initialized)
-        {
-            initialized = true;
+        // cant be inicialized - after cs is set initialized to true and skip english
+        //initialized = true;
 
             var path = Path.Combine(basePath, "MultilingualResources");
             var files = Directory.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
@@ -55,13 +60,13 @@ public class XlfResourcesH
                             {
                                 RLData.cs.Add(u.Id, u.Target);
                             }
-                            
                         }
                         else if (isEnglish)
                         {
                             if (!RLData.en.ContainsKey(u.Id))
                             {
                                 RLData.en.Add(u.Id, u.Target);
+                            
                             }
                             
                         }
@@ -71,8 +76,10 @@ public class XlfResourcesH
                         }
                     }
                 }
-            }
+            
         }
+
+        
     }
 }
 

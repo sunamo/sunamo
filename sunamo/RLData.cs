@@ -9,8 +9,8 @@ using System.Text;
 public static class RLData
 {
     // In case of serious problem I can use TranslateDictionary
-    public static Dictionary<string, string> en = new Dictionary<string, string>();
-    public static Dictionary<string, string> cs = new Dictionary<string, string>();
+    public static TranslateDictionary en = new TranslateDictionary(Langs.en);
+    public static TranslateDictionary cs = new TranslateDictionary(Langs.cs);
 
     public static string EnPostColon(string key)
     {
@@ -20,9 +20,17 @@ public static class RLData
 
 public class TranslateDictionary : IDictionary<string, string>
 {
+    static Type type = typeof(TranslateDictionary);
+
     public static string basePathSolution = null;
 
     Dictionary<string, string> d = new Dictionary<string, string>();
+    Langs l = Langs.en;
+
+    public TranslateDictionary(Langs l)
+    {
+        this.l = l;
+    }
 
     public string this[string key]
     { get  
@@ -30,8 +38,10 @@ public class TranslateDictionary : IDictionary<string, string>
 
             if (!d.ContainsKey(key))
             {
-                XlfResourcesH.initialized = false;
-                XlfResourcesH.SaveResouresToRL(basePathSolution);
+                //XlfResourcesH.initialized = false;
+                //XlfResourcesH.SaveResouresToRL(basePathSolution);
+                ThrowExceptions.Custom(type, RH.CallingMethod(), key + " is not in " + l + " dictionary");
+                //return string.Empty;
             }
             return d[key];
         } set => d[key] = value; }
@@ -61,7 +71,6 @@ public class TranslateDictionary : IDictionary<string, string>
 
     public bool Contains(KeyValuePair<string, string> item)
     {
-
         return d.ContainsKey(item.Key);
     }
 

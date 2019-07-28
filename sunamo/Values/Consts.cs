@@ -13,7 +13,8 @@ namespace sunamo.Values
         /// </summary>
         public const int addRowsToCodeTextBoxDuringScrolling = 0;
 
-
+        public const string cs = "cs ";
+        public const string en = "en ";
 
     }
 }

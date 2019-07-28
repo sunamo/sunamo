@@ -47,7 +47,7 @@ namespace cmd.Essential
                     bk = ConsoleColor.Green;
                     break;
                 default:
-                    throw new Exception("Neinplementovana vetev");
+                    throw new Exception(RLData.en["UninplementedBranch"]);
                     break;
             }
             if (bk != ConsoleColor.Black)

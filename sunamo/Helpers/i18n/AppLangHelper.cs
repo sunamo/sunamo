@@ -120,6 +120,8 @@ namespace sunamo
 
         /// <summary>
         /// Metoda která mi vrátí jazyk ve kterém se má obsah zobrazit
+        /// GetLang2 return from two letters lang 
+        /// GetLang3 return from two or five (en-us) letters 
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
@@ -159,6 +161,16 @@ namespace sunamo
                 return vr;
             }
             return Langs.en;
+        }
+
+        public static Langs GetLang3(string d)
+        {
+            if (d.Length == 5 && d[2] == AllChars.dash)
+            {
+                return GetLang2(d.Substring(0, 2));
+            }
+
+            return GetLang2(d);
         }
 
         /// <summary>

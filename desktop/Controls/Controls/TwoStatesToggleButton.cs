@@ -26,7 +26,7 @@ using System.Windows.Controls.Primitives;
             }
             else
             {
-                throw new Exception("Nemůžeš zavolat 2x metodu SetInitialChecked pro stejný ToggleButton");
+                throw new Exception(RLData.en["YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton"]);
             }
         }
 

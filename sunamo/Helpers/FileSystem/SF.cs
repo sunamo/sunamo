@@ -195,13 +195,18 @@ public static partial class SF
         }
     }
 
+    public static string PrepareToSerialization2(params object[] pr)
+    {
+        return PrepareToSerializationWorker(pr, true, separatorString);
+    }
+
     /// <summary>
     /// Vrátí bez poslední 
     /// If need to combine string and IEnumerable, lets use CA.Join
     /// </summary>
     /// <param name = "o"></param>
     /// <returns></returns>
-    public static string PrepareToSerialization2(IEnumerable o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization2(string item, IEnumerable o, string separator = AllStrings.pipe)
     {
         return PrepareToSerializationWorker(o, true, separator);
     }
@@ -220,6 +225,12 @@ public static partial class SF
         return vr;
     }
 
+    /// <summary>
+    /// Return with the last
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="separator"></param>
+    /// <returns></returns>
     public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
     {
         return PrepareToSerializationWorker(o, false, separator);

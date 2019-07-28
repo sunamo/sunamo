@@ -79,8 +79,6 @@ public class TranslateHelper
 
         TranslationClient client = TranslationClient.Create(credential);
 
-
-
         var response = client.TranslateText(input, to, from);
         var result = response.TranslatedText;
         if (from.Contains("cs") && to.Contains("en"))

@@ -9,6 +9,6 @@ namespace desktop
     // TODO: Merge with resources 
     public class ExceptionStrings
     {
-        public const string AllOfInputsMustBeFilled = "All of inputs must be filled";
+        public const string AllOfInputsMustBeFilled = "All of the inputs must be filled";
     }
 }

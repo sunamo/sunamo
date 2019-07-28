@@ -326,7 +326,7 @@ public class SunamoPage : System.Web.UI.Page
                 uint ui = 0;
                 b = uint.TryParse(r, out ui);
             }
-            else if (type == Consts.uUlong)
+            else if (type == Consts.tUlong)
             {
                 ulong ul = 0;
                 b = ulong.TryParse(r, out ul);

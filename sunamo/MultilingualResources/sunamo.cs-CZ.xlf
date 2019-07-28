@@ -1,12 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+﻿<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="WPF.TESTS/PROPERTIES/RESOURCES.RESX" datatype="resx">
-       </group>
+      <group id="WPF.TESTS/PROPERTIES/RESOURCES.RESX" datatype="resx"></group>
     </body>
   </file>
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/RESOURCES/CS-CZ.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
@@ -15,10 +13,2003 @@
     </header>
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
-
-       
-       
-       <trans-unit id="NotImplementedPleaseContactWebAdmin" translate="yes" xml:space="preserve"><source></source><target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.</target></trans-unit><trans-unit id="EditUserAccount" translate="yes" xml:space="preserve"><source></source><target state="translated">Editace uživatelského účtu</target></trans-unit><trans-unit id="UserDetail" translate="yes" xml:space="preserve"><source></source><target state="translated">Detail uživatele</target></trans-unit><trans-unit id="ErrorSerie255" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Buď stránka poslala špatné parametry URI entityTableId a entityId, nebo entita s těmito parametry nebyla v databázi nalezena.</target></trans-unit><trans-unit id="ErrorSerie0" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Uri ze které byl volán tento handler nebyla v databázi.</target></trans-unit><trans-unit id="ViewLastWeek" translate="yes" xml:space="preserve"><source></source><target state="translated">Shlédnutí stránky za posledních 7 dní(počítá se den zpětně, to znamená že dnešní přístupy se zobrazí až zítra): </target></trans-unit><trans-unit id="YouAreNotLogged" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Nebyly jste přihlášení</target></trans-unit><trans-unit id="YouAreBlocked" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Byly jste zablokování dle IP adresy nebo nicku, požadovanou operaci nemůžete provést</target></trans-unit><trans-unit id="TurnOnSelectingPhotos" translate="yes" xml:space="preserve"><source></source><target state="translated">Zapni režim označování fotek</target></trans-unit><trans-unit id="TurnOffSelectingPhotos" translate="yes" xml:space="preserve"><source></source><target state="translated">Vypni režim označování fotek</target></trans-unit><trans-unit id="StringNotFound" translate="yes" xml:space="preserve"><source></source><target state="translated">Řetězen nebyl nalezen</target></trans-unit><trans-unit id="NoRightArgumentsToPage" translate="yes" xml:space="preserve"><source></source><target state="translated">Do stránky nebyl předán správný počet parametrů a/nebo se správnými hodnotami</target></trans-unit><trans-unit id="YouAreNotLoggedAsWebAdmin" translate="yes" xml:space="preserve"><source></source><target state="translated">Nebyl jste přihlášen jako admin stránek</target></trans-unit><trans-unit id="YouHaveNotValidIPv4Address" translate="yes" xml:space="preserve"><source></source><target state="translated">Nemáte platnou adresu IPv4</target></trans-unit><trans-unit id="UriTooShort" translate="yes" xml:space="preserve"><source></source><target state="translated">Web obdržel adresu která byla prázdná</target></trans-unit><trans-unit id="UriTooLong" translate="yes" xml:space="preserve"><source></source><target state="translated">Adresa byla delší než 512 znaků</target></trans-unit><trans-unit id="CustomShortUriOccupatedYet" translate="yes" xml:space="preserve"><source></source><target state="translated">Tento krátký odkaz byl již zabrán</target></trans-unit><trans-unit id="LinkSuccessfullyShorted" translate="yes" xml:space="preserve"><source></source><target state="translated">Odkaz byl úspěšně zkrácen</target></trans-unit><trans-unit id="scFixed" translate="yes" xml:space="preserve"><source></source><target state="translated">1pr2qyfsagraqjv4uypgho5o</target></trans-unit><trans-unit id="UnauthorizedOperation" translate="yes" xml:space="preserve"><source></source><target state="translated">Na tuto stránku jste se dostali, protože jste se pokusili načíst stránku, nebo provést jinou operaci, ke které nemáte povolení nebo která není v tomto kontextu aplikovatelná.</target></trans-unit><trans-unit id="RemoveFromFavoritesSuccess" translate="yes" xml:space="preserve"><source></source><target state="translated">Odebráno z oblíbených</target></trans-unit><trans-unit id="AddToFavoritesSuccess" translate="yes" xml:space="preserve"><source></source><target state="translated">Přidáno do oblíbených!</target></trans-unit><trans-unit id="RemoveFromFavorites" translate="yes" xml:space="preserve"><source></source><target state="translated">Odstranit z oblíbených</target></trans-unit><trans-unit id="AddToFavorites" translate="yes" xml:space="preserve"><source></source><target state="translated">Přidat do oblíbených</target></trans-unit><trans-unit id="RemoveAsRsvpSuccess" translate="yes" xml:space="preserve"><source></source><target state="translated">Tak snad někdy příště..</target></trans-unit><trans-unit id="RemoveAsRsvp" translate="yes" xml:space="preserve"><source></source><target state="translated">Bohužel mi to nevyjde</target></trans-unit><trans-unit id="AddAsRsvp" translate="yes" xml:space="preserve"><source></source><target state="translated">Přijdu to zkouknout</target></trans-unit><trans-unit id="DetailsClickSurveyAspxLabel" translate="yes" xml:space="preserve"><source></source><target state="translated">Kdy bylo kliknuto na odpovědi v této anketě</target></trans-unit><trans-unit id="UnvalidSession" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Špatné údaje o přihlášení - odhlašte se a přihlašte se znovu. </target></trans-unit><trans-unit id="ScIsNotTheSame" translate="yes" xml:space="preserve"><source></source><target state="translated">error: Nesouhlasilo sc. </target></trans-unit><trans-unit id="CurrentPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktuální heslo</target></trans-unit><trans-unit id="NewPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Nové heslo</target></trans-unit><trans-unit id="NewPasswordAgain" translate="yes" xml:space="preserve"><source></source><target state="translated">Nové heslo znovu</target></trans-unit><trans-unit id="ChangePassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Změnit heslo</target></trans-unit><trans-unit id="TheUserSPersonalLabel" translate="yes" xml:space="preserve"><source></source><target state="translated">Osobní popisek uživatele</target></trans-unit><trans-unit id="ChangingThePassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Změna hesla</target></trans-unit><trans-unit id="ActivatingCode" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivační kód</target></trans-unit><trans-unit id="ActivateAccount" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivovat účet</target></trans-unit><trans-unit id="NewEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Nový email</target></trans-unit><trans-unit id="characters" translate="yes" xml:space="preserve"><source></source><target state="translated">znaků</target></trans-unit><trans-unit id="YouShouldCheckYourEmailSeveralTimesToSeeIfItIsCorrectYouWillNotLogInAgainWithoutReactivatingYourEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Email si po sobě raději několikrát zkontrolujte, zda je zadaný správně, bez reaktivace na vámi zadaném emailu se již znovu nepřihlásíte.</target></trans-unit><trans-unit id="Password" translate="yes" xml:space="preserve"><source></source><target state="translated">Heslo</target></trans-unit><trans-unit id="TheUnUserNameParameterWasNotFoundInTheAddressTheApplicationDoesNotKnowWhichProfileToDisplay" translate="yes" xml:space="preserve"><source></source><target state="translated">V adrese nebyl nalezen parametr un(user name), aplikace neví který profil si přejete zobrazit.</target></trans-unit><trans-unit id="WhenWasTheLastTimeTheUserWasOnlineWhatDidHeHitOnHimselfYouCanFindItHere" translate="yes" xml:space="preserve"><source></source><target state="translated">Kdy byl uživatel naposledy online? Co na sebe prásknul? To najdete zde.</target></trans-unit><trans-unit id="User" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel</target></trans-unit><trans-unit id="LastWasHere" translate="yes" xml:space="preserve"><source></source><target state="translated">Naposledy zde byl(a)</target></trans-unit><trans-unit id="Sex" translate="yes" xml:space="preserve"><source></source><target state="translated">Pohlaví</target></trans-unit><trans-unit id="Age" translate="yes" xml:space="preserve"><source></source><target state="translated">Věk</target></trans-unit><trans-unit id="State" translate="yes" xml:space="preserve"><source></source><target state="translated">Stát</target></trans-unit><trans-unit id="Region" translate="yes" xml:space="preserve"><source></source><target state="translated">Kraj</target></trans-unit><trans-unit id="City" translate="yes" xml:space="preserve"><source></source><target state="translated">Město</target></trans-unit><trans-unit id="UserNotFound" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel nenalezen</target></trans-unit><trans-unit id="ActivitiesAndUserInformation" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivity a informace o uživateli</target></trans-unit><trans-unit id="ChangeTheProfilePicture" translate="yes" xml:space="preserve"><source></source><target state="translated">Změnit profilový obrázek</target></trans-unit><trans-unit id="EditingYourProfile" translate="yes" xml:space="preserve"><source></source><target state="translated">Editace Vašeho profilu</target></trans-unit><trans-unit id="ChangeYourEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Změna Vašeho emailu</target></trans-unit><trans-unit id="ActivatingAUserAccount" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivace uživatelského účtu</target></trans-unit><trans-unit id="HereYouCanActivateYourUserAccountAfterRegistration" translate="yes" xml:space="preserve"><source></source><target state="translated">Zde si můžete aktivovat svůj uživatelský účet po registraci</target></trans-unit><trans-unit id="YourAccountHasBeenSuccessfullyActivatedNowYouCan" translate="yes" xml:space="preserve"><source></source><target state="translated">Váš účet byl úspěšně aktivován. Nyní se můžete</target></trans-unit><trans-unit id="signIn" translate="yes" xml:space="preserve"><source></source><target state="translated">přihlásit</target></trans-unit><trans-unit id="UserReactivatedSuccessfullyYouCanNowSubscribeWithTheNewMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel byl úspěšně reaktivován. Nyní se můžete přihlásit již s novým mailem.</target></trans-unit><trans-unit id="TheUserCouldNotBeReactivatedBecauseTheUserWithTheGivenUidAndCodeWasNotFoundInDB" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel nemohl být reaktivován, protože uživatel s daným uid a code nebyl v DB nalezen.</target></trans-unit><trans-unit id="ChangeEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Změnit email</target></trans-unit><trans-unit id="TheTextYouEnteredDoesNotMatchTheEmailFormat" translate="yes" xml:space="preserve"><source></source><target state="translated">Zadaný text neodpovídá formátu emailu.</target></trans-unit><trans-unit id="ThisEmailIsAlreadyAssignedToAnotherUser" translate="yes" xml:space="preserve"><source></source><target state="translated">Tento email má již jiný uživatel přiřazen.</target></trans-unit><trans-unit id="ThePasswordForTheLoggedInUserDidNotMatch" translate="yes" xml:space="preserve"><source></source><target state="translated">Nesouhlasilo heslo k přihlášenému uživateli.</target></trans-unit><trans-unit id="TheOldMailIsNoDifferentFromTheNewOne" translate="yes" xml:space="preserve"><source></source><target state="translated">Starý mail se od nového neliší.</target></trans-unit><trans-unit id="YouHaveAlreadyChangedYourMailTimesFrom" translate="yes" xml:space="preserve"><source></source><target state="translated">Již jste si 3x změnili mail z</target></trans-unit><trans-unit id="andYouCanTDoItAnymore" translate="yes" xml:space="preserve"><source></source><target state="translated">a již to nemůžete provést</target></trans-unit><trans-unit id="ChangeAccountEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Změna emailu k účtu</target></trans-unit><trans-unit id="ChangeYourProfilePictureOn" translate="yes" xml:space="preserve"><source></source><target state="translated">Změnte si profilový obrázek na</target></trans-unit><trans-unit id="ClickTheButtonToUploadANewProfilePictureToSunamoCz" translate="yes" xml:space="preserve"><source></source><target state="translated">2. Klikněte na tlačítko k nahrání nového profilového obrázku na sunamo.cz</target></trans-unit><trans-unit id="UpdateYourProfilePictureToSunamoCz" translate="yes" xml:space="preserve"><source></source><target state="translated">Updatuj profilový obrázek na sunamo.cz</target></trans-unit><trans-unit id="ChangeProfilePicture" translate="yes" xml:space="preserve"><source></source><target state="translated">Změna profilového obrázku</target></trans-unit><trans-unit id="ProfileImageChangedSuccessfully" translate="yes" xml:space="preserve"><source></source><target state="translated">Profilový obrázek byl úspěšně změněn</target></trans-unit><trans-unit id="FailedToSaveProfileImagePleaseTryAgain" translate="yes" xml:space="preserve"><source></source><target state="translated">Profilový obrázek se nepodařilo uložit, zkuste to znovu</target></trans-unit><trans-unit id="NoNickWasFoundForYourUserNumber" translate="yes" xml:space="preserve"><source></source><target state="translated">K vašemu číslu uživatele nebyl nalezen žádný nick</target></trans-unit><trans-unit id="YouAreNotLoggedIn" translate="yes" xml:space="preserve"><source></source><target state="translated">Nejste přihlášení</target></trans-unit><trans-unit id="RequiredItems" translate="yes" xml:space="preserve"><source></source><target state="translated">Povinné položky</target></trans-unit><trans-unit id="Birthdate" translate="yes" xml:space="preserve"><source></source><target state="translated">Datum narození</target></trans-unit><trans-unit id="VoluntaryItems" translate="yes" xml:space="preserve"><source></source><target state="translated">Dobrovolné položky</target></trans-unit><trans-unit id="Man" translate="yes" xml:space="preserve"><source></source><target state="translated">Muž</target></trans-unit><trans-unit id="EmailSettings" translate="yes" xml:space="preserve"><source></source><target state="translated">Nastavení emailu</target></trans-unit><trans-unit id="EveryoneCanViewMyMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Všichni mohou zobrazit můj mail</target></trans-unit><trans-unit id="EveryoneCanWriteMeMailButNoOneCanSeeMyMailAddress" translate="yes" xml:space="preserve"><source></source><target state="translated">Všichni mi mohou napsat mail ale nikdo mou mail adresu nevidí</target></trans-unit><trans-unit id="OnlyApplicationsFromThisSiteCanSendMailToMeNotIndividualUsers" translate="yes" xml:space="preserve"><source></source><target state="translated">Maily mi mohou posílat pouze aplikace z tohoto webu, nikoliv samostatní uživatelé</target></trans-unit><trans-unit id="IDoNotWishToReceiveAnyMailsFromUsersOrApplications" translate="yes" xml:space="preserve"><source></source><target state="translated">Nepřeji si dostávat žádné maily ani od uživatelů ani od aplikací</target></trans-unit><trans-unit id="PageWidth" translate="yes" xml:space="preserve"><source></source><target state="translated">Šířka stránky</target></trans-unit><trans-unit id="AboutYou" translate="yes" xml:space="preserve"><source></source><target state="translated">O Vás</target></trans-unit><trans-unit id="andThisPageImportantForYouToDisplayHTMLCorrectlyEnterInPixels" translate="yes" xml:space="preserve"><source></source><target state="translated">a této stránky(důležité aby se vám správně zobrazilo HTML - zadejte číslo v rozmezí 800-1000 v pixelech)</target></trans-unit><trans-unit id="IfYouEnterAWrongValueIsSaved" translate="yes" xml:space="preserve"><source></source><target state="translated">Pokud zadáte špatnou hodnotu, uloží se 800</target></trans-unit><trans-unit id="YourLabel" translate="yes" xml:space="preserve"><source></source><target state="translated">Váš popisek</target></trans-unit><trans-unit id="SaveChanges" translate="yes" xml:space="preserve"><source></source><target state="translated">Uložit změny</target></trans-unit><trans-unit id="Woman" translate="yes" xml:space="preserve"><source></source><target state="translated">Žena</target></trans-unit><trans-unit id="EditingAnExistingUser" translate="yes" xml:space="preserve"><source></source><target state="translated">Editace stávajícího uživatele</target></trans-unit><trans-unit id="HereYouCanEditYourUserProfileWithGeneralInformation" translate="yes" xml:space="preserve"><source></source><target state="translated">Zde můžete editovat svůj uživatelský profil se všeobecnými informacemi.</target></trans-unit><trans-unit id="SexCannotBeLeftBlank" translate="yes" xml:space="preserve"><source></source><target state="translated">Pohlaví nemůže zůstat prázdné</target></trans-unit><trans-unit id="AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel s takovýmto uid nebyl v DB nalezen, uživatel nemohl být reaktivován.</target></trans-unit><trans-unit id="Code" translate="yes" xml:space="preserve"><source></source><target state="translated">Kod</target></trans-unit><trans-unit id="wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect" translate="yes" xml:space="preserve"><source></source><target state="translated">nebyl v DB nalezen, buď už byl použit nebo byl nesprávný</target></trans-unit><trans-unit id="TheCodeParameterWasNotTheCorrectLength" translate="yes" xml:space="preserve"><source></source><target state="translated">Parametr code neměl správnou délku. </target></trans-unit><trans-unit id="SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures" translate="yes" xml:space="preserve"><source></source><target state="translated">Přihlašte se, abyste mohli plně využít všech možností a funkcí webu</target></trans-unit><trans-unit id="YouMustEnterYourLoginNameForTheNextStep" translate="yes" xml:space="preserve"><source></source><target state="translated">Přihlašovací jméno musíte zadat pro podstoupení do dalšího kroku</target></trans-unit><trans-unit id="uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed" translate="yes" xml:space="preserve"><source></source><target state="translated">jsou povoleny velké a malé písmena, čísla a znaky ./-/_</target></trans-unit><trans-unit id="generateARandomStrongPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">vygenerovat náhodné silné heslo</target></trans-unit><trans-unit id="PasswordASecondTime" translate="yes" xml:space="preserve"><source></source><target state="translated">Heslo podruhé</target></trans-unit><trans-unit id="DoYouWishToSendALoginNameToTheMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Přejete si zaslat na mail přihlašovací jméno?</target></trans-unit><trans-unit id="DoYouWantToSendAPasswordToMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Přejete si zaslat na mail heslo?</target></trans-unit><trans-unit id="ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly" translate="yes" xml:space="preserve"><source></source><target state="translated">POZOR: Pečlivě si zkontrolujte, zda jste email zadali bezchybně</target></trans-unit><trans-unit id="SecurityQuestion" translate="yes" xml:space="preserve"><source></source><target state="translated">Bezpečnostní otázka</target></trans-unit><trans-unit id="ResponseToSecurityQuestion" translate="yes" xml:space="preserve"><source></source><target state="translated">Odpověď na bezp. otázku</target></trans-unit><trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" translate="yes" xml:space="preserve"><source></source><target state="translated">Popište něco co si dobře pamatujete, co máte rádi ale ostatní lidé o tom neví. 1-1000 znaků</target></trans-unit><trans-unit id="ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion" translate="yes" xml:space="preserve"><source></source><target state="translated">Zvolte si silnou otázku a odpoveď kterou budete znát pouze vy. Při nedodržení tohoto pravidla je možné, že někdo se zmocní vašeho účtu - pouze správnou odpověď na bezpečnostní otázku.</target></trans-unit><trans-unit id="DoYouWantToSendASecurityQuestionAndAnswerToMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Přejete si zaslat na mail bezpečnostní otázku a odpověď?</target></trans-unit><trans-unit id="Register" translate="yes" xml:space="preserve"><source></source><target state="translated">Registrovat</target></trans-unit><trans-unit id="PleaseAnswerThisSecurityQuestionToGenerateANewPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Odpovězte prosím na tuto bezpečnostní otázku k vygenerování nového hesla</target></trans-unit><trans-unit id="GenerateANewPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Vygenerovat nové heslo</target></trans-unit><trans-unit id="ResetYourAccountPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Resetování hesla k účtu</target></trans-unit><trans-unit id="HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Zde si můžete obnovit svůj přístup k účtu, pokud zapomenete heslo</target></trans-unit><trans-unit id="NoLoginEmailSpecifiedEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve"><source></source><target state="translated">Nebyl zadán login/email. Zadejte jedno z toho na &lt;a href=\"Login.aspx\"&gt;Login.aspx&lt;/a&gt; a klikněte na Vygenerovat nové heslo</target></trans-unit><trans-unit id="NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve"><source>Nebyl2 zadán login/email. Zadejte jedno z toho na &lt;a href="Login.aspx"&gt;Login.aspx&lt;/a&gt; a klikněte na Vygenerovat nové heslo</source><target state="translated"></target></trans-unit><trans-unit id="ANewPasswordHasBeenSentToYourEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Na váš email bylo posláno nové heslo.</target></trans-unit><trans-unit id="TheAnswerToTheSecurityQuestionWasNotAccepted" translate="yes" xml:space="preserve"><source></source><target state="translated">Zadaná odpověď na bezpečnostní otázku nebyla přijata.</target></trans-unit><trans-unit id="hasDisabledPasswordRecoveryOption" translate="yes" xml:space="preserve"><source></source><target state="translated">má zakázánou možnost obnovy hesla</target></trans-unit><trans-unit id="wasNotFoundWeCannotGenerateANewPasswordForYou" translate="yes" xml:space="preserve"><source></source><target state="translated">nebyl nalezen. Nemůžeme Vám vygenerovat nové heslo.</target></trans-unit><trans-unit id="doesNotExistInTheDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">v databázi neexistuje</target></trans-unit><trans-unit id="ResendActivationEmailDidYouMissYourActivationEmailThisPageMayHelp" translate="yes" xml:space="preserve"><source></source><target state="translated">Opětovné zaslání aktivačního emailu", "Nepřišel Vám aktivační email? Tato stránka možná pomůže.</target></trans-unit><trans-unit id="TheActivationEmailWasSentBackTo" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivační email byl znovu poslán na adresu</target></trans-unit><trans-unit id="ActivationEmailForNickname" translate="yes" xml:space="preserve"><source></source><target state="translated">Aktivační email pro přezdívku</target></trans-unit><trans-unit id="hasBeenResubmittedSuccessfully" translate="yes" xml:space="preserve"><source></source><target state="translated">byl znovu úspěšně odeslán.</target></trans-unit><trans-unit id="ThisLoginWasNotFoundInTheDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">Tento login nebyl v databázi nalezen.</target></trans-unit><trans-unit id="TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase" translate="yes" xml:space="preserve"><source></source><target state="translated">Zadaný mail nebyl v databázi nově registrovaných nalezen.</target></trans-unit><trans-unit id="SendReactivationEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">Zaslání reaktivačního emailu</target></trans-unit><trans-unit id="CanTSignInAfterChangingYourEmailTryThisPage" translate="yes" xml:space="preserve"><source></source><target state="translated">Nemůžete se přihlásit po změně emailu? Zkuste tuto stránku.</target></trans-unit><trans-unit id="EmailWasSuccessfullySentToYourNewEmailAddress" translate="yes" xml:space="preserve"><source></source><target state="translated">Email byl úspěšně odeslán na vaší novou mailovou adresu</target></trans-unit><trans-unit id="hasNoRequestToChangeEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">nemá zažádanou o změnu emailu.</target></trans-unit><trans-unit id="AUserWithThisIDInDBWasNotFound" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel s tímto ID v DB nebyl nalezen</target></trans-unit><trans-unit id="TheSpecifiedUserNumberWasNotAValidIntNumber" translate="yes" xml:space="preserve"><source></source><target state="translated">Zadané číslo uživatele nebylo platné číslo typu int.</target></trans-unit><trans-unit id="NewUserRegistration" translate="yes" xml:space="preserve"><source></source><target state="translated">Registrace nového uživatele</target></trans-unit><trans-unit id="SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Registrujte se a poznejte velké možnosti webu</target></trans-unit><trans-unit id="YouDidNotSelectYourMailSettings" translate="yes" xml:space="preserve"><source></source><target state="translated">Nevybrali jste si nastavení mailu.</target></trans-unit><trans-unit id="BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided" translate="yes" xml:space="preserve"><source></source><target state="translated">Ještě než se budete moci přihlásit, musíte kliknout na aktivační odkaz, který byl zaslán na zadaný email</target></trans-unit><trans-unit id="HelloFrom" translate="yes" xml:space="preserve"><source></source><target state="translated">Zdravíčko ze</target></trans-unit><trans-unit id="someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou" translate="yes" xml:space="preserve"><source></source><target state="translated">někdo(nejspíše ty sám/sama) znal odpověď na tvou bezpečnostní otázku a vygeneroval ti nové heslo</target></trans-unit><trans-unit id="FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou" translate="yes" xml:space="preserve"><source></source><target state="translated">Od teď se už přihlašuj svým novým heslem. Kdyby se toto opakovalo pravidelně, změň si bezpečnostní otázku a nebo kontaktuj admina stránek, který ti může zablokovat změnu hesla přes bezpečnostní otázku pro všechny lidi, žel i včetně tebe.</target></trans-unit><trans-unit id="CreateANewPasswordForYourSecurityResponse" translate="yes" xml:space="preserve"><source></source><target state="translated">Vytvoření nového hesla znalostí tvé bezpečnostní odpovědi</target></trans-unit><trans-unit id="ThankYouForRegisteringOnTheServer" translate="yes" xml:space="preserve"><source></source><target state="translated">Děkuji vám za registraci na serveru</target></trans-unit><trans-unit id="YourSecurityQuestionIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Vaše bezpečnostní otázka zní</target></trans-unit><trans-unit id="YourAnswerToTheSecurityQuestionIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Vaše odpověď na bezpečnostní otázku zní</target></trans-unit><trans-unit id="YourLoginNameSounds" translate="yes" xml:space="preserve"><source></source><target state="translated">Vaše přihlašovací jméno zní</target></trans-unit><trans-unit id="YourPasswordIs" translate="yes" xml:space="preserve"><source></source><target state="translated">Vaše heslo zní</target></trans-unit><trans-unit id="ClickOnThisCodeToCompleteTheRegistration" translate="yes" xml:space="preserve"><source></source><target state="translated">Registraci dokončíte kliknutím na tento kód</target></trans-unit><trans-unit id="AlternativelyYouCanCode" translate="yes" xml:space="preserve"><source></source><target state="translated">Případně také můžete kód</target></trans-unit><trans-unit id="copyToClipboardAndEnterItAt" translate="yes" xml:space="preserve"><source></source><target state="translated">zkopírovat do schránky a zadat jej na adrese</target></trans-unit><trans-unit id="WebRegistrationSuccessful" translate="yes" xml:space="preserve"><source></source><target state="translated">Úspěšná registrace na webu</target></trans-unit><trans-unit id="Class" translate="yes" xml:space="preserve"><source></source><target state="translated">Třída</target></trans-unit><trans-unit id="Method" translate="yes" xml:space="preserve"><source></source><target state="translated">Metoda</target></trans-unit><trans-unit id="AdditionalDescription" translate="yes" xml:space="preserve"><source></source><target state="translated">Další popis</target></trans-unit><trans-unit id="ProblemOnTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Problém na webu</target></trans-unit><trans-unit id="YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount" translate="yes" xml:space="preserve"><source></source><target state="translated">Požádali jste nebo někdo jiný o opětovné zaslání aktivačního mailu k vašemu účtu.</target></trans-unit><trans-unit id="ClickThisCodeToCompleteTheReactivation" translate="yes" xml:space="preserve"><source></source><target state="translated">Reaktivaci dokončíte kliknutím na tento kód</target></trans-unit><trans-unit id="ChangingMailOnTheWeb" translate="yes" xml:space="preserve"><source></source><target state="translated">Změna mailu na webu</target></trans-unit><trans-unit id="Hi" translate="yes" xml:space="preserve"><source></source><target state="translated">Ahoj</target></trans-unit><trans-unit id="NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage" translate="yes" xml:space="preserve"><source></source><target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky</target></trans-unit><trans-unit id="IWishYouMySitesToBeOfBenefitAndJoy" translate="yes" xml:space="preserve"><source></source><target state="translated">Přeji vám, aby vám moje weby byly k prospěchu a radosti</target></trans-unit><trans-unit id="TheUserRequestsTheReadPlanApproval" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel žádá o schválení čtecího plánu</target></trans-unit><trans-unit id="TitleApprovalApplication" translate="yes" xml:space="preserve"><source></source><target state="translated">Žádost o schválení názvu</target></trans-unit><trans-unit id="readPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">čtecího plánu</target></trans-unit><trans-unit id="ZdravíčkoZ" translate="yes" xml:space="preserve"><source></source><target state="translated">Zdravíčko z</target></trans-unit><trans-unit id="WellDoneYourReadingPlanWasApproved" translate="yes" xml:space="preserve"><source></source><target state="translated">Výborně, došlo k schválení vašeho čtecího plánu</target></trans-unit><trans-unit id="NowYouCanStartReadingItOn" translate="yes" xml:space="preserve"><source></source><target state="translated">Nyní můžete jej začít číst na</target></trans-unit><trans-unit id="Approval" translate="yes" xml:space="preserve"><source></source><target state="translated">Schválení</target></trans-unit><trans-unit id="OjojUnfortunatelyYourReadingPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">Ojoj, bohužel, váš čtecí plán</target></trans-unit><trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged" translate="yes" xml:space="preserve"><source></source><target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při schledání zvolených veršů nesystematicky nebo netématicky uspořádaných</target></trans-unit><trans-unit id="Refusal" translate="yes" xml:space="preserve"><source></source><target state="translated">Zamítnutí</target></trans-unit><trans-unit id="WellDoneStageOfYourReadingPlanWasApproved" translate="yes" xml:space="preserve"><source></source><target state="translated">Výborně, došlo k 1. fázi schválení vašeho čtecího plánu</target></trans-unit><trans-unit id="YouCanNowAssignVersesToIt" translate="yes" xml:space="preserve"><source></source><target state="translated">Nyní do něj můžete přiřadit verše na</target></trans-unit><trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" translate="yes" xml:space="preserve"><source></source><target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při shledání zvolených veršů nesystematicky nebo netématicky uspořádaných, pokud čtecí plán již existuje nebo čtecí plán má něco, co by nebylo přínosem pro ostatní čtenáře tohoto webu. Také ke schválení nemusí dojít, pokud čtecí plán obsahoval velké množství gramatických chyb</target></trans-unit><trans-unit id="ANewReadingPlanWasCreated" translate="yes" xml:space="preserve"><source></source><target state="translated">Byl vytvořen nový čtecí plán</target></trans-unit><trans-unit id="ToApproveItGoTo" translate="yes" xml:space="preserve"><source></source><target state="translated">Chcete-li jej schválit, přejděte na</target></trans-unit><trans-unit id="approvalPage" translate="yes" xml:space="preserve"><source></source><target state="translated">schvalovací stránku</target></trans-unit><trans-unit id="whereToFindMoreInformation" translate="yes" xml:space="preserve"><source></source><target state="translated">kde najdete více informací</target></trans-unit><trans-unit id="RequestForReadingPlanApproval" translate="yes" xml:space="preserve"><source></source><target state="translated">Žádost o schválení čtecího plánu</target></trans-unit><trans-unit id="weHaveTheVersesForYouToday" translate="yes" xml:space="preserve"><source></source><target state="translated">máme pro Vás veršíčky pro dnešní den</target></trans-unit><trans-unit id="ReadVersesForToday" translate="yes" xml:space="preserve"><source></source><target state="translated">Číst verše pro dnešní den</target></trans-unit><trans-unit id="fromTheReadingPlan" translate="yes" xml:space="preserve"><source></source><target state="translated">z čtecího plánu</target></trans-unit><trans-unit id="fromThePlan" translate="yes" xml:space="preserve"><source></source><target state="translated">z plánu</target></trans-unit><trans-unit id="YouHaveRequestedToAddADomain" translate="yes" xml:space="preserve"><source></source><target state="translated">Požádali jste o přidání domény</target></trans-unit><trans-unit id="ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage" translate="yes" xml:space="preserve"><source></source><target state="translated">Pro ověření že doména je vaše vložte tento HTML kód(je to skryté pole které se nikde neprojeví v designu ani textu) do úvodní stránky</target></trans-unit><trans-unit id="FurthermoreItIsNecessaryToVerifyManually" translate="yes" xml:space="preserve"><source></source><target state="translated">Dále pro ověření je nutné manuálně</target></trans-unit><trans-unit id="click" translate="yes" xml:space="preserve"><source></source><target state="translated">kliknout</target></trans-unit><trans-unit id="or" translate="yes" xml:space="preserve"><source></source><target state="translated">nebo</target></trans-unit><trans-unit id="visitThePage" translate="yes" xml:space="preserve"><source></source><target state="translated">navštívit stránku</target></trans-unit><trans-unit id="andEnterTheCodeHere" translate="yes" xml:space="preserve"><source></source><target state="translated">a zadat zde kód</target></trans-unit><trans-unit id="YouShouldDoItBy" translate="yes" xml:space="preserve"><source></source><target state="translated">Měli byste to stihnout do</target></trans-unit><trans-unit id="thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain" translate="yes" xml:space="preserve"><source></source><target state="translated">pak již verifikace nebude funkční a budete muset si doménu registrovat znovu</target></trans-unit><trans-unit id="AddADomain" translate="yes" xml:space="preserve"><source></source><target state="translated">Přidání domény</target></trans-unit><trans-unit id="UserIsRequestingRemovalOfUserComments" translate="yes" xml:space="preserve"><source></source><target state="translated">Uživatel žádá o odstranění komentů uživatele</target></trans-unit><trans-unit id="fromTheseSites" translate="yes" xml:space="preserve"><source></source><target state="translated">z těchto webů</target></trans-unit><trans-unit id="RequestRemovalOfUserComments" translate="yes" xml:space="preserve"><source></source><target state="translated">Žádost o odstranění komentářů uživatele</target></trans-unit><trans-unit id="UserRecommendations" translate="yes" xml:space="preserve"><source></source><target state="translated">Doporučení uživatele</target></trans-unit><trans-unit id="verifiedEmail" translate="yes" xml:space="preserve"><source></source><target state="translated">ověřený email</target></trans-unit><trans-unit id="forYou" translate="yes" xml:space="preserve"><source></source><target state="translated">pro Vás</target></trans-unit><trans-unit id="TheAboveMentionedUserRecommendsThisPageToYou" translate="yes" xml:space="preserve"><source></source><target state="translated">Výše zmiňovaný uživatel vám doporučuje tuto stránku</target></trans-unit><trans-unit id="PageRecommendations" translate="yes" xml:space="preserve"><source></source><target state="translated">Doporučení stránky</target></trans-unit><trans-unit id="OnThePage" translate="yes" xml:space="preserve"><source></source><target state="translated">Na stránce</target></trans-unit><trans-unit id="newContentCommentAdded" translate="yes" xml:space="preserve"><source></source><target state="translated">byl přidán nový komentář o obsahem</target></trans-unit><trans-unit id="YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" translate="yes" xml:space="preserve"><source></source><target state="translated">Tento mail jste dostali, protože jste byly zaregistrováni k odběru nových komentářů. Pokud chcete odběr zrušit, můžete tak učinit na stránce, naníž odkaz máte na začátku mailu</target></trans-unit><trans-unit id="NewComment" translate="yes" xml:space="preserve"><source></source><target state="translated">Nový komentář</target></trans-unit></group>
+        <trans-unit id="NotImplementedPleaseContactWebAdmin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.</target>
+        </trans-unit>
+        <trans-unit id="EditUserAccount" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Editace uživatelského účtu</target>
+        </trans-unit>
+        <trans-unit id="UserDetail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Detail uživatele</target>
+        </trans-unit>
+        <trans-unit id="ErrorSerie255" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Buď stránka poslala špatné parametry URI entityTableId a entityId, nebo entita s těmito parametry nebyla v databázi nalezena.</target>
+        </trans-unit>
+        <trans-unit id="ErrorSerie0" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Uri ze které byl volán tento handler nebyla v databázi.</target>
+        </trans-unit>
+        <trans-unit id="ViewLastWeek" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shlédnutí stránky za posledních 7 dní(počítá se den zpětně, to znamená že dnešní přístupy se zobrazí až zítra): </target>
+        </trans-unit>
+        <trans-unit id="YouAreNotLogged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Nebyly jste přihlášení</target>
+        </trans-unit>
+        <trans-unit id="YouAreBlocked" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Byly jste zablokování dle IP adresy nebo nicku, požadovanou operaci nemůžete provést</target>
+        </trans-unit>
+        <trans-unit id="TurnOnSelectingPhotos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zapni režim označování fotek</target>
+        </trans-unit>
+        <trans-unit id="TurnOffSelectingPhotos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vypni režim označování fotek</target>
+        </trans-unit>
+        <trans-unit id="StringNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Řetězen nebyl nalezen</target>
+        </trans-unit>
+        <trans-unit id="NoRightArgumentsToPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do stránky nebyl předán správný počet parametrů a/nebo se správnými hodnotami</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotLoggedAsWebAdmin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyl jste přihlášen jako admin stránek</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotValidIPv4Address" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nemáte platnou adresu IPv4</target>
+        </trans-unit>
+        <trans-unit id="UriTooShort" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Web obdržel adresu která byla prázdná</target>
+        </trans-unit>
+        <trans-unit id="UriTooLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Adresa byla delší než 512 znaků</target>
+        </trans-unit>
+        <trans-unit id="CustomShortUriOccupatedYet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento krátký odkaz byl již zabrán</target>
+        </trans-unit>
+        <trans-unit id="LinkSuccessfullyShorted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odkaz byl úspěšně zkrácen</target>
+        </trans-unit>
+        <trans-unit id="scFixed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1pr2qyfsagraqjv4uypgho5o</target>
+        </trans-unit>
+        <trans-unit id="UnauthorizedOperation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Na tuto stránku jste se dostali, protože jste se pokusili načíst stránku, nebo provést jinou operaci, ke které nemáte povolení nebo která není v tomto kontextu aplikovatelná.</target>
+        </trans-unit>
+        <trans-unit id="RemoveFromFavoritesSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odebráno z oblíbených</target>
+        </trans-unit>
+        <trans-unit id="AddToFavoritesSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidáno do oblíbených!</target>
+        </trans-unit>
+        <trans-unit id="RemoveFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odstranit z oblíbených</target>
+        </trans-unit>
+        <trans-unit id="AddToFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat do oblíbených</target>
+        </trans-unit>
+        <trans-unit id="RemoveAsRsvpSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tak snad někdy příště..</target>
+        </trans-unit>
+        <trans-unit id="RemoveAsRsvp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bohužel mi to nevyjde</target>
+        </trans-unit>
+        <trans-unit id="AddAsRsvp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přijdu to zkouknout</target>
+        </trans-unit>
+        <trans-unit id="DetailsClickSurveyAspxLabel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kdy bylo kliknuto na odpovědi v této anketě</target>
+        </trans-unit>
+        <trans-unit id="UnvalidSession" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Špatné údaje o přihlášení - odhlašte se a přihlašte se znovu. </target>
+        </trans-unit>
+        <trans-unit id="ScIsNotTheSame" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Nesouhlasilo sc. </target>
+        </trans-unit>
+        <trans-unit id="CurrentPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktuální heslo</target>
+        </trans-unit>
+        <trans-unit id="NewPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nové heslo</target>
+        </trans-unit>
+        <trans-unit id="NewPasswordAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nové heslo znovu</target>
+        </trans-unit>
+        <trans-unit id="ChangePassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit heslo</target>
+        </trans-unit>
+        <trans-unit id="TheUserSPersonalLabel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Osobní popisek uživatele</target>
+        </trans-unit>
+        <trans-unit id="ChangingThePassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna hesla</target>
+        </trans-unit>
+        <trans-unit id="ActivatingCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivační kód</target>
+        </trans-unit>
+        <trans-unit id="ActivateAccount" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivovat účet</target>
+        </trans-unit>
+        <trans-unit id="NewEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nový email</target>
+        </trans-unit>
+        <trans-unit id="characters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">znaků</target>
+        </trans-unit>
+        <trans-unit id="YouShouldCheckYourEmailSeveralTimesToSeeIfItIsCorrectYouWillNotLogInAgainWithoutReactivatingYourEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Email si po sobě raději několikrát zkontrolujte, zda je zadaný správně, bez reaktivace na vámi zadaném emailu se již znovu nepřihlásíte.</target>
+        </trans-unit>
+        <trans-unit id="Password" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo</target>
+        </trans-unit>
+        <trans-unit id="TheUnUserNameParameterWasNotFoundInTheAddressTheApplicationDoesNotKnowWhichProfileToDisplay" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V adrese nebyl nalezen parametr un(user name), aplikace neví který profil si přejete zobrazit.</target>
+        </trans-unit>
+        <trans-unit id="WhenWasTheLastTimeTheUserWasOnlineWhatDidHeHitOnHimselfYouCanFindItHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kdy byl uživatel naposledy online? Co na sebe prásknul? To najdete zde.</target>
+        </trans-unit>
+        <trans-unit id="User" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel</target>
+        </trans-unit>
+        <trans-unit id="LastWasHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Naposledy zde byl(a)</target>
+        </trans-unit>
+        <trans-unit id="Sex" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pohlaví</target>
+        </trans-unit>
+        <trans-unit id="Age" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Věk</target>
+        </trans-unit>
+        <trans-unit id="State" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stát</target>
+        </trans-unit>
+        <trans-unit id="Region" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kraj</target>
+        </trans-unit>
+        <trans-unit id="City" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Město</target>
+        </trans-unit>
+        <trans-unit id="UserNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel nenalezen</target>
+        </trans-unit>
+        <trans-unit id="ActivitiesAndUserInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivity a informace o uživateli</target>
+        </trans-unit>
+        <trans-unit id="ChangeTheProfilePicture" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit profilový obrázek</target>
+        </trans-unit>
+        <trans-unit id="EditingYourProfile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Editace Vašeho profilu</target>
+        </trans-unit>
+        <trans-unit id="ChangeYourEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna Vašeho emailu</target>
+        </trans-unit>
+        <trans-unit id="ActivatingAUserAccount" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivace uživatelského účtu</target>
+        </trans-unit>
+        <trans-unit id="HereYouCanActivateYourUserAccountAfterRegistration" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zde si můžete aktivovat svůj uživatelský účet po registraci</target>
+        </trans-unit>
+        <trans-unit id="YourAccountHasBeenSuccessfullyActivatedNowYouCan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Váš účet byl úspěšně aktivován. Nyní se můžete</target>
+        </trans-unit>
+        <trans-unit id="signIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">přihlásit</target>
+        </trans-unit>
+        <trans-unit id="UserReactivatedSuccessfullyYouCanNowSubscribeWithTheNewMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel byl úspěšně reaktivován. Nyní se můžete přihlásit již s novým mailem.</target>
+        </trans-unit>
+        <trans-unit id="TheUserCouldNotBeReactivatedBecauseTheUserWithTheGivenUidAndCodeWasNotFoundInDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel nemohl být reaktivován, protože uživatel s daným uid a code nebyl v DB nalezen.</target>
+        </trans-unit>
+        <trans-unit id="ChangeEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit email</target>
+        </trans-unit>
+        <trans-unit id="TheTextYouEnteredDoesNotMatchTheEmailFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadaný text neodpovídá formátu emailu.</target>
+        </trans-unit>
+        <trans-unit id="ThisEmailIsAlreadyAssignedToAnotherUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento email má již jiný uživatel přiřazen.</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordForTheLoggedInUserDidNotMatch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nesouhlasilo heslo k přihlášenému uživateli.</target>
+        </trans-unit>
+        <trans-unit id="TheOldMailIsNoDifferentFromTheNewOne" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Starý mail se od nového neliší.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAlreadyChangedYourMailTimesFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Již jste si 3x změnili mail z</target>
+        </trans-unit>
+        <trans-unit id="andYouCanTDoItAnymore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a již to nemůžete provést</target>
+        </trans-unit>
+        <trans-unit id="ChangeAccountEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna emailu k účtu</target>
+        </trans-unit>
+        <trans-unit id="ChangeYourProfilePictureOn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnte si profilový obrázek na</target>
+        </trans-unit>
+        <trans-unit id="ClickTheButtonToUploadANewProfilePictureToSunamoCz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">2. Klikněte na tlačítko k nahrání nového profilového obrázku na sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="UpdateYourProfilePictureToSunamoCz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Updatuj profilový obrázek na sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="ChangeProfilePicture" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna profilového obrázku</target>
+        </trans-unit>
+        <trans-unit id="ProfileImageChangedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Profilový obrázek byl úspěšně změněn</target>
+        </trans-unit>
+        <trans-unit id="FailedToSaveProfileImagePleaseTryAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Profilový obrázek se nepodařilo uložit, zkuste to znovu</target>
+        </trans-unit>
+        <trans-unit id="NoNickWasFoundForYourUserNumber" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">K vašemu číslu uživatele nebyl nalezen žádný nick</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotLoggedIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejste přihlášení</target>
+        </trans-unit>
+        <trans-unit id="RequiredItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Povinné položky</target>
+        </trans-unit>
+        <trans-unit id="Birthdate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum narození</target>
+        </trans-unit>
+        <trans-unit id="VoluntaryItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dobrovolné položky</target>
+        </trans-unit>
+        <trans-unit id="Man" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Muž</target>
+        </trans-unit>
+        <trans-unit id="EmailSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nastavení emailu</target>
+        </trans-unit>
+        <trans-unit id="EveryoneCanViewMyMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všichni mohou zobrazit můj mail</target>
+        </trans-unit>
+        <trans-unit id="EveryoneCanWriteMeMailButNoOneCanSeeMyMailAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všichni mi mohou napsat mail ale nikdo mou mail adresu nevidí</target>
+        </trans-unit>
+        <trans-unit id="OnlyApplicationsFromThisSiteCanSendMailToMeNotIndividualUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Maily mi mohou posílat pouze aplikace z tohoto webu, nikoliv samostatní uživatelé</target>
+        </trans-unit>
+        <trans-unit id="IDoNotWishToReceiveAnyMailsFromUsersOrApplications" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nepřeji si dostávat žádné maily ani od uživatelů ani od aplikací</target>
+        </trans-unit>
+        <trans-unit id="PageWidth" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Šířka stránky</target>
+        </trans-unit>
+        <trans-unit id="AboutYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">O Vás</target>
+        </trans-unit>
+        <trans-unit id="andThisPageImportantForYouToDisplayHTMLCorrectlyEnterInPixels" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a této stránky(důležité aby se vám správně zobrazilo HTML - zadejte číslo v rozmezí 800-1000 v pixelech)</target>
+        </trans-unit>
+        <trans-unit id="IfYouEnterAWrongValueIsSaved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pokud zadáte špatnou hodnotu, uloží se 800</target>
+        </trans-unit>
+        <trans-unit id="YourLabel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Váš popisek</target>
+        </trans-unit>
+        <trans-unit id="SaveChanges" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit změny</target>
+        </trans-unit>
+        <trans-unit id="Woman" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žena</target>
+        </trans-unit>
+        <trans-unit id="EditingAnExistingUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Editace stávajícího uživatele</target>
+        </trans-unit>
+        <trans-unit id="HereYouCanEditYourUserProfileWithGeneralInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zde můžete editovat svůj uživatelský profil se všeobecnými informacemi.</target>
+        </trans-unit>
+        <trans-unit id="SexCannotBeLeftBlank" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pohlaví nemůže zůstat prázdné</target>
+        </trans-unit>
+        <trans-unit id="AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel s takovýmto uid nebyl v DB nalezen, uživatel nemohl být reaktivován.</target>
+        </trans-unit>
+        <trans-unit id="Code" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kod</target>
+        </trans-unit>
+        <trans-unit id="wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl v DB nalezen, buď už byl použit nebo byl nesprávný</target>
+        </trans-unit>
+        <trans-unit id="TheCodeParameterWasNotTheCorrectLength" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Parametr code neměl správnou délku. </target>
+        </trans-unit>
+        <trans-unit id="SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přihlašte se, abyste mohli plně využít všech možností a funkcí webu</target>
+        </trans-unit>
+        <trans-unit id="YouMustEnterYourLoginNameForTheNextStep" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přihlašovací jméno musíte zadat pro podstoupení do dalšího kroku</target>
+        </trans-unit>
+        <trans-unit id="uppercaseAndLowercaseLettersNumbersAndCharactersAreAllowed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jsou povoleny velké a malé písmena, čísla a znaky ./-/_</target>
+        </trans-unit>
+        <trans-unit id="generateARandomStrongPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">vygenerovat náhodné silné heslo</target>
+        </trans-unit>
+        <trans-unit id="PasswordASecondTime" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo podruhé</target>
+        </trans-unit>
+        <trans-unit id="DoYouWishToSendALoginNameToTheMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přejete si zaslat na mail přihlašovací jméno?</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantToSendAPasswordToMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přejete si zaslat na mail heslo?</target>
+        </trans-unit>
+        <trans-unit id="ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">POZOR: Pečlivě si zkontrolujte, zda jste email zadali bezchybně</target>
+        </trans-unit>
+        <trans-unit id="SecurityQuestion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bezpečnostní otázka</target>
+        </trans-unit>
+        <trans-unit id="ResponseToSecurityQuestion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odpověď na bezp. otázku</target>
+        </trans-unit>
+        <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popište něco co si dobře pamatujete, co máte rádi ale ostatní lidé o tom neví. 1-1000 znaků</target>
+        </trans-unit>
+        <trans-unit id="ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zvolte si silnou otázku a odpoveď kterou budete znát pouze vy. Při nedodržení tohoto pravidla je možné, že někdo se zmocní vašeho účtu - pouze správnou odpověď na bezpečnostní otázku.</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantToSendASecurityQuestionAndAnswerToMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přejete si zaslat na mail bezpečnostní otázku a odpověď?</target>
+        </trans-unit>
+        <trans-unit id="Register" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Registrovat</target>
+        </trans-unit>
+        <trans-unit id="PleaseAnswerThisSecurityQuestionToGenerateANewPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odpovězte prosím na tuto bezpečnostní otázku k vygenerování nového hesla</target>
+        </trans-unit>
+        <trans-unit id="GenerateANewPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygenerovat nové heslo</target>
+        </trans-unit>
+        <trans-unit id="ResetYourAccountPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Resetování hesla k účtu</target>
+        </trans-unit>
+        <trans-unit id="HereYouCanRestoreYourAccountAccessIfYouForgetYourPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zde si můžete obnovit svůj přístup k účtu, pokud zapomenete heslo</target>
+        </trans-unit>
+        <trans-unit id="NoLoginEmailSpecifiedEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyl zadán login/email. Zadejte jedno z toho na &lt;a href=\"Login.aspx\"&gt;Login.aspx&lt;/a&gt; a klikněte na Vygenerovat nové heslo</target>
+        </trans-unit>
+        <trans-unit id="NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword" translate="yes" xml:space="preserve">
+          <source>Nebyl2 zadán login/email. Zadejte jedno z toho na &lt;a href="Login.aspx"&gt;Login.aspx&lt;/a&gt; a klikněte na Vygenerovat nové heslo</source>
+          <target state="translated"></target>
+        </trans-unit>
+        <trans-unit id="ANewPasswordHasBeenSentToYourEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Na váš email bylo posláno nové heslo.</target>
+        </trans-unit>
+        <trans-unit id="TheAnswerToTheSecurityQuestionWasNotAccepted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadaná odpověď na bezpečnostní otázku nebyla přijata.</target>
+        </trans-unit>
+        <trans-unit id="hasDisabledPasswordRecoveryOption" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">má zakázánou možnost obnovy hesla</target>
+        </trans-unit>
+        <trans-unit id="wasNotFoundWeCannotGenerateANewPasswordForYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl nalezen. Nemůžeme Vám vygenerovat nové heslo.</target>
+        </trans-unit>
+        <trans-unit id="doesNotExistInTheDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">v databázi neexistuje</target>
+        </trans-unit>
+        <trans-unit id="ResendActivationEmailDidYouMissYourActivationEmailThisPageMayHelp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Opětovné zaslání aktivačního emailu", "Nepřišel Vám aktivační email? Tato stránka možná pomůže.</target>
+        </trans-unit>
+        <trans-unit id="TheActivationEmailWasSentBackTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivační email byl znovu poslán na adresu</target>
+        </trans-unit>
+        <trans-unit id="ActivationEmailForNickname" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivační email pro přezdívku</target>
+        </trans-unit>
+        <trans-unit id="hasBeenResubmittedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl znovu úspěšně odeslán.</target>
+        </trans-unit>
+        <trans-unit id="ThisLoginWasNotFoundInTheDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento login nebyl v databázi nalezen.</target>
+        </trans-unit>
+        <trans-unit id="TheSpecifiedMailWasNotFoundInTheNewlyRegisteredDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadaný mail nebyl v databázi nově registrovaných nalezen.</target>
+        </trans-unit>
+        <trans-unit id="SendReactivationEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zaslání reaktivačního emailu</target>
+        </trans-unit>
+        <trans-unit id="CanTSignInAfterChangingYourEmailTryThisPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nemůžete se přihlásit po změně emailu? Zkuste tuto stránku.</target>
+        </trans-unit>
+        <trans-unit id="EmailWasSuccessfullySentToYourNewEmailAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Email byl úspěšně odeslán na vaší novou mailovou adresu</target>
+        </trans-unit>
+        <trans-unit id="hasNoRequestToChangeEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nemá zažádanou o změnu emailu.</target>
+        </trans-unit>
+        <trans-unit id="AUserWithThisIDInDBWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel s tímto ID v DB nebyl nalezen</target>
+        </trans-unit>
+        <trans-unit id="TheSpecifiedUserNumberWasNotAValidIntNumber" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadané číslo uživatele nebylo platné číslo typu int.</target>
+        </trans-unit>
+        <trans-unit id="NewUserRegistration" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Registrace nového uživatele</target>
+        </trans-unit>
+        <trans-unit id="SignUpAndGetToKnowTheGreatPossibilitiesOfTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Registrujte se a poznejte velké možnosti webu</target>
+        </trans-unit>
+        <trans-unit id="YouDidNotSelectYourMailSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nevybrali jste si nastavení mailu.</target>
+        </trans-unit>
+        <trans-unit id="BeforeYouCanSignInYouMustClickTheActivationLinkThatWasSentToTheEmailYouProvided" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ještě než se budete moci přihlásit, musíte kliknout na aktivační odkaz, který byl zaslán na zadaný email</target>
+        </trans-unit>
+        <trans-unit id="HelloFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zdravíčko ze</target>
+        </trans-unit>
+        <trans-unit id="someoneProbablyYourselfKnewTheAnswerToYourSecurityQuestionAndGeneratedANewPasswordForYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">někdo(nejspíše ty sám/sama) znal odpověď na tvou bezpečnostní otázku a vygeneroval ti nové heslo</target>
+        </trans-unit>
+        <trans-unit id="FromNowOnSignInWithYourNewPasswordIfThisWereRepeatedRegularlyChangeYourSecurityQuestionOrContactTheSiteAdminWhoCanBlockYourPasswordChangeOverASecurityQuestionForAllPeopleIncludingYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Od teď se už přihlašuj svým novým heslem. Kdyby se toto opakovalo pravidelně, změň si bezpečnostní otázku a nebo kontaktuj admina stránek, který ti může zablokovat změnu hesla přes bezpečnostní otázku pro všechny lidi, žel i včetně tebe.</target>
+        </trans-unit>
+        <trans-unit id="CreateANewPasswordForYourSecurityResponse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvoření nového hesla znalostí tvé bezpečnostní odpovědi</target>
+        </trans-unit>
+        <trans-unit id="ThankYouForRegisteringOnTheServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Děkuji vám za registraci na serveru</target>
+        </trans-unit>
+        <trans-unit id="YourSecurityQuestionIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše bezpečnostní otázka zní</target>
+        </trans-unit>
+        <trans-unit id="YourAnswerToTheSecurityQuestionIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše odpověď na bezpečnostní otázku zní</target>
+        </trans-unit>
+        <trans-unit id="YourLoginNameSounds" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše přihlašovací jméno zní</target>
+        </trans-unit>
+        <trans-unit id="YourPasswordIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše heslo zní</target>
+        </trans-unit>
+        <trans-unit id="ClickOnThisCodeToCompleteTheRegistration" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Registraci dokončíte kliknutím na tento kód</target>
+        </trans-unit>
+        <trans-unit id="AlternativelyYouCanCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Případně také můžete kód</target>
+        </trans-unit>
+        <trans-unit id="copyToClipboardAndEnterItAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">zkopírovat do schránky a zadat jej na adrese</target>
+        </trans-unit>
+        <trans-unit id="WebRegistrationSuccessful" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Úspěšná registrace na webu</target>
+        </trans-unit>
+        <trans-unit id="Class" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Třída</target>
+        </trans-unit>
+        <trans-unit id="Method" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Metoda</target>
+        </trans-unit>
+        <trans-unit id="AdditionalDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další popis</target>
+        </trans-unit>
+        <trans-unit id="ProblemOnTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Problém na webu</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAskedOrSomeoneElseToResubmitYourActivationEmailToYourAccount" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požádali jste nebo někdo jiný o opětovné zaslání aktivačního mailu k vašemu účtu.</target>
+        </trans-unit>
+        <trans-unit id="ClickThisCodeToCompleteTheReactivation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Reaktivaci dokončíte kliknutím na tento kód</target>
+        </trans-unit>
+        <trans-unit id="ChangingMailOnTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna mailu na webu</target>
+        </trans-unit>
+        <trans-unit id="Hi" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ahoj</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedPleaseContactTheWebmasterForThisDeficiencyListedInTheFooterOfEachPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky</target>
+        </trans-unit>
+        <trans-unit id="IWishYouMySitesToBeOfBenefitAndJoy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přeji vám, aby vám moje weby byly k prospěchu a radosti</target>
+        </trans-unit>
+        <trans-unit id="TheUserRequestsTheReadPlanApproval" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel žádá o schválení čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="TitleApprovalApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádost o schválení názvu</target>
+        </trans-unit>
+        <trans-unit id="readPlan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="ZdravíčkoZ" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zdravíčko z</target>
+        </trans-unit>
+        <trans-unit id="WellDoneYourReadingPlanWasApproved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výborně, došlo k schválení vašeho čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="NowYouCanStartReadingItOn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nyní můžete jej začít číst na</target>
+        </trans-unit>
+        <trans-unit id="Approval" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Schválení</target>
+        </trans-unit>
+        <trans-unit id="OjojUnfortunatelyYourReadingPlan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ojoj, bohužel, váš čtecí plán</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonSystematicallyArranged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při schledání zvolených veršů nesystematicky nebo netématicky uspořádaných</target>
+        </trans-unit>
+        <trans-unit id="Refusal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zamítnutí</target>
+        </trans-unit>
+        <trans-unit id="WellDoneStageOfYourReadingPlanWasApproved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výborně, došlo k 1. fázi schválení vašeho čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="YouCanNowAssignVersesToIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nyní do něj můžete přiřadit verše na</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndAllYouHaveDoneOnItHasBeenCompletelyErasedMostOftenThisHappensWhenTheChosenVersesAreUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při shledání zvolených veršů nesystematicky nebo netématicky uspořádaných, pokud čtecí plán již existuje nebo čtecí plán má něco, co by nebylo přínosem pro ostatní čtenáře tohoto webu. Také ke schválení nemusí dojít, pokud čtecí plán obsahoval velké množství gramatických chyb</target>
+        </trans-unit>
+        <trans-unit id="ANewReadingPlanWasCreated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Byl vytvořen nový čtecí plán</target>
+        </trans-unit>
+        <trans-unit id="ToApproveItGoTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chcete-li jej schválit, přejděte na</target>
+        </trans-unit>
+        <trans-unit id="approvalPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">schvalovací stránku</target>
+        </trans-unit>
+        <trans-unit id="whereToFindMoreInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kde najdete více informací</target>
+        </trans-unit>
+        <trans-unit id="RequestForReadingPlanApproval" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádost o schválení čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="weHaveTheVersesForYouToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">máme pro Vás veršíčky pro dnešní den</target>
+        </trans-unit>
+        <trans-unit id="ReadVersesForToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Číst verše pro dnešní den</target>
+        </trans-unit>
+        <trans-unit id="fromTheReadingPlan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">z čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="fromThePlan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">z plánu</target>
+        </trans-unit>
+        <trans-unit id="YouHaveRequestedToAddADomain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požádali jste o přidání domény</target>
+        </trans-unit>
+        <trans-unit id="ToVerifyThatYourDomainIsYoursEnterThisHTMLCodeItSAHiddenFieldThatWonTAppearInDesignOrTextToTheHomePage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro ověření že doména je vaše vložte tento HTML kód(je to skryté pole které se nikde neprojeví v designu ani textu) do úvodní stránky</target>
+        </trans-unit>
+        <trans-unit id="FurthermoreItIsNecessaryToVerifyManually" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dále pro ověření je nutné manuálně</target>
+        </trans-unit>
+        <trans-unit id="click" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kliknout</target>
+        </trans-unit>
+        <trans-unit id="or" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebo</target>
+        </trans-unit>
+        <trans-unit id="visitThePage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">navštívit stránku</target>
+        </trans-unit>
+        <trans-unit id="andEnterTheCodeHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a zadat zde kód</target>
+        </trans-unit>
+        <trans-unit id="YouShouldDoItBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Měli byste to stihnout do</target>
+        </trans-unit>
+        <trans-unit id="thenVerificationWillNoLongerWorkAndYouWillNeedToRegisterTheDomainAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pak již verifikace nebude funkční a budete muset si doménu registrovat znovu</target>
+        </trans-unit>
+        <trans-unit id="AddADomain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidání domény</target>
+        </trans-unit>
+        <trans-unit id="UserIsRequestingRemovalOfUserComments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel žádá o odstranění komentů uživatele</target>
+        </trans-unit>
+        <trans-unit id="fromTheseSites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">z těchto webů</target>
+        </trans-unit>
+        <trans-unit id="RequestRemovalOfUserComments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádost o odstranění komentářů uživatele</target>
+        </trans-unit>
+        <trans-unit id="UserRecommendations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Doporučení uživatele</target>
+        </trans-unit>
+        <trans-unit id="verifiedEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ověřený email</target>
+        </trans-unit>
+        <trans-unit id="forYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pro Vás</target>
+        </trans-unit>
+        <trans-unit id="TheAboveMentionedUserRecommendsThisPageToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výše zmiňovaný uživatel vám doporučuje tuto stránku</target>
+        </trans-unit>
+        <trans-unit id="PageRecommendations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Doporučení stránky</target>
+        </trans-unit>
+        <trans-unit id="OnThePage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Na stránce</target>
+        </trans-unit>
+        <trans-unit id="newContentCommentAdded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl přidán nový komentář o obsahem</target>
+        </trans-unit>
+        <trans-unit id="YouReceivedThisMailBecauseYouWereRegisteredToReceiveNewCommentsIfYouDLikeToCancelYourSubscriptionYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheMail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento mail jste dostali, protože jste byly zaregistrováni k odběru nových komentářů. Pokud chcete odběr zrušit, můžete tak učinit na stránce, naníž odkaz máte na začátku mailu</target>
+        </trans-unit>
+        <trans-unit id="NewComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nový komentář</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedPleaseContactTheWebmasterAboutThisDefectWhichIsListedInTheFooterOfEachPage" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.</target>
+        </trans-unit>
+        <trans-unit id="Transparency" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Průhlednost:</target>
+        </trans-unit>
+        <trans-unit id="Opacity" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Opacity:</target>
+        </trans-unit>
+        <trans-unit id="ComputerSizeUnitOutputHasBeenSpecifiedICannotChangeThisSetting" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Byl specifikován výstupní ComputerSizeUnit, nemůžu toto nastavení změnit</target>
+        </trans-unit>
+        <trans-unit id="FolderHasBeenRenamedIt" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Folder has been renamed to </target>
+        </trans-unit>
+        <trans-unit id="OnlyForTestFilesForOtherApps" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Only for test files for another apps. </target>
+        </trans-unit>
+        <trans-unit id="FileCannotBeDeleted" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">File can't be deleted: </target>
+        </trans-unit>
+        <trans-unit id="TargetPathDoesNotExistOrIsNotADirectory" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Target path does not exist or is not a directory.</target>
+        </trans-unit>
+        <trans-unit id="DirectoryAlreadyExistsAndOverwriteParameterIsFalse" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Directory already exists and overwrite parameter is false.</target>
+        </trans-unit>
+        <trans-unit id="UnableToCreateJunctionPoint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Unable to create junction point.</target>
+        </trans-unit>
+        <trans-unit id="PathIsNotAJunctionPoint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Path is not a junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToDeleteJunctionPoint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Unable to delete junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToGetInformationAboutJunctionPoint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Unable to get information about junction point.</target>
+        </trans-unit>
+        <trans-unit id="UnableToOpenReparsePoint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Unable to open reparse point.</target>
+        </trans-unit>
+        <trans-unit id="enterTheCodeHere" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">zadat zde kód</target>
+        </trans-unit>
+        <trans-unit id="ofTheseSites" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">těchto webů</target>
+        </trans-unit>
+        <trans-unit id="InTheClasuleOfMSStoredProceduresIBaseSelectLastIDFromTableSignedWasntFoundedType" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">In if clasule of method MSStoredProceduresIBase2.SelectLastIDFromTableSigned wasnt founded type </target>
+        </trans-unit>
+        <trans-unit id="TypeNotFoundInIfIfInMSStoredProceduresIBaseSelectLastIDFromTableSigned" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">V klazuli if v metodě MSStoredProceduresIBase2.SelectLastIDFromTableSigned nebyl nalezen typ </target>
+        </trans-unit>
+        <trans-unit id="ReplacedElement" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nahrazovaný prvek</target>
+        </trans-unit>
+        <trans-unit id="isAnElementReplacingIt" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">je prvkem jímž se nahrazuje</target>
+        </trans-unit>
+        <trans-unit id="MismatchCountInInputArraysOfSHAllHaveRightFormat" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Mismatch count in input arrays of SH2.AllHaveRightFormat()</target>
+        </trans-unit>
+        <trans-unit id="NoDelimiterSpecified" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nebyl specifikován delimiter</target>
+        </trans-unit>
+        <trans-unit id="NoDelimiterDetermined" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">No delimiter determined</target>
+        </trans-unit>
+        <trans-unit id="WrongParameter" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Chybný parametr</target>
+        </trans-unit>
+        <trans-unit id="Unlike" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">na rozdíl od</target>
+        </trans-unit>
+        <trans-unit id="UninplementedBranch" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Neinplementovana vetev</target>
+        </trans-unit>
+        <trans-unit id="Enter" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Enter</target>
+        </trans-unit>
+        <trans-unit id="ForExitEnter" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">For exit enter</target>
+        </trans-unit>
+        <trans-unit id="AppLoadedFromClipboard" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">App loaded from clipboard</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantToContinue" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Do you want to continue</target>
+        </trans-unit>
+        <trans-unit id="ThenPressEnter" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Then press enter</target>
+        </trans-unit>
+        <trans-unit id="SelectAction" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Select action</target>
+        </trans-unit>
+        <trans-unit id="SelectActionToProceed" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Select action to proceed</target>
+        </trans-unit>
+        <trans-unit id="AllOfTheInputsMustBeFilled" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">All of inputs must be filled</target>
+        </trans-unit>
+        <trans-unit id="OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Only buttons cant be accepted, because hasnt data for accept</target>
+        </trans-unit>
+        <trans-unit id="Handler" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Handler</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxList" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Check box list</target>
+        </trans-unit>
+        <trans-unit id="Check" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Check</target>
+        </trans-unit>
+        <trans-unit id="DecideWhichToProcess" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Decide which to process</target>
+        </trans-unit>
+        <trans-unit id="Save" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Save</target>
+        </trans-unit>
+        <trans-unit id="WasFounded" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Was founded</target>
+        </trans-unit>
+        <trans-unit id="SearchingWasStopped" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Searching was stopped</target>
+        </trans-unit>
+        <trans-unit id="YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nemůžeš zavolat 2x metodu SetInitialChecked pro stejný ToggleButton</target>
+        </trans-unit>
+        <trans-unit id="MovedBackToPhoto" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Bylo přesunuto zpět na fotku</target>
+        </trans-unit>
+        <trans-unit id="MovedForwardToPhoto" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Bylo přesunuto vpřed na fotku</target>
+        </trans-unit>
+        <trans-unit id="ImageCollectionDeleted" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Kolekce obrázků byla vymazána</target>
+        </trans-unit>
+        <trans-unit id="NewImagesLoadedInstead" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Místo toho bylo načteno {0} nových obrázků</target>
+        </trans-unit>
+        <trans-unit id="NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nebyly načteny další obrázky, protože zadaná složka žádné obrázky neobsahovala</target>
+        </trans-unit>
+        <trans-unit id="RedColoredFolder" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Červená barevná složka</target>
+        </trans-unit>
+        <trans-unit id="GreenColorFolder" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Zelená barevná složka</target>
+        </trans-unit>
+        <trans-unit id="BlueColorFolder" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Modrá barevná složka</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponent" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Red color component</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponent" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Green color component</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponent" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Blue color component</target>
+        </trans-unit>
+        <trans-unit id="ItNeedsMoreRowsThanItExists" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Is needed more rows than exists</target>
+        </trans-unit>
+        <trans-unit id="None" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">None</target>
+        </trans-unit>
+        <trans-unit id="SelectedFile" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Selected file</target>
+        </trans-unit>
+        <trans-unit id="EnterOrSelect" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Enter or select</target>
+        </trans-unit>
+        <trans-unit id="Version" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Version</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Description</target>
+        </trans-unit>
+        <trans-unit id="IApps" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">_/i/Apps</target>
+        </trans-unit>
+        <trans-unit id="Likes" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Likes</target>
+        </trans-unit>
+        <trans-unit id="AccordingTo" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Podle </target>
+        </trans-unit>
+        <trans-unit id="UnimplementedSortAppsByBranch" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Neimplementovaná větěv SortAppsBy</target>
+        </trans-unit>
+        <trans-unit id="App" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">../App/</target>
+        </trans-unit>
+        <trans-unit id="Download" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Stáhnout</target>
+        </trans-unit>
+        <trans-unit id="TheFileForThisVersionHasNotBeenUploadedYet" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Soubor pro tuto verzi nebyl dosud nauploadován.</target>
+        </trans-unit>
+        <trans-unit id="MetaInformation" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Meta informace</target>
+        </trans-unit>
+        <trans-unit id="CreationDate" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Datum vytvoření: </target>
+        </trans-unit>
+        <trans-unit id="ThisVersionDownloads" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Počet stažení této verze: </target>
+        </trans-unit>
+        <trans-unit id="TheApplicationMustBeInstalled" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Musí se aplikace instalovat: </target>
+        </trans-unit>
+        <trans-unit id="ChangesChangelog" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Změny / Changelog</target>
+        </trans-unit>
+        <trans-unit id="ChangesForThisVersionHaveNotBeenSpecified" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Změny pro tuto verzi nebyly zadány</target>
+        </trans-unit>
+        <trans-unit id="TheRecommendedVersionIsTheSameAsTheLatestVersion" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Verze doporučená je stejná jako nejnovější</target>
+        </trans-unit>
+        <trans-unit id="NoteThatTheInformationOnTheInformationTabIsValidPrimarilyForTheRecommendedVersionAndThisNewerVersionMayNotMatchThisInformation" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Pamatujte, že informace které jsou na záložce Informace, jsou platné primárně pro doporučenou verzi a tato novější verze nemusí těmto informacím odpovídat</target>
+        </trans-unit>
+        <trans-unit id="Views" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Views</target>
+        </trans-unit>
+        <trans-unit id="Color" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Color</target>
+        </trans-unit>
+        <trans-unit id="VersionDetectedInIncorrectURIFormatValidFormatIsDigitsSeparatedByComma" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Verze byla zjištěna ve nesprávném formátu v URI - platný formát je 4 číslice oddělené čárkou.</target>
+        </trans-unit>
+        <trans-unit id="FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Soubor do této verze byl již nauploadován. Nahráním nového souboru přepíšete soubor stávající.</target>
+        </trans-unit>
+        <trans-unit id="Apps" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Apps/</target>
+        </trans-unit>
+        <trans-unit id="ParseUlozToLiveVideoUri" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Parse Uloz.to live video uri</target>
+        </trans-unit>
+        <trans-unit id="BadInputUri" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Bad input uri.</target>
+        </trans-unit>
+        <trans-unit id="ConvertHTMLToEntities" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Convert HTML to entities</target>
+        </trans-unit>
+        <trans-unit id="CreateUriWithQueryString" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Create uri with query string</target>
+        </trans-unit>
+        <trans-unit id="ToolsForDevelopers" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Tools for developers</target>
+        </trans-unit>
+        <trans-unit id="AwesomeFontSymbol" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Hex code for Awesome Font symbol</target>
+        </trans-unit>
+        <trans-unit id="CreateHTMLForMetroCssUiGrid" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Create HTML for Metro Css Ui grid table</target>
+        </trans-unit>
+        <trans-unit id="ReverseHTMLListOrder" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Reverse HTML list order</target>
+        </trans-unit>
+        <trans-unit id="Azure" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Azure</target>
+        </trans-unit>
+        <trans-unit id="ItSeemsATable" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Zdá se že tabulka </target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfRowsAndTheirLastIDsMatch" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> počet řádků i jejich posledních ID souhlasí</target>
+        </trans-unit>
+        <trans-unit id="LastIDMatchesButSomeRowsAreMissing" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> ID posledního souhlasí, ale některé řádky chybí</target>
+        </trans-unit>
+        <trans-unit id="SinceTheHostingTableWasEmptyIWillLoadEverythingTheTable" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Protože tabulka na hostingu byla prázdná, nahraji vše, tabulka </target>
+        </trans-unit>
+        <trans-unit id="IsAnAssignmentYouMustDoThisManually" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> je přiřazovací. Tuto práci musíte provést ručně.</target>
+        </trans-unit>
+        <trans-unit id="ThereAreNoRowsOnTheASPoneSiteTheProgramWillLoadEverything" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> na webu ASPone nejsou žádné řádky. Program nahraje vše.</target>
+        </trans-unit>
+        <trans-unit id="InsertingIntoTheTable" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Vkládám do tabulky </target>
+        </trans-unit>
+        <trans-unit id="IDRows" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> řádků s ID </target>
+        </trans-unit>
+        <trans-unit id="IDLine" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> řádek s ID </target>
+        </trans-unit>
+        <trans-unit id="OnTheLocalSQLServerIDLine" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> na lokálním SQL Serveru řádek s ID </target>
+        </trans-unit>
+        <trans-unit id="ThereSLessRowsOnASPoneThanMeTheProgramWillTryToUploadNewRows" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> existuje na webu ASPone méně řádků než u mě. Program se pokusí nové řádky nahrát.</target>
+        </trans-unit>
+        <trans-unit id="TheProgramWillNotRecordAnythingTable" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Program nebude nahrávat nic, tabulka </target>
+        </trans-unit>
+        <trans-unit id="ThereAreMoreRowsOnASPoneThanIDoTheProgramSkipsTheTable" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> existuje na webu ASPone více řádků než u mě. Program tabulku vynechá.</target>
+        </trans-unit>
+        <trans-unit id="NoCharacterFoundThatWasNotInAnyField" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nebyl nalezen ani jeden znak, který by nebyl v žádném poli</target>
+        </trans-unit>
+        <trans-unit id="TheProvidedStringDoesNotAppearToBeHexEncoded" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">The provided string does not appear to be Hex encoded:</target>
+        </trans-unit>
+        <trans-unit id="Import" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Import</target>
+        </trans-unit>
+        <trans-unit id="ExportFrom" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Export z</target>
+        </trans-unit>
+        <trans-unit id="ImportTo" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Import do</target>
+        </trans-unit>
+        <trans-unit id="FileTo" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Soubor do</target>
+        </trans-unit>
+        <trans-unit id="Joiner" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Joiner</target>
+        </trans-unit>
+        <trans-unit id="ThereWereOnlyValuesInRowExpectedNumberWas" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Na řádku {0} bylo pouze {1} hodnot, očekáváný počet byl {2}.</target>
+        </trans-unit>
+        <trans-unit id="ErrorInsertingRow" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Chyba při vkládání řádku {0} - {1}</target>
+        </trans-unit>
+        <trans-unit id="ThereWereNoErrorsDuringTheImport" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Během importu se nevyskytly žádné chyby</target>
+        </trans-unit>
+        <trans-unit id="TableParameters" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Parametry tabulky </target>
+        </trans-unit>
+        <trans-unit id="MaximumContentLengthInColumns" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Maximální délka obsahu v sloupcích: </target>
+        </trans-unit>
+        <trans-unit id="MaximumValue" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">[Maximální hodnota = </target>
+        </trans-unit>
+        <trans-unit id="NoMaskFileFound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nebyl nalezen žádný soubor pro masku </target>
+        </trans-unit>
+        <trans-unit id="OnlyMaskFileFound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Byl nalezen pouze 1 soubor s maskou </target>
+        </trans-unit>
+        <trans-unit id="TheProgramCannotContinueAndWillClose" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> , program nemůže pokračovat a bude ukončen</target>
+        </trans-unit>
+        <trans-unit id="FileParsationError" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Chyba parsace souboru </target>
+        </trans-unit>
+        <trans-unit id="OnTheLine" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> na řádku </target>
+        </trans-unit>
+        <trans-unit id="FileSuccessfullySavedTo" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Soubor byl úspěšně uložen do </target>
+        </trans-unit>
+        <trans-unit id="Discard" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Zahodit</target>
+        </trans-unit>
+        <trans-unit id="ByteFile" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Bajtový soubor</target>
+        </trans-unit>
+        <trans-unit id="TextFile" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Textový soubor</target>
+        </trans-unit>
+        <trans-unit id="GenesisGenGenesisGenMIMMojIMojMojzisMojzIMojzIMojzis" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Genesis|Gn|Genesis|Gen/1 M/I M/1 Moj/I Moj/1 Mojzisova/1 Mojz/I Mojz/I Mojzisova</target>
+        </trans-unit>
+        <trans-unit id="EnglishName" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Anglický název</target>
+        </trans-unit>
+        <trans-unit id="GeneralCzechAbbreviation" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Obecná česká zkratka</target>
+        </trans-unit>
+        <trans-unit id="CzechName" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Český název</target>
+        </trans-unit>
+        <trans-unit id="OtherSupportedWriteVariants" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Další podporované varianty zápisu</target>
+        </trans-unit>
+        <trans-unit id="Hints" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Hints</target>
+        </trans-unit>
+        <trans-unit id="Caches" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Caches</target>
+        </trans-unit>
+        <trans-unit id="mapTypeIdGoogleMapsMapTypeIdTERRAIN" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">mapTypeId: google.maps.MapTypeId.TERRAIN,</target>
+        </trans-unit>
+        <trans-unit id="centerNewGoogleMapsLatLng" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">center: new google.maps.LatLng(</target>
+        </trans-unit>
+        <trans-unit id="newGoogleMapsLatLng" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">new google.maps.LatLng(</target>
+        </trans-unit>
+        <trans-unit id="NewGoogleMapsLatLng" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">),new google.maps.LatLng(</target>
+        </trans-unit>
+        <trans-unit id="NewGoogleMapsPolyline" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated"> = new google.maps.Polyline({</target>
+        </trans-unit>
+        <trans-unit id="bermudaTriangleNewGoogleMapsPolyline" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">bermudaTriangle = new google.maps.Polyline({</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheCache" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Název kešky</target>
+        </trans-unit>
+        <trans-unit id="Coordinates" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Souřadnice</target>
+        </trans-unit>
+        <trans-unit id="Hint" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Hint</target>
+        </trans-unit>
+        <trans-unit id="Size" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Velikost</target>
+        </trans-unit>
+        <trans-unit id="CacheType" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Typ cache</target>
+        </trans-unit>
+        <trans-unit id="NoSheet" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Žádný list</target>
+        </trans-unit>
+        <trans-unit id="AllStates" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">All states</target>
+        </trans-unit>
+        <trans-unit id="AllRegions" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">All regions</target>
+        </trans-unit>
+        <trans-unit id="AllDistricts" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">All districts</target>
+        </trans-unit>
+        <trans-unit id="Difficulty" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Difficulty</target>
+        </trans-unit>
+        <trans-unit id="Terrain" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Terrain</target>
+        </trans-unit>
+        <trans-unit id="OnlyTheWebmasterCanAddCachesToTheSite" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Kešky na web může přidávat pouze správce webu</target>
+        </trans-unit>
+        <trans-unit id="Geocache" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Geocache|</target>
+        </trans-unit>
+        <trans-unit id="AltitudeInMNM" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nadmořská výška v m.n.m.</target>
+        </trans-unit>
+        <trans-unit id="DistanceInM" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Vzdálenost v m</target>
+        </trans-unit>
+        <trans-unit id="SegmentDuration" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Trvání segmentu</target>
+        </trans-unit>
+        <trans-unit id="SpeedInMS" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Rychlost v m/s</target>
+        </trans-unit>
+        <trans-unit id="DateAndTime" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Datum a čas</target>
+        </trans-unit>
+        <trans-unit id="Name" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Jméno</target>
+        </trans-unit>
+        <trans-unit id="Comment" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Komentář</target>
+        </trans-unit>
+        <trans-unit id="Hidden" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Skryta</target>
+        </trans-unit>
+        <trans-unit id="YouHavenTUploadedAnyGpxTracksYet" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Dosud jste žádné gpx stopy nenauploadovali</target>
+        </trans-unit>
+        <trans-unit id="Order" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Pořadí</target>
+        </trans-unit>
+        <trans-unit id="FirstSegment" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">První segment</target>
+        </trans-unit>
+        <trans-unit id="LastSegment" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Poslední segment</target>
+        </trans-unit>
+        <trans-unit id="NumberOfSegments" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Počet segmentů</target>
+        </trans-unit>
+        <trans-unit id="UploadDate" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Datum uploadu</target>
+        </trans-unit>
+        <trans-unit id="TheFileName" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Jméno souboru</target>
+        </trans-unit>
+        <trans-unit id="Statistics" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Statistiky</target>
+        </trans-unit>
+        <trans-unit id="listsOfCaches" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">seznamy keší</target>
+        </trans-unit>
+        <trans-unit id="ListOfCaches" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Seznam kešek</target>
+        </trans-unit>
+        <trans-unit id="District" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Okres</target>
+        </trans-unit>
+        <trans-unit id="Public" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Veřejný?</target>
+        </trans-unit>
+        <trans-unit id="ShowOnGoogleMaps" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Zobraz na google maps</target>
+        </trans-unit>
+        <trans-unit id="Listing" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Listing</target>
+        </trans-unit>
+        <trans-unit id="ThisCacheIsTemporarilyUnavailableReadTheLogsBelowToReadTheStatusForThisCache" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">This cache is temporarily unavailable. Read the logs below to read the status for this cache.</target>
+        </trans-unit>
+        <trans-unit id="ThisCacheListingHasBeenArchived" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">This cache listing has been archived.</target>
+        </trans-unit>
+        <trans-unit id="SomePagesFailedToLoad" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Některé stránky se nepodařilo načíst</target>
+        </trans-unit>
+        <trans-unit id="AllCachesHaveBeenCorrectlyDetectedAsBeingDisabledOrEnabled" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">U všech keší bylo správně zjištěno zda jsou disabled nebo enabled</target>
+        </trans-unit>
+        <trans-unit id="UseTheGetAsyncMethod" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Use GetAsync() method.</target>
+        </trans-unit>
+        <trans-unit id="UseTheSearchAsyncMethod" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Use SearchAsync() method.</target>
+        </trans-unit>
+        <trans-unit id="UseTheBrowseAsyncMethod" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Use BrowseAsync() method.</target>
+        </trans-unit>
+        <trans-unit id="TrackNotFound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Track not found</target>
+        </trans-unit>
+        <trans-unit id="ArtistNotFound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Artist not found</target>
+        </trans-unit>
+        <trans-unit id="Added" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Added</target>
+        </trans-unit>
+        <trans-unit id="YBdnfycg" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Y7bdnfycg9</target>
+        </trans-unit>
+        <trans-unit id="aLargeScaledAndEnergeticCombinationOfYorubaHighlifeJazzAndFunkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a large-scaled and energetic combination of Yoruba, highlife, jazz, and funk music.</target>
+        </trans-unit>
+        <trans-unit id="styleOfJazzInfluencedByTraditionalAfroCubanMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of jazz influenced by traditional Afro-Cuban music.</target>
+        </trans-unit>
+        <trans-unit id="umbrellaGenreTermForAfricanPopularMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">umbrella genre term for African popular music.</target>
+        </trans-unit>
+        <trans-unit id="IslamicVocalMusicUsuallySungACapella" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Islamic vocal music, usually sung a capella, or accompanied by a daff.</target>
+        </trans-unit>
+        <trans-unit id="NigerianMusicOriginallyUsedByTheYorubaPeopleToWakeWorshipersAfterFastingDuringRamadan" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Nigerian music originally used by the Yoruba people to wake worshippers after fasting during Ramadan.</target>
+        </trans-unit>
+        <trans-unit id="popMusicInformedByTraditionalArabicStyles" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">pop music informed by traditional Arabic styles.</target>
+        </trans-unit>
+        <trans-unit id="rockMusicInformedByTraditionalArgentineStyles" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">rock music informed by traditional Argentine styles.</target>
+        </trans-unit>
+        <trans-unit id="EuropeanMusicFromTheLateMiddleAgesWhichAdvancedConceptsOfRhythm" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">European music from the Late Middle Ages, which advanced concepts of rhythm.</target>
+        </trans-unit>
+        <trans-unit id="styleOfFrenchMusicFromTheLateMiddleAgesRejectedByTheCatholicChurch" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of French music from the Late Middle Ages, rejected fiercely by the Catholic Church.</target>
+        </trans-unit>
+        <trans-unit id="styleOfFrenchMusicFromTheLateMiddleAges" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of French music from the Late Middle Ages.</target>
+        </trans-unit>
+        <trans-unit id="musicPerformedByMysticOrTravelingTurkishAzerbaijanGeorgianArmenianAndIranianBandsUsingVocalsAndTheSootPerformedSinceAncientTimes" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">music performed by mystic or travelling Turkish, Azerbaijan, Georgian, Armenian, and Iranian bands, using vocals and the saz, performed since ancient times.</target>
+        </trans-unit>
+        <trans-unit id="CountryMusicPerformedByAustralians" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">country music performed by Australians</target>
+        </trans-unit>
+        <trans-unit id="styleOfHardRockFoundedInAustralianNativeCityAndSuburbanPubsAndDrinkingEstablishments" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of hard rock founded in and drawing on themes native to Australian inner-city and suburban pubs and drinking establishments</target>
+        </trans-unit>
+        <trans-unit id="HipHopPerformedByAustralians" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">hip hop performed by Australians</target>
+        </trans-unit>
+        <trans-unit id="styleOfSalvadorianBahianAndBrazilianMusicInformedByAfroCubanAndAfroBrazilianStyles" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of Salvadorian, Bahian, and Brazilian music informed by Afro-Cuban and Afro-Brazilian styles</target>
+        </trans-unit>
+        <trans-unit id="AfroDominicanStyleOfRockMusicThatBecamePopularAmongDominicanFarmers" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Afro-Dominican style of rock music that became popular among Dominican farmers</target>
+        </trans-unit>
+        <trans-unit id="aBritishStyleThatCombinedAlternativeRockAndAcidHouseOftenCreatingAPsychedelicAndFunkySound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a British style that combined alternative rock and acid house, often creating a psychedelic and funky sound</target>
+        </trans-unit>
+        <trans-unit id="aBrazilianRhythmicFormulaBuiltAroundTheZabumbaDrumThatLaterCombinedItselfWithElementsOfMestizoEuropeanAndAfricanStyles" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a Brazilian rhythmic formula built around the zabumba drum that later combined itself with elements of mestizo, European, and African styles</target>
+        </trans-unit>
+        <trans-unit id="ARawAndGrittyCountryStyleThatActsAsAReactionAgainstTheSlickOverproducedNashvilleSound" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a raw and gritty country style that acted as a reaction against the slick, overproduced Nashville sound</target>
+        </trans-unit>
+        <trans-unit id="SriLankanStyleThatBegunAmongTheAfroSinhaleseOrKariffCommunity" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Sri Lankan style that begun among the Afro-Sinhalese (or Kariff) community</target>
+        </trans-unit>
+        <trans-unit id="orchestralChineseStyleUsedByNaxiPeopleOftenFoundInTaoistOrConfucianCeremonies" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">orchestral Chinese style used by the Naxi people, often found in Taoist or Confucian ceremonies</target>
+        </trans-unit>
+        <trans-unit id="InitiallyAnAcousticStyleOfMalianPopMusicPlayedAtGatheringsMainlyWeddingsWhichHasSinceBecomeMostlyElectronic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">initially an acoustic style of Malian pop music played at gatherings (particularly weddings), which has since become mostly electronic</target>
+        </trans-unit>
+        <trans-unit id="ThCenturyStyleOfFrenchAccordionBasedDanceMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">19th century style of French accordion-based dance music</target>
+        </trans-unit>
+        <trans-unit id="GuadeloupeanMusicMadeFromQuadrilleUsuallyPerformedAtBalls" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Guadeloupean music made from the quadrille, usually performed at balls</target>
+        </trans-unit>
+        <trans-unit id="JavaneseAndBalineseStyleMadeOfXylophonesDrumsAndPluckedStrings" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Javanese and Balinese style made from xylophones, drums, and plucked strings</target>
+        </trans-unit>
+        <trans-unit id="SerbianMusicMadeBySoldiersThatCombinedMilitaryBrassWithFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Serbian music made by soldiers that combined military brass with folk music</target>
+        </trans-unit>
+        <trans-unit id="ThThCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">13th-15th century Italian musical and poetic form based on an AbbaA structure that acted as a form of dance music</target>
+        </trans-unit>
+        <trans-unit id="specificStyleOfFrenchClassicalMusicCreatedToAccompanyTheBalletDance" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">specific style of French classical music created to accompany the ballet dance</target>
+        </trans-unit>
+        <trans-unit id="ColombianStyleBasedOnWaltzBrPoland" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Colombian style based on waltz and polska</target>
+        </trans-unit>
+        <trans-unit id="BrassBasedMexicanMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">brass-based Mexican music</target>
+        </trans-unit>
+        <trans-unit id="styleOfMalayOperaBasedOnIndianStylesIntroducedByImmigrants" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of Malay opera based on Indian styles introduced by immigrants</target>
+        </trans-unit>
+        <trans-unit id="CameroonianStyleOfAccordionMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Cameroonian style of accordion music</target>
+        </trans-unit>
+        <trans-unit id="styleOfWesternArtMusicMadeBetweenThAndThCenturies" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of Western art music made between the 17th and 18th centuries</target>
+        </trans-unit>
+        <trans-unit id="stylesOfEDMWithBassDrumAndBassUKGarageAndDubstep" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">styles of EDM with an emphasis on bass, such as drum and bass, UK garage, and dubstep</target>
+        </trans-unit>
+        <trans-unit id="CubanRumbaMusicThatIncorporatesBataAndGuaguanco" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Cuban rumba music that incorporates bata and guaguanco</target>
+        </trans-unit>
+        <trans-unit id="AnAfricanInfluencedStyleOfBrazilianSumba" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">an African-influenced style of Brazilian sumba</target>
+        </trans-unit>
+        <trans-unit id="AStyleOfFolkMusicEspeciallyInBengaliRegion" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">A style of folk music, specially in Bengali region.</target>
+        </trans-unit>
+        <trans-unit id="CalifornianGenreFromTheSThatCombinedElementsOfAllPopularGenresAtTheTimeEspeciallyBigBandAndShagJazz" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Californian genre from the 1950s that combined elements of all popular genres at the time, particularly big band and shag jazz</target>
+        </trans-unit>
+        <trans-unit id="styleOfChineseTraditionalMusicPopularInTaiwanAndTheProvinceOfZhangzhou" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of Chinese traditional music popular in Taiwan and the province of Zhangzhou</target>
+        </trans-unit>
+        <trans-unit id="ItalianOperaSinging" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a light, sophisticated style of Italian opera singing</target>
+        </trans-unit>
+        <trans-unit id="UrbanCameroonianMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">urban Cameroonian music</target>
+        </trans-unit>
+        <trans-unit id="KenyanPopularMusicBasedOnLuoAndKikuyuFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Kenyan popular music based on Luo and Kikuyu folk music</target>
+        </trans-unit>
+        <trans-unit id="HeavilyExperimentalElectronicMusicThatKrautrockAndNewAgeMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">heavily experimental electronic music that acted as a more avant-garde form of Krautrock and inspired ambient and New Age music</target>
+        </trans-unit>
+        <trans-unit id="HinduReligiousMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Hindu religious music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfSouthAsianAndBritishPopularStylesInitiallyDevelopedByPunjabiIndianEnglishAsACombinationOfTheirRespectiveCulturalStylesButLaterUsedToReferToAnySouthAsianEuropeanFusion" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of South Asian and British popular styles, initially developed by Punjabi Indian-English as a combination of their respective cultural styles, but later used to refer to any South Asian/European fusion</target>
+        </trans-unit>
+        <trans-unit id="GuadeloupeanFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Guadeloupean folk music</target>
+        </trans-unit>
+        <trans-unit id="ExtremeMetalKnownForItsLoFiRecordingShriekingVocalsUnconventionalSongStructuresAndDarkOrSupernaturalLyrics" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Extreme metal known for its lo-fi recording, shrieking vocals, unconventional song structures and dark or supernatural lyrics.</target>
+        </trans-unit>
+        <trans-unit id="AmericanCountryMusicMixedWithIrishAndScottishInfluences" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">American country music mixed with Irish and Scottish influences</target>
+        </trans-unit>
+        <trans-unit id="AfricanAmericanMusicFromTheMississippiDeltaArea" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">African-American music from the Mississippi Delta area</target>
+        </trans-unit>
+        <trans-unit id="electronicMusicWhereTheLeastPartOfTheMusicIsMadeUsingOldBitComputersGameConsolesAndLittleToyInstrumentsPopularChoicesAreTheCommodoreGameBoyAtariAndNintendoEntertainmentSystem" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">electronic music, where at least part of the music is made using old 8-bit computers, game consoles and little toy instruments. Popular choices are the Commodore 64, Game Boy, Atari 2600 and Nintendo Entertainment System.</target>
+        </trans-unit>
+        <trans-unit id="APopularFolkMusicOfAssamIndia" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a popular folk music of Assam, India</target>
+        </trans-unit>
+        <trans-unit id="AmazonianFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Amazonian folk music</target>
+        </trans-unit>
+        <trans-unit id="aWellKnownStyleOfBrazilianMusicAndLyricalFusionOfSambaAndJazz" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a well-known style of Brazilian music, a lyrical fusion of samba and jazz.</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfEDMKnownForItsDrumPatternAndHeavyUseOfTurntableScratching" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a style of EDM known for its 4/4 drum pattern and heavy use of turntable scratching</target>
+        </trans-unit>
+        <trans-unit id="FolkMusicOfBrittanyFranceFamousForItsUseOfWoodwind" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">folk music of Brittany, France, known for its use of woodwind</target>
+        </trans-unit>
+        <trans-unit id="ADistinctiveStyleOfJazzAndLatinInspiredPopDevelopedInTheBrillBuildingOfNewYorkUSA" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a distinct style of jazz and Latin-inspired pop developed in the Brill Building of New York, USA</target>
+        </trans-unit>
+        <trans-unit id="funkPerformedByBritishOftenInfluencedBySoulJazzAndCaribbeanMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">funk performed by the British, often influenced by soul, jazz, and Caribbean music</target>
+        </trans-unit>
+        <trans-unit id="BritishRockMusicFromTheSThatSubvertedTheDepressingThemesOfTheThenPopularGrungeMovementInFavorOfJanglyOptimisticGuitarPopOftenTouchingThemesOfPartyingAndWorkingClassLife" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">British rock music from the 1990s that subverted the depressing themes of the then-popular grunge movement in favor of jangly, optimistic, guitar-pop, often touching on the themes of partying and working class life.</target>
+        </trans-unit>
+        <trans-unit id="BluesPerformedByBritishMusicians" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">blues performed by British musicians</target>
+        </trans-unit>
+        <trans-unit id="BritishMusiciansPrimarilyOfTheBeatMovementWhoBecamePopularInAmericaDuringTheS" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">British musicians, primarily of the beat movement, who became popular in America during the 1960s</target>
+        </trans-unit>
+        <trans-unit id="EDMPlayedInARhythmSyncopatedWithPunctuatedSnareBeats" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">EDM played in a syncopated 4/4 rhythm, with punctuated snare beats</target>
+        </trans-unit>
+        <trans-unit id="anAggressiveAndMetalInfluencedStyleOfDubstepPopularInAmerica" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">an aggressive and metal-influenced style of dubstep popular in America</target>
+        </trans-unit>
+        <trans-unit id="SoulMusicPerformedByLatinos" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">soul music performed by Latinos</target>
+        </trans-unit>
+        <trans-unit id="BelizeanMusicInspiredByEuropeanHarmoniesAfricanRhythmsAndTheCallAndResponseFormat" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Belizean music inspired by European harmonies, African rhythms, and the call-and-response format</target>
+        </trans-unit>
+        <trans-unit id="FusionOfEurodanceAndBubblegumPop" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Eurodance and bubblegum pop</target>
+        </trans-unit>
+        <trans-unit id="CameroonianEDMBornInTheBetiCommunity" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Cameroonian EDM, originating in the Beti community</target>
+        </trans-unit>
+        <trans-unit id="JapaneseFolkMusicOftenPlayedAtPuppetTheaters" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Japanese folk music often played at puppet theaters</target>
+        </trans-unit>
+        <trans-unit id="StyleOfHighlifePlayedByGhanaianGermans" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of highlife played by Ghanaian-Germans</target>
+        </trans-unit>
+        <trans-unit id="GroupOfFrenchBelgianAndDutchComposersActiveInTheThCenturyKnownForTheirSecularForms" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">group of French, Belgian, and Dutch composers active in the 15th century, known for their secular forms</target>
+        </trans-unit>
+        <trans-unit id="AustralianFolkMusicOftenDealingWithThemesOfAustralianSpiritAndRebellion" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Australian folk music often dealing with themes of Australian spirit and rebellion</target>
+        </trans-unit>
+        <trans-unit id="GreekMusicPerformedDuringTheByzantineEmpireKnownForItsEcclesiasticalForm" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Greek music performed during the age of the Byzantine Empire, known for its ecclesiastical form</target>
+        </trans-unit>
+        <trans-unit id="RomanianFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Romanian folk music played with the alpenhorn</target>
+        </trans-unit>
+        <trans-unit id="caTrù" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">ca trù</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfVietnameseChamberMusicPerformedByALutePlayerAndAGeishaEsqueFemaleSinger" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a style of Vietnamese chamber music performed by one lute player and a geisha-esque female singer, used to entertain wealthy audiences, who would be included in the performances, and to perform in religious ceremonies</target>
+        </trans-unit>
+        <trans-unit id="ModernVietnameseFolkOpera" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">modern Vietnamese folk opera</target>
+        </trans-unit>
+        <trans-unit id="RootsMusicOfLouisianaUSAInspiredByAcadianBalladsAndCreole" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">roots music of Louisiana, USA, inspired by Acadian ballads and Creole</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicPlayedDuringThePracticeOfMartialArtOfTheSameName" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Trinidadian folk music played during practices of the martial art of the same name</target>
+        </trans-unit>
+        <trans-unit id="MacedonianFolkStyle" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Macedonian folk style</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicInspiredByBothAfricanAndFrenchStylesKnownForItsLyricsDealingWithRacistOppressionOfNativeTrinidadians" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Trinidadian folk music, inspired by both African and French styles, and known for its lyrics dealing with the racist oppression of native Trinidadians at the time</target>
+        </trans-unit>
+        <trans-unit id="IndonesianFusionGenreCombiningSeveralFolkStylesWithPopMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Indonesian fusion genre, combining several folk styles with pop music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfAfricanAndUruguayanStylesDevelopedByAfricanUruguayanSlavesInTheThCentury" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of African and Uruguayan styles developed by African-Uruguayan slaves in the 19th century</target>
+        </trans-unit>
+        <trans-unit id="groupOfBritishAvantGardeProgressiveRockAndJazzFusionMusiciansBasedInTheEnglishCityOfCanterburyKent" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">group of British avant-garde, progressive rock, and jazz fusion musicians based in the English city of Canterbury, Kent</target>
+        </trans-unit>
+        <trans-unit id="upbeatFormOfAndalusianFlamencoMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">upbeat form of Andalusian flamenco music</target>
+        </trans-unit>
+        <trans-unit id="PortugueseBalladStyleFromMiddleAges" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Portuguese ballad style from the Middle Ages</target>
+        </trans-unit>
+        <trans-unit id="PortugueseFolkMusicKnownForItsFarLeftPoliticalMessages" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Portuguese folk music known for its far-left political messages</target>
+        </trans-unit>
+        <trans-unit id="AnyChinesePopMusicSungInCantonese" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">any Chinese pop music sung in Cantonese</target>
+        </trans-unit>
+        <trans-unit id="ItalianMusicInNeapolitan" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Italian music sung in Neapolitan</target>
+        </trans-unit>
+        <trans-unit id="BrazilianMusicPlayedDuringPerformancesOfMartialArtOfTheSameName" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Brazilian music played during performances of the martial art of the same name</target>
+        </trans-unit>
+        <trans-unit id="TrinidadianFolkMusicOftenConsideredAnEarlyFormOfCalypso" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Trinidadian folk music, often considered an early form of calypso</target>
+        </trans-unit>
+        <trans-unit id="SouthernIndianClassicalMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">southern Indian classical music</target>
+        </trans-unit>
+        <trans-unit id="AFestiveSongOftenSungOnChristmasOrRarelyEaster" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">a festive song, often sung on Christmas or, rarely, Easter</target>
+        </trans-unit>
+        <trans-unit id="StyleOfRhythmPopularInKenyanAndZaireanMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of rhythm popular in Kenyan and Zairean music</target>
+        </trans-unit>
+        <trans-unit id="SudaneseFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Sudanese folk music</target>
+        </trans-unit>
+        <trans-unit id="folkMusicOfCeltsScotlandIrelandWalesIsleOfManFranceAndSpainAndOnceEngland" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">folk music of the Celts, an ethnic group inhabiting Scotland, Ireland, Wales, the Isle of Man, some parts of France and Spain, and once England</target>
+        </trans-unit>
+        <trans-unit id="CelticInfluence" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">popular music that includes a Celtic influence</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndHipHopMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Celtic and hip hop music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCelticAndHeavyMetalMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Celtic and heavy metal music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndPunkRockMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Celtic and punk rock music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfCelticAndReggaeMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Celtic and reggae music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCelticAndRockMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Celtic and rock music</target>
+        </trans-unit>
+        <trans-unit id="CubanFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Cuban folk music</target>
+        </trans-unit>
+        <trans-unit id="ArgentinianFolkAndDanceMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Argentinian folk and dance music</target>
+        </trans-unit>
+        <trans-unit id="musicOfTheSwahiliPeopleOfKenyaAndTanzania" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">music of the Swahili people of Kenya and Tanzania</target>
+        </trans-unit>
+        <trans-unit id="fusionOfBulgarianEthnoPopAndDanceMusicWithEasternAndArabicElementsPopularInSouthernBulgaria" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">fusion of Bulgarian etno-pop and dance music with Eastern and Arab elements, popular in Southern Bulgaria</target>
+        </trans-unit>
+        <trans-unit id="styleOfArgentinianMesopotamianAndBrazilianFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">style of Argentinian, Mesopotamian, and Brazilian folk music</target>
+        </trans-unit>
+        <trans-unit id="FusionOfAlternativeRockAndChamberMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">Fusion of alternative rock and chamber music</target>
+        </trans-unit>
+        <trans-unit id="AfricanColombianFolkMusic" translate="yes" xml:space="preserve" xmlns="">
+          <source></source>
+          <target state="translated">African-Colombian folk music</target>
+        </trans-unit>
+      </group>
     </body>
   </file>
 </xliff>

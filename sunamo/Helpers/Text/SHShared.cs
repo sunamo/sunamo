@@ -1052,7 +1052,7 @@ public static string GetString(IEnumerable o, string p)
         StringBuilder sb = new StringBuilder();
         foreach (var item in o)
         {
-            sb.Append(SH.ListToString( item) + p);
+            sb.Append(SH.ListToString( item, p) + p);
         }
         return sb.ToString();
     }

@@ -7,9 +7,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using sunamo.Essential;
 
-
-    public class XHelper
+public class XHelper
     {
         public static Dictionary<string, string> ns = new Dictionary<string, string>();
 
@@ -44,9 +44,13 @@ using System.Xml.Linq;
         return vr;
     }
 
-    public static XDocument CreateXDocument(string content)
+    public static XDocument CreateXDocument(string contentOrFn)
     {
-        var enB = BTS.ConvertFromUtf8ToBytes(content);
+        if (FS.ExistsFile(contentOrFn))
+        {
+            contentOrFn = TF.ReadFile(contentOrFn);
+        }
+        var enB = BTS.ConvertFromUtf8ToBytes(contentOrFn);
         XDocument xd = null;
         using (MemoryStream oStream = new MemoryStream(enB.ToArray()))
         using (XmlReader oReader = XmlReader.Create(oStream))
@@ -54,6 +58,46 @@ using System.Xml.Linq;
             xd = XDocument.Load(oReader);
         }
         return xd;
+    }
+
+    /// <summary>
+    /// If A1 is file, output will be save to file and return null
+    /// Otherwise return string
+    /// </summary>
+    /// <param name="xml"></param>
+    /// <returns></returns>
+    public static string FormatXml(string xml)
+    {
+        var xmlFormat = xml;
+
+        if (FS.ExistsFile(xml))
+        {
+            xmlFormat = TF.ReadFile(xml);
+        }
+
+        
+
+        
+
+        XDocument doc = XDocument.Parse(xmlFormat);
+        var formatted = doc.ToString();
+
+        formatted = SH.ReplaceAll2(formatted, string.Empty, " xmlns=\"\"");
+
+        if (FS.ExistsFile(xml))
+        {
+            TF.SaveFile(formatted, xml);
+            ThisApp.SetStatus(TypeOfMessage.Success, "Changes saved to file");
+            return null;
+        }
+        else
+        {
+            
+            ThisApp.SetStatus(TypeOfMessage.Success, "Changes saved to clipboard");
+            return formatted;
+        }
+
+        
     }
 
     public static List<XElement> GetElementsOfNameWithAttr(System.Xml.Linq.XElement xElement, string tag, string attr, string value, bool caseSensitive)

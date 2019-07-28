@@ -13,4 +13,10 @@
     <Folder Include="Templates\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

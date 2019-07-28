@@ -51,8 +51,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoMvvm", "..\sunamo.not
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCef", "SunamoCef\SunamoCef.csproj", "{91872261-77D1-4FFE-871B-961A706FBF35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoNTextCat", "SunamoNTextCat\SunamoNTextCat.csproj", "{75D55C05-A2D7-4922-B9B0-88AB248F64FA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoTranslate", "SunamoTranslate\SunamoTranslate.csproj", "{7A18135A-CECD-4052-B3B0-98C7501DD557}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDataTranslate", "..\Credentials\GDataTranslate\GDataTranslate.csproj", "{DBE83DD8-3F33-4CDB-BAFE-218D8B9348F3}"
@@ -60,6 +58,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GDataYoutube", "..\Credentials\GDataYoutube\GDataYoutube.csproj", "{CABC2FF3-8550-4807-BA0D-C5435BE3F995}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoLinguist", "SunamoLinguist\SunamoLinguist.csproj", "{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoNTextCat", "SunamoNTextCat\SunamoNTextCat.csproj", "{626E688A-216D-452B-B5C9-E626F59EFA68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -347,18 +347,6 @@ Global
 		{91872261-77D1-4FFE-871B-961A706FBF35}.Release|x64.Build.0 = Release|x64
 		{91872261-77D1-4FFE-871B-961A706FBF35}.Release|x86.ActiveCfg = Release|x86
 		{91872261-77D1-4FFE-871B-961A706FBF35}.Release|x86.Build.0 = Release|x86
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|x64.Build.0 = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Debug|x86.Build.0 = Debug|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|x64.ActiveCfg = Release|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|x64.Build.0 = Release|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|x86.ActiveCfg = Release|Any CPU
-		{75D55C05-A2D7-4922-B9B0-88AB248F64FA}.Release|x86.Build.0 = Release|Any CPU
 		{7A18135A-CECD-4052-B3B0-98C7501DD557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A18135A-CECD-4052-B3B0-98C7501DD557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A18135A-CECD-4052-B3B0-98C7501DD557}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -407,6 +395,18 @@ Global
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x64.Build.0 = Release|Any CPU
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.ActiveCfg = Release|Any CPU
 		{7CBAB68D-7DEB-4A61-87CD-BC08924DD704}.Release|x86.Build.0 = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|x64.Build.0 = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Debug|x86.Build.0 = Debug|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|x64.ActiveCfg = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|x64.Build.0 = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|x86.ActiveCfg = Release|Any CPU
+		{626E688A-216D-452B-B5C9-E626F59EFA68}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

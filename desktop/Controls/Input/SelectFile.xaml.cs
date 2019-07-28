@@ -68,10 +68,10 @@ namespace desktop.Controls
         {
             if (v == "")
             {
-                v = "None";
+                v = RLData.en["None"];
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file" + ": " + v;
+            tbSelectedFile.Text = RLData.en["SelectedFile"] + ": " + v;
         }
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)

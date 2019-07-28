@@ -99,9 +99,9 @@ public static class CL
         string z = "";
         if (append)
         {
-            whatOrTextWithoutEndingDot = "Enter" + " " + whatOrTextWithoutEndingDot + "";
+            whatOrTextWithoutEndingDot = RLData.en[RLData.en["Enter"]] + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". " + "For exit enter" + " -" + "" + ".";
+        whatOrTextWithoutEndingDot += ". " + RLData.en["ForExitEnter"] + " -" + "" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -154,7 +154,7 @@ public static class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information("App loaded from clipboard" + " " + ": " + z);
+            TypedConsoleLogger.Instance.Information(RLData.en["AppLoadedFromClipboard"] + " " + ": " + z);
         }
         return z;
     }
@@ -272,7 +272,7 @@ public static class CL
     /// <returns></returns>
     public static DialogResult DoYouWantToContinue(string text)
     {
-        text = "Do you want to continue" + "?";
+        text = RLData.en["DoYouWantToContinue"] + "?";
 
         TypedConsoleLogger.Instance.Warning(text);
         bool z = UserMustTypeYesNo(text);
@@ -305,7 +305,7 @@ public static class CL
     /// <param name="appeal"></param>
     public static void AppealEnter(string appeal)
     {
-        Appeal(appeal + ". " + "Then press enter" + ".");
+        Appeal(appeal + ". " + RLData.en["ThenPressEnter"] + ".");
         Console.ReadLine();
     }
 
@@ -356,7 +356,7 @@ public static class CL
     public static void SelectFromVariants(Dictionary<string, EmptyHandler> actions)
     {
         #region Print on console avialable operations
-        string appeal = "Select action" + ":";
+        string appeal = RLData.en["SelectAction"] + ":";
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
@@ -398,7 +398,7 @@ public static class CL
     public static void PerformAction(Dictionary<string, EventHandler> actions, object sender)
     {
         var listOfActions = NamesOfActions(actions);
-        int selected = SelectFromVariants(listOfActions, "Select action to proceed" + ":");
+        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"] + ":");
         string ind = listOfActions[selected];
         EventHandler eh = actions[ind];
         eh.Invoke(sender, EventArgs.Empty);
@@ -407,7 +407,7 @@ public static class CL
     public static void PerformAction(Dictionary<string, VoidVoid> actions)
     {
         List<string> listOfActions =  actions.Keys.ToList();
-        int selected = SelectFromVariants(listOfActions, "Select action to proceed");
+        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"]);
         if (selected != -1)
         {
             string ind = listOfActions[selected];

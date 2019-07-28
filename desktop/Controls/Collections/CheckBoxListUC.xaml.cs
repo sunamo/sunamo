@@ -36,7 +36,7 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public string Title => "Check box list";
+        public string Title => RLData.en["CheckBoxList"];
 
         public void Accept(object input)
         {

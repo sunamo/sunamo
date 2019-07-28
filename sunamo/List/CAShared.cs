@@ -229,6 +229,24 @@ public  static partial class CA
     }
 
     /// <summary>
+    /// Remove from A1 which exists in A2
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="manuallyNo"></param>
+    public static void RemoveWhichExists(List<string> s, List<string> manuallyNo)
+    {
+        var dex = -1;
+        foreach (var item in manuallyNo)
+        {
+            dex = s.IndexOf(item);
+            if (dex != -1)
+            {
+                s.RemoveAt(dex);
+            }
+        }
+    }
+
+    /// <summary>
     /// Just call ToListString
     /// </summary>
     /// <param name="enumerable"></param>

@@ -272,7 +272,6 @@
     <Compile Include="Hotkey.cs" />
     <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IHideToTray.cs" />
-    <Compile Include="Interfaces\IEssentialMainPage.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
@@ -281,6 +280,7 @@
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
     <Compile Include="Interfaces\IUserControlWithSizeChange.cs" />
+    <Compile Include="Interfaces\IUserControlShared.cs" />
     <Compile Include="Interfaces\IWindowOpener.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -301,6 +301,9 @@
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="TrialManager.cs" />
+    <Compile Include="UserControls\LogUC.xaml.cs">
+      <DependentUpon>LogUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
     <Compile Include="Values\TypesDesktop.cs" />
@@ -504,6 +507,10 @@
     <Page Include="UserControls\AboutApp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LogUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EnterOneValueWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

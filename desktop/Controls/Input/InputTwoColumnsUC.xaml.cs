@@ -52,7 +52,7 @@ namespace desktop.Controls
         {
             if (neededRows > rowsCount)
             {
-                ThrowExceptions.BadMappedXaml(type, "InputTwoColumnsUC", "InputTwoColumnsUC", "Is needed more rows than exists");
+                ThrowExceptions.BadMappedXaml(type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en["ItNeedsMoreRowsThanItExists"]);
             }
             else
             {

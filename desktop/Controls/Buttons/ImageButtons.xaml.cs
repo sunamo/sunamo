@@ -179,7 +179,7 @@ namespace desktop.Controls.Buttons
 
         void Handler(object o, RoutedEventArgs e)
         {
-            string methodName = "Handler";
+            string methodName = RLData.en["Handler"];
 
             Button btn = (Button)o;
             var t = btn.Tag.GetType();

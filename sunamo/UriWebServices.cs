@@ -422,17 +422,17 @@ Template for which I will find, have to be in derivates the same:
 
     public static string KmoAll(string item)
     {
-        return FromChromeReplacement("", item);
+        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0", item);
     }
 
     public static string KmoAV(string item)
     {
-        return FromChromeReplacement("", item);
+        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0", item);
     }
 
     public static string KmoMP(string item)
     {
-        return FromChromeReplacement("", item);
+        return FromChromeReplacement("https://tritius.kmo.cz/Katalog/search?q=%s&area=242&field=0", item);
     }
 
     public const string chromeSearchstringReplacement = "%s";

@@ -215,7 +215,7 @@ namespace desktop.Essential
         #endregion
 
 
-        public static IEssentialMainPage mp = null;
+        public static IEssentialMainWindow mp = null;
         public static TextBlock tbLastErrorOrWarning = null;
         public static TextBlock tbLastOtherMessage = null;
         static TextBlock tbLastErrorOrWarningSaved = null;

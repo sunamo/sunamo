@@ -60,17 +60,17 @@ namespace desktop
 
             if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
             {
-                ATextBlock.Text = "Průhlednost" + ":";
-                RTextBlock.Text = "Červená barevná složka" + ":";
-                GTextBlock.Text = "Zelená barevná složka" + ":";
-                BTextBlock.Text = "Modrá barevná složka" + ":";
+                ATextBlock.Text = RLData.en["Transparency"] + ":";
+                RTextBlock.Text = RLData.en["RedColoredFolder"] + ":";
+                GTextBlock.Text = RLData.en["GreenColorFolder"] + ":";
+                BTextBlock.Text = RLData.en["BlueColorFolder"] + ":";
             }
             else
             {
-                ATextBlock.Text = "Opacity" + ":";
-                RTextBlock.Text = "Red color component" + ":";
-                GTextBlock.Text = "Green color component" + ":";
-                BTextBlock.Text = "Blue color component" + ":";
+                ATextBlock.Text = RLData.en["Opacity"] + ":";
+                RTextBlock.Text = RLData.en["RedColorComponent"] + ":";
+                GTextBlock.Text = RLData.en["GreenColorComponent"] + ":";
+                BTextBlock.Text = RLData.en["BlueColorComponent"] + ":";
             }
         }
 

@@ -71,12 +71,12 @@ namespace desktop
             if (e.Key == Key.Left)
             {
                 Before();
-                OnNewStatus("Bylo přesunuto zpět na fotku" + " " + imagesPath.ToString());
+                OnNewStatus(RLData.en["MovedBackToPhoto"] + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Right)
             {
                 Next();
-                OnNewStatus("Bylo přesunuto vpřed na fotku" + " " + imagesPath.ToString());
+                OnNewStatus(RLData.en["MovedForwardToPhoto"] + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Enter)
             {
@@ -94,7 +94,7 @@ namespace desktop
         public void ClearCollection()
         {
             imagesPath.Clear();
-            OnNewStatus("Kolekce obrázků byla vymazána" + ".");
+            OnNewStatus(RLData.en["ImageCollectionDeleted"] + ".");
         }
 
         public void AddImages(List<string> value)
@@ -103,11 +103,11 @@ namespace desktop
             {
                 imagesPath.AddRange(value);
                 ActualFile = imagesPath.SetIretation(0);
-                OnNewStatusAppend("Místo toho bylo načteno {0} nových obrázků" + ".", value.Count);
+                OnNewStatusAppend(RLData.en["NewImagesLoadedInstead"] + ".", value.Count);
             }
             else
             {
-                OnNewStatusAppend("Nebyly načteny další obrázky, protože zadaná složka žádné obrázky neobsahovala" + ".");
+                OnNewStatusAppend(RLData.en["NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages"] + ".");
             }
         }
 

@@ -9,9 +9,10 @@ using sunamo.Constants;
 
 public static partial class SF
 {
-    
 
-/// <summary>
+
+    /// <summary>
+    /// Same as PrepareToSerialization - return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
     /// </summary>
     /// <param name="p1"></param>

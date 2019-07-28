@@ -108,7 +108,7 @@ public partial class MSDatabaseLayer
         {
             return "long";
         }
-        else if (p.GetType() == Consts.uUlong)
+        else if (p.GetType() == Consts.tUlong)
         {
             return "ulong";
         }
@@ -253,7 +253,7 @@ public partial class MSDatabaseLayer
         {
             return "long";
         }
-        else if (p == Consts.uUlong)
+        else if (p == Consts.tUlong)
         {
             return "ulong";
         }

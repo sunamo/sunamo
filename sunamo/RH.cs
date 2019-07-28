@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -11,8 +12,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-namespace sunamo
-{
+
     /// <summary>
     /// Cant name Reflection because exists System.Reflection
     /// </summary>
@@ -60,6 +60,17 @@ namespace sunamo
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Print name of calling method, not GetCurrentMethod
+        /// </summary>
+        /// <returns></returns>
+        public static string CallingMethod()
+        {
+            StackTrace stackTrace = new StackTrace();
+            MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
+            return methodBase.Name;
         }
 
         internal static Assembly AssemblyWithName(string name)
@@ -357,4 +368,3 @@ namespace sunamo
 
        
     }
-}

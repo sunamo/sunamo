@@ -46,7 +46,7 @@ namespace desktop.Controls.Collections
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
 
-        public string Title => "Decide which to process";
+        public string Title => RLData.en["DecideWhichToProcess"];
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -235,7 +235,7 @@ namespace desktop.Controls.Collections
         {
             //MenuItem mi = MenuItemHelper.CreateNew(Title);
 
-            MenuItem miSave = MenuItemHelper.CreateNew("Save", Save);
+            MenuItem miSave = MenuItemHelper.CreateNew(RLData.en["Save"], Save);
             //mi.Items.Add(miSave);
 
             return CA.ToList<MenuItem>(miSave);

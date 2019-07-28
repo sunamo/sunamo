@@ -61,7 +61,7 @@ namespace desktop.Controls.Input
 
         public void Init(string whatEnter)
         {
-            tbWhatEnter.Text = "Enter" + " " + whatEnter + " " + "and press enter" + ".";
+            tbWhatEnter.Text = RLData.en["Enter"] + " " + whatEnter + " " + "and press enter" + ".";
         }
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)

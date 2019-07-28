@@ -27,7 +27,7 @@ namespace sunamo.Constants
         /// <summary>
         /// Solution, not project
         /// </summary>
-        public static string sunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
+        public static string sunamo= @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
         public static string sunamoProject = @"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
 
         public static string vs = @"d:\Documents\Visual Studio 2017\Projects\";

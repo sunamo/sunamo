@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using desktop;
 
-
-    public class Textarea : InputText
-    {
-
-    }
-
+public interface IUserControlShared
+{
+    IEssentialMainWindow MainControl { get; set; }
+}

@@ -8,3 +8,12 @@ APS Helper.GetAllStringsInAllFiles -
 jsou jen 2 operace split a translate, žádné get
 
 GetAllStringsIn
+
+Vyfiltrovat skrz IsToTranslate:
+kde mají na konci (xx)
+některý ze základních typů (Int16) atd
+vsechny co mají znak poskození
+
+Is english: 50864
+Is english: 2678
+Is czech: 34
