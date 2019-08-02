@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace sunamo.Essential
 {
@@ -12,6 +13,12 @@ namespace sunamo.Essential
         VoidStringParamsObjects writeLineDelegate;
         public bool IsActive = true;
         static Type type = typeof(LoggerBase);
+        StringBuilder sb = new StringBuilder();
+        /// <summary>
+        /// Because in sunamo is not any MessageBox
+        /// </summary>
+        //public static event VoidString ShowMessageBox;
+
 
         public void DumpObject(string name, object o, DumpProvider d, params string[] onlyNames)
         {
@@ -29,6 +36,22 @@ namespace sunamo.Essential
                 DumpObject(name + " #" + i, item, d, onlyNames);
                 i++;
             }
+        }
+
+        /// <summary>
+        /// Only for debug purposes
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="args"></param>
+        public void ClipboardOrDebug(string v, params string[] args)
+        {
+#if DEBUG
+            DebugLogger.DebugWriteLine(TypeOfMessage.Appeal, v, args);
+#else
+            sb.AppendLine(TypeOfMessage.Appeal + ": " + string.Format(v, args));
+            ClipboardHelper.SetText(sb.ToString());
+#endif
+
         }
 
         /// <summary>

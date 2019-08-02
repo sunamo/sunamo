@@ -9,8 +9,8 @@ using System.Diagnostics;
 //{
 
     /// <summary>
-    /// Tento DebugLogger.Instance je ve sunamo, obsahuje jedinou metodu, kterou používej ve DebugLogger.Instance např. apps
-    /// Pokud chceš rychleji zapisovat a nepotřebuješ explicitně nějaké metody, vytvoř si vlastní třídu DebugLogger.Instance v projektu aplikace. Ono by s_tejně kompilátor měl poznat že jen volá něco jiného a tak by to mělo být stejně efektivní
+    /// Tento //DebugLogger.Instance je ve sunamo, obsahuje jedinou metodu, kterou používej ve //DebugLogger.Instance např. apps
+    /// Pokud chceš rychleji zapisovat a nepotřebuješ explicitně nějaké metody, vytvoř si vlastní třídu //DebugLogger.Instance v projektu aplikace. Ono by s_tejně kompilátor měl poznat že jen volá něco jiného a tak by to mělo být stejně efektivní
     /// </summary>
     public class DebugLogger : LoggerBase
     {

@@ -39,6 +39,21 @@ using System.Text;
             return FS.ExistsDirectory(rootFolder);
         }
 
+    public List<string> ReadFileOfSettingsList(string path)
+    {
+        return SH.GetLines(ReadFileOfSettingsOther(path));
+    }
+
+    /// <summary>
+    /// If file A1 dont exists or have empty content, then create him with empty content and G SE
+    /// </summary>
+    /// <param name="path"></param>
+    public static string ReadFileOfSettingsOther(string path)
+    {
+        TF.CreateEmptyFileWhenDoesntExists(path);
+        return TF.ReadFile(path);
+    }
+
     public string ReadFolderWithAppsFilesOrDefault(string s)
     {
         var content = TF.ReadFile(s);

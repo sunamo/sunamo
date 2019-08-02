@@ -34,7 +34,7 @@ namespace sunamo.Essential
                 if (StatusSetted == null)
                 {
                     // For unit tests
-                    DebugLogger.Instance.WriteLine(st + ": " + format);
+                    //DebugLogger.Instance.WriteLine(st + ": " + format);
                 }
                 else
                 {

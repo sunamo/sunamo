@@ -9,12 +9,11 @@ using System.Collections.Generic;
 /// Must be instance, because calling static method dont call constructor and will throw not implemented exception
 /// </summary>
 public class TranslateHelper
-    {
-     GoogleCredential credential = null;
+{
+    GoogleCredential credential = null;
 
     public  GoogleCredential AuthExplicit(string appName, string projectId, string jsonText)
     {
-        //string projectId = "insertintoxlfand-1558628742466";
         if (credential == null)
         {
             credential = GoogleCredential.FromJson(jsonText);
@@ -44,7 +43,14 @@ public class TranslateHelper
      Dictionary<string, string> csToEn = new Dictionary<string, string>();
 
 
+    TranslationClient client = null;
+
     private TranslateHelper()
+    {
+        // ctor must be empty due to calling AllProjectsSearchHelper.AuthGoogleTranslate which create instance and in its actual code is CheckCredentials which raise exception
+    }
+
+    public void Init()
     {
         var data = SF.GetAllElementsFile(AlreadyTranslatedFile);
         foreach (var line in data)
@@ -52,10 +58,16 @@ public class TranslateHelper
             var key = line[0];
             if (!csToEn.ContainsKey(key))
             {
-                csToEn.Add(key, line[1]);
+                // Check for uncomplete file
+                if (line.Count > 1)
+                {
+                    csToEn.Add(key, line[1]);
+                }
             }
-            
         }
+
+        CheckCredentials();
+        client = TranslationClient.Create(credential);
     }
 
     /// <summary>
@@ -75,9 +87,7 @@ public class TranslateHelper
             }
         }
 
-        CheckCredentials();
-
-        TranslationClient client = TranslationClient.Create(credential);
+        DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
 
         var response = client.TranslateText(input, to, from);
         var result = response.TranslatedText;

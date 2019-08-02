@@ -16,7 +16,7 @@ public class TextLang
     static bool initialized = false;
 
     public static string file = "";
-
+     
     /// <summary>
     /// A1 can be null, then is use common file
     /// must be in _Loaded event
@@ -34,19 +34,38 @@ public class TextLang
 
             var data = SF.GetAllElementsFile(file);
 
-            foreach (var line in data)
+            for (int i = data.Count - 1; i >= 0; i--)
             {
+                var line = data[i];
                 //var elements = SF.GetAllElementsLine(line);
                 TextLangIndexes tli = new TextLangIndexes(line);
 
-                textLangIndexes.Add(tli.text, tli);
+                if (!textLangIndexes.ContainsKey(tli.text))
+                {
+                    textLangIndexes.Add(tli.text, tli);
+                }
+                else
+                {
+                    data.RemoveAt(i);
+                }
+
+                
             }
+
+            SF.WriteAllElementsToFile(file, data);
 
             var ass = typeof(TextLang).Assembly;
             resources = new EmbeddedResourcesH(ass, ass.GetName().Name);
+
+            var factory = new RankedLanguageIdentifierFactory();
+            var stream = resources.GetString(Wiki280Profile);
+            identifier = factory.Load(BTS.StreamFromString(stream));
+
             initialized = true;
         }
     }
+
+    static RankedLanguageIdentifier identifier = null;
 
     /// <summary>
     /// Before use 
@@ -57,15 +76,7 @@ public class TextLang
     {
         string methodName = "GetLangs";
 
-        var factory = new RankedLanguageIdentifierFactory();
-
         
-
-        var stream = resources.GetString(Wiki280Profile);
-
-        
-
-        var identifier = factory.Load(BTS.StreamFromString(stream));
 
         
         var languages = identifier.Identify(text);
@@ -95,6 +106,11 @@ public class TextLang
     /// <returns></returns>
     public static bool IsEnglish(string text)
     {
+        if (!TranslateAbleHelper.IsToTranslate(text))
+        {
+            return false;
+        }
+
         if (SH.ContainsDiacritic(text))
         {
             return false;
@@ -108,6 +124,8 @@ public class TextLang
 
     private static void CalculateSumOfProbiality(string text, out double sumEn, out double sumCs)
     {
+
+
         var p = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(text);
 
         p = CA.ToLower(p);
@@ -181,6 +199,11 @@ public class TextLang
     /// <returns></returns>
     public static bool IsCzech(string text)
     {
+        if (!TranslateAbleHelper.IsToTranslate(text))
+        {
+            return false;
+        }
+
         if (text == "Hello")
         {
             return false;

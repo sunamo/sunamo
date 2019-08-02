@@ -73,7 +73,7 @@ using System.Text;
             return methodBase.Name;
         }
 
-        internal static Assembly AssemblyWithName(string name)
+        public static Assembly AssemblyWithName(string name)
         {
             var ass = AppDomain.CurrentDomain.GetAssemblies();
             var result = ass.Where(d => d.GetName().Name == name);

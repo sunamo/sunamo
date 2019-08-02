@@ -52,7 +52,7 @@ mam 3, d0, u1 - nechapu */
             if (result)
             {
 #if DEBUG
-                DebugLogger.Instance.TwoState(result, key, modifier);
+                //DebugLogger.Instance.TwoState(result, key, modifier);
 #endif
             }
             return result;

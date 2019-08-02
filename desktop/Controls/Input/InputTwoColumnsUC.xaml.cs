@@ -20,7 +20,7 @@ namespace desktop.Controls
 {
     /// <summary>
     /// 
-    /// </summary>
+    /// </summary>Coli
     public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow
     {
         public TextBox txtFirst
@@ -30,6 +30,7 @@ namespace desktop.Controls
                 return txt1;
             }
         }
+
         public TextBox txtSecond
         {
             get
@@ -37,6 +38,7 @@ namespace desktop.Controls
                 return txt2;
             }
         }
+
         Type type = typeof(InputTwoColumnsUC);
         const int rowsCount = 2;
         List<TextBox> checkForContent = new List<TextBox>();
@@ -78,17 +80,19 @@ namespace desktop.Controls
                         visible = Visibility.Collapsed;
                     }
                 }
-
-
             }
         }
 
         private void DialogButtons_ChangeDialogResult(bool? b)
         {
+            var methodName = "DialogButtons_ChangeDialogResult: ";
+
             if (b.HasValue)
             {
                 if (!b.Value)
                 {
+                    //DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + false);
+
                     DialogResult = false;
                     return;
                 }
@@ -101,13 +105,18 @@ namespace desktop.Controls
                 if (string.IsNullOrEmpty(item.Text))
                 {
                     ThisApp.SetStatus(TypeOfMessage.Error, ExceptionStrings.AllOfInputsMustBeFilled);
+
+                    //DebugLogger.Instance.ClipboardOrDebug(methodName + "Something was not filled in");
+
                     allOk = false;
                 }
             }
 
             if ( allOk)
-            { 
+            {
                 DialogResult = true;
+
+                //DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + true);
 
             }
         }

@@ -298,7 +298,7 @@ public class SourceCodeIndexerRoslyn
 
                 //if (methodName == "JoinSpace")
                 //{
-                //    DebugLogger.Instance.WriteLine(RH.DumpAsString("During indexing:", method.FullSpan));
+                //    //DebugLogger.Instance.WriteLine(RH.DumpAsString("During indexing:", method.FullSpan));
                 //}
 
                 DictionaryHelper.AddOrCreate<string, ClassCodeElement>(classCodeElements, pathFile, element);

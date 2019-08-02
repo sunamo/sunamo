@@ -18,7 +18,10 @@ public class XlfResourcesH
         SaveResouresToRL(basePath, "en");
     }
 
-    public static void SaveResouresToRL()
+    /// <summary>
+    /// Private to use SaveResouresToRLSunamo
+    /// </summary>
+    private static void SaveResouresToRL()
     {
         SaveResouresToRL(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName));
     }

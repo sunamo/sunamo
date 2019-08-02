@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <Viewbox Width="30" Height="30">
             <Grid Width="20" Height="20">
                 <Ellipse  x:Name="ellipseSerie"/>

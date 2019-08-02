@@ -270,7 +270,7 @@ namespace desktop
              TF.SaveFile(content, storageFile);
 
 #if DEBUG
-            DebugLogger.DebugWriteLine(storageFile.FullPath());
+            //DebugLogger.DebugWriteLine(storageFile.FullPath());
 #endif
 
             var o = CreateObjectFileNameWithDateTime(GetDisplayText(dt, max, l), name, dt, max, name, fnwoe);

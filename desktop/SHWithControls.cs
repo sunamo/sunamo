@@ -52,7 +52,7 @@ public static class SHWithControls
             sb.Append(item);
 
             double measureString = MeasureString(fontFamily, fontSize, fontStyle, fontStretch, fontWeight, sb.ToString(), maxSize);
-            ////Debug.WriteLine(measureString.ToString());
+            //////Debug.WriteLine(measureString.ToString());
             if (measureString > maxWidth)
             {
                 // Získat řetězec z sb

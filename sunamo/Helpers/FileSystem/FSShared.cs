@@ -605,6 +605,14 @@ public static List<string> GetFolders(string folder)
             return GetFolders(folder, SearchOption.TopDirectoryOnly);
         }
 
+    /// <summary>
+    /// Return only subfolder if A3, a1 not include
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="masc"></param>
+    /// <param name="so"></param>
+    /// <param name="_trimA1"></param>
+    /// <returns></returns>
     public static List<string> GetFolders(string folder, string masc, SearchOption so, bool _trimA1 = false)
     {
         var dirs = Directory.GetDirectories(folder, masc, so).ToList();

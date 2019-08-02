@@ -33,7 +33,8 @@ public class TranslateDictionary : IDictionary<string, string>
     }
 
     public string this[string key]
-    { get  
+    {
+        get  
             {
 
             if (!d.ContainsKey(key))

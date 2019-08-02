@@ -46,7 +46,7 @@ namespace desktop.Storage
 
         public void LoadSettings(FrameworkElement sender, TUList<FrameworkElement, DependencyProperty> savedElements)
         {
-            DebugLogger.Instance.WriteList(savedElements.Select(d => d.Key.GetType().FullName).ToList());
+            //DebugLogger.Instance.WriteList(savedElements.Select(d => d.Key.GetType().FullName).ToList());
             EnsureProperties(sender, savedElements);
             foreach (var element in savedElements)
             {

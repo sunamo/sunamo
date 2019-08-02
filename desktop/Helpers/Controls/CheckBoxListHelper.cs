@@ -30,7 +30,7 @@ public class CheckBoxListHelper
         return where.Select(d => d.v.Content);
     }
 
-    internal static List<string> AllContent(IEnumerable<CheckBox> chbs)
+    public static List<string> AllContent(IEnumerable<CheckBox> chbs)
     {
         var d = chbs.Select(e => e.Content);
         var result = CA.ToListString(d);

@@ -27,7 +27,19 @@
   
     
 
+    <Compile Remove="Attributes\bin\**" />
+  
+    
+
+    <EmbeddedResource Remove="Attributes\bin\**" />
+  
+    
+
     <EmbeddedResource Remove="Converters\**" />
+  
+    
+
+    <None Remove="Attributes\bin\**" />
     <None Remove="Converters\**" />
   </ItemGroup>
   <ItemGroup>

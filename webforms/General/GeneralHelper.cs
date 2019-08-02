@@ -924,7 +924,7 @@ public class GeneralHelper
             int pomer = 100 - percent2;
             if (pomer == 0)
             {
-                DebugLogger.Break();
+                //DebugLogger.Break();
             }
             if (b.Length == i + 1)
             {

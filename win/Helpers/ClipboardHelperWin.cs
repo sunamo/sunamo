@@ -60,7 +60,14 @@ public class ClipboardHelperWin : IClipboardHelper
             //{
             //new System.Threading.Thread(delegate ()
             //{
-            Clipboard.SetText(v);
+            try
+            {
+                Clipboard.SetText(v);
+            }
+            catch (Exception ex)
+            {
+                // 
+            }
             //}).Start();
             //});
         }

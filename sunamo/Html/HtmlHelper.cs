@@ -22,13 +22,25 @@ using System.Xml;
             return "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" + HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(XH.RemoveXmlDeclaration(xml.Replace("<?xml version=\"1.0\" encoding=\"iso-8859-2\" />", "").Replace("<?xml version=\"1.0\" encoding=\"utf-8\" />", "").Replace("<?xml version=\"1.0\" encoding=\"UTF-8\" />", "")));
         }
 
-        /// <summary>
-        /// Již volá ReplaceHtmlNonPairTagsWithXmlValid
-        /// </summary>
-        /// <param name="xml"></param>
-        /// <param name="odstranitXmlDeklaraci"></param>
-        /// <returns></returns>
-        public static string ToXml(string xml, bool odstranitXmlDeklaraci)
+    public static void DeleteAttributesFromAllNodes(List<HtmlNode> nodes)
+    {
+        foreach (var node in nodes)
+        {
+            for (int i = node.Attributes.Count - 1; i >= 0; i--)
+            {
+                node.Attributes.RemoveAt(i);
+            }
+            
+        }
+    }
+
+    /// <summary>
+    /// Již volá ReplaceHtmlNonPairTagsWithXmlValid
+    /// </summary>
+    /// <param name="xml"></param>
+    /// <param name="odstranitXmlDeklaraci"></param>
+    /// <returns></returns>
+    public static string ToXml(string xml, bool odstranitXmlDeklaraci)
         {
             HtmlDocument doc = HtmlAgilityHelper.CreateHtmlDocument();
             //doc.Encoding = Encoding.UTF8;

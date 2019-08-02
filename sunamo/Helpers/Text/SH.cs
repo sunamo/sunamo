@@ -56,6 +56,8 @@ public static partial class SH
         return sb.ToString();
     }
 
+    
+
     /// <summary>
     /// Return index, therefore x-1
     /// </summary>
@@ -121,6 +123,11 @@ public static partial class SH
         return input;
     }
 
+    public static bool ContainsNewLine(string between)
+    {
+        return between.Contains(AllChars.nl) || between.Contains(AllChars.cr);
+    }
+
     public static bool ChangeEncodingProcessWrongCharacters(ref string c)
     {
         return ChangeEncodingProcessWrongCharacters(ref c, Encoding.GetEncoding("latin1"));
@@ -170,9 +177,19 @@ public static partial class SH
         return ReplaceWhiteSpaces(p).Trim();
     }
 
+    /// <summary>
+    /// By empty string
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static string ReplaceWhiteSpaces(string p)
     {
-        return ReplaceWhiteSpacesWithoutSpaces(p).Replace(AllStrings.space, "");
+        return ReplaceWhiteSpaces(p, "");
+    }
+
+    public static string ReplaceWhiteSpaces(string p, string v)
+    {
+        return SH.Replace( ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);
     }
 
     public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
@@ -658,7 +675,26 @@ public static partial class SH
 
     public static string ReplaceAllDoubleSpaceToSingle(string arg)
     {
-        return SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
+        while (arg.Contains(AllStrings.doubleSpace))
+        {
+            arg = SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
+        }
+
+        
+        return arg; 
+    }
+
+    /// <summary>
+    /// ReplaceAllDoubleSpaceToSingle not working correctly while copy from webpage
+    /// Split and join again
+    /// </summary>
+    /// <param name="arg"></param>
+    /// <returns></returns>
+    public static string ReplaceAllDoubleSpaceToSingle2(string arg)
+    {
+        var p = SH.SplitByWhiteSpaces(arg, true);
+
+        return SH.Join(p, " ");
     }
 
     /// <summary>

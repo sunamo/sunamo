@@ -143,7 +143,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                             SunamoSearchDataInt ssd = new SunamoSearchDataInt();
                             ssd.idEntity = asiEntityID;
                             ssd.tableChar = asiTableChar;
-                            //////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
+                            ////////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
                             ssd.Add(w);
                             f.Add(ssd);
                             //f.Add(ssd);
@@ -152,7 +152,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                         {
                             SunamoSearchDataInt ssd = f[dex];
                             ssd.Add(w);
-                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                            ////DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
                         }
                     }
                     //i++;
@@ -196,7 +196,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                         SunamoSearchDataInt ssd = new SunamoSearchDataInt();
                         ssd.idEntity = asiEntityID;
                         ssd.tableChar = asiTableChar;
-                        //////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
+                        ////////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
                         ssd.Add(w);
                         f.Add(ssd);
                         //f.Add(ssd);
@@ -205,7 +205,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                     {
                         SunamoSearchDataInt ssd = f[dex];
                         ssd.Add(w);
-                        //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                        ////DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
                     }
                 }
                 //i++;
@@ -248,7 +248,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                             SunamoSearchDataInt ssd = new SunamoSearchDataInt();
                             ssd.idEntity = asiEntityID;
                             ssd.tableChar = asiTableChar;
-                            //////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
+                            ////////DebugLogger.Instance.Write(asi.TableChar + asi.entityID);
                             ssd.Add(w);
                             f.Add(ssd);
                             //f.Add(ssd);
@@ -257,7 +257,7 @@ public abstract class SunamoSearchEngineTInt : SunamoSearchEngine
                         {
                             SunamoSearchDataInt ssd = f[dex];
                             ssd.Add(w);
-                            //DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
+                            ////DebugLogger.Instance.Write("Přidávám " + w.word + " k " + ssd.tableChar + " " + ssd.idEntity);
                         }
                     }
                     //i++;

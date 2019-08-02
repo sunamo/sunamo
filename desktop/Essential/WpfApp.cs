@@ -36,7 +36,7 @@ namespace desktop.Essential
 #if DEBUG
         public static void WriteDebug(string v)
         {
-            Debug.WriteLine(v);
+            //Debug.WriteLine(v);
         }
 #endif 
 

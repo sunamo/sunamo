@@ -82,7 +82,12 @@ static void SaveFile(string obsah, string soubor, bool pripsat)
                 }
                 catch (Exception ex)
                 {
-                    Thread.Sleep(500);
+                    // not for errors like path could not found etc.
+                    if (ex.Message.Contains("ccess"))
+                    {
+                        Thread.Sleep(500);
+                    }
+                    //
                 }
                 
             }

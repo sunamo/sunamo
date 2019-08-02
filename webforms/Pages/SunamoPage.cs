@@ -29,7 +29,7 @@ public class SunamoPage : System.Web.UI.Page
         }
     }
 
-    protected Dictionary<string, string> en
+    protected TranslateDictionary en
     {
         get
         {
@@ -39,6 +39,7 @@ public class SunamoPage : System.Web.UI.Page
 
     public new HttpRequest Request => HttpContext.Current.Request;
     public new HttpResponse Response => HttpContext.Current.Response;
+
     public new HtmlHead Header
     {
         get

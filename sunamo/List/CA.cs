@@ -35,7 +35,7 @@ public static partial  class CA
         }
 
         string vr = sb.ToString();
-        DebugLogger.Instance.WriteLine(vr);
+        //DebugLogger.Instance.WriteLine(vr);
         return vr;
     }
 

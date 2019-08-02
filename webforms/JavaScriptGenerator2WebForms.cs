@@ -41,7 +41,7 @@ namespace webforms
             return vr;
         }
 
-        internal static string JQueryAjaxForHandler(MySitesShort ms, int countUp, string nameOfFunction, string[] args)
+        public static string JQueryAjaxForHandler(MySitesShort ms, int countUp, string nameOfFunction, string[] args)
         {
             return @"function " + nameOfFunction + "(" + SH.Join(',', args) + @") {ajaxGet3(" + QSHelperWebForms.VratQSSimple(ms, countUp, nameOfFunction + "Handler.ashx", args) + ");return false;}";
         }

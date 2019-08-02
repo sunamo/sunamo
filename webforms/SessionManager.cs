@@ -130,7 +130,7 @@ public static class SessionManager
     /// <param name="fce"></param>
     public static void LoginUser(SunamoMasterPage page, string login, int userId, string sc)
     {
-        ////DebugLogger.Instance.Write("Přihlašuji uživatele " + login + " se sc " + sc);
+        //////DebugLogger.Instance.Write("Přihlašuji uživatele " + login + " se sc " + sc);
         SaveNewSessionIDToSession(userId, page.Session.SessionID, sc);
         //regenerateId();
         page.Session.Add("login", login);
@@ -147,7 +147,7 @@ public static class SessionManager
     /// <param name="sc"></param>
     public static void LoginUser(HttpContext page, string login, int userId, string sc)
     {
-        ////DebugLogger.Instance.Write("Přihlašuji uživatele dpo objektu HttpContext " + login + " se sc " + sc);
+        //////DebugLogger.Instance.Write("Přihlašuji uživatele dpo objektu HttpContext " + login + " se sc " + sc);
         SaveNewSessionIDToSession(userId, page.Session.SessionID, sc);
         //regenerateId();
         page.Session.Add("login", login);
@@ -161,7 +161,7 @@ public static class SessionManager
     /// </summary>
     public static void LogoutUser(SunamoMasterPage page)
     {
-        ////DebugLogger.Instance.Write("Odhlašuji uživatele " + page.Session["login"] + " se sc " + page.Session["sc"]);
+        //////DebugLogger.Instance.Write("Odhlašuji uživatele " + page.Session["login"] + " se sc " + page.Session["sc"]);
         page.Session.Remove("login");
         page.Session.Remove("userId");
         page.Session.Remove("sc");

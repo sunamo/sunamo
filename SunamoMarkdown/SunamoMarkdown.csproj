@@ -5,20 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\SystemWindowsControls.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\SystemWindowsControls.txt" />
+    <PackageReference Include="Html2Markdown" Version="3.2.1.341" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\shared\shared.csproj" />
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Templates\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -67,7 +67,7 @@ using System.Text;
         /// </summary>
         public void Dispose()
         {
-            ////Debug.WriteLine("WatcherEx.Dispose()");
+            //////Debug.WriteLine("WatcherEx.Dispose()");
             if (!this.disposed)
             {
                 DisposeWatchers();
@@ -84,7 +84,7 @@ using System.Text;
         /// </summary>
         public void DisposeWatchers()
         {
-            ////Debug.WriteLine("WatcherEx.DisposeWatchers()");
+            //////Debug.WriteLine("WatcherEx.DisposeWatchers()");
             for (int i = 0; i < this.watchers.Count; i++)
             {
                 this.watchers[i].Dispose();
@@ -140,7 +140,7 @@ using System.Text;
             CreateWatcher(true, NotifyFilters.Security);
             CreateWatcher(true, NotifyFilters.Size);
 
-            ////Debug.WriteLine(SH.Format2("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
+            //////Debug.WriteLine(SH.Format2("WatcherEx.Initialize() - {0} watchers created", this.watchers.Count));
         }
 
 
@@ -274,7 +274,7 @@ using System.Text;
         /// </summary>
         public void Stop()
         {
-            ////Debug.WriteLine("WatcherEx.Stop()");
+            //////Debug.WriteLine("WatcherEx.Stop()");
             this.watchers[0].StopFolderMonitor();
             for (int i = 0; i < this.watchers.Count; i++)
             {
@@ -293,7 +293,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedAttribute(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed Attribute");
+            //////Debug.WriteLine("EVENT - Changed Attribute");
             ChangedAttribute(this, e);
         }
 
@@ -306,7 +306,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedCreationTime(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed CreationTime");
+            //////Debug.WriteLine("EVENT - Changed CreationTime");
             ChangedCreationTime(this, e);
         }
 
@@ -319,7 +319,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedDirectoryName(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed DirectoryName");
+            //////Debug.WriteLine("EVENT - Changed DirectoryName");
             ChangedDirectoryName(this, e);
         }
 
@@ -332,7 +332,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedFileName(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed FileName");
+            //////Debug.WriteLine("EVENT - Changed FileName");
             ChangedFileName(this, e);
         }
 
@@ -345,7 +345,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedLastAccess(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed LastAccess");
+            //////Debug.WriteLine("EVENT - Changed LastAccess");
             ChangedLastAccess(this, e);
         }
 
@@ -358,7 +358,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedLastWrite(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed LastWrite");
+            //////Debug.WriteLine("EVENT - Changed LastWrite");
             ChangedLastWrite(this, e);
         }
 
@@ -371,7 +371,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedSecurity(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed Security");
+            //////Debug.WriteLine("EVENT - Changed Security");
             ChangedSecurity(this, e);
         }
 
@@ -384,7 +384,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_ChangedSize(object sender, FileSystemEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Changed Size");
+            //////Debug.WriteLine("EVENT - Changed Size");
             ChangedSize(this, e);
         }
 
@@ -396,7 +396,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_Disposed(object sender, EventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Disposed");
+            //////Debug.WriteLine("EVENT - Disposed");
             Disposed(this, e);
         }
 
@@ -409,7 +409,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_Error(object sender, ErrorEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Error");
+            //////Debug.WriteLine("EVENT - Error");
             Error(this, e);
         }
 
@@ -421,7 +421,7 @@ using System.Text;
         /// <param name="e"></param>
         private void watcher_Renamed(object sender, RenamedEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - Renamed");
+            //////Debug.WriteLine("EVENT - Renamed");
             Renamed(this, e);
         }
 
@@ -431,11 +431,11 @@ using System.Text;
             switch (e.ChangeType)
             {
                 case WatcherChangeTypes.Created:
-                    ////Debug.WriteLine("EVENT - Created");
+                    //////Debug.WriteLine("EVENT - Created");
                     Created(this, e);
                     break;
                 case WatcherChangeTypes.Deleted:
-                    ////Debug.WriteLine("EVENT - Changed Deleted");
+                    //////Debug.WriteLine("EVENT - Changed Deleted");
                     Deleted(this, e);
                     break;
             }
@@ -444,7 +444,7 @@ using System.Text;
         // -------------------------------------------------------------------------------
         void watcher_EventPathAvailability(object sender, PathAvailablitiyEventArgs e)
         {
-            ////Debug.WriteLine("EVENT - PathAvailability");
+            //////Debug.WriteLine("EVENT - PathAvailability");
             PathAvailability(this, e);
             if (e.PathIsAvailable)
             {

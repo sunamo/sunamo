@@ -12,12 +12,12 @@ public static partial class NH
 {
     static Type type = typeof(NH);
 
-    internal static int MinForLength(int length)
+    public static int MinForLength(int length)
     {
         return int.Parse( "1".PadRight(4, '0'));
     }
 
-    internal static int MaxForLength(int length)
+    public static int MaxForLength(int length)
     {
         return int.Parse("9".PadRight(4, '9'));
     }

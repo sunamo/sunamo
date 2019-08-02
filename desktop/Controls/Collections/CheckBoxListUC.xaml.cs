@@ -210,7 +210,7 @@ namespace desktop.Controls.Collections
             }
         }
 
-        internal List<string> AllContent()
+        public List<string> AllContent()
         {
             return CheckBoxListHelper.AllContent(l.l);
         }
@@ -259,7 +259,7 @@ namespace desktop.Controls.Collections
 
                 lb.UpdateLayout();
 
-                //DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
+                ////DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
 
                 ThisApp.SetStatus(TypeOfMessage.Appeal, SH.Join(" , ", h, lb.ActualHeight.ToString(), lb.Height));
             }

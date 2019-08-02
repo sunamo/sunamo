@@ -277,7 +277,7 @@ public static partial class SH
         for (int Index = 0; Index < (vcem.Length - co.Length) + 1; Index++)
         {
             var subs = vcem.Substring(Index, co.Length);
-            //DebugLogger.Instance.WriteLine(subs);
+            ////DebugLogger.Instance.WriteLine(subs);
             // non-breaking space. &nbsp; code 160
             // 32 space
             char ch = subs[0];
@@ -1530,9 +1530,10 @@ public static string TrimNewLineAndTab(string lyricsFirstOriginal)
         return lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
     }
 
-public static List<string> SplitByWhiteSpaces(string s)
+public static List<string> SplitByWhiteSpaces(string s, bool removeEmpty = false)
     {
-        return s.Split(AllChars.whiteSpacesChars.ToArray()).ToList();
+        var r = s.Split(AllChars.whiteSpacesChars.ToArray(), removeEmpty ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None).ToList();
+        return r;
     }
 
 public static bool TrimIfStartsWith(ref string s, string p)

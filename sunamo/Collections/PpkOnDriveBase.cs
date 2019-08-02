@@ -28,12 +28,20 @@ public abstract class PpkOnDriveBase<T> : List<T>
 
     public void AddWithoutSave(T t)
     {
-        base.Add(t);
+        if (!base.Contains(t))
+        {
+            base.Add(t);
+        }
+        
     }
 
     public new void Add(T prvek)
     {
-        base.Add(prvek);
+        if (!base.Contains(prvek))
+        {
+            base.Add(prvek);
+        }
+        
         if (ukladat)
         {
             Save();
@@ -45,10 +53,10 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// <summary>
     /// Pokud A1, nacte ze souboru, takze pri ulozeni bude pripsan novy obsah.
     /// </summary>
-    /// <param name="nacistZeSouboru"></param>
-    public PpkOnDriveBase(bool nacistZeSouboru)
+    /// <param name="load"></param>
+    public PpkOnDriveBase(bool load)
     {
-        if (nacistZeSouboru)
+        if (load)
         {
             Load();
         }
@@ -66,11 +74,11 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// Zavede do ppk s ruznym obsahem dle souboru.
     /// </summary>
     /// <param name="soubor"></param>
-    /// <param name="nacist"></param>
-    public PpkOnDriveBase(string soubor2, bool nacist)
+    /// <param name="load"></param>
+    public PpkOnDriveBase(string file2, bool load = true)
     {
-        soubor = soubor2;
-        if (nacist)
+        soubor = file2;
+        if (load)
         {
             Load();
         }
@@ -80,22 +88,22 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// Zavede do ppk s ruznym obsahem dle souboru.
     /// </summary>
     /// <param name="soubor"></param>
-    /// <param name="nacist"></param>
-    public PpkOnDriveBase(string soubor2, bool nacist, bool ukladat)
+    /// <param name="load"></param>
+    public PpkOnDriveBase(string file, bool load, bool save)
     {
-        if (!FS.ExistsFile(soubor2))
+        if (!FS.ExistsFile(file))
         {
-            File.WriteAllText(soubor2, "");
+            File.WriteAllText(file, "");
         }
-        this.ukladat = ukladat;
-        soubor = soubor2;
-        Load(nacist);
+        this.ukladat = save;
+        soubor = file;
+        Load(load);
     }
 
-    public PpkOnDriveBase(bool otevrit, bool nacist)
+    public PpkOnDriveBase(bool open, bool load)
     {
-        this.otevrit = otevrit;
-        Load(nacist);
+        this.otevrit = open;
+        Load(load);
     }
     #endregion
 
