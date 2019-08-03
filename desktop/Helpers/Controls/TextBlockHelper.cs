@@ -1,4 +1,5 @@
 ﻿
+using desktop;
 using desktop.Essential;
 using desktop.Helpers;
 using System;
@@ -11,8 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace desktop
-{
+
     /// <summary>
     /// TBH je pro TextBox, TBH2 pro TextBlock
     /// </summary>
@@ -22,6 +22,20 @@ namespace desktop
         {
             status = SH.PostfixIfNotEmpty(status, AllStrings.colon);
             SetText(lblStatusDownload, status);
+        }
+
+        /// <summary>
+        /// A1 can be TextBlock or any object
+        /// </summary>
+        /// <param name="tb"></param>
+        public static string TextOrToString(object tb)
+        {
+            if (tb is TextBlock)
+            {
+                var tb2 = (TextBlock)tb;
+                return tb2.Text;
+            }
+            return tb.ToString();
         }
 
         public static void SetText(TextBlock lblStatusDownload, string status)
@@ -293,4 +307,3 @@ namespace desktop
             DivideStringToRows(fa, text, maxSize);
         }
     }
-}

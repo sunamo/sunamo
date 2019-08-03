@@ -103,7 +103,7 @@ public class TranslateAbleHelper
         var lower = between.ToLower();
         var lowerT = lower.Trim();
 
-        if (SunamoTranslateConsts.notTranslateAbleLines.Contains(between))
+        if (SunamoTranslateConsts.stringsNotToTranslate.Contains(between))
         {
             result = false; return result;
         }

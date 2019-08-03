@@ -21,6 +21,7 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class SelectMoreFolders : UserControl
     {
+        public static Type type = typeof(SelectMoreFolders);
         public event VoidVoid SaveSetAsTemplate;
         /// <summary>
         /// Only adding folder with empty path
@@ -104,7 +105,7 @@ namespace desktop.Controls.Input
             }
         }
 
-        public static void Validate(TextBlock tb, SelectMoreFolders control)
+        public static void Validate(object tb, SelectMoreFolders control)
         {
             foreach (SelectFolder item in control.spFolders.Children)
             {
@@ -112,7 +113,7 @@ namespace desktop.Controls.Input
             }
         }
 
-        public void Validate(TextBlock tbFolder)
+        public void Validate(object tbFolder)
         {
             Validate(tbFolder, this);
         }

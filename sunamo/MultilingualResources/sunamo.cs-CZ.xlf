@@ -7717,6 +7717,294 @@
           <source></source>
           <target state="translated">Taková stopa nebyla u nás nalezena.</target>
         </trans-unit>
+        <trans-unit id="YouDidNotSpecifyThatYouWantFromTheBeginningButDidNotFillInTheDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste že chcete od počátku, ale ani jste nevyplnili datum</target>
+        </trans-unit>
+        <trans-unit id="YouDidNotSpecifyThatYouWantToEndButDidNotFillInTheDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste že chcete do konce, ale ani jste nevyplnili datum</target>
+        </trans-unit>
+        <trans-unit id="TheFileYouSelectedHasNoExtensionAndCannotBeAcceptedByTheSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vybraný soubor neměl žádnou příponu a web jej nemůže akceptovat</target>
+        </trans-unit>
+        <trans-unit id="TheFileDidNotHaveAGpxExtensionTheCaseIsNotImportant" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Soubor neměl příponu gpx. Na velikosti písmen nesejde.</target>
+        </trans-unit>
+        <trans-unit id="TheFileNameWithoutExtensionHadMoreThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název souboru bez přípony měl více než 50 znaků</target>
+        </trans-unit>
+        <trans-unit id="TheUploadedGPXFileHadNoStepsDidYouEnterWrongTimesFromTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nahraný GPX soubor neměl žádné kroky, nezadali jste špatně časy od-do?</target>
+        </trans-unit>
+        <trans-unit id="TheUploadedGPXContainedTracksThatInTotalWereLongerThanH" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nahraný GPX obsahoval stopy které v součtu byly delší než 24h</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAlreadyUploadedAFileWithTheSameName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Soubor se stejným jménem jste již uploadovali</target>
+        </trans-unit>
+        <trans-unit id="ThisGPXFileCannotBeUploadedBecauseItWasTamperedWith" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento GPX soubor nemůže být nauploadován, protože do něj bylo nesprávně zasahováno.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotSpecifiedAGpxFileToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste soubor gpx který se má nahrát</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotEnteredAValidIDAttributeTheProfileCannotBeFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste platný atribut ID, profil nelze nalézt</target>
+        </trans-unit>
+        <trans-unit id="TheUserWithTheSpecifiedIDWasNotFoundInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel se zadaným ID nebyl v DB nalezen</target>
+        </trans-unit>
+        <trans-unit id="TheRequestedAlbumWasNotFoundHereTheUserRenamedOrDeletedItIfItEverExisted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požadované album nebylo u nás nalezeno, uživatel ho přejmenoval nebo smazal, pokud někdy existovalo.</target>
+        </trans-unit>
+        <trans-unit id="AlbumPrivateAccessCodeIncorrect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album je soukromé, přístupový kód nebyl správný.</target>
+        </trans-unit>
+        <trans-unit id="ThisAlbumIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Toto album je soukromé a v adrese URI nebyl nalezen platný parametr AlbumKey</target>
+        </trans-unit>
+        <trans-unit id="ThisAlbumIsPublicOnlyYouCanSeeThisMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Toto album je veřejné. Tato zpráva se zobrazuje pouze vám. </target>
+        </trans-unit>
+        <trans-unit id="OnlyPhotosUploadedOnAreShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazují se pouze fotky nahrané dne </target>
+        </trans-unit>
+        <trans-unit id="PhotosInAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet fotek v albu: </target>
+        </trans-unit>
+        <trans-unit id="TheRequestedAlbumWasNotFoundHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požadované album nebylo u nás nalezeno</target>
+        </trans-unit>
+        <trans-unit id="FailedToParseAlbumIDFromFirstPartOfAlbumParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nepodařilo se vyparsovat z první části parametru Album ID alba.</target>
+        </trans-unit>
+        <trans-unit id="ThereWasNoUnderscoreInTheAlbumNameParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V parametru názvu Album nebylo podtržítko.</target>
+        </trans-unit>
+        <trans-unit id="By" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> od uživatele </target>
+        </trans-unit>
+        <trans-unit id="NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádné alba nebyly za poslední týden prohlíženy(přístupy za dnešní den se projeví až zítra).</target>
+        </trans-unit>
+        <trans-unit id="GalleryIsPrivateAccessCodeWasIncorrect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Galerie je soukromá, přístupový kód nebyl správný.</target>
+        </trans-unit>
+        <trans-unit id="ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tato galerie je soukromá a v adrese URI nebyl nalezen platný parametr AlbumKey</target>
+        </trans-unit>
+        <trans-unit id="ThisGalleryIsPublicOnlyYouCanSeeThisMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tato galerie je veřejná. Tato zpráva se zobrazuje pouze vám. </target>
+        </trans-unit>
+        <trans-unit id="AlbumsAreSortedByFirstUploadDateInDescendingOrder" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Alba jsou seřazeny podle data prvního nahrání sestupně. </target>
+        </trans-unit>
+        <trans-unit id="ImageWithIDReceivedInUriNotFoundInDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Obrázek s ID přijatým v adrese uri nebyl nalezen v databázi.</target>
+        </trans-unit>
+        <trans-unit id="AnErrorHasOccured" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyskytla se chyba</target>
+        </trans-unit>
+        <trans-unit id="TextSearch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyhledávání textu </target>
+        </trans-unit>
+        <trans-unit id="AlbumName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název albumu</target>
+        </trans-unit>
+        <trans-unit id="AlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popis albumu</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotSearchingInAllUsersAndTheSearchedUserWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nehledáte ve všech uživatelech a hledaný uživatel nebyl nalezen</target>
+        </trans-unit>
+        <trans-unit id="RangeWasNotInValidRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Argument Range nebyl v platném rozsahu</target>
+        </trans-unit>
+        <trans-unit id="UserPhotoStats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Statistiky focení uživatele </target>
+        </trans-unit>
+        <trans-unit id="HasnTUploadedAnyPhotosYet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel dosud žádné fotky nenauploadoval.</target>
+        </trans-unit>
+        <trans-unit id="SuchUserWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Takový uživatel nebyl nalezen.</target>
+        </trans-unit>
+        <trans-unit id="ThisURIWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tato URI nebyla ve správném formátu: </target>
+        </trans-unit>
+        <trans-unit id="NotASingleReferenceWasShortenedBecause" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyl zkrácen jediný odkaz, protože </target>
+        </trans-unit>
+        <trans-unit id="LinesLongerThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> řádků bylo delších než 512 znaků, </target>
+        </trans-unit>
+        <trans-unit id="RowsWereNotEvaluatedAsValidURIsAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> řádků nebylo vyhodnoceno jako platná URI a </target>
+        </trans-unit>
+        <trans-unit id="AddressesDidNotHaveAValidProtocol" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> adres nemělo platný protokol</target>
+        </trans-unit>
+        <trans-unit id="AllLinksWereTruncatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny odkazy byly zkráceny úspěšně</target>
+        </trans-unit>
+        <trans-unit id="LinksHaveBeenTruncatedSuccessfullyBut" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> odkazů se podařilo zkrátit úspěšně, ale </target>
+        </trans-unit>
+        <trans-unit id="BecauseItWasLongerThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> protože bylo delší než 512 znaků, </target>
+        </trans-unit>
+        <trans-unit id="WasNotInURIAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> nebylo ve formátu odkazu URI a </target>
+        </trans-unit>
+        <trans-unit id="Active" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktivní</target>
+        </trans-unit>
+        <trans-unit id="LongURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dlouhá URI</target>
+        </trans-unit>
+        <trans-unit id="ShortURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Krátká URI</target>
+        </trans-unit>
+        <trans-unit id="Created" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořeno</target>
+        </trans-unit>
+        <trans-unit id="TotalClicks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkový počet kliknutí</target>
+        </trans-unit>
+        <trans-unit id="NotInserted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyl vložen</target>
+        </trans-unit>
+        <trans-unit id="YouCannotViewStatisticsForALinkThatDoesNotBelongToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nemůžete si prohlížet statistiky odkazu, který nepatří vám</target>
+        </trans-unit>
+        <trans-unit id="UnfortunatelyAShortURIWithSuchACodeWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bohužel krátká URI s takovýmto kódem nebyl nalezen</target>
+        </trans-unit>
+        <trans-unit id="ProbablySpuriousCookiesLogOutAndLogInAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zřejmě podvrhnutá cookies. Odhlašte a přihlašte se znovu</target>
+        </trans-unit>
+        <trans-unit id="ThePageDidNotHaveAValidLogAtTheBeginning" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stránka neměla na začátku platný protokol</target>
+        </trans-unit>
+        <trans-unit id="TheCommentWasTooLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Komentář byl příliš dlouhý</target>
+        </trans-unit>
+        <trans-unit id="CustomCodeWasTooLongUpToCharactersLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vlastní kód byl příliš dlouhý, smí být maximálně 20 znaků dlouhý</target>
+        </trans-unit>
+        <trans-unit id="VisitsForTheLastYears" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Návštěvy za posledních 7 roků</target>
+        </trans-unit>
+        <trans-unit id="VisitsForTheLastMonths" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Návštěvy za posledních 7 měsíců</target>
+        </trans-unit>
+        <trans-unit id="VisitsInTheLastWeeks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Návštěvy za posledních 7 týdnů</target>
+        </trans-unit>
+        <trans-unit id="LanguageOfUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jazyk uživatelů</target>
+        </trans-unit>
+        <trans-unit id="UserBrowser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prohlížeč uživatelů</target>
+        </trans-unit>
+        <trans-unit id="PreviousPages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Předchozí stránky</target>
+        </trans-unit>
+        <trans-unit id="OSUserPlatform" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">OS&amp;Platforma uživatelů</target>
+        </trans-unit>
+        <trans-unit id="UserBrowserInclVersions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prohlížeč uživatelů vč. verzí</target>
+        </trans-unit>
+        <trans-unit id="Language" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jazyk</target>
+        </trans-unit>
+        <trans-unit id="Browser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prohlížeč</target>
+        </trans-unit>
+        <trans-unit id="Allowed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Povolen?</target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfClicks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet prokliků</target>
+        </trans-unit>
+        <trans-unit id="TheRequestedControlWasNotFoundOnTheServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požadovaný Control nebyl na serveru nalezen</target>
+        </trans-unit>
+        <trans-unit id="IncompleteUriAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neúplná adresa Uri.</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+/// <summary>
+/// Trans-units in *.xlf file and others
+/// </summary>
 public class XlfData
 {
     public XElement group = null;

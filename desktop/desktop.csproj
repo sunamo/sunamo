@@ -205,6 +205,10 @@
     <Compile Include="Data\TextBlockData.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
+    <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\FrameworkElementExtensions.cs" />
+    <Compile Include="Extensions\ListBoxExtensions.cs" />
+    <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
@@ -235,6 +239,7 @@
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
     <Compile Include="Helpers\BaseControls\ControlHelper.cs" />
+    <Compile Include="Helpers\Controls\ListViewHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\DataGridHelper.cs" />
@@ -261,7 +266,7 @@
     <Compile Include="Helpers\Content\Resources\ImageSourceHelper.cs" />
     <Compile Include="Helpers\SecureStringHelper.cs" />
     <Compile Include="Helpers\SizeH.cs" />
-    <Compile Include="Helpers\Controls\TBH.cs" />
+    <Compile Include="Helpers\Controls\TextBlockHelper.cs" />
     <Compile Include="Helpers\StaticControls\TextBlockDataHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperBase.cs" />
     <Compile Include="Helpers\Controls\TextBoxHelper.cs" />
@@ -306,6 +311,7 @@
     </Compile>
     <Compile Include="ValueConverters\CornerRadiusValueConverter.cs" />
     <Compile Include="ValueConverters\ScalarValueConverter.cs" />
+    <Compile Include="Values\TypesControls.cs" />
     <Compile Include="Values\TypesDesktop.cs" />
     <Compile Include="VisualTreeHelpers.cs" />
     <Compile Include="WindowsSettings\WindowsDisplaySettings.cs" />

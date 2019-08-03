@@ -25,6 +25,7 @@ namespace desktop.Controls
     /// </summary>
     public partial class SelectFolder : UserControl
     {
+        public static Type type = typeof(SelectFolder);
         public static bool validated;
 
         //public event VoidString FolderSelected;
@@ -51,7 +52,7 @@ namespace desktop.Controls
             await AwesomeFontControls.SetAwesomeFontSymbol(btnRemoveFolder, "\uf00d");
         }
 
-        public void Validate(TextBlock tbFolder)
+        public void Validate(object tbFolder)
         {
             SelectFolder.Validate(tbFolder, this);
         }
@@ -64,7 +65,7 @@ namespace desktop.Controls
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(TextBlock tb, SelectFolder control)
+        public static void Validate(object tb, SelectFolder control)
         {
             if (!validated)
             {
@@ -76,7 +77,7 @@ namespace desktop.Controls
             
             if (text == string.Empty)
             {
-                InitApp.TemplateLogger.MustHaveValue(tb.Text);
+                InitApp.TemplateLogger.MustHaveValue(TextBlockHelper.TextOrToString( tb));
                 validated = false;
             }
             else if (!FS.ExistsDirectory(text))

@@ -22,6 +22,8 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class SelectManyFiles : UserControl
     {
+        public static Type type = typeof(SelectManyFiles);
+
         public SelectManyFiles()
         {
             InitializeComponent();
@@ -104,7 +106,7 @@ namespace desktop.Controls.Input
             }
         }
 
-        public static void Validate(TextBlock tb, SelectManyFiles control)
+        public static void Validate(object tb, SelectManyFiles control)
         {
             foreach (SelectFile item in control.spFiles.Children)
             {
@@ -112,7 +114,7 @@ namespace desktop.Controls.Input
             }
         }
 
-        public void Validate(TextBlock tbFile)
+        public void Validate(object tbFile)
         {
             Validate(tbFile, this);
         }

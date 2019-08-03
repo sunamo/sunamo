@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using desktop.Helpers;
 
 namespace desktop.Controls.Input
 {
@@ -21,10 +22,39 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult
     {
+        static Type type = typeof(EnterOneValueUC);
+
+        #region ctor
+        /// <summary>
+        /// Has button so dialogButtons is not needed to add
+        /// </summary>
         public EnterOneValueUC()
         {
             InitializeComponent();
         }
+
+        public EnterOneValueUC(string whatEnter, Size size) : this()
+        {
+            Init(whatEnter);
+
+            if (size != Size.Empty)
+            {
+                txtEnteredText.Width = size.Width;
+                txtEnteredText.Height = size.Height;
+            }
+        }
+
+        /// <summary>
+        /// BY default use args-less ctor and then Init
+        /// </summary>
+        /// <param name="whatEnter"></param>
+        public EnterOneValueUC(string whatEnter) : this()
+        {
+            Init(whatEnter);
+
+            Loaded += EnterOneValueUC_Loaded;
+        } 
+        #endregion
 
         public bool IsMultiline
         {
@@ -43,20 +73,15 @@ namespace desktop.Controls.Input
             }
         }
 
-        public EnterOneValueUC(string whatEnter) : this()
+        public void EnterOneValueUC_Loaded(object sender, RoutedEventArgs e)
         {
-            Init(whatEnter);
+            PrintColumnsRows(gridGrowable);
+            PrintColumnsRows(grid2);
         }
 
-        public EnterOneValueUC(string whatEnter, Size size) : this()
+        private void PrintColumnsRows(Grid grid2)
         {
-            
-            Init(whatEnter);
-            if (size != Size.Empty)
-            {
-                txtEnteredText.Width = size.Width;
-                txtEnteredText.Height = size.Height;
-            }
+            DebugLogger.Instance.WriteLine(grid2.ColumnDefinitions.Count + "x" + grid2.RowDefinitions.Count);
         }
 
         public void Init(string whatEnter)
@@ -64,11 +89,73 @@ namespace desktop.Controls.Input
             tbWhatEnter.Text = RLData.en["Enter"] + " " + whatEnter + " " + "and press enter" + ".";
         }
 
+        /// <summary>
+        /// Title is take from Tag, which can be TWithName
+        /// Tag can be TWithName<object>
+        /// </summary>
+        /// <param name="uie"></param>
+        public void Init(IEnumerable<FrameworkElement> uie)
+        {
+            fwElemements = CA.ToList<FrameworkElement>(uie);
+
+            GridHelper.GetAutoSize(gridGrowable, 2, uie.Count());
+
+            int i = 0;
+
+            foreach (var item in uie)
+            {
+                string name = null;
+                name = ExtractName(item);
+
+                AddControl(i, name, item);
+
+                i++;
+            }
+        }
+
+        private static string ExtractName(FrameworkElement item)
+        {
+            string name;
+            if (item.Tag is TWithName<object>)
+            {
+                var t = (TWithName<object>)item.Tag;
+                name = t.name;
+            }
+            else
+            {
+                name = item.Tag.ToString();
+            }
+
+            return name;
+        }
+
+        List<FrameworkElement> fwElemements = null;
+
+        void AddControl(int i, string name, FrameworkElement ui)
+        {
+            Thickness uit = new Thickness(10,5,10,5);
+            
+            Grid.SetRow(ui, i);
+            Grid.SetColumn(ui, 1);
+            ui.HorizontalAlignment = HorizontalAlignment.Left;
+            ui.Margin = uit;
+            gridGrowable.Children.Add(ui);
+
+            var tb = TextBlockHelper.Get(name);
+            tb.HorizontalAlignment = HorizontalAlignment.Right;
+            tb.Margin = uit;
+            Grid.SetRow(tb, i);
+            Grid.SetColumn(tb, 0);
+            gridGrowable.Children.Add(tb);
+
+
+        }
+
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
         {
             ButtonBase bb;
             
-            if (AfterEnteredValue(txtEnteredText))
+            if (AfterEnteredValue(fwElemements))
             {
                 DialogResult = true;
             }
@@ -83,25 +170,67 @@ namespace desktop.Controls.Input
                     ChangeDialogResult(value);
                 }
             }
-        }
+        }//
 
-        private bool AfterEnteredValue(TextBox txtEnteredText)
+        
+
+        private bool AfterEnteredValue(List<FrameworkElement> txtEnteredText)
         {
-            txtEnteredText.Text = txtEnteredText.Text.Trim();
-            if (txtEnteredText.Text != "")
+            string methodName = "AfterEnteredValue";
+            bool? previousValidate = true;
+
+            bool allOk = true;
+
+            foreach (var item in txtEnteredText)
+            {
+                // Always set to true
+                item.SetValidated(previousValidate.Value);
+
+                previousValidate = item.Validate2(ExtractName(item));
+
+                if (previousValidate.HasValue)
+                {
+                    if (!previousValidate.Value)
+                    {
+                        if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), TypesControls.tControl))
+                        {
+                            var c = (Control)item;
+                            c.BorderThickness = new Thickness(2);
+                            c.BorderBrush = new SolidColorBrush(Colors.Red);
+                            allOk = false;
+                        }
+                    }
+                }
+                else
+                {
+                    allOk = false;
+                    ThrowExceptions.Custom(type, methodName, "Not implemented Validate for control " + item.GetType().FullName);
+                }
+            }
+            //txtEnteredText.Text = txtEnteredText.Text.Trim();
+            //if (txtEnteredText.Text != "")
+            //{
+            //    return true;
+            //}
+
+            if (allOk)
             {
                 return true;
             }
-            txtEnteredText.BorderThickness = new Thickness(2);
-            txtEnteredText.BorderBrush = new SolidColorBrush(Colors.Red);
+
             return false;
+        }
+
+        private void SetValidatetToRight(FrameworkElement item, bool? previousValidate)
+        {
+            
         }
 
         private void txtEnteredText_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                if (AfterEnteredValue(txtEnteredText))
+                if (AfterEnteredValue(fwElemements))
                 {
                     DialogResult = true;
                 }
@@ -116,7 +245,6 @@ namespace desktop.Controls.Input
             //DialogResult = true;
         }
 
-        
         public event VoidBoolNullable ChangeDialogResult;
     }
 }

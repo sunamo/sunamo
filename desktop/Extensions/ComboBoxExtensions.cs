@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace System.Windows.Controls
 {
-    public static class TextBoxExtensions
+    public static class ComboBoxExtensions
     {
         public static bool validated;
 
@@ -18,7 +18,7 @@ namespace System.Windows.Controls
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(this TextBox control, object tb, bool trim = true)
+        public static void Validate(this ComboBox control, object tb, bool trim = true)
         {
             if (!validated)
             {
@@ -31,7 +31,7 @@ namespace System.Windows.Controls
             }
             if (text == string.Empty)
             {
-                InitApp.TemplateLogger.MustHaveValue(TextBlockHelper.TextOrToString( tb));
+                InitApp.TemplateLogger.MustHaveValue(TextBlockHelper.TextOrToString(tb));
                 validated = false;
             }
             else

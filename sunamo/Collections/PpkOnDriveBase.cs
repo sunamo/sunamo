@@ -39,7 +39,14 @@ public abstract class PpkOnDriveBase<T> : List<T>
     {
         if (!base.Contains(prvek))
         {
-            base.Add(prvek);
+            if (prvek.ToString().Trim() != string.Empty)
+            {
+                base.Add(prvek);
+            }
+            else
+            {
+                return;
+            }
         }
         
         if (ukladat)
@@ -118,8 +125,6 @@ public abstract class PpkOnDriveBase<T> : List<T>
             Load();
         }
     }
-
-
 
     /// <summary>
     /// Ulozi oubor do std. nazvu souboru aplikace.

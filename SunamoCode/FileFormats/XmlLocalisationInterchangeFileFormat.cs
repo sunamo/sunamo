@@ -9,6 +9,9 @@ using System.Xml.Linq;
 
 namespace SunamoCode
 {
+    /// <summary>
+    /// General methods for working with XML
+    /// </summary>
     public class XmlLocalisationInterchangeFileFormat
     {
         public static Langs GetLangFromFilename(string s)
@@ -23,11 +26,8 @@ namespace SunamoCode
             return Langs.en;
         }
 
-
-
         /// <summary>
-        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename(
-        /// A2 je xml s nepreparovaným obsahem
+        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
         /// </summary>
         /// <param name="enS"></param>
         /// <returns></returns>
@@ -48,8 +48,7 @@ namespace SunamoCode
         }
 
         /// <summary>
-        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename(
-        /// A2 can be null
+        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
         /// </summary>
         /// <param name="fn"></param>
         /// <param name="xd"></param>
@@ -77,7 +76,6 @@ namespace SunamoCode
             return d;
         }
 
-
         private static void TrimValueIfNot(XElement source)
         {
             string sourceValue = source.Value;
@@ -91,7 +89,7 @@ namespace SunamoCode
         }
 
         /// <summary>
-        /// originalSource(always english - same in all),translated,pascal
+        /// 
         /// </summary>
         /// <param name="toL"></param>
         /// <param name="originalSource"></param>
@@ -102,7 +100,6 @@ namespace SunamoCode
         {
             var d = GetTransUnits(toL, fn);
 
-           
             var exists = XHelper.GetElementOfNameWithAttr(d. group, TransUnit.tTransUnit, "id", pascal);
 
             if (exists != null)
@@ -117,15 +114,10 @@ namespace SunamoCode
             tu.target = translated;
 
             var xml = tu.ToString();
-            //var before = group.Value;
-
-            //xd.CreateWriter();
             XElement xe = XElement.Parse(xml);
             xe = XHelper.MakeAllElementsWithDefaultNs(xe);
 
             d.group.Add(xe);
-            //var after = group.Value;
-
             d.xd.Save(fn);
 
             XHelper.FormatXml(fn);

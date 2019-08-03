@@ -66,10 +66,10 @@ using System.Text;
         /// Print name of calling method, not GetCurrentMethod
         /// </summary>
         /// <returns></returns>
-        public static string CallingMethod()
+        public static string CallingMethod(int v = 1)
         {
             StackTrace stackTrace = new StackTrace();
-            MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
+            MethodBase methodBase = stackTrace.GetFrame(v).GetMethod();
             return methodBase.Name;
         }
 

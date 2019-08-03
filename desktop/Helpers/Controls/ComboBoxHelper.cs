@@ -14,6 +14,17 @@ public class ComboBoxHelper
     protected ComboBox cb = null;
     public event SelectionChangedEventHandler SelectionChanged;
 
+    public static ComboBox Get(object tag, IEnumerable list12)
+    {
+        ComboBox cb = new ComboBox();
+        foreach (var item in list12)
+        {
+            cb.Items.Add(item);
+        }
+        cb.Tag = tag;
+        return cb;
+    }
+
     public ComboBox Cb
     {
         get

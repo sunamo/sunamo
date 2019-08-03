@@ -106,6 +106,7 @@ namespace sunamo.Generators
         /// <returns></returns>
         public static List<string> PrepareFilesToSimpleGitFormat(TypedLoggerBase tlb, string solution, List<string> linesFiles, out bool anyError, string searchOnlyWithExtension)
         {
+            searchOnlyWithExtension = searchOnlyWithExtension.TrimStart(AllChars.asterisk);
             anyError = false;
             // removing notes and description
             //TypedLoggerBase tlb = TypedConsoleLogger.Instance;
@@ -175,9 +176,12 @@ namespace sunamo.Generators
                 else if (item[0] == AllChars.asterisk)
                 {
                     string file = item.Substring(1);
-                    foreach (var item2 in dictPsychicallyExistsFiles[file])
+                    if (dictPsychicallyExistsFiles.ContainsKey(file))
                     {
-                        filesToCommit.Add(FS.Slash(item2.Replace(pathRepository, string.Empty), true));
+                        foreach (var item2 in dictPsychicallyExistsFiles[file])
+                        {
+                            filesToCommit.Add(FS.Slash(item2.Replace(pathRepository, string.Empty), true));
+                        }
                     }
                 }
                 #endregion

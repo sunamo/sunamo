@@ -26,6 +26,13 @@ namespace desktop
             }
         }
 
+        public static TextBox Get(object tag = null)
+        {
+            TextBox txt = new TextBox();
+            txt.Tag = tag;
+            return txt;
+        }
+
         static TextBoxHelper()
         {
             TextBoxHelper.InicializeWidths();
@@ -166,7 +173,7 @@ namespace desktop
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(TextBlock tb, TextBox control, bool trim = true)
+        public static void Validate(object tb, TextBox control, bool trim = true)
         {
             control.Validate(tb, trim);
         }

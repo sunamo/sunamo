@@ -5,6 +5,188 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string ScriptsModernizr = "ScriptsModernizr" ; 
+
+	public const string Dart = "Dart" ; 
+
+	public const string Shortener = "Shortener" ; 
+
+	public const string Slider = "Slider" ; 
+
+	public const string Rectangle = "Rectangle" ; 
+
+	public const string Popup = "Popup" ; 
+
+	public const string Image = "Image" ; 
+
+	public const string Grid = "Grid" ; 
+
+	public const string Frame = "Frame" ; 
+
+	public const string Ellipse = "Ellipse" ; 
+
+	public const string Canvas = "Canvas" ; 
+
+	public const string Button = "Button" ; 
+
+	public const string IncompleteUriAddress = "IncompleteUriAddress" ; 
+
+	public const string TheRequestedControlWasNotFoundOnTheServer = "TheRequestedControlWasNotFoundOnTheServer" ; 
+
+	public const string Control = "Control" ; 
+
+	public const string TheNumberOfClicks = "TheNumberOfClicks" ; 
+
+	public const string Allowed = "Allowed" ; 
+
+	public const string Browser = "Browser" ; 
+
+	public const string Language = "Language" ; 
+
+	public const string UserBrowserInclVersions = "UserBrowserInclVersions" ; 
+
+	public const string OSUserPlatform = "OSUserPlatform" ; 
+
+	public const string PreviousPages = "PreviousPages" ; 
+
+	public const string UserBrowser = "UserBrowser" ; 
+
+	public const string LanguageOfUsers = "LanguageOfUsers" ; 
+
+	public const string VisitsInTheLastWeeks = "VisitsInTheLastWeeks" ; 
+
+	public const string VisitsForTheLastMonths = "VisitsForTheLastMonths" ; 
+
+	public const string VisitsForTheLastYears = "VisitsForTheLastYears" ; 
+
+	public const string Unknown = "Unknown" ; 
+
+	public const string Empty = "Empty" ; 
+
+	public const string IDGo = "IDGo" ; 
+
+	public const string CustomCodeWasTooLongUpToCharactersLong = "CustomCodeWasTooLongUpToCharactersLong" ; 
+
+	public const string TheCommentWasTooLong = "TheCommentWasTooLong" ; 
+
+	public const string ThePageDidNotHaveAValidLogAtTheBeginning = "ThePageDidNotHaveAValidLogAtTheBeginning" ; 
+
+	public const string ProbablySpuriousCookiesLogOutAndLogInAgain = "ProbablySpuriousCookiesLogOutAndLogInAgain" ; 
+
+	public const string UnfortunatelyAShortURIWithSuchACodeWasNotFound = "UnfortunatelyAShortURIWithSuchACodeWasNotFound" ; 
+
+	public const string YouCannotViewStatisticsForALinkThatDoesNotBelongToYou = "YouCannotViewStatisticsForALinkThatDoesNotBelongToYou" ; 
+
+	public const string NotInserted = "NotInserted" ; 
+
+	public const string TotalClicks = "TotalClicks" ; 
+
+	public const string Created = "Created" ; 
+
+	public const string ShortURI = "ShortURI" ; 
+
+	public const string LongURI = "LongURI" ; 
+
+	public const string Active = "Active" ; 
+
+	public const string WasNotInURIAnd = "WasNotInURIAnd" ; 
+
+	public const string BecauseItWasLongerThanCharacters = "BecauseItWasLongerThanCharacters" ; 
+
+	public const string LinksHaveBeenTruncatedSuccessfullyBut = "LinksHaveBeenTruncatedSuccessfullyBut" ; 
+
+	public const string AllLinksWereTruncatedSuccessfully = "AllLinksWereTruncatedSuccessfully" ; 
+
+	public const string AddressesDidNotHaveAValidProtocol = "AddressesDidNotHaveAValidProtocol" ; 
+
+	public const string RowsWereNotEvaluatedAsValidURIsAnd = "RowsWereNotEvaluatedAsValidURIsAnd" ; 
+
+	public const string LinesLongerThanCharacters = "LinesLongerThanCharacters" ; 
+
+	public const string NotASingleReferenceWasShortenedBecause = "NotASingleReferenceWasShortenedBecause" ; 
+
+	public const string ThisURIWasNotInTheCorrectFormat = "ThisURIWasNotInTheCorrectFormat" ; 
+
+	public const string SuchUserWasNotFound = "SuchUserWasNotFound" ; 
+
+	public const string HasnTUploadedAnyPhotosYet = "HasnTUploadedAnyPhotosYet" ; 
+
+	public const string UserPhotoStats = "UserPhotoStats" ; 
+
+	public const string RangeWasNotInValidRange = "RangeWasNotInValidRange" ; 
+
+	public const string YouAreNotSearchingInAllUsersAndTheSearchedUserWasNotFound = "YouAreNotSearchingInAllUsersAndTheSearchedUserWasNotFound" ; 
+
+	public const string AlbumDescription = "AlbumDescription" ; 
+
+	public const string AlbumName = "AlbumName" ; 
+
+	public const string TextSearch = "TextSearch" ; 
+
+	public const string Range = "Range" ; 
+
+	public const string AnErrorHasOccured = "AnErrorHasOccured" ; 
+
+	public const string ImageWithIDReceivedInUriNotFoundInDatabase = "ImageWithIDReceivedInUriNotFoundInDatabase" ; 
+
+	public const string AlbumsAreSortedByFirstUploadDateInDescendingOrder = "AlbumsAreSortedByFirstUploadDateInDescendingOrder" ; 
+
+	public const string ThisGalleryIsPublicOnlyYouCanSeeThisMessage = "ThisGalleryIsPublicOnlyYouCanSeeThisMessage" ; 
+
+	public const string ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI = "ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" ; 
+
+	public const string GalleryIsPrivateAccessCodeWasIncorrect = "GalleryIsPrivateAccessCodeWasIncorrect" ; 
+
+	public const string NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow = "NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" ; 
+
+	public const string By = "By" ; 
+
+	public const string ThereWasNoUnderscoreInTheAlbumNameParameter = "ThereWasNoUnderscoreInTheAlbumNameParameter" ; 
+
+	public const string FailedToParseAlbumIDFromFirstPartOfAlbumParameter = "FailedToParseAlbumIDFromFirstPartOfAlbumParameter" ; 
+
+	public const string TheRequestedAlbumWasNotFoundHere = "TheRequestedAlbumWasNotFoundHere" ; 
+
+	public const string PhotosInAlbum = "PhotosInAlbum" ; 
+
+	public const string OnlyPhotosUploadedOnAreShown = "OnlyPhotosUploadedOnAreShown" ; 
+
+	public const string ThisAlbumIsPublicOnlyYouCanSeeThisMessage = "ThisAlbumIsPublicOnlyYouCanSeeThisMessage" ; 
+
+	public const string ThisAlbumIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI = "ThisAlbumIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" ; 
+
+	public const string AlbumPrivateAccessCodeIncorrect = "AlbumPrivateAccessCodeIncorrect" ; 
+
+	public const string TheRequestedAlbumWasNotFoundHereTheUserRenamedOrDeletedItIfItEverExisted = "TheRequestedAlbumWasNotFoundHereTheUserRenamedOrDeletedItIfItEverExisted" ; 
+
+	public const string TheUserWithTheSpecifiedIDWasNotFoundInTheDB = "TheUserWithTheSpecifiedIDWasNotFoundInTheDB" ; 
+
+	public const string YouHaveNotEnteredAValidIDAttributeTheProfileCannotBeFound = "YouHaveNotEnteredAValidIDAttributeTheProfileCannotBeFound" ; 
+
+	public const string YouHaveNotSpecifiedAGpxFileToUpload = "YouHaveNotSpecifiedAGpxFileToUpload" ; 
+
+	public const string ThisGPXFileCannotBeUploadedBecauseItWasTamperedWith = "ThisGPXFileCannotBeUploadedBecauseItWasTamperedWith" ; 
+
+	public const string YouHaveAlreadyUploadedAFileWithTheSameName = "YouHaveAlreadyUploadedAFileWithTheSameName" ; 
+
+	public const string TheUploadedGPXContainedTracksThatInTotalWereLongerThanH = "TheUploadedGPXContainedTracksThatInTotalWereLongerThanH" ; 
+
+	public const string TheUploadedGPXFileHadNoStepsDidYouEnterWrongTimesFromTo = "TheUploadedGPXFileHadNoStepsDidYouEnterWrongTimesFromTo" ; 
+
+	public const string TheFileNameWithoutExtensionHadMoreThanCharacters = "TheFileNameWithoutExtensionHadMoreThanCharacters" ; 
+
+	public const string TheFileDidNotHaveAGpxExtensionTheCaseIsNotImportant = "TheFileDidNotHaveAGpxExtensionTheCaseIsNotImportant" ; 
+
+	public const string TheFileYouSelectedHasNoExtensionAndCannotBeAcceptedByTheSite = "TheFileYouSelectedHasNoExtensionAndCannotBeAcceptedByTheSite" ; 
+
+	public const string YouDidNotSpecifyThatYouWantToEndButDidNotFillInTheDate = "YouDidNotSpecifyThatYouWantToEndButDidNotFillInTheDate" ; 
+
+	public const string YouDidNotSpecifyThatYouWantFromTheBeginningButDidNotFillInTheDate = "YouDidNotSpecifyThatYouWantFromTheBeginningButDidNotFillInTheDate" ; 
+
+	public const string DefaultApsx = "DefaultApsx" ; 
+
+	public const string Refresh = "Refresh" ; 
+
 	public const string SuchATraceWasNotFoundHere = "SuchATraceWasNotFoundHere" ; 
 
 	public const string ThisTrackDidnTBelongToYou = "ThisTrackDidnTBelongToYou" ; 

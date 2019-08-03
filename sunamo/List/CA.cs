@@ -1088,7 +1088,11 @@ public static partial  class CA
     {
         for (int i = 0; i < toReplace.Count; i++)
         {
-            toReplace[i] = v + toReplace[i];
+            if (!toReplace[i].StartsWith(v))
+            {
+                toReplace[i] = v + toReplace[i];
+            }
+            
         }
         return toReplace;
     }

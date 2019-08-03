@@ -8301,6 +8301,370 @@
           <source></source>
           <target state="translated">Such a trace was not found here.</target>
         </trans-unit>
+        <trans-unit id="Refresh" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Refresh</target>
+        </trans-unit>
+        <trans-unit id="DefaultApsx" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Default.apsx</target>
+        </trans-unit>
+        <trans-unit id="YouDidNotSpecifyThatYouWantFromTheBeginningButDidNotFillInTheDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You did not specify that you want from the beginning, but did not fill in the date</target>
+        </trans-unit>
+        <trans-unit id="YouDidNotSpecifyThatYouWantToEndButDidNotFillInTheDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You did not specify that you want to end, but did not fill in the date</target>
+        </trans-unit>
+        <trans-unit id="TheFileYouSelectedHasNoExtensionAndCannotBeAcceptedByTheSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The file you selected has no extension and cannot be accepted by the site</target>
+        </trans-unit>
+        <trans-unit id="TheFileDidNotHaveAGpxExtensionTheCaseIsNotImportant" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The file did not have a gpx extension. The case is not important.</target>
+        </trans-unit>
+        <trans-unit id="TheFileNameWithoutExtensionHadMoreThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The file name without extension had more than 50 characters</target>
+        </trans-unit>
+        <trans-unit id="TheUploadedGPXFileHadNoStepsDidYouEnterWrongTimesFromTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The uploaded GPX file had no steps, did you enter wrong times from-to?</target>
+        </trans-unit>
+        <trans-unit id="TheUploadedGPXContainedTracksThatInTotalWereLongerThanH" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The uploaded GPX contained tracks that in total were longer than 24h</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAlreadyUploadedAFileWithTheSameName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have already uploaded a file with the same name</target>
+        </trans-unit>
+        <trans-unit id="ThisGPXFileCannotBeUploadedBecauseItWasTamperedWith" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This GPX file cannot be uploaded because it was tampered with.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotSpecifiedAGpxFileToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have not specified a gpx file to upload</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotEnteredAValidIDAttributeTheProfileCannotBeFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have not entered a valid ID attribute, the profile cannot be found</target>
+        </trans-unit>
+        <trans-unit id="TheUserWithTheSpecifiedIDWasNotFoundInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The user with the specified ID was not found in the DB</target>
+        </trans-unit>
+        <trans-unit id="TheRequestedAlbumWasNotFoundHereTheUserRenamedOrDeletedItIfItEverExisted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The requested album was not found here, the user renamed or deleted it if it ever existed.</target>
+        </trans-unit>
+        <trans-unit id="AlbumPrivateAccessCodeIncorrect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album private, access code incorrect.</target>
+        </trans-unit>
+        <trans-unit id="ThisAlbumIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This album is private and a valid AlbumKey parameter was not found in URI</target>
+        </trans-unit>
+        <trans-unit id="ThisAlbumIsPublicOnlyYouCanSeeThisMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This album is public. Only you can see this message.</target>
+        </trans-unit>
+        <trans-unit id="OnlyPhotosUploadedOnAreShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Only photos uploaded on are shown</target>
+        </trans-unit>
+        <trans-unit id="PhotosInAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Photos in album:</target>
+        </trans-unit>
+        <trans-unit id="TheRequestedAlbumWasNotFoundHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The requested album was not found here</target>
+        </trans-unit>
+        <trans-unit id="FailedToParseAlbumIDFromFirstPartOfAlbumParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Failed to parse album ID from first part of Album parameter.</target>
+        </trans-unit>
+        <trans-unit id="ThereWasNoUnderscoreInTheAlbumNameParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">There was no underscore in the Album name parameter.</target>
+        </trans-unit>
+        <trans-unit id="By" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> by</target>
+        </trans-unit>
+        <trans-unit id="NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No albums have been viewed in the last week (today's hits will only be visible tomorrow).</target>
+        </trans-unit>
+        <trans-unit id="GalleryIsPrivateAccessCodeWasIncorrect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Gallery is private, access code was incorrect.</target>
+        </trans-unit>
+        <trans-unit id="ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This gallery is private and a valid AlbumKey parameter was not found in URI</target>
+        </trans-unit>
+        <trans-unit id="ThisGalleryIsPublicOnlyYouCanSeeThisMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This gallery is public. Only you can see this message.</target>
+        </trans-unit>
+        <trans-unit id="AlbumsAreSortedByFirstUploadDateInDescendingOrder" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Albums are sorted by first upload date in descending order.</target>
+        </trans-unit>
+        <trans-unit id="ImageWithIDReceivedInUriNotFoundInDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Image with ID received in uri not found in database.</target>
+        </trans-unit>
+        <trans-unit id="AnErrorHasOccured" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">An error has occured</target>
+        </trans-unit>
+        <trans-unit id="Range" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Range</target>
+        </trans-unit>
+        <trans-unit id="TextSearch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Text search</target>
+        </trans-unit>
+        <trans-unit id="AlbumName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album name</target>
+        </trans-unit>
+        <trans-unit id="AlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album description</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotSearchingInAllUsersAndTheSearchedUserWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You are not searching in all users and the searched user was not found</target>
+        </trans-unit>
+        <trans-unit id="RangeWasNotInValidRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Range was not in valid range</target>
+        </trans-unit>
+        <trans-unit id="UserPhotoStats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">User photo stats</target>
+        </trans-unit>
+        <trans-unit id="HasnTUploadedAnyPhotosYet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hasn't uploaded any photos yet.</target>
+        </trans-unit>
+        <trans-unit id="SuchUserWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Such user was not found.</target>
+        </trans-unit>
+        <trans-unit id="ThisURIWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This URI was not in the correct format:</target>
+        </trans-unit>
+        <trans-unit id="NotASingleReferenceWasShortenedBecause" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Not a single reference was shortened because</target>
+        </trans-unit>
+        <trans-unit id="LinesLongerThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> Lines longer than 512 characters</target>
+        </trans-unit>
+        <trans-unit id="RowsWereNotEvaluatedAsValidURIsAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> rows were not evaluated as valid URIs and</target>
+        </trans-unit>
+        <trans-unit id="AddressesDidNotHaveAValidProtocol" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> addresses did not have a valid protocol</target>
+        </trans-unit>
+        <trans-unit id="AllLinksWereTruncatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All links were truncated successfully</target>
+        </trans-unit>
+        <trans-unit id="LinksHaveBeenTruncatedSuccessfullyBut" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> links have been truncated successfully, but</target>
+        </trans-unit>
+        <trans-unit id="BecauseItWasLongerThanCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> because it was longer than 512 characters</target>
+        </trans-unit>
+        <trans-unit id="WasNotInURIAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> was not in URI and</target>
+        </trans-unit>
+        <trans-unit id="Active" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Active</target>
+        </trans-unit>
+        <trans-unit id="LongURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Long URI</target>
+        </trans-unit>
+        <trans-unit id="ShortURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Short URI</target>
+        </trans-unit>
+        <trans-unit id="Created" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Created</target>
+        </trans-unit>
+        <trans-unit id="TotalClicks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total clicks</target>
+        </trans-unit>
+        <trans-unit id="NotInserted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Not inserted</target>
+        </trans-unit>
+        <trans-unit id="YouCannotViewStatisticsForALinkThatDoesNotBelongToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You cannot view statistics for a link that does not belong to you</target>
+        </trans-unit>
+        <trans-unit id="UnfortunatelyAShortURIWithSuchACodeWasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unfortunately, a short URI with such a code was not found</target>
+        </trans-unit>
+        <trans-unit id="ProbablySpuriousCookiesLogOutAndLogInAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Probably spurious cookies. Log out and log in again</target>
+        </trans-unit>
+        <trans-unit id="ThePageDidNotHaveAValidLogAtTheBeginning" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The page did not have a valid log at the beginning</target>
+        </trans-unit>
+        <trans-unit id="TheCommentWasTooLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The comment was too long</target>
+        </trans-unit>
+        <trans-unit id="CustomCodeWasTooLongUpToCharactersLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Custom code was too long, up to 20 characters long</target>
+        </trans-unit>
+        <trans-unit id="IDGo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">IDGo</target>
+        </trans-unit>
+        <trans-unit id="Empty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Empty</target>
+        </trans-unit>
+        <trans-unit id="Unknown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unknown</target>
+        </trans-unit>
+        <trans-unit id="VisitsForTheLastYears" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Visits for the last 7 years</target>
+        </trans-unit>
+        <trans-unit id="VisitsForTheLastMonths" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Visits for the last 7 months</target>
+        </trans-unit>
+        <trans-unit id="VisitsInTheLastWeeks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Visits in the last 7 weeks</target>
+        </trans-unit>
+        <trans-unit id="LanguageOfUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Language of users</target>
+        </trans-unit>
+        <trans-unit id="UserBrowser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">User Browser</target>
+        </trans-unit>
+        <trans-unit id="PreviousPages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Previous pages</target>
+        </trans-unit>
+        <trans-unit id="OSUserPlatform" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">OS &amp; User Platform</target>
+        </trans-unit>
+        <trans-unit id="UserBrowserInclVersions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">User Browser incl. versions</target>
+        </trans-unit>
+        <trans-unit id="Language" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Language</target>
+        </trans-unit>
+        <trans-unit id="Browser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Browser</target>
+        </trans-unit>
+        <trans-unit id="Allowed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Allowed?</target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfClicks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The number of clicks</target>
+        </trans-unit>
+        <trans-unit id="Control" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Control</target>
+        </trans-unit>
+        <trans-unit id="TheRequestedControlWasNotFoundOnTheServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The requested Control was not found on the server</target>
+        </trans-unit>
+        <trans-unit id="IncompleteUriAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Incomplete Uri address.</target>
+        </trans-unit>
+        <trans-unit id="Button" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Button</target>
+        </trans-unit>
+        <trans-unit id="Canvas" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Canvas</target>
+        </trans-unit>
+        <trans-unit id="Ellipse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ellipse</target>
+        </trans-unit>
+        <trans-unit id="Frame" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Frame</target>
+        </trans-unit>
+        <trans-unit id="Grid" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Grid</target>
+        </trans-unit>
+        <trans-unit id="Image" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Image</target>
+        </trans-unit>
+        <trans-unit id="Popup" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popup</target>
+        </trans-unit>
+        <trans-unit id="Rectangle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rectangle</target>
+        </trans-unit>
+        <trans-unit id="Slider" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Slider</target>
+        </trans-unit>
+        <trans-unit id="Shortener" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shortener</target>
+        </trans-unit>
+        <trans-unit id="Dart" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dart</target>
+        </trans-unit>
+        <trans-unit id="ScriptsModernizr" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">~/Scripts/modernizr-*</target>
+        </trans-unit>
       </group>
     </body>
   </file>

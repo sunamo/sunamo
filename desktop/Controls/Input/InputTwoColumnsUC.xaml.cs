@@ -20,7 +20,7 @@ namespace desktop.Controls
 {
     /// <summary>
     /// 
-    /// </summary>Coli
+    /// </summary>
     public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow
     {
         public TextBox txtFirst

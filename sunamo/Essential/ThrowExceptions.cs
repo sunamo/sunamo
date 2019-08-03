@@ -12,19 +12,20 @@ namespace sunamo.Essential
 public class ThrowExceptions
 {
     #region Must be as first - newly created method fall into this
+
     public static void BadMappedXaml(object type, string methodName, string nameControl, string additionalInfo)
     {
-        ThrowIsNotNull(Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName), nameControl, additionalInfo));
+        ThrowIsNotNull(Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName, true), nameControl, additionalInfo));
     }
 
     public static void FileExists(object type, string methodName, string fulLPath)
     {
-        ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName), fulLPath));
+        ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
     public static void HaveAllInnerSameCount(Type type, string methodName, List<List<string>> elements)
     {
-        ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName), elements));
+        ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName, true), elements));
     }
 
     /// <summary>
@@ -33,17 +34,17 @@ public class ThrowExceptions
     /// <param name="name"></param>
     public static void NameIsNotSetted(object type, string methodName, string nameControl, string nameFromProperty)
     {
-            ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName), nameControl, nameFromProperty));
+            ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {
-        ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName), namefc, countfc, namesc, countsc));
+        ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName, true), namefc, countfc, namesc, countsc));
     }
 
     public static void DoesntHaveRequiredType(object type, string methodName, string variableName)
     {
-        ThrowIsNotNull(Exceptions.DoesntHaveRequiredType(FullNameOfExecutedCode(type, methodName), variableName));
+        ThrowIsNotNull(Exceptions.DoesntHaveRequiredType(FullNameOfExecutedCode(type, methodName, true), variableName));
     }
 
     public static void DifferentCountInLists(Type type, string methodName, string namefc, IEnumerable replaceFrom, string namesc, IEnumerable replaceTo)
@@ -53,54 +54,54 @@ public class ThrowExceptions
 
     public static void IsNotAllowed(Type type, string methodName, string what)
     {
-        ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName), what));
+        ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName, true), what));
     }
 
     public static void MoreThanOneElement(Type type, string methodName, string listName, int count)
     {
-        ThrowIsNotNull(Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName), listName, count));
+        ThrowIsNotNull(Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName, true), listName, count));
     }
 
     public static void IsNull(object type, string methodName, string variableName, object variable)
     {
-        ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName), variableName, variable));
+        ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
     }
 
     public static void ArrayElementContainsUnallowedStrings(object type, string methodName, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
     {
-        ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName), arrayName, dex, valueElement, unallowedStrings));
+        ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName, true), arrayName, dex, valueElement, unallowedStrings));
     }
 
     public static void OnlyOneElement(object type, string methodName, string colName, IEnumerable list)
     {
-        ThrowIsNotNull(Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName), colName, list));
+        ThrowIsNotNull(Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName, true), colName, list));
     }
 
     public static void StringContainsUnallowedSubstrings(object type, string methodName, string input, params string[] unallowedStrings)
     {
-        ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName), input, unallowedStrings));
+        ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName, true), input, unallowedStrings));
     }
 
     public static void InvalidParameter(object type, string methodName, string mayUrlDecoded, string typeOfInput)
     {
-        ThrowIsNotNull(Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName), mayUrlDecoded, typeOfInput));
+        ThrowIsNotNull(Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName, true), mayUrlDecoded, typeOfInput));
     }
 
     public static void ElementCantBeFound(object type, string methodName, string nameCollection, string element)
     {
-        ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName), nameCollection, element));
+        ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName, true), nameCollection, element));
     }
 
     public static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
     {
-        ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName), argName, argValue));
+        ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
     #endregion
 
     #region Without parameters
     public static void NotImplementedCase(object type, string methodName)
     {
-        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode( type, methodName)));
+        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode( type, methodName, true)));
     }
 
    
@@ -120,8 +121,18 @@ public class ThrowExceptions
     /// <param name="type"></param>
     /// <param name="methodName"></param>
     /// <returns></returns>
-    public static string FullNameOfExecutedCode(object type, string methodName)
+    public static string FullNameOfExecutedCode(object type, string methodName, bool fromThrowExceptions = false)
     {
+        if (methodName == null)
+        {
+            int depth = 2;
+            if (fromThrowExceptions)
+            {
+                depth++;
+            }
+            methodName = RH.CallingMethod(depth);
+        }
+
         string typeFullName = string.Empty;
         if (type is Type)
         {
@@ -185,7 +196,7 @@ public class ThrowExceptions
 
     public static void NoPassedFolders(Type type, string v, IEnumerable folders)
     {
-        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v), folders));   
+        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v, true), folders));   
     }
 
     private static void ThrowIsNotNull(object v)
@@ -207,17 +218,17 @@ public class ThrowExceptions
     /// <param name="after"></param>
     public static bool NotContains(Type type, string v, string p, params string[] after)
     {
-        return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v), p, after));
+        return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
     }
 
     public static void DirectoryWasntFound(Type type, string methodName, string folder1)
     {
-        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode( type, methodName), folder1));
+        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode( type, methodName, true), folder1));
     }
 
     public static void Custom(object type, string methodName, string message)
     {
-        ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName), message));
+        ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message));
     }
 
     /// <summary>
@@ -231,17 +242,13 @@ public class ThrowExceptions
     public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
     {
        
-         ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName), detailLocation, before, after));
+         ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName, true), detailLocation, before, after));
         
     }
 
     public static void FolderCantBeRemoved(Type type, string methodName, string folder)
     {
-        ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName), folder));
+        ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName, true), folder));
     }
-
-
-#endregion
-
-
+    #endregion
 }

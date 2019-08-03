@@ -13,11 +13,29 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="*"  MinHeight="55"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!--1st row-->
         <TextBlock x:Name="tbWhatEnter" Text="Lorem ipsum" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="10,5,10,0"/>
-        <TextBox x:Name="txtEnteredText" KeyDown="txtEnteredText_KeyDown_1" x:FieldModifier="public" Grid.Row="1" FontSize="20" Margin="10,5,10,17" Grid.Column="0"></TextBox>
-        <Button Grid.Column="1" Grid.Row="1" x:Name="btnEnter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,5,10,17" Content="Enter" Click="btnEnter_Click_1"></Button>
-        <TextBlock x:Name="tbHint" x:FieldModifier="public"></TextBlock>
+        
+        <!--2st row-->
+        <Grid x:Name="gridGrowable" Grid.Row="1">
+            <TextBox x:Name="txtEnteredText" KeyDown="txtEnteredText_KeyDown_1" x:FieldModifier="public" Grid.Row="1" FontSize="20" Margin="10,5,10,17" Grid.Column="0"></TextBox>
+        </Grid>
+        
+        <!--3st row-->
+        <TextBlock x:Name="tbHint" x:FieldModifier="public" Grid.Row="2"></TextBlock>
+        <Grid x:Name="grid2" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2"></RowDefinition>
+                <RowDefinition Height="2"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        
+        <!--4th row-->
+        <Button Grid.Column="1" Grid.Row="3" x:Name="btnEnter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,5,10,17" Content="Enter" Click="btnEnter_Click_1"></Button>
+        
     </Grid>
 </UserControl>
