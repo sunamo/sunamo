@@ -1005,5 +1005,4 @@ namespace sunamo
         /// </summary>
         ZW,
     }
-
 }

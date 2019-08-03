@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-public interface IRandom <T>
+public interface IRandom<T>
 {
-     T GetRandom();
-    int LenghtOfPpk { get;}
+    T GetRandom();
+    int LenghtOfPpk { get; }
 }

@@ -6,7 +6,7 @@ namespace sunamo.Indexing.FileSystem
 {
     public class FileItem //: IFSItem
     {
-        string name = null;
+        private string _name = null;
         /// <summary>
         /// File name
         /// </summary>
@@ -14,11 +14,11 @@ namespace sunamo.Indexing.FileSystem
         {
             get
             {
-                return name;
+                return _name;
             }
             set
             {
-                name = value;
+                _name = value;
             }
         }
 

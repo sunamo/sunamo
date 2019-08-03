@@ -9,8 +9,6 @@ using sunamo.Constants;
 
 public static partial class SF
 {
-
-
     /// <summary>
     /// Same as PrepareToSerialization - return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
@@ -24,7 +22,7 @@ public static partial class SF
         return vr.Substring(0, vr.Length - 1);
     }
 
-public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = AllChars.pipe)
+    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = AllChars.pipe)
     {
         string oz = oddelovaciZnak.ToString();
         List<List<string>> vr = new List<List<string>>();
@@ -50,7 +48,7 @@ public static List<List<string>> GetAllElementsFileAdvanced(string file, out Lis
         return vr;
     }
 
-/// <summary>
+    /// <summary>
     /// Get all elements from A1
     /// </summary>
     /// <param name = "var"></param>

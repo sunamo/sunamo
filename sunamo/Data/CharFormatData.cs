@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Udává jak musí být vstupní text zformátovaný
+/// </summary>
+public class CharFormatData
+{
     /// <summary>
-    /// Udává jak musí být vstupní text zformátovaný
+    /// Null = no matter
+    /// Nejvhodnější je zde výčet Windows.UI.Text.LetterCase
     /// </summary>
-    public class CharFormatData
-    {
-        /// <summary>
-        /// Null = no matter
-        /// Nejvhodnější je zde výčet Windows.UI.Text.LetterCase
-        /// </summary>
-        public bool? upper = false;
+    public bool? upper = false;
     /// <summary>
     /// Nemusí mít žádný prvek, pak může být znak libovolný
     /// </summary>
-        public char[] mustBe = null;
+    public char[] mustBe = null;
 
     public static class Templates
     {
@@ -37,22 +37,19 @@ using System.Threading.Tasks;
         }
 
         public static CharFormatData Any;
-
-
     }
 
 
     public FromTo fromTo = null;
 
-        public CharFormatData(bool? upper, char[] mustBe)
-        {
-            this.upper = upper;
-            this.mustBe = mustBe;
-        }
+    public CharFormatData(bool? upper, char[] mustBe)
+    {
+        this.upper = upper;
+        this.mustBe = mustBe;
+    }
 
     public CharFormatData()
     {
-
     }
 
     public static CharFormatData GetOnlyNumbers(FromTo requiredLength)

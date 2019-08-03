@@ -5,7 +5,7 @@ public class XPathPart
     public string tag = null;
     public string attName = null;
     public string attValue = "";
-    
+
 
     public XPathPart(string part)
     {
@@ -37,7 +37,7 @@ public class XPathPart
         }
         else if (dexStartSquareBracket == -1 || dexEndSquareBracket == -1)
         {
-            throw new Exception("Neukončená závorka v metodě XPathPart.ctor");
+            throw new Exception("Neukon\u010Den\u00E1 z\u00E1vorka v metod\u011B XPathPart.ctor");
         }
     }
 }

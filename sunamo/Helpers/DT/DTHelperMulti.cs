@@ -3,504 +3,498 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-    public partial class DTHelperMulti
+public partial class DTHelperMulti
+{
+    /// <summary>
+    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
+    /// </summary>
+    /// <param name="ts"></param>
+    /// <param name="calculateTime"></param>
+    /// <returns></returns>
+    public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)
     {
+        int age = tt.TotalYears();
 
-        /// <summary>
-        /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
-        /// </summary>
-        /// <param name="ts"></param>
-        /// <param name="calculateTime"></param>
-        /// <returns></returns>
-        public static string AddRightStringToTimeSpan(TimeSpan tt, bool calculateTime, Langs l)
+        if (tt.TotalMilliseconds == 0)
         {
-            int age = tt.TotalYears();
-
-            if (tt.TotalMilliseconds == 0)
+            int months = tt.TotalMonths();
+            if (months < 3)
             {
-
-                int months = tt.TotalMonths();
-                if (months < 3)
+                int totalWeeks = tt.Days / 7;
+                if (totalWeeks == 0)
                 {
-                    int totalWeeks = tt.Days / 7;
-                    if (totalWeeks == 0)
+                    if (tt.Days == 1)
                     {
-                        if (tt.Days == 1)
+                        if (l == Langs.cs)
                         {
-                            if (l == Langs.cs)
-                            {
-                                return tt.Days + " den";
-                            }
-                            else
-                            {
-                                return tt.Days + " day";
-                            }
-                        }
-                        else if (tt.Days < 5 && tt.Days > 1)
-                        {
-                            if (l == Langs.cs)
-                            {
-                                return tt.Days + " dní";
-                            }
-                            else
-                            {
-                                return tt.Days + " " + "days";
-                            }
+                            return tt.Days + " den";
                         }
                         else
                         {
-                            if (calculateTime)
-                            {
-                                if (tt.Hours == 1)
-                                {
-                                    if (l == Langs.cs)
-                                    {
-                                        return tt.Hours + " " + "hodinu";
-                                    }
-                                    else
-                                    {
-                                        return tt.Hours + " " + "hour";
-                                    }
-                                }
-                                else if (tt.Hours > 1 && tt.Hours < 5)
-                                {
-                                    if (l == Langs.cs)
-                                    {
-                                        return tt.Hours + " " + "hodiny";
-                                    }
-                                    else
-                                    {
-                                        return tt.Hours + " " + "hours";
-                                    }
-                                }
-                                else if (tt.Hours > 4)
-                                {
-                                    if (l == Langs.cs)
-                                    {
-                                        return tt.Hours + " " + "hodin";
-                                    }
-                                    else
-                                    {
-                                        return tt.Hours + " " + "hours";
-                                    }
-                                }
-                                else
-                                {
-                                    // Hodin je méně než 1
-                                    if (tt.Minutes == 1)
-                                    {
-                                        if (l == Langs.cs)
-                                        {
-                                            return tt.Minutes + " " + "minutu";
-                                        }
-                                        else
-                                        {
-                                            return tt.Minutes + " " + "minute";
-                                        }
-                                    }
-                                    else if (tt.Minutes > 1 && tt.Minutes < 5)
-                                    {
-                                        if (l == Langs.cs)
-                                        {
-                                            return tt.Minutes + " " + "minuty";
-                                        }
-                                        else
-                                        {
-                                            return tt.Minutes + " " + "minutes";
-                                        }
-                                    }
-                                    else if (tt.Minutes > 4)
-                                    {
-                                        if (l == Langs.cs)
-                                        {
-                                            return tt.Minutes + " " + "minut";
-                                        }
-                                        else
-                                        {
-                                            return tt.Minutes + " " + "minutes";
-                                        }
-                                    }
-                                    else //if (tt.Minutes == 0)
-                                    {
-                                        if (tt.Seconds == 1)
-                                        {
-                                            if (l == Langs.cs)
-                                            {
-                                                return tt.Seconds + " " + "sekundu";
-                                            }
-                                            else
-                                            {
-                                                return tt.Seconds + " " + "second";
-                                            }
-                                        }
-                                        else if (tt.Seconds > 1 && tt.Seconds < 5)
-                                        {
-                                            if (l == Langs.cs)
-                                            {
-                                                return tt.Seconds + " " + "sekundy";
-                                            }
-                                            else
-                                            {
-                                                return tt.Seconds + " " + "seconds";
-                                            }
-                                        }
-                                        else //if (tt.Seconds > 4)
-                                        {
-                                            if (l == Langs.cs)
-                                            {
-                                                return tt.Seconds + " " + "sekund";
-                                            }
-                                            else
-                                            {
-                                                return tt.Seconds + " " + "seconds";
-                                            }
-                                        }
-
-                                    }
-                                }
-                            }
-                            else
+                            return tt.Days + " day";
+                        }
+                    }
+                    else if (tt.Days < 5 && tt.Days > 1)
+                    {
+                        if (l == Langs.cs)
+                        {
+                            return tt.Days + " dn\u00ED";
+                        }
+                        else
+                        {
+                            return tt.Days + " " + "days";
+                        }
+                    }
+                    else
+                    {
+                        if (calculateTime)
+                        {
+                            if (tt.Hours == 1)
                             {
                                 if (l == Langs.cs)
                                 {
-                                    return "~1 den";
+                                    return tt.Hours + " " + "hodinu";
                                 }
                                 else
                                 {
-                                    return "~1 day";
+                                    return tt.Hours + " " + "hour";
+                                }
+                            }
+                            else if (tt.Hours > 1 && tt.Hours < 5)
+                            {
+                                if (l == Langs.cs)
+                                {
+                                    return tt.Hours + " " + "hodiny";
+                                }
+                                else
+                                {
+                                    return tt.Hours + " " + "hours";
+                                }
+                            }
+                            else if (tt.Hours > 4)
+                            {
+                                if (l == Langs.cs)
+                                {
+                                    return tt.Hours + " " + "hodin";
+                                }
+                                else
+                                {
+                                    return tt.Hours + " " + "hours";
+                                }
+                            }
+                            else
+                            {
+                                // Hodin je méně než 1
+                                if (tt.Minutes == 1)
+                                {
+                                    if (l == Langs.cs)
+                                    {
+                                        return tt.Minutes + " " + "minutu";
+                                    }
+                                    else
+                                    {
+                                        return tt.Minutes + " " + "minute";
+                                    }
+                                }
+                                else if (tt.Minutes > 1 && tt.Minutes < 5)
+                                {
+                                    if (l == Langs.cs)
+                                    {
+                                        return tt.Minutes + " " + "minuty";
+                                    }
+                                    else
+                                    {
+                                        return tt.Minutes + " " + "minutes";
+                                    }
+                                }
+                                else if (tt.Minutes > 4)
+                                {
+                                    if (l == Langs.cs)
+                                    {
+                                        return tt.Minutes + " " + "minut";
+                                    }
+                                    else
+                                    {
+                                        return tt.Minutes + " " + "minutes";
+                                    }
+                                }
+                                else //if (tt.Minutes == 0)
+                                {
+                                    if (tt.Seconds == 1)
+                                    {
+                                        if (l == Langs.cs)
+                                        {
+                                            return tt.Seconds + " " + "sekundu";
+                                        }
+                                        else
+                                        {
+                                            return tt.Seconds + " " + "second";
+                                        }
+                                    }
+                                    else if (tt.Seconds > 1 && tt.Seconds < 5)
+                                    {
+                                        if (l == Langs.cs)
+                                        {
+                                            return tt.Seconds + " " + "sekundy";
+                                        }
+                                        else
+                                        {
+                                            return tt.Seconds + " " + "seconds";
+                                        }
+                                    }
+                                    else //if (tt.Seconds > 4)
+                                    {
+                                        if (l == Langs.cs)
+                                        {
+                                            return tt.Seconds + " " + "sekund";
+                                        }
+                                        else
+                                        {
+                                            return tt.Seconds + " " + "seconds";
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                    else if (totalWeeks == 1)
-                    {
-                        if (l == Langs.cs)
-                        {
-                            return totalWeeks + " " + "týden";
-                        }
                         else
                         {
-                            return totalWeeks + " " + "week";
+                            if (l == Langs.cs)
+                            {
+                                return "~1 den";
+                            }
+                            else
+                            {
+                                return "~1 day";
+                            }
                         }
                     }
-                    else if (totalWeeks < 5 && totalWeeks > 1)
+                }
+                else if (totalWeeks == 1)
+                {
+                    if (l == Langs.cs)
                     {
-                        if (l == Langs.cs)
-                        {
-                            return totalWeeks + " " + "týdny";
-                        }
-                        else
-                        {
-                            return totalWeeks + " " + "weeks";
-                        }
+                        return totalWeeks + " " + "t\u00FDden";
                     }
                     else
                     {
-                        if (l == Langs.cs)
-                        {
-                            return totalWeeks + " " + "týdnů";
-                        }
-                        else
-                        {
-                            return totalWeeks + " " + "weeks";
-                        }
+                        return totalWeeks + " " + "week";
                     }
                 }
-                else
+                else if (totalWeeks < 5 && totalWeeks > 1)
                 {
-                    if (months == 1)
+                    if (l == Langs.cs)
                     {
-                        if (l == Langs.cs)
-                        {
-                            return months + " " + "měsíc";
-                        }
-                        else
-                        {
-                            return months + " " + "months";
-                        }
-                    }
-                    else if (months > 1 && months < 5)
-                    {
-                        if (l == Langs.cs)
-                        {
-                            return months + " " + "měsíce";
-                        }
-                        else
-                        {
-                            return months + " " + "months";
-                        }
+                        return totalWeeks + " " + "t\u00FDdny";
                     }
                     else
                     {
-                        if (l == Langs.cs)
-                        {
-                            return months + " " + "měsíců";
-                        }
-                        else
-                        {
-                            return months + " " + "months";
-                        }
-
+                        return totalWeeks + " " + "weeks";
                     }
                 }
-            }
-            else if (age == 1)
-            {
-                if (l == Langs.cs)
-                {
-                    return " " + " rok";
-                }
                 else
                 {
-                    return " " + " " + "year";
-                }
-            }
-            else if (age > 1 && age < 5)
-            {
-                if (l == Langs.cs)
-                {
-                    return age + " " + "roky";
-                }
-                else
-                {
-                    return age + " " + "years";
-                }
-            }
-            else if (age > 4 || age == 0)
-            {
-                if (l == Langs.cs)
-                {
-                    return age + " " + "roků";
-                }
-                else
-                {
-                    return age + " " + "years";
+                    if (l == Langs.cs)
+                    {
+                        return totalWeeks + " " + "t\u00FDdn\u016F";
+                    }
+                    else
+                    {
+                        return totalWeeks + " " + "weeks";
+                    }
                 }
             }
             else
             {
-                if (l == Langs.cs)
+                if (months == 1)
                 {
-                    return "Neznámý čas";
+                    if (l == Langs.cs)
+                    {
+                        return months + " " + "m\u011Bs\u00EDc";
+                    }
+                    else
+                    {
+                        return months + " " + "months";
+                    }
                 }
-                return "No known period";
+                else if (months > 1 && months < 5)
+                {
+                    if (l == Langs.cs)
+                    {
+                        return months + " " + "m\u011Bs\u00EDce";
+                    }
+                    else
+                    {
+                        return months + " " + "months";
+                    }
+                }
+                else
+                {
+                    if (l == Langs.cs)
+                    {
+                        return months + " " + "m\u011Bs\u00EDc\u016F";
+                    }
+                    else
+                    {
+                        return months + " " + "months";
+                    }
+                }
             }
         }
-
-        public static string DateToStringOrSE(DateTime p, Langs l, DateTime dtMinVal)
+        else if (age == 1)
         {
-            if (p == dtMinVal)
+            if (l == Langs.cs)
             {
-                return "";
-            }
-            return DTHelperMulti.DateToString(p, l);
-        }
-
-        /// <summary>
-        /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
-        /// </summary>
-        /// <param name="dateTime"></param>
-        /// <param name="calculateTime"></param>
-        /// <returns></returns>
-        public static string OperationLastedInLocalizateString(TimeSpan tt, Langs l)
-        {
-            List<string> vr = new List<string>();
-
-            if (tt.Hours == 1)
-            {
-                if (l == Langs.cs)
-                {
-                    vr.Add(tt.Hours + " " + "hodinu");
-                }
-                else
-                {
-                    vr.Add(tt.Hours + " " + "hour");
-                }
-            }
-            else if (tt.Hours > 1 && tt.Hours < 5)
-            {
-                if (l == Langs.cs)
-                {
-                    vr.Add(tt.Hours + " " + "hodiny");
-                }
-                else
-                {
-                    vr.Add(tt.Hours + " " + "hours");
-                }
-            }
-            else if (tt.Hours > 4)
-            {
-                if (l == Langs.cs)
-                {
-                    vr.Add(tt.Hours + " " + "hodin");
-                }
-                else
-                {
-                    vr.Add(tt.Hours + " " + "hours");
-                }
+                return " " + " rok";
             }
             else
             {
-                // Hodin je méně než 1
-                if (tt.Minutes == 1)
+                return " " + " " + "year";
+            }
+        }
+        else if (age > 1 && age < 5)
+        {
+            if (l == Langs.cs)
+            {
+                return age + " " + "roky";
+            }
+            else
+            {
+                return age + " " + "years";
+            }
+        }
+        else if (age > 4 || age == 0)
+        {
+            if (l == Langs.cs)
+            {
+                return age + " " + "rok\u016F";
+            }
+            else
+            {
+                return age + " " + "years";
+            }
+        }
+        else
+        {
+            if (l == Langs.cs)
+            {
+                return "Nezn\u00E1m\u00FD \u010Das";
+            }
+            return "No known period";
+        }
+    }
+
+    public static string DateToStringOrSE(DateTime p, Langs l, DateTime dtMinVal)
+    {
+        if (p == dtMinVal)
+        {
+            return "";
+        }
+        return DTHelperMulti.DateToString(p, l);
+    }
+
+    /// <summary>
+    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <param name="calculateTime"></param>
+    /// <returns></returns>
+    public static string OperationLastedInLocalizateString(TimeSpan tt, Langs l)
+    {
+        List<string> vr = new List<string>();
+
+        if (tt.Hours == 1)
+        {
+            if (l == Langs.cs)
+            {
+                vr.Add(tt.Hours + " " + "hodinu");
+            }
+            else
+            {
+                vr.Add(tt.Hours + " " + "hour");
+            }
+        }
+        else if (tt.Hours > 1 && tt.Hours < 5)
+        {
+            if (l == Langs.cs)
+            {
+                vr.Add(tt.Hours + " " + "hodiny");
+            }
+            else
+            {
+                vr.Add(tt.Hours + " " + "hours");
+            }
+        }
+        else if (tt.Hours > 4)
+        {
+            if (l == Langs.cs)
+            {
+                vr.Add(tt.Hours + " " + "hodin");
+            }
+            else
+            {
+                vr.Add(tt.Hours + " " + "hours");
+            }
+        }
+        else
+        {
+            // Hodin je méně než 1
+            if (tt.Minutes == 1)
+            {
+                if (l == Langs.cs)
+                {
+                    vr.Add(tt.Minutes + " " + "minutu");
+                }
+                else
+                {
+                    vr.Add(tt.Minutes + " " + "minute");
+                }
+            }
+            else if (tt.Minutes > 1 && tt.Minutes < 5)
+            {
+                if (l == Langs.cs)
+                {
+                    vr.Add(tt.Minutes + " " + "minuty");
+                }
+                else
+                {
+                    vr.Add(tt.Minutes + " " + "minutes");
+                }
+            }
+            else if (tt.Minutes > 4)
+            {
+                if (l == Langs.cs)
+                {
+                    vr.Add(tt.Minutes + " " + "minut");
+                }
+                else
+                {
+                    vr.Add(tt.Minutes + " " + "minutes");
+                }
+            }
+            else //if (tt.Minutes == 0)
+            {
+                if (tt.Seconds == 1)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " " + "minutu");
+                        vr.Add(tt.Seconds + " " + "sekundu");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " " + "minute");
+                        vr.Add(tt.Seconds + " " + "second");
                     }
                 }
-                else if (tt.Minutes > 1 && tt.Minutes < 5)
+                else if (tt.Seconds > 1 && tt.Seconds < 5)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " " + "minuty");
+                        vr.Add(tt.Seconds + " " + "sekundy");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " " + "minutes");
+                        vr.Add(tt.Seconds + " " + "seconds");
                     }
                 }
-                else if (tt.Minutes > 4)
+                else if (tt.Seconds > 4)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Minutes + " " + "minut");
+                        vr.Add(tt.Seconds + " " + "sekund");
                     }
                     else
                     {
-                        vr.Add(tt.Minutes + " " + "minutes");
+                        vr.Add(tt.Seconds + " " + "seconds");
                     }
                 }
-                else //if (tt.Minutes == 0)
+                else
                 {
                     if (tt.Seconds == 1)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " " + "sekundu");
+                            vr.Add(tt.Milliseconds + " " + "milisekundu");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " " + "second");
+                            vr.Add(tt.Milliseconds + " " + "millisecond");
                         }
                     }
                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " " + "sekundy");
+                            vr.Add(tt.Milliseconds + " " + "milisekundy");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " " + "seconds");
+                            vr.Add(tt.Milliseconds + " " + "milliseconds");
                         }
                     }
                     else if (tt.Seconds > 4)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Seconds + " " + "sekund");
+                            vr.Add(tt.Milliseconds + " " + "milisekund");
                         }
                         else
                         {
-                            vr.Add(tt.Seconds + " " + "seconds");
+                            vr.Add(tt.Milliseconds + " " + "milliseconds");
                         }
                     }
                     else
                     {
-                        if (tt.Seconds == 1)
+                        if (l == Langs.cs)
                         {
-                            if (l == Langs.cs)
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milisekundu");
-                            }
-                            else
-                            {
-                                vr.Add(tt.Milliseconds + " " + "millisecond");
-                            }
-                        }
-                        else if (tt.Seconds > 1 && tt.Seconds < 5)
-                        {
-                            if (l == Langs.cs)
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milisekundy");
-                            }
-                            else
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milliseconds");
-                            }
-                        }
-                        else if (tt.Seconds > 4)
-                        {
-                            if (l == Langs.cs)
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milisekund");
-                            }
-                            else
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milliseconds");
-                            }
+                            vr.Add(tt.Milliseconds + " " + "milisekund");
                         }
                         else
                         {
-                            if (l == Langs.cs)
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milisekund");
-                            }
-                            else
-                            {
-                                vr.Add(tt.Milliseconds + " " + "milliseconds");
-                            }
+                            vr.Add(tt.Milliseconds + " " + "milliseconds");
                         }
                     }
                 }
             }
-
-            string s = SH.Join(AllChars.space, vr);
-
-            return s;
         }
 
-        public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
-        {
-            int day = (int)dateTime.DayOfWeek;
-            if (day == 0)
-            {
-                day = 6;
-            }
-            else
-            {
-                day--;
-            }
+        string s = SH.Join(AllChars.space, vr);
 
-            string dayOfWeek = DTConstants.daysInWeekEN[day];
-            if (l == Langs.cs)
-            {
-                dayOfWeek = DTConstants.daysInWeekCS[day];
-            }
-
-            return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
-        }
-
-        /// <summary>
-        /// Vyparsuje datum ve formátu měsíc/den/rok
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public static DateTime? ParseDateMonthDayYear(string p)
-        {
-            var s = SH.SplitNone(p, AllStrings.slash);
-            DateTime vr;
-            if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
-            {
-                return vr;
-            }
-            return null;
-        }
-
-
+        return s;
     }
+
+    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    {
+        int day = (int)dateTime.DayOfWeek;
+        if (day == 0)
+        {
+            day = 6;
+        }
+        else
+        {
+            day--;
+        }
+
+        string dayOfWeek = DTConstants.daysInWeekEN[day];
+        if (l == Langs.cs)
+        {
+            dayOfWeek = DTConstants.daysInWeekCS[day];
+        }
+
+        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
+    }
+
+    /// <summary>
+    /// Vyparsuje datum ve formátu měsíc/den/rok
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static DateTime? ParseDateMonthDayYear(string p)
+    {
+        var s = SH.SplitNone(p, AllStrings.slash);
+        DateTime vr;
+        if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
+        {
+            return vr;
+        }
+        return null;
+    }
+}

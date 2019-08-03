@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 /// Content is referred like with ResourcesH - with fs path
 /// </summary>
 public class EmbeddedResourcesH : IResourceHelper
-    {
+{
     /*usage:
 uri = new Uri("Wpf.Tests.Resources.EmbeddedResource.txt", UriKind.Relative);
 GetString(uri.ToString()) - the same string as passed in ctor Uri
@@ -32,13 +32,12 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     /// 
     /// </summary>
     private EmbeddedResourcesH()
-        {
+    {
         _entryAssembly = RH.AssemblyWithName(ThisApp.Name);
         //Assembly.GetAssembly()
-            
-        defaultNamespace = ThisApp.Name;
-        
-        }
+
+        _defaultNamespace = ThisApp.Name;
+    }
 
     /// <summary>
     /// public to use in assembly like SunamoNTextCat
@@ -46,12 +45,12 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     /// <param name="_entryAssembly"></param>
     public EmbeddedResourcesH(Assembly _entryAssembly, string defaultNamespace)
     {
-        this. _entryAssembly = _entryAssembly;
-        this.defaultNamespace = defaultNamespace;
+        this._entryAssembly = _entryAssembly;
+        _defaultNamespace = defaultNamespace;
     }
 
-     Assembly _entryAssembly = null;
-     string defaultNamespace;
+    private Assembly _entryAssembly = null;
+    private string _defaultNamespace;
 
     protected Assembly entryAssembly
     {
@@ -65,25 +64,25 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
         }
     }
 
-        public string GetResourceName(string name)
-        {
-            name = SH.Join(AllChars.dot, defaultNamespace, SH.ReplaceAll( name.TrimStart(AllChars.slash), AllStrings.dot, AllStrings.slash));
+    public string GetResourceName(string name)
+    {
+        name = SH.Join(AllChars.dot, _defaultNamespace, SH.ReplaceAll(name.TrimStart(AllChars.slash), AllStrings.dot, AllStrings.slash));
         return name;
-        }
+    }
 
-       
+
 
     /// <summary>
     /// If it's file, return its content
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-        public string GetString(string name)
-        {
+    public string GetString(string name)
+    {
         var s = GetStream(name);
 
-            return Encoding.UTF8.GetString(FS.StreamToArrayBytes(s));
-        }
+        return Encoding.UTF8.GetString(FS.StreamToArrayBytes(s));
+    }
 
     /// <summary>
     /// 

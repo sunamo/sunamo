@@ -23,7 +23,6 @@ using System.Linq;
 /// </summary>
 public partial class CryptHelper2
 {
-
     public static string EncryptRSA(string inputString, int dwKeySize, string xmlString)
     {
         // TODO: Add Proper Exception Handlers
@@ -68,8 +67,8 @@ public partial class CryptHelper2
     /// <summary>
     /// RSA není uspůsobeno pro velké bloky dat, proto max, ale opravdu MAXimální velikost je 64bajtů
     /// </summary>
-    const int RSA_BLOCKSIZE = 64;
-    static bool OAEP = false;
+    private const int RSA_BLOCKSIZE = 64;
+    private static bool s_OAEP = false;
     public static List<byte> EncryptRSA(List<byte> plainTextBytes, string passPhrase, List<byte> saltValueBytes, List<byte> initVectorBytes, string xmlSouborKlíče, int velikostKliče)
     {
         CspParameters csp = new CspParameters();
@@ -106,13 +105,13 @@ public partial class CryptHelper2
             //Define the block that we will be working on
             List<byte> currentBlock = new List<byte>(thisBlockLength);
             Array.Copy(plainTextBytes.ToArray(), startChar, currentBlock.ToArray(), 0, thisBlockLength);
-            List<byte> encryptedBlock = rsa.Encrypt(currentBlock.ToArray(), OAEP).ToList();
+            List<byte> encryptedBlock = rsa.Encrypt(currentBlock.ToArray(), s_OAEP).ToList();
             vr.AddRange(encryptedBlock);
         }
 
         rsa.Clear();
         return vr;
-    //return rsa.Encrypt(plainTextBytesBytes, false);
+        //return rsa.Encrypt(plainTextBytesBytes, false);
     }
 
     public static RSAParameters GetRSAParametersFromXml(string p)
@@ -154,14 +153,14 @@ public partial class CryptHelper2
             //Define the block that we will be working on
             List<byte> currentBlockBytes = new List<byte>(RSA_BLOCKSIZE);
             Array.Copy(cipherTextBytes.ToArray(), startChar, currentBlockBytes.ToArray(), 0, RSA_BLOCKSIZE);
-            List<byte> currentBlockDecrypted = rsa.Decrypt(currentBlockBytes.ToArray(), OAEP).ToList();
+            List<byte> currentBlockDecrypted = rsa.Decrypt(currentBlockBytes.ToArray(), s_OAEP).ToList();
             vr.AddRange(currentBlockDecrypted);
         }
 
         //Release all resources held by the RSA service provider
         rsa.Clear();
         return vr;
-    //return rsa.Decrypt(cipherTextBytes, false);
+        //return rsa.Decrypt(cipherTextBytes, false);
     }
 
     private static CspParameters VratCspParameters(bool p)

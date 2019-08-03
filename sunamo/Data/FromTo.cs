@@ -6,7 +6,6 @@ public class FromTo : IParser
 {
     public FromTo()
     {
-
     }
 
     public FromTo(int from, int to)
@@ -25,7 +24,7 @@ public class FromTo : IParser
         {
             v = SH.Split(input, AllChars.dash);
         }
-        else 
+        else
         {
             v = CA.ToListString(input);
         }
@@ -39,12 +38,10 @@ public class FromTo : IParser
 
         if (from < 0)
         {
-
         }
 
         if (from > 0)
         {
-
         }
     }
 

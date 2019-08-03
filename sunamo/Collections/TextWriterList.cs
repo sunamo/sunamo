@@ -11,20 +11,17 @@ namespace sunamo.Collections
     /// </summary>
     public class TextWriterList : TextWriter
     {
-        IList list = null;
+        private IList _list = null;
         public TextWriterList(IList list)
         {
-            this.list = list;
-
-            
+            _list = list;
         }
 
         public override Encoding Encoding => Encoding.UTF8;
 
         public override void WriteLine(string value)
         {
-            list.Add(value);
-
+            _list.Add(value);
         }
     }
 }

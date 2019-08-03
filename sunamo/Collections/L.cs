@@ -6,24 +6,20 @@ using System.Text;
 /// Can be derived because new keyword
 /// </summary>
 /// <typeparam name="T"></typeparam>
-    public class L<T> : List<T>
+public class L<T> : List<T>
 {
-    
-        public int Length => Count;
+    public int Length => Count;
     public T defIfNotFoundIndex = default(T);
     public L()
     {
-
     }
 
     public L(IEnumerable<T> collection) : base(collection)
     {
-
     }
 
     public L(int capacity) : base(capacity)
     {
-
     }
 
     public L<T> ToList()

@@ -9,14 +9,14 @@ using sunamo.Generators.Text;
 /// <summary>
 /// Cant add another methods with Task and normal - methods have same signature, despite return were different
 /// </summary>
-public class ClipboardHelper 
+public class ClipboardHelper
 {
-    public  static IClipboardHelper Instance = null;
-    public  static IClipboardHelperApps InstanceApps = null;
+    public static IClipboardHelper Instance = null;
+    public static IClipboardHelperApps InstanceApps = null;
 
     private ClipboardHelper() { }
 
-    public  static bool ContainsText()
+    public static bool ContainsText()
     {
         if (Instance == null)
         {
@@ -28,11 +28,11 @@ public class ClipboardHelper
         }
     }
 
-    public  static string GetText()
+    public static string GetText()
     {
         if (Instance == null)
         {
-            return  InstanceApps.GetText().Result;
+            return InstanceApps.GetText().Result;
         }
         else
         {
@@ -40,16 +40,15 @@ public class ClipboardHelper
         }
     }
 
-    public  static List<string> GetLinesAllWhitespaces()
+    public static List<string> GetLinesAllWhitespaces()
     {
-
-        var t =  GetText();
+        var t = GetText();
 
 
         return SH.SplitByWhiteSpaces(t);
     }
 
-    public  static List<string> GetLines()
+    public static List<string> GetLines()
     {
 #if !UNITTEST
         if (Instance == null)
@@ -63,7 +62,7 @@ public class ClipboardHelper
 #endif
     }
 
-    
+
 
     public static void SetText(string s)
     {
@@ -104,7 +103,7 @@ public class ClipboardHelper
         }
     }
 
-  
+
     public static void SetList(List<string> d)
     {
         if (Instance == null)

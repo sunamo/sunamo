@@ -12,52 +12,51 @@ namespace sunamo
         /// Jazyky které si může zvolit sám uživatel
         /// V klíči je zkratka jazyku, v hodnotě pak její plný název
         /// </summary>
-        static Dictionary<string, string> fixedLanguages = new Dictionary<string, string>();
+        private static Dictionary<string, string> s_fixedLanguages = new Dictionary<string, string>();
         /// <summary>
         /// Texty, které jazyky 
         /// V klíči je dvou znakový název jazyku, v hodnotě pak texty "Podle nastaveného jazyka OS" a "Depending on the OS language" 
         /// </summary>
-        static Dictionary<string, List<string>> systemLanguages = new Dictionary<string, List<string>>();
+        private static Dictionary<string, List<string>> s_systemLanguages = new Dictionary<string, List<string>>();
         /// <summary>
         /// V klíči je dvouznakový název jazyku, v hodnotě číslo tohoto jazyku, které je v třídě AppLang
         /// </summary>
-        static Dictionary<string, byte> languageCodes = new Dictionary<string, byte>();
+        private static Dictionary<string, byte> s_languageCodes = new Dictionary<string, byte>();
         /// <summary>
         /// Číslo 0
         /// </summary>
-        const byte fixedC = 0;
+        private const byte fixedC = 0;
         /// <summary>
         /// Číslo 1
         /// </summary>
-        const byte systemC = 1;
-        const byte dependingOnLanguage = 0;
+        private const byte systemC = 1;
+        private const byte dependingOnLanguage = 0;
         //const byte dependingOnCountry = 1;
         /// <summary>
         /// Text Podle nastaveného jazyka OS
         /// Ačkoliv má v názvu 0, používá se když typ jazyku není 0
         /// </summary>
-        const string cs0 = "Podle nastaveného jazyka OS";
+        private const string cs0 = "Podle nastaven\u00E9ho jazyka OS";
         //const string cs1 = "Podle nastaveného regionu";
         /// <summary>
         /// Text Depending on the OS language
         /// Ačkoliv má v názvu 0, používá se když typ jazyku není 0
         /// </summary>
-        const string en0 = "Depending on the OS language";
+        private const string en0 = "Depending on the OS language";
         //const string en1 = "Depending on the country";
         public static AppLang selectedInCB = null;
 
         static AppLangHelper()
         {
-            fixedLanguages.Add("cs", "Čeština");
-            fixedLanguages.Add("en", "English");
+            s_fixedLanguages.Add("cs", "\u010Ce\u0161tina");
+            s_fixedLanguages.Add("en", "English");
 
             List<string> systemLanguageCS = new List<string>();
             systemLanguageCS.Add(cs0);
             List<string> systemLanguageEN = new List<string>();
             systemLanguageEN.Add(en0);
-            systemLanguages.Add("cs", systemLanguageCS);
-            systemLanguages.Add("en", systemLanguageEN);
-
+            s_systemLanguages.Add("cs", systemLanguageCS);
+            s_systemLanguages.Add("en", systemLanguageEN);
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace sunamo
             if (actual.Type == fixedC)
             {
                 //l = (Langs)actual.Language;
-                vr = fixedLanguages[((Langs)actual.Language).ToString()];
+                vr = s_fixedLanguages[((Langs)actual.Language).ToString()];
             }
             else
             {
@@ -104,14 +103,14 @@ namespace sunamo
                 {
                     if (actual.Language == 0)
                     {
-                        vr = cs0 + AllStrings.swda + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                        vr = cs0 + AllStrings.swda + s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
                     }
                 }
                 else //if (depending.TwoLetterISOLanguageName == "en")
                 {
                     if (actual.Language == 0)
                     {
-                        vr = en0 + AllStrings.swda + fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                        vr = en0 + AllStrings.swda + s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
                     }
                 }
             }
@@ -215,7 +214,7 @@ namespace sunamo
             List<AppLang> vr = new List<AppLang>();
             selectedInCB = null;
             byte i = 0;
-            foreach (var item in fixedLanguages)
+            foreach (var item in s_fixedLanguages)
             {
                 AppLang al = new AppLang(fixedC, i);
                 if (selectedInCB == null)
@@ -231,7 +230,7 @@ namespace sunamo
             if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
             {
                 i = 0;
-                foreach (var item in systemLanguages["cs"])
+                foreach (var item in s_systemLanguages["cs"])
                 {
                     AppLang al = new AppLang(systemC, i);
                     if (selectedInCB == null)
@@ -248,7 +247,7 @@ namespace sunamo
             else
             {
                 i = 0;
-                foreach (var item in systemLanguages["en"])
+                foreach (var item in s_systemLanguages["en"])
                 {
                     AppLang al = new AppLang(systemC, i);
                     if (selectedInCB == null)

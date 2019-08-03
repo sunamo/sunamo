@@ -16,7 +16,6 @@ namespace sunamo.Collections
 
         public new void Add(T t)
         {
-
             if (dontAllow.Contains(t))
             {
 #if DEBUG
@@ -27,7 +26,6 @@ namespace sunamo.Collections
             {
                 base.Add(t);
             }
-            
         }
     }
 }

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-public abstract partial class AppDataBase<StorageFolder, StorageFile> 
+public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
-    string fileFolderWithAppsFiles = "";
+    private string _fileFolderWithAppsFiles = "";
     public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
 
     /// <summary>
@@ -49,7 +49,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
             bool isNull = Abstract.IsRootFolderNull();
             if (isNull)
             {
-                throw new Exception("Složka ke souborům aplikace nebyla zadána" + ".");
+                throw new Exception("Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + ".");
             }
 
             return rootFolder;
@@ -57,11 +57,11 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
 
         set
         {
-                rootFolder = value;
+            rootFolder = value;
         }
     }
 
-    
+
 
     public string RootFolderCommon(bool inFolderCommon)
     {
@@ -75,17 +75,17 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         return sunamo2;
     }
 
-   
-
-    
 
 
-public string GetFolderWithAppsFiles()
+
+
+
+    public string GetFolderWithAppsFiles()
     {
         //Common(true)
         string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
-        fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
-        FS.CreateUpfoldersPsysicallyUnlessThere(fileFolderWithAppsFiles);
-        return fileFolderWithAppsFiles;
+        _fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
+        FS.CreateUpfoldersPsysicallyUnlessThere(_fileFolderWithAppsFiles);
+        return _fileFolderWithAppsFiles;
     }
 }

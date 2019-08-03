@@ -19,7 +19,7 @@ public class XmlNamespacesHolder
     public XmlDocument ParseAndRemoveNamespaces(string content)
     {
         XmlDocument xd = new XmlDocument();
-        
+
 
         ParseAndRemoveNamespaces(content, xd.NameTable);
 
@@ -47,7 +47,7 @@ xml=http://www.w3.org/XML/1998/namespace
          */
         nsmgr = new XmlNamespaceManager(nt);
 
-        
+
 
         xd.LoadXml(content);
 
@@ -71,7 +71,6 @@ xml=http://www.w3.org/XML/1998/namespace
                     }
                     else
                     {
-
                     }
 
                     nsmgr.AddNamespace(key, att.Value);

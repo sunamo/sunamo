@@ -7,13 +7,13 @@ namespace sunamo.Helpers.Types
 {
     public class SelectedCastHelper<T> : ISelectedT<T>
     {
-        ISelectedT<T> selected = null;
+        private ISelectedT<T> _selected = null;
 
         public SelectedCastHelper(ISelectedT<T> selected)
         {
-            this.selected = selected;
+            _selected = selected;
         }
 
-        public T SelectedItem => (T)selected.SelectedItem;
+        public T SelectedItem => (T)_selected.SelectedItem;
     }
 }

@@ -13,8 +13,7 @@ namespace SunamoCode
     /// 2) type="System.Byte[], mscorlib"
     /// 3) Jakýkoliv typ implementující ISerializable type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64"
     /// </summary>
-    class ResourcesX
+    internal class ResourcesX
     {
-
     }
 }

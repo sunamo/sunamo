@@ -12,13 +12,10 @@ namespace sunamo.Values
 
         public GeoStates()
         {
-
         }
 
         public Dictionary<string, string> Init()
         {
-
-
             #region MyRegion
             statesFullNames = new Dictionary<string, string>();
 
@@ -36,7 +33,7 @@ namespace sunamo.Values
             statesFullNames.Add("AT", "Austria");
             statesFullNames.Add("AU", "Australia");
             statesFullNames.Add("AW", "Aruba");
-            statesFullNames.Add("AX", "Åland Islands");
+            statesFullNames.Add("AX", "\u00C5land Islands");
             statesFullNames.Add("AZ", "Azerbaijan");
             statesFullNames.Add("BA", "Bosnia and Herzegovina");
             statesFullNames.Add("BB", "Barbados");
@@ -47,7 +44,7 @@ namespace sunamo.Values
             statesFullNames.Add("BH", "Bahrain");
             statesFullNames.Add("BI", "Burundi");
             statesFullNames.Add("BJ", "Benin");
-            statesFullNames.Add("BL", "Saint Barthélemy");
+            statesFullNames.Add("BL", "Saint Barth\u00E9lemy");
             statesFullNames.Add("BM", "Bermuda");
             statesFullNames.Add("BN", "Brunei Darussalam");
             statesFullNames.Add("BO", "Bolivia, Plurinational State of");
@@ -65,7 +62,7 @@ namespace sunamo.Values
             statesFullNames.Add("CF", "Central African Republic");
             statesFullNames.Add("CG", "Congo");
             statesFullNames.Add("CH", "Switzerland");
-            statesFullNames.Add("CI", "Côte d'Ivoire");
+            statesFullNames.Add("CI", "C\u00F4te d'Ivoire");
             statesFullNames.Add("CK", "Cook Islands");
             statesFullNames.Add("CL", "Chile");
             statesFullNames.Add("CM", "Cameroon");
@@ -74,7 +71,7 @@ namespace sunamo.Values
             statesFullNames.Add("CR", "Costa Rica");
             statesFullNames.Add("CU", "Cuba");
             statesFullNames.Add("CV", "Cabo Verde");
-            statesFullNames.Add("CW", "Curaçao");
+            statesFullNames.Add("CW", "Cura\u00E7ao");
             statesFullNames.Add("CX", "Christmas Island");
             statesFullNames.Add("CY", "Cyprus");
             statesFullNames.Add("CZ", "Czech Republic");
@@ -209,7 +206,7 @@ namespace sunamo.Values
             statesFullNames.Add("PW", "Palau");
             statesFullNames.Add("PY", "Paraguay");
             statesFullNames.Add("QA", "Qatar");
-            statesFullNames.Add("RE", "Réunion");
+            statesFullNames.Add("RE", "R\u00E9union");
             statesFullNames.Add("RO", "Romania");
             statesFullNames.Add("RS", "Serbia");
             statesFullNames.Add("RU", "Russian Federation");
@@ -276,7 +273,6 @@ namespace sunamo.Values
 
 
             return statesFullNames;
-
         }
     }
 }

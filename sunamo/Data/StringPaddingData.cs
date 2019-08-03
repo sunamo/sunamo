@@ -40,7 +40,7 @@ public class StringPaddingData
     /// <summary>
     /// [Length-2] (penultimate / předposlední) 
     /// </summary>
-    public char lastChar2 = 'a'; 
+    public char lastChar2 = 'a';
     #endregion
 
     public string text = null;

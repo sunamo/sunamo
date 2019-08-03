@@ -8,13 +8,13 @@ namespace sunamo.Collections
 {
     public class TwoWayDictionary<T, U>
     {
-        Dictionary<T, U> d1 = new Dictionary<T, U>();
-        Dictionary<U, T> d2 = new Dictionary<U, T>();
+        private Dictionary<T, U> _d1 = new Dictionary<T, U>();
+        private Dictionary<U, T> _d2 = new Dictionary<U, T>();
 
         public void Add(T key, U value)
         {
-            d1.Add(key, value);
-            d2.Add(value, key);
+            _d1.Add(key, value);
+            _d2.Add(value, key);
         }
     }
 }

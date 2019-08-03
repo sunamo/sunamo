@@ -7,7 +7,6 @@ using sunamo;
 /// </summary>
 public partial class QSHelper
 {
-
     /// <summary>
     /// 
     /// </summary>
@@ -140,8 +139,4 @@ public partial class QSHelper
 
         sb.Append(AllStrings.rb);
     }
-
-
-
-
 }

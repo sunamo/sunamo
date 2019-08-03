@@ -12,6 +12,6 @@ namespace sunamo
     {
         Task<LogMessageAbstract<Color, StorageClass>> Initialize(DateTime datum, TypeOfMessage st, string zprava, Color color);
         Color Bg { get; set; }
-        string Message { get;  }
+        string Message { get; }
     }
 }

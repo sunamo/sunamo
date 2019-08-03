@@ -10,7 +10,6 @@ namespace sunamo.Essential
 
         private TypedDebugLogger() : base(DebugLogger.DebugWriteLine)
         {
-
         }
     }
 }

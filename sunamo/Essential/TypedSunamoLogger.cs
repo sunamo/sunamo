@@ -10,14 +10,11 @@ namespace sunamo.Essential
 
         private TypedSunamoLogger() : base(WriteLine)
         {
-
         }
 
         public static void WriteLine(TypeOfMessage tz, string text, params object[] args)
         {
             ThisApp.SetStatus(tz, text, args);
         }
-
-        
     }
 }

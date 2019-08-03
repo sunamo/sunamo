@@ -1,4 +1,5 @@
 ﻿using System;
 
-public partial class DTHelperFormalized{ 
+public partial class DTHelperFormalized
+{
 }

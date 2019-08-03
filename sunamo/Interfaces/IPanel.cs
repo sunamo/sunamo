@@ -6,6 +6,5 @@ namespace sunamo.Interfaces
 {
     public interface IPanel
     {
-        
     }
 }

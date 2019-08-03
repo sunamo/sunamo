@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace sunamo.Essential
 {
-
     public class ThisApp
     {
         public static bool check = false;
@@ -40,9 +39,8 @@ namespace sunamo.Essential
                 {
                     StatusSetted(st, format);
                 }
-                
             }
-         }
+        }
 
         public static void StatusFromText(string v)
         {

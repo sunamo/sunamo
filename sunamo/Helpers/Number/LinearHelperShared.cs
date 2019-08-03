@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 
-public partial class LinearHelper{ 
-/// <summary>
+public partial class LinearHelper
+{
+    /// <summary>
     /// Do A2 zadej číslo do kterého se bude počítat včetně.
     /// </summary>
     /// <param name = "from"></param>

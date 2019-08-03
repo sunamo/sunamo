@@ -6,13 +6,13 @@ namespace sunamo.Collections
     public class SafeStringCollection
     {
         public List<string> safeStringCollection = new List<string>();
-        List<char> unallowedChars = null;
-        char replaceFor;
+        private List<char> _unallowedChars = null;
+        private char _replaceFor;
 
         public SafeStringCollection(List<char> unallowedChars, char replaceFor)
         {
-            this.unallowedChars = unallowedChars;
-            this.replaceFor = replaceFor;
+            _unallowedChars = unallowedChars;
+            _replaceFor = replaceFor;
         }
 
         public void Add(string s)
@@ -22,9 +22,9 @@ namespace sunamo.Collections
             {
                 char letter = item;
 
-                if (unallowedChars.Contains(item))
+                if (_unallowedChars.Contains(item))
                 {
-                    letter = replaceFor;
+                    letter = _replaceFor;
                 }
 
                 stringBuilder.Append(letter);

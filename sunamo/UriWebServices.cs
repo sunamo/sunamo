@@ -26,8 +26,7 @@ public partial class UriWebServices
         public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%" + "";
         public const string wwwNahradniDilyZhCz = "http://www.nahradni-dily-zh.cz/search.asp?searchinput=%" + "";
         public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%" + "";
-        public static List<string>  All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
-
+        public static List<string> All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
     }
 
     public static class CdnProviders
@@ -45,7 +44,6 @@ public partial class UriWebServices
         //public const string cdnjs = "";
 
         public static readonly List<string> All = CA.ToListString(cdnjs, unpkg);
-
     }
 
     public static class RemoteJobs
@@ -89,16 +87,16 @@ public partial class UriWebServices
 
     public static class SpiceMarks
     {
-        static List<string> list = null;
-        
+        private static List<string> s_list = null;
+
         public static void SearchInAll(string spicyName)
         {
-            if (list == null)
+            if (s_list == null)
             {
-                list = new List<string>(CA.ToEnumerable("kotanyi", "avokádo", "nadir", "Orient", "Drago", "vítana", "svět bylinek"));
+                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", "Orient", "Drago", "v\u00EDtana", "sv\u011Bt bylinek"));
             }
 
-            foreach (var item in list)
+            foreach (var item in s_list)
             {
                 Process.Start(UriWebServices.GoogleSearch($"{item} koření {spicyName}"));
             }
@@ -112,8 +110,6 @@ public partial class UriWebServices
         public const string plnapenezenka = "https://www.plnapenezenka.cz/hledej/%s";
 
         public static readonly List<string> All = CA.ToListString(vratnepenize, tipli, plnapenezenka);
-
-
     }
 
     public static class EnglishMobileParts
@@ -171,8 +167,6 @@ Template for which I will find, have to be in derivates the same:
         public static void SearchInAll(string what)
         {
             UriWebServices.SearchInAll(All, what);
-
-
         }
 
         /// <summary>
@@ -219,8 +213,6 @@ Template for which I will find, have to be in derivates the same:
         {
             return FromChromeReplacement(letGoCz, what);
         }
-
-
     }
 
     /// <summary>
@@ -299,17 +291,15 @@ Template for which I will find, have to be in derivates the same:
         {
             return FromChromeReplacement(letGoCz, what);
         }
-
-
     }
 
     public static class SolarShops
     {
-        static List<string> shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
+        private static List<string> s_shops = new List<string>(CA.ToEnumerable("mulac.cz", "solar-eshop.cz", "karavan3nec.cz", "campi-shop.cz", "ges.cz", "dstechnik.cz", "emerx.cz", "vpcentrum.eu", "dexhal.cz"));
 
         public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%" + "";
         public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
-        
+
         public const string karavan3nec = @"http://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
         public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%" + "";
         public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%" + "";
@@ -321,14 +311,13 @@ Template for which I will find, have to be in derivates the same:
         //public const string dexhalCz = @"https://dexhal.cz/search?controller=search&orderby=position&orderway=desc&search_query=s&submit_search=Hledat";
 
         public static readonly List<string> All = CA.ToListString(mulacCz, solarEshop, karavan3nec, campiShopCz, gesCz, dstechnikCz, emerxCz);
-
     }
 
     public static void GoogleSearch(List<string> list)
     {
         foreach (var item in list)
         {
-            Process.Start( GoogleSearch(item));
+            Process.Start(GoogleSearch(item));
         }
     }
 
@@ -354,7 +343,7 @@ Template for which I will find, have to be in derivates the same:
     /// <returns></returns>
     private static string GoogleMaps(string item)
     {
-        return FromChromeReplacement( "https://www.google.com/maps/place/%" + "", item);
+        return FromChromeReplacement("https://www.google.com/maps/place/%" + "", item);
     }
 
     public static class Libraries
@@ -458,7 +447,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string WebShare(string item)
     {
-        return "https://webshare.cz/#/search?what=" + UrlEncode( item);
+        return "https://webshare.cz/#/search?what=" + UrlEncode(item);
     }
 
     public static string YouTubeProfile(string nick)
@@ -475,7 +464,7 @@ Template for which I will find, have to be in derivates the same:
     {
         foreach (var item in allRepairKitShops)
         {
-            Process.Start( GoogleSearchSite(item, v));
+            Process.Start(GoogleSearchSite(item, v));
         }
     }
 
@@ -489,7 +478,7 @@ Template for which I will find, have to be in derivates the same:
         }
         if (!string.IsNullOrEmpty(zoom))
         {
-            sb.Append( "&z=" + zoom);
+            sb.Append("&z=" + zoom);
         }
         return sb.ToString();
     }
@@ -502,18 +491,18 @@ Template for which I will find, have to be in derivates the same:
     public static string GoogleSearch(string s)
     {
         // q for reviews in czech and not translated 
-        return "https://www.google.cz/search?hl=cs&q=" + UrlEncode( s);
+        return "https://www.google.cz/search?hl=cs&q=" + UrlEncode(s);
     }
 
     public static string GoogleSearchSite(string site, string v)
     {
         //https://www.google.cz/search?q=site%3Asunamo.cz+s
-        return  "https://www.google.cz/search?q=site%3A" + site + "+" + UrlEncode( v);
+        return "https://www.google.cz/search?q=site%3A" + site + "+" + UrlEncode(v);
     }
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode( term));
+        return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode(term));
     }
 
     /// <summary>
@@ -524,7 +513,7 @@ Template for which I will find, have to be in derivates the same:
     /// <returns></returns>
     public static string GitRepoInVsts(string slnName)
     {
-        return "https://radekjancik.visualstudio.com/_git" + "/" + HttpUtility.UrlEncode( slnName);
+        return "https://radekjancik.visualstudio.com/_git" + "/" + HttpUtility.UrlEncode(slnName);
     }
 
     public static string AzureRepoWebUI(string slnName)
@@ -539,7 +528,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string MapyCz(string v)
     {
-        return FromChromeReplacement( "https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
+        return FromChromeReplacement("https://mapy.cz/?q=%s&sourceid=Searchmodule_1", v);
     }
 
     public static string UrlEncode(string s)

@@ -25,7 +25,6 @@ public class SunamoCodeHelper
             if (startWithTag == between)
             {
                 add = true;
-
             }
             else
             {
@@ -80,7 +79,6 @@ public class SunamoCodeHelper
                     {
                         firstInt = i;
                     }
-
                 }
                 else
                 {

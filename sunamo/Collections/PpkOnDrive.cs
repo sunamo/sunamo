@@ -21,6 +21,5 @@ public class PpkOnDrive : PpkOnDriveBase<string>
 
     public PpkOnDrive(string file2, bool load = true) : base(file2, load)
     {
-
     }
 }

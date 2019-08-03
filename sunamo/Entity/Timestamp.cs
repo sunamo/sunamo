@@ -11,7 +11,7 @@ public class Timestamp
 
     public static string[] GetAllTimeStamps(string p)
     {
-        List<string> vr = new List<string>(); 
+        List<string> vr = new List<string>();
         var s = SH.Split(p, AllChars.space, AllChars.dot);
         foreach (var item in s)
         {
@@ -24,7 +24,7 @@ public class Timestamp
                 var ch5 = item[5];
                 var ch7 = item[7];
                 var ch8 = item[8];
-                if (ch0 == 'T' &&char.IsDigit(ch1) && char.IsDigit(ch2) && char.IsDigit(ch4) && char.IsDigit(ch5) && char.IsDigit(ch7) && char.IsDigit(ch8))
+                if (ch0 == 'T' && char.IsDigit(ch1) && char.IsDigit(ch2) && char.IsDigit(ch4) && char.IsDigit(ch5) && char.IsDigit(ch7) && char.IsDigit(ch8))
                 {
                     vr.Add(item);
                 }

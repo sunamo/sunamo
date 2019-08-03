@@ -10,24 +10,24 @@ namespace sunamo.Generators.Text
     /// HtmlSB(Same as InstantSB, use br)
     /// 
     /// </summary>
-    public class TextBuilder 
+    public class TextBuilder
     {
-        static Type type = typeof(TextBuilder);
+        private static Type s_type = typeof(TextBuilder);
 
-        bool canUndo = false;
-        int lastIndex = -1;
-        string lastText = "";
+        private bool _canUndo = false;
+        private int _lastIndex = -1;
+        private string _lastText = "";
         public StringBuilder sb = null;
         public string prependEveryNoWhite = string.Empty;
         /// <summary>
         /// For PowershellRunner
         /// </summary>
         public List<string> list = null;
-        bool useList = false;
+        private bool _useList = false;
 
         public void Clear()
         {
-            if (useList)
+            if (_useList)
             {
                 list.Clear();
             }
@@ -39,7 +39,7 @@ namespace sunamo.Generators.Text
 
         public TextBuilder(bool useList = false)
         {
-            this.useList = useList;
+            _useList = useList;
             if (useList)
             {
                 list = new List<string>();
@@ -54,44 +54,43 @@ namespace sunamo.Generators.Text
         {
             get
             {
-                if (useList)
+                if (_useList)
                 {
                     return false;
                 }
-                return canUndo;
+                return _canUndo;
             }
             set
             {
-
-                canUndo = value;
+                _canUndo = value;
                 if (!value)
                 {
-                    lastIndex = -1;
-                    lastText = "";
+                    _lastIndex = -1;
+                    _lastText = "";
                 }
             }
         }
 
-        void UndoIsNotAllowed(string method)
+        private void UndoIsNotAllowed(string method)
         {
-            ThrowExceptions.IsNotAllowed(type, method, "Undo");
+            ThrowExceptions.IsNotAllowed(s_type, method, "Undo");
         }
 
         public void Undo()
         {
-            if (useList)
+            if (_useList)
             {
                 UndoIsNotAllowed("Undo");
             }
-            if (lastIndex != -1)
+            if (_lastIndex != -1)
             {
-                sb.Remove(lastIndex, lastText.Length);
+                sb.Remove(_lastIndex, _lastText.Length);
             }
         }
 
         public void Append(string s)
         {
-            if (useList)
+            if (_useList)
             {
                 CA.AppendToLastElement(list, s);
             }
@@ -105,14 +104,14 @@ namespace sunamo.Generators.Text
 
         private void SetUndo(string text)
         {
-            if (useList)
+            if (_useList)
             {
                 UndoIsNotAllowed("SetUndo");
             }
             if (CanUndo)
             {
-                lastIndex = sb.Length;
-                lastText = text;
+                _lastIndex = sb.Length;
+                _lastText = text;
             }
         }
 
@@ -130,9 +129,9 @@ namespace sunamo.Generators.Text
 
         public void AppendLine(string s)
         {
-            if (useList)
+            if (_useList)
             {
-                list.Add( prependEveryNoWhite+ s);
+                list.Add(prependEveryNoWhite + s);
             }
             else
             {
@@ -147,7 +146,7 @@ namespace sunamo.Generators.Text
         /// <returns></returns>
         public override string ToString()
         {
-            if (useList)
+            if (_useList)
             {
                 return SH.JoinNL(list);
             }

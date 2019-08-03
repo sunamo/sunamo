@@ -9,8 +9,8 @@ public class FactoryColumnDB : IFactoryColumnDB<SloupecDB, TypeAffinity>
     public SloupecDB CreateInstance(TypeAffinity typ, string nazev, Signed signed, bool canBeNull, bool mustBeUnique, string referencesTable, string referencesColumn, bool primaryKey)
     {
         SloupecDB column = new SloupecDB();
-        
-        
+
+
         bool isNewId = false;
         column.typ = typ; // ConvertSqlDbType.ToSqlDbType(typ, out isNewId);
         column.isNewId = isNewId;

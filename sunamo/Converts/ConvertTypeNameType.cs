@@ -70,6 +70,6 @@ public class ConvertTypeNameType
             case "UInt64":
                 return typeof(ulong);
         }
-        throw new Exception("Nepodporovaný typ");
+        throw new Exception("Nepodporovan\u00FD typ");
     }
 }

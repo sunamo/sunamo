@@ -29,7 +29,7 @@ public class ConvertTypeNameTypeNumbers
                 return typeof(decimal);
             case "Decimal":
                 return typeof(decimal);
-           case "byte":
+            case "byte":
                 return typeof(byte);
             case "Byte":
                 return typeof(byte);

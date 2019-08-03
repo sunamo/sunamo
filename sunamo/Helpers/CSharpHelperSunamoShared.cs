@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-public partial class CSharpHelperSunamo{ 
-public static string DefaultValueForType(string type)
+public partial class CSharpHelperSunamo
+{
+    public static string DefaultValueForType(string type)
     {
         if (type.Contains(AllStrings.dot))
         {
@@ -38,9 +39,9 @@ public static string DefaultValueForType(string type)
             case "Guid":
                 return "Guid.Empty";
             case "char":
-                throw new Exception("Nepodporovaný typ");
+                throw new Exception("Nepodporovan\u00FD typ");
         }
 
-        throw new Exception("Nepodporovaný typ");
+        throw new Exception("Nepodporovan\u00FD typ");
     }
 }

@@ -36,7 +36,7 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
             case "ulong":
                 return "System.UInt64";
         }
-        throw new Exception("Nepodporované klíčové slovo");
+        throw new Exception("Nepodporovan\u00E9 kl\u00ED\u010Dov\u00E9 slovo");
     }
 
     public static string ToShortcut(object instance)
@@ -84,7 +84,7 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
             case "System.Int64":
                 return "long";
             case "System.UInt16":
-                return "ushort"; 
+                return "ushort";
             case "System.UInt32":
                 return "uint";
             case "System.UInt64":
@@ -93,7 +93,7 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
         }
         if (throwExceptionWhenNotBasicType)
         {
-            throw new Exception("Nepodporovaný typ");
+            throw new Exception("Nepodporovan\u00FD typ");
         }
         return fullName;
     }

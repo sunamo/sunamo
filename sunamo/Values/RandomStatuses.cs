@@ -14,7 +14,7 @@ namespace sunamo.Values
 
         public void SetAllTypes()
         {
-            foreach (var item in EnumHelper.GetValues< TypeOfMessage>())
+            foreach (var item in EnumHelper.GetValues<TypeOfMessage>())
             {
                 SetStatusOfType(item);
             }

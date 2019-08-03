@@ -20,64 +20,65 @@ public static class RLData
 
 public class TranslateDictionary : IDictionary<string, string>
 {
-    static Type type = typeof(TranslateDictionary);
+    private static Type s_type = typeof(TranslateDictionary);
 
     public static string basePathSolution = null;
 
-    Dictionary<string, string> d = new Dictionary<string, string>();
-    Langs l = Langs.en;
+    private Dictionary<string, string> _d = new Dictionary<string, string>();
+    private Langs _l = Langs.en;
 
     public TranslateDictionary(Langs l)
     {
-        this.l = l;
+        _l = l;
     }
 
     public string this[string key]
     {
-        get  
-            {
-
-            if (!d.ContainsKey(key))
+        get
+        {
+            if (!_d.ContainsKey(key))
             {
                 //XlfResourcesH.initialized = false;
                 //XlfResourcesH.SaveResouresToRL(basePathSolution);
-                ThrowExceptions.Custom(type, RH.CallingMethod(), key + " is not in " + l + " dictionary");
+                ThrowExceptions.Custom(s_type, RH.CallingMethod(), key + " is not in " + _l + " dictionary");
                 //return string.Empty;
             }
-            return d[key];
-        } set => d[key] = value; }
+            return _d[key];
+        }
+        set => _d[key] = value;
+    }
 
-    public ICollection<string> Keys => d.Keys;
+    public ICollection<string> Keys => _d.Keys;
 
-    public ICollection<string> Values => d.Values;
+    public ICollection<string> Values => _d.Values;
 
-    public int Count => d.Count;
+    public int Count => _d.Count;
 
     public bool IsReadOnly => false;
 
     public void Add(string key, string value)
     {
-        d.Add(key, value);
+        _d.Add(key, value);
     }
 
     public void Add(KeyValuePair<string, string> item)
     {
-        d.Add(item.Key, item.Value);
+        _d.Add(item.Key, item.Value);
     }
 
     public void Clear()
     {
-        d.Clear();
+        _d.Clear();
     }
 
     public bool Contains(KeyValuePair<string, string> item)
     {
-        return d.ContainsKey(item.Key);
+        return _d.ContainsKey(item.Key);
     }
 
     public bool ContainsKey(string key)
     {
-        return d.ContainsKey(key);
+        return _d.ContainsKey(key);
     }
 
     /// <summary>
@@ -91,7 +92,7 @@ public class TranslateDictionary : IDictionary<string, string>
 
         int i = 0;
         bool add = false;
-        foreach (var item in d)
+        foreach (var item in _d)
         {
             if (i == arrayIndex && !add)
             {
@@ -110,26 +111,26 @@ public class TranslateDictionary : IDictionary<string, string>
 
     public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
     {
-        return d.GetEnumerator();
+        return _d.GetEnumerator();
     }
 
     public bool Remove(string key)
     {
-        return d.Remove(key);
+        return _d.Remove(key);
     }
 
     public bool Remove(KeyValuePair<string, string> item)
     {
-        return d.Remove(item.Key);
+        return _d.Remove(item.Key);
     }
 
     public bool TryGetValue(string key, out string value)
     {
-        return d.TryGetValue(key, out value);
+        return _d.TryGetValue(key, out value);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return d.GetEnumerator();
+        return _d.GetEnumerator();
     }
 }

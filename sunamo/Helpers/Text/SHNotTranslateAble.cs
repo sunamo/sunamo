@@ -22,7 +22,5 @@ public static partial class SHNotTranslateAble
         value = SH.ReplaceAll(value, "\'", "\\\'");
         return value;
     }
-
-    
 }
 

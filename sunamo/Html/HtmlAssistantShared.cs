@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-public partial class HtmlAssistant{ 
-
+public partial class HtmlAssistant
+{
     public static string InnerText(HtmlNode item, bool recursive, string tag)
     {
         var node = HtmlAgilityHelper.Node(item, recursive, tag);

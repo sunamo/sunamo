@@ -7,7 +7,7 @@ namespace DocArch.SqLite
 {
     public static class GeneratorSqLite
     {
-        static Type type = typeof(GeneratorSqLite);
+        private static Type s_type = typeof(GeneratorSqLite);
 
         /// <summary>
         /// Může vrátit null když tabulka bude existovat
@@ -20,8 +20,6 @@ namespace DocArch.SqLite
         /// <returns></returns>
         public static string CreateTable(string table, ColumnsDB sloupce, bool dynamicTables, SQLiteConnection conn)
         {
-
-
             StringBuilder sb = new StringBuilder();
             bool exists = StoredProceduresSqliteI.ci.SelectExistsTable(table, conn);
             if (!exists)
@@ -48,7 +46,7 @@ namespace DocArch.SqLite
             sb.AddItem((object)(var.Type + var.Delka));
             var t = var.Type;
 
-         
+
 
             if (!var.CanBeNull)
             {
@@ -74,8 +72,7 @@ namespace DocArch.SqLite
             {
                 if (var.referencesTable != null)
                 {
-
-                    ThrowExceptions.Custom(type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
+                    ThrowExceptions.Custom(s_type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
 
                     //sb.AddItem((object)"CONSTRAINT");
                     //sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));

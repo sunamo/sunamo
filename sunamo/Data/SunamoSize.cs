@@ -5,24 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class SunamoSize
-    {
-    
-
+public class SunamoSize
+{
     public double Width { get; set; }
-        public double Height { get; set; }
+    public double Height { get; set; }
 
-        public SunamoSize()
-        {
+    public SunamoSize()
+    {
+    }
 
-        }
-
-        public SunamoSize(int width, int height)
-        {
-            Width = width;
-            Height = height;
-        }
-
-    
+    public SunamoSize(int width, int height)
+    {
+        Width = width;
+        Height = height;
+    }
 }
 

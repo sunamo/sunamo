@@ -1,4 +1,5 @@
-﻿namespace sunamo
+﻿
+namespace sunamo
 {
     public class BitHelper
     {
@@ -13,7 +14,5 @@
             }
             return true;
         }
-
-
     }
 }

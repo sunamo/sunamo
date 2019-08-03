@@ -45,7 +45,6 @@ namespace DocArch.SqLite
                 string nahraditCim = ReplaceValueOnlyOne(p);
 
                 f = f.Replace(AllStrings.cbl + i.ToString() + AllStrings.cbr, nahraditCim);
-
             }
             else
             {
@@ -94,7 +93,6 @@ namespace DocArch.SqLite
                     nahraditCim = nahraditCim.Replace(AllStrings.comma, AllStrings.dot);
                 }
                 return nahraditCim.Replace("'", "");
-
             }
 
             return "NULL";
@@ -142,7 +140,6 @@ namespace DocArch.SqLite
 
         public string GetColumnsWithoutBracets(string[] sloupce)
         {
-
             StringBuilder sb = new StringBuilder();
             //sb.Append(AllStrings.lb);
             foreach (String var in sloupce)

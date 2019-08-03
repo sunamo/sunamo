@@ -8,5 +8,4 @@ using System.Threading.Tasks;
 
 public partial class PicturesSunamo
 {
-   
 }

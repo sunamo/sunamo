@@ -11,7 +11,6 @@ namespace sunamo.Data
     {
         public SunamoHttpPostedFile()
         {
-
         }
 
         public SunamoHttpPostedFile(long ContentLength, string ContentType, string FileName, Stream InputStream)

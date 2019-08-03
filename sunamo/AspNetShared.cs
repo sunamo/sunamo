@@ -1,12 +1,13 @@
 ﻿using System;
 
-public static partial class AspNet{
-    const string error = "error" + ":";
-    const string warning = "warning" + ":";
-    const string success = "success" + ":";
-    const string info = "info" + ":";
-    const string information = "information" + ":";
-    const string appeal = "appeal" + ":";
+public static partial class AspNet
+{
+    private const string error = "error" + ":";
+    private const string warning = "warning" + ":";
+    private const string success = "success" + ":";
+    private const string info = "info" + ":";
+    private const string information = "information" + ":";
+    private const string appeal = "appeal" + ":";
 
     /// <summary>
     /// If dont start with none, return Ordinal
@@ -42,6 +43,4 @@ public static partial class AspNet{
 
         return TypeOfMessage.Ordinal;
     }
-
-    
 }

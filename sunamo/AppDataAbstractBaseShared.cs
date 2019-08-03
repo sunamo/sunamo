@@ -5,14 +5,14 @@ using System.Text;
 
 namespace sunamo
 {
-    public  abstract partial class AppDataAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
+    public abstract partial class AppDataAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
         public abstract StorageFolder GetRootFolder();
-        
+
 
         protected abstract void SaveFile(string content, StorageFile sf);
 
-        
+
 
         public abstract StorageFolder GetFolder(AppFolders af);
 
@@ -22,7 +22,7 @@ namespace sunamo
         /// <returns></returns>
         public abstract bool IsRootFolderOk();
         public abstract void AppendToFile(AppFolders af, string file, string value);
-        public abstract void AppendToFile( string value, StorageFile file);
+        public abstract void AppendToFile(string value, StorageFile file);
 
         /// <summary>
         /// G path file A2 in AF A1.

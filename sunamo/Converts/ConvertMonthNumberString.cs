@@ -34,9 +34,8 @@ public class ConvertMonthNumberString //: IConvertNumberString
                 return 11;
             case "December":
                 return 12;
-
         }
-        throw new Exception("Špatný anglický název měsíce" + " " + "" + s + " " + " " + " " + " " + "metodě ConvertMonthNumberString.ToNumber()");
+        throw new Exception("\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce" + " " + "" + s + " " + " " + " " + " " + "metod\u011B ConvertMonthNumberString.ToNumber()");
     }
 
     /// <summary>

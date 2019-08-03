@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public static class StringExtensions
-    {
-        
-    }
+public static class StringExtensions
+{
+}
 

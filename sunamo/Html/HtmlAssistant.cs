@@ -18,7 +18,7 @@ public partial class HtmlAssistant
         return SplitByTag(input, "br");
     }
 
-    public static List< string> SplitByTag(string input, string d)
+    public static List<string> SplitByTag(string input, string d)
     {
         var ih = input;
         ih = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(ih);

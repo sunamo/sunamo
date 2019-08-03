@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 
-    public class ValueLabel
-    {
-        string value2 = null;
-    string label2 = null;
+public class ValueLabel
+{
+    private string _value2 = null;
+    private string _label2 = null;
 
     public string value
     {
         get
         {
-            return value2;
+            return _value2;
         }
         set
         {
-            value2 = value;
+            _value2 = value;
         }
     }
 
@@ -23,18 +23,18 @@ using System.Linq;
     {
         get
         {
-            return label2;
+            return _label2;
         }
         set
         {
-            label2 = value;
+            _label2 = value;
         }
     }
 
     public ValueLabel(string value, string label)
     {
-        value2 = value;
-        this.label2 = label;
+        _value2 = value;
+        _label2 = label;
     }
 
     /// <summary>
@@ -47,4 +47,4 @@ using System.Linq;
     {
         return new ValueLabel(value, label);
     }
-    }
+}

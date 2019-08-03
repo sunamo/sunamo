@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.Values
 {
-    public static partial  class Consts
+    public static partial class Consts
     {
         /// <summary>
         /// Here because is use in WpfApp1, AllProjectsSearch etc.
@@ -15,6 +15,5 @@ namespace sunamo.Values
 
         public const string cs = "cs ";
         public const string en = "en ";
-
     }
 }

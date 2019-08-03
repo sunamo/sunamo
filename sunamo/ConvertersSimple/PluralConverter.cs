@@ -18,7 +18,7 @@ namespace sunamo
         /// <summary>
         /// Store irregular plurals in a dictionary
         /// </summary>
-        private static Dictionary<string, string> _dictionary = new Dictionary<string, string>();
+        private static Dictionary<string, string> s_dictionary = new Dictionary<string, string>();
 
         #region Constructors
         /// <summary>
@@ -31,118 +31,118 @@ namespace sunamo
 
         private void Initialize()
         {
-            if (!_dictionary.ContainsKey("afterlife"))
+            if (!s_dictionary.ContainsKey("afterlife"))
             {
-                _dictionary.Add("afterlife", "afterlives");
-                _dictionary.Add("alga", "algae");
-                _dictionary.Add("alumna", "alumnae");
-                _dictionary.Add("alumnus", "alumni");
-                _dictionary.Add("analysis", "analyses");
-                _dictionary.Add("antenna", "antennae");
-                _dictionary.Add("appendix", "appendices");
-                _dictionary.Add("axis", "axes");
-                _dictionary.Add("bacillus", "bacilli");
-                _dictionary.Add("basis", "bases");
-                _dictionary.Add("Bedouin", "Bedouin");
-                _dictionary.Add("cactus", "cacti");
-                _dictionary.Add("calf", "calves");
-                _dictionary.Add("cherub", "cherubim");
-                _dictionary.Add("child", "children");
-                _dictionary.Add("cod", "cod");
-                _dictionary.Add("cookie", "cookies");
-                _dictionary.Add("criterion", "criteria");
-                _dictionary.Add("curriculum", "curricula");
-                _dictionary.Add("datum", "data");
-                _dictionary.Add("deer", "deer");
-                _dictionary.Add("diagnosis", "diagnoses");
-                _dictionary.Add("die", "dice");
-                _dictionary.Add("dormouse", "dormice");
-                _dictionary.Add("elf", "elves");
-                _dictionary.Add("elk", "elk");
-                _dictionary.Add("erratum", "errata");
-                _dictionary.Add("esophagus", "esophagi");
-                _dictionary.Add("fauna", "faunae");
-                _dictionary.Add("fish", "fish");
-                _dictionary.Add("flora", "florae");
-                _dictionary.Add("focus", "foci");
-                _dictionary.Add("foot", "feet");
-                _dictionary.Add("formula", "formulae");
-                _dictionary.Add("fundus", "fundi");
-                _dictionary.Add("fungus", "fungi");
-                _dictionary.Add("genie", "genii");
-                _dictionary.Add("genus", "genera");
-                _dictionary.Add("goose", "geese");
-                _dictionary.Add("grouse", "grouse");
-                _dictionary.Add("hake", "hake");
-                _dictionary.Add("half", "halves");
-                _dictionary.Add("headquarters", "headquarters");
-                _dictionary.Add("hippo", "hippos");
-                _dictionary.Add("hippopotamus", "hippopotami");
-                _dictionary.Add("hoof", "hooves");
-                _dictionary.Add("housewife", "housewives");
-                _dictionary.Add("hypothesis", "hypotheses");
-                _dictionary.Add("index", "indices");
-                _dictionary.Add("jackknife", "jackknives");
-                _dictionary.Add("knife", "knives");
-                _dictionary.Add("labium", "labia");
-                _dictionary.Add("larva", "larvae");
-                _dictionary.Add("leaf", "leaves");
-                _dictionary.Add("life", "lives");
-                _dictionary.Add("loaf", "loaves");
-                _dictionary.Add("louse", "lice");
-                _dictionary.Add("magus", "magi");
-                _dictionary.Add("man", "men");
-                _dictionary.Add("memorandum", "memoranda");
-                _dictionary.Add("midwife", "midwives");
-                _dictionary.Add("millennium", "millennia");
-                _dictionary.Add("moose", "moose");
-                _dictionary.Add("mouse", "mice");
-                _dictionary.Add("nebula", "nebulae");
-                _dictionary.Add("neurosis", "neuroses");
-                _dictionary.Add("nova", "novas");
-                _dictionary.Add("nucleus", "nuclei");
-                _dictionary.Add("oesophagus", "oesophagi");
-                _dictionary.Add("offspring", "offspring");
-                _dictionary.Add("ovum", "ova");
-                _dictionary.Add("ox", "oxen");
-                _dictionary.Add("papyrus", "papyri");
-                _dictionary.Add("passerby", "passersby");
-                _dictionary.Add("penknife", "penknives");
-                _dictionary.Add("person", "people");
-                _dictionary.Add("phenomenon", "phenomena");
-                _dictionary.Add("placenta", "placentae");
-                _dictionary.Add("pocketknife", "pocketknives");
-                _dictionary.Add("pupa", "pupae");
-                _dictionary.Add("radius", "radii");
-                _dictionary.Add("reindeer", "reindeer");
-                _dictionary.Add("retina", "retinae");
-                _dictionary.Add("rhinoceros", "rhinoceros");
-                _dictionary.Add("roe", "roe");
-                _dictionary.Add("salmon", "salmon");
-                _dictionary.Add("scarf", "scarves");
-                _dictionary.Add("self", "selves");
-                _dictionary.Add("seraph", "seraphim");
-                _dictionary.Add("series", "series");
-                _dictionary.Add("sheaf", "sheaves");
-                _dictionary.Add("sheep", "sheep");
-                _dictionary.Add("shelf", "shelves");
-                _dictionary.Add("species", "species");
-                _dictionary.Add("spectrum", "spectra");
-                _dictionary.Add("stimulus", "stimuli");
-                _dictionary.Add("stratum", "strata");
-                _dictionary.Add("supernova", "supernovas");
-                _dictionary.Add("swine", "swine");
-                _dictionary.Add("terminus", "termini");
-                _dictionary.Add("thesaurus", "thesauri");
-                _dictionary.Add("thesis", "theses");
-                _dictionary.Add("thief", "thieves");
-                _dictionary.Add("trout", "trout");
-                _dictionary.Add("vulva", "vulvae");
-                _dictionary.Add("wife", "wives");
-                _dictionary.Add("wildebeest", "wildebeest");
-                _dictionary.Add("wolf", "wolves");
-                _dictionary.Add("woman", "women");
-                _dictionary.Add("yen", "yen");
+                s_dictionary.Add("afterlife", "afterlives");
+                s_dictionary.Add("alga", "algae");
+                s_dictionary.Add("alumna", "alumnae");
+                s_dictionary.Add("alumnus", "alumni");
+                s_dictionary.Add("analysis", "analyses");
+                s_dictionary.Add("antenna", "antennae");
+                s_dictionary.Add("appendix", "appendices");
+                s_dictionary.Add("axis", "axes");
+                s_dictionary.Add("bacillus", "bacilli");
+                s_dictionary.Add("basis", "bases");
+                s_dictionary.Add("Bedouin", "Bedouin");
+                s_dictionary.Add("cactus", "cacti");
+                s_dictionary.Add("calf", "calves");
+                s_dictionary.Add("cherub", "cherubim");
+                s_dictionary.Add("child", "children");
+                s_dictionary.Add("cod", "cod");
+                s_dictionary.Add("cookie", "cookies");
+                s_dictionary.Add("criterion", "criteria");
+                s_dictionary.Add("curriculum", "curricula");
+                s_dictionary.Add("datum", "data");
+                s_dictionary.Add("deer", "deer");
+                s_dictionary.Add("diagnosis", "diagnoses");
+                s_dictionary.Add("die", "dice");
+                s_dictionary.Add("dormouse", "dormice");
+                s_dictionary.Add("elf", "elves");
+                s_dictionary.Add("elk", "elk");
+                s_dictionary.Add("erratum", "errata");
+                s_dictionary.Add("esophagus", "esophagi");
+                s_dictionary.Add("fauna", "faunae");
+                s_dictionary.Add("fish", "fish");
+                s_dictionary.Add("flora", "florae");
+                s_dictionary.Add("focus", "foci");
+                s_dictionary.Add("foot", "feet");
+                s_dictionary.Add("formula", "formulae");
+                s_dictionary.Add("fundus", "fundi");
+                s_dictionary.Add("fungus", "fungi");
+                s_dictionary.Add("genie", "genii");
+                s_dictionary.Add("genus", "genera");
+                s_dictionary.Add("goose", "geese");
+                s_dictionary.Add("grouse", "grouse");
+                s_dictionary.Add("hake", "hake");
+                s_dictionary.Add("half", "halves");
+                s_dictionary.Add("headquarters", "headquarters");
+                s_dictionary.Add("hippo", "hippos");
+                s_dictionary.Add("hippopotamus", "hippopotami");
+                s_dictionary.Add("hoof", "hooves");
+                s_dictionary.Add("housewife", "housewives");
+                s_dictionary.Add("hypothesis", "hypotheses");
+                s_dictionary.Add("index", "indices");
+                s_dictionary.Add("jackknife", "jackknives");
+                s_dictionary.Add("knife", "knives");
+                s_dictionary.Add("labium", "labia");
+                s_dictionary.Add("larva", "larvae");
+                s_dictionary.Add("leaf", "leaves");
+                s_dictionary.Add("life", "lives");
+                s_dictionary.Add("loaf", "loaves");
+                s_dictionary.Add("louse", "lice");
+                s_dictionary.Add("magus", "magi");
+                s_dictionary.Add("man", "men");
+                s_dictionary.Add("memorandum", "memoranda");
+                s_dictionary.Add("midwife", "midwives");
+                s_dictionary.Add("millennium", "millennia");
+                s_dictionary.Add("moose", "moose");
+                s_dictionary.Add("mouse", "mice");
+                s_dictionary.Add("nebula", "nebulae");
+                s_dictionary.Add("neurosis", "neuroses");
+                s_dictionary.Add("nova", "novas");
+                s_dictionary.Add("nucleus", "nuclei");
+                s_dictionary.Add("oesophagus", "oesophagi");
+                s_dictionary.Add("offspring", "offspring");
+                s_dictionary.Add("ovum", "ova");
+                s_dictionary.Add("ox", "oxen");
+                s_dictionary.Add("papyrus", "papyri");
+                s_dictionary.Add("passerby", "passersby");
+                s_dictionary.Add("penknife", "penknives");
+                s_dictionary.Add("person", "people");
+                s_dictionary.Add("phenomenon", "phenomena");
+                s_dictionary.Add("placenta", "placentae");
+                s_dictionary.Add("pocketknife", "pocketknives");
+                s_dictionary.Add("pupa", "pupae");
+                s_dictionary.Add("radius", "radii");
+                s_dictionary.Add("reindeer", "reindeer");
+                s_dictionary.Add("retina", "retinae");
+                s_dictionary.Add("rhinoceros", "rhinoceros");
+                s_dictionary.Add("roe", "roe");
+                s_dictionary.Add("salmon", "salmon");
+                s_dictionary.Add("scarf", "scarves");
+                s_dictionary.Add("self", "selves");
+                s_dictionary.Add("seraph", "seraphim");
+                s_dictionary.Add("series", "series");
+                s_dictionary.Add("sheaf", "sheaves");
+                s_dictionary.Add("sheep", "sheep");
+                s_dictionary.Add("shelf", "shelves");
+                s_dictionary.Add("species", "species");
+                s_dictionary.Add("spectrum", "spectra");
+                s_dictionary.Add("stimulus", "stimuli");
+                s_dictionary.Add("stratum", "strata");
+                s_dictionary.Add("supernova", "supernovas");
+                s_dictionary.Add("swine", "swine");
+                s_dictionary.Add("terminus", "termini");
+                s_dictionary.Add("thesaurus", "thesauri");
+                s_dictionary.Add("thesis", "theses");
+                s_dictionary.Add("thief", "thieves");
+                s_dictionary.Add("trout", "trout");
+                s_dictionary.Add("vulva", "vulvae");
+                s_dictionary.Add("wife", "wives");
+                s_dictionary.Add("wildebeest", "wildebeest");
+                s_dictionary.Add("wolf", "wolves");
+                s_dictionary.Add("woman", "women");
+                s_dictionary.Add("yen", "yen");
             }
         }
         #endregion //Constructors
@@ -161,10 +161,10 @@ namespace sunamo
             {
                 return word; //it's already a plural
             }
-            else if (_dictionary.ContainsKey(word.ToLower()))
+            else if (s_dictionary.ContainsKey(word.ToLower()))
             //it's an irregular plural, use the word from the dictionary
             {
-                return _dictionary[word.ToLower()];
+                return s_dictionary[word.ToLower()];
             }
             if (word.Length <= 2)
             {
@@ -235,9 +235,9 @@ namespace sunamo
         public string ConvertFrom(string word)
         {
             word = word.ToLower();
-            if (_dictionary.ContainsValue(word))
+            if (s_dictionary.ContainsValue(word))
             {
-                foreach (KeyValuePair<string, string> kvp in _dictionary)
+                foreach (KeyValuePair<string, string> kvp in s_dictionary)
                 {
                     if (kvp.Value.ToLower() == word) return kvp.Key;
                 }
@@ -319,14 +319,14 @@ namespace sunamo
         /// </summary>
         /// <param name="word">word to test</param>
         /// <returns>true if a word is plural</returns>
-        static bool TestIsPlural(string word)
+        private static bool TestIsPlural(string word)
         {
             word = word.ToLower();
             if (word.Length <= 2)
             {
                 return false; // not a word that can be made singular if only two letters!
             }
-            if (_dictionary.ContainsValue(word.ToLower()))
+            if (s_dictionary.ContainsValue(word.ToLower()))
             {
                 return true; //it's definitely already a plural
             }
@@ -392,6 +392,6 @@ namespace sunamo
         }
         #endregion
 
-      
+
     }
 }

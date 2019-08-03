@@ -10,56 +10,57 @@ public partial class DTHelper
         return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
     }
 
-public static DateTime IsValidTimeText(string r)
+    public static DateTime IsValidTimeText(string r)
     {
         return DTHelperMulti.IsValidTimeText(r);
     }
 
-public static DateTime IsValidDateTimeText(string datum)
+    public static DateTime IsValidDateTimeText(string datum)
     {
         return DTHelperMulti.IsValidDateTimeText(datum);
     }
 
-public static DateTime IsValidDateText(string r)
+    public static DateTime IsValidDateText(string r)
     {
         return DTHelperMulti.IsValidDateText(r);
     }
 
-public static DateTime ParseDateUSA(string input)
+    public static DateTime ParseDateUSA(string input)
     {
         return DTHelperEn.ParseDateUSA(input);
     }
 
-public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
+    public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
     {
         return DTHelperCs.CalculateAgeAndAddRightStringKymCim(dateTime, calculateTime, l, dtMinVal);
     }
 
-public static string MakeUpTo2NumbersToZero(int p)
+    public static string MakeUpTo2NumbersToZero(int p)
     {
         return DTHelperGeneral.MakeUpTo2NumbersToZero(p);
     }
 
-public static string TimeToStringAngularTime(DateTime dt)
+    public static string TimeToStringAngularTime(DateTime dt)
     {
         return DTHelperCode.TimeToStringAngularTime(dt);
     }
 
-public static string DateToStringAngularDate(DateTime dt)
+    public static string DateToStringAngularDate(DateTime dt)
     {
         return DTHelperCode.DateToStringAngularDate(dt);
     }
 
-public static string DateToString(DateTime p, Langs l)
+    public static string DateToString(DateTime p, Langs l)
     {
         return DTHelperMulti.DateToString(p, l);
     }
 
-public static DateTime StringToDateTimeFormalizeDate(string p)
+    public static DateTime StringToDateTimeFormalizeDate(string p)
     {
-        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);    }
+        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);
+    }
 
-public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }

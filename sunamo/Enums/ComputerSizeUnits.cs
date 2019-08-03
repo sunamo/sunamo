@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sunamo.Enums
 {
-    public enum ComputerSizeUnits : byte 
+    public enum ComputerSizeUnits : byte
     {
         /// <summary>
         /// Když se má automaticky vyhodnotit nejsprávnější jednotka

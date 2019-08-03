@@ -31,13 +31,13 @@ namespace SunamoTidy
                 doc.WrapSections = false;
                 doc.WrapAttributeValues = false;
                 doc.WrapScriptLiterals = false;
-                
+
                 doc.OutputBodyOnly = AutoBool.Yes;
                 // To prevent the lines from wrapping add the following
                 doc.WrapAt = 0;
                 // Must be last!
                 doc.CleanAndRepair();
-                
+
                 parsed = doc.Save();
             }
 

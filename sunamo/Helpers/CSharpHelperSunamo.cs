@@ -72,9 +72,9 @@ public partial class CSharpHelperSunamo
             case "Guid":
                 return Guid.Empty;
             case "char":
-                throw new Exception("Nepodporovaný typ");
+                throw new Exception("Nepodporovan\u00FD typ");
         }
 
-        throw new Exception("Nepodporovaný typ");
+        throw new Exception("Nepodporovan\u00FD typ");
     }
 }

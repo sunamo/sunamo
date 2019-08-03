@@ -149,9 +149,9 @@ namespace shared.Crypting
         /// <summary>
         /// Vlastni trida pro pocitani CRC32 Hashe
         /// </summary>
-        private  class CRC32 : HashAlgorithm
+        private class CRC32 : HashAlgorithm
         {
-            private uint result = 0xffffffff;
+            private uint _result = 0xffffffff;
             /// <summary>
             /// Vypoctu zbytek z predchoziho vysledku a pak si logickem OR vypoctu index jehoz prvekm z [] crcLookup to zasifruji 
             /// U predchoziho vysledku posledni 2 cisla (bajt), vydelim to cele 256 a vynuluji poslednich 6 znaku
@@ -165,10 +165,10 @@ namespace shared.Crypting
                 uint lookup = 0;
                 for (int i = ibStart; i <= cbSize - 1; i++)
                 {
-                    lookup = (result & 0xff) ^ array[i];
-                    result = ((result & 0xffffff00) / 0x100) & 0xffffff;
+                    lookup = (_result & 0xff) ^ array[i];
+                    _result = ((_result & 0xffffff00) / 0x100) & 0xffffff;
                     // Udelam bitovy xor na poli  crcLookup s vysledkem
-                    result = result ^ crcLookup[lookup];
+                    _result = _result ^ _crcLookup[lookup];
                 }
             }
 
@@ -178,7 +178,7 @@ namespace shared.Crypting
             /// <returns></returns>
             protected override byte[] HashFinal()
             {
-                byte[] b = BitConverter.GetBytes(~(result));
+                byte[] b = BitConverter.GetBytes(~(_result));
                 Array.Reverse(b);
                 return b;
             }
@@ -188,14 +188,14 @@ namespace shared.Crypting
             /// </summary>
             public override void Initialize()
             {
-                result = 0xffffffff;
+                _result = 0xffffffff;
             }
 
             #region crcLookup
             /// <summary>
             /// Obsahuje 256 hex. cisel, to znamena ze velikost je 1024 bajtu
             /// </summary>
-            private uint[] crcLookup = {
+            private uint[] _crcLookup = {
                 0x0,
                 0x77073096,
                 0xee0e612c,
@@ -452,14 +452,13 @@ namespace shared.Crypting
                 0xc30c8ea1,
                 0x5a05df1b,
                 0x2d02ef8d
-
-            };
+};
             #endregion
             public override byte[] Hash
             {
                 get
                 {
-                    byte[] b = BitConverter.GetBytes(~(result));
+                    byte[] b = BitConverter.GetBytes(~(_result));
                     Array.Reverse(b);
                     return b;
                 }
@@ -467,6 +466,5 @@ namespace shared.Crypting
         }
 
         #endregion
-
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 public static partial class RandomHelper
 {
-    static Random rnd = new Random();
+    private static Random s_rnd = new Random();
 
     public static T RandomElementOfCollectionT<T>(IList<T> ppk)
     {
@@ -20,8 +20,7 @@ public static partial class RandomHelper
     /// <returns></returns>
     public static int RandomInt(int to)
     {
-
-        return rnd.Next(0, to);
+        return s_rnd.Next(0, to);
     }
 
     public static T RandomElementOfCollectionT<T>(IEnumerable<T> ppk)
@@ -41,7 +40,7 @@ public static partial class RandomHelper
         return ppk[nt].ToString();
     }
 
-/// <summary>
+    /// <summary>
     /// Vrac� ��slo od A1 do A2-1
     /// </summary>
     /// <param name="od"></param>
@@ -49,20 +48,20 @@ public static partial class RandomHelper
     /// <returns></returns>
     public static int RandomInt2(int od, int to)
     {
-        return rnd.Next(od, to);
+        return s_rnd.Next(od, to);
     }
 
-public static string RandomElementOfArray(Array ppk)
+    public static string RandomElementOfArray(Array ppk)
     {
         int nt = RandomInt(ppk.Length);
         return ppk.GetValue(nt).ToString();
     }
 
-public static int RandomInt()
+    public static int RandomInt()
     {
-        return rnd.Next(0, int.MaxValue);
+        return s_rnd.Next(0, int.MaxValue);
     }
-/// <summary>
+    /// <summary>
     /// Vr�t� ��slo mezi A1 a A2 v�etn�
     /// </summary>
     /// <param name="od"></param>
@@ -70,11 +69,10 @@ public static int RandomInt()
     /// <returns></returns>
     public static int RandomInt(int od, int to)
     {
-
-        return rnd.Next(od, to+1);
+        return s_rnd.Next(od, to + 1);
     }
 
-/// <summary>
+    /// <summary>
     /// Zad�vej ��slo o 1 v�t�� ne� skute�n� po�et znak� kter� chce�
     /// Vr�t� mi n�hodn� �et�zec pouze z velk�ch, mal�ch p�smen a ��slic
     /// </summary>
@@ -91,7 +89,7 @@ public static int RandomInt()
         return sb.ToString();
     }
 
-/// <summary>
+    /// <summary>
     /// Hod� se pro po��tan� index� proto�e vrac� ��slo mezi A1 do A2-1
     /// </summary>
     /// <param name="od"></param>
@@ -99,10 +97,10 @@ public static int RandomInt()
     /// <returns></returns>
     public static byte RandomByte2(int od, int to)
     {
-        return (byte)rnd.Next(od, to);
+        return (byte)s_rnd.Next(od, to);
     }
 
-/// <summary>
+    /// <summary>
     /// Vr�t� mi n�hodn� znak pouze z velk�ch, mal�ch p�smen a ��slic
     /// </summary>
     /// <returns></returns>
@@ -125,10 +123,9 @@ public static int RandomInt()
         vsZnakyWithoutSpecial.AddRange(AllChars.lowerChars);
         vsZnakyWithoutSpecial.AddRange(AllChars.numericChars);
         vsZnakyWithoutSpecial.AddRange(AllChars.upperChars);
-
     }
 
-public static string RandomString(int delka)
+    public static string RandomString(int delka)
     {
         delka--;
         StringBuilder sb = new StringBuilder();
@@ -138,7 +135,7 @@ public static string RandomString(int delka)
         }
         return sb.ToString();
     }
-public static string RandomString(int delka, bool upper, bool lower, bool numeric, bool special)
+    public static string RandomString(int delka, bool upper, bool lower, bool numeric, bool special)
     {
         List<char> ch = new List<char>();
         if (lower)
@@ -166,7 +163,7 @@ public static string RandomString(int delka, bool upper, bool lower, bool numeri
         }
         return sb.ToString();
     }
-public static string RandomString()
+    public static string RandomString()
     {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 7; i++)
@@ -176,45 +173,45 @@ public static string RandomString()
         return sb.ToString();
     }
 
-public static byte[] RandomBytes(int kolik)
+    public static byte[] RandomBytes(int kolik)
     {
         byte[] b = new byte[kolik];
         for (int i = 0; i < kolik; i++)
         {
-            b[i] = (byte)rnd.Next(0, byte.MaxValue);
+            b[i] = (byte)s_rnd.Next(0, byte.MaxValue);
         }
         return b;
     }
 
-public static char RandomChar()
+    public static char RandomChar()
     {
         return RandomElementOfCollection(vsZnaky)[0];
     }
 
-/// <summary>
+    /// <summary>
     /// Vr�t� ��slo mezi 0 a A1-1
     /// </summary>
     /// <param name="to"></param>
     /// <returns></returns>
     public static short RandomShort(short to)
     {
-        return (short)rnd.Next(0, to);
+        return (short)s_rnd.Next(0, to);
     }
-/// <summary>
+    /// <summary>
     /// Vr�t� ��slo mezi A1 v�etn� a A2+1 v�etn�
     /// </summary>
     /// <param name="to"></param>
     /// <returns></returns>
     public static short RandomShort(short from, short to)
     {
-        return (short)rnd.Next(from, to + 1);
+        return (short)s_rnd.Next(from, to + 1);
     }
-/// <summary>
+    /// <summary>
     /// Vr�t� ��slo mezi 0 a short.MaxValue-1
     /// </summary>
     /// <returns></returns>
     public static short RandomShort()
     {
-        return (short)rnd.Next(0, short.MaxValue);
+        return (short)s_rnd.Next(0, short.MaxValue);
     }
 }

@@ -18,14 +18,13 @@ public class TextLangIndexes
 
     public TextLangIndexes()
     {
-
     }
 
     public TextLangIndexes(List<string> line)
     {
         text = line[0];
-        cs = double.Parse( line[1]);
-        en = double.Parse( line[2]);
+        cs = double.Parse(line[1]);
+        en = double.Parse(line[2]);
     }
 }
 

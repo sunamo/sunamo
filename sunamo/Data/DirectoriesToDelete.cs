@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Sunamo.Data
 {
     public class DirectoriesToDelete

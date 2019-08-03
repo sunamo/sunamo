@@ -7,8 +7,6 @@ using System.Text;
 
 public partial class TF
 {
-    
-
     public static Encoding GetEncoding(string filename)
     {
         var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -29,10 +27,10 @@ public partial class TF
         var bom = new byte[4];
 
         file.Read(bom, 0, 4);
-        return EncodingHelper.DetectEncoding(new List<byte>( bom));
-    } 
+        return EncodingHelper.DetectEncoding(new List<byte>(bom));
+    }
 
-    static void AppendToStartOfFileIfDontContains(List<string> files, string append)
+    private static void AppendToStartOfFileIfDontContains(List<string> files, string append)
     {
         append += Environment.NewLine;
 
@@ -69,11 +67,11 @@ public partial class TF
         return 0;
     }
 
-    
 
-    
 
-    
+
+
+
 
 
     public static List<string> GetLines(string file)
@@ -81,14 +79,13 @@ public partial class TF
         return ReadAllLines(file);
     }
 
-    static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
+    private static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
     {
         foreach (var item in files)
         {
             string[] lines = File.ReadAllLines(item);
             for (int i = 0; i < lines.Length; i++)
             {
-
                 string line = lines[i].Trim();
                 if (line.StartsWith(contains))
                 {
@@ -111,7 +108,6 @@ public partial class TF
     /// <returns></returns>
     public static string[] GetAllLines(string file)
     {
-
         List<string> lines = TF.GetLines(file);
         List<string> linesPpk = new List<string>();
         for (int i = 0; i < lines.Count; i++)

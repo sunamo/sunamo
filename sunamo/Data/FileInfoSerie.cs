@@ -4,7 +4,6 @@ using sunamo.Enums;
 using System.IO;
 public class FileInfoSerie : FileInfoLite
 {
-    
     public bool IsDeleted = false;
     public string NameWithoutSeries = null;
     //public string NameWithoutSeriesLower = null;
@@ -35,6 +34,4 @@ public class FileInfoSerie : FileInfoLite
         fil.FileNameComplet = FS.GetFileName(item2.FullName);
         return fil;
     }
-
-
 }

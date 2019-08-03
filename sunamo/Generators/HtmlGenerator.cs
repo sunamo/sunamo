@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 
-public  class HtmlGenerator : XmlGenerator
+public class HtmlGenerator : XmlGenerator
 {
     public void WriteBr()
     {
@@ -11,6 +11,5 @@ public  class HtmlGenerator : XmlGenerator
 
     public void Boilerplate()
     {
-        
     }
 }

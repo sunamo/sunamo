@@ -3,6 +3,5 @@ public class CollectionToEnd<T> : CyclingCollection<T>
 {
     public CollectionToEnd() : base(false)
     {
-
     }
 }

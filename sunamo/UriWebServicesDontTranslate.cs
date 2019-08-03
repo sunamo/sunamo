@@ -8,16 +8,16 @@ public partial class UriWebServices
 {
     public static class UriWebServicesDontTranslate
     {
-        static List<string> list = null;
+        private static List<string> s_list = null;
 
         public static void SearchInAll(string spicyName)
         {
-            if (list == null)
+            if (s_list == null)
             {
-                list = new List<string>(CA.ToEnumerable("kotanyi", "avokádo", "nadir", "Orient", "Drago", "vítana", "svět bylinek"));
+                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", "Orient", "Drago", "v\u00EDtana", "sv\u011Bt bylinek"));
             }
 
-            foreach (var item in list)
+            foreach (var item in s_list)
             {
                 Process.Start(UriWebServices.GoogleSearch($"{item} koření {spicyName}"));
             }

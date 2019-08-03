@@ -20,19 +20,19 @@ using static CryptHelper;
 /// </summary>
 public partial class CryptHelper : ICryptHelper
 {
-    ICryptBytes crypt = null;
+    private ICryptBytes _crypt = null;
 
     public CryptHelper(Provider provider, List<byte> s, List<byte> iv, string pp)
     {
         switch (provider)
         {
             case Provider.DES:
-                throw new NotSupportedException("Symetrické šifrování DES není podporováno" + ".");
+                throw new NotSupportedException("Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
             case Provider.RC2:
                 //crypt = new CryptHelper.RC2();
                 break;
             case Provider.Rijndael:
-                crypt = new CryptHelper.RijndaelBytes();
+                _crypt = new CryptHelper.RijndaelBytes();
                 break;
             case Provider.TripleDES:
                 //crypt = new CryptHelper.TripleDES();
@@ -40,9 +40,9 @@ public partial class CryptHelper : ICryptHelper
             default:
                 throw new NotImplementedException("");
         }
-        crypt.iv = iv;
-        crypt.pp = pp;
-        crypt.s = s;
+        _crypt.iv = iv;
+        _crypt.pp = pp;
+        _crypt.s = s;
     }
 
     /// <summary>
@@ -51,9 +51,9 @@ public partial class CryptHelper : ICryptHelper
     /// </summary>
     public class TripleDES : ICryptString
     {
-        List<byte> _s = null;
-        List<byte> _iv = null;
-        string _pp = null;
+        private List<byte> _s = null;
+        private List<byte> _iv = null;
+        private string _pp = null;
 
         public List<byte> s
         {
@@ -72,10 +72,10 @@ public partial class CryptHelper : ICryptHelper
 
         public string Decrypt(string v)
         {
-            return  BTS.ConvertFromBytesToUtf8(CryptHelper2.DecryptTripleDES(BTS.ConvertFromUtf8ToBytes(v), _pp, _s, _iv));
+            return BTS.ConvertFromBytesToUtf8(CryptHelper2.DecryptTripleDES(BTS.ConvertFromUtf8ToBytes(v), _pp, _s, _iv));
         }
 
-        
+
 
         public string Encrypt(string v)
         {
@@ -90,9 +90,9 @@ public partial class CryptHelper : ICryptHelper
     /// </summary>
     public class RC2 : ICrypt
     {
-        List<byte> _s = null;
-        List<byte> _iv = null;
-        string _pp = null;
+        private List<byte> _s = null;
+        private List<byte> _iv = null;
+        private string _pp = null;
 
         public List<byte> s
         {
@@ -119,7 +119,7 @@ public partial class CryptHelper : ICryptHelper
         }
     }
 
-    
+
 
     /// <summary>
     /// Used for common apps settings
@@ -140,10 +140,10 @@ public partial class CryptHelper : ICryptHelper
         }
 
         public static RijndaelBytes Instance = null;
-        
-        List<byte> _s = null;
-        List<byte> _iv = null;
-        string _pp = null;
+
+        private List<byte> _s = null;
+        private List<byte> _iv = null;
+        private string _pp = null;
 
         public List<byte> s
         {
@@ -162,7 +162,7 @@ public partial class CryptHelper : ICryptHelper
 
         public List<byte> Decrypt(List<byte> v)
         {
-            return CryptHelper2.DecryptRijndael(v,_pp, _s, _iv);
+            return CryptHelper2.DecryptRijndael(v, _pp, _s, _iv);
         }
 
         public List<byte> Encrypt(List<byte> v)
@@ -173,12 +173,12 @@ public partial class CryptHelper : ICryptHelper
 
     public List<byte> Decrypt(List<byte> v)
     {
-        return crypt.Decrypt(v);
+        return _crypt.Decrypt(v);
     }
 
     public List<byte> Encrypt(List<byte> v)
     {
-        return crypt.Encrypt(v);
+        return _crypt.Encrypt(v);
     }
 }
 

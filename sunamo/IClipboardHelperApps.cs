@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 
 public interface IClipboardHelperApps : IClipboardHelperBase<Task<string>, Task<List<string>>, Task<bool>>
 {
-     
 }
 

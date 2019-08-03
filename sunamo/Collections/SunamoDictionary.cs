@@ -46,7 +46,5 @@ namespace sunamo
             }
             return vr;
         }
-
-        
     }
 }

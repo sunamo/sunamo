@@ -9,6 +9,5 @@ namespace sunamo.Data
 {
     public class PhotoToUploadWithStream : PhotoToUpload
     {
-        
     }
 }

@@ -9,9 +9,9 @@ public class TransUnit
     public string id;
     public bool translate;
     public string xml_space;
-    
 
-    string _source;
+
+    private string _source;
 
     public string source
     {
@@ -24,12 +24,12 @@ public class TransUnit
             value = SHNotTranslateAble.DecodeSlashEncodedString(value);
             value = HtmlAssistant.TrimInnerHtml(value);
             value = HttpUtility.HtmlEncode(value);
-            
+
             _source = value;
         }
     }
 
-    string _target;
+    private string _target;
     public string target
     {
         get
@@ -41,7 +41,7 @@ public class TransUnit
             value = SHNotTranslateAble.DecodeSlashEncodedString(value);
             value = HtmlAssistant.TrimInnerHtml(value);
             value = HttpUtility.HtmlEncode(value);
-            _target = value; 
+            _target = value;
         }
     }
 
@@ -50,7 +50,7 @@ public class TransUnit
     public override string ToString()
     {
         XmlGenerator g = new XmlGenerator();
-        g.WriteTagWithAttrs( tTransUnit, "id", id, "translate", BTS.BoolToString(translate, true), "xml:space", "preserve");
+        g.WriteTagWithAttrs(tTransUnit, "id", id, "translate", BTS.BoolToString(translate, true), "xml:space", "preserve");
         g.WriteElement("source", source);
 
         g.WriteTagWithAttr("target", "state", "translated");

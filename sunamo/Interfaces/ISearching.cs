@@ -1,6 +1,8 @@
 ﻿/// <summary>
 /// 
 /// </summary>
+
+
 using System.Collections.Generic;
 
 /// <summary>
@@ -21,6 +23,5 @@ public interface ISearching<T>
 /// </summary>
 public interface ISearching : ISearching<string>
 {
-    
 }
 

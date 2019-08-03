@@ -14,7 +14,6 @@ namespace DocArch.SqLite
 
         public ChangedRows()
         {
-
         }
 
         public ChangedRows(string Chyba)

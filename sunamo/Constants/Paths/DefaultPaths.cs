@@ -6,7 +6,7 @@ namespace sunamo.Constants
 {
     public class DefaultPaths
     {
-        public const string rootVideos0Kb = @"d:\Documents\Videos0kb\"; 
+        public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
         public static string Documents = @"D:\Documents\";
         public static string Docs = @"D:\Docs\";
         public static string Downloads = @"D:\Downloads\";
@@ -27,7 +27,7 @@ namespace sunamo.Constants
         /// <summary>
         /// Solution, not project
         /// </summary>
-        public static string sunamo= @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
+        public static string sunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\";
         public static string sunamoProject = @"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
         /// <summary>
         /// d:\Documents\Visual Studio 2017\Projects\
@@ -50,7 +50,7 @@ namespace sunamo.Constants
         public const string SyncArchivedDrive = @"d:\SyncArchived\Drive\";
 
         public static string[] All = new string[] { Documents, Docs, Downloads, Music2 };
-        
+
         public const string PhotosScz = @"d:\Pictures\photos.sunamo.cz\";
     }
 }

@@ -7,11 +7,11 @@ using sunamo.Data;
 
 public class SunamoComparerICompare
 {
-    public class StringLength 
+    public class StringLength
     {
         public class Asc : IComparer<string>
         {
-            ISunamoComparer<string> sc = null;
+            private ISunamoComparer<string> _sc = null;
 
             /// <summary>
             /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
@@ -19,19 +19,19 @@ public class SunamoComparerICompare
             /// <param name="sc"></param>
             public Asc(ISunamoComparer<string> sc)
             {
-                this.sc = sc;
+                _sc = sc;
             }
 
-            
+
             public int Compare(string x, string y)
             {
-                return sc.Asc(x, y);
+                return _sc.Asc(x, y);
             }
         }
 
         public class Desc : IComparer<string>
         {
-            ISunamoComparer<string> sc = null;
+            private ISunamoComparer<string> _sc = null;
 
             /// <summary>
             /// As parameter I can insert SunamoComparer.IEnumerableCharLength or SunamoComparer.StringLength
@@ -39,22 +39,19 @@ public class SunamoComparerICompare
             /// <param name="sc"></param>
             public Desc(ISunamoComparer<string> sc)
             {
-                this.sc = sc;
+                _sc = sc;
             }
 
 
             public int Compare(string x, string y)
             {
-                return sc.Desc(x, y);
+                return _sc.Desc(x, y);
             }
         }
     }
 
     public class IEnumerableCharCountAsc<T> : IComparer<T> where T : IEnumerable<char>
     {
-        
-           
-
         public int Compare(T x, T y)
         {
             int a = 0;
@@ -65,13 +62,13 @@ public class SunamoComparerICompare
                 a++;
             }
 
-            
+
             foreach (var item in y)
             {
                 b++;
             }
 
-            
+
             return a.CompareTo(b);
         }
     }
@@ -80,31 +77,31 @@ public class SunamoComparerICompare
     {
         public class Desc<T> : IComparer<ItemWithCount<T>>
         {
-            ISunamoComparer<ItemWithCount<T>> sc = null;
+            private ISunamoComparer<ItemWithCount<T>> _sc = null;
 
             public Desc(ISunamoComparer<ItemWithCount<T>> sc)
             {
-                this.sc = sc;
+                _sc = sc;
             }
 
             public int Compare(ItemWithCount<T> x, ItemWithCount<T> y)
             {
-                return sc.Desc(x, y);
+                return _sc.Desc(x, y);
             }
         }
 
         public class Asc<T> : IComparer<ItemWithCount<T>>
         {
-            ISunamoComparer<ItemWithCount<T>> sc = null;
+            private ISunamoComparer<ItemWithCount<T>> _sc = null;
 
             public Asc(ISunamoComparer<ItemWithCount<T>> sc)
             {
-                this.sc = sc;
+                _sc = sc;
             }
 
             public int Compare(ItemWithCount<T> x, ItemWithCount<T> y)
             {
-                return sc.Asc(x, y);
+                return _sc.Asc(x, y);
             }
         }
     }
@@ -223,8 +220,6 @@ public class SunamoComparer
 
     public class ItemWithCountSunamoComparer<T> : ISunamoComparer<ItemWithCount<T>>
     {
-        
-
         public int Desc(ItemWithCount<T> x, ItemWithCount<T> y)
         {
             int a = x.count;

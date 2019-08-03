@@ -6,8 +6,9 @@ using System.Diagnostics;
 using sunamo;
 using System.Linq;
 
-public partial class PH{ 
-public static void Start(string p)
+public partial class PH
+{
+    public static void Start(string p)
     {
         try
         {

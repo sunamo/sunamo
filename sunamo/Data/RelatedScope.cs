@@ -11,16 +11,16 @@ namespace sunamo.Data
     /// </summary>
     public class RelatedScope
     {
-        bool?[] states = null;
+        private bool?[] _states = null;
 
         public RelatedScope(int arraySize)
         {
-            states = new bool?[arraySize];
+            _states = new bool?[arraySize];
         }
 
         public RelatedScope(bool?[] states)
         {
-            this.states = states;
+            _states = states;
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace sunamo.Data
             bool insideRegion = false;
             FromTo fromTo = new FromTo();
 
-            for (int i = 0; i < states.Length; i++)
+            for (int i = 0; i < _states.Length; i++)
             {
-                bool? b = states[i];
+                bool? b = _states[i];
                 if (b.HasValue)
                 {
                     if (b.Value)
@@ -70,13 +70,13 @@ namespace sunamo.Data
             return foundedRanges;
         }
 
-            /// <summary>
-            /// Was used for deleting comments. Returns serie only when is all lines between is comments
-            /// </summary>
-            /// <param name="def"></param>
-            /// <param name="b"></param>
-            /// <returns></returns>
-            public List<FromTo> RangeFromState(bool def, bool b)
+        /// <summary>
+        /// Was used for deleting comments. Returns serie only when is all lines between is comments
+        /// </summary>
+        /// <param name="def"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public List<FromTo> RangeFromState(bool def, bool b)
         {
             List<FromTo> foundedRanges = new List<FromTo>();
             // true - is in code block. false - in non-code block
@@ -84,9 +84,9 @@ namespace sunamo.Data
             FromTo fromTo = new FromTo();
             fromTo.from = 0;
 
-            for (int i = 0; i < states.Length; i++)
+            for (int i = 0; i < _states.Length; i++)
             {
-                bool? state = states[i];
+                bool? state = _states[i];
                 // If line have some content
                 if (state.HasValue)
                 {
@@ -103,7 +103,6 @@ namespace sunamo.Data
                             }
                             previous = true;
                         }
-
                     }
                     // its comment!
                     else
@@ -121,7 +120,7 @@ namespace sunamo.Data
 
             if (!previous)
             {
-                fromTo.to = states.Length - 1 -1 +1;
+                fromTo.to = _states.Length - 1 - 1 + 1;
                 if (fromTo.from != fromTo.to)
                 {
                     foundedRanges.Add(fromTo);

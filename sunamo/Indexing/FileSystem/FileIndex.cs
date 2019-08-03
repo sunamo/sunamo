@@ -3,6 +3,7 @@ using sunamo.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 namespace sunamo.Indexing.FileSystem
 {
     /// <summary>
@@ -16,7 +17,7 @@ namespace sunamo.Indexing.FileSystem
         /// <summary>
         /// Without base paths
         /// </summary>
-        public static List<string> relativeDirectories = new List<string>(); 
+        public static List<string> relativeDirectories = new List<string>();
         #endregion
 
         #region Variables
@@ -27,8 +28,8 @@ namespace sunamo.Indexing.FileSystem
         /// <summary>
         /// All folders which was processed expect root
         /// </summary>
-        List<FolderItem> folders = new List<FolderItem>();
-        int actualFolderID = -1;
+        private List<FolderItem> _folders = new List<FolderItem>();
+        private int _actualFolderID = -1;
 
         // TODO: Is directories somewhere used?
         /// <summary>
@@ -37,13 +38,13 @@ namespace sunamo.Indexing.FileSystem
         /// 
         /// </summary>
         public static List<string> directories = new List<string>();
-        string basePath = null;
+        private string _basePath = null;
 
         public string BasePath
         {
             get
             {
-                return basePath;
+                return _basePath;
             }
         }
         #endregion
@@ -59,9 +60,9 @@ namespace sunamo.Indexing.FileSystem
         {
             if (prohledavatSlozky == null)
             {
-                return folders.Where(c => c.Name == name);
+                return _folders.Where(c => c.Name == name);
             }
-            return folders.Where(c => c.Name == name).Where(d => prohledavatSlozky.Contains(d.IDParent));
+            return _folders.Where(c => c.Name == name).Where(d => prohledavatSlozky.Contains(d.IDParent));
         }
 
         public List<FileItem> FindAllFilesWithName(string name)
@@ -79,8 +80,8 @@ namespace sunamo.Indexing.FileSystem
         public void AddFolderRecursively(string folder)
         {
             folder = FS.WithEndSlash(folder);
-            basePath = folder;
-            actualFolderID++;
+            _basePath = folder;
+            _actualFolderID++;
             directories.Add(folder);
 
             var dirs = FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories);
@@ -88,7 +89,7 @@ namespace sunamo.Indexing.FileSystem
 
             foreach (var item in dirs)
             {
-                folders.Add(GetFolderItem(item));
+                _folders.Add(GetFolderItem(item));
                 AddFilesFromFolder(folder, item);
             }
 
@@ -115,7 +116,7 @@ namespace sunamo.Indexing.FileSystem
         private FolderItem GetFolderItem(string p)
         {
             FolderItem fi = new FolderItem();
-            fi.IDParent = actualFolderID;
+            fi.IDParent = _actualFolderID;
             fi.Name = FS.GetFileName(p);
             fi.Path = FS.GetDirectoryName(p);
             return fi;
@@ -157,7 +158,7 @@ namespace sunamo.Indexing.FileSystem
 
             //if (relativeDirectoryName)
             //{
-            string relDirName = FS.GetDirectoryName( p).Replace(basePath, "");
+            string relDirName = FS.GetDirectoryName(p).Replace(basePath, "");
             if (!relativeDirectories.Contains(relDirName))
             {
                 relativeDirectories.Add(relDirName);
@@ -177,19 +178,19 @@ namespace sunamo.Indexing.FileSystem
         /// </summary>
         public void Nuke()
         {
-            folders.Clear();
+            _folders.Clear();
             files.Clear();
         }
 
         public int GetIndexOfFolder(FolderItem item)
         {
-            return folders.IndexOf(item);
+            return _folders.IndexOf(item);
         }
 
         public IEnumerable<FileItem> GetFilesInRelativeFolder(int p)
         {
             return files.Where(c => c.IDRelativeDirectory == p);
-        } 
+        }
         #endregion
 
         #region Has FileIndex as input or output parameter
@@ -285,7 +286,7 @@ namespace sunamo.Indexing.FileSystem
             }
 
             return vr;
-        } 
+        }
         #endregion
 
         #region Not use FileIndex
@@ -353,7 +354,7 @@ namespace sunamo.Indexing.FileSystem
                 #endregion
             }
             return allRows;
-        } 
+        }
 
         /// <summary>
         /// Check CheckBox in condition of size and A7 in location specified parameter row A2 and column A3
@@ -378,7 +379,6 @@ namespace sunamo.Indexing.FileSystem
                 long filSiz = fileSize[row];
                 if (filSiz == -1)
                 {
-
                 }
                 else if (filSiz == max)
                 {
@@ -390,7 +390,6 @@ namespace sunamo.Indexing.FileSystem
                     {
                         cbd.tick = false;
                     }
-
                 }
                 else if (filSiz == min)
                 {
@@ -402,7 +401,6 @@ namespace sunamo.Indexing.FileSystem
                     {
                         cbd.tick = true;
                     }
-
                 }
                 else
                 {

@@ -30,9 +30,9 @@ namespace desktop
             }
         }
 
-        string displayText = null;
-        string row1 = string.Empty;
-        string row2 = string.Empty;
+        private string _displayText = null;
+        private string _row1 = string.Empty;
+        private string _row2 = string.Empty;
 
         /// <summary>
         /// Create instance with CreateObjectFileNameWithDateTime
@@ -42,34 +42,33 @@ namespace desktop
         /// <param name="row2"></param>
         public FileNameWithDateTime(string row1, string row2)
         {
-            this.displayText = row1 + AllStrings.space + row2;
-            this.row1 = row1;
-            this.row2 = row2;
+            _displayText = row1 + AllStrings.space + row2;
+            _row1 = row1;
+            _row2 = row2;
         }
 
-        public string Row1 { get { return row1; } }
-        public string Row2 { get { return row2; } }
+        public string Row1 { get { return _row1; } }
+        public string Row2 { get { return _row2; } }
 
         public override string ToString()
         {
-            return displayText;
+            return _displayText;
         }
     }
 
     public class DateTimeFileIndex
     {
-        
         public event VoidT<List<FileNameWithDateTime>> InitComplete;
-        StorageFolder folder = null;
-        string ext = null;
+        private StorageFolder _folder = null;
+        private string _ext = null;
         //SunamoDictionary<string, DateTime> dict = new SunamoDictionary<string, DateTime>();
         public List<FileNameWithDateTime> files = new List<FileNameWithDateTime>();
-        FileEntriesDuplicitiesStrategy ds = FileEntriesDuplicitiesStrategy.Time;
-        Langs l = Langs.cs;
+        private FileEntriesDuplicitiesStrategy _ds = FileEntriesDuplicitiesStrategy.Time;
+        private Langs _l = Langs.cs;
 
         public string GetFullPath(FileNameWithDateTime o)
         {
-            return FS.Combine(folder.fullPath, o.fnwoe + ext);
+            return FS.Combine(_folder.fullPath, o.fnwoe + _ext);
         }
 
         public DateTimeFileIndex()
@@ -85,10 +84,10 @@ namespace desktop
         /// <param name="ds"></param>
         public async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds)
         {
-            this.ds = ds;
-            this.folder = new StorageFolder( AppData.ci.GetFolder(af));
+            _ds = ds;
+            _folder = new StorageFolder(AppData.ci.GetFolder(af));
 
-            this.ext = ext;
+            _ext = ext;
             string mask = "????_??_??_";
             if (ds == FileEntriesDuplicitiesStrategy.Serie)
             {
@@ -102,8 +101,8 @@ namespace desktop
             {
                 throw new Exception("Not supported strategy of saving files" + ".");
             }
-            mask +=  AllStrings.asterisk + ext;
-            var files2 = FS.GetFiles(folder.fullPath, mask, SearchOption.TopDirectoryOnly);
+            mask += AllStrings.asterisk + ext;
+            var files2 = FS.GetFiles(_folder.fullPath, mask, SearchOption.TopDirectoryOnly);
 
             foreach (var item in files2)
             {
@@ -119,27 +118,25 @@ namespace desktop
             {
                 InitComplete(files);
             }
-
-
         }
 
-        FileEntriesDuplicitiesStrategy GetFileEntriesDuplicitiesStrategy(string fnwoe, out int? serie, out int hour , out int minute, out string postfix)
+        private FileEntriesDuplicitiesStrategy GetFileEntriesDuplicitiesStrategy(string fnwoe, out int? serie, out int hour, out int minute, out string postfix)
         {
             serie = null;
             minute = hour = 0;
             if (fnwoe[11] == 'S')
             {
                 var parts = SH.Split(fnwoe, AllStrings.us);
-                serie = int.Parse( parts[4]);
+                serie = int.Parse(parts[4]);
                 postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
                 return FileEntriesDuplicitiesStrategy.Serie;
             }
-            else 
+            else
             {
                 string t = fnwoe.Substring(11, 5);
                 var parts = SH.Split(t, AllStrings.us);
                 hour = int.Parse(parts[0]);
-                minute= int.Parse(parts[1]);
+                minute = int.Parse(parts[1]);
                 postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
                 return FileEntriesDuplicitiesStrategy.Time;
             }
@@ -205,7 +202,7 @@ namespace desktop
             return add;
         }
 
-        string DeleteWrongCharsInFileName(string fnwoe)
+        private string DeleteWrongCharsInFileName(string fnwoe)
         {
             return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.us, AllStrings.space);
         }
@@ -221,13 +218,13 @@ namespace desktop
             }
             catch (Exception)
             {
-                ThisApp.SetStatus (TypeOfMessage.Error, RL.GetString("FileCannotBeDeleted"));
+                ThisApp.SetStatus(TypeOfMessage.Error, RL.GetString("FileCannotBeDeleted"));
             }
         }
 
         public async Task<StorageFile> GetStorageFile(FileNameWithDateTime o)
         {
-            return (await FS.GetStorageFile(folder, o.fnwoe + ext));
+            return (await FS.GetStorageFile(_folder, o.fnwoe + _ext));
             //return FS.Combine(folder, o.fnwoe + ext);
         }
 
@@ -243,11 +240,11 @@ namespace desktop
             DateTime today = DateTime.Today;
             string fnwoe = "";
             int? max = null;
-            if (ds == FileEntriesDuplicitiesStrategy.Time)
+            if (_ds == FileEntriesDuplicitiesStrategy.Time)
             {
                 fnwoe = ConvertDateTimeToFileNamePostfix.ToConvention(name, dt, true);
             }
-            else if (ds == FileEntriesDuplicitiesStrategy.Serie)
+            else if (_ds == FileEntriesDuplicitiesStrategy.Serie)
             {
                 IEnumerable<int?> ml = files.Where(u => u.dt == today).Select(s => s.serie);
 
@@ -266,14 +263,14 @@ namespace desktop
             {
                 // Zbytečné, kontroluje se již v konstruktoru
             }
-            StorageFile storageFile = await FS.GetStorageFile(folder, DeleteWrongCharsInFileName(fnwoe) + ext);
-             TF.SaveFile(content, storageFile);
+            StorageFile storageFile = await FS.GetStorageFile(_folder, DeleteWrongCharsInFileName(fnwoe) + _ext);
+            TF.SaveFile(content, storageFile);
 
 #if DEBUG
             //DebugLogger.DebugWriteLine(storageFile.FullPath());
 #endif
 
-            var o = CreateObjectFileNameWithDateTime(GetDisplayText(dt, max, l), name, dt, max, name, fnwoe);
+            var o = CreateObjectFileNameWithDateTime(GetDisplayText(dt, max, _l), name, dt, max, name, fnwoe);
             files.Add(o);
             return o;
         }

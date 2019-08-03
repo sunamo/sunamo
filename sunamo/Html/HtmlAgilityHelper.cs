@@ -121,7 +121,7 @@ namespace sunamo.Html
             return vr;
         }
 
-        public static List<HtmlNode> NodesWithAttrWorker(HtmlNode node, bool recursive, string tag, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute )
+        public static List<HtmlNode> NodesWithAttrWorker(HtmlNode node, bool recursive, string tag, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
 
@@ -155,14 +155,14 @@ namespace sunamo.Html
             foreach (HtmlNode item in htmlNode.ChildNodes)
             {
                 string attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);
-                
+
                 if (HasTagName(item, p))
                 {
                     if (HasTagAttr(item, atribut, hodnotaAtributu, enoughIsContainsAttribute))
                     {
                         vr.Add(item);
                     }
-                        
+
                     if (recursively)
                     {
                         RecursiveReturnTagsWithContainsAttr(vr, item, recursively, p, atribut, hodnotaAtributu, enoughIsContainsAttribute);
@@ -183,7 +183,6 @@ namespace sunamo.Html
         public static HtmlNode Node(HtmlNode node, bool recursive, string tag)
         {
             return CA.FirstOrNull<HtmlNode>(Nodes(node, recursive, true, tag));
-
         }
         #endregion
 
@@ -202,7 +201,7 @@ namespace sunamo.Html
         #endregion
 
         #region 4 NodesWithAttr
-        public static List<HtmlNode> NodesWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false) 
+        public static List<HtmlNode> NodesWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)
         {
             return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, contains);
         }
@@ -243,13 +242,12 @@ namespace sunamo.Html
              * Kurví se mi to tady, přidává se na konec </installedapp></installedapp></installedapp></string></string>. 
              * Zde jsem ani po krokování neobjevil kde to vzniká, čímž bude to nejnodušší odstranit při formátu
              */
-            
+
             input = HtmlAgilityHelper.WrapIntoTagIfNot(input);
             hd.LoadHtml(input);
             List<HtmlNode> textNodes = HtmlAgilityHelper.TextNodes(hd.DocumentNode, "a");
             for (int i = textNodes.Count - 1; i >= 0; i--)
             {
-
                 var item = textNodes[i];
                 if (item.ParentNode.Name == "pre")
                 {
@@ -260,12 +258,10 @@ namespace sunamo.Html
 
                 item.InnerHtml = string.Empty;
                 InsertGroup(item, d);
-                
-                
 
                 //item.ParentNode.ReplaceChild(CreateNode(item.InnerHtml), item);
 
-                
+
 
                 // must be last because use ParentNode above
                 //item.ParentNode.RemoveChild(item);
@@ -279,8 +275,8 @@ namespace sunamo.Html
             }
 
             string output = hd.DocumentNode.OuterHtml;
-            
-            
+
+
 
             return output;
         }

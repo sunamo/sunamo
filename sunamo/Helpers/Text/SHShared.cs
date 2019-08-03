@@ -17,8 +17,8 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
-    public const String diacritic = "áčďéěíňóšťúůýřžÁČĎÉĚÍŇÓŠŤÚŮÝŘŽ";
-    static Type type = typeof(SH);
+    public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
+    private static Type s_type = typeof(SH);
 
     public static string NullToStringOrDefault(object n)
     {
@@ -162,7 +162,6 @@ public static partial class SH
                 continue;
             }
             sb = sb.Replace(item, zaCo);
-
         }
 
         return sb;
@@ -179,7 +178,7 @@ public static partial class SH
         {
             var from2 = SH.Split(co, Environment.NewLine);
             var to2 = SH.Split(zaCo, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
             return ReplaceAll2(vstup, co, zaCo);
         }
@@ -198,7 +197,7 @@ public static partial class SH
     /// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co)
     {
-        return vstup.Replace( co, zaCo);
+        return vstup.Replace(co, zaCo);
     }
 
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
@@ -218,10 +217,10 @@ public static partial class SH
 
         foreach (var item in co)
         {
-            vstup = vstup.Replace( item, zaCo);
+            vstup = vstup.Replace(item, zaCo);
         }
         return vstup;
-    } 
+    }
     #endregion
 
     public static bool IsValidISO(string input)
@@ -243,8 +242,8 @@ public static partial class SH
         return s;
     }
 
-    
-    
+
+
 
     public static string NormalizeString(string s)
     {
@@ -268,7 +267,7 @@ public static partial class SH
         return s;
     }
 
-    
+
 
     public static List<int> ReturnOccurencesOfString(string vcem, string co)
     {
@@ -284,7 +283,6 @@ public static partial class SH
             char ch2 = co[0];
             if (subs == AllStrings.space)
             {
-
             }
             if (subs == co)
                 Results.Add(Index);
@@ -304,7 +302,6 @@ public static partial class SH
         StringBuilder sb = new StringBuilder();
         foreach (var item in parts)
         {
-            
             sb.Append(SH.ListToString(item) + s);
         }
         string d = sb.ToString();
@@ -335,7 +332,6 @@ public static partial class SH
 
     private static string ShortForLettersCount(string p, int p_2, out bool pridatTriTecky)
     {
-
         pridatTriTecky = false;
         // Vše tu funguje výborně
         p = p.Trim();
@@ -354,7 +350,6 @@ public static partial class SH
                 int napocitano = 0;
                 for (int i = 0; i < to; i++)
                 {
-
                     napocitano++;
 
                     if (d[i] == AllChars.space)
@@ -430,10 +425,8 @@ public static partial class SH
 
     public static string ReplaceOnce(string input, string what, string zaco)
     {
-
-        if (input.Contains("na rozdíl od" + " " + ""))
+        if (input.Contains("na rozd\u00EDl od" + " " + ""))
         {
-
         }
 
         if (what == "")
@@ -449,7 +442,7 @@ public static partial class SH
         return input.Substring(0, pos) + zaco + input.Substring(pos + what.Length);
     }
 
-    static bool initDiactitic = false;
+    private static bool s_initDiactitic = false;
 
     /// <summary>
     /// Another method is RemoveDiacritics
@@ -479,7 +472,7 @@ public static partial class SH
         //return RemoveDiacritics(sDiakritik);
     }
 
-  
+
 
     /// <summary>
     /// Insert prefix starting with + 
@@ -519,11 +512,11 @@ public static partial class SH
         return result;
     }
 
-    
 
 
 
-/// <summary>
+
+    /// <summary>
     /// Return which a3 is contained in A1. if a2 and A3 contains only 1 element, check for contains these first element
     /// If contains more elements, wasnts check
     /// Return elements from A3 which is contained
@@ -534,12 +527,12 @@ public static partial class SH
     /// <returns></returns>
     public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, IEnumerable<string> contains)
     {
-        List<string>  founded = new List<string>();
+        List<string> founded = new List<string>();
 
         bool hasLine = false;
         if (contains.Count() == 1 && checkInCaseOnlyOneString)
         {
-                hasLine = item.Contains(contains.ToList()[0]);
+            hasLine = item.Contains(contains.ToList()[0]);
         }
         else
         {
@@ -560,16 +553,16 @@ public static partial class SH
     {
         return SH.JoinString(Environment.NewLine, parts);
     }
-public static string JoinNL(params string[] parts)
+    public static string JoinNL(params string[] parts)
     {
         return SH.JoinString(Environment.NewLine, parts);
     }
 
-public static bool ContainsVariable( string innerHtml)
+    public static bool ContainsVariable(string innerHtml)
     {
         return ContainsVariable(AllChars.cbl, AllChars.cbr, innerHtml);
     }
-public static bool ContainsVariable(char p, char k, string innerHtml)
+    public static bool ContainsVariable(char p, char k, string innerHtml)
     {
         if (string.IsNullOrEmpty(innerHtml))
         {
@@ -615,13 +608,13 @@ public static bool ContainsVariable(char p, char k, string innerHtml)
         return false;
     }
 
-    
+
 
     public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
         return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);
     }
-public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
+    public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
     {
         StringBuilder sbNepridano = new StringBuilder();
         StringBuilder sbPridano = new StringBuilder();
@@ -643,7 +636,6 @@ public static string ReplaceVariables(char p, char k, string innerHtml, List<Str
                 int nt = 0;
                 if (int.TryParse(sbNepridano.ToString(), out nt))
                 {
-                    
                     // Zde přidat nahrazenou proměnnou
                     string v = _dataBinding[nt][actualRow];
                     sbPridano.Append(v);
@@ -668,11 +660,11 @@ public static string ReplaceVariables(char p, char k, string innerHtml, List<Str
 
 
 
-public static List<int> GetVariablesInString(string innerHtml)
+    public static List<int> GetVariablesInString(string innerHtml)
     {
         return GetVariablesInString(AllChars.cbl, AllChars.cbr, innerHtml);
     }
-/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     /// <param name="ret"></param>
@@ -706,7 +698,7 @@ public static List<int> GetVariablesInString(string innerHtml)
                 {
                     vr.Add(nt);
                 }
-                
+
                 sbNepridano.Clear();
             }
             else if (inVariable)
@@ -717,7 +709,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         return vr;
     }
 
-/// <summary>
+    /// <summary>
     /// Really return list, for string join value
     /// </summary>
     /// <param name="input"></param>
@@ -729,7 +721,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         return CA.RemoveDuplicitiesList(new List<string>(split));
     }
 
-/// <summary>
+    /// <summary>
     /// G zda je jedinz znak v A1 s dia.
     /// </summary>
     /// <returns></returns>
@@ -748,7 +740,7 @@ public static List<int> GetVariablesInString(string innerHtml)
         return Split(StringSplitOptions.None, text, deli);
     }
 
-    static bool cs = false;
+    private static bool s_cs = false;
     /// <summary>
     /// With these 
     /// </summary>
@@ -760,9 +752,9 @@ public static List<int> GetVariablesInString(string innerHtml)
     {
         if (deli == null || deli.Count() == 0)
         {
-            if (cs)
+            if (s_cs)
             {
-                throw new Exception("Nebyl specifikován delimiter");
+                throw new Exception("Nebyl specifikov\u00E1n delimiter");
             }
             else
             {
@@ -803,7 +795,6 @@ public static List<int> GetVariablesInString(string innerHtml)
             catch (Exception ex)
             {
                 return status;
-
             }
         }
     }
@@ -826,7 +817,7 @@ public static List<int> GetVariablesInString(string innerHtml)
 
     public static string FirstCharLower(string nazevPP)
     {
-        if (nazevPP.Length <2)
+        if (nazevPP.Length < 2)
         {
             return nazevPP;
         }
@@ -834,14 +825,14 @@ public static List<int> GetVariablesInString(string innerHtml)
         return nazevPP[0].ToString().ToLower() + sb;
     }
 
-public static string JoinPairs(params object[] parts)
+    public static string JoinPairs(params object[] parts)
     {
         return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
     }
-public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
+    public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
-        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", "args", parts);
-        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.AnyElementIsNull(s_type, "JoinPairs", "args", parts);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < parts.Length; i++)
@@ -899,18 +890,16 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
             string even = className[i];
             if (!string.IsNullOrWhiteSpace(even))
             {
-
                 //string odd = 
                 result.Append(even + className[++i]);
             }
-
         }
         return result.ToString();
     }
 
 
 
-/// <summary>
+    /// <summary>
     /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
     /// </summary>
     /// <param name="s"></param>
@@ -920,7 +909,7 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
         return s;
     }
 
-/// <summary>
+    /// <summary>
     /// Pokud je poslední znak v A1 A2, odstraním ho
     /// </summary>
     /// <param name="nazevTabulky"></param>
@@ -943,7 +932,7 @@ public static string JoinPairs(string firstDelimiter, string secondDelimiter, pa
         return nazevTabulky;
     }
 
-public static List<string> GetLines(string p)
+    public static List<string> GetLines(string p)
     {
         List<string> vr = new List<string>();
         StringReader sr = new StringReader(p);
@@ -955,24 +944,24 @@ public static List<string> GetLines(string p)
         return vr;
     }
 
-public static string WrapWithQm(string commitMessage)
+    public static string WrapWithQm(string commitMessage)
     {
         return SH.WrapWith(commitMessage, AllChars.qm);
     }
 
-[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string WrapWith(string value, string h)
     {
         return h + value + h;
     }
-[MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string WrapWith(string value, char v)
     {
         // TODO: Make with StringBuilder, because of SH.WordAfter and so
         return WrapWith(value, v.ToString());
     }
 
-/// <summary>
+    /// <summary>
     /// Vše tu funguje výborně
     /// Metoda pokud chci vybrat ze textu A1 posledních p_2 znaků které jsou v celku(oddělené mezerami) a vložit před ně ...
     /// </summary>
@@ -990,12 +979,12 @@ public static string WrapWithQm(string commitMessage)
         return vr;
     }
 
-public static int OccurencesOfStringIn(string source, string p_2)
+    public static int OccurencesOfStringIn(string source, string p_2)
     {
         return source.Split(new string[] { p_2 }, StringSplitOptions.None).Length - 1;
     }
 
-public static bool ContainsOtherChatThanLetterAndDigit(string p)
+    public static bool ContainsOtherChatThanLetterAndDigit(string p)
     {
         foreach (char item in p)
         {
@@ -1010,7 +999,7 @@ public static bool ContainsOtherChatThanLetterAndDigit(string p)
     /// <summary>
     /// Dont contains 
     /// </summary>
-    public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.exclamation, AllChars.q, '–', '—', '‐', '…', '„', '“', '‚', '‘', '»', '«', '’', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr, '〈', '〉', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.pipe, '”', AllChars.qm, '~', '°', AllChars.plus, '@', '#', '$', AllChars.modulo, '^', '&', AllChars.asterisk, '=', AllChars.us, 'ˇ', '¨', '¤', '÷', '×', '˝' };
+    public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.exclamation, AllChars.q, '\u2013', '\u2014', '\u2010', '\u2026', '\u201E', '\u201C', '\u201A', '\u2018', '\u00BB', '\u00AB', '\u2019', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr, '\u3008', '\u3009', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.pipe, '\u201D', AllChars.qm, '~', '\u00B0', AllChars.plus, '@', '#', '$', AllChars.modulo, '^', '&', AllChars.asterisk, '=', AllChars.us, '\u02C7', '\u00A8', '\u00A4', '\u00F7', '\u00D7', '\u02DD' };
 
     public static void Init()
     {
@@ -1024,16 +1013,16 @@ public static bool ContainsOtherChatThanLetterAndDigit(string p)
             }
         }
 
-        spaceAndPuntactionCharsAndWhiteSpaces = spaceAndPuntactionCharsAndWhiteSpacesList.ToArray();
+        s_spaceAndPuntactionCharsAndWhiteSpaces = spaceAndPuntactionCharsAndWhiteSpacesList.ToArray();
     }
 
-    static char[] spaceAndPuntactionCharsAndWhiteSpaces = null;
+    private static char[] s_spaceAndPuntactionCharsAndWhiteSpaces = null;
     public static List<string> SplitBySpaceAndPunctuationCharsAndWhiteSpaces(string s)
     {
-        return s.Split(spaceAndPuntactionCharsAndWhiteSpaces).ToList();
+        return s.Split(s_spaceAndPuntactionCharsAndWhiteSpaces).ToList();
     }
 
-public static string GetOddIndexesOfWord(string hash)
+    public static string GetOddIndexesOfWord(string hash)
     {
         int polovina = hash.Length / 2;
         polovina = (polovina / 2);
@@ -1047,12 +1036,12 @@ public static string GetOddIndexesOfWord(string hash)
         return sb.ToString();
     }
 
-public static string GetString(IEnumerable o, string p)
+    public static string GetString(IEnumerable o, string p)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in o)
         {
-            sb.Append(SH.ListToString( item, p) + p);
+            sb.Append(SH.ListToString(item, p) + p);
         }
         return sb.ToString();
     }
@@ -1067,7 +1056,7 @@ public static string GetString(IEnumerable o, string p)
         return false;
     }
 
-/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     /// <param name="pred"></param>
@@ -1079,7 +1068,7 @@ public static string GetString(IEnumerable o, string p)
         int dex = text.IndexOf(or);
         SH.GetPartsByLocation(out pred, out za, text, dex);
     }
-/// <summary>
+    /// <summary>
     /// Into A1,2 never put null
     /// </summary>
     /// <param name="pred"></param>
@@ -1098,11 +1087,9 @@ public static string GetString(IEnumerable o, string p)
             pred = text.Substring(0, pozice);
             za = text.Substring(pozice + 1);
         }
-
-        
     }
 
-public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
+    public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
     {
         List<string> na2Cislice = new List<string>();
         foreach (var item in parts)
@@ -1112,12 +1099,12 @@ public static string JoinMakeUpTo2NumbersToZero(object p, params int[] parts)
         return JoinIEnumerable(p, na2Cislice);
     }
 
-public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
+    public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo)
     {
         bool replaced;
         return ReplaceOnceIfStartedWith(what, replaceWhat, zaCo, out replaced);
     }
-public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
+    public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, string zaCo, out bool replaced)
     {
         replaced = false;
         if (what.StartsWith(replaceWhat))
@@ -1128,12 +1115,12 @@ public static string ReplaceOnceIfStartedWith(string what, string replaceWhat, s
         return what;
     }
 
-public static string RemoveLastChar(string artist)
+    public static string RemoveLastChar(string artist)
     {
         return artist.Substring(0, artist.Length - 1);
     }
 
-/// <summary>
+    /// <summary>
     /// Údajně detekuje i japonštinu a podpobné jazyky
     /// </summary>
     /// <param name="text"></param>
@@ -1141,17 +1128,17 @@ public static string RemoveLastChar(string artist)
     public static bool IsChinese(string text)
     {
         var hiragana = GetCharsInRange(text, 0x3040, 0x309F);
-        if (hiragana )
+        if (hiragana)
         {
             return true;
         }
         var katakana = GetCharsInRange(text, 0x30A0, 0x30FF);
-        if (katakana )
+        if (katakana)
         {
             return true;
         }
         var kanji = GetCharsInRange(text, 0x4E00, 0x9FBF);
-        if (kanji )
+        if (kanji)
         {
             return true;
         }
@@ -1164,7 +1151,7 @@ public static string RemoveLastChar(string artist)
         return false;
     }
 
-public static string SubstringIfAvailable(string input, int lenght)
+    public static string SubstringIfAvailable(string input, int lenght)
     {
         if (input.Length > lenght)
         {
@@ -1173,19 +1160,19 @@ public static string SubstringIfAvailable(string input, int lenght)
         return input;
     }
 
-/// <summary>
+    /// <summary>
     /// Nevraci znaky na indexech ale zda nektere znaky maji rozsah char definovany v A2,3
     /// </summary>
     /// <param name="text"></param>
     /// <param name="min"></param>
     /// <param name="max"></param>
     /// <returns></returns>
-    public static  bool GetCharsInRange(string text, int min, int max)
+    public static bool GetCharsInRange(string text, int min, int max)
     {
         return text.Where(e => e >= min && e <= max).Count() != 0;
     }
 
-public static string JoinWithoutTrim(object p, IList parts)
+    public static string JoinWithoutTrim(object p, IList parts)
     {
         StringBuilder sb = new StringBuilder();
         foreach (object item in parts)
@@ -1195,7 +1182,7 @@ public static string JoinWithoutTrim(object p, IList parts)
         return sb.ToString();
     }
 
-/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     /// <param name="nazevPP"></param>
@@ -1240,18 +1227,18 @@ public static string JoinWithoutTrim(object p, IList parts)
         return null;
     }
 
-public static List< string> RemoveDuplicatesNone(string p1, string delimiter)
+    public static List<string> RemoveDuplicatesNone(string p1, string delimiter)
     {
         var split = SH.SplitNone(p1, delimiter);
         return CA.RemoveDuplicitiesList<string>(split);
     }
 
-public static string JoinSpace(IEnumerable parts)
+    public static string JoinSpace(IEnumerable parts)
     {
         return SH.JoinString(AllStrings.space, parts);
     }
 
-public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
+    public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
     {
         if (squareBrackets)
         {
@@ -1269,13 +1256,13 @@ public static string RemoveBracketsAndHisContent(string title, bool squareBracke
         return title;
     }
 
-public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
+    public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
     {
         Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
         return regex.Replace(s, string.Empty);
     }
 
-/// <summary>
+    /// <summary>
     /// Je dobré před voláním této metody převést bílé znaky v A1 na mezery
     /// </summary>
     /// <param name="celyObsah"></param>
@@ -1286,7 +1273,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
     {
         StringBuilder prava = new StringBuilder();
         StringBuilder slovo = new StringBuilder();
-        
+
         // Teď to samé udělám i pro levou stranu
         StringBuilder leva = new StringBuilder();
         for (int i = stred - 1; i >= 0; i--)
@@ -1298,7 +1285,6 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                 slovo.Clear();
                 if (ts != "")
                 {
-
                     leva.Insert(0, ts + AllStrings.space);
                     if (leva.Length + AllStrings.space.Length + ts.Length > naKazdeStrane)
                     {
@@ -1306,7 +1292,6 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                     }
                     else
                     {
-                        
                     }
                 }
             }
@@ -1329,7 +1314,6 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                 slovo.Clear();
                 if (ts != "")
                 {
-
                     prava.Append(AllStrings.space + ts);
                     if (prava.Length + AllStrings.space.Length + ts.Length > naKazdeStrane)
                     {
@@ -1337,7 +1321,6 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                     }
                     else
                     {
-                        
                     }
                 }
             }
@@ -1346,7 +1329,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                 slovo.Append(ch);
             }
         }
-        
+
         string p = prava.ToString().TrimStart(AllChars.space) + AllStrings.space + slovo.ToString();
         p = p.TrimStart(AllChars.space);
         string vr = "";
@@ -1361,7 +1344,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
         return vr;
     }
 
-/// <summary>
+    /// <summary>
     /// Do výsledku zahranu i mezery a punktační znaménka 
     /// </summary>
     /// <param name="veta"></param>
@@ -1386,13 +1369,13 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
             {
                 if (vr[vr.Count - 1] == "")
                 {
-                vr[vr.Count - 1] += item.ToString();    
+                    vr[vr.Count - 1] += item.ToString();
                 }
                 else
                 {
                     vr.Add(item.ToString());
                 }
-                
+
                 vr.Add("");
             }
             else
@@ -1403,7 +1386,7 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
         return vr.ToArray();
     }
 
-/// <summary>
+    /// <summary>
     /// Vše tu funguje výborně
     /// G text z A1, ktery bude obsahovat max A2 písmen - ne slov, protože někdo tam může vložit příliš dlouhé slova a nevypadalo by to pak hezky.
     /// 
@@ -1441,12 +1424,12 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
                         dexMezery = i;
                     }
                 }
-                    d = d.Substring(dexMezery + 1);
-                    if (d.Trim() != "")
-                    {
-                        d = " ... " + d;
-                    }
-                    return d;
+                d = d.Substring(dexMezery + 1);
+                if (d.Trim() != "")
+                {
+                    d = " ... " + d;
+                }
+                return d;
                 //}
             }
             else
@@ -1458,12 +1441,11 @@ public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
         return p;
     }
 
-public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObsah, params string[] hledaneSlova)
+    public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObsah, params string[] hledaneSlova)
     {
         if (hledaneSlova == null || hledaneSlova.Length == 0)
         {
             return new List<FromToWord>();
-           
         }
         celyObsah = celyObsah.ToLower();
         List<FromToWord> vr = new List<FromToWord>();
@@ -1476,7 +1458,6 @@ public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObs
                 int pridat = 0;
                 while (pridat < item.Length)
                 {
-                    
                     int dex = i + pridat;
                     if (l > dex)
                     {
@@ -1508,9 +1489,8 @@ public static List<FromToWord> ReturnOccurencesOfStringFromToWord(string celyObs
         return vr;
     }
 
-private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] letters)
+    private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] letters)
     {
-        
         for (int i = p.Length - 1; i >= pl; i--)
         {
             foreach (var item in letters)
@@ -1522,21 +1502,20 @@ private static bool IsInLastXCharsTheseLetters(string p, int pl, params char[] l
             }
         }
         return false;
-
     }
 
-public static string TrimNewLineAndTab(string lyricsFirstOriginal)
+    public static string TrimNewLineAndTab(string lyricsFirstOriginal)
     {
         return lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
     }
 
-public static List<string> SplitByWhiteSpaces(string s, bool removeEmpty = false)
+    public static List<string> SplitByWhiteSpaces(string s, bool removeEmpty = false)
     {
         var r = s.Split(AllChars.whiteSpacesChars.ToArray(), removeEmpty ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None).ToList();
         return r;
     }
 
-public static bool TrimIfStartsWith(ref string s, string p)
+    public static bool TrimIfStartsWith(ref string s, string p)
     {
         if (s.StartsWith(p))
         {
@@ -1546,12 +1525,12 @@ public static bool TrimIfStartsWith(ref string s, string p)
         return false;
     }
 
-public static string DoubleSpacesToSingle(string v)
+    public static string DoubleSpacesToSingle(string v)
     {
         return SH.ReplaceAll2(v, AllStrings.space, AllStrings.doubleSpace);
     }
 
-/// <summary>
+    /// <summary>
     /// Originally named TrimWithEnd
     /// Pokud A1 končí na A2, ořežu A2
     /// </summary>
@@ -1567,7 +1546,7 @@ public static string DoubleSpacesToSingle(string v)
         return name;
     }
 
-public static bool IsNumber(string str, params char[] nextAllowedChars)
+    public static bool IsNumber(string str, params char[] nextAllowedChars)
     {
         foreach (var item in str)
         {
@@ -1579,7 +1558,7 @@ public static bool IsNumber(string str, params char[] nextAllowedChars)
                 }
             }
         }
-        
+
         return true;
     }
 
@@ -1598,16 +1577,16 @@ public static bool IsNumber(string str, params char[] nextAllowedChars)
         //return p.Substring(begin+1, end - begin - 1);
     }
 
-public static string ReplaceWhiteSpacesWithoutSpaces(string p)
+    public static string ReplaceWhiteSpacesWithoutSpaces(string p)
     {
         return ReplaceWhiteSpacesWithoutSpaces(p, "");
     }
-public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWith = "")
+    public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWith = "")
     {
         return p.Replace("\r", replaceWith).Replace("\n", replaceWith).Replace("\t", replaceWith);
     }
 
-public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool _trim, bool escapeQuoations, params string[] deli)
+    public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, bool moreSpacesForOne, bool _trim, bool escapeQuoations, params string[] deli)
     {
         var s = SH.Split(v, deli);
         if (replaceNewLineBySpace)
@@ -1634,22 +1613,22 @@ public static List<string> SplitAdvanced(string v, bool replaceNewLineBySpace, b
 
             for (int i = 0; i < s.Count; i++)
             {
-                    s[i] = SH.ReplaceFromEnd(s[i], "\"", rep);
+                s[i] = SH.ReplaceFromEnd(s[i], "\"", rep);
                 //}
             }
         }
         return s;
     }
 
-public static string TrimStartAndEnd(string v, string s, string e)
+    public static string TrimStartAndEnd(string v, string s, string e)
     {
         v = TrimEnd(v, e);
         v = TrimStart(v, s);
-        
+
         return v;
     }
 
-public static string TrimStart(string v, string s)
+    public static string TrimStart(string v, string s)
     {
         while (v.StartsWith(s))
         {
@@ -1658,7 +1637,7 @@ public static string TrimStart(string v, string s)
         return v;
     }
 
-public static string ReplaceFromEnd(string s, string zaCo, string co)
+    public static string ReplaceFromEnd(string s, string zaCo, string co)
     {
         List<int> occ = SH.ReturnOccurencesOfString(s, co);
         for (int i = occ.Count - 1; i >= 0; i--)
@@ -1668,7 +1647,7 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
         return s;
     }
 
-/// <summary>
+    /// <summary>
     /// Vrátí prázdný řetězec pokud nebude nalezena mezera.
     /// </summary>
     /// <param name="p"></param>
@@ -1684,7 +1663,7 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
         return "";
     }
 
-/// <summary>
+    /// <summary>
     /// Pokud něco nebude číslo, program vyvolá výjimku, protože parsuje metodou int.Parse
     /// </summary>
     /// <param name="stringToSplit"></param>
@@ -1701,7 +1680,7 @@ public static string ReplaceFromEnd(string s, string zaCo, string co)
         return nt;
     }
 
-/// <summary>
+    /// <summary>
     /// Oddělovač může být pouze jediný znak, protože se to pak předává do metody s parametrem int!
     /// </summary>
     /// <param name="p1"></param>

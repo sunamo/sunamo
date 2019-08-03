@@ -5,13 +5,11 @@ using System.Data.SQLite;
 using System.Text;
 
 
-public class SloupecDB : SloupecDBBase< SloupecDB, TypeAffinity>
+public class SloupecDB : SloupecDBBase<SloupecDB, TypeAffinity>
 {
     static SloupecDB()
     {
         SloupecDBBase<MSSloupecDB, TypeAffinity>.databaseLayer = DatabaseLayer.ci;
     }
-
-
 }
 

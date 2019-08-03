@@ -3,18 +3,18 @@
 /// </summary>
 public class ABP
 {
-    string a = null;
-    object b = null;
+    private string _a = null;
+    private object _b = null;
 
     public string A
     {
         get
         {
-            return a;
+            return _a;
         }
         set
         {
-            a = value;
+            _a = value;
         }
     }
 
@@ -22,11 +22,11 @@ public class ABP
     {
         get
         {
-            return b;
+            return _b;
         }
         set
         {
-            b = value;
+            _b = value;
         }
     }
 

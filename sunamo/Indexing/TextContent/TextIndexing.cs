@@ -11,15 +11,15 @@ namespace sunamo.Indexing.TextContent
         /// In key is full path to file
         /// </summary>
         public Dictionary<string, FileForSearching> files = null;
-        private bool v1;
-        private bool v2;
-        private bool v3;
+        private bool _v1;
+        private bool _v2;
+        private bool _v3;
 
         public TextIndexing(bool v1, bool v2, bool v3)
         {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
+            _v1 = v1;
+            _v2 = v2;
+            _v3 = v3;
         }
 
         public void ReloadFiles(List<string> list)

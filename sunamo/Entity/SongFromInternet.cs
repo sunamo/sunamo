@@ -6,22 +6,22 @@ namespace sunamo
 {
     public class SongFromInternet
     {
-         List<string> nazev = new List<string>();
-         List<string> title = new List<string>();
-         List<string> remix = new List<string>();
-         List<string> nazevWoDiacritic = new List<string>();
-         List<string> titleWoDiacritic = new List<string>();
-         List<string> remixWoDiacritic = new List<string>();
+        List<string> nazev = new List<string>();
+        List<string> title = new List<string>();
+        List<string> remix = new List<string>();
+        List<string> nazevWoDiacritic = new List<string>();
+        List<string> titleWoDiacritic = new List<string>();
+        List<string> remixWoDiacritic = new List<string>();
 
-        string _artist = null;
-        string _title = null;
-        string _remix = null;
+        string _artistS = null;
+        string _titleS = null;
+        string _remixS = null;
 
         public string ArtistC
         {
             get
             {
-                return _artist;
+                return _artistS;
             }
         }
 
@@ -29,7 +29,7 @@ namespace sunamo
         {
             get
             {
-                return _title;
+                return _titleS;
             }
         }
 
@@ -37,7 +37,7 @@ namespace sunamo
         {
             get
             {
-                return _remix;
+                return _remixS;
             }
         }
 
@@ -69,9 +69,9 @@ namespace sunamo
 
         private void SetInConvention()
         {
-            _artist = ArtistInConvention();
-            _title = TitleInConvention();
-            _remix = RemixInConvention();
+            _artistS = ArtistInConvention();
+            _titleS = TitleInConvention();
+            _remixS = RemixInConvention();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace sunamo
             float n, t, r;
             if (woDiacritic)
             {
-               
+
                 int psn, prn, pst, prt, psr, prr;
                 VratPocetStejnychARozdilnych(s.nazev, this.nazevWoDiacritic, out psn, out prn);
                 VratPocetStejnychARozdilnych(s.title, this.titleWoDiacritic, out pst, out prt);
@@ -271,7 +271,7 @@ namespace sunamo
             return vr.ToString();
         }
 
-        public  string ToConventionString()
+        public string ToConventionString()
         {
             StringBuilder vr = new StringBuilder();
             vr.Append(ArtistInConvention() + AllStrings.dash + TitleInConvention());

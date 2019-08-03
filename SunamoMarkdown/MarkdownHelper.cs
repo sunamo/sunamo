@@ -33,7 +33,7 @@ namespace SunamoMarkdown
             input = SH.ReplaceWhiteSpaces(input, " ");
             input = SH.ReplaceAllDoubleSpaceToSingle2(input);
 
-            
+
 
             input = input.Trim();
 
@@ -44,7 +44,7 @@ namespace SunamoMarkdown
 
         private static string ReplacePairTag(string input, string tag, string forWhat)
         {
-            input = input.Replace("<"+tag+">", forWhat);
+            input = input.Replace("<" + tag + ">", forWhat);
             input = input.Replace("</" + tag + ">", forWhat);
             return input;
         }

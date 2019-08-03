@@ -9,6 +9,5 @@ namespace sunamo.Generators
     /// </summary>
     public class FileNameGenerator
     {
-
     }
 }

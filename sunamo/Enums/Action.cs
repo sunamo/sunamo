@@ -1,4 +1,5 @@
-﻿namespace sunamo
+﻿
+namespace sunamo
 {
     public enum Action
     {

@@ -1,4 +1,3 @@
-﻿public  class HtmlGeneratorSelective : XmlGeneratorSelective
+﻿public class HtmlGeneratorSelective : XmlGeneratorSelective
 {
-
 }

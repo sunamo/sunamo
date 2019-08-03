@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class PicturesSunamo{
-    static string[] supportedExtensionForResize = new string[] {
+public partial class PicturesSunamo
+{
+    private static string[] s_supportedExtensionForResize = new string[] {
         "png", "jpg", "jpeg", "gif"
     };
 
@@ -19,79 +20,79 @@ public partial class PicturesSunamo{
     /// <param name="p_3"></param>
     /// <returns></returns>
     public static SunamoSize CalculateOptimalSizeHeight(int width, int height, int maxHeight)
+    {
+        SunamoSize vr = new SunamoSize(width, height);
+        int vyskaSloupce = maxHeight;
+        if (height > vyskaSloupce)
         {
-            SunamoSize vr = new SunamoSize(width, height);
-            int vyskaSloupce = maxHeight;
-            if (height > vyskaSloupce)
-            {
-                vr.Height = vyskaSloupce;
+            vr.Height = vyskaSloupce;
 
-                // mohl by ses ještě rozhodovat jestli round, nebo floor, nebo ceil
-                vr.Width = vyskaSloupce * width / height;
-            }
-
-            return vr;
+            // mohl by ses ještě rozhodovat jestli round, nebo floor, nebo ceil
+            vr.Width = vyskaSloupce * width / height;
         }
 
+        return vr;
+    }
 
-public static bool GetImageFormatFromExtension1(string filePath, out string ext)
+
+    public static bool GetImageFormatFromExtension1(string filePath, out string ext)
+    {
+        ext = FS.GetExtension(filePath).TrimStart(AllChars.dot).ToLower();
+
+        if (PicturesSunamo.IsSupportedResizeForExtension(ext))
         {
-            ext = FS.GetExtension(filePath).TrimStart(AllChars.dot).ToLower();
+            return true;
+        }
+        return false;
+    }
 
-            if (PicturesSunamo.IsSupportedResizeForExtension(ext))
+    public static ImageFormats GetImageFormatsFromExtension(string filePath)
+    {
+        string ext = FS.GetExtension(filePath).TrimStart(AllChars.dot).ToLower();
+        return GetImageFormatsFromExtension2(ext);
+    }
+
+    private static bool IsSupportedResizeForExtension(string ext)
+    {
+        if (ext == "jpg")
+        {
+            ext = "jpeg";
+        }
+        for (int i = 0; i < s_supportedExtensionForResize.Length; i++)
+        {
+            if (s_supportedExtensionForResize[i] == ext)
             {
                 return true;
             }
-            return false;
         }
+        return false;
+    }
 
-public static ImageFormats GetImageFormatsFromExtension(string filePath)
+    public static ImageFormats GetImageFormatsFromExtension2(string ext)
+    {
+        if (ext == "")
         {
-            string ext = FS.GetExtension(filePath).TrimStart(AllChars.dot).ToLower();
-            return GetImageFormatsFromExtension2(ext);
+            return ImageFormats.None;
         }
-
-private static bool IsSupportedResizeForExtension(string ext)
+        if (!IsSupportedResizeForExtension(ext))
         {
-            if (ext == "jpg")
-            {
-                ext = "jpeg";
-            }
-            for (int i = 0; i < supportedExtensionForResize.Length; i++)
-            {
-                if (supportedExtensionForResize[i] == ext)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return ImageFormats.None;
         }
+        return (ImageFormats)Enum.Parse(typeof(ImageFormats), ext, true);
+    }
 
-public static ImageFormats GetImageFormatsFromExtension2(string ext)
+    public static SunamoSize CalculateOptimalSize(int width, int height, int maxWidth)
+    {
+        SunamoSize vr = new SunamoSize(width, height);
+        int sirkaSloupce = maxWidth;
+        if (width > sirkaSloupce)
         {
-            if (ext == "")
-            {
-                return ImageFormats.None;
-            }
-            if (!IsSupportedResizeForExtension(ext))
-            {
-                return ImageFormats.None;
-            }
-            return (ImageFormats)Enum.Parse(typeof(ImageFormats), ext, true);
+            vr.Width = sirkaSloupce;
+
+            // mohl by ses ještě rozhodovat jestli round, nebo floor, nebo ceil
+            vr.Height = sirkaSloupce * height / width;
         }
 
-public static SunamoSize CalculateOptimalSize(int width, int height, int maxWidth)
-        {
-            SunamoSize vr = new SunamoSize(width, height);
-            int sirkaSloupce = maxWidth;
-            if (width > sirkaSloupce)
-            {
-                vr.Width = sirkaSloupce;
-
-                // mohl by ses ještě rozhodovat jestli round, nebo floor, nebo ceil
-                vr.Height = sirkaSloupce * height / width;
-            }
-
-            return vr;
-        }
+        return vr;
+    }
 }

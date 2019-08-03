@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class TextFormatData : List<CharFormatData>
-    {
+public class TextFormatData : List<CharFormatData>
+{
     /// <summary>
     /// Přesná požadovaná délka, nesmí být ani menší, ani větší
     /// Pokud je -1, text může mít jakoukoliv délku
@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 
     public static class Templates
     {
-        
     }
 
     /// <summary>
@@ -25,11 +24,11 @@ using System.Threading.Tasks;
     /// <param name="trimBefore"></param>
     /// <param name="requiredLength"></param>
     /// <param name="a"></param>
-        public TextFormatData(bool trimBefore, int requiredLength, params CharFormatData[] a)
-        {
+    public TextFormatData(bool trimBefore, int requiredLength, params CharFormatData[] a)
+    {
         this.trimBefore = trimBefore;
         this.requiredLength = requiredLength;
         AddRange(a);
-        }
     }
+}
 

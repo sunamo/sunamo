@@ -7,8 +7,6 @@ namespace sunamo.Helpers.FileSystem
 {
     public class JoiningFiles
     {
-        
-
         public static string NumberedListWithDot(string folder)
         {
             StringBuilder sb = new StringBuilder();

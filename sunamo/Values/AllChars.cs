@@ -6,7 +6,7 @@ using System.Diagnostics;
 /// </summary>
 public static class AllChars
 {
-    static Type type = typeof(AllChars);
+    private static Type s_type = typeof(AllChars);
 
     /*
      * Ascii - 128 chars - 7B
@@ -52,7 +52,7 @@ public static class AllChars
     // IsUpper
     public static readonly List<int> upperKeyCodes = new List<int>(new int[] { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 });
     public static readonly List<char> upperChars = new List<char>(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' });
-    
+
     // IsWhiteSpace
     // , 55296 mi taky vrátila metoda IsWhiteSpace vrátila, ale při znovu vytvoření pomocí tohoto kódu to vyhazovalo výjimku
     public static readonly List<int> whiteSpacesCodes = new List<int>(new int[] { 9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8232, 8233, 8239, 8287, 12288 });
@@ -109,7 +109,7 @@ public static class AllChars
     public const char nl = '\n';
     public const char cr = '\r';
     public const char bs = '\\';
-    
+
     public const char comma = ',';
     public const char dot = '.';
     public const char asterisk = '*';
@@ -153,7 +153,7 @@ public static class AllChars
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, "ReturnRightPredicate");
+            ThrowExceptions.NotImplementedCase(s_type, "ReturnRightPredicate");
         }
 
         return predicate;
@@ -161,7 +161,6 @@ public static class AllChars
 
     public static void ConvertWhiteSpaceCodesToChars()
     {
-        
         whiteSpacesChars = new List<char>();
         foreach (int item in whiteSpacesCodes)
         {
@@ -169,8 +168,5 @@ public static class AllChars
             s = char.ConvertFromUtf32(item);
             whiteSpacesChars.Add(Convert.ToChar(s));
         }
-        
     }
-
-    
 }

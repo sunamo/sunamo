@@ -9,7 +9,7 @@ namespace sunamo.Helpers
 {
     public class SelectFromManyHelper<T>
     {
-        ISelectFromMany<T> selectFromManyControl = null;
+        private ISelectFromMany<T> _selectFromManyControl = null;
         public bool sufficientFileName = false;
         public string defaultFileForLeave = null;
         public string defaultFileSize = null;
@@ -18,7 +18,7 @@ namespace sunamo.Helpers
 
         public SelectFromManyHelper(ISelectFromMany<T> selectFromManyControl)
         {
-            this.selectFromManyControl = selectFromManyControl;
+            _selectFromManyControl = selectFromManyControl;
         }
 
         #region Files
@@ -31,7 +31,7 @@ namespace sunamo.Helpers
             string[] files = Directory.GetFiles(folderForSearch, fn, SearchOption.AllDirectories);
 
             ProcessFilesWithoutSize(files);
-            selectFromManyControl.AddControls();
+            _selectFromManyControl.AddControls();
         }
 
         private void ProcessFilesWithoutSize(string[] files)
@@ -69,7 +69,7 @@ namespace sunamo.Helpers
             SetBasicVariable(sufficientFileName, defaultFileForLeave);
 
             ProcessFilesWithoutSize(files);
-            selectFromManyControl.AddControls();
+            _selectFromManyControl.AddControls();
         }
 
         public void InitializeByFilesWithSize(bool sufficientFileName, string defaultFileForLeave, Dictionary<string, long> files)
@@ -81,8 +81,8 @@ namespace sunamo.Helpers
             {
                 filesWithSize.Add(item.Key, FS.GetSizeInAutoString(item.Value, sunamo.Enums.ComputerSizeUnits.B));
             }
-            selectFromManyControl.AddControls();
-        } 
+            _selectFromManyControl.AddControls();
+        }
         #endregion
     }
 }

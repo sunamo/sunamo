@@ -6,7 +6,6 @@ namespace sunamo.Constants
 {
     public class CsKeywords
     {
-        public static string  c= "class";
-
+        public static string c = "class";
     }
 }

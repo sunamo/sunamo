@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public static partial class NH{ 
-public static string MakeUpTo2NumbersToZero(int p)
+public static partial class NH
+{
+    public static string MakeUpTo2NumbersToZero(int p)
     {
         string s = p.ToString();
         if (s.Length == 1)
@@ -37,7 +38,7 @@ public static string MakeUpTo2NumbersToZero(int p)
         return vr;
     }
 
-public static float RoundAndReturnInInputType(float ugtKm, int v)
+    public static float RoundAndReturnInInputType(float ugtKm, int v)
     {
         string vr = Math.Round(ugtKm, v).ToString();
         return float.Parse(vr);

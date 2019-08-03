@@ -6,49 +6,49 @@ namespace sunamo.Indexing.FileSystem
 {
     public class FolderItem : IFSItem
     {
-        string name = null;
+        private string _name = null;
         public string Name
         {
-            get => name;
-            set => name = value;
+            get => _name;
+            set => _name = value;
         }
 
-        string path = null;
+        private string _path = null;
         public string Path
         {
-            get => path;
-            set => path = value;
+            get => _path;
+            set => _path = value;
         }
 
 
-        int iDParent = -1;
+        private int _iDParent = -1;
         public int IDParent
         {
-            get => iDParent;
-            set => iDParent = value;
+            get => _iDParent;
+            set => _iDParent = value;
         }
-        long length = -1;
+        private long _length = -1;
         public long Length
         {
             get
             {
-                return length;
+                return _length;
             }
             set
             {
-                length = value;
+                _length = value;
             }
         }
-        bool hasFolderSubfolder = false;
+        private bool _hasFolderSubfolder = false;
         public bool HasFolderSubfolder
         {
             get
             {
-                return hasFolderSubfolder;
+                return _hasFolderSubfolder;
             }
             set
             {
-                hasFolderSubfolder = value;
+                _hasFolderSubfolder = value;
             }
         }
     }

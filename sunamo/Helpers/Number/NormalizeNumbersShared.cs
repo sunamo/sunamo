@@ -1,7 +1,8 @@
 ﻿using System;
 
-public static partial class NormalizeNumbers{ 
-public static uint NormalizeInt(int p)
+public static partial class NormalizeNumbers
+{
+    public static uint NormalizeInt(int p)
     {
         long p2 = (long)p;
         long sm = (long)int.MaxValue;
@@ -10,7 +11,7 @@ public static uint NormalizeInt(int p)
         return nt;
     }
 
-public static ushort NormalizeShort(short p)
+    public static ushort NormalizeShort(short p)
     {
         int p2 = (int)p;
         int sm = (int)short.MaxValue;

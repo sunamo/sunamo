@@ -21,15 +21,15 @@ namespace sunamo
                 throw new Exception("Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value" + " " + "");
             }
 
-                zmenaO /= d.Count;
-                for (int i = 0; i < d.Count; i++)
+            zmenaO /= d.Count;
+            for (int i = 0; i < d.Count; i++)
+            {
+                if (d[i] != 0)
                 {
-                    if (d[i] != 0)
-                    {
-                        d[i] += zmenaO;
-                    }
+                    d[i] += zmenaO;
                 }
-            
+            }
+
             return d;
         }
     }

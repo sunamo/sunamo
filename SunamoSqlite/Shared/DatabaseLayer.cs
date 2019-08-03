@@ -1,6 +1,8 @@
 ﻿/// <summary>
 /// 
 /// </summary>
+
+
 using System.IO;
 using System;
 using System.Data.SQLite;
@@ -11,23 +13,19 @@ using sunamo.Essential;
 using System.Collections.Generic;
 using System.Data;
 
-public class DatabaseLayer 
+public class DatabaseLayer
 {
     public static void Init(string dbPath)
     {
         try
         {
-
-        SQLiteConnection.CreateFile(dbPath);
-        DatabaseLayer.dbFile = dbPath;
-        DatabaseLayer.LoadNewConnection();
-        SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
-
+            SQLiteConnection.CreateFile(dbPath);
+            DatabaseLayer.dbFile = dbPath;
+            DatabaseLayer.LoadNewConnection();
+            SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
         }
         catch (Exception)
         {
-
-
         }
     }
 
@@ -51,10 +49,9 @@ public class DatabaseLayer
 
     private DatabaseLayer()
     {
-        
     }
 
-    static void conn_Disposed(object sender, EventArgs e)
+    private static void conn_Disposed(object sender, EventArgs e)
     {
         DatabaseLayer.LoadNewConnection();
     }
@@ -100,21 +97,20 @@ public class DatabaseLayer
         {
             throw new System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
         }
-
     }
 
-    static bool zaheslovat = false;
+    private static bool s_zaheslovat = false;
 
-    static string applicationStartupPath = null;
-    public static  string ApplicationStartupPath
+    private static string s_applicationStartupPath = null;
+    public static string ApplicationStartupPath
     {
         get
         {
-            return applicationStartupPath;
+            return s_applicationStartupPath;
         }
         set
         {
-            applicationStartupPath = value;
+            s_applicationStartupPath = value;
         }
     }
 
@@ -130,7 +126,7 @@ public class DatabaseLayer
             if (!FS.ExistsFile(sDbExe))
             {
                 //File.Copy(FS.Combine(slozkaAktualniVerze, nazevSpustitelneExeDB), 
-                FS.CopyTo(FS.Combine(applicationStartupPath, nazevSpustitelneExeDB), nad);
+                FS.CopyTo(FS.Combine(s_applicationStartupPath, nazevSpustitelneExeDB), nad);
             }
 
             // TODO: S uvozovkami se to zadávat nedá, zjisti jak se zadává cesta k programu když jsou v ní uvozovky
@@ -139,7 +135,7 @@ public class DatabaseLayer
             cess.Kill();
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + dbFile + "");
             conn.Open();
-            if (zaheslovat)
+            if (s_zaheslovat)
             {
                 conn.ChangePassword("olsehheslo");
             }
@@ -148,13 +144,13 @@ public class DatabaseLayer
         {
             //"Data Source=F:\Mona\sunamo\DocArch\Data\DocArch.db3;Version=3;Password=olsehheslo;"
             string cs = "Data Source=" + dbFile + ";" + "Version=3" + ";";
-            if (zaheslovat)
+            if (s_zaheslovat)
             {
                 cs += "Password=olsehheslo" + ";";
             }
             conn = new SQLiteConnection(cs);
             conn.Open();
-            if (zaheslovat)
+            if (s_zaheslovat)
             {
                 conn.ChangePassword("olsehheslo");
             }

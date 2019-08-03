@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 public partial class DictionaryHelper
 {
-    
     public static List<KeyValuePair<T, int>> CountOfItems<T>(List<T> streets)
     {
         Dictionary<T, int> pairs = new Dictionary<T, int>();

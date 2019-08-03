@@ -11,7 +11,6 @@ namespace sunamo.Essential
 
         public SunamoLogger(VoidStringParamsObjects writeLineHandler) : base(writeLineHandler)
         {
-
         }
 
         private static void WriteLine(string text, params object[] args)

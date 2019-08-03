@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace sunamo.LoggerAbstract
 {
-
     public abstract class LogServiceAbstract<Color, StorageClass, TextBlock>
     {
         public abstract Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st);
@@ -16,16 +15,14 @@ namespace sunamo.LoggerAbstract
 
         protected virtual async Task<List<LogMessageAbstract<Color, StorageClass>>> ReadMessagesFromFile(StorageClass fileStream)
         {
-            
             return null;
         }
 
         public virtual async void Initialize(string soubor, bool invariant, TextBlock tssl, Langs l)
         {
-            
         }
 
-        public abstract  Task SaveToFile();
+        public abstract Task SaveToFile();
 
         protected abstract LogMessageAbstract<Color, StorageClass> CreateMessage();
 

@@ -2,6 +2,8 @@
 /// Represents a wildcard running on the
 /// <see cref="System.Text.RegularExpressions"/> engine.
 /// </summary>
+
+
 using System.Text.RegularExpressions;
 public class Wildcard : Regex
 {

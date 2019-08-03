@@ -8,7 +8,6 @@ namespace sunamo.Helpers
 {
     public static class HttpKnownHeaderNames
     {
-
         public const string CacheControl = "Cache-Control";
         public const string Connection = "Connection";
         public const string Date = "Date";

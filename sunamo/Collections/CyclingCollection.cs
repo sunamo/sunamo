@@ -18,8 +18,8 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// PPk pro prvky
     /// </summary>
     public List<T> c = new List<T>();
-    int _index = 0;
-    int index
+    private int _index = 0;
+    private int index
     {
         get
         {
@@ -46,7 +46,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <summary>
     /// Whether make space in formatting actual showing
     /// </summary>
-    bool _MakesSpaces;
+    private bool _MakesSpaces;
     /// <summary>
     /// Pro jak. operaci, ktera se tu stane
     /// Zde se vyvolava pri pridani, posunuti o jedno nebo vice, skok na jiny soubor a zmena formatovani. 
@@ -55,7 +55,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <summary>
     /// Pr EA
     /// </summary>
-    EventArgs ea = EventArgs.Empty;
+    private EventArgs _ea = EventArgs.Empty;
     public bool Cycling = true;
     #endregion
 
@@ -66,7 +66,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
 
     public CyclingCollection()
     {
-
     }
 
     /// <summary>
@@ -88,7 +87,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <param name="k"></param>
     public void AddRange(IEnumerable<T> k)
     {
-       //t.AddRange(k);
+        //t.AddRange(k);
         foreach (T item in k)
         {
             c.Add(item);
@@ -116,7 +115,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <returns></returns>
     public T SetIretation(int ir)
     {
-        
         index = ValidateIndex(ir);
         OnChange();
         return GetIretation;
@@ -152,7 +150,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         }
     }
 
-    
+
 
     /// <summary>
     /// GS Zda se maji v akt. iretaci  zobr. merzery mezi tokeny.
@@ -168,9 +166,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
         {
             _MakesSpaces = value;
             OnChange();
-            
         }
-
     }
 
     /// <summary>
@@ -220,7 +216,7 @@ public class CyclingCollection<T> : IStatusBroadcaster
                 t2 = c[dex];
             }
             else
-	        {
+            {
                 dex = Math.Abs(++index);
                 if (c.Count > dex && c.Count >= dex)
                 {
@@ -228,28 +224,26 @@ public class CyclingCollection<T> : IStatusBroadcaster
                 }
                 else
                 {
-                    
-                        index--;
-                        dex = Math.Abs(--index);
-                        if (c.Count > dex && c.Count >= dex)
+                    index--;
+                    dex = Math.Abs(--index);
+                    if (c.Count > dex && c.Count >= dex)
+                    {
+                        t2 = c[dex];
+                    }
+                    else
+                    {
+                        if (c.Count > 0)
                         {
-                            t2 = c[dex];
+                            t2 = c[0];
                         }
                         else
                         {
-                            if (c.Count > 0)
-                            {
-                                t2 = c[0];
-                            }
-                            else
-                            {
-                                OnNewStatus("Nepodarilo se nacist prvek, pridejte nejake a akci opakujte");
-                            }
+                            OnNewStatus("Nepodarilo se nacist prvek, pridejte nejake a akci opakujte");
                         }
-                        
+                    }
                 }
             }
-        
+
             return t2;
         }
     }
@@ -267,7 +261,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
             if (index == 0)
             {
                 index = c.Count - 1;
-
             }
             else
             {
@@ -337,7 +330,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
 
         if (dex == 0)
         {
-
         }
         else if (dex < 0)
         {
@@ -370,7 +362,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
         int dex = (index);
         if (dex == 0)
         {
-
         }
         else if (dex > c.Count)
         {
@@ -393,7 +384,6 @@ public class CyclingCollection<T> : IStatusBroadcaster
         int dex = c.IndexOf(p);
         c.RemoveAt(dex);
         c.Insert(dex, nove);
-
     }
 
     #region IStatusBroadcaster Members
@@ -417,6 +407,4 @@ public class CyclingCollection<T> : IStatusBroadcaster
     }
 
     #endregion
-
-    
 }

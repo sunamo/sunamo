@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public static partial class EnumHelper{ 
-public static List<T> GetValues<T>()
-        where T : struct
+public static partial class EnumHelper
+{
+    public static List<T> GetValues<T>()
+            where T : struct
     {
         return GetValues<T>(typeof(T));
     }
-/// <summary>
+    /// <summary>
     /// Get all values expect of Nope/None
     /// </summary>
     /// <typeparam name = "T"></typeparam>

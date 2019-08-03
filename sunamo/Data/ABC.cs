@@ -4,7 +4,6 @@ public class ABC : List<AB>//, IEnumerable<AB>
 {
     public ABC()
     {
-
     }
 
     public ABC(params object[] setsNameValue)
@@ -26,7 +25,7 @@ public class ABC : List<AB>//, IEnumerable<AB>
         List<object> o = new List<object>(this.Count);
         for (int i = 0; i < this.Count; i++)
         {
-            o.Add( this[i].B);
+            o.Add(this[i].B);
         }
         return o;
     }

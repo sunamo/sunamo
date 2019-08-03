@@ -4,8 +4,8 @@
     {
         if (sex)
         {
-            return "Milá";
+            return "Mil\u00E1";
         }
-        return "Milý";
+        return "Mil\u00FD";
     }
 }

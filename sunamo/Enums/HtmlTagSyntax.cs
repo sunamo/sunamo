@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public enum HtmlTagSyntax
-    {
-        Start,
-        End,
-        NonPairingEnded,
-        NonPairingNotEnded
-    }
+public enum HtmlTagSyntax
+{
+    Start,
+    End,
+    NonPairingEnded,
+    NonPairingNotEnded
+}
 

@@ -135,6 +135,7 @@
     <Compile Include="DataTableHelper.cs" />
     <Compile Include="Data\BorderData.cs" />
     <Compile Include="Data\DesktopSize.cs" />
+    <Compile Include="Data\ImageButtonsInit.cs" />
     <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="ControlsGenerator.cs" />

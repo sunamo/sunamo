@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-public partial class HtmlAssistant{ 
-public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
+public partial class HtmlAssistant
+{
+    public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
         object o = divMain.Attributes[p];
         if (o != null)
@@ -34,7 +35,6 @@ public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim 
             {
                 item.InnerHtml = item.InnerHtml.Trim();
             }
-            
         }
         return hd.DocumentNode.OuterHtml;
     }

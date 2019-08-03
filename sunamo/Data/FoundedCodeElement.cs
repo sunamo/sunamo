@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class FoundedCodeElement : IComparable<FoundedCodeElement>
-    {
+public class FoundedCodeElement : IComparable<FoundedCodeElement>
+{
     public FoundedCodeElement(int line, int from, int length)
     {
         this.Lenght = length;
@@ -14,12 +14,12 @@ using System.Threading.Tasks;
         this.From = from;
     }
 
-        public int Line;
-        /// <summary>
-        /// Is -1 if location isnt known (search in content and so)
-        /// </summary>
-        public int From;
-        public int Lenght;
+    public int Line;
+    /// <summary>
+    /// Is -1 if location isnt known (search in content and so)
+    /// </summary>
+    public int From;
+    public int Lenght;
 
     public int CompareTo(FoundedCodeElement other)
     {

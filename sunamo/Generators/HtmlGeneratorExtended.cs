@@ -2,7 +2,7 @@
 using sunamo.Properties;
 using System;
 
-public  class HtmlGeneratorExtended : HtmlGenerator
+public class HtmlGeneratorExtended : HtmlGenerator
 {
     public void DetailAnchor(string label, string oUriYouthProfile, string oNameYouthProfile)
     {
@@ -52,7 +52,7 @@ public  class HtmlGeneratorExtended : HtmlGenerator
         {
             WriteElement("b", label + AllStrings.colon);
             WriteRaw(AllStrings.space);
-            WriteTagWithAttr("a", "href", "mailto" + ":"+ oMail);
+            WriteTagWithAttr("a", "href", "mailto" + ":" + oMail);
             WriteRaw(oMail);
             TerminateTag("a");
             WriteBr();
@@ -72,7 +72,6 @@ public  class HtmlGeneratorExtended : HtmlGenerator
         {
             WriteTagWith2Attrs(HtmlTags.link, HtmlAttrs.rel, HtmlAttrValue.stylesheet, HtmlAttrs.href, css);
         }
-
     }
 
     public void BoilerplateMiddle()

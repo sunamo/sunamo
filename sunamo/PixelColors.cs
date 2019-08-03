@@ -16,7 +16,6 @@ namespace sunamo.Values
 
         static PixelColors()
         {
-
         }
     }
 }

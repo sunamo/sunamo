@@ -10,7 +10,7 @@ using System.Text;
 /// </summary>
 public class TextOutputGenerator
 {
-    readonly static string znakNadpisu = AllStrings.asterisk;
+    private readonly static string s_znakNadpisu = AllStrings.asterisk;
     public TextBuilder sb = new TextBuilder();
     public string prependEveryNoWhite
     {
@@ -30,7 +30,7 @@ public class TextOutputGenerator
     /// <summary>
     /// Pouze vypíše "Az budete mit vstupní data, spusťte program znovu."
     /// </summary>
-    public  void NoData()
+    public void NoData()
     {
         sb.AppendLine(Messages.NoData);
     }
@@ -47,19 +47,18 @@ public class TextOutputGenerator
     {
         int delkaTextu = text.Length;
         string hvezdicky = "";
-        hvezdicky = new string(znakNadpisu[0], delkaTextu);
+        hvezdicky = new string(s_znakNadpisu[0], delkaTextu);
         //hvezdicky.PadLeft(delkaTextu, znakNadpisu[0]);
         sb.AppendLine(hvezdicky);
         sb.AppendLine(text);
         sb.AppendLine(hvezdicky);
-        
     }
     #endregion
 
-    public  void AppendLineFormat(string text, params object[] p)
+    public void AppendLineFormat(string text, params object[] p)
     {
         sb.AppendLine();
-        
+
         AppendLine(SH.Format2(text, p));
     }
 
@@ -78,10 +77,10 @@ public class TextOutputGenerator
     {
         sb.AppendLine(text);
     }
-    
+
     public override string ToString()
     {
- 	    return sb.ToString();
+        return sb.ToString();
     }
 
     public void Header(string v)
@@ -120,7 +119,6 @@ public class TextOutputGenerator
     /// <param name="header"></param>
     public void Paragraph(string text, string header)
     {
-        
         if (text != string.Empty)
         {
             sb.AppendLine(header + AllStrings.colon);
@@ -163,6 +161,4 @@ public class TextOutputGenerator
     {
         sb.Undo();
     }
-
-    
 }

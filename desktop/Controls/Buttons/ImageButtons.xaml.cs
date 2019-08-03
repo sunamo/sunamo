@@ -109,13 +109,13 @@ namespace desktop.Controls.Buttons
         /// </summary>
         /// <param name="copyToClipboard"></param>
         /// <param name="clear"></param>
-        public void Init(object copyToClipboard, object clear, object add, object selectAll, object deselectAll)
+        public void Init(ImageButtonsInit i)
         {
-            SetVisibility(btnCopyToClipboard, copyToClipboard);
-            SetVisibility(btnClear, clear);
-            SetVisibility(btnAdd, add);
-            SetVisibility(btnSelectAll, selectAll);
-            SetVisibility(btnUnselectAll, deselectAll);
+            SetVisibility(btnCopyToClipboard, i.copyToClipboard);
+            SetVisibility(btnClear, i.clear);
+            SetVisibility(btnAdd, i.add);
+            SetVisibility(btnSelectAll, i.selectAll);
+            SetVisibility(btnUnselectAll, i.deselectAll);
 
             allButtons = CA.ToList<Button>(btnCopyToClipboard, btnClear, btnAdd, btnSelectAll, btnUnselectAll);
             this.Visibility = this.IsAllCollapsed() ? Visibility.Collapsed : Visibility.Visible;

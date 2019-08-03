@@ -1,5 +1,5 @@
 ﻿
-﻿using sunamo;
+using sunamo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +9,21 @@ using System.Threading.Tasks;
 /// <summary>
 /// Must be LoggerAbstract because same public class exists in uap
 /// </summary>
+
+
 namespace sunamo.LoggerAbstract
 {
     public abstract class LogMessageAbstract<Color, StorageClass> : ILogMessage<Color, StorageClass>
     {
-        private DateTime dateTime;
-        private TypeOfMessage typeOfMessage;
-        private string message;
-        private Color bg;
+        private DateTime _dateTime;
+        private TypeOfMessage _typeOfMessage;
+        private string _message;
+        private Color _bg;
 
-        public DateTime Dt { get { return dateTime; } }
-        public TypeOfMessage st { get { return typeOfMessage; } }
-        public string Message { get { return message; } }
-        public Color Bg { get { return Bg;  }  set { Bg = value; } }
+        public DateTime Dt { get { return _dateTime; } }
+        public TypeOfMessage st { get { return _typeOfMessage; } }
+        public string Message { get { return _message; } }
+        public Color Bg { get { return Bg; } set { Bg = value; } }
 
         /// <summary>
         /// Must be method because call await WpfApp.cd.RunAsync (works with controls)
@@ -29,12 +31,10 @@ namespace sunamo.LoggerAbstract
         /// <param name="c"></param>
         protected virtual async void SetBg(Color c)
         {
-
         }
 
         public LogMessageAbstract()
         {
-
         }
 
         /// <summary>
@@ -45,13 +45,13 @@ namespace sunamo.LoggerAbstract
         /// <param name="message"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public async Task< LogMessageAbstract<Color, StorageClass>> Initialize(DateTime dt, TypeOfMessage st, string message, Color color)
-            {
-            this.dateTime = dt;
-            this.typeOfMessage = st;
-            this.message = message;
-            this.bg = color;
+        public async Task<LogMessageAbstract<Color, StorageClass>> Initialize(DateTime dt, TypeOfMessage st, string message, Color color)
+        {
+            _dateTime = dt;
+            _typeOfMessage = st;
+            _message = message;
+            _bg = color;
             return this;
-            }
+        }
     }
 }

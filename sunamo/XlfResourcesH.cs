@@ -40,49 +40,44 @@ public class XlfResourcesH
         // cant be inicialized - after cs is set initialized to true and skip english
         //initialized = true;
 
-            var path = Path.Combine(basePath, "MultilingualResources");
-            var files = Directory.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
-            foreach (var file in files)
+        var path = Path.Combine(basePath, "MultilingualResources");
+        var files = Directory.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
+        foreach (var file in files)
+        {
+            var fn = FS.GetFileName(file).ToLower();
+            bool isCzech = fn.Contains("cs");
+            bool isEnglish = fn.Contains("en");
+
+            var doc = new XlfDocument(file);
+            lang = lang.ToLower();
+            var xlfFiles = doc.Files.Where(d => d.Original.ToLower().Contains(lang));
+            if (xlfFiles.Count() != 0)
             {
-                var fn = FS.GetFileName(file).ToLower();
-                bool isCzech = fn.Contains("cs");
-                bool isEnglish = fn.Contains("en");
+                var xlfFile = xlfFiles.First();
 
-                var doc = new XlfDocument(file);
-                lang = lang.ToLower();
-                var xlfFiles = doc.Files.Where(d => d.Original.ToLower().Contains(lang));
-                if (xlfFiles.Count() != 0)
+                foreach (var u in xlfFile.TransUnits)
                 {
-                    var xlfFile = xlfFiles.First();
-
-                    foreach (var u in xlfFile.TransUnits)
+                    if (isCzech)
                     {
-                        if (isCzech)
+                        if (!RLData.cs.ContainsKey(u.Id))
                         {
-                            if (!RLData.cs.ContainsKey(u.Id))
-                            {
-                                RLData.cs.Add(u.Id, u.Target);
-                            }
-                        }
-                        else if (isEnglish)
-                        {
-                            if (!RLData.en.ContainsKey(u.Id))
-                            {
-                                RLData.en.Add(u.Id, u.Target);
-                            
-                            }
-                            
-                        }
-                        else
-                        {
-                            throw new Exception("Unvalid file" + " " + file + ", " + "please delete it");
+                            RLData.cs.Add(u.Id, u.Target);
                         }
                     }
+                    else if (isEnglish)
+                    {
+                        if (!RLData.en.ContainsKey(u.Id))
+                        {
+                            RLData.en.Add(u.Id, u.Target);
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Unvalid file" + " " + file + ", " + "please delete it");
+                    }
                 }
-            
+            }
         }
-
-        
     }
 }
 

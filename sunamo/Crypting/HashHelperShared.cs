@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-public partial class HashHelper{ 
-
-/// <summary>
+public partial class HashHelper
+{
+    /// <summary>
     /// Získá 10 náhodných bajtů jako heslo a vloží do A3
     /// Spojí A1 a A3 a získaný hash uloží do A2
     /// </summary>
@@ -17,18 +17,18 @@ public partial class HashHelper{
         List<byte> joined = CA.JoinBytesArray(pass, salt);
         hash = GetHash(joined.ToArray());
     }
-public static void GetHashAndSalt(byte[] pass, out byte[] hash, out byte[] salt, int pocetBajtuSoli)
+    public static void GetHashAndSalt(byte[] pass, out byte[] hash, out byte[] salt, int pocetBajtuSoli)
     {
         salt = RandomHelper.RandomBytes(pocetBajtuSoli);
         List<byte> joined = CA.JoinBytesArray(pass, salt);
         hash = GetHash(joined.ToArray());
     }
 
-public static string GetMd5Hash(string text)
+    public static string GetMd5Hash(string text)
     {
         return GetMd5Hash(text, Encoding.UTF8);
     }
-public static string GetMd5Hash(string text, Encoding e)
+    public static string GetMd5Hash(string text, Encoding e)
     {
         MD5CryptoServiceProvider hash = new MD5CryptoServiceProvider();
         //http://www.gravatar.com/avatar/c9b424b73b969e217693c401a40db390.png

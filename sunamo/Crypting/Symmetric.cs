@@ -358,6 +358,5 @@ namespace shared.Crypting
             }
             return new DataCrypt(b);
         }
-
     }
 }

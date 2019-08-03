@@ -34,7 +34,6 @@ public static partial class SH
 
         if (ThisApp.check)
         {
-
         }
 
         StringBuilder sb = new StringBuilder();
@@ -56,7 +55,7 @@ public static partial class SH
         return sb.ToString();
     }
 
-    
+
 
     /// <summary>
     /// Return index, therefore x-1
@@ -87,7 +86,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't from");
+                ThrowExceptions.Custom(s_type, methodName, item + " " + "hasn't from");
             }
 
             if (p.Length() > 1)
@@ -96,7 +95,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't to");
+                ThrowExceptions.Custom(s_type, methodName, item + " " + "hasn't to");
             }
 
             if (SH.IsWildcard(item))
@@ -109,7 +108,6 @@ public static partial class SH
                     var groups = m.Groups;
                     var captues = m.Captures;
                     var value = m.Value;
-
                 }
             }
             else
@@ -117,7 +115,6 @@ public static partial class SH
                 //Wildcard wildcard = new Wildcard();
                 input = SH.ReplaceAll(input, to, from);
             }
-
         }
 
         return input;
@@ -189,7 +186,7 @@ public static partial class SH
 
     public static string ReplaceWhiteSpaces(string p, string v)
     {
-        return SH.Replace( ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);
+        return SH.Replace(ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);
     }
 
     public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
@@ -210,8 +207,8 @@ public static partial class SH
         {
             sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
         }
-        
-        return SH.TrimEnd( sb.ToString(), delimAfter);
+
+        return SH.TrimEnd(sb.ToString(), delimAfter);
     }
 
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
@@ -233,7 +230,7 @@ public static partial class SH
         sb.Append(text);
         if (after)
         {
-            dxsColons = SH.ReturnOccurencesOfString(text, colon); 
+            dxsColons = SH.ReturnOccurencesOfString(text, colon);
 
             for (int i = dxsColons.Count - 1; i >= 0; i--)
             {
@@ -244,7 +241,7 @@ public static partial class SH
             for (int i = dxsColons.Count - 1; i >= 0; i--)
             {
                 sb.Remove(dxsColons[i] + 1, 1);
-            } 
+            }
         }
         else
         {
@@ -280,7 +277,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                throw new Exception("Nahrazovaný prvek" + " " + item + " " + "je prvkem jímž se nahrazuje" + " " + "" + " " + zaCo + AllStrings.dot);
+                throw new Exception("Nahrazovan\u00FD prvek" + " " + item + " " + "je prvkem j\u00EDm\u017E se nahrazuje" + " " + "" + " " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -315,7 +312,6 @@ public static partial class SH
             {
                 hasLine = item.Contains(contains[0]);
             }
-
         }
         else
         {
@@ -338,8 +334,6 @@ public static partial class SH
         {
             if (!text.EndsWith(postfix))
             {
-
-
                 return text + postfix;
             }
         }
@@ -367,7 +361,7 @@ public static partial class SH
         {
             if (searchStrategy == SearchStrategy.ExactlyName)
             {
-                if (caseSensitive )
+                if (caseSensitive)
                 {
                     return input == term;
                 }
@@ -424,7 +418,7 @@ public static partial class SH
         return Contains(input, term, searchStrategy, true);
     }
 
-    
+
 
     /// <summary>
     /// 
@@ -451,28 +445,28 @@ public static partial class SH
     public static string WordAfter(string input, string word)
     {
         input = SH.WrapWith(input, AllChars.space);
-        
+
         int dex = input.IndexOf(word);
-     
-            int dex2 = input.IndexOf(AllChars.space, dex+1);
-            StringBuilder sb = new StringBuilder();
-            if (dex2 != -1)
+
+        int dex2 = input.IndexOf(AllChars.space, dex + 1);
+        StringBuilder sb = new StringBuilder();
+        if (dex2 != -1)
+        {
+            dex2++;
+            for (int i = dex2; i < input.Length; i++)
             {
-                dex2++;
-                for (int i = dex2; i < input.Length; i++)
+                char ch = input[i];
+                if (ch != AllChars.space)
                 {
-                    char ch = input[i];
-                    if (ch != AllChars.space)
-                    {
-                        sb.Append(ch);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    sb.Append(ch);
+                }
+                else
+                {
+                    break;
                 }
             }
-            return sb.ToString();       
+        }
+        return sb.ToString();
     }
 
 
@@ -540,11 +534,11 @@ public static partial class SH
     public static string RemoveAfterFirst(string t, char ch)
     {
         int dex = t.IndexOf(ch);
-        if (dex == -1 || dex == t.Length -1)
+        if (dex == -1 || dex == t.Length - 1)
         {
             return t;
         }
-        
+
         return t.Substring(0, dex);
     }
 
@@ -596,7 +590,7 @@ public static partial class SH
         return true;
     }
 
-    
+
 
     public static string ReplaceWhiteSpacesExcludeSpaces(string p)
     {
@@ -606,7 +600,7 @@ public static partial class SH
     public static string[] GetTextsBetween(string p, string after, string before)
     {
         List<string> vr = new List<string>();
-        
+
         List<int> p2 = SH.ReturnOccurencesOfString(p, after);
         List<int> p3 = SH.ReturnOccurencesOfString(p, before);
 
@@ -625,10 +619,10 @@ public static partial class SH
                 continue;
             }
 
-                int p2_3 = p2_2 + after.Length;
-                int p3_3 = p3_2 - 1;
+            int p2_3 = p2_2 + after.Length;
+            int p3_3 = p3_2 - 1;
             // When I return between ( ), there must be +1 
-            vr.Add( p.Substring(p2_3, p3_3 - p2_3+1).Trim());
+            vr.Add(p.Substring(p2_3, p3_3 - p2_3 + 1).Trim());
         }
 
         return vr.ToArray();
@@ -655,13 +649,13 @@ public static partial class SH
             p2 += after.Length;
             p3 -= 1;
             // When I return between ( ), there must be +1 
-            vr = p.Substring(p2, p3 - p2+1).Trim();
+            vr = p.Substring(p2, p3 - p2 + 1).Trim();
         }
         else
         {
             if (throwExceptionIfNotContains)
             {
-                ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
+                ThrowExceptions.NotContains(s_type, "GetTextBetween", p, after, before);
             }
         }
 
@@ -680,8 +674,8 @@ public static partial class SH
             arg = SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
         }
 
-        
-        return arg; 
+
+        return arg;
     }
 
     /// <summary>
@@ -744,7 +738,7 @@ public static partial class SH
         }
 
         int partsCount = tfd.Count;
-        
+
         int actualCharFormatData = 0;
         CharFormatData actualFormatData = tfd[actualCharFormatData];
         CharFormatData followingFormatData = tfd[actualCharFormatData + 1];
@@ -761,7 +755,7 @@ public static partial class SH
         int processed = 0;
         int from = actualFormatData.fromTo.from;
         int remains = actualFormatData.fromTo.to;
-        int tfdCountM1 = tfd.Count-1;
+        int tfdCountM1 = tfd.Count - 1;
 
         while (true)
         {
@@ -778,14 +772,13 @@ public static partial class SH
                 {
                     return false;
                 }
-                isRightChar = CA.IsEqualToAnyElement<char>(r[ actualChar], actualFormatData.mustBe);
+                isRightChar = CA.IsEqualToAnyElement<char>(r[actualChar], actualFormatData.mustBe);
                 if (isRightChar && !canBeAnyChar)
                 {
                     actualChar++;
                     processed++;
                     remains--;
                 }
-                 
             }
 
             if (!isRightChar)
@@ -805,7 +798,6 @@ public static partial class SH
                 }
                 if (isRightChar && !canBeAnyChar)
                 {
-                    
                     actualCharFormatData++;
                     processed++;
                     actualChar++;
@@ -829,7 +821,6 @@ public static partial class SH
                     remains = actualFormatData.fromTo.to;
                     remains--;
                 }
-                
             }
 
             if (remains == 0)
@@ -840,7 +831,7 @@ public static partial class SH
                     return false;
                 }
                 actualFormatData = tfd[actualCharFormatData];
-                if (CA.HasIndex(actualCharFormatData+1, tfd))
+                if (CA.HasIndex(actualCharFormatData + 1, tfd))
                 {
                     followingFormatData = tfd[actualCharFormatData + 1];
                 }
@@ -860,7 +851,7 @@ public static partial class SH
         }
     }
 
-    
+
 
 
     public static bool HasCharRightFormat(char ch, CharFormatData cfd)
@@ -993,7 +984,7 @@ public static partial class SH
         return vr;
     }
 
-    
+
 
     public static string RemoveBracketsWithoutText(string vr)
     {
@@ -1183,7 +1174,7 @@ public static partial class SH
                 if (nameSolution[i] == n.ToString()[0])
                 {
                     replace = true;
-                    nameSolution= nameSolution.Substring(0, nameSolution.Length - 1);
+                    nameSolution = nameSolution.Substring(0, nameSolution.Length - 1);
                     break;
                 }
             }
@@ -1294,7 +1285,6 @@ public static partial class SH
         StringBuilder sb = new StringBuilder();
         for (int i = chs.Count - 1; i >= 0; i--)
         {
-
             if (!bw[i])
             {
                 while (i != 0 && !bw[i - 1])
@@ -1307,7 +1297,6 @@ public static partial class SH
                 {
                     vr.Add(d);
                 }
-
             }
             else
             {
@@ -1330,7 +1319,7 @@ public static partial class SH
             }
             else
             {
-                string ds = what[delimitersIndexes[i-1]].ToString();
+                string ds = what[delimitersIndexes[i - 1]].ToString();
                 v[0] = vr[i] + ds + v[0];
             }
         }
@@ -1422,11 +1411,11 @@ public static partial class SH
         return value;
     }
 
-    
 
-    
 
-    
+
+
+
 
     private static bool IsUnicodeChar(UnicodeChars generic, char c)
     {
@@ -1459,7 +1448,7 @@ public static partial class SH
             case UnicodeChars.Generic:
                 return CharHelper.IsGeneric(c);
             default:
-                ThrowExceptions.NotImplementedCase(type, "IsUnicodeChar");
+                ThrowExceptions.NotImplementedCase(s_type, "IsUnicodeChar");
                 return false;
         }
     }
@@ -1568,17 +1557,17 @@ public static partial class SH
         }
     }
 
-    
 
-    
 
-    
 
-    
+
+
+
+
 
     static SH()
     {
-        cs = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs";
+        s_cs = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs";
         Init();
     }
 
@@ -1600,7 +1589,7 @@ public static partial class SH
         int dex = p.LastIndexOf(AllChars.space);
         if (dex != -1)
         {
-            return p.Substring(dex).Trim();    
+            return p.Substring(dex).Trim();
         }
         return "";
     }
@@ -1611,7 +1600,7 @@ public static partial class SH
         int dex = p.LastIndexOf(AllChars.space);
         if (dex != -1)
         {
-            return p.Substring(0, dex);    
+            return p.Substring(0, dex);
         }
         return p;
     }
@@ -1646,7 +1635,7 @@ public static partial class SH
         return sb.ToString();
     }
 
-    static bool IsMatchRegex(string str, string pat, char singleWildcard, char multipleWildcard)
+    private static bool IsMatchRegex(string str, string pat, char singleWildcard, char multipleWildcard)
     {
         // If I compared .vs with .vs, return false before
         if (str == pat)
@@ -1674,7 +1663,6 @@ public static partial class SH
     /// <returns></returns>
     public static string RemoveDiacritics(string text)
     {
-
         String normalizedString = text.Normalize(NormalizationForm.FormD);
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -1720,13 +1708,12 @@ public static partial class SH
             sb.Append(roz[roz.Length() - 1]);
             return sb.ToString();
         }
-
     }
 
 
-    
 
-    
+
+
 
     public static string JoinTimes(int times, string dds)
     {
@@ -1751,9 +1738,9 @@ public static partial class SH
     {
         if (deli == null || deli.Count() == 0)
         {
-            if (cs)
+            if (s_cs)
             {
-                throw new Exception("Nebyl specifikován delimiter");
+                throw new Exception("Nebyl specifikov\u00E1n delimiter");
             }
             else
             {
@@ -1822,8 +1809,6 @@ public static partial class SH
                                     splittedPart.Add(sb.ToString());
                                     sb.Clear();
                                 }
-
-
                             }
                         }
 
@@ -1835,11 +1820,9 @@ public static partial class SH
                             {
                                 splitted.Insert(i, splittedPart[y]);
                             }
-
                         }
                         splitted.Add(sb.ToString());
                     }
-
                 }
                 return splitted.ToArray();
             }
@@ -1881,13 +1864,12 @@ public static partial class SH
         return sb.ToString();
     }
 
-    
+
 
 
 
     public static string Trim(string s, string args)
     {
-        
         while (s.EndsWith(args))
         {
             s = s.Substring(0, s.Length - 1);
@@ -1906,7 +1888,7 @@ public static partial class SH
         if (stringToSplit != "")
         {
             var f = SH.SplitNone(stringToSplit, delimiter);
-            nt = new List<int>(f.Length()); 
+            nt = new List<int>(f.Length());
             foreach (string item in f)
             {
                 nt.Add(int.Parse(item));
@@ -1922,7 +1904,6 @@ public static partial class SH
     public static string AdvancedTrim(string p)
     {
         return p.Replace(AllStrings.doubleSpace, AllStrings.space).Trim();
-
     }
 
     /// <summary>
@@ -2036,7 +2017,7 @@ public static partial class SH
         {
             if (throwExcWhenInvalidIndex)
             {
-                throw new Exception("Chybný parametr" + " " + "");
+                throw new Exception("Chybn\u00FD parametr" + " " + "");
             }
             else
             {
@@ -2110,18 +2091,18 @@ public static partial class SH
      * JoinString
      */
 
-    
 
-    
+
+
     public static string JoinStringParams(object delimiter, params string[] parts)
     {
         // TODO: Delete after all app working, has here method Join with same arguments
-        return Join(delimiter, CA.ToEnumerable( parts));
+        return Join(delimiter, CA.ToEnumerable(parts));
     }
 
-    
 
-    
+
+
 
     /// <summary>
     /// Will be delete after final refactoring
@@ -2143,7 +2124,7 @@ public static partial class SH
 
     // refaktorovat to tady, nemuzu zavolat params z IEnum . Teprve ve working method zkontroluji co je za typ a pripadne pretypuji
 
-    
+
 
     /// <summary>
     /// If element will be number, wont wrap with qm.
@@ -2170,7 +2151,6 @@ public static partial class SH
                 continue;
             }
             sb.Append(item + s);
-
         }
         string d = sb.ToString();
         //return d.Remove(d.Length - (name.Length - 1), name.Length);
@@ -2205,7 +2185,7 @@ public static partial class SH
             i++;
         }
         string vr = sb.ToString();
-        return SH.SubstringLength( vr,0, vr.Length - 1);
+        return SH.SubstringLength(vr, 0, vr.Length - 1);
     }
 
     private static string SubstringLength(string vr, int from, int length)

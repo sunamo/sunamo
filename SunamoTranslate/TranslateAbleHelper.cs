@@ -15,8 +15,8 @@ public class TranslateAbleHelper
 
     public static bool outsideReplaceBadChars = false;
 
-    static bool _result;
-    static bool result
+    private static bool s_result;
+    private static bool result
     {
         set
         {
@@ -24,31 +24,29 @@ public class TranslateAbleHelper
             {
                 if (outsideReplaceBadChars)
                 {
-                    notToTranslate.Add(_between);
+                    notToTranslate.Add(s_between);
                 }
-                
 
-                if (_between.Contains("klazuli if v metodě MSStoredProceduresIBase2.SelectLastIDFromTableSigned nebyl nalezen typ"))
+
+                if (s_between.Contains("klazuli if v metod\u011B MSStoredProceduresIBase2.SelectLastIDFromTableSigned nebyl nalezen typ"))
                 {
-
                 }
             }
-            
+
 
             if (ThisApp.check)
             {
-
             }
-            _result = value;
+            s_result = value;
         }
         get
         {
-            return _result;
+            return s_result;
         }
     }
 
-    static string _between = null;
-    static SplitStringsData _splitStringsData = null;
+    private static string s_between = null;
+    private static SplitStringsData s_splitStringsData = null;
     public static BoolString isNameOfControl = null;
 
     /// <summary>
@@ -64,14 +62,14 @@ public class TranslateAbleHelper
     {
         between = between.Trim();
         result = true;
-        _between = between;
-        _splitStringsData = splitStringsData;
+        s_between = between;
+        s_splitStringsData = splitStringsData;
         Dictionary<string, StringPaddingData> v = null;
         if (splitStringsData != null)
         {
             v = splitStringsData.v;
         }
-       
+
         if (SH.ContainsNewLine(between) && between.Contains("|"))
         {
             // string with data 
@@ -83,14 +81,14 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
-        if (between.Contains('�'))
+        if (between.Contains('\uFFFD'))
         {
             result = false; return result;
         }
 
         ThisApp.check = false;
 
-        if (between == "na rozdíl od")
+        if (between == "na rozd\u00EDl od")
         {
             ThisApp.check = true;
         }
@@ -118,13 +116,13 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
-        var deli = CA.ToList<char>( SH.spaceAndPuntactionChars);
+        var deli = CA.ToList<char>(SH.spaceAndPuntactionChars);
         deli.Add('(');
         deli.Add(')');
 
         var tokens = SH.Split(between, deli);
 
-        
+
 
         if (!isCzech)
         {
@@ -144,7 +142,7 @@ public class TranslateAbleHelper
                 result = false; return result;
             }
         }
-       
+
         var tokensL = SH.Split(lower, deli);
 
         //CA.Trim(tokens);
@@ -167,7 +165,7 @@ public class TranslateAbleHelper
 
         if (betweenT.Length < 4)
         {
-            result = false;return result;
+            result = false; return result;
         }
 
         #region Special formats - uri, guid, etc.
@@ -220,7 +218,7 @@ public class TranslateAbleHelper
         var includedSqlKeywords = CA.CompareList(tokensL, SunamoTranslateConsts.sqlKeywords);
 
         // strings are often splitted, so > 1 must be succufient
-        if (includedSqlKeywords .Count > 1 && tokensL.Count <= includedSqlKeywords.Count)
+        if (includedSqlKeywords.Count > 1 && tokensL.Count <= includedSqlKeywords.Count)
         {
             result = false; return result;
         }
@@ -230,8 +228,8 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
-            // Contains only numbers and/or dot
-            if (SH.ContainsAny(between, false, lt).Count == between.Length())
+        // Contains only numbers and/or dot
+        if (SH.ContainsAny(between, false, lt).Count == between.Length())
         {
             result = false; return result;
         }
@@ -297,7 +295,7 @@ public class TranslateAbleHelper
         #endregion
 
         #region Special equal
-        if (HtmlHelperText.IsCssDeclarationName( SH.Trim( between, ";")))
+        if (HtmlHelperText.IsCssDeclarationName(SH.Trim(between, ";")))
         {
             result = false; return result;
         }
@@ -349,8 +347,8 @@ public class TranslateAbleHelper
         if (CA.IsEqualToAnyElement<string>(between, CA.ToListString("unplated")))
         {
             result = false; return result;
-        } 
-        #endregion 
+        }
+        #endregion
 
         if (!between.Contains(AllChars.space))
         {
@@ -359,7 +357,6 @@ public class TranslateAbleHelper
 
             if (from != -1 && to != -1)
             {
-
                 string b = SH.GetTextBetweenTwoChars(between, from, to);
 
                 if (BTS.IsInt(b))
@@ -375,7 +372,7 @@ public class TranslateAbleHelper
             }
 
             // Tables.
-            if (between.EndsWith(".") && char.IsUpper( between[0]))
+            if (between.EndsWith(".") && char.IsUpper(between[0]))
             {
                 result = false; return result;
             }
@@ -383,29 +380,29 @@ public class TranslateAbleHelper
             // color
             if (between.StartsWith("#"))
             {
-                result = false;return result;
+                result = false; return result;
             }
 
             if (between.StartsWith("0x"))
             {
                 result = false; return result;
             }
-            
+
             else if (between.StartsWith("/") && between.Contains(";"))
             {
-                result = false;return result;
+                result = false; return result;
             }
-            else if (between.StartsWith("mailto:") )
+            else if (between.StartsWith("mailto:"))
             {
-                result = false;return result;
+                result = false; return result;
             }
-            
+
 
 
             if (between.Contains(AllStrings.equal) || between.Contains(AllStrings.ampersand))
             {
                 // Dont contains space, I can afford. url arguments
-                result = false;return result;
+                result = false; return result;
             }
             //if (!SH.ContainsOnlyCase(between, true) && !SH.ContainsOnlyCase(between, false))
             //{
@@ -414,10 +411,10 @@ public class TranslateAbleHelper
             //}
 
         }
-        
+
         if (between.Contains(AllStrings.colon))
         {
-            var partsColon = SH.Split(SH.Trim( between, ";"), AllStrings.colon);
+            var partsColon = SH.Split(SH.Trim(between, ";"), AllStrings.colon);
             CA.Trim(partsColon);
             var decl = partsColon[0];
             if (HtmlHelperText.IsCssDeclarationName(decl))
@@ -434,37 +431,36 @@ public class TranslateAbleHelper
         //<ItemsPanelTemplate   xmlns, <br /, Needed before replace show strings which will be traslate and not - swithc between them
         if (AllChars.lt == one)
         {
-            result = false;return result;
+            result = false; return result;
         }
 
         // user32.dll
         var ext = FS.GetExtension(lower).TrimStart(AllChars.dot);
         if (AllExtensionsHelper.allExtensionsWithoutDot.ContainsKey(ext))
         {
-            result = false;return result;
+            result = false; return result;
         }
 
         if (lowerT == string.Empty)
         {
-            result = false;return result;
+            result = false; return result;
         }
 
         if (lower.Contains(".aspx"))
         {
-            result = false;return result;
+            result = false; return result;
         }
 
         if (result)
         {
             if (AllHtmlAttrs.list.Contains(lower))
             {
-                result = false;return result;
+                result = false; return result;
             }
         }
 
         if (result)
         {
-            
         }
 
         #region System.Windows.Controls

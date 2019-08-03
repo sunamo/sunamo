@@ -2,8 +2,6 @@
 using System.Text;
 public class XmlGeneratorSelective : XmlGenerator
 {
-    
-
     /// <summary>
     /// A1 nemůže být null, musí to být v nejhorším případě Array.Empty
     /// </summary>
@@ -18,7 +16,7 @@ public class XmlGeneratorSelective : XmlGenerator
             string nameAtt = p_2[i * 2];
             if (!vynechat.Contains(nameAtt))
             {
-                sb.AppendFormat("{0}=\"{1}\"", nameAtt, p_2[i*2+1]);    
+                sb.AppendFormat("{0}=\"{1}\"", nameAtt, p_2[i * 2 + 1]);
             }
         }
         sb.Append(AllStrings.gt);

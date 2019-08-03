@@ -17,7 +17,7 @@ namespace sunamo.Storage
     /// </summary>
     public class ApplicationDataText
     {
-        static Type type = typeof(ApplicationDataText);
+        private static Type s_type = typeof(ApplicationDataText);
 
         /// <summary>
         /// If file contains grouped lines by A2, return these groups
@@ -43,14 +43,12 @@ namespace sunamo.Storage
                 string actualSectionBefore = actualSection;
                 if (CA.IsSomethingTheSame(item, sections, ref actualSection))
                 {
-                    
-
                     CA.RemoveStringsEmpty(listString);
                     if (actualSectionBefore != null)
                     {
                         v.Add(actualSectionBefore, listString);
                     }
-                    
+
                     listString = new List<string>();
 
                     continue;
@@ -62,7 +60,7 @@ namespace sunamo.Storage
             CA.RemoveStringsEmpty(listString);
             v.Add(actualSection, listString);
 
-            ThrowExceptions.DifferentCountInLists(type, "Parse", "sections", sections.Count, "v", v.Count);
+            ThrowExceptions.DifferentCountInLists(s_type, "Parse", "sections", sections.Count, "v", v.Count);
             return v;
         }
     }

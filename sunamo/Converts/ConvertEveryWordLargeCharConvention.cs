@@ -35,7 +35,6 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
         {
             if (dalsiVelke)
             {
-
                 if (char.IsUpper(item))
                 {
                     dalsiVelke = false;
@@ -74,9 +73,9 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
             }
             if (char.IsUpper(item))
             {
-                if (!char.IsUpper( sb[sb.Length- 1]))
+                if (!char.IsUpper(sb[sb.Length - 1]))
                 {
-                    sb.Append(AllChars.space);    
+                    sb.Append(AllChars.space);
                 }
                 sb.Append(item);
             }

@@ -20,7 +20,6 @@ namespace sunamo.Helpers
         public static HttpClient hc = new HttpClient();
         private HttpClientHelper()
         {
-
         }
 
         public async static Task<string> GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
@@ -39,7 +38,7 @@ namespace sunamo.Helpers
             return vr;
         }
 
-        public async static Task< Stream> GetResponseStream(string address, HttpMethod method, HttpRequestData hrd)
+        public async static Task<Stream> GetResponseStream(string address, HttpMethod method, HttpRequestData hrd)
         {
             HttpResponseMessage response = await GetResponse(address, method, hrd);
 
@@ -49,7 +48,7 @@ namespace sunamo.Helpers
             }
         }
 
-        public async static Task< HttpResponseMessage> GetResponse(string address, HttpMethod method, HttpRequestData hrd)
+        public async static Task<HttpResponseMessage> GetResponse(string address, HttpMethod method, HttpRequestData hrd)
         {
             if (hrd == null)
             {

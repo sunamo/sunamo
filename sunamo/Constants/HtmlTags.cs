@@ -6,9 +6,9 @@ using System.Text;
 /// <summary>
 /// plural - as string
 /// </summary>
-    public class HtmlTags
-    {
-        public const string img = "img";
+public class HtmlTags
+{
+    public const string img = "img";
     public const string span = "span";
     public const string title = "title";
 

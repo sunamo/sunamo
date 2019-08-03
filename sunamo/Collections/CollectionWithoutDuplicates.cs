@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 
 
-public  class CollectionWithoutDuplicates<T>
+public class CollectionWithoutDuplicates<T>
 {
     public List<T> c = null;
     public bool allowNull = false;
@@ -14,7 +14,7 @@ public  class CollectionWithoutDuplicates<T>
     {
         if (br)
         {
-System.Diagnostics.Debugger.Break();
+            System.Diagnostics.Debugger.Break();
         }
         c = new List<T>();
     }
@@ -33,7 +33,7 @@ System.Diagnostics.Debugger.Break();
     {
         if (!c.Contains(t2))
         {
-            if (EqualityComparer<T>.Default.Equals( t2,  default(T)))
+            if (EqualityComparer<T>.Default.Equals(t2, default(T)))
             {
                 if (allowNull)
                 {
@@ -83,7 +83,4 @@ System.Diagnostics.Debugger.Break();
             Add(item);
         }
     }
-
-    
-    
 }

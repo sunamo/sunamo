@@ -18,7 +18,6 @@ public partial class CryptHelper : ICryptHelper
         {
             return BTS.ConvertFromBytesToUtf8(rijndaelBytes.Encrypt(BTS.ConvertFromUtf8ToBytes(v)));
         }
-
     }
 }
 

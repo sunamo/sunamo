@@ -3,5 +3,4 @@
     Contents,
     Titles,
     Both
-
 }

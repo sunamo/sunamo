@@ -11,13 +11,13 @@ namespace DocArch.SqLite
 {
     public class StoredProceduresI : IStoredProceduresI
     {
-        SQLiteConnection conn = DatabaseLayer.conn;
+        private SQLiteConnection _conn = DatabaseLayer.conn;
         public static StoredProceduresI ci = new StoredProceduresI();
 
         public string[] VratNazvySloupcuTabulky(string p)
         {
             List<string> vr = new List<string>();
-            SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT sql FROM sqlite_master WHERE tbl_name = '{0}' AND type = 'table'", p), conn);
+            SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT sql FROM sqlite_master WHERE tbl_name = '{0}' AND type = 'table'", p), _conn);
             SQLiteDataReader dr = comm.ExecuteReader(CommandBehavior.SingleRow);
             string sql = null;
             object o = dr.GetValue(0);
@@ -39,8 +39,7 @@ namespace DocArch.SqLite
 
         public DataTable GetDataTable(string sql)
         {
-
-            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
             return GetDataTable(comm);
         }
 
@@ -86,7 +85,7 @@ namespace DocArch.SqLite
         public int InsertToTable(string tabulka, string nazvySloupcu, params object[] sloupce)
         {
             string hodnoty = StoredProcedures.ci.GetValues(sloupce);
-            SQLiteCommand comm = new SQLiteCommand(SH.Format2("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, StoredProcedures.ci.GetValues(sloupce)), conn);
+            SQLiteCommand comm = new SQLiteCommand(SH.Format2("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, StoredProcedures.ci.GetValues(sloupce)), _conn);
             comm.ExecuteNonQuery();
             return StoredProceduresI.ci.FindOutNumberOfRows(tabulka);
         }
@@ -100,7 +99,6 @@ namespace DocArch.SqLite
         /// <returns></returns>
         public DataTable GetDataTableSelective(string tabulka, string sloupec, object hodnota)
         {
-
             return GetDataTable("SELECT * FROM" + " " + tabulka + " " + "WHERE" + " " + sloupec + " = " + StoredProcedures.ci.ReplaceValueOnlyOne(hodnota));
         }
 
@@ -130,7 +128,7 @@ namespace DocArch.SqLite
         private List<int> GetValuesAllRowsInt(string sql)
         {
             List<int> vr = new List<int>();
-            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
             DataTable dt = StoredProceduresI.ci.GetDataTable(comm);
             foreach (DataRow var in dt.Rows)
             {
@@ -142,7 +140,7 @@ namespace DocArch.SqLite
         private List<string> GetValuesAllRowsString(string sql)
         {
             List<string> vr = new List<string>();
-            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
             DataTable dt = StoredProceduresI.ci.GetDataTable(comm);
             foreach (DataRow var in dt.Rows)
             {
@@ -162,7 +160,7 @@ namespace DocArch.SqLite
         public List<object> GetValuesAllRows(string tabulka, string nazevSloupce, object hodnotaSloupce)
         {
             List<object> vr = new List<object>();
-            SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT * FROM {0} WHERE {1} = {2}", tabulka, nazevSloupce, StoredProcedures.ci.ReplaceValueOnlyOne(hodnotaSloupce)), conn);
+            SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT * FROM {0} WHERE {1} = {2}", tabulka, nazevSloupce, StoredProcedures.ci.ReplaceValueOnlyOne(hodnotaSloupce)), _conn);
 
 
             return vr;
@@ -207,7 +205,6 @@ namespace DocArch.SqLite
         {
             //SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT Nazev FROM {0} WHERE ID = {1}", tabulka, id));
             return GetElementDataTable(GetDataTableSelective(tabulka, "ID", id), 0, 1);
-
         }
 
         /// <summary>
@@ -239,12 +236,12 @@ namespace DocArch.SqLite
                     }
                 }
             }
-            throw new Exception("Zadaná buNka nebyla nalezena");
+            throw new Exception("Zadan\u00E1 buNka nebyla nalezena");
         }
 
         public int ExecuteNonQuery(string p)
         {
-            SQLiteCommand comm = new SQLiteCommand(p, conn);
+            SQLiteCommand comm = new SQLiteCommand(p, _conn);
             return comm.ExecuteNonQuery();
         }
 
@@ -264,7 +261,7 @@ namespace DocArch.SqLite
         {
             //
             string sql = SH.Format2("UPDATE {0} SET {1}={2} WHERE {3} = {4}", table, sloupecKUpdate, StoredProcedures.ci.ReplaceValueOnlyOne(n), sloupecID, StoredProcedures.ci.ReplaceValueOnlyOne(id));
-            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
             return comm.ExecuteNonQuery();
         }
 

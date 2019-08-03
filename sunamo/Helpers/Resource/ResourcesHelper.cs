@@ -15,11 +15,10 @@ namespace sunamo.Helpers
     /// </summary>
     public class ResourcesHelper
     {
-        private ResourceManager rm = null;
+        private ResourceManager _rm = null;
 
         private ResourcesHelper()
         {
-
         }
 
         /// <summary>
@@ -30,14 +29,14 @@ namespace sunamo.Helpers
         public static ResourcesHelper Create(string resourceClass, Assembly sunamoAssembly)
         {
             ResourcesHelper resourcesHelper = new ResourcesHelper();
-            resourcesHelper.rm = new ResourceManager(resourceClass, sunamoAssembly);
+            resourcesHelper._rm = new ResourceManager(resourceClass, sunamoAssembly);
             return resourcesHelper;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string GetString(string name)
         {
-            return rm.GetString(name);
+            return _rm.GetString(name);
         }
     }
 }

@@ -17,14 +17,14 @@ using sunamo.Constants;
 /// </summary>
 public static partial class SF
 {
-    static SerializeContentArgs contentArgs = new SerializeContentArgs();
+    private static SerializeContentArgs s_contentArgs = new SerializeContentArgs();
     public const string replaceForSeparatorString = AllStrings.us;
     public static readonly char replaceForSeparatorChar = AllChars.us;
     public static int keyCodeSeparator
     {
         get
         {
-            return (int)contentArgs.separatorChar;
+            return (int)s_contentArgs.separatorChar;
         }
     }
 
@@ -35,7 +35,7 @@ public static partial class SF
     {
         get
         {
-            return contentArgs.separatorChar;
+            return s_contentArgs.separatorChar;
         }
     }
 
@@ -43,18 +43,18 @@ public static partial class SF
     {
         get
         {
-            return contentArgs.separatorString;
+            return s_contentArgs.separatorString;
         }
 
         set
         {
-            contentArgs.separatorString = value;
+            s_contentArgs.separatorString = value;
         }
     }
 
     static SF()
     {
-        contentArgs.separatorString = AllStrings.pipe;
+        s_contentArgs.separatorString = AllStrings.pipe;
     }
     /// <summary>
     /// 
@@ -118,7 +118,7 @@ public static partial class SF
     }
 
 
-    
+
 
     /// <summary>
     /// If index won't founded, return null.
@@ -172,9 +172,9 @@ public static partial class SF
         return null;
     }
 
-   
 
-    
+
+
 
     /// <summary>
     /// Read text with first delimitech which automatically delimite
@@ -184,7 +184,7 @@ public static partial class SF
     {
         // COmmented, app data not should be in *.web. pass directly as arg
         List<string> lines = null;
-            //SH.GetLines(AppData.ci.ReadFileOfSettingsOther(fileNameOrPath));
+        //SH.GetLines(AppData.ci.ReadFileOfSettingsOther(fileNameOrPath));
         if (lines.Count > 1)
         {
             int delimiterInt;

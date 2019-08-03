@@ -93,6 +93,11 @@ namespace Roslyn
             return CSharpSyntaxTree.ParseText(code);
         }
 
+        /// <summary>
+        /// better is use d:\pa\CodeFormatter\ with lang attr 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public static string Format(string format)
         {
             format = HttpUtility.HtmlDecode(format);

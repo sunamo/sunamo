@@ -10,7 +10,7 @@ public class JavascriptSerialization
     public static JavascriptSerialization InstanceMs = new JavascriptSerialization(SerializationLibrary.Microsoft);
     public static JavascriptSerialization InstanceNewtonSoft = new JavascriptSerialization(SerializationLibrary.Newtonsoft);
 
-    SerializationLibrary sl = SerializationLibrary.Newtonsoft;
+    private SerializationLibrary _sl = SerializationLibrary.Newtonsoft;
     /// <summary>
     /// Výchozí pro A1 je Microsoft
     /// </summary>
@@ -21,12 +21,12 @@ public class JavascriptSerialization
 
     public string Serialize(object o)
     {
-        if (sl == SerializationLibrary.Microsoft)
+        if (_sl == SerializationLibrary.Microsoft)
         {
             return ThrowExceptionsMicrosoftSerializerNotSupported<string>();
             //return js.Serialize(o);
         }
-        else if (sl == SerializationLibrary.Newtonsoft)
+        else if (_sl == SerializationLibrary.Newtonsoft)
         {
             return JsonConvert.SerializeObject(o);
         }
@@ -43,16 +43,16 @@ public class JavascriptSerialization
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
-        throw new NotImplementedException("Else if with enum value" + " " + sl + " " + "in JavascriptSerialization" + "." + v);
+        throw new NotImplementedException("Else if with enum value" + " " + _sl + " " + "in JavascriptSerialization" + "." + v);
     }
 
     public object Deserialize(String o, Type targetType)
     {
-        if (sl == SerializationLibrary.Microsoft)
+        if (_sl == SerializationLibrary.Microsoft)
         {
             return ThrowExceptionsMicrosoftSerializerNotSupported<object>();
         }
-        else if (sl == SerializationLibrary.Newtonsoft)
+        else if (_sl == SerializationLibrary.Newtonsoft)
         {
             return JsonConvert.DeserializeObject(o, targetType);
         }
@@ -64,12 +64,12 @@ public class JavascriptSerialization
 
     public T Deserialize<T>(String o)
     {
-        if (sl == SerializationLibrary.Microsoft)
+        if (_sl == SerializationLibrary.Microsoft)
         {
             //return js.Deserialize<T>(o);
             return (T)ThrowExceptionsMicrosoftSerializerNotSupported<T>();
         }
-        else if (sl == SerializationLibrary.Newtonsoft)
+        else if (_sl == SerializationLibrary.Newtonsoft)
         {
             return JsonConvert.DeserializeObject<T>(o);
         }
@@ -78,6 +78,4 @@ public class JavascriptSerialization
             return NotSupportedElseIfClasule<T>("Serialize(String)");
         }
     }
-
-
 }

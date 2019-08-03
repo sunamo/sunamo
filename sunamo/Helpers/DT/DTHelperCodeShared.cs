@@ -2,5 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-public partial class DTHelperCode{ 
+public partial class DTHelperCode
+{
 }

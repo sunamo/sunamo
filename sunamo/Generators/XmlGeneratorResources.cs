@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public  class XmlGeneratorResources
-    {
-     XmlGenerator xml = new XmlGenerator();
+public class XmlGeneratorResources
+{
+    private XmlGenerator _xml = new XmlGenerator();
 
-    public  void AddText(string name, string text)
+    public void AddText(string name, string text)
     {
-        xml.WriteTagWith2Attrs("data", "name", name, "xml:space", "preserve");
-        xml.WriteElement("value", text);
-        xml.TerminateTag("data");
+        _xml.WriteTagWith2Attrs("data", "name", name, "xml:space", "preserve");
+        _xml.WriteElement("value", text);
+        _xml.TerminateTag("data");
     }
 
     public override string ToString()
     {
-        return xml.ToString();
+        return _xml.ToString();
     }
-
 }

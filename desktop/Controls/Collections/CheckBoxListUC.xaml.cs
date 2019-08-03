@@ -82,16 +82,23 @@ namespace desktop.Controls.Collections
         }
 
         /// <summary>
-        /// A1 can be null
+        /// A2 can be null
+        /// Into A1.add can be CheckBoxListUC.ColButtons_Added
+        /// A1 can be null but then is needed to call DefaultButtonsInit,HideAllButtons, etc.
         /// </summary>
         /// <param name="list"></param>
-        public void Init(List<string> list = null, bool defChecked = false)
+        public void Init(ImageButtonsInit i, List<string> list = null, bool defChecked = false)
         {
             if (!initialized)
             {
                 initialized = true;
+                
                 colButtons.MaxHeight = 16;
-
+                if (i != null)
+                {
+                    colButtons.Init(i);
+                }
+                
                 l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
                 l.CollectionChanged += L_CollectionChanged;
 
@@ -128,12 +135,12 @@ namespace desktop.Controls.Collections
         /// </summary>
         public void DefaultButtonsInit()
         {
-            colButtons.Init(false, false, new VoidString(ColButtons_Added), true, true);
+            colButtons.Init(new ImageButtonsInit(false, false, new VoidString(ColButtons_Added), true, true));
         }
 
         public void HideAllButtons()
         {
-            colButtons.Init(false, false, false, false, false);
+            colButtons.Init(ImageButtonsInit.HideAllButtons);
         }
 
         
@@ -265,9 +272,13 @@ namespace desktop.Controls.Collections
             }
         }
 
+        /// <summary>
+        /// THEN MUST BE CALLED HideAllButtons(), DefaultButtons() atd.
+        /// </summary>
+        /// <param name="i"></param>
         public void Init()
         {
-            Init(null, false);
+            Init(null, null, false);
         }
     }
 

@@ -5,47 +5,45 @@ using System.Text;
 
 namespace sunamo.Helpers.Number
 {
-    
-
     public class PercentCalculator
     {
         public double onePercent = 0;
         public double last = 0;
-        double overallSum;
-        double hundredPercent = 100d;
+        private double _overallSum;
+        private double _hundredPercent = 100d;
 
         public PercentCalculator(double overallSum)
         {
-            onePercent = hundredPercent / overallSum;
-            this.overallSum = overallSum;
+            onePercent = _hundredPercent / overallSum;
+            _overallSum = overallSum;
         }
 
-        int sum = 0;
+        private int _sum = 0;
 
         /// <summary>
         /// Is automatically called with PercentFor with last 
         /// </summary>
         public void ResetComputedSum()
         {
-            sum = 0;
+            _sum = 0;
         }
-        
+
         public int PercentFor(double value, bool last)
         {
             // cannot divide by zero
-            if (overallSum == 0)
+            if (_overallSum == 0)
             {
                 return 0;
             }
 
-            double quocient = value / overallSum;
-            
-            int result = (int)(hundredPercent * quocient);
-            sum += result;
+            double quocient = value / _overallSum;
+
+            int result = (int)(_hundredPercent * quocient);
+            _sum += result;
             if (last)
             {
-                int diff = sum - 100;
-                if (sum != 0)
+                int diff = _sum - 100;
+                if (_sum != 0)
                 {
                     result -= diff;
                 }

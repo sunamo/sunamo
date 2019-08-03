@@ -78,7 +78,7 @@ public partial class ManageArtistDashTitle
         p = p.Replace(AllChars.dash, AllChars.space);
         char[] j = p.ToCharArray();
         j[dex] = AllChars.dash;
-        return new string (j);
+        return new string(j);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public partial class ManageArtistDashTitle
     public static void GetArtistTitle(string item, out string název, out string title)
     {
         // Path.GetFileNameWithoutExtension()
-        string[] toks = System.IO.Path.GetFileNameWithoutExtension(item).Split(new string[]{AllStrings.dash}, StringSplitOptions.RemoveEmptyEntries);
+        string[] toks = System.IO.Path.GetFileNameWithoutExtension(item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
         název = title = "";
         if (toks.Length == 0)
         {

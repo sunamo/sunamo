@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public static class ListExtensions
+public static class ListExtensions
+{
+    public static List<T> Add2<T>(this IList<T> list, T item)
     {
-        public static List<T> Add2<T>(this IList<T> list, T item)
-        {
-            list.Add(item);
-            return (List<T>)list;
-        }
+        list.Add(item);
+        return (List<T>)list;
+    }
 
-    public static List<T> Insert<T>(this IList<T> list, int dx,  T item )
+    public static List<T> Insert<T>(this IList<T> list, int dx, T item)
     {
         list.Insert(dx, item);
         return (List<T>)list;
     }
 
-    
+
 
     /// <summary>
     /// Must be List due to working with indexes.
@@ -28,44 +28,44 @@ using System.Text;
     /// Reference: Introduction to Algorithms 3rd Edition, Corman et al, pp 171
     /// </summary>
     public static int Partition<T>(this IList<T> list, int start, int end, Random rnd = null) where T : IComparable<T>
-        {
-            if (rnd != null)
-                list.Swap(end, rnd.Next(start, end + 1));
+    {
+        if (rnd != null)
+            list.Swap(end, rnd.Next(start, end + 1));
 
-            var pivot = list[end];
-            var lastLow = start - 1;
-            for (var i = start; i < end; i++)
-            {
-                if (list[i].CompareTo(pivot) <= 0)
-                    list.Swap(i, ++lastLow);
-            }
-            list.Swap(end, ++lastLow);
-            return lastLow;
+        var pivot = list[end];
+        var lastLow = start - 1;
+        for (var i = start; i < end; i++)
+        {
+            if (list[i].CompareTo(pivot) <= 0)
+                list.Swap(i, ++lastLow);
         }
+        list.Swap(end, ++lastLow);
+        return lastLow;
+    }
 
-        /// <summary>
-        /// Returns Nth smallest element from the list. Here n starts from 0 so that n=0 returns minimum, n=1 returns 2nd smallest element etc.
-        /// Note: specified list would be mutated in the process.
-        /// Reference: Introduction to Algorithms 3rd Edition, Corman et al, pp 216
-        /// </summary>
-        public static T NthOrderStatistic<T>(this IList<T> list, int n, Random rnd = null) where T : IComparable<T>
+    /// <summary>
+    /// Returns Nth smallest element from the list. Here n starts from 0 so that n=0 returns minimum, n=1 returns 2nd smallest element etc.
+    /// Note: specified list would be mutated in the process.
+    /// Reference: Introduction to Algorithms 3rd Edition, Corman et al, pp 216
+    /// </summary>
+    public static T NthOrderStatistic<T>(this IList<T> list, int n, Random rnd = null) where T : IComparable<T>
+    {
+        return NthOrderStatistic(list, n, 0, list.Count - 1, rnd);
+    }
+
+    private static T NthOrderStatistic<T>(this IList<T> list, int n, int start, int end, Random rnd) where T : IComparable<T>
+    {
+        while (true)
         {
-            return NthOrderStatistic(list, n, 0, list.Count - 1, rnd);
-        }
+            var pivotIndex = list.Partition(start, end, rnd);
+            if (pivotIndex == n)
+                return list[pivotIndex];
 
-        private static T NthOrderStatistic<T>(this IList<T> list, int n, int start, int end, Random rnd) where T : IComparable<T>
-        {
-            while (true)
-            {
-                var pivotIndex = list.Partition(start, end, rnd);
-                if (pivotIndex == n)
-                    return list[pivotIndex];
-
-                if (n < pivotIndex)
-                    end = pivotIndex - 1;
-                else
-                    start = pivotIndex + 1;
-            }
+            if (n < pivotIndex)
+                end = pivotIndex - 1;
+            else
+                start = pivotIndex + 1;
         }
     }
+}
 

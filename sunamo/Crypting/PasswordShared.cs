@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-public partial class Password{ 
-public static string CreateRandomStrongPassword()
+public partial class Password
+{
+    public static string CreateRandomStrongPassword()
     {
         int countCharsLower = 3;
         int countCharsUpper = 3;

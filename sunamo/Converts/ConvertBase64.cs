@@ -11,12 +11,11 @@ public class ConvertBase64
     {
         try
         {
-            string vr = Encoding.Unicode.GetString( Convert.FromBase64String(s));
+            string vr = Encoding.Unicode.GetString(Convert.FromBase64String(s));
             return vr;
         }
         catch (Exception)
         {
-
             return s;
         }
     }

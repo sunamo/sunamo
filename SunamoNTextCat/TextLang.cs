@@ -7,23 +7,23 @@ using System.Linq;
 
 public class TextLang
 {
-    static Type type = typeof(TextLang);
+    private static Type s_type = typeof(TextLang);
 
-    static EmbeddedResourcesH resources = null;
-    const string Wiki280Profile = "Profiles/Wiki280.profile.xml";
-    const string cs = "cs";
-    const string en = "en";
-    static bool initialized = false;
+    private static EmbeddedResourcesH s_resources = null;
+    private const string Wiki280Profile = "Profiles/Wiki280.profile.xml";
+    private const string cs = "cs";
+    private const string en = "en";
+    private static bool s_initialized = false;
 
     public static string file = "";
-     
+
     /// <summary>
     /// A1 can be null, then is use common file
     /// must be in _Loaded event
     /// </summary>
     public static void Init(string file2 = null)
     {
-        if (!initialized)
+        if (!s_initialized)
         {
             file = file2;
 
@@ -40,32 +40,30 @@ public class TextLang
                 //var elements = SF.GetAllElementsLine(line);
                 TextLangIndexes tli = new TextLangIndexes(line);
 
-                if (!textLangIndexes.ContainsKey(tli.text))
+                if (!s_textLangIndexes.ContainsKey(tli.text))
                 {
-                    textLangIndexes.Add(tli.text, tli);
+                    s_textLangIndexes.Add(tli.text, tli);
                 }
                 else
                 {
                     data.RemoveAt(i);
                 }
-
-                
             }
 
             SF.WriteAllElementsToFile(file, data);
 
             var ass = typeof(TextLang).Assembly;
-            resources = new EmbeddedResourcesH(ass, ass.GetName().Name);
+            s_resources = new EmbeddedResourcesH(ass, ass.GetName().Name);
 
             var factory = new RankedLanguageIdentifierFactory();
-            var stream = resources.GetString(Wiki280Profile);
-            identifier = factory.Load(BTS.StreamFromString(stream));
+            var stream = s_resources.GetString(Wiki280Profile);
+            s_identifier = factory.Load(BTS.StreamFromString(stream));
 
-            initialized = true;
+            s_initialized = true;
         }
     }
 
-    static RankedLanguageIdentifier identifier = null;
+    private static RankedLanguageIdentifier s_identifier = null;
 
     /// <summary>
     /// Before use 
@@ -76,12 +74,12 @@ public class TextLang
     {
         string methodName = "GetLangs";
 
-        
 
-        
-        var languages = identifier.Identify(text);
 
-        
+
+        var languages = s_identifier.Identify(text);
+
+
 
         NTextCatResult result = new NTextCatResult();
 
@@ -97,7 +95,7 @@ public class TextLang
         //    return null;
     }
 
-    static Dictionary<string, TextLangIndexes> textLangIndexes = new Dictionary<string, TextLangIndexes>();
+    private static Dictionary<string, TextLangIndexes> s_textLangIndexes = new Dictionary<string, TextLangIndexes>();
 
     /// <summary>
     /// Must call Init() due to load determined words!
@@ -124,8 +122,6 @@ public class TextLang
 
     private static void CalculateSumOfProbiality(string text, out double sumEn, out double sumCs)
     {
-
-
         var p = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(text);
 
         p = CA.ToLower(p);
@@ -142,19 +138,19 @@ public class TextLang
             double cs2 = 0;
             double en2 = 0;
 
-            if (!textLangIndexes.ContainsKey(item))
+            if (!s_textLangIndexes.ContainsKey(item))
             {
                 var l = GetLangs(item);
                 cs2 = IndexOf(l, cs);
                 en2 = IndexOf(l, en);
 
-                textLangIndexes.Add(item, new TextLangIndexes() { text = item, cs = cs2, en = en2 });
+                s_textLangIndexes.Add(item, new TextLangIndexes() { text = item, cs = cs2, en = en2 });
 
                 SF.AppendToFile(file, SF.PrepareToSerialization2(item, cs2, en2));
             }
             else
             {
-                var tli = textLangIndexes[item];
+                var tli = s_textLangIndexes[item];
                 cs2 = tli.cs;
                 en2 = tli.en;
             }

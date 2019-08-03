@@ -8,36 +8,36 @@ namespace sunamo.Values
 {
     public static class GeoCzechRegions
     {
-        static List<GeoCzechRegion> czechRegions;
+        private static List<GeoCzechRegion> s_czechRegions;
 
-        static void Init()
+        private static void Init()
         {
-            czechRegions = new List<GeoCzechRegion>();
-            czechRegions.Add(new GeoCzechRegion("A", "Hlavní město Praha", "PHA", "Praha"));
-            czechRegions.Add(new GeoCzechRegion("S", "Středočeský", "STČ", "Praha"));
-            czechRegions.Add(new GeoCzechRegion("C", "Jihočeský", "JHČ", "České Budějovice"));
-            czechRegions.Add(new GeoCzechRegion("P", "Plzeňský", "PLK", "Plzeň"));
-            czechRegions.Add(new GeoCzechRegion("K", "Karlovarský", "KVK", "Karlovy Vary"));
-            czechRegions.Add(new GeoCzechRegion("U", "Ústecký", "ULK", "Ústí nad Labem"));
-            czechRegions.Add(new GeoCzechRegion("L", "Liberecký", "LBK", "Liberec"));
-            czechRegions.Add(new GeoCzechRegion("H", "Královéhradecký", "HKK", "Hradec Králové"));
-            czechRegions.Add(new GeoCzechRegion("E", "Pardubický", "PAK", "Pardubice"));
-            czechRegions.Add(new GeoCzechRegion("M", "Olomoucký", "OLK", "Olomouc"));
-            czechRegions.Add(new GeoCzechRegion("T", "Moravskoslezský", "MSK", "Ostrava"));
-            czechRegions.Add(new GeoCzechRegion("B", "Jihomoravský", "JHM", "Brno"));
-            czechRegions.Add(new GeoCzechRegion("Z", "Zlínský", "ZLK", "Zlín"));
-            czechRegions.Add(new GeoCzechRegion("J", "Kraj Vysočina", "VYS", "Jihlava"));
+            s_czechRegions = new List<GeoCzechRegion>();
+            s_czechRegions.Add(new GeoCzechRegion("A", "Hlavn\u00ED m\u011Bsto Praha", "PHA", "Praha"));
+            s_czechRegions.Add(new GeoCzechRegion("S", "St\u0159edo\u010Desk\u00FD", "ST\u010C", "Praha"));
+            s_czechRegions.Add(new GeoCzechRegion("C", "Jiho\u010Desk\u00FD", "JH\u010C", "\u010Cesk\u00E9 Bud\u011Bjovice"));
+            s_czechRegions.Add(new GeoCzechRegion("P", "Plze\u0148sk\u00FD", "PLK", "Plze\u0148"));
+            s_czechRegions.Add(new GeoCzechRegion("K", "Karlovarsk\u00FD", "KVK", "Karlovy Vary"));
+            s_czechRegions.Add(new GeoCzechRegion("U", "\u00DAsteck\u00FD", "ULK", "\u00DAst\u00ED nad Labem"));
+            s_czechRegions.Add(new GeoCzechRegion("L", "Libereck\u00FD", "LBK", "Liberec"));
+            s_czechRegions.Add(new GeoCzechRegion("H", "Kr\u00E1lov\u00E9hradeck\u00FD", "HKK", "Hradec Kr\u00E1lov\u00E9"));
+            s_czechRegions.Add(new GeoCzechRegion("E", "Pardubick\u00FD", "PAK", "Pardubice"));
+            s_czechRegions.Add(new GeoCzechRegion("M", "Olomouck\u00FD", "OLK", "Olomouc"));
+            s_czechRegions.Add(new GeoCzechRegion("T", "Moravskoslezsk\u00FD", "MSK", "Ostrava"));
+            s_czechRegions.Add(new GeoCzechRegion("B", "Jihomoravsk\u00FD", "JHM", "Brno"));
+            s_czechRegions.Add(new GeoCzechRegion("Z", "Zl\u00EDnsk\u00FD", "ZLK", "Zl\u00EDn"));
+            s_czechRegions.Add(new GeoCzechRegion("J", "Kraj Vyso\u010Dina", "VYS", "Jihlava"));
         }
 
         public static List<GeoCzechRegion> CzechRegions
         {
             get
             {
-                if (czechRegions == null)
+                if (s_czechRegions == null)
                 {
                     Init();
                 }
-                return czechRegions;
+                return s_czechRegions;
             }
         }
     }

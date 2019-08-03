@@ -10,17 +10,17 @@ using System.Collections.Generic;
 /// </summary>
 public class TranslateHelper
 {
-    GoogleCredential credential = null;
+    private GoogleCredential _credential = null;
 
-    public  GoogleCredential AuthExplicit(string appName, string projectId, string jsonText)
+    public GoogleCredential AuthExplicit(string appName, string projectId, string jsonText)
     {
-        if (credential == null)
+        if (_credential == null)
         {
-            credential = GoogleCredential.FromJson(jsonText);
+            _credential = GoogleCredential.FromJson(jsonText);
             // Inject the Cloud Storage scope if required.
-            if (credential.IsCreateScopedRequired)
+            if (_credential.IsCreateScopedRequired)
             {
-                credential = credential.CreateScoped(new[]
+                _credential = _credential.CreateScoped(new[]
                 {
                     StorageService.Scope.CloudPlatform,
                     TranslateService.Scope.CloudTranslation
@@ -28,22 +28,22 @@ public class TranslateHelper
             }
             var storage = new StorageService(new BaseClientService.Initializer()
             {
-                HttpClientInitializer = credential,
+                HttpClientInitializer = _credential,
                 ApplicationName = appName,
             });
         }
-        return credential;
+        return _credential;
     }
 
     /// <summary>
     /// Due to saving and reading already translated cs to en in txt
     /// </summary>
     public static TranslateHelper Instance = new TranslateHelper();
-    public  readonly string AlreadyTranslatedFile = AppData.ci.GetFileCommonSettings("CsTranslatedToEn.txt");
-     Dictionary<string, string> csToEn = new Dictionary<string, string>();
+    public readonly string AlreadyTranslatedFile = AppData.ci.GetFileCommonSettings("CsTranslatedToEn.txt");
+    private Dictionary<string, string> _csToEn = new Dictionary<string, string>();
 
 
-    TranslationClient client = null;
+    private TranslationClient _client = null;
 
     private TranslateHelper()
     {
@@ -56,18 +56,18 @@ public class TranslateHelper
         foreach (var line in data)
         {
             var key = line[0];
-            if (!csToEn.ContainsKey(key))
+            if (!_csToEn.ContainsKey(key))
             {
                 // Check for uncomplete file
                 if (line.Count > 1)
                 {
-                    csToEn.Add(key, line[1]);
+                    _csToEn.Add(key, line[1]);
                 }
             }
         }
 
         CheckCredentials();
-        client = TranslationClient.Create(credential);
+        _client = TranslationClient.Create(_credential);
     }
 
     /// <summary>
@@ -77,19 +77,19 @@ public class TranslateHelper
     /// <param name="input"></param>
     /// <param name="to"></param>
     /// <returns></returns>
-    public  string Translate(string input, string to, string from = null)
+    public string Translate(string input, string to, string from = null)
     {
         if (from.Contains("cs") && to.Contains("en"))
         {
-            if (csToEn.ContainsKey(input))
+            if (_csToEn.ContainsKey(input))
             {
-                return csToEn[input];
+                return _csToEn[input];
             }
         }
 
         DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
 
-        var response = client.TranslateText(input, to, from);
+        var response = _client.TranslateText(input, to, from);
         var result = response.TranslatedText;
         if (from.Contains("cs") && to.Contains("en"))
         {
@@ -97,10 +97,10 @@ public class TranslateHelper
         }
         return result;
     }
-    
-    private  void CheckCredentials()
+
+    private void CheckCredentials()
     {
-        if (credential == null)
+        if (_credential == null)
         {
             throw new Exception("Please authenticate first, credential object cant be null");
         }

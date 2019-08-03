@@ -22,7 +22,7 @@ public static class HexHelper
     /// converts an array of bytes to a string Hex representation
     /// Převedu pole bytů A1 na hexadecimální řetězec.
     /// </summary>
-    static string ToHex(byte[] ba)
+    private static string ToHex(byte[] ba)
     {
         if (ba == null || ba.Length == 0)
         {
@@ -41,7 +41,7 @@ public static class HexHelper
     /// converts from a string Hex representation to an array of bytes
     /// Převedu řetězec v hexadeximální formátu A1 na pole bytů. Pokud nebude hex formát(napříkal nebude mít sudý počet znaků), VV
     /// </summary>
-    static byte[] FromHex(string hexEncoded)
+    private static byte[] FromHex(string hexEncoded)
     {
         if (hexEncoded == null || hexEncoded.Length == 0)
         {

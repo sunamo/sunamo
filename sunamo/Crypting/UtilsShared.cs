@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text;
 
-public partial class Utils{
+public partial class Utils
+{
     /// <summary>
     /// converts an array of bytes to a string Hex representation
     /// Prevedu pole bytu A1 na hexadecimalni retezec.

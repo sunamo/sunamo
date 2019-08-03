@@ -15,7 +15,7 @@ public class NotifyChangesCollection<T> : IList<T>
     /// <summary>
     /// sender is chbl but in Tag are last clicked chb
     /// </summary>
-    object sender;
+    private object _sender;
 
     public bool onAdd = false;
     public bool onRemove = false;
@@ -30,7 +30,7 @@ public class NotifyChangesCollection<T> : IList<T>
 
     public NotifyChangesCollection(object sender, Collection<T> c)
     {
-        this.sender = sender;
+        _sender = sender;
         l = c;
     }
 
@@ -56,7 +56,6 @@ public class NotifyChangesCollection<T> : IList<T>
         {
             OnCollectionChanged(ListOperation.Clear, null);
         }
-        
     }
 
     public bool Contains(T item)
@@ -66,7 +65,7 @@ public class NotifyChangesCollection<T> : IList<T>
 
     public void CopyTo(T[] array, int arrayIndex)
     {
-         l.CopyTo(array, arrayIndex);
+        l.CopyTo(array, arrayIndex);
     }
 
     public IEnumerator<T> GetEnumerator()
@@ -84,7 +83,7 @@ public class NotifyChangesCollection<T> : IList<T>
         l.Insert(index, item);
         if (onAdd)
         {
-            OnCollectionChanged(ListOperation.Insert, item); 
+            OnCollectionChanged(ListOperation.Insert, item);
         }
     }
 
@@ -93,14 +92,14 @@ public class NotifyChangesCollection<T> : IList<T>
         bool vr = l.Remove(item);
         if (onRemove)
         {
-            OnCollectionChanged(ListOperation.Remove, item); 
+            OnCollectionChanged(ListOperation.Remove, item);
         }
         return vr;
     }
 
     public void RemoveAt(int index)
     {
-         l.RemoveAt(index);
+        l.RemoveAt(index);
         OnCollectionChanged(ListOperation.RemoveAt, index);
     }
 
@@ -120,9 +119,8 @@ public class NotifyChangesCollection<T> : IList<T>
         if (CollectionChanged != null)
         {
             // sender is chbl but in Tag are last clicked chb
-            CollectionChanged(sender, op, data);
+            CollectionChanged(_sender, op, data);
         }
-        
     }
 }
 

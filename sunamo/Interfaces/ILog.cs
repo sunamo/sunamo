@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 
-    public interface ILog
-    {
-        void NewLogEntry(string entry);
-    }
+public interface ILog
+{
+    void NewLogEntry(string entry);
+}
 

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-public  static partial class CA
+public static partial class CA
 {
-    static Type type = typeof(CA);
+    private static Type s_type = typeof(CA);
 
     /// <summary>
     /// Direct edit collection
@@ -46,8 +46,7 @@ public  static partial class CA
         for (int i = 0; i < headers.Count; i++)
         {
             headers[i] = headers[i] + v;
-        }    
-        
+        }
     }
 
     public static List<string> CreateListStringWithReverse(int reverse, params string[] v)
@@ -152,7 +151,7 @@ public  static partial class CA
         return p;
     }
 
-   
+
 
     /// <summary>
     /// Convert IEnumerable to List<string> Nothing more, nothing less
@@ -178,7 +177,7 @@ public  static partial class CA
         return result;
     }
 
-    
+
 
     public static List<string> Join(params object[] o)
     {
@@ -203,7 +202,7 @@ public  static partial class CA
         return ToList<T>(enu);
     }
 
-    
+
 
     public static List<T> ToList<T>(IEnumerable enumerable)
     {
@@ -286,7 +285,7 @@ public  static partial class CA
                     {
                         // IEnumerable<char> => string
                         //enumerable2 is not string, then I can add all to list
-                        result.AddRange(CA.ToListString2( enumerable));
+                        result.AddRange(CA.ToListString2(enumerable));
                         //
                     }
                     else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<string>)
@@ -400,8 +399,8 @@ public  static partial class CA
     {
         string methodName = "TrimStart";
 
-        ThrowExceptions.IsNull(type, methodName, "backslash", backslash);
-        ThrowExceptions.IsNull(type, methodName, "s", s);
+        ThrowExceptions.IsNull(s_type, methodName, "backslash", backslash);
+        ThrowExceptions.IsNull(s_type, methodName, "s", s);
 
         for (int i = 0; i < s.Count; i++)
         {
@@ -409,7 +408,6 @@ public  static partial class CA
             {
                 s[i] = s[i].Substring(backslash.Length);
             }
-            
         }
         return s;
     }
@@ -440,12 +438,12 @@ public  static partial class CA
         return TrimStart(backslash, s.ToList()).ToArray();
     }
 
-/// <summary>
+    /// <summary>
     /// For all types
     /// </summary>
     /// <param name="times"></param>
     /// <returns></returns>
-    public static List<int> IndexesWithNull(IEnumerable times) 
+    public static List<int> IndexesWithNull(IEnumerable times)
     {
         List<int> nulled = new List<int>();
         int i = 0;
@@ -460,7 +458,7 @@ public  static partial class CA
 
         return nulled;
     }
-/// <summary>
+    /// <summary>
     /// Only for structs
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -468,7 +466,6 @@ public  static partial class CA
     /// <returns></returns>
     public static List<int> IndexesWithNull<T>(List<Nullable<T>> times) where T : struct
     {
-
         List<int> nulled = new List<int>();
         for (int i = 0; i < times.Count; i++)
         {
@@ -481,9 +478,9 @@ public  static partial class CA
         return nulled;
     }
 
-public static void AppendToLastElement(List<string> list, string s)
+    public static void AppendToLastElement(List<string> list, string s)
     {
-        if (list.Count >0 )
+        if (list.Count > 0)
         {
             list[list.Count - 1] += s;
         }
@@ -493,7 +490,7 @@ public static void AppendToLastElement(List<string> list, string s)
         }
     }
 
-/// <summary>
+    /// <summary>
     /// Dont trim
     /// </summary>
     /// <param name="times"></param>
@@ -508,7 +505,7 @@ public static void AppendToLastElement(List<string> list, string s)
             {
                 nulled.Add(i);
             }
-            else if(item.ToString() == string.Empty)
+            else if (item.ToString() == string.Empty)
             {
                 nulled.Add(i);
             }
@@ -518,7 +515,7 @@ public static void AppendToLastElement(List<string> list, string s)
         return nulled;
     }
 
-/// <summary>
+    /// <summary>
     /// Direct edit input collection
     /// </summary>
     /// <param name="l"></param>
@@ -531,7 +528,7 @@ public static void AppendToLastElement(List<string> list, string s)
         }
         return l;
     }
-public static string[] Trim(string[] l)
+    public static string[] Trim(string[] l)
     {
         var list = CA.ToListString(l);
         CA.Trim(list);
@@ -562,11 +559,11 @@ public static string[] Trim(string[] l)
         List<TResult> result = new List<TResult>(files_in.Count);
         for (int i = 0; i < files_in.Count; i++)
         {
-            result.Add( func.Invoke(files_in[i]));
+            result.Add(func.Invoke(files_in[i]));
         }
         return result;
     }
-/// <summary>
+    /// <summary>
     /// TResult is the same type as T1 (output collection is the same generic as input)
     /// </summary>
     /// <typeparam name="T1"></typeparam>
@@ -581,14 +578,13 @@ public static string[] Trim(string[] l)
         for (int i = 0; i < files_in.Count; i++)
         {
             // Fully generic - no strict string can't return the same collection
-            result.Add( func.Invoke(files_in[i], t2));
+            result.Add(func.Invoke(files_in[i], t2));
         }
         return result;
     }
 
     public static void RemoveAfterFirst(List<FieldInfo> withType)
     {
-        
     }
 
     /// <summary>
@@ -611,7 +607,7 @@ public static string[] Trim(string[] l)
         return changed;
     }
 
-    public static List<T> JoinIEnumerable<T>(params IEnumerable< T>[] enumerable)
+    public static List<T> JoinIEnumerable<T>(params IEnumerable<T>[] enumerable)
     {
         List<T> t = new List<T>();
         foreach (var item in enumerable)
@@ -649,7 +645,7 @@ public static string[] Trim(string[] l)
     /// <param name="arg1"></param>
     /// <param name="arg2"></param>
     /// <returns></returns>
-public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
+    public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
     {
         for (int i = 0; i < files_in.Count; i++)
         {
@@ -658,7 +654,7 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
         return files_in;
     }
 
-/// <summary>
+    /// <summary>
     /// Direct edit input collection
     /// </summary>
     /// <typeparam name="Arg1"></typeparam>
@@ -697,7 +693,7 @@ public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func
 
 
 
-public static List<string> WrapWithQm(List<string> value)
+    public static List<string> WrapWithQm(List<string> value)
     {
         for (int i = 0; i < value.Count; i++)
         {
@@ -706,7 +702,7 @@ public static List<string> WrapWithQm(List<string> value)
         return value;
     }
 
-/// <summary>
+    /// <summary>
     /// Multi deep array is not suppported
     /// For convert into string use ListToString
     /// </summary>
@@ -732,7 +728,7 @@ public static List<string> WrapWithQm(List<string> value)
         return result.ToArray();
     }
 
-public static List<long> ToLong(IEnumerable enumerable)
+    public static List<long> ToLong(IEnumerable enumerable)
     {
         List<long> result = new List<long>();
         foreach (var item in enumerable)
@@ -747,7 +743,7 @@ public static List<long> ToLong(IEnumerable enumerable)
     /// </summary>
     /// <param name="slova"></param>
     /// <returns></returns>
-public static List<string> ToLower(List<string> slova)
+    public static List<string> ToLower(List<string> slova)
     {
         for (int i = 0; i < slova.Count; i++)
         {
@@ -755,7 +751,7 @@ public static List<string> ToLower(List<string> slova)
         }
         return slova;
     }
-/// <summary>
+    /// <summary>
     /// Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
     /// </summary>
     /// <param name="ss"></param>
@@ -772,18 +768,16 @@ public static List<string> ToLower(List<string> slova)
         for (int i = 0; i < ss.Length; i++)
         {
             outArr[i] = ss[i].ToLower();
-
         }
         return outArr;
-
     }
 
-public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)
+    public static bool IsTheSame<T>(IEnumerable<T> sloupce, IEnumerable<T> sloupce2)
     {
         return sloupce.SequenceEqual(sloupce2);
     }
 
-public static List<short> ToShort(IEnumerable enumerable)
+    public static List<short> ToShort(IEnumerable enumerable)
     {
         List<short> result = new List<short>();
         foreach (var item in enumerable)
@@ -805,29 +799,24 @@ public static List<short> ToShort(IEnumerable enumerable)
 
             if (SH.IsNumber(item.ToString(), ',', '.'))
             {
+                var number = parse.Invoke(item.ToString());
 
-            var number = parse.Invoke(item.ToString());
-            
                 result.Add(number);
             }
-
         }
         return result;
     }
 
-    public static List<T> ToNumber<T>(Func<string, bool, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true) 
+    public static List<T> ToNumber<T>(Func<string, bool, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true)
     {
         List<T> result = new List<T>();
         foreach (var item in enumerable)
         {
-            
-
             var number = parse.Invoke(item.ToString(), mustBeAllNumbers);
             if (number.ToString() == int.MinValue.ToString())
             {
                 result.Add(number);
             }
-            
         }
         return result;
     }
@@ -847,12 +836,12 @@ public static List<short> ToShort(IEnumerable enumerable)
         return ToNumber<int>(BTS.TryParseInt, enumerable, requiredLength);
     }
 
-/// <summary>
-/// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
-/// </summary>
-/// <param name="altitudes"></param>
-/// <param name="requiredLength"></param>
-/// <returns></returns>
+    /// <summary>
+    /// Pokud A1 nebude mít délku A2 nebo prvek v A1 nebude vyparsovatelný na int, vrátí null
+    /// </summary>
+    /// <param name="altitudes"></param>
+    /// <param name="requiredLength"></param>
+    /// <returns></returns>
     public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IEnumerable enumerable, int requiredLength)
     {
         int enumerableCount = enumerable.Count();
@@ -866,7 +855,7 @@ public static List<short> ToShort(IEnumerable enumerable)
         foreach (var item in enumerable)
         {
             var yy = tryParse.Invoke(item.ToString(), y);
-            if (!EqualityComparer<T>.Default.Equals( yy , y))
+            if (!EqualityComparer<T>.Default.Equals(yy, y))
             {
                 result.Add(yy);
             }
@@ -883,15 +872,15 @@ public static List<short> ToShort(IEnumerable enumerable)
         return ToNumber<int>(BTS.TryParseInt, altitudes, requiredLength, startFrom);
     }
 
-/// <summary>
-/// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
-/// </summary>
-/// <param name="altitudes"></param>
-/// <param name="requiredLength"></param>
-/// <returns></returns>
+    /// <summary>
+    /// Pokud prvek v A1 nebude vyparsovatelný na int, vrátí null
+    /// </summary>
+    /// <param name="altitudes"></param>
+    /// <param name="requiredLength"></param>
+    /// <returns></returns>
     public static List<T> ToNumber<T>(Func<string, T, T> tryParse, IEnumerable altitudes, int requiredLength, T startFrom) where T : IComparable
     {
-        int finalLength = altitudes.Count() - int.Parse( startFrom.ToString());
+        int finalLength = altitudes.Count() - int.Parse(startFrom.ToString());
         if (finalLength < requiredLength)
         {
             return null;
@@ -901,7 +890,7 @@ public static List<short> ToShort(IEnumerable enumerable)
         T i = default(T);
         foreach (var item in altitudes)
         {
-            if (i.CompareTo(startFrom) !=0)
+            if (i.CompareTo(startFrom) != 0)
             {
                 continue;
             }
@@ -916,14 +905,12 @@ public static List<short> ToShort(IEnumerable enumerable)
             {
                 return null;
             }
-
-            
         }
 
         return vr;
     }
 
-public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
+    public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
     {
         List<byte> lb = new List<byte>(pass.Length + salt.Length);
         lb.AddRange(pass);
@@ -931,7 +918,7 @@ public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
         return lb;
     }
 
-public static bool Contains(int idUser, int[] onlyUsers)
+    public static bool Contains(int idUser, int[] onlyUsers)
     {
         foreach (int item in onlyUsers)
         {
@@ -942,7 +929,7 @@ public static bool Contains(int idUser, int[] onlyUsers)
         }
         return false;
     }
-/// <summary>
+    /// <summary>
     /// G zda se alespoň 1 prvek A2 == A1
     /// </summary>
     /// <param name="value"></param>
@@ -960,12 +947,12 @@ public static bool Contains(int idUser, int[] onlyUsers)
         return false;
     }
 
-public static IEnumerable<string> ToEnumerable(params string[] p)
+    public static IEnumerable<string> ToEnumerable(params string[] p)
     {
         return p;
     }
 
-public static T[] JumbleUp<T>(T[] b)
+    public static T[] JumbleUp<T>(T[] b)
     {
         int bl = b.Length;
         for (int i = 0; i < bl; ++i)
@@ -979,7 +966,7 @@ public static T[] JumbleUp<T>(T[] b)
         }
         return b;
     }
-public static List<T> JumbleUp<T>(List<T> b)
+    public static List<T> JumbleUp<T>(List<T> b)
     {
         int bl = b.Count;
         for (int i = 0; i < bl; ++i)
@@ -998,15 +985,15 @@ public static List<T> JumbleUp<T>(List<T> b)
 
 
 
-public static bool HasIndex(int dex, Array col)
+    public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
     }
-public static bool HasIndex(int p, IEnumerable nahledy)
+    public static bool HasIndex(int p, IEnumerable nahledy)
     {
         if (p < 0)
         {
-            throw new Exception("Chybný parametr" + " " + "");
+            throw new Exception("Chybn\u00FD parametr" + " " + "");
         }
         if (nahledy.Count() > p)
         {
@@ -1015,7 +1002,7 @@ public static bool HasIndex(int p, IEnumerable nahledy)
         return false;
     }
 
-public static int GetLength(IList where)
+    public static int GetLength(IList where)
     {
         if (where == null)
         {
@@ -1024,7 +1011,7 @@ public static int GetLength(IList where)
         return where.Count;
     }
 
-/// <summary>
+    /// <summary>
     /// Is same as ContainsElement, only have switched arguments
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -1042,12 +1029,12 @@ public static int GetLength(IList where)
         }
         return false;
     }
-public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+    public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
     {
         return IsEqualToAnyElement(p, prvky.ToList());
     }
 
-public static object[] JoinVariableAndArray(object p, IEnumerable sloupce)
+    public static object[] JoinVariableAndArray(object p, IEnumerable sloupce)
     {
         List<object> o = new List<object>();
         o.Add(p);
@@ -1055,11 +1042,11 @@ public static object[] JoinVariableAndArray(object p, IEnumerable sloupce)
         {
             o.Add(item);
         }
-        
+
         return o.ToArray();
     }
 
-public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
+    public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
     {
         for (int i = 0; i < sf.Count; i++)
         {
@@ -1067,12 +1054,12 @@ public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
         }
         return sf;
     }
-public static string[] TrimEnd(string[] sf, params char[] toTrim)
+    public static string[] TrimEnd(string[] sf, params char[] toTrim)
     {
         return TrimEnd(new List<string>(sf), toTrim).ToArray();
     }
 
-/// <summary>
+    /// <summary>
     /// better is use first or default, because here I also have to use default(T)
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -1109,11 +1096,11 @@ public static string[] TrimEnd(string[] sf, params char[] toTrim)
                 return true;
             }
         }
-        
+
         return false;
     }
 
-public static List<string> WithoutDiacritic(List<string> nazev)
+    public static List<string> WithoutDiacritic(List<string> nazev)
     {
         for (int i = 0; i < nazev.Count; i++)
         {
@@ -1122,7 +1109,7 @@ public static List<string> WithoutDiacritic(List<string> nazev)
         return nazev;
     }
 
-public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
+    public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
     {
         if (p < 0)
         {
@@ -1135,7 +1122,7 @@ public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy
         return false;
     }
 
-public static bool HasIndexWithoutException(int p, IList nahledy)
+    public static bool HasIndexWithoutException(int p, IList nahledy)
     {
         if (p < 0)
         {

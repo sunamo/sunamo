@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public partial class DTConstants
-    {
-
-    }
+public partial class DTConstants
+{
+}
 

@@ -7,7 +7,6 @@ namespace sunamo
 {
     public class GoogleMyMapsHelper
     {
-        
         public static string CreateExportForGoogleMyMaps(List<ABS> s)
         {
             StringBuilder sb = new StringBuilder();

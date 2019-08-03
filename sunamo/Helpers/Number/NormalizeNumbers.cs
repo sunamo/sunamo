@@ -1,7 +1,6 @@
 ﻿using System;
 public static partial class NormalizeNumbers
 {
-
     public static ulong NormalizeLong(long p)
     {
         decimal p2 = (decimal)p;

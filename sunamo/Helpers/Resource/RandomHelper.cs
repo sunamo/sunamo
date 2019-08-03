@@ -7,9 +7,6 @@ using System.Collections;
 /// </summary>
 public static partial class RandomHelper
 {
-    
-    
-
     public static void RemoveChars(string[] p)
     {
         foreach (string item in p)
@@ -40,7 +37,7 @@ public static partial class RandomHelper
     /// <returns></returns>
     public static byte RandomByte(int od, int to)
     {
-        return (byte)rnd.Next(od, to + 1);
+        return (byte)s_rnd.Next(od, to + 1);
     }
 
     public static bool RandomBool()
@@ -125,11 +122,11 @@ public static partial class RandomHelper
     {
         DateTime dt = DateTime.Today;
         int pridat = RandomInt(minDaysAdd, maxDaysAdd);
-        dt =dt.AddDays(pridat);
+        dt = dt.AddDays(pridat);
         return dt;
     }
 
-    static float lightColorBase = (float)(256 - 229);
+    private static float s_lightColorBase = (float)(256 - 229);
 
     public static byte RandomColorPart(bool light)
     {
@@ -141,7 +138,7 @@ public static partial class RandomHelper
         if (light)
         {
             float r = RandomFloatBetween0And1();
-            r *= lightColorBase;
+            r *= s_lightColorBase;
             return (byte)(r + add);
         }
         return RandomByte(0, 255);

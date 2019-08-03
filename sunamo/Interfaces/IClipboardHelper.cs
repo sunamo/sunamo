@@ -9,7 +9,6 @@ using sunamo.Generators.Text;
 /// </summary>
 public interface IClipboardHelper : IClipboardHelperBase<string, List<string>, bool>
 {
-
 }
 
 public interface IClipboardHelperBase<String, ListString, Bool>

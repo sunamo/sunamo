@@ -2,5 +2,4 @@
 {
     int ToNumber(string s);
     string ToString(int number);
-
 }

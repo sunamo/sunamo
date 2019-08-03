@@ -7,8 +7,8 @@ using System.Text;
 
 public class ColumnsDB : List<SloupecDB>
 {
-    bool signed = false;
-    string derived = null;
+    private bool _signed = false;
+    private string _derived = null;
 
     /// <summary>
     /// A1 od jakých rozhraní a tříd by měla být odvozena třída TableRow
@@ -18,14 +18,14 @@ public class ColumnsDB : List<SloupecDB>
     /// <param name="p"></param>
     public ColumnsDB(string derived, bool signed, params SloupecDB[] p)
     {
-        this.derived = derived;
-        this.signed = signed;
+        _derived = derived;
+        _signed = signed;
         this.AddRange(p);
     }
 
     public ColumnsDB(bool signed, params SloupecDB[] p)
     {
-        this.signed = signed;
+        _signed = signed;
         this.AddRange(p);
     }
 

@@ -12,9 +12,9 @@ namespace sunamo.Generators
     /// <summary>
     /// 
     /// </summary>
-    public  class GitBashBuilder
+    public class GitBashBuilder
     {
-        static Type type = typeof(GitBashBuilder);
+        private static Type s_type = typeof(GitBashBuilder);
         public TextBuilder sb = new TextBuilder();
 
         public GitBashBuilder()
@@ -22,7 +22,7 @@ namespace sunamo.Generators
             sb.prependEveryNoWhite = AllStrings.space;
         }
 
-         void Git(string remainCommand)
+        private void Git(string remainCommand)
         {
             Git(sb.sb, remainCommand);
         }
@@ -59,7 +59,7 @@ namespace sunamo.Generators
         public static string GenerateCommandForGit(TypedLoggerBase tlb, string solution, List<string> linesFiles, out bool anyError, string searchOnlyWithExtension, string command)
         {
             var filesToCommit = GitBashBuilder.PrepareFilesToSimpleGitFormat(tlb, solution, linesFiles, out anyError, searchOnlyWithExtension);
-            if (filesToCommit == null || filesToCommit.Count == 0 )
+            if (filesToCommit == null || filesToCommit.Count == 0)
             {
                 return "";
             }
@@ -78,7 +78,7 @@ namespace sunamo.Generators
         /// <returns></returns>
         public static string CheckoutWithExtension(string folder, string typedExt, List<string> files)
         {
-            ThrowExceptions.IsNull(type, "EnterValueFormCheckoutAllWithExtension_Finished", "typedExt", typedExt);
+            ThrowExceptions.IsNull(s_type, "EnterValueFormCheckoutAllWithExtension_Finished", "typedExt", typedExt);
 
             GitBashBuilder bashBuilder = new GitBashBuilder();
             bool anyError = false;
@@ -247,7 +247,7 @@ namespace sunamo.Generators
 
         public void Cd(string key)
         {
-            sb.AppendLine("cd " + SH.WrapWith( key, AllChars.qm)); 
+            sb.AppendLine("cd " + SH.WrapWith(key, AllChars.qm));
         }
 
         public void Clear()
@@ -294,7 +294,6 @@ namespace sunamo.Generators
                 Append("-m " + SH.WrapWithQm(commitMessage));
             }
             AppendLine();
-
         }
 
         public void Push(bool force)
@@ -353,11 +352,11 @@ namespace sunamo.Generators
         /// <param name="sb"></param>
         /// <param name="remainCommand"></param>
         /// <returns></returns>
-        static string Git(StringBuilder sb, string remainCommand)
+        private static string Git(StringBuilder sb, string remainCommand)
         {
             sb.Append("git " + remainCommand);
             return sb.ToString();
-        } 
+        }
         #endregion
 
 

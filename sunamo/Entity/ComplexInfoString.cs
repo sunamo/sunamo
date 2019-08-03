@@ -1,21 +1,23 @@
 ﻿/// <summary>
 /// 
 /// </summary>
+
+
 using System.Collections.Generic;
 public class ComplexInfoString
 {
-    int quantityNumbers = 0;
-    int quantityUpperChars = 0;
-    int quantityLowerChars = 0;
-    int quantitySpecialChars = 0;
-    Dictionary<char, int> znakyPocty = new Dictionary<char, int>();
+    private int _quantityNumbers = 0;
+    private int _quantityUpperChars = 0;
+    private int _quantityLowerChars = 0;
+    private int _quantitySpecialChars = 0;
+    private Dictionary<char, int> _znakyPocty = new Dictionary<char, int>();
     public int this[char ch]
     {
         get
         {
-            if (znakyPocty.ContainsKey(ch))
+            if (_znakyPocty.ContainsKey(ch))
             {
-                return znakyPocty[ch];
+                return _znakyPocty[ch];
             }
             return 0;
         }
@@ -25,7 +27,7 @@ public class ComplexInfoString
     {
         get
         {
-            return quantityNumbers;
+            return _quantityNumbers;
         }
     }
 
@@ -33,7 +35,7 @@ public class ComplexInfoString
     {
         get
         {
-            return quantityLowerChars;
+            return _quantityLowerChars;
         }
     }
 
@@ -41,7 +43,7 @@ public class ComplexInfoString
     {
         get
         {
-            return quantitySpecialChars;
+            return _quantitySpecialChars;
         }
     }
 
@@ -49,7 +51,7 @@ public class ComplexInfoString
     {
         get
         {
-            return quantityUpperChars;
+            return _quantityUpperChars;
         }
     }
 
@@ -60,28 +62,28 @@ public class ComplexInfoString
             int nt = (int)item;
             if (AllChars.lowerKeyCodes.Contains(nt))
             {
-                quantityLowerChars++;
+                _quantityLowerChars++;
             }
             else if (AllChars.upperKeyCodes.Contains(nt))
             {
-                quantityUpperChars++;
+                _quantityUpperChars++;
             }
             else if (AllChars.numericKeyCodes.Contains(nt))
             {
-                quantityNumbers++;
+                _quantityNumbers++;
             }
             else if (AllChars.specialKeyCodes.Contains(nt))
             {
-                quantitySpecialChars++;
+                _quantitySpecialChars++;
             }
 
-            if (znakyPocty.ContainsKey(item))
+            if (_znakyPocty.ContainsKey(item))
             {
-                znakyPocty[item]++;
+                _znakyPocty[item]++;
             }
             else
             {
-                znakyPocty.Add(item, 1);
+                _znakyPocty.Add(item, 1);
             }
         }
     }

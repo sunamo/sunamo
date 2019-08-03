@@ -7,7 +7,6 @@ public class TU<T, U>
 
     public TU()
     {
-
     }
 
     public TU(T key, U value)
@@ -16,7 +15,7 @@ public class TU<T, U>
         this.Value = value;
     }
 
-    public static TU<T,U> Get(T key, U value)
+    public static TU<T, U> Get(T key, U value)
     {
         return new TU<T, U>(key, value);
     }

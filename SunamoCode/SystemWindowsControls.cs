@@ -7,31 +7,31 @@ using System.Threading.Tasks;
 
 public static class SystemWindowsControls
 {
-    static Type type = typeof(SystemWindowsControls);
-    static bool initialized = false;
-    static Dictionary<string, List<string>> controls = new Dictionary<string, List<string>>();
-    static EmbeddedResourcesH embeddedResourcesH = null;
+    private static Type s_type = typeof(SystemWindowsControls);
+    private static bool s_initialized = false;
+    private static Dictionary<string, List<string>> s_controls = new Dictionary<string, List<string>>();
+    private static EmbeddedResourcesH s_embeddedResourcesH = null;
 
     public static void Init()
     {
-        if (!initialized)
+        if (!s_initialized)
         {
-            initialized = true;
+            s_initialized = true;
 
-            embeddedResourcesH = new EmbeddedResourcesH(type.Assembly, "SunamoCode");
+            s_embeddedResourcesH = new EmbeddedResourcesH(s_type.Assembly, "SunamoCode");
 
-            var d = SH.GetLines( embeddedResourcesH.GetString("/Resources/SystemWindowsControls.txt"));
+            var d = SH.GetLines(s_embeddedResourcesH.GetString("/Resources/SystemWindowsControls.txt"));
             foreach (var item in d)
             {
                 var p = SH.Split(item, " ");
-                controls.Add(p[0], SH.Split(p[1], ","));
+                s_controls.Add(p[0], SH.Split(p[1], ","));
             }
         }
     }
 
     public static bool IsShortcutOfControl(string r)
     {
-        foreach (var item in controls)
+        foreach (var item in s_controls)
         {
             foreach (var item2 in item.Value)
             {
@@ -47,7 +47,7 @@ public static class SystemWindowsControls
 
     public static bool IsNameOfControl(string r)
     {
-        return controls.ContainsKey(r);
+        return s_controls.ContainsKey(r);
     }
 }
 

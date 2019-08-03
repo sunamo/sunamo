@@ -150,7 +150,6 @@ namespace sunamo.Helpers.DT
 
 
             return new DateTime(date[0], date[1], date[2]);
-
         }
 
         /// <summary>

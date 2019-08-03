@@ -13,7 +13,6 @@ namespace DocArch.SqLite
 
         public InsertedRows()
         {
-
         }
 
         public InsertedRows(string Chyba)

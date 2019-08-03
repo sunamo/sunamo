@@ -8,17 +8,17 @@ using System;
 /// </summary>
 public class InstantSB //: StringWriter
 {
-    StringBuilder sb = new StringBuilder();
-    string tokensDelimiter;
+    private StringBuilder _sb = new StringBuilder();
+    private string _tokensDelimiter;
 
     public InstantSB(string znak)
     {
-        this.tokensDelimiter = znak;
+        _tokensDelimiter = znak;
     }
 
     public override string ToString()
     {
-        string vratit = sb.ToString();
+        string vratit = _sb.ToString();
         return vratit;
     }
 
@@ -32,15 +32,15 @@ public class InstantSB //: StringWriter
     public void AddItem(object var)
     {
         string s = var.ToString();
-        if (s != tokensDelimiter && s != "")
+        if (s != _tokensDelimiter && s != "")
         {
-            sb.Append(s + tokensDelimiter);   
+            _sb.Append(s + _tokensDelimiter);
         }
     }
 
     public void AddRaw(object tab)
     {
-        sb.Append(tab.ToString());
+        _sb.Append(tab.ToString());
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class InstantSB //: StringWriter
         foreach (object var in polozky)
         {
             AddItem(var);
-        }  
+        }
     }
 
     /// <summary>
@@ -63,9 +63,9 @@ public class InstantSB //: StringWriter
     public void EndLine(object o)
     {
         string s = o.ToString();
-        if (s != tokensDelimiter && s != "")
+        if (s != _tokensDelimiter && s != "")
         {
-            sb.Append(s);
+            _sb.Append(s);
         }
     }
 
@@ -85,8 +85,6 @@ public class InstantSB //: StringWriter
 
     public void RemoveEndDelimiter()
     {
-        sb.Remove(sb.Length - tokensDelimiter.Length, tokensDelimiter.Length);
+        _sb.Remove(_sb.Length - _tokensDelimiter.Length, _tokensDelimiter.Length);
     }
-
-    
 }

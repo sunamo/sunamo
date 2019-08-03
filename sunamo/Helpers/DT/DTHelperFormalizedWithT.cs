@@ -10,8 +10,6 @@ namespace sunamo.Helpers.DT
     /// </summary>
     public class DTHelperFormalizedWithT
     {
-        
-
         /// <summary>
         /// Vrátí normalizovaný datum a čas, to znamená že bude oddělen T
         /// Čas bude nastaven na 00:00:00
@@ -33,9 +31,9 @@ namespace sunamo.Helpers.DT
             return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.dot + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + "Z";
         }
 
-        
 
-        
+
+
 
         /// <summary>
         /// Vrátí normalizovaný datum a čas, to znamená že bude oddělen T, jednotlivé části datumu budou odděleny - a času :
@@ -46,7 +44,5 @@ namespace sunamo.Helpers.DT
         {
             return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
         }
-
-
     }
 }

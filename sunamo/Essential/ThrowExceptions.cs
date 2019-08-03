@@ -34,7 +34,7 @@ public class ThrowExceptions
     /// <param name="name"></param>
     public static void NameIsNotSetted(object type, string methodName, string nameControl, string nameFromProperty)
     {
-            ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
+        ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
@@ -101,10 +101,10 @@ public class ThrowExceptions
     #region Without parameters
     public static void NotImplementedCase(object type, string methodName)
     {
-        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode( type, methodName, true)));
+        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true)));
     }
 
-   
+
     #endregion
 
     #region Without locating executing code
@@ -196,7 +196,7 @@ public class ThrowExceptions
 
     public static void NoPassedFolders(Type type, string v, IEnumerable folders)
     {
-        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode( type, v, true), folders));   
+        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
     }
 
     private static void ThrowIsNotNull(object v)
@@ -223,7 +223,7 @@ public class ThrowExceptions
 
     public static void DirectoryWasntFound(Type type, string methodName, string folder1)
     {
-        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode( type, methodName, true), folder1));
+        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode(type, methodName, true), folder1));
     }
 
     public static void Custom(object type, string methodName, string message)
@@ -241,9 +241,7 @@ public class ThrowExceptions
     /// <param name="after"></param>
     public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
     {
-       
-         ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName, true), detailLocation, before, after));
-        
+        ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName, true), detailLocation, before, after));
     }
 
     public static void FolderCantBeRemoved(Type type, string methodName, string folder)

@@ -10,7 +10,6 @@ namespace sunamo
 {
     public class BlobConverter : ISimpleConverter<string, byte[]>
     {
-
         public string ConvertTo(byte[] ba)
         {
             if (ba == null || ba.Length == 0)
@@ -48,7 +47,7 @@ namespace sunamo
             {
                 if (AppLangHelper.currentUICulture.TwoLetterISOLanguageName == "cs")
                 {
-                    throw new FormatException("Zadaný řetězec se nezdá být šestnáctkově kódováný" + ":");
+                    throw new FormatException("Zadan\u00FD \u0159et\u011Bzec se nezd\u00E1 b\u00FDt \u0161estn\u00E1ctkov\u011B k\u00F3dov\u00E1n\u00FD" + ":");
                 }
                 else
                 {

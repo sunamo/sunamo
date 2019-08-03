@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 /// </summary>
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
-
     /// <summary>
     /// If file A1 dont exists or have empty content, then create him with empty content and G SE
     /// </summary>
@@ -37,7 +36,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     {
         if (!string.IsNullOrEmpty(ThisApp.Name))
         {
-            
             RootFolder = Abstract.GetRootFolder();
 
             foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
@@ -48,7 +46,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
         else
         {
-            throw new Exception("Není vyplněno název aplikace" + ".");
+            throw new Exception("Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
         }
     }
 
@@ -58,7 +56,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// <param name = "path"></param>
     public string ReadFileOfSettingsExistingDirectoryOrFile(string path)
     {
-
         if (!path.Contains(AllStrings.bs) && !path.Contains(AllStrings.slash))
         {
             path = AppData.ci.GetFile(AppFolders.Settings, path);
@@ -114,10 +111,10 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     public void SaveFileOfSettings(string file, string value)
     {
         StorageFile fileToSave = Abstract.GetFile(AppFolders.Settings, file);
-        Abstract.SaveFile(value,  fileToSave);
+        Abstract.SaveFile(value, fileToSave);
     }
 
-    
+
 
     /// <summary>
     /// Save file A2 to AF A1 with contents A3
@@ -127,7 +124,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// <param name = "value"></param>
     public StorageFile SaveFile(AppFolders af, string file, string value)
     {
-        StorageFile fileToSave = Abstract. GetFile(af, file);
+        StorageFile fileToSave = Abstract.GetFile(af, file);
         Abstract.SaveFile(value, fileToSave);
         return fileToSave;
     }
@@ -153,11 +150,4 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     {
         TF.AppendToFile(value, file);
     }
-
-
-
-
-
-
-
 }

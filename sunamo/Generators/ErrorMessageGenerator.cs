@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-public  class ErrorMessageGenerator
+public class ErrorMessageGenerator
 {
-    StringBuilder vypis = new StringBuilder();
-    StringBuilder triTecky = new StringBuilder();
+    private StringBuilder _vypis = new StringBuilder();
+    private StringBuilder _triTecky = new StringBuilder();
 
     public string Visible
     {
         get
         {
-            return vypis.ToString();
+            return _vypis.ToString();
         }
     }
 
@@ -19,7 +19,7 @@ public  class ErrorMessageGenerator
     {
         get
         {
-            return triTecky.ToString();
+            return _triTecky.ToString();
         }
     }
 
@@ -27,11 +27,11 @@ public  class ErrorMessageGenerator
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            vypis.AppendLine(" " + " " + "těchto souborech se vyskytly tyto chyby" + ": ");
+            _vypis.AppendLine(" " + " " + "t\u011Bchto souborech se vyskytly tyto chyby" + ": ");
         }
         else
         {
-            vypis.AppendLine("In these files the following errors occurred" + ": ");
+            _vypis.AppendLine("In these files the following errors occurred" + ": ");
         }
 
         if (chybneSoubory.Count < i)
@@ -42,13 +42,13 @@ public  class ErrorMessageGenerator
         for (; y < i; y++)
         {
             string em = GetErrorMessage(chyby[y]);
-            vypis.AppendLine(chybneSoubory[y] + AllStrings.swda + em);
+            _vypis.AppendLine(chybneSoubory[y] + AllStrings.swda + em);
         }
 
         string priChybe = null;
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            priChybe = "Pokud si myslíte že to je chyba aplikace, pošlete prosím mi email na adresu která je uvedena v dialogu O aplikaci";
+            priChybe = "Pokud si mysl\u00EDte \u017Ee to je chyba aplikace, po\u0161lete pros\u00EDm mi email na adresu kter\u00E1 je uvedena v dialogu O aplikaci";
         }
         else
         {
@@ -57,16 +57,16 @@ public  class ErrorMessageGenerator
 
         if (y == chybneSoubory.Count)
         {
-            triTecky.AppendLine(priChybe);
+            _triTecky.AppendLine(priChybe);
         }
         else
         {
             for (; y < chybneSoubory.Count; y++)
             {
                 string em = GetErrorMessage(chyby[y]);
-                triTecky.AppendLine(chybneSoubory[i] + AllStrings.swda + em);
+                _triTecky.AppendLine(chybneSoubory[i] + AllStrings.swda + em);
             }
-            triTecky.AppendLine(priChybe);
+            _triTecky.AppendLine(priChybe);
         }
     }
 
@@ -82,11 +82,11 @@ public  class ErrorMessageGenerator
                 case FileExceptions.FileNotFound:
                     return "File not found";
                 case FileExceptions.UnauthorizedAccess:
-                    return "Program zřejmě nemá přístup k souboru";
+                    return "Program z\u0159ejm\u011B nem\u00E1 p\u0159\u00EDstup k souboru";
                 case FileExceptions.General:
-                    return "Neznámá nebo obecná chyba";
+                    return "Nezn\u00E1m\u00E1 nebo obecn\u00E1 chyba";
                 default:
-                    throw new Exception("Neimplementovaná větev");
+                    throw new Exception("Neimplementovan\u00E1 v\u011Btev");
             }
         }
         else
@@ -110,6 +110,4 @@ public  class ErrorMessageGenerator
 
         return "";
     }
-
-
 }

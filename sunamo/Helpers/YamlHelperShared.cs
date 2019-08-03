@@ -5,8 +5,9 @@ using System.IO;
 using System.Text;
 using YamlDotNet.Serialization;
 
-public partial class YamlHelper{ 
-public static string DumpAsYaml(object o)
+public partial class YamlHelper
+{
+    public static string DumpAsYaml(object o)
     {
         var stringBuilder = new StringBuilder();
         var serializer = new Serializer();

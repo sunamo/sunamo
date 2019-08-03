@@ -10,71 +10,71 @@ namespace sunamo
     /// </summary>
     public class FileSystemWatchers
     {
-        Dictionary<string, FileSystemWatcher> watchers = new Dictionary<string, FileSystemWatcher>();
-        VoidStringT<bool> onStart;
-        VoidStringT<bool> onStop;
-        bool moreFolders = false;
-        FileSystemWatcher fileSystemWatcher = null;
+        private Dictionary<string, FileSystemWatcher> _watchers = new Dictionary<string, FileSystemWatcher>();
+        private VoidStringT<bool> _onStart;
+        private VoidStringT<bool> _onStop;
+        private bool _moreFolders = false;
+        private FileSystemWatcher _fileSystemWatcher = null;
         public FileSystemWatchers(bool moreFolders, VoidStringT<bool> onStart, VoidStringT<bool> onStop)
         {
-            this.moreFolders = moreFolders;
-            this.onStart = onStart;
-            this.onStop = onStop;
+            _moreFolders = moreFolders;
+            _onStart = onStart;
+            _onStop = onStop;
         }
 
         public void Start(string path)
         {
             // Adding handlers - must wrap up all
-            if (moreFolders)
+            if (_moreFolders)
             {
-                if (!watchers.ContainsKey(path))
+                if (!_watchers.ContainsKey(path))
                 {
-                    onStart.Invoke(path, true);
+                    _onStart.Invoke(path, true);
 
                     var fileSystemWatcher = RegisterSingleFolder(path);
 
-                    watchers.Add(path, fileSystemWatcher);
+                    _watchers.Add(path, fileSystemWatcher);
                 }
             }
         }
 
         public FileSystemWatcher RegisterSingleFolder(string path)
         {
-             fileSystemWatcher = new FileSystemWatcher(path);
-            fileSystemWatcher.Filter = "*.cs";
-            if (!moreFolders)
+            _fileSystemWatcher = new FileSystemWatcher(path);
+            _fileSystemWatcher.Filter = "*.cs";
+            if (!_moreFolders)
             {
-                fileSystemWatcher.IncludeSubdirectories = true;
+                _fileSystemWatcher.IncludeSubdirectories = true;
             }
-            fileSystemWatcher.NotifyFilter = NotifyFilters.Attributes |
+            _fileSystemWatcher.NotifyFilter = NotifyFilters.Attributes |
     NotifyFilters.CreationTime |
     NotifyFilters.FileName |
     NotifyFilters.LastAccess |
     NotifyFilters.LastWrite |
     NotifyFilters.Size |
     NotifyFilters.Security;
-            
-            fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
-            fileSystemWatcher.Changed += FileSystemWatcher_Changed;
-            fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
 
-            fileSystemWatcher.EnableRaisingEvents = true;
+            _fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
+            _fileSystemWatcher.Changed += FileSystemWatcher_Changed;
+            _fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
+
+            _fileSystemWatcher.EnableRaisingEvents = true;
 
             //fileSystemWatcher.SynchronizingObject;
             //fileSystemWatcher.InitializeLifetimeService();
 
-            return fileSystemWatcher;
+            return _fileSystemWatcher;
         }
 
         public void Stop(string path)
         {
-            onStop.Invoke(path, true);
+            _onStop.Invoke(path, true);
 
-            if (moreFolders)
+            if (_moreFolders)
             {
-                watchers.Remove(path);
+                _watchers.Remove(path);
 
-                FileSystemWatcher fileSystemWatcher = watchers[path];
+                FileSystemWatcher fileSystemWatcher = _watchers[path];
                 fileSystemWatcher.Deleted -= FileSystemWatcher_Deleted;
                 fileSystemWatcher.Changed -= FileSystemWatcher_Changed;
                 fileSystemWatcher.Renamed -= FileSystemWatcher_Renamed;
@@ -86,21 +86,19 @@ namespace sunamo
 
         private void FileSystemWatcher_Renamed(object sender, RenamedEventArgs e)
         {
-            onStop.Invoke(e.OldFullPath, true);
-            onStart.Invoke(e.FullPath, true);
+            _onStop.Invoke(e.OldFullPath, true);
+            _onStart.Invoke(e.FullPath, true);
         }
 
         private void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            onStop.Invoke(e.FullPath, true);
-            onStart.Invoke(e.FullPath, true);
+            _onStop.Invoke(e.FullPath, true);
+            _onStart.Invoke(e.FullPath, true);
         }
 
         private void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            onStop.Invoke(e.FullPath, true);
+            _onStop.Invoke(e.FullPath, true);
         }
-
-        
     }
 }

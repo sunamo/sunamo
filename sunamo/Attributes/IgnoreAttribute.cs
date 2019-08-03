@@ -8,6 +8,5 @@ namespace sunamo.ObjectsCommon
 {
     public class IgnoreAttribute : InnerObjectAttribute
     {
-
     }
 }

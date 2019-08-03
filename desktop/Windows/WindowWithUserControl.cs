@@ -2,6 +2,7 @@
 using desktop.Controls;
 using desktop.Controls.Collections;
 using desktop.Essential;
+using desktop.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,9 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         var hMenu = ah(menu);
         var staturBarH = ah(statusBar);
         var dialogButtonsH = ah(dialogButtons);
-        var growingRow = ActualHeight - hMenu - staturBarH - dialogButtonsH ;
+        var e1 = e.NewSize.Height;
+        var e2 = ControlHelper.ActualInnerSize(this).Height;
+        var growingRow = e2 - hMenu - staturBarH - dialogButtonsH ;
         OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
 
         Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
@@ -40,6 +43,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
 
     private double ah(FrameworkElement dialogButtons)
     {
+        
         if (dialogButtons == null)
         {
             return 0;

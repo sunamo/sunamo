@@ -15,7 +15,7 @@ namespace sunamo.Html
     /// </summary>
     public class HtmlHelperText
     {
-        static Type type = typeof(HtmlHelperText);
+        private static Type s_type = typeof(HtmlHelperText);
 
         /// <summary>
         /// Get type of tag (paired ended, paired not ended, non paired)
@@ -24,7 +24,7 @@ namespace sunamo.Html
         /// <returns></returns>
         public static HtmlTagSyntax GetSyntax(ref string tag)
         {
-            ThrowExceptions.InvalidParameter(type, "GetSyntax", (string)tag, "tag");
+            ThrowExceptions.InvalidParameter(s_type, "GetSyntax", (string)tag, "tag");
 
             tag = SH.GetToFirst((string)tag, AllStrings.space);
             tag = tag.Trim().TrimStart(AllChars.lt).TrimEnd(AllChars.gt).ToLower();
@@ -38,7 +38,7 @@ namespace sunamo.Html
             {
                 return HtmlTagSyntax.NonPairingEnded;
             }
-            if (tag[tag.Length -1] == AllChars.slash)
+            if (tag[tag.Length - 1] == AllChars.slash)
             {
                 return HtmlTagSyntax.End;
             }
@@ -79,9 +79,9 @@ namespace sunamo.Html
                     }
                 }
 
-                result.Add(SH.GetTextBetweenTwoChars(text, dexEndLetter, dexEnd  ).Trim());
+                result.Add(SH.GetTextBetweenTwoChars(text, dexEndLetter, dexEnd).Trim());
 
-                dex = text.IndexOf(start, dexEnd );
+                dex = text.IndexOf(start, dexEnd);
             }
 
             return result;
@@ -104,14 +104,14 @@ namespace sunamo.Html
 
             var endP = "</p>";
 
-            CA.ChangeContent(lines, AddIntoParagraph );
+            CA.ChangeContent(lines, AddIntoParagraph);
 
             var result = SH.JoinNL(lines);
             result = SH.ReplaceAll(result, endP + AllStrings.cr + AllStrings.nl, endP);
             return result;
         }
 
-        static string AddIntoParagraph(string s)
+        private static string AddIntoParagraph(string s)
         {
             const string spaceDash = " -";
 
@@ -164,7 +164,6 @@ namespace sunamo.Html
                 return SH.GetToFirst(between, AllStrings.space);
             }
             return between;
-
         }
     }
 }

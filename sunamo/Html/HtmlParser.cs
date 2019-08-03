@@ -12,32 +12,32 @@ using System.Xml;
 /// </summary>
 public class HtmlDocument2
 {
-    HtmlDocument hd = HtmlAgilityHelper.CreateHtmlDocument();
-    string html = null;
+    private HtmlDocument _hd = HtmlAgilityHelper.CreateHtmlDocument();
+    private string _html = null;
 
     public void Load(string path)
     {
         //hd.Encoding = Encoding.UTF8;
-        html = File.ReadAllText(path);
-        html = WebUtility.HtmlDecode(html);
+        _html = File.ReadAllText(path);
+        _html = WebUtility.HtmlDecode(_html);
         //string html =HtmlHelper.ToXml(); 
-        hd.LoadHtml(html);
+        _hd.LoadHtml(_html);
     }
-    
+
     public void LoadHtml(string html)
     {
         //hd.Encoding = Encoding.UTF8;
         html = WebUtility.HtmlDecode(html);
-        this.html = html;
+        _html = html;
         //HtmlHelper.ToXml(html)
-        hd.LoadHtml(html);
+        _hd.LoadHtml(html);
     }
 
     public HtmlNode DocumentNode
     {
         get
         {
-            return hd.DocumentNode;
+            return _hd.DocumentNode;
         }
     }
 
@@ -56,9 +56,8 @@ public class HtmlDocument2
 
     #region Without HtmlAgility
     #region ToXml
-    public  string ToXmlFinal(string xml)
+    public string ToXmlFinal(string xml)
     {
-
         return HtmlHelper.ToXmlFinal(xml);
     }
 
@@ -68,9 +67,8 @@ public class HtmlDocument2
     /// <param name="xml"></param>
     /// <param name="odstranitXmlDeklaraci"></param>
     /// <returns></returns>
-    public  string ToXml(string xml, bool odstranitXmlDeklaraci)
+    public string ToXml(string xml, bool odstranitXmlDeklaraci)
     {
-
         return HtmlHelper.ToXml(xml, odstranitXmlDeklaraci);
     }
 
@@ -79,16 +77,14 @@ public class HtmlDocument2
     /// </summary>
     /// <param name="xml"></param>
     /// <returns></returns>
-    public  string ToXml(string xml)
+    public string ToXml(string xml)
     {
-
         return HtmlHelper.ToXml(xml);
     }
     #endregion
 
-    public  string ClearSpaces(string dd)
+    public string ClearSpaces(string dd)
     {
-
         return HtmlHelper.ClearSpaces(dd);
     }
 
@@ -98,21 +94,18 @@ public class HtmlDocument2
     /// <param name="html"></param>
     /// <param name="nameTag"></param>
     /// <returns></returns>
-    public  string TrimOpenAndEndTags(string html, string nameTag)
+    public string TrimOpenAndEndTags(string html, string nameTag)
     {
-
         return HtmlHelper.TrimOpenAndEndTags(html, nameTag);
     }
 
-    public  string ConvertTextToHtml(string p)
+    public string ConvertTextToHtml(string p)
     {
-
         return HtmlHelper.ConvertTextToHtml(p);
     }
 
-    public  string PrepareToAttribute(string title)
+    public string PrepareToAttribute(string title)
     {
-
         return HtmlHelper.PrepareToAttribute(title);
     }
 
@@ -124,22 +117,18 @@ public class HtmlDocument2
     /// <param name="pocetVet"></param>
     /// <param name="hledaneSlova"></param>
     /// <returns></returns>
-    public  string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, List<string> hledaneSlova)
+    public string HighlightingWords(string celyObsah, int maxPocetPismenNaVetu, int pocetVet, List<string> hledaneSlova)
     {
-
-
         return HtmlHelper.HighlightingWords(celyObsah, maxPocetPismenNaVetu, pocetVet, hledaneSlova);
     }
 
-    public  string ReplaceAllFontCase(string r)
+    public string ReplaceAllFontCase(string r)
     {
-
         return HtmlHelper.ReplaceAllFontCase(r);
     }
 
-    public  string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
+    public string ReplaceHtmlNonPairTagsWithXmlValid(string vstup)
     {
-
         return HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(vstup);
     }
 
@@ -150,15 +139,13 @@ public class HtmlDocument2
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public  string StripAllTags(string p)
+    public string StripAllTags(string p)
     {
-
         return HtmlHelper.StripAllTags(p);
     }
 
-    public  string StripAllTags(string p, string replaceFor)
+    public string StripAllTags(string p, string replaceFor)
     {
-
         return HtmlHelper.StripAllTags(p, replaceFor);
     }
 
@@ -167,9 +154,8 @@ public class HtmlDocument2
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
-    public  List<string> StripAllTagsList(string d)
+    public List<string> StripAllTagsList(string d)
     {
-
         return HtmlHelper.StripAllTagsList(d);
     }
 
@@ -178,9 +164,8 @@ public class HtmlDocument2
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public  string StripAllTagsSpace(string p)
+    public string StripAllTagsSpace(string p)
     {
-
         return HtmlHelper.StripAllTagsSpace(p);
     }
 
@@ -190,7 +175,7 @@ public class HtmlDocument2
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public  string RemoveAllTags(string p)
+    public string RemoveAllTags(string p)
     {
         return HtmlHelper.RemoveAllTags(p);
     }
@@ -204,18 +189,16 @@ public class HtmlDocument2
     /// <param name="node"></param>
     /// <param name="atr"></param>
     /// <param name="hod"></param>
-    public  void SetAttribute(HtmlNode node, string atr, string hod)
+    public void SetAttribute(HtmlNode node, string atr, string hod)
     {
-
-         HtmlHelper.SetAttribute(node, atr, hod);
+        HtmlHelper.SetAttribute(node, atr, hod);
     }
     #endregion
 
     #region Get
 
-    public  string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
+    public string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
-
         return HtmlHelper.GetValueOfAttribute(p, divMain, _trim);
     }
     #endregion
@@ -223,30 +206,27 @@ public class HtmlDocument2
     #region Check name and value
 
 
-    public  bool HasTagAttrContains(HtmlNode htmlNode, string delimiter, string attr, string value)
+    public bool HasTagAttrContains(HtmlNode htmlNode, string delimiter, string attr, string value)
     {
-
         return HtmlHelper.HasTagAttrContains(htmlNode, delimiter, attr, value);
     }
     #endregion
 
     #region Helper methods
 
-    public  HtmlNode TrimNode(HtmlNode hn2)
+    public HtmlNode TrimNode(HtmlNode hn2)
     {
         return HtmlHelper.TrimNode(hn2);
     }
 
     #region Text nodes
-    public  List<HtmlNode> GetWithoutTextNodes(HtmlNode htmlNode)
+    public List<HtmlNode> GetWithoutTextNodes(HtmlNode htmlNode)
     {
-
         return HtmlHelper.GetWithoutTextNodes(htmlNode);
     }
 
-    public  List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
+    public List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
     {
-
         return HtmlHelper.TrimTexts(htmlNodeCollection);
     }
 
@@ -260,16 +240,14 @@ public class HtmlDocument2
         throw new NotImplementedException();
     }
 
-    public  List<HtmlNode> TrimTexts(List<HtmlNode> c2)
+    public List<HtmlNode> TrimTexts(List<HtmlNode> c2)
     {
-
         return HtmlHelper.TrimTexts(c2);
     }
     #endregion
 
-    public  bool HasChildTag(HtmlNode spanInHeader, string v)
+    public bool HasChildTag(HtmlNode spanInHeader, string v)
     {
-
         return HtmlHelper.HasChildTag(spanInHeader, v);
     }
 
@@ -286,9 +264,8 @@ public class HtmlDocument2
     /// <param name="ssh"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public  string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
+    public string ReturnApplyToAllTags(string s, string p, EditHtmlWidthHandler ssh, string value)
     {
-
         return HtmlHelper.ReturnApplyToAllTags(s, p, ssh, value);
     }
 
@@ -298,9 +275,8 @@ public class HtmlDocument2
 
 
 
-    public  Dictionary<string, string> GetValuesOfStyle(HtmlNode item)
+    public Dictionary<string, string> GetValuesOfStyle(HtmlNode item)
     {
-
         return HtmlHelper.GetValuesOfStyle(item);
     }
 
@@ -311,9 +287,8 @@ public class HtmlDocument2
 
 
     #region 1 Node
-    public  HtmlNode GetTag(HtmlNode cacheAuthorNode, string p)
+    public HtmlNode GetTag(HtmlNode cacheAuthorNode, string p)
     {
-
         return HtmlHelper.GetTag(cacheAuthorNode, p);
     }
 
@@ -324,15 +299,13 @@ public class HtmlDocument2
     /// <param name="body"></param>
     /// <param name="nazevTagu"></param>
     /// <returns></returns>
-    public  HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
+    public HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
     {
-
         return HtmlHelper.ReturnTag(body, nazevTagu);
     }
 
-    public  HtmlNode ReturnTagRek(HtmlNode hn, string nameTag)
+    public HtmlNode ReturnTagRek(HtmlNode hn, string nameTag)
     {
-
         return HtmlHelper.ReturnTagRek(hn, nameTag);
     }
     #endregion
@@ -349,9 +322,8 @@ public class HtmlDocument2
     /// <param name="htmlNode"></param>
     /// <param name="tag"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTagsRek(HtmlNode htmlNode, string tag)
+    public List<HtmlNode> ReturnTagsRek(HtmlNode htmlNode, string tag)
     {
-
         return HtmlHelper.ReturnTagsRek(htmlNode, tag);
     }
 
@@ -363,9 +335,8 @@ public class HtmlDocument2
     /// <param name="htmlNode"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnAllTags(HtmlNode htmlNode, params string[] p)
+    public List<HtmlNode> ReturnAllTags(HtmlNode htmlNode, params string[] p)
     {
-
         return HtmlHelper.ReturnAllTags(htmlNode, p);
     }
 
@@ -377,9 +348,8 @@ public class HtmlDocument2
     /// <param name="html"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
+    public List<HtmlNode> ReturnAllTagsImg(HtmlNode html, string p)
     {
-
         return HtmlHelper.ReturnAllTagsImg(html, p);
     }
     #endregion
@@ -391,24 +361,21 @@ public class HtmlDocument2
     /// <param name="parent"></param>
     /// <param name="tag"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTags(HtmlNode parent, string tag)
+    public List<HtmlNode> ReturnTags(HtmlNode parent, string tag)
     {
-
         return HtmlHelper.ReturnTags(parent, tag);
     }
     #endregion
 
     #region 3 NodeWithAttr
-    public  HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
+    public HtmlNode GetTagOfAtributeRek(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
     {
         return HtmlHelper.GetTagOfAtributeRek(hn, nameTag, nameAtr, valueOfAtr);
-
     }
 
-    public  HtmlNode GetTagOfAtribute(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
+    public HtmlNode GetTagOfAtribute(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
     {
         return HtmlHelper.GetTagOfAtribute(hn, nameTag, nameAtr, valueOfAtr);
-
     }
 
     /// <summary>
@@ -419,10 +386,9 @@ public class HtmlDocument2
     /// <param name="attr"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public  HtmlNode ReturnTagWithAttr(HtmlNode htmlNode, string tag, string attr, string value)
+    public HtmlNode ReturnTagWithAttr(HtmlNode htmlNode, string tag, string attr, string value)
     {
         return HtmlHelper.ReturnTagWithAttr(htmlNode, tag, attr, value);
-
     }
 
 
@@ -443,9 +409,8 @@ public class HtmlDocument2
     /// <param name="atribut"></param>
     /// <param name="hodnotaAtributu"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTagsWithAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
+    public List<HtmlNode> ReturnTagsWithAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
     {
-
         return HtmlHelper.ReturnTagsWithAttrRek(htmlNode, tag, atribut, hodnotaAtributu);
     }
 
@@ -457,10 +422,9 @@ public class HtmlDocument2
     /// <param name="attr"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public  HtmlNode ReturnTagWithAttrRek(HtmlNode htmlNode, string tag, string attr, string value)
+    public HtmlNode ReturnTagWithAttrRek(HtmlNode htmlNode, string tag, string attr, string value)
     {
         return HtmlHelper.ReturnTagWithAttrRek(htmlNode, tag, attr, value);
-
     }
     #endregion
 
@@ -473,13 +437,12 @@ public class HtmlDocument2
     /// <param name="attrName"></param>
     /// <param name="attrValue"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTagsWithAttrRek2(HtmlNode htmlNode, string tagName, string attrName, string attrValue)
+    public List<HtmlNode> ReturnTagsWithAttrRek2(HtmlNode htmlNode, string tagName, string attrName, string attrValue)
     {
-
         return HtmlHelper.ReturnTagsWithAttrRek2(htmlNode, tagName, attrName, attrValue);
     }
 
-    
+
 
     #region No recursive
     /// <summary>
@@ -490,9 +453,8 @@ public class HtmlDocument2
     /// <param name="nameAtr"></param>
     /// <param name="valueOfAtr"></param>
     /// <returns></returns>
-    public  List<HtmlNode> GetTagsOfAtribute(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
+    public List<HtmlNode> GetTagsOfAtribute(HtmlNode hn, string nameTag, string nameAtr, string valueOfAtr)
     {
-
         return HtmlHelper.GetTagsOfAtribute(hn, nameAtr, nameAtr, valueOfAtr);
     }
     #endregion
@@ -510,10 +472,9 @@ public class HtmlDocument2
     /// <param name="p"></param>
     /// <param name="atribut"></param>
     /// <param name="hodnotaAtributu"></param>
-    public  void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu, bool contains, bool recursively)
+    public void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, string p, string atribut, string hodnotaAtributu, bool contains, bool recursively)
     {
-
-         HtmlHelper.RecursiveReturnTagsWithContainsAttr(vr, htmlNode, p, atribut, hodnotaAtributu, contains, recursively);
+        HtmlHelper.RecursiveReturnTagsWithContainsAttr(vr, htmlNode, p, atribut, hodnotaAtributu, contains, recursively);
     }
 
     /// <summary>
@@ -524,13 +485,12 @@ public class HtmlDocument2
     /// <param name="atribut"></param>
     /// <param name="hodnotaAtributu"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
+    public List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu)
     {
         return HtmlHelper.ReturnTagsWithContainsAttrRek(htmlNode, tag, atribut, hodnotaAtributu);
-
     }
 
-    public  List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu, bool contains, bool recursively)
+    public List<HtmlNode> ReturnTagsWithContainsAttrRek(HtmlNode htmlNode, string tag, string atribut, string hodnotaAtributu, bool contains, bool recursively)
     {
         return HtmlHelper.ReturnTagsWithContainsAttrRek(htmlNode, tag, atribut, hodnotaAtributu, contains, recursively);
     }
@@ -543,7 +503,7 @@ public class HtmlDocument2
     /// <param name="atribut"></param>
     /// <param name="hodnotaAtributu"></param>
     /// <returns></returns>
-    public  List<HtmlNode> ReturnTagsWithContainsClassRek(HtmlNode htmlNode, string tag, string t)
+    public List<HtmlNode> ReturnTagsWithContainsClassRek(HtmlNode htmlNode, string tag, string t)
     {
         return HtmlHelper.ReturnTagsWithContainsClassRek(htmlNode, tag, t);
     }

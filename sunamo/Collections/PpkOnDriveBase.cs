@@ -12,11 +12,11 @@ using System;
 public abstract class PpkOnDriveBase<T> : List<T>
 {
     #region DPP
-    bool ukladat = true;
+    private bool _ukladat = true;
     /// <summary>
     /// 
     /// </summary>
-    bool otevrit = false;
+    private bool _otevrit = false;
     /// <summary>
     /// Cesta, do ktere se uklada soubor.
     /// </summary>
@@ -32,7 +32,6 @@ public abstract class PpkOnDriveBase<T> : List<T>
         {
             base.Add(t);
         }
-        
     }
 
     public new void Add(T prvek)
@@ -48,12 +47,11 @@ public abstract class PpkOnDriveBase<T> : List<T>
                 return;
             }
         }
-        
-        if (ukladat)
+
+        if (_ukladat)
         {
             Save();
         }
-
     }
 
     #region base
@@ -74,7 +72,6 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// </summary>
     public PpkOnDriveBase()
     {
-
     }
 
     /// <summary>
@@ -102,14 +99,14 @@ public abstract class PpkOnDriveBase<T> : List<T>
         {
             File.WriteAllText(file, "");
         }
-        this.ukladat = save;
+        _ukladat = save;
         soubor = file;
         Load(load);
     }
 
     public PpkOnDriveBase(bool open, bool load)
     {
-        this.otevrit = open;
+        _otevrit = open;
         Load(load);
     }
     #endregion
@@ -139,7 +136,6 @@ public abstract class PpkOnDriveBase<T> : List<T>
         obsah = ReturnContent();
         //TextovySoubor.ts.UlozSoubor(obsah, soubor);
         File.WriteAllText(soubor, obsah);
-
     }
 
     /// <summary>

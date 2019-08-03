@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public partial class CharHelper
-    {
+public partial class CharHelper
+{
     public static bool IsSpecial(char c)
     {
         return CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
     }
 
     public static string OnlyDigits(string v)
-        {
-            return OnlyAccepted(v, char.IsDigit);
-        }
+    {
+        return OnlyAccepted(v, char.IsDigit);
+    }
 
     public static bool IsGeneric(char c)
     {
@@ -22,15 +22,15 @@ using System.Threading.Tasks;
     }
 
     private static string OnlyAccepted(string v, Func<char, bool> isDigit)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in v)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in v)
+            if (isDigit.Invoke(item))
             {
-                if (isDigit.Invoke(item))
-                {
-                    sb.Append(item);
-                }
+                sb.Append(item);
             }
-            return sb.ToString();
         }
+        return sb.ToString();
     }
+}

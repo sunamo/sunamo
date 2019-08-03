@@ -1,13 +1,12 @@
 ﻿public static class SecurityHelper
 {
-
     public static string TreatHtmlCode(string r)
     {
         r = RemoveJsAttributesFromEveryNode(r);
         r = SH.ReplaceAll2(r, AllStrings.space, AllStrings.doubleSpace);
         r = RegexHelper.rHtmlScript.Replace(r, "");
         r = RegexHelper.rHtmlComment.Replace(r, "");
-        
+
         return r;
     }
 

@@ -7,12 +7,10 @@ namespace SunamoYaml
 {
     public class Yaml
     {
-        
-
         //YamlDotNet.Serialization.
-        YamlStream ys;
+        private YamlStream _ys;
         //Yaml
 
-        
+
     }
 }

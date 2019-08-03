@@ -9,7 +9,6 @@ namespace sunamo
 {
     public class PropertyType2Converter : ISimpleConverter<PropertyType2, string>
     {
-
         public PropertyType2 ConvertTo(string u)
         {
             throw new NoImplementedException();

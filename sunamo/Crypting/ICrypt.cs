@@ -26,5 +26,4 @@ public interface ICrypt
     List<byte> s { set; }
     List<byte> iv { set; }
     string pp { set; }
-    
 }

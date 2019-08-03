@@ -196,10 +196,10 @@ namespace desktop.Controls.Collections
             }
 
             // First must call Init due to create instance of NotifyChangesCollection
-            chblAutoYes.Init(autoYes, true);
-            chblManuallyYes.Init(manuallyYes);
-            chblManuallyNo.Init(manuallyNo);
-            chblAutoNo.Init(autoNo, false);
+            chblAutoYes.Init(null, autoYes, true);
+            chblManuallyYes.Init(null, manuallyYes);
+            chblManuallyNo.Init(null, manuallyNo);
+            chblAutoNo.Init(null, autoNo, false);
 
             #region Must init before to avoid raise breakpoints
             chblAutoYes.EventOn(false, true, false, false, false);
@@ -208,7 +208,7 @@ namespace desktop.Controls.Collections
             chblAutoNo.EventOn(true, false, false, false, false);
             #endregion
 
-            chblAutoYes.HideAllButtons();
+            chblAutoYes.DefaultButtonsInit();
             chblManuallyYes.HideAllButtons();
             chblManuallyNo.HideAllButtons();
             chblAutoNo.HideAllButtons();

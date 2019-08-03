@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Text;
 
-public partial class ManageArtistDashTitle{ 
-/// <summary>
+public partial class ManageArtistDashTitle
+{
+    /// <summary>
     /// 
     /// </summary>
     /// <param name = "item"></param>
@@ -11,7 +12,7 @@ public partial class ManageArtistDashTitle{
     /// <param name = "remix"></param>
     public static void GetArtistTitleRemix(string item, out string název, out string title, out string remix)
     {
-        string[] toks = item.Split(new string[]{AllStrings.dash}, StringSplitOptions.RemoveEmptyEntries);
+        string[] toks = item.Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
         název = title = "";
         if (toks.Length == 0)
         {
@@ -35,7 +36,7 @@ public partial class ManageArtistDashTitle{
         }
     }
 
-/// <summary>
+    /// <summary>
     /// NSN
     /// </summary>
     /// <param name = "p"></param>
@@ -68,7 +69,7 @@ public partial class ManageArtistDashTitle{
         }
     }
 
-/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     /// <param name = "p"></param>

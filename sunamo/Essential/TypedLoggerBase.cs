@@ -9,12 +9,12 @@ namespace sunamo.Essential
     /// </summary>
     public class TypedLoggerBase
     {
-        static Type type = typeof(TypedLoggerBase);
-        private Action<TypeOfMessage, string, object[]> typedWriteLineDelegate;
+        private static Type s_type = typeof(TypedLoggerBase);
+        private Action<TypeOfMessage, string, object[]> _typedWriteLineDelegate;
 
-        public TypedLoggerBase(Action<TypeOfMessage,string, object[]> typedWriteLineDelegate)
+        public TypedLoggerBase(Action<TypeOfMessage, string, object[]> typedWriteLineDelegate)
         {
-            this.typedWriteLineDelegate = typedWriteLineDelegate;
+            _typedWriteLineDelegate = typedWriteLineDelegate;
         }
 
         /// <summary>
@@ -31,26 +31,26 @@ namespace sunamo.Essential
         #region 
         public void Success(string text, params object[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Success, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Success, text, p);
         }
 
         public void Error(string text, params string[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Error, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Error, text, p);
         }
         public void Warning(string text, params string[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Warning, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Warning, text, p);
         }
 
         public void Appeal(string text, params string[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Appeal, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Appeal, text, p);
         }
 
         public void Ordinal(string text, params string[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Ordinal, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Ordinal, text, p);
         }
 
         public void WriteLine(TypeOfMessage t, string m)
@@ -76,14 +76,14 @@ namespace sunamo.Essential
                     Success(m);
                     break;
                 default:
-                    ThrowExceptions.NotImplementedCase(type, "WriteLine");
+                    ThrowExceptions.NotImplementedCase(s_type, "WriteLine");
                     break;
             }
         }
 
         public void Information(string text, params string[] p)
         {
-            typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);
+            _typedWriteLineDelegate.Invoke(TypeOfMessage.Information, text, p);
         }
         #endregion
     }

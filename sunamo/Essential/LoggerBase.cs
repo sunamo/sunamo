@@ -10,10 +10,10 @@ namespace sunamo.Essential
     {
         // TODO: Make logger public class as base and replace all occurences With Instance 
 
-        VoidStringParamsObjects writeLineDelegate;
+        private VoidStringParamsObjects _writeLineDelegate;
         public bool IsActive = true;
-        static Type type = typeof(LoggerBase);
-        StringBuilder sb = new StringBuilder();
+        private static Type s_type = typeof(LoggerBase);
+        private StringBuilder _sb = new StringBuilder();
         /// <summary>
         /// Because in sunamo is not any MessageBox
         /// </summary>
@@ -67,13 +67,12 @@ namespace sunamo.Essential
 
         public LoggerBase(VoidStringParamsObjects writeLineDelegate)
         {
-            this.writeLineDelegate = writeLineDelegate;
+            _writeLineDelegate = writeLineDelegate;
         }
-        
+
         public void WriteCount(string collectionName, IEnumerable list)
         {
             WriteLine(collectionName + " " + "count" + ": " + list.Count());
-            
         }
 
 
@@ -83,21 +82,21 @@ namespace sunamo.Essential
             WriteList(list);
         }
 
-        public  void TwoState(bool ret, params object[] toAppend)
+        public void TwoState(bool ret, params object[] toAppend)
         {
             WriteLine(ret.ToString() + AllStrings.comma + SH.Join(AllChars.comma, toAppend));
         }
 
         public void WriteArgs(params object[] args)
         {
-            writeLineDelegate.Invoke(SH.JoinPairs(args));
+            _writeLineDelegate.Invoke(SH.JoinPairs(args));
         }
 
-        public  void WriteLine(string text, params object[] args)
+        public void WriteLine(string text, params object[] args)
         {
             if (IsActive)
             {
-                writeLineDelegate.Invoke(text, args);
+                _writeLineDelegate.Invoke(text, args);
             }
         }
         /// <summary>
@@ -108,11 +107,11 @@ namespace sunamo.Essential
         {
             if (what != null)
             {
-                WriteLine(SH.ListToString( what));
+                WriteLine(SH.ListToString(what));
             }
         }
 
-        public  void WriteLine(string what, object text)
+        public void WriteLine(string what, object text)
         {
             if (text != null)
             {
@@ -126,9 +125,9 @@ namespace sunamo.Essential
             }
         }
 
-        public  void WriteNumberedList(string what, List<string> list, bool numbered)
+        public void WriteNumberedList(string what, List<string> list, bool numbered)
         {
-            writeLineDelegate.Invoke(what + AllStrings.colon);
+            _writeLineDelegate.Invoke(what + AllStrings.colon);
             for (int i = 0; i < list.Count; i++)
             {
                 if (numbered)
@@ -142,13 +141,11 @@ namespace sunamo.Essential
             }
         }
 
-        
+
 
         public void WriteList(List<string> list)
         {
             list.ForEach(d => WriteLine(d));
         }
-
-        
     }
 }

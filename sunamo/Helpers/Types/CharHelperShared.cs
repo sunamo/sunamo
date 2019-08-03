@@ -4,6 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class CharHelper{ 
-
+public partial class CharHelper
+{
 }

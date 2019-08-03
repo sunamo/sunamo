@@ -19,5 +19,4 @@ namespace sunamo.Data
             this.file = file;
         }
     }
-
 }

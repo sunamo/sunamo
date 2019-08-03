@@ -29,7 +29,6 @@ namespace sunamo.Enums
         /// Extrémní PC, Notebook
         /// Nad 1919
         /// </summary>
-        Large    
-
+        Large
     }
 }

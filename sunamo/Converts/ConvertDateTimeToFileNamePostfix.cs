@@ -5,32 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class ConvertDateTimeToFileNamePostfix
+public class ConvertDateTimeToFileNamePostfix
+{
+    private static char s_delimiter = AllChars.us;
+
+    /// <summary>
+    /// Převede z data na název souboru bez přípony
+    /// Pokud A1 bude obsahovat delimiter(teď _), nebudou nahrazeny za mezeru. Je to na konci, stačí při parsování použít metodu SH.SplitToParts
+    /// </summary>
+    /// <returns></returns>
+    public static string ToConvention(string postfix, DateTime dt, bool time)
     {
-        static char delimiter = AllChars.us;
-
-        /// <summary>
-        /// Převede z data na název souboru bez přípony
-        /// Pokud A1 bude obsahovat delimiter(teď _), nebudou nahrazeny za mezeru. Je to na konci, stačí při parsování použít metodu SH.SplitToParts
-        /// </summary>
-        /// <returns></returns>
-        public static string ToConvention(string postfix, DateTime dt, bool time)
-        {
-            //postfix = SH.ReplaceAll(postfix, AllStrings.space, AllStrings.us);
-            return DTHelper.DateTimeToFileName(dt, time) + delimiter + postfix;
-        }
-
-        /// <summary>
-        /// POUžívá se pokud nechceš zjistit postfix, pokud chceš, použij normálně metodu DTHelper.FileNameToDateTimePostfix
-        /// Převede z názvu souboru na datum
-        /// Automaticky rozpozná poslední čas z A1
-        /// </summary>
-        /// <param name="fnwoe"></param>
-        /// <returns></returns>
-        public static DateTime? FromConvention(string fnwoe, bool time)
-        {
-            string postfix = "";
-            return DTHelper.FileNameToDateTimePostfix(fnwoe, time, out postfix);
-        }
+        //postfix = SH.ReplaceAll(postfix, AllStrings.space, AllStrings.us);
+        return DTHelper.DateTimeToFileName(dt, time) + s_delimiter + postfix;
     }
+
+    /// <summary>
+    /// POUžívá se pokud nechceš zjistit postfix, pokud chceš, použij normálně metodu DTHelper.FileNameToDateTimePostfix
+    /// Převede z názvu souboru na datum
+    /// Automaticky rozpozná poslední čas z A1
+    /// </summary>
+    /// <param name="fnwoe"></param>
+    /// <returns></returns>
+    public static DateTime? FromConvention(string fnwoe, bool time)
+    {
+        string postfix = "";
+        return DTHelper.FileNameToDateTimePostfix(fnwoe, time, out postfix);
+    }
+}
 

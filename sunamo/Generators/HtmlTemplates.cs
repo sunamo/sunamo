@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-public static partial  class HtmlTemplates
+public static partial class HtmlTemplates
 {
     public static string HiddenField(string id, string value)
     {
@@ -52,5 +52,4 @@ public static partial  class HtmlTemplates
         }
         return "<tr><td colspan='2'><b>" + name + " " + "/" + "/" + "b></td></tr><tr><td colspan=" + "'" + "" + "'" + "" + value + "/" + "/" + "td></tr>";
     }
-
 }

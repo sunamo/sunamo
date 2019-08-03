@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public enum DumpProvider
-    {
+public enum DumpProvider
+{
     Microsoft,
     Newtonsoft,
     Reflection,

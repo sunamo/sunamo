@@ -10,14 +10,14 @@ namespace sunamo
 {
     public class AppLang
     {
-        byte language = 0;
-        byte type = 0;
+        private byte _language = 0;
+        private byte _type = 0;
 
         public byte Language
         {
             get
             {
-                return language;
+                return _language;
             }
         }
 
@@ -25,7 +25,7 @@ namespace sunamo
         {
             get
             {
-                return type;
+                return _type;
             }
         }
 
@@ -37,17 +37,13 @@ namespace sunamo
         /// <param name="language"></param>
         public AppLang(byte type, byte language)
         {
-            this.type = type;
-            this.language = language;
+            _type = type;
+            _language = language;
         }
 
         public override string ToString()
         {
             return AppLangHelper.ToString(this);
         }
-
-
     }
-
-    
 }

@@ -33,12 +33,8 @@ public partial class TF
                 catch (Exception ex)
                 {
                     Thread.Sleep(500);
-                    
-                    
                 }
-                
             }
-            
         }
         else
         {
@@ -48,7 +44,7 @@ public partial class TF
         return result;
     }
 
-static void SaveFile(string obsah, string soubor, bool pripsat)
+    private static void SaveFile(string obsah, string soubor, bool pripsat)
     {
         if (soubor == null)
         {
@@ -65,10 +61,8 @@ static void SaveFile(string obsah, string soubor, bool pripsat)
                 }
                 catch (Exception ex)
                 {
-
                     Thread.Sleep(500);
                 }
-                
             }
         }
         else
@@ -89,11 +83,10 @@ static void SaveFile(string obsah, string soubor, bool pripsat)
                     }
                     //
                 }
-                
             }
         }
     }
-public static void SaveFile(string obsah, string soubor)
+    public static void SaveFile(string obsah, string soubor)
     {
         SaveFile(obsah, soubor, false);
     }
@@ -102,21 +95,20 @@ public static void SaveFile(string obsah, string soubor)
     {
         string content = TF.ReadFile(pathCsproj);
         content = content.Replace(to, from);
-        TF.SaveFile( content, pathCsproj);
+        TF.SaveFile(content, pathCsproj);
     }
 
     public static void SaveFile(string content, StorageFile storageFile)
     {
         TF.SaveFile(content, storageFile.FullPath());
-        
     }
 
-public static List<string> ReadAllLines(string file)
+    public static List<string> ReadAllLines(string file)
     {
         return SH.GetLines(ReadFile(file));
     }
 
-public static void CreateEmptyFileWhenDoesntExists(string path)
+    public static void CreateEmptyFileWhenDoesntExists(string path)
     {
         if (!FS.ExistsFile(path))
         {
@@ -130,7 +122,7 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
         File.WriteAllBytes(file, b.ToArray());
     }
 
-    public static List< byte> ReadAllBytes(string file)
+    public static List<byte> ReadAllBytes(string file)
     {
         return File.ReadAllBytes(file).ToList();
 
@@ -147,8 +139,6 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
 
             return buffer.ToList();
         }
-
-        
     }
 
     public static void WriteAllText(string file, string content)
@@ -156,7 +146,7 @@ public static void CreateEmptyFileWhenDoesntExists(string path)
         File.WriteAllText(file, content);
     }
 
-public static void AppendToFile(string obsah, string soubor)
+    public static void AppendToFile(string obsah, string soubor)
     {
         SaveFile(obsah, soubor, true);
     }

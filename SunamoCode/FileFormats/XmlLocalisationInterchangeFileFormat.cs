@@ -33,7 +33,7 @@ namespace SunamoCode
         /// <returns></returns>
         public static void TrimStringResources(Langs toL, string fn)
         {
-            var d= GetTransUnits(toL, fn);
+            var d = GetTransUnits(toL, fn);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
@@ -61,7 +61,7 @@ namespace SunamoCode
             XmlNamespacesHolder h = new XmlNamespacesHolder();
             h.ParseAndRemoveNamespaces(enS);
 
-            d. xd = XHelper.CreateXDocument(fn);
+            d.xd = XHelper.CreateXDocument(fn);
 
             XHelper.AddXmlNamespaces(h.nsmgr);
 
@@ -100,7 +100,7 @@ namespace SunamoCode
         {
             var d = GetTransUnits(toL, fn);
 
-            var exists = XHelper.GetElementOfNameWithAttr(d. group, TransUnit.tTransUnit, "id", pascal);
+            var exists = XHelper.GetElementOfNameWithAttr(d.group, TransUnit.tTransUnit, "id", pascal);
 
             if (exists != null)
             {

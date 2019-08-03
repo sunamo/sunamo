@@ -10,14 +10,13 @@ namespace sunamo
 
     public class UriEventArgs : EventArgs
     {
-        Uri uri = null;
+        private Uri _uri = null;
 
         public UriEventArgs(Uri uri)
         {
-            this.uri = uri;
+            _uri = uri;
         }
 
-        public Uri Uri { get { return uri; } }
- 
+        public Uri Uri { get { return _uri; } }
     }
 }

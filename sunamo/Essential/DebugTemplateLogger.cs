@@ -11,7 +11,6 @@ namespace sunamo.Essential
 
         private DebugTemplateLogger() : base(DebugLogger.DebugWriteLine)
         {
-
         }
     }
 }

@@ -11,5 +11,4 @@ public static partial class SpecialFoldersHelper
     {
         return FS.GetDirectoryName(AppDataRoaming());
     }
-
 }

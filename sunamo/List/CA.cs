@@ -11,7 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-public static partial  class CA
+public static partial class CA
 {
     /// <summary>
     /// A1 are column names for ValuesTableGrid (not letter sorted a,b,.. but left column (Name, Rating, etc.)
@@ -64,13 +64,12 @@ public static partial  class CA
 
     private static void Prepend(List<string> numbered, List<string> input)
     {
-        ThrowExceptions.DifferentCountInLists(type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+        ThrowExceptions.DifferentCountInLists(s_type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
 
         for (int i = 0; i < input.Count; i++)
         {
-            input[i] = numbered[i] + input[i]; 
+            input[i] = numbered[i] + input[i];
         }
-
     }
 
     public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
@@ -168,13 +167,13 @@ public static partial  class CA
 
     public static List<string> PaddingByEmptyString(List<string> list, int columns)
     {
-        for (int i = list.Count - 1; i < columns-1; i++)
+        for (int i = list.Count - 1; i < columns - 1; i++)
         {
             list.Add(string.Empty);
         }
         return list;
     }
-    
+
 
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {
@@ -203,7 +202,6 @@ public static partial  class CA
                 d.RemoveAt(i);
             }
         }
-
     }
 
     public static List<string> OnlyFirstCharUpper(List<string> list)
@@ -221,12 +219,11 @@ public static partial  class CA
     {
         for (int i = input.Count - 1; i >= 0; i--)
         {
-            if (pred.Invoke( input[i], arg))
+            if (pred.Invoke(input[i], arg))
             {
                 input.RemoveAt(i);
             }
         }
-
     }
 
     public static string StartWith(List<string> suMethods, string line)
@@ -268,7 +265,7 @@ public static partial  class CA
 
     public static List<string> DummyElementsCollection(int count)
     {
-        return Enumerable.Repeat<string>(string.Empty, count).ToList();   
+        return Enumerable.Repeat<string>(string.Empty, count).ToList();
     }
 
     /// <summary>
@@ -337,16 +334,16 @@ public static partial  class CA
     {
         List<int> result = new List<int>();
         int i = 0;
-            foreach (var item in value)
+        foreach (var item in value)
+        {
+            if (SH.Contains(item, term, searchStrategy))
             {
-                if (SH.Contains( item, term, searchStrategy))
-                {
-                    result.Add(i);
-                }
-                i++;
+                result.Add(i);
             }
-        
-        
+            i++;
+        }
+
+
 
         return result;
     }
@@ -374,9 +371,6 @@ public static partial  class CA
     {
         if (wildcard)
         {
-
-
-
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
@@ -398,7 +392,7 @@ public static partial  class CA
         }
     }
 
-    
+
     public static int PartsCount(int count, int inPart)
     {
         int celkove = count / inPart;
@@ -457,8 +451,6 @@ public static partial  class CA
 
     public static string[] EnsureBackslash(string[] eb)
     {
-
-
         for (int i = 0; i < eb.Length; i++)
         {
             string r = eb[i];
@@ -584,7 +576,7 @@ public static partial  class CA
         return result.c;
     }
 
-    
+
     /// <summary>
     /// Return whether A1 contains with any of A2
     /// </summary>
@@ -622,7 +614,6 @@ public static partial  class CA
 
     public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
     {
-
         foreach (var item in allFilesRelative)
         {
             photoFiles.Add(value.Contains(item));
@@ -709,8 +700,6 @@ public static partial  class CA
     /// <returns></returns>
     public static string[] RemoveStringsEmpty(string[] mySites)
     {
-        
-
         List<string> dd = new List<string>();
         foreach (string item in mySites)
         {
@@ -722,7 +711,7 @@ public static partial  class CA
         return dd.ToArray();
     }
 
-    
+
 
     /// <summary>
     /// Direct edit collection
@@ -754,15 +743,12 @@ public static partial  class CA
         if (p > proj.Count)
         {
             p = proj.Count;
-
         }
         for (int i = 0; i < p; i++)
         {
             vratit.Add(proj[i]);
-
         }
         return vratit;
-
     }
 
     public static string FindOutLongestItem(List<string> list, params string[] delimiters)
@@ -831,7 +817,7 @@ public static partial  class CA
                 return true;
             }
         }
-       
+
         return false;
     }
 
@@ -903,7 +889,6 @@ public static partial  class CA
                 after[i] = p1[i - p2];
             }
         }
-
     }
 
     public static T GetElementActualOrBefore<T>(IList<T> tabItems, int indexClosedTabItem)
@@ -946,7 +931,7 @@ public static partial  class CA
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
-    
+
 
     public static bool IsAllTheSame<T>(T ext, IList<T> p1)
     {
@@ -1092,7 +1077,6 @@ public static partial  class CA
             {
                 toReplace[i] = v + toReplace[i];
             }
-            
         }
         return toReplace;
     }
@@ -1116,8 +1100,4 @@ public static partial  class CA
         }
         return globallyInstalledTsDefinitions;
     }
-
-    
-
-
 }

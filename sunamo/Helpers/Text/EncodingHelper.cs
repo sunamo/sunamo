@@ -32,7 +32,7 @@ namespace sunamo.Helpers
             return Encoding.ASCII;
         }
 
-        static Dictionary<string, bool> TestBinaryFile(string folderPath)
+        private static Dictionary<string, bool> TestBinaryFile(string folderPath)
         {
             Dictionary<string, bool> output = new Dictionary<string, bool>();
             foreach (string filePath in FS.GetFiles(folderPath, true))
@@ -81,13 +81,11 @@ namespace sunamo.Helpers
 
             Encoding destEnc = Encoding.GetEncoding(destEncCodepage, new EncoderReplacementFallback(badCharsReplaceFor), new DecoderReplacementFallback(badCharsReplaceFor));
 
-            return destEnc.GetString( Encoding.Convert(srcEnc, destEnc, input.ToArray()));
+            return destEnc.GetString(Encoding.Convert(srcEnc, destEnc, input.ToArray()));
         }
 
         public static Dictionary<int, string> ConvertToAllAvailableEncodings(byte[] buffer)
         {
-            
-
             Dictionary<int, string> v = new Dictionary<int, string>();
 
             Encoding e = null;
@@ -95,11 +93,11 @@ namespace sunamo.Helpers
             var encs = Encoding.GetEncodings();
             foreach (var item in encs)
             {
-                 e = item.GetEncoding();
-                v.Add(e.CodePage, Encoding.UTF8.GetString( Encoding.Convert(e,Encoding.UTF8, buffer)));
+                e = item.GetEncoding();
+                v.Add(e.CodePage, Encoding.UTF8.GetString(Encoding.Convert(e, Encoding.UTF8, buffer)));
             }
 
-            
+
             e = Encoding.GetEncoding("latin1");
             v.Remove(e.CodePage);
             v.Add(e.CodePage, Encoding.UTF8.GetString(Encoding.Convert(e, Encoding.UTF8, buffer)));

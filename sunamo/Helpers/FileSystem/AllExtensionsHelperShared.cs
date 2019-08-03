@@ -4,7 +4,8 @@ using sunamo.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class AllExtensionsHelper{
+public partial class AllExtensionsHelper
+{
     /// <summary>
     /// With dot
     /// </summary>
@@ -44,8 +45,6 @@ public partial class AllExtensionsHelper{
                     extensionsByTypeWithoutDot[toe].Add(extWithoutDot);
                 }
             }
-
-
         }
     }
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 
-    public class TestData
-    {
+public class TestData
+{
     public const string a = "a";
     public const string ab = "ab";
     public const string b = "b";
@@ -23,7 +23,7 @@ using System.Text;
 
     static TestData()
     {
-        listAB1 = new List<string>(CA.ToEnumerable(a,b));
+        listAB1 = new List<string>(CA.ToEnumerable(a, b));
         listAB2 = new List<string>(CA.ToEnumerable(a, b));
         listABC = new List<string>(CA.ToEnumerable(a, b, c));
         listAC = new List<string>(CA.ToEnumerable(a, c));
@@ -32,7 +32,7 @@ using System.Text;
         listC = new List<string>(CA.ToEnumerable(c));
 
         list04 = CA.ToList<int>(0, 1, 2, 3, 4);
-        list59 = CA.ToList<int>(5,6,7,8,9);
+        list59 = CA.ToList<int>(5, 6, 7, 8, 9);
     }
 
     public const int one = 1;

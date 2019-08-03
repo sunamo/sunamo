@@ -58,6 +58,12 @@ namespace desktop.Helpers
                 c.BorderBrush = bd.BorderBrush;
             }
         }
+
+        internal static Size ActualInnerSize(WindowWithUserControl w)
+        {
+            var fw = w.Content as FrameworkElement;
+            return new Size(fw.ActualWidth, fw.ActualHeight);
+        }
     }
 
 }

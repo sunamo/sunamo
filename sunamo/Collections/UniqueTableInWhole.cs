@@ -18,14 +18,14 @@ namespace sunamo.Collections
     /// </summary>
     public class UniqueTableInWhole
     {
-        string[,] rows = null;
-        int actualRow = 0;
-        int cells = 0;
+        private string[,] _rows = null;
+        private int _actualRow = 0;
+        private int _cells = 0;
 
         public UniqueTableInWhole(int c, int r)
         {
-            cells = c;
-            rows = new string[r, c];
+            _cells = c;
+            _rows = new string[r, c];
         }
 
         /// <summary>
@@ -37,8 +37,6 @@ namespace sunamo.Collections
         public bool IsRowsInColumnUnique(int columnIndex)
         {
             return false;
-
-
         }
 
         private bool IsColumnUnique(int columnIndex, int rowsCount)
@@ -46,7 +44,7 @@ namespace sunamo.Collections
             HashSet<string> hs = new HashSet<string>();
             for (int r = 0; r < rowsCount; r++)
             {
-                hs.Add(rows[r, columnIndex]);
+                hs.Add(_rows[r, columnIndex]);
             }
 
             return hs.Count == rowsCount;
@@ -57,7 +55,7 @@ namespace sunamo.Collections
             HashSet<string> hs = new HashSet<string>();
             for (int c = 0; c < columnsCount; c++)
             {
-                hs.Add(rows[rowIndex, c]);
+                hs.Add(_rows[rowIndex, c]);
             }
 
             return hs.Count == columnsCount;
@@ -76,8 +74,8 @@ namespace sunamo.Collections
                 throw new Exception("Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false" + ".");
             }
 
-            int rowsCount = this.rows.GetLength(0);
-            int columnsCount = this.rows.GetLength(1);
+            int rowsCount = _rows.GetLength(0);
+            int columnsCount = _rows.GetLength(1);
 
             if (columns)
             {
@@ -106,17 +104,17 @@ namespace sunamo.Collections
 
         public void AddCells(string[] c)
         {
-            if (c.Length != cells)
+            if (c.Length != _cells)
             {
                 throw new Exception("Different count input elements of array in UniqueTableInWhole.AddCells");
             }
 
             for (int i = 0; i < c.Length; i++)
             {
-                rows[actualRow, i] = c[i];
+                _rows[_actualRow, i] = c[i];
             }
 
-            actualRow++;
+            _actualRow++;
         }
     }
 }

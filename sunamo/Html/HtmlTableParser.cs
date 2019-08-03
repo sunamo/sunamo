@@ -33,7 +33,7 @@ namespace sunamo
                 return;
             }
 
-            
+
             int maxColumn = 0;
 
             List<HtmlNode> rows = HtmlHelper.ReturnAllTags(html, "tr");
@@ -43,9 +43,9 @@ namespace sunamo
                 maxRow--;
             }
 
-                for (int r = startRow; r < rows.Count; r++)
+            for (int r = startRow; r < rows.Count; r++)
             {
-                List<HtmlNode> tds = HtmlHelper.ReturnAllTags( rows[r], "td", "th");
+                List<HtmlNode> tds = HtmlHelper.ReturnAllTags(rows[r], "td", "th");
                 int maxColumnActual = tds.Count;
                 foreach (var cellRow in tds)
                 {
@@ -66,7 +66,7 @@ namespace sunamo
                 }
             }
 
-            data = new string[maxRow,maxColumn];
+            data = new string[maxRow, maxColumn];
 
             for (int r = startRow; r < rows.Count; r++)
             {
@@ -94,8 +94,6 @@ namespace sunamo
                     }
                 }
             }
-
-
         }
     }
 }

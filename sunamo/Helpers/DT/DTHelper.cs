@@ -65,7 +65,7 @@ public partial class DTHelper
         return DTHelperCs.DateTimeToStringWithDayOfWeekCS(dt);
     }
 
-    
+
 
     public static DateTime ParseTimeUSA(string t)
     {
@@ -87,7 +87,7 @@ public partial class DTHelper
         return DTHelperFormalized.FormatDateTime(dt, fullCalendar);
     }
 
-    
+
 
     public static string DateTimeToStringFormalizeDateEmptyTime(DateTime dt)
     {
@@ -136,7 +136,7 @@ public partial class DTHelper
         return DTHelperMulti.DateToStringOrSE(p, l, dtMinVal);
     }
 
-    
+
 
     public static string OperationLastedInLocalizateString(TimeSpan tt, Langs l)
     {

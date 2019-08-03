@@ -1,4 +1,4 @@
 ﻿public enum SqlNumericType
 {
-    Int,Long,Short,Byte
+    Int, Long, Short, Byte
 }

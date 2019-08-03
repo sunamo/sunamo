@@ -12,7 +12,7 @@ public class ConvertCamelConvention
             return false;
         }
         var s = ToConvention(r);
-        return s ==r ;
+        return s == r;
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ public class ConvertCamelConventionWithNumbers
         {
             return true;
         }
-        var s = ToConvention( r);
-        
+        var s = ToConvention(r);
+
         return s == r;
     }
 

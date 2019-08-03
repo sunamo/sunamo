@@ -17,5 +17,4 @@ public enum EnumA
     a = 0x2,
     b = 0x4,
     c = 0x8
-
 }

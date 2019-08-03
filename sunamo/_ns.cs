@@ -4,8 +4,7 @@ using System.Text;
 
 namespace sunamo.Html
 {
-    class _ns
+    internal class _ns
     {
-       
     }
 }

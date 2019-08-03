@@ -9,22 +9,21 @@ namespace sunamo.Data
         /// <summary>
         /// Must be property - I can forget change value on three occurences. 
         /// </summary>
-        public  char separatorChar
+        public char separatorChar
         {
             get
             {
                 return separatorString[0];
             }
         }
-        public  string separatorString = AllStrings.pipe;
+        public string separatorString = AllStrings.pipe;
 
-        public  int keyCodeSeparator
+        public int keyCodeSeparator
         {
             get
             {
                 return (int)separatorChar;
             }
         }
-
     }
 }

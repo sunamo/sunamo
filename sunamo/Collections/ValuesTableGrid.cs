@@ -16,7 +16,7 @@ namespace sunamo.Collections
         /// Row - wrapper - files 2
         /// Column - inner - apps 4
         /// </summary>
-        private List<List<T>> exists;
+        private List<List<T>> _exists;
         public List<string> captions;
 
         /// <summary>
@@ -29,19 +29,19 @@ namespace sunamo.Collections
             DataTable newTable = new DataTable();
 
             newTable.Columns.Add(string.Empty);
-            for (int i = 0; i < exists.Count; i++)
+            for (int i = 0; i < _exists.Count; i++)
                 newTable.Columns.Add();
 
-            var s = exists[0];
+            var s = _exists[0];
             for (int i = 0; i < s.Count; i++)
             {
-                DataRow newRow = newTable.NewRow() ;
+                DataRow newRow = newTable.NewRow();
 
-                var caption = CA.GetIndex( captions,i);
+                var caption = CA.GetIndex(captions, i);
                 newRow[0] = caption == null ? string.Empty : caption.ToString();
 
-                for (int j = 0; j < exists.Count; j++)
-                    newRow[j + 1] = exists[j][i];
+                for (int j = 0; j < _exists.Count; j++)
+                    newRow[j + 1] = _exists[j][i];
                 newTable.Rows.Add(newRow);
             }
 
@@ -50,17 +50,17 @@ namespace sunamo.Collections
 
         public ValuesTableGrid(List<List<T>> exists)
         {
-            this.exists = exists;
+            _exists = exists;
         }
 
         public bool IsAllInColumn(int i, T value)
         {
-            return CA.IsAllTheSame<T>(value, exists[i]);
+            return CA.IsAllTheSame<T>(value, _exists[i]);
         }
 
         public bool IsAllInRow(int i, T value)
         {
-            foreach (var item in exists)
+            foreach (var item in _exists)
             {
                 if (!EqualityComparer<T>.Default.Equals(item[i], value))
                 {

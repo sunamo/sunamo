@@ -10,11 +10,11 @@ using System.Linq;
 
 public static partial class NH
 {
-    static Type type = typeof(NH);
+    private static Type s_type = typeof(NH);
 
     public static int MinForLength(int length)
     {
-        return int.Parse( "1".PadRight(4, '0'));
+        return int.Parse("1".PadRight(4, '0'));
     }
 
     public static int MaxForLength(int length)
@@ -44,7 +44,7 @@ public static partial class NH
     /// <typeparam name="T"></typeparam>
     /// <param name="numbers"></param>
     /// <returns></returns>
-    public static double Median2<T>(IEnumerable<T> numbers) 
+    public static double Median2<T>(IEnumerable<T> numbers)
     {
         int numberCount = numbers.Count();
         int halfIndex = numbers.Count() / 2;
@@ -54,11 +54,11 @@ public static partial class NH
         {
             var d = sortedNumbers.ElementAt(halfIndex);
             var d2 = sortedNumbers.ElementAt((halfIndex - 1));
-            median = Sum(CA.ToListString( d,d2)) / 2;
+            median = Sum(CA.ToListString(d, d2)) / 2;
         }
         else
         {
-            median = double.Parse( sortedNumbers.ElementAt(halfIndex).ToString());
+            median = double.Parse(sortedNumbers.ElementAt(halfIndex).ToString());
         }
         return median;
     }
@@ -100,10 +100,10 @@ public static partial class NH
     {
         if (EqualityComparer<T>.Default.Equals(columnsCount, (T)NH.ReturnZero<T>()))
         {
-            return (T)NH.ReturnZero<T>() ;
+            return (T)NH.ReturnZero<T>();
         }
 
-        if (EqualityComparer<T>.Default.Equals( gridWidth, (T)NH.ReturnZero<T>()))
+        if (EqualityComparer<T>.Default.Equals(gridWidth, (T)NH.ReturnZero<T>()))
         {
             return (T)NH.ReturnZero<T>();
         }
@@ -131,13 +131,12 @@ public static partial class NH
         {
             return Consts.zeroFloat;
         }
-        ThrowExceptions.NotImplementedCase(type, "ReturnZero");
+        ThrowExceptions.NotImplementedCase(s_type, "ReturnZero");
         return null;
     }
 
     public static float AverageFloat(double gridWidth, double columnsCount)
     {
-        
         return (float)Average<double>(gridWidth, columnsCount);
     }
 

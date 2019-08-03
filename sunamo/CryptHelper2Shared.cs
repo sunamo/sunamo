@@ -12,7 +12,7 @@ using System.Linq;
 
 public partial class CryptHelper2
 {
-    const int velikostKliceAsym = 1024;
+    private const int velikostKliceAsym = 1024;
     /// <summary>
     /// Před použitím jednoduchých metod musíš nastavit tuto proměnnou
     /// </summary>

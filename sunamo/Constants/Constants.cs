@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    public class Constants
-    {
+public class Constants
+{
     // TODO: Distribute to other because public class name is the same as namespace
-    public const string AfterCloseNonCompletedSettingsWizard = "Průvodce nastavením nebyl dokončen. Přejete si jej přesto zavřít" + "?";
+    public const string AfterCloseNonCompletedSettingsWizard = "Pr\u016Fvodce nastaven\u00EDm nebyl dokon\u010Den. P\u0159ejete si jej p\u0159esto zav\u0159\u00EDt" + "?";
     public const int OneMB = 1048576;
     /// <summary>
     /// Připočítává 1 pro snadnější porovnání
     /// </summary>
     public const int OneMB1 = 1048577;
-    
+
 
     #region MyRegion
     public const string sirkaNazev = "45%";
