@@ -232,7 +232,13 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         //DialogResult = b;
         if (ChangeDialogResult != null)
         {
+            // If is registered, will close window exteranlly
             ChangeDialogResult(b);
+        }
+        else
+        {
+            // Otherwise close here
+            Close();
         }
     }
 

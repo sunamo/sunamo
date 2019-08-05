@@ -20,7 +20,7 @@ namespace desktop.Controls.Input
     /// <summary>
     /// Interaction logic for EnterOneValueUC.xaml
     /// </summary>
-    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult
+    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList
     {
         static Type type = typeof(EnterOneValueUC);
 
@@ -172,7 +172,7 @@ namespace desktop.Controls.Input
             }
         }//
 
-        
+        public string Title => "Enter inputs";
 
         private bool AfterEnteredValue(List<FrameworkElement> txtEnteredText)
         {
@@ -243,6 +243,18 @@ namespace desktop.Controls.Input
             ButtonHelper.PerformClick(btnEnter);
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
+        }
+
+        public List<MenuItem> menuItems = new List<MenuItem>();
+
+        public List<MenuItem> MenuItems()
+        {
+            return menuItems;
+        }
+
+        public void Init()
+        {
+            
         }
 
         public event VoidBoolNullable ChangeDialogResult;

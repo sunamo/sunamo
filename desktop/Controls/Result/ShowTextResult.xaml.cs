@@ -19,7 +19,7 @@ namespace desktop.Controls
     /// <summary>
     /// Interaction logic for ShowTextResult.xaml
     /// </summary>
-    public partial class ShowTextResult : UserControl, IUserControlInWindow
+    public partial class ShowTextResult : UserControl, IUserControlInWindow, IUserControlWithSizeChange
     {
         /// <summary>
         /// Must be empty constructor due to creating in SetMode()
@@ -36,11 +36,23 @@ namespace desktop.Controls
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
 
+        public string Title => "Show result";
+
         public event VoidBoolNullable ChangeDialogResult;
 
         public void Accept(object input)
         {
             DialogResult = true;
+        }
+
+        public void Init()
+        {
+            
+        }
+
+        public void OnSizeChanged(DesktopSize maxSize)
+        {
+            txtResult.Height = rowGrowing.ActualHeight;
         }
 
         private void resultButtons_AllRightClick()

@@ -20,7 +20,16 @@ public class ABC : List<AB>//, IEnumerable<AB>
         this.AddRange(abc);
     }
 
-    public List<object> OnlyBs()
+    /// <summary>
+    /// Must be [] due to SQL viz  https://stackoverflow.com/questions/9149919/no-mapping-exists-from-object-type-system-collections-generic-list-when-executin
+    /// </summary>
+    /// <returns></returns>
+    public object[] OnlyBs()
+    {
+        return OnlyBsList().ToArray();   
+    }
+
+    public List<object> OnlyBsList()
     {
         List<object> o = new List<object>(this.Count);
         for (int i = 0; i < this.Count; i++)

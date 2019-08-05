@@ -148,7 +148,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
                         genUsings.Using(item2);
                     }
 
-                    var onlyB = dict.OnlyBs();
+                    var onlyB = dict.OnlyBsList();
                     var variables = genVariables.ToString();
                     var usingsCode = genUsings.ToString();
 

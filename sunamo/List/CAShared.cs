@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -118,6 +119,25 @@ public static partial class CA
         }
 
         return h;
+    }
+
+    public static void Unindent(List<string> l, int v)
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            var line = l[i];
+            if (line.StartsWith(AllStrings.tab))
+            {
+                l[i] = l[i].Substring(AllStrings.tab.Length);
+
+            }
+            else if(line.StartsWith(Consts.spaces4))
+            {
+                l[i] = l[i].Substring(Consts.spaces4.Length);
+            }
+        }
+
+
     }
 
     public static List<T> ReplaceNullFor<T>(List<T> l, T empty) where T : class

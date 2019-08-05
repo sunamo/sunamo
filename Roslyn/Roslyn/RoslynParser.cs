@@ -221,23 +221,33 @@ namespace Roslyn
             return result;
         }
 
-        public static CollectionWithoutDuplicates<string> Usings(List<string> lines)
+        public static CollectionWithoutDuplicates<string> Usings(List<string> lines, bool remove = false)
         {
             CollectionWithoutDuplicates<string> usings = new CollectionWithoutDuplicates<string>();
+            List<int> removeLines = new List<int>();
+
+            int i = -1;
             foreach (var item in lines)
             {
+                i++;
                 var line = item.Trim();
                 if (line != string.Empty)
                 {
                     if (line.StartsWith("using" + " "))
                     {
+                        removeLines.Add(i);
                         usings.Add(line);
                     }
-                    else if (line.Contains(AllStrings.lsf))
+                    else if (line.Contains(AllStrings.cbl))
                     {
                         break;
                     }
                 }
+            }
+
+            if (remove)
+            {
+                CA.RemoveLines(lines, removeLines);
             }
 
             return usings;

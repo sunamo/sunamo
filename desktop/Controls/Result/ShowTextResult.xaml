@@ -9,12 +9,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*" x:Name="rowGrowing"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="txtResult" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" x:FieldModifier="public" AcceptsReturn="True" AcceptsTab="True"></TextBox>
-        <desktopControls:ResultButtons x:Name="resultButtons" Grid.Row="1" AllRightClick="resultButtons_AllRightClick" CopyToClipboard="resultButtons_CopyToClipboard"></desktopControls:ResultButtons>
+        <TextBlock x:Name="tbTitle" x:FieldModifier="public"></TextBlock>
+        <TextBox x:Name="txtResult" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" x:FieldModifier="public" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+        <desktopControls:ResultButtons x:Name="resultButtons" Grid.Row="2" AllRightClick="resultButtons_AllRightClick" CopyToClipboard="resultButtons_CopyToClipboard"></desktopControls:ResultButtons>
         
     </Grid>
 </UserControl>

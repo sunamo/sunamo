@@ -95,6 +95,7 @@ namespace Roslyn
 
         /// <summary>
         /// better is use d:\pa\CodeFormatter\ with lang attr 
+        /// dont repair tab indent
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
@@ -373,12 +374,25 @@ namespace Roslyn
             #endregion
         }
 
+        /// <summary>
+        /// A1 can be SyntaxTree, string 
+        /// if it List<string>, use RoslynParser.Usings
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static List<string> Usings(object t)
         {
             List<string> lines;
             return Usings(t, out lines);
         }
 
+        /// <summary>
+        /// A1 can be SyntaxTree, string 
+        /// if it List<string>, use RoslynParser.Usings
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="lines"></param>
+        /// <returns></returns>
         public static List<string> Usings(object t, out List<string> lines)
         {
             string text = null;
