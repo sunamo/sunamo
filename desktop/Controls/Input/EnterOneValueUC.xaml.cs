@@ -31,6 +31,8 @@ namespace desktop.Controls.Input
         public EnterOneValueUC()
         {
             InitializeComponent();
+
+            fwElemements = CA.ToList<FrameworkElement>(txtEnteredText);
         }
 
         public EnterOneValueUC(string whatEnter, Size size) : this()

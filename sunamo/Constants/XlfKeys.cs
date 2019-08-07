@@ -373,7 +373,6 @@ public class XlfKeys
 
     public const string TheFileNameDidNotContainAPeriod = "TheFileNameDidNotContainAPeriod";
 
-    public const string ToDlAppSW = "ToDlAppSW";
 
     public const string NowUploadViaFTPFile = "NowUploadViaFTPFile";
 
@@ -477,7 +476,6 @@ public class XlfKeys
 
     public const string successTheCaptureDateOfTheIDPhoto = "successTheCaptureDateOfTheIDPhoto";
 
-    public const string Gallery = "Gallery";
 
     public const string warningYouCannotVoteForYourOwnSongLyrics = "warningYouCannotVoteForYourOwnSongLyrics";
 
@@ -655,9 +653,7 @@ public class XlfKeys
 
     public const string ScWasNotTheCorrectCharacters = "ScWasNotTheCorrectCharacters";
 
-    public const string Comments = "Comments";
 
-    public const string Widgets = "Widgets";
 
     public const string errorFailedToDeletePostBecauseAllPhotosCouldNotBeDeletedPleaseTryAgain = "errorFailedToDeletePostBecauseAllPhotosCouldNotBeDeletedPleaseTryAgain";
 
@@ -1405,7 +1401,6 @@ public class XlfKeys
 
     public const string NextTotalCats = "NextTotalCats";
 
-    public const string Kocicky = "Kocicky";
 
     public const string Transition = "Transition";
 
@@ -1597,7 +1592,6 @@ public class XlfKeys
 
     public const string YouAreNotLoggedInTheSiteCannotCreateANewBlogPost = "YouAreNotLoggedInTheSiteCannotCreateANewBlogPost";
 
-    public const string Blogs = "Blogs";
 
     public const string TheBlogAddressContainedInvalidCharacters = "TheBlogAddressContainedInvalidCharacters";
 
@@ -2011,13 +2005,9 @@ public class XlfKeys
 
     public const string PasswordChangedSuccessfully = "PasswordChangedSuccessfully";
 
-    public const string IPhotos = "IPhotos";
 
-    public const string Photo = "Photo";
 
-    public const string Date = "Date";
 
-    public const string Photos = "Photos";
 
     public const string TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace = "TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace";
 
@@ -2367,21 +2357,13 @@ public class XlfKeys
 
     public const string Value = "Value";
 
-    public const string Profile = "Profile";
 
-    public const string Album = "Album";
 
-    public const string Artist = "Artist";
 
-    public const string Type = "Type";
 
-    public const string Username = "Username";
 
-    public const string Translated = "Translated";
 
-    public const string Original = "Original";
 
-    public const string Song = "Song";
 
     public const string RateSongTranslation = "RateSongTranslation";
 
@@ -2401,8 +2383,7 @@ public class XlfKeys
 
     public const string Uri = "Uri";
 
-    
-
+   
     public const string PopularLouisiananCreoleMusic = "PopularLouisiananCreoleMusic";
 
     public const string GuadeloupeanMusic = "GuadeloupeanMusic";
@@ -3709,7 +3690,6 @@ public class XlfKeys
 
     public const string ParseUlozToLiveVideoUri = "ParseUlozToLiveVideoUri";
 
-    public const string Apps = "Apps";
 
     public const string FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne = "FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne";
 
