@@ -152,7 +152,6 @@ public static partial class SH
         return Join(delimiter, parts);
     }
 
-    #region Replace methods
     public static StringBuilder ReplaceAllSb(StringBuilder sb, string zaCo, params string[] co)
     {
         foreach (var item in co)
@@ -221,7 +220,6 @@ public static partial class SH
         }
         return vstup;
     }
-    #endregion
 
     public static bool IsValidISO(string input)
     {
@@ -619,40 +617,43 @@ public static partial class SH
         StringBuilder sbNepridano = new StringBuilder();
         StringBuilder sbPridano = new StringBuilder();
         bool inVariable = false;
-
-        foreach (var item in innerHtml)
+        if (innerHtml != null)
         {
-            if (item == p)
+
+            foreach (var item in innerHtml)
             {
-                inVariable = true;
-                continue;
-            }
-            else if (item == k)
-            {
-                if (inVariable)
+                if (item == p)
                 {
-                    inVariable = false;
+                    inVariable = true;
+                    continue;
                 }
-                int nt = 0;
-                if (int.TryParse(sbNepridano.ToString(), out nt))
+                else if (item == k)
                 {
-                    // Zde přidat nahrazenou proměnnou
-                    string v = _dataBinding[nt][actualRow];
-                    sbPridano.Append(v);
+                    if (inVariable)
+                    {
+                        inVariable = false;
+                    }
+                    int nt = 0;
+                    if (int.TryParse(sbNepridano.ToString(), out nt))
+                    {
+                        // Zde přidat nahrazenou proměnnou
+                        string v = _dataBinding[nt][actualRow];
+                        sbPridano.Append(v);
+                    }
+                    else
+                    {
+                        sbPridano.Append(p + sbNepridano.ToString() + k);
+                    }
+                    sbNepridano.Clear();
+                }
+                else if (inVariable)
+                {
+                    sbNepridano.Append(item);
                 }
                 else
                 {
-                    sbPridano.Append(p + sbNepridano.ToString() + k);
+                    sbPridano.Append(item);
                 }
-                sbNepridano.Clear();
-            }
-            else if (inVariable)
-            {
-                sbNepridano.Append(item);
-            }
-            else
-            {
-                sbPridano.Append(item);
             }
         }
         return sbPridano.ToString();
@@ -1511,7 +1512,16 @@ public static partial class SH
 
     public static List<string> SplitByWhiteSpaces(string s, bool removeEmpty = false)
     {
-        var r = s.Split(AllChars.whiteSpacesChars.ToArray(), removeEmpty ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None).ToList();
+        List<string> r = null;
+        if (removeEmpty)
+        {
+            r = Split(s, AllChars.whiteSpacesChars.ToArray()).ToList();
+        }
+        else
+        {
+            r = SplitNone(s, AllChars.whiteSpacesChars.ToArray()).ToList();
+        }
+        
         return r;
     }
 
@@ -1691,5 +1701,129 @@ public static partial class SH
         string p, z;
         GetPartsByLocation(out p, out z, p1, p1.IndexOf(deli));
         return p;
+    }
+
+/// <summary>
+    /// return whether A1 ends with anything with A2
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="p2"></param>
+    /// <returns></returns>
+    public static bool EndsWithArray(string source, params string[] p2)
+    {
+        foreach (var item in p2)
+        {
+            if (source.EndsWith(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
+    {
+        string vr = null;
+        int p2 = p.IndexOf(after);
+        int p3 = p.IndexOf(before);
+        bool b2 = p2 != -1;
+        bool b3 = p3 != -1;
+        if (b2 && b3)
+        {
+            p2 += after.Length;
+            p3 -= 1;
+            // When I return between ( ), there must be +1 
+            vr = p.Substring(p2, p3 - p2 + 1).Trim();
+        }
+        else
+        {
+            if (throwExceptionIfNotContains)
+            {
+                ThrowExceptions.NotContains(s_type, "GetTextBetween", p, after, before);
+            }
+        }
+
+        return vr;
+    }
+
+public static bool EndsWith(string input, string endsWith)
+    {
+        return input.EndsWith(endsWith);
+    }
+
+/// <summary>
+    /// Remove also A2
+    /// Don't trim
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="ch"></param>
+    /// <returns></returns>
+    public static string RemoveAfterFirst(string t, string ch)
+    {
+        int dex = t.IndexOf(ch);
+        if (dex == -1 || dex == t.Length - 1)
+        {
+            return t;
+        }
+
+        string vr = t.Remove(dex);
+        return vr;
+    }
+/// <summary>
+    /// Remove with A2
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="ch"></param>
+    /// <returns></returns>
+    public static string RemoveAfterFirst(string t, char ch)
+    {
+        int dex = t.IndexOf(ch);
+        if (dex == -1 || dex == t.Length - 1)
+        {
+            return t;
+        }
+
+        return t.Substring(0, dex);
+    }
+
+public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
+    {
+        return JoinKeyValueCollection(dict.Keys, dict.Values, delimiterBetweenKeyAndValue, delimAfter);
+    }
+public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in dictionary)
+        {
+            sb.AppendLine(item.Key + delimiter + item.Value);
+        }
+        return sb.ToString();
+    }
+
+public static string JoinKeyValueCollection(IEnumerable v1, IEnumerable v2, string delimiterBetweenKeyAndValue, string delimAfter)
+    {
+        StringBuilder sb = new StringBuilder();
+        var v2List = new List<object>(v2.Count());
+        foreach (var item in v2)
+        {
+            v2List.Add(item);
+        }
+        int i = 0;
+        foreach (var item in v1)
+        {
+            sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
+        }
+
+        return SH.TrimEnd(sb.ToString(), delimAfter);
+    }
+
+public static bool RemovePrefix(ref string s, string v)
+    {
+        if (s.StartsWith(v))
+        {
+            s = s.Substring(v.Length);
+            return true;
+        }
+        return false;
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Maybe will be desirable IWindowOpener
 /// </summary>
-public interface IUserControl : IPanel
+public interface IUserControl //: IPanel
     {
     string Title { get; }
     void Init();

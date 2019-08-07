@@ -24,21 +24,28 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-  
-    
-
+    <Compile Include="..\..\sunamo\sunamo\Data\TWithName.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\ControlNameGeneratorShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ListOperation.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\NotifyChangesCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Values\Types.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IClipboardMonitor.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\InitApp.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\TypedSunamoLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\List\DictionaryHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\SunamoTemplateLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\SunamoLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IClipboardHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IKeysHandler.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IPanel.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
     <Compile Remove="Attributes\bin\**" />
-  
-    
-
     <EmbeddedResource Remove="Attributes\bin\**" />
-  
-    
-
     <EmbeddedResource Remove="Converters\**" />
-  
-    
-
     <None Remove="Attributes\bin\**" />
     <None Remove="Converters\**" />
   </ItemGroup>
@@ -64,15 +71,8 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="ObjectDumper">
-      <HintPath>..\..\..\Documents\vs17\Projects\sunamo\dll\ObjectDumper.dll</HintPath>
-    </Reference>
-    <Reference Include="win">
-      <HintPath>..\win\bin\Release\win.dll</HintPath>
-    </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>..\dll\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

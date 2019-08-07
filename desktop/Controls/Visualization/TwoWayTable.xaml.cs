@@ -20,6 +20,7 @@ namespace desktop.Controls.Visualization
 {
     /// <summary>
     /// T je typ ve kterém se spravují data k UIElements nebo checkboxes
+    /// Its is normal grid, in default state there is no padding / margin in cell
     /// </summary>
     public partial class TwoWayTable : UserControl
     {
@@ -113,6 +114,15 @@ namespace desktop.Controls.Visualization
             }
         }
 
+        /// <summary>
+        /// Can be use AddColumn or AddRow in dependent how I have structured data
+        /// A1 is columns in table
+        /// In A2 is control and tick (if DataCellWrapper == AddBeforeControl.CheckBox). Can be null
+        /// A3 = data to control, cant be null if element in A2 is not null
+        /// </summary>
+        /// <param name="dexCol"></param>
+        /// <param name="uie"></param>
+        /// <param name="o"></param>
         public void AddColumn(int dexCol, CheckBoxData<UIElement>[] uie, object[] o)
         {
             for (int i = 0; i < uie.Length; i++)
@@ -123,7 +133,19 @@ namespace desktop.Controls.Visualization
                     item = uie[i].t;
                 }
 
+                if (item != null)
+                {
+                    Border b = new Border();
+                    b.Padding = new Thickness(5);
+                    b.Child = item;
+                    b.BorderBrush = Brushes.Transparent;
+                    item = b;
+                }
+
                 controls[i, dexCol] = item;
+
+
+
                 if (item != null)
                 {
                     data[i, dexCol] = o[i];
@@ -149,6 +171,12 @@ namespace desktop.Controls.Visualization
 
         }
 
+        /// <summary>
+        /// Can be use AddColumn or AddRow in dependent how I have structured data
+        /// </summary>
+        /// <param name="dexRow"></param>
+        /// <param name="uie"></param>
+        /// <param name="o"></param>
         public void AddRow(int dexRow, CheckBoxData<UIElement>[] uie, object[] o)
         {
             if (uie.Length +1 != columns)

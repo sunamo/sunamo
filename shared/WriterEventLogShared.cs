@@ -82,4 +82,11 @@ public static bool CreateMainAppLog(string name)
 
         return existsSource;
     }
+
+public static bool CreateMainAppLogScz()
+    {
+        bool b = CreateMainAppLog(scz);
+        WriteToMainAppLogScz("Template", EventLogEntryType.Information);
+        return b;
+    }
 }

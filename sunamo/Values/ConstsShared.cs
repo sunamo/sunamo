@@ -20,7 +20,7 @@ namespace sunamo.Values
         public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
             AllExtensions.bmp,
             AllExtensions.jpg);
-
+        public const string spaces4 = "    ";
         public static List<string> cssTemplatesSites = null;
 
         static Consts()

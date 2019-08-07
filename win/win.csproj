@@ -64,6 +64,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\win\PInvoke\SHFILEINFO.cs" />
+    <Compile Include="..\..\sunamo\win\ClipboardMonitor.cs" />
+    <Compile Include="..\..\sunamo\win\Helpers\Powershell\PowershellBuilder.cs" />
+    <Compile Include="..\..\sunamo\win\PInvoke\W32.cs" />
+    <Compile Include="..\..\sunamo\win\Helpers\Powershell\PowershellRunner.cs" />
+    <Compile Include="..\..\sunamo\win\Helpers\ClipboardHelperWin.cs" />
     <Compile Include="ClipboardAsync.cs" />
     <Compile Include="ClipboardMonitor.cs" />
     <Compile Include="Helpers\DW.cs" />

@@ -21,7 +21,8 @@ namespace desktop.Controls.Collections
     /// <summary>
     /// for ChangeDialogResult return always null - must check returned values through via CheckedIndexes()
     /// </summary>
-    public partial class CheckBoxListUC : UserControl, IUserControlInWindow, IUserControlWithSizeChange
+    public partial class CheckBoxListUC : UserControl
+        , IUserControlInWindow, IUserControlWithSizeChange
     {
         #region IUserControlInWindow implementation
         public bool? DialogResult
@@ -92,13 +93,13 @@ namespace desktop.Controls.Collections
             if (!initialized)
             {
                 initialized = true;
-                
+
                 colButtons.MaxHeight = 16;
                 if (i != null)
                 {
                     colButtons.Init(i);
                 }
-                
+
                 l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
                 l.CollectionChanged += L_CollectionChanged;
 
@@ -117,7 +118,7 @@ namespace desktop.Controls.Collections
 
                 this.DataContext = this;
 
-                
+
 
                 SizeChanged += CheckBoxListUC_SizeChanged;
             }
@@ -127,7 +128,7 @@ namespace desktop.Controls.Collections
         {
             // Cant be, otherwise set wrong size into checkbox and button will be out of window
             //OnSizeChanged(new DesktopSize( e.NewSize.Width, e.NewSize.Height));
-            
+
         }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace desktop.Controls.Collections
             colButtons.Init(ImageButtonsInit.HideAllButtons);
         }
 
-        
+
         private void L_CollectionChanged(object o, string operation, object data)
         {
             if (CollectionChanged != null)
@@ -208,12 +209,12 @@ namespace desktop.Controls.Collections
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            s(sender,true);
+            s(sender, true);
 
             if (onCheck.HasValue && onCheck.Value)
             {
                 l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
-                
+
             }
         }
 
@@ -229,15 +230,15 @@ namespace desktop.Controls.Collections
         /// <param name="b"></param>
         private void s(object sender, bool b)
         {
-                var s = ((FrameworkElement)sender);
-                var name = s.Tag;
-                Tag = sender;
-                var where = l.Where(d => d.Tag == s.Tag);
+            var s = ((FrameworkElement)sender);
+            var name = s.Tag;
+            Tag = sender;
+            var where = l.Where(d => d.Tag == s.Tag);
 
-                foreach (var item in where)
-                {
-                    item.IsChecked = b;
-                }
+            foreach (var item in where)
+            {
+                item.IsChecked = b;
+            }
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -245,7 +246,7 @@ namespace desktop.Controls.Collections
             s(sender, false);
             if (onUnCheck)
             {
-                l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender); 
+                l.OnCollectionChanged(CheckBoxListOperations.UnCheck, sender);
             }
         }
 

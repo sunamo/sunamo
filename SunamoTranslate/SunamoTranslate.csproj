@@ -20,4 +20,10 @@
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Diacritics">
+      <HintPath>..\dll\netstandard2.0\Diacritics.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -2401,7 +2401,7 @@ public class XlfKeys
 
     public const string Uri = "Uri";
 
-    public const string Lyrics = "Lyrics";
+    
 
     public const string PopularLouisiananCreoleMusic = "PopularLouisiananCreoleMusic";
 

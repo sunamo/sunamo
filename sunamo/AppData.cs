@@ -47,7 +47,7 @@ public class AppData : AppDataAbstractBase<string, string>
     /// If file A1 dont exists or have empty content, then create him with empty content and G SE
     /// </summary>
     /// <param name="path"></param>
-    public static string ReadFileOfSettingsOther(string path)
+    public  string ReadFileOfSettingsOther(string path)
     {
         TF.CreateEmptyFileWhenDoesntExists(path);
         return TF.ReadFile(path);

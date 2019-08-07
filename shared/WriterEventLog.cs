@@ -18,13 +18,4 @@ public static partial class WriterEventLog
             EventLog.Delete(ThisApp.Name);
         }
     }
-
-
-
-    public static bool CreateMainAppLogScz()
-    {
-        bool b = CreateMainAppLog(scz);
-        WriteToMainAppLogScz("Template", EventLogEntryType.Information);
-        return b;
-    }
 }

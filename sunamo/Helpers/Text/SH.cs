@@ -189,28 +189,6 @@ public static partial class SH
         return SH.Replace(ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);
     }
 
-    public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
-    {
-        return JoinKeyValueCollection(dict.Keys, dict.Values, delimiterBetweenKeyAndValue, delimAfter);
-    }
-
-    public static string JoinKeyValueCollection(IEnumerable v1, IEnumerable v2, string delimiterBetweenKeyAndValue, string delimAfter)
-    {
-        StringBuilder sb = new StringBuilder();
-        var v2List = new List<object>(v2.Count());
-        foreach (var item in v2)
-        {
-            v2List.Add(item);
-        }
-        int i = 0;
-        foreach (var item in v1)
-        {
-            sb.Append(item + delimiterBetweenKeyAndValue + v2List[i++] + delimAfter);
-        }
-
-        return SH.TrimEnd(sb.ToString(), delimAfter);
-    }
-
     public static List<string> AddSpaceAfterFirstLetterForEveryAndSort(List<string> input)
     {
         CA.Trim(input);
@@ -437,10 +415,7 @@ public static partial class SH
         return nameSolution;
     }
 
-    public static bool EndsWith(string input, string endsWith)
-    {
-        return input.EndsWith(endsWith);
-    }
+
 
     public static string WordAfter(string input, string word)
     {
@@ -469,17 +444,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-
-    public static bool RemovePrefix(ref string s, string v)
-    {
-        if (s.StartsWith(v))
-        {
-            s = s.Substring(v.Length);
-            return true;
-        }
-        return false;
-    }
-
     public static string Leading(string v, Func<char, bool> isWhiteSpace)
     {
         StringBuilder sb = new StringBuilder();
@@ -504,42 +468,6 @@ public static partial class SH
             return isWhiteSpace.Invoke(input[dx]);
         }
         return false;
-    }
-
-    /// <summary>
-    /// Remove also A2
-    /// Don't trim
-    /// </summary>
-    /// <param name="t"></param>
-    /// <param name="ch"></param>
-    /// <returns></returns>
-    public static string RemoveAfterFirst(string t, string ch)
-    {
-        int dex = t.IndexOf(ch);
-        if (dex == -1 || dex == t.Length - 1)
-        {
-            return t;
-        }
-
-        string vr = t.Remove(dex);
-        return vr;
-    }
-
-    /// <summary>
-    /// Remove with A2
-    /// </summary>
-    /// <param name="t"></param>
-    /// <param name="ch"></param>
-    /// <returns></returns>
-    public static string RemoveAfterFirst(string t, char ch)
-    {
-        int dex = t.IndexOf(ch);
-        if (dex == -1 || dex == t.Length - 1)
-        {
-            return t;
-        }
-
-        return t.Substring(0, dex);
     }
 
     public static int CountLines(string text)
@@ -635,31 +563,6 @@ public static partial class SH
             return v1.Substring(0, v1.Length - v2);
         }
         return v1;
-    }
-
-    public static string GetTextBetween(string p, string after, string before, bool throwExceptionIfNotContains = true)
-    {
-        string vr = null;
-        int p2 = p.IndexOf(after);
-        int p3 = p.IndexOf(before);
-        bool b2 = p2 != -1;
-        bool b3 = p3 != -1;
-        if (b2 && b3)
-        {
-            p2 += after.Length;
-            p3 -= 1;
-            // When I return between ( ), there must be +1 
-            vr = p.Substring(p2, p3 - p2 + 1).Trim();
-        }
-        else
-        {
-            if (throwExceptionIfNotContains)
-            {
-                ThrowExceptions.NotContains(s_type, "GetTextBetween", p, after, before);
-            }
-        }
-
-        return vr;
     }
 
     public static bool IsAllUnique(List<string> c)
@@ -1845,7 +1748,7 @@ public static partial class SH
 
 
 
-    public static string FirstCharuUpper(string nazevPP)
+    public static string FirstCharUpper(string nazevPP)
     {
         string sb = nazevPP.Substring(1);
         return nazevPP[0].ToString().ToUpper() + sb;
@@ -1984,18 +1887,6 @@ public static partial class SH
             return item2.Substring(dex + 1);
         }
         return item2;
-    }
-
-    public static bool EndsWithArray(string source, params string[] p2)
-    {
-        foreach (var item in p2)
-        {
-            if (source.EndsWith(item))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static int EndsWithIndex(string source, params string[] p2)
@@ -2224,16 +2115,6 @@ public static partial class SH
         }
         string vr = sb.ToString();
         return vr.Substring(0, vr.Length - 1);
-    }
-
-    public static string JoinDictionary(Dictionary<string, string> dictionary, string delimiter)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in dictionary)
-        {
-            sb.AppendLine(item.Key + delimiter + item.Value);
-        }
-        return sb.ToString();
     }
 
 

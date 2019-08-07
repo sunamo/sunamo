@@ -86,6 +86,12 @@ public partial class TF
             }
         }
     }
+
+    internal static void WriteAllLines(string file, List<string> lines)
+    {
+        SaveLines(lines, file);
+    }
+
     public static void SaveFile(string obsah, string soubor)
     {
         SaveFile(obsah, soubor, false);
@@ -149,5 +155,15 @@ public partial class TF
     public static void AppendToFile(string obsah, string soubor)
     {
         SaveFile(obsah, soubor, true);
+    }
+
+    public static List<string> GetLines(string item)
+    {
+        return ReadAllLines(item);
+    }
+
+public static void SaveLines(List<string> list, string file)
+    {
+        SaveFile(SH.JoinNL(list), file);
     }
 }

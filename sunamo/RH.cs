@@ -20,6 +20,21 @@ public class RH
 {
     private static Type s_type = typeof(RH);
 
+
+    public static object GetValueOfPropertyOrField(object o, string name)
+    {
+        var type = o.GetType();
+
+        var value = GetValueOfProperty(name, type, o, false);
+
+        if (value == null)
+        {
+            value = GetValueOfField(name, type, o, false);
+        }
+
+        return value;
+    }
+
     #region Copy object
     public static object CopyObject(object input)
     {
@@ -194,31 +209,68 @@ public class RH
     #endregion
 
     #region Get value
-    public static object GetPropertyOfName(string name, Type type, object instance, bool ignoreCase)
+    public static object GetValueOfField(string name, Type type, object instance, bool ignoreCase)
     {
-        PropertyInfo[] pis = type.GetProperties();
+        FieldInfo[] pis = type.GetFields();
+
+        return GetValue(name, type, instance, pis, ignoreCase);
+    }
+
+    public static object GetValue(string name, Type type, object instance, IEnumerable pis, bool ignoreCase)
+    {
         if (ignoreCase)
         {
             name = name.ToLower();
-            foreach (PropertyInfo item in pis)
+            foreach (MemberInfo item in pis)
             {
                 if (item.Name.ToLower() == name)
                 {
-                    return type.GetProperty(name).GetValue(instance);
+                    var property = type.GetMember(name);
+                    if (property != null)
+                    {
+                        return GetValue(instance, property);
+                    }
                 }
             }
         }
         else
         {
-            foreach (PropertyInfo item in pis)
+            foreach (MemberInfo item in pis)
             {
                 if (item.Name == name)
                 {
-                    return type.GetProperty(name).GetValue(instance);
+                    var property = type.GetMember(name);
+                    if (property != null)
+                    {
+                        return GetValue(instance, property);
+                    }
+                    
                 }
             }
         }
         return null;
+    }
+
+    private static object GetValue(object instance, MemberInfo[] property)
+    {
+        var val = property[0];
+        if (val is PropertyInfo)
+        {
+             var pi = (PropertyInfo)val;
+            return pi.GetValue(instance);
+        }
+        else if (val is FieldInfo)
+        {
+            var pi = (FieldInfo)val;
+            return pi.GetValue(instance);
+        }
+        return null;
+    }
+
+    public static object GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
+    {
+        PropertyInfo[] pis = type.GetProperties();
+        return GetValue(name, type, instance, pis, ignoreCase);
     }
 
     /// <summary>

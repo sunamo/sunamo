@@ -69,6 +69,28 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBlockHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBoxHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\ControlFinder.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFileShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolderShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectManyFilesShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectMoreFoldersShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\ListViewExtensions.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\ListBoxExtensions.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\ContainerControls\GridHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Values\TypesControls.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ButtonHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\DependencyObjectHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IEssentialMainWindow.cs" />
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControl.cs" />
+    <Compile Include="..\..\sunamo\desktop\Essential\WpfApp.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\KeyboardHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
+    <Compile Include="..\..\sunamo\desktop\Hotkey.cs" />
     <Compile Include="..\..\sunamo\desktop\StatusesLogger.cs" Link="" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
@@ -76,6 +98,9 @@
     <Compile Include="ControlExtension\TextBoxCaretBehaviour.cs" />
     <Compile Include="Controls\Buttons\ImageButtons.xaml.cs">
       <DependentUpon>ImageButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Collections\CheckBoxList.xaml.cs">
+      <DependentUpon>CheckBoxList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Collections\CheckBoxListUC.xaml.cs">
       <DependentUpon>CheckBoxListUC.xaml</DependentUpon>
@@ -96,12 +121,16 @@
     <Compile Include="Controls\Buttons\ResultButtons.xaml.cs">
       <DependentUpon>ResultButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectFileShared.cs" />
+    <Compile Include="Controls\Input\SelectFolderShared.cs" />
     <Compile Include="Controls\Input\SelectManyFiles.xaml.cs">
       <DependentUpon>SelectManyFiles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectManyFilesShared.cs" />
     <Compile Include="Controls\Input\SelectMoreFolders.xaml.cs">
       <DependentUpon>SelectMoreFolders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Input\SelectMoreFoldersShared.cs" />
     <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
       <DependentUpon>SelectOneValue.xaml</DependentUpon>
     </Compile>
@@ -227,21 +256,28 @@
     <Compile Include="FontHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
+    <Compile Include="Helpers\BaseControls\ControlHelperShared.cs" />
     <Compile Include="Helpers\BaseControls\UIElementHelper.cs" />
+    <Compile Include="Helpers\BaseControls\UIElementHelperShared.cs" />
     <Compile Include="Helpers\BitmapSourceHelper.cs" />
+    <Compile Include="Helpers\CheckBoxDataHelper.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
+    <Compile Include="Helpers\ControlFinder.cs" />
     <Compile Include="Helpers\Controls\ButtonHelper.cs" />
     <Compile Include="Helpers\Controls\CheckBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\CheckBoxHelperShared.cs" />
     <Compile Include="Helpers\Controls\CheckBoxListHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
     <Compile Include="Helpers\BaseControls\ControlHelper.cs" />
     <Compile Include="Helpers\Controls\ListViewHelper.cs" />
+    <Compile Include="Helpers\Controls\MenuItemHelperShared.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
+    <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\DataGridHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
@@ -350,12 +386,16 @@
       <Name>sunamo</Name>
     </ProjectReference>
     <ProjectReference Include="..\win\win.csproj">
-      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
+      <Project>{BEE17656-B10C-42B2-B3A4-70208323E3D7}</Project>
       <Name>win</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\Buttons\ImageButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\CheckBoxList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

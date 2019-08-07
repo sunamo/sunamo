@@ -1,4 +1,6 @@
-﻿using shared;
+﻿
+
+using shared;
 using sunamo;
 using sunamo.Essential;
 using System;

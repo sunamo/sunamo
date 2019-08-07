@@ -603,9 +603,7 @@ public static partial class CA
         return result;
     }
 
-    public static void RemoveAfterFirst(List<FieldInfo> withType)
-    {
-    }
+
 
     /// <summary>
     /// Direct edit
@@ -1153,5 +1151,103 @@ public static partial class CA
             return true;
         }
         return false;
+    }
+
+/// <summary>
+    /// Remove elements starting with A1
+    /// Direct edit
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="mySites"></param>
+    /// <returns></returns>
+    public static List<string> RemoveStartingWith(string start, List<string> mySites, bool _trimBeforeFinding = false)
+    {
+        for (int i = mySites.Count - 1; i >= 0; i--)
+        {
+            var val = mySites[i];
+            if (_trimBeforeFinding)
+            {
+                val = val.Trim();
+            }
+            if (val.StartsWith(start))
+            {
+                mySites.RemoveAt(i);
+            }
+        }
+        return mySites;
+    }
+
+public static string StartWith(List<string> suMethods, string line)
+    {
+        string element = null;
+        return StartWith(suMethods, line, out element);
+    }
+/// <summary>
+    /// Return A2 if start something with A1
+    /// Really different method than string, List<string>
+    /// </summary>
+    /// <param name="suMethods"></param>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    public static string StartWith(List<string> suMethods, string line, out string element)
+    {
+        element = null;
+
+        foreach (var method in suMethods)
+        {
+            if (line.StartsWith(method))
+            {
+                element = method;
+                return line;
+            }
+        }
+        return null;
+    }
+
+/// <summary>
+    /// Return A1 which contains A2
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <param name="term"></param>
+    /// <returns></returns>
+    public static List<string> ReturnWhichContains(List<string> lines, string term)
+    {
+        List<int> founded;
+        return ReturnWhichContains(lines, term, out founded);
+    }
+/// <summary>
+    /// Return A1 which contains A2
+    /// </summary>
+    /// <param name="lines"></param>
+    /// <param name="term"></param>
+    /// <param name="founded"></param>
+    /// <returns></returns>
+    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded)
+    {
+        founded = new List<int>();
+        List<string> result = new List<string>();
+        int i = 0;
+        foreach (var item in lines)
+        {
+            if (item.Contains(term))
+            {
+                founded.Add(i);
+                result.Add(item);
+            }
+            i++;
+        }
+
+        return result;
+    }
+
+public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
+    {
+        for (int i = input.Count - 1; i >= 0; i--)
+        {
+            if (pred.Invoke(input[i], arg))
+            {
+                input.RemoveAt(i);
+            }
+        }
     }
 }

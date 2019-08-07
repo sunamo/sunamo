@@ -1249,10 +1249,7 @@
           <source />
           <target state="translated">File has already been uploaded to this version. Uploading a new file will overwrite the existing one.</target>
         </trans-unit>
-        <trans-unit id="Apps" translate="yes" xml:space="preserve">
-          <source />
-          <target state="translated">Apps /</target>
-        </trans-unit>
+
         <trans-unit id="ParseUlozToLiveVideoUri" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Parse Uloz.to live video uri</target>
@@ -3869,10 +3866,6 @@
           <source></source>
           <target state="translated">Popular Louisianan Creole music</target>
         </trans-unit>
-        <trans-unit id="Lyrics" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Lyrics /</target>
-        </trans-unit>
         <trans-unit id="Uri" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Uri (</target>
@@ -3909,38 +3902,8 @@
           <source></source>
           <target state="translated">Rate song translation!</target>
         </trans-unit>
-        <trans-unit id="Song" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Song /</target>
-        </trans-unit>
-        <trans-unit id="Original" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/Original/</target>
-        </trans-unit>
-        <trans-unit id="Translated" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/ Translated /</target>
-        </trans-unit>
-        <trans-unit id="Username" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/ Username /</target>
-        </trans-unit>
-        <trans-unit id="Type" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/ Type /</target>
-        </trans-unit>
-        <trans-unit id="Artist" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Artist /</target>
-        </trans-unit>
-        <trans-unit id="Album" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/Album/</target>
-        </trans-unit>
-        <trans-unit id="Profile" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Profile /</target>
-        </trans-unit>
+
+
         <trans-unit id="Value" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Value</target>
@@ -4637,22 +4600,7 @@
           <source></source>
           <target state="translated">The server upload service can only be used by admin due to limited hosting space.</target>
         </trans-unit>
-        <trans-unit id="Photos" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Photos/</target>
-        </trans-unit>
-        <trans-unit id="Date" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/Date/</target>
-        </trans-unit>
-        <trans-unit id="Photo" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Photo /</target>
-        </trans-unit>
-        <trans-unit id="IPhotos" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/ i / Photos /</target>
-        </trans-unit>
+
         <trans-unit id="PasswordChangedSuccessfully" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Password changed successfully</target>
@@ -5477,10 +5425,7 @@
           <source></source>
           <target state="translated">The blog address contained invalid characters</target>
         </trans-unit>
-        <trans-unit id="Blogs" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Blogs/</target>
-        </trans-unit>
+
         <trans-unit id="YouAreNotLoggedInTheSiteCannotCreateANewBlogPost" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">You are not logged in, the site cannot create a new blog post</target>
@@ -5861,10 +5806,7 @@
           <source></source>
           <target state="translated">Transition</target>
         </trans-unit>
-        <trans-unit id="Kocicky" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/ Kocicky /</target>
-        </trans-unit>
+
         <trans-unit id="NextTotalCats" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Next (Total cats</target>
@@ -7357,14 +7299,6 @@
           <source></source>
           <target state="translated">error: Failed to delete post because all photos could not be deleted. Please try again.</target>
         </trans-unit>
-        <trans-unit id="Widgets" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Widgets/</target>
-        </trans-unit>
-        <trans-unit id="Comments" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/Comments/</target>
-        </trans-unit>
         <trans-unit id="ScWasNotTheCorrectCharacters" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Sc was not the correct 24 characters.</target>
@@ -7717,10 +7651,6 @@
           <source></source>
           <target state="translated">warning: You cannot vote for your own song lyrics.</target>
         </trans-unit>
-        <trans-unit id="Gallery" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">/Gallery/</target>
-        </trans-unit>
         <trans-unit id="successTheCaptureDateOfTheIDPhoto" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">success: The capture date of the ID photo</target>
@@ -7925,10 +7855,7 @@
           <source></source>
           <target state="translated">Now upload via FTP file</target>
         </trans-unit>
-        <trans-unit id="ToDlAppSW" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> to _ / Dl / App / SW /</target>
-        </trans-unit>
+
         <trans-unit id="TheFileNameDidNotContainAPeriod" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">The file name did not contain a period.</target>

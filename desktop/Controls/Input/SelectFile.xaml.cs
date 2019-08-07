@@ -24,7 +24,7 @@ namespace desktop.Controls
     /// </summary>
     public partial class SelectFile : UserControl
     {
-        public static Type type = typeof(SelectFile);
+        
         /// <summary>
         /// In folder has hame Folder*Changed* but there already exists FileSelected
         /// </summary>
@@ -88,17 +88,7 @@ namespace desktop.Controls
             }
         }
 
-        public void Validate(object tbNewPath)
-        {
-            validated = FS.ExistsFile(this.SelectedFile);
-            if (!validated)
-            {
-                InitApp.TemplateLogger.FileDontExists(this.SelectedFile);
-            }
-        }
-
-        string selectedFile = "";
-        public static bool validated;
+        
 
         public string SelectedFile
         {

@@ -16,6 +16,6 @@ namespace sunamo.Values
         public const string cs = "cs ";
         public const string en = "en ";
 
-        public const string spaces4 = "    ";
+        
     }
 }

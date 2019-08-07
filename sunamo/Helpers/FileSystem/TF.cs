@@ -74,10 +74,6 @@ public partial class TF
 
 
 
-    public static List<string> GetLines(string file)
-    {
-        return ReadAllLines(file);
-    }
 
     private static void ReplaceIfDontStartWith(List<string> files, string contains, string prefix)
     {
@@ -119,10 +115,5 @@ public partial class TF
             }
         }
         return linesPpk.ToArray();
-    }
-
-    public static void SaveLines(List<string> list, string file)
-    {
-        SaveFile(SH.JoinNL(list), file);
     }
 }

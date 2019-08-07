@@ -14,7 +14,7 @@
         
     <StackPanel Orientation="Vertical">
         <!--Cant be public because I have to control adding and removing due to auto saving control data-->
-        <StackPanel Orientation="Vertical" x:Name="spFolders"></StackPanel>
+        <StackPanel Orientation="Vertical" x:Name="spFolders" x:FieldModifier="public"></StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Button x:Name="btnAddFolder" Click="BtnAddFolder_Click"></Button>

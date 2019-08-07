@@ -3,9 +3,8 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-public static class ButtonHelper
+public static partial class ButtonHelper
 {
-
     public static Button GetButton(string tooltip, string imagePath)
     {
         Button vr = new Button();
@@ -20,20 +19,14 @@ public static class ButtonHelper
         return vr;
     }
 
-    public static void PerformClick(ButtonBase someButton)
-    {
-        someButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-    }
-
     public static Button GetButton(string tooltip)
     {
         Button button = new Button();
         button.ToolTip = tooltip;
         button.Content = tooltip;
-        
         return button;
     }
-   
+
     public static void SaveTransparentImageAsContent(ContentControl button, System.Windows.Media.Color color, string imageRelPath)
     {
         BitmapSource bi = BitmapImageHelper.MsAppx(imageRelPath);

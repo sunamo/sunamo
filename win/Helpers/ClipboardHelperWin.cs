@@ -12,10 +12,9 @@ using win;
 // if app isnt STA, raise exception
 //using System.Windows;
 // if app isnt STA, return empty. 
-using System.Windows.Forms;
-using System.Windows.Interop;
 using sunamo.Clipboard;
 using System.Collections;
+using System.Windows;
 //using System.Windows;
 
 /// <summary>

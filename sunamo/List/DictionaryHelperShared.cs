@@ -35,4 +35,75 @@ public partial class DictionaryHelper
 
         return result;
     }
+
+/// <summary>
+    /// Pokud A1 bude obsahovat skupinu pod názvem A2, vložím do této skupiny prvek A3
+    /// Jinak do A1 vytvořím novou skupinu s klíčem A2 s hodnotou A3
+    /// </summary>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "p"></param>
+    public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    {
+        AddOrCreate<Key, Value, object>(sl, key, value);
+    }
+/// <summary>
+    /// A3 is inner type of collection entries
+    /// </summary>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <typeparam name = "ColType"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "value"></param>
+    public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    {
+        //T, byte[]
+        if (key is IEnumerable && typeof(ColType) != typeof(object))
+        {
+            IEnumerable<ColType> keyE = key as IEnumerable<ColType>;
+            bool contains = false;
+            foreach (var item in sl)
+            {
+                IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
+                if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
+                {
+                    contains = true;
+                }
+            }
+
+            if (contains)
+            {
+                foreach (var item in sl)
+                {
+                    IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
+                    if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
+                    {
+                        item.Value.Add(value);
+                    }
+                }
+            }
+            else
+            {
+                List<Value> ad = new List<Value>();
+                ad.Add(value);
+                sl.Add(key, ad);
+            }
+        }
+        else
+        {
+            if (sl.ContainsKey(key))
+            {
+                sl[key].Add(value);
+            }
+            else
+            {
+                List<Value> ad = new List<Value>();
+                ad.Add(value);
+                sl.Add(key, ad);
+            }
+        }
+    }
 }

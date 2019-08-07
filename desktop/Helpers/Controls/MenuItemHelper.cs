@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
-public class MenuItemHelper
+public partial class MenuItemHelper
 {
     MenuItem mi = null;
-
     public MenuItemHelper(MenuItem mi)
     {
         this.mi = mi;
@@ -25,20 +23,6 @@ public class MenuItemHelper
         }
     }
 
-    public static MenuItem CreateNew(string p)
-    {
-        MenuItem tsmi = new MenuItem();
-        tsmi.Header = p;
-        return tsmi;
-    }
-
-    public static MenuItem CreateNew(string header, RoutedEventHandler clickHandler)
-    {
-        MenuItem menuItem = CreateNew(header);
-        menuItem.Click += clickHandler;
-        return menuItem;
-    }
-
     public static MenuItem CreateNewCheckable(string header, RoutedEventHandler miOnlyWithSameProjectName_Click, Brush foreground, object tag)
     {
         MenuItem mi = new MenuItem();
@@ -47,6 +31,7 @@ public class MenuItemHelper
         {
             mi.Click += miOnlyWithSameProjectName_Click;
         }
+
         mi.Foreground = foreground;
         mi.Tag = tag;
         return mi;

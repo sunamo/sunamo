@@ -25,7 +25,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     IUserControlWithSizeChange userControlWithSizeChange = null;
 
     StatusBar statusBar = null;
-    DialogButtons dialogButtons = null;
+     DialogButtons dialogButtons = null;
     Menu menu = null;
 
     private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -135,6 +135,14 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     private void DialogButtons_ChangeDialogResult(bool? b)
     {
         UserControlWithResult_ChangeDialogResult(b);
+    }
+
+    public bool EnableBtnOk
+    {
+        set
+        {
+            dialogButtons.btnOk.IsEnabled = value;
+        }
     }
 
     private void UserControlWithResult_ChangeDialogResult(bool? b)

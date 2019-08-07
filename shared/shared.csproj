@@ -94,6 +94,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\StatusHelper.cs" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
+    <Compile Include="..\..\sunamo\shared\MSSQL\MSSloupec2.cs" />
     <Compile Include="..\..\sunamo\shared\Helpers\CSharpHelper.cs" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSColumnsDBNotTranslateAble.cs" />
     <Compile Include="..\..\sunamo\shared\WriterEventLogShared.cs" Link="" />

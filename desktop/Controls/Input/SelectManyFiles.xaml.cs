@@ -22,7 +22,7 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class SelectManyFiles : UserControl
     {
-        public static Type type = typeof(SelectManyFiles);
+       
 
         public SelectManyFiles()
         {
@@ -94,30 +94,9 @@ namespace desktop.Controls.Input
             AddFile(string.Empty);
         }
 
-        public static bool validated
-        {
-            get
-            {
-                return SelectFile.validated;
-            }
-            set
-            {
-                SelectFile.validated = value;
-            }
-        }
+        
 
-        public static void Validate(object tb, SelectManyFiles control)
-        {
-            foreach (SelectFile item in control.spFiles.Children)
-            {
-                item.Validate(tb);
-            }
-        }
-
-        public void Validate(object tbFile)
-        {
-            Validate(tbFile, this);
-        }
+       
 
         public void RemoveAllFiles()
         {

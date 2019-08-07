@@ -547,4 +547,10 @@ public static string OutputDeleted(string sloupceJezVratit)
             return AllStrings.space;
         }
     }
+
+public static string Insert4(int i2, string tabulka, int pocetSloupcu)
+    {
+        string hodnoty = GetValuesDirect(i2, pocetSloupcu);
+        return SH.Format2("INSERT INTO {0} VALUES {1}", tabulka, hodnoty);
+    }
 }

@@ -244,26 +244,6 @@ public static partial class HtmlHelper
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    /// Prochází děti A1 a pokud některý má název A2, G
-    /// Vrátí null pokud se takový tag nepodaří najít
-    /// </summary>
-    /// <param name="body"></param>
-    /// <param name="nazevTagu"></param>
-    /// <returns></returns>
-    public static HtmlNode ReturnTag(HtmlNode body, string nazevTagu)
-    {
-        //List<HtmlNode> html = new List<HtmlNode>();
-        foreach (HtmlNode item in body.ChildNodes)
-        {
-            if (item.Name == nazevTagu)
-            {
-                return item;
-            }
-        }
-        return null;
-    }
-
     public static HtmlNode ReturnTagRek(HtmlNode hn, string nameOfTag)
     {
         hn = HtmlHelper.TrimNode(hn);

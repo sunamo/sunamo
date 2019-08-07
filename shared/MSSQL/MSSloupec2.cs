@@ -21,7 +21,7 @@ public class MSSloupec2
         {
             object[] o = item.ItemArray;
             string COLUMN_NAME = MSTableRowParse.GetString(o, 0);
-            bool is_nullable = BTS.StringToBool(SH.FirstCharuUpper(MSTableRowParse.GetString(o, 1).ToLower()));
+            bool is_nullable = BTS.StringToBool(SH.FirstCharUpper(MSTableRowParse.GetString(o, 1).ToLower()));
             string DATA_TYPE = MSTableRowParse.GetString(o, 2);
             string zav = "";
             if (table == "ASPStateTempSessions" && COLUMN_NAME == "SessionItemLong")

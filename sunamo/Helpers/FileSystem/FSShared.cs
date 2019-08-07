@@ -1036,4 +1036,82 @@ public partial class FS
         CopyMoveFilePrepare(ref item, ref fileTo, co);
         File.Move(item, fileTo);
     }
+
+public static byte[] StreamToArrayBytes(System.IO.Stream stream)
+    {
+        long originalPosition = 0;
+
+        if (stream.CanSeek)
+        {
+            originalPosition = stream.Position;
+            stream.Position = 0;
+        }
+
+        try
+        {
+            byte[] readBuffer = new byte[4096];
+
+            int totalBytesRead = 0;
+            int bytesRead;
+
+            while ((bytesRead = stream.Read(readBuffer, totalBytesRead, readBuffer.Length - totalBytesRead)) > 0)
+            {
+                totalBytesRead += bytesRead;
+
+                if (totalBytesRead == readBuffer.Length)
+                {
+                    int nextByte = stream.ReadByte();
+                    if (nextByte != -1)
+                    {
+                        byte[] temp = new byte[readBuffer.Length * 2];
+                        Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
+                        Buffer.SetByte(temp, totalBytesRead, (byte)nextByte);
+                        readBuffer = temp;
+                        totalBytesRead++;
+                    }
+                }
+            }
+
+            byte[] buffer = readBuffer;
+            if (readBuffer.Length != totalBytesRead)
+            {
+                buffer = new byte[totalBytesRead];
+                Buffer.BlockCopy(readBuffer, 0, buffer, 0, totalBytesRead);
+            }
+            return buffer;
+        }
+        finally
+        {
+            if (stream.CanSeek)
+            {
+                stream.Position = originalPosition;
+            }
+        }
+    }
+
+/// <summary>
+    /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
+    /// if have more extension, remove just one
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static string GetFileNameWithoutExtension(string s)
+    {
+        return Path.GetFileNameWithoutExtension(s.TrimEnd(AllChars.bs));
+    }
+
+public static string AddExtensionIfDontHave(string file, string ext)
+    {
+        // For *.* and git paths {dir}/*
+        if (file[file.Length - 1] == AllChars.asterisk)
+        {
+            return file;
+        }
+        if (GetExtension(file) == string.Empty)
+        {
+            return file + ext;
+        }
+
+        return file;
+    }
 }
