@@ -106,4 +106,29 @@ public partial class DictionaryHelper
             }
         }
     }
+
+/// <summary>
+    /// In addition to method AddOrCreate, more is checking whether value in collection does not exists
+    /// </summary>
+    /// <typeparam name = "Key"></typeparam>
+    /// <typeparam name = "Value"></typeparam>
+    /// <param name = "sl"></param>
+    /// <param name = "key"></param>
+    /// <param name = "value"></param>
+    public static void AddOrCreateIfDontExists<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    {
+        if (sl.ContainsKey(key))
+        {
+            if (!sl[key].Contains(value))
+            {
+                sl[key].Add(value);
+            }
+        }
+        else
+        {
+            List<Value> ad = new List<Value>();
+            ad.Add(value);
+            sl.Add(key, ad);
+        }
+    }
 }

@@ -4113,7 +4113,7 @@ public class XlfKeys
 
     public const string wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect = "wasNotFoundInTheDBEitherItWasAlreadyUsedOrWasIncorrect";
 
-    public const string Code = "Code";
+    
 
     public const string AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated = "AUserWithSuchAUidWasNotFoundInTheDBTheUserCouldNotBeReactivated";
 

@@ -1114,4 +1114,35 @@ public static string AddExtensionIfDontHave(string file, string ext)
 
         return file;
     }
+
+/// <summary>
+    /// Vratí bez cesty, pouze název souboru
+    /// </summary>
+    /// <param name="orig"></param>
+    /// <param name="whatInsert"></param>
+    /// <returns></returns>
+    public static string InsertBetweenFileNameAndExtension2(string orig, string whatInsert)
+    {
+        string fn = Path.GetFileNameWithoutExtension(orig);
+        string e = FS.GetExtension(orig);
+        return FS.Combine(fn + whatInsert + e);
+    }
+
+/// <summary>
+    /// In key are just filename, in value full path to all files 
+    /// </summary>
+    /// <param name="linesFiles"></param>
+    /// <param name="searchOnlyWithExtension"></param>
+    /// <returns></returns>
+    public static Dictionary<string, List<string>> GetDictionaryByFileNameWithExtension(List<string> files)
+    {
+        Dictionary<string, List<string>> result = new Dictionary<string, List<string>>();
+        foreach (var item in files)
+        {
+            string filename = FS.GetFileName(item);
+            DictionaryHelper.AddOrCreateIfDontExists<string, string>(result, filename, item);
+        }
+
+        return result;
+    }
 }

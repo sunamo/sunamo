@@ -104,6 +104,13 @@ public partial class TF
         TF.SaveFile(content, pathCsproj);
     }
 
+    public static void PureFileOperation(string f, Func<string, string> transformHtmlToMetro4)
+    {
+        var content = TF.ReadFile(f);
+        content = transformHtmlToMetro4.Invoke(content);
+        TF.SaveFile(content, f);
+    }
+
     public static void SaveFile(string content, StorageFile storageFile)
     {
         TF.SaveFile(content, storageFile.FullPath());

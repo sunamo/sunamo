@@ -83,9 +83,16 @@ public class ClipboardHelperWin : IClipboardHelper
         //string s = ca.GetText();
         //return s;
         #endregion
+
         string result = "";
         //result = GetTextW32();
-        result = Clipboard.GetText();
+        try
+        {
+            result = Clipboard.GetText();
+        }
+        catch (Exception)
+        {
+        }
         return result;
     }
 
