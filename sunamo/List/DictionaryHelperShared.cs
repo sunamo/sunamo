@@ -36,6 +36,25 @@ public partial class DictionaryHelper
         return result;
     }
 
+    public static Dictionary<string, string> GetDictionaryByKeyValueInString(string p, params string[] d1)
+    {
+        var sp = SH.Split(p, d1);
+        return GetDictionaryByKeyValueInString<string>(sp);
+    }
+
+    public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)
+    {
+        var methodName = RH.CallingMethod();
+        ThrowExceptions.IsOdd(s_type, methodName, "p", p);
+
+        Dictionary<T, T> result = new Dictionary<T, T>();
+        for (int i = 0; i < p.Count; i++)
+        {
+            result.Add(p[i], p[++i]);
+        }
+        return result;
+    }
+
 /// <summary>
     /// Pokud A1 bude obsahovat skupinu pod názvem A2, vložím do této skupiny prvek A3
     /// Jinak do A1 vytvořím novou skupinu s klíčem A2 s hodnotou A3

@@ -951,12 +951,12 @@ public static partial class SH
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string WrapWith(string value, string h)
+    public static string WrapWith(string value, string h, bool _trimWrapping = false)
     {
-        return h + value + h;
+        return h + SH.Trim( value, h) + h;
     }
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static string WrapWith(string value, char v)
+    public static string WrapWith(string value, char v, bool _trimWrapping = false)
     {
         // TODO: Make with StringBuilder, because of SH.WordAfter and so
         return WrapWith(value, v.ToString());
@@ -1541,6 +1541,7 @@ public static partial class SH
     }
 
     /// <summary>
+    /// Trim all A2 from end A1
     /// Originally named TrimWithEnd
     /// Pokud A1 končí na A2, ořežu A2
     /// </summary>
@@ -1638,6 +1639,12 @@ public static partial class SH
         return v;
     }
 
+    /// <summary>
+    /// Trim all A2 from beginning A1
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static string TrimStart(string v, string s)
     {
         while (v.StartsWith(s))
@@ -1825,5 +1832,19 @@ public static bool RemovePrefix(ref string s, string v)
             return true;
         }
         return false;
+    }
+
+/// <summary>
+    /// Trim from beginning and end of A1 substring A2
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="args"></param>
+    /// <returns></returns>
+    public static string Trim(string s, string args)
+    {
+        s = TrimStart(s, args);
+        s = TrimEnd(s, args);
+        
+        return s;
     }
 }

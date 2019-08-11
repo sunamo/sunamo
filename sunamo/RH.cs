@@ -79,13 +79,16 @@ public class RH
 
     /// <summary>
     /// Print name of calling method, not GetCurrentMethod
+    /// If is on end Test, will trim
     /// </summary>
     /// <returns></returns>
     public static string CallingMethod(int v = 1)
     {
         StackTrace stackTrace = new StackTrace();
         MethodBase methodBase = stackTrace.GetFrame(v).GetMethod();
-        return methodBase.Name;
+        var methodName = methodBase.Name;
+        methodName = SH.TrimEnd(methodName, "Test");
+        return methodName;
     }
 
     public static Assembly AssemblyWithName(string name)

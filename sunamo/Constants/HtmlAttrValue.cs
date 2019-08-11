@@ -13,5 +13,6 @@ public class HtmlAttrValue
     public const string text = "text";
     public const string radio = "radio";
     public const string hoverable = "hoverable";
+    public const string textarea = "textarea";
 }
 

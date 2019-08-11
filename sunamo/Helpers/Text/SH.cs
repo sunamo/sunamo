@@ -1767,23 +1767,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-
-
-
-
-    public static string Trim(string s, string args)
-    {
-        while (s.EndsWith(args))
-        {
-            s = s.Substring(0, s.Length - 1);
-        }
-        while (s.StartsWith(args))
-        {
-            s = s.Substring(2, s.Length - 2);
-        }
-        return s;
-    }
-
     public static List<int> SplitToIntListNone(string stringToSplit, params string[] delimiter)
     {
         List<int> nt = null;

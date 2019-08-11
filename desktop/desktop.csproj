@@ -382,7 +382,7 @@
       <Name>shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{94D983CC-4204-4270-AA27-EB86A6D84CA8}</Project>
+      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
     <ProjectReference Include="..\win\win.csproj">

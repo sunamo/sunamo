@@ -17,4 +17,22 @@ public partial class HtmlAssistant
         }
         return node.InnerText;
     }
+
+    public static Dictionary<string, string> GetAttributesPairs(string s)
+    {
+        if (!s.Contains("<"))
+        {
+            s = "<img " + s + "/>";
+        }
+
+        Dictionary<string, string> result = new Dictionary<string, string>();
+
+        HtmlNode node = HtmlNode.CreateNode(s);
+        foreach (var item in node.Attributes)
+        {
+            result.Add(item.Name, item.Value);
+        }
+
+        return result;
+    }
 }

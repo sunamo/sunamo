@@ -37,6 +37,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
+    internal static void IsOdd(Type s_type, string methodName, string colName, IEnumerable col)
+    {
+        ThrowIsNotNull(Exceptions.IsOdd(FullNameOfExecutedCode(s_type, methodName), colName, col));
+    }
+
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {
         ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName, true), namefc, countfc, namesc, countsc));

@@ -48,6 +48,15 @@ public class Exceptions
         return SH.Format2("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
     }
 
+    internal static object IsOdd(string before, string colName, IEnumerable col)
+    {
+        if (col.Count() % 2 == 1)
+        {
+            return CheckBefore(before) + colName + " has odd number of elements " + col.Count();
+        }
+        return null;
+    }
+
     public static string HaveAllInnerSameCount(string before, List<List<string>> elements)
     {
         int first = elements[0].Count;

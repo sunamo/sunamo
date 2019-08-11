@@ -221,13 +221,13 @@
     <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{94d983cc-4204-4270-aa27-eb86a6d84ca8}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
+    <Resource Include="Resources2\SystemWindowsControls.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources2\SystemWindowsControls.txt" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{85c87766-58ce-4a02-ac0d-372c74c47c72}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

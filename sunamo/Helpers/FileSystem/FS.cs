@@ -740,55 +740,6 @@ public partial class FS
         CopyMoveAllFilesRecursively(p, to, co, true, contains);
     }
 
-    public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
-    {
-        CopyMoveAllFilesRecursively(p, to, co, false, contains);
-    }
-
-
-
-    /// <summary>
-    /// If want use which not contains, prefix A4 with !
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="to"></param>
-    /// <param name="co"></param>
-    /// <param name="contains"></param>
-    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains)
-    {
-        string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
-        foreach (var item in files)
-        {
-            if (!string.IsNullOrEmpty(contains))
-            {
-                bool negation = SH.IsNegation(ref contains);
-
-                if (negation && item.Contains(contains))
-                {
-                    continue;
-                }
-                else if (!negation && !item.Contains(contains))
-                {
-                    continue;
-                }
-            }
-            MoveOrCopy(p, to, co, move, item);
-        }
-    }
-
-    private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, bool move, string item)
-    {
-        string fileTo = to + item.Substring(p.Length);
-        if (move)
-        {
-            MoveFile(item, fileTo, co);
-        }
-        else
-        {
-            CopyFile(item, fileTo, co);
-        }
-    }
-
     /// <summary>
     /// Unit tests = OK
     /// </summary>

@@ -53,6 +53,12 @@ public partial class QSHelper
         return sb.ToString().TrimEnd('&');
     }
 
+    /// <summary>
+    /// get value of A2 parametr in A1
+    /// </summary>
+    /// <param name="r1"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static string GetParameterSE(string r1, string p)
     {
         p = p + "=";

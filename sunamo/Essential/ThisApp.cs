@@ -12,7 +12,16 @@ namespace sunamo.Essential
         public static bool check = false;
         public static Langs l = Langs.en;
         public static ResourcesHelper Resources;
+        /// <summary>
+        /// Name = Solution
+        /// Project = Project
+        /// </summary>
         public static string Name;
+        /// <summary>
+        /// Name = Solution
+        /// Project = Project
+        /// </summary>
+        public static string Project;
         public static string _Name
         {
             get
