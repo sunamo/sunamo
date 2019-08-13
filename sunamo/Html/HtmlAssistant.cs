@@ -47,10 +47,30 @@ public partial class HtmlAssistant
 
     public static string InnerText(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
     {
+        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, false);
+    }
+
+    public static string InnerHtmlWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
+    {
+        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, true);
+    }
+
+    public static string InnerContentWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool html)
+    {
         var node2 = HtmlAgilityHelper.NodeWithAttr(node, true, tag, attr, attrValue);
         if (node2 != null)
         {
-            return HtmlAssistant.HtmlDecode(node2.InnerText.Trim());
+            var c = string.Empty;
+            if (html)
+            {
+                c = node2.InnerHtml;
+            }
+            else
+            {
+                c = node2.InnerText;
+            }
+
+            return HtmlAssistant.HtmlDecode(c.Trim());
         }
 
         return string.Empty;

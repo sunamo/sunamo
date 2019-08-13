@@ -737,7 +737,7 @@ public partial class FS
 
     public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
     {
-        CopyMoveAllFilesRecursively(p, to, co, true, contains);
+        CopyMoveAllFilesRecursively(p, to, co, true, contains, SearchOption.AllDirectories);
     }
 
     /// <summary>

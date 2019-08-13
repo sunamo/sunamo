@@ -18,6 +18,16 @@ public partial class HtmlAssistant
         return node.InnerText;
     }
 
+    public static string InnerHtml(HtmlNode item, bool recursive, string tag)
+    {
+        var node = HtmlAgilityHelper.Node(item, recursive, tag);
+        if (node == null)
+        {
+            return string.Empty;
+        }
+        return node.InnerHtml;
+    }
+
     public static Dictionary<string, string> GetAttributesPairs(string s)
     {
         if (!s.Contains("<"))

@@ -14,5 +14,6 @@ public class HtmlAttrValue
     public const string radio = "radio";
     public const string hoverable = "hoverable";
     public const string textarea = "textarea";
+    public static string checkbox = "checkbox";
 }
 

@@ -161,4 +161,12 @@ public class TextOutputGenerator
     {
         sb.Undo();
     }
+
+    public void Dictionary(Dictionary<string, List<string>> ls)
+    {
+        foreach (var item in ls)
+        {
+            List(item.Value, item.Key);
+        }
+    }
 }

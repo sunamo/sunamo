@@ -64,9 +64,9 @@ public partial class DictionaryHelper
     /// <param name = "sl"></param>
     /// <param name = "key"></param>
     /// <param name = "p"></param>
-    public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
-        AddOrCreate<Key, Value, object>(sl, key, value);
+        AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
 /// <summary>
     /// A3 is inner type of collection entries
@@ -77,7 +77,7 @@ public partial class DictionaryHelper
     /// <param name = "sl"></param>
     /// <param name = "key"></param>
     /// <param name = "value"></param>
-    public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value)
+    public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
         //T, byte[]
         if (key is IEnumerable && typeof(ColType) != typeof(object))
@@ -100,22 +100,49 @@ public partial class DictionaryHelper
                     IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
                     if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
                     {
+                        if (withoutDuplicitiesInValue)
+                        {
+                            if (item.Value.Contains(value))
+                            {
+                                return;
+
+                            }
+                        }
                         item.Value.Add(value);
                     }
                 }
             }
             else
             {
+
+
                 List<Value> ad = new List<Value>();
                 ad.Add(value);
+
+                
+
                 sl.Add(key, ad);
             }
         }
         else
         {
+            bool add = true;
             if (sl.ContainsKey(key))
             {
-                sl[key].Add(value);
+                if (withoutDuplicitiesInValue)
+                {
+                    if (sl[key].Contains(value))
+                    {
+                        add = false;
+
+                    }
+                }
+
+                if (add)
+                {
+                    sl[key].Add(value);
+                }
+                
             }
             else
             {

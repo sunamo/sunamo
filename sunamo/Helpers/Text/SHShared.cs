@@ -166,6 +166,13 @@ public static partial class SH
         return sb;
     }
 
+    /// <summary>
+    /// Use simple c# replace
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="what"></param>
+    /// <param name="forWhat"></param>
+    /// <returns></returns>
     public static string Replace(string t, string what, string forWhat)
     {
         return t.Replace(what, forWhat);

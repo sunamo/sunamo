@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using HtmlAgilityPack;
+using sunamo.Values;
 
 /// <summary>
 /// Našel jsem ještě třídu DotXml ale ta umožňuje vytvářet jen dokumenty ke bude root ThisApp.Name
@@ -115,6 +116,11 @@ public class XmlGenerator
         return sb.ToString();
     }
 
+    /// <summary>
+    /// if will be sth null, wont be writing
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="p_2"></param>
     public void WriteTagWithAttrs(string p, params string[] p_2)
     {
         WriteTagWithAttrs(true, p, p_2);
@@ -131,7 +137,7 @@ public class XmlGenerator
     }
 
     /// <summary>
-    /// 
+    /// if will be sth null, wont be writing
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p_2"></param>
@@ -143,9 +149,12 @@ public class XmlGenerator
         {
             var attr = p_2[i];
             var val = p_2[++i];
-            if ((val == null && appendNull) || val != null)
+            if ((string.IsNullOrEmpty(val) && appendNull) || !string.IsNullOrEmpty(val))
             {
-                sb.AppendFormat("{0}=\"{1}\" ", attr, val);
+                if ((Consts.nulled != attr && appendNull) || val != Consts.nulled)
+                {
+                    sb.AppendFormat("{0}=\"{1}\" ", attr, val);
+                }
             }
         }
         sb.Append(AllStrings.gt);

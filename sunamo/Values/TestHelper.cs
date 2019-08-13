@@ -21,7 +21,7 @@ public class TestHelper
     /// </summary>
     /// <param name="appName"></param>
     /// <param name="featureOrType"></param>
-    public static void RefreshOriginalFiles(string baseFolder, object featureOrType)
+    public static void RefreshOriginalFiles(string baseFolder, object featureOrType, bool deleteRecursively, bool replace_Original)
     {
         string feature = NameOfFeature(featureOrType);
 
@@ -29,8 +29,38 @@ public class TestHelper
         baseFolder = baseFolder + "\\" + feature;
         var folderFrom =baseFolder + "_Original\\";
         string folder = baseFolder + "\\";
-        FS.GetFiles(folder, true).ToList().ForEach(d => FS.DeleteFileIfExists(d));
-        FS.CopyAllFilesRecursively(folderFrom, folder, FileMoveCollisionOption.Overwrite);
+        FS.GetFiles(folder, deleteRecursively).ToList().ForEach(d => FS.DeleteFileIfExists(d));
+        if (deleteRecursively)
+        {
+            FS.CopyAllFilesRecursively(folderFrom, folder, FileMoveCollisionOption.Overwrite);
+        }
+        else
+        {
+            FS.CopyAllFiles(folderFrom, folder, FileMoveCollisionOption.Overwrite);
+        }
+        
+
+        if (replace_Original)
+        {
+            const string _Original = "_Original";
+
+            var files = FS.GetFiles(folder);
+            foreach (var item in files)
+            {
+                var item2 = item;
+                var c = TF.ReadFile(item);
+                // replace in content
+                c = SH.Replace(c, _Original, string.Empty);
+                TF.SaveFile(c, item2);
+
+                if (item2.Contains(_Original))
+                {
+                    string newFile = item2.Replace(_Original, string.Empty);
+
+                    FS.MoveFile(item2, newFile, FileMoveCollisionOption.Overwrite);
+                }
+            }
+        }
     }
 
     private static string NameOfFeature(object featureOrType)

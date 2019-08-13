@@ -54,6 +54,8 @@ public partial class FS
         s_invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.slash);
     }
 
+    
+
     /// <summary>
     /// For empty or whitespace return false.
     /// </summary>
@@ -1149,19 +1151,24 @@ public static string AddExtensionIfDontHave(string file, string ext)
 
 public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
     {
-        CopyMoveAllFilesRecursively(p, to, co, false, contains);
+        CopyMoveAllFilesRecursively(p, to, co, false, contains, SearchOption.AllDirectories);
     }
 
-/// <summary>
+    internal static void CopyAllFiles(string p, string to, FileMoveCollisionOption co, string contains = null)
+    {
+        CopyMoveAllFilesRecursively(p, to, co, false, contains, SearchOption.TopDirectoryOnly);
+    }
+
+    /// <summary>
     /// If want use which not contains, prefix A4 with !
     /// </summary>
     /// <param name="p"></param>
     /// <param name="to"></param>
     /// <param name="co"></param>
     /// <param name="contains"></param>
-    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains)
+    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains, SearchOption so )
     {
-        string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
+        string[] files = Directory.GetFiles(p, AllStrings.asterisk, so);
         foreach (var item in files)
         {
             if (!string.IsNullOrEmpty(contains))

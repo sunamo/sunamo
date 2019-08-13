@@ -65,7 +65,6 @@ public static partial class HtmlHelper
         return title.Replace(AllChars.qm, AllChars.bs);
     }
 
-
     public static string ReplaceAllFontCase(string r)
     {
         string za = "<br" + " /" + "";
@@ -616,5 +615,25 @@ public static partial class HtmlHelper
             }
         }
         return null;
+    }
+
+    /// <summary>
+    /// Replace A2 by A3
+    /// </summary>
+    /// <param name="parentNode"></param>
+    /// <param name="o2"></param>
+    /// <param name="nc"></param>
+    public static void ReplaceChildNodeByOuterHtml(HtmlNode parentNode, string o2, HtmlNode nc)
+    {
+        for (int i = 0; i < parentNode.ChildNodes.Count; i++)
+        {
+            var item = parentNode.ChildNodes[i];
+            if (item.OuterHtml == o2)
+            {
+                // First is new, Second is old!!!
+                parentNode.ReplaceChild(nc,item);
+                break;
+            }
+        }
     }
 }

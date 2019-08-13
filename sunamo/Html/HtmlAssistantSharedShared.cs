@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using sunamo.Html;
+using sunamo.Values;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,14 @@ using System.Web;
 
 public partial class HtmlAssistant
 {
+    /// <summary>
+    /// return se if wont be found
+    /// return (null) Consts.nulled when attr exists without value (input readonly atc.)
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="divMain"></param>
+    /// <param name="_trim"></param>
+    /// <returns></returns>
     public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
         object o = divMain.Attributes[p];
@@ -17,6 +26,11 @@ public partial class HtmlAssistant
             if (_trim)
             {
                 st = st.Trim();
+            }
+
+            if (st == string.Empty)
+            {
+                return Consts.nulled;
             }
 
             return st;
