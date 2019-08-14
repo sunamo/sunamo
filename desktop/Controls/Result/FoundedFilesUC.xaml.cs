@@ -2,6 +2,7 @@
 using sunamo.Data;
 using sunamo.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,7 @@ namespace desktop.Controls.Result
             CA.WithEndSlash(basePaths);
         }
 
-        public TUList<string, Brush> DefaultBrushes(string green, string red)
+        public TUList<string, Brush> DefaultBrushes(string green = "", string red = "")
         {
             TUList<string, Brush> result = new TUList<string, Brush>();
             result.Add(TU<string, Brush>.Get(green, Brushes.Green));
@@ -49,14 +50,44 @@ namespace desktop.Controls.Result
             return result;
         }
 
+        /// <summary>
+        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
+        /// Already inserted is not deleted
+        /// </summary>
+        /// <param name="foundedList"></param>
+        /// <param name="p"></param>
         public void AddFoundedFiles(List<string> foundedList, TUList<string, Brush> p)
         {
             int i = 0;
             foreach (var item in foundedList)
             {
+                AddFoundedFile(item, p, ref i);
+            }
+        }
+
+        /// <summary>
+        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
+        /// Already inserted is not deleted
+        /// </summary>
+        /// <param name="foundedList"></param>
+        /// <param name="p"></param>
+        public void AddFoundedFile(string item, TUList<string, Brush> p, ref int i)
+        {
                 FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
                 foundedFile.Selected += FoundedFile_Selected;
-                sp.Children.Add(foundedFile);
+                sp.Children.Add(foundedFile);   
+        }
+
+        public List<FoundedFileUC> Items
+        {
+            get
+            {
+                List<FoundedFileUC> founded = new List<FoundedFileUC>(sp.Children.Count);
+                foreach (FoundedFileUC item in sp.Children)
+                {
+                    founded.Add(item);
+                }
+                return founded;
             }
         }
 
@@ -93,5 +124,19 @@ namespace desktop.Controls.Result
         {
             Selected(p);
         }
+        /// <summary>
+        /// return null if there is no element
+        /// </summary>
+        /// <returns></returns>
+        public string PathOfFirstFile()
+        {
+            if (Items.Count != 0)
+            {
+                return Items[0].tbFileName.Text;
+            }
+            return null;
+        }
+
+        
     }
 }

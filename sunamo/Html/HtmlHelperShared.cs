@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using sunamo.Values;
+using sunamo.Html;
 
 public static partial class HtmlHelper
 {
@@ -437,27 +438,11 @@ public static partial class HtmlHelper
     /// <returns></returns>
     public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
     {
-        List<HtmlNode> vr = new List<HtmlNode>();
-        foreach (var item in htmlNodeCollection)
-        {
-            if (item.Name != "#text")
-            {
-                vr.Add(item);
-            }
-        }
-        return vr;
+        return HtmlAgilityHelper.TrimTexts(htmlNodeCollection);
     }
     public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
     {
-        List<HtmlNode> vr = new List<HtmlNode>();
-        foreach (var item in c2)
-        {
-            if (item.Name != "#text")
-            {
-                vr.Add(item);
-            }
-        }
-        return vr;
+        return HtmlAgilityHelper.TrimTexts(c2);
     }
 
     /// <summary>

@@ -69,6 +69,7 @@ namespace desktop.Helpers.Backend
 
             if (e.Key == Key.Right)
             {
+                // Is right
                 if (FileIsRightEvent != null)
                 {
                     FileIsRightEvent(FullPathSelectedFile);
@@ -78,6 +79,7 @@ namespace desktop.Helpers.Backend
             }
             else if (e.Key == Key.Left)
             {
+                // Is wrong, keep where is 
                 if (LeaveInActualFolder != null)
                 {
                     LeaveInActualFolder(FullPathSelectedFile);
@@ -87,6 +89,7 @@ namespace desktop.Helpers.Backend
             }
             else if (e.Key == Key.Up)
             {
+                // Action
                 if (MoveLastFile != null)
                 {
                     MoveLastFile(FullPathSelectedFile);
@@ -96,6 +99,7 @@ namespace desktop.Helpers.Backend
             }
             else if (e.Key == Key.Down)
             {
+                // Undo action
                 if (ReturnMovedFileBack != null)
                 {
                     ReturnMovedFileBack(FullPathSelectedFile);

@@ -17,11 +17,26 @@ namespace sunamo.Essential
         /// Project = Project
         /// </summary>
         public static string Name;
+        static string project = null;
         /// <summary>
         /// Name = Solution
         /// Project = Project
         /// </summary>
-        public static string Project;
+        public static string Project
+        {
+            get
+            {
+                if (project == null)
+                {
+                    return Name;
+                }
+                return project;
+            }
+            set
+            {
+                project = value;
+            }
+        }
         public static string _Name
         {
             get

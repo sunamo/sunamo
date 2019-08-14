@@ -28,6 +28,12 @@ namespace desktop.Controls.Result
         /// </summary>
         string file;
 
+        /// <summary>
+        /// A2 is require but is available through foundedFilesUC.DefaultBrush
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="p"></param>
+        /// <param name="serie"></param>
         public FoundedFileUC(string filePath, TUList<string, Brush> p, int serie)
         {
             InitializeComponent();
@@ -46,6 +52,8 @@ namespace desktop.Controls.Result
                     break;
                 }
             }
+
+            
 
             tbFileName.Text = file;
             foreach (var item in p)

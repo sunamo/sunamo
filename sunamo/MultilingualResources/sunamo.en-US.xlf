@@ -1249,7 +1249,6 @@
           <source />
           <target state="translated">File has already been uploaded to this version. Uploading a new file will overwrite the existing one.</target>
         </trans-unit>
-
         <trans-unit id="ParseUlozToLiveVideoUri" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Parse Uloz.to live video uri</target>
@@ -3902,8 +3901,6 @@
           <source></source>
           <target state="translated">Rate song translation!</target>
         </trans-unit>
-
-
         <trans-unit id="Value" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Value</target>
@@ -4600,7 +4597,6 @@
           <source></source>
           <target state="translated">The server upload service can only be used by admin due to limited hosting space.</target>
         </trans-unit>
-
         <trans-unit id="PasswordChangedSuccessfully" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Password changed successfully</target>
@@ -5425,7 +5421,6 @@
           <source></source>
           <target state="translated">The blog address contained invalid characters</target>
         </trans-unit>
-
         <trans-unit id="YouAreNotLoggedInTheSiteCannotCreateANewBlogPost" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">You are not logged in, the site cannot create a new blog post</target>
@@ -5806,7 +5801,6 @@
           <source></source>
           <target state="translated">Transition</target>
         </trans-unit>
-
         <trans-unit id="NextTotalCats" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Next (Total cats</target>
@@ -7855,7 +7849,6 @@
           <source></source>
           <target state="translated">Now upload via FTP file</target>
         </trans-unit>
-
         <trans-unit id="TheFileNameDidNotContainAPeriod" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">The file name did not contain a period.</target>
@@ -8591,6 +8584,70 @@
         <trans-unit id="ScriptsModernizr" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">~/Scripts/modernizr-*</target>
+        </trans-unit>
+        <trans-unit id="MostPopularSongsInTheLastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">20 most popular songs in the last 7 days</target>
+        </trans-unit>
+        <trans-unit id="MostPopularSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">10 most popular songs</target>
+        </trans-unit>
+        <trans-unit id="AddIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add it</target>
+        </trans-unit>
+        <trans-unit id="SmazatYTVidea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat YT videa</target>
+        </trans-unit>
+        <trans-unit id="DeleteSongLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete song lyrics</target>
+        </trans-unit>
+        <trans-unit id="DeleteYTVideos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete YT videos</target>
+        </trans-unit>
+        <trans-unit id="DidnTFindYourFavoriteVideoOrTextOnThisSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Didn't find your favorite video or text on this site?</target>
+        </trans-unit>
+        <trans-unit id="AddItRLAddIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add it&lt;%--RL:AddIt--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Didn't find your favorite video or text on this site?&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSite--%&gt;&lt;a href="AddSong"&gt;Add it&lt;%--RL:AddIt--%&gt;&lt;%--RL:AddItRLAddIt--%&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="RLPDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItARLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItAPRL" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;%--RL:--%&gt;&lt;p&gt;Didn't find your favorite video or text on this site?&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSite--%&gt;&lt;a href="AddSong"&gt;Add it&lt;%--RL:AddIt--%&gt;&lt;%--RL:AddItRLAddIt--%&gt;&lt;/a&gt;&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA--%&gt;&lt;/p&gt;&lt;%--RL:--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Didn't find your favorite video or text on this site?&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSite--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="AddItRLAddItRLAddItRLAddIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add it&lt;%--RL:AddIt--%&gt;&lt;%--RL:AddItRLAddIt--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="AddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add it&lt;%--RL:AddIt--%&gt;&lt;%--RL:AddItRLAddIt--%&gt;&lt;%--RL:AddItRLAddItRLAddItRLAddIt--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="RLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItARLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItARLRLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Didn't find your favorite video or text on this site?&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSite--%&gt;&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSite--%&gt;&lt;a href="AddSong"&gt;Add it&lt;%--RL:AddIt--%&gt;&lt;%--RL:AddItRLAddIt--%&gt;&lt;%--RL:AddItRLAddItRLAddItRLAddIt--%&gt;&lt;%--RL:AddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddItRLAddIt--%&gt;&lt;/a&gt;&lt;%--RL:DidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA--%&gt;&lt;%--RL:RLDidnTFindYourFavoriteVideoOrTextOnThisSiteRLDidnTFindYourFavoriteVideoOrTextOnThisSiteAHrefAddSongAddItRLAddItRLAddItRLAddItA--%&gt;</target>
+        </trans-unit>
+        <trans-unit id="NickSName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nick's Name:</target>
         </trans-unit>
       </group>
     </body>

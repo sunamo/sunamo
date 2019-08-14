@@ -6,16 +6,17 @@ using sunamo.Essential;
 
 public class TestHelper
 {
-    public static void RefreshOriginalFiles(object f, object featureOrType)
+    public static string DefaultFolderPath()
     {
         string appName = ThisApp.Name;
         string project = ThisApp.Project;
 
         string folderFrom = @"d:\_Test\" + appName + "\\" + project;
-        
+        return folderFrom;
     }
 
     /// <summary>
+    /// A1 can be null, then will be joined default like d:\_Test\AllProjectSearch\AllProjectSearch\
     /// A2 can be slashed or backslashed
     /// To A2 will be add _Original automatically
     /// </summary>
@@ -23,6 +24,11 @@ public class TestHelper
     /// <param name="featureOrType"></param>
     public static void RefreshOriginalFiles(string baseFolder, object featureOrType, bool deleteRecursively, bool replace_Original)
     {
+        if (baseFolder == null)
+        {
+            baseFolder = DefaultFolderPath();
+        }
+
         string feature = NameOfFeature(featureOrType);
 
         FS.WithoutEndSlash(ref baseFolder);
@@ -72,7 +78,7 @@ public class TestHelper
         }
         else
         {
-            feature = featureOrType.ToString();
+            feature = featureOrType.GetType().Name;
         }
 
         return feature;

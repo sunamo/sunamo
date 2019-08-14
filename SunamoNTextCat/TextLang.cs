@@ -122,12 +122,23 @@ public class TextLang
 
     private static void CalculateSumOfProbiality(string text, out double sumEn, out double sumCs)
     {
-        var p = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(text);
-
-        p = CA.ToLower(p);
-
         sumEn = 0;
         sumCs = 0;
+
+        var p = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(text);
+        p = CA.ToLower(p);
+
+        foreach (var item in p)
+        {
+            if(SunamoNTextCatConsts.czechWords.Contains(item))
+            {
+                sumEn = 1;
+                
+                return ;
+            }
+        }
+
+        
         foreach (var item in p)
         {
             if (string.IsNullOrWhiteSpace(item))
@@ -209,6 +220,8 @@ public class TextLang
         {
             return true;
         }
+
+
 
         double sumEn, sumCs;
         CalculateSumOfProbiality(text, out sumEn, out sumCs);

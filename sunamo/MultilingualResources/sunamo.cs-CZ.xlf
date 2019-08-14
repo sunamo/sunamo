@@ -8005,6 +8005,30 @@
           <source></source>
           <target state="translated">Neúplná adresa Uri.</target>
         </trans-unit>
+        <trans-unit id="MostPopularSongsInTheLastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">20 nejpopulárnějších songů za posledních 7 dní</target>
+        </trans-unit>
+        <trans-unit id="AddIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidejte ho</target>
+        </trans-unit>
+        <trans-unit id="DeleteSongLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat texty písní</target>
+        </trans-unit>
+        <trans-unit id="DeleteYTVideos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat YT videa</target>
+        </trans-unit>
+        <trans-unit id="DidnTFindYourFavoriteVideoOrTextOnThisSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nenašli jste na těchto stránkách své oblíbené video nebo text?</target>
+        </trans-unit>
+        <trans-unit id="NickSName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nick uživatele:</target>
+        </trans-unit>
       </group>
     </body>
   </file>

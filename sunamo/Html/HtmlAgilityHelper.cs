@@ -4,6 +4,7 @@ using System.Text;
 using HtmlAgilityPack;
 using System.Linq;
 using sunamo.Constants;
+using SunamoCzAdmin;
 
 namespace sunamo.Html
 {
@@ -14,9 +15,15 @@ namespace sunamo.Html
     /// </summary>
     public class HtmlAgilityHelper
     {
+        public static bool _trimTexts = false;
+
         #region Helpers
         public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
         {
+            if (!_trimTexts)
+            {
+                return htmlNodeCollection.ToList();
+            }
             List<HtmlNode> vr = new List<HtmlNode>();
             foreach (var item in htmlNodeCollection)
             {
@@ -28,8 +35,80 @@ namespace sunamo.Html
             return vr;
         }
 
+        public static List<HtmlNode> TrimComments(List<HtmlNode> n)
+        {
+            List<HtmlNode> vr = new List<HtmlNode>();
+            bool startWith = false;
+            bool endsWith = false;
+            foreach (var item in n)
+            {
+                startWith = false;
+                endsWith = false;
+
+                var html = item.InnerHtml.Trim();
+                endsWith = html.Contains(SunamoCzAdminConsts.endHtmlComment);
+                startWith = html.Contains(SunamoCzAdminConsts.startHtmlComment);
+
+                if (startWith && endsWith) //item.NodeType == HtmlNodeType.Comment)
+                {
+                    
+                }
+                else if(true)
+                {
+                    
+
+                    if (html == string.Empty)
+                    {
+                        continue;
+                    }
+
+                     endsWith = html.Contains(SunamoCzAdminConsts.endAspxComment);
+                     startWith = html.Contains(SunamoCzAdminConsts.startAspxComment);
+                    if (startWith || endsWith )
+                    {
+                        if (startWith && endsWith)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+
+                    if (html.StartsWith("<%"))
+                    {
+                        continue;
+                    }
+
+                    //var hd = HtmlAgilityHelper.CreateHtmlDocument();
+                    //hd.LoadHtml(html);
+                    int count = item.ChildNodes.Count;
+                    var textCount = TrimTexts(item.ChildNodes).Count;
+
+                    if (textCount == count && html == string.Empty)
+                    {
+                        continue;
+                    }
+                    //if (textCount != 0)
+                    //{
+                    //    continue;
+                    //}
+
+                        vr.Add(item);
+                    
+                }
+               
+            }
+            return vr;
+        }
+
         public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
         {
+            if (!_trimTexts)
+            {
+                return c2;
+            }
             List<HtmlNode> vr = new List<HtmlNode>();
             foreach (var item in c2)
             {
@@ -75,6 +154,8 @@ namespace sunamo.Html
             }
             return contains;
         }
+
+        
 
         /// <summary>
         /// It's calling by others
