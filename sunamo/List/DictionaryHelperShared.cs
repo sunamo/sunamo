@@ -7,7 +7,7 @@ public partial class DictionaryHelper
 {
     private static Type s_type = typeof(DictionaryHelper);
 
-    public static Value GetFirstItem<Value>(Dictionary<string, Value> dict)
+    public static Value GetFirstItemValue<Key,Value>(Dictionary<Key, Value> dict)
     {
         foreach (var item in dict)
         {
@@ -15,6 +15,16 @@ public partial class DictionaryHelper
         }
 
         return default(Value);
+    }
+
+    public static Key GetFirstItemKey<Key, Value>(Dictionary<Key, Value> dict)
+    {
+        foreach (var item in dict)
+        {
+            return item.Key;
+        }
+
+        return default(Key);
     }
 
     public static short AddToIndexAndReturnIncrementedShort<T>(short i, Dictionary<short, T> colors, T colorOnWeb)

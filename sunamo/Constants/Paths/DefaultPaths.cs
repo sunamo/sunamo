@@ -41,7 +41,7 @@ namespace sunamo.Constants
         public static string vs17 = @"d:\vs17\";
         public static string vs17Documents = FS.Combine(DefaultPaths.Documents, @"vs17\");
         public static string NormalizePathToFolder = FS.Combine(DefaultPaths.Documents, @"Visual Studio 2017\Projects\");
-        public static string Test_MoveClassElementIntoSharedFileUC = "d:\\_Test\\AllProjectSearch\\AllProjectSearch\\MoveClassElementIntoSharedFileUC\\";
+        public static string Test_MoveClassElementIntoSharedFileUC = "d:\\_Test\\AllProjectsSearch\\AllProjectsSearch\\MoveClassElementIntoSharedFileUC\\";
 
         public static List<string> AllPathsToProjects = CA.ToListString(Test_MoveClassElementIntoSharedFileUC, vs, vsDocuments, vs17 + ProjectsFolderNameSlash, vs17Documents + ProjectsFolderNameSlash, NormalizePathToFolder);
 

@@ -22,21 +22,90 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
 
-    public static string Dictionary(string nameClass, List<string> keys, StringVoid randomValue)
+    #region DictionaryWithClass
+    public static string DictionaryWithClass<Key,Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
     {
         CSharpGenerator genCS = new CSharpGenerator();
-        genCS.StartClass(0, AccessModifiers.Private, false, nameClass);
-        genCS.Field(1, AccessModifiers.Private, false, VariableModifiers.None, "Dictionary&lt;string, string&gt" + ";", "dict", false, "new Dictionary&lt;string, string&gt;()");
-        CSharpGenerator inner = new CSharpGenerator();
-        foreach (var item in keys)
-        {
-            inner.AppendLine(2, "dict.Add(\"{0}\", \"{1}\");", item, randomValue.Invoke());
-        }
+        genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
 
-        genCS.Ctor(1, ModifiersConstructor.Private, nameClass, inner.ToString());
+
+        
+        genCS.DictionaryFromRandomValue<Key, Value>(0, nameDictionary, keys, randomValue, false);
+
+        var inner = GetDictionaryValuesFromRandomValue<Key, Value>(tabCount, nameDictionary, keys, randomValue);
+        genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
         genCS.EndBrace(0);
+
         return genCS.ToString();
     }
+
+    public static string DictionaryWithClass<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> d)
+    {
+        CSharpGenerator genCS = new CSharpGenerator();
+        genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
+
+
+
+        genCS.DictionaryFromDictionary<Key, Value>(0, nameDictionary, d, false);
+
+        var inner = GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, d);
+        genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
+        genCS.EndBrace(0);
+
+        return genCS.ToString();
+    }
+    #endregion
+
+    #region GetDictionaryValues
+    public static string GetDictionaryValuesFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        csg.GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
+        return csg.ToString();
+    }
+
+    public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values);
+        return csg.ToString();
+    }
+
+    public static string GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        csg.GetDictionaryValuesFromRandomValue<Key, Value>(tabCount, nameDictionary, keys, randomValue);
+        return csg.ToString();
+    } 
+    #endregion
+
+    //public static string GetDictionary(string nameDictionary)
+    //{
+
+    //}
+
+    public static string GetDictionaryStringObject<Value>(int tabCount, List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
+    {
+        int pocetTabu = 0;
+        CSharpGenerator gen = new CSharpGenerator();
+        gen.DictionaryFromTwoList<string, Value>(tabCount, nameDictionary, keys, values, false);
+
+        if (checkForNull)
+        {
+            gen.If(pocetTabu, nameDictionary + " " + "== null");
+        }
+
+        gen.GetDictionaryValuesFromDictionary<string, Value>(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
+        if (checkForNull)
+        {
+            gen.EndBrace(pocetTabu);
+        }
+
+        
+        string result = gen.ToString();
+        return result;
+    }
+
 
     public static string DefaultValueForType(string type)
     {
@@ -105,27 +174,7 @@ public static partial class CSharpHelper
         throw new Exception("Nepodporovaný typ");
     }
 
-    public static string GetDictionaryStringObject<Value>(List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
-    {
-        int pocetTabu = 0;
-        CSharpGenerator gen = new CSharpGenerator();
-        gen.Region(pocetTabu, "Airplane companies");
-        if (checkForNull)
-        {
-            gen.If(pocetTabu, nameDictionary + " " + "== null");
-        }
-
-        gen.DictionaryStringObject(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
-        if (checkForNull)
-        {
-            gen.EndBrace(pocetTabu);
-        }
-
-        gen.EndRegion(pocetTabu);
-        string result = gen.ToString();
-        return result;
-    }
-
+   
     public static string GetCtorInner(int tabCount, IEnumerable values)
     {
         const string assignVariable = "this.{0} = {0};";
@@ -137,6 +186,8 @@ public static partial class CSharpHelper
 
         return csg.ToString().Trim();
     }
+
+    
 
     /// <summary>
     /// Return also List because Array isn't use

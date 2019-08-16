@@ -78,6 +78,9 @@ namespace desktop.Controls.Result
                 sp.Children.Add(foundedFile);   
         }
 
+        /// <summary>
+        ///  Can be use only getting, not for removing due to from lb wont be removed
+        /// </summary>
         public List<FoundedFileUC> Items
         {
             get

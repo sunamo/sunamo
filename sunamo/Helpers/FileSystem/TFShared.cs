@@ -154,6 +154,16 @@ public partial class TF
         }
     }
 
+    /// <summary>
+    /// StreamReader is derived from TextReader
+    /// </summary>
+    /// <param name="file"></param>
+    /// <returns></returns>
+    public static StreamReader TextReader(string file)
+    {
+        return  File.OpenText(file);
+    }
+
     public static void WriteAllText(string file, string content)
     {
         File.WriteAllText(file, content);

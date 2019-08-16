@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-    <StackPanel Orientation="Vertical" x:Name="sp">
+    <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
             
     </StackPanel>
     </ScrollViewer>

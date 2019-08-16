@@ -16,13 +16,13 @@ public class TestHelper
     }
 
     /// <summary>
-    /// A1 can be null, then will be joined default like d:\_Test\AllProjectSearch\AllProjectSearch\
+    /// A1 can be null, then will be joined default like d:\_Test\AllProjectsSearch\AllProjectsSearch\
     /// A2 can be slashed or backslashed
     /// To A2 will be add _Original automatically
     /// </summary>
     /// <param name="appName"></param>
     /// <param name="featureOrType"></param>
-    public static void RefreshOriginalFiles(string baseFolder, object featureOrType, bool deleteRecursively, bool replace_Original)
+    public static void RefreshOriginalFiles(string baseFolder, object featureOrType, string modeOfFeature, bool deleteRecursively, bool replace_Original)
     {
         if (baseFolder == null)
         {
@@ -35,6 +35,14 @@ public class TestHelper
         baseFolder = baseFolder + "\\" + feature;
         var folderFrom =baseFolder + "_Original\\";
         string folder = baseFolder + "\\";
+
+        if (!string.IsNullOrEmpty(modeOfFeature))
+        {
+            modeOfFeature = modeOfFeature.TrimEnd('\\') + "\\";
+            folderFrom += modeOfFeature;
+            folder += modeOfFeature;
+        }
+
         FS.GetFiles(folder, deleteRecursively).ToList().ForEach(d => FS.DeleteFileIfExists(d));
         if (deleteRecursively)
         {
@@ -75,6 +83,10 @@ public class TestHelper
         if (featureOrType is Type)
         {
             feature = (featureOrType as Type).Name;
+        }
+        else if (featureOrType is string)
+        {
+            return featureOrType.ToString();
         }
         else
         {

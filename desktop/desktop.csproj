@@ -49,6 +49,10 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -254,6 +258,7 @@
     <Compile Include="FileSystemWatcherExtended\PathAvailablitiyEventArgs.cs" />
     <Compile Include="FileSystemWatcherExtended\WatchersExList.cs" />
     <Compile Include="FontHelper.cs" />
+    <Compile Include="GuesslangHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
     <Compile Include="Helpers\Backend\TextBoxBackend.cs" />
     <Compile Include="Helpers\BaseControls\ControlHelperShared.cs" />

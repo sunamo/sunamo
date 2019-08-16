@@ -58,4 +58,15 @@ public static partial class NH
             }
         }
     }
+
+    /// <summary>
+    /// Cast A1,2 to double and divide
+    /// </summary>
+    /// <param name="textC"></param>
+    /// <param name="diac"></param>
+    /// <returns></returns>
+    public static double Divide(object textC, object diac)
+    {
+        return double.Parse( textC.ToString()) / double.Parse( diac.ToString());
+    }
 }

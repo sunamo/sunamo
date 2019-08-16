@@ -543,7 +543,8 @@ Template for which I will find, have to be in derivates the same:
     {
         public static void SearchYouTubeSerialSerie(int parts, int serie, string name)
         {
-            for (int i = 0; i < parts; i++)
+            parts++;
+            for (int i = 1; i < parts; i++)
             {
                 PH.Start(YouTube.GetLinkToSearch(name + " " + serie + " x " + i));
             }

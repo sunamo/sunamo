@@ -19,10 +19,19 @@ public class DatabaseLayer
     {
         try
         {
-            SQLiteConnection.CreateFile(dbPath);
-            DatabaseLayer.dbFile = dbPath;
-            DatabaseLayer.LoadNewConnection();
-            SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
+            // Commented, when was AllProjectSearch.db open in release, in debug throw IOException
+            //SQLiteConnection.CreateFile(dbPath);
+            //try
+            //{
+            //    DatabaseLayer.dbFile = dbPath;
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    ThisApp.SetStatus(TypeOfMessage.Error, Exceptions.TextOfExceptions(ex));
+            //}
+            //DatabaseLayer.LoadNewConnection();
+            //SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
         }
         catch (Exception)
         {

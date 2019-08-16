@@ -26,10 +26,64 @@ public partial class FS
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// A4 can be null if !A5
+    /// In A1 will keep files which doesnt exists in A3
+    /// </summary>
+    /// <param name="filesFrom"></param>
+    /// <param name="folderFrom"></param>
+    /// <param name="folderTo"></param>
+    /// <param name="wasntExistsInFrom"></param>
+    /// <param name="mustExistsInTarget"></param>
+    /// <param name="copy"></param>
+    public static void CopyMoveFilesInList(List<string> filesFrom, string folderFrom, string folderTo,  List<string> wasntExistsInFrom, bool mustExistsInTarget, bool copy)
+    {
+        FS.WithoutEndSlash(folderFrom);
+        FS.WithoutEndSlash(folderTo);
+
+        CA.RemoveStringsEmpty2(filesFrom);
+
+        for (int i = filesFrom.Count - 1; i >= 0; i--)
+        {
+            filesFrom[i] = filesFrom[i].Replace(folderFrom, string.Empty);
+
+            var oldPath = folderFrom + filesFrom[i];
+            var newPath = folderTo + filesFrom[i];
+
+            if (!File.Exists(oldPath))
+            {
+                
+                wasntExistsInFrom.Add(filesFrom[i]);
+                filesFrom.RemoveAt(i);
+                continue;
+            }
+
+            if (!File.Exists(newPath) && mustExistsInTarget)
+            {
+                
+                
+                continue;
+            }
+            else
+            {
+                if (copy)
+                {
+                    FS.CopyFile(oldPath, newPath, FileMoveCollisionOption.Overwrite);
+                }
+                else
+                {
+                    FS.MoveFile(oldPath, newPath, FileMoveCollisionOption.Overwrite);
+                }
+                filesFrom.RemoveAt(i);
+            }
+        }
+    }
+
     public async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
     {
         return new StorageFile(folder.fullPath, v);
     }
+
     public static void DeleteEmptyFiles(string folder, SearchOption so)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(), so);

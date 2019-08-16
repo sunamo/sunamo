@@ -18,6 +18,17 @@ using Diacritics.Extensions;
 public static partial class SH
 {
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
+
+    public static string TextAfter(string item, string sourceCode)
+    {
+        var dex = item.IndexOf(sourceCode);
+        if (dex != -1)
+        {
+            return item.Substring(dex + sourceCode.Length); 
+        }
+        return null;
+    }
+
     private static Type s_type = typeof(SH);
 
     public static string NullToStringOrDefault(object n)
@@ -175,7 +186,7 @@ public static partial class SH
     /// <returns></returns>
     public static string Replace(string t, string what, string forWhat)
     {
-        return t.Replace(what, forWhat);
+        return SH.ReplaceOnce(t,what, forWhat);
     }
 
     public static string ReplaceAll2(string vstup, string zaCo, string co, bool pairLines)
@@ -837,6 +848,7 @@ public static partial class SH
     {
         return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
     }
+
     public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
         InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", "args", parts);
@@ -1706,14 +1718,30 @@ public static partial class SH
 
     /// <summary>
     /// Oddělovač může být pouze jediný znak, protože se to pak předává do metody s parametrem int!
+    /// If A1 dont have index A2, all chars
     /// </summary>
     /// <param name="p1"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
     public static string GetFirstPartByLocation(string p1, char deli)
     {
+        int dx = p1.IndexOf(deli);
+
+        return GetFirstPartByLocation(p1, dx);
+    }
+
+    public static string GetFirstPartByLocation(string p1, int dx)
+    {
         string p, z;
-        GetPartsByLocation(out p, out z, p1, p1.IndexOf(deli));
+        p = p1;
+
+        
+
+        if (dx < p1.Length)
+        {
+            GetPartsByLocation(out p, out z, p1, dx);
+        }
+        
         return p;
     }
 

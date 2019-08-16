@@ -107,9 +107,13 @@ namespace desktop.Helpers.Backend
             SetTextBoxState();
         }
          
-        private void SetTextBoxState()
+        public void SetTextBoxState(string s = null)
         {
-            txtTextBoxState.Text = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + "Line" + ": " + (actualLine+1)).Trim();
+            if (s == null)
+            {
+                s = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + "Line" + ": " + (actualLine + 1)).Trim();
+            }
+            txtTextBoxState.Text = s;
         }
 
         public void JumpToNextSearchedResult(int addLines)

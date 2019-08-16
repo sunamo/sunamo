@@ -424,6 +424,163 @@ public class CSharpGenerator : GeneratorCodeAbstract
         StartBrace(tabCount);
     }
 
+    #region Dictionary
+    public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums)
+    {
+        DictionaryFromDictionary<T, U>(tabCount, nameDictionary, nameCommentEnums);
+    }
+
+    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
+    {
+        DictionaryFromDictionary<string, string>(tabCount, nameDictionary, nameCommentEnums);
+    }
+
+    public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result)
+    {
+        string cn = "Dictionary<string, List<string>>";
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
+        foreach (var item in result)
+        {
+            var list = CA.WrapWithQm(item.Value);
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", CA.ToListString(" + SH.Join(list, AllChars.comma) + "));");
+        }
+    }
+
+    #region DictionaryFrom
+    public void DictionaryFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue, bool addingValue = true)
+    {
+        
+
+        Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dict.Add(keys[i], randomValue.Invoke());
+        }
+
+        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, addingValue);
+    }
+
+    public void DictionaryFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, bool addingValue = true)
+    {
+        ThrowExceptions.DifferentCountInLists(type, RH.CallingMethod(), "keys", keys, "values", values);
+
+        Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dict.Add(keys[i], values[i]);
+        }
+
+        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, addingValue);
+    }
+
+    public void DictionaryFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict, bool addingValue = true)
+    {
+        string valueType = null;
+        if (dict.Count > 0)
+        {
+            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key,Value>(dict).ToString());
+        }
+        string cn = "Dictionary<string, " + valueType + ">";//
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        AppendLine();
+        CreateInstance(cn, nameDictionary);
+
+        if (addingValue)
+        {
+            GetDictionaryValuesFromDictionary(tabCount, nameDictionary, dict);
+        }
+        
+    }
+
+    public void GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
+    {
+        Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dict.Add(keys[i], randomValue.Invoke());
+        }
+
+        GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
+    }
+
+    public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
+    {
+        ThrowExceptions.DifferentCountInLists(type, RH.CallingMethod(), "keys", keys, "values", values);
+
+        Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
+        for (int i = 0; i < keys.Count; i++)
+        {
+            dict.Add(keys[i], values[i]);
+        }
+
+        GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
+    }
+
+    public void GetDictionaryValuesFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict)
+    {
+        Key key = default(Key);
+        Value value = default(Value);
+
+        foreach (var item in dict)
+        {
+            key = item.Key;
+            value = item.Value;
+
+            break;
+        }
+
+        var tKey = key.GetType();
+        var tValue = value.GetType();
+
+        string valueS, keyS = null;
+        valueS = value.ToString();
+        keyS = key.ToString();
+
+        foreach (var item in dict)
+        {
+            keyS = item.Key.ToString();
+            valueS = item.Value.ToString();
+
+            if (tKey == Consts.tString)
+            {
+                keyS = SH.WrapWithQm(keyS);
+            }
+            else if (tKey == Consts.tChar)
+            {
+                keyS = SH.WrapWith(keyS, '\'');
+            }
+            else
+            {
+                keyS = key.ToString();
+            }
+
+            if (tValue == Consts.tString)
+            {
+                valueS = SH.WrapWithQm(valueS);
+            }
+            else if (tValue == Consts.tChar)
+            {
+                valueS = SH.WrapWith(valueS, '\'');
+            }
+            else
+            {
+                valueS = value.ToString();
+            }
+
+
+            this.AppendLine(tabCount, nameDictionary + ".Add(" + keyS + ", " + valueS + ");");
+        }
+    }
+    #endregion
+
+    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
+    {
+        DictionaryFromDictionary<string, Value>(tabCount, nameDictionary, dict);
+    }
+
+
+    #endregion
+
     /// <summary>
     /// Automaticky doplní počáteční závorku
     /// </summary>
@@ -490,71 +647,10 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void This(int tabCount, string item)
     {
-        
         Append(tabCount, "this." + item);
     }
 
-    #region Dictionary
-    public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums)
-    {
-        string cn = "Dictionary<" + typeof(T).FullName + ", " + typeof(U).FullName + ">";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
-        foreach (var item in nameCommentEnums)
-        {
-            this.AppendLine(tabCount, nameDictionary + ".Add(" + item.Key.ToString().Replace(',', '.') + ", " + item.Value.ToString().Replace(',', '.') + ");");
-        }
-    }
-
-    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
-    {
-        string cn = "Dictionary<string, string>";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
-        foreach (var item in nameCommentEnums)
-        {
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", \"" + item.Value + "\");");
-        }
-    }
-
-    public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result)
-    {
-        string cn = "Dictionary<string, List<string>>";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
-        foreach (var item in result)
-        {
-            var list = CA.WrapWithQm(item.Value);
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", CA.ToListString(" + SH.Join(list, AllChars.comma) + "));");
-        }
-    }
-
-    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
-    {
-        string valueType = null;
-        if (dict.Count > 0)
-        {
-            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItem(dict));
-        }
-        string cn = "Dictionary<string, "+valueType+">";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
-        AppendLine();
-        CreateInstance(cn, nameDictionary);
-        
-        foreach (var item in dict)
-        {
-            string value = null;
-            if (item.Value.GetType() == Consts.tString)
-            {
-                value = SH.WrapWithQm(item.Value.ToString());
-            }
-            else
-            {
-                value = item.Value.ToString();
-            }
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", " + value + ");");
-        }
-    }
-
     
-    #endregion
 
     private void NewVariable(int tabCount, AccessModifiers _public, string cn, string name, bool createInstance)
     {
