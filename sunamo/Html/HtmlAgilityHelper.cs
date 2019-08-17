@@ -46,8 +46,8 @@ namespace sunamo.Html
                 endsWith = false;
 
                 var html = item.InnerHtml.Trim();
-                endsWith = html.Contains(SunamoCzAdminConsts.endHtmlComment);
-                startWith = html.Contains(SunamoCzAdminConsts.startHtmlComment);
+                endsWith = html.Contains(AspxConsts.endHtmlComment);
+                startWith = html.Contains(AspxConsts.startHtmlComment);
 
                 if (startWith && endsWith) //item.NodeType == HtmlNodeType.Comment)
                 {
@@ -55,15 +55,13 @@ namespace sunamo.Html
                 }
                 else if(true)
                 {
-                    
-
                     if (html == string.Empty)
                     {
                         continue;
                     }
 
-                     endsWith = html.Contains(SunamoCzAdminConsts.endAspxComment);
-                     startWith = html.Contains(SunamoCzAdminConsts.startAspxComment);
+                     endsWith = html.Contains(AspxConsts.endAspxComment);
+                     startWith = html.Contains(AspxConsts.startAspxComment);
                     if (startWith || endsWith )
                     {
                         if (startWith && endsWith)

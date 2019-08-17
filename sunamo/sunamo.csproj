@@ -24,7 +24,7 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-    <Compile Include="..\..\SunamoCzAdmin\SunamoCzAdmin\SunamoCzAdminConsts.cs" Link="SunamoCzAdminConsts.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\ValueLabel.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\Text\TextBuilder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\Text\TextOutputGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\TestHelper.cs" />

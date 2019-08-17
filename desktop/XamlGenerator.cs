@@ -1,4 +1,4 @@
-﻿using desktop.Helpers;
+﻿
 using sunamo.Constants;
 using System;
 using System.Collections.Generic;
@@ -71,11 +71,25 @@ namespace desktop
         /// <returns></returns>
         public string MenuItems(List<string> headers, bool methodHandlers)
         {
+            CA.Trim(headers);
+            CA.TrimEnd(headers, AllChars.comma);
+
             List<string> headersInPascal = new List<string>(headers.Count);
 
-            foreach (var item in headers)
+            foreach (var item2 in headers)
             {
-                var inPascal = ConvertPascalConvention.ToConvention(item);
+                var item = item2;
+                string inPascal = item;
+
+                if (!ConvertPascalConventionWithNumbers.IsPascalWithNumber(item))
+                {
+                    inPascal = ConvertPascalConventionWithNumbers.ToConvention(item);
+                }
+                else
+                {
+                    item = ConvertPascalConventionWithNumbers.FromConvention(item);
+                }
+
                 headersInPascal.Add(inPascal);
                 string menuItemName = "mi" + inPascal;
 
@@ -95,7 +109,7 @@ namespace desktop
 
                 foreach (var item in headersInPascal)
                 {
-                    csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_" + "Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs" + " " + "");
+                    csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_" + "Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs" + " " + "e");
                 }
 
                 return csg.ToString();

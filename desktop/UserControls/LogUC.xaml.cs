@@ -16,7 +16,7 @@ namespace desktop.UserControls
         }
 
         public string Title => "Logs";
-
+        bool initialized = false;
         public WindowWithUserControl windowWithUserControl { get => windowOpenerMain.windowWithUserControl; set => windowOpenerMain.windowWithUserControl = value; }
 
         IKeysHandler<KeyEventArgs> keyHandlerMain = null;
@@ -59,7 +59,12 @@ namespace desktop.UserControls
 
         public void Init()
         {
+            if (!initialized)
+            {
+                initialized = true;
 
+
+            }
         }
     }
 }

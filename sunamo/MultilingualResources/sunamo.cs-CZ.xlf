@@ -4283,7 +4283,7 @@
         </trans-unit>
         <trans-unit id="AddAIfTheSongIsOriginallyInCzechIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">'&gt;přidat? Pokud je song původně v češtině, této hlášky si nevšímejte. Web nerozlišuje mezi cizojazyčnými, českými a instrumentálními songy.</target>
+          <target state="translated">Pokud je song původně v češtině, této hlášky si nevšímejte. Web nerozlišuje mezi cizojazyčnými, českými a instrumentálními songy.</target>
         </trans-unit>
         <trans-unit id="ArtistsWithTag" translate="yes" xml:space="preserve">
           <source></source>
@@ -8028,6 +8028,78 @@
         <trans-unit id="NickSName" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Nick uživatele:</target>
+        </trans-unit>
+        <trans-unit id="ArtistPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stránka interpreta</target>
+        </trans-unit>
+        <trans-unit id="AlbumPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stránka alba</target>
+        </trans-unit>
+        <trans-unit id="WrongVideoTextOrSongTranslationNotifyMeOfThisIssueAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Špatné video, text nebo překlad ke songu? Informujte mě o tomto problému na</target>
+        </trans-unit>
+        <trans-unit id="TextAndTranslationSize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Velikost textu a překladu:</target>
+        </trans-unit>
+        <trans-unit id="AddSongLyricsToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat text písně do oblíbených</target>
+        </trans-unit>
+        <trans-unit id="SignInToAddLyricsToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro přidání textu písničky do oblíbených se přihlašte</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToVoteOnTheQualityOfTheSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro hlasování na kvalitu písně se přihlašte</target>
+        </trans-unit>
+        <trans-unit id="AllOriginalLyricsOfThisSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny originální texty k této písni:</target>
+        </trans-unit>
+        <trans-unit id="AddTranslationToFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat překlad do oblíbených</target>
+        </trans-unit>
+        <trans-unit id="SignInToAddASongTranslationToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro přidání překladu písničky do oblíbených se přihlašte</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToVoteOnTheTranslationQualityOfTheSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro hlasování na kvalitu překladu písně se přihlašte</target>
+        </trans-unit>
+        <trans-unit id="AllTranslationsForThisSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny překlady k této písni:</target>
+        </trans-unit>
+        <trans-unit id="WatchHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přehrát zde</target>
+        </trans-unit>
+        <trans-unit id="WatchOnYouTube" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přehrát na YouTube</target>
+        </trans-unit>
+        <trans-unit id="SearchYouTube" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyhledat na YouTube</target>
+        </trans-unit>
+        <trans-unit id="YouMightAlsoLike" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Mohlo by se Vám také líbit</target>
+        </trans-unit>
+        <trans-unit id="ArtistSMostPopularSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejpopulárnější songy interpreta</target>
+        </trans-unit>
+        <trans-unit id="TheMostPopularSongsFromThisAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejpopulárnější songy z tohoto alba</target>
         </trans-unit>
       </group>
     </body>

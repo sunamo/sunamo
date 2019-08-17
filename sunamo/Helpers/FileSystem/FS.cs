@@ -104,10 +104,6 @@ public partial class FS
         }
     }
 
-
-
-
-
     /// <summary>
     /// either A1 or A2 can be null
     /// When A2 is null, will get from file path A1
@@ -126,10 +122,6 @@ public partial class FS
         FS.CreateDirectoryIfNotExists(outputFolder);
         return FS.Combine(outputFolder, Path.GetFileName(item));
     }
-
-
-
-
 
     public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo)
     {

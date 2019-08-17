@@ -4331,7 +4331,7 @@
         </trans-unit>
         <trans-unit id="AddAIfTheSongIsOriginallyInCzechIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">'&gt; add ? If the song is originally in Czech, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs.</target>
+          <target state="translated">If the song is originally in Czech, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs.</target>
         </trans-unit>
         <trans-unit id="ArtistsWithTag" translate="yes" xml:space="preserve">
           <source></source>
@@ -8648,6 +8648,112 @@
         <trans-unit id="NickSName" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Nick's Name:</target>
+        </trans-unit>
+        <trans-unit id="ADataTypeGoogleplusIdGoogleRunatServerClassPrettySocialFaFaGooglePlusAADataTypeTwitterIdTwitterRunatServerDataViaSunamoClassPrettySocialFaFaTwitterAADataTypeFacebookIdFacebookRunatServerClassPrettySocialFaFaFacebookA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;a data-type="googleplus" id="google" runat="server" class="prettySocial fa fa-google-plus"&gt;&lt;/a&gt;
+                        &lt;a data-type="twitter" id="twitter" runat="server" data-via="sunamo" class="prettySocial fa fa-twitter"&gt;&lt;/a&gt;
+                        &lt;a data-type="facebook" id="facebook" runat="server" class="prettySocial fa fa-facebook"&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="ArtistPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Artist page</target>
+        </trans-unit>
+        <trans-unit id="AlbumPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album page</target>
+        </trans-unit>
+        <trans-unit id="WrongVideoTextOrSongTranslationNotifyMeOfThisIssueAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Wrong video, text or song translation? Notify me of this issue at</target>
+        </trans-unit>
+        <trans-unit id="mailu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mailu</target>
+        </trans-unit>
+        <trans-unit id="TextAndTranslationSize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Text and translation size:</target>
+        </trans-unit>
+        <trans-unit id="A" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A-</target>
+        </trans-unit>
+        <trans-unit id="AddSongLyricsToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add song lyrics to your favorites</target>
+        </trans-unit>
+        <trans-unit id="SignInToAddLyricsToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sign in to add lyrics to your favorites</target>
+        </trans-unit>
+        <trans-unit id="InputTypeRadioIdHENRunatServerClassStarNameRatingENValueDataRoleRadioInputTypeRadioIdHENRunatServerClassStarNameRatingENValueDataRoleRadioInputTypeRadioIdHENRunatServerClassStarNameRatingENValueDataRoleRadioInputTypeRadioIdHENRunatServerClassStarNameRatingENValueDataRoleRadioInputTypeRadioIdHENRunatServerClassStarNameRatingENValueDataRoleRadio" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;input type="radio" id="h1EN" runat="server" class="star" name="RatingEN" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h2EN" runat="server" class="star" name="RatingEN" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h3EN" runat="server" class="star" name="RatingEN" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h4EN" runat="server" class="star" name="RatingEN" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h5EN" runat="server" class="star" name="RatingEN" value="" data-role="radio"&gt;</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToVoteOnTheQualityOfTheSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please log in to vote on the quality of the song</target>
+        </trans-unit>
+        <trans-unit id="AllOriginalLyricsOfThisSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All original lyrics of this song:</target>
+        </trans-unit>
+        <trans-unit id="AddTranslationToFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add translation to favorites</target>
+        </trans-unit>
+        <trans-unit id="SignInToAddASongTranslationToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sign in to add a song translation to your favorites</target>
+        </trans-unit>
+        <trans-unit id="InputTypeRadioIdHCZRunatServerClassStarNameRatingCZValueDataRoleRadioInputTypeRadioIdHCZRunatServerClassStarNameRatingCZValueDataRoleRadioInputTypeRadioIdHCZRunatServerClassStarNameRatingCZValueDataRoleRadioInputTypeRadioIdHCZRunatServerClassStarNameRatingCZValueDataRoleRadioInputTypeRadioIdHCZRunatServerClassStarNameRatingCZValueDataRoleRadio" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;input type="radio" id="h1CZ" runat="server" class="star" name="RatingCZ" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h2CZ" runat="server" class="star" name="RatingCZ" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h3CZ" runat="server" class="star" name="RatingCZ" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h4CZ" runat="server" class="star" name="RatingCZ" value="" data-role="radio"&gt;
+                                &lt;input type="radio" id="h5CZ" runat="server" class="star" name="RatingCZ" value="" data-role="radio"&gt;</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToVoteOnTheTranslationQualityOfTheSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please log in to vote on the translation quality of the song</target>
+        </trans-unit>
+        <trans-unit id="AllTranslationsForThisSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All translations for this song:</target>
+        </trans-unit>
+        <trans-unit id="Br" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;br&gt;</target>
+        </trans-unit>
+        <trans-unit id="WatchHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Watch here</target>
+        </trans-unit>
+        <trans-unit id="WatchOnYouTube" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Watch on YouTube</target>
+        </trans-unit>
+        <trans-unit id="SearchYouTube" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search YouTube</target>
+        </trans-unit>
+        <trans-unit id="YouMightAlsoLike" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You might also like</target>
+        </trans-unit>
+        <trans-unit id="ArtistSMostPopularSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Artist's most popular songs</target>
+        </trans-unit>
+        <trans-unit id="TheMostPopularSongsFromThisAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The most popular songs from this album</target>
         </trans-unit>
       </group>
     </body>
