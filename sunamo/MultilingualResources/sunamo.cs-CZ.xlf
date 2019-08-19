@@ -4161,9 +4161,9 @@
           <source></source>
           <target state="translated">YT video již bylo v databázi.</target>
         </trans-unit>
-        <trans-unit id="ManageYouTubeVideos" translate="yes" xml:space="preserve">
+        <trans-unit id="ManageYouTubeVideo" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Správa YouTube videa </target>
+          <target state="translated">Správa YouTube videa</target>
         </trans-unit>
         <trans-unit id="UserProfile" translate="yes" xml:space="preserve">
           <source></source>
@@ -8100,6 +8100,14 @@
         <trans-unit id="TheMostPopularSongsFromThisAlbum" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Nejpopulárnější songy z tohoto alba</target>
+        </trans-unit>
+        <trans-unit id="VideoYTCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kód YT videa:</target>
+        </trans-unit>
+        <trans-unit id="InsertNewVideo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vložit nové video</target>
         </trans-unit>
       </group>
     </body>

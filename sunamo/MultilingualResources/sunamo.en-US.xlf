@@ -4209,9 +4209,9 @@
           <source></source>
           <target state="translated">YT video was already in the database.</target>
         </trans-unit>
-        <trans-unit id="ManageYouTubeVideos" translate="yes" xml:space="preserve">
+        <trans-unit id="ManageYouTubeVideo" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Manage YouTube videos</target>
+          <target state="translated">Manage YouTube video</target>
         </trans-unit>
         <trans-unit id="UserProfile" translate="yes" xml:space="preserve">
           <source></source>
@@ -8754,6 +8754,14 @@
         <trans-unit id="TheMostPopularSongsFromThisAlbum" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">The most popular songs from this album</target>
+        </trans-unit>
+        <trans-unit id="VideoYTCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Video YT Code:</target>
+        </trans-unit>
+        <trans-unit id="InsertNewVideo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Insert new video</target>
         </trans-unit>
       </group>
     </body>

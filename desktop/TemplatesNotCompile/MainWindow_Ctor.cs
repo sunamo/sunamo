@@ -10,7 +10,7 @@ using desktop.UserControls;
 using sunamo.Essential;
 using sunamo.Interfaces;
 
-public class MainWindow_Ctor : Window, IEssentialMainWindow
+public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 {
     dynamic Instance = null;
     dynamic Dispatcher = null;
@@ -29,11 +29,14 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow
 
     #region MyRegion
     Grid grid;
-    MenuItem miUC; 
+    MenuItem miUC;
+
+    public bool CancelClosing { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     #endregion
 
     public MainWindow_Ctor()
     {
+
         // In ctor can be only InitializeComponent, all everything must be in Loaded. Use template as exists in MainWindow_Ctor
     }
 
@@ -48,11 +51,12 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow
              * 6) Attach handlers
              */
 
-        #region 1) Check for already running, required conditions, Clipboard, AppData and Xlf
+        #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
                 SetCancelClosing(false);
+            
                 MessageBox.Show("Please use app in tray");
                 
                 Close();
@@ -228,6 +232,16 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow
     private void MainWindow_SizeChanged(object p1, object p2)
     {
         
+    }
+
+    public bool GetCancelClosing()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetCancelClosing(bool b)
+    {
+        throw new NotImplementedException();
     }
 
     enum Mode

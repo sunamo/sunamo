@@ -24,7 +24,10 @@ namespace sunamo
             bool modifierPresent = modifierInt > 0;
 
             // Tady v Keyboard.IsKeyUp to prochází jakémkoliv textu
+
+
             bool result = Keyboard.IsKeyUp(key) && modifierPresent;
+            // Here really must be without !
             return result;
         }
 

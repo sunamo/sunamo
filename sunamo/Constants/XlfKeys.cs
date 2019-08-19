@@ -5,6 +5,10 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string InsertNewVideo = "InsertNewVideo" ; 
+
+	public const string VideoYTCode = "VideoYTCode" ; 
+
 	public const string TheMostPopularSongsFromThisAlbum = "TheMostPopularSongsFromThisAlbum" ; 
 
 	public const string ArtistSMostPopularSongs = "ArtistSMostPopularSongs" ; 
@@ -2281,7 +2285,7 @@ public class XlfKeys
 
     public const string UserProfile = "UserProfile";
 
-    public const string ManageYouTubeVideos = "ManageYouTubeVideos";
+    public const string ManageYouTubeVideo = "ManageYouTubeVideo";
 
     public const string YTVideoWasAlreadyInTheDatabase = "YTVideoWasAlreadyInTheDatabase";
 

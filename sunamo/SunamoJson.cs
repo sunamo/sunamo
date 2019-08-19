@@ -32,7 +32,11 @@ public class SunamoJson
         return JsonConvert.DeserializeObject(fd).ToString();
     }
 
-
+    public static string FormatJson(string json)
+    {
+        dynamic parsedJson = JsonConvert.DeserializeObject(json);
+        return JsonConvert.SerializeObject(parsedJson, Newtonsoft.Json.Formatting.Indented);
+    }
 
     public static string SerializeXmlString(object p)
     {
