@@ -89,7 +89,7 @@ public class AppData : AppDataAbstractBase<string, string>
     {
         rootFolder = GetSunamoFolder();
 
-        RootFolder = FS.Combine(rootFolder, ThisApp.Name);
+        RootFolder = FS.CombineWithoutFirstCharLower(rootFolder, ThisApp.Name);
         FS.CreateDirectory(RootFolder);
         return RootFolder;
     }
@@ -125,7 +125,8 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <returns></returns>
     public override string GetFileCommonSettings(string filename)
     {
-        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), filename);
+        var vr = FS.CombineWithoutFirstCharLower(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), filename);
+        return vr;
     }
 
     public override string GetCommonSettings(string key)

@@ -27,7 +27,25 @@ public partial class TF
             {
                 try
                 {
-                    result = File.ReadAllText(s, Encoding.UTF8);
+                    /*
+                     * Měl jsme tu chybu not supported format path
+                     * cesta byla na první pohled v pořádku
+                     * zjistil jsem že v popředí bylo 2x BOM encoding utf8
+                     * tyto znaky jsou bílé a tím pádem sjem je neviděl
+                     * resetoval jsem komp. nastavil nové práva atd.
+                     * všechno to začalo s používáním DetectEncoding
+                     * 
+                     * STAČILO BOHATĚ RESETOVAT KOMP, MOŽNÁ I JEN VRÁTIT TO DO BEZ DetectEncoding!!!
+                     * 
+                     */
+                    //var bytesArray = File.ReadAllBytes(s);
+                    //var bytes = bytesArray.ToList();
+                    //var enc = EncodingHelper.DetectEncoding(bytes);
+
+
+
+                    //result = enc.GetString(bytesArray);
+                    result = File.ReadAllText(s);
                     break;
                 }
                 catch (Exception ex)
@@ -38,6 +56,8 @@ public partial class TF
         }
         else
         {
+
+
             File.WriteAllText(s, "", Encoding.UTF8);
         }
 

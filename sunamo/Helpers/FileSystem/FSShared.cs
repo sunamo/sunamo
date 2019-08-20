@@ -82,7 +82,7 @@ public partial class FS
         {
             // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
 #if !ASPNET
-            path = Consts.UncLongPath + path;
+            //path = Consts.UncLongPath + path;
 #endif
         }
         return path;
@@ -433,6 +433,10 @@ public partial class FS
         {
             result = SH.FirstCharLower(result);
         }
+        else
+        {
+            result = SH.FirstCharUpper(result);
+        }
         return result;
     }
 
@@ -761,7 +765,15 @@ public partial class FS
     /// <param name="v"></param>
     public static void CreateDirectory(string v)
     {
-        Directory.CreateDirectory(v);
+        try
+        {
+            Directory.CreateDirectory(v);
+        }
+        catch (NotSupportedException ex)
+        {
+
+            
+        }
     }
     public static void CreateDirectory(string v, DirectoryCreateCollisionOption whenExists, SerieStyle serieStyle)
     {

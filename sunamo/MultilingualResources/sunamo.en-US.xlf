@@ -8763,6 +8763,94 @@
           <source></source>
           <target state="translated">Insert new video</target>
         </trans-unit>
+        <trans-unit id="AddedBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Added by</target>
+        </trans-unit>
+        <trans-unit id="originalTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">original texts,</target>
+        </trans-unit>
+        <trans-unit id="translationsOfSongsAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">translations of songs and</target>
+        </trans-unit>
+        <trans-unit id="videí" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">videí.</target>
+        </trans-unit>
+        <trans-unit id="FavoriteLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Favorite lyrics (</target>
+        </trans-unit>
+        <trans-unit id="DivRunatServerIdUlFavoritedOriginalClassLiquidSliderDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;div runat="server" id="ulFavoritedOriginal" class="liquid-slider"&gt;&lt;/div&gt;</target>
+        </trans-unit>
+        <trans-unit id="FavoriteSongTranslations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Favorite song translations (</target>
+        </trans-unit>
+        <trans-unit id="DivRunatServerIdUlFavoriteTranslateClassLiquidSliderDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;div runat="server" id="ulFavoriteTranslate" class="liquid-slider"&gt;&lt;/div&gt;</target>
+        </trans-unit>
+        <trans-unit id="SpanClassIconMifHomeSpan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;span class="icon mif-home"&gt;&lt;/span&gt;</target>
+        </trans-unit>
+        <trans-unit id="AIdBcAddSongRunatServerA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;a id="bcAddSong" runat="server"&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="UseThisFormOnlyForOriginalSongLyricsThatMeansNotForTranslatedLyricsFromEnglishIfTheSongIsCzechItWasOfficiallyReleasedInCzechYouCanUseThisFormEnterOnlyOneArtistAtATimeIfThereAreMoreOnlyInThisWayWillTheWebsiteBeAbleToFindTheRightDataSuchAsSimilarArtistsAndGenres" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Use this form only for original song lyrics that means not for translated lyrics from English. If the song is Czech (it was officially released in Czech), you can use this form. Enter only one artist at a time, if there are more. Only in this way will the website be able to find the right data such as similar artists and genres.</target>
+        </trans-unit>
+        <trans-unit id="Interpret" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Interpret:</target>
+        </trans-unit>
+        <trans-unit id="Album" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album:</target>
+        </trans-unit>
+        <trans-unit id="KódNaYouTubeNapříkladZHttpsWwwYoutubeComWatchVAsChPoscMQToJeAsChPoscMQ" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kód na YouTube (Například z https://www.youtube.com/watch?v=as8chPoscMQ to je as8chPoscMQ):</target>
+        </trans-unit>
+        <trans-unit id="Lyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Lyrics:</target>
+        </trans-unit>
+        <trans-unit id="TextareaNameTxtLyricsRunatServerIdTxtLyricsRunatServerClassTxtNaSlovaDataRoleTextareaTextarea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;textarea name="txtLyrics" runat="server" id="txtLyrics" runat="server" class="txtNaSlova" data-role="textarea"&gt;&lt;/textarea&gt;</target>
+        </trans-unit>
+        <trans-unit id="AfterPressingTheButtonBelowBePatientAndDoNotPressTheButtonAgainSomeDataHaveAlreadyBeenSavedAndCannotBeDuplicated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">After pressing the button below, be patient and do not press the button again, some data have already been saved and cannot be duplicated</target>
+        </trans-unit>
+        <trans-unit id="AddToDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add to DB</target>
+        </trans-unit>
+        <trans-unit id="Pou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pou</target>
+        </trans-unit>
+        <trans-unit id="TheSongHasNoText" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The song has no text</target>
+        </trans-unit>
+        <trans-unit id="SaveThisTextToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save this text to your favorites</target>
+        </trans-unit>
+        <trans-unit id="ThisIsATranslationFromTheOriginal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This is a translation from the original</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -5,6 +5,50 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string ThisIsATranslationFromTheOriginal = "ThisIsATranslationFromTheOriginal" ; 
+
+	public const string SaveThisTextToYourFavorites = "SaveThisTextToYourFavorites" ; 
+
+	public const string TheSongHasNoText = "TheSongHasNoText" ; 
+
+	public const string Pou = "Pou" ; 
+
+	public const string AddToDB = "AddToDB" ; 
+
+	public const string AfterPressingTheButtonBelowBePatientAndDoNotPressTheButtonAgainSomeDataHaveAlreadyBeenSavedAndCannotBeDuplicated = "AfterPressingTheButtonBelowBePatientAndDoNotPressTheButtonAgainSomeDataHaveAlreadyBeenSavedAndCannotBeDuplicated" ; 
+
+	public const string TextareaNameTxtLyricsRunatServerIdTxtLyricsRunatServerClassTxtNaSlovaDataRoleTextareaTextarea = "TextareaNameTxtLyricsRunatServerIdTxtLyricsRunatServerClassTxtNaSlovaDataRoleTextareaTextarea" ; 
+
+	public const string Lyrics = "Lyrics" ; 
+
+	public const string KódNaYouTubeNapříkladZHttpsWwwYoutubeComWatchVAsChPoscMQToJeAsChPoscMQ = "KódNaYouTubeNapříkladZHttpsWwwYoutubeComWatchVAsChPoscMQToJeAsChPoscMQ" ; 
+
+	public const string Album = "Album" ; 
+
+	public const string Interpret = "Interpret" ; 
+
+	public const string UseThisFormOnlyForOriginalSongLyricsThatMeansNotForTranslatedLyricsFromEnglishIfTheSongIsCzechItWasOfficiallyReleasedInCzechYouCanUseThisFormEnterOnlyOneArtistAtATimeIfThereAreMoreOnlyInThisWayWillTheWebsiteBeAbleToFindTheRightDataSuchAsSimilarArtistsAndGenres = "UseThisFormOnlyForOriginalSongLyricsThatMeansNotForTranslatedLyricsFromEnglishIfTheSongIsCzechItWasOfficiallyReleasedInCzechYouCanUseThisFormEnterOnlyOneArtistAtATimeIfThereAreMoreOnlyInThisWayWillTheWebsiteBeAbleToFindTheRightDataSuchAsSimilarArtistsAndGenres" ; 
+
+	public const string AIdBcAddSongRunatServerA = "AIdBcAddSongRunatServerA" ; 
+
+	public const string SpanClassIconMifHomeSpan = "SpanClassIconMifHomeSpan" ; 
+
+	public const string DivRunatServerIdUlFavoriteTranslateClassLiquidSliderDiv = "DivRunatServerIdUlFavoriteTranslateClassLiquidSliderDiv" ; 
+
+	public const string FavoriteSongTranslations = "FavoriteSongTranslations" ; 
+
+	public const string DivRunatServerIdUlFavoritedOriginalClassLiquidSliderDiv = "DivRunatServerIdUlFavoritedOriginalClassLiquidSliderDiv" ; 
+
+	public const string FavoriteLyrics = "FavoriteLyrics" ; 
+
+	public const string videí = "videí" ; 
+
+	public const string translationsOfSongsAnd = "translationsOfSongsAnd" ; 
+
+	public const string originalTexts = "originalTexts" ; 
+
+	public const string AddedBy = "AddedBy" ; 
+
 	public const string InsertNewVideo = "InsertNewVideo" ; 
 
 	public const string VideoYTCode = "VideoYTCode" ; 

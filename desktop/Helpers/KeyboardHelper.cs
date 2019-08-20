@@ -9,6 +9,7 @@ namespace sunamo
     public class KeyboardHelper
     {
         /// <summary>
+        /// Not working in Release and NotifyIcon it's not the fault
         /// USE ONLY FOR ALT+F3 AND SO. 
         /// When I check for Alt+f3 and 
         /// Keyboard.Modifiers has always only first pressed key, cannot combine
@@ -20,18 +21,11 @@ namespace sunamo
         /// <returns></returns>
         public static bool KeyWithModifier(Key key, ModifierKeys modifier)
         {
-            ModifierKeys modifierInt = (Keyboard.Modifiers & modifier);
-            bool modifierPresent = modifierInt > 0;
-
-            // Tady v Keyboard.IsKeyUp to prochází jakémkoliv textu
-
-
-            bool result = Keyboard.IsKeyUp(key) && modifierPresent;
-            // Here really must be without !
-            return result;
+            return KeyWithModifier(null, key, modifier);
         }
 
         /// <summary>
+        /// Not working in Release and NotifyIcon it's not the fault
         /// Are there passed from PreviewKeyDown
         /// Working also with more modifiers specified
         /// Primary use method without KeyEventArgs param. When I try catch with this Alt+f3, for f3 returns System key.
@@ -51,13 +45,6 @@ mam 3, d0, u1 - nechapu */
             bool keyPressed = Keyboard.IsKeyDown(key);
             bool modifierPressed = modifier == Keyboard.Modifiers;
             bool result = keyPressed && modifierPressed;
-
-            if (result)
-            {
-#if DEBUG
-                //DebugLogger.Instance.TwoState(result, key, modifier);
-#endif
-            }
             return result;
         }
 

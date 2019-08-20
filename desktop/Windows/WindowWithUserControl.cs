@@ -25,7 +25,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     IUserControlWithSizeChange userControlWithSizeChange = null;
 
     StatusBar statusBar = null;
-     DialogButtons dialogButtons = null;
+    public DialogButtons dialogButtons = null;
     Menu menu = null;
 
     private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)

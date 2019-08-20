@@ -8109,6 +8109,50 @@
           <source></source>
           <target state="translated">Vložit nové video</target>
         </trans-unit>
+        <trans-unit id="AddedBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel přidal</target>
+        </trans-unit>
+        <trans-unit id="originalTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">originálních textů,</target>
+        </trans-unit>
+        <trans-unit id="translationsOfSongsAnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">překladů písní a</target>
+        </trans-unit>
+        <trans-unit id="FavoriteLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Oblíbené texty písní (</target>
+        </trans-unit>
+        <trans-unit id="FavoriteSongTranslations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Oblíbené překlady písní (</target>
+        </trans-unit>
+        <trans-unit id="UseThisFormOnlyForOriginalSongLyricsThatMeansNotForTranslatedLyricsFromEnglishIfTheSongIsCzechItWasOfficiallyReleasedInCzechYouCanUseThisFormEnterOnlyOneArtistAtATimeIfThereAreMoreOnlyInThisWayWillTheWebsiteBeAbleToFindTheRightDataSuchAsSimilarArtistsAndGenres" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Použijte tento formulář jen pro originální texty písniček to znamená ne pro přeložené texty z angličtiny. Pokud je píseň česká(byla officiálně vydána v české jazyce), tento formulář použít můžete. Umělce zadejte vždy pouze jednoho, pokud jich je více. Jedině tak web u něho bude moci zjistit správné údaje jako jsou podobní umělci a žánry.</target>
+        </trans-unit>
+        <trans-unit id="AfterPressingTheButtonBelowBePatientAndDoNotPressTheButtonAgainSomeDataHaveAlreadyBeenSavedAndCannotBeDuplicated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Po stisknutí tlačítka níže buďte trpělivý a nemačkejte tlačítko znovu, některé údaje se již stačili uložit a nemohou být duplikované</target>
+        </trans-unit>
+        <trans-unit id="AddToDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat do DB</target>
+        </trans-unit>
+        <trans-unit id="TheSongHasNoText" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Píseň nemá text</target>
+        </trans-unit>
+        <trans-unit id="SaveThisTextToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit tento text do oblíbených</target>
+        </trans-unit>
+        <trans-unit id="ThisIsATranslationFromTheOriginal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jedná se o překlad z originálu</target>
+        </trans-unit>
       </group>
     </body>
   </file>

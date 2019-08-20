@@ -1684,11 +1684,12 @@ public static partial class SH
     }
 
     /// <summary>
-    /// Vrátí prázdný řetězec pokud nebude nalezena mezera.
+    /// Vrátí prázdný řetězec pokud nebude nalezena mezera a A1
+    /// 
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string GetFirstWord(string p)
+    public static string GetFirstWord(string p, bool returnEmptyWhenDontHaveLenght = true)
     {
         p = p.Trim();
         int dex = p.IndexOf(AllChars.space);
@@ -1696,7 +1697,11 @@ public static partial class SH
         {
             return p.Substring(0, dex);
         }
-        return "";
+        if (returnEmptyWhenDontHaveLenght)
+        {
+            return string.Empty;
+        }
+        return p;
     }
 
     /// <summary>

@@ -15,8 +15,13 @@ namespace sunamo.Helpers
         /// </summary>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static Encoding DetectEncoding(List<byte> bom)
+        public static Encoding DetectEncoding(List<byte> bom, Encoding def = null)
         {
+            if (def == null)
+            {
+                def = Encoding.ASCII;
+            }
+
             if (bom.Count > 3)
             {
                 byte first = bom[0];
@@ -29,7 +34,7 @@ namespace sunamo.Helpers
                 if (first == 0xfe && second == 0xff) return Encoding.BigEndianUnicode; //UTF-16BE
                 if (first == 0 && second == 0 && third == 0xfe && bom[3] == 0xff) return Encoding.UTF32;
             }
-            return Encoding.ASCII;
+            return def;
         }
 
         private static Dictionary<string, bool> TestBinaryFile(string folderPath)

@@ -92,6 +92,20 @@ namespace sunamo.Essential
             _writeLineDelegate.Invoke(SH.JoinPairs(args));
         }
 
+        public bool IsInRightFormat(string text, params object[] args)
+        {
+            try
+            {
+                _writeLineDelegate.Invoke(text, args);
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+
         public void WriteLine(string text, params object[] args)
         {
             if (IsActive)
