@@ -10,6 +10,8 @@ public class SunamoTranslateConsts
     {
     }
 
+    
+
     static SunamoTranslateConsts()
     {
         allBasicTypes = Consts.allBasicTypes.Select(d => d.Name).ToList();
@@ -17,6 +19,7 @@ public class SunamoTranslateConsts
     }
 
     public static PpkOnDrive stringsNotToTranslate = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Settings, "notToTranslateStrings.txt"));
+    public static PpkOnDrive extensionsAvailableToTranslate = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Settings, "extensionsAvailableToTranslate.txt"));
 
     public static List<string> sqlKeywords
     {

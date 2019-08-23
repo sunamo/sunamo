@@ -52,6 +52,8 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
              */
 
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
+        string appName = "";
+        ThisApp.Name = appName;
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
@@ -63,7 +65,10 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             }
 #endif
 
+
+
         ClipboardHelper.Instance = ClipboardHelperWin.Instance;
+        AppData.ci.CreateAppFoldersIfDontExists();
 
         XlfResourcesH.SaveResouresToRLSunamo();
         #endregion
@@ -87,7 +92,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 3) Initialize base properties of app
-        string appName = "AllProjectsSearch";
+        
 
         Instance = this;
 

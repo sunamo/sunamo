@@ -24,6 +24,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Data\MusicTitle.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperTextShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataBaseShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\AspxHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\ValueLabel.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\Text\TextBuilder.cs" />

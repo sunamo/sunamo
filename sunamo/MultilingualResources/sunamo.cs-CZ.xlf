@@ -8153,6 +8153,174 @@
           <source></source>
           <target state="translated">Jedná se o překlad z originálu</target>
         </trans-unit>
+        <trans-unit id="EachColumnCanBeAMaximumOf" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Každý sloupec může být maximálně v rozmezí 1-12</target>
+        </trans-unit>
+        <trans-unit id="TheSumOfTheNumbersInTheSplitColumnsFieldWasNot" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Součet čísel v políčku 'Rozdělení sloupců' nebyl 12</target>
+        </trans-unit>
+        <trans-unit id="ThePhoneNumberIsIncomplete" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefonní číslo není úplné. </target>
+        </trans-unit>
+        <trans-unit id="ThePhoneNumberCannotEndWithAPeriod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefonní číslo nemůže končit tečkou. </target>
+        </trans-unit>
+        <trans-unit id="TelTheNumberWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tel. číslo nebylo ve správném formátu. </target>
+        </trans-unit>
+        <trans-unit id="TheFirstCharacterIsNot" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jako první znak není +. </target>
+        </trans-unit>
+        <trans-unit id="TelNumberDoesNotContainAPeriod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tel. číslo neobsahuje tečku. </target>
+        </trans-unit>
+        <trans-unit id="PhoneNumberCannotBeLeftBlank" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefonní číslo nemůže zůstat nevyplněno. </target>
+        </trans-unit>
+        <trans-unit id="TheDateOfBirthIsNotInTheCorrectFormatOrHasADifferentDefect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum narození není ve správném formátu nebo má jinou vadu. </target>
+        </trans-unit>
+        <trans-unit id="DeleteSongTranslationFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat překlad písně z oblíbených</target>
+        </trans-unit>
+        <trans-unit id="AddSongTranslationToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat překlad písně do oblíbených</target>
+        </trans-unit>
+        <trans-unit id="DeleteSongLyricsFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat text písně z oblíbených</target>
+        </trans-unit>
+        <trans-unit id="IMLovinIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I'm lovin it</target>
+        </trans-unit>
+        <trans-unit id="EnterYourFriendSEmailAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte emailovou adresu přítele:</target>
+        </trans-unit>
+        <trans-unit id="NoEmailWasSent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádný email nebyl odeslán.</target>
+        </trans-unit>
+        <trans-unit id="NonMatchingNumberOfParameterNamesAndValues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nesouladicí počet názvů a hodnot parametrů</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo je silné a ve správném formátu. Vaše heslo zní </target>
+        </trans-unit>
+        <trans-unit id="PasswordCannotBeEmpty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo nemůže být prázdné. </target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít aspoň jeden speciální znak(!,@,#,$,%,^,&amp;,*,?,_,~). </target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeAtLeastDigitsLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít aspoň 2 číslice. </target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeCharactersLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít 10-20 znaků. </target>
+        </trans-unit>
+        <trans-unit id="InsertNewSongLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vložit nový text písně</target>
+        </trans-unit>
+        <trans-unit id="AdminConsole" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Administrátorská konzole</target>
+        </trans-unit>
+        <trans-unit id="AllInformationOnThisPageComesFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny informace na této stránce pocházejí z</target>
+        </trans-unit>
+        <trans-unit id="MoreArtistAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další alba interpreta</target>
+        </trans-unit>
+        <trans-unit id="SongsFromThisAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Songy z tohoto alba</target>
+        </trans-unit>
+        <trans-unit id="unlessOtherwiseStated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">, pokud není uvedeno jinak</target>
+        </trans-unit>
+        <trans-unit id="Overall" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkově:</target>
+        </trans-unit>
+        <trans-unit id="LastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Posledních 7 dní:</target>
+        </trans-unit>
+        <trans-unit id="AboutArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Něco o interpretovi:</target>
+        </trans-unit>
+        <trans-unit id="AllArtistAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny alba interpreta</target>
+        </trans-unit>
+        <trans-unit id="GenresOfThisArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žánry tohoto umělce</target>
+        </trans-unit>
+        <trans-unit id="SimilarArtists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podobní umělci</target>
+        </trans-unit>
+        <trans-unit id="AllArtistSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny songy interpreta</target>
+        </trans-unit>
+        <trans-unit id="AdditionalInformationAtTheArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Doplňkové informace u umělci</target>
+        </trans-unit>
+        <trans-unit id="AllOfTheFollowingInformationOnThisPageIsFromTheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny následující informace na této stránce pocházejí od uživatele</target>
+        </trans-unit>
+        <trans-unit id="SearchResults" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výsledky vyhledávání</target>
+        </trans-unit>
+        <trans-unit id="FoundInAlbumNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeno v názvů alb</target>
+        </trans-unit>
+        <trans-unit id="FoundInAlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeno v popisu alb</target>
+        </trans-unit>
+        <trans-unit id="FoundInSongTitles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeno v názvech songů</target>
+        </trans-unit>
+        <trans-unit id="FoundInOriginalTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeno v originálních textech</target>
+        </trans-unit>
+        <trans-unit id="FoundInTranslatedTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeno v přeložených textech</target>
+        </trans-unit>
       </group>
     </body>
   </file>

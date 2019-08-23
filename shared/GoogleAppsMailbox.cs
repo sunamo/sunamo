@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Net.Mail;
 
-namespace sunamo
-{
-    public class GoogleAppsMailbox
+
+    public partial class GoogleAppsMailbox
     {
-        public const string noreply_scz_mail = "noreply@sunamo.cz";
+        
 
         /// <summary>
         /// Řetězec, který se objeví u příjemce jako odesílatel. Nemusí to být mailová adresa.
@@ -30,10 +29,7 @@ namespace sunamo
             }
         }
 
-        public static GoogleAppsMailbox noreply_scz = new GoogleAppsMailbox(noreply_scz_mail, noreply_scz_mail, null, AppData.ci.GetCommonSettings(CommonSettingsKeys.noreply_scz));
-        public static GoogleAppsMailbox rj_scz = new GoogleAppsMailbox("Radek Jančík", "radek.jancik@sunamo.cz", null, AppData.ci.GetCommonSettings(CommonSettingsKeys.rj_scz));
-        public static GoogleAppsMailbox patrikHorkaSeznamCz = new GoogleAppsMailbox("Patrik Horka", "patrik.horka1@email.cz", null, AppData.ci.GetCommonSettings(CommonSettingsKeys.patrikHorkaSeznamCz));
-        public static GoogleAppsMailbox smutekutek = new GoogleAppsMailbox("Patrik Horka", "smutekutek@gmail.com", null, AppData.ci.GetCommonSettings(CommonSettingsKeys.smutekutek));
+        
 
 
         /// <summary>
@@ -201,4 +197,4 @@ namespace sunamo
             return emailStatus;
         }
     }
-}
+

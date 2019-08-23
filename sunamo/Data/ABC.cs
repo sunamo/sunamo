@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 public class ABC : List<AB>//, IEnumerable<AB>
 {
     public ABC()
@@ -47,5 +50,10 @@ public class ABC : List<AB>//, IEnumerable<AB>
             o[i] = this[i].A;
         }
         return o;
+    }
+
+    public static IEnumerable OnlyBs(List<AB> arr)
+    {
+        return arr.Select(d=> d.B);
     }
 }

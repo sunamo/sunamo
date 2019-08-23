@@ -3,37 +3,50 @@ using System.Text;
 
 public partial class ManageArtistDashTitle
 {
+
+    public static void GetArtistTitleRemix(string item, out string artist, out string song, out string remix)
+    {
+        var r = GetArtistTitleRemix(item);
+        artist = r.Item1;
+        song = r.Item2;
+        remix = r.Item3;
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name = "item"></param>
-    /// <param name = "název"></param>
-    /// <param name = "title"></param>
+    /// <param name = "artist"></param>
+    /// <param name = "song"></param>
     /// <param name = "remix"></param>
-    public static void GetArtistTitleRemix(string item, out string název, out string title, out string remix)
+    public static Tuple<string,string,string> GetArtistTitleRemix(string item)
     {
-        string[] toks = item.Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
-        název = title = "";
+        string artist;string song; string remix;
+        string delimiter = SH.WrapWith(AllStrings.dash, AllChars.space);
+
+        string[] toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+        artist = song = "";
         if (toks.Length == 0)
         {
-            název = title = remix = "";
+            artist = song = remix = "";
         }
         else if (toks.Length == 1)
         {
-            název = "";
-            VratTitleRemix(toks[0], out title, out remix);
+            artist = "";
+            VratTitleRemix(toks[0], out song, out remix);
         }
         else
         {
-            název = toks[0];
+            artist = toks[0];
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < toks.Length; i++)
             {
-                sb.Append(toks[i] + AllStrings.dash);
+                sb.Append(toks[i] + delimiter);
             }
 
-            VratTitleRemix(sb.ToString().TrimEnd(AllChars.dash), out title, out remix);
+            VratTitleRemix(sb.ToString().TrimEnd(AllChars.dash), out song, out remix);
         }
+        return new Tuple<string, string, string>(artist, song, remix);
     }
 
     /// <summary>

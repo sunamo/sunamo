@@ -32,24 +32,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     {
     }
 
-    public async Task CreateAppFoldersIfDontExists()
-    {
-        if (!string.IsNullOrEmpty(ThisApp.Name))
-        {
-            RootFolder = Abstract.GetRootFolder();
-
-            foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
-            {
-                //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
-                FS.CreateDirectory(Abstract.GetFolder(item));
-            }
-        }
-        else
-        {
-            throw new Exception("Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
-        }
-    }
-
     /// <summary>
     /// If file A1 dont exists, then create him with empty content and G SE. When optained file/folder doesnt exists, return SE
     /// </summary>

@@ -303,6 +303,8 @@ namespace sunamo.Html
         }
         #endregion
 
+
+
         public static string ReplacePlainUriForAnchors(string input)
         {
             HtmlDocument hd = CreateHtmlDocument();

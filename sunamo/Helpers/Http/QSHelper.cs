@@ -8,11 +8,13 @@ using sunamo;
 public partial class QSHelper
 {
     /// <summary>
-    /// 
+    /// GetParameter = return null when not found
+    /// GetParameterSE = return string.Empty when not found
     /// </summary>
     /// <returns></returns>
     public static string GetParameter(string uri, string nameParam)
     {
+        // 
         var main = SH.Split(uri, AllStrings.q, "&");
         foreach (string var in main)
         {
@@ -24,6 +26,33 @@ public partial class QSHelper
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// get value of A2 parametr in A1
+    /// GetParameter = return null when not found
+    /// GetParameterSE = return string.Empty when not found
+    /// </summary>
+    /// <param name="uri"></param>
+    /// <param name="nameParam"></param>
+    /// <returns></returns>
+    public static string GetParameterSE(string uri, string nameParam)
+    {
+        nameParam = nameParam + "=";
+        int dexPocatek = uri.IndexOf(nameParam);
+        if (dexPocatek != -1)
+        {
+            int dexKonec = uri.IndexOf("&", dexPocatek);
+            dexPocatek = dexPocatek + nameParam.Length;
+            if (dexKonec != -1)
+            {
+                return SH.Substring(uri, dexPocatek, dexKonec);
+            }
+
+            return uri.Substring(dexPocatek);
+        }
+
+        return "";
     }
 
     /// <summary>
@@ -53,30 +82,7 @@ public partial class QSHelper
         return sb.ToString().TrimEnd('&');
     }
 
-    /// <summary>
-    /// get value of A2 parametr in A1
-    /// </summary>
-    /// <param name="r1"></param>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static string GetParameterSE(string r1, string p)
-    {
-        p = p + "=";
-        int dexPocatek = r1.IndexOf(p);
-        if (dexPocatek != -1)
-        {
-            int dexKonec = r1.IndexOf("&", dexPocatek);
-            dexPocatek = dexPocatek + p.Length;
-            if (dexKonec != -1)
-            {
-                return SH.Substring(r1, dexPocatek, dexKonec);
-            }
-
-            return r1.Substring(dexPocatek);
-        }
-
-        return "";
-    }
+    
 
     /// <summary>
     /// Do A1 se zadává Request.Url.Query.Substring(1) neboli třeba pid=1&amp;aid=10 

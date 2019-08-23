@@ -8851,6 +8851,253 @@
           <source></source>
           <target state="translated">This is a translation from the original</target>
         </trans-unit>
+        <trans-unit id="DonTKnowAlbumTheWebWillFindItItself" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Don't know album, the web will find it itself</target>
+        </trans-unit>
+        <trans-unit id="BaseUriIsEmptyOrWhitespace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Base Uri is empty or whitespace</target>
+        </trans-unit>
+        <trans-unit id="Output" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output: </target>
+        </trans-unit>
+        <trans-unit id="NoneSymbolsFounded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">None symbols founded.</target>
+        </trans-unit>
+        <trans-unit id="EachColumnCanBeAMaximumOf" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Each column can be a maximum of 1-12</target>
+        </trans-unit>
+        <trans-unit id="TheSumOfTheNumbersInTheSplitColumnsFieldWasNot" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The sum of the numbers in the 'Split columns' field was not 12</target>
+        </trans-unit>
+        <trans-unit id="ThePhoneNumberIsIncomplete" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The phone number is incomplete.</target>
+        </trans-unit>
+        <trans-unit id="ThePhoneNumberCannotEndWithAPeriod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The phone number cannot end with a period.</target>
+        </trans-unit>
+        <trans-unit id="TelTheNumberWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tel. the number was not in the correct format.</target>
+        </trans-unit>
+        <trans-unit id="TheFirstCharacterIsNot" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The first character is not +.</target>
+        </trans-unit>
+        <trans-unit id="TelNumberDoesNotContainAPeriod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tel. number does not contain a period.</target>
+        </trans-unit>
+        <trans-unit id="PhoneNumberCannotBeLeftBlank" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Phone number cannot be left blank.</target>
+        </trans-unit>
+        <trans-unit id="TheDateOfBirthIsNotInTheCorrectFormatOrHasADifferentDefect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The date of birth is not in the correct format or has a different defect.</target>
+        </trans-unit>
+        <trans-unit id="DeleteSongTranslationFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete song translation from favorites</target>
+        </trans-unit>
+        <trans-unit id="AddSongTranslationToYourFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add song translation to your favorites</target>
+        </trans-unit>
+        <trans-unit id="DeleteSongLyricsFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete song lyrics from favorites</target>
+        </trans-unit>
+        <trans-unit id="IMLovinIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I'm lovin it</target>
+        </trans-unit>
+        <trans-unit id="yyyyMMDd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">yyyy. MM. dd.</target>
+        </trans-unit>
+        <trans-unit id="ddMMYyyy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dd/MM yyyy</target>
+        </trans-unit>
+        <trans-unit id="EnterYourFriendSEmailAddress" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter your friend's email address:</target>
+        </trans-unit>
+        <trans-unit id="NoEmailWasSent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No email was sent.</target>
+        </trans-unit>
+        <trans-unit id="InvalidDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Invalid Date</target>
+        </trans-unit>
+        <trans-unit id="NonMatchingNumberOfParameterNamesAndValues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Non-matching number of parameter names and values</target>
+        </trans-unit>
+        <trans-unit id="OutputTextCopiedToClipboard" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output text copied to clipboard.</target>
+        </trans-unit>
+        <trans-unit id="OutputTextCanNotBeCopiedToTheClipboardUnsupportedBrowser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output text can not be copied to the clipboard, unsupported browser</target>
+        </trans-unit>
+        <trans-unit id="OutputTextWasEmpty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output text was empty.</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password is strong and in the correct format. Your password is</target>
+        </trans-unit>
+        <trans-unit id="PasswordCannotBeEmpty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Password cannot be empty.</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,?, _, ~).</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeAtLeastDigitsLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password must be at least 2 digits long.</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeCharactersLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password must be 10-20 characters long.</target>
+        </trans-unit>
+        <trans-unit id="TxtLyricsMaxHeightPxImportantScrollPaddingBottomRem" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">#txtLyrics{
+        max-height: 300px !important;
+        scroll-padding-bottom: 1rem;
+        }</target>
+        </trans-unit>
+        <trans-unit id="TextareaNameTxtLyricsIdTxtLyricsRunatServerDataRoleTextareaEnableviewstateTrueTextarea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;textarea name="txtLyrics" id="txtLyrics" runat="server" data-role="textarea" enableviewstate="true"&gt;&lt;/textarea&gt;</target>
+        </trans-unit>
+        <trans-unit id="InsertNewSongLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Insert new song lyrics</target>
+        </trans-unit>
+        <trans-unit id="AdminConsole" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Admin console</target>
+        </trans-unit>
+        <trans-unit id="ARunatServerIdBcArtistA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;a runat="server" id="bcArtist"&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="ARunatServerIdBcAlbumA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;a runat="server" id="bcAlbum"&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="AllInformationOnThisPageComesFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All information on this page come from</target>
+        </trans-unit>
+        <trans-unit id="LastFm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Last.fm</target>
+        </trans-unit>
+        <trans-unit id="MoreArtistAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">More artist albums</target>
+        </trans-unit>
+        <trans-unit id="SongsFromThisAlbum" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Songs from this album</target>
+        </trans-unit>
+        <trans-unit id="unlessOtherwiseStated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">unless otherwise stated</target>
+        </trans-unit>
+        <trans-unit id="Overall" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Overall:</target>
+        </trans-unit>
+        <trans-unit id="LastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Last 7 days:</target>
+        </trans-unit>
+        <trans-unit id="AboutArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">About artist:</target>
+        </trans-unit>
+        <trans-unit id="AllArtistAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All artist albums</target>
+        </trans-unit>
+        <trans-unit id="GenresOfThisArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Genres of this artist</target>
+        </trans-unit>
+        <trans-unit id="SimilarArtists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Similar artists</target>
+        </trans-unit>
+        <trans-unit id="AllArtistSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All artist songs</target>
+        </trans-unit>
+        <trans-unit id="AdditionalInformationAtTheArtist" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Additional information at the artist</target>
+        </trans-unit>
+        <trans-unit id="AllOfTheFollowingInformationOnThisPageIsFromTheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All of the following information on this page is from the user</target>
+        </trans-unit>
+        <trans-unit id="days" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">days</target>
+        </trans-unit>
+        <trans-unit id="shlédnutí" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">shlédnutí</target>
+        </trans-unit>
+        <trans-unit id="views" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">views</target>
+        </trans-unit>
+        <trans-unit id="SearchResults" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search results</target>
+        </trans-unit>
+        <trans-unit id="FoundInAlbumNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found in album names</target>
+        </trans-unit>
+        <trans-unit id="FrameContent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Frame content</target>
+        </trans-unit>
+        <trans-unit id="FoundInAlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found in album description</target>
+        </trans-unit>
+        <trans-unit id="FoundInSongTitles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found in song titles</target>
+        </trans-unit>
+        <trans-unit id="FoundInOriginalTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found in original texts</target>
+        </trans-unit>
+        <trans-unit id="FoundInTranslatedTexts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found in translated texts</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Interfaces
-{
     /// <summary>
     /// MainWindow_PreviewKeyDown
     /// </summary>
@@ -25,4 +23,4 @@ if (keysHandler != null)
 
         bool HandleKey(KeyArg e);
     }
-}
+

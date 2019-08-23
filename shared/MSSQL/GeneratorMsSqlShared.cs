@@ -127,6 +127,7 @@ public partial class GeneratorMsSql{
     }
 
     /// <summary>
+    /// Anything of args can be null
     /// Na začátek přidá where pokud obsahuje A1 obsahoval nějaké prvky
     /// </summary>
     /// <param name="where"></param>

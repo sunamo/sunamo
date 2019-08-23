@@ -316,10 +316,22 @@ public static partial class SH
     {
         string s = delimiter.ToString();
         StringBuilder sb = new StringBuilder();
-        foreach (var item in parts)
+        if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Consts.tString)
         {
-            sb.Append(SH.ListToString(item) + s);
+            sb.Append(SH.ListToString(parts.FirstOrNull()) + s);
         }
+        else if(parts.GetType() == Consts.tString)
+        {
+            return parts.ToString();
+        }
+        else
+        {
+            foreach (var item in parts)
+            {
+                sb.Append(SH.ListToString(item) + s);
+            }
+        }
+        
         string d = sb.ToString();
         //return d.Remove(d.Length - (name.Length - 1), name.Length);
         int to = d.Length - s.Length;

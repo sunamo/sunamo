@@ -5,6 +5,128 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string FoundInTranslatedTexts = "FoundInTranslatedTexts" ; 
+
+	public const string FoundInOriginalTexts = "FoundInOriginalTexts" ; 
+
+	public const string FoundInSongTitles = "FoundInSongTitles" ; 
+
+	public const string FoundInAlbumDescription = "FoundInAlbumDescription" ; 
+
+	public const string FrameContent = "FrameContent" ; 
+
+	public const string FoundInAlbumNames = "FoundInAlbumNames" ; 
+
+	public const string SearchResults = "SearchResults" ; 
+
+	public const string views = "views" ; 
+
+	public const string shlédnutí = "shlédnutí" ; 
+
+	public const string days = "days" ; 
+
+	public const string AllOfTheFollowingInformationOnThisPageIsFromTheUser = "AllOfTheFollowingInformationOnThisPageIsFromTheUser" ; 
+
+	public const string AdditionalInformationAtTheArtist = "AdditionalInformationAtTheArtist" ; 
+
+	public const string AllArtistSongs = "AllArtistSongs" ; 
+
+	public const string SimilarArtists = "SimilarArtists" ; 
+
+	public const string GenresOfThisArtist = "GenresOfThisArtist" ; 
+
+	public const string AllArtistAlbums = "AllArtistAlbums" ; 
+
+	public const string AboutArtist = "AboutArtist" ; 
+
+	public const string LastDays = "LastDays" ; 
+
+	public const string Overall = "Overall" ; 
+
+	public const string unlessOtherwiseStated = "unlessOtherwiseStated" ; 
+
+	public const string SongsFromThisAlbum = "SongsFromThisAlbum" ; 
+
+	public const string MoreArtistAlbums = "MoreArtistAlbums" ; 
+
+	public const string LastFm = "LastFm" ; 
+
+	public const string AllInformationOnThisPageComesFrom = "AllInformationOnThisPageComesFrom" ; 
+
+	public const string ARunatServerIdBcAlbumA = "ARunatServerIdBcAlbumA" ; 
+
+	public const string ARunatServerIdBcArtistA = "ARunatServerIdBcArtistA" ; 
+
+	public const string AdminConsole = "AdminConsole" ; 
+
+	public const string InsertNewSongLyrics = "InsertNewSongLyrics" ; 
+
+	public const string TextareaNameTxtLyricsIdTxtLyricsRunatServerDataRoleTextareaEnableviewstateTrueTextarea = "TextareaNameTxtLyricsIdTxtLyricsRunatServerDataRoleTextareaEnableviewstateTrueTextarea" ; 
+
+	public const string TxtLyricsMaxHeightPxImportantScrollPaddingBottomRem = "TxtLyricsMaxHeightPxImportantScrollPaddingBottomRem" ; 
+
+	public const string ThePasswordMustBeCharactersLong = "ThePasswordMustBeCharactersLong" ; 
+
+	public const string ThePasswordMustBeAtLeastDigitsLong = "ThePasswordMustBeAtLeastDigitsLong" ; 
+
+	public const string ThePasswordMustHaveAtLeastOneSpecialCharacter = "ThePasswordMustHaveAtLeastOneSpecialCharacter" ; 
+
+	public const string PasswordCannotBeEmpty = "PasswordCannotBeEmpty" ; 
+
+	public const string ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs = "ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" ; 
+
+	public const string OutputTextWasEmpty = "OutputTextWasEmpty" ; 
+
+	public const string OutputTextCanNotBeCopiedToTheClipboardUnsupportedBrowser = "OutputTextCanNotBeCopiedToTheClipboardUnsupportedBrowser" ; 
+
+	public const string OutputTextCopiedToClipboard = "OutputTextCopiedToClipboard" ; 
+
+	public const string NonMatchingNumberOfParameterNamesAndValues = "NonMatchingNumberOfParameterNamesAndValues" ; 
+
+	public const string InvalidDate = "InvalidDate" ; 
+
+	public const string NoEmailWasSent = "NoEmailWasSent" ; 
+
+	public const string EnterYourFriendSEmailAddress = "EnterYourFriendSEmailAddress" ; 
+
+	public const string ddMMYyyy = "ddMMYyyy" ; 
+
+	public const string yyyyMMDd = "yyyyMMDd" ; 
+
+	public const string IMLovinIt = "IMLovinIt" ; 
+
+	public const string DeleteSongLyricsFromFavorites = "DeleteSongLyricsFromFavorites" ; 
+
+	public const string AddSongTranslationToYourFavorites = "AddSongTranslationToYourFavorites" ; 
+
+	public const string DeleteSongTranslationFromFavorites = "DeleteSongTranslationFromFavorites" ; 
+
+	public const string TheDateOfBirthIsNotInTheCorrectFormatOrHasADifferentDefect = "TheDateOfBirthIsNotInTheCorrectFormatOrHasADifferentDefect" ; 
+
+	public const string PhoneNumberCannotBeLeftBlank = "PhoneNumberCannotBeLeftBlank" ; 
+
+	public const string TelNumberDoesNotContainAPeriod = "TelNumberDoesNotContainAPeriod" ; 
+
+	public const string TheFirstCharacterIsNot = "TheFirstCharacterIsNot" ; 
+
+	public const string TelTheNumberWasNotInTheCorrectFormat = "TelTheNumberWasNotInTheCorrectFormat" ; 
+
+	public const string ThePhoneNumberCannotEndWithAPeriod = "ThePhoneNumberCannotEndWithAPeriod" ; 
+
+	public const string ThePhoneNumberIsIncomplete = "ThePhoneNumberIsIncomplete" ; 
+
+	public const string TheSumOfTheNumbersInTheSplitColumnsFieldWasNot = "TheSumOfTheNumbersInTheSplitColumnsFieldWasNot" ; 
+
+	public const string EachColumnCanBeAMaximumOf = "EachColumnCanBeAMaximumOf" ; 
+
+	public const string NoneSymbolsFounded = "NoneSymbolsFounded" ; 
+
+	public const string Output = "Output" ; 
+
+	public const string BaseUriIsEmptyOrWhitespace = "BaseUriIsEmptyOrWhitespace" ; 
+
+	public const string DonTKnowAlbumTheWebWillFindItItself = "DonTKnowAlbumTheWebWillFindItItself" ; 
+
 	public const string ThisIsATranslationFromTheOriginal = "ThisIsATranslationFromTheOriginal" ; 
 
 	public const string SaveThisTextToYourFavorites = "SaveThisTextToYourFavorites" ; 

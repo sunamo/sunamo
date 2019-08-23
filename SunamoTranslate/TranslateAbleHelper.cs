@@ -228,6 +228,12 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
+        // ; expires=Fri, 31 Dec 9999 23:59:59 GMT
+        if (lowerT.Contains("expires="))
+        {
+            result = false; return result;
+        }
+
         // Contains only numbers and/or dot
         if (SH.ContainsAny(between, false, lt).Count == between.Length())
         {
@@ -331,7 +337,7 @@ public class TranslateAbleHelper
 
         #region Start with
         // Contains awesome or targetsize
-        if (CA.StartWith(CA.ToListString("exec", "cmd", "\\uf", "targetsize", "mail:", "asp:", "http", "og:", "no-", "mif-", "data-", "text/", "fg-", "bg-", "application/", "javascript:"
+        if (CA.StartWith(CA.ToListString("./", "exec", "cmd", "\\uf", "targetsize", "mail:", "asp:", "http", "og:", "no-", "mif-", "data-", "text/", "fg-", "bg-", "application/", "javascript:"
             ), lower) != null)
         {
             result = false; return result;
@@ -344,7 +350,7 @@ public class TranslateAbleHelper
         }
 
         #region Equal
-        if (CA.IsEqualToAnyElement<string>(between, CA.ToListString("unplated")))
+        if (CA.IsEqualToAnyElement<string>(lowerT, CA.ToListString("true", "false", "unplated")))
         {
             result = false; return result;
         }
@@ -363,6 +369,11 @@ public class TranslateAbleHelper
                 {
                     result = false; return result;
                 }
+            }
+
+            if (between.EndsWith("/"))
+            {
+                result = false; return result;
             }
 
             // Nope_

@@ -1,5 +1,6 @@
 ﻿
 using sunamo.Constants;
+using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -282,8 +283,13 @@ public class RH
     /// <param name="type1"></param>
     /// <param name="type2"></param>
     /// <returns></returns>
-    public static bool IsOrIsDeriveFromBaseClass(Type children, Type parent)
+    public static bool IsOrIsDeriveFromBaseClass(Type children, Type parent, bool a1CanBeString = true)
     {
+        if (children == Consts.tString && !a1CanBeString)
+        {
+            return false;
+        }
+
         if (children == null)
         {
             ThrowExceptions.IsNull(s_type, "IsOrIsDeriveFromBaseClass", "children", children);

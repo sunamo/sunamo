@@ -6,14 +6,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace sunamo.Html
-{
+
     /// <summary>
     /// HtmlHelperText - for methods which NOT operate on HtmlAgiityHelper! 
     /// HtmlAgilityHelper - getting new nodes
     /// HtmlAssistant - Only for methods which operate on HtmlAgiityHelper! 
     /// </summary>
-    public class HtmlHelperText
+    public partial class HtmlHelperText
     {
         private static Type s_type = typeof(HtmlHelperText);
 
@@ -44,6 +43,7 @@ namespace sunamo.Html
             }
             return HtmlTagSyntax.Start;
         }
+
 
         public static string TrimInnerOfEncodedHtml(string value)
         {
@@ -166,4 +166,3 @@ namespace sunamo.Html
             return between;
         }
     }
-}

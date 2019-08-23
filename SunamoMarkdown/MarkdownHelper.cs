@@ -42,11 +42,9 @@ namespace SunamoMarkdown
             return input;
         }
 
-        private static string ReplacePairTag(string input, string tag, string forWhat)
+        private static string ReplacePairTag(string input, string v1, string v2)
         {
-            input = input.Replace("<" + tag + ">", forWhat);
-            input = input.Replace("</" + tag + ">", forWhat);
-            return input;
+            return HtmlHelperText.ReplacePairTag(input, v1, v2);
         }
     }
 }

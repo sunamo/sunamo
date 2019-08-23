@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sunamo.Values
-{
+
     public static partial class Consts
     {
         /// <summary>
@@ -18,4 +17,3 @@ namespace sunamo.Values
 
         
     }
-}

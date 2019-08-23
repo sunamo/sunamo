@@ -397,7 +397,7 @@ public static partial class CA
             string r = eb[i];
             if (r[r.Length - 1] != AllChars.bs)
             {
-                eb[i] = r + sunamo.Values.Consts.bs;
+                eb[i] = r + Consts.bs;
             }
         }
 
@@ -411,7 +411,7 @@ public static partial class CA
             string r = eb[i];
             if (r[r.Length - 1] != AllChars.bs)
             {
-                eb[i] = r + sunamo.Values.Consts.bs;
+                eb[i] = r + Consts.bs;
             }
         }
 
@@ -495,6 +495,10 @@ public static partial class CA
         return result.c;
     }
 
+    public static bool AnyElementEndsWith(string t, params string[] v)
+    {
+        return AnyElementEndsWith(t, v.ToList());
+    }
 
     /// <summary>
     /// Return whether A1 contains with any of A2
@@ -502,7 +506,7 @@ public static partial class CA
     /// <param name="t"></param>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static bool AnyElementEndsWith(string t, params string[] v)
+    public static bool AnyElementEndsWith(string t, IEnumerable<string> v)
     {
         foreach (var item in v)
         {

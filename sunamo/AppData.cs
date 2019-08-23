@@ -132,7 +132,9 @@ public class AppData : AppDataAbstractBase<string, string>
     public override string GetCommonSettings(string key)
     {
         var file = GetFileCommonSettings(key);
-        return Encoding.UTF8.GetString(CryptHelper.RijndaelBytes.Instance.Decrypt(TF.ReadAllBytes(file)).ToArray());
+        var vr = Encoding.UTF8.GetString(CryptHelper.RijndaelBytes.Instance.Decrypt(TF.ReadAllBytes(file)).ToArray());
+        vr = vr.Replace("\0", "");
+        return vr;
     }
 
     public override void SetCommonSettings(string key, string value)

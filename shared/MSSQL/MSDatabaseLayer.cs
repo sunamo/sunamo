@@ -463,7 +463,18 @@ public partial class MSDatabaseLayer
         }
     }
 
-    public static SqlConnection _conn = null;
+    public static SqlConnection __conn = null;
+    public static SqlConnection _conn
+    {
+        get
+        {
+            return __conn;
+        }
+        set
+        {
+            __conn = value;
+        }
+    }
     static string cs = null;
     static bool closing = false;
 
@@ -478,11 +489,15 @@ public partial class MSDatabaseLayer
         }
     }
 
-    
 
-    
 
     public static void AssignConnectionStringScz()
+    {
+
+        AssignConnectionString("Data Source=46.36.40.198;Database=sunamo.cz;User ID=sa;Password="+ AppData.ci.GetCommonSettings(CommonSettingsKeys.pwSql) + ";MultipleActiveResultSets=True" + ";");
+    }
+
+    public static void AssignConnectionStringLocalScz()
     {
 
         AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True" + ";");
@@ -490,7 +505,6 @@ public partial class MSDatabaseLayer
 
     public static void AssignConnectionString(string cs2)
     {
-
         if (_conn == null)
         {
             cs = cs2;

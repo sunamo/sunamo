@@ -23,12 +23,15 @@ public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, str
 
     /// <summary>
     /// a2 je X jako v příkazu @pX
+    /// A3 cant be AB
     /// </summary>
     /// <param name="comm"></param>
     /// <param name="i"></param>
     /// <param name="o"></param>
     public static int AddCommandParameter(SqlCommand comm, int i, object o)
     {
+    
+
         if (o == null || o.GetType() == DBNull.Value.GetType())
         {
             SqlParameter p = new SqlParameter();

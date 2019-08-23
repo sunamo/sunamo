@@ -5,7 +5,14 @@ using System.Text;
 
 public static class ListExtensions
 {
-    public static List<T> Add2<T>(this IList<T> list, T item)
+    /// <summary>
+    /// Nepoužívat toto na přidávání js, vloží se v špatném pořadí, pak to dělá function is not defined!
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    private static List<T> Add2<T>(this IList<T> list, T item)
     {
         list.Add(item);
         return (List<T>)list;

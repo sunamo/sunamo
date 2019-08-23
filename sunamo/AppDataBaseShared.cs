@@ -88,4 +88,22 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         FS.CreateUpfoldersPsysicallyUnlessThere(_fileFolderWithAppsFiles);
         return _fileFolderWithAppsFiles;
     }
+
+public async Task CreateAppFoldersIfDontExists()
+    {
+        if (!string.IsNullOrEmpty(ThisApp.Name))
+        {
+            RootFolder = Abstract.GetRootFolder();
+
+            foreach (AppFolders item in Enum.GetValues(typeof(AppFolders)))
+            {
+                //FS.CreateFoldersPsysicallyUnlessThere(GetFolder(item));
+                FS.CreateDirectory(Abstract.GetFolder(item));
+            }
+        }
+        else
+        {
+            throw new Exception("Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
+        }
+    }
 }

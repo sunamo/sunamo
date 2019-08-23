@@ -171,6 +171,30 @@ public static partial class CA
         return p;
     }
 
+    public static List<T> ToArrayTCheckNull<T>(params T[] where)
+    {
+
+        var vr = CA.ToList(where);
+        RemoveDefaultT(vr);
+        return vr;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="vr"></param>
+    public static void RemoveDefaultT<T>(List<T> vr)
+    {
+        for (int i = vr.Count - 1; i >= 0; i--)
+        {
+            if (EqualityComparer<T>.Default.Equals(vr[i], default(T)))
+            {
+                vr.RemoveAt(i);
+            }
+        }
+    }
+
 
 
     /// <summary>
@@ -211,6 +235,7 @@ public static partial class CA
     }
 
     /// <summary>
+    /// If item is null, add instead it default(T)
     /// Simply create new list in ctor from A1
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -223,7 +248,13 @@ public static partial class CA
     }
 
 
-
+    /// <summary>
+    /// If item is null, add instead it default(T)
+    /// cant join from IEnumerable elements because there must be T2 for element's type of collection
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="enumerable"></param>
+    /// <returns></returns>
     public static List<T> ToList<T>(IEnumerable enumerable)
     {
         List<T> result = null;
@@ -353,7 +384,24 @@ public static partial class CA
             }
             else
             {
+                // cant join from IEnumerable elements because there must be T2 for element's type of collection. Use CA.TwoDimensionParamsIntoOne instead
+
+                //var t1 = item.GetType();
+                //var t2 = typeof(IEnumerable);
+                //if (RH.IsOrIsDeriveFromBaseClass(t1 , t2, false) && t1 != Consts.tString)
+                //{
+                //    //result.AddRange(item as IEnumerable);
+                //    var item3 = (IEnumerable)item;
+
+                //    foreach (var item2 in item3)
+                //    {
+                //        result.Add(item2);
+                //    }
+                //}
+                //else
+                //{
                 result.Add((T)item);
+                //}
             }
         }
         return result;
@@ -720,30 +768,41 @@ public static partial class CA
         return value;
     }
 
+    public static List<object> TwoDimensionParamsIntoOne(params object[] para)
+    {
+        return TwoDimensionParamsIntoOne<object>(para);
+    }
+
     /// <summary>
+    /// T is object, not IEnumerable
     /// Multi deep array is not suppported
     /// For convert into string use ListToString
     /// </summary>
     /// <param name="para"></param>
     /// <returns></returns>
-    public static object[] TwoDimensionParamsIntoOne(object[] para)
+    public static List<T> TwoDimensionParamsIntoOne<T>(params object[] para)
     {
-        List<object> result = new List<object>();
+        List<T> result = new List<T>();
         foreach (var item in para)
         {
+            if (item == null)
+            {
+                continue;
+            }
+
             if (item is IEnumerable && item.GetType() != typeof(string))
             {
-                foreach (var r in (IEnumerable)item)
+                foreach (T r in (IEnumerable)item)
                 {
                     result.Add(r);
                 }
             }
             else
             {
-                result.Add(item);
+                result.Add((T)item);
             }
         }
-        return result.ToArray();
+        return result;
     }
 
     public static List<long> ToLong(IEnumerable enumerable)
