@@ -5,6 +5,150 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string AplikaceProZmenšováníObrázkůMůžeteZmenšovatBuďVRatiuPoměruNeboNaPřesnouVelikostDoProgramuNačteteObrázkyKteréPakZmenšíteBuďVšechnyKliknutímNaZelenouŠipkuNeboJenNěkteréTímŽeJeBudeteProcházetAEntremZmenšovatProgramUmíNačístSouboryVýběremZLibovolnéSložkyVAdresářiObrázkyNeboLibovolnouSložkuNaDiskuZkopírovánímJejíCestyDoSchránkyAStisknutímTlačítkaDůležitéProgramUmíZmenšovatPouzeDoSložkyDokumentySunamoShrinkerImagesOutputNazevZdrojoveSlozkyPokudBysteChtěliAbyUmělZmenšovatTřebaDoZdrojovéSložkyNeboKdekolivJindeTakMiNapišteVášPožadavekAJáSeNaToMrknu = "AplikaceProZmenšováníObrázkůMůžeteZmenšovatBuďVRatiuPoměruNeboNaPřesnouVelikostDoProgramuNačteteObrázkyKteréPakZmenšíteBuďVšechnyKliknutímNaZelenouŠipkuNeboJenNěkteréTímŽeJeBudeteProcházetAEntremZmenšovatProgramUmíNačístSouboryVýběremZLibovolnéSložkyVAdresářiObrázkyNeboLibovolnouSložkuNaDiskuZkopírovánímJejíCestyDoSchránkyAStisknutímTlačítkaDůležitéProgramUmíZmenšovatPouzeDoSložkyDokumentySunamoShrinkerImagesOutputNazevZdrojoveSlozkyPokudBysteChtěliAbyUmělZmenšovatTřebaDoZdrojovéSložkyNeboKdekolivJindeTakMiNapišteVášPožadavekAJáSeNaToMrknu" ; 
+
+	public const string TatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatotatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníky = "TatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatotatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníky" ; 
+
+	public const string ThisCatHasNotFilledInAboutMeNorIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInMeNeitherIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitors = "ThisCatHasNotFilledInAboutMeNorIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInMeNeitherIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitors" ; 
+
+	public const string IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava = "IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava" ; 
+
+	public const string IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite = "IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" ; 
+
+	public const string Wednesday = "Wednesday" ; 
+
+	public const string LastModifiedDate = "LastModifiedDate" ; 
+
+	public const string mně = "mně" ; 
+
+	public const string TechnologyIUseSomethingAbout = "TechnologyIUseSomethingAbout" ; 
+
+	public const string TagCloud = "TagCloud" ; 
+
+	public const string AddMoreTagsFrom = "AddMoreTagsFrom" ; 
+
+	public const string TagManagement = "TagManagement" ; 
+
+	public const string SaveChangesInDependencies = "SaveChangesInDependencies" ; 
+
+	public const string ManageExistingSoftware = "ManageExistingSoftware" ; 
+
+	public const string BeforeUploadingItIsAGoodIdeaToMakeSureThatTheUploadedFileHasANameUnderWhichItWillAppearOnTheSiteTheSiteDoesNotHaveSplitTablesForTheFileNameAndTableName = "BeforeUploadingItIsAGoodIdeaToMakeSureThatTheUploadedFileHasANameUnderWhichItWillAppearOnTheSiteTheSiteDoesNotHaveSplitTablesForTheFileNameAndTableName" ; 
+
+	public const string software = "software" ; 
+
+	public const string AddNew = "AddNew" ; 
+
+	public const string Upload = "Upload" ; 
+
+	public const string DeleteSelectedImages = "DeleteSelectedImages" ; 
+
+	public const string PovolenyJsouPouzePříponyPng = "PovolenyJsouPouzePříponyPng" ; 
+
+	public const string DescriptionOfChanges = "DescriptionOfChanges" ; 
+
+	public const string ApplicationVersion = "ApplicationVersion" ; 
+
+	public const string ManageFilesOfThisVersion = "ManageFilesOfThisVersion" ; 
+
+	public const string SaveChangesToTheVersionShown = "SaveChangesToTheVersionShown" ; 
+
+	public const string SetDisplayedVersionAsDefault = "SetDisplayedVersionAsDefault" ; 
+
+	public const string ClearTheDisplayedVersion = "ClearTheDisplayedVersion" ; 
+
+	public const string verze = "verze" ; 
+
+	public const string Settings = "Settings" ; 
+
+	public const string CreateANewVersion = "CreateANewVersion" ; 
+
+	public const string ManageImagesForThisApp = "ManageImagesForThisApp" ; 
+
+	public const string ManageTagsForThisProgram = "ManageTagsForThisProgram" ; 
+
+	public const string ManageTheProgramsThatDependOnThisProgram = "ManageTheProgramsThatDependOnThisProgram" ; 
+
+	public const string TypSoftware = "TypSoftware" ; 
+
+	public const string ShowingAnAppOnTheWeb = "ShowingAnAppOnTheWeb" ; 
+
+	public const string TheApplicationHasAGUI = "TheApplicationHasAGUI" ; 
+
+	public const string ShowingLargeTileVeryGoodForAppsWithMoreThanWords = "ShowingLargeTileVeryGoodForAppsWithMoreThanWords" ; 
+
+	public const string ApplicationDescription = "ApplicationDescription" ; 
+
+	public const string TheNameOfTheAppOnGitHub = "TheNameOfTheAppOnGitHub" ; 
+
+	public const string TheNameOfTheApplication = "TheNameOfTheApplication" ; 
+
+	public const string SharedSettings = "SharedSettings" ; 
+
+	public const string zaměření = "zaměření" ; 
+
+	public const string OrChooseBy = "OrChooseBy" ; 
+
+	public const string dlaždic = "dlaždic" ; 
+
+	public const string appsCloudu = "appsCloudu" ; 
+
+	public const string InTheForm = "InTheForm" ; 
+
+	public const string AddANewApp = "AddANewApp" ; 
+
+	public const string aplikace = "aplikace" ; 
+
+	public const string ThisSiteWasProgrammedToGiveMeTheBinariesOfMyDesktopProgramsThereSABetterPlaceToDoItThanYourWebsite = "ThisSiteWasProgrammedToGiveMeTheBinariesOfMyDesktopProgramsThereSABetterPlaceToDoItThanYourWebsite" ; 
+
+	public const string webu = "webu" ; 
+
+	public const string O = "O" ; 
+
+	public const string TotalViews = "TotalViews" ; 
+
+	public const string NumberOfThumbsDown = "NumberOfThumbsDown" ; 
+
+	public const string NumberOfThumbsUp = "NumberOfThumbsUp" ; 
+
+	public const string NumberOfDownloads = "NumberOfDownloads" ; 
+
+	public const string AFewMoreDetails = "AFewMoreDetails" ; 
+
+	public const string LinkToGitHub = "LinkToGitHub" ; 
+
+	public const string TypSoftwaru = "TypSoftwaru" ; 
+
+	public const string HasApplicationGraphicalInterface = "HasApplicationGraphicalInterface" ; 
+
+	public const string MoreInformation = "MoreInformation" ; 
+
+	public const string BasicInformation = "BasicInformation" ; 
+
+	public const string DependsOnThe = "DependsOnThe" ; 
+
+	public const string Shoty = "Shoty" ; 
+
+	public const string NoIDonTLikeTheApp = "NoIDonTLikeTheApp" ; 
+
+	public const string YesILikeTheApp = "YesILikeTheApp" ; 
+
+	public const string ILikeIt = "ILikeIt" ; 
+
+	public const string EditApp = "EditApp" ; 
+
+	public const string GitHub = "GitHub" ; 
+
+	public const string DownloadTheRecommendedVersion = "DownloadTheRecommendedVersion" ; 
+
+	public const string CreatePathAndRecordsInDBTables = "CreatePathAndRecordsInDBTables" ; 
+
+	public const string FileInclExtensionsYouWantToUpload = "FileInclExtensionsYouWantToUpload" ; 
+
+	public const string PreparingForFtpUploadOfANewFileToUpload = "PreparingForFtpUploadOfANewFileToUpload" ; 
+
+	public const string AddANewDownload = "AddANewDownload" ; 
+
 	public const string FoundInTranslatedTexts = "FoundInTranslatedTexts" ; 
 
 	public const string FoundInOriginalTexts = "FoundInOriginalTexts" ; 

@@ -1925,15 +1925,6 @@ public static partial class SH
         return input;
     }
 
-    public static string GetToFirstChar(string input, int indexOfChar)
-    {
-        if (indexOfChar != -1)
-        {
-            return input.Substring(0, indexOfChar + 1);
-        }
-        return input;
-    }
-
     //public static string JoinStringParams(string name, params string[] labels) { return null; }
     //public static string JoinStringParams(object delimiter, params string[] parts) { return null; }
     //public static string JoinPairs(params object[] args){return null;} 

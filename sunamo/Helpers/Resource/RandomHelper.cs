@@ -40,21 +40,6 @@ public static partial class RandomHelper
         return (byte)s_rnd.Next(od, to + 1);
     }
 
-    public static bool RandomBool()
-    {
-        int nt = RandomInt(2);
-        string pars = "";
-        if (nt == 0)
-        {
-            pars = bool.FalseString;
-        }
-        else
-        {
-            pars = bool.TrueString;
-        }
-        return bool.Parse(pars);
-    }
-
     public static List<string> RandomElementsOfCollection(IList sou, int pol)
     {
         List<string> vr = new List<string>();

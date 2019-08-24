@@ -120,12 +120,13 @@ public class AppData : AppDataAbstractBase<string, string>
     //
     /// <summary>
     /// Without ext because all is crypted and in bytes
+    /// Folder is possible to obtain A1 = null
     /// </summary>
     /// <param name="filename"></param>
     /// <returns></returns>
     public override string GetFileCommonSettings(string filename)
     {
-        var vr = FS.CombineWithoutFirstCharLower(GetSunamoFolder(), "Common", AppFolders.Settings.ToString(), filename);
+        var vr = FS.Combine(CommonFolder() , filename);
         return vr;
     }
 
@@ -142,5 +143,11 @@ public class AppData : AppDataAbstractBase<string, string>
         var file = GetFileCommonSettings(key);
         TF.WriteAllBytes(file, CryptHelper.RijndaelBytes.Instance.Encrypt(Encoding.UTF8.GetBytes(value).ToList()));
     }
+
+    public override string CommonFolder()
+    {
+        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString());
+    }
+
 }
 

@@ -110,6 +110,9 @@ public static partial class RandomHelper
     }
 
     public static List<char> vsZnaky = null;
+
+
+
     public static List<char> vsZnakyWithoutSpecial = null;
     static RandomHelper()
     {
@@ -213,5 +216,20 @@ public static partial class RandomHelper
     public static short RandomShort()
     {
         return (short)s_rnd.Next(0, short.MaxValue);
+    }
+
+public static bool RandomBool()
+    {
+        int nt = RandomInt(2);
+        string pars = "";
+        if (nt == 0)
+        {
+            pars = bool.FalseString;
+        }
+        else
+        {
+            pars = bool.TrueString;
+        }
+        return bool.Parse(pars);
     }
 }

@@ -25,7 +25,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         return TF.ReadFile(path);
     }
 
-
+    
 
 
     public AppDataBase()

@@ -31,9 +31,11 @@ public class ResourcesH : IResourceHelper
             Uri uri = new Uri("/Resources/Resource.txt", UriKind.Relative);
             // absolute
             Uri uriJpg = new Uri("pack://application:,,,/Wpf.Tests;component/Resources/Resource.jpg", UriKind.Absolute);
+            imgResource.Source = new BitmapImage(uriJpg);
+
             StreamResourceInfo info = Application.GetResourceStream(uri);
             txtResource.Text = Encoding.UTF8.GetString(FS.StreamToArrayBytes(info.Stream));
-            imgResource.Source = new BitmapImage(uriJpg);
+            
      */
 
     public static ResourcesH ci = new ResourcesH();

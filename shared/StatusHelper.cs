@@ -13,6 +13,8 @@ namespace shared
 
         public static Color GetBackgroundBrushOfTypeOfMessage(TypeOfMessage st)
         {
+            
+
             switch (st)
             {
                 case TypeOfMessage.Error:

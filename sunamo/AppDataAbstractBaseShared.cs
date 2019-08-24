@@ -5,6 +5,13 @@ using System.Text;
 
 namespace sunamo
 {
+    /// <summary>
+    /// Another methods which is adecvate only in desktop apps
+    /// AppDataAppsAbstractBase - methods which are applied only on UAP
+    /// AppDataAbstractBase (this) - methods which are applied only on desktop
+    /// </summary>
+    /// <typeparam name="StorageFolder"></typeparam>
+    /// <typeparam name="StorageFile"></typeparam>
     public abstract partial class AppDataAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
         public abstract StorageFolder GetRootFolder();

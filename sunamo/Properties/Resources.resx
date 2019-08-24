@@ -31,7 +31,7 @@
     name/value pairs.
     
     Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET public class that support 
+    type or mimetype. Type corresponds to a .NET class that support 
     text/value conversion through the TypeConverter architecture. 
     Classes that don't support this are serialized and stored with the 
     mimetype set.
@@ -141,5 +141,12 @@
         &lt;meta name="description" content=""&gt;
         &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
     </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="sunamo_cs_CZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MultilingualResources\sunamo.cs-CZ.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sunamo_en_US" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MultilingualResources\sunamo.en-US.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

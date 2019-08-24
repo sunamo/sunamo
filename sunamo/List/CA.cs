@@ -418,6 +418,8 @@ public static partial class CA
         return eb;
     }
 
+    
+
     public static List<string> TrimList(List<string> c)
     {
         for (int i = 0; i < c.Count; i++)

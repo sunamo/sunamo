@@ -18,4 +18,11 @@ public partial class PH
         {
         }
     }
+
+public static bool IsAlreadyRunning(string name)
+    {
+        var pr = Process.GetProcessesByName(name).Select(d => d.ProcessName);
+        //var processes = Process.GetProcesses(name).Where(s => s.ProcessName.Contains(name)).Select(d => d.ProcessName);
+        return pr.Count() > 1;
+    }
 }

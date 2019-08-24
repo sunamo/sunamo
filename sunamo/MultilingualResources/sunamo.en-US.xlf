@@ -9098,6 +9098,299 @@
           <source></source>
           <target state="translated">Found in translated texts</target>
         </trans-unit>
+        <trans-unit id="AddANewDownload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add a new download</target>
+        </trans-unit>
+        <trans-unit id="PreparingForFtpUploadOfANewFileToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Preparing for ftp upload of a new file to upload</target>
+        </trans-unit>
+        <trans-unit id="FileInclExtensionsYouWantToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">File incl. extensions you want to upload</target>
+        </trans-unit>
+        <trans-unit id="CreatePathAndRecordsInDBTables" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create path and records in DB tables</target>
+        </trans-unit>
+        <trans-unit id="DownloadTheRecommendedVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Download the recommended version</target>
+        </trans-unit>
+        <trans-unit id="GitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">GitHub</target>
+        </trans-unit>
+        <trans-unit id="EditApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Edit app</target>
+        </trans-unit>
+        <trans-unit id="ILikeIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I like it (</target>
+        </trans-unit>
+        <trans-unit id="YesILikeTheApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Yes, I like the app</target>
+        </trans-unit>
+        <trans-unit id="NoIDonTLikeTheApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No, I don't like the app</target>
+        </trans-unit>
+        <trans-unit id="Shoty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shoty</target>
+        </trans-unit>
+        <trans-unit id="DependsOnThe" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Depends on the</target>
+        </trans-unit>
+        <trans-unit id="BasicInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Basic information</target>
+        </trans-unit>
+        <trans-unit id="MoreInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">More information</target>
+        </trans-unit>
+        <trans-unit id="HasApplicationGraphicalInterface" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Has application graphical interface</target>
+        </trans-unit>
+        <trans-unit id="TypSoftwaru" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ softwaru</target>
+        </trans-unit>
+        <trans-unit id="LinkToGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Link to GitHub</target>
+        </trans-unit>
+        <trans-unit id="AFewMoreDetails" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A few more details</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDownloads" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of downloads</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsUp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of thumbs up</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsDown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of thumbs down</target>
+        </trans-unit>
+        <trans-unit id="TotalViews" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total views</target>
+        </trans-unit>
+        <trans-unit id="O" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">O</target>
+        </trans-unit>
+        <trans-unit id="webu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">webu</target>
+        </trans-unit>
+        <trans-unit id="ThisSiteWasProgrammedToGiveMeTheBinariesOfMyDesktopProgramsThereSABetterPlaceToDoItThanYourWebsite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This site was programmed to give me the binaries of my desktop programs. There's a better place to do it than your website</target>
+        </trans-unit>
+        <trans-unit id="aplikace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">aplikace</target>
+        </trans-unit>
+        <trans-unit id="AddANewApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add a new app</target>
+        </trans-unit>
+        <trans-unit id="InTheForm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In the form</target>
+        </trans-unit>
+        <trans-unit id="appsCloudu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">apps cloudu</target>
+        </trans-unit>
+        <trans-unit id="dlaždic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dlaždic</target>
+        </trans-unit>
+        <trans-unit id="OrChooseBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Or choose by</target>
+        </trans-unit>
+        <trans-unit id="zaměření" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">zaměření</target>
+        </trans-unit>
+        <trans-unit id="SharedSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shared settings</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The name of the application</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheAppOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The name of the app on GitHub</target>
+        </trans-unit>
+        <trans-unit id="ApplicationDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Application description</target>
+        </trans-unit>
+        <trans-unit id="ShowingLargeTileVeryGoodForAppsWithMoreThanWords" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Showing large tile (Very good for apps with more than 3-4 words)</target>
+        </trans-unit>
+        <trans-unit id="TheApplicationHasAGUI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The application has a GUI</target>
+        </trans-unit>
+        <trans-unit id="ShowingAnAppOnTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Showing an app on the web</target>
+        </trans-unit>
+        <trans-unit id="TypSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ software</target>
+        </trans-unit>
+        <trans-unit id="ManageTheProgramsThatDependOnThisProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage the programs that depend on this program</target>
+        </trans-unit>
+        <trans-unit id="ManageTagsForThisProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage tags for this program</target>
+        </trans-unit>
+        <trans-unit id="ManageImagesForThisApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage images for this app</target>
+        </trans-unit>
+        <trans-unit id="CreateANewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create a new version</target>
+        </trans-unit>
+        <trans-unit id="Settings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Settings</target>
+        </trans-unit>
+        <trans-unit id="verze" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">verze</target>
+        </trans-unit>
+        <trans-unit id="ClearTheDisplayedVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Clear the displayed version</target>
+        </trans-unit>
+        <trans-unit id="SetDisplayedVersionAsDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Set displayed version as default</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesToTheVersionShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save changes to the version shown</target>
+        </trans-unit>
+        <trans-unit id="ManageFilesOfThisVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage files of this version</target>
+        </trans-unit>
+        <trans-unit id="ApplicationVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Application version</target>
+        </trans-unit>
+        <trans-unit id="DescriptionOfChanges" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Description of changes</target>
+        </trans-unit>
+        <trans-unit id="PovolenyJsouPouzePříponyPng" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Povoleny jsou pouze přípony .png</target>
+        </trans-unit>
+        <trans-unit id="DeleteSelectedImages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete selected images</target>
+        </trans-unit>
+        <trans-unit id="Upload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upload</target>
+        </trans-unit>
+        <trans-unit id="AddNew" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add new</target>
+        </trans-unit>
+        <trans-unit id="software" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">software</target>
+        </trans-unit>
+        <trans-unit id="BeforeUploadingItIsAGoodIdeaToMakeSureThatTheUploadedFileHasANameUnderWhichItWillAppearOnTheSiteTheSiteDoesNotHaveSplitTablesForTheFileNameAndTableName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Before uploading, it is a good idea to make sure that the uploaded file has a name under which it will appear on the site. The site does not have split tables for the file name and table name</target>
+        </trans-unit>
+        <trans-unit id="ManageExistingSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage existing software</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesInDependencies" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save changes in dependencies</target>
+        </trans-unit>
+        <trans-unit id="TagManagement" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tag management</target>
+        </trans-unit>
+        <trans-unit id="AddMoreTagsFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add more tags from</target>
+        </trans-unit>
+        <trans-unit id="TagCloud" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tag Cloud</target>
+        </trans-unit>
+        <trans-unit id="TechnologyIUseSomethingAbout" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Technology I Use &amp; Something About</target>
+        </trans-unit>
+        <trans-unit id="mně" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mně</target>
+        </trans-unit>
+        <trans-unit id="LastModifiedDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Last Modified Date</target>
+        </trans-unit>
+        <trans-unit id="Wednesday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Wednesday, 8.1.2014</target>
+        </trans-unit>
+        <trans-unit id="IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I have been programming for more than 6 years. I learned a lot of languages and platforms for the first year, but it took me about a year to understand what general programming is all about and to understand its basics.
+                    The second and fourth years were marked by programming desktop applications in C # and .NET. At this time, there was no application on the web, I did it for my personal use only, and to learn how to program and improve my theory. But I tried in ASP.NET web applications, but my first attempts didn't go well and I only had them on freehosting at aspone.cz.
+                    I missed the 3rd year - I spent it all playing online games like Farmville. I do not like to remember this time with resistance and sadness.
+                    Unfortunately, somewhere between the fourth and fifth year, I lost such source files. I tried to restore them with the GetDataBack program I bought, but I barely restored a few percent of the sources, the rest was damaged. I was so angry and broken that I didn't want much to develop desktop applications anymore and I started developing web applications, but still on freehosts.
+                    For the fifth year I developed several websites separately and that was pretty bad, I kept rotating databases from SQL Server to SQLite.
+                    The sixth year was marked by the development of this site sunamo.cz, when I created a unified core program on which all sites are dependent, and then individual sites, where I can completely or partially remove any site without stopping me another part of the site - just because all the shared components are in the shared core of the site</target>
+        </trans-unit>
+        <trans-unit id="IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I am interested in programming on the .NET platform, in C # but also in other platforms and languages. I like to follow all modern life and IT events, now I'm just waiting for Dart to get through Google. He liked Opera before moving on to Blink. Blink does not bother me, it bothers me the loss of functions. Sometimes I read something or learn something new, although if I don't have to, I work with what I know and know, I like the results of my work. I don't like Java</target>
+        </trans-unit>
+        <trans-unit id="ThisCatHasNotFilledInAboutMeNorIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInMeNeitherIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitors" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1 this cat has not filled in about me nor introduction for visitors 2 this cat has not filled in for me or introduction for visitors 3 this cat has not filled in for me or introduction for visitors 4 this cat has not filled in for me or introduction for visitors 5 this cat has not filled in me neither introduction to visitors 6 this cat had not filled in about me nor introduction to visitors 7 this cat had not filled in about me nor introduction to visitors 8 this cat had not filled in about me nor introduction to visitors this cat had not filled in about me nor introduction to visitors</target>
+        </trans-unit>
+        <trans-unit id="TatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatotatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníky" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1tatokočkanemělavyplněnéoměaniúvodpronávštěvníky2tatotatokočkanemělavyplněnéoměaniúvodpronávštěvníky3tatokočkanemělavyplněnéoměaniúvodpronávštěvníky4tatokočkanemělavyplněnéoměaniúvodpronávštěvníky5tatokočkanemělavyplněnéoměaniúvodpronávštěvníky6tatokočkanemělavyplněnéoměaniúvodpronávštěvníky7tatokočkanemělavyplněnéoměaniúvodpronávštěvníky8tatokočkanemělavyplněnéoměaniúvodpronávštěvníky9tatokočkanemělavyplněnéoměaniúvodpronávštěvníky</target>
+        </trans-unit>
+        <trans-unit id="AplikaceProZmenšováníObrázkůMůžeteZmenšovatBuďVRatiuPoměruNeboNaPřesnouVelikostDoProgramuNačteteObrázkyKteréPakZmenšíteBuďVšechnyKliknutímNaZelenouŠipkuNeboJenNěkteréTímŽeJeBudeteProcházetAEntremZmenšovatProgramUmíNačístSouboryVýběremZLibovolnéSložkyVAdresářiObrázkyNeboLibovolnouSložkuNaDiskuZkopírovánímJejíCestyDoSchránkyAStisknutímTlačítkaDůležitéProgramUmíZmenšovatPouzeDoSložkyDokumentySunamoShrinkerImagesOutputNazevZdrojoveSlozkyPokudBysteChtěliAbyUmělZmenšovatTřebaDoZdrojovéSložkyNeboKdekolivJindeTakMiNapišteVášPožadavekAJáSeNaToMrknu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace pro zmenšování obrázků. Můžete zmenšovat buď v ratiu/poměru, nebo na přesnou velikost. Do programu načtete obrázky, které pak zmenšíte buď všechny kliknutím na zelenou šipku nebo jen některé tím že je budete procházet a entrem zmenšovat. Program umí načíst soubory výběrem z libovolné složky v adresáři Obrázky nebo libovolnou složku na disku zkopírováním její cesty do schránky a stisknutím tlačítka. Důležité: Program umí zmenšovat pouze do složky Dokumenty/sunamo/ShrinkerImages/Output/{Nazev_zdrojove_slozky}. Pokud byste chtěli, aby uměl zmenšovat třeba do zdrojové složky nebo kdekoliv jinde tak mi napište váš požadavek a já se na to mrknu</target>
+        </trans-unit>
       </group>
     </body>
   </file>

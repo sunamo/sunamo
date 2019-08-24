@@ -548,6 +548,7 @@ public static partial class SH
     /// Return which a3 is contained in A1. if a2 and A3 contains only 1 element, check for contains these first element
     /// If contains more elements, wasnts check
     /// Return elements from A3 which is contained
+    /// If don't contains, return zero element collection
     /// </summary>
     /// <param name="item"></param>
     /// <param name="hasFirstEmptyLength"></param>
@@ -803,6 +804,8 @@ public static partial class SH
 
 
     /// <summary>
+    /// Try to use in minimum!! Better use Format3 which dont raise "Input string was in wrong format"
+    /// 
     /// Simply return from string.Format. SH.Format is more intelligent
     /// If input has curly bracket but isnt in right format, return A1. Otherwise apply string.Format. 
     /// SH.Format2 return string.Format always
@@ -1898,5 +1901,14 @@ public static bool RemovePrefix(ref string s, string v)
         s = TrimEnd(s, args);
         
         return s;
+    }
+
+public static string GetToFirstChar(string input, int indexOfChar)
+    {
+        if (indexOfChar != -1)
+        {
+            return input.Substring(0, indexOfChar + 1);
+        }
+        return input;
     }
 }

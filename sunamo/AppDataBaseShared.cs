@@ -19,6 +19,8 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// </summary>
     protected StorageFolder rootFolder = default(StorageFolder);
 
+    public abstract StorageFolder CommonFolder();
+
     public dynamic Abstract
     {
         get
@@ -62,7 +64,11 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     }
 
 
-
+    /// <summary>
+    /// Return always in User's AppData
+    /// </summary>
+    /// <param name="inFolderCommon"></param>
+    /// <returns></returns>
     public string RootFolderCommon(bool inFolderCommon)
     {
         //string appDataFolder = SpecialFO

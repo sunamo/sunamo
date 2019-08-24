@@ -35,7 +35,7 @@ namespace Roslyn
                 cs.CreateTitle();
             ]";
 
-            return SH.Format2(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
+            return SH.Format(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Roslyn
         /// <returns></returns>
         string GetContentOfPageCsFile(string nsX, string className, string variables, string usings, string ctorArgs, string ctorInner, string baseClassCs, string nsBaseClassCs, string code)
         {
-            string template = SH.Format2(@"{3}
+            string template = SH.Format(@"{3}
 namespace {0}
 [
     public partial class {1}Cs : {6}
@@ -71,10 +71,20 @@ namespace {0}
     ]
 ]", AllStrings.lsf, AllStrings.rsf, 
 nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs);
-            template = SH.Format2(template, code);
+            template = SH.Format3(template, code);
             return template;
         }
 
+        /// <summary>
+        /// A1 = folder with aspx
+        /// A2 = folder with cs
+        /// A3 = LyricsPageCs etc.
+        /// A4 = Me, LyricsX etc.
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="baseClassCs"></param>
+        /// <param name="nsBaseClassCs"></param>
         public void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs)
         {
             var files = FS.GetFiles(from, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);

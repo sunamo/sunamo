@@ -9,6 +9,8 @@ namespace sunamo
     public abstract partial class AppDataAppsAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
         /// <summary>
+        /// AppDataAppsAbstractBase (this) - methods which are applied only on UAP
+        /// AppDataAbstractBase  - methods which are applied only on desktop
         /// G path file A2 in AF A1.
         /// Automatically create upfolder if there dont exists.
         /// </summary>

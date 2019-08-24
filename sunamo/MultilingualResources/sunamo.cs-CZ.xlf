@@ -8321,6 +8321,227 @@
           <source></source>
           <target state="translated">Nalezeno v přeložených textech</target>
         </trans-unit>
+        <trans-unit id="AddANewDownload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidání nového souboru ke stažení</target>
+        </trans-unit>
+        <trans-unit id="PreparingForFtpUploadOfANewFileToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Příprava na ftp upload nového souboru k uploadování</target>
+        </trans-unit>
+        <trans-unit id="FileInclExtensionsYouWantToUpload" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Soubor vč. přípony, který chceš uploadovat</target>
+        </trans-unit>
+        <trans-unit id="CreatePathAndRecordsInDBTables" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit cestu a záznamy v DB tabulkách</target>
+        </trans-unit>
+        <trans-unit id="DownloadTheRecommendedVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhnout doporučenou verzi</target>
+        </trans-unit>
+        <trans-unit id="ILikeIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">To se mi líbí (</target>
+        </trans-unit>
+        <trans-unit id="YesILikeTheApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ano, aplikace se mi líbí</target>
+        </trans-unit>
+        <trans-unit id="NoIDonTLikeTheApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ne, aplikace se mi nelíbí</target>
+        </trans-unit>
+        <trans-unit id="DependsOnThe" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Závisí na</target>
+        </trans-unit>
+        <trans-unit id="BasicInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Základní informace</target>
+        </trans-unit>
+        <trans-unit id="MoreInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další informace</target>
+        </trans-unit>
+        <trans-unit id="HasApplicationGraphicalInterface" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Má aplikace grafické rozhraní</target>
+        </trans-unit>
+        <trans-unit id="LinkToGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odkaz na GitHub</target>
+        </trans-unit>
+        <trans-unit id="AFewMoreDetails" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pár dalších údajů</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDownloads" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet stažení</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsUp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet thumbs up</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsDown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet thumbs down</target>
+        </trans-unit>
+        <trans-unit id="TotalViews" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet shlédnutí celkově</target>
+        </trans-unit>
+        <trans-unit id="ThisSiteWasProgrammedToGiveMeTheBinariesOfMyDesktopProgramsThereSABetterPlaceToDoItThanYourWebsite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento web byl naprogramován, abych mohl kde dávat binárky svých desktopových programů. Existuje na to lepší místo než svůj web</target>
+        </trans-unit>
+        <trans-unit id="AddANewApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat novou aplikaci</target>
+        </trans-unit>
+        <trans-unit id="InTheForm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ve formě</target>
+        </trans-unit>
+        <trans-unit id="OrChooseBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebo si vyberte podle</target>
+        </trans-unit>
+        <trans-unit id="SharedSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sdílené nastavení</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jméno aplikace</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheAppOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jméno aplikace na GitHubu</target>
+        </trans-unit>
+        <trans-unit id="ApplicationDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popis aplikace</target>
+        </trans-unit>
+        <trans-unit id="ShowingLargeTileVeryGoodForAppsWithMoreThanWords" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazuje se velká dlaždice(Velmi vhodné pro aplikace jež mají více než 3-4 slova)</target>
+        </trans-unit>
+        <trans-unit id="TheApplicationHasAGUI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace má GUI</target>
+        </trans-unit>
+        <trans-unit id="ShowingAnAppOnTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazuje se aplikace na webu</target>
+        </trans-unit>
+        <trans-unit id="ManageTheProgramsThatDependOnThisProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Spravovat programy, na nichž je tento program závislý</target>
+        </trans-unit>
+        <trans-unit id="ManageTagsForThisProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Spravovat tagy k tomuto programu</target>
+        </trans-unit>
+        <trans-unit id="ManageImagesForThisApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Spravovat obrázky k této aplikaci</target>
+        </trans-unit>
+        <trans-unit id="CreateANewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit novou verzi</target>
+        </trans-unit>
+        <trans-unit id="Settings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nastavení</target>
+        </trans-unit>
+        <trans-unit id="ClearTheDisplayedVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vymazat zobrazenou verzi</target>
+        </trans-unit>
+        <trans-unit id="SetDisplayedVersionAsDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nastavit zobrazenou verzi za výchozí</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesToTheVersionShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit změny provedené na zobrazenou verzi</target>
+        </trans-unit>
+        <trans-unit id="ManageFilesOfThisVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Spravovat soubory této verze</target>
+        </trans-unit>
+        <trans-unit id="ApplicationVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Verze aplikace</target>
+        </trans-unit>
+        <trans-unit id="DescriptionOfChanges" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popis změn</target>
+        </trans-unit>
+        <trans-unit id="DeleteSelectedImages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odstranit zvolené obrázky</target>
+        </trans-unit>
+        <trans-unit id="AddNew" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidání nového</target>
+        </trans-unit>
+        <trans-unit id="BeforeUploadingItIsAGoodIdeaToMakeSureThatTheUploadedFileHasANameUnderWhichItWillAppearOnTheSiteTheSiteDoesNotHaveSplitTablesForTheFileNameAndTableName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Před nahráním je dobré se ujistit, že uploadovaný soubor má název pod kterým se bude zobrazovat na webu. Web nemá rozdělené tabulky pro název souboru a název tabulky</target>
+        </trans-unit>
+        <trans-unit id="ManageExistingSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Správa dosavadního software</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesInDependencies" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit změny v závislostech</target>
+        </trans-unit>
+        <trans-unit id="TagManagement" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Správa tagů</target>
+        </trans-unit>
+        <trans-unit id="AddMoreTagsFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidej další tagy z</target>
+        </trans-unit>
+        <trans-unit id="TagCloud" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tag Cloudu</target>
+        </trans-unit>
+        <trans-unit id="TechnologyIUseSomethingAbout" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Technologie které používám &amp; něco o</target>
+        </trans-unit>
+        <trans-unit id="LastModifiedDate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum poslední změny</target>
+        </trans-unit>
+        <trans-unit id="Wednesday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">středa, 8.1.2014</target>
+        </trans-unit>
+        <trans-unit id="IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Programování se věnuji už více než 6 roků. První rok jsem se učil spoustu jazyků i platforem, ano rok cca mi trvalo, než jsem pochopil o čem obecné programování vlastně je a než jsem pochopil jeho základy. 
+                    Druhý a čtvrtý rok se nesl ve znamení programování desktopových aplikací v C# a .NET. V této době nebyla žádná moje aplikace nikde na webu, dělal jsem si to jen pro svou osobní potřebu a abych se naučil prakticky programovat a zdokonaloval jsem se v teorii. Ale snažil jsem se i ve webových ASP.NET aplikacích, nicméně moje první pokusy nedopadly moc dobře a měl jsem je pouze na freehostingu u aspone.cz.
+                    Vynechal jsem 3. rok - ten jsem strávil vesměs hraním online her jako Farmville. Na tuto dobu vzpomínám nerad, s odporem a smutkem.
+                    Bohužel někdy na pomezí čtvrtého a pátého roku se mi stala taková věc, že jsem ztratil všechny zdrojové soubory. Snažil jsem se je obnovit programem GetDataBack který jsem si koupil ale obnovil jsem sotva pár procent zdrojáků, zbytek byl poškozený. Byl jsem tak naštvaný a zlomený že už se mi nechtělo moc vyvíjet desktopové aplikace a začal jsem vyvíjet webové aplikace, ovšem ještě stále na freehostinzích.
+                    Pátý rok jsem vyvíjel separatně několik webů a to bylo celkem na nic, pořád jsem střídal databáze od SQL Serveru po SQLite. 
+                    Šestý rok tak byl ve znamení vývoje tohoto webu sunamo.cz, kdy jsem vytvořil jednotné jádro programu na kterém jsou veškeré weby závislé, a pak jednotlivé weby, kdy mohu kterýkoliv web kompletně nebo částečně odstranit bez toho aby mi přestala fungovat jiná část webu - právě kvůli toho že ve sdíleném jádru webu jsou všechny sdílené součásti</target>
+        </trans-unit>
+        <trans-unit id="IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zajímám se o programování na platformě .NET, v jazyce C# ale i ostatní platformy a jazyky mě zajímají. Rád sleduji všechno moderní dění ze života i IT, teď právě jsem v očekávání jak se prosadí Dart od Googlu. Měl jesm rád Operu než přešla na Blink. Blink mi nevadí, vadí mi ta ztráta funkcí. Občas si něco přečtu nebo se naučím něco nového, i když spíše pokud nemusím, pracuji s tím co umím a znám, mám rád když jsou za mou prací vidět výsledky. Nemám rád Javu</target>
+        </trans-unit>
+        <trans-unit id="ThisCatHasNotFilledInAboutMeNorIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInForMeOrIntroductionForVisitorsThisCatHasNotFilledInMeNeitherIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitorsThisCatHadNotFilledInAboutMeNorIntroductionToVisitors" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 2 tatotato kočka neměla vyplněné o mě ani úvod pro návštěvníky 3 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 4 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 5 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 6 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 7 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 8 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky tato kočka neměla vyplněné o mě ani úvod pro návštěvníky</target>
+        </trans-unit>
       </group>
     </body>
   </file>

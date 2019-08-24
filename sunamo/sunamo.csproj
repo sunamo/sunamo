@@ -24,6 +24,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\RandomHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperSunamoCzShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\EmbeddedResourcesH.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\PHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\MusicTitle.cs" />
     <Compile Include="..\..\sunamo\sunamo\Extensions\StringBuilderExtensions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperTextShared.cs" />
@@ -61,6 +65,14 @@
     <None Remove="Converters\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="MultilingualResources\sunamo.cs-CZ.xlf" />
+    <None Remove="MultilingualResources\sunamo.en-US.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MultilingualResources\sunamo.cs-CZ.xlf" />
+    <EmbeddedResource Include="MultilingualResources\sunamo.en-US.xlf" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Diacritics" Version="2.0.18316.1" />
     <PackageReference Include="fmdev.XliffParser" Version="0.5.6" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
@@ -85,5 +97,18 @@
     <Reference Include="YamlDotNet">
       <HintPath>..\dll\YamlDotNet.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
