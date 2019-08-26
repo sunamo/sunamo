@@ -31,7 +31,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     Grid grid;
     MenuItem miUC;
 
-    public bool CancelClosing { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public bool CancelClosing { get; set; }
     #endregion
 
     public MainWindow_Ctor()
@@ -114,8 +114,6 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             }
 #endif
 
-        AppData.ci.CreateAppFoldersIfDontExists();
-
         Title = appName;
         #endregion
 
@@ -197,10 +195,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
                 break;
         }
 
+        // Here I can use (IUserControl) because every have to be IUserControl
         userControl = (IUserControl)actual;
         userControl.Init();
 
-        userControlWithMenuItems = (IUserControlWithMenuItemsList)actual;
+        userControlWithMenuItems = actual as IUserControlWithMenuItemsList;
 
         #region On start I have to unregister
         previouslyRegisteredMenuItems.ForEach(menuItem => miUC.Items.Remove(menuItem));
@@ -241,12 +240,12 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
     public bool GetCancelClosing()
     {
-        throw new NotImplementedException();
+        return CancelClosing;
     }
 
     public void SetCancelClosing(bool b)
     {
-        throw new NotImplementedException();
+        CancelClosing = b;
     }
 
     enum Mode

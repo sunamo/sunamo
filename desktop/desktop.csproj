@@ -326,7 +326,6 @@
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlBackground.cs" />
-    <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />
@@ -386,7 +385,7 @@
     <Compile Include="WpfScreen.cs" />
     <Compile Include="XamlDisplay.cs" />
     <Compile Include="Data\BitmapImageWithPath.cs" />
-    <Compile Include="XamlGenerator.cs" />
+    <Compile Include="XamlGeneratorDesktop.cs" />
     <Compile Include="XamlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>

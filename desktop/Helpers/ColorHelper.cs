@@ -1,4 +1,4 @@
-﻿using shared.Helpers;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 public class ColorHelper
-    {
+{
     #region Mono
     public static bool IsColorLight(Color clr)
     {
@@ -16,6 +16,8 @@ public class ColorHelper
         double dd = .222 * clr.R + .707 * clr.G + .071 * clr.B;
         return dd > 128;
     }
+
+
 
     public static System.Drawing.Color ConvertColorFromWindowsMediaToDrawing(Color v)
     {
@@ -111,4 +113,3 @@ public class ColorHelper
     }
     #endregion
 }
-

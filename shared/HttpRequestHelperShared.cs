@@ -85,6 +85,8 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
             }
         }
 
+        string result = null;
+
         var request = (HttpWebRequest)WebRequest.Create(address);
         request.Method = method.Method;
 
@@ -153,14 +155,16 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
                         reader = new StreamReader(responseStream, encoding);
                     }
 
-                    return reader.ReadToEnd();
+                    result = reader.ReadToEnd();
                 }
             
         }
         catch (System.Exception ex)
         {
-            return Exceptions.TextOfExceptions(ex);
+            result = Exceptions.TextOfExceptions(ex);
         }
+
+        return result;
     }
 
 /// <summary>

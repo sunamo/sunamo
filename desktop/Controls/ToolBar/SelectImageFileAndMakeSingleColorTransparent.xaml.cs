@@ -59,13 +59,14 @@ namespace desktop.Controls
                      bi = new BitmapImage(new Uri(file));
                     bmp = new Bitmap(file);
                     System.Drawing.Color first2 =  bmp.GetPixel(0, 0);
-                    
-                    
 
-                    bi = new BitmapImage();
+
                     MemoryStream ms = new MemoryStream();
                     bmp.Save(ms, ImageFormat.Png);
                     var arr = ms.ToArray();
+
+                    bi = new BitmapImage();
+                   
                     bi.BeginInit();
                     bi.StreamSource = ms;
                     bi.EndInit();

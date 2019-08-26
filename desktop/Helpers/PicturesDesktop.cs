@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 
     public class PicturesDesktop
     {
+    static Type type = typeof(PicturesDesktop);
+
         public static BitmapSource MakeTransparentWindowsFormsButton(BitmapSource bs)
         {
             return MakeTransparentBitmap(bs, Colors.Magenta);
@@ -256,11 +258,8 @@ using System.Windows.Media.Imaging;
             }
             else
             {
-                if (writeToConsole)
-                {
-                    Exceptions.FileHasWrongExtension(Path.GetFileName(arg));
-                }
-            }
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+        }
             return null;
         }
 
@@ -361,11 +360,8 @@ using System.Windows.Media.Imaging;
             }
             else
             {
-                if (writeToConsole)
-                {
-                    Exceptions. FileHasWrongExtension(fnOri);
-                }
-            }
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+        }
             return bi;
         }
         #endregion

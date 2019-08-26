@@ -101,7 +101,7 @@ public static class CL
         {
             whatOrTextWithoutEndingDot = RLData.en[RLData.en["Enter"]] + " " + whatOrTextWithoutEndingDot + "";
         }
-        whatOrTextWithoutEndingDot += ". " + RLData.en["ForExitEnter"] + " -" + "" + ".";
+        whatOrTextWithoutEndingDot += ". " + RLData.en["ForExitEnter"] + " -1" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();

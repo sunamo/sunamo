@@ -17,6 +17,8 @@ namespace shared
             return System.Drawing.Color.FromArgb(r, g, b);
         }
 
+        
+
         public static string RandomColorHex(bool light)
         {
             int r = RandomHelper.RandomColorPart(light);

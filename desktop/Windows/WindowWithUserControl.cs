@@ -20,7 +20,13 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     IUserControl uc = null;
     IUserControlInWindow iUserControlInWindow = null;
     IUserControlWithResult userControlWithResult = null;
-    
+    IControlWithResultDebug controlWithResultDebug = null;
+    bool isControlWithResult = false;
+    IControlWithResult controlWithResult = null;
+    /// <summary>
+    /// Na false se nastaví při zavírání. Pokud tedy bude false, znamená to že okno se zavřelo křížkem a má tato hodnota false přednost
+    /// </summary>
+    bool? dialogResult = null;
     bool addDialogButtons = false;
     IUserControlWithSizeChange userControlWithSizeChange = null;
 
@@ -57,10 +63,12 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     /// <param name="iUserControlInWindow"></param>
     /// <param name="rm"></param>
     /// <param name="addDialogButtons"></param>
-    public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false)
+    public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null)
     {
+        Tag = tag;
         userControl = (UserControl)iUserControlInWindow;
         this.Closed += WindowWithUserControl_Closed;
+        this.Closing += WindowWithUserControl_Closing;
         this.uc = userControl as IUserControl;
         this.addDialogButtons = addDialogButtons;
 
@@ -86,7 +94,11 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
             menu.Items.Add(miUc);
         }
 
+        controlWithResultDebug = uc as IControlWithResultDebug;
         userControlWithSizeChange = uc as IUserControlWithSizeChange;
+
+        controlWithResult = uc as IControlWithResult;
+        isControlWithResult = controlWithResultDebug != null;
 
         statusBar = new StatusBar();
         statusBar.Height = 25;
@@ -110,7 +122,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
             dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
             DockPanel.SetDock(dialogButtons, Dock.Bottom);
             dock.Children.Add(dialogButtons);
-            
         }
 
         this.ResizeMode = rm;
@@ -130,7 +141,10 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         SizeChanged += WindowWithUserControl_SizeChanged;
     }
 
-    
+    private void WindowWithUserControl_Closing(object sender, CancelEventArgs e)
+    {
+        dialogResult = false;
+    }
 
     private void DialogButtons_ChangeDialogResult(bool? b)
     {
@@ -142,6 +156,37 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         set
         {
             dialogButtons.btnOk.IsEnabled = value;
+        }
+    }
+
+    /// <summary>
+    /// Cant be used as handler, then is called multiple times becaues UserControlWithResult_ChangeDialogResult call the same method
+    /// </summary>
+    /// <param name="b"></param>
+    void uc_ChangeDialogResult(bool? b)
+    {
+        // Throwed exception, output is captured by ChangeDialogResult
+        //DialogResult = b;
+        if (ChangeDialogResult != null)
+        {
+            var tag2 = Tag.ToString();
+
+            if (dialogResult.HasValue && !dialogResult.Value)
+            {
+                b = dialogResult;
+            }
+
+            if (ChangeDialogResult != null)
+            {
+                // If is registered, will close window exteranlly
+                ChangeDialogResult(b);
+            }
+
+        }
+        else
+        {
+            // Otherwise close here
+            Close();
         }
     }
 
@@ -172,6 +217,8 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
 
             if (dialogButtons.clickedOk)
             {
+
+
                 uc_ChangeDialogResult(b);
             }
         }
@@ -198,16 +245,45 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
 
         dock.Children.Add(userControl);
 
+        int countOfHandlers = 0;
         if (userControl is IUserControlWithResult)
         {
             userControlWithResult = (IUserControlWithResult)userControl;
-            userControlWithResult.ChangeDialogResult += UserControlWithResult_ChangeDialogResult;
 
+            if (controlWithResultDebug != null)
+            {
+                countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
+            }
+
+            if (isControlWithResult)
+            {
+                controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable( UserControlWithResult_ChangeDialogResult), false);
+            }
+
+            if (controlWithResultDebug != null)
+            {
+                countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
+            }
         }
+
         if (userControl is IUserControlInWindow)
         {
             iUserControlInWindow = (IUserControlInWindow)userControl;
-            iUserControlInWindow.ChangeDialogResult += uc_ChangeDialogResult;
+
+                if (controlWithResultDebug != null)
+                {
+                    countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
+                }
+
+            if (isControlWithResult)
+            {
+                controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable( UserControlWithResult_ChangeDialogResult), false);
+            }
+
+            if (controlWithResultDebug != null)
+                    {
+                        countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
+                    }
         }
 
         if (addDialogButtons)
@@ -215,6 +291,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
             if (iUserControlInWindow != null)
             {
                 iUserControlInWindow.ChangeDialogResult -= uc_ChangeDialogResult;
+                userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
             }
 
         }
@@ -228,26 +305,11 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     }
 
     public event VoidBoolNullable ChangeDialogResult;
+    
 
     private void WindowWithUserControl_Closed(object sender, System.EventArgs e)
     {
         WpfApp.SaveReferenceToTextBlockStatus(true, null, null);
-    }
-
-    void uc_ChangeDialogResult(bool? b)
-    {
-        // Throwed exception, output is captured by ChangeDialogResult
-        //DialogResult = b;
-        if (ChangeDialogResult != null)
-        {
-            // If is registered, will close window exteranlly
-            ChangeDialogResult(b);
-        }
-        else
-        {
-            // Otherwise close here
-            Close();
-        }
     }
 
     public static void AvailableShortcut(Dictionary<string, string> dictionary)

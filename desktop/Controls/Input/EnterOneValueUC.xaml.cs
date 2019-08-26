@@ -20,7 +20,7 @@ namespace desktop.Controls.Input
     /// <summary>
     /// Interaction logic for EnterOneValueUC.xaml
     /// </summary>
-    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList
+    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
         static Type type = typeof(EnterOneValueUC);
 
@@ -171,6 +171,7 @@ namespace desktop.Controls.Input
                 {
                     ChangeDialogResult(value);
                 }
+
             }
         }//
 
@@ -257,6 +258,17 @@ namespace desktop.Controls.Input
         public void Init()
         {
             
+        }
+
+        public int CountOfHandlersChangeDialogResult()
+        {
+            var l = RuntimeHelper.GetInvocationList(ChangeDialogResult);
+            return l.Count;
+        }
+
+        public void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true)
+        {
+            RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
         }
 
         public event VoidBoolNullable ChangeDialogResult;

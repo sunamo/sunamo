@@ -94,6 +94,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\HttpWebResponseHelper.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelper.cs" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSSloupec2.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
     <Compile Include="HttpRequestHelper.cs" />
+    <Compile Include="HttpResponseHelper.cs" />
+    <Compile Include="HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IDatabaseLayer.cs" />
     <Compile Include="Interfaces\IFactoryColumnDB.cs" />
@@ -207,6 +210,7 @@
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />
+    <Compile Include="XamlGenerator.cs" />
     <Compile Include="XH.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />

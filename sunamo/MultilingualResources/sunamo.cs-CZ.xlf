@@ -8542,6 +8542,378 @@
           <source></source>
           <target state="translated">1 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 2 tatotato kočka neměla vyplněné o mě ani úvod pro návštěvníky 3 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 4 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 5 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 6 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 7 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky 8 tato kočka neměla vyplněné o mě ani úvod pro návštěvníky tato kočka neměla vyplněné o mě ani úvod pro návštěvníky</target>
         </trans-unit>
+        <trans-unit id="ForPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro stránku</target>
+        </trans-unit>
+        <trans-unit id="WebmasterHitsAreNotLogged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přístupy správce webu nejsou zaznamenány</target>
+        </trans-unit>
+        <trans-unit id="Leaderboards" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žebříčky</target>
+        </trans-unit>
+        <trans-unit id="AllApps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny apps</target>
+        </trans-unit>
+        <trans-unit id="ConsoleApps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Konzolové apps</target>
+        </trans-unit>
+        <trans-unit id="YouCannotAddOrRemoveCommentsForTheNopeWebsite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro website Nope nemůžete přidávat ani odebírat komentáře</target>
+        </trans-unit>
+        <trans-unit id="SuspendedWithoutLogin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pozastaven bez možnosti přihlášení</target>
+        </trans-unit>
+        <trans-unit id="Webmaster" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Správce webu</target>
+        </trans-unit>
+        <trans-unit id="IllegalSortValuesApparentlyInternalApplicationError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nepovolené hodnoty řazení, zřejmě interní chyba aplikace</target>
+        </trans-unit>
+        <trans-unit id="TheSessionIDFoundInTheDBDoesNotMatchYourSessionIDLogOutAndLogIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ID Session nalezené v DB nesouhlasí v vaší ID Session, popř. se odhlašte a přihlašte</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNoMoreSignInAttemptsPleaseTryAgainInAnHour" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Už vám nezbývají žádné pokusy o přihlášení, zkuste to znovu za hodinu</target>
+        </trans-unit>
+        <trans-unit id="AllYouHaveToDo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Už vám zbývá jen</target>
+        </trans-unit>
+        <trans-unit id="loginAttempts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pokusů o přihlášení</target>
+        </trans-unit>
+        <trans-unit id="YouMustReactivateYourAccountFirstBecauseYourAccountHasBeenChangedEmailBefore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Musíte si nejdříve svůj účet reaktivovat, protože u vašeho účtu byl změnen email před </target>
+        </trans-unit>
+        <trans-unit id="UsernameAndPasswordCannotBeLeftBlank" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatelské jméno ani heslo nemůže zůstat prázdné.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotSpecifiedAUserOrTheSpecifiedUserIsNotInTheEnabledUsersTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste uživatele nebo zadaný uživatel není v tabulce aktivovaných uživatelů. </target>
+        </trans-unit>
+        <trans-unit id="ItWasPassedToTheGetNormalizedParametersTypeOfTheNoneParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bylo předáno do metody GetNormalizedParameters type parametru None</target>
+        </trans-unit>
+        <trans-unit id="AnUnimplementedTypeInThePageArgumentVerifierIsRightValueMethod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neimplementovaný typ v metodě PageArgumentVerifier.IsRightValue</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButWasNotInRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl nalezen v adrese URI ale nebyl v rozmezí</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButEmpty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl nalezen v adrese URI ale prázdný</target>
+        </trans-unit>
+        <trans-unit id="notFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl nalezen v adrese URI</target>
+        </trans-unit>
+        <trans-unit id="IfEverythingIsOKAllOKICannotReturnAnyError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pokud je vše OK(AllOK), nemůžu vrátit žádnou chybu</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButWasNotTrueOrFalse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl nalezen v adrese URI ale nebyl v hodnotě True nebo False</target>
+        </trans-unit>
+        <trans-unit id="errorTheSiteSeemsToHaveCalledTheWrongMethodTheWrongRangeErrorCannotBeAppliedToAnOrdinaryString" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Web zřejmě zavolal špatnou metodu - na obyčejný řetězec se nemůže aplikovat chyba WrongRange</target>
+        </trans-unit>
+        <trans-unit id="notFoundInURIItIsImportantToFollowTheExactCaseOfTheLettersAndDoNotChangeTheURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl nalezen v adrese URI. Je důležité dodržovat přesné velikosti písmen a nepozměňovat nijak adresu URI</target>
+        </trans-unit>
+        <trans-unit id="errorTextEnteredInArgument" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Byl zadán text do argumentu</target>
+        </trans-unit>
+        <trans-unit id="butItWasNotAValidURIOrWasLongerThanTheAllowedLengthOrNoSeparatorWasFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ale nebyla to platná adresa URI nebo měla delší než povolenou délku nebo v ní nebyl nalezen oddělovač</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButNoSeparatorPipeCommaEtc" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl nalezen v adrese URI ale nebyl v něm nalezen oddělovač(pipe, čárka, etc</target>
+        </trans-unit>
+        <trans-unit id="uriWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyla uri ve správném formátu</target>
+        </trans-unit>
+        <trans-unit id="UnknownOrNotImplementedEnumerationElementTypeOfMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neznámý nebo neimplementovaný prvek výčtu TypeOfMessage</target>
+        </trans-unit>
+        <trans-unit id="GoToTheGuidepostOfAllSites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jdi na rozcestník všech webů</target>
+        </trans-unit>
+        <trans-unit id="GoToTheMainPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jdi na hlavní stránku</target>
+        </trans-unit>
+        <trans-unit id="RecommendThisPageToAFriend" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Doporučit tuto stránku blízkému</target>
+        </trans-unit>
+        <trans-unit id="LogOut" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odhlásit</target>
+        </trans-unit>
+        <trans-unit id="YouthChoirChurchChristianityGodJesusHolySpiritEntertainmentGamesCompetitionsPhotogalleryDownloadLinksContactsCalendarReporterPrayer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Mládež, Sbor, Církev, Křesťanství, Bůh, Ježíš, Duch svatý, Zábava, Hry, Soutěže, Fotogalerie, Download, Odkazy, Kontakty, Kalendář, Vzkazník, Modlitební prosby</target>
+        </trans-unit>
+        <trans-unit id="GeocachingIsAGameOnTheBorderOfSportsAndTourismWhichIsBasedOnTheUseOfTheGPSNavigationSystemToFindAHiddenCacheCalledCacheKnownForItsGeographicalCoordinatesInTheSystemWGSSearchesUseGPSTouristReceiversAPersonEngagedInGeocachingIsCalledGeocacherInCzechAlsoGeocacherOrSimplyDuckAfterDiscoveringTheCacheWritingItToTheLogbookAndEventuallyExchangingTheContentTheFinderWillSaveItAndMaskItAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Geocaching je hra na pomezí sportu a turistiky, která spočívá v použití navigačního systému GPS při hledání skryté schránky nazývané cache (v češtině psáno i keš), o níž jsou známy její zeměpisné souřadnice (v systému WGS 84). Při hledání se používají turistické přijímače GPS. Člověk zabývající se geocachingem bývá označován slovem geocacher, česky též geokačer nebo prostě kačer. Po objevení cache, zapsání se do logbooku a případné výměně obsahu ji nálezce opět uschová a zamaskuje</target>
+        </trans-unit>
+        <trans-unit id="SiteOfManWithNickSunamoSongLyricsWindowsAppsAndMuchMoreFurthermoreListingsOfSomeGeocachingComCachesShortenerLinksPhotoGallery" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stránky člověka s nickem sunamo. Texty písní, Aplikace pro Windows a mnoho dalšího. Dále pak listingy některých kešek z geocaching.com, Zkracovač odkazů, Fotogalerie</target>
+        </trans-unit>
+        <trans-unit id="UnimplementedBranchInSunamoPageDescriptionOfSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Neimplementovaná větev v metodě SunamoPage.DescriptionOfSite()</target>
+        </trans-unit>
+        <trans-unit id="EnjoyMakingLoveToTheFullest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Užijte si milování naplno</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyUploaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> úspěšně nauploadován</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumNumberOfImagesPerUserIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Maximální počet obrázků na 1 uživatele je </target>
+        </trans-unit>
+        <trans-unit id="YouHaveAlreadyReachedThisLimitAndSet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">. Vy jste tohoto limitu již dosáhli a soubor </target>
+        </trans-unit>
+        <trans-unit id="WillNotBeLoaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> nebude nauploadován</target>
+        </trans-unit>
+        <trans-unit id="DoesNotHaveTheCorrectExtension" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> nemá správnou příponu.</target>
+        </trans-unit>
+        <trans-unit id="AlreadyExistedAndCouldNotBeDeleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> již existoval a nepodařilo se jej smazat.</target>
+        </trans-unit>
+        <trans-unit id="errorFromUploadedFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Z nauploadovaného souboru </target>
+        </trans-unit>
+        <trans-unit id="FailedToCreateImageFileWillNotBeUploaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> se nepodařilo vytvořit obrázek, soubor nebude nauploadován</target>
+        </trans-unit>
+        <trans-unit id="errorTheImageWasNotInJPEGFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Obrázek nebyl ve formátu JPEG.</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Maximální velikost fotek ve fotogalerii a všech albech je 1GB. Soubor </target>
+        </trans-unit>
+        <trans-unit id="YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pracujete s databází ale nebylo vyplněné insertToTablePhotosDelegate</target>
+        </trans-unit>
+        <trans-unit id="YouWantToUseTheIDForTheFilenameFromTheTableRowButYouHaveWorkWithDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chcete použít pro jméno souboru ID z řádku tabulky ale máte !workWithDatabase</target>
+        </trans-unit>
+        <trans-unit id="TheFileUploadWasStoppedBecauseTheFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upload souboru byl zastaven, neboť soubor </target>
+        </trans-unit>
+        <trans-unit id="AlreadyExisted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> již existoval</target>
+        </trans-unit>
+        <trans-unit id="PaleBlue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Bledě modrá</target>
+        </trans-unit>
+        <trans-unit id="DarkPink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tmavě růžová</target>
+        </trans-unit>
+        <trans-unit id="DarkGreen" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tmavě zelená</target>
+        </trans-unit>
+        <trans-unit id="Orange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Oranžová</target>
+        </trans-unit>
+        <trans-unit id="Red" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Červená</target>
+        </trans-unit>
+        <trans-unit id="Pink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Růžová</target>
+        </trans-unit>
+        <trans-unit id="Purple" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fialová</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumNumberOfHorizontalLinksInTheToolbarForTheDomainHasNotBeenSpecified" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyl zadán maximální počet horizontálních odkazů v liště pro doménu</target>
+        </trans-unit>
+        <trans-unit id="DistanceAndTimeCollectionsDoNotHaveTheSameNumberOfElements" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kolekce vzdáleností a časů nemají stejný počet prvků</target>
+        </trans-unit>
+        <trans-unit id="SorryTheSignInAndRegistrationSystemIsCurrentlyBeingUpdatedPleaseTryAgainTomorrowOrInAFewHours" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Omlouvám se, ale přihlašovácí a registrační systém právě probíhá aktualizací. Zkuste to prosím znovu zítra nebo za pár hodin</target>
+        </trans-unit>
+        <trans-unit id="FailedToAuthenticateUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nepodařilo se autentizovat uživatele</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci alts(</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInTheImagesCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nesouhlasí s počtem prvků v kolekci images(</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtml: Počet prvků v kolekci anchors(</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nesouhlasí s počtem prvků v kolekci alts(</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: Počet prvků v kolekci photosNames2(</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInImagesTn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nesouhlasí s počtem prvků v kolekci imagesTn(</target>
+        </trans-unit>
+        <trans-unit id="ofElementsInTheChipsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">prvků, v kolekci chips</target>
+        </trans-unit>
+        <trans-unit id="LoginAllIsReservedForOtherPurposes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Login 'all' je vyhrazen pro jiné účely</target>
+        </trans-unit>
+        <trans-unit id="TheNicknameCannotContainSpaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přezdívka nemůže obsahovat mezery</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přezdívka nemůže obsahovat @(zavináč)</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainAmpersand" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přezdívka nemůže obsahovat &amp;(ampersand)</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainEqualSign" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přezdívka nemůže obsahovat =(rovnítko)</target>
+        </trans-unit>
+        <trans-unit id="TheNicknameCannotBeNull" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přezdívka nemůže být null</target>
+        </trans-unit>
+        <trans-unit id="PasswordCannotContainSpaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo nemůže obsahovat mezery</target>
+        </trans-unit>
+        <trans-unit id="PasswordAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo znovu</target>
+        </trans-unit>
+        <trans-unit id="AUserWithTheSameLoginAlreadyExistsInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel se stejným loginem již v DB existuje</target>
+        </trans-unit>
+        <trans-unit id="LoginContainsIllegalCharactersUppercaseLowercaseNumbersUnderscorePeriodAndDashAreAllowed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Login obsahuje nepovolené znaky. Jsou povoleny velká, malá písmena, čísla, podržítko, tečka a pomlčka</target>
+        </trans-unit>
+        <trans-unit id="AnswerTheSecurityQuestion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odpověď na bezpečnostní otázku</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordsYouEnteredAreNotTheSame" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadaná hesla nejsou shodná</target>
+        </trans-unit>
+        <trans-unit id="TheEmailWasNotInAValidFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Email nebyl zadán ve platném formátu</target>
+        </trans-unit>
+        <trans-unit id="AUserWithTheSameEmailAlreadyExistsInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel se stejným mailem již v DB existuje</target>
+        </trans-unit>
+        <trans-unit id="TheDateOfBirthWasNotValidTryToEnterReal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum narození nebylo v platném rozsahu. Zkuste zadat reálné</target>
+        </trans-unit>
+        <trans-unit id="PasswordMustHaveAtLeastOneSpecialCharacter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít aspoň jeden speciální znak</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeBetweenCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít mezi 10-20 znaky</target>
+        </trans-unit>
+        <trans-unit id="NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do konstruktoru třídy SunamoPhotoGallery, A15 nebyl vložen ani objekt HttpRequest, ani SunamoPage</target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfFileNamesAndTheirExtensionsDoesNotMatch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nesouhlasí počet názvů souborů a jejich přípon</target>
+        </trans-unit>
+        <trans-unit id="NumberOfFoldersAndCoverImagesDoNotMatch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nesouhlasí počet složek a titulních obrázků k nim</target>
+        </trans-unit>
+        <trans-unit id="FoundTheseWords" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nalezeny tyto slova</target>
+        </trans-unit>
+        <trans-unit id="OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do 2. parametru metody SunamoSearchEngineTInt.GetFoundedEntities lze vložit pouze 1 písmenko</target>
+        </trans-unit>
       </group>
     </body>
   </file>

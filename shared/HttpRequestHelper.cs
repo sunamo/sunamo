@@ -23,12 +23,7 @@ public static partial class HttpRequestHelper
         HttpWebResponse r;
         var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
 
-        switch (r.StatusCode)
-        {
-            case HttpStatusCode.NotFound:
-                return true;
-        }
-        return false;
+        return HttpWebResponseHelper.IsNotFound(r);
     }
 
     public static bool SomeError(object uri)
@@ -36,12 +31,7 @@ public static partial class HttpRequestHelper
         HttpWebResponse r;
         var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
 
-        switch (r.StatusCode)
-        {
-            case HttpStatusCode.OK:
-                return false;
-        }
-        return true;
+        return HttpWebResponseHelper.SomeError(r);
     }
 
         /// <summary>

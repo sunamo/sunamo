@@ -15,33 +15,7 @@ namespace desktop
     {
         static Type type = typeof(XamlGenerator);
 
-        /// <summary>
-        /// in outer rows
-        /// in inner columns
-        /// </summary>
-        /// <param name="elements"></param>
-        public void Grid(List<List<string>> elements)
-        {
-            ThrowExceptions.HaveAllInnerSameCount(type, "Grid", elements);
-            int rows = elements.Count;
-            int columns = elements[0].Count;
-
-            WriteTag("Grid");
-
-            WriteColumnDefinitions(GridHelper.ForAllTheSame(columns));
-            WriteRowDefinitions(GridHelper.ForAllTheSame(rows));
-
-            for (int row = 0; row < rows; row++)
-            {
-                for (int column = 0; column < columns; column++)
-                {
-                    string cell = elements[row][column];
-                    cell = cell.Replace("><", $" Grid.Column=\"{column}\" Grid.Row=\"{row}\"><");
-                    WriteRaw(cell);
-                }
-            }
-            TerminateTag("Grid");
-        }
+        
 
         public void WriteDataTemplate(List<double> cd)
         {
@@ -69,7 +43,7 @@ namespace desktop
         /// <param name="headers"></param>
         /// <param name="methodHandlers"></param>
         /// <returns></returns>
-        public string MenuItems(List<string> headers, bool methodHandlers)
+        public void MenuItems(List<string> headers, bool methodHandlers)
         {
             CA.Trim(headers);
             CA.TrimEnd(headers, AllChars.comma);
@@ -112,10 +86,12 @@ namespace desktop
                     csg.Method(2, AccessModifiers.Internal, false, "void", "mi" + item + "_" + "Click", "SetMode(Mode." + item + ");", "object o, RoutedEventArgs" + " " + "e");
                 }
 
-                return csg.ToString();
+                WriteRaw(csg.ToString());
+
+                
             }
 
-            return string.Empty;
+            
         }
 
         public void WriteColumnDefinitions(List<string> cd)

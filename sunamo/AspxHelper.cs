@@ -49,6 +49,12 @@ public class AspxHelper
                 lines[i] += "</p>";
                 break;
             }
+            if (item.Contains("id=\"pFooter") && !item.Contains("</p>"))
+            {
+                lines[i] += "</p>";
+                break;
+            }
+
         }
     }
 

@@ -38,9 +38,9 @@ public class Exceptions
     /// <summary>
     /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
     /// </summary>
-    public static string FileHasWrongExtension(string fnOri)
+    public static string FileHasExtensionNotParseableToImageFormat(string before, string fnOri)
     {
-        return "File" + " " + fnOri + " " + "has wrong file extension";
+        return CheckBefore(before) + "File" + " " + fnOri + " " + "has wrong file extension";
     }
 
     public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)

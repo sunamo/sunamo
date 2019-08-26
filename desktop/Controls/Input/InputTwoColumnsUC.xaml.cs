@@ -21,7 +21,7 @@ namespace desktop.Controls
     /// <summary>
     /// 
     /// </summary>
-    public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow
+    public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow, IControlWithResultDebug, IUserControl
     {
         public TextBox txtFirst
         {
@@ -131,10 +131,14 @@ namespace desktop.Controls
         {
             set
             {
-                ChangeDialogResult(value);
-
+                if (ChangeDialogResult != null)
+                {
+                    ChangeDialogResult(value);
+                }
             }
         }
+
+        public string Title => "Input two columns";
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -154,6 +158,21 @@ namespace desktop.Controls
             txtSecond.Text = d.B;
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
+        }
+
+        public int CountOfHandlersChangeDialogResult()
+        {
+            return RuntimeHelper.GetInvocationList(ChangeDialogResult).Count;
+        }
+
+        public void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true)
+        {
+            RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
+        }
+
+        public void Init()
+        {
+            
         }
     }
 }

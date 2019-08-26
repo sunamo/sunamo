@@ -1911,4 +1911,19 @@ public static string GetToFirstChar(string input, int indexOfChar)
         }
         return input;
     }
+
+    /// <summary>
+    /// Call string.Format, nothing more
+    /// use for special string formatting like {0:X2}
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="a"></param>
+    /// <param name="r"></param>
+    /// <param name="g"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public static string Format4(string v, params object[] o)
+    {
+        return string.Format(v, o);
+    }
 }

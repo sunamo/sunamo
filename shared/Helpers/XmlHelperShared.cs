@@ -15,6 +15,15 @@ public static XmlNode GetAttributeWithName(XmlNode item, string p)
         return null;
     }
 
+    public static bool IsXml(string str)
+    {
+        if (!string.IsNullOrEmpty(str) && str.TrimStart().StartsWith("<"))
+        {
+            return true;
+        }
+        return false;
+    }
+
 /// <summary>
     /// Vrátí InnerXml nebo hodnotu CData podle typu uzlu
     /// </summary>

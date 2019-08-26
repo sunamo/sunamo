@@ -54,23 +54,6 @@ public partial class FS
         s_invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.slash);
     }
 
-    
-
-    /// <summary>
-    /// For empty or whitespace return false.
-    /// </summary>
-    /// <param name="selectedFile"></param>
-    /// <returns></returns>
-    public static bool ExistsFile(string selectedFile)
-    {
-        if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
-        {
-            return false;
-        }
-
-        return File.Exists(selectedFile);
-    }
-
     public static string MakeUncLongPath(string path)
     {
         return MakeUncLongPath(ref path);

@@ -9,6 +9,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -24,6 +25,9 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IUserControlInWindow.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\RandomHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperSunamoCzShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\EmbeddedResourcesH.cs" />
@@ -81,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Net\" />
-    <Folder Include="Helpers\Runtime\" />
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>

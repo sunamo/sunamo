@@ -471,7 +471,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         //SqlDbType.SmallDateTime;
         comm.Connection = conn;
-        return comm.ExecuteScalar();
+        var result = comm.ExecuteScalar();
+        return result;
     }
 
     public object ExecuteScalar(string commText, params object[] para)
@@ -481,7 +482,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             AddCommandParameter(comm, i, para[i]);
         }
-        return ExecuteScalar(comm);
+        var result = ExecuteScalar(comm);
+        return result;
     }
 
     private bool ExecuteScalarBool(SqlCommand comm)
@@ -2687,7 +2689,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public bool SelectExists(string tabulka, string sloupec, object hodnota)
     {
         string sql = string.Format("SELECT TOP(1) {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
-        return ExecuteScalar(sql, hodnota) != null;
+        var result = ExecuteScalar(sql, hodnota);
+        return result != null;
     }
 
 

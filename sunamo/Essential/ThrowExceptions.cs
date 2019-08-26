@@ -253,5 +253,10 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName, true), folder));
     }
+
+    public static void FileHasExtensionNotParseableToImageFormat(Type type, string methodName, string fnOri)
+    {
+        ThrowIsNotNull(Exceptions.FileHasExtensionNotParseableToImageFormat(FullNameOfExecutedCode(type, methodName), fnOri));
+    }
     #endregion
 }

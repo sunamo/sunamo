@@ -7,6 +7,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 public static class ImageSourceHelper
 {
+
+
 	/// <summary>
 	/// A1 jde v pohodě přetypovat na BitmapSource nebo ImageSource protože od nich dědí ale nikoliv na BitmapImage
 	/// Do A4 zadej 0 pokud chceš aby obrázek vyplňoval celou šířku

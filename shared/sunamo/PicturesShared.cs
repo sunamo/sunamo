@@ -15,7 +15,7 @@ using sunamo.Essential;
 
     public class PicturesShared
     {
-    
+    static Type type = typeof(PicturesShared);
 
     private static Regex r = new Regex(AllStrings.colon);
 
@@ -453,11 +453,8 @@ using sunamo.Essential;
 				}
 				else
 				{
-					if (writeToConsole)
-					{
-						Exceptions. FileHasWrongExtension(fnOri);
-					}
-				}
+                ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+            }
 				//}
 			}
 			return false;
@@ -558,20 +555,14 @@ using sunamo.Essential;
                     }
                     else
                     {
-                        if (writeToConsole)
-                        {
-                            Exceptions.FileHasWrongExtension(fnOri);
-                        }
-                    }
+                    ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+                }
                 }
             }
             else
             {
-                if (writeToConsole)
-                {
-                    Exceptions.FileHasWrongExtension(Path.GetFileName(arg));
-                }
-            }
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+        }
             return false;
         }
 
@@ -637,11 +628,8 @@ using sunamo.Essential;
             }
             else
             {
-                if (writeToConsole)
-                {
-                    Exceptions.FileHasWrongExtension(fnOri);
-                }
-            }
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+        }
         }
         #endregion
     }

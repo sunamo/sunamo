@@ -9391,6 +9391,490 @@
           <source></source>
           <target state="translated">Aplikace pro zmenšování obrázků. Můžete zmenšovat buď v ratiu/poměru, nebo na přesnou velikost. Do programu načtete obrázky, které pak zmenšíte buď všechny kliknutím na zelenou šipku nebo jen některé tím že je budete procházet a entrem zmenšovat. Program umí načíst soubory výběrem z libovolné složky v adresáři Obrázky nebo libovolnou složku na disku zkopírováním její cesty do schránky a stisknutím tlačítka. Důležité: Program umí zmenšovat pouze do složky Dokumenty/sunamo/ShrinkerImages/Output/{Nazev_zdrojove_slozky}. Pokud byste chtěli, aby uměl zmenšovat třeba do zdrojové složky nebo kdekoliv jinde tak mi napište váš požadavek a já se na to mrknu</target>
         </trans-unit>
+        <trans-unit id="WhatYouCanFindHere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">What you can find here</target>
+        </trans-unit>
+        <trans-unit id="ForPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">For page</target>
+        </trans-unit>
+        <trans-unit id="WebmasterHitsAreNotLogged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Webmaster hits are not logged</target>
+        </trans-unit>
+        <trans-unit id="Apps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Apps</target>
+        </trans-unit>
+        <trans-unit id="Github" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Github</target>
+        </trans-unit>
+        <trans-unit id="Leaderboards" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Leaderboards</target>
+        </trans-unit>
+        <trans-unit id="AllApps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All apps</target>
+        </trans-unit>
+        <trans-unit id="ConsoleApps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Console apps</target>
+        </trans-unit>
+        <trans-unit id="GuiApps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Gui apps</target>
+        </trans-unit>
+        <trans-unit id="YouCannotAddOrRemoveCommentsForTheNopeWebsite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You cannot add or remove comments for the Nope website</target>
+        </trans-unit>
+        <trans-unit id="SuspendedWithoutLogin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Suspended without login</target>
+        </trans-unit>
+        <trans-unit id="Webmaster" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Webmaster</target>
+        </trans-unit>
+        <trans-unit id="IllegalSortValuesApparentlyInternalApplicationError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Illegal sort values, apparently internal application error</target>
+        </trans-unit>
+        <trans-unit id="DoMetodyLoginedUserIDSeNedostalAniParametrHttpContextAniSunamoPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do metody LoginedUser.ID() se nedostal ani parametr HttpContext, ani SunamoPage</target>
+        </trans-unit>
+        <trans-unit id="TheSessionIDFoundInTheDBDoesNotMatchYourSessionIDLogOutAndLogIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The Session ID found in the DB does not match your Session ID. log out and log in</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNoMoreSignInAttemptsPleaseTryAgainInAnHour" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have no more sign-in attempts, please try again in an hour</target>
+        </trans-unit>
+        <trans-unit id="AllYouHaveToDo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All you have to do</target>
+        </trans-unit>
+        <trans-unit id="loginAttempts" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">login attempts</target>
+        </trans-unit>
+        <trans-unit id="YouMustReactivateYourAccountFirstBecauseYourAccountHasBeenChangedEmailBefore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You must reactivate your account first because your account has been changed email before</target>
+        </trans-unit>
+        <trans-unit id="UsernameAndPasswordCannotBeLeftBlank" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Username and password cannot be left blank.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotSpecifiedAUserOrTheSpecifiedUserIsNotInTheEnabledUsersTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have not specified a user, or the specified user is not in the enabled users table</target>
+        </trans-unit>
+        <trans-unit id="ItWasPassedToTheGetNormalizedParametersTypeOfTheNoneParameter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">It was passed to the GetNormalizedParameters type of the None parameter</target>
+        </trans-unit>
+        <trans-unit id="AnUnimplementedTypeInThePageArgumentVerifierIsRightValueMethod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">An unimplemented type in the PageArgumentVerifier.IsRightValue method</target>
+        </trans-unit>
+        <trans-unit id="errorArgument" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Argument</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButWasNotInRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">was found in URI but was not in range</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButEmpty" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">was found in URI but empty</target>
+        </trans-unit>
+        <trans-unit id="notFoundInURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">not found in URI</target>
+        </trans-unit>
+        <trans-unit id="IfEverythingIsOKAllOKICannotReturnAnyError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">If everything is OK (AllOK), I cannot return any error</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButWasNotTrueOrFalse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">was found in URI but was not True or False</target>
+        </trans-unit>
+        <trans-unit id="errorTheSiteSeemsToHaveCalledTheWrongMethodTheWrongRangeErrorCannotBeAppliedToAnOrdinaryString" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: The site seems to have called the wrong method - the WrongRange error cannot be applied to an ordinary string</target>
+        </trans-unit>
+        <trans-unit id="notFoundInURIItIsImportantToFollowTheExactCaseOfTheLettersAndDoNotChangeTheURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">not found in URI. It is important to follow the exact case of the letters and do not change the URI</target>
+        </trans-unit>
+        <trans-unit id="errorTextEnteredInArgument" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Text entered in argument</target>
+        </trans-unit>
+        <trans-unit id="butItWasNotAValidURIOrWasLongerThanTheAllowedLengthOrNoSeparatorWasFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">but it was not a valid URI, or was longer than the allowed length, or no separator was found</target>
+        </trans-unit>
+        <trans-unit id="wasFoundInURIButNoSeparatorPipeCommaEtc" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">was found in URI but no separator (pipe, comma, etc</target>
+        </trans-unit>
+        <trans-unit id="uriWasNotInTheCorrectFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">uri was not in the correct format</target>
+        </trans-unit>
+        <trans-unit id="Session" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Session</target>
+        </trans-unit>
+        <trans-unit id="UnknownOrNotImplementedEnumerationElementTypeOfMessage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unknown or not implemented enumeration element TypeOfMessage</target>
+        </trans-unit>
+        <trans-unit id="Stylesheet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stylesheet</target>
+        </trans-unit>
+        <trans-unit id="GoToTheGuidepostOfAllSites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Go to the guidepost of all sites</target>
+        </trans-unit>
+        <trans-unit id="GoToTheMainPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Go to the main page</target>
+        </trans-unit>
+        <trans-unit id="RecommendThisPageToAFriend" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Recommend this page to a friend</target>
+        </trans-unit>
+        <trans-unit id="LogOut" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Log out</target>
+        </trans-unit>
+        <trans-unit id="YouthChoirChurchChristianityGodJesusHolySpiritEntertainmentGamesCompetitionsPhotogalleryDownloadLinksContactsCalendarReporterPrayer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Youth, Choir, Church, Christianity, God, Jesus, holy spirit, Entertainment, Games, Competitions, Photogallery, Download, Links, Contacts, Calendar, Reporter, Prayer</target>
+        </trans-unit>
+        <trans-unit id="GeocachingIsAGameOnTheBorderOfSportsAndTourismWhichIsBasedOnTheUseOfTheGPSNavigationSystemToFindAHiddenCacheCalledCacheKnownForItsGeographicalCoordinatesInTheSystemWGSSearchesUseGPSTouristReceiversAPersonEngagedInGeocachingIsCalledGeocacherInCzechAlsoGeocacherOrSimplyDuckAfterDiscoveringTheCacheWritingItToTheLogbookAndEventuallyExchangingTheContentTheFinderWillSaveItAndMaskItAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Geocaching is a game on the border of sports and tourism, which is based on the use of the GPS navigation system to find a hidden cache called cache, known for its geographical coordinates (in the system WGS 84). Searches use GPS tourist receivers. A person engaged in geocaching is called geocacher, in Czech also geocacher or simply duck. After discovering the cache, writing it to the logbook and eventually exchanging the content, the finder will save it and mask it again</target>
+        </trans-unit>
+        <trans-unit id="SiteOfManWithNickSunamoSongLyricsWindowsAppsAndMuchMoreFurthermoreListingsOfSomeGeocachingComCachesShortenerLinksPhotoGallery" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Site of man with nick sunamo. Song Lyrics, Windows Apps and much more. Furthermore, listings of some geocaching.com caches, Shortener links, Photo gallery</target>
+        </trans-unit>
+        <trans-unit id="UnimplementedBranchInSunamoPageDescriptionOfSite" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unimplemented branch in SunamoPage.DescriptionOfSite ()</target>
+        </trans-unit>
+        <trans-unit id="EnjoyMakingLoveToTheFullest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Užijte si milování naplno</target>
+        </trans-unit>
+        <trans-unit id="AllRightsReserved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All rights reserved</target>
+        </trans-unit>
+        <trans-unit id="Location" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Location</target>
+        </trans-unit>
+        <trans-unit id="Cities" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cities</target>
+        </trans-unit>
+        <trans-unit id="Users" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Users</target>
+        </trans-unit>
+        <trans-unit id="News" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">News</target>
+        </trans-unit>
+        <trans-unit id="Favorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Favorites</target>
+        </trans-unit>
+        <trans-unit id="Sessions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sessions</target>
+        </trans-unit>
+        <trans-unit id="Hostnames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hostnames</target>
+        </trans-unit>
+        <trans-unit id="Platforms" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Platforms</target>
+        </trans-unit>
+        <trans-unit id="Langs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Langs</target>
+        </trans-unit>
+        <trans-unit id="Colors" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Colors</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyUploaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> successfully uploaded</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumNumberOfImagesPerUserIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The maximum number of images per user is</target>
+        </trans-unit>
+        <trans-unit id="YouHaveAlreadyReachedThisLimitAndSet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">. You have already reached this limit and set</target>
+        </trans-unit>
+        <trans-unit id="WillNotBeLoaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> will not be loaded</target>
+        </trans-unit>
+        <trans-unit id="DoesNotHaveTheCorrectExtension" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> does not have the correct extension.</target>
+        </trans-unit>
+        <trans-unit id="AlreadyExistedAndCouldNotBeDeleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> already existed and could not be deleted.</target>
+        </trans-unit>
+        <trans-unit id="errorFromUploadedFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: From uploaded file</target>
+        </trans-unit>
+        <trans-unit id="FailedToCreateImageFileWillNotBeUploaded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> failed to create image, file will not be uploaded</target>
+        </trans-unit>
+        <trans-unit id="errorTheImageWasNotInJPEGFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: The image was not in JPEG format.</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The maximum size of photos in the photo gallery and all albums is 1GB. File</target>
+        </trans-unit>
+        <trans-unit id="YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You are working with the database but the insertToTablePhotosDelegate was not filled</target>
+        </trans-unit>
+        <trans-unit id="YouWantToUseTheIDForTheFilenameFromTheTableRowButYouHaveWorkWithDatabase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You want to use the ID for the filename from the table row but you have! WorkWithDatabase</target>
+        </trans-unit>
+        <trans-unit id="TheFileUploadWasStoppedBecauseTheFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The file upload was stopped because the file</target>
+        </trans-unit>
+        <trans-unit id="AlreadyExisted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> already existed</target>
+        </trans-unit>
+        <trans-unit id="YouTubeVideoPlayer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">YouTube video player</target>
+        </trans-unit>
+        <trans-unit id="PaleBlue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pale blue</target>
+        </trans-unit>
+        <trans-unit id="DarkPink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dark pink</target>
+        </trans-unit>
+        <trans-unit id="DarkGreen" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dark green</target>
+        </trans-unit>
+        <trans-unit id="Orange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Orange</target>
+        </trans-unit>
+        <trans-unit id="Red" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Red</target>
+        </trans-unit>
+        <trans-unit id="Pink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pink</target>
+        </trans-unit>
+        <trans-unit id="Purple" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Purple</target>
+        </trans-unit>
+        <trans-unit id="TheMaximumNumberOfHorizontalLinksInTheToolbarForTheDomainHasNotBeenSpecified" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The maximum number of horizontal links in the toolbar for the domain has not been specified</target>
+        </trans-unit>
+        <trans-unit id="General" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">General</target>
+        </trans-unit>
+        <trans-unit id="DistanceAndTimeCollectionsDoNotHaveTheSameNumberOfElements" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Distance and time collections do not have the same number of elements</target>
+        </trans-unit>
+        <trans-unit id="Status" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Status</target>
+        </trans-unit>
+        <trans-unit id="SorryTheSignInAndRegistrationSystemIsCurrentlyBeingUpdatedPleaseTryAgainTomorrowOrInAFewHours" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sorry, the sign-in and registration system is currently being updated. Please try again tomorrow or in a few hours</target>
+        </trans-unit>
+        <trans-unit id="Month" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Month</target>
+        </trans-unit>
+        <trans-unit id="FailedToAuthenticateUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Failed to authenticate users</target>
+        </trans-unit>
+        <trans-unit id="Hash" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hash</target>
+        </trans-unit>
+        <trans-unit id="Salt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Salt</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the alts collection (</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInTheImagesCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">does not match the number of elements in the images collection (</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the anchors collection (</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">does not match the number of elements in the alts collection (</target>
+        </trans-unit>
+        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: The number of elements in the photosNames2 collection (</target>
+        </trans-unit>
+        <trans-unit id="doesNotMatchTheNumberOfElementsInImagesTn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">does not match the number of elements in imagesTn (</target>
+        </trans-unit>
+        <trans-unit id="ofElementsInTheChipsCollection" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">of elements in the chips collection</target>
+        </trans-unit>
+        <trans-unit id="WhenWasClickedOnOptionsInThisQuestionnaire" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">When was clicked on options in this questionnaire?</target>
+        </trans-unit>
+        <trans-unit id="DeleteReply" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete reply</target>
+        </trans-unit>
+        <trans-unit id="LoginAllIsReservedForOtherPurposes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Login 'all' is reserved for other purposes</target>
+        </trans-unit>
+        <trans-unit id="TheNicknameCannotContainSpaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The nickname cannot contain spaces</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nickname cannot contain @ (at)</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainAmpersand" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nickname cannot contain &amp; (ampersand)</target>
+        </trans-unit>
+        <trans-unit id="NicknameCannotContainEqualSign" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nickname cannot contain = (equal sign)</target>
+        </trans-unit>
+        <trans-unit id="TheNicknameCannotBeNull" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The nickname cannot be null</target>
+        </trans-unit>
+        <trans-unit id="PasswordCannotContainSpaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Password cannot contain spaces</target>
+        </trans-unit>
+        <trans-unit id="PasswordAgain" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Password again</target>
+        </trans-unit>
+        <trans-unit id="AUserWithTheSameLoginAlreadyExistsInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A user with the same login already exists in the DB</target>
+        </trans-unit>
+        <trans-unit id="LoginContainsIllegalCharactersUppercaseLowercaseNumbersUnderscorePeriodAndDashAreAllowed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Login contains illegal characters. Uppercase, lowercase, numbers, underscore, period, and dash are allowed</target>
+        </trans-unit>
+        <trans-unit id="AnswerTheSecurityQuestion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Answer the security question</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordsYouEnteredAreNotTheSame" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The passwords you entered are not the same</target>
+        </trans-unit>
+        <trans-unit id="TheEmailWasNotInAValidFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The email was not in a valid format</target>
+        </trans-unit>
+        <trans-unit id="AUserWithTheSameEmailAlreadyExistsInTheDB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A user with the same email already exists in the DB</target>
+        </trans-unit>
+        <trans-unit id="TheDateOfBirthWasNotValidTryToEnterReal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The date of birth was not valid. Try to enter real</target>
+        </trans-unit>
+        <trans-unit id="PasswordMustHaveAtLeastOneSpecialCharacter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Password must have at least one special character</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeBetweenCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password must be between 10-20 characters</target>
+        </trans-unit>
+        <trans-unit id="CantSetTitle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cant set Title</target>
+        </trans-unit>
+        <trans-unit id="NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No HttpRequest or SunamoPage object was inserted into the SunamoPhotoGallery constructor, A15</target>
+        </trans-unit>
+        <trans-unit id="TheNumberOfFileNamesAndTheirExtensionsDoesNotMatch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The number of file names and their extensions does not match</target>
+        </trans-unit>
+        <trans-unit id="NumberOfFoldersAndCoverImagesDoNotMatch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of folders and cover images do not match</target>
+        </trans-unit>
+        <trans-unit id="FoundTheseWords" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Found these words</target>
+        </trans-unit>
+        <trans-unit id="OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Only one letter can be entered in the 2nd parameter of the SunamoSearchEngineTInt.GetFoundedEntities method</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -5,6 +5,250 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod = "OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod" ; 
+
+	public const string FoundTheseWords = "FoundTheseWords" ; 
+
+	public const string NumberOfFoldersAndCoverImagesDoNotMatch = "NumberOfFoldersAndCoverImagesDoNotMatch" ; 
+
+	public const string TheNumberOfFileNamesAndTheirExtensionsDoesNotMatch = "TheNumberOfFileNamesAndTheirExtensionsDoesNotMatch" ; 
+
+	public const string NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA = "NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA" ; 
+
+	public const string CantSetTitle = "CantSetTitle" ; 
+
+	public const string ThePasswordMustBeBetweenCharacters = "ThePasswordMustBeBetweenCharacters" ; 
+
+	public const string PasswordMustHaveAtLeastOneSpecialCharacter = "PasswordMustHaveAtLeastOneSpecialCharacter" ; 
+
+	public const string TheDateOfBirthWasNotValidTryToEnterReal = "TheDateOfBirthWasNotValidTryToEnterReal" ; 
+
+	public const string AUserWithTheSameEmailAlreadyExistsInTheDB = "AUserWithTheSameEmailAlreadyExistsInTheDB" ; 
+
+	public const string TheEmailWasNotInAValidFormat = "TheEmailWasNotInAValidFormat" ; 
+
+	public const string ThePasswordsYouEnteredAreNotTheSame = "ThePasswordsYouEnteredAreNotTheSame" ; 
+
+	public const string AnswerTheSecurityQuestion = "AnswerTheSecurityQuestion" ; 
+
+	public const string LoginContainsIllegalCharactersUppercaseLowercaseNumbersUnderscorePeriodAndDashAreAllowed = "LoginContainsIllegalCharactersUppercaseLowercaseNumbersUnderscorePeriodAndDashAreAllowed" ; 
+
+	public const string AUserWithTheSameLoginAlreadyExistsInTheDB = "AUserWithTheSameLoginAlreadyExistsInTheDB" ; 
+
+	public const string PasswordAgain = "PasswordAgain" ; 
+
+	public const string PasswordCannotContainSpaces = "PasswordCannotContainSpaces" ; 
+
+	public const string TheNicknameCannotBeNull = "TheNicknameCannotBeNull" ; 
+
+	public const string NicknameCannotContainEqualSign = "NicknameCannotContainEqualSign" ; 
+
+	public const string NicknameCannotContainAmpersand = "NicknameCannotContainAmpersand" ; 
+
+	public const string NicknameCannotContainAt = "NicknameCannotContainAt" ; 
+
+	public const string TheNicknameCannotContainSpaces = "TheNicknameCannotContainSpaces" ; 
+
+	public const string LoginAllIsReservedForOtherPurposes = "LoginAllIsReservedForOtherPurposes" ; 
+
+	public const string DeleteReply = "DeleteReply" ; 
+
+	public const string WhenWasClickedOnOptionsInThisQuestionnaire = "WhenWasClickedOnOptionsInThisQuestionnaire" ; 
+
+	public const string ofElementsInTheChipsCollection = "ofElementsInTheChipsCollection" ; 
+
+	public const string doesNotMatchTheNumberOfElementsInImagesTn = "doesNotMatchTheNumberOfElementsInImagesTn" ; 
+
+	public const string JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection = "JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection" ; 
+
+	public const string doesNotMatchTheNumberOfElementsInTheAltsCollection = "doesNotMatchTheNumberOfElementsInTheAltsCollection" ; 
+
+	public const string JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection = "JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection" ; 
+
+	public const string doesNotMatchTheNumberOfElementsInTheImagesCollection = "doesNotMatchTheNumberOfElementsInTheImagesCollection" ; 
+
+	public const string JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection = "JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection" ; 
+
+	public const string Salt = "Salt" ; 
+
+	public const string Hash = "Hash" ; 
+
+	public const string FailedToAuthenticateUsers = "FailedToAuthenticateUsers" ; 
+
+	public const string Month = "Month" ; 
+
+	public const string SorryTheSignInAndRegistrationSystemIsCurrentlyBeingUpdatedPleaseTryAgainTomorrowOrInAFewHours = "SorryTheSignInAndRegistrationSystemIsCurrentlyBeingUpdatedPleaseTryAgainTomorrowOrInAFewHours" ; 
+
+	public const string Status = "Status" ; 
+
+	public const string DistanceAndTimeCollectionsDoNotHaveTheSameNumberOfElements = "DistanceAndTimeCollectionsDoNotHaveTheSameNumberOfElements" ; 
+
+	public const string General = "General" ; 
+
+	public const string TheMaximumNumberOfHorizontalLinksInTheToolbarForTheDomainHasNotBeenSpecified = "TheMaximumNumberOfHorizontalLinksInTheToolbarForTheDomainHasNotBeenSpecified" ; 
+
+	public const string Purple = "Purple" ; 
+
+	public const string Pink = "Pink" ; 
+
+	public const string Red = "Red" ; 
+
+	public const string Orange = "Orange" ; 
+
+	public const string DarkGreen = "DarkGreen" ; 
+
+	public const string DarkPink = "DarkPink" ; 
+
+	public const string PaleBlue = "PaleBlue" ; 
+
+	public const string YouTubeVideoPlayer = "YouTubeVideoPlayer" ; 
+
+	public const string AlreadyExisted = "AlreadyExisted" ; 
+
+	public const string TheFileUploadWasStoppedBecauseTheFile = "TheFileUploadWasStoppedBecauseTheFile" ; 
+
+	public const string YouWantToUseTheIDForTheFilenameFromTheTableRowButYouHaveWorkWithDatabase = "YouWantToUseTheIDForTheFilenameFromTheTableRowButYouHaveWorkWithDatabase" ; 
+
+	public const string YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled = "YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled" ; 
+
+	public const string TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile = "TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile" ; 
+
+	public const string errorTheImageWasNotInJPEGFormat = "errorTheImageWasNotInJPEGFormat" ; 
+
+	public const string FailedToCreateImageFileWillNotBeUploaded = "FailedToCreateImageFileWillNotBeUploaded" ; 
+
+	public const string errorFromUploadedFile = "errorFromUploadedFile" ; 
+
+	public const string AlreadyExistedAndCouldNotBeDeleted = "AlreadyExistedAndCouldNotBeDeleted" ; 
+
+	public const string DoesNotHaveTheCorrectExtension = "DoesNotHaveTheCorrectExtension" ; 
+
+	public const string WillNotBeLoaded = "WillNotBeLoaded" ; 
+
+	public const string YouHaveAlreadyReachedThisLimitAndSet = "YouHaveAlreadyReachedThisLimitAndSet" ; 
+
+	public const string TheMaximumNumberOfImagesPerUserIs = "TheMaximumNumberOfImagesPerUserIs" ; 
+
+	public const string SuccessfullyUploaded = "SuccessfullyUploaded" ; 
+
+	public const string Colors = "Colors" ; 
+
+	public const string Langs = "Langs" ; 
+
+	public const string Platforms = "Platforms" ; 
+
+	public const string Hostnames = "Hostnames" ; 
+
+	public const string Sessions = "Sessions" ; 
+
+	public const string Favorites = "Favorites" ; 
+
+	public const string News = "News" ; 
+
+	public const string Users = "Users" ; 
+
+	public const string Cities = "Cities" ; 
+
+	public const string Location = "Location" ; 
+
+	public const string AllRightsReserved = "AllRightsReserved" ; 
+
+	public const string EnjoyMakingLoveToTheFullest = "EnjoyMakingLoveToTheFullest" ; 
+
+	public const string UnimplementedBranchInSunamoPageDescriptionOfSite = "UnimplementedBranchInSunamoPageDescriptionOfSite" ; 
+
+	public const string SiteOfManWithNickSunamoSongLyricsWindowsAppsAndMuchMoreFurthermoreListingsOfSomeGeocachingComCachesShortenerLinksPhotoGallery = "SiteOfManWithNickSunamoSongLyricsWindowsAppsAndMuchMoreFurthermoreListingsOfSomeGeocachingComCachesShortenerLinksPhotoGallery" ; 
+
+	public const string GeocachingIsAGameOnTheBorderOfSportsAndTourismWhichIsBasedOnTheUseOfTheGPSNavigationSystemToFindAHiddenCacheCalledCacheKnownForItsGeographicalCoordinatesInTheSystemWGSSearchesUseGPSTouristReceiversAPersonEngagedInGeocachingIsCalledGeocacherInCzechAlsoGeocacherOrSimplyDuckAfterDiscoveringTheCacheWritingItToTheLogbookAndEventuallyExchangingTheContentTheFinderWillSaveItAndMaskItAgain = "GeocachingIsAGameOnTheBorderOfSportsAndTourismWhichIsBasedOnTheUseOfTheGPSNavigationSystemToFindAHiddenCacheCalledCacheKnownForItsGeographicalCoordinatesInTheSystemWGSSearchesUseGPSTouristReceiversAPersonEngagedInGeocachingIsCalledGeocacherInCzechAlsoGeocacherOrSimplyDuckAfterDiscoveringTheCacheWritingItToTheLogbookAndEventuallyExchangingTheContentTheFinderWillSaveItAndMaskItAgain" ; 
+
+	public const string YouthChoirChurchChristianityGodJesusHolySpiritEntertainmentGamesCompetitionsPhotogalleryDownloadLinksContactsCalendarReporterPrayer = "YouthChoirChurchChristianityGodJesusHolySpiritEntertainmentGamesCompetitionsPhotogalleryDownloadLinksContactsCalendarReporterPrayer" ; 
+
+	public const string LogOut = "LogOut" ; 
+
+	public const string RecommendThisPageToAFriend = "RecommendThisPageToAFriend" ; 
+
+	public const string GoToTheMainPage = "GoToTheMainPage" ; 
+
+	public const string GoToTheGuidepostOfAllSites = "GoToTheGuidepostOfAllSites" ; 
+
+	public const string Stylesheet = "Stylesheet" ; 
+
+	public const string UnknownOrNotImplementedEnumerationElementTypeOfMessage = "UnknownOrNotImplementedEnumerationElementTypeOfMessage" ; 
+
+	public const string Session = "Session" ; 
+
+	public const string uriWasNotInTheCorrectFormat = "uriWasNotInTheCorrectFormat" ; 
+
+	public const string wasFoundInURIButNoSeparatorPipeCommaEtc = "wasFoundInURIButNoSeparatorPipeCommaEtc" ; 
+
+	public const string butItWasNotAValidURIOrWasLongerThanTheAllowedLengthOrNoSeparatorWasFound = "butItWasNotAValidURIOrWasLongerThanTheAllowedLengthOrNoSeparatorWasFound" ; 
+
+	public const string errorTextEnteredInArgument = "errorTextEnteredInArgument" ; 
+
+	public const string notFoundInURIItIsImportantToFollowTheExactCaseOfTheLettersAndDoNotChangeTheURI = "notFoundInURIItIsImportantToFollowTheExactCaseOfTheLettersAndDoNotChangeTheURI" ; 
+
+	public const string errorTheSiteSeemsToHaveCalledTheWrongMethodTheWrongRangeErrorCannotBeAppliedToAnOrdinaryString = "errorTheSiteSeemsToHaveCalledTheWrongMethodTheWrongRangeErrorCannotBeAppliedToAnOrdinaryString" ; 
+
+	public const string wasFoundInURIButWasNotTrueOrFalse = "wasFoundInURIButWasNotTrueOrFalse" ; 
+
+	public const string IfEverythingIsOKAllOKICannotReturnAnyError = "IfEverythingIsOKAllOKICannotReturnAnyError" ; 
+
+	public const string notFoundInURI = "notFoundInURI" ; 
+
+	public const string wasFoundInURIButEmpty = "wasFoundInURIButEmpty" ; 
+
+	public const string wasFoundInURIButWasNotInRange = "wasFoundInURIButWasNotInRange" ; 
+
+	public const string errorArgument = "errorArgument" ; 
+
+	public const string AnUnimplementedTypeInThePageArgumentVerifierIsRightValueMethod = "AnUnimplementedTypeInThePageArgumentVerifierIsRightValueMethod" ; 
+
+	public const string ItWasPassedToTheGetNormalizedParametersTypeOfTheNoneParameter = "ItWasPassedToTheGetNormalizedParametersTypeOfTheNoneParameter" ; 
+
+	public const string YouHaveNotSpecifiedAUserOrTheSpecifiedUserIsNotInTheEnabledUsersTable = "YouHaveNotSpecifiedAUserOrTheSpecifiedUserIsNotInTheEnabledUsersTable" ; 
+
+	public const string UsernameAndPasswordCannotBeLeftBlank = "UsernameAndPasswordCannotBeLeftBlank" ; 
+
+	public const string YouMustReactivateYourAccountFirstBecauseYourAccountHasBeenChangedEmailBefore = "YouMustReactivateYourAccountFirstBecauseYourAccountHasBeenChangedEmailBefore" ; 
+
+	public const string Code = "Code" ; 
+
+	public const string loginAttempts = "loginAttempts" ; 
+
+	public const string AllYouHaveToDo = "AllYouHaveToDo" ; 
+
+	public const string YouHaveNoMoreSignInAttemptsPleaseTryAgainInAnHour = "YouHaveNoMoreSignInAttemptsPleaseTryAgainInAnHour" ; 
+
+	public const string TheSessionIDFoundInTheDBDoesNotMatchYourSessionIDLogOutAndLogIn = "TheSessionIDFoundInTheDBDoesNotMatchYourSessionIDLogOutAndLogIn" ; 
+
+	public const string DoMetodyLoginedUserIDSeNedostalAniParametrHttpContextAniSunamoPage = "DoMetodyLoginedUserIDSeNedostalAniParametrHttpContextAniSunamoPage" ; 
+
+	public const string IllegalSortValuesApparentlyInternalApplicationError = "IllegalSortValuesApparentlyInternalApplicationError" ; 
+
+	public const string Webmaster = "Webmaster" ; 
+
+	public const string SuspendedWithoutLogin = "SuspendedWithoutLogin" ; 
+
+	public const string YouCannotAddOrRemoveCommentsForTheNopeWebsite = "YouCannotAddOrRemoveCommentsForTheNopeWebsite" ; 
+
+	public const string GuiApps = "GuiApps" ; 
+
+	public const string ConsoleApps = "ConsoleApps" ; 
+
+	public const string AllApps = "AllApps" ; 
+
+	public const string Leaderboards = "Leaderboards" ; 
+
+	public const string Github = "Github" ; 
+
+	public const string Apps = "Apps" ; 
+
+	public const string WebmasterHitsAreNotLogged = "WebmasterHitsAreNotLogged" ; 
+
+	public const string ForPage = "ForPage" ; 
+
+	public const string WhatYouCanFindHere = "WhatYouCanFindHere" ; 
+
 	public const string AplikaceProZmenšováníObrázkůMůžeteZmenšovatBuďVRatiuPoměruNeboNaPřesnouVelikostDoProgramuNačteteObrázkyKteréPakZmenšíteBuďVšechnyKliknutímNaZelenouŠipkuNeboJenNěkteréTímŽeJeBudeteProcházetAEntremZmenšovatProgramUmíNačístSouboryVýběremZLibovolnéSložkyVAdresářiObrázkyNeboLibovolnouSložkuNaDiskuZkopírovánímJejíCestyDoSchránkyAStisknutímTlačítkaDůležitéProgramUmíZmenšovatPouzeDoSložkyDokumentySunamoShrinkerImagesOutputNazevZdrojoveSlozkyPokudBysteChtěliAbyUmělZmenšovatTřebaDoZdrojovéSložkyNeboKdekolivJindeTakMiNapišteVášPožadavekAJáSeNaToMrknu = "AplikaceProZmenšováníObrázkůMůžeteZmenšovatBuďVRatiuPoměruNeboNaPřesnouVelikostDoProgramuNačteteObrázkyKteréPakZmenšíteBuďVšechnyKliknutímNaZelenouŠipkuNeboJenNěkteréTímŽeJeBudeteProcházetAEntremZmenšovatProgramUmíNačístSouboryVýběremZLibovolnéSložkyVAdresářiObrázkyNeboLibovolnouSložkuNaDiskuZkopírovánímJejíCestyDoSchránkyAStisknutímTlačítkaDůležitéProgramUmíZmenšovatPouzeDoSložkyDokumentySunamoShrinkerImagesOutputNazevZdrojoveSlozkyPokudBysteChtěliAbyUmělZmenšovatTřebaDoZdrojovéSložkyNeboKdekolivJindeTakMiNapišteVášPožadavekAJáSeNaToMrknu" ; 
 
 	public const string TatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatotatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníky = "TatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatotatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníkyTatokočkanemělavyplněnéoměaniúvodpronávštěvníky" ; 
@@ -13,7 +257,7 @@ public class XlfKeys
 
 	public const string IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava = "IAmInterestedInProgrammingOnTheNETPlatformInCButAlsoInOtherPlatformsAndLanguagesILikeToFollowAllModernLifeAndITEventsNowIMJustWaitingForDartToGetThroughGoogleHeLikedOperaBeforeMovingOnToBlinkBlinkDoesNotBotherMeItBothersMeTheLossOfFunctionsSometimesIReadSomethingOrLearnSomethingNewAlthoughIfIDonTHaveToIWorkWithWhatIKnowAndKnowILikeTheResultsOfMyWorkIDonTLikeJava" ; 
 
-	public const string IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite = "IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" ; 
+	//public const string IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite = "IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" ; 
 
 	public const string Wednesday = "Wednesday" ; 
 
