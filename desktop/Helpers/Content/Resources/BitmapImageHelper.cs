@@ -57,6 +57,10 @@ public static class BitmapImageHelper
 
 	public static ImageSource Path(string path)
 	{
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            return null;
+        }
 		return Uri(new Uri(path, UriKind.Absolute));
 	}
 

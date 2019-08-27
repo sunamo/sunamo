@@ -29,6 +29,7 @@ namespace desktop
             }
             else if (t.Length == 6)
             {
+                vr.A = 255;
                 vr.R = GetGroup(0, t);
                 vr.G = GetGroup(1, t);
                 vr.B = GetGroup(2, t);

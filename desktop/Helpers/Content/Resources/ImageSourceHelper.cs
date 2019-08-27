@@ -1,5 +1,8 @@
 ﻿#region Mono
+using System;
+using System.Drawing;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 /// <summary>
 /// Posloupnost je BitmapImage (sealed) -> BitmapSource (abstract) -> ImageSource (abstract)
@@ -39,9 +42,17 @@ public static class ImageSourceHelper
 		return BitmapFrame.Create(resizedImage);
 	}
 
+    public static ImageSource ImageSourceFromBitmap(Bitmap bmp)
+    {
+        var handle = bmp.GetHbitmap();
+        try
+        {
+            return Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+        }
+        finally { W32.DeleteObject(handle); }
+    }
 
-
-	public static BitmapFrame CropImage(Point point, Size size, BitmapImage bi)
+    public static BitmapFrame CropImage(System.Windows.Point point, System.Windows.Size size, BitmapImage bi)
 	{
 		// bi je BitmapImage obrázek ke výřezu, point je bod od kterého se vyřezává, size je velikost která se vyřezává
 		if (bi.DpiX != 96)
