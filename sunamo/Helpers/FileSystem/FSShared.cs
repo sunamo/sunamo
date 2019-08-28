@@ -108,6 +108,7 @@ public partial class FS
     public static string GetDirectoryName(string rp)
     {
         ThrowExceptions.IsNullOrEmpty(s_type, "GetDirectoryName", "rp", rp);
+        ThrowExceptions.IsNotWindowsPathFormat(s_type, RH.CallingMethod(), "rp", rp);
 
         rp = rp.TrimEnd(AllChars.bs);
         int dex = rp.LastIndexOf(AllChars.bs);
@@ -125,6 +126,7 @@ public partial class FS
     public static void CreateFoldersPsysicallyUnlessThere(string nad)
     {
         ThrowExceptions.IsNullOrEmpty(s_type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
+        ThrowExceptions.IsNotWindowsPathFormat(s_type, RH.CallingMethod(), "nad", nad);
 
         FS.MakeUncLongPath(ref nad);
         if (FS.ExistsDirectory(nad))
@@ -465,7 +467,7 @@ public partial class FS
         {
             fi = new FileInfo(item);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             // Například příliš dlouhý název souboru
             return 0;
@@ -1149,7 +1151,7 @@ public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisio
         CopyMoveAllFilesRecursively(p, to, co, false, contains, SearchOption.AllDirectories);
     }
 
-    internal static void CopyAllFiles(string p, string to, FileMoveCollisionOption co, string contains = null)
+    public static void CopyAllFiles(string p, string to, FileMoveCollisionOption co, string contains = null)
     {
         CopyMoveAllFilesRecursively(p, to, co, false, contains, SearchOption.TopDirectoryOnly);
     }

@@ -25,7 +25,7 @@ public partial class FS
             {
                 Directory.Delete(repairedBlogPostsFolder, true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 deleted = false;
             }

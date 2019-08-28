@@ -709,7 +709,7 @@ namespace SunamoFtp
                     {
                         File.Delete(locFileName);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "nešel smazat");
                         return false;
@@ -865,7 +865,7 @@ namespace SunamoFtp
                     offset = getFileSize(fileName);
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     offset = 0;
                 }
@@ -991,7 +991,7 @@ namespace SunamoFtp
                     setBinaryMode(true);
                     offset = getFileSize(fileName);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     offset = 0;
                 }
@@ -1514,7 +1514,7 @@ namespace SunamoFtp
                         parts[partCount++] = Int32.Parse(buf);
                         buf = "";
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         throw new IOException("Malformed PASV reply" + ": " + reply);
                     }
@@ -1536,7 +1536,7 @@ namespace SunamoFtp
             {
                 s.Connect(ep);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new IOException("Can't connect to remoteserver");
             }

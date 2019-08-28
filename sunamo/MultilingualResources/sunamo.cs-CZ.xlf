@@ -8914,6 +8914,434 @@
           <source></source>
           <target state="translated">Do 2. parametru metody SunamoSearchEngineTInt.GetFoundedEntities lze vložit pouze 1 písmenko</target>
         </trans-unit>
+        <trans-unit id="Applications" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> aplikací</target>
+        </trans-unit>
+        <trans-unit id="all" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">všech</target>
+        </trans-unit>
+        <trans-unit id="console" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">konzolových</target>
+        </trans-unit>
+        <trans-unit id="windowpane" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">okenních</target>
+        </trans-unit>
+        <trans-unit id="WasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> nebyla nalezena</target>
+        </trans-unit>
+        <trans-unit id="still" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ještě</target>
+        </trans-unit>
+        <trans-unit id="English" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">angličtinu</target>
+        </trans-unit>
+        <trans-unit id="DoesNotExistOnTheServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> na serveru neexistuje.</target>
+        </trans-unit>
+        <trans-unit id="InTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V tabulce </target>
+        </trans-unit>
+        <trans-unit id="Zoom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">zoom: 13,</target>
+        </trans-unit>
+        <trans-unit id="caches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">keše</target>
+        </trans-unit>
+        <trans-unit id="Style" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">' style='</target>
+        </trans-unit>
+        <trans-unit id="acidJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">acid jazz</target>
+        </trans-unit>
+        <trans-unit id="AfroCubanJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">afro-cuban jazz</target>
+        </trans-unit>
+        <trans-unit id="arsNova" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ars nova</target>
+        </trans-unit>
+        <trans-unit id="avantGardeJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">avant-garde jazz</target>
+        </trans-unit>
+        <trans-unit id="baião" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">baião</target>
+        </trans-unit>
+        <trans-unit id="batáRumba" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">batá-rumba</target>
+        </trans-unit>
+        <trans-unit id="RBPopJazzRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">R&amp;B, pop, jazz, rock</target>
+        </trans-unit>
+        <trans-unit id="bossaNova" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bossa nova</target>
+        </trans-unit>
+        <trans-unit id="bouncyTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bouncy techno</target>
+        </trans-unit>
+        <trans-unit id="bulerías" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bulerías</target>
+        </trans-unit>
+        <trans-unit id="čalgija" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">čalgija</target>
+        </trans-unit>
+        <trans-unit id="cantiñas" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cantiñas</target>
+        </trans-unit>
+        <trans-unit id="canzoneNapoletana" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">canzone napoletana</target>
+        </trans-unit>
+        <trans-unit id="celloRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cello rock</target>
+        </trans-unit>
+        <trans-unit id="celticRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic rock</target>
+        </trans-unit>
+        <trans-unit id="chamamé" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chamamé</target>
+        </trans-unit>
+        <trans-unit id="changüí" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">changüí</target>
+        </trans-unit>
+        <trans-unit id="chèo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chèo</target>
+        </trans-unit>
+        <trans-unit id="chouvalBwa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chouval bwa</target>
+        </trans-unit>
+        <trans-unit id="christianSka" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian ska</target>
+        </trans-unit>
+        <trans-unit id="coolJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cool jazz</target>
+        </trans-unit>
+        <trans-unit id="CoupéDécalé" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">coupé-décalé</target>
+        </trans-unit>
+        <trans-unit id="csárdás" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">csárdás</target>
+        </trans-unit>
+        <trans-unit id="dadraTala" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dadra tala</target>
+        </trans-unit>
+        <trans-unit id="danzón" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">danzón</target>
+        </trans-unit>
+        <trans-unit id="décima" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">décima</target>
+        </trans-unit>
+        <trans-unit id="detroitTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">detroit techno</target>
+        </trans-unit>
+        <trans-unit id="discoPolo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">disco polo</target>
+        </trans-unit>
+        <trans-unit id="dutchJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dutch jazz</target>
+        </trans-unit>
+        <trans-unit id="eremwuEu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">eremwu eu</target>
+        </trans-unit>
+        <trans-unit id="folkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk rock</target>
+        </trans-unit>
+        <trans-unit id="forró" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">forró</target>
+        </trans-unit>
+        <trans-unit id="freeJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">free jazz</target>
+        </trans-unit>
+        <trans-unit id="funaná" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funaná</target>
+        </trans-unit>
+        <trans-unit id="glamRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">glam rock</target>
+        </trans-unit>
+        <trans-unit id="gwoKa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gwo ka</target>
+        </trans-unit>
+        <trans-unit id="gypsyJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gypsy jazz</target>
+        </trans-unit>
+        <trans-unit id="huayño" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">huayño</target>
+        </trans-unit>
+        <trans-unit id="indoJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indo jazz</target>
+        </trans-unit>
+        <trans-unit id="izvornaBosanska" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">izvorna bosanska</target>
+        </trans-unit>
+        <trans-unit id="janglePop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jangle pop</target>
+        </trans-unit>
+        <trans-unit id="jaranaYucateca" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jarana yucateca</target>
+        </trans-unit>
+        <trans-unit id="jazzBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jazz blues</target>
+        </trans-unit>
+        <trans-unit id="jazzRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jazz rap</target>
+        </trans-unit>
+        <trans-unit id="jùjú" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jùjú</target>
+        </trans-unit>
+        <trans-unit id="kalamatianó" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kalamatianó</target>
+        </trans-unit>
+        <trans-unit id="kanHaDiskan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kan ha diskan</target>
+        </trans-unit>
+        <trans-unit id="kachāshī" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kachāshī</target>
+        </trans-unit>
+        <trans-unit id="kayōkyoku" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kayōkyoku</target>
+        </trans-unit>
+        <trans-unit id="kvæði" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kvæði</target>
+        </trans-unit>
+        <trans-unit id="legényes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">legényes</target>
+        </trans-unit>
+        <trans-unit id="lukKrung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">luk krung</target>
+        </trans-unit>
+        <trans-unit id="méringue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">méringue</target>
+        </trans-unit>
+        <trans-unit id="minYō" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">min'yō</target>
+        </trans-unit>
+        <trans-unit id="minimalTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minimal techno</target>
+        </trans-unit>
+        <trans-unit id="mushroomJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mushroom jazz</target>
+        </trans-unit>
+        <trans-unit id="bornMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">narodna muzika</target>
+        </trans-unit>
+        <trans-unit id="neoKyma" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neo kyma</target>
+        </trans-unit>
+        <trans-unit id="norteño" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">norteño</target>
+        </trans-unit>
+        <trans-unit id="nuGaze" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu gaze</target>
+        </trans-unit>
+        <trans-unit id="nuJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu jazz</target>
+        </trans-unit>
+        <trans-unit id="nuMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu metal</target>
+        </trans-unit>
+        <trans-unit id="psychedelicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">psychedelic rock</target>
+        </trans-unit>
+        <trans-unit id="SambaCanção" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">samba-canção</target>
+        </trans-unit>
+        <trans-unit id="taiTu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tai tu</target>
+        </trans-unit>
+        <trans-unit id="táncház" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">táncház</target>
+        </trans-unit>
+        <trans-unit id="xoomiiKhoomiiHoomii" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">xoomii (khoomii, hoomii)</target>
+        </trans-unit>
+        <trans-unit id="Supported" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> podporovaná.</target>
+        </trans-unit>
+        <trans-unit id="Pompinka" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1Pompinka5*</target>
+        </trans-unit>
+        <trans-unit id="display" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">zobrazení</target>
+        </trans-unit>
+        <trans-unit id="deleteCz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">deleteCz('</target>
+        </trans-unit>
+        <trans-unit id="Comments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> komentářů</target>
+        </trans-unit>
+        <trans-unit id="Domains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> domény </target>
+        </trans-unit>
+        <trans-unit id="comment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">komentář</target>
+        </trans-unit>
+        <trans-unit id="comments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">komentáře</target>
+        </trans-unit>
+        <trans-unit id="pánečci" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pánečci</target>
+        </trans-unit>
+        <trans-unit id="OnRequest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> na dotaz </target>
+        </trans-unit>
+        <trans-unit id="veterinarians" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">veterináři</target>
+        </trans-unit>
+        <trans-unit id="herOwner" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">páníčkou</target>
+        </trans-unit>
+        <trans-unit id="páníčkovského" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">páníčkovského </target>
+        </trans-unit>
+        <trans-unit id="pánečkovského" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pánečkovského </target>
+        </trans-unit>
+        <trans-unit id="TheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> uživatelovi/uživatelce </target>
+        </trans-unit>
+        <trans-unit id="Team" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">(tým </target>
+        </trans-unit>
+        <trans-unit id="prevailed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">zvítězil</target>
+        </trans-unit>
+        <trans-unit id="lost" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">prohrál</target>
+        </trans-unit>
+        <trans-unit id="FromTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> z webu </target>
+        </trans-unit>
+        <trans-unit id="Series" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> série </target>
+        </trans-unit>
+        <trans-unit id="TableName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> + nazevTabulky + </target>
+        </trans-unit>
+        <trans-unit id="ColumnID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> + sloupecID + </target>
+        </trans-unit>
+        <trans-unit id="BySize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> dle velikosti:</target>
+        </trans-unit>
+        <trans-unit id="InTheSize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> ve velikosti </target>
+        </trans-unit>
+        <trans-unit id="pitch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">stoupání</target>
+        </trans-unit>
+        <trans-unit id="descent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">klesání</target>
+        </trans-unit>
+        <trans-unit id="visits" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">návštěvy</target>
+        </trans-unit>
+        <trans-unit id="NoOfThat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> ne, z toho </target>
+        </trans-unit>
       </group>
     </body>
   </file>

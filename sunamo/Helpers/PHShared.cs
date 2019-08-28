@@ -14,7 +14,7 @@ public partial class PH
         {
             Process.Start(p);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
     }

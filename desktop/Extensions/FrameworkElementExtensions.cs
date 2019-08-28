@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-public static class FrameworkElementExtensions
+﻿
+public static partial class FrameworkElementExtensions
 {
-
 }
-

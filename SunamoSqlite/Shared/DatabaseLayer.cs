@@ -33,7 +33,7 @@ public class DatabaseLayer
             //DatabaseLayer.LoadNewConnection();
             //SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
     }

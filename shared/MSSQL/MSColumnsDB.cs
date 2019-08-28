@@ -347,7 +347,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         }
         // Na závěr každé metody nesmí být AppendLine
         innerParseRow.Append(2, "}");
-        // Musí být internal, protože když získám DataTable, jak ji mám pak co nejrychleji napasovat na nějaký objekt?
+        // Musí být public, protože když získám DataTable, jak ji mám pak co nejrychleji napasovat na nějaký objekt?
         csg.Method(2, "protected void ParseRow(object[] o)", innerParseRow.ToString());
 
         csg.EndBrace(0);

@@ -162,7 +162,7 @@
 //                File.Delete(t);
 //                files.Remove(o);
 //            }
-//            catch (Exception)
+//            catch (Exception ex)
 //            {
 //                RaisedException("Soubor se nepodařilo smazat, ale dokud program neresetujete se již nebude zobrazovat.");
 //            }

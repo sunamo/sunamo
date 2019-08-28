@@ -25,5 +25,7 @@ public class DesktopSize : SunamoSize
         Width = actualWidth;
         Height = actualHeight;
     }
+
+    
 }
 

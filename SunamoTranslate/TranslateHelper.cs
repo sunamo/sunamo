@@ -40,6 +40,7 @@ public class TranslateHelper
     /// </summary>
     public static TranslateHelper Instance = new TranslateHelper();
     public readonly string AlreadyTranslatedFile = AppData.ci.GetFileCommonSettings("CsTranslatedToEn.txt");
+    public readonly string AlreadyTranslatedFileLong = AppData.ci.GetFileCommonSettings("CsTranslatedToEnLong.txt");
     private Dictionary<string, string> _csToEn = new Dictionary<string, string>();
 
 
@@ -93,7 +94,10 @@ public class TranslateHelper
         var result = response.TranslatedText;
         if (from.Contains("cs") && to.Contains("en"))
         {
-            SF.AppendToFile(AlreadyTranslatedFile, SF.PrepareToSerialization2(CA.ToListString(input, result)));
+            if (TranslateHelper.IsToSaveInCsTranslateToEn(input))
+            {
+                SF.AppendToFile(AlreadyTranslatedFile, SF.PrepareToSerialization2(CA.ToListString(input, result)));
+            }
         }
         return result;
     }
@@ -104,5 +108,10 @@ public class TranslateHelper
         {
             throw new Exception("Please authenticate first, credential object cant be null");
         }
+    }
+
+    public static bool IsToSaveInCsTranslateToEn(string first)
+    {
+        return SH.OccurencesOfStringIn(first, " ") < 3;
     }
 }

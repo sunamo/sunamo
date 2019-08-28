@@ -27,7 +27,7 @@ public static partial class HttpRequestHelper{
         {
             response = (HttpWebResponse)request.GetResponse();
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
             return null;
         }

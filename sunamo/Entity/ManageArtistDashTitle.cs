@@ -25,7 +25,7 @@ public partial class ManageArtistDashTitle
                 {
                     ch[i + 1] = char.ToUpper(ch[i + 1]);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             }
@@ -35,7 +35,7 @@ public partial class ManageArtistDashTitle
                 {
                     ch[i + 1] = char.ToUpper(ch[i + 1]);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             }
@@ -45,7 +45,7 @@ public partial class ManageArtistDashTitle
                 {
                     ch[i + 1] = char.ToUpper(ch[i + 1]);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             }
@@ -55,7 +55,7 @@ public partial class ManageArtistDashTitle
                 {
                     ch[i + 1] = char.ToUpper(ch[i + 1]);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             }

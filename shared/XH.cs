@@ -139,7 +139,7 @@ public class XH
         {
             xd.LoadXml(xml);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
 
             return null;

@@ -108,7 +108,7 @@ namespace desktop.Controls
                         AddTviFileTo(s, item);
                     }
                 }
-                catch (Exception) { }
+                catch (Exception ex) { }
             }
         }
     }

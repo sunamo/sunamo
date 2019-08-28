@@ -107,7 +107,7 @@ public partial class TF
         }
     }
 
-    internal static void WriteAllLines(string file, List<string> lines)
+    public static void WriteAllLines(string file, List<string> lines)
     {
         SaveLines(lines, file);
     }

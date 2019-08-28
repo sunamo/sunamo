@@ -855,7 +855,7 @@ namespace SunamoFtp
                     {
                         File.Delete(locFileName);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         OnNewStatus("Soubor" + " " + remFileName + " " + "nemohl být stažen, protože soubor" + " " + locFileName + " " + "nešel smazat");
                         return false;

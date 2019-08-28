@@ -5,6 +5,1540 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string piechartDBrowserVersionsDaysDiv = "piechartDBrowserVersionsDaysDiv" ; 
+
+	public const string piechartDBrowserVersionsWeeksDiv = "piechartDBrowserVersionsWeeksDiv" ; 
+
+	public const string piechartDBrowserVersionsMonthsDiv = "piechartDBrowserVersionsMonthsDiv" ; 
+
+	public const string piechartDBrowserVersionsYearsDiv = "piechartDBrowserVersionsYearsDiv" ; 
+
+	public const string NoOfThat = "NoOfThat" ; 
+
+	public const string visits = "visits" ; 
+
+	public const string descent = "descent" ; 
+
+	public const string pitch = "pitch" ; 
+
+	public const string SELECTFROMGeoLists = "SELECTFROMGeoLists" ; 
+
+	public const string SELECTFROMGeoCaches = "SELECTFROMGeoCaches" ; 
+
+	public const string CacheHints = "CacheHints" ; 
+
+	public const string InTheSize = "InTheSize" ; 
+
+	public const string BySize = "BySize" ; 
+
+	public const string ColumnID = "ColumnID" ; 
+
+	public const string TableName = "TableName" ; 
+
+	public const string adoptedBy = "adoptedBy" ; 
+
+	public const string createdBy = "createdBy" ; 
+
+	public const string OutOf = "OutOf" ; 
+
+	public const string ClassMetroDiv = "ClassMetroDiv" ; 
+
+	public const string ADivIdSczComments = "ADivIdSczComments" ; 
+
+	public const string jsJqueryMinJsScript = "jsJqueryMinJsScript" ; 
+
+	public const string returnDeleteComments = "returnDeleteComments" ; 
+
+	public const string Series = "Series" ; 
+
+	public const string FromTheWeb = "FromTheWeb" ; 
+
+	public const string lost = "lost" ; 
+
+	public const string prevailed = "prevailed" ; 
+
+	public const string Team = "Team" ; 
+
+	public const string renameCategory = "renameCategory" ; 
+
+	public const string iconPlusIconCategory = "iconPlusIconCategory" ; 
+
+	public const string TheUser = "TheUser" ; 
+
+	public const string pánečkovského = "pánečkovského" ; 
+
+	public const string páníčkovského = "páníčkovského" ; 
+
+	public const string herOwner = "herOwner" ; 
+
+	public const string veterinarians = "veterinarians" ; 
+
+	public const string OnRequest = "OnRequest" ; 
+
+	public const string pánečci = "pánečci" ; 
+
+	public const string returnBlockOrUnblockByNick = "returnBlockOrUnblockByNick" ; 
+
+	public const string returnBlockOrUnblockByIp = "returnBlockOrUnblockByIp" ; 
+
+	public const string returnRemoveComment = "returnRemoveComment" ; 
+
+	public const string returnEditComment = "returnEditComment" ; 
+
+	public const string returnAddImagesToComment = "returnAddImagesToComment" ; 
+
+	public const string returnAddOrRemoveSpamVote = "returnAddOrRemoveSpamVote" ; 
+
+	public const string buttonOranzovyObtah = "buttonOranzovyObtah" ; 
+
+	public const string returnThumbsDownComment = "returnThumbsDownComment" ; 
+
+	public const string buttonTooltip = "buttonTooltip" ; 
+
+	public const string buttonOranzovyObtahTooltip = "buttonOranzovyObtahTooltip" ; 
+
+	public const string returnThumbsUpComment = "returnThumbsUpComment" ; 
+
+	public const string btnAddCommentButton = "btnAddCommentButton" ; 
+
+	public const string returnAddNewComment = "returnAddNewComment" ; 
+
+	public const string inputControlCheckboxSmallCheck = "inputControlCheckboxSmallCheck" ; 
+
+	public const string balloonRightBalloonComment = "balloonRightBalloonComment" ; 
+
+	public const string paddingComment = "paddingComment" ; 
+
+	public const string comments = "comments" ; 
+
+	public const string comment = "comment" ; 
+
+	public const string Domains = "Domains" ; 
+
+	public const string Comments = "Comments" ; 
+
+	public const string VarAnswerID = "VarAnswerID" ; 
+
+	public const string buttonDanger = "buttonDanger" ; 
+
+	public const string SELECTIDFROMKocCats = "SELECTIDFROMKocCats" ; 
+
+	public const string methodauthGetSessiontoken = "methodauthGetSessiontoken" ; 
+
+	public const string deleteCz = "deleteCz" ; 
+
+	public const string CzLang = "CzLang" ; 
+
+	public const string deleteEn = "deleteEn" ; 
+
+	public const string EnLang = "EnLang" ; 
+
+	public const string deleteBoth = "deleteBoth" ; 
+
+	public const string AllLyrics = "AllLyrics" ; 
+
+	public const string AddNewSong = "AddNewSong" ; 
+
+	public const string MyProfile = "MyProfile" ; 
+
+	public const string SearchTerm = "SearchTerm" ; 
+
+	public const string idPage = "idPage" ; 
+
+	public const string idPageArg = "idPageArg" ; 
+
+	public const string idPageName = "idPageName" ; 
+
+	public const string NotFound = "NotFound" ; 
+
+	public const string TraslationKey = "TraslationKey" ; 
+
+	public const string attachmentFilename = "attachmentFilename" ; 
+
+	public const string PngNoRepeatCenterCenterFixedBackgroundSizeCover = "PngNoRepeatCenterCenterFixedBackgroundSizeCover" ; 
+
+	public const string bodyBackgroundUrlCssApp = "bodyBackgroundUrlCssApp" ; 
+
+	public const string dMYyyy = "dMYyyy" ; 
+
+	public const string pID = "pID" ; 
+
+	public const string aID = "aID" ; 
+
+	public const string display = "display" ; 
+
+	public const string Pompinka = "Pompinka" ; 
+
+	public const string AddA = "AddA" ; 
+
+	public const string DoYouWantToTextAHref = "DoYouWantToTextAHref" ; 
+
+	public const string Supported = "Supported" ; 
+
+	public const string FileAlreadyHaveThumbnails = "FileAlreadyHaveThumbnails" ; 
+
+	public const string DownloadForSongWithID = "DownloadForSongWithID" ; 
+
+	public const string xoomiiKhoomiiHoomii = "xoomiiKhoomiiHoomii" ; 
+
+	public const string wongShadow = "wongShadow" ; 
+
+	public const string wailaChickenScratch = "wailaChickenScratch" ; 
+
+	public const string videoGameMusic = "videoGameMusic" ; 
+
+	public const string tropicalMusic = "tropicalMusic" ; 
+
+	public const string tOngGuitar = "tOngGuitar" ; 
+
+	public const string tibetanPop = "tibetanPop" ; 
+
+	public const string AHeavyMetalSubgenreKnownForItsFastTemposScreamingVocalsExtendedGuitarSolosAndAggressiveLyrics = "AHeavyMetalSubgenreKnownForItsFastTemposScreamingVocalsExtendedGuitarSolosAndAggressiveLyrics" ; 
+
+	public const string thrashMetal = "thrashMetal" ; 
+
+	public const string tembangSunda = "tembangSunda" ; 
+
+	public const string ASubgenreOfPopMusicTargetedTowardsPreTeenAndTeenageListeners = "ASubgenreOfPopMusicTargetedTowardsPreTeenAndTeenageListeners" ; 
+
+	public const string teenPop = "teenPop" ; 
+
+	public const string táncház = "táncház" ; 
+
+	public const string tamilChristianKeerthanai = "tamilChristianKeerthanai" ; 
+
+	public const string taiwanesePop = "taiwanesePop" ; 
+
+	public const string taiTu = "taiTu" ; 
+
+	public const string soulMusic = "soulMusic" ; 
+
+	public const string aMixtureOfSongoHipHopAndSalsa = "aMixtureOfSongoHipHopAndSalsa" ; 
+
+	public const string sonMontuno = "sonMontuno" ; 
+
+	public const string ASubgenreOfHeavyMetalWithSlowTunedTemposAbrasiveDistortionAndHarshVocals = "ASubgenreOfHeavyMetalWithSlowTunedTemposAbrasiveDistortionAndHarshVocals" ; 
+
+	public const string sludgeMetal = "sludgeMetal" ; 
+
+	public const string slackKeyGuitarKihoalu = "slackKeyGuitarKihoalu" ; 
+
+	public const string pertainingToSongsDescribingTheCurrentSituationMostPrevalentInFilms = "pertainingToSongsDescribingTheCurrentSituationMostPrevalentInFilms" ; 
+
+	public const string scrumpyAndWestern = "scrumpyAndWestern" ; 
+
+	public const string aGenreOfSambaWithAChoppyReggaeLikeRhythm = "aGenreOfSambaWithAChoppyReggaeLikeRhythm" ; 
+
+	public const string traditionalSambaInSlowTempoAndWithRomanticLyricsInfluencedByBolero = "traditionalSambaInSlowTempoAndWithRomanticLyricsInfluencedByBolero" ; 
+
+	public const string SambaCanção = "SambaCanção" ; 
+
+	public const string aSoftRomanticFormOfSalsaMusic = "aSoftRomanticFormOfSalsaMusic" ; 
+
+	public const string salsaRomantica = "salsaRomantica" ; 
+
+	public const string lyricallyExplicitFormOfSalsaRomantica = "lyricallyExplicitFormOfSalsaRomantica" ; 
+
+	public const string salsaErotica = "salsaErotica" ; 
+
+	public const string pubRock = "pubRock" ; 
+
+	public const string AStyleOfRockMusicThatRelatesToPsychedelia = "AStyleOfRockMusicThatRelatesToPsychedelia" ; 
+
+	public const string psychedelicRock = "psychedelicRock" ; 
+
+	public const string ASubgenreOfRockMusicWithOriginsOfJazzFusionAndPsychedelicRock = "ASubgenreOfRockMusicWithOriginsOfJazzFusionAndPsychedelicRock" ; 
+
+	public const string progressiveRock = "progressiveRock" ; 
+
+	public const string ASubgenreOfHeavyMetalAndProgressiveRock = "ASubgenreOfHeavyMetalAndProgressiveRock" ; 
+
+	public const string progressiveMetal = "progressiveMetal" ; 
+
+	public const string AStyleOfHeavyMetalWithMelodicVocalsSymphonicContextAndWithFantasticOrMythicalLyrics = "AStyleOfHeavyMetalWithMelodicVocalsSymphonicContextAndWithFantasticOrMythicalLyrics" ; 
+
+	public const string powerMetal = "powerMetal" ; 
+
+	public const string alsoKnownAsChichaMusic = "alsoKnownAsChichaMusic" ; 
+
+	public const string peruvianCumbia = "peruvianCumbia" ; 
+
+	public const string theOldestVarietyOfMilitaryMarchingBandInTheWorld = "theOldestVarietyOfMilitaryMarchingBandInTheWorld" ; 
+
+	public const string ottomanMilitaryBand = "ottomanMilitaryBand" ; 
+
+	public const string oldTimeRadioOldTimeRadioShowsFromTheS = "oldTimeRadioOldTimeRadioShowsFromTheS" ; 
+
+	public const string aMoreAbstractAndDrumBassInspiredStyleOfBreakbeat = "aMoreAbstractAndDrumBassInspiredStyleOfBreakbeat" ; 
+
+	public const string nuSkoolBreaks = "nuSkoolBreaks" ; 
+
+	public const string fusionOfThrashGrooveAndAlternativeMetalThatAlsoBorrowsElementsFromPunkIndustrialGrungeAndHipHop = "fusionOfThrashGrooveAndAlternativeMetalThatAlsoBorrowsElementsFromPunkIndustrialGrungeAndHipHop" ; 
+
+	public const string nuMetal = "nuMetal" ; 
+
+	public const string nuJazz = "nuJazz" ; 
+
+	public const string nuGaze = "nuGaze" ; 
+
+	public const string modernHouseMusicThatDrawsInspirationFromDisco = "modernHouseMusicThatDrawsInspirationFromDisco" ; 
+
+	public const string northernSoul = "northernSoul" ; 
+
+	public const string norteño = "norteño" ; 
+
+	public const string nordicFolkDance = "nordicFolkDance" ; 
+
+	public const string nordicFolk = "nordicFolk" ; 
+
+	public const string loudAtonalDissonantAndUnconventionalRockMusic = "loudAtonalDissonantAndUnconventionalRockMusic" ; 
+
+	public const string noiseRock = "noiseRock" ; 
+
+	public const string derivativeOfNoiseRockInWhichNoisesAndFeedbackAreUsedButMadeIntoAMelodicOftenRelaxingSound = "derivativeOfNoiseRockInWhichNoisesAndFeedbackAreUsedButMadeIntoAMelodicOftenRelaxingSound" ; 
+
+	public const string noisePop = "noisePop" ; 
+
+	public const string trendInOrchestralRockAndElectronicMusicWhereHarshNonMelodicAndOftenRandomSoundsAreUsedAlongsideOrInPlaceOfConventionalSounds = "trendInOrchestralRockAndElectronicMusicWhereHarshNonMelodicAndOftenRandomSoundsAreUsedAlongsideOrInPlaceOfConventionalSounds" ; 
+
+	public const string avantGardePunkSubgenreCreatedAsAReactionToTheCommercialNewWave = "avantGardePunkSubgenreCreatedAsAReactionToTheCommercialNewWave" ; 
+
+	public const string noWave = "noWave" ; 
+
+	public const string fusionOfChiptuneAndMetalcore = "fusionOfChiptuneAndMetalcore" ; 
+
+	public const string newYorkBlues = "newYorkBlues" ; 
+
+	public const string termForTheOftenPsychedelicInformedIndieFolkMusicOfTheS = "termForTheOftenPsychedelicInformedIndieFolkMusicOfTheS" ; 
+
+	public const string newWeirdAmerica = "newWeirdAmerica" ; 
+
+	public const string newWaveOfNewWave = "newWaveOfNewWave" ; 
+
+	public const string newWaveOfBritishHeavyMetal = "newWaveOfBritishHeavyMetal" ; 
+
+	public const string earlyFormOfPunkInformedSynthpop = "earlyFormOfPunkInformedSynthpop" ; 
+
+	public const string newWave = "newWave" ; 
+
+	public const string newTaiwaneseSong = "newTaiwaneseSong" ; 
+
+	public const string hipHopMusicMadeAfterTheMidS = "hipHopMusicMadeAfterTheMidS" ; 
+
+	public const string newSchoolHipHop = "newSchoolHipHop" ; 
+
+	public const string newRave = "newRave" ; 
+
+	public const string moreAmbitiousAndAlternativeRockInspiredFormOfProgressiveRock = "moreAmbitiousAndAlternativeRockInspiredFormOfProgressiveRock" ; 
+
+	public const string newProg = "newProg" ; 
+
+	public const string newOrleansBlues = "newOrleansBlues" ; 
+
+	public const string slicklyProducedFusionOfSoulPopDanceAndHipHopMusic = "slicklyProducedFusionOfSoulPopDanceAndHipHopMusic" ; 
+
+	public const string newJackSwingOrSwingbeat = "newJackSwingOrSwingbeat" ; 
+
+	public const string newBeat = "newBeat" ; 
+
+	public const string formOfAmbientMusicIntendedForUseDuringMeditation = "formOfAmbientMusicIntendedForUseDuringMeditation" ; 
+
+	public const string moreAdvancedFormOfTechstep = "moreAdvancedFormOfTechstep" ; 
+
+	public const string neueDeutscheTodeskunst = "neueDeutscheTodeskunst" ; 
+
+	public const string neueDeutscheWelle = "neueDeutscheWelle" ; 
+
+	public const string hipHopWithLyricsConcerningTypicallyNerdySubjects = "hipHopWithLyricsConcerningTypicallyNerdySubjects" ; 
+
+	public const string neotraditionalCountry = "neotraditionalCountry" ; 
+
+	public const string alternativeFormOfHipHopSoulThatFocusedOnMoreSoulfulAndEmotiveVocalsAndLyrics = "alternativeFormOfHipHopSoulThatFocusedOnMoreSoulfulAndEmotiveVocalsAndLyrics" ; 
+
+	public const string neoSoul = "neoSoul" ; 
+
+	public const string looseTermForAlternativeRockInspiredByPsychedelicAndAcidRock = "looseTermForAlternativeRockInspiredByPsychedelicAndAcidRock" ; 
+
+	public const string highlyTheatricalEmotionalAndCleanSubgenreOfProgressiveRock = "highlyTheatricalEmotionalAndCleanSubgenreOfProgressiveRock" ; 
+
+	public const string neoProgressiveRock = "neoProgressiveRock" ; 
+
+	public const string fusionOfFolkRockAndPostIndustrialMusic = "fusionOfFolkRockAndPostIndustrialMusic" ; 
+
+	public const string neoKyma = "neoKyma" ; 
+
+	public const string fusionOfNeoclassicalAndNewAgeMusic = "fusionOfNeoclassicalAndNewAgeMusic" ; 
+
+	public const string neoclassicalNewAge = "neoclassicalNewAge" ; 
+
+	public const string fusionOfNeoclassicalAndHeavyMetalMusic = "fusionOfNeoclassicalAndHeavyMetalMusic" ; 
+
+	public const string neoClassicalMetal = "neoClassicalMetal" ; 
+
+	public const string fusionOfNeoclassicalAndDarkWaveMusic = "fusionOfNeoclassicalAndDarkWaveMusic" ; 
+
+	public const string neoclassicalDarkWave = "neoclassicalDarkWave" ; 
+
+	public const string orchestralMusicOfTheEarlyThCentury = "orchestralMusicOfTheEarlyThCentury" ; 
+
+	public const string blackMetalWithLyricsSupportingNationalSocialismFascismAndOtherFarRightIdeologies = "blackMetalWithLyricsSupportingNationalSocialismFascismAndOtherFarRightIdeologies" ; 
+
+	public const string nationalSocialistBlackMetal = "nationalSocialistBlackMetal" ; 
+
+	public const string nashvilleSound = "nashvilleSound" ; 
+
+	public const string bornMusic = "bornMusic" ; 
+
+	public const string nanguanMusic = "nanguanMusic" ; 
+
+	public const string heavilyExperimentalOrchestralMusicKnownForItsUseOfElectronicInstruments = "heavilyExperimentalOrchestralMusicKnownForItsUseOfElectronicInstruments" ; 
+
+	public const string musiqiEAssil = "musiqiEAssil" ; 
+
+	public const string musicaLlanero = "musicaLlanero" ; 
+
+	public const string musicHall = "musicHall" ; 
+
+	public const string anArtworkThatCoversAllFormsOfArt = "anArtworkThatCoversAllFormsOfArt" ; 
+
+	public const string musicDrama = "musicDrama" ; 
+
+	public const string eclecticGenreThatDrawsFromDowntempoHipHopAndWorldStyles = "eclecticGenreThatDrawsFromDowntempoHipHopAndWorldStyles" ; 
+
+	public const string mushroomJazz = "mushroomJazz" ; 
+
+	public const string mozambiqueOfAmerica = "mozambiqueOfAmerica" ; 
+
+	public const string mozambiqueOfCuba = "mozambiqueOfCuba" ; 
+
+	public const string slickPopInformedFormOfSoulMusic = "slickPopInformedFormOfSoulMusic" ; 
+
+	public const string fusionOfElectroHouseAndReggaeton = "fusionOfElectroHouseAndReggaeton" ; 
+
+	public const string fastPacedSexualAndModernizedFormOfMorLam = "fastPacedSexualAndModernizedFormOfMorLam" ; 
+
+	public const string morLamSing = "morLamSing" ; 
+
+	public const string morLam = "morLam" ; 
+
+	public const string anyRockMusicUsuallyAlternativeRockMadeDuringOrAfterTheS = "anyRockMusicUsuallyAlternativeRockMadeDuringOrAfterTheS" ; 
+
+	public const string modernRock = "modernRock" ; 
+
+	public const string looseTermForOrchestralMusicMadeDuringOrAfterTheThCentury = "looseTermForOrchestralMusicMadeDuringOrAfterTheThCentury" ; 
+
+	public const string modernClassical = "modernClassical" ; 
+
+	public const string minneapolisSound = "minneapolisSound" ; 
+
+	public const string fusionOfTechnoAndMinimalMusic = "fusionOfTechnoAndMinimalMusic" ; 
+
+	public const string minimalTechno = "minimalTechno" ; 
+
+	public const string fusionOfPsychedelicTranceAndMinimalMusic = "fusionOfPsychedelicTranceAndMinimalMusic" ; 
+
+	public const string minimalTrance = "minimalTrance" ; 
+
+	public const string heavilyExperimentalFormOfOrchestralMusicKnownForItsSimplicity = "heavilyExperimentalFormOfOrchestralMusicKnownForItsSimplicity" ; 
+
+	public const string minYō = "minYō" ; 
+
+	public const string rockInspiredMeringueMusic = "rockInspiredMeringueMusic" ; 
+
+	public const string minimalistStrippedDownFormOfHouseMusic = "minimalistStrippedDownFormOfHouseMusic" ; 
+
+	public const string raveInspiredStyleOfHipHop = "raveInspiredStyleOfHipHop" ; 
+
+	public const string miamiBass = "miamiBass" ; 
+
+	public const string mexicanRock = "mexicanRock" ; 
+
+	public const string fusionOfThrashMetalAndHardcorePunkOftenSungMelodically = "fusionOfThrashMetalAndHardcorePunkOftenSungMelodically" ; 
+
+	public const string méringue = "méringue" ; 
+
+	public const string styleOfModernMerengueThatAttemptsToSoundSimilarToThCenturyMerengue = "styleOfModernMerengueThatAttemptsToSoundSimilarToThCenturyMerengue" ; 
+
+	public const string memphisSoul = "memphisSoul" ; 
+
+	public const string memphisBlues = "memphisBlues" ; 
+
+	public const string anyMusicThatUtilizesMelodyTheCombinationOfNotesSoThatTheyArePerceivedAsASingleStringOfMusic = "anyMusicThatUtilizesMelodyTheCombinationOfNotesSoThatTheyArePerceivedAsASingleStringOfMusic" ; 
+
+	public const string fusionOfMelodicHardcoreAndMetalcore = "fusionOfMelodicHardcoreAndMetalcore" ; 
+
+	public const string melodicMetalcore = "melodicMetalcore" ; 
+
+	public const string styleOfHardcorePunkKnownForItsSlowerMelodicGuitarsJuxtaposedWithShoutedVocals = "styleOfHardcorePunkKnownForItsSlowerMelodicGuitarsJuxtaposedWithShoutedVocals" ; 
+
+	public const string melodicHardcore = "melodicHardcore" ; 
+
+	public const string medievalMetal = "medievalMetal" ; 
+
+	public const string medievalFolkRock = "medievalFolkRock" ; 
+
+	public const string anyMusicCreatedToAidMeditationProcedures = "anyMusicCreatedToAidMeditationProcedures" ; 
+
+	public const string rhythmicallyComplexFormOfExperimentalRock = "rhythmicallyComplexFormOfExperimentalRock" ; 
+
+	public const string mathRock = "mathRock" ; 
+
+	public const string fusionOfMetalcoreAndMathRock = "fusionOfMetalcoreAndMathRock" ; 
+
+	public const string aCapellaFlamencoMusic = "aCapellaFlamencoMusic" ; 
+
+	public const string styleOfNeoFolkInformedByMilitaryMarchesAndMilitaristicThemes = "styleOfNeoFolkInformedByMilitaryMarchesAndMilitaristicThemes" ; 
+
+	public const string martialIndustrial = "martialIndustrial" ; 
+
+	public const string manilaSound = "manilaSound" ; 
+
+	public const string mangueBit = "mangueBit" ; 
+
+	public const string subgenreOfGangstaRapThatFocusesOnOrganizedCrime = "subgenreOfGangstaRapThatFocusesOnOrganizedCrime" ; 
+
+	public const string mafiosoRap = "mafiosoRap" ; 
+
+	public const string soothingSongSungToYoungChildrenToLullThemToSleep = "soothingSongSungToYoungChildrenToLullThemToSleep" ; 
+
+	public const string lukThung = "lukThung" ; 
+
+	public const string morePolishedFormOfLukThung = "morePolishedFormOfLukThung" ; 
+
+	public const string lukKrung = "lukKrung" ; 
+
+	public const string lubbockSound = "lubbockSound" ; 
+
+	public const string extremeFormOfAmbientMusicConsistingOfLongPeriodsOfSilenceAndOccasionalVeryMinuteSounds = "extremeFormOfAmbientMusicConsistingOfLongPeriodsOfSilenceAndOccasionalVeryMinuteSounds" ; 
+
+	public const string formOfReggaeFusionKnownForItsRomanticLyrics = "formOfReggaeFusionKnownForItsRomanticLyrics" ; 
+
+	public const string loversRock = "loversRock" ; 
+
+	public const string downtempoMusicIntendedToGiveTheListenerASenseOfBeingSomewhereElseIEAJungleOrOuterSpace = "downtempoMusicIntendedToGiveTheListenerASenseOfBeingSomewhereElseIEAJungleOrOuterSpace" ; 
+
+	public const string louisianaBlues = "louisianaBlues" ; 
+
+	public const string longSong = "longSong" ; 
+
+	public const string anyMusicRecordedAtAQualityLowerThanUsual = "anyMusicRecordedAtAQualityLowerThanUsual" ; 
+
+	public const string formOfDrumAndBassWithAHeavyEmphasisOnMelody = "formOfDrumAndBassWithAHeavyEmphasisOnMelody" ; 
+
+	public const string liquidFunk = "liquidFunk" ; 
+
+	public const string legényes = "legényes" ; 
+
+	public const string latinPop = "latinPop" ; 
+
+	public const string latinMetal = "latinMetal" ; 
+
+	public const string kwassaKwassa = "kwassaKwassa" ; 
+
+	public const string kvæði = "kvæði" ; 
+
+	public const string kiwiRock = "kiwiRock" ; 
+
+	public const string kacapiSuling = "kacapiSuling" ; 
+
+	public const string kayōkyoku = "kayōkyoku" ; 
+
+	public const string kawachiOndo = "kawachiOndo" ; 
+
+	public const string kachāshī = "kachāshī" ; 
+
+	public const string kansasCityBlues = "kansasCityBlues" ; 
+
+	public const string kanHaDiskan = "kanHaDiskan" ; 
+
+	public const string kalamatianó = "kalamatianó" ; 
+
+	public const string fasterFormOfProgressiveHouse = "fasterFormOfProgressiveHouse" ; 
+
+	public const string uptempoBluesMusicPlayedWithHorns = "uptempoBluesMusicPlayedWithHorns" ; 
+
+	public const string jumpBlues = "jumpBlues" ; 
+
+	public const string jùjú = "jùjú" ; 
+
+	public const string fusionOfBluesAndSoul = "fusionOfBluesAndSoul" ; 
+
+	public const string jukeJointBlues = "jukeJointBlues" ; 
+
+	public const string fusionOfGamelanAndJoged = "fusionOfGamelanAndJoged" ; 
+
+	public const string jogedBumbung = "jogedBumbung" ; 
+
+	public const string anyMusicThatAccompaniedTheDanceOfTheSameName = "anyMusicThatAccompaniedTheDanceOfTheSameName" ; 
+
+	public const string shortCatchySongUsedInAdvertising = "shortCatchySongUsedInAdvertising" ; 
+
+	public const string jingPing = "jingPing" ; 
+
+	public const string gamelanPlayedWithBambooBasedInstruments = "gamelanPlayedWithBambooBasedInstruments" ; 
+
+	public const string fusionOfJazzAndHipHop = "fusionOfJazzAndHipHop" ; 
+
+	public const string jazzRap = "jazzRap" ; 
+
+	public const string anyMusicThatFusesSomethingWithJazzParticularlyJazzRock = "anyMusicThatFusesSomethingWithJazzParticularlyJazzRock" ; 
+
+	public const string jazzFusion = "jazzFusion" ; 
+
+	public const string fusionOfJazzAndFunkMusic = "fusionOfJazzAndFunkMusic" ; 
+
+	public const string fusionOfJazzAndBluesMusic = "fusionOfJazzAndBluesMusic" ; 
+
+	public const string jazzBlues = "jazzBlues" ; 
+
+	public const string jaranaYucateca = "jaranaYucateca" ; 
+
+	public const string styleOfIndiePopKnownForItsUpliftingJanglySounds = "styleOfIndiePopKnownForItsUpliftingJanglySounds" ; 
+
+	public const string janglePop = "janglePop" ; 
+
+	public const string jamriengSamai = "jamriengSamai" ; 
+
+	public const string aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams = "aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams" ; 
+
+	public const string izvornaBosanska = "izvornaBosanska" ; 
+
+	public const string italoHouse = "italoHouse" ; 
+
+	public const string italoDisco = "italoDisco" ; 
+
+	public const string italoDance = "italoDance" ; 
+
+	public const string styleOfAmbientThatUsesRepetitionAndDissonanceToCreateASenseOfUneasiness = "styleOfAmbientThatUsesRepetitionAndDissonanceToCreateASenseOfUneasiness" ; 
+
+	public const string irishRebel = "irishRebel" ; 
+
+	public const string irishFolk = "irishFolk" ; 
+
+	public const string moreExperimentalAndIntellectualFormOfElectronicaSoCalledToDistinguishItselfFromTheCommercialistTrendsInRaveMusic = "moreExperimentalAndIntellectualFormOfElectronicaSoCalledToDistinguishItselfFromTheCommercialistTrendsInRaveMusic" ; 
+
+	public const string intelligentDance = "intelligentDance" ; 
+
+	public const string anyRockMusicThatNeglectsVocals = "anyRockMusicThatNeglectsVocals" ; 
+
+	public const string instrumentalRock = "instrumentalRock" ; 
+
+	public const string musicThatHadNoLyrics = "musicThatHadNoLyrics" ; 
+
+	public const string fusionOfIndustrialAndRockMusic = "fusionOfIndustrialAndRockMusic" ; 
+
+	public const string industrialRock = "industrialRock" ; 
+
+	public const string fusionOfIndustrialAndHeavyMetalMusic = "fusionOfIndustrialAndHeavyMetalMusic" ; 
+
+	public const string industrialMetal = "industrialMetal" ; 
+
+	public const string musicalTheaterPerformedByTheWorkersOfACompanyToPromoteTeamwork = "musicalTheaterPerformedByTheWorkersOfACompanyToPromoteTeamwork" ; 
+
+	public const string industrialMusical = "industrialMusical" ; 
+
+	public const string fusionOfIndustrialAndHipHopMusic = "fusionOfIndustrialAndHipHopMusic" ; 
+
+	public const string industrialHipHop = "industrialHipHop" ; 
+
+	public const string fusionOfIndustrialAndDeathMetal = "fusionOfIndustrialAndDeathMetal" ; 
+
+	public const string industrialDeathMetal = "industrialDeathMetal" ; 
+
+	public const string indoJazz = "indoJazz" ; 
+
+	public const string genericTermForRockMusicLinkedToTheIndieSubculture = "genericTermForRockMusicLinkedToTheIndieSubculture" ; 
+
+	public const string indieRock = "indieRock" ; 
+
+	public const string aMelodicOftenAngstFreeAndOptimisticFormOfPopRockAssociatedWithTheIndieScene = "aMelodicOftenAngstFreeAndOptimisticFormOfPopRockAssociatedWithTheIndieScene" ; 
+
+	public const string indiePop = "indiePop" ; 
+
+	public const string fusionOfIndieRockAndFolkMusic = "fusionOfIndieRockAndFolkMusic" ; 
+
+	public const string indieFolk = "indieFolk" ; 
+
+	public const string musicPlayedInTheBackgroundOfAFilmOrPlay = "musicPlayedInTheBackgroundOfAFilmOrPlay" ; 
+
+	public const string anyKindOfMusicThatIsMadeUpOnTheSpot = "anyKindOfMusicThatIsMadeUpOnTheSpot" ; 
+
+	public const string formOfAmbientInspiredByDubInItsUseOfLayeringAndHipHopInItsUseOfSampling = "formOfAmbientInspiredByDubInItsUseOfLayeringAndHipHopInItsUseOfSampling" ; 
+
+	public const string anyReligiousSong = "anyReligiousSong" ; 
+
+	public const string huayño = "huayño" ; 
+
+	public const string punkThatIsLyricallyInspiredBySHorrorBMoviesOftenInAnIronicWay = "punkThatIsLyricallyInspiredBySHorrorBMoviesOftenInAnIronicWay" ; 
+
+	public const string horrorPunk = "horrorPunk" ; 
+
+	public const string hipHopKnownForDarkHorrorInspiredLyrics = "hipHopKnownForDarkHorrorInspiredLyrics" ; 
+
+	public const string crispCleanFormOfCountry = "crispCleanFormOfCountry" ; 
+
+	public const string hindustaniClassical = "hindustaniClassical" ; 
+
+	public const string fusionOfHipHopAndHouseMusic = "fusionOfHipHopAndHouseMusic" ; 
+
+	public const string hipHouse = "hipHouse" ; 
+
+	public const string hipHop = "hipHop" ; 
+
+	public const string fusionOfHighlifeAndHipHop = "fusionOfHighlifeAndHipHop" ; 
+
+	public const string technicallyProficientFastPacedAggressiveFormOfHardRock = "technicallyProficientFastPacedAggressiveFormOfHardRock" ; 
+
+	public const string heavyMetal = "heavyMetal" ; 
+
+	public const string heartlandRock = "heartlandRock" ; 
+
+	public const string harmonicaBlues = "harmonicaBlues" ; 
+
+	public const string heavyReverberatingStyleOfTranceMusic = "heavyReverberatingStyleOfTranceMusic" ; 
+
+	public const string hardTrance = "hardTrance" ; 
+
+	public const string grittyHeavyStyleOfDrumBass = "grittyHeavyStyleOfDrumBass" ; 
+
+	public const string hardRock = "hardRock" ; 
+
+	public const string fusionOfHardstyleAndHouseMusic = "fusionOfHardstyleAndHouseMusic" ; 
+
+	public const string hardHouse = "hardHouse" ; 
+
+	public const string styleOfBebopInformedByGospelRBAndBlues = "styleOfBebopInformedByGospelRBAndBlues" ; 
+
+	public const string hardBop = "hardBop" ; 
+
+	public const string styleOfTechnoKnownForDistortedIndustrialEsqueBeats = "styleOfTechnoKnownForDistortedIndustrialEsqueBeats" ; 
+
+	public const string hardcoreTechno = "hardcoreTechno" ; 
+
+	public const string heavyMetalInformedStyleOfPunk = "heavyMetalInformedStyleOfPunk" ; 
+
+	public const string hardcorePunk = "hardcorePunk" ; 
+
+	public const string aggressiveAndConfrontationalFormOfHipHop = "aggressiveAndConfrontationalFormOfHipHop" ; 
+
+	public const string hardcoreHipHop = "hardcoreHipHop" ; 
+
+	public const string incrediblyFastUpbeatAndOptimisticStyleOfHardcoreTechno = "incrediblyFastUpbeatAndOptimisticStyleOfHardcoreTechno" ; 
+
+	public const string happyHardcore = "happyHardcore" ; 
+
+	public const string hamburgerSchule = "hamburgerSchule" ; 
+
+	public const string gypsyPunk = "gypsyPunk" ; 
+
+	public const string gypsyJazz = "gypsyJazz" ; 
+
+	public const string modernizedFormOfGwoKa = "modernizedFormOfGwoKa" ; 
+
+	public const string gwoKaModerne = "gwoKaModerne" ; 
+
+	public const string gwoKa = "gwoKa" ; 
+
+	public const string minimalistStyleOfAlternativeMetalKnownForItsHeavilyDistortedGuitarsAndAngstRiddenLyrics = "minimalistStyleOfAlternativeMetalKnownForItsHeavilyDistortedGuitarsAndAngstRiddenLyrics" ; 
+
+	public const string groupSounds = "groupSounds" ; 
+
+	public const string styleOfHeavyMetalThatTookElementsOfThrashButPlayedAtMidTempoMakingASlowerGroovierSound = "styleOfHeavyMetalThatTookElementsOfThrashButPlayedAtMidTempoMakingASlowerGroovierSound" ; 
+
+	public const string grooveMetal = "grooveMetal" ; 
+
+	public const string gregorianChant = "gregorianChant" ; 
+
+	public const string gothicRock = "gothicRock" ; 
+
+	public const string fusionOfGothicRockAndHeavyMetal = "fusionOfGothicRockAndHeavyMetal" ; 
+
+	public const string gothicMetal = "gothicMetal" ; 
+
+	public const string anAttemptToModernizeReligiousMusic = "anAttemptToModernizeReligiousMusic" ; 
+
+	public const string goshuOndo = "goshuOndo" ; 
+
+	public const string styleOfGrindcoreKnownForItsLyricalFocusOnGoreAndForensics = "styleOfGrindcoreKnownForItsLyricalFocusOnGoreAndForensics" ; 
+
+	public const string gongChime = "gongChime" ; 
+
+	public const string goaTrance = "goaTrance" ; 
+
+	public const string styleOfFunkKnownForItsSyncopatedRhythmsAndCallAndResponseVocals = "styleOfFunkKnownForItsSyncopatedRhythmsAndCallAndResponseVocals" ; 
+
+	public const string looselyDefinedPopRockWhichIncludedHeavyThemesOfGenderBendingAndAndrogyny = "looselyDefinedPopRockWhichIncludedHeavyThemesOfGenderBendingAndAndrogyny" ; 
+
+	public const string glamRock = "glamRock" ; 
+
+	public const string fusionOfGlamAndPunkRock = "fusionOfGlamAndPunkRock" ; 
+
+	public const string glamPunk = "glamPunk" ; 
+
+	public const string aSubgenreOfHeavyMetalWithElementsOfGlamRockHardRockAndPopRock = "aSubgenreOfHeavyMetalWithElementsOfGlamRockHardRockAndPopRock" ; 
+
+	public const string glamMetal = "glamMetal" ; 
+
+	public const string anyAllFemalePopOrRockGroup = "anyAllFemalePopOrRockGroup" ; 
+
+	public const string girlGroup = "girlGroup" ; 
+
+	public const string ghettoHouse = "ghettoHouse" ; 
+
+	public const string germanFolk = "germanFolk" ; 
+
+	public const string genderWayang = "genderWayang" ; 
+
+	public const string rawAndEnergeticStyleOfRockOftenPractisedByHighSchoolBandsInGarages = "rawAndEnergeticStyleOfRockOftenPractisedByHighSchoolBandsInGarages" ; 
+
+	public const string garageRock = "garageRock" ; 
+
+	public const string garageHouse = "garageHouse" ; 
+
+	public const string hipHopThatDealsWithIllegalActivity = "hipHopThatDealsWithIllegalActivity" ; 
+
+	public const string gangsterRap = "gangsterRap" ; 
+
+	public const string gamelanSemarPegulingan = "gamelanSemarPegulingan" ; 
+
+	public const string gamelanSelunding = "gamelanSelunding" ; 
+
+	public const string gamelanSalendro = "gamelanSalendro" ; 
+
+	public const string gamelanGongKebyar = "gamelanGongKebyar" ; 
+
+	public const string gamelanDegung = "gamelanDegung" ; 
+
+	public const string gamelanBebonangan = "gamelanBebonangan" ; 
+
+	public const string gaitaZuliana = "gaitaZuliana" ; 
+
+	public const string styleOfDarkMetalAndCrustPunk = "styleOfDarkMetalAndCrustPunk" ; 
+
+	public const string futureGarage = "futureGarage" ; 
+
+	public const string fusionOfJazzAndRockMusic = "fusionOfJazzAndRockMusic" ; 
+
+	public const string fusionJazz = "fusionJazz" ; 
+
+	public const string aCalmingLiveFormOfBackgroundMusic = "aCalmingLiveFormOfBackgroundMusic" ; 
+
+	public const string furnitureMusic = "furnitureMusic" ; 
+
+	public const string fusionOfFunkAndHouseMusic = "fusionOfFunkAndHouseMusic" ; 
+
+	public const string funkyHouse = "funkyHouse" ; 
+
+	public const string fusionOfFunkAndRockMusic = "fusionOfFunkAndRockMusic" ; 
+
+	public const string funkRock = "funkRock" ; 
+
+	public const string fusionOfFunkAndHeavyMetalRock = "fusionOfFunkAndHeavyMetalRock" ; 
+
+	public const string funkMetal = "funkMetal" ; 
+
+	public const string combinationOfElementsOfBluesJazzAndSoulWithTheMelodiesAndHarmoniesStrippedInOrderToEmphasizeTheBassGuitar = "combinationOfElementsOfBluesJazzAndSoulWithTheMelodiesAndHarmoniesStrippedInOrderToEmphasizeTheBassGuitar" ; 
+
+	public const string incrediblySlowStyleOfDoomMetalMadeToMimicFuneralMusic = "incrediblySlowStyleOfDoomMetalMadeToMimicFuneralMusic" ; 
+
+	public const string funeralDoom = "funeralDoom" ; 
+
+	public const string funaná = "funaná" ; 
+
+	public const string styleOfPsychedelicTranceKnownForItsRollingBaselinesAndConfrontationalThemes = "styleOfPsychedelicTranceKnownForItsRollingBaselinesAndConfrontationalThemes" ; 
+
+	public const string fullOnTrance = "fullOnTrance" ; 
+
+	public const string styleOfTechnoDevelopedByAnarchists = "styleOfTechnoDevelopedByAnarchists" ; 
+
+	public const string freeTekno = "freeTekno" ; 
+
+	public const string anyMusicReleasedWithoutAPricing = "anyMusicReleasedWithoutAPricing" ; 
+
+	public const string freeMusic = "freeMusic" ; 
+
+	public const string freelyImprovisedJazzMusic = "freelyImprovisedJazzMusic" ; 
+
+	public const string freeJazz = "freeJazz" ; 
+
+	public const string completelyUncontrolledImprovisation = "completelyUncontrolledImprovisation" ; 
+
+	public const string freeImprovisation = "freeImprovisation" ; 
+
+	public const string experimentalStyleOfFolkOftenFolkRock = "experimentalStyleOfFolkOftenFolkRock" ; 
+
+	public const string freakFolk = "freakFolk" ; 
+
+	public const string forró = "forró" ; 
+
+	public const string fusionOfFolkAndElectronicMusic = "fusionOfFolkAndElectronicMusic" ; 
+
+	public const string fusionOfFolkAndRockMusic = "fusionOfFolkAndRockMusic" ; 
+
+	public const string folkRock = "folkRock" ; 
+
+	public const string fusionOfFolkAndPunkRock = "fusionOfFolkAndPunkRock" ; 
+
+	public const string folkPunk = "folkPunk" ; 
+
+	public const string fusionOfFolkAndPopMusic = "fusionOfFolkAndPopMusic" ; 
+
+	public const string folkPop = "folkPop" ; 
+
+	public const string broadTermUsedToReferToTheTraditionalMusicOfAnEthnicGroupUsuallyThatPerformedByTheWorkingClass = "broadTermUsedToReferToTheTraditionalMusicOfAnEthnicGroupUsuallyThatPerformedByTheWorkingClass" ; 
+
+	public const string fusionOfFolkAndHeavyMetalRock = "fusionOfFolkAndHeavyMetalRock" ; 
+
+	public const string folkMetal = "folkMetal" ; 
+
+	public const string theActOfPluckingGuitarStringsWithTheFingertips = "theActOfPluckingGuitarStringsWithTheFingertips" ; 
+
+	public const string fusionOfFilmiAndGhazalPoetry = "fusionOfFilmiAndGhazalPoetry" ; 
+
+	public const string anyMusicWrittenToActAsASoundtrackToAMotionPicture = "anyMusicWrittenToActAsASoundtrackToAMotionPicture" ; 
+
+	public const string filmScore = "filmScore" ; 
+
+	public const string styleOfFolkSometimesExpandingToOtherGenresWithHeavyScienceFictionOrFantasyThemes = "styleOfFolkSometimesExpandingToOtherGenresWithHeavyScienceFictionOrFantasyThemes" ; 
+
+	public const string aLightFormOfFlamenco = "aLightFormOfFlamenco" ; 
+
+	public const string umbrellaTermForAggressiveNonCommercialFormsOfHeavyMetal = "umbrellaTermForAggressiveNonCommercialFormsOfHeavyMetal" ; 
+
+	public const string extremeMetal = "extremeMetal" ; 
+
+	public const string fusionOfExperimentalAndRockMusic = "fusionOfExperimentalAndRockMusic" ; 
+
+	public const string experimentalRock = "experimentalRock" ; 
+
+	public const string anyMusicThatBreachesContemporaryStandardsOfMusic = "anyMusicThatBreachesContemporaryStandardsOfMusic" ; 
+
+	public const string euroHouse = "euroHouse" ; 
+
+	public const string euroDisco = "euroDisco" ; 
+
+	public const string atmosphericSubgenreOfDarkWave = "atmosphericSubgenreOfDarkWave" ; 
+
+	public const string etherealWave = "etherealWave" ; 
+
+	public const string eremwuEu = "eremwuEu" ; 
+
+	public const string heavilyEmotionalAndPessimisticStyleOfPostHardcorePunk = "heavilyEmotionalAndPessimisticStyleOfPostHardcorePunk" ; 
+
+	public const string comfortableAndSoothingMusicDesignedForAndPlayedInShoppingMallsUsuallyElevatorsThereinToCreateASenseOfAmbienceAndComfort = "comfortableAndSoothingMusicDesignedForAndPlayedInShoppingMallsUsuallyElevatorsThereinToCreateASenseOfAmbienceAndComfort" ; 
+
+	public const string elevatorMusic = "elevatorMusic" ; 
+
+	public const string fusionOfElectronicAndPunk = "fusionOfElectronicAndPunk" ; 
+
+	public const string fusionOfElectronicAndPopMusic = "fusionOfElectronicAndPopMusic" ; 
+
+	public const string popularMusicThatIncludesElectronicInstruments = "popularMusicThatIncludesElectronicInstruments" ; 
+
+	public const string fusionOfElectronicAndRockMusic = "fusionOfElectronicAndRockMusic" ; 
+
+	public const string electronicRock = "electronicRock" ; 
+
+	public const string electronicMusic = "electronicMusic" ; 
+
+	public const string electronicDance = "electronicDance" ; 
+
+	public const string electronicBodyMusic = "electronicBodyMusic" ; 
+
+	public const string fusionOfSSynthpopAndSTechno = "fusionOfSSynthpopAndSTechno" ; 
+
+	public const string electroSwing = "electroSwing" ; 
+
+	public const string aStyleOfPostIndustrialWhichUsedHeavilyProducedAndLayeredSynths = "aStyleOfPostIndustrialWhichUsedHeavilyProducedAndLayeredSynths" ; 
+
+	public const string electroBackbeat = "electroBackbeat" ; 
+
+	public const string associatedWithTheFolkRevivalOfTheSElectricFolkWasAStyleOfFolkInWhichModernOftenElectricInstrumentsWereSubstitutedForClassicFolkInstruments = "associatedWithTheFolkRevivalOfTheSElectricFolkWasAStyleOfFolkInWhichModernOftenElectricInstrumentsWereSubstitutedForClassicFolkInstruments" ; 
+
+	public const string electricFolk = "electricFolk" ; 
+
+	public const string styleOfBluesPlayedWithElectricInstrumentsMostNotablyTheElectricGuitar = "styleOfBluesPlayedWithElectricInstrumentsMostNotablyTheElectricGuitar" ; 
+
+	public const string electricBlues = "electricBlues" ; 
+
+	public const string popStyleAimedAtOlderListeners = "popStyleAimedAtOlderListeners" ; 
+
+	public const string easyListening = "easyListening" ; 
+
+	public const string eastCoastHipHop = "eastCoastHipHop" ; 
+
+	public const string eastCoastBlues = "eastCoastBlues" ; 
+
+	public const string umbrellaTermForAnyMusicMadeFromThePrehistoricEraUntilTheAdventOfBaroqueMusic = "umbrellaTermForAnyMusicMadeFromThePrehistoricEraUntilTheAdventOfBaroqueMusic" ; 
+
+	public const string dutchJazz = "dutchJazz" ; 
+
+	public const string dunedinSound = "dunedinSound" ; 
+
+	public const string fusionOfDubstepAndHardstyle = "fusionOfDubstepAndHardstyle" ; 
+
+	public const string subgenreOfReggaeInWhichPreExistingTracksAreHeavilyRemixedEmphasizingTheDrumAndBassOrRiddimAndDubbingSnippetsFromOtherWorks = "subgenreOfReggaeInWhichPreExistingTracksAreHeavilyRemixedEmphasizingTheDrumAndBassOrRiddimAndDubbingSnippetsFromOtherWorks" ; 
+
+	public const string fusionOfDrumAndBassAndDubstep = "fusionOfDrumAndBassAndDubstep" ; 
+
+	public const string drumAndBass = "drumAndBass" ; 
+
+	public const string experimentalStyleOfMinimalismKnownForDrawnOutAndRepetitiveTonesGivingItADroningFeel = "experimentalStyleOfMinimalismKnownForDrawnOutAndRepetitiveTonesGivingItADroningFeel" ; 
+
+	public const string fusionOfDroneAndHeavyMetalMusic = "fusionOfDroneAndHeavyMetalMusic" ; 
+
+	public const string droneMetal = "droneMetal" ; 
+
+	public const string anAtmosphericAndMelodicStyleOfIndiePopThatMakesTheAudienceFeelDreamy = "anAtmosphericAndMelodicStyleOfIndiePopThatMakesTheAudienceFeelDreamy" ; 
+
+	public const string dreamPop = "dreamPop" ; 
+
+	public const string aSlowPacedStyleOfElectronicMusicThatDiffersFromAmbientInThatItAlsoHasABeatAndRhythm = "aSlowPacedStyleOfElectronicMusicThatDiffersFromAmbientInThatItAlsoHasABeatAndRhythm" ; 
+
+	public const string AStyleOfHeavyMetalKnownForItsLowTunedSoundSlowTemposCleanAndNonGrowledVocalsAndPessimisticLyrics = "AStyleOfHeavyMetalKnownForItsLowTunedSoundSlowTemposCleanAndNonGrowledVocalsAndPessimisticLyrics" ; 
+
+	public const string doomMetal = "doomMetal" ; 
+
+	public const string aSimplisticAndPopOrientedFormOfRBKnownForItsVocalHarmoniesAndLittleToNoInstrumentation = "aSimplisticAndPopOrientedFormOfRBKnownForItsVocalHarmoniesAndLittleToNoInstrumentation" ; 
+
+	public const string donegalFiddleTradition = "donegalFiddleTradition" ; 
+
+	public const string dondangSayang = "dondangSayang" ; 
+
+	public const string subgenreOfProgressiveMetalKnownForItsElasticPowerChords = "subgenreOfProgressiveMetalKnownForItsElasticPowerChords" ; 
+
+	public const string divaHouse = "divaHouse" ; 
+
+	public const string discoPolo = "discoPolo" ; 
+
+	public const string aFormOfMusicToDanceToWithElementsOfSoulPopAndSalsa = "aFormOfMusicToDanceToWithElementsOfSoulPopAndSalsa" ; 
+
+	public const string hipHopWithSexualAndPornographicThemes = "hipHopWithSexualAndPornographicThemes" ; 
+
+	public const string dirtyRap = "dirtyRap" ; 
+
+	public const string aSongOfMourningOftenPlayedAtAFuneral = "aSongOfMourningOftenPlayedAtAFuneral" ; 
+
+	public const string fusionOfHardcorePunkAndHardcoreTechnoKnownForItsFarLeftLyrics = "fusionOfHardcorePunkAndHardcoreTechnoKnownForItsFarLeftLyrics" ; 
+
+	public const string digitalHardcore = "digitalHardcore" ; 
+
+	public const string detroitTechno = "detroitTechno" ; 
+
+	public const string detroitBlues = "detroitBlues" ; 
+
+	public const string deepHouse = "deepHouse" ; 
+
+	public const string deltaBlues = "deltaBlues" ; 
+
+	public const string décima = "décima" ; 
+
+	public const string styleOfGothicRockKnownForItsScratchyGuitarsAndLyricsFocusingOnSupernaturalAndPessimisticThemesSometimesDelvingIntoIntentionallyCampyHorrorThemes = "styleOfGothicRockKnownForItsScratchyGuitarsAndLyricsFocusingOnSupernaturalAndPessimisticThemesSometimesDelvingIntoIntentionallyCampyHorrorThemes" ; 
+
+	public const string deathRock = "deathRock" ; 
+
+	public const string fusionOfDeathAndDoomMetal = "fusionOfDeathAndDoomMetal" ; 
+
+	public const string deathMetal = "deathMetal" ; 
+
+	public const string fusionOfDeathAndIndustrialMetalLinkedHeavilyToThePowerElectronicsScene = "fusionOfDeathAndIndustrialMetalLinkedHeavilyToThePowerElectronicsScene" ; 
+
+	public const string deathIndustrial = "deathIndustrial" ; 
+
+	public const string fusionOfDeathMetalAndGrindcore = "fusionOfDeathMetalAndGrindcore" ; 
+
+	public const string fusionOfDeathAndPunkMetal = "fusionOfDeathAndPunkMetal" ; 
+
+	public const string deDragoste = "deDragoste" ; 
+
+	public const string excessivelyPessimisticStyleOfPostPunkWhichReliedOnTalesOfRealisticSorrowRatherThanTheFantasyElementsOfTheThenPopularGothicRock = "excessivelyPessimisticStyleOfPostPunkWhichReliedOnTalesOfRealisticSorrowRatherThanTheFantasyElementsOfTheThenPopularGothicRock" ; 
+
+	public const string darkWave = "darkWave" ; 
+
+	public const string styleOfDarkcoreJungleThatTakesItsSignatureSinisterFeelAndFusesItWithUpbeatBreakbeatsAndAmbientNoisesCreatingAnExcessivelyChaoticTone = "styleOfDarkcoreJungleThatTakesItsSignatureSinisterFeelAndFusesItWithUpbeatBreakbeatsAndAmbientNoisesCreatingAnExcessivelyChaoticTone" ; 
+
+	public const string technoWithADarkAndForebodingFeelActingAsAReactionToTheOptimismOfRaveMusicInGeneral = "technoWithADarkAndForebodingFeelActingAsAReactionToTheOptimismOfRaveMusicInGeneral" ; 
+
+	public const string fusionOfCabaretAndGothicRock = "fusionOfCabaretAndGothicRock" ; 
+
+	public const string darkCabaret = "darkCabaret" ; 
+
+	public const string styleOfAmbientMusicThatCreatesAFeelingOfDreadAndForebodingRatherThanTheRelaxationGivenOffByMostAmbient = "styleOfAmbientMusicThatCreatesAFeelingOfDreadAndForebodingRatherThanTheRelaxationGivenOffByMostAmbient" ; 
+
+	public const string darkAmbient = "darkAmbient" ; 
+
+	public const string dappanKoothu = "dappanKoothu" ; 
+
+	public const string danzón = "danzón" ; 
+
+	public const string anyMusicThatWillSomehowPotentiallyHarmEitherThePerformersOrTheAudienceLinkedHeavilyToNoiseRock = "anyMusicThatWillSomehowPotentiallyHarmEitherThePerformersOrTheAudienceLinkedHeavilyToNoiseRock" ; 
+
+	public const string fusionOfPostPunkAndPostDiscoLinkedHeavilyToTheNewWave = "fusionOfPostPunkAndPostDiscoLinkedHeavilyToTheNewWave" ; 
+
+	public const string aGrittierAndRawerFormOfNewWaveMusicLinkedHeavilyToTheContemporaryIndieScene = "aGrittierAndRawerFormOfNewWaveMusicLinkedHeavilyToTheContemporaryIndieScene" ; 
+
+	public const string popMusicWithAnEmphasisOnDanceRhythmsFusionOfDanceAndPopMusicalStyles = "popMusicWithAnEmphasisOnDanceRhythmsFusionOfDanceAndPopMusicalStyles" ; 
+
+	public const string dadraTala = "dadraTala" ; 
+
+	public const string fusionOfGrindcoreAndIndustrial = "fusionOfGrindcoreAndIndustrial" ; 
+
+	public const string cumbiaVillera = "cumbiaVillera" ; 
+
+	public const string csárdás = "csárdás" ; 
+
+	public const string fusionOfAnarchoAndHardcorePunkAndExtremeMetal = "fusionOfAnarchoAndHardcorePunkAndExtremeMetal" ; 
+
+	public const string crustPunk = "crustPunk" ; 
+
+	public const string fusionOfCrunkAndScreamo = "fusionOfCrunkAndScreamo" ; 
+
+	public const string fusionOfThrashMetalAndHardcorePunk = "fusionOfThrashMetalAndHardcorePunk" ; 
+
+	public const string crossoverThrash = "crossoverThrash" ; 
+
+	public const string fusionOfCountryAndPunkRockMusic = "fusionOfCountryAndPunkRockMusic" ; 
+
+	public const string CoupéDécalé = "CoupéDécalé" ; 
+
+	public const string fusionOfCountryAndPopMusic = "fusionOfCountryAndPopMusic" ; 
+
+	public const string countryPop = "countryPop" ; 
+
+	public const string fusionOfCountryAndRockMusic = "fusionOfCountryAndRockMusic" ; 
+
+	public const string countryRock = "countryRock" ; 
+
+	public const string fusionOfCountryAndHipHopMusic = "fusionOfCountryAndHipHopMusic" ; 
+
+	public const string countryRap = "countryRap" ; 
+
+	public const string fusionOfCountryAndBluesMusic = "fusionOfCountryAndBluesMusic" ; 
+
+	public const string countryBlues = "countryBlues" ; 
+
+	public const string musicAboutBlackStereotypes = "musicAboutBlackStereotypes" ; 
+
+	public const string coonSong = "coonSong" ; 
+
+	public const string aRelaxedDowntempoFormOfJazzHeavilyInspiredByClassicalMusicThatExistedAsAReactionToTheFastPacedBebop = "aRelaxedDowntempoFormOfJazzHeavilyInspiredByClassicalMusicThatExistedAsAReactionToTheFastPacedBebop" ; 
+
+	public const string coolJazz = "coolJazz" ; 
+
+	public const string contemporaryRB = "contemporaryRB" ; 
+
+	public const string contemporaryChristianMusic = "contemporaryChristianMusic" ; 
+
+	public const string aFormOfBaroqueConcertoInWhichTheSoloistsAndOrchestraAlternatePlaying = "aFormOfBaroqueConcertoInWhichTheSoloistsAndOrchestraAlternatePlaying" ; 
+
+	public const string concertoGrosso = "concertoGrosso" ; 
+
+	public const string aThreePartClassicalPieceInWhichOneInstrumentTakesLeadAndIsBackedByAnOrchestra = "aThreePartClassicalPieceInWhichOneInstrumentTakesLeadAndIsBackedByAnOrchestra" ; 
+
+	public const string fusionOfComedyAndOperaMusic = "fusionOfComedyAndOperaMusic" ; 
+
+	public const string comicOpera = "comicOpera" ; 
+
+	public const string fusionOfComedyAndRockMusic = "fusionOfComedyAndRockMusic" ; 
+
+	public const string comedyRock = "comedyRock" ; 
+
+	public const string fusionOfComedyAndHipHopMusic = "fusionOfComedyAndHipHopMusic" ; 
+
+	public const string comedyRap = "comedyRap" ; 
+
+	public const string anyMusicThatIncorporatesHeavyThemesOfHumorAndComedy = "anyMusicThatIncorporatesHeavyThemesOfHumorAndComedy" ; 
+
+	public const string comedyMusic = "comedyMusic" ; 
+
+	public const string combinedRhythm = "combinedRhythm" ; 
+
+	public const string anyMusicWithNotesPerformedInACloseRange = "anyMusicWithNotesPerformedInACloseRange" ; 
+
+	public const string closeHarmony = "closeHarmony" ; 
+
+	public const string classicalPeriod = "classicalPeriod" ; 
+
+	public const string umbrellaTermForRockMusicReleasedBeforeTheUseOfTheTermToDescribeItButOftenReferringToHardAndBluesRockOfTheSAndS = "umbrellaTermForRockMusicReleasedBeforeTheUseOfTheTermToDescribeItButOftenReferringToHardAndBluesRockOfTheSAndS" ; 
+
+	public const string classicRock = "classicRock" ; 
+
+	public const string anEarlyFormOfBluesMusicKnownForItsFemaleVocalists = "anEarlyFormOfBluesMusicKnownForItsFemaleVocalists" ; 
+
+	public const string classicFemaleBlues = "classicFemaleBlues" ; 
+
+	public const string umbrellaTermForCountryMusicReleasedBeforeTheUseOfTheTermToDescribeIt = "umbrellaTermForCountryMusicReleasedBeforeTheUseOfTheTermToDescribeIt" ; 
+
+	public const string classicCountry = "classicCountry" ; 
+
+	public const string fusionOfChutneyAndSocaMusic = "fusionOfChutneyAndSocaMusic" ; 
+
+	public const string chutneySoca = "chutneySoca" ; 
+
+	public const string fusionOfChutneyCalypsoAndParang = "fusionOfChutneyCalypsoAndParang" ; 
+
+	public const string christianSka = "christianSka" ; 
+
+	public const string christianRock = "christianRock" ; 
+
+	public const string christianPunk = "christianPunk" ; 
+
+	public const string christianMusic = "christianMusic" ; 
+
+	public const string christianMetal = "christianMetal" ; 
+
+	public const string christianHipHop = "christianHipHop" ; 
+
+	public const string christianHardcore = "christianHardcore" ; 
+
+	public const string christianElectronic = "christianElectronic" ; 
+
+	public const string christmasMusic = "christmasMusic" ; 
+
+	public const string christmasCarol = "christmasCarol" ; 
+
+	public const string christianCountry = "christianCountry" ; 
+
+	public const string christianAlternativeRock = "christianAlternativeRock" ; 
+
+	public const string chouvalBwa = "chouvalBwa" ; 
+
+	public const string chineseRock = "chineseRock" ; 
+
+	public const string chineseMusic = "chineseMusic" ; 
+
+	public const string indiePopStyleKnownForItsLoopedSynthsAndCalmingEffects = "indiePopStyleKnownForItsLoopedSynthsAndCalmingEffects" ; 
+
+	public const string umbrellaTermForElectronicMusicWithASlowTempoDesignedToCalmPeopleAfterRaves = "umbrellaTermForElectronicMusicWithASlowTempoDesignedToCalmPeopleAfterRaves" ; 
+
+	public const string chickenScratch = "chickenScratch" ; 
+
+	public const string chicagoSoul = "chicagoSoul" ; 
+
+	public const string chicagoHouse = "chicagoHouse" ; 
+
+	public const string chicagoBlues = "chicagoBlues" ; 
+
+	public const string anyMusicMarketedTowardsChildren = "anyMusicMarketedTowardsChildren" ; 
+
+	public const string childrenSMusic = "childrenSMusic" ; 
+
+	public const string chèo = "chèo" ; 
+
+	public const string fusionOfCharangaVallenataAndSalsa = "fusionOfCharangaVallenataAndSalsa" ; 
+
+	public const string chapHop = "chapHop" ; 
+
+	public const string singingOrSpeakingRhythmicallyToAVerySmallNumberOfPitches = "singingOrSpeakingRhythmicallyToAVerySmallNumberOfPitches" ; 
+
+	public const string changüí = "changüí" ; 
+
+	public const string chamberPop = "chamberPop" ; 
+
+	public const string fusionOfChamberAndJazzMusic = "fusionOfChamberAndJazzMusic" ; 
+
+	public const string chamberJazz = "chamberJazz" ; 
+
+	public const string classicalMusicPerformedForASmallAudienceByASmallOrchestra = "classicalMusicPerformedForASmallAudienceByASmallOrchestra" ; 
+
+	public const string chamamé = "chamamé" ; 
+
+	public const string celticRock = "celticRock" ; 
+
+	public const string celticReggae = "celticReggae" ; 
+
+	public const string celticPunk = "celticPunk" ; 
+
+	public const string celticMetal = "celticMetal" ; 
+
+	public const string celticHipHop = "celticHipHop" ; 
+
+	public const string celticFusion = "celticFusion" ; 
+
+	public const string rockMusicThatIncorporatesCellos = "rockMusicThatIncorporatesCellos" ; 
+
+	public const string celloRock = "celloRock" ; 
+
+	public const string aStyleOfFlamencoKnownForItsFocusOnFolklore = "aStyleOfFlamencoKnownForItsFocusOnFolklore" ; 
+
+	public const string canzoneNapoletana = "canzoneNapoletana" ; 
+
+	public const string cantoLivre = "cantoLivre" ; 
+
+	public const string cantiñas = "cantiñas" ; 
+
+	public const string canterburyScene = "canterburyScene" ; 
+
+	public const string flamencoMusicThatIncorporatesDeepVocals = "flamencoMusicThatIncorporatesDeepVocals" ; 
+
+	public const string canteJondo = "canteJondo" ; 
+
+	public const string theVocalComponentToFlamencoMusic = "theVocalComponentToFlamencoMusic" ; 
+
+	public const string canteChico = "canteChico" ; 
+
+	public const string anyMusicSungByAChoirWithInstrumentalBacking = "anyMusicSungByAChoirWithInstrumentalBacking" ; 
+
+	public const string anyMusicThatCombinesAMelodyWithCopiesOfItself = "anyMusicThatCombinesAMelodyWithCopiesOfItself" ; 
+
+	public const string fusionOfBailaAndCalypso = "fusionOfBailaAndCalypso" ; 
+
+	public const string calypsoStyleBaila = "calypsoStyleBaila" ; 
+
+	public const string čalgija = "čalgija" ; 
+
+	public const string cảiLương = "cảiLương" ; 
+
+	public const string upbeatStyleOfKadans = "upbeatStyleOfKadans" ; 
+
+	public const string cadenceRampa = "cadenceRampa" ; 
+
+	public const string fusionOfKadansAndCalypso = "fusionOfKadansAndCalypso" ; 
+
+	public const string anOftenJazzInformedStyleOfMusicPlayedAtUpbeatStageplaysOrBurlesqueShows = "anOftenJazzInformedStyleOfMusicPlayedAtUpbeatStageplaysOrBurlesqueShows" ; 
+
+	public const string caDinTulnic = "caDinTulnic" ; 
+
+	public const string bushBallad = "bushBallad" ; 
+
+	public const string burgundianSchool = "burgundianSchool" ; 
+
+	public const string fastPacedFlamencoMusic = "fastPacedFlamencoMusic" ; 
+
+	public const string bulerías = "bulerías" ; 
+
+	public const string popMusicKnownForItsSimplicityHappyAndCuteLyricsAndEmphasisOnImageRatherThanSubstance = "popMusicKnownForItsSimplicityHappyAndCuteLyricsAndEmphasisOnImageRatherThanSubstance" ; 
+
+	public const string bubblegumPop = "bubblegumPop" ; 
+
+	public const string bubblegumDance = "bubblegumDance" ; 
+
+	public const string brownEyedSoul = "brownEyedSoul" ; 
+
+	public const string brokenBeat = "brokenBeat" ; 
+
+	public const string britishInvasion = "britishInvasion" ; 
+
+	public const string britishBlues = "britishBlues" ; 
+
+	public const string britFunk = "britFunk" ; 
+
+	public const string brillBuildingSound = "brillBuildingSound" ; 
+
+	public const string fastAndFranticStyleOfBreakbeatKnownForItsIntentionallyDiverseRangeOfSamplesWhichMakeItAHardToDefineGenre = "fastAndFranticStyleOfBreakbeatKnownForItsIntentionallyDiverseRangeOfSamplesWhichMakeItAHardToDefineGenre" ; 
+
+	public const string aFusionOfBreakbeatAndAcidHouse = "aFusionOfBreakbeatAndAcidHouse" ; 
+
+	public const string breakbeatHardcore = "breakbeatHardcore" ; 
+
+	public const string musicPerformedWithBrassInstrumentsPriorToTheAdventOfJazz = "musicPerformedWithBrassInstrumentsPriorToTheAdventOfJazz" ; 
+
+	public const string anUpbeatFormOfElectronicDanceMusic = "anUpbeatFormOfElectronicDanceMusic" ; 
+
+	public const string bouncyTechno = "bouncyTechno" ; 
+
+	public const string bossaNova = "bossaNova" ; 
+
+	public const string aFormOfExperimentalMusicWhichDealsWithSoundsCreatedOrPerformedByLivingThings = "aFormOfExperimentalMusicWhichDealsWithSoundsCreatedOrPerformedByLivingThings" ; 
+
+	public const string aHybridMusicalGenreCombiningBluesyImprovisationsOverTheBarBluesAndExtendedBoogieJamsWithRockAndRollStyles = "aHybridMusicalGenreCombiningBluesyImprovisationsOverTheBarBluesAndExtendedBoogieJamsWithRockAndRollStyles" ; 
+
+	public const string fusionOfBluesAndFolk = "fusionOfBluesAndFolk" ; 
+
+	public const string bluesBallad = "bluesBallad" ; 
+
+	public const string rhythmAndBluesOrSoulMusicPerformedByWhiteArtists = "rhythmAndBluesOrSoulMusicPerformedByWhiteArtists" ; 
+
+	public const string blueEyedSoul = "blueEyedSoul" ; 
+
+	public const string blackMetal = "blackMetal" ; 
+
+	public const string aFusionBetweenDeathAndBlackMetal = "aFusionBetweenDeathAndBlackMetal" ; 
+
+	public const string blackenedDeathMetal = "blackenedDeathMetal" ; 
+
+	public const string SElectronicMusicBasedOnBreakbeatWithOtherInfluences = "SElectronicMusicBasedOnBreakbeatWithOtherInfluences" ; 
+
+	public const string bigBeat = "bigBeat" ; 
+
+	public const string largeOrchestrasWhichPlayAFormOfSwingMusic = "largeOrchestrasWhichPlayAFormOfSwingMusic" ; 
+
+	public const string bigBand = "bigBand" ; 
+
+	public const string aFusionOfBhangraAndReggaeAndDancehall = "aFusionOfBhangraAndReggaeAndDancehall" ; 
+
+	public const string berlinSchool = "berlinSchool" ; 
+
+	public const string belCanto = "belCanto" ; 
+
+	public const string fastPacedStyleOfJazzPopularInTheSAndS = "fastPacedStyleOfJazzPopularInTheSAndS" ; 
+
+	public const string termOfEndearmentForVariousEasyListeningGenres = "termOfEndearmentForVariousEasyListeningGenres" ; 
+
+	public const string aCapellaMusicCreatedToEmulateHipHopBeats = "aCapellaMusicCreatedToEmulateHipHopBeats" ; 
+
+	public const string RBPopJazzRock = "RBPopJazzRock" ; 
+
+	public const string beatBritishFusionOfAllPopularSAmericanStyles = "beatBritishFusionOfAllPopularSAmericanStyles" ; 
+
+	public const string batáRumba = "batáRumba" ; 
+
+	public const string styleOfSpeedGarageThatCombinesElementsOfDubstepParticularlyItsEmphasisOnBass = "styleOfSpeedGarageThatCombinesElementsOfDubstepParticularlyItsEmphasisOnBass" ; 
+
+	public const string folkMusicPlayedInABarnhouse = "folkMusicPlayedInABarnhouse" ; 
+
+	public const string barnDance = "barnDance" ; 
+
+	public const string anArtSongInFourPartHarmonyInACapellaStyling = "anArtSongInFourPartHarmonyInACapellaStyling" ; 
+
+	public const string combinationOfHipHopAndHouseMusic = "combinationOfHipHopAndHouseMusic" ; 
+
+	public const string baltimoreClub = "baltimoreClub" ; 
+
+	public const string genericTermForUsuallySlowRomanticDespairingAndCatastrophicSongs = "genericTermForUsuallySlowRomanticDespairingAndCatastrophicSongs" ; 
+
+	public const string balkanBrassBand = "balkanBrassBand" ; 
+
+	public const string balineseGamelan = "balineseGamelan" ; 
+
+	public const string baishaXiyue = "baishaXiyue" ; 
+
+	public const string bakersfieldSound = "bakersfieldSound" ; 
+
+	public const string baião = "baião" ; 
+
+	public const string musicConsideredToBeAheadOfItsTimeOftenUsingNewUnusualOrExperimentalElementsOrFusingPreExistingGenres = "musicConsideredToBeAheadOfItsTimeOftenUsingNewUnusualOrExperimentalElementsOrFusingPreExistingGenres" ; 
+
+	public const string experimentalOrAvantGardeHeavyMetalOrHardRock = "experimentalOrAvantGardeHeavyMetalOrHardRock" ; 
+
+	public const string avantGardeMetal = "avantGardeMetal" ; 
+
+	public const string experimentalOrAvantGardeJazzMusic = "experimentalOrAvantGardeJazzMusic" ; 
+
+	public const string avantGardeJazz = "avantGardeJazz" ; 
+
+	public const string australianHipHop = "australianHipHop" ; 
+
+	public const string australianPubRock = "australianPubRock" ; 
+
+	public const string australianCountry = "australianCountry" ; 
+
+	public const string experimentalOrAvantGardePopMusic = "experimentalOrAvantGardePopMusic" ; 
+
+	public const string artPop = "artPop" ; 
+
+	public const string experimentalOrAvantGardeRockMusic = "experimentalOrAvantGardeRockMusic" ; 
+
+	public const string artRock = "artRock" ; 
+
+	public const string experimentalOrAvantGardePunkMusic = "experimentalOrAvantGardePunkMusic" ; 
+
+	public const string artPunk = "artPunk" ; 
+
+	public const string arsSubtilior = "arsSubtilior" ; 
+
+	public const string arsNova = "arsNova" ; 
+
+	public const string arsAntiqua = "arsAntiqua" ; 
+
+	public const string argentineRock = "argentineRock" ; 
+
+	public const string arabicPop = "arabicPop" ; 
+
+	public const string aMockingSubgenreOfFolkThatSubvertsTheEarnestPoliticallyInformedLyricsOfFolkRevivalists = "aMockingSubgenreOfFolkThatSubvertsTheEarnestPoliticallyInformedLyricsOfFolkRevivalists" ; 
+
+	public const string musicUsuallyJPopUsedInAnimeSoundtracks = "musicUsuallyJPopUsedInAnimeSoundtracks" ; 
+
+	public const string musicCreatedInTheEarlyStagesOfLiterateCultures = "musicCreatedInTheEarlyStagesOfLiterateCultures" ; 
+
+	public const string aCombinationOfAllFormsOfRootsMusicFolkCountryAndBlues = "aCombinationOfAllFormsOfRootsMusicFolkCountryAndBlues" ; 
+
+	public const string aFormOfIncrediblySlowElectronicMusicThatUsesLongRepetitiveSoundsToGenerateASenseOfCalmAndAtmosphere = "aFormOfIncrediblySlowElectronicMusicThatUsesLongRepetitiveSoundsToGenerateASenseOfCalmAndAtmosphere" ; 
+
+	public const string anyStyleOfRockThatDeviatesFromTheNorm = "anyStyleOfRockThatDeviatesFromTheNorm" ; 
+
+	public const string alternativeRock = "alternativeRock" ; 
+
+	public const string anyStyleOfHeavyMetalThatDeviatesFromTheNorm = "anyStyleOfHeavyMetalThatDeviatesFromTheNorm" ; 
+
+	public const string alternativeMetal = "alternativeMetal" ; 
+
+	public const string anyStyleOfHipHopThatDeviatesFromTheNorm = "anyStyleOfHipHopThatDeviatesFromTheNorm" ; 
+
+	public const string alternativeHipHop = "alternativeHipHop" ; 
+
+	public const string anyCombinationOfRockAndElectronicDanceMusic = "anyCombinationOfRockAndElectronicDanceMusic" ; 
+
+	public const string alternativeDance = "alternativeDance" ; 
+
+	public const string anyStyleOfCountryThatDeviatesFromTheNorm = "anyStyleOfCountryThatDeviatesFromTheNorm" ; 
+
+	public const string alternativeCountry = "alternativeCountry" ; 
+
+	public const string musicTheCompositionOfWhichIsPartiallyLeftToChance = "musicTheCompositionOfWhichIsPartiallyLeftToChance" ; 
+
+	public const string AfroCubanJazz = "AfroCubanJazz" ; 
+
+	public const string aBroadTermForAnyMusicWithLushAndSoothingQualitiesAndAFocusOnMelodyAndHarmony = "aBroadTermForAnyMusicWithLushAndSoothingQualitiesAndAFocusOnMelodyAndHarmony" ; 
+
+	public const string adultContemporary = "adultContemporary" ; 
+
+	public const string aMusicThatSolelyOrPrimarilyUsesInstrumentsWhichProduceSoundThroughEntirelyAcousticMeansAsOpposedToElectricOrElectronicMeans = "aMusicThatSolelyOrPrimarilyUsesInstrumentsWhichProduceSoundThroughEntirelyAcousticMeansAsOpposedToElectricOrElectronicMeans" ; 
+
+	public const string aFormOfPsychedelicRockCharacterizedWithLongInstrumentalSolosFewIfAnyLyricsAndMusicalImprovisation = "aFormOfPsychedelicRockCharacterizedWithLongInstrumentalSolosFewIfAnyLyricsAndMusicalImprovisation" ; 
+
+	public const string acidRock = "acidRock" ; 
+
+	public const string psychedelicStyleOfJazzInfluencedHeavilyByFunkAndHipHopProduction = "psychedelicStyleOfJazzInfluencedHeavilyByFunkAndHipHopProduction" ; 
+
+	public const string acidJazz = "acidJazz" ; 
+
+	public const string psychedelicStyleOfHouse = "psychedelicStyleOfHouse" ; 
+
+	public const string acidHouse = "acidHouse" ; 
+
+	public const string anySingingPerformedWithoutInstrumentalBacking = "anySingingPerformedWithoutInstrumentalBacking" ; 
+
+	public const string aCappella = "aCappella" ; 
+
+	public const string Style = "Style" ; 
+
+	public const string caches = "caches" ; 
+
+	public const string varBermudaTriangle = "varBermudaTriangle" ; 
+
+	public const string varLl = "varLl" ; 
+
+	public const string Zoom = "Zoom" ; 
+
+	public const string windowOnloadFunction = "windowOnloadFunction" ; 
+
+	public const string selectFrom = "selectFrom" ; 
+
+	public const string InTable = "InTable" ; 
+
+	public const string DoesNotExistOnTheServer = "DoesNotExistOnTheServer" ; 
+
+	public const string English = "English" ; 
+
+	public const string still = "still" ; 
+
+	public const string TextSmallPaddingSlideOver = "TextSmallPaddingSlideOver" ; 
+
+	public const string imageContainerImageFormatWide = "imageContainerImageFormatWide" ; 
+
+	public const string WasNotFound = "WasNotFound" ; 
+
+	public const string imageContainerShadow = "imageContainerShadow" ; 
+
+	public const string windowpane = "windowpane" ; 
+
+	public const string console = "console" ; 
+
+	public const string all = "all" ; 
+
+	public const string Applications = "Applications" ; 
+
 	public const string OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod = "OnlyOneLetterCanBeEnteredInTheNdParameterOfTheSunamoSearchEngineTIntGetFoundedEntitiesMethod" ; 
 
 	public const string FoundTheseWords = "FoundTheseWords" ; 

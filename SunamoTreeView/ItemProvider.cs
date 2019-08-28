@@ -31,7 +31,7 @@ namespace SunamoTreeView
             {
                 dirs = dirInfo.GetDirectories();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -62,7 +62,7 @@ namespace SunamoTreeView
             {
                 fils = dirInfo.GetFiles();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 

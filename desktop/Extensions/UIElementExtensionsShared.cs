@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 using desktop;
 using desktop.Controls;
+using desktop.Controls.Controls;
 using desktop.Controls.Input;
 
 public static partial class UIElementExtensions{
@@ -68,6 +69,12 @@ public static partial class UIElementExtensions{
         else if (t == SelectMoreFolders.type)
         {
             var c = ui as SelectMoreFolders;
+            c.Validate(name);
+            return SelectMoreFolders.validated;
+        }
+        else if (t == TwoRadiosUC.type)
+        {
+            var c = ui as TwoRadiosUC;
             c.Validate(name);
             return SelectMoreFolders.validated;
         }

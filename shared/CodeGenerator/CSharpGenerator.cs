@@ -57,7 +57,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else if (_public == AccessModifiers.Internal)
         {
-            sb.AddItem((object)"internal");
+            sb.AddItem((object)"public");
         }
         else
         {

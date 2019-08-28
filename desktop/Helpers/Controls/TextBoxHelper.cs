@@ -96,7 +96,7 @@ namespace desktop
                  */ 
                 txt.SelectionStart = txt.GetCharacterIndexFromLineIndex(line);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return;
             }

@@ -30,7 +30,8 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -140,7 +141,9 @@
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Extensions\SizeExtensions.cs" />
+    <Compile Include="Extensions\SystemDrawingSizeExtension.cs" />
+    <Compile Include="Extensions\SystemDrawingSizeFExtension.cs" />
+    <Compile Include="Extensions\SystemWindowsSizeExtensions.cs" />
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />

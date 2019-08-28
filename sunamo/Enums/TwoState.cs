@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sunamo.Html
+
+public enum TwoState
 {
-    public class _ns
-    {
-    }
+    TrueFalse,
+    AddRemove,
+    AcceptDecline
 }
+

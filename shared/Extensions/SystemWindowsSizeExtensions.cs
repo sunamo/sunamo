@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace sunamo.Extensions
-{
-    public static class SizeExtensions
+
+    /// <summary>
+    /// Use only SunamoSize/DesktopSize (compatible) and put not extensions here
+    /// </summary>
+    public static class SystemWindowsSizeExtensions
     {
         /// <summary>
         /// Může se použít jen pokud není velikost nekonečná
@@ -18,5 +20,10 @@ namespace sunamo.Extensions
         {
             return new System.Drawing.Size((int)s.Width, (int)s.Height);
         }
+
+        public static SunamoSize ToSunamo(this Size s)
+        {
+            return new SunamoSize(s.Width, s.Height);
+        }
     }
-}
+

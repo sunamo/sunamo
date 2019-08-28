@@ -1,8 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 public partial class ControlHelper{ 
-internal static Size ActualInnerSize(WindowWithUserControl w)
+public static Size ActualInnerSize(ContentControl w)
     {
+        
+
         var fw = w.Content as FrameworkElement;
         return new Size(fw.ActualWidth, fw.ActualHeight);
     }

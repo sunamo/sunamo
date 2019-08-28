@@ -22,7 +22,7 @@ namespace desktop
     /// </summary>
     public partial class LoginUc : UserControl, IUserControlInWindow
     {
-        bool internalSaveLogic = false;
+        bool publicSaveLogic = false;
         const string h = "h";
         const string l = "l";
 
@@ -36,12 +36,12 @@ namespace desktop
         /// <summary>
         /// A1 je vhodné tehdy když například pouštím python skripty, ve kterých nemůžu ověřit zda se mi podařilo nalogovat
         /// </summary>
-        /// <param name="internalSaveLogic"></param>
-        public LoginUc(bool internalSaveLogic)
+        /// <param name="publicSaveLogic"></param>
+        public LoginUc(bool publicSaveLogic)
             : this()
         {
-            this.internalSaveLogic = internalSaveLogic;
-            if (internalSaveLogic)
+            this.publicSaveLogic = publicSaveLogic;
+            if (publicSaveLogic)
             {
                 this.txtHeslo.Text = RA.ReturnValueString(h);
                 this.txtLogin.Text = RA.ReturnValueString(l);
@@ -51,7 +51,7 @@ namespace desktop
 
         private void btnLetsLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (internalSaveLogic)
+            if (publicSaveLogic)
             {
                 RA.WriteToKeyString(h, "");
                 RA.WriteToKeyString(l, this.txtLogin.Text);

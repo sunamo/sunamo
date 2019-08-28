@@ -9,7 +9,7 @@ using System.Text;
 /// TS dava akt. stav iretace - lze nast. i prid. mezer
 /// Lze pridat jeden prvek/vice, ma M pro vraceni aktualni, prechod na D/P. Posouvat se lze i po nekolika prvcich.
 /// </summary>
-public class CyclingCollection<T> : IStatusBroadcaster
+public class CyclingCollection<T> //: IStatusBroadcaster
 {
     public bool back = false;
 
@@ -50,8 +50,9 @@ public class CyclingCollection<T> : IStatusBroadcaster
     /// <summary>
     /// Pro jak. operaci, ktera se tu stane
     /// Zde se vyvolava pri pridani, posunuti o jedno nebo vice, skok na jiny soubor a zmena formatovani. 
+    /// Must be Action to easy import without sunamo assembly
     /// </summary>
-    public event VoidVoid Change;
+    public event Action Change;
     /// <summary>
     /// Pr EA
     /// </summary>
@@ -396,13 +397,13 @@ public class CyclingCollection<T> : IStatusBroadcaster
         }
     }
 
-    public event VoidObjectParamsObjects NewStatus;
+    public event Action<string> NewStatus;
 
     public void OnNewStatus(string s, params object[] p)
     {
         if (NewStatus != null)
         {
-            NewStatus(SH.Format2(s, p));
+            NewStatus(string.Format(s, p));
         }
     }
 

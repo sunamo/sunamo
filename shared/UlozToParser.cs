@@ -42,7 +42,7 @@ public class UlozTo
             {
                 quality.Add(nt, new Uri(qUri));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

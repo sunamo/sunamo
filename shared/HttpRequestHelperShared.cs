@@ -51,7 +51,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     {
         response = (HttpWebResponse)request.GetResponse();
     }
-    catch (System.Exception)
+    catch (System.Exception ex)
     {
         return null;
     }

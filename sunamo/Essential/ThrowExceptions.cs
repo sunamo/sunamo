@@ -37,7 +37,7 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
-    internal static void IsOdd(Type s_type, string methodName, string colName, IEnumerable col)
+    public static void IsOdd(Type s_type, string methodName, string colName, IEnumerable col)
     {
         ThrowIsNotNull(Exceptions.IsOdd(FullNameOfExecutedCode(s_type, methodName), colName, col));
     }
@@ -95,6 +95,12 @@ public class ThrowExceptions
     public static void ElementCantBeFound(object type, string methodName, string nameCollection, string element)
     {
         ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName, true), nameCollection, element));
+    }
+
+    //IsNotWindowsPathFormat
+    public static void IsNotWindowsPathFormat(object type, string methodName, string argName, string argValue)
+    {
+        ThrowIsNotNull(Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
 
     public static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)

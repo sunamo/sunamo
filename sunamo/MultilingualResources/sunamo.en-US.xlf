@@ -9875,6 +9875,3074 @@
           <source></source>
           <target state="translated">Only one letter can be entered in the 2nd parameter of the SunamoSearchEngineTInt.GetFoundedEntities method</target>
         </trans-unit>
+        <trans-unit id="Applications" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> applications</target>
+        </trans-unit>
+        <trans-unit id="all" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">all</target>
+        </trans-unit>
+        <trans-unit id="console" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">console</target>
+        </trans-unit>
+        <trans-unit id="windowpane" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">windowpane</target>
+        </trans-unit>
+        <trans-unit id="imageContainerShadow" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">image-container shadow</target>
+        </trans-unit>
+        <trans-unit id="WasNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> was not found</target>
+        </trans-unit>
+        <trans-unit id="imageContainerImageFormatWide" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">image-container image-format-wide</target>
+        </trans-unit>
+        <trans-unit id="TextSmallPaddingSlideOver" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> text-small padding10 slide-over</target>
+        </trans-unit>
+        <trans-unit id="still" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">still</target>
+        </trans-unit>
+        <trans-unit id="English" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">English</target>
+        </trans-unit>
+        <trans-unit id="DoesNotExistOnTheServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> does not exist on the server.</target>
+        </trans-unit>
+        <trans-unit id="InTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In Table</target>
+        </trans-unit>
+        <trans-unit id="selectFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">select * from </target>
+        </trans-unit>
+        <trans-unit id="windowOnloadFunction" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">window.onload = function () {</target>
+        </trans-unit>
+        <trans-unit id="Zoom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zoom: 13,</target>
+        </trans-unit>
+        <trans-unit id="varLl" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">var ll</target>
+        </trans-unit>
+        <trans-unit id="varBermudaTriangle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">var bermudaTriangle</target>
+        </trans-unit>
+        <trans-unit id="caches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">caches</target>
+        </trans-unit>
+        <trans-unit id="Style" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">'style ='</target>
+        </trans-unit>
+        <trans-unit id="aCappella" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a cappella</target>
+        </trans-unit>
+        <trans-unit id="anySingingPerformedWithoutInstrumentalBacking" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any singing performed without instrumental backing.</target>
+        </trans-unit>
+        <trans-unit id="acidHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">acid house</target>
+        </trans-unit>
+        <trans-unit id="psychedelicStyleOfHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">psychedelic style of house</target>
+        </trans-unit>
+        <trans-unit id="acidJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">acid jazz</target>
+        </trans-unit>
+        <trans-unit id="psychedelicStyleOfJazzInfluencedHeavilyByFunkAndHipHopProduction" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">psychedelic style of jazz influenced heavily by funk and hip-hop production</target>
+        </trans-unit>
+        <trans-unit id="acidRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">acid rock</target>
+        </trans-unit>
+        <trans-unit id="aFormOfPsychedelicRockCharacterizedWithLongInstrumentalSolosFewIfAnyLyricsAndMusicalImprovisation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a form of psychedelic rock, characterized with long instrumental solos, few (if any) lyrics and musical improvisation</target>
+        </trans-unit>
+        <trans-unit id="aMusicThatSolelyOrPrimarilyUsesInstrumentsWhichProduceSoundThroughEntirelyAcousticMeansAsOpposedToElectricOrElectronicMeans" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a music that solely or primarily uses instruments which produce sound through entirely acoustic means, as opposed to electric or electronic means.</target>
+        </trans-unit>
+        <trans-unit id="adultContemporary" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">adult contemporary</target>
+        </trans-unit>
+        <trans-unit id="aBroadTermForAnyMusicWithLushAndSoothingQualitiesAndAFocusOnMelodyAndHarmony" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a broad term for any music with lush and soothing qualities, and a focus on melody and harmony.</target>
+        </trans-unit>
+        <trans-unit id="AfroCubanJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Afro-Cuban Jazz</target>
+        </trans-unit>
+        <trans-unit id="musicTheCompositionOfWhichIsPartiallyLeftToChance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music the composition of which is partially left to chance</target>
+        </trans-unit>
+        <trans-unit id="alternativeCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative country</target>
+        </trans-unit>
+        <trans-unit id="anyStyleOfCountryThatDeviatesFromTheNorm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any style of country that deviates from the norm</target>
+        </trans-unit>
+        <trans-unit id="alternativeDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative dance</target>
+        </trans-unit>
+        <trans-unit id="anyCombinationOfRockAndElectronicDanceMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any combination of rock and electronic dance music</target>
+        </trans-unit>
+        <trans-unit id="alternativeHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative hip hop</target>
+        </trans-unit>
+        <trans-unit id="anyStyleOfHipHopThatDeviatesFromTheNorm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any style of hip hop that deviates from the norm</target>
+        </trans-unit>
+        <trans-unit id="alternativeMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative metal</target>
+        </trans-unit>
+        <trans-unit id="anyStyleOfHeavyMetalThatDeviatesFromTheNorm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any style of heavy metal that deviates from the norm</target>
+        </trans-unit>
+        <trans-unit id="alternativeRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative rock</target>
+        </trans-unit>
+        <trans-unit id="anyStyleOfRockThatDeviatesFromTheNorm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any style of rock that deviates from the norm</target>
+        </trans-unit>
+        <trans-unit id="aFormOfIncrediblySlowElectronicMusicThatUsesLongRepetitiveSoundsToGenerateASenseOfCalmAndAtmosphere" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a form of incredibly slow electronic music that uses long repetitive sounds to generate a sense of calm and atmosphere.</target>
+        </trans-unit>
+        <trans-unit id="aCombinationOfAllFormsOfRootsMusicFolkCountryAndBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a combination of all forms of roots music - folk, country, and blues</target>
+        </trans-unit>
+        <trans-unit id="musicCreatedInTheEarlyStagesOfLiterateCultures" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music created in the early stages of literate cultures.</target>
+        </trans-unit>
+        <trans-unit id="musicUsuallyJPopUsedInAnimeSoundtracks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music, usually J-pop, used in anime soundtracks</target>
+        </trans-unit>
+        <trans-unit id="aMockingSubgenreOfFolkThatSubvertsTheEarnestPoliticallyInformedLyricsOfFolkRevivalists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a mocking subgenre of folk that subverts the earnest, politically-informed lyrics of folk-revivalists.</target>
+        </trans-unit>
+        <trans-unit id="arabicPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">arabic pop</target>
+        </trans-unit>
+        <trans-unit id="argentineRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">argentine rock</target>
+        </trans-unit>
+        <trans-unit id="arsAntiqua" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ars antiqua</target>
+        </trans-unit>
+        <trans-unit id="arsNova" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ars nova</target>
+        </trans-unit>
+        <trans-unit id="arsSubtilior" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ars subtilior</target>
+        </trans-unit>
+        <trans-unit id="artPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">art punk</target>
+        </trans-unit>
+        <trans-unit id="experimentalOrAvantGardePunkMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental or avant-garde punk music</target>
+        </trans-unit>
+        <trans-unit id="artRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">art rock</target>
+        </trans-unit>
+        <trans-unit id="experimentalOrAvantGardeRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental or avant-garde rock music</target>
+        </trans-unit>
+        <trans-unit id="artPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">art pop</target>
+        </trans-unit>
+        <trans-unit id="experimentalOrAvantGardePopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental or avant-garde pop music</target>
+        </trans-unit>
+        <trans-unit id="australianCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">australian country</target>
+        </trans-unit>
+        <trans-unit id="australianPubRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">australian pub rock</target>
+        </trans-unit>
+        <trans-unit id="australianHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">australian hip hop</target>
+        </trans-unit>
+        <trans-unit id="avantGardeJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">avant-garde jazz</target>
+        </trans-unit>
+        <trans-unit id="experimentalOrAvantGardeJazzMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental or avant-garde jazz music</target>
+        </trans-unit>
+        <trans-unit id="avantGardeMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">avant-garde metal</target>
+        </trans-unit>
+        <trans-unit id="experimentalOrAvantGardeHeavyMetalOrHardRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental or avant-garde heavy metal or hard rock</target>
+        </trans-unit>
+        <trans-unit id="musicConsideredToBeAheadOfItsTimeOftenUsingNewUnusualOrExperimentalElementsOrFusingPreExistingGenres" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music considered to be ahead of its time, often using new, unusual, or experimental elements, or fusing pre-existing genres.</target>
+        </trans-unit>
+        <trans-unit id="baião" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">baião</target>
+        </trans-unit>
+        <trans-unit id="bakersfieldSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bakersfield sound</target>
+        </trans-unit>
+        <trans-unit id="baishaXiyue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">baisha xiyue</target>
+        </trans-unit>
+        <trans-unit id="balineseGamelan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">balinese gamelan</target>
+        </trans-unit>
+        <trans-unit id="balkanBrassBand" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">balkan brass band</target>
+        </trans-unit>
+        <trans-unit id="genericTermForUsuallySlowRomanticDespairingAndCatastrophicSongs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">generic term for usually slow, romantic, despairing and catastrophic songs</target>
+        </trans-unit>
+        <trans-unit id="baltimoreClub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">baltimore club</target>
+        </trans-unit>
+        <trans-unit id="combinationOfHipHopAndHouseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">combination of hip hop and house music</target>
+        </trans-unit>
+        <trans-unit id="anArtSongInFourPartHarmonyInACapellaStyling" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an art song in four part harmony in a capella styling</target>
+        </trans-unit>
+        <trans-unit id="barnDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">barn dance</target>
+        </trans-unit>
+        <trans-unit id="folkMusicPlayedInABarnhouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk music played in a barnhouse</target>
+        </trans-unit>
+        <trans-unit id="styleOfSpeedGarageThatCombinesElementsOfDubstepParticularlyItsEmphasisOnBass" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of speed garage that combines elements of dubstep, particularly its emphasis on bass</target>
+        </trans-unit>
+        <trans-unit id="batáRumba" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">batá-rumba</target>
+        </trans-unit>
+        <trans-unit id="beatBritishFusionOfAllPopularSAmericanStyles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">beat- british fusion of all popular 1960s american styles</target>
+        </trans-unit>
+        <trans-unit id="RBPopJazzRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">R&amp;B, pop, jazz, rock</target>
+        </trans-unit>
+        <trans-unit id="aCapellaMusicCreatedToEmulateHipHopBeats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a capella music created to emulate hip hop beats</target>
+        </trans-unit>
+        <trans-unit id="termOfEndearmentForVariousEasyListeningGenres" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">term of endearment for various easy listening genres</target>
+        </trans-unit>
+        <trans-unit id="fastPacedStyleOfJazzPopularInTheSAndS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fast paced style of jazz popular in the 1940s and 1950s</target>
+        </trans-unit>
+        <trans-unit id="belCanto" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bel canto</target>
+        </trans-unit>
+        <trans-unit id="berlinSchool" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">berlin school</target>
+        </trans-unit>
+        <trans-unit id="aFusionOfBhangraAndReggaeAndDancehall" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a fusion of bhangra and reggae and dancehall</target>
+        </trans-unit>
+        <trans-unit id="bigBand" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">big band</target>
+        </trans-unit>
+        <trans-unit id="largeOrchestrasWhichPlayAFormOfSwingMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">large orchestras which play a form of swing music</target>
+        </trans-unit>
+        <trans-unit id="bigBeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">big beat</target>
+        </trans-unit>
+        <trans-unit id="SElectronicMusicBasedOnBreakbeatWithOtherInfluences" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1990s electronic music based on breakbeat with other influences</target>
+        </trans-unit>
+        <trans-unit id="blackenedDeathMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">blackened death metal</target>
+        </trans-unit>
+        <trans-unit id="aFusionBetweenDeathAndBlackMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a fusion between death and black metal</target>
+        </trans-unit>
+        <trans-unit id="blackMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">black metal</target>
+        </trans-unit>
+        <trans-unit id="blueEyedSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">blue-eyed soul</target>
+        </trans-unit>
+        <trans-unit id="rhythmAndBluesOrSoulMusicPerformedByWhiteArtists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">rhythm and blues or soul music performed by white artists.</target>
+        </trans-unit>
+        <trans-unit id="bluesBallad" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">blues ballad</target>
+        </trans-unit>
+        <trans-unit id="fusionOfBluesAndFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of blues and folk</target>
+        </trans-unit>
+        <trans-unit id="aHybridMusicalGenreCombiningBluesyImprovisationsOverTheBarBluesAndExtendedBoogieJamsWithRockAndRollStyles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a hybrid musical genre combining bluesy improvisations over the 12-bar blues and extended boogie jams with rock and roll styles.</target>
+        </trans-unit>
+        <trans-unit id="aFormOfExperimentalMusicWhichDealsWithSoundsCreatedOrPerformedByLivingThings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a form of experimental music which deals with sounds created or performed by living things.</target>
+        </trans-unit>
+        <trans-unit id="bossaNova" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bossa nova</target>
+        </trans-unit>
+        <trans-unit id="bouncyTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bouncy techno</target>
+        </trans-unit>
+        <trans-unit id="anUpbeatFormOfElectronicDanceMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an upbeat form of electronic dance music.</target>
+        </trans-unit>
+        <trans-unit id="musicPerformedWithBrassInstrumentsPriorToTheAdventOfJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music performed with brass instruments, prior to the advent of jazz</target>
+        </trans-unit>
+        <trans-unit id="breakbeatHardcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">breakbeat hardcore</target>
+        </trans-unit>
+        <trans-unit id="aFusionOfBreakbeatAndAcidHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a fusion of breakbeat and acid house</target>
+        </trans-unit>
+        <trans-unit id="fastAndFranticStyleOfBreakbeatKnownForItsIntentionallyDiverseRangeOfSamplesWhichMakeItAHardToDefineGenre" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fast and frantic style of breakbeat known for its intentionally diverse range of samples, which make it a hard-to-define genre</target>
+        </trans-unit>
+        <trans-unit id="brillBuildingSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">brill building sound</target>
+        </trans-unit>
+        <trans-unit id="britFunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">brit funk</target>
+        </trans-unit>
+        <trans-unit id="britishBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">british blues</target>
+        </trans-unit>
+        <trans-unit id="britishInvasion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">british invasion</target>
+        </trans-unit>
+        <trans-unit id="brokenBeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">broken beat</target>
+        </trans-unit>
+        <trans-unit id="brownEyedSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">brown-eyed soul</target>
+        </trans-unit>
+        <trans-unit id="bubblegumDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bubblegum dance</target>
+        </trans-unit>
+        <trans-unit id="bubblegumPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bubblegum pop</target>
+        </trans-unit>
+        <trans-unit id="popMusicKnownForItsSimplicityHappyAndCuteLyricsAndEmphasisOnImageRatherThanSubstance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pop music known for its simplicity, happy and cute lyrics, and emphasis on image rather than substance.</target>
+        </trans-unit>
+        <trans-unit id="bulerías" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bulerías</target>
+        </trans-unit>
+        <trans-unit id="fastPacedFlamencoMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fast-paced flamenco music</target>
+        </trans-unit>
+        <trans-unit id="burgundianSchool" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">burgundian school</target>
+        </trans-unit>
+        <trans-unit id="bushBallad" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">bush ballad</target>
+        </trans-unit>
+        <trans-unit id="caDinTulnic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ca din tulnic</target>
+        </trans-unit>
+        <trans-unit id="anOftenJazzInformedStyleOfMusicPlayedAtUpbeatStageplaysOrBurlesqueShows" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an often jazz-informed style of music played at upbeat stageplays or burlesque shows</target>
+        </trans-unit>
+        <trans-unit id="fusionOfKadansAndCalypso" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of kadans and calypso</target>
+        </trans-unit>
+        <trans-unit id="cadenceRampa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cadence rampa</target>
+        </trans-unit>
+        <trans-unit id="upbeatStyleOfKadans" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">upbeat style of kadans</target>
+        </trans-unit>
+        <trans-unit id="cảiLương" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cải lương</target>
+        </trans-unit>
+        <trans-unit id="čalgija" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">čalgija</target>
+        </trans-unit>
+        <trans-unit id="calypsoStyleBaila" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">calypso-style baila</target>
+        </trans-unit>
+        <trans-unit id="fusionOfBailaAndCalypso" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of baila and calypso</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatCombinesAMelodyWithCopiesOfItself" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that combines a melody with copies of itself</target>
+        </trans-unit>
+        <trans-unit id="anyMusicSungByAChoirWithInstrumentalBacking" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music sung by a choir with instrumental backing</target>
+        </trans-unit>
+        <trans-unit id="canteChico" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cante chico</target>
+        </trans-unit>
+        <trans-unit id="theVocalComponentToFlamencoMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">the vocal component to flamenco music</target>
+        </trans-unit>
+        <trans-unit id="canteJondo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cante jondo</target>
+        </trans-unit>
+        <trans-unit id="flamencoMusicThatIncorporatesDeepVocals" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">flamenco music that incorporates deep vocals</target>
+        </trans-unit>
+        <trans-unit id="canterburyScene" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">canterbury scene</target>
+        </trans-unit>
+        <trans-unit id="cantiñas" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cantiñas</target>
+        </trans-unit>
+        <trans-unit id="cantoLivre" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">canto livre</target>
+        </trans-unit>
+        <trans-unit id="canzoneNapoletana" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">canzone napoletana</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfFlamencoKnownForItsFocusOnFolklore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a style of flamenco known for its focus on folklore</target>
+        </trans-unit>
+        <trans-unit id="celloRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cello rock</target>
+        </trans-unit>
+        <trans-unit id="rockMusicThatIncorporatesCellos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">rock music that incorporates cellos</target>
+        </trans-unit>
+        <trans-unit id="celticFusion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic fusion</target>
+        </trans-unit>
+        <trans-unit id="celticHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic hip hop</target>
+        </trans-unit>
+        <trans-unit id="celticMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic metal</target>
+        </trans-unit>
+        <trans-unit id="celticPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic punk</target>
+        </trans-unit>
+        <trans-unit id="celticReggae" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic reggae</target>
+        </trans-unit>
+        <trans-unit id="celticRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">celtic rock</target>
+        </trans-unit>
+        <trans-unit id="chamamé" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chamamé</target>
+        </trans-unit>
+        <trans-unit id="classicalMusicPerformedForASmallAudienceByASmallOrchestra" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">classical music performed for a small audience by a small orchestra</target>
+        </trans-unit>
+        <trans-unit id="chamberJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chamber jazz</target>
+        </trans-unit>
+        <trans-unit id="fusionOfChamberAndJazzMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of chamber and jazz music</target>
+        </trans-unit>
+        <trans-unit id="chamberPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chamber pop</target>
+        </trans-unit>
+        <trans-unit id="changüí" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">changüí</target>
+        </trans-unit>
+        <trans-unit id="singingOrSpeakingRhythmicallyToAVerySmallNumberOfPitches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">singing or speaking rhythmically to a very small number of pitches</target>
+        </trans-unit>
+        <trans-unit id="chapHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chap hop</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCharangaVallenataAndSalsa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of charanga, vallenata, and salsa</target>
+        </trans-unit>
+        <trans-unit id="chèo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chèo</target>
+        </trans-unit>
+        <trans-unit id="childrenSMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">children's music</target>
+        </trans-unit>
+        <trans-unit id="anyMusicMarketedTowardsChildren" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music marketed towards children</target>
+        </trans-unit>
+        <trans-unit id="chicagoBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chicago blues</target>
+        </trans-unit>
+        <trans-unit id="chicagoHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chicago house</target>
+        </trans-unit>
+        <trans-unit id="chicagoSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chicago soul</target>
+        </trans-unit>
+        <trans-unit id="chickenScratch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chicken scratch</target>
+        </trans-unit>
+        <trans-unit id="umbrellaTermForElectronicMusicWithASlowTempoDesignedToCalmPeopleAfterRaves" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">umbrella term for electronic music with a slow tempo, designed to calm people after raves</target>
+        </trans-unit>
+        <trans-unit id="indiePopStyleKnownForItsLoopedSynthsAndCalmingEffects" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indie pop style known for its looped synths and calming effects</target>
+        </trans-unit>
+        <trans-unit id="chineseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chinese music</target>
+        </trans-unit>
+        <trans-unit id="chineseRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chinese rock</target>
+        </trans-unit>
+        <trans-unit id="chouvalBwa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chouval bwa</target>
+        </trans-unit>
+        <trans-unit id="christianAlternativeRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian alternative rock</target>
+        </trans-unit>
+        <trans-unit id="christianCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian country</target>
+        </trans-unit>
+        <trans-unit id="christmasCarol" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christmas carol</target>
+        </trans-unit>
+        <trans-unit id="christmasMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christmas music</target>
+        </trans-unit>
+        <trans-unit id="christianElectronic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian electronic</target>
+        </trans-unit>
+        <trans-unit id="christianHardcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian hardcore</target>
+        </trans-unit>
+        <trans-unit id="christianHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian hip hop</target>
+        </trans-unit>
+        <trans-unit id="christianMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian metal</target>
+        </trans-unit>
+        <trans-unit id="christianMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian music</target>
+        </trans-unit>
+        <trans-unit id="christianPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian punk</target>
+        </trans-unit>
+        <trans-unit id="christianRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian rock</target>
+        </trans-unit>
+        <trans-unit id="christianSka" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">christian ska</target>
+        </trans-unit>
+        <trans-unit id="fusionOfChutneyCalypsoAndParang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of chutney, calypso, and parang</target>
+        </trans-unit>
+        <trans-unit id="chutneySoca" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">chutney soca</target>
+        </trans-unit>
+        <trans-unit id="fusionOfChutneyAndSocaMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of chutney and soca music</target>
+        </trans-unit>
+        <trans-unit id="classicCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">classic country</target>
+        </trans-unit>
+        <trans-unit id="umbrellaTermForCountryMusicReleasedBeforeTheUseOfTheTermToDescribeIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">umbrella term for country music released before the use of the term to describe it</target>
+        </trans-unit>
+        <trans-unit id="classicFemaleBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">classic female blues</target>
+        </trans-unit>
+        <trans-unit id="anEarlyFormOfBluesMusicKnownForItsFemaleVocalists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an early form of blues music known for its female vocalists</target>
+        </trans-unit>
+        <trans-unit id="classicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">classic rock</target>
+        </trans-unit>
+        <trans-unit id="umbrellaTermForRockMusicReleasedBeforeTheUseOfTheTermToDescribeItButOftenReferringToHardAndBluesRockOfTheSAndS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">umbrella term for rock music released before the use of the term to describe it, but often referring to hard and blues rock of the 1960s and 1970s</target>
+        </trans-unit>
+        <trans-unit id="classicalPeriod" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">classical period</target>
+        </trans-unit>
+        <trans-unit id="closeHarmony" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">close harmony</target>
+        </trans-unit>
+        <trans-unit id="anyMusicWithNotesPerformedInACloseRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music with notes performed in a close range</target>
+        </trans-unit>
+        <trans-unit id="combinedRhythm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">combined rhythm</target>
+        </trans-unit>
+        <trans-unit id="comedyMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comedy music</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatIncorporatesHeavyThemesOfHumorAndComedy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that incorporates heavy themes of humor and comedy</target>
+        </trans-unit>
+        <trans-unit id="comedyRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comedy rap</target>
+        </trans-unit>
+        <trans-unit id="fusionOfComedyAndHipHopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of comedy and hip hop music</target>
+        </trans-unit>
+        <trans-unit id="comedyRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comedy rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfComedyAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of comedy and rock music</target>
+        </trans-unit>
+        <trans-unit id="comicOpera" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comic opera</target>
+        </trans-unit>
+        <trans-unit id="fusionOfComedyAndOperaMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of comedy and opera music</target>
+        </trans-unit>
+        <trans-unit id="aThreePartClassicalPieceInWhichOneInstrumentTakesLeadAndIsBackedByAnOrchestra" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a three-part classical piece in which one instrument takes lead and is backed by an orchestra</target>
+        </trans-unit>
+        <trans-unit id="concertoGrosso" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">concerto grosso</target>
+        </trans-unit>
+        <trans-unit id="aFormOfBaroqueConcertoInWhichTheSoloistsAndOrchestraAlternatePlaying" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a form of baroque concerto in which the soloists and orchestra alternate playing</target>
+        </trans-unit>
+        <trans-unit id="contemporaryChristianMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">contemporary christian music</target>
+        </trans-unit>
+        <trans-unit id="contemporaryRB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">contemporary r&amp;b</target>
+        </trans-unit>
+        <trans-unit id="coolJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cool jazz</target>
+        </trans-unit>
+        <trans-unit id="aRelaxedDowntempoFormOfJazzHeavilyInspiredByClassicalMusicThatExistedAsAReactionToTheFastPacedBebop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a relaxed, downtempo form of jazz heavily inspired by classical music, that existed as a reaction to the fast-paced bebop</target>
+        </trans-unit>
+        <trans-unit id="coonSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">coon song</target>
+        </trans-unit>
+        <trans-unit id="musicAboutBlackStereotypes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music about black stereotypes</target>
+        </trans-unit>
+        <trans-unit id="countryBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">country blues</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCountryAndBluesMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of country and blues music</target>
+        </trans-unit>
+        <trans-unit id="countryRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">country rap</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCountryAndHipHopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of country and hip hop music</target>
+        </trans-unit>
+        <trans-unit id="countryRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">country rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCountryAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of country and rock music</target>
+        </trans-unit>
+        <trans-unit id="countryPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">country pop</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCountryAndPopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of country and pop music</target>
+        </trans-unit>
+        <trans-unit id="CoupéDécalé" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Coupé-décalé</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCountryAndPunkRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of country and punk rock music</target>
+        </trans-unit>
+        <trans-unit id="crossoverThrash" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">crossover thrash</target>
+        </trans-unit>
+        <trans-unit id="fusionOfThrashMetalAndHardcorePunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of thrash metal and hardcore punk</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCrunkAndScreamo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of crunk and screamo</target>
+        </trans-unit>
+        <trans-unit id="crustPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">crust punk</target>
+        </trans-unit>
+        <trans-unit id="fusionOfAnarchoAndHardcorePunkAndExtremeMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of anarcho- and hardcore punk and extreme metal</target>
+        </trans-unit>
+        <trans-unit id="csárdás" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">csárdás</target>
+        </trans-unit>
+        <trans-unit id="cumbiaVillera" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cumbia villera</target>
+        </trans-unit>
+        <trans-unit id="fusionOfGrindcoreAndIndustrial" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of grindcore and industrial</target>
+        </trans-unit>
+        <trans-unit id="dadraTala" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dadra tala</target>
+        </trans-unit>
+        <trans-unit id="popMusicWithAnEmphasisOnDanceRhythmsFusionOfDanceAndPopMusicalStyles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pop music with an emphasis on dance rhythms, fusion of dance and pop musical styles.</target>
+        </trans-unit>
+        <trans-unit id="aGrittierAndRawerFormOfNewWaveMusicLinkedHeavilyToTheContemporaryIndieScene" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a grittier and rawer form of new wave music, linked heavily to the contemporary indie scene</target>
+        </trans-unit>
+        <trans-unit id="fusionOfPostPunkAndPostDiscoLinkedHeavilyToTheNewWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of post-punk and post-disco, linked heavily to the new wave</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatWillSomehowPotentiallyHarmEitherThePerformersOrTheAudienceLinkedHeavilyToNoiseRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that will, somehow, potentially harm either the performers or the audience, linked heavily to noise rock</target>
+        </trans-unit>
+        <trans-unit id="danzón" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">danzón</target>
+        </trans-unit>
+        <trans-unit id="dappanKoothu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dappan koothu</target>
+        </trans-unit>
+        <trans-unit id="darkAmbient" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dark ambient</target>
+        </trans-unit>
+        <trans-unit id="styleOfAmbientMusicThatCreatesAFeelingOfDreadAndForebodingRatherThanTheRelaxationGivenOffByMostAmbient" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of ambient music that creates a feeling of dread and foreboding, rather than the relaxation given off by most ambient</target>
+        </trans-unit>
+        <trans-unit id="darkCabaret" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dark cabaret</target>
+        </trans-unit>
+        <trans-unit id="fusionOfCabaretAndGothicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of cabaret and gothic rock</target>
+        </trans-unit>
+        <trans-unit id="technoWithADarkAndForebodingFeelActingAsAReactionToTheOptimismOfRaveMusicInGeneral" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">techno with a dark and foreboding feel, acting as a reaction to the optimism of rave music in general</target>
+        </trans-unit>
+        <trans-unit id="styleOfDarkcoreJungleThatTakesItsSignatureSinisterFeelAndFusesItWithUpbeatBreakbeatsAndAmbientNoisesCreatingAnExcessivelyChaoticTone" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of darkcore jungle that takes its signature sinister feel and fuses it with upbeat breakbeats and ambient noises, creating an excessively chaotic tone</target>
+        </trans-unit>
+        <trans-unit id="darkWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dark wave</target>
+        </trans-unit>
+        <trans-unit id="excessivelyPessimisticStyleOfPostPunkWhichReliedOnTalesOfRealisticSorrowRatherThanTheFantasyElementsOfTheThenPopularGothicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">excessively pessimistic style of post-punk, which relied on tales of realistic sorrow, rather than the fantasy elements of the then-popular gothic rock</target>
+        </trans-unit>
+        <trans-unit id="deDragoste" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">de dragoste</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDeathAndPunkMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of death and punk metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDeathMetalAndGrindcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of death metal and grindcore</target>
+        </trans-unit>
+        <trans-unit id="deathIndustrial" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">death industrial</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDeathAndIndustrialMetalLinkedHeavilyToThePowerElectronicsScene" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of death and industrial metal, linked heavily to the power electronics scene</target>
+        </trans-unit>
+        <trans-unit id="deathMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">death metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDeathAndDoomMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of death and doom metal</target>
+        </trans-unit>
+        <trans-unit id="deathRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">death rock</target>
+        </trans-unit>
+        <trans-unit id="styleOfGothicRockKnownForItsScratchyGuitarsAndLyricsFocusingOnSupernaturalAndPessimisticThemesSometimesDelvingIntoIntentionallyCampyHorrorThemes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of gothic rock known for its scratchy guitars, and lyrics focusing on supernatural and pessimistic themes, sometimes delving into intentionally campy horror themes</target>
+        </trans-unit>
+        <trans-unit id="décima" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">décima</target>
+        </trans-unit>
+        <trans-unit id="deltaBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">delta blues</target>
+        </trans-unit>
+        <trans-unit id="deepHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">deep house</target>
+        </trans-unit>
+        <trans-unit id="detroitBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">detroit blues</target>
+        </trans-unit>
+        <trans-unit id="detroitTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">detroit techno</target>
+        </trans-unit>
+        <trans-unit id="digitalHardcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">digital hardcore</target>
+        </trans-unit>
+        <trans-unit id="fusionOfHardcorePunkAndHardcoreTechnoKnownForItsFarLeftLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of hardcore punk and hardcore techno, known for its far-left lyrics</target>
+        </trans-unit>
+        <trans-unit id="aSongOfMourningOftenPlayedAtAFuneral" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a song of mourning, often played at a funeral</target>
+        </trans-unit>
+        <trans-unit id="dirtyRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dirty rap</target>
+        </trans-unit>
+        <trans-unit id="hipHopWithSexualAndPornographicThemes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop with sexual and pornographic themes</target>
+        </trans-unit>
+        <trans-unit id="aFormOfMusicToDanceToWithElementsOfSoulPopAndSalsa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a form of music to dance to with elements of soul, pop and salsa.</target>
+        </trans-unit>
+        <trans-unit id="discoPolo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">disco polo</target>
+        </trans-unit>
+        <trans-unit id="divaHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">diva house</target>
+        </trans-unit>
+        <trans-unit id="subgenreOfProgressiveMetalKnownForItsElasticPowerChords" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">subgenre of progressive metal known for its elastic power chords</target>
+        </trans-unit>
+        <trans-unit id="dondangSayang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dondang sayang</target>
+        </trans-unit>
+        <trans-unit id="donegalFiddleTradition" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">donegal fiddle tradition</target>
+        </trans-unit>
+        <trans-unit id="aSimplisticAndPopOrientedFormOfRBKnownForItsVocalHarmoniesAndLittleToNoInstrumentation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a simplistic and pop-oriented form of R&amp;B known for its vocal harmonies and little to no instrumentation</target>
+        </trans-unit>
+        <trans-unit id="doomMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">doom metal</target>
+        </trans-unit>
+        <trans-unit id="AStyleOfHeavyMetalKnownForItsLowTunedSoundSlowTemposCleanAndNonGrowledVocalsAndPessimisticLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A style of heavy metal known for its low-tuned sound, slow tempos, clean and non-growled vocals and pessimistic lyrics</target>
+        </trans-unit>
+        <trans-unit id="aSlowPacedStyleOfElectronicMusicThatDiffersFromAmbientInThatItAlsoHasABeatAndRhythm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a slow-paced style of electronic music that differs from ambient in that it also has a beat and rhythm</target>
+        </trans-unit>
+        <trans-unit id="dreamPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dream pop</target>
+        </trans-unit>
+        <trans-unit id="anAtmosphericAndMelodicStyleOfIndiePopThatMakesTheAudienceFeelDreamy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an atmospheric and melodic style of indie pop that makes the audience feel dreamy</target>
+        </trans-unit>
+        <trans-unit id="droneMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">drone metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDroneAndHeavyMetalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of drone and heavy metal music</target>
+        </trans-unit>
+        <trans-unit id="experimentalStyleOfMinimalismKnownForDrawnOutAndRepetitiveTonesGivingItADroningFeel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental style of minimalism, known for drawn-out and repetitive tones, giving it a droning feel</target>
+        </trans-unit>
+        <trans-unit id="drumAndBass" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">drum and bass</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDrumAndBassAndDubstep" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of drum and bass and dubstep</target>
+        </trans-unit>
+        <trans-unit id="subgenreOfReggaeInWhichPreExistingTracksAreHeavilyRemixedEmphasizingTheDrumAndBassOrRiddimAndDubbingSnippetsFromOtherWorks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">subgenre of reggae in which pre-existing tracks are heavily remixed, emphasizing the drum and bass (or riddim) and dubbing snippets from other works</target>
+        </trans-unit>
+        <trans-unit id="fusionOfDubstepAndHardstyle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of dubstep and hardstyle</target>
+        </trans-unit>
+        <trans-unit id="dunedinSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dunedin sound</target>
+        </trans-unit>
+        <trans-unit id="dutchJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">dutch jazz</target>
+        </trans-unit>
+        <trans-unit id="umbrellaTermForAnyMusicMadeFromThePrehistoricEraUntilTheAdventOfBaroqueMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">umbrella term for any music made from the prehistoric era until the advent of baroque music</target>
+        </trans-unit>
+        <trans-unit id="eastCoastBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">east coast blues</target>
+        </trans-unit>
+        <trans-unit id="eastCoastHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">east coast hip hop</target>
+        </trans-unit>
+        <trans-unit id="easyListening" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">easy listening</target>
+        </trans-unit>
+        <trans-unit id="popStyleAimedAtOlderListeners" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pop style aimed at older listeners</target>
+        </trans-unit>
+        <trans-unit id="electricBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electric blues</target>
+        </trans-unit>
+        <trans-unit id="styleOfBluesPlayedWithElectricInstrumentsMostNotablyTheElectricGuitar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of blues played with electric instruments, most notably the electric guitar</target>
+        </trans-unit>
+        <trans-unit id="electricFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electric folk</target>
+        </trans-unit>
+        <trans-unit id="associatedWithTheFolkRevivalOfTheSElectricFolkWasAStyleOfFolkInWhichModernOftenElectricInstrumentsWereSubstitutedForClassicFolkInstruments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">associated with the folk revival of the 1960s, electric folk was a style of folk in which modern, often electric instruments, were substituted for classic folk instruments</target>
+        </trans-unit>
+        <trans-unit id="electroBackbeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electro backbeat</target>
+        </trans-unit>
+        <trans-unit id="aStyleOfPostIndustrialWhichUsedHeavilyProducedAndLayeredSynths" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a style of post-industrial which used heavily produced and layered synths</target>
+        </trans-unit>
+        <trans-unit id="electroSwing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electro swing</target>
+        </trans-unit>
+        <trans-unit id="fusionOfSSynthpopAndSTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of 1980s synthpop and 1990s techno</target>
+        </trans-unit>
+        <trans-unit id="electronicBodyMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electronic body music</target>
+        </trans-unit>
+        <trans-unit id="electronicDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electronic dance</target>
+        </trans-unit>
+        <trans-unit id="electronicMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electronic music</target>
+        </trans-unit>
+        <trans-unit id="electronicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">electronic rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfElectronicAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of electronic and rock music</target>
+        </trans-unit>
+        <trans-unit id="popularMusicThatIncludesElectronicInstruments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">popular music that includes electronic instruments</target>
+        </trans-unit>
+        <trans-unit id="fusionOfElectronicAndPopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of electronic and pop music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfElectronicAndPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of electronic and punk</target>
+        </trans-unit>
+        <trans-unit id="elevatorMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">elevator music</target>
+        </trans-unit>
+        <trans-unit id="comfortableAndSoothingMusicDesignedForAndPlayedInShoppingMallsUsuallyElevatorsThereinToCreateASenseOfAmbienceAndComfort" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comfortable and soothing music designed for and played in shopping malls, usually elevators therein, to create a sense of ambience and comfort</target>
+        </trans-unit>
+        <trans-unit id="heavilyEmotionalAndPessimisticStyleOfPostHardcorePunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavily emotional and pessimistic style of post-hardcore punk</target>
+        </trans-unit>
+        <trans-unit id="eremwuEu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">eremwu eu</target>
+        </trans-unit>
+        <trans-unit id="etherealWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ethereal wave</target>
+        </trans-unit>
+        <trans-unit id="atmosphericSubgenreOfDarkWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">atmospheric subgenre of dark wave</target>
+        </trans-unit>
+        <trans-unit id="euroDisco" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">euro disco</target>
+        </trans-unit>
+        <trans-unit id="euroHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">euro house</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatBreachesContemporaryStandardsOfMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that breaches contemporary standards of music</target>
+        </trans-unit>
+        <trans-unit id="experimentalRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfExperimentalAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of experimental and rock music</target>
+        </trans-unit>
+        <trans-unit id="extremeMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">extreme metal</target>
+        </trans-unit>
+        <trans-unit id="umbrellaTermForAggressiveNonCommercialFormsOfHeavyMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">umbrella term for aggressive, non-commercial forms of heavy metal</target>
+        </trans-unit>
+        <trans-unit id="aLightFormOfFlamenco" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a light form of flamenco</target>
+        </trans-unit>
+        <trans-unit id="styleOfFolkSometimesExpandingToOtherGenresWithHeavyScienceFictionOrFantasyThemes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of folk (sometimes expanding to other genres) with heavy science-fiction or fantasy themes</target>
+        </trans-unit>
+        <trans-unit id="filmScore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">film score</target>
+        </trans-unit>
+        <trans-unit id="anyMusicWrittenToActAsASoundtrackToAMotionPicture" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music written to act as a soundtrack to a motion picture</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFilmiAndGhazalPoetry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of filmi and ghazal poetry</target>
+        </trans-unit>
+        <trans-unit id="theActOfPluckingGuitarStringsWithTheFingertips" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">the act of plucking guitar strings with the fingertips</target>
+        </trans-unit>
+        <trans-unit id="folkMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkAndHeavyMetalRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk and heavy metal rock</target>
+        </trans-unit>
+        <trans-unit id="broadTermUsedToReferToTheTraditionalMusicOfAnEthnicGroupUsuallyThatPerformedByTheWorkingClass" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">broad term used to refer to the traditional music of an ethnic group, usually that performed by the working class</target>
+        </trans-unit>
+        <trans-unit id="folkPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk pop</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkAndPopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk and pop music</target>
+        </trans-unit>
+        <trans-unit id="folkPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk punk</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkAndPunkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk and punk rock</target>
+        </trans-unit>
+        <trans-unit id="folkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">folk rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk and rock music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkAndElectronicMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk and electronic music</target>
+        </trans-unit>
+        <trans-unit id="forró" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">forró</target>
+        </trans-unit>
+        <trans-unit id="freakFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">freak folk</target>
+        </trans-unit>
+        <trans-unit id="experimentalStyleOfFolkOftenFolkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">experimental style of folk, often folk-rock</target>
+        </trans-unit>
+        <trans-unit id="freeImprovisation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">free improvisation</target>
+        </trans-unit>
+        <trans-unit id="completelyUncontrolledImprovisation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">completely uncontrolled improvisation</target>
+        </trans-unit>
+        <trans-unit id="freeJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">free jazz</target>
+        </trans-unit>
+        <trans-unit id="freelyImprovisedJazzMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">freely improvised jazz music</target>
+        </trans-unit>
+        <trans-unit id="freeMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">free music</target>
+        </trans-unit>
+        <trans-unit id="anyMusicReleasedWithoutAPricing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music released without a pricing</target>
+        </trans-unit>
+        <trans-unit id="freeTekno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">free tekno</target>
+        </trans-unit>
+        <trans-unit id="styleOfTechnoDevelopedByAnarchists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of techno developed by anarchists</target>
+        </trans-unit>
+        <trans-unit id="fullOnTrance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">full on trance</target>
+        </trans-unit>
+        <trans-unit id="styleOfPsychedelicTranceKnownForItsRollingBaselinesAndConfrontationalThemes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of psychedelic trance known for its rolling baselines and confrontational themes</target>
+        </trans-unit>
+        <trans-unit id="funaná" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funaná</target>
+        </trans-unit>
+        <trans-unit id="funeralDoom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funeral doom</target>
+        </trans-unit>
+        <trans-unit id="incrediblySlowStyleOfDoomMetalMadeToMimicFuneralMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">incredibly slow style of doom metal, made to mimic funeral music</target>
+        </trans-unit>
+        <trans-unit id="combinationOfElementsOfBluesJazzAndSoulWithTheMelodiesAndHarmoniesStrippedInOrderToEmphasizeTheBassGuitar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">combination of elements of blues, jazz, and soul with the melodies and harmonies stripped in order to emphasize the bass guitar</target>
+        </trans-unit>
+        <trans-unit id="funkMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funk metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFunkAndHeavyMetalRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of funk and heavy metal rock</target>
+        </trans-unit>
+        <trans-unit id="funkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funk rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFunkAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of funk and rock music</target>
+        </trans-unit>
+        <trans-unit id="funkyHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">funky house</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFunkAndHouseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of funk and house music</target>
+        </trans-unit>
+        <trans-unit id="furnitureMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">furniture music</target>
+        </trans-unit>
+        <trans-unit id="aCalmingLiveFormOfBackgroundMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a calming, live form of background music</target>
+        </trans-unit>
+        <trans-unit id="fusionJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion jazz</target>
+        </trans-unit>
+        <trans-unit id="fusionOfJazzAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of jazz and rock music</target>
+        </trans-unit>
+        <trans-unit id="futureGarage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">future garage</target>
+        </trans-unit>
+        <trans-unit id="styleOfDarkMetalAndCrustPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of dark metal and crust punk</target>
+        </trans-unit>
+        <trans-unit id="gaitaZuliana" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gaita zuliana</target>
+        </trans-unit>
+        <trans-unit id="gamelanBebonangan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan bebonangan</target>
+        </trans-unit>
+        <trans-unit id="gamelanDegung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan degung</target>
+        </trans-unit>
+        <trans-unit id="gamelanGongKebyar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan gong kebyar</target>
+        </trans-unit>
+        <trans-unit id="gamelanSalendro" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan salendro</target>
+        </trans-unit>
+        <trans-unit id="gamelanSelunding" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan selunding</target>
+        </trans-unit>
+        <trans-unit id="gamelanSemarPegulingan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan semar pegulingan</target>
+        </trans-unit>
+        <trans-unit id="gangsterRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gangster rap</target>
+        </trans-unit>
+        <trans-unit id="hipHopThatDealsWithIllegalActivity" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop that deals with illegal activity</target>
+        </trans-unit>
+        <trans-unit id="garageHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">garage house</target>
+        </trans-unit>
+        <trans-unit id="garageRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">garage rock</target>
+        </trans-unit>
+        <trans-unit id="rawAndEnergeticStyleOfRockOftenPractisedByHighSchoolBandsInGarages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">raw and energetic style of rock, often practised by high school bands in garages</target>
+        </trans-unit>
+        <trans-unit id="genderWayang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gender wayang</target>
+        </trans-unit>
+        <trans-unit id="germanFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">german folk</target>
+        </trans-unit>
+        <trans-unit id="ghettoHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ghetto house</target>
+        </trans-unit>
+        <trans-unit id="girlGroup" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">girl group</target>
+        </trans-unit>
+        <trans-unit id="anyAllFemalePopOrRockGroup" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any all-female pop or rock group</target>
+        </trans-unit>
+        <trans-unit id="glamMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">glam metal</target>
+        </trans-unit>
+        <trans-unit id="aSubgenreOfHeavyMetalWithElementsOfGlamRockHardRockAndPopRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a subgenre of heavy metal with elements of glam rock, hard rock and pop rock.</target>
+        </trans-unit>
+        <trans-unit id="glamPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">glam punk</target>
+        </trans-unit>
+        <trans-unit id="fusionOfGlamAndPunkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of glam and punk rock</target>
+        </trans-unit>
+        <trans-unit id="glamRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">glam rock</target>
+        </trans-unit>
+        <trans-unit id="looselyDefinedPopRockWhichIncludedHeavyThemesOfGenderBendingAndAndrogyny" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">loosely-defined pop rock which included heavy themes of gender-bending and androgyny</target>
+        </trans-unit>
+        <trans-unit id="styleOfFunkKnownForItsSyncopatedRhythmsAndCallAndResponseVocals" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of funk known for its syncopated rhythms and call-and-response vocals</target>
+        </trans-unit>
+        <trans-unit id="goaTrance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">goa trance</target>
+        </trans-unit>
+        <trans-unit id="gongChime" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gong chime</target>
+        </trans-unit>
+        <trans-unit id="styleOfGrindcoreKnownForItsLyricalFocusOnGoreAndForensics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of grindcore known for its lyrical focus on gore and forensics</target>
+        </trans-unit>
+        <trans-unit id="goshuOndo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">goshu ondo</target>
+        </trans-unit>
+        <trans-unit id="anAttemptToModernizeReligiousMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an attempt to modernize religious music</target>
+        </trans-unit>
+        <trans-unit id="gothicMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gothic metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfGothicRockAndHeavyMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of gothic rock and heavy metal</target>
+        </trans-unit>
+        <trans-unit id="gothicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gothic rock</target>
+        </trans-unit>
+        <trans-unit id="gregorianChant" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gregorian chant</target>
+        </trans-unit>
+        <trans-unit id="grooveMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">groove metal</target>
+        </trans-unit>
+        <trans-unit id="styleOfHeavyMetalThatTookElementsOfThrashButPlayedAtMidTempoMakingASlowerGroovierSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of heavy metal that took elements of thrash, but played at mid-tempo, making a slower, groovier sound</target>
+        </trans-unit>
+        <trans-unit id="groupSounds" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">group sounds</target>
+        </trans-unit>
+        <trans-unit id="minimalistStyleOfAlternativeMetalKnownForItsHeavilyDistortedGuitarsAndAngstRiddenLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minimalist style of alternative metal, known for its heavily distorted guitars and angst-ridden lyrics</target>
+        </trans-unit>
+        <trans-unit id="gwoKa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gwo ka</target>
+        </trans-unit>
+        <trans-unit id="gwoKaModerne" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gwo ka moderne</target>
+        </trans-unit>
+        <trans-unit id="modernizedFormOfGwoKa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">modernized form of gwo ka</target>
+        </trans-unit>
+        <trans-unit id="gypsyJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gypsy jazz</target>
+        </trans-unit>
+        <trans-unit id="gypsyPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gypsy punk</target>
+        </trans-unit>
+        <trans-unit id="hamburgerSchule" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hamburger schule</target>
+        </trans-unit>
+        <trans-unit id="happyHardcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">happy hardcore</target>
+        </trans-unit>
+        <trans-unit id="incrediblyFastUpbeatAndOptimisticStyleOfHardcoreTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">incredibly fast, upbeat, and optimistic style of hardcore techno</target>
+        </trans-unit>
+        <trans-unit id="hardcoreHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hardcore hip hop</target>
+        </trans-unit>
+        <trans-unit id="aggressiveAndConfrontationalFormOfHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">aggressive and confrontational form of hip hop</target>
+        </trans-unit>
+        <trans-unit id="hardcorePunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hardcore punk</target>
+        </trans-unit>
+        <trans-unit id="heavyMetalInformedStyleOfPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavy metal-informed style of punk</target>
+        </trans-unit>
+        <trans-unit id="hardcoreTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hardcore techno</target>
+        </trans-unit>
+        <trans-unit id="styleOfTechnoKnownForDistortedIndustrialEsqueBeats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of techno known for distorted, industrial-esque beats</target>
+        </trans-unit>
+        <trans-unit id="hardBop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hard bop</target>
+        </trans-unit>
+        <trans-unit id="styleOfBebopInformedByGospelRBAndBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of bebop informed by gospel, R&amp;B and blues</target>
+        </trans-unit>
+        <trans-unit id="hardHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hard house</target>
+        </trans-unit>
+        <trans-unit id="fusionOfHardstyleAndHouseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of hardstyle and house music</target>
+        </trans-unit>
+        <trans-unit id="hardRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hard rock</target>
+        </trans-unit>
+        <trans-unit id="grittyHeavyStyleOfDrumBass" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gritty, heavy style of drum &amp; bass</target>
+        </trans-unit>
+        <trans-unit id="hardTrance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hard trance</target>
+        </trans-unit>
+        <trans-unit id="heavyReverberatingStyleOfTranceMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavy, reverberating style of trance music</target>
+        </trans-unit>
+        <trans-unit id="harmonicaBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">harmonica blues</target>
+        </trans-unit>
+        <trans-unit id="heartlandRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heartland rock</target>
+        </trans-unit>
+        <trans-unit id="heavyMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavy metal</target>
+        </trans-unit>
+        <trans-unit id="technicallyProficientFastPacedAggressiveFormOfHardRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">technically proficient, fast-paced, aggressive form of hard rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfHighlifeAndHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of highlife and hip hop</target>
+        </trans-unit>
+        <trans-unit id="hipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop</target>
+        </trans-unit>
+        <trans-unit id="hipHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip house</target>
+        </trans-unit>
+        <trans-unit id="fusionOfHipHopAndHouseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of hip hop and house music</target>
+        </trans-unit>
+        <trans-unit id="hindustaniClassical" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hindustani classical</target>
+        </trans-unit>
+        <trans-unit id="crispCleanFormOfCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">crisp, clean form of country</target>
+        </trans-unit>
+        <trans-unit id="hipHopKnownForDarkHorrorInspiredLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop known for dark, horror-inspired lyrics</target>
+        </trans-unit>
+        <trans-unit id="horrorPunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">horror punk</target>
+        </trans-unit>
+        <trans-unit id="punkThatIsLyricallyInspiredBySHorrorBMoviesOftenInAnIronicWay" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">punk that is lyrically inspired by 1950s horror B-movies, often in an ironic way</target>
+        </trans-unit>
+        <trans-unit id="huayño" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">huayño</target>
+        </trans-unit>
+        <trans-unit id="anyReligiousSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any religious song</target>
+        </trans-unit>
+        <trans-unit id="formOfAmbientInspiredByDubInItsUseOfLayeringAndHipHopInItsUseOfSampling" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">form of ambient inspired by dub in its use of layering and hip hop in its use of sampling</target>
+        </trans-unit>
+        <trans-unit id="anyKindOfMusicThatIsMadeUpOnTheSpot" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any kind of music that is made up on the spot</target>
+        </trans-unit>
+        <trans-unit id="musicPlayedInTheBackgroundOfAFilmOrPlay" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music played in the background of a film or play</target>
+        </trans-unit>
+        <trans-unit id="indieFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indie folk</target>
+        </trans-unit>
+        <trans-unit id="fusionOfIndieRockAndFolkMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of indie rock and folk music</target>
+        </trans-unit>
+        <trans-unit id="indiePop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indie pop</target>
+        </trans-unit>
+        <trans-unit id="aMelodicOftenAngstFreeAndOptimisticFormOfPopRockAssociatedWithTheIndieScene" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a melodic, often angst-free and optimistic, form of pop-rock associated with the indie scene</target>
+        </trans-unit>
+        <trans-unit id="indieRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indie rock</target>
+        </trans-unit>
+        <trans-unit id="genericTermForRockMusicLinkedToTheIndieSubculture" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">generic term for rock music linked to the indie subculture</target>
+        </trans-unit>
+        <trans-unit id="indoJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">indo jazz</target>
+        </trans-unit>
+        <trans-unit id="industrialDeathMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">industrial death metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfIndustrialAndDeathMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of industrial and death metal</target>
+        </trans-unit>
+        <trans-unit id="industrialHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">industrial hip hop</target>
+        </trans-unit>
+        <trans-unit id="fusionOfIndustrialAndHipHopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of industrial and hip hop music</target>
+        </trans-unit>
+        <trans-unit id="industrialMusical" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">industrial musical</target>
+        </trans-unit>
+        <trans-unit id="musicalTheaterPerformedByTheWorkersOfACompanyToPromoteTeamwork" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">musical theater performed by the workers of a company to promote teamwork</target>
+        </trans-unit>
+        <trans-unit id="industrialMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">industrial metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfIndustrialAndHeavyMetalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of industrial and heavy metal music</target>
+        </trans-unit>
+        <trans-unit id="industrialRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">industrial rock</target>
+        </trans-unit>
+        <trans-unit id="fusionOfIndustrialAndRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of industrial and rock music</target>
+        </trans-unit>
+        <trans-unit id="musicThatHadNoLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music that had no lyrics</target>
+        </trans-unit>
+        <trans-unit id="instrumentalRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">instrumental rock</target>
+        </trans-unit>
+        <trans-unit id="anyRockMusicThatNeglectsVocals" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any rock music that neglects vocals</target>
+        </trans-unit>
+        <trans-unit id="intelligentDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">intelligent dance</target>
+        </trans-unit>
+        <trans-unit id="moreExperimentalAndIntellectualFormOfElectronicaSoCalledToDistinguishItselfFromTheCommercialistTrendsInRaveMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">more experimental and intellectual form of electronica so called to distinguish itself from the commercialist trends in rave music</target>
+        </trans-unit>
+        <trans-unit id="irishFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">irish folk</target>
+        </trans-unit>
+        <trans-unit id="irishRebel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">irish rebel</target>
+        </trans-unit>
+        <trans-unit id="styleOfAmbientThatUsesRepetitionAndDissonanceToCreateASenseOfUneasiness" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of ambient that uses repetition and dissonance to create a sense of uneasiness</target>
+        </trans-unit>
+        <trans-unit id="italoDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">italo dance</target>
+        </trans-unit>
+        <trans-unit id="italoDisco" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">italo disco</target>
+        </trans-unit>
+        <trans-unit id="italoHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">italo house</target>
+        </trans-unit>
+        <trans-unit id="izvornaBosanska" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">izvorna bosanska</target>
+        </trans-unit>
+        <trans-unit id="aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a type of band that plays long instrumental tracks, often improvised, called 'jams'</target>
+        </trans-unit>
+        <trans-unit id="jamriengSamai" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jamrieng samai</target>
+        </trans-unit>
+        <trans-unit id="janglePop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jangle pop</target>
+        </trans-unit>
+        <trans-unit id="styleOfIndiePopKnownForItsUpliftingJanglySounds" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of indie pop known for its uplifting, 'jangly' sounds</target>
+        </trans-unit>
+        <trans-unit id="jaranaYucateca" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jarana yucateca</target>
+        </trans-unit>
+        <trans-unit id="jazzBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jazz blues</target>
+        </trans-unit>
+        <trans-unit id="fusionOfJazzAndBluesMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of jazz and blues music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfJazzAndFunkMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of jazz and funk music</target>
+        </trans-unit>
+        <trans-unit id="jazzFusion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jazz fusion</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatFusesSomethingWithJazzParticularlyJazzRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that fuses something with jazz, particularly jazz-rock</target>
+        </trans-unit>
+        <trans-unit id="jazzRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jazz rap</target>
+        </trans-unit>
+        <trans-unit id="fusionOfJazzAndHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of jazz and hip hop</target>
+        </trans-unit>
+        <trans-unit id="gamelanPlayedWithBambooBasedInstruments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">gamelan played with bamboo-based instruments</target>
+        </trans-unit>
+        <trans-unit id="jingPing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jing ping</target>
+        </trans-unit>
+        <trans-unit id="shortCatchySongUsedInAdvertising" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">short, catchy song used in advertising</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatAccompaniedTheDanceOfTheSameName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that accompanied the dance of the same name</target>
+        </trans-unit>
+        <trans-unit id="jogedBumbung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">joged bumbung</target>
+        </trans-unit>
+        <trans-unit id="fusionOfGamelanAndJoged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of gamelan and joged</target>
+        </trans-unit>
+        <trans-unit id="jukeJointBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">juke joint blues</target>
+        </trans-unit>
+        <trans-unit id="fusionOfBluesAndSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of blues and soul</target>
+        </trans-unit>
+        <trans-unit id="jùjú" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jùjú</target>
+        </trans-unit>
+        <trans-unit id="jumpBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">jump blues</target>
+        </trans-unit>
+        <trans-unit id="uptempoBluesMusicPlayedWithHorns" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">uptempo blues music played with horns</target>
+        </trans-unit>
+        <trans-unit id="fasterFormOfProgressiveHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">faster form of progressive house</target>
+        </trans-unit>
+        <trans-unit id="kalamatianó" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kalamatianó</target>
+        </trans-unit>
+        <trans-unit id="kanHaDiskan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kan ha diskan</target>
+        </trans-unit>
+        <trans-unit id="kansasCityBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kansas city blues</target>
+        </trans-unit>
+        <trans-unit id="kachāshī" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kachāshī</target>
+        </trans-unit>
+        <trans-unit id="kawachiOndo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kawachi ondo</target>
+        </trans-unit>
+        <trans-unit id="kayōkyoku" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kayōkyoku</target>
+        </trans-unit>
+        <trans-unit id="kacapiSuling" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kacapi suling</target>
+        </trans-unit>
+        <trans-unit id="kiwiRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kiwi rock</target>
+        </trans-unit>
+        <trans-unit id="kvæði" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kvæði</target>
+        </trans-unit>
+        <trans-unit id="kwassaKwassa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kwassa kwassa</target>
+        </trans-unit>
+        <trans-unit id="latinMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">latin metal</target>
+        </trans-unit>
+        <trans-unit id="latinPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">latin pop</target>
+        </trans-unit>
+        <trans-unit id="legényes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">legényes</target>
+        </trans-unit>
+        <trans-unit id="liquidFunk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">liquid funk</target>
+        </trans-unit>
+        <trans-unit id="formOfDrumAndBassWithAHeavyEmphasisOnMelody" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">form of drum and bass with a heavy emphasis on melody</target>
+        </trans-unit>
+        <trans-unit id="anyMusicRecordedAtAQualityLowerThanUsual" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music recorded at a quality lower than usual</target>
+        </trans-unit>
+        <trans-unit id="longSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">long song</target>
+        </trans-unit>
+        <trans-unit id="louisianaBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">louisiana blues</target>
+        </trans-unit>
+        <trans-unit id="downtempoMusicIntendedToGiveTheListenerASenseOfBeingSomewhereElseIEAJungleOrOuterSpace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">downtempo music intended to give the listener a sense of being somewhere else, i.e. a jungle or outer space</target>
+        </trans-unit>
+        <trans-unit id="loversRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">lovers rock</target>
+        </trans-unit>
+        <trans-unit id="formOfReggaeFusionKnownForItsRomanticLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">form of reggae fusion known for its romantic lyrics</target>
+        </trans-unit>
+        <trans-unit id="extremeFormOfAmbientMusicConsistingOfLongPeriodsOfSilenceAndOccasionalVeryMinuteSounds" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">extreme form of ambient music consisting of long periods of silence and occasional, very minute sounds</target>
+        </trans-unit>
+        <trans-unit id="lubbockSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">lubbock sound</target>
+        </trans-unit>
+        <trans-unit id="lukKrung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">luk krung</target>
+        </trans-unit>
+        <trans-unit id="morePolishedFormOfLukThung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">more polished form of luk thung</target>
+        </trans-unit>
+        <trans-unit id="lukThung" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">luk thung</target>
+        </trans-unit>
+        <trans-unit id="soothingSongSungToYoungChildrenToLullThemToSleep" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">soothing song sung to young children to lull them to sleep</target>
+        </trans-unit>
+        <trans-unit id="mafiosoRap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mafioso rap</target>
+        </trans-unit>
+        <trans-unit id="subgenreOfGangstaRapThatFocusesOnOrganizedCrime" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">subgenre of gangsta rap that focuses on organized crime</target>
+        </trans-unit>
+        <trans-unit id="mangueBit" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mangue bit</target>
+        </trans-unit>
+        <trans-unit id="manilaSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">manila sound</target>
+        </trans-unit>
+        <trans-unit id="martialIndustrial" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">martial industrial</target>
+        </trans-unit>
+        <trans-unit id="styleOfNeoFolkInformedByMilitaryMarchesAndMilitaristicThemes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of neo-folk informed by military marches and militaristic themes</target>
+        </trans-unit>
+        <trans-unit id="aCapellaFlamencoMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a capella flamenco music</target>
+        </trans-unit>
+        <trans-unit id="fusionOfMetalcoreAndMathRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of metalcore and math rock</target>
+        </trans-unit>
+        <trans-unit id="mathRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">math rock</target>
+        </trans-unit>
+        <trans-unit id="rhythmicallyComplexFormOfExperimentalRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">rhythmically complex form of experimental rock</target>
+        </trans-unit>
+        <trans-unit id="anyMusicCreatedToAidMeditationProcedures" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music created to aid meditation procedures</target>
+        </trans-unit>
+        <trans-unit id="medievalFolkRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">medieval folk rock</target>
+        </trans-unit>
+        <trans-unit id="medievalMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">medieval metal</target>
+        </trans-unit>
+        <trans-unit id="melodicHardcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">melodic hardcore</target>
+        </trans-unit>
+        <trans-unit id="styleOfHardcorePunkKnownForItsSlowerMelodicGuitarsJuxtaposedWithShoutedVocals" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of hardcore punk known for its slower, melodic guitars, juxtaposed with shouted vocals</target>
+        </trans-unit>
+        <trans-unit id="melodicMetalcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">melodic metalcore</target>
+        </trans-unit>
+        <trans-unit id="fusionOfMelodicHardcoreAndMetalcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of melodic hardcore and metalcore</target>
+        </trans-unit>
+        <trans-unit id="anyMusicThatUtilizesMelodyTheCombinationOfNotesSoThatTheyArePerceivedAsASingleStringOfMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any music that utilizes melody, the combination of notes so that they are perceived as a single string of music</target>
+        </trans-unit>
+        <trans-unit id="memphisBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">memphis blues</target>
+        </trans-unit>
+        <trans-unit id="memphisSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">memphis soul</target>
+        </trans-unit>
+        <trans-unit id="styleOfModernMerengueThatAttemptsToSoundSimilarToThCenturyMerengue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style of modern merengue that attempts to sound similar to 19th century merengue</target>
+        </trans-unit>
+        <trans-unit id="méringue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">méringue</target>
+        </trans-unit>
+        <trans-unit id="fusionOfThrashMetalAndHardcorePunkOftenSungMelodically" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of thrash metal and hardcore punk; often sung melodically</target>
+        </trans-unit>
+        <trans-unit id="mexicanRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mexican rock</target>
+        </trans-unit>
+        <trans-unit id="miamiBass" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">miami bass</target>
+        </trans-unit>
+        <trans-unit id="raveInspiredStyleOfHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">rave-inspired style of hip hop</target>
+        </trans-unit>
+        <trans-unit id="minimalistStrippedDownFormOfHouseMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minimalist, stripped down form of house music</target>
+        </trans-unit>
+        <trans-unit id="rockInspiredMeringueMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">rock-inspired meringue music</target>
+        </trans-unit>
+        <trans-unit id="minYō" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">min'yō</target>
+        </trans-unit>
+        <trans-unit id="heavilyExperimentalFormOfOrchestralMusicKnownForItsSimplicity" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavily experimental form of orchestral music known for its simplicity</target>
+        </trans-unit>
+        <trans-unit id="minimalTrance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minimal trance</target>
+        </trans-unit>
+        <trans-unit id="fusionOfPsychedelicTranceAndMinimalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of psychedelic trance and minimal music</target>
+        </trans-unit>
+        <trans-unit id="minimalTechno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minimal techno</target>
+        </trans-unit>
+        <trans-unit id="fusionOfTechnoAndMinimalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of techno and minimal music</target>
+        </trans-unit>
+        <trans-unit id="minneapolisSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">minneapolis sound</target>
+        </trans-unit>
+        <trans-unit id="modernClassical" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">modern classical</target>
+        </trans-unit>
+        <trans-unit id="looseTermForOrchestralMusicMadeDuringOrAfterTheThCentury" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">loose term for orchestral music made during or after the 20th century</target>
+        </trans-unit>
+        <trans-unit id="modernRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">modern rock</target>
+        </trans-unit>
+        <trans-unit id="anyRockMusicUsuallyAlternativeRockMadeDuringOrAfterTheS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">any rock music (usually alternative rock) made during or after the 1990s</target>
+        </trans-unit>
+        <trans-unit id="morLam" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mor lam</target>
+        </trans-unit>
+        <trans-unit id="morLamSing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mor lam sing</target>
+        </trans-unit>
+        <trans-unit id="fastPacedSexualAndModernizedFormOfMorLam" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fast-paced, sexual, and modernized form of mor lam</target>
+        </trans-unit>
+        <trans-unit id="fusionOfElectroHouseAndReggaeton" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of electro house and reggaeton</target>
+        </trans-unit>
+        <trans-unit id="slickPopInformedFormOfSoulMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">slick, pop-informed form of soul music</target>
+        </trans-unit>
+        <trans-unit id="mozambiqueOfCuba" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mozambique of cuba</target>
+        </trans-unit>
+        <trans-unit id="mozambiqueOfAmerica" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mozambique of america</target>
+        </trans-unit>
+        <trans-unit id="mushroomJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">mushroom jazz</target>
+        </trans-unit>
+        <trans-unit id="eclecticGenreThatDrawsFromDowntempoHipHopAndWorldStyles" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">eclectic genre that draws from downtempo, hip hop, and world styles</target>
+        </trans-unit>
+        <trans-unit id="musicDrama" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music drama</target>
+        </trans-unit>
+        <trans-unit id="anArtworkThatCoversAllFormsOfArt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">an artwork that covers all forms of art</target>
+        </trans-unit>
+        <trans-unit id="musicHall" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">music hall</target>
+        </trans-unit>
+        <trans-unit id="musicaLlanero" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">musica llanero</target>
+        </trans-unit>
+        <trans-unit id="musiqiEAssil" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">musiqi-e assil</target>
+        </trans-unit>
+        <trans-unit id="heavilyExperimentalOrchestralMusicKnownForItsUseOfElectronicInstruments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">heavily experimental orchestral music known for its use of electronic instruments</target>
+        </trans-unit>
+        <trans-unit id="nanguanMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nanguan (music)</target>
+        </trans-unit>
+        <trans-unit id="bornMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">born music</target>
+        </trans-unit>
+        <trans-unit id="nashvilleSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nashville sound</target>
+        </trans-unit>
+        <trans-unit id="nationalSocialistBlackMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">national socialist black metal</target>
+        </trans-unit>
+        <trans-unit id="blackMetalWithLyricsSupportingNationalSocialismFascismAndOtherFarRightIdeologies" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">black metal with lyrics supporting national socialism, fascism, and other far-right ideologies</target>
+        </trans-unit>
+        <trans-unit id="orchestralMusicOfTheEarlyThCentury" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">orchestral music of the early 20th century</target>
+        </trans-unit>
+        <trans-unit id="neoclassicalDarkWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neoclassical dark wave</target>
+        </trans-unit>
+        <trans-unit id="fusionOfNeoclassicalAndDarkWaveMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of neoclassical and dark wave music</target>
+        </trans-unit>
+        <trans-unit id="neoClassicalMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neo-classical metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfNeoclassicalAndHeavyMetalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of neoclassical and heavy metal music</target>
+        </trans-unit>
+        <trans-unit id="neoclassicalNewAge" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neoclassical new age</target>
+        </trans-unit>
+        <trans-unit id="fusionOfNeoclassicalAndNewAgeMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of neoclassical and new age music</target>
+        </trans-unit>
+        <trans-unit id="neoKyma" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neo kyma</target>
+        </trans-unit>
+        <trans-unit id="fusionOfFolkRockAndPostIndustrialMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of folk rock and post-industrial music</target>
+        </trans-unit>
+        <trans-unit id="neoProgressiveRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neo-progressive rock</target>
+        </trans-unit>
+        <trans-unit id="highlyTheatricalEmotionalAndCleanSubgenreOfProgressiveRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">highly theatrical, emotional, and clean subgenre of progressive rock</target>
+        </trans-unit>
+        <trans-unit id="looseTermForAlternativeRockInspiredByPsychedelicAndAcidRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">loose term for alternative rock inspired by psychedelic and acid rock</target>
+        </trans-unit>
+        <trans-unit id="neoSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neo soul</target>
+        </trans-unit>
+        <trans-unit id="alternativeFormOfHipHopSoulThatFocusedOnMoreSoulfulAndEmotiveVocalsAndLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">alternative form of hip hop soul that focused on more soulful and emotive vocals and lyrics</target>
+        </trans-unit>
+        <trans-unit id="neotraditionalCountry" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neotraditional country</target>
+        </trans-unit>
+        <trans-unit id="hipHopWithLyricsConcerningTypicallyNerdySubjects" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop with lyrics concerning typically 'nerdy' subjects</target>
+        </trans-unit>
+        <trans-unit id="neueDeutscheWelle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neue deutsche welle</target>
+        </trans-unit>
+        <trans-unit id="neueDeutscheTodeskunst" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">neue deutsche todeskunst</target>
+        </trans-unit>
+        <trans-unit id="moreAdvancedFormOfTechstep" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">more advanced form of techstep</target>
+        </trans-unit>
+        <trans-unit id="formOfAmbientMusicIntendedForUseDuringMeditation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">form of ambient music intended for use during meditation</target>
+        </trans-unit>
+        <trans-unit id="newBeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new beat</target>
+        </trans-unit>
+        <trans-unit id="newJackSwingOrSwingbeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new jack swing (or swingbeat)</target>
+        </trans-unit>
+        <trans-unit id="slicklyProducedFusionOfSoulPopDanceAndHipHopMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">slickly produced fusion of soul, pop, dance, and hip hop music</target>
+        </trans-unit>
+        <trans-unit id="newOrleansBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new orleans blues</target>
+        </trans-unit>
+        <trans-unit id="newProg" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new prog</target>
+        </trans-unit>
+        <trans-unit id="moreAmbitiousAndAlternativeRockInspiredFormOfProgressiveRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">more ambitious and alternative rock-inspired form of progressive rock</target>
+        </trans-unit>
+        <trans-unit id="newRave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new rave</target>
+        </trans-unit>
+        <trans-unit id="newSchoolHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new school hip hop</target>
+        </trans-unit>
+        <trans-unit id="hipHopMusicMadeAfterTheMidS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">hip hop music made after the mid-80s</target>
+        </trans-unit>
+        <trans-unit id="newTaiwaneseSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new taiwanese song</target>
+        </trans-unit>
+        <trans-unit id="newWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new wave</target>
+        </trans-unit>
+        <trans-unit id="earlyFormOfPunkInformedSynthpop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">early form of punk-informed synthpop</target>
+        </trans-unit>
+        <trans-unit id="newWaveOfBritishHeavyMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new wave of british heavy metal</target>
+        </trans-unit>
+        <trans-unit id="newWaveOfNewWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new wave of new wave</target>
+        </trans-unit>
+        <trans-unit id="newWeirdAmerica" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new weird america</target>
+        </trans-unit>
+        <trans-unit id="termForTheOftenPsychedelicInformedIndieFolkMusicOfTheS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">term for the, often psychedelic-informed, indie folk music of the 2000s</target>
+        </trans-unit>
+        <trans-unit id="newYorkBlues" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">new york blues</target>
+        </trans-unit>
+        <trans-unit id="fusionOfChiptuneAndMetalcore" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of chiptune and metalcore</target>
+        </trans-unit>
+        <trans-unit id="noWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">no wave</target>
+        </trans-unit>
+        <trans-unit id="avantGardePunkSubgenreCreatedAsAReactionToTheCommercialNewWave" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">avant-garde punk subgenre created as a reaction to the commercial new wave</target>
+        </trans-unit>
+        <trans-unit id="trendInOrchestralRockAndElectronicMusicWhereHarshNonMelodicAndOftenRandomSoundsAreUsedAlongsideOrInPlaceOfConventionalSounds" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">trend in orchestral, rock, and electronic music where harsh, non-melodic, and often random sounds are used alongside or in place of conventional sounds</target>
+        </trans-unit>
+        <trans-unit id="noisePop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">noise pop</target>
+        </trans-unit>
+        <trans-unit id="derivativeOfNoiseRockInWhichNoisesAndFeedbackAreUsedButMadeIntoAMelodicOftenRelaxingSound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">derivative of noise rock in which noises and feedback are used, but made into a melodic, often relaxing sound</target>
+        </trans-unit>
+        <trans-unit id="noiseRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">noise rock</target>
+        </trans-unit>
+        <trans-unit id="loudAtonalDissonantAndUnconventionalRockMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">loud, atonal, dissonant, and unconventional rock music</target>
+        </trans-unit>
+        <trans-unit id="nordicFolk" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nordic folk</target>
+        </trans-unit>
+        <trans-unit id="nordicFolkDance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nordic folk dance</target>
+        </trans-unit>
+        <trans-unit id="norteño" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">norteño</target>
+        </trans-unit>
+        <trans-unit id="northernSoul" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">northern soul</target>
+        </trans-unit>
+        <trans-unit id="modernHouseMusicThatDrawsInspirationFromDisco" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">modern house music that draws inspiration from disco</target>
+        </trans-unit>
+        <trans-unit id="nuGaze" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu gaze</target>
+        </trans-unit>
+        <trans-unit id="nuJazz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu jazz</target>
+        </trans-unit>
+        <trans-unit id="nuMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu metal</target>
+        </trans-unit>
+        <trans-unit id="fusionOfThrashGrooveAndAlternativeMetalThatAlsoBorrowsElementsFromPunkIndustrialGrungeAndHipHop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">fusion of thrash, groove, and alternative metal that also borrows elements from punk, industrial, grunge, and hip hop</target>
+        </trans-unit>
+        <trans-unit id="nuSkoolBreaks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nu skool breaks</target>
+        </trans-unit>
+        <trans-unit id="aMoreAbstractAndDrumBassInspiredStyleOfBreakbeat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a more abstract and drum &amp; bass-inspired style of breakbeat</target>
+        </trans-unit>
+        <trans-unit id="oldTimeRadioOldTimeRadioShowsFromTheS" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">old time radio – old time radio shows from the 30's</target>
+        </trans-unit>
+        <trans-unit id="ottomanMilitaryBand" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ottoman military band</target>
+        </trans-unit>
+        <trans-unit id="theOldestVarietyOfMilitaryMarchingBandInTheWorld" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">the oldest variety of military marching band in the world.</target>
+        </trans-unit>
+        <trans-unit id="peruvianCumbia" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">peruvian cumbia</target>
+        </trans-unit>
+        <trans-unit id="alsoKnownAsChichaMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">also known as chicha music.</target>
+        </trans-unit>
+        <trans-unit id="powerMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">power metal</target>
+        </trans-unit>
+        <trans-unit id="AStyleOfHeavyMetalWithMelodicVocalsSymphonicContextAndWithFantasticOrMythicalLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A style of heavy metal with melodic vocals, symphonic context and with fantastic or mythical lyrics.</target>
+        </trans-unit>
+        <trans-unit id="progressiveMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">progressive metal</target>
+        </trans-unit>
+        <trans-unit id="ASubgenreOfHeavyMetalAndProgressiveRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A subgenre of heavy metal and progressive rock.</target>
+        </trans-unit>
+        <trans-unit id="progressiveRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">progressive rock</target>
+        </trans-unit>
+        <trans-unit id="ASubgenreOfRockMusicWithOriginsOfJazzFusionAndPsychedelicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A subgenre of rock music with origins of jazz fusion and psychedelic rock.</target>
+        </trans-unit>
+        <trans-unit id="psychedelicRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">psychedelic rock</target>
+        </trans-unit>
+        <trans-unit id="AStyleOfRockMusicThatRelatesToPsychedelia" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A style of rock music that relates to psychedelia.</target>
+        </trans-unit>
+        <trans-unit id="pubRock" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pub rock</target>
+        </trans-unit>
+        <trans-unit id="salsaErotica" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">salsa erotica</target>
+        </trans-unit>
+        <trans-unit id="lyricallyExplicitFormOfSalsaRomantica" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">lyrically explicit form of salsa romantica</target>
+        </trans-unit>
+        <trans-unit id="salsaRomantica" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">salsa romantica</target>
+        </trans-unit>
+        <trans-unit id="aSoftRomanticFormOfSalsaMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a soft, romantic form of salsa music</target>
+        </trans-unit>
+        <trans-unit id="SambaCanção" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Samba Canção</target>
+        </trans-unit>
+        <trans-unit id="traditionalSambaInSlowTempoAndWithRomanticLyricsInfluencedByBolero" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">traditional samba in slow tempo and with romantic lyrics. influenced by bolero</target>
+        </trans-unit>
+        <trans-unit id="aGenreOfSambaWithAChoppyReggaeLikeRhythm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a genre of samba with a choppy, reggae-like rhythm.</target>
+        </trans-unit>
+        <trans-unit id="scrumpyAndWestern" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">scrumpy and western</target>
+        </trans-unit>
+        <trans-unit id="pertainingToSongsDescribingTheCurrentSituationMostPrevalentInFilms" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pertaining to songs describing the current situation; most prevalent in films</target>
+        </trans-unit>
+        <trans-unit id="slackKeyGuitarKihoalu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">slack-key guitar (kihoalu)</target>
+        </trans-unit>
+        <trans-unit id="sludgeMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">sludge metal</target>
+        </trans-unit>
+        <trans-unit id="ASubgenreOfHeavyMetalWithSlowTunedTemposAbrasiveDistortionAndHarshVocals" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A subgenre of heavy metal with slow-tuned tempos, abrasive distortion and harsh vocals</target>
+        </trans-unit>
+        <trans-unit id="sonMontuno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">son montuno</target>
+        </trans-unit>
+        <trans-unit id="aMixtureOfSongoHipHopAndSalsa" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a mixture of songo, hip hop and salsa</target>
+        </trans-unit>
+        <trans-unit id="soulMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">soul music</target>
+        </trans-unit>
+        <trans-unit id="taiTu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tai tu</target>
+        </trans-unit>
+        <trans-unit id="taiwanesePop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">taiwanese pop</target>
+        </trans-unit>
+        <trans-unit id="tamilChristianKeerthanai" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tamil christian keerthanai</target>
+        </trans-unit>
+        <trans-unit id="táncház" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">táncház</target>
+        </trans-unit>
+        <trans-unit id="teenPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">teen pop</target>
+        </trans-unit>
+        <trans-unit id="ASubgenreOfPopMusicTargetedTowardsPreTeenAndTeenageListeners" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A subgenre of pop music targeted towards pre-teen and teenage listeners</target>
+        </trans-unit>
+        <trans-unit id="tembangSunda" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tembang sunda</target>
+        </trans-unit>
+        <trans-unit id="thrashMetal" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">thrash metal</target>
+        </trans-unit>
+        <trans-unit id="AHeavyMetalSubgenreKnownForItsFastTemposScreamingVocalsExtendedGuitarSolosAndAggressiveLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A heavy metal subgenre known for its fast tempos, screaming vocals, extended guitar solos and aggressive lyrics.</target>
+        </trans-unit>
+        <trans-unit id="tibetanPop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tibetan pop</target>
+        </trans-unit>
+        <trans-unit id="tOngGuitar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">t'ong guitar</target>
+        </trans-unit>
+        <trans-unit id="tropicalMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">tropical music</target>
+        </trans-unit>
+        <trans-unit id="videoGameMusic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">video game music</target>
+        </trans-unit>
+        <trans-unit id="wailaChickenScratch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">waila (chicken scratch)</target>
+        </trans-unit>
+        <trans-unit id="wongShadow" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">wong shadow</target>
+        </trans-unit>
+        <trans-unit id="xoomiiKhoomiiHoomii" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">xoomii (khoomii, hoomii)</target>
+        </trans-unit>
+        <trans-unit id="DownloadForSongWithID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Download for song with ID </target>
+        </trans-unit>
+        <trans-unit id="FileAlreadyHaveThumbnails" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">File already have thumbnails</target>
+        </trans-unit>
+        <trans-unit id="Supported" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> supported.</target>
+        </trans-unit>
+        <trans-unit id="DoYouWantToTextAHref" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">, do you want to text &lt;a href=' href=''&gt;&lt;/a href='&gt;</target>
+        </trans-unit>
+        <trans-unit id="AddA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">'&gt;add ? </target>
+        </trans-unit>
+        <trans-unit id="Pompinka" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">1Pompinka5 *</target>
+        </trans-unit>
+        <trans-unit id="display" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">display</target>
+        </trans-unit>
+        <trans-unit id="aID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">a.ID</target>
+        </trans-unit>
+        <trans-unit id="pID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">p.ID</target>
+        </trans-unit>
+        <trans-unit id="dMYyyy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">d-M-yyyy</target>
+        </trans-unit>
+        <trans-unit id="bodyBackgroundUrlCssApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">body{background: url(/css/App/</target>
+        </trans-unit>
+        <trans-unit id="PngNoRepeatCenterCenterFixedBackgroundSizeCover" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">.png) no-repeat center center fixed; background-size: cover;}</target>
+        </trans-unit>
+        <trans-unit id="attachmentFilename" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">attachment; filename=</target>
+        </trans-unit>
+        <trans-unit id="TraslationKey" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Traslation key </target>
+        </trans-unit>
+        <trans-unit id="NotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> not found.</target>
+        </trans-unit>
+        <trans-unit id="idPageName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">id page name: </target>
+        </trans-unit>
+        <trans-unit id="idPageArg" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">id page arg: </target>
+        </trans-unit>
+        <trans-unit id="idPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">id page: </target>
+        </trans-unit>
+        <trans-unit id="SearchTerm" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search term</target>
+        </trans-unit>
+        <trans-unit id="MyProfile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">My profile</target>
+        </trans-unit>
+        <trans-unit id="AddNewSong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add new song</target>
+        </trans-unit>
+        <trans-unit id="AllLyrics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All lyrics</target>
+        </trans-unit>
+        <trans-unit id="deleteBoth" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">deleteBoth('</target>
+        </trans-unit>
+        <trans-unit id="EnLang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> en2 lang</target>
+        </trans-unit>
+        <trans-unit id="deleteEn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">deleteEn('</target>
+        </trans-unit>
+        <trans-unit id="CzLang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> cz2 lang</target>
+        </trans-unit>
+        <trans-unit id="deleteCz" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">deleteCz ('</target>
+        </trans-unit>
+        <trans-unit id="methodauthGetSessiontoken" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">methodauth.getSessiontoken</target>
+        </trans-unit>
+        <trans-unit id="SELECTIDFROMKocCats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">SELECT ID FROM Koc_Cats</target>
+        </trans-unit>
+        <trans-unit id="buttonDanger" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">button danger</target>
+        </trans-unit>
+        <trans-unit id="VarAnswerID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">';var answerID = '</target>
+        </trans-unit>
+        <trans-unit id="Comments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> comments</target>
+        </trans-unit>
+        <trans-unit id="Domains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> domains</target>
+        </trans-unit>
+        <trans-unit id="comment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comment</target>
+        </trans-unit>
+        <trans-unit id="comments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">comments</target>
+        </trans-unit>
+        <trans-unit id="paddingComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">padding10 comment</target>
+        </trans-unit>
+        <trans-unit id="balloonRightBalloonComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">balloon right  balloonComment</target>
+        </trans-unit>
+        <trans-unit id="inputControlCheckboxSmallCheck" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input-control checkbox small-check</target>
+        </trans-unit>
+        <trans-unit id="returnAddNewComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return addNewComment(</target>
+        </trans-unit>
+        <trans-unit id="btnAddCommentButton" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">btnAddComment button</target>
+        </trans-unit>
+        <trans-unit id="returnThumbsUpComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return thumbsUpComment('</target>
+        </trans-unit>
+        <trans-unit id="buttonOranzovyObtahTooltip" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">button oranzovyObtah tooltip</target>
+        </trans-unit>
+        <trans-unit id="buttonTooltip" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">button tooltip</target>
+        </trans-unit>
+        <trans-unit id="returnThumbsDownComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return thumbsDownComment('</target>
+        </trans-unit>
+        <trans-unit id="buttonOranzovyObtah" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">button oranzovyObtah</target>
+        </trans-unit>
+        <trans-unit id="returnAddOrRemoveSpamVote" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return addOrRemoveSpamVote('</target>
+        </trans-unit>
+        <trans-unit id="returnAddImagesToComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return addImagesToComment('</target>
+        </trans-unit>
+        <trans-unit id="returnEditComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return editComment('</target>
+        </trans-unit>
+        <trans-unit id="returnRemoveComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return removeComment('</target>
+        </trans-unit>
+        <trans-unit id="returnBlockOrUnblockByIp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return blockOrUnblockByIp('</target>
+        </trans-unit>
+        <trans-unit id="returnBlockOrUnblockByNick" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return blockOrUnblockByNick('</target>
+        </trans-unit>
+        <trans-unit id="pánečci" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pánečci</target>
+        </trans-unit>
+        <trans-unit id="OnRequest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> on request</target>
+        </trans-unit>
+        <trans-unit id="veterinarians" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">veterinarians</target>
+        </trans-unit>
+        <trans-unit id="herOwner" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">her owner</target>
+        </trans-unit>
+        <trans-unit id="páníčkovského" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">páníčkovského</target>
+        </trans-unit>
+        <trans-unit id="pánečkovského" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pánečkovského</target>
+        </trans-unit>
+        <trans-unit id="TheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> the user</target>
+        </trans-unit>
+        <trans-unit id="iconPlusIconCategory" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">icon-plus-2 iconCategory</target>
+        </trans-unit>
+        <trans-unit id="renameCategory" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">renameCategory(</target>
+        </trans-unit>
+        <trans-unit id="Team" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">(team</target>
+        </trans-unit>
+        <trans-unit id="prevailed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">prevailed</target>
+        </trans-unit>
+        <trans-unit id="lost" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">lost</target>
+        </trans-unit>
+        <trans-unit id="FromTheWeb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> from the web</target>
+        </trans-unit>
+        <trans-unit id="Series" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> series</target>
+        </trans-unit>
+        <trans-unit id="returnDeleteComments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">return deleteComments(</target>
+        </trans-unit>
+        <trans-unit id="jsJqueryMinJsScript" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">js/jquery.min.js'&gt;</target>
+        </trans-unit>
+        <trans-unit id="ADivIdSczComments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">'&gt;&lt;div id='scz_comments id=''&gt;&lt;/div id='scz_comments&gt;</target>
+        </trans-unit>
+        <trans-unit id="ClassMetroDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">' class='metro'&gt;</target>
+        </trans-unit>
+        <trans-unit id="OutOf" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> out of 5</target>
+        </trans-unit>
+        <trans-unit id="createdBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">created by:</target>
+        </trans-unit>
+        <trans-unit id="adoptedBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">adopted by:</target>
+        </trans-unit>
+        <trans-unit id="TableName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> + tableName +</target>
+        </trans-unit>
+        <trans-unit id="ColumnID" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> + columnID +</target>
+        </trans-unit>
+        <trans-unit id="BySize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> by size:</target>
+        </trans-unit>
+        <trans-unit id="InTheSize" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> in the size</target>
+        </trans-unit>
+        <trans-unit id="CacheHints" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> + cacheHints +</target>
+        </trans-unit>
+        <trans-unit id="SELECTFROMGeoCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">SELECT * FROM Geo_Caches </target>
+        </trans-unit>
+        <trans-unit id="SELECTFROMGeoLists" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">SELECT * FROM Geo_Lists</target>
+        </trans-unit>
+        <trans-unit id="pitch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">pitch</target>
+        </trans-unit>
+        <trans-unit id="descent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">descent</target>
+        </trans-unit>
+        <trans-unit id="visits" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">visits</target>
+        </trans-unit>
+        <trans-unit id="NoOfThat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> no, of that</target>
+        </trans-unit>
+        <trans-unit id="piechartDBrowserVersionsYearsDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">piechart_3d_browserVersions_years_div</target>
+        </trans-unit>
+        <trans-unit id="piechartDBrowserVersionsMonthsDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">piechart_3d_browserVersions_months_div</target>
+        </trans-unit>
+        <trans-unit id="piechartDBrowserVersionsWeeksDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">piechart_3d_browserVersions_weeks_div</target>
+        </trans-unit>
+        <trans-unit id="piechartDBrowserVersionsDaysDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">piechart_3d_browserVersions_days_div</target>
+        </trans-unit>
       </group>
     </body>
   </file>

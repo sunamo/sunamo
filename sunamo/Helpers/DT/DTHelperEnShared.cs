@@ -31,7 +31,7 @@ public partial class DTHelperEn
                     {
                         vr = new DateTime(year, month, day, 0, 0, 0);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                     }
                 }

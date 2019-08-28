@@ -90,7 +90,7 @@ public class ClipboardHelperWin : IClipboardHelper
         {
             result = Clipboard.GetText();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
         return result;

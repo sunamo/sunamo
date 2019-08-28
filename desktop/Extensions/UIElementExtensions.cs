@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 using desktop;
 using desktop.Controls;
+using desktop.Controls.Controls;
 using desktop.Controls.Input;
 public static partial class UIElementExtensions
 {
@@ -45,6 +46,11 @@ public static partial class UIElementExtensions
         {
             var txt = (TextBox)ui;
             return txt.Text;
+        }
+        else if (t == TypesControls.tTwoRadiosUC)
+        {
+            var txt = (TwoRadiosUC)ui;
+            return txt.GetBool();
         }
         else
         {

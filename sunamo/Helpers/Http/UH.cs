@@ -14,7 +14,7 @@ public partial class UH
         {
             return new Uri(s);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return null;
         }

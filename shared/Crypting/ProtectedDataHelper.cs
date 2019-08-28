@@ -26,7 +26,7 @@ public static class ProtectedDataHelper
                 entropy,
                 System.Security.Cryptography.DataProtectionScope.CurrentUser);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new SecureString();
             }

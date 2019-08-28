@@ -216,7 +216,7 @@ namespace desktop
                 await FS.DeleteFile(t);
                 files.Remove(o);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ThisApp.SetStatus(TypeOfMessage.Error, RL.GetString("FileCannotBeDeleted"));
             }

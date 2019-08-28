@@ -14,7 +14,7 @@ public class ConvertBase64
             string vr = Encoding.Unicode.GetString(Convert.FromBase64String(s));
             return vr;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return s;
         }

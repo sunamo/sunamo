@@ -795,10 +795,11 @@ public static partial class SH
         }
 
 
-        var deli2 = CA.ToListString(deli).ToArray();
+        var deli2 = BTS.CastArrayObjectToString(deli);
         var result = text.Split(deli2, stringSplitOptions).ToList();
-        CA.RemoveStringsEmpty(result);
         CA.Trim(result);
+        CA.RemoveStringsEmpty(result);
+        
         return result;
     }
 
@@ -1616,10 +1617,14 @@ public static partial class SH
     /// <returns></returns>
     public static string GetTextBetweenTwoChars(string p, int begin, int end)
     {
-        // a(1) - 1,3
-        return p.Substring(begin + 1, end - begin - 1);
-        // originally
-        //return p.Substring(begin+1, end - begin - 1);
+        if (end > begin)
+        {
+            // a(1) - 1,3
+            return p.Substring(begin + 1, end - begin - 1);
+            // originally
+            //return p.Substring(begin+1, end - begin - 1);
+        }
+        return p;
     }
 
     public static string ReplaceWhiteSpacesWithoutSpaces(string p)

@@ -36,25 +36,21 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
 
     private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-        var hMenu = ah(menu);
-        var staturBarH = ah(statusBar);
-        var dialogButtonsH = ah(dialogButtons);
-        var e1 = e.NewSize.Height;
+        var hMenu = menu.ActualHeight();
+        var staturBarH = statusBar.ActualHeight();
+        var dialogButtonsH = dialogButtons.ActualHeight();
+        
         var e2 = ControlHelper.ActualInnerSize(this).Height;
         var growingRow = e2 - hMenu - staturBarH - dialogButtonsH ;
         OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
 
-        Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
+        //Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
     }
 
     private double ah(FrameworkElement dialogButtons)
     {
+        return dialogButtons.ActualHeight();
         
-        if (dialogButtons == null)
-        {
-            return 0;
-        }
-        return dialogButtons.ActualHeight;
     }
 
     /// <summary>

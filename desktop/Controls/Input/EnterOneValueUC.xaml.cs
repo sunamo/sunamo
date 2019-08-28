@@ -131,7 +131,7 @@ namespace desktop.Controls.Input
             return name;
         }
 
-        List<FrameworkElement> fwElemements = null;
+        public List<FrameworkElement> fwElemements = null;
 
         void AddControl(int i, string name, FrameworkElement ui)
         {

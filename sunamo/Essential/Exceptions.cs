@@ -48,7 +48,7 @@ public class Exceptions
         return SH.Format2("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
     }
 
-    internal static object IsOdd(string before, string colName, IEnumerable col)
+    public static object IsOdd(string before, string colName, IEnumerable col)
     {
         if (col.Count() % 2 == 1)
         {
@@ -144,15 +144,42 @@ public class Exceptions
     {
         if (argValue == null)
         {
-            return CheckBefore(before) + argName + "is null";
+            return CheckBefore(before) + argName + " is null";
         }
         else if (argValue == string.Empty)
         {
-            return CheckBefore(before) + argName + "is empty (without trim)";
+            return CheckBefore(before) + argName + " is empty (without trim)";
         }
         else if (argValue.Trim() == string.Empty)
         {
-            return CheckBefore(before) + argName + "is empty (with trim)";
+            return CheckBefore(before) + argName + " is empty (with trim)";
+        }
+
+        return null;
+    }
+
+    internal static object IsNotWindowsPathFormat(string before, string argName, string argValue)
+    {
+        bool badFormat = false;
+
+        if (!char.IsLetter( argValue[0]))
+        {
+            badFormat = true;
+        }
+
+        if (char.IsLetter(argValue[1]))
+        {
+            badFormat = true;
+        }
+
+        if (argValue[1] != '\\' && argValue[2] != '\\')
+        {
+            badFormat = true;
+        }
+
+        if (badFormat)
+        {
+            return CheckBefore(before) + " " + argName + " is not in Windows path format";
         }
 
         return null;

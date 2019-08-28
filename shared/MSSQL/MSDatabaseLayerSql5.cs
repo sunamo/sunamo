@@ -34,7 +34,7 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
         {
             _conn.Open();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return false;
         }

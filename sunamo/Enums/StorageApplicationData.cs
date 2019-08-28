@@ -11,7 +11,7 @@ public enum StorageApplicationData
     IniFile,
     TextFile,
     /// <summary>
-    /// Stejný případ jako internalSaveLogic = false
+    /// Stejný případ jako publicSaveLogic = false
     /// </summary>
     NoWhere
 }

@@ -10,7 +10,7 @@ namespace F.WF
 {
     public partial class DialogLogin : Form
     {
-        //bool internalSaveLogic = false;
+        //bool publicSaveLogic = false;
         //const string h = "h";
         //const string l = "l";
 
@@ -25,12 +25,12 @@ namespace F.WF
         ///// <summary>
         ///// A1 je vhodna tehdy kdyz napriklad poustim python skripty, ve kterych nemuzu overit zda se mi podarilo nalogovat
         ///// </summary>
-        ///// <param name="internalSaveLogic"></param>
-        //public DialogLogin(bool internalSaveLogic)
+        ///// <param name="publicSaveLogic"></param>
+        //public DialogLogin(bool publicSaveLogic)
         //    : this()
         //{
-        //    this.internalSaveLogic = internalSaveLogic;
-        //    if (internalSaveLogic)
+        //    this.publicSaveLogic = publicSaveLogic;
+        //    if (publicSaveLogic)
         //    {
         //        this.txtHeslo.Text = RA.ReturnValueString(h);
         //        this.txtLogin.Text = RA.ReturnValueString(l);
@@ -40,7 +40,7 @@ namespace F.WF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //    if (internalSaveLogic)
+            //    if (publicSaveLogic)
             //    {
             //        RA.WriteToKeyString(h, "");
             //        RA.WriteToKeyString(l, this.txtLogin.Text);

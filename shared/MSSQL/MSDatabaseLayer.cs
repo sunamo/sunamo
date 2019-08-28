@@ -601,7 +601,7 @@ public partial class MSDatabaseLayer
         {
             _conn.Open();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return false;
         }

@@ -70,7 +70,7 @@ public static bool CreateMainAppLog(string name)
         {
             existsSource = EventLog.SourceExists(name);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
         }
 

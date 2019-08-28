@@ -106,7 +106,8 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
-        if (ConvertCamelConventionWithNumbers.IsCamelWithNumber(between))
+        // TODO: Should to manually decide, can be name of class but also (czech) word 
+        if (ConvertCamelConventionWithNumbers.IsCamelWithNumber(between) && !SH.ContainsDiacritic(between))
         {
             result = false; return result;
         }

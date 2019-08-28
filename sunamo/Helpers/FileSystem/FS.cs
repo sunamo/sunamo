@@ -377,7 +377,7 @@ public partial class FS
                 {
                     newpath = FS.Combine(directory, filename);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     File.Delete(item);
                     continue;
