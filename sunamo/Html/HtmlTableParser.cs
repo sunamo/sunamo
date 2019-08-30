@@ -33,7 +33,6 @@ namespace sunamo
                 return;
             }
 
-
             int maxColumn = 0;
 
             List<HtmlNode> rows = HtmlHelper.ReturnAllTags(html, "tr");
@@ -49,7 +48,7 @@ namespace sunamo
                 int maxColumnActual = tds.Count;
                 foreach (var cellRow in tds)
                 {
-                    string tdWithColspan = HtmlHelper.GetValueOfAttribute("colspan", cellRow, true);
+                    string tdWithColspan = HtmlHelper.GetValueOfAttribute(HtmlAttrValue.colspan, cellRow, true);
                     if (tdWithColspan != "")
                     {
                         int colspan = BTS.TryParseInt(tdWithColspan, 0);
@@ -78,7 +77,7 @@ namespace sunamo
                     {
                         HtmlNode cellRow = ths[c];
                         data[r - startRow, c] = cellRow.InnerHtml;
-                        string tdWithColspan = HtmlHelper.GetValueOfAttribute("colspan", cellRow, true);
+                        string tdWithColspan = HtmlHelper.GetValueOfAttribute(HtmlAttrValue.colspan, cellRow, true);
                         if (tdWithColspan != "")
                         {
                             int colspan = BTS.TryParseInt(tdWithColspan, 0);

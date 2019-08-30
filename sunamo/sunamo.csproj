@@ -80,9 +80,9 @@
     <EmbeddedResource Include="MultilingualResources\sunamo.en-US.xlf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Diacritics" Version="2.0.18316.1" />
+    <PackageReference Include="Diacritics" Version="2.0.19240.3" />
     <PackageReference Include="fmdev.XliffParser" Version="0.5.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
   </ItemGroup>
@@ -98,7 +98,10 @@
       <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\net45\fmdev.XliffParser.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\dll\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>..\dll\YamlDotNet.dll</HintPath>

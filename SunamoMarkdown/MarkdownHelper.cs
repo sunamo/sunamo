@@ -15,11 +15,13 @@ namespace SunamoMarkdown
 
         public static string ConvertToMarkDownMy(string input)
         {
-            var hd = HtmlAgilityHelper.CreateHtmlDocument();
+            dynamic hd = null;
+            //hd = HtmlAgilityHelper.CreateHtmlDocument(); 
             hd.LoadHtml(input);
 
-            var nodes = HtmlAgilityHelper.Nodes(hd.DocumentNode, true, "*");
-            HtmlHelper.DeleteAttributesFromAllNodes(nodes);
+            dynamic nodes = null;
+            //nodes = HtmlAgilityHelper.Nodes(hd.DocumentNode, true, "*");
+            //HtmlHelper.DeleteAttributesFromAllNodes(nodes);
 
             input = hd.DocumentNode.OuterHtml;
 

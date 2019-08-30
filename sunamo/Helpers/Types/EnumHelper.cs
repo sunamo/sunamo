@@ -117,11 +117,12 @@ public static partial class EnumHelper
 
     /// <summary>
     /// ignore case
+    /// A1 must be, default(T) cant be returned because in comparing default(T) is always true for any value of T
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "web"></param>
     /// <returns></returns>
-    public static T Parse<T>(string web)
+    public static T Parse<T>(string web, T _def)
         where T : struct
     {
         T result;
@@ -130,7 +131,7 @@ public static partial class EnumHelper
             return result;
         }
 
-        return default(T);
+        return _def;
     }
 
     /// <summary>

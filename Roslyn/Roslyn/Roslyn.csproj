@@ -57,7 +57,7 @@
 
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\dll\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
   </ItemGroup>
 

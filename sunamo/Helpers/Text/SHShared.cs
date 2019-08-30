@@ -1292,7 +1292,14 @@ public static partial class SH
         return title;
     }
 
-    public static string RemoveBetweenAndEdgeChars(string s, char begin, char end)
+    /// <summary>
+    /// A2,3 can be string or char
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="begin"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public static string RemoveBetweenAndEdgeChars(string s, object begin, object end)
     {
         Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
         return regex.Replace(s, string.Empty);
@@ -1930,5 +1937,17 @@ public static string GetToFirstChar(string input, int indexOfChar)
     public static string Format4(string v, params object[] o)
     {
         return string.Format(v, o);
+    }
+
+public static bool EqualsOneOfThis(string p1, params string[] p2)
+    {
+        foreach (string item in p2)
+        {
+            if (p1 == item)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

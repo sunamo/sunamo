@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SharpConfig, Version=3.2.5.0, Culture=neutral, PublicKeyToken=c1deedac91bd7724, processorArchitecture=MSIL">
-      <HintPath>..\packages\sharpconfig.3.2.5\lib\net20\SharpConfig.dll</HintPath>
+      <HintPath>..\..\AllProjectsSearch\packages\sharpconfig.3.2.5\lib\net20\SharpConfig.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

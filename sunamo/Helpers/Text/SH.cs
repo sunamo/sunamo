@@ -1120,18 +1120,6 @@ public static partial class SH
         return v.ToString();
     }
 
-    public static bool EqualsOneOfThis(string p1, params string[] p2)
-    {
-        foreach (string item in p2)
-        {
-            if (p1 == item)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static string OnlyFirstCharUpper(string input)
     {
         return FirstCharUpper(input, true);

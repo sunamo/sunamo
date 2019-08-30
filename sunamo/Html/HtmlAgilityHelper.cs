@@ -15,7 +15,10 @@ namespace sunamo.Html
     /// </summary>
     public class HtmlAgilityHelper
     {
-        public static bool _trimTexts = false;
+        /// <summary>
+        /// Dříve bylo false ale to byla hloupost
+        /// </summary>
+        public static bool _trimTexts = true;
 
         #region Helpers
         public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
@@ -103,14 +106,38 @@ namespace sunamo.Html
 
         public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
         {
+            return TrimTexts(c2, true, false);
+        }
+
+
+
+        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2, bool texts, bool comments = false)
+        {
             if (!_trimTexts)
             {
                 return c2;
             }
             List<HtmlNode> vr = new List<HtmlNode>();
+            bool add = true;
             foreach (var item in c2)
             {
-                if (item.Name != "#text")
+                add = true;
+                if (texts)
+                {
+                    if (item.Name == "#text")
+                    {
+                        add = false;
+                    }
+                }
+                 if (comments)
+                {
+                    if (item.Name == "#comment")
+                    {
+                        add = false;
+                    }
+                }
+
+                if (add)
                 {
                     vr.Add(item);
                 }
@@ -156,13 +183,14 @@ namespace sunamo.Html
         
 
         /// <summary>
+        /// A4 = if add one, return. Like Node vs Nodes
         /// It's calling by others
         /// Do A5 se může vložit *
         /// </summary>
         /// <param name="vr"></param>
         /// <param name="html"></param>
         /// <param name="p"></param>
-        private static void RecursiveReturnTags(List<HtmlNode> vr, HtmlNode html, bool recursive, bool single, string p)
+        public static void RecursiveReturnTags(List<HtmlNode> vr, HtmlNode html, bool recursive, bool single, string p)
         {
             foreach (HtmlNode item in html.ChildNodes)
             {

@@ -15,6 +15,11 @@ public partial class CSharpHelperSunamo
         return false;
     }
 
+    public static string ReplaceNulled(string s)
+    {
+        return s.Replace(Consts.nulled, string.Empty).Trim();
+    }
+
     public static string ShortcutForControl(string name)
     {
         StringBuilder sb = new StringBuilder();

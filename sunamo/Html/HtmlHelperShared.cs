@@ -440,9 +440,15 @@ public static partial class HtmlHelper
     {
         return HtmlAgilityHelper.TrimTexts(htmlNodeCollection);
     }
+
     public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
     {
-        return HtmlAgilityHelper.TrimTexts(c2);
+        return HtmlAgilityHelper.TrimTexts(c2, true);
+    }
+
+    public static List<HtmlNode> TrimTexts(List<HtmlNode> c2, bool text, bool comments = false)
+    {
+        return HtmlAgilityHelper.TrimTexts(c2, text, comments);
     }
 
     /// <summary>

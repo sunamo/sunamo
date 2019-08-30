@@ -1197,4 +1197,34 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
             CopyFile(item, fileTo, co);
         }
     }
+
+/// <summary>
+    /// Zmeni nazev souboru na A2
+    /// Pro A3 je výchozí z minulosti true - jakoby s false se chovala metoda ReplaceFileName
+    /// Pokud nechci nazev souboru uplne menit, ale pouze v nem neco nahradit, pouziva se metoda ReplaceInFileName
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="g"></param>
+    /// <param name="onDrive"></param>
+    public static string ChangeFilename(string item, string g, bool physically)
+    {
+        string cesta = FS.GetDirectoryName(item);
+        string nova = FS.Combine(cesta, g);
+
+        if (physically)
+        {
+            try
+            {
+                if (FS.ExistsFile(nova))
+                {
+                    File.Delete(nova);
+                }
+                File.Move(item, nova);
+            }
+            catch
+            {
+            }
+        }
+        return nova;
+    }
 }
