@@ -79,7 +79,7 @@ public partial class TF
     {
         foreach (var item in files)
         {
-            string[] lines = File.ReadAllLines(item);
+            string[] lines = TF.ReadAllLines(item);
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i].Trim();

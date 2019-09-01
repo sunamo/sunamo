@@ -15,6 +15,7 @@ public class HtmlAttrValue
     public const string hoverable = "hoverable";
     public const string textarea = "textarea";
     public static string checkbox = "checkbox";
+    public static string Switch = "switch";
     public const string cells = "cells";
     public const string colspan = "colspan";
 }

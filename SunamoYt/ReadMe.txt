@@ -1,0 +1,1 @@
+﻿founded due to newtonsoft.json 7.0.0.0 / 10.0.0.0 which is needed in GDataYoutube

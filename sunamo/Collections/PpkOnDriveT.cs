@@ -21,7 +21,7 @@ public class PpkOnDrive<T> : PpkOnDriveBase<T> where T : IParser
         if (FS.ExistsFile(soubor))
         {
             int dex = 0;
-            foreach (string item in File.ReadAllLines(soubor))
+            foreach (string item in TF.ReadAllLines(soubor))
             {
                 T t = (T)Activator.CreateInstance(typeof(T));
                 t.Parse(item);

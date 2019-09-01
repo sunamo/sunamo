@@ -12,6 +12,7 @@ namespace sunamo
         List<string> nazevWoDiacritic = new List<string>();
         List<string> titleWoDiacritic = new List<string>();
         List<string> remixWoDiacritic = new List<string>();
+        public string ytCode = null;
 
         string _artistS = null;
         string _titleS = null;
@@ -41,7 +42,8 @@ namespace sunamo
             }
         }
 
-        public SongFromInternet(string song)
+        #region ctor
+        public SongFromInternet(string song, string ytCode = null)
         {
             string n, t, r;
             ManageArtistDashTitle.GetArtistTitleRemix(song, out n, out t, out r);
@@ -54,9 +56,9 @@ namespace sunamo
             this.remixWoDiacritic = CA.WithoutDiacritic(this.remix);
 
             SetInConvention();
+
+            this.ytCode = ytCode;
         }
-
-
 
         public SongFromInternet(SongFromInternet item2)
         {
@@ -65,6 +67,33 @@ namespace sunamo
             title = new List<string>(item2.title);
             remix = new List<string>(item2.remix);
             SetInConvention();
+        }
+        #endregion
+
+        /// <summary>
+        /// Pro správné porovnání musí být všechny řetězce jak v A1 tak v A2 lowercase
+        /// </summary>
+        public static bool IsSimilar(string[] titleArray, string name)
+        {
+            return IsSimilar(new List<string>(titleArray), name);
+        }
+
+        /// <summary>
+        /// Pro správné porovnání musí být všechny řetězce jak v A1 tak v A2 lowercase
+        /// </summary>
+        /// <param name="titleArray"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool IsSimilar(List<string> titleArray, string name)
+        {
+            int psn, prn;
+            var nameArray = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(name);
+            SongFromInternet.VratPocetStejnychARozdilnych(titleArray, nameArray, out psn, out prn);
+            if (SongFromInternet.CalculateSimilarity(psn, prn, titleArray, new List<string>(nameArray)) > 0.49f)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void SetInConvention()
@@ -120,7 +149,7 @@ namespace sunamo
             return vr;
         }
 
-        private float CalculateSimilarity(int psn, int prn, List<string> novy, List<string> puvodni)
+        public static float CalculateSimilarity(int psn, int prn, List<string> novy, List<string> puvodni)
         {
             if (psn == prn && psn == 0)
             {
@@ -239,7 +268,7 @@ namespace sunamo
             return sb.ToString();
         }
 
-        private void VratPocetStejnychARozdilnych(List<string> list, List<string> list_2, out int psn, out int prn)
+        public static void VratPocetStejnychARozdilnych(List<string> list, List<string> list_2, out int psn, out int prn)
         {
             List<string> l1 = new List<string>(list.ToArray());
             List<string> l2 = new List<string>(list_2.ToArray());

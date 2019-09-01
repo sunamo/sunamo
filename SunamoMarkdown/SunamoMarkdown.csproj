@@ -5,16 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MarkdownHelper.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Html2Markdown" Version="3.2.1.341" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\shared\shared.csproj" />
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

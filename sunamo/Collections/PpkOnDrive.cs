@@ -13,7 +13,7 @@ public class PpkOnDrive : PpkOnDriveBase<string>
     {
         if (FS.ExistsFile(soubor))
         {
-            this.AddRange(File.ReadAllLines(soubor));
+            this.AddRange(TF.ReadAllLines(soubor));
 
             CA.RemoveStringsEmpty2(this);
         }

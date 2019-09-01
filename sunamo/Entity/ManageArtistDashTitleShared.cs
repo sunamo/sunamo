@@ -24,6 +24,11 @@ public partial class ManageArtistDashTitle
         string artist;string song; string remix;
         string delimiter = SH.WrapWith(AllStrings.dash, AllChars.space);
 
+        if (!item.Contains(delimiter))
+        {
+            delimiter = AllStrings.dash;
+        }
+
         string[] toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
         artist = song = "";
         if (toks.Length == 0)

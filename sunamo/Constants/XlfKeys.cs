@@ -5,6 +5,8 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string TheProjectIsOnGitHub = "TheProjectIsOnGitHub" ; 
+
 	public const string piechartDBrowserVersionsDaysDiv = "piechartDBrowserVersionsDaysDiv" ; 
 
 	public const string piechartDBrowserVersionsWeeksDiv = "piechartDBrowserVersionsWeeksDiv" ; 

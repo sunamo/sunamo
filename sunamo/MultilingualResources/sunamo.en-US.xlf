@@ -12943,6 +12943,10 @@
           <source></source>
           <target state="translated">piechart_3d_browserVersions_days_div</target>
         </trans-unit>
+        <trans-unit id="TheProjectIsOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The project is on GitHub</target>
+        </trans-unit>
       </group>
     </body>
   </file>

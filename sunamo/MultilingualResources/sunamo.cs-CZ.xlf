@@ -9342,6 +9342,10 @@
           <source></source>
           <target state="translated"> ne, z toho </target>
         </trans-unit>
+        <trans-unit id="TheProjectIsOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Projekt je na GitHubu</target>
+        </trans-unit>
       </group>
     </body>
   </file>
