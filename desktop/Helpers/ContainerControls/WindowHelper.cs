@@ -33,6 +33,8 @@ public class WindowHelper
         ShowExceptionWindow(e, Environment.NewLine);
     }
 
+    static IWindowOpener windowOpener = null;
+
     public static string ShowExceptionWindow(object e, string methodName = "")
     {
         if (methodName != string.Empty)
@@ -44,10 +46,17 @@ public class WindowHelper
         dump = SunamoJson.SerializeObject(e, true);
 
         ShowTextResult result = new ShowTextResult(methodName + dump);
-        WindowWithUserControl window = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
-        window.Show();
+        result.ChangeDialogResult += Result_ChangeDialogResult;
+        windowOpener = ((IWindowOpener)Application.Current.MainWindow);
+        windowOpener.windowWithUserControl = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
+        windowOpener.windowWithUserControl.ShowDialog();
 
         return dump;
+    }
+
+    private static void Result_ChangeDialogResult(bool? b)
+    {
+        windowOpener.windowWithUserControl.Close();
     }
 
     public static void ShowDialog(WindowWithUserControl windowWithUserControl)

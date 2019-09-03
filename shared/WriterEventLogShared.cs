@@ -60,6 +60,7 @@ public static partial class WriterEventLog{
             mainEventLogOfApplication.Source = name;
         }
 
+        Console.WriteLine(text);
         mainEventLogOfApplication.WriteEntry(text, type);
     }
 

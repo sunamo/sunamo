@@ -42,7 +42,7 @@ public static partial class SH
         {
             if (n == null)
             {
-                v = "(null)";
+                v = Consts.nulled;
             }
             else
             {
@@ -53,7 +53,7 @@ public static partial class SH
         {
             return AllStrings.space + v;
         }
-        return " " + "(null)";
+        return " " + Consts.nulled;
     }
 
     public static string MakeUpToXChars(int p, int p_2)
@@ -794,9 +794,9 @@ public static partial class SH
             }
         }
 
-
-        var deli2 = BTS.CastArrayObjectToString(deli);
-        var result = text.Split(deli2, stringSplitOptions).ToList();
+        
+        var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
+        var result = text.Split(deli3.ToArray(), stringSplitOptions).ToList();
         CA.Trim(result);
         CA.RemoveStringsEmpty(result);
         
@@ -895,7 +895,7 @@ public static partial class SH
         }
         if (value == null)
         {
-            return "(null)";
+            return Consts.nulled;
         }
         string text;
         var valueType = value.GetType();

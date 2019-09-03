@@ -165,7 +165,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         //DialogResult = b;
         if (ChangeDialogResult != null)
         {
-            var tag2 = Tag.ToString();
+            //var tag2 = Tag.ToString();
 
             if (dialogResult.HasValue && !dialogResult.Value)
             {

@@ -48,7 +48,7 @@ public static void PerformAction(Dictionary<string, VoidVoid> actions)
     /// </summary>
     /// <param name = "text"></param>
     /// <returns></returns>
-    public static bool UserMustTypeYesNo(string text)
+    public static bool? UserMustTypeYesNo(string text)
     {
         string entered = UserMustType(text + " (" + "Yes/No" + ") ", false);
         // was pressed esc etc.
@@ -59,7 +59,7 @@ public static void PerformAction(Dictionary<string, VoidVoid> actions)
 
         if (entered == "-1")
         {
-            return false;
+            return null;
         }
 
         char znak = entered[0];

@@ -533,13 +533,15 @@ public static partial class BTS
         return vr;
     }
 
+
+
     /// <summary>
     /// Pokud se cokoliv nepodaří přetypovat, vyhodí výjimku
     /// Before use you can call RemoveNotNumber to avoid raise exception
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static List<int> CastCollectionStringToInt(string[] p)
+    public static List<int> CastCollectionStringToInt(IEnumerable<string> p)
     {
         List<int> vr = new List<int>();
         foreach (string item in p)

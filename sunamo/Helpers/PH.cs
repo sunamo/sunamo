@@ -5,6 +5,8 @@ using System.IO;
 using System.Diagnostics;
 using sunamo;
 using System.Linq;
+using System.Web;
+
 public partial class PH
 {
     public static void StartAllUri(List<string> all)
@@ -57,7 +59,10 @@ public partial class PH
     {
         v = NormalizeUri(v);
         v = v.Trim();
-        if (System.Uri.IsWellFormedUriString(v, UriKind.Absolute))
+        //Must UrlDecode for https://mapy.cz/?q=Antala+Sta%c5%a1ka+1087%2f3%2c+Hav%c3%ad%c5%99ov&sourceid=Searchmodule_1
+        // to fulfillment RFC 3986 and RFC 3987 https://docs.microsoft.com/en-us/dotnet/api/system.uri.iswellformeduristring?view=netframework-4.8
+        v = HttpUtility.UrlDecode(v);
+        if (System.Uri.IsWellFormedUriString( v, UriKind.RelativeOrAbsolute))
         {
             Process.Start(v);
         }

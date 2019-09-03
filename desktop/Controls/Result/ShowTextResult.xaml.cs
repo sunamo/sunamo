@@ -34,7 +34,11 @@ namespace desktop.Controls
             txtResult.Text = text;
         }
 
-        public bool? DialogResult { set => ChangeDialogResult(value); }
+        public bool? DialogResult {
+            set => 
+                // must have value because ResultButtons dont close window itself     
+                ChangeDialogResult(value);
+        }
 
         public string Title => "Show result";
 

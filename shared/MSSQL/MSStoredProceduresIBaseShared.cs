@@ -70,7 +70,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             if (_conn == null)
             {
-                return MSDatabaseLayer.conn;
+                _conn = MSDatabaseLayer._conn;
+                
             }
             return _conn;
         }
@@ -93,7 +94,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
     public MSStoredProceduresIBase(SqlConnection conn)
     {
-        this.conn = conn;
+        if (conn != null)
+        {
+            this.conn = conn;
+        }
+        
     }
 
 
@@ -2736,7 +2741,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
     /// <summary>
-    /// Vrátí -1 pokud žádný takový řádek nenalezne pokud !A1 enbo int.MaxValue pokud A1
+    /// Vrátí -1 pokud žádný takový řádek nenalezne pokud !A1 enbo short.MaxValue pokud A1
     /// </summary>
     /// <param name="table"></param>
     /// <param name="idColumnName"></param>

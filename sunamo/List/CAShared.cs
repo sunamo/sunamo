@@ -211,7 +211,7 @@ public static partial class CA
         {
             if (item == null)
             {
-                result.Add("(null)");
+                result.Add(Consts.nulled);
             }
             else
             {
@@ -813,6 +813,17 @@ public static partial class CA
             result.Add(long.Parse(item.ToString()));
         }
         return result;
+    }
+
+    internal static IEnumerable OneElementCollectionToMulti(IEnumerable deli2)
+    {
+        if (deli2.Count() == 1)
+        {
+            var ien = deli2.FirstOrNull() as IEnumerable;
+
+            return ien;
+        }
+        return deli2;
     }
 
     /// <summary>

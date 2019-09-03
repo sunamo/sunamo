@@ -18,7 +18,18 @@ public partial class MSDatabaseLayer
         }
     }
 
-    
+    public static SqlConnection _conn = null;
+    //public static SqlConnection _conn
+    //{
+    //    get
+    //    {
+    //        return __conn;
+    //    }
+    //    set
+    //    {
+    //        __conn = value;
+    //    }
+    //}
 
     /// <summary>
     /// Direct znamená že mohu přímo zadat počet parametrů které si přeji vytvořit
@@ -463,18 +474,7 @@ public partial class MSDatabaseLayer
         }
     }
 
-    public static SqlConnection __conn = null;
-    public static SqlConnection _conn
-    {
-        get
-        {
-            return __conn;
-        }
-        set
-        {
-            __conn = value;
-        }
-    }
+    
     static string cs = null;
     static bool closing = false;
 

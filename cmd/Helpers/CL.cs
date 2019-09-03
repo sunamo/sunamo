@@ -63,7 +63,7 @@ public static partial class CL{
     {
         text = RLData.en["DoYouWantToContinue"] + "?";
         TypedConsoleLogger.Instance.Warning(text);
-        bool z = UserMustTypeYesNo(text);
+        bool z = BTS.GetValueOfNullable( UserMustTypeYesNo(text));
         if (z)
         {
             return DialogResult.Yes;

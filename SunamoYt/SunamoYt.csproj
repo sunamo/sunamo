@@ -8,4 +8,16 @@
     <PackageReference Include="Google.Apis.YouTube.v3" Version="1.40.3.1699" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\GDataYoutube\GDataYoutube.csproj" />
+    <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

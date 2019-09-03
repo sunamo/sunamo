@@ -12,6 +12,15 @@ public static class MSTableRowParse
 
     public static int GetInt(object[] o, int p)
     {
+        //ID,Name,IDArtist
+        /*
+0-2147483547 Just Like You Live At The Palace -32727
+2-2147483546 Let It Die Live At The Palace -32727
+0-2147483546 Let It Die Live At The Palace -32727
+         */
+        //Console.WriteLine(SH.JoinSpace( CA.ToListString( o)));
+        //Console.WriteLine(p);
+
         return int.Parse(o[p].ToString());
     }
 

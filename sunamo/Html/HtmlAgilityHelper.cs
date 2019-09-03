@@ -245,7 +245,8 @@ namespace sunamo.Html
             hd.OptionAutoCloseOnEnd = false;
             hd.OptionOutputAsXml = false;
             hd.OptionFixNestedTags = false;
-            hd.OptionCheckSyntax = false;
+            //when OptionCheckSyntax = false, raise NullReferenceException in Load/LoadHtml
+            //hd.OptionCheckSyntax = false;
             return hd;
         }
 

@@ -62,11 +62,6 @@ public class XmlGenerator
             string text = args[i];
             object hodnota = args[++i];
 
-            if (hodnota.ToString().Contains(Consts.nulled))
-            {
-
-            }
-
             sb.AppendFormat("{0}=\"{1}\"", text, hodnota);
         }
         sb.Append(" />");
@@ -168,10 +163,6 @@ public class XmlGenerator
             {
                 if ((!IsNulledOrEmpty(attr) && appendNull) || !IsNulledOrEmpty(val))
                 {
-                    if (val.Contains(Consts.nulled))
-                    {
-
-                    }
 
                     sb.AppendFormat("{0}=\"{1}\" ", attr, val);
                 }
@@ -198,11 +189,6 @@ public class XmlGenerator
 
     public void WriteTagWith2Attrs(string p, string p_2, string p_3, string p_4, string p_5)
     {
-        if (p_3.Contains(Consts.nulled) || p_5.Contains(Consts.nulled))
-        {
-
-        }
-
         string r = SH.Format2("<{0} {1}=\"{2}\" {3}=\"{4}\">", p, p_2, p_3, p_4, p_5);
         if (_useStack)
         {

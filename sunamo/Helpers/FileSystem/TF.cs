@@ -79,8 +79,8 @@ public partial class TF
     {
         foreach (var item in files)
         {
-            string[] lines = TF.ReadAllLines(item);
-            for (int i = 0; i < lines.Length; i++)
+            var lines = TF.ReadAllLines(item);
+            for (int i = 0; i < lines.Count; i++)
             {
                 string line = lines[i].Trim();
                 if (line.StartsWith(contains))

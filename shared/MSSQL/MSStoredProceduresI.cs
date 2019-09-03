@@ -19,6 +19,7 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
     public static void SetVariable(SqlConnection ci, string databaseName)
     {
         _ci.conn = ci;
+        MSDatabaseLayer._conn = ci;
         _databaseName = databaseName;
     }
 

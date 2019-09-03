@@ -26,6 +26,7 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Constants\Paths\DefaultPaths.cs" />
     <Compile Include="..\..\sunamo\sunamo\Essential\LoggerBaseShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\TwoState.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
@@ -97,8 +98,10 @@
     <Reference Include="fmdev.XliffParser">
       <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\net45\fmdev.XliffParser.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
+    <Reference Include="HtmlAgilityPack, Version=1.11.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+      <SpecificVersion>false</SpecificVersion>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
