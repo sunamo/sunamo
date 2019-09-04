@@ -35,6 +35,15 @@ public class Exceptions
         return sb.ToString();
     }
 
+    internal static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
+    {
+        if (!en.ContainsKey(key))
+        {
+            return key + " is now exists in Dictionary " + dictName; 
+        }
+        return null;
+    }
+
     /// <summary>
     /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
     /// </summary>

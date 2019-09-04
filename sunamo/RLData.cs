@@ -8,12 +8,16 @@ using System.Text;
 /// </summary>
 public static class RLData
 {
+    static Type type = typeof(RLData);
+
     // In case of serious problem I can use TranslateDictionary
     public static TranslateDictionary en = new TranslateDictionary(Langs.en);
     public static TranslateDictionary cs = new TranslateDictionary(Langs.cs);
 
     public static string EnPostColon(string key)
     {
+        ThrowExceptions.KeyNotFound<string, string>(type, RH.CallingMethod(), en, "en", key);
+
         return en[key] + AllStrings.colon;
     }
 }

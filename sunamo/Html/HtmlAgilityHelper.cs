@@ -21,6 +21,11 @@ namespace sunamo.Html
         public static bool _trimTexts = true;
 
         #region Helpers
+        /// <summary>
+        /// remove #text but keep everything else
+        /// </summary>
+        /// <param name="htmlNodeCollection"></param>
+        /// <returns></returns>
         public static List<HtmlNode> TrimTexts(HtmlNodeCollection htmlNodeCollection)
         {
             if (!_trimTexts)
@@ -38,23 +43,82 @@ namespace sunamo.Html
             return vr;
         }
 
+        /// <summary>
+        /// remove #text but not #comment
+        /// </summary>
+        /// <param name="c2"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
+        {
+            return TrimTexts(c2, true, false);
+        }
+
+
+        /// <summary>
+        /// A2 =remove #text
+        /// A3 = remove #comment
+        /// </summary>
+        /// <param name="c2"></param>
+        /// <param name="texts"></param>
+        /// <param name="comments"></param>
+        /// <returns></returns>
+        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2, bool texts, bool comments = false)
+        {
+            if (!_trimTexts)
+            {
+                return c2;
+            }
+            List<HtmlNode> vr = new List<HtmlNode>();
+            bool add = true;
+            foreach (var item in c2)
+            {
+                add = true;
+                if (texts)
+                {
+                    if (item.Name == "#text")
+                    {
+                        add = false;
+                    }
+                }
+                if (comments)
+                {
+                    if (item.Name == "#comment")
+                    {
+                        add = false;
+                    }
+                }
+
+                if (add)
+                {
+                    vr.Add(item);
+                }
+            }
+            return vr;
+        }
+
         public static List<HtmlNode> TrimComments(List<HtmlNode> n)
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             bool startWith = false;
             bool endsWith = false;
+            bool toTranslate = true;
+
             foreach (var item in n)
             {
                 startWith = false;
                 endsWith = false;
+                toTranslate = true;
+
+               
 
                 var html = item.InnerHtml.Trim();
+                // contains whole html comment
                 endsWith = html.Contains(AspxConsts.endHtmlComment);
                 startWith = html.Contains(AspxConsts.startHtmlComment);
 
                 if (startWith && endsWith) //item.NodeType == HtmlNodeType.Comment)
                 {
-                    
+                    toTranslate = false;
                 }
                 else if(true)
                 {
@@ -69,12 +133,18 @@ namespace sunamo.Html
                     {
                         if (startWith && endsWith)
                         {
-                            continue;
+                            // contains whole aspx comment
+                            toTranslate = false;
                         }
                         else
                         {
                             
                         }
+                    }
+
+                    if (!toTranslate)
+                    {
+                        continue;
                     }
 
                     if (html.StartsWith("<%"))
@@ -104,46 +174,7 @@ namespace sunamo.Html
             return vr;
         }
 
-        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2)
-        {
-            return TrimTexts(c2, true, false);
-        }
-
-
-
-        public static List<HtmlNode> TrimTexts(List<HtmlNode> c2, bool texts, bool comments = false)
-        {
-            if (!_trimTexts)
-            {
-                return c2;
-            }
-            List<HtmlNode> vr = new List<HtmlNode>();
-            bool add = true;
-            foreach (var item in c2)
-            {
-                add = true;
-                if (texts)
-                {
-                    if (item.Name == "#text")
-                    {
-                        add = false;
-                    }
-                }
-                 if (comments)
-                {
-                    if (item.Name == "#comment")
-                    {
-                        add = false;
-                    }
-                }
-
-                if (add)
-                {
-                    vr.Add(item);
-                }
-            }
-            return vr;
-        }
+        
 
         /// <summary>
         /// Do A2 se může zadat *

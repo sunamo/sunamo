@@ -819,9 +819,14 @@ public static partial class CA
     {
         if (deli2.Count() == 1)
         {
-            var ien = deli2.FirstOrNull() as IEnumerable;
+            var first = deli2.FirstOrNull();
+            var ien = first as IEnumerable;
 
-            return ien;
+            if (ien != null)
+            {
+                return ien;
+            }
+            return CA.ToList<object>(first);
         }
         return deli2;
     }

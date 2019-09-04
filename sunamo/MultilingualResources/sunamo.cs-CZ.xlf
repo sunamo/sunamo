@@ -9346,6 +9346,30 @@
           <source></source>
           <target state="translated">Projekt je na GitHubu</target>
         </trans-unit>
+        <trans-unit id="AdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další nastavení aplikace</target>
+        </trans-unit>
+        <trans-unit id="NoItWillBeTakenDirectlyFromTxtName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Toto ne, bude se to brát přímo z txtName</target>
+        </trans-unit>
+        <trans-unit id="SimplyTakeTheValueFromTxtVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stačí jednoduše vzít hodnotu z txtVersion</target>
+        </trans-unit>
+        <trans-unit id="RLApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL: aplikace</target>
+        </trans-unit>
+        <trans-unit id="HereParagraphsToP" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zde pak odstavce do p</target>
+        </trans-unit>
+        <trans-unit id="ForExampleCommentsOtherMetaInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Například komentáře, další meta informace</target>
+        </trans-unit>
       </group>
     </body>
   </file>

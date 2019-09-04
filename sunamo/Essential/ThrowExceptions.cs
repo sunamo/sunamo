@@ -23,6 +23,21 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
+    /// <summary>
+    /// A1 have to be Dictionary<T,U>, not IDictionary without generic
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="U"></typeparam>
+    /// <param name="type"></param>
+    /// <param name="v"></param>
+    /// <param name="en"></param>
+    /// <param name="dictName"></param>
+    /// <param name="key"></param>
+    internal static void KeyNotFound<T,U>(Type type, string v, IDictionary<T,U> en, string dictName, T key)
+    {
+        ThrowIsNotNull(Exceptions.KeyNotFound( FullNameOfExecutedCode(type, v), en, dictName, key));
+    }
+
     public static void HaveAllInnerSameCount(Type type, string methodName, List<List<string>> elements)
     {
         ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName, true), elements));

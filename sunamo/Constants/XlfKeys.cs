@@ -5,6 +5,176 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string RLRLRLSettings = "RLRLRLSettings" ; 
+
+	public const string RLRLRLLabelForAdditionalApplicationSettings = "RLRLRLLabelForAdditionalApplicationSettings" ; 
+
+	public const string RLRLSharedSettings = "RLRLSharedSettings" ; 
+
+	public const string RLRLLabelForAdditionalApplicationSettings = "RLRLLabelForAdditionalApplicationSettings" ; 
+
+	public const string RLRLSettings = "RLRLSettings" ; 
+
+	public const string RLLabelForAdditionalApplicationSettings = "RLLabelForAdditionalApplicationSettings" ; 
+
+	public const string ForExampleCommentsOtherMetaInformation = "ForExampleCommentsOtherMetaInformation" ; 
+
+	public const string RLSettings = "RLSettings" ; 
+
+	public const string labelForAdditionalApplicationSettings = "labelForAdditionalApplicationSettings" ; 
+
+	public const string RLRLRL = "RLRLRL" ; 
+
+	public const string RLInputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox = "RLInputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox" ; 
+
+	public const string RLInputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell = "RLInputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell" ; 
+
+	public const string RLRLRLTheNameOfTheAppOnGitHub = "RLRLRLTheNameOfTheAppOnGitHub" ; 
+
+	public const string ForTxtGitHubNameClassCell = "ForTxtGitHubNameClassCell" ; 
+
+	public const string forTxtGitHubNameClassCell = "forTxtGitHubNameClassCell" ; 
+
+	public const string RLInputNameTxtNameTypeTextIdTxtNameRunatServerClassCell = "RLInputNameTxtNameTypeTextIdTxtNameRunatServerClassCell" ; 
+
+	public const string RLRLRLTheNameOfTheApplication = "RLRLRLTheNameOfTheApplication" ; 
+
+	public const string ForTxtNameClassCell = "ForTxtNameClassCell" ; 
+
+	public const string forTxtNameClassCell = "forTxtNameClassCell" ; 
+
+	public const string RLLabel = "RLLabel" ; 
+
+	public const string divClassRowCells = "divClassRowCells" ; 
+
+	public const string grid = "grid" ; 
+
+	public const string RunatServerIdSelectTypeSoftwareDataRoleSelect = "RunatServerIdSelectTypeSoftwareDataRoleSelect" ; 
+
+	public const string TypeSoftwareDataRoleSelect = "TypeSoftwareDataRoleSelect" ; 
+
+	public const string runatServerIdSelect = "runatServerIdSelect" ; 
+
+	public const string RLSelect = "RLSelect" ; 
+
+	public const string divClassInputControlSelect = "divClassInputControlSelect" ; 
+
+	public const string RLRLTypSoftware = "RLRLTypSoftware" ; 
+
+	public const string labelForSelectTypeSoftwareClassVAlignMiddle = "labelForSelectTypeSoftwareClassVAlignMiddle" ; 
+
+	public const string select = "select" ; 
+
+	public const string selectRunatServerIdSelectTypeSoftwareDataRoleSelect = "selectRunatServerIdSelectTypeSoftwareDataRoleSelect" ; 
+
+	public const string RLTypSoftware = "RLTypSoftware" ; 
+
+	public const string RLInputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox = "RLInputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox" ; 
+
+	public const string inputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox = "inputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox" ; 
+
+	public const string RLInputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox = "RLInputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox" ; 
+
+	public const string inputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox = "inputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox" ; 
+
+	public const string RLRLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox = "RLRLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" ; 
+
+	public const string ClassMargin = "ClassMargin" ; 
+
+	public const string classMargin = "classMargin" ; 
+
+	public const string RLDiv = "RLDiv" ; 
+
+	public const string divDataRoleInputControlClassInputControlSwitch = "divDataRoleInputControlClassInputControlSwitch" ; 
+
+	public const string RLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox = "RLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" ; 
+
+	public const string divClassMargin = "divClassMargin" ; 
+
+	public const string inputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox = "inputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" ; 
+
+	public const string textarea = "textarea" ; 
+
+	public const string textareaRowsStyleWidthIdTaDescriptionRunatServerDataRoleTextareaClassInputControlTextareaSpan = "textareaRowsStyleWidthIdTaDescriptionRunatServerDataRoleTextareaClassInputControlTextareaSpan" ; 
+
+	public const string RLRL = "RLRL" ; 
+
+	public const string divStyleFloatRightIdSpanCountDownDescription = "divStyleFloatRightIdSpanCountDownDescription" ; 
+
+	public const string RLRLApplicationDescription = "RLRLApplicationDescription" ; 
+
+	public const string labelStyleFloatLeftForTaDescription = "labelStyleFloatLeftForTaDescription" ; 
+
+	public const string RL = "RL" ; 
+
+	public const string RLApplicationDescription = "RLApplicationDescription" ; 
+
+	public const string inputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox = "inputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox" ; 
+
+	public const string inputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell = "inputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell" ; 
+
+	public const string RLRLTheNameOfTheAppOnGitHub = "RLRLTheNameOfTheAppOnGitHub" ; 
+
+	public const string labelForTxtGitHubNameClassCell = "labelForTxtGitHubNameClassCell" ; 
+
+	public const string RLTheNameOfTheAppOnGitHub = "RLTheNameOfTheAppOnGitHub" ; 
+
+	public const string inputNameTxtNameTypeTextIdTxtNameRunatServerClassCell = "inputNameTxtNameTypeTextIdTxtNameRunatServerClassCell" ; 
+
+	public const string RLRLTheNameOfTheApplication = "RLRLTheNameOfTheApplication" ; 
+
+	public const string labelForTxtNameClassCell = "labelForTxtNameClassCell" ; 
+
+	public const string RLTheNameOfTheApplication = "RLTheNameOfTheApplication" ; 
+
+	public const string aspTextBox = "aspTextBox" ; 
+
+	public const string aspTextBoxIDRunatServerMaxLength = "aspTextBoxIDRunatServerMaxLength" ; 
+
+	public const string label = "label" ; 
+
+	public const string labelFor = "labelFor" ; 
+
+	public const string div = "div" ; 
+
+	public const string HereParagraphsToP = "HereParagraphsToP" ; 
+
+	public const string RLApplication = "RLApplication" ; 
+
+	public const string RLRLAplikace = "RLRLAplikace" ; 
+
+	public const string span = "span" ; 
+
+	public const string RLAplikace = "RLAplikace" ; 
+
+	public const string RLSharedSettings = "RLSharedSettings" ; 
+
+	public const string RLStylePaddingPxMarginTopPxDataRoleDialog = "RLStylePaddingPxMarginTopPxDataRoleDialog" ; 
+
+	public const string aspHiddenFieldRunatServerIDHfActualVersionStringValue = "aspHiddenFieldRunatServerIDHfActualVersionStringValue" ; 
+
+	public const string SimplyTakeTheValueFromTxtVersion = "SimplyTakeTheValueFromTxtVersion" ; 
+
+	public const string aspHiddenFieldRunatServerIDHfAppNameValue = "aspHiddenFieldRunatServerIDHfAppNameValue" ; 
+
+	public const string NoItWillBeTakenDirectlyFromTxtName = "NoItWillBeTakenDirectlyFromTxtName" ; 
+
+	public const string taChangelog = "taChangelog" ; 
+
+	public const string txtVersion = "txtVersion" ; 
+
+	public const string selectTypeSoftware = "selectTypeSoftware" ; 
+
+	public const string AdditionalApplicationSettings = "AdditionalApplicationSettings" ; 
+
+	public const string taDescription = "taDescription" ; 
+
+	public const string txtGitHubName = "txtGitHubName" ; 
+
+	public const string txtName = "txtName" ; 
+
+	public const string stylePaddingPxMarginTopPxDataRoleDialog = "stylePaddingPxMarginTopPxDataRoleDialog" ; 
+
 	public const string TheProjectIsOnGitHub = "TheProjectIsOnGitHub" ; 
 
 	public const string piechartDBrowserVersionsDaysDiv = "piechartDBrowserVersionsDaysDiv" ; 

@@ -4311,7 +4311,7 @@
         </trans-unit>
         <trans-unit id="AddAIfTheSongIsOnlyInstrumentalIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">'&gt; add ? If the song is only instrumental, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs.</target>
+          <target state="translated"> ? If the song is only instrumental, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs.</target>
         </trans-unit>
         <trans-unit id="SpecifiedUser" translate="yes" xml:space="preserve">
           <source></source>
@@ -12609,11 +12609,11 @@
         </trans-unit>
         <trans-unit id="DoYouWantToTextAHref" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">, do you want to text &lt;a href=' href=''&gt;&lt;/a href='&gt;</target>
+          <target state="translated">, do you want to text </target>
         </trans-unit>
         <trans-unit id="AddA" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">'&gt;add ? </target>
+          <target state="translated">add</target>
         </trans-unit>
         <trans-unit id="Pompinka" translate="yes" xml:space="preserve">
           <source></source>
@@ -12946,6 +12946,346 @@
         <trans-unit id="TheProjectIsOnGitHub" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">The project is on GitHub</target>
+        </trans-unit>
+        <trans-unit id="stylePaddingPxMarginTopPxDataRoleDialog" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">style="padding: 15px;margin-top: 15px;" data-role="dialog</target>
+        </trans-unit>
+        <trans-unit id="txtName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">txtName</target>
+        </trans-unit>
+        <trans-unit id="txtGitHubName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">txtGitHubName</target>
+        </trans-unit>
+        <trans-unit id="taDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">taDescription</target>
+        </trans-unit>
+        <trans-unit id="AdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Additional application settings</target>
+        </trans-unit>
+        <trans-unit id="selectTypeSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">selectTypeSoftware</target>
+        </trans-unit>
+        <trans-unit id="txtVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">txtVersion</target>
+        </trans-unit>
+        <trans-unit id="taChangelog" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">taChangelog</target>
+        </trans-unit>
+        <trans-unit id="NoItWillBeTakenDirectlyFromTxtName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No, it will be taken directly from txtName</target>
+        </trans-unit>
+        <trans-unit id="aspHiddenFieldRunatServerIDHfAppNameValue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">asp:HiddenField runat="server" ID="hfAppName" Value=</target>
+        </trans-unit>
+        <trans-unit id="SimplyTakeTheValueFromTxtVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Simply take the value from txtVersion</target>
+        </trans-unit>
+        <trans-unit id="aspHiddenFieldRunatServerIDHfActualVersionStringValue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">asp:HiddenField runat="server" ID="hfActualVersionString" Value="0</target>
+        </trans-unit>
+        <trans-unit id="RLStylePaddingPxMarginTopPxDataRoleDialog" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:stylePaddingPxMarginTopPxDataRoleDialog</target>
+        </trans-unit>
+        <trans-unit id="RLSharedSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:SharedSettings</target>
+        </trans-unit>
+        <trans-unit id="RLAplikace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:aplikace</target>
+        </trans-unit>
+        <trans-unit id="span" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">span</target>
+        </trans-unit>
+        <trans-unit id="RLRLAplikace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLAplikace</target>
+        </trans-unit>
+        <trans-unit id="RLApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL: application</target>
+        </trans-unit>
+        <trans-unit id="HereParagraphsToP" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Here, paragraphs to p</target>
+        </trans-unit>
+        <trans-unit id="div" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div</target>
+        </trans-unit>
+        <trans-unit id="labelFor" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label for=</target>
+        </trans-unit>
+        <trans-unit id="label" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label</target>
+        </trans-unit>
+        <trans-unit id="aspTextBoxIDRunatServerMaxLength" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">asp:TextBox ID="" runat="server" MaxLength=</target>
+        </trans-unit>
+        <trans-unit id="aspTextBox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">asp:TextBox</target>
+        </trans-unit>
+        <trans-unit id="RLTheNameOfTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:TheNameOfTheApplication</target>
+        </trans-unit>
+        <trans-unit id="labelForTxtNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label for="txtName" class="cell</target>
+        </trans-unit>
+        <trans-unit id="RLRLTheNameOfTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLTheNameOfTheApplication</target>
+        </trans-unit>
+        <trans-unit id="inputNameTxtNameTypeTextIdTxtNameRunatServerClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input name="txtName" type="text" id="txtName" runat="server" class="cell</target>
+        </trans-unit>
+        <trans-unit id="RLTheNameOfTheAppOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:TheNameOfTheAppOnGitHub</target>
+        </trans-unit>
+        <trans-unit id="labelForTxtGitHubNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label for="txtGitHubName" class="cell</target>
+        </trans-unit>
+        <trans-unit id="RLRLTheNameOfTheAppOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLTheNameOfTheAppOnGitHub</target>
+        </trans-unit>
+        <trans-unit id="inputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input name="txtGitHubName" type="text" id="txtGitHubName" runat="server" class="cell</target>
+        </trans-unit>
+        <trans-unit id="inputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input runat="server" type="checkbox" checked="checked" id="chbProjectIsOnGitHub" data-role="checkbox</target>
+        </trans-unit>
+        <trans-unit id="RLApplicationDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:ApplicationDescription</target>
+        </trans-unit>
+        <trans-unit id="RL" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL</target>
+        </trans-unit>
+        <trans-unit id="labelStyleFloatLeftForTaDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label style="float: left;" for="taDescription</target>
+        </trans-unit>
+        <trans-unit id="RLRLApplicationDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLApplicationDescription</target>
+        </trans-unit>
+        <trans-unit id="divStyleFloatRightIdSpanCountDownDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div style="float:right;" id="spanCountDownDescription</target>
+        </trans-unit>
+        <trans-unit id="RLRL" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RL</target>
+        </trans-unit>
+        <trans-unit id="textareaRowsStyleWidthIdTaDescriptionRunatServerDataRoleTextareaClassInputControlTextareaSpan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">textarea rows="12" style="width: 100%;" id="taDescription" runat="server" data-role="textarea" class="input-control textarea span6</target>
+        </trans-unit>
+        <trans-unit id="textarea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">textarea</target>
+        </trans-unit>
+        <trans-unit id="inputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input runat="server" type="checkbox" id="chbWideTile" data-caption="Showing large tile (Very good for apps with more than 3-4 words)" data-role="checkbox</target>
+        </trans-unit>
+        <trans-unit id="divClassMargin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div class="margin10</target>
+        </trans-unit>
+        <trans-unit id="RLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox</target>
+        </trans-unit>
+        <trans-unit id="divDataRoleInputControlClassInputControlSwitch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div data-role="input-control" class="input-control switch</target>
+        </trans-unit>
+        <trans-unit id="RLDiv" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:div</target>
+        </trans-unit>
+        <trans-unit id="classMargin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">class="margin10</target>
+        </trans-unit>
+        <trans-unit id="ClassMargin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ClassMargin</target>
+        </trans-unit>
+        <trans-unit id="RLRLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLInputRunatServerTypeCheckboxIdChbWideTileDataCaptionShowingLargeTileVeryGoodForAppsWithMoreThanWordsDataRoleCheckbox</target>
+        </trans-unit>
+        <trans-unit id="inputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input runat="server" type="checkbox" id="chbIsAppGui" data-caption="The application has a GUI" data-role="checkbox</target>
+        </trans-unit>
+        <trans-unit id="RLInputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputRunatServerTypeCheckboxIdChbIsAppGuiDataCaptionTheApplicationHasAGUIDataRoleCheckbox</target>
+        </trans-unit>
+        <trans-unit id="inputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">input runat="server" type="checkbox" id="chbIsShowing" data-caption="Showing an app on the web" data-role="checkbox</target>
+        </trans-unit>
+        <trans-unit id="RLInputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputRunatServerTypeCheckboxIdChbIsShowingDataCaptionShowingAnAppOnTheWebDataRoleCheckbox</target>
+        </trans-unit>
+        <trans-unit id="RLTypSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:TypSoftware</target>
+        </trans-unit>
+        <trans-unit id="selectRunatServerIdSelectTypeSoftwareDataRoleSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">select runat="server" id="selectTypeSoftware" data-role="select</target>
+        </trans-unit>
+        <trans-unit id="select" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">select</target>
+        </trans-unit>
+        <trans-unit id="labelForSelectTypeSoftwareClassVAlignMiddle" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label for="selectTypeSoftware" class="v-align-middle</target>
+        </trans-unit>
+        <trans-unit id="RLRLTypSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLTypSoftware</target>
+        </trans-unit>
+        <trans-unit id="divClassInputControlSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div class="input-control select</target>
+        </trans-unit>
+        <trans-unit id="RLSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:select</target>
+        </trans-unit>
+        <trans-unit id="runatServerIdSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">runat="server" id=" /select</target>
+        </trans-unit>
+        <trans-unit id="TypeSoftwareDataRoleSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">TypeSoftware" data-role=" /select</target>
+        </trans-unit>
+        <trans-unit id="RunatServerIdSelectTypeSoftwareDataRoleSelect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RunatServerIdSelectTypeSoftwareDataRoleSelect</target>
+        </trans-unit>
+        <trans-unit id="grid" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">grid</target>
+        </trans-unit>
+        <trans-unit id="divClassRowCells" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">div class="row cells--2</target>
+        </trans-unit>
+        <trans-unit id="RLLabel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:label</target>
+        </trans-unit>
+        <trans-unit id="forTxtNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">for="txtName" class="cell</target>
+        </trans-unit>
+        <trans-unit id="ForTxtNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ForTxtNameClassCell</target>
+        </trans-unit>
+        <trans-unit id="RLRLRLTheNameOfTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLRLTheNameOfTheApplication</target>
+        </trans-unit>
+        <trans-unit id="RLInputNameTxtNameTypeTextIdTxtNameRunatServerClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputNameTxtNameTypeTextIdTxtNameRunatServerClassCell</target>
+        </trans-unit>
+        <trans-unit id="forTxtGitHubNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">for="txtGitHubName" class="cell</target>
+        </trans-unit>
+        <trans-unit id="ForTxtGitHubNameClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ForTxtGitHubNameClassCell</target>
+        </trans-unit>
+        <trans-unit id="RLRLRLTheNameOfTheAppOnGitHub" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLRLTheNameOfTheAppOnGitHub</target>
+        </trans-unit>
+        <trans-unit id="RLInputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputNameTxtGitHubNameTypeTextIdTxtGitHubNameRunatServerClassCell</target>
+        </trans-unit>
+        <trans-unit id="RLInputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:inputRunatServerTypeCheckboxCheckedCheckedIdChbProjectIsOnGitHubDataRoleCheckbox</target>
+        </trans-unit>
+        <trans-unit id="RLRLRL" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLRL</target>
+        </trans-unit>
+        <trans-unit id="labelForAdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">label for="Additional application settings</target>
+        </trans-unit>
+        <trans-unit id="RLSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL: Settings</target>
+        </trans-unit>
+        <trans-unit id="ForExampleCommentsOtherMetaInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">For example, comments, other meta information</target>
+        </trans-unit>
+        <trans-unit id="RLLabelForAdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:labelForAdditionalApplication Settings</target>
+        </trans-unit>
+        <trans-unit id="RLRLSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RL Settings</target>
+        </trans-unit>
+        <trans-unit id="RLRLLabelForAdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLLabelForAdditionalApplication Settings</target>
+        </trans-unit>
+        <trans-unit id="RLRLSharedSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLShared Settings</target>
+        </trans-unit>
+        <trans-unit id="RLRLRLLabelForAdditionalApplicationSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLRLLabelForAdditionalApplication Settings</target>
+        </trans-unit>
+        <trans-unit id="RLRLRLSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">RL:RLRL Settings</target>
         </trans-unit>
       </group>
     </body>
