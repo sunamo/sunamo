@@ -10,6 +10,14 @@ using sunamo.Values;
 
 public partial class MSStoredProceduresIBase{ 
 
+    /// <summary>
+    /// A1 NSN
+    /// </summary>
+    /// <param name="signed"></param>
+    /// <param name="tabulka"></param>
+    /// <param name="hledanySloupec"></param>
+    /// <param name="aB"></param>
+    /// <returns></returns>
 public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string hledanySloupec, params AB[] aB)
     {
         string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());

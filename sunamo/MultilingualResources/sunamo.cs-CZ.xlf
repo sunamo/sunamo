@@ -9370,6 +9370,10 @@
           <source></source>
           <target state="translated">Například komentáře, další meta informace</target>
         </trans-unit>
+        <trans-unit id="application" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">aplikace</target>
+        </trans-unit>
       </group>
     </body>
   </file>

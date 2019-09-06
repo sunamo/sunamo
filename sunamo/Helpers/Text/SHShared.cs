@@ -205,6 +205,13 @@ public static partial class SH
         }
     }
 
+    public static List<string> SplitAndKeepDelimiters(string originalString, IEnumerable ienu)
+    {
+        //var ienu = (IEnumerable)deli;
+        var vr = Regex.Split(originalString, @"(?<=["+SH.Join("", ienu) + "])");
+        return vr.ToList();
+    }
+
     /// <summary>
     /// Stejná jako metoda ReplaceAll, ale bere si do A3 pouze jediný parametr, nikoliv jejich pole
     /// </summary>
@@ -219,10 +226,12 @@ public static partial class SH
 
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
-        if (string.IsNullOrEmpty(zaCo))
-        {
-            return vstup;
-        }
+        //Stupid, zaCo can be null
+
+        //if (string.IsNullOrEmpty(zaCo))
+        //{
+        //    return vstup;
+        //}
 
         foreach (var item in co)
         {

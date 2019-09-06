@@ -5,6 +5,22 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string SharedSettingsApplication = "SharedSettingsApplication" ; 
+
+	public const string application = "application" ; 
+
+	public const string ApplicationVersionDescriptionOfChanges = "ApplicationVersionDescriptionOfChanges" ; 
+
+	public const string ClearTheDisplayedVersionSetDisplayedVersionAsDefaultSaveChangesToTheVersionShown = "ClearTheDisplayedVersionSetDisplayedVersionAsDefaultSaveChangesToTheVersionShown" ; 
+
+	public const string SettingsVerze = "SettingsVerze" ; 
+
+	public const string ManageTheProgramsThatDependOnThisProgramManageTagsForThisProgramManageImagesForThisApp = "ManageTheProgramsThatDependOnThisProgramManageTagsForThisProgramManageImagesForThisApp" ; 
+
+	public const string TheNameOfTheApplicationTheNameOfTheAppOnGitHubApplicationDescriptionTypSoftware = "TheNameOfTheApplicationTheNameOfTheAppOnGitHubApplicationDescriptionTypSoftware" ; 
+
+	public const string SharedSettingsAplikace = "SharedSettingsAplikace" ; 
+
 	public const string RLRLRLSettings = "RLRLRLSettings" ; 
 
 	public const string RLRLRLLabelForAdditionalApplicationSettings = "RLRLRLLabelForAdditionalApplicationSettings" ; 

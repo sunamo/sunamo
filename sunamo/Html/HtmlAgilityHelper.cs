@@ -333,9 +333,9 @@ namespace sunamo.Html
         #endregion
 
         #region 3 NodeWithAttr
-        public static HtmlNode NodeWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
+        public static HtmlNode NodeWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)
         {
-            return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, false).FirstOrDefault();
+            return NodesWithAttrWorker(node, recursive, tag, attr, attrValue, contains).FirstOrDefault();
         }
         #endregion
 

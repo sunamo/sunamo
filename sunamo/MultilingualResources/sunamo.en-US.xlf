@@ -13287,6 +13287,97 @@
           <source></source>
           <target state="translated">RL:RLRL Settings</target>
         </trans-unit>
+        <trans-unit id="SharedSettingsAplikace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shared settings      aplikace</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheApplicationTheNameOfTheAppOnGitHubApplicationDescriptionTypSoftware" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The name of the application::::     
+                              
+                          
+                    
+                          
+                                 The name of the app on GitHub::::     
+                              
+                              
+          
+
+                        
+                    
+                          
+                                Application description::     
+                           8000     
+                              
+                                
+                            
+                        
+
+                        
+
+                     
+                                
+                          
+                           
+                               
+                               
+                               
+                               
+                              
+
+                          
+                               
+                               
+                               
+                              
+
+                          
+                               
+                               
+                               
+                              
+                             
+
+
+                      
+                                 Typ software</target>
+        </trans-unit>
+        <trans-unit id="ManageTheProgramsThatDependOnThisProgramManageTagsForThisProgramManageImagesForThisApp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage the programs that depend on this program     
+                     Manage tags for this program     
+                     Manage images for this app</target>
+        </trans-unit>
+        <trans-unit id="SettingsVerze" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Settings      verze</target>
+        </trans-unit>
+        <trans-unit id="ClearTheDisplayedVersionSetDisplayedVersionAsDefaultSaveChangesToTheVersionShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Clear the displayed version     
+                     Set displayed version as default     
+                         Save changes to the version shown</target>
+        </trans-unit>
+        <trans-unit id="ApplicationVersionDescriptionOfChanges" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Application version::::     
+                              
+                          
+
+               
+
+                                           
+                                Description of changes::     
+                           8000</target>
+        </trans-unit>
+        <trans-unit id="application" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">application</target>
+        </trans-unit>
+        <trans-unit id="SharedSettingsApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Shared settings       application</target>
+        </trans-unit>
       </group>
     </body>
   </file>

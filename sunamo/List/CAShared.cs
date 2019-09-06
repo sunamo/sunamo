@@ -1193,6 +1193,11 @@ public static partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="nazev"></param>
+    /// <returns></returns>
     public static List<string> WithoutDiacritic(List<string> nazev)
     {
         for (int i = 0; i < nazev.Count; i++)

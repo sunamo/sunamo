@@ -153,6 +153,9 @@ using System.Windows.Media.Imaging;
             return bmp;
         }
 
+    
+
+
         private static BitmapSource CreateBitmapSource(double width, double height, double minimalWidthPadding, double minimalHeightPadding, string arg, BitmapSource img2, bool useAtA1PixelSize = false)
         {
             BitmapSource bi;

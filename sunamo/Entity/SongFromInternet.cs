@@ -17,6 +17,9 @@ namespace sunamo
         string _artistS = null;
         string _titleS = null;
         string _remixS = null;
+        private string item1;
+        private string item2;
+        private string item3;
 
         public string ArtistC
         {
@@ -42,20 +45,34 @@ namespace sunamo
             }
         }
 
+        public void Artist(string item)
+        {
+            this.nazev.Clear();
+            this.nazevWoDiacritic.Clear();
+
+            this.nazev.AddRange(SplitNazevTitle(item));
+            this.nazevWoDiacritic = CA.WithoutDiacritic(CA.ToListString( this.nazev));
+
+            _artistS = ArtistInConvention();
+        }
+
         #region ctor
+        public SongFromInternet()
+        {
+                
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="song"></param>
+        /// <param name="ytCode"></param>
         public SongFromInternet(string song, string ytCode = null)
         {
             string n, t, r;
             ManageArtistDashTitle.GetArtistTitleRemix(song, out n, out t, out r);
-            this.nazev.AddRange(SplitNazevTitle(n));
-            this.title.AddRange(SplitNazevTitle(t));
-            this.remix.AddRange(SplitRemix(r));
 
-            this.nazevWoDiacritic = CA.WithoutDiacritic(this.nazev);
-            this.titleWoDiacritic = CA.WithoutDiacritic(this.title);
-            this.remixWoDiacritic = CA.WithoutDiacritic(this.remix);
-
-            SetInConvention();
+            Init(n, t, r);
 
             this.ytCode = ytCode;
         }
@@ -67,6 +84,27 @@ namespace sunamo
             title = new List<string>(item2.title);
             remix = new List<string>(item2.remix);
             SetInConvention();
+        }
+
+        public SongFromInternet Init(Tuple<string, string, string> t)
+        {
+            return Init(t.Item1, t.Item2, t.Item3);
+        }
+
+        public SongFromInternet Init (string n, string t, string r)
+        {
+            Artist(n);
+
+            this.title.AddRange(SplitNazevTitle(t));
+            this.remix.AddRange(SplitRemix(r));
+
+
+            this.titleWoDiacritic = CA.WithoutDiacritic(CA.ToListString( this.title));
+            this.remixWoDiacritic = CA.WithoutDiacritic(CA.ToListString( this.remix));
+
+            SetInConvention();
+
+            return this;
         }
         #endregion
 
@@ -332,5 +370,18 @@ namespace sunamo
             }
             return gg;
         }
+
+        public List<string> AlternateArtists()
+        {
+            var remix = Remix();
+            remix = SH.ReplaceAll(remix, "", "Feat", "feat");
+            remix = remix.Trim(AllChars.dot);
+            remix = remix.Trim();
+
+            var art = SH.Split(remix, "&", " and ");
+            return art;
+        }
+
+       
     }
 }

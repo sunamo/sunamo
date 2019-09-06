@@ -26,11 +26,6 @@ public class TranslateAbleHelper
                 {
                     notToTranslate.Add(s_between);
                 }
-
-
-                if (s_between.Contains("klazuli if v metod\u011B MSStoredProceduresIBase2.SelectLastIDFromTableSigned nebyl nalezen typ"))
-                {
-                }
             }
 
 
@@ -105,7 +100,7 @@ public class TranslateAbleHelper
 
         if (SunamoTranslateConsts.alwaysStringsToTranslate.Contains(lowerT))
         {
-            result = false; return result;
+            result = true; return result;
         }
 
         // TODO: Should to manually decide, can be name of class but also (czech) word 

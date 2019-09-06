@@ -45,19 +45,19 @@ public partial class HtmlAssistant
         node.Attributes.Add(atr, hod);
     }
 
-    public static string InnerText(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
+    public static string InnerText(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)
     {
-        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, false);
+        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, false, contains);
     }
 
-    public static string InnerHtmlWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue)
+    public static string InnerHtmlWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool contains = false)
     {
-        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, true);
+        return InnerContentWithAttr(node, recursive, tag, attr, attrValue, true, contains);
     }
 
-    public static string InnerContentWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool html)
+    public static string InnerContentWithAttr(HtmlNode node, bool recursive, string tag, string attr, string attrValue, bool html, bool contains = false)
     {
-        var node2 = HtmlAgilityHelper.NodeWithAttr(node, true, tag, attr, attrValue);
+        HtmlNode node2 = HtmlAgilityHelper.NodeWithAttr(node, true, tag, attr, attrValue, contains);
         if (node2 != null)
         {
             var c = string.Empty;
