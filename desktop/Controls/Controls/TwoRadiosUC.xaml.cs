@@ -59,7 +59,7 @@ namespace desktop.Controls.Controls
             }
         }
 
-        internal object GetBool()
+        public object GetBool()
         {
             if (rb1.IsCheckedSimple())
             {

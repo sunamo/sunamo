@@ -9374,6 +9374,74 @@
           <source></source>
           <target state="translated">aplikace</target>
         </trans-unit>
+        <trans-unit id="TheNewVersionHasBeenSuccessfullyCreatedYouCanNowEditIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nová verze byla úspěšně vytvořena, nyní ji můžete editovat</target>
+        </trans-unit>
+        <trans-unit id="TheNewVersionWasNotCreatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nová verze nebyla úspěšně vytvořena. </target>
+        </trans-unit>
+        <trans-unit id="VersionChangesSavedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změny verze byly úspěšně uloženy</target>
+        </trans-unit>
+        <trans-unit id="TheApplicationWasSuccessfullyCreated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace byla úspěšně vytvořena</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesToTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit změny aplikace</target>
+        </trans-unit>
+        <trans-unit id="ApplicationChangesSavedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změny aplikace byly úspěšně uloženy</target>
+        </trans-unit>
+        <trans-unit id="TheNewVersionIsTheDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Je nová verze výchozí</target>
+        </trans-unit>
+        <trans-unit id="AddNewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidej novou verzi</target>
+        </trans-unit>
+        <trans-unit id="Close" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zavřít</target>
+        </trans-unit>
+        <trans-unit id="CreatingANewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytváření nové verze</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedSetToCurrentFirstAvailableVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Verze úspěšně smazána, nastavena na aktuální první dostupná verze.</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedSetToCurrentFirstVersionTheNewVersionWasNotSuccessfullySetAsTheDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Verze úspěšně smazána, nastavena na aktuální první verze. Nová verze nebyla úspěšně nastavena za výchozí.</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedNoOtherVersionFoundTheDefaultVersionHasBeenReset" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Verze úspěšně smazána, žádná jiná verze nenalezena. Výchozí verze byla vynulována. </target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullySetToDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Verze úspěšně nastavena na výchozí</target>
+        </trans-unit>
+        <trans-unit id="CreateANewApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit novou aplikaci</target>
+        </trans-unit>
+        <trans-unit id="Java" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Java</target>
+        </trans-unit>
+        <trans-unit id="Scala" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Scala</target>
+        </trans-unit>
       </group>
     </body>
   </file>

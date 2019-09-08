@@ -5,6 +5,68 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string Scheme = "Scheme" ; 
+
+	public const string Scala = "Scala" ; 
+
+	public const string Ruby = "Ruby" ; 
+
+	public const string Python = "Python" ; 
+
+	public const string Perl = "Perl" ; 
+
+	public const string Lisp = "Lisp" ; 
+
+	public const string Java = "Java" ; 
+
+	public const string Haskell = "Haskell" ; 
+
+	public const string Groovy = "Groovy" ; 
+
+	public const string Fortran = "Fortran" ; 
+
+	public const string Erlang = "Erlang" ; 
+
+	public const string Clojure = "Clojure" ; 
+
+	public const string Translated = "Translated" ; 
+
+	public const string Original = "Original" ; 
+
+	public const string Text = "Text" ; 
+
+	public const string CreateANewApplication = "CreateANewApplication" ; 
+
+	public const string VersionSuccessfullySetToDefault = "VersionSuccessfullySetToDefault" ; 
+
+	public const string VersionSuccessfullyDeletedNoOtherVersionFoundTheDefaultVersionHasBeenReset = "VersionSuccessfullyDeletedNoOtherVersionFoundTheDefaultVersionHasBeenReset" ; 
+
+	public const string VersionSuccessfullyDeletedSetToCurrentFirstVersionTheNewVersionWasNotSuccessfullySetAsTheDefault = "VersionSuccessfullyDeletedSetToCurrentFirstVersionTheNewVersionWasNotSuccessfullySetAsTheDefault" ; 
+
+	public const string VersionSuccessfullyDeletedSetToCurrentFirstAvailableVersion = "VersionSuccessfullyDeletedSetToCurrentFirstAvailableVersion" ; 
+
+	public const string CreatingANewVersion = "CreatingANewVersion" ; 
+
+	public const string Close = "Close" ; 
+
+	public const string AddNewVersion = "AddNewVersion" ; 
+
+	public const string TheNewVersionIsTheDefault = "TheNewVersionIsTheDefault" ; 
+
+	public const string ApplicationChangesSavedSuccessfully = "ApplicationChangesSavedSuccessfully" ; 
+
+	public const string SaveChangesToTheApplication = "SaveChangesToTheApplication" ; 
+
+	public const string TheApplicationWasSuccessfullyCreated = "TheApplicationWasSuccessfullyCreated" ; 
+
+	public const string VersionChangesSavedSuccessfully = "VersionChangesSavedSuccessfully" ; 
+
+	public const string TheNewVersionWasNotCreatedSuccessfully = "TheNewVersionWasNotCreatedSuccessfully" ; 
+
+	public const string TheNewVersionHasBeenSuccessfullyCreatedYouCanNowEditIt = "TheNewVersionHasBeenSuccessfullyCreatedYouCanNowEditIt" ; 
+
+	public const string noCache = "noCache" ; 
+
 	public const string SharedSettingsApplication = "SharedSettingsApplication" ; 
 
 	public const string application = "application" ; 

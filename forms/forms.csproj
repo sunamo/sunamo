@@ -160,6 +160,9 @@
     <Compile Include="Helpers\TSPBH.cs" />
     <Compile Include="Helpers\TSTBH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextBoxPath.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\DisplayImageUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

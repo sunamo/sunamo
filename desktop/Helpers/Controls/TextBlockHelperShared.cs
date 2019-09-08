@@ -11,11 +11,17 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-public partial class TextBlockHelper{ 
-public static TextBlock Get(string text)
+public partial class TextBlockHelper{
+    /// <summary>
+    /// tag is not needed, value is obtained through []
+    /// Tag here is mainly for comment what data control hold 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public static TextBlock Get(ControlInitData d)
     {
         TextBlock tb = new TextBlock();
-        tb.Text = text;
+        tb.Text = d.text;
         return tb;
     }
 

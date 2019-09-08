@@ -78,6 +78,12 @@ public static partial class UIElementExtensions{
             c.Validate(name);
             return SelectMoreFolders.validated;
         }
+        else if (t == PathEditor.SuggestTextBoxPath.type)
+        {
+            var c = ui as PathEditor.SuggestTextBoxPath;
+            c.Validate(name);
+            return PathEditor.SuggestTextBoxPath.validated;
+        }
         else
         {
             ThrowExceptions.NotImplementedCase(type, "Validate");
@@ -121,6 +127,10 @@ public static void SetValidated(this UIElement ui, bool b)
         else if (t == SelectMoreFolders.type)
         {
             SelectMoreFolders.validated = b;
+        }
+        else if (t == PathEditor.SuggestTextBoxPath.type)
+        {
+            PathEditor.SuggestTextBoxPath.validated = b;
         }
         else
         {

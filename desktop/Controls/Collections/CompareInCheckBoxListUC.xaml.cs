@@ -233,9 +233,9 @@ namespace desktop.Controls.Collections
 
         public List<MenuItem> MenuItems()
         {
-            //MenuItem mi = MenuItemHelper.CreateNew(Title);
+            //MenuItem mi = MenuItemHelper.Get(Title);
 
-            MenuItem miSave = MenuItemHelper.CreateNew(RLData.en["Save"], Save);
+            MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en["Save"], OnClick = Save });
             //mi.Items.Add(miSave);
 
             return CA.ToList<MenuItem>(miSave);

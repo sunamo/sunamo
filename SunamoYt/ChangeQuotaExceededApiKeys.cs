@@ -72,7 +72,7 @@ public class ChangeQuotaExceededApiKeys
     /// <summary>
     /// Write Actual api key index as exceeded
     /// </summary>
-    internal void WriteExceeded()
+    public void WriteExceeded()
     {
         
         var line = SF.PrepareToSerializationExplicit(CA.ToListString(apiKeyIndex, DateTime.Now.AddHours(substractLocalTimeForHours * -1).ToString(ci)));

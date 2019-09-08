@@ -13378,6 +13378,130 @@
           <source></source>
           <target state="translated">Shared settings       application</target>
         </trans-unit>
+        <trans-unit id="noCache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">no-cache</target>
+        </trans-unit>
+        <trans-unit id="TheNewVersionHasBeenSuccessfullyCreatedYouCanNowEditIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The new version has been successfully created, you can now edit it</target>
+        </trans-unit>
+        <trans-unit id="TheNewVersionWasNotCreatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The new version was not created successfully.</target>
+        </trans-unit>
+        <trans-unit id="VersionChangesSavedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Version changes saved successfully</target>
+        </trans-unit>
+        <trans-unit id="TheApplicationWasSuccessfullyCreated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The application was successfully created</target>
+        </trans-unit>
+        <trans-unit id="SaveChangesToTheApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save changes to the application</target>
+        </trans-unit>
+        <trans-unit id="ApplicationChangesSavedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Application changes saved successfully</target>
+        </trans-unit>
+        <trans-unit id="TheNewVersionIsTheDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The new version is the default</target>
+        </trans-unit>
+        <trans-unit id="AddNewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add new version</target>
+        </trans-unit>
+        <trans-unit id="Close" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Close</target>
+        </trans-unit>
+        <trans-unit id="CreatingANewVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Creating a new version</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedSetToCurrentFirstAvailableVersion" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Version successfully deleted, set to current first available version.</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedSetToCurrentFirstVersionTheNewVersionWasNotSuccessfullySetAsTheDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Version successfully deleted, set to current first version. The new version was not successfully set as the default.</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullyDeletedNoOtherVersionFoundTheDefaultVersionHasBeenReset" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Version successfully deleted, no other version found. The default version has been reset.</target>
+        </trans-unit>
+        <trans-unit id="VersionSuccessfullySetToDefault" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Version successfully set to default</target>
+        </trans-unit>
+        <trans-unit id="CreateANewApplication" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create a new application</target>
+        </trans-unit>
+        <trans-unit id="Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Text </target>
+        </trans-unit>
+        <trans-unit id="Original" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Original</target>
+        </trans-unit>
+        <trans-unit id="Translated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Translated</target>
+        </trans-unit>
+        <trans-unit id="Clojure" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Clojure</target>
+        </trans-unit>
+        <trans-unit id="Erlang" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Erlang</target>
+        </trans-unit>
+        <trans-unit id="Fortran" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fortran</target>
+        </trans-unit>
+        <trans-unit id="Groovy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Groovy</target>
+        </trans-unit>
+        <trans-unit id="Haskell" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Haskell</target>
+        </trans-unit>
+        <trans-unit id="Java" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Java</target>
+        </trans-unit>
+        <trans-unit id="Lisp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Lisp</target>
+        </trans-unit>
+        <trans-unit id="Perl" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Perl</target>
+        </trans-unit>
+        <trans-unit id="Python" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Python</target>
+        </trans-unit>
+        <trans-unit id="Ruby" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ruby</target>
+        </trans-unit>
+        <trans-unit id="Scala" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Scala</target>
+        </trans-unit>
+        <trans-unit id="Scheme" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Scheme</target>
+        </trans-unit>
       </group>
     </body>
   </file>

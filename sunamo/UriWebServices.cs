@@ -29,6 +29,16 @@ public partial class UriWebServices
         public static List<string> All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
     }
 
+    public static class UriShareService
+    {
+        public static List<string> domains = null;
+
+        static UriShareService()
+        {
+            domains = CA.ToListString("mega.co", "uploading.com", "zippyshare.com", "box.com", "rapidshare.com", "dfiles.eu", "4shared.com", "mediafire.com", "dropbox.com", "bayfiles.com", "divxstage.eu", "hulkshare.com", "megashares", "files.fm", "wetransfer.com", "filehosting.org", "yourfilelink.com");
+        }
+    }
+
     public static class CdnProviders
     {
         //

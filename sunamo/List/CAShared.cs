@@ -235,6 +235,8 @@ public static partial class CA
     }
 
     /// <summary>
+    /// Do hard cast
+    /// If need cast to number, simply use CA.ToNumber
     /// If item is null, add instead it default(T)
     /// Simply create new list in ctor from A1
     /// </summary>
@@ -815,7 +817,7 @@ public static partial class CA
         return result;
     }
 
-    internal static IEnumerable OneElementCollectionToMulti(IEnumerable deli2)
+    public static IEnumerable OneElementCollectionToMulti(IEnumerable deli2)
     {
         if (deli2.Count() == 1)
         {

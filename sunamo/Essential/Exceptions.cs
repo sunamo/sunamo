@@ -35,7 +35,7 @@ public class Exceptions
         return sb.ToString();
     }
 
-    internal static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
+    public static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
     {
         if (!en.ContainsKey(key))
         {
@@ -167,7 +167,7 @@ public class Exceptions
         return null;
     }
 
-    internal static object IsNotWindowsPathFormat(string before, string argName, string argValue)
+    public static object IsNotWindowsPathFormat(string before, string argName, string argValue)
     {
         bool badFormat = false;
 

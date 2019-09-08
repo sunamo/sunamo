@@ -11,10 +11,17 @@ public static MenuItem CreateNew(string p)
         tsmi.Header = p;
         return tsmi;
     }
-public static MenuItem CreateNew(string header, RoutedEventHandler clickHandler)
+    /// <summary>
+    /// tag is not needed, value is obtained through []
+    /// Tag here is mainly for comment what data control hold 
+    /// </summary>
+    /// <param name="header"></param>
+    /// <param name="clickHandler"></param>
+    /// <returns></returns>
+    public static MenuItem CreateNew(ControlInitData d)
     {
-        MenuItem menuItem = CreateNew(header);
-        menuItem.Click += clickHandler;
+        MenuItem menuItem = CreateNew(d.text);
+        menuItem.Click += d.OnClick;
         return menuItem;
     }
 }

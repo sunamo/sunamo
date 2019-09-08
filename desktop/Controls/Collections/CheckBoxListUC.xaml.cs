@@ -184,7 +184,7 @@ namespace desktop.Controls.Collections
                 {
                     continue;
                 }
-                var chb = CheckBoxHelper.Get(item);
+                var chb = CheckBoxHelper.Get(new ControlInitData { text = item });
                 chb.IsChecked = defChecked;
                 //chb.Checked += Chb_Click;
                 //chb.Unchecked += Chb_Click;

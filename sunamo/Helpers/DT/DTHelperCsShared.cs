@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 public partial class DTHelperCs
@@ -103,25 +101,43 @@ public partial class DTHelperCs
         var day = -1;
         var month = -1;
         var year = -1;
+        var dt = DateTime.Today;
 
         TryParse.Integer tpi = new TryParse.Integer();
         if (tpi.TryParseInt(parts[0]))
         {
             day = tpi.lastInt;
-            if (tpi.TryParseInt(parts[1]))
+            if (parts.Count > 1)
             {
-                month = tpi.lastInt;
-                if (tpi.TryParseInt(parts[2]))
+
+                if (tpi.TryParseInt(parts[1]))
                 {
-                    year = tpi.lastInt;
-                    try
+
+                    month = tpi.lastInt;
+                    if (parts.Count > 2)
                     {
-                        vr = new DateTime(year, month, day, 0, 0, 0);
+                        if (tpi.TryParseInt(parts[2]))
+                        {
+                            year = tpi.lastInt;
+                            try
+                            {
+                                vr = new DateTime(year, month, day, 0, 0, 0);
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
+                        year = dt.Year;
                     }
                 }
+
+            }
+            else
+            {
+                month = dt.Month;
             }
         }
         return vr;

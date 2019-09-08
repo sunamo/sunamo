@@ -82,7 +82,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         var list = adcl.GetListString(chbAdded, innerDelimiter);
         for (int i = 0; i < list.Count; i++)
         {
-            var chb = CheckBoxHelper.Get(list[i]);
+            var chb = CheckBoxHelper.Get(new ControlInitData { text = list[i] });
             chb.IsChecked = BTS.IntToBool(list[++i]);
             chbl.l.l.Add(chb);
         }

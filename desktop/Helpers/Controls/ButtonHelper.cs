@@ -5,26 +5,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 public static partial class ButtonHelper
 {
-    public static Button GetButton(string tooltip, string imagePath)
+    /// <summary>
+    /// tag is not needed, value is obtained through []
+    /// Tag here is mainly for comment what data control hold 
+    /// </summary>
+    /// <param name="tooltip"></param>
+    /// <param name="imagePath"></param>
+    /// <returns></returns>
+    public static Button Get(ControlInitData d)
     {
         Button vr = new Button();
-        BitmapImage btm = new BitmapImage(new System.Uri(imagePath, System.UriKind.Relative));
-        Image img = new Image();
-        img.Source = btm;
-        img.Width = 16;
-        img.Height = 16;
-        img.Stretch = Stretch.Fill;
-        vr.Content = img;
-        vr.ToolTip = tooltip;
+        if (d.imagePath != null)
+        {
+            BitmapImage btm = new BitmapImage(new System.Uri(d.imagePath, System.UriKind.Relative));
+            Image img = new Image();
+            img.Source = btm;
+            img.Width = 16;
+            img.Height = 16;
+            img.Stretch = Stretch.Fill;
+            vr.Content = img;
+        }
+        else
+        {
+            vr.Content = d.tooltip;
+        }
+        vr.ToolTip = d.tooltip;
         return vr;
-    }
-
-    public static Button GetButton(string tooltip)
-    {
-        Button button = new Button();
-        button.ToolTip = tooltip;
-        button.Content = tooltip;
-        return button;
     }
 
     public static void SaveTransparentImageAsContent(ContentControl button, System.Windows.Media.Color color, string imageRelPath)

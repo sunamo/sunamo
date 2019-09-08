@@ -525,12 +525,7 @@ public static partial class BTS
     #region Casting to List
     public static List<int> CastToIntList(IEnumerable d)
     {
-        List<int> vr = new List<int>();
-        foreach (string item in d)
-        {
-            vr.Add(int.Parse(item.ToString()));
-        }
-        return vr;
+        return CA.ToNumber<int>(int.Parse, d);
     }
 
 
@@ -543,19 +538,7 @@ public static partial class BTS
     /// <returns></returns>
     public static List<int> CastCollectionStringToInt(IEnumerable<string> p)
     {
-        List<int> vr = new List<int>();
-        foreach (string item in p)
-        {
-            if (!string.IsNullOrWhiteSpace(item))
-            {
-                int nt;
-                if (int.TryParse(item, out nt))
-                {
-                    vr.Add(int.Parse(item));
-                }
-            }
-        }
-        return vr;
+        return CA.ToNumber<int>(int.Parse, p, false);
     }
 
     /// <summary>
@@ -604,12 +587,7 @@ public static partial class BTS
     /// </summary>
     public static List<int> CastListShortToListInt(List<short> n)
     {
-        List<int> vr = new List<int>(n.Count);
-        for (int i = 0; i < n.Count; i++)
-        {
-            vr.Add((short)n[i]);
-        }
-        return vr;
+        return CastCollectionShortToInt(n);
     }
     #endregion
 

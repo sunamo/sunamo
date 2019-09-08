@@ -78,9 +78,10 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
-    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBlockHelperShared.cs" />
+    <Compile Include="Data\ControlInitData.cs" />
+    <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\TextBoxHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ControlFinder.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFileShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolderShared.cs" />
@@ -291,7 +292,6 @@
     <Compile Include="Helpers\Controls\MenuItemHelperShared.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\RadioButtonHelper.cs" />
-    <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\DataGridHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
@@ -320,7 +320,6 @@
     <Compile Include="Helpers\Controls\TextBlockHelper.cs" />
     <Compile Include="Helpers\StaticControls\TextBlockDataHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperBase.cs" />
-    <Compile Include="Helpers\Controls\TextBoxHelper.cs" />
     <Compile Include="Helpers\Controls\ToolbarHelper.cs" />
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
@@ -395,6 +394,10 @@
     <Compile Include="XamlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.notmine\PathEditor\PathEditor.csproj">
+      <Project>{EC822654-CDE4-4EE2-B033-55125CD11B80}</Project>
+      <Name>PathEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
@@ -605,6 +608,7 @@
   <ItemGroup>
     <Folder Include="ftp\" />
     <Folder Include="Helpers\Content\EmbeddedResources\" />
+    <Folder Include="Helpers\ControlsWithGet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\ToggleSwitch\Icons\ToggleSwitch.HorizontalToggleSwitch.Expression.Large.png" />

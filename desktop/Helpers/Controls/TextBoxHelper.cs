@@ -26,10 +26,17 @@ namespace desktop
             }
         }
 
-        public static TextBox Get(object tag = null)
+        /// <summary>
+        /// tag is not needed, value is obtained through []
+        /// Tag here is mainly for comment what data control hold 
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static TextBox Get(ControlInitData d)
         {
             TextBox txt = new TextBox();
-            txt.Tag = tag;
+            txt.Tag = d.tag;
+            txt.Text = d.text;
             return txt;
         }
 

@@ -14,14 +14,21 @@ public class ComboBoxHelper
     protected ComboBox cb = null;
     public event SelectionChangedEventHandler SelectionChanged;
 
-    public static ComboBox Get(object tag, IEnumerable list12)
+    /// <summary>
+    /// A1 is not needed, value is obtained through []
+    /// Tag here is mainly for comment what data control hold 
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <param name="list12"></param>
+    /// <returns></returns>
+    public static ComboBox Get(ControlInitData d)
     {
         ComboBox cb = new ComboBox();
-        foreach (var item in list12)
+        foreach (var item in d.list)
         {
             cb.Items.Add(item);
         }
-        cb.Tag = tag;
+        cb.Tag = d.tag;
         return cb;
     }
 

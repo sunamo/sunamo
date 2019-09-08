@@ -79,7 +79,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         {
             IUserControlWithMenuItemsList userControlWithMenuItemsList = (IUserControlWithMenuItemsList)uc;
 
-            var miUc = MenuItemHelper.CreateNew(userControlWithMenuItemsList.Title);
+            var miUc = MenuItemHelper.Get(new ControlInitData { text = userControlWithMenuItemsList.Title });
 
             foreach (var item in userControlWithMenuItemsList.MenuItems())
             {
@@ -106,7 +106,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         //dock.Children.Add(dialogButtons);
 
         
-        TextBlock textBlockStatus = TextBlockHelper.Get("");
+        TextBlock textBlockStatus = TextBlockHelper.Get(new ControlInitData { text = "" });
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
         statusBar.Items.Add(textBlockStatus);
         DockPanel.SetDock(statusBar, Dock.Bottom);

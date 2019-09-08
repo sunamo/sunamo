@@ -10,10 +10,10 @@ namespace desktop
             RadioButton chb = new RadioButton();
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Vertical;
-            sp.Children.Add(TextBlockHelper.Get(data.t));
+            sp.Children.Add(TextBlockHelper.Get(new ControlInitData { text = data.t }));
             if (addDescription)
             {
-                sp.Children.Add(TextBlockHelper.Get(data.sizeS));
+                sp.Children.Add(TextBlockHelper.Get(new ControlInitData { text = data.sizeS }));
             }
             chb.IsThreeState = false;
             chb.IsChecked = tick;
@@ -30,12 +30,12 @@ namespace desktop
         /// <returns></returns>
         public static CheckBox CheckBoxWithDescription(TWithSizeInString<string> data, bool addDescription, bool tick)
         {
-            var s = TextBlockHelper.Get(data.sizeS);
+            var s = TextBlockHelper.Get(new ControlInitData { text = data.sizeS });
 
             CheckBox chb = new CheckBox();
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Vertical;
-            sp.Children.Add(TextBlockHelper.Get(data.t));
+            sp.Children.Add(TextBlockHelper.Get(new ControlInitData { text = data.t }));
             if (addDescription)
             {
                 sp.Children.Add(s);

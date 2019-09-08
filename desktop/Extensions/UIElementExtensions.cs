@@ -11,6 +11,7 @@ using desktop;
 using desktop.Controls;
 using desktop.Controls.Controls;
 using desktop.Controls.Input;
+using PathEditor;
 public static partial class UIElementExtensions
 {
     
@@ -47,11 +48,17 @@ public static partial class UIElementExtensions
             var txt = (TextBox)ui;
             return txt.Text;
         }
-        else if (t == TypesControls.tTwoRadiosUC)
+        else if (t == TwoRadiosUC.type)
         {
             var txt = (TwoRadiosUC)ui;
             return txt.GetBool();
         }
+        else if (t == SuggestTextBoxPath.type)
+        {
+            var txt = (SuggestTextBoxPath)ui;
+            return txt.dataContext.SelectedPathPart.Path;
+        }
+
         else
         {
             ThrowExceptions.NotImplementedCase(type, null);

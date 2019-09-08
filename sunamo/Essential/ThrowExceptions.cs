@@ -33,7 +33,7 @@ public class ThrowExceptions
     /// <param name="en"></param>
     /// <param name="dictName"></param>
     /// <param name="key"></param>
-    internal static void KeyNotFound<T,U>(Type type, string v, IDictionary<T,U> en, string dictName, T key)
+    public static void KeyNotFound<T,U>(Type type, string v, IDictionary<T,U> en, string dictName, T key)
     {
         ThrowIsNotNull(Exceptions.KeyNotFound( FullNameOfExecutedCode(type, v), en, dictName, key));
     }

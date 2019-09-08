@@ -24,6 +24,15 @@ namespace desktop.Controls.Input
     {
         static Type type = typeof(EnterOneValueUC);
 
+        public object this[int i]
+        {
+            get
+            {
+                return fwElemements[i].GetContent();
+            }
+        }
+            
+
         #region ctor
         /// <summary>
         /// Has button so dialogButtons is not needed to add
@@ -91,13 +100,29 @@ namespace desktop.Controls.Input
             tbWhatEnter.Text = RLData.en["Enter"] + " " + whatEnter + " " + "and press enter" + ".";
         }
 
+        public object GetContentByTag(object tag)
+        {
+            foreach (var item in fwElemements)
+            {
+                if (item.Tag == tag)
+                {
+                    return item.GetContent();
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Title is take from Tag, which can be TWithName
-        /// Tag can be TWithName<object>
+        /// Tag can be TWithName<object> or any object and its value is set to TextBlock
         /// </summary>
         /// <param name="uie"></param>
         public void Init(IEnumerable<FrameworkElement> uie)
         {
+
+            txtEnteredText.Visibility = Visibility.Collapsed;
+            //txtEnteredText.Parent.Chi
+
             fwElemements = CA.ToList<FrameworkElement>(uie);
 
             GridHelper.GetAutoSize(gridGrowable, 2, uie.Count());
@@ -143,7 +168,7 @@ namespace desktop.Controls.Input
             ui.Margin = uit;
             gridGrowable.Children.Add(ui);
 
-            var tb = TextBlockHelper.Get(name);
+            var tb = TextBlockHelper.Get(new ControlInitData { text = name });
             tb.HorizontalAlignment = HorizontalAlignment.Right;
             tb.Margin = uit;
             Grid.SetRow(tb, i);
