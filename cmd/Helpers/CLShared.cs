@@ -44,7 +44,9 @@ public static void PerformAction(Dictionary<string, VoidVoid> actions)
 
 
 /// <summary>
-    /// Pokud uz. zada A,GT, JF.
+    /// Pokud uz. zada Y,GT.
+    /// When N, return false.
+    /// When -1, return null
     /// </summary>
     /// <param name = "text"></param>
     /// <returns></returns>

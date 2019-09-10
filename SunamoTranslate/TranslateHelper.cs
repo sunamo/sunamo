@@ -87,8 +87,9 @@ public class TranslateHelper
                 return _csToEn[input];
             }
         }
-
+#if DEBUG
         DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
+#endif
 
         var response = _client.TranslateText(input, to, from);
         var result = response.TranslatedText;

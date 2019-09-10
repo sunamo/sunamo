@@ -25,46 +25,4 @@ public static partial class UIElementExtensions
         uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
     }
 
-    public static object GetContent(this UIElement ui)
-    {
-        var t = ui.GetType();
-        if (t == TypesControls.tListBox)
-        {
-            var selector = (ListBox)ui;
-            return selector.SelectedItems;
-        }
-        else if (t == TypesControls.tListView)
-        {
-            var lv = (ListView)ui;
-            return lv.SelectedItems;
-        }
-        else if (t == TypesControls.tComboBox)
-        {
-            var cb = ui as ComboBox;
-            return cb.SelectedItem;
-        }
-        else if (t == TypesControls.tTextBox)
-        {
-            var txt = (TextBox)ui;
-            return txt.Text;
-        }
-        else if (t == TwoRadiosUC.type)
-        {
-            var txt = (TwoRadiosUC)ui;
-            return txt.GetBool();
-        }
-        else if (t == SuggestTextBoxPath.type)
-        {
-            var txt = (SuggestTextBoxPath)ui;
-            return txt.dataContext.SelectedPathPart.Path;
-        }
-
-        else
-        {
-            ThrowExceptions.NotImplementedCase(type, null);
-        }
-
-        return null;
-    }
-
 }

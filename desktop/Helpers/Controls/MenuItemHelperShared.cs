@@ -5,12 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 public partial class MenuItemHelper{ 
-public static MenuItem CreateNew(string p)
-    {
-        MenuItem tsmi = new MenuItem();
-        tsmi.Header = p;
-        return tsmi;
-    }
+
     /// <summary>
     /// tag is not needed, value is obtained through []
     /// Tag here is mainly for comment what data control hold 
@@ -18,10 +13,17 @@ public static MenuItem CreateNew(string p)
     /// <param name="header"></param>
     /// <param name="clickHandler"></param>
     /// <returns></returns>
-    public static MenuItem CreateNew(ControlInitData d)
+    public static MenuItem Get(ControlInitData d)
     {
-        MenuItem menuItem = CreateNew(d.text);
-        menuItem.Click += d.OnClick;
-        return menuItem;
+        MenuItem mi = new MenuItem();
+        mi.Header = d.text;
+        if (d.OnClick != null)
+        {
+            mi.Click += d.OnClick;
+        }
+
+        mi.Foreground = d.foreground;
+        mi.Tag = d.tag;
+        return mi;
     }
 }

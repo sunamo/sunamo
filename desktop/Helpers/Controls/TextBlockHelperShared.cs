@@ -22,6 +22,7 @@ public partial class TextBlockHelper{
     {
         TextBlock tb = new TextBlock();
         tb.Text = d.text;
+        tb.Foreground = d.foreground;
         return tb;
     }
 

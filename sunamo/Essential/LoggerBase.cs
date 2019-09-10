@@ -1,4 +1,5 @@
 ﻿
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ public partial class LoggerBase
     //ClipboardHelper.SetText(sb.ToString());
 #endif
     }
+
 
     /// <summary>
     /// Only due to Old sfw apps

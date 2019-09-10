@@ -27,8 +27,11 @@ public static partial class ButtonHelper
         }
         else
         {
-            vr.Content = d.tooltip;
+            vr.Content = d.text;
+            
         }
+        vr.Tag = d.tag;
+        vr.Click += d.OnClick;
         vr.ToolTip = d.tooltip;
         return vr;
     }

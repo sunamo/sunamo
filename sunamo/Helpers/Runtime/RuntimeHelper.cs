@@ -23,6 +23,21 @@ public class RuntimeHelper
         return GetInvocationList(e).Count() > 0;
     }
 
+    public static void EmptyDummyMethod()
+    {
+
+    }
+
+    public static void EmptyDummyMethod(string s, params object[] o)
+    {
+
+    }
+
+    public static void EmptyDummyMethod(TypeOfMessage t, string s, params object[] o)
+    {
+
+    }
+
     /// <summary>
     /// Default is true for automatically avoiding errors
     /// </summary>

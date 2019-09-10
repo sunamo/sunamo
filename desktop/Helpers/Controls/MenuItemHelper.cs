@@ -29,23 +29,9 @@ public partial class MenuItemHelper
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
-    public static MenuItem Get(ControlInitData d)
+    public static MenuItem GetCheckable(ControlInitData d)
     {
         d.checkable = true;
-        return CreateNewCheckable(d);
-    }
-
-    private static MenuItem CreateNewCheckable(ControlInitData d)
-    {
-        MenuItem mi = new MenuItem();
-        mi.Header = d.text;
-        if (d.OnClick != null)
-        {
-            mi.Click += d.OnClick;
-        }
-
-        mi.Foreground = d.foreground;
-        mi.Tag = d.tag;
-        return mi;
+        return Get(d);
     }
 }

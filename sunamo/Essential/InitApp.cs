@@ -17,11 +17,12 @@ namespace sunamo.Essential
         /// </summary>
         public static void SetDebugLogger()
         {
-            InitApp.Logger = DebugLogger.Instance;
+
 #if DEBUG
+            InitApp.Logger = DebugLogger.Instance;
             InitApp.TemplateLogger = DebugTemplateLogger.Instance;
-#endif
             InitApp.TypedLogger = TypedDebugLogger.Instance;
+#endif
         }
 
         #region Must be set during app initializing

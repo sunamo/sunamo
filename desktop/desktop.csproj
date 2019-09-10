@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Data\ControlInitData.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ToggleButtonExtensionShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\FrameworkElementExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
@@ -395,7 +396,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo.notmine\PathEditor\PathEditor.csproj">
-      <Project>{EC822654-CDE4-4EE2-B033-55125CD11B80}</Project>
+      <Project>{ec822654-cde4-4ee2-b033-55125cd11b80}</Project>
       <Name>PathEditor</Name>
     </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">

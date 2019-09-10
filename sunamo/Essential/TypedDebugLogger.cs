@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+#if DEBUG
 namespace sunamo.Essential
 {
     public class TypedDebugLogger : TypedLoggerBase
@@ -13,3 +14,4 @@ namespace sunamo.Essential
         }
     }
 }
+#endif

@@ -25,5 +25,10 @@ public class CheckBoxDataHelper
     {
         return Get(CheckBoxHelper.Get(c));
     }
+
+    public static CheckBoxData<UIElement> Button(ControlInitData c)
+    {
+        return Get(ButtonHelper.Get(c));
+    }
 }
 

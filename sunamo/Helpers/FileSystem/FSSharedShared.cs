@@ -25,4 +25,11 @@ public partial class FS{
 
         return File.Exists(selectedFile);
     }
+
+    public static DateTime LastModified(string rel)
+    {
+        var  f = new FileInfo(rel);
+        return f.LastWriteTime;
+
+    }
 }

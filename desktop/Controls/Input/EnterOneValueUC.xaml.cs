@@ -92,7 +92,9 @@ namespace desktop.Controls.Input
 
         private void PrintColumnsRows(Grid grid2)
         {
+#if DEBUG
             DebugLogger.Instance.WriteLine(grid2.ColumnDefinitions.Count + "x" + grid2.RowDefinitions.Count);
+#endif
         }
 
         public void Init(string whatEnter)

@@ -1,4 +1,5 @@
 ﻿
+using cmd.Essential;
 using sunamo.Essential;
 
 public partial class CmdApp
@@ -21,5 +22,15 @@ public partial class CmdApp
     private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
     {
         InitApp.TypedLogger.WriteLine(t, message);
+    }
+
+
+    public static TypedLoggerBase ConsoleOrDebugTyped()
+    {
+#if DEBUG
+        return TypedDebugLogger.Instance;
+#elif !DEBUG
+        return TypedConsoleLogger.Instance;
+#endif
     }
 }

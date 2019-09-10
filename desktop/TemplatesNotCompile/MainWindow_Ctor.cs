@@ -81,9 +81,13 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
         sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
 #else
-        sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
-        sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
-        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
+       //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
+       // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
+       // sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
+
+       // InitApp.Logger = ConsoleLogger.Instance;
+       //     InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
+       //     InitApp.TypedLogger = TypedConsoleLogger.Instance;
 #endif
 
         WpfApp.EnableDesktopLogging(true);

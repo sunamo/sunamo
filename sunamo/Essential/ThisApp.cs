@@ -9,6 +9,18 @@ namespace sunamo.Essential
 {
     public class ThisApp
     {
+        public static TypedLoggerBase NopeOrDebugTyped()
+        {
+#if DEBUG
+            return TypedDebugLogger.Instance;
+#elif !DEBUG
+        // Is possible also use CmdApp.ConsoleOrDebugTyped
+        //return TypedConsoleLogger.Instance;
+#endif
+            return TypedDummyLogger.Instance;
+        }
+
+
         public static bool check = false;
         public static Langs l = Langs.en;
         public static ResourcesHelper Resources;

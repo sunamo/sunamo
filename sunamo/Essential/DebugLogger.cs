@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
+#if DEBUG
 //namespace sunamo.Essential
 //{
 
@@ -35,3 +35,4 @@ public class DebugLogger : LoggerBase
         Debugger.Break();
     }
 }
+#endif
