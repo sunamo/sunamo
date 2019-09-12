@@ -249,6 +249,19 @@ public partial class FS
         return item;
     }
 
+    public static void CopyAs0KbFilesSubfolders
+        (string pathDownload, string pathVideos0Kb)
+    {
+        FS.WithEndSlash(ref pathDownload);
+        FS.WithEndSlash(ref pathVideos0Kb);
+
+        var folders = FS.GetFolders(pathDownload);
+        foreach (var item in folders)
+        {
+            CopyAs0KbFiles(item, item.Replace(pathDownload, pathVideos0Kb));
+        }
+    }
+
     public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
     {
         FS.WithEndSlash(ref pathDownload);

@@ -10,5 +10,6 @@ public enum Browsers : byte
     InternetExplorer = 3,
     Opera = 4,
     Edge = 5,
-    Vivaldi = 6
+    Vivaldi = 6,
+    ChromeCanary = 7
 }

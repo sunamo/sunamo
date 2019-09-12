@@ -56,6 +56,11 @@ public static partial class SH
         return " " + Consts.nulled;
     }
 
+    public static object ReplaceMany(string input, string fromTo)
+    {
+        
+    }
+
     public static string MakeUpToXChars(int p, int p_2)
     {
         StringBuilder sb = new StringBuilder();

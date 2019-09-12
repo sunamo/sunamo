@@ -181,75 +181,83 @@ public partial class SourceCodeIndexerRoslyn
         Dictionary<string, NamespaceCodeElements> result = new Dictionary<string, NamespaceCodeElements>();
         Dictionary<string, ClassCodeElements> resultClass = new Dictionary<string, ClassCodeElements>();
         bool add = true;
-        foreach (var item in namespaceCodeElements)
+
+        if (type != NamespaceCodeElementsType.Nope)
         {
-            NamespaceCodeElements d = new NamespaceCodeElements();
-            foreach (var item2 in item.Value)
+
+            foreach (var item in namespaceCodeElements)
             {
-                if (item.Key.Contains("ItemWithCount"))
+                NamespaceCodeElements d = new NamespaceCodeElements();
+                foreach (var item2 in item.Value)
                 {
+                    if (item.Key.Contains("ItemWithCount"))
+                    {
+                    }
+
+                    if (makeChecking)
+                    {
+                        add = false;
+                        if (item2.Type == type)
+                        {
+                            // Nope there cannot be passed
+                            add = true;
+                        }
+                        else if (classType == ClassCodeElementsType.All)
+                        {
+                            add = true;
+                        }
+                    }
+
+                    if (add)
+                    {
+                        if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
+                        {
+                            d.Add(item2);
+                        }
+                    }
                 }
 
-                if (makeChecking)
+                if (d.Count > 0)
                 {
-                    add = false;
-                    if (item2.Type == type)
-                    {
-                        // Nope there cannot be passed
-                        add = true;
-                    }
-                    else if (classType == ClassCodeElementsType.All)
-                    {
-                        add = true;
-                    }
+                    result.Add(item.Key, d);
                 }
-
-                if (add)
-                {
-                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
-                    {
-                        d.Add(item2);
-                    }
-                }
-            }
-
-            if (d.Count > 0)
-            {
-                result.Add(item.Key, d);
             }
         }
 
-        foreach (var item in classCodeElements)
+        if (classType != ClassCodeElementsType.Nope)
         {
-            ClassCodeElements d = new ClassCodeElements();
-            foreach (var item2 in item.Value)
+            foreach (var item in classCodeElements)
             {
-                if (makeChecking)
+                ClassCodeElements d = new ClassCodeElements();
+                foreach (var item2 in item.Value)
                 {
-                    add = false;
-                    if (item2.Type == classType)
+                    if (makeChecking)
                     {
-                        // Nope there cannot be passed
-                        add = true;
+                        add = false;
+                        if (item2.Type == classType)
+                        {
+                            // Nope there cannot be passed
+                            add = true;
+                        }
+                        else if (classType == ClassCodeElementsType.All)
+                        {
+                            add = true;
+                        }
                     }
-                    else if (classType == ClassCodeElementsType.All)
+
+                    if (add)
                     {
-                        add = true;
+                        if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
+                        {
+                            d.Add(item2);
+                        }
                     }
                 }
 
-                if (add)
+                if (d.Count > 0)
                 {
-                    if (SH.Contains(item2.NameWithoutGeneric, text, searchStrategy))
-                    {
-                        d.Add(item2);
-                    }
+                    resultClass.Add(item.Key, d);
                 }
-            }
-
-            if (d.Count > 0)
-            {
-                resultClass.Add(item.Key, d);
             }
         }
 

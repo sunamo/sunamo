@@ -48,30 +48,6 @@ public partial class PH
         StartAllUri(carModels);
     }
 
-    private static string NormalizeUri(string v)
-    {
-        // Without this cant search for google apps
-        v = SH.ReplaceAll(v, "%22", AllStrings.qm);
-        return v;
-    }
-
-    public static void Uri(string v)
-    {
-        v = NormalizeUri(v);
-        v = v.Trim();
-        //Must UrlDecode for https://mapy.cz/?q=Antala+Sta%c5%a1ka+1087%2f3%2c+Hav%c3%ad%c5%99ov&sourceid=Searchmodule_1
-        // to fulfillment RFC 3986 and RFC 3987 https://docs.microsoft.com/en-us/dotnet/api/system.uri.iswellformeduristring?view=netframework-4.8
-        v = HttpUtility.UrlDecode(v);
-        if (System.Uri.IsWellFormedUriString( v, UriKind.RelativeOrAbsolute))
-        {
-            Process.Start(v);
-        }
-        else
-        {
-            //DebugLogger.Instance.WriteLine("Wasnt in right format" + ": " + v);
-        }
-    }
-
     public static void SaveAndOpenInBrowser(Browsers prohlizec, string htmlKod)
     {
         string s = Path.GetTempFileName() + ".html";
@@ -79,52 +55,7 @@ public partial class PH
         OpenInBrowser(prohlizec, s);
     }
 
-    public static void OpenInBrowser(Browsers prohlizec, string s)
-    {
-        string b = "";
-        switch (prohlizec)
-        {
-            case Browsers.Chrome:
-                b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
-                break;
-            case Browsers.Firefox:
-                b = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-                break;
-            case Browsers.InternetExplorer:
-                b = @"C:\Program Files (x86)\Internet Explorer\iexplore.exe";
-                break;
-            case Browsers.Opera:
-                b = @"C:\Program Files (x86)\Opera\opera.exe";
-                break;
-            case Browsers.Edge:
-                b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
-                break;
-            case Browsers.Vivaldi:
-                b = @"C:\Users\n\AppData\Local\Vivaldi\Application\vivaldi.exe";
-                break;
-            default:
-                throw new Exception("Neimplementovany prohliez");
-                break;
-        }
-
-        Process.Start(new ProcessStartInfo(b, NormalizeUri(s)));
-    }
-
-    /// <summary>
-    /// A1 without extension
-    /// </summary>
-    /// <param name = "name"></param>
-    public static int Terminate(string name)
-    {
-        int deleted = 0;
-        foreach (var process in Process.GetProcessesByName(name))
-        {
-            process.Kill();
-            deleted++;
-        }
-
-        return deleted;
-    }
+    
 
     /// <summary>
     /// Start all uri in clipboard, splitted by whitespace
@@ -134,10 +65,5 @@ public partial class PH
         var text = ClipboardHelper.GetText();
         var uris = SH.SplitByWhiteSpaces(text);
         StartAllUri(uris);
-    }
-
-    public static void OpenInBrowser(string uri)
-    {
-        OpenInBrowser(Browsers.Chrome, uri);
     }
 }

@@ -1332,4 +1332,22 @@ public static void Remove(List<string> input, Func<string, string, bool> pred, s
             }
         }
     }
+
+/// <summary>
+    /// Direct edit collection
+    /// Na rozdíl od metody RemoveStringsEmpty i vytrimuje (ale pouze pro porovnání, v kolekci nechá)
+    /// </summary>
+    /// <param name="mySites"></param>
+    /// <returns></returns>
+    public static List<string> RemoveStringsEmpty2(List<string> mySites)
+    {
+        for (int i = mySites.Count - 1; i >= 0; i--)
+        {
+            if (mySites[i].Trim() == string.Empty)
+            {
+                mySites.RemoveAt(i);
+            }
+        }
+        return mySites;
+    }
 }

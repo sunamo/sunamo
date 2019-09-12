@@ -122,7 +122,11 @@ public class ComboBoxHelper
             // not need ValueFromTWithNameOrObject, TWithName has ToString
             cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
 
-        SelectionChanged(sender, e);
+        if (SelectionChanged != null)
+        {
+            SelectionChanged(sender, e);
+        }
+        
         }
 
     public void AddValuesOfEnumerableAsItems(IEnumerable l)
