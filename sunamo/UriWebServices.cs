@@ -24,7 +24,7 @@ public partial class UriWebServices
     {
         public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
         public const string wwwAutodocCz = "https://www.autodoc.cz/search?keyword=%" + "";
-        public const string wwwNahradniDilyZhCz = "http://www.nahradni-dily-zh.cz/search.asp?searchinput=%" + "";
+        public const string wwwNahradniDilyZhCz = "https://www.nahradni-dily-zh.cz/search.asp?searchinput=%" + "";
         public const string wwwAutomobilovedilyCz = "https://www.automobilovedily24.cz/search?keyword=%" + "";
         public static List<string> All = CA.ToListString(wwwAutokseftCz, wwwAutodocCz, wwwNahradniDilyZhCz, wwwAutomobilovedilyCz);
     }
@@ -163,7 +163,7 @@ Template for which I will find, have to be in derivates the same:
          */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "http://moravskoslezsky-kraj.hyperinzerce.cz/%s" + "/";
+        public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s" + "/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%" + "";
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
@@ -310,7 +310,7 @@ Template for which I will find, have to be in derivates the same:
         public const string mulacCz = @"https://www.mulac.cz/hledani/?q=%" + "";
         public const string solarEshop = @"https://www.solar-eshop.cz/vyhledavani/?w=%s&submit=";
 
-        public const string karavan3nec = @"http://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
+        public const string karavan3nec = @"https://www.karavan3nec.cz/?page=search&sortmode=7&search=%s";
         public const string campiShopCz = @"https://www.campi-shop.cz/obchod/vyhledavani/_q=%" + "";
         public const string gesCz = @"https://www.ges.cz/cz/hledat/?search=%" + "";
         public const string dstechnikCz = @"https://www.dstechnik.cz/vyhledavani/?qkk=333af8f0cfef3cbbe82db1e238b1ba2d&hledej=%s&x=0&y=0";
@@ -367,7 +367,7 @@ Template for which I will find, have to be in derivates the same:
         /// Knihovna akademie ved
         /// </summary>
         public const string cas = @"https://vufind.lib.cas.cz/ustav/KNAV/Search/Results?type=AllFields&institution=KNAV&filter%5B%5D=institution%3AKNAV&lookfor=nginx&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp";
-        public const string mlp = "http://search.mlp.cz/en/?query=%s&kde=all#/c_s_ol=query-eq:%s";
+        public const string mlp = "https://search.mlp.cz/en/?query=%s&kde=all#/c_s_ol=query-eq:%s";
         public const string kmoAll = "https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0";
         public const string kmoAV = "https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0";
         public const string kmoMP = "https://tritius.kmo.cz/Katalog/search?q=%s&area=242&field=0";
@@ -382,27 +382,27 @@ Template for which I will find, have to be in derivates the same:
     {
         public static string CacheDetails(string cacheGuid)
         {
-            return "http://www.geocaching.com/seek/cache_details.aspx?guid=" + cacheGuid;
+            return "https://www.geocaching.com/seek/cache_details.aspx?guid=" + cacheGuid;
         }
 
         public static string Gallery(string cacheGuid)
         {
-            return "http://www.geocaching.com/seek/gallery.aspx?guid=" + cacheGuid;
+            return "https://www.geocaching.com/seek/gallery.aspx?guid=" + cacheGuid;
         }
 
         public static string Log(string cacheGuid)
         {
-            return "http://www.geocaching.com/seek/log.aspx?guid=" + cacheGuid;
+            return "https://www.geocaching.com/seek/log.aspx?guid=" + cacheGuid;
         }
 
         public static string CoordsInfo(string f)
         {
-            return "http://coords.info" + "/" + f;
+            return "https://coords.info" + "/" + f;
         }
 
         public static string GC(string f)
         {
-            return "http://coords.info/GC" + f;
+            return "https://coords.info/GC" + f;
         }
     }
 
@@ -410,7 +410,7 @@ Template for which I will find, have to be in derivates the same:
     {
         public static string FacebookProfile(string nick)
         {
-            return "http://www.facebook.com" + "/" + nick;
+            return "https://www.facebook.com" + "/" + nick;
         }
 
         public static string FbTopSearch(string q)
@@ -447,7 +447,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string TwitterProfile(string nick)
     {
-        return "http://www.twitter.com" + "/" + nick;
+        return "https://www.twitter.com" + "/" + nick;
     }
 
     public static string SearchGitHub(string item)
@@ -462,12 +462,12 @@ Template for which I will find, have to be in derivates the same:
 
     public static string YouTubeProfile(string nick)
     {
-        return "http://www.youtube.com/c" + "/" + nick;
+        return "https://www.youtube.com/c" + "/" + nick;
     }
 
     public static string GooglePlusProfile(string nick)
     {
-        return "http://www.google.com/" + "" + nick;
+        return "https://www.google.com/" + "" + nick;
     }
 
     public static void GoogleSearchInAllSite(List<string> allRepairKitShops, string v)
@@ -533,7 +533,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string GoogleImFeelingLucky(string v)
     {
-        return FromChromeReplacement("http://www.google.com/search?btnI&q=%s", v);
+        return FromChromeReplacement("https://www.google.com/search?btnI&q=%s", v);
     }
 
     public static string MapyCz(string v)
@@ -562,7 +562,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string GetLinkToVideo(string kod)
         {
-            return "http://www.youtube.com/watch?v=" + kod;
+            return "https://www.youtube.com/watch?v=" + kod;
         }
 
         public static string GetHtmlAnchor(string kod)
@@ -577,7 +577,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string GetLinkToSearch(string co)
         {
-            return "http://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
+            return "https://www.youtube.com/results?search_query=" + UH.UrlEncode(co);
         }
 
         /// <summary>

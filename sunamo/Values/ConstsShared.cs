@@ -53,25 +53,25 @@ using System.Text;
 
         public const string nulled = "(null)";
 
-        public const string HttpLocalhostSlash = "http://localhost" + "/";
-        public const string HttpSunamoCzSlash = "http://www.sunamo.cz" + "/";
+        public const string HttpLocalhostSlash = "https://localhost" + "/";
+        public const string HttpSunamoCzSlash = "https://www.sunamo.cz" + "/";
         public readonly static string localhost = "localhost";
 
-        public static string HttpWwwCzSlash = "http://www.sunamo.cz" + "/";
-        public static string HttpCzSlash = "http://sunamo.cz" + "/";
-        public static string HttpWwwCz = "http://www.sunamo.cz";
-    public const string httpLocalhost = "http://localhost/";
+        public static string HttpWwwCzSlash = "https://www.sunamo.cz" + "/";
+        public static string HttpCzSlash = "https://sunamo.cz" + "/";
+        public static string HttpWwwCz = "https://www.sunamo.cz";
+    public const string httpLocalhost = "https://localhost/";
 
     public const string scz = "sunamo.cz";
 
-        public static string Cz = "http://sunamo.cz";
-        public static string WwwCz = "http://www.sunamo.cz";
+        public static string Cz = "https://sunamo.cz";
+        public static string WwwCz = "https://www.sunamo.cz";
 
-        public static string CzSlash = "http://sunamo.cz" + "/";
+        public static string CzSlash = "https://sunamo.cz" + "/";
         public static string DotCzSlash = "." + "sunamo.cz" + "/";
         public static string DotCz = ".sunamo.cz";
 
-        public static string http = "http" + ":" + "//";
+        public static string http = "https://";
         public const double zeroDouble = 0;
         public const int zeroInt = 0;
         public const float zeroFloat = 0;

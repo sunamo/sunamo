@@ -471,10 +471,10 @@ namespace sunamo.Html
         private static List<HtmlNode> TextNodes(HtmlNode node, params string[] dontHaveAsParentTag)
         {
             /*
-             * I tried https://www.nuget.org/p/ because <a href=\"http://jepsano.net/\">http://jepsano.net/</a> another text https://www.nuget.org/p/ divide into:
+             * I tried https://www.nuget.org/p/ because <a href=\"https://jepsano.net/\">https://jepsano.net/</a> another text https://www.nuget.org/p/ divide into:
              * I tried https://www.nuget.org/p/ because
-             * <a href=\"http://jepsano.net/\">
-             * http://jepsano.net/ with parent a
+             * <a href=\"https://jepsano.net/\">
+             * https://jepsano.net/ with parent a
              * another text https://www.nuget.org/p/ 
              * 
              */
