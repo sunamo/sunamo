@@ -1227,4 +1227,22 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
         }
         return nova;
     }
+
+/// <summary>
+    /// A2 true - bs to slash. false - slash to bs
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string Slash(string path, bool slash)
+    {
+        if (slash)
+        {
+            return SH.ReplaceAll2(path, AllStrings.slash, AllStrings.bs);
+        }
+        else
+        {
+            return SH.ReplaceAll2(path, AllStrings.bs, AllStrings.slash);
+        }
+    }
 }
