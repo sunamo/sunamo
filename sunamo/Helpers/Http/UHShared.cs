@@ -11,7 +11,7 @@ public partial class UH
         string p2 = p;
         if (!p.StartsWith("http"))
         {
-            p2 = "http" + ":" + "//" + p;
+            p2 = "https://" + p;
         }
 
         return p2;
@@ -155,16 +155,16 @@ public partial class UH
     }
     public static string GetPageNameFromUri(string atr, string p)
     {
-        if (!atr.StartsWith("http" + ":" + "//") && !atr.StartsWith("https" + ":" + "//"))
+        if (!atr.StartsWith("https://") && !atr.StartsWith("https" + ":" + "//"))
         {
-            return GetPageNameFromUri(new Uri("http" + ":" + "//" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
+            return GetPageNameFromUri(new Uri("https://" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
         }
         return GetPageNameFromUri(new Uri(atr));
     }
 
     /// <summary>
     /// Pod�v� naprosto stejn� v�sledek jako UH.GetPageNameFromUri
-    /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� /Widgets/VerifyDomain.aspx
+    /// Tedy nap��klad pro str�nku https://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� /Widgets/VerifyDomain.aspx
     /// </summary>
     /// <param name="uri"></param>
     /// <returns></returns>

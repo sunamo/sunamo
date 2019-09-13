@@ -574,7 +574,7 @@ public class HtmlGenerator2 : HtmlGenerator
     }
 
     /// <summary>
-    /// Zadávej A1 bez http://, do odkazu se doplní samo, do textu nikoliv
+    /// Zadávej A1 bez https://, do odkazu se doplní samo, do textu nikoliv
     /// </summary>
     /// <param name="www"></param>
     /// <returns></returns>
@@ -590,7 +590,7 @@ public class HtmlGenerator2 : HtmlGenerator
     }
 
     /// <summary>
-    /// A1 je text bez http:// / https://, který se doplní do odkazu sám pokud tam nebude. 
+    /// A1 je text bez https:// / https://, který se doplní do odkazu sám pokud tam nebude. 
     /// V textu se ale vždy nahradí pokud tam bude.
     /// </summary>
     /// <param name="www"></param>
@@ -598,7 +598,7 @@ public class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "http" + ":" + "//", ""), "https" + ":" + "//", "") + "</a>";
+        return "<a href=\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https" + ":" + "//", "") + "</a>";
     }
 
     public static string AnchorWithHttp(string www, string text)

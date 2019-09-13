@@ -69,7 +69,7 @@
     /// Nepoužívat, minimální velikost je 5 bajtů při max. počtu číslic 9 - do Real se vleze 7 číslic a zabírá v DB jen 4 bajty
     /// Hlavní výhoda tohoto typu je možnost nakonfigurovat celkový počet číslic a počet číslic za desetinnou čárkou. 
     /// První číslo určuje maximální celkový počet číslic.Druhé číslo určuje kolik je z toho za desetinnou čárkou. 
-    /// Pro více informací se koukni na http://jepsano.net/2015/03/jak-v-sql-serveru-udelat-sloupec-s-nastavitelnym-plovoucim-typem/
+    /// Pro více informací se koukni na https://jepsano.net/2015/03/jak-v-sql-serveru-udelat-sloupec-s-nastavitelnym-plovoucim-typem/
     /// </summary>
     Decimal,
     /// <summary>

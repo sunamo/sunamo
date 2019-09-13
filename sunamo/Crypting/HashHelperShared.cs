@@ -31,7 +31,7 @@ public partial class HashHelper
     public static string GetMd5Hash(string text, Encoding e)
     {
         MD5CryptoServiceProvider hash = new MD5CryptoServiceProvider();
-        //http://www.gravatar.com/avatar/c9b424b73b969e217693c401a40db390.png
+        //https://www.gravatar.com/avatar/c9b424b73b969e217693c401a40db390.png
         byte[] data = hash.ComputeHash(e.GetBytes(text));
         StringBuilder sBuilder = new StringBuilder();
         for (int i = 0; i < data.Length; i++)

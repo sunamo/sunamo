@@ -58,7 +58,7 @@ public static partial class SH
 
     public static object ReplaceMany(string input, string fromTo)
     {
-        
+        return null;
     }
 
     public static string MakeUpToXChars(int p, int p_2)
