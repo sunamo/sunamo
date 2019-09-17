@@ -35,7 +35,7 @@ namespace SunamoFtp
         }
 
         /// <summary>
-        /// A1 je složka, která je nejvyšší. Může být nastavena na C:\, www, SE nebo cokoliv jiného
+        /// A1 je složka, která je nejvyšší. Může být nastavena na c:\, www, SE nebo cokoliv jiného
         /// Pracuje buď s \ nebo s / - podle toho co najde v A1. Libovolně lze přidat další oddělovače
         /// </summary>
         /// <param name="initialDirectory"></param>

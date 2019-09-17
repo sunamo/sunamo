@@ -70,13 +70,13 @@ namespace SunamoFtp
             CreateDirectoryIfNotExists("/" + "htdocs");
 
             // upload a file
-            client.UploadFile(@"D:\a.txt", "/htdocs/big.txt");
+            client.UploadFile(@"d:\a.txt", "/htdocs/big.txt");
 
             // rename the uploaded file
             client.Rename("/htdocs/big.txt", "/htdocs/big2.txt");
 
             // download the file again
-            client.DownloadFile(@"D:\b.txt", "/htdocs/big2.txt");
+            client.DownloadFile(@"d:\b.txt", "/htdocs/big2.txt");
 
             // delete the file
             client.DeleteFile("/htdocs/big2.txt");
@@ -91,7 +91,7 @@ namespace SunamoFtp
 
             // upload a file and retry 3 times before giving up
             client.RetryAttempts = 3;
-            client.UploadFile(@"C:\MyVideo.mp4", "/htdocs/big.txt", FtpExists.Overwrite, false, FtpVerify.Retry);
+            client.UploadFile(@"c:\MyVideo.mp4", "/htdocs/big.txt", FtpExists.Overwrite, false, FtpVerify.Retry);
 
             // disconnect! good bye!
             client.Disconnect();

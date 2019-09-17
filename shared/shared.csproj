@@ -214,6 +214,7 @@
     <Compile Include="Values\AllHtmlAttrsValues.cs" />
     <Compile Include="Values\AllHtmlTags.cs" />
     <Compile Include="Values\AllHtmlAttrs.cs" />
+    <Compile Include="WikipediaHelper.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />

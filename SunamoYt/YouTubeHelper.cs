@@ -45,7 +45,7 @@ public static class YouTubeHelper
     
 
         /// <summary>
-        /// Cant be use in UWP app because access publicly to C:\Users and app throw exception
+        /// Cant be use in UWP app because access publicly to c:\Users and app throw exception
         /// </summary>
         /// <param name="name"></param>
         /// <param name="ytCodes"></param>

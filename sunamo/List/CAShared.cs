@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 public static partial class CA
 {
@@ -325,16 +326,24 @@ public static partial class CA
         {
             foreach (object item in enumerable2)
             {
+
+
                 // !(item is string)  - not working
                 if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
                 {
+                    
+
                     var enumerable = (IEnumerable)item;
                     var type = enumerable.GetType();
+
+                    var isEnumerableChar = RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>));
+                    var isEnumerableString = RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<string>));
+
                     if (type == typeof(string))
                     {
                         result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
                     }
-                    else if (RH.IsOrIsDeriveFromBaseClass(type, typeof(IEnumerable<char>)))
+                    else if (isEnumerableChar)
                     {
                         // IEnumerable<char> => string
                         //enumerable2 is not string, then I can add all to list
@@ -346,7 +355,7 @@ public static partial class CA
                         // IEnumerable<string> => List<string>
                         result.AddRange(((IEnumerable<string>)enumerable.FirstOrNull()).ToList());
                     }
-                    else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
+                    else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable && !isEnumerableChar && !isEnumerableString)
                     {
                         result.AddRange(ToListString2(((IEnumerable)enumerable.FirstOrNull())));
                     }
@@ -1349,5 +1358,14 @@ public static void Remove(List<string> input, Func<string, string, bool> pred, s
             }
         }
         return mySites;
+    }
+
+public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
+    {
+        sb.AppendLine(JoinForGoogleSheetRow(en));
+    }
+public static string JoinForGoogleSheetRow(IEnumerable en)
+    {
+        return SH.Join(AllChars.tab, en);
     }
 }

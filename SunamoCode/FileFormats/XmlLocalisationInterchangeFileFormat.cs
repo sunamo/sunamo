@@ -16,7 +16,7 @@ namespace SunamoCode
     {
         public static Langs GetLangFromFilename(string s)
         {
-            s = Path.GetFileNameWithoutExtension(s);
+            s = FS.GetFileNameWithoutExtension(s);
             var parts = SH.Split(s, AllChars.dot);
             string last = parts[parts.Count - 1].ToLower();
             if (last.StartsWith("cs"))

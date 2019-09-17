@@ -315,7 +315,7 @@ namespace SunamoFtp
                                     }
                                 }
                                 goToUpFolderForce();
-                                rmdir(new List<string>(), Path.GetFileName(item2.Key.TrimEnd(AllChars.slash)));
+                                rmdir(new List<string>(), FS.GetFileName(item2.Key.TrimEnd(AllChars.slash)));
                             }
                         }
                     }
@@ -420,7 +420,7 @@ namespace SunamoFtp
 
             if (dirName != "")
             {
-                dirName = Path.GetFileName(dirName.TrimEnd(AllChars.slash));
+                dirName = FS.GetFileName(dirName.TrimEnd(AllChars.slash));
                 if (dirName[dirName.Length - 1] == AllStrings.slash[0])
                 {
                     dirName = dirName.Substring(0, dirName.Length - 1);

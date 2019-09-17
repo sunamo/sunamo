@@ -99,9 +99,9 @@ namespace forms
         public static void LoadFiles(AppFolders ap, string mask, ToolStripComboBox cb)
         {
             cb.Items.Clear();
-            string[] files = Directory.GetFiles(AppData.ci.GetFolder(ap), mask);
+            var files = FS.GetFiles(AppData.ci.GetFolder(ap), mask, SearchOption.TopDirectoryOnly);
             files = FS.OnlyNames(files);
-            cb.Items.AddRange(files);
+            cb.Items.AddRange(files.ToArray());
         }
     }
 }

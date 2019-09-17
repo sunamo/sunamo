@@ -4,5 +4,6 @@
     AddFileSize,
     Overwrite,
     DiscardFrom,
-    LeaveLarger
+    LeaveLarger,
+    DontManipulate
 }

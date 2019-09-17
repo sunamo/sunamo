@@ -133,7 +133,7 @@ public partial class UH
 
     public static string GetFileNameWithoutExtension(string p)
     {
-        return Path.GetFileNameWithoutExtension(GetFileName(p));
+        return FS.GetFileNameWithoutExtension(GetFileName(p));
     }
 
 

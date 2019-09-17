@@ -28,13 +28,13 @@ namespace sunamo.Collections
         public void AddOnlyFileName(string fileName)
         {
             string ext = FS.GetExtension(fileName).ToLower();
-            string fn = Path.GetFileNameWithoutExtension(fileName).ToLower();
+            string fn = FS.GetFileNameWithoutExtension(fileName).ToLower();
             DictionaryHelper.AddOrCreateIfDontExists<string, string>(dictionary, ext, fn);
         }
 
         public void AddWholeFilePath(string filePath)
         {
-            AddOnlyFileName(Path.GetFileName(filePath));
+            AddOnlyFileName(FS.GetFileName(filePath));
         }
     }
 }

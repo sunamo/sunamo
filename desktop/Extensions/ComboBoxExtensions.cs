@@ -18,14 +18,14 @@ namespace System.Windows.Controls
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(this ComboBox control, object tb, bool trim = true)
+        public static void Validate(this ComboBox control, object tb, ValidateData d = null)
         {
             if (!validated)
             {
                 return;
             }
             string text = control.Text;
-            if (trim)
+            if (d.trim)
             {
                 text = text.Trim();
             }

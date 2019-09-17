@@ -22,66 +22,67 @@ public static partial class UIElementExtensions{
     /// <param name = "ui"></param>
     /// <param name = "name"></param>
     /// <returns></returns>
-    public static bool? Validate2(this UIElement ui, string name)
+    public static bool? Validate2(this UIElement ui, string name, ValidateData d = null)
     {
         var t = ui.GetType();
         if (t == TypesControls.tTextBox)
         {
             var c = ui as TextBox;
-            c.Validate(name);
+            c.Validate(name, d);
             return TextBoxHelper.validated;
         }
         else if (t == TypesControls.tListBox)
         {
             var c = ui as ListBox;
-            c.Validate(name);
+            c.Validate(name, d);
             return TextBoxHelper.validated;
         }
         else if (t == TypesControls.tListView)
         {
             var c = ui as ListView;
-            c.Validate(name);
+            c.Validate(name, d);
             return TextBoxHelper.validated;
         }
         else if (t == TypesControls.tComboBox)
         {
             var c = ui as ComboBox;
-            c.Validate(name);
+            c.Validate(name, d);
             return TextBoxHelper.validated;
         }
         else if (t == SelectFile.type)
         {
             var c = ui as SelectFile;
-            c.Validate(name);
+            c.Validate(name, d);
             return SelectFile.validated;
         }
         else if (t == SelectFolder.type)
         {
             var c = ui as SelectFolder;
-            c.Validate(name);
+            c.Validate(name, d);
             return SelectFolder.validated;
         }
         else if (t == SelectManyFiles.type)
         {
             var c = ui as SelectManyFiles;
-            c.Validate(name);
+            c.Validate(name, d);
             return SelectManyFiles.validated;
         }
         else if (t == SelectMoreFolders.type)
         {
             var c = ui as SelectMoreFolders;
-            c.Validate(name);
+            c.Validate(name, d);
             return SelectMoreFolders.validated;
         }
         else if (t == TwoRadiosUC.type)
         {
             var c = ui as TwoRadiosUC;
-            c.Validate(name);
+            c.Validate(name, d);
             return SelectMoreFolders.validated;
         }
         else if (t == PathEditor.SuggestTextBoxPath.type)
         {
             var c = ui as PathEditor.SuggestTextBoxPath;
+            //, d here cannot be
             c.Validate(name);
             return PathEditor.SuggestTextBoxPath.validated;
         }

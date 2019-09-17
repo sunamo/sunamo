@@ -180,9 +180,9 @@ namespace desktop
         /// <param name="tb"></param>
         /// <param name="control"></param>
         /// <param name="trim"></param>
-        public static void Validate(object tb, TextBox control, bool trim = true)
+        public static void Validate(object tb, TextBox control, ValidateData d = null)
         {
-            control.Validate(tb, trim);
+            control.Validate(tb, d);
         }
 
         public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBox txt)

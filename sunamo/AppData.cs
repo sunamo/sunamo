@@ -89,7 +89,7 @@ public class AppData : AppDataAbstractBase<string, string>
     {
         rootFolder = GetSunamoFolder();
 
-        RootFolder = FS.CombineWithoutFirstCharLower(rootFolder, ThisApp.Name);
+        RootFolder = FS.Combine(rootFolder, ThisApp.Name);
         FS.CreateDirectory(RootFolder);
         return RootFolder;
     }

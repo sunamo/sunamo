@@ -42,8 +42,12 @@ public class ApplicationDataContainer : ApplicationDataConsts
     {
         get
         {
-            var list = data[file];
-            return list;
+            if (data.ContainsKey(file))
+            {
+                var list = data[file];
+                return list;
+            }
+            return null;
         }
     }
 

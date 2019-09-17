@@ -400,6 +400,10 @@
       <Project>{ec822654-cde4-4ee2-b033-55125cd11b80}</Project>
       <Name>PathEditor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\duo\duo.csproj">
+      <Project>{38d5e223-a4f9-425a-a848-871bfc6abca7}</Project>
+      <Name>duo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

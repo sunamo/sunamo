@@ -20,16 +20,16 @@ using System.Diagnostics;
             switch (prohlizec)
             {
                 case Browsers.Chrome:
-                    b = @"C:\Users\sunamo\AppData\Local\Google\Chrome\Application\chrome.exe";
+                    b = @"c:\Users\sunamo\AppData\Local\Google\Chrome\Application\chrome.exe";
                     break;
                 case Browsers.Firefox:
-                    b = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                    b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
                     break;
                 case Browsers.Opera:
-                    b = @"C:\Program Files (x86)\Opera\opera.exe";
+                    b = @"c:\Program Files (x86)\Opera\opera.exe";
                     break;
                 case Browsers.IE:
-                    b = @"C:\Program Files (x86)\Internet Explorer\iexplore.exe";
+                    b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
                     break;
                 default:
                     throw new Exception("Neimplementovan� prohl�e�");

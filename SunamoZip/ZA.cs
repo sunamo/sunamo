@@ -43,13 +43,13 @@ public class ZA
     /// <param name="slozku"></param>
     /// <param name="soubory"></param>
     /// <param name="soubor"></param>
-    public void CreateArchive(string slozku, string[] soubory, string soubor)
+    public void CreateArchive(string slozku, List<string> soubory, string soubor)
     {
         #region Nac. jedn soubory a ukkladam do ZipOutputStream
         using (ZipOutputStream s = new ZipOutputStream(File.Create(soubor)))
         {
             s.SetLevel(9);
-            for (int i = 0; i < soubory.Length; i++)
+            for (int i = 0; i < soubory.Length(); i++)
             {
                 string var = getRelativePath2(soubory[i], slozku);
                 ZipEntry ze = new ZipEntry(var + Path.DirectorySeparatorChar.ToString());
@@ -144,12 +144,12 @@ public class ZA
         CreateArchive(slozku, VratSouboryRek(slozku), VratJmenoSouboruZip(slozku));
     }
 
-    private string[] VratSouboryRek(string slozku)
+    private List<string> VratSouboryRek(string slozku)
     {
-        return Directory.GetFiles(slozku, AllStrings.asterisk, SearchOption.AllDirectories);
+        return FS.GetFiles(slozku, AllStrings.asterisk, SearchOption.AllDirectories);
     }
 
-    public void CreateArchive(string slozka, string[] soubory)
+    public void CreateArchive(string slozka, List<string> soubory)
     {
         CreateArchive(slozka, soubory, VratJmenoSouboruZip(slozka));
     }

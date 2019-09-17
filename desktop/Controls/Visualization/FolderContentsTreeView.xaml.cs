@@ -103,7 +103,7 @@ namespace desktop.Controls
                     {
                         AddTviFolderTo(s, item);
                     }
-                    foreach (string s in Directory.GetFiles(folder))
+                    foreach (string s in FS.GetFiles(folder))
                     {
                         AddTviFileTo(s, item);
                     }

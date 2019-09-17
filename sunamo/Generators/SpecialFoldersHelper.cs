@@ -4,7 +4,7 @@ using System.IO;
 public static partial class SpecialFoldersHelper
 {
     /// <summary>
-    /// Return root folder of AppData (as C:\Users\n\AppData\)
+    /// Return root folder of AppData (as c:\Users\n\AppData\)
     /// </summary>
     /// <returns></returns>
     public static string ApplicationData()

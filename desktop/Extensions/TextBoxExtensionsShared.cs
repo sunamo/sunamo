@@ -9,17 +9,29 @@ public static partial class TextBoxExtensions{
     /// <param name = "tb"></param>
     /// <param name = "control"></param>
     /// <param name = "trim"></param>
-    public static void Validate(this TextBox control, object tb, bool trim = true)
+    public static void Validate(this TextBox control, object tb, ValidateData d = null)
     {
         if (!validated)
         {
             return;
         }
 
+        if (d == null)
+        {
+            d = new ValidateData();
+        }
+
         string text = control.Text;
-        if (trim)
+        if (d.trim)
         {
             text = text.Trim();
+        }
+
+        if (CA.IsEqualToAnyElement<string>(text.Trim(), d.excludedStrings))
+        {
+            InitApp.TemplateLogger.HaveUnallowedValue(TextBlockHelper.TextOrToString(tb));
+            validated = false;
+            return;
         }
 
         if (text == string.Empty)

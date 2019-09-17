@@ -12,7 +12,7 @@ namespace desktop.Controls
     {
     public static Type type = typeof(SelectFile);
 
-    public void Validate(object tbNewPath)
+    public void Validate(object tbNewPath, ValidateData d = null)
     {
             string SelectedFile = RH.GetValueOfPropertyOrField(this, "SelectedFile").ToString();
 

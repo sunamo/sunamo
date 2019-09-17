@@ -102,8 +102,8 @@ public partial class ManageArtistDashTitle
     /// <param name = "title"></param>
     public static void GetArtistTitle(string item, out string název, out string title)
     {
-        // Path.GetFileNameWithoutExtension()
-        string[] toks = System.IO.Path.GetFileNameWithoutExtension(item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
+        // FS.GetFileNameWithoutExtension()
+        string[] toks = FS.GetFileNameWithoutExtension(item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
         název = title = "";
         if (toks.Length == 0)
         {

@@ -83,7 +83,7 @@ public class XlfResourcesH
         }
 
 
-        var files = Directory.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
+        var files = FS.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
             foreach (var file in files)
             {
                 ProcessXlfFile(path, lang, file);
