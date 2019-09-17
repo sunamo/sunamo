@@ -94,53 +94,53 @@ public static partial class UIElementExtensions{
         return null;
     }
 
-public static void SetValidated(this UIElement ui, bool b)
-    {
-        var t = ui.GetType();
-        if (t == TypesControls.tTextBox)
+    public static void SetValidated(this UIElement ui, bool b)
         {
-            TextBoxHelper.validated = b;
-            ;
+            var t = ui.GetType();
+            if (t == TypesControls.tTextBox)
+            {
+                TextBoxHelper.validated = b;
+                ;
+            }
+            else if (t == TypesControls.tListBox)
+            {
+                ListBoxExtensions.validated = b;
+            }
+            else if (t == TypesControls.tListView)
+            {
+                ListViewExtensions.validated = b;
+            }
+            else if (t == TypesControls.tComboBox)
+            {
+                ComboBoxExtensions.validated = b;
+            }
+            else if (t == SelectFile.type)
+            {
+                SelectFile.validated = b;
+            }
+            else if (t == SelectFolder.type)
+            {
+                SelectFolder.validated = b;
+            }
+            else if (t == SelectManyFiles.type)
+            {
+                SelectManyFiles.validated = b;
+            }
+            else if (t == SelectMoreFolders.type)
+            {
+                SelectMoreFolders.validated = b;
+            }
+            else if (t == PathEditor.SuggestTextBoxPath.type)
+            {
+                PathEditor.SuggestTextBoxPath.validated = b;
+            }
+            else
+            {
+                ThrowExceptions.NotImplementedCase(type, "SetValidated");
+            }
         }
-        else if (t == TypesControls.tListBox)
-        {
-            ListBoxExtensions.validated = b;
-        }
-        else if (t == TypesControls.tListView)
-        {
-            ListViewExtensions.validated = b;
-        }
-        else if (t == TypesControls.tComboBox)
-        {
-            ComboBoxExtensions.validated = b;
-        }
-        else if (t == SelectFile.type)
-        {
-            SelectFile.validated = b;
-        }
-        else if (t == SelectFolder.type)
-        {
-            SelectFolder.validated = b;
-        }
-        else if (t == SelectManyFiles.type)
-        {
-            SelectManyFiles.validated = b;
-        }
-        else if (t == SelectMoreFolders.type)
-        {
-            SelectMoreFolders.validated = b;
-        }
-        else if (t == PathEditor.SuggestTextBoxPath.type)
-        {
-            PathEditor.SuggestTextBoxPath.validated = b;
-        }
-        else
-        {
-            ThrowExceptions.NotImplementedCase(type, "SetValidated");
-        }
-    }
 
-public static object GetContent(this UIElement ui)
+    public static object GetContent(this UIElement ui)
     {
         var t = ui.GetType();
         if (t == TypesControls.tListBox)
