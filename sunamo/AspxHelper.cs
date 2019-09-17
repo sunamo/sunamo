@@ -38,6 +38,7 @@ public class AspxHelper
     {
         for (int i = 0; i < lines.Count; i++)
         {
+
             var item = lines[i];
             if (item.Contains("id=\"errors") && item.Contains("class=\"chyba") && !item.Contains("</p>"))
             {

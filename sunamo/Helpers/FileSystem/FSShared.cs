@@ -414,6 +414,11 @@ public partial class FS
 
     public static bool IsWindowsPathFormat(string argValue)
     {
+        if (string.IsNullOrWhiteSpace(argValue))
+        {
+            return false;
+        }
+
         bool badFormat = false;
 
         if (!char.IsLetter(argValue[0]))

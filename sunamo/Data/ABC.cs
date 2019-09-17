@@ -11,6 +11,8 @@ public class ABC : List<AB>//, IEnumerable<AB>
 
     public ABC(params object[] setsNameValue)
     {
+        // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
+        //var setsNameValue = CA.TwoDimensionParamsIntoOne(setsNameValue2);
         for (int i = 0; i < setsNameValue.Length; i++)
         {
             this.Add(AB.Get(setsNameValue[i].ToString(), setsNameValue[++i]));

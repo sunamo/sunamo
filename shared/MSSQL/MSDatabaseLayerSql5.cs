@@ -58,18 +58,18 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
         return vr;
     }
 
-    public static void AssignConnectionString(string cs2)
-    {
-        cs = cs2;
-            if (_conn != null)
-            {
-                closing = true;
-                _conn.Close();
-                _conn.Dispose();
-                closing = false;
-            }
-            LoadNewConnectionFirst(cs);
-    }
+    //public static void AssignConnectionString(string cs2)
+    //{
+    //    cs = cs2;
+    //        if (_conn != null)
+    //        {
+    //            closing = true;
+    //            _conn.Close();
+    //            _conn.Dispose();
+    //            closing = false;
+    //        }
+    //        LoadNewConnectionFirst(cs);
+    //}
 
 
 

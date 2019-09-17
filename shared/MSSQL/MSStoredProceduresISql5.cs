@@ -2,6 +2,7 @@
 public class MSStoredProceduresISql5 : MSStoredProceduresIBase
 {
     static MSStoredProceduresIBase _ci = null;
+    static Type type = typeof(MSStoredProceduresISql5);
     public static MSStoredProceduresIBase ci
     {
         get
@@ -38,13 +39,19 @@ public class MSStoredProceduresISql5 : MSStoredProceduresIBase
     /// <param name="databaseName"></param>
     public static void CreateInstanceCs(string cs, string databaseName)
     {
-        if (MSDatabaseLayerSql5.conn != null)
+        ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+
+        if (false)
         {
-            throw new Exception("Třída MSDatabaseLayerCustom nemůže být inicializovana novým CS");
-        }
-        MSDatabaseLayerSql5.AssignConnectionString(cs);
-        _databaseName = databaseName;
-        ci = new MSStoredProceduresIBase(MSDatabaseLayerSql5.conn);
+            //if (MSDatabaseLayerSql5.conn != null)
+            //{
+            //    throw new Exception("Třída MSDatabaseLayerCustom nemůže být inicializovana novým CS");
+            //}
+
+            //MSDatabaseLayerSql5.AssignConnectionString(cs);
+            //_databaseName = databaseName;
+            //ci = new MSStoredProceduresIBase(MSDatabaseLayerSql5.conn);
+            }
     }
     
     /// <summary>

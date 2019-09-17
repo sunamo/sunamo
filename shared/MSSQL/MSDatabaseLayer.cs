@@ -491,26 +491,26 @@ public partial class MSDatabaseLayer
 
 
 
-    public static void AssignConnectionStringScz()
-    {
+    //public static void AssignConnectionStringScz()
+    //{
 
-        AssignConnectionString("Data Source=46.36.40.198;Database=sunamo.cz;User ID=sa;Password="+ AppData.ci.GetCommonSettings(CommonSettingsKeys.pwSql) + ";MultipleActiveResultSets=True" + ";");
-    }
+    //    AssignConnectionString("Data Source=46.36.40.198;Database=sunamo.cz;User ID=sa;Password="+ AppData.ci.GetCommonSettings(CommonSettingsKeys.pwSql) + ";MultipleActiveResultSets=True" + ";");
+    //}
 
-    public static void AssignConnectionStringLocalScz()
-    {
+    //public static void AssignConnectionStringLocalScz()
+    //{
 
-        AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True" + ";");
-    }
+    //    AssignConnectionString("Data Source=.;Database=sunamo.cz;Integrated Security=True;MultipleActiveResultSets=True" + ";");
+    //}
 
-    public static void AssignConnectionString(string cs2)
-    {
-        if (_conn == null)
-        {
-            cs = cs2;
-            LoadNewConnectionFirst(cs);
-        }
-    }
+    //public static void AssignConnectionString(string cs2)
+    //{
+    //    if (_conn == null)
+    //    {
+    //        cs = cs2;
+    //        LoadNewConnectionFirst(cs);
+    //    }
+    //}
 
     
 

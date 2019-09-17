@@ -779,12 +779,18 @@ public static partial class CA
         return value;
     }
 
+    /// <summary>
+    /// Dont use 
+    /// </summary>
+    /// <param name="para"></param>
+    /// <returns></returns>
     public static List<object> TwoDimensionParamsIntoOne(params object[] para)
     {
         return TwoDimensionParamsIntoOne<object>(para);
     }
 
     /// <summary>
+    /// Join elements of inner IEnumerable to single list
     /// T is object, not IEnumerable
     /// Multi deep array is not suppported
     /// For convert into string use ListToString
