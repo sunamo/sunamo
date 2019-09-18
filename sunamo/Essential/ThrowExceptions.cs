@@ -284,5 +284,10 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.FileSystemException(FullNameOfExecutedCode(type, methodName), ex));
     }
+
+    public static void FuncionalityDenied(Type type, string methodName, string description)
+    {
+        ThrowIsNotNull(Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
+    }
     #endregion
 }

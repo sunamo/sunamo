@@ -350,6 +350,11 @@ public class Exceptions
         return null;
     }
 
+    internal static object FuncionalityDenied(string before, string description)
+    {
+        return CheckBefore(before) + description;
+    }
+
     public static string InvalidParameter(string before, string mayUrlDecoded, string typeOfInput)
     {
         if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))

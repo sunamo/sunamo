@@ -1155,7 +1155,7 @@ public partial class FS
         }
         catch (Exception ex)
         {
-            throw new Exception("GetFiles with path: " + folder, ex);
+            ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions( ex));
         }
 
         CA.ChangeContent(list, d => SH.FirstCharLower(d));
