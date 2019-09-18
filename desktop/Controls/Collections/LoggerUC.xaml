@@ -6,6 +6,14 @@
              xmlns:local="clr-namespace:desktop.Controls.Collections"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            
+            <Setter Property="Width" Value="25" />
+            <Setter Property="Height" Value="25" />
+        </Style>
+    </UserControl.Resources>
+    
     <Border BorderBrush="Red" BorderThickness="5">
     <Grid >
         <Grid.RowDefinitions>
@@ -13,7 +21,10 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        
+            <StackPanel x:Name="spButtons" Orientation="Horizontal">
+                <Button x:Name="BtnCopyToClipboard" Click="BtnCopyToClipboard_Click"></Button>
+                <Button x:Name="BtnClear" Click="BtnClear_Click"></Button>
+            </StackPanel>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible" x:Name="lbLogsSV">
             <StackPanel x:FieldModifier="public" x:Name="lbLogs"></StackPanel>

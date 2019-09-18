@@ -163,7 +163,7 @@ namespace SunamoFtp
         /// <param name="files"></param>
         /// <param name="iw"></param>
         /// <returns></returns>
-        public bool UploadFiles(string[] files)
+        public bool UploadFiles(List<string> files)
         {
 
             string[] fse = ListDirectoryDetails();
@@ -218,8 +218,8 @@ namespace SunamoFtp
 
 
             var directories = FS.GetFolders(slozkaNaLocalu);
-            string[] files = Directory.GetFiles(slozkaNaLocalu);
-            OnNewStatus("Uploaduji všechny soubory" + " " + "" + files.Length + " " + " " + "do složky ftp serveru" + " " + ps.ActualPath);
+            List<string> files = FS.GetFiles(slozkaNaLocalu);
+            OnNewStatus("Uploaduji všechny soubory" + " " + "" + files.Length() + " " + " " + "do složky ftp serveru" + " " + ps.ActualPath);
 
             if (!UploadFiles(files))
             {
@@ -398,13 +398,13 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool uploadFolderShared(string slozkaFrom, bool rek, IWorking working)
         {
-            string nazevSlozky = Path.GetFileName(slozkaFrom);
+            string nazevSlozky = FS.GetFileName(slozkaFrom);
             string pathFolder = UH.Combine(true, ps.ActualPath, nazevSlozky);
             slozkaFrom = slozkaFrom.TrimEnd(AllChars.bs);
-            string[] soubory = Directory.GetFiles(slozkaFrom);
+            List<string> soubory = FS.GetFiles(slozkaFrom);
             var slozky = FS.GetFolders(slozkaFrom);
 
-            NewStatus("Uploaduji všechny soubory" + " " + "" + soubory.Length + " " + " " + "do složky ftp serveru" + " " + pathFolder);
+            NewStatus("Uploaduji všechny soubory" + " " + "" + soubory.Length() + " " + " " + "do složky ftp serveru" + " " + pathFolder);
 
             CreateDirectoryIfNotExists(nazevSlozky);
             foreach (var item in soubory)

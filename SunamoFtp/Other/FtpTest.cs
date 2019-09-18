@@ -30,7 +30,7 @@ namespace tempConsole
             ftp.CreateFolder(AllStrings.slash + folder);
             ftp.ChangeFolder(folder);
             ftpDll.DebugActualFolder();
-            ftp.UploadFiles("D:\a.txt");
+            ftp.UploadFiles("d:\a.txt");
 
             ftp.Close();
         }

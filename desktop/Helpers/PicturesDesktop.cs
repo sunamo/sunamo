@@ -190,7 +190,7 @@ using System.Windows.Media.Imaging;
         private static BitmapSource PlaceToCenter(BitmapSource img, double width, double height, bool writeToConsole, double minimalWidthPadding, double minimalHeightPadding, string arg, BitmapSource bmp2, bool useAtA1PixelSize = false)
         {
 
-            string fnOri = Path.GetFileName(arg);
+            string fnOri = FS.GetFileName(arg);
             string ext = "";
             if (PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
             {
@@ -252,7 +252,7 @@ using System.Windows.Media.Imaging;
                 y /= 2;
                 if (writeToConsole)
                 {
-                    InitApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(arg));
+                    InitApp.TemplateLogger.SuccessfullyResized(FS.GetFileName(arg));
                 }
 
                 return CreateBitmapSourceAndDrawOpacity(img.PixelWidth, img.PixelHeight, bmp2, y, x, useAtA1PixelSize);
@@ -347,7 +347,7 @@ using System.Windows.Media.Imaging;
             BitmapImageWithPath arg = new BitmapImageWithPath(arg2, bi2);
 
             // OK, já teď potřebuji zjistit na jakou velikost mám tento obrázek zmenšit
-            string fnOri = ""; // Path.GetFileName(args[i]);
+            string fnOri = ""; // FS.GetFileName(args[i]);
             double minWidthImage = width - (minimalWidthPadding);
             double minHeightImage = height - (minimalHeightPadding);
             double newWidth = width;

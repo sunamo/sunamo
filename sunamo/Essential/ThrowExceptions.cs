@@ -279,5 +279,15 @@ public class ThrowExceptions
     {
         ThrowIsNotNull(Exceptions.FileHasExtensionNotParseableToImageFormat(FullNameOfExecutedCode(type, methodName), fnOri));
     }
+
+    internal static void FileSystemException(Type type, string methodName, Exception ex)
+    {
+        ThrowIsNotNull(Exceptions.FileSystemException(FullNameOfExecutedCode(type, methodName), ex));
+    }
+
+    public static void FuncionalityDenied(Type type, string methodName, string description)
+    {
+        ThrowIsNotNull(Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
+    }
     #endregion
 }

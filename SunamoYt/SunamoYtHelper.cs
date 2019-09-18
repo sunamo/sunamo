@@ -5,6 +5,7 @@ using sunamo;
 using sunamo.Constants;
 using sunamo.Html;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 
@@ -12,6 +13,7 @@ namespace SunamoYt
 {
     public class SunamoYtHelper
     {
+        static Type type = typeof(SunamoYtHelper);
         public static Func<string, bool> existsYtVideo;
 
         const string uriPrefix = "/watch?v=";
@@ -114,6 +116,103 @@ namespace SunamoYt
             });
         }
 
+        public static IEnumerable GetComments(string ytCode)
+        {
+            YouTubeService youtube = CreateYouTubeService();
+
+            return GetComments(ytCode, ref youtube);
+        }
+
+        static IEnumerable GetComments(string ytCode, ref YouTubeService youtube)
+        {
+            
+
+            var listRequest = youtube.CommentThreads.List("snippet");
+            listRequest.VideoId = ytCode;
+
+            CommentThreadListResponse resp = null;
+
+            try
+            {
+#if DEBUG
+                    resp = listRequest.Execute();
+#endif
+            }
+            catch (Exception ex)
+            {
+                if (HasBeenExceeded(ex, ref youtube))
+                {
+                    return GetComments(ytCode, ref youtube);
+                }
+                
+            }
+
+            foreach (var item in resp.Items)
+            {
+                var s = item.Snippet.ToString();
+                var i = 0;
+            }
+
+            return null;
+        }
+
+        public static bool IsYtVideoAvailable(string ytCode)
+        {
+            YouTubeService youtube = CreateYouTubeService();
+
+            return IsYtVideoAvailable(ytCode, ref youtube);
+        }
+
+        static bool IsYtVideoAvailable(string ytCode, ref YouTubeService youtube)
+        {
+            var listRequest = youtube.Videos.List("status");
+            listRequest.Id = ytCode;
+
+            VideoListResponse resp = null;
+
+            try
+            {
+#if DEBUG
+                resp = listRequest.Execute();
+#endif
+            }
+            catch (Exception ex)
+            {
+                if (HasBeenExceeded(ex, ref youtube))
+                {
+                    return IsYtVideoAvailable(ytCode, ref youtube);
+                }
+
+            }
+
+            foreach (var item in resp.Items)
+            {
+                //var s = item.Snippet.ToString();
+                var status = item.Status;
+                if (status == null)
+                {
+                    ThrowExceptions.Custom(type, RH.CallingMethod(), "Status is null");
+                }
+                else
+                {
+                    //status.PrivacyStatus
+                    //status.RejectionReason;
+                    //status.embeddable;
+
+
+                    // first is uploaded, then is processed
+                    if (status.UploadStatus != UploadStatuses.processed.ToString())
+                    {
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         static Dictionary<SongFromInternet, float> GetVideos(ref List<SongFromInternet> nameOfAllYTVideos, int maxResults, string nameArtist, string nameSong, ref YouTubeService youtube)
         {
             Dictionary<SongFromInternet, float> sm = null;
@@ -146,10 +245,8 @@ namespace SunamoYt
                 catch (Exception ex)
                 {
                     //{"Google.Apis.Requests.RequestError\r\nThe request cannot be completed because you have exceeded your <a href=\"/youtube/v3/getting-started#quota\">quota</a>. [403]\r\nErrors [\r\n\tMessage[The request cannot be completed because you have exceeded your <a href=\"/youtube/v3/getting-started#quota\">quota</a>.] Location[ - ] Reason[quotaExceeded] Domain[youtube.quota]\r\n]\r\n"}
-                    if (ex.Message.Contains("The request cannot be completed because you have exceeded your"))
+                    if (HasBeenExceeded(ex, ref youtube))
                     {
-                        changeQuotaExceededApiKeys.WriteExceeded();
-                        youtube = CreateYouTubeService();
                         return GetVideos(ref nameOfAllYTVideos, maxResults, nameArtist, nameSong, ref youtube);
                     }
 
@@ -175,6 +272,17 @@ namespace SunamoYt
             }
 
             return sm;
+        }
+
+        static bool HasBeenExceeded(Exception ex, ref YouTubeService youtube)
+        {
+            if (ex.Message.Contains("The request cannot be completed because you have exceeded your"))
+            {
+                changeQuotaExceededApiKeys.WriteExceeded();
+                youtube = CreateYouTubeService();
+                return true;
+            }
+            return false;
         }
 
         private static bool AddWithSimilarity(List<SongFromInternet> nameOfAllYTVideos, Dictionary<SongFromInternet, float> sm, string listRequestQ)

@@ -7,11 +7,11 @@ namespace sunamo.Constants
     public class DefaultPaths
     {
         public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
-        public static string Documents = @"D:\Documents\";
-        public static string Docs = @"D:\Docs\";
-        public static string Downloads = @"D:\Downloads\";
-        public static string Music2 = @"D:\Music2\";
-        public static string Backup = @"D:\Documents\Backup\";
+        public static string Documents = @"d:\Documents\";
+        public static string Docs = @"d:\Docs\";
+        public static string Downloads = @"d:\Downloads\";
+        public static string Music2 = @"d:\Music2\";
+        public static string Backup = @"d:\Documents\Backup\";
         /// <summary>
         /// For all is here sczRootPath
         /// </summary>

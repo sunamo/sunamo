@@ -140,7 +140,7 @@ public class DatabaseLayer
 
             // TODO: S uvozovkami se to zadávat nedá, zjisti jak se zadává cesta k programu když jsou v ní uvozovky
             string cmd = "" + nad + "\\sqlite3.exe" + "" + "";
-            Process cess = Process.Start(cmd, Path.GetFileNameWithoutExtension(dbFile));
+            Process cess = Process.Start(cmd, FS.GetFileNameWithoutExtension(dbFile));
             cess.Kill();
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + dbFile + "");
             conn.Open();

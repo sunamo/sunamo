@@ -120,7 +120,7 @@ public partial class FS
         }
         var outputFolder = FS.Combine(folder, insert);
         FS.CreateDirectoryIfNotExists(outputFolder);
-        return FS.Combine(outputFolder, Path.GetFileName(item));
+        return FS.Combine(outputFolder, FS.GetFileName(item));
     }
 
     public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo)
@@ -129,7 +129,7 @@ public partial class FS
         {
             var from2 = SH.Split(from, Environment.NewLine);
             var to2 = SH.Split(to, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
             ReplaceInAllFiles(from2, to2, files);
         }
@@ -142,7 +142,7 @@ public partial class FS
     public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
-        ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+        ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
         ReplaceInAllFiles(replaceFrom, replaceTo, files);
     }
 
@@ -185,7 +185,7 @@ public partial class FS
 
     public static void RemoveDiacriticInFileContents(string folder, string mask)
     {
-        string[] files = Directory.GetFiles(folder, mask, SearchOption.AllDirectories);
+        var files = FS.GetFiles(folder, mask, SearchOption.AllDirectories);
         foreach (string item in files)
         {
             string df2 = File.ReadAllText(item, Encoding.Default);
@@ -207,7 +207,9 @@ public partial class FS
         {
             fullPathCsproj = FS.GetDirectoryName(fullPathCsproj);
         }
-        return FS.WithoutEndSlash(fullPathCsproj);
+        var result = FS.WithoutEndSlash(fullPathCsproj);
+        FS.FirstCharLower(ref result);
+        return result;
     }
 
     /// <summary>
@@ -287,7 +289,7 @@ public partial class FS
         string[] dd = new string[jpgcka.Length];
         for (int i = 0; i < jpgcka.Length; i++)
         {
-            dd[i] = Path.GetFileNameWithoutExtension(jpgcka[i]);
+            dd[i] = FS.GetFileNameWithoutExtension(jpgcka[i]);
         }
 
         return dd;
@@ -297,12 +299,10 @@ public partial class FS
     {
         // .NET 4.7.1
         // Originally - 265 chars, 254 also too long: d:\Documents\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\Facebook.cs
-        // 4+265 - OK: @"\\?\D:\_NewlyRecovered\Visual Studio 2020\Projects\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\Facebook.cs"
+        // 4+265 - OK: @"\\?\d:\_NewlyRecovered\Visual Studio 2020\Projects\Visual Studio 2017\Projects\Recovered data 03-23 12_11_44\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\Facebook.cs"
         // 216 - OK: d:\Recovered data 03-23 12_11_44012345678901234567890123456\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2012\Projects\merge-obří temp\temp1\temp\
         // for many API is different limits: https://stackoverflow.com/questions/265769/maximum-filename-length-in-ntfs-windows-xp-and-windows-vista
         // 237+11 - bad 
-
-
 
         return Consts.UncLongPath + actualFilePath;
     }
@@ -325,9 +325,11 @@ public partial class FS
     public static string CreateNewFolderPathWithEndingNextTo(string folder, string ending)
     {
         string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + AllStrings.bs;
-        string folderWithCaretFiles = pathToFolder + Path.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
+        string folderWithCaretFiles = pathToFolder + FS.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
 
-        return folderWithCaretFiles;
+        var result = folderWithCaretFiles;
+        FS.FirstCharLower(ref result);
+        return result;
     }
 
 
@@ -337,7 +339,7 @@ public partial class FS
         folderFrom = FS.WithEndSlash(folderFrom);
         FolderTo = FS.WithEndSlash(FolderTo);
 
-        Dictionary<string, string[]> filesOfExtension = FS.FilesOfExtensions(folderFrom, extensions);
+        var filesOfExtension = FS.FilesOfExtensions(folderFrom, extensions);
 
         foreach (var item in filesOfExtension)
         {
@@ -361,7 +363,7 @@ public partial class FS
         foreach (string item in folders)
         {
             string directory = FS.GetDirectoryName(item);
-            string filename = Path.GetFileName(item);
+            string filename = FS.GetFileName(item);
             if (SH.ContainsDiacritic(filename))
             {
                 filename = SH.TextWithoutDiacritic(filename);
@@ -377,11 +379,11 @@ public partial class FS
                 Directory.Move(item, realnewpath);
             }
         }
-        string[] files = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
+        var files = FS.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
         foreach (string item in files)
         {
             string directory = FS.GetDirectoryName(item);
-            string filename = Path.GetFileName(item);
+            string filename = FS.GetFileName(item);
             if (SH.ContainsDiacritic(filename))
             {
                 filename = SH.TextWithoutDiacritic(filename);
@@ -447,7 +449,7 @@ public partial class FS
 
     public static string GetUpFolderWhichContainsExtension(string path, string fileExt)
     {
-        while (FilesOfExtension(path, fileExt).Length == 0)
+        while (FilesOfExtension(path, fileExt).Count == 0)
         {
             if (path.Length < 4)
             {
@@ -464,14 +466,14 @@ public partial class FS
     /// <param name="folder"></param>
     /// <param name="fileExt"></param>
     /// <returns></returns>
-    public static string[] FilesOfExtension(string folder, string fileExt)
+    public static List<string> FilesOfExtension(string folder, string fileExt)
     {
-        return Directory.GetFiles(folder, "*." + fileExt, SearchOption.TopDirectoryOnly);
+        return FS.GetFiles(folder, "*." + fileExt, SearchOption.TopDirectoryOnly);
     }
 
     public static void TrimContentInFilesOfFolder(string slozka, string searchPattern, SearchOption searchOption)
     {
-        string[] files = Directory.GetFiles(slozka, searchPattern, searchOption);
+        var files = FS.GetFiles(slozka, searchPattern, searchOption);
         foreach (var item in files)
         {
             FileStream fs = new FileStream(item, FileMode.Open);
@@ -499,6 +501,7 @@ public partial class FS
         string p2, fn;
         GetPathAndFileName(oldPath, out p2, out fn);
         string vr = p2 + AllStrings.bs + fn.Replace(what, forWhat);
+        FS.FirstCharLower(ref vr);
         return vr;
     }
 
@@ -674,9 +677,11 @@ public partial class FS
         {
             foreach (var ext in exts)
             {
-                files.AddRange(Directory.GetFiles(item, FS.MascFromExtension(ext), so));
+                files.AddRange(FS.GetFiles(item, FS.MascFromExtension(ext), so));
             }
         }
+
+
         return files;
     }
 
@@ -704,7 +709,7 @@ public partial class FS
                     string newFn = nova + " (" + serie + AllStrings.rb;
                     if (!FS.ExistsDirectory(newFn))
                     {
-                        vr = "Folder has been renamed to" + " " + Path.GetFileName(newFn);
+                        vr = "Folder has been renamed to" + " " + FS.GetFileName(newFn);
                         nova = newFn;
                         break;
                     }
@@ -721,7 +726,7 @@ public partial class FS
             }
         }
 
-        string[] files = Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
+        var files = FS.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
         FS.CreateFoldersPsysicallyUnlessThere(nova);
         foreach (var item2 in files)
         {
@@ -754,7 +759,7 @@ public partial class FS
         }
         if (files)
         {
-            fse += Directory.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
+            fse += FS.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly).Length();
         }
         return fse == 0;
     }
@@ -796,7 +801,7 @@ public partial class FS
     /// <param name="files"></param>
     public static void DeleteDuplicatedImages(List<string> files)
     {
-        ThrowExceptions.Custom(s_type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
+        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
     }
 
     public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T> readFunc)
@@ -828,7 +833,7 @@ public partial class FS
         DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
     }
 
-    public static Dictionary<string, List<string>> SortPathsByFileName(string[] allCsFilesInFolder, bool onlyOneExtension)
+    public static Dictionary<string, List<string>> SortPathsByFileName(List<string> allCsFilesInFolder, bool onlyOneExtension)
     {
         Dictionary<string, List<string>> vr = new Dictionary<string, List<string>>();
         foreach (var item in allCsFilesInFolder)
@@ -836,11 +841,11 @@ public partial class FS
             string fn = null;
             if (onlyOneExtension)
             {
-                fn = Path.GetFileNameWithoutExtension(item);
+                fn = FS.GetFileNameWithoutExtension(item);
             }
             else
             {
-                fn = Path.GetFileName(item);
+                fn = FS.GetFileName(item);
             }
 
             DictionaryHelper.AddOrCreate<string, string>(vr, fn, item);
@@ -852,7 +857,7 @@ public partial class FS
     {
         if (FS.ExistsDirectory(p))
         {
-            string[] files = Directory.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
+            var files = FS.GetFiles(p, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 File.Delete(item);
@@ -899,7 +904,7 @@ public partial class FS
     public static Dictionary<string, List<string>> GetDictionaryByExtension(string folder, string mask, SearchOption searchOption)
     {
         Dictionary<string, List<string>> extDict = new Dictionary<string, List<string>>();
-        foreach (var item in Directory.GetFiles(folder, mask, searchOption))
+        foreach (var item in FS.GetFiles(folder, mask, searchOption))
         {
             string ext = FS.GetExtension(item);
             string fn = FS.GetFileNameWithoutExtensionLower(item);
@@ -940,7 +945,7 @@ public partial class FS
     /// <returns></returns>
     public static List<string> AllExtensionsInFolders(SearchOption so, params string[] folders)
     {
-        ThrowExceptions.NoPassedFolders(s_type, "AllExtensionsInFolders", folders);
+        ThrowExceptions.NoPassedFolders(type, "AllExtensionsInFolders", folders);
 
         List<string> vr = new List<string>();
         List<string> files = AllFilesInFolders(CA.ToListString(folders), CA.ToListString("*."), so);
@@ -1076,7 +1081,7 @@ public partial class FS
 
 
     /// <summary>
-    /// Pokud by byla cesta zakončená backslashem, vrátila by metoda Path.GetFileName prázdný řetězec. 
+    /// Pokud by byla cesta zakončená backslashem, vrátila by metoda FS.GetFileName prázdný řetězec. 
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
@@ -1099,14 +1104,14 @@ public partial class FS
     /// <param name="folderFrom"></param>
     /// <param name="extensions"></param>
     /// <returns></returns>
-    public static Dictionary<string, string[]> FilesOfExtensions(string folderFrom, params string[] extensions)
+    public static Dictionary<string, List<string>> FilesOfExtensions(string folderFrom, params string[] extensions)
     {
-        Dictionary<string, string[]> dict = new Dictionary<string, string[]>();
+        var dict = new Dictionary<string, List<string>>();
         foreach (var item in extensions)
         {
             string ext = FS.NormalizeExtension(item);
-            string[] files = Directory.GetFiles(folderFrom, AllStrings.asterisk + ext, SearchOption.AllDirectories);
-            if (files.Length != 0)
+            var files = FS.GetFiles(folderFrom, AllStrings.asterisk + ext, SearchOption.AllDirectories);
+            if (files.Length() != 0)
             {
                 dict.Add(ext, files);
             }
@@ -1145,7 +1150,7 @@ public partial class FS
             foreach (var item in dires)
             {
                 var dirPath = FS.WithoutEndSlash(item.t);
-                string dirName = Path.GetFileName(dirPath);
+                string dirName = FS.GetFileName(dirPath);
                 if (SH.ContainsDiacritic(dirName))
                 {
                     string dirNameWithoutDiac = SH.TextWithoutDiacritic(dirName);
@@ -1156,11 +1161,11 @@ public partial class FS
 
         if (files)
         {
-            string[] files2 = Directory.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
+            var files2 = FS.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
             foreach (var item in files2)
             {
                 string filePath = item;
-                string fileName = Path.GetFileName(filePath);
+                string fileName = FS.GetFileName(filePath);
                 if (SH.ContainsDiacritic(fileName))
                 {
                     string dirNameWithoutDiac = SH.TextWithoutDiacritic(fileName);
@@ -1271,7 +1276,7 @@ public partial class FS
     public static void GetPathAndFileNameWithoutExtension(string fn, out string path, out string file, out string ext)
     {
         path = Path.GetDirectoryName(fn) + AllChars.bs;
-        file = Path.GetFileNameWithoutExtension(fn);
+        file = FS.GetFileNameWithoutExtension(fn);
         ext = Path.GetExtension(fn);
     }
 
@@ -1315,7 +1320,7 @@ public partial class FS
     /// <param name="ext"></param>
     public static void GetFileNameWithoutExtensionAndExtension(string fn, out string file, out string ext)
     {
-        file = Path.GetFileNameWithoutExtension(fn);
+        file = FS.GetFileNameWithoutExtension(fn);
         ext = FS.GetExtension(file);
     }
 
@@ -1329,13 +1334,13 @@ public partial class FS
     public static string GetFileSeries(string slozka, string fn, string ext)
     {
         int dalsi = 0;
-        string[] soubory = System.IO.Directory.GetFiles(slozka);
+        var soubory = FS.GetFiles(slozka);
         foreach (string item in soubory)
         {
             int p;
             string withoutFn = SH.ReplaceOnce(item, fn, "");
             string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
-            if (int.TryParse(System.IO.Path.GetFileNameWithoutExtension(withoutFnAndExt), out p))
+            if (int.TryParse(FS.GetFileNameWithoutExtension(withoutFnAndExt), out p))
             {
                 if (p > dalsi)
                 {
@@ -1374,7 +1379,7 @@ public partial class FS
         string[] p = new string[p2.Count];
         for (int i = 0; i < p2.Count; i++)
         {
-            p[i] = Path.GetFileNameWithoutExtension(p2[i]);
+            p[i] = FS.GetFileNameWithoutExtension(p2[i]);
         }
         return p;
     }
@@ -1384,7 +1389,7 @@ public partial class FS
         string[] ds = new string[fullPaths.Length];
         for (int i = 0; i < fullPaths.Length; i++)
         {
-            ds[i] = appendToStart + Path.GetFileNameWithoutExtension(fullPaths[i]);
+            ds[i] = appendToStart + FS.GetFileNameWithoutExtension(fullPaths[i]);
         }
         return ds;
     }

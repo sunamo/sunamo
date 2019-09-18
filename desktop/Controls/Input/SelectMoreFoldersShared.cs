@@ -22,17 +22,17 @@ namespace desktop.Controls.Input
             }
         }
 
-        public static void Validate(object tb, SelectMoreFolders control)
+        public static void Validate(object tb, SelectMoreFolders control, ValidateData d = null)
         {
             foreach (SelectFolder item in ControlFinder.StackPanel(control, "spFolders").Children)
             {
-                item.Validate(tb);
+                item.Validate(tb, d);
             }
         }
 
-        public void Validate(object tbFolder)
+        public void Validate(object tbFolder, ValidateData d = null)
         {
-            Validate(tbFolder, this);
+            Validate(tbFolder, this, d);
         }
     }
 

@@ -10,7 +10,7 @@ using System.Text;
 namespace sunamo.Generators
 {
     /// <summary>
-    /// 
+    /// GitBashBuilder
     /// </summary>
     public class GitBashBuilder
     {

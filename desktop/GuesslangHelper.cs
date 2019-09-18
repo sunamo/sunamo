@@ -35,7 +35,7 @@ public class GuesslangHelper
 
     public static void GenerateDictionaryForMapToTextBoxSyntax()
     {
-        string File = @"C:\Program Files\Python36\Lib\site-packages\guesslang\data\languages.json";
+        string File = @"c:\Program Files\Python36\Lib\site-packages\guesslang\data\languages.json";
         var s = TF.ReadFile(File);
         TextReader tr = TF.TextReader(File);
         JsonTextReader js = new JsonTextReader(tr);

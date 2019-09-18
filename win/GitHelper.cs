@@ -5,11 +5,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using win.Helpers.Powershell;
 
-
+/// <summary>
+/// Must be in Win because use powershell
+/// In shared cannot because win derife from shared.
+/// If I have abstract layer for shared, then yes
+/// </summary>
 public class GitHelper
 {
-    public static void PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage, string fullPathFolder, PushSolutionsData pushSolutionsData)
+    public static void PushSolution(bool release, GitBashBuilder gitBashBuilder, string pushArgs, string commitMessage, string fullPathFolder, PushSolutionsData pushSolutionsData, GitBashBuilder gitStatus)
     {
         // 1. better solution is commented only getting files
         int countFiles = 0;
@@ -20,16 +25,16 @@ public class GitHelper
 
         if (countFiles > 0)
         {
-            //gitStatus.Clear();
-            //gitStatus.Cd(fullPathFolder);
-            //gitStatus.Status();
+            gitStatus.Clear();
+            gitStatus.Cd(fullPathFolder);
+            gitStatus.Status();
 
             var result = new List<List<string>>(CA.ToList<List<string>>(CA.ToListString(), CA.ToListString()));
             // 2. or powershell
-            //if (release)
-            //{
-            //    result = PowershellRunner.Invoke(gitStatus.Commands);
-            //}
+            if (release)
+            {
+                result = PowershellRunner.Invoke(gitStatus.Commands);
+            }
 
 
             var statusOutput = result[1];

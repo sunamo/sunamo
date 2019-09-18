@@ -35,13 +35,8 @@
     <Compile Include="..\..\sunamo\sunamo\Constants\Paths\DefaultPaths.cs" />
     <Compile Include="..\..\sunamo\sunamo\Essential\LoggerBaseShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\TwoState.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IUserControlInWindow.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\RandomHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperSunamoCzShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Resource\EmbeddedResourcesH.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\PHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\MusicTitle.cs" />
     <Compile Include="..\..\sunamo\sunamo\Extensions\StringBuilderExtensions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperTextShared.cs" />
@@ -65,13 +60,10 @@
     <Compile Include="..\..\sunamo\sunamo\Essential\SunamoTemplateLogger.cs" />
     <Compile Include="..\..\sunamo\sunamo\Essential\SunamoLogger.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IClipboardHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IKeysHandler.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IPanel.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
     <Compile Remove="Attributes\bin\**" />
     <EmbeddedResource Remove="Attributes\bin\**" />
     <EmbeddedResource Remove="Converters\**" />
@@ -94,7 +86,6 @@
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\Net\" />
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>

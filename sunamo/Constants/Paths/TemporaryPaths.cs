@@ -9,7 +9,7 @@ namespace sunamo.Constants
         /// <summary>
         /// 
         /// </summary>
-        public const string easeusSavedSession = @"C:\Program Files\EaseUS\EaseUS Data Recovery Wizard\SaveScan";
+        public const string easeusSavedSession = @"c:\Program Files\EaseUS\EaseUS Data Recovery Wizard\SaveScan";
         public const string diskDrillSavedSession = @"d:\_\DiskDrill\";
         /// <summary>
         /// In binary, but name of files are correct in Code

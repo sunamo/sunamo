@@ -486,7 +486,7 @@ using sunamo.Essential;
 
         private static bool PlaceToCenter(Image img, int width, int height, string finalPath, bool writeToConsole, float minimalWidthPadding, float minimalHeightPadding, string arg, Image imgArg)
         {
-            string fnOri = Path.GetFileName(arg);
+            string fnOri = FS.GetFileName(arg);
             string ext = "";
             if (PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
             {
@@ -530,7 +530,7 @@ using sunamo.Essential;
                     img.Dispose();
                     if (writeToConsole)
                     {
-                        InitApp.TemplateLogger.SuccessfullyResized(Path.GetFileName(temp));
+                        InitApp.TemplateLogger.SuccessfullyResized(FS.GetFileName(temp));
                     }
                     #endregion
                 }
@@ -581,7 +581,7 @@ using sunamo.Essential;
         /// <param name="args"></param>
         public static void PlaceToCenterExactly(Image img, int width, int height, int i, string finalPath, bool writeToConsole, float minimalWidthPadding, float minimalHeightPadding, params ImageWithPath[] args)
         {
-            string fnOri = ""; // Path.GetFileName(args[i]);
+            string fnOri = ""; // FS.GetFileName(args[i]);
             minimalWidthPadding *= 2;
             minimalHeightPadding *= 2;
             float minWidthImage = width - (minimalWidthPadding);

@@ -72,6 +72,7 @@
     <Compile Include="..\..\sunamo\win\Helpers\ClipboardHelperWin.cs" />
     <Compile Include="ClipboardAsync.cs" />
     <Compile Include="ClipboardMonitor.cs" />
+    <Compile Include="GitHelper.cs" />
     <Compile Include="Helpers\DW.cs" />
     <Compile Include="Helpers\MimeHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellBuilder.cs" />

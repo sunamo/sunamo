@@ -607,7 +607,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
                 {
-                    throw new Exception("Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".", ex);
+                    throw new Exception("Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'c:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".", ex);
                 }
                 else
                 {

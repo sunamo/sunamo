@@ -27,14 +27,14 @@ namespace sunamo.Helpers
             filesWithSize.Clear();
             SetBasicVariable(sufficientFileName, defaultFileForLeave);
 
-            string fn = System.IO.Path.GetFileName(defaultFileForLeave);
-            string[] files = Directory.GetFiles(folderForSearch, fn, SearchOption.AllDirectories);
+            string fn = FS.GetFileName(defaultFileForLeave);
+            var files = FS.GetFiles(folderForSearch, fn, SearchOption.AllDirectories);
 
             ProcessFilesWithoutSize(files);
             _selectFromManyControl.AddControls();
         }
 
-        private void ProcessFilesWithoutSize(string[] files)
+        private void ProcessFilesWithoutSize(List<string> files)
         {
             if (sufficientFileName)
             {
@@ -63,7 +63,7 @@ namespace sunamo.Helpers
             }
         }
 
-        public void InitializeByFiles(bool sufficientFileName, string defaultFileForLeave, string[] files)
+        public void InitializeByFiles(bool sufficientFileName, string defaultFileForLeave, List<string> files)
         {
             filesWithSize.Clear();
             SetBasicVariable(sufficientFileName, defaultFileForLeave);

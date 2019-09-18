@@ -51,16 +51,6 @@ public static partial class CA
         return vr;
     }
 
-    public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
-    {
-        sb.AppendLine(JoinForGoogleSheetRow(en));
-    }
-
-    public static string JoinForGoogleSheetRow(IEnumerable en)
-    {
-        return SH.Join(AllChars.tab, en);
-    }
-
     public static string GetNumberedList(List<string> input)
     {
         CA.RemoveStringsEmpty2(input);

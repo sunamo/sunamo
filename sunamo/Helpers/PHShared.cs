@@ -62,19 +62,19 @@ public static void OpenInBrowser(Browsers prohlizec, string s)
                 b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
                 break;
             case Browsers.Firefox:
-                b = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+                b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
                 break;
             case Browsers.InternetExplorer:
-                b = @"C:\Program Files (x86)\Internet Explorer\iexplore.exe";
+                b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
                 break;
             case Browsers.Opera:
-                b = @"C:\Program Files (x86)\Opera\opera.exe";
+                b = @"c:\Program Files (x86)\Opera\opera.exe";
                 break;
             case Browsers.Edge:
                 b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
                 break;
             case Browsers.Vivaldi:
-                b = @"C:\Users\n\AppData\Local\Vivaldi\Application\vivaldi.exe";
+                b = @"c:\Users\n\AppData\Local\Vivaldi\Application\vivaldi.exe";
                 break;
             case Browsers.ChromeCanary:
                 b = @"c:\Users\n\AppData\Local\Google\Chrome SxS\Application\chrome.exe";

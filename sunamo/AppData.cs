@@ -89,7 +89,7 @@ public class AppData : AppDataAbstractBase<string, string>
     {
         rootFolder = GetSunamoFolder();
 
-        RootFolder = FS.CombineWithoutFirstCharLower(rootFolder, ThisApp.Name);
+        RootFolder = FS.Combine(rootFolder, ThisApp.Name);
         FS.CreateDirectory(RootFolder);
         return RootFolder;
     }
@@ -119,6 +119,7 @@ public class AppData : AppDataAbstractBase<string, string>
     }
     //
     /// <summary>
+    /// Dont use - instead of this GetCommonSettings
     /// Without ext because all is crypted and in bytes
     /// Folder is possible to obtain A1 = null
     /// </summary>

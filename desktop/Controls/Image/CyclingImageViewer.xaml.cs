@@ -85,7 +85,7 @@ namespace desktop
                 Next();
                 if (b == "success")
                 {
-                    OnNewStatus("Byl zmenšen obrázek {0} a nastaven obrázek v dalším pořadí - {1} ({" + "{" + "})", System.IO.Path.GetFileName(copy), System.IO.Path.GetFileName(ActualFile), imagesPath.ToString());    
+                    OnNewStatus("Byl zmenšen obrázek {0} a nastaven obrázek v dalším pořadí - {1} ({" + "{" + "})", FS.GetFileName(copy), FS.GetFileName(ActualFile), imagesPath.ToString());    
                 }
                 
             }

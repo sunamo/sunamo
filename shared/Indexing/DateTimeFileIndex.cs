@@ -78,10 +78,10 @@
 //            }
 //            mask += AllStrings.asterisk;
 //            #region MyRegion
-//            string[] f = Directory.GetFiles(folder, AllStrings.asterisk + ext, SearchOption.TopDirectoryOnly);
+//            string[] f = FS.GetFiles(folder, AllStrings.asterisk + ext, SearchOption.TopDirectoryOnly);
 //            foreach (var item in f)
 //            {
-//                string fnwoe = Path.GetFileNameWithoutExtension(item);
+//                string fnwoe = FS.GetFileNameWithoutExtension(item);
 //                if (SH.MatchWildcard(fnwoe, mask))
 //                {
 

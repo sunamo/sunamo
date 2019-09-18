@@ -169,22 +169,7 @@ public class Exceptions
 
     public static object IsNotWindowsPathFormat(string before, string argName, string argValue)
     {
-        bool badFormat = false;
-
-        if (!char.IsLetter( argValue[0]))
-        {
-            badFormat = true;
-        }
-
-        if (char.IsLetter(argValue[1]))
-        {
-            badFormat = true;
-        }
-
-        if (argValue[1] != '\\' && argValue[2] != '\\')
-        {
-            badFormat = true;
-        }
+        var badFormat = !FS.IsWindowsPathFormat(argValue);
 
         if (badFormat)
         {
@@ -346,6 +331,15 @@ public class Exceptions
         return null;
     }
 
+    internal static object FileSystemException(string v, Exception ex)
+    {
+        if (ex != null)
+        {
+            return CheckBefore(v) + " " + Exceptions.TextOfExceptions(ex);
+        }
+        return null;
+    }
+
     public static string DirectoryWasntFound(string before, string directory)
     {
         if (!FS.ExistsDirectory(directory))
@@ -354,6 +348,11 @@ public class Exceptions
         }
 
         return null;
+    }
+
+    internal static object FuncionalityDenied(string before, string description)
+    {
+        return CheckBefore(before) + description;
     }
 
     public static string InvalidParameter(string before, string mayUrlDecoded, string typeOfInput)

@@ -56,9 +56,23 @@ public static partial class SH
         return " " + Consts.nulled;
     }
 
-    public static object ReplaceMany(string input, string fromTo)
+    public static string ReplaceMany(string input, string fromTo)
     {
-        return null;
+        StringBuilder from = new StringBuilder();
+        StringBuilder to = new StringBuilder();
+
+        var l = SH.GetLines(fromTo);
+        CA.RemoveStringsEmpty2(l);
+
+        foreach (var item in l)
+        {
+            var p = SH.Split( item, "->");
+            from.AppendLine(p[0]);
+            to.AppendLine(p[1]);
+        }
+
+        string vr = SH.ReplaceAll2(input, to.ToString(), from.ToString(), true);
+        return vr;
     }
 
     public static string MakeUpToXChars(int p, int p_2)
@@ -202,7 +216,12 @@ public static partial class SH
             var to2 = SH.Split(zaCo, Environment.NewLine);
             ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
-            return ReplaceAll2(vstup, co, zaCo);
+            for (int i = 0; i < from2.Count; i++)
+            {
+                vstup = ReplaceAll2(vstup, to2[i], from2[i]);
+            }
+
+            return vstup;
         }
         else
         {
@@ -916,6 +935,10 @@ public static partial class SH
         text = value.ToString();
         if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder && !(value is IEnumerable<char>))
         {
+            if (delimiter == null)
+            {
+                delimiter = Environment.NewLine;
+            }
             var enumerable = CA.ToListString(value as IEnumerable);
             CA.Replace(enumerable, delimiterS, AllStrings.space);
             text = SH.Join(delimiter, enumerable);

@@ -25,6 +25,8 @@ namespace sunamo.Essential
         {
             _writeLineDelegate.Invoke(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
         }
+
+        
         #endregion
 
         #region Error
@@ -131,6 +133,12 @@ namespace sunamo.Essential
                 return true;
             }
             return false;
+        }
+
+        public void HaveUnallowedValue(string controlNameOrText)
+        {
+            controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
+            _writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " " + "have unallowed value");
         }
 
         public void MustHaveValue(string controlNameOrText)

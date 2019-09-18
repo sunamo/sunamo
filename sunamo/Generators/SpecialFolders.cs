@@ -2,6 +2,6 @@
 {
     public static string MyDocuments(string path)
     {
-        return @"D:\Documents\" + path.TrimStart(AllChars.bs);
+        return @"d:\Documents\" + path.TrimStart(AllChars.bs);
     }
 }
