@@ -15,6 +15,7 @@ public class TypesControls
     public static readonly Type tListView = typeof(ListView);
     //public static readonly Type tTwoRadiosUC = typeof(TwoRadiosUC);
     //public static readonly Type tControl = typeof(Control);
+    public static readonly Type tCheckBox = typeof(CheckBox);
     public static readonly Type tSelector = typeof(Selector);
     public static readonly Type tComboBox = typeof(ComboBox);
 

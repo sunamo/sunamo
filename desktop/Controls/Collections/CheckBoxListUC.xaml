@@ -24,7 +24,7 @@
         <!--VerticalAlignment="Stretch"-->
         <!--VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"-->
         <!--important to show scrolling is just set up exactly height-->
-        <ListBox x:Name="lb"    ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+        <ListBox x:Name="lb" x:FieldModifier="public"   ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>

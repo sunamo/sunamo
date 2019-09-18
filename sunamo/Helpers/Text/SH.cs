@@ -42,6 +42,15 @@ public static partial class SH
         return null;
     }
 
+    public static bool IsCharOn(string item, int v, UnicodeChars number)
+    {
+        if (item.Length > v)
+        {
+            return IsUnicodeChar(number, item[v]);
+        }
+        return false;
+    }
+
     /// <summary>
     /// A2 is use to calculate length of center
     /// </summary>

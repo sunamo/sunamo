@@ -20,6 +20,12 @@ namespace desktop.Controls.Collections
 {
     /// <summary>
     /// for ChangeDialogResult return always null - must check returned values through via CheckedIndexes()
+    /// Is Three controls to checkboxes:
+    /// CheckBoxListUC
+    /// TwoWayTable
+    /// SunamoGridView
+    /// 
+    /// No one in ListBox/ListView
     /// </summary>
     public partial class CheckBoxListUC : UserControl
         , IUserControlInWindow, IUserControlWithSizeChange
@@ -52,6 +58,9 @@ namespace desktop.Controls.Collections
 
         public int Count => lb.Items.Count;
 
+        /// <summary>
+        /// Args are: object sender, string operation, object data
+        /// </summary>
         public event Action<object, string, object> CollectionChanged;
         public NotifyChangesCollection<CheckBox> l = null;
         /// <summary>
