@@ -1311,7 +1311,16 @@ public static partial class SH
         return SH.JoinString(AllStrings.space, parts);
     }
 
-    public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces)
+    /// <summary>
+    /// Most of Love me like you do have in title - from Fifty shades of grey
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="squareBrackets"></param>
+    /// <param name="parentheses"></param>
+    /// <param name="braces"></param>
+    /// <param name="afterSds"></param>
+    /// <returns></returns>
+    public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces, bool afterSdsFrom)
     {
         if (squareBrackets)
         {
@@ -1324,6 +1333,18 @@ public static partial class SH
         if (braces)
         {
             title = RemoveBetweenAndEdgeChars(title, AllChars.cbl, AllChars.cbr);
+        }
+        if (afterSdsFrom)
+        {
+            var dex = title.IndexOf(" - from");
+            if (dex == -1)
+            {
+                dex = title.IndexOf(" - From");
+            }
+            if (dex != -1)
+            {
+                title = title.Substring(0, dex + 1);
+            }
         }
         title = ReplaceAll(title, "", AllStrings.doubleSpace).Trim();
         return title;
