@@ -240,6 +240,12 @@ namespace sunamo.Generators
             return filesToCommit;
         }
 
+        public void Pull()
+        {
+            Git("pull");
+            AppendLine();
+        }
+
         public static string CreateGitCommandForFiles(string command, StringBuilder sb, List<string> linesFiles)
         {
             return Git(sb, command + AllStrings.space + SH.Join(AllChars.space, linesFiles));

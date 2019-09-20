@@ -124,6 +124,8 @@ namespace sunamo
         /// <returns></returns>
         public static bool IsSimilar(List<string> titleArray, string name)
         {
+            // titleArray - originally entered
+            // name,nameArray - from spotify
             int psn, prn;
             var nameArray = SH.SplitBySpaceAndPunctuationCharsAndWhiteSpaces(name);
             SongFromInternet.VratPocetStejnychARozdilnych(titleArray, nameArray, out psn, out prn);
@@ -187,6 +189,15 @@ namespace sunamo
             return vr;
         }
 
+        /// <summary>
+        /// A1 pSn = count of Same
+        /// A2 pRn = count of Rozdílný/different (sum of keep from both collection)
+        /// </summary>
+        /// <param name="psn"></param>
+        /// <param name="prn"></param>
+        /// <param name="novy"></param>
+        /// <param name="puvodni"></param>
+        /// <returns></returns>
         public static float CalculateSimilarity(int psn, int prn, List<string> novy, List<string> puvodni)
         {
             if (psn == prn && psn == 0)
@@ -306,20 +317,32 @@ namespace sunamo
             return sb.ToString();
         }
 
+        /// <summary>
+        /// A1,2 are list to compare
+        /// A3 pSn = count of Same
+        /// A4 pRn = count of Rozdílný/different (sum of keep from both collection)
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="list_2"></param>
+        /// <param name="psn"></param>
+        /// <param name="prn"></param>
         public static void VratPocetStejnychARozdilnych(List<string> list, List<string> list_2, out int psn, out int prn)
         {
+            // Create copies of A1,2
             List<string> l1 = new List<string>(list.ToArray());
             List<string> l2 = new List<string>(list_2.ToArray());
             psn = 0;
 
-
+            // Process all in l1
             for (int i = l1.Count - 1; i >= 0; i--)
             {
                 int dex = l2.IndexOf(l1[i]);
                 if (dex != -1)
                 {
+                    // if l1 is in l2, remove from both
                     l1.RemoveAt(i);
                     l2.RemoveAt(dex);
+
                     psn++;
                 }
             }
