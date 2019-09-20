@@ -23,7 +23,7 @@ public static class JunctionPoint
     /// <returns></returns>
     public static List<string> MklinkH(string source, string target)
     {
-        string command = "cmd /c mklink /" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        string command = "cmd /c mklink /H" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
         List<string> output = PowershellRunner.InvokeSingle(command);
         return output;
     }

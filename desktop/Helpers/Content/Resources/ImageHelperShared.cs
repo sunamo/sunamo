@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
 
-
-    public partial class ImageHelper
+public partial class ImageHelper
     {
-        /// <summary>
-        /// Toto je jediné místo kde je tato proměnná a to proto že je na něho navázaná metoda SetAssemblyNameForWpfApps, která se musí volat ve WPF(ale ne Windows Store apps) aplikacích
-        /// </summary>
-        public static string protocol = "pack://application:,,,";
+    static ImageHelperDesktop imageHelperDesktop = new ImageHelperDesktop();
+
+    /// <summary>
+    /// Toto je jediné místo kde je tato proměnná a to proto že je na něho navázaná metoda SetAssemblyNameForWpfApps, která se musí volat ve WPF(ale ne Windows Store apps) aplikacích
+    /// </summary>
+    public static string protocol = "pack://application:,,,";
         public static string protocolRoot = "pack://application:,,,/";
 
         /// <summary>
@@ -28,4 +31,13 @@ using System.Threading.Tasks;
             if (!UriParser.IsKnownScheme("pack"))
                 new System.Windows.Application();
         }
-    }
+    
+public static Image ReturnImage(ImageSource bs)
+	{
+        return imageHelperDesktop.ReturnImage(bs);
+	}
+public static Image ReturnImage(ImageSource bs, double width, double height)
+	{
+        return imageHelperDesktop.ReturnImage(bs, width, height);
+	}
+}

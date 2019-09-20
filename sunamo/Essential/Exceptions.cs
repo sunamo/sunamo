@@ -126,6 +126,8 @@ public class Exceptions
         return null;
     }
 
+    
+
     public static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
     {
         List<string> foundedUnallowed = new List<string>();
@@ -249,6 +251,16 @@ public class Exceptions
         if (variable == null)
         {
             return CheckBefore(before) + variable + " " + "is null" + ".";
+        }
+
+        return null;
+    }
+
+    internal static object IsNotNull(string before, string variableName, object variable)
+    {
+        if (variable != null)
+        {
+            return CheckBefore(before) + variable + " " + "must be null" + ".";
         }
 
         return null;

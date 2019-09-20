@@ -2496,6 +2496,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     /// <summary>
     /// Zjištuje to ze všech řádků v databázi.
+    /// Calculate sum of ViewCount of A2 in A1
     /// </summary>
     /// <param name="from"></param>
     /// <param name="to"></param>

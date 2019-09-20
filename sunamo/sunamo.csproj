@@ -26,6 +26,7 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\ImageHelperBase.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\Paths\SourceCodePaths.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\GitBashBuilder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\PpkOnDriveBase.cs" />

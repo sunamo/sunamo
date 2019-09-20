@@ -1,7 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 public partial class ControlHelper{ 
+
+    public static void SetForeground(Control c, Brush fg)
+    {
+        if (fg != null)
+        {
+            c.Foreground = fg;
+        }
+    }
 public static Size ActualInnerSize(ContentControl w)
     {
         
@@ -10,4 +19,6 @@ public static Size ActualInnerSize(ContentControl w)
         return new Size(fw.ActualWidth, fw.ActualHeight);
     }
     public static readonly Size SizePositiveInfinity = new Size(double.PositiveInfinity, double.PositiveInfinity);
+
+
 }

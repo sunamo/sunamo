@@ -16,14 +16,24 @@ public partial class MenuItemHelper{
     public static MenuItem Get(ControlInitData d)
     {
         MenuItem mi = new MenuItem();
-        mi.Header = d.text;
+        mi.IsCheckable = d.checkable;
+
+        if (d.foreground != null)
+        {
+            mi.Foreground = d.foreground;
+        }
+
         if (d.OnClick != null)
         {
             mi.Click += d.OnClick;
         }
-
-        mi.Foreground = d.foreground;
         mi.Tag = d.tag;
+        mi.ToolTip = d.tooltip;
+
+        // into Header I cant insert StackPanel from ContentControlHelper.GetContent( d);, because then is no show
+        //mi.Header = d.text;
+        mi.Header = ContentControlHelper.GetContent(d);
+
         return mi;
     }
 }

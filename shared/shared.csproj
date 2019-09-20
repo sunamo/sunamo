@@ -95,6 +95,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\StatusHelperShared.cs" />
     <Compile Include="..\..\sunamo\shared\Data\PushSolutionsData.cs" />
     <Compile Include="..\..\sunamo\shared\HttpWebResponseHelper.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelper.cs" />

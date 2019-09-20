@@ -12,6 +12,8 @@ public class FrameworkElementHelper
 {
     static Type type = typeof(FrameworkElementHelper);
 
+    
+
     public static Size GetMaxContentSize(FrameworkElement fe)
     {
         return new Size(fe.ActualWidth, fe.ActualHeight);

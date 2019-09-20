@@ -17,9 +17,13 @@ public class RadioButtonHelper
     public static RadioButton Get(ControlInitData d)
     {
         RadioButton chb = new RadioButton();
-        chb.Content = d.text;
+        ControlHelper.SetForeground(chb, d.foreground);
         chb.GroupName = d.group;
+        chb.Content = ContentControlHelper.GetContent(d);
+
+        //chb.Checked = d.
         chb.Tag = ControlNameGenerator.GetSeries(chb.GetType());
+        chb.ToolTip = d.tooltip;
         return chb;
     }
 }

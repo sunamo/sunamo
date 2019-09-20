@@ -9,14 +9,20 @@ using System.Windows.Media;
 
 public class ControlInitData
 {
-    public string tooltip= null;
-    public string imagePath= null;
-    public string text= null;
-    public RoutedEventHandler OnClick= null;
-    public object tag= null;
-    public Brush foreground= null;
-    public IEnumerable list = null;
-    public bool checkable = true;
+    #region Sort by alphabet (same as in intellisense popup)
+    public bool checkable = false;
+    public Brush foreground = null;
     public string group = null;
+    public double imageHeight = 16;
+    public string imagePath = null;
+    public double imageWidth = 16;
+    public IEnumerable list = null;
+    /// <summary>
+    /// Only for Click, not Checked etc!
+    /// </summary>
+    public RoutedEventHandler OnClick = null;
+    public object tag = null;
+    public string tooltip = null;
+    public string text = null;
+    #endregion
 }
-

@@ -9,10 +9,6 @@ namespace win.Helpers.Powershell
 {
 	public class PowershellRunner
 	{
-        
-        
-        
-
     /// <summary>
     /// If in A1 will be full path specified = 'The system cannot find the file specified'
     /// A1 if dont contains extension, append exe
@@ -66,25 +62,29 @@ namespace win.Helpers.Powershell
     /// <returns></returns>
     public async static Task<List< List<string>>> InvokeAsync(IEnumerable<string> commands)
 	{
-        List<List<string>> returnList = new List<List<string>>();
-		PowerShell ps = null;
-        //  After leaving using is closed pipeline, must watch for complete or 
-        using (ps = PowerShell.Create())
-        {
-            foreach (var item in commands)
-			{
-				ps.AddScript(item);
+            List<List<string>> returnList = new List<List<string>>();
+            PowerShell ps = null;
+            //  After leaving using is closed pipeline, must watch for complete or 
+            using (ps = PowerShell.Create())
+            {
+                foreach (var item in commands)
+                {
+                    ps.AddScript(item);
 
-				var async = ps.BeginInvoke();
-                // Return for SleepWithRandomOutputConsole zero outputs
-                var psObjects = ps.EndInvoke(async);
+                    //var asyncObject = Task.Factory.FromAsync(ps.BeginInvoke(), ps.EndInvoke);
+                    //var psObjects =  asyncObject.Result;
 
-                returnList.Add(ProcessPSObjects(psObjects));
-			}
-		}
+                    var async = ps.BeginInvoke();
+                    // Return for SleepWithRandomOutputConsole zero outputs
+                    var psObjects = ps.EndInvoke(async);
 
-		return returnList;
-	}
+                    returnList.Add(ProcessPSObjects(psObjects));
+                }
+            }
+
+            return returnList;
+
+        }
 
     /// <summary>
     /// Tested, working

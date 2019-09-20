@@ -1,7 +1,7 @@
 ﻿using desktop;
 using desktop.Controls;
 using desktop.Controls.Collections;
-using desktop.Essential;
+
 using desktop.Helpers;
 using System;
 using System.Collections.Generic;

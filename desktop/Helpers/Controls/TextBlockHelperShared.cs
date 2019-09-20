@@ -1,5 +1,5 @@
 ﻿using desktop;
-using desktop.Essential;
+
 using desktop.Helpers;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,8 @@ using System.Windows.Documents;
 using System.Windows.Media;
 
 public partial class TextBlockHelper{
+    static Type type = typeof(TextBlockHelper);
+
     /// <summary>
     /// tag is not needed, value is obtained through []
     /// Tag here is mainly for comment what data control hold 
@@ -21,8 +23,16 @@ public partial class TextBlockHelper{
     public static TextBlock Get(ControlInitData d)
     {
         TextBlock tb = new TextBlock();
+
+        // TextBlock is not derived from Control, so have own property Foreground
+        TextBlockHelper.SetForeground(tb, d.foreground);
+
+        ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.imagePath", d.imagePath);
+
+        tb.Tag = d.tag;
+        tb.ToolTip = d.tooltip;
         tb.Text = d.text;
-        tb.Foreground = d.foreground;
+
         return tb;
     }
 
@@ -53,5 +63,13 @@ public static void SetText(TextBlock lblStatusDownload, string status)
         }
 
         return tb.ToString();
+    }
+
+public static void SetForeground(TextBlock c, Brush fg)
+    {
+        if (fg != null)
+        {
+            c.Foreground = fg;
+        }
     }
 }

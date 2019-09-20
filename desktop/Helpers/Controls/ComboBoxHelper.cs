@@ -10,6 +10,7 @@ using System.Windows.Input;
 /// </summary>
 public class ComboBoxHelper
 {
+    static Type type = typeof(ComboBoxHelper);
     bool tagy = true;
     protected ComboBox cb = null;
     public event SelectionChangedEventHandler SelectionChanged;
@@ -24,11 +25,18 @@ public class ComboBoxHelper
     public static ComboBox Get(ControlInitData d)
     {
         ComboBox cb = new ComboBox();
+        ControlHelper.SetForeground(cb, d.foreground);
         foreach (var item in d.list)
         {
             cb.Items.Add(item);
         }
+        if (d.OnClick != null)
+        {
+            ThrowExceptions.IsNotAllowed(type, RH.CallingMethod(), "d.OnClick");
+        }
         cb.Tag = d.tag;
+        cb.ToolTip = d.tooltip;
+        
         return cb;
     }
 

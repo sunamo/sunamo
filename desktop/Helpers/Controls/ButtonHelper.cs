@@ -15,23 +15,13 @@ public static partial class ButtonHelper
     public static Button Get(ControlInitData d)
     {
         Button vr = new Button();
-        if (d.imagePath != null)
+        ControlHelper.SetForeground(vr, d.foreground);
+        vr.Content = ContentControlHelper.GetContent(d);
+        if (d.OnClick != null)
         {
-            BitmapImage btm = new BitmapImage(new System.Uri(d.imagePath, System.UriKind.Relative));
-            Image img = new Image();
-            img.Source = btm;
-            img.Width = 16;
-            img.Height = 16;
-            img.Stretch = Stretch.Fill;
-            vr.Content = img;
-        }
-        else
-        {
-            vr.Content = d.text;
-            
+            vr.Click += d.OnClick;
         }
         vr.Tag = d.tag;
-        vr.Click += d.OnClick;
         vr.ToolTip = d.tooltip;
         return vr;
     }

@@ -12,6 +12,8 @@ namespace desktop
 {
     public class TextBoxHelper
     {
+        static Type type = typeof(TextBoxHelper);
+        
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
         public static bool validated
@@ -35,16 +37,20 @@ namespace desktop
         public static TextBox Get(ControlInitData d)
         {
             TextBox txt = new TextBox();
+            ControlHelper.SetForeground(txt, d.foreground);
+
+            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.imagePath", d.imagePath);
+            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.OnClick", d.OnClick);
+
             txt.Tag = d.tag;
+            txt.ToolTip = d.tooltip;
             txt.Text = d.text;
             return txt;
         }
-
         static TextBoxHelper()
         {
             TextBoxHelper.InicializeWidths();
         }
-
         public static int GetLineLength(TextBox txt, int line)
         {
             // Counting from 0

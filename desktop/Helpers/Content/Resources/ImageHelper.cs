@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 
 public  partial class ImageHelper
 {
-    static ImageHelperDesktop imageHelperDesktop = new ImageHelperDesktop();
+    
 
     /// <summary>
 	/// Pokud chceš získat jen URI, dej new Uri(ImageHelper.protocol + relPath)
@@ -34,16 +34,6 @@ public  partial class ImageHelper
     {
         return imageHelperDesktop.MsAppxI(appPic2);
     }
-
-    public static Image ReturnImage(ImageSource bs)
-	{
-        return imageHelperDesktop.ReturnImage(bs);
-	}
-
-	public static Image ReturnImage(ImageSource bs, double width, double height)
-	{
-        return imageHelperDesktop.ReturnImage(bs, width, height);
-	}
 
 	
 }

@@ -73,6 +73,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\TemplatesNotCompile\MainWindow_Ctor.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBlockHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ImageHelperDesktop.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\BitmapImageHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\ImageHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ImageHelperDesktopShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ControlHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ContentControlHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Essential\WpfAppShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Data\ControlInitData.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ToggleButtonExtensionShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\FrameworkElementExtensionsShared.cs" />
@@ -80,6 +89,7 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
     <Compile Include="Data\ControlInitData.cs" />
+    <Compile Include="Helpers\BaseControls\ContentControlHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />
     <Compile Include="Helpers\Controls\TextBoxHelper.cs" />

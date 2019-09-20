@@ -70,8 +70,6 @@ namespace desktop.Controls.Collections
         public bool onUnCheck = true;
         public bool initialized = false;
 
-
-
         public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear)
         {
             this.onCheck = onCheck;
@@ -154,6 +152,12 @@ namespace desktop.Controls.Collections
         }
 
 
+        /// <summary>
+        /// Args are: object sender, string operation, object data
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="operation"></param>
+        /// <param name="data"></param>
         private void L_CollectionChanged(object o, string operation, object data)
         {
             if (CollectionChanged != null)

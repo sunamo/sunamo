@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using desktop.Essential;
+
 using desktop.UserControls;
 using sunamo.Essential;
 using sunamo.Interfaces;
@@ -92,11 +92,14 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
         WpfApp.EnableDesktopLogging(true);
         WpfApp.SaveReferenceToTextBlockStatus(false, tbLastErrorOrWarning, tbLastOtherMessage);
+
+        // 1st LogUC must be before Empty
+        SetMode(Mode.LogUC);
         //WpfApp.SaveReferenceToLogsStackPanel(logUc.lbLogsOthers.lbLogs, logUc.lbLogsErrors.lbLogs);
         #endregion
 
         #region 3) Initialize base properties of app
-        
+
 
         Instance = this;
 
@@ -254,7 +257,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
     enum Mode
     {
-        // First mode in every app
+        // Empty First mode in every app
         Empty,
 
         // Then Modes of app

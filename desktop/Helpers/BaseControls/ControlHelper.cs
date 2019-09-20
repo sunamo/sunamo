@@ -1,12 +1,13 @@
 ﻿
+
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using sunamo.Data;
 using sunamo.Values;
 
 public partial class ControlHelper
 {
-    
     public static Point GetOnCenter(Size parent, Size child)
     {
         Point vr = new Point();

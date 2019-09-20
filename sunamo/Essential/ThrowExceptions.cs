@@ -23,6 +23,8 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
+    
+
     /// <summary>
     /// A1 have to be Dictionary<T,U>, not IDictionary without generic
     /// </summary>
@@ -85,6 +87,11 @@ public class ThrowExceptions
     public static void IsNull(object type, string methodName, string variableName, object variable)
     {
         ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
+    }
+
+    public static void IsNotNull(Type type, string methodName, string variableName, object variable)
+    {
+        ThrowIsNotNull(Exceptions.IsNotNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
     }
 
     public static void ArrayElementContainsUnallowedStrings(object type, string methodName, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
