@@ -23,9 +23,8 @@
         <TextBlock Grid.Column="1">Manually yes</TextBlock>
         <TextBlock Grid.Column="2">Manually no</TextBlock>
         <TextBlock Grid.Column="3">Auto no</TextBlock>
-        
-        <local:CheckBoxListUC x:FieldModifier="public" x:Name="chblAutoYes" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></local:CheckBoxListUC>
 
+        <local:CheckBoxListUC x:FieldModifier="public" x:Name="chblAutoYes" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></local:CheckBoxListUC>
         <local:CheckBoxListUC x:Name="chblManuallyYes" Grid.Column="1" Grid.Row="1" ></local:CheckBoxListUC>
         <local:CheckBoxListUC x:Name="chblManuallyNo" Grid.Column="2" Grid.Row="1" ></local:CheckBoxListUC>
         <local:CheckBoxListUC x:Name="chblAutoNo" Grid.Column="3" Grid.Row="1" ></local:CheckBoxListUC>

@@ -9,6 +9,14 @@ public class ImageButtonsInit
 {
     public object copyToClipboard = null; public object clear = null; public object add = null; public object selectAll = null; public object deselectAll = null;
 
+    /// <summary>
+    /// If everything is null
+    /// </summary>
+    public ImageButtonsInit()
+    {
+
+    }
+
     public ImageButtonsInit(object copyToClipboard, object clear, object add, object selectAll, object deselectAll)
     {
         this.copyToClipboard = copyToClipboard;

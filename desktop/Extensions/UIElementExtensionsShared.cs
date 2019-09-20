@@ -140,6 +140,12 @@ public static partial class UIElementExtensions{
             }
         }
 
+    
+    /// <summary>
+    /// There is no Enum with all controls
+    /// </summary>
+    /// <param name="ui"></param>
+    /// <returns></returns>
     public static object GetContent(this UIElement ui)
     {
         var t = ui.GetType();
@@ -162,6 +168,11 @@ public static partial class UIElementExtensions{
         {
             var txt = (TextBox)ui;
             return txt.Text;
+        }
+        else if (t == TypesControls.tCheckBox)
+        {
+            var txt = (CheckBox)ui;
+            return txt.Content;
         }
         else if (t == TwoRadiosUC.type)
         {
