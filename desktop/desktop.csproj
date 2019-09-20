@@ -396,7 +396,7 @@
     <Compile Include="Windows\NotificationWindow.xaml.cs">
       <DependentUpon>NotificationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WindowResult.cs" />
+    <Compile Include="Windows\ShowTextResultWindow.cs" />
     <Compile Include="Windows\WindowWithUserControl.cs" />
     <Compile Include="WpfControlGenerator.cs" />
     <Compile Include="WpfScreen.cs" />
