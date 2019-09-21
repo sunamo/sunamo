@@ -4755,7 +4755,7 @@ public class XlfKeys
 
     public const string ArtistImagesWereNotDownloadedBecauseOneOfTheImagesAlreadyExisted = "ArtistImagesWereNotDownloadedBecauseOneOfTheImagesAlreadyExisted";
 
-    public const string ImagesNotDownloadedBecauseUriLyricsImageSizeSmallLargeWasNotObtained = "ImagesNotDownloadedBecauseUriLyricsImageSizeSmallLargeWasNotObtained";
+    public const string ImagesNotDownloadedBecauseUriImageSizeSmallLargeWasNotObtained = "ImagesNotDownloadedBecauseUriImageSizeSmallLargeWasNotObtained";
 
     public const string ImagesSuccessfullyDownloadedForIDArtists = "ImagesSuccessfullyDownloadedForIDArtists";
 
