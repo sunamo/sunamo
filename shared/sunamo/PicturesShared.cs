@@ -235,6 +235,7 @@ using sunamo.Essential;
 
             if (intWidth > objImage.Width) intWidth = objImage.Width;
             if (intHeight > objImage.Height) intHeight = objImage.Height;
+
             if (intWidth == 0 & intHeight == 0)
             {
                 intWidth = objImage.Width;
@@ -248,6 +249,7 @@ using sunamo.Essential;
             {
                 intWidth = objImage.Width * intHeight / objImage.Height;
             }
+
             Image imgOutput = null;
             switch (imgsf)
             {
