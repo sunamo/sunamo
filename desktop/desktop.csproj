@@ -88,6 +88,9 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
+    <Compile Include="Controls\Collections\RadioButtonsList.xaml.cs">
+      <DependentUpon>RadioButtonsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="Helpers\BaseControls\ContentControlHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
@@ -445,6 +448,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Collections\LoggerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\RadioButtonsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

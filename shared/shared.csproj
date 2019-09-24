@@ -141,6 +141,7 @@
     <Compile Include="CsvHelper\CsvWriter.cs" />
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Data\PushSolutionsData.cs" />
+    <Compile Include="Data\SmtpServerData.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />

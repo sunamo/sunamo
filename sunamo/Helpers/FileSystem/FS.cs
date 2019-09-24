@@ -123,12 +123,20 @@ public partial class FS
         return FS.Combine(outputFolder, FS.GetFileName(item));
     }
 
-    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo)
+    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty)
     {
         if (pairLinesInFromAndTo)
         {
             var from2 = SH.Split(from, Environment.NewLine);
             var to2 = SH.Split(to, Environment.NewLine);
+            if (replaceWithEmpty )
+            {
+                to2.Clear();
+                foreach (var item in from2)
+                {
+                    to2.Add(string.Empty);
+                }
+            }
             ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
             ReplaceInAllFiles(from2, to2, files);

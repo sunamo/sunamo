@@ -11,10 +11,12 @@ public class ControlInitData
 {
     #region Sort by alphabet (same as in intellisense popup)
     public bool checkable = false;
+    public object content = null;
     public Brush foreground = null;
     public string group = null;
     public double imageHeight = 16;
     public string imagePath = null;
+    public bool isChecked = false;
     public double imageWidth = 16;
     public IEnumerable list = null;
     /// <summary>
@@ -23,6 +25,23 @@ public class ControlInitData
     public RoutedEventHandler OnClick = null;
     public object tag = null;
     public string tooltip = null;
-    public string text = null;
+    
+
+    public string text
+    {
+        get
+        {
+            if (content != null)
+            {
+                return content.ToString();
+            }
+            return string.Empty;
+        }
+        set
+        {
+            content = value;
+        }
+    }
+    
     #endregion
 }

@@ -24,7 +24,11 @@ public class ShowTextResultWindow : Window, IUserControlInWindow
 
     private void S_ChangeDialogResult(bool? b)
     {
-        ChangeDialogResult(b);
+        if (ChangeDialogResult != null)
+        {
+            ChangeDialogResult(b);
+        }
+        
     }
 }
 

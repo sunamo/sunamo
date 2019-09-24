@@ -2,7 +2,10 @@
 using System.Linq;
 using System.Net.Mail;
 
-
+/// <summary>
+/// Google: working, save sent do outbox
+/// Seznam: working, DONT save sent to outbox
+/// </summary>
     public partial class GoogleAppsMailbox
     {
         
@@ -20,23 +23,12 @@ using System.Net.Mail;
         /// </summary>
         string password = null;
         public string mailOfAdmin = null;
+    SmtpServerData smtpServerData = new SmtpServerData();
 
-        public string Password
-        {
-            set
-            {
-            
-                password = value;
-            }
-        }
-
-        
-
-
-        /// <summary>
-        /// For sending from noreply@sunamo.cz
-        /// </summary>
-        public GoogleAppsMailbox()
+    /// <summary>
+    /// For sending from noreply@sunamo.cz
+    /// </summary>
+    public GoogleAppsMailbox()
         {
 
         }
@@ -48,12 +40,17 @@ using System.Net.Mail;
         /// <param name="fromName"></param>
         /// <param name="fromEmail"></param>
         /// <param name="mailOfAdmin"></param>
-        public GoogleAppsMailbox(string fromName, string fromEmail, string mailOfAdmin, string password = null)
+        public GoogleAppsMailbox(string fromName, string fromEmail, string mailOfAdmin, string password, SmtpServerData smtpServer = null)
         {
             this.fromName = fromName;
             this.fromEmail = fromEmail;
             this.mailOfAdmin = mailOfAdmin;
             this.password = password;
+        if (smtpServer != null)
+        {
+            this.smtpServerData = smtpServer;
+        }
+        
         }
 
         /// <summary>
@@ -73,16 +70,18 @@ using System.Net.Mail;
 
             SmtpClient client = new SmtpClient();
             client.EnableSsl = true; //Mail aspone nefunguje na SSL zatím, pokud byste zde dali true, tak vám vznikne výjimka se zprávou Server does not support secure connections.
-            client.Credentials = new System.Net.NetworkCredential(fromEmail, password);
-            client.Port = 587; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
-            client.Host = "smtp.gmail.com"; //Adresa smtp serveru. Může končit buď na název vašeho webu nebo na aspone.cz. Zadává se bez protokolu, jak je zvykem
+        client.UseDefaultCredentials = false; // must be before set up Credentials
+        client.Credentials = new System.Net.NetworkCredential(fromEmail, password);
+            client.Port = smtpServerData.port; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
+            client.Host = smtpServerData.smtpServer; //Adresa smtp serveru. Může končit buď na název vašeho webu nebo na aspone.cz. Zadává se bez protokolu, jak je zvykem
+        
             MailMessage mail = new MailMessage();
 
             MailAddress ma = new MailAddress(fromEmail, fromName);
             mail.From = ma;
-            if (replyTo == "")
+            if (replyTo != "")
             {
-                MailAddress ma2 = new MailAddress(to, to);
+                MailAddress ma2 = new MailAddress(replyTo, replyTo);
                 mail.ReplyToList.Add(ma2);
             }
             else

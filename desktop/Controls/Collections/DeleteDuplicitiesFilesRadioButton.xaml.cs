@@ -18,7 +18,8 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for DeleteDuplicitiesFilesRadioButton.xaml
+    /// UC for deleting duplicate files
+    /// Only one file can keep
     /// </summary>
     public partial class DeleteDuplicitiesFilesRadioButton : UserControl, ISelectFromMany<TWithSizeInString<string>>
     {
