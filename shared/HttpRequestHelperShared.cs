@@ -8,9 +8,51 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 
 public static partial class HttpRequestHelper{
+
+    /// <summary>
+    /// Is not async coz t.Result
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    public async static Task<string> GetResponseTextAsync(string address)
+    {
+        var request = (HttpWebRequest)WebRequest.CreateHttp(address);
+        request.Timeout = int.MaxValue;
+        request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
+        var t = request.GetResponseAsync();
+        using (var response = (HttpWebResponse)t.Result)
+        {
+            Encoding encoding = null;
+
+            if (response.CharacterSet == "")
+            {
+                //encoding = Encoding.UTF8;
+            }
+            else
+            {
+                encoding = Encoding.GetEncoding(response.CharacterSet);
+            }
+
+            using (var responseStream = response.GetResponseStream())
+            {
+                StreamReader reader = null;
+                if (encoding == null)
+                {
+                    reader = new StreamReader(responseStream, true);
+                }
+                else
+                {
+                    reader = new StreamReader(responseStream, encoding);
+                }
+                string vr = reader.ReadToEnd();
+                return vr;
+            }
+        }
+    }
 
     /// <summary>
     /// A3 can be null
