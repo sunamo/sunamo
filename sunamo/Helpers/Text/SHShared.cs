@@ -1283,7 +1283,7 @@ public static partial class SH
     /// <param name="p"></param>
     /// <param name="p_3"></param>
     /// <returns></returns>
-    public static string Substring(string sql, int indexFrom, int indexTo)
+    public static string Substring(string sql, int indexFrom, int indexTo, bool returnInputIfInputIsShorterThanA3 = false)
     {
         if (sql == null)
         {
@@ -1295,6 +1295,13 @@ public static partial class SH
             if (tl > indexTo)
             {
                 return sql.Substring(indexFrom, indexTo - indexFrom);
+            }
+            else
+            {
+                if (returnInputIfInputIsShorterThanA3)
+                {
+                    return sql;
+                }
             }
         }
         return null;

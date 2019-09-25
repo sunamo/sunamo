@@ -17,7 +17,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         AddTab(tabCount);
         PublicStatic(_public, _static);
-        sb.AddItem((object)("public class " + className));
+        sb.AddItem((object)(" class " + className));
         if (derive.Length != 0)
         {
             sb.AddItem((object)":");
@@ -304,7 +304,18 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void Property(int tabCount, AccessModifiers _public, bool _static, string returnType, string name, bool _get, bool _set, string field)
+    /// <summary>
+    /// _get, _set can be string or bool
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="_public"></param>
+    /// <param name="_static"></param>
+    /// <param name="returnType"></param>
+    /// <param name="name"></param>
+    /// <param name="_get"></param>
+    /// <param name="_set"></param>
+    /// <param name="field"></param>
+    public void Property(int tabCount, AccessModifiers _public, bool _static, string returnType, string name, object _get, object _set, string field)
     {     
         #region MyRegion
         AddTab(tabCount);
@@ -313,24 +324,43 @@ public class CSharpGenerator : GeneratorCodeAbstract
         ReturnTypeName(returnType, name);
         AddTab(tabCount);
         StartBrace(tabCount);
-        if (_get)
+        if (!BTS.FalseOrNull( _get))
         {
+            var s = _get.ToString();
             AddTab(tabCount + 1);
             sb.AddItem((object)"get");
             StartBrace(tabCount + 1);
             AddTab(tabCount + 2);
-            sb.AddItem((object)("return " + field + ";"));
+
+            if (s == true.ToString())
+            {
+                sb.AddItem((object)("return " + field + ";"));    
+            }
+            else
+            {
+                sb.AddItem(s);
+            }
+
             sb.AppendLine();
             EndBrace(tabCount + 1);
         }
-        if (_set)
+        if (!BTS.FalseOrNull(_set))
         {
             AddTab(tabCount + 1);
             sb.AddItem((object)"set");
-            
             StartBrace(tabCount + 1);
             AddTab(tabCount + 2);
-            sb.AddItem((object)(field + " = value;"));
+
+            var s = _set.ToString();
+            if (s == true.ToString())
+            {
+            sb.AddItem((object)(field + " = value;"));            
+            }
+            else
+            {
+                sb.AddItem(s);
+            }
+
             sb.AppendLine();
             EndBrace(tabCount + 1);
         }
@@ -395,7 +425,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             usings = "using " + usings + ";";
         }
-        else if(!usings.EndsWith(AllStrings.sc))
+        else if(!usings.Trim().EndsWith(AllStrings.sc))
         {
             usings += ";";
         }

@@ -180,7 +180,10 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     }
 
     /// <summary>
-    /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
+    /// A1
+    /// A2 = mss_, může být vloženo i Nope_, on si jej automaticky nahradí za SE
+    /// A3 = folder to write in scz
+    /// A4 = folder to write in sczAdmin
     /// </summary>
     /// <param name="nazevTabulky"></param>
     /// <param name="dbPrefix"></param>
@@ -193,16 +196,21 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         {
             return "";
         }
+
         string nameCs = null;
         string cs = GetCsTableRow(signed, nazevTabulky, dbPrefix, out nameCs);
         string Path = FS.Combine(folderSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
         string PathSczAdmin = null;
+
         if (folderSunamoCzAdminSaveToDirectoryName != null)
         {
             PathSczAdmin = FS.Combine(folderSunamoCzAdminSaveToDirectoryName, "DontCopy2", nameCs + ".cs");
         }
+
+        // create base
         string csBase = GetCsTableRowBase(nazevTabulky, dbPrefix);
         string PathBase = FS.Combine(folderSaveToDirectoryName, "DontCopyBase", nameCs + "Base.cs");
+
         string PathSczBaseAdmin = null;
         if (folderSunamoCzAdminSaveToDirectoryName != null)
         {
@@ -212,6 +220,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         FS.CreateUpfoldersPsysicallyUnlessThere(Path);
         //FS.CreateUpfoldersPsysicallyUnlessThere(Path4);
         FS.CreateUpfoldersPsysicallyUnlessThere(PathBase);
+
         if (PathSczAdmin != null)
         {
             FS.CreateUpfoldersPsysicallyUnlessThere(PathSczAdmin);
@@ -259,6 +268,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     }
 
     /// <summary>
+    /// Generate base (TableRowAlbumBase)
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
     /// </summary>
     /// <param name="nazevTabulky"></param>
@@ -292,12 +302,14 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         {
             nazevTabulky = nazevTabulky.Substring(dbPrefix.Length);
         }
+
         bool isDynamicTable = false;
         if (nazevTabulky.Contains("_"))
         {
             isDynamicTable = true;
             nazevTabulky = ConvertPascalConvention.ToConvention(nazevTabulky);
         }
+
         tableName = "TableRow" + nazevTabulky + "Base";
         csg.Using(usings);
 
@@ -312,14 +324,32 @@ public partial class MSColumnsDB : List<MSSloupecDB>
 
         foreach (MSSloupecDB item in this)
         {
+            
             string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
-            string name = item.Name;
 
-            string fn = FirstCharLower(name);
-            // Public kvůli používání ve SunamoCzAdmin.Cmd a SunamoCzAdmin.Wpf
-            csg.Field(1, AccessModifiers.Public, false, VariableModifiers.None, typ, fn, true);
-            paramsForCtor.Add(typ);
-            paramsForCtor.Add(name);
+            if (typ == "string" && item.Delka.ToUpper() != "(MAX)")
+            {
+                string name = item.Name;
+
+                string nameLower = SH.FirstCharLower(name);
+
+                // Public kvůli používání ve SunamoCzAdmin.Cmd a SunamoCzAdmin.Wpf
+                csg.Field(1, AccessModifiers.Private, false, VariableModifiers.None, typ, nameLower, true);
+
+                csg.Property(1, AccessModifiers.Public, false, typ, name, "return SH.Substring(" + nameLower + ",0," +  item.LengthWithoutBraces + ", true);", true, nameLower);
+
+                paramsForCtor.Add(typ);
+                paramsForCtor.Add(name);
+            }
+            else
+            {
+                string name = item.Name;
+
+                // Public kvůli používání ve SunamoCzAdmin.Cmd a SunamoCzAdmin.Wpf
+                csg.Field(1, AccessModifiers.Public, false, VariableModifiers.None, typ, name, true);
+                paramsForCtor.Add(typ);
+                paramsForCtor.Add(name);
+            }
         }
 
         csg.Append(1, GenerateCtors(tableName, isDynamicTable, paramsForCtor, true));
@@ -342,7 +372,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         for (int i = 0; i < this.Count; i++)
         {
             MSSloupecDB item = this[i];
-            innerParseRow.AppendLine(3, FirstCharLower(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
+            innerParseRow.AppendLine(3, Copy(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
 
         }
         // Na závěr každé metody nesmí být AppendLine
@@ -355,7 +385,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         return csg.ToString();
     }
 
-    public static string FirstCharLower(string p)
+    public static string Copy(string p)
     {
         return p;
     }
@@ -418,6 +448,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     }
 
     /// <summary>
+    /// Generate only derived(TableRowAlbum)
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
     /// </summary>
     /// <param name="nazevTabulky"></param>
@@ -442,21 +473,25 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         string am = "public ";
         if (derived != null)
         {
-            am = "public ";
+            
             implements += "," + derived;
         }
         csg.StartClass(0, AccessModifiers.Public, false, tableName, implements);
 
         string seznamNameValue = "";
-        List<string> nameFields = new List<string>();
-        List<string> temp = new List<string>();
+        List<string> nameFieldsFirstCharLower = new List<string>();
+        List<string> allColumnsWithFirst = new List<string>();
         bool first = true;
 
         string sloupecID = null;
         string sloupecIDTyp = null;
+
         // Bude null, pokud sloupec nebude číselný typ
         Type typSloupecID = null;
-        List<string> temp2 = new List<string>();
+        // Name of columns
+        List<string> nameFields = new List<string>();
+
+        // this is List<MSSloupecDB>
         foreach (MSSloupecDB item in this)
         {
             string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
@@ -466,8 +501,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
                 first = false;
                 if (name.StartsWith("ID") || name.StartsWith("Serie"))
                 {
-                    
-                    sloupecID = FirstCharLower(name);
+                    sloupecID = Copy(name);
                     sloupecIDTyp = typ;
                     typSloupecID = ConvertTypeNameTypeNumbers.ToType(typ);
                     
@@ -481,14 +515,14 @@ public partial class MSColumnsDB : List<MSSloupecDB>
             else
             {
                 // Používá se při insert, 
-                temp2.Add(name);
-                nameFields.Add(FirstCharLower(name));
+                nameFields.Add(name);
+                //nameFieldsFirstCharLower.Add(Copy(name));
             }
-            temp.Add(name);
+            allColumnsWithFirst.Add(name);
         }
-        seznamNameValue = SH.Join(',', temp.ToArray());
+        seznamNameValue = SH.Join(',', allColumnsWithFirst.ToArray());
         string seznamNameValueBezPrvniho = SH.Join(',', nameFields.ToArray());
-        string nazvySloupcuBezPrvnihoVZavorkach = "(" + SH.Join(',', temp2.ToArray()) + ")";
+        string nazvySloupcuBezPrvnihoVZavorkach = "(" + SH.Join(',', nameFields.ToArray()) + ")";
 
         /*
          * TableName je již s TableRow, který slouží k vytváření K
@@ -514,7 +548,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         
         CSharpGenerator innerSelectInTable = new CSharpGenerator();
 
-        innerSelectInTable.AppendLine(2, "object[] o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + FirstCharLower(sloupecID) + "" + @");
+        innerSelectInTable.AppendLine(2, "object[] o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + "" + @");
 ParseRow(o);");
         csg.Method(1, "public void SelectInTable()", innerSelectInTable.ToString());
 
@@ -537,11 +571,9 @@ ParseRow(o);");
         }
         else
         {
-
             string pretypovaniInsert = "";
             if (typSloupecID != typeof(long))
             {
-
                 pretypovaniInsert = "(" + sloupecIDTyp + ")";
             }
 
@@ -598,8 +630,7 @@ ParseRow(o);");
         }
         #endregion
 
-        #region MyRegion
-        #endregion
+        
         #endregion
 
         if (this.Count > 1)
@@ -658,7 +689,7 @@ ParseRow(o);");
         {
             if (i % 2 == 1)
             {
-                paramsForCtorWithoutID[i] = FirstCharLower(paramsForCtorWithoutID[i]);
+                paramsForCtorWithoutID[i] = Copy(paramsForCtorWithoutID[i]);
             }
         }
         if (isDynamicTable)

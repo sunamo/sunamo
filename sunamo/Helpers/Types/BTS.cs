@@ -454,6 +454,11 @@ public static partial class BTS
         NH.RemoveEndingZeroPadding(bajty);
         return Encoding.UTF8.GetString(bajty.ToArray());
     }
+
+    public static bool FalseOrNull(object get)
+    {
+        return get == null || get.ToString() == false.ToString();
+    }
     #endregion
 
     #region Casting between array - cant commented because it wasnt visible between 

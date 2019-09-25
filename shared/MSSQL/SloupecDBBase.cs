@@ -64,6 +64,14 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
              return delka;
          }
      }
+
+    public string LengthWithoutBraces
+    {
+        get
+        {
+            return SH.TrimStartAndEnd(delka, AllStrings.lb, AllStrings.rb);
+        }
+    }
     public string Name
     {
         get

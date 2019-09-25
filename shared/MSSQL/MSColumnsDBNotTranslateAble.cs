@@ -81,7 +81,7 @@ using System.Collections.Generic;
                 first = false;
                 if (name.StartsWith("ID") || name.StartsWith("Serie"))
                 {
-                    sloupecID = FirstCharLower(name);
+                    sloupecID = Copy(name);
                     sloupecIDTyp = typ;
                 }
                 else
@@ -92,7 +92,7 @@ using System.Collections.Generic;
             }
             else
             {
-                nameFields.Add(FirstCharLower(name));
+                nameFields.Add(Copy(name));
                 // Používá se při update
                 temp.Add("\"" + name + "\"");
                 temp.Add(name);
@@ -114,7 +114,7 @@ using System.Collections.Generic;
 
         CSharpGenerator innerSelectInTable = new CSharpGenerator();
 
-        innerSelectInTable.AppendLine(2, "o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + FirstCharLower(sloupecID) + "" + @");
+        innerSelectInTable.AppendLine(2, "o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + "" + @");
 ParseRow(o);");
         csg.Method(1, "public void SelectInTable()", innerSelectInTable.ToString());
 
