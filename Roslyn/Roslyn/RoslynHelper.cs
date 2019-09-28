@@ -101,17 +101,21 @@ namespace Roslyn
         /// <returns></returns>
         public static string Format(string format)
         {
+            // Decode from HTML - 
             format = HttpUtility.HtmlDecode(format);
+            // Replace all <br> with empty
             format = Regex.Replace(format, RegexHelper.rBrTagCaseInsensitive.ToString(), string.Empty);
 
             var workspace = MSBuildWorkspace.Create();
             StringBuilder sb = new StringBuilder();
 
+            // Create SyntaxTree
             SyntaxTree firstTree = CSharpSyntaxTree.ParseText(format);
 
-            //SourceText text = firstTree.GetText();
+            // Get root of ST
             var firstRoot = firstTree.GetRoot();
 
+            // Get all Child nodes
             var syntaxNodes = firstRoot.ChildNodesAndTokens();
 
             bool token = false;

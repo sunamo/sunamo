@@ -71,7 +71,10 @@ public partial class XHelper
             xmlFormat = TF.ReadFile(xml);
         }
 
-        XDocument doc = XDocument.Parse(xmlFormat);
+        XmlNamespacesHolder h = new XmlNamespacesHolder();
+        XDocument doc = null;// h.ParseAndRemoveNamespacesXmlDocument(xmlFormat);
+
+        
         var formatted = doc.ToString();
         formatted = SH.ReplaceAll2(formatted, string.Empty, " xmlns=\"\"");
         if (FS.ExistsFile(xml))

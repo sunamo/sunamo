@@ -6,7 +6,150 @@ using System.Xml;
 
 namespace sunamo.Xml
 {
-    public static class XH
+    public partial class XH
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static string InnerXml(string xml)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(xml);
+            return xdoc.DocumentElement.InnerXml;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static string ReplaceSpecialHtmlEntity(string vstup)
+        {
+            vstup = vstup.Replace("&rsquo;", "'");//
+
+            vstup = vstup.Replace("&" + "lsquo" + ";", "'"); //¢
+            return vstup;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static string ReplaceAmpInString(string xml)
+        {
+            Regex badAmpersand = new Regex("&(?![a-zA-Z]{2,6};|#[0-9]{2,4};)");
+            const string goodAmpersand = "&" + "amp" + ";";
+            return badAmpersand.Replace(xml, goodAmpersand);
+        }
+
+        /// <summary>
+        /// Do A2 se vklzda jiz hotove xml, nikoliv soubor.
+        /// G posledni dite, to znamena ze pri parsovani celeho dokumentu vraci root.
+        /// </summary>
+        /// <param name="soubor"></param>
+        /// <returns></returns>
+        public static XmlNode ReturnXmlRoot(string xml)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(xml);
+            return (XmlNode)xdoc.LastChild;
+        }
+
+        /// <summary>
+        /// Vraci FirstChild, pri parsaci celeho dokumentu tak vraci xml deklaraci.
+        /// A2 should be entered otherwise can occur error "different XmlDocument context"
+        /// </summary>
+        /// <param name="soubor"></param>
+        /// <param name="xnm"></param>
+        /// <returns></returns>
+        public static XmlNode ReturnXmlNode(string xml, XmlDocument xdoc2 = null)
+        {
+            XmlDocument xdoc = null;
+            //XmlTextReader xtr = new XmlTextReader(
+            if (xdoc == null)
+            {
+                xdoc = new XmlDocument();
+            }
+
+
+            xdoc.LoadXml(xml);
+
+            //xdoc.Load(soubor);
+            return (XmlNode)xdoc.FirstChild;
+        }
+
+        /// <summary>
+        /// Remove illegal XML characters from a string.
+        /// </summary>
+        public static string SanitizeXmlString(string xml)
+        {
+            if (xml == null)
+            {
+                throw new ArgumentNullException("Atributte xml is null");
+            }
+            //xml = xml.Replace("&", " and ");
+            StringBuilder buffer = new StringBuilder(xml.Length);
+
+            foreach (char c in xml)
+            {
+                if (IsLegalXmlChar(c))
+                {
+                    buffer.Append(c);
+                }
+            }
+
+            return buffer.ToString();
+        }
+
+        public static XmlDocument xd = new XmlDocument();
+
+
+
+        /// <summary>
+        /// Whether a given character is allowed by XML 1.0.
+        /// </summary>
+        static bool IsLegalXmlChar(int character)
+        {
+            return
+            (
+                 character == 0x9 /* == '\t' == 9   */          ||
+                 character == 0xA /* == '\n' == 10  */          ||
+                 character == 0xD /* == '\r' == 13  */          ||
+                (character >= 0x20 && character <= 0xD7FF) ||
+                (character >= 0xE000 && character <= 0xFFFD) ||
+                (character >= 0x10000 && character <= 0x10FFFF)
+            );
+        }
+
+        /// <summary>
+        /// A1 can be XML or path
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        public static XmlDocument LoadXml(string xml)
+        {
+            if (FS.ExistsFile(xml))
+            {
+                xml = TF.ReadFile(xml);
+            }
+
+            XmlDocument xd = new XmlDocument();
+            try
+            {
+                xd.LoadXml(xml);
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+            return xd;
+        }
+    }
+
+    public partial class XH
     {
         public static string RemoveXmlDeclaration(string vstup)
         {
@@ -22,13 +165,17 @@ namespace sunamo.Xml
 
             MemoryStream mStream = new MemoryStream();
             XmlTextWriter writer = new XmlTextWriter(mStream, Encoding.Unicode);
-            XmlDocument document = new XmlDocument();
+
+            XmlNamespacesHolder h = new XmlNamespacesHolder();
+
+            XmlDocument document = null;
+            //document = h.ParseAndRemoveNamespacesXmlDocument(xml);
+
+            document = new XmlDocument();
+            document.LoadXml(xml);
 
             try
             {
-                // Load the XmlDocument with the XML.
-                document.LoadXml(xml);
-
                 writer.Formatting = Formatting.Indented;
 
                 // Write the XML into a formatting XmlTextWriter
@@ -48,13 +195,14 @@ namespace sunamo.Xml
 
                 result = formattedXml;
             }
-            catch (XmlException)
+            catch (XmlException ex)
             {
                 // Handle the exception
             }
 
             mStream.Close();
-            writer.Close();
+            // 'Cannot access a closed Stream.'
+            //writer.Close();
 
             return result;
         }

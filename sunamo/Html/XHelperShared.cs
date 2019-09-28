@@ -10,13 +10,29 @@ using System.Xml.Linq;
 using sunamo.Essential;
 
 public partial class XHelper{ 
-public static Dictionary<string, string> XmlNamespaces(XmlNamespaceManager nsmgr)
+public static Dictionary<string, string> XmlNamespaces(XmlNamespaceManager nsmgr, bool withPrexixedXmlnsColon)
     {
         Dictionary<string, string> ns = new Dictionary<string, string>();
-        foreach (string item in nsmgr)
+        foreach (string item2 in nsmgr)
         {
+            var item = item2;
+
+            if (withPrexixedXmlnsColon)
+            {
+                if (item == string.Empty || item == "xmlns")
+                {
+                    item = "xmlns";
+                }
+                else
+                {
+                    item = "xmlns:" + item;
+                }
+                
+            }
+
             // Jaký je typ item, at nemusím používat slovník
-            var v = nsmgr.LookupNamespace(item);
+            var v = nsmgr.LookupNamespace(item2);
+
             if (!ns.ContainsKey(item))
             {
                 ns.Add(item, v);

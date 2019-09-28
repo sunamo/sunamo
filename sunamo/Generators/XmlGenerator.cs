@@ -168,11 +168,11 @@ public class XmlGenerator
 
         
 
-        var p = XHelper.XmlNamespaces(nsmgr);
+        var p = XHelper.XmlNamespaces(nsmgr, true);
 
         for (int i = 0; i < args.Count(); i++)
         {
-            p.Add(args[i], args[++i]);
+            p.Add( args[i], args[++i]);
         }
 
         WriteTagWithAttrs(nameTag, p);

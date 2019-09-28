@@ -49,13 +49,48 @@ public partial class DTHelperCs
         return ToShortTime(dt);
     }
 
-    public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
+    /// <summary>
+    /// Must be int[] due to params[]
+    /// </summary>
+    /// <param name="parts"></param>
+    /// <param name="fillUpByZeros"></param>
+    /// <returns></returns>
+    static string ToShortTimeWorker(int[] parts, bool fillUpByZeros)
     {
         if (fillUpByZeros)
         {
-            return SH.JoinMakeUpTo2NumbersToZero(AllStrings.colon, value.Hour,value.Minute, value.Second);
+            return SH.JoinMakeUpTo2NumbersToZero(AllStrings.colon, parts
+                );
         }
-        return value.Hour + AllStrings.colon + NH.MakeUpTo2NumbersToZero(value.Minute);
+        return SH.Join(AllStrings.colon, parts);
+    }
+
+    /// <summary>
+    /// With seconds
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="fillUpByZeros"></param>
+    /// <returns></returns>
+    public static string ToShortTimeWithSecond(DateTime value, bool fillUpByZeros = false)
+    {
+        // Must be array due to params []
+        var parts = CA.ToArrayT<int>(value.Hour, value.Minute, value.Second);
+
+        return ToShortTimeWorker(parts, fillUpByZeros);
+    }
+
+    /// <summary>
+    /// Without seconds
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="fillUpByZeros"></param>
+    /// <returns></returns>
+    public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
+    {
+        // Must be array due to params []
+        var parts = CA.ToArrayT<int>(value.Hour, value.Minute);
+
+        return ToShortTimeWorker(parts, fillUpByZeros);
     }
 
     /// <summary>

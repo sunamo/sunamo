@@ -219,7 +219,6 @@
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />
     <Compile Include="XamlGenerator.cs" />
-    <Compile Include="XH.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
   </ItemGroup>

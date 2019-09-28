@@ -16,12 +16,12 @@ public class XmlNamespacesHolder
     /// </summary>
     /// <param name="content"></param>
     /// <returns></returns>
-    public XmlDocument ParseAndRemoveNamespaces(string content)
+    public XmlDocument ParseAndRemoveNamespacesXmlDocument(string content)
     {
         XmlDocument xd = new XmlDocument();
 
 
-        ParseAndRemoveNamespaces(content, xd.NameTable);
+        ParseAndRemoveNamespacesXmlDocument(content, xd.NameTable);
 
         return xd;
     }
@@ -35,7 +35,7 @@ public class XmlNamespacesHolder
     /// <param name="nt"></param>
     /// <param name="defaultPrefix"></param>
     /// <returns></returns>
-    public XmlDocument ParseAndRemoveNamespaces(string content, XmlNameTable nt, string defaultPrefix = "x")
+    public XmlDocument ParseAndRemoveNamespacesXmlDocument(string content, XmlNameTable nt, string defaultPrefix = "x")
     {
         XmlDocument xd = new XmlDocument();
 

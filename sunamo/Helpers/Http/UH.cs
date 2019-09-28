@@ -294,4 +294,10 @@ public partial class UH
         }
         return false;
     }
+
+    public static string ChangeExtension(string attrA, string oldExt, string extL)
+    {
+        attrA = SH.TrimEnd(attrA, oldExt);
+        return attrA + extL;
+    }
 }
