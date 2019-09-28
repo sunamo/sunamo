@@ -84,4 +84,7 @@ public class AllStrings
     public const string hashtag = "#";
     public const string equal = "=";
     public const string ampersand = "&";
+
+    public const string lq = "“";
+    public const string rq = "”";
 }

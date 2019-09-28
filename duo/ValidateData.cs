@@ -11,5 +11,6 @@ public class ValidateData
 {
     public bool trim = true;
     public List<string> excludedStrings = new List<string>();
+    public bool allowEmpty = false;
 }
 

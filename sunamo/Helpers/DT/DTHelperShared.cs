@@ -37,7 +37,7 @@ public partial class DTHelper
 
     public static string MakeUpTo2NumbersToZero(int p)
     {
-        return DTHelperGeneral.MakeUpTo2NumbersToZero(p);
+        return NH.MakeUpTo2NumbersToZero(p);
     }
 
     public static string TimeToStringAngularTime(DateTime dt)

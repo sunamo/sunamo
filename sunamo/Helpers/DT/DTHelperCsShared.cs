@@ -49,9 +49,13 @@ public partial class DTHelperCs
         return ToShortTime(dt);
     }
 
-    public static string ToShortTime(DateTime value)
+    public static string ToShortTime(DateTime value, bool fillUpByZeros = false)
     {
-        return value.Hour + AllStrings.colon + DTHelperGeneral.MakeUpTo2NumbersToZero(value.Minute);
+        if (fillUpByZeros)
+        {
+            return SH.JoinMakeUpTo2NumbersToZero(AllStrings.colon, value.Hour,value.Minute, value.Second);
+        }
+        return value.Hour + AllStrings.colon + NH.MakeUpTo2NumbersToZero(value.Minute);
     }
 
     /// <summary>

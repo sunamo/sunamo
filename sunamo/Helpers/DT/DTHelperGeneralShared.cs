@@ -5,15 +5,6 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        if (p.ToString().Length == 1)
-        {
-            return "0" + p;
-        }
-        return p.ToString();
-    }
-
     /// <summary>
     /// A2 bylo původně SqlServerHelper.DateTimeMinVal
     /// </summary>

@@ -191,7 +191,23 @@ public partial class WpfApp
         , cdp);
     }
 
-    public static IEssentialMainWindow mp = null;
+    static IEssentialMainWindow _mp = null;
+
+    public static IEssentialMainWindow mp
+    {
+        get
+        {
+            return _mp;
+        }
+        set
+        {
+            _mp = value;
+            var window = (Window)value;
+            
+            // Without it, app would be still running after close
+            window.Closed += (sender, e) => window.Dispatcher.InvokeShutdown();
+        }
+    }
     public static TextBlock tbLastErrorOrWarning = null;
     public static TextBlock tbLastOtherMessage = null;
     static TextBlock tbLastErrorOrWarningSaved = null;

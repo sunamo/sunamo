@@ -106,6 +106,17 @@ public static partial class CSharpHelper
         return result;
     }
 
+    public static string GetConsts(List<string> list)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+        foreach (var item in list)
+        {
+            var name = ConvertCamelConvention.ToConvention(item);
+            csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
+        }
+
+        return csg.ToString();
+    }
 
     public static string DefaultValueForType(string type)
     {

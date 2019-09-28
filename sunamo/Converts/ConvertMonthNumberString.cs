@@ -2,7 +2,7 @@
 public class ConvertMonthNumberString //: IConvertNumberString
 {
     /// <summary>
-    /// A1 je název měsíce v AJ
+    /// A1 je plný název měsíce v AJ
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>

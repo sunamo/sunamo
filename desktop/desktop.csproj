@@ -73,6 +73,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\ContainerControls\WindowHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\TemplatesNotCompile\MainWindow_Ctor.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ImageHelperDesktop.cs" />
@@ -90,6 +92,9 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
     <Compile Include="Controls\Collections\RadioButtonsList.xaml.cs">
       <DependentUpon>RadioButtonsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Result\ShowCodeResultUC.xaml.cs">
+      <DependentUpon>ShowCodeResultUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="Helpers\BaseControls\ContentControlHelper.cs" />
@@ -492,6 +497,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Result\FoundedFileUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Result\ShowCodeResultUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,6 +18,17 @@ using System.Text.RegularExpressions;
 
 public static partial class SH
 {
+    public static bool IsNullOrWhiteSpaceRange(params string[] l)
+    {
+        foreach (string item in l)
+        {
+            if (IsNullOrWhiteSpace(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public static IEnumerable<string> SplitAndKeep(this string s, string[] delims)
     {
         // delims allow only char[], not string[]

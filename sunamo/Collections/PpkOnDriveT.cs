@@ -30,4 +30,28 @@ public class PpkOnDrive<T> : PpkOnDriveBase<T> where T : IParser
             }
         }
     }
+
+    public PpkOnDrive(bool load) : base(load)
+    {
+
+    }
+
+    public PpkOnDrive()
+    {
+
+    }
+
+    public PpkOnDrive(string file2, bool load = true) : base(file2, load)
+    {
+    }
+
+    public PpkOnDrive(string file, bool load, bool save) : base(file, load, save)
+    {
+
+    }
+
+    public PpkOnDrive(bool open, bool load) : base(open, load)
+    {
+
+    }
 }

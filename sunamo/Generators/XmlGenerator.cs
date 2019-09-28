@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using HtmlAgilityPack;
 using sunamo.Values;
+using System.Xml;
 
 /// <summary>
 /// Našel jsem ještě třídu DotXml ale ta umožňuje vytvářet jen dokumenty ke bude root ThisApp.Name
@@ -128,6 +129,16 @@ public class XmlGenerator
     }
 
     /// <summary>
+    /// Add also null
+    /// </summary>
+    /// <param name="nameTag"></param>
+    /// <param name="p"></param>
+    private void WriteTagWithAttrs(string nameTag, Dictionary<string, string> p)
+    {
+        WriteTagWithAttrs(true, nameTag, DictionaryHelper.GetListStringFromDictionary(p).ToArray());
+    }
+
+    /// <summary>
     /// Dont write attr with null
     /// </summary>
     /// <param name="p"></param>
@@ -135,6 +146,11 @@ public class XmlGenerator
     public void WriteTagWithAttrsCheckNull(string p, params string[] p_2)
     {
         WriteTagWithAttrs(false, p, p_2);
+    }
+
+    public void WriteTagNamespaceManager(object rss, XmlNamespaceManager nsmgr, string v1, string v2)
+    {
+        throw new NotImplementedException();
     }
 
     bool IsNulledOrEmpty(string s)
@@ -145,6 +161,24 @@ public class XmlGenerator
         }
         return false;
     }
+
+    public void WriteTagNamespaceManager(string nameTag, XmlNamespaceManager nsmgr, params string[] args)
+    {
+        //List<string> p = new List<string>(args);
+
+        
+
+        var p = XHelper.XmlNamespaces(nsmgr);
+
+        for (int i = 0; i < args.Count(); i++)
+        {
+            p.Add(args[i], args[++i]);
+        }
+
+        WriteTagWithAttrs(nameTag, p);
+    }
+
+    
 
     /// <summary>
     /// if will be sth null, wont be writing

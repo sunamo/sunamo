@@ -1167,7 +1167,7 @@ public static partial class SH
         List<string> na2Cislice = new List<string>();
         foreach (var item in parts)
         {
-            na2Cislice.Add(DTHelper.MakeUpTo2NumbersToZero(item));
+            na2Cislice.Add(NH.MakeUpTo2NumbersToZero(item));
         }
         return JoinIEnumerable(p, na2Cislice);
     }

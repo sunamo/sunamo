@@ -87,6 +87,9 @@ public static class AllChars
     public const char equal = '=';
     public const char ampersand = '&';
 
+    public const char lq = '“';
+    public const char rq = '”';
+
     #region Generic chars
     public static readonly char notNumber;
     #endregion

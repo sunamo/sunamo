@@ -109,15 +109,13 @@ public class AppData : AppDataAbstractBase<string, string>
         string r = AppData.ci.GetFolderWithAppsFiles();
         string sunamoFolder = TF.ReadFile(r);
 
-
-
         if (string.IsNullOrWhiteSpace(sunamoFolder))
         {
             sunamoFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
         }
         return sunamoFolder;
     }
-    //
+
     /// <summary>
     /// Dont use - instead of this GetCommonSettings
     /// Without ext because all is crypted and in bytes

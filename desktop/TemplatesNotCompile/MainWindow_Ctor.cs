@@ -5,22 +5,23 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 using desktop.UserControls;
 using sunamo.Essential;
 using sunamo.Interfaces;
 
 public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 {
-    dynamic Instance = null;
+    #region Implicitly in Window
     dynamic Dispatcher = null;
-    ApplicationDataContainer data = null;
     TextBlock tbLastErrorOrWarning;
     TextBlock tbLastOtherMessage;
     string Title = null;
+    #endregion
+    dynamic Instance = null;
+    ApplicationDataContainer data = null;
     Mode mode = Mode.Empty;
     EmptyUC emptyUC = null;
-    LogUC logUc = null;
+    LogUC logUC = null;
     UserControl actual = new UserControl();
     
     IUserControl userControl = null;
@@ -32,6 +33,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     MenuItem miUC;
 
     public bool CancelClosing { get; set; }
+    public WindowWithUserControl windowWithUserControl { get; set; }
     #endregion
 
     public MainWindow_Ctor()
@@ -54,6 +56,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
         string appName = "";
         ThisApp.Name = appName;
+        WpfApp.Init();
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
@@ -91,11 +94,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 #endif
 
         WpfApp.EnableDesktopLogging(true);
-        WpfApp.SaveReferenceToTextBlockStatus(false, tbLastErrorOrWarning, tbLastOtherMessage);
 
         // 1st LogUC must be before Empty
         SetMode(Mode.LogUC);
-        //WpfApp.SaveReferenceToLogsStackPanel(logUc.lbLogsOthers.lbLogs, logUc.lbLogsErrors.lbLogs);
+        WpfApp.SaveReferenceToTextBlockStatus(false, tbLastErrorOrWarning, tbLastOtherMessage);
+        WpfApp.SaveReferenceToLogsStackPanel(logUC.lbLogsOthers.lbLogs, logUC.lbLogsErrors.lbLogs);
         #endregion
 
         #region 3) Initialize base properties of app
@@ -105,9 +108,9 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
         WpfApp.cd = Dispatcher;
 
+        // Important to shut down app
         WpfApp.mp = this;
 
-        ThisApp.Name = appName;
         WriterEventLog.CreateMainAppLog(ThisApp.Name);
 
         // Must be initialize right after data set
@@ -129,8 +132,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 5) Set modes
-        // 1st LogUC must be before Empty
-        SetMode(Mode.LogUC);
+        
 
         // 2nd Edit only in #if
         SetMode(Mode.Empty);
@@ -191,11 +193,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
                 actual = emptyUC;
                 break;
             case Mode.LogUC:
-                if (logUc == null)
+                if (logUC == null)
                 {
-                    logUc = new LogUC();
+                    logUC = new LogUC();
                 }
-                actual = logUc;
+                actual = logUC;
                 break;
             #endregion
             default:

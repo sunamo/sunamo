@@ -24,11 +24,8 @@ public class ShowTextResultWindow : Window, IUserControlInWindow
 
     private void S_ChangeDialogResult(bool? b)
     {
-        if (ChangeDialogResult != null)
-        {
-            ChangeDialogResult(b);
-        }
-        
+        // It's window, not user control, therefore I have to close, not calling ChangeDialogResult
+        Close();
     }
 }
 

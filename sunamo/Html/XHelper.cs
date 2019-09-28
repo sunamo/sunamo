@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using sunamo.Essential;
-
-public class XHelper
+public partial class XHelper
 {
     public static Dictionary<string, string> ns = new Dictionary<string, string>();
-
     public static string GetInnerXml(XElement parent)
     {
         var reader = parent.CreateReader();
@@ -23,9 +21,7 @@ public class XHelper
     public static XElement MakeAllElementsWithDefaultNs(XElement settings)
     {
         var ns2 = XHelper.ns[string.Empty];
-
         List<object> toInsert = new List<object>();
-
         // shift ALL elements in the settings document into the target namespace
         foreach (XElement e in settings.DescendantsAndSelf())
         {
@@ -39,7 +35,6 @@ public class XHelper
         //    toInsert.Add(e);
         //}
         //t
-
         var vr = new XElement(XName.Get(settings.Name.LocalName, ns2), settings.Attributes(), settings.Descendants());
         return vr;
     }
@@ -50,13 +45,15 @@ public class XHelper
         {
             contentOrFn = TF.ReadFile(contentOrFn);
         }
+
         var enB = BTS.ConvertFromUtf8ToBytes(contentOrFn);
         XDocument xd = null;
         using (MemoryStream oStream = new MemoryStream(enB.ToArray()))
-        using (XmlReader oReader = XmlReader.Create(oStream))
-        {
-            xd = XDocument.Load(oReader);
-        }
+            using (XmlReader oReader = XmlReader.Create(oStream))
+            {
+                xd = XDocument.Load(oReader);
+            }
+
         return xd;
     }
 
@@ -64,26 +61,19 @@ public class XHelper
     /// If A1 is file, output will be save to file and return null
     /// Otherwise return string
     /// </summary>
-    /// <param name="xml"></param>
+    /// <param name = "xml"></param>
     /// <returns></returns>
     public static string FormatXml(string xml)
     {
         var xmlFormat = xml;
-
         if (FS.ExistsFile(xml))
         {
             xmlFormat = TF.ReadFile(xml);
         }
 
-
-
-
-
         XDocument doc = XDocument.Parse(xmlFormat);
         var formatted = doc.ToString();
-
         formatted = SH.ReplaceAll2(formatted, string.Empty, " xmlns=\"\"");
-
         if (FS.ExistsFile(xml))
         {
             TF.SaveFile(formatted, xml);
@@ -109,12 +99,12 @@ public class XHelper
         foreach (XElement item in e)
         {
             var attrValue = XHelper.Attr(item, attr);
-
             if (SH.Contains(attrValue, value, enoughIsContainsAttribute, caseSensitive))
             {
                 vr.Add(item);
             }
         }
+
         return vr;
     }
 
@@ -141,8 +131,8 @@ public class XHelper
     /// <summary>
     /// Při nenalezení vrací null
     /// </summary>
-    /// <param name="item"></param>
-    /// <param name="attr"></param>
+    /// <param name = "item"></param>
+    /// <param name = "attr"></param>
     /// <returns></returns>
     public static string Attr(XElement item, string attr)
     {
@@ -151,10 +141,9 @@ public class XHelper
         {
             return xa.Value;
         }
+
         return null;
     }
-
-
 
     public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
     {
@@ -182,6 +171,7 @@ public class XHelper
                 }
             }
         }
+
         return vr;
     }
 
@@ -216,16 +206,15 @@ public class XHelper
                 }
             }
         }
+
         return null;
     }
-
-
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="item"></param>
-    /// <param name="p"></param>
+    /// <param name = "item"></param>
+    /// <param name = "p"></param>
     /// <returns></returns>
     public static XElement GetElementOfNameRecursive(XElement node, string nazev)
     {
@@ -253,14 +242,15 @@ public class XHelper
                 }
             }
         }
+
         return null;
     }
 
     /// <summary>
     /// Is usage only in _Uap/SocialNetworksManager -> open for find out how looks input data and then move to RegexHelper
     /// </summary>
-    /// <param name="p"></param>
-    /// <param name="deli"></param>
+    /// <param name = "p"></param>
+    /// <param name = "deli"></param>
     /// <returns></returns>
     public static string ReturnValueAllSubElementsSeparatedBy(XElement p, string deli)
     {
@@ -276,6 +266,7 @@ public class XHelper
                 xml = xml.Replace(item.Value, deli);
             }
         }
+
         sb.Append(xml);
         return sb.ToString().Replace(deli + deli, deli);
     }
@@ -283,7 +274,6 @@ public class XHelper
     public static IEnumerable<XElement> GetElementsOfName(XElement node, string nazev)
     {
         List<XElement> result = new List<XElement>();
-
         string p, z;
         if (nazev.Contains(AllStrings.colon))
         {
@@ -305,6 +295,7 @@ public class XHelper
                 }
             }
         }
+
         return result;
     }
 
@@ -312,8 +303,8 @@ public class XHelper
     /// Získá element jména A2 v A1.
     /// Umí pracovat v NS, stačí zadat zkratku namepsace jako ns:tab
     /// </summary>
-    /// <param name="node"></param>
-    /// <param name="nazev"></param>
+    /// <param name = "node"></param>
+    /// <param name = "nazev"></param>
     /// <returns></returns>
     public static XElement GetElementOfName(XContainer node, string nazev)
     {
@@ -327,6 +318,7 @@ public class XHelper
                 if (IsRightTag(item, z, p))
                 {
                 }
+
                 if (item.Name.LocalName == z && item.Name.NamespaceName == p)
                 {
                     return item;
@@ -343,6 +335,7 @@ public class XHelper
                 }
             }
         }
+
         return null;
     }
 
@@ -362,19 +355,19 @@ public class XHelper
     /// <summary>
     /// Will split A2 to LocalName and NamespaceName
     /// </summary>
-    /// <param name="xName"></param>
-    /// <param name="nazev"></param>
+    /// <param name = "xName"></param>
+    /// <param name = "nazev"></param>
     /// <returns></returns>
     public static bool IsRightTag(XName xName, string nazev)
     {
         string p, z;
-
         SH.GetPartsByLocation(out p, out z, nazev, AllChars.colon);
         p = XHelper.ns[p];
         if (xName.LocalName == z && xName.NamespaceName == p)
         {
             return true;
         }
+
         return false;
     }
 
@@ -386,26 +379,26 @@ public class XHelper
     /// <summary>
     /// Into A3 is passing shortcut
     /// </summary>
-    /// <param name="xName"></param>
-    /// <param name="localName"></param>
-    /// <param name="namespaceName"></param>
+    /// <param name = "xName"></param>
+    /// <param name = "localName"></param>
+    /// <param name = "namespaceName"></param>
     /// <returns></returns>
     public static bool IsRightTag(XName xName, string localName, string namespaceName)
     {
         string p, z;
-
         namespaceName = XHelper.ns[namespaceName];
         if (xName.LocalName == localName && xName.NamespaceName == namespaceName)
         {
             return true;
         }
+
         return false;
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="p"></param>
+    /// <param name = "p"></param>
     public static void AddXmlNamespaces(params string[] p)
     {
         for (int i = 0; i < p.Length; i++)
@@ -431,6 +424,7 @@ public class XHelper
             XElement s = f.Element(XName.Get(second));
             return s;
         }
+
         return null;
     }
 
@@ -441,14 +435,15 @@ public class XHelper
         {
             return xe.Value.Trim();
         }
+
         return "";
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="var"></param>
-    /// <param name="p"></param>
+    /// <param name = "var"></param>
+    /// <param name = "p"></param>
     /// <returns></returns>
     public static string GetValueOfElementOfNameOrSE(XElement var, string nazev)
     {
@@ -457,6 +452,7 @@ public class XHelper
         {
             return "";
         }
+
         return xe.Value.Trim();
     }
 }

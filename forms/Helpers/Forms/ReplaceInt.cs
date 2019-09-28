@@ -8,8 +8,8 @@ namespace F.WF
     {
         private Label label2;
         private Label label3;
-        private NumberTextBoxMona numberTextBoxMona1;
-        private NumberTextBoxMona numberTextBoxMona2;
+        private NumberTextBox numberTextBoxMona1;
+        private NumberTextBox numberTextBoxMona2;
         private Button button1;
         private Button button2;
 
@@ -61,8 +61,8 @@ namespace F.WF
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numberTextBoxMona1 = new NumberTextBoxMona();
-            this.numberTextBoxMona2 = new NumberTextBoxMona();
+            this.numberTextBoxMona1 = new NumberTextBox();
+            this.numberTextBoxMona2 = new NumberTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();

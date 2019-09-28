@@ -34,7 +34,7 @@ public static partial class TextBoxExtensions{
             return;
         }
 
-        if (text == string.Empty)
+        if (text == string.Empty && !d.allowEmpty)
         {
             InitApp.TemplateLogger.MustHaveValue(TextBlockHelper.TextOrToString(tb));
             validated = false;

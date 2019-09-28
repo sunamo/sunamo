@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for ShowTextResult.xaml
+    /// Stupid, open with highlighting in VSCode instead of my UC
     /// </summary>
     public partial class ShowTextResult : UserControl, IUserControlInWindow, IUserControlWithSizeChange
     {

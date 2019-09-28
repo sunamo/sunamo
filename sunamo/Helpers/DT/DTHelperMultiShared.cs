@@ -33,8 +33,6 @@ public partial class DTHelperMulti
         }
     }
 
-
-
     public static DateTime IsValidDateText(string r)
     {
         DateTime dt = DateTime.MinValue;

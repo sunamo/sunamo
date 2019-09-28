@@ -89,7 +89,7 @@ namespace sunamo.Clipboard
                             }
                             else
                             {
-                                last = null;
+                                //last = null;
                             }
                         }
                     }

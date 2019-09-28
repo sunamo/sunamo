@@ -1052,7 +1052,10 @@ public partial class FS
         }
         return ext;
     }
-
+    public static List<string> GetFiles(string folderPath, string masc)
+    {
+        return FS.GetFiles(folderPath, masc, SearchOption.TopDirectoryOnly);
+    }
     public static List<string> GetFiles(string folderPath, bool recursive)
     {
         return FS.GetFiles(folderPath, FS.MascFromExtension(), recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
