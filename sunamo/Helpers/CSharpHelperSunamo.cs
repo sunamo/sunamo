@@ -3,6 +3,29 @@ using System.Collections.Generic;
 using System.Text;
 public partial class CSharpHelperSunamo
 {
+    public static void IndentAsPreviousLine(List<string> lines)
+    {
+        string indentPrevious = string.Empty;
+        string line = null;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < lines.Count; i++)
+        {
+            line = lines[i];
+            if (line.Length > 0)
+            {
+                if (!char.IsWhiteSpace(line[0]))
+                {
+                    lines[i] = indentPrevious + lines[i];
+                }
+                else
+                {
+
+                    indentPrevious = SH.GetWhitespaceFromBeginning(sb, line);
+                }
+            }
+        }
+    }
     public static bool IsInterface(string item)
     {
         if (item[0] == 'I')

@@ -68,7 +68,7 @@ public static class RegexHelper
 
     public static bool IsUri(string text)
     {
-        return rUri.IsMatch(text);
+        return rUri.IsMatch(text) && UH.HasHttpProtocol(text);
     }
 
     static RegexHelper()

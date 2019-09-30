@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sunamo", "sunamo\sunamo.csproj", "{85C87766-58CE-4A02-AC0D-372C74C47C72}"
 EndProject
@@ -69,7 +69,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WfInterop", "WfInterop\WfIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathEditor", "..\sunamo.notmine\PathEditor\PathEditor.csproj", "{EC822654-CDE4-4EE2-B033-55125CD11B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "duo", "duo\duo.csproj", "{D4C45A56-F726-4B63-B94B-4172AC65F358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "duo", "duo\duo.csproj", "{D4C45A56-F726-4B63-B94B-4172AC65F358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsInterop", "VsInterop\VsInterop.csproj", "{B02D4114-47A2-4CA7-9612-897B1BBE3522}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoslynServices", "RoslynServices\RoslynServices.csproj", "{527F1B4C-4B5D-4D32-AE80-C21654830EC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -477,6 +481,30 @@ Global
 		{D4C45A56-F726-4B63-B94B-4172AC65F358}.Release|x64.Build.0 = Release|Any CPU
 		{D4C45A56-F726-4B63-B94B-4172AC65F358}.Release|x86.ActiveCfg = Release|Any CPU
 		{D4C45A56-F726-4B63-B94B-4172AC65F358}.Release|x86.Build.0 = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|x64.Build.0 = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Debug|x86.Build.0 = Debug|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|x64.ActiveCfg = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|x64.Build.0 = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|x86.ActiveCfg = Release|Any CPU
+		{B02D4114-47A2-4CA7-9612-897B1BBE3522}.Release|x86.Build.0 = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|x64.Build.0 = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Debug|x86.Build.0 = Debug|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|x64.ActiveCfg = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|x64.Build.0 = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|x86.ActiveCfg = Release|Any CPU
+		{527F1B4C-4B5D-4D32-AE80-C21654830EC7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

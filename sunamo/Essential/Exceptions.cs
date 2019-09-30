@@ -13,6 +13,8 @@ using System.Text;
 /// </summary>
 public class Exceptions
 {
+    public static bool RaiseIsNotWindowsPathFormat;
+
     //
 
 
@@ -171,11 +173,14 @@ public class Exceptions
 
     public static object IsNotWindowsPathFormat(string before, string argName, string argValue)
     {
-        var badFormat = !FS.IsWindowsPathFormat(argValue);
-
-        if (badFormat)
+        if (RaiseIsNotWindowsPathFormat)
         {
-            return CheckBefore(before) + " " + argName + " is not in Windows path format";
+            var badFormat = !FS.IsWindowsPathFormat(argValue);
+
+            if (badFormat)
+            {
+                return CheckBefore(before) + " " + argName + " is not in Windows path format";
+            }
         }
 
         return null;

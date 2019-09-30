@@ -354,20 +354,7 @@ public static partial class HtmlHelper
     /// <param name="hod"></param>
     public static void SetAttribute(HtmlNode node, string atr, string hod)
     {
-        object o = null;
-        while (true)
-        {
-            o = node.Attributes.FirstOrDefault(a => a.Name == atr);
-            if (o != null)
-            {
-                node.Attributes.Remove((HtmlAttribute)o);
-            }
-            else
-            {
-                break;
-            }
-        }
-        node.Attributes.Add(atr, hod);
+        HtmlAssistant.SetAttribute(node, atr, hod);
     }
 
     /// <summary>

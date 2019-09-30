@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
+//using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using sunamo;
 using sunamo.Collections;
@@ -16,6 +16,10 @@ using Microsoft.CodeAnalysis.Text;
 using HtmlAgilityPack;
 using System.Web;
 using System.Text.RegularExpressions;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.CodeAnalysis.Formatting;
+
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace Roslyn
 {
@@ -93,9 +97,61 @@ namespace Roslyn
             return CSharpSyntaxTree.ParseText(code);
         }
 
+        public static string Format3(string format)
+        {
+            // Decode from HTML - 
+            format = HttpUtility.HtmlDecode(format);
+            // Replace all <br> with empty
+            format = Regex.Replace(format, RegexHelper.rBrTagCaseInsensitive.ToString(), string.Empty);
+
+            // Create SyntaxTree
+            SyntaxTree firstTree =  CSharpSyntaxTree.ParseText(format);
+
+            var root = firstTree.GetRoot();
+
+            // Format() is in Roslyn.Services which is not actually on nuget
+            //root.Format(FormattingOptions.GetDefaultOptions()).GetFormattedRoot().GetText().ToString();
+
+            return null;
+        }
+
         /// <summary>
-        /// better is use d:\pa\CodeFormatter\ with lang attr 
-        /// dont repair tab indent
+        /// Format good
+        /// Format2 = remove empty lines Format = keep empty lines
+        /// code must be compilable
+        /// when isnt ; i) instead od ; i++), private in variables return input without changes
+        /// 
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public static string Format2(string format)
+        {
+            // Decode from HTML - 
+            format = HttpUtility.HtmlDecode(format);
+            // Replace all <br> with empty
+            format = Regex.Replace(format, RegexHelper.rBrTagCaseInsensitive.ToString(), string.Empty);
+
+            var workspace = MSBuildWorkspace.Create();
+
+            // Create SyntaxTree
+            SyntaxTree firstTree = CSharpSyntaxTree.ParseText(format);
+
+            var root = firstTree.GetRoot() ;
+
+            var vr = Microsoft.CodeAnalysis.Formatting.Formatter.Format(root, workspace);
+            // Instert space between all tokens, replace all nl by spaces
+            //vr = root.NormalizeWhitespace();
+            // With ToFullString and ToString is output the same - good but without new lines
+            var formattedText = vr.ToFullString();
+
+            return FinalizeFormat(formattedText);
+        }
+
+        /// <summary>
+        /// Format good
+        /// Format2 = remove empty lines Format = keep empty lines
+        /// code must be compilable
+        /// when isnt ; i) instead od ; i++), private in variables return input without changes
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
@@ -115,29 +171,40 @@ namespace Roslyn
             // Get root of ST
             var firstRoot = firstTree.GetRoot();
 
+
+
+            #region Process all incomplete nodes in ChildNodesAndTokens and insert into syntaxNodes2
             // Get all Child nodes
             var syntaxNodes = firstRoot.ChildNodesAndTokens();
 
+            // Whether at least one in syntaxNodes is SyntaxNodeOrToken - take its parent
             bool token = false;
+            // Whether at least one in syntaxNodes is SyntaxNode - take itself
             bool node2 = false;
 
+            // Parent if token or itself if node2
             SyntaxNode node = null;
 
-            //List<SyntaxNodeOrToken> syntaxNodes2 = new List<SyntaxNodeOrToken>();
-            //syntaxNodes2.AddRange(syntaxNodes.Where(d => d.Kind() == SyntaxKind.IncompleteMember));
+
             List<SyntaxNode> syntaxNodes2 = new List<SyntaxNode>();
 
-            foreach (var item in syntaxNodes.Where(d => d.Kind() == SyntaxKind.IncompleteMember))
-            {
-                var node3 = item.AsNode();
-                //string name = node3.TryGetInferredMemberName();
-                //string name = node3.De
-                //HtmlNode.ElementsFlags.Add(name, HtmlElementFlag.CanOverlap);
-                syntaxNodes2.Add(node3);
-            }
+            // Process all incomplete members
+            #region If its only code fragment, almost everything will be here IncompleteMember and on end will be delete from code
+            //foreach (var item in syntaxNodes.Where(d => d.Kind() == SyntaxKind.IncompleteMember))
+            //{
+            //    // zde nevím co to dělá
+            //    var node3 = item.AsNode();
 
-            //SyntaxNode node = CSharpSyntaxNode.DeserializeFrom()
+            //    // insert output of AsNode
+            //    syntaxNodes2.Add(node3);
+            //} 
+            #endregion
+            #endregion
+
+            // Again get ChildNodesAndTokens, dont know why because should be immutable
             syntaxNodes = firstRoot.ChildNodesAndTokens();
+            // WTF? Process all syntaxNodes but output of all elements is save to 2 variables?
+            // Must be set only to one variable due to raise exception
             foreach (var syntaxNode in syntaxNodes)
             {
                 string s = syntaxNode.GetType().FullName.ToString();
@@ -164,21 +231,45 @@ namespace Roslyn
                 throw new Exception("Cant process token and SyntaxNode - output could be duplicated");
             }
 
+            // Early if token we get Parent, so now we dont get Parent again
             var node4 = node.Parent;
             if (token)
             {
                 node4 = node;
             }
-
+            // Remove nodes which was marked as Incomplete members
             node = node4.ReplaceNode(node, node.RemoveNodes(syntaxNodes2, SyntaxRemoveOptions.AddElasticMarker));
+            // Only for debugging
             var nodesAndTokens = node.ChildNodesAndTokens();
-            var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace);
+
+            // Dont get to OptionSet - abstract. DocumentOptionSet - sealed, no static member, no ctor.
+            //OptionSet os = new DocumentOptionSet()
+
+
+            var formattedResult = Microsoft.CodeAnalysis.Formatting.Formatter.Format(node, workspace );
+            
 
             sb.AppendLine(formattedResult.ToFullString().Trim());
 
             string result = sb.ToString();
 
-            return result;
+
+
+            //var formattedResult2 = RoslynServicesHelper.Format(result);
+
+            return FinalizeFormat(result);
+        }
+
+        static string FinalizeFormat(string result)
+        {
+            var lines = SH.GetLines(result);
+
+            //SH.MultiWhitespaceLineToSingle(lines);
+
+            SH.IndentAsPreviousLine(lines);
+            CA.RemoveStringsEmpty2(lines);
+
+            return SH.JoinNL(lines);
         }
 
         public static ClassDeclarationSyntax GetClass(SyntaxNode root)

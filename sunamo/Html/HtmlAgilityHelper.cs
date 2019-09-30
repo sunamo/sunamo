@@ -390,19 +390,17 @@ namespace sunamo.Html
             for (int i = textNodes.Count - 1; i >= 0; i--)
             {
                 var item = textNodes[i];
-                if (item.ParentNode.Name == "pre")
+                if (CA.IsEqualToAnyElement<string>( item.ParentNode.Name, "pre"))
                 {
                     continue;
                 }
-                var d = SH.Split(item.InnerText, AllStrings.space);
+                var d = SH.SplitByWhiteSpaces(item.InnerText);
                 bool changed = CA.ChangeContent(d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
 
                 item.InnerHtml = string.Empty;
                 InsertGroup(item, d);
 
                 //item.ParentNode.ReplaceChild(CreateNode(item.InnerHtml), item);
-
-
 
                 // must be last because use ParentNode above
                 //item.ParentNode.RemoveChild(item);

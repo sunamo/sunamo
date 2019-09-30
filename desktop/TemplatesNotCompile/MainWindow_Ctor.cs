@@ -23,7 +23,6 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     EmptyUC emptyUC = null;
     LogUC logUC = null;
     UserControl actual = new UserControl();
-    
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();

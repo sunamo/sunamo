@@ -2,8 +2,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+
 public static partial class CSharpHelper
 {
+    
     public static string CreateConstsForSearchUris(List<string> uris)
     {
         CSharpGenerator csg = new CSharpGenerator();

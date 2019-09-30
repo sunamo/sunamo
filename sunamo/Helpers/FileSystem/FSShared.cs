@@ -285,7 +285,7 @@ public partial class FS
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static string GetExtension(string v)
+    public static string GetExtension(string v, bool returnOriginalCase = false)
     {
         string result = "";
         int lastDot = v.LastIndexOf(AllChars.dot);
@@ -303,7 +303,12 @@ public partial class FS
         {
             return string.Empty;
         }
-        result = v.Substring(lastDot).ToLower();
+        result = v.Substring(lastDot);
+
+        if (!returnOriginalCase)
+        {
+            result = result.ToLower(); 
+        }
 
         return result;
     }
@@ -789,6 +794,11 @@ public partial class FS
 
     public static string ChangeExtension(string item, string newExt, bool physically)
     {
+        if (UH.HasHttpProtocol(item))
+        {
+            return UH.ChangeExtension(item, FS.GetExtension(item, true), newExt);
+        }
+
         string cesta = FS.GetDirectoryName(item);
         string fnwoe = FS.GetFileNameWithoutExtension(item);
         string nova = FS.Combine(cesta, fnwoe + newExt);

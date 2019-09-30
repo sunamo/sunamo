@@ -29,6 +29,24 @@ public static partial class SH
         }
         return false;
     }
+
+    public static string GetWhitespaceFromBeginning(StringBuilder sb, string line)
+    {
+        sb.Clear();
+        foreach (var item in line)
+        {
+            if (char.IsWhiteSpace(item))
+            {
+                sb.Append(item);
+            }
+            else
+            {
+                break;
+            }
+        }
+        return sb.ToString();
+    }
+
     public static IEnumerable<string> SplitAndKeep(this string s, string[] delims)
     {
         // delims allow only char[], not string[]
@@ -316,6 +334,69 @@ public static partial class SH
             return http + item;
         }
         return item;
+    }
+
+    public static void MultiWhitespaceLineToSingle(List<string> l)
+    {
+        throw new Exception("NOT WORKING, IN FIRST DEBUG WITH UNIT TESTS AND THEN USE");
+
+        //List<int> toRemove = new List<int>();
+        //List<bool> isWhitespace = new List<bool>(l.Count);
+
+        ////l.Add(false)
+
+        //for (int i = 0; i < l.Count; i++)
+        //{
+        //    isWhitespace.Add(l[i].Trim() == string.Empty);
+
+        //}
+
+        //isWhitespace.Reverse();
+
+        //for (int i = isWhitespace.Count - 1; i >= 0; i--)
+        //{
+        //    if (isWhitespace[i] && isWhitespace[i + 1])
+        //    {
+        //        l.RemoveAt(i+1);
+        //    }
+        //}
+
+        
+    }
+
+    public static void IndentAsPreviousLine(List<string> lines)
+    {
+        string indentPrevious = string.Empty;
+        string line = null;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < lines.Count-1; i++)
+        {
+            line = lines[i];
+            if (line.Length > 0)
+            {
+                if (!char.IsWhiteSpace(line[0]))
+                {
+                    lines[i] = indentPrevious + lines[i];
+                }
+                else
+                {
+                    sb.Clear();
+                    foreach (var item in line)
+                    {
+                        if (char.IsWhiteSpace(item))
+                        {
+                            sb.Append(item);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    indentPrevious = sb.ToString();
+                }
+            }
+        }
     }
 
     /// <summary>

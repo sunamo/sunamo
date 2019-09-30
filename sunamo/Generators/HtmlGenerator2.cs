@@ -580,8 +580,13 @@ public class HtmlGenerator2 : HtmlGenerator
     /// <returns></returns>
     public static string Anchor(string www)
     {
+        if (www.Contains("=\""))
+        {
+            return www;
+        }
+
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + AllStrings.gt + www + "</a>";
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + www + "</a>";
     }
 
     public static string AnchorMailto(string t)

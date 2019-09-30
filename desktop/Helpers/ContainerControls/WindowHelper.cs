@@ -26,9 +26,6 @@ public partial class WindowHelper
         }
     }
 
-    
-   
-
     public static void ShowDialog(WindowWithUserControl windowWithUserControl)
     {
         if (windowWithUserControl.DialogResult == null)
