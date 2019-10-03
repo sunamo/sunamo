@@ -38,4 +38,16 @@ public partial class WindowHelper
             windowWithUserControl.ShowDialog();
         }
     }
+
+    internal static void Close(Window w)
+    {
+        try
+        {
+            w.Close();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
 }

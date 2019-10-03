@@ -172,12 +172,10 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
                 b = dialogResult;
             }
 
-            if (ChangeDialogResult != null)
-            {
-                // If is registered, will close window exteranlly
-                ChangeDialogResult(b);
-            }
+            // If is registered, will close window exteranlly
+            ChangeDialogResult?.Invoke(b);
 
+            WindowHelper.Close(this);
         }
         else
         {

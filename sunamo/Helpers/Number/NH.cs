@@ -155,26 +155,6 @@ public static partial class NH
         return ps;
     }
 
-    public static string MakeUpTo2NumbersToZero(byte p)
-    {
-        string s = p.ToString();
-        if (s.Length == 1)
-        {
-            return "0" + p;
-        }
-        return s;
-    }
-
-    public static string MakeUpTo2NumbersToZero(int p)
-    {
-        string s = p.ToString();
-        if (s.Length == 1)
-        {
-            return "0" + p;
-        }
-        return s;
-    }
-
     /// <summary>
     /// Vytvoří interval od A1 do A2 včetně
     /// </summary>

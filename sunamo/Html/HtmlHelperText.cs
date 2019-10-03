@@ -58,7 +58,7 @@ using System.Text.RegularExpressions;
             return AllLists.htmlEntities.Contains(i);
         }
 
-        public static List<string> GetContentOfTags(string text, string pre)
+    public static List<string> GetContentOfTags(string text, string pre)
         {
             List<string> result = new List<string>();
             string start = $"<{pre}";

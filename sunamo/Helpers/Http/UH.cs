@@ -197,29 +197,6 @@ public partial class UH
         return vr.ToString();
     }
 
-
-
-
-
-    /// <summary>
-    /// Vr�t� true pokud m� A1 protokol http nebo https
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static bool HasHttpProtocol(string p)
-    {
-        p = p.ToLower();
-        if (p.StartsWith("http" + ":" + "//"))
-        {
-            return true;
-        }
-        if (p.StartsWith("https" + ":" + "//"))
-        {
-            return true;
-        }
-        return false;
-    }
-
     public static string RemovePrefixHttpOrHttps(string t)
     {
         t = t.Replace("http" + ":" + "//", "");
@@ -293,11 +270,5 @@ public partial class UH
             }
         }
         return false;
-    }
-
-    public static string ChangeExtension(string attrA, string oldExt, string extL)
-    {
-        attrA = SH.TrimEnd(attrA, oldExt);
-        return attrA + extL;
     }
 }

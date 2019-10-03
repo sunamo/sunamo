@@ -61,4 +61,23 @@ public static partial class NH
     {
         return double.Parse( textC.ToString()) / double.Parse( diac.ToString());
     }
+
+public static string MakeUpTo2NumbersToZero(byte p)
+    {
+        string s = p.ToString();
+        if (s.Length == 1)
+        {
+            return "0" + p;
+        }
+        return s;
+    }
+public static string MakeUpTo2NumbersToZero(int p)
+    {
+        string s = p.ToString();
+        if (s.Length == 1)
+        {
+            return "0" + p;
+        }
+        return s;
+    }
 }

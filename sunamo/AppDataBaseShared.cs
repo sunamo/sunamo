@@ -91,7 +91,13 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         //Common(true)
         string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
         _fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
+
+        
+
         FS.CreateUpfoldersPsysicallyUnlessThere(_fileFolderWithAppsFiles);
+
+        
+
         return _fileFolderWithAppsFiles;
     }
 

@@ -26,6 +26,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertCamelConvention.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\SunamoJsonShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\XHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\ImageHelperBase.cs" />

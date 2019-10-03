@@ -326,13 +326,9 @@ public static partial class CA
         {
             foreach (object item in enumerable2)
             {
-
-
                 // !(item is string)  - not working
                 if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(IEnumerable)))
                 {
-                    
-
                     var enumerable = (IEnumerable)item;
                     var type = enumerable.GetType();
 

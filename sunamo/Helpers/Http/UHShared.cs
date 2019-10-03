@@ -174,4 +174,29 @@ public partial class UH
     }
 
 
+
+public static string ChangeExtension(string attrA, string oldExt, string extL)
+    {
+        attrA = SH.TrimEnd(attrA, oldExt);
+        return attrA + extL;
+    }
+
+/// <summary>
+    /// Vr�t� true pokud m� A1 protokol http nebo https
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static bool HasHttpProtocol(string p)
+    {
+        p = p.ToLower();
+        if (p.StartsWith("http" + ":" + "//"))
+        {
+            return true;
+        }
+        if (p.StartsWith("https" + ":" + "//"))
+        {
+            return true;
+        }
+        return false;
+    }
 }

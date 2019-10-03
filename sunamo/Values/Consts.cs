@@ -14,6 +14,5 @@ using System.Threading.Tasks;
 
         public const string cs = "cs ";
         public const string en = "en ";
-
-        
-    }
+    public static string HtmlDoctype;
+}

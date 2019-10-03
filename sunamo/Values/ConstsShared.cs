@@ -71,7 +71,8 @@ using System.Text;
         public static string DotCzSlash = "." + "sunamo.cz" + "/";
         public static string DotCz = ".sunamo.cz";
 
-        public static string http = "https://";
+    public static string http = "http://";
+    public static string https = "https://";
         public const double zeroDouble = 0;
         public const int zeroInt = 0;
         public const float zeroFloat = 0;

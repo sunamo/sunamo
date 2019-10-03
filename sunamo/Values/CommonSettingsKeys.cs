@@ -13,5 +13,6 @@ public static class CommonSettingsKeys
     public static string smutekutek = "smutekutek";
     public static string pwUsersScz = "pwUsersScz";
     public static string pwSql = "pwSql";
+    public static string radusSlivovaSeznamCz = "radusSlivovaSeznamCz";
 }
 

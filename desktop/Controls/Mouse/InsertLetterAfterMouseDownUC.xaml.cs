@@ -38,7 +38,7 @@ namespace desktop.Controls.Mouse
         {
             InitializeComponent();
             
-            dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
+            
         }
 
  
@@ -78,7 +78,17 @@ namespace desktop.Controls.Mouse
             
         }
 
-        bool insertNow = true;
+        bool insertNow
+        {
+            get
+            {
+                return BTS.GetValueOfNullable(chbInsert.IsChecked);
+            }
+            set
+            {
+                chbInsert.IsChecked = value;
+            }
+        }
 
         private void Txt_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {

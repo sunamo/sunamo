@@ -170,6 +170,31 @@ public static partial class SH
     }
 
     /// <summary>
+    /// Convert \r\n to NewLine etc.
+    /// \t to [tab] is stupidity
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <returns></returns>
+    public static string ConvertTypedWhitespaceToString(string delimiter)
+    {
+        const string nl = @"
+";
+
+        switch (delimiter )
+        {
+            // must use \r\n, not Environment.NewLine (is not constant)
+            case "\\r\\n":
+            case "\\n":
+            case "\\r":
+                return nl;
+            case "\\t":
+                return "\t";
+        }
+
+        return delimiter;
+    }
+
+    /// <summary>
     /// Will be delete after final refactoring
     /// Automaticky ořeže poslední A1
     /// </summary>

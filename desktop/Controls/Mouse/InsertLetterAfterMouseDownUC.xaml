@@ -11,8 +11,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox x:Name="txt" MouseDown="Txt_MouseDown" x:FieldModifier="public" PreviewMouseDown="Txt_PreviewMouseDown" MouseUp="Txt_MouseUp" PreviewMouseUp="Txt_PreviewMouseUp"></TextBox>
-        <desktopControls:DialogButtons Grid.Row="1" x:Name="dialogButtons" IsEnabledBtnOk="True"></desktopControls:DialogButtons>
+        <CheckBox x:Name="chbInsert" Grid.Row="1" Content="Insert (control also with right mouse button)"></CheckBox>
+        
     </Grid>
 </UserControl>

@@ -268,7 +268,7 @@ namespace sunamo.Html
             return vr;
         }
 
-        public static HtmlDocument CreateHtmlDocument()
+        public static HtmlDocument CreateHtmlDocument(CreateHtmlDocumentInitData d = null)
         {
             HtmlDocument hd = new HtmlDocument();
             hd.OptionOutputOriginalCase = true;

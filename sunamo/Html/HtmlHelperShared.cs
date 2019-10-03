@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using sunamo.Values;
 using sunamo.Html;
+using System.Web;
 
 public static partial class HtmlHelper
 {
@@ -312,7 +313,9 @@ public static partial class HtmlHelper
 
     public static string ConvertHtmlToText(string h)
     {
-        h = SH.ReplaceAll(h, string.Empty, "<br>", "<br" + " /" + "", "<br" + "/" + "");
+        h = HttpUtility.HtmlDecode(h);
+        h = SH.ReplaceAll(h, Environment.NewLine, "<br>", "<br" + " /" + ">", "<br" + "/" + ">");
+        h = StripAllTags(h);
         return h;
     }
 
