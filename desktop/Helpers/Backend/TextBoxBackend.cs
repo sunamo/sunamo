@@ -16,7 +16,7 @@ namespace desktop.Helpers.Backend
     /// <summary>
     /// Have both event and TextBox - more variable
     /// </summary>
-    public class TextBoxBackend : IKeysHandler<KeyEventArgs>
+    public class TextBoxBackend : IKeysHandler<KeyEventArgs>, IShowSearchResults
     {
         static Type type = typeof(TextBoxBackend);
         // Menu, ToolBar and tbLineBreak = 67 lines. Should be changed in every App
@@ -87,12 +87,7 @@ namespace desktop.Helpers.Backend
         protected TextBox txtContent;
         public TextBoxState state = new TextBoxState();
 
-        public void SetTbSearchedResult(int actual, int count)
-        {
-            state.textSearchedResult = $"{actual}/{count}";
-            SetTextBoxState();
-            
-        }
+        
 
         public void SetActualFile(string file)
         {
@@ -106,7 +101,14 @@ namespace desktop.Helpers.Backend
             state.textActualFile = "Line" + ": " + _actualLine;
             SetTextBoxState();
         }
-         
+
+        public void SetTbSearchedResult(int actual, int count)
+        {
+            state.textSearchedResult = $"{actual}/{count}";
+            SetTextBoxState();
+
+        }
+
         public void SetTextBoxState(string s = null)
         {
             if (s == null)

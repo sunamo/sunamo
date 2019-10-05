@@ -112,6 +112,9 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
     {
         response = null;
+        return string.Empty;
+
+        
         if (hrd == null)
         {
             hrd = new HttpRequestData();

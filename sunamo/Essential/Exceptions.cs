@@ -37,6 +37,26 @@ public class Exceptions
         return sb.ToString();
     }
 
+    internal static object IsWhitespaceOrNull(string before, string variable, object data)
+    {
+        bool isNull = false;
+
+        if (data == null)
+        {
+            isNull = true;
+        }
+        else if (data.ToString().Trim() == string.Empty)
+        {
+            isNull = true;
+        }
+
+        if (isNull)
+        {
+            return CheckBefore(before) + variable + " is null";
+        }
+        return null;
+    }
+
     public static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
     {
         if (!en.ContainsKey(key))

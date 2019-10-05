@@ -61,10 +61,10 @@ namespace mono
 			throw new NotImplementedException();
 		}
 
-		public void SetText(TextBuilder stringBuilder)
-		{
-			throw new NotImplementedException();
-		}
+		//public void SetText(TextBuilder stringBuilder)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		public void SetText(StringBuilder stringBuilder)
 		{

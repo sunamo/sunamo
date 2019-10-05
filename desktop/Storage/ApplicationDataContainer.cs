@@ -56,6 +56,18 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     }
 
+    public void Add(Window cb)
+    {
+        // Automatically load
+        var adcl = AddFrameworkElement(cb);
+        var list = adcl.GetListString(ItemsSource);
+        
+        
+        //cb.ItemsSource = list;
+        //cb.KeyUp += Cb_KeyUp;
+        //cb.DataContextChanged += Cb_DataContextChanged;
+    }
+
     public void Add(ComboBox cb)
     {
         // Automatically load
@@ -149,12 +161,24 @@ public class ApplicationDataContainer : ApplicationDataConsts
         SaveControl(chb);
     }
 
-    private object Get(object sender, string key)
+    public T Get<T>(object sender, string key)
+    {
+        
+            var v = data[sender];
+            if (v.Contains(key))
+            {
+                return (T)v[key];
+            }
+        
+        return default(T);
+    }
+
+    public object Get(object sender, string key)
     {
         return data[sender][key];
     }
 
-    private void Set(object sender, string key, object v)
+    public void Set(object sender, string key, object v)
     {
         ThrowExceptions.StringContainsUnallowedSubstrings(type, "Set", v.ToString(), AllStrings.pipe);
         data[sender][key] = v;

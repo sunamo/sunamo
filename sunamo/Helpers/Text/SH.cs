@@ -15,6 +15,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 public static partial class SH
 {
@@ -29,6 +30,247 @@ public static partial class SH
         }
         return false;
     }
+
+    public static string SplitParagraphToMaxChars(string text, int maxChars)
+    {
+        var parts = SH.Split(text, Environment.NewLine);
+        List<List<string>> d = new List<List<string>>();
+
+        foreach (var item in parts)
+        {
+            d.Add(CA.ToListString(item));
+        }
+
+        var index = -1;
+
+        foreach (var item in d)
+        {
+            bool d1 = false;
+
+            index++;
+
+            List<string> copy = item.ToList();
+
+            var s1 = item[0];
+            var f = s1.Length;
+
+            if (f > maxChars)
+            {
+                var dxDots = SH.ReturnOccurencesOfString(s1, AllStrings.dot);
+                int i = 0;
+                int dx = 0;
+                int alreadyProcessed = 0;
+                int alreadyTrimmed = 0;
+                foreach (var dxDot2 in dxDots)
+                {
+                    i++;
+                    var dxDot = dxDot2 - alreadyTrimmed;
+
+                    int s1C = s1.Length;
+
+                    if (s1C> maxChars)
+                    {
+                        if (i > 1)
+                        {
+                            if (dxDot > maxChars)
+                            {
+                                string delimitingChars = null;
+                                if (IsEndOfSentence(dxDot, s1, out delimitingChars))
+                                {
+                                    string before, after;
+
+                                    // Zde jsem dal -1 místo -2, vracelo mi to na začátku rok
+                                    // Může mi to občas přetáhnout limit 250 znaků ale furt je to lepší než mít na začátku rok
+                                    var ddx = dxDots[i - 1] + 1;
+                                    ddx -= alreadyTrimmed;
+                                    SH.GetPartsByLocation(out before, out after, s1, ddx);
+
+                                    after = after.Trim();
+
+                                    if (after == string.Empty)
+                                    {
+                                        after = "   ";
+                                    }
+
+                                    if (char.IsLower(after[0]))
+                                    {
+                                        continue;
+                                    }
+
+                                    //dx++;
+                                    alreadyProcessed++;
+
+                                    DebugLogger.Instance.WriteLine("dx", dx);
+                                    DebugLogger.Instance.WriteLine("alreadyProcessed", alreadyProcessed);
+                                    DebugLogger.Instance.WriteLine("dx-alreadyProcessed", dx-alreadyProcessed);
+
+                                    if (dx > 1)
+                                    {
+
+                                        dx--;
+                                    }
+
+                                    //dx -= alreadyProcessed;
+
+
+                                    if (d1)
+                                    {
+                                        DebugLogger.Instance.WriteLine("i", i);
+                                    }
+                                    
+
+                                    
+
+                                    s1 = s1.Substring(ddx);
+
+                                    //after = delimitingChars + after;
+
+                                    int beforeC, afterC;
+                                    beforeC = before.Length;
+                                    afterC = after.Length;
+                                    s1C = s1.Length;
+
+                                    alreadyTrimmed += beforeC;
+                                    if (d1)
+                                    {
+                                        DebugLogger.Instance.WriteLine("beforeC", beforeC);
+                                        DebugLogger.Instance.WriteLine("afterC", afterC);
+                                        DebugLogger.Instance.WriteLine("s1C", s1C);
+                                    }
+                                    
+                                    var ls = d[index];
+
+                                    
+
+                                    if (d1)
+                                    {
+                                        var bC = SH.OccurencesOfStringIn(before, "Tento odstavec má vice než 500 znaků.");
+                                        var aC = SH.OccurencesOfStringIn(after, "Tento odstavec má vice než 500 znaků.");
+                                        DebugLogger.Instance.WriteLine("bC", bC);
+                                        DebugLogger.Instance.WriteLine("aC", aC);
+                                    }
+
+                                    if (dx < 0)
+                                    {
+                                        StringBuilder sb2 = new StringBuilder();
+
+                                        foreach (var item3 in ls)
+                                        {
+                                            sb2.AppendLine(item3);
+                                        }
+
+                                        var txt = sb2.ToString();
+                                        ClipboardHelper.SetText(txt);
+                                        int r = 0;
+                                    }
+
+                                    ls.AddOrSet(dx, before);
+                                    dx++;
+
+                                    ls.AddOrSet(dx, after);
+                                    dx++;
+
+                                    if (d1)
+                                    {
+                                        DebugLogger.Instance.WriteLine("dx1", dx - 1);
+                                        DebugLogger.Instance.WriteLine("dx2", dx);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        
+                        var ls = d[index];
+                        s1 = s1.Replace(ls.Last(), string.Empty).Trim() ;
+                        if (s1 != string.Empty)
+                        {
+                            ls.AddOrSet(dx, s1);
+                        }
+                        
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var item in d)
+        {
+            foreach (var line in item)
+            {
+                Debug.WriteLine(line.Length);
+
+                sb.AppendLine(line);
+
+                sb.AppendLine();
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    static bool _result = false;
+
+    public static bool Result
+    {
+        get
+        {
+            return _result;
+        }
+        set
+        {
+            _result = value;
+        }
+    }
+
+        private static bool IsEndOfSentence(int dxDot, string s1, out string delimitingChars)
+        {
+            delimitingChars = null;
+            var s = s1.Substring(dxDot);
+
+            var c0 = s[0];
+        char c1, c2;
+        c1 = '@';
+        c2 = '@';
+        
+        if (s.Length > 1)
+        {
+            c1 = s[1];
+        }
+        else
+        {
+            delimitingChars = s.Substring(0);
+            Result = true;
+        }
+
+        if (s.Length > 2)
+        {
+            c2 = s[2];
+        }
+        else
+        {
+            delimitingChars = s.Substring(1);
+            Result = true;
+        }
+             
+
+            if (c1 == AllChars.space && char.IsUpper(c2))
+            {
+                delimitingChars = SH.JoinChars(c0, c1, c2);
+                Result = true;
+            }
+        if (char.IsUpper(c1))
+        {
+                delimitingChars = SH.JoinChars(c0, c1);
+                Result =  true;
+            }
+            return Result;
+        }
+    
 
     public static string GetWhitespaceFromBeginning(StringBuilder sb, string line)
     {
@@ -336,9 +578,32 @@ public static partial class SH
         return item;
     }
 
-    public static void MultiWhitespaceLineToSingle(List<string> l)
+
+
+    public static string MultiWhitespaceLineToSingle(List<string> lines)
     {
-        throw new Exception("NOT WORKING, IN FIRST DEBUG WITH UNIT TESTS AND THEN USE");
+
+
+        CA.Trim(lines);
+        var str = SH.JoinNL(lines);
+        var nl3 = SH.JoinTimes(3, Environment.NewLine);
+        var nl2 = SH.JoinTimes(2, Environment.NewLine);
+            
+
+        while (str.Contains(nl3))
+        {
+            str = str.Replace(nl3, nl2);
+        }
+
+        return str;
+
+        // Keep as is
+        //return Regex.Replace(str, @"(\r\n)+", "\r\n\r\n", RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase);
+
+        // Ódstranuje nám to 
+        //return Regex.Replace(str, @"(\r\n){2,}", Environment.NewLine);
+
+        //throw new Exception("NOT WORKING, IN FIRST DEBUG WITH UNIT TESTS AND THEN USE");
 
         //List<int> toRemove = new List<int>();
         //List<bool> isWhitespace = new List<bool>(l.Count);
@@ -361,7 +626,7 @@ public static partial class SH
         //    }
         //}
 
-        
+
     }
 
     public static void IndentAsPreviousLine(List<string> lines)

@@ -171,7 +171,7 @@ public static partial class SH
 
     /// <summary>
     /// Convert \r\n to NewLine etc.
-    /// \t to [tab] is stupidity
+    /// 
     /// </summary>
     /// <param name="delimiter"></param>
     /// <returns></returns>
@@ -923,6 +923,16 @@ public static partial class SH
         return JoinPairs(AllStrings.sc, AllStrings.cs, parts);
     }
 
+    public static string JoinChars(params char[] ch)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in ch)
+        {
+            sb.Append(item);
+        }
+        return sb.ToString();
+    }
+
     public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
         InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", "args", parts);
@@ -1183,7 +1193,14 @@ public static partial class SH
         else
         {
             pred = text.Substring(0, pozice);
-            za = text.Substring(pozice + 1);
+            if (text.Length > pozice+1)
+            {
+                za = text.Substring(pozice + 1);
+            }
+            else
+            {
+                za = string.Empty;
+            }
         }
     }
 

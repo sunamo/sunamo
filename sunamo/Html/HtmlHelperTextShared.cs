@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 public partial class HtmlHelperText{ 
@@ -12,10 +13,7 @@ public static string ReplacePairTag(string input, string tag, string forWhat)
 
 public static string InsertMissingEndingTags(string s, string tag)
     {
-       
-
         StringBuilder text = new StringBuilder(s);
-
 
         var start = SH.ReturnOccurencesOfString(s, "<" + tag);
         var endingTag = "</" + tag + ">";
@@ -72,5 +70,10 @@ public static string InsertMissingEndingTags(string s, string tag)
         }
 
         return text.ToString();
+    }
+
+    public static List<string> GetAllEquvivalentsOfNonPairingTag(string v)
+    {
+        return CA.ToListString("<" + v + ">", "<" + v + " />", "<"+v+"/>");
     }
 }

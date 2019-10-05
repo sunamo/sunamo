@@ -40,6 +40,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\duo\duo.csproj">
+      <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
+      <Name>duo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{85C87766-58CE-4A02-AC0D-372C74C47C72}</Project>
       <Name>sunamo</Name>

@@ -23,7 +23,12 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
-    
+    public static void IsWhitespaceOrNull(Type type, string methodName, string variable, object data)
+    {
+        ThrowIsNotNull(Exceptions.IsWhitespaceOrNull(FullNameOfExecutedCode(type, methodName, true), variable, data));
+    }
+
+
 
     /// <summary>
     /// A1 have to be Dictionary<T,U>, not IDictionary without generic

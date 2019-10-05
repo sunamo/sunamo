@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ConfigurableWindow.Shared;
 using desktop.UserControls;
+using PathEditor.Properties;
 using sunamo.Essential;
 using sunamo.Interfaces;
 
-public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
+public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {
+    ConfigurableWindowWrapper configurableWindowWrapper = null;
     #region Implicitly in Window
     dynamic Dispatcher = null;
     TextBlock tbLastErrorOrWarning;
@@ -37,7 +40,6 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
     public MainWindow_Ctor()
     {
-
         // In ctor can be only InitializeComponent, all everything must be in Loaded. Use template as exists in MainWindow_Ctor
     }
 
@@ -101,9 +103,9 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 3) Initialize base properties of app
-
-
         Instance = this;
+
+        
 
         WpfApp.cd = Dispatcher;
 
@@ -113,7 +115,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         WriterEventLog.CreateMainAppLog(ThisApp.Name);
 
         // Must be initialize right after data set
+        // ApplicationDataContainer Must be before configurableWindowWrapper
         data = new ApplicationDataContainer();
+        Name = ThisApp.Name;
+        data.Add(this);
+        
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
@@ -122,6 +128,9 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
                 Close();
             }
 #endif
+
+        configurableWindowWrapper = new ConfigurableWindowWrapper(this);
+
 
         Title = appName;
         #endregion
@@ -163,6 +172,23 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
     }
 
+    protected override void OnRenderSizeChanged(SizeChangedInfo info)
+    {
+        base.OnRenderSizeChanged(info);
+
+        if (configurableWindowWrapper != null)
+        {
+            if (configurableWindowWrapper._isLoaded && this.WindowState == WindowState.Normal)
+            {
+                configurableWindowWrapper._settings.WindowSize = this.RenderSize;
+            }
+        }
+    }
+
+    public IConfigurableWindowSettings CreateSettings()
+    {
+        return new ConfigurableWindow.Shared.WindowConfigSettings(this, data);
+    }
     private void SetMode(Mode mode)
     {
         this.Topmost = false;

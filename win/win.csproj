@@ -101,6 +101,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\duo\duo.csproj">
+      <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
+      <Name>duo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

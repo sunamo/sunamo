@@ -140,17 +140,17 @@ public class ClipboardHelper
         }
     }
 
-    public static void SetText(TextBuilder stringBuilder)
-    {
-        if (Instance == null)
-        {
-            InstanceApps.SetText(stringBuilder);
-        }
-        else
-        {
-            Instance.SetText(stringBuilder);
-        }
-    }
+    //public static void SetText(TextBuilder stringBuilder)
+    //{
+    //    if (Instance == null)
+    //    {
+    //        InstanceApps.SetText(stringBuilder);
+    //    }
+    //    else
+    //    {
+    //        Instance.SetText(stringBuilder);
+    //    }
+    //}
 
     public static void SetText3(string s)
     {

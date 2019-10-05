@@ -60,7 +60,6 @@
     <Compile Include="..\..\sunamo\sunamo\Enums\ListOperation.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\NotifyChangesCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\Types.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Interfaces\IClipboardMonitor.cs" />
     <Compile Include="..\..\sunamo\sunamo\Essential\InitApp.cs" />
     <Compile Include="..\..\sunamo\sunamo\Essential\TypedSunamoLogger.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\DictionaryHelperShared.cs" />
@@ -68,7 +67,6 @@
     <Compile Include="..\..\sunamo\sunamo\Essential\SunamoLogger.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Interfaces\IClipboardHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IKeysHandler.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IPanel.cs" />
     <Compile Remove="Attributes\bin\**" />
@@ -96,6 +94,9 @@
     <Folder Include="Mixins\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\duo\duo.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Diacritics">
       <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\netstandard2.0\Diacritics.dll</HintPath>
     </Reference>
@@ -109,6 +110,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.1\PresentationCore.dll</HintPath>
     </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>..\dll\YamlDotNet.dll</HintPath>

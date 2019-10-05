@@ -192,6 +192,7 @@ public partial class WpfApp
     }
 
     static IEssentialMainWindow _mp = null;
+    public static Window window = null;
 
     public static IEssentialMainWindow mp
     {
@@ -202,7 +203,7 @@ public partial class WpfApp
         set
         {
             _mp = value;
-            var window = (Window)value;
+            window = (Window)value;
             
             // Without it, app would be still running after close
             window.Closed += (sender, e) => window.Dispatcher.InvokeShutdown();

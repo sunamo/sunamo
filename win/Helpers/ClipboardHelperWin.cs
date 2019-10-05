@@ -170,10 +170,10 @@ public class ClipboardHelperWin : IClipboardHelper
         Clipboard.SetDataObject(data, true);
     }
 
-    public void SetText(TextBuilder stringBuilder)
-    {
-        SetText(stringBuilder.ToString());
-    }
+    //public void SetText(TextBuilder stringBuilder)
+    //{
+    //    SetText(stringBuilder.ToString());
+    //}
 
     public void SetText(StringBuilder stringBuilder)
     {

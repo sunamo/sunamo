@@ -145,6 +145,7 @@
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\SunamoPointExtensions.cs" />
     <Compile Include="Extensions\SystemDrawingSizeExtension.cs" />
     <Compile Include="Extensions\SystemDrawingSizeFExtension.cs" />
     <Compile Include="Extensions\SystemWindowsSizeExtensions.cs" />

@@ -90,6 +90,11 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
+    <Compile Include="ConfigurableWindow\ConfigurableWindow2.cs" />
+    <Compile Include="ConfigurableWindow\ConfigurableWindowSettings.cs" />
+    <Compile Include="ConfigurableWindow\ConfigurableWindowWrapper.cs" />
+    <Compile Include="ConfigurableWindow\IConfigurableWindow.cs" />
+    <Compile Include="ConfigurableWindow\WindowConfigSettings.cs" />
     <Compile Include="Controls\Collections\RadioButtonsList.xaml.cs">
       <DependentUpon>RadioButtonsList.xaml</DependentUpon>
     </Compile>
@@ -348,6 +353,7 @@
     <Compile Include="Interfaces\IHideToTray.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
+    <Compile Include="Interfaces\IShowSearchResults.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlBackground.cs" />
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />

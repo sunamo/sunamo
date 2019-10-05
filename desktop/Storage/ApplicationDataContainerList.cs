@@ -13,6 +13,7 @@ using System.Windows;
 /// </summary>
 public class ApplicationDataContainerList : IEnumerable
 {
+    static Type type = typeof(ApplicationDataContainerList);
     string path = null;
     /// <summary>
     /// In key is name
@@ -28,6 +29,8 @@ public class ApplicationDataContainerList : IEnumerable
 
     public ApplicationDataContainerList(FrameworkElement fw)
     {
+        ThrowExceptions.IsWhitespaceOrNull(type, RH.CallingMethod(), "fw.Name", fw.Name);
+
         Init(AppData.ci.GetFile(AppFolders.Controls, fw.Name));
     }
 
@@ -159,6 +162,22 @@ public class ApplicationDataContainerList : IEnumerable
                     {
                         value = oULong;
                     }
+                    break;
+                case "System.Windows.WindowState":
+                    value = EnumHelper.Parse< WindowState>(third, WindowState.Normal);
+                    break;
+                case "System.Windows.Size":
+                    SunamoSize sunamoSize = new SunamoSize();
+                    sunamoSize.Parse(third);
+                    value = sunamoSize.ToSystemWindows();
+                    break;
+                case "System.Windows.Point":
+                    SunamoPoint sunamoPoint = new SunamoPoint();
+                    sunamoPoint.Parse(third);
+                    value = sunamoPoint.ToSystemWindows();
+                    break;
+                default:
+                    ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
                     break;
             }
             if (value != null)

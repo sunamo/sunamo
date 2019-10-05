@@ -80,4 +80,24 @@ public static string MakeUpTo2NumbersToZero(int p)
         }
         return s;
     }
+
+    public static int GetLowest(List<int> excludedValues, List<int> list)
+    {
+        list.Sort();
+        var vr = list[0];
+        while (excludedValues.Contains(vr))
+        {
+            list.RemoveAt(0);
+            if (list.Count > 0)
+            {
+                vr = list[0];
+            }
+            else
+            {
+                // 
+            }
+        }
+
+        return vr;
+    }
 }
