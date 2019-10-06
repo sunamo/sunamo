@@ -73,6 +73,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ToolbarHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Controls\TwoStatesToggleButtonShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ContainerControls\WindowHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\TemplatesNotCompile\MainWindow_Ctor.cs" />

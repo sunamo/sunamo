@@ -656,6 +656,7 @@ public partial class FS
 
     /// <summary>
     /// Return only subfolder if A3, a1 not include
+    /// Must have backslash on end - is folder
     /// </summary>
     /// <param name="folder"></param>
     /// <param name="masc"></param>
@@ -671,6 +672,8 @@ public partial class FS
         {
             CA.Replace(dirs, folder, string.Empty);
         }
+        // Must have backslash on end - is folder
+        CA.PostfixIfNotEnding("\\", dirs);
         return dirs;
     }
     public static List<string> GetFolders(string folder, SearchOption so)

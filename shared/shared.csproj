@@ -236,13 +236,17 @@
     <Resource Include="Resources2\SystemWindowsControls.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{fb0e4e68-3447-4762-9fbe-8a5762a8a5ef}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\duo\duo.csproj">
+      <Project>{2d474b31-dfc6-4603-9637-33a079ad9bf5}</Project>
+      <Name>duo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{0f7d74db-c73d-4b96-8176-96c0867750d1}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

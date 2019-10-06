@@ -696,6 +696,7 @@ public static partial class SH
         return hasLine;
     }
 
+
     public static string PostfixIfNotEmpty(string text, string postfix)
     {
         if (text.Length != 0)
