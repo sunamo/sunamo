@@ -23,7 +23,23 @@ using System.Text;
     public static readonly Type tUshort = typeof(ushort);
     public static readonly Type tUint = typeof(uint);
     public static readonly Type tUlong = typeof(ulong);
-    
+
+    static Consts()
+    {
+        Consts.Cz = "sunamo.cz";
+        Consts.CzSlash = "sunamo.cz/";
+        Consts.DotCzSlash = ".sunamo.cz/";
+        Consts.DotCz = ".sunamo.cz";
+        Consts.WwwCz = "www.sunamo.cz";
+        Consts.HttpWwwCzSlash = "https://www.sunamo.cz/";
+        Consts.HttpCzSlash = "https://sunamo.cz/";
+        Consts.HttpWwwCz = "https://www.sunamo.cz";
+
+        cssTemplatesSites = new List<string>(CA.ToListString("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
+        BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
+            AllExtensions.bmp,
+            AllExtensions.jpg);
+    }
 
     public static readonly List<Type> allBasicTypes = CA.ToList<Type>(tObject, tString, tStringBuilder, tInt, tDateTime,
         tDouble, tFloat, tChar, tBinary, tByte, tShort, tBinary, tLong, tDecimal, tSbyte, tUshort, tUint, tUlong);
@@ -43,13 +59,6 @@ using System.Text;
         public const string spaces4 = "    ";
         public static List<string> cssTemplatesSites = null;
 
-        static Consts()
-        {
-            cssTemplatesSites = new List<string>(CA.ToListString("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
-        BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
-            AllExtensions.bmp,
-            AllExtensions.jpg);
-    }
 
         public const string nulled = "(null)";
 

@@ -19,6 +19,18 @@ public static partial class SH
 {
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
 
+    public static string PostfixIfNotEmpty(string text, string postfix)
+    {
+        if (text.Length != 0)
+        {
+            if (!text.EndsWith(postfix))
+            {
+                return text + postfix;
+            }
+        }
+        return text;
+    }
+
     public static string TextAfter(string item, string sourceCode)
     {
         var dex = item.IndexOf(sourceCode);
