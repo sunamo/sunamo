@@ -94,7 +94,7 @@ namespace SunamoFtp
             }
             else
             {
-                throw new Exception("Nový druh entry");
+                throw new Exception("Nový druh entry (change msdos directory listing to unix)");
             }
             return isFile;
         }

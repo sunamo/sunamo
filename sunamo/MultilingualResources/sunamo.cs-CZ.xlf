@@ -22,7 +22,7 @@
           <target state="translated">Editace uživatelského účtu</target>
         </trans-unit>
         <trans-unit id="UserDetail" translate="yes" xml:space="preserve">
-          <source></source>
+          <source></source>  
           <target state="translated">Detail uživatele</target>
         </trans-unit>
         <trans-unit id="ErrorSerie255" translate="yes" xml:space="preserve">

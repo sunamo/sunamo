@@ -2069,4 +2069,20 @@ public static bool EqualsOneOfThis(string p1, params string[] p2)
         }
         return false;
     }
+
+/// <summary>
+    /// Tato metoda byla výchozí, jen se jmenovala NullToString
+    /// OrEmpty pro odliseni od metody NullToStringOrEmpty
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string NullToStringOrEmpty(object v)
+    {
+        if (v == null)
+        {
+            return "";
+        }
+        var s = v.ToString();
+        return s;
+    }
 }

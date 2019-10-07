@@ -697,17 +697,7 @@ public static partial class SH
     }
 
 
-    public static string PostfixIfNotEmpty(string text, string postfix)
-    {
-        if (text.Length != 0)
-        {
-            if (!text.EndsWith(postfix))
-            {
-                return text + postfix;
-            }
-        }
-        return text;
-    }
+   
 
     public static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
     {
@@ -1478,22 +1468,6 @@ public static partial class SH
             }
         }
         return nameSolution;
-    }
-
-    /// <summary>
-    /// Tato metoda byla výchozí, jen se jmenovala NullToString
-    /// OrEmpty pro odliseni od metody NullToStringOrEmpty
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static string NullToStringOrEmpty(object v)
-    {
-        if (v == null)
-        {
-            return "";
-        }
-        var s = v.ToString();
-        return s;
     }
 
     /// <summary>
