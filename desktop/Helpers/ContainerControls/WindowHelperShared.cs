@@ -42,4 +42,16 @@ public partial class WindowHelper{
 
         return dump;
     }
+
+internal static void Close(Window w)
+    {
+        try
+        {
+            w.Close();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
 }
