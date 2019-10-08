@@ -37,7 +37,7 @@ public class Exceptions
         return sb.ToString();
     }
 
-    internal static object IsWhitespaceOrNull(string before, string variable, object data)
+    public static object IsWhitespaceOrNull(string before, string variable, object data)
     {
         bool isNull = false;
 
@@ -281,7 +281,7 @@ public class Exceptions
         return null;
     }
 
-    internal static object IsNotNull(string before, string variableName, object variable)
+    public static object IsNotNull(string before, string variableName, object variable)
     {
         if (variable != null)
         {
@@ -368,7 +368,7 @@ public class Exceptions
         return null;
     }
 
-    internal static object FileSystemException(string v, Exception ex)
+    public static object FileSystemException(string v, Exception ex)
     {
         if (ex != null)
         {
@@ -387,7 +387,7 @@ public class Exceptions
         return null;
     }
 
-    internal static object FuncionalityDenied(string before, string description)
+    public static object FuncionalityDenied(string before, string description)
     {
         return CheckBefore(before) + description;
     }

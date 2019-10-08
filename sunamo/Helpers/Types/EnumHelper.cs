@@ -159,6 +159,7 @@ public static partial class EnumHelper
 
     /// <summary>
     /// If A1, will start from [1]. Otherwise from [0]
+    /// Enem values must be castable to int
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="secondIsAll"></param>

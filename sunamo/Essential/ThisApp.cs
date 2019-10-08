@@ -59,6 +59,8 @@ namespace sunamo.Essential
 
         public static readonly bool initialized = false;
         public static string Namespace = "";
+        public static bool aspnet = false;
+
         public static event SetStatusDelegate StatusSetted;
 
         public static void SetStatus(TypeOfMessage st, string status, params object[] args)

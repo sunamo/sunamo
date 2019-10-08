@@ -1,4 +1,5 @@
 ﻿
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -219,12 +220,14 @@ public class ThrowExceptions
     {
         if (exception != null)
         {
-#if ASPNET
-            //if (HttpRuntime.AppDomainAppId != null)
-            //{
+            if (ThisApp.aspnet)
+            {
+                //if (HttpRuntime.AppDomainAppId != null)
+                //{
                 Debugger.Break();
-            //}
-#endif
+                //}
+            }
+
             //DebugLogger.Instance.WriteLine(exception);
             throw new Exception(exception);
             return false;
@@ -292,7 +295,7 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileHasExtensionNotParseableToImageFormat(FullNameOfExecutedCode(type, methodName), fnOri));
     }
 
-    internal static void FileSystemException(Type type, string methodName, Exception ex)
+    public static void FileSystemException(Type type, string methodName, Exception ex)
     {
         ThrowIsNotNull(Exceptions.FileSystemException(FullNameOfExecutedCode(type, methodName), ex));
     }

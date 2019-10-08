@@ -190,7 +190,7 @@ public partial class DictionaryHelper
 
 
 
-internal static List<string> GetListStringFromDictionary(Dictionary<string, string> p)
+public static List<string> GetListStringFromDictionary(Dictionary<string, string> p)
     {
         List<string> vr = new List<string>();
 
@@ -201,5 +201,17 @@ internal static List<string> GetListStringFromDictionary(Dictionary<string, stri
         }
 
         return vr;
+    }
+
+    public static void AddOrSet(Dictionary<string, string> qs, string k, string v)
+    {
+        if (qs.ContainsKey(k))
+        {
+            qs[k] = v;
+        }
+        else
+        {
+            qs.Add(k, v);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 using sunamo;
 /// <summary>
@@ -62,12 +63,14 @@ public partial class QSHelper
     /// <param name = "adresa"></param>
     /// <param name = "p"></param>
     /// <returns></returns>
-    public static string GetQS(string adresa, params object[] p)
+    public static string GetQS(string adresa, params object[] p2)
     {
+        var p = CA.TwoDimensionParamsIntoOne(p2);
+
         StringBuilder sb = new StringBuilder();
         sb.Append(adresa + AllStrings.q);
-        int to = (p.Length / 2) * 2;
-        for (int i = 0; i < p.Length; i++)
+        int to = (p.Count / 2) * 2;
+        for (int i = 0; i < p.Count; i++)
         {
             if (i == to)
             {
@@ -106,6 +109,15 @@ public partial class QSHelper
         }
 
         return args;
+    }
+
+    public static Dictionary<string, string> ParseQs(string qs)
+    {
+        Dictionary<string, string> d = new Dictionary<string, string>();
+
+        var parts = SH.Split(qs, "&", "=");
+
+        return DictionaryHelper.GetDictionaryByKeyValueInString<string>(parts);
     }
 
     public static void GetArray(string[] p, StringBuilder sb, bool uvo)
@@ -150,5 +162,20 @@ public partial class QSHelper
         }
 
         sb.Append(AllStrings.rb);
+    }
+
+    public static Dictionary<string, string> ParseQs(NameValueCollection qs)
+    {
+        Dictionary<string, string> dict = new Dictionary<string, string>();
+
+        foreach (var item in qs)
+        {
+            var key = item.ToString();
+            var v = qs.Get(key);
+
+            dict.Add(key, v);
+        }
+
+        return dict;
     }
 }

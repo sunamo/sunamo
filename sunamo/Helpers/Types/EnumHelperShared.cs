@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 public static partial class EnumHelper
 {
+    /// <summary>
+    /// GET WITHOUT NOPE, USE METHOD WITH MORE ARGS
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static List<T> GetValues<T>()
             where T : struct
     {
@@ -18,12 +23,12 @@ public static partial class EnumHelper
     /// <typeparam name = "T"></typeparam>
     /// <param name = "type"></param>
     /// <returns></returns>
-    public static List<T> GetValues<T>(Type type, bool nope2)
+    public static List<T> GetValues<T>(Type type, bool IncludeNope)
         where T : struct
     {
         var values = Enum.GetValues(type).Cast<T>().ToList();
         T nope;
-        if (!nope2)
+        if (!IncludeNope)
         {
             if (Enum.TryParse<T>(CodeElementsConstants.NopeValue, out nope))
             {

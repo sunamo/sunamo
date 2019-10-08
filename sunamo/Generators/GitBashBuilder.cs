@@ -122,7 +122,7 @@ namespace sunamo.Generators
             }
 
             string pathRepository = pathSearchForFiles;
-            if (solution == Consts.scz)
+            if (solution == Consts.Cz)
             {
                 tlb.Information("Is sunamo.cz");
                 pathSearchForFiles += AllStrings.bs + solution;

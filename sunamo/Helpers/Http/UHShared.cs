@@ -6,12 +6,23 @@ using System.Text.RegularExpressions;
 
 public partial class UH
 {
+
+    public static string AppendHttpsIfNotExists(string p)
+    {
+        string p2 = p;
+        if (!p.StartsWith("https"))
+        {
+            p2 = "https://" + p;
+        }
+
+        return p2;
+    }
     public static string AppendHttpIfNotExists(string p)
     {
         string p2 = p;
         if (!p.StartsWith("http"))
         {
-            p2 = "https://" + p;
+            p2 = "http://" + p;
         }
 
         return p2;

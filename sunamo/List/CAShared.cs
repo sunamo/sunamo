@@ -693,7 +693,7 @@ public static partial class CA
         return t;
     }
 
-    internal static void PostfixIfNotEnding(string v, List<string> dirs)
+    public static void PostfixIfNotEnding(string v, List<string> dirs)
     {
         ChangeContent(dirs, d => SH.PostfixIfNotEmpty(d, v));
     }

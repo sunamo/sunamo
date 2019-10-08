@@ -39,7 +39,7 @@ public partial class WindowHelper
         }
     }
 
-    internal static void Close(Window w)
+    public static void Close(Window w)
     {
         try
         {

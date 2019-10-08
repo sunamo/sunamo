@@ -64,6 +64,9 @@ using System.Text;
 
         public const string HttpLocalhostSlash = "https://localhost" + "/";
         public const string HttpSunamoCzSlash = "https://www.sunamo.cz" + "/";
+    /// <summary>
+    /// localhost
+    /// </summary>
         public readonly static string localhost = "localhost";
 
         public static string HttpWwwCzSlash = "https://www.sunamo.cz" + "/";
@@ -73,7 +76,7 @@ using System.Text;
 
     
 
-    public const string scz = "sunamo.cz";
+    
 
         public static string Cz = "https://sunamo.cz";
         public static string WwwCz = "https://www.sunamo.cz";
@@ -84,7 +87,8 @@ using System.Text;
 
     public static string http = "http://";
     public static string https = "https://";
-        public const double zeroDouble = 0;
+    
+    public const double zeroDouble = 0;
         public const int zeroInt = 0;
         public const float zeroFloat = 0;
 
