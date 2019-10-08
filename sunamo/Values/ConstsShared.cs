@@ -71,6 +71,8 @@ using System.Text;
         public static string HttpWwwCz = "https://www.sunamo.cz";
     public const string httpLocalhost = "https://localhost/";
 
+    
+
     public const string scz = "sunamo.cz";
 
         public static string Cz = "https://sunamo.cz";
