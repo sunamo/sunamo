@@ -190,6 +190,17 @@ namespace sunamo
         }
 
         /// <summary>
+        /// Replace without feat etc
+        /// </summary>
+        public string RemixOnlyContent()
+        {
+            var r = Remix();
+            r = r.Replace("Feat.", "").Replace("Featuring", "").Replace("Ft.", "");
+            r = r.Replace("feat.", "").Replace("featuring", "").Replace("ft.", "");
+            return r;
+        }
+
+        /// <summary>
         /// A1 pSn = count of Same
         /// A2 pRn = count of Rozdílný/different (sum of keep from both collection)
         /// </summary>
