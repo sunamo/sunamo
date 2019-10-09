@@ -64,4 +64,9 @@ public partial class DTHelper
     {
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }
+
+    public static DateTime OnlyDateProperties(DateTime p)
+    {
+        return new DateTime(p.Year, p.Month, p.Day);
+    }
 }

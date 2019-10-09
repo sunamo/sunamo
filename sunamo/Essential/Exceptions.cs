@@ -57,6 +57,7 @@ public class Exceptions
         return null;
     }
 
+    
     public static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
     {
         if (!en.ContainsKey(key))
@@ -105,6 +106,16 @@ public class Exceptions
         }
         return null;
     }
+
+    internal static string DirectoryExists(string before, string fulLPath)
+    {
+        if (FS.ExistsDirectory(fulLPath))
+        {
+            return null;
+        }
+        return CheckBefore(before) + " " + "Doesn't exists" + ": " + fulLPath;
+    }
+
 
     public static string FileExists(string before, string fulLPath)
     {

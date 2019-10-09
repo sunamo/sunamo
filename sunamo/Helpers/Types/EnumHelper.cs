@@ -116,7 +116,7 @@ public static partial class EnumHelper
     }
 
     /// <summary>
-    /// ignore case
+    /// ignore case. 
     /// A1 must be, default(T) cant be returned because in comparing default(T) is always true for any value of T
     /// </summary>
     /// <typeparam name = "T"></typeparam>

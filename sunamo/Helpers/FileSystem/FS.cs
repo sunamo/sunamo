@@ -16,6 +16,48 @@ using sunamo;
 
 public partial class FS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="item2"></param>
+    /// <param name="exts"></param>
+    /// <returns></returns>
+    public static string[] GetFilesOfExtensions(string item2, SearchOption so, params string[] exts)
+    {
+        List<string> vr = new List<string>();
+        foreach (string item in exts)
+        {
+            vr.AddRange(FS.GetFiles(item2, AllStrings.asterisk + item, so));
+        }
+        return vr.ToArray();
+    }
+
+    /// <summary>
+    /// Get path A2/name folder of file A1/name A1
+    /// 
+    /// </summary>
+    /// <param name="var"></param>
+    /// <param name="zmenseno"></param>
+    /// <returns></returns>
+    public static string PlaceInFolder(string var, string zmenseno)
+    {
+        //return Slozka.ci.PridejNadslozku(var, zmenseno);
+        string nad = Path.GetDirectoryName(var);
+        string naz = FS.GetFileName(nad);
+        return FS.Combine(zmenseno, FS.Combine(naz, FS.GetFileName(var)));
+    }
+
+    public static FileInfo[] GetFileInfosOfExtensions(string item2, SearchOption so, params string[] exts)
+    {
+        List<FileInfo> vr = new List<FileInfo>();
+        DirectoryInfo di = new DirectoryInfo(item2);
+        foreach (string item in exts)
+        {
+            vr.AddRange(di.GetFiles(AllStrings.asterisk + item, so));
+        }
+        return vr.ToArray();
+    }
+
     public static string GetActualDateTime()
     {
         DateTime dt = DateTime.Now;

@@ -141,7 +141,8 @@ namespace sunamo.Generators.Text
         }
 
         /// <summary>
-        /// Is is in use List, join it.
+        /// If is use List, join it with NL.
+        /// Otherwise return sb
         /// </summary>
         /// <returns></returns>
         public override string ToString()

@@ -38,7 +38,8 @@ using System.Text;
         cssTemplatesSites = new List<string>(CA.ToListString("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
         BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
             AllExtensions.bmp,
-            AllExtensions.jpg);
+            AllExtensions.jpg,
+            AllExtensions.jpeg);
     }
 
     public static readonly List<Type> allBasicTypes = CA.ToList<Type>(tObject, tString, tStringBuilder, tInt, tDateTime,

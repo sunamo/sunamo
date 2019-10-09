@@ -54,6 +54,11 @@ public partial class FS
         s_invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.slash);
     }
 
+    public static string GetTempFilePath()
+    {
+        return FS.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName()); 
+    }
+
     public static string MakeUncLongPath(string path)
     {
         return MakeUncLongPath(ref path);
@@ -626,7 +631,7 @@ public partial class FS
     /// <summary>
     /// No direct edit
     /// Returns with extension
-    /// POZOR: Na rozdíl od stejné metody v swf tato metoda vrací úplně nové pole a nemodifikuje A1
+    /// POZOR: Na rozdíl od stejné metody v sunamo tato metoda vrací úplně nové pole a nemodifikuje A1
     /// </summary>
     /// <param name="files"></param>
     /// <returns></returns>
@@ -1156,6 +1161,7 @@ public partial class FS
     /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
     /// A1 have to be with ending backslash
     /// A4 must have underscore otherwise is suggested while I try type true
+    /// A2 can be delimited by semicolon
     /// </summary>
     /// <param name="folder"></param>
     /// <param name="mask"></param>
@@ -1164,15 +1170,31 @@ public partial class FS
     public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
     {
         List<string> list = null;
-        try
+        if (mask.Contains(AllStrings.sc))
         {
-            list = Directory.GetFiles(folder, mask, searchOption).ToList();
-            
+            list = new List<string>();
+            var masces = SH.Split(mask, AllStrings.sc);
+
+            foreach (var item in masces)
+            {
+                var masc = FS.MascFromExtension(item);
+                list.AddRange(Directory.GetFiles(folder, masc, searchOption));
+            }
         }
-        catch (Exception ex)
+        else
         {
-            ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions( ex));
+            string masc = null;
+            try
+            {
+                masc = FS.MascFromExtension(mask);
+                list = Directory.GetFiles(folder, masc, searchOption).ToList();
+            }
+            catch (Exception ex)
+            {
+                ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions(ex));
+            }
         }
+        
 
         CA.ChangeContent(list, d => SH.FirstCharLower(d));
 

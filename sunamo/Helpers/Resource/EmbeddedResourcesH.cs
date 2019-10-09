@@ -85,7 +85,7 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     }
 
     /// <summary>
-    /// 
+    /// Resources/tidy_config.txt (no assembly)
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>

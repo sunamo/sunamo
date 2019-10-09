@@ -14,13 +14,8 @@ using sunamo.Interfaces;
 public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {
     ConfigurableWindowWrapper configurableWindowWrapper = null;
-    #region Implicitly in Window
-    dynamic Dispatcher = null;
-    TextBlock tbLastErrorOrWarning;
-    TextBlock tbLastOtherMessage;
-    string Title = null;
-    #endregion
-    dynamic Instance = null;
+    
+    
     ApplicationDataContainer data = null;
     Mode mode = Mode.Empty;
     EmptyUC emptyUC = null;
@@ -33,6 +28,13 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     #region MyRegion
     Grid grid;
     MenuItem miUC;
+    dynamic Instance = null;
+    #region Implicitly in Window
+    dynamic Dispatcher = null;
+    TextBlock tbLastErrorOrWarning;
+    TextBlock tbLastOtherMessage;
+    string Title = null;
+    #endregion
 
     public bool CancelClosing { get; set; }
     public WindowWithUserControl windowWithUserControl { get; set; }

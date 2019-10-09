@@ -1,12 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="TidyManaged">
-      <HintPath>..\dll\TidyManaged.dll</HintPath>
+    <None Remove="libtidy.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Html2Xhtml" Version="1.1.2.4" />
+    <PackageReference Include="TidyHtml5Managed" Version="1.1.0" />
+    <PackageReference Include="TidyHtml5ManagedRepack" Version="1.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\shared\shared.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libtidy.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Management.Automation">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
 

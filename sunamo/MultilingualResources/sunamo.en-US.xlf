@@ -1191,7 +1191,7 @@
         </trans-unit>
         <trans-unit id="App" translate="yes" xml:space="preserve">
           <source />
-          <target state="translated">../App/</target>
+          <target state="translated">App/</target>
         </trans-unit>
         <trans-unit id="Download" translate="yes" xml:space="preserve">
           <source />

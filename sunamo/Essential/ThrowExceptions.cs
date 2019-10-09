@@ -24,6 +24,18 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
+    /// <summary>
+    /// Return whether directory exists
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="v"></param>
+    /// <param name="photosPath"></param>
+    /// <returns></returns>
+    public static bool DirectoryExists(Type type, string methodName, string path)
+    {
+        return ThrowIsNotNull(Exceptions.DirectoryExists(FullNameOfExecutedCode(type, methodName, true), path));
+    }
+
     public static void IsWhitespaceOrNull(Type type, string methodName, string variable, object data)
     {
         ThrowIsNotNull(Exceptions.IsWhitespaceOrNull(FullNameOfExecutedCode(type, methodName, true), variable, data));
@@ -79,6 +91,8 @@ public class ThrowExceptions
     {
         DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
     }
+
+    
 
     public static void IsNotAllowed(Type type, string methodName, string what)
     {

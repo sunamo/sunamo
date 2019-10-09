@@ -54,7 +54,16 @@ public static partial class BitmapImageHelper
 
     public static ImageSource Uri(Uri uri)
     {
-        BitmapImage bi = new BitmapImage(uri);
+        BitmapImage bi = null;
+        try
+        {
+            bi = new BitmapImage(uri);
+        }
+        catch (Exception)
+        {
+            // Image was damaged
+            
+        }
         return bi;
     }
 

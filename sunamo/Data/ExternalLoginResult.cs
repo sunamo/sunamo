@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Jakékoliv změny v této složce musíš projevit i v stejně pojmenované třídě v swf projektu
+/// Jakékoliv změny v této složce musíš projevit i v stejně pojmenované třídě v sunamo projektu
 /// </summary>
 public class ExternalLoginResult
 {

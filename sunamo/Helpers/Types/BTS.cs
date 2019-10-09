@@ -24,6 +24,13 @@ public static partial class BTS
         return stream;
     }
 
+    public static string StringFromStream(Stream stream)
+    {
+        StreamReader reader = new StreamReader(stream);
+        string text = reader.ReadToEnd();
+        return text;
+    }
+
     #region Parse*
     public static bool lastBool = false;
 

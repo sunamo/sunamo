@@ -87,6 +87,7 @@
     <Compile Include="PInvoke\W32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ClipboardHelperWin.cs" />
+    <Compile Include="TidyExeHelper.cs" />
     <Compile Include="WindowsOSHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +100,7 @@
     <Content Include="Interop.IWshRuntimeLibrary.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\tidy_config.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">
