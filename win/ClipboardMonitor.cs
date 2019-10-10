@@ -101,18 +101,40 @@ namespace sunamo.Clipboard
 
         private void CopyToClipboard()
         {
-            if (ClipboardContentChanged != null)
+            last = ClipboardHelper.GetText();
+
+            //if (ClipboardContentChanged != null)
+            //{
+            //    // Will be add all lines again if wont check for permanently block
+            //    //ClipboardContentChanged();
+
+            //}
+
+            // Something copied to clipboard but still have Empty
+            if (actionWithString != null)
             {
-                // Will be add all lines again if wont check for permanently block
-                ClipboardContentChanged();
+                actionWithString(last);
             }
             
-            last = ClipboardHelper.GetText();
         }
 
+
+        Action<string> actionWithString;
+        //Action<string> action;
+
         /// <summary>
-        /// Occurs when the clipboard content changes.
+        /// Must be method instead of event
+        /// When I was attaching event more times in different UC, handler method would be calling times as registered in one UC
         /// </summary>
-        public event VoidVoid ClipboardContentChanged;
-	}
+        /// <param name="a"></param>
+        public void SetHandler(Action<string> a)
+        {
+            actionWithString = a;
+        }
+
+        //public void SetHandler(Action a)
+        //{
+        //    action = a;
+        //}
+    }
 }
