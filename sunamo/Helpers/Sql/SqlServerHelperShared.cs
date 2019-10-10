@@ -11,13 +11,23 @@ public partial class SqlServerHelper
         StringBuilder sb = new StringBuilder();
         foreach (var item in maybeUnicode)
         {
-            if (s_availableCharsInVarCharWithoutDiacriticLetters.Contains(item) || SH.diacritic.IndexOf(item) != -1)
+            var b1 = s_availableCharsInVarCharWithoutDiacriticLetters.Contains(item);
+            var b2 = SH.diacritic.IndexOf(item) != -1;
+
+            if (b1 || b2)
             {
                 sb.Append(item);
             }
             else
+                
             {
-                sb.Append(SH.TextWithoutDiacritic(item.ToString()));
+                string before = item.ToString();
+                var after = SH.TextWithoutDiacritic(before);
+                if (before != after)
+                {
+                    sb.Append();
+                }
+                
             }
         }
 
