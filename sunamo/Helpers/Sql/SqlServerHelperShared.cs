@@ -19,13 +19,12 @@ public partial class SqlServerHelper
                 sb.Append(item);
             }
             else
-                
             {
                 string before = item.ToString();
                 var after = SH.TextWithoutDiacritic(before);
                 if (before != after)
                 {
-                    sb.Append();
+                    sb.Append(after);
                 }
                 
             }
