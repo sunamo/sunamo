@@ -542,6 +542,8 @@ public static partial class SH
 
     private static bool s_initDiactitic = false;
 
+
+
     /// <summary>
     /// Another method is RemoveDiacritics
     /// G text bez dia A1.

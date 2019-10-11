@@ -21,8 +21,10 @@ public partial class SqlServerHelper
             else
             {
                 string before = item.ToString();
+                // Is use Diacritics package which allow pass only string, not char
                 var after = SH.TextWithoutDiacritic(before);
-                if (before != after)
+                // if wont be here !char.IsWhiteSpace(item), it will strip newlines
+                if (before != after || char.IsWhiteSpace(item))
                 {
                     sb.Append(after);
                 }
@@ -30,6 +32,7 @@ public partial class SqlServerHelper
             }
         }
 
-        return SH.ReplaceAll(sb.ToString(), AllStrings.space, AllStrings.doubleSpace);
+        var vr = SH.ReplaceAll(sb.ToString(), AllStrings.space, AllStrings.doubleSpace);
+        return vr;
     }
 }

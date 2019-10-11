@@ -441,9 +441,12 @@ public partial class FS
             badFormat = true;
         }
 
-        if (argValue[1] != '\\' && argValue[2] != '\\')
+        if (argValue.Length > 2)
         {
-            badFormat = true;
+            if (argValue[1] != '\\' && argValue[2] != '\\')
+            {
+                badFormat = true;
+            }
         }
 
         return !badFormat;
