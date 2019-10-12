@@ -64,6 +64,11 @@ namespace DocArch.SqLite
             return GetDataTable("SELECT * FROM" + " " + p);
         }
 
+        public List<string> AllTables()
+        {
+            return GetValuesAllRowsString(@"SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY 1");
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -143,6 +148,7 @@ namespace DocArch.SqLite
             }
             return vr;
         }
+
 
         private List<string> GetValuesAllRowsString(string sql)
         {

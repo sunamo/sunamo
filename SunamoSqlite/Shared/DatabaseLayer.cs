@@ -19,23 +19,42 @@ public class DatabaseLayer
     {
         try
         {
-            // Commented, when was AllProjectSearch.db open in release, in debug throw IOException
-            //SQLiteConnection.CreateFile(dbPath);
-            //try
-            //{
-            //    DatabaseLayer.dbFile = dbPath;
-            //}
-            //catch (Exception ex)
-            //{
 
-            //    ThisApp.SetStatus(TypeOfMessage.Error, Exceptions.TextOfExceptions(ex));
-            //}
-            //DatabaseLayer.LoadNewConnection();
-            //SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
+            SQLiteConnection.CreateFile(dbPath);
+            Load(dbPath);
         }
         catch (Exception ex)
         {
         }
+    }
+
+    public static void Load(string dbPath)
+    {
+        try
+        {
+            DatabaseLayer.dbFile = dbPath;
+            DatabaseLayer.LoadNewConnection();
+            SloupecDBBase<SloupecDB, TypeAffinity>.databaseLayer = new DatabaseLayerInstance();
+            // only to read
+            //DatabaseLayer.conn.AutoCommit = true;
+        }
+        catch (Exception ex)
+        {
+
+            ThisApp.SetStatus(TypeOfMessage.Error, Exceptions.TextOfExceptions(ex));
+        }
+        
+    }
+
+    public static bool IsSqlite(string path)
+    {
+        byte[] bytes = new byte[17];
+        using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+        {
+            fs.Read(bytes, 0, 16);
+        }
+        string chkStr = System.Text.ASCIIEncoding.ASCII.GetString(bytes);
+        return chkStr.Contains("SQLite format");
     }
 
     /// <summary>
