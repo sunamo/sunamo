@@ -1157,6 +1157,12 @@ public static partial class CA
         return o.ToArray();
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="sf"></param>
+    /// <param name="toTrim"></param>
+    /// <returns></returns>
     public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
     {
         for (int i = 0; i < sf.Count; i++)
@@ -1374,5 +1380,76 @@ public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
 public static string JoinForGoogleSheetRow(IEnumerable en)
     {
         return SH.Join(AllChars.tab, en);
+    }
+
+public static bool HasNullValue(List<string> idPhotos)
+    {
+        for (int i = 0; i < idPhotos.Count; i++)
+        {
+            if (idPhotos[i] == null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+/// <summary>
+    /// Create array with A2 elements, otherwise return null. If any of element has not int value, return also null.
+    /// </summary>
+    /// <param name="altitudes"></param>
+    /// <param name="requiredLength"></param>
+    /// <returns></returns>
+    public static List<int> ToIntMinRequiredLength(IEnumerable enumerable, int requiredLength)
+    {
+        if (enumerable.Count() < requiredLength)
+        {
+            return null;
+        }
+
+        List<int> result = new List<int>();
+        int y = 0;
+        foreach (var item in enumerable)
+        {
+            if (int.TryParse(item.ToString(), out y))
+            {
+                result.Add(y);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        return result;
+    }
+
+/// <summary>
+    /// Index A2 a další bude již v poli A4
+    /// </summary>
+    /// <param name="p1"></param>
+    /// <param name="p2"></param>
+    /// <param name="before"></param>
+    /// <param name="after"></param>
+    public static void Split<T>(T[] p1, int p2, out T[] before, out T[] after)
+    {
+        before = new T[p2];
+        int p1l = p1.Length;
+        after = new T[p1l - p2];
+        bool b = true;
+        for (int i = 0; i < p1l; i++)
+        {
+            if (i == p2)
+            {
+                b = false;
+            }
+            if (b)
+            {
+                before[i] = p1[i];
+            }
+            else
+            {
+                after[i] = p1[i - p2];
+            }
+        }
     }
 }

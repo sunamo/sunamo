@@ -131,23 +131,6 @@ public partial class XHelper
         }
     }
 
-    /// <summary>
-    /// Při nenalezení vrací null
-    /// </summary>
-    /// <param name = "item"></param>
-    /// <param name = "attr"></param>
-    /// <returns></returns>
-    public static string Attr(XElement item, string attr)
-    {
-        XAttribute xa = item.Attribute(XName.Get(attr));
-        if (xa != null)
-        {
-            return xa.Value;
-        }
-
-        return null;
-    }
-
     public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
     {
         List<XElement> vr = new List<XElement>();

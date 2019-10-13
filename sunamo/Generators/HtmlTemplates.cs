@@ -2,12 +2,6 @@
 
 public static partial class HtmlTemplates
 {
-    public static string HiddenField(string id, string value)
-    {
-        string format = "<input type='hidden' id=" + "'" + id + "' " + "value=" + "'" + value + "' />";
-        return format;
-        //HtmlInjection.InjectInternalToHead(page, format);
-    }
 
     public const string htmlStartTitle = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"https://www.w3.org/1999/xhtml\" ><head><title>";
     /// <summary>

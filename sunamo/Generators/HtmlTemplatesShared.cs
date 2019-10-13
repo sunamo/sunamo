@@ -10,4 +10,11 @@ public static partial class HtmlTemplates
     {
         return $"<img src=\"{src}\" />";
     }
+
+public static string HiddenField(string id, string value)
+    {
+        string format = "<input type='hidden' id=" + "'" + id + "' " + "value=" + "'" + value + "' />";
+        return format;
+        //HtmlInjection.InjectInternalToHead(page, format);
+    }
 }

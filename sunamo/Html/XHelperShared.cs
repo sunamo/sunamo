@@ -41,4 +41,21 @@ public static Dictionary<string, string> XmlNamespaces(XmlNamespaceManager nsmgr
 
         return ns;
     }
+
+/// <summary>
+    /// Při nenalezení vrací null
+    /// </summary>
+    /// <param name = "item"></param>
+    /// <param name = "attr"></param>
+    /// <returns></returns>
+    public static string Attr(XElement item, string attr)
+    {
+        XAttribute xa = item.Attribute(XName.Get(attr));
+        if (xa != null)
+        {
+            return xa.Value;
+        }
+
+        return null;
+    }
 }

@@ -122,17 +122,6 @@ public partial class DictionaryHelper
         }
     }
 
-    public static List<string> GetListStringFromDictionaryIntInt(IOrderedEnumerable<KeyValuePair<int, int>> d)
-    {
-        List<string> vr = new List<string>(d.Count());
-        foreach (var item in d)
-        {
-            vr.Add(item.Value.ToString());
-        }
-
-        return vr;
-    }
-
     public static List<string> GetListStringFromDictionaryDateTimeInt(IOrderedEnumerable<KeyValuePair<System.DateTime, int>> d)
     {
         List<string> vr = new List<string>(d.Count());

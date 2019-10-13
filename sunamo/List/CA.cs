@@ -535,18 +535,6 @@ public static partial class CA
         }
     }
 
-    public static bool HasNullValue(List<string> idPhotos)
-    {
-        for (int i = 0; i < idPhotos.Count; i++)
-        {
-            if (idPhotos[i] == null)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static bool HasOtherValueThanNull(List<string> idPhotos)
     {
         foreach (var item in idPhotos)
@@ -754,36 +742,6 @@ public static partial class CA
             }
         }
         return vr;
-    }
-
-    /// <summary>
-    /// Index A2 a další bude již v poli A4
-    /// </summary>
-    /// <param name="p1"></param>
-    /// <param name="p2"></param>
-    /// <param name="before"></param>
-    /// <param name="after"></param>
-    public static void Split<T>(T[] p1, int p2, out T[] before, out T[] after)
-    {
-        before = new T[p2];
-        int p1l = p1.Length;
-        after = new T[p1l - p2];
-        bool b = true;
-        for (int i = 0; i < p1l; i++)
-        {
-            if (i == p2)
-            {
-                b = false;
-            }
-            if (b)
-            {
-                before[i] = p1[i];
-            }
-            else
-            {
-                after[i] = p1[i - p2];
-            }
-        }
     }
 
     public static T GetElementActualOrBefore<T>(IList<T> tabItems, int indexClosedTabItem)

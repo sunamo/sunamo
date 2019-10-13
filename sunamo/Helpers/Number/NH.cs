@@ -172,17 +172,6 @@ public static partial class NH
         return vr;
     }
 
-    public static List<byte> GenerateIntervalByte(byte od, byte to)
-    {
-        List<byte> vr = new List<byte>();
-        for (byte i = od; i < to; i++)
-        {
-            vr.Add(i);
-        }
-        vr.Add(to);
-        return vr;
-    }
-
     public static double ReturnTheNearestSmallIntegerNumber(double d)
     {
         return (double)Convert.ToInt32(d);

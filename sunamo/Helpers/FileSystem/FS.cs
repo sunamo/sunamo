@@ -1254,68 +1254,6 @@ public partial class FS
     }
 
     /// <summary>
-    /// Pokusí se max. 10x smazat soubor A1, pokud se nepodaří, GF, jinak GT
-    /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    public static bool TryDeleteWithRepetition(string item)
-    {
-        int pokusyOSmazani = 0;
-        while (true)
-        {
-            try
-            {
-                File.Delete(item);
-                return true;
-            }
-            catch
-            {
-                pokusyOSmazani++;
-                if (pokusyOSmazani == 9)
-                {
-                    return false;
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    public static bool TryDeleteFile(string item)
-    {
-        // TODO: To all code message logging as here
-
-        try
-        {
-            File.Delete(item);
-            return true;
-        }
-        catch
-        {
-            ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted" + ": " + item);
-            return false;
-        }
-    }
-
-    public static bool TryDeleteFile(string item, out string message)
-    {
-        message = null;
-        try
-        {
-            File.Delete(item);
-            return true;
-        }
-        catch (Exception ex)
-        {
-            message = ex.Message;
-            return false;
-        }
-    }
-
-    /// <summary>
     /// Vrátí cestu a název souboru bez ext a ext
     /// All returned is normal case
     /// </summary>
@@ -1374,36 +1312,6 @@ public partial class FS
         ext = FS.GetExtension(file);
     }
 
-    /// <summary>
-    /// Get number higher by one from the number filenames with highest value (as 3.txt)
-    /// </summary>
-    /// <param name="slozka"></param>
-    /// <param name="fn"></param>
-    /// <param name="ext"></param>
-    /// <returns></returns>
-    public static string GetFileSeries(string slozka, string fn, string ext)
-    {
-        int dalsi = 0;
-        var soubory = FS.GetFiles(slozka);
-        foreach (string item in soubory)
-        {
-            int p;
-            string withoutFn = SH.ReplaceOnce(item, fn, "");
-            string withoutFnAndExt = SH.ReplaceOnce(withoutFn, ext, "");
-            if (int.TryParse(FS.GetFileNameWithoutExtension(withoutFnAndExt), out p))
-            {
-                if (p > dalsi)
-                {
-                    dalsi = p;
-                }
-            }
-        }
-
-        dalsi++;
-
-        return FS.Combine(slozka, fn + AllStrings.us + dalsi + ext);
-    }
-
     public static void CreateDirectoryIfNotExists(string p)
     {
         MakeUncLongPath(ref p);
@@ -1442,19 +1350,6 @@ public partial class FS
             ds[i] = appendToStart + FS.GetFileNameWithoutExtension(fullPaths[i]);
         }
         return ds;
-    }
-
-    public static bool TryDeleteDirectory(string v)
-    {
-        try
-        {
-            Directory.Delete(v, true);
-            return true;
-        }
-        catch (Exception ex)
-        {
-            return false;
-        }
     }
 
     /// <summary>

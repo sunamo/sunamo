@@ -461,27 +461,6 @@ public partial class DTHelperMulti
         return s;
     }
 
-    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
-    {
-        int day = (int)dateTime.DayOfWeek;
-        if (day == 0)
-        {
-            day = 6;
-        }
-        else
-        {
-            day--;
-        }
-
-        string dayOfWeek = DTConstants.daysInWeekEN[day];
-        if (l == Langs.cs)
-        {
-            dayOfWeek = DTConstants.daysInWeekCS[day];
-        }
-
-        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
-    }
-
     /// <summary>
     /// Vyparsuje datum ve formátu měsíc/den/rok
     /// </summary>

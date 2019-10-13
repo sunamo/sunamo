@@ -1,4 +1,5 @@
-﻿using sunamo.Constants;
+﻿using ResourcesShared;
+using sunamo.Constants;
 using sunamo.Properties;
 using System;
 
@@ -61,7 +62,7 @@ public class HtmlGeneratorExtended : HtmlGenerator
 
     public void BoilerplateStart(string css, bool directInject)
     {
-        WriteRaw(Resources.Html5BoilerplateStart);
+        WriteRaw(ResourcesDuo.Html5BoilerplateStart);
         if (directInject)
         {
             WriteTagWithAttr(HtmlTags.style, HtmlAttrs.type, HtmlAttrValue.textCss);

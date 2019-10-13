@@ -18,18 +18,6 @@ public partial class DTHelperCode
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
     }
 
-    public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
-    {
-        if (!v.Contains(AllStrings.dash))
-        {
-            return dtMinVal;
-        }
-        //2015-09-03T21:01
-        var sp = SH.Split(v, AllChars.dash, 'T', AllChars.colon);
-        var dd = CA.ToInt(sp);
-        return new DateTime(dd[0], dd[1], dd[2], dd[3], dd[4], 0);
-    }
-
     /// <summary>
     /// Tato metoda bude vždy bezčasová! Proto má v názvu jen Date.
     /// Input v názvu znamená že výstup z této metody budu vkládat do inputů, nikoliv nic se vstupem A1

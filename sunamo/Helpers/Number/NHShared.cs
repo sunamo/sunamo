@@ -100,4 +100,15 @@ public static string MakeUpTo2NumbersToZero(int p)
 
         return vr;
     }
+
+public static List<byte> GenerateIntervalByte(byte od, byte to)
+    {
+        List<byte> vr = new List<byte>();
+        for (byte i = od; i < to; i++)
+        {
+            vr.Add(i);
+        }
+        vr.Add(to);
+        return vr;
+    }
 }

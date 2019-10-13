@@ -8,3 +8,9 @@ namespace sunamo.Html
     {
     }
 }
+namespace shared.Helpers
+{
+    public class _ns
+    {
+    }
+}

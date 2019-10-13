@@ -320,4 +320,9 @@ public partial class DTHelperCs
             return "Nezn\u00E1m\u00FD v\u011Bk";
         }
     }
+
+public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
+    {
+        return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
+    }
 }

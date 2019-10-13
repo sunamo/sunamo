@@ -42,4 +42,32 @@ public partial class DTHelperGeneral
 
         return mal * DTConstants.secondsInDay;
     }
+
+public static string TimeInMsToSeconds(Stopwatch p)
+    {
+        p.Stop();
+        string d = ((double)p.ElapsedMilliseconds / 1000).ToString();
+        if (d.Length > 4)
+        {
+            d = d.Substring(0, 4);
+        }
+        return d + "s";
+        //return Math.Round(((double)p.ElapsedMilliseconds / 999), 2).ToString() + "s";
+    }
+
+public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
+    {
+        byte b = CalculateAge(bday, dtMinVal);
+        if (b == 255)
+        {
+            return "";
+        }
+        return b.ToString();
+    }
+
+public static DateTime TodayPlusActualHour()
+    {
+        DateTime dt = DateTime.Today;
+        return dt.AddHours(DateTime.Now.Hour);
+    }
 }

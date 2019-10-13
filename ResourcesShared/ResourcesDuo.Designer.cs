@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace sunamo.Properties {
+namespace ResourcesShared {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace sunamo.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class ResourcesDuo {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ResourcesDuo() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace sunamo.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("sunamo.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ResourcesShared.ResourcesDuo", typeof(ResourcesDuo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,44 @@ namespace sunamo.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to &lt;/body&gt;
+        ///&lt;/html&gt;.
         /// </summary>
-        public static byte[] sunamo_cs_CZ {
+        public static string Html5BoilerplateEnd {
             get {
-                object obj = ResourceManager.GetObject("sunamo_cs_CZ", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("Html5BoilerplateEnd", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to &lt;/head&gt;
+        ///    &lt;body&gt;
+        ///        &lt;!--[if lt IE 7]&gt;
+        ///            &lt;p class=&quot;browsehappy&quot;&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href=&quot;#&quot;&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
+        ///        &lt;![endif]--&gt;.
         /// </summary>
-        public static byte[] sunamo_en_US {
+        public static string Html5BoilerplateMiddle {
             get {
-                object obj = ResourceManager.GetObject("sunamo_en_US", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("Html5BoilerplateMiddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;!--[if lt IE 7]&gt;      &lt;html class=&quot;no-js lt-ie9 lt-ie8 lt-ie7&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 7]&gt;         &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if IE 8]&gt;         &lt;html class=&quot;no-js lt-ie9&quot;&gt; &lt;![endif]--&gt;
+        ///&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class=&quot;no-js&quot;&gt; &lt;!--&lt;![endif]--&gt;
+        ///    &lt;head&gt;
+        ///        &lt;meta charset=&quot;utf-8&quot;&gt;
+        ///        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+        ///        &lt;title&gt;&lt;/title&gt;
+        ///        &lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
+        ///        &lt;meta name=&quot;viewport&quot; content=&quot;width=devi [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Html5BoilerplateStart {
+            get {
+                return ResourceManager.GetString("Html5BoilerplateStart", resourceCulture);
             }
         }
     }

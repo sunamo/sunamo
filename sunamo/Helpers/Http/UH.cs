@@ -229,19 +229,7 @@ public partial class UH
         return t;
     }
 
-    public static string GetProtocolString(Uri uri)
-    {
-        return uri.Scheme + "://";
-    }
 
-    /// <summary>
-    /// Vr�t� cel� QS v�etn� po��te�n�ho otazn�ku
-    /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� ?code=xer4o51s0aavpdmndwrmdbd1
-    /// </summary>
-    public static string GetQueryAsHttpRequest(Uri uri)
-    {
-        return uri.Query;
-    }
 
     public static string RemoveHostAndProtocol(Uri uri)
     {

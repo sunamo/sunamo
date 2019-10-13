@@ -1491,98 +1491,6 @@ public static partial class SH
     }
 
     /// <summary>
-    /// V A2 vrátí jednotlivé znaky z A1, v A3 bude false, pokud znak v A2 bude delimiter, jinak True
-    /// </summary>
-    /// <param name="what"></param>
-    /// <param name="chs"></param>
-    /// <param name="bs"></param>
-    /// <param name="reverse"></param>
-    /// <param name="deli"></param>
-    public static void SplitCustom(string what, out List<char> chs, out List<bool> bs, out List<int> delimitersIndexes, params char[] deli)
-    {
-        chs = new List<char>(what.Length);
-        bs = new List<bool>(what.Length);
-        delimitersIndexes = new List<int>(what.Length / 6);
-        for (int i = 0; i < what.Length; i++)
-        {
-            bool isNotDeli = true;
-            var ch = what[i];
-            foreach (var item in deli)
-            {
-                if (item == ch)
-                {
-                    delimitersIndexes.Add(i);
-                    isNotDeli = false;
-                    break;
-                }
-            }
-            chs.Add(ch);
-            bs.Add(isNotDeli);
-        }
-        delimitersIndexes.Reverse();
-    }
-
-    /// <summary>
-    /// FUNGUJE ale může být pomalá, snaž se využívat co nejméně
-    /// Pokud někde bude více delimiterů těsně za sebou, ve výsledku toto nebude, bude tam jen poslední delimiter v té řadě příklad z 1,.Par při delimiteru , a . bude 1.Par
-    /// </summary>
-    /// <param name="what"></param>
-    /// <param name="parts"></param>
-    /// <param name="deli"></param>
-    /// <returns></returns>
-    public static string[] SplitToPartsFromEnd(string what, int parts, params char[] deli)
-    {
-        List<char> chs = null;
-        List<bool> bw = null;
-        List<int> delimitersIndexes = null;
-        SH.SplitCustom(what, out chs, out bw, out delimitersIndexes, deli);
-
-        List<string> vr = new List<string>(parts);
-        StringBuilder sb = new StringBuilder();
-        for (int i = chs.Count - 1; i >= 0; i--)
-        {
-            if (!bw[i])
-            {
-                while (i != 0 && !bw[i - 1])
-                {
-                    i--;
-                }
-                string d = sb.ToString();
-                sb.Clear();
-                if (d != "")
-                {
-                    vr.Add(d);
-                }
-            }
-            else
-            {
-                sb.Insert(0, chs[i]);
-                //sb.Append(chs[i]);
-            }
-        }
-        string d2 = sb.ToString();
-        sb.Clear();
-        if (d2 != "")
-        {
-            vr.Add(d2);
-        }
-        List<string> v = new List<string>(parts);
-        for (int i = 0; i < vr.Count; i++)
-        {
-            if (v.Count != parts)
-            {
-                v.Insert(0, vr[i]);
-            }
-            else
-            {
-                string ds = what[delimitersIndexes[i - 1]].ToString();
-                v[0] = vr[i] + ds + v[0];
-            }
-        }
-        return v.ToArray();
-    }
-
-    /// <summary>
     /// TODO: Zatím NEfunguje 100%ně, až někdy budeš mít chuť tak se můžeš pokusit tuto metodu opravit. Zatím ji nepoužívej, místo ní používej pomalejší ale funkční SplitToPartsFromEnd
     /// Vrátí null v případě že řetězec bude prázdný
     /// Pokud bude mít A1 méně částí než A2, vratí nenalezené části jako SE
@@ -1827,18 +1735,6 @@ public static partial class SH
         Init();
     }
 
-    public static string FirstWhichIsNotEmpty(params string[] s)
-    {
-        foreach (var item in s)
-        {
-            if (item != "")
-            {
-                return item;
-            }
-        }
-        return "";
-    }
-
     public static string GetLastWord(string p)
     {
         p = p.Trim();
@@ -1889,23 +1785,6 @@ public static partial class SH
             }
         }
         return sb.ToString();
-    }
-
-    private static bool IsMatchRegex(string str, string pat, char singleWildcard, char multipleWildcard)
-    {
-        // If I compared .vs with .vs, return false before
-        if (str == pat)
-        {
-            return true;
-        }
-
-        string escapedSingle = Regex.Escape(new string(singleWildcard, 1));
-        string escapedMultiple = Regex.Escape(new string(multipleWildcard, 1));
-        pat = Regex.Escape(pat);
-        pat = pat.Replace(escapedSingle, AllStrings.dot);
-        pat = "^" + pat.Replace(escapedMultiple, ".*") + "$";
-        Regex reg = new Regex(pat);
-        return reg.IsMatch(str);
     }
 
 
@@ -2161,20 +2040,6 @@ public static partial class SH
             return p.Trim();
         }
         return "";
-    }
-
-    public static bool ContainsFromEnd(string p1, char p2, out int ContainsFromEndResult)
-    {
-        for (int i = p1.Length - 1; i >= 0; i--)
-        {
-            if (p1[i] == p2)
-            {
-                ContainsFromEndResult = i;
-                return true;
-            }
-        }
-        ContainsFromEndResult = -1;
-        return false;
     }
 
     public static char[] ReturnCharsForSplitBySpaceAndPunctuationCharsAndWhiteSpaces(bool commaInclude)

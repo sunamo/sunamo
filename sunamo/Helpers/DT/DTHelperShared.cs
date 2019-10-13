@@ -69,4 +69,9 @@ public partial class DTHelper
     {
         return new DateTime(p.Year, p.Month, p.Day);
     }
+
+public static DateTime CalculateStartOfPeriod(string AddedAgo)
+    {
+        return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
+    }
 }

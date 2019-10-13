@@ -72,11 +72,6 @@ public partial class DTHelper
         return DTHelperEn.ParseTimeUSA(t);
     }
 
-    public static DateTime CalculateStartOfPeriod(string AddedAgo)
-    {
-        return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
-    }
-
     public static string DateTimeToStringFormalizeDate(DateTime dt)
     {
         return DTHelperFormalized.DateTimeToStringFormalizeDate(dt);

@@ -26,6 +26,31 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Converts\Rot13.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperMultiShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\LoremIpsumGenerator.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\PhotoToUpload.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertRot21.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\DateTimeFormatStyles.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertMonthNumberString.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCodeShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\TT.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlParserSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\PreviousNext.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Web\YouTubeShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGeneratorExtended.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\AllItems.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedWithTShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\HtmlTemplatesShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\XmlGeneratorSelective.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IParser.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CreateHtmlDocumentInitData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Parsing\ParserTwoValues.cs" />
@@ -98,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj" />
+    <ProjectReference Include="..\ResourcesShared\ResourcesShared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Diacritics">
