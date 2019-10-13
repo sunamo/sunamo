@@ -1175,7 +1175,7 @@
         </trans-unit>
         <trans-unit id="IApps" translate="yes" xml:space="preserve">
           <source />
-          <target state="translated">/ i / Apps</target>
+          <target state="translated">/i/Apps</target>
         </trans-unit>
         <trans-unit id="Likes" translate="yes" xml:space="preserve">
           <source />
@@ -7859,7 +7859,7 @@
         </trans-unit>
         <trans-unit id="returnOpenInNewTabAppsEditApp" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">return OpenInNewTab2('Apps/EditApp/</target>
+          <target state="translated"></target>
         </trans-unit>
         <trans-unit id="PleaseSignInToVote" translate="yes" xml:space="preserve">
           <source></source>
@@ -7967,7 +7967,7 @@
         </trans-unit>
         <trans-unit id="ManageImagesAppSpan" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Manage images app &lt;span&gt;&lt;/span&gt;</target>
+          <target state="translated">Manage images app</target>
         </trans-unit>
         <trans-unit id="TheTextStringNameWasPassedToThePageButTheApplicationWithThatNameWasNotFoundInTheDB" translate="yes" xml:space="preserve">
           <source></source>
