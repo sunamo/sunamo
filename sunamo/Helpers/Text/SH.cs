@@ -1762,16 +1762,7 @@ public static partial class SH
         return SH.ContainsAny(text, false, CA.ToEnumerable(AllStrings.q, AllStrings.asterisk)).Count > 1;
     }
 
-    /// <summary>
-    /// Whether A1 is under A2
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="mask"></param>
-    /// <returns></returns>
-    public static bool MatchWildcard(string name, string mask)
-    {
-        return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
-    }
+
 
     public static string DeleteCharsOutOfAscii(string s)
     {

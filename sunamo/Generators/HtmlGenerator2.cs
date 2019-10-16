@@ -712,7 +712,7 @@ public class HtmlGenerator2 : HtmlGenerator
 
     public static string DetailStatic(string name, object value)
     {
-        return "<b>" + name + ":</b> " + value.ToString() + "<br" + " /" + "";
+        return "<b>" + name + ":</b> " + value.ToString() + "<br" + " /" + ">";
     }
 
     public static string DetailStatic(string green, string name, object value)
@@ -728,7 +728,7 @@ public class HtmlGenerator2 : HtmlGenerator
         {
             string whatLeave = SH.ShortForLettersCount(p1, p2);
             //"<span static class='tooltip'>" +
-            whatLeave += "<span static class='showonhover'><a href='#'> ... </a><span static class='hovertext" + "'" + "" + SH.ReplaceOnce(p1, whatLeave, "") + "/" + "/" + "span></span>";
+            whatLeave += "<span static class='showonhover'><a href='#'> ... </a><span static class='hovertext" + "'" + ">" + SH.ReplaceOnce(p1, whatLeave, "") + "<" + "/" + "span></span>";
             return whatLeave;
         }
         return p1;

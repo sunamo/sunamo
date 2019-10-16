@@ -231,11 +231,9 @@
     <Folder Include="Helpers\Clipboard\" />
     <Folder Include="Helpers\Http\" />
     <Folder Include="MSSQL\Wid\" />
+    <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
     <Folder Include="_ToNetStd16\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources2\SystemWindowsControls.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

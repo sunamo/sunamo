@@ -23,6 +23,10 @@ using System.Text;
     public static readonly Type tUshort = typeof(ushort);
     public static readonly Type tUint = typeof(uint);
     public static readonly Type tUlong = typeof(ulong);
+    /// <summary>
+    /// Min age is 18 due to GDPR - below 18 is needed parent agreement of child
+    /// </summary>
+    public const int MinAge = 18;
 
     static Consts()
     {
@@ -34,6 +38,7 @@ using System.Text;
         Consts.HttpWwwCzSlash = "https://www.sunamo.cz/";
         Consts.HttpCzSlash = "https://sunamo.cz/";
         Consts.HttpWwwCz = "https://www.sunamo.cz";
+        
 
         cssTemplatesSites = new List<string>(CA.ToListString("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
         BasicImageExtensions = CA.ToList<string>(AllExtensions.png,

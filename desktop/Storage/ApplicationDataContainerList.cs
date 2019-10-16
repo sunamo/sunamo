@@ -259,18 +259,18 @@ public class ApplicationDataContainerList : IEnumerable
         }
         set
         {
-            object val = value;
+            //object val = value;
             string typeName = RH.FullPathCodeEntity( value.GetType());
             if (value is IList)
             {
-               val = SF.PrepareToSerialization2(val as IEnumerable, AllStrings.comma);
+                value = SF.PrepareToSerialization2(AllStrings.comma, value as IEnumerable);
             }
             if (data.ContainsKey(key))
             {
                 AB ab = data[key];
                 if (typeName == ab.A)
                 {
-                    ab.B = val;
+                    ab.B = value;
                     
                     SaveFile();
                 }
@@ -281,7 +281,7 @@ public class ApplicationDataContainerList : IEnumerable
             }
             else
             {
-                AB ab = AB.Get(typeName, val);
+                AB ab = AB.Get(typeName, value);
                 data.Add(key, ab);
                 string zapsatDoSouboru = SF.PrepareToSerialization(CA.ToListString( key, typeName, SH.ListToString( value)));
                 TF.AppendToFile(zapsatDoSouboru, path);

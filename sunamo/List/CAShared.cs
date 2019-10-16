@@ -1104,7 +1104,7 @@ public static partial class CA
     {
         if (p < 0)
         {
-            throw new Exception("Chybn\u00FD parametr" + " " + "");
+            throw new Exception("Chybn\u00FD parametr" + " " + "p");
         }
         if (nahledy.Count() > p)
         {

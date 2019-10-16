@@ -548,7 +548,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         
         CSharpGenerator innerSelectInTable = new CSharpGenerator();
 
-        innerSelectInTable.AppendLine(2, "object[] o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + "" + @");
+        innerSelectInTable.AppendLine(2, "object[] o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + ");" + @");
 ParseRow(o);");
         csg.Method(1, "public void SelectInTable()", innerSelectInTable.ToString());
 

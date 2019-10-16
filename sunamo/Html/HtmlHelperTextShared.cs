@@ -72,6 +72,21 @@ public static string InsertMissingEndingTags(string s, string tag)
         return text.ToString();
     }
 
+    public static List<string> CreateH2FromNumberedList(List<string> lines)
+    {
+        CA.Trim(lines);
+
+        for (int i = 0; i < lines.Count; i++)
+        {
+            if (SH.IsNumbered(lines[i]))
+            {
+                lines[i] = WrapWith(lines[i], "h2");
+            }
+        }
+
+        return lines;
+    }
+
     public static List<string> GetAllEquvivalentsOfNonPairingTag(string v)
     {
         return CA.ToListString("<" + v + ">", "<" + v + " />", "<"+v+"/>");

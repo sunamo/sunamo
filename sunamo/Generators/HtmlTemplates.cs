@@ -42,8 +42,8 @@ public static partial class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td colspan='2'><b>" + name + ": " + "/" + "/" + "b></td></tr><tr><td colspan=" + "'" + "" + "'" + "" + value + "/" + "/" + "td></tr>";
+            return "<tr><td colspan='2'><b>" + name + ": " + "<" + "/" + "b></td></tr><tr><td colspan=" + "'" + "2" + "'" + ">" + value + "</" + "/" + "td></tr>";
         }
-        return "<tr><td colspan='2'><b>" + name + " " + "/" + "/" + "b></td></tr><tr><td colspan=" + "'" + "" + "'" + "" + value + "/" + "/" + "td></tr>";
+        return "<tr><td colspan='2'><b>" + name + " " + "/" + "/" + "b></td></tr><tr><td colspan=" + "'" + "2" + "'" + ">" + value + "</" + "/" + "td></tr>";
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 /// </summary>
 public static class XmlTemplates
 {
-    public const string xml = "?" + "?" + "xml version='1.0' encoding='utf" + "-" + "" + "'?" + "";
+    public const string xml = "<" + "?" + "xml version='1.0' encoding='utf" + "-" + "8" + "'?" + ">";
 
     public static string GetXml2(string n1, string n2)
     {

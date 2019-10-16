@@ -846,35 +846,6 @@ public static partial class CA
         return result;
     }
 
-    /// <summary>
-    /// Create array with A2 elements, otherwise return null. If any of element has not int value, return also null.
-    /// </summary>
-    /// <param name="altitudes"></param>
-    /// <param name="requiredLength"></param>
-    /// <returns></returns>
-    public static List<int> ToIntMinRequiredLength(IEnumerable enumerable, int requiredLength)
-    {
-        if (enumerable.Count() < requiredLength)
-        {
-            return null;
-        }
-
-        List<int> result = new List<int>();
-        int y = 0;
-        foreach (var item in enumerable)
-        {
-            if (int.TryParse(item.ToString(), out y))
-            {
-                result.Add(y);
-            }
-            else
-            {
-                return null;
-            }
-        }
-        return result;
-    }
-
 
     /// <summary>
     /// Change elements count in collection to A2

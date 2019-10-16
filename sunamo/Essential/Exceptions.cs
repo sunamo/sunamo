@@ -136,7 +136,7 @@ public class Exceptions
     {
         if (count > 1)
         {
-            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than" + " " + "";
+            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than" + " 1";
         }
         return null;
     }

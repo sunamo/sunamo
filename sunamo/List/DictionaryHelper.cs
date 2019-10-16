@@ -122,16 +122,7 @@ public partial class DictionaryHelper
         }
     }
 
-    public static List<string> GetListStringFromDictionaryDateTimeInt(IOrderedEnumerable<KeyValuePair<System.DateTime, int>> d)
-    {
-        List<string> vr = new List<string>(d.Count());
-        foreach (var item in d)
-        {
-            vr.Add(item.Value.ToString());
-        }
 
-        return vr;
-    }
 
     public static int AddToIndexAndReturnIncrementedInt<T>(int i, Dictionary<int, T> colors, T colorOnWeb)
     {

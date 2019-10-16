@@ -257,7 +257,7 @@ public partial class XHelper
         return sb.ToString().Replace(deli + deli, deli);
     }
 
-    public static IEnumerable<XElement> GetElementsOfName(XElement node, string nazev)
+    public static List<XElement> GetElementsOfName(XElement node, string nazev)
     {
         List<XElement> result = new List<XElement>();
         string p, z;

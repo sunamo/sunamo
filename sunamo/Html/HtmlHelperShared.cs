@@ -58,7 +58,7 @@ public static partial class HtmlHelper
 
     public static string ConvertTextToHtml(string p)
     {
-        p = p.Replace(Environment.NewLine, "<br" + " /" + "");
+        p = p.Replace(Environment.NewLine, "<br" + " /" + ">");
         return p;
     }
 
@@ -69,12 +69,12 @@ public static partial class HtmlHelper
 
     public static string ReplaceAllFontCase(string r)
     {
-        string za = "<br" + " /" + "";
+        string za = "<br" + " /" + ">";
         r = r.Replace("<BR />", za);
         r = r.Replace("<bR />", za);
         r = r.Replace("<Br />", za);
 
-        r = r.Replace("<br" + "/" + "", za);
+        r = r.Replace("<br" + "/" + ">", za);
         r = r.Replace("<BR/>", za);
         r = r.Replace("<bR/>", za);
         r = r.Replace("<Br/>", za);

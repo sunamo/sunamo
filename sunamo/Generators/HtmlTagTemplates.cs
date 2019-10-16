@@ -5,6 +5,6 @@ using System.Text;
 
 public class HtmlTagTemplates
 {
-    public const string br = "<br" + " /" + "";
+    public const string br = "<br" + " /" + ">";
 }
 

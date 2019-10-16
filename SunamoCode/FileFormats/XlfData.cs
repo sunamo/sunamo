@@ -12,6 +12,6 @@ public class XlfData
 {
     public XElement group = null;
     public XDocument xd = null;
-    public IEnumerable<XElement> trans_units = null;
+    public List<XElement> trans_units = null;
 }
 

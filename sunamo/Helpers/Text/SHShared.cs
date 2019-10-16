@@ -101,6 +101,33 @@ public static partial class SH
         return sb.ToString();
     }
 
+    internal static bool IsNumbered(string v)
+    {
+        int i = 0;
+
+        foreach (var item in v)
+        {
+            if (char.IsNumber(item))
+            {
+                i++;
+                continue;
+            }
+            else if (item == AllChars.dot)
+            {
+                if (i > 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// This can be only one 
     /// </summary>
@@ -523,9 +550,6 @@ public static partial class SH
 
     public static string ReplaceOnce(string input, string what, string zaco)
     {
-        if (input.Contains("na rozd\u00EDl od" + " " + ""))
-        {
-        }
 
         if (what == "")
         {

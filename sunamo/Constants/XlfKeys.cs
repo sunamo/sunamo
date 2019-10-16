@@ -5906,7 +5906,6 @@ public class XlfKeys
 
     public const string aLargeScaledAndEnergeticCombinationOfYorubaHighlifeJazzAndFunkMusic = "aLargeScaledAndEnergeticCombinationOfYorubaHighlifeJazzAndFunkMusic";
 
-    public const string YBdnfycg = "YBdnfycg";
 
     public const string Added = "Added";
 
