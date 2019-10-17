@@ -144,17 +144,6 @@ using System.Text.RegularExpressions;
             return WrapWith(s, "p");
         }
 
-        /// <summary>
-        /// A2 only name like p, title etc.
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        private static string WrapWith(string s, string p)
-        {
-            return AllStrings.lt + p + AllStrings.gt + s + "</" + p + AllStrings.gt;
-        }
-
         private static string GetFirstTag(string s)
         {
             var between = SH.GetTextBetween(s, AllStrings.lt, AllStrings.gt);

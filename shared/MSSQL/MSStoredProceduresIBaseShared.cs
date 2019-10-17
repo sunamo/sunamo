@@ -1832,12 +1832,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return odeber;
     }
 
+    //public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
+    //{
+    //    return UpdatePlusIntValue(table, sloupecKUpdate, pridej, abc);
+    //}
 
 
     public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
     {
         int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
-        if (d == int.MaxValue)
+        // Check for signed is useless - in signed or not always return maxValue
+        if (d == int.MaxValue )
         {
             return d;
         }
@@ -1851,7 +1856,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
 
-        if (d == int.MaxValue)
+        if (d == int.MaxValue )
         {
             return d;
         }

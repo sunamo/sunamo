@@ -6,7 +6,8 @@ using System.Text;
 public partial class DTHelperGeneral
 {
     /// <summary>
-    /// A2 bylo původně SqlServerHelper.DateTimeMinVal
+    /// A2 = SqlServerHelper.DateTimeMinVal
+    /// if A1 = A2, return 255
     /// </summary>
     /// <param name="bday"></param>
     /// <returns></returns>

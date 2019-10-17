@@ -25,7 +25,7 @@ public class ThrowExceptions
     }
 
     /// <summary>
-    /// Return whether directory exists
+    /// Return & throw exception whether directory exists
     /// </summary>
     /// <param name="type"></param>
     /// <param name="v"></param>
@@ -276,6 +276,12 @@ public class ThrowExceptions
         return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
     }
 
+    /// <summary>
+    /// Return & throw exception whether directory NOT exists
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="folder1"></param>
     public static void DirectoryWasntFound(Type type, string methodName, string folder1)
     {
         ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode(type, methodName, true), folder1));

@@ -7020,7 +7020,7 @@
         </trans-unit>
         <trans-unit id="ContentMetroCss" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Content/metro.css' /&gt; </target>
+          <target state="translated">Content/metro-all.css' /&gt; </target>
         </trans-unit>
         <trans-unit id="SharedCssCommentsSharedCss" translate="yes" xml:space="preserve">
           <source></source>

@@ -1,5 +1,7 @@
 ﻿using sunamo.Constants;
+using sunamo.Generators.Text;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -61,9 +63,66 @@ namespace SunamoCode
             d.xd.Save(fn);
         }
 
-      
+        public static string ReturnEndingOn(string fn, List<string> list)
+        {
+            Dictionary<string, StringBuilder> result = new Dictionary<string, StringBuilder>();
 
-        public static List<string> GetAllLastLetterFromEnd( string fn)
+            TextOutputGenerator tb = new TextOutputGenerator();
+            var d = GetTransUnits(fn);
+
+            foreach (var item in list)
+            {
+                result.Add(item, new StringBuilder());
+            }
+
+            foreach (var item in d.trans_units)
+            {
+                var lastLetter = GetLastLetter(item).ToString();
+
+                if (CA.IsEqualToAnyElement<string>(lastLetter, list))
+                {
+                    result[lastLetter].AppendLine(GetTarget(item).Value);
+                }
+            }
+
+            foreach (var item in result)
+            {
+                tb.Paragraph(item.Value, item.Key);
+            }
+            return tb.sb.ToString();
+        }
+
+        public static char? GetLastLetter(XElement item)
+        {
+            string id = null;
+            return GetLastLetter(item, out id);
+        }
+
+        static Tuple<string, string> GetTransUnit(XElement item)
+        {
+            var id = XHelper.Attr(item, "id");
+            XElement target = GetTarget(item);
+            return new Tuple<string, string>(id, target.Value);
+        }
+
+        public static char? GetLastLetter(XElement item, out string id)
+        {
+            var t = GetTransUnit(item);
+            id = t.Item1;
+            if (t.Item2.Count() > 0)
+            {
+                return t.Item2.Last();
+            }
+
+            return null;
+        }
+
+        private static XElement GetTarget(XElement item)
+        {
+            return XHelper.GetElementOfName(item, "target");
+        }
+
+        public static List<string> GetAllLastLetterFromEnd( string fn, bool saveAllLastLetterToClipboard)
         {
             List<string> ids = new List<string>();
             CollectionWithoutDuplicates<char> allLastLetters = new CollectionWithoutDuplicates<char>();
@@ -72,14 +131,12 @@ namespace SunamoCode
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
-                var id = XHelper.Attr(item, "id");
+                string id;
+                var ch = GetLastLetter(item, out id);
 
-                XElement target = XHelper.GetElementOfName( item, "target");
-                if (target.Value.Count() > 0)
+                if (ch.HasValue)
                 {
-                    var ch = target.Value.Last();
-
-                    allLastLetters.Add(ch);
+                    allLastLetters.Add(ch.Value);
                 }
 
                 ids.Add(id);
@@ -87,7 +144,10 @@ namespace SunamoCode
 
             allLastLetters.c.Sort();
 
-            ClipboardHelper.SetLines(allLastLetters.c);
+            if (saveAllLastLetterToClipboard)
+            {
+                ClipboardHelper.SetLines(allLastLetters.c);
+            }
 
             return ids;
         }
@@ -241,7 +301,16 @@ namespace SunamoCode
 
             Dictionary<string, string> idTarget = new Dictionary<string, string>();
 
-            //XmlLocalisationInterchangeFileFormat.
+            var d = GetTransUnits(path);
+            
+            foreach (var item in d.trans_units)
+            {
+                var t = GetTransUnit(item);
+                if (ids.Contains(t.Item1))
+                {
+                    idTarget.Add(t.Item1, t.Item2);
+                }
+            }
 
             foreach (var item in files)
             {
@@ -253,6 +322,7 @@ namespace SunamoCode
             }
 
             
+
 
             foreach (var kv in filesWithXlf)
             {
@@ -272,12 +342,16 @@ namespace SunamoCode
                         var dxNextChar = dx + toReplace.Length;
 
                         sb.Remove(dx, toReplace.Length);
-                        //sb.Insert(dx, )
+                        sb.Insert(dx, SH.WrapWithQm(idTarget[item]);
                     }
                 }
+
+                TF.WriteAllText(kv.Value, sb.ToString());
             }
 
             // Nepřidávat znovu pokud již končí na postfix
         }
+
+       
     }
 }

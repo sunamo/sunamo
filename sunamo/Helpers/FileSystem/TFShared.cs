@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 public partial class TF
 {
+    static Type type = typeof(TF);
+
     /// <summary>
     /// Precte soubor a vrati jeho obsah. Pokud soubor neexistuje, vytvori ho a vrati SE. 
     /// </summary>
@@ -61,11 +63,15 @@ public partial class TF
             File.WriteAllText(s, "", Encoding.UTF8);
         }
 
-        return result;
+        return result;//
     }
 
     private static void SaveFile(string obsah, string soubor, bool pripsat)
     {
+        var dir = FS.GetDirectoryName(soubor);
+
+        ThrowExceptions.DirectoryWasntFound(type, "SaveFile", dir);
+
         if (soubor == null)
         {
             return;
