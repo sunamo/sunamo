@@ -63,8 +63,11 @@ namespace SunamoCode
             d.xd.Save(fn);
         }
 
-        public static string ReturnEndingOn(string fn, List<string> list)
+        public static string ReturnEndingOn(string fn, List<string> list, out List<string> idsEndingOn)
         {
+            list = CA.ChangeContent(list, t => SH.RemoveAfterFirst(t, AllChars.space));
+
+            idsEndingOn = new List<string>();
             Dictionary<string, StringBuilder> result = new Dictionary<string, StringBuilder>();
 
             TextOutputGenerator tb = new TextOutputGenerator();
@@ -77,13 +80,17 @@ namespace SunamoCode
 
             foreach (var item in d.trans_units)
             {
-                var lastLetter = GetLastLetter(item).ToString();
+                string id = null;
+                var lastLetter = GetLastLetter(item, out id).ToString();
 
                 if (CA.IsEqualToAnyElement<string>(lastLetter, list))
                 {
                     result[lastLetter].AppendLine(GetTarget(item).Value);
+                    idsEndingOn.Add(id);
                 }
             }
+
+            
 
             foreach (var item in result)
             {
@@ -256,6 +263,31 @@ namespace SunamoCode
             }
         }
 
+        public static void RemoveFromXlfAndXlfKeys(string fn, List<string> idsEndingEnd)
+        {
+            var d = GetTransUnits(fn);
+
+            foreach (var item in d.trans_units)
+            {
+                string idTransUnit = null;
+                GetLastLetter(item, out idTransUnit);
+
+                for (int i = idsEndingEnd.Count - 1; i >= 0; i--)
+                {
+                    var id = idsEndingEnd[i];
+
+                    if (id == idTransUnit)
+                    {
+                        item.Remove();
+                    }
+                }
+            }
+
+            CSharpParser.RemoveConsts(@"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs", idsEndingEnd);
+
+            d.xd.Save(fn);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -291,8 +323,13 @@ namespace SunamoCode
             XHelper.FormatXml(fn);
         }
 
-        public static void ReplaceXlfKeysForString(string path, List<string> ids)
+        public static void ReplaceXlfKeysForString(string path, List<string> ids, List<string> solutionsExcludeWhileWorkingOnSourceCode, out CollectionWithoutDuplicates<string> addToNotToTranslateStrings)
         {
+            addToNotToTranslateStrings = new CollectionWithoutDuplicates<string>();
+            solutionsExcludeWhileWorkingOnSourceCode.Add("AllProjectsSearchTestFiles");
+
+            CA.WrapWith(solutionsExcludeWhileWorkingOnSourceCode, "\\");
+
             const string XlfKeysDot = "XlfKeys.";
 
             Dictionary<string, string> filesWithXlf = new Dictionary<string, string>();
@@ -314,6 +351,22 @@ namespace SunamoCode
 
             foreach (var item in files)
             {
+                bool continue2 = false;
+
+                foreach (var item2 in solutionsExcludeWhileWorkingOnSourceCode)
+                {
+                    if (item.Contains(item2))
+                    {
+                        continue2 = true;
+                        break;
+                    }
+                }
+
+                if (continue2)
+                {
+                    continue;
+                }
+
                 var content = TF.ReadFile(item);
                 if (content.Contains(XlfKeysDot))
                 {
@@ -321,19 +374,34 @@ namespace SunamoCode
                 }
             }
 
-            
-
+            CollectionWithoutDuplicates<string> replacedKeys = new CollectionWithoutDuplicates<string>();
 
             foreach (var kv in filesWithXlf)
             {
                 var content = kv.Value;
                 StringBuilder sb = new StringBuilder(content);
+                
+                replacedKeys.c.Clear();
 
                 foreach (var item in ids)
                 {
-                    var toReplace = XlfKeysDot + item;
-                    
-                    var points = SH.ReturnOccurencesOfString(sb.ToString(), toReplace);
+                    var item2 = XlfKeysDot + item+ "]";
+                    var toReplace = "RLData.en[" + item2;
+
+                    var toString = sb.ToString();
+                    var points = SH.ReturnOccurencesOfString(toString, toReplace);
+                    var points2 = SH.ReturnOccurencesOfString(toString, item2);
+
+                    if (points2.Count > points.Count)
+                    {
+
+                    }
+
+                    if (points.Count > 0)
+                    {
+                        replacedKeys.Add(item);
+                        addToNotToTranslateStrings.Add(idTarget[item]);
+                    }
 
                     for (int i = points.Count - 1; i >= 0; i--)
                     {
@@ -342,11 +410,15 @@ namespace SunamoCode
                         var dxNextChar = dx + toReplace.Length;
 
                         sb.Remove(dx, toReplace.Length);
-                        sb.Insert(dx, SH.WrapWithQm(idTarget[item]);
+                        sb.Insert(dx, SH.WrapWithQm(idTarget[item]));
                     }
                 }
 
-                TF.WriteAllText(kv.Value, sb.ToString());
+                if (replacedKeys.c.Count > 0)
+                {
+
+                    TF.WriteAllText(kv.Key, sb.ToString());
+                }
             }
 
             // Nepřidávat znovu pokud již končí na postfix

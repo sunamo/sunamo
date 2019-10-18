@@ -275,15 +275,12 @@ public class XlfKeys
 
 	public const string SELECTFROMGeoCaches = "SELECTFROMGeoCaches" ; 
 
-	public const string CacheHints = "CacheHints" ; 
 
 	public const string InTheSize = "InTheSize" ; 
 
 	public const string BySize = "BySize" ; 
 
-	public const string ColumnID = "ColumnID" ; 
 
-	public const string TableName = "TableName" ; 
 
 	public const string adoptedBy = "adoptedBy" ; 
 
@@ -327,27 +324,19 @@ public class XlfKeys
 
 	public const string pánečci = "pánečci" ; 
 
-	public const string returnBlockOrUnblockByNick = "returnBlockOrUnblockByNick" ; 
 
-	public const string returnBlockOrUnblockByIp = "returnBlockOrUnblockByIp" ; 
 
-	public const string returnRemoveComment = "returnRemoveComment" ; 
 
-	public const string returnEditComment = "returnEditComment" ; 
 
-	public const string returnAddImagesToComment = "returnAddImagesToComment" ; 
 
-	public const string returnAddOrRemoveSpamVote = "returnAddOrRemoveSpamVote" ; 
 
 	public const string buttonOranzovyObtah = "buttonOranzovyObtah" ; 
 
-	public const string returnThumbsDownComment = "returnThumbsDownComment" ; 
 
 	public const string buttonTooltip = "buttonTooltip" ; 
 
 	public const string buttonOranzovyObtahTooltip = "buttonOranzovyObtahTooltip" ; 
 
-	public const string returnThumbsUpComment = "returnThumbsUpComment" ; 
 
 	public const string btnAddCommentButton = "btnAddCommentButton" ; 
 
@@ -367,7 +356,6 @@ public class XlfKeys
 
 	public const string Comments = "Comments" ; 
 
-	public const string VarAnswerID = "VarAnswerID" ; 
 
 	public const string buttonDanger = "buttonDanger" ; 
 
@@ -375,15 +363,12 @@ public class XlfKeys
 
 	public const string methodauthGetSessiontoken = "methodauthGetSessiontoken" ; 
 
-	public const string deleteCz = "deleteCz" ; 
 
 	public const string CzLang = "CzLang" ; 
 
-	public const string deleteEn = "deleteEn" ; 
 
 	public const string EnLang = "EnLang" ; 
 
-	public const string deleteBoth = "deleteBoth" ; 
 
 	public const string AllLyrics = "AllLyrics" ; 
 
@@ -407,7 +392,6 @@ public class XlfKeys
 
 	public const string PngNoRepeatCenterCenterFixedBackgroundSizeCover = "PngNoRepeatCenterCenterFixedBackgroundSizeCover" ; 
 
-	public const string bodyBackgroundUrlCssApp = "bodyBackgroundUrlCssApp" ; 
 
 	public const string dMYyyy = "dMYyyy" ; 
 
@@ -849,7 +833,6 @@ public class XlfKeys
 
 	public const string jamriengSamai = "jamriengSamai" ; 
 
-	public const string aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams = "aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams" ; 
 
 	public const string izvornaBosanska = "izvornaBosanska" ; 
 
@@ -1751,7 +1734,6 @@ public class XlfKeys
 
 	public const string aCappella = "aCappella" ; 
 
-	public const string Style = "Style" ; 
 
 	public const string caches = "caches" ; 
 
@@ -3978,7 +3960,6 @@ public class XlfKeys
 
     public const string PostovánoV = "Postov\u00E1noV";
 
-    public const string wwwSunamoNetBlogs = "wwwSunamoNetBlogs";
 
     public const string First = "First";
 
@@ -4173,7 +4154,6 @@ public class XlfKeys
 
     public const string NewItemTextWasLongerThanCharacters = "NewItemTextWasLongerThanCharacters";
 
-    public const string varVrUnknownResultVarSurveyID = "varVrUnknownResultVarSurveyID";
 
     public const string YouReachedTheMaximumNumberOfItemsPerPoll = "YouReachedTheMaximumNumberOfItemsPerPoll";
 
@@ -4289,7 +4269,6 @@ public class XlfKeys
 
     public const string Donation = "Donation";
 
-    public const string iGgdagCds = "iGgdagCds";
 
     public const string IGgdagCds = "IGgdagCds";
 
@@ -4465,7 +4444,6 @@ public class XlfKeys
 
     public const string PageOrFileNotFound = "PageOrFileNotFound";
 
-    public const string urlImgWeb = "urlImgWeb";
 
     public const string Introduction = "Introduction";
 
@@ -6140,7 +6118,6 @@ public class XlfKeys
 
     public const string Download = "Download";
 
-    public const string App = "App";
 
     public const string UnimplementedSortAppsByBranch = "UnimplementedSortAppsByBranch";
 

@@ -1190,10 +1190,7 @@
           <source />
           <target state="translated">Unimplemented SortAppsBy branch</target>
         </trans-unit>
-        <trans-unit id="App" translate="yes" xml:space="preserve">
-          <source />
-          <target state="translated">App/</target>
-        </trans-unit>
+        
         <trans-unit id="Download" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Download</target>
@@ -4522,10 +4519,7 @@
           <source></source>
           <target state="translated">Introduction</target>
         </trans-unit>
-        <trans-unit id="urlImgWeb" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">url(img/Web/</target>
-        </trans-unit>
+        
         <trans-unit id="PageOrFileNotFound" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Page or file not found</target>
@@ -4866,10 +4860,7 @@
           <source></source>
           <target state="translated">../i/Ggdag/cds</target>
         </trans-unit>
-        <trans-unit id="iGgdagCds" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">i/Ggdag/cds/</target>
-        </trans-unit>
+        
         <trans-unit id="Donation" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Donation</target>
@@ -5098,10 +5089,7 @@
           <source></source>
           <target state="translated">You reached the maximum number of 255 items per poll.</target>
         </trans-unit>
-        <trans-unit id="varVrUnknownResultVarSurveyID" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">var vr = 'Unknown result'; var surveyID = '</target>
-        </trans-unit>
+        
         <trans-unit id="NewItemTextWasLongerThanCharacters" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">New item text was longer than 30 characters.</target>
@@ -5486,10 +5474,7 @@
           <source></source>
           <target state="translated">First</target>
         </trans-unit>
-        <trans-unit id="wwwSunamoNetBlogs" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">www.sunamo.net/Blogs/</target>
-        </trans-unit>
+        
         <trans-unit id="PostovánoV" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Postováno v</target>
@@ -9938,10 +9923,7 @@
           <source></source>
           <target state="translated">caches</target>
         </trans-unit>
-        <trans-unit id="Style" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">'style ='</target>
-        </trans-unit>
+        
         <trans-unit id="aCappella" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">a cappella</target>
@@ -11742,10 +11724,7 @@
           <source></source>
           <target state="translated">izvorna bosanska</target>
         </trans-unit>
-        <trans-unit id="aTypeOfBandThatPlaysLongInstrumentalTracksOftenImprovisedCalledJams" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">a type of band that plays long instrumental tracks, often improvised, called 'jams'</target>
-        </trans-unit>
+        
         <trans-unit id="jamriengSamai" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">jamrieng samai</target>
@@ -12623,10 +12602,7 @@
           <source></source>
           <target state="translated">d-M-yyyy</target>
         </trans-unit>
-        <trans-unit id="bodyBackgroundUrlCssApp" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">body{background: url(/css/App/</target>
-        </trans-unit>
+        
         <trans-unit id="PngNoRepeatCenterCenterFixedBackgroundSizeCover" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">.png) no-repeat center center fixed; background-size: cover;}</target>
@@ -12671,26 +12647,17 @@
           <source></source>
           <target state="translated">All lyrics</target>
         </trans-unit>
-        <trans-unit id="deleteBoth" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">deleteBoth('</target>
-        </trans-unit>
+        
         <trans-unit id="EnLang" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> en2 lang</target>
         </trans-unit>
-        <trans-unit id="deleteEn" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">deleteEn('</target>
-        </trans-unit>
+        
         <trans-unit id="CzLang" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> cz2 lang</target>
         </trans-unit>
-        <trans-unit id="deleteCz" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">deleteCz ('</target>
-        </trans-unit>
+        
         <trans-unit id="methodauthGetSessiontoken" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">methodauth.getSessiontoken</target>
@@ -12703,10 +12670,7 @@
           <source></source>
           <target state="translated">button danger</target>
         </trans-unit>
-        <trans-unit id="VarAnswerID" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">';var answerID = '</target>
-        </trans-unit>
+        
         <trans-unit id="Comments" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> comments</target>
@@ -12743,10 +12707,7 @@
           <source></source>
           <target state="translated">btnAddComment button</target>
         </trans-unit>
-        <trans-unit id="returnThumbsUpComment" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return thumbsUpComment('</target>
-        </trans-unit>
+        
         <trans-unit id="buttonOranzovyObtahTooltip" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">button oranzovyObtah tooltip</target>
@@ -12755,38 +12716,17 @@
           <source></source>
           <target state="translated">button tooltip</target>
         </trans-unit>
-        <trans-unit id="returnThumbsDownComment" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return thumbsDownComment('</target>
-        </trans-unit>
+        
         <trans-unit id="buttonOranzovyObtah" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">button oranzovyObtah</target>
         </trans-unit>
-        <trans-unit id="returnAddOrRemoveSpamVote" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return addOrRemoveSpamVote('</target>
-        </trans-unit>
-        <trans-unit id="returnAddImagesToComment" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return addImagesToComment('</target>
-        </trans-unit>
-        <trans-unit id="returnEditComment" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return editComment('</target>
-        </trans-unit>
-        <trans-unit id="returnRemoveComment" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return removeComment('</target>
-        </trans-unit>
-        <trans-unit id="returnBlockOrUnblockByIp" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return blockOrUnblockByIp('</target>
-        </trans-unit>
-        <trans-unit id="returnBlockOrUnblockByNick" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">return blockOrUnblockByNick('</target>
-        </trans-unit>
+        
+        
+        
+        
+        
+        
         <trans-unit id="pánečci" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">pánečci</target>
@@ -12871,14 +12811,8 @@
           <source></source>
           <target state="translated">adopted by:</target>
         </trans-unit>
-        <trans-unit id="TableName" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + tableName +</target>
-        </trans-unit>
-        <trans-unit id="ColumnID" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + columnID +</target>
-        </trans-unit>
+        
+        
         <trans-unit id="BySize" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> by size:</target>
@@ -12887,10 +12821,7 @@
           <source></source>
           <target state="translated"> in the size</target>
         </trans-unit>
-        <trans-unit id="CacheHints" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + cacheHints +</target>
-        </trans-unit>
+        
         <trans-unit id="SELECTFROMGeoCaches" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">SELECT * FROM Geo_Caches </target>
