@@ -1545,4 +1545,112 @@ public static bool TryDeleteFile(string item, out string message)
             return false;
         }
     }
+
+private static string GetSizeInAutoString(double size)
+    {
+        ComputerSizeUnits unit = ComputerSizeUnits.B;
+        if (size < Consts.kB)
+        {
+            unit = ComputerSizeUnits.KB;
+            size /= Consts.kB;
+        }
+        if (size < Consts.kB)
+        {
+            unit = ComputerSizeUnits.MB;
+            size /= Consts.kB;
+        }
+        if (size < Consts.kB)
+        {
+            unit = ComputerSizeUnits.GB;
+            size /= Consts.kB;
+        }
+        if (size < Consts.kB)
+        {
+            unit = ComputerSizeUnits.TB;
+            size /= Consts.kB;
+        }
+
+        return GetSizeInAutoString(size, unit);
+    }
+public static string GetSizeInAutoString(long value, ComputerSizeUnits b)
+    {
+        return GetSizeInAutoString(value, b);
+    }
+public static string GetSizeInAutoString(double value, ComputerSizeUnits b)
+    {
+        if (b != ComputerSizeUnits.B)
+        {
+            // Získám hodnotu v bytech
+            value = ConvertToSmallerComputerUnitSize(value, b, ComputerSizeUnits.B);
+        }
+
+
+        if (value < 1024)
+        {
+            return value + " B";
+        }
+
+        double previous = value;
+        value /= 1024;
+
+        if (value < 1)
+        {
+            return previous + " B";
+        }
+
+        previous = value;
+        value /= 1024;
+
+        if (value < 1)
+        {
+            return previous + " KB";
+        }
+
+        previous = value;
+        value /= 1024;
+        if (value < 1)
+        {
+            return previous + " MB";
+        }
+
+        previous = value;
+        value /= 1024;
+
+        if (value < 1)
+        {
+            return previous + " GB";
+        }
+
+        return value + " TB";
+    }
+
+private static long ConvertToSmallerComputerUnitSize(long value, ComputerSizeUnits b, ComputerSizeUnits to)
+    {
+        return ConvertToSmallerComputerUnitSize(value, b, to);
+    }
+private static double ConvertToSmallerComputerUnitSize(double value, ComputerSizeUnits b, ComputerSizeUnits to)
+    {
+        if (to == ComputerSizeUnits.Auto)
+        {
+            throw new Exception("Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
+        }
+        else if (to == ComputerSizeUnits.KB && b != ComputerSizeUnits.KB)
+        {
+            value *= 1024;
+        }
+        else if (to == ComputerSizeUnits.MB && b != ComputerSizeUnits.MB)
+        {
+            value *= 1024 * 1024;
+        }
+        else if (to == ComputerSizeUnits.GB && b != ComputerSizeUnits.GB)
+        {
+            value *= 1024 * 1024 * 1024;
+        }
+        else if (to == ComputerSizeUnits.TB && b != ComputerSizeUnits.TB)
+        {
+            value *= (1024L * 1024L * 1024L * 1024L);
+        }
+
+        return value;
+    }
 }

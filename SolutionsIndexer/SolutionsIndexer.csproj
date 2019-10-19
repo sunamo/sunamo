@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\SolutionsIndexer\SolutionsIndexerConsts.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\SolutionsIndexerStrings.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\Data\SolutionFolder\SolutionFolderWithFiles.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\SolutionsIndexerSettings.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\Data\SolutionFolder\SolutionFolderSerialize.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\FoldersWithSolutions.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\Data\SolutionFolder\SolutionFolder.cs" />
+    <Compile Include="..\..\sunamo\SolutionsIndexer\SolutionsIndexerHelperShared.cs" />
     <Compile Include="..\..\sunamo\SolutionsIndexer\VpsHelper.cs" />
     <Compile Include="Data\Project\ProjectFolderSerialize.cs" />
     <Compile Include="Data\Project\ProjectFoldersSerialize.cs" />

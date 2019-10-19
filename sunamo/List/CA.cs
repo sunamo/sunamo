@@ -191,22 +191,6 @@ public static partial class CA
     }
 
     /// <summary>
-    /// Delete which fullfil A2 wildcard
-    /// </summary>
-    /// <param name="d"></param>
-    /// <param name="mask"></param>
-    public static void RemoveWildcard(List<string> d, string mask)
-    {
-        for (int i = d.Count - 1; i >= 0; i--)
-        {
-            if (SH.MatchWildcard(d[i], mask))
-            {
-                d.RemoveAt(i);
-            }
-        }
-    }
-
-    /// <summary>
     /// Direct edit
     /// </summary>
     /// <param name="list"></param>
@@ -378,34 +362,6 @@ public static partial class CA
             t = notContains[0].Trim();
         }
         return t.Length > 0;
-    }
-
-    public static string[] EnsureBackslash(string[] eb)
-    {
-        for (int i = 0; i < eb.Length; i++)
-        {
-            string r = eb[i];
-            if (r[r.Length - 1] != AllChars.bs)
-            {
-                eb[i] = r + Consts.bs;
-            }
-        }
-
-        return eb;
-    }
-
-    public static List<string> EnsureBackslash(List<string> eb)
-    {
-        for (int i = 0; i < eb.Count; i++)
-        {
-            string r = eb[i];
-            if (r[r.Length - 1] != AllChars.bs)
-            {
-                eb[i] = r + Consts.bs;
-            }
-        }
-
-        return eb;
     }
 
     

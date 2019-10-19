@@ -38,10 +38,7 @@ public class FoldersWithSolutions
     }
     #endregion
 
-    
-
     #region Returns solutions in various objects
-    
     public List<SolutionFolderWithFiles> SolutionsWithFiles()
     {
         List<SolutionFolderWithFiles> vr = new List<SolutionFolderWithFiles>();

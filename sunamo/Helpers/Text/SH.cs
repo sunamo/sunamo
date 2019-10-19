@@ -779,25 +779,6 @@ public static partial class SH
 
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="us"></param>
-    /// <param name="nameSolution"></param>
-    /// <returns></returns>
-    public static string RemoveAfterLast(char delimiter, string nameSolution)
-    {
-        int dex = nameSolution.LastIndexOf(delimiter);
-        if (dex != -1)
-        {
-            string s = SH.Substring(nameSolution, 0, dex);
-            return s;
-        }
-        return nameSolution;
-    }
-
-
-
     public static string WordAfter(string input, string word)
     {
         input = SH.WrapWith(input, AllChars.space);

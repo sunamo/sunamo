@@ -2285,4 +2285,21 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);
     }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="us"></param>
+    /// <param name="nameSolution"></param>
+    /// <returns></returns>
+    public static string RemoveAfterLast(char delimiter, string nameSolution)
+    {
+        int dex = nameSolution.LastIndexOf(delimiter);
+        if (dex != -1)
+        {
+            string s = SH.Substring(nameSolution, 0, dex);
+            return s;
+        }
+        return nameSolution;
+    }
 }

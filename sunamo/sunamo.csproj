@@ -26,6 +26,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Collections\ExtensionSortedCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ComputerSizeUnits.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\FileInfoLite.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IListBoxHelperItem.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\Rot13.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperMultiShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\Text\LoremIpsumGenerator.cs" />
