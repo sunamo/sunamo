@@ -292,6 +292,7 @@ public class SunamoStrings
     /// Nebyly nalezeny žádné data k zobrazení
     /// </summary>
     public static string messageIfEmpty = null;
+    public static string IsNotInRange = "is not in range";
 
     public static string MessageIfEmpty(string p)
     {

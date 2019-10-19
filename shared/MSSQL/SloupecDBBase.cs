@@ -157,9 +157,9 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
         StringBuilder sb = new StringBuilder();
         sb.AppendLine("Datový typ" + ": " + databaseLayer.usedTa[ typ]);
         sb.AppendLine("Název" + ": " + _nazev);
-        sb.AppendLine("Je primárním klíčem" + ": " + BTS.BoolToStringCs(primaryKey));
-        sb.AppendLine("Nemusí být zadána" + ": " + BTS.BoolToStringCs(canBeNull));
-        sb.AppendLine("Musí být jedinečná" + ": " + BTS.BoolToStringCs(mustBeUnique));
+        sb.AppendLine("Je primárním klíčem" + ": " + BTS.BoolToStringEn(primaryKey));
+        sb.AppendLine("Nemusí být zadána" + ": " + BTS.BoolToStringEn(canBeNull));
+        sb.AppendLine("Musí být jedinečná" + ": " + BTS.BoolToStringEn(mustBeUnique));
         sb.AppendLine();
         if (referencesTable != null)
         {

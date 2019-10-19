@@ -609,7 +609,7 @@ public class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www, string text)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + AllStrings.gt + text + "</a>";
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + text + "</a>";
     }
 
     public static string AnchorWithHttp(bool targetBlank, string www, string text)

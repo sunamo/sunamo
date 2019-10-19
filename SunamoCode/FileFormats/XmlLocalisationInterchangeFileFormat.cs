@@ -65,6 +65,22 @@ namespace SunamoCode
 
         public static string ReturnEndingOn(string fn, List<string> list, out List<string> idsEndingOn)
         {
+            /*
+ 
+! - always text
+. - Always text
+( - more often text
+) - more often text
+* - 50/50
+, -  50/50
+- Always text
+
+Into A1 insert:
++ - all code
+' - alwyas code
+/ - always path
+             */
+
             list = CA.ChangeContent(list, t => SH.RemoveAfterFirst(t, AllChars.space));
 
             idsEndingOn = new List<string>();

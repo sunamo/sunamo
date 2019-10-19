@@ -58,7 +58,7 @@ public static class MSTableRowParse
 
     public static string GetBoolS(object[] o, int p)
     {
-        return BTS.BoolToStringCs(GetBool(o,p));
+        return BTS.BoolToStringEn(GetBool(o,p));
     }
 
     public static DateTime GetDateTime(object[] o, int p)

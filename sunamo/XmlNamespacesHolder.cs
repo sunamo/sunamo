@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 public class XmlNamespacesHolder
 {
@@ -84,6 +85,33 @@ xml=http://www.w3.org/XML/1998/namespace
         var outer = xd.OuterXml;
 
         return xd;
+    }
+
+    /// <summary>
+    /// Return XmlDocument but dont use return value
+    /// Just use XHelper class, because with XmlDocument is still not working
+    /// </summary>
+    /// <param name="content"></param>
+    /// <returns></returns>
+    public XDocument ParseAndRemoveNamespacesXDocument(string content)
+    {
+        var xd = ParseAndRemoveNamespacesXmlDocument(content);
+        return new XDocument(xd.OuterXml);
+    }
+
+    /// <summary>
+    /// A3 is default prefix because cant be empty anytime (/:Tag or /Tag dont working but /prefix:Tag yes)
+    /// Return XmlDocument but dont use return value
+    /// Just use XHelper class, because with XmlDocument is still not working
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="nt"></param>
+    /// <param name="defaultPrefix"></param>
+    /// <returns></returns>
+    public XDocument ParseAndRemoveNamespacesXDocument(string content, XmlNameTable nt, string defaultPrefix = "x")
+    {
+        var xd = ParseAndRemoveNamespacesXmlDocument(content, nt, defaultPrefix);
+        return new XDocument(xd.OuterXml);
     }
 }
 

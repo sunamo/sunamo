@@ -72,7 +72,7 @@ public partial class XHelper
         }
 
         XmlNamespacesHolder h = new XmlNamespacesHolder();
-        XDocument doc = null;// h.ParseAndRemoveNamespacesXmlDocument(xmlFormat);
+        XDocument doc =  h.ParseAndRemoveNamespacesXDocument(xmlFormat);
 
         
         var formatted = doc.ToString();

@@ -15,7 +15,7 @@ public static partial class EnumHelper
     public static List<T> GetValues<T>()
             where T : struct
     {
-        return GetValues<T>(typeof(T), false);
+        return GetValues<T>( false, true);
     }
     /// <summary>
     /// Get all values expect of Nope/None
@@ -23,9 +23,10 @@ public static partial class EnumHelper
     /// <typeparam name = "T"></typeparam>
     /// <param name = "type"></param>
     /// <returns></returns>
-    public static List<T> GetValues<T>(Type type, bool IncludeNope)
+    public static List<T> GetValues<T>( bool IncludeNope, bool IncludeShared)
         where T : struct
     {
+        var type = typeof(T);
         var values = Enum.GetValues(type).Cast<T>().ToList();
         T nope;
         if (!IncludeNope)
@@ -33,6 +34,24 @@ public static partial class EnumHelper
             if (Enum.TryParse<T>(CodeElementsConstants.NopeValue, out nope))
             {
                 values.Remove(nope);
+            }
+        }
+
+        if (!IncludeShared)
+        {
+            if (type.Name == "MySites")
+            {
+                if (Enum.TryParse<T>("Shared", out nope))
+                {
+                    values.Remove(nope);
+                }
+            }
+            else
+            {
+                if (Enum.TryParse<T>("Sha", out nope))
+                {
+                    values.Remove(nope);
+                }
             }
         }
 

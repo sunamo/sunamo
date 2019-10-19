@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A39BC18-A077-4B14-AC41-A7BE3A91637C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolutionsIndexer</RootNamespace>
+    <AssemblyName>SolutionsIndexer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\sunamo\SolutionsIndexer\VpsHelper.cs" />
+    <Compile Include="Data\Project\ProjectFolderSerialize.cs" />
+    <Compile Include="Data\Project\ProjectFoldersSerialize.cs" />
+    <Compile Include="Data\SolutionFolder\SolutionFolder.cs" />
+    <Compile Include="Data\SolutionFolder\SolutionFolderSerialize.cs" />
+    <Compile Include="Data\SolutionFolder\SolutionFolderWithFiles.cs" />
+    <Compile Include="FoldersWithSolutions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionsIndexerConsts.cs" />
+    <Compile Include="SolutionsIndexerHelper.cs" />
+    <Compile Include="SolutionsIndexerSettings.cs" />
+    <Compile Include="SolutionsIndexerStrings.cs" />
+    <Compile Include="VpsHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo\desktop\desktop.csproj">
+      <Project>{772cacc2-80f3-4948-a443-3043195836e2}</Project>
+      <Name>desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\duo\duo.csproj">
+      <Project>{364960c7-21df-4143-b89a-38fe58210db9}</Project>
+      <Name>duo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\shared\shared.csproj">
+      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj">
+      <Project>{03e70a23-8bdb-4f48-bfb3-ac361fbf9889}</Project>
+      <Name>SunamoCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
+      <Project>{0f7d74db-c73d-4b96-8176-96c0867750d1}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\win\win.csproj">
+      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
+      <Name>win</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

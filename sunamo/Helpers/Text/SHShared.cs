@@ -41,6 +41,26 @@ public static partial class SH
         return null;
     }
 
+    public static string ReplaceAllExceptPrefixed(string t, string to, string from, string fromCannotBePrefixed)
+    {
+        var occ = SH.ReturnOccurencesOfString(t, from);
+        for (int i = occ.Count - 1; i >= 0; i--)
+        {
+            var item = occ[i];
+            var begin = item - fromCannotBePrefixed.Length;
+            if (begin > -1)
+            {
+                var prefix = t.Substring(begin, fromCannotBePrefixed.Length);
+                if (prefix != fromCannotBePrefixed)
+                {
+                    t = ReplaceByIndex(t, to, item, from.Length);
+                }
+            }
+        }
+
+        return t;
+    }
+
     private static Type s_type = typeof(SH);
 
     public static string NullToStringOrDefault(object n)
@@ -272,6 +292,14 @@ public static partial class SH
         return SH.ReplaceOnce(t,what, forWhat);
     }
 
+    /// <summary>
+    /// Overload is without bool pairLines
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <param name="zaCo"></param>
+    /// <param name="co"></param>
+    /// <param name="pairLines"></param>
+    /// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co, bool pairLines)
     {
         if (pairLines)

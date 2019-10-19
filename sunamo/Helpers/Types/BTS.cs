@@ -677,7 +677,7 @@ public static partial class BTS
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static string BoolToStringCs(bool p, bool lower = false)
+    public static string BoolToStringEn(bool p, bool lower = false)
     {
         string vr = null;
         if (p)

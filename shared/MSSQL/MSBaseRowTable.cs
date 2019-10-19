@@ -59,7 +59,7 @@ public class MSBaseRowTable
     }
 
     /// <summary>
-    /// Vrací výstup metody BoolToStringCs - tedu ano/ne. Když bude null, G Ne.
+    /// Vrací výstup metody BoolToStringEn - tedu ano/ne. Když bude null, G Ne.
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>

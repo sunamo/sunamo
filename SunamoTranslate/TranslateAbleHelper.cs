@@ -53,8 +53,13 @@ public class TranslateAbleHelper
     /// <param name="charIndex"></param>
     /// <param name="txt"></param>
     /// <returns></returns>
-    public static bool IsToTranslate(SplitStringsData splitStringsData, string between, int charIndex, List<string> lines)
+    public static bool IsToTranslate(SplitStringsData splitStringsData, string between, int charIndex, List<string> lines, AllowStrings allowString = null)
     {
+        if (allowString == null)
+        {
+            allowString = new AllowStrings();
+        }
+        
         between = between.Trim();
         result = true;
         s_between = between;
@@ -438,7 +443,7 @@ public class TranslateAbleHelper
         var two = between[1];
 
         //<ItemsPanelTemplate   xmlns, <br /, Needed before replace show strings which will be traslate and not - swithc between them
-        if (AllChars.lt == one)
+        if (AllChars.lt == one && !allowString.tag)
         {
             result = false; return result;
         }

@@ -5,6 +5,8 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string BDoporučenáVerzeNebylaDosudNauploadovánaB = "BDoporučenáVerzeNebylaDosudNauploadovánaB" ; 
+
 	public const string Scheme = "Scheme" ; 
 
 	public const string Scala = "Scala" ; 
