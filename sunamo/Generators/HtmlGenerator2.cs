@@ -663,25 +663,25 @@ public class HtmlGenerator2 : HtmlGenerator
     /// </summary>
     /// <param name="dWordCount"></param>
     /// <returns></returns>
-    public static string GetWordsForTagCloud(Dictionary<string, short> dWordCount)
+    public static string GetWordsForTagCloud(Dictionary<string, short> dWordCount, string prefixWithDot)
     {
         string nameJavascriptMethod = "AfterWordCloudClick";
-        return GetWordsForTagCloud(dWordCount, nameJavascriptMethod);
+        return GetWordsForTagCloud(dWordCount, nameJavascriptMethod, prefixWithDot);
     }
 
-    public static string GetWordsForTagCloudManageTags(Dictionary<string, short> dWordCount)
+    public static string GetWordsForTagCloudManageTags(Dictionary<string, short> dWordCount, string prefixWithDot)
     {
         string nameJavascriptMethod = "AfterWordCloudClick2";
-        return GetWordsForTagCloud(dWordCount, nameJavascriptMethod);
+        return GetWordsForTagCloud(dWordCount, nameJavascriptMethod, prefixWithDot);
     }
 
-    private static string GetWordsForTagCloud(Dictionary<string, short> dWordCount, string nameJavascriptMethod)
+    private static string GetWordsForTagCloud(Dictionary<string, short> dWordCount, string nameJavascriptMethod, string prefixWithDot)
     {
         HtmlGenerator hg = new HtmlGenerator();
         foreach (var item in dWordCount)
         {
             string bezmezer = item.Key.Replace(AllStrings.space, "");
-            hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript" + ":" + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
+            hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript" + ":" + prefixWithDot + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
             hg.WriteRaw(item.Key);
             hg.TerminateTag("a");
             hg.WriteRaw(" &" + "nbsp" + "; ");
