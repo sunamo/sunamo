@@ -7976,13 +7976,13 @@
           <source></source>
           <target state="translated">Versions</target>
         </trans-unit>
-        <trans-unit id="ApplicationsWithTag" translate="yes" xml:space="preserve">
+        <trans-unit id="ApplicationWithTag" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Application with tag</target>
+          <target state="translated">Applications with tag</target>
         </trans-unit>
         <trans-unit id="AnApplicationWithTheSpanTag" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">An application with the &lt;span&gt;tag&lt;/span&gt;</target>
+          <target state="translated">An applications with the &lt;span&gt;tag&lt;/span&gt;</target>
         </trans-unit>
         <trans-unit id="NoAppWithTag" translate="yes" xml:space="preserve">
           <source></source>
