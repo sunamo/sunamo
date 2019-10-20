@@ -7976,7 +7976,7 @@
           <source></source>
           <target state="translated">Versions</target>
         </trans-unit>
-        <trans-unit id="ApplicationWithTag" translate="yes" xml:space="preserve">
+        <trans-unit id="ApplicationsWithTag" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Application with tag</target>
         </trans-unit>
