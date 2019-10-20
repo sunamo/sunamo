@@ -119,15 +119,15 @@ public static partial class NH
     /// <returns></returns>
     private static object ReturnZero<T>()
     {
-        if (typeof(T) == Consts.tDouble)
+        if (typeof(T) == Types.tDouble)
         {
             return Consts.zeroDouble;
         }
-        else if (typeof(T) == Consts.tInt)
+        else if (typeof(T) == Types.tInt)
         {
             return Consts.zeroInt;
         }
-        else if (typeof(T) == Consts.tFloat)
+        else if (typeof(T) == Types.tFloat)
         {
             return Consts.zeroFloat;
         }

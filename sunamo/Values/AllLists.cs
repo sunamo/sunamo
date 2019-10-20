@@ -19,6 +19,12 @@ namespace sunamo.Values
         public static List<string> genericDomains = CA.ToListString("." + "com", "." + "org", ".net");
 
         public static List<string> htmlEntities = null;
+        public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
+           AllExtensions.bmp,
+           AllExtensions.jpg,
+           AllExtensions.jpeg);
+        public static readonly List<string> cssTemplatesSites = new List<string>(CA.ToListString("justfreetemplates.com", "templatemo.com", "free-css.com", "templated.co", "w3layouts.com"));
+        public static readonly string[] numberPoints = new string[] { AllStrings.comma, AllStrings.dot };
 
         static AllLists()
         {

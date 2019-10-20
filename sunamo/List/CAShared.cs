@@ -395,7 +395,7 @@ public static partial class CA
 
                 //var t1 = item.GetType();
                 //var t2 = typeof(IEnumerable);
-                //if (RH.IsOrIsDeriveFromBaseClass(t1 , t2, false) && t1 != Consts.tString)
+                //if (RH.IsOrIsDeriveFromBaseClass(t1 , t2, false) && t1 != Types.tString)
                 //{
                 //    //result.AddRange(item as IEnumerable);
                 //    var item3 = (IEnumerable)item;

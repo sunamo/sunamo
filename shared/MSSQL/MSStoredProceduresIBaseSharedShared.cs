@@ -54,7 +54,7 @@ public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, str
             param.Value = o;
         }
 
-        else if (o.GetType() == Consts.tString || o.GetType() == Consts.tChar)
+        else if (o.GetType() == Types.tString || o.GetType() == Types.tChar)
         {
             string _ = o.ToString();
             comm.Parameters.AddWithValue("@p" + i.ToString(), MSStoredProceduresI.ConvertToVarChar(_));

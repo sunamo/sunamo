@@ -652,7 +652,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             pricist = 1;
         }
-        else if (idt == Consts.tByte)
+        else if (idt == Types.tByte)
         {
             pricist = 1;
         }
@@ -939,17 +939,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         Type t = o[0].GetType();
         comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(ab));
         AddCommandParameteres(comm, 0, ab);
-        if (t == Consts.tInt)
+        if (t == Types.tInt)
         {
             //snt = SqlNumericType.Int;
             return ReadValuesInt(comm);
         }
-        else if (t == Consts.tLong)
+        else if (t == Types.tLong)
         {
             //snt = SqlNumericType.Long;
             return ReadValuesLong(comm);
         }
-        else if (t == Consts.tShort)
+        else if (t == Types.tShort)
         {
             //snt = SqlNumericType.Short;
             return ReadValuesShort(comm);
@@ -2224,21 +2224,21 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr = BTS.GetMinValueForType(idt);
             }
 
-            if (idt == Consts.tShort)
+            if (idt == Types.tShort)
             {
                 //short s = (short)vr;
                 return vr;
             }
-            else if (idt == Consts.tInt)
+            else if (idt == Types.tInt)
             {
                 //int nt = (int)vr;
                 return vr;
             }
-            else if (idt == Consts.tByte)
+            else if (idt == Types.tByte)
             {
                 return vr;
             }
-            else if (idt == Consts.tLong)
+            else if (idt == Types.tLong)
             {
                 //long lng = (long)vr;
                 return vr;

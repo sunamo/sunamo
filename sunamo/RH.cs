@@ -285,7 +285,7 @@ public class RH
     /// <returns></returns>
     public static bool IsOrIsDeriveFromBaseClass(Type children, Type parent, bool a1CanBeString = true)
     {
-        if (children == Consts.tString && !a1CanBeString)
+        if (children == Types.tString && !a1CanBeString)
         {
             return false;
         }

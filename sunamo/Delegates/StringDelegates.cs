@@ -18,7 +18,7 @@ namespace sunamo.Delegates
 
         public static bool IsNumber(string input, string value, bool invert)
         {
-            input = SH.ReplaceAll(input, "", Consts.numberPoints);
+            input = SH.ReplaceAll(input, "", AllLists.numberPoints);
             long l = 0;
             return BTS.Invert(long.TryParse(input, out l), invert);
         }

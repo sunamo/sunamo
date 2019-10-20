@@ -55,27 +55,27 @@ public partial class MSDatabaseLayer
     /// <returns></returns>
     public static string ConvertObjectToDotNetType(object p)
     {
-        if (p.GetType() == Consts.tString)
+        if (p.GetType() == Types.tString)
         {
             return "string";
         }
-        else if (p.GetType() == Consts.tInt)
+        else if (p.GetType() == Types.tInt)
         {
             return "int";
         }
-        else if (p.GetType() == Consts.tBool)
+        else if (p.GetType() == Types.tBool)
         {
             return "bool";
         }
-        else if (p.GetType() == Consts.tDateTime)
+        else if (p.GetType() == Types.tDateTime)
         {
             return "DateTime";
         }
-        else if (p.GetType() == Consts.tBinary)
+        else if (p.GetType() == Types.tBinary)
         {
             return "byte" + "[]";
         }
-        else if (p.GetType() == Consts.tFloat)
+        else if (p.GetType() == Types.tFloat)
         {
             return "float";
         }
@@ -83,43 +83,43 @@ public partial class MSDatabaseLayer
         {
             return p.GetType().Name;
         }
-        else if (p.GetType() == Consts.tDouble)
+        else if (p.GetType() == Types.tDouble)
         {
             return "double";
         }
-        else if (p.GetType() == Consts.tDecimal)
+        else if (p.GetType() == Types.tDecimal)
         {
             return "decimal";
         }
-        else if (p.GetType() == Consts.tSbyte)
+        else if (p.GetType() == Types.tSbyte)
         {
             return "sbyte";
         }
-        else if (p.GetType() == Consts.tSbyte)
+        else if (p.GetType() == Types.tSbyte)
         {
             return "byte";
         }
-        else if (p.GetType() == Consts.tChar)
+        else if (p.GetType() == Types.tChar)
         {
             return "char";
         }
-        else if (p.GetType() == Consts.tShort)
+        else if (p.GetType() == Types.tShort)
         {
             return "short";
         }
-        else if (p.GetType() == Consts.tUshort)
+        else if (p.GetType() == Types.tUshort)
         {
             return "ushort";
         }
-        else if (p.GetType() == Consts.tUint)
+        else if (p.GetType() == Types.tUint)
         {
             return "uint";
         }
-        else if (p.GetType() == Consts.tLong)
+        else if (p.GetType() == Types.tLong)
         {
             return "long";
         }
-        else if (p.GetType() == Consts.tUlong)
+        else if (p.GetType() == Types.tUlong)
         {
             return "ulong";
         }
@@ -200,27 +200,27 @@ public partial class MSDatabaseLayer
     /// <returns></returns>
     public static string ConvertObjectToDotNetType(Type p)
     {
-        if (p == Consts.tString)
+        if (p == Types.tString)
         {
             return "string";
         }
-        else if (p == Consts.tInt)
+        else if (p == Types.tInt)
         {
             return "int";
         }
-        else if (p == Consts.tBool)
+        else if (p == Types.tBool)
         {
             return "bool";
         }
-        else if (p == Consts.tDateTime)
+        else if (p == Types.tDateTime)
         {
             return "DateTime";
         }
-        else if (p == Consts.tBinary)
+        else if (p == Types.tBinary)
         {
             return "byte" + "[]";
         }
-        else if (p == Consts.tFloat)
+        else if (p == Types.tFloat)
         {
             return "float";
         }
@@ -228,43 +228,43 @@ public partial class MSDatabaseLayer
         {
             return p.Name;
         }
-        else if (p == Consts.tDouble)
+        else if (p == Types.tDouble)
         {
             return "double";
         }
-        else if (p == Consts.tDecimal)
+        else if (p == Types.tDecimal)
         {
             return "decimal";
         }
-        else if (p == Consts.tSbyte)
+        else if (p == Types.tSbyte)
         {
             return "sbyte";
         }
-        else if (p == Consts.tByte)
+        else if (p == Types.tByte)
         {
             return "byte";
         }
-        else if (p == Consts.tChar)
+        else if (p == Types.tChar)
         {
             return "char";
         }
-        else if (p == Consts.tShort)
+        else if (p == Types.tShort)
         {
             return "short";
         }
-        else if (p == Consts.tUshort)
+        else if (p == Types.tUshort)
         {
             return "ushort";
         }
-        else if (p == Consts.tUint)
+        else if (p == Types.tUint)
         {
             return "uint";
         }
-        else if (p == Consts.tLong)
+        else if (p == Types.tLong)
         {
             return "long";
         }
-        else if (p == Consts.tUlong)
+        else if (p == Types.tUlong)
         {
             return "ulong";
         }

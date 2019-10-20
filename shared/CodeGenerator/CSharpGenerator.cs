@@ -571,11 +571,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
             keyS = item.Key.ToString();
             valueS = item.Value.ToString();
 
-            if (tKey == Consts.tString)
+            if (tKey == Types.tString)
             {
                 keyS = SH.WrapWithQm(keyS);
             }
-            else if (tKey == Consts.tChar)
+            else if (tKey == Types.tChar)
             {
                 keyS = SH.WrapWith(keyS, '\'');
             }
@@ -584,11 +584,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
                 keyS = key.ToString();
             }
 
-            if (tValue == Consts.tString)
+            if (tValue == Types.tString)
             {
                 valueS = SH.WrapWithQm(valueS);
             }
-            else if (tValue == Consts.tChar)
+            else if (tValue == Types.tChar)
             {
                 valueS = SH.WrapWith(valueS, '\'');
             }

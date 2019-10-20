@@ -441,11 +441,11 @@ public static partial class SH
     {
         string s = delimiter.ToString();
         StringBuilder sb = new StringBuilder();
-        if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Consts.tString)
+        if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Types.tString)
         {
             sb.Append(SH.ListToString(parts.FirstOrNull()) + s);
         }
-        else if(parts.GetType() == Consts.tString)
+        else if(parts.GetType() == Types.tString)
         {
             return parts.ToString();
         }
@@ -1034,7 +1034,7 @@ public static partial class SH
         string text;
         var valueType = value.GetType();
         text = value.ToString();
-        if (value is IEnumerable && valueType != Consts.tString && valueType != Consts.tStringBuilder && !(value is IEnumerable<char>))
+        if (value is IEnumerable && valueType != Types.tString && valueType != Types.tStringBuilder && !(value is IEnumerable<char>))
         {
             if (delimiter == null)
             {

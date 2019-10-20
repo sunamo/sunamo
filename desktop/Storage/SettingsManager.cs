@@ -186,7 +186,7 @@ namespace desktop.Storage
                 attributes.Add(attribute.GetType(), attribute);
 
                 SettingsProperty property = new SettingsProperty(propertyName, //name
-                    defValueForDependencyProperty == null ? Consts.tObject : defValueForDependencyProperty.GetType(), //propertyType
+                    defValueForDependencyProperty == null ? Types.tObject : defValueForDependencyProperty.GetType(), //propertyType
                     providers["LocalFileSettingsProvider"],
                     false, //isReadOnly
                     null, // defaultValue
