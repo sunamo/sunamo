@@ -40,15 +40,15 @@ using System.Text;
         public const string nulled = "(null)";
 
         public const string HttpLocalhostSlash = "https://localhost" + "/";
-        public const string HttpSunamoCzSlash = "https://www.sunamo.cz" + "/";
+        public const string HttpSunamoCzSlash = "https://sunamo.cz" + "/";
     /// <summary>
     /// localhost
     /// </summary>
         public const string localhost = "localhost";
 
-        public const string HttpWwwCzSlash = "https://www.sunamo.cz" + "/";
+        public const string HttpWwwCzSlash = "https://sunamo.cz" + "/";
         public const string HttpCzSlash = "https://sunamo.cz" + "/";
-        public const string HttpWwwCz = "https://www.sunamo.cz";
+        public const string HttpWwwCz = "https://sunamo.cz";
     public const string httpLocalhost = "https://localhost/";
 
     /// <summary>
@@ -56,7 +56,7 @@ using System.Text;
     /// Without slash
     /// </summary>
     public const string Cz = "sunamo.cz";
-        public const string WwwCz = "www.sunamo.cz";
+        public const string WwwCz = "sunamo.cz";
 
         public const string CzSlash = "sunamo.cz" + "/";
         public const string DotCzSlash = "." + "sunamo.cz" + "/";
