@@ -216,10 +216,13 @@ namespace SunamoYt
         static Dictionary<SongFromInternet, float> GetVideos(ref List<SongFromInternet> nameOfAllYTVideos, int maxResults, string nameArtist, string nameSong, ref YouTubeService youtube)
         {
             Dictionary<SongFromInternet, float> sm = null;
+            sm = new Dictionary<SongFromInternet, float>();
+            
+
             List<string> addedYtCode = new List<string>();
             //, " Lyrics", " Lyrics Video", " Live", " Live At"
             List<string> added = new List<string>(new string[] { "" });
-            sm = new Dictionary<SongFromInternet, float>();
+            
             bool ukoncit = false;
             nameOfAllYTVideos = new List<SongFromInternet>();
 
