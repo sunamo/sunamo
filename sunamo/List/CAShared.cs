@@ -3,6 +3,7 @@ using sunamo.Values;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -69,6 +70,11 @@ public static partial class CA
     {
         List<T> foundedDuplicities;
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
+    }
+
+    public static void FirstCharUpper(List<string> s)
+    {
+        CA.ChangeContent(s, r => SH.FirstCharUpper(r));
     }
 
     /// <summary>

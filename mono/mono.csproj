@@ -45,7 +45,7 @@
       <Name>duo</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{85C87766-58CE-4A02-AC0D-372C74C47C72}</Project>
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>

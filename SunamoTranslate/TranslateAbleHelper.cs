@@ -309,12 +309,12 @@ public class TranslateAbleHelper
             result = false; return result;
         }
 
-        if (SunamoTranslateTypes.BasicImageExtensions.Contains(between))
+        if (SunamoTranslateConsts.allBasicTypes.Contains(between))
         {
             result = false; return result;
         }
 
-        if (SunamoTranslateTypes.BasicImageExtensionsFull.Contains(between))
+        if (SunamoTranslateConsts.allBasicTypesFull.Contains(between))
         {
             result = false; return result;
         }

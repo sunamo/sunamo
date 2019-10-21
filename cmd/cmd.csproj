@@ -65,7 +65,7 @@
       <Name>shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{fb0e4e68-3447-4762-9fbe-8a5762a8a5ef}</Project>
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <NoWarn>1701;1702;1998;0108</NoWarn>
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
+  <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Collections\ExtensionSortedCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ComputerSizeUnits.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\FileInfoLite.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IListBoxHelperItem.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\Rot13.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperMultiShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\LoremIpsumGenerator.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\PhotoToUpload.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertRot21.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\DateTimeFormatStyles.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertMonthNumberString.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCodeShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperCsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\TT.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlParserSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\PreviousNext.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Web\YouTubeShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGeneratorExtended.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\AllItems.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperFormalizedWithTShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\HtmlTemplatesShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\XmlGeneratorSelective.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IParser.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\CreateHtmlDocumentInitData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Parsing\ParserTwoValues.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertCamelConvention.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\SunamoJsonShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\XHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\ImageHelperBase.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\Paths\SourceCodePaths.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\GitBashBuilder.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\PpkOnDriveBase.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\PpkOnDriveT.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\PpkOnDrive.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\TypedDummyLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\Paths\DefaultPaths.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\LoggerBaseShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\TwoState.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IUserControlInWindow.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperSunamoCzShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\MusicTitle.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperTextShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\AppDataBaseShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\AspxHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\ValueLabel.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\TextBuilder.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\Text\TextOutputGenerator.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Values\TestHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\TimestampShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\DateTimeFormat.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\TWithName.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Generators\ControlNameGeneratorShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ListOperation.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\NotifyChangesCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Values\Types.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\InitApp.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\TypedSunamoLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\List\DictionaryHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\SunamoTemplateLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Essential\SunamoLogger.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\HtmlHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IKeysHandler.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IPanel.cs" />
+    <Compile Remove="Attributes\bin\**" />
+    <EmbeddedResource Remove="Attributes\bin\**" />
+    <EmbeddedResource Remove="Converters\**" />
+    <None Remove="Attributes\bin\**" />
+    <None Remove="Converters\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="MultilingualResources\sunamo.cs-CZ.xlf" />
+    <None Remove="MultilingualResources\sunamo.en-US.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MultilingualResources\sunamo.cs-CZ.xlf" />
+    <EmbeddedResource Include="MultilingualResources\sunamo.en-US.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Diacritics" Version="2.0.19240.3" />
+    <PackageReference Include="fmdev.XliffParser" Version="0.5.6" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Plugin.NetStandardStorage" Version="1.0.7" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mixins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\duo\duo.csproj" />
+    <ProjectReference Include="..\ResourcesShared\ResourcesShared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Diacritics">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\netstandard2.0\Diacritics.dll</HintPath>
+    </Reference>
+    <Reference Include="fmdev.XliffParser">
+      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\net45\fmdev.XliffParser.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+      <SpecificVersion>false</SpecificVersion>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.1\PresentationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\dll\YamlDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

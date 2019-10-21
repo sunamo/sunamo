@@ -14,8 +14,8 @@ public class SunamoTranslateConsts
 
     static SunamoTranslateConsts()
     {
-        allBasicTypes = Types.BasicImageExtensions.Select(d => d.Name).ToList();
-        allBasicTypesFull = Types.BasicImageExtensions.Select(d => d.FullName).ToList();
+        allBasicTypes = Types.allBasicTypes.Select(d => d.Name).ToList();
+        allBasicTypesFull = Types.allBasicTypes.Select(d => d.FullName).ToList();
     }
 
     public static PpkOnDrive alwaysStringsToTranslate = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Settings, "alwaysStringsTranslateStrings.txt"));

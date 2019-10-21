@@ -117,6 +117,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    public bool SelectExistsDatabase(string p)
+    {
+        object v = ExecuteScalar(new SqlCommand("select db_id('" + p + "');"));
+        return TryParse.Integer.Instance.TryParseInt(v.ToString());
+    }
+
+    public void CreateDatabase(string p)
+    {
+        ExecuteNonQuery("Create Database [" + p + AllStrings.rsf);
+    }
+
     /// <summary>
     /// Počítá od nuly
     /// Mohu volat i s A2 null, v takovém případě se nevykoná žádný kód
@@ -283,6 +294,32 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public int Delete(string table, string sloupec, object id)
     {
         return ExecuteNonQuery(string.Format("DELETE FROM {0} WHERE {1} = @p0", table, sloupec), id);
+    }
+
+    /// <summary>
+    /// Vrací A2
+    /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
+    /// Používej tehdy když chceš určit index na který vkládat.
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="IDUsers"></param>
+    /// <param name="sloupce"></param>
+    public void InsertToRow3(string tabulka, long IDUsers, params object[] sloupce2)
+    {
+        // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
+        //var sloupce2 = CA.TwoDimensionParamsIntoOne(sloupce);
+        string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce2));
+
+        SqlCommand comm = new SqlCommand(SH.Format2("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn);
+        comm.Parameters.AddWithValue("@p0", IDUsers);
+        int to = sloupce2.Length();
+        for (int i = 0; i < to; i++)
+        {
+            object o = sloupce2[i];
+            AddCommandParameter(comm, i + 1, o);
+            //DateTime.Now.Month;
+        }
+        comm.ExecuteNonQuery();
     }
 
     /// <summary>

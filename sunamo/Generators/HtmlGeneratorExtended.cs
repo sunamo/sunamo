@@ -1,6 +1,5 @@
 ﻿using ResourcesShared;
 using sunamo.Constants;
-using sunamo.Properties;
 using System;
 
 public class HtmlGeneratorExtended : HtmlGenerator

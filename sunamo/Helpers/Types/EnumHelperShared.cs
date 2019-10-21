@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public static partial class EnumHelper
 {
     /// <summary>
-    /// GET WITHOUT NOPE, USE METHOD WITH MORE ARGS
+    /// GET WITHOUT NOPE (parse string, not numeric), USE METHOD WITH MORE ARGS
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>

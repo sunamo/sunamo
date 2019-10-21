@@ -15,6 +15,9 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Microsoft.Scripting">
       <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\sunamo\dll\Microsoft.Scripting.dll</HintPath>
     </Reference>
