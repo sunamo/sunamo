@@ -538,6 +538,7 @@
     <Compile Include="List\DictionaryHelperShared.cs" />
     <Compile Include="LoggerAbstract\LogMessageAbstract.cs" />
     <Compile Include="LoggerAbstract\LogServiceAbstract.cs" />
+    <Compile Include="MimeTypes.cs" />
     <Compile Include="Parsing\Parse.cs" />
     <Compile Include="Parsing\ParseDefault.cs" />
     <Compile Include="Parsing\ParserTwoValues.cs" />

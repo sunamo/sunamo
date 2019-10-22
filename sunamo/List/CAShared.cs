@@ -77,6 +77,11 @@ public static partial class CA
         CA.ChangeContent(s, r => SH.FirstCharUpper(r));
     }
 
+    public static void FirstCharOfEveryWordUpperDash(List<string> appNames)
+    {
+        CA.ChangeContent(appNames, r => SH.FirstCharOfEveryWordUpperDash(r));
+    }
+
     /// <summary>
     /// Return null if A1 will be null
     /// </summary>

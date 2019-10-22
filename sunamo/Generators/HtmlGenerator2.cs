@@ -682,7 +682,7 @@ public class HtmlGenerator2 : HtmlGenerator
         {
             string bezmezer = item.Key.Replace(AllStrings.space, "");
             hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript" + ":" + prefixWithDot + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
-            hg.WriteRaw(item.Key);
+            hg.WriteRaw(SH.FirstCharOfEveryWordUpperDash( item.Key));
             hg.TerminateTag("a");
             hg.WriteRaw(" &" + "nbsp" + "; ");
         }

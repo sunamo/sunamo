@@ -2302,4 +2302,27 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
         }
         return nameSolution;
     }
+
+    /// <summary>
+    /// Return joined with space
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string FirstCharOfEveryWordUpperDash(string v)
+    {
+        return FirstCharOfEveryWordUpper(v, AllChars.dash);
+    }
+
+    /// <summary>
+    /// Return joined with space
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="dash"></param>
+    /// <returns></returns>
+    private static string FirstCharOfEveryWordUpper(string v, char dash)
+    {
+        var p = SH.Split(v, dash);
+        CA.FirstCharUpper(p);
+        return SH.JoinSpace(p);
+    }
 }

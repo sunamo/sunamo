@@ -50,6 +50,11 @@ public partial class UH
         return vr.ToString().TrimEnd(AllChars.slash);
     }
 
+    public static string GetExtension(string image)
+    {
+        return FS.GetExtension(image);
+    }
+
     public static string UrlEncode(string co)
     {
         return WebUtility.UrlEncode(co.Trim());

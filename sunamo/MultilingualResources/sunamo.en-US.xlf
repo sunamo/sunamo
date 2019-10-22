@@ -4217,7 +4217,7 @@
         </trans-unit>
         <trans-unit id="SomeOfYourFavoriteLyrics" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Some of your favorite lyrics:</target>
+          <target state="translated">Some of favorite lyrics:</target>
         </trans-unit>
         <trans-unit id="SomeOfTheFavoriteSongTranslations" translate="yes" xml:space="preserve">
           <source></source>
