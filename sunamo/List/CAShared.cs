@@ -1512,4 +1512,12 @@ public static List<string> EnsureBackslash(List<string> eb)
             }
         }
     }
+
+    public static IEnumerable<List<T>> SplitList<T>(List<T> locations, int nSize = 30)
+    {
+        for (int i = 0; i < locations.Count; i += nSize)
+        {
+            yield return locations.GetRange(i, Math.Min(nSize, locations.Count - i));
+        }
+    }
 }

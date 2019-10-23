@@ -2741,8 +2741,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return result != null;
     }
 
+    //public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, string whereColumn, object whereValue)
+    //{
+    //    return SelectCellDataTableShortOneRow(signed, table, vracenySloupec, new AB(whereColumn, whereValue));
+    //}
 
-
+    /// <summary>
+    /// Exists method without AB but has switched whereColumn and whereValue
+    /// </summary>
+    /// <param name="signed"></param>
+    /// <param name="table"></param>
+    /// <param name="vracenySloupec"></param>
+    /// <param name="abc"></param>
+    /// <returns></returns>
     public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
     {
         string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);

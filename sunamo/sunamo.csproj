@@ -97,6 +97,7 @@
     <Compile Include="Collections\PpkOnDrive.cs" />
     <Compile Include="Collections\PpkOnDriveBase.cs" />
     <Compile Include="Collections\PpkOnDriveT.cs" />
+    <Compile Include="Collections\ResolvedDictionary.cs" />
     <Compile Include="Collections\SafeStringCollection.cs" />
     <Compile Include="Collections\SunamoDictionary.cs" />
     <Compile Include="Collections\SunamoDictionarySort.cs" />

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-
+/// <summary>
+/// This is only one implement IList
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class NotifyChangesCollection<T> : IList<T>
 {
     /// <summary>

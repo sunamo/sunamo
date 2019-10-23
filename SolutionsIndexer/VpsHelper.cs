@@ -11,7 +11,7 @@ public class VpsHelper
 {
     const string path = @"c:\_";
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
-    static List<string> list = CA.ToListString("Credentials", "Credentials.web", "ParseChromeAPIs", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.web", "SunamoCzAdmin", "webelieve.cz");
+    static List<string> list = CA.ToListString("Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.web", "SunamoCzAdmin", "SunamoSmartTools", "webelieve.cz");
 
     public static void PushAll()
     {
