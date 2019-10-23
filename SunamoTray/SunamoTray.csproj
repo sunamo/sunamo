@@ -49,11 +49,5 @@
     <Compile Include="NotifyIconHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

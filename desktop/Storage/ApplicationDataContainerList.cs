@@ -299,7 +299,11 @@ public class ApplicationDataContainerList : IEnumerable
         StringBuilder sb = new StringBuilder();
         foreach (var item in data)
         {
-            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, item.Value.B)));
+            var value = item.Value.B;
+            
+                value = SH.ListToString(value, AllStrings.comma);
+            
+            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, value)));
         }
         TF.SaveFile(sb.ToString(), path);
     }
