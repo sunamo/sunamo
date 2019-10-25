@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\shared\shared.csproj" />
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
   </ItemGroup>
 
 </Project>

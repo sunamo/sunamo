@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:desktop.Controls.Visualization"
+             xmlns:desktopControlsPanels="clr-namespace:desktop.Controls.Panels"
              mc:Ignorable="d" 
              x:Name="mw"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -21,8 +22,8 @@
         <!--<Grid Grid.Column="0" x:Name="gridLeft"></Grid>-->
         <!--<Grid Grid.Column="1" x:Name="grid">-->
             <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            <Grid x:Name="grid">
-            </Grid>
+            <desktopControlsPanels:SunamoGrid x:Name="grid">
+            </desktopControlsPanels:SunamoGrid>
         </ScrollViewer>
         <!--</Grid>-->
     </Grid>

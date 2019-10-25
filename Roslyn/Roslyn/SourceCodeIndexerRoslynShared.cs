@@ -17,22 +17,7 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         ProcessFile(file, NamespaceCodeElementsType.All, ClassCodeElementsType.All, false, fromFileSystemWatcher);
     }
-public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
-    {
 
-
-        SyntaxTree tree;
-        CompilationUnitSyntax root;
-        if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out tree, out root, removeRegions, fromFileSystemWatcher))
-        {
-            if (sourceFileTrees.ContainsKey(pathFile))
-            {
-                sourceFileTrees.Remove(pathFile);
-            }
-
-            sourceFileTrees.Add(pathFile, new SourceFileTree{root = root, tree = tree});
-        }
-    }
 /// <summary>
     /// True if file wasnt indexed yet
     /// False is file was already indexed

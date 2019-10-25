@@ -261,9 +261,9 @@ public class ApplicationDataContainerList : IEnumerable
         {
             //object val = value;
             string typeName = RH.FullPathCodeEntity( value.GetType());
-            if (value is IList)
+            if (value is IEnumerable)
             {
-                value = SF.PrepareToSerialization2(AllStrings.comma, value as IEnumerable);
+                value = SF.PrepareToSerialization2(string.Empty,value as IEnumerable, AllStrings.comma);
             }
             if (data.ContainsKey(key))
             {

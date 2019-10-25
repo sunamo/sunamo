@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 
 public partial class UH
 {
-
     public static string AppendHttpsIfNotExists(string p)
     {
         string p2 = p;

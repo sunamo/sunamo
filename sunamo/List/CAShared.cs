@@ -1520,4 +1520,14 @@ public static List<string> EnsureBackslash(List<string> eb)
             yield return locations.GetRange(i, Math.Min(nSize, locations.Count - i));
         }
     }
+
+public static List<object> ToObject(IEnumerable enumerable)
+    {
+        List<object> result = new List<object>();
+        foreach (var item in enumerable)
+        {
+            result.Add(item);
+        }
+        return result;
+    }
 }

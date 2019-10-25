@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
-public class FrameworkElementHelper
+public partial class FrameworkElementHelper
 {
     static Type type = typeof(FrameworkElementHelper);
-
-    
-
     public static Size GetMaxContentSize(FrameworkElement fe)
     {
         return new Size(fe.ActualWidth, fe.ActualHeight);
@@ -51,10 +47,10 @@ public class FrameworkElementHelper
 
     static bool IsContentControl(object customControl)
     {
-        if( RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(ContentControl)))
+        if (RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(ContentControl)))
         {
             var contentControl = (ContentControl)customControl;
-            if (RH.IsOrIsDeriveFromBaseClass( contentControl.Content.GetType(), typeof(FrameworkElement)))
+            if (RH.IsOrIsDeriveFromBaseClass(contentControl.Content.GetType(), typeof(FrameworkElement)))
             {
                 return true;
             }
@@ -68,7 +64,8 @@ public class FrameworkElementHelper
         return RH.IsOrIsDeriveFromBaseClass(customControl.GetType(), typeof(Panel));
     }
 
-    public static T FindByTag<T>(object customControl, object v) where T : FrameworkElement
+    public static T FindByTag<T>(object customControl, object v)
+        where T : FrameworkElement
     {
         if (IsContentControl(customControl))
         {
@@ -84,6 +81,7 @@ public class FrameworkElementHelper
                 {
                     return FindByTag<T>(item, v);
                 }
+
                 if (RH.IsOrIsDeriveFromBaseClass(item.GetType(), typeof(FrameworkElement)))
                 {
                     FrameworkElement fw = (FrameworkElement)item;
@@ -98,6 +96,7 @@ public class FrameworkElementHelper
         {
             ThrowExceptions.Custom(type, "", "customControl is not ContentControl or Panel");
         }
+
         return default(T);
     }
 
@@ -106,4 +105,3 @@ public class FrameworkElementHelper
         return (T)element.FindName(controlName);
     }
 }
-

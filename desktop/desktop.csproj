@@ -73,6 +73,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\FrameworkElementHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Panels\SunamoGrid.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\CheckBoxDataHelperShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\CheckBoxDataHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ToolbarHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Controls\TwoStatesToggleButtonShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />

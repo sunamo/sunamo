@@ -13,6 +13,57 @@ using System.IO;
 using System.Linq;
 public partial class SourceCodeIndexerRoslyn
 {
+    #region Working method
+    public void ProcessFile(string pathFile, NamespaceCodeElementsType namespaceCodeElementsType, ClassCodeElementsType classCodeElementsType, bool removeRegions, bool fromFileSystemWatcher)
+    {
+        bool removed = false;
+
+        SyntaxTree _tree;
+        CompilationUnitSyntax root;
+        if (ProcessFile(pathFile, namespaceCodeElementsType, classCodeElementsType, out _tree, out root, removeRegions, fromFileSystemWatcher))
+        {
+            if (sourceFileTrees.ContainsKey(pathFile))
+            {
+                removed = true;
+                sourceFileTrees.Remove(pathFile);
+            }
+            else
+            {
+                //Check whether folder is already indexing
+                //if (!watchers.IsIndexindDirectory(pathFile))
+                //{
+                watchers.Start(FS.GetDirectoryName( pathFile));
+                //}
+            }
+
+            if (!sourceFileTrees.ContainsKey(pathFile))
+            {
+                sourceFileTrees.Add(pathFile, new SourceFileTree { root = root, tree = _tree });
+            }
+            else
+            {
+                sourceFileTrees[pathFile] = new SourceFileTree { root = root, tree = _tree };
+            }
+        }
+    }
+
+    public void RemoveFile(string t, bool fromFileSystemWatcher = false)
+    {
+        linesWithContent.Remove(t);
+        linesWithIndexes.Remove(t);
+        sourceFileTrees.Remove(t);
+        classCodeElements.Remove(t);
+        namespaceCodeElements.Remove(t);
+
+        // watcher I cant stop, its one for all!!
+        //if (!fromFileSystemWatcher)
+        //{
+        //    // will be raise in FileSystemWatchers
+        //    watchers.Stop(t);
+        //}
+    } 
+    #endregion
+
     /// <summary>
     /// Syntax root is the same as root - contains all code (include usings)
     /// </summary>
@@ -57,21 +108,7 @@ public partial class SourceCodeIndexerRoslyn
     
     public FileSystemWatchers watchers = null;
 
-    public void RemoveFile(string t, bool fromFileSystemWatcher = false)
-    {
-        linesWithContent.Remove(t);
-        linesWithIndexes.Remove(t);
-        sourceFileTrees.Remove(t);
-        classCodeElements.Remove(t);
-        namespaceCodeElements.Remove(t);
-
-        // watcher I cant stop, its one for all!!
-        //if (!fromFileSystemWatcher)
-        //{
-        //    // will be raise in FileSystemWatchers
-        //    watchers.Stop(t);
-        //}
-    }
+  
 
     public bool IsIndexed(string pathFile)
     {
