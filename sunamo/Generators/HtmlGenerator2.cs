@@ -689,12 +689,6 @@ public class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-
-
-
-
-
-
     public void Detail(string name, object value)
     {
         WriteRaw("<b>" + name + ":</b> " + value.ToString());
