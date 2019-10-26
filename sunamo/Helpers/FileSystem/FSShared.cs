@@ -1125,6 +1125,14 @@ public partial class FS
         }
     }
 
+    /// <summary>
+    /// In item1 is all directories, in Item2 all files
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="ask"></param>
+    /// <param name="searchOption"></param>
+    /// <param name="_trimA1"></param>
+    /// <returns></returns>
     public static List<string> GetFilesEveryFolder(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
     {
         List<string> list = new List<string>(); ;
@@ -1139,6 +1147,7 @@ public partial class FS
             throw new Exception("GetFiles with path: " + folder, ex);
         }
 
+        dirs.Insert(0, folder);
         foreach (var item in dirs)
         {
             try

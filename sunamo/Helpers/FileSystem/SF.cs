@@ -117,9 +117,6 @@ public static partial class SF
         return vr;
     }
 
-
-
-
     /// <summary>
     /// If index won't founded, return null.
     /// </summary>

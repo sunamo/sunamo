@@ -261,9 +261,9 @@ public class ApplicationDataContainerList : IEnumerable
         {
             //object val = value;
             string typeName = RH.FullPathCodeEntity( value.GetType());
-            if (value is IList)
+            if (value is IEnumerable)
             {
-                value = SF.PrepareToSerialization2(AllStrings.comma, value as IEnumerable);
+                value = SF.PrepareToSerialization2(string.Empty,value as IEnumerable, AllStrings.comma);
             }
             if (data.ContainsKey(key))
             {
@@ -299,7 +299,11 @@ public class ApplicationDataContainerList : IEnumerable
         StringBuilder sb = new StringBuilder();
         foreach (var item in data)
         {
-            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, item.Value.B)));
+            var value = item.Value.B;
+            
+                value = SH.ListToString(value, AllStrings.comma);
+            
+            sb.Append(SF.PrepareToSerialization(CA.ToListString( item.Key, item.Value.A, value)));
         }
         TF.SaveFile(sb.ToString(), path);
     }

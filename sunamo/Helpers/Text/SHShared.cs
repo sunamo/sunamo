@@ -61,6 +61,26 @@ public static partial class SH
         return t;
     }
 
+    internal static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)
+    {
+    
+
+        if (string.IsNullOrWhiteSpace(text))
+            return string.Empty;
+        StringBuilder newText = new StringBuilder(text.Length * 2);
+        newText.Append(text[0]);
+        for (int i = 1; i < text.Length; i++)
+        {
+            if (char.IsUpper(text[i]))
+                if ((text[i - 1] != add && !char.IsUpper(text[i - 1])) ||
+                    (preserveAcronyms && char.IsUpper(text[i - 1]) &&
+                     i < text.Length - 1 && !char.IsUpper(text[i + 1])))
+                    newText.Append(add);
+            newText.Append(text[i]);
+        }
+        return newText.ToString();
+    }
+
     private static Type s_type = typeof(SH);
 
     public static string NullToStringOrDefault(object n)

@@ -67,7 +67,6 @@ public class ApplicationDataContainer : ApplicationDataConsts
         //cb.KeyUp += Cb_KeyUp;
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
-
     public void Add(ComboBox cb)
     {
         // Automatically load

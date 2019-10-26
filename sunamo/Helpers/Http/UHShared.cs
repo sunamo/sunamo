@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 
 public partial class UH
 {
-
     public static string AppendHttpsIfNotExists(string p)
     {
         string p2 = p;
@@ -71,6 +70,8 @@ public partial class UH
     {
         if (String.IsNullOrEmpty(title)) return "";
 
+        title = SH.AddBeforeUpperChars(title, AllChars.dash, false);
+
         title = SH.TextWithoutDiacritic(title);
         // replace spaces with single dash
         title = Regex.Replace(title, @"\s+", AllStrings.dash);
@@ -96,6 +97,7 @@ public partial class UH
         title = title.TrimEnd(new char[] { AllChars.dash });
         return title;
     }
+
     public static string GetUriSafeString(string title, int maxLenght)
     {
         if (String.IsNullOrEmpty(title)) return "";

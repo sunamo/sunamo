@@ -32,7 +32,10 @@ namespace sunamo
             }
         }
 
+      
+
         /// <summary>
+        /// Check whether folder is already indexing
         /// Is called from ProcessFile
         /// </summary>
         /// <param name="path"></param>
@@ -40,17 +43,22 @@ namespace sunamo
         {
             // Adding handlers - must wrap up all
 
-                if (!_watchers.ContainsKey(path))
-                {
-                    var fileSystemWatcher = RegisterSingleFolder(path);
+            if (!_watchers.ContainsKey(path))
+            {
+                var fileSystemWatcher = RegisterSingleFolder(path);
 
-                    _watchers.Add(path, fileSystemWatcher);
-                }
-            
+                DictionaryHelper.AddOrSet<string, FileSystemWatcher>(_watchers, path, fileSystemWatcher);
+            }
         }
 
-        public FileSystemWatcher RegisterSingleFolder(string path)
+        /// <summary>
+        /// Is called just from Start
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private FileSystemWatcher RegisterSingleFolder(string path)
         {
+            // A1 must be directory, never file
             _fileSystemWatcher = new FileSystemWatcher(path);
             _fileSystemWatcher.Filter = "*.cs";
 
@@ -146,6 +154,7 @@ namespace sunamo
             
             lastProcessedFile[e.ChangeType] = e.FullPath;
 
+            
             _onStop.Invoke(e.FullPath, true);
         }
     }

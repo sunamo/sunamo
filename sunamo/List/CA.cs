@@ -792,16 +792,6 @@ public static partial class CA
         throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
-    public static List<object> ToObject(IEnumerable enumerable)
-    {
-        List<object> result = new List<object>();
-        foreach (var item in enumerable)
-        {
-            result.Add(item);
-        }
-        return result;
-    }
-
 
     /// <summary>
     /// Change elements count in collection to A2

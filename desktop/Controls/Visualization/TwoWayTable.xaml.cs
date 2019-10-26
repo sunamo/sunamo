@@ -24,6 +24,8 @@ namespace desktop.Controls.Visualization
     /// </summary>
     public partial class TwoWayTable : UserControl
     {
+        const double marginInCell = 8;
+        #region region for all code to easy transfer to another code
         /// <summary>
         /// Bez započítání top
         /// </summary>
@@ -38,10 +40,12 @@ namespace desktop.Controls.Visualization
         UIElement[,] controls = null;
         /// <summary>
         /// První rozměr jsou řádky, druhý sloupce
+        /// Is initialized only when dataCellWrapper == AddBeforeControl.CheckBox
         /// </summary>
         CheckBox[,] checkBoxes = null;
         /// <summary>
         /// První rozměr jsou řádky, druhý sloupce
+        /// Every cell data has own data
         /// </summary>
         object[,] data = null;
 
@@ -91,7 +95,7 @@ namespace desktop.Controls.Visualization
             rows = row;
             columns = column;
             ClearGridChildren();
-            //GridHelper.GetAutoSize(gridLeft, column, row);
+            
             GridHelper.GetAutoSize(grid, column, row);
         }
 
@@ -154,7 +158,7 @@ namespace desktop.Controls.Visualization
                         CheckBox chb = new CheckBox();
                         chb.Content = item;
                         chb.IsChecked = uie[i].tick;
-                        Grid.SetColumn(chb,  dexCol + 1);
+                        Grid.SetColumn(chb, dexCol + 1);
                         Grid.SetRow(chb, i + 1);
                         grid.Children.Add(chb);
 
@@ -162,7 +166,7 @@ namespace desktop.Controls.Visualization
                     }
                     else
                     {
-                        Grid.SetColumn(item,  dexCol + 1);
+                        Grid.SetColumn(item, dexCol + 1);
                         Grid.SetRow(item, i + 1);
                         grid.Children.Add(item);
                     }
@@ -179,62 +183,77 @@ namespace desktop.Controls.Visualization
         /// <param name="o"></param>
         public void AddRow(int dexRow, CheckBoxData<UIElement>[] uie, object[] o)
         {
-            if (uie.Length +1 != columns)
+            if (uie.Length + 1 != columns)
             {
                 return;
             }
 
-                for (int i = 0; i < uie.Length; i++)
+            for (int i = 0; i < uie.Length; i++)
+            {
+                UIElement item = null;
+                if (uie[i] != null)
                 {
-                    UIElement item = null;
-                    if (uie[i] != null)
-                    {
-                        item = uie[i].t;
-                    }
+                    item = uie[i].t;
+                }
 
-                    controls[dexRow, i] = item;
-                    if (item != null)
-                    {
+                controls[dexRow, i] = item;
+                if (item != null)
+                {
                     data[dexRow, i] = o[i];
-                        if (DataCellWrapper == AddBeforeControl.CheckBox)
-                        {
-                            CheckBox chb = new CheckBox();
-                            chb.Content = item;
-                            chb.IsChecked = uie[i].tick;
-                            Grid.SetColumn(chb,  i + 1);
-                            Grid.SetRow(chb, dexRow + 1);
-                            grid.Children.Add(chb);
+                    if (DataCellWrapper == AddBeforeControl.CheckBox)
+                    {
+                        CheckBox chb = new CheckBox();
+                        chb.Content = item;
+                        chb.IsChecked = uie[i].tick;
 
-                            checkBoxes[dexRow, i] = chb;
-                        }
-                        else
-                        {
-                            Grid.SetColumn(item, i + 1);
-                            Grid.SetRow(item, dexRow + 1);
-                            grid.Children.Add(item);
-                        }
+
+                        FrameworkElementHelper.SetMargin(chb, marginInCell);
+
+                        Grid.SetColumn(chb, i + 1);
+                        Grid.SetRow(chb, dexRow + 1);
+                        grid.Children.Add(chb);
+
+                        checkBoxes[dexRow, i] = chb;
+                    }
+                    else
+                    {
+                        FrameworkElementHelper.SetMargin(item, marginInCell);
+
+                        Grid.SetColumn(item, i + 1);
+                        Grid.SetRow(item, dexRow + 1);
+                        grid.Children.Add(item);
+
+                        
                     }
                 }
-            
+            }
+
         }
 
         public void AddTop(params CheckBoxData<UIElement>[] uie)
         {
-            for (int i = 0; i < uie.Length; i++)
+            AddTop(uie.ToList());
+        }
+
+        public void AddTop(IEnumerable<CheckBoxData<UIElement>> uie)
+        {
+            int i = 0;
+            foreach (var item2 in uie)
             {
-                UIElement item = uie[i].t;
+                UIElement item = item2.t;
                 if (dataCellWrapper == AddBeforeControl.CheckBox)
                 {
                     CheckBox top = new CheckBox();
                     top.Tag = i;
                     top.Click += Top_Click;
-                    
+
                     top.Content = item;
                     item = top;
                 }
                 Grid.SetColumn(item, i + 1);
                 Grid.SetRow(item, 0);
                 grid.Children.Add(item);
+                i++;
             }
         }
 
@@ -246,7 +265,7 @@ namespace desktop.Controls.Visualization
 
             for (int i = 0; i < checkBoxes.GetLength(0); i++)
             {
-                var dr = checkBoxes[i,tagOfCheckBox];
+                var dr = checkBoxes[i, tagOfCheckBox];
                 if (dr != null)
                 {
                     dr.IsChecked = isChecked;
@@ -254,11 +273,24 @@ namespace desktop.Controls.Visualization
             }
         }
 
-        public void AddLeft(bool separateGrid, params CheckBoxData<UIElement>[] uie)
+
+
+        public void AddLeft( params CheckBoxData<UIElement>[] uie)
         {
-            for (int i = 0; i < uie.Length ; i++)
+            AddLeft( uie.ToList());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="separateGrid"></param>
+        /// <param name="uie"></param>
+        public void AddLeft( IEnumerable<CheckBoxData<UIElement>> uie)
+        {
+            int i = 0;
+            foreach (var item2 in uie)
             {
-                UIElement item = uie[i].t;
+                UIElement item = item2.t;
 
                 if (dataCellWrapper == AddBeforeControl.CheckBox)
                 {
@@ -271,14 +303,10 @@ namespace desktop.Controls.Visualization
                 }
                 Grid.SetColumn(item, 0);
                 Grid.SetRow(item, i + 1);
-                if (separateGrid)
-                {
-                    //gridLeft.Children.Add(item);
-                }
-                else
-                {
+               
                     grid.Children.Add(item);
-                }
+                
+                i++;
             }
         }
 
@@ -290,12 +318,13 @@ namespace desktop.Controls.Visualization
 
             for (int i = 0; i < checkBoxes.GetLength(1); i++)
             {
-                var dr = checkBoxes[ tagOfCheckBox, i];
+                var dr = checkBoxes[tagOfCheckBox, i];
                 if (dr != null)
                 {
                     dr.IsChecked = isChecked;
                 }
             }
-        }
+        } 
+        #endregion
     }
 }

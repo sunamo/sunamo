@@ -52,6 +52,18 @@ public partial class DictionaryHelper
         return GetDictionaryByKeyValueInString<string>(sp);
     }
 
+    public static void AddOrSet<T1, T2>(Dictionary<T1, T2> qs, T1 k, T2 v)
+    {
+        if (qs.ContainsKey(k))
+        {
+            qs[k] = v;
+        }
+        else
+        {
+            qs.Add(k, v);
+        }
+    }
+
     public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)
     {
         var methodName = RH.CallingMethod();

@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\AddBeforeControl.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
     <Compile Include="AppDataAbstractBaseShared.cs" />
@@ -595,11 +598,6 @@
     <None Include="Entity\ManageArtistDashTitleShared.cs~RF20d52e9.TMP" />
     <None Include="Enums\Browsers.cs~RF4cec33.TMP" />
     <None Include="Fonts\FontAwesome.otf" />
-    <None Include="Generators\HtmlGeneratorExtended.cs~RF6a3ee01.TMP" />
-    <None Include="Generators\SpecialFoldersHelperShared.cs~RF2ee449a.TMP" />
-    <None Include="Generators\SpecialFoldersHelperShared.cs~RF2eeb5a4.TMP" />
-    <None Include="Generators\SpecialFoldersHelperShared.cs~RF2ef6869.TMP" />
-    <None Include="Generators\SpecialFoldersHelperShared.cs~RF3c1368e.TMP" />
     <None Include="Helpers\DT\DTHelperFormalizedWithT.cs~RF68a66ba.TMP" />
     <None Include="Helpers\DT\DTHelperFormalizedWithTShared.cs~RF66768c8.TMP" />
     <None Include="Helpers\Text\SHShared.cs~RF16113d1.TMP" />
