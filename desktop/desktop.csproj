@@ -73,6 +73,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolder.xaml.cs" />
+    <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataConsts.cs" />
+    <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\FrameworkElementHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Panels\SunamoGrid.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\CheckBoxDataHelperShared.cs" />
@@ -116,7 +119,6 @@
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFileShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolderShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectManyFilesShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectMoreFoldersShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ComboBoxExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ListViewExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ListBoxExtensions.cs" />
@@ -173,7 +175,6 @@
     <Compile Include="Controls\Input\SelectMoreFolders.xaml.cs">
       <DependentUpon>SelectMoreFolders.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Input\SelectMoreFoldersShared.cs" />
     <Compile Include="Controls\Input\SelectOneValue.xaml.cs">
       <DependentUpon>SelectOneValue.xaml</DependentUpon>
     </Compile>

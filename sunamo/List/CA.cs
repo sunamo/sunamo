@@ -13,6 +13,45 @@ using System.Text;
 
 public static partial class CA
 {
+    // In order to convert any 2d array to jagged one
+    // let's use a generic implementation
+    public static T[][] ToJagged<T>( T[,] value)
+    {
+        if (Object.ReferenceEquals(null, value))
+            return null;
+
+        // Jagged array creation
+        T[][] result = new T[value.GetLength(0)][];
+
+        for (int i = 0; i < value.GetLength(0); ++i)
+            result[i] = new T[value.GetLength(1)];
+
+        // Jagged array filling
+        for (int i = 0; i < value.GetLength(0); ++i)
+            for (int j = 0; j < value.GetLength(1); ++j)
+                result[i][j] = value[i, j];
+
+        return result;
+    }
+
+    // In order to convert any 2d array to jagged one
+    // let's use a generic implementation
+    public static int[][] ToJagged( bool[,] value)
+    {
+        List<List<int>> result = new List<List<int>>();
+        for (int i = 0; i < value.GetLength(0); i++)
+        {
+            List<int> ca = new List<int>();
+
+            for (int y = 0; y < value.GetLength(1); y++)
+            {
+                ca.Add(BTS.BoolToInt( value[i, y]));
+            }
+        }
+
+
+    }
+
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
 

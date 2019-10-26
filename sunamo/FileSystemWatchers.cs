@@ -13,7 +13,7 @@ namespace sunamo
         /// <summary>
         /// In key are folders (never files), in value instance
         /// </summary>
-        private Dictionary<string, FileSystemWatcher> _watchers = new Dictionary<string, FileSystemWatcher>();
+        public FsWatcherDictionary<string, FileSystemWatcher> _watchers = new FsWatcherDictionary<string, FileSystemWatcher>();
         private VoidStringT<bool> _onStart;
         private VoidStringT<bool> _onStop;
         
@@ -32,8 +32,6 @@ namespace sunamo
             }
         }
 
-      
-
         /// <summary>
         /// Check whether folder is already indexing
         /// Is called from ProcessFile
@@ -47,7 +45,13 @@ namespace sunamo
             {
                 var fileSystemWatcher = RegisterSingleFolder(path);
 
+                
+
                 DictionaryHelper.AddOrSet<string, FileSystemWatcher>(_watchers, path, fileSystemWatcher);
+            }
+            else
+            {
+                _watchers[path].EnableRaisingEvents = true;
             }
         }
 
@@ -88,13 +92,15 @@ namespace sunamo
         {
             _onStop.Invoke(path, fromFileSystemWatcher);
 
-                _watchers.Remove(path);
-
                 FileSystemWatcher fileSystemWatcher = _watchers[path];
-                fileSystemWatcher.Deleted -= FileSystemWatcher_Deleted;
-                fileSystemWatcher.Changed -= FileSystemWatcher_Changed;
-                fileSystemWatcher.Renamed -= FileSystemWatcher_Renamed;
-                fileSystemWatcher.Dispose();
+
+            _watchers.Remove(path);
+
+            fileSystemWatcher.EnableRaisingEvents = false;
+                //fileSystemWatcher.Deleted -= FileSystemWatcher_Deleted;
+                //fileSystemWatcher.Changed -= FileSystemWatcher_Changed;
+                //fileSystemWatcher.Renamed -= FileSystemWatcher_Renamed;
+                //fileSystemWatcher.Dispose();
             
 
             // During delete call onStop which call this method

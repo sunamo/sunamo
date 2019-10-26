@@ -1,18 +1,10 @@
-﻿using desktop.AwesomeFont;
+﻿
+using desktop.AwesomeFont;
+using desktop.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace desktop.Controls.Input
 {
@@ -21,7 +13,7 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class SelectMoreFolders : UserControl
     {
-        
+
         public event VoidVoid SaveSetAsTemplate;
         /// <summary>
         /// Only adding folder with empty path
@@ -42,26 +34,6 @@ namespace desktop.Controls.Input
             SetAwesomeIcons();
 
             AddFolder(string.Empty);
-        }
-
-        public void AddFolder(string folder)
-        {
-            //TextBox sf = new TextBox();
-            //sf.Text = folder;
-
-            SelectFolder sf = new SelectFolder();
-            sf.SelectedFolder = folder;
-            sf.btnRemoveFolder.Visibility = Visibility.Visible;
-            sf.FolderRemoved += Sf_FolderRemoved;
-            sf.FolderChanged += Sf_FolderChanged;
-            
-            spFolders.Children.Add(sf);
-            if (FolderAdded != null)
-            {
-                FolderAdded(this, SelectedFolders());
-            }
-            // Must be called after sf is on panel and has registered Sf_FolderChanged, because control for FolderChanged != null
-            Sf_FolderChanged(folder);
         }
 
         private void Sf_FolderChanged(string s)
@@ -93,7 +65,7 @@ namespace desktop.Controls.Input
             AddFolder(string.Empty);
         }
 
-        
+
 
         public void RemoveAllFolders()
         {
@@ -117,7 +89,7 @@ namespace desktop.Controls.Input
                 {
                     result.Add(item.SelectedFolder);
                 }
-                
+
             }
             return result;
         }
@@ -125,6 +97,51 @@ namespace desktop.Controls.Input
         private void BtnAddAsTemplate_Click(object sender, RoutedEventArgs e)
         {
             SaveSetAsTemplate();
+        }
+
+        public static Type type = typeof(SelectMoreFolders);
+        public static bool validated
+        {
+            get
+            {
+                return SelectFolder.validated;
+            }
+            set
+            {
+                SelectFolder.validated = value;
+            }
+        }
+
+        public void AddFolder(string folder)
+        {
+            //TextBox sf = new TextBox();
+            //sf.Text = folder;
+
+            SelectFolder sf = new SelectFolder();
+            sf.SelectedFolder = folder;
+            sf.btnRemoveFolder.Visibility = Visibility.Visible;
+            sf.FolderRemoved += Sf_FolderRemoved;
+            sf.FolderChanged += Sf_FolderChanged;
+
+            spFolders.Children.Add(sf);
+            if (FolderAdded != null)
+            {
+                FolderAdded(this, SelectedFolders());
+            }
+            // Must be called after sf is on panel and has registered Sf_FolderChanged, because control for FolderChanged != null
+            Sf_FolderChanged(folder);
+        }
+        public static void Validate(object tb, SelectMoreFolders control, ValidateData d = null)
+        {
+            foreach (SelectFolder item in ControlFinder.StackPanel(control, "spFolders").Children)
+            {
+                item.Validate(tb, d);
+            }
+        }
+
+        public void Validate(object tbFolder, ValidateData d = null)
+        {
+            Validate(tbFolder, this, d);
         }
     }
 }

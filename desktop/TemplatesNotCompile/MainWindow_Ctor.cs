@@ -1,15 +1,9 @@
-﻿
-
-using System;
+﻿using ConfigurableWindow.Shared;
+using desktop.UserControls;
+using sunamo.Essential;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using ConfigurableWindow.Shared;
-using desktop.UserControls;
-using PathEditor.Properties;
-using sunamo.Essential;
-using sunamo.Interfaces;
 
 public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {

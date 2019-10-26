@@ -14,5 +14,6 @@ namespace desktop.Storage
         public readonly string Text = "Text";
         public readonly string SelectedFolders = "SelectedFolders";
         public readonly string chbAdded = "chbAdded";
+        public readonly string checkBoxes = "checkBoxes";
     }
 }

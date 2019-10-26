@@ -29,10 +29,11 @@ public partial class SourceCodeIndexerRoslyn
             }
             else
             {
-                //Check whether folder is already indexing
+                // Watcher.Start I can call after loading all files - otherwise there are million of events and app never start
+                // Check whether folder is already indexing
                 //if (!watchers.IsIndexindDirectory(pathFile))
                 //{
-                watchers.Start(FS.GetDirectoryName( pathFile));
+                //watchers.Start(FS.GetDirectoryName( pathFile));
                 //}
             }
 
@@ -67,7 +68,7 @@ public partial class SourceCodeIndexerRoslyn
     /// <summary>
     /// Syntax root is the same as root - contains all code (include usings)
     /// </summary>
-    public Dictionary<string, SourceFileTree> sourceFileTrees = new Dictionary<string, SourceFileTree>();
+    public FsWatcherDictionary<string, SourceFileTree> sourceFileTrees = new FsWatcherDictionary<string, SourceFileTree>();
     Type type = typeof(SourceCodeIndexerRoslyn);
     //public Dictionary<string, TU<string, int>> foundedLines = new Dictionary<string, TU<string, int>>();
     /// <summary>
@@ -91,11 +92,11 @@ public partial class SourceCodeIndexerRoslyn
     /// <summary>
     /// In key are full file path, in value parsed code elements
     /// </summary>
-    public Dictionary<string, List<NamespaceCodeElement>> namespaceCodeElements = new Dictionary<string, List<NamespaceCodeElement>>();
+    public FsWatcherDictionary<string, List<NamespaceCodeElement>> namespaceCodeElements = new FsWatcherDictionary<string, List<NamespaceCodeElement>>();
     /// <summary>
     /// In key are full file path, in value parsed code elements
     /// </summary>
-    public Dictionary<string, List<ClassCodeElement>> classCodeElements = new Dictionary<string, List<ClassCodeElement>>();
+    public FsWatcherDictionary<string, List<ClassCodeElement>> classCodeElements = new FsWatcherDictionary<string, List<ClassCodeElement>>();
     /// <summary>
     /// All code elements
     /// </summary>
@@ -107,8 +108,6 @@ public partial class SourceCodeIndexerRoslyn
     public static Dictionary<NamespaceCodeElementsType, string> e2sNamespaceCodeElements = EnumHelper.EnumToString<NamespaceCodeElementsType>(namespaceCodeElementsType2);
     
     public FileSystemWatchers watchers = null;
-
-  
 
     public bool IsIndexed(string pathFile)
     {

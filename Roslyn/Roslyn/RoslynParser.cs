@@ -162,7 +162,6 @@ namespace Roslyn
 
             return null;
         }
-
         private SyntaxNode FindTopParent(SyntaxNode cl)
         {
             var result = cl;

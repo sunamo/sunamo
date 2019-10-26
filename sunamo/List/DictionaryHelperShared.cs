@@ -52,7 +52,7 @@ public partial class DictionaryHelper
         return GetDictionaryByKeyValueInString<string>(sp);
     }
 
-    public static void AddOrSet<T1, T2>(Dictionary<T1, T2> qs, T1 k, T2 v)
+    public static void AddOrSet<T1, T2>(IDictionary<T1, T2> qs, T1 k, T2 v)
     {
         if (qs.ContainsKey(k))
         {
@@ -86,7 +86,7 @@ public partial class DictionaryHelper
     /// <param name = "sl"></param>
     /// <param name = "key"></param>
     /// <param name = "p"></param>
-    public static void AddOrCreate<Key, Value>(Dictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
+    public static void AddOrCreate<Key, Value>(IDictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
         AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
@@ -99,7 +99,7 @@ public partial class DictionaryHelper
     /// <param name = "sl"></param>
     /// <param name = "key"></param>
     /// <param name = "value"></param>
-    public static void AddOrCreate<Key, Value, ColType>(Dictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
+    public static void AddOrCreate<Key, Value, ColType>(IDictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
         //T, byte[]
         if (key is IEnumerable && typeof(ColType) != typeof(object))
@@ -149,28 +149,48 @@ public partial class DictionaryHelper
         else
         {
             bool add = true;
-            if (sl.ContainsKey(key))
+            lock (sl)
             {
-                if (withoutDuplicitiesInValue)
+                if (sl.ContainsKey(key))
                 {
-                    if (sl[key].Contains(value))
+                    if (withoutDuplicitiesInValue)
                     {
-                        add = false;
+                        if (sl[key].Contains(value))
+                        {
+                            add = false;
 
+                        }
+                    }
+
+                    if (add)
+                    {
+                        var val = sl[key];
+
+                        //if (Comparer<Value>.Default.Compare(val, default(List<Value>)))
+                        //{
+                        if (val != null)
+                        {
+                            val.Add(value);
+                        }
+                            
+                        //}
+                    }
+
+                }
+                else
+                {
+                    List<Value> ad = new List<Value>();
+                    ad.Add(value);
+                    // Must be Checking again due to FileSystemWatcher in SourceCodeIndexer
+                    if (!sl.ContainsKey(key))
+                    {
+                        sl.Add(key, ad);
+                    }
+                    else
+                    {
+                        sl[key].Add(value);
                     }
                 }
-
-                if (add)
-                {
-                    sl[key].Add(value);
-                }
-                
-            }
-            else
-            {
-                List<Value> ad = new List<Value>();
-                ad.Add(value);
-                sl.Add(key, ad);
             }
         }
     }

@@ -198,6 +198,11 @@ public static partial class HtmlHelper
         return html;
     }
 
+    public static List<HtmlNode> ReturnAllTagsWithAttr(HtmlNode table, string v1, string v2, string v3)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Před zavoláním této metody musí být v A1 převedeny bílé znaky na mezery - pouze tak budou označeny všechny výskyty daných slov
     /// </summary>

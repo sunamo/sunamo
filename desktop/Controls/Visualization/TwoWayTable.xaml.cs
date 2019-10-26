@@ -105,6 +105,10 @@ namespace desktop.Controls.Visualization
         }
 
         AddBeforeControl dataCellWrapper = AddBeforeControl.None;
+        /// <summary>
+        /// For saving data for every table
+        /// </summary>
+        public string DisplayEntity;
 
         public AddBeforeControl DataCellWrapper
         {
@@ -148,16 +152,18 @@ namespace desktop.Controls.Visualization
 
                 controls[i, dexCol] = item;
 
-
-
                 if (item != null)
                 {
                     data[i, dexCol] = o[i];
                     if (DataCellWrapper == AddBeforeControl.CheckBox)
                     {
                         CheckBox chb = new CheckBox();
+                        chb.VerticalAlignment = VerticalAlignment.Center;
+                        chb.VerticalContentAlignment = VerticalAlignment.Center;
                         chb.Content = item;
                         chb.IsChecked = uie[i].tick;
+                        
+
                         Grid.SetColumn(chb, dexCol + 1);
                         Grid.SetRow(chb, i + 1);
                         grid.Children.Add(chb);
@@ -166,6 +172,8 @@ namespace desktop.Controls.Visualization
                     }
                     else
                     {
+                        //item.VerticalAlignment = VerticalAlignment.Center;
+                        //item.VerticalContentAlignment = VerticalAlignment.Center;
                         Grid.SetColumn(item, dexCol + 1);
                         Grid.SetRow(item, i + 1);
                         grid.Children.Add(item);

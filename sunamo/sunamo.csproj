@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\AddBeforeControl.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Collections\DebugCollection.cs" />
     <Compile Include="Collections\DictionarySort.cs" />
     <Compile Include="Collections\ExtensionSortedCollection.cs" />
+    <Compile Include="Collections\FsWatcherDictionary.cs" />
     <Compile Include="Collections\L.cs" />
     <Compile Include="Collections\ListWithElements.cs" />
     <Compile Include="Collections\NotifyChangesCollection.cs" />

@@ -222,27 +222,6 @@ public static partial class SF
         return vr;
     }
 
-    /// <summary>
-    /// Return with the last
-    /// </summary>
-    /// <param name="o"></param>
-    /// <param name="separator"></param>
-    /// <returns></returns>
-    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
-    {
-        return PrepareToSerializationWorker(o, false, separator);
-    }
-
-    /// <summary>
-    /// Return with last |
-    /// </summary>
-    /// <param name="o"></param>
-    /// <returns></returns>
-    public static string PrepareToSerialization(params string[] o)
-    {
-        return PrepareToSerializationWorker(o, false, AllStrings.pipe);
-    }
-
     public static void WriteAllElementsToFile(string VybranySouborLogu, string[][] p)
     {
         StringBuilder sb = new StringBuilder();

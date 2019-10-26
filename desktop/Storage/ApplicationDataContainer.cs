@@ -1,5 +1,6 @@
 ﻿using desktop.Controls.Collections;
 using desktop.Controls.Input;
+using desktop.Controls.Visualization;
 using desktop.Storage;
 using System;
 using System.Collections;
@@ -35,6 +36,8 @@ public class ApplicationDataContainer : ApplicationDataConsts
         data.Add(file, new ApplicationDataContainerList(file));
     }
 
+   
+
     /// <summary>
     /// Must be here due to sunamo.Tests
     /// </summary>
@@ -54,6 +57,16 @@ public class ApplicationDataContainer : ApplicationDataConsts
     public ApplicationDataContainer()
     {
 
+    }
+
+    public void Add(TwoWayTable cb)
+    {
+        // Automatically load
+        var adcl = AddFrameworkElement(cb);
+        var list = adcl.GetListString(checkBoxes);
+        cb.c = list;
+        cb.KeyUp += Cb_KeyUp;
+        cb.DataContextChanged += Cb_DataContextChanged;
     }
 
     public void Add(Window cb)

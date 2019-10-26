@@ -75,4 +75,24 @@ public static partial class SF
     }
 
     
+
+/// <summary>
+    /// Return with the last
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="separator"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
+    {
+        return PrepareToSerializationWorker(o, false, separator);
+    }
+/// <summary>
+    /// Return with last |
+    /// </summary>
+    /// <param name="o"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization(params string[] o)
+    {
+        return PrepareToSerializationWorker(o, false, AllStrings.pipe);
+    }
 }

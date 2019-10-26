@@ -2053,7 +2053,7 @@ public static bool EndsWith(string input, string endsWith)
         return t.Substring(0, dex);
     }
 
-public static string JoinDictionary(Dictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
+public static string JoinDictionary(IDictionary<string, string> dict, string delimiterBetweenKeyAndValue, string delimAfter)
     {
         return JoinKeyValueCollection(dict.Keys, dict.Values, delimiterBetweenKeyAndValue, delimAfter);
     }
