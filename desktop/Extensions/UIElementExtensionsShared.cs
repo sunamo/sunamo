@@ -15,6 +15,9 @@ using PathEditor;
 
 public static partial class UIElementExtensions{
     static Type type = typeof(UIElementExtensions);
+    public static Func< UIElement, string, ValidateData, bool?> Validate2FullDelegate = null;
+    public static Func< UIElement, bool, bool> SetValidatedFullDelegate = null;
+    public static bool validatedInFull = false;
 
     /// <summary>
     /// Must be be Validate2 due to different with Validate which is defi
@@ -24,6 +27,16 @@ public static partial class UIElementExtensions{
     /// <returns></returns>
     public static bool? Validate2(this UIElement ui, string name, ValidateData d = null)
     {
+        if (Validate2FullDelegate != null)
+        {
+            var result = Validate2FullDelegate.Invoke(ui, name, d);
+
+            if (validatedInFull)
+            {
+                return result;
+            }
+        }
+
         var t = ui.GetType();
         if (t == TypesControls.tTextBox)
         {
@@ -55,29 +68,18 @@ public static partial class UIElementExtensions{
             c.Validate(name, d);
             return SelectFile.validated;
         }
-        else if (t == SelectFolder.type)
-        {
-            var c = ui as SelectFolder;
-            c.Validate(name, d);
-            return SelectFolder.validated;
-        }
+       
         else if (t == SelectManyFiles.type)
         {
             var c = ui as SelectManyFiles;
             c.Validate(name, d);
             return SelectManyFiles.validated;
         }
-        else if (t == SelectMoreFolders.type)
-        {
-            var c = ui as SelectMoreFolders;
-            c.Validate(name, d);
-            return SelectMoreFolders.validated;
-        }
         else if (t == TwoRadiosUC.type)
         {
             var c = ui as TwoRadiosUC;
             c.Validate(name, d);
-            return SelectMoreFolders.validated;
+            return TwoRadiosUC.validated;
         }
         else if (t == PathEditor.SuggestTextBoxPath.type)
         {
@@ -96,11 +98,19 @@ public static partial class UIElementExtensions{
 
     public static void SetValidated(this UIElement ui, bool b)
         {
+            if (SetValidatedFullDelegate != null)
+            {
+                if (SetValidatedFullDelegate.Invoke(ui, b))
+                {
+                    return;
+                }
+            }
+        
+
             var t = ui.GetType();
             if (t == TypesControls.tTextBox)
             {
                 TextBoxHelper.validated = b;
-                ;
             }
             else if (t == TypesControls.tListBox)
             {
@@ -118,17 +128,9 @@ public static partial class UIElementExtensions{
             {
                 SelectFile.validated = b;
             }
-            else if (t == SelectFolder.type)
-            {
-                SelectFolder.validated = b;
-            }
             else if (t == SelectManyFiles.type)
             {
                 SelectManyFiles.validated = b;
-            }
-            else if (t == SelectMoreFolders.type)
-            {
-                SelectMoreFolders.validated = b;
             }
             else if (t == PathEditor.SuggestTextBoxPath.type)
             {

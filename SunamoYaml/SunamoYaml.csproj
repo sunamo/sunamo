@@ -8,8 +8,4 @@
     <PackageReference Include="YamlDotNet" Version="6.1.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
-  </ItemGroup>
-
 </Project>

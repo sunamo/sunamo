@@ -13,8 +13,13 @@ using System.Text;
 
 public static partial class CA
 {
-    // In order to convert any 2d array to jagged one
-    // let's use a generic implementation
+    /// <summary>
+    /// jagged = zubaty
+    /// Change from array where every element have two spec of location to ordinary array with inner array
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public static T[][] ToJagged<T>( T[,] value)
     {
         if (Object.ReferenceEquals(null, value))
@@ -36,7 +41,7 @@ public static partial class CA
 
     // In order to convert any 2d array to jagged one
     // let's use a generic implementation
-    public static int[][] ToJagged( bool[,] value)
+    public static List<List<int>> ToJagged( bool[,] value)
     {
         List<List<int>> result = new List<List<int>>();
         for (int i = 0; i < value.GetLength(0); i++)
@@ -47,9 +52,11 @@ public static partial class CA
             {
                 ca.Add(BTS.BoolToInt( value[i, y]));
             }
+
+            result.Add(ca);
         }
 
-
+        return result;
     }
 
     public static void RemoveLines(List<string> lines, List<int> removeLines)

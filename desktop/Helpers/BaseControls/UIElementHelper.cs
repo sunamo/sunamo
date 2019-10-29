@@ -14,18 +14,4 @@ public partial class UIElementHelper
         }
     }
 
-    /// <summary>
-    /// Return null if A1 wont be null
-    /// </summary>
-    /// <param name="o"></param>
-    public static object GetContent(object o)
-    {
-        var ui = (UIElement)o;
-        if (ui != null)
-        {
-            return ui.GetContent();
-        }
-        return null;
-    }
-
 }

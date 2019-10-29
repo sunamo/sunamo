@@ -208,20 +208,6 @@ public static partial class SF
         return PrepareToSerializationWorker(o, true, separator);
     }
 
-    private static string PrepareToSerializationWorker(IEnumerable o, bool removeLast, string separator)
-    {
-        string vr = SH.GetString(o, separator.ToString());
-        if (removeLast)
-        {
-            if (vr.Length > 0)
-            {
-                return vr.Substring(0, vr.Length - 1);
-            }
-        }
-
-        return vr;
-    }
-
     public static void WriteAllElementsToFile(string VybranySouborLogu, string[][] p)
     {
         StringBuilder sb = new StringBuilder();

@@ -21,7 +21,6 @@ public class RH
 {
     private static Type s_type = typeof(RH);
 
-
     public static object GetValueOfPropertyOrField(object o, string name)
     {
         var type = o.GetType();

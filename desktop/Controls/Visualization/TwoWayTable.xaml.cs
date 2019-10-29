@@ -43,6 +43,18 @@ namespace desktop.Controls.Visualization
         /// Is initialized only when dataCellWrapper == AddBeforeControl.CheckBox
         /// </summary>
         CheckBox[,] checkBoxes = null;
+
+        public void DoSave()
+        {
+            if (displayEntity != string.Empty)
+            {
+                if (Save != null)
+                {
+                    Save(displayEntity);
+                }
+            }
+        }
+
         /// <summary>
         /// První rozměr jsou řádky, druhý sloupce
         /// Every cell data has own data
@@ -104,11 +116,56 @@ namespace desktop.Controls.Visualization
             grid.Children.Clear();
         }
 
+        /// <summary>
+        /// In key is text in format nameFw.nameOfActualContent
+        /// In value key is left column
+        /// In value value is checked
+        /// </summary>
+        public Dictionary<string, Dictionary<string, List<bool>>> checkedCells = new Dictionary<string, Dictionary<string, List<bool>>>(); 
+
         AddBeforeControl dataCellWrapper = AddBeforeControl.None;
+        string displayEntity = string.Empty;
+        public event Action<string> Save;
         /// <summary>
         /// For saving data for every table
         /// </summary>
-        public string DisplayEntity;
+        public string DisplayEntity
+        {
+            get
+            {
+                return displayEntity;
+            }
+            set
+            {
+                displayEntity = value;
+
+                var s = checkedCells[displayEntity];
+
+                foreach (var item in s)
+                {
+                    int dex = GetIndexOfRow(item.Key);
+
+                    if (dex != -1)
+                    {
+                        var ele = GridHelper.GetControlsFrom(grid, true, dex).ToList();
+                        ele.RemoveAt(0);
+
+                        for (int i = 0; i < item.Value.Count; i++)
+                        {
+                            var el = ele[i];
+                            el.IsChecked = item.Value[i];
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private int GetIndexOfRow(string key)
+        {
+            var result = leftChbs.IndexOf(key);
+            return result;
+        }
 
         public AddBeforeControl DataCellWrapper
         {
@@ -162,6 +219,8 @@ namespace desktop.Controls.Visualization
                         chb.VerticalContentAlignment = VerticalAlignment.Center;
                         chb.Content = item;
                         chb.IsChecked = uie[i].tick;
+                        chb.Checked += Chb_Checked;
+                        chb.Unchecked += Chb_Unchecked;
                         
 
                         Grid.SetColumn(chb, dexCol + 1);
@@ -181,6 +240,16 @@ namespace desktop.Controls.Visualization
                 }
             }
 
+        }
+
+        private void Chb_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Chb_Checked(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         /// <summary>
@@ -288,6 +357,8 @@ namespace desktop.Controls.Visualization
             AddLeft( uie.ToList());
         }
 
+        List<string> leftChbs = new List<string>();
+
         /// <summary>
         /// 
         /// </summary>
@@ -295,10 +366,23 @@ namespace desktop.Controls.Visualization
         /// <param name="uie"></param>
         public void AddLeft( IEnumerable<CheckBoxData<UIElement>> uie)
         {
+            leftChbs.Clear();
+
             int i = 0;
             foreach (var item2 in uie)
             {
                 UIElement item = item2.t;
+
+                var s = item.GetContent();
+
+                if (s != null)
+                {
+                    leftChbs.Add(s.ToString());
+                }
+                else
+                {
+                    leftChbs.Add(string.Empty);
+                }
 
                 if (dataCellWrapper == AddBeforeControl.CheckBox)
                 {
@@ -308,11 +392,14 @@ namespace desktop.Controls.Visualization
 
                     left.Content = item;
                     item = left;
+
+
                 }
+
                 Grid.SetColumn(item, 0);
                 Grid.SetRow(item, i + 1);
                
-                    grid.Children.Add(item);
+                grid.Children.Add(item);
                 
                 i++;
             }

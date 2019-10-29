@@ -21,7 +21,15 @@ public class ApplicationDataContainerList : IEnumerable
     /// </summary>
     Dictionary<string, AB> data = new Dictionary<string, AB>();
 
+    public ApplicationDataContainerList(AppFolders af, string fn)
+    {
+        Init(AppData.ci.GetFile(af, fn));
+    }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="path"></param>
     public ApplicationDataContainerList(string path)
     {
         Init(path);

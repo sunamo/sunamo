@@ -73,6 +73,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Input\EnterOneValueUC.xaml.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\UIElementHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolder.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataConsts.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />

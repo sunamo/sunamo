@@ -18,7 +18,7 @@ public partial class TF
     /// <param name="s"></param>
     /// <returns></returns>
     public static string ReadFile(string s)
-    {
+    { 
         FS.MakeUncLongPath(ref s);
 
         string result = string.Empty;

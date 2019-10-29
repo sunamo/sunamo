@@ -134,8 +134,6 @@ namespace sunamo
 
         private void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            
-
             if (lastProcessedFile[e.ChangeType] == e.FullPath)
             {
                 return;
@@ -145,7 +143,6 @@ namespace sunamo
 
             if (FS.ExistsFile(e.FullPath))
             {
-
                 _onStop.Invoke(e.FullPath, true);
                 _onStart.Invoke(e.FullPath, true);
             }

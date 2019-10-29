@@ -51,7 +51,7 @@ namespace desktop.Controls.Controls
         {
             get
             {
-                return SelectFolder.validated;
+                return TwoRadiosUC.validated;
             }
             set
             {

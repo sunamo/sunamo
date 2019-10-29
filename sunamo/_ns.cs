@@ -14,3 +14,10 @@ namespace shared.Helpers
     {
     }
 }
+namespace GeoCaching
+{
+    public class _ns
+    {
+
+    }
+}

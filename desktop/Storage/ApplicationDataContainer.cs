@@ -59,14 +59,57 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     }
 
-    public void Add(TwoWayTable cb)
+    public void Add(TwoWayTable twt)
     {
-        // Automatically load
-        var adcl = AddFrameworkElement(cb);
-        var list = adcl.GetListString(checkBoxes);
-        cb.c = list;
-        cb.KeyUp += Cb_KeyUp;
-        cb.DataContextChanged += Cb_DataContextChanged;
+        var begin = twt.Name + ".";
+        var folder = AppData.ci.GetFolder(AppFolders.Controls);
+        var files = FS.GetFiles(folder, begin + "*", System.IO.SearchOption.TopDirectoryOnly);
+
+        foreach (var item in files)
+        {
+            var v = new ApplicationDataContainerList(item);
+            var fn = FS.GetFileName(item);
+            string key = begin + fn;
+
+            var webPage = SH.Split(fn, AllStrings.dot);
+
+            // Automatically load
+            var adcl = AddFrameworkElement(key, v);
+            // , for delimiting values in row, " " for entire new row
+            var list = adcl.GetListString(checkBoxes, " ");
+
+            foreach (var item2 in list)
+            {
+                var cells = SH.Split(item2, ",");
+                var numbers = CA.ToNumber<int>(int.Parse, cells);
+
+                var bools = numbers.Cast<bool>();
+                var web = webPage[0];
+                var page = webPage[1];
+                var dKey = begin + web;
+                Dictionary<string, List<bool>> dict = null;
+                if (twt.checkedCells.ContainsKey(dKey))
+                {
+                    dict = twt.checkedCells[dKey];
+                }
+                else
+                {
+                    dict = new Dictionary<string, List<bool>>();
+                    twt.checkedCells.Add(dKey, dict);
+                }
+                dict.Add(page, bools.ToList());
+            }
+
+
+        }
+        //twt.c = list;
+        twt.Save += Twt_Save;
+
+    }
+
+    private void Twt_Save(string obj)
+    {
+        throw new NotImplementedException();
     }
 
     public void Add(Window cb)
@@ -237,11 +280,16 @@ public class ApplicationDataContainer : ApplicationDataConsts
         //SaveControl(sender);
     }
 
+    public ApplicationDataContainerList AddFrameworkElement(object key, ApplicationDataContainerList fw)
+    {
+        data.Add(key, fw);
+        return fw;
+    }
+
     public ApplicationDataContainerList AddFrameworkElement(FrameworkElement fw)
     {
         ApplicationDataContainerList result = new ApplicationDataContainerList(fw);
-        data.Add(fw, result);
-        return result;
+        return AddFrameworkElement(fw);
     }
 
     public void SaveControl(object o)
