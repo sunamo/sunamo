@@ -18,6 +18,7 @@ public class TypesControls
     public static readonly Type tCheckBox = typeof(CheckBox);
     public static readonly Type tSelector = typeof(Selector);
     public static readonly Type tComboBox = typeof(ComboBox);
+    public static readonly Type tTextBlock = typeof(TextBlock);
 
 
     //public static readonly Type tControl = typeof(Control);

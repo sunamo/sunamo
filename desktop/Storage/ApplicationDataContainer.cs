@@ -76,11 +76,9 @@ public class ApplicationDataContainer : ApplicationDataConsts
             // Automatically load
             var adcl = AddFrameworkElement(key, v);
             // , for delimiting values in row, " " for entire new row
-            var list = adcl.GetListString(checkBoxes, " ");
-
-            foreach (var item2 in list)
-            {
-                var cells = SH.Split(item2, ",");
+            var text = adcl.GetString(checkBoxes);
+           
+                var cells = SH.Split(text, ",");
                 var numbers = CA.ToNumber<int>(int.Parse, cells);
 
                 var bools = numbers.Cast<bool>();
@@ -98,7 +96,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
                     twt.checkedCells.Add(dKey, dict);
                 }
                 dict.Add(page, bools.ToList());
-            }
+            
 
 
         }
@@ -107,9 +105,27 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     }
 
-    private void Twt_Save(string obj)
+    /// <summary>
+    /// In A1 is displayEntity
+    /// </summary>
+    /// <param name="obj"></param>
+    private void Twt_Save(TwoWayTable sender, string site, string page)
     {
-        throw new NotImplementedException();
+        
+        var path = AppData.ci.GetFile(AppFolders.Controls, SH.Join( sender.Name, site, page));
+
+        var ele = sender.GetCheckBoxesInRow(page);
+        var isChecked = ele.Select(d => d.IsChecked.Value);
+        var ints = new List<int>(isChecked.Count());
+        
+        foreach (var item in isChecked)
+        {
+            ints.Add(BTS.BoolToInt( item));
+        }
+
+        var content = SH.Join(ints, AllChars.comma);
+
+        TF.WriteAllText(path, content);
     }
 
     public void Add(Window cb)
@@ -289,7 +305,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
     public ApplicationDataContainerList AddFrameworkElement(FrameworkElement fw)
     {
         ApplicationDataContainerList result = new ApplicationDataContainerList(fw);
-        return AddFrameworkElement(fw);
+        return AddFrameworkElement(fw, result);
     }
 
     public void SaveControl(object o)

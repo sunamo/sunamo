@@ -186,7 +186,11 @@ public static partial class UIElementExtensions{
             var txt = (SuggestTextBoxPath)ui;
             return txt.dataContext.SelectedPathPart.Path;
         }
-
+        else if (t == TypesControls.tTextBlock)
+        {
+            var txt = (TextBlock)ui;
+            return txt.Text;
+        }
         else
         {
             ThrowExceptions.NotImplementedCase(type, null);

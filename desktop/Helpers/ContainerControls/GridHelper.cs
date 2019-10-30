@@ -5,17 +5,6 @@ using System.Windows.Controls;
 
 public partial class GridHelper
 {
-    public static IEnumerable<CheckBox> GetControlsFrom(Grid grid, bool row, int dx)
-    {
-        if (row)
-        {
-            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetRow(s) == dx);
-        }
-        else
-        {
-            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetColumn(s) == dx);
-        }
-    }
 
     public static List<string> ForAllTheSame(int columns)
     {

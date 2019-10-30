@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 public partial class GridHelper{ 
@@ -39,5 +41,17 @@ public static RowDefinition GetRowDefinition(GridLength auto)
         RowDefinition rd = new RowDefinition();
         rd.Height = auto;
         return rd;
+    }
+
+public static IEnumerable<CheckBox> GetControlsFrom(Grid grid, bool row, int dx)
+    {
+        if (row)
+        {
+            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetRow(s) == dx);
+        }
+        else
+        {
+            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetColumn(s) == dx);
+        }
     }
 }

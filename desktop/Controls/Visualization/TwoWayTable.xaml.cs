@@ -46,11 +46,16 @@ namespace desktop.Controls.Visualization
 
         public void DoSave()
         {
-            if (displayEntity != string.Empty)
+            foreach (var item in leftChbs)
             {
-                if (Save != null)
+                
+
+                if (displayEntity != string.Empty)
                 {
-                    Save(displayEntity);
+                    if (Save != null)
+                    {
+                        Save(this, displayEntity, item);
+                    }
                 }
             }
         }
@@ -121,11 +126,23 @@ namespace desktop.Controls.Visualization
         /// In value key is left column
         /// In value value is checked
         /// </summary>
-        public Dictionary<string, Dictionary<string, List<bool>>> checkedCells = new Dictionary<string, Dictionary<string, List<bool>>>(); 
+        public Dictionary<string, Dictionary<string, List<bool>>> checkedCells = new Dictionary<string, Dictionary<string, List<bool>>>();
+
+        public List<CheckBox> GetCheckBoxesInRow(string dex)
+        {
+            return GetCheckBoxesInRow(leftChbs.IndexOf(dex));
+        }
+
+        public  List<CheckBox> GetCheckBoxesInRow(int dex)
+        {
+            var ele = GridHelper.GetControlsFrom(grid, true, dex).ToList();
+            ele.RemoveAt(0);
+            return ele;
+        }
 
         AddBeforeControl dataCellWrapper = AddBeforeControl.None;
         string displayEntity = string.Empty;
-        public event Action<string> Save;
+        public event Action<TwoWayTable, string, string> Save;
         /// <summary>
         /// For saving data for every table
         /// </summary>
@@ -147,8 +164,7 @@ namespace desktop.Controls.Visualization
 
                     if (dex != -1)
                     {
-                        var ele = GridHelper.GetControlsFrom(grid, true, dex).ToList();
-                        ele.RemoveAt(0);
+                        var ele = GetCheckBoxesInRow(dex);
 
                         for (int i = 0; i < item.Value.Count; i++)
                         {
