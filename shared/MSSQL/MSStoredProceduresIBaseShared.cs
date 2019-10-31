@@ -1013,13 +1013,18 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesShort(comm);
     }
 
+    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, string idColumn, object idValue)
+    {
+        return SelectValuesOfColumnAllRowsShort(true, tabulka, sloupec, idColumn, idValue);
+    }
+
     /// <summary>
     /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
     /// </summary>
     /// <param name="tabulka"></param>
     /// <param name="sloupec"></param>
     /// <returns></returns>
-    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, string idColumn, object idValue)
+    public List<short> SelectValuesOfColumnAllRowsShort(bool signed, string tabulka, string sloupec, string idColumn, object idValue)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
         AddCommandParameter(comm, 0, idValue);

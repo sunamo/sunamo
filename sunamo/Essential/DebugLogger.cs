@@ -23,7 +23,7 @@ public class DebugLogger : LoggerBase
 
     public static void DebugWriteLine(TypeOfMessage tz, string text, params object[] args)
     {
-        Debug.WriteLine(tz.ToString() + AllStrings.cs2 + SH.Format2(text, args));
+        DebugLogger.DebugWriteLine(tz.ToString() + AllStrings.cs2 + SH.Format2(text, args));
     }
 
     public static void DebugWriteLine(string text, params object[] args)

@@ -32,7 +32,7 @@ public partial class WpfApp
 #if DEBUG
     public static void WriteDebug(string v)
     {
-        //Debug.WriteLine(v);
+        //DebugLogger.DebugWriteLine(v);
     }
 #endif
     /// <summary>
