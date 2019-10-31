@@ -66,6 +66,7 @@ public static partial class UIElementExtensions
 
     public static void Refresh(this UIElement uiElement)
     {
+        uiElement.Dispatcher.Invoke(DispatcherPriority.ContextIdle, EmptyDelegate);
         uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
     }
 }

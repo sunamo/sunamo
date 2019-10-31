@@ -22,7 +22,7 @@
         <!--<Grid Grid.Column="0" x:Name="gridLeft"></Grid>-->
         <!--<Grid Grid.Column="1" x:Name="grid">-->
             <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            <desktopControlsPanels:SunamoGrid x:Name="grid">
+            <desktopControlsPanels:SunamoGrid x:Name="grid" x:FieldModifier="public">
             </desktopControlsPanels:SunamoGrid>
         </ScrollViewer>
         <!--</Grid>-->

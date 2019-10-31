@@ -1,4 +1,5 @@
 ﻿using desktop.Helpers;
+
 using sunamo.Data;
 using sunamo.Enums;
 using System;
@@ -25,6 +26,7 @@ namespace desktop.Controls.Visualization
     public partial class TwoWayTable : UserControl
     {
         const double marginInCell = 8;
+
         #region region for all code to easy transfer to another code
         /// <summary>
         /// Bez započítání top
@@ -48,16 +50,44 @@ namespace desktop.Controls.Visualization
         {
             foreach (var item in leftChbs)
             {
-                
-
                 if (displayEntity != string.Empty)
                 {
-                    if (Save != null)
-                    {
-                        Save(this, displayEntity, item);
-                    }
+                    //if (Save != null)
+                    //{
+                        Twt_Save(this, displayEntity, item);
+                    //}
                 }
             }
+        }
+
+        /// <summary>
+        /// In A1 is displayEntity
+        /// </summary>
+        /// <param name="obj"></param>
+        private void Twt_Save(TwoWayTable sender, string site, string page)
+        {
+            var path = AppData.ci.GetFile(AppFolders.Controls, SH.Join(AllStrings.us, sender.Name, site, page));
+
+            #region Get isChecked from row
+
+            var ele = sender.GetCheckBoxesInRow(page);
+            var isChecked = ele.Select(d => d.IsChecked.Value);
+            var ints = new List<int>(isChecked.Count());
+
+            foreach (var item in isChecked)
+            {
+                ints.Add(BTS.BoolToInt(item));
+            }
+            #endregion
+
+
+            var content = SH.Join(ints, AllChars.comma);
+
+            //Set(sender, checkBoxes, content);
+            //SaveControl(sender);
+
+            // better is save simpli and no use adc
+            TF.WriteAllText(path, content);
         }
 
         /// <summary>
@@ -115,18 +145,107 @@ namespace desktop.Controls.Visualization
             
             GridHelper.GetAutoSize(grid, column, row);
         }
-
-        private void ClearGridChildren()
+        
+        public void ClearGridChildren()
         {
             grid.Children.Clear();
         }
 
+        public static Dictionary<string, Dictionary<string, List<bool>>> GetRowsIsChecked(TwoWayTable twt)
+        {
+            var begin = twt.Name + "_";
+            var folder = AppData.ci.GetFolder(AppFolders.Controls);
+            var files = FS.GetFiles(folder, begin + "*", System.IO.SearchOption.TopDirectoryOnly);
+
+            Dictionary<string, Dictionary<string, List<bool>>> s = new Dictionary<string, Dictionary<string, List<bool>>>();
+
+            // In web will be window always null
+            // See comments in IWindowWithSettingsManager
+            var window = (IWindowWithSettingsManager)WpfApp.mp;
+            var Data = window.Data;
+            var data = Data.data;
+
+            foreach (var item in files)
+            {
+                var fn = FS.GetFileName(item);
+
+                fn = fn.Substring(begin.Length);
+
+                string key = begin + fn;
+
+                var webPage = SH.Split(fn, AllStrings.us);
+                var web = webPage[0];
+                var page = webPage[1];
+                var dKey = begin + web;
+
+                var text = TF.ReadFile(item);
+
+                //ApplicationDataContainerList adcl = null;
+
+                //// Automatically load
+                //if (!data.ContainsKey(key))
+                //{
+                //    var v = new ApplicationDataContainerList(item);
+                //    adcl = Data.AddFrameworkElement(key, v);
+                //}
+                //else
+                //{
+                //    adcl = data[key];
+                //}
+
+                // , for delimiting values in row, " " for entire new row
+                //var text = adcl.GetString(ApplicationDataConsts.checkBoxes);
+
+                var cells = SH.Split(text, ",");
+                var numbers = CA.ToNumber<int>(int.Parse, cells);
+
+                var bools = CA.ToBool(numbers) ;
+
+                Dictionary<string, List<bool>> dict = null;
+                if (s.ContainsKey(dKey))
+                {
+                    dict = s[dKey];
+                }
+                else
+                {
+                    dict = new Dictionary<string, List<bool>>();
+                    s.Add(dKey, dict);
+                }
+
+                DictionaryHelper.AddOrSet<string, List<bool>>(dict, page, bools);
+
+                #region Adding into checkedCells
+                //Dictionary<string, List<bool>> dict = null;
+                //if (twt.checkedCells.ContainsKey(dKey))
+                //{
+                //    dict = twt.checkedCells[dKey];
+                //}
+                //else
+                //{
+                //    dict = new Dictionary<string, List<bool>>();
+                //    twt.checkedCells.Add(dKey, dict);
+                //}
+                //dict.Add(page, bools.ToList()); 
+                #endregion
+            }
+
+            return s;
+        }
+
+        public void ReRender()
+        {
+            base.OnRenderSizeChanged(new SizeChangedInfo(this, this.RenderSize, true, true));
+        }
+
         /// <summary>
+        /// Stupid, better is have everything in grid
+        /// Is loaded during startup
+        /// Is use when web is changed, load data from txt file
         /// In key is text in format nameFw.nameOfActualContent
         /// In value key is left column
         /// In value value is checked
         /// </summary>
-        public Dictionary<string, Dictionary<string, List<bool>>> checkedCells = new Dictionary<string, Dictionary<string, List<bool>>>();
+        //public Dictionary<string, Dictionary<string, List<bool>>> checkedCells = new Dictionary<string, Dictionary<string, List<bool>>>();
 
         public List<CheckBox> GetCheckBoxesInRow(string dex)
         {
@@ -135,14 +254,14 @@ namespace desktop.Controls.Visualization
 
         public  List<CheckBox> GetCheckBoxesInRow(int dex)
         {
-            var ele = GridHelper.GetControlsFrom(grid, true, dex).ToList();
-            ele.RemoveAt(0);
+            var ele = GridHelper.GetControlsFrom<CheckBox>(grid, true, dex).ToList();
+            ele.RemoveAt(ele.Count -1);
             return ele;
         }
 
         AddBeforeControl dataCellWrapper = AddBeforeControl.None;
         string displayEntity = string.Empty;
-        public event Action<TwoWayTable, string, string> Save;
+        //public event Action<TwoWayTable, string, string> Save;
         /// <summary>
         /// For saving data for every table
         /// </summary>
@@ -154,25 +273,32 @@ namespace desktop.Controls.Visualization
             }
             set
             {
-                displayEntity = value;
+                displayEntity =  value;
 
-                var s = checkedCells[displayEntity];
+                var checkedCells = TwoWayTable.GetRowsIsChecked(this);
 
-                foreach (var item in s)
+                var key = this.Name + AllStrings.us + displayEntity;
+
+                if (checkedCells.ContainsKey(key))
                 {
-                    int dex = GetIndexOfRow(item.Key);
+                    Dictionary<string, List<bool>> s = checkedCells[key];
 
-                    if (dex != -1)
+                    foreach (var item in s)
                     {
-                        var ele = GetCheckBoxesInRow(dex);
+                        int dex = GetIndexOfRow(item.Key);
 
-                        for (int i = 0; i < item.Value.Count; i++)
+                        if (dex != -1)
                         {
-                            var el = ele[i];
-                            el.IsChecked = item.Value[i];
-                        }
-                    }
+                            var ele = GetCheckBoxesInRow(dex);
 
+                            for (int i = 0; i < item.Value.Count; i++)
+                            {
+                                var el = ele[i];
+                                el.IsChecked = item.Value[i];
+                            }
+                        }
+
+                    }
                 }
             }
         }
@@ -219,7 +345,9 @@ namespace desktop.Controls.Visualization
                     Border b = new Border();
                     b.Padding = new Thickness(5);
                     b.Child = item;
+                    // Must be transparent, it's only around inner control (which is often empty), not complex with checkbox
                     b.BorderBrush = Brushes.Transparent;
+                    b.BorderThickness = new Thickness( 1);
                     item = b;
                 }
 
@@ -255,7 +383,6 @@ namespace desktop.Controls.Visualization
                     }
                 }
             }
-
         }
 
         private void Chb_Unchecked(object sender, RoutedEventArgs e)
@@ -365,9 +492,6 @@ namespace desktop.Controls.Visualization
                 }
             }
         }
-
-
-
         public void AddLeft( params CheckBoxData<UIElement>[] uie)
         {
             AddLeft( uie.ToList());

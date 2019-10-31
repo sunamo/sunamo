@@ -43,15 +43,37 @@ public static RowDefinition GetRowDefinition(GridLength auto)
         return rd;
     }
 
-public static IEnumerable<CheckBox> GetControlsFrom(Grid grid, bool row, int dx)
+    /// <summary>
+    /// Will increment A3 due to top
+    /// </summary>
+    /// <param name="grid"></param>
+    /// <param name="row"></param>
+    /// <param name="dx"></param>
+    /// <returns></returns>
+public static IEnumerable<T> GetControlsFrom<T>(Grid grid, bool row, int dx) where T : UIElement
     {
+        dx++;
+
+        IEnumerable<UIElement> uiElements = null;
         if (row)
         {
-            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetRow(s) == dx);
+
+            uiElements = grid.Children.Cast<UIElement>().Where(s => Grid.GetRow(s) == dx);
         }
         else
         {
-            return grid.Children.Cast<CheckBox>().Where(s => Grid.GetColumn(s) == dx);
+            uiElements = grid.Children.Cast<UIElement>().Where(s => Grid.GetColumn(s) == dx);
         }
+
+        List<T> result = new List<T>();
+
+        foreach (var item in uiElements)
+        {
+            //var v = ControlFinder.FindControlExclude<UIElement>(item);
+            result.Add((T)item);
+            int i =0;
+        }
+
+        return result;
     }
 }

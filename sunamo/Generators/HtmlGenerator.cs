@@ -12,4 +12,9 @@ public class HtmlGenerator : XmlGenerator
     public void Boilerplate()
     {
     }
+
+    public void WriteNonPairTagWithAttrs(object hr, object style, string v1, string c, string v2)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -14,7 +14,18 @@ using System.Windows;
 public class ApplicationDataContainerList : IEnumerable
 {
     static Type type = typeof(ApplicationDataContainerList);
-    string path = null;
+    string _path = null;
+    string path
+    {
+        get
+        {
+            return _path;
+        }
+        set
+        {
+            _path = value;
+        }
+    }
     /// <summary>
     /// In key is name
     /// In AB Key full type

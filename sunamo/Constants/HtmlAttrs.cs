@@ -41,6 +41,7 @@ public class HtmlAttrs
     public static string navigateurl = "navigateurl";
     public static string checked_ = "checked";
     public static string dataCaption = "data-caption";
+    public static string style = "string";
 }
 
 

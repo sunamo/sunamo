@@ -1068,7 +1068,7 @@ public partial class FS
 
     public static string MascFromExtension(string ext = AllStrings.asterisk)
     {
-        if (!ext.StartsWith("*."))
+        if (!ext.StartsWith("*.") && !ext.EndsWith("*"))
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }

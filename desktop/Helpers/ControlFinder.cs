@@ -17,5 +17,14 @@ public class ControlFinder
     {
         return (T)parent.FindName(name);
     }
+
+    public static T FindControlExclude<T>(FrameworkElement parent, params UIElement[] exclude) where T: UIElement
+    {
+        //var d = VisualTreeHelpers.FindDescendents<UIElement>(parent);
+        //var d3 = VisualTreeHelpers.FindDescendents3<UIElement>(parent);
+        //var t = VisualTreeHelpers.GetLogicalChildCollection<UIElement>(parent);
+        int i = 0;
+        return default(T);
+    }
 }
 

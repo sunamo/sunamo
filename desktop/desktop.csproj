@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\EnterOneValueUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\UIElementHelperShared.cs" />
@@ -366,6 +367,7 @@
     <Compile Include="Interfaces\IShowSearchResults.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
     <Compile Include="Interfaces\IUserControlBackground.cs" />
+    <Compile Include="Interfaces\IUserControlClosing.cs" />
     <Compile Include="Interfaces\IUserControlSizeAdaptive.cs" />
     <Compile Include="Interfaces\IUserControlWithMenuItemsList.cs" />
     <Compile Include="Interfaces\IUserControlWithSettingsManager.cs" />

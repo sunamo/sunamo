@@ -1530,4 +1530,14 @@ public static List<object> ToObject(IEnumerable enumerable)
         }
         return result;
     }
+
+public static List<bool> ToBool(List<int> numbers)
+    {
+        var b = new List<bool>(numbers.Count);
+        foreach (var item in numbers)
+        {
+            b.Add(BTS.IntToBool(item));
+        }
+        return b;
+    }
 }

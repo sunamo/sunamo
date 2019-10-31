@@ -21,7 +21,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
     /// Must be bcoz every line has strictly structure - name|type|data. Never be | in data. Access through methods Get / Set
     /// Never direct access also in this class!! 
     /// </summary>
-    private Dictionary<object, ApplicationDataContainerList> data = new Dictionary<object, ApplicationDataContainerList>();
+    public Dictionary<object, ApplicationDataContainerList> data = new Dictionary<object, ApplicationDataContainerList>();
     readonly Type type = typeof(Type);
     string file = "";
     public string innerDelimiter = AllStrings.asterisk;
@@ -61,71 +61,28 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     public void Add(TwoWayTable twt)
     {
-        var begin = twt.Name + ".";
-        var folder = AppData.ci.GetFolder(AppFolders.Controls);
-        var files = FS.GetFiles(folder, begin + "*", System.IO.SearchOption.TopDirectoryOnly);
-
-        foreach (var item in files)
-        {
-            var v = new ApplicationDataContainerList(item);
-            var fn = FS.GetFileName(item);
-            string key = begin + fn;
-
-            var webPage = SH.Split(fn, AllStrings.dot);
-
-            // Automatically load
-            var adcl = AddFrameworkElement(key, v);
-            // , for delimiting values in row, " " for entire new row
-            var text = adcl.GetString(checkBoxes);
-           
-                var cells = SH.Split(text, ",");
-                var numbers = CA.ToNumber<int>(int.Parse, cells);
-
-                var bools = numbers.Cast<bool>();
-                var web = webPage[0];
-                var page = webPage[1];
-                var dKey = begin + web;
-                Dictionary<string, List<bool>> dict = null;
-                if (twt.checkedCells.ContainsKey(dKey))
-                {
-                    dict = twt.checkedCells[dKey];
-                }
-                else
-                {
-                    dict = new Dictionary<string, List<bool>>();
-                    twt.checkedCells.Add(dKey, dict);
-                }
-                dict.Add(page, bools.ToList());
-            
-
-
-        }
         //twt.c = list;
-        twt.Save += Twt_Save;
-
+        //twt.Save += Twt_Save;
     }
 
-    /// <summary>
-    /// In A1 is displayEntity
-    /// </summary>
-    /// <param name="obj"></param>
-    private void Twt_Save(TwoWayTable sender, string site, string page)
+    public void SaveControl(object o)
     {
-        
-        var path = AppData.ci.GetFile(AppFolders.Controls, SH.Join( sender.Name, site, page));
-
-        var ele = sender.GetCheckBoxesInRow(page);
-        var isChecked = ele.Select(d => d.IsChecked.Value);
-        var ints = new List<int>(isChecked.Count());
-        
-        foreach (var item in isChecked)
+        FrameworkElement fw = (FrameworkElement)o;
+        if (fw != null)
         {
-            ints.Add(BTS.BoolToInt( item));
+            data[fw].SaveFile();
         }
+        else
+        {
+            ThrowExceptions.DoesntHaveRequiredType(type, "SaveControl", "o");
+        }
+    }
 
-        var content = SH.Join(ints, AllChars.comma);
-
-        TF.WriteAllText(path, content);
+    private void Chb_Click(object sender, RoutedEventArgs e)
+    {
+        CheckBox chb = sender as CheckBox;
+        Set(sender, IsChecked, chb.IsChecked);
+        SaveControl(chb);
     }
 
     public void Add(Window cb)
@@ -263,12 +220,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         //tb.TextChanged +=
     }
 
-    private void Chb_Click(object sender, RoutedEventArgs e)
-    {
-        CheckBox chb = sender as CheckBox;
-        Set(sender,IsChecked, chb.IsChecked);
-        SaveControl(chb);
-    }
+    
 
     private void Cb_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
     {
@@ -308,17 +260,6 @@ public class ApplicationDataContainer : ApplicationDataConsts
         return AddFrameworkElement(fw, result);
     }
 
-    public void SaveControl(object o)
-    {
-        FrameworkElement fw = (FrameworkElement)o;
-        if (fw != null)
-        {
-            data[fw].SaveFile();
-        }
-        else
-        {
-            ThrowExceptions.DoesntHaveRequiredType(type, "SaveControl", "o");
-        }
-    }
+    
 }
 

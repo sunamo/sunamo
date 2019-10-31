@@ -26,6 +26,13 @@ namespace sunamo.Helpers
             }
         }
 
+        public static string ActualWindowsUserName()
+        {
+            // return ed\w
+            var un = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            return SH.TextAfter(un, "\\");
+        }
+
         //public static void CreateLnk2()
         //{
         //    // Check necessary parameters first:

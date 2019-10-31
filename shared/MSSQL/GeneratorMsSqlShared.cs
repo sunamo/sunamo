@@ -326,7 +326,7 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
 /// <summary>
     /// Může vrátit null když tabulka bude existovat
     /// Výchozí pro A3 je true
-    /// A3 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat.
+    /// A3 - whether is not desirable to create references to other tables. Good while test tables and apps, when I will it delete later.
     /// </summary>
     /// <param name="table"></param>
     /// <param name="sloupce"></param>

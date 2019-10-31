@@ -35,7 +35,10 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     }
 
     /// <summary>
-    /// 
+    /// A2 is name of site - part before Layer class
+    /// A3 is Lyr_ etc.
+    /// A4 is parameter which is inserted into GetSqlCreateTable.
+    /// dynamicTables - whether is not desirable to create references to other tables. Good while test tables and apps, when I will it delete later.
     /// </summary>
     public static string GetSqlForClearAndCreateTables(Dictionary<string, MSColumnsDB> sl, string Mja, string tablePrefix, bool dynamicTables)
     {
@@ -60,6 +63,12 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         return dropes.ToString() + Environment.NewLine + createTable.ToString();
     }
 
+    /// <summary>
+    /// True if name of table after prefix contains another _
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="tablePrefix"></param>
+    /// <returns></returns>
     private static bool IsDynamic(string p, string tablePrefix)
     {
         //List<int> nt = SH.ReturnOccurencesOfString(p, "_");

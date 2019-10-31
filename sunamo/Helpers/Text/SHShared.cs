@@ -31,12 +31,12 @@ public static partial class SH
         return text;
     }
 
-    public static string TextAfter(string item, string sourceCode)
+    public static string TextAfter(string item, string after)
     {
-        var dex = item.IndexOf(sourceCode);
+        var dex = item.IndexOf(after);
         if (dex != -1)
         {
-            return item.Substring(dex + sourceCode.Length); 
+            return item.Substring(dex + after.Length); 
         }
         return null;
     }

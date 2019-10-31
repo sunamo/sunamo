@@ -73,6 +73,12 @@ public class VisualTreeHelpers
 
     }
 
+    /// <summary>
+    /// Is used nowhere in code
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="dtGrid"></param>
+    /// <returns></returns>
     public static List<T> FindDescendents2<T>(DataGrid dtGrid)
     {
         var count = VisualTreeHelper.GetChildrenCount(dtGrid);
@@ -144,8 +150,11 @@ public class VisualTreeHelpers
         }
     }
 
+
     /// <summary>
     /// Working, as in EncodingOfFiles
+    /// FindDescendents - check for equality with RH.IsOrIsDeriveFromBaseClass
+    /// FindDescendents3 - check for equality with is T
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="depObj"></param>
@@ -170,6 +179,14 @@ public class VisualTreeHelpers
         }
     }
 
+    /// <summary>
+    /// Dojebané mnou, nepoužívat
+    /// FindDescendents - check for equality with RH.IsOrIsDeriveFromBaseClass
+    /// FindDescendents3 - check for equality with is T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="depObj"></param>
+    /// <returns></returns>
     public static IEnumerable<T> FindDescendents<T>(DependencyObject depObj) where T : DependencyObject
     {
         List<T> t = new List<T>();
@@ -178,6 +195,8 @@ public class VisualTreeHelpers
 
     /// <summary>
     /// Dojebané mnou, nepoužívat
+    /// FindDescendents - check for equality with RH.IsOrIsDeriveFromBaseClass
+    /// FindDescendents3 - check for equality with is T
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="vr"></param>
@@ -199,15 +218,13 @@ public class VisualTreeHelpers
                     }
                 }
 
-                var desc = FindDescendents<T>(null, child).ToList();
+                var desc = FindDescendents<T>(child).ToList();
                 //for (int y = desc.Count() - 1; y >= 0; y--)
                 //{
                 //    vr.Add(desc[i]);
                 //}
                 if (vr != null)
                 {
-
-
                     foreach (T childOfChild in desc)
                     {
                         vr.Add(childOfChild);
