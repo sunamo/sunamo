@@ -41,7 +41,13 @@ public class HtmlAttrs
     public static string navigateurl = "navigateurl";
     public static string checked_ = "checked";
     public static string dataCaption = "data-caption";
-    public static string style = "string";
+    public static string style = "style";
+    public static string dataVia = "data-via";
+    public static string dataUrl = "data-url";
+    public const string dataType = "data-type";
+    public const string dataDescription = "data-description";
+    public const string dataTitle = "data-title";
+    public const string dataMedia = "data-media";
 }
 
 

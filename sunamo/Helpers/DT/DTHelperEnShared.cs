@@ -97,7 +97,12 @@ public partial class DTHelperEn
         return vr;
     }
 
-//public static string ToShortTime(DateTime value)
+    public static string ToShortDateString(DateTime today)
+    {
+        return DTHelperMulti.DateToString(today, Langs.en);
+    }
+
+    //public static string ToShortTime(DateTime value)
     //{
     //    return 
     //}

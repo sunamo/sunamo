@@ -178,7 +178,32 @@ public class XmlGenerator
         WriteTagWithAttrs(nameTag, p);
     }
 
-    
+    public void WriteNonPairTagWithAttrs(bool appendNull, string p, params string[] p_2)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendFormat("<{0} ", p);
+        for (int i = 0; i < p_2.Length; i++)
+        {
+            var attr = p_2[i];
+            var val = p_2[++i];
+            if ((string.IsNullOrEmpty(val) && appendNull) || !string.IsNullOrEmpty(val))
+            {
+                if ((!IsNulledOrEmpty(attr) && appendNull) || !IsNulledOrEmpty(val))
+                {
+
+                    sb.AppendFormat("{0}=\"{1}\" ", attr, val);
+                }
+            }
+        }
+        sb.Append(" /");
+        sb.Append(AllStrings.gt);
+        string r = sb.ToString();
+        if (_useStack)
+        {
+            _stack.Push(r);
+        }
+        this.sb.Append(r);
+    }
 
     /// <summary>
     /// if will be sth null, wont be writing

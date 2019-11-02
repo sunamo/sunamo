@@ -4009,7 +4009,7 @@
         </trans-unit>
         <trans-unit id="SongsInTheAlbum" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Songs in the album:</target>
+          <target state="translated">Songs in the album</target>
         </trans-unit>
         <trans-unit id="NoSongFoundFromThisAlbum" translate="yes" xml:space="preserve">
           <source></source>
