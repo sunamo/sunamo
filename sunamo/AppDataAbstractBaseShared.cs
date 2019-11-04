@@ -15,10 +15,10 @@ namespace sunamo
     public abstract partial class AppDataAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
         public abstract StorageFolder GetRootFolder();
-
+        
 
         protected abstract void SaveFile(string content, StorageFile sf);
-
+        
 
 
         public abstract StorageFolder GetFolder(AppFolders af);
@@ -40,11 +40,11 @@ namespace sunamo
         /// <returns></returns>
         public abstract StorageFile GetFile(AppFolders af, string file);
         public abstract bool IsRootFolderNull();
-        public abstract StorageFolder GetSunamoFolder();
+        //public abstract StorageFolder GetSunamoFolder();
         public abstract StorageFolder GetCommonSettings(string key);
 
         public abstract void SetCommonSettings(string key, string value);
 
-        public abstract StorageFile GetFileCommonSettings(string key);
+        
     }
 }

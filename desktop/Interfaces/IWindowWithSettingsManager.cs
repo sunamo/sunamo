@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace desktop.Interfaces
-{
+/// <summary>
+/// Cant have namespace because in normal and *.web is different file but its use in TwoWayTable in both branches
+/// </summary>
     public interface IWindowWithSettingsManager
     {
         /// <summary>
@@ -22,4 +23,4 @@ namespace desktop.Interfaces
             get;
         }
     }
-}
+

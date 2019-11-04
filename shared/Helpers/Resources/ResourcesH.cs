@@ -55,6 +55,11 @@ public class ResourcesH : IResourceHelper
             return new BitmapImage(GetRelativeUri(name));
         }
 
+    /// <summary>
+    /// Its for getting string from file, never from resx or another in code variable
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
         public string GetString(string name)
         {
             return Encoding.UTF8.GetString(FS.StreamToArrayBytes(GetStream(name)));
@@ -63,6 +68,7 @@ public class ResourcesH : IResourceHelper
     public Stream GetStream(string name)
     {
         var uri = GetRelativeUri(name);
+        //var ass = Application.ResourceAssembly;
         StreamResourceInfo info = Application.GetResourceStream(uri);
         return info.Stream;
     }

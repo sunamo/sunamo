@@ -75,6 +75,7 @@ using System.Windows.Media.Imaging;
         #region Již v CreateW10AppGraphics - několik PlaceToCenter metod
         /// <summary>
         /// Funguje naprosto správně, už nic neměnit
+        /// 11-2-2019 nsn
         /// </summary>
         /// <param name="bi"></param>
         /// <param name="trans"></param>
@@ -367,12 +368,19 @@ using System.Windows.Media.Imaging;
         }
             return bi;
         }
-        #endregion
-        #endregion
-        #endregion
+    #endregion
+    #endregion
+    #endregion
 
-        #region Mono
-        private static WriteableBitmap MakeWriteableBitmapTransparentFill(BitmapSource bi, PixelColor trans, PixelColor white2)
+    #region Mono
+    /// <summary>
+    /// 11-2-2019 nsn
+    /// </summary>
+    /// <param name="bi"></param>
+    /// <param name="trans"></param>
+    /// <param name="white2"></param>
+    /// <returns></returns>
+    private static WriteableBitmap MakeWriteableBitmapTransparentFill(BitmapSource bi, PixelColor trans, PixelColor white2)
         {
             white2.Alpha = 255;
             //PixelColor px = white2;
@@ -424,7 +432,14 @@ using System.Windows.Media.Imaging;
             return wb;
         }
 
-        private static WriteableBitmap MakeWriteableBitmapTransparent(BitmapSource bi, PixelColor trans, PixelColor white2)
+    /// <summary>
+    /// 11-2-2019 nsn
+    /// </summary>
+    /// <param name="bi"></param>
+    /// <param name="trans"></param>
+    /// <param name="white2"></param>
+    /// <returns></returns>
+    private static WriteableBitmap MakeWriteableBitmapTransparent(BitmapSource bi, PixelColor trans, PixelColor white2)
         {
             white2.Alpha = 255;
             //PixelColor px = white2;

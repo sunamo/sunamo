@@ -14,6 +14,330 @@
     </header>
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
+        <trans-unit id="AboutApp" translate="yes" xml:space="preserve">
+          <source>About app</source>
+          <target state="new">About app</target>
+        </trans-unit>
+        <trans-unit id="AboutDeveloper" translate="yes" xml:space="preserve">
+          <source>This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</source>
+          <target state="new">This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</target>
+        </trans-unit>
+        <trans-unit id="Cancel.Content" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+        </trans-unit>
+        <trans-unit id="HereEnter" translate="yes" xml:space="preserve">
+          <source>Here enter </source>
+          <target state="new">2Here enter </target>
+        </trans-unit>
+        <trans-unit id="TickAll" translate="yes" xml:space="preserve">
+          <source>Tick all</source>
+          <target state="new">Tick all</target>
+        </trans-unit>
+        <trans-unit id="UntickAll" translate="yes" xml:space="preserve">
+          <source>Untick all</source>
+          <target state="new">Untick all</target>
+        </trans-unit>
+        <trans-unit id="tbPassword.Text" translate="yes" xml:space="preserve">
+          <source>Password:</source>
+          <target state="new">Password:</target>
+        </trans-unit>
+        <trans-unit id="chbRememberLogin.Content" translate="yes" xml:space="preserve">
+          <source>Remember login</source>
+          <target state="new">Remember login</target>
+        </trans-unit>
+        <trans-unit id="chbAutoLogin.Content" translate="yes" xml:space="preserve">
+          <source>Auto login</source>
+          <target state="new">Auto login</target>
+        </trans-unit>
+        <trans-unit id="btnCloseDialog.Content" translate="yes" xml:space="preserve">
+          <source>Close dialog</source>
+          <target state="new">Close dialog</target>
+        </trans-unit>
+        <trans-unit id="btnForgetLoginAndPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget all</source>
+          <target state="new">Forget all</target>
+        </trans-unit>
+        <trans-unit id="btnForgetPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget password</source>
+          <target state="new">Forget password</target>
+        </trans-unit>
+        <trans-unit id="btnLogin.Content" translate="yes" xml:space="preserve">
+          <source>Log in</source>
+          <target state="new">Log in</target>
+        </trans-unit>
+        <trans-unit id="doesNotExists" translate="yes" xml:space="preserve">
+          <source>does not exists</source>
+          <target state="new">does not exists</target>
+        </trans-unit>
+        <trans-unit id="ExceptionNotExists" translate="yes" xml:space="preserve">
+          <source>The program is attempting to show the exception that actually does not exist.</source>
+          <target state="new">The program is attempting to show the exception that actually does not exist.</target>
+        </trans-unit>
+        <trans-unit id="FileOrFolder" translate="yes" xml:space="preserve">
+          <source>File or folder</source>
+          <target state="new">File or folder</target>
+        </trans-unit>
+        <trans-unit id="InsufficientRightsToAccessFileOrFolder" translate="yes" xml:space="preserve">
+          <source>Insufficient rights for this type of access to a file or folder</source>
+          <target state="new">Insufficient rights for this type of access to a file or folder</target>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="new">No</target>
+        </trans-unit>
+        <trans-unit id="UnknownErrorWhenWorkWithFileOrFolder" translate="yes" xml:space="preserve">
+          <source>An error of unknown type when you work with a file or folder</source>
+          <target state="new">An error of unknown type when you work with a file or folder</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="new">Yes</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="new">Error</target>
+        </trans-unit>
+        <trans-unit id="FileCannotBeDeleted" translate="yes" xml:space="preserve">
+          <source>File cannot be deleted</source>
+          <target state="new">File cannot be deleted</target>
+        </trans-unit>
+        <trans-unit id="Information" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <target state="new">Information</target>
+        </trans-unit>
+        <trans-unit id="lasted" translate="yes" xml:space="preserve">
+          <source>lasted</source>
+          <target state="new">lasted</target>
+        </trans-unit>
+        <trans-unit id="Operation" translate="yes" xml:space="preserve">
+          <source>Operation</source>
+          <target state="new">Operation</target>
+        </trans-unit>
+        <trans-unit id="PasswordOrLoginNotEntered" translate="yes" xml:space="preserve">
+          <source>User name or password has not been entered</source>
+          <target state="new">User name or password has not been entered</target>
+        </trans-unit>
+        <trans-unit id="Success" translate="yes" xml:space="preserve">
+          <source>Success</source>
+          <target state="new">Success</target>
+        </trans-unit>
+        <trans-unit id="Warning" translate="yes" xml:space="preserve">
+          <source>Warning</source>
+          <target state="new">Warning</target>
+        </trans-unit>
+        <trans-unit id="tbAnyFeedbackIsWelcome.Text" translate="yes" xml:space="preserve">
+          <source>Any feedback is welcome!</source>
+          <target state="new">Any feedback is welcome!</target>
+        </trans-unit>
+        <trans-unit id="CzechBlog" translate="yes" xml:space="preserve">
+          <source>Czech blog</source>
+          <target state="new">Czech blog</target>
+        </trans-unit>
+        <trans-unit id="EnglishBlog" translate="yes" xml:space="preserve">
+          <source>English blog</source>
+          <target state="new">English blog</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Blue color component:</source>
+          <target state="new">Blue color component:</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Green color component:</source>
+          <target state="new">Green color component:</target>
+        </trans-unit>
+        <trans-unit id="TransparencyColon" translate="yes" xml:space="preserve">
+          <source>Opacity:</source>
+          <target state="new">Opacity:</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Red color component:</source>
+          <target state="new">Red color component:</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyLoginedToSpace" translate="yes" xml:space="preserve">
+          <source>You're successfully logined to </source>
+          <target state="new">You're successfully logined to </target>
+        </trans-unit>
+        <trans-unit id="txtSearch.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Search on Google</source>
+          <target state="new">Search on Google</target>
+        </trans-unit>
+        <trans-unit id="Always" translate="yes" xml:space="preserve">
+          <source>Always</source>
+          <target state="new">Always</target>
+        </trans-unit>
+        <trans-unit id="btnBack.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Previous</source>
+          <target state="new">Previous</target>
+        </trans-unit>
+        <trans-unit id="btnNext.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="new">Next</target>
+        </trans-unit>
+        <trans-unit id="btnReload.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Reload</source>
+          <target state="new">Reload</target>
+        </trans-unit>
+        <trans-unit id="btnStopLoading.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Stop loading</source>
+          <target state="new">Stop loading</target>
+        </trans-unit>
+        <trans-unit id="Never" translate="yes" xml:space="preserve">
+          <source>Never</source>
+          <target state="new">Never</target>
+        </trans-unit>
+        <trans-unit id="Prompt" translate="yes" xml:space="preserve">
+          <source>Prompt</source>
+          <target state="new">Prompt</target>
+        </trans-unit>
+        <trans-unit id="abbLogInToSunamoCz.Label" translate="yes" xml:space="preserve">
+          <source>Sign In</source>
+          <target state="new">Sign In</target>
+        </trans-unit>
+        <trans-unit id="abbLogVisitsInGcCom.Label" translate="yes" xml:space="preserve">
+          <source>Write a visit</source>
+          <target state="new">Write a visit</target>
+        </trans-unit>
+        <trans-unit id="abbOpenListingsInGcCom.Label" translate="yes" xml:space="preserve">
+          <source>Listings</source>
+          <target state="new">Listings</target>
+        </trans-unit>
+        <trans-unit id="abbOpenListingsInGcCom.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Open listings at geocaching.com</source>
+          <target state="new">Open listings at geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbLogInToSunamoCz.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log in to sunamo.cz</source>
+          <target state="new">Log in to sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="abbLogVisitsInGcCom.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log visits at geocaching.com</source>
+          <target state="new">Log visits at geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbLogOutToSunamoCz.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log out from sunamo.cz</source>
+          <target state="new">Log out from sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="abbAboutApp.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>About this app</source>
+          <target state="new">About this app</target>
+        </trans-unit>
+        <trans-unit id="abbAboutApp.Label" translate="yes" xml:space="preserve">
+          <source>About app</source>
+          <target state="new">About app</target>
+        </trans-unit>
+        <trans-unit id="SuccessfulLoginToSunamoCz" translate="yes" xml:space="preserve">
+          <source>Now you're successfully logined to sunamo.cz</source>
+          <target state="new">Now you're successfully logined to sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="AppStartedSuccessfully" translate="yes" xml:space="preserve">
+          <source>App GeoCaching Tool started successfully</source>
+          <target state="new">App GeoCaching Tool started successfully</target>
+        </trans-unit>
+        <trans-unit id="AllCachesListingsInTabsProcessed" translate="yes" xml:space="preserve">
+          <source>All caches listings in tabs was processed</source>
+          <target state="new">All caches listings in tabs was processed</target>
+        </trans-unit>
+        <trans-unit id="Loading" translate="yes" xml:space="preserve">
+          <source>Loading</source>
+          <target state="new">Loading</target>
+        </trans-unit>
+        <trans-unit id="LocationOfCaches" translate="yes" xml:space="preserve">
+          <source>location of caches</source>
+          <target state="new">location of caches</target>
+        </trans-unit>
+        <trans-unit id="NoCacheListingInTabs" translate="yes" xml:space="preserve">
+          <source>Unfortunately you don't have any cache listing in tabs.</source>
+          <target state="new">Unfortunately you don't have any cache listing in tabs.</target>
+        </trans-unit>
+        <trans-unit id="NoCacheListingsInSavedList" translate="yes" xml:space="preserve">
+          <source>Unfornutaly you don't have any cache listing in selected saved list.</source>
+          <target state="new">Unfornutaly you don't have any cache listing in selected saved list.</target>
+        </trans-unit>
+        <trans-unit id="PromptNewTab" translate="yes" xml:space="preserve">
+          <source>Do you want open link in new tab?</source>
+          <target state="new">Do you want open link in new tab?</target>
+        </trans-unit>
+        <trans-unit id="OpenTabsToSavedList" translate="yes" xml:space="preserve">
+          <source>Open tabs to list</source>
+          <target state="new">Open tabs to list</target>
+        </trans-unit>
+        <trans-unit id="NavigatingTo" translate="yes" xml:space="preserve">
+          <source>Navigating to</source>
+          <target state="new">Navigating to</target>
+        </trans-unit>
+        <trans-unit id="abbOpenedListingsToNormalBrowser.Label" translate="yes" xml:space="preserve">
+          <source>Web browser</source>
+          <target state="new">Web browser</target>
+        </trans-unit>
+        <trans-unit id="abbOpenTabsToSavedList.Label" translate="yes" xml:space="preserve">
+          <source>Save list</source>
+          <target state="new">Save list</target>
+        </trans-unit>
+        <trans-unit id="abbOpenedListingsToNormalBrowser.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Opened listings to main browser</source>
+          <target state="new">Opened listings to main browser</target>
+        </trans-unit>
+        <trans-unit id="abbOpenTabsToSavedList.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Opened listings save to list</source>
+          <target state="new">Opened listings save to list</target>
+        </trans-unit>
+        <trans-unit id="tbGridLogHeader.Text" translate="yes" xml:space="preserve">
+          <source>Activity of app</source>
+          <target state="new">Activity of app</target>
+        </trans-unit>
+        <trans-unit id="tbGridSavedCachesList.Text" translate="yes" xml:space="preserve">
+          <source>Managing stored caches</source>
+          <target state="new">Managing stored caches</target>
+        </trans-unit>
+        <trans-unit id="AlreadyOpen" translate="yes" xml:space="preserve">
+          <source>Already open, cannot duplicate: </source>
+          <target state="new">Already open, cannot duplicate: </target>
+        </trans-unit>
+        <trans-unit id="LogInToGeoCachingCom" translate="yes" xml:space="preserve">
+          <source>Log in to Geocaching.com</source>
+          <target state="new">Log in to Geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="LogOutFromGeoCachingCom" translate="yes" xml:space="preserve">
+          <source>Log out from Geocaching.com</source>
+          <target state="new">Log out from Geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="NavigationTo" translate="yes" xml:space="preserve">
+          <source>Navigation to </source>
+          <target state="new">Navigation to </target>
+        </trans-unit>
+        <trans-unit id="NotLoginedToGeocachingCom" translate="yes" xml:space="preserve">
+          <source>you weren't logined to geocaching.com</source>
+          <target state="new">you weren't logined to geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbCreateHtmlList.Label" translate="yes" xml:space="preserve">
+          <source>As HTML list</source>
+          <target state="new">As HTML list</target>
+        </trans-unit>
+        <trans-unit id="HtmlListSuccessfullyCreated" translate="yes" xml:space="preserve">
+          <source>Html list of caches successfully created and putted into clipboard</source>
+          <target state="new">Html list of caches successfully created and putted into clipboard</target>
+        </trans-unit>
+        <trans-unit id="abbCreateHtmlList.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create a HTML list of caches</source>
+          <target state="new">Create a HTML list of caches</target>
+        </trans-unit>
+        <trans-unit id="MakeWithLinks" translate="yes" xml:space="preserve">
+          <source>Make with hyperlinks</source>
+          <target state="new">Make with hyperlinks</target>
+        </trans-unit>
+        <trans-unit id="WasCreatedListOfCachesWithNameColon" translate="yes" xml:space="preserve">
+          <source>Was created list of caches with name: </source>
+          <target state="new">Was created list of caches with name: </target>
+        </trans-unit>
+        <trans-unit id="FailedWithErrorColon" translate="yes" xml:space="preserve">
+          <source> failed with error: </source>
+          <target state="new"> failed with error: </target>
+        </trans-unit>
+        <trans-unit id="NavigationFailedColon" translate="yes" xml:space="preserve">
+          <source>Navigation failed:</source>
+          <target state="new">Navigation failed:</target>
+        </trans-unit>
         <trans-unit id="Error" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">error</target>

@@ -123,14 +123,12 @@
     <Compile Include="..\..\sunamo\shared\MSSQL\MSTSPShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\GeneratorMsSqlShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\HttpRequestHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\Collections\Converters\StringHexColorConverter.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseShared.cs" Link="" />
     <Compile Include="CodeGenerator\CSharpClassesGenerator.cs" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstract.cs" />
     <Compile Include="CodeGenerator\GeneratorCodeAbstractShared.cs" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
-    <Compile Include="Collections\Converters\StringHexColorConverter.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
     <Compile Include="CodeGenerator\GeneratorCpp.cs" />
     <Compile Include="CodeGenerator\AccessModifiers.cs" />
@@ -149,9 +147,12 @@
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="DependencyReflection.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\SunamoColorExtensions.cs" />
     <Compile Include="Extensions\SunamoPointExtensions.cs" />
+    <Compile Include="Extensions\SystemDrawingColorExtensions.cs" />
     <Compile Include="Extensions\SystemDrawingSizeExtension.cs" />
     <Compile Include="Extensions\SystemDrawingSizeFExtension.cs" />
+    <Compile Include="Extensions\SystemWindowsMediaColorExtensions.cs" />
     <Compile Include="Extensions\SystemWindowsSizeExtensions.cs" />
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="_Old\StoredProceduresI.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Collections\Converters\" />
     <Folder Include="Database\" />
     <Folder Include="forms\" />
     <Folder Include="Helpers\Clipboard\" />

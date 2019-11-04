@@ -20,6 +20,16 @@ public static class RLData
 
         return en[key] + AllStrings.colon;
     }
+
+
+}
+
+public class ResourceLoaderRL
+{
+    public string GetString(string k)
+    {
+        return RLData.en[k];
+    }
 }
 
 public class TranslateDictionary : IDictionary<string, string>

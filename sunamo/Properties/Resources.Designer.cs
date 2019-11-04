@@ -61,6 +61,15 @@ namespace sunamo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to f.
+        /// </summary>
+        public static string s1 {
+            get {
+                return ResourceManager.GetString("s1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] sunamo_cs_CZ {

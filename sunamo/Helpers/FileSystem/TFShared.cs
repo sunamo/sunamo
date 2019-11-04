@@ -190,9 +190,25 @@ public partial class TF
         return  File.OpenText(file);
     }
 
+    public static Action<string, string> writeAllText = null;
+
+    /// <summary>
+    /// A1 cant be storagefile because its
+    /// not in 
+    /// </summary>
+    /// <param name="file"></param>
+    /// <param name="content"></param>
     public static void WriteAllText(string file, string content)
     {
-        File.WriteAllText(file, content);
+        if (writeAllText == null)
+        {
+            File.WriteAllText(file, content);
+        }
+        else
+        {
+            writeAllText.Invoke(file, content);
+        }
+        
     }
 
     public static void AppendToFile(string obsah, string soubor)

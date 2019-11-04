@@ -19,6 +19,8 @@ namespace sunamo
         /// <returns></returns>
         public abstract Task<StorageFile> GetFile(AppFolders af, string file);
         public abstract bool IsRootFolderNull();
-        public abstract Task<StorageFolder> GetSunamoFolder();
+
+        
+        //public abstract Task<StorageFolder> GetSunamoFolder();
     }
 }

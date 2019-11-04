@@ -37,12 +37,12 @@ public static class StringHexColorConverter //: ISimpleConverter<string, Color>
         return hex.Replace(AllStrings.dash, "");
     }
 
-    public static string ConvertToWoAlpha(Color u)
+    public static string ConvertToWoAlpha(SunamoColor u)
     {
         return SH.Format2("#{0:X2}{1:X2}{2:X2}", u.R, u.G, u.B);
     }
 
-    public static string ConvertTo(Color u)
+    public static string ConvertTo(SunamoColor u)
     {
         return SH.Format2("#{0:X2}{1:X2}{2:X2}{3:X2}", u.A, u.R, u.G, u.B);
     }

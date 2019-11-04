@@ -23,7 +23,7 @@ namespace sunamo.LoggerAbstract
         public DateTime Dt { get { return _dateTime; } }
         public TypeOfMessage st { get { return _typeOfMessage; } }
         public string Message { get { return _message; } }
-        public Color Bg { get { return Bg; } set { Bg = value; } }
+        public Color Bg { get { return _bg; } set { _bg = value; } }
 
         /// <summary>
         /// Must be method because call await WpfApp.cd.RunAsync (works with controls)

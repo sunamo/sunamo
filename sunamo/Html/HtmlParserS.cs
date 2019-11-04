@@ -28,6 +28,6 @@ public static partial class HtmlDocumentS
             return string.Empty;
         }
 
-        return htmlNode.InnerHtml;
+        return htmlNode.InnerHtml.Trim();
     }
 }

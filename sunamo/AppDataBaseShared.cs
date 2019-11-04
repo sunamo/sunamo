@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
+    /// <summary>
+    /// Must return always string, not StorageFile - in Standard is not StorageFile class and its impossible to get Path
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public abstract string GetFileCommonSettings(string key);
     private string _fileFolderWithAppsFiles = "";
     public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
 
@@ -19,7 +25,19 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// </summary>
     protected StorageFolder rootFolder = default(StorageFolder);
 
-    public abstract StorageFolder CommonFolder();
+    /// <summary>
+    /// Must be here and Tash because in UWP is everything async
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public abstract Task<StorageFolder> GetSunamoFolder();
+
+    //public  string CommonFolder()
+    //{
+    //    var path = GetSunamoFolder().Result.ToString();
+    //    return FS.Combine(path, "Common", AppFolders.Settings.ToString());
+    //}
+    //public abstract StorageFolder CommonFolder();
 
     public dynamic Abstract
     {
@@ -63,23 +81,9 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
     }
 
+    public abstract string RootFolderCommon(bool inFolderCommon);
 
-    /// <summary>
-    /// Return always in User's AppData
-    /// </summary>
-    /// <param name="inFolderCommon"></param>
-    /// <returns></returns>
-    public string RootFolderCommon(bool inFolderCommon)
-    {
-        //string appDataFolder = SpecialFO
-        string sunamo2 = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
-        if (inFolderCommon)
-        {
-            return FS.Combine(sunamo2, "Common");
-        }
-
-        return sunamo2;
-    }
+    
 
 
 

@@ -87,20 +87,51 @@ public partial class FS
         var fileTo = FS.Combine(nad, FS.GetFileName(v));
         CopyFile(v, fileTo);
     }
+    public static bool? ExistsDirectoryNull(string item)
+    {
+        return ExistsDirectory(item);
+    }
+
+    public static bool ExistsDirectory(string item)
+    {
+        if (existsDirectory == null)
+        {
+            return ExistsDirectoryWorker(item);
+        }
+        else
+        {
+            // Call from Apps
+            return BTS.GetValueOfNullable( existsDirectory.Invoke(item));
+        }
+    }
 
     /// <summary>
     /// Convert to UNC path
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    public static bool ExistsDirectory(string item)
+    public static bool ExistsDirectoryWorker(string item)
     {
+        // Not working, flags from GeoCachingTool wasnt transfered to standard
+#if NETFX_CORE
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, RH.CallingMethod(), " - use methods in FSApps");
+#endif
+#if WINDOWS_UWP
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, RH.CallingMethod(), " - use methods in FSApps");
+#endif
+
+
         if (item == Consts.UncLongPath || item == string.Empty)
         {
             return false;
         }
+
+        var item2 = MakeUncLongPath(item);
+
+      
+
         // FS.ExistsDirectory if pass SE or only start of Unc return false
-        return Directory.Exists(MakeUncLongPath(item));
+        return Directory.Exists(item2);
     }
 
 
@@ -432,10 +463,16 @@ public partial class FS
 
         bool badFormat = false;
 
-        if (!char.IsLetter(argValue[0]))
+        if (argValue.Length <3)
         {
-            badFormat = true;
+            return badFormat;
         }
+            if (!char.IsLetter(argValue[0]))
+            {
+                badFormat = true;
+            }
+        
+
 
         if (char.IsLetter(argValue[1]))
         {
@@ -1068,7 +1105,7 @@ public partial class FS
 
     public static string MascFromExtension(string ext = AllStrings.asterisk)
     {
-        if (!ext.StartsWith("*.") && !ext.EndsWith("*"))
+        if (!ext.StartsWith("*.") && !ext.Contains("*") && !ext.Contains("?"))
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
@@ -1234,6 +1271,11 @@ public partial class FS
 
 public static byte[] StreamToArrayBytes(System.IO.Stream stream)
     {
+        if (stream == null)
+        {
+            return new byte[0];
+        }
+
         long originalPosition = 0;
 
         if (stream.CanSeek)

@@ -131,6 +131,7 @@
     <Compile Include="Constants\Paths\ExecutablePaths.cs" />
     <Compile Include="Constants\Paths\SourceCodePaths.cs" />
     <Compile Include="Constants\Paths\TemporaryPaths.cs" />
+    <Compile Include="Constants\RuntimeFrameworks.cs" />
     <Compile Include="Constants\SunamoStrings.cs" />
     <Compile Include="Constants\XlfKeys.cs" />
     <Compile Include="Control\ColumnSizeHelper.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="ConvertersSimple\ColorConverter.cs" />
     <Compile Include="ConvertersSimple\PluralConverter.cs" />
     <Compile Include="ConvertersSimple\PropertyType2Converter.cs" />
+    <Compile Include="ConvertersSimple\StringHexColorConverter.cs" />
     <Compile Include="Converts\AppLangConverter.cs" />
     <Compile Include="Converts\BigEndianBitConverter.cs" />
     <Compile Include="Converts\ConvertBase64.cs" />
@@ -232,6 +234,7 @@
     <Compile Include="Data\StorageFolder.cs" />
     <Compile Include="Data\StringInt.cs" />
     <Compile Include="Data\StringPaddingData.cs" />
+    <Compile Include="Data\SunamoColor.cs" />
     <Compile Include="Data\SunamoHttpPostedFile.cs" />
     <Compile Include="Data\SunamoPoint.cs" />
     <Compile Include="Data\SunamoSize.cs" />
@@ -450,6 +453,7 @@
     <Compile Include="Helpers\Resource\RandomHelperList.cs" />
     <Compile Include="Helpers\Resource\RandomHelperShared.cs" />
     <Compile Include="Helpers\Resource\ResourcesHelper.cs" />
+    <Compile Include="Helpers\Runtime\PlatformInteropHelper.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelper.cs" />
     <Compile Include="Helpers\Sql\SqlServerHelper.cs" />
     <Compile Include="Helpers\Sql\SqlServerHelperShared.cs" />
@@ -592,7 +596,6 @@
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
     <Content Include="plain.txt" />
-    <Content Include="standard.csproj" />
     <Content Include="tickets.txt" />
   </ItemGroup>
   <ItemGroup>

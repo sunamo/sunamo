@@ -47,8 +47,14 @@ namespace desktop
             _row2 = row2;
         }
 
-        public string Row1 { get { return _row1; } }
-        public string Row2 { get { return _row2; } }
+        /// <summary>
+        /// First row in SelectorHelperListViewUC
+        /// </summary>
+        public string Row1 { get { return _row1; } set { _row1 = value; } }
+        /// <summary>
+        /// Second row in SelectorHelperListViewUC
+        /// </summary>
+        public string Row2 { get { return _row2; } set { _row2 = value; } }
 
         public override string ToString()
         {
@@ -65,6 +71,8 @@ namespace desktop
         public List<FileNameWithDateTime> files = new List<FileNameWithDateTime>();
         private FileEntriesDuplicitiesStrategy _ds = FileEntriesDuplicitiesStrategy.Time;
         private Langs _l = Langs.cs;
+        AppFolders af = AppFolders.Data;
+        
 
         public string GetFullPath(FileNameWithDateTime o)
         {
@@ -73,7 +81,9 @@ namespace desktop
 
         public DateTimeFileIndex()
         {
-            //Initialize(af, ext, ds, addPostfix);
+            
+
+            //Initialize(af, _ext, _ds);
         }
 
         /// <summary>
@@ -144,7 +154,7 @@ namespace desktop
 
         public FileNameWithDateTime CreateObjectFileNameWithDateTime(string row1, string row2, string item)
         {
-            FileNameWithDateTime add = new FileNameWithDateTime(null, null);
+            FileNameWithDateTime add = new FileNameWithDateTime(row1, row2);
 
             var fnwoe = FS.GetFileNameWithoutExtension(item);
             #region Copy for inspire
@@ -166,6 +176,9 @@ namespace desktop
             add.dt.AddHours(hour);
             add.name = postfix;
             add.fnwoe = DeleteWrongCharsInFileName(fnwoe);
+
+            add.Row1 = postfix;
+            add.Row2 = add.dt.ToShortDateString();
             #endregion
 
             return add;

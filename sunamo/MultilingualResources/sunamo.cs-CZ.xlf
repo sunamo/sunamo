@@ -13,6 +13,340 @@
     </header>
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
+        <trans-unit id="AboutApp" translate="yes" xml:space="preserve">
+          <source>About app</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">O aplikaci</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="AboutDeveloper" translate="yes" xml:space="preserve">
+          <source>This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</source>
+          <target state="translated">Tato aplikace byla vytvořena ve vývojovém prostředí Visual Studio 2015 Community, které je zcela zdarma. Osoba, která učinila tuto aplikaci na internetu je znám pod nickem sunamo.</target>
+        </trans-unit>
+        <trans-unit id="Cancel.Content" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated" state-qualifier="tm-suggestion">Storno</target>
+        </trans-unit>
+        <trans-unit id="HereEnter" translate="yes" xml:space="preserve">
+          <source>Here enter </source>
+          <target state="translated" state-qualifier="mt-suggestion">Zde zadejte </target>
+        </trans-unit>
+        <trans-unit id="TickAll" translate="yes" xml:space="preserve">
+          <source>Tick all</source>
+          <target state="translated" state-qualifier="mt-suggestion">Zaškrtnout vše</target>
+        </trans-unit>
+        <trans-unit id="UntickAll" translate="yes" xml:space="preserve">
+          <source>Untick all</source>
+          <target state="translated">Odškrtnout vše</target>
+        </trans-unit>
+        <trans-unit id="tbPassword.Text" translate="yes" xml:space="preserve">
+          <source>Password:</source>
+          <target state="translated" state-qualifier="tm-suggestion">Heslo:</target>
+        </trans-unit>
+        <trans-unit id="chbRememberLogin.Content" translate="yes" xml:space="preserve">
+          <source>Remember login</source>
+          <target state="translated">Zapamatovat login</target>
+        </trans-unit>
+        <trans-unit id="chbAutoLogin.Content" translate="yes" xml:space="preserve">
+          <source>Auto login</source>
+          <target state="translated" state-qualifier="mt-suggestion">Automatické přihlášení</target>
+        </trans-unit>
+        <trans-unit id="btnCloseDialog.Content" translate="yes" xml:space="preserve">
+          <source>Close dialog</source>
+          <target state="translated">Zavřít dialog</target>
+        </trans-unit>
+        <trans-unit id="btnForgetLoginAndPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget all</source>
+          <target state="translated">Zapomenout login a heslo</target>
+        </trans-unit>
+        <trans-unit id="btnForgetPassword.Content" translate="yes" xml:space="preserve">
+          <source>Forget password</source>
+          <target state="translated" state-qualifier="mt-suggestion">Zapomenout heslo</target>
+        </trans-unit>
+        <trans-unit id="btnLogin.Content" translate="yes" xml:space="preserve">
+          <source>Log in</source>
+          <target state="translated" state-qualifier="tm-suggestion">Přihlásit se</target>
+        </trans-unit>
+        <trans-unit id="doesNotExists" translate="yes" xml:space="preserve">
+          <source>does not exists</source>
+          <target state="translated" state-qualifier="mt-suggestion">neexistuje</target>
+        </trans-unit>
+        <trans-unit id="ExceptionNotExists" translate="yes" xml:space="preserve">
+          <source>The program is attempting to show the exception that actually does not exist.</source>
+          <target state="translated">Program se pokouší zobrazit výjimku, která ve skutečnosti neexistuje.</target>
+        </trans-unit>
+        <trans-unit id="FileOrFolder" translate="yes" xml:space="preserve">
+          <source>File or folder</source>
+          <target state="translated" state-qualifier="mt-suggestion">Soubor nebo složka</target>
+        </trans-unit>
+        <trans-unit id="InsufficientRightsToAccessFileOrFolder" translate="yes" xml:space="preserve">
+          <source>Insufficient rights for this type of access to a file or folder</source>
+          <target state="translated">Nedostatečná práva pro typ přístupu k souboru nebo složce</target>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="translated" state-qualifier="tm-suggestion">Ne</target>
+        </trans-unit>
+        <trans-unit id="UnknownErrorWhenWorkWithFileOrFolder" translate="yes" xml:space="preserve">
+          <source>An error of unknown type when you work with a file or folder</source>
+          <target state="translated">Chyba neznámého typu při práci se souborem nebo složkou</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="translated" state-qualifier="tm-suggestion">Ano</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <target state="translated" state-qualifier="tm-suggestion">Chyba</target>
+        </trans-unit>
+        <trans-unit id="FileCannotBeDeleted" translate="yes" xml:space="preserve">
+          <source>File cannot be deleted</source>
+          <target state="translated" state-qualifier="mt-suggestion">Soubor nelze odstranit</target>
+        </trans-unit>
+        <trans-unit id="Information" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <target state="translated" state-qualifier="tm-suggestion">Informace</target>
+        </trans-unit>
+        <trans-unit id="lasted" translate="yes" xml:space="preserve">
+          <source>lasted</source>
+          <target state="translated" state-qualifier="mt-suggestion">trvala</target>
+        </trans-unit>
+        <trans-unit id="Operation" translate="yes" xml:space="preserve">
+          <source>Operation</source>
+          <target state="translated" state-qualifier="mt-suggestion">Operace</target>
+        </trans-unit>
+        <trans-unit id="PasswordOrLoginNotEntered" translate="yes" xml:space="preserve">
+          <source>User name or password has not been entered</source>
+          <target state="translated" state-qualifier="mt-suggestion">Heslo nebo uživatelské jméno nebylo zadáno</target>
+        </trans-unit>
+        <trans-unit id="Success" translate="yes" xml:space="preserve">
+          <source>Success</source>
+          <target state="translated" state-qualifier="tm-suggestion">Úspěch</target>
+        </trans-unit>
+        <trans-unit id="Warning" translate="yes" xml:space="preserve">
+          <source>Warning</source>
+          <target state="translated" state-qualifier="tm-suggestion">Upozornění</target>
+        </trans-unit>
+        <trans-unit id="tbAnyFeedbackIsWelcome.Text" translate="yes" xml:space="preserve">
+          <source>Any feedback is welcome!</source>
+          <target state="translated">Jakýkoliv zpětná vazba je vítána! Díky za vaše názory a podněty.</target>
+        </trans-unit>
+        <trans-unit id="CzechBlog" translate="yes" xml:space="preserve">
+          <source>Czech blog</source>
+          <target state="translated">Česky psaný blog</target>
+        </trans-unit>
+        <trans-unit id="EnglishBlog" translate="yes" xml:space="preserve">
+          <source>English blog</source>
+          <target state="translated">Anglicky psaný blog</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Blue color component:</source>
+          <target state="translated">Modrá barva:</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Green color component:</source>
+          <target state="translated">Zelená barva:</target>
+        </trans-unit>
+        <trans-unit id="TransparencyColon" translate="yes" xml:space="preserve">
+          <source>Opacity:</source>
+          <target state="translated">Průhlednost:</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponentColon" translate="yes" xml:space="preserve">
+          <source>Red color component:</source>
+          <target state="translated">Červená barva:</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyLoginedToSpace" translate="yes" xml:space="preserve">
+          <source>You're successfully logined to </source>
+          <target state="new">You're successfully logined to </target>
+        </trans-unit>
+        <trans-unit id="txtSearch.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Search on Google</source>
+          <target state="translated" state-qualifier="mt-suggestion">Hledat na Google</target>
+        </trans-unit>
+        <trans-unit id="Always" translate="yes" xml:space="preserve">
+          <source>Always</source>
+          <target state="translated" state-qualifier="tm-suggestion">Vždy</target>
+        </trans-unit>
+        <trans-unit id="btnBack.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Previous</source>
+          <target state="translated" state-qualifier="tm-suggestion">Předchozí</target>
+        </trans-unit>
+        <trans-unit id="btnNext.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="translated" state-qualifier="tm-suggestion">Další</target>
+        </trans-unit>
+        <trans-unit id="btnReload.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Reload</source>
+          <target state="translated" state-qualifier="tm-suggestion">Načíst znovu</target>
+        </trans-unit>
+        <trans-unit id="btnStopLoading.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Stop loading</source>
+          <target state="translated" state-qualifier="mt-suggestion">Zastavit načítání</target>
+        </trans-unit>
+        <trans-unit id="Never" translate="yes" xml:space="preserve">
+          <source>Never</source>
+          <target state="translated" state-qualifier="tm-suggestion">Nikdy</target>
+        </trans-unit>
+        <trans-unit id="Prompt" translate="yes" xml:space="preserve">
+          <source>Prompt</source>
+          <target state="translated">Zeptat se
+</target>
+        </trans-unit>
+        <trans-unit id="abbLogInToSunamoCz.Label" translate="yes" xml:space="preserve">
+          <source>Sign In</source>
+          <target state="translated" state-qualifier="tm-suggestion">Přihlásit se</target>
+        </trans-unit>
+        <trans-unit id="abbLogVisitsInGcCom.Label" translate="yes" xml:space="preserve">
+          <source>Write a visit</source>
+          <target state="translated">Logovat návštěvu</target>
+        </trans-unit>
+        <trans-unit id="abbOpenListingsInGcCom.Label" translate="yes" xml:space="preserve">
+          <source>Listings</source>
+          <target state="translated">Listingy
+</target>
+        </trans-unit>
+        <trans-unit id="abbOpenListingsInGcCom.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Open listings at geocaching.com</source>
+          <target state="translated">Otevřít listingy na geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbLogInToSunamoCz.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log in to sunamo.cz</source>
+          <target state="needs-review-translation">2Nejste přihlášení. Přihlásit k www.sunamo.cz</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="abbLogVisitsInGcCom.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log visits at geocaching.com</source>
+          <target state="translated">Zalogovat na geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbLogOutToSunamoCz.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Log out from sunamo.cz</source>
+          <target state="needs-review-translation">Jsi přihlášený. Zobrazit dialog pro zapomenutí.</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="abbAboutApp.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>About this app</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">O této aplikaci</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="abbAboutApp.Label" translate="yes" xml:space="preserve">
+          <source>About app</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">O aplikaci</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="SuccessfulLoginToSunamoCz" translate="yes" xml:space="preserve">
+          <source>Now you're successfully logined to sunamo.cz</source>
+          <target state="translated">Nyní jste úspěšně přihlášení na sunamo.cz</target>
+        </trans-unit>
+        <trans-unit id="AppStartedSuccessfully" translate="yes" xml:space="preserve">
+          <source>App GeoCaching Tool started successfully</source>
+          <target state="translated">Aplikace GeoCaching Tool byla úspěšně spuštěna</target>
+        </trans-unit>
+        <trans-unit id="AllCachesListingsInTabsProcessed" translate="yes" xml:space="preserve">
+          <source>All caches listings in tabs was processed</source>
+          <target state="translated">Všechny listingy kešek v tabech byly zpracovány
+</target>
+        </trans-unit>
+        <trans-unit id="Loading" translate="yes" xml:space="preserve">
+          <source>Loading</source>
+          <target state="translated" state-qualifier="mt-suggestion">Načítání</target>
+        </trans-unit>
+        <trans-unit id="LocationOfCaches" translate="yes" xml:space="preserve">
+          <source>location of caches</source>
+          <target state="translated">lokace kešek</target>
+        </trans-unit>
+        <trans-unit id="NoCacheListingInTabs" translate="yes" xml:space="preserve">
+          <source>Unfortunately you don't have any cache listing in tabs.</source>
+          <target state="translated">Bohužel nemáte žádné listingy v tabech.</target>
+        </trans-unit>
+        <trans-unit id="NoCacheListingsInSavedList" translate="yes" xml:space="preserve">
+          <source>Unfornutaly you don't have any cache listing in selected saved list.</source>
+          <target state="translated">Bohužel nemáte žádné listingy v zvoleném uloženém seznamu.</target>
+        </trans-unit>
+        <trans-unit id="PromptNewTab" translate="yes" xml:space="preserve">
+          <source>Do you want open link in new tab?</source>
+          <target state="translated">Chcete otevřít odkaz v novém tabu?</target>
+        </trans-unit>
+        <trans-unit id="OpenTabsToSavedList" translate="yes" xml:space="preserve">
+          <source>Open tabs to list</source>
+          <target state="translated">Otevřené taby do seznamu</target>
+        </trans-unit>
+        <trans-unit id="NavigatingTo" translate="yes" xml:space="preserve">
+          <source>Navigating to</source>
+          <target state="translated">Naviguji na</target>
+        </trans-unit>
+        <trans-unit id="abbOpenedListingsToNormalBrowser.Label" translate="yes" xml:space="preserve">
+          <source>Web browser</source>
+          <target state="translated">Prohlížeč webu</target>
+        </trans-unit>
+        <trans-unit id="abbOpenTabsToSavedList.Label" translate="yes" xml:space="preserve">
+          <source>Save list</source>
+          <target state="translated" state-qualifier="tm-suggestion">Uložit seznam</target>
+        </trans-unit>
+        <trans-unit id="abbOpenedListingsToNormalBrowser.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Opened listings to main browser</source>
+          <target state="translated">Otevřít ve Vašem prohlížeči (např. Chrome)</target>
+        </trans-unit>
+        <trans-unit id="abbOpenTabsToSavedList.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Opened listings save to list</source>
+          <target state="translated">Otevřené listingy uložit do seznamu</target>
+        </trans-unit>
+        <trans-unit id="tbGridLogHeader.Text" translate="yes" xml:space="preserve">
+          <source>Activity of app</source>
+          <target state="translated" state-qualifier="mt-suggestion">Aktivita aplikace</target>
+        </trans-unit>
+        <trans-unit id="tbGridSavedCachesList.Text" translate="yes" xml:space="preserve">
+          <source>Managing stored caches</source>
+          <target state="translated">Správa uložených kešek</target>
+        </trans-unit>
+        <trans-unit id="AlreadyOpen" translate="yes" xml:space="preserve">
+          <source>Already open, cannot duplicate: </source>
+          <target state="translated">Již otevřeno, nelze duplikovat: </target>
+        </trans-unit>
+        <trans-unit id="LogInToGeoCachingCom" translate="yes" xml:space="preserve">
+          <source>Log in to Geocaching.com</source>
+          <target state="translated">Přihlásit se na Geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="LogOutFromGeoCachingCom" translate="yes" xml:space="preserve">
+          <source>Log out from Geocaching.com</source>
+          <target state="translated" state-qualifier="mt-suggestion">Odhlásit se z Geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="NavigationTo" translate="yes" xml:space="preserve">
+          <source>Navigation to </source>
+          <target state="translated" state-qualifier="mt-suggestion">Navigace na </target>
+        </trans-unit>
+        <trans-unit id="NotLoginedToGeocachingCom" translate="yes" xml:space="preserve">
+          <source>you weren't logined to geocaching.com</source>
+          <target state="translated">nejsi přihlášený na geocaching.com</target>
+        </trans-unit>
+        <trans-unit id="abbCreateHtmlList.Label" translate="yes" xml:space="preserve">
+          <source>As HTML list</source>
+          <target state="translated">HTML seznam
+</target>
+        </trans-unit>
+        <trans-unit id="HtmlListSuccessfullyCreated" translate="yes" xml:space="preserve">
+          <source>Html list of caches successfully created and putted into clipboard</source>
+          <target state="translated">Seznam keší v HTML kódu vytvořen a zkopírován do schránky</target>
+        </trans-unit>
+        <trans-unit id="abbCreateHtmlList.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Create a HTML list of caches</source>
+          <target state="translated">Vytvořit HTML seznam keší</target>
+        </trans-unit>
+        <trans-unit id="MakeWithLinks" translate="yes" xml:space="preserve">
+          <source>Make with hyperlinks</source>
+          <target state="translated">Vytvořit s odkazy</target>
+        </trans-unit>
+        <trans-unit id="WasCreatedListOfCachesWithNameColon" translate="yes" xml:space="preserve">
+          <source>Was created list of caches with name: </source>
+          <target state="translated">Byl vytvořen seznam keší se jménem: </target>
+        </trans-unit>
+        <trans-unit id="FailedWithErrorColon" translate="yes" xml:space="preserve">
+          <source> failed with error: </source>
+          <target state="translated"> skončil s chybou: </target>
+        </trans-unit>
+        <trans-unit id="NavigationFailedColon" translate="yes" xml:space="preserve">
+          <source>Navigation failed:</source>
+          <target state="translated">Navigace selhala:
+</target>
+        </trans-unit>
         <trans-unit id="NotImplementedPleaseContactWebAdmin" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Neimplementováno. Prosím kontaktujte správce webu o tomto nedostatku který je uveden v patičce každé stránky.</target>

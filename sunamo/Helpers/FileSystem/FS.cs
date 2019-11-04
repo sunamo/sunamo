@@ -16,8 +16,10 @@ using sunamo;
 
 public partial class FS
 {
+    public static ExistsDirectory existsDirectory;
+
     /// <summary>
-    /// 
+    /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
     /// <param name="item2"></param>
     /// <param name="exts"></param>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 public class AppData : AppDataAbstractBase<string, string>
 {
@@ -15,6 +16,23 @@ public class AppData : AppDataAbstractBase<string, string>
     {
     }
 
+    /// <summary>
+    /// Return always in User's AppData
+    /// </summary>
+    /// <param name="inFolderCommon"></param>
+    /// <returns></returns>
+    public override string RootFolderCommon(bool inFolderCommon)
+    {
+
+        //string appDataFolder = SpecialFO
+        string sunamo2 = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
+        if (inFolderCommon)
+        {
+            return FS.Combine(sunamo2, "Common");
+        }
+
+        return sunamo2;
+    }
     public override string GetFile(AppFolders af, string file)
     {
         string slozka2 = FS.Combine(RootFolder, af.ToString());
@@ -87,7 +105,7 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <returns></returns>
     public override string GetRootFolder()
     {
-        rootFolder = GetSunamoFolder();
+        rootFolder = GetSunamoFolder().Result;
 
         RootFolder = FS.Combine(rootFolder, ThisApp.Name);
         FS.CreateDirectory(RootFolder);
@@ -104,16 +122,18 @@ public class AppData : AppDataAbstractBase<string, string>
         throw new NotImplementedException();
     }
 
-    public override string GetSunamoFolder()
+    public async override Task< string> GetSunamoFolder()
     {
-        string r = AppData.ci.GetFolderWithAppsFiles();
-        string sunamoFolder = TF.ReadFile(r);
 
-        if (string.IsNullOrWhiteSpace(sunamoFolder))
-        {
-            sunamoFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
-        }
-        return sunamoFolder;
+            string r = AppData.ci.GetFolderWithAppsFiles();
+            string sunamoFolder = TF.ReadFile(r);
+
+            if (string.IsNullOrWhiteSpace(sunamoFolder))
+            {
+                sunamoFolder = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
+            }
+            return sunamoFolder;
+
     }
 
     /// <summary>
@@ -125,7 +145,7 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <returns></returns>
     public override string GetFileCommonSettings(string filename)
     {
-        var vr = FS.Combine(CommonFolder() , filename);
+        var vr = FS.Combine(RootFolderCommon(false) , filename);
         return vr;
     }
 
@@ -143,10 +163,7 @@ public class AppData : AppDataAbstractBase<string, string>
         TF.WriteAllBytes(file, CryptHelper.RijndaelBytes.Instance.Encrypt(Encoding.UTF8.GetBytes(value).ToList()));
     }
 
-    public override string CommonFolder()
-    {
-        return FS.Combine(GetSunamoFolder(), "Common", AppFolders.Settings.ToString());
-    }
+   
 
 }
 

@@ -41,6 +41,7 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
 
     /// <summary>
     /// public to use in assembly like SunamoNTextCat
+    /// A2 is name of project, therefore don't insert typeResourcesSunamo.Namespace
     /// </summary>
     /// <param name="_entryAssembly"></param>
     public EmbeddedResourcesH(Assembly _entryAssembly, string defaultNamespace)
@@ -70,10 +71,9 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
         return name;
     }
 
-
-
     /// <summary>
     /// If it's file, return its content
+    /// Its for getting string from file, never from resx or another in code variable
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
