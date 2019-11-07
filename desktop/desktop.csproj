@@ -282,7 +282,7 @@
     <Compile Include="Data\FontArgs.cs" />
     <Compile Include="Data\MeasureStringArgs.cs" />
     <Compile Include="Data\TextBlockData.cs" />
-    <Compile Include="Delegates\CodeFile1.cs" />
+    <Compile Include="Data\Delegates\CodeFile1.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\FrameworkElementExtensions.cs" />

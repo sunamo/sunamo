@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />

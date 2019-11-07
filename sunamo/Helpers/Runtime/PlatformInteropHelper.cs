@@ -4,9 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-
-
-public class PlatformInteropHelper
+public partial class PlatformInteropHelper
 {
     /// <summary>
     /// Wpf.Tests = .NET Framework 4.8.4018.0
@@ -18,88 +16,20 @@ public class PlatformInteropHelper
     {
         // Return one of three values:
         var result = RuntimeInformation.FrameworkDescription;
-        if (result.StartsWith( RuntimeFrameworks.netCore))
+        if (result.StartsWith(RuntimeFrameworks.netCore))
         {
             return true;
         }
+
         return false;
     }
 
-    public static Type GetTypeOfResources()
-    {
-        return typeof(ResourcesShared.ResourcesDuo);
-        //if (IsUseStandardProject())
-        //{
-        //    return typeof(standard.ResourcesStandard);
-        //}
-        //else
-        //{
-        //    return typeof(sunamo.Properties.Resources);
-        //}
-    }
-
-    static bool? isUwp = null;
-
-    /// <summary>
-    /// Working excellent 11-3-19
-    /// </summary>
-    /// <returns></returns>
-    public static bool IsUwpWindowsStoreApp()
-    {
-        if (isUwp.HasValue)
-        {
-            return isUwp.Value;
-        }
-
-        var ass = AppDomain.CurrentDomain.GetAssemblies();
-        foreach (var item in ass)
-        {
-            Type[] types = null;
-            try
-            {
-                types = item.GetTypes();
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-            if (types != null)
-            {
-                foreach (var type in types)
-                {
-                    if (type.Namespace != null)
-                    {
-                        if (type.Namespace.StartsWith("Windows.UI"))
-                        {
-
-                            isUwp = true;
-                            break;
-                        }
-
-                    }
-                }
-                if (isUwp.HasValue)
-                {
-                    break;
-                }
-            }
-        }
-
-        if (!isUwp.HasValue)
-        {
-            isUwp = false;
-        }
-
-        return isUwp.Value;
-    }
-
-    //internal static AppDataBase<StorageFolder, StorageFile> AppData()
-    //{
-    //    if (IsUwpWindowsStoreApp())
-    //    {
-    //        return AppDataApps.
-    //    }
-    //}
+    
+//internal static AppDataBase<StorageFolder, StorageFile> AppData()
+//{
+//    if (IsUwpWindowsStoreApp())
+//    {
+//        return AppDataApps.
+//    }
+//}
 }
-

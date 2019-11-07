@@ -62,6 +62,11 @@ public class XlfResourcesH
         SaveResouresToRL<string, string>(new ExistsDirectory( FS.ExistsDirectoryNull), AppData.ci);
     }
 
+    public static void SaveResouresToRL(string path)
+    {
+        SaveResouresToRL<string, string>(path, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci);
+    }
+
     /// <summary>
     /// 2. loading from xlf files
     /// </summary>
