@@ -63,7 +63,7 @@ public class XmlGenerator
             string text = args[i];
             object hodnota = args[++i];
 
-            sb.AppendFormat("{0}=\"{1}\"", text, hodnota);
+            sb.AppendFormat("{0}=\"{1}\" ", text, hodnota);
         }
         sb.Append(" />");
     }

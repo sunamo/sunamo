@@ -16,7 +16,8 @@ using sunamo;
 
 public partial class FS
 {
-    public static ExistsDirectory existsDirectory;
+    
+    
 
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
@@ -104,8 +105,6 @@ public partial class FS
 
             if (!File.Exists(newPath) && mustExistsInTarget)
             {
-                
-                
                 continue;
             }
             else
@@ -123,9 +122,30 @@ public partial class FS
         }
     }
 
-    public async static System.Threading.Tasks.Task<StorageFile> GetStorageFile(StorageFolder folder, string v)
+    internal static List<StorageFile> GetFilesInterop<StorageFolder, StorageFile>(StorageFolder folder, string mask, bool recursive, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        return new StorageFile(folder.fullPath, v);
+        if (ac != null)
+        {
+            return ac.fs.getFiles.Invoke(folder, mask, recursive);
+        }
+        // folder is StorageFolder
+        return CA.ToList<StorageFile>( GetFiles(folder.ToString(), mask, recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly));
+    }
+
+    /// <summary>
+    /// A1 must be sunamo.Data.StorageFolder or uwp StorageFolder
+    /// Return fixed string is here right
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public  static string GetStorageFile<StorageFolder, StorageFile>(StorageFolder folder, string v, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.getStorageFile(folder, v).ToString();
+        }
+        return FS.Combine(folder.ToString(), v);
     }
 
     public static void DeleteEmptyFiles(string folder, SearchOption so)
@@ -264,15 +284,20 @@ public partial class FS
         return result;
     }
 
+    public static void WriteAllText(string path, string content)
+    {
+        WriteAllText<string, string>(path, content, null);
+    }
+
     /// <summary>
     /// Create folder hiearchy and write
     /// </summary>
     /// <param name="path"></param>
     /// <param name="content"></param>
-    public static void WriteAllText(string path, string content)
+    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile path, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        FS.CreateUpfoldersPsysicallyUnlessThere(path);
-        File.WriteAllText(path, content);
+        FS.CreateUpfoldersPsysicallyUnlessThere(path, ac);
+        TF.WriteAllText<StorageFolder, StorageFile>(path, content, ac);
     }
 
     public static string MakeFromLastPartFile(string fullPath, string ext)
@@ -281,11 +306,11 @@ public partial class FS
         return fullPath + ext;
     }
 
-    public static void CreateFileIfDoesntExists(string path)
+    public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        if (!FS.ExistsFile(path))
+        if (!FS.ExistsFile<StorageFolder, StorageFile>(path, ac))
         {
-            File.CreateText(path);
+            TF.WriteAllBytes<StorageFolder, StorageFile>(path, CA.ToList<byte>(), ac);
         }
     }
 

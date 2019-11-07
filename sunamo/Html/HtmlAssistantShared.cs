@@ -45,4 +45,9 @@ public partial class HtmlAssistant
 
         return result;
     }
+
+    public static object GetValueOfAttribute(object uibTooltip, HtmlNode htmlNode)
+    {
+        throw new NotImplementedException();
+    }
 }

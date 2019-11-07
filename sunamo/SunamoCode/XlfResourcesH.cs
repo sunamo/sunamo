@@ -18,29 +18,13 @@ public class XlfResourcesH
 {
     public static bool initialized = false;
 
-    public static void SaveResouresToRL<StorageFolder, StorageFile>(string basePath, ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
-    {
-        SaveResouresToRL<StorageFolder, StorageFile>(basePath, "en", existsDirectory, appData);
-        SaveResouresToRL<StorageFolder, StorageFile>(basePath, "cs", existsDirectory, appData);
-        
-    }
-
     /// <summary>
-    /// Only for non-UWP apps
+    /// 1. Entry method 
     /// </summary>
-    public static void SaveResouresToRLSunamo()
-    {
-        SaveResouresToRL<string, string>(FS.ExistsDirectoryNull, AppData.ci);
-    }
-
-    /// <summary>
-    /// Private to use SaveResouresToRLSunamo
-    /// </summary>
-    private static void SaveResouresToRL<StorageFolder, StorageFile>( ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
-    {
-        SaveResouresToRL(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), existsDirectory,appData);
-    }
-
+    /// <typeparam name="StorageFolder"></typeparam>
+    /// <typeparam name="StorageFile"></typeparam>
+    /// <param name="existsDirectory"></param>
+    /// <param name="appData"></param>
     public static void SaveResouresToRLSunamo<StorageFolder, StorageFile>(ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
     {
         //var sunamoAssembly = typeof(Resources).Assembly;
@@ -69,13 +53,24 @@ public class XlfResourcesH
         SaveResouresToRL<StorageFolder, StorageFile>(path, existsDirectory, appData);
     }
 
-   
+    /// <summary>
+    /// 1. Entry method 
+    /// Only for non-UWP apps
+    /// </summary>
+    public static void SaveResouresToRLSunamo()
+    {
+        SaveResouresToRL<string, string>(new ExistsDirectory( FS.ExistsDirectoryNull), AppData.ci);
+    }
 
     /// <summary>
-    /// A1 = CS-CZ or CS etc
+    /// 2. loading from xlf files
     /// </summary>
-    /// <param name="lang"></param>
-    private static void SaveResouresToRL<StorageFolder, StorageFile>(string basePath, string lang, ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
+    /// <typeparam name="StorageFolder"></typeparam>
+    /// <typeparam name="StorageFile"></typeparam>
+    /// <param name="basePath"></param>
+    /// <param name="existsDirectory"></param>
+    /// <param name="appData"></param>
+    public static void SaveResouresToRL<StorageFolder, StorageFile>(string basePath, ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
     {
         // cant be inicialized - after cs is set initialized to true and skip english
         //initialized = true;
@@ -83,9 +78,9 @@ public class XlfResourcesH
         var path = Path.Combine(basePath, "MultilingualResources");
 
         Type type = PlatformInteropHelper.GetTypeOfResources();
-        
+
         //ResourcesHelper rm = ResourcesHelper.Create("standard.Properties.Resources", type.Assembly);
-        ResourcesHelper rm = ResourcesHelper.Create("sunamo.Properties.Resources", type.Assembly);
+        ResourcesHelper rm = ResourcesHelper.Create("ResourcesShared.ResourcesDuo", type.Assembly);
 
         var exists = false;
 
@@ -100,41 +95,50 @@ public class XlfResourcesH
 
         if (!exists)
         {
-                string xlfContent = null;
+            string xlfContent = null;
 
-                var fn = "sunamo_cs_CZ";
-                
+            var fn = "sunamo_cs_CZ";
+
 
             var file = appData.GetFileCommonSettings(fn + ".xlf");
 
 
             // Cant use StorageFile.ToString - get only name of method
             //pathFile = file.ToString();
-            
-                xlfContent = rm.GetByteArrayAsString(fn);
-                TF.WriteAllText(file, xlfContent);
-
-
-                fn = "sunamo_en_US";
-
-            file = appData.GetFileCommonSettings(fn + ".xlf"); ;
-            
 
             xlfContent = rm.GetByteArrayAsString(fn);
             TF.WriteAllText(file, xlfContent);
 
-                path = appData.RootFolderCommon(false);
-            
+
+            fn = "sunamo_en_US";
+
+            var file2 = appData.GetFileCommonSettings(fn + ".xlf"); 
+
+
+            xlfContent = rm.GetByteArrayAsString(fn);
+            TF.WriteAllText(file2, xlfContent);
+
+            path = appData.RootFolderCommon(false);
+
         }
-        
+
 
         var files = FS.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
-            foreach (var file in files)
-            {
-                ProcessXlfFile(path, lang, file);
-            }
-        
-       
+        foreach (var file in files)
+        {
+            var lang = XmlLocalisationInterchangeFileFormatSunamo.GetLangFromFilename(file);
+            ProcessXlfFile(path,  lang.ToString(), file);
+        }
+
+    }
+
+    /// <summary>
+    /// 2. loading from xlf files
+    /// Private to use SaveResouresToRLSunamo
+    /// </summary>
+    private static void SaveResouresToRL<StorageFolder, StorageFile>( ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
+    {
+        SaveResouresToRL(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), existsDirectory,appData);
     }
 
     private static void ProcessXlfFile(string basePath, string lang, string file)

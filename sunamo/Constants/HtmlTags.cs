@@ -27,5 +27,6 @@ public class HtmlTags
     public const string label = "label";
     public const string a = "a";
     public const string hr = "hr";
+    public const string tbody = "tbody";
 }
 

@@ -18,7 +18,8 @@ using desktop.Helpers;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// Interaction logic for EnterOneValueUC.xaml
+    /// Select Value - more from selector
+    /// Enter value - single 
     /// </summary>
     public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
@@ -160,6 +161,12 @@ namespace desktop.Controls.Input
 
         public List<FrameworkElement> fwElemements = null;
 
+        /// <summary>
+        /// Example and best case use is in Wpf.Tests
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="name"></param>
+        /// <param name="ui"></param>
         void AddControl(int i, string name, FrameworkElement ui)
         {
             Thickness uit = new Thickness(10,5,10,5);

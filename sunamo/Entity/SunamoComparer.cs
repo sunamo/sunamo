@@ -128,6 +128,7 @@ public class SunamoComparer
     {
         public static DT Instance = new DT();
 
+        // ToList() here must be - sorted still contains reference to original collection
         public int Desc(DateTime x, DateTime y)
         {
             return x.CompareTo(y) * -1;

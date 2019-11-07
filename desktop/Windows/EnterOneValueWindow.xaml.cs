@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for EnterValueForm.xaml
+    /// Select Value - more from selector
+    /// Enter value - single 
     /// </summary>
     public partial class EnterOneValueWindow : Window
     {

@@ -124,6 +124,13 @@ public static partial class BTS
     }
 
     #region TryParse*
+    /// <summary>
+    /// For parsing from serialized file use DTHelperEn
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="ciForParse"></param>
+    /// <param name="defaultValue"></param>
+    /// <returns></returns>
     public static DateTime TryParseDateTime(string v, CultureInfo ciForParse, DateTime defaultValue)
     {
         DateTime vr = defaultValue;

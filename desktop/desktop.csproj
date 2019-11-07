@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="Helpers\BaseControls\ContentControlHelper.cs" />
+    <Compile Include="Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />
     <Compile Include="Helpers\Controls\TextBoxHelper.cs" />

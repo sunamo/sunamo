@@ -101,5 +101,25 @@ namespace ResourcesShared {
                 return ResourceManager.GetString("Html5BoilerplateStart", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] sunamo_cs_CZ {
+            get {
+                object obj = ResourceManager.GetObject("sunamo_cs_CZ", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] sunamo_en_US {
+            get {
+                object obj = ResourceManager.GetObject("sunamo_en_US", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

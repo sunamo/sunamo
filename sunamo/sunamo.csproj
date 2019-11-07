@@ -59,6 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\Langs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
@@ -88,6 +95,7 @@
     </Compile>
     <Compile Include="Attributes\SerializableAttribute.cs" />
     <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
+    <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="Collections\BadGoodCollection.cs" />
     <Compile Include="Collections\CollectionToEnd.cs" />
     <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
@@ -195,6 +203,7 @@
     <Compile Include="Data\CompareCollectionsResults.cs" />
     <Compile Include="Data\ConventionParseResult.cs" />
     <Compile Include="Data\CreateHtmlDocumentInitData.cs" />
+    <Compile Include="Data\Date.cs" />
     <Compile Include="Data\DirectoriesToDelete.cs" />
     <Compile Include="Data\Distance2.cs" />
     <Compile Include="Data\ExternalLoginResult.cs" />
@@ -355,6 +364,7 @@
     <Compile Include="Exceptions\NoImplementedException.cs" />
     <Compile Include="Exceptions\UnauthorizedAccessException.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
@@ -554,13 +564,16 @@
     <Compile Include="Parsing\ParserTwoValues.cs" />
     <Compile Include="Parsing\TryParse.cs" />
     <Compile Include="PixelColors.cs" />
+    <Compile Include="PlatformUwpInterop\AbstractCatalog.cs" />
+    <Compile Include="PlatformUwpInterop\FSAbstract.cs" />
+    <Compile Include="PlatformUwpInterop\TFAbstract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="RH.cs" />
     <Compile Include="RL.cs" />
     <Compile Include="RLData.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
+    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoJson.cs" />
     <Compile Include="SunamoJsonShared.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
@@ -587,7 +600,7 @@
     <Compile Include="Values\Types.cs" />
     <Compile Include="Web\YouTube.cs" />
     <Compile Include="Web\YouTubeShared.cs" />
-    <Compile Include="XlfResourcesH.cs" />
+    <Compile Include="SunamoCode\XlfResourcesH.cs" />
     <Compile Include="XmlNamespacesHolder.cs" />
     <Compile Include="Xml\XH.cs" />
     <Compile Include="_ns.cs" />
@@ -637,7 +650,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

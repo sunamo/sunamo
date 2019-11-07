@@ -192,13 +192,20 @@ public static partial class SF
         }
     }
 
+    /// <summary>
+    /// Return without last
+    /// DateTime is serialize always in english format
+    /// Opposite method: DTHelperEn.ToString<>DTHelperEn.ParseDateTimeUSA
+    /// </summary>
+    /// <param name="pr"></param>
+    /// <returns></returns>
     public static string PrepareToSerialization2(params object[] pr)
     {
         return PrepareToSerializationWorker(pr, true, separatorString);
     }
 
     /// <summary>
-    /// Vrátí bez poslední 
+    /// Return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
     /// </summary>
     /// <param name = "o"></param>

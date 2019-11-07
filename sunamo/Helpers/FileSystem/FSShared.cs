@@ -59,6 +59,18 @@ public partial class FS
     {
         return FS.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName()); 
     }
+    public static void MakeUncLongPath<StorageFolder,StorageFile>(ref StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            path = (StorageFile)(dynamic)MakeUncLongPath(path.ToString());
+        }
+        else
+        {
+            ThrowNotImplementedUwp();
+        }
+        //return path;
+    }
 
     public static string MakeUncLongPath(string path)
     {
@@ -94,14 +106,19 @@ public partial class FS
 
     public static bool ExistsDirectory(string item)
     {
-        if (existsDirectory == null)
+        return ExistsDirectory<string, string>(item);
+    }
+
+    public static bool ExistsDirectory<StorageFolder, StorageFile>(string item, AbstractCatalog<StorageFolder, StorageFile> ac = null)
+    {
+        if (ac == null)
         {
             return ExistsDirectoryWorker(item);
         }
         else
         {
             // Call from Apps
-            return BTS.GetValueOfNullable( existsDirectory.Invoke(item));
+            return BTS.GetValueOfNullable(ac.fs.existsDirectory.Invoke(item));
         }
     }
 
@@ -134,16 +151,9 @@ public partial class FS
         return Directory.Exists(item2);
     }
 
-
-
-    /// <summary>
-    /// Works with and without end backslash
-    /// Return with backslash
-    /// </summary>
-    /// <param name="rp"></param>
-    /// <returns></returns>
     public static string GetDirectoryName(string rp)
     {
+        
         ThrowExceptions.IsNullOrEmpty(type, "GetDirectoryName", "rp", rp);
         ThrowExceptions.IsNotWindowsPathFormat(type, RH.CallingMethod(), "rp", rp);
 
@@ -156,6 +166,29 @@ public partial class FS
             return result;
         }
         return "";
+    }
+
+    /// <summary>
+    /// Works with and without end backslash
+    /// Return with backslash
+    /// </summary>
+    /// <param name="rp"></param>
+    /// <returns></returns>
+    public static StorageFile GetDirectoryName<StorageFolder, StorageFile>(StorageFile rp2, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            var rp = rp2.ToString();
+            return (dynamic)GetDirectoryName(rp);
+        }
+        throw new Exception("GetDirectoryName");
+    }
+
+    
+
+    private static void ThrowNotImplementedUwp()
+    {
+        throw new Exception("NI uwp - see method for stacktrace");
     }
 
     /// <summary>
@@ -203,51 +236,18 @@ public partial class FS
         }
     }
 
-
-
-
-    /// <summary>
-    /// Create all upfolders of A1 with, if they dont exist 
-    /// A2 zdali je A1 folder. Pokud je A1 soubor, dej false.
-    /// Tuto metodu s parametrem false můžeš používat stejně jako CreateUpfoldersPsysicallyUnlessThere s 1 parametrem, tato ale bude o něco málo rychlejší.
-    /// </summary>
-    /// <param name="nad"></param>
-    public static void CreateFoldersPsysicallyUnlessThere(string nad, bool isFolder)
+    public static void CreateFoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(StorageFile nad, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        if (FS.ExistsDirectory(nad))
+        if (ac == null)
         {
-            return;
+            CreateFoldersPsysicallyUnlessThere(nad.ToString());
         }
         else
         {
-            List<string> slozkyKVytvoreni = new List<string>();
-            if (isFolder)
-            {
-                slozkyKVytvoreni.Add(nad);
-            }
-
-            while (true)
-            {
-                nad = FS.GetDirectoryName(nad);
-
-                if (FS.ExistsDirectory(nad))
-                {
-                    break;
-                }
-
-                string kopia = nad;
-                slozkyKVytvoreni.Add(kopia);
-            }
-            slozkyKVytvoreni.Reverse();
-            foreach (string item in slozkyKVytvoreni)
-            {
-                if (!FS.ExistsDirectory(item))
-                {
-                    Directory.CreateDirectory(item);
-                }
-            }
+            ThrowNotImplementedUwp();
         }
     }
+
 
     /// <summary>
     /// change all first (drive) letter to uppercase
@@ -545,24 +545,49 @@ public partial class FS
 
     public static void SaveMemoryStream(System.IO.MemoryStream mss, string path)
     {
-        path = path.Replace(@"\", AllStrings.bs);
-        if (!FS.ExistsFile(path))
+        SaveMemoryStream<string, string>(mss, path, null);
+    }
+
+    public static void SaveMemoryStream<StorageFolder, StorageFile>(System.IO.MemoryStream mss, StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        
+        if (!FS.ExistsFile(path, ac))
         {
-            using (System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+            if (ac == null)
             {
-                byte[] matriz = mss.ToArray();
-                fs.Write(matriz, 0, matriz.Length);
+                using (System.IO.FileStream fs = new System.IO.FileStream(path.ToString(), System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                {
+                    byte[] matriz = mss.ToArray();
+                    fs.Write(matriz, 0, matriz.Length);
+                }
+            }
+            else
+            {
+                throw new Exception("SaveMemoryStream");
             }
         }
+    }
+
+    public static void CreateUpfoldersPsysicallyUnlessThere(string nad)
+    {
+
+
     }
 
     /// <summary>
     /// Create all upfolders of A1, if they dont exist 
     /// </summary>
     /// <param name="nad"></param>
-    public static void CreateUpfoldersPsysicallyUnlessThere(string nad)
+    public static void CreateUpfoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(StorageFile nad, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        CreateFoldersPsysicallyUnlessThere(FS.GetDirectoryName(nad));
+        if (ac ==null )
+        {
+            CreateUpfoldersPsysicallyUnlessThere(nad.ToString());
+        }
+        else
+        {
+            CreateFoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(FS.GetDirectoryName<StorageFolder, StorageFile>(nad, ac), ac);
+        }
     }
 
     public static long GetFileSize(string item)
@@ -584,18 +609,32 @@ public partial class FS
         return 0;
     }
 
+    public static string InsertBetweenFileNameAndExtension(string orig, string whatInsert)
+    {
+        return InsertBetweenFileNameAndExtension<string, string>(orig, whatInsert, null);
+    }
+
     /// <summary>
     /// Vrátí vč. cesty
     /// </summary>
     /// <param name="orig"></param>
     /// <param name="whatInsert"></param>
     /// <returns></returns>
-    public static string InsertBetweenFileNameAndExtension(string orig, string whatInsert)
+    public static StorageFile InsertBetweenFileNameAndExtension<StorageFolder, StorageFile>(StorageFile orig, string whatInsert, AbstractCatalog<StorageFolder, StorageFile> ac) 
     {
-        string p = FS.GetDirectoryName(orig);
-        string fn = FS.GetFileNameWithoutExtension(orig);
-        string e = FS.GetExtension(orig);
-        return FS.Combine(p, fn + whatInsert + e);
+        string p = FS.GetDirectoryName(orig.ToString());
+        string fn = FS.GetFileNameWithoutExtension(orig.ToString());
+        string e = FS.GetExtension(orig.ToString());
+        return FS.CiStorageFile < StorageFolder, StorageFile >( FS.Combine(p, fn + whatInsert + e), ac);
+    }
+
+    public static StorageFile CiStorageFile<StorageFolder, StorageFile>(string path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            return (dynamic)path.ToString();
+        }
+        return ac.fs.ciStorageFile.Invoke(path);
     }
 
     public static string DeleteWrongCharsInDirectoryName(string p)
@@ -765,22 +804,36 @@ public partial class FS
         File.Copy(jsFiles, v, true);
     }
 
+    public static void CopyFile(string item, string fileTo2, FileMoveCollisionOption co)
+    {
+        var fileTo = fileTo2.ToString();
+        if (CopyMoveFilePrepare(ref item, ref fileTo, co))
+        {
+            File.Copy(item, fileTo);
+        }
+    }
+
     /// <summary>
     /// A2 is path of target file
     /// </summary>
     /// <param name="item"></param>
     /// <param name="fileTo"></param>
     /// <param name="co"></param>
-    public static void CopyFile(string item, string fileTo, FileMoveCollisionOption co)
+    public static void CopyFile<StorageFolder, StorageFile>(string item, string fileTo2, FileMoveCollisionOption co, AbstractCatalog<StorageFolder, StorageFile> ac = null)
     {
-        if( CopyMoveFilePrepare(ref item, ref fileTo, co))
-        { 
-            File.Copy(item, fileTo);
+        if (ac == null)
+        {
+            CopyFile(item, fileTo2, co);
+        }
+        else
+        {
+            ThrowNotImplementedUwp();
         }
     }
 
-    public static bool CopyMoveFilePrepare(ref string item, ref string fileTo, FileMoveCollisionOption co)
+    public static bool CopyMoveFilePrepare(ref string item, ref string fileTo2, FileMoveCollisionOption co)
     {
+        var fileTo = fileTo2.ToString();
         item = Consts.UncLongPath + item;
         MakeUncLongPath(ref fileTo);
         FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);
@@ -788,7 +841,7 @@ public partial class FS
         {
             if (co == FileMoveCollisionOption.AddFileSize)
             {
-                string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, AllStrings.space + FS.GetFileSize(item));
+                var newFn = FS.InsertBetweenFileNameAndExtension(fileTo, AllStrings.space + FS.GetFileSize(item));
                 if (FS.ExistsFile(newFn))
                 {
                     File.Delete(item);
@@ -801,7 +854,7 @@ public partial class FS
                 int serie = 1;
                 while (true)
                 {
-                    string newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + AllStrings.rb);
+                    var newFn = FS.InsertBetweenFileNameAndExtension(fileTo, " (" + serie + AllStrings.rb);
                     if (!FS.ExistsFile(newFn))
                     {
                         fileTo = newFn;
@@ -839,6 +892,47 @@ public partial class FS
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// A1,2 isnt  working like ref
+    /// </summary>
+    /// <typeparam name="StorageFolder"></typeparam>
+    /// <typeparam name="StorageFile"></typeparam>
+    /// <param name="item"></param>
+    /// <param name="fileTo"></param>
+    /// <param name="co"></param>
+    /// <param name="ac"></param>
+    /// <returns></returns>
+    public static bool CopyMoveFilePrepare<StorageFolder, StorageFile>(ref StorageFile item, ref StorageFile fileTo, FileMoveCollisionOption co, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            var item2 = item.ToString();
+            var fileTo2 = fileTo.ToString();
+            return CopyMoveFilePrepare(ref item2, ref fileTo2, co);
+        }
+
+        ThrowNotImplementedUwp();
+            MakeUncLongPath(ref item, ac);
+            MakeUncLongPath<StorageFolder, StorageFile>(ref fileTo, ac);
+            FS.CreateUpfoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(fileTo, ac);
+            if (FS.ExistsFile<StorageFolder, StorageFile>(fileTo, ac))
+            {
+            }
+        return false;
+    }
+
+    public static bool CopyMoveFilePrepare<StorageFolder, StorageFile>(ref string item, ref StorageFile fileTo2, FileMoveCollisionOption co, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            var fileTo = fileTo2.ToString();
+            return CopyMoveFilePrepare(ref item, ref fileTo, co);
+        }
+
+        ThrowNotImplementedUwp();
+        return false;
     }
 
     public static string ChangeExtension(string item, string newExt, bool physically)
@@ -886,6 +980,7 @@ public partial class FS
             
         }
     }
+  
     public static void CreateDirectory(string v, DirectoryCreateCollisionOption whenExists, SerieStyle serieStyle)
     {
         if (FS.ExistsDirectory(v))
@@ -1207,6 +1302,8 @@ public partial class FS
         return list;
     }
 
+    
+
     /// <summary>
     /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
     /// A1 have to be with ending backslash
@@ -1326,15 +1423,28 @@ public static byte[] StreamToArrayBytes(System.IO.Stream stream)
         }
     }
 
-/// <summary>
-    /// Pokud by byla cesta zakončená backslashem, vrátila by metoda FS.GetFileName prázdný řetězec. 
-    /// if have more extension, remove just one
-    /// </summary>
-    /// <param name="s"></param>
-    /// <returns></returns>
     public static string GetFileNameWithoutExtension(string s)
     {
-        return Path.GetFileNameWithoutExtension(s.TrimEnd(AllChars.bs));
+        return GetFileNameWithoutExtension<string, string>(s, null);
+    }
+
+/// <summary>
+/// Pokud by byla cesta zakončená backslashem, vrátila by metoda FS.GetFileName prázdný řetězec. 
+/// if have more extension, remove just one
+/// </summary>
+/// <param name="s"></param>
+/// <returns></returns>
+    public static StorageFile GetFileNameWithoutExtension<StorageFolder, StorageFile>(StorageFile s, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            return (dynamic)Path.GetFileNameWithoutExtension(s.ToString().TrimEnd(AllChars.bs));
+        }
+        else
+        {
+            ThrowNotImplementedUwp();
+            return s;
+        }
     }
 
 public static string AddExtensionIfDontHave(string file, string ext)
@@ -1442,18 +1552,10 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
         }
     }
 
-/// <summary>
-    /// Zmeni nazev souboru na A2
-    /// Pro A3 je výchozí z minulosti true - jakoby s false se chovala metoda ReplaceFileName
-    /// Pokud nechci nazev souboru uplne menit, ale pouze v nem neco nahradit, pouziva se metoda ReplaceInFileName
-    /// </summary>
-    /// <param name="item"></param>
-    /// <param name="g"></param>
-    /// <param name="onDrive"></param>
-    public static string ChangeFilename(string item, string g, bool physically)
+    public static string ChangeFilename(string item, string newFileName, bool physically)
     {
         string cesta = FS.GetDirectoryName(item);
-        string nova = FS.Combine(cesta, g);
+        string nova = FS.Combine(cesta, newFileName);
 
         if (physically)
         {
@@ -1470,6 +1572,25 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
             }
         }
         return nova;
+    }
+
+
+/// <summary>
+/// Zmeni nazev souboru na A2
+/// Pro A3 je výchozí z minulosti true - jakoby s false se chovala metoda ReplaceFileName
+/// Pokud nechci nazev souboru uplne menit, ale pouze v nem neco nahradit, pouziva se metoda ReplaceInFileName
+/// </summary>
+/// <param name="item"></param>
+/// <param name="newFileName"></param>
+/// <param name="onDrive"></param>
+    public static string ChangeFilename<StorageFolder, StorageFile>(StorageFile item, string newFileName, bool physically, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            ChangeFilename(item.ToString(), newFileName, physically);
+        }
+        ThrowNotImplementedUwp();
+        return null;
     }
 
 /// <summary>

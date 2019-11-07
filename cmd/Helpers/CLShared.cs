@@ -201,10 +201,11 @@ public static void PerformAction(Dictionary<string, VoidVoid> actions)
                     }
                 }
 
-                string ulozit = sb.ToString().Trim();
+                string ulozit = sb.ToString();
                 if (ulozit != "")
                 {
-                    ulozit = ulozit.Replace("\b", "").Trim();
+                    /// Cant call trim or replace \b (any whitespace character), due to situation when insert "/// " for insert xml comments
+                    //ulozit = ulozit.Replace("\b", "");
                     z = ulozit;
                     break;
                 }

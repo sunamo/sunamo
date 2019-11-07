@@ -10,12 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-public partial class FS{ 
-/// <summary>
-    /// For empty or whitespace return false.
-    /// </summary>
-    /// <param name="selectedFile"></param>
-    /// <returns></returns>
+public partial class FS{
     public static bool ExistsFile(string selectedFile)
     {
         if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
@@ -24,6 +19,20 @@ public partial class FS{
         }
 
         return File.Exists(selectedFile);
+    }
+
+    /// <summary>
+    /// For empty or whitespace return false.
+    /// </summary>
+    /// <param name="selectedFile"></param>
+    /// <returns></returns>
+    public static bool ExistsFile<StorageFolder, StorageFile>(StorageFile selectedFile, AbstractCatalog<StorageFolder, StorageFile> ac = null)
+    {
+        if (ac == null)
+        {
+            return ExistsFile(selectedFile.ToString());
+        }
+        return ac.fs.existsFile.Invoke(selectedFile);
     }
 
     public static DateTime LastModified(string rel)

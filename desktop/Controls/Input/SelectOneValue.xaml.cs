@@ -16,7 +16,8 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// 
+    /// Select Value - more from selector
+    /// Enter value - single 
     /// </summary>
     public partial class SelectOneValue : UserControl, IUserControlInWindow, IUserControlWithResult
     {

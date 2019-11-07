@@ -111,4 +111,11 @@ public static List<byte> GenerateIntervalByte(byte od, byte to)
         vr.Add(to);
         return vr;
     }
+
+    public static List<T> Sort<T>(params T[] t)
+    {
+        List<T> c = new List<T>(t);
+        c.Sort();
+        return c;
+    }
 }

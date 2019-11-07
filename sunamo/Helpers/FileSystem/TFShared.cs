@@ -12,18 +12,28 @@ public partial class TF
 {
     static Type type = typeof(TF);
 
+    public static string ReadFile(string s)
+    {
+        return ReadFile<string, string>(s);
+    }
+
     /// <summary>
     /// Precte soubor a vrati jeho obsah. Pokud soubor neexistuje, vytvori ho a vrati SE. 
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static string ReadFile(string s)
-    { 
-        FS.MakeUncLongPath(ref s);
+    public static string ReadFile<StorageFolder, StorageFile>(StorageFile s, AbstractCatalog<StorageFolder, StorageFile> ac = null)
+    {
+
+        if (ac == null)
+        {
+            FS.MakeUncLongPath<StorageFolder, StorageFile>(ref s, ac);
+        }
+        
 
         string result = string.Empty;
 
-        if (FS.ExistsFile(s))
+        if (FS.ExistsFile(s, ac))
         {
             while (true)
             {
@@ -44,10 +54,16 @@ public partial class TF
                     //var bytes = bytesArray.ToList();
                     //var enc = EncodingHelper.DetectEncoding(bytes);
 
-
-
-                    //result = enc.GetString(bytesArray);
-                    result = File.ReadAllText(s);
+                    if (ac == null)
+                    {
+                        //result = enc.GetString(bytesArray);
+                        result = File.ReadAllText(s.ToString());
+                    }
+                    else
+                    {
+                        result = ac.tf.readAllText(s);
+                    }
+                    
                     break;
                 }
                 catch (Exception ex)
@@ -58,9 +74,8 @@ public partial class TF
         }
         else
         {
+            TF.WriteAllText<StorageFolder, StorageFile>(s, string.Empty, ac);
             
-
-            File.WriteAllText(s, "", Encoding.UTF8);
         }
 
         return result;//
@@ -144,21 +159,45 @@ public partial class TF
 
     public static List<string> ReadAllLines(string file)
     {
-        return SH.GetLines(ReadFile(file));
+        return ReadAllLines<string, string>(file, null);
+    }
+
+
+    public static List<string> ReadAllLines<StorageFolder, StorageFile>(StorageFile file, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        return SH.GetLines(ReadFile<StorageFolder, StorageFile>(file,ac));
     }
 
     public static void CreateEmptyFileWhenDoesntExists(string path)
     {
-        if (!FS.ExistsFile(path))
+        CreateEmptyFileWhenDoesntExists<string, string>(path, null);
+    }
+
+    public static void CreateEmptyFileWhenDoesntExists<StorageFolder, StorageFile>(StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (!FS.ExistsFile(path, ac))
         {
-            FS.CreateUpfoldersPsysicallyUnlessThere(path);
-            File.WriteAllText(path, "");
+            FS.CreateUpfoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(path, ac);
+            TF.WriteAllText<StorageFolder, StorageFile>(path, "", ac);
         }
     }
 
     public static void WriteAllBytes(string file, List<byte> b)
     {
-        File.WriteAllBytes(file, b.ToArray());
+        WriteAllBytes<string, string>(file, b, null);
+    }
+
+    public static void WriteAllBytes<StorageFolder, StorageFile>(StorageFile file, List<byte> b, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            ac.tf.writeAllBytes(file, b);
+        }
+        else
+        {
+            File.WriteAllBytes(file.ToString(), b.ToArray());
+        }
+        
     }
 
     public static List<byte> ReadAllBytes(string file)
@@ -190,7 +229,10 @@ public partial class TF
         return  File.OpenText(file);
     }
 
-    public static Action<string, string> writeAllText = null;
+    public static void WriteAllText(string file, string content)
+    {
+        WriteAllText<string, string>(file, content, null);
+    }
 
     /// <summary>
     /// A1 cant be storagefile because its
@@ -198,17 +240,16 @@ public partial class TF
     /// </summary>
     /// <param name="file"></param>
     /// <param name="content"></param>
-    public static void WriteAllText(string file, string content)
+    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile file, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        if (writeAllText == null)
+        if ( ac  == null)
         {
-            File.WriteAllText(file, content);
+            File.WriteAllText(file.ToString(), content);
         }
         else
         {
-            writeAllText.Invoke(file, content);
+            ac.tf. writeAllText.Invoke(file, content);
         }
-        
     }
 
     public static void AppendToFile(string obsah, string soubor)
@@ -218,7 +259,12 @@ public partial class TF
 
     public static List<string> GetLines(string item)
     {
-        return ReadAllLines(item);
+        return GetLines<string, string>(item, null);
+    }
+
+    public static List<string> GetLines<StorageFolder, StorageFile>(StorageFile item, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        return ReadAllLines<StorageFolder, StorageFile>(item, ac);
     }
 
 public static void SaveLines(List<string> list, string file)

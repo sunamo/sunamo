@@ -19,4 +19,13 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\sunamo\MultilingualResources\sunamo.cs-CZ.xlf" Link="sunamo.cs-cz.xlf" />
+    <None Include="..\sunamo\MultilingualResources\sunamo.en-US.xlf" Link="sunamo.en-us.xlf" />
+  </ItemGroup>
+
 </Project>

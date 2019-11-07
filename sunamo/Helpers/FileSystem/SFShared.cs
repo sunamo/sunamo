@@ -12,6 +12,7 @@ public static partial class SF
     /// <summary>
     /// Same as PrepareToSerialization - return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
+    /// DateTime is format with DTHelperEn.ToString
     /// </summary>
     /// <param name="p1"></param>
     /// <param name="o"></param>
@@ -78,6 +79,7 @@ public static partial class SF
 
 /// <summary>
     /// Return with the last
+    /// DateTime is format with DTHelperEn.ToString
     /// </summary>
     /// <param name="o"></param>
     /// <param name="separator"></param>
@@ -86,8 +88,9 @@ public static partial class SF
     {
         return PrepareToSerializationWorker(o, false, separator);
     }
-/// <summary>
+    /// <summary>
     /// Return with last |
+    /// DateTime is format with DTHelperEn.ToString
     /// </summary>
     /// <param name="o"></param>
     /// <returns></returns>
@@ -96,7 +99,15 @@ public static partial class SF
         return PrepareToSerializationWorker(o, false, AllStrings.pipe);
     }
 
-private static string PrepareToSerializationWorker(IEnumerable o, bool removeLast, string separator)
+    /// <summary>
+    /// 
+    /// DateTime is format with DTHelperEn.ToString
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="removeLast"></param>
+    /// <param name="separator"></param>
+    /// <returns></returns>
+    private static string PrepareToSerializationWorker(IEnumerable o, bool removeLast, string separator)
     {
         string vr = SH.GetString(o, separator.ToString());
         if (removeLast)

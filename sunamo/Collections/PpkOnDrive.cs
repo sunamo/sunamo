@@ -4,6 +4,9 @@ using System.Text;
 using System.IO;
 using System;
 
+/// <summary>
+/// Checking whether string is already contained.
+/// </summary>
 public class PpkOnDrive : PpkOnDriveBase<string>
 {
     /// <summary>

@@ -12,5 +12,14 @@ namespace sunamo.Data
         {
             this.fullPath = fullPath;
         }
+
+        /// <summary>
+        /// Must return fullPath - its use in generic Combine method
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

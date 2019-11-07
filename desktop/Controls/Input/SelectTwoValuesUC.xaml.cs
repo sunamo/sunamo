@@ -17,7 +17,8 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Input
 {
     /// <summary>
-    /// Interaction logic for SelectTwoValues.xaml
+    /// Select Value - more from selector
+    /// Enter value - single 
     /// </summary>
     public partial class SelectTwoValues : UserControl, IUserControl, IUserControlWithResult
     {

@@ -8,7 +8,7 @@
       <group id="WPF.TESTS/PROPERTIES/RESOURCES.RESX" datatype="resx" />
     </body>
   </file>
-  <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/RESOURCES/CS-CZ.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/RESOURCES/EN-US.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
     </header>

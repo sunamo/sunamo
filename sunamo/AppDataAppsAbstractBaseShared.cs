@@ -14,7 +14,7 @@ namespace sunamo
 
 
 
-        public abstract Task<StorageFolder> GetFolder(AppFolders af);
+        
 
         /// <summary>
         /// Pokud rootFolder bude SE nebo null, G false, jinak vrátí zda rootFolder existuej ve FS

@@ -79,7 +79,7 @@ public partial class TF
     {
         foreach (var item in files)
         {
-            var lines = TF.ReadAllLines(item);
+            var lines = TF.ReadAllLines<string, string>(item, null);
             for (int i = 0; i < lines.Count; i++)
             {
                 string line = lines[i].Trim();
@@ -95,6 +95,7 @@ public partial class TF
 
     /// <summary>
     /// Return all lines except empty
+    /// GetLines return ALL lines, include empty
     /// 
     /// Lze použít pouze pokud je A1 cesta ke serializovatelnému souboru, nikoliv samotný ser. řetězec
     /// Vrátí všechny řádky vytrimované z A1, ale nikoliv deserializované
@@ -104,7 +105,7 @@ public partial class TF
     /// <returns></returns>
     public static string[] GetAllLines(string file)
     {
-        List<string> lines = TF.GetLines(file);
+        List<string> lines = TF.GetLines<string,string>(file, null);
         List<string> linesPpk = new List<string>();
         for (int i = 0; i < lines.Count; i++)
         {

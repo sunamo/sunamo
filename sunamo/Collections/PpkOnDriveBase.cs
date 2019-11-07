@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System;
 /// <summary>
+/// Checking whether string is already contained.
 /// Kolekce na retezce.
 ///  V kazdem programu doporucuji pouzivat jen jedinou instanci protoze jinak jinak se mohou ukoncoval nelogicky.
 /// Tuto PPk uzivej jen na nacteni nebo uulozeni, ale nikdy ne soucasne.
@@ -34,24 +35,40 @@ public abstract class PpkOnDriveBase<T> : List<T>
         }
     }
 
-    public new void Add(T prvek)
+    public  void Add(IEnumerable<T> prvek)
     {
+        foreach (var item in prvek)
+        {
+            Add(item);
+        }
+    }
+
+    public new bool Add(T prvek)
+    {
+        bool b = false;
         if (!base.Contains(prvek))
         {
             if (prvek.ToString().Trim() != string.Empty)
             {
                 base.Add(prvek);
+                b = true;
             }
             else
             {
-                return;
+                // keep on false
             }
+        }
+        else
+        {
+            // keep on false
         }
 
         if (_ukladat)
         {
             Save();
         }
+
+        return b;
     }
 
     #region base

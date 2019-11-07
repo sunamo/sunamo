@@ -18,6 +18,13 @@ public partial class HtmlAssistant
         return SplitByTag(input, "br");
     }
 
+    public static string InnerTextDecodeTrim(HtmlNode n)
+    {
+        var r = n.InnerText.Trim();
+        r = HttpUtility.HtmlDecode(r);
+        r = SH.DoubleSpacesToSingle(r);
+        return r;
+    }
     public static List<string> SplitByTag(string input, string d)
     {
         var ih = input;

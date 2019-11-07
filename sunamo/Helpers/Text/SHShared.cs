@@ -1051,9 +1051,10 @@ public static partial class SH
         {
             return Consts.nulled;
         }
+
         string text;
         var valueType = value.GetType();
-        text = value.ToString();
+        
         if (value is IEnumerable && valueType != Types.tString && valueType != Types.tStringBuilder && !(value is IEnumerable<char>))
         {
             if (delimiter == null)
@@ -1063,6 +1064,14 @@ public static partial class SH
             var enumerable = CA.ToListString(value as IEnumerable);
             CA.Replace(enumerable, delimiterS, AllStrings.space);
             text = SH.Join(delimiter, enumerable);
+        }
+        else if (valueType == Types.tDateTime)
+        {
+            text = DTHelperEn.ToString((DateTime)value);
+        }
+        else
+        {
+            text = value.ToString();
         }
         return text;
     }

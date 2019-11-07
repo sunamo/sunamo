@@ -3,9 +3,9 @@ using System.Diagnostics;
 /// <summary>
 /// Exists also SunamoDictionarySort - for SunamoDictionary type
 /// </summary>
-/// <typeparam name="T"></typeparam>
-/// <typeparam name="U"></typeparam>
-public class DictionarySort<T, U>
+/// <typeparam name = "T"></typeparam>
+/// <typeparam name = "U"></typeparam>
+public partial class DictionarySort<T, U>
 {
     public List<U> ReturnValues(Dictionary<T, U> sl)
     {
@@ -14,6 +14,7 @@ public class DictionarySort<T, U>
         {
             vr.Add(item.Value);
         }
+
         return vr;
     }
 
@@ -24,13 +25,14 @@ public class DictionarySort<T, U>
         {
             vr.Add(item.Key);
         }
+
         return vr;
     }
 
     /// <summary>
     /// sezareno a->z, lomítko první, pak čísla, pak písmena - vše standardně. Porovnává se tak bez volání Reverse
     /// </summary>
-    /// <param name="sl"></param>
+    /// <param name = "sl"></param>
     /// <returns></returns>
     public Dictionary<T, U> SortByKeysDesc(Dictionary<T, U> sl)
     {
@@ -42,13 +44,14 @@ public class DictionarySort<T, U>
         {
             vr.Add(item, sl[item]);
         }
+
         return vr;
     }
 
     /// <summary>
     /// sezareno a->z, lomítko první, pak čísla, pak písmena - vše standardně. Porovnává se tak bez volání Reverse
     /// </summary>
-    /// <param name="sl"></param>
+    /// <param name = "sl"></param>
     /// <returns></returns>
     public Dictionary<T, U> SortByValuesDesc(Dictionary<T, U> sl)
     {
@@ -58,32 +61,14 @@ public class DictionarySort<T, U>
         Dictionary<T, U> vr = new Dictionary<T, U>();
         foreach (U item in hodnoty)
         {
-            T t = ReturnKeyFromValue(vr.Count, sl, item);
+            T t = KeyFromValue(vr.Count, sl, item);
             vr.Add(t, item);
         }
+
         return vr;
     }
 
-    public T ReturnKeyFromValue(Dictionary<T, U> sl, U item2)
-    {
-        foreach (KeyValuePair<T, U> item in sl)
-        {
-            if (item.Value.Equals(item2))
-            {
-                return item.Key;
-            }
-        }
-        return default(T);
-    }
-
-    /// <summary>
-    /// A1 je index od kterého prohledávat
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="sl"></param>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    public T ReturnKeyFromValue(int p, Dictionary<T, U> sl, object item2)
+    public T KeyFromValue(List<T> pridane, int p, Dictionary<T, U> sl, object item2)
     {
         int i = -1;
         List<KeyValuePair<T, U>> l = new List<KeyValuePair<T, U>>();
@@ -95,34 +80,7 @@ public class DictionarySort<T, U>
                 l.Add(item);
                 continue;
             }
-            if (item.Value.Equals(item2))
-            {
-                return item.Key;
-            }
-        }
-        // Lépe jsem to tu nedokázal vymyslet :-(
-        foreach (KeyValuePair<T, U> item in l)
-        {
-            if (item.Value.Equals(item2))
-            {
-                return item.Key;
-            }
-        }
-        return default(T);
-    }
 
-    public T GetKeyFromValue(List<T> pridane, int p, Dictionary<T, U> sl, object item2)
-    {
-        int i = -1;
-        List<KeyValuePair<T, U>> l = new List<KeyValuePair<T, U>>();
-        foreach (KeyValuePair<T, U> item in sl)
-        {
-            i++;
-            if (i < p)
-            {
-                l.Add(item);
-                continue;
-            }
             if (!pridane.Contains(item.Key))
             {
                 if (item.Value.Equals(item2))
@@ -130,7 +88,7 @@ public class DictionarySort<T, U>
                     return item.Key;
                 }
             }
-            //////////ObjectHelper.ci.VratTR(item.Key) + AllStrings.swda + ObjectHelper.ci.VratTR(item.Value));
+        //////////ObjectHelper.ci.VratTR(item.Key) + AllStrings.swda + ObjectHelper.ci.VratTR(item.Value));
         }
 
         foreach (KeyValuePair<T, U> item in l)
@@ -143,13 +101,14 @@ public class DictionarySort<T, U>
                 }
             }
         }
+
         return default(T);
     }
 
     /// <summary>
     /// sezareno z->a, pak čísla od největších k nejmenším, lomítka až poté. Volá se reverse
     /// </summary>
-    /// <param name="sl"></param>
+    /// <param name = "sl"></param>
     /// <returns></returns>
     public Dictionary<T, U> SortByKeysAsc(Dictionary<T, U> sl)
     {
@@ -162,6 +121,7 @@ public class DictionarySort<T, U>
         {
             vr.Add(item, sl[item]);
         }
+
         return vr;
     }
 
@@ -175,6 +135,7 @@ public class DictionarySort<T, U>
                 vr.Add(item.Key, item.Value);
             }
         }
+
         return vr;
     }
 }

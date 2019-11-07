@@ -4,6 +4,7 @@ using System;
 
 public static class DateTimeExtensions
 {
+    
     public static string ToLongTimeString(this DateTime dt)
     {
         return dt.Hour + AllStrings.colon + dt.Minute + AllStrings.colon + dt.Second;

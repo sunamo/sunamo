@@ -22,6 +22,22 @@ namespace desktop.Controls.Visualization
     /// <summary>
     /// T je typ ve kterém se spravují data k UIElements nebo checkboxes
     /// Its is normal grid, in default state there is no padding / margin in cell
+    /// Ways to show data in WPF:
+    /// TwoWayTable
+    /// DataGrid
+    /// ListView
+    /// ListBox
+    /// GridView - If you are looking for a GridView control in WPF, you will be disappointed. WPF does not have a GridView control. But the good news is you can achieve GridView like functionality with a ListView control available in WPF. 
+    /// https://www.c-sharpcorner.com/UploadFile/mahesh/gridview-in-wpf/
+    /// 
+    /// Use in apps:
+    /// IlCamminoManager - DataGridCamminoTracklist, IlCamminoManager,  SearchingIlCammino , ListenToIlCammino 
+    /// WpfApp1 - EncodingOfFiles
+    /// LastFmClient/LastFmClient - artists/songs
+    /// GeoCachingTool/SavedCaches
+    /// SeznamCzReality/ListViewFlats
+    /// SunamoYouTube
+    /// 
     /// </summary>
     public partial class TwoWayTable : UserControl
     {

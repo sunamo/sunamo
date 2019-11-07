@@ -37,7 +37,7 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
         List<T> pridane = new List<T>();
         foreach (U item in hodnoty)
         {
-            T t = _ss.GetKeyFromValue(pridane, this.Count, sl, item);
+            T t = _ss.KeyFromValue(pridane, this.Count, sl, item);
             pridane.Add(t);
             this.Add(t, item);
             //vr.Add(t, item);
@@ -87,7 +87,7 @@ public class SunamoDictionarySort<T, U> : Dictionary<T, U>
 
         foreach (U item in hodnoty)
         {
-            T t = _ss.ReturnKeyFromValue(this.Count, sl, item);
+            T t = _ss.KeyFromValue(this.Count, sl, item);
             // Přidám do this místo do vr
             this.Add(t, item);
             //vr.Add(t, item);

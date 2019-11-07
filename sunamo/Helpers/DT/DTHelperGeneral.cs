@@ -5,6 +5,12 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
+    public static DateTime AddDays(ref DateTime dt, double day)
+    {
+        dt = dt.AddDays(day);
+        return dt;
+    }
+
     /// <summary>
     /// Find four digit letter in any string
     /// </summary>
@@ -104,5 +110,14 @@ public partial class DTHelperGeneral
         today = today.AddHours(double.Parse(v1));
         today = today.AddHours(double.Parse(v2));
         return today;
+    }
+
+    internal static DateTime Combine(DateTime result, DateTime time)
+    {
+        result.AddHours(time.Hour);
+        result.AddMinutes(time.Minute);
+        result.AddSeconds(time.Second);
+        result.AddMilliseconds(time.Millisecond);
+        return result;
     }
 }

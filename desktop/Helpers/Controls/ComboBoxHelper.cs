@@ -107,8 +107,13 @@ public class ComboBoxHelper
             }
         }
 
+    public void AddValuesOfEnumAsItems<T>() where T : struct
+    {
+        var arr = EnumHelper.GetValues<T>();
+        AddValuesOfEnumAsItems(arr);
+    }
 
-        public void AddValuesOfEnumAsItems(Array bs)
+    public void AddValuesOfEnumAsItems(IEnumerable bs)
         {
             int i = 0;
             foreach (object item in bs)
@@ -157,6 +162,7 @@ public class ComboBoxHelper
         AddValuesOfArrayAsItems(null, eh, o);
     }
 
+   
     /// <summary>
     /// A1 can be null
     /// A2 was handler of MouseDown, now without using - set null. 

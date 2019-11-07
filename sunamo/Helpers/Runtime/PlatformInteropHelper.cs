@@ -27,14 +27,15 @@ public class PlatformInteropHelper
 
     public static Type GetTypeOfResources()
     {
-        if (IsUseStandardProject())
-        {
-            return typeof(standard.ResourcesStandard);
-        }
-        else
-        {
-            return typeof(sunamo.Properties.Resources);
-        }
+        return typeof(ResourcesShared.ResourcesDuo);
+        //if (IsUseStandardProject())
+        //{
+        //    return typeof(standard.ResourcesStandard);
+        //}
+        //else
+        //{
+        //    return typeof(sunamo.Properties.Resources);
+        //}
     }
 
     static bool? isUwp = null;

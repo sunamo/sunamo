@@ -2,3 +2,8 @@
 {
     object Id { get; set; }
 }
+public interface IIdentificator<T>
+{
+    T Id { get; set; }
+    bool IsChecked { get; set; }
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 public partial class DTHelperEn
@@ -9,6 +10,11 @@ public partial class DTHelperEn
     //    return 
     //}
 
+        /// <summary>
+        /// return MinValue when fail
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
     public static DateTime ParseDateUSA(string input)
     {
         DateTime vr = DateTime.MinValue;
@@ -99,6 +105,15 @@ public partial class DTHelperEn
 
     public static string ToShortDateString(DateTime today)
     {
+        return ToShortDateString(today, DateTime.MinValue, DTHelperMulti.DateToString(today, Langs.en));
+    }
+
+    public static string ToShortDateString(DateTime today, DateTime _def, string returnWhenA1isA2)
+    {
+        if (today == _def)
+        {
+            return returnWhenA1isA2;
+        }
         return DTHelperMulti.DateToString(today, Langs.en);
     }
 
@@ -154,4 +169,15 @@ public partial class DTHelperEn
         days *= -1;
         return DateTime.Today.AddDays(days);
     }
+
+    public static DateTime ParseDateTimeUSA(string s)
+    {
+        var p = SH.Split(s, AllStrings.space);
+        DateTime result = ParseDateUSA(p[0]);
+        var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
+        return DTHelperGeneral.Combine(result, time);
+        //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
+    }
+
+    
 }

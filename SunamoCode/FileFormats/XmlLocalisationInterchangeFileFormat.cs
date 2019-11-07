@@ -17,7 +17,7 @@ namespace SunamoCode
     /// </summary>
     public static class XmlLocalisationInterchangeFileFormat
     {
-        static Dictionary<string, string> unallowedEnds= new Dictionary<string, string>();
+        static Dictionary<string, string> unallowedEnds = new Dictionary<string, string>();
 
         public static Langs GetLangFromFilename(string s)
         {
@@ -50,11 +50,11 @@ namespace SunamoCode
 
             }
 
-            var d = GetTransUnits( fn);
+            var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
-                var el = SourceTarget(item); 
+                var el = SourceTarget(item);
 
                 //TrimUnallowedChars(el.Item1);
                 TrimUnallowedChars(el.Item2);
@@ -106,7 +106,7 @@ Into A1 insert:
                 }
             }
 
-            
+
 
             foreach (var item in result)
             {
@@ -145,12 +145,12 @@ Into A1 insert:
             return XHelper.GetElementOfName(item, "target");
         }
 
-        public static List<string> GetAllLastLetterFromEnd( string fn, bool saveAllLastLetterToClipboard)
+        public static List<string> GetAllLastLetterFromEnd(string fn, bool saveAllLastLetterToClipboard)
         {
             List<string> ids = new List<string>();
             CollectionWithoutDuplicates<char> allLastLetters = new CollectionWithoutDuplicates<char>();
 
-            var d = GetTransUnits( fn);
+            var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
@@ -185,13 +185,13 @@ Into A1 insert:
 
         public static void RemoveFromXlfWhichHaveEmptyTarget(string fn)
         {
-            var d = GetTransUnits( fn);
+            var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
 
             for (int i = d.trans_units.Count() - 1; i >= 0; i--)
             {
                 var item = d.trans_units[i];
-                var el = SourceTarget( item);
+                var el = SourceTarget(item);
 
 
                 if (el.Item2.Value.Trim() == string.Empty)
@@ -222,7 +222,7 @@ Into A1 insert:
         /// <returns></returns>
         public static void TrimStringResources(Langs toL, string fn)
         {
-            var d = GetTransUnits( fn);
+            var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
@@ -314,7 +314,7 @@ Into A1 insert:
         /// <param name="fn"></param>
         public static void Append(Langs toL, string originalSource, string translated, string pascal, string fn)
         {
-            var d = GetTransUnits( fn);
+            var d = GetTransUnits(fn);
 
             var exists = XHelper.GetElementOfNameWithAttr(d.group, TransUnit.tTransUnit, "id", pascal);
 
@@ -355,7 +355,7 @@ Into A1 insert:
             Dictionary<string, string> idTarget = new Dictionary<string, string>();
 
             var d = GetTransUnits(path);
-            
+
             foreach (var item in d.trans_units)
             {
                 var t = GetTransUnit(item);
@@ -396,12 +396,12 @@ Into A1 insert:
             {
                 var content = kv.Value;
                 StringBuilder sb = new StringBuilder(content);
-                
+
                 replacedKeys.c.Clear();
 
                 foreach (var item in ids)
                 {
-                    var item2 = XlfKeysDot + item+ "]";
+                    var item2 = XlfKeysDot + item + "]";
                     var toReplace = "RLData.en[" + item2;
 
                     var toString = sb.ToString();
@@ -440,6 +440,6 @@ Into A1 insert:
             // Nepřidávat znovu pokud již končí na postfix
         }
 
-       
+
     }
 }
