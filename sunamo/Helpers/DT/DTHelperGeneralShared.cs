@@ -71,4 +71,13 @@ public static DateTime TodayPlusActualHour()
         DateTime dt = DateTime.Today;
         return dt.AddHours(DateTime.Now.Hour);
     }
+
+internal static DateTime Combine(DateTime result, DateTime time)
+    {
+        result.AddHours(time.Hour);
+        result.AddMinutes(time.Minute);
+        result.AddSeconds(time.Second);
+        result.AddMilliseconds(time.Millisecond);
+        return result;
+    }
 }

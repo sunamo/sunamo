@@ -59,6 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHNotTranslateAbleShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Html\XHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />

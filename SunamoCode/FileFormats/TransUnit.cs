@@ -1,4 +1,5 @@
-﻿using sunamo.Html;
+﻿using HtmlAgilityPack;
+using sunamo.Html;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +24,7 @@ public class TransUnit
         {
             value = SHNotTranslateAble.DecodeSlashEncodedString(value);
             value = HtmlAssistant.TrimInnerHtml(value);
-            value = HttpUtility.HtmlEncode(value);
+            value = HtmlDocument.HtmlEncode(value);
 
             _source = value;
         }
@@ -40,7 +41,7 @@ public class TransUnit
         {
             value = SHNotTranslateAble.DecodeSlashEncodedString(value);
             value = HtmlAssistant.TrimInnerHtml(value);
-            value = HttpUtility.HtmlEncode(value);
+            value = HtmlDocument.HtmlEncode(value);
             _target = value;
         }
     }
