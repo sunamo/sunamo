@@ -143,7 +143,9 @@ public class XlfResourcesH
     /// </summary>
     private static void SaveResouresToRL<StorageFolder, StorageFile>( ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
     {
-        SaveResouresToRL(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), existsDirectory,appData);
+        // Cant use SolutionsIndexerHelper.SolutionWithName or VPSHelper because is in SolutionsIndexer.web
+      
+        SaveResouresToRL(VpsHelperSunamo.SunamoProject(), existsDirectory,appData);
     }
 
     private static void ProcessXlfFile(string basePath, string lang, string file)

@@ -197,8 +197,6 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         {
             response = (HttpWebResponse)request.GetResponse();
             
-            
-
                 Encoding encoding = null;
                 if (response.CharacterSet == "")
                 {

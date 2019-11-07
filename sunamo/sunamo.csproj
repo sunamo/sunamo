@@ -607,6 +607,7 @@
     <Compile Include="Values\TestDataTxt.cs" />
     <Compile Include="Values\TestHelper.cs" />
     <Compile Include="Values\Types.cs" />
+    <Compile Include="VpsHelperSunamo.cs" />
     <Compile Include="Web\YouTube.cs" />
     <Compile Include="Web\YouTubeShared.cs" />
     <Compile Include="SunamoCode\XlfResourcesH.cs" />
@@ -618,7 +619,6 @@
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
     <Content Include="plain.txt" />
-    <Content Include="tickets.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\SunamoSize.cs~RF1c5b114.TMP" />

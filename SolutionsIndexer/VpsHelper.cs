@@ -9,7 +9,20 @@ using System.Threading.Tasks;
 
 public class VpsHelper
 {
-    const string path = @"c:\_";
+    public static bool IsVps
+    {
+        get
+        {
+            return VpsHelperSunamo.IsVps;
+        }
+    }
+
+    public static string path
+    {
+        get => VpsHelperSunamo.path;
+
+    }
+
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
     static List<string> list = CA.ToListString("Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
 
@@ -57,14 +70,6 @@ public class VpsHelper
 
                 ClipboardHelper.SetText(gitBashBuilder.ToString());
             
-        }
-    }
-
-    public static bool IsVps
-    {
-        get
-        {
-            return FS.ExistsDirectory(path);
         }
     }
 
