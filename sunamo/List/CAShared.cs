@@ -925,7 +925,7 @@ public static partial class CA
                 continue;
             }
 
-            if (SH.IsNumber(item.ToString(), ',', '.'))
+            if (SH.IsNumber(item.ToString(), AllChars.comma, AllChars.dot, AllChars.dash))
             {
                 var number = parse.Invoke(item.ToString());
 

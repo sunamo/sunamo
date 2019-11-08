@@ -24,7 +24,7 @@ public class VpsHelper
     }
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
-    static List<string> list = CA.ToListString("Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
+    static List<string> list = CA.ToListString("Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.teamwork.web", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
 
     public static void PushAll()
     {

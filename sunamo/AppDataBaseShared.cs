@@ -94,7 +94,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     public string GetFolderWithAppsFiles()
     {
         //Common(true)
-        string slozka = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString());
+        string slozka = FS.Combine(SpecialFoldersHelper.AppDataRoaming(VpsHelperSunamo.IsVps), "sunamo\\Common", AppFolders.Settings.ToString());
         _fileFolderWithAppsFiles = FS.Combine(slozka, folderWithAppsFiles);
 
         

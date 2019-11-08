@@ -5,8 +5,6 @@ using System.Text;
 
 public class StringPaddingData
 {
-    //
-
     /// <summary>
     /// [0]
     /// </summary>
