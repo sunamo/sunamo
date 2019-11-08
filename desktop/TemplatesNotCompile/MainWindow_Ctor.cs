@@ -81,13 +81,15 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
         sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
 #else
-       //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
-       // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
-       // sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
+        //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
+        // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
+        // sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
 
-       // InitApp.Logger = ConsoleLogger.Instance;
-       //     InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
-       //     InitApp.TypedLogger = TypedConsoleLogger.Instance;
+        // For console always write only to console. When I need write also to event log, must do it separately
+        CmdApp.EnableConsoleLogging(true);
+        // InitApp.Logger = ConsoleLogger.Instance;
+        //     InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
+        //     InitApp.TypedLogger = TypedConsoleLogger.Instance;
 #endif
 
         WpfApp.EnableDesktopLogging(true);
