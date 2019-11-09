@@ -118,10 +118,6 @@ namespace desktop.Controls
             }
         }
 
-        private void txtFolder_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
-
         private void BtnRemoveFolder_Click(object sender, RoutedEventArgs e)
         {
             if (FolderRemoved != null)

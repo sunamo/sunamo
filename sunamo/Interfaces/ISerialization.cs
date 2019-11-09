@@ -1,5 +1,5 @@
 ﻿public interface ISerialization
 {
     void Load(object obj);
-    void Save();
+    void Save(object obj);
 }

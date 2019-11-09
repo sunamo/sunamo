@@ -10,7 +10,7 @@ using System.Threading;
 /// <summary>
 /// Run by time new thread. 
 /// </summary>
-    public class TimeThreadPool : IDisposable
+    public class TimeThreadPool //: IDisposable
     {
         Timer timer = null;
         Dictionary<int, Thread> threads = new Dictionary<int, Thread>();
@@ -85,12 +85,7 @@ using System.Threading;
             return item.Value.ThreadState != System.Threading.ThreadState.Stopped && item.Value.ThreadState != System.Threading.ThreadState.StopRequested && item.Value.ThreadState != System.Threading.ThreadState.WaitSleepJoin;
         }
 
-        /// <summary>
-        /// Volá na všechny vlákna metodu Join, nevím zda to je správný přístup, lepší bude asi tuto metodu nepoužívat
-        /// </summary>
-        public void Dispose()
-        {
-        }
+
 
         private void DisposeTimer()
         {

@@ -57,11 +57,6 @@ namespace desktop.Controls.Input
             tbWhatEnter.Text = "Enter or select" + " " + whatEnter;
         }
 
-        private void CbEntered_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
         {
             if (AfterEnteredValue(cbEntered))

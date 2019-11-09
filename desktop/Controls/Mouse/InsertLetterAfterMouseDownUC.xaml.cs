@@ -64,21 +64,6 @@ namespace desktop.Controls.Mouse
             ChangeDialogResult(true);
         }
 
-        private void Txt_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void Txt_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void Txt_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
         bool insertNow
         {
             get

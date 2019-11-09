@@ -73,6 +73,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 _conn = MSDatabaseLayer._conn;
                 
             }
+            if (string.IsNullOrEmpty( _conn.ConnectionString))
+            {
+                MSDatabaseLayer.loadDefaultDatabase();
+            }
             return _conn;
         }
         set
@@ -2644,6 +2648,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     /// <summary>
     /// Interně volá metodu SelectRowReader
+    /// If fail, return null
     /// </summary>
     /// <param name="tabulka"></param>
     /// <param name="sloupecID"></param>

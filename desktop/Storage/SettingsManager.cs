@@ -211,6 +211,10 @@ namespace desktop.Storage
 
         }
 
+        /// <summary>
+        /// Must be here due to ISettingsManager
+        /// </summary>
+        /// <param name="list"></param>
         public void AddFromSavedElements(TUList<FrameworkElement, DependencyProperty> list)
         {
             

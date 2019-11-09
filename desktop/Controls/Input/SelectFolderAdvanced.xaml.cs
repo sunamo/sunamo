@@ -131,9 +131,5 @@ namespace desktop.Controls
             //DialogResult = true;
         }
 
-        public void SetControlsVisibility(bool v1, bool v2, bool v3, bool v4)
-        {
-            
-        }
     }
 }

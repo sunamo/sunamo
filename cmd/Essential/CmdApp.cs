@@ -19,11 +19,6 @@ public partial class CmdApp
         }
     }
 
-    private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
-    {
-        InitApp.TypedLogger.WriteLine(t, message);
-    }
-
 
     public static TypedLoggerBase ConsoleOrDebugTyped()
     {

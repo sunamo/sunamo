@@ -10,8 +10,9 @@ namespace sunamo
     {
         /// <summary>
         /// Pro opacny proces slouzi M ToString().
+        /// A1 must be list due to parse by indexes
         /// </summary>
-        void ParseCollection(IEnumerable<string> soubory);
+        void ParseCollection(List<string> s);
     }
 
     public interface IParser

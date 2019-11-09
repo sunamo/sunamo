@@ -8,10 +8,7 @@ using System.Web;
 
 public class HttpResponseHelper
 {
-    public void IsOk(HttpResponse r)
-    {
-        
-    }
+
 
     public static bool SomeError(HttpResponse r)
     {

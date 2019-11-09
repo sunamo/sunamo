@@ -258,10 +258,6 @@ namespace desktop.Controls.Input
             return false;
         }
 
-        private void SetValidatetToRight(FrameworkElement item, bool? previousValidate)
-        {
-            
-        }
 
         private void txtEnteredText_KeyDown_1(object sender, KeyEventArgs e)
         {

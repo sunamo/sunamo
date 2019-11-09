@@ -58,10 +58,7 @@ using System.Text;
         /// </summary>
         public List<string> Fields { get; private set; }
 
-    public void ReturnToStart()
-    {
-        
-    }
+
 
     /// <summary>
     /// Gets the field count or returns null if no fields have been read

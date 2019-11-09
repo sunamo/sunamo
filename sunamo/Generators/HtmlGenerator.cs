@@ -9,9 +9,6 @@ public class HtmlGenerator : XmlGenerator
         base.WriteNonPairTag("br");
     }
 
-    public void Boilerplate()
-    {
-    }
 
     
 }
