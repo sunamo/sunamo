@@ -38,17 +38,18 @@ public class ConvertOnlyLowercase
             {
                 b = false;
                 sb.Append(char.ToUpper(item));
+                continue;
+            }
+            
+
+            if (item == nextUpper)
+            {
+                b = true;
             }
             else
             {
                 sb.Append(item);
             }
-
-            if (item == nextUpper)
-            {
-
-            }
-            b = true;
         }
 
         return sb.ToString();
