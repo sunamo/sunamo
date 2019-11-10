@@ -9,6 +9,14 @@ using sunamo.Constants;
 
 public static partial class SF
 {
+    
+
+    public const string replaceForSeparatorString = AllStrings.us;
+    public static readonly char replaceForSeparatorChar = AllChars.us;
+    
+
+    
+
     /// <summary>
     /// Same as PrepareToSerialization - return without last
     /// If need to combine string and IEnumerable, lets use CA.Join
@@ -85,7 +93,7 @@ public static partial class SF
     /// <param name="o"></param>
     /// <param name="separator"></param>
     /// <returns></returns>
-    public static string PrepareToSerialization(IEnumerable o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization(IEnumerable<string> o, string separator = AllStrings.pipe)
     {
         return PrepareToSerializationWorker(o, false, separator);
     }
@@ -108,8 +116,10 @@ public static partial class SF
     /// <param name="removeLast"></param>
     /// <param name="separator"></param>
     /// <returns></returns>
-    private static string PrepareToSerializationWorker(IEnumerable o, bool removeLast, string separator)
+    private static string PrepareToSerializationWorker(IEnumerable<string> o, bool removeLast, string separator)
     {
+        var list = o.ToList();
+        CA.Replace(list, separator, replaceForSeparatorString);
         string vr = SH.GetString(o, separator.ToString());
         if (removeLast)
         {

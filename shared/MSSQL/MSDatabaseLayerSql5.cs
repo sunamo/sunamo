@@ -29,10 +29,10 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
             cs += ";Database=" + database;
         }
         cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
-        _conn = new SqlConnection(cs);
+        conn = new SqlConnection(cs);
         try
         {
-            _conn.Open();
+            conn.Open();
         }
         catch (Exception ex)
         {
@@ -74,18 +74,18 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
 
 
     #region Prace s vlastni DB
-    
+
 
     /// <summary>
     /// Může se používat pouze v programu SqLiteTest nebo v jiných používající více DB souborů !!!
     /// </summary>
     public static void CloseDbFile()
     {
-        if (_conn != null)
+        if (conn != null)
         {
-            _conn.Close();
-            _conn.Dispose();
-            _conn = null;
+            conn.Close();
+            conn.Dispose();
+            conn = null;
         }
         //customDB = false;
     }
@@ -95,11 +95,11 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
     static void LoadNewConnectionFirst(string cs2)
     {
         LoadNewConnection(cs2);
-        if (_conn != null)
+        if (conn != null)
         {
-            _conn.Disposed += new EventHandler(conn_Disposed);
-            _conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
-            _conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
+            conn.Disposed += new EventHandler(conn_Disposed);
+            conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
+            conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
         }
     }
 
@@ -112,24 +112,24 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
     {
         if (e.CurrentState == System.Data.ConnectionState.Broken)
         {
-            if (_conn != null)
+            if (conn != null)
             {
                 if (!closing)
                 {
-                    _conn.Open();
+                    conn.Open();
                 }
-                
+
             }
         }
         else if (e.CurrentState == System.Data.ConnectionState.Closed)
         {
-            if (_conn != null)
+            if (conn != null)
             {
                 if (!closing)
                 {
-                    _conn.Open();
+                    conn.Open();
                 }
-                
+
             }
         }
     }
@@ -144,13 +144,13 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
 
     public static void LoadNewConnection(string cs)
     {
-        _conn = new SqlConnection(cs);
-        
-        _conn.Open();
+        conn = new SqlConnection(cs);
+
+        conn.Open();
     }
 
-    
 
-    
+
+
 
 }

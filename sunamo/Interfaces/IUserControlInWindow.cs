@@ -32,6 +32,8 @@ public interface IControlWithResult
     bool? DialogResult { set; }
     //ButtonBase AcceptButton { get; }
     void Accept(object input);
+
+    //bool IsAttachedChangeDialogResult;
 }
 
 /// <summary>

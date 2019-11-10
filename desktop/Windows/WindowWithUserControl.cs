@@ -29,7 +29,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     bool? dialogResult = null;
     bool addDialogButtons = false;
     IUserControlWithSizeChange userControlWithSizeChange = null;
-
+    static Type type = typeof(WindowWithUserControl);
     StatusBar statusBar = null;
     public DialogButtons dialogButtons = null;
     Menu menu = null;
@@ -61,11 +61,19 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
     /// <param name="addDialogButtons"></param>
     public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null)
     {
+        
+
         Tag = tag;
         userControl = (UserControl)iUserControlInWindow;
+
+        
+
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
         this.uc = userControl as IUserControl;
+
+        
+
         this.addDialogButtons = addDialogButtons;
 
         dock = new DockPanel();

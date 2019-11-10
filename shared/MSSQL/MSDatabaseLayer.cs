@@ -9,27 +9,16 @@ using System.Web;
 public partial class MSDatabaseLayer 
 {
     public static MSDatabaseLayerInstance ci = new MSDatabaseLayerInstance();
-    public static Action loadDefaultDatabase;
-    public static SqlConnection conn
-    {
-        get
-        {
-            return _conn;
-        }
-    }
-
-    protected static SqlConnection _conn = null;
-    //public static SqlConnection _conn
+    //public static Action loadDefaultDatabase;
+    //public static SqlConnection conn
     //{
     //    get
     //    {
-    //        return __conn;
-    //    }
-    //    set
-    //    {
-    //        __conn = value;
+    //        return _conn;
     //    }
     //}
+
+    public static SqlConnection conn = null;
 
     /// <summary>
     /// Direct znamená že mohu přímo zadat počet parametrů které si přeji vytvořit
@@ -475,8 +464,8 @@ public partial class MSDatabaseLayer
     }
 
     
-    public static string cs = null;
-    static bool closing = false;
+    //public static string cs = null;
+    //static bool closing = false;
 
     static string dataSource2 = "";
     static string database2 = "";
@@ -528,16 +517,16 @@ public partial class MSDatabaseLayer
         return vr;
     }
 
-    private static void RegisterEvents()
-    {
-        conn.Disposed -= new EventHandler(conn_Disposed);
-        conn.InfoMessage -= new SqlInfoMessageEventHandler(conn_InfoMessage);
-        conn.StateChange -= new System.Data.StateChangeEventHandler(conn_StateChange);
+    //private static void RegisterEvents()
+    //{
+    //    conn.Disposed -= new EventHandler(conn_Disposed);
+    //    conn.InfoMessage -= new SqlInfoMessageEventHandler(conn_InfoMessage);
+    //    conn.StateChange -= new System.Data.StateChangeEventHandler(conn_StateChange);
 
-        conn.Disposed += new EventHandler(conn_Disposed);
-        conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
-        conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
-    }
+    //    conn.Disposed += new EventHandler(conn_Disposed);
+    //    conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
+    //    conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
+    //}
 
     public static void LoadNewConnectionFirst(string cs2)
     {
@@ -548,74 +537,74 @@ public partial class MSDatabaseLayer
         //}
     }
 
-    static void conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
-    {
-        // TODO: Později implementovat
-    }
+    //static void conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+    //{
+    //    // TODO: Později implementovat
+    //}
 
-    //public static Action loadDefaultDatabase;
+    ////public static Action loadDefaultDatabase;
 
-    /// <summary>
-    /// Bad pattern, there happen "Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached."
-    /// </summary>
-    public static void OpenWhenIsNotOpen()
-    {
-        if (_conn.State != ConnectionState.Open)
-        {
-            conn.Open();
-        }
-    }
+    ///// <summary>
+    ///// Bad pattern, there happen "Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached."
+    ///// </summary>
+    //public static void OpenWhenIsNotOpen()
+    //{
+    //    if (_conn.State != ConnectionState.Open)
+    //    {
+    //        conn.Open();
+    //    }
+    //}
 
-    static void conn_StateChange(object sender, System.Data.StateChangeEventArgs e)
-    {
-        if (e.CurrentState == System.Data.ConnectionState.Broken)
-        {
-            if (_conn != null && !string.IsNullOrEmpty(_conn.ConnectionString))
-            {
-                if (!closing)
-                {
-                    //OpenWhenIsNotOpen();
-                    conn.Open();
+    //static void conn_StateChange(object sender, System.Data.StateChangeEventArgs e)
+    //{
+    //    if (e.CurrentState == System.Data.ConnectionState.Broken)
+    //    {
+    //        if (_conn != null && !string.IsNullOrEmpty(_conn.ConnectionString))
+    //        {
+    //            if (!closing)
+    //            {
+    //                //OpenWhenIsNotOpen();
+    //                conn.Open();
 
-                }
+    //            }
 
-            }
-        }
-        else if (e.CurrentState == System.Data.ConnectionState.Closed)
-        {
-            if (_conn != null && string.IsNullOrEmpty(_conn.ConnectionString))
-            {
-                if (!closing)
-                {
-                    ReloadConnection();
-                    //
-                }
+    //        }
+    //    }
+    //    else if (e.CurrentState == System.Data.ConnectionState.Closed)
+    //    {
+    //        if (_conn != null && string.IsNullOrEmpty(_conn.ConnectionString))
+    //        {
+    //            if (!closing)
+    //            {
+    //                ReloadConnection();
+    //                //
+    //            }
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
-    private static void ReloadConnection()
-    {
-        if (string.IsNullOrEmpty(_conn.ConnectionString))
-        {
-            //loadDefaultDatabase();
-        }
-        else
-        {
-            //OpenWhenIsNotOpen();
-            conn.Open();
-        }
-    }
+    //private static void ReloadConnection()
+    //{
+    //    if (string.IsNullOrEmpty(_conn.ConnectionString))
+    //    {
+    //        //loadDefaultDatabase();
+    //    }
+    //    else
+    //    {
+    //        //OpenWhenIsNotOpen();
+    //        conn.Open();
+    //    }
+    //}
 
-    static void conn_Disposed(object sender, EventArgs e)
-    {
-        if (!closing)
-        {
-            //ReloadConnection();
-            LoadNewConnection(cs);
-        }
-    }
+    //static void conn_Disposed(object sender, EventArgs e)
+    //{
+    //    if (!closing)
+    //    {
+    //        //ReloadConnection();
+    //        LoadNewConnection(cs);
+    //    }
+    //}
 
     
 
@@ -626,7 +615,7 @@ public partial class MSDatabaseLayer
     /// <param name="file"></param>
     private static bool LoadNewConnection(string dataSource, string database)
     {
-        
+        string cs = null;
         cs = "Data Source=" + dataSource;
         if (!string.IsNullOrEmpty(database))
         {
@@ -634,24 +623,27 @@ public partial class MSDatabaseLayer
         }
         cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
         //_conn = new SqlConnection(cs);
-        try
-        {
+    
             //OpenWhenIsNotOpen();
             //conn.Open();
+
+          return  LoadNewConnection(cs);
+       
+
+    }
+    public static bool LoadNewConnection(string cs)
+    {
+        //MSDatabaseLayer.cs = cs; 
+
+        conn = new SqlConnection(cs);
+            try { 
+        conn.Open();
         }
         catch (Exception ex)
         {
             return false;
         }
         return true;
-
-    }
-    public static void LoadNewConnection(string cs)
-    {
-        MSDatabaseLayer.cs = cs; 
-
-        //_conn = new SqlConnection(cs);
-
         //if (!string.IsNullOrEmpty(_conn.ConnectionString))
         //{
         //    //OpenWhenIsNotOpen();
@@ -676,8 +668,6 @@ public partial class MSDatabaseLayer
         }
         return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
-
-
 
     public static List<object> GetUsedDataTypes()
     {

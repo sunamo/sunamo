@@ -15,5 +15,6 @@ public interface IWindowOpener
     /// Other = { get => MainWindow.Instance.windowWithUserControl; set => MainWindow.Instance.windowWithUserControl = value; }
     /// </summary>
     WindowWithUserControl windowWithUserControl { get; set; }
+    
 }
 

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public  class AutoIndexedObservableCollection<T> : ObservableCollection<T>
     where T : INotifyPropertyChanged, IIdentificator<int>
 {
-    int dex = int.MinValue;
+    int dex = 1;
 
     public AutoIndexedObservableCollection()
     {

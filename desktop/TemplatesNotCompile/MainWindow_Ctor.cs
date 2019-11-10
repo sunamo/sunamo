@@ -86,7 +86,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         // sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
 
         // For console always write only to console. When I need write also to event log, must do it separately
-        CmdApp.EnableConsoleLogging(true);
+        //CmdApp.EnableConsoleLogging(true);
         // InitApp.Logger = ConsoleLogger.Instance;
         //     InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         //     InitApp.TypedLogger = TypedConsoleLogger.Instance;

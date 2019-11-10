@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using sunamo;
 using sunamo.Values;
-
+//
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
     public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, AB[] whereIs, AB[] whereIsNot)
@@ -19,8 +19,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         DataTable dt = SelectDataTable(comm);
         return dt;
     }
-
-
 
     public DataTable DeleteWithOutput(string TableName, string sloupceJezVratit, string idColumn, object idValue)
     {
@@ -85,11 +83,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //    }
     //}
 
+        public SqlConnection conn
+    {
+        get
+        {
+            return MSDatabaseLayer.conn;
+        }
+    }
+
     public MSStoredProceduresIBase()
     {
 
     }
 
+    // RepairConnection is used nowhere
     //public void RepairConnection()
     //{
     //    SqlConnection.ClearAllPools();
@@ -102,7 +109,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //    {
     //        this.conn = conn;
     //    }
-        
+
     //}
 
 
@@ -282,6 +289,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return vr;
     }
 
+    
+
     public List<string> DataTableToListString(DataTable dataTable, int dex)
     {
         List<string> vr = new List<string>(dataTable.Rows.Count);
@@ -310,9 +319,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void InsertToRow3(string tabulka, long IDUsers, params object[] sloupce2)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
-            conn.Open();
+
             // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
             //var sloupce2 = CA.TwoDimensionParamsIntoOne(sloupce);
             string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce2));
@@ -327,8 +334,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 //DateTime.Now.Month;
             }
             comm.ExecuteNonQuery();
-            conn.Close();
-        }
     }
 
     /// <summary>
@@ -422,35 +427,22 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
-            conn.Open();
             if (dictionary.ContainsKey(p))
             {
                 DropTableIfExists(p);
                 dictionary[p].GetSqlCreateTable(p, true, conn).ExecuteNonQuery();
             }
-            conn.Close();
-        }
+
     }
 
-    string Cs
-    {
-        get
-        {
-            return MSDatabaseLayer.cs;
-        }
-    }
+
 
     public void DropAndCreateTable(string p, MSColumnsDB msc)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
-            conn.Open();
+
             DropTableIfExists(p);
             msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
-            conn.Close();
-        }
+
     }
 
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
@@ -478,16 +470,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTable(SqlCommand comm)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
-            conn.Open();
+
             DataTable dt = new DataTable();
             comm.Connection = conn;
             SqlDataAdapter adapter = new SqlDataAdapter(comm);
             adapter.Fill(dt);
             conn.Close();
             return dt;
-        }
+        
     }
 
     /// <summary>
@@ -512,14 +502,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int ExecuteNonQuery(SqlCommand comm)
     {
-        using (SqlConnection conn = new SqlConnection(Cs))
-        {
-            conn.Open();
+
             comm.Connection = conn;
             var result = comm.ExecuteNonQuery();
-            conn.Close();
+          
             return result;
-        }
+
     }
 
     public int ExecuteNonQuery(string commText, params object[] para)
@@ -539,9 +527,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private SqlDataReader ExecuteReader(SqlCommand comm)
     {
-        var conn = new SqlConnection(Cs);
-        
-            conn.Open();
+
             comm.Connection = conn;
             var result = comm.ExecuteReader(CommandBehavior.Default);
             
@@ -556,16 +542,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object ExecuteScalar(SqlCommand comm)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
 
-            conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;
             var result = comm.ExecuteScalar();
-            conn.Close();
+     
             return result;
-        }
+       
     }
 
     public object ExecuteScalar(string commText, params object[] para)
@@ -982,6 +965,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         ExecuteNonQuery(comm);
     }
 
+    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, params AB[] aB)
+    {
+        return SelectValuesOfColumnAllRowsString(tabulka, sloupec, new ABC(aB), null);
+    }
     public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, string whereSloupec, object whereHodnota, string orderBy = "")
     {
         if (orderBy != "")
@@ -1318,8 +1305,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1337,8 +1322,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
+
         return vr;
     }
 
@@ -1356,8 +1340,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1375,8 +1357,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1394,8 +1374,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1413,8 +1391,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1432,8 +1408,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1481,13 +1455,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool SelectExistsTable(string p)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
-            DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
 
-            conn.Close();
+            DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
             return dt.Rows.Count != 0;
-        }
+        
     }
     private DataTable SelectDataTable(SqlConnection conn, string sql, params object[] _params)
     {
@@ -2763,8 +2734,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             return o;
         }
-        comm.Connection.Close();
-        comm.Connection.Dispose();
         return null;
     }
 

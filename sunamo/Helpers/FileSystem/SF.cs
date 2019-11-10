@@ -18,9 +18,20 @@ using sunamo.Constants;
 public static partial class SF
 {
     private static SerializeContentArgs s_contentArgs = new SerializeContentArgs();
-    public const string replaceForSeparatorString = AllStrings.us;
-    public static readonly char replaceForSeparatorChar = AllChars.us;
-    public static int keyCodeSeparator
+public static string separatorString
+    {
+        get
+        {
+            return s_contentArgs.separatorString;
+        }
+
+        set
+        {
+            s_contentArgs.separatorString = value;
+        }
+    }
+
+public static int keyCodeSeparator
     {
         get
         {
@@ -39,23 +50,11 @@ public static partial class SF
         }
     }
 
-    public static string separatorString
-    {
-        get
-        {
-            return s_contentArgs.separatorString;
-        }
-
-        set
-        {
-            s_contentArgs.separatorString = value;
-        }
-    }
-
     static SF()
     {
         s_contentArgs.separatorString = AllStrings.pipe;
     }
+
     /// <summary>
     /// 
     /// </summary>
