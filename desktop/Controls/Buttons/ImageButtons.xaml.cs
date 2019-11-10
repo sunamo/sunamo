@@ -82,11 +82,6 @@ namespace desktop.Controls.Buttons
 
             SetAwesomeIcons();
 
-            SizeChanged += ImageButtons_SizeChanged;
-        }
-
-        private void ImageButtons_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
             
         }
 

@@ -104,10 +104,6 @@ namespace desktop
             }
         }
 
-        private void htmlColor_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-        }
-
         private void htmlColor_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

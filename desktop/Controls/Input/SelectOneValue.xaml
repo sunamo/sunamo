@@ -19,7 +19,7 @@
 
         <!--TextBlock on separate row to maximum space-->
         <TextBlock x:Name="tbWhatEnter" Text="Lorem ipsum" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="10,5,10,0"/>
-        <ComboBox x:Name="cbEntered"  KeyDown="CbEntered_KeyDown" x:FieldModifier="public" Grid.Row="1" FontSize="20" Margin="10,5,10,17" Grid.Column="0"></ComboBox>
+        <ComboBox x:Name="cbEntered"   x:FieldModifier="public" Grid.Row="1" FontSize="20" Margin="10,5,10,17" Grid.Column="0"></ComboBox>
         
         <Button Grid.Column="1" Grid.Row="1" x:Name="btnEnter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,5,10,17" Content="Enter" Click="btnEnter_Click_1"></Button>
         <TextBlock x:Name="tbHint" x:FieldModifier="public" Grid.Row="2"></TextBlock>

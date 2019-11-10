@@ -99,10 +99,7 @@ namespace SunamoFtp
         }
 
         #region Other
-        public override void chdirLite(string dirName)
-        {
 
-        }
 
         public override void CreateDirectoryIfNotExists(string dirName)
         {
@@ -188,6 +185,16 @@ namespace SunamoFtp
 
         #region Other
         public override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// Must be here due to interface
+        /// </summary>
+        /// <param name="dirName"></param>
+        public override void chdirLite(string dirName)
         {
             throw new NotImplementedException();
         }

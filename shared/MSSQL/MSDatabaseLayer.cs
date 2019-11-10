@@ -524,11 +524,19 @@ public partial class MSDatabaseLayer
         dataSource2 = dataSource;
         database2 = database;
         bool vr = LoadNewConnection(dataSource, database);
+        RegisterEvents();
+        return vr;
+    }
+
+    private static void RegisterEvents()
+    {
+        conn.Disposed -= new EventHandler(conn_Disposed);
+        conn.InfoMessage -= new SqlInfoMessageEventHandler(conn_InfoMessage);
+        conn.StateChange -= new System.Data.StateChangeEventHandler(conn_StateChange);
 
         conn.Disposed += new EventHandler(conn_Disposed);
         conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
         conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
-        return vr;
     }
 
     public static void LoadNewConnectionFirst(string cs2)
@@ -536,15 +544,23 @@ public partial class MSDatabaseLayer
         LoadNewConnection(cs2);
         if (_conn != null)
         {
-            _conn.Disposed += new EventHandler(conn_Disposed);
-            _conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
-            _conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
+            RegisterEvents();
         }
     }
 
     static void conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
     {
         // TODO: Později implementovat
+    }
+
+    public static Action loadDefaultDatabase;
+
+    public static void OpenWhenIsNotOpen()
+    {
+        if (_conn.State != ConnectionState.Open)
+        {
+            conn.Open();
+        }
     }
 
     static void conn_StateChange(object sender, System.Data.StateChangeEventArgs e)
@@ -555,22 +571,36 @@ public partial class MSDatabaseLayer
             {
                 if (!closing)
                 {
+                    OpenWhenIsNotOpen();
 
-                    _conn.Open();
+
                 }
 
             }
         }
         else if (e.CurrentState == System.Data.ConnectionState.Closed)
         {
-            if (_conn != null && !string.IsNullOrEmpty(_conn.ConnectionString))
+            if (_conn != null && string.IsNullOrEmpty(_conn.ConnectionString))
             {
                 if (!closing)
                 {
-                    _conn.Open();
+                    ReloadConnection();
+                    //
                 }
 
             }
+        }
+    }
+
+    private static void ReloadConnection()
+    {
+        if (string.IsNullOrEmpty(_conn.ConnectionString))
+        {
+            loadDefaultDatabase();
+        }
+        else
+        {
+            OpenWhenIsNotOpen();
         }
     }
 
@@ -578,7 +608,8 @@ public partial class MSDatabaseLayer
     {
         if (!closing)
         {
-            LoadNewConnection(cs);
+            ReloadConnection();
+            //LoadNewConnection(cs);
         }
     }
 
@@ -599,7 +630,7 @@ public partial class MSDatabaseLayer
         _conn = new SqlConnection(cs);
         try
         {
-            _conn.Open();
+            OpenWhenIsNotOpen();
         }
         catch (Exception ex)
         {
@@ -614,7 +645,7 @@ public partial class MSDatabaseLayer
 
         if (!string.IsNullOrEmpty(_conn.ConnectionString))
         {
-            _conn.Open();
+            OpenWhenIsNotOpen();
         }
 
     }

@@ -18,10 +18,31 @@ public partial class CmdApp{
         WriterEventLog.WriteToMainAppLog(dump, System.Diagnostics.EventLogEntryType.Error);
     }
 
+
+
     /// <summary>
     /// Dont ask in console, load from Clipboard
     /// </summary>
     public static bool loadFromClipboard = false;
+
+    public static void EnableConsoleLogging(bool v)
+    {
+        if (v)
+        {
+            // because method was called two times 
+            ThisApp.StatusSetted -= ThisApp_StatusSetted;
+            ThisApp.StatusSetted += ThisApp_StatusSetted;
+        }
+        else
+        {
+            ThisApp.StatusSetted -= ThisApp_StatusSetted;
+        }
+    }
+
+    private static void ThisApp_StatusSetted(TypeOfMessage t, string message)
+    {
+        TypedConsoleLogger.Instance.WriteLine(t, message);
+    }
 
     /// <summary>
     /// Alternatives are:

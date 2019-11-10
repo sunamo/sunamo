@@ -142,11 +142,6 @@ namespace desktop.Controls
 
         public event VoidBoolNullable ChangeDialogResult;
 
-        private void Grid_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// A1 must be ABT<string, string>
         /// </summary>

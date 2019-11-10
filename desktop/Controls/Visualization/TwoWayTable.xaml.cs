@@ -379,8 +379,7 @@ namespace desktop.Controls.Visualization
                         chb.VerticalContentAlignment = VerticalAlignment.Center;
                         chb.Content = item;
                         chb.IsChecked = uie[i].tick;
-                        chb.Checked += Chb_Checked;
-                        chb.Unchecked += Chb_Unchecked;
+                        
                         
 
                         Grid.SetColumn(chb, dexCol + 1);
@@ -399,16 +398,6 @@ namespace desktop.Controls.Visualization
                     }
                 }
             }
-        }
-
-        private void Chb_Unchecked(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Chb_Checked(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         /// <summary>

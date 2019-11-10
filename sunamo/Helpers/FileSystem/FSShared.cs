@@ -570,8 +570,7 @@ public partial class FS
 
     public static void CreateUpfoldersPsysicallyUnlessThere(string nad)
     {
-
-
+        CreateFoldersPsysicallyUnlessThere(FS.GetDirectoryName(nad));
     }
 
     /// <summary>

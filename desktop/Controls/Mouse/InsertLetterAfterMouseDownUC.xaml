@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <TextBox x:Name="txt"  MouseDown="Txt_MouseDown" x:FieldModifier="public" PreviewMouseDown="Txt_PreviewMouseDown" MouseUp="Txt_MouseUp" PreviewMouseUp="Txt_PreviewMouseUp"></TextBox>
+        <TextBox x:Name="txt"  x:FieldModifier="public"  PreviewMouseUp="Txt_PreviewMouseUp"></TextBox>
          <CheckBox x:Name="chbInsert" Grid.Row="1" Content="Insert (control also with right mouse button)"></CheckBox>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

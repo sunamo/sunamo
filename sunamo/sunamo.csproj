@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\ISerialization.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IIdentificator.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
