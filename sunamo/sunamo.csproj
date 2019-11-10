@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\ISerialization.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IIdentificator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />

@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 public class ConvertOnlyLowercase
 {
-    const char nextUpper = '*';
+    /// <summary>
+    /// % - HTTP Error 400. The request URL is invalid.
+    /// *  - potentionally dangerous
+    /// </summary>
+    const char nextUpper = '$';
 
     public static string To(string s)
     {
