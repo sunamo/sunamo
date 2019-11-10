@@ -464,7 +464,7 @@ public partial class MSDatabaseLayer
     }
 
     
-    //public static string cs = null;
+    public static string cs = null;
     //static bool closing = false;
 
     static string dataSource2 = "";
@@ -615,7 +615,7 @@ public partial class MSDatabaseLayer
     /// <param name="file"></param>
     private static bool LoadNewConnection(string dataSource, string database)
     {
-        string cs = null;
+        
         cs = "Data Source=" + dataSource;
         if (!string.IsNullOrEmpty(database))
         {
@@ -633,18 +633,19 @@ public partial class MSDatabaseLayer
     }
     public static bool LoadNewConnection(string cs)
     {
-        //MSDatabaseLayer.cs = cs; 
+        MSDatabaseLayer.cs = cs;
 
-        conn = new SqlConnection(cs);
-            try { 
-        conn.Open();
-            //conn.Close();
-            //conn.Dispose();
-        }
-        catch (Exception ex)
-        { 
-            return false;
-        }
+        //conn = new SqlConnection(cs);
+        //try
+        //{
+        //    conn.Open();
+        //    //conn.Close();
+        //    //conn.Dispose();
+        //}
+        //catch (Exception ex)
+        //{
+        //    return false;
+        //}
         return true;
         //if (!string.IsNullOrEmpty(_conn.ConnectionString))
         //{
