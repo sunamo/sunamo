@@ -560,9 +560,11 @@ Template for which I will find, have to be in derivates the same:
             }
         }
 
+        public const string ytVideoStart = "https://www.youtube.com/watch?v=";
+
         public static string GetLinkToVideo(string kod)
         {
-            return "https://www.youtube.com/watch?v=" + kod;
+            return ytVideoStart + kod;
         }
 
         public static string GetHtmlAnchor(string kod)

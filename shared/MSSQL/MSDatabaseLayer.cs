@@ -18,7 +18,7 @@ public partial class MSDatabaseLayer
         }
     }
 
-    public static SqlConnection _conn = null;
+    protected static SqlConnection _conn = null;
     //public static SqlConnection _conn
     //{
     //    get
@@ -475,7 +475,7 @@ public partial class MSDatabaseLayer
     }
 
     
-    static string cs = null;
+    public static string cs = null;
     static bool closing = false;
 
     static string dataSource2 = "";
@@ -524,7 +524,7 @@ public partial class MSDatabaseLayer
         dataSource2 = dataSource;
         database2 = database;
         bool vr = LoadNewConnection(dataSource, database);
-        RegisterEvents();
+        //RegisterEvents();
         return vr;
     }
 
@@ -617,6 +617,8 @@ public partial class MSDatabaseLayer
         }
     }
 
+    
+
     /// <summary>
     /// Není veřejná, místo ní používej pro otevírání databáze metodu LoadNewConnectionFirst
     /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace
@@ -624,18 +626,18 @@ public partial class MSDatabaseLayer
     /// <param name="file"></param>
     private static bool LoadNewConnection(string dataSource, string database)
     {
-        string cs = null;
+        
         cs = "Data Source=" + dataSource;
         if (!string.IsNullOrEmpty(database))
         {
             cs += ";Database=" + database;
         }
         cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";";
-        _conn = new SqlConnection(cs);
+        //_conn = new SqlConnection(cs);
         try
         {
             //OpenWhenIsNotOpen();
-            conn.Open();
+            //conn.Open();
         }
         catch (Exception ex)
         {

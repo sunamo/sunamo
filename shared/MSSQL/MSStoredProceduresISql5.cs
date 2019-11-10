@@ -63,6 +63,6 @@ public class MSStoredProceduresISql5 : MSStoredProceduresIBase
 
         //}
         _databaseName = databaseName;
-        ci = new MSStoredProceduresIBase(MSDatabaseLayerSql5.conn);
+        ci = new MSStoredProceduresIBase();
     }
 }

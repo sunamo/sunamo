@@ -11,16 +11,19 @@ using System.Text;
 /// </summary>
 public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProceduresI<SqlConnection, SqlCommand>
 {
-    public MSStoredProceduresI(SqlConnection conn) : base(conn)
-    {
+    static Type type = typeof(MSStoredProceduresI);
 
-    }
+    //public MSStoredProceduresI(SqlConnection conn) : base(conn)
+    //{
+
+    //}
 
     public static void SetVariable(SqlConnection ci, string databaseName)
     {
-        _ci.conn = ci;
-        MSDatabaseLayer._conn = ci;
-        _databaseName = databaseName;
+        ThrowExceptions.Custom(type, RH.CallingMethod(), "Commented due to new approach - create new db conn with every request");
+        //_ci.conn = ci;
+        //MSDatabaseLayer._conn = ci;
+        //_databaseName = databaseName;
     }
 
     static string _databaseName = null;
@@ -35,7 +38,8 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
         }
     }
 
-    static MSStoredProceduresIBase _ci = new MSStoredProceduresIBase(null);
+    static MSStoredProceduresIBase _ci = new MSStoredProceduresIBase();
+
     public static MSStoredProceduresIBase ci
     {
         get
