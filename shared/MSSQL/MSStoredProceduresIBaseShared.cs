@@ -312,6 +312,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
+            conn.Open();
             // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
             //var sloupce2 = CA.TwoDimensionParamsIntoOne(sloupce);
             string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce2));
@@ -326,6 +327,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 //DateTime.Now.Month;
             }
             comm.ExecuteNonQuery();
+            conn.Close();
         }
     }
 
@@ -422,12 +424,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
-
+            conn.Open();
             if (dictionary.ContainsKey(p))
             {
                 DropTableIfExists(p);
                 dictionary[p].GetSqlCreateTable(p, true, conn).ExecuteNonQuery();
             }
+            conn.Close();
         }
     }
 
@@ -443,8 +446,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
+            conn.Open();
             DropTableIfExists(p);
             msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
+            conn.Close();
         }
     }
 
@@ -475,10 +480,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
+            conn.Open();
             DataTable dt = new DataTable();
             comm.Connection = conn;
             SqlDataAdapter adapter = new SqlDataAdapter(comm);
             adapter.Fill(dt);
+            conn.Close();
             return dt;
         }
     }
@@ -507,8 +514,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (SqlConnection conn = new SqlConnection(Cs))
         {
+            conn.Open();
             comm.Connection = conn;
-            return comm.ExecuteNonQuery();
+            var result = comm.ExecuteNonQuery();
+            conn.Close();
+            return result;
         }
     }
 
@@ -522,13 +532,21 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ExecuteNonQuery(comm);
     }
 
+    /// <summary>
+    /// MUST CALL conn.Close(); AFTER GET DATA
+    /// </summary>
+    /// <param name="comm"></param>
+    /// <returns></returns>
     private SqlDataReader ExecuteReader(SqlCommand comm)
     {
-        using (var conn = new SqlConnection(Cs))
-        {
+        var conn = new SqlConnection(Cs);
+        
+            conn.Open();
             comm.Connection = conn;
-            return comm.ExecuteReader(CommandBehavior.Default);
-        }
+            var result = comm.ExecuteReader(CommandBehavior.Default);
+            
+            return result;
+        
     }
 
     /// <summary>
@@ -540,9 +558,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
+
+            conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;
             var result = comm.ExecuteScalar();
+            conn.Close();
             return result;
         }
     }
@@ -1278,7 +1299,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
         AddCommandParameter(comm, 0, hodnota);
-        return ReadValuesInt(comm);
+        var result =  ReadValuesInt(comm);
+        comm.Connection.Close();
+        return result;
     }
 
     private List<int> ReadValuesInt(SqlCommand comm)
@@ -1295,6 +1318,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1312,6 +1337,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1329,6 +1356,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1346,6 +1375,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1363,6 +1394,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1380,6 +1413,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1397,6 +1432,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1444,9 +1481,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool SelectExistsTable(string p)
     {
-        using (var conn = new SqlConnection(p))
+        using (var conn = new SqlConnection(Cs))
         {
             DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
+
+            conn.Close();
             return dt.Rows.Count != 0;
         }
     }
@@ -2724,6 +2763,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             return o;
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return null;
     }
 

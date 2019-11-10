@@ -28,7 +28,7 @@ public class MSDatabaseLayerSql5 : MSDatabaseLayer
         {
             cs += ";Database=" + database;
         }
-        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";";
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
         _conn = new SqlConnection(cs);
         try
         {

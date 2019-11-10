@@ -542,10 +542,10 @@ public partial class MSDatabaseLayer
     public static void LoadNewConnectionFirst(string cs2)
     {
         LoadNewConnection(cs2);
-        if (_conn != null)
-        {
-            RegisterEvents();
-        }
+        //if (_conn != null)
+        //{
+        //    RegisterEvents();
+        //}
     }
 
     static void conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
@@ -632,7 +632,7 @@ public partial class MSDatabaseLayer
         {
             cs += ";Database=" + database;
         }
-        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";";
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
         //_conn = new SqlConnection(cs);
         try
         {
@@ -648,13 +648,15 @@ public partial class MSDatabaseLayer
     }
     public static void LoadNewConnection(string cs)
     {
-        _conn = new SqlConnection(cs);
+        MSDatabaseLayer.cs = cs; 
 
-        if (!string.IsNullOrEmpty(_conn.ConnectionString))
-        {
-            //OpenWhenIsNotOpen();
-            conn.Open();
-        }
+        //_conn = new SqlConnection(cs);
+
+        //if (!string.IsNullOrEmpty(_conn.ConnectionString))
+        //{
+        //    //OpenWhenIsNotOpen();
+        //    conn.Open();
+        //}
 
     }
 
