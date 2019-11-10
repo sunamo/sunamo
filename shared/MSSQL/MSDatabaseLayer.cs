@@ -555,6 +555,9 @@ public partial class MSDatabaseLayer
 
     //public static Action loadDefaultDatabase;
 
+    /// <summary>
+    /// Bad pattern, there happen "Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached."
+    /// </summary>
     public static void OpenWhenIsNotOpen()
     {
         if (_conn.State != ConnectionState.Open)
@@ -571,8 +574,8 @@ public partial class MSDatabaseLayer
             {
                 if (!closing)
                 {
-                    OpenWhenIsNotOpen();
-
+                    //OpenWhenIsNotOpen();
+                    conn.Open();
 
                 }
 
@@ -596,11 +599,12 @@ public partial class MSDatabaseLayer
     {
         if (string.IsNullOrEmpty(_conn.ConnectionString))
         {
-            loadDefaultDatabase();
+            //loadDefaultDatabase();
         }
         else
         {
-            OpenWhenIsNotOpen();
+            //OpenWhenIsNotOpen();
+            conn.Open();
         }
     }
 
@@ -608,8 +612,8 @@ public partial class MSDatabaseLayer
     {
         if (!closing)
         {
-            ReloadConnection();
-            //LoadNewConnection(cs);
+            //ReloadConnection();
+            LoadNewConnection(cs);
         }
     }
 
@@ -630,7 +634,8 @@ public partial class MSDatabaseLayer
         _conn = new SqlConnection(cs);
         try
         {
-            OpenWhenIsNotOpen();
+            //OpenWhenIsNotOpen();
+            conn.Open();
         }
         catch (Exception ex)
         {
@@ -645,7 +650,8 @@ public partial class MSDatabaseLayer
 
         if (!string.IsNullOrEmpty(_conn.ConnectionString))
         {
-            OpenWhenIsNotOpen();
+            //OpenWhenIsNotOpen();
+            conn.Open();
         }
 
     }
