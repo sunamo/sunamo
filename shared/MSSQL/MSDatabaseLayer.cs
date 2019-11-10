@@ -553,7 +553,7 @@ public partial class MSDatabaseLayer
         // TODO: Později implementovat
     }
 
-    public static Action loadDefaultDatabase;
+    //public static Action loadDefaultDatabase;
 
     public static void OpenWhenIsNotOpen()
     {
