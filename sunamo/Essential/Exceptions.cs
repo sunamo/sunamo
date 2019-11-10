@@ -107,7 +107,7 @@ public class Exceptions
         return null;
     }
 
-    internal static string DirectoryExists(string before, string fulLPath)
+    public static string DirectoryExists(string before, string fulLPath)
     {
         if (FS.ExistsDirectory(fulLPath))
         {

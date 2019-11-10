@@ -25,7 +25,7 @@ public partial class PlatformInteropHelper
     }
 
     
-//internal static AppDataBase<StorageFolder, StorageFile> AppData()
+//public static AppDataBase<StorageFolder, StorageFile> AppData()
 //{
 //    if (IsUwpWindowsStoreApp())
 //    {

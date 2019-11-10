@@ -52,7 +52,8 @@ public class ZA
             for (int i = 0; i < soubory.Length(); i++)
             {
                 string var = getRelativePath2(soubory[i], slozku);
-                ZipEntry ze = new ZipEntry(var + Path.DirectorySeparatorChar.ToString());
+                ZipEntry ze = new ZipEntry(var);
+                //ze.IsFile = true;
 
                 s.PutNextEntry(ze);
 

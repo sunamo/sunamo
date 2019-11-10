@@ -9,7 +9,7 @@ using System.Web;
 public partial class MSDatabaseLayer 
 {
     public static MSDatabaseLayerInstance ci = new MSDatabaseLayerInstance();
-
+    public static Action loadDefaultDatabase;
     public static SqlConnection conn
     {
         get

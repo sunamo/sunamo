@@ -72,7 +72,7 @@ public static DateTime TodayPlusActualHour()
         return dt.AddHours(DateTime.Now.Hour);
     }
 
-internal static DateTime Combine(DateTime result, DateTime time)
+public static DateTime Combine(DateTime result, DateTime time)
     {
         result.AddHours(time.Hour);
         result.AddMinutes(time.Minute);

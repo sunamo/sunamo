@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\EnterOneValueUC.xaml.cs" />
