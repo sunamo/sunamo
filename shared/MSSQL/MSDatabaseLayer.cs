@@ -638,9 +638,11 @@ public partial class MSDatabaseLayer
         conn = new SqlConnection(cs);
             try { 
         conn.Open();
+            //conn.Close();
+            //conn.Dispose();
         }
         catch (Exception ex)
-        {
+        { 
             return false;
         }
         return true;

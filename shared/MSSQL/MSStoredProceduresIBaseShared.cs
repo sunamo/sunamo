@@ -475,7 +475,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             comm.Connection = conn;
             SqlDataAdapter adapter = new SqlDataAdapter(comm);
             adapter.Fill(dt);
-            conn.Close();
+            
             return dt;
         
     }
@@ -1287,7 +1287,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
         AddCommandParameter(comm, 0, hodnota);
         var result =  ReadValuesInt(comm);
-        comm.Connection.Close();
+        
         return result;
     }
 
