@@ -175,6 +175,7 @@
     <Compile Include="Converts\ConvertMonthNumberString.cs" />
     <Compile Include="Converts\ConvertMonthShortcutFullName.cs" />
     <Compile Include="Converts\ConvertMonthShortcutNumber.cs" />
+    <Compile Include="Converts\ConvertOnlyLowercase.cs" />
     <Compile Include="Converts\ConvertPascalConvention.cs" />
     <Compile Include="Converts\ConvertRot12.cs" />
     <Compile Include="Converts\ConvertRot21.cs" />

@@ -553,7 +553,7 @@ public partial class MSDatabaseLayer
         // TODO: Později implementovat
     }
 
-    public static Action loadDefaultDatabase;
+    //public static Action loadDefaultDatabase;
 
     /// <summary>
     /// Bad pattern, there happen "Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached."
