@@ -11,7 +11,7 @@ namespace sunamo
         /// <summary>
         /// Pro opacny proces slouzi M ToString().
         /// </summary>
-        void ParseCollection(IEnumerable<string> soubory);
+        void ParseCollection(List<string> soubory);
     }
 
     public interface IParser

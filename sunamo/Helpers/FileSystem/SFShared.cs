@@ -41,19 +41,20 @@ public static partial class SF
         {
             hlavicka = SF.GetAllElementsLine(lines[0], oddelovaciZnak);
             int musiByt = SH.OccurencesOfStringIn(lines[0], oz);
-            int nalezeno = 0;
+            //int nalezeno = 0;
             StringBuilder jedenRadek = new StringBuilder();
             for (int i = 1; i < lines.Count; i++)
             {
-                nalezeno += SH.OccurencesOfStringIn(lines[i], oz);
+                //nalezeno += SH.OccurencesOfStringIn(lines[i], oz);
                 jedenRadek.AppendLine(lines[i]);
-                if (nalezeno == musiByt)
-                {
-                    nalezeno = 0;
-                    var columns = SF.GetAllElementsLine(jedenRadek.ToString(), oddelovaciZnak);
-                    jedenRadek = new StringBuilder();
+                //if (nalezeno == musiByt)
+                //{
+                //nalezeno = 0;
+                var columns = SF.GetAllElementsLine(jedenRadek.ToString(), oddelovaciZnak);
+                jedenRadek.Clear();
+
                     vr.Add(columns);
-                }
+                //}
             }
         }
 

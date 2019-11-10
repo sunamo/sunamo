@@ -61,7 +61,7 @@ public static partial class SH
         return t;
     }
 
-    internal static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)
+    public static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)
     {
     
 
@@ -141,7 +141,7 @@ public static partial class SH
         return sb.ToString();
     }
 
-    internal static bool IsNumbered(string v)
+    public static bool IsNumbered(string v)
     {
         int i = 0;
 
@@ -913,6 +913,7 @@ public static partial class SH
 
     public static List<string> SplitNone(string text, params object[] deli)
     {
+
         return Split(StringSplitOptions.None, text, deli);
     }
 
@@ -942,7 +943,11 @@ public static partial class SH
         var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
         var result = text.Split(deli3.ToArray(), stringSplitOptions).ToList();
         CA.Trim(result);
-        CA.RemoveStringsEmpty(result);
+        if (stringSplitOptions == StringSplitOptions.RemoveEmptyEntries)
+        {
+            CA.RemoveStringsEmpty(result);
+        }
+        
         
         return result;
     }

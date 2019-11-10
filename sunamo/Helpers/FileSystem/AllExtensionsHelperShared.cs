@@ -9,17 +9,24 @@ public partial class AllExtensionsHelper
     /// <summary>
     /// With dot
     /// </summary>
-    public static Dictionary<TypeOfExtension, List<string>> extensionsByType = new Dictionary<TypeOfExtension, List<string>>();
+    public static Dictionary<TypeOfExtension, List<string>> extensionsByType = null;
     /// <summary>
     /// With dot
     /// </summary>
      //public static Dictionary<string, TypeOfExtension> allExtensions = new Dictionary<string, TypeOfExtension>();
-    public static Dictionary<TypeOfExtension, List<string>> extensionsByTypeWithoutDot = new Dictionary<TypeOfExtension, List<string>>();
-    public static Dictionary<string, TypeOfExtension> allExtensionsWithoutDot = new Dictionary<string, TypeOfExtension>();
+    public static Dictionary<TypeOfExtension, List<string>> extensionsByTypeWithoutDot = null;
+    public static Dictionary<string, TypeOfExtension> allExtensionsWithoutDot = null;
     public static void Initialize()
     {
-        if (extensionsByType.Count == 0)
+        
+
+
+        if (extensionsByType == null)
         {
+            extensionsByType = new Dictionary<TypeOfExtension, List<string>>();
+            extensionsByTypeWithoutDot = new Dictionary<TypeOfExtension, List<string>>();
+            allExtensionsWithoutDot = new Dictionary<string, TypeOfExtension>();
+
             AllExtensions ae = new AllExtensions();
             var exts = RH.GetConsts(typeof(AllExtensions));
             foreach (var item in exts)
@@ -65,6 +72,17 @@ public partial class AllExtensionsHelper
         }
 
         return TypeOfExtension.other;
+    }
+
+    /// <summary>
+    /// A1 can be with or without dot
+    /// </summary>
+    /// <param name="ext"></param>
+    /// <returns></returns>
+    public static bool IsContained(string p)
+    {
+        p = p.TrimStart(AllChars.dot);
+        return allExtensionsWithoutDot.ContainsKey(p);
     }
 
     /// <summary>

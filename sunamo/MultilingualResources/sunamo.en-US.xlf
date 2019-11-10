@@ -9741,7 +9741,7 @@
         </trans-unit>
         <trans-unit id="IllegalSortValuesApparentlyInternalApplicationError" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Illegal sort values, apparently internal application error</target>
+          <target state="translated">Illegal sort values, apparently public application error</target>
         </trans-unit>
         <trans-unit id="DoMetodyLoginedUserIDSeNedostalAniParametrHttpContextAniSunamoPage" translate="yes" xml:space="preserve">
           <source></source>

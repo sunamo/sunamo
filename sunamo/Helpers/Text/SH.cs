@@ -19,6 +19,15 @@ using System.Windows;
 
 public static partial class SH
 {
+    public static string ConcatSpace(IEnumerable r)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (string item in r)
+        {
+            sb.Append(item + AllStrings.space);
+        }
+        return sb.ToString();
+    }
     public static bool IsNullOrWhiteSpaceRange(params string[] l)
     {
         foreach (string item in l)

@@ -104,6 +104,8 @@
     </Compile>
     <Compile Include="Attributes\SerializableAttribute.cs" />
     <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
+    <Compile Include="BitConverterBE.cs" />
+    <Compile Include="BitConverterLE.cs" />
     <Compile Include="Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="Collections\BadGoodCollection.cs" />
     <Compile Include="Collections\CollectionToEnd.cs" />
