@@ -200,7 +200,8 @@ public static int keyCodeSeparator
     /// <returns></returns>
     public static string PrepareToSerialization2(params object[] pr)
     {
-        return PrepareToSerializationWorker(pr, true, separatorString);
+        var ts = CA.ToListString(pr);
+        return PrepareToSerializationWorker(ts, true, separatorString);
     }
 
     /// <summary>
@@ -209,7 +210,7 @@ public static int keyCodeSeparator
     /// </summary>
     /// <param name = "o"></param>
     /// <returns></returns>
-    public static string PrepareToSerialization2(string item, IEnumerable o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization2(string item, IEnumerable<string> o, string separator = AllStrings.pipe)
     {
         return PrepareToSerializationWorker(o, true, separator);
     }

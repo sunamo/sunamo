@@ -2820,7 +2820,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool SelectExistsCombination(string p, params AB[] aB)
     {
-        return SelectExistsCombination(conn, p, ab);
+        return SelectExistsCombination(conn, p, aB);
     }
 
     /// <summary>
