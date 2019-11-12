@@ -11,8 +11,6 @@ using System.Text;
 /// </summary>
 public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProceduresI<SqlConnection, SqlCommand>
 {
-
-
     static Type type = typeof(MSStoredProceduresI);
 
     //public MSStoredProceduresI(SqlConnection conn) : base(conn)

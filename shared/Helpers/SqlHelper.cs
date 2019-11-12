@@ -16,10 +16,10 @@ public abstract class SqlHelper
         sb.AppendLine("**" + "*" + "Start of listing whole table" + " " + tableName + "***");
         if (dt.Rows.Count != 0)
         {
-            sb.AppendLine(SF.PrepareToSerialization(GetColumnsOfTable(tableName)));
+            sb.AppendLine(SF.PrepareToSerialization(CA.ToListString( GetColumnsOfTable(tableName))));
             foreach (DataRow item in dt.Rows)
             {
-                sb.AppendLine(SF.PrepareToSerialization(item.ItemArray));
+                sb.AppendLine(SF.PrepareToSerialization(CA.ToListString( item.ItemArray)));
             }
         }
         sb.AppendLine("**" + "*" + "End of listing whole table" + " " + tableName + "***");

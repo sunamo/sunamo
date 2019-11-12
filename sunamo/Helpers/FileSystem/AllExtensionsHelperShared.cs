@@ -16,6 +16,13 @@ public partial class AllExtensionsHelper
      //public static Dictionary<string, TypeOfExtension> allExtensions = new Dictionary<string, TypeOfExtension>();
     public static Dictionary<TypeOfExtension, List<string>> extensionsByTypeWithoutDot = null;
     public static Dictionary<string, TypeOfExtension> allExtensionsWithoutDot = null;
+
+    static AllExtensionsHelper()
+    {
+        // Must call Initialize here, not in Loaded of Window. when I run auto code in debug, it wont be initialized as is needed.
+        Initialize();
+    }
+
     public static void Initialize()
     {
         

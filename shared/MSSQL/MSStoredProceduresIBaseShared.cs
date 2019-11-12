@@ -7,9 +7,70 @@ using System.Data;
 using System.Data.SqlClient;
 using sunamo;
 using sunamo.Values;
-//
+
+/// <summary>
+/// usings
+/// </summary>
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
+    /// <summary>
+    /// A1 NSN
+    /// </summary>
+    /// <param name="signed"></param>
+    /// <param name="tabulka"></param>
+    /// <param name="hledanySloupec"></param>
+    /// <param name="aB"></param>
+    /// <returns></returns>
+    public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string hledanySloupec, params AB[] aB)
+    {
+        string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
+        for (int i = 0; i < aB.Length; i++)
+        {
+            AddCommandParameter(comm, i, aB[i].B);
+        }
+        return ReadValuesInt(comm);
+    }
+
+    /// <summary>
+    /// a2 je X jako v příkazu @pX
+    /// A3 cant be AB
+    /// </summary>
+    /// <param name="comm"></param>
+    /// <param name="i"></param>
+    /// <param name="o"></param>
+    public static int AddCommandParameter(SqlCommand comm, int i, object o)
+    {
+
+
+        if (o == null || o.GetType() == DBNull.Value.GetType())
+        {
+            SqlParameter p = new SqlParameter();
+            p.ParameterName = "@p" + i.ToString();
+            p.Value = DBNull.Value;
+            comm.Parameters.Add(p);
+        }
+        else if (o.GetType() == typeof(byte[]))
+        {
+            // Pokud chcete uložit pole bajtů, musíte nejdřív vytvořit parametr s typem v DB(já používám vždy Image) a teprve pak nastavit hodnotu
+            SqlParameter param = comm.Parameters.Add("@p" + i.ToString(), SqlDbType.Binary);
+            param.Value = o;
+        }
+
+        else if (o.GetType() == Types.tString || o.GetType() == Types.tChar)
+        {
+            string _ = o.ToString();
+            comm.Parameters.AddWithValue("@p" + i.ToString(), MSStoredProceduresI.ConvertToVarChar(_));
+        }
+        else
+        {
+            comm.Parameters.AddWithValue("@p" + i.ToString(), o);
+        }
+
+        ++i;
+        return i;
+    }
+
     public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, AB[] whereIs, AB[] whereIsNot)
     {
         AB[] whereSmallerThan = CA.ToArrayT<AB>(AB.Get(nameColumnSmallerThan, valueColumnSmallerThan));
@@ -32,8 +93,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         return SelectCellDataTableStringOneRow(table, columnName, iDColumnName, idColumnValue) != "";
     }
-
-
 
     public class Parse
     {
@@ -69,7 +128,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //        if (_conn == null)
     //        {
     //            _conn = MSDatabaseLayer._conn;
-                
+
     //        }
     //        if (string.IsNullOrEmpty( _conn.ConnectionString))
     //        {
@@ -83,20 +142,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //    }
     //}
 
-        public SqlConnection conn
-    {
-        get
-        {
-            return MSDatabaseLayer.conn;
-        }
-    }
-
     public MSStoredProceduresIBase()
     {
 
     }
 
-    // RepairConnection is used nowhere
     //public void RepairConnection()
     //{
     //    SqlConnection.ClearAllPools();
@@ -289,7 +339,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return vr;
     }
 
-    
+
 
     public List<string> DataTableToListString(DataTable dataTable, int dex)
     {
@@ -319,7 +369,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void InsertToRow3(string tabulka, long IDUsers, params object[] sloupce2)
     {
-
+        using (var conn = new SqlConnection(Cs))
+        {
+            conn.Open();
             // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
             //var sloupce2 = CA.TwoDimensionParamsIntoOne(sloupce);
             string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce2));
@@ -334,6 +386,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 //DateTime.Now.Month;
             }
             comm.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 
     /// <summary>
@@ -427,22 +481,35 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
+        using (var conn = new SqlConnection(Cs))
+        {
+            conn.Open();
             if (dictionary.ContainsKey(p))
             {
                 DropTableIfExists(p);
                 dictionary[p].GetSqlCreateTable(p, true, conn).ExecuteNonQuery();
             }
-
+            conn.Close();
+        }
     }
 
-
+    string Cs
+    {
+        get
+        {
+            return MSDatabaseLayer.cs;
+        }
+    }
 
     public void DropAndCreateTable(string p, MSColumnsDB msc)
     {
-
+        using (var conn = new SqlConnection(Cs))
+        {
+            conn.Open();
             DropTableIfExists(p);
             msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
-
+            conn.Close();
+        }
     }
 
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
@@ -470,14 +537,16 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTable(SqlCommand comm)
     {
-
+        using (var conn = new SqlConnection(Cs))
+        {
+            conn.Open();
             DataTable dt = new DataTable();
             comm.Connection = conn;
             SqlDataAdapter adapter = new SqlDataAdapter(comm);
             adapter.Fill(dt);
             conn.Close();
             return dt;
-        
+        }
     }
 
     /// <summary>
@@ -502,12 +571,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int ExecuteNonQuery(SqlCommand comm)
     {
-
+        using (SqlConnection conn = new SqlConnection(Cs))
+        {
+            conn.Open();
             comm.Connection = conn;
             var result = comm.ExecuteNonQuery();
-          
+            conn.Close();
             return result;
-
+        }
     }
 
     public int ExecuteNonQuery(string commText, params object[] para)
@@ -520,29 +591,21 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ExecuteNonQuery(comm);
     }
 
-    private SqlDataReader ExecuteReader(SqlCommand comm)
-    {
-        return ExecuteReader(conn, comm);
-    }
-
     /// <summary>
     /// MUST CALL conn.Close(); AFTER GET DATA
     /// </summary>
     /// <param name="comm"></param>
     /// <returns></returns>
-    private SqlDataReader ExecuteReader(SqlConnection conn, SqlCommand comm)
+    private SqlDataReader ExecuteReader(SqlCommand comm)
     {
-        
-            comm.Connection = conn;
-            var result = comm.ExecuteReader(CommandBehavior.Default);
-            
-            return result;
-        
-    }
+        var conn = new SqlConnection(Cs);
 
-    public object ExecuteScalar( SqlCommand comm)
-    {
-        return ExecuteScalar(conn, comm);
+        conn.Open();
+        comm.Connection = conn;
+        var result = comm.ExecuteReader(CommandBehavior.Default);
+
+        return result;
+
     }
 
     /// <summary>
@@ -550,30 +613,28 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     /// <param name="comm"></param>
     /// <returns></returns>
-    public object ExecuteScalar(SqlConnection conn, SqlCommand comm)
+    public object ExecuteScalar(SqlCommand comm)
     {
+        using (var conn = new SqlConnection(Cs))
+        {
 
+            conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;
             var result = comm.ExecuteScalar();
-     
+            conn.Close();
             return result;
-       
+        }
     }
 
     public object ExecuteScalar(string commText, params object[] para)
-    {
-        return ExecuteScalar(conn, commText, para);
-    }
-
-    public object ExecuteScalar(SqlConnection conn, string commText, params object[] para)
     {
         SqlCommand comm = new SqlCommand(commText);
         for (int i = 0; i < para.Length; i++)
         {
             AddCommandParameter(comm, i, para[i]);
         }
-        var result = ExecuteScalar(conn, comm);
+        var result = ExecuteScalar(comm);
         return result;
     }
 
@@ -627,12 +688,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     private int ExecuteScalarInt(bool signed, SqlCommand comm)
     {
-        return ExecuteScalarInt(conn, signed, comm);
-    }
-
-    private int ExecuteScalarInt(SqlConnection conn, bool signed, SqlCommand comm)
-    {
-        object o = ExecuteScalar(conn, comm);
+        object o = ExecuteScalar(comm);
         if (o == null)
         {
             if (signed)
@@ -773,7 +829,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             object o = sloupce[i - 1];
             AddCommandParameter(comm, i, o);
             //DateTime.Now.Month;
-        } 
+        }
         #endregion
         ExecuteNonQuery(comm);
 
@@ -960,7 +1016,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return vr;
     }
 
-   
+
 
     /// <summary>
     /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
@@ -1107,12 +1163,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int RandomValueFromColumnInt(string table, string column)
     {
-        return RandomValueFromColumnInt(conn, table, column);
-    }
-
-    public int RandomValueFromColumnInt(SqlConnection conn, string table, string column)
-    {
-        return ExecuteScalarInt(conn, true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
+        return ExecuteScalarInt(true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
     }
 
     public short RandomValueFromColumnShort(string table, string column)
@@ -1122,14 +1173,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
     {
-        return SelectValuesOfColumnAllRowsShort(conn, tabulka, sloupec, whereIs, whereIsNot);
-    }
-
-    public List<short> SelectValuesOfColumnAllRowsShort(SqlConnection conn, string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
-    {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs.ToArray(), whereIsNot.ToArray(), null, null);
-        return ReadValuesShort(conn, comm);
+        return ReadValuesShort(comm);
     }
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
     {
@@ -1142,7 +1188,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         var dateTime = DateTime.Today.AddDays(dnuPozpatku * -1);
 
-        ABC lowerThanWhere = new ABC( CA.ToArrayT<AB>(AB.Get("Day", dateTime)));
+        ABC lowerThanWhere = new ABC(CA.ToArrayT<AB>(AB.Get("Day", dateTime)));
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, lowerThanWhere, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, lowerThanWhere, null);
         return ReadValuesInt(comm);
@@ -1316,7 +1362,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupecHledaný, tabulka, sloupecVeKteremHledat));
         AddCommandParameter(comm, 0, hodnota);
-        var result =  ReadValuesInt(comm);
+        var result = ReadValuesInt(comm);
         comm.Connection.Close();
         return result;
     }
@@ -1335,6 +1381,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1352,7 +1400,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
-
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1370,6 +1419,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1387,6 +1438,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1404,6 +1457,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1421,18 +1476,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
     private List<short> ReadValuesShort(SqlCommand comm)
     {
-        return ReadValuesShort(conn, comm);
-    }
-
-    private List<short> ReadValuesShort(SqlConnection conn, SqlCommand comm)
-    {
         List<short> vr = new List<short>();
-        SqlDataReader r = ExecuteReader(conn, comm);
+        SqlDataReader r = ExecuteReader(comm);
 
         if (r.HasRows)
         {
@@ -1443,6 +1495,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 vr.Add(o);
             }
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return vr;
     }
 
@@ -1490,10 +1544,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public bool SelectExistsTable(string p)
     {
-
+        using (var conn = new SqlConnection(Cs))
+        {
             DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
+
+            conn.Close();
             return dt.Rows.Count != 0;
-        
+        }
     }
     private DataTable SelectDataTable(SqlConnection conn, string sql, params object[] _params)
     {
@@ -1533,34 +1590,24 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return this.SelectDataTable(comm);
     }
 
-    public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id)
-    {
-        return SelectDataTableSelective(conn, tabulka, nazvySloupcu, sloupecID, id);
-    }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// Vrátí prázdnou tabulku pokud se nepodaří žádný řádek najít
     /// </summary>
-    public DataTable SelectDataTableSelective(SqlConnection conn, string tabulka, string nazvySloupcu, string sloupecID, object id)
+    public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
         AddCommandParameter(comm, 0, id);
         //NT
-        return this.SelectDataTable(conn, comm);
+        return this.SelectDataTable(comm);
     }
 
     public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id, string orderByColumn, SortOrder sortOrder)
     {
-        return SelectDataTableSelective(conn, tabulka, nazvySloupcu, sloupecID, id, orderByColumn, sortOrder);
-    }
-
-    public DataTable SelectDataTableSelective(SqlConnection conn, string tabulka, string nazvySloupcu, string sloupecID, object id, string orderByColumn, SortOrder sortOrder)
-    {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID) + GeneratorMsSql.OrderBy(orderByColumn, sortOrder));
         AddCommandParameter(comm, 0, id);
         //NT
-        return this.SelectDataTable(conn, comm);
+        return this.SelectDataTable(comm);
     }
 
     /// <summary>
@@ -1637,11 +1684,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return dt;
     }
 
-    public DataTable SelectDataTableLimitLastRows(string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
-    {
-        return SelectDataTableLimitLastRows(conn, tableName, limit, columns, sloupecOrder, where);
-    }
-
     /// <summary>
     /// Řadí metodou DESC
     /// Tato metoda se přesně hodí když chci získat nějaký nejoblíbenější obsah - srovnává podle hodnoty v A4.
@@ -1651,12 +1693,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupecOrder"></param>
     /// <param name="abc"></param>
     /// <returns></returns>
-    public DataTable SelectDataTableLimitLastRows(SqlConnection conn, string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
+    public DataTable SelectDataTableLimitLastRows(string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
     {
         //SELECT TOP 1000 * FROM [SomeTable] ORDER BY MySortColumn DESC
         SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + columns + " FROM " + tableName + GeneratorMsSql.CombinedWhere(where) + " ORDER BY " + sloupecOrder + " DESC");
         AddCommandParameteres(comm, 0, where);
-        return SelectDataTable(conn, comm);
+        return SelectDataTable(comm);
     }
 
     /// <summary>
@@ -1977,7 +2019,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
         // Check for signed is useless - in signed or not always return maxValue
-        if (d == int.MaxValue )
+        if (d == int.MaxValue)
         {
             return d;
         }
@@ -1989,14 +2031,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object hodnotaID)
     {
-        return UpdatePlusIntValue(conn, table, sloupecKUpdate, pridej, sloupecID, hodnotaID);
-    }
+        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
 
-    public int UpdatePlusIntValue(SqlConnection conn, string table, string sloupecKUpdate, int pridej, string sloupecID, object hodnotaID)
-    {
-        int d = SelectCellDataTableIntOneRow( conn, true, table, sloupecKUpdate, sloupecID, hodnotaID);
-
-        if (d == int.MaxValue )
+        if (d == int.MaxValue)
         {
             return d;
         }
@@ -2740,11 +2777,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectRowReader(comm);
     }
 
-    public object[] SelectSelectiveOneRow(string tabulka, string sloupecID, object id, string nazvySloupcu)
-    {
-        return SelectSelectiveOneRow(conn, tabulka, sloupecID, id, nazvySloupcu);
-    }
-
     /// <summary>
     /// Interně volá metodu SelectRowReader
     /// If fail, return null
@@ -2754,12 +2786,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="id"></param>
     /// <param name="nazvySloupcu"></param>
     /// <returns></returns>
-    public object[] SelectSelectiveOneRow(SqlConnection conn, string tabulka, string sloupecID, object id, string nazvySloupcu)
+    public object[] SelectSelectiveOneRow(string tabulka, string sloupecID, object id, string nazvySloupcu)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
         AddCommandParameter(comm, 0, id);
         //NT
-        return SelectRowReader(conn, comm);
+        return SelectRowReader(comm);
     }
 
 
@@ -2772,19 +2804,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectRowReader(comm);
     }
 
-    private object[] SelectRowReader(SqlCommand comm)
-    {
-        return SelectRowReader(conn, comm);
-    }
-
     /// <summary>
     /// Vrátí null, pokud výsledek nebude mít žádné řádky
     /// </summary>
     /// <param name="comm"></param>
     /// <returns></returns>
-    private object[] SelectRowReader(SqlConnection conn, SqlCommand comm)
+    private object[] SelectRowReader(SqlCommand comm)
     {
-        SqlDataReader r = ExecuteReader(conn, comm);
+        SqlDataReader r = ExecuteReader(comm);
 
         if (r.HasRows)
         {
@@ -2799,6 +2826,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             return o;
         }
+        comm.Connection.Close();
+        comm.Connection.Dispose();
         return null;
     }
 
@@ -2818,19 +2847,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectRowReader(comm);
     }
 
-    public bool SelectExistsCombination(string p, params AB[] aB)
-    {
-        return SelectExistsCombination(conn, p, aB);
-    }
-
     /// <summary>
     /// 
     /// </summary>
-    public bool SelectExistsCombination(SqlConnection conn, string p, params AB[] aB)
+    public bool SelectExistsCombination(string p, params AB[] aB)
     {
         string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         ABC abc = new ABC(aB);
-        return ExecuteScalar(conn, sql, abc.OnlyBs()) != null;
+        return ExecuteScalar(sql, abc.OnlyBs()) != null;
     }
 
     public bool SelectExistsCombination(string p, AB[] where, AB[] whereIsNot)
@@ -2913,11 +2937,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ExecuteScalarLong(signed, comm);
     }
 
-    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
-    {
-        return SelectCellDataTableIntOneRow(conn, signed, table, vracenySloupec, idColumnName, idColumnValue);
-    }
-
     /// <summary>
     /// Vrátí -1 pokud žádný takový řádek nenalezne pokud !A1 enbo short.MaxValue pokud A1
     /// </summary>
@@ -2926,12 +2945,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="idColumnValue"></param>
     /// <param name="vracenySloupec"></param>
     /// <returns></returns>
-    public int SelectCellDataTableIntOneRow(SqlConnection conn, bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
+    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameter(comm, 0, idColumnValue);
-        return ExecuteScalarInt(conn, signed, comm);
+        return ExecuteScalarInt(signed, comm);
     }
 
     /// <summary>
@@ -3015,11 +3034,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ExecuteScalarByte(comm);
     }
 
-    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
-    {
-        return SelectCellDataTableIntOneRow(conn, signed, table, vracenySloupec, abc);
-    }
-
     /// <summary>
     /// When not found, return int.MaxValue when A1 or -1 when not
     /// </summary>
@@ -3028,13 +3042,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="vracenySloupec"></param>
     /// <param name="abc"></param>
     /// <returns></returns>
-    public int SelectCellDataTableIntOneRow(SqlConnection conn, bool signed, string table, string vracenySloupec, params AB[] abc)
+    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
     {
         string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, abc);
 
-        return ExecuteScalarInt(conn, signed, comm);
+        return ExecuteScalarInt(signed, comm);
     }
 
     /// <summary>

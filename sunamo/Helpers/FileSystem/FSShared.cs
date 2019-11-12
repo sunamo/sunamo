@@ -1199,7 +1199,9 @@ public partial class FS
 
     public static string MascFromExtension(string ext = AllStrings.asterisk)
     {
-        if (!ext.StartsWith("*.") && !ext.Contains("*") && !ext.Contains("?") && !AllExtensionsHelper.IsContained(FS.GetExtension(ext)) )
+        // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
+        var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
+        if (!ext.StartsWith("*.") && !ext.Contains("*") && !ext.Contains("?") && isContained) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
@@ -1329,11 +1331,11 @@ public partial class FS
         }
         else
         {
-            string masc = null;
+            
             try
             {
-                masc = FS.MascFromExtension(mask);
-                list = Directory.GetFiles(folder, masc, searchOption).ToList();
+                mask = FS.MascFromExtension(mask);
+                list = Directory.GetFiles(folder, mask, searchOption).ToList();
             }
             catch (Exception ex)
             {
