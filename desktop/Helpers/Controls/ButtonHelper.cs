@@ -9,7 +9,18 @@ public static partial class ButtonHelper
     public static void SaveTransparentImageAsContent(ContentControl button, System.Windows.Media.Color color, string imageRelPath)
     {
         BitmapSource bi = BitmapImageHelper.MsAppx(imageRelPath);
-        bi = PicturesDesktop.MakeTransparentWindowsFormsButton(bi);
+        SaveTransparentImageAsContent(button, color, bi);
+    }
+
+    /// <summary>
+    /// Not working
+    /// </summary>
+    /// <param name="button"></param>
+    /// <param name="color"></param>
+    /// <param name="bi"></param>
+    public static void SaveTransparentImageAsContent(ContentControl button, System.Windows.Media.Color color, BitmapSource bi)
+    {
+        bi = PicturesDesktop.MakeTransparentWindowsFormsButton(bi, color);
         Image image = ImageHelper.ReturnImage(bi);
         image.Width = 20;
         image.Height = 20;

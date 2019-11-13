@@ -25,11 +25,15 @@ namespace AllProjectsSearch
         {
         }
 
-        /// <summary>
+        /// <summary>)
+        /// Is filled in ctor with CreateSolutionFolder()
         /// Only subfolders. csproj files must be find out manually
         /// Csproj are available to get with APSH.GetCsprojs()
         /// </summary>
         public List<string> projects = new List<string>();
+        public List<string> modulesSelling = new List<string>();
+        public List<string> modulesNotSelling = new List<string>();
+
         public string nameSolutionWithoutDiacritic = "";
 
         /// <summary>

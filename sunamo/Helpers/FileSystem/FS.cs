@@ -13,6 +13,7 @@ using sunamo.Essential;
 using sunamo.Constants;
 using System.Diagnostics;
 using sunamo;
+using System.Linq;
 
 public partial class FS
 {
@@ -363,15 +364,20 @@ public partial class FS
     /// <returns></returns>
     public static string[] GetFileNamesWoExtension(string[] jpgcka)
     {
-        string[] dd = new string[jpgcka.Length];
-        for (int i = 0; i < jpgcka.Length; i++)
+        return GetFileNamesWoExtension(jpgcka.ToList()).ToArray();
+    }
+
+
+    public static List<string> GetFileNamesWoExtension(List<string> jpgcka)
+    {
+        var dd = new List<string>( jpgcka.Count);
+        for (int i = 0; i < jpgcka.Count; i++)
         {
-            dd[i] = FS.GetFileNameWithoutExtension(jpgcka[i]);
+            dd.Add( FS.GetFileNameWithoutExtension(jpgcka[i]));
         }
 
         return dd;
     }
-
     public static string ShrinkLongPath(string actualFilePath)
     {
         // .NET 4.7.1

@@ -85,4 +85,57 @@ public static string GetDisplayedSolutionName(string item)
         tokens.Reverse();
         return SH.Join(AllChars.slash, tokens.ToArray());
     }
+
+    internal static List<string> ModulesInSolution(List<string> projects, string fullPathFolder, bool selling, PpkOnDrive toSelling)
+    {
+        List<string> result = new List<string>();
+        var sln = FS.GetFileName(fullPathFolder);
+
+        foreach (var item in projects)
+        {
+            var path = FS.Combine(fullPathFolder, item);
+
+            AddModules(path, sln+AllStrings.bs + item, result, selling, toSelling);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// result a selling are pairing.
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="SlnProject"></param>
+    /// <param name="result"></param>
+    /// <param name="selling"></param>
+    /// <param name="toSelling"></param>
+    private static void AddModules(string path, string SlnProject, List<string> result, bool selling, PpkOnDrive toSelling)
+    {
+        path = FS.Combine(path, "UC");
+        if (FS.ExistsDirectory(path))
+        {
+            var files = FS.GetFiles(path, FS.MascFromExtension(AllExtensions.xaml), System.IO.SearchOption.TopDirectoryOnly, true);
+            files = FS.GetFileNamesWoExtension(files);
+            foreach (var item in files)
+            {
+                var s = SlnProject + AllStrings.bs + item;
+                if (toSelling.Contains(s))
+                {
+                    if (selling)
+                    {
+                        result.Add(s);
+                    }
+                }
+                else
+                {
+                    if (!selling)
+                    {
+                        result.Add(s);
+                    }
+                }
+                
+            }
+            
+        }
+    }
 }

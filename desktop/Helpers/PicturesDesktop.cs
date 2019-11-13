@@ -17,12 +17,24 @@ using System.Windows.Media.Imaging;
     {
     static Type type = typeof(PicturesDesktop);
 
-        public static BitmapSource MakeTransparentWindowsFormsButton(BitmapSource bs)
+    /// <summary>
+    /// A1 must be BitmapSource, not ImageSource
+    /// A2 was originally Colors.Magenta
+    /// </summary>
+    /// <param name="bs"></param>
+    /// <returns></returns>
+    public static BitmapSource MakeTransparentWindowsFormsButton(BitmapSource bs, System.Windows.Media.Color c)
         {
-            return MakeTransparentBitmap(bs, Colors.Magenta);
+            return MakeTransparentBitmap(bs, c);
         }
 
-        public static BitmapSource MakeTransparentBitmap(BitmapSource sourceImage, System.Windows.Media.Color transparentColor)
+    /// <summary>
+    /// A1 must be BitmapSource, not ImageSource
+    /// </summary>
+    /// <param name="sourceImage"></param>
+    /// <param name="transparentColor"></param>
+    /// <returns></returns>
+    public static BitmapSource MakeTransparentBitmap(BitmapSource sourceImage, System.Windows.Media.Color transparentColor)
         {
             if (sourceImage.Format != PixelFormats.Bgra32) //if input is not ARGB format convert to ARGB firstly
             {

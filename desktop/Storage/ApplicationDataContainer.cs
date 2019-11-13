@@ -208,8 +208,10 @@ public class ApplicationDataContainer : ApplicationDataConsts
 
     public void Set(object sender, string key, object v)
     {
+        // Here must be AllStrings.pipe because in file it is in format name|type|value
         ThrowExceptions.StringContainsUnallowedSubstrings(type, "Set", v.ToString(), AllStrings.pipe);
-        data[sender][key] = v;
+        var f = data[sender];
+        f[key] = v;
     }
 
     

@@ -30,11 +30,11 @@ public class FoldersWithSolutions
     /// A1 = d:\Documents
     /// This class should be instaniate only once and then call reload by needs
     /// </summary>
-    public FoldersWithSolutions(string documentsFolder)
+    public FoldersWithSolutions(string documentsFolder, PpkOnDrive toSelling)
     {
         
         this.documentsFolder = documentsFolder;
-         Reload(documentsFolder);
+         Reload(documentsFolder, toSelling);
     }
     #endregion
 
@@ -57,7 +57,7 @@ public class FoldersWithSolutions
     /// </summary>
     /// <param name="documentsFolder"></param>
     /// <returns></returns>
-    public List<SolutionFolder> Reload(string documentsFolder, bool ignorePartAfterUnderscore = false)
+    public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool ignorePartAfterUnderscore = false)
     {
         
 
@@ -78,7 +78,7 @@ public class FoldersWithSolutions
             var solutionFolder = solutionFolders[i];
             
             
-            SolutionFolder sf = CreateSolutionFolder(solutionFolder, projOnlyNames[i]);
+            SolutionFolder sf = CreateSolutionFolder(solutionFolder, toSelling, projOnlyNames[i]);
             
             solutions.Add(sf);
         }
@@ -97,12 +97,12 @@ public class FoldersWithSolutions
         return CreateSolutionFolder(t, t.fullPathFolder, null);
     }
 
-    public static SolutionFolder CreateSolutionFolder(string solutionFolder, string projName = null)
+    public static SolutionFolder CreateSolutionFolder(string solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
-        return CreateSolutionFolder(null, solutionFolder, projName);
+        return CreateSolutionFolder(null, solutionFolder, toSelling,  projName);
     }
 
-    public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize sfs, string solutionFolder, string projName = null)
+    public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize sfs, string solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
         
         if (projName == null)
@@ -121,11 +121,9 @@ public class FoldersWithSolutions
         sf.InVsFolder = solutionFolder.Contains(SolutionsIndexerStrings.VisualStudio2017);
         sf.displayedText = GetDisplayedName(solutionFolder);
         sf.fullPathFolder = solutionFolder;
-        if (projName == "sunamo")
-        {
-
-        }
         sf.projects = SolutionsIndexerHelper.ProjectsInSolution(true, sf.fullPathFolder);
+        sf.modulesSelling = SolutionsIndexerHelper.ModulesInSolution(sf.projects, sf.fullPathFolder, true, toSelling);
+        sf.modulesNotSelling = SolutionsIndexerHelper.ModulesInSolution(sf.projects, sf.fullPathFolder, false, toSelling);
         sf.nameSolutionWithoutDiacritic = SH.TextWithoutDiacritic(projName);
         return sf;
     }

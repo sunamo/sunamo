@@ -60,6 +60,8 @@ public partial class FS
 
         return resultSerie;
     }
+
+    
     #endregion
 }
 

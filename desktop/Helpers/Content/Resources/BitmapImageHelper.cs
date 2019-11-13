@@ -42,7 +42,7 @@ public static partial class BitmapImageHelper
         return MsAppx(cesta);
     }
 
-    public static ImageSource Path(string path)
+    public static BitmapSource Path(string path)
     {
         if (string.IsNullOrWhiteSpace(path))
         {
@@ -52,7 +52,7 @@ public static partial class BitmapImageHelper
         return Uri(new Uri(path, UriKind.Absolute));
     }
 
-    public static ImageSource Uri(Uri uri)
+    public static BitmapSource Uri(Uri uri)
     {
         BitmapImage bi = null;
         try
