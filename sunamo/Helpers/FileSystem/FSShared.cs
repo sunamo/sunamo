@@ -20,6 +20,27 @@ public partial class FS
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+    /// <summary>
+    /// Without path
+    /// </summary>
+    /// <param name="jpgcka"></param>
+    /// <returns></returns>
+    public static string[] GetFileNamesWoExtension(string[] jpgcka)
+    {
+        return GetFileNamesWoExtension(jpgcka.ToList()).ToArray();
+    }
+
+
+    public static List<string> GetFileNamesWoExtension(List<string> jpgcka)
+    {
+        var dd = new List<string>(jpgcka.Count);
+        for (int i = 0; i < jpgcka.Count; i++)
+        {
+            dd.Add(FS.GetFileNameWithoutExtension(jpgcka[i]));
+        }
+
+        return dd;
+    }
     static FS()
     {
         s_invalidPathChars = new List<char>(Path.GetInvalidPathChars());

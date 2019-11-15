@@ -8822,7 +8822,7 @@
         </trans-unit>
         <trans-unit id="Allowed" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Allowed?</target>
+          <target state="translated">Allowed</target>
         </trans-unit>
         <trans-unit id="TheNumberOfClicks" translate="yes" xml:space="preserve">
           <source></source>

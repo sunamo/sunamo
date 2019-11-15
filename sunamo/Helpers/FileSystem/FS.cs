@@ -357,27 +357,7 @@ public partial class FS
         }
     }
 
-    /// <summary>
-    /// Without path
-    /// </summary>
-    /// <param name="jpgcka"></param>
-    /// <returns></returns>
-    public static string[] GetFileNamesWoExtension(string[] jpgcka)
-    {
-        return GetFileNamesWoExtension(jpgcka.ToList()).ToArray();
-    }
-
-
-    public static List<string> GetFileNamesWoExtension(List<string> jpgcka)
-    {
-        var dd = new List<string>( jpgcka.Count);
-        for (int i = 0; i < jpgcka.Count; i++)
-        {
-            dd.Add( FS.GetFileNameWithoutExtension(jpgcka[i]));
-        }
-
-        return dd;
-    }
+   
     public static string ShrinkLongPath(string actualFilePath)
     {
         // .NET 4.7.1
