@@ -13,7 +13,8 @@ public static partial class ButtonHelper
     }
 
     /// <summary>
-    /// Not working
+    /// Not working, but it was maybe because color is not exactly as was specified
+    /// Not use Lunapic or my code to create favicon. Always download image from net
     /// </summary>
     /// <param name="button"></param>
     /// <param name="color"></param>

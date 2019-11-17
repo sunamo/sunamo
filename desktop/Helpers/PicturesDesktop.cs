@@ -30,6 +30,7 @@ using System.Windows.Media.Imaging;
 
     /// <summary>
     /// A1 must be BitmapSource, not ImageSource
+    /// Not use Lunapic or my code to create favicon. Always download image from net
     /// </summary>
     /// <param name="sourceImage"></param>
     /// <param name="transparentColor"></param>
@@ -83,17 +84,18 @@ using System.Windows.Media.Imaging;
             }
         }
 
-        #region Mono
-        #region Již v CreateW10AppGraphics - několik PlaceToCenter metod
-        /// <summary>
-        /// Funguje naprosto správně, už nic neměnit
-        /// 11-2-2019 nsn
-        /// </summary>
-        /// <param name="bi"></param>
-        /// <param name="trans"></param>
-        /// <param name="white2"></param>
-        /// <returns></returns>
-        private static WriteableBitmap MakeWriteableBitmapTransparentAllOther(BitmapSource bi, PixelColor trans, PixelColor white2)
+    #region Mono
+    #region Již v CreateW10AppGraphics - několik PlaceToCenter metod
+    /// <summary>
+    /// Funguje naprosto správně, už nic neměnit
+    /// 11-2-2019 nsn
+    /// Not use Lunapic or my code to create favicon. Always download image from net
+    /// </summary>
+    /// <param name="bi"></param>
+    /// <param name="trans"></param>
+    /// <param name="white2"></param>
+    /// <returns></returns>
+    private static WriteableBitmap MakeWriteableBitmapTransparentAllOther(BitmapSource bi, PixelColor trans, PixelColor white2)
         {
             white2.Alpha = 255;
             PixelColor pxZero = new PixelColor() { Alpha = 0, Red = 0, Green = 0, Blue = 0 };
@@ -387,6 +389,7 @@ using System.Windows.Media.Imaging;
     #region Mono
     /// <summary>
     /// 11-2-2019 nsn
+    /// Not use Lunapic or my code to create favicon. Always download image from net
     /// </summary>
     /// <param name="bi"></param>
     /// <param name="trans"></param>
@@ -446,6 +449,7 @@ using System.Windows.Media.Imaging;
 
     /// <summary>
     /// 11-2-2019 nsn
+    /// Not use Lunapic or my code to create favicon. Always download image from net
     /// </summary>
     /// <param name="bi"></param>
     /// <param name="trans"></param>
