@@ -67,10 +67,10 @@ public partial class FS
         DateTime dt = DateTime.Now;
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
-    public static Task DeleteFile(StorageFile t)
-    {
-        throw new NotImplementedException();
-    }
+    //public static Task DeleteFile(StorageFile t)
+    //{
+    //    throw new NotImplementedException();
+    //}
 
     /// <summary>
     /// A4 can be null if !A5

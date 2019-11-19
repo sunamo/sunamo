@@ -43,7 +43,7 @@ public partial class WindowHelper{
         return dump;
     }
 
-internal static void Close(Window w)
+public static void Close(Window w)
     {
         try
         {

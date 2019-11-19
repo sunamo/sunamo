@@ -17,24 +17,60 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for FoundedFileUC.xaml
+    /// Interaction logic for FoundedResultUC.xaml
     /// </summary>
-    public partial class FoundedFileUC : UserControl
+    public partial class FoundedResultUC : UserControl
     {
+        //UIElement previousSecondRow = new UserControl();
+
+        //public FoundedResultUC(string header, int serie)
+        //{
+        //    InitializeComponent();
+
+        //    ellipseSerie.Stroke = Brushes.Black;
+
+        //    tbHeader.Text = header;
+        //    tbSerie.Text = serie.ToString();
+        //}
+
+        //public UIElement SecondRow
+        //{
+        //    set
+        //    {
+        //        //gridContent.Children.Remove(previousSecondRow);
+
+        //        //Grid.SetRow(value, 1);
+        //        //Grid.SetColumn(value, 0);
+        //        //gridContent.Children.Add(value);
+
+        //        //gridContent.UpdateLayout();
+
+        //        dp.Children.Clear();
+        //        dp.Children.Add(value);
+
+        //        //tbDesc.Content = value;
+
+        //        previousSecondRow = value;
+        //    }
+        //}
+
         public event VoidString Selected;
-        public string fileFullPath;
         /// <summary>
-        /// Without removed FoundedFilesUC.basePaths
+        /// Is used for colorful highlighting and Selected event
         /// </summary>
-        string file;
+        public string fileFullPath = null;
+        /// <summary>
+        /// Is used for showing visually
+        /// </summary>
+        public string file = null;
 
         /// <summary>
-        /// A2 is require but is available through foundedFilesUC.DefaultBrush
+        /// A2 is require but is available through foundedResultsUC.DefaultBrush
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="p"></param>
         /// <param name="serie"></param>
-        public FoundedFileUC(string filePath, TUList<string, Brush> p, int serie)
+        public FoundedResultUC(string filePath, TUList<string, Brush> p, int serie)
         {
             InitializeComponent();
 
@@ -46,24 +82,23 @@ namespace desktop.Controls.Result
             bool replaced = false;
             foreach (var item in FoundedFilesUC.basePaths)
             {
-                file = SH.ReplaceOnceIfStartedWith( file, item, "", out replaced);
+                file = SH.ReplaceOnceIfStartedWith(file, item, "", out replaced);
                 if (replaced)
                 {
                     break;
                 }
             }
 
-            
-
             tbFileName.Text = file;
+            
             foreach (var item in p)
             {
-                    if (SH.Contains( fileFullPath, item.Key))
-                    {
+                if (SH.Contains(fileFullPath, item.Key))
+                {
                     ellipseSerie.Stroke = item.Value;
-                        tbFileName.Foreground = item.Value;
-                        break;
-                    }
+                    tbFileName.Foreground = item.Value;
+                    break;
+                }
             }
 
             this.MouseLeftButtonDown += FoundedFileUC_MouseLeftButtonDown;

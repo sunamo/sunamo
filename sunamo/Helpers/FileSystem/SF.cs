@@ -210,7 +210,7 @@ public static int keyCodeSeparator
     /// </summary>
     /// <param name = "o"></param>
     /// <returns></returns>
-    public static string PrepareToSerialization2(string item, IEnumerable<string> o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization2(IEnumerable<string> o, string separator = AllStrings.pipe)
     {
         return PrepareToSerializationWorker(o, true, separator);
     }

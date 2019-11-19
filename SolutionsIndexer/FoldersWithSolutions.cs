@@ -58,25 +58,23 @@ public class FoldersWithSolutions
     /// <param name="documentsFolder"></param>
     /// <returns></returns>
     public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool ignorePartAfterUnderscore = false)
-    {
-        
-
+    {       
         // Get all projects in A1(Visual Studio Projects *) and GitHub folder
         List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder, FS.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy));
-
-        
 
         List<string> projOnlyNames = new List<string>(solutionFolders.Count);
         projOnlyNames.AddRange(FS.OnlyNames(solutionFolders.ToArray()));
         // Initialize global variable solutions
         solutions = new List<SolutionFolder>(solutionFolders.Count);
-        
-        
 
         for (int i = 0; i < solutionFolders.Count; i++)
         {
             var solutionFolder = solutionFolders[i];
-            
+
+            if (!solutionFolder.Contains(@"\Projects\"))
+            {
+                continue;
+            }
             
             SolutionFolder sf = CreateSolutionFolder(solutionFolder, toSelling, projOnlyNames[i]);
             
@@ -90,11 +88,22 @@ public class FoldersWithSolutions
 
     public static List<string> onlyRealLoadedSolutionsFolders = new List<string>();
 
-    
 
-    public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize t)
+
+    /// <summary>
+    /// Pass into toSelling null! While working with SellingUC must use other CreateSolutionFolder
+    /// Dont uncomment, because still forgetting insert toSelling
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    //public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize t)
+    //{
+    //    return CreateSolutionFolder(t, t.fullPathFolder, null);
+    //}
+
+    public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
-        return CreateSolutionFolder(t, t.fullPathFolder, null);
+        return CreateSolutionFolder(null, solutionFolder.fullPathFolder, toSelling, projName);
     }
 
     public static SolutionFolder CreateSolutionFolder(string solutionFolder, PpkOnDrive toSelling, string projName = null)
@@ -104,7 +113,7 @@ public class FoldersWithSolutions
 
     public static SolutionFolder CreateSolutionFolder(SolutionFolderSerialize sfs, string solutionFolder, PpkOnDrive toSelling, string projName = null)
     {
-        
+
         if (projName == null)
         {
             projName = FS.GetFileName(solutionFolder);
@@ -122,11 +131,12 @@ public class FoldersWithSolutions
         sf.displayedText = GetDisplayedName(solutionFolder);
         sf.fullPathFolder = solutionFolder;
         sf.projects = SolutionsIndexerHelper.ProjectsInSolution(true, sf.fullPathFolder);
-        sf.modulesSelling = SolutionsIndexerHelper.ModulesInSolution(sf.projects, sf.fullPathFolder, true, toSelling);
-        sf.modulesNotSelling = SolutionsIndexerHelper.ModulesInSolution(sf.projects, sf.fullPathFolder, false, toSelling);
+        sf. UpdateModules(toSelling);
         sf.nameSolutionWithoutDiacritic = SH.TextWithoutDiacritic(projName);
         return sf;
     }
+
+    
 
     /// <summary>
     /// Get name based on relative but always fully recognized project

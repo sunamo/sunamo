@@ -157,7 +157,6 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true)));
     }
 
-
     #endregion
 
     #region Without locating executing code

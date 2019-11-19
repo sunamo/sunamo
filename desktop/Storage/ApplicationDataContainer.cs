@@ -2,6 +2,7 @@
 using desktop.Controls.Input;
 using desktop.Controls.Visualization;
 using desktop.Storage;
+using sunamo.Essential;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -96,6 +97,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         //cb.KeyUp += Cb_KeyUp;
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
+
     public void Add(ComboBox cb)
     {
         // Automatically load
@@ -103,7 +105,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         var list = adcl.GetListString(ItemsSource);
         cb.ItemsSource = list;
         cb.KeyUp += Cb_KeyUp;
-        cb.DataContextChanged += Cb_DataContextChanged;
+        //cb.DataContextChanged += Cb_DataContextChanged;
     }
 
     public void Add(CheckBox chb)
@@ -211,6 +213,12 @@ public class ApplicationDataContainer : ApplicationDataConsts
         // Here must be AllStrings.pipe because in file it is in format name|type|value
         ThrowExceptions.StringContainsUnallowedSubstrings(type, "Set", v.ToString(), AllStrings.pipe);
         var f = data[sender];
+
+        if (ThisApp.check)
+        {
+            
+        }
+
         f[key] = v;
     }
 

@@ -22,19 +22,63 @@ public class CheckBoxListHelper
         return v2;
     }
 
-    public static IEnumerable<object> CheckedContent(IEnumerable<CheckBox> chbs)
+    //
+    public static Dictionary<StackPanel, bool> CheckedContentDict(IEnumerable<CheckBox> chbs)
+    {
+        var unticked = UncheckedContent(chbs);
+        var ticked = CheckedContent(chbs);
+
+        Dictionary<StackPanel, bool> result = new Dictionary<StackPanel, bool>();
+
+        foreach (var item in unticked)
+        {
+            result.Add(item, false);
+        }
+
+        foreach (var item in ticked)
+        {
+            result.Add(item, true);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Return StackPanel which have as only one child TextBlock
+    /// </summary>
+    /// <param name="chbs"></param>
+    /// <returns></returns>
+    public static IEnumerable<StackPanel> UncheckedContent(IEnumerable<CheckBox> chbs)
+    {
+        //chbs[0].IsChecked = true;
+        var indexes = chbs.Select((v, i) => new { v, i });
+        var where = indexes.Where(x => !BTS.GetValueOfNullable(x.v.IsChecked));
+        return where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
+    }
+
+    /// <summary>
+    /// Return StackPanel which have as only one child TextBlock
+    /// </summary>
+    /// <param name="chbs"></param>
+    /// <returns></returns>
+    public static IEnumerable<StackPanel> CheckedContent(IEnumerable<CheckBox> chbs)
     {
         //chbs[0].IsChecked = true;
         var indexes = chbs.Select((v, i) => new { v, i });
         var where = indexes.Where(x => BTS.GetValueOfNullable(x.v.IsChecked));
-        return where.Select(d => d.v.Content);
+        return where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
     }
 
-    public static List<string> AllContent(IEnumerable<CheckBox> chbs)
+    /// <summary>
+    /// Return StackPanel which have as only one child TextBlock
+    /// </summary>
+    /// <param name="chbs"></param>
+    /// <returns></returns>
+    public static List<StackPanel> AllContent(IEnumerable<CheckBox> chbs)
     {
         var d = chbs.Select(e => e.Content);
         var result = CA.ToListString(d);
-        return result;
+        return result.Cast<StackPanel>().ToList();
     }
 }
 

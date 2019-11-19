@@ -1,8 +1,6 @@
-﻿using sunamo;
-using sunamo.Data;
+﻿using sunamo.Data;
 using sunamo.Interfaces;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,20 +18,24 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Result
 {
     /// <summary>
-    /// Interaction logic for FoundedFilesUC.xaml
+    /// Interaction logic for FoundedResultsUC.xaml
     /// </summary>
-    public partial class FoundedFilesUC : UserControl, ISelectedT<string>
+    public partial class FoundedResultsUC : UserControl, ISelectedT<string>
     {
         public event VoidString Selected;
-        string selectedItem = null;
+        protected string selectedItem = null;
         public string SelectedItem => selectedItem;
-        public static List<string> basePaths = null;
+        public static List<string> basePaths = CA.ToListString();
 
-        public FoundedFilesUC()
+        public FoundedResultsUC()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// A1 is used to trim when start with them
+        /// </summary>
+        /// <param name="basePath"></param>
         public void Init(params string[] basePath)
         {
             basePaths = basePath.ToList();
@@ -50,32 +52,28 @@ namespace desktop.Controls.Result
             return result;
         }
 
-        /// <summary>
-        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
-        /// Already inserted is not deleted
-        /// </summary>
-        /// <param name="foundedList"></param>
-        /// <param name="p"></param>
-        public void AddFoundedFiles(List<string> foundedList, TUList<string, Brush> p)
-        {
-            int i = 0;
-            foreach (var item in foundedList)
-            {
-                AddFoundedFile(item, p, ref i);
-            }
-        }
 
-        /// <summary>
-        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
-        /// Already inserted is not deleted
-        /// </summary>
-        /// <param name="foundedList"></param>
-        /// <param name="p"></param>
-        public void AddFoundedFile(string item, TUList<string, Brush> p, ref int i)
+
+        public void AddFoundedResults(bool clear, TUList<string, Brush> p, List<TWithName<string>> foundedResult)
         {
-                FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
-                foundedFile.Selected += FoundedFile_Selected;
-                sp.Children.Add(foundedFile);   
+            int i = 1;
+
+            if (clear)
+            {
+                sp.Children.Clear();
+            }
+
+            foreach (var item in foundedResult)
+            {
+                FoundedResultUC fr = new FoundedResultUC(item.name, p, i++);
+                fr.Selected += OnSelected;
+
+                TextBlock tb = TextBlockHelper.Get(new ControlInitData { text = item.t });
+
+                fr.SecondRow = tb;
+
+                sp.Children.Add(fr);
+            }
         }
 
         /// <summary>
@@ -107,11 +105,7 @@ namespace desktop.Controls.Result
             return null;
         }
 
-        private void FoundedFile_Selected(string s)
-        {
-            selectedItem = s;
-            Selected(s);
-        }
+        
 
         public void SelectFile(string file)
         {
@@ -127,6 +121,7 @@ namespace desktop.Controls.Result
         {
             Selected(p);
         }
+
         /// <summary>
         /// return null if there is no element
         /// </summary>
@@ -139,6 +134,7 @@ namespace desktop.Controls.Result
             }
             return null;
         }
+
 
         
     }

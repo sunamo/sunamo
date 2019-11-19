@@ -172,4 +172,6 @@ public static class AllChars
             whiteSpacesChars.Add(Convert.ToChar(s));
         }
     }
+
+    public const char at = '@';
 }

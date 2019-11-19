@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="desktop.Controls.Result.FoundedResultUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop.Controls.Result"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--<Grid  x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            --><!--Second row isnt need to occupied--><!--
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Viewbox Width="30" Height="30" Grid.RowSpan="2">
+            <Grid Width="20" Height="20">
+                <Ellipse  x:Name="ellipseSerie"/>
+                --><!--<Label VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="txtSerie"></Label>--><!--
+                <TextBlock HorizontalAlignment="Center" Text="12" x:Name="tbSerie" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Viewbox>
+
+        <Grid x:Name="gridContent" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+        <TextBlock x:Name="tbHeader" x:FieldModifier="public" Margin="10" Grid.Column="0" Grid.Row="0"></TextBlock>
+            <DockPanel LastChildFill="True" x:Name="dp" Grid.Row="1">
+            
+            </DockPanel>
+        </Grid>
+
+    </Grid>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Viewbox Width="30" Height="30">
+            <Grid Width="20" Height="20">
+                <Ellipse  x:Name="ellipseSerie"/>
+                <!--<Label VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="txtSerie"></Label>-->
+                <TextBlock HorizontalAlignment="Center" Text="12" x:Name="tbSerie" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Viewbox>
+
+        <TextBlock x:Name="tbFileName" x:FieldModifier="public" Margin="10" Grid.Column="1"></TextBlock>
+    </Grid>
+</UserControl>

@@ -125,10 +125,29 @@ namespace desktop.Controls.Collections
 
                 this.DataContext = this;
 
-
-
                 SizeChanged += CheckBoxListUC_SizeChanged;
             }
+        }
+
+        public  List<string> AllContentString()
+        {
+            var ac = AllContent();
+            List<string> result = new List<string>();
+            foreach (var item in ac)
+            {
+                List<TextBlock> textboxes = null; //VisualTreeHelpers.FindDescendents<TextBlock>(item);
+                var first = textboxes.First();
+                result.Add(first.Text);
+            }
+
+            return result;
+        }
+
+        public static string ContentOfTextBlock(StackPanel key)
+        {
+            var first = key.Children.FirstOrNull();
+            var tb = first as TextBlock;
+            return tb.Text;
         }
 
         private void CheckBoxListUC_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -199,8 +218,9 @@ namespace desktop.Controls.Collections
                 }
                 var chb = CheckBoxHelper.Get(new ControlInitData { text = item });
                 chb.IsChecked = defChecked;
-                //chb.Checked += Chb_Click;
-                //chb.Unchecked += Chb_Click;
+                // Must handling Checked / Unchecked, otherwise won't working dialogbuttons and cant exit dialog
+                chb.Checked += CheckBox_Checked;
+                chb.Unchecked += CheckBox_Unchecked;
                 l.Add(chb);
             }
         }
@@ -220,6 +240,11 @@ namespace desktop.Controls.Collections
             return CheckBoxListHelper.CheckedContent(l.l);
         }
 
+        public Dictionary<StackPanel, bool> AllContentDict()
+        {
+            return CheckBoxListHelper.CheckedContentDict(l.l);
+        }
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             s(sender, true);
@@ -227,11 +252,10 @@ namespace desktop.Controls.Collections
             if (onCheck.HasValue && onCheck.Value)
             {
                 l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
-
             }
         }
 
-        public List<string> AllContent()
+        public List<StackPanel> AllContent()
         {
             return CheckBoxListHelper.AllContent(l.l);
         }

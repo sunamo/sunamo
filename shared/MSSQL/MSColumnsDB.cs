@@ -995,6 +995,14 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
             );
     }
 
+    public static MSColumnsDB IDNameShort(int p)
+    {
+        return new MSColumnsDB(
+            MSSloupecDB.CI(SqlDbType2.SmallInt, "ID", true),
+            MSSloupecDB.CI(SqlDbType2.NVarChar, "Name(" + p.ToString() + ")", false, true)
+            );
+    }
+
     public static MSColumnsDB IDNameTinyInt(int p)
     {
         return new MSColumnsDB(

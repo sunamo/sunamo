@@ -345,9 +345,7 @@ public static partial class SH
         var b = centerIndex - before;
         var a = centerIndex + centerString.Length + after;
 
-        if (ThisApp.check)
-        {
-        }
+
 
         StringBuilder sb = new StringBuilder();
 

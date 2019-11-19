@@ -49,11 +49,7 @@ public partial class WindowHelper
             }
         }
         catch (Exception ex)
-        {
-
-            
+        {   
         }
-       
-        
     }
 }

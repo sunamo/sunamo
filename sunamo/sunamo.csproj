@@ -630,7 +630,6 @@
     <Content Include="plain.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\SunamoSize.cs~RF1c5b114.TMP" />
     <None Include="Entity\ManageArtistDashTitleShared.cs~RF20d52e9.TMP" />
     <None Include="Enums\Browsers.cs~RF4cec33.TMP" />
     <None Include="Fonts\FontAwesome.otf" />

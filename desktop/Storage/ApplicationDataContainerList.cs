@@ -77,7 +77,7 @@ public class ApplicationDataContainerList : IEnumerable
             switch (fullName)
             {
                 case "System.Collections.Generic.List`1":
-                    value = SF.GetAllElementsLine(third);
+                    value = SF.GetAllElementsLine(third, AllStrings.comma);
                     break;
                 #region MyRegion
                 case "System.String":
@@ -282,7 +282,8 @@ public class ApplicationDataContainerList : IEnumerable
             string typeName = RH.FullPathCodeEntity( value.GetType());
             if (value is IEnumerable)
             {
-                value = SF.PrepareToSerialization2(string.Empty,value as IEnumerable, AllStrings.comma);
+                // Separator must be always as first!!!
+                value = SF.PrepareToSerialization2(CA.ToListString(value), AllStrings.comma);
             }
             if (data.ContainsKey(key))
             {

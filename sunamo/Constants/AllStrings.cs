@@ -87,4 +87,5 @@ public class AllStrings
 
     public const string lq = "“";
     public const string rq = "”";
+    public const string at = "@";
 }

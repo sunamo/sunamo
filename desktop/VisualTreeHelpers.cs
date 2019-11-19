@@ -194,7 +194,7 @@ public class VisualTreeHelpers
     }
 
     /// <summary>
-    /// Dojebané mnou, nepoužívat
+    /// Finding in sub only if all parents are A1. Therefore, if as child of A2 will be Panel with sub TB, I won't get it, Panel is not TB and therefore wont be iretated
     /// FindDescendents - check for equality with RH.IsOrIsDeriveFromBaseClass
     /// FindDescendents3 - check for equality with is T
     /// </summary>

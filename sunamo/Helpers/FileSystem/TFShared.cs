@@ -152,10 +152,10 @@ public partial class TF
         TF.SaveFile(content, f);
     }
 
-    public static void SaveFile(string content, StorageFile storageFile)
-    {
-        TF.SaveFile(content, storageFile.FullPath());
-    }
+    //public static void SaveFile(string content, StorageFile storageFile)
+    //{
+    //    TF.SaveFile(content, storageFile.FullPath());
+    //}
 
     public static List<string> ReadAllLines(string file)
     {

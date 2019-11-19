@@ -1,0 +1,48 @@
+﻿using desktop.Controls.Result;
+using sunamo.Data;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace desktop.Controls.Result
+{
+    public class FoundedFilesUC : FoundedResultsUC
+    {
+        /// <summary>
+        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
+        /// Already inserted is not deleted
+        /// </summary>
+        /// <param name="foundedList"></param>
+        /// <param name="p"></param>
+        public void AddFoundedFiles(List<string> foundedList, TUList<string, System.Windows.Media.Brush> p)
+        {
+            int i = 0;
+            foreach (var item in foundedList)
+            {
+                AddFoundedFile(item, p, ref i);
+            }
+        }
+
+        /// <summary>
+        /// A2 is require but is available through FoundedFilesUC.DefaultBrush
+        /// Already inserted is not deleted
+        /// </summary>
+        /// <param name="foundedList"></param>
+        /// <param name="p"></param>
+        public void AddFoundedFile(string item, TUList<string, System.Windows.Media.Brush> p, ref int i)
+        {
+            FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
+            foundedFile.Selected += FoundedFile_Selected;
+            sp.Children.Add(foundedFile);
+        }
+
+        private void FoundedFile_Selected(string s)
+        {
+            selectedItem = s;
+            OnSelected(s);
+        }
+    }
+}

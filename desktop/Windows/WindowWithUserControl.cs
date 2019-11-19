@@ -117,6 +117,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         TextBlock textBlockStatus = TextBlockHelper.Get(new ControlInitData { text = "" });
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
         statusBar.Items.Add(textBlockStatus);
+
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
 

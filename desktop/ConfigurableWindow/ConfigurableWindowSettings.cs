@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using sunamo.Essential;
+using System.Configuration;
 using System.Windows;
 
 namespace ConfigurableWindow.Shared
@@ -85,10 +86,14 @@ namespace ConfigurableWindow.Shared
 
         protected void SetValue(string propName, object value)
         {
+            ThisApp.check = false;
+
             data.Set(WpfApp.window, propName, value);
             data.SaveControl(WpfApp.window);
             //data[propName] = value;
             //data.Save();
+
+            ThisApp.check = true;
         }
 
         #endregion // GetValue / SetValue

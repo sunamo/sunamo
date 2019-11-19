@@ -112,6 +112,14 @@
     <Compile Include="Controls\Collections\RadioButtonsList.xaml.cs">
       <DependentUpon>RadioButtonsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Result\FoundedFilesUC.cs" />
+    <Compile Include="Controls\Result\FoundedFileUC.cs" />
+    <Compile Include="Controls\Result\FoundedResultsUC.xaml.cs">
+      <DependentUpon>FoundedResultsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Result\FoundedResultUC.xaml.cs">
+      <DependentUpon>FoundedResultUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Result\ShowCodeResultUC.xaml.cs">
       <DependentUpon>ShowCodeResultUC.xaml</DependentUpon>
     </Compile>
@@ -189,12 +197,6 @@
     </Compile>
     <Compile Include="Controls\Mouse\InsertLetterAfterMouseDownUC.xaml.cs">
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Result\FoundedFilesUC.xaml.cs">
-      <DependentUpon>FoundedFilesUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Result\FoundedFileUC.xaml.cs">
-      <DependentUpon>FoundedFileUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Result\ShowTextResult.xaml.cs">
       <DependentUpon>ShowTextResult.xaml</DependentUpon>
@@ -512,13 +514,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Result\FoundedFilesUC.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Controls\Result\FoundedResultsUC.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Result\FoundedFileUC.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Controls\Result\FoundedResultUC.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Result\ShowCodeResultUC.xaml">
       <SubType>Designer</SubType>

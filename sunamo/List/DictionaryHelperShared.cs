@@ -99,7 +99,18 @@ public partial class DictionaryHelper
     {
         AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
-/// <summary>
+
+    public static Dictionary<T1, T2> GetDictionaryFromIOrderedEnumerable<T1, T2>(IOrderedEnumerable<KeyValuePair<T1, T2>> orderedEnumerable)
+    {
+        Dictionary<T1, T2> d = new Dictionary<T1, T2>();
+        foreach (var item in orderedEnumerable)
+        {
+            d.Add(item.Key, item.Value);
+        }
+        return d;
+    }
+
+    /// <summary>
     /// A3 is inner type of collection entries
     /// </summary>
     /// <typeparam name = "Key"></typeparam>

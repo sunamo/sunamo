@@ -23,6 +23,22 @@ public class PanelHelper
         return vr;
     }
 
+    /// <summary>
+    /// because every of structure is other innered, is stupidity have own method for get content control without closer determination
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static object ContentOfFirstChild(Panel p)
+    {
+        //var first = p.Children.FirstOrNull();
+        //if (first == null)
+        //{
+        //    return null;
+        //}
+        //var c = VisualTreeHelpers.FindDescendents<ContentControl>(p);
+        return null;
+    }
+
     private static IList Childrens(UIElement maybePanel)
     {
         if (maybePanel != null)
@@ -83,7 +99,5 @@ public class PanelHelper
         }
         return vr;
     }
-
-    
 }
 

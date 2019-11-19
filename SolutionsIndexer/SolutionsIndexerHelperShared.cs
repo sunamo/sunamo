@@ -86,19 +86,33 @@ public static string GetDisplayedSolutionName(string item)
         return SH.Join(AllChars.slash, tokens.ToArray());
     }
 
-    internal static List<string> ModulesInSolution(List<string> projects, string fullPathFolder, bool selling, PpkOnDrive toSelling)
+    public static List<string> ModulesInSolution(List<string> projects, string fullPathFolder, bool selling, PpkOnDrive toSelling)
     {
         List<string> result = new List<string>();
-        var sln = FS.GetFileName(fullPathFolder);
+        var slnName = FS.GetFileName(fullPathFolder);
 
         foreach (var item in projects)
         {
-            var path = FS.Combine(fullPathFolder, item);
+            var path = FS.Combine(fullPathFolder, FS.GetFileNameWithoutExtension(item));
+            var projectName = FS.GetFileNameWithoutExtension(item);
 
-            AddModules(path, sln+AllStrings.bs + item, result, selling, toSelling);
+            slnName = FS.GetFileName(fullPathFolder);
+            AddModules(selling, toSelling, result, slnName, projectName, path, "UserControl");
+            slnName = FS.GetFileName(fullPathFolder);
+            AddModules(selling, toSelling, result, slnName, projectName, path, "UC");
+            slnName = FS.GetFileName(fullPathFolder);
+            AddModules(selling, toSelling, result, slnName, projectName, path, "UserControls");
+
         }
 
         return result;
+    }
+
+    private static string AddModules(bool selling, PpkOnDrive toSelling, List<string> result, string slnName, string projectName, string path, string nameFolder)
+    {
+        var path2 = FS.Combine(path, nameFolder);
+        AddModules(path2, slnName + AllStrings.bs + projectName, result, selling, toSelling);
+        return path2;
     }
 
     /// <summary>
@@ -111,14 +125,15 @@ public static string GetDisplayedSolutionName(string item)
     /// <param name="toSelling"></param>
     private static void AddModules(string path, string SlnProject, List<string> result, bool selling, PpkOnDrive toSelling)
     {
-        path = FS.Combine(path, "UC");
+        
         if (FS.ExistsDirectory(path))
         {
             var files = FS.GetFiles(path, FS.MascFromExtension(AllExtensions.xaml), System.IO.SearchOption.TopDirectoryOnly, true);
             files = FS.GetFileNamesWoExtension(files);
             foreach (var item in files)
             {
-                var s = SlnProject + AllStrings.bs + item;
+                var module = FS.GetFileName(item);
+                var s = SlnProject + AllStrings.bs + module;
                 if (toSelling.Contains(s))
                 {
                     if (selling)

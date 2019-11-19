@@ -131,10 +131,10 @@ namespace desktop.Controls.Collections
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            TF.SaveLines(chblAutoYes.AllContent(), autoYes);
-            TF.SaveLines(chblManuallyYes.AllContent(), manuallyYes);
-            TF.SaveLines(chblManuallyNo.AllContent(), manuallyNo);
-            TF.SaveLines(chblAutoNo.AllContent(), autoNo);
+            TF.SaveLines(chblAutoYes.AllContentString(), autoYes);
+            TF.SaveLines(chblManuallyYes.AllContentString(), manuallyYes);
+            TF.SaveLines(chblManuallyNo.AllContentString(), manuallyNo);
+            TF.SaveLines(chblAutoNo.AllContentString(), autoNo);
         }
 
         CheckBox ch(object o)

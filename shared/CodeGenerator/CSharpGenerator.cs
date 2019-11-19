@@ -95,7 +95,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <summary>
     /// Pokud do A2 zadáš Private tak se jednoduše žádný modifikátor nepřidá - to proto že se může jednat o vnitřek metody atd.
     /// A1 se bude ignorovat pokud v A7 bude NewAssign
-    /// Do A8 se nesmí vkládal null, program by havaroval
+    /// Do A8 value se nesmí vkládal null, program by havaroval
+    /// If A7 NewAssign, put into A8 string.Empty => constructor will be empty
+    /// If A7 Original, put into A8 part after =
     /// </summary>
     /// <param name="tabCount"></param>
     /// <param name="_public"></param>
