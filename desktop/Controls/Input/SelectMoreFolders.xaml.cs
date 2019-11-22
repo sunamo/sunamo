@@ -65,8 +65,6 @@ namespace desktop.Controls.Input
             AddFolder(string.Empty);
         }
 
-
-
         public void RemoveAllFolders()
         {
             for (int i = spFolders.Children.Count - 1; i >= 0; i--)
@@ -131,6 +129,7 @@ namespace desktop.Controls.Input
             // Must be called after sf is on panel and has registered Sf_FolderChanged, because control for FolderChanged != null
             Sf_FolderChanged(folder);
         }
+
         public static void Validate(object tb, SelectMoreFolders control, ValidateData d = null)
         {
             foreach (SelectFolder item in ControlFinder.StackPanel(control, "spFolders").Children)
@@ -142,6 +141,11 @@ namespace desktop.Controls.Input
         public void Validate(object tbFolder, ValidateData d = null)
         {
             Validate(tbFolder, this, d);
+        }
+
+        private void btnSaveChangesToTemplate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

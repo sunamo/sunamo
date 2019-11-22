@@ -37,6 +37,11 @@ public class Exceptions
         return sb.ToString();
     }
 
+    internal static object UseRlc(string before)
+    {
+        return CheckBefore(before) + "Don't implement, use methods in rlc";
+    }
+
     public static object IsWhitespaceOrNull(string before, string variable, object data)
     {
         bool isNull = false;

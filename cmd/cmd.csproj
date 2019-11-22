@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo.notmine\HtmlAgilityPack.Shared\HtmlCmdLine.cs">
+      <Link>HtmlCmdLine.cs</Link>
+    </Compile>
     <Compile Include="..\..\sunamo\cmd\Essential\ConsoleLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Essential\TypedConsoleLogger.cs" />

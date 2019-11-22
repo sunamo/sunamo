@@ -31,6 +31,11 @@ public static partial class CA
         return mySites;
     }
 
+    /// <summary>
+    /// Return true if A1 is null or have zero elements
+    /// </summary>
+    /// <param name="mustBe"></param>
+    /// <returns></returns>
     public static bool IsEmptyOrNull(IEnumerable mustBe)
     {
         if (mustBe == null)
@@ -247,6 +252,7 @@ public static partial class CA
     }
 
     /// <summary>
+    /// element can be null, then will be added as default(T)
     /// Do hard cast
     /// If need cast to number, simply use CA.ToNumber
     /// If item is null, add instead it default(T)
@@ -263,6 +269,7 @@ public static partial class CA
 
 
     /// <summary>
+    /// element can be null, then will be added as default(T)
     /// If item is null, add instead it default(T)
     /// cant join from IEnumerable elements because there must be T2 for element's type of collection
     /// </summary>
@@ -386,6 +393,7 @@ public static partial class CA
     }
 
     /// <summary>
+    /// element can be null, then will be added as default(T)
     /// Must be private - to use only public in CA
     /// bcoz Cast() not working
     /// Dont make any type checking - could be done before

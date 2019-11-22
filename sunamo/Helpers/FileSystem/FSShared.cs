@@ -460,6 +460,7 @@ public partial class FS
     }
 
     /// <summary>
+    /// Cant return with end slash becuase is working also with files
     /// Use this than FS.Combine which if argument starts with backslash ignore all arguments before this
     /// </summary>
     /// <param name="upFolderName"></param>
@@ -470,6 +471,11 @@ public partial class FS
         return CombineWorker(true, s);
     }
 
+    /// <summary>
+    /// Cant return with end slash becuase is working also with files
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static string CombineWithoutFirstCharLower(params string[] s)
     {
         return CombineWorker(false, s);
@@ -511,6 +517,12 @@ public partial class FS
         return !badFormat;
     }
 
+    /// <summary>
+    /// Cant return with end slash becuase is working also with files
+    /// </summary>
+    /// <param name="firstCharLower"></param>
+    /// <param name="s"></param>
+    /// <returns></returns>
     private static string CombineWorker(bool firstCharLower, params string[] s)
     {
         s = CA.TrimStart(AllChars.bs, s);
@@ -523,6 +535,8 @@ public partial class FS
         {
             result = FS.FirstCharUpper(ref result);
         }
+        // Cant return with end slash becuase is working also with files
+        //FS.WithEndSlash(ref result);
         return result;
     }
 

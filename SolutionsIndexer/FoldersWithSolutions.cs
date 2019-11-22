@@ -70,11 +70,6 @@ public class FoldersWithSolutions
         for (int i = 0; i < solutionFolders.Count; i++)
         {
             var solutionFolder = solutionFolders[i];
-
-            if (!solutionFolder.Contains(@"\Projects\"))
-            {
-                continue;
-            }
             
             SolutionFolder sf = CreateSolutionFolder(solutionFolder, toSelling, projOnlyNames[i]);
             

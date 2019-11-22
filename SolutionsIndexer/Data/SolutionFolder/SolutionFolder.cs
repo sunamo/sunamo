@@ -23,8 +23,11 @@ namespace AllProjectsSearch
 
         public  void UpdateModules(PpkOnDrive toSelling)
         {
-            this.modulesSelling = SolutionsIndexerHelper.ModulesInSolution(this.projects, this.fullPathFolder, true, toSelling);
-            this.modulesNotSelling = SolutionsIndexerHelper.ModulesInSolution(this.projects, this.fullPathFolder, false, toSelling);
+            if (toSelling != null)
+            {
+                this.modulesSelling = SolutionsIndexerHelper.ModulesInSolution(this.projects, this.fullPathFolder, true, toSelling);
+                this.modulesNotSelling = SolutionsIndexerHelper.ModulesInSolution(this.projects, this.fullPathFolder, false, toSelling);
+            }
         }
         public SolutionFolder()
         {

@@ -964,7 +964,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         //return Convert.ToInt64( sloupce[0]);
     }
 
-
+    /// <summary>
+    /// For inserting to table id-name
+    /// </summary>
+    /// <param name="tabulka"></param>
+    /// <param name="nazev"></param>
+    /// <returns></returns>
     public int InsertRowTypeEnum(string tabulka, string nazev)
     {
         int vr = SelectFindOutNumberOfRows(tabulka) + 1;

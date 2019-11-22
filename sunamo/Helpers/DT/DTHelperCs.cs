@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -149,6 +150,11 @@ public partial class DTHelperCs
         {
             return "Nezn\u00E1m\u00FD v\u011Bk";
         }
+    }
+
+    public static IEnumerable ToShortDate(DateTime d)
+    {
+        return SH.Join(AllStrings.dot, d.Day, d.Month, d.Year);
     }
 
     /// <summary>

@@ -24,6 +24,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
+    public static void UseRlc(object type, string methodName)
+    {
+        ThrowIsNotNull(Exceptions.UseRlc(FullNameOfExecutedCode(type, methodName, true)));
+    }
+
     /// <summary>
     /// Return & throw exception whether directory exists
     /// </summary>

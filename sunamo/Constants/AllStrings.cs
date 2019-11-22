@@ -43,6 +43,9 @@ public class AllStrings
     public const string colon = ":";
     public const string us = "_";
 
+    /// <summary>
+    /// ORDINAL BRACKET
+    /// </summary>
     public const string lb = "(";
     public const string rb = ")";
 

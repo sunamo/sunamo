@@ -1,4 +1,5 @@
 ﻿using ConfigurableWindow.Shared;
+using desktop.AwesomeFont;
 using desktop.UserControls;
 using sunamo.Essential;
 using System.Collections.Generic;
@@ -103,8 +104,6 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #region 3) Initialize base properties of app
         Instance = this;
 
-        
-
         WpfApp.cd = Dispatcher;
 
         // Important to shut down app
@@ -162,7 +161,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 9) Set up UI of app
-
+        SetAwesomeIcons();
         #endregion
 
         #region 10) Login, Load data
@@ -183,10 +182,18 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         }
     }
 
+    public const string awesomeFontPath = "/Fonts/FontAwesome.otf#FontAwesome";
+
+    void SetAwesomeIcons()
+    {
+        //AwesomeFontControls.SetAwesomeFontSymbol(tbAwesome, "\uf133");
+    }
+
     public IConfigurableWindowSettings CreateSettings()
     {
         return new ConfigurableWindow.Shared.WindowConfigSettings(this, data);
     }
+
     private void SetMode(Mode mode)
     {
         this.Topmost = false;

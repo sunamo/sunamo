@@ -381,6 +381,7 @@
     <Compile Include="Essential\WebApp.cs" />
     <Compile Include="Exceptions\NoImplementedException.cs" />
     <Compile Include="Exceptions\UnauthorizedAccessException.cs" />
+    <Compile Include="Extensions\AssertExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\HtmlNodeExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
@@ -554,6 +555,7 @@
     <Compile Include="Interfaces\IResourceHelper.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Interfaces\ISatisfiesSearch.cs" />
+    <Compile Include="Interfaces\ISearchable.cs" />
     <Compile Include="Interfaces\ISearching.cs" />
     <Compile Include="Interfaces\ISearchingAll.cs" />
     <Compile Include="Interfaces\ISelected.cs" />
