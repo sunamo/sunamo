@@ -64,7 +64,7 @@ public static partial class HtmlHelper
 
     public static string PrepareToAttribute(string title)
     {
-        return title.Replace(AllChars.qm, AllChars.bs);
+        return title.Replace(AllChars.qm, AllChars.apostrophe);
     }
 
     public static string ReplaceAllFontCase(string r)
