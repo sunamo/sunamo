@@ -2767,7 +2767,11 @@ public class XlfKeys
 
     public const string LastModifiedSpan = "LastModifiedSpan";
 
+    /// <summary>
+    /// Had value App <span></span> - commented because contains html
+    /// </summary>
     public const string AppSpan = "AppSpan";
+    public const string App = "App";
 
     public const string NoAppImagesFound = "NoAppImagesFound";
 

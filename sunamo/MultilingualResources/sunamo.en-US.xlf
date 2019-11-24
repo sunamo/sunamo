@@ -8172,9 +8172,9 @@
           <source></source>
           <target state="translated">No app images found.</target>
         </trans-unit>
-        <trans-unit id="AppSpan" translate="yes" xml:space="preserve">
+        <trans-unit id="App" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">App &lt;span&gt;&lt;/span&gt;</target>
+          <target state="translated">App</target>
         </trans-unit>
         <trans-unit id="LastModifiedSpan" translate="yes" xml:space="preserve">
           <source></source>
