@@ -495,6 +495,12 @@ public static partial class SH
         return ReplaceWhiteSpaces(p, "");
     }
 
+    /// <summary>
+    /// Replace all whitespaces except of space and then A1 with space
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
     public static string ReplaceWhiteSpaces(string p, string v)
     {
         return SH.Replace(ReplaceWhiteSpacesWithoutSpaces(p, v), v, AllStrings.space);

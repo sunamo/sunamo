@@ -381,6 +381,10 @@ public static partial class SH
         return result;
     }
 
+    
+
+  
+
     public static string MakeUpToXChars(int p, int p_2)
     {
         StringBuilder sb = new StringBuilder();
@@ -2026,6 +2030,16 @@ public static partial class SH
         }
         
         return r;
+    }
+
+    public static string ReplaceWhitespaces(string s, string forWhat)
+    {
+        foreach (var item in AllChars.whiteSpacesChars)
+        {
+            s = s.Replace(item.ToString(), forWhat);
+        }
+
+        return s;
     }
 
     public static bool TrimIfStartsWith(ref string s, string p)

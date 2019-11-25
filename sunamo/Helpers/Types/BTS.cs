@@ -234,6 +234,7 @@ public static partial class BTS
     public static float ParseFloat(string ratingS)
     {
         float vr = float.MinValue;
+
         ratingS = ratingS.Replace(AllChars.comma, AllChars.dot);
         if (float.TryParse(ratingS, out vr))
         {

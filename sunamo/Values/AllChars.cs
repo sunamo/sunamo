@@ -55,6 +55,9 @@ public static class AllChars
 
     // IsWhiteSpace
     // , 55296 mi taky vrátila metoda IsWhiteSpace vrátila, ale při znovu vytvoření pomocí tohoto kódu to vyhazovalo výjimku
+    /// <summary>
+    /// 160 is space, is used for example in Uctenkovka
+    /// </summary>
     public static readonly List<int> whiteSpacesCodes = new List<int>(new int[] { 9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8232, 8233, 8239, 8287, 12288 });
     public static List<char> whiteSpacesChars = null;
     public const char plus = '+';
@@ -62,6 +65,8 @@ public static class AllChars
     // my extension
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
     public static readonly List<char> specialChars = new List<char>(new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '?', '_', '~' });
+
+    
 
     // my extension
     public static readonly List<char> generalChars = null;

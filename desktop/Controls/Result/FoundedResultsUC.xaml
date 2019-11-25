@@ -10,13 +10,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-    </Grid>
-    <!--<StackPanel Orientation="Vertical" x:Name="sp">
-            
-    </StackPanel>-->
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
 
-        </StackPanel>
-    </ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
 </UserControl>
