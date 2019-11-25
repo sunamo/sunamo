@@ -82,6 +82,13 @@ public static partial class CL{
         return DialogResult.No;
     }
 
+    static void ChangeColorOfConsoleAndWrite(string text, TypeOfMessage tz)
+    {
+        ConsoleLogger.SetColorOfConsole(tz);
+        Console.WriteLine(); Console.WriteLine(text);
+        ConsoleLogger.SetColorOfConsole(TypeOfMessage.Ordinal);
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -89,6 +96,24 @@ public static partial class CL{
     public static void Appeal(string appeal)
     {
         ConsoleLogger.ChangeColorOfConsoleAndWrite(TypeOfMessage.Appeal, appeal);
+    }
+
+    public static void Success(string text, params string[] p)
+    {
+        ChangeColorOfConsoleAndWrite(string.Format(text, p), TypeOfMessage.Success);
+    }
+
+    public static void Error(string text, params string[] p)
+    {
+        ChangeColorOfConsoleAndWrite(string.Format(text, p), TypeOfMessage.Error);
+    }
+    public static void Warning(string text, params string[] p)
+    {
+        ChangeColorOfConsoleAndWrite(string.Format(text, p), TypeOfMessage.Warning);
+    }
+    public static void Information(string text, params string[] p)
+    {
+        ChangeColorOfConsoleAndWrite(string.Format(text, p), TypeOfMessage.Information);
     }
 
     /// <summary>

@@ -61,7 +61,21 @@ public partial class FS
         return resultSerie;
     }
 
-    
+    public static void CreateFileWithTemplateContent(string folder, string files, string ext, string templateFromContent)
+    {
+        var lines = SH.GetLines(files);
+
+        foreach (var item in lines)
+        {
+            var path = FS.Combine(folder, item + ext);
+            if (!FS.ExistsFile(path))
+            {
+                TF.WriteAllText(path, templateFromContent);
+            }
+        }
+    }
+
+
     #endregion
 }
 

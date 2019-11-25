@@ -54,12 +54,12 @@
     <Compile Include="..\..\sunamo\cmd\Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Essential\TypedConsoleLogger.cs" />
     <Compile Include="..\..\sunamo\cmd\Essential\CmdAppShared.cs" />
-    <Compile Include="..\..\sunamo\cmd\Helpers\CLShared.cs" />
     <Compile Include="Essential\CmdApp.cs" />
     <Compile Include="Essential\ConsoleLogger.cs" />
     <Compile Include="Essential\ConsoleTemplateLogger.cs" />
     <Compile Include="Essential\TypedConsoleLogger.cs" />
     <Compile Include="Helpers\CL.cs" />
+    <Compile Include="Helpers\CLShared.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

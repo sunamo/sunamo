@@ -487,7 +487,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             if (dictionary.ContainsKey(p))
             {
                 DropTableIfExists(p);
-                dictionary[p].GetSqlCreateTable(p, true, conn).ExecuteNonQuery();
+                dictionary[p].GetSqlCreateTable(p, true).ExecuteNonQuery();
             }
             conn.Close();
         }
@@ -501,13 +501,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+
+
     public void DropAndCreateTable(string p, MSColumnsDB msc)
     {
         using (var conn = new SqlConnection(Cs))
         {
             conn.Open();
             DropTableIfExists(p);
-            msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
+            msc.GetSqlCreateTable(p, false).ExecuteNonQuery();
             conn.Close();
         }
     }
@@ -523,6 +525,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int DropTableIfExists(string table)
     {
+
         if (SelectExistsTable(table))
         {
             return ExecuteNonQuery(new SqlCommand("DROP TABLE " + table));
@@ -2164,12 +2167,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlCommand comm = new SqlCommand("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
         AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
         return ExecuteScalarDateTime(getIfNotFound, comm);
-    }
-
-    public void DropAndCreateTable(string p, MSColumnsDB msc, SqlConnection conn)
-    {
-        DropTableIfExists(p);
-        msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
     }
 
     public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string sloupec, int maxRows, AB[] whereIs, AB[] whereIsNot)

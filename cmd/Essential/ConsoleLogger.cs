@@ -23,7 +23,7 @@ namespace cmd.Essential
             SetColorOfConsole(TypeOfMessage.Ordinal);
         }
 
-        private static void SetColorOfConsole(TypeOfMessage tz)
+        public static void SetColorOfConsole(TypeOfMessage tz)
         {
             ConsoleColor bk = ConsoleColor.White;
 
