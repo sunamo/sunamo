@@ -121,6 +121,7 @@
     <Compile Include="Collections\DictionarySort.cs" />
     <Compile Include="Collections\ExtensionSortedCollection.cs" />
     <Compile Include="Collections\FsWatcherDictionary.cs" />
+    <Compile Include="Collections\Joiner.cs" />
     <Compile Include="Collections\L.cs" />
     <Compile Include="Collections\ListWithElements.cs" />
     <Compile Include="Collections\NotifyChangesCollection.cs" />

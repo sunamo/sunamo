@@ -479,16 +479,22 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
+    public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary, SqlConnection conn)
+    {
+        if (dictionary.ContainsKey(p))
+        {
+            DropTableIfExists(p);
+            dictionary[p].GetSqlCreateTable(p, true).ExecuteNonQuery();
+        }
+    }
+
     public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
+
         using (var conn = new SqlConnection(Cs))
         {
             conn.Open();
-            if (dictionary.ContainsKey(p))
-            {
-                DropTableIfExists(p);
-                dictionary[p].GetSqlCreateTable(p, true).ExecuteNonQuery();
-            }
+            DropAndCreateTable(p, dictionary, conn);
             conn.Close();
         }
     }
