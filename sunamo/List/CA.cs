@@ -154,6 +154,26 @@ public static partial class CA
         return abl;
     }
 
+    public static List<T> GetDuplicities<T>(List<T> clipboardL)
+    {
+        List<T> alreadyProcessed = new List<T>(clipboardL.Count);
+        CollectionWithoutDuplicates<T> duplicated = new CollectionWithoutDuplicates<T>();
+
+        foreach (var item in clipboardL)
+        {
+            if (alreadyProcessed.Contains(item))
+            {
+                duplicated.Add(item);
+            }
+            else
+            {
+                alreadyProcessed.Add(item);
+            }
+        }
+
+        return duplicated.c;
+    }
+
     /// <summary>
     /// Return whether all of A1 are in A2
     /// Not all from A2 must be A1

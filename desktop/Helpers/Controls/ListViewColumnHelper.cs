@@ -46,7 +46,12 @@ public class ListViewColumnHelper<T> where T : IIdentificator<int>
         bool setUp = first.IsChecked;
         for (int i = p[0]; i < p[1]; i++)
         {
-            col.First(d => d.Id == i).IsChecked = setUp;
+             first = col.FirstOrDefault(d => d.Id == i);
+            if (!EqualityComparer<T>.Default.Equals(default(T), first))
+            {
+                first.IsChecked = setUp;
+            }
+            
         }
     }
 }
