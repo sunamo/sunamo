@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using sunamo.Constants;
 using sunamo.Essential;
 
+/// <summary>
+/// Right format of paths are:
+/// d:\_Test\SunamoCzAdmin\SunamoCzAdmin.Wpf\ConvertMetroCss3To4\
+/// d:\_Test\SunamoCzAdmin\SunamoCzAdmin.Wpf\ConvertMetroCss3To4_Original\
+/// 
+/// 
+/// </summary>
 public class TestHelper
 {
     public static string DefaultFolderPath()
@@ -16,9 +24,10 @@ public class TestHelper
     }
 
     /// <summary>
-    /// A1 can be null, then will be joined default like d:\_Test\AllProjectsSearch\AllProjectsSearch\
-    /// A2 can be slashed or backslashed
+    /// A1 can be null, then will be joined default like d:\_Test\AllProjectsSearch\AllProjectsSearch\ by DefaultFolderPath()
+    /// A2 can be slashed or backslashed. Will be appended to A1.
     /// To A2 will be add _Original automatically
+    /// A3 is append after folder and folderFrom (with _Original\)
     /// </summary>
     /// <param name="appName"></param>
     /// <param name="featureOrType"></param>
@@ -77,6 +86,11 @@ public class TestHelper
         }
     }
 
+    /// <summary>
+    /// A1 can be Type, string or any object, then is as name take name of it's class
+    /// </summary>
+    /// <param name="featureOrType"></param>
+    /// <returns></returns>
     private static string NameOfFeature(object featureOrType)
     {
         string feature = null;
@@ -109,6 +123,16 @@ public class TestHelper
         string project = ThisApp.Project;
 
         return @"d:\_Test\" + appName + "\\" + project + SH.WrapWith(feature, AllChars.bs, true);
+    }
+
+    /// <summary>
+    /// 
+    /// Path will be combined with ThisApp.Name and ThisApp.Project
+    /// </summary>
+    /// <returns></returns>
+    public static string GetFileInProjectsFolder(string fileRelativeToProjectPath)
+    {
+        return FS.Combine(DefaultPaths.vsProjects, ThisApp.Name, ThisApp.Project, fileRelativeToProjectPath);
     }
 }
 

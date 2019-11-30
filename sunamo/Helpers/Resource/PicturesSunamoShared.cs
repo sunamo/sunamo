@@ -83,6 +83,11 @@ public partial class PicturesSunamo
 
     public static SunamoSize CalculateOptimalSize(int width, int height, int maxWidth)
     {
+        return CalculateOptimalSizeWpf(width, height, maxWidth);
+    }
+
+    public static SunamoSize CalculateOptimalSizeWpf(double width, double height, int maxWidth)
+    {
         SunamoSize vr = new SunamoSize(width, height);
         int sirkaSloupce = maxWidth;
         if (width > sirkaSloupce)

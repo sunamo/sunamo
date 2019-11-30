@@ -27,6 +27,23 @@ namespace Roslyn
     {
         static Type type = typeof(RoslynHelper);
 
+        public static List<Project> GetAllProjectsInSolution(string slnPath)
+        {
+            var _ = typeof(Microsoft.CodeAnalysis.CSharp.Formatting.CSharpFormattingOptions);
+
+            var msWorkspace = MSBuildWorkspace.Create();
+            msWorkspace.SkipUnrecognizedProjects = false;
+
+            var solution = msWorkspace.OpenSolutionAsync(slnPath).Result;
+
+            DebugLogger.Instance.DumpObject("solution", solution, DumpProvider.Yaml);
+            foreach (var project in solution.Projects)
+            {
+                DebugLogger.Instance.DumpObject("", project, DumpProvider.Yaml);
+            }
+            return solution.Projects.ToList();
+        }
+
         /// <summary>
         /// A2 is also for master.designer.cs and aspx.designer.cs
         /// </summary>

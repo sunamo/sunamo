@@ -13,7 +13,9 @@ public partial class YamlHelper
         var serializer = new Serializer();
         List<object> o2 = new List<object>(1);
         o2.Add(o);
-        serializer.Serialize(new IndentedTextWriter(new StringWriter(stringBuilder)), o2);
+        var sw = new StringWriter(stringBuilder);
+        var itw = new IndentedTextWriter(sw);
+        serializer.Serialize(sw, o2[0]);
         return stringBuilder.ToString();
     }
 }
