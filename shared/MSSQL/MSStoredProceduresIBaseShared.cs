@@ -89,6 +89,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return dt;
     }
 
+    public Dictionary<T, string> SelectIDNames<T>(Func<string, T> parse, string solutions, params AB[] where)
+    {
+        Dictionary<T, string> result = new Dictionary<T, string>();
+        var dt = SelectDataTableSelective(solutions, "ID,Name", where);
+        foreach (DataRow item in dt.Rows)
+        {
+            var row = item.ItemArray;
+
+            result.Add(SH.ToNumber<T>(parse, row[0].ToString()), MSTableRowParse.GetString(row, 1));
+        }
+
+        return result;
+    }
+
     public bool HasAnyValue(string table, string columnName, string iDColumnName, int idColumnValue)
     {
         return SelectCellDataTableStringOneRow(table, columnName, iDColumnName, idColumnValue) != "";

@@ -403,6 +403,7 @@
     <Compile Include="Generators\GitBashBuilder.cs" />
     <Compile Include="Generators\HtmlGenerator.cs" />
     <Compile Include="Generators\HtmlGenerator2.cs" />
+    <Compile Include="Generators\HtmlGenerator2Shared.cs" />
     <Compile Include="Generators\HtmlGeneratorExtended.cs" />
     <Compile Include="Generators\HtmlGeneratorList.cs" />
     <Compile Include="Generators\HtmlGeneratorSelective.cs" />

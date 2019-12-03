@@ -78,6 +78,14 @@ public partial class UriWebServices
         public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
     }
 
+    public static void SearchAll(Func<string, string> topRecepty, List<string> clipboardL)
+    {
+        foreach (var item in clipboardL)
+        {
+            PH.Start(topRecepty.Invoke(item));
+        }
+    }
+
     public static class SexShops
     {
         public const string wwwRuzovyslonCz = "https://www.ruzovyslon.cz/hledani?_submit=Hledat&s=%s&do=searchForm-submit";
@@ -513,6 +521,11 @@ Template for which I will find, have to be in derivates the same:
     public static string FromChromeReplacement(string uri, string term)
     {
         return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode(term));
+    }
+
+    public static string TopRecepty(string what)
+    {
+        return FromChromeReplacement("https://www.toprecepty.cz/vyhledavani.php?hledam=%s&kategorie=&autor=&razeni=", what);
     }
 
     /// <summary>

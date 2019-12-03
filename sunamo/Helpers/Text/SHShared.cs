@@ -61,6 +61,16 @@ public static partial class SH
         return t;
     }
 
+    public static void RemoveLastChar(StringBuilder sb)
+    {
+        if (sb.Length > 0)
+        {
+            sb.Remove(sb.Length - 1, 1);
+                
+            
+        }
+    }
+
     public static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)
     {
     
@@ -152,6 +162,11 @@ public static partial class SH
         vr = SH.RemoveEndingPairCharsWhenDontHaveStarting(vr, AllStrings.cbl, AllStrings.cbr);
 
         return vr;
+    }
+
+    public static T ToNumber<T>(Func<string, T> parse, string v)
+    {
+        return parse.Invoke(v);
     }
 
     public static string RemoveEndingPairCharsWhenDontHaveStarting(string vr, string cbl, string cbr)
