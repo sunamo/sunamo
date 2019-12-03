@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ResourcesShared {
+namespace Resources {
     using System;
     
     
@@ -29,7 +29,7 @@ namespace ResourcesShared {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesDuo() {
+        public ResourcesDuo() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ResourcesShared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ResourcesShared.ResourcesDuo", typeof(ResourcesDuo).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesDuo", typeof(ResourcesDuo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

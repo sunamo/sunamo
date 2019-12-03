@@ -17,7 +17,6 @@ using System.Web;
 public static partial class HttpRequestHelper
 {
 
-
     public static bool IsNotFound(object uri)
     {
         HttpWebResponse r;
@@ -34,6 +33,27 @@ public static partial class HttpRequestHelper
         return HttpWebResponseHelper.SomeError(r);
     }
 
+    /// <summary>
+    /// A2 can be null (if dont have duplicated extension, set null)
+    /// </summary>
+    /// <param name="hrefs"></param>
+    /// <param name="DontHaveAllowedExtension"></param>
+    /// <param name="folder2"></param>
+    /// <param name="co"></param>
+    /// <param name="ext"></param>
+    public static void DownloadAll(List< string> hrefs, BoolString DontHaveAllowedExtension, string folder2, FileMoveCollisionOption co, string ext = null)
+    {
+        foreach (var item in hrefs)
+        {
+            var tempPath = FS.GetTempFilePath();
+
+            Download(item, DontHaveAllowedExtension, tempPath);
+            var to = FS.Combine(folder2, Path.GetFileName(item) + ext);
+
+            FS.MoveFile(tempPath, to, co);
+        }
+    }
+
         /// <summary>
         /// A2 can be null (if dont have duplicated extension, set null)
         /// </summary>
@@ -43,7 +63,7 @@ public static partial class HttpRequestHelper
         /// <param name = "fn"></param>
         /// <param name = "ext"></param>
         /// <returns></returns>
-        public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
+    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
     {
         if (DontHaveAllowedExtension != null)
         {
@@ -62,9 +82,10 @@ public static partial class HttpRequestHelper
         fn = SH.RemoveAfterFirst(fn, AllChars.q);
         string path = FS.Combine(folder2, fn + ext);
         FS.CreateFoldersPsysicallyUnlessThere(folder2);
-        if (!FS.ExistsFile(path))
+        if (!FS.ExistsFile(path) || FS.GetFileSize(path) == 0)
         {
             var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
+            
             File.WriteAllBytes(path, c);
         }
 

@@ -80,7 +80,6 @@
     <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="JunctionPoint.cs" />
-    <Compile Include="ParseSpecial.cs" />
     <Compile Include="PInvoke\IconExtractor.cs" />
     <Compile Include="PInvoke\KnownFoldersGuid.cs" />
     <Compile Include="PInvoke\SHFILEINFO.cs" />

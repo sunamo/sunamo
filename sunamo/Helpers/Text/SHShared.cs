@@ -38,7 +38,7 @@ public static partial class SH
         {
             return item.Substring(dex + after.Length); 
         }
-        return null;
+        return string.Empty;
     }
 
     public static string ReplaceAllExceptPrefixed(string t, string to, string from, string fromCannotBePrefixed)

@@ -244,7 +244,7 @@ public partial class TF
     {
         if ( ac  == null)
         {
-            File.WriteAllText(file.ToString(), content);
+            File.WriteAllText(file.ToString(), content, Encoding.UTF8);
         }
         else
         {

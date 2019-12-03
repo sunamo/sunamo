@@ -1,4 +1,5 @@
-﻿using ResourcesShared;
+﻿using Resources;
+
 using sunamo.Constants;
 using System;
 

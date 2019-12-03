@@ -13,11 +13,6 @@ public class MSStoredProceduresI : MSStoredProceduresIBase // : IStoredProcedure
 {
     static Type type = typeof(MSStoredProceduresI);
 
-    //public MSStoredProceduresI(SqlConnection conn) : base(conn)
-    //{
-
-    //}
-
     public static void SetVariable(SqlConnection ci, string databaseName)
     {
         ThrowExceptions.Custom(type, RH.CallingMethod(), "Commented due to new approach - create new db conn with every request");

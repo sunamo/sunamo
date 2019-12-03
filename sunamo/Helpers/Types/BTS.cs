@@ -660,8 +660,9 @@ public static partial class BTS
     public static List<string> GetNumberedListFromTo(int p, int max, string postfix = ". ")
     {
         max++;
+        max += p;
         List<string> vr = new List<string>();
-        for (int i = 0; i < max; i++)
+        for (int i = p; i < max; i++)
         {
             vr.Add(i + postfix);
         }

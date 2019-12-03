@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -62,7 +63,7 @@ public partial class PlatformInteropHelper{
 
 public static Type GetTypeOfResources()
     {
-        return typeof(ResourcesShared.ResourcesDuo);
+        return typeof(ResourcesDuo);
     //if (IsUseStandardProject())
     //{
     //    return typeof(standard.ResourcesStandard);

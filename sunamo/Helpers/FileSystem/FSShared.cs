@@ -76,6 +76,10 @@ public partial class FS
         s_invalidFileNameCharsWithoutDelimiterOfFolders.Remove(AllChars.slash);
     }
 
+    /// <summary>
+    /// path + file
+    /// </summary>
+    /// <returns></returns>
     public static string GetTempFilePath()
     {
         return FS.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetTempFileName()); 
@@ -865,9 +869,9 @@ public partial class FS
         }
     }
 
-    public static bool CopyMoveFilePrepare(ref string item, ref string fileTo2, FileMoveCollisionOption co)
+    public static bool CopyMoveFilePrepare(ref string item, ref string fileTo, FileMoveCollisionOption co)
     {
-        var fileTo = fileTo2.ToString();
+        //var fileTo = fileTo2.ToString();
         item = Consts.UncLongPath + item;
         MakeUncLongPath(ref fileTo);
         FS.CreateUpfoldersPsysicallyUnlessThere(fileTo);

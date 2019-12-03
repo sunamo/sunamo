@@ -97,19 +97,33 @@ public static partial class CA
         return vr;
     }
 
-    public static string GetNumberedList(List<string> input)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string GetNumberedList(List<string> input, int startFrom)
     {
         CA.RemoveStringsEmpty2(input);
-        CA.PrependWithNumbered(input);
+        CA.PrependWithNumbered(input, startFrom);
         return SH.JoinNL(input);
     }
 
-    private static void PrependWithNumbered(List<string> input)
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="input"></param>
+    private static void PrependWithNumbered(List<string> input, int startFrom)
     {
-        var numbered = BTS.GetNumberedListFromTo(1, input.Count - 1, ") ");
+        var numbered = BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
         Prepend(numbered, input);
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="numbered"></param>
+    /// <param name="input"></param>
     private static void Prepend(List<string> numbered, List<string> input)
     {
         ThrowExceptions.DifferentCountInLists(s_type, "Prepend", "numbered", numbered.Count(), "input", input.Count);

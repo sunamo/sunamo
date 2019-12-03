@@ -85,7 +85,7 @@ public class XlfResourcesH
         Type type = PlatformInteropHelper.GetTypeOfResources();
 
         //ResourcesHelper rm = ResourcesHelper.Create("standard.Properties.Resources", type.Assembly);
-        ResourcesHelper rm = ResourcesHelper.Create("ResourcesShared.ResourcesDuo", type.Assembly);
+        ResourcesHelper rm = ResourcesHelper.Create("Resources.ResourcesDuo", type.Assembly);
 
         var exists = false;
 

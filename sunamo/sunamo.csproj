@@ -246,6 +246,7 @@
     <Compile Include="Data\MedianAverage.cs" />
     <Compile Include="Data\MonthYear.cs" />
     <Compile Include="Data\MusicTitle.cs" />
+    <Compile Include="Data\NTree.cs" />
     <Compile Include="Data\OTS.cs" />
     <Compile Include="Data\Parsing.cs" />
     <Compile Include="Data\PGPhoto.cs" />
@@ -269,6 +270,7 @@
     <Compile Include="Data\SunamoSize.cs" />
     <Compile Include="Data\TextBoxState.cs" />
     <Compile Include="Data\TextFormatData.cs" />
+    <Compile Include="Data\TextGroupsData.cs" />
     <Compile Include="Data\TU.cs" />
     <Compile Include="Data\TUList.cs" />
     <Compile Include="Data\TWithName.cs" />
@@ -661,9 +663,9 @@
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ResourcesShared\ResourcesShared.csproj">
+    <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{3204432d-b6e7-4481-beb0-8b177af809c2}</Project>
-      <Name>ResourcesShared</Name>
+      <Name>Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

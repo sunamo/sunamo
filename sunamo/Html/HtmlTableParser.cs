@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 
 namespace sunamo
 {
+    // Row/column
     public class HtmlTableParser
     {
         /// <summary>
         /// Pokud se bude v prvku vyskytovat null, jednalo se o colspan
         /// </summary>
         public string[,] data = null;
+
+        public int RowCount => data.GetLength(0);
+        public int ColumnCount => data.GetLength(1);
 
         /// <summary>
         /// 
@@ -27,10 +31,17 @@ namespace sunamo
                 startRow++;
             }
 
-            html = html.FirstChild;
+
+
+            
             if (html.Name != "table")
             {
-                return;
+                var htmlFirst = html.FirstChild;
+                if (htmlFirst.Name != "table")
+                {
+                    return;
+                }
+                html = htmlFirst;
             }
 
             int maxColumn = 0;

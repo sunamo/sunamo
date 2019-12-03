@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "duo", "duo\duo.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsInterop", "VsInterop\VsInterop.csproj", "{B02D4114-47A2-4CA7-9612-897B1BBE3522}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourcesShared", "ResourcesShared\ResourcesShared.csproj", "{3204432D-B6E7-4481-BEB0-8B177AF809C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{3204432D-B6E7-4481-BEB0-8B177AF809C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionsIndexer", "SolutionsIndexer\SolutionsIndexer.csproj", "{2A39BC18-A077-4B14-AC41-A7BE3A91637C}"
 EndProject

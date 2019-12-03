@@ -17,6 +17,27 @@ public partial class DictionaryHelper
         return r;
     }
 
+    public static NTree<string> CreateTree(Dictionary<string, List<string>> d)
+    {
+        NTree<string> t = new NTree<string>(string.Empty);
+
+        foreach (var item in d)
+        {
+            var child = t.AddChild(item.Key);
+
+            foreach (var v in item.Value)
+            {
+                child.AddChild(v);
+            }
+
+            child.children = new LinkedList<NTree<string>>( child.children.Reverse());
+        }
+
+         
+
+        return t;
+    }
+
     public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
     {
         if (sl.ContainsKey(baseNazevTabulky))

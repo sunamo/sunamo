@@ -34,6 +34,8 @@ public partial class DictionaryHelper
         return i;
     }
 
+    
+
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
         ThrowExceptions.DifferentCountInLists(s_type, "GetDictionary", "keys", keys.Count, "values", values.Count);
@@ -100,14 +102,19 @@ public partial class DictionaryHelper
         AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
 
-    public static Dictionary<T1, T2> GetDictionaryFromIOrderedEnumerable<T1, T2>(IOrderedEnumerable<KeyValuePair<T1, T2>> orderedEnumerable)
+    internal static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable)
     {
         Dictionary<T1, T2> d = new Dictionary<T1, T2>();
-        foreach (var item in orderedEnumerable)
+        foreach (var item in enumerable)
         {
             d.Add(item.Key, item.Value);
         }
         return d;
+    }
+
+    public static Dictionary<T1, T2> GetDictionaryFromIOrderedEnumerable<T1, T2>(IOrderedEnumerable<KeyValuePair<T1, T2>> orderedEnumerable)
+    {
+        return GetDictionaryFromIEnumerable<T1, T2>(orderedEnumerable);
     }
 
     /// <summary>
