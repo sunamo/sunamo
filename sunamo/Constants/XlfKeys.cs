@@ -5,7 +5,9 @@ using System.Text;
 
 public class XlfKeys
 {
-	public const string BDoporučenáVerzeNebylaDosudNauploadovánaB = "BDoporučenáVerzeNebylaDosudNauploadovánaB" ; 
+    public const string SomethingWentWrong3dotspace = "SomethingWentWrong3dotspace";
+
+    public const string BDoporučenáVerzeNebylaDosudNauploadovánaB = "BDoporučenáVerzeNebylaDosudNauploadovánaB" ; 
 
 	public const string Scheme = "Scheme" ; 
 

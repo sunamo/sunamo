@@ -13741,6 +13741,10 @@
           <source></source>
           <target state="translated">Scheme</target>
         </trans-unit>
+        <trans-unit id="SomethingWentWrong3dotspace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Something went wrong... </target>
+        </trans-unit>
       <trans-unit id="BDoporučenáVerzeNebylaDosudNauploadovánaB" translate="yes" xml:space="preserve" xmlns=""><source></source><target state="translated">&lt;b&gt;Doporučená verze nebyla dosud nauploadována.&lt;/b&gt;</target></trans-unit></group>
     </body>
   </file>
