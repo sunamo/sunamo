@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
@@ -305,6 +306,7 @@
     <Compile Include="Enums\ComputerSizeUnits.cs" />
     <Compile Include="Enums\CssFramework.cs" />
     <Compile Include="Enums\CssNamedColors.cs" />
+    <Compile Include="Enums\CustomStatusCode.cs" />
     <Compile Include="Enums\DateTimeFormat.cs" />
     <Compile Include="Enums\DateTimeFormatStyles.cs" />
     <Compile Include="Enums\DebugOutput.cs" />
