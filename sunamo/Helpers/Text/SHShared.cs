@@ -2643,10 +2643,23 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
         return SH.JoinSpace(p);
     }
 
-public static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
+    /// <summary>
+    /// FixedSpace - Contains
+    /// AnySpaces - split input by spaces and A1 must contains all parts
+    /// ExactlyName - Is exactly the same
+    /// 
+    /// 
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="term"></param>
+    /// <param name="enoughIsContainsAttribute"></param>
+    /// <param name="caseSensitive"></param>
+    /// <returns></returns>
+    public static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
     {
         return Contains(input, term, enoughIsContainsAttribute ? SearchStrategy.AnySpaces : SearchStrategy.ExactlyName, caseSensitive);
     }
+
 /// <summary>
     /// AnySpaces - split A2 by spaces and A1 must contains all parts
     /// ExactlyName - ==
@@ -2703,6 +2716,7 @@ public static bool Contains(string input, string term, bool enoughIsContainsAttr
         }
         return false;
     }
+
 /// <summary>
     /// AnySpaces - split A2 by spaces and A1 must contains all parts
     /// ExactlyName - ==

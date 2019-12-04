@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 
+/// <summary>
+/// FixedSpace - Contains
+/// AnySpaces - 
+/// ExactlyName - Is exactly the same
+/// </summary>
 public enum SearchStrategy
 {
     /// <summary>
@@ -10,7 +15,7 @@ public enum SearchStrategy
     /// </summary>
     FixedSpace,
     /// <summary>
-    /// 
+    /// split input by spaces and A1 must contains all parts
     /// </summary>
     AnySpaces,
     /// <summary>
