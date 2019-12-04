@@ -126,6 +126,8 @@ public static partial class CL{
         Console.ReadLine();
     }
 
+    
+
     /// <summary>
     /// Return full path of selected file
     /// or null when operation will be stopped

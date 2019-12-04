@@ -10,8 +10,27 @@ using sunamo.Essential;
 using sunamo.Constants;
 using System.Linq;
 
-public static partial class CL{ 
-/// <summary>
+public static partial class CL
+{
+
+    public static void PerformAction(Dictionary<string, VoidVoid> actions)
+    {
+        List<string> listOfActions = actions.Keys.ToList();
+        PerformAction(actions, listOfActions);
+    }
+
+    private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
+    {
+        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"]);
+        if (selected != -1)
+        {
+            string ind = listOfActions[selected];
+            var eh = actions[ind];
+            eh.Invoke();
+        }
+    }
+
+    /// <summary>
     /// Let user select action and run with A2 arg
     /// </summary>
     /// <param name = "akce"></param>
@@ -29,17 +48,7 @@ public static partial class CL{
 
         eh.Invoke(sender, EventArgs.Empty);
     }
-public static void PerformAction(Dictionary<string, VoidVoid> actions)
-    {
-        List<string> listOfActions = actions.Keys.ToList();
-        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"]);
-        if (selected != -1)
-        {
-            string ind = listOfActions[selected];
-            var eh = actions[ind];
-            eh.Invoke();
-        }
-    }
+
 
 
 
@@ -107,6 +116,7 @@ public static void PerformAction(Dictionary<string, VoidVoid> actions)
 
         return UserMustTypeNumber(what, variants.Count - 1);
     }
+
 /// <summary>
     /// 
     /// </summary>

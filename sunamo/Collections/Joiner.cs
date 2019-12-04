@@ -15,7 +15,8 @@ public class Joiner<T>
 
     }
 
-    public Joiner(string joinWith, int capacity = int.MinValue)
+
+    public Joiner(string joinWith, int capacity = 5)
     {
         this.joinWith = joinWith;
         list = new List<T>(capacity);
@@ -26,9 +27,9 @@ public class Joiner<T>
 
     }
 
-    public void Add(string appName)
+    public void Add(T appName)
     {
-        throw new NotImplementedException();
+        list.Add(appName);
     }
 }
 

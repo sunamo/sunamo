@@ -817,7 +817,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
         bool totalLower = false;
-        object d = SelectLastIDFromTableSigned(signed, tabulka, idt, sloupecID, out totalLower);
+        object d = SelectLastIDFromTableSigned(new SqlData { signed = signed }, tabulka, idt, sloupecID, out totalLower);
         #region MyRegion
         int pricist = 0;
         if (!totalLower)
@@ -1159,7 +1159,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, string idColumn, object idValue)
     {
-        return SelectValuesOfColumnAllRowsShort(true, tabulka, sloupec, idColumn, idValue);
+        return SelectValuesOfColumnAllRowsShort(new SqlData { signed = true }, tabulka, sloupec, idColumn, idValue);
     }
 
     /// <summary>
@@ -1168,13 +1168,27 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="tabulka"></param>
     /// <param name="sloupec"></param>
     /// <returns></returns>
-    public List<short> SelectValuesOfColumnAllRowsShort(bool signed, string tabulka, string sloupec, string idColumn, object idValue)
+    public List<short> SelectValuesOfColumnAllRowsShort(SqlData d, string tabulka, string sloupec, string idColumn, object idValue)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT "+ Distinct(d) +" {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
         AddCommandParameter(comm, 0, idValue);
         return ReadValuesShort(comm);
     }
 
+    /// <summary>
+    /// Not return space on left or right
+    /// </summary>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    private string Distinct(SqlData d)
+    {
+        if (d.distinct)
+        {
+            return "distinct";
+        }
+
+        return string.Empty;
+    }
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, int limit, string sloupec, string idColumn, object idValue)
     {
@@ -1249,9 +1263,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="tabulka"></param>
     /// <param name="sloupec"></param>
     /// <returns></returns>
-    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, params AB[] ab)
+    public List<short> SelectValuesOfColumnAllRowsShort(SqlData d, string tabulka, string sloupec, params AB[] ab)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.CombinedWhere(ab)));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT "+ Distinct(d) + " {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.CombinedWhere(ab)));
         AddCommandParameterFromAbc(comm, ab);
         return ReadValuesShort(comm);
     }
@@ -2411,7 +2425,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupecID"></param>
     /// <param name="totalLower"></param>
     /// <returns></returns>
-    public object SelectLastIDFromTableSigned(bool signed, string p, Type idt, string sloupecID, out bool totalLower)
+    public object SelectLastIDFromTableSigned(SqlData d, string p, Type idt, string sloupecID, out bool totalLower)
     {
         totalLower = false;
         string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
@@ -2420,7 +2434,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             totalLower = true;
             object vr = 0;
-            if (signed)
+            if (d.signed)
             {
                 vr = BTS.GetMinValueForType(idt);
             }

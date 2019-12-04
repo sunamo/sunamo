@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
