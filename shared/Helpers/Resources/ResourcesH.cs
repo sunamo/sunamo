@@ -47,7 +47,7 @@ public class ResourcesH : IResourceHelper
 
         public Uri GetRelativeUri(string name)
         {
-            return new Uri(SH.PrefixIfNotStartedWith(AllStrings.slash, name), UriKind.Relative);
+            return new Uri(SH.PrefixIfNotStartedWith(name, AllStrings.slash), UriKind.Relative);
         }
 
         public BitmapImage GetBitmapImageSource(string name)

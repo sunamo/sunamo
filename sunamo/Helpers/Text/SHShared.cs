@@ -193,7 +193,6 @@ public static partial class SH
             sb.Remove(onlyLeft[i], 1);
         }
 
-        #region MyRegion
         //if (occL.Count == 0)
         //{
         //    result = vr.Replace(AllStrings.cbr, string.Empty);
@@ -245,7 +244,6 @@ public static partial class SH
 
         //    result = vr.ToLower();
         //} 
-        #endregion
 
         return sb.ToString();
     }
@@ -2749,5 +2747,14 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
             }
         }
         return true;
+    }
+
+public static string PrefixIfNotStartedWith( string item, string http)
+    {
+        if (!item.StartsWith(http))
+        {
+            return http + item;
+        }
+        return item;
     }
 }

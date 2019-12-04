@@ -38,6 +38,8 @@ public class Parse
 
     public class Integer
     {
+
+
         /// <summary>
         /// Vrátí -1 v případě že se nepodaří vyparsovat
         /// </summary>

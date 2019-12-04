@@ -582,15 +582,6 @@ public static partial class SH
         return vr;
     }
 
-    public static string PrefixIfNotStartedWith(string http, string item)
-    {
-        if (!item.StartsWith(http))
-        {
-            return http + item;
-        }
-        return item;
-    }
-
 
 
     public static string MultiWhitespaceLineToSingle(List<string> lines)
