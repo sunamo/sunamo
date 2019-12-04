@@ -35,13 +35,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <summary>
     /// a2 je X jako v příkazu @pX
     /// A3 cant be AB
+    /// When returned value will be negative, into db was entered emtpy string - insert new with SQLServerPreparedStatement  https://stackoverflow.com/questions/9066549/nvarchar-max-gives-string-or-binary-data-would-be-truncated
     /// </summary>
     /// <param name="comm"></param>
     /// <param name="i"></param>
     /// <param name="o"></param>
     public static int AddCommandParameter(SqlCommand comm, int i, object o)
     {
-
+        
 
         if (o == null || o.GetType() == DBNull.Value.GetType())
         {
@@ -60,6 +61,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         else if (o.GetType() == Types.tString || o.GetType() == Types.tChar)
         {
             string _ = o.ToString();
+            //if (_.Length > 7999)
+            //{
+            //    comm.Parameters.AddWithValue("@p" + i.ToString(), string.Empty);
+            //    ++i;
+            //    i *= -1;
+            //    return i;
+            //}
             comm.Parameters.AddWithValue("@p" + i.ToString(), MSStoredProceduresI.ConvertToVarChar(_));
         }
         else
@@ -852,7 +860,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         for (int i = 1; i < to; i++)
         {
             object o = sloupce[i - 1];
-            AddCommandParameter(comm, i, o);
+            //var resutl = 
+                AddCommandParameter(comm, i, o);
+            //if (resutl < 0)
+            //{
+            //    SQLServerPreparedStatement
+            //}
             //DateTime.Now.Month;
         }
         #endregion
