@@ -78,6 +78,14 @@ public partial class UriWebServices
         public static List<string> All = CA.ToListString(WwwFlexjobsCom, AngelCo, TalentHubstaffCom, RemoteCo, WeworkremotelyCom, JobspressoCo, StackoverflowCom);
     }
 
+    public static void SearchAll(string lyricsScz, List<string> clipboardL)
+    {
+        foreach (var item in clipboardL)
+        {
+            PH.Start(FromChromeReplacement(lyricsScz, item));
+        }
+    }
+
     public static void SearchAll(Func<string, string> topRecepty, List<string> clipboardL)
     {
         foreach (var item in clipboardL)
@@ -86,6 +94,10 @@ public partial class UriWebServices
         }
     }
 
+    public static class SunamoCz
+    {
+        public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
+    }
     public static class SexShops
     {
         public const string wwwRuzovyslonCz = "https://www.ruzovyslon.cz/hledani?_submit=Hledat&s=%s&do=searchForm-submit";

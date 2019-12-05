@@ -591,7 +591,6 @@
     <Compile Include="Parsing\Parse.cs" />
     <Compile Include="Parsing\ParseDefault.cs" />
     <Compile Include="Parsing\ParserTwoValues.cs" />
-    <Compile Include="Parsing\SitemapParser.cs" />
     <Compile Include="Parsing\TryParse.cs" />
     <Compile Include="PixelColors.cs" />
     <Compile Include="PlatformUwpInterop\AbstractCatalog.cs" />
