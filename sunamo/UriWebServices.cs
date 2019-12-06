@@ -20,6 +20,7 @@ public partial class UriWebServices
         }
     }
 
+    public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
     public static class AutomotiveSpareParts
     {
         public const string wwwAutokseftCz = "https://www.autokseft.cz/index.php?main_page=shop_search&keyword=%s";
