@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 /// </summary>
 public class ValidateData
 {
+    public readonly static ValidateData Default = new ValidateData();
     public bool trim = true;
     public List<string> excludedStrings = new List<string>();
     public bool allowEmpty = false;

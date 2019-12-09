@@ -24,6 +24,10 @@ namespace System.Windows.Controls
             {
                 return;
             }
+            if (d == null)
+            {
+                d = new ValidateData();
+            }
             string text = control.Text;
             if (d.trim)
             {

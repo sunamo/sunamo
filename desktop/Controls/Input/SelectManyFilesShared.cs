@@ -14,8 +14,12 @@ namespace desktop.Controls.Input
     public static Type type = typeof(SelectManyFiles);
 
     public  void Validate(object tb, SelectManyFiles control, ValidateData d = null)
-    {
-        foreach (SelectFile item in ControlFinder.StackPanel(this, "spFiles").Children)
+        {
+            if (d == null)
+            {
+                d = new ValidateData();
+            }
+            foreach (SelectFile item in ControlFinder.StackPanel(this, "spFiles").Children)
         {
             item.Validate(tb, d);
         }

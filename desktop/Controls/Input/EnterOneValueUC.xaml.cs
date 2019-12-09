@@ -19,7 +19,7 @@ namespace desktop.Controls.Input
 {
     /// <summary>
     /// Select Value - more from selector
-    /// Enter value - single 
+    /// Enter value - single,  EnterOneValueUC - fwElemements 
     /// </summary>
     public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {

@@ -44,7 +44,18 @@ public partial class XHelper{
         return ns;
     }
 
-/// <summary>
+    public static string InnerTextOfNode(XElement xe, string v)
+    {
+        var desc = xe.Descendants(XName.Get(v));
+        if (desc.Count() == 0)
+        {
+            return string.Empty;
+        }
+        var first = desc.First();
+        return first.Value;
+    }
+
+    /// <summary>
     /// Při nenalezení vrací null
     /// </summary>
     /// <param name = "item"></param>

@@ -70,7 +70,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
             bool isNull = Abstract.IsRootFolderNull();
             if (isNull)
             {
-                throw new Exception("Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + ".");
+                throw new Exception("Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + " (Look direct into IsRootFolderNull()).");
             }
 
             return rootFolder;

@@ -16,6 +16,7 @@ namespace desktop
         
         static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
         static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
+
         public static bool validated
         {
             set
@@ -47,10 +48,12 @@ namespace desktop
             txt.Text = d.text;
             return txt;
         }
+
         static TextBoxHelper()
         {
             TextBoxHelper.InicializeWidths();
         }
+
         public static int GetLineLength(TextBox txt, int line)
         {
             // Counting from 0

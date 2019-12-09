@@ -14,4 +14,11 @@ private static CheckBoxData<UIElement> Get(UIElement c)
         vr.t = c;
         return vr;
     }
+
+    
+
+public static CheckBoxData<UIElement> ActionButton(ControlInitData controlInitData)
+    {
+        return Get(ActionButtonHelper.Get<string>(controlInitData));
+    }
 }

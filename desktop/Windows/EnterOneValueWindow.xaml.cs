@@ -16,7 +16,7 @@ namespace desktop
 {
     /// <summary>
     /// Select Value - more from selector
-    /// Enter value - single 
+    /// Enter value - single,  EnterOneValueUC - fwElemements 
     /// </summary>
     public partial class EnterOneValueWindow : Window
     {

@@ -394,9 +394,31 @@ public static partial class SH
         return result;
     }
 
-    
+    static Dictionary<Brackets, string> bracketsLeft = null;
+    static Dictionary<Brackets, string> bracketsRight = null;
 
-  
+    public static string ReplaceBrackets(string item, Brackets from, Brackets to)
+    {
+        if (bracketsLeft == null)
+        {
+            bracketsLeft = new Dictionary<Brackets, string>();
+            bracketsLeft.Add(Brackets.Curly, "{");
+            bracketsLeft.Add(Brackets.Square, "[");
+            bracketsLeft.Add(Brackets.Normal, "(");
+
+            bracketsRight = new Dictionary<Brackets, string>();
+            bracketsRight.Add(Brackets.Curly, "}");
+            bracketsRight.Add(Brackets.Square, "]");
+            bracketsRight.Add(Brackets.Normal, ")");
+
+
+        }
+
+        item = item.Replace(bracketsLeft[from], bracketsLeft[to]);
+        item = item.Replace(bracketsRight[from], bracketsRight[to]);
+
+        return item;
+    }
 
     public static string MakeUpToXChars(int p, int p_2)
     {

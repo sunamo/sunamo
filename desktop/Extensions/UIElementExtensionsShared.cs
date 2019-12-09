@@ -36,6 +36,10 @@ public static partial class UIElementExtensions{
                 return result;
             }
         }
+        if (d == null)
+        {
+            d = new ValidateData();
+        }
 
         var t = ui.GetType();
         if (t == TypesControls.tTextBox)
@@ -44,23 +48,25 @@ public static partial class UIElementExtensions{
             c.Validate(name, d);
             return TextBoxHelper.validated;
         }
-        else if (t == TypesControls.tListBox)
-        {
-            var c = ui as ListBox;
-            c.Validate(name, d);
-            return TextBoxHelper.validated;
-        }
-        else if (t == TypesControls.tListView)
-        {
-            var c = ui as ListView;
-            c.Validate(name, d);
-            return TextBoxHelper.validated;
-        }
+        // ListBoxHelper
+        //else if (t == TypesControls.tListBox)
+        //{
+        //    var c = ui as ListBox;
+        //    c.Validate(name, d);
+        //    return ListBoxHelper.validated;
+        //}
+        // ListViewHelper doesnt exists
+        //else if (t == TypesControls.tListView)
+        //{
+        //    var c = ui as ListView;
+        //    c.Validate(name, d);
+        //    return ListViewHelper.validated;
+        //}
         else if (t == TypesControls.tComboBox)
         {
             var c = ui as ComboBox;
             c.Validate(name, d);
-            return TextBoxHelper.validated;
+            return ComboBoxHelper.validated;
         }
         else if (t == SelectFile.type)
         {

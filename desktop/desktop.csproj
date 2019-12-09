@@ -73,6 +73,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ComboBoxHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Buttons\ActionButton.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ActionButtonHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowWithSettingsManager.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="ConfigurableWindow\ConfigurableWindowWrapper.cs" />
     <Compile Include="ConfigurableWindow\IConfigurableWindow.cs" />
     <Compile Include="ConfigurableWindow\WindowConfigSettings.cs" />
+    <Compile Include="Controls\Buttons\ActionButton.cs" />
     <Compile Include="Controls\Collections\RadioButtonsList.xaml.cs">
       <DependentUpon>RadioButtonsList.xaml</DependentUpon>
     </Compile>
@@ -125,6 +129,8 @@
     </Compile>
     <Compile Include="Data\ControlInitData.cs" />
     <Compile Include="Helpers\BaseControls\ContentControlHelper.cs" />
+    <Compile Include="Helpers\Controls\ActionButtonHelper.cs" />
+    <Compile Include="Helpers\Controls\ComboBoxHelperShared.cs" />
     <Compile Include="Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="Helpers\Controls\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\TextBoxExtensionsShared.cs" />

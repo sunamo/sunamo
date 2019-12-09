@@ -24,6 +24,10 @@ namespace System.Windows.Controls
             {
                 return;
             }
+            if (d == null)
+            {
+                d = new ValidateData();
+            }
             var count = control.SelectedItems.Count;
 
             if (count == 0)

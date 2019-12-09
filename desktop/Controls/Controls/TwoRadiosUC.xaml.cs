@@ -70,6 +70,10 @@ namespace desktop.Controls.Controls
 
         public  void Validate(object tb, TwoRadiosUC control, ValidateData d = null)
         {
+            if (d == null)
+            {
+                d = new ValidateData();
+            }
             validated = BTS.GetValueOfNullable( rb1.IsChecked) || BTS.GetValueOfNullable( rb2.IsChecked);
         }
 

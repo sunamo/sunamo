@@ -232,7 +232,7 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         return result;
     }
 
-/// <summary>
+    /// <summary>
     /// 
     /// </summary>
     /// <param name = "address"></param>
@@ -272,7 +272,7 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         }
     }
 
-/// <summary>
+    /// <summary>
     /// Musí být v shared.web? ten HttpRequest je samozřejmě nekompatibilní
     /// Přesunul jsem metodu zpátky do shared
     /// Vrátí null pokud se nepodaří zjistit IP adresa

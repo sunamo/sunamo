@@ -1,7 +1,7 @@
 ﻿
 using sunamo.Collections;
 using sunamo.Data;
-
+using sunamo.Helpers.Number;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -207,6 +207,70 @@ public static partial class CA
         }
         return true;
     }
+    /// <summary>
+    /// A2,3 can be null, then no header will be append
+    /// A4 nameOfSolution - main header, also can be null
+    /// 
+    /// </summary>
+    /// <param name="alsoFileNames"></param>
+    /// <param name="nameForFirstFolder"></param>
+    /// <param name="nameForSecondFolder"></param>
+    /// <param name="nameOfSolution"></param>
+    /// <param name="files1"></param>
+    /// <param name="files2"></param>
+    /// <param name="inBoth"></param>
+    /// <returns></returns>
+    public static string CompareListResult(bool alsoFileNames, string nameForFirstFolder, string nameForSecondFolder, string nameOfSolution, List<string> files1, List<string> files2, List<string> inBoth)
+    {
+        int files1Count = files1.Count;
+        int files2Count = files2.Count;
+
+        string result;
+        TextOutputGenerator textOutput = new TextOutputGenerator();
+
+        int inBothCount = inBoth.Count;
+
+        double sumBothPlusManaged = inBothCount + files2Count;
+        PercentCalculator percentCalculator = new PercentCalculator(sumBothPlusManaged);
+
+        if (nameOfSolution != null)
+        {
+            textOutput.sb.AppendLine(nameOfSolution);
+        }
+
+        textOutput.sb.AppendLine("Both (" + inBothCount + AllStrings.swda + percentCalculator.PercentFor(inBothCount, false) + "%):");
+        if (alsoFileNames)
+        {
+            textOutput.List(inBoth);
+        }
+
+        if (nameForFirstFolder != null)
+        {
+            textOutput.sb.AppendLine(nameForFirstFolder + AllStrings.lb + files1Count + AllStrings.swda + percentCalculator.PercentFor(files1Count, true) + "%):");
+        }
+
+        if (alsoFileNames)
+        {
+            textOutput.List(files1);
+        }
+
+
+        if (nameForSecondFolder != null)
+        {
+            textOutput.sb.AppendLine(nameForSecondFolder + AllStrings.lb + files2Count + AllStrings.swda + percentCalculator.PercentFor(files2Count, true) + "%):");
+        }
+
+        if (alsoFileNames)
+        {
+            textOutput.List(files2);
+        }
+
+
+        textOutput.SingleCharLine(AllChars.asterisk, 10);
+
+        result = textOutput.ToString();
+        return result;
+    }
 
     /// <summary>
     /// Return what exists in both
@@ -255,7 +319,6 @@ public static partial class CA
         }
         return list;
     }
-
 
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {

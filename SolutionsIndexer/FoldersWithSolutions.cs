@@ -145,7 +145,7 @@ public class FoldersWithSolutions
 
     public IEnumerable<SolutionFolder> SolutionsUap(IEnumerable<string> skipThese = null)
     {
-        var slns = Solutions(skipThese);
+        var slns = Solutions(false, skipThese);
         var uap = slns.Where(d => d.fullPathFolder.Contains(@"\_Uap\"));
         return uap;
     }
@@ -155,7 +155,7 @@ public class FoldersWithSolutions
     /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached
     /// </summary>
     /// <returns></returns>
-    public List<SolutionFolder> Solutions(IEnumerable<string> skipThese = null)
+    public List<SolutionFolder> Solutions(bool loadAll = true, IEnumerable<string> skipThese = null)
     {        
         var result = new List<SolutionFolder>( solutions);
 
@@ -168,10 +168,12 @@ public class FoldersWithSolutions
         {
             skip = new List<string>();
         }
-
-        if (Debugger.IsAttached)
+        if (!loadAll)
         {
-            skip.AddRange(SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode);
+            if (Debugger.IsAttached)
+            {
+                skip.AddRange(SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode);
+            }
         }
 
         result.RemoveAll(d => CA.IsEqualToAnyElement(d.nameSolution, skip));

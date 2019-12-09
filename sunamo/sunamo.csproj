@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />

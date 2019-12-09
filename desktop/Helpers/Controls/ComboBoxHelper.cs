@@ -8,37 +8,14 @@ using System.Windows.Input;
 /// <summary>
 /// Must use SelectionChanged of ComboBoxHelper, not ComboBox. Otherwise first in called in Control, then is set into Selected* properties and app goes wrong!!
 /// </summary>
-public class ComboBoxHelper
+public partial class ComboBoxHelper
 {
-    static Type type = typeof(ComboBoxHelper);
+    
     bool tagy = true;
     protected ComboBox cb = null;
     public event SelectionChangedEventHandler SelectionChanged;
 
-    /// <summary>
-    /// A1 is not needed, value is obtained through []
-    /// Tag here is mainly for comment what data control hold 
-    /// </summary>
-    /// <param name="tag"></param>
-    /// <param name="list12"></param>
-    /// <returns></returns>
-    public static ComboBox Get(ControlInitData d)
-    {
-        ComboBox cb = new ComboBox();
-        ControlHelper.SetForeground(cb, d.foreground);
-        foreach (var item in d.list)
-        {
-            cb.Items.Add(item);
-        }
-        if (d.OnClick != null)
-        {
-            ThrowExceptions.IsNotAllowed(type, RH.CallingMethod(), "d.OnClick");
-        }
-        cb.Tag = d.tag;
-        cb.ToolTip = d.tooltip;
-        
-        return cb;
-    }
+   
 
     public ComboBox Cb
     {
@@ -247,4 +224,6 @@ public class ComboBoxHelper
             this.cb = tsddb;
             tsddb.SelectionChanged += tsddb_SelectionChanged;
         }
+
+    
 }

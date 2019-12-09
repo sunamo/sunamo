@@ -615,13 +615,7 @@ Template for which I will find, have to be in derivates the same:
         /// <returns></returns>
         public static string ParseYtCode(string uri)
         {
-            Regex regex = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");
-            var match = regex.Match(uri);
-            if (match.Success)
-            {
-                return match.Groups[1].Value;
-            }
-            return null;
+            return YouTube.ParseYtCode(uri);
         }
     }
 
