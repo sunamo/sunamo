@@ -152,13 +152,7 @@ public class SunamoStrings
         }
     }
 
-    public static string scFixed
-    {
-        get
-        {
-            return RLData.en["scFixed"];
-        }
-    }
+    public const string scFixed = "1pr2qyfsagraqjv4uypgho5o";
 
     public static string UnauthorizedOperation
     {

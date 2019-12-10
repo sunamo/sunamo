@@ -82,7 +82,7 @@ public class AllStrings
     /// colon space
     /// </summary>
     public static string cs2 = ": ";
-    public static char plus;
+    public static string plus;
     public const string bs2 = "\b";
     public const string hashtag = "#";
     public const string equal = "=";

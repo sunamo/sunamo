@@ -312,6 +312,7 @@
     <Compile Include="Enums\DateTimeFormat.cs" />
     <Compile Include="Enums\DateTimeFormatStyles.cs" />
     <Compile Include="Enums\DebugOutput.cs" />
+    <Compile Include="Enums\DeferAsync.cs" />
     <Compile Include="Enums\Device.cs" />
     <Compile Include="Enums\DialogResult.cs" />
     <Compile Include="Enums\DirectoryCreateCollisionOption.cs" />
@@ -644,7 +645,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Entity\ManageArtistDashTitleShared.cs~RF20d52e9.TMP" />
-    <None Include="Enums\Browsers.cs~RF4cec33.TMP" />
     <None Include="Fonts\FontAwesome.otf" />
     <None Include="Helpers\DT\DTHelperFormalizedWithT.cs~RF68a66ba.TMP" />
     <None Include="Helpers\DT\DTHelperFormalizedWithTShared.cs~RF66768c8.TMP" />

@@ -6678,7 +6678,7 @@ public class XlfKeys
     public const string UriTooLong = "UriTooLong";
     public const string CustomShortUriOccupatedYet = "CustomShortUriOccupatedYet";
     public const string LinkSuccessfullyShorted = "LinkSuccessfullyShorted";
-    public const string scFixed = "scFixed";
+    
     public const string UnauthorizedOperation = "UnauthorizedOperation";
     public const string RemoveFromFavoritesSuccess = "RemoveFromFavoritesSuccess";
     public const string AddToFavoritesSuccess = "AddToFavoritesSuccess";

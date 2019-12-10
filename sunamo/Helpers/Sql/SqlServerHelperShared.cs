@@ -14,11 +14,6 @@ public partial class SqlServerHelper
             var b1 = s_availableCharsInVarCharWithoutDiacriticLetters.Contains(item);
             var b2 = SH.diacritic.IndexOf(item) != -1;
 
-            if (maybeUnicode.Contains("Nothing"))
-            {
-
-            }
-
             if (b1 || b2)
             {
                 sb.Append(item);

@@ -422,10 +422,7 @@
           <source />
           <target state="translated">The link has been truncated successfully</target>
         </trans-unit>
-        <trans-unit id="scFixed" translate="yes" xml:space="preserve">
-          <source />
-          <target state="translated">1pr2qyfsagraqjv4uypgho5o</target>
-        </trans-unit>
+
         <trans-unit id="UnauthorizedOperation" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">You came to this page because you tried to load the page, or to perform another operation that you do not have permission to do or that is not applicable in this context.</target>

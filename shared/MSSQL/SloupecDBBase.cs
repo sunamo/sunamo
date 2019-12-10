@@ -20,15 +20,17 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     public SqlDbType2 typ = default( SqlDbType2);
     string _nazev = "";
     public Signed _signed = Signed.Other;
+    public bool _canBeNull = false;
     public bool canBeNull
     {
         get
         {
-            return false;
+            return _canBeNull;
         }
         set
         {
-
+            // 10-12-2019 origianlly there canBeNull return false and set was empty. But then I cant ActivateCs - trying save null to SessionID
+            _canBeNull = value;
         }
     }
     public bool mustBeUnique = false;

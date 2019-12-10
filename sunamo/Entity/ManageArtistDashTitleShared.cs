@@ -48,7 +48,7 @@ public partial class ManageArtistDashTitle
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < toks.Length; i++)
             {
-                sb.Append(toks[i] + delimiter);
+                sb.Append(toks[i]);
             }
 
             VratTitleRemix(sb.ToString().TrimEnd(AllChars.dash), out song, out remix);
