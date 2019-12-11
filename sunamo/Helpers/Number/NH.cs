@@ -1,4 +1,5 @@
 ﻿
+using sunamo.Data;
 using sunamo.Values;
 using System;
 using System.Collections;
@@ -20,6 +21,22 @@ public static partial class NH
     public static int MaxForLength(int length)
     {
         return int.Parse("9".PadRight(4, '9'));
+    }
+
+    public static string CalculateMedianAverage(List<double> list)
+    {
+        list.RemoveAll(d => d == 0);
+
+        ThrowExceptions.OnlyOneElement(s_type, "CalculateMedianAverage", "list", list);
+
+        MedianAverage<double> medianAverage = new MedianAverage<double>();
+        medianAverage.count = list.Count;
+        medianAverage.median = NH.Median<double>(list);
+        medianAverage.average = NH.Average<double>(list);
+        medianAverage.min = list.Min();
+        medianAverage.max = list.Max();
+
+        return medianAverage.ToString();
     }
 
     /// <summary>

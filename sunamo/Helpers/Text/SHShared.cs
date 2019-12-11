@@ -61,6 +61,16 @@ public static partial class SH
         return t;
     }
 
+    public static string PadRight(string empty, string newLine, int v)
+    {
+        StringBuilder sb = new StringBuilder(empty);
+        for (int i = 0; i < v; i++)
+        {
+            sb.Append(newLine);
+        }
+        return sb.ToString();
+    }
+
     public static void RemoveLastChar(StringBuilder sb)
     {
         if (sb.Length > 0)
@@ -69,6 +79,28 @@ public static partial class SH
                 
             
         }
+    }
+
+    public static string ShortToLengthByParagraph(string c, int maxLength)
+    {
+        var delimiter = SH.PadRight(string.Empty, Environment.NewLine, 2);
+        var p = SH.Split(c, delimiter);
+        
+
+        while (c.Length > maxLength)
+        {
+            if (p.Count > 1)
+            {
+                p.RemoveAt(p.Count - 1);
+                c = SH.Join(delimiter, p);
+            }
+            else
+            {
+                c = c.Substring(0, 4000); break;
+            }
+        }
+
+        return c;
     }
 
     public static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)

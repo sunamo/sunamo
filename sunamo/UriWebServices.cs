@@ -186,14 +186,14 @@ Template for which I will find, have to be in derivates the same:
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
         public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s" + "/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
-        public const string sBazarCz = "https://www.sbazar.cz/hledej/%" ;
+        public const string sBazarCz = "https://www.sbazar.cz/hledej/%s" ;
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
-        public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%" ;
+        //public const string letGoCz = "https://www.letgo.cz/moravskoslezsky-kraj_g200003339573/q-%s" ;
         public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%s&postCode=708%2000&distance=40";
 
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%" ;
 
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
+        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -240,10 +240,10 @@ Template for which I will find, have to be in derivates the same:
             return FromChromeReplacement(avizoCz, what);
         }
 
-        public static string LetGoCz(string what)
-        {
-            return FromChromeReplacement(letGoCz, what);
-        }
+        //public static string LetGoCz(string what)
+        //{
+        //    return FromChromeReplacement(letGoCz, what);
+        //}
     }
 
     /// <summary>
