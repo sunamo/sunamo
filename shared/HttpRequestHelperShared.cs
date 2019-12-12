@@ -1,6 +1,4 @@
-﻿
-
-using sunamo.Helpers;
+﻿using sunamo.Helpers;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -13,6 +11,23 @@ using System.Web;
 
 public static partial class HttpRequestHelper{
 
+    public static string DownloadOrRead(string path, string uri)
+    {
+        string html = null;
+
+        if (FS.ExistsFile(path))
+        {
+            html = TF.ReadFile(path);
+        }
+        else
+        {
+
+
+            html = Download(uri, null, path);
+        }
+
+        return html;
+    }
     public static bool ExistsPage(string url)
     {
         try
@@ -302,5 +317,49 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
             }
         }
         return vr;
+    }
+
+/// <summary>
+        /// A2 can be null (if dont have duplicated extension, set null)
+        /// </summary>
+        /// <param name = "href"></param>
+        /// <param name = "DontHaveAllowedExtension"></param>
+        /// <param name = "folder2"></param>
+        /// <param name = "fn"></param>
+        /// <param name = "ext"></param>
+        /// <returns></returns>
+    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
+    {
+        if (DontHaveAllowedExtension != null)
+        {
+            if (DontHaveAllowedExtension(ext))
+            {
+                ext += ".jpeg";
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(ext))
+        {
+            ext = FS.GetExtension(href);
+            ext = SH.RemoveAfterFirst(ext, AllChars.q);
+        }
+
+        fn = SH.RemoveAfterFirst(fn, AllChars.q);
+        string path = FS.Combine(folder2, fn + ext);
+        FS.CreateFoldersPsysicallyUnlessThere(folder2);
+        if (!FS.ExistsFile(path) || FS.GetFileSize(path) == 0)
+        {
+            var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
+            
+            File.WriteAllBytes(path, c);
+        }
+
+        return ext;
+    }
+public static string Download(string uri, BoolString DontHaveAllowedExtension, string path)
+    {
+        string p, fn, ext;
+        FS.GetPathAndFileNameWithoutExtension(path, out p, out fn, out ext);
+        return Download(uri, null, p, fn, FS.GetExtension(path));
     }
 }

@@ -53,49 +53,4 @@ public static partial class HttpRequestHelper
             FS.MoveFile(tempPath, to, co);
         }
     }
-
-        /// <summary>
-        /// A2 can be null (if dont have duplicated extension, set null)
-        /// </summary>
-        /// <param name = "href"></param>
-        /// <param name = "DontHaveAllowedExtension"></param>
-        /// <param name = "folder2"></param>
-        /// <param name = "fn"></param>
-        /// <param name = "ext"></param>
-        /// <returns></returns>
-    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
-    {
-        if (DontHaveAllowedExtension != null)
-        {
-            if (DontHaveAllowedExtension(ext))
-            {
-                ext += ".jpeg";
-            }
-        }
-
-        if (string.IsNullOrWhiteSpace(ext))
-        {
-            ext = FS.GetExtension(href);
-            ext = SH.RemoveAfterFirst(ext, AllChars.q);
-        }
-
-        fn = SH.RemoveAfterFirst(fn, AllChars.q);
-        string path = FS.Combine(folder2, fn + ext);
-        FS.CreateFoldersPsysicallyUnlessThere(folder2);
-        if (!FS.ExistsFile(path) || FS.GetFileSize(path) == 0)
-        {
-            var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
-            
-            File.WriteAllBytes(path, c);
-        }
-
-        return ext;
-    }
-
-    public static void Download(string uri, BoolString DontHaveAllowedExtension, string path)
-    {
-        string p, fn, ext;
-        FS.GetPathAndFileNameWithoutExtension(path, out p, out fn, out ext);
-        Download(uri, null, p, fn, FS.GetExtension(path));
-    }
 }

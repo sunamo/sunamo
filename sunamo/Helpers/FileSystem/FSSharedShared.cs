@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 public partial class FS{
+    /// <summary>
+    /// Dont check for size
+    /// </summary>
+    /// <param name="selectedFile"></param>
+    /// <returns></returns>
     public static bool ExistsFile(string selectedFile)
     {
         if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
