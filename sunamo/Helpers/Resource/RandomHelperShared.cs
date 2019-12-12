@@ -9,6 +9,10 @@ public static partial class RandomHelper
 
     public static T RandomElementOfCollectionT<T>(IList<T> ppk)
     {
+        if (ppk.Count == 0)
+        {
+            return default(T);
+        }
         int nt = RandomInt(ppk.Count);
         return ppk[nt];
     }

@@ -10,12 +10,9 @@ using System.Windows.Input;
 /// </summary>
 public partial class ComboBoxHelper
 {
-    
     bool tagy = true;
     protected ComboBox cb = null;
     public event SelectionChangedEventHandler SelectionChanged;
-
-   
 
     public ComboBox Cb
     {

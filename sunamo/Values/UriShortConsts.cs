@@ -5,8 +5,8 @@ using System.Text;
 
 public class UriShortConsts
 {
-    public const string DevCzSlash = "dev.localhost";
-    public const string LyrCzSlash = "lyr.localhost";
-    public const string AppCzSlash = "app.localhost";
+    public const string DevCz = "dev.localhost";
+    public const string LyrCz = "lyr.localhost";
+    public const string AppCz = "app.localhost";
 }
 
