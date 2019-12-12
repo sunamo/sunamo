@@ -27,6 +27,7 @@ namespace sunamo
             {
                 return _artistS;
             }
+            set { _artistS = value; }
         }
 
         public string TitleC
@@ -35,6 +36,7 @@ namespace sunamo
             {
                 return _titleS;
             }
+            set { _titleS = value; }
         }
 
         public string RemixC
@@ -43,6 +45,7 @@ namespace sunamo
             {
                 return _remixS;
             }
+            set { _remixS = value; }
         }
 
         public void Artist(string item)
