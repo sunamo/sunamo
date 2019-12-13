@@ -10,8 +10,6 @@ namespace sunamo.Values
         public static List<string> allRepairKitShops = null;
         public static List<string> repairKitShopsFreePickupOstrava = null;
 
-
-
         static RepairMobileValues()
         {
             allRepairServicesOva = new List<string>(CA.ToEnumerable("levnejmobil.cz", "bettacomp.cz", "tadyspravismobil.cz", "atcmobile.cz", "iphoneostrava.cz", "mobilcity.cz", "iloveservis.cz", "prontmobil.cz", "mujmobilnitelefon.cz"));

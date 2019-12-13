@@ -54,6 +54,16 @@ public partial class DictionaryHelper
         return GetDictionaryByKeyValueInString<string>(sp);
     }
 
+    public static Dictionary<U,T> SwitchKeyAndValue<T,U>(Dictionary<T, U> dictionary)
+    {
+        Dictionary<U, T> d = new Dictionary<U, T>(dictionary.Count);
+        foreach (var item in dictionary)
+        {
+            d.Add(item.Value, item.Key);
+        }
+        return d;
+    }
+
     /// <summary>
     /// If exists index A2, set to it A3
     /// if don't, add with A3

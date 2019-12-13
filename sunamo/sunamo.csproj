@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\HttpsUriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />

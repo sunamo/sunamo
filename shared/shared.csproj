@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\HttpRequestHelper.cs" />
     <Compile Include="..\..\sunamo\shared\MSSQL\TableRowHelperShared.cs" />
     <Compile Include="..\..\sunamo\shared\MSSQL\MSBaseRowTable.cs" />
     <Compile Include="..\..\sunamo\shared\Data\SmtpServerData.cs" />

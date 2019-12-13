@@ -1401,8 +1401,16 @@ public partial class FS
     public static void MoveFile(string item, string fileTo, FileMoveCollisionOption co)
     {
         if( CopyMoveFilePrepare(ref item, ref fileTo, co))
-        { 
-        File.Move(item, fileTo);
+        {
+            try
+            {
+                File.Move(item, fileTo);
+            }
+            catch (Exception ex)
+            {
+                ThisApp.SetStatus(TypeOfMessage.Error, item + " : " + ex.Message);
+                
+            }
         }
     }
 
@@ -1864,5 +1872,20 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
         }
 
         return value;
+    }
+
+/// <summary>
+    /// Vrátí cestu a název souboru bez ext a ext
+    /// All returned is normal case
+    /// </summary>
+    /// <param name="fn"></param>
+    /// <param name="path"></param>
+    /// <param name="file"></param>
+    /// <param name="ext"></param>
+    public static void GetPathAndFileNameWithoutExtension(string fn, out string path, out string file, out string ext)
+    {
+        path = Path.GetDirectoryName(fn) + AllChars.bs;
+        file = FS.GetFileNameWithoutExtension(fn);
+        ext = Path.GetExtension(fn);
     }
 }

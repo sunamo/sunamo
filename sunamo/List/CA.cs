@@ -207,6 +207,7 @@ public static partial class CA
         }
         return true;
     }
+
     /// <summary>
     /// A2,3 can be null, then no header will be append
     /// A4 nameOfSolution - main header, also can be null

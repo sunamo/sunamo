@@ -101,11 +101,23 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         Dictionary<T, string> result = new Dictionary<T, string>();
         var dt = SelectDataTableSelective(solutions, "ID,Name", where);
+
         foreach (DataRow item in dt.Rows)
         {
             var row = item.ItemArray;
 
-            result.Add(SH.ToNumber<T>(parse, row[0].ToString()), MSTableRowParse.GetString(row, 1));
+            var id = SH.ToNumber<T>(parse, row[0].ToString());
+            var v = MSTableRowParse.GetString(row, 1);
+
+            //if (switchKeyAndValue)
+            //{
+            //    result.Add(v,id);
+            //}
+            //else
+            //{
+                result.Add(id, v);
+            //}
+            
         }
 
         return result;

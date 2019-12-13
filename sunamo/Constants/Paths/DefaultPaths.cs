@@ -14,6 +14,7 @@ namespace sunamo.Constants
         public static string Backup = @"d:\Documents\Backup\";
         /// <summary>
         /// For all is here sczRootPath
+        /// edn with bs
         /// </summary>
         public static string sczPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz\");
         public static string sczOldPath = FS.Combine(Documents, @"Visual Studio 2017\Projects\sunamo.cz\sunamo.cz-old\");
