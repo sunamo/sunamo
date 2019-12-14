@@ -92,10 +92,10 @@ public static partial class HttpRequestHelper
         return ext;
     }
 
-    public static void Download(string uri, BoolString DontHaveAllowedExtension, string path)
+    public static string Download(string uri, BoolString DontHaveAllowedExtension, string path)
     {
         string p, fn, ext;
         FS.GetPathAndFileNameWithoutExtension(path, out p, out fn, out ext);
-        Download(uri, null, p, fn, FS.GetExtension(path));
+        return Download(uri, null, p, fn, FS.GetExtension(path));
     }
 }

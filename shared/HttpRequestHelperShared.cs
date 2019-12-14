@@ -12,7 +12,23 @@ using System.Threading.Tasks;
 using System.Web;
 
 public static partial class HttpRequestHelper{
+    public static string DownloadOrRead(string path, string uri)
+    {
+        string html = null;
 
+        if (FS.ExistsFile(path))
+        {
+            html = TF.ReadFile(path);
+        }
+        else
+        {
+
+
+            html = Download(uri, null, path);
+        }
+
+        return html;
+    }
     public static bool ExistsPage(string url)
     {
         try
