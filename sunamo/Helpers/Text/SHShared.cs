@@ -2820,4 +2820,14 @@ public static string PrefixIfNotStartedWith( string item, string http)
         }
         return item;
     }
+
+public static bool IsNullOrWhiteSpace(string s)
+    {
+        if (s != null)
+        {
+            s = s.Trim();
+            return s == "";
+        }
+        return true;
+    }
 }

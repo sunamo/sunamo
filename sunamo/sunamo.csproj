@@ -59,6 +59,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Enums\ModifiersConstructor.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IDatabaseLayer.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Interfaces\IFactoryColumnDB.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\HttpsUriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />

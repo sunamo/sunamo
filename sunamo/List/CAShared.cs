@@ -1548,4 +1548,36 @@ public static List<bool> ToBool(List<int> numbers)
         }
         return b;
     }
+
+public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
+    {
+        foreach (var item in list)
+        {
+            RemoveWhichContains(files, item, wildcard);
+        }
+    }
+public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
+    {
+        if (wildcard)
+        {
+            //item = SH.WrapWith(item, AllChars.asterisk);
+            for (int i = files1.Count - 1; i >= 0; i--)
+            {
+                if (Wildcard.IsMatch(files1[i], item))
+                {
+                    files1.RemoveAt(i);
+                }
+            }
+        }
+        else
+        {
+            for (int i = files1.Count - 1; i >= 0; i--)
+            {
+                if (files1[i].Contains(item))
+                {
+                    files1.RemoveAt(i);
+                }
+            }
+        }
+    }
 }

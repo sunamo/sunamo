@@ -128,7 +128,7 @@ public static string GetDisplayedSolutionName(string item)
         
         if (FS.ExistsDirectory(path))
         {
-            var files = FS.GetFiles(path, FS.MascFromExtension(AllExtensions.xaml), System.IO.SearchOption.TopDirectoryOnly, true);
+            var files = FS.GetFiles(path, FS.MascFromExtension(AllExtensions.xaml), System.IO.SearchOption.TopDirectoryOnly, new GetFilesArgs { _trimA1 = true });
             files = FS.GetFileNamesWoExtension(files);
             foreach (var item in files)
             {

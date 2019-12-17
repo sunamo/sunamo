@@ -1285,16 +1285,6 @@ public static partial class SH
         return SH.ReplaceOnce(v, co, zaCo);
     }
 
-    public static bool IsNullOrWhiteSpace(string s)
-    {
-        if (s != null)
-        {
-            s = s.Trim();
-            return s == "";
-        }
-        return true;
-    }
-
     public static string AddEmptyLines(string content, int addRowsDuringScrolling)
     {
         var lines = SH.GetLines(content);
