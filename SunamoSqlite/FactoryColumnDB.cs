@@ -14,6 +14,7 @@ public class FactoryColumnDB : IFactoryColumnDB<SloupecDB, TypeAffinity>
         bool isNewId = false;
         column.typ = typ; // ConvertSqlDbType.ToSqlDbType(typ, out isNewId);
         column.isNewId = isNewId;
+        
         column.Name = nazev;
         column._signed = signed;
         column.canBeNull = canBeNull;

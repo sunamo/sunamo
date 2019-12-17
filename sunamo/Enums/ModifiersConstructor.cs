@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace sunamo.Enums
+﻿public enum ModifiersConstructor
 {
-    public enum ModifiersConstructor
-    {
-        Public,
-        Private,
-        Static
-    }
+    Public,
+    Private,
+    Static,
+    Internal
 }

@@ -1240,7 +1240,8 @@ public partial class FS
     {
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
-        if (!ext.StartsWith("*.") && !ext.Contains("*") && !ext.Contains("?") && isContained) 
+        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?");
+        if (!ext.StartsWith("*.") && !isNoMascEntered && isContained) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
@@ -1354,8 +1355,13 @@ public partial class FS
     /// <param name="mask"></param>
     /// <param name="searchOption"></param>
     /// <returns></returns>
-    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, bool _trimA1 = false)
+    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
     {
+        if (getFilesArgs == null)
+        {
+            getFilesArgs = new GetFilesArgs();
+        }
+
         List<string> list = null;
         if (mask.Contains(AllStrings.sc))
         {
@@ -1381,13 +1387,20 @@ public partial class FS
                 ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions(ex));
             }
         }
-        
 
         CA.ChangeContent(list, d => SH.FirstCharLower(d));
 
-        if (_trimA1)
+        if (getFilesArgs._trimA1)
         {
             list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+        }
+        if (getFilesArgs.excludeFromLocationsCOntains != null)
+        {
+            // I want to find files recursively
+            foreach (var item in getFilesArgs. excludeFromLocationsCOntains)
+            {
+                CA.RemoveWhichContains(list, item, false);
+            }
         }
         return list;
     }

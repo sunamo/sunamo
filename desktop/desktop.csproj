@@ -369,6 +369,7 @@
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\BaseControls\VisualHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
+    <Compile Include="Helpers\XamlHelper.cs" />
     <Compile Include="Hotkey.cs" />
     <Compile Include="Helpers\Controls\ImageHelperDesktop.cs" />
     <Compile Include="Interfaces\IHideToTray.cs" />
@@ -453,6 +454,10 @@
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
+      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
+      <Name>SunamoCode</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>

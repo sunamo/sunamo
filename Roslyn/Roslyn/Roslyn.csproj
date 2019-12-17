@@ -48,6 +48,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\shared\shared.csproj" />
+    <ProjectReference Include="..\..\SunamoCode\SunamoCode.csproj" />
   </ItemGroup>
 
   <ItemGroup>

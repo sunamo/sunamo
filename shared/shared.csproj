@@ -97,45 +97,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\sunamo\shared\HttpRequestHelper.cs" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\TableRowHelperShared.cs" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSBaseRowTable.cs" />
     <Compile Include="..\..\sunamo\shared\Data\SmtpServerData.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelperShared.cs" />
     <Compile Include="..\..\sunamo\shared\Data\PushSolutionsData.cs" />
     <Compile Include="..\..\sunamo\shared\HttpWebResponseHelper.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelper.cs" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSSloupec2.cs" />
-    <Compile Include="..\..\sunamo\shared\Helpers\CSharpHelper.cs" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSColumnsDBNotTranslateAble.cs" />
     <Compile Include="..\..\sunamo\shared\WriterEventLogShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Helpers\XmlHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerInstance.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayer.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresISql5.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSDatabaseLayerSql5.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\UlozToParser.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Threading\TimeThreadPool.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBase.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Helpers\XmlHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Threading\Downloading\InputDownload.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSTSPShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\GeneratorMsSqlShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\HttpRequestHelperShared.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\MSSQL\MSStoredProceduresIBaseShared.cs" Link="" />
-    <Compile Include="CodeGenerator\CSharpClassesGenerator.cs" />
-    <Compile Include="CodeGenerator\GeneratorCodeAbstract.cs" />
-    <Compile Include="CodeGenerator\GeneratorCodeAbstractShared.cs" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
-    <Compile Include="Converts\ConvertSqlDbType.cs" />
-    <Compile Include="CodeGenerator\GeneratorCpp.cs" />
-    <Compile Include="CodeGenerator\AccessModifiers.cs" />
-    <Compile Include="CodeGenerator\EnumItem.cs" />
-    <Compile Include="CodeGenerator\ModifiersConstructor.cs" />
-    <Compile Include="CodeGenerator\CSharpGenerator.cs" />
     <Compile Include="Crypting\Asymmetric.cs" />
     <Compile Include="Crypting\ProtectedDataHelper.cs" />
     <Compile Include="Crypting\Utils.cs" />
@@ -158,8 +135,6 @@
     <Compile Include="Extensions\SunamoSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
-    <Compile Include="Helpers\CSharpHelper.cs" />
-    <Compile Include="Helpers\CSharpHelperShared.cs" />
     <Compile Include="Helpers\DrawingColorHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
     <Compile Include="Helpers\Resources\EmbeddedResourcesHShared.cs" />
@@ -170,38 +145,7 @@
     <Compile Include="HttpResponseHelper.cs" />
     <Compile Include="HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
-    <Compile Include="Interfaces\IDatabaseLayer.cs" />
-    <Compile Include="Interfaces\IFactoryColumnDB.cs" />
     <Compile Include="Interfaces\IXml.cs" />
-    <Compile Include="MSSQL\MSColumnsDBNotTranslateAble.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerInstance.cs" />
-    <Compile Include="MSSQL\MSFactoryColumnDB.cs" />
-    <Compile Include="MSSQL\MSSloupecDB.cs" />
-    <Compile Include="MSSQL\GeneratorMsSql.cs" />
-    <Compile Include="MSSQL\GeneratorMsSqlShared.cs" />
-    <Compile Include="MSSQL\i\ISpecificLayer.cs" />
-    <Compile Include="MSSQL\i\ITableRow.cs" />
-    <Compile Include="MSSQL\MSBaseRowTable.cs" />
-    <Compile Include="MSSQL\MSColumnsDB.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayer.cs" />
-    <Compile Include="MSSQL\MSDatabaseLayerSql5.cs" />
-    <Compile Include="MSSQL\MSSloupec2.cs" />
-    <Compile Include="MSSQL\SloupecDBBase.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresI.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
-    <Compile Include="MSSQL\MSTableRowIDName.cs" />
-    <Compile Include="MSSQL\MSTableRowParse.cs" />
-    <Compile Include="MSSQL\MSTSP.cs" />
-    <Compile Include="MSSQL\MSTSPShared.cs" />
-    <Compile Include="MSSQL\Rows\ChangedRows.cs" />
-    <Compile Include="MSSQL\Rows\DeletedRows.cs" />
-    <Compile Include="MSSQL\Rows\InsertedRows.cs" />
-    <Compile Include="MSSQL\Rows\RHSQLite.cs" />
-    <Compile Include="MSSQL\Rows\SelectedRows.cs" />
-    <Compile Include="MSSQL\SqlDbType2.cs" />
-    <Compile Include="MSSQL\TableRowHelper.cs" />
     <Compile Include="RA.cs" />
     <Compile Include="StatusHelper.cs" />
     <Compile Include="sunamo\PicturesShared.cs" />
@@ -218,24 +162,18 @@
     <Compile Include="Threading\TimeThreadPool.cs" />
     <Compile Include="UlozToParser.cs" />
     <Compile Include="Unsafe.cs" />
-    <Compile Include="Values\AllHtmlAttrsValues.cs" />
-    <Compile Include="Values\AllHtmlTags.cs" />
-    <Compile Include="Values\AllHtmlAttrs.cs" />
     <Compile Include="WikipediaHelper.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />
-    <Compile Include="XamlGenerator.cs" />
-    <Compile Include="_Old\BaseRowTable.cs" />
-    <Compile Include="_Old\StoredProceduresI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Collections\Converters\" />
+    <Folder Include="Converts\" />
     <Folder Include="Database\" />
     <Folder Include="forms\" />
     <Folder Include="Helpers\Clipboard\" />
     <Folder Include="Helpers\Http\" />
-    <Folder Include="MSSQL\Wid\" />
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
     <Folder Include="_ToNetStd16\" />
@@ -247,6 +185,10 @@
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{2d474b31-dfc6-4603-9637-33a079ad9bf5}</Project>
       <Name>duo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
+      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
+      <Name>SunamoCode</Name>
     </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>

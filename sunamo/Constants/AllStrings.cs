@@ -91,4 +91,6 @@ public class AllStrings
     public const string lq = "“";
     public const string rq = "”";
     public const string at = "@";
+    public const string la = "‘";
+    public const string ra = "’";
 }

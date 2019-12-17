@@ -191,11 +191,12 @@ public partial class TF
     {
         if (ac == null)
         {
-            ac.tf.writeAllBytes(file, b);
+            File.WriteAllBytes(file.ToString(), b.ToArray());
+            
         }
         else
         {
-            File.WriteAllBytes(file.ToString(), b.ToArray());
+            ac.tf.writeAllBytes(file, b);
         }
         
     }

@@ -6,17 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Markup;
 
 namespace desktop
 {
-
     public class XamlGenerator : XmlGenerator
     {
         static Type type = typeof(XamlGenerator);
-
-        
-
         public void WriteDataTemplate(List<double> cd)
         {
             WriteRaw(@"<DataTemplate><Grid>");
@@ -120,13 +115,6 @@ namespace desktop
             }
             WriteRaw("</Grid.RowDefinitions>");
         }
-
-        public T GetControl<T>()
-        {
-            string vr = sb.ToString();
-            vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
-            var vrR = (T)XamlReader.Parse(vr);
-            return vrR;
-        }
+        
     }
 }

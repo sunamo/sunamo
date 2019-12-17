@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 using desktop;
 
 public class XamlGeneratorDesktop : XamlGenerator
@@ -35,6 +36,14 @@ public class XamlGeneratorDesktop : XamlGenerator
             }
         }
         TerminateTag("Grid");
+    }
+
+    public T GetControl<T>()
+    {
+        string vr = sb.ToString();
+        vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
+        var vrR = (T)XamlReader.Parse(vr);
+        return vrR;
     }
 }
 

@@ -426,6 +426,15 @@ public static partial class SH
         return result;
     }
 
+    public static string RepairQuotes(string c)
+    {
+        c = c.Replace(AllStrings.lq, AllStrings.qm);
+        c = c.Replace(AllStrings.rq, AllStrings.qm);
+        c = c.Replace(AllStrings.la, AllStrings.apostrophe);
+        c = c.Replace(AllStrings.ra, AllStrings.apostrophe);
+        return c;
+    }
+
     static Dictionary<Brackets, string> bracketsLeft = null;
     static Dictionary<Brackets, string> bracketsRight = null;
 

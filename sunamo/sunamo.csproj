@@ -101,6 +101,7 @@
     <Compile Include="AppDataBase.cs" />
     <Compile Include="AppDataBaseShared.cs" />
     <Compile Include="AppPaths.cs" />
+    <Compile Include="Args\GetFilesArgs.cs" />
     <Compile Include="AspNet.cs" />
     <Compile Include="AspNetShared.cs" />
     <Compile Include="AspxHelper.cs" />
@@ -547,10 +548,11 @@
     <Compile Include="Interfaces\IConvertNumberString.cs" />
     <Compile Include="Interfaces\IConvertShortcut.cs" />
     <Compile Include="Interfaces\ICzechEnglishConvert.cs" />
+    <Compile Include="Interfaces\IDatabaseLayer.cs" />
     <Compile Include="Interfaces\IException.cs" />
+    <Compile Include="Interfaces\IFactoryColumnDB.cs" />
     <Compile Include="Interfaces\IFSItem.cs" />
     <Compile Include="Interfaces\IFtpClientExt.cs" />
-    <Compile Include="Interfaces\IIdentificator.cs" />
     <Compile Include="Interfaces\IIDParent.cs" />
     <Compile Include="Interfaces\IKeysHandler.cs" />
     <Compile Include="Interfaces\IL.cs" />
@@ -575,7 +577,6 @@
     <Compile Include="Interfaces\ISelected.cs" />
     <Compile Include="Interfaces\ISelectedT.cs" />
     <Compile Include="Interfaces\ISelectFromMany.cs" />
-    <Compile Include="Interfaces\ISerialization.cs" />
     <Compile Include="Interfaces\ISettingsManager.cs" />
     <Compile Include="Interfaces\ISimpleConverter.cs" />
     <Compile Include="Interfaces\ISitePage.cs" />
@@ -615,6 +616,9 @@
     <Compile Include="UriWebServicesDontTranslate.cs" />
     <Compile Include="Values\AllChars.cs" />
     <Compile Include="Values\AllExtensions.cs" />
+    <Compile Include="Values\AllHtmlAttrs.cs" />
+    <Compile Include="Values\AllHtmlAttrsValues.cs" />
+    <Compile Include="Values\AllHtmlTags.cs" />
     <Compile Include="Values\AllLists.cs" />
     <Compile Include="Values\AspxConsts.cs" />
     <Compile Include="Values\CommonSettingsKeys.cs" />
@@ -660,8 +664,6 @@
     <None Include="Html\HtmlParserSShared.cs~RF6ca9257.TMP" />
     <None Include="MultilingualResources\sunamo.cs-CZ.xlf" />
     <None Include="MultilingualResources\sunamo.en-US.xlf" />
-    <None Include="Values\AspxConsts.cs~RF34a0f04.TMP" />
-    <None Include="Values\CommonSettingsKeys.cs~RF22a4bf6.TMP" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mixins\" />

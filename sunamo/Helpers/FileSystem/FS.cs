@@ -73,8 +73,11 @@ public partial class FS
     //}
 
     /// <summary>
+    /// A1 MUST BE WITH EXTENSION
     /// A4 can be null if !A5
     /// In A1 will keep files which doesnt exists in A3
+    /// A4 is files from A1 which wasnt founded in A2
+    /// A7 is files 
     /// </summary>
     /// <param name="filesFrom"></param>
     /// <param name="folderFrom"></param>
@@ -82,7 +85,7 @@ public partial class FS
     /// <param name="wasntExistsInFrom"></param>
     /// <param name="mustExistsInTarget"></param>
     /// <param name="copy"></param>
-    public static void CopyMoveFilesInList(List<string> filesFrom, string folderFrom, string folderTo,  List<string> wasntExistsInFrom, bool mustExistsInTarget, bool copy)
+    public static void CopyMoveFilesInList(List<string> filesFrom, string folderFrom, string folderTo, List<string> wasntExistsInFrom, bool mustExistsInTarget, bool copy, Dictionary<string, List<string>> files)
     {
         FS.WithoutEndSlash(folderFrom);
         FS.WithoutEndSlash(folderTo);
@@ -94,11 +97,24 @@ public partial class FS
             filesFrom[i] = filesFrom[i].Replace(folderFrom, string.Empty);
 
             var oldPath = folderFrom + filesFrom[i];
+
+            if (files != null)
+            {
+                var oldPath2 = files[filesFrom[i]].FirstOrNull();
+                if (oldPath2 != null)
+                {
+                    oldPath = oldPath2.ToString();
+                }
+            }
+
+#if DEBUG
+            DebugLogger.DebugWriteLine("Taken: " + oldPath);
+#endif
+
             var newPath = folderTo + filesFrom[i];
 
             if (!File.Exists(oldPath))
             {
-                
                 wasntExistsInFrom.Add(filesFrom[i]);
                 filesFrom.RemoveAt(i);
                 continue;
@@ -123,6 +139,40 @@ public partial class FS
         }
     }
 
+    public static void CreateInOtherLocationSameFolderStructure(string from, string to)
+    {
+        FS.WithEndSlash(from);
+        FS.WithEndSlash(to);
+
+        var folders = FS.GetFolders(from, SearchOption.AllDirectories);
+        foreach (var item in folders)
+        {
+            string nf = item.Replace(from, to);
+            FS.CreateFoldersPsysicallyUnlessThere(nf);
+        }
+    }
+
+    /// <summary>
+    /// A1 must be with extensions!
+    /// </summary>
+    /// <param name="files"></param>
+    /// <param name="folderFrom"></param>
+    /// <param name="folderTo"></param>
+    public static void CopyMoveFromMultiLocationIntoOne(List<string> files, string folderFrom, string folderTo)
+    {
+        
+        List<string> wasntExists = new List<string>();
+        
+        Dictionary<string, List<string>> files2 = new Dictionary<string, List<string>>();
+        var getFiles = FS.GetFiles(folderFrom, "*.cs", SearchOption.AllDirectories, new GetFilesArgs { excludeFromLocationsCOntains = CA.ToListString("TestFiles") });
+        foreach (var item in files)
+        {
+            files2.Add(item, getFiles.Where(d => FS.GetFileName(d) == item).ToList());
+        }
+
+        FS.CopyMoveFilesInList(files, folderFrom, folderTo, wasntExists, false, true, files2);
+        DebugLogger.Instance.WriteList(wasntExists);
+    }
     public static List<StorageFile> GetFilesInterop<StorageFolder, StorageFile>(StorageFolder folder, string mask, bool recursive, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if (ac != null)

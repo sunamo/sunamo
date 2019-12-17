@@ -39,7 +39,6 @@ public partial class FS{
         }
         return ac.fs.existsFile.Invoke(selectedFile);
     }
-
     public static DateTime LastModified(string rel)
     {
         var  f = new FileInfo(rel);

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9C1ECC5-2F3B-47F6-947B-931F261C5E2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SunamoSqlServer</RootNamespace>
+    <AssemblyName>SunamoSqlServer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converts\ConvertSqlDbType.cs" />
+    <Compile Include="MSSQL\GeneratorMsSql.cs" />
+    <Compile Include="MSSQL\GeneratorMsSqlShared.cs" />
+    <Compile Include="MSSQL\i\ISpecificLayer.cs" />
+    <Compile Include="MSSQL\i\ITableRow.cs" />
+    <Compile Include="MSSQL\MSBaseRowTable.cs" />
+    <Compile Include="MSSQL\MSColumnsDB.cs" />
+    <Compile Include="MSSQL\MSColumnsDBNotTranslateAble.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayer.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerInstance.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerSql5.cs" />
+    <Compile Include="MSSQL\MSFactoryColumnDB.cs" />
+    <Compile Include="MSSQL\MSSloupec2.cs" />
+    <Compile Include="MSSQL\MSSloupecDB.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresI.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
+    <Compile Include="MSSQL\MSTableRowIDName.cs" />
+    <Compile Include="MSSQL\MSTableRowParse.cs" />
+    <Compile Include="MSSQL\MSTSP.cs" />
+    <Compile Include="MSSQL\MSTSPShared.cs" />
+    <Compile Include="MSSQL\Rows\ChangedRows.cs" />
+    <Compile Include="MSSQL\Rows\DeletedRows.cs" />
+    <Compile Include="MSSQL\Rows\InsertedRows.cs" />
+    <Compile Include="MSSQL\Rows\RHSQLite.cs" />
+    <Compile Include="MSSQL\Rows\SelectedRows.cs" />
+    <Compile Include="MSSQL\SloupecDBBase.cs" />
+    <Compile Include="MSSQL\SqlDbType2.cs" />
+    <Compile Include="MSSQL\TableRowHelper.cs" />
+    <Compile Include="MSSQL\TableRowHelperShared.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Old\BaseRowTable.cs" />
+    <Compile Include="_Old\StoredProceduresI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
+      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
+      <Name>SunamoCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MSSQL\Wid\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
