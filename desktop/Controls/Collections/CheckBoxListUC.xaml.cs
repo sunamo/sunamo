@@ -102,6 +102,7 @@ namespace desktop.Controls.Collections
                 initialized = true;
 
                 colButtons.MaxHeight = 16;
+
                 if (i != null)
                 {
                     colButtons.Init(i);
@@ -235,9 +236,18 @@ namespace desktop.Controls.Collections
             return CheckBoxListHelper.CheckedIndexes(l.l);
         }
 
-        public IEnumerable<object> CheckedContent()
+        /// <summary>
+        /// Apply method CheckBoxListUC.ContentOfTextBlock if it!s possible (lower hardware consumptation)
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<StackPanel> CheckedContent()
         {
             return CheckBoxListHelper.CheckedContent(l.l);
+        }
+
+        public List<string> CheckedStrings()
+        {
+            return CheckBoxListHelper.CheckedStrings(l.l);
         }
 
         public Dictionary<StackPanel, bool> AllContentDict()

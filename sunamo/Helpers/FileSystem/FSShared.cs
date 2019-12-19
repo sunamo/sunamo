@@ -375,6 +375,16 @@ public partial class FS
         return result;
     }
 
+    /// <summary>
+    /// Cant name GetAbsolutePath because The call is ambiguous between the following methods or properties: 'CA.ChangeContent(List<string>, Func<string, string, string>)' and 'CA.ChangeContent(List<string>, Func<string, string>)'
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    public static string AbsoluteFromCombinePath(string a)
+    {
+        var r = Path.GetFullPath((new Uri(a)).LocalPath);
+        return r;
+    }
     public static string GetAbsolutePath(string dir, string relativePath)
     {
         var ds = AllStrings.ds;
@@ -1241,10 +1251,11 @@ public partial class FS
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
         var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?");
-        if (!ext.StartsWith("*.") && !isNoMascEntered && isContained) 
+        if (!ext.StartsWith("*.") && isNoMascEntered && isContained) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
+
         return ext;
     }
     public static List<string> GetFiles(string folderPath, string masc)

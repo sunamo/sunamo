@@ -643,7 +643,7 @@ public static partial class SH
     /// <returns></returns>
     public static string Replace(string t, string what, string forWhat)
     {
-        return SH.ReplaceOnce(t,what, forWhat);
+        return t.Replace( what, forWhat);
     }
 
     /// <summary>

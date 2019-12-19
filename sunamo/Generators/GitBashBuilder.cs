@@ -131,7 +131,7 @@ namespace sunamo.Generators
 
             FS.WithEndSlash(ref pathRepository);
 
-            var files = FS.GetFiles(pathSearchForFiles, FS.MascFromExtension(), System.IO.SearchOption.AllDirectories);
+            var files = FS.GetFiles(pathSearchForFiles, FS.MascFromExtension(), System.IO.SearchOption.AllDirectories, new GetFilesArgs { excludeFromLocationsCOntains = CA.ToListString(@"\.git\") });
 
             CA.Replace(linesFiles, solution, string.Empty);
             CA.ChangeContent(linesFiles, SH.RemoveAfterFirst, AllStrings.swd);
@@ -144,7 +144,7 @@ namespace sunamo.Generators
             anyError = false;
             List<string> filesToCommit = new List<string>();
 
-            // In key are filenames, in value full paths to files
+            // In key are filenames, in value full paths to files backslashed
             Dictionary<string, List<string>> dictPsychicallyExistsFiles = FS.GetDictionaryByFileNameWithExtension(files);
 
             CA.Replace(files, AllStrings.bs, AllStrings.slash);
@@ -188,6 +188,8 @@ namespace sunamo.Generators
                 #region Exactly defined file
                 else
                 {
+                    item = UH.GetFileName(item);
+                    item = FS.GetFileName(item);
                     #region File isnt in dict => Dont exists
                     if (!dictPsychicallyExistsFiles.ContainsKey(item))
                     {

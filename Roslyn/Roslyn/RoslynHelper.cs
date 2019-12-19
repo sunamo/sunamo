@@ -27,20 +27,35 @@ namespace Roslyn
     {
         static Type type = typeof(RoslynHelper);
 
-        public static List<Project> GetAllProjectsInSolution(string slnPath)
+        /// <summary>
+        /// Return also referenced projects (sunamo return also duo and Resources, although is not in sunamo)
+        /// If I want what is only in sln, use APSH.GetProjectsInSlnFile
+        /// </summary>
+        /// <param name="slnPath"></param>
+        /// <param name="SkipUnrecognizedProjects"></param>
+        /// <returns></returns>
+        public static List<Project> GetAllProjectsInSolution(string slnPath, bool SkipUnrecognizedProjects = false)
         {
             var _ = typeof(Microsoft.CodeAnalysis.CSharp.Formatting.CSharpFormattingOptions);
 
             var msWorkspace = MSBuildWorkspace.Create();
-            msWorkspace.SkipUnrecognizedProjects = false;
+            // Will include also referenced file
+            msWorkspace.SkipUnrecognizedProjects = SkipUnrecognizedProjects;
+
+            msWorkspace.LoadMetadataForReferencedProjects = false;
+            //msWorkspace.Options.WithChangedOption(OptionKey.)
+            //msWorkspace.Properties.
+            //msWorkspace.Services.
+            
 
             var solution = msWorkspace.OpenSolutionAsync(slnPath).Result;
 
-            DebugLogger.Instance.DumpObject("solution", solution, DumpProvider.Yaml);
-            foreach (var project in solution.Projects)
-            {
-                DebugLogger.Instance.DumpObject("", project, DumpProvider.Yaml);
-            }
+            // Solution or project cant be dumped with Yaml
+            //DebugLogger.Instance.DumpObject("solution", solution, DumpProvider.Yaml);
+            //foreach (var project in solution.Projects)
+            //{
+            //    DebugLogger.Instance.DumpObject("", project, DumpProvider.Yaml);
+            //}
             return solution.Projects.ToList();
         }
 

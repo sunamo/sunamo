@@ -16,8 +16,10 @@ using System.Windows.Shapes;
 namespace desktop.Controls.Collections
 {
     /// <summary>
+    /// Use CheckBoxListUC in WPF
     /// Here due to need in SunamoCzAdmin.Wpf
     /// Definition of class is in apps
+    /// 
     /// </summary>
     public partial class CheckBoxList : UserControl
     {

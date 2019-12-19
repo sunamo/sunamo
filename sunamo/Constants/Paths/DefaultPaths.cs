@@ -39,6 +39,10 @@ namespace sunamo.Constants
         /// </summary>
         public static string vs = @"d:\Documents\Visual Studio 2017\Projects\";
         public static string vsDocuments = FS.Combine(DefaultPaths.Documents, @"vs\");
+        /// <summary>
+        /// Use vs for non shortcuted folder
+        /// d:\vs17\
+        /// </summary>
         public static string vs17 = @"d:\vs17\";
         public static string vs17Documents = FS.Combine(DefaultPaths.Documents, @"vs17\");
         public static string NormalizePathToFolder = FS.Combine(DefaultPaths.Documents, @"Visual Studio 2017\Projects\");
