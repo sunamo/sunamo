@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-public interface IUserControlWithResult : IControlWithResult
-{ 
 
-}
 
 public interface IControlWithResultDebug : IControlWithResult
 {
@@ -37,9 +34,11 @@ public interface IControlWithResult
 }
 
 /// <summary>
-/// Is the same as IUserControlWithResult
+/// Is the same as IControlWithResult
+/// IUserControlInWindow - won't enable button OK in WindowWithUserControl, WindowWithUserControl cant capture ChangeDialogResult of Window
+/// IControlWithResultDebug (but not IControlWithResult) - will enable button OK in WindowWithUserControl
 /// </summary>
-public interface IUserControlInWindow : IUserControlWithResult
+public interface IUserControlInWindow : IControlWithResult
 {
    
 }

@@ -1248,6 +1248,10 @@ public partial class FS
 
     public static string MascFromExtension(string ext = AllStrings.asterisk)
     {
+        if (ext == ".*")
+        {
+            return "*.*";
+        }
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
         var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?");

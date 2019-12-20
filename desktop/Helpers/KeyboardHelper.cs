@@ -158,5 +158,18 @@ mam 3, d0, u1 - nechapu */
             }
             return byte.MaxValue;
         }
+
+        internal static bool IsModifier(Key k)
+        {
+            if (k == Key.LeftShift || k == Key.RightShift)
+            {
+                if (Keyboard.IsKeyDown(Key.RightShift) || Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using desktop.Helpers.Controls;
+using sunamo;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace desktop.Controls.Collections
     /// No one in ListBox/ListView
     /// </summary>
     public partial class CheckBoxListUC : UserControl
-        , IUserControlInWindow, IUserControlWithSizeChange
+        , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl
     {
         #region IUserControlInWindow implementation
         public bool? DialogResult
@@ -129,7 +130,6 @@ namespace desktop.Controls.Collections
                 SizeChanged += CheckBoxListUC_SizeChanged;
             }
         }
-
         public  List<string> AllContentString()
         {
             var ac = AllContent();
@@ -170,7 +170,6 @@ namespace desktop.Controls.Collections
         {
             colButtons.Init(ImageButtonsInit.HideAllButtons);
         }
-
 
         /// <summary>
         /// Args are: object sender, string operation, object data
@@ -226,6 +225,8 @@ namespace desktop.Controls.Collections
             }
         }
 
+        int dexLastChecked = -1;
+
         private void ColButtons_Added(string s)
         {
             AddCheckbox(s, true);
@@ -255,13 +256,99 @@ namespace desktop.Controls.Collections
             return CheckBoxListHelper.CheckedContentDict(l.l);
         }
 
+        //public void CheckBox_Click(object sender, RoutedEventArgs e, Checkboxes chb2)
+        //{
+        //    if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+        //    {
+        //        var chb = (CheckBox)sender;
+        //        var lastId2 = BTS.ParseInt(chb.Tag.ToString());
+        //        GridView2_MultiCheck(lastId, lastId2, chb2);
+        //    }
+        //    else
+        //    {
+        //        var chb = (CheckBox)sender;
+        //        lastId = BTS.ParseInt(chb.Tag.ToString());
+        //    }
+        //}
+
+        //public void GridView2_MultiCheck(int arg1, int arg2, Checkboxes chb2)
+        //{
+        //    var p = NH.Sort<int>(arg1, arg2);
+        //    p[1]++;
+        //    // is already checked actully, so i dont negate
+        //    var col = ((ObservableCollection<T>)lstViewXamlColumns.ItemsSource);
+        //    var first = col.First(d => d.Id == arg1);
+
+        //    bool setUp = false;
+        //    switch (chb2)
+        //    {
+        //        case Checkboxes.IsChecked:
+        //            setUp = first.IsChecked;
+        //            break;
+        //        case Checkboxes.IsSelected:
+        //            setUp = first.IsSelected;
+        //            break;
+        //        default:
+        //            ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+        //            break;
+        //    }
+
+        //    for (int i = p[0]; i < p[1]; i++)
+        //    {
+        //        first = col.FirstOrDefault(d => d.Id == i);
+        //        if (!EqualityComparer<T>.Default.Equals(default(T), first))
+        //        {
+        //            switch (chb2)
+        //            {
+        //                case Checkboxes.IsChecked:
+        //                    first.IsChecked = setUp;
+        //                    break;
+        //                case Checkboxes.IsSelected:
+        //                    first.IsSelected = setUp;
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+
+        //        }
+
+        //    }
+        //}
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            MultiCheck(sender);
             s(sender, true);
 
             if (onCheck.HasValue && onCheck.Value)
             {
                 l.OnCollectionChanged(CheckBoxListOperations.Check, sender);
+            }
+        }
+
+        private void MultiCheck(object sender)
+        {
+            var UIElement = (CheckBox)sender;
+
+            var actChecked = lb.Items.IndexOf(UIElement);
+
+            if (actChecked != -1)
+            {
+                if (KeyboardHelper.IsModifier(Key.LeftShift))
+                {
+                    if (dexLastChecked != -1)
+                    {
+                        var p = NH.Sort<int>(actChecked, dexLastChecked);
+                        p[1]++;
+
+                        for (int i = p[0]; i < p[1]; i++)
+                        {
+                            l[i].IsChecked = UIElement.IsChecked;
+                        }
+                    }
+                }
+
+                dexLastChecked = actChecked;
             }
         }
 
@@ -290,6 +377,7 @@ namespace desktop.Controls.Collections
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            MultiCheck(sender);
             s(sender, false);
             if (onUnCheck)
             {
@@ -327,6 +415,16 @@ namespace desktop.Controls.Collections
         public void Init()
         {
             Init(null, null, false);
+        }
+
+        public int CountOfHandlersChangeDialogResult()
+        {
+            return RuntimeHelper.GetInvocationList(ChangeDialogResult).Count;
+        }
+
+        public void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true)
+        {
+            RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
         }
     }
 

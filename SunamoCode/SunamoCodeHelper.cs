@@ -36,7 +36,6 @@ public class SunamoCodeHelper
         return add;
     }
 
-
     /// <summary>
     /// A1 normal, not lower
     /// </summary>

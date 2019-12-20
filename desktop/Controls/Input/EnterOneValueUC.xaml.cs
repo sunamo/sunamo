@@ -21,7 +21,7 @@ namespace desktop.Controls.Input
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements 
     /// </summary>
-    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IUserControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
+    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
         static Type type = typeof(EnterOneValueUC);
 

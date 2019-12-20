@@ -19,7 +19,7 @@ namespace desktop.Controls.Input
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements
     /// </summary>
-    public partial class SelectOneValue : UserControl, IUserControlInWindow, IUserControlWithResult
+    public partial class SelectOneValue : UserControl, IUserControlInWindow, IControlWithResult
     {
         ComboBoxHelper<string> cbEnteredHelper = null;
 

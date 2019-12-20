@@ -13,13 +13,13 @@ using System.Windows.Controls.Primitives;
 /// <summary>
 /// With this is allowed use logging via ThisApp (has own statusbar)
 /// </summary>
-public class WindowWithUserControl : Window, IUserControlWithResult, IUserControlWithSizeChange
+public class WindowWithUserControl : Window, IControlWithResult, IUserControlWithSizeChange
 {
     UserControl userControl = null;
     DockPanel dock = null;
     IUserControl uc = null;
     IUserControlInWindow iUserControlInWindow = null;
-    IUserControlWithResult userControlWithResult = null;
+    IControlWithResult userControlWithResult = null;
     IControlWithResultDebug controlWithResultDebug = null;
     bool isControlWithResult = false;
     IControlWithResult controlWithResult = null;
@@ -192,7 +192,6 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
             Close();
         }
     }
-
     private void UserControlWithResult_ChangeDialogResult(bool? b)
     {
         if (userControl is CheckBoxListUC)
@@ -249,9 +248,9 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         dock.Children.Add(userControl);
 
         int countOfHandlers = 0;
-        if (userControl is IUserControlWithResult)
+        if (userControl is IControlWithResult)
         {
-            userControlWithResult = (IUserControlWithResult)userControl;
+            userControlWithResult = (IControlWithResult)userControl;
 
             if (controlWithResultDebug != null)
             {
@@ -293,6 +292,7 @@ public class WindowWithUserControl : Window, IUserControlWithResult, IUserContro
         {
             if (iUserControlInWindow != null)
             {
+                // IF USER CONTROL HAVE OWN ChangeDialogResult, MUST USE ALWAYS IT
                 iUserControlInWindow.ChangeDialogResult -= uc_ChangeDialogResult;
                 userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
             }

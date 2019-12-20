@@ -20,8 +20,6 @@ public static class RLData
 
         return en[key] + AllStrings.colon;
     }
-
-
 }
 
 public class ResourceLoaderRL

@@ -2592,7 +2592,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             return short.MinValue;
         }
-        return ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        var rs = ExecuteScalarShort(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        rs++;
+        return rs;
     }
 
     /// <summary>

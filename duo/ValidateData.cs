@@ -11,6 +11,9 @@ public class ValidateData
 {
     public readonly static ValidateData Default = new ValidateData();
     public bool trim = true;
+    /// <summary>
+    /// Strings which are not allowed
+    /// </summary>
     public List<string> excludedStrings = new List<string>();
     public bool allowEmpty = false;
 }
