@@ -80,7 +80,7 @@ namespace desktop
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public static bool captureChanges = true;
 
         private void txtValue_TextChanged_1(object sender, TextChangedEventArgs e)
         {
@@ -94,9 +94,12 @@ namespace desktop
                 else
                 {
                     latest = txtValue.Text;
-                    if (ValueChanged != null)
+                    if (captureChanges)
                     {
-                        ValueChanged(sender, new ValueChangedRoutedEventArgs<uint>(nv));
+                        if (ValueChanged != null)
+                        {
+                            ValueChanged(sender, new ValueChangedRoutedEventArgs<uint>(nv));
+                        }
                     }
                 }
             }

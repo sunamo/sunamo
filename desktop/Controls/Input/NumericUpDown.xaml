@@ -14,6 +14,7 @@
                 <TextBlock FontWeight="Bold" Text="-"></TextBlock>
             </Button.Content>
         </Button>
+        
         <!--Mode=TwoWay, -->
         <TextBox Name="txtValue" TextChanged="txtValue_TextChanged_1" HorizontalContentAlignment="Center"></TextBox>
         <!--Text="{Binding Path=Value, Converter={StaticResource ResourceKey=StringDoubleConverterInstance}}"-->
