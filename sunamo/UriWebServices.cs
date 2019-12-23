@@ -95,6 +95,23 @@ public partial class UriWebServices
         }
     }
 
+    public static class Lyrics
+    {
+        #region Space for %20, uri encoded
+        public const string wwwMusixmatchCom = "https://www.musixmatch.com/search/%s";
+        public const string geniusCom = "https://genius.com/search?q=%s";
+        public const string wwwLyricsCom = "https://www.lyrics.com/lyrics/%s";
+        #endregion
+
+        #region Space for plus
+        public const string wwwMetrolyricsCom = "https://www.metrolyrics.com/search.html?search=%s";
+        public const string azlyricsCom = "https://search.azlyrics.com/search.php?q=%s"; 
+        #endregion
+
+        public static List<string> All  = CA.ToListString(wwwMusixmatchCom, geniusCom, wwwMetrolyricsCom, wwwLyricsCom, azlyricsCom);
+
+    }
+
     public static class SunamoCz
     {
         public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
@@ -533,12 +550,12 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode(term));
+        return uri.Replace(chromeSearchstringReplacement, Uri.EscapeUriString(term));
     }
 
     public static string TopRecepty(string what)
     {
-        return FromChromeReplacement("https://www.toprecepty.cz/vyhledavani.php?hledam=%s&kategorie=&autor=&razeni=", what);
+        return FromChromeReplacement("https://www.toprecepty.cz/vyhledavani.php?hledam=%s&kategorie=&autor=&razeni=", HttpUtility.UrlEncode( what));
     }
 
     /// <summary>

@@ -464,7 +464,16 @@ public partial class MSDatabaseLayer
     }
 
     
-    public static string cs = null;
+     static string _cs = null;
+
+    public static string cs
+    {
+        get => _cs; set 
+        { 
+            _cs = value; 
+        }
+    }
+
     //static bool closing = false;
 
     static string dataSource2 = "";

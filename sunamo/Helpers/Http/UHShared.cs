@@ -38,11 +38,11 @@ public partial class UH
             }
             if (item[item.Length - 1] == AllChars.slash)
             {
-                vr.Append(item);
+                vr.Append(item.TrimStart(AllChars.slash));
             }
             else
             {
-                vr.Append(item + AllChars.slash);
+                vr.Append(item.TrimStart(AllChars.slash) + AllChars.slash);
             }
             //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
         }

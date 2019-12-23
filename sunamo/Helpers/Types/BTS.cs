@@ -299,13 +299,15 @@ public static partial class BTS
 
     /// <summary>
     /// POkud bude A1 nevyparsovatelné, vrátí int.MinValue
+    /// Replace spaces
     /// </summary>
     /// <param name="entry"></param>
     /// <returns></returns>
     public static int ParseInt(string entry)
     {
+        
         int lastInt2 = 0;
-        if (int.TryParse(entry, out lastInt2))
+        if (int.TryParse(entry.Replace(AllStrings.space, string.Empty), out lastInt2))
         {
             return lastInt2;
         }

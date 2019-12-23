@@ -6,6 +6,10 @@ namespace sunamo.Values
 {
     public class AllLists
     {
+        public static List<string> leftBrackets = CA.ToList<string>(AllStrings.lb, AllStrings.cbl, AllStrings.lsf);
+        public static List<string> rightBrackets = CA.ToList<string>(AllStrings.rb, AllStrings.cbr, AllStrings.rsf);
+        public static List<string> featUpper = CA.ToListString("Feat.", "Featuring", "Ft.");
+        public static List<string> featLower = CA.ToListString("feat.", "featuring", "ft.");
         public static List<string> OstravaCityParts = null;
         public static List<string> HtmlNonPairTags = CA.ToListString("area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr");
         public static List<string> PairingTagsDontWrapToParagraph = CA.ToListString("h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li");

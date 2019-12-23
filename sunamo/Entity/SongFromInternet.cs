@@ -2,6 +2,8 @@
 using System.Text;
 using System;
 using System.Linq;
+using sunamo.Values;
+
 namespace sunamo
 {
     public class SongFromInternet
@@ -198,8 +200,8 @@ namespace sunamo
         public string RemixOnlyContent()
         {
             var r = Remix();
-            r = r.Replace("Feat.", "").Replace("Featuring", "").Replace("Ft.", "");
-            r = r.Replace("feat.", "").Replace("featuring", "").Replace("ft.", "");
+            r = CA.ReplaceAll(r, AllLists.featLower, string.Empty);
+            r = CA.ReplaceAll(r, AllLists.featUpper, string.Empty);
             return r;
         }
 
@@ -411,7 +413,8 @@ namespace sunamo
         public List<string> AlternateArtists()
         {
             var remix = Remix();
-            remix = SH.ReplaceAll(remix, "", "Feat", "feat");
+            remix = SH.ReplaceAll(remix, "", 
+                "Feat", "feat");
             remix = remix.Trim(AllChars.dot);
             remix = remix.Trim();
 

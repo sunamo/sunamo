@@ -251,6 +251,16 @@ public static partial class CA
         return result;
     }
 
+    internal static string ReplaceAll(string r, List<string> what, string forWhat)
+    {
+        foreach (var item in what)
+        {
+            r = r.Replace(item, forWhat);
+        }
+
+        return r;
+    }
+
     /// <summary>
     /// element can be null, then will be added as default(T)
     /// Do hard cast

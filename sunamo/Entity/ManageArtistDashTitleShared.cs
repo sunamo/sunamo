@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 public partial class ManageArtistDashTitle
@@ -44,7 +45,23 @@ public partial class ManageArtistDashTitle
         }
         else
         {
+
+
             artist = toks[0];
+
+            List<string> left, right;
+            left = right = null;
+
+            if (SH.ContainsBracket( artist, ref left, ref right))
+            {
+                var between = SH.GetTextBetween(artist, left[0], right[0]);
+                between = left[0] + between + right[0];
+                item = item.Replace(between, string.Empty);
+                item += " " + between;
+                toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+                artist = toks[0].Trim();
+            }
+
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i < toks.Length; i++)
             {

@@ -19,6 +19,26 @@ public static partial class SH
 {
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
 
+    public static bool ContainsBracket(string t)
+    {
+        List<string> left, right;
+        left = right = null;
+        return ContainsBracket(t, ref left, ref right);
+    }
+
+    public static bool ContainsBracket(string t, ref List<string> left, ref List<string> right)
+    {
+        left = SH.ContainsAny(t, false, AllLists.leftBrackets);
+        right = SH.ContainsAny(t, false, AllLists.rightBrackets);
+        if (left.Count > 0 || right.Count > 0)
+        {
+            return true;
+        }
+        
+       
+        return false;
+    }
+
     public static string PostfixIfNotEmpty(string text, string postfix)
     {
         if (text.Length != 0)
@@ -1024,6 +1044,7 @@ public static partial class SH
 
     /// <summary>
     /// Return which a3 is contained in A1. if a2 and A3 contains only 1 element, check for contains these first element
+    /// If A3 contains more than 1 element, A2 is not used
     /// If contains more elements, wasnts check
     /// Return elements from A3 which is contained
     /// If don't contains, return zero element collection
@@ -1300,6 +1321,10 @@ public static partial class SH
     /// <returns></returns>
     public static string Format2(string status, params object[] args)
     {
+        if (string.IsNullOrWhiteSpace(status))
+        {
+            return string.Empty;
+        }
         if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
         {
             return status;

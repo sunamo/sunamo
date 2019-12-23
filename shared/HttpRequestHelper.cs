@@ -82,6 +82,7 @@ public static partial class HttpRequestHelper
         fn = SH.RemoveAfterFirst(fn, AllChars.q);
         string path = FS.Combine(folder2, fn + ext);
         FS.CreateFoldersPsysicallyUnlessThere(folder2);
+
         if (!FS.ExistsFile(path) || FS.GetFileSize(path) == 0)
         {
             var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
