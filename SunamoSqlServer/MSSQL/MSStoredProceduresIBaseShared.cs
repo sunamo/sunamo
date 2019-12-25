@@ -632,10 +632,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     private void PrintDebugParameters(SqlCommand comm)
     {
-        foreach (SqlParameter item in comm.Parameters)
-        {
-            DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
-        }
+        //foreach (SqlParameter item in comm.Parameters)
+        //{
+        //    DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
+        //}
     }
 
     public int ExecuteNonQuery(string commText, params object[] para)
