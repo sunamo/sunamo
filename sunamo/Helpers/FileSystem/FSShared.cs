@@ -1686,6 +1686,7 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
         {
             result = SH.ReplaceAll2(path, AllStrings.bs, AllStrings.slash);
         }
+
         FS.FirstCharLower(ref result);
         return result;
     }

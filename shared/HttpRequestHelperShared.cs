@@ -254,10 +254,6 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
     /// <returns></returns>
     public static byte[] GetResponseBytes(string address, HttpMethod method)
     {
-        //var s = HttpRequestHelper.GetResponseText(address, HttpMethod.Get, null);
-        WebClient wc = new WebClient();
-        var r = wc.DownloadString(address);
-
         var request = (HttpWebRequest)WebRequest.Create(address);
         request.Method = method.Method;
         request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";

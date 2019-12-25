@@ -21,6 +21,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
 
     #region MyRegion
+    MenuItem miAlwaysOnTop = null;
     Grid grid;
     MenuItem miUC;
     dynamic Instance = null;
@@ -126,7 +127,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
             }
 #endif
 
-        configurableWindowWrapper = new ConfigurableWindowWrapper(this);
+        configurableWindowWrapper = new ConfigurableWindowWrapper(this, miAlwaysOnTop);
 
 
         Title = appName;

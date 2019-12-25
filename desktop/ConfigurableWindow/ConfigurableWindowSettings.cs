@@ -35,6 +35,8 @@ namespace ConfigurableWindow.Shared
         /// Gets/sets the WindowState of the Window.
         /// </summary>
         WindowState WindowState { get; set; }
+
+        bool AlwaysOnTop { get; set; }
     }
 
     /// <summary>
@@ -54,6 +56,7 @@ namespace ConfigurableWindow.Shared
         readonly string _windowLocationProp;
         readonly string _windowSizeProp;
         readonly string _windowStateProp;
+        readonly string _alwaysOnTopProp;
 
         #endregion // Data
 
@@ -122,6 +125,12 @@ namespace ConfigurableWindow.Shared
         {
             get { return GetValue<WindowState>(_windowStateProp); }
             set { SetValue(_windowStateProp, value); }
+        }
+
+        public bool AlwaysOnTop
+        {
+            get { return GetValue<bool>(_alwaysOnTopProp); }
+            set { SetValue(_alwaysOnTopProp, value); }
         }
 
         #endregion // IConfigurableWindowSettings Members

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace ConfigurableWindow.Shared
@@ -13,7 +14,20 @@ namespace ConfigurableWindow.Shared
     /// </summary>
     public  class ConfigurableWindowWrapper
     {
-         Window w = null;
+        Window w = null;
+
+        MenuItem miAlwaysOnTop = null;
+
+        private void MiAlwaysOnTop_Click(object o, RoutedEventArgs e)
+        {
+            w.Topmost = miAlwaysOnTop.IsChecked;
+            CheckMenuItemTopMost();
+        }
+
+        private void CheckMenuItemTopMost()
+        {
+            miAlwaysOnTop.IsChecked = _settings.AlwaysOnTop = w.Topmost;
+        }
 
         #region Data
 
@@ -24,8 +38,13 @@ namespace ConfigurableWindow.Shared
 
         #region Constructor
 
-        public ConfigurableWindowWrapper(Window w2)
+        public ConfigurableWindowWrapper(Window w2, MenuItem miAlwaysOnTop)
         {
+            this.miAlwaysOnTop = miAlwaysOnTop;
+            miAlwaysOnTop.Click += MiAlwaysOnTop_Click;
+            miAlwaysOnTop.IsCheckable = true;
+            miAlwaysOnTop.Header = "Always on top";
+
             w = w2;
             w.LocationChanged += W_LocationChanged;
             w.StateChanged += W_StateChanged;
@@ -132,6 +151,7 @@ namespace ConfigurableWindow.Shared
                 w.SourceInitialized += delegate
                 {
                     w.WindowState = _settings.WindowState;
+                    w.Topmost = miAlwaysOnTop.IsChecked = _settings.AlwaysOnTop;
                 };
             }
         }

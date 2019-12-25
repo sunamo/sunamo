@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -130,7 +130,6 @@
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
-    <Compile Include="ConfigurableWindow\ConfigurableWindow2.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowWrapper.cs" />
     <Compile Include="ConfigurableWindow\IConfigurableWindow.cs" />

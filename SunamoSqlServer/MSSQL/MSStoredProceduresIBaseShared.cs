@@ -621,9 +621,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             conn.Open();
             comm.Connection = conn;
+
+            PrintDebugParameters(comm);
+
             var result = comm.ExecuteNonQuery();
             conn.Close();
             return result;
+        }
+    }
+
+    private void PrintDebugParameters(SqlCommand comm)
+    {
+        foreach (SqlParameter item in comm.Parameters)
+        {
+            DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
         }
     }
 
