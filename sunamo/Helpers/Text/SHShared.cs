@@ -19,24 +19,78 @@ public static partial class SH
 {
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
 
-    public static bool ContainsBracket(string t)
+    public static bool ContainsBracket(string t, bool mustBeLeftAndRight = false)
     {
         List<string> left, right;
         left = right = null;
-        return ContainsBracket(t, ref left, ref right);
+        return ContainsBracket(t, ref left, ref right, mustBeLeftAndRight);
     }
 
-    public static bool ContainsBracket(string t, ref List<string> left, ref List<string> right)
+    static SH()
+    {
+        s_cs = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs";
+        Init();
+
+        if (bracketsLeft == null)
+        {
+            bracketsLeft = new Dictionary<Brackets, string>();
+            bracketsLeft.Add(Brackets.Curly, "{");
+            bracketsLeft.Add(Brackets.Square, "[");
+            bracketsLeft.Add(Brackets.Normal, "(");
+
+            bracketsRight = new Dictionary<Brackets, string>();
+            bracketsRight.Add(Brackets.Curly, "}");
+            bracketsRight.Add(Brackets.Square, "]");
+            bracketsRight.Add(Brackets.Normal, ")");
+
+
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="t"></param>
+    /// <param name="left"></param>
+    /// <param name="right"></param>
+    /// <returns></returns>
+    public static bool ContainsBracket(string t, ref List<string> left, ref List<string> right, bool mustBeLeftAndRight = false)
     {
         left = SH.ContainsAny(t, false, AllLists.leftBrackets);
         right = SH.ContainsAny(t, false, AllLists.rightBrackets);
-        if (left.Count > 0 || right.Count > 0)
+        if (mustBeLeftAndRight)
         {
-            return true;
+            if (left.Count > 0 && right.Count > 0)
+            {
+                return true;
+            }
         }
+        else
+        {
+            if (left.Count > 0 || right.Count > 0)
+            {
+                return true;
+            }
+        }
+        
         
        
         return false;
+    }
+
+    internal static string ClosingBracketFor(string v)
+    {
+
+        foreach (var item in bracketsLeft)
+        {
+            if (item.Value == v)
+            {
+                return bracketsRight[item.Key];
+            }
+        }
+
+        ThrowExceptions.IsNotAllowed(s_type, RH.CallingMethod(), v +" as bracket");
+        return null;
     }
 
     public static string PostfixIfNotEmpty(string text, string postfix)
@@ -460,20 +514,7 @@ public static partial class SH
 
     public static string ReplaceBrackets(string item, Brackets from, Brackets to)
     {
-        if (bracketsLeft == null)
-        {
-            bracketsLeft = new Dictionary<Brackets, string>();
-            bracketsLeft.Add(Brackets.Curly, "{");
-            bracketsLeft.Add(Brackets.Square, "[");
-            bracketsLeft.Add(Brackets.Normal, "(");
-
-            bracketsRight = new Dictionary<Brackets, string>();
-            bracketsRight.Add(Brackets.Curly, "}");
-            bracketsRight.Add(Brackets.Square, "]");
-            bracketsRight.Add(Brackets.Normal, ")");
-
-
-        }
+        
 
         item = item.Replace(bracketsLeft[from], bracketsLeft[to]);
         item = item.Replace(bracketsRight[from], bracketsRight[to]);
@@ -2113,9 +2154,15 @@ public static partial class SH
         return false;
     }
 
-    public static string TrimNewLineAndTab(string lyricsFirstOriginal)
+    //
+    public static string TrimNewLineAndTab(string lyricsFirstOriginal, bool replaceDoubleSpaceForSingle = false)
     {
-        return lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
+        var result = lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
+        if (replaceDoubleSpaceForSingle)
+        {
+            result = SH.DoubleSpacesToSingle(result);
+        }
+        return result;
     }
 
     public static List<string> SplitByWhiteSpaces(string s, bool removeEmpty = false)
@@ -2695,9 +2742,9 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// <param name="us"></param>
     /// <param name="nameSolution"></param>
     /// <returns></returns>
-    public static string RemoveAfterLast(char delimiter, string nameSolution)
+    public static string RemoveAfterLast(object delimiter, string nameSolution)
     {
-        int dex = nameSolution.LastIndexOf(delimiter);
+        int dex = nameSolution.LastIndexOf(delimiter.ToString());
         if (dex != -1)
         {
             string s = SH.Substring(nameSolution, 0, dex);
@@ -2846,7 +2893,7 @@ public static string PrefixIfNotStartedWith( string item, string http)
         return item;
     }
 
-public static bool IsNullOrWhiteSpace(string s)
+    public static bool IsNullOrWhiteSpace(string s)
     {
         if (s != null)
         {
@@ -2854,5 +2901,11 @@ public static bool IsNullOrWhiteSpace(string s)
             return s == "";
         }
         return true;
+    }
+
+    public static string ReplaceRef(ref string resultStatus, string what, string forWhat)
+    {
+        resultStatus = resultStatus.Replace(what, forWhat);
+        return resultStatus;
     }
 }

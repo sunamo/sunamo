@@ -19,7 +19,7 @@ using System.Text;
         
     }
 
-    
+    public const string fnReplacement = "{filename}";
 
     public const long kB = 1024;
         /// <summary>

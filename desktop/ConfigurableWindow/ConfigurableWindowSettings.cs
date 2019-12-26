@@ -67,7 +67,8 @@ namespace ConfigurableWindow.Shared
             string isFirstRunProp,
             string windowLocationProp,
             string windowSizeProp,
-            string windowStateProp)
+            string windowStateProp,
+            string alwaysOnTopProp)
         {
             data = settings2;
 
@@ -75,6 +76,7 @@ namespace ConfigurableWindow.Shared
             _windowLocationProp = windowLocationProp;
             _windowSizeProp = windowSizeProp;
             _windowStateProp = windowStateProp;
+            _alwaysOnTopProp = alwaysOnTopProp;
         }
 
         #endregion // Constructor

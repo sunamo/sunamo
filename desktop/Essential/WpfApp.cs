@@ -209,6 +209,7 @@ public partial class WpfApp
             window.Closed += (sender, e) => window.Dispatcher.InvokeShutdown();
         }
     }
+
     public static TextBlock tbLastErrorOrWarning = null;
     public static TextBlock tbLastOtherMessage = null;
     static TextBlock tbLastErrorOrWarningSaved = null;

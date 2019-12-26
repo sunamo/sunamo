@@ -160,6 +160,7 @@ public static partial class EnumHelper
     /// <summary>
     /// If A1, will start from [1]. Otherwise from [0]
     /// Enem values must be castable to int
+    /// Cant be use second generic parameter, due to difficult operations like ~v or |=
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="secondIsAll"></param>
@@ -180,6 +181,26 @@ public static partial class EnumHelper
             throw new ArgumentException(" " + " " + "must be an Enum type");
         var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
         valuesInverted = values.Select(v => ~v).ToArray();
+        result = new List<T>();
+        max = def;
+        for (int i = def; i < values.Length; i++)
+        {
+            max |= values[i];
+        }
+    }
+
+    private static void GetValuesOfEnumByte<T>(bool secondIsAll, out byte def, out byte[] valuesInverted, out List<T> result, out byte max)
+    {
+        def = 0;
+        if (secondIsAll)
+        {
+            def = 1;
+        }
+
+        if (typeof(T).BaseType != typeof(Enum))
+            throw new ArgumentException(" " + " " + "must be an Enum type");
+        var values = Enum.GetValues(typeof(T)).Cast<byte>().ToArray();
+        valuesInverted = values.Select(v => ~v).Cast<byte>().ToArray();
         result = new List<T>();
         max = def;
         for (int i = def; i < values.Length; i++)

@@ -1,6 +1,7 @@
 ﻿using sunamo.Constants;
 using sunamo.Generators.Text;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -88,6 +89,11 @@ public class TextOutputGenerator
         sb.AppendLine();
         AppendLine(v);
         sb.AppendLine();
+    }
+
+    public void ListObject(IEnumerable files1)
+    {
+         List(CA.ToListString( files1));
     }
 
     public void List(IEnumerable<string> files1)

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 public partial class SqlServerHelper
 {
-    public static string ConvertToVarChar(string maybeUnicode)
+    public static string ConvertToVarChar(string maybeUnicode, ConvertToVarcharArgs e = null)
     {
+        bool args = e != null;
         StringBuilder sb = new StringBuilder();
         foreach (var item in maybeUnicode)
         {
@@ -24,9 +25,28 @@ public partial class SqlServerHelper
                 // Is use Diacritics package which allow pass only string, not char
                 var after = SH.TextWithoutDiacritic(before);
                 // if wont be here !char.IsWhiteSpace(item), it will strip newlines
-                if (before != after || char.IsWhiteSpace(item))
+                var b3 = before != after;
+                var b4 = char.IsWhiteSpace(item);
+                if (b3 || b4)
                 {
+                    if (b3)
+                    {
+                        if (args)
+                        {
+                            DictionaryHelper.AddOrCreateIfDontExists<string, string>(e.changed, before, after);
+                        }
+                    }
                     sb.Append(after);
+                }
+                else
+                {
+                    if (args)
+                    {
+                        if (e.notSupportedChars != null)
+                        {
+                            e.notSupportedChars.Add(item);
+                        }
+                    }
                 }
                 
             }

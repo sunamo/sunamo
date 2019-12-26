@@ -1605,11 +1605,7 @@ public static partial class SH
 
 
 
-    static SH()
-    {
-        s_cs = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs";
-        Init();
-    }
+  
 
     public static string GetLastWord(string p)
     {

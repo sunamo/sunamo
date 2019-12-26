@@ -54,6 +54,12 @@ public partial class ManageArtistDashTitle
 
             if (SH.ContainsBracket( artist, ref left, ref right))
             {
+                if (left.Count -1 == right.Count )
+                {
+                    var closingBracket = SH.ClosingBracketFor(left[0]);
+                    right.Add(closingBracket);
+                    artist += closingBracket;
+                }
                 var between = SH.GetTextBetween(artist, left[0], right[0]);
                 between = left[0] + between + right[0];
                 item = item.Replace(between, string.Empty);

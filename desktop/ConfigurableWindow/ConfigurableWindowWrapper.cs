@@ -14,9 +14,11 @@ namespace ConfigurableWindow.Shared
     /// </summary>
     public  class ConfigurableWindowWrapper
     {
-        Window w = null;
+        public Window w = null;
 
         MenuItem miAlwaysOnTop = null;
+
+       
 
         private void MiAlwaysOnTop_Click(object o, RoutedEventArgs e)
         {
