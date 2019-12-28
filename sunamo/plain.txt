@@ -1,11 +1,7 @@
-﻿Use SettingsBase
-Save only four fixed properties from Window
-Derived from ConfigurableWindow 
-
-IConfigurableWindowSettings -> ConfigurableWindowSettings -> DemoWindowConfigSettings -> ctor DemoWindow
-
-1) Derive Window from IConfigurableWindow
-2) Implement CreateSettings
-3) Copy DemoWindow1_SourceInitialized, OnRenderSizeChanged
-4) add data.Add(this);
-4) done
+﻿Lyr_Artist
+Lyr_LyrTag
+Lyr_Album
+Lyr_YoutubeVideos
+Lyr_Lyrics
+Lyr_Song
+Lyr_LyrWords
