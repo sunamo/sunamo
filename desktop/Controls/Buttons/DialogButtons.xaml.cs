@@ -56,6 +56,9 @@ namespace desktop.Controls
         }
 
         public bool clickedOk = false;
+        public bool clickedApply = false;
+        public bool clickedCancel = false;
+
 
         public bool IsEnabledBtnApply
         {
@@ -75,6 +78,7 @@ namespace desktop.Controls
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            clickedCancel = true;
             DialogResult = false;
         }
 
@@ -86,6 +90,7 @@ namespace desktop.Controls
 
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
+            clickedApply = true;
             DialogResult = null;
         }
 

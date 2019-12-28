@@ -17,8 +17,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     static MSStoredProceduresIBase()
     {
-        var f = AppData.ci.GetFile(AppFolders.Logs, "sqlCommands.txt");
-        loggedCommands = new PpkOnDrive(f);
+        //var f = AppData.ci.GetFile(AppFolders.Logs, "sqlCommands.txt");
+        //loggedCommands = new PpkOnDrive(f);
     }
 
     /// <summary>
@@ -83,9 +83,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             //true) //
             if (IsNVarChar != null)
             {
-                if (!IsNVarChar.Invoke(table, column))
-                {
-                    _ = MSStoredProceduresI.ConvertToVarChar(_);
+
+                if( SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table, ref column, i))
+                { 
+                    if (!IsNVarChar.Invoke(table, column))
+                    {
+                        _ = MSStoredProceduresI.ConvertToVarChar(_);
+                    }
                 }
             }
         
@@ -541,10 +545,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         using (var conn = new SqlConnection(Cs))
         {
             conn.Open();
-            var connBackup = MSDatabaseLayer.conn;
-            MSDatabaseLayer.conn = conn;
-            DropAndCreateTable(p, dictionary, MSDatabaseLayer.conn);
-            MSDatabaseLayer.conn = conn;
+            //var connBackup = MSDatabaseLayer.conn;
+            //MSDatabaseLayer.conn = conn;
+            DropAndCreateTable(p, dictionary, conn);
+            //MSDatabaseLayer.conn = conn;
             conn.Close();
         }
     }
@@ -554,14 +558,21 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         if (dictionary.ContainsKey(p))
         {
             DropTableIfExists(p);
-            dictionary[p].GetSqlCreateTable(p, true).ExecuteNonQuery();
+            dictionary[p].GetSqlCreateTable( p, true, conn).ExecuteNonQuery();
         }
     }
+
+    public string _cs = null;
 
     string Cs
     {
         get
         {
+            if (_cs != null)
+            {
+                return _cs;
+            }
+            
             return MSDatabaseLayer.cs;
         }
     }
@@ -574,7 +585,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             conn.Open();
             DropTableIfExists(p);
-            msc.GetSqlCreateTable(p, false).ExecuteNonQuery();
+            msc.GetSqlCreateTable(p, false, conn).ExecuteNonQuery();
             conn.Close();
         }
     }
@@ -582,10 +593,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
+        var cs = MSDatabaseLayer.cs;
         if (dictionary.ContainsKey(p))
         {
             DropTableIfExists(p + "2");
-            dictionary[p].GetSqlCreateTable(p + "2").ExecuteNonQuery();
+            dictionary[p].GetSqlCreateTable(p + "2", cs).ExecuteNonQuery();
         }
     }
 
@@ -697,7 +709,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
-            loggedCommands.Add(comm.CommandText);
+            //loggedCommands.Add(comm.CommandText);
             conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;

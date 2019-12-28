@@ -786,16 +786,24 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return SelectLastIDFromTable(tran, p, "ID");
     }
 
+    string cs = null;
+
     /// <summary>
     /// Tuto metodu nepoužívej například po vkládání, když chceš zjistit ID posledního řádku, protože když tam bude něco smazaného , tak to budeš mít o to posunuté !!
     /// 
     /// </summary>
     public int SelectFindOutNumberOfRows(SqlTransaction tran, string tabulka)
     {
-        SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka, MSDatabaseLayer.conn, tran);
-        //comm.Transaction = tran;
-        string s = comm.ExecuteScalar().ToString();
-        return int.Parse(s);
+        using (var conn = new SqlConnection(cs))
+        {
+            conn.Open();
+
+            SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka, conn, tran);
+            //comm.Transaction = tran;
+            string s = comm.ExecuteScalar().ToString();
+            conn.Close();
+            return int.Parse(s);
+        }
     }
 
     /// <summary>

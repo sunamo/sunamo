@@ -199,6 +199,8 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
         return factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, false, false, null, null, primaryKey);
     }
 
+    public bool IsUnicode = false;
+
     public static MSSloupecDB CI(SqlDbType2 typ, string nazev)
     {
         return factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, false, false, null, null, false);

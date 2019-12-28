@@ -1,7 +1,7 @@
 ﻿using System;
 public class MSStoredProceduresISql5 : MSStoredProceduresIBase
 {
-    static MSStoredProceduresIBase _ci = null;
+    static MSStoredProceduresIBase _ci = new MSStoredProceduresIBase();
     static Type type = typeof(MSStoredProceduresISql5);
     public static MSStoredProceduresIBase ci
     {
@@ -59,7 +59,7 @@ public class MSStoredProceduresISql5 : MSStoredProceduresIBase
     /// </summary>
     public static void CreateInstance(string dataSource, string database, string databaseName)
     {
-                MSDatabaseLayerSql5.LoadNewConnectionFirst(dataSource, database);
+                MSDatabaseLayerSql5.LoadNewConnection(dataSource, database);
 
         //}
         _databaseName = databaseName;

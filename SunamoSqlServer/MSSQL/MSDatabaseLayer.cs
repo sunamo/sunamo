@@ -6,8 +6,63 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web;
 
-public partial class MSDatabaseLayer 
+public partial class MSDatabaseLayer :MSDatabaseLayerBase
 {
+    #region Not dependent on Connection
+    /// <summary>
+    /// Je stejná jako metoda GetValues, až na to že počítá od 1 a ne od 0
+    /// </summary>
+    /// <param name="sloupce"></param>
+    /// <returns></returns>
+    public static string GetValues1(params object[] sloupce)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(AllStrings.lb);
+        int to = sloupce.Length + 1;
+        for (int i = 1; i < to; i++)
+        {
+            sb.Append("@p" + (i).ToString() + AllStrings.comma);
+        }
+        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
+    }
+
+    public static List<object> GetUsedDataTypes()
+    {
+        List<object> vr = new List<object>();
+        vr.Add("");
+        foreach (var item in usedTa)
+        {
+            vr.Add(item.Key);
+        }
+        return vr;
+    }
+
+    public static SqlDbType GetSqlDbTypeFromType(Type type)
+    {
+
+        string t = type.ToString();
+        switch (t)
+        {
+            case "System.Int32":
+                return SqlDbType.Int;
+            case "System.DateTime":
+                return SqlDbType.SmallDateTime;
+            case "System.Single":
+                return SqlDbType.Real;
+            case "System.String":
+                return SqlDbType.NVarChar;
+            case "System.Boolean":
+                return SqlDbType.Bit;
+            case "System.Int16":
+                return SqlDbType.SmallInt;
+            case "System.Byte":
+                return SqlDbType.TinyInt;
+            default:
+                throw new Exception("Neimplementovaná větev");
+
+        }
+    }
+
     public static MSDatabaseLayerInstance ci = new MSDatabaseLayerInstance();
     //public static Action loadDefaultDatabase;
     //public static SqlConnection conn
@@ -17,8 +72,6 @@ public partial class MSDatabaseLayer
     //        return _conn;
     //    }
     //}
-
-    public static SqlConnection conn = null;
 
     /// <summary>
     /// Direct znamená že mohu přímo zadat počet parametrů které si přeji vytvořit
@@ -160,7 +213,7 @@ public partial class MSDatabaseLayer
         hiddenTa.Add(SqlDbType2.NChar, "Řetězec Unicode s pevnou šířkou do velikosti 4000 znaků");
 
         SetFactoryColumnDb();
-        
+
     }
 
     public static void SetFactoryColumnDb()
@@ -463,21 +516,20 @@ public partial class MSDatabaseLayer
         }
     }
 
-    
-     static string _cs = null;
+
+    static string _cs = null;
 
     public static string cs
     {
-        get => _cs; set 
-        { 
-            _cs = value; 
+        get => _cs; set
+        {
+            _cs = value;
         }
     }
 
     //static bool closing = false;
 
-    static string dataSource2 = "";
-    static string database2 = "";
+    
 
     public static string databaseName
     {
@@ -485,10 +537,89 @@ public partial class MSDatabaseLayer
         {
             return database2;
         }
+    } 
+    #endregion
+
+
+    
+    public static bool LoadNewConnection(string cs)
+    {
+        MSDatabaseLayer.cs = cs;
+
+        //conn = new SqlConnection(cs);
+        //try
+        //{
+        //    conn.Open();
+        //    //conn.Close();
+        //    //conn.Dispose();
+        //}
+        //catch (Exception ex)
+        //{
+        //    return false;
+        //}
+        return true;
+        //if (!string.IsNullOrEmpty(_conn.ConnectionString))
+        //{
+        //    //OpenWhenIsNotOpen();
+        //    conn.Open();
+        //}
+
+    }
+
+    /// <summary>
+    /// Používá se ve desktopových aplikacích
+    /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace
+    /// </summary>
+    /// <param name="file"></param>
+    public static bool LoadNewConnectionFirst(string dataSource, string database)
+    {
+        dataSource2 = dataSource;
+        database2 = database;
+        bool vr = LoadNewConnection(dataSource, database);
+        //RegisterEvents();
+        return vr;
+    }
+
+    /// <summary>
+    /// Cant be in MSDatabaseLayerBase because it was shared between MSDatabaseLayer and MSDatabaseLayerSql5
+    /// </summary>
+    public static SqlConnection conn = null;
+    /// <summary>
+    /// Cant be in MSDatabaseLayerBase because it was shared between MSDatabaseLayer and MSDatabaseLayerSql5
+    /// </summary>
+    public static string dataSource2 = "";
+    /// <summary>
+    /// Cant be in MSDatabaseLayerBase because it was shared between MSDatabaseLayer and MSDatabaseLayerSql5
+    /// </summary>
+    public static string database2 = "";
+
+
+    /// <summary>
+    /// Není veřejná, místo ní používej pro otevírání databáze metodu LoadNewConnectionFirst
+    /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace
+    /// </summary>
+    /// <param name="file"></param>
+    private static bool LoadNewConnection(string dataSource, string database)
+    {
+
+        cs = "Data Source=" + dataSource;
+        if (!string.IsNullOrEmpty(database))
+        {
+            cs += ";Database=" + database;
+        }
+        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
+        //_conn = new SqlConnection(cs);
+
+        //OpenWhenIsNotOpen();
+        //conn.Open();
+
+        return LoadNewConnection(cs);
+
+
     }
 
 
-
+    #region Commented
     //public static void AssignConnectionStringScz()
     //{
 
@@ -510,22 +641,6 @@ public partial class MSDatabaseLayer
     //    }
     //}
 
-    
-
-    /// <summary>
-    /// Používá se ve desktopových aplikacích
-    /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace
-    /// </summary>
-    /// <param name="file"></param>
-    public static bool LoadNewConnectionFirst(string dataSource, string database)
-    {
-        dataSource2 = dataSource;
-        database2 = database;
-        bool vr = LoadNewConnection(dataSource, database);
-        //RegisterEvents();
-        return vr;
-    }
-
     //private static void RegisterEvents()
     //{
     //    conn.Disposed -= new EventHandler(conn_Disposed);
@@ -536,15 +651,6 @@ public partial class MSDatabaseLayer
     //    conn.InfoMessage += new SqlInfoMessageEventHandler(conn_InfoMessage);
     //    conn.StateChange += new System.Data.StateChangeEventHandler(conn_StateChange);
     //}
-
-    public static void LoadNewConnectionFirst(string cs2)
-    {
-        LoadNewConnection(cs2);
-        //if (_conn != null)
-        //{
-        //    RegisterEvents();
-        //}
-    }
 
     //static void conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
     //{
@@ -613,110 +719,6 @@ public partial class MSDatabaseLayer
     //        //ReloadConnection();
     //        LoadNewConnection(cs);
     //    }
-    //}
-
-    
-
-    /// <summary>
-    /// Není veřejná, místo ní používej pro otevírání databáze metodu LoadNewConnectionFirst
-    /// Používá se když chci otevřít nějakou DB která nenese jen jméno aplikace
-    /// </summary>
-    /// <param name="file"></param>
-    private static bool LoadNewConnection(string dataSource, string database)
-    {
-        
-        cs = "Data Source=" + dataSource;
-        if (!string.IsNullOrEmpty(database))
-        {
-            cs += ";Database=" + database;
-        }
-        cs += ";" + "Integrated Security=True;MultipleActiveResultSets=True" + ";TransparentNetworkIPResolution=False;Max Pool Size=50000;Pooling=True;";
-        //_conn = new SqlConnection(cs);
-    
-            //OpenWhenIsNotOpen();
-            //conn.Open();
-
-          return  LoadNewConnection(cs);
-       
-
-    }
-    public static bool LoadNewConnection(string cs)
-    {
-        MSDatabaseLayer.cs = cs;
-
-        //conn = new SqlConnection(cs);
-        //try
-        //{
-        //    conn.Open();
-        //    //conn.Close();
-        //    //conn.Dispose();
-        //}
-        //catch (Exception ex)
-        //{
-        //    return false;
-        //}
-        return true;
-        //if (!string.IsNullOrEmpty(_conn.ConnectionString))
-        //{
-        //    //OpenWhenIsNotOpen();
-        //    conn.Open();
-        //}
-
-    }
-
-    /// <summary>
-    /// Je stejná jako metoda GetValues, až na to že počítá od 1 a ne od 0
-    /// </summary>
-    /// <param name="sloupce"></param>
-    /// <returns></returns>
-    public static string GetValues1(params object[] sloupce)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(AllStrings.lb);
-        int to = sloupce.Length + 1;
-        for (int i = 1; i < to; i++)
-        {
-            sb.Append("@p" + (i).ToString() + AllStrings.comma);
-        }
-        return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
-    }
-
-    public static List<object> GetUsedDataTypes()
-    {
-        List<object> vr = new List<object>();
-        vr.Add("");
-        foreach (var item in usedTa)
-        {
-            vr.Add(item.Key);
-        }
-        return vr;
-    }
-
-    public static SqlDbType GetSqlDbTypeFromType(Type type)
-    {
-
-        string t = type.ToString();
-        switch (t)
-        {
-            case "System.Int32":
-                return SqlDbType.Int;
-            case "System.DateTime":
-                return SqlDbType.SmallDateTime;
-            case "System.Single":
-                return SqlDbType.Real;
-            case "System.String":
-                return SqlDbType.NVarChar;
-            case "System.Boolean":
-                return SqlDbType.Bit;
-            case "System.Int16":
-                return SqlDbType.SmallInt;
-            case "System.Byte":
-                return SqlDbType.TinyInt;
-            default:
-                throw new Exception("Neimplementovaná větev");
-              
-        }
-    }
-
-
+    //} 
+    #endregion
 }

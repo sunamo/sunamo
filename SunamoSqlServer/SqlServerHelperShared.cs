@@ -9,8 +9,9 @@ public partial class SqlServerHelper
 {
     static Type type = typeof(SqlServerHelper);
 
-    public static void GetTableAndColumn(string sql, ref string table, ref string column, int serie)
+    public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
+        bool result = true;
         var p = SH.GetFirstWord(sql).ToLower();
 
         if (p == "update")
@@ -21,23 +22,35 @@ public partial class SqlServerHelper
         {
             Insert(sql, ref table, ref column, serie);
         }
+        else if(p == "select")
+        {
+            return false;
+        }
+        else if(p == "delete")
+        {
+            return false;
+        }
         else
         {
             ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
         }
 
-        // yet in first parameter is two in from property, there is two elements with text property: 1) from 2) table
-        //foreach (var item in p)
-        //{
-        //    var tokens = item.Tokens;
-        //    foreach (var item2 in tokens)
-        //    {
-        //        if (item2.Text.ToLower() != "from")
-        //        {
-        //            table = item2.Text;
-        //        }
-        //    }
-        //}
+#if DEBUG
+        DebugLogger.DebugWriteLine("SQL: " + sql);
+        DebugLogger.DebugWriteLine("Table: {0}, Column: {1}", table, column);
+        DebugLogger.DebugWriteLine("---");
+#endif
+
+        if (column == null)
+        {
+
+        }
+        if (table == null)
+        {
+
+        }
+
+        return result;
     }
 
     private static void Insert(string sql, ref string table, ref string column, int serie)
@@ -80,12 +93,19 @@ public partial class SqlServerHelper
 
         if (column == null)
         {
+            if (isNVarChar.Count != 0)
+            {
+                column = isNVarChar[table][serie].Name;
+            }
 
+            
         }
 
 
 
     }
+
+    public static Dictionary<string, MSColumnsDB> isNVarChar = new Dictionary<string, MSColumnsDB>();
 
     private static void Update(string sql, ref string table, ref string column, int serie)
     {

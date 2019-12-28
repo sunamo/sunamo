@@ -217,25 +217,37 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     }
     private void UserControlWithResult_ChangeDialogResult(bool? b)
     {
-        if (userControl is CheckBoxListUC)
+        if (userControl is CheckBoxListUC )
         {
             CheckBoxListUC checkBoxListUC = (CheckBoxListUC)userControl;
 
             var checked2 = checkBoxListUC.CheckedIndexes();
-            if (checked2.Count() >0)
+            if (dialogButtons != null)
             {
-                dialogButtons.IsEnabledBtnOk = true;
+                if (dialogButtons.clickedOk || dialogButtons.clickedApply || dialogButtons.clickedCancel)
+                {
+                    UserControlWithResult_ChangeDialogResult2(b);
+                }
+
+                if (checked2.Count() >0)
+            {
+                    dialogButtons.IsEnabledBtnOk = true;
+                
             }
             else
             {
                 dialogButtons.IsEnabledBtnOk = false;
             }
+            }
         }
         else
         {
-
+            UserControlWithResult_ChangeDialogResult2(b);
         }
+    }
 
+    private void UserControlWithResult_ChangeDialogResult2(bool? b)
+    {
         if (dialogButtons != null)
         {
             //DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with window dialog buttons");

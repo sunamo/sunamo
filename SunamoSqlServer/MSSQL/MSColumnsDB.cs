@@ -13,6 +13,15 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     string derived = null;
     string replaceMSinMSStoredProceduresI = null;
     static string _tableNameField = "_tableName";
+    public Dictionary<string, MSSloupecDB> dict = new Dictionary<string, MSSloupecDB>();
+
+    private void FillDictionary()
+    {
+        foreach (var item in this)
+        {
+            dict.Add(item.Name, item);
+        }
+    }
 
     /// <summary>
     /// A1 od jakých rozhraní a tříd by měla být odvozena třída TableRow
@@ -20,18 +29,26 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     /// <param name="derived"></param>
     /// <param name="signed"></param>
     /// <param name="p"></param>
-    public MSColumnsDB(string derived, bool signed, params MSSloupecDB[] p)
+    public MSColumnsDB(string derived, bool signed, params MSSloupecDB[] p) : this(signed, derived, null, p)
     {
-        this.derived = derived;
-        this.signed = signed;
-        this.AddRange(p);
     }
 
-    public MSColumnsDB(bool signed, string replaceMSinMSStoredProceduresI, params MSSloupecDB[] p)
+    public MSColumnsDB(bool signed, string derived, string replaceMSinMSStoredProceduresI, params MSSloupecDB[] p)
     {
         this.signed = signed;
+        this.derived = derived;
         this.replaceMSinMSStoredProceduresI = replaceMSinMSStoredProceduresI;
         this.AddRange(p);
+        FillDictionary();
+    }
+
+    public MSColumnsDB(bool signed, params MSSloupecDB[] p) : this(signed, null, null, p)
+    {
+
+    }
+
+    public MSColumnsDB(params MSSloupecDB[] p) : this(false, null, null, p)
+    {
     }
 
     /// <summary>
@@ -85,18 +102,9 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         return d.Contains("_");
     }
 
+    
 
-
-    public MSColumnsDB(bool signed, params MSSloupecDB[] p)
-    {
-        this.signed = signed;
-        this.AddRange(p);
-    }
-
-    public MSColumnsDB(params MSSloupecDB[] p)
-    {
-        this.AddRange(p);
-    }
+  
 
     public string GetTROfColumns()
     {
@@ -117,22 +125,23 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     /// <summary>
     /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
     /// </summary>
+    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, string cs)
+    {
+        using (var conn = new SqlConnection(cs))
+        {
+            conn.Open();
+            var comm = GetSqlCreateTable(table, dynamicTables, conn);
+            conn.Close();
+            return comm;
+        }
+    }
+
     public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
     {
         string sql = GeneratorMsSql.CreateTable(table, this, dynamicTables, conn);
         SqlCommand comm = new SqlCommand(sql, conn);
+        
         return comm;
-    }
-
-    /// <summary>
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    /// <param name="table"></param>
-    /// <param name="dynamicTables"></param>
-    /// <returns></returns>
-    public SqlCommand GetSqlCreateTable(string table, bool dynamicTables)
-    {
-        return GetSqlCreateTable(table, dynamicTables, MSDatabaseLayer.conn);
     }
 
     /// <summary>
@@ -397,7 +406,6 @@ public partial class MSColumnsDB : List<MSSloupecDB>
 
         return csg.ToString();
     }
-
     public static string Copy(string p)
     {
         return p;
@@ -408,8 +416,6 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         string nazevCs;
         return GetCsTableRow(signed, nazevTabulky, dbPrefix, out nazevCs);
     }
-
-
 
     public bool IsOtherColumnID
     {
@@ -801,8 +807,6 @@ ParseRow(o);");
         }
     }
 
-
-
     public string GetCsEntityView(string table, string dbPrefix, string nameOfVariable)
     {
         CSharpGenerator csg = new CSharpGenerator();
@@ -986,9 +990,9 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
         return hg.ToString();
     }
 
-    public SqlCommand GetSqlCreateTable(string nazevTabulky)
+    public SqlCommand GetSqlCreateTable(string nazevTabulky, string cs)
     {
-        return GetSqlCreateTable(nazevTabulky, false);
+        return GetSqlCreateTable( nazevTabulky, false, cs);
     }
 
     public static MSColumnsDB IDName(int p)

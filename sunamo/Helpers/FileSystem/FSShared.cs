@@ -1260,8 +1260,13 @@ public partial class FS
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
         ComplexInfoString cis = new ComplexInfoString(SH.TextAfter( ext, AllStrings.dot));
-        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?") && cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0;
-        if (!ext.StartsWith("*.") && !isNoMascEntered && isContained) 
+
+        //Already tried
+        //(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0);
+
+        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0);
+        // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
+        if (!ext.StartsWith("*.") && isNoMascEntered && isContained) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }

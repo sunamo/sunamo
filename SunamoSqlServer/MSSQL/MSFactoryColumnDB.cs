@@ -17,6 +17,16 @@ public class MSFactoryColumnDB : IFactoryColumnDB<MSSloupecDB, SqlDbType2>
         MSSloupecDB column = new MSSloupecDB();
         bool isNewId = false;
         column.typ = typ; //ConvertSqlDbType.ToSqlDbType(typ, out isNewId);
+        
+        if (column.Type == SqlDbType2.NChar || column.Type == SqlDbType2.NVarChar)
+        {
+            column.IsUnicode = true;
+        }
+        else if (column.Type == SqlDbType2.Char || column.Type == SqlDbType2.VarChar)
+        {
+            column.IsUnicode = false;
+        }
+
         column.isNewId = isNewId;
         column.Name = nazev;
         column._signed = signed;

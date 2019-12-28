@@ -49,6 +49,7 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
+    <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />

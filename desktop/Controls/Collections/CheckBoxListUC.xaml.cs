@@ -108,6 +108,10 @@ namespace desktop.Controls.Collections
                 {
                     colButtons.Init(i);
                 }
+                else
+                {
+                    colButtons.Init(new ImageButtonsInit { });
+                }
 
                 l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
                 l.CollectionChanged += L_CollectionChanged;
@@ -218,11 +222,17 @@ namespace desktop.Controls.Collections
                 }
                 var chb = CheckBoxHelper.Get(new ControlInitData { text = item });
                 chb.IsChecked = defChecked;
-                // Must handling Checked / Unchecked, otherwise won't working dialogbuttons and cant exit dialog
-                chb.Checked += CheckBox_Checked;
-                chb.Unchecked += CheckBox_Unchecked;
-                l.Add(chb);
+                AddCheckbox(chb);
             }
+        }
+
+        public void AddCheckbox(CheckBox chb)
+        {
+            
+            // Must handling Checked / Unchecked, otherwise won't working dialogbuttons and cant exit dialog
+            chb.Checked += CheckBox_Checked;
+            chb.Unchecked += CheckBox_Unchecked;
+            l.Add(chb);
         }
 
         int dexLastChecked = -1;
@@ -426,6 +436,8 @@ namespace desktop.Controls.Collections
         {
             RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
         }
+
+        
     }
 
     public class CheckBoxListOperations
