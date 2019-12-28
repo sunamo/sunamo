@@ -93,7 +93,7 @@ public partial class CSharpHelperSunamo
                 return 0;
             case "DateTime":
                 // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
-                return SqlServerHelper.DateTimeMinVal;
+                return Consts.DateTimeMinVal;
             case "byte" + "[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return null;

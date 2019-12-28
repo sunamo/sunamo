@@ -83,6 +83,11 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         DockPanel.SetDock(menu, Dock.Top);
         dock.Children.Add(menu);
 
+        
+        var tb = TextBlockHelper.Get(new ControlInitData { text = "Enter for fast closing" });
+        DockPanel.SetDock(tb, Dock.Top);
+        dock.Children.Add(tb);
+
         if (uc is IUserControlWithMenuItemsList)
         {
             IUserControlWithMenuItemsList userControlWithMenuItemsList = (IUserControlWithMenuItemsList)uc;
@@ -144,6 +149,24 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
         Loaded += WindowWithUserControl_Loaded;
         SizeChanged += WindowWithUserControl_SizeChanged;
+        PreviewKeyDown += WindowWithUserControl_PreviewKeyDown;
+    }
+
+    private void WindowWithUserControl_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key == System.Windows.Input.Key.Enter)
+        {
+            if (ChangeDialogResult != null)
+            {
+                //DialogResult = true;
+                ChangeDialogResult(true);
+            }
+            else
+            {
+                controlWithResultDebug.DialogResult = true;
+            }
+            Close();
+        }
     }
 
     private void WindowWithUserControl_Closing(object sender, CancelEventArgs e)
@@ -308,7 +331,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     }
 
     public event VoidBoolNullable ChangeDialogResult;
-    
 
     private void WindowWithUserControl_Closed(object sender, System.EventArgs e)
     {

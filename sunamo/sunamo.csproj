@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>sunamo</RootNamespace>
     <AssemblyName>sunamo</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -59,7 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Args\ConvertToVarcharArgs.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
@@ -506,8 +507,6 @@
     <Compile Include="Helpers\Resource\ResourcesHelper.cs" />
     <Compile Include="Helpers\Runtime\PlatformInteropHelper.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelper.cs" />
-    <Compile Include="Helpers\Sql\SqlServerHelper.cs" />
-    <Compile Include="Helpers\Sql\SqlServerHelperShared.cs" />
     <Compile Include="Helpers\Text\EncodingHelper.cs" />
     <Compile Include="Helpers\Text\HtmlSB.cs" />
     <Compile Include="Helpers\Text\InstantSB.cs" />
@@ -660,8 +659,6 @@
     <None Include="Fonts\FontAwesome.otf" />
     <None Include="Helpers\DT\DTHelperFormalizedWithT.cs~RF68a66ba.TMP" />
     <None Include="Helpers\DT\DTHelperFormalizedWithTShared.cs~RF66768c8.TMP" />
-    <None Include="Helpers\Text\SHShared.cs~RF16113d1.TMP" />
-    <None Include="Helpers\Text\SHShared.cs~RF2a67d3c.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF100e707.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF10146ea.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF10187fa.TMP" />

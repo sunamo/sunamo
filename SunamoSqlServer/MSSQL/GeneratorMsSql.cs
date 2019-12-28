@@ -52,6 +52,7 @@ public partial class GeneratorMsSql
                 p++;
             }
         }
+
         if (isNotWhere != null)
         {
             foreach (AB var in isNotWhere)
@@ -111,26 +112,8 @@ public partial class GeneratorMsSql
         return comm;
     }
 
-   
-
-
-    
-
-    
-
-    
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-    
+    private static string GetTable(string commandBeforeWhere)
+    {
+        return null;
+    }
 }

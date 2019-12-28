@@ -36,11 +36,14 @@
     /// </summary>
     Int,
     /// <summary>
+    /// --Use VarChar (I'm using ConvertToVarchar() and I save the space). It's here only up to time when all table I will convert to VarChar
+    /// Use NVarChar. Zkusil jsem to s VarChar a za ty problémy s opravováním špatně vložených dat a ostudou že "mi to nefunguje", časem do toho všeho vloženým mi za to nestojí. Když chci být globální, musí být vše Unicode. Pro všechny sloupce, nikdy nevím kdy to budu potřebovat. Usnaďnuji si práci všude kde mohu.
     /// Velikost 2*počet_znaků bajtů + 2 bajty. Omezený řetězec na max. 4000 znaků(8000 bajtů). Uvážlivě dávej NVarChar tam kde skutečně člověk neví jak dlouhý bude text a může být dlouhý a tam kde se z tabulky nebere jen 1 určitý sloupec(nebo více) - pro takové případy je lepší NChar. Obecně se snaž používat více NVarChar z důvodu úspory místa v DB, ta rychlost není zase až tak podstatná a navíc uživatelé mohou zadat větší množství dat bez toho aby to spolklo větší množství míst. NVarChar se používá stejně jako NText vždy ve samostatných Tabulkách.
     /// Lze zadat NVarChar(MAX) pro delší texty než 4000 znaků.
     /// </summary>
     NVarChar,
     /// <summary>
+    /// Use Char (I'm using ConvertToVarchar() and I save the space). It's here only up to time when all table I will convert to Char
     /// Velikost 2*počet_znaků bajtů. Omezený řetězec na max. 4000 znaků(8000 bajtů). NChar se hodí tam kde všechny hodnoty v řádku budou víceméně stejně dlouhé a nechce se ti zakládat nová tabulka pro NVarChar. Jinak je lepší NVarChar
     /// </summary>
     NChar,

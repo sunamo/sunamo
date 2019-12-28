@@ -96,7 +96,7 @@ public class TextOutputGenerator
          List(CA.ToListString( files1));
     }
 
-    public void List(IEnumerable<string> files1)
+    public void List<Value>(IEnumerable<Value> files1)
     {
         if (files1.Count() == 0)
         {
@@ -106,10 +106,15 @@ public class TextOutputGenerator
         {
             foreach (var item in files1)
             {
-                AppendLine(item);
+                AppendLine(item.ToString());
             }
             sb.AppendLine();
         }
+    }
+
+    public void List(IEnumerable<string> files1)
+    {
+        List<string>(files1);
     }
 
     public void Paragraph(StringBuilder wrongNumberOfParts, string header)
@@ -133,16 +138,21 @@ public class TextOutputGenerator
         }
     }
 
+    public void List<Header,Value>(IEnumerable<Value> files1,  Header header) where Header : IEnumerable<char>
+    {
+        List<Header, Value>(files1, header, true, false);
+    }
+
     public void List(IEnumerable<string> files1, string header)
     {
         List(files1, header, true, false);
     }
 
-    public void List(IEnumerable<string> files1, string header, bool headerWrappedEmptyLines, bool insertCount)
+    public void List<Header,Value>(IEnumerable<Value> files1, Header header, bool headerWrappedEmptyLines, bool insertCount) where Header : IEnumerable<char>
     {
         if (insertCount)
         {
-            header += " (" + files1.Count() + AllStrings.rb;
+            header = (Header)((IEnumerable<char>)CA.JoinIEnumerable<char>(header, " (" + files1.Count() + AllStrings.rb));
         }
         if (headerWrappedEmptyLines)
         {
@@ -174,5 +184,23 @@ public class TextOutputGenerator
         {
             List(item.Value, item.Key);
         }
+    }
+
+    public void Dictionary<Header,Value>(Dictionary<Header, List<Value>> ls) where Header : IEnumerable<char>
+    {
+        foreach (var item in ls)
+        {
+            List<Header, Value>(item.Value, item.Key);
+        }
+    }
+
+    public void Dictionary<T1, T2>(Dictionary<T2, T2> d)
+    {
+        //StringBuilder sb = new StringBuilder();
+        foreach (var item in d)
+        {
+            sb.AppendLine(SF.PrepareToSerializationExplicit(CA.ToList<object>( item.Key, item.Value)));
+        }
+        
     }
 }

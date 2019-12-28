@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>cmd</RootNamespace>
     <AssemblyName>cmd</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>

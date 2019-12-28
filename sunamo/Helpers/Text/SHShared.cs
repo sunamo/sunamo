@@ -1846,7 +1846,8 @@ public static partial class SH
                 }
             }
         }
-        return null;
+        // must return string.Empty, not null, because null cant be save to many of columns in db
+        return string.Empty;
     }
 
     public static List<string> RemoveDuplicatesNone(string p1, string delimiter)

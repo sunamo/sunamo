@@ -13,6 +13,14 @@ using sunamo.Values;
 /// </summary>
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
+    public static PpkOnDrive loggedCommands = null;
+
+    static MSStoredProceduresIBase()
+    {
+        var f = AppData.ci.GetFile(AppFolders.Logs, "sqlCommands.txt");
+        loggedCommands = new PpkOnDrive(f);
+    }
+
     /// <summary>
     /// A1 NSN
     /// </summary>
@@ -42,7 +50,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="o"></param>
     public static int AddCommandParameter(SqlCommand comm, int i, object o)
     {
-        
+        string table = null;
+        string column = null;
+
+
 
         if (o == null || o.GetType() == DBNull.Value.GetType())
         {
@@ -68,7 +79,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             //    i *= -1;
             //    return i;
             //}
-            comm.Parameters.AddWithValue("@p" + i.ToString(), MSStoredProceduresI.ConvertToVarChar(_));
+
+            //true) //
+            if (IsNVarChar != null)
+            {
+                if (!IsNVarChar.Invoke(table, column))
+                {
+                    _ = MSStoredProceduresI.ConvertToVarChar(_);
+                }
+            }
+        
+            comm.Parameters.AddWithValue("@p" + i.ToString(), _);
         }
         else
         {
@@ -78,6 +99,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         ++i;
         return i;
     }
+
+    public static  Func<string, string, bool> IsNVarChar = null;
 
     public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, AB[] whereIs, AB[] whereIsNot)
     {
@@ -674,7 +697,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         using (var conn = new SqlConnection(Cs))
         {
-
+            loggedCommands.Add(comm.CommandText);
             conn.Open();
             //SqlDbType.SmallDateTime;
             comm.Connection = conn;

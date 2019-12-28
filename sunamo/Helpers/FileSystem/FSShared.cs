@@ -1252,10 +1252,16 @@ public partial class FS
         {
             return "*.*";
         }
+
+        if (ext == "Tables.cs")
+        {
+
+        }
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
-        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?");
-        if (!ext.StartsWith("*.") && isNoMascEntered && isContained) 
+        ComplexInfoString cis = new ComplexInfoString(SH.TextAfter( ext, AllStrings.dot));
+        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?") && cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0;
+        if (!ext.StartsWith("*.") && !isNoMascEntered && isContained) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
@@ -1361,6 +1367,7 @@ public partial class FS
     
 
     /// <summary>
+    /// 
     /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
     /// A1 have to be with ending backslash
     /// A4 must have underscore otherwise is suggested while I try type true
@@ -1370,44 +1377,52 @@ public partial class FS
     /// <param name="mask"></param>
     /// <param name="searchOption"></param>
     /// <returns></returns>
-    public static List<string> GetFiles(string folder, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
+    public static List<string> GetFiles(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
     {
         if (getFilesArgs == null)
         {
             getFilesArgs = new GetFilesArgs();
         }
-
-        List<string> list = null;
-        if (mask.Contains(AllStrings.sc))
-        {
-            list = new List<string>();
-            var masces = SH.Split(mask, AllStrings.sc);
-
-            foreach (var item in masces)
-            {
-                var masc = FS.MascFromExtension(item);
-                list.AddRange(Directory.GetFiles(folder, masc, searchOption));
-            }
-        }
-        else
+        var folders = SH.Split(folder2, AllStrings.sc);
+        List<string> list = new List<string>();
+        foreach (var folder in folders)
         {
             
-            try
+            if (mask.Contains(AllStrings.sc))
             {
-                mask = FS.MascFromExtension(mask);
-                list = Directory.GetFiles(folder, mask, searchOption).ToList();
-            }
-            catch (Exception ex)
-            {
-                ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions(ex));
-            }
-        }
+                //list = new List<string>();
+                var masces = SH.Split(mask, AllStrings.sc);
 
+                foreach (var item in masces)
+                {
+                    var masc = FS.MascFromExtension(item);
+                    list.AddRange(Directory.GetFiles(folder, masc, searchOption));
+                }
+            }
+            else
+            {
+
+                try
+                {
+                    mask = FS.MascFromExtension(mask);
+                    list.AddRange( Directory.GetFiles(folder, mask, searchOption));
+                }
+                catch (Exception ex)
+                {
+                    ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions(ex));
+                }
+            }
+
+        }
         CA.ChangeContent(list, d => SH.FirstCharLower(d));
 
         if (getFilesArgs._trimA1)
         {
-            list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+            foreach (var folder in folders)
+            {
+                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+            }
+            
         }
         if (getFilesArgs.excludeFromLocationsCOntains != null)
         {

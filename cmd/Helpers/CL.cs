@@ -46,6 +46,14 @@ public static partial class CL{
         return null;
     }
 
+    public static void PressEnterAfterInsertDataToClipboard(string what)
+    {
+        if (CmdApp.loadFromClipboard)
+        {
+            AppealEnter("Insert " + what + " to clipboard");
+        }
+    }
+
     public static void Success(string v)
     {
         TypedConsoleLogger.Instance.Success(v);

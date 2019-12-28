@@ -13,7 +13,10 @@ using System.Text;
     /// Min age is 18 due to GDPR - below 18 is needed parent agreement of child
     /// </summary>
     public const int MinAge = 18;
-
+    /// <summary>
+    /// Must be also in Consts, not only in SqlServerHelper due to use in sunamo project
+    /// </summary>
+    public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     static Consts()
     {
         

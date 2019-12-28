@@ -2,6 +2,7 @@
 using desktop.AwesomeFont;
 using desktop.UserControls;
 using sunamo.Essential;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -170,17 +171,18 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
     }
 
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+
+        ConfigurableWindowHelper.SourceInitialized(configurableWindowWrapper);
+    }
+
     protected override void OnRenderSizeChanged(SizeChangedInfo info)
     {
         base.OnRenderSizeChanged(info);
 
-        if (configurableWindowWrapper != null)
-        {
-            if (configurableWindowWrapper._isLoaded && this.WindowState == WindowState.Normal)
-            {
-                configurableWindowWrapper._settings.WindowSize = this.RenderSize;
-            }
-        }
+        ConfigurableWindowHelper.RenderSizeChanged(configurableWindowWrapper);
     }
 
     public const string awesomeFontPath = "/Fonts/FontAwesome.otf#FontAwesome";
@@ -248,7 +250,8 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
         if (userControlWithMenuItems != null)
         {
-            miUC.Visibility = Visibility.Visible;
+            // keep long name due to copy to new selling apps
+            miUC.Visibility = System.Windows.Visibility.Visible;
             miUC.Header = userControl.Title;
             previouslyRegisteredMenuItems = userControlWithMenuItems.MenuItems();
             foreach (var item in previouslyRegisteredMenuItems)
@@ -263,7 +266,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         }
         else
         {
-            miUC.Visibility = Visibility.Collapsed;
+            miUC.Visibility = System.Windows.Visibility.Collapsed;
         }
         #endregion
 

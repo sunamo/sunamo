@@ -687,8 +687,6 @@ public static partial class CA
         return result;
     }
 
-
-
     /// <summary>
     /// Direct edit
     /// </summary>

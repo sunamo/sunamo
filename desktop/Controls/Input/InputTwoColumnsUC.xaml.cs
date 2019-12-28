@@ -155,6 +155,8 @@ namespace desktop.Controls
             //DialogResult = true;
         }
 
+        //
+
         public int CountOfHandlersChangeDialogResult()
         {
             return RuntimeHelper.GetInvocationList(ChangeDialogResult).Count;

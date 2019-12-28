@@ -212,7 +212,7 @@ namespace desktop
             string displayText;
             if (serie == null)
             {
-                displayText = DTHelper.DateTimeToString(date, l, SqlServerHelper.DateTimeMinVal);
+                displayText = DTHelper.DateTimeToString(date, l, Consts.DateTimeMinVal);
             }
             else
             {

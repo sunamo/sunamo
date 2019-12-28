@@ -68,6 +68,7 @@ public static void OpenInBrowser(Browsers prohlizec, string s)
                 b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
                 break;
             case Browsers.Opera:
+                // Opera has version also when is installing to PF, it cant be changed
                 b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
                 break;
             case Browsers.Edge:

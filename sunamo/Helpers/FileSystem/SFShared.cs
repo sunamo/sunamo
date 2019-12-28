@@ -9,13 +9,24 @@ using sunamo.Constants;
 
 public static partial class SF
 {
-    
+    private static SerializeContentArgs s_contentArgs = new SerializeContentArgs();
 
     public const string replaceForSeparatorString = AllStrings.us;
     public static readonly char replaceForSeparatorChar = AllChars.us;
-    
 
-    
+
+    public static string separatorString
+    {
+        get
+        {
+            return s_contentArgs.separatorString;
+        }
+
+        set
+        {
+            s_contentArgs.separatorString = value;
+        }
+    }
 
     /// <summary>
     /// Same as PrepareToSerialization - return without last
@@ -130,5 +141,28 @@ public static partial class SF
         }
 
         return vr;
+    }
+
+/// <summary>
+    /// Return without last
+    /// DateTime is serialize always in english format
+    /// Opposite method: DTHelperEn.ToString<>DTHelperEn.ParseDateTimeUSA
+    /// </summary>
+    /// <param name="pr"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization2(params object[] pr)
+    {
+        var ts = CA.ToListString(pr);
+        return PrepareToSerializationWorker(ts, true, separatorString);
+    }
+/// <summary>
+    /// Return without last
+    /// If need to combine string and IEnumerable, lets use CA.Join
+    /// </summary>
+    /// <param name = "o"></param>
+    /// <returns></returns>
+    public static string PrepareToSerialization2(IEnumerable<string> o, string separator = AllStrings.pipe)
+    {
+        return PrepareToSerializationWorker(o, true, separator);
     }
 }

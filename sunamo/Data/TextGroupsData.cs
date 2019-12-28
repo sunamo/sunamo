@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
     public class TextGroupsData
     {
-        public List<string> entries = null;
-        public List<string> categories = null;
+    public List<string> entries = new List<string>();
+        public List<string> categories = new List<string>();
         public Dictionary<int, List<string>> sortedValues = new Dictionary<int, List<string>>();
 
     public static Dictionary<string, List<string>> SortedValuesWithKeyString(TextGroupsData d)

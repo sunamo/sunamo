@@ -74,6 +74,9 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
             return SH.TrimStartAndEnd(delka, AllStrings.lb, AllStrings.rb);
         }
     }
+    /// <summary>
+    /// Is without lenght
+    /// </summary>
     public string Name
     {
         get
