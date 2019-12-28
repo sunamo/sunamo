@@ -1,4 +1,5 @@
-﻿using sunamo.Values;
+﻿using sunamo.Data;
+using sunamo.Values;
 using System;
 /// <summary>
 /// Number Helper Class
@@ -8,7 +9,7 @@ using System.Linq;
 
 public static partial class NH
 {
-   
+    private static Type s_type = typeof(NH);
 
 
 
@@ -117,5 +118,138 @@ public static List<byte> GenerateIntervalByte(byte od, byte to)
         List<T> c = new List<T>(t);
         c.Sort();
         return c;
+    }
+
+public static string CalculateMedianAverage(List<double> list)
+    {
+        list.RemoveAll(d => d == 0);
+
+        ThrowExceptions.OnlyOneElement(s_type, "CalculateMedianAverage", "list", list);
+
+        MedianAverage<double> medianAverage = new MedianAverage<double>();
+        medianAverage.count = list.Count;
+        medianAverage.median = NH.Median<double>(list);
+        medianAverage.average = NH.Average<double>(list);
+        medianAverage.min = list.Min();
+        medianAverage.max = list.Max();
+
+        return medianAverage.ToString();
+    }
+
+public static T Average<T>(List<T> list)
+    {
+        return Average<T>(Sum<T>(list), list.Count);
+    }
+public static double Average(double gridWidth, double columnsCount)
+    {
+        return Average<double>(gridWidth, columnsCount);
+    }
+public static T Average<T>(dynamic gridWidth, dynamic columnsCount)
+    {
+        if (EqualityComparer<T>.Default.Equals(columnsCount, (T)NH.ReturnZero<T>()))
+        {
+            return (T)NH.ReturnZero<T>();
+        }
+
+        if (EqualityComparer<T>.Default.Equals(gridWidth, (T)NH.ReturnZero<T>()))
+        {
+            return (T)NH.ReturnZero<T>();
+        }
+
+        dynamic result = gridWidth / columnsCount;
+        return result;
+    }
+
+    /// <summary>
+    /// Median = most frequented value
+    /// Note: specified list would be mutated in the process.
+    /// Working excellent
+    /// 4, 0 = 0
+    /// 4, 4, 250, 500, 500 = 250
+    /// 4, 4, 250, 500, 500 = 250
+    /// 4, 4, 4, 4, 250, 500, 500 = 4
+    /// </summary>
+    public static T Median<T>(this IList<T> list) where T : IComparable<T>
+    {
+        return list.NthOrderStatistic((list.Count - 1) / 2);
+    }
+
+    /// <summary>
+    /// Working excellent
+    /// 4, 0 = 2 (as online)
+    /// 4, 4, 250, 500, 500 = 250
+    /// 4, 4, 250, 500, 500 = 250
+    /// 4, 4, 4, 4, 250, 500, 500 = 4
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public static double Median2<T>(IEnumerable<T> numbers)
+    {
+        int numberCount = numbers.Count();
+        int halfIndex = numbers.Count() / 2;
+        var sortedNumbers = numbers.OrderBy(n => n);
+        double median;
+        if ((numberCount % 2) == 0)
+        {
+            var d = sortedNumbers.ElementAt(halfIndex);
+            var d2 = sortedNumbers.ElementAt((halfIndex - 1));
+            median = Sum(CA.ToListString(d, d2)) / 2;
+        }
+        else
+        {
+            median = double.Parse(sortedNumbers.ElementAt(halfIndex).ToString());
+        }
+        return median;
+    }
+
+    public static double Median<T>(this IEnumerable<T> sequence, Func<T, double> getValue)
+    {
+        var list = sequence.Select(getValue).ToList();
+        var mid = (list.Count - 1) / 2;
+        return list.NthOrderStatistic(mid);
+    }
+
+/// <summary>
+    /// Must be object to use in EqualityComparer
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    private static object ReturnZero<T>()
+    {
+        if (typeof(T) == Types.tDouble)
+        {
+            return Consts.zeroDouble;
+        }
+        else if (typeof(T) == Types.tInt)
+        {
+            return Consts.zeroInt;
+        }
+        else if (typeof(T) == Types.tFloat)
+        {
+            return Consts.zeroFloat;
+        }
+        ThrowExceptions.NotImplementedCase(s_type, "ReturnZero");
+        return null;
+    }
+
+public static double Sum(List<string> list)
+    {
+        double result = 0;
+        foreach (var item in list)
+        {
+            var d = double.Parse(item);
+            result += d;
+        }
+        return result;
+    }
+public static T Sum<T>(List<T> list)
+    {
+        dynamic sum = 0;
+        foreach (var item in list)
+        {
+            sum += item;
+        }
+        return sum;
     }
 }

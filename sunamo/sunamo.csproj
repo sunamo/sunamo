@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />

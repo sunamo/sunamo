@@ -8,5 +8,6 @@ using System.Threading.Tasks;
     {
     public bool distinct = false;
     public bool signed = false;
+    public string stringUseWhenNull = string.Empty;
     }
 

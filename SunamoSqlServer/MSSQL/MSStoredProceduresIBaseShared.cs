@@ -1342,13 +1342,18 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesShort(comm);
     }
 
+    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec)
+    {
+        return SelectValuesOfColumnAllRowsString(new SqlData { }, tabulka, sloupec);
+    }
+
     /// <summary>
     /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsStringTrim
     /// </summary>
-    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec)
+    public List<string> SelectValuesOfColumnAllRowsString(SqlData d, string tabulka, string sloupec)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
-        return ReadValuesString(comm);
+        return ReadValuesString(d, comm);
     }
 
     public List<string> SelectValuesOfColumnAllRowsStringTrim(string tabulka, string sloupec, string idn, object idv)
@@ -1523,6 +1528,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     private List<string> ReadValuesString(SqlCommand comm)
     {
+        return ReadValuesString(new SqlData { }, comm);
+    }
+
+    private List<string> ReadValuesString(SqlData d, SqlCommand comm)
+    {
         List<string> vr = new List<string>();
         SqlDataReader r = ExecuteReader(comm); ;
 
@@ -1530,7 +1540,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             while (r.Read())
             {
-                string o = r.GetString(0);
+                string o = d.stringUseWhenNull;
+                // Better is use GetValue than GetString, if I found Null value with GetString raise exception
+                var s = r.GetValue(0);
+                if (s != DBNull.Value)
+                {
+                    o = s.ToString();
+                }
+                //o = r.GetString(0);
+               
                 //Type t = val.GetType();
                 vr.Add(o);
             }
