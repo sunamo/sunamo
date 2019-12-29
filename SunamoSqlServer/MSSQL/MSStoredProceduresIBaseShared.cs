@@ -40,6 +40,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
+    public static string table = null;
+    public static string column = null;
+
+
     /// <summary>
     /// a2 je X jako v příkazu @pX
     /// A3 cant be AB
@@ -50,9 +54,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="o"></param>
     public static int AddCommandParameter(SqlCommand comm, int i, object o)
     {
-        string table = null;
-        string column = null;
-
+        
 
 
         if (o == null || o.GetType() == DBNull.Value.GetType())
@@ -659,6 +661,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             PrintDebugParameters(comm);
 
+            
             var result = comm.ExecuteNonQuery();
             conn.Close();
             return result;
