@@ -40,8 +40,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
-    public static string table = null;
-    public static string column = null;
+    public static string table2 = null;
+    public static string column2 = null;
+    public static bool isNVarChar2 = false;
 
 
     /// <summary>
@@ -86,10 +87,16 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             if (IsNVarChar != null)
             {
 
-                if( SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table, ref column, i))
-                { 
-                    if (!IsNVarChar.Invoke(table, column))
+                if( SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table2, ref column2, i))
+                {
+                    isNVarChar2 = IsNVarChar.Invoke(table2, column2);
+
+
+
+                    if (!isNVarChar2)
                     {
+                       
+
                         _ = MSStoredProceduresI.ConvertToVarChar(_);
                     }
                 }

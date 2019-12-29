@@ -16,6 +16,16 @@ public class MSFactoryColumnDB : IFactoryColumnDB<MSSloupecDB, SqlDbType2>
     {
         MSSloupecDB column = new MSSloupecDB();
         bool isNewId = false;
+
+        if (nazev.Trim() == "Uri")
+        {
+
+        }
+        else
+        {
+
+        }
+
         column.typ = typ; //ConvertSqlDbType.ToSqlDbType(typ, out isNewId);
         
         if (column.Type == SqlDbType2.NChar || column.Type == SqlDbType2.NVarChar)

@@ -11,6 +11,8 @@ public partial class SqlServerHelper
 
     public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
+        column = table = null;
+
         bool result = true;
         var p = SH.GetFirstWord(sql).ToLower();
 
@@ -49,6 +51,9 @@ public partial class SqlServerHelper
         {
 
         }
+
+        column = column.Trim();
+        table = table.Trim();
 
         return result;
     }
