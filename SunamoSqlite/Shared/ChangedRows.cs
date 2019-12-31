@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 
-namespace DocArch.SqLite
-{
     public class ChangedRows
     {
         public int quantity = 0;
@@ -21,4 +19,3 @@ namespace DocArch.SqLite
             this.error = Chyba;
         }
     }
-}

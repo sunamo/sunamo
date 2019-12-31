@@ -7,9 +7,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 
 
-namespace DocArch.SqLite
-{
-    public class StoredProceduresSqliteI : IStoredProceduresI
+public class StoredProceduresSqliteI : IStoredProceduresI
     {
         private SQLiteConnection _conn = DatabaseLayer.conn;
         public static StoredProceduresSqliteI ci = new StoredProceduresSqliteI();
@@ -316,4 +314,3 @@ namespace DocArch.SqLite
             throw new NotImplementedException();
         }
     }
-}

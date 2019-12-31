@@ -26,4 +26,3 @@ public class FactoryColumnDB : IFactoryColumnDB<SloupecDB, TypeAffinity>
         return column;
     }
 }
-

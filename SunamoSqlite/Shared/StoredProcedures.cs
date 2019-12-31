@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SQLite;
 
-namespace DocArch.SqLite
-{
-    public class StoredProcedures : IStoredProcedures
+
+public class StoredProcedures : IStoredProcedures
     {
         public static StoredProcedures ci = new StoredProcedures();
 
@@ -155,4 +154,3 @@ namespace DocArch.SqLite
             throw new NotImplementedException();
         }
     }
-}

@@ -1,4 +1,4 @@
-﻿using DocArch.SqLite;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -74,4 +74,3 @@ public class ColumnsDB : List<SloupecDB>
     //    this.AddRange(p);
     //}
 }
-

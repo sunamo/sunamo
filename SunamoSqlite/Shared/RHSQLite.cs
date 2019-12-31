@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using DocArch.SqLite;
+
 using System;
 public static class RHSQLite
 {

@@ -7,14 +7,22 @@ using System.Data;
 using System.Text.RegularExpressions;
 
 
-namespace DocArch.SqLite
-{
-    public class StoredProceduresI : IStoredProceduresI
+public class StoredProceduresI : IStoredProceduresI
     {
         private SQLiteConnection _conn = DatabaseLayer.conn;
         public static StoredProceduresI ci = new StoredProceduresI();
 
-        public string[] VratNazvySloupcuTabulky(string p)
+    public int SelectFindOutNumberOfRows(object tableName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public int InsertToTable(object tableName, object p, int iD, string name)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string[] VratNazvySloupcuTabulky(string p)
         {
             List<string> vr = new List<string>();
             SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT sql FROM sqlite_master WHERE tbl_name = '{0}' AND type = 'table'", p), _conn);
@@ -298,4 +306,3 @@ namespace DocArch.SqLite
             throw new NotImplementedException();
         }
     }
-}

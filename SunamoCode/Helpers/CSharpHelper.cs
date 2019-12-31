@@ -87,6 +87,17 @@ public static partial class CSharpHelper
 
     //}
 
+
+    public static List<string> RemoveComments(List<string> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            list[i] = SH.RemoveAfterFirst(list[i], "//");
+        }
+        CA.RemoveStringsEmpty2(list);
+        return list;
+    }
+
     public static string GetDictionaryStringObject<Value>(int tabCount, List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
     {
         int pocetTabu = 0;

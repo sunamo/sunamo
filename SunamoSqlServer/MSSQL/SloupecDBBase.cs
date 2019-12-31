@@ -173,7 +173,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
         }
         return sb.ToString();
     }
-
+    
     /// <summary>
     /// 
     /// </summary>

@@ -510,7 +510,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         string valueType = null;
         if (dict.Count > 0)
         {
-            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key,Value>(dict).ToString());
+            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key,Value>(dict).GetType().FullName);
         }
         string cn = "Dictionary<string, " + valueType + ">";//
         NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);

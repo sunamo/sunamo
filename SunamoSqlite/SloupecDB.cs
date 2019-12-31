@@ -12,4 +12,3 @@ public class SloupecDB : SloupecDBBase<SloupecDB, TypeAffinity>
         SloupecDBBase<MSSloupecDB, TypeAffinity>.databaseLayer = DatabaseLayer.ci;
     }
 }
-

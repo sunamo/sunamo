@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Text;
 
-namespace DocArch.SqLite
-{
     public static class GeneratorSqLite
     {
         private static Type s_type = typeof(GeneratorSqLite);
@@ -105,4 +103,3 @@ namespace DocArch.SqLite
             return sb.ToString();
         }
     }
-}

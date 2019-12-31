@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace DocArch.SqLite
-{
     /// <summary>
     /// MYSLIM ŽE TED UŽ TU JE VŠE POTŘEBNÉ, PROTO TU XXDNX JINÉ VĚCI JAKO NAPŘIKLAD TA POSLEDNÍ ZAKOMENTOVANÁ METODA NEPŘIDÁVEJ
     /// ZAPRVÉ SI VAŽ SVÉHO ČASU A ZA DRUHÉ TO BUDE VXTXINOU DUPLIKACE
@@ -51,4 +49,3 @@ namespace DocArch.SqLite
         DeletedRows DeleteFromTableTest(string nazevSloupce, object hodnotaSloupce);
         //bool ObsahujeTabulkaVSloupciHodnotu(string sloupec, object hodnota);
     }
-}

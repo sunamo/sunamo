@@ -124,6 +124,7 @@ public partial class FS
         var fileTo = FS.Combine(nad, FS.GetFileName(v));
         CopyFile(v, fileTo);
     }
+
     public static bool? ExistsDirectoryNull(string item)
     {
         return ExistsDirectory(item);
@@ -473,17 +474,7 @@ public partial class FS
         return fullPathOriginalFile;
     }
 
-    /// <summary>
-    /// Cant return with end slash becuase is working also with files
-    /// Use this than FS.Combine which if argument starts with backslash ignore all arguments before this
-    /// </summary>
-    /// <param name="upFolderName"></param>
-    /// <param name="dirNameDecoded"></param>
-    /// <returns></returns>
-    public static string Combine(params string[] s)
-    {
-        return CombineWorker(true, s);
-    }
+   
 
     /// <summary>
     /// Cant return with end slash becuase is working also with files
@@ -552,6 +543,18 @@ public partial class FS
         // Cant return with end slash becuase is working also with files
         //FS.WithEndSlash(ref result);
         return result;
+    }
+
+    /// <summary>
+    /// Cant return with end slash becuase is working also with files
+    /// Use this than FS.Combine which if argument starts with backslash ignore all arguments before this
+    /// </summary>
+    /// <param name="upFolderName"></param>
+    /// <param name="dirNameDecoded"></param>
+    /// <returns></returns>
+    public static string Combine(params string[] s)
+    {
+        return CombineWorker(true, s);
     }
 
     /// <summary>
@@ -1263,8 +1266,10 @@ public partial class FS
 
         //Already tried
         //(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0);
+        // (cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0); - in MoveClassElementIntoSharedFileUC
+        // !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0)) - change due to MoveClassElementIntoSharedFileUC
 
-        var isNoMascEntered = !ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0);
+        var isNoMascEntered = !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
         if (!ext.StartsWith("*.") && isNoMascEntered && isContained) 
         {
