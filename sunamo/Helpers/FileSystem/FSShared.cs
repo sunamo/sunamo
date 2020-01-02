@@ -1249,34 +1249,35 @@ public partial class FS
         }
     }
 
-    public static string MascFromExtension(string ext = AllStrings.asterisk)
+    public static string MascFromExtension(string ext2 = AllStrings.asterisk)
     {
-        if (ext == ".*")
+        if (ext2 == ".*")
         {
             return "*.*";
         }
 
-        if (ext == "Tables.cs")
-        {
-
-        }
+      
+        var ext = FS.GetExtension(ext2);
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
-        var isContained = AllExtensionsHelper.IsContained(FS.GetExtension(ext));
-        ComplexInfoString cis = new ComplexInfoString(SH.TextAfter( ext, AllStrings.dot));
+        var isContained = AllExtensionsHelper.IsContained(ext);
+        ComplexInfoString cis = new ComplexInfoString(ext);
 
         //Already tried
         //(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0);
         // (cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0); - in MoveClassElementIntoSharedFileUC
         // !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0)) - change due to MoveClassElementIntoSharedFileUC
 
+        // Is succifient one of inner condition false and whole is true
+        // 
+
         var isNoMascEntered = !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
-        if (!ext.StartsWith("*.") && isNoMascEntered && isContained) 
+        if (!ext.StartsWith("*.") && isNoMascEntered && isContained && ext == ext2) 
         {
             return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
         }
 
-        return ext;
+        return ext2;
     }
     public static List<string> GetFiles(string folderPath, string masc)
     {
