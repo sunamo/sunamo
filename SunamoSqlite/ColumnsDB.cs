@@ -34,6 +34,11 @@ public class ColumnsDB : List<SloupecDB>
         this.AddRange(p);
     }
 
+    public object GetTROfColumns()
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Can return null in Command property
     /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.

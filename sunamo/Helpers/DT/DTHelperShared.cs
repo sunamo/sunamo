@@ -74,4 +74,14 @@ public static DateTime CalculateStartOfPeriod(string AddedAgo)
     {
         return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
     }
+
+    public static string AddRightStringToTimeSpan(TimeSpan ts, bool v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
+    {
+        throw new NotImplementedException();
+    }
 }

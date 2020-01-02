@@ -347,7 +347,12 @@ public static List<XElement> GetElementsOfNameWithAttrWorker(System.Xml.Linq.XEl
         return vr;
     }
 
-public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
+    public static List<XElement> GetElementsOfNameWithAttr(XElement hlavniCL, string v1, string v2, string v3)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)
     {
         List<XElement> vr = new List<XElement>();
         string p, z;

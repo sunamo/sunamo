@@ -1389,6 +1389,11 @@ public partial class FS
     /// <returns></returns>
     public static List<string> GetFiles(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
     {
+        if (!FS.ExistsDirectory(folder2))
+        {
+            return new List<string>();
+        }
+
         if (getFilesArgs == null)
         {
             getFilesArgs = new GetFilesArgs();

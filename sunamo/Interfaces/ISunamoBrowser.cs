@@ -13,6 +13,9 @@ public interface ISunamoBrowser<T>
 {
     Uri Source { get; set; }
     Task<HtmlDocument> GetHtmlDocument();
-    HtmlDocument HtmlDocument { set; }
+    
+    string HTML { get; }
+    void Navigate(string uri);
+    bool ScrollToEnd();
 }
 

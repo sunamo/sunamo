@@ -10,8 +10,6 @@ using System.Windows.Controls;
 public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {
     ConfigurableWindowWrapper configurableWindowWrapper = null;
-    
-    
     ApplicationDataContainer data = null;
     Mode mode = Mode.Empty;
     EmptyUC emptyUC = null;
@@ -118,7 +116,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         data = new ApplicationDataContainer();
         Name = ThisApp.Name;
         data.Add(this);
-        
+
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
@@ -139,7 +137,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 5) Set modes
-        
+
 
         // 2nd Edit only in #if
         SetMode(Mode.Empty);
@@ -278,7 +276,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
     private void MainWindow_SizeChanged(object p1, object p2)
     {
-        
+
     }
 
     public bool GetCancelClosing()

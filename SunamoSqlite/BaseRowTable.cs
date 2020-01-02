@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class MSBaseRowTable
+public class BaseRowTable
 {
     protected object[] o = null;
 

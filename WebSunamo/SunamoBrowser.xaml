@@ -83,7 +83,8 @@
                 NativeView="{Binding NativeView, ElementName=webWindow}"
                 WebSession="{Binding Source={StaticResource webSession}}"
                 Source="{Binding Source, ElementName=webWindow}" />-->
-            <WebBrowser x:Name="webControl" Source="{Binding Source, ElementName=webWindow}"></WebBrowser>
+                    
+            <WebBrowser x:Name="webControl"  x:FieldModifier="public"></WebBrowser>
                 <!--<WebBrowser Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="webView" />-->
                     <!--<WebView Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="webView"></WebView>-->
                 </Grid>

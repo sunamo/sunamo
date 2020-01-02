@@ -17,7 +17,7 @@ public class StoredProceduresI : IStoredProceduresI
         throw new NotImplementedException();
     }
 
-    public int InsertToTable(object tableName, object p, int iD, string name)
+    public int InsertToTable(object tableName, object p, int iD, params object[] p2)
     {
         throw new NotImplementedException();
     }
@@ -64,7 +64,12 @@ public class StoredProceduresI : IStoredProceduresI
             return dt;
         }
 
-        public DataTable GetDataTableAllRows(string p)
+    public int SelectID(string privacy1, string v, string privacy2)
+    {
+        throw new NotImplementedException();
+    }
+
+    public DataTable GetDataTableAllRows(string p)
         {
             return GetDataTable("SELECT * FROM" + " " + p);
         }
@@ -90,7 +95,7 @@ public class StoredProceduresI : IStoredProceduresI
         /// <param name="nazvySloupcu"></param>
         /// <param name="sloupce"></param>
         /// <returns></returns>
-        public int InsertToTable(string tabulka, string nazvySloupcu, params object[] sloupce)
+        public int InsertToTable(string tabulka, object v, string nazvySloupcu, params object[] sloupce)
         {
             string hodnoty = StoredProcedures.ci.GetValues(sloupce);
             SQLiteCommand comm = new SQLiteCommand(SH.Format2("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, StoredProcedures.ci.GetValues(sloupce)), _conn);
@@ -133,7 +138,12 @@ public class StoredProceduresI : IStoredProceduresI
             //return vr;
         }
 
-        private List<int> GetValuesAllRowsInt(string sql)
+    public bool SelectExistsCombination(string comments, AB aB1, AB aB2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private List<int> GetValuesAllRowsInt(string sql)
         {
             List<int> vr = new List<int>();
             SQLiteCommand comm = new SQLiteCommand(sql, _conn);

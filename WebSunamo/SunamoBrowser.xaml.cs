@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,7 @@ namespace WebSunamo
         {
             get
             {
+                
                 string html = webControl.InvokeScript("eval('document.documentElement.outerHTML');").ToString();
                 return html;
             }
@@ -65,8 +67,37 @@ namespace WebSunamo
 
             webControl.LoadCompleted += WebControl_LoadCompleted;
 
-            
+            ScrollToEnd();
+
             webControl.Source = homeUrl;
+        }
+
+        /// <summary>
+        /// return whether was loaded new code
+        /// </summary>
+        /// <returns></returns>
+        public bool ScrollToEnd()
+        {
+            var html = MsHtml();
+            html.parentWindow.scroll(0, 10000000);
+            Thread.Sleep(5000);
+                
+                var html2 = MsHtml();
+
+                var l1 = html.documentElement.outerHTML;
+                var l2 = html2.documentElement.outerHTML;
+
+                if (l1 != l2)
+                {
+                    return true;
+                }
+                return false;
+            
+        }
+
+        public mshtml.HTMLDocument MsHtml()
+        {
+            return webControl.Document as mshtml.HTMLDocument;
         }
 
         private void WebControl_LoadCompleted(object sender, NavigationEventArgs e)
