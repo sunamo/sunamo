@@ -599,7 +599,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
     }
 
-
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
         var cs = MSDatabaseLayer.cs;
@@ -609,10 +608,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             dictionary[p].GetSqlCreateTable(p + "2", cs).ExecuteNonQuery();
         }
     }
-
     public int DropTableIfExists(string table)
     {
-
         if (SelectExistsTable(table))
         {
             return ExecuteNonQuery(new SqlCommand("DROP TABLE " + table));

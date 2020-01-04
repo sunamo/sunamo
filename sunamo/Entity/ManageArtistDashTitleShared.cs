@@ -46,7 +46,6 @@ public partial class ManageArtistDashTitle
         else
         {
 
-
             artist = toks[0];
 
             List<string> left, right;
@@ -60,12 +59,18 @@ public partial class ManageArtistDashTitle
                     right.Add(closingBracket);
                     artist += closingBracket;
                 }
-                var between = SH.GetTextBetween(artist, left[0], right[0]);
-                between = left[0] + between + right[0];
-                item = item.Replace(between, string.Empty);
-                item += " " + between;
-                toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
-                artist = toks[0].Trim();
+                if (left.Count > 0 && right.Count > 0)
+                {
+                    var between = SH.GetTextBetween(artist, left[0], right[0]);
+                    between = left[0] + between + right[0];
+                    item = item.Replace(between, string.Empty);
+                    item += " " + between;
+                    toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+                    if (toks.Length > 0)
+                    {
+                        artist = toks[0].Trim();
+                    }
+                }
             }
 
             StringBuilder sb = new StringBuilder();

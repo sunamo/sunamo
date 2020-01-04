@@ -2438,7 +2438,12 @@ public static string GetTextBetween(string p, string after, string before, bool 
             p2 += after.Length;
             p3 -= 1;
             // When I return between ( ), there must be +1 
-            vr = p.Substring(p2, p3 - p2 + 1).Trim();
+            var length = p3 - p2 + 1;
+            if (length < 1)
+            {
+                return p;
+            }
+            vr = p.Substring(p2, length).Trim();
         }
         else
         {
