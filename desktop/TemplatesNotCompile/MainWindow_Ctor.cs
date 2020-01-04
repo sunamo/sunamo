@@ -9,8 +9,6 @@ using System.Windows.Controls;
 
 public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {
-    ConfigurableWindowWrapper configurableWindowWrapper = null;
-    ApplicationDataContainer data = null;
     Mode mode = Mode.Empty;
     EmptyUC emptyUC = null;
     LogUC logUC = null;
@@ -18,6 +16,9 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
+
+    public ApplicationDataContainer data { get; set; }
+    public ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
 
     #region MyRegion
     MenuItem miAlwaysOnTop = null;

@@ -6,7 +6,7 @@ public class BaseRowTable
 
     protected string GetString(int p)
     {
-        return MSTableRowParse.GetString(o, p);
+        return TableRowParse.GetString(o, p);
     }
 
     /// <summary>
@@ -16,7 +16,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected int GetInt(int p)
     {
-        return MSTableRowParse.GetInt(o, p);
+        return TableRowParse.GetInt(o, p);
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected float GetFloat(int p)
     {
-        return MSTableRowParse.GetFloat(o, p);
+        return TableRowParse.GetFloat(o, p);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected long GetLong(int p)
     {
-        return MSTableRowParse.GetLong(o, p);
+        return TableRowParse.GetLong(o, p);
     }
 
 
@@ -46,15 +46,12 @@ public class BaseRowTable
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
-    protected bool GetBoolMS(int p)
-    {
-        return MSTableRowParse.GetBoolMS(o, p);
-    }
-
     protected bool GetBool(int p)
     {
-        return MSTableRowParse.GetBool(o, p);
+        return TableRowParse.GetBool(o, p);
     }
+
+
 
     /// <summary>
     /// Vrací výstup metody BoolToStringEn - tedu ano/ne. Když bude null, G Ne.
@@ -63,7 +60,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected string GetBoolS(int p)
     {
-        return MSTableRowParse.GetBoolS(o, p);
+        return TableRowParse.GetBoolS(o, p);
     }
 
     /// <summary>
@@ -73,7 +70,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected System.DateTime GetDateTime(int p)
     {
-        return MSTableRowParse.GetDateTime(o, p);
+        return TableRowParse.GetDateTime(o, p);
     }
 
     /// <summary>
@@ -83,12 +80,12 @@ public class BaseRowTable
     /// <returns></returns>
     protected string GetDateTimeS(int p)
     {
-        return MSTableRowParse.GetDateTimeS(o, p);
+        return TableRowParse.GetDateTimeS(o, p);
     }
 
     protected byte[] GetImage(int dex)
     {
-        return MSTableRowParse.GetImage(o, dex);
+        return TableRowParse.GetImage(o, dex);
     }
 
     /// <summary>
@@ -98,7 +95,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected decimal GetDecimal(int p)
     {
-        return MSTableRowParse.GetDecimal(o, p);
+        return TableRowParse.GetDecimal(o, p);
     }
 
     /// <summary>
@@ -108,7 +105,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected double GetDouble(int p)
     {
-        return MSTableRowParse.GetDouble(o, p);
+        return TableRowParse.GetDouble(o, p);
     }
 
     /// <summary>
@@ -118,7 +115,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected short GetShort(int p)
     {
-        return MSTableRowParse.GetShort(o, p);
+        return TableRowParse.GetShort(o, p);
     }
 
     /// <summary>
@@ -128,7 +125,7 @@ public class BaseRowTable
     /// <returns></returns>
     protected byte GetByte(int p)
     {
-        return MSTableRowParse.GetByte(o, p);
+        return TableRowParse.GetByte(o, p);
     }
 
     /// <summary>
@@ -148,6 +145,6 @@ public class BaseRowTable
     /// <returns></returns>
     protected Guid GetGuid(int p)
     {
-        return MSTableRowParse.GetGuid(o, p);
+        return TableRowParse.GetGuid(o, p);
     }
 }

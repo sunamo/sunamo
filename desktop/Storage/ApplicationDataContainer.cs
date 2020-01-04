@@ -86,6 +86,11 @@ public class ApplicationDataContainer : ApplicationDataConsts
         SaveControl(chb);
     }
 
+    public void Add(UserControl uc)
+    {
+        var adcl = AddFrameworkElement(uc);
+    }
+
     public void Add(Window cb)
     {
         // Automatically load

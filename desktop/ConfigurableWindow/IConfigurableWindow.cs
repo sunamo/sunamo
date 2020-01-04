@@ -14,5 +14,7 @@ public interface IConfigurableWindow
     /// once per Window, during construction.
     /// </summary>
     IConfigurableWindowSettings CreateSettings();
+    ApplicationDataContainer data { get; set; }
+    ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
 }
 

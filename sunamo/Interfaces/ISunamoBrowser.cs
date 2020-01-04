@@ -17,5 +17,6 @@ public interface ISunamoBrowser<T>
     string HTML { get; }
     void Navigate(string uri);
     bool ScrollToEnd();
+    void Init();
 }
 
