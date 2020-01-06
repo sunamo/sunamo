@@ -949,7 +949,7 @@ public static partial class SH
         return p;
     }
 
-    public static bool ContainsOnlyCase(string between, bool upper)
+    public static bool ContainsOnlyCase(string between, bool upper, bool ignoreOtherThanLetters = false)
     {
         foreach (var item in between)
         {
@@ -957,14 +957,34 @@ public static partial class SH
             {
                 if (!char.IsUpper(item))
                 {
-                    return false;
+                    if (ignoreOtherThanLetters)
+                    {
+                        if (char.IsLower(item))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             else
             {
                 if (!char.IsLower(item))
                 {
-                    return false;
+                    if (ignoreOtherThanLetters)
+                    {
+                        if (char.IsLower(item))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
         }

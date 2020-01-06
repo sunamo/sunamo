@@ -835,9 +835,65 @@ public partial class FS
         DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
     }
 
+    /// <summary>
+    /// non direct edit
+    ///  working with full paths or just filenames
+    /// </summary>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static List<string> OrderByNaturalNumberSerie(List<string> l)
+    {
+        List<Tuple< string, int, string>> filenames = new List<Tuple<string, int, string>>();
+
+        List<string> dontHaveNumbersOnBeginning = new List<string>();
+
+        string path = null;
+
+        for (int i = l.Count - 1; i >= 0; i--)
+        {
+            var backup = l[i];
+            var p = SH.SplitToPartsFromEnd(l[i], 2, AllChars.bs);
+            if (p.Length == 1)
+            {
+                path = string.Empty;
+            }
+            else
+            {
+                path = p[0];
+                l[i] = p[1];
+            }
+
+            var fn = l[i];
+            var sh = NH.NumberIntUntilWontReachOtherChar(ref fn);
+
+            if (sh == int.MaxValue)
+            {
+                dontHaveNumbersOnBeginning.Add(backup);
+            }
+            else
+            {
+                filenames.Add(new Tuple<string, int, string>( path, sh, fn));
+            }
+        }
+
+        var sorted = filenames.OrderBy(d => d.Item2);
+
+        List<string> result = new List<string>(l.Count);
+
+        foreach (var item in sorted)
+        {
+            result.Add(FS.Combine(item.Item1, item.Item2 + item.Item3));
+        }
+
+        result.AddRange(dontHaveNumbersOnBeginning);
+
+        return result;
+    }
+
     public static Dictionary<string, List<string>> SortPathsByFileName(List<string> allCsFilesInFolder, bool onlyOneExtension)
     {
         Dictionary<string, List<string>> vr = new Dictionary<string, List<string>>();
+
         foreach (var item in allCsFilesInFolder)
         {
             string fn = null;

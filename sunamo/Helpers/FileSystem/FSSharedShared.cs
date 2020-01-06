@@ -16,14 +16,27 @@ public partial class FS{
     /// </summary>
     /// <param name="selectedFile"></param>
     /// <returns></returns>
-    public static bool ExistsFile(string selectedFile)
+    public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = false)
     {
         if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
         {
             return false;
         }
 
-        return File.Exists(selectedFile);
+        var exists = File.Exists(selectedFile);
+
+        if (falseIfSizeZeroOrEmpty)
+        {
+            if (!exists)
+            {
+                return false;
+            }
+            else if (TF.ReadFile(selectedFile) == string.Empty)
+            {
+                return false;
+            }
+        }
+        return exists;
     }
 
     /// <summary>

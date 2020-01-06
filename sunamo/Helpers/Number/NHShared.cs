@@ -6,6 +6,7 @@ using System;
 /// </summary>
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public static partial class NH
 {
@@ -172,6 +173,30 @@ public static T Average<T>(dynamic gridWidth, dynamic columnsCount)
     public static T Median<T>(this IList<T> list) where T : IComparable<T>
     {
         return list.NthOrderStatistic((list.Count - 1) / 2);
+    }
+
+    public static int NumberIntUntilWontReachOtherChar(ref string s)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (char.IsNumber(s[i]))
+            {
+                sb.Append(s[i]);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        var result = sb.ToString();
+
+        s = SH.ReplaceOnce(s, result, string.Empty);
+
+
+        return BTS.ParseInt( result, int.MaxValue);
     }
 
     /// <summary>

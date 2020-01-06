@@ -230,6 +230,11 @@ public partial class TF
         return  File.OpenText(file);
     }
 
+    public static void WriteAllText(string file, StringBuilder sb)
+    {
+        WriteAllText(file, sb.ToString());
+    }
+
     public static void WriteAllText(string file, string content)
     {
         WriteAllText<string, string>(file, content, null);
