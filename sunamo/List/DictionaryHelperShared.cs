@@ -6,6 +6,7 @@ using System.Linq;
 public partial class DictionaryHelper
 {
     private static Type s_type = typeof(DictionaryHelper);
+    
 
     public static Value GetFirstItemValue<Key,Value>(Dictionary<Key, Value> dict)
     {
@@ -232,7 +233,31 @@ public partial class DictionaryHelper
         }
     }
 
-/// <summary>
+    public static List<Dictionary<Key, Value>> DivideAfter<Key, Value>(Dictionary<Key, Value> dict, int v)
+    {
+        List<Dictionary<Key, Value>> retur = new List<Dictionary<Key, Value>>();
+        Dictionary<Key, Value> ds = new Dictionary<Key, Value>();
+        int i = 0;
+
+        foreach (var item in dict)
+        {
+            ds.Add(item.Key, item.Value);
+            if (ds.Count == v)
+            {
+                retur.Add(ds);
+                ds = new Dictionary<Key, Value>();
+            }
+        }
+
+        if (ds.Count > 0)
+        {
+            retur.Add(ds);
+        }
+
+        return retur;
+    }
+
+    /// <summary>
     /// In addition to method AddOrCreate, more is checking whether value in collection does not exists
     /// </summary>
     /// <typeparam name = "Key"></typeparam>

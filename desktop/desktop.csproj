@@ -295,17 +295,17 @@
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
-    <Compile Include="FileSystemWatcherExtended\Common\ArgumentType.cs" />
-    <Compile Include="FileSystemWatcherExtended\Common\WatcherInfo.cs" />
-    <Compile Include="FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
+    <Compile Include="Extensions\FileSystemWatcherExtended\Common\ArgumentType.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\Common\WatcherInfo.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystemWatcherExtended\Ex\WatcherEx.cs" />
-    <Compile Include="FileSystemWatcherExtended\nsn\WatcherExEventArgs.cs" />
-    <Compile Include="FileSystemWatcherExtended\nsn\WatcherExEventHandler.cs" />
-    <Compile Include="FileSystemWatcherExtended\PathAvailabilityHandler.cs" />
-    <Compile Include="FileSystemWatcherExtended\PathAvailablitiyEventArgs.cs" />
-    <Compile Include="FileSystemWatcherExtended\WatchersExList.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\Ex\WatcherEx.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\nsn\WatcherExEventArgs.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\nsn\WatcherExEventHandler.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\PathAvailabilityHandler.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\PathAvailablitiyEventArgs.cs" />
+    <Compile Include="Extensions\FileSystemWatcherExtended\WatchersExList.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GuesslangHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />

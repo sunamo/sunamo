@@ -60,8 +60,6 @@ public class MSStoredProceduresISql5 : MSStoredProceduresIBase
     public static void CreateInstance(string dataSource, string database, string databaseName)
     {
                 MSDatabaseLayerSql5.LoadNewConnection(dataSource, database);
-
-        //}
         _databaseName = databaseName;
         ci = new MSStoredProceduresIBase();
     }

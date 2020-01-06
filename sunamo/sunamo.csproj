@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -59,10 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
@@ -71,10 +67,13 @@
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
     <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\AddBeforeControl.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHNotTranslateAbleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
@@ -101,10 +101,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Enums\HtmlTextWriterAttribute.cs" />
-    <Compile Include="Enums\HtmlTextWriterTag.cs" />
-    <Compile Include="FormatOfString.cs" />
-    <Compile Include="Values\Domains.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -347,6 +343,8 @@
     <Compile Include="Enums\FirstSecondNothing.cs" />
     <Compile Include="Enums\FontWeight2.cs" />
     <Compile Include="Enums\HtmlTagSyntax.cs" />
+    <Compile Include="Enums\HtmlTextWriterAttribute.cs" />
+    <Compile Include="Enums\HtmlTextWriterTag.cs" />
     <Compile Include="Enums\ImageFormats.cs" />
     <Compile Include="Enums\ImageOperation.cs" />
     <Compile Include="Enums\InternetProtocols.cs" />
@@ -420,6 +418,7 @@
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="FileSystemWatchers.cs" />
+    <Compile Include="FormatOfString.cs" />
     <Compile Include="Generators\ControlNameGenerator.cs" />
     <Compile Include="Generators\ControlNameGeneratorShared.cs" />
     <Compile Include="Generators\ErrorMessageGenerator.cs" />
@@ -637,6 +636,7 @@
     <Compile Include="Values\CommonSettingsKeys.cs" />
     <Compile Include="Values\Consts.cs" />
     <Compile Include="Values\ConstsShared.cs" />
+    <Compile Include="Values\Domains.cs" />
     <Compile Include="Values\Emoticons.cs" />
     <Compile Include="Values\GeoCzechRegion.cs" />
     <Compile Include="Values\GeoCzechRegions.cs" />
