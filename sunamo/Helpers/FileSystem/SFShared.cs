@@ -38,6 +38,8 @@ public static partial class SF
     /// <returns></returns>
     public static string PrepareToSerializationExplicit(IEnumerable o, char p1 = AllChars.pipe)
     {
+        var o3 = CA.ToListString(o);
+        var o2 = CA.Trim(o3);
         string vr = SH.GetString(o, p1.ToString());
         return vr.Substring(0, vr.Length - 1);
     }
@@ -131,7 +133,10 @@ public static partial class SF
     {
         var list = o.ToList();
         CA.Replace(list, separator, replaceForSeparatorString);
+        CA.Replace(list, Environment.NewLine, AllStrings.space);
+        CA.Trim(list);
         string vr = SH.GetString(o, separator.ToString());
+
         if (removeLast)
         {
             if (vr.Length > 0)
