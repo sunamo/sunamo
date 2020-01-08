@@ -8,6 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <StackPanel x:Name="sp" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel x:Name="spCustom" x:FieldModifier="public"></StackPanel>
             <Button x:Name="btnCopyToClipboard" Margin="10" Content="Copy do clipboard" Click="btnCopyToClipboard_Click"></Button>
             <Button x:Name="btnAllRight" Margin="10" Content="All right!" Click="btnAllRight_Click"></Button>
         </StackPanel>

@@ -19,7 +19,7 @@
         <TextBox x:Name="txtResult" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" x:FieldModifier="public" AcceptsReturn="True" AcceptsTab="True"></TextBox>
         
         
-        <desktopControls:ResultButtons x:Name="resultButtons" Grid.Row="2" AllRightClick="resultButtons_AllRightClick" CopyToClipboard="resultButtons_CopyToClipboard"></desktopControls:ResultButtons>
+        <desktopControls:ResultButtons x:Name="resultButtons" x:FieldModifier="public" Grid.Row="2" AllRightClick="resultButtons_AllRightClick" CopyToClipboard="resultButtons_CopyToClipboard"></desktopControls:ResultButtons>
         
     </Grid>
 </UserControl>

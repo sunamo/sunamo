@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 namespace desktop.Controls
 {
     /// <summary>
+    /// Use for variable name always longer, showResult instead of sr etc.
     /// Stupid, open with highlighting in VSCode instead of my UC
     /// </summary>
     public partial class ShowTextResult : UserControl, IUserControlInWindow, IUserControlWithSizeChange
@@ -35,9 +36,15 @@ namespace desktop.Controls
         }
 
         public bool? DialogResult {
-            set => 
-                // must have value because ResultButtons dont close window itself     
-                ChangeDialogResult(value);
+            set { 
+                // In case ShowTextResult I dont need any handler, therefore checking
+                if (ChangeDialogResult != null )
+	{
+                    // must have value because ResultButtons dont close window itself     
+                    ChangeDialogResult(value);
+                }
+               
+            }
         }
 
         public string Title => "Show result";

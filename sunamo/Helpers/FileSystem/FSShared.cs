@@ -20,6 +20,90 @@ public partial class FS
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
+
+    /// <summary>
+    /// 
+    /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
+    /// A1 have to be with ending backslash
+    /// A4 must have underscore otherwise is suggested while I try type true
+    /// A2 can be delimited by semicolon
+    /// </summary>
+    /// <param name="folder"></param>
+    /// <param name="mask"></param>
+    /// <param name="searchOption"></param>
+    /// <returns></returns>
+    public static List<string> GetFiles(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
+    {
+        if (!FS.ExistsDirectory(folder2))
+        {
+            return new List<string>();
+        }
+
+        if (getFilesArgs == null)
+        {
+            getFilesArgs = new GetFilesArgs();
+        }
+        var folders = SH.Split(folder2, AllStrings.sc);
+        List<string> list = new List<string>();
+        foreach (var folder in folders)
+        {
+
+            if (mask.Contains(AllStrings.sc))
+            {
+                //list = new List<string>();
+                var masces = SH.Split(mask, AllStrings.sc);
+
+                foreach (var item in masces)
+                {
+                    var masc = FS.MascFromExtension(item);
+                    try
+                    {
+                        list.AddRange(Directory.GetFiles(folder, masc, searchOption));
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+
+                }
+            }
+            else
+            {
+
+                try
+                {
+                    mask = FS.MascFromExtension(mask);
+                    list.AddRange(Directory.GetFiles(folder, mask, searchOption));
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+        }
+        CA.ChangeContent(list, d => SH.FirstCharLower(d));
+
+        if (getFilesArgs._trimA1)
+        {
+            foreach (var folder in folders)
+            {
+                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+            }
+
+        }
+        if (getFilesArgs.excludeFromLocationsCOntains != null)
+        {
+            // I want to find files recursively
+            foreach (var item in getFilesArgs.excludeFromLocationsCOntains)
+            {
+                CA.RemoveWhichContains(list, item, false);
+            }
+        }
+        return list;
+    }
+
     /// <summary>
     /// Without path
     /// </summary>
@@ -108,7 +192,7 @@ public partial class FS
         {
             // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
 #if !ASPNET
-            //path = Consts.UncLongPath + path;
+            path = Consts.UncLongPath + path;
 #endif
         }
         return path;
@@ -801,7 +885,21 @@ public partial class FS
     /// <returns></returns>
     public static List<string> GetFolders(string folder, string masc, SearchOption so, bool _trimA1 = false)
     {
-        var dirs = Directory.GetDirectories(folder, masc, so).ToList();
+        List<string> dirs = null;
+        try
+        {
+            dirs = Directory.GetDirectories(folder, masc, so).ToList(); 
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        if (dirs == null)
+        {
+            return new List<string>();
+        }
+
         CA.ChangeContent(dirs, d => SH.FirstCharLower(d));
 
         if (_trimA1)
@@ -1303,21 +1401,40 @@ public partial class FS
     /// <param name="folder"></param>
     /// <param name="mask"></param>
     /// <returns></returns>
-    public static List<string> GetFoldersEveryFolder(string folder, string mask)
+    public static List<string> GetFoldersEveryFolder(string folder, string mask, GetFilesArgs a = null)
     {
-        List<string> list = new List<string>(); ;
+        if (a == null)
+        {
+            a = new GetFilesArgs();
+        }
+
+        List<string> list = new List<string>();
 
         GetFoldersEveryFolder(folder, mask, list);
+
+        if (a._trimA1)
+        {
+                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+        }
+        if (a.excludeFromLocationsCOntains != null)
+        {
+            // I want to find files recursively
+            foreach (var item in a.excludeFromLocationsCOntains)
+            {
+                CA.RemoveWhichContains(list, item, false);
+            }
+        }
 
         return list;
     }
 
-    public static void GetFoldersEveryFolder(string folder, string mask, List<string> list)
+    private static void GetFoldersEveryFolder(string folder, string mask, List<string> list)
     {
         try
         {
             var folders = Directory.GetDirectories(folder, mask, SearchOption.TopDirectoryOnly);
             list.AddRange(folders);
+
             foreach (var item in folders)
             {
                 GetFoldersEveryFolder(item, mask, list);
@@ -1377,79 +1494,7 @@ public partial class FS
 
     
 
-    /// <summary>
-    /// 
-    /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
-    /// A1 have to be with ending backslash
-    /// A4 must have underscore otherwise is suggested while I try type true
-    /// A2 can be delimited by semicolon
-    /// </summary>
-    /// <param name="folder"></param>
-    /// <param name="mask"></param>
-    /// <param name="searchOption"></param>
-    /// <returns></returns>
-    public static List<string> GetFiles(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
-    {
-        if (!FS.ExistsDirectory(folder2))
-        {
-            return new List<string>();
-        }
-
-        if (getFilesArgs == null)
-        {
-            getFilesArgs = new GetFilesArgs();
-        }
-        var folders = SH.Split(folder2, AllStrings.sc);
-        List<string> list = new List<string>();
-        foreach (var folder in folders)
-        {
-            
-            if (mask.Contains(AllStrings.sc))
-            {
-                //list = new List<string>();
-                var masces = SH.Split(mask, AllStrings.sc);
-
-                foreach (var item in masces)
-                {
-                    var masc = FS.MascFromExtension(item);
-                    list.AddRange(Directory.GetFiles(folder, masc, searchOption));
-                }
-            }
-            else
-            {
-
-                try
-                {
-                    mask = FS.MascFromExtension(mask);
-                    list.AddRange( Directory.GetFiles(folder, mask, searchOption));
-                }
-                catch (Exception ex)
-                {
-                    ThrowExceptions.Custom(type, RH.CallingMethod(), Exceptions.TextOfExceptions(ex));
-                }
-            }
-
-        }
-        CA.ChangeContent(list, d => SH.FirstCharLower(d));
-
-        if (getFilesArgs._trimA1)
-        {
-            foreach (var folder in folders)
-            {
-                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
-            }
-            
-        }
-        if (getFilesArgs.excludeFromLocationsCOntains != null)
-        {
-            // I want to find files recursively
-            foreach (var item in getFilesArgs. excludeFromLocationsCOntains)
-            {
-                CA.RemoveWhichContains(list, item, false);
-            }
-        }
-        return list;
-    }
+    
 
     /// <summary>
     /// A2 is path of target file

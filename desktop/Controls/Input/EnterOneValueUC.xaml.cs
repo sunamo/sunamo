@@ -18,6 +18,7 @@ using desktop.Helpers;
 namespace desktop.Controls.Input
 {
     /// <summary>
+    /// Use for variable name always longer, enterOneValue instead of eov
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements 
     /// </summary>

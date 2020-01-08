@@ -31,6 +31,8 @@ namespace desktop.Controls
         public Dictionary<string, TreeViewItem> folders = new Dictionary<string, TreeViewItem>();
         public Dictionary<string, TreeViewItem> files = new Dictionary<string, TreeViewItem>();
 
+        public FolderContentsTreeViewArgs args = new FolderContentsTreeViewArgs();
+
         public FolderContentsTreeView()
         {
             InitializeComponent();
@@ -46,30 +48,56 @@ namespace desktop.Controls
             }
         }
 
-        public void Initialize(string folder)
+        public void Initialize(string folder, FolderContentsTreeViewArgs args = null)
         {
+            if (args != null)
+            {
+                this.args = args;
+            }
+
             AddTviFolderTo(folder, tv);
 
             tv.SelectedItemChanged += Tv_SelectedItemChanged;
-
         }
 
         private void Tv_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (e.NewValue != null)
             {
-                Selected((e.NewValue as TreeView).Tag as FileSystemEntry);
+                var tv = (e.NewValue as TreeViewItem);
+                var fse = tv.Tag as FileSystemEntry;
+                if (Selected != null)
+                {
+                    Selected(fse);
+                }
+            }
+        }
+
+        public void ExpandAll()
+        {
+            var exp = tv.Items;
+            Expand(exp);
+        }
+
+        private void Expand(ItemCollection ic)
+        {
+            foreach (TreeViewItem item in ic)
+            {
+                item.ExpandSubtree();
+                Expand(item.Items);
             }
         }
 
         private void AddTviFolderTo(string s, ItemsControl to)
         {
             TreeViewItem subfolder = new TreeViewItem();
+            s = s.TrimEnd(AllChars.bs);
             subfolder.Header = s.Substring(s.LastIndexOf(AllStrings.bs) + 1);
             subfolder.Tag = new FileSystemEntry { file = false, path = s }; ;
             subfolder.FontWeight = FontWeights.Normal;
             subfolder.Items.Add(dummyNode);
             subfolder.Expanded += new RoutedEventHandler(folder_Expanded);
+            
             if (useDictionary)
             {
                 folders.Add(s, subfolder);
@@ -103,9 +131,13 @@ namespace desktop.Controls
                     {
                         AddTviFolderTo(s, item);
                     }
-                    foreach (string s in FS.GetFiles(folder))
+
+                    if (args.addFiles)
                     {
-                        AddTviFileTo(s, item);
+                        foreach (string s in FS.GetFiles(folder))
+                        {
+                            AddTviFileTo(s, item);
+                        }
                     }
                 }
                 catch (Exception ex) { }

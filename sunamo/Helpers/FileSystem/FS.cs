@@ -752,6 +752,7 @@ public partial class FS
         return vr;
     }
 
+
     private static bool IsDirectoryEmpty(string item, bool folders, bool files)
     {
         int fse = 0;
@@ -910,6 +911,8 @@ public partial class FS
         }
         return vr;
     }
+
+   
 
     public static void DeleteAllRecursively(string p, bool rootDirectoryToo = false)
     {

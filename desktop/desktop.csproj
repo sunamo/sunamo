@@ -128,6 +128,7 @@
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
+    <Compile Include="Args\FolderContentsTreeViewArgs.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowHelper.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowInstance.cs" />

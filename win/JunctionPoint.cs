@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Win32.SafeHandles;
 using sunamo;
 using win.Helpers.Powershell;
+using static W32;
 
 /// <summary>
 /// Provides access to NTFS junction points in .Net.
@@ -14,6 +15,7 @@ public static class JunctionPoint
     {
 
     /// <summary>
+    /// /H = Only files
     /// If exists, will rewrite.
     /// /J vytváří vždy adresář, jde pak dle toho poznat i ve FS
     /// /H pracuje adekvátně se soubory
@@ -28,10 +30,57 @@ public static class JunctionPoint
         return output;
     }
 
-        /// <summary>
-        /// The file or directory is not a reparse point.
-        /// </summary>
-        private const int ERROR_NOT_A_REPARSE_POINT = 4390;
+    public static Dictionary<string, string> PathsAndTargetsOfAll(string folderFrom)
+    {
+        Dictionary<string, string> dict = new Dictionary<string, string>();
+
+        var folders = FS.GetFoldersEveryFolder(folderFrom, AllStrings.asterisk);
+        foreach (var item in folders)
+        {
+            var target = JunctionPoint.GetTarget(item);
+            if (target == null)
+            {
+                target = Consts.nulled;
+            }
+            if (target != Consts.nulled)
+            {
+                dict.Add(item, target);
+            }
+        }
+
+        return dict;
+    }
+
+    /// <summary>
+    /// Only folders
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public static List<string> MklinkJ(string source, string target)
+    {
+        string command = "cmd /c mklink /J" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        List<string> output = PowershellRunner.InvokeSingle(command);
+        return output;
+    }
+
+    /// <summary>
+    /// Only folders
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public static List<string> MklinkD(string source, string target)
+    {
+        string command = "cmd /c mklink /D" + "" + " " + SH.WrapWithQm(source) + AllStrings.space + SH.WrapWithQm(target);
+        List<string> output = PowershellRunner.InvokeSingle(command);
+        return output;
+    }
+
+    /// <summary>
+    /// The file or directory is not a reparse point.
+    /// </summary>
+    private const int ERROR_NOT_A_REPARSE_POINT = 4390;
 
         /// <summary>
         /// The reparse point attribute cannot be set because it conflicts with an existing attribute.
@@ -268,7 +317,12 @@ public static class JunctionPoint
             }
         }
 
-        /// <summary>
+       public static bool IsReparsePoint(string path)
+        {
+            ReparsePoint p = new ReparsePoint(path);
+            return !string.IsNullOrEmpty(p.Target);
+        }
+
         /// Deletes a junction point at the specified source directory along with the directory itself.
         /// Does nothing if the junction point does not exist.
         /// </summary>
@@ -323,14 +377,21 @@ public static class JunctionPoint
             }
         }
 
+        public static bool IsJunctionPoint(string path)
+        {
+            return false;
+        }
+
         /// <summary>
-        /// 
-        /// Determines whether the specified path exists and refers to a junction point.
-        /// </summary>
-        /// <param name="path">The junction point path</param>
-        /// <returns>True if the specified path represents a junction point</returns>
-        /// <exception cref="IOException">Thrown if the specified path is invalid
-        /// or some other error occurs</exception>
+         /// For normal folder and /H return false
+         /// For junction true
+         /// 
+         /// Determines whether the specified path exists and refers to a junction point.
+         /// </summary>
+         /// <param name="path">The junction point path</param>
+         /// <returns>True if the specified path represents a junction point</returns>
+         /// <exception cref="IOException">Thrown if the specified path is invalid
+         /// or some other error occurs</exception>
         public static bool Exists(string path)
         {
             if (! FS.ExistsDirectory(path))
@@ -353,17 +414,19 @@ public static class JunctionPoint
         /// <returns>The target of the junction point</returns>
         /// <exception cref="IOException">Thrown when the specified path does not
         /// exist, is invalid, is not a junction point, or some other error occurs</exception>
-        public static string GetTarget(string junctionPoint)
+        public static string GetTarget(string path)
         {
-            using (SafeFileHandle handle = OpenReparsePoint(junctionPoint, EFileAccess.GenericRead))
-            {
-                string target = InternalGetTarget(handle);
-                if (target == null)
-                    throw new IOException("Path is not a junction point.");
+        ReparsePoint p = new ReparsePoint(path);
+        return p.Target;
+        //using (SafeFileHandle handle = OpenReparsePoint(junctionPoint, EFileAccess.GenericRead))
+        //{
+        //    string target = InternalGetTarget(handle);
+        //    if (target == null)
+        //        throw new IOException("Path is not a junction point.");
 
-                return target;
-            }
-        }
+        //    return target;
+        //}
+    }
 
         private static string InternalGetTarget(SafeFileHandle handle)
         {
@@ -405,6 +468,12 @@ public static class JunctionPoint
             }
         }
 
+        /// <summary>
+    /// Cant be use for H
+    /// </summary>
+    /// <param name="reparsePoint"></param>
+    /// <param name="accessMode"></param>
+    /// <returns></returns>
         private static SafeFileHandle OpenReparsePoint(string reparsePoint, EFileAccess accessMode)
         {
             SafeFileHandle reparsePointHandle = new SafeFileHandle(CreateFile(reparsePoint, accessMode,

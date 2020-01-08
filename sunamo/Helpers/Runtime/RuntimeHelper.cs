@@ -41,6 +41,11 @@ public class RuntimeHelper
 
     }
 
+    public static T CastToGeneric<T>(object o)
+    {
+        return (T)o;
+    }
+
     /// <summary>
     /// Default is true for automatically avoiding errors
     /// </summary>

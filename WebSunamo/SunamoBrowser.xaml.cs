@@ -216,5 +216,10 @@ namespace WebSunamo
         {
             throw new NotImplementedException();
         }
+
+        public void Init()
+        {
+            
+        }
     }
 }

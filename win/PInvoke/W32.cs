@@ -36,6 +36,70 @@ public class W32
 
     #endregion
 
+    [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern IntPtr CreateFile(string lpFileName, uint dwDesiredAccess, int dwShareMode, IntPtr lpSECURITY_ATTRIBUTES, int dwCreationDisposition, int dwFlagsAndAttributes, IntPtr hTemplateFile);
+
+    [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern bool CloseHandle(IntPtr hObject);
+
+
+    public static uint GetFileInformationByHandleWorker(string file, out int lastError )
+    {
+        uint nNumberOfLinks = uint.MaxValue;
+        lastError = 0;
+
+        BY_HANDLE_FILE_INFORMATION hfi = new BY_HANDLE_FILE_INFORMATION { };
+
+        IntPtr handle = CreateFile(file, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, 0, IntPtr.Zero);
+        if (handle.ToInt32() != INVALID_HANDLE_VALUE)
+        {
+            if (GetFileInformationByHandle(handle, ref hfi))
+                nNumberOfLinks = hfi.nNumberOfLinks;
+            else
+                lastError = Marshal.GetLastWin32Error();
+
+            CloseHandle(handle);
+        }
+        else
+            lastError = Marshal.GetLastWin32Error();
+
+        return nNumberOfLinks;
+    }
+
+    [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern bool GetFileInformationByHandle(IntPtr handle, ref BY_HANDLE_FILE_INFORMATION hfi);
+
+    public const int INVALID_HANDLE_VALUE = -1;
+
+    public const uint GENERIC_READ = 0x80000000;
+    public const int ERROR_INSUFFICIENT_BUFFER = 122;
+
+    public const int FILE_SHARE_READ = 1;
+    public const int FILE_SHARE_WRITE = 2;
+    public const int FILE_SHARE_DELETE = 4;
+    public const int FILE_ATTRIBUTE_NORMAL = 0x80;
+
+    public const int CREATE_NEW = 1;
+    public const int CREATE_ALWAYS = 2;
+    public const int OPEN_EXISTING = 3;
+    public const int OPEN_ALWAYS = 4;
+    public const int TRUNCATE_EXISTING = 5;
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct BY_HANDLE_FILE_INFORMATION
+    {
+        public uint dwFileAttributes;
+        public System.Runtime.InteropServices.ComTypes.FILETIME ftCreationTime;
+        public System.Runtime.InteropServices.ComTypes.FILETIME ftLastAccessTime;
+        public System.Runtime.InteropServices.ComTypes.FILETIME ftLastWriteTime;
+        public uint dwVolumeSerialNumber;
+        public uint nFileSizeHigh;
+        public uint nFileSizeLow;
+        public uint nNumberOfLinks;
+        public uint nFileIndexHigh;
+        public uint nFileIndexLow;
+    };
+
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern IntPtr GlobalFree(IntPtr hMem);
 

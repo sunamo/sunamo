@@ -18,7 +18,6 @@ namespace SunamoTreeView
         public bool IsDirectory { get; set; }
         public byte TokensCount { get; set; }
         
-
         public bool _isChecked;
 
         public bool IsChecked
