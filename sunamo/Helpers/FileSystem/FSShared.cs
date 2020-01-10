@@ -34,7 +34,7 @@ public partial class FS
     /// <returns></returns>
     public static List<string> GetFiles(string folder2, string mask, SearchOption searchOption, GetFilesArgs getFilesArgs = null)
     {
-        if (!FS.ExistsDirectory(folder2))
+        if (!FS.ExistsDirectory(folder2) && !folder2.Contains(";"))
         {
             return new List<string>();
         }
@@ -1354,6 +1354,10 @@ public partial class FS
             return "*.*";
         }
 
+        if (ext2 == "Tables.cs")
+        {
+
+        }
       
         var ext = FS.GetExtension(ext2);
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file

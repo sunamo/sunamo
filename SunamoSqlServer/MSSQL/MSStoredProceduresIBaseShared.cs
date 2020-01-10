@@ -9,7 +9,7 @@ using sunamo;
 using sunamo.Values;
 
 /// <summary>
-/// usings
+/// var si2 = s2.CalculateSimilarity(VideoTitle);
 /// </summary>
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
@@ -86,6 +86,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             //true) //
             if (IsNVarChar != null)
             {
+                if (comm.CommandText == @"UPDATE Lyr_YoutubeVideos SET CodeYT=@p2  WHERE  CodeYT = @p0  AND  IDSong = @p1 ")
+                {
+
+                }
 
                 if( SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table2, ref column2, i))
                 {
@@ -416,7 +420,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         List<string> vr = new List<string>(dataTable.Rows.Count);
         foreach (DataRow item in dataTable.Rows)
         {
-            vr.Add(item.ItemArray[dex].ToString());
+            vr.Add(item.ItemArray[dex].ToString().TrimEnd(AllChars.space));
         }
         return vr;
     }
@@ -627,10 +631,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         using (var conn = new SqlConnection(Cs))
         {
             conn.Open();
-            DataTable dt = new DataTable();
-            comm.Connection = conn;
-            SqlDataAdapter adapter = new SqlDataAdapter(comm);
-            adapter.Fill(dt);
+            var dt = SelectDataTable(conn, comm);
+
             conn.Close();
             return dt;
         }
@@ -857,7 +859,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             return "";
         }
-        return o.ToString().TrimEnd(' ');
+        return o.ToString().TrimEnd(AllChars.space);
     }
 
     /// <summary>
@@ -1552,7 +1554,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 var s = r.GetValue(0);
                 if (s != DBNull.Value)
                 {
-                    o = s.ToString();
+                    o = s.ToString().TrimEnd(AllChars.space);
                 }
                 //o = r.GetString(0);
                
@@ -1709,6 +1711,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         comm.Connection = conn;
         SqlDataAdapter adapter = new SqlDataAdapter(comm);
         adapter.Fill(dt);
+
+        
+
         return dt;
     }
     public bool SelectExistsTable(string p, SqlConnection conn)
