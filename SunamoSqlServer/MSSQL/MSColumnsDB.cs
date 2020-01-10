@@ -33,6 +33,8 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     {
     }
 
+    public int index = -;
+
     public MSColumnsDB(bool signed, string derived, string replaceMSinMSStoredProceduresI, params MSSloupecDB[] p)
     {
         this.signed = signed;

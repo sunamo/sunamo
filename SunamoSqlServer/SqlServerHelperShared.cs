@@ -11,22 +11,57 @@ public partial class SqlServerHelper
 
     public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
-        column = table = null;
+        List<string> str = new List<string>();
+        var res = GetTableAndColumns(sql, ref table, ref str, serie);
+        column = str[0];
+        return res;
+    }
+
+    public static bool GetTableAndColumns(string sql, ref string table, ref List< string> columns, int serie, List<int> indexesOfVarCharOrChar)
+    {
+        columns.Clear();
+         table = null;
 
         bool result = true;
         var p = SH.GetFirstWord(sql).ToLower();
 
         if (p == "update")
         {
-            Update(sql, ref table, ref column, serie);
+            Update(sql, ref table, ref columns, serie);
         }
         else if (p == "insert")
         {
-            Insert(sql, ref table, ref column, serie);
+            Insert(sql, ref table, ref columns, serie);
         }
         else if(p == "select")
         {
-            return false;
+            var mscDb = isNVarChar[table];
+            var dict = mscDb.dict;
+            if (columns.Count == 1 && columns[1] == AllStrings.asterisk)
+            {
+                
+                columns.Clear();
+                columns.AddRange(dict.Select(d => d.Value.Name));
+                for (int i = 0; i < columns.Count; i++)
+                {
+                    var column = mscDb[i];
+                    if (column.Type == SqlDbType2.VarChar || column.Type == SqlDbType2.Char)
+                    {
+                        indexesOfVarCharOrChar.Add(i);
+                    }
+                }
+            }
+            else
+            {
+                var dxs = new List<int>();
+                foreach (var item in columns)
+                {
+                    dict[item].id
+                }
+            }
+            
+
+            //return false;
         }
         else if(p == "delete")
         {
@@ -43,23 +78,15 @@ public partial class SqlServerHelper
         //DebugLogger.DebugWriteLine("---");
 #endif
 
-        if (column == null)
-        {
-
-        }
-        if (table == null)
-        {
-
-        }
-
-        column = column.Trim();
+        //column = column.Trim();
         table = table.Trim();
 
         return result;
     }
 
-    private static void Insert(string sql, ref string table, ref string column, int serie)
+    private static void Insert(string sql, ref string table, ref List< string> columns, int serie)
     {
+        string column = null;
         var p = TSQLStatementReader.ParseStatements(sql);
 
         // yet in first parameter is two in from property, there is two elements with text property: 1) from 2) table
@@ -106,14 +133,18 @@ public partial class SqlServerHelper
             
         }
 
-
-
+        columns.Add(column);
     }
 
+    /// <summary>
+    /// In key is name of table
+    /// </summary>
     public static Dictionary<string, MSColumnsDB> isNVarChar = new Dictionary<string, MSColumnsDB>();
 
-    private static void Update(string sql, ref string table, ref string column, int serie)
+    private static void Update(string sql, ref string table, ref List<string> columns, int serie)
     {
+        string column = null;
+
         var p = TSQLStatementReader.ParseStatements(sql);
 
         // yet in first parameter is two in from property, there is two elements with text property: 1) from 2) table
@@ -153,22 +184,28 @@ public partial class SqlServerHelper
                     {
                         columnNames.Add(item2.Text);
 
+                        if (serie != 0)
+                        {
+                            /* U UPDATE Lyr_YoutubeVideos SET CodeYT=@p2  WHERE  CodeYT = @p0  AND  IDSong = @p1  je první @2. 
+                             * Tím pádem mi vrátí @2 protože je druhý v pořadí. Myslím že zde u update to mohu ignorovat
+                            */
+                            column = columnNames[0];
+                            break;
+                        }
                     }
                 }
-
-                //if (l != "from")
-                //{
-                //    table = item2.Text;
-                //}
 
                 if (serie < columnNames.Count && table != null)
                 {
                     column = columnNames[serie];
+                    break;
                 }
 
                 i++;
             }
         }
+
+        columns.Add(column);
     }
     public static string ConvertToVarChar(string maybeUnicode, ConvertToVarcharArgs e = null)
     {
