@@ -1562,6 +1562,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         }
         comm.Connection.Close();
         comm.Connection.Dispose();
+
+        CA.Trim(vr);
+
         return vr;
     }
 
