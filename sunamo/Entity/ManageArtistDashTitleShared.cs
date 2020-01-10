@@ -129,4 +129,50 @@ public partial class ManageArtistDashTitle
         title = p.Substring(0, firstNormal);
         remix = p.Substring(firstNormal);
     }
+
+/// <summary>
+    /// 
+    /// Získám interpreta
+    /// </summary>
+    /// <param name = "item"></param>
+    /// <returns></returns>
+    public static string GetArtist(string item)
+    {
+        string nazev, title = null;
+        GetArtistTitle(item, out nazev, out title);
+        return nazev;
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "item"></param>
+    /// <param name = "název"></param>
+    /// <param name = "title"></param>
+    public static void GetArtistTitle(string item, out string název, out string title)
+    {
+        // FS.GetFileNameWithoutExtension()
+        string[] toks = FS.GetFileNameWithoutExtension(item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
+        název = title = "";
+        if (toks.Length == 0)
+        {
+            název = title = "";
+        }
+        else if (toks.Length == 1)
+        {
+            název = "";
+            title = toks[0];
+        }
+        else
+        {
+            název = toks[0];
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < toks.Length; i++)
+            {
+                sb.Append(toks[i] + AllStrings.dash);
+            }
+
+            title = sb.ToString().TrimEnd(AllChars.dash);
+        }
+    }
 }

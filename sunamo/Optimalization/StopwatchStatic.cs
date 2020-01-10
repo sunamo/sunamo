@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-namespace DocArch
-{
-    class StopwatchStatic
+
+    public class StopwatchStatic
     {
-        static Stopwatch sw = new Stopwatch();
+        static StopwatchHelper sw = new StopwatchHelper();
 
         public static void Start()
         {
-            sw.Reset();
-            sw.Start();
+        sw.Start();
         }
 
-        public static void StopAVypis(string p, params object[] parametry)
+        public static void StopAndPrintElapsed(string operation, string p, params object[] parametry)
         {
-            sw.Stop();
-            DebugLogger.Instance.WriteLine(p, parametry);
+            sw.StopAndPrintElapsed(operation, p, parametry);
         }
 
         public static long ElapsedMS
         {
             get
             {
-                return sw.ElapsedMilliseconds;
+                return sw.ElapsedMS;
             }
         }
     }
-}
