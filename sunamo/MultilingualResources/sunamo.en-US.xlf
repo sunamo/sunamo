@@ -4562,7 +4562,7 @@
         </trans-unit>
         <trans-unit id="FoundWords" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Found words:</target>
+          <target state="translated">Found words</target>
         </trans-unit>
         <trans-unit id="OriginalText" translate="yes" xml:space="preserve">
           <source></source>

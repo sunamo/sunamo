@@ -11,9 +11,13 @@ public partial class SqlServerHelper
 
     public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
+        List<int> indexesOfVarCharOrChar = new List<int>();
         List<string> str = new List<string>();
-        var res = GetTableAndColumns(sql, ref table, ref str, serie);
-        column = str[0];
+        var res = GetTableAndColumns(sql, ref table, ref str, serie, indexesOfVarCharOrChar);
+        if (str.Count() > 0)
+        {
+            column = str[0];
+        }
         return res;
     }
 
@@ -35,33 +39,35 @@ public partial class SqlServerHelper
         }
         else if(p == "select")
         {
-            var mscDb = isNVarChar[table];
-            var dict = mscDb.dict;
-            if (columns.Count == 1 && columns[1] == AllStrings.asterisk)
+            if (table != null)
             {
-                
-                columns.Clear();
-                columns.AddRange(dict.Select(d => d.Value.Name));
-                for (int i = 0; i < columns.Count; i++)
+                var mscDb = isNVarChar[table];
+                var dict = mscDb.dict;
+                if (columns.Count == 1 && columns[1] == AllStrings.asterisk)
                 {
-                    var column = mscDb[i];
-                    if (column.Type == SqlDbType2.VarChar || column.Type == SqlDbType2.Char)
+
+                    columns.Clear();
+                    columns.AddRange(dict.Select(d => d.Value.Name));
+                    for (int i = 0; i < columns.Count; i++)
                     {
-                        indexesOfVarCharOrChar.Add(i);
+                        var column = mscDb[i];
+                        if (column.Type == SqlDbType2.VarChar || column.Type == SqlDbType2.Char)
+                        {
+                            indexesOfVarCharOrChar.Add(i);
+                        }
                     }
                 }
-            }
-            else
-            {
-                var dxs = new List<int>();
-                foreach (var item in columns)
+                else
                 {
-                    dict[item].id
+                    //var dxs = new List<int>();
+                    //foreach (var item in columns)
+                    //{
+                    //    dict[item].id
+                    //}
                 }
             }
-            
 
-            //return false;
+            return false;
         }
         else if(p == "delete")
         {

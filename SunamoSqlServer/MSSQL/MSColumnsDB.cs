@@ -33,7 +33,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     {
     }
 
-    public int index = -;
+    public int index = -1;
 
     public MSColumnsDB(bool signed, string derived, string replaceMSinMSStoredProceduresI, params MSSloupecDB[] p)
     {
@@ -125,6 +125,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     }
 
     /// <summary>
+    /// Must call Close after return SqlCommand make work
     /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
     /// </summary>
     public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, string cs)
@@ -133,7 +134,8 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         {
             conn.Open();
             var comm = GetSqlCreateTable(table, dynamicTables, conn);
-            conn.Close();
+            // Cant call CLose here, it return SqlCommand
+            //conn.Close();
             return comm;
         }
     }

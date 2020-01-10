@@ -192,7 +192,8 @@ public partial class FS
         {
             // V ASP.net mi vrátilo u každé directory.exists false. Byl jsem pod ApplicationPoolIdentity v IIS a bylo nastaveno Full Control pro IIS AppPool\DefaultAppPool
 #if !ASPNET
-            path = Consts.UncLongPath + path;
+        //  asp.net / vps nefunguje, ve windows store apps taktéž, NECHAT TO TRVALE ZAKOMENTOVANÉ
+            //path = Consts.UncLongPath + path;
 #endif
         }
         return path;
