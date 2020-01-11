@@ -22,6 +22,13 @@ public partial class CryptHelper : ICryptHelper
 {
     private ICryptBytes _crypt = null;
 
+    public static void ApplyCryptData(ICrypt to, ICrypt from)
+    {
+        to.iv = from.iv;
+        to.pp = from.pp;
+        to.s = from.s;
+    }
+
     public CryptHelper(Provider provider, List<byte> s, List<byte> iv, string pp)
     {
         switch (provider)
