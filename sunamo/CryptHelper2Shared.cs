@@ -197,9 +197,12 @@ public partial class CryptHelper2
             List<byte> keyBytes = password.GetBytes(keySize / 8).ToList();
             // Create uninitialized Rijndael encryption object.
             RijndaelManaged symmetricKey = new RijndaelManaged();
+
             // It is reasonable to set encryption mode to Cipher Block Chaining
             // (CBC). Use default options for other symmetric key parameters.
-            symmetricKey.Mode = CipherMode.CBC;
+             symmetricKey.Mode = CipherMode.CBC;
+            // CFB - remove padding zero, CBC - keep padding zero
+            //symmetricKey.Mode = CipherMode.CFB;
             // Generate decryptor from the existing key bytes and initialization 
             // vector. Key size will be defined based on the number of the key 
             // bytes.

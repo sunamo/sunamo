@@ -125,6 +125,7 @@ public static string AddTab(int tabCount, string text)
                     radky[i] = Consts.tab + radky[i];
                 }
             }
+
             string vr = SH.JoinString(Environment.NewLine, radky);
             return vr;
         }

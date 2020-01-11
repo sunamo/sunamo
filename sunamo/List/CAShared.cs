@@ -1062,34 +1062,7 @@ public static partial class CA
         return lb;
     }
 
-    public static bool Contains(int idUser, int[] onlyUsers)
-    {
-        foreach (int item in onlyUsers)
-        {
-            if (item == idUser)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    /// <summary>
-    /// G zda se alespoň 1 prvek A2 == A1
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="availableValues"></param>
-    /// <returns></returns>
-    public static bool Contains(string value, List<string> availableValues)
-    {
-        foreach (var item in availableValues)
-        {
-            if (item == value)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+   
 
     public static IEnumerable<string> ToEnumerable(params string[] p)
     {
@@ -1347,11 +1320,12 @@ public static string StartWith(List<string> suMethods, string line)
     /// <param name="lines"></param>
     /// <param name="term"></param>
     /// <returns></returns>
-    public static List<string> ReturnWhichContains(List<string> lines, string term)
+    public static List<string> ReturnWhichContains(List<string> lines, string term,  ContainsCompareMethod parseNegations = ContainsCompareMethod.WholeInput)
     {
         List<int> founded;
-        return ReturnWhichContains(lines, term, out founded);
+        return ReturnWhichContains(lines, term, out founded, parseNegations);
     }
+
 /// <summary>
     /// Return A1 which contains A2
     /// </summary>
@@ -1359,19 +1333,45 @@ public static string StartWith(List<string> suMethods, string line)
     /// <param name="term"></param>
     /// <param name="founded"></param>
     /// <returns></returns>
-    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded, ContainsCompareMethod parseNegations = ContainsCompareMethod.WholeInput)
     {
         founded = new List<int>();
         List<string> result = new List<string>();
         int i = 0;
-        foreach (var item in lines)
+
+        List<string> w = null;
+        if (parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
         {
-            if (item.Contains(term))
+            w = SH.SplitByWhiteSpaces(term);
+        }
+
+        if (parseNegations == ContainsCompareMethod.WholeInput)
+        {
+            foreach (var item in lines)
             {
-                founded.Add(i);
-                result.Add(item);
+                if (item.Contains(term))
+                {
+                    founded.Add(i);
+                    result.Add(item);
+                }
+                i++;
             }
-            i++;
+        }
+        else if(parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
+        {
+            foreach (var item in lines)
+            {
+                if (SH.ContainsAll(item, w, parseNegations))
+                {
+                    founded.Add(i);
+                    result.Add(item);
+                }
+                i++;
+            }
+        }
+        else
+        {
+            ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod());
         }
 
         return result;
@@ -1587,5 +1587,30 @@ public static void RemoveWhichContains(List<string> files1, string item, bool wi
                 }
             }
         }
+    }
+
+    public static string RemovePadding(List<byte> decrypted, byte v, bool returnStringInUtf8)
+    {
+        RemovePadding<byte>(decrypted, v);
+
+        if (returnStringInUtf8)
+        {
+            return Encoding.UTF8.GetString(decrypted.ToArray());
+        }
+        return string.Empty;
+    }
+
+public static void RemovePadding<T>(List<T> decrypted, T v)
+    {
+        for (int i = decrypted.Count - 1; i >= 0; i--)
+        {
+            if(!EqualityComparer<T>.Default.Equals( decrypted[i], v))
+            {
+                break;
+            }
+            decrypted.RemoveAt(i);
+        }
+
+        
     }
 }

@@ -140,6 +140,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
         //this.sb.AddItem(sb.ToString());
     }
 
+    /// <summary>
+    ///  Use method CSharpHelper.DefaultValueForType
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="defaultValue"></param>
     private void DefaultValue(string type, bool defaultValue)
     {
         if (defaultValue)
@@ -474,7 +479,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         foreach (var item in result)
         {
             var list = CA.WrapWithQm(item.Value);
-            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", CA.ToListString(" + SH.Join(list, AllChars.comma) + "));");
+            this.AppendLine(tabCount, nameDictionary + ".Add(\"" + item.Key + "\", CA.ToListString(" + SH.Join(AllChars.comma,list) + "));");
         }
     }
 
@@ -524,6 +529,25 @@ public class CSharpGenerator : GeneratorCodeAbstract
         
     }
 
+    public void DictionaryFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict, bool addingValue = true)
+    {
+        string valueType = null;
+        if (dict.Count > 0)
+        {
+            valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key, Value>(dict).GetType().FullName);
+        }
+        string cn = "Dictionary<string, List<" + valueType + ">>";//
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        AppendLine();
+        CreateInstance(cn, nameDictionary);
+
+        if (addingValue)
+        {
+            GetDictionaryValuesFromDictionary(tabCount, nameDictionary, dict);
+        }
+
+    }
+
     public void GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
     {
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
@@ -546,6 +570,42 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
 
         GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
+    }
+
+    public void GetDictionaryValuesFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, List< Value>> dict)
+    {
+        Key key = default(Key);
+        Value value = default(Value);
+
+        foreach (var item in dict)
+        {
+            key = item.Key;
+            value = RuntimeHelper.CastToGeneric<Value>( item.Value.FirstOrNull());
+
+            break;
+        }
+
+        var tKey = key.GetType();
+        var tValue = value.GetType();
+
+        IEnumerable valueS;
+        string keyS = null;
+        
+        keyS = key.ToString();
+
+        Field(tabCount, AccessModifiers.Private, false, VariableModifiers.None, string.Format("Dictionary<{0}, List<{1}>>", tKey.Name, tValue.Name), nameDictionary, true);
+
+        foreach (var item in dict)
+        {
+            keyS = item.Key.ToString();
+            valueS = item.Value;
+
+            CSharpHelper.WrapWithQuote(tKey, ref keyS);
+
+            var valueS2 = CSharpHelper.WrapWithQuoteList(tValue,  valueS);
+
+            this.AppendLine(tabCount, nameDictionary + ".Add(" + keyS + ", CA.ToList<" + tValue.Name + ">("  + valueS2 + "));");
+        }
     }
 
     public void GetDictionaryValuesFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict)
@@ -573,31 +633,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
             keyS = item.Key.ToString();
             valueS = item.Value.ToString();
 
-            if (tKey == Types.tString)
-            {
-                keyS = SH.WrapWithQm(keyS);
-            }
-            else if (tKey == Types.tChar)
-            {
-                keyS = SH.WrapWith(keyS, '\'');
-            }
-            else
-            {
-                keyS = key.ToString();
-            }
+            CSharpHelper.WrapWithQuote(tKey, ref keyS);
 
-            if (tValue == Types.tString)
-            {
-                valueS = SH.WrapWithQm(valueS);
-            }
-            else if (tValue == Types.tChar)
-            {
-                valueS = SH.WrapWith(valueS, '\'');
-            }
-            else
-            {
-                valueS = value.ToString();
-            }
+            CSharpHelper.WrapWithQuote(tValue, ref valueS);
 
 
             this.AppendLine(tabCount, nameDictionary + ".Add(" + keyS + ", " + valueS + ");");
@@ -665,11 +703,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         if (genericType == "string")
         {
-            AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(list, AllChars.comma) + ");");
+            AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(AllChars.comma, list) + ");");
         }
         else
         {
-            AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(list, AllChars.comma) + "));");
+            AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(AllChars.comma,list) + "));");
         }
 
 

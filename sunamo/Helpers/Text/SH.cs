@@ -2062,7 +2062,7 @@ public static partial class SH
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
     /// <returns></returns>
-    public static string Join(IEnumerable parts, object delimiter)
+    private static string Join(IEnumerable parts, object delimiter)
     {
         if (delimiter is string)
         {

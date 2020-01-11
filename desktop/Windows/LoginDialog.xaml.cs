@@ -45,8 +45,12 @@ namespace desktop
         bool loginClicked = false;
         string iniCredSection = "Cred";
 
+        /// <summary>
+        /// A1 = RandomHelper.RandomString(10)
+        /// </summary>
         public LoginDialog(string salt)
         {
+            
             InitializeComponent();
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;
@@ -56,8 +60,9 @@ namespace desktop
         {
             chbAutoLogin.IsChecked = false;
         }
-
         
+
+
 
         void chbAutoLogin_Checked(object sender, RoutedEventArgs e)
         {

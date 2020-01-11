@@ -203,21 +203,25 @@ public partial class TF
 
     public static List<byte> ReadAllBytes(string file)
     {
-        return File.ReadAllBytes(file).ToList();
-
-        using (System.IO.FileStream input = new System.IO.FileStream(file,
-                                    System.IO.FileMode.Open,
-                                    System.IO.FileAccess.Read))
+        if (File.Exists(file))
         {
-            byte[] buffer = new byte[input.Length];
+            return File.ReadAllBytes(file).ToList();
 
-            int readLength = 0;
+            using (System.IO.FileStream input = new System.IO.FileStream(file,
+                                        System.IO.FileMode.Open,
+                                        System.IO.FileAccess.Read))
+            {
+                byte[] buffer = new byte[input.Length];
 
-            while (readLength < buffer.Length)
-                readLength += input.Read(buffer, readLength, buffer.Length - readLength);
+                int readLength = 0;
 
-            return buffer.ToList();
+                while (readLength < buffer.Length)
+                    readLength += input.Read(buffer, readLength, buffer.Length - readLength);
+
+                return buffer.ToList();
+            }
         }
+        return new List<byte>();
     }
 
     /// <summary>

@@ -1,7 +1,3 @@
-﻿Lyr_Artist
-Lyr_LyrTag
-Lyr_Album
-Lyr_YoutubeVideos
-Lyr_Lyrics
-Lyr_Song
-Lyr_LyrWords
+﻿CheckLoginCredentials1
+GetScForUser
+CheckLoginCredentials

@@ -90,35 +90,52 @@ public partial class CryptHelper : ICryptHelper
     /// </summary>
     public class RC2 : ICrypt
     {
-        private List<byte> _s = null;
-        private List<byte> _iv = null;
-        private string _pp = null;
+ 
 
         public List<byte> s
-        {
-            set { _s = value; }
-        }
+        { set; get; }
 
         public List<byte> iv
         {
-            set { _iv = value; }
+            set; get;
         }
 
         public string pp
         {
-            set { _pp = value; }
+            set; get;
         }
+
         public string Decrypt(string v)
         {
-            return BTS.ConvertFromBytesToUtf8(CryptHelper2.DecryptRC2(BTS.ConvertFromUtf8ToBytes(v), _pp, _s, _iv));
+            return BTS.ConvertFromBytesToUtf8(CryptHelper2.DecryptRC2(BTS.ConvertFromUtf8ToBytes(v), pp, s, iv));
         }
 
         public string Encrypt(string v)
         {
-            return BTS.ConvertFromBytesToUtf8(CryptHelper2.EncryptRC2(BTS.ConvertFromUtf8ToBytes(v), _pp, _s, _iv));
+            return BTS.ConvertFromBytesToUtf8(CryptHelper2.EncryptRC2(BTS.ConvertFromUtf8ToBytes(v), pp, s, iv));
         }
     }
 
+    /// <summary>
+    /// Not working great
+    /// Must convert to bytes and transfer in bytes, also through network
+    /// </summary>
+    public class RijndaelString : ICryptString
+    {
+        Rijndael rijndael = new Rijndael();
+
+        public static RijndaelString Instance = new RijndaelString();
+
+        public string Encrypt(string v)
+        {
+            return rijndael.Encrypt(v);
+        }
+
+        public string Decrypt(string v)
+        {
+            return rijndael.Decrypt(v);
+        }
+    }
 
 
     /// <summary>
@@ -132,42 +149,36 @@ public partial class CryptHelper : ICryptHelper
     {
         static RijndaelBytes()
         {
-            Instance = new RijndaelBytes();
+            Instance = new RijndaelBytes() ;
 
-            Instance.iv = CryptData.ivRijn;
-            Instance.pp = CryptData.pp;
-            Instance.s = CryptData.s32;
+            
         }
 
         public static RijndaelBytes Instance = null;
 
-        private List<byte> _s = null;
-        private List<byte> _iv = null;
-        private string _pp = null;
-
         public List<byte> s
         {
-            set { _s = value; }
+            set;get;
         }
 
         public List<byte> iv
         {
-            set { _iv = value; }
+            set; get;
         }
 
         public string pp
         {
-            set { _pp = value; }
+            set; get;
         }
 
         public List<byte> Decrypt(List<byte> v)
         {
-            return CryptHelper2.DecryptRijndael(v, _pp, _s, _iv);
+            return CryptHelper2.DecryptRijndael(v, Instance.pp, Instance.s, Instance.iv);
         }
 
         public List<byte> Encrypt(List<byte> v)
         {
-            return CryptHelper2.EncryptRijndael(v, _pp, _s, _iv);
+            return CryptHelper2.EncryptRijndael(v, Instance.pp, Instance.s, Instance.iv);
         }
     }
 

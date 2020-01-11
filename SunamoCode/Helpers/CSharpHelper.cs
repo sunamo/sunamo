@@ -167,6 +167,8 @@ public static partial class CSharpHelper
                 return "Guid.Empty";
             case "char":
                 throw new Exception("Nepodporovaný typ");
+            default:
+                return "new " + type + "()";
         }
         throw new Exception("Nepodporovaný typ");
     }
@@ -259,5 +261,33 @@ public static partial class CSharpHelper
         }
 
         return csg.ToString();
+    }
+
+    internal static void WrapWithQuote(Type tKey, ref string keyS)
+    {
+        if (tKey == Types.tString)
+        {
+            keyS = SH.WrapWithQm(keyS);
+        }
+        else if (tKey == Types.tChar)
+        {
+            keyS = SH.WrapWith(keyS, '\'');
+        }
+        else
+        {
+            
+        }
+    }
+
+    internal static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in valueS)
+        {
+            var v = item.ToString();
+            WrapWithQuote(tValue, ref v);
+            sb.Append(v + AllStrings.comma);
+        }
+        return sb.ToString().TrimEnd(AllChars.comma);
     }
 }

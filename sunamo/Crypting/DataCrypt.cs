@@ -221,8 +221,8 @@ namespace shared.Crypting
         /// </summary>
         public string Hex
         {
-            get { return Utils.ToHex(_b); }
-            set { _b = Utils.FromHex(value); }
+            get { return Utils.ToHex(_b.ToList()); }
+            set { _b = Utils.FromHex(value).ToArray(); }
         }
 
         /// <summary>

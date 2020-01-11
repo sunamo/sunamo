@@ -9,15 +9,18 @@ using ConfigurableWindow.Shared;
 /// <summary>
 /// 
 /// </summary>
-public class ConfigurableWindowInstance : Window
+public class ConfigurableWindowInstance : Window, IConfigurableWindow
 {
-    public ConfigurableWindowWrapper c = null;
+    public ApplicationDataContainer data { get; set; }
+    public ConfigurableWindow.Shared.ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
 
-    ApplicationDataContainer data = null;
-
-    public ConfigurableWindowInstance(ApplicationDataContainer data)
+    /// <summary>
+    /// Data cant be static
+    /// </summary>
+    /// <param name="data"></param>
+    public ConfigurableWindowInstance()
     {
-        this.data = data;
+        //this.data = data;
         SourceInitialized += ConfigurableWindow_SourceInitialized;
     }
 
@@ -34,7 +37,7 @@ public class ConfigurableWindowInstance : Window
     /// <param name="e"></param>
     private void ConfigurableWindow_SourceInitialized(object sender, EventArgs e)
     {
-        ConfigurableWindowHelper.SourceInitialized(c);
+        ConfigurableWindowHelper.SourceInitialized(configurableWindowWrapper);
     }
 
     /// <summary>
@@ -46,14 +49,14 @@ public class ConfigurableWindowInstance : Window
     {
         base.OnRenderSizeChanged(info);
 
-        if (c != null)
+        if (configurableWindowWrapper != null)
         {
-            if (c._isLoaded && this.WindowState == WindowState.Normal)
+            if (configurableWindowWrapper._isLoaded && this.WindowState == WindowState.Normal)
             {
-                c._settings.WindowSize = this.RenderSize;
+                configurableWindowWrapper._settings.WindowSize = this.RenderSize;
             }
 
-            ConfigurableWindowHelper.RenderSizeChanged(c);
+            ConfigurableWindowHelper.RenderSizeChanged(configurableWindowWrapper);
         }
     }
 }

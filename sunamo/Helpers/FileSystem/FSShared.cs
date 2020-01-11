@@ -1674,25 +1674,18 @@ public static void CopyAllFilesRecursively(string p, string to, FileMoveCollisio
     /// <param name="to"></param>
     /// <param name="co"></param>
     /// <param name="contains"></param>
-    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains, SearchOption so )
+    private static void CopyMoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, bool move, string contains, SearchOption so)
     {
         var files = FS.GetFiles(p, AllStrings.asterisk, so);
-        foreach (var item in files)
+        if (!string.IsNullOrEmpty(contains))
         {
-            if (!string.IsNullOrEmpty(contains))
+            foreach (var item in files)
             {
-                bool negation = SH.IsNegation(ref contains);
-
-                if (negation && item.Contains(contains))
+                if (SH.IsContained(item, ref contains))
                 {
-                    continue;
-                }
-                else if (!negation && !item.Contains(contains))
-                {
-                    continue;
+                    MoveOrCopy(p, to, co, move, item);
                 }
             }
-            MoveOrCopy(p, to, co, move, item);
         }
     }
 

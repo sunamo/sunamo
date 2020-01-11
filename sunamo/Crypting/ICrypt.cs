@@ -23,7 +23,7 @@ public interface ICryptBytes : ICrypt
 
 public interface ICrypt
 {
-    List<byte> s { set; }
-    List<byte> iv { set; }
-    string pp { set; }
+    List<byte> s { set; get; }
+    List<byte> iv { set; get; }
+    string pp { set; get; }
 }

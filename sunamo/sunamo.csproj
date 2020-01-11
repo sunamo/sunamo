@@ -59,6 +59,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\JavascriptSerialization.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Optimalization\StopwatchStatic.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
@@ -103,6 +107,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Data\CryptData.cs" />
+    <Compile Include="Enums\ContainsCompareMethod.cs" />
     <Compile Include="Interfaces\IInstance.cs" />
     <Compile Include="Optimalization\StopwatchHelper.cs" />
     <Compile Include="_ns.cs" />
@@ -213,7 +219,6 @@
     <Compile Include="Converts\Rot13.cs" />
     <Compile Include="CryptHelper2.cs" />
     <Compile Include="CryptHelper2Shared.cs" />
-    <Compile Include="Crypting\CryptData.cs" />
     <Compile Include="Crypting\CryptHelper.cs" />
     <Compile Include="Crypting\CryptHelperAdvanced.cs" />
     <Compile Include="Crypting\CryptHelperShared.cs" />

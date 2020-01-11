@@ -563,17 +563,7 @@ public static partial class SH
         return false;
     }
 
-    /// <summary>
-    /// This can be only one 
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string JoinIEnumerable(object delimiter, IEnumerable parts)
-    {
-        // TODO: Delete after all app working
-        return JoinString(delimiter, parts);
-    }
+    
 
     /// <summary>
     /// Get null if count of getted parts was under A2.
@@ -668,18 +658,7 @@ public static partial class SH
         return delimiter;
     }
 
-    /// <summary>
-    /// Will be delete after final refactoring
-    /// Automaticky ořeže poslední A1
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string JoinString(object delimiter, IEnumerable parts)
-    {
-        // TODO: Delete after all app working, has here method Join with same arguments
-        return Join(delimiter, parts);
-    }
+    
 
     public static StringBuilder ReplaceAllSb(StringBuilder sb, string zaCo, params string[] co)
     {
@@ -846,43 +825,7 @@ public static partial class SH
         return Results;
     }
 
-    /// <summary>
-    /// A2 Must be string due to The call is ambiguous between the following methods or properties: 'SH.Join(object, IEnumerable)' and 'SH.Join(IEnumerable, object)'
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string Join(string delimiter, IEnumerable parts)
-    {
-        string s = delimiter.ToString();
-        StringBuilder sb = new StringBuilder();
-        if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Types.tString)
-        {
-            sb.Append(SH.ListToString(parts.FirstOrNull()) + s);
-        }
-        else if(parts.GetType() == Types.tString)
-        {
-            return parts.ToString();
-        }
-        else
-        {
-            foreach (var item in parts)
-            {
-                sb.Append(SH.ListToString(item) + s);
-            }
-        }
-        
-        string d = sb.ToString();
-        //return d.Remove(d.Length - (name.Length - 1), name.Length);
-        int to = d.Length - s.Length;
-        if (to > 0)
-        {
-            return d.Substring(0, to);
-        }
-        return d;
-        //return d;
-    }
-
+    
     private static bool IsInFirstXCharsTheseLetters(string p, int pl, params char[] letters)
     {
         for (int i = 0; i < pl; i++)
@@ -992,19 +935,7 @@ public static partial class SH
         return true;
     }
 
-    /// <summary>
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    /// <returns></returns>
-    public static string Join(object delimiter, params object[] parts)
-    {
-        // JoinString point to Join with implementation
-        return Join(delimiter.ToString(), CA.ToEnumerable(parts));
-    }
-
+    
     public static string ShortForLettersCount(string p, int p_2)
     {
         bool pridatTriTecky = false;
@@ -1138,14 +1069,7 @@ public static partial class SH
         return founded;
     }
 
-    public static string JoinNL(IEnumerable parts)
-    {
-        return SH.JoinString(Environment.NewLine, parts);
-    }
-    public static string JoinNL(params string[] parts)
-    {
-        return SH.JoinString(Environment.NewLine, parts);
-    }
+    
 
     public static bool ContainsVariable(string innerHtml)
     {
@@ -1425,9 +1349,100 @@ public static partial class SH
         {
             return nazevPP;
         }
+        
         string sb = nazevPP.Substring(1);
         return nazevPP[0].ToString().ToLower() + sb;
     }
+
+    #region MyRegion
+
+    
+    /// <summary>
+    /// This can be only one 
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinIEnumerable(object delimiter, IEnumerable parts)
+    {
+        // TODO: Delete after all app working
+        return JoinString(delimiter, parts);
+    }
+
+    /// <summary>
+    /// Will be delete after final refactoring
+    /// Automaticky ořeže poslední A1
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string JoinString(object delimiter, IEnumerable parts)
+    {
+        // TODO: Delete after all app working, has here method Join with same arguments
+        return Join(delimiter, parts);
+    }
+
+  
+
+    /// <summary>
+    /// A2 Must be string due to The call is ambiguous between the following methods or properties: 'SH.Join(object, IEnumerable)' and 'SH.Join(IEnumerable, object)'
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(string delimiter, IEnumerable parts)
+    {
+        string s = delimiter.ToString();
+        StringBuilder sb = new StringBuilder();
+        if (parts.Count() == 1 && parts.FirstOrNull().GetType() == Types.tString)
+        {
+            sb.Append(SH.ListToString(parts.FirstOrNull()) + s);
+        }
+        else if (parts.GetType() == Types.tString)
+        {
+            return parts.ToString();
+        }
+        else
+        {
+            foreach (var item in parts)
+            {
+                sb.Append(SH.ListToString(item) + s);
+            }
+        }
+
+        string d = sb.ToString();
+        //return d.Remove(d.Length - (name.Length - 1), name.Length);
+        int to = d.Length - s.Length;
+        if (to > 0)
+        {
+            return d.Substring(0, to);
+        }
+        return d;
+        //return d;
+    }
+
+    /// <summary>
+    /// Automaticky ořeže poslední znad A1
+    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+    /// </summary>
+    /// <param name="delimiter"></param>
+    /// <param name="parts"></param>
+    /// <returns></returns>
+    public static string Join(object delimiter, params object[] parts)
+    {
+        // JoinString point to Join with implementation
+        return Join(delimiter.ToString(), CA.ToEnumerable(parts));
+    }
+
+    public static string JoinNL(IEnumerable parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+    public static string JoinNL(params string[] parts)
+    {
+        return SH.JoinString(Environment.NewLine, parts);
+    }
+    #endregion
 
     public static string JoinPairs(params object[] parts)
     {
@@ -1679,6 +1694,28 @@ public static partial class SH
             sb.Append(SH.ListToString(item, p) + p);
         }
         return sb.ToString();
+    }
+
+    /// <summary>
+    /// Auto remove potentially first !
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="contains"></param>
+    /// <returns></returns>
+    public static bool IsContained(string item, ref string contains)
+    {
+        bool negation = SH.IsNegation(ref contains);
+
+        if (negation && item.Contains(contains))
+        {
+            return false;
+        }
+        else if (!negation && !item.Contains(contains))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public static bool IsNegation(ref string contains)
@@ -2905,13 +2942,27 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// <param name="input"></param>
     /// <param name="allWords"></param>
     /// <returns></returns>
-    public static bool ContainsAll(string input, IEnumerable<string> allWords)
+    public static bool ContainsAll(string input, IEnumerable<string> allWords, ContainsCompareMethod ccm = ContainsCompareMethod.WholeInput)
     {
-        foreach (var item in allWords)
+        if (ccm == ContainsCompareMethod.SplitToWords)
         {
-            if (!input.Contains(item))
+            foreach (var item in allWords)
             {
-                return false;
+                if (!input.Contains(item))
+                {
+                    return false;
+                }
+            }
+        }
+        else if (ccm == ContainsCompareMethod.Negations)
+        {
+            foreach (var item in allWords)
+            {
+                var c = item.ToString();
+                if (!IsContained(input, ref c))
+                {
+                    return false;
+                }
             }
         }
         return true;

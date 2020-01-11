@@ -20,6 +20,7 @@ public partial class Password
         RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
         StringBuilder vr = new StringBuilder(PasswordLength);
         rng.GetBytes(randomBytes);
+
         for (int y = 0; y < countCharsLower; y++)
         {
             vr.Insert(RandomHelper.RandomInt(0, vr.Length - 1), allowedCharsLower[(int)randomBytes[y] % allowedCharsLower.Count]);
