@@ -26,19 +26,19 @@ namespace desktop.Converters
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             {
 
-            //    FileSystemEntry path = (value as FileSystemEntry);
+               FileSystemEntry path = (value as FileSystemEntry);
 
-            //using (Icon i = IconExtractor.GetSmallIcon(path.path, path.file))
-            //{
-            //    if (i != null)
-            //    {
-            //        ImageSource img = Imaging.CreateBitmapSourceFromHIcon(
-            //                                i.Handle,
-            //                                new Int32Rect(0, 0, i.Width, i.Height),
-            //                                BitmapSizeOptions.FromEmptyOptions());
-            //        return img;
-            //    }
-            //}
+            using (Icon i = IconExtractor.GetSmallIcon(path.path, path.file))
+            {
+               if (i != null)
+               {
+                   ImageSource img = Imaging.CreateBitmapSourceFromHIcon(
+                                           i.Handle,
+                                           new Int32Rect(0, 0, i.Width, i.Height),
+                                           BitmapSizeOptions.FromEmptyOptions());
+                   return img;
+               }
+            }
             return null;
         }
 

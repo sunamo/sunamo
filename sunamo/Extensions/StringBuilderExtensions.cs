@@ -2,36 +2,37 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-public static class StringBuilderExtensions
+namespace sunamo.Extensions
 {
-    public static void Trim(this StringBuilder sb)
+    public static class StringBuilderExtensions
     {
-        var length = sb.Length;
-        for (int i = length - 1; i >= 0; i--)
+        public static void Trim(this StringBuilder sb)
         {
-            if (char.IsWhiteSpace( sb[i]))
+            var length = sb.Length;
+            for (int i = length - 1; i >= 0; i--)
             {
-                sb.Remove(i, 1);
+                if (char.IsWhiteSpace(sb[i]))
+                {
+                    sb.Remove(i, 1);
+                }
+                else
+                {
+                    break;
+                }
             }
-            else
-            {
-                break;
-            }
-        }
 
-        length = sb.Length;
-        for (int i = 0; i < length; i++)
-        {
-            if (char.IsWhiteSpace(sb[i]))
+            length = sb.Length;
+            for (int i = 0; i < length; i++)
             {
-                sb.Remove(i, 1);
-            }
-            else
-            {
-                break;
+                if (char.IsWhiteSpace(sb[i]))
+                {
+                    sb.Remove(i, 1);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
 }
-

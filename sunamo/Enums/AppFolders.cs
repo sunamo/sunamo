@@ -10,5 +10,6 @@
     Cache,
     Local,
     Roaming,
-    Temp
+    Temp,
+    Crypted
 }

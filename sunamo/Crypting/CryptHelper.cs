@@ -156,9 +156,7 @@ public partial class CryptHelper : ICryptHelper
     {
         static RijndaelBytes()
         {
-            Instance = new RijndaelBytes() ;
-
-            
+            Instance = new RijndaelBytes();
         }
 
         public static RijndaelBytes Instance = null;

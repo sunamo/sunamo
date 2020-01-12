@@ -657,7 +657,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
 
-
+    /// <summary>
+    /// Return count of rows affected
+    /// </summary>
+    /// <param name="comm"></param>
+    /// <returns></returns>
     public int ExecuteNonQuery(SqlCommand comm)
     {
         using (SqlConnection conn = new SqlConnection(Cs))
@@ -2387,7 +2391,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
 
-
+    /// <summary>
+    /// Return count of rows affected
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="columnToUpdate"></param>
+    /// <param name="newValue"></param>
+    /// <param name="abc"></param>
+    /// <returns></returns>
     public int Update(string table, string columnToUpdate, object newValue, params AB[] abc)
     {
         int parametrSet = abc.Length;
