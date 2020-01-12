@@ -130,14 +130,14 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     /// </summary>
     public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, string cs)
     {
-        using (var conn = new SqlConnection(cs))
-        {
+        var conn = new SqlConnection(cs);
+        
             conn.Open();
             var comm = GetSqlCreateTable(table, dynamicTables, conn);
             // Cant call CLose here, it return SqlCommand
             //conn.Close();
             return comm;
-        }
+        
     }
 
     public SqlCommand GetSqlCreateTable(string table, bool dynamicTables, SqlConnection conn)
@@ -994,6 +994,12 @@ CSharpGenerator.AddTab(3, @"if ((dt.Day == 31 && dt.Month == 12 && dt.Year == 99
         return hg.ToString();
     }
 
+    /// <summary>
+    /// Must call Close after return SqlCommand make work
+    /// </summary>
+    /// <param name="nazevTabulky"></param>
+    /// <param name="cs"></param>
+    /// <returns></returns>
     public SqlCommand GetSqlCreateTable(string nazevTabulky, string cs)
     {
         return GetSqlCreateTable( nazevTabulky, false, cs);

@@ -1714,6 +1714,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
     public DataTable SelectDataTable(SqlConnection conn, SqlCommand comm)
     {
+        
         DataTable dt = new DataTable();
         comm.Connection = conn;
         SqlDataAdapter adapter = new SqlDataAdapter(comm);
