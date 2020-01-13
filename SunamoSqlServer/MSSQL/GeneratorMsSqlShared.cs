@@ -2,19 +2,31 @@
 using System;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Linq;
 
-public partial class GeneratorMsSql{ 
-/// <summary>
-    /// Na začátek přidá where pokud obsahuje A1 obsahoval nějaké prvky
+public partial class GeneratorMsSql{
+    /// <summary>
+    /// Its object, not AB, due to automatic renaming
     /// </summary>
     /// <param name="where"></param>
     /// <returns></returns>
-    public static string CombinedWhere(AB[] where)
+    public static string CombinedWhere(params object[] where)
+    {
+        var abc = where.Cast<AB>();
+        return CombinedWhere(new ABC(abc));
+    }
+
+        /// <summary>
+        /// Na začátek přidá where pokud obsahuje A1 obsahoval nějaké prvky
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        public static string CombinedWhere(ABC where)
     {
         int pridavatOd = 0;
         return CombinedWhere(where, ref pridavatOd);
     }
-    public static string CombinedWhereNotEquals(bool continuing, ref int pridavatOd, AB[] whereIsNot)
+    public static string CombinedWhereNotEquals(bool continuing, ref int pridavatOd, ABC whereIsNot)
     {
         if (whereIsNot != null)
         {
@@ -133,7 +145,7 @@ public partial class GeneratorMsSql{
     /// <param name="where"></param>
     /// <param name="pridavatOd"></param>
     /// <returns></returns>
-    public static string CombinedWhere(AB[] where, ref int pridavatOd)
+    public static string CombinedWhere(ABC where, ref int pridavatOd)
     {
         StringBuilder sb = new StringBuilder();
         if (where != null)
@@ -163,34 +175,34 @@ public partial class GeneratorMsSql{
         }
         return sb.ToString();
     }
-/// <summary>
-    /// Snaž se tuto metodu používat co nejméně, protože musí všechny parametry(kolekce) převést metodou ToArray() na pole
-    /// </summary>
-    /// <param name="where"></param>
-    /// <param name="isNotWhere"></param>
-    /// <param name="greaterThanWhere"></param>
-    /// <param name="lowerThanWhere"></param>
-    /// <returns></returns>
-    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
-    {
-        if (where == null)
-        {
-            where = new ABC();
-        }
-        if (isNotWhere == null)
-        {
-            isNotWhere = new ABC();
-        }
-        if (greaterThanWhere == null)
-        {
-            greaterThanWhere = new ABC();
-        }
-        if (lowerThanWhere == null)
-        {
-            lowerThanWhere = new ABC();
-        }
-        return CombinedWhere(where.ToArray(), isNotWhere.ToArray(), greaterThanWhere.ToArray(), lowerThanWhere.ToArray());
-    }
+///// <summary>
+//    /// Snaž se tuto metodu používat co nejméně, protože musí všechny parametry(kolekce) převést metodou ToArray() na pole
+//    /// </summary>
+//    /// <param name="where"></param>
+//    /// <param name="isNotWhere"></param>
+//    /// <param name="greaterThanWhere"></param>
+//    /// <param name="lowerThanWhere"></param>
+//    /// <returns></returns>
+//    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
+//    {
+//        if (where == null)
+//        {
+//            where = new ABC();
+//        }
+//        if (isNotWhere == null)
+//        {
+//            isNotWhere = new ABC();
+//        }
+//        if (greaterThanWhere == null)
+//        {
+//            greaterThanWhere = new ABC();
+//        }
+//        if (lowerThanWhere == null)
+//        {
+//            lowerThanWhere = new ABC();
+//        }
+//        return CombinedWhere(where.ToArray(), isNotWhere.ToArray(), greaterThanWhere.ToArray(), lowerThanWhere.ToArray());
+//    }
 /// <summary>
     /// Jakýkoliv z A1-4 může být null, v takovém případě se pouze toto pole překosčí
     /// Poté se musejí přidat AB.B z A1 a až poté z A2
@@ -198,7 +210,7 @@ public partial class GeneratorMsSql{
     /// <param name="where"></param>
     /// <param name="isNotWhere"></param>
     /// <returns></returns>
-    public static string CombinedWhere(AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere)
+    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
     {
         bool asponNeco = false;
         if (where != null)
@@ -313,7 +325,7 @@ public partial class GeneratorMsSql{
         }
         return "";
     }
-public static string CombinedWhere(string tabulka, bool top1, string nazvySloupcu, AB[] ab)
+public static string CombinedWhere(string tabulka, bool top1, string nazvySloupcu, ABC ab)
     {
         string t1 = "";
         if (top1)
@@ -439,12 +451,17 @@ public static string GetValuesDirect(int i2, int to)
         return sb.ToString().TrimEnd(AllChars.comma) + AllStrings.rb;
     }
 
-/// <summary>
-    /// Vrátí i s parametry, nezapomeň tyto parametry pak přidat do příkazu
-    /// </summary>
-    /// <param name="sets"></param>
-    /// <returns></returns>
     public static string CombinedSet(params AB[] sets)
+    {
+        return CombinedSet(new ABC(sets));
+    }
+
+/// <summary>
+/// Vrátí i s parametry, nezapomeň tyto parametry pak přidat do příkazu
+/// </summary>
+/// <param name="sets"></param>
+/// <returns></returns>
+    public static string CombinedSet( ABC sets)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" SET ");
@@ -467,7 +484,7 @@ public static string GetValuesDirect(int i2, int to)
         return sb.ToString();
     }
 
-public static string CombinedWhereOR(AB[] where, ref int p)
+public static string CombinedWhereOR(ABC where, ref int p)
     {
         StringBuilder sb = new StringBuilder();
         int pCopy = p;
@@ -505,7 +522,7 @@ public static string CombinedWhereOR(AB[] where, ref int p)
         }
         return sb.ToString();
     }
-public static string CombinedWhereOR(AB[] where)
+public static string CombinedWhereOR(ABC where)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" " + "WHERE" + " ");

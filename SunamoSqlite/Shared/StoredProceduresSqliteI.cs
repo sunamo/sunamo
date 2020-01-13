@@ -201,7 +201,7 @@ public class StoredProceduresSqliteI : IStoredProceduresI
         /// <returns></returns>
         public bool ExistsCombination(string p, params AB[] aB)
         {
-            string sql = SH.Format2("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorSqLite.CombinedWhere(aB));
+            string sql = SH.Format2("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorSqLite.CombinedWhere(new ABC( aB)));
             DataTable dt = GetDataTable(sql);
             return dt.Rows.Count != 0;
         }
@@ -261,7 +261,7 @@ public class StoredProceduresSqliteI : IStoredProceduresI
             return comm.ExecuteNonQuery();
         }
 
-        public double UpdateRealValue(string table, string sloupecID, int id, string sloupecKUpdate, double pridej)
+        public double UpdateRealValue(string table, string sloupecKUpdate, double pridej, string sloupecID, int id)
         {
             double d = double.Parse(StoredProceduresSqliteI.ci.GetElementDataTable(table, sloupecID, id, sloupecKUpdate));
             double n = pridej;

@@ -17,7 +17,33 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
+
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
+
+    public static List<string> SplitByLetterCount(string s, int c)
+    {
+        int sl = s.Length;
+        int e = sl / c;
+        int remain = sl % c; 
+        if (remain != 0)
+        {
+            ThrowExceptions.Custom(s_type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
+        }
+
+        List<string> ls = new List<string>(c);
+        int from = 0;
+        while(true)
+        {
+            ls.Add(s.Substring(from, c));
+
+                from += c;
+            if (from == sl)
+            {
+                break;
+            }
+        }
+        return ls;
+    }
 
     public static bool ContainsBracket(string t, bool mustBeLeftAndRight = false)
     {
@@ -2960,6 +2986,16 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
             {
                 var c = item.ToString();
                 if (!IsContained(input, ref c))
+                {
+                    return false;
+                }
+            }
+        }
+        else if(ccm == ContainsCompareMethod.WholeInput)
+        {
+            foreach (var item in allWords)
+            {
+                if (!input.Contains(item))
                 {
                     return false;
                 }

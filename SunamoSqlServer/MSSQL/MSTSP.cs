@@ -502,7 +502,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="sloupecKUpdate"></param>
     /// <param name="pridej"></param>
     /// <returns></returns>
-    public int UpdateSumIntValue(SqlTransaction tran, string table, string sloupecID, int id, string sloupecKUpdate, int pridej)
+    public int UpdateSumIntValue(SqlTransaction tran, string table, string sloupecKUpdate, int pridej, string sloupecID, int id)
     {
         int d = int.Parse(SelectCellDataTableStringOneRow(tran, table, sloupecID, id, sloupecKUpdate).ToString());
         int n = pridej;
@@ -517,7 +517,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <summary>
     /// 
     /// </summary>
-    public int UpdateAppendStringValue(SqlTransaction tran, string tableName, string sloupecID, object hodnotaID, string sloupecAppend, string hodnotaAppend)
+    public int UpdateAppendStringValue(SqlTransaction tran, string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
@@ -534,7 +534,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="sloupecAppend"></param>
     /// <param name="hodnotaAppend"></param>
     /// <returns></returns>
-    public int UpdateAppendStringValueCheckExists(SqlTransaction tran, string tableName, string sloupecID, object hodnotaID, string sloupecAppend, string hodnotaAppend)
+    public int UpdateAppendStringValueCheckExists(SqlTransaction tran, string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
     {
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
@@ -878,7 +878,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
     }
 
-    public void UpdateValuesCombinationCombinedWhere(SqlTransaction tran, string TableName, AB[] sets, AB[] where)
+    public void UpdateValuesCombinationCombinedWhere(SqlTransaction tran, string TableName, ABC sets, ABC where)
     {
         string setString = GeneratorMsSql.CombinedSet(sets);
         string whereString = GeneratorMsSql.CombinedWhere(where);
@@ -932,7 +932,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="sloupecKUpdate"></param>
     /// <param name="pridej"></param>
     /// <returns></returns>
-    public float UpdateRealValue(SqlTransaction tran, string table, string sloupecID, int id, string sloupecKUpdate, float pridej)
+    public float UpdateRealValue(SqlTransaction tran, string table, string sloupecKUpdate, float pridej, string sloupecID, int id)
     {
         float d = float.Parse(SelectCellDataTableStringOneRow(tran, table, sloupecID, id, sloupecKUpdate).ToString());
         if (d != 0)
@@ -957,7 +957,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return int.Parse(dt.Rows[0].ItemArray[0].ToString());
     }
 
-    public object SelectCellDataTableObjectOneRow(SqlTransaction tran, string table, string idColumnName, object idColumnValue, string vracenySloupec)
+    public object SelectCellDataTableObjectOneRow(SqlTransaction tran, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
         SqlCommand comm = new SqlCommand(sql);

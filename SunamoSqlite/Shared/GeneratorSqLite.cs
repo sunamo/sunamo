@@ -83,7 +83,7 @@ using System.Text;
             return sb.ToString();
         }
 
-        public static object CombinedWhere(AB[] aB)
+        public static object CombinedWhere(ABC aB)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(" " + "WHERE" + " ");

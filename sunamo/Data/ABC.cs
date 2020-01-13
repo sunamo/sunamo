@@ -9,6 +9,19 @@ public class ABC : List<AB>//, IEnumerable<AB>
     {
     }
 
+    public int Length
+    {
+        get
+        {
+            return Count;
+        }
+    }
+
+    public ABC(int capacity) : base(capacity)
+    {
+
+    }
+
     public ABC(params object[] setsNameValue)
     {
         // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness

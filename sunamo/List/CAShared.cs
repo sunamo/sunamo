@@ -402,6 +402,15 @@ public static partial class CA
         return result;
     }
 
+    public static T IndexOrNull<T>(T[] where, int v)
+    {
+        if (where.Length > v)
+        {
+            return where[v];
+        }
+        return default(T);
+    }
+
     /// <summary>
     /// element can be null, then will be added as default(T)
     /// Must be private - to use only public in CA

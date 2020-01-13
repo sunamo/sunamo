@@ -49,7 +49,7 @@ public class MSTableRowIDName //: MSBaseRowTable//, ITableRow<int>
 
     public void SelectInTable()
     {
-        object[] o = MSStoredProceduresI.ci.SelectRowReader(TableName, "ID", ID, "ID,Name");
+        object[] o = MSStoredProceduresI.ci.SelectRowReader(TableName, "ID,Name", "ID", ID);
         if (o != null)
         {
             ID = MSTableRowParse.GetInt(o, 0);
@@ -75,4 +75,3 @@ public class MSTableRowIDName //: MSBaseRowTable//, ITableRow<int>
     }
 
 }
-

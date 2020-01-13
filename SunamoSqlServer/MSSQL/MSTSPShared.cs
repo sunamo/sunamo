@@ -25,7 +25,7 @@ public partial class MSTSP
     /// <summary>
     /// Conn nastaví automaticky
     /// </summary>
-    public DataTable SelectDataTableSelective(SqlTransaction tran, string TableName, AB[] where, string nazvySloupcu)
+    public DataTable SelectDataTableSelective(SqlTransaction tran, string TableName, ABC where, string nazvySloupcu)
     {
         SqlCommand comm = new SqlCommand(SH.Format2("SELECT {0} FROM {1} {2}", nazvySloupcu, TableName, GeneratorMsSql.CombinedWhere(where)));
         AddCommandParameterFromAbc(comm, where);
@@ -107,12 +107,17 @@ public partial class MSTSP
         //return SelectDataTable(SH.Format2(sql, _params));
     }
 
+    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
+    {
+        AddCommandParameterFromAbc(comm, new ABC(where));
+    }
+
     /// <summary>
     /// Počítá od nuly
     /// </summary>
     /// <param name = "comm"></param>
     /// <param name = "where"></param>
-    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
+    private static void AddCommandParameterFromAbc(SqlCommand comm, ABC where)
     {
         for (int i = 0; i < where.Length; i++)
         {

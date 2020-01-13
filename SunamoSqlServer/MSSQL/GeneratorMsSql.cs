@@ -23,7 +23,7 @@ public partial class GeneratorMsSql
     /// <param name="lowerThanWhere"></param>
     /// <param name="orderBy"></param>
     /// <returns></returns>
-    public static SqlCommand CombinedWhereCommand(string commandBeforeWhere, AB[] where, AB[] isNotWhere, AB[] greaterThanWhere, AB[] lowerThanWhere, string orderBy)
+    public static SqlCommand CombinedWhereCommand(string commandBeforeWhere, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere, string orderBy)
     {
         SqlCommand comm = new SqlCommand();
         StringBuilder sb = new StringBuilder();

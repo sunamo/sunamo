@@ -429,7 +429,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
     /// <summary>
     /// Počet v A1 a A2 musí být stejný. 
-    /// Mohl bych udělat tu samou metodu s ABC/AB[] ale tam je jako druhý parametr object a to se mi nehodí do krámu
+    /// Mohl bych udělat tu samou metodu s ABC/ABC ale tam je jako druhý parametr object a to se mi nehodí do krámu
     /// </summary>
     /// <param name="anchors"></param>
     /// <param name="to"></param>

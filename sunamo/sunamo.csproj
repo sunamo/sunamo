@@ -669,6 +669,7 @@
   <ItemGroup>
     <Content Include="git.txt" />
     <Content Include="HTMLPage1.html" />
+    <Content Include="plain.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entity\ManageArtistDashTitleShared.cs~RF20d52e9.TMP" />
