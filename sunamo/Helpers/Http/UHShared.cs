@@ -231,4 +231,16 @@ public static string GetProtocolString(Uri uri)
     {
         return uri.Query;
     }
+
+public static Uri CreateUri(string s)
+    {
+        try
+        {
+            return new Uri(s);
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
 }

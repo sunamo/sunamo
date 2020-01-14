@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Parsing\ListParser.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />

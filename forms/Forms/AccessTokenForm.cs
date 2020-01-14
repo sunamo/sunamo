@@ -21,7 +21,7 @@ namespace F.WF
 
         void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            PH.OpenInBrowser(cb.VratNastavene(), uri);
+            PHWin.OpenInBrowser(cb.VratNastavene(), uri);
 
         }
 

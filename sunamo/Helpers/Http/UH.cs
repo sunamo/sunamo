@@ -8,17 +8,6 @@ using System.Linq;
 
 public partial class UH
 {
-    public static Uri CreateUri(string s)
-    {
-        try
-        {
-            return new Uri(s);
-        }
-        catch (Exception ex)
-        {
-            return null;
-        }
-    }
 
     public static string HostUriToPascalConvention(string s)
     {
