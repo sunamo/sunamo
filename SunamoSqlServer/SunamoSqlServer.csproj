@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\MSTableRowParse.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlDbType2.cs" />
     <Compile Include="Enums\InsertPosition.cs" />
     <Compile Include="Enums\UpdatePosition.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
+    <Compile Include="MSSQL\MSTableRowParse.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
@@ -73,7 +75,6 @@
     <Compile Include="MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
     <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
     <Compile Include="MSSQL\MSTableRowIDName.cs" />
-    <Compile Include="MSSQL\MSTableRowParse.cs" />
     <Compile Include="MSSQL\MSTSP.cs" />
     <Compile Include="MSSQL\MSTSPShared.cs" />
     <Compile Include="MSSQL\Rows\ChangedRows.cs" />

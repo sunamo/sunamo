@@ -61,6 +61,8 @@ public static partial class CA
         return result;
     }
 
+
+
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
 

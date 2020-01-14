@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Parsing\ListParser.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
@@ -112,7 +113,9 @@
     <Compile Include="Data\CryptData.cs" />
     <Compile Include="Enums\ContainsCompareMethod.cs" />
     <Compile Include="Interfaces\IInstance.cs" />
+    <Compile Include="Parsing\ListParser.cs" />
     <Compile Include="Optimalization\StopwatchHelper.cs" />
+    <Compile Include="Parsing\StaticParse.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

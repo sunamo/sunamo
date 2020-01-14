@@ -46,51 +46,13 @@ public static void Uri(string v)
         }
     }
 
-private static string NormalizeUri(string v)
+public static string NormalizeUri(string v)
     {
         // Without this cant search for google apps
         v = SH.ReplaceAll(v, "%22", AllStrings.qm);
         return v;
     }
 
-public static void OpenInBrowser(Browsers prohlizec, string s)
-    {
-        string b = "";
-        switch (prohlizec)
-        {
-            case Browsers.Chrome:
-                b = @"c:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
-                break;
-            case Browsers.Firefox:
-                b = @"c:\Program Files (x86)\Mozilla Firefox\firefox.exe";
-                break;
-            case Browsers.InternetExplorer:
-                b = @"c:\Program Files (x86)\Internet Explorer\iexplore.exe";
-                break;
-            case Browsers.Opera:
-                // Opera has version also when is installing to PF, it cant be changed
-                b = @"C:\Program Files\Opera\65.0.3467.78\opera.exe";
-                break;
-            case Browsers.Edge:
-                b = @"c:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe";
-                break;
-            case Browsers.Vivaldi:
-                b = @"c:\Users\n\AppData\Local\Vivaldi\Application\vivaldi.exe";
-                break;
-            case Browsers.ChromeCanary:
-                b = @"c:\Users\n\AppData\Local\Google\Chrome SxS\Application\chrome.exe";
-                break;
-            default:
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
-                break;
-        }
-
-        Process.Start(new ProcessStartInfo(b, NormalizeUri(s)));
-    }
-public static void OpenInBrowser(string uri)
-    {
-        OpenInBrowser(Browsers.Chrome, uri);
-    }
 
     public static int Terminate(string name)
     {

@@ -1,24 +1,35 @@
 ﻿using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-public class MSBaseRowTable
+
+
+
+public class ListParser
 {
-    protected object[] o = null;
+    protected string[] o = null;
 
     #region Novejší verze s predáváním pouze indexu
     protected string GetString(int p)
     {
-        return MSTableRowParse.GetString(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetString(o, p);
+        }
+        return string.Empty;
     }
 
     /// <summary>
-    /// Když bude DBNull, G -1
+    /// Když bude DBNull, G 0
     /// </summary>
     /// <param name="dex"></param>
     /// <returns></returns>
     protected int GetInt(int p)
     {
-        return MSTableRowParse.GetInt(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetInt(o, p);
+        }
+        return  0;
     }
 
     /// <summary>
@@ -28,7 +39,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected float GetFloat(int p)
     {
-        return MSTableRowParse.GetFloat(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetFloat(o, p);
+        }
+        return -1;
     }
 
     /// <summary>
@@ -38,7 +53,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected long GetLong(int p)
     {
-        return MSTableRowParse.GetLong(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetLong(o, p);
+        }
+        return -1;
     }
 
 
@@ -50,12 +69,20 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected bool GetBoolMS(int p)
     {
-        return MSTableRowParse.GetBoolMS(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetBoolMS(o, p);
+        }
+        return false;
     }
 
     protected bool GetBool(int p)
     {
-        return MSTableRowParse.GetBool(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetBool(o, p);
+        }
+        return false;
     }
 
     /// <summary>
@@ -65,7 +92,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected string GetBoolS(int p)
     {
-        return MSTableRowParse.GetBoolS(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetBoolS(o, p);
+        }
+        return false.ToString();
     }
 
     /// <summary>
@@ -75,7 +106,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected System.DateTime GetDateTime(int p)
     {
-        return MSTableRowParse.GetDateTime(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetDateTime(o, p);
+        }
+        return DateTime.MaxValue;
     }
 
     /// <summary>
@@ -85,12 +120,20 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected string GetDateTimeS(int p)
     {
-        return MSTableRowParse.GetDateTimeS(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetDateTimeS(o, p);
+        }
+        return DateTime.MaxValue.ToString();
     }
 
-    protected byte[] GetImage(int dex)
+    protected byte[] GetImage(int p)
     {
-        return MSTableRowParse.GetImage(o, dex);
+        if (o.Length > p)
+        {
+            return StaticParse.GetImage(o, p);
+        }
+        return new byte[0];
     }
 
     /// <summary>
@@ -100,7 +143,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected decimal GetDecimal(int p)
     {
-        return MSTableRowParse.GetDecimal(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetDecimal(o, p);
+        }
+        return -1;
     }
 
     /// <summary>
@@ -110,7 +157,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected double GetDouble(int p)
     {
-        return MSTableRowParse.GetDouble(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetDouble(o, p);
+        }
+        return -1;
     }
 
     /// <summary>
@@ -120,7 +171,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected short GetShort(int p)
     {
-        return MSTableRowParse.GetShort(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetShort(o, p);
+        }
+        return -1;
     }
 
     /// <summary>
@@ -130,7 +185,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected byte GetByte(int p)
     {
-        return MSTableRowParse.GetByte(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetByte(o, p);
+        }
+        return 0;
     }
 
     /// <summary>
@@ -140,7 +199,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected object GetObject(int p)
     {
-        return o[p];
+        if (o.Length > p)
+        {
+            return o[p];
+        }return null;
+        
     }
 
     /// <summary>
@@ -150,7 +213,11 @@ public class MSBaseRowTable
     /// <returns></returns>
     protected Guid GetGuid(int p)
     {
-        return MSTableRowParse.GetGuid(o, p);
+        if (o.Length > p)
+        {
+            return StaticParse.GetGuid(o, p);
+        }
+        return Guid.Empty;
     }
     #endregion
 }

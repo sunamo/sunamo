@@ -9,6 +9,7 @@ public static partial class EnumHelper
 {
     /// <summary>
     /// GET WITHOUT NOPE (parse string, not numeric), USE METHOD WITH MORE ARGS
+    /// Can be use only for int enums
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>

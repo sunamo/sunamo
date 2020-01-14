@@ -1354,11 +1354,6 @@ public partial class FS
         {
             return "*.*";
         }
-
-        if (ext2 == "Tables.cs")
-        {
-
-        }
       
         var ext = FS.GetExtension(ext2);
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file

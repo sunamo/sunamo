@@ -73,6 +73,7 @@
     <Compile Include="..\..\sunamo\win\PInvoke\W32.cs" />
     <Compile Include="ClipboardAsync.cs" />
     <Compile Include="ClipboardMonitor.cs" />
+    <Compile Include="Enums\UserFoldersWin.cs" />
     <Compile Include="GitHelper.cs" />
     <Compile Include="Helpers\ClipboardHelperWin.cs" />
     <Compile Include="Helpers\DW.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Helpers\Powershell\PowershellHelper.cs" />
     <Compile Include="Helpers\Powershell\PowershellRunner.cs" />
     <Compile Include="JunctionPoint.cs" />
+    <Compile Include="PHWin.cs" />
     <Compile Include="PInvoke\IconExtractor.cs" />
     <Compile Include="PInvoke\KnownFoldersGuid.cs" />
     <Compile Include="PInvoke\SHFILEINFO.cs" />

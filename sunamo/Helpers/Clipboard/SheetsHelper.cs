@@ -67,7 +67,11 @@ public class SheetsHelper
             input = ClipboardHelper.GetText();
         }
 
-        var vr = SH.Split(input, AllStrings.tab);
+        var bm = SH.TabOrSpaceNextTo(input);
+        var vr = SH.SplitByIndexes(input, bm);
+
+        vr.Reverse();
+        //var vr = SH.Split(input, AllStrings.tab);
         return vr;
     }
 

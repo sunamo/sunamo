@@ -48,12 +48,7 @@ public partial class PH
         StartAllUri(carModels);
     }
 
-    public static void SaveAndOpenInBrowser(Browsers prohlizec, string htmlKod)
-    {
-        string s = Path.GetTempFileName() + ".html";
-        File.WriteAllText(s, htmlKod);
-        OpenInBrowser(prohlizec, s);
-    }
+    
 
     
 

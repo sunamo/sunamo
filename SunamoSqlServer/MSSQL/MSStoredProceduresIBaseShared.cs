@@ -966,7 +966,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="nazvySloupcu"></param>
     /// <param name="sloupce"></param>
     /// <returns></returns>
-    public long Insert2(string tabulka, Type typSloupecID, string sloupecID, params object[] sloupce)
+    public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
 
@@ -1322,7 +1322,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
-    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot, int dnuPozpatku)
+    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, int dnuPozpatku, ABC whereIs, ABC whereIsNot)
     {
         var dateTime = DateTime.Today.AddDays(dnuPozpatku * -1);
 
@@ -2592,10 +2592,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SelectRowReader(comm);
     }
 
+    public bool SelectExistsCombination(string p, params AB[] aB)
+    {
+        return SelectExistsCombination(p, new ABC(aB));
+    }
+
     /// <summary>
     /// 
     /// </summary>
-    public bool SelectExistsCombination(string p, params AB[] aB)
+    public bool SelectExistsCombination(string p,  ABC aB)
     {
         string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         ABC abc = new ABC(aB);
@@ -3328,7 +3333,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public byte UpdateMinusByteValue(string table, string sloupecKUpdate, byte pridej, string sloupecID, object hodnotaID)
     {
-        byte d = SelectCellDataTableByteOneRow(table, sloupecID, hodnotaID, sloupecKUpdate);
+        byte d = SelectCellDataTableByteOneRow(table, sloupecKUpdate, sloupecID, hodnotaID);
         if (d == 255)
         {
             return d;

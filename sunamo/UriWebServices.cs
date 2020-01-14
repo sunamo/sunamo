@@ -12,12 +12,32 @@ using System.Web;
 /// </summary>
 public partial class UriWebServices
 {
+    static int opened = 0;
+
     public static class RepairMobile
     {
         public static void SearchInAll(string what)
         {
+            opened++;
             //UriWebServices.SearchInAll(RepairMobileValues.allRepairKitShops, what);
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
         }
+    }
+
+    public static class Business
+    {
+        public static readonly string wwwFirmoCz = "www.firmo.cz";
+        public static readonly string rejstrikPenizeCz = "rejstrik.penize.cz";
+        public static readonly string wwwFirmyCz = "www.firmy.cz";
+        public static readonly string rejstrikFiremKurzyCz = "rejstrik-firem.kurzy.cz";
+        public static readonly string wwwPodnikatelCz = "www.podnikatel.cz";
+        public static readonly string rejstrikyFinanceCz = "rejstriky.finance.cz";
+
+
+        public static List<string> All = CA.ToListString(wwwFirmoCz, rejstrikPenizeCz, wwwFirmyCz, rejstrikFiremKurzyCz, wwwPodnikatelCz, rejstrikyFinanceCz);
     }
 
     public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
@@ -83,15 +103,27 @@ public partial class UriWebServices
     {
         foreach (var item in clipboardL)
         {
+            opened++;
             PH.Start(FromChromeReplacement(lyricsScz, item));
+
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
         }
     }
 
     public static void SearchAll(Func<string, string> topRecepty, List<string> clipboardL)
     {
+
         foreach (var item in clipboardL)
         {
+            opened++;
             PH.Start(topRecepty.Invoke(item));
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
         }
     }
 
@@ -109,13 +141,13 @@ public partial class UriWebServices
         #endregion
 
         public static List<string> All  = CA.ToListString(wwwMusixmatchCom, geniusCom, wwwMetrolyricsCom, wwwLyricsCom, azlyricsCom);
-
     }
 
     public static class SunamoCz
     {
         public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
     }
+
     public static class SexShops
     {
         public const string wwwRuzovyslonCz = "https://www.ruzovyslon.cz/hledani?_submit=Hledat&s=%s&do=searchForm-submit";
@@ -132,7 +164,6 @@ public partial class UriWebServices
 
         public static List<string> All = CA.ToListString(wwwRuzovyslonCz, wwwEroticcityCz, wwwSexshopikCz, wwwSexShopCz, intimmShopCz, wwwEroticstoreCz, wwwNejlevnejsierotickepomuckyCz, wwwWillistoreCz, wwwVibratoryOnlineCz, wwwLuxusnipradloCz, eKondomyCz);
     }
-
     public static class SpiceMarks
     {
         private static List<string> s_list = null;
@@ -150,7 +181,6 @@ public partial class UriWebServices
             }
         }
     }
-
     public static class CashBack
     {
         public const string vratnepenize = "https://www.vratnepenize.cz/zbozi/hledej?g=%s";
@@ -474,12 +504,22 @@ Template for which I will find, have to be in derivates the same:
 
     public const string chromeSearchstringReplacement = "%s";
 
+    /// <summary>
+    /// A1 is chrome replacement
+    /// </summary>
+    /// <param name="array"></param>
+    /// <param name="what"></param>
     public static void SearchInAll(IEnumerable array, string what)
     {
         foreach (var item in array)
         {
+            opened++;
             string uri = UriWebServices.FromChromeReplacement(item.ToString(), what);
             Process.Start(uri);
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
         }
     }
 
@@ -512,9 +552,15 @@ Template for which I will find, have to be in derivates the same:
     {
         foreach (var item in allRepairKitShops)
         {
+            if (opened % 10 == 0)
+            {
+                Debugger.Break();
+            }
             Process.Start(GoogleSearchSite(item, v));
+            opened++;
         }
     }
+    //http://www.bdsluzby.cz/stavebni-cinnost/materialy.htm
 
     public static string GoogleMaps(string coordsOrAddress, string center, string zoom)
     {
@@ -544,8 +590,20 @@ Template for which I will find, have to be in derivates the same:
 
     public static string GoogleSearchSite(string site, string v)
     {
+        var uri = UH.CreateUri(site);
+
+        var host = string.Empty;
+        if (uri != null)
+        {
+            host = uri.Host;
+        }
+        else
+        {
+            host = site.ToString();
+        }
+
         //https://www.google.cz/search?q=site%3Asunamo.cz+s
-        return "https://www.google.cz/search?q=site%3A" + site + "+" + UrlEncode(v);
+        return "https://www.google.cz/search?q=site%3A" + host + "+" + UrlEncode(v);
     }
 
     public static string FromChromeReplacement(string uri, string term)

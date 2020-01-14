@@ -73,6 +73,59 @@ public static partial class SH
         }
     }
 
+    internal static List<int> TabOrSpaceNextTo(string input)
+    {
+        var tabs = SH.ReturnOccurencesOfString(input, AllStrings.tab);
+        for (int i = 0; i < tabs.Count-1; i++)
+        {
+            var dx = tabs[i] + 1;
+            if (input[i] == AllChars.space)
+            {
+                tabs.Add(dx);
+            }
+        }
+
+        for (int i = 1; i < tabs.Count; i++)
+        {
+            var dx = tabs[i] - 1;
+            if (input[i] == AllChars.space)
+            {
+                tabs.Add(dx);
+            }
+        }
+        return tabs;
+    }
+
+    internal static List<string> SplitByIndexes(string input, List<int> bm)
+    {
+        List<string> d = new List<string>(bm.Count +1);
+        bm.Sort();
+        string before, after;
+        before = input;
+
+        for (int i = bm.Count - 1; i >= 0; i--)
+        {
+            SH.GetPartsByLocation(out before, out after, before, bm[i]);
+            d.Leading(after);
+        }
+
+        SH.GetPartsByLocation(out before, out after, before, bm[0]);
+        d.Leading(before);
+        d.Reverse();
+        return d;
+    }
+
+    internal static List<int> IndexesOfChars(string input, List<char> whiteSpacesChars)
+    {
+        var dx = new List<int>();
+        foreach (var item in whiteSpacesChars)
+        {
+            dx.AddRange(SH.ReturnOccurencesOfString(input, item.ToString()));
+        }
+        dx.Sort();
+        return dx;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -131,6 +184,12 @@ public static partial class SH
         return text;
     }
 
+    /// <summary>
+    /// Get text after cz#cd => #cd
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="after"></param>
+    /// <returns></returns>
     public static string TextAfter(string item, string after)
     {
         var dex = item.IndexOf(after);
@@ -1601,6 +1660,11 @@ public static partial class SH
         return nazevTabulky;
     }
 
+    /// <summary>
+    /// Not auto remove empty
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static List<string> GetLines(string p)
     {
         List<string> vr = new List<string>();

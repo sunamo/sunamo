@@ -233,6 +233,15 @@ public partial class DictionaryHelper
         }
     }
 
+    public static string GetOrKey<T>(Dictionary<T, string> a, T item2)
+    {
+        if (a.ContainsKey(item2))
+        {
+            return a[item2];
+        }
+        return item2.ToString();
+    }
+
     public static List<Dictionary<Key, Value>> DivideAfter<Key, Value>(Dictionary<Key, Value> dict, int v)
     {
         List<Dictionary<Key, Value>> retur = new List<Dictionary<Key, Value>>();

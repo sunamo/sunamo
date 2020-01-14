@@ -19,6 +19,18 @@ public static class ListExtensions
         return (List<T>)list;
     }
 
+    /// <summary>
+    /// Js() With Leading should be always the last in code
+    /// Js() With Add should be first in code
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    public static List<string> Leading(this List<string> list, string item)
+    {
+        list.Insert(0, item);
+        return list;
+    }
     public static List<T> Insert<T>(this IList<T> list, int dx, T item)
     {
         list.Insert(dx, item);

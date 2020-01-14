@@ -152,7 +152,7 @@ public partial class DTHelperCs
         }
     }
 
-    public static IEnumerable ToShortDate(DateTime d)
+    public static string ToShortDate(DateTime d)
     {
         return SH.Join(AllStrings.dot, d.Day, d.Month, d.Year);
     }
