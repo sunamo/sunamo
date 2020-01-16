@@ -1,4 +1,6 @@
 ﻿
+using IWshRuntimeLibrary;
+
 public partial class WindowsOSHelper
 {
     public static void CreateLnk(string sourceDirectory, string targetFile)
@@ -16,6 +18,7 @@ public partial class WindowsOSHelper
             windowsApplicationShortcut.Save();
         }
     }
+}
 
 //public static void CreateLnk2()
 //{

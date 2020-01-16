@@ -129,6 +129,14 @@ namespace desktop.Controls.Collections
             
         }
 
+        CheckBox ch(object o)
+        {
+            var casted = (CheckBoxListUC)o;
+            var chb = (CheckBox)casted.Tag;
+            return chb;
+        }
+
+
         private void Save(object sender, RoutedEventArgs e)
         {
             TF.SaveLines(chblAutoYes.AllContentString(), autoYes);
@@ -137,13 +145,7 @@ namespace desktop.Controls.Collections
             TF.SaveLines(chblAutoNo.AllContentString(), autoNo);
         }
 
-        CheckBox ch(object o)
-        {
-            var casted = (CheckBoxListUC)o;
-            var chb = (CheckBox)casted.Tag;
-            return chb;
-        }
-
+       
         public List<string> ExcludeToProcess()
         {
             List<string> resultNo = new List<string>(chblManuallyNo.Count + chblManuallyYes.Count);

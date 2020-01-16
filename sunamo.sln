@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoSqlServer", "SunamoSq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoFubuCsProjFile", "SunamoFubuCsProjFile\SunamoFubuCsProjFile.csproj", "{8F1FFA16-8075-489E-9DB4-CDA003BD536E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCsv", "SunamoCsv\SunamoCsv.csproj", "{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -463,6 +465,18 @@ Global
 		{8F1FFA16-8075-489E-9DB4-CDA003BD536E}.Release|x64.Build.0 = Release|Any CPU
 		{8F1FFA16-8075-489E-9DB4-CDA003BD536E}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F1FFA16-8075-489E-9DB4-CDA003BD536E}.Release|x86.Build.0 = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|x64.Build.0 = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|x64.ActiveCfg = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|x64.Build.0 = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{EBE9EFE9-2828-43F0-9303-3F3AA4FCCDEF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

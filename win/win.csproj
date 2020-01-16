@@ -64,6 +64,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\win\Helpers\DWShared.cs" />
     <Compile Include="..\..\sunamo\win\WindowsOSHelperShared.cs" />
     <Compile Include="..\..\sunamo\win\Enums\UserFoldersWin.cs" />
     <Compile Include="..\..\sunamo\win\PHWin.cs" />

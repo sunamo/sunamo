@@ -31,12 +31,12 @@ using System.Text;
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public List<DateTime?> DateTime(CsvFile file, int v)
+    public static List<DateTime?> DateTime(CsvFile file, int v)
     {
         return file.DateTimes(v);
     }
 
-    public List<string> Strings(CsvFile file, int v)
+    public static List<string> Strings(CsvFile file, int v)
     {
         return file.Strings(v);
     }

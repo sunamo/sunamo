@@ -1986,4 +1986,19 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
         file = FS.GetFileNameWithoutExtension(fn);
         ext = Path.GetExtension(fn);
     }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    public static string RepairFilter(string filter)
+    {
+        if (!filter.Contains(AllStrings.pipe))
+        {
+            filter = filter.TrimStart(AllChars.asterisk);
+            return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
+        }
+        return filter;
+    }
 }

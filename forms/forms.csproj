@@ -216,6 +216,10 @@
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\win\win.csproj">
+      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
+      <Name>win</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Essential\" />

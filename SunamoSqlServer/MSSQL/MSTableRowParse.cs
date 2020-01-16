@@ -112,9 +112,6 @@ public static class MSTableRowParse
     {
         return short.Parse(o[p].ToString());
     }
-
-
-
     public static byte GetByte(object[] o, int p)
     {
         return byte.Parse(o[p].ToString());

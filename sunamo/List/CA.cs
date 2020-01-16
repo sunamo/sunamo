@@ -642,18 +642,6 @@ public static partial class CA
         return vr;
     }
 
-    public static bool HasAtLeastOneElementInArray(string[] d)
-    {
-        if (d != null)
-        {
-            if (d.Length != 0)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /// <summary>
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>

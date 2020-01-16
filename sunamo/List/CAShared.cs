@@ -1622,4 +1622,16 @@ public static void RemovePadding<T>(List<T> decrypted, T v)
 
         
     }
+
+public static bool HasAtLeastOneElementInArray(string[] d)
+    {
+        if (d != null)
+        {
+            if (d.Length != 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

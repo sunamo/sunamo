@@ -1124,21 +1124,6 @@ public partial class FS
         return t;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="filter"></param>
-    /// <returns></returns>
-    public static string RepairFilter(string filter)
-    {
-        if (!filter.Contains(AllStrings.pipe))
-        {
-            filter = filter.TrimStart(AllChars.asterisk);
-            return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
-        }
-        return filter;
-    }
-
 
 
     /// <summary>

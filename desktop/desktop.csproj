@@ -154,6 +154,9 @@
     <Compile Include="Controls\Collections\CheckBoxListUC.xaml.cs">
       <DependentUpon>CheckBoxListUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Collections\Compare3InCheckBoxListUC.xaml.cs">
+      <DependentUpon>Compare3InCheckBoxListUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\CompareInCheckBoxListUC.xaml.cs">
       <DependentUpon>CompareInCheckBoxListUC.xaml</DependentUpon>
     </Compile>
@@ -485,6 +488,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Collections\CheckBoxListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Collections\Compare3InCheckBoxListUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
