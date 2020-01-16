@@ -334,7 +334,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 ab[dex++] = lowerThanWhere[i];
             }
         }
-        AddCommandParameteresArrays(comm, i2, ab);
+        AddCommandParameterFromAbc(comm, ab, i2);
     }
 
     private static void AddCommandParameteresArrays(SqlCommand comm, int i, params ABC[] where)

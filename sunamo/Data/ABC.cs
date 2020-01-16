@@ -19,16 +19,49 @@ public class ABC : List<AB>//, IEnumerable<AB>
 
     public ABC(int capacity) : base(capacity)
     {
-
+        for (int i = 0; i < capacity; i++)
+        {
+            this.Add(null);
+        }
     }
 
     public ABC(params object[] setsNameValue)
     {
-        // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
-        //var setsNameValue = CA.TwoDimensionParamsIntoOne(setsNameValue2);
-        for (int i = 0; i < setsNameValue.Length; i++)
+        if (setsNameValue.Length == 0)
         {
-            this.Add(AB.Get(setsNameValue[i].ToString(), setsNameValue[++i]));
+            return;
+        }
+
+        var o = setsNameValue[0];
+        var t = o.GetType();
+        Type t2 = t;
+        if (o is IEnumerable)
+        {
+            var s = o as IEnumerable;
+            var o2 = s.FirstOrNull();
+            t2 = o2.GetType();
+        }
+
+        //var t2 = setsNameValue[0][0].GetType();
+        if (t == typeof(AB) || t2 == typeof(AB))
+        {
+            //var abc = null;
+            //if (true)
+            //{
+
+            //}
+            var abc = (ABC)o;
+
+            this.AddRange(abc);
+        }
+        else
+        {
+            // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
+            //var setsNameValue = CA.TwoDimensionParamsIntoOne(setsNameValue2);
+            for (int i = 0; i < setsNameValue.Length; i++)
+            {
+                this.Add(AB.Get(setsNameValue[i].ToString(), setsNameValue[++i]));
+            }
         }
     }
 
