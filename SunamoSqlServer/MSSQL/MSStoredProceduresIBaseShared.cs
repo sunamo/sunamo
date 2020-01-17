@@ -364,11 +364,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //    }
     //}
 
-    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, IEnumerable hodnotyOdNuly)
+    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, params AB[] hodnotyOdNuly)
     {
         foreach (var item in hodnotyOdNuly)
         {
-            AddCommandParameter(comm, pocIndex, item);
+            AddCommandParameter(comm, pocIndex, item.B);
             pocIndex++;
         }
         return pocIndex;
@@ -1936,14 +1936,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="whereIs"></param>
     /// <param name="whereIsNot"></param>
     /// <returns></returns>
-    public DataTable SelectDataTableLimitLastRowsInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, int limit, string sloupecPodleKterehoRadit, ABC whereIs, ABC whereIsNot, params object[] hodnotyOdNuly)
-    {
-        SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " ORDER BY " + sloupecPodleKterehoRadit + " DESC");
-        AddCommandParameteres(comm, 0, hodnotyOdNuly);
-        AddCommandParameteresCombinedArrays(comm, hodnotyOdNuly.Length, whereIs, whereIsNot, null, null);
+    //public DataTable SelectDataTableLimitLastRowsInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, int limit, string sloupecPodleKterehoRadit, ABC whereIs, ABC whereIsNot, params object[] hodnotyOdNuly)
+    //{
+    //    SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " ORDER BY " + sloupecPodleKterehoRadit + " DESC");
+    //    AddCommandParameteres(comm, 0, hodnotyOdNuly);
+    //    AddCommandParameteresCombinedArrays(comm, hodnotyOdNuly.Length, whereIs, whereIsNot, null, null);
 
-        return SelectDataTable(comm);
-    }
+    //    return SelectDataTable(comm);
+    //}
 
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, ABC whereIs, ABC whereIsNot)
     {

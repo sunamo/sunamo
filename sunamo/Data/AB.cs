@@ -2,6 +2,7 @@
 
 public class AB
 {
+    public static Type type = typeof(AB);
     public string A = null;
     public object B = null;
 

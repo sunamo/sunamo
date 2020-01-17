@@ -43,13 +43,35 @@ public class ABC : List<AB>//, IEnumerable<AB>
         }
 
         //var t2 = setsNameValue[0][0].GetType();
-        if (t == typeof(AB) || t2 == typeof(AB))
+        if ( t2 == typeof(AB))
         {
             //var abc = null;
             //if (true)
             //{
 
             //}
+            for (int i = 0; i < setsNameValue.Length; i++)
+            {
+                var snv = setsNameValue[i];
+                t2 = snv.GetType();
+                if (t2 == AB.type)
+                {
+                    this.Add((AB)snv);
+                }
+                else
+                {
+                    var ie = (IEnumerable)snv;
+                    foreach (var item in ie)
+                    {
+                        var ab = (AB)item;
+                        Add(ab);
+                    }
+                }
+                
+            }
+        }
+        else if(t == typeof(ABC))
+        {
             var abc = (ABC)o;
 
             this.AddRange(abc);
