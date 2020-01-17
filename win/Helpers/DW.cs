@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 /// <summary>
 /// Use WindowsForms. Is name just DW due to filename and automatically add to git add
 /// </summary>
@@ -66,10 +69,7 @@ public static partial class DW
         return SelectPathToSaveFileTo(initialDirectory, filter, true);
     }
 
-    /// <summary>
-    /// Default is All Files|*.*
-    /// </summary>
-    public static string filterDefault = "All Files|" + "*" + ".*";
+
     /// <summary>
     /// ...
     /// </summary>
@@ -122,17 +122,7 @@ public static partial class DW
         return SelectOfFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
     }
 
-   
-
-    /// <summary>
-    /// As filter is set filterDefault, multiselect is enabled.
-    /// </summary>
-    /// <param name = "initialFolder"></param>
-    /// <returns></returns>
-    public static string[] SelectOfFiles(string initialFolder)
-    {
-        return SelectOfFiles(filterDefault, initialFolder, true);
-    }
+  
 
     /// <summary>
     /// Multiselect is enabled.

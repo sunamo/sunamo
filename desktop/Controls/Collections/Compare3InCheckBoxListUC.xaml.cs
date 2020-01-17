@@ -55,32 +55,38 @@ namespace desktop.Controls.Collections
 
         }
 
-        string autoYes, manuallyYes, manuallyNo = null;
+        string left, right, both = null;
 
         /// <summary>
         /// If I want save state to files, must be set up all four
         /// </summary>
-        /// <param name="autoYes"></param>
-        /// <param name="manuallyYes"></param>
-        /// <param name="manuallyNo"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <param name="both"></param>
         /// <param name="autoNo"></param>
-        public void Init(string autoYes, string manuallyYes, string manuallyNo)
+        public void Init(string left, string right, string both)
         {
-            this.autoYes = autoYes;
-            this.manuallyYes = manuallyYes;
-            this.manuallyNo = manuallyNo;
+            this.left = left;
+            this.right = right;
+            this.both = both;
 
+        }
+
+        public void Init(List<string> left, List<string> right)
+        {
+            var both = CA.CompareList(left, right);
+            Init(left, right, both);
         }
 
 
         /// <summary>
         /// A1-4 can be null
         /// </summary>
-        /// <param name="autoYes"></param>
-        /// <param name="manuallyYes"></param>
-        /// <param name="manuallyNo"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <param name="both"></param>
         /// <param name="autoNo"></param>
-        public void Init(List<string> autoYes, List<string> manuallyYes, List<string> manuallyNo)
+        public void Init(List<string> left, List<string> right, List<string> both)
         {
             chbls = CA.ToList<CheckBoxListUC>(chblAutoYes, chblManuallyYes, chblManuallyNo);
 
@@ -90,9 +96,9 @@ namespace desktop.Controls.Collections
             }
 
             // First must call Init due to create instance of NotifyChangesCollection
-            chblAutoYes.Init(null, autoYes,false);
-            chblManuallyYes.Init(null, manuallyYes);
-            chblManuallyNo.Init(null, manuallyNo);
+            chblAutoYes.Init(null, left,false);
+            chblManuallyYes.Init(null, right);
+            chblManuallyNo.Init(null, both);
             
 
             #region Must init before to avoid raise breakpoints

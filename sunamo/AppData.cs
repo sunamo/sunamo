@@ -16,6 +16,11 @@ public class AppData : AppDataAbstractBase<string, string>
     {
     }
 
+    public override string GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext)
+    {
+        return AppData.ci.GetFile(AppFolders.Output, subfolder + "\\" + file + ext);
+    }
+
     /// <summary>
     /// Return always in User's AppData
     /// </summary>

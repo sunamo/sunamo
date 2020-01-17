@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Controls\Collections\Compare3InCheckBoxListUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\IConfigurableWindow.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\Windows\LoginDialog.xaml.cs" />

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
+    public abstract string GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext);
     public abstract StorageFolder GetFolder(AppFolders af);
     /// <summary>
     /// Must return always string, not StorageFile - in Standard is not StorageFile class and its impossible to get Path

@@ -59,8 +59,14 @@ public partial class UH
         return WebUtility.UrlEncode(co.Trim());
     }
 
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => Login.aspx
+    /// </summary>
+    /// <param name="rp"></param>
+    /// <returns></returns>
     public static string GetFileName(string rp)
     {
+        rp = SH.RemoveAfterFirst(rp, AllChars.q);
         rp = rp.TrimEnd(AllChars.slash);
         int dex = rp.LastIndexOf(AllChars.slash);
         return rp.Substring(dex + 1);

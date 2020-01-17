@@ -277,45 +277,6 @@ public static partial class CA
         return result;
     }
 
-    /// <summary>
-    /// Return what exists in both
-    /// Modify both A1 and A2 - keep only which is only in one
-    /// </summary>
-    /// <param name="c1"></param>
-    /// <param name="c2"></param>
-    public static List<string> CompareList(List<string> c1, List<string> c2)
-    {
-        List<string> existsInBoth = new List<string>();
-
-        int dex = -1;
-
-        for (int i = c2.Count - 1; i >= 0; i--)
-        {
-            string item = c2[i];
-            dex = c1.IndexOf(item);
-            if (dex != -1)
-            {
-                existsInBoth.Add(item);
-                c2.RemoveAt(i);
-                c1.RemoveAt(dex);
-            }
-        }
-
-        for (int i = c1.Count - 1; i >= 0; i--)
-        {
-            string item = c1[i];
-            dex = c2.IndexOf(item);
-            if (dex != -1)
-            {
-                existsInBoth.Add(item);
-                c1.RemoveAt(i);
-                c2.RemoveAt(dex);
-            }
-        }
-
-        return existsInBoth;
-    }
-
     public static List<string> PaddingByEmptyString(List<string> list, int columns)
     {
         for (int i = list.Count - 1; i < columns - 1; i++)
