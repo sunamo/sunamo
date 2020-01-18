@@ -67,10 +67,11 @@ public static partial class WriterEventLog{
 public static bool CreateMainAppLog(string name)
     {
 
-        if (EventLog.SourceExists(name))
-        {
-            System.Diagnostics.EventLog.DeleteEventSource("sunamo.cz");
-        }
+        //if (EventLog.SourceExists(name))
+        //{
+        //    // Excetpion: The event log source 'sunamo.cz' cannot be deleted, because it's equal to the log name.
+        //    System.Diagnostics.EventLog.DeleteEventSource("sunamo.cz");
+        //}
         
         bool existsSource = false;
         try
