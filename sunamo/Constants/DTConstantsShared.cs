@@ -10,8 +10,8 @@ public partial class DTConstants
     public static readonly List<string> daysInWeekENShortcut = CA.ToListString("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
     public static readonly string[] daysInWeekEN = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     public static readonly string[] monthsInYearEN = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-
-    public static readonly DateTime UnixFsStart = new DateTime(1970, 1, 1);
+    public const int yearStartUnixDate = 1970;
+    public static readonly DateTime UnixFsStart = new DateTime(yearStartUnixDate, 1, 1);
     public static readonly string[] daysInWeekCS = new string[] { Pondeli, Utery, Streda, Ctvrtek, Patek, Sobota, Nedele };
 
     #region Dny v týdny CS

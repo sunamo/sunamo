@@ -18,6 +18,18 @@ public static partial class RandomHelper
     }
 
     /// <summary>
+    /// better is take keys from dict and RandomElementOfCollection
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="dict"></param>
+    /// <returns></returns>
+    public static Key RandomKeyOfDictionary<Key, Value>(Dictionary<Key,Value> dict)
+    {
+        return default(Key);
+    }
+
+    /// <summary>
     /// Vr�t� ��slo mezi 0 a A1-1
     /// </summary>
     /// <param name="to"></param>
@@ -235,5 +247,24 @@ public static bool RandomBool()
             pars = bool.TrueString;
         }
         return bool.Parse(pars);
+    }
+
+    public static DateTime RandomDateTime(int yearTo)
+    {
+        DateTime result = Consts.DateTimeMinVal;
+        result.AddDays(RandomHelper.RandomDouble(1, 28));
+        result.AddMonths(RandomHelper.RandomInt(1, 12));
+        result.AddYears(RandomHelper.RandomInt(1, yearTo - DTConstants.yearStartUnixDate));
+
+        result.AddHours(RandomDouble(1, 24));
+        result.AddMinutes(RandomDouble(1, 60));
+        result.AddSeconds(RandomDouble(1, 60));
+
+        return result;
+    }
+
+    private static double RandomDouble(int v1, int v2)
+    {
+        return (double)RandomInt(v1, v2);
     }
 }

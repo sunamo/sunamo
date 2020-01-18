@@ -240,7 +240,6 @@
     <Compile Include="Crypting\Symmetric.cs" />
     <Compile Include="Crypting\UtilsShared.cs" />
     <Compile Include="CSharpParser.cs" />
-    <Compile Include="CzechRegions.cs" />
     <Compile Include="Data\AB.cs" />
     <Compile Include="Data\ABC.cs" />
     <Compile Include="Data\ABL.cs" />

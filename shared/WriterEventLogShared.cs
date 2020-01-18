@@ -66,6 +66,12 @@ public static partial class WriterEventLog{
 
 public static bool CreateMainAppLog(string name)
     {
+
+        if (EventLog.SourceExists(name))
+        {
+            System.Diagnostics.EventLog.DeleteEventSource("sunamo.cz");
+        }
+        
         bool existsSource = false;
         try
         {
