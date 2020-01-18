@@ -252,13 +252,14 @@ public static bool RandomBool()
     public static DateTime RandomDateTime(int yearTo)
     {
         DateTime result = Consts.DateTimeMinVal;
-        result.AddDays(RandomHelper.RandomDouble(1, 28));
-        result.AddMonths(RandomHelper.RandomInt(1, 12));
-        result.AddYears(RandomHelper.RandomInt(1, yearTo - DTConstants.yearStartUnixDate));
+         result = result.AddDays(RandomHelper.RandomDouble(1, 28));
+        result = result.AddMonths(RandomHelper.RandomInt(1, 12));
+        var yearTo2 = yearTo - DTConstants.yearStartUnixDate  ;
+        result = result.AddYears(RandomHelper.RandomInt(1, yearTo2) + 70);
 
-        result.AddHours(RandomDouble(1, 24));
-        result.AddMinutes(RandomDouble(1, 60));
-        result.AddSeconds(RandomDouble(1, 60));
+        result = result.AddHours(RandomDouble(1, 24));
+        result = result.AddMinutes(RandomDouble(1, 60));
+        result = result.AddSeconds(RandomDouble(1, 60));
 
         return result;
     }
