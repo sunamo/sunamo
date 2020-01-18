@@ -6,10 +6,10 @@ public static partial class HtmlTemplates
     {
         return $"<img src=\"{src}\" alt=\"{alt}\" />";
     }
-    public static string Img(string src)
-    {
-        return $"<img src=\"{src}\" />";
-    }
+    //public static string Img(string src)
+    //{
+    //    return $"<img src=\"{src}\" />";
+    //}
 
 public static string HiddenField(string id, string value)
     {

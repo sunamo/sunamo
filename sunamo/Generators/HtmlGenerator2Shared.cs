@@ -319,14 +319,16 @@ public partial class HtmlGenerator2 : HtmlGenerator
             hg.WriteTagWith2Attrs("div", "style", "padding: 5px;", "class", "hoverable");
             hg.WriteTagWithAttr("a", "href", odkazyPhoto[i]);
             hg.WriteTagWithAttrs("div", "style", "display: inline-block;", "id", "iosBadge" + idBadges[i], "class", "iosbRepair");
+            
             if (animated)
             {
-                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri);
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, HtmlAttrs.alt, odkazyText[i]);
             }
             else
             {
-                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i]);
+                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i], HtmlAttrs.alt, odkazyText[i]);
             }
+
             hg.TerminateTag("div");
             hg.TerminateTag("a");
 
