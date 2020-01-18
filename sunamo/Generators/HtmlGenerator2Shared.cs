@@ -251,6 +251,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         //HtmlGenerator hg = new HtmlGenerator();
         int nt = 0;
         bool animated = int.TryParse(srcPhoto[0], out nt);
+
         for (int i = 0; i < count; i++)
         {
             hg.WriteTagWithAttr("div", "style", "padding: 5px;");
@@ -258,11 +259,11 @@ public partial class HtmlGenerator2 : HtmlGenerator
             hg.WriteTagWithAttr("div", "style", "display: inline-block;");
             if (animated)
             {
-                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri);
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, "alt", odkazyText[i]);
             }
             else
             {
-                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i]);
+                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i], "alt", odkazyText[i]);
             }
             hg.TerminateTag("div");
 
@@ -272,6 +273,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             hg.TerminateTag("a");
             hg.TerminateTag("div");
         }
+
         return hg.ToString();
     }
 
