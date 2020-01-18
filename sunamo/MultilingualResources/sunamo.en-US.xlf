@@ -352,7 +352,7 @@
         </trans-unit>
         <trans-unit id="NotImplementedPleaseContactWebAdmin" translate="yes" xml:space="preserve">
           <source />
-          <target state="translated">Add to Favourites</target>
+          <target state="translated">Not implemented, please contact admin</target>
         </trans-unit>
         <trans-unit id="EditUserAccount" translate="yes" xml:space="preserve">
           <source />
