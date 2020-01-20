@@ -30,11 +30,9 @@ namespace SunamoTray
 
             ni.Click += new EventHandler( onDoubleClick);
 
-
             var mi = MenuItemHelper.Get("Quit", Quit);
 
             ni.ContextMenu.MenuItems.Add(mi);
-            
         }
 
         static void Quit(object o, EventArgs ea)

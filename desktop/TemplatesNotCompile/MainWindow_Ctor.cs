@@ -16,6 +16,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
+    dynamic Instance = null;
 
     public ApplicationDataContainer data { get; set; }
     public ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
@@ -24,24 +25,27 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     MenuItem miAlwaysOnTop = null;
     Grid grid;
     MenuItem miUC;
-    dynamic Instance = null;
+    
     #region Implicitly in Window
     dynamic Dispatcher = null;
     TextBlock tbLastErrorOrWarning;
     TextBlock tbLastOtherMessage;
     string Title = null;
     #endregion
+    #endregion
 
     public bool CancelClosing { get; set; }
     public WindowWithUserControl windowWithUserControl { get; set; }
-    #endregion
+    
 
     public MainWindow_Ctor()
     {
         // In ctor can be only InitializeComponent, all everything must be in Loaded. Use template as exists in MainWindow_Ctor
+
+        Loaded += MainWindow_Loaded;
     }
 
-    public void MainWindow_Loaded()
+    public void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
         /*
              * 1) Clipboard and Xlf
@@ -154,7 +158,19 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 7) Notify icon
+        //SetCancelClosing(true);
+        //// .ico must be set up to Resource
+        //NotifyIconHelper.Create(SetCancelClosing, ResourcesH.ci.GetStream(ThisApp.Name + ".ico"), delegate (object sen, EventArgs args)
+        //{
+        //    this.Show();
+        //    this.BringIntoView();
+        //    var beforeTopMost = this.Topmost;
+        //    this.Topmost = true;
+        //    this.Topmost = beforeTopMost;
 
+        //    // WindowState should be loaded from configuration
+        //    //this.WindowState = WindowState.Normal;
+        //}, forms.ContextMenuHelper.Get(null), WpfApp.Shutdown);
         #endregion
 
         #region 8) App-specific testing
@@ -170,6 +186,33 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
     }
 
+    void MiAlwaysOnTop_Click(object sender, RoutedEventArgs e)
+    {
+        Topmost = miAlwaysOnTop.IsChecked;
+        CheckMenuItemTopMost();
+    }
+
+    private void CheckMenuItemTopMost(bool? topMost = null)
+    {
+        if (topMost.HasValue)
+        {
+            Topmost = topMost.Value;
+        }
+
+        miAlwaysOnTop.IsChecked = Topmost;
+    }
+
+    // Only for working with notify
+//    protected override void OnClosing(CancelEventArgs e)
+//    {
+//#if !DEBUG
+//        e.Cancel = GetCancelClosing();
+//        WindowState = WindowState.Minimized;
+//#endif
+//        CheckMenuItemTopMost();
+
+//        base.OnClosing(e);
+//    }
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
@@ -282,6 +325,10 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
     public bool GetCancelClosing()
     {
+if (CancelClosing)
+            {
+                Hide();
+            }
         return CancelClosing;
     }
 
@@ -302,4 +349,3 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         CheckBoxListMode
     }
 }
-

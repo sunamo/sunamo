@@ -17,6 +17,11 @@ public partial class NotificationWindow : Window
         Loaded += NotificationWindow_Loaded;
     }
 
+    /// <summary>
+    /// A2 = this
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="thenFocusTo2"></param>
     public static void Show(object content, UIElement thenFocusTo2)
     {
         thenFocusTo = thenFocusTo2;

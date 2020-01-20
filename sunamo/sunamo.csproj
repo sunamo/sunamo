@@ -59,24 +59,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Parsing\ListParser.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Converts\JavascriptSerialization.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Optimalization\StopwatchStatic.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\JavascriptSerialization.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />
@@ -84,12 +78,15 @@
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\AddBeforeControl.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Langs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ModifiersConstructor.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
@@ -97,6 +94,7 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHNotTranslateAbleShared.cs" />
@@ -107,16 +105,12 @@
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IIdentificator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Interfaces\ISerialization.cs" />
     <Compile Include="..\..\sunamo\sunamo\List\CAShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Optimalization\StopwatchStatic.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Parsing\ListParser.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\HttpsUriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Data\CryptData.cs" />
-    <Compile Include="Enums\ContainsCompareMethod.cs" />
-    <Compile Include="Interfaces\IInstance.cs" />
-    <Compile Include="Parsing\ListParser.cs" />
-    <Compile Include="Optimalization\StopwatchHelper.cs" />
-    <Compile Include="Parsing\StaticParse.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -254,6 +248,7 @@
     <Compile Include="Data\CompareCollectionsResults.cs" />
     <Compile Include="Data\ConventionParseResult.cs" />
     <Compile Include="Data\CreateHtmlDocumentInitData.cs" />
+    <Compile Include="Data\CryptData.cs" />
     <Compile Include="Data\Date.cs" />
     <Compile Include="Data\DirectoriesToDelete.cs" />
     <Compile Include="Data\Distance2.cs" />
@@ -332,6 +327,7 @@
     <Compile Include="Enums\ColorComponent.cs" />
     <Compile Include="Enums\ColorTheme.cs" />
     <Compile Include="Enums\ComputerSizeUnits.cs" />
+    <Compile Include="Enums\ContainsCompareMethod.cs" />
     <Compile Include="Enums\CssFramework.cs" />
     <Compile Include="Enums\CssNamedColors.cs" />
     <Compile Include="Enums\CustomStatusCode.cs" />
@@ -385,7 +381,6 @@
     <Compile Include="Enums\SortBy.cs" />
     <Compile Include="Enums\SqlMethods.cs" />
     <Compile Include="Enums\SqlNumericType.cs" />
-    <Compile Include="Enums\StatusOfUser.cs" />
     <Compile Include="Enums\StorageApplicationData.cs" />
     <Compile Include="Enums\Tld.cs" />
     <Compile Include="Enums\TwoState.cs" />
@@ -579,6 +574,7 @@
     <Compile Include="Interfaces\IFSItem.cs" />
     <Compile Include="Interfaces\IFtpClientExt.cs" />
     <Compile Include="Interfaces\IIDParent.cs" />
+    <Compile Include="Interfaces\IInstance.cs" />
     <Compile Include="Interfaces\IKeysHandler.cs" />
     <Compile Include="Interfaces\IL.cs" />
     <Compile Include="Interfaces\IListBoxHelperItem.cs" />
@@ -619,9 +615,12 @@
     <Compile Include="LoggerAbstract\LogMessageAbstract.cs" />
     <Compile Include="LoggerAbstract\LogServiceAbstract.cs" />
     <Compile Include="MimeTypes.cs" />
+    <Compile Include="Optimalization\StopwatchHelper.cs" />
+    <Compile Include="Parsing\ListParser.cs" />
     <Compile Include="Parsing\Parse.cs" />
     <Compile Include="Parsing\ParseDefault.cs" />
     <Compile Include="Parsing\ParserTwoValues.cs" />
+    <Compile Include="Parsing\StaticParse.cs" />
     <Compile Include="Parsing\TryParse.cs" />
     <Compile Include="PixelColors.cs" />
     <Compile Include="PlatformUwpInterop\AbstractCatalog.cs" />

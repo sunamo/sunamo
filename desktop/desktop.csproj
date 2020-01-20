@@ -73,12 +73,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\desktop\Controls\Collections\Compare3InCheckBoxListUC.xaml.cs" />
-    <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\IConfigurableWindow.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
-    <Compile Include="..\..\sunamo\desktop\Windows\LoginDialog.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />
+    <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\IConfigurableWindow.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Buttons\ActionButton.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Collections\Compare3InCheckBoxListUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Controls\TwoStatesToggleButtonShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\EnterOneValueUC.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFileShared.cs" />
@@ -130,6 +129,7 @@
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />
     <Compile Include="..\..\sunamo\desktop\Values\TypesControls.cs" />
+    <Compile Include="..\..\sunamo\desktop\Windows\LoginDialog.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
@@ -297,13 +297,6 @@
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="ExceptionStrings.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
-    <Compile Include="Extensions\FrameworkElementExtensions.cs" />
-    <Compile Include="Extensions\ListBoxExtensions.cs" />
-    <Compile Include="Extensions\ListViewExtensions.cs" />
-    <Compile Include="Extensions\RadioButtonExtensions.cs" />
-    <Compile Include="Extensions\TextBoxExtensions.cs" />
-    <Compile Include="Extensions\ToggleButtonExtension.cs" />
-    <Compile Include="Extensions\UIElementExtensions.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\WatcherInfo.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Ex\FileSystemWatcherEx.cs">
@@ -315,6 +308,13 @@
     <Compile Include="Extensions\FileSystemWatcherExtended\PathAvailabilityHandler.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\PathAvailablitiyEventArgs.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\WatchersExList.cs" />
+    <Compile Include="Extensions\FrameworkElementExtensions.cs" />
+    <Compile Include="Extensions\ListBoxExtensions.cs" />
+    <Compile Include="Extensions\ListViewExtensions.cs" />
+    <Compile Include="Extensions\RadioButtonExtensions.cs" />
+    <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="Extensions\ToggleButtonExtension.cs" />
+    <Compile Include="Extensions\UIElementExtensions.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GuesslangHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
@@ -402,6 +402,7 @@
     <Compile Include="Registry\RegistryEntries.cs" />
     <Compile Include="Registry\RegistryEntry.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
+    <Compile Include="SczNotifyServerErrorChecker.cs" />
     <Compile Include="SearchCodeElementsUCData.cs" />
     <Compile Include="SHWithControls.cs" />
     <Compile Include="StatusesLogger.cs" />

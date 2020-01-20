@@ -46,6 +46,7 @@ public class HtmlAttrs
     public static string dataUrl = "data-url";
     public static string description = "description";
     public static string alt = "alt";
+    public static string keywords = "keywords";
     public const string uibTooltip = "uib-tooltip";
     public const string dataType = "data-type";
     public const string dataDescription = "data-description";
