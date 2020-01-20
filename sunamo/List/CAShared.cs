@@ -288,6 +288,9 @@ public static partial class CA
     /// <returns></returns>
     public static List<T> ToList<T>(IEnumerable enumerable)
     {
+        // system array etc cant be casted
+        var ien = enumerable as IEnumerable<object>;
+        var ienf = ien.FirstOrNull() as IEnumerable;
         List<T> result = null;
         //if (enumerable is IEnumerable<char>)
         //{
@@ -297,6 +300,10 @@ public static partial class CA
         if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<object>)
         {
             result = ToListT2<T>((IEnumerable<object>)enumerable.FirstOrNull());
+        }
+        else if (ien != null && typeof(T) == Types.tString && ienf.Count() > 1 && ienf.FirstOrNull().GetType() == Types.tChar && ien.Last().GetType() == Types.tChar)
+        {
+            result.Add(RuntimeHelper.CastToGeneric<T>( SH.Join(string.Empty, enumerable)));
         }
         else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable)
         {
@@ -445,7 +452,15 @@ public static partial class CA
                 //}
                 //else
                 //{
-                result.Add((T)item);
+                try
+                {
+                    result.Add((T)item);
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
                 //}
             }
         }
