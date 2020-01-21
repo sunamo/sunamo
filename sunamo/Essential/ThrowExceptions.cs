@@ -229,6 +229,8 @@ public class ThrowExceptions
         }
     }
 
+    public static Action<string> writeServerError;
+
     /// <summary>
     /// true if everything is OK
     /// false if some error occured
@@ -243,6 +245,7 @@ public class ThrowExceptions
                 //if (HttpRuntime.AppDomainAppId != null)
                 //{
                 Debugger.Break();
+                writeServerError(exception);
                 //}
             }
 
