@@ -20,9 +20,14 @@ namespace desktop.Controls.Mouse
     /// <summary>
     /// Interaction logic for InsertLetterAfterMouseDownUC.xaml
     /// </summary>
-    public partial class InsertLetterAfterMouseDownUC : UserControl, IUserControlInWindow,IShowSearchResults
+    public partial class InsertLetterAfterMouseDownUC : UserControl, IControlWithResult,IShowSearchResults
     {
         public string ToInsert = AllStrings.bs;
+
+        public void FocusOnMainElement()
+        {
+
+        }
 
         public bool? DialogResult {
             set

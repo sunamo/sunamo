@@ -32,6 +32,7 @@ public static partial class SH
 
         List<string> ls = new List<string>(c);
         int from = 0;
+
         while(true)
         {
             ls.Add(s.Substring(from, c));
@@ -63,12 +64,14 @@ public static partial class SH
             bracketsLeft.Add(Brackets.Curly, "{");
             bracketsLeft.Add(Brackets.Square, "[");
             bracketsLeft.Add(Brackets.Normal, "(");
+            bracketsLeftList = CA.ToListChar( bracketsLeft.Values);
 
             bracketsRight = new Dictionary<Brackets, string>();
             bracketsRight.Add(Brackets.Curly, "}");
             bracketsRight.Add(Brackets.Square, "]");
             bracketsRight.Add(Brackets.Normal, ")");
 
+            bracketsRightList = CA.ToListChar( bracketsRight.Values);
 
         }
     }
@@ -594,6 +597,8 @@ public static partial class SH
         return c;
     }
 
+    static List<char> bracketsLeftList = null;
+    static List<char> bracketsRightList = null;
     static Dictionary<Brackets, string> bracketsLeft = null;
     static Dictionary<Brackets, string> bracketsRight = null;
 
@@ -716,6 +721,63 @@ public static partial class SH
             }
         }
         return vr;
+    }
+
+    public static string InsertEndingBracket(string songName, List<char> countStart, List<char> countEnd)
+    {
+        var min = Math.Min(countStart.Count, countEnd.Count);
+        var max = Math.Max(countStart.Count, countEnd.Count);
+        for (int i = min; i < max; i++)
+        {
+            songName += bracketsRight[SH.GetBracketFromBegin(countStart[i])];
+        }
+        return songName;
+    }
+
+    private static Brackets GetBracketFromBegin(char v)
+    {
+        switch (v)
+        {
+            case '(':
+                return Brackets.Normal;
+            case '{':
+                return Brackets.Curly;
+            case '[':
+                return Brackets.Square;
+            default:
+                ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod());
+                break;
+        }
+
+        return Brackets.Square;
+    }
+
+    public static List<char> IncludeBrackets(string s, bool starting)
+    {
+        List<char> containsBracket = new List<char>();
+
+        if (starting)
+        {
+            foreach (var item in s)
+            {
+                if (CA.ContainsElement<char>( SH.bracketsLeftList, item))
+                {
+                    containsBracket.Add(item);
+                }
+            }
+        }
+        else
+        {
+            foreach (var item in s)
+            {
+                if (CA.ContainsElement<char>(SH.bracketsRightList, item))
+                {
+                    containsBracket.Add(item);
+                }
+            }
+        }
+
+        return containsBracket;
     }
 
     /// <summary>

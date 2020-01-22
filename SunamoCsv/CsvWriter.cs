@@ -1,4 +1,4 @@
-﻿using desktop;
+﻿
 using sunamo;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,6 @@ using System.Text;
 /// </summary>
 public sealed class CsvWriter : IDisposable
     {
-
         #region Members
 
         private StreamWriter _streamWriter;
@@ -312,5 +311,4 @@ public sealed class CsvWriter : IDisposable
         }
 
         #endregion Methods
-
     }

@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-public class ShowTextResultWindow : Window, IUserControlInWindow
+public class ShowTextResultWindow : Window, IControlWithResult
 {
+    ShowTextResult s = null;
+
     public ShowTextResultWindow(string text)
     {
-        var s = new ShowTextResult(text);
+         s = new ShowTextResult(text);
         Content = s;
         s.ChangeDialogResult += S_ChangeDialogResult;
     }
@@ -20,6 +22,11 @@ public class ShowTextResultWindow : Window, IUserControlInWindow
     public void Accept(object input)
     {
         
+    }
+
+    public void FocusOnMainElement()
+    {
+        s.Focus();
     }
 
     private void S_ChangeDialogResult(bool? b)

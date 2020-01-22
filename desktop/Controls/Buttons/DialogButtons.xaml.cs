@@ -18,11 +18,16 @@ namespace desktop.Controls
     /// <summary>
     /// Interaction logic for DialogButtons.xaml
     /// </summary>
-    public partial class DialogButtons : UserControl, IUserControlInWindow
+    public partial class DialogButtons : UserControl, IControlWithResult
     {
         public DialogButtons()
         {
             InitializeComponent();
+        }
+
+        public void FocusOnMainElement()
+        {
+            btnOk.Focus();
         }
 
         public UIElement CustomControl

@@ -21,8 +21,13 @@ namespace desktop.Controls
     /// <summary>
     /// 
     /// </summary>
-    public partial class InputTwoColumnsUC : UserControl, IUserControlInWindow, IControlWithResultDebug, IUserControl
+    public partial class InputTwoColumnsUC : UserControl, IControlWithResult, IControlWithResultDebug, IUserControl
     {
+        public void FocusOnMainElement()
+        {
+            txt1.Focus();
+        }
+
         public TextBox txtFirst
         {
             get

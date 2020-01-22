@@ -20,11 +20,16 @@ namespace desktop
     /// <summary>
     /// Interaction logic for DialogLogin2.xaml
     /// </summary>
-    public partial class LoginUc : UserControl, IUserControlInWindow
+    public partial class LoginUc : UserControl, IControlWithResult
     {
         bool publicSaveLogic = false;
         const string h = "h";
         const string l = "l";
+
+        public void FocusOnMainElement()
+        {
+            btnLetsLogin.Focus();
+        }
 
         public LoginUc()
         {

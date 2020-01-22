@@ -4,11 +4,16 @@ using System.Windows.Controls;
 
 namespace desktop.Controls
 {
-    public sealed partial class AboutApp : UserControl, IUserControlInWindow //, IPopupResponsive, IPopupEvents<object>
+    public sealed partial class AboutApp : UserControl, IControlWithResult //, IPopupResponsive, IPopupEvents<object>
     {
         public event VoidT<object> ClickOK;
         public event VoidT<object> ClickCancel;
         public event VoidBoolNullable ChangeDialogResult;
+
+        public void FocusOnMainElement()
+        {
+            btnOk.Focus();
+        }
 
         public AboutApp(Langs l)
         {

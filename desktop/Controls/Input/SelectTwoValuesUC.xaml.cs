@@ -32,6 +32,11 @@ namespace desktop.Controls.Input
             }
         }
 
+        public void FocusOnMainElement()
+        {
+            cbEntered1.Focus();
+        }
+
         public string Title => "Select two values";
 
         public event VoidBoolNullable ChangeDialogResult;

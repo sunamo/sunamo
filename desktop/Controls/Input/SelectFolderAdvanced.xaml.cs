@@ -19,7 +19,7 @@ namespace desktop.Controls
     /// <summary>
     /// Interaction logic for SelectFolderAdvanced.xaml
     /// </summary>
-    public partial class SelectFolderAdvanced : UserControl, IUserControlInWindow
+    public partial class SelectFolderAdvanced : UserControl, IControlWithResult
     {
         public bool? DialogResult
         {
@@ -27,6 +27,11 @@ namespace desktop.Controls
             {
                 ChangeDialogResult(value);
             }
+        }
+
+        public void FocusOnMainElement()
+        {
+            selectFolder.Focus();
         }
 
         public SelectFolderAdvanced()

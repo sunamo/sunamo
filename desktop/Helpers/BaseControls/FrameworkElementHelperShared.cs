@@ -34,4 +34,9 @@ public static void SetMargin3(object o, double allSides)
             fw.Margin = new Thickness(allSides, allSides, allSides, allSides);
         }
     }
+
+public static void SetAll3Widths(FrameworkElement fe, double w)
+    {
+        fe.Width = fe.MaxWidth = fe.MinWidth = w;
+    }
 }
