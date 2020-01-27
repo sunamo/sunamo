@@ -114,7 +114,7 @@ using System.Collections.Generic;
 
         CSharpGenerator innerSelectInTable = new CSharpGenerator();
 
-        innerSelectInTable.AppendLine(2, "o = MSStoredProceduresI.ci.SelectOneRowForTableRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + ");" + @");
+        innerSelectInTable.AppendLine(2, "o = MSStoredProceduresI.ci.SelectOneRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + ");" + @");
 ParseRow(o);");
         csg.Method(1, "public void SelectInTable()", innerSelectInTable.ToString());
 
@@ -149,7 +149,7 @@ ParseRow(o);");
             }
         }
 
-        string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSTSP.ci.InsertToRow3(trans,TableName, " + sloupecID + "," + SH.Join(',', nameFields.ToArray()) + ");");
+        string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSTSP.ci.Insert3(trans,TableName, " + sloupecID + "," + SH.Join(',', nameFields.ToArray()) + ");");
         csg.Method(1, "public void InsertToTable3(SqlTransaction trans)", innerInsertToTable3);
 
 

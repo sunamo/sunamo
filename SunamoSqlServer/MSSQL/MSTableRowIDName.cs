@@ -65,7 +65,7 @@ public class MSTableRowIDName //: MSBaseRowTable//, ITableRow<int>
 
     public void UpdateInTable()
     {
-        MSStoredProceduresI.ci.UpdateOneRow(TableName, "ID", ID, "Name", Name);
+        MSStoredProceduresI.ci.Update(TableName, "ID", ID, "Name", Name);
         
     }
 

@@ -7,10 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 using sunamo;
 using sunamo.Values;
-public partial class MSStoredProceduresIBase : SqlServerHelper
+public partial class SqlOperations : SqlServerHelper
 {
-
-
     public string AverageLenghtOfColumnData(string table, string column)
     {
         var c = MSStoredProceduresI.ci.SelectValuesOfColumnAllRowsString(table, column);
@@ -31,8 +29,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             l.Add(item.Length);
         }
-
-
 
         return NH.CalculateMedianAverage(l);
     }

@@ -263,7 +263,7 @@ public class StoredProceduresI : IStoredProceduresI
             return comm.ExecuteNonQuery();
         }
 
-        public double UpdateRealValue(string table, string sloupecKUpdate, double pridej, string sloupecID, int id)
+        public double UpdatePlusRealValue(string table, string sloupecKUpdate, double pridej, string sloupecID, int id)
         {
             double d = double.Parse(StoredProceduresI.ci.GetElementDataTable(table, sloupecID, id, sloupecKUpdate));
             double n = pridej;

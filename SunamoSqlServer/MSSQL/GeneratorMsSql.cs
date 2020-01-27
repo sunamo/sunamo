@@ -48,7 +48,7 @@ public partial class GeneratorMsSql
                     sb.Append(" AND ");
                 }
                 sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
-                MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
+                SqlOperations.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
@@ -66,7 +66,7 @@ public partial class GeneratorMsSql
                     sb.Append(" AND ");
                 }
                 sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
-                MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
+                SqlOperations.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
@@ -83,7 +83,7 @@ public partial class GeneratorMsSql
                     sb.Append(" AND ");
                 }
                 sb.Append(SH.Format2(" {0} > {1} ", var.A, "@p" + p));
-                MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
+                SqlOperations.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }
@@ -100,7 +100,7 @@ public partial class GeneratorMsSql
                     sb.Append(" AND ");
                 }
                 sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
-                MSStoredProceduresI.AddCommandParameter(comm, p, var.B);
+                SqlOperations.AddCommandParameter(comm, p, var.B);
                 p++;
             }
         }

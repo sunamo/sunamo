@@ -165,7 +165,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <summary>
     /// 
     /// </summary>
-    public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit)
+    public DataTable SelectDataTable(SqlTransaction tran, string tableName, int limit)
     {
         SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName);
         //AddCommandParameter(comm, 0, hodnotaWhere);
@@ -175,7 +175,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <summary>
     /// 
     /// </summary>
-    public DataTable SelectDataTableLimit(SqlTransaction tran, string tableName, int limit, string sloupecWhere, object hodnotaWhere)
+    public DataTable SelectDataTable(SqlTransaction tran, string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
         SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + " " + " *" + " " + "FROM" + " " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
@@ -522,7 +522,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string aktual = SelectCellDataTableStringOneRow(tran, tableName, sloupecID, hodnotaID, sloupecAppend).ToString();
         aktual = aktual.Trim();
         aktual += hodnotaAppend + AllStrings.comma;
-        return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
+        return Update(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
     }
 
     /// <summary>
@@ -544,7 +544,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             aktual += hodnotaAppend + AllStrings.comma;
             string save = SH.Join(AllChars.comma, d.ToArray());
 
-            return UpdateOneRow(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
+            return Update(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
         }
         return 0;
     }
@@ -559,7 +559,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         List<string> d = new List<string>(SH.Split(aktual, AllStrings.comma));
         d.Remove(hodnotaCut);
         string save = SH.Join(AllChars.comma, d.ToArray());
-        return UpdateOneRow(tran, tableName, sloupecCut, save, sloupecID, hodnotaID);
+        return Update(tran, tableName, sloupecCut, save, sloupecID, hodnotaID);
     }
 
     /// <summary>
@@ -579,7 +579,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// Conn přidá automaticky
     /// Název metody je sice OneRow ale updatuje to libovolný počet řádků které to najde pomocí where - je to moje interní pojmenování aby mě to někdy trklo, možná později přijdu na způsob jak updatovat jen jeden řádek.
     /// </summary>
-    public int UpdateOneRow(SqlTransaction tran, string table, string sloupecKUpdate, object n, string sloupecID, object id)
+    public int Update(SqlTransaction tran, string table, string sloupecKUpdate, object n, string sloupecID, object id)
     {
         string sql = string.Format("UPDATE {0} SET {1}=@p1 WHERE {2} = @p2", table, sloupecKUpdate, sloupecID);
         SqlCommand comm = new SqlCommand(sql, conn, tran);
@@ -720,7 +720,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="tabulka"></param>
     /// <param name="IDUsers"></param>
     /// <param name="sloupce"></param>
-    public void InsertToRow3(SqlTransaction tran, string tabulka, int IDUsers, params object[] sloupce)
+    public void Insert3(SqlTransaction tran, string tabulka, int IDUsers, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
@@ -744,7 +744,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="tabulka"></param>
     /// <param name="IDUsers"></param>
     /// <param name="sloupce"></param>
-    public void InsertToRow3(SqlTransaction tran, string tabulka, long IDUsers, params object[] sloupce)
+    public void Insert3(SqlTransaction tran, string tabulka, long IDUsers, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
 
@@ -932,7 +932,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     /// <param name="sloupecKUpdate"></param>
     /// <param name="pridej"></param>
     /// <returns></returns>
-    public float UpdateRealValue(SqlTransaction tran, string table, string sloupecKUpdate, float pridej, string sloupecID, int id)
+    public float UpdatePlusRealValue(SqlTransaction tran, string table, string sloupecKUpdate, float pridej, string sloupecID, int id)
     {
         float d = float.Parse(SelectCellDataTableStringOneRow(tran, table, sloupecID, id, sloupecKUpdate).ToString());
         if (d != 0)
