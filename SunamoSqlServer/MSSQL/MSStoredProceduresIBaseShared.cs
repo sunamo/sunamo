@@ -38,15 +38,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(aB)));
         for (int i = 0; i < aB.Length; i++)
         {
-            AddCommandParameter(comm, i, aB[i].B);
+            SqlOperations.AddCommandParameter(comm, i, aB[i].B);
         }
         return ReadValuesInt(comm);
     }
 
-    private static void AddCommandParameter(SqlCommand comm, int i, object b)
-    {
-        SqlOperations.AddCommandParameter(comm, i, b);
-    }
+   
 
     public static string table2 = null;
     public static string column2 = null;
@@ -109,15 +106,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     }
 
-    /// <summary>
-    /// Počítá od nuly
-    /// </summary>
-    /// <param name="comm"></param>
-    /// <param name="where"></param>
-    private static void AddCommandParameterFromAbc(SqlCommand comm, params AB[] where)
-    {
-        SqlOperations.AddCommandParameterFromAbc(comm, where);
-    }
+
 
     public bool SelectExistsDatabase(string p)
     {
@@ -128,115 +117,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void CreateDatabase(string p)
     {
-        return SqlOpsI.ci.CreateDatabase(d, p);
+         SqlOpsI.ci.CreateDatabase(d, p);
     }
 
-    /// <summary>
-    /// Počítá od nuly
-    /// Mohu volat i s A2 null, v takovém případě se nevykoná žádný kód
-    /// </summary>
-    /// <param name="comm"></param>
-    /// <param name="where"></param>
-    private static int AddCommandParameterFromAbc(SqlCommand comm, ABC where, int i)
-    {
-        return SqlOperations.AddCommandParameterFromAbc(comm, where, i);
-    }
-
-    #region Commented
-    ///// <summary>
-    ///// Libovolné z hodnot A2 až A5 může být null, protože se to postupuje metodě AddCommandParameteresArrays. Use CA.TwoDimensionParamsIntoOne instead
-    ///// </summary>
-    ///// <param name="comm"></param>
-    ///// <param name="where"></param>
-    ///// <param name="isNotWhere"></param>
-    ///// <param name="greaterThanWhere"></param>
-    ///// <param name="lowerThanWhere"></param>
-    //public static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
-    //{
-    //    var arr = CA.TwoDimensionParamsIntoOne<AB>(where, isNotWhere, greaterThanWhere, lowerThanWhere);
-    //    AddCommandParameteres(comm, i, ABC.OnlyBs(arr));
-    //}
-
-    ///// <summary>
-    ///// Bude se počítat od nuly
-    ///// Některé z vnitřních polí může být null
-    ///// </summary>
-    ///// <param name="comm"></param>
-    ///// <param name="where"></param>
-    ///// <param name="whereIsNot"></param>
-    //private static void AddCommandParameteresArrays(SqlCommand comm, int i, params AB[][] where)
-    //{
-    //    //int i = 0;
-    //    foreach (var item in where)
-    //    {
-    //        if (item != null)
-    //        {
-    //            foreach (var item2 in item)
-    //            {
-    //                i = AddCommandParameter(comm, i, item2.B);
-    //            }
-    //        }
-    //    }
-    //} 
-    #endregion
-
-    public static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i2, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
-    {
-        int l = CA.GetLength(where);
-        l += CA.GetLength(isNotWhere);
-        l += CA.GetLength(greaterThanWhere);
-        l += CA.GetLength(lowerThanWhere);
-        ABC ab = new ABC(l);
-        int dex = 0;
-        if (where != null)
-        {
-            for (int i = 0; i < where.Count; i++)
-            {
-                ab[dex++] = where[i];
-            }
-        }
-        if (isNotWhere != null)
-        {
-            for (int i = 0; i < isNotWhere.Count; i++)
-            {
-                ab[dex++] = isNotWhere[i];
-            }
-        }
-        if (greaterThanWhere != null)
-        {
-            for (int i = 0; i < greaterThanWhere.Count; i++)
-            {
-                ab[dex++] = greaterThanWhere[i];
-            }
-        }
-        if (lowerThanWhere != null)
-        {
-            for (int i = 0; i < lowerThanWhere.Count; i++)
-            {
-                ab[dex++] = lowerThanWhere[i];
-            }
-        }
-        AddCommandParameterFromAbc(comm, ab, i2);
-    }
-
-    private static void AddCommandParameteresArrays(SqlCommand comm, int i, params ABC[] where)
-    {
-        AddCommandParameteresCombinedArrays(comm, i, CA.IndexOrNull(where, 0), CA.IndexOrNull(where, 1), CA.IndexOrNull(where, 2), CA.IndexOrNull(where, 3));
-    }
 
     
 
-    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, params AB[] hodnotyOdNuly)
-    {
-        return SqlOperations.AddCommandParameter(comm, pocIndex, hodnotyOdNuly);
-    }
-
-    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, ABC aWhere)
-    {
-        return SqlOperations.AddCommandParameter(comm, pocIndex, aWhere);
-    }
-
-
+  
 
     public List<bool> DataTableToListBool(DataTable dataTable, int dex)
     {
@@ -268,19 +155,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SqlOpsI.ci.Delete(d, table, sloupec, id).affectedRows;
     }
 
-    /// <summary>
-    /// Vrací A2
-    /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
-    /// Používej tehdy když chceš určit index na který vkládat.
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="IDUsers"></param>
-    /// <param name="sloupce"></param>
-    public void Insert3(string tabulka, long IDUsers, params object[] sloupce2)
-    {
-        SqlOpsI.ci.Insert3(d, tabulka, IDUsers, sloupce2);
-    }
 
+   
     /// <summary>
     /// Conn nastaví automaticky
     /// Vrátí zda byl vymazán alespoň jeden řádek
@@ -291,7 +167,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int Delete(string TableName, params AB[] where)
     {
-        return SqlOpsI.ci.Delete(TableName, where).affectedRows;
+        return SqlOpsI.ci.Delete(d, TableName, where).affectedRows;
     }
 
     public int DeleteAllSmallerThan(string TableName, string nameColumnSmallerThan, object valueColumnSmallerThan, params AB[] where)
@@ -311,7 +187,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int DeleteOneRow(string table, string sloupec, object id)
     {
-        return SqlOpsI.ci.DeleteOneRow(d, table, id).affectedRows;
+        return SqlOpsI.ci.DeleteOneRow(d, table, sloupec, id).affectedRows;
     }
 
     public bool DeleteOneRow(string TableName, params AB[] where)
@@ -327,12 +203,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int DeleteOR(string TableName, params AB[] where)
     {
-        return SqlOpsI.ci.DeleteOR(d, TableName, where);
+        return SqlOpsI.ci.DeleteOR(d, TableName, where).affectedRows;
     }
 
     public void DropAllTables()
     {
-        return SqlOpsI.ci.DropAllTables(d);
+         SqlOpsI.ci.DropAllTables(d);
     }
 
     public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
@@ -373,7 +249,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
     {
-        return SqlOpsI.ci.DropAndCreateTable2(d, p, dictionary);
+         SqlOpsI.ci.DropAndCreateTable2(d, p, dictionary);
     }
     public int DropTableIfExists(string table)
     {
@@ -387,7 +263,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTable(SqlCommand comm)
     {
-        return SqlOpsI.ci.SelectDataTable(d, comm);
+        return SqlOpsI.ci.SelectDataTable(d, comm).result;
     }
 
     /// <summary>
@@ -399,7 +275,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private DataTable SelectDataTable(string sql, params object[] _params)
     {
-        return SqlOpsI.ci.SelectDataTable(d, sql, _params);
+        return SqlOpsI.ci.SelectDataTable(d, sql, _params).result;
     }
 
 
@@ -410,7 +286,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int ExecuteNonQuery(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteNonQuery(d, comm);
+        return SqlOpsI.ci.ExecuteNonQuery(d, comm).affectedRows;
     }
 
     private void PrintDebugParameters(SqlCommand comm)
@@ -420,7 +296,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int ExecuteNonQuery(string commText, params object[] para)
     {
-        return SqlOpsI.ci.ExecuteNonQuery(d, commText, para);
+        return SqlOpsI.ci.ExecuteNonQuery(d, commText, para).affectedRows;
     }
 
     /// <summary>
@@ -430,7 +306,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private SqlDataReader ExecuteReader(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteReader(d, comm);
+        return SqlOpsI.ci.ExecuteReader(d, comm).result;
 
     }
 
@@ -441,33 +317,33 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object ExecuteScalar(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalar(d, comm);
+        return SqlOpsI.ci.ExecuteScalar(d, comm).result;
     }
 
     public object ExecuteScalar(string commText, params object[] para)
     {
-        return SqlOpsI.ci.ExecuteScalar(d, commText, para);
+        return SqlOpsI.ci.ExecuteScalar(d, commText, para).result;
     }
 
     private bool ExecuteScalarBool(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarBool(d, comm);
+        return SqlOpsI.ci.ExecuteScalarBool(d, comm).result;
     }
 
     private byte ExecuteScalarByte(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarByte(d, comm);
+        return SqlOpsI.ci.ExecuteScalarByte(d, comm).result;
     }
 
     private DateTime ExecuteScalarDateTime(DateTime getIfNotFound, SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarDateTime(d, getIfNotFound, comm);
+        return SqlOpsI.ci.ExecuteScalarDateTime(d, getIfNotFound, comm).result;
     }
 
     private float ExecuteScalarFloat(bool signed, SqlCommand comm)
     {
 
-        return SqlOpsI.ci.ExecuteScalarFloat(Signed(signed), comm);
+        return SqlOpsI.ci.ExecuteScalarFloat(Signed(signed), comm).result;
     }
 
     private SqlData Signed(bool signed)
@@ -477,27 +353,27 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     private int ExecuteScalarInt(bool signed, SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarInt(Signed(signed), comm);
+        return SqlOpsI.ci.ExecuteScalarInt(Signed(signed), comm).result;
     }
 
     private long ExecuteScalarLong(bool signed, SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarLong(Signed(signed), comm);
+        return SqlOpsI.ci.ExecuteScalarLong(Signed(signed), comm).result;
     }
 
     private bool? ExecuteScalarNullableBool(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarNullableBool(d, comm);
+        return SqlOpsI.ci.ExecuteScalarNullableBool(d, comm).result;
     }
 
     private short ExecuteScalarShort(bool signed, SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarShort(Signed(signed), comm);
+        return SqlOpsI.ci.ExecuteScalarShort(Signed(signed), comm).result;
     }
 
     private string ExecuteScalarString(SqlCommand comm)
     {
-        return SqlOpsI.ci.ExecuteScalarString(d, comm);
+        return SqlOpsI.ci.ExecuteScalarString(d, comm).result;
     }
 
     /// <summary>
@@ -515,17 +391,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert(Signed(false), tabulka, idt, sloupecID, sloupce);
+        return SqlOpsI.ci.Insert(Signed(false), tabulka, idt, sloupecID, sloupce).affectedRows;
     }
 
     public long InsertSigned(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.InsertSigned(d, tabulka, idt, sloupecID, sloupce);
+        return SqlOpsI.ci.InsertSigned(d, tabulka, idt, sloupecID, sloupce).affectedRows;
     }
 
     private long Insert1(string tabulka, Type idt, string sloupecID, object[] sloupce, bool signed)
     {
-        return SqlOpsI.ci.Insert1(Signed(signed), tabulka, idt, sloupecID, sloupce);
+        return SqlOpsI.ci.Insert1(Signed(signed), tabulka, idt, sloupecID, sloupce).affectedRows;
     }
 
     /// <summary>
@@ -539,7 +415,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce);
+         return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce).affectedRows;
     }
 
 
@@ -554,7 +430,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void Insert3(string tabulka, long IDUsers, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert3(d, tabulka, IDUsers, sloupce);
+        SqlOpsI.ci.Insert3(d, tabulka, IDUsers, sloupce);
     }
 
     /// <summary>
@@ -564,7 +440,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void Insert4(string tabulka, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert4(d, tabulka, sloupce);
+         SqlOpsI.ci.Insert4(d, tabulka, sloupce);
     }
 
     /// <summary>
@@ -576,7 +452,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert5(string table, string nazvySloupcu, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert5(d, table, nazvySloupcu, sloupce);
+        return SqlOpsI.ci.Insert5(d, table, nazvySloupcu, sloupce).affectedRows;
     }
 
     /// <summary>
@@ -591,7 +467,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public void Insert6(string table, string nazvySloupcu, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce);
+         SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce);
     }
 
     /// <summary>
@@ -602,7 +478,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int InsertRowTypeEnum(string tabulka, string nazev)
     {
-        return SqlOpsI.ci.InsertRowTypeEnum(d, tabulka, nazev);
+        return SqlOpsI.ci.InsertRowTypeEnum(d, tabulka, nazev).affectedRows;
     }
 
     /// <summary>
@@ -615,7 +491,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public Guid InsertToRowGuid(string tabulka, params object[] sloupce)
     {
-        return SqlOpsI.ci.InsertToRowGuid(d, tabulka, sloupce);
+        return SqlOpsI.ci.InsertToRowGuid(d, tabulka, sloupce).result;
     }
 
     /// <summary>
@@ -629,7 +505,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public Guid InsertToRowGuid2(string tabulka, string sloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.InsertToRowGuid2(d, tabulka, sloupecID, sloupce);
+        return SqlOpsI.ci.InsertToRowGuid2(d, tabulka, sloupecID, sloupce).result;
     }
 
 
@@ -643,21 +519,23 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="sloupce"></param>
     public void InsertToRowGuid3(string tabulka, Guid IDUsers, params object[] sloupce)
     {
-        return SqlOpsI.ci.InsertToRowGuid3(d, tabulka, IDUsers, sloupce);
+         SqlOpsI.ci.InsertToRowGuid3(d, tabulka, IDUsers, sloupce);
     }
 
     public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, aB);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, aB).result;
     }
     public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, string whereSloupec, object whereHodnota, string orderBy = "")
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, whereSloupec, whereHodnota, orderBy);
+        var data = new SqlData { orderBy = orderBy };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(data, tabulka, sloupec, whereSloupec, whereHodnota).result;
     }
 
     public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, ABC where, ABC whereIsNot, string orderBy = "")
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, where, whereIsNot, orderBy);
+        var data = new SqlData { orderBy = orderBy };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(data, tabulka, sloupec, where, whereIsNot).result;
     }
 
     /// <summary>
@@ -668,17 +546,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec).result;
     }
 
     public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsNumeric(d, tabulka, sloupec, ab);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsNumeric(d, tabulka, sloupec, ab).result;
     }
 
     public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsNumeric(d, tabulka, sloupec);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsNumeric(d, tabulka, sloupec).result;
     }
 
 
@@ -691,12 +569,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec).result;
     }
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, string idColumn, object idValue)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, idColumn, idValue);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, idColumn, idValue).result;
     }
 
 
@@ -712,44 +590,47 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, int limit, string sloupec, string idColumn, object idValue)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, limit, sloupec, idColumn, idValue);
+        var data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(data, tabulka, sloupec, idColumn, idValue).result;
     }
 
 
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, int limit, string sloupec, string idColumn, object idValue)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, limit, sloupec, idColumn, idValue);
+        var data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(data, tabulka, sloupec, idColumn, idValue).result;
     }
 
     public int RandomValueFromColumnInt(string table, string column)
     {
-        return SqlOpsI.ci.RandomValueFromColumnInt(d, table, column);
+        return SqlOpsI.ci.RandomValueFromColumnInt(d, table, column).result;
     }
 
     public short RandomValueFromColumnShort(string table, string column)
     {
-        return SqlOpsI.ci.RandomValueFromColumnShort(d, table, column);
+        return SqlOpsI.ci.RandomValueFromColumnShort(d, table, column).result;
     }
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, whereIs, whereIsNot);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, whereIs, whereIsNot).result;
     }
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec, whereIs, whereIsNot);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec, whereIs, whereIsNot).result;
     }
 
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, int dnuPozpatku, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsIntDate(d, tabulka, sloupec, dnuPozpatku, whereIs, whereIsNot);
+        var sqlData = new SqlData { dnuPozpatku = dnuPozpatku };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsIntDate(sqlData, tabulka, sloupec, whereIs, whereIsNot).result;
     }
 
 
 
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot, ABC greaterThanWhere, ABC lowerThanWhere)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec, whereIs, whereIsNot, greaterThanWhere, lowerThanWhere);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(d, tabulka, sloupec, whereIs, whereIsNot, greaterThanWhere, lowerThanWhere).result;
     }
     /// <summary>
     /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
@@ -759,17 +640,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, ab);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsShort(d, tabulka, sloupec, ab).result;
     }
 
     public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec).result;
     }
 
     public List<string> SelectValuesOfColumnAllRowsStringTrim(string tabulka, string sloupec, string idn, object idv)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, idn, idv);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsString(d, tabulka, sloupec, idn, idv).result;
     }
 
     /// <summary>
@@ -782,18 +663,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string hledanySloupec, string idColumn, object idValue)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, hledanySloupec, idColumn, idValue);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, hledanySloupec, idColumn, idValue).result;
     }
 
     public List<long> SelectValuesOfColumnAllRowsLong(bool signed, string tabulka, string hledanySloupec, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsLong(Signed(signed), tabulka, hledanySloupec, aB);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsLong(Signed(signed), tabulka, hledanySloupec, aB).result;
     }
 
 
     public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, int maxRows, string hledanySloupec, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, maxRows, hledanySloupec, aB);
+        var limit = new SqlData { limit = maxRows };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, hledanySloupec, aB).result;
     }
 
     /// <summary>
@@ -805,7 +687,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<DateTime> SelectValuesOfColumnAllRowsDateTime(string table, string returnColumns, params AB[] where)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsDateTime(d, table, returnColumns, where);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsDateTime(d, table, returnColumns, where).result;
     }
 
     /// <summary>
@@ -818,7 +700,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, string hledanySloupec, object vetsiNez, object mensiNez, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(d, tabulka, hledanySloupec, vetsiNez, mensiNez, aB);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(d, tabulka, hledanySloupec, vetsiNez, mensiNez, aB).result;
     }
 
     /// <summary>
@@ -830,12 +712,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<int> SelectValuesOfColumnInt(bool signed, string tabulka, string sloupecHledaný, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnInt(Signed(signed), tabulka, sloupecHledaný, abc);
+        return SqlOpsI.ci.SelectValuesOfColumnInt(Signed(signed), tabulka, sloupecHledaný, abc).result;
     }
 
     public List<byte> SelectValuesOfColumnByte(string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnByte(d, tabulka, sloupecHledaný, sloupecVeKteremHledat, hodnota);
+        return SqlOpsI.ci.SelectValuesOfColumnByte(d, tabulka, sloupecHledaný, sloupecVeKteremHledat, hodnota).result;
     }
 
     /// <summary>
@@ -848,42 +730,42 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<int> SelectValuesOfColumnInt(bool signed, string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnInt(Signed(signed), tabulka, sloupecHledaný, sloupecVeKteremHledat, hodnota);
+        return SqlOpsI.ci.SelectValuesOfColumnInt(Signed(signed), tabulka, sloupecHledaný, sloupecVeKteremHledat, hodnota).result;
     }
 
     private List<int> ReadValuesInt(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesInt(d, comm);
+        return SqlOpsI.ci.ReadValuesInt(d, comm).result;
     }
 
     public List<string> ReadValuesStringTrim(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesStringTrim(d, comm);
+        return SqlOpsI.ci.ReadValuesStringTrim(d, comm).result;
     }
 
     private List<string> ReadValuesString(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesString(d, comm);
+        return SqlOpsI.ci.ReadValuesString(d, comm).result;
     }
 
     private List<byte> ReadValuesByte(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesByte(d, comm);
+        return SqlOpsI.ci.ReadValuesByte(d, comm).result;
     }
 
     private List<DateTime> ReadValuesDateTime(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesDateTime(d, comm);
+        return SqlOpsI.ci.ReadValuesDateTime(d, comm).result;
     }
 
     private List<long> ReadValuesLong(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesLong(d, comm);
+        return SqlOpsI.ci.ReadValuesLong(d, comm).result;
     }
 
     private List<short> ReadValuesShort(SqlCommand comm)
     {
-        return SqlOpsI.ci.ReadValuesShort(d, comm);
+        return SqlOpsI.ci.ReadValuesShort(d, comm).result;
     }
 
     /// <summary>
@@ -892,7 +774,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="table"></param>
     public void sp_rename(string table)
     {
-        return SqlOpsI.ci.sp_rename(d, table);
+         SqlOpsI.ci.sp_rename(d, table);
     }
 
     /// <summary>
@@ -900,7 +782,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public List<string> SelectGetAllTablesInDB()
     {
-        return SqlOpsI.ci.SelectGetAllTablesInDB(d);
+        return SqlOpsI.ci.SelectGetAllTablesInDB(d).result;
     }
 
 
@@ -910,25 +792,25 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public List<string> SelectColumnsNamesOfTable(string p)
     {
-        return SqlOpsI.ci.SelectColumnsNamesOfTable(d, p);
+        return SqlOpsI.ci.SelectColumnsNamesOfTable(d, p).result;
     }
 
     public bool SelectExistsTable(string p)
     {
-        return SqlOpsI.ci.SelectExistsTable(d, p);
+        return SqlOpsI.ci.SelectExistsTable(d, p).result;
     }
 
     private DataTable SelectDataTable(SqlConnection conn, string sql, params object[] _params)
     {
-        return SqlOpsI.ci.SelectDataTable(d, conn, sql, _params);
+        return SqlOpsI.ci.SelectDataTable(d, conn, sql, _params).result;
     }
     public DataTable SelectDataTable(SqlConnection conn, SqlCommand comm)
     {
-        return SqlOpsI.ci.SelectDataTable(d, conn, comm);
+        return SqlOpsI.ci.SelectDataTable(d, conn, comm).result;
     }
     public bool SelectExistsTable(string p, SqlConnection conn)
     {
-        return SqlOpsI.ci.SelectExistsTable(d, p, conn);
+        return SqlOpsI.ci.SelectExistsTable(d, p, conn).result;
     }
 
     /// <summary>
@@ -939,7 +821,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, ab);
+        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, ab).result;
     }
 
     /// <summary>
@@ -948,12 +830,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id)
     {
-        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, sloupecID, id);
+        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, sloupecID, id).result;
     }
 
     public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id, string orderByColumn, SortOrder sortOrder)
     {
-        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, sloupecID, id, orderByColumn, sortOrder);
+        var data = new SqlData { orderBy = orderByColumn, sortOrder = sortOrder };
+        return SqlOpsI.ci.SelectDataTableSelective(d, tabulka, nazvySloupcu, sloupecID, id).result;
     }
 
     /// <summary>
@@ -961,7 +844,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTable(string tableName, int limit, string sloupecWhere, object hodnotaWhere)
     {
-        return SqlOpsI.ci.SelectDataTable(d, tableName, limit, sloupecWhere, hodnotaWhere);
+        return SqlOpsI.ci.SelectDataTable(d, tableName, limit, sloupecWhere, hodnotaWhere).result;
     }
 
 
@@ -976,22 +859,22 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableSelectiveLikeContains(string tabulka, string nazvySloupcu, string sloupecID, string textPartOfCity)
     {
-        return SqlOpsI.ci.SelectDataTableSelectiveLikeContains(d, tabulka, nazvySloupcu, sloupecID, textPartOfCity);
+        return SqlOpsI.ci.SelectDataTableSelectiveLikeContains(d, tabulka, nazvySloupcu, sloupecID, textPartOfCity).result;
     }
 
     public DataTable SelectAllRowsOfColumns(string table, string vratit, ABC abObsahuje, ABC abNeobsahuje, ABC abVetsiNez, ABC abMensiNez)
     {
-        return SqlOpsI.ci.SelectAllRowsOfColumns(d, table, vratit, abObsahuje, abNeobsahuje, abVetsiNez, abMensiNez);
+        return SqlOpsI.ci.SelectAllRowsOfColumns(d, table, vratit, abObsahuje, abNeobsahuje, abVetsiNez, abMensiNez).result;
     }
 
     public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectDataTableSelective(d, table, vraceneSloupce, where, whereIsNot);
+        return SqlOpsI.ci.SelectDataTableSelective(d, table, vraceneSloupce, where, whereIsNot).result;
     }
 
     public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot, ABC greaterThan, ABC lowerThan)
     {
-        return SqlOpsI.ci.SelectDataTableSelective(d, table, vraceneSloupce, where, whereIsNot, greaterThan, lowerThan);
+        return SqlOpsI.ci.SelectDataTableSelective(d, table, vraceneSloupce, where, whereIsNot, greaterThan, lowerThan).result;
     }
 
     /// <summary>
@@ -1005,7 +888,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLastRows(string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
     {
-        return SqlOpsI.ci.SelectDataTableLastRows(d, tableName, limit, columns, sloupecOrder, where);
+        var data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, columns, sloupecOrder, where).result;
     }
 
     /// <summary>
@@ -1019,31 +903,33 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLastRows(string tableName, int limit, string columns, string sloupecOrder, ABC whereIs, ABC whereIsNot, ABC whereGreaterThan, ABC whereLowerThan)
     {
-        return SqlOpsI.ci.SelectDataTableLastRows(d, tableName, limit, columns, sloupecOrder, whereIs, whereIsNot, whereGreaterThan, whereLowerThan);
+        var data = new SqlData { limit = limit, orderBy = sloupecOrder };
+        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, columns, whereIs, whereIsNot, whereGreaterThan, whereLowerThan).result;
     }
+    
 
     /// <summary>
     /// 2
     /// </summary>
     public DataTable SelectAllRowsOfColumns(string p, string selectSloupce)
     {
-        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, selectSloupce);
+        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, selectSloupce).result;
     }
 
     public DataTable SelectAllRowsOfColumns(string p, string ziskaneSloupce, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, ziskaneSloupce, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, ziskaneSloupce, idColumnName, idColumnValue).result;
     }
     public DataTable SelectAllRowsOfColumns(string p, string ziskaneSloupce, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, ziskaneSloupce, ab);
+        return SqlOpsI.ci.SelectAllRowsOfColumns(d, p, ziskaneSloupce, ab).result;
     }
     /// <summary>
     /// Vrátí mi všechny položky ze sloupce 
     /// </summary>
     public DataTable SelectGreaterThan(string tableName, string tableColumn, object hodnotaOd)
     {
-        return SqlOpsI.ci.SelectGreaterThan(d, tableName, tableColumn, hodnotaOd);
+        return SqlOpsI.ci.SelectGreaterThan(d, tableName, tableColumn, hodnotaOd).result;
     }
 
     /// <summary>
@@ -1057,7 +943,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableColumns(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
-        return SqlOpsI.ci.SelectDataTableColumns(d, tableName, limit, sloupce, sloupecWhere, hodnotaWhere);
+        var data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectDataTableColumns(data, tableName, sloupce, sloupecWhere, hodnotaWhere).result;
     }
 
 
@@ -1065,13 +952,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params object[] fixniHodnotyOdNuly)
     {
-        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, fixniHodnotyOdNuly);
+        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, fixniHodnotyOdNuly).result;
     }
 
 
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, whereIs, whereIsNot);
+        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, whereIs, whereIsNot).result;
     }
 
     /// <summary>
@@ -1086,7 +973,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where);
+        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where).result;
     }
 
     /// <summary>
@@ -1095,12 +982,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public object[] SelectOneRowInnerJoinReader(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        return SqlOpsI.ci.SelectOneRowInnerJoinReader(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where);
+        return SqlOpsI.ci.SelectOneRowInnerJoinReader(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where).result;
     }
 
     public object[] SelectOneRowInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
     {
-        return SqlOpsI.ci.SelectOneRowInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where);
+        return SqlOpsI.ci.SelectOneRowInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly, where).result;
     }
 
     /// <summary>
@@ -1108,7 +995,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly)
     {
-        return SqlOpsI.ci.SelectTableInnerJoin(tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly);
+        
+        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly).result;
     }
 
     /// <summary>
@@ -1120,16 +1008,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DateTime SelectMaxDateTime(string table, string column, ABC whereIs, ABC whereIsNot, DateTime getIfNotFound)
     {
-        return SqlOpsI.ci.SelectMaxDateTime(d, table, column, whereIs, whereIsNot, getIfNotFound);
+        var data = new SqlData { getIfNotFound = getIfNotFound };
+        return SqlOpsI.ci.SelectMaxDateTime(data, table, column, whereIs, whereIsNot).result;
     }
 
     public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string sloupec, int maxRows, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, sloupec, maxRows, whereIs, whereIsNot);
+        var data = new SqlData { limit = maxRows };
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, sloupec, whereIs, whereIsNot).result;
     }
     public DataTable SelectDataTableGroupBy(string table, string columns, string groupByColumns)
     {
-        return SqlOpsI.ci.SelectDataTableGroupBy(d, table, columns, groupByColumns);
+        var data = new SqlData { GroupByColumn = groupByColumns};
+        return SqlOpsI.ci.SelectDataTableGroupBy(data, table, columns).result;
     }
 
 
@@ -1143,7 +1034,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long SelectLastIDFromTable(string p, string sloupecID)
     {
-        return SqlOpsI.ci.SelectLastIDFromTable(d, p, sloupecID);
+        return SqlOpsI.ci.SelectLastIDFromTable(d, p, sloupecID).result;
     }
 
     /// <summary>
@@ -1181,17 +1072,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public int SelectFirstAvailableIntIndex(bool signed, string table, string column)
     {
-        return SqlOpsI.ci.SelectFirstAvailableIntIndex(Signed(signed), table, column);
+        return SqlOpsI.ci.SelectFirstAvailableIntIndex(Signed(signed), table, column).result;
     }
 
     public short SelectFirstAvailableShortIndex(bool signed, string table, string column)
     {
-        return SqlOpsI.ci.SelectFirstAvailableShortIndex(Signed(signed), table, column);
+        return SqlOpsI.ci.SelectFirstAvailableShortIndex(Signed(signed), table, column).result;
     }
 
     public short SelectMaxShortMinValue(string table, string column)
     {
-        return SqlOpsI.ci.SelectMaxShortMinValue(d, table, column);
+        return SqlOpsI.ci.SelectMaxShortMinValue(d, table, column).result;
     }
 
     /// <summary>
@@ -1203,12 +1094,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int SelectMaxIntMinValue(string table, string column)
     {
-        return SqlOpsI.ci.SelectMaxIntMinValue(d, table, column);
+        return SqlOpsI.ci.SelectMaxIntMinValue(d, table, column).result;
     }
 
     public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectMaxDateTime(d, table, column, ab);
+        return SqlOpsI.ci.SelectMaxDateTime(d, table, column, ab).result;
     }
 
     /// <summary>
@@ -1219,61 +1110,61 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int SelectMaxInt(string table, string column)
     {
-        return SqlOpsI.ci.SelectMaxInt(table, column);
+        return SqlOpsI.ci.SelectMaxInt(d, table, column).result;
     }
 
     public int SelectMaxIntMinValue(string table, string sloupec, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectMaxIntMinValue(d, table, sloupec, aB);
+        return SqlOpsI.ci.SelectMaxIntMinValue(d, table, sloupec, aB).result;
     }
 
     public short SelectMinShortMinValue(string table, string sloupec, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectMinShortMinValue(d, table, sloupec, aB);
+        return SqlOpsI.ci.SelectMinShortMinValue(d, table, sloupec, aB).result;
     }
 
     public byte SelectMaxByte(string table, string column, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectMaxByte(d, table, column, aB);
+        return SqlOpsI.ci.SelectMaxByte(d, table, column, aB).result;
     }
 
     public int SelectMinInt(string table, string column)
     {
-        return SqlOpsI.ci.SelectMaxByte(d, table, column);
+        return SqlOpsI.ci.SelectMaxByte(d, table, column).result;
     }
 
 
 
     public Guid SelectNewId()
     {
-        return SqlOpsI.ci.SelectNewId(d);
+        return SqlOpsI.ci.SelectNewId(d).result;
     }
 
 
 
     public long SelectCount(string table)
     {
-        return SqlOpsI.ci.SelectCount(d, table);
+        return SqlOpsI.ci.SelectCount(d, table).result;
     }
 
     public long SelectCountOrMinusOne(string table)
     {
-        return SqlOpsI.ci.SelectCountOrMinusOne(d, table);
+        return SqlOpsI.ci.SelectCountOrMinusOne(d, table).result;
     }
 
     public long SelectCount(string table, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectCount(d, table, abc);
+        return SqlOpsI.ci.SelectCount(d, table, abc).result;
     }
 
     public List<long> SelectGroupByLong(string table, string GroupByColumn, params AB[] where)
     {
-        return SqlOpsI.ci.SelectGroupByLong(d, table, GroupByColumn, where);
+        return SqlOpsI.ci.SelectGroupByLong(d, table, GroupByColumn, where).result;
     }
 
     public List<int> SelectGroupByInt(string table, string GroupByColumn, params AB[] where)
     {
-        return SqlOpsI.ci.SelectGroupByInt(d, table, GroupByColumn, where);
+        return SqlOpsI.ci.SelectGroupByInt(d, table, GroupByColumn, where).result;
     }
 
     /// <summary>
@@ -1287,12 +1178,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<short> SelectGroupByShort(bool signed, string table, string GroupByColumn, string IDColumnName, object IDColumnValue)
     {
-        return SqlOpsI.ci.SelectGroupByShort(Signed(signed), table, GroupByColumn, IDColumnName, IDColumnValue);
+        return SqlOpsI.ci.SelectGroupByShort(Signed(signed), table, GroupByColumn, IDColumnName, IDColumnValue).result;
     }
 
     public List<long> SelectGroupByLong(bool signed, string table, string GroupByColumn, string IDColumnName, object IDColumnValue)
     {
-        return SqlOpsI.ci.SelectGroupByLong(Signed(signed), table, GroupByColumn, IDColumnName, IDColumnValue);
+        return SqlOpsI.ci.SelectGroupByLong(Signed(signed), table, GroupByColumn, IDColumnName, IDColumnValue).result;
     }
 
     /// <summary>
@@ -1306,18 +1197,18 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public uint SelectSumOfViewCount(string table, long idEntity)
     {
-        return SqlOpsI.ci.SelectSumOfViewCount(d, table, idEntity);
+        return SqlOpsI.ci.SelectSumOfViewCount(d, table, idEntity).result;
     }
 
 
     public int SelectSum(string table, string columnToSum, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectSum(d, table, columnToSum, aB);
+        return SqlOpsI.ci.SelectSum(d, table, columnToSum, aB).result;
     }
 
     public int SelectSumByte(string table, string columnToSum, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectSumByte(table, columnToSum, aB);
+        return SqlOpsI.ci.SelectSumByte(d, table, columnToSum, aB).result;
     }
 
     /// <summary>
@@ -1326,7 +1217,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int SelectFindOutNumberOfRows(string tabulka)
     {
-        return SqlOpsI.ci.SelectFindOutNumberOfRows(d, tabulka);
+        return SqlOpsI.ci.SelectFindOutNumberOfRows(d, tabulka).result;
     }
 
     /// <summary>
@@ -1334,7 +1225,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public List<string> SelectNamesOfIDs(string tabulka, List<int> idFces)
     {
-        return SqlOpsI.ci.SelectNamesOfIDs(d, tabulka, idFces);
+        return SqlOpsI.ci.SelectNamesOfIDs(d, tabulka, idFces).result;
     }
 
     /// <summary>
@@ -1342,7 +1233,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int SelectID(bool signed, string tabulka, string nazevSloupce, object hodnotaSloupce)
     {
-        return SqlOpsI.ci.SelectID(Signed(signed), tabulka, nazevSloupce, hodnotaSloupce);
+        return SqlOpsI.ci.SelectID(Signed(signed), tabulka, nazevSloupce, hodnotaSloupce).result;
     }
 
     /// <summary>
@@ -1350,22 +1241,23 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public string SelectNameOfID(string tabulka, long id)
     {
-        return SqlOpsI.ci.SelectNameOfID(d, tabulka, id);
+        return SqlOpsI.ci.SelectNameOfID(d, tabulka, id).result;
     }
 
     public string SelectNameOfID(string tabulka, long id, string nameColumnID)
     {
-        return SqlOpsI.ci.SelectNameOfID(d, tabulka, id, nameColumnID);
+        return SqlOpsI.ci.SelectNameOfID(d, tabulka, nameColumnID, id).result;
     }
 
     public string SelectNameOfIDOrSE(string tabulka, string idColumnName, int id)
     {
-        return SqlOpsI.ci.SelectNameOfIDOrSE(d, tabulka, idColumnName, id);
+        return SqlOpsI.ci.SelectNameOfIDOrSE(d, tabulka, idColumnName, id).result;
     }
 
     public object[] SelectRowReaderLimit(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
-        return SqlOpsI.ci.SelectRowReaderLimit(d, tableName, limit, sloupce, sloupecWhere, hodnotaWhere);
+        SqlData data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectRowReaderLimit(data, tableName, sloupce, sloupecWhere, hodnotaWhere).result;
     }
 
     /// <summary>
@@ -1379,14 +1271,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object[] SelectSelectiveOneRow(string tabulka, string nazvySloupcu, string sloupecID, object id)
     {
-        return SqlOpsI.ci.SelectSelectiveOneRow(d, tabulka, nazvySloupcu, sloupecID, id);
+        return SqlOpsI.ci.SelectSelectiveOneRow(d, tabulka, nazvySloupcu, sloupecID, id).result;
     }
 
 
 
     public object[] SelectRowReader(string tabulka, string nazvySloupcu, string sloupecID, object id)
     {
-        return SqlOpsI.ci.SelectRowReader(d,tabulka, nazvySloupcu, sloupecID, id);
+        return SqlOpsI.ci.SelectRowReader(d,tabulka, nazvySloupcu, sloupecID, id).result;
     }
 
     /// <summary>
@@ -1396,7 +1288,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private object[] SelectRowReader(SqlCommand comm)
     {
-        return SqlOpsI.ci.SelectRowReader(d, comm);
+        return SqlOpsI.ci.SelectRowReader(d, comm).result;
     }
 
     /// <summary>
@@ -1408,12 +1300,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public object[] SelectSelectiveOneRow(string table, string vratit, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectSelectiveOneRow(d, table, vratit, ab);
+        return SqlOpsI.ci.SelectSelectiveOneRow(d, table, vratit, ab).result;
     }
 
     public bool SelectExistsCombination(string p, params AB[] aB)
     {
-        return SqlOpsI.ci.SelectExistsCombination(d, p, aB);
+        return SqlOpsI.ci.SelectExistsCombination(d, p, aB).result;
     }
 
     /// <summary>
@@ -1421,12 +1313,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public bool SelectExistsCombination(string p, ABC aB)
     {
-        return SqlOpsI.ci.SelectExistsCombination(d, p, aB);
+        return SqlOpsI.ci.SelectExistsCombination(d, p, aB).result;
     }
 
     public bool SelectExistsCombination(string p, ABC where, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectExistsCombination(d, p, where, whereIsNot);
+        return SqlOpsI.ci.SelectExistsCombination(d, p, where, whereIsNot).result;
     }
 
     /// <summary>
@@ -1434,7 +1326,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public bool SelectExists(string tabulka, string sloupec, object hodnota)
     {
-        return SqlOpsI.ci.SelectExists(d, tabulka, sloupec, hodnota);
+        return SqlOpsI.ci.SelectExists(d, tabulka, sloupec, hodnota).result;
     }
 
     //public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, string whereColumn, object whereValue)
@@ -1452,7 +1344,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectCellDataTableShortOneRow(Signed(signed), table, vracenySloupec, abc);
+        return SqlOpsI.ci.SelectCellDataTableShortOneRow(Signed(signed), table, vracenySloupec, abc).result;
     }
 
     /// <summary>
@@ -1464,7 +1356,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, ABC whereIs, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, whereIs, whereIsNot);
+        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, whereIs, whereIsNot).result;
     }
 
     /// <summary>
@@ -1477,7 +1369,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long SelectCellDataTableLongOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectCellDataTableLongOneRow(Signed(signed), table, vracenySloupec, abc);
+        return SqlOpsI.ci.SelectCellDataTableLongOneRow(Signed(signed), table, vracenySloupec, abc).result;
     }
 
     /// <summary>
@@ -1490,7 +1382,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1503,13 +1395,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long SelectCellDataTableLongOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableLongOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableLongOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     public DateTime SelectCellDataTableDateTimeOneRow(string table, string vracenySloupec, DateTime getIfNotFound, string idColumnName, object idColumnValue)
     {
         d.getIfNotFound = getIfNotFound;
-        return SqlOpsI.ci.SelectCellDataTableDateTimeOneRow(d, table, vracenySloupec, )
+        return SqlOpsI.ci.SelectCellDataTableDateTimeOneRow(d, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1523,7 +1415,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DateTime SelectCellDataTableDateTimeOneRow(string table, string vracenySloupec, DateTime getIfNotFound, ABC where, ABC whereIsNot)
     {
         var d = new SqlData { getIfNotFound = getIfNotFound };
-        return SqlOpsI.ci.SelectCellDataTableDateTimeOneRow(d, table, vracenySloupec, where, whereIsNot);
+        return SqlOpsI.ci.SelectCellDataTableDateTimeOneRow(d, table, vracenySloupec, where, whereIsNot).result;
     }
 
     /// <summary>
@@ -1537,12 +1429,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public bool? SelectCellDataTableNullableBoolOneRow(string table, string vracenySloupec, ABC where, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, where, whereIsNot);
+        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, where, whereIsNot).result;
     }
 
     public bool SelectCellDataTableBoolOneRow(string table, string vracenySloupec, ABC where, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, where, whereIsNot);
+        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, where, whereIsNot).result;
     }
 
     /// <summary>
@@ -1550,7 +1442,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public byte SelectCellDataTableByteOneRow(string table, string vracenySloupec, params AB[] where)
     {
-        return SqlOpsI.ci.SelectCellDataTableByteOneRow(d, table, vracenySloupec, where);
+        return SqlOpsI.ci.SelectCellDataTableByteOneRow(d, table, vracenySloupec, where).result;
     }
 
     /// <summary>
@@ -1563,7 +1455,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, abc);
+        return SqlOpsI.ci.SelectCellDataTableIntOneRow(Signed(signed), table, vracenySloupec, abc).result;
     }
 
     /// <summary>
@@ -1576,17 +1468,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public byte SelectCellDataTableByteOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableByteOneRow(d, table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableByteOneRow(d, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     public bool SelectCellDataTableBoolOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableBoolOneRow(d, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     public bool? SelectCellDataTableNullableBoolOneRow(string table, string vracenySloupec, params AB[] abc)
     {
-        return SqlOpsI.ci.SelectCellDataTableNullableBoolOneRow(d, table, vracenySloupec, abc);
+        return SqlOpsI.ci.SelectCellDataTableNullableBoolOneRow(d, table, vracenySloupec, abc).result;
     }
 
     /// <summary>
@@ -1599,7 +1491,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableShortOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableShortOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1614,7 +1506,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public float SelectCellDataTableFloatOneRow(bool signed, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableFloatOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableFloatOneRow(Signed(signed), table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1629,12 +1521,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public float SelectCellDataTableFloatOneRow(bool signed, string table, string vracenySloupec, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectCellDataTableFloatOneRow(Signed(signed), table, vracenySloupec, ab);
+        return SqlOpsI.ci.SelectCellDataTableFloatOneRow(Signed(signed), table, vracenySloupec, ab).result;
     }
 
     public object SelectCellDataTableObjectOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableObjectOneRow(d, table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableObjectOneRow(d, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1646,7 +1538,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public string SelectCellDataTableStringOneRow(string tabulka, string nazvySloupcu, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, tabulka, nazvySloupcu, ab);
+        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, tabulka, nazvySloupcu, ab).result;
     }
 
 
@@ -1654,7 +1546,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public string SelectCellDataTableStringOneLastRow(string table, string vracenySloupec, string orderByDesc, string idColumnName, object idColumnValue)
     {
         var data = new SqlData { orderBy = orderByDesc, sortOrder = SortOrder.Descending };
-        return SqlOpsI.ci.SelectCellDataTableStringOneRow(data, table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableStringOneRow(data, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1668,7 +1560,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public string SelectCellDataTableStringOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
-        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, table, vracenySloupec, idColumnName, idColumnValue);
+        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, table, vracenySloupec, idColumnName, idColumnValue).result;
     }
 
     /// <summary>
@@ -1681,7 +1573,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public string SelectCellDataTableStringOneRow(string table, string vracenySloupec, ABC where, ABC whereIsNot)
     {
-        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, table, vracenySloupec, where, whereIsNot);
+        return SqlOpsI.ci.SelectCellDataTableStringOneRow(d, table, vracenySloupec, where, whereIsNot).result;
     }
 
     /// <summary>
@@ -1693,7 +1585,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableAllRows(string TableName, string whereSloupec, object whereValue)
     {
-        return SqlOpsI.ci.SelectDataTableAllRows(d, TableName, whereSloupec, whereValue);
+        return SqlOpsI.ci.SelectDataTableAllRows(d, TableName, whereSloupec, whereValue).result;
     }
 
     /// <summary>
@@ -1701,7 +1593,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTableAllRows(string table)
     {
-        return SqlOpsI.ci.SelectDataTableAllRows(d, table);
+        return SqlOpsI.ci.SelectDataTableAllRows(d, table).result;
     }
 
     /// <summary>
@@ -1717,21 +1609,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public DataTable SelectDataTableLastRows(string tableName, int limit, string sloupecID, params AB[] abc)
     {
         var data = new SqlData { limit = limit };
-        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, sloupecID, abc);
-    }
-
-    /// <summary>
-    /// Nepoužívat a smazat !!!
-    /// Vrátí null když nenalezne žádný řádek
-    /// </summary>
-    public object[] SelectOneRow(string TableName, string nazevSloupce, object hodnotaSloupce)
-    {
-        return SqlOpsI.ci.SelectDataTableLastRows(d, TableName, "*", nazevSloupce, hodnotaSloupce).result;
+        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, sloupecID, abc).result;
     }
 
     public object[] SelectOneRow(string TableName, string nazevSloupce, object hodnotaSloupce)
     {
-        return SqlOpsI.ci.SelectOneRow(d, TableName, nazevSloupce, hodnotaSloupce);
+        return SqlOpsI.ci.SelectOneRow(d, TableName, nazevSloupce, hodnotaSloupce).result;
     }
 
     /// <summary>
@@ -1743,18 +1626,18 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public List<string> SelectValuesOfColumnAllRowsStringTrim(string tabulka, string sloupec)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsStringTrim(d, tabulka, sloupec);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsStringTrim(d, tabulka, sloupec).result;
     }
 
     public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, string sloupec, params AB[] ab)
     {
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(d, tabulka, sloupec, ab);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(d, tabulka, sloupec, ab).result;
     }
 
     public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, int limit, string sloupec, params AB[] ab)
     {
         var data = new SqlData { limit  = limit};
-        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(data, tabulka, sloupec, ab);
+        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(data, tabulka, sloupec, ab).result;
     }
 
     /// <summary>
@@ -1762,17 +1645,18 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public DataTable SelectDataTable(string tableName, int limit)
     {
-        
+        var data = new SqlData { limit = limit };
+        return SqlOpsI.ci.SelectDataTable(data, tableName).result;
     }
 
     public int UpdateWhereIsLowerThan(string table, string columnToUpdate, object newValue, string columnLowerThan, DateTime valueLowerThan, params AB[] where)
     {
-        return SqlOpsI.ci.UpdateWhereIsLowerThan(d, table, columnToUpdate, newValue, columnLowerThan, valueLowerThan, where);
+        return SqlOpsI.ci.UpdateWhereIsLowerThan(d, table, columnToUpdate, newValue, columnLowerThan, valueLowerThan, where).affectedRows;
     }
 
     public void UpdateValuesCombinationCombinedWhere(string TableName, ABC sets, ABC where)
     {
-        return SqlOpsI.ci.UpdateValuesCombinationCombinedWhere(d, TableName, sets, where);
+         SqlOpsI.ci.UpdateValuesCombinationCombinedWhere(d, TableName, sets, where);
     }
 
     /// <summary>
@@ -1786,7 +1670,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public float UpdatePlusRealValue(string table, string sloupecKUpdate, float pridej, string sloupecID, int id)
     {
-        return SqlOpsI.ci.UpdatePlusRealValue(d, table, sloupecKUpdate, pridej, sloupecID, id);
+        return SqlOpsI.ci.UpdatePlusRealValue(d, table, sloupecKUpdate, pridej, sloupecID, id).result;
     }
 
     /// <summary>
@@ -1799,7 +1683,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public bool UpdateSwitchBool(string tablename, string updateColumn, string idColumn, object idValue)
     {
-        return SqlOpsI.ci.UpdateSwitchBool(d, tablename, updateColumn, idColumn, idValue);
+        return SqlOpsI.ci.UpdateSwitchBool(d, tablename, updateColumn, idColumn, idValue).result;
     }
 
     /// <summary>
@@ -1807,7 +1691,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int UpdateAppendStringValue(string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
     {
-        return SqlOpsI.ci.UpdateAppendStringValue(d, tableName, sloupecAppend, hodnotaAppend, sloupecID, hodnotaID);
+        return SqlOpsI.ci.UpdateAppendStringValue(d, tableName, sloupecAppend, hodnotaAppend, sloupecID, hodnotaID).affectedRows;
     }
 
     /// <summary>
@@ -1821,12 +1705,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int UpdateSumIntValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object id)
     {
-        return SqlOpsI.ci.UpdateSumIntValue(d, table, sloupecKUpdate, pridej, sloupecID, id);
+        return SqlOpsI.ci.UpdateSumIntValue(d, table, sloupecKUpdate, pridej, sloupecID, id).result;
     }
 
     public long UpdateSumLongValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object id)
     {
-        return SqlOpsI.ci.UpdateSumLongValue(d, table, sloupecKUpdate, pridej, sloupecKUpdate, id);
+        return SqlOpsI.ci.UpdateSumLongValue(d, table, sloupecKUpdate, pridej, sloupecKUpdate, id).result;
     }
 
     /// <summary>
@@ -1839,7 +1723,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public short UpdateMinusShortValue(string table, string sloupecKUpdate, short odeber, params AB[] abc)
     {
-        return SqlOpsI.ci.UpdateMinusShortValue(d, table, sloupecKUpdate, odeber, abc);
+        return SqlOpsI.ci.UpdateMinusShortValue(d, table, sloupecKUpdate, odeber, abc).result;
     }
 
     /// <summary>
@@ -1852,50 +1736,22 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public ushort UpdateMinusNormalizedShortValue(string table, string sloupecKUpdate, ushort odeber, params AB[] abc)
     {
-        return SqlOpsI.ci.UpdateMinusNormalizedShortValue(d, table, sloupecKUpdate, odeber, abc);
+        return SqlOpsI.ci.UpdateMinusNormalizedShortValue(d, table, sloupecKUpdate, odeber, abc).result;
     }
 
     public short UpdateMinusShortValue(string table, string sloupecKUpdate, short odeber, string sloupecID, object hodnotaID)
     {
-        short d = SelectCellDataTableShortOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-        if (d == short.MaxValue)
-        {
-            odeber = 0;
-        }
-        else
-        {
-            odeber = (short)(d - odeber);
-        }
-        Update(table, sloupecKUpdate, odeber, sloupecID, hodnotaID);
-        return odeber;
+        return SqlOpsI.ci.UpdateMinusShortValue(d, table, sloupecKUpdate, odeber, sloupecID, hodnotaID).result;
     }
 
     public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
     {
-        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
-        // Check for signed is useless - in signed or not always return maxValue
-        if (d == int.MaxValue)
-        {
-            return d;
-        }
-        int n = pridej;
-        n = d + pridej;
-        Update(table, sloupecKUpdate, n, abc);
-        return n;
+        return SqlOpsI.ci.UpdatePlusIntValue(d, table, sloupecKUpdate, pridej, abc).affectedRows;
     }
 
     public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object hodnotaID)
     {
-        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-
-        if (d == int.MaxValue)
-        {
-            return d;
-        }
-        int n = pridej;
-        n = d + pridej;
-        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
-        return n;
+        return SqlOpsI.ci.UpdatePlusIntValue(d, table, sloupecKUpdate, pridej, sloupecID, hodnotaID).result;
     }
 
     /// <summary>
@@ -1909,74 +1765,27 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int UpdateMinusIntValue(string table, string sloupecKUpdate, int odeber, params AB[] abc)
     {
-        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
-        if (d == int.MaxValue)
-        {
-            return d;
-        }
-        int n = odeber;
-        n = d - odeber;
-
-        Update(table, sloupecKUpdate, n, abc);
-        return n;
+        return SqlOpsI.ci.UpdateMinusIntValue(d, table, sloupecKUpdate, odeber, abc).result;
     }
 
     public int UpdateMinusIntValue(string table, string sloupecKUpdate, int odeber, string sloupecID, object hodnotaID)
     {
-        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-        if (d == int.MinValue)
-        {
-            return d;
-        }
-        int n = odeber;
-        n = d - odeber;
-
-        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
-        return n;
+        return SqlOpsI.ci.UpdateMinusIntValue(d, table, sloupecKUpdate, odeber, sloupecID, hodnotaID).result;
     }
 
     public long UpdateMinusLongValue(string table, string sloupecKUpdate, long odeber, string sloupecID, object hodnotaID)
     {
-        long d = SelectCellDataTableLongOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-
-        if (d == long.MaxValue)
-        {
-            return d;
-        }
-        long n = odeber;
-        n = d - odeber;
-
-        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
-        return n;
+        return SqlOpsI.ci.UpdateMinusLongValue(d, table, sloupecKUpdate, odeber, sloupecID, hodnotaID).result;
     }
 
     public short UpdatePlusShortValue(string table, string sloupecKUpdate, short pridej, string sloupecID, object hodnotaID)
     {
-        short d = SelectCellDataTableShortOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-        if (d == short.MaxValue)
-        {
-            return d;
-        }
-        short n = pridej;
-        n = (short)(d + pridej);
-        //}
-        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
-        return n;
+        return SqlOpsI.ci.UpdatePlusShortValue(d, table, sloupecKUpdate, pridej, sloupecID, hodnotaID).result;
     }
 
     public byte UpdateMinusByteValue(string table, string sloupecKUpdate, byte pridej, string sloupecID, object hodnotaID)
     {
-        byte d = SelectCellDataTableByteOneRow(table, sloupecKUpdate, sloupecID, hodnotaID);
-        if (d == 255)
-        {
-            return d;
-        }
-        else
-        {
-            pridej = (byte)(d + pridej);
-        }
-        Update(table, sloupecKUpdate, pridej, sloupecID, hodnotaID);
-        return pridej;
+        return SqlOpsI.ci.UpdateMinusByteValue(d, table, sloupecKUpdate, pridej, sloupecID, hodnotaID).result;
     }
 
     /// <summary>
@@ -1990,17 +1799,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public int UpdateAppendStringValueCheckExistsOneRow(string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
     {
-        string aktual = SelectCellDataTableStringOneRow(tableName, sloupecAppend, sloupecID, hodnotaID);
-
-        List<string> d = new List<string>(SH.Split(aktual, ","));
-        if (!d.Contains(hodnotaAppend))
-        {
-            aktual += hodnotaAppend + ",";
-            string save = SH.Join(',', d.ToArray());
-
-            return Update(tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
-        }
-        return 0;
+        return SqlOpsI.ci.UpdateAppendStringValueCheckExistsOneRow(d, tableName, sloupecAppend, hodnotaAppend, sloupecID, hodnotaID).affectedRows;
     }
 
     /// <summary>
@@ -2008,25 +1807,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int UpdateCutStringValue(string tableName, string sloupecCut, string hodnotaCut, string sloupecID, object hodnotaID)
     {
-        string aktual = SelectCellDataTableStringOneRow(tableName, sloupecCut, sloupecID, hodnotaID);
-
-        List<string> d = new List<string>(SH.Split(aktual, ","));
-        d.Remove(hodnotaCut);
-        string save = SH.JoinWithoutTrim(",", d);
-        return Update(tableName, sloupecCut, save, sloupecID, hodnotaID);
-    }
-
-    /// <summary>
-    /// Conn nastaví automaticky
-    /// </summary>
-    public int Update(string table, string sloupecKUpdate, object n, string sloupecID, object id)
-    {
-        string sql = string.Format("UPDATE {0} SET {1}=@p0 WHERE {2} = @p1", table, sloupecKUpdate, sloupecID);
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameter(comm, 0, n);
-        AddCommandParameter(comm, 1, id);
-        //SqlException: String or binary data would be truncated.
-        return ExecuteNonQuery(comm);
+        return SqlOpsI.ci.UpdateCutStringValue(d, tableName, sloupecCut, hodnotaCut, sloupecID, hodnotaID).affectedRows;
     }
 
     /// <summary>
@@ -2035,80 +1816,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public int Update(string table, string sloupecKUpdate, object n, string sloupecID, object id)
     {
-        string sql = string.Format("UPDATE TOP(1) {0} SET {1}=@p1 WHERE {2} = @p2", table, sloupecKUpdate, sloupecID);
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameter(comm, 1, n);
-        AddCommandParameter(comm, 2, id);
-        return ExecuteNonQuery(comm);
+        return SqlOpsI.ci.Update(d, table, sloupecKUpdate, n, sloupecID, id).affectedRows;
     }
 
     public int Update(string table, string sloupecKUpdate, object n, params AB[] ab)
     {
-        int pridavatOd = 1;
-        string sql = string.Format("UPDATE TOP(1) {0} SET {1}=@p0", table, sloupecKUpdate) + GeneratorMsSql.CombinedWhere(new ABC(ab), ref pridavatOd);
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameter(comm, 0, n);
-        AddCommandParameteres(comm, 1, ab);
-        return ExecuteNonQuery(comm);
+        return SqlOpsI.ci.Update(d, table, sloupecKUpdate, n, ab).affectedRows;
     }
 
     private int Update(string table, string sloupecKUpdate, int n, ABC abc)
     {
-        int parametrSet = abc.Length;
-        string sql = string.Format("UPDATE {0} SET {1}=@p" + parametrSet + " {2}", table, sloupecKUpdate, GeneratorMsSql.CombinedWhere(abc));
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameter(comm, parametrSet, n);
-        for (int i = 0; i < parametrSet; i++)
-        {
-            AddCommandParameter(comm, i, abc[i].B);
-        }
-        int vr = ExecuteNonQuery(comm);
-        return vr;
-    }
-
-
-    /// <summary>
-    /// Return count of rows affected
-    /// </summary>
-    /// <param name="table"></param>
-    /// <param name="columnToUpdate"></param>
-    /// <param name="newValue"></param>
-    /// <param name="abc"></param>
-    /// <returns></returns>
-    public int Update(string table, string columnToUpdate, object newValue, params AB[] abc)
-    {
-        int parametrSet = abc.Length;
-        string sql = string.Format("UPDATE {0} SET {1}=@p" + parametrSet + " {2}", table, columnToUpdate, GeneratorMsSql.CombinedWhere(abc));
-        SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameter(comm, parametrSet, newValue);
-        for (int i = 0; i < parametrSet; i++)
-        {
-            AddCommandParameter(comm, i, abc[i].B);
-        }
-        int vr = ExecuteNonQuery(comm);
-        return vr;
-    }
-
-    public int UpdateMany(string table, string columnID, object valueID, params AB[] update)
-    {
-        int vr = 0;
-        foreach (AB item in update)
-        {
-
-            string sql = string.Format("UPDATE {0} SET {1} = @p0 {2}", table, item.A, GeneratorMsSql.SimpleWhere("ID", 1));
-            SqlCommand comm = new SqlCommand(sql);
-            AddCommandParameter(comm, 0, item.B);
-            AddCommandParameter(comm, 1, valueID);
-
-            vr += ExecuteNonQuery(comm);
-        }
-        return vr;
-    }
-
-    public void UpdateValuesCombination(string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
-    {
-        ABC abc = new ABC(setsNameValue);
-        UpdateValuesCombination(TableName, nameOfColumn, valueOfColumn, abc.ToArray());
+        return SqlOpsI.ci.Update(d, table, sloupecKUpdate, n, abc).affectedRows;
     }
 
     /// <summary>
@@ -2116,18 +1834,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public void UpdateValuesCombination(string TableName, string nameOfColumn, object valueOfColumn, params AB[] sets)
     {
-        string setString = GeneratorMsSql.CombinedSet(sets);
-        //int pocetParametruSets = sets.Length;
-        int indexParametrWhere = sets.Length;
-        SqlCommand comm = new SqlCommand(string.Format("UPDATE {0} {1} WHERE {2}={3}", TableName, setString, nameOfColumn, "@p" + (indexParametrWhere).ToString()));
-        for (int i = 0; i < indexParametrWhere; i++)
-        {
-            // V takových případech se nikdy nepokoušej násobit, protože to vždy končí špatně
-            AddCommandParameter(comm, i, sets[i].B);
-        }
-        AddCommandParameter(comm, indexParametrWhere, valueOfColumn);
-        // NT-Při úpravách uprav i UpdateValuesCombinationCombinedWhere
-        ExecuteNonQuery(comm);
+        SqlOpsI.ci.UpdateValuesCombination(d, TableName, nameOfColumn, valueOfColumn, sets);
     }
 
 

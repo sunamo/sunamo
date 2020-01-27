@@ -575,20 +575,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return comm.ExecuteNonQuery();
     }
 
-    /// <summary>
-    /// Conn přidá automaticky
-    /// Název metody je sice OneRow ale updatuje to libovolný počet řádků které to najde pomocí where - je to moje interní pojmenování aby mě to někdy trklo, možná později přijdu na způsob jak updatovat jen jeden řádek.
-    /// </summary>
-    public int Update(SqlTransaction tran, string table, string sloupecKUpdate, object n, string sloupecID, object id)
-    {
-        string sql = string.Format("UPDATE {0} SET {1}=@p1 WHERE {2} = @p2", table, sloupecKUpdate, sloupecID);
-        SqlCommand comm = new SqlCommand(sql, conn, tran);
-        AddCommandParameter(comm, 1, n);
-        AddCommandParameter(comm, 2, id);
-        int vr = comm.ExecuteNonQuery();
-        return vr;
-    }
-
     public void UpdateValuesCombination(SqlTransaction tran, string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
     {
         ABC abc = new ABC(setsNameValue);

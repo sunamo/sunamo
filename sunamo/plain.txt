@@ -1,5 +1,1 @@
-﻿albums not show song, only artist and name
-samey - karaoke,youtube,video,yt video,This Christmas,100 Bottles,100,2012,4 Years Old,My
-profile jen profile, sunamo
-search - only basic
-addsong - no basic
+﻿

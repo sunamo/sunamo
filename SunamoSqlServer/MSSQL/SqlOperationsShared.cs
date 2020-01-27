@@ -916,11 +916,6 @@ public partial class SqlOperations : SqlServerHelper
 
     #region SelectCellDataTableShortOneRow
 
-    public SqlResult<short> SelectCellDataTableShortOneRow(SqlData data, string table, string vracenySloupec, string whereColumn, object whereValue)
-    {
-        return SelectCellDataTableShortOneRow(data, table, vracenySloupec, new AB(whereColumn, whereValue));
-    }
-
     /// <summary>
     /// Exists method without AB but has switched whereColumn and whereValue
     /// </summary>
@@ -1276,19 +1271,26 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<DataTable> SelectDataTableAllRows(SqlData data, string table)
     {
         return SelectDataTable(data, "SELECT * FROM " + table);
-    } 
+    }
     #endregion
 
     #region SelectValuesOfColumnAllRows {Type}
+
+    /// <summary>
+    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="tabulka"></param>
+    /// <param name="sloupec"></param>
+    /// <param name="idColumn"></param>
+    /// <param name="idValue"></param>
+    /// <returns></returns>
     public SqlResult<List<short>> SelectValuesOfColumnAllRowsShort(SqlData data, string tabulka, string sloupec, string idColumn, object idValue)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + data.limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT " + Distinct(data) + " TOP(" + data.limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
         AddCommandParameter(comm, 0, idValue);
         return ReadValuesShort(data, comm);
     }
-
-
-
 
     public SqlResult<List<string>> SelectValuesOfColumnAllRowsString(SqlData d, string tabulka, string sloupec, params AB[] aB)
     {
@@ -1298,7 +1300,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<List<string>> SelectValuesOfColumnAllRowsString(SqlData data, string tabulka, string sloupec, string whereSloupec, object whereHodnota)
     {
 
-        if (data.orderBy != string.Empty))
+        if (data.orderBy != string.Empty)
         {
             data.orderBy = " " + data.orderBy;
         }
@@ -1309,7 +1311,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public SqlResult<List<string>> SelectValuesOfColumnAllRowsString(SqlData data, string tabulka, string sloupec, ABC where, ABC whereIsNot)
     {
-        if (data.orderBy != string.Empty))
+        if (data.orderBy != string.Empty)
         {
             data.orderBy = " " + data.orderBy;
         }
@@ -1385,18 +1387,7 @@ public partial class SqlOperations : SqlServerHelper
         return ReadValuesShort(data, comm);
     }
 
-    /// <summary>
-    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
-    /// </summary>
-    /// <param name="tabulka"></param>
-    /// <param name="sloupec"></param>
-    /// <returns></returns>
-    public SqlResult<List<short>> SelectValuesOfColumnAllRowsShort(SqlData d, string tabulka, string sloupec, string idColumn, object idValue)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT " + Distinct(d) + " {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
-        AddCommandParameter(comm, 0, idValue);
-        return ReadValuesShort(d, comm);
-    }
+   
 
     public SqlResult<List<int>> SelectValuesOfColumnAllRowsInt(SqlData data, string tabulka, string hledanySloupec, params AB[] aB)
     {
@@ -1583,7 +1574,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<List<byte>> SelectValuesOfColumnAllRowsByte(SqlData data, string tabulka, string sloupec, params AB[] ab)
     {
         //List<byte> vr = new List<byte>();
-        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + limit + ") {0} FROM {1}", sloupec, tabulka + GeneratorMsSql.CombinedWhere(ab)));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + data. limit + ") {0} FROM {1}", sloupec, tabulka + GeneratorMsSql.CombinedWhere(ab)));
         AddCommandParameteres(comm, 0, ab);
         return ReadValuesByte(data, comm);
     }
@@ -1736,7 +1727,7 @@ public partial class SqlOperations : SqlServerHelper
             cmd += GeneratorMsSql.OrderBy(data.orderBy, data.sortOrder);
         }
 
-        SqlCommand comm = new SqlCommand(+ );
+        SqlCommand comm = new SqlCommand(cmd);
         AddCommandParameter(comm, 0, id);
         //NT
         return this.SelectDataTable(data, comm);
@@ -1780,7 +1771,7 @@ public partial class SqlOperations : SqlServerHelper
     /// </summary>
     public SqlResult<DataTable> SelectDataTable(SqlData data, string tableName, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") * FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT TOP(" + data.limit.ToString() + ") * FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(data, comm);
     } 
@@ -2090,7 +2081,7 @@ public partial class SqlOperations : SqlServerHelper
             var all2 = SelectValuesOfColumnAllRowsShort(d, table, sloupecID);
             var all = all2.result;
             //all.Sort();
-            short i = short.MinValue
+            short i = short.MinValue;
             for (; i < short.MaxValue; i++)
             {
                 if (!all.Contains(i))
@@ -2138,7 +2129,7 @@ public partial class SqlOperations : SqlServerHelper
             var all2 = SelectValuesOfColumnAllRowsLong(d, table, sloupecID);
             var all = all2.result;
             //all.Sort();
-            long i = long.MinValue
+            long i = long.MinValue;
             for (; i < long.MaxValue; i++)
             {
                 if (!all.Contains(i))
@@ -2311,7 +2302,7 @@ public partial class SqlOperations : SqlServerHelper
         return ExecuteScalarInt(d, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
     }
 
-    public SqlResult SelectMaxIntMinValue(SqlData data, string table, string sloupec, params AB[] aB)
+    public SqlResult<int> SelectMaxIntMinValue(SqlData data, string table, string sloupec, params AB[] aB)
     {
         SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB));
         AddCommandParameteres(comm, 0, aB);
@@ -2370,7 +2361,7 @@ public partial class SqlOperations : SqlServerHelper
         }
         ABC abc = new ABC(aB);
         var result = ExecuteScalar(data, "SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs());
-        return InstancesSqlResult.Byte(ToByte(result.result), result);
+        return InstancesSqlResult.Byte(ToByte(result), result);
     }
     #endregion
 
@@ -2529,7 +2520,7 @@ public partial class SqlOperations : SqlServerHelper
         {
             return InstancesSqlResult.Byte(0, o);
         }
-        return InstancesSqlResult.Byte(ToByte(o.result), o);
+        return InstancesSqlResult.Byte(ToByte(o), o);
     }
 
     public SqlResult<DateTime> ExecuteScalarDateTime(SqlData data, DateTime getIfNotFound, SqlCommand comm)
@@ -2727,61 +2718,7 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<long> Insert1(SqlData data, string tabulka, Type idt, string sloupecID, object[] sloupce)
     {
-        string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
-
-        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
-        bool totalLower = false;
-        object d = SelectLastIDFromTableSigned(data, tabulka, idt, sloupecID, out totalLower);
-        #region MyRegion
-        int pricist = 0;
-
-        if (!totalLower)
-        {
-            pricist = 1;
-        }
-        else if (idt == Types.tByte)
-        {
-            pricist = 1;
-        }
-        if (idt == typeof(Byte))
-        {
-            Byte b = ToByte(d);
-            comm.Parameters.AddWithValue("@p0", b + pricist);
-        }
-        else if (idt == typeof(Int16))
-        {
-            Int16 i1 = Convert.ToInt16(d);
-            comm.Parameters.AddWithValue("@p0", i1 + pricist);
-        }
-        else if (idt == typeof(Int32))
-        {
-            Int32 i2 = Convert.ToInt32(d);
-            comm.Parameters.AddWithValue("@p0", i2 + pricist);
-        }
-        else if (idt == typeof(Int64))
-        {
-            Int64 i3 = Convert.ToInt64(d);
-            comm.Parameters.AddWithValue("@p0", i3 + pricist);
-        }
-
-        int to = sloupce.Length + 1;
-        for (int i = 1; i < to; i++)
-        {
-            object o = sloupce[i - 1];
-            //var resutl = 
-            AddCommandParameter(comm, i, o);
-            //if (resutl < 0)
-            //{
-            //    SQLServerPreparedStatement
-            //}
-            //DateTime.Now.Month;
-        }
-        #endregion
-        var result = ExecuteNonQuery(data, comm);
-
-        long vr = Convert.ToInt64(d);
-        vr += pricist;
-        return InstancesSqlResult.Long(vr, result);
+        return SqlOpsI.ci.Insert1(data, tabulka, idt, sloupecID, sloupce);
     }
 
     /// <summary>
@@ -3379,7 +3316,7 @@ public partial class SqlOperations : SqlServerHelper
         }
 
         odeber = (short)(d - odeber);
-        var result = Update(table, sloupecKUpdate, odeber, abc);
+        var result = Update(data, table, sloupecKUpdate, odeber, abc);
         return InstancesSqlResult.Short(odeber, result);
     }
     public SqlResult<short> UpdateMinusShortValue(SqlData data, string table, string sloupecKUpdate, short odeber, string sloupecID, object hodnotaID)
@@ -3455,7 +3392,7 @@ public partial class SqlOperations : SqlServerHelper
         }
         int n = pridej;
         n = d + pridej;
-        var r = Update(table, sloupecKUpdate, n, abc);
+        var r = Update(data, table, sloupecKUpdate, n, abc);
 
         return InstancesSqlResult.Int(n, r);
     }
@@ -3500,7 +3437,7 @@ public partial class SqlOperations : SqlServerHelper
         int n = odeber;
         n = d - odeber;
 
-        var result = Update(table, sloupecKUpdate, n, abc);
+        var result = Update(data, table, sloupecKUpdate, n, abc);
         return InstancesSqlResult.Int(n, result);
     }
 
