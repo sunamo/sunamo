@@ -60,6 +60,7 @@
     <Compile Include="Interfaces\IWhere.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresI_BeforeSqlOps.cs" />
     <Compile Include="MSSQL\SqlOpsI.cs" />
     <Compile Include="SqlResult\CastSqlResult.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
