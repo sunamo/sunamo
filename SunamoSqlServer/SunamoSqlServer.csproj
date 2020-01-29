@@ -44,12 +44,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\CastSqlResultShared.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\InstancesSqlResult.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\Attributtes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlOperationsShared.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlOpsI.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlResult.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\MSTableRowParse.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlDbType2.cs" />
+    <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="Data\SqlData.cs" />
     <Compile Include="Data\SqlResult.cs" />
     <Compile Include="Enums\InsertPosition.cs" />

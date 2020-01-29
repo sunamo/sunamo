@@ -16,7 +16,7 @@ using sunamo.Values;
 /// </summary>
 public partial class SqlOperations : SqlServerHelper
 {
-    public static PpkOnDrive loggedCommands = null;
+    //public static PpkOnDrive loggedCommands = null;
     public static string table2 = null;
     public static string column2 = null;
     public static bool isNVarChar2 = false;
@@ -162,7 +162,7 @@ public partial class SqlOperations : SqlServerHelper
     /// </summary>
     /// <param name="comm"></param>
     /// <param name="where"></param>
-    public static int AddCommandParameterFromAbc(SqlCommand comm, ABC where, int i)
+    public static int AddCommandParameterFromAbc(SqlCommand comm, int i, ABC where)
     {
         if (where != null)
         {
@@ -211,7 +211,7 @@ public partial class SqlOperations : SqlServerHelper
                 ab[dex++] = lowerThanWhere[i];
             }
         }
-        AddCommandParameterFromAbc(comm, ab, i2);
+        AddCommandParameterFromAbc(comm, i2, ab);
     }
 
     public static void AddCommandParameteresArrays(SqlCommand comm, int i, params ABC[] where)
@@ -619,7 +619,7 @@ public partial class SqlOperations : SqlServerHelper
     #region GroupBy
     public SqlResult<List<long>> SelectGroupByLong(SqlData data, string table, string GroupByColumn, params AB[] where)
     {
-        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
+        string sql = "select " + TopDistinct(data) + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
         SqlCommand comm = new SqlCommand(sql);
         //AddCommandParameter(comm, 0, IDColumnValue);
         AddCommandParameterFromAbc(comm, where);
@@ -678,7 +678,7 @@ public partial class SqlOperations : SqlServerHelper
         AddCommandParameter(comm, 0, idEntity);
 
         var o = ExecuteScalar(data, comm);
-        if (o == null || o.result == DBNull.Value)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.Uint(0, o);
         }
@@ -738,6 +738,7 @@ public partial class SqlOperations : SqlServerHelper
     #endregion
 
     #region SelectNamesOfID
+    [NoReturnSqlResult]
     /// <summary>
     /// 
     /// </summary>
@@ -748,7 +749,7 @@ public partial class SqlOperations : SqlServerHelper
         {
             vr.Add(SelectNameOfID(data, tabulka, var).result);
         }
-        return InstancesSqlResult.ListString(vr, null);
+        return InstancesSqlResult.ListString(vr, InstancesSqlResult.Empty);
     }
     #endregion
     #endregion
@@ -756,9 +757,9 @@ public partial class SqlOperations : SqlServerHelper
 
 
     #region SelectRowReader*
-    public SqlResult<object[]> SelectRowReaderLimit(SqlData data, string tableName, string sloupce, string sloupecWhere, object hodnotaWhere)
+    public SqlResult<object[]> SelectRowReader(SqlData data, string tableName, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
-        SqlCommand comm = new SqlCommand("SELECT TOP(" + data.limit.ToString() + ") " + sloupce + " FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
+        SqlCommand comm = new SqlCommand("SELECT "+ TopDistinct(data)  + sloupce + " FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectRowReader(data, comm);
     }
@@ -798,14 +799,6 @@ public partial class SqlOperations : SqlServerHelper
     }
     #endregion
 
-    public SqlResult<object[]> SelectRowReader(SqlData data, string tabulka, string nazvySloupcu, string sloupecID, object id)
-    {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
-        AddCommandParameter(comm, 0, id);
-        //NT
-        return SelectRowReader(data, comm);
-    }
-
     /// <summary>
     /// Vrátí null, pokud výsledek nebude mít žádné řádky
     /// </summary>
@@ -830,7 +823,7 @@ public partial class SqlOperations : SqlServerHelper
         }
         comm.Connection.Close();
         comm.Connection.Dispose();
-        return null;
+        return InstancesSqlResult.ArrayObject(null, r2);
     }
     #endregion
 
@@ -876,7 +869,7 @@ public partial class SqlOperations : SqlServerHelper
         string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         ABC abc = new ABC(aB);
         var vr = ExecuteScalar(data, sql, abc.OnlyBs());
-        return InstancesSqlResult.Bool(vr.result != null, vr);
+        return InstancesSqlResult.Bool(!IsNullOrDefault(vr), vr);
     }
 
     public SqlResult<bool> SelectExistsCombination(SqlData data, string p, ABC where, ABC whereIsNot)
@@ -897,7 +890,7 @@ public partial class SqlOperations : SqlServerHelper
         }
 
         var sc = ExecuteScalar(data, comm);
-        return InstancesSqlResult.Bool(sc.result != null, sc);
+        return InstancesSqlResult.Bool(!IsNullOrDefault(sc), sc);
     }
     #endregion
 
@@ -910,7 +903,7 @@ public partial class SqlOperations : SqlServerHelper
         string sql = string.Format("SELECT TOP(1) {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
         var result = ExecuteScalar(data, sql, hodnota);
 
-        return InstancesSqlResult.Bool(result != null, result);
+        return InstancesSqlResult.Bool(!IsNullOrDefault(result), result);
     } 
     #endregion
 
@@ -979,8 +972,8 @@ public partial class SqlOperations : SqlServerHelper
     {
         string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null);
         SqlCommand comm = new SqlCommand(sql);
-        int dalsi = AddCommandParameterFromAbc(comm, whereIs, 0);
-        AddCommandParameterFromAbc(comm, whereIsNot, dalsi);
+        int dalsi = AddCommandParameterFromAbc(comm, 0, whereIs);
+        AddCommandParameterFromAbc(comm, dalsi, whereIsNot);
         return ExecuteScalarInt(d, comm);
     }
 
@@ -1251,7 +1244,7 @@ public partial class SqlOperations : SqlServerHelper
     #region SelectDataTableAllRows
 
     /// <summary>
-    /// Nepoužívat a smazat!!!
+    /// 
     /// </summary>
     /// <param name="TableName"></param>
     /// <param name="whereSloupec"></param>
@@ -1259,14 +1252,15 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<DataTable> SelectDataTableAllRows(SqlData data, string TableName, string whereSloupec, object whereValue)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT * FROM {0} {1}", TableName, GeneratorMsSql.SimpleWhere(whereSloupec)));
+        
+        SqlCommand comm = new SqlCommand(string.Format("SELECT * FROM {0} {1}", TableName, GeneratorMsSql.SimpleWhere(whereSloupec)) + OrderBy(data));
         AddCommandParameter(comm, 0, whereValue);
         //NTd
         return this.SelectDataTable(data, comm);
     }
 
     /// <summary>
-    /// Nepužívat a smazat!!!
+    /// 
     /// </summary>
     public SqlResult<DataTable> SelectDataTableAllRows(SqlData data, string table)
     {
@@ -1287,7 +1281,7 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<List<short>> SelectValuesOfColumnAllRowsShort(SqlData data, string tabulka, string sloupec, string idColumn, object idValue)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT " + Distinct(data) + " TOP(" + data.limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT " + TopDistinct(data) + "{0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
         AddCommandParameter(comm, 0, idValue);
         return ReadValuesShort(data, comm);
     }
@@ -1335,8 +1329,9 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<IList> SelectValuesOfColumnAllRowsNumeric(SqlData data, string tabulka, string sloupec, params AB[] ab)
     {
         SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1}", sloupec, tabulka));
-        var o = SelectRowReader(data, comm).result;
-        if (o == null)
+        var o2 = SelectRowReader(data, comm);
+        var o = o2.result;
+        if (IsNullOrDefault<object[]>(o2))
         {
             return InstancesSqlResult.List(o);
         }
@@ -1475,7 +1470,7 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<List<short>> SelectValuesOfColumnAllRowsShort(SqlData d, string tabulka, string sloupec, params AB[] ab)
     {
-        SqlCommand comm = new SqlCommand(string.Format("SELECT " + Distinct(d) + " {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(ab))));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT " + TopDistinct(d) + " {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(ab))));
         AddCommandParameterFromAbc(comm, ab);
         return ReadValuesShort(d, comm);
     }
@@ -1558,7 +1553,7 @@ public partial class SqlOperations : SqlServerHelper
     }
 
     /// <summary>
-    /// Nepoužívat a smazat!!!
+    /// 
     /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsString
     /// </summary>
     /// <param name="tabulka"></param>
@@ -1584,7 +1579,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public SqlResult<DataTable> SelectDataTableGroupBy(SqlData data, string table, string columns)
     {
-        string sql = "select " + Top(data)  + columns + " from " + table;
+        string sql = "select " + TopDistinct(data)  + columns + " from " + table;
         GroupBy(data, ref sql);
         SqlCommand comm = new SqlCommand(sql);
         //AddCommandParameter(comm, 0, IDColumnValue);
@@ -1829,10 +1824,10 @@ public partial class SqlOperations : SqlServerHelper
         SqlCommand comm = new SqlCommand(sql);
 
         int i = 0;
-        i = AddCommandParameterFromAbc(comm, abObsahuje, i);
-        i = AddCommandParameterFromAbc(comm, abNeobsahuje, i);
-        i = AddCommandParameterFromAbc(comm, abVetsiNez, i);
-        AddCommandParameterFromAbc(comm, abVetsiNez, i);
+        i = AddCommandParameterFromAbc(comm, i, abObsahuje);
+        i = AddCommandParameterFromAbc(comm, i, abNeobsahuje);
+        i = AddCommandParameterFromAbc(comm, i, abVetsiNez);
+        AddCommandParameterFromAbc(comm, i, abVetsiNez);
 
         return SelectDataTable(data, comm);
     }
@@ -1909,7 +1904,7 @@ public partial class SqlOperations : SqlServerHelper
     }
 
     /// <summary>
-    /// Nepoužívat a smazat !!!
+    /// 
     /// Vrátí null když nenalezne žádný řádek
     /// </summary>
     public SqlResult<object[]> SelectOneRow(SqlData data, string TableName, string nazevSloupce, object hodnotaSloupce)
@@ -1918,7 +1913,7 @@ public partial class SqlOperations : SqlServerHelper
         var dt = SelectDataTable(data, "SELECT TOP(1) * FROM " + TableName + " WHERE " + nazevSloupce + " = @p0", hodnotaSloupce);
         if (dt.result.Rows.Count == 0)
         {
-            return null; // CA.CreateEmptyArray(pocetSloupcu);
+            return InstancesSqlResult.ArrayObject(null, dt); // CA.CreateEmptyArray(pocetSloupcu);
         }
         return CastSqlResult.FirstRowToArrayObject(dt);
     }
@@ -2438,7 +2433,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<int> ExecuteScalarInt(SqlData d, SqlCommand comm)
     {
         var o = ExecuteScalar(d, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             if (d.signed)
             {
@@ -2456,7 +2451,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<long> ExecuteScalarLong(SqlData data, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             if (data.signed)
             {
@@ -2474,7 +2469,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<bool?> ExecuteScalarNullableBool(SqlData d, SqlCommand comm)
     {
         var o = ExecuteScalar(d, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.NullableBool(null, o);
         }
@@ -2484,7 +2479,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<short> ExecuteScalarShort(SqlData data, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             if (data.signed)
             {
@@ -2502,31 +2497,47 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<string> ExecuteScalarString(SqlData d, SqlCommand comm)
     {
         var o = ExecuteScalar(d, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.String(string.Empty, o);
         }
-        else if (o.result == DBNull.Value)
-        {
-            return InstancesSqlResult.String(string.Empty, o);
-        }
+        
         return InstancesSqlResult.String(o.ToString().TrimEnd(AllChars.space), o);
     }
 
     public SqlResult<byte> ExecuteScalarByte(SqlData data, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.Byte(0, o);
         }
         return InstancesSqlResult.Byte(ToByte(o), o);
     }
 
+    private bool IsNullOrDefault(SqlResult<object> o)
+    {
+        return IsNullOrDefault<object>(o);
+    }
+
+    private bool IsNullOrDefault<T>(SqlResult<T> o)
+    {
+        bool vr = false;
+        if (EqualityComparer<T>.Default.Equals(o.result, default(T)))
+        {
+            vr = true;
+        }
+        else if ((object)o.result == DBNull.Value)
+        {
+            vr = true;
+        }
+        return vr;
+    }
+
     public SqlResult<DateTime> ExecuteScalarDateTime(SqlData data, DateTime getIfNotFound, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null || o.result == DBNull.Value)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.DateTime(getIfNotFound, o);
         }
@@ -2546,7 +2557,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<float> ExecuteScalarFloat(SqlData data, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             if (data.signed)
             {
@@ -2616,7 +2627,7 @@ public partial class SqlOperations : SqlServerHelper
     public SqlResult<bool> ExecuteScalarBool(SqlData data, SqlCommand comm)
     {
         var o = ExecuteScalar(data, comm);
-        if (o == null)
+        if (IsNullOrDefault(o))
         {
             return InstancesSqlResult.Bool(false, o); ;
         }
@@ -2648,8 +2659,6 @@ public partial class SqlOperations : SqlServerHelper
             catch (Exception ex)
             {
                 result.exc = Exceptions.TextOfExceptions(ex);
-
-                //result.sqlExceptions = ;
             }
 
             conn.Close();
@@ -2701,11 +2710,6 @@ public partial class SqlOperations : SqlServerHelper
     #endregion
 
     #region Insert*
-
-    
-
-    
-
     #region Insert 1-6
     /// <summary>
     /// Insert1 - Find ID automatically. Use SelectLastIDFromTableSigned  (as name of method is Insert1)
@@ -2718,7 +2722,52 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<long> Insert1(SqlData data, string tabulka, Type idt, string sloupecID, object[] sloupce)
     {
-        return SqlOpsI.ci.Insert1(data, tabulka, idt, sloupecID, sloupce);
+        string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
+
+        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
+        bool totalLower = false;
+        var d = SelectLastIDFromTableSigned(data, tabulka, idt, sloupecID, out totalLower);
+        int pricist = 0;
+        if (!totalLower)
+        {
+            pricist = 1;
+        }
+        else if (idt == Types.tByte)
+        {
+            pricist = 1;
+        }
+        if (idt == typeof(Byte))
+        {
+            Byte b = ToByte(d);
+            comm.Parameters.AddWithValue("@p0", b + pricist);
+        }
+        else if (idt == typeof(Int16))
+        {
+            Int16 i1 = ToInt16(d);
+            comm.Parameters.AddWithValue("@p0", i1 + pricist);
+        }
+        else if (idt == typeof(Int32))
+        {
+            Int32 i2 = ToInt32(d);
+            comm.Parameters.AddWithValue("@p0", i2 + pricist);
+        }
+        else if (idt == typeof(Int64))
+        {
+            Int64 i3 = ToInt64(d);
+            comm.Parameters.AddWithValue("@p0", i3 + pricist);
+        }
+        int to = sloupce.Length + 1;
+        for (int i = 1; i < to; i++)
+        {
+            object o = sloupce[i - 1];
+            AddCommandParameter(comm, i, o);
+            //DateTime.Now.Month;
+        }
+        var sqlResult = ExecuteNonQuery(data, comm);
+
+        long vr = ToInt64(d);
+        vr += pricist;
+        return InstancesSqlResult.Long( vr, sqlResult);
     }
 
     /// <summary>
@@ -2872,7 +2921,6 @@ public partial class SqlOperations : SqlServerHelper
         return InstancesSqlResult.Long(vr, sqlResult);
     }
 
-
     #region Insert - simple methods which uses Insert1
     /// <summary>
     /// For getting ID use SelectLastIDFromTableSigned (without 2 postfix)
@@ -2901,8 +2949,6 @@ public partial class SqlOperations : SqlServerHelper
         
     }
     #endregion
-
-
 
     #region InsertToRowGuid
     /// <summary>
@@ -2995,25 +3041,32 @@ public partial class SqlOperations : SqlServerHelper
     #endregion
 
     #region Content injectors for SqlData
+    public string OrderBy(SqlData data)
+    {
+        return GeneratorMsSql.OrderBy(data.orderBy, data.sortOrder);
+    }
+
     /// <summary>
     /// Not return space on left or right
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
-    public string Distinct(SqlData d)
+    public string TopDistinct(SqlData d)
     {
+        StringBuilder sb = new StringBuilder();
         if (d.distinct)
         {
-            return "distinct";
+            sb.Append( "distinct");
+        }
+        if (d.limit != int.MaxValue)
+        {
+             sb.Append( " TOP(" + d.limit.ToString() + ") ");
         }
 
-        return string.Empty;
+        return sb.ToString();
     }
 
-    private string Top(SqlData data)
-    {
-        return " TOP(" + data.limit.ToString() + ") ";
-    }
+ 
 
     private void GroupBy(SqlData data, ref string sql)
     {
@@ -3661,10 +3714,7 @@ public partial class SqlOperations : SqlServerHelper
         // NT-Při úpravách uprav i UpdateValuesCombination
         var result = ExecuteNonQuery(d, comm);
         return result;
-    } 
+    }
+    #endregion
     #endregion
 }
-
-
-
-#endregion}

@@ -87,7 +87,7 @@ public static partial class CA
         CA.ChangeContent(appNames, r => SH.FirstCharOfEveryWordUpperDash(r));
     }
 
-    internal static List<char> ToListChar(ICollection<string> values)
+    public static List<char> ToListChar(ICollection<string> values)
     {
         var v = new List<char>(values.Count);
         foreach (var item in values)
@@ -261,7 +261,7 @@ public static partial class CA
         return result;
     }
 
-    internal static string ReplaceAll(string r, List<string> what, string forWhat)
+    public static string ReplaceAll(string r, List<string> what, string forWhat)
     {
         foreach (var item in what)
         {

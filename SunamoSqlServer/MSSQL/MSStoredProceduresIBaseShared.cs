@@ -24,6 +24,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         //loggedCommands = new PpkOnDrive(f);
     }
 
+    public DataTable SelectDateTableGroupBy(string table, string columns, string groupByColumns)
+    {
+        string sql = "select " + columns + " from " + table + " group by " + groupByColumns;
+        SqlCommand comm = new SqlCommand(sql);
+        //AddCommandParameter(comm, 0, IDColumnValue);
+        return SelectDataTable(comm);
+    }
+
     /// <summary>
     /// A1 NSN
     /// </summary>
@@ -155,8 +163,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SqlOpsI.ci.Delete(d, table, sloupec, id).affectedRows;
     }
 
-
-   
     /// <summary>
     /// Conn nastaví automaticky
     /// Vrátí zda byl vymazán alespoň jeden řádek
@@ -585,7 +591,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     private string Distinct(SqlData d)
     {
-        return SqlOpsI.ci.Distinct(d);
+        return SqlOpsI.ci.TopDistinct(d);
     }
 
     public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, int limit, string sloupec, string idColumn, object idValue)
@@ -888,8 +894,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public DataTable SelectDataTableLastRows(string tableName, int limit, string columns, string sloupecOrder, params AB[] where)
     {
-        var data = new SqlData { limit = limit };
-        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, columns, sloupecOrder, where).result;
+        var data = new SqlData { limit = limit, orderBy = sloupecOrder };
+        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, columns, where).result;
     }
 
     /// <summary>
@@ -1017,6 +1023,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         var data = new SqlData { limit = maxRows };
         return SqlOpsI.ci.SelectValuesOfColumnAllRowsInt(Signed(signed), tabulka, sloupec, whereIs, whereIsNot).result;
     }
+
     public DataTable SelectDataTableGroupBy(string table, string columns, string groupByColumns)
     {
         var data = new SqlData { GroupByColumn = groupByColumns};
@@ -1254,10 +1261,10 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return SqlOpsI.ci.SelectNameOfIDOrSE(d, tabulka, idColumnName, id).result;
     }
 
-    public object[] SelectRowReaderLimit(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
+    public object[] SelectRowReader(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
         SqlData data = new SqlData { limit = limit };
-        return SqlOpsI.ci.SelectRowReaderLimit(data, tableName, sloupce, sloupecWhere, hodnotaWhere).result;
+        return SqlOpsI.ci.SelectRowReader(data, tableName, sloupce, sloupecWhere, hodnotaWhere).result;
     }
 
     /// <summary>
@@ -1837,5 +1844,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlOpsI.ci.UpdateValuesCombination(d, TableName, nameOfColumn, valueOfColumn, sets);
     }
 
-
+    public void UpdateValuesCombination(string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
+    {
+        // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
+        //var setsNameValue2 = CA.TwoDimensionParamsIntoOne(setsNameValue);
+        ABC abc = new ABC(setsNameValue);
+        UpdateValuesCombination(TableName, nameOfColumn, valueOfColumn, abc.ToArray());
+    }
 }

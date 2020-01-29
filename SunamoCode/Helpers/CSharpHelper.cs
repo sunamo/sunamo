@@ -224,7 +224,7 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
 
-    internal static void WrapWithQuote(Type tKey, ref string keyS)
+    public static void WrapWithQuote(Type tKey, ref string keyS)
     {
         if (tKey == Types.tString)
         {
@@ -240,7 +240,7 @@ public static partial class CSharpHelper
         }
     }
 
-    internal static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
+    public static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in valueS)
