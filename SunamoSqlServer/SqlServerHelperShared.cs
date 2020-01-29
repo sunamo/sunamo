@@ -9,6 +9,8 @@ public partial class SqlServerHelper
 {
     static Type type = typeof(SqlServerHelper);
 
+    
+
     /// <summary>
     /// Update - return always first element
     /// </summary>
