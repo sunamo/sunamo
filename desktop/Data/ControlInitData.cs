@@ -26,7 +26,7 @@ public class ControlInitData
     public RoutedEventHandler OnClick = null;
     public object tag = null;
     public string tooltip = null;
-    
+    public bool isEditable = false;
 
     public string text
     {

@@ -18,7 +18,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     UserControl userControl = null;
     DockPanel dock = null;
     IUserControl uc = null;
-    IUserControlInWindow iUserControlInWindow = null;
+    
     IControlWithResult userControlWithResult = null;
     IControlWithResultDebug controlWithResultDebug = null;
     bool isControlWithResult = false;
@@ -33,6 +33,8 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     StatusBar statusBar = null;
     public DialogButtons dialogButtons = null;
     Menu menu = null;
+
+
 
     private void WindowWithUserControl_SizeChanged(object sender, SizeChangedEventArgs e)
     {
@@ -54,18 +56,15 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     }
 
     /// <summary>
-    /// A1 can be IUserControlInWindow, if have own buttons for accepting
+    /// A1 can be IControlWithResult, if have own buttons for accepting
     /// </summary>
     /// <param name="iUserControlInWindow"></param>
     /// <param name="rm"></param>
     /// <param name="addDialogButtons"></param>
     public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null)
     {
-        
-
         Tag = tag;
         userControl = (UserControl)iUserControlInWindow;
-
         
 
         this.Closed += WindowWithUserControl_Closed;
@@ -159,13 +158,26 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             if (ChangeDialogResult != null)
             {
                 //DialogResult = true;
-                ChangeDialogResult(true);
+                OnChangeDialogResult(true);
             }
             else
             {
                 controlWithResultDebug.DialogResult = true;
             }
             Close();
+        }
+        else if (e.Key == System.Windows.Input.Key.Escape)
+        {
+            OnChangeDialogResult(false);
+            Close();
+        }
+    }
+
+    private void OnChangeDialogResult(bool v)
+    {
+        if (ChangeDialogResult != null)
+        {
+            ChangeDialogResult(v);
         }
     }
 
@@ -301,11 +313,10 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             {
                 countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
             }
-        }
 
-        if (userControl is IUserControlInWindow)
-        {
-            iUserControlInWindow = (IUserControlInWindow)userControl;
+
+
+            userControlWithResult.FocusOnMainElement();
 
                 if (controlWithResultDebug != null)
                 {
@@ -325,10 +336,10 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
         if (addDialogButtons)
         {
-            if (iUserControlInWindow != null)
+            if (userControlWithResult != null)
             {
                 // IF USER CONTROL HAVE OWN ChangeDialogResult, MUST USE ALWAYS IT
-                iUserControlInWindow.ChangeDialogResult -= uc_ChangeDialogResult;
+                userControlWithResult.ChangeDialogResult -= uc_ChangeDialogResult;
                 userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
             }
 
@@ -359,9 +370,9 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     public void Accept(object input)
     {
-        if (iUserControlInWindow != null)
+        if (userControlWithResult != null)
         {
-            iUserControlInWindow.Accept(input);
+            userControlWithResult.Accept(input);
         }
 
         
@@ -378,5 +389,13 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     public void Init()
     {
         
+    }
+
+    public void FocusOnMainElement()
+    {
+        if (true)
+        {
+
+        }
     }
 }

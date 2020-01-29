@@ -1222,14 +1222,16 @@ public partial class FS
     }
 
     /// <summary>
+    /// A1,2 = with ext
     /// Physically rename file, this method is different from ChangeFilename in FileMoveCollisionOption A3 which can control advanced collision solution
     /// </summary>
-    /// <param name="item"></param>
-    /// <param name="dirNameWithoutDiac"></param>
+    /// <param name="oldFn"></param>
+    /// <param name="newFn"></param>
     /// <param name="co"></param>
-    public static void RenameFile(string item, string dirNameWithoutDiac, FileMoveCollisionOption co)
+    public static void RenameFile(string oldFn, string newFn, FileMoveCollisionOption co)
     {
-        FS.MoveFile(item, FS.ChangeFilename(item, dirNameWithoutDiac, false), co);
+        var to = FS.ChangeFilename(oldFn, newFn, false);
+        FS.MoveFile(oldFn, to, co);
     }
 
     /// <summary>

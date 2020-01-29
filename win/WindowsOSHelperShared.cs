@@ -2,7 +2,7 @@
 using System.Linq;
 
 public partial class WindowsOSHelper{ 
-internal static string FileIn(UserFoldersWin local, string appName, string exe)
+public static string FileIn(UserFoldersWin local, string appName, string exe)
     {
         var folder = FS.Combine(PathOfAppDataFolder(local), appName);
         return FS.GetFiles(folder, FS.MascFromExtension(exe), SearchOption.AllDirectories).FirstOrDefault();

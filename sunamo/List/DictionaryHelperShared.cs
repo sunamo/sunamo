@@ -113,7 +113,7 @@ public partial class DictionaryHelper
         AddOrCreate<Key, Value, object>(sl, key, value, withoutDuplicitiesInValue);
     }
 
-    internal static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable)
+    public static Dictionary<T1, T2> GetDictionaryFromIEnumerable<T1, T2>(IEnumerable<KeyValuePair<T1, T2>> enumerable)
     {
         Dictionary<T1, T2> d = new Dictionary<T1, T2>();
         foreach (var item in enumerable)

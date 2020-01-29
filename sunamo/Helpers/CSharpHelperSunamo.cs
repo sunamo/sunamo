@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 public partial class CSharpHelperSunamo
 {
+
     public static void IndentAsPreviousLine(List<string> lines)
     {
         string indentPrevious = string.Empty;
@@ -58,6 +59,8 @@ public partial class CSharpHelperSunamo
     }
 
     /// <summary>
+    /// Its not compatible with default operator
+    /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values
     /// Nonsense, cant type too many different output types to T. 
     /// Must cast manually
     /// </summary>
@@ -72,6 +75,7 @@ public partial class CSharpHelperSunamo
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
 
+        #region Same seria as in Types
         switch (type)
         {
             case "string":
@@ -101,7 +105,8 @@ public partial class CSharpHelperSunamo
                 return Guid.Empty;
             case "char":
                 throw new Exception("Nepodporovan\u00FD typ");
-        }
+        } 
+        #endregion
 
         throw new Exception("Nepodporovan\u00FD typ");
     }

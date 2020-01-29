@@ -221,5 +221,10 @@ namespace WebSunamo
         {
             
         }
+
+        public void FocusOnMainElement()
+        {
+            webControl.Focus();   
+        }
     }
 }

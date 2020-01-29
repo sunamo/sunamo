@@ -9,8 +9,6 @@ using sunamo;
 using sunamo.Values;
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
-  
-
     public string AverageLenghtOfColumnData(string table, string column)
     {
         var c = MSStoredProceduresI.ci.SelectValuesOfColumnAllRowsString(table, column);

@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
@@ -73,7 +74,6 @@
     <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
@@ -111,6 +111,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Enums\SqlExceptions.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

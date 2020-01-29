@@ -20,7 +20,7 @@ namespace desktop.Controls
     /// Use for variable name always longer, showResult instead of sr etc.
     /// Stupid, open with highlighting in VSCode instead of my UC
     /// </summary>
-    public partial class ShowTextResult : UserControl, IUserControlInWindow, IUserControlWithSizeChange
+    public partial class ShowTextResult : UserControl, IControlWithResult, IUserControlWithSizeChange
     {
         /// <summary>
         /// Must be empty constructor due to creating in SetMode()
@@ -28,6 +28,11 @@ namespace desktop.Controls
         public ShowTextResult()
         {
             InitializeComponent();
+        }
+
+        public void FocusOnMainElement()
+        {
+            txtResult.Focus();
         }
 
         public ShowTextResult(string text) : this()

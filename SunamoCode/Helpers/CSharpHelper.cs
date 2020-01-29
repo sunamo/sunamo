@@ -132,46 +132,7 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
 
-    public static string DefaultValueForType(string type)
-    {
-        if (type.Contains("."))
-        {
-            type = ConvertTypeShortcutFullName.ToShortcut(type);
-        }
-        switch (type)
-        {
-            case "string":
-                return "\"\"";
-            case "bool":
-                return "false";
-            case "float":
-            case "double":
-            case "int":
-            case "long":
-            case "short":
-            case "decimal":
-            case "sbyte":
-                return "-1";
-            case "byte":
-            case "ushort":
-            case "uint":
-            case "ulong":
-                return "0";
-            case "DateTime":
-                // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
-                return "SqlServerHelper.DateTimeMinVal";
-            case "byte" + "[]":
-                // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
-                return "null";
-            case "Guid":
-                return "Guid.Empty";
-            case "char":
-                throw new Exception("Nepodporovaný typ");
-            default:
-                return "new " + type + "()";
-        }
-        throw new Exception("Nepodporovaný typ");
-    }
+    
 
     public static string DefaultValueForTypeSqLite(string type)
     {
@@ -263,7 +224,7 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
 
-    internal static void WrapWithQuote(Type tKey, ref string keyS)
+    public static void WrapWithQuote(Type tKey, ref string keyS)
     {
         if (tKey == Types.tString)
         {
@@ -279,7 +240,7 @@ public static partial class CSharpHelper
         }
     }
 
-    internal static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
+    public static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var item in valueS)

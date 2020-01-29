@@ -1,5 +1,10 @@
-﻿albums not show song, only artist and name
-samey - karaoke,youtube,video,yt video,This Christmas,100 Bottles,100,2012,4 Years Old,My
-profile jen profile, sunamo
-search - only basic
-addsong - no basic
+﻿Finished:
+projít znovu a vyřadit co mají v názvu Limit, OrderBy, GroupBy etc.
+zkontrolovat na všechny DBNull.Value, už je nebudu potřebovat
+udělat porovnání přímo s SqlResult, využívám to i ve MSStoredProcedures viz ExecuteScalarByte
+smazat veškteré signed = z sqlops
+public static int AddCommandParameterFromAbc(SqlCommand comm, ABC where, int i) - i must be as 2nd
+přeměnil jsem pořadí parametrů v public SqlResult<string> SelectNameOfID(SqlData data, string tabulka, string nameColumnID, long id)
+Instance SqlResult se musí vytvořit vždy. Je to pro mé rychlejší kodování abych nemusel psát kontrolu na null
+
+všechny proměnné v sql data zkontrolovat i když mohou být non assigned

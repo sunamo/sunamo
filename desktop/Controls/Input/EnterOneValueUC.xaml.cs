@@ -22,7 +22,7 @@ namespace desktop.Controls.Input
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements 
     /// </summary>
-    public partial class EnterOneValueUC : UserControl, IUserControlInWindow, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
+    public partial class EnterOneValueUC : UserControl, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
         static Type type = typeof(EnterOneValueUC);
 
@@ -34,7 +34,7 @@ namespace desktop.Controls.Input
             }
         }
             
-
+        //
         #region ctor
         /// <summary>
         /// Has button so dialogButtons is not needed to add
@@ -300,6 +300,11 @@ namespace desktop.Controls.Input
         public void AttachChangeDialogResult(VoidBoolNullable a, bool throwException = true)
         {
             RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
+        }
+
+        public void FocusOnMainElement()
+        {
+            txtEnteredText.Focus();
         }
 
         public event VoidBoolNullable ChangeDialogResult;

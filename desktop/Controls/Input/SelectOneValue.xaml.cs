@@ -19,9 +19,16 @@ namespace desktop.Controls.Input
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements
     /// </summary>
-    public partial class SelectOneValue : UserControl, IUserControlInWindow, IControlWithResult
+    public partial class SelectOneValue : UserControl, IControlWithResult
     {
         ComboBoxHelper<string> cbEnteredHelper = null;
+
+        public void FocusOnMainElement()
+        {
+            cbEntered.Focus();
+        }
+
+
 
         /// <summary>
         /// A2 can be null

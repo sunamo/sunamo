@@ -194,6 +194,16 @@ public class TextOutputGenerator
         }
     }
 
+    public void Dictionary(Dictionary<string, string> v)
+    {
+        foreach (var item in v)
+        {
+            sb.AppendLine(SF.PrepareToSerialization(item.Key, item.Value));
+        }
+
+        
+    }
+
     public void Dictionary<T1, T2>(Dictionary<T2, T2> d)
     {
         //StringBuilder sb = new StringBuilder();

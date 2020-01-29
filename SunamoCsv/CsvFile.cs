@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace desktop
-{
     /// <summary>
     /// Class to hold csv data
     /// Downloaded from http://www.codeproject.com/Articles/86973/C-CSV-Reader-and-Writer
@@ -403,4 +401,3 @@ namespace desktop
 
         #endregion Properties
     }
-}

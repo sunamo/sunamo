@@ -37,7 +37,7 @@ public class Exceptions
         return sb.ToString();
     }
 
-    internal static object UseRlc(string before)
+    public static object UseRlc(string before)
     {
         return CheckBefore(before) + "Don't implement, use methods in rlc";
     }

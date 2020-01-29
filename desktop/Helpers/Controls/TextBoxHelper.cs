@@ -29,6 +29,19 @@ namespace desktop
             }
         }
 
+        public static void RegisterHighlightAllTextBox()
+        {
+            EventManager.RegisterClassHandler(typeof(TextBox),
+         TextBox.GotFocusEvent,
+         new RoutedEventHandler(TextBox_GotFocus));
+            
+        }
+
+        static void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
+        }
+
         /// <summary>
         /// tag is not needed, value is obtained through []
         /// Tag here is mainly for comment what data control hold 

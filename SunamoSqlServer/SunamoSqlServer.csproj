@@ -44,15 +44,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\CastSqlResultShared.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\InstancesSqlResult.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\Attributtes\NoReturnSqlResultAttribute.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlOperationsShared.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlOpsI.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlResult.cs" />
+    <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlData.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\MSTableRowParse.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\MSSQL\SqlDbType2.cs" />
+    <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />
+    <Compile Include="Data\SqlData.cs" />
+    <Compile Include="Data\SqlResult.cs" />
     <Compile Include="Enums\InsertPosition.cs" />
     <Compile Include="Enums\UpdatePosition.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
+    <Compile Include="Interfaces\IWhere.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresI_BeforeSqlOps.cs" />
+    <Compile Include="MSSQL\SqlOpsI.cs" />
+    <Compile Include="SqlResult\CastSqlResult.cs" />
     <Compile Include="MSSQL\MSDatabaseLayerBase.cs" />
     <Compile Include="MSSQL\MSTableRowParse.cs" />
+    <Compile Include="SqlResult\SqlResult.cs" />
+    <Compile Include="SqlResult\InstancesSqlResult.cs" />
+    <Compile Include="Data\Where\WhereAB.cs" />
+    <Compile Include="Data\Where\WhereABC.cs" />
+    <Compile Include="Data\Where\WhereSimple.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Converts\ConvertSqlDbType.cs" />
@@ -70,9 +91,8 @@
     <Compile Include="MSSQL\MSSloupec2.cs" />
     <Compile Include="MSSQL\MSSloupecDB.cs" />
     <Compile Include="MSSQL\MSStoredProceduresI.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
-    <Compile Include="MSSQL\MSStoredProceduresIBaseSharedShared.cs" />
+    <Compile Include="MSSQL\SqlOperations.cs" />
+    <Compile Include="MSSQL\SqlOperationsShared.cs" />
     <Compile Include="MSSQL\MSStoredProceduresISql5.cs" />
     <Compile Include="MSSQL\MSTableRowIDName.cs" />
     <Compile Include="MSSQL\MSTSP.cs" />

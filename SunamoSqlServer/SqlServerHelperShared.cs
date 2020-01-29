@@ -9,6 +9,14 @@ public partial class SqlServerHelper
 {
     static Type type = typeof(SqlServerHelper);
 
+    /// <summary>
+    /// Update - return always first element
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <param name="table"></param>
+    /// <param name="column"></param>
+    /// <param name="serie"></param>
+    /// <returns></returns>
     public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
         List<int> indexesOfVarCharOrChar = new List<int>();

@@ -4,12 +4,12 @@ using System.Windows;
 using System.Windows.Controls;
 
 namespace desktop
-{
-    public sealed partial class NumericUpDown : UserControl
+{ 
+    public sealed partial class UpDownNumeric : UserControl
     {
         public event ValueChangedRoutedHandler<uint> ValueChanged;
 
-        public NumericUpDown()
+        public UpDownNumeric()
         {
             this.InitializeComponent();
             

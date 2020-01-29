@@ -87,6 +87,16 @@ public static partial class CA
         CA.ChangeContent(appNames, r => SH.FirstCharOfEveryWordUpperDash(r));
     }
 
+    public static List<char> ToListChar(ICollection<string> values)
+    {
+        var v = new List<char>(values.Count);
+        foreach (var item in values)
+        {
+            v.Add(item[0]);
+        }
+        return v;
+    }
+
     /// <summary>
     /// Return null if A1 will be null
     /// </summary>
@@ -256,7 +266,7 @@ public static partial class CA
         return result;
     }
 
-    internal static string ReplaceAll(string r, List<string> what, string forWhat)
+    public static string ReplaceAll(string r, List<string> what, string forWhat)
     {
         foreach (var item in what)
         {
@@ -1558,11 +1568,11 @@ public static List<string> EnsureBackslash(List<string> eb)
         }
     }
 
-    public static IEnumerable<List<T>> SplitList<T>(List<T> locations, int nSize = 30)
+    public static IEnumerable<List<T>> SplitList<T>(IList<T> locations, int nSize = 30)
     {
         for (int i = 0; i < locations.Count; i += nSize)
         {
-            yield return locations.GetRange(i, Math.Min(nSize, locations.Count - i));
+            yield return locations.ToList().GetRange(i, Math.Min(nSize, locations.Count - i));
         }
     }
 

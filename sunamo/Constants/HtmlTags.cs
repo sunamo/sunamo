@@ -28,6 +28,6 @@ public class HtmlTags
     public const string a = "a";
     public const string hr = "hr";
     public const string tbody = "tbody";
-    internal static string li = "li";
+    public static string li = "li";
 }
 

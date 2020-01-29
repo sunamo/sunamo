@@ -170,7 +170,7 @@ public static partial class UIElementExtensions{
         else if (t == TypesControls.tComboBox)
         {
             var cb = ui as ComboBox;
-            return cb.SelectedItem;
+            return cb.Text;
         }
         else if (t == TypesControls.tTextBox)
         {

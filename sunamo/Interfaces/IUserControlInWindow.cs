@@ -10,6 +10,10 @@ public interface IControlWithResultDebug : IControlWithResult
 }
 
 /// <summary>
+/// 
+/// Is the same as IControlWithResult
+/// IControlWithResult - won't enable button OK in WindowWithUserControl, WindowWithUserControl cant capture ChangeDialogResult of Window
+/// IControlWithResultDebug (but not IControlWithResult) - will enable button OK in WindowWithUserControl
 /// Applied to any control
 /// 
 /// </summary>
@@ -29,17 +33,7 @@ public interface IControlWithResult
     bool? DialogResult { set; }
     //ButtonBase AcceptButton { get; }
     void Accept(object input);
+    void FocusOnMainElement();
 
     //bool IsAttachedChangeDialogResult;
 }
-
-/// <summary>
-/// Is the same as IControlWithResult
-/// IUserControlInWindow - won't enable button OK in WindowWithUserControl, WindowWithUserControl cant capture ChangeDialogResult of Window
-/// IControlWithResultDebug (but not IControlWithResult) - will enable button OK in WindowWithUserControl
-/// </summary>
-public interface IUserControlInWindow : IControlWithResult
-{
-   
-}
-

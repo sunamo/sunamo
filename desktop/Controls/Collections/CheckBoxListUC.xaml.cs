@@ -31,7 +31,7 @@ namespace desktop.Controls.Collections
     public partial class CheckBoxListUC : UserControl
         , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl
     {
-        #region IUserControlInWindow implementation
+        #region IControlWithResult implementation
         public bool? DialogResult
         {
             set
@@ -58,6 +58,11 @@ namespace desktop.Controls.Collections
         #endregion
 
         public int Count => lb.Items.Count;
+
+        public void FocusOnMainElement()
+        {
+
+        }
 
         /// <summary>
         /// Args are: object sender, string operation, object data

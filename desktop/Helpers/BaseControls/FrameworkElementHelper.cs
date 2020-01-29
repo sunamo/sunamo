@@ -28,11 +28,6 @@ public partial class FrameworkElementHelper
         fe.Height = s.Height;
     }
 
-    public static void SetAll3Widths(FrameworkElement fe, double w)
-    {
-        fe.Width = fe.MaxWidth = fe.MinWidth = w;
-    }
-
     public static void SetWidthAndHeight(FrameworkElement fe, Size s)
     {
         fe.Width = s.Width;

@@ -30,6 +30,7 @@ public partial class ComboBoxHelper
         }
         cb.Tag = d.tag;
         cb.ToolTip = d.tooltip;
+        cb.IsEditable = d.isEditable;
 
         return cb;
     }

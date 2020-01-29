@@ -150,11 +150,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
         if (defaultValue)
         {
             sb.AddItem((object)"=");
-            sb.AddItem((object)CSharpHelper.DefaultValueForType(type));
+            sb.AddItem((object)CSharpHelperSunamo.DefaultValueForType(type));
         }
     }
-    
-
 
     public static List<string> AddIntoClass(List<string> contentFileNew, List< string> insertedLines, out int classIndex, string ns)
     {
