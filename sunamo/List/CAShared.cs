@@ -171,6 +171,11 @@ public static partial class CA
 
     public static IEnumerable ToEnumerable(params object[] p)
     {
+        if (p == null)
+        {
+            return new List<string>();
+        }
+
         if (p.Count() == 0)
         {
             return new List<string>();
