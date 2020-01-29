@@ -2502,7 +2502,7 @@ public partial class SqlOperations : SqlServerHelper
             return InstancesSqlResult.String(string.Empty, o);
         }
         
-        return InstancesSqlResult.String(o.ToString().TrimEnd(AllChars.space), o);
+        return InstancesSqlResult.String(o.result.ToString().TrimEnd(AllChars.space), o);
     }
 
     public SqlResult<byte> ExecuteScalarByte(SqlData data, SqlCommand comm)
@@ -2675,7 +2675,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public short ToInt16(SqlResult<object> result)
     {
-        return Convert.ToInt16(result);
+        return Convert.ToInt16(result.result);
     }
 
     public bool ToBoolean(SqlResult<object> o)
@@ -2685,12 +2685,12 @@ public partial class SqlOperations : SqlServerHelper
 
     public DateTime ToDateTime(SqlResult<object> o)
     {
-        return Convert.ToDateTime(o);
+        return Convert.ToDateTime(o.result);
     }
 
     public float ToSingle(SqlResult<object> o)
     {
-        return Convert.ToSingle(o);
+        return Convert.ToSingle(o.result);
     }
 
     public long ToInt64(SqlResult<object> result)
@@ -2705,7 +2705,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public byte ToByte(SqlResult<object> result)
     {
-        return Convert.ToByte(result);
+        return Convert.ToByte(result.result);
     }
     #endregion
 

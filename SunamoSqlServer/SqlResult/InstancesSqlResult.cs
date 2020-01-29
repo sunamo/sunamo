@@ -245,14 +245,18 @@ public class InstancesSqlResult
         return resultString;
     }
 
-    public static SqlResult<IList> List(object[] o)
+    public static SqlResult<IList> List(IList o)
     {
-        throw new NotImplementedException();
+        var resultString = new SqlResult<IList>();
+        resultString.result = o;
+        return resultString;
     }
 
     public static SqlResult<List<short>> ListShort(List<short> vr, SqlResult<SqlDataReader> r2)
     {
-        throw new NotImplementedException();
+        var resultString = new SqlResult<List<short>>();
+        resultString.result = vr;
+        return resultString;
     }
 }
 
