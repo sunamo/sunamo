@@ -2780,7 +2780,7 @@ public partial class SqlOperations : SqlServerHelper
     /// <param name="nazvySloupcu"></param>
     /// <param name="sloupce"></param>
     /// <returns></returns>
-    public SqlResult Insert2(SqlData d, string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
+    public SqlResult<long> Insert2(SqlData d, string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
 
@@ -2934,14 +2934,14 @@ public partial class SqlOperations : SqlServerHelper
     /// <param name="tabulka"></param>
     /// <param name="sloupce"></param>
     /// <returns></returns>
-    public SqlResult Insert(SqlData data, string tabulka, Type idt, string sloupecID, params object[] sloupce)
+    public SqlResult<long> Insert(SqlData data, string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
         data.signed = false;
 
         return Insert1(data, tabulka, idt, sloupecID, sloupce);
     }
 
-    public SqlResult InsertSigned(SqlData d, string tabulka, Type idt, string sloupecID, params object[] sloupce)
+    public SqlResult<long> InsertSigned(SqlData d, string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
         d.signed = true;
         return Insert1(d, tabulka, idt, sloupecID, sloupce);
