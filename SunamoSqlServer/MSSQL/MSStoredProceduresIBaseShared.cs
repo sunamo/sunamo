@@ -397,17 +397,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert(Signed(false), tabulka, idt, sloupecID, sloupce).affectedRows;
+        return SqlOpsI.ci.Insert(Signed(false), tabulka, idt, sloupecID, sloupce).result;
     }
 
     public long InsertSigned(string tabulka, Type idt, string sloupecID, params object[] sloupce)
     {
-        return SqlOpsI.ci.InsertSigned(d, tabulka, idt, sloupecID, sloupce).affectedRows;
+        return SqlOpsI.ci.InsertSigned(d, tabulka, idt, sloupecID, sloupce).result;
     }
 
     private long Insert1(string tabulka, Type idt, string sloupecID, object[] sloupce, bool signed)
     {
-        return SqlOpsI.ci.Insert1(Signed(signed), tabulka, idt, sloupecID, sloupce).affectedRows;
+        return SqlOpsI.ci.Insert1(Signed(signed), tabulka, idt, sloupecID, sloupce).result;
     }
 
     /// <summary>
@@ -421,7 +421,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
     {
-         return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce).affectedRows;
+         return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce).result;
     }
 
 
@@ -458,7 +458,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public long Insert5(string table, string nazvySloupcu, params object[] sloupce)
     {
-        return SqlOpsI.ci.Insert5(d, table, nazvySloupcu, sloupce).affectedRows;
+        return SqlOpsI.ci.Insert5(d, table, nazvySloupcu, sloupce).result;
     }
 
     /// <summary>
@@ -471,9 +471,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="nazvySloupcu"></param>
     /// <param name="sloupce"></param>
     /// <returns></returns>
-    public void Insert6(string table, string nazvySloupcu, params object[] sloupce)
+    public long Insert6(string table, string nazvySloupcu, params object[] sloupce)
     {
-         SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce);
+         return SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce).result;
     }
 
     /// <summary>
@@ -482,9 +482,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="tabulka"></param>
     /// <param name="nazev"></param>
     /// <returns></returns>
-    public int InsertRowTypeEnum(string tabulka, string nazev)
+    public long InsertRowTypeEnum(string tabulka, string nazev)
     {
-        return SqlOpsI.ci.InsertRowTypeEnum(d, tabulka, nazev).affectedRows;
+        return SqlOpsI.ci.InsertRowTypeEnum(d, tabulka, nazev).result;
     }
 
     /// <summary>
