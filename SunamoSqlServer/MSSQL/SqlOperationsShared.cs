@@ -815,7 +815,6 @@ public partial class SqlOperations : SqlServerHelper
             r.Read();
             for (int i = 0; i < r.VisibleFieldCount; i++)
             {
-
                 o[i] = r.GetValue(i);
             }
 
