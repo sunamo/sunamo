@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 public class StopwatchHelper
 {
-    static Stopwatch sw = new Stopwatch();
+    public  Stopwatch sw = new Stopwatch();
 
     public  void Start()
     {
@@ -14,10 +14,11 @@ public class StopwatchHelper
         sw.Start();
     }
 
-    public  void StopAndPrintElapsed(string operation, string p, params object[] parametry)
+    public  long StopAndPrintElapsed(string operation, string p, params object[] parametry)
     {
         sw.Stop();
         DebugLogger.Instance.WriteLine(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
+        return sw.ElapsedMilliseconds;
     }
 
     public  long ElapsedMS

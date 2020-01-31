@@ -10,6 +10,7 @@ public class DebugLongCollection : DebugCollection<long>
     public new void Add(long l)
     {
         base.Add(l);
+#if DEBUG
         if (Count % 100 == 0)
         {
             List<long> l2 = new List<long>();
@@ -22,6 +23,7 @@ public class DebugLongCollection : DebugCollection<long>
 
             DebugLogger.Instance.WriteLine(s);
         }
+#endif
     }
 }
 

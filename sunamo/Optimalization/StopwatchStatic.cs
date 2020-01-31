@@ -13,9 +13,15 @@ using System.Diagnostics;
         sw.Start();
         }
 
-        public static void StopAndPrintElapsed(string operation, string p, params object[] parametry)
+        public static long StopAndEllapsedMs()
+    {
+        sw.sw.Stop();
+        return sw.sw.ElapsedMilliseconds;
+    }
+
+        public static long StopAndPrintElapsed(string operation, string p, params object[] parametry)
         {
-            sw.StopAndPrintElapsed(operation, p, parametry);
+            return sw.StopAndPrintElapsed(operation, p, parametry);
         }
 
         public static long ElapsedMS

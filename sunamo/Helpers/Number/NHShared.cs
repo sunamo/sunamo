@@ -34,8 +34,8 @@ public static partial class NH
 
     internal static string CalculateMedianAverage(List<long> l2)
     {
-        var l = CA.ToNumber<long>(long.Parse, l2);
-        return CalculateMedianAverage(l2);
+        var l = CA.ToNumber<double>(double.Parse, l2);
+        return CalculateMedianAverage(l);
     }
 
     public static float RoundAndReturnInInputType(float ugtKm, int v)

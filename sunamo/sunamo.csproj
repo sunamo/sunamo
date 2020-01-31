@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />

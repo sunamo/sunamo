@@ -59,7 +59,7 @@
 
 //    public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, ABC whereIs, ABC whereIsNot)
 //    {
-//        return SqlOpsI.ci. DeleteAllSmallerThanWithOutput(SqlData.Empty, TableName, sloupceJezVratit, nameColumnSmallerThan, valueColumnSmallerThan, whereIs, whereIsNot).result;
+//        return SqlOpsI.ci.DeleteAllSmallerThanWithOutput(SqlData.Empty, TableName, sloupceJezVratit, nameColumnSmallerThan, valueColumnSmallerThan, whereIs, whereIsNot).result;
 //    }
 
 //    public DataTable DeleteWithOutput(string TableName, string sloupceJezVratit, string idColumn, object idValue)
@@ -98,7 +98,7 @@
 //        }
 //    }
 
-//    public int SelectID( string tabulka, string nazevSloupce, object hodnotaSloupce)
+//    public int SelectID(string tabulka, string nazevSloupce, object hodnotaSloupce)
 //    {
 //        return SelectID(false, tabulka, nazevSloupce, hodnotaSloupce);
 //    }
@@ -120,13 +120,13 @@
 
 //    public void CreateDatabase(string p)
 //    {
-//         SqlOpsI.ci.CreateDatabase(d, p);
+//        SqlOpsI.ci.CreateDatabase(d, p);
 //    }
 
 
-    
 
-  
+
+
 
 //    public List<bool> DataTableToListBool(DataTable dataTable, int dex)
 //    {
@@ -209,7 +209,7 @@
 
 //    public void DropAllTables()
 //    {
-//         SqlOpsI.ci.DropAllTables(d);
+//        SqlOpsI.ci.DropAllTables(d);
 //    }
 
 //    public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
@@ -250,7 +250,7 @@
 
 //    public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
 //    {
-//         SqlOpsI.ci.DropAndCreateTable2(d, p, dictionary);
+//        SqlOpsI.ci.DropAndCreateTable2(d, p, dictionary);
 //    }
 //    public int DropTableIfExists(string table)
 //    {
@@ -416,7 +416,7 @@
 //    /// <returns></returns>
 //    public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
 //    {
-//         return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce).result;
+//        return SqlOpsI.ci.Insert2(d, tabulka, sloupecID, typSloupecID, sloupce).result;
 //    }
 
 
@@ -441,7 +441,7 @@
 //    /// <param name="sloupce"></param>
 //    public void Insert4(string tabulka, params object[] sloupce)
 //    {
-//         SqlOpsI.ci.Insert4(d, tabulka, sloupce);
+//        SqlOpsI.ci.Insert4(d, tabulka, sloupce);
 //    }
 
 //    /// <summary>
@@ -468,7 +468,7 @@
 //    /// <returns></returns>
 //    public long Insert6(string table, string nazvySloupcu, params object[] sloupce)
 //    {
-//         return SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce).result;
+//        return SqlOpsI.ci.Insert6(d, table, nazvySloupcu, sloupce).result;
 //    }
 
 //    /// <summary>
@@ -520,7 +520,7 @@
 //    /// <param name="sloupce"></param>
 //    public void InsertToRowGuid3(string tabulka, Guid IDUsers, params object[] sloupce)
 //    {
-//         SqlOpsI.ci.InsertToRowGuid3(d, tabulka, IDUsers, sloupce);
+//        SqlOpsI.ci.InsertToRowGuid3(d, tabulka, IDUsers, sloupce);
 //    }
 
 //    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, params AB[] aB)
@@ -775,7 +775,7 @@
 //    /// <param name="table"></param>
 //    public void sp_rename(string table)
 //    {
-//         SqlOpsI.ci.sp_rename(d, table);
+//        SqlOpsI.ci.sp_rename(d, table);
 //    }
 
 //    /// <summary>
@@ -907,7 +907,7 @@
 //        var data = new SqlData { limit = limit, orderBy = sloupecOrder };
 //        return SqlOpsI.ci.SelectDataTableLastRows(data, tableName, columns, whereIs, whereIsNot, whereGreaterThan, whereLowerThan).result;
 //    }
-    
+
 
 //    /// <summary>
 //    /// 2
@@ -996,7 +996,7 @@
 //    /// </summary>
 //    public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly)
 //    {
-        
+
 //        return SqlOpsI.ci.SelectTableInnerJoin(d, tableFromWithShortVersion, tableJoinWithShortVersion, sloupceJezZiskavat, onKlazuleOdNuly).result;
 //    }
 
@@ -1021,7 +1021,7 @@
 
 //    public DataTable SelectDataTableGroupBy(string table, string columns, string groupByColumns)
 //    {
-//        var data = new SqlData { GroupByColumn = groupByColumns};
+//        var data = new SqlData { GroupByColumn = groupByColumns };
 //        return SqlOpsI.ci.SelectDataTableGroupBy(data, table, columns).result;
 //    }
 
@@ -1280,7 +1280,7 @@
 
 //    public object[] SelectRowReader(string tabulka, string nazvySloupcu, string sloupecID, object id)
 //    {
-//        return SqlOpsI.ci.SelectRowReader(d,tabulka, nazvySloupcu, sloupecID, id).result;
+//        return SqlOpsI.ci.SelectRowReader(d, tabulka, nazvySloupcu, sloupecID, id).result;
 //    }
 
 //    /// <summary>
@@ -1638,7 +1638,7 @@
 
 //    public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, int limit, string sloupec, params AB[] ab)
 //    {
-//        var data = new SqlData { limit  = limit};
+//        var data = new SqlData { limit = limit };
 //        return SqlOpsI.ci.SelectValuesOfColumnAllRowsByte(data, tabulka, sloupec, ab).result;
 //    }
 
@@ -1658,7 +1658,7 @@
 
 //    public void UpdateValuesCombinationCombinedWhere(string TableName, ABC sets, ABC where)
 //    {
-//         SqlOpsI.ci.UpdateValuesCombinationCombinedWhere(d, TableName, sets, where);
+//        SqlOpsI.ci.UpdateValuesCombinationCombinedWhere(d, TableName, sets, where);
 //    }
 
 //    /// <summary>
