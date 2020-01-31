@@ -58,9 +58,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="o"></param>
     public static int AddCommandParameter(SqlCommand comm, int i, object o)
     {
-
-
-
         if (o == null || o.GetType() == DBNull.Value.GetType())
         {
             SqlParameter p = new SqlParameter();

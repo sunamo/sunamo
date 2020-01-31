@@ -111,6 +111,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Collections\DebugLongCollection.cs" />
     <Compile Include="Enums\SqlExceptions.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
