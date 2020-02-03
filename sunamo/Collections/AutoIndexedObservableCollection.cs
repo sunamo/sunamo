@@ -38,7 +38,7 @@ public  class AutoIndexedObservableCollection<T> : ObservableCollection<T>
         }
     }
 
-    public   void AddRange(IEnumerable<T> t)
+    public void AddRange(IEnumerable<T> t)
     {
         foreach (var item in t)
         {

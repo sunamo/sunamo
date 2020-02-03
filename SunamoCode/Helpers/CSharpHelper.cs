@@ -251,4 +251,40 @@ public static partial class CSharpHelper
         }
         return sb.ToString().TrimEnd(AllChars.comma);
     }
+
+    public static Dictionary<string, string> ParseFields(List<string> l)
+    {
+        CA.RemoveStringsEmpty2(l);
+        CA.ChangeContent(l, e => SH.RemoveAfterFirst(e, AllChars.equal));
+        CA.TrimEnd(l, AllChars.sc);
+        Dictionary<string, string> r = new Dictionary<string, string>();
+        foreach (var item in l)
+        {
+            var p = SH.SplitByWhiteSpaces(item);
+            var c = p.Count;
+            r.Add( SH.FirstCharLower( p[c-1]), p[c - 2]);
+        }
+        return r;
+    }
+
+    const string tProperty = @"{0} {2} = {1};
+
+    public {0} {3} { get { return {2}; } set { {2} = value; OnPropertyChanged(" + "\"{3}\"); } }" + @"
+
+";
+
+    public static string GenerateProperties(List<string> l)
+    {
+        var d = ParseFields(l);
+
+
+
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in d)
+        {
+            sb.AppendLine(SH.Format3(tProperty, item.Value, CSharpHelperSunamo.DefaultValueForType(item.Value), item.Key, SH.FirstCharUpper(item.Key)));
+        }
+
+        return sb.ToString();
+    }
 }

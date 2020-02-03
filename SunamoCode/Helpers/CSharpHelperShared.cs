@@ -18,7 +18,7 @@ public static partial class CSharpHelper
         switch (type)
         {
             case "string":
-                return AllStrings.qm;
+                return AllStrings.qm + AllStrings.qm;
             case "bool":
                 return false;
             case "float":

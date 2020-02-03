@@ -15,6 +15,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     UserControl actual = new UserControl();
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
+    IUserControlClosing userControlClosing;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
     dynamic Instance = null;
 
@@ -202,7 +203,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         miAlwaysOnTop.IsChecked = Topmost;
     }
 
-    // Only for working with notify
+    // Only for working with notify, but always insert block with userControlClosing
 //    protected override void OnClosing(CancelEventArgs e)
 //    {
 //#if !DEBUG
@@ -211,9 +212,14 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 //#endif
 //        CheckMenuItemTopMost();
 
+        //if (userControlClosing != null)
+        //    {
+        //        userControlClosing.OnClosing();
+        //    }
+
 //        base.OnClosing(e);
 //    }
-    protected override void OnSourceInitialized(EventArgs e)
+protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
 
@@ -241,6 +247,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
     private void SetMode(Mode mode)
     {
+        if (userControlClosing != null)
+        {
+            userControlClosing.OnClosing();
+        }
+
         this.Topmost = false;
         #region After arrange I have to newly unregister
         //if (result != null)
@@ -284,6 +295,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         userControl.Init();
 
         userControlWithMenuItems = actual as IUserControlWithMenuItemsList;
+        userControlClosing = actual as IUserControlClosing;
 
         #region On start I have to unregister
         previouslyRegisteredMenuItems.ForEach(menuItem => miUC.Items.Remove(menuItem));

@@ -62,9 +62,11 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
     <Compile Include="Interfaces\IWhere.cs" />
+    <None Include="MSSQL\MSStoredProceduresIBaseSharedWithoutSqlData.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBase.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseShared.cs" />
     <Compile Include="MSSQL\MSStoredProceduresIBaseSharedSqlOps.cs" />
+    <Compile Include="MSSQL\MSStoredProceduresIBaseSharedWithoutSqlData2.cs" />
     <Compile Include="MSSQL\MSStoredProceduresI_BeforeSqlOps.cs" />
     <Compile Include="MSSQL\SqlOpsI.cs" />
     <Compile Include="SqlResult\CastSqlResult.cs" />

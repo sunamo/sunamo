@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+/// <summary>
+/// 
+/// </summary>
 public interface IUserControlClosing
 {
     void OnClosing();

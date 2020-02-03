@@ -847,7 +847,7 @@ public static partial class SH
         {
             var from2 = SH.Split(co, Environment.NewLine);
             var to2 = SH.Split(zaCo, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", @"from2", from2, "to2", to2);
 
             for (int i = 0; i < from2.Count; i++)
             {
@@ -1156,27 +1156,7 @@ public static partial class SH
         return SH.Join(p, AllStrings.space);
     }
 
-    /// <summary>
-    /// Cannot be use on existing code - will corrupt them
-    /// </summary>
-    /// <param name="templateHandler"></param>
-    /// <param name="lsf"></param>
-    /// <param name="rsf"></param>
-    /// <param name="id"></param>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
-    {
-        var result = SH.Format2(templateHandler, args);
-        const string replacement = "{        }";
-        result = SH.ReplaceAll2(result, replacement, "[]");
-        result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
-        result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
-        result = SH.ReplaceAll2(result, replacement, "{}");
-        return result;
-    }
-
+    
 
 
 
@@ -1439,8 +1419,39 @@ public static partial class SH
         return result;
     }
 
+    /// <summary>
+    /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
+    /// Format2 - use string.Format with error checking
+    /// Format3 - Replace {x} with my code
+    /// Format4 - use string.Format without error checking
+    /// 
+    /// Cannot be use on existing code - will corrupt them
+    /// </summary>
+    /// <param name="templateHandler"></param>
+    /// <param name="lsf"></param>
+    /// <param name="rsf"></param>
+    /// <param name="id"></param>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
+    {
+        var result = SH.Format2(templateHandler, args);
+        const string replacement = "{        }";
+        result = SH.ReplaceAll2(result, replacement, "[]");
+        result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
+        result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
+        result = SH.ReplaceAll2(result, replacement, "{}");
+        return result;
+    }
+
 
     /// <summary>
+    /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
+    /// Format2 - use string.Format with error checking
+    /// Format3 - Replace {x} with my code
+    /// Format4 - use string.Format without error checking
+    /// 
     /// Try to use in minimum!! Better use Format3 which dont raise "Input string was in wrong format"
     /// 
     /// Simply return from string.Format. SH.Format is more intelligent
@@ -1475,6 +1486,11 @@ public static partial class SH
     }
 
     /// <summary>
+    /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
+    /// Format2 - use string.Format with error checking
+    /// Format3 - Replace {x} with my code
+    /// Format4 - use string.Format without error checking
+    /// 
     /// Manually replace every {i} 
     /// </summary>
     /// <param name="template"></param>
@@ -1488,6 +1504,26 @@ public static partial class SH
             template = SH.ReplaceAll2(template, args[i].ToString(), AllStrings.cbl + i + AllStrings.cbr);
         }
         return template;
+    }
+
+    /// <summary>
+    /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
+    /// Format2 - use string.Format with error checking
+    /// Format3 - Replace {x} with my code
+    /// Format4 - use string.Format without error checking
+    /// 
+    /// Call string.Format, nothing more
+    /// use for special string formatting like {0:X2}
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="a"></param>
+    /// <param name="r"></param>
+    /// <param name="g"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public static string Format4(string v, params object[] o)
+    {
+        return string.Format(v, o);
     }
 
     public static string FirstCharLower(string nazevPP)
@@ -1608,8 +1644,8 @@ public static partial class SH
 
     public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
-        InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", "args", parts);
-        InitApp.TemplateLogger.AnyElementIsNull(s_type, "JoinPairs", "args", parts);
+        InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", @"args", parts);
+        InitApp.TemplateLogger.AnyElementIsNull(s_type, "JoinPairs", @"args", parts);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < parts.Length; i++)
@@ -2490,7 +2526,7 @@ public static partial class SH
         {
             for (int i = 0; i < s.Count; i++)
             {
-                s[i] = SH.ReplaceAll(s[i], AllStrings.space, "\r", "\n", Environment.NewLine);
+                s[i] = SH.ReplaceAll(s[i], AllStrings.space, "\r", @"\n", Environment.NewLine);
             }
         }
         if (moreSpacesForOne)
@@ -2769,20 +2805,7 @@ public static string GetToFirstChar(string input, int indexOfChar)
         return input;
     }
 
-    /// <summary>
-    /// Call string.Format, nothing more
-    /// use for special string formatting like {0:X2}
-    /// </summary>
-    /// <param name="v"></param>
-    /// <param name="a"></param>
-    /// <param name="r"></param>
-    /// <param name="g"></param>
-    /// <param name="b"></param>
-    /// <returns></returns>
-    public static string Format4(string v, params object[] o)
-    {
-        return string.Format(v, o);
-    }
+
 
 public static bool EqualsOneOfThis(string p1, params string[] p2)
     {
