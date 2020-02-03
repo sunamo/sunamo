@@ -8,5 +8,6 @@ using System.Text;
         public const string DevCz = "developer.sunamo.cz";
         public const string LyrCz = "lyrics.sunamo.cz";
     public const string AppCz = "apps.sunamo.cz";
+    public const string GeoCz = "geocaching.sunamo.cz";
 }
 

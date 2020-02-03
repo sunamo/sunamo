@@ -27,6 +27,7 @@ public class ControlInitData
     public object tag = null;
     public string tooltip = null;
     public bool isEditable = false;
+    public Action<int, int> OnTextChange;
 
     public string text
     {

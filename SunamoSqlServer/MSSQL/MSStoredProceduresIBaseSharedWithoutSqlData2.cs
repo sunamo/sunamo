@@ -18,6 +18,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 {
     public static PpkOnDrive loggedCommands = null;
 
+
+
     static MSStoredProceduresIBase()
     {
         //var f = AppData.ci.GetFile(AppFolders.Logs, "sqlCommands.txt");
