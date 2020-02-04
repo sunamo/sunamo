@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 public class SunamoColors
 {
-    public static SunamoColor Lime;
-    public static SunamoColor Red;
+    public SunamoColors()
+    {
+        
+    }
+
+    public static SunamoColor Lime = new SunamoColor(0, 0, 255, 0);
+    public static SunamoColor Red = new SunamoColor(0, 255, 0, 0);
 }
 

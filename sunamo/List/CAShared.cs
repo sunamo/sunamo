@@ -1011,7 +1011,10 @@ public static partial class CA
     /// <returns></returns>
     public static List<int> ToInt(IEnumerable enumerable)
     {
-        return ToNumber<int>(int.Parse, enumerable);
+        var ts = ToListString2(enumerable);
+        CA.ChangeContent(ts, d => SH.RemoveAfterFirst(d.Replace(AllChars.comma, AllChars.dot), AllChars.dot));
+
+        return ToNumber<int>(int.Parse, ts);
     }
 
     public static List<int> ToInt(IEnumerable enumerable, int requiredLength)
