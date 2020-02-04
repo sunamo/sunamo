@@ -1436,22 +1436,15 @@ public static partial class SH
     /// <returns></returns>
     public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
     {
-        //var result = SH.Format2(templateHandler, args);
-        //const string replacement = "{        }";
-        //result = SH.ReplaceAll2(result, replacement, "[]");
-        //result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
-        //result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
-        //result = SH.ReplaceAll2(result, replacement, "{}");
-        ////result = SH.Format4(result, args);
+        var result = SH.Format2(templateHandler, args);
+        const string replacement = "{        }";
+        result = SH.ReplaceAll2(result, replacement, "[]");
+        result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
+        result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
+        result = SH.ReplaceAll2(result, replacement, "{}");
+        //result = SH.Format4(result, args);
 
-        // this was original implementation but dont know why isnt used string.format
-        for (int i = 0; i < args.Length; i++)
-        {
-            templateHandler = SH.ReplaceAll2(templateHandler, args[i].ToString(), lsf + i + rsf);
-        }
-        
-
-        return templateHandler;
+        return result;
     }
 
 
@@ -1535,6 +1528,17 @@ public static partial class SH
         return string.Format(v, o);
     }
 
+    public static string Format5(string templateHandler, string lsf, string rsf, params string[] args)
+    {
+        // this was original implementation but dont know why isnt used string.format
+        for (int i = 0; i < args.Length; i++)
+        {
+            templateHandler = SH.ReplaceAll2(templateHandler, args[i].ToString(), lsf + i + rsf);
+        }
+
+
+        return templateHandler;
+    }
     public static string FirstCharLower(string nazevPP)
     {
         if (nazevPP.Length < 2)

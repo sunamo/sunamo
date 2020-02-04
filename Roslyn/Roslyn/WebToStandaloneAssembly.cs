@@ -101,7 +101,9 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
 
                 #region Generate and save *Cs file
                 CollectionWithoutDuplicates<string> usings;
-                if (FS.ExistsFile(designer) && !FS.ExistsFile(fullPathTo))
+                var v1 = FS.ExistsFile(designer);
+                var v2 = !FS.ExistsFile(fullPathTo);
+                if (v1 && v2)
                 {
                     #region Get variables in designer and *.aspx.cs
                     var designerContent = TF.ReadFile(designer);

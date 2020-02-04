@@ -1354,7 +1354,12 @@ public partial class FS
         {
             return "*.*";
         }
-      
+
+        if (ext2 == ".aspx.cs")
+        {
+            DebugLogger.Break();
+        }
+
         var ext = FS.GetExtension(ext2);
         // isContained must be true, in BundleTsFile if false masc will be .ts, not *.ts and won't found any file
         var isContained = AllExtensionsHelper.IsContained(ext);
@@ -1365,14 +1370,17 @@ public partial class FS
         // (cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0); - in MoveClassElementIntoSharedFileUC
         // !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0)) - change due to MoveClassElementIntoSharedFileUC
 
+        // not working for *.aspx.cs
+        //var isNoMascEntered = !(!ext2.Contains("*") && !ext2.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // Is succifient one of inner condition false and whole is true
         // 
 
-        var isNoMascEntered = !(!ext.Contains("*") && !ext.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
+        var isNoMascEntered = !((ext2.Contains("*") || ext2.Contains("?")));// && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
-        if (!ext.StartsWith("*.") && isNoMascEntered && isContained && ext == ext2) 
+        if (!ext.StartsWith("*.") && isNoMascEntered && isContained && ext == FS.GetExtension( ext2)) 
         {
-            return AllStrings.asterisk + AllStrings.dot + ext.TrimStart(AllChars.dot);
+            var vr = AllStrings.asterisk + AllStrings.dot + ext2.TrimStart(AllChars.dot);
+            return vr;
         }
 
         return ext2;
@@ -1385,6 +1393,7 @@ public partial class FS
     {
         return FS.GetFiles(folderPath, FS.MascFromExtension(), recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
     }
+   
     /// <summary>
     /// No recursive, all extension
     /// </summary>

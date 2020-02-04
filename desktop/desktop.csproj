@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlClosing.cs" />
     <Compile Include="..\..\sunamo\desktop\EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />

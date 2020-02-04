@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Values\SunamoColors.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SunamoColor.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
