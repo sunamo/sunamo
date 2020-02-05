@@ -248,19 +248,20 @@ public static T Average<T>(dynamic gridWidth, dynamic columnsCount)
     /// <returns></returns>
     private static object ReturnZero<T>()
     {
-        if (typeof(T) == Types.tDouble)
+        var t = typeof(T);
+        if (t == Types.tDouble)
         {
             return Consts.zeroDouble;
         }
-        else if (typeof(T) == Types.tInt)
+        else if (t == Types.tInt)
         {
             return Consts.zeroInt;
         }
-        else if (typeof(T) == Types.tFloat)
+        else if (t== Types.tFloat)
         {
             return Consts.zeroFloat;
         }
-        ThrowExceptions.NotImplementedCase(s_type, "ReturnZero");
+        ThrowExceptions.NotImplementedCase(s_type, "ReturnZero", t.FullName);
         return null;
     }
 

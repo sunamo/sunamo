@@ -5,6 +5,248 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string PINebylyNalezenyŽádnéWaypointyIP = "PINebylyNalezenyŽádnéWaypointyIP" ; 
+
+	public const string Stats = "Stats" ; 
+
+	public const string HiddenUserCaches = "HiddenUserCaches" ; 
+
+	public const string Czech = "Czech" ; 
+
+	public const string Process = "Process" ; 
+
+	public const string FillInEitherDateTimeOrBothForExampleIfYouWantToGetAllSegmentsByTheEndOfAndDonTWantToEnterTheTimeEnterWhichWillBeConvertedTo = "FillInEitherDateTimeOrBothForExampleIfYouWantToGetAllSegmentsByTheEndOfAndDonTWantToEnterTheTimeEnterWhichWillBeConvertedTo" ; 
+
+	public const string SaveOnlyPointsFrom = "SaveOnlyPointsFrom" ; 
+
+	public const string WithWhichYouCanDoOtherThingsForExampleUseGBOfPhotoSpaceOrShortenLinks = "WithWhichYouCanDoOtherThingsForExampleUseGBOfPhotoSpaceOrShortenLinks" ; 
+
+	public const string SunamoCzClient = "SunamoCzClient" ; 
+
+	public const string toKnowWhichOnesToDeleteFirstCutTheEndIfNeededStartAndResourcesCanBeCutLaterEndNotAndIfYouNeedToSplitTheFilesIntoIndividualDaysUseMyProgram = "toKnowWhichOnesToDeleteFirstCutTheEndIfNeededStartAndResourcesCanBeCutLaterEndNotAndIfYouNeedToSplitTheFilesIntoIndividualDaysUseMyProgram" ; 
+
+	public const string segmentsToInspect = "segmentsToInspect" ; 
+
+	public const string IfYouNeed = "IfYouNeed" ; 
+
+	public const string UploadANewTrack = "UploadANewTrack" ; 
+
+	public const string TheSiteIsPerformingOperations = "TheSiteIsPerformingOperations" ; 
+
+	public const string WaitPlease = "WaitPlease" ; 
+
+	public const string NumberOfImpressionsToday = "NumberOfImpressionsToday" ; 
+
+	public const string TotalImpressions = "TotalImpressions" ; 
+
+	public const string IfYouVisitThePageSignedInWithYourAccountItWillNotBeIncludedInYourStatistics = "IfYouVisitThePageSignedInWithYourAccountItWillNotBeIncludedInYourStatistics" ; 
+
+	public const string TrackLink = "TrackLink" ; 
+
+	public const string TrackAttendanceStatistics = "TrackAttendanceStatistics" ; 
+
+	public const string ShowSegments = "ShowSegments" ; 
+
+	public const string SelectTheGpxFile = "SelectTheGpxFile" ; 
+
+	public const string AbsolutelyLowestSpeedPerSegment = "AbsolutelyLowestSpeedPerSegment" ; 
+
+	public const string AbsolutelyHighestSpeedPerSegment = "AbsolutelyHighestSpeedPerSegment" ; 
+
+	public const string RateOfDescent = "RateOfDescent" ; 
+
+	public const string RateOfClimb = "RateOfClimb" ; 
+
+	public const string FlatSpeed = "FlatSpeed" ; 
+
+	public const string TotalDescent = "TotalDescent" ; 
+
+	public const string TotalClimb = "TotalClimb" ; 
+
+	public const string TotalFlat = "TotalFlat" ; 
+
+	public const string Total = "Total" ; 
+
+	public const string NumberOfDescentSegments = "NumberOfDescentSegments" ; 
+
+	public const string NumberOfClimbSegments = "NumberOfClimbSegments" ; 
+
+	public const string NumberOfPlaneSegments = "NumberOfPlaneSegments" ; 
+
+	public const string TheDifferenceBetweenTheHighestAndTheLowestPoint = "TheDifferenceBetweenTheHighestAndTheLowestPoint" ; 
+
+	public const string mLightGreen = "mLightGreen" ; 
+
+	public const string mRed = "mRed" ; 
+
+	public const string ToShareATrackWithFriendsJustCopyTheAddressFromTheAddressBarGenerateANewCodeIfYouNoLongerWantToShareTheTrack = "ToShareATrackWithFriendsJustCopyTheAddressFromTheAddressBarGenerateANewCodeIfYouNoLongerWantToShareTheTrack" ; 
+
+	public const string RecordAndTrackInformation = "RecordAndTrackInformation" ; 
+
+	public const string WebGeocachingHasNoAdditionalSettings = "WebGeocachingHasNoAdditionalSettings" ; 
+
+	public const string NameOrPlace = "NameOrPlace" ; 
+
+	public const string FileName = "FileName" ; 
+
+	public const string AverageSpeed = "AverageSpeed" ; 
+
+	public const string Nachozeno = "Nachozeno" ; 
+
+	public const string TheHighestPoint = "TheHighestPoint" ; 
+
+	public const string TheLowestPoint = "TheLowestPoint" ; 
+
+	public const string OverallTime = "OverallTime" ; 
+
+	public const string Date = "Date" ; 
+
+	public const string SearchInTheFileName = "SearchInTheFileName" ; 
+
+	public const string ListAllGPXTracksOfTheUser = "ListAllGPXTracksOfTheUser" ; 
+
+	public const string FromTheBeginning = "FromTheBeginning" ; 
+
+	public const string Even = "Even" ; 
+
+	public const string USA = "USA" ; 
+
+	public const string CzechRepublic = "CzechRepublic" ; 
+
+	public const string SplitOrCrop = "SplitOrCrop" ; 
+
+	public const string PointsBetweenTheseDatesWillBeDeletedIfBothTheFirstAndSecondPointsAreFilledWithDatesWithTimesSomewhereInTheMiddleOfTheTable = "PointsBetweenTheseDatesWillBeDeletedIfBothTheFirstAndSecondPointsAreFilledWithDatesWithTimesSomewhereInTheMiddleOfTheTable" ; 
+
+	public const string FillInEitherDateTimeOrBoth = "FillInEitherDateTimeOrBoth" ; 
+
+	public const string SaveOnlyPointsTo = "SaveOnlyPointsTo" ; 
+
+	public const string IWantToEnterTheDateAndTimeInTheFormat = "IWantToEnterTheDateAndTimeInTheFormat" ; 
+
+	public const string ATimestampIsAutomaticallyAddedToTheNameOfTheNewRouteToMakeItClearToEachOther = "ATimestampIsAutomaticallyAddedToTheNameOfTheNewRouteToMakeItClearToEachOther" ; 
+
+	public const string YouCurrentlyHaveThesePartsOfTheTrackInTheFile = "YouCurrentlyHaveThesePartsOfTheTrackInTheFile" ; 
+
+	public const string SplitTheRouteIntoPartsTheMiddlePartWillBeRemoved = "SplitTheRouteIntoPartsTheMiddlePartWillBeRemoved" ; 
+
+	public const string TotalNumberOfSegments = "TotalNumberOfSegments" ; 
+
+	public const string TheLastStepRecorded = "TheLastStepRecorded" ; 
+
+	public const string TheFirstStepIsRecorded = "TheFirstStepIsRecorded" ; 
+
+	public const string UploadedBy = "UploadedBy" ; 
+
+	public const string IWantTheRouteNotToBeElevated = "IWantTheRouteNotToBeElevated" ; 
+
+	public const string RouteColor = "RouteColor" ; 
+
+	public const string Change = "Change" ; 
+
+	public const string TheNameOfTheRoute = "TheNameOfTheRoute" ; 
+
+	public const string TrackInformation = "TrackInformation" ; 
+
+	public const string ViewMap = "ViewMap" ; 
+
+	public const string GenerateNewCode = "GenerateNewCode" ; 
+
+	public const string DeleteTrack = "DeleteTrack" ; 
+
+	public const string TrackManagement = "TrackManagement" ; 
+
+	public const string EnterACommentUpToCharacters = "EnterACommentUpToCharacters" ; 
+
+	public const string EnterTheColorOfTheTrackNothingWillAppearOnTheMapIfYouEnterAWrongColorAndOnlySetToMonochrome = "EnterTheColorOfTheTrackNothingWillAppearOnTheMapIfYouEnterAWrongColorAndOnlySetToMonochrome" ; 
+
+	public const string EnterATrackNameIfYouEnterDiacriticsOrOtherIllegalCharactersTheyWillReplaceThemselves = "EnterATrackNameIfYouEnterDiacriticsOrOtherIllegalCharactersTheyWillReplaceThemselves" ; 
+
+	public const string DownloadGeocachesToLocale = "DownloadGeocachesToLocale" ; 
+
+	public const string CreateANewCacheList = "CreateANewCacheList" ; 
+
+	public const string TheListIsPublic = "TheListIsPublic" ; 
+
+	public const string ReverseList = "ReverseList" ; 
+
+	public const string ListOfCachesList = "ListOfCachesList" ; 
+
+	public const string CreateHTMLList = "CreateHTMLList" ; 
+
+	public const string ReverseListOfCaches = "ReverseListOfCaches" ; 
+
+	public const string CreateANewWorksheet = "CreateANewWorksheet" ; 
+
+	public const string DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt = "DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt" ; 
+
+	public const string NoneOfTheLeavesOfTheCacheContains = "NoneOfTheLeavesOfTheCacheContains" ; 
+
+	public const string AtLeastOneOfTheLeavesOfTheCacheContains = "AtLeastOneOfTheLeavesOfTheCacheContains" ; 
+
+	public const string AccordingToAttributesOfTheCache = "AccordingToAttributesOfTheCache" ; 
+
+	public const string YouWantToTimeLimitCachesByAddingToThesePages = "YouWantToTimeLimitCachesByAddingToThesePages" ; 
+
+	public const string TypeOfHunting = "TypeOfHunting" ; 
+
+	public const string PartOfTheCacheName = "PartOfTheCacheName" ; 
+
+	public const string NumberOfFoundCaches = "NumberOfFoundCaches" ; 
+
+	public const string ShowingMaximumGeocache = "ShowingMaximumGeocache" ; 
+
+	public const string SearchForCachesContaining = "SearchForCachesContaining" ; 
+
+	public const string ExportSeznamu = "ExportSeznamu" ; 
+
+	public const string GenerateGPXFile = "GenerateGPXFile" ; 
+
+	public const string UChecked = "UChecked" ; 
+
+	public const string DeselectEverything = "DeselectEverything" ; 
+
+	public const string CheckEverything = "CheckEverything" ; 
+
+	public const string ListingOfAllUsers = "ListingOfAllUsers" ; 
+
+	public const string MaxCharactersMaxlenghtIsSet = "MaxCharactersMaxlenghtIsSet" ; 
+
+	public const string CloseWaypointEditing = "CloseWaypointEditing" ; 
+
+	public const string EditaceWaypointu = "EditaceWaypointu" ; 
+
+	public const string AddANewWaypoint = "AddANewWaypoint" ; 
+
+	public const string MyOwnWaypoints = "MyOwnWaypoints" ; 
+
+	public const string AutoroviWaypointy = "AutoroviWaypointy" ; 
+
+	public const string AuthorSDescriptionOfTheCache = "AuthorSDescriptionOfTheCache" ; 
+
+	public const string ViewMyComment = "ViewMyComment" ; 
+
+	public const string DateOfRegistration = "DateOfRegistration" ; 
+
+	public const string Impose = "Impose" ; 
+
+	public const string ViewMyLog = "ViewMyLog" ; 
+
+	public const string ViewCountLastDaysToday = "ViewCountLastDaysToday" ; 
+
+	public const string MetaInformace = "MetaInformace" ; 
+
+	public const string GenerateCodeForEachRoute = "GenerateCodeForEachRoute" ; 
+
+	public const string GenerateCodeForRouteGallery = "GenerateCodeForRouteGallery" ; 
+
+	public const string CreateMyPublicGalleryOfGpxRoutes = "CreateMyPublicGalleryOfGpxRoutes" ; 
+
+	public const string IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes = "IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes" ; 
+
+	public const string YourCompleteGalleryOfYourRoutesInclOptionsToSortByManyDifferentDataPleaseVisit = "YourCompleteGalleryOfYourRoutesInclOptionsToSortByManyDifferentDataPleaseVisit" ; 
+
+	public const string ListAllYourGPXTracks = "ListAllYourGPXTracks" ; 
+
     public const string SomethingWentWrong3dotspace = "SomethingWentWrong3dotspace";
 
     public const string BDoporučenáVerzeNebylaDosudNauploadovánaB = "BDoporučenáVerzeNebylaDosudNauploadovánaB" ; 

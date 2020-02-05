@@ -22,6 +22,18 @@ namespace SunamoTesseract
     public class TessearctHelper
     {
         /// <summary>
+        /// For A1 can use GetImageFile
+        /// </summary>
+        /// <param name="imageFile"></param>
+        /// <param name="lang"></param>
+        /// <returns></returns>
+        public static string ParseText(byte[] imageFile, string lang = "ces")
+        {
+            var tesseractPath = GetTesseractPath();
+            return ParseText(tesseractPath, imageFile, lang);
+        }
+
+        /// <summary>
         /// lang: cse, eng
         /// </summary>
         /// <param name="path"></param>
@@ -34,29 +46,71 @@ namespace SunamoTesseract
             var env = Environment.GetEnvironmentVariable(va);
 
 
-            var solutionDirectory = string.Empty;
-            //solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
-            solutionDirectory = @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\";
-
-            var tesseractPath = solutionDirectory + @"tesseract-master.1153";
+            var tesseractPath = string.Empty;
+            tesseractPath = GetTesseractPath();
 
             byte[] imageFile = null;
             string ext = FS.GetExtension(path);
 
             if (ext != AllExtensions.tiff)
             {
-                MemoryStream ms = new MemoryStream();
                 Bitmap bmp = new Bitmap(path);
-                bmp.Save(ms, ImageFormat.Tiff);
-                imageFile = ms.ToArray();
+                imageFile = GetImageFile(bmp).ToArray();
             }
             else
             {
                 imageFile = File.ReadAllBytes(path);
             }
-            
+
             var text = TessearctHelper.ParseText(tesseractPath, imageFile, lang).Trim(); ;
             return text;
+        }
+
+        private static byte[] GetImageFile(Bitmap bmp)
+        {
+            MemoryStream ms = new MemoryStream();
+            
+            bmp.Save(ms, ImageFormat.Tiff);
+            return ms.ToArray();
+        }
+
+        private static string GetTesseractPath()
+        {
+            string tesseractPath;
+            var solutionDirectory = string.Empty;
+            //solutionDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+            solutionDirectory = @"d:\Documents\BitBucket\How-to-use-tesseract-ocr-4.0-with-csharp\";
+
+            tesseractPath = solutionDirectory + @"tesseract-master.1153";
+            return tesseractPath;
+        }
+
+        public static void Test()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+
+            var testFiles = FS.GetFiles(@"d:\_Test\WpfApp1\WpfApp1\OpticalCharacterRecognitionUC\");
+            var tesseractPath = GetTesseractPath();
+
+            var maxDegreeOfParallelism = Environment.ProcessorCount;
+            Parallel.ForEach(testFiles, new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism }, (fileName) =>
+            {
+                
+                var imageFile = File.ReadAllBytes(fileName);
+                var text = ParseText(tesseractPath, imageFile, "enu");
+                Console.WriteLine("File:" + fileName + "\n" + text + "\n");
+            });
+
+            stopwatch.Stop();
+            Console.WriteLine("Duration: " + stopwatch.Elapsed);
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+
+            string output = string.Empty;
+            var tempOutputFile = Path.GetTempPath() + Guid.NewGuid();
+            var tempImageFile = Path.GetTempFileName();
         }
 
         private static string ParseText(string tesseractPath, byte[] imageFile, params string[] lang)

@@ -73,6 +73,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoCsv", "SunamoCsv\Suna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuCsProjFile", "..\sunamo.notmine\FubuCsProjFile\FubuCsProjFile.csproj", "{5630FC3F-8C3E-4EAD-B960-B38FE3D87463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoMathpix", "SunamoMathpix\SunamoMathpix.csproj", "{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -491,6 +493,18 @@ Global
 		{5630FC3F-8C3E-4EAD-B960-B38FE3D87463}.Release|x64.Build.0 = Release|Any CPU
 		{5630FC3F-8C3E-4EAD-B960-B38FE3D87463}.Release|x86.ActiveCfg = Release|Any CPU
 		{5630FC3F-8C3E-4EAD-B960-B38FE3D87463}.Release|x86.Build.0 = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|x64.Build.0 = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D941DB9-3A5B-4FA1-A64A-452CEA36536D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,7 +37,7 @@ public class ConvertDayShortcutString
             case 6:
                 return "Sun";
             default:
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), number);
                 break;
         }
         return null;

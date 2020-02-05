@@ -37,6 +37,10 @@ public class Exceptions
         return sb.ToString();
     }
 
+
+
+
+
     public static object UseRlc(string before)
     {
         return CheckBefore(before) + "Don't implement, use methods in rlc";
@@ -132,7 +136,26 @@ public class Exceptions
     }
 
     #region Without parameters
-    public static string NotImplementedCase(string before)
+    public static string NotImplementedCase(string before, object niCase)
+    {
+        string fr = string.Empty;
+        if (niCase != null)
+        {
+            fr = " for ";
+            if (niCase.GetType() == typeof(Type))
+            {
+                fr += ((Type)niCase).FullName;
+            }
+            else 
+            {
+                fr += niCase.ToString();
+            }
+        }
+
+        return CheckBefore(before) + "Not implemented case"+fr+" . public program error. Please contact developer" + ".";
+    }
+
+    internal static object NotImplementedMethod(string before)
     {
         return CheckBefore(before) + "Not implemented case. public program error. Please contact developer" + ".";
     }

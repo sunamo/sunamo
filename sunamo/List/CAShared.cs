@@ -1413,7 +1413,7 @@ public static string StartWith(List<string> suMethods, string line)
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod(), parseNegations);
         }
 
         return result;

@@ -22,6 +22,7 @@ namespace desktop
     /// </summary>
     public partial class LoginDialog : Window
     {
+        static Type type = typeof(Type);
         public string Login
         {
             get
@@ -121,7 +122,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
+                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), storageApplicationData);
             }
 
             if (txtLogin.Text != "")
@@ -237,7 +238,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
+                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
         }
 
@@ -262,7 +263,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "");
+                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
         }
 

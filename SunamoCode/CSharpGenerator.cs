@@ -61,7 +61,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, methodName);
+            ThrowExceptions.NotImplementedCase(type, methodName, _public);
         }
     }
 

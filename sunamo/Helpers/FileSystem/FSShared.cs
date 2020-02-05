@@ -1162,7 +1162,7 @@ public partial class FS
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "CreateDirectory");
+                ThrowExceptions.NotImplementedCase(type, "CreateDirectory", whenExists);
             }
         }
         else

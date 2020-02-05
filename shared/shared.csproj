@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -102,9 +102,6 @@
     <Compile Include="..\..\sunamo\shared\GoogleAppsMailbox.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Helpers\XmlHelper.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\Helpers\XmlHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\HttpRequestHelper.cs" />
-    <Compile Include="..\..\sunamo\shared\HttpRequestHelperShared.cs" Link="" />
-    <Compile Include="..\..\sunamo\shared\HttpWebResponseHelper.cs" />
     <Compile Include="..\..\sunamo\shared\MailBox.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelper.cs" />
     <Compile Include="..\..\sunamo\shared\StatusHelperShared.cs" />
@@ -140,9 +137,6 @@
     <Compile Include="Helpers\Resources\ResourcesH.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="HttpRequestHelper.cs" />
-    <Compile Include="HttpResponseHelper.cs" />
-    <Compile Include="HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
     <Compile Include="MailBox.cs" />
@@ -168,7 +162,6 @@
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -177,6 +170,7 @@
     <Folder Include="Helpers\Http\" />
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">

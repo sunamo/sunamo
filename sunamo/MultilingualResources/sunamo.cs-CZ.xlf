@@ -1,4 +1,4 @@
-﻿<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -9775,6 +9775,446 @@
         <trans-unit id="Scala" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Scala</target>
+        </trans-unit>
+        <trans-unit id="IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pokud již nebudete chtít sdílet své trasy, vygenerujte si tlačítkem níže nový kód. Nicméně, pokud někdo bude mít adresu na některou trasu, zobrazí se mu. Druhým tlačítkem lze re-generovat kód pro všechny vaše trasy</target>
+        </trans-unit>
+        <trans-unit id="CreateMyPublicGalleryOfGpxRoutes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit mou veřejnou galerii gpx tras</target>
+        </trans-unit>
+        <trans-unit id="GenerateCodeForRouteGallery" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygenerovat kód pro galerii tras</target>
+        </trans-unit>
+        <trans-unit id="GenerateCodeForEachRoute" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygenerovat kód pro každou trasu</target>
+        </trans-unit>
+        <trans-unit id="ViewMyLog" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit můj log</target>
+        </trans-unit>
+        <trans-unit id="Impose" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit</target>
+        </trans-unit>
+        <trans-unit id="DateOfRegistration" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum zápisu</target>
+        </trans-unit>
+        <trans-unit id="ViewMyComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit můj komentář</target>
+        </trans-unit>
+        <trans-unit id="AuthorSDescriptionOfTheCache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Autorův popis keše</target>
+        </trans-unit>
+        <trans-unit id="MyOwnWaypoints" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Moje vlastní Waypointy</target>
+        </trans-unit>
+        <trans-unit id="AddANewWaypoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidat nový waypoint</target>
+        </trans-unit>
+        <trans-unit id="CloseWaypointEditing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zavřít editaci waypointu</target>
+        </trans-unit>
+        <trans-unit id="MaxCharactersMaxlenghtIsSet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">(maximálně 40 znaků, je nastaven maxlenght)</target>
+        </trans-unit>
+        <trans-unit id="ListingOfAllUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výpis všech uživatelů</target>
+        </trans-unit>
+        <trans-unit id="CheckEverything" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Označ vše</target>
+        </trans-unit>
+        <trans-unit id="DeselectEverything" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odznač vše</target>
+        </trans-unit>
+        <trans-unit id="UChecked" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">U zaškrtnutých</target>
+        </trans-unit>
+        <trans-unit id="GenerateGPXFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygeneruj GPX soubor</target>
+        </trans-unit>
+        <trans-unit id="SearchForCachesContaining" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyhledat keše obsahující</target>
+        </trans-unit>
+        <trans-unit id="ShowingMaximumGeocache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazuji maximálně kešek</target>
+        </trans-unit>
+        <trans-unit id="NumberOfFoundCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet nalezených keší</target>
+        </trans-unit>
+        <trans-unit id="PartOfTheCacheName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Část názvu keše</target>
+        </trans-unit>
+        <trans-unit id="TypeOfHunting" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ lovu</target>
+        </trans-unit>
+        <trans-unit id="YouWantToTimeLimitCachesByAddingToThesePages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chcete kešky omezit časově podle přidání na tyto stránky</target>
+        </trans-unit>
+        <trans-unit id="AccordingToAttributesOfTheCache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podle atributů keše</target>
+        </trans-unit>
+        <trans-unit id="AtLeastOneOfTheLeavesOfTheCacheContains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Alespoň jeden z listů keše obsahuje</target>
+        </trans-unit>
+        <trans-unit id="NoneOfTheLeavesOfTheCacheContains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádný z listů keše neobsahuje</target>
+        </trans-unit>
+        <trans-unit id="DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">milí návštěvníci, ať už jste ze planety jménem GeoCaching nebo mudlové. Tyto stránky jsem stvořil hlavně proto abych si mohl plánovat GeoCaching výlety, dělat si různé statistiky nálezů kešek nebo si vkládat vlastní waypointy a poznámky ke keškám. Vy jako ne admini těchto stránek si můžete něco z věcí prohlížet ale už nic editovat nebo přidávat. U každé keše je jednoznačné číslo podle papíru, na kterém ji mám nebo budu mít vytištěnou(ze začátku jsem si je tiskl)</target>
+        </trans-unit>
+        <trans-unit id="CreateANewWorksheet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvoření nového listu</target>
+        </trans-unit>
+        <trans-unit id="ReverseListOfCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Opačný seznam keší</target>
+        </trans-unit>
+        <trans-unit id="CreateHTMLList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvoření HTML seznamu</target>
+        </trans-unit>
+        <trans-unit id="ListOfCachesList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Seznam keší seznamu</target>
+        </trans-unit>
+        <trans-unit id="ReverseList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Opačný seznam</target>
+        </trans-unit>
+        <trans-unit id="TheListIsPublic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Je seznam veřejný</target>
+        </trans-unit>
+        <trans-unit id="CreateANewCacheList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit nový seznam kešek</target>
+        </trans-unit>
+        <trans-unit id="DownloadGeocachesToLocale" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhnout keše do localu</target>
+        </trans-unit>
+        <trans-unit id="EnterATrackNameIfYouEnterDiacriticsOrOtherIllegalCharactersTheyWillReplaceThemselves" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte název stopy(pokud zadáte diakritiku či jiné nepovolené znaky, sami se nahradí)</target>
+        </trans-unit>
+        <trans-unit id="EnterTheColorOfTheTrackNothingWillAppearOnTheMapIfYouEnterAWrongColorAndOnlySetToMonochrome" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte barvu stopy(Pokud zadáte špatnou barvu a máte nastaveno pouze jednobarevné zobrazení, na mapě se nic nezobrazí)</target>
+        </trans-unit>
+        <trans-unit id="EnterACommentUpToCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte komentář až do délky 512 znaků</target>
+        </trans-unit>
+        <trans-unit id="TrackManagement" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Správa stopy</target>
+        </trans-unit>
+        <trans-unit id="DeleteTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Smazat stopu</target>
+        </trans-unit>
+        <trans-unit id="GenerateNewCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygenerovat nový kód</target>
+        </trans-unit>
+        <trans-unit id="ViewMap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit mapu</target>
+        </trans-unit>
+        <trans-unit id="TrackInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Informace o stopě</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheRoute" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název trasy</target>
+        </trans-unit>
+        <trans-unit id="Change" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit</target>
+        </trans-unit>
+        <trans-unit id="RouteColor" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Barva trasy</target>
+        </trans-unit>
+        <trans-unit id="IWantTheRouteNotToBeElevated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chci aby trasa nebyla rozlišena výškově</target>
+        </trans-unit>
+        <trans-unit id="UploadedBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nahráno uživatelem</target>
+        </trans-unit>
+        <trans-unit id="TheFirstStepIsRecorded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">První krok zaznamenán</target>
+        </trans-unit>
+        <trans-unit id="TheLastStepRecorded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Poslední krok zaznamenán</target>
+        </trans-unit>
+        <trans-unit id="TotalNumberOfSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkový počet segmentů</target>
+        </trans-unit>
+        <trans-unit id="SplitTheRouteIntoPartsTheMiddlePartWillBeRemoved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rozdělení trasy na 2 části, prostřední část se odstraní</target>
+        </trans-unit>
+        <trans-unit id="YouCurrentlyHaveThesePartsOfTheTrackInTheFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktuálně v souboru máte tyto části stopy</target>
+        </trans-unit>
+        <trans-unit id="ATimestampIsAutomaticallyAddedToTheNameOfTheNewRouteToMakeItClearToEachOther" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ke jménu nové trasy se automaticky přidá časové razítko, aby bylo jasné jak šli po sobě</target>
+        </trans-unit>
+        <trans-unit id="IWantToEnterTheDateAndTimeInTheFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chci zadávat datum a čas v formátu</target>
+        </trans-unit>
+        <trans-unit id="SaveOnlyPointsTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit pouze body do</target>
+        </trans-unit>
+        <trans-unit id="FillInEitherDateTimeOrBoth" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyplňte buď datum, čas nebo obojí</target>
+        </trans-unit>
+        <trans-unit id="PointsBetweenTheseDatesWillBeDeletedIfBothTheFirstAndSecondPointsAreFilledWithDatesWithTimesSomewhereInTheMiddleOfTheTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">---Body mezi těmito 2mi daty se vymažou, pokud první i druhý bod bude vyplněn datumy s časy, které se nacházejí někde uprostřed tabulky---</target>
+        </trans-unit>
+        <trans-unit id="SplitOrCrop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rozdělit či oříznout</target>
+        </trans-unit>
+        <trans-unit id="CzechRepublic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Česká Republika</target>
+        </trans-unit>
+        <trans-unit id="Even" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do konce</target>
+        </trans-unit>
+        <trans-unit id="FromTheBeginning" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Od začátku</target>
+        </trans-unit>
+        <trans-unit id="ListAllGPXTracksOfTheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Seznam všech GPX stop uživatele</target>
+        </trans-unit>
+        <trans-unit id="SearchInTheFileName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hledat v názvu souboru</target>
+        </trans-unit>
+        <trans-unit id="Date" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum</target>
+        </trans-unit>
+        <trans-unit id="OverallTime" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkový čas</target>
+        </trans-unit>
+        <trans-unit id="TheLowestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejnižší bod</target>
+        </trans-unit>
+        <trans-unit id="TheHighestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejvyšší bod</target>
+        </trans-unit>
+        <trans-unit id="Nachozeno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nachozeno</target>
+        </trans-unit>
+        <trans-unit id="AverageSpeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Průměrná rychlost</target>
+        </trans-unit>
+        <trans-unit id="FileName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název souboru</target>
+        </trans-unit>
+        <trans-unit id="NameOrPlace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název nebo místo</target>
+        </trans-unit>
+        <trans-unit id="WebGeocachingHasNoAdditionalSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Web geocaching nemá žádné doplňující nastavení</target>
+        </trans-unit>
+        <trans-unit id="RecordAndTrackInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Záznam a informace o stopě</target>
+        </trans-unit>
+        <trans-unit id="ToShareATrackWithFriendsJustCopyTheAddressFromTheAddressBarGenerateANewCodeIfYouNoLongerWantToShareTheTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pro sdílení stopy s přáteli stačí pouze zkopírovat adresu z adresního řádku. Pokud již stopu nebudete chtít sdílet, vygenerujte si nový kód</target>
+        </trans-unit>
+        <trans-unit id="mRed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">m (červený)</target>
+        </trans-unit>
+        <trans-unit id="mLightGreen" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">m (světle zelený)</target>
+        </trans-unit>
+        <trans-unit id="TheDifferenceBetweenTheHighestAndTheLowestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rozdíl mezi nejvyšším a nejnižším bodem</target>
+        </trans-unit>
+        <trans-unit id="NumberOfPlaneSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet segmentů roviny</target>
+        </trans-unit>
+        <trans-unit id="NumberOfClimbSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet segmentů stoupání</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDescentSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet segmentů klesání</target>
+        </trans-unit>
+        <trans-unit id="Total" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkem</target>
+        </trans-unit>
+        <trans-unit id="TotalFlat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkem po rovině</target>
+        </trans-unit>
+        <trans-unit id="TotalClimb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkem stoupání</target>
+        </trans-unit>
+        <trans-unit id="TotalDescent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Celkem klesání</target>
+        </trans-unit>
+        <trans-unit id="FlatSpeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rychlost po rovině</target>
+        </trans-unit>
+        <trans-unit id="RateOfClimb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rychlost stoupání</target>
+        </trans-unit>
+        <trans-unit id="RateOfDescent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rychlost klesání</target>
+        </trans-unit>
+        <trans-unit id="AbsolutelyHighestSpeedPerSegment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Absolutně nejvyšší rychlost na segment</target>
+        </trans-unit>
+        <trans-unit id="AbsolutelyLowestSpeedPerSegment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Absolutně nejnižší rychlost na segment</target>
+        </trans-unit>
+        <trans-unit id="SelectTheGpxFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyberte soubor gpx</target>
+        </trans-unit>
+        <trans-unit id="ShowSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit segmenty</target>
+        </trans-unit>
+        <trans-unit id="TrackAttendanceStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Statistiky návštěvnosti stopy</target>
+        </trans-unit>
+        <trans-unit id="TrackLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odkaz na stopu</target>
+        </trans-unit>
+        <trans-unit id="IfYouVisitThePageSignedInWithYourAccountItWillNotBeIncludedInYourStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pokud navštívíte stránku přihlášeni pod vaším účtem, nezahrne se do statistik</target>
+        </trans-unit>
+        <trans-unit id="TotalImpressions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet zobrazení celkově</target>
+        </trans-unit>
+        <trans-unit id="NumberOfImpressionsToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet zobrazení dnes</target>
+        </trans-unit>
+        <trans-unit id="WaitPlease" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Čekejte prosím</target>
+        </trans-unit>
+        <trans-unit id="TheSiteIsPerformingOperations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Web provádí operace</target>
+        </trans-unit>
+        <trans-unit id="UploadANewTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nahrání nové stopy</target>
+        </trans-unit>
+        <trans-unit id="IfYouNeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pokud si potřebujete</target>
+        </trans-unit>
+        <trans-unit id="segmentsToInspect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">segmenty prohlídnout</target>
+        </trans-unit>
+        <trans-unit id="toKnowWhichOnesToDeleteFirstCutTheEndIfNeededStartAndResourcesCanBeCutLaterEndNotAndIfYouNeedToSplitTheFilesIntoIndividualDaysUseMyProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">abyste věděli které smazat? Prvně odřezejte konec je li potřeba, začátek a prostředky můžete odřezat později, konec ne. A pokud si potřebujete soubory rozdělit na jednotlivé dny, použijte můj program</target>
+        </trans-unit>
+        <trans-unit id="WithWhichYouCanDoOtherThingsForExampleUseGBOfPhotoSpaceOrShortenLinks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> se kterým můžete dělat i jiné věci - například využívat prostor 1GB na fotky nebo zkracovat odkazy</target>
+        </trans-unit>
+        <trans-unit id="SaveOnlyPointsFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uložit pouze body od</target>
+        </trans-unit>
+        <trans-unit id="FillInEitherDateTimeOrBothForExampleIfYouWantToGetAllSegmentsByTheEndOfAndDonTWantToEnterTheTimeEnterWhichWillBeConvertedTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyplňte buď datum, čas nebo obojí. Pokud chcete například získat všechny segmenty do konce 31.12.2015 a nechcete zadávat čas, zadejte 1.1.2016, což se převede na 1.1.2016 00:00:00</target>
+        </trans-unit>
+        <trans-unit id="Process" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpracovat</target>
+        </trans-unit>
+        <trans-unit id="Czech" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Česky</target>
+        </trans-unit>
+        <trans-unit id="HiddenUserCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Schované keše uživatele</target>
         </trans-unit>
       </group>
     </body>

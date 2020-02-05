@@ -745,7 +745,7 @@ public static partial class SH
             case '[':
                 return Brackets.Square;
             default:
-                ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod());
+                ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod(), v);
                 break;
         }
 

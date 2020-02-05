@@ -396,7 +396,7 @@ public class RH
                 dump = RH.DumpAsString(name, o);
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(s_type, "DumpAsString");
+                ThrowExceptions.NotImplementedCase(s_type, "DumpAsString", d);
                 break;
         }
 
@@ -405,7 +405,7 @@ public class RH
 
     private static string DumpAsString(string name, object o)
     {
-        ThrowExceptions.NotImplementedCase(s_type, "DumpAsString");
+        ThrowExceptions.NotImplementedMethod(s_type, "DumpAsString" );
         return null;
     }
 

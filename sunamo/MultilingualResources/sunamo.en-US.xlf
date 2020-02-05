@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -422,7 +421,6 @@
           <source />
           <target state="translated">The link has been truncated successfully</target>
         </trans-unit>
-
         <trans-unit id="UnauthorizedOperation" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">You came to this page because you tried to load the page, or to perform another operation that you do not have permission to do or that is not applicable in this context.</target>
@@ -1511,7 +1509,6 @@
           <source />
           <target state="translated">Unimplemented SortAppsBy branch</target>
         </trans-unit>
-        
         <trans-unit id="Download" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Download</target>
@@ -4840,7 +4837,6 @@
           <source></source>
           <target state="translated">Introduction</target>
         </trans-unit>
-        
         <trans-unit id="PageOrFileNotFound" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Page or file not found</target>
@@ -5181,7 +5177,6 @@
           <source></source>
           <target state="translated">../i/Ggdag/cds</target>
         </trans-unit>
-        
         <trans-unit id="Donation" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Donation</target>
@@ -5410,7 +5405,6 @@
           <source></source>
           <target state="translated">You reached the maximum number of 255 items per poll.</target>
         </trans-unit>
-        
         <trans-unit id="NewItemTextWasLongerThanCharacters" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">New item text was longer than 30 characters.</target>
@@ -5795,7 +5789,6 @@
           <source></source>
           <target state="translated">First</target>
         </trans-unit>
-        
         <trans-unit id="PostovánoV" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Postováno v</target>
@@ -8160,7 +8153,6 @@
           <source></source>
           <target state="translated">The file name was empty.</target>
         </trans-unit>
-        
         <trans-unit id="PleaseSignInToVote" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Please sign in to vote.</target>
@@ -9662,7 +9654,6 @@
           <source></source>
           <target state="translated">Last Modified Date</target>
         </trans-unit>
-
         <trans-unit id="IHaveBeenProgrammingForMoreThanYearsILearnedALotOfLanguagesAndPlatformsForTheFirstYearButItTookMeAboutAYearToUnderstandWhatGeneralProgrammingIsAllAboutAndToUnderstandItsBasicsTheSecondAndFourthYearsWereMarkedByProgrammingDesktopApplicationsInCAndNETAtThisTimeThereWasNoApplicationOnTheWebIDidItForMyPersonalUseOnlyAndToLearnHowToProgramAndImproveMyTheoryButITriedInASPNETWebApplicationsButMyFirstAttemptsDidnTGoWellAndIOnlyHadThemOnFreehostingAtAsponeCzIMissedTheRdYearISpentItAllPlayingOnlineGamesLikeFarmvilleIDoNotLikeToRememberThisTimeWithResistanceAndSadnessUnfortunatelySomewhereBetweenTheFourthAndFifthYearILostSuchSourceFilesITriedToRestoreThemWithTheGetDataBackProgramIBoughtButIBarelyRestoredAFewPercentOfTheSourcesTheRestWasDamagedIWasSoAngryAndBrokenThatIDidnTWantMuchToDevelopDesktopApplicationsAnymoreAndIStartedDevelopingWebApplicationsButStillOnFreehostsForTheFifthYearIDevelopedSeveralWebsitesSeparatelyAndThatWasPrettyBadIKeptRotatingDatabasesFromSQLServerToSQLiteTheSixthYearWasMarkedByTheDevelopmentOfThisSiteSunamoCzWhenICreatedAUnifiedCoreProgramOnWhichAllSitesAreDependentAndThenIndividualSitesWhereICanCompletelyOrPartiallyRemoveAnySiteWithoutStoppingMeAnotherPartOfTheSiteJustBecauseAllTheSharedComponentsAreInTheSharedCoreOfTheSite" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">I have been programming for more than 6 years. I learned a lot of languages and platforms for the first year, but it took me about a year to understand what general programming is all about and to understand its basics.
@@ -10244,7 +10235,6 @@
           <source></source>
           <target state="translated">caches</target>
         </trans-unit>
-        
         <trans-unit id="aCappella" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">a cappella</target>
@@ -12045,7 +12035,6 @@
           <source></source>
           <target state="translated">izvorna bosanska</target>
         </trans-unit>
-        
         <trans-unit id="jamriengSamai" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">jamrieng samai</target>
@@ -12906,7 +12895,6 @@
           <source></source>
           <target state="translated">add</target>
         </trans-unit>
-
         <trans-unit id="display" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">display</target>
@@ -12923,7 +12911,6 @@
           <source></source>
           <target state="translated">d-M-yyyy</target>
         </trans-unit>
-        
         <trans-unit id="PngNoRepeatCenterCenterFixedBackgroundSizeCover" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">.png) no-repeat center center fixed; background-size: cover;}</target>
@@ -12968,17 +12955,14 @@
           <source></source>
           <target state="translated">All lyrics</target>
         </trans-unit>
-        
         <trans-unit id="EnLang" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> en2 lang</target>
         </trans-unit>
-        
         <trans-unit id="CzLang" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> cz2 lang</target>
         </trans-unit>
-        
         <trans-unit id="methodauthGetSessiontoken" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">methodauth.getSessiontoken</target>
@@ -12991,7 +12975,6 @@
           <source></source>
           <target state="translated">button danger</target>
         </trans-unit>
-        
         <trans-unit id="Comments" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> comments</target>
@@ -13028,7 +13011,6 @@
           <source></source>
           <target state="translated">btnAddComment button</target>
         </trans-unit>
-        
         <trans-unit id="buttonOranzovyObtahTooltip" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">button oranzovyObtah tooltip</target>
@@ -13037,17 +13019,10 @@
           <source></source>
           <target state="translated">button tooltip</target>
         </trans-unit>
-        
         <trans-unit id="buttonOranzovyObtah" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">button oranzovyObtah</target>
         </trans-unit>
-        
-        
-        
-        
-        
-        
         <trans-unit id="pánečci" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">pánečci</target>
@@ -13132,8 +13107,6 @@
           <source></source>
           <target state="translated">adopted by:</target>
         </trans-unit>
-        
-        
         <trans-unit id="BySize" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated"> by size:</target>
@@ -13142,7 +13115,6 @@
           <source></source>
           <target state="translated"> in the size</target>
         </trans-unit>
-        
         <trans-unit id="SELECTFROMGeoCaches" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">SELECT * FROM Geo_Caches </target>
@@ -13742,7 +13714,487 @@
           <source></source>
           <target state="translated">Something went wrong... </target>
         </trans-unit>
-      <trans-unit id="BDoporučenáVerzeNebylaDosudNauploadovánaB" translate="yes" xml:space="preserve" xmlns=""><source></source><target state="translated">&lt;b&gt;Doporučená verze nebyla dosud nauploadována.&lt;/b&gt;</target></trans-unit></group>
+        <trans-unit id="BDoporučenáVerzeNebylaDosudNauploadovánaB" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;b&gt;Doporučená verze nebyla dosud nauploadována.&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">If you no longer want to share your routes, use the button below to generate a new code. However, if someone has an address on a route, they will see it. The second button can re-generate the code for all your routes</target>
+        </trans-unit>
+        <trans-unit id="CreateMyPublicGalleryOfGpxRoutes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create my public gallery of gpx routes</target>
+        </trans-unit>
+        <trans-unit id="GenerateCodeForRouteGallery" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate code for route gallery</target>
+        </trans-unit>
+        <trans-unit id="GenerateCodeForEachRoute" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate code for each route</target>
+        </trans-unit>
+        <trans-unit id="MetaInformace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Meta informace</target>
+        </trans-unit>
+        <trans-unit id="ViewCountLastDaysToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">View count/Last 7 days/Today</target>
+        </trans-unit>
+        <trans-unit id="ViewMyLog" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">View my log</target>
+        </trans-unit>
+        <trans-unit id="Impose" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Impose</target>
+        </trans-unit>
+        <trans-unit id="DateOfRegistration" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Date of registration</target>
+        </trans-unit>
+        <trans-unit id="ViewMyComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">View my comment</target>
+        </trans-unit>
+        <trans-unit id="AuthorSDescriptionOfTheCache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Author's description of the cache</target>
+        </trans-unit>
+        <trans-unit id="AutoroviWaypointy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Autorovi Waypointy</target>
+        </trans-unit>
+        <trans-unit id="MyOwnWaypoints" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">My own Waypoints</target>
+        </trans-unit>
+        <trans-unit id="AddANewWaypoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add a new waypoint</target>
+        </trans-unit>
+        <trans-unit id="EditaceWaypointu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Editace waypointu</target>
+        </trans-unit>
+        <trans-unit id="CloseWaypointEditing" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Close waypoint editing</target>
+        </trans-unit>
+        <trans-unit id="MaxCharactersMaxlenghtIsSet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">(max 40 characters, maxlenght is set)</target>
+        </trans-unit>
+        <trans-unit id="ListingOfAllUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Listing of all users</target>
+        </trans-unit>
+        <trans-unit id="CheckEverything" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Check everything</target>
+        </trans-unit>
+        <trans-unit id="DeselectEverything" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Deselect everything</target>
+        </trans-unit>
+        <trans-unit id="UChecked" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">U checked</target>
+        </trans-unit>
+        <trans-unit id="GenerateGPXFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate GPX file</target>
+        </trans-unit>
+        <trans-unit id="ExportSeznamu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Export seznamu</target>
+        </trans-unit>
+        <trans-unit id="SearchForCachesContaining" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search for caches containing</target>
+        </trans-unit>
+        <trans-unit id="ShowingMaximumGeocache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Showing maximum geocache</target>
+        </trans-unit>
+        <trans-unit id="NumberOfFoundCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of found caches</target>
+        </trans-unit>
+        <trans-unit id="PartOfTheCacheName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Part of the cache name</target>
+        </trans-unit>
+        <trans-unit id="TypeOfHunting" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Type of hunting</target>
+        </trans-unit>
+        <trans-unit id="YouWantToTimeLimitCachesByAddingToThesePages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You want to time-limit caches by adding to these pages</target>
+        </trans-unit>
+        <trans-unit id="AccordingToAttributesOfTheCache" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">According to attributes of the cache</target>
+        </trans-unit>
+        <trans-unit id="AtLeastOneOfTheLeavesOfTheCacheContains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">At least one of the leaves of the cache contains</target>
+        </trans-unit>
+        <trans-unit id="NoneOfTheLeavesOfTheCacheContains" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">None of the leaves of the cache contains</target>
+        </trans-unit>
+        <trans-unit id="DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dear visitors, whether you are from a planet called GeoCaching or Muggles. I created this site mainly to plan GeoCaching trips, to make various statistics of caches finding or to insert my own waypoints and caching notes. You as no admins of this site can view some of the things but do not edit or add anything. Each cache has a unique number according to the paper on which I have it or will have it printed (at the beginning I printed it)</target>
+        </trans-unit>
+        <trans-unit id="CreateANewWorksheet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create a new worksheet</target>
+        </trans-unit>
+        <trans-unit id="ReverseListOfCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Reverse list of caches</target>
+        </trans-unit>
+        <trans-unit id="CreateHTMLList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create HTML list</target>
+        </trans-unit>
+        <trans-unit id="ListOfCachesList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">List of caches list</target>
+        </trans-unit>
+        <trans-unit id="ReverseList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Reverse list</target>
+        </trans-unit>
+        <trans-unit id="TheListIsPublic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The list is public</target>
+        </trans-unit>
+        <trans-unit id="CreateANewCacheList" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create a new cache list</target>
+        </trans-unit>
+        <trans-unit id="DownloadGeocachesToLocale" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Download geocaches to locale</target>
+        </trans-unit>
+        <trans-unit id="EnterATrackNameIfYouEnterDiacriticsOrOtherIllegalCharactersTheyWillReplaceThemselves" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter a track name (if you enter diacritics or other illegal characters, they will replace themselves)</target>
+        </trans-unit>
+        <trans-unit id="EnterTheColorOfTheTrackNothingWillAppearOnTheMapIfYouEnterAWrongColorAndOnlySetToMonochrome" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter the color of the track (Nothing will appear on the map if you enter a wrong color and only set to monochrome)</target>
+        </trans-unit>
+        <trans-unit id="EnterACommentUpToCharacters" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter a comment up to 512 characters</target>
+        </trans-unit>
+        <trans-unit id="TrackManagement" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Track management</target>
+        </trans-unit>
+        <trans-unit id="DeleteTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete track</target>
+        </trans-unit>
+        <trans-unit id="GenerateNewCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate new code</target>
+        </trans-unit>
+        <trans-unit id="ViewMap" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">View map</target>
+        </trans-unit>
+        <trans-unit id="TrackInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Track information</target>
+        </trans-unit>
+        <trans-unit id="TheNameOfTheRoute" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The name of the route</target>
+        </trans-unit>
+        <trans-unit id="Change" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Change</target>
+        </trans-unit>
+        <trans-unit id="RouteColor" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Route color</target>
+        </trans-unit>
+        <trans-unit id="IWantTheRouteNotToBeElevated" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I want the route not to be elevated</target>
+        </trans-unit>
+        <trans-unit id="UploadedBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uploaded by</target>
+        </trans-unit>
+        <trans-unit id="TheFirstStepIsRecorded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The first step is recorded</target>
+        </trans-unit>
+        <trans-unit id="TheLastStepRecorded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The last step recorded</target>
+        </trans-unit>
+        <trans-unit id="TotalNumberOfSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total number of segments</target>
+        </trans-unit>
+        <trans-unit id="SplitTheRouteIntoPartsTheMiddlePartWillBeRemoved" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Split the route into 2 parts, the middle part will be removed</target>
+        </trans-unit>
+        <trans-unit id="YouCurrentlyHaveThesePartsOfTheTrackInTheFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You currently have these parts of the track in the file</target>
+        </trans-unit>
+        <trans-unit id="ATimestampIsAutomaticallyAddedToTheNameOfTheNewRouteToMakeItClearToEachOther" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">A timestamp is automatically added to the name of the new route to make it clear to each other</target>
+        </trans-unit>
+        <trans-unit id="IWantToEnterTheDateAndTimeInTheFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I want to enter the date and time in the format</target>
+        </trans-unit>
+        <trans-unit id="SaveOnlyPointsTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save only points to</target>
+        </trans-unit>
+        <trans-unit id="FillInEitherDateTimeOrBoth" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fill in either date, time, or both</target>
+        </trans-unit>
+        <trans-unit id="PointsBetweenTheseDatesWillBeDeletedIfBothTheFirstAndSecondPointsAreFilledWithDatesWithTimesSomewhereInTheMiddleOfTheTable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">--- Points between these 2 dates will be deleted if both the first and second points are filled with dates with times somewhere in the middle of the table ---</target>
+        </trans-unit>
+        <trans-unit id="SplitOrCrop" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Split or crop</target>
+        </trans-unit>
+        <trans-unit id="CzechRepublic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Czech Republic</target>
+        </trans-unit>
+        <trans-unit id="USA" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">USA</target>
+        </trans-unit>
+        <trans-unit id="Even" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Even</target>
+        </trans-unit>
+        <trans-unit id="FromTheBeginning" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">From the beginning</target>
+        </trans-unit>
+        <trans-unit id="ListAllGPXTracksOfTheUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">List all GPX tracks of the user</target>
+        </trans-unit>
+        <trans-unit id="SearchInTheFileName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search in the file name</target>
+        </trans-unit>
+        <trans-unit id="Date" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Date</target>
+        </trans-unit>
+        <trans-unit id="OverallTime" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Overall time</target>
+        </trans-unit>
+        <trans-unit id="TheLowestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The lowest point</target>
+        </trans-unit>
+        <trans-unit id="TheHighestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The highest point</target>
+        </trans-unit>
+        <trans-unit id="Nachozeno" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nachozeno</target>
+        </trans-unit>
+        <trans-unit id="AverageSpeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Average speed</target>
+        </trans-unit>
+        <trans-unit id="FileName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">File Name</target>
+        </trans-unit>
+        <trans-unit id="NameOrPlace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Name or place</target>
+        </trans-unit>
+        <trans-unit id="WebGeocachingHasNoAdditionalSettings" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Web geocaching has no additional settings</target>
+        </trans-unit>
+        <trans-unit id="RecordAndTrackInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Record and track information</target>
+        </trans-unit>
+        <trans-unit id="ToShareATrackWithFriendsJustCopyTheAddressFromTheAddressBarGenerateANewCodeIfYouNoLongerWantToShareTheTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">To share a track with friends, just copy the address from the address bar. Generate a new code if you no longer want to share the track</target>
+        </trans-unit>
+        <trans-unit id="mRed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">m (red)</target>
+        </trans-unit>
+        <trans-unit id="mLightGreen" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">m (light green)</target>
+        </trans-unit>
+        <trans-unit id="TheDifferenceBetweenTheHighestAndTheLowestPoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The difference between the highest and the lowest point</target>
+        </trans-unit>
+        <trans-unit id="NumberOfPlaneSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of plane segments</target>
+        </trans-unit>
+        <trans-unit id="NumberOfClimbSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of climb segments</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDescentSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of descent segments</target>
+        </trans-unit>
+        <trans-unit id="Total" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total</target>
+        </trans-unit>
+        <trans-unit id="TotalFlat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total flat</target>
+        </trans-unit>
+        <trans-unit id="TotalClimb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total climb</target>
+        </trans-unit>
+        <trans-unit id="TotalDescent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total descent</target>
+        </trans-unit>
+        <trans-unit id="FlatSpeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Flat speed</target>
+        </trans-unit>
+        <trans-unit id="RateOfClimb" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rate of climb</target>
+        </trans-unit>
+        <trans-unit id="RateOfDescent" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rate of descent</target>
+        </trans-unit>
+        <trans-unit id="AbsolutelyHighestSpeedPerSegment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Absolutely highest speed per segment</target>
+        </trans-unit>
+        <trans-unit id="AbsolutelyLowestSpeedPerSegment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Absolutely lowest speed per segment</target>
+        </trans-unit>
+        <trans-unit id="SelectTheGpxFile" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Select the gpx file</target>
+        </trans-unit>
+        <trans-unit id="ShowSegments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show segments</target>
+        </trans-unit>
+        <trans-unit id="TrackAttendanceStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Track attendance statistics</target>
+        </trans-unit>
+        <trans-unit id="TrackLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Track link</target>
+        </trans-unit>
+        <trans-unit id="IfYouVisitThePageSignedInWithYourAccountItWillNotBeIncludedInYourStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">If you visit the page signed in with your account, it will not be included in your statistics</target>
+        </trans-unit>
+        <trans-unit id="TotalImpressions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Total impressions</target>
+        </trans-unit>
+        <trans-unit id="NumberOfImpressionsToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of impressions today</target>
+        </trans-unit>
+        <trans-unit id="WaitPlease" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Wait please</target>
+        </trans-unit>
+        <trans-unit id="TheSiteIsPerformingOperations" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The site is performing operations</target>
+        </trans-unit>
+        <trans-unit id="UploadANewTrack" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upload a new track</target>
+        </trans-unit>
+        <trans-unit id="IfYouNeed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">If you need</target>
+        </trans-unit>
+        <trans-unit id="segmentsToInspect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">segments to inspect</target>
+        </trans-unit>
+        <trans-unit id="toKnowWhichOnesToDeleteFirstCutTheEndIfNeededStartAndResourcesCanBeCutLaterEndNotAndIfYouNeedToSplitTheFilesIntoIndividualDaysUseMyProgram" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">to know which ones to delete? First cut the end if needed, start and resources can be cut later, end not. And if you need to split the files into individual days, use my program</target>
+        </trans-unit>
+        <trans-unit id="SunamoCzClient" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sunamo.cz client</target>
+        </trans-unit>
+        <trans-unit id="WithWhichYouCanDoOtherThingsForExampleUseGBOfPhotoSpaceOrShortenLinks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> with which you can do other things - for example, use 1GB of photo space or shorten links</target>
+        </trans-unit>
+        <trans-unit id="SaveOnlyPointsFrom" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save only points from</target>
+        </trans-unit>
+        <trans-unit id="FillInEitherDateTimeOrBothForExampleIfYouWantToGetAllSegmentsByTheEndOfAndDonTWantToEnterTheTimeEnterWhichWillBeConvertedTo" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fill in either date, time, or both. For example, if you want to get all segments by the end of 31/12/2015 and don't want to enter the time, enter 1/1/2016, which will be converted to 1/1/2016 00:00:00</target>
+        </trans-unit>
+        <trans-unit id="Process" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Process</target>
+        </trans-unit>
+        <trans-unit id="Czech" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Czech</target>
+        </trans-unit>
+        <trans-unit id="HiddenUserCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hidden user caches</target>
+        </trans-unit>
+        <trans-unit id="Stats" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stats</target>
+        </trans-unit>
+        <trans-unit id="PINebylyNalezenyŽádnéWaypointyIP" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;p&gt;&lt;i&gt;Nebyly nalezeny žádné waypointy&lt;/i&gt;&lt;/p&gt;</target>
+        </trans-unit>
+      </group>
     </body>
   </file>
 </xliff>

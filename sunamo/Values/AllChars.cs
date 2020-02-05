@@ -161,7 +161,7 @@ public static class AllChars
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(s_type, "ReturnRightPredicate");
+            ThrowExceptions.NotImplementedCase(s_type, "ReturnRightPredicate", generalChars);
         }
 
         return predicate;

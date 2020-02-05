@@ -167,7 +167,7 @@ namespace desktop.Controls.Buttons
                 }
                 else
                 {
-                    ThrowExceptions.NotImplementedCase(type, methodName);
+                    ThrowExceptions.NotImplementedCase(type, methodName, t);
                 }
             }
         }
@@ -185,7 +185,7 @@ namespace desktop.Controls.Buttons
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, methodName);
+                ThrowExceptions.NotImplementedCase(type, methodName, t);
             }
         }
 

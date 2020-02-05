@@ -39,7 +39,7 @@ public class MSStoredProceduresISql5 : MSStoredProceduresIBase
     /// <param name="databaseName"></param>
     public static void CreateInstanceCs(string cs, string databaseName)
     {
-        ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
 
         if (false)
         {

@@ -56,7 +56,7 @@ public class ListViewColumnHelper<T> where T : IIdentificator<int>
                 setUp = first.IsSelected;
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), chb2);
                 break;
         }
 

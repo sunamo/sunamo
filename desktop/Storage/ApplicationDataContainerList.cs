@@ -196,7 +196,7 @@ public class ApplicationDataContainerList : IEnumerable
                     value = sunamoPoint.ToSystemWindows();
                     break;
                 default:
-                    ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+                    ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), fullName);
                     break;
             }
             if (value != null)

@@ -183,7 +183,7 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
                 encoder = hrd.encodingPostData;
             }
 
-            byte[] data = encoder.GetBytes((query));
+            byte[] data = encoder.GetBytes(query);
             request.ContentType = "application/x-www-urlencoded";
             request.ContentLength = data.Length;
             request.GetRequestStream().Write(data, 0, data.Length);

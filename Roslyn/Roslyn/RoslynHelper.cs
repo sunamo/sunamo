@@ -239,14 +239,15 @@ namespace Roslyn
             // Must be set only to one variable due to raise exception
             foreach (var syntaxNode in syntaxNodes)
             {
-                string s = syntaxNode.GetType().FullName.ToString();
-                if (syntaxNode.GetType() == typeof(SyntaxNodeOrToken))
+                var syntaxNodeType = syntaxNode.GetType();
+                string s = syntaxNodeType.FullName.ToString();
+                if (syntaxNodeType == typeof(SyntaxNodeOrToken))
                 {
                     token = true;
                     node = ((SyntaxNodeOrToken)syntaxNode).Parent;
                     break;
                 }
-                else if (syntaxNode.GetType() == typeof(SyntaxNode))
+                else if (syntaxNodeType == typeof(SyntaxNode))
                 {
                     node2 = true;
                     node = (SyntaxNode)syntaxNode;
@@ -254,7 +255,7 @@ namespace Roslyn
                 }
                 else
                 {
-                    ThrowExceptions.NotImplementedCase(type, "Format");
+                    ThrowExceptions.NotImplementedCase(type, "Format", syntaxNodeType);
                 }
             }
 
@@ -462,7 +463,7 @@ namespace Roslyn
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "FindNode");
+                ThrowExceptions.NotImplementedCase(type, "FindNode", SH.JoinPairs("Parent", parent, "Child", child));
             }
 
             
@@ -582,7 +583,7 @@ namespace Roslyn
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "GetClass");
+                ThrowExceptions.NotImplementedCase(type, "GetClass", firstMember);
             }
 
             return helloWorldDeclaration;

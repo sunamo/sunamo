@@ -29,6 +29,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.UseRlc(FullNameOfExecutedCode(type, methodName, true)));
     }
 
+    public static void NotImplementedMethod(Type type, string methodName)
+    {
+        ThrowIsNotNull(Exceptions.NotImplementedMethod(FullNameOfExecutedCode( type, methodName)));
+    }
+
     /// <summary>
     /// Return & throw exception whether directory exists
     /// </summary>
@@ -157,9 +162,9 @@ public class ThrowExceptions
     #endregion
 
     #region Without parameters
-    public static void NotImplementedCase(object type, string methodName)
+    public static void NotImplementedCase(object type, string methodName, object niCase)
     {
-        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true)));
+        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true), niCase));
     }
 
     #endregion

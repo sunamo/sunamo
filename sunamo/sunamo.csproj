@@ -117,6 +117,10 @@
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Collections\DebugLongCollection.cs" />
     <Compile Include="Enums\SqlExceptions.cs" />
+    <Compile Include="Http\HttpRequestHelper.cs" />
+    <Compile Include="Http\HttpRequestHelperShared.cs" />
+    <Compile Include="Http\HttpResponseHelper.cs" />
+    <Compile Include="Http\HttpWebResponseHelper.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

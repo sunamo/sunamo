@@ -1488,7 +1488,7 @@ public static partial class SH
             case UnicodeChars.Generic:
                 return CharHelper.IsGeneric(c);
             default:
-                ThrowExceptions.NotImplementedCase(s_type, "IsUnicodeChar");
+                ThrowExceptions.NotImplementedCase(s_type, "IsUnicodeChar", generic);
                 return false;
         }
     }

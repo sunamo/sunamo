@@ -96,7 +96,7 @@ public static partial class UIElementExtensions{
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, "Validate");
+            ThrowExceptions.NotImplementedCase(type, "Validate", t);
         }
 
         return null;
@@ -144,7 +144,7 @@ public static partial class UIElementExtensions{
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "SetValidated");
+                ThrowExceptions.NotImplementedCase(type, "SetValidated", t.FullName);
             }
         }
 
@@ -199,7 +199,7 @@ public static partial class UIElementExtensions{
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, null);
+            ThrowExceptions.NotImplementedCase(type, null,t);
         }
 
         return null;
