@@ -1373,7 +1373,6 @@ public partial class FS
         // not working for *.aspx.cs
         //var isNoMascEntered = !(!ext2.Contains("*") && !ext2.Contains("?") && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // Is succifient one of inner condition false and whole is true
-        // 
 
         var isNoMascEntered = !((ext2.Contains("*") || ext2.Contains("?")));// && !(cis.QuantityLowerChars > 0 || cis.QuantityUpperChars > 0));
         // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
