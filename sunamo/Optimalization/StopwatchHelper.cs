@@ -29,8 +29,8 @@ public class StopwatchHelper
         }
     }
 
-    public void StopAndPrintElapsed(string operation)
+    public long StopAndPrintElapsed(string operation)
     {
-        StopAndPrintElapsed(operation, string.Empty);
+        return StopAndPrintElapsed(operation, string.Empty);
     }
 }

@@ -6,8 +6,8 @@ namespace sunamo.Values
 {
     public class AllLists
     {
-        public static List<string> leftBrackets = CA.ToList<string>(AllStrings.lb, AllStrings.cbl, AllStrings.lsf);
-        public static List<string> rightBrackets = CA.ToList<string>(AllStrings.rb, AllStrings.cbr, AllStrings.rsf);
+        public static List<string> leftBrackets = CA.ToListString(AllStrings.lb, AllStrings.cbl, AllStrings.lsf);
+        public static List<string> rightBrackets = CA.ToListString(AllStrings.rb, AllStrings.cbr, AllStrings.rsf);
         public static List<string> featUpper = CA.ToListString("Feat.", "Featuring", "Ft.");
         public static List<string> featLower = CA.ToListString("feat.", "featuring", "ft.");
         public static List<string> OstravaCityParts = null;
@@ -23,7 +23,7 @@ namespace sunamo.Values
         public static List<string> genericDomains = CA.ToListString("." + "com", "." + "org", ".net");
 
         public static List<string> htmlEntities = null;
-        public static readonly List<string> BasicImageExtensions = CA.ToList<string>(AllExtensions.png,
+        public static readonly List<string> BasicImageExtensions = CA.ToListString(AllExtensions.png,
            AllExtensions.bmp,
            AllExtensions.jpg,
            AllExtensions.jpeg);

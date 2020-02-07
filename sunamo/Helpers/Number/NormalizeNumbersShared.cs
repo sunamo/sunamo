@@ -2,11 +2,13 @@
 
 public static partial class NormalizeNumbers
 {
+    static long intMax = (long) int.MaxValue;
+    static long one = 1;
     public static uint NormalizeInt(int p)
     {
-        long p2 = (long)p;
-        long sm = (long)int.MaxValue;
-        uint nt = (uint)(p2 + sm + 1);
+        //long p2 = (long)p;
+        
+        uint nt = (uint)(p + intMax + one);
         //nt++;
         return nt;
     }

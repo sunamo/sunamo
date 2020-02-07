@@ -1165,7 +1165,7 @@ public partial class SqlOperations : SqlServerHelper
     /// <returns></returns>
     public SqlResult<float> SelectCellDataTableFloatOneRow(SqlData data, string table, string vracenySloupec, params AB[] ab)
     {
-        string sql = GeneratorMsSql.CombinedWhere(table, true, vracenySloupec, ab);
+        string sql = GeneratorMsSql.CombinedWhere(table, true, vracenySloupec,  ab);
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, ab);
         return ExecuteScalarFloat(data, comm);
@@ -1540,7 +1540,7 @@ public partial class SqlOperations : SqlServerHelper
     {
         string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
         //"OrderVerse"
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB), null, new ABC(AB.Get(hledanySloupec, vetsiNez)).ToArray(), new ABC(AB.Get(hledanySloupec, mensiNez)).ToArray())));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB), null, new ABC(AB.Get(hledanySloupec, vetsiNez)), new ABC(AB.Get(hledanySloupec, mensiNez)))));
         int i = 0;
         for (; i < aB.Length; i++)
         {

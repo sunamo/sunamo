@@ -77,32 +77,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         else if (o.GetType() == Types.tString || o.GetType() == Types.tChar)
         {
             string _ = o.ToString();
-            //if (_.Length > 7999)
-            //{
-            //    comm.Parameters.AddWithValue("@p" + i.ToString(), string.Empty);
-            //    ++i;
-            //    i *= -1;
-            //    return i;
-            //}
 
-            //true) //
             if (IsNVarChar != null)
             {
-                if (comm.CommandText == @"UPDATE Lyr_YoutubeVideos SET CodeYT=@p2  WHERE  CodeYT = @p0  AND  IDSong = @p1 ")
-                {
-
-                }
-
                 if (SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table2, ref column2, i))
                 {
                     isNVarChar2 = IsNVarChar.Invoke(table2, column2);
 
-
-
                     if (!isNVarChar2)
                     {
-
-
                         _ = MSStoredProceduresI.ConvertToVarChar(_);
                     }
                 }
@@ -1426,7 +1409,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
         //"OrderVerse"
-        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB), null, new ABC(AB.Get(hledanySloupec, vetsiNez)).ToArray(), new ABC(AB.Get(hledanySloupec, mensiNez)).ToArray())));
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB), null, new ABC(AB.Get(hledanySloupec, vetsiNez)), new ABC(AB.Get(hledanySloupec, mensiNez)))));
         int i = 0;
         for (; i < aB.Length; i++)
         {
@@ -2768,11 +2751,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="vracenySloupec"></param>
     /// <param name="abc"></param>
     /// <returns></returns>
-    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] abc)
+    public int SelectCellDataTableIntOneRow(bool signed, string table, string vracenySloupec, params AB[] ab)
     {
-        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);
+        int from = 0;
+        var abc = new ABC(ab);
+        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc, ref from);
         SqlCommand comm = new SqlCommand(sql);
-        AddCommandParameterFromAbc(comm, abc);
+        AddCommandParameterFromAbc(comm, abc, 0);
 
         return ExecuteScalarInt(signed, comm);
     }
@@ -2855,7 +2840,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <returns></returns>
     public float SelectCellDataTableFloatOneRow(bool signed, string table, string vracenySloupec, params AB[] ab)
     {
-        string sql = GeneratorMsSql.CombinedWhere(table, true, vracenySloupec, ab);
+        string sql =  GeneratorMsSql.CombinedWhere(table, true, vracenySloupec, new ABC( ab));
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameterFromAbc(comm, ab);
         return ExecuteScalarFloat(signed, comm);

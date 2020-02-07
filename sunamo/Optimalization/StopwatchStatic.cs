@@ -19,6 +19,11 @@ using System.Diagnostics;
         return sw.sw.ElapsedMilliseconds;
     }
 
+    public static long StopAndPrintElapsed(string operation)
+    {
+        return sw.StopAndPrintElapsed(operation);
+    }
+
         public static long StopAndPrintElapsed(string operation, string p, params object[] parametry)
         {
             return sw.StopAndPrintElapsed(operation, p, parametry);

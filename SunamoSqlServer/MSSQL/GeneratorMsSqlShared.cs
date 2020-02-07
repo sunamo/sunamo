@@ -10,10 +10,10 @@ public partial class GeneratorMsSql{
     /// </summary>
     /// <param name="where"></param>
     /// <returns></returns>
-    public static string CombinedWhere(params object[] where)
+    public static string CombinedWhere(params AB[] where)
     {
-        var abc = where.Cast<AB>();
-        return CombinedWhere(new ABC(abc));
+        //var abc = where.Cast<AB>();
+        return CombinedWhere(new ABC(where));
     }
 
         /// <summary>
@@ -131,11 +131,7 @@ public partial class GeneratorMsSql{
     }
     public static string SimpleSelectOneRow(string vracenySloupec, string table)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.Append("SELECT TOP(1)" + " " + vracenySloupec);
-        sb.Append(" " + "FROM" + " " + table);
-        sb.Append(AllStrings.space);
-        return sb.ToString();
+        return "SELECT TOP(1) " + vracenySloupec + " FROM " + table;
     }
 
     /// <summary>
@@ -324,6 +320,11 @@ public partial class GeneratorMsSql{
             return sb.ToString();
         }
         return "";
+    }
+
+    public static string CombinedWhere(string tabulka, bool top1, string nazvySloupcu, params AB[] ab)
+    {
+        return CombinedWhere(tabulka, top1, nazvySloupcu, new ABC(ab));
     }
 public static string CombinedWhere(string tabulka, bool top1, string nazvySloupcu, ABC ab)
     {
