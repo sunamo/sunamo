@@ -76,6 +76,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
         ClipboardHelper.Instance = ClipboardHelperWin.Instance;
         AppData.ci.CreateAppFoldersIfDontExists();
+        //CryptHelper.ApplyCryptData(CryptHelper.RijndaelBytes.Instance, CryptDataWrapperOld.rijn);
 
         XlfResourcesH.SaveResouresToRLSunamo();
         #endregion

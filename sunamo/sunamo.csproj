@@ -59,14 +59,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Values\SunamoColors.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\SunamoColor.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
@@ -80,6 +77,7 @@
     <Compile Include="..\..\sunamo\sunamo\Data\SerializeContentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\SunamoColor.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
@@ -90,6 +88,7 @@
     <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Langs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ModifiersConstructor.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
@@ -112,15 +111,11 @@
     <Compile Include="..\..\sunamo\sunamo\Optimalization\StopwatchStatic.cs" />
     <Compile Include="..\..\sunamo\sunamo\Parsing\ListParser.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\HttpsUriConsts.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Values\SunamoColors.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Collections\DebugLongCollection.cs" />
-    <Compile Include="Enums\SqlExceptions.cs" />
-    <Compile Include="Http\HttpRequestHelper.cs" />
-    <Compile Include="Http\HttpRequestHelperShared.cs" />
-    <Compile Include="Http\HttpResponseHelper.cs" />
-    <Compile Include="Http\HttpWebResponseHelper.cs" />
+    <Compile Include="Helpers\Base64Helpers.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -156,6 +151,7 @@
     <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
     <Compile Include="Collections\CyclingCollection.cs" />
     <Compile Include="Collections\DebugCollection.cs" />
+    <Compile Include="Collections\DebugLongCollection.cs" />
     <Compile Include="Collections\DictionarySort.cs" />
     <Compile Include="Collections\ExtensionSortedCollection.cs" />
     <Compile Include="Collections\FsWatcherDictionary.cs" />
@@ -389,6 +385,7 @@
     <Compile Include="Enums\SerieStyle.cs" />
     <Compile Include="Enums\Signed.cs" />
     <Compile Include="Enums\SortBy.cs" />
+    <Compile Include="Enums\SqlExceptions.cs" />
     <Compile Include="Enums\SqlMethods.cs" />
     <Compile Include="Enums\SqlNumericType.cs" />
     <Compile Include="Enums\StorageApplicationData.cs" />
@@ -566,6 +563,10 @@
     <Compile Include="Html\SecurityHelper.cs" />
     <Compile Include="Html\XHelper.cs" />
     <Compile Include="Html\XHelperShared.cs" />
+    <Compile Include="Http\HttpRequestHelper.cs" />
+    <Compile Include="Http\HttpRequestHelperShared.cs" />
+    <Compile Include="Http\HttpResponseHelper.cs" />
+    <Compile Include="Http\HttpWebResponseHelper.cs" />
     <Compile Include="IClipboardHelperApps.cs" />
     <Compile Include="ImageHelperBase.cs" />
     <Compile Include="ImageHelperBaseShared.cs" />

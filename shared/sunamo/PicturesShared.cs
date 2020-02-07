@@ -15,6 +15,8 @@ using sunamo.Essential;
 
     public class PicturesShared
     {
+    static Type type = typeof(PicturesShared);
+    private static Regex r = new Regex(AllStrings.colon);
     public static Bitmap RotateBitmap(Image bitmap)
     {
         var r = RandomHelper.RandomInt(0, 45);
@@ -68,9 +70,10 @@ using sunamo.Essential;
         return bmpRet;
     }
 
-    static Type type = typeof(PicturesShared);
-
-    private static Regex r = new Regex(AllStrings.colon);
+    public static object ImageToBase64(string imageFile)
+    {
+        return ImageToBase64(Bitmap.FromFile(imageFile), PicturesShared.GetImageFormatFromExtension2(FS.GetExtension(imageFile)));
+    }
 
     public static void ChangeResolution(string path, float dpix, float dpiy)
     {
