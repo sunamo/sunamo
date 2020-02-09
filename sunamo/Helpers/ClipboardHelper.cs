@@ -7,7 +7,7 @@ using sunamo;
 using sunamo.Generators.Text;
 
 /// <summary>
-/// Cant add another methods with Task and normal - methods have same signature, despite return were different
+/// Cant add another methods with void and normal - methods have same signature, despite return were different
 /// </summary>
 public class ClipboardHelper
 {
@@ -20,7 +20,7 @@ public class ClipboardHelper
     {
         if (Instance == null)
         {
-            return InstanceApps.ContainsText().Result;
+            return InstanceApps.ContainsText();
         }
         else
         {
@@ -32,7 +32,7 @@ public class ClipboardHelper
     {
         if (Instance == null)
         {
-            return InstanceApps.GetText().Result;
+            return InstanceApps.GetText();
         }
         else
         {
@@ -53,7 +53,7 @@ public class ClipboardHelper
 #if !UNITTEST
         if (Instance == null)
         {
-            return InstanceApps.GetLines().Result;
+            return InstanceApps.GetLines();
         }
         else
         {

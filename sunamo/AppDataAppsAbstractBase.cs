@@ -17,10 +17,10 @@ namespace sunamo
         /// <param name = "af"></param>
         /// <param name = "file"></param>
         /// <returns></returns>
-        public abstract Task<StorageFile> GetFile(AppFolders af, string file);
+        public abstract StorageFile GetFile(AppFolders af, string file);
         public abstract bool IsRootFolderNull();
 
         
-        //public abstract Task<StorageFolder> GetSunamoFolder();
+        //public abstract StorageFolder> GetSunamoFolder();
     }
 }

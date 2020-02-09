@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -137,8 +137,13 @@
     <Compile Include="Helpers\Resources\ResourcesH.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Http\HttpRequestHelper.cs" />
+    <Compile Include="Http\HttpRequestHelperShared.cs" />
+    <Compile Include="Http\HttpResponseHelper.cs" />
+    <Compile Include="Http\HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
+    <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="MailBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RA.cs" />
@@ -162,7 +167,6 @@
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -171,6 +175,7 @@
     <Folder Include="Helpers\Http\" />
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">

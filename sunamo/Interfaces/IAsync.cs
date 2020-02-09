@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public interface IClipboardHelperApps : IClipboardHelperBase<string, List<string>, bool>
-{
-}
+    public interface IAsync
+    {
+    T GetResult<T>(Task<T> t);
+    }
 

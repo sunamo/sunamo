@@ -6,20 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-public class HttpWebResponseHelper
+/// <summary>
+/// Can be only in shared coz is not available in standard
+/// </summary>
+public class HttpResponseHelper
 {
 
 
-    public static bool SomeError(HttpWebResponse r)
+    public static bool SomeError(HttpResponse r)
     {
         if (r == null)
         {
             return true;
         }
 
-        // 400 errors for Bojánci and other which doesn't exists on lfm
-        // 429 Too many errors (mainly for 
-        switch (r.StatusCode)
+        switch (StatusCodeToHttpStatusCode( r.StatusCode))
         {
             case HttpStatusCode.OK:
                 return false;
@@ -27,18 +28,24 @@ public class HttpWebResponseHelper
         return true;
     }
 
-    public static bool IsNotFound(HttpWebResponse r)
+    public static bool IsNotFound(HttpResponse r)
     {
         if (r == null)
         {
             return true;
         }
 
-        switch (r.StatusCode)
+        switch (StatusCodeToHttpStatusCode( r.StatusCode))
         {
             case HttpStatusCode.NotFound:
                 return true;
         }
         return false;
     }
+
+    static HttpStatusCode StatusCodeToHttpStatusCode(int s)
+    {
+        return (HttpStatusCode)s;
+    }
 }
+

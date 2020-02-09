@@ -36,6 +36,11 @@ public class XmlGenerator
         sb.Insert(index, text);
     }
 
+    public void AppendLine()
+    {
+        sb.AppendLine();
+    }
+
     public XmlGenerator() : this(false)
     {
     }

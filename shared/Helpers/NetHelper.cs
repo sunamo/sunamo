@@ -65,7 +65,7 @@ namespace sunamo.Helpers
             hrd.content = content;
 
             var vr =  HttpClientHelper.GetResponseText(address, method, hrd);
-            string vr2 = vr.Result;
+            string vr2 = vr;
             return vr2;
         }
 

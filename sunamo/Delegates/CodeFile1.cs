@@ -54,7 +54,7 @@ public delegate void VoidIntDouble(int nt, double d);
 /// <param name="path"></param>
 /// <returns></returns>
 public delegate bool? ExistsDirectory(string path);
-public delegate Task TaskVoid();
-public delegate Task TaskObject(object o);
+//public delegate void VoidVoid();
+//public delegate void VoidObject(object o);
 //public delegate string EditHtmlWidthHandler(ref HtmlNode hm, string s);
 public delegate List<string> ListStringListString(List<string> list);

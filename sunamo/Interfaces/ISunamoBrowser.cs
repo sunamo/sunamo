@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public interface ISunamoBrowser<T>
 {
     Uri Source { get; set; }
-    Task<HtmlDocument> GetHtmlDocument();
+    HtmlDocument GetHtmlDocument();
     
     string HTML { get; }
     void Navigate(string uri);

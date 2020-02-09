@@ -120,12 +120,16 @@ public static partial class CSharpHelper
         return result;
     }
 
-    public static string GetConsts(List<string> list)
+    public static string GetConsts(List<string> list, bool toCamelConvention)
     {
         CSharpGenerator csg = new CSharpGenerator();
         foreach (var item in list)
         {
-            var name = ConvertCamelConvention.ToConvention(item);
+            string name = item;
+            if (toCamelConvention)
+            {
+                name = ConvertCamelConvention.ToConvention(item);
+            }
             csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
         }
 

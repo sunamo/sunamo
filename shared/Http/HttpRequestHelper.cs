@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 /// <summary>
 /// Náhrada za třídu NetHelper
+/// Can be only in shared coz is not available in standard
 /// </summary>
 public static partial class HttpRequestHelper
 {

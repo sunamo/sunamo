@@ -100,7 +100,7 @@ public class XlfResourcesH
 
         if (!exists)
         {
-            string xlfContent = null;
+            String xlfContent = null;
 
             var fn = "sunamo_cs_CZ";
 
@@ -111,8 +111,12 @@ public class XlfResourcesH
             // Cant use StorageFile.ToString - get only name of method
             //pathFile = file.ToString();
 
+            var enc = Encoding.GetEncoding(65001);
+
             xlfContent = rm.GetByteArrayAsString(fn);
-            TF.WriteAllText(file, xlfContent);
+            //xlfContent = xlfContent.Skip(3);
+            TF.WriteAllText(file, xlfContent, enc);
+            TF.RemoveDoubleBomUtf8(file);
 
 
             fn = "sunamo_en_US";
@@ -121,7 +125,9 @@ public class XlfResourcesH
 
 
             xlfContent = rm.GetByteArrayAsString(fn);
-            TF.WriteAllText(file2, xlfContent);
+            //xlfContent = xlfContent.Skip(3);
+            TF.WriteAllText(file2, xlfContent, enc);
+            TF.RemoveDoubleBomUtf8(file2);
 
             path = appData.RootFolderCommon(false);
 
@@ -150,12 +156,13 @@ public class XlfResourcesH
 
     private static void ProcessXlfFile(string basePath, string lang, string file)
     {
-
         var fn = FS.GetFileName(file).ToLower();
         bool isCzech = fn.Contains("cs");
         bool isEnglish = fn.Contains("en");
 
+        
         var doc = new XlfDocument(file);
+        //var doc = new XlfDocument(@"C:\Users\w\AppData\Local\Packages\31735sunamo.GeoCachingTool_q65n5amar4ntm\LocalState\sunamo.cs-CZ.xlf");
         lang = lang.ToLower();
 
         var xlfFiles = doc.Files.Where(d => d.Original.ToLower().Contains(lang));

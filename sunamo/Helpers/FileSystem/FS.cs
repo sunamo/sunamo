@@ -67,7 +67,7 @@ public partial class FS
         DateTime dt = DateTime.Now;
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
-    //public static Task DeleteFile(StorageFile t)
+    //public static void DeleteFile(StorageFile t)
     //{
     //    throw new NotImplementedException();
     //}

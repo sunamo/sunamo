@@ -178,7 +178,7 @@ public partial class TF
         if (!FS.ExistsFile(path, ac))
         {
             FS.CreateUpfoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(path, ac);
-            TF.WriteAllText<StorageFolder, StorageFile>(path, "", ac);
+            TF.WriteAllText<StorageFolder, StorageFile>(path, "", Encoding.UTF8, ac);
         }
     }
 
@@ -239,9 +239,19 @@ public partial class TF
         WriteAllText(file, sb.ToString());
     }
 
+    public static void WriteAllText(string file, string content, Encoding encoding)
+    {
+        WriteAllText<string, string>(file, content, encoding, null);
+    }
+
     public static void WriteAllText(string file, string content)
     {
-        WriteAllText<string, string>(file, content, null);
+        WriteAllText<string, string>(file, content, Encoding.UTF8, null);
+    }
+
+    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile file, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        WriteAllText<StorageFolder, StorageFile>(file, content, Encoding.UTF8, ac);
     }
 
     /// <summary>
@@ -250,11 +260,11 @@ public partial class TF
     /// </summary>
     /// <param name="file"></param>
     /// <param name="content"></param>
-    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile file, string content, AbstractCatalog<StorageFolder, StorageFile> ac)
+    public static void WriteAllText<StorageFolder, StorageFile>(StorageFile file, string content, Encoding enc, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if ( ac  == null)
         {
-            File.WriteAllText(file.ToString(), content, Encoding.UTF8);
+            File.WriteAllText(file.ToString(), content, enc);
         }
         else
         {

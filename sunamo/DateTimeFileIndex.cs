@@ -112,7 +112,7 @@ namespace desktop
         /// <param name="af"></param>
         /// <param name="ext"></param>
         /// <param name="ds"></param>
-        public async void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, AbstractCatalog<StorageFolder, StorageFile> ac)
+        public void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, AbstractCatalog<StorageFolder, StorageFile> ac)
         {
             _ds = ds;
             _folder = ac.appData.GetFolder(af);
@@ -243,7 +243,7 @@ namespace desktop
             return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.us, AllStrings.space);
         }
 
-        public async void DeleteFile(FileNameWithDateTime<StorageFolder, StorageFile> o)
+        public void DeleteFile(FileNameWithDateTime<StorageFolder, StorageFile> o)
         {
             try
             {
@@ -270,7 +270,7 @@ namespace desktop
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="name"></param>
-        public async Task<FileNameWithDateTime<StorageFolder, StorageFile>> SaveFileWithDate(string name, string content)
+        public  FileNameWithDateTime<StorageFolder, StorageFile> SaveFileWithDate(string name, string content)
         {
             DateTime dt = DateTime.Now;
             DateTime today = DateTime.Today;

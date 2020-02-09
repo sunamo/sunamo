@@ -17,7 +17,7 @@ namespace desktop.Helpers.Clipboard
 		/// Occurs when the clipboard content changes.
 		/// </summary>
 		public event VoidVoid ClipboardContentChanged;
-        public event TaskVoid ClipboardContentChangedAsync;
+        public event VoidVoid ClipboardContentChangedAsync;
         public  bool pernamentlyBlock;
         public  bool afterSet;
 

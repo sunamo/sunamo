@@ -32,7 +32,7 @@ public class AppData : AppDataAbstractBase<string, string>
 
         //string appDataFolder = SpecialFO
         string sunamo2 = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
-        var redirect = GetSunamoFolder().Result;
+        var redirect = GetSunamoFolder();
         if (!string.IsNullOrEmpty(redirect))
         {
             sunamo2 = redirect;
@@ -116,7 +116,7 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <returns></returns>
     public override string GetRootFolder()
     {
-        rootFolder = GetSunamoFolder().Result;
+        rootFolder = GetSunamoFolder();
 
         RootFolder = FS.Combine(rootFolder, ThisApp.Name);
         FS.CreateDirectory(RootFolder);
@@ -133,7 +133,7 @@ public class AppData : AppDataAbstractBase<string, string>
         throw new NotImplementedException();
     }
 
-    public async override Task< string> GetSunamoFolder()
+    public override  string GetSunamoFolder()
     {
 
             string r = AppData.ci.GetFolderWithAppsFiles();

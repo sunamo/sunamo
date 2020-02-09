@@ -22,7 +22,6 @@ public partial class SqlOperations : SqlServerHelper
     public static bool isNVarChar2 = false;
     public static Func<string, string, bool> IsNVarChar = null;
     public string _cs = null;
-
     string Cs
     {
         get

@@ -11,6 +11,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
+/// <summary>
+/// Can be only in shared coz is not available in standard
+/// </summary>
 public static partial class HttpRequestHelper{
     public static string DownloadOrRead(string path, string uri)
     {
@@ -22,8 +25,6 @@ public static partial class HttpRequestHelper{
         }
         else
         {
-
-
             html = Download(uri, null, path);
         }
 

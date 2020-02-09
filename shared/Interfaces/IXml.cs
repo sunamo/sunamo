@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
-public interface IXml
+public interface IXmlParser
 {
     void Parse(System.Xml.XmlNode node);
-    void Parse(XElement node);
+    
     string ToXml();
 }

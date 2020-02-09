@@ -26,10 +26,10 @@ namespace sunamo.LoggerAbstract
         public Color Bg { get { return _bg; } set { _bg = value; } }
 
         /// <summary>
-        /// Must be method because call await WpfApp.cd.RunAsync (works with controls)
+        /// Must be method because call WpfApp.cd.RunAsync (works with controls)
         /// </summary>
         /// <param name="c"></param>
-        protected virtual async void SetBg(Color c)
+        protected virtual void SetBg(Color c)
         {
         }
 
@@ -45,7 +45,7 @@ namespace sunamo.LoggerAbstract
         /// <param name="message"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        public async Task<LogMessageAbstract<Color, StorageClass>> Initialize(DateTime dt, TypeOfMessage st, string message, Color color)
+        public  LogMessageAbstract<Color, StorageClass> Initialize(DateTime dt, TypeOfMessage st, string message, Color color)
         {
             _dateTime = dt;
             _typeOfMessage = st;

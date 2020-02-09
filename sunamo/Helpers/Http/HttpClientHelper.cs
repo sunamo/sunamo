@@ -22,33 +22,33 @@ namespace sunamo.Helpers
         {
         }
 
-        public async static Task<string> GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
+        public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
         {
-            HttpResponseMessage response = await GetResponse(address, method, hrd);
-            return await GetResponseText(response);
+            HttpResponseMessage response =  GetResponse(address, method, hrd);
+            return  GetResponseText(response);
         }
 
-        private static async Task<string> GetResponseText(HttpResponseMessage response)
+        private static string GetResponseText(HttpResponseMessage response)
         {
             string vr = "";
             using (response)
             {
-                vr = await response.Content.ReadAsStringAsync();
+                vr =  response.Content.ReadAsStringAsync().Result;
             }
             return vr;
         }
 
-        public async static Task<Stream> GetResponseStream(string address, HttpMethod method, HttpRequestData hrd)
+        public static Stream GetResponseStream(string address, HttpMethod method, HttpRequestData hrd)
         {
-            HttpResponseMessage response = await GetResponse(address, method, hrd);
+            HttpResponseMessage response = GetResponse(address, method, hrd);
 
             using (response)
             {
-                return await response.Content.ReadAsStreamAsync();
+                return response.Content.ReadAsStreamAsync().Result;
             }
         }
 
-        public async static Task<HttpResponseMessage> GetResponse(string address, HttpMethod method, HttpRequestData hrd)
+        public static HttpResponseMessage GetResponse(string address, HttpMethod method, HttpRequestData hrd)
         {
             if (hrd == null)
             {
@@ -66,7 +66,7 @@ namespace sunamo.Helpers
             HttpResponseMessage response = null;
             if (method == HttpMethod.Get)
             {
-                response = await hc.GetAsync(address);
+                response = hc.GetAsync(address).Result;
             }
             else if (method == HttpMethod.Post)
             {

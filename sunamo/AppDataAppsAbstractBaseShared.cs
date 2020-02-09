@@ -8,9 +8,9 @@ namespace sunamo
 {
     public abstract partial class AppDataAppsAbstractBase<StorageFolder, StorageFile> : AppDataBase<StorageFolder, StorageFile>
     {
-        public abstract Task<StorageFolder> GetRootFolder();
+        public abstract StorageFolder GetRootFolder();
 
-        protected abstract Task SaveFile(string content, StorageFile sf);
+        protected abstract void SaveFile(string content, StorageFile sf);
 
 
 
@@ -20,8 +20,8 @@ namespace sunamo
         /// Pokud rootFolder bude SE nebo null, G false, jinak vrátí zda rootFolder existuej ve FS
         /// </summary>
         /// <returns></returns>
-        public abstract Task<bool> IsRootFolderOk();
-        public abstract Task AppendToFile(AppFolders af, string file, string value);
-        public abstract Task AppendToFile(string value, StorageFile file);
+        public abstract bool IsRootFolderOk();
+        public abstract void AppendToFile(AppFolders af, string file, string value);
+        public abstract void AppendToFile(string value, StorageFile file);
     }
 }

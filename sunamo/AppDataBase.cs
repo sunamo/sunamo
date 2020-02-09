@@ -24,10 +24,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         TF.CreateEmptyFileWhenDoesntExists(path);
         return TF.ReadFile(path);
     }
-
-    
-
-
     public AppDataBase()
     {
     }
@@ -95,8 +91,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         StorageFile fileToSave = Abstract.GetFile(AppFolders.Settings, file);
         Abstract.SaveFile(value, fileToSave);
     }
-
-
 
     /// <summary>
     /// Save file A2 to AF A1 with contents A3

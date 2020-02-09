@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public abstract partial class AppDataBase<StorageFolder, StorageFile>
 {
-    public abstract string GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext);
+    public abstract StorageFile GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext);
     public abstract StorageFolder GetFolder(AppFolders af);
     /// <summary>
     /// Must return always string, not StorageFile - in Standard is not StorageFile class and its impossible to get Path
@@ -32,7 +32,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// 
     /// </summary>
     /// <returns></returns>
-    public abstract Task<StorageFolder> GetSunamoFolder();
+    public abstract StorageFolder GetSunamoFolder();
 
     //public  string CommonFolder()
     //{
@@ -107,7 +107,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         return _fileFolderWithAppsFiles;
     }
 
-public async Task CreateAppFoldersIfDontExists()
+public void CreateAppFoldersIfDontExists()
     {
         if (!string.IsNullOrEmpty(ThisApp.Name))
         {
