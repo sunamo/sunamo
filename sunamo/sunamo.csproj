@@ -117,6 +117,7 @@
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Helpers\Base64Helpers.cs" />
     <Compile Include="Interfaces\IAsync.cs" />
+    <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

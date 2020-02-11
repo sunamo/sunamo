@@ -21,12 +21,25 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     
     IControlWithResult userControlWithResult = null;
     IControlWithResultDebug controlWithResultDebug = null;
-    bool isControlWithResult = false;
+    bool isControlWithResultDebug = false;
     IControlWithResult controlWithResult = null;
     /// <summary>
     /// Na false se nastaví při zavírání. Pokud tedy bude false, znamená to že okno se zavřelo křížkem a má tato hodnota false přednost
     /// </summary>
-    bool? dialogResult = null;
+    public bool? dialogResult = null;
+
+    public bool? DialogResult
+    {
+        set
+        {
+            if (ChangeDialogResult != null)
+            {
+                ChangeDialogResult(value);
+            }
+
+        }
+    }
+
     bool addDialogButtons = false;
     IUserControlWithSizeChange userControlWithSizeChange = null;
     static Type type = typeof(WindowWithUserControl);
@@ -65,12 +78,15 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     {
         Tag = tag;
         userControl = (UserControl)iUserControlInWindow;
-        
+        this.uc = userControl as IUserControl;
+        controlWithResultDebug = uc as IControlWithResultDebug;
+        userControlWithSizeChange = uc as IUserControlWithSizeChange;
+        controlWithResult = uc as IControlWithResult;
 
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
-        this.uc = userControl as IUserControl;
-
+        
+        
         
 
         this.addDialogButtons = addDialogButtons;
@@ -102,11 +118,11 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             menu.Items.Add(miUc);
         }
 
-        controlWithResultDebug = uc as IControlWithResultDebug;
-        userControlWithSizeChange = uc as IUserControlWithSizeChange;
+        
 
-        controlWithResult = uc as IControlWithResult;
-        isControlWithResult = controlWithResultDebug != null;
+        
+        controlWithResult.ChangeDialogResult += ControlWithResult_ChangeDialogResult;
+        isControlWithResultDebug = controlWithResultDebug != null;
 
         statusBar = new StatusBar();
         statusBar.Height = 25;
@@ -149,6 +165,11 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         Loaded += WindowWithUserControl_Loaded;
         SizeChanged += WindowWithUserControl_SizeChanged;
         PreviewKeyDown += WindowWithUserControl_PreviewKeyDown;
+    }
+
+    private void ControlWithResult_ChangeDialogResult(bool? b)
+    {
+        DialogResult = b;
     }
 
     private void WindowWithUserControl_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -299,39 +320,13 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         {
             userControlWithResult = (IControlWithResult)userControl;
 
-            if (controlWithResultDebug != null)
-            {
-                countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
-            }
-
-            if (isControlWithResult)
+            if (isControlWithResultDebug)
             {
                 controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable( UserControlWithResult_ChangeDialogResult), false);
-            }
-
-            if (controlWithResultDebug != null)
-            {
                 countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
             }
-
-
 
             userControlWithResult.FocusOnMainElement();
-
-                if (controlWithResultDebug != null)
-                {
-                    countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
-                }
-
-            if (isControlWithResult)
-            {
-                controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable( UserControlWithResult_ChangeDialogResult), false);
-            }
-
-            if (controlWithResultDebug != null)
-                    {
-                        countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
-                    }
         }
 
         if (addDialogButtons)
@@ -339,8 +334,12 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             if (userControlWithResult != null)
             {
                 // IF USER CONTROL HAVE OWN ChangeDialogResult, MUST USE ALWAYS IT
-                userControlWithResult.ChangeDialogResult -= uc_ChangeDialogResult;
-                userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
+                // In CheckBoxListUC must handle whether at least one is selected
+                if (uc.GetType() != CheckBoxListUC.type)
+                {
+                    userControlWithResult.ChangeDialogResult -= uc_ChangeDialogResult;
+                    userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
+                }
             }
 
         }

@@ -26,7 +26,7 @@ public class VisualStudioTempFse
     public static ExtensionSortedCollection filesInSolutionToDelete = new ExtensionSortedCollection("UpgradeLog*.htm", "UpgradeLog*.htm", "*.suo");
     public static ExtensionSortedCollection filesInProjectToDelete = new ExtensionSortedCollection("*.user");
     public static string[] foldersAnywhereToDelete = new string[] { };
-    public static ExtensionSortedCollection filesAnywhereToDelete = new ExtensionSortedCollection("Thumbs.db");
+    public static ExtensionSortedCollection filesAnywhereToDelete = new ExtensionSortedCollection("Thumbs.db", "*.TMP", "*.tmp");
 
     public static string[] foldersInSolutionToKeep = new string[] { gitFolderName };
     public static string[] foldersInProjectToKeep = new string[] { "AppPackages", "Assets", "BundleArtifacts", "Fonts", "MultilingualResources", "Properties", "Service References" };

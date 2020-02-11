@@ -143,7 +143,6 @@
     <Compile Include="Http\HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
-    <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="MailBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RA.cs" />

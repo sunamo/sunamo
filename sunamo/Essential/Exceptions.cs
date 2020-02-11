@@ -155,7 +155,7 @@ public class Exceptions
         return CheckBefore(before) + "Not implemented case"+fr+" . public program error. Please contact developer" + ".";
     }
 
-    internal static object NotImplementedMethod(string before)
+    public static object NotImplementedMethod(string before)
     {
         return CheckBefore(before) + "Not implemented case. public program error. Please contact developer" + ".";
     }

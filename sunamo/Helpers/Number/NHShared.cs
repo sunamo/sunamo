@@ -32,7 +32,7 @@ public static partial class NH
         return vr;
     }
 
-    internal static string CalculateMedianAverage(List<long> l2)
+    public static string CalculateMedianAverage(List<long> l2)
     {
         var l = CA.ToNumber<double>(double.Parse, l2);
         return CalculateMedianAverage(l);

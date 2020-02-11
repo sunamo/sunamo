@@ -184,8 +184,6 @@ namespace desktop.Controls.Input
             Grid.SetRow(tb, i);
             Grid.SetColumn(tb, 0);
             gridGrowable.Children.Add(tb);
-
-
         }
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)

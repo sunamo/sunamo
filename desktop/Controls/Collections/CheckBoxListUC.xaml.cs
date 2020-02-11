@@ -31,6 +31,7 @@ namespace desktop.Controls.Collections
     public partial class CheckBoxListUC : UserControl
         , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl
     {
+        public static Type type = typeof(CheckBoxListUC);
         #region IControlWithResult implementation
         public bool? DialogResult
         {
