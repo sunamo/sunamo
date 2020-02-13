@@ -455,7 +455,7 @@ namespace sunamo.Html
                 insertAfter.InnerHtml += SH.WrapWith(item, AllChars.space);
                 //insertAfter = insertAfter.ParentNode.InsertAfter(CreateNode(item), insertAfter);
             }
-            insertAfter.InnerHtml = SH.DoubleSpacesToSingle(insertAfter.InnerHtml).Trim();
+            insertAfter.InnerHtml = SH.ReplaceAllDoubleSpaceToSingle(insertAfter.InnerHtml).Trim();
         }
 
         public static HtmlNode CreateNode(string html)

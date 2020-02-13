@@ -37,7 +37,7 @@ public class VisualStudioTempFse
     /// <summary>
     /// save meaning as keep
     /// </summary>
-    public static string[] foldersInSolutionDownloaded = new string[] { "packages", gitFolderName, "node_modules" };
+    public static string[] foldersInSolutionDownloaded = new string[] { "packages", gitFolderName, "node_modules", "x64", ".vs", ".vscode", "lib", ".idea", ".nuget", ".svn", ".*" };
     public static string[] foldersInProjectDownloaded = new string[] { };
     public static string[] filesInSolutionDownloaded = new string[] { ".gitattributes", gitignoreFile };
     public static string[] filesInProjectDownloaded = new string[] { };

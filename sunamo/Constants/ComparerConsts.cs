@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-public class ComparerHelper
+public class ComparerConsts
 {
     public const int XDesc = -1;
     public const int YDesc = 1;

@@ -40,7 +40,7 @@ public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, b
         d = FS.OnlyNames(d);
         if (removeVsFolders)
         {
-            VisualStudioTempFse.foldersInSolutionToDelete.ToList().ForEach(folder => CA.RemoveWildcard(d, folder));
+            VisualStudioTempFse.foldersInSolutionDownloaded.ToList().ForEach(folder => CA.RemoveWildcard(d, folder));
             //
             VisualStudioTempFse.foldersInProjectDownloaded.ToList().ForEach(folder => CA.RemoveWildcard(d, folder));
         }

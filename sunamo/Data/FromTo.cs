@@ -8,11 +8,14 @@ public class FromTo : IParser
     {
     }
 
-    public FromTo(int from, int to)
+    public FromTo(int from, int to, bool useDateTime = true)
     {
         this.from = from;
         this.to = to;
+        this.useDateTime = useDateTime;
     }
+
+    public bool useDateTime = true;
 
     public int from = 0;
     public int to = 0;
@@ -63,11 +66,15 @@ public class FromTo : IParser
 
     public override string ToString()
     {
-        if (to != 0)
+        if (useDateTime)
         {
-            return $"{DTHelperCs.ToShortTimeFromSeconds(from)}-{DTHelperCs.ToShortTimeFromSeconds(to)}";
+            if (to != 0)
+            {
+                return $"{DTHelperCs.ToShortTimeFromSeconds(from)}-{DTHelperCs.ToShortTimeFromSeconds(to)}";
+            }
+            return $"{DTHelperCs.ToShortTimeFromSeconds(from)}";
         }
-        return $"{DTHelperCs.ToShortTimeFromSeconds(from)}";
+        return from + "-" + to;
     }
 }
 

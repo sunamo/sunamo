@@ -81,7 +81,7 @@ public partial class DictionaryHelper
     {
         foreach (KeyValuePair<T, U> var in g)
         {
-            if (Comparer<U>.Default.Compare(var.Value, p1) == ComparerHelper.Higher && Comparer<T>.Default.Compare(var.Key, p2) == ComparerHelper.Lower)
+            if (Comparer<U>.Default.Compare(var.Value, p1) == ComparerConsts.Higher && Comparer<T>.Default.Compare(var.Key, p2) == ComparerConsts.Lower)
             {
                 return var.Key;
             }

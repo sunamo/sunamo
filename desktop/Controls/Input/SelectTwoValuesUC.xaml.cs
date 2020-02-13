@@ -18,7 +18,7 @@ namespace desktop.Controls.Input
 {
     /// <summary>
     /// Select Value - more from selector
-    /// Enter value - single,  EnterOneValueUC - fwElemements 
+    /// EnterOneValueUC - single,  EnterOneValueUC - fwElemements 
     /// </summary>
     public partial class SelectTwoValues : UserControl, IUserControl, IControlWithResult
     {

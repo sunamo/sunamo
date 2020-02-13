@@ -34,6 +34,11 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NotImplementedMethod(FullNameOfExecutedCode( type, methodName)));
     }
 
+    public static bool OutOfRange(Type type, string methodName, string colName, IEnumerable col, string indexName, int index)
+    {
+        return ThrowIsNotNull(Exceptions.OutOfRange(FullNameOfExecutedCode(type, methodName), colName, col, indexName, index));
+    }
+
     /// <summary>
     /// Return & throw exception whether directory exists
     /// </summary>
@@ -220,25 +225,15 @@ public class ThrowExceptions
         return string.Concat(typeFullName, AllStrings.dot, methodName);
     }
 
-    /// <summary>
-    /// Default use here method with one argument
-    /// </summary>
-    /// <param name="type"></param>
-    /// <param name="methodName"></param>
-    /// <param name="exception"></param>
-    public static void ThrowIsNotNull(object type, string methodName, string exception)
-    {
-        if (exception != null)
-        {
-            throw new Exception(exception);
-        }
-    }
+    
 
     public static Action<string> writeServerError;
 
+    #region MyRegion
     /// <summary>
     /// true if everything is OK
     /// false if some error occured
+    /// In console app is needed put in into try-catch error due to there is no globally handler of errors
     /// </summary>
     /// <param name="exception"></param>
     public static bool ThrowIsNotNull(string exception)
@@ -261,18 +256,47 @@ public class ThrowExceptions
         return true;
     }
 
+    /// <summary>
+    /// Return false in case of exception, otherwise true
+    /// In console app is needed put in into try-catch error due to there is no globally handler of errors
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    private static bool ThrowIsNotNull(object v)
+    {
+        if (v != null)
+        {
+            ThrowIsNotNull(v.ToString());
+            return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Default use here method with one argument
+    /// Return false in case of exception, otherwise true
+    /// In console app is needed put in into try-catch error due to there is no globally handler of errors
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="exception"></param>
+    public static bool ThrowIsNotNull(object type, string methodName, string exception)
+    {
+        if (exception != null)
+        {
+            throw new Exception(exception);
+            return false;
+        }
+        return true;
+    }
+    #endregion
+
     public static void NoPassedFolders(Type type, string v, IEnumerable folders)
     {
         ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
     }
 
-    private static void ThrowIsNotNull(object v)
-    {
-        if (v != null)
-        {
-            ThrowIsNotNull(v.ToString());
-        }
-    }
+    
 
     /// <summary>
     /// Verify whether A3 contains A4

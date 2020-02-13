@@ -312,7 +312,7 @@ Into A1 insert:
         /// <param name="translated"></param>
         /// <param name="pascal"></param>
         /// <param name="fn"></param>
-        public static void Append(Langs toL, string originalSource, string translated, string pascal, string fn)
+        public static void Append(string originalSource, string translated, string pascal, string fn)
         {
             var d = GetTransUnits(fn);
 
@@ -439,7 +439,5 @@ Into A1 insert:
 
             // Nepřidávat znovu pokud již končí na postfix
         }
-
-
     }
 }

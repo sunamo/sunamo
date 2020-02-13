@@ -17,9 +17,6 @@ using System.Linq;
 
 public partial class FS
 {
-    
-    
-
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -238,8 +235,14 @@ public partial class FS
         return FS.Combine(outputFolder, FS.GetFileName(item));
     }
 
-    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty)
+    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty, bool isMultilineWithVariousIndent)
     {
+        if (isMultilineWithVariousIndent)
+        {
+            from = SH.ReplaceAllDoubleSpaceToSingle2(from);
+            to = SH.ReplaceAllDoubleSpaceToSingle2(to);
+        }
+
         if (pairLinesInFromAndTo)
         {
             var from2 = SH.Split(from, Environment.NewLine);
@@ -254,19 +257,19 @@ public partial class FS
             }
             ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
-            ReplaceInAllFiles(from2, to2, files);
+            ReplaceInAllFiles(from2, to2, files, isMultilineWithVariousIndent);
         }
         else
         {
-            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files);
+            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files, isMultilineWithVariousIndent);
         }
     }
 
-    public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo)
+    public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
         ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
-        ReplaceInAllFiles(replaceFrom, replaceTo, files);
+        ReplaceInAllFiles(replaceFrom, replaceTo, files, isMultilineWithVariousIndent);
     }
 
     /// <summary>
@@ -276,25 +279,19 @@ public partial class FS
     /// <param name="replaceTo"></param>
     /// <param name="files"></param>
     /// <param name="dontReplaceAll"></param>
-    public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files)
+    public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool isMultilineWithVariousIndent)
     {
         foreach (var item in files)
         {
             if (!EncodingHelper.isBinary(item))
             {
                 var content = TF.ReadFile(item);
-                if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
-                {
-                    for (int i = 0; i < replaceFrom.Count; i++)
-                    {
-                        content = content.Replace(replaceFrom[i], replaceTo[i]);
-                    }
-                    TF.SaveFile(content, item);
-                }
+                content = SH. ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent,  content);
+
+                TF.SaveFile(content, item);
             }
         }
     }
-
 
     /// <summary>
     /// Jen kvuli starým aplikacím, at furt nenahrazuji.

@@ -22,7 +22,7 @@ public partial class HtmlAssistant
     {
         var r = n.InnerText.Trim();
         r = HttpUtility.HtmlDecode(r);
-        r = SH.DoubleSpacesToSingle(r);
+        r = SH.ReplaceAllDoubleSpaceToSingle(r);
         return r;
     }
     public static List<string> SplitByTag(string input, string d)

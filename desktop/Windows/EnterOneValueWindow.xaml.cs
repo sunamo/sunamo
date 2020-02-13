@@ -16,7 +16,7 @@ namespace desktop
 {
     /// <summary>
     /// Select Value - more from selector
-    /// Enter value - single,  EnterOneValueUC - fwElemements 
+    /// EnterOneValueUC - single,  EnterOneValueUC - fwElemements 
     /// </summary>
     public partial class EnterOneValueWindow : Window
     {
@@ -41,7 +41,6 @@ namespace desktop
                 }
             }
         }
-
         private void EnterOneValueUC_ChangeDialogResult(bool? b)
         {
             // Close() + DialogResult = b - Dialog result can be only set when is show as the dialog

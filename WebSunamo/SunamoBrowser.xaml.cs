@@ -226,5 +226,10 @@ namespace WebSunamo
         {
             webControl.Focus();   
         }
+
+        HtmlDocument ISunamoBrowser<Control>.GetHtmlDocument()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

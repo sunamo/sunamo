@@ -19,6 +19,81 @@ using System.Windows;
 
 public static partial class SH
 {
+    public static string ConvertWhitespaceToVisible(string t)
+    {
+        t = t.Replace(AllChars.tab, UnicodeWhiteToVisible.tab);
+        t = t.Replace(AllChars.nl, UnicodeWhiteToVisible.newLine);
+        t = t.Replace(AllChars.cr, UnicodeWhiteToVisible.carriageReturn);
+        t = t.Replace(AllChars.space, UnicodeWhiteToVisible.space);
+        return t;
+    }
+    public static string ReplaceAll3(IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent, string content)
+    {
+
+        for (int i = 0; i < replaceFrom.Count; i++)
+        {
+            /*
+              Vše zaměnit na 1 mezeru
+              porovnat zaměněné a originál - namapovat co je mezi nimi
+
+            */
+
+            if (isMultilineWithVariousIndent)
+            {
+                var r = SH.SplitByWhiteSpaces(replaceFrom[i], true);
+
+                var contentOneSpace = SH.SplitByWhiteSpaces(content, true);
+
+                // get indexes
+                List<FromTo> equalRanges = CA.EqualRanges(contentOneSpace, r);
+
+                int startDx = equalRanges.First().from;
+                int endDx = equalRanges.Last().to;
+                
+
+                // všechny elementy z contentOneSpace namapované na content kde v něm začínají. 
+                // index z nt odkazuje na content
+                // proto musím vzít první a poslední index z equalRanges a k poslednímu přičíst contentOneSpace[last].Length
+                List<int> nt = new List<int>(contentOneSpace.Count());
+
+                int startFrom = 0;
+                foreach (var item2 in contentOneSpace)
+                {
+                    var dx = content.IndexOf(item2, startFrom);
+                    startFrom = dx + item2.Length;
+                    nt.Add(dx);
+                }
+
+                StringBuilder replaceWhat = new StringBuilder();
+                // Now I must iterate and add also white chars between
+                //foreach (var ft in equalRanges)
+                //{
+                //    // Musím vzít index z nt
+                //}
+
+                int add = contentOneSpace[endDx].Length; 
+                startDx = nt[startDx];
+                endDx = nt[endDx];
+                endDx += add;
+
+                var from2 = content.Substring(startDx, endDx-startDx);
+
+                content = content.Replace(from2, replaceTo[i]);
+            }
+            else
+            {
+                if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
+                {
+                    content = content.Replace(replaceFrom[i], replaceTo[i]);
+                }
+            }
+        }
+
+
+
+        return content;
+    }
+
     public static string ConcatSpace(IEnumerable r)
     {
         StringBuilder sb = new StringBuilder();
@@ -77,7 +152,7 @@ public static partial class SH
 
                     int s1C = s1.Length;
 
-                    if (s1C> maxChars)
+                    if (s1C > maxChars)
                     {
                         if (i > 1)
                         {
@@ -111,7 +186,7 @@ public static partial class SH
 
                                     DebugLogger.Instance.WriteLine("dx", dx);
                                     DebugLogger.Instance.WriteLine("alreadyProcessed", alreadyProcessed);
-                                    DebugLogger.Instance.WriteLine("dx-alreadyProcessed", dx-alreadyProcessed);
+                                    DebugLogger.Instance.WriteLine("dx-alreadyProcessed", dx - alreadyProcessed);
 
                                     if (dx > 1)
                                     {
@@ -126,9 +201,9 @@ public static partial class SH
                                     {
                                         DebugLogger.Instance.WriteLine("i", i);
                                     }
-                                    
 
-                                    
+
+
 
                                     s1 = s1.Substring(ddx);
 
@@ -146,10 +221,10 @@ public static partial class SH
                                         DebugLogger.Instance.WriteLine("afterC", afterC);
                                         DebugLogger.Instance.WriteLine("s1C", s1C);
                                     }
-                                    
+
                                     var ls = d[index];
 
-                                    
+
 
                                     if (d1)
                                     {
@@ -190,14 +265,14 @@ public static partial class SH
                     }
                     else
                     {
-                        
+
                         var ls = d[index];
-                        s1 = s1.Replace(ls.Last(), string.Empty).Trim() ;
+                        s1 = s1.Replace(ls.Last(), string.Empty).Trim();
                         if (s1 != string.Empty)
                         {
                             ls.AddOrSet(dx, s1);
                         }
-                        
+
 
                         break;
                     }
@@ -236,16 +311,16 @@ public static partial class SH
         }
     }
 
-        private static bool IsEndOfSentence(int dxDot, string s1, out string delimitingChars)
-        {
-            delimitingChars = null;
-            var s = s1.Substring(dxDot);
+    private static bool IsEndOfSentence(int dxDot, string s1, out string delimitingChars)
+    {
+        delimitingChars = null;
+        var s = s1.Substring(dxDot);
 
-            var c0 = s[0];
+        var c0 = s[0];
         char c1, c2;
         c1 = '@';
         c2 = '@';
-        
+
         if (s.Length > 1)
         {
             c1 = s[1];
@@ -265,21 +340,21 @@ public static partial class SH
             delimitingChars = s.Substring(1);
             Result = true;
         }
-             
 
-            if (c1 == AllChars.space && char.IsUpper(c2))
-            {
-                delimitingChars = SH.JoinChars(c0, c1, c2);
-                Result = true;
-            }
+
+        if (c1 == AllChars.space && char.IsUpper(c2))
+        {
+            delimitingChars = SH.JoinChars(c0, c1, c2);
+            Result = true;
+        }
         if (char.IsUpper(c1))
         {
-                delimitingChars = SH.JoinChars(c0, c1);
-                Result =  true;
-            }
-            return Result;
+            delimitingChars = SH.JoinChars(c0, c1);
+            Result = true;
         }
-    
+        return Result;
+    }
+
 
     public static string GetWhitespaceFromBeginning(StringBuilder sb, string line)
     {
@@ -592,7 +667,7 @@ public static partial class SH
         var str = SH.JoinNL(lines);
         var nl3 = SH.JoinTimes(3, Environment.NewLine);
         var nl2 = SH.JoinTimes(2, Environment.NewLine);
-            
+
 
         while (str.Contains(nl3))
         {
@@ -639,7 +714,7 @@ public static partial class SH
         string line = null;
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < lines.Count-1; i++)
+        for (int i = 0; i < lines.Count - 1; i++)
         {
             line = lines[i];
             if (line.Length > 0)
@@ -1605,7 +1680,7 @@ public static partial class SH
 
 
 
-  
+
 
     public static string GetLastWord(string p)
     {

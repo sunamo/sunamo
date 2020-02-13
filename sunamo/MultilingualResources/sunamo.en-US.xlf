@@ -14194,6 +14194,10 @@
           <source></source>
           <target state="translated">&lt;p&gt;&lt;i&gt;Nebyly nalezeny žádné waypointy&lt;/i&gt;&lt;/p&gt;</target>
         </trans-unit>
+        <trans-unit id="NavigationCompleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Navigation completed</target>
+        </trans-unit>
       </group>
     </body>
   </file>

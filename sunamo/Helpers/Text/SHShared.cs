@@ -881,6 +881,13 @@ public static partial class SH
         return vstup.Replace(co, zaCo);
     }
 
+    /// <summary>
+    /// If you want to replace multiline content with various indent use SH.ReplaceAllDoubleSpaceToSingle2 to every variable which you are passed
+    /// </summary>
+    /// <param name="vstup"></param>
+    /// <param name="zaCo"></param>
+    /// <param name="co"></param>
+    /// <returns></returns>
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
         //Stupid, zaCo can be null
@@ -2426,7 +2433,7 @@ public static partial class SH
         var result = lyricsFirstOriginal.Replace("\t", AllStrings.space).Replace("\r", AllStrings.space).Replace("\n", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
         if (replaceDoubleSpaceForSingle)
         {
-            result = SH.DoubleSpacesToSingle(result);
+            result = SH.ReplaceAllDoubleSpaceToSingle(result);
         }
         return result;
     }
@@ -2464,11 +2471,6 @@ public static partial class SH
             return true;
         }
         return false;
-    }
-
-    public static string DoubleSpacesToSingle(string v)
-    {
-        return SH.ReplaceAll2(v, AllStrings.space, AllStrings.doubleSpace);
     }
 
     /// <summary>

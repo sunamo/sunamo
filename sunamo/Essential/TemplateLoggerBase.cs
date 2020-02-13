@@ -47,6 +47,11 @@ namespace sunamo.Essential
         #endregion
 
         #region Information
+        public void InsertAsIndexesZeroBased()
+        {
+            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Insert as indexes (zero based)");
+        }
+
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
             _writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");

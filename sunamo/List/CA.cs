@@ -372,6 +372,59 @@ public static partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Return equal ranges of in A1  
+    /// </summary>
+    /// <param name="contentOneSpace"></param>
+    /// <param name="r"></param>
+    /// <returns></returns>
+    public static List<FromTo> EqualRanges<T>(List<T> contentOneSpace, List<T> r)
+    {
+        List<FromTo> result = new List<FromTo>();
+        int? dx = null;
+
+        for (int i = 0; i < contentOneSpace.Count; i++)
+        {
+            if (!dx.HasValue)
+            {
+
+                if (EqualityComparer<T>.Default.Equals(contentOneSpace[i], r[0]))
+                {
+                    dx = i+2;
+                }
+            }
+            else
+            {
+                if (r.Count > dx.Value)
+                {
+                    if (EqualityComparer<T>.Default.Equals(contentOneSpace[i], r[dx.Value]))
+                    {
+                        dx++;
+                    }
+                    else
+                    {
+                        dx = null;
+                        i--;
+                    }
+                }
+                else
+                {
+                    int dx2 = (int)dx ;
+                    result.Add(new FromTo(dx2 - r.Count + 1, dx2, false));
+                    dx = null;
+                }
+            }
+        }
+
+        foreach (var item in result)
+        {
+            item.from++;
+            item.to++;
+        }
+
+        return result;
+    }
+
 
     /// <summary>
     /// Is useful when want to wrap and also join with string. Also last element will have delimiter

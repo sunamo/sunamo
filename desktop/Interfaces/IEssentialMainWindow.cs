@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 /// <summary>
 /// IEssentialMainPage is in apps
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 /// </summary>
 public interface IEssentialMainWindow : IWindowOpener
 {
-        
-
+         UserControl actual { get; set; }
+        void SetMode(object mode);
     }
 

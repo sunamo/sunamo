@@ -66,7 +66,15 @@ public class Exceptions
         return null;
     }
 
-    
+    internal static object OutOfRange(string v, string colName, IEnumerable col, string indexName, int index)
+    {
+        if (col.Count() <= index)
+        {
+            return CheckBefore(v) + $"{index} (variable {indexName}) is out of range in {colName}";
+        }
+        return null;
+    }
+
     public static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
     {
         if (!en.ContainsKey(key))

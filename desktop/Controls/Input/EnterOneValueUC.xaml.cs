@@ -20,7 +20,7 @@ namespace desktop.Controls.Input
     /// <summary>
     /// Use for variable name always longer, enterOneValue instead of eov
     /// Select Value - more from selector
-    /// Enter value - single,  EnterOneValueUC - fwElemements 
+    /// EnterOneValueUC - single,  EnterOneValueUC - fwElemements 
     /// </summary>
     public partial class EnterOneValueUC : UserControl, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
@@ -117,7 +117,7 @@ namespace desktop.Controls.Input
         }
 
         /// <summary>
-        /// Title is take from Tag, which can be TWithName
+        /// TextBlock.Text is take from Tag, which can be TWithName<object>
         /// Tag can be TWithName<object> or any object and its value is set to TextBlock
         /// </summary>
         /// <param name="uie"></param>

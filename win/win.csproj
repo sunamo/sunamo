@@ -64,6 +64,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\win\PInvoke\ByDll\User32.cs" />
     <Compile Include="..\..\sunamo\win\ClipboardMonitor.cs" />
     <Compile Include="..\..\sunamo\win\Enums\UserFoldersWin.cs" />
     <Compile Include="..\..\sunamo\win\GitHelper.cs" />

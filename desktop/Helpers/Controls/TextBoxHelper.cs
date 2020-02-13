@@ -56,6 +56,7 @@ namespace desktop
             ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.imagePath", d.imagePath);
             ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.OnClick", d.OnClick);
 
+            txt.Width = 200;
             txt.Tag = d.tag;
             txt.ToolTip = d.tooltip;
             txt.Text = d.text;

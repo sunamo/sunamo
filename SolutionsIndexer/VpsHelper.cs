@@ -20,7 +20,6 @@ public class VpsHelper
     public static string path
     {
         get => VpsHelperSunamo.path;
-
     }
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();

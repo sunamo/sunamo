@@ -40,7 +40,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         }
     }
 
-    bool addDialogButtons = false;
+    WindowWithUserControlArgs args = null;
     IUserControlWithSizeChange userControlWithSizeChange = null;
     static Type type = typeof(WindowWithUserControl);
     StatusBar statusBar = null;
@@ -69,27 +69,35 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     }
 
     /// <summary>
-    /// A1 can be IControlWithResult, if have own buttons for accepting
+    /// A3 addDialogButtons only when uc dont have own button!
     /// </summary>
     /// <param name="iUserControlInWindow"></param>
     /// <param name="rm"></param>
     /// <param name="addDialogButtons"></param>
-    public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null)
+    /// <param name="tag"></param>
+    public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null) : this(new WindowWithUserControlArgs { iUserControlInWindow = iUserControlInWindow, addDialogButtons = addDialogButtons, tag = tag, rm = rm })
+    {}
+
+    /// <summary>
+    /// A1 can be IControlWithResult, if have own buttons for accepting
+    /// A1.addDialogButtons only when uc dont have own button!
+    /// </summary>
+    /// <param name="iUserControlInWindow"></param>
+    /// <param name="rm"></param>
+    /// <param name="addDialogButtons"></param>
+    public WindowWithUserControl(WindowWithUserControlArgs a)
     {
-        Tag = tag;
-        userControl = (UserControl)iUserControlInWindow;
+        Tag = a.tag;
+        userControl = (UserControl)a.iUserControlInWindow;
         this.uc = userControl as IUserControl;
         controlWithResultDebug = uc as IControlWithResultDebug;
         userControlWithSizeChange = uc as IUserControlWithSizeChange;
         controlWithResult = uc as IControlWithResult;
-
+        
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
-        
-        
-        
 
-        this.addDialogButtons = addDialogButtons;
+        args= a;
 
         dock = new DockPanel();
         dock.LastChildFill = true;
@@ -117,9 +125,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             miUc.UpdateLayout();
             menu.Items.Add(miUc);
         }
-
-        
-
         
         controlWithResult.ChangeDialogResult += ControlWithResult_ChangeDialogResult;
         isControlWithResultDebug = controlWithResultDebug != null;
@@ -141,7 +146,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         DockPanel.SetDock(statusBar, Dock.Bottom);
         dock.Children.Add(statusBar);
 
-        if (addDialogButtons)
+        if (args.addDialogButtons)
         {
             dialogButtons = new DialogButtons();
             dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
@@ -149,7 +154,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             dock.Children.Add(dialogButtons);
         }
 
-        this.ResizeMode = rm;
+        this.ResizeMode = a.rm;
         // Původně bylo WidthAndHeight
         this.SizeToContent = System.Windows.SizeToContent.Manual;
         //this.MaxWidth = System.Windows.SystemParameters.PrimaryScreenWidth * 0.75d;
@@ -169,7 +174,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     private void ControlWithResult_ChangeDialogResult(bool? b)
     {
-        DialogResult = b;
+        UserControlWithResult_ChangeDialogResult(b);
     }
 
     private void WindowWithUserControl_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -244,10 +249,16 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         }
         else
         {
+            if (args.useResultOfShowDialog)
+            {
+                base.DialogResult = b;
+            }
+
             // Otherwise close here
             Close();
         }
     }
+
     private void UserControlWithResult_ChangeDialogResult(bool? b)
     {
         if (userControl is CheckBoxListUC )
@@ -287,8 +298,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
             if (dialogButtons.clickedOk)
             {
-
-
                 uc_ChangeDialogResult(b);
             }
         }
@@ -302,7 +311,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     private void WindowWithUserControl_Loaded(object sender, RoutedEventArgs e)
     {
-
+        //
     }
 
     private void AddUC()
@@ -329,10 +338,16 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             userControlWithResult.FocusOnMainElement();
         }
 
-        if (addDialogButtons)
+        /* Is not only when addDialogButtons, in case of Lb_AddCompilerRulesToRuleset I attach ChangeDialogResult for 
+         * both IControlWithResult and IControlWithResultDebug
+         */
+        //if (addDialogButtons)
+        //{
+        if (userControlWithResult != null)
         {
-            if (userControlWithResult != null)
+            if (!args.useResultOfShowDialog)
             {
+
                 // IF USER CONTROL HAVE OWN ChangeDialogResult, MUST USE ALWAYS IT
                 // In CheckBoxListUC must handle whether at least one is selected
                 if (uc.GetType() != CheckBoxListUC.type)
@@ -341,8 +356,9 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
                     userControlWithResult.ChangeDialogResult -= UserControlWithResult_ChangeDialogResult;
                 }
             }
-
         }
+
+        //}
 
         Activate();
 

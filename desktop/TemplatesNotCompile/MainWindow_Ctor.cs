@@ -12,7 +12,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     Mode mode = Mode.Empty;
     EmptyUC emptyUC = null;
     LogUC logUC = null;
-    UserControl actual = new UserControl();
+    UserControl _actual = new UserControl(); public UserControl actual { get => _actual; set => _actual = value; }
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     IUserControlClosing userControlClosing;
@@ -23,6 +23,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     public ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
 
     #region MyRegion
+    MenuItem miGenerateScreenshot = null;
     MenuItem miAlwaysOnTop = null;
     Grid grid;
     MenuItem miUC;
@@ -37,7 +38,6 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
 
     public bool CancelClosing { get; set; }
     public WindowWithUserControl windowWithUserControl { get; set; }
-    
 
     public MainWindow_Ctor()
     {
@@ -180,6 +180,11 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 9) Set up UI of app
+        miGenerateScreenshot.Header = "Generate screenshot";miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual;if (!RuntimeHelper.IsAdminUser())
+        {
+            miGenerateScreenshot.Visibility = Visibility.Collapsed;
+        }
+
         SetAwesomeIcons();
         #endregion
 
@@ -246,8 +251,10 @@ protected override void OnSourceInitialized(EventArgs e)
         return new ConfigurableWindow.Shared.WindowConfigSettings(this, data);
     }
 
-    private void SetMode(Mode mode)
+    public void SetMode(object mode2)
     {
+
+        var mode = EnumHelper.Parse<Mode>(mode2.ToString(), Mode.Empty);
         if (userControlClosing != null)
         {
             userControlClosing.OnClosing();

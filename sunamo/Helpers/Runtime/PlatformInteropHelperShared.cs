@@ -63,7 +63,7 @@ public partial class PlatformInteropHelper{
 
 public static Type GetTypeOfResources()
     {
-        return typeof(ResourcesDuo);
+        return typeof(Resources.ResourcesDuo_DontUse);
     //if (IsUseStandardProject())
     //{
     //    return typeof(standard.ResourcesStandard);
