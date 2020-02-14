@@ -23,7 +23,7 @@ public class VpsHelper
     }
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
-    static List<string> list = CA.ToListString("ConsoleApp1", "Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "SqlCodeSnippets", "standard.notmine", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.teamwork.web", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
+    public static readonly List<string> list = CA.ToListString("ConsoleApp1", "Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "SqlCodeSnippets", "standard.notmine", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.teamwork.web", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
 
     public static void PushAll()
     {
@@ -72,9 +72,11 @@ public class VpsHelper
         }
     }
 
-    public static string PullAll()
+    public static string pullAllResult = null;
+
+    public static void PullAll()
     {
-        string result = null;
+        
 
         if (IsVps)
         {
@@ -87,7 +89,7 @@ public class VpsHelper
                 gitBashBuilder.Pull();
             }
 
-            result = gitBashBuilder.ToString();
+            pullAllResult = gitBashBuilder.ToString();
         }
         else
         {
@@ -102,10 +104,10 @@ public class VpsHelper
                 gitBashBuilder.Pull();
             }
 
-            result = gitBashBuilder.ToString();
+            pullAllResult = gitBashBuilder.ToString();
         }
-        ClipboardHelper.SetText(result);
-        return result;
+        ClipboardHelper.SetText(pullAllResult);
+        //return result;
     }
 }
 

@@ -19,7 +19,12 @@ public partial class MSColumnsDB : List<MSSloupecDB>
     {
         foreach (var item in this)
         {
-            dict.Add(item.Name.Trim(), item);
+            var key = item.Name.Trim();
+            if (!dict.ContainsKey(key))
+            {
+                dict.Add(key, item); 
+            }
+            
         }
     }
 

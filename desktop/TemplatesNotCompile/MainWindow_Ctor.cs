@@ -90,8 +90,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 2) Initialize logging
 #if DEBUG
         sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.DebugTemplateLogger.Instance;
-        sunamo.Essential.InitApp.Logger = //DebugLogger.Instance;
-        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.Typed//DebugLogger.Instance;
+        sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
+        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
 #else
         //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
         // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;

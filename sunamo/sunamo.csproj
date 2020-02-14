@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\TextFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />

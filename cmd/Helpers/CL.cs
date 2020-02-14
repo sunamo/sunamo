@@ -16,34 +16,17 @@ public static partial class CL{
     {
     }
 
-    /// <summary>
-    /// Return null when user force stop 
-    /// </summary>
-    /// <param name = "what"></param>
-    /// <param name = "textFormat"></param>
-    /// <returns></returns>
-    public static string UserMustTypeInFormat(string what, TextFormatData textFormat)
-    {
-        string entered = "";
-        while (true)
-        {
-            entered = UserMustType(what);
-            if (entered == null)
-            {
-                return null;
-            }
+    
 
-            if (SH.HasTextRightFormat(entered, textFormat))
+    private static void AddToAllActions(string v, Dictionary<string, VoidVoid> actions, Dictionary<string, VoidVoid> allActions)
+    {
+        foreach (var item in actions)
+        {
+            if (item.Key != "None")
             {
-                return entered;
-            }
-            else
-            {
-                ConsoleTemplateLogger.Instance.UnfortunatelyBadFormatPleaseTryAgain();
+                allActions.Add(v + AllStrings.swd + item.Key, item.Value);
             }
         }
-
-        return null;
     }
 
     public static void PressEnterAfterInsertDataToClipboard(string what)

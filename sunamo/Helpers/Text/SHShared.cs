@@ -3201,4 +3201,125 @@ public static string ReplaceAllDoubleSpaceToSingle(string arg)
 
         return arg;
     }
+
+public static bool HasTextRightFormat(string r, TextFormatData tfd)
+    {
+        if (tfd.trimBefore)
+        {
+            r = r.Trim();
+        }
+
+        int partsCount = tfd.Count;
+
+        int actualCharFormatData = 0;
+        CharFormatData actualFormatData = tfd[actualCharFormatData];
+        CharFormatData followingFormatData = tfd[actualCharFormatData + 1];
+        //int charCount = r.Length;
+        //if (tfd.requiredLength != -1)
+        //{
+        //    if (r.Length != tfd.requiredLength)
+        //    {
+        //        return false;
+        //    }
+        //    charCount = Math.Min(r.Length, tfd.requiredLength);
+        //}
+        int actualChar = 0;
+        int processed = 0;
+        int from = actualFormatData.fromTo.from;
+        int remains = actualFormatData.fromTo.to;
+        int tfdCountM1 = tfd.Count - 1;
+
+        while (true)
+        {
+            bool canBeAnyChar = CA.IsEmptyOrNull(actualFormatData.mustBe);
+            bool isRightChar = false;
+            if (canBeAnyChar)
+            {
+                isRightChar = true;
+                remains--;
+            }
+            else
+            {
+                if (!CA.HasIndex(actualChar, r))
+                {
+                    return false;
+                }
+                isRightChar = CA.IsEqualToAnyElement<char>(r[actualChar], actualFormatData.mustBe);
+                if (isRightChar && !canBeAnyChar)
+                {
+                    actualChar++;
+                    processed++;
+                    remains--;
+                }
+            }
+
+            if (!isRightChar)
+            {
+                if (!CA.HasIndex(actualChar, r))
+                {
+                    return false;
+                }
+                isRightChar = CA.IsEqualToAnyElement<char>(r[actualChar], followingFormatData.mustBe);
+                if (!isRightChar)
+                {
+                    return false;
+                }
+                if (remains != 0 && processed < from)
+                {
+                    return false;
+                }
+                if (isRightChar && !canBeAnyChar)
+                {
+                    actualCharFormatData++;
+                    processed++;
+                    actualChar++;
+
+                    if (!CA.HasIndex(actualCharFormatData, tfd) && r.Length > actualChar)
+                    {
+                        return false;
+                    }
+
+                    actualFormatData = tfd[actualCharFormatData];
+                    if (CA.HasIndex(actualCharFormatData + 1, tfd))
+                    {
+                        followingFormatData = tfd[actualCharFormatData + 1];
+                    }
+                    else
+                    {
+                        followingFormatData = CharFormatData.Templates.Any;
+                    }
+
+                    processed = 0;
+                    remains = actualFormatData.fromTo.to;
+                    remains--;
+                }
+            }
+
+            if (remains == 0)
+            {
+                ++actualCharFormatData;
+                if (!CA.HasIndex(actualCharFormatData, tfd) && r.Length > actualChar)
+                {
+                    return false;
+                }
+                actualFormatData = tfd[actualCharFormatData];
+                if (CA.HasIndex(actualCharFormatData + 1, tfd))
+                {
+                    followingFormatData = tfd[actualCharFormatData + 1];
+                }
+                else
+                {
+                    followingFormatData = CharFormatData.Templates.Any;
+                }
+
+                processed = 0;
+                remains = actualFormatData.fromTo.to;
+            }
+
+            //if (actualCharFormatData == tfdCountM1 && isRightChar && actualChar )
+            //{
+            //    break;
+            //}
+        }
+    }
 }

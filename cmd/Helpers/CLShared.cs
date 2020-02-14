@@ -12,7 +12,7 @@ using System.Linq;
 
 public static partial class CL
 {
-    
+    public static bool perform = true;
 
     public static void PerformAction(Dictionary<string, VoidVoid> actions)
     {
@@ -337,5 +337,143 @@ public static void OperationWasStopped()
         Console.SetCursorPosition(leftCursor, Console.CursorTop);
         Console.Write(new string(AllChars.space, Console.WindowWidth + leftCursorAdd));
         Console.SetCursorPosition(leftCursor, currentLineCursor);
+    }
+
+/// <summary>
+    /// First I must ask which is always from console - must prepare user to load data to clipboard. 
+    /// </summary>
+    /// <param name="format"></param>
+    /// <param name="textFormat"></param>
+    /// <returns></returns>
+    public static string LoadFromClipboardOrConsoleInFormat(string format, TextFormatData textFormat)
+    {
+        string s = null;
+
+        if (!CmdApp.loadFromClipboard)
+        {
+            s = CL.UserMustTypeInFormat(format, textFormat);
+        }
+        else
+        {
+            s = ClipboardHelper.GetText();
+        }
+
+        return s;
+    }
+
+/// <summary>
+    /// Will ask before getting data
+    /// First I must ask which is always from console - must prepare user to load data to clipboard. 
+    /// </summary>
+    /// <param name="what"></param>
+    /// <returns></returns>
+    public static string LoadFromClipboardOrConsole(string what)
+    {
+        string imageFile = @"";
+
+        if (!CmdApp.loadFromClipboard)
+        {
+            imageFile = CL.UserMustType(what);
+        }
+        else
+        {
+            Console.WriteLine("Press enter when data will be in clipboard");
+            Console.ReadLine();
+            imageFile = ClipboardHelper.GetText();
+        }
+
+        return imageFile;
+    }
+
+public static void AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions)
+    {
+        if (askUser)
+        {
+            //repair, I have 168-0-143-16 but always bad format
+            //168-0-143-16
+
+            bool? loadFromClipboard = false;
+            loadFromClipboard = CL.UserMustTypeYesNo("Do you want load data only from clipboard");
+
+            CmdApp.loadFromClipboard = loadFromClipboard.Value;
+
+            Console.WriteLine(loadFromClipboard.Value);
+
+            if (loadFromClipboard.HasValue)
+            {
+                var whatUserNeed = "format";
+                whatUserNeed = CL.UserMustType("you need or enter -1 for select from all groups");
+
+                Dictionary<string, VoidVoid> groupsOfActions = AddGroupOfActions();
+
+                if (whatUserNeed == "-1")
+                {
+
+
+                    CL.PerformAction(groupsOfActions);
+                }
+                else
+                {
+                    perform = false;
+                    AddGroupOfActions();
+
+                    foreach (var item in groupsOfActions)
+                    {
+                        item.Value.Invoke();
+                    }
+
+                    Dictionary<string, VoidVoid> potentiallyValid = new Dictionary<string, VoidVoid>();
+                    foreach (var item in allActions)
+                    {
+
+                        if (SH.Contains(item.Key, whatUserNeed, SearchStrategy.AnySpaces, false))
+                        {
+                            potentiallyValid.Add(item.Key, item.Value);
+                        }
+                    }
+
+                    if (potentiallyValid.Count == 0)
+                    {
+                        ThisApp.SetStatus(TypeOfMessage.Information, "No action was found");
+                    }
+                    else
+                    {
+                        CL.PerformAction(potentiallyValid);
+                    }
+
+
+                }
+            }
+        }
+    }
+
+/// <summary>
+    /// Return null when user force stop 
+    /// </summary>
+    /// <param name = "what"></param>
+    /// <param name = "textFormat"></param>
+    /// <returns></returns>
+    public static string UserMustTypeInFormat(string what, TextFormatData textFormat)
+    {
+        string entered = "";
+        while (true)
+        {
+            entered = UserMustType(what);
+            if (entered == null)
+            {
+                return null;
+            }
+
+            if (SH.HasTextRightFormat(entered, textFormat))
+            {
+                return entered;
+            }
+            else
+            {
+                ConsoleTemplateLogger.Instance.UnfortunatelyBadFormatPleaseTryAgain();
+            }
+        }
+
+        return null;
     }
 }
