@@ -89,9 +89,9 @@ public partial class SqlServerHelper
         }
 
 #if DEBUG
-        //DebugLogger.DebugWriteLine("SQL: " + sql);
-        //DebugLogger.DebugWriteLine("Table: {0}, Column: {1}", table, column);
-        //DebugLogger.DebugWriteLine("---");
+        ////DebugLogger.DebugWriteLine("SQL: " + sql);
+        ////DebugLogger.DebugWriteLine("Table: {0}, Column: {1}", table, column);
+        ////DebugLogger.DebugWriteLine("---");
 #endif
 
         //column = column.Trim();

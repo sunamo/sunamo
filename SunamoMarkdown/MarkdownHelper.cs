@@ -35,9 +35,9 @@ namespace SunamoMarkdown
 
             input = hd.DocumentNode.OuterHtml;
 
-            input = ReplacePairTag(input, "bold", "*");
-            input = ReplacePairTag(input, "strong", "*");
-            input = ReplacePairTag(input, "b", "*");
+            input = ReplacePairTag(input, "bold", "**");
+            input = ReplacePairTag(input, "strong", "**");
+            input = ReplacePairTag(input, "b", "**");
             input = ReplacePairTag(input, "i", "_");
             input = ReplacePairTag(input, "strike", "-");
             input = HtmlHelper.StripAllTags(input);
@@ -54,9 +54,12 @@ namespace SunamoMarkdown
             return input;
         }
 
-        private static string ReplacePairTag(string input, string v1, string v2)
+        public static string ReplacePairTag(string input, string tag, string forWhat)
         {
-            return HtmlHelperText.ReplacePairTag(input, v1, v2);
+            input = input.Replace("<" + tag + ">",  forWhat );
+            input = input.Replace("<" + tag + " ", forWhat );
+            input = input.Replace("</" + tag + ">", forWhat );
+            return input;
         }
     }
 }

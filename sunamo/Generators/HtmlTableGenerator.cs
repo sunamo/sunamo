@@ -6,16 +6,17 @@ namespace sunamo.Generators
 {
     public class HtmlTableGenerator : HtmlGenerator
     {
+        static Type type = typeof(HtmlTableGenerator);
         public HtmlGeneratorExtended extended = new HtmlGeneratorExtended();
 
         public void StartTable(object p)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public void EndTr()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public void WriteRow(string additionalQuestionCssClass, List<string> possibleAnswersAll)
@@ -47,17 +48,17 @@ namespace sunamo.Generators
 
         public void EndTd()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public void StartTr(string mainQuestionsCssClass)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public void StartTd(object p)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
     }
 }

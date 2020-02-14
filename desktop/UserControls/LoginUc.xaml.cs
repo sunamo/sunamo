@@ -20,7 +20,7 @@ namespace desktop
     /// <summary>
     /// Interaction logic for DialogLogin2.xaml
     /// </summary>
-    public partial class LoginUc : UserControl, IControlWithResult
+    public partial class LoginUc : UserControl, IControlWithResult, IKeysHandler
     {
         bool publicSaveLogic = false;
         const string h = "h";
@@ -106,6 +106,11 @@ namespace desktop
             txtHeslo.Text = ld.Pw;
             // Cant be, window must be already showned as dialog
             //DialogResult = true;
+        }
+
+        public bool HandleKey(KeyEventArgs e)
+        {
+            return false;
         }
 
         public event VoidBoolNullable ChangeDialogResult;

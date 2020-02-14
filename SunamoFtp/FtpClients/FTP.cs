@@ -268,7 +268,7 @@ namespace SunamoFtp
                 else if (fz == 'd')
                 {
                     string folderName = SH.JoinFromIndex(8, AllChars.space, SH.Split(item, AllStrings.space));
-                    //DebugLogger.Instance.WriteLine("Název alba22: " + folderName);
+                    ////DebugLogger.Instance.WriteLine("Název alba22: " + folderName);
                     if (!FtpHelper.IsThisOrUp(folderName))
                     {
                         if (vr.ContainsKey(actualPath))
@@ -1580,7 +1580,7 @@ namespace SunamoFtp
                 {
                     DeleteRecursively(slozkyNeuploadovatAVS, fn, i, td);
                 }
-                ////DebugLogger.Instance.WriteLine(item2);
+                //////DebugLogger.Instance.WriteLine(item2);
             }
             goToUpFolderForce();
             rmdir(slozkyNeuploadovatAVS, dirName);

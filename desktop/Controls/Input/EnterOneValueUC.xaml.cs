@@ -44,6 +44,8 @@ namespace desktop.Controls.Input
             InitializeComponent();
 
             fwElemements = CA.ToList<FrameworkElement>(txtEnteredText);
+
+            Loaded += uc_Loaded;
         }
 
         public EnterOneValueUC(string whatEnter, Size size) : this()
@@ -95,7 +97,7 @@ namespace desktop.Controls.Input
         private void PrintColumnsRows(Grid grid2)
         {
 #if DEBUG
-            DebugLogger.Instance.WriteLine(grid2.ColumnDefinitions.Count + "x" + grid2.RowDefinitions.Count);
+            ////DebugLogger.Instance.WriteLine(grid2.ColumnDefinitions.Count + "x" + grid2.RowDefinitions.Count);
 #endif
         }
 
@@ -303,6 +305,11 @@ namespace desktop.Controls.Input
         public void FocusOnMainElement()
         {
             txtEnteredText.Focus();
+        }
+
+        public void uc_Loaded(object sender, RoutedEventArgs e)
+        {
+            //ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public event VoidBoolNullable ChangeDialogResult;

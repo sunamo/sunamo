@@ -1,21 +1,25 @@
 ﻿using ConfigurableWindow.Shared;
 using desktop.AwesomeFont;
 using desktop.UserControls;
+using sunamo;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
-public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
+public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfigurableWindow
 {
-    Mode mode = Mode.Empty;
+    static Type type = typeof(MainWindow_Ctor);
+    Mode mode = Mode.Empty; public string ModeString { get => mode.ToString(); }
     EmptyUC emptyUC = null;
     LogUC logUC = null;
     UserControl _actual = new UserControl(); public UserControl actual { get => _actual; set => _actual = value; }
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
     IUserControlClosing userControlClosing;
+    IKeysHandler keysHandler;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
     dynamic Instance = null;
 
@@ -27,7 +31,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     MenuItem miAlwaysOnTop = null;
     Grid grid;
     MenuItem miUC;
-    
+
     #region Implicitly in Window
     dynamic Dispatcher = null;
     TextBlock tbLastErrorOrWarning;
@@ -86,8 +90,8 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #region 2) Initialize logging
 #if DEBUG
         sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.DebugTemplateLogger.Instance;
-        sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
-        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
+        sunamo.Essential.InitApp.Logger = //DebugLogger.Instance;
+        sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.Typed//DebugLogger.Instance;
 #else
         //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
         // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
@@ -156,7 +160,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 6) Attach handlers
-
+        PreviewKeyDown += MainWindow_PreviewKeyDown;
         #endregion
 
         #region 7) Notify icon
@@ -180,7 +184,7 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #endregion
 
         #region 9) Set up UI of app
-        miGenerateScreenshot.Header = "Generate screenshot";miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual;if (!RuntimeHelper.IsAdminUser())
+        miGenerateScreenshot.Header = "Generate screenshot"; miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {
             miGenerateScreenshot.Visibility = Visibility.Collapsed;
         }
@@ -191,6 +195,27 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
         #region 10) Login, Load data
 
         #endregion
+    }
+
+    private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (keysHandler != null)
+        {
+            if (keysHandler.HandleKey(e))
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.PrintScreen)
+            {
+                actual.MakeScreenshot();
+            }
+            else
+            {
+
+            }
+
+
+        }
     }
 
     void MiAlwaysOnTop_Click(object sender, RoutedEventArgs e)
@@ -210,22 +235,22 @@ public class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray, IConfi
     }
 
     // Only for working with notify, but always insert block with userControlClosing
-//    protected override void OnClosing(CancelEventArgs e)
-//    {
-//#if !DEBUG
-//        e.Cancel = GetCancelClosing();
-//        WindowState = WindowState.Minimized;
-//#endif
-//        CheckMenuItemTopMost();
+    //    protected override void OnClosing(CancelEventArgs e)
+    //    {
+    //#if !DEBUG
+    //        e.Cancel = GetCancelClosing();
+    //        WindowState = WindowState.Minimized;
+    //#endif
+    //        CheckMenuItemTopMost();
 
-        //if (userControlClosing != null)
-        //    {
-        //        userControlClosing.OnClosing();
-        //    }
+    //if (userControlClosing != null)
+    //    {
+    //        userControlClosing.OnClosing();
+    //    }
 
-//        base.OnClosing(e);
-//    }
-protected override void OnSourceInitialized(EventArgs e)
+    //        base.OnClosing(e);
+    //    }
+    protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
 
@@ -304,6 +329,9 @@ protected override void OnSourceInitialized(EventArgs e)
 
         userControlWithMenuItems = actual as IUserControlWithMenuItemsList;
         userControlClosing = actual as IUserControlClosing;
+        keysHandler = actual as IKeysHandler;
+        ThrowExceptions.WasNotKeysHandler(type, RH.CallingMethod(), userControl.Title, keysHandler);
+
 
         #region On start I have to unregister
         previouslyRegisteredMenuItems.ForEach(menuItem => miUC.Items.Remove(menuItem));
@@ -345,10 +373,10 @@ protected override void OnSourceInitialized(EventArgs e)
 
     public bool GetCancelClosing()
     {
-if (CancelClosing)
-            {
-                Hide();
-            }
+        if (CancelClosing)
+        {
+            Hide();
+        }
         return CancelClosing;
     }
 
@@ -357,15 +385,5 @@ if (CancelClosing)
         CancelClosing = b;
     }
 
-    enum Mode
-    {
-        // Empty First mode in every app
-        Empty,
-
-        // Then Modes of app
-
-        // then shared UC for every app
-        LogUC,
-        CheckBoxListMode
-    }
+    
 }

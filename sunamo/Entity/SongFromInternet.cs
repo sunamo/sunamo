@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿ using System.Collections.Generic;
 using System.Text;
 using System;
 using System.Linq;
 using sunamo.Values;
+using System.Diagnostics;
 
 namespace sunamo
 {
@@ -148,6 +149,19 @@ namespace sunamo
             _remixS = RemixInConvention();
         }
 
+        
+
+        /// <summary>
+        /// Replace without feat etc
+        /// </summary>
+        public string RemixOnlyContent()
+        {
+            var r = Remix();
+            r = CA.ReplaceAll(r, AllLists.featLower, string.Empty);
+            r = CA.ReplaceAll(r, AllLists.featUpper, string.Empty);
+            return r;
+        }
+
         /// <summary>
         /// Porovnává s ohledem na diakritiku
         /// </summary>
@@ -164,11 +178,10 @@ namespace sunamo
             float n, t, r;
             if (woDiacritic)
             {
-
                 int psn, prn, pst, prt, psr, prr;
-                VratPocetStejnychARozdilnych(s.nazev, this.nazevWoDiacritic, out psn, out prn);
-                VratPocetStejnychARozdilnych(s.title, this.titleWoDiacritic, out pst, out prt);
-                VratPocetStejnychARozdilnych(s.remix, this.remixWoDiacritic, out psr, out prr);
+                VratPocetStejnychARozdilnych(s.nazevWoDiacritic, this.nazevWoDiacritic, out psn, out prn);
+                VratPocetStejnychARozdilnych(s.titleWoDiacritic, this.titleWoDiacritic, out pst, out prt);
+                VratPocetStejnychARozdilnych(s.remixWoDiacritic, this.remixWoDiacritic, out psr, out prr);
 
                 n = CalculateSimilarity(psn, prn, s.nazev, this.nazevWoDiacritic);
                 t = CalculateSimilarity(pst, prt, s.title, this.titleWoDiacritic);
@@ -192,17 +205,6 @@ namespace sunamo
                 vr = (n + t + r) / 3;
             }
             return vr;
-        }
-
-        /// <summary>
-        /// Replace without feat etc
-        /// </summary>
-        public string RemixOnlyContent()
-        {
-            var r = Remix();
-            r = CA.ReplaceAll(r, AllLists.featLower, string.Empty);
-            r = CA.ReplaceAll(r, AllLists.featUpper, string.Empty);
-            return r;
         }
 
         /// <summary>
@@ -292,6 +294,52 @@ namespace sunamo
 
         }
 
+        public  float CalculateSimilarityAll(SongFromInternet s, bool woDiacritic, float minimal)
+        {
+            var _this = this;
+
+            var result = CalculateSimilarity(s, woDiacritic);
+            float result2 = 0;
+            bool _continue = true;
+            if (minimal <= result)
+            {
+                _continue = false;
+            }
+            List<string> feats = null;
+            if (_continue)
+            {
+                var song = s.TitleC;
+                feats = s.AlternateArtists();
+                foreach (var item in feats)
+                {
+                    s = new SongFromInternet(item + AllStrings.dash + song);
+                    result2 = CalculateSimilarity(s, true);
+
+                    if (breakInCalculateSimilarity)
+                    {
+                        Debugger.Break();
+                    }
+
+                    if (result2 > result)
+                    {
+                        result = result2;
+                    }
+                    if (minimal <= result)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (breakInCalculateSimilarity)
+            {
+                Debugger.Break();
+            }
+
+            return result;
+            
+        }
+        public static bool breakInCalculateSimilarity = false;
         public string Artist()
         {
             return SH.JoinSpace(nazev);
@@ -413,7 +461,7 @@ namespace sunamo
         public List<string> AlternateArtists()
         {
             var remix = Remix();
-            remix = SH.ReplaceAll(remix, "", 
+            remix = SH.ReplaceAll(remix, "Ft", "ft", 
                 "Feat", "feat");
             remix = remix.Trim(AllChars.dot);
             remix = remix.Trim();

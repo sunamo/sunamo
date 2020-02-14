@@ -30,7 +30,7 @@ public class LimitedTimer
         
         if (pocet == odbylo)
         {
-            ////DebugLogger.Instance.WriteLine(pocet.ToString());
+            //////DebugLogger.Instance.WriteLine(pocet.ToString());
             t.Stop();
         }
     }

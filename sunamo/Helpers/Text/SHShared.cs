@@ -965,7 +965,7 @@ public static partial class SH
         for (int Index = 0; Index < (vcem.Length - co.Length) + 1; Index++)
         {
             var subs = vcem.Substring(Index, co.Length);
-            ////DebugLogger.Instance.WriteLine(subs);
+            //////DebugLogger.Instance.WriteLine(subs);
             // non-breaking space. &nbsp; code 160
             // 32 space
             char ch = subs[0];
@@ -1557,7 +1557,6 @@ public static partial class SH
         return nazevPP[0].ToString().ToLower() + sb;
     }
 
-    #region MyRegion
 
     
     /// <summary>
@@ -1645,7 +1644,6 @@ public static partial class SH
     {
         return SH.JoinString(Environment.NewLine, parts);
     }
-    #endregion
 
     public static string JoinPairs(params object[] parts)
     {
@@ -3191,5 +3189,16 @@ public static string PrefixIfNotStartedWith( string item, string http)
     {
         resultStatus = resultStatus.Replace(what, forWhat);
         return resultStatus;
+    }
+
+public static string ReplaceAllDoubleSpaceToSingle(string arg)
+    {
+        while (arg.Contains(AllStrings.doubleSpace))
+        {
+            arg = SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
+        }
+
+
+        return arg;
     }
 }

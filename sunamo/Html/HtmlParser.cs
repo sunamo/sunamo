@@ -237,7 +237,7 @@ public class HtmlDocument2
     /// <returns></returns>
     public List<HtmlNode> ReturnTags(HtmlNode api_reference)
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     public List<HtmlNode> TrimTexts(List<HtmlNode> c2)

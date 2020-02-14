@@ -39,7 +39,13 @@ namespace AllProjectsSearch
         /// Csproj are available to get with APSH.GetCsprojs()
         /// </summary>
         public List<string> projects = new List<string>();
+        /// <summary>
+        /// In format solution name\project name\module name
+        /// </summary>
         public List<string> modulesSelling = new List<string>();
+        /// <summary>
+        /// In format solution name\project name\module name
+        /// </summary>
         public List<string> modulesNotSelling = new List<string>();
 
         public string nameSolutionWithoutDiacritic = "";

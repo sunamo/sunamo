@@ -7,6 +7,8 @@ namespace sunamo
 {
     public class ComparerRowsByColumn : IComparer<List<string>>
     {
+        static Type type = typeof(ComparerRowsByColumn);
+
         private int _indexSloupceKterySeradit;
         private char _znakOddelovaci;
         private int _maximalniDelkaSloupce;
@@ -20,7 +22,8 @@ namespace sunamo
 
         public int Compare(List<string> x, List<string> y)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+            return int.MinValue;
         }
     }
 }

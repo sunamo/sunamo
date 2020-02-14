@@ -29,7 +29,7 @@ namespace desktop.Controls.Collections
     /// No one in ListBox/ListView
     /// </summary>
     public partial class CheckBoxListUC : UserControl
-        , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl
+        , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl, IKeysHandler
     {
         public static Type type = typeof(CheckBoxListUC);
         #region IControlWithResult implementation
@@ -88,13 +88,10 @@ namespace desktop.Controls.Collections
         {
             InitializeComponent();
 
-            Loaded += CheckBoxListUC_Loaded;
+            Loaded += uc_Loaded;
         }
 
-        private void CheckBoxListUC_Loaded(object sender, RoutedEventArgs e)
-        {
-            //OnSizeChanged(new DesktopSize(ActualWidth, ActualHeight));
-        }
+       
 
         /// <summary>
         /// A2 can be null
@@ -411,16 +408,19 @@ namespace desktop.Controls.Collections
             {
                 var firstButton = colButtons.HeightOfFirstVisibleButton();
                 var h = s.Height - firstButton;
-                //r0.Height = new GridLength(h);
-                lb.Height = lb.MaxHeight = lb.MinHeight = h;
-                //lb.InvalidateVisual();
-                //lb.Invali
+                if (h >= 0)
+                {
+                    //r0.Height = new GridLength(h);
+                    lb.Height = lb.MaxHeight = lb.MinHeight = h;
+                    //lb.InvalidateVisual();
+                    //lb.Invali
 
-                lb.UpdateLayout();
+                    lb.UpdateLayout();
 
-                ////DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
+                    ////////DebugLogger.Instance.WriteArgs("Height", h, "First button", firstButton, "sp", colButtons.sp.ActualHeight, "colButtons", colButtons.ActualHeight);
 
-                ThisApp.SetStatus(TypeOfMessage.Appeal, SH.Join(" , ", h, lb.ActualHeight.ToString(), lb.Height));
+                    ThisApp.SetStatus(TypeOfMessage.Appeal, SH.Join(" , ", h, lb.ActualHeight.ToString(), lb.Height));
+                }
             }
         }
 
@@ -443,7 +443,15 @@ namespace desktop.Controls.Collections
             RuntimeHelper.AttachChangeDialogResult(this, a, throwException);
         }
 
-        
+        public void uc_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public bool HandleKey(KeyEventArgs e)
+        {
+            return false;
+        }
     }
 
     public class CheckBoxListOperations

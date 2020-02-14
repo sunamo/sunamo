@@ -673,7 +673,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         //foreach (SqlParameter item in comm.Parameters)
         //{
-        //    DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
+        //    //DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
         //}
     }
 

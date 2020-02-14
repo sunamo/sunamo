@@ -200,7 +200,7 @@ public static partial class HtmlHelper
 
     public static List<HtmlNode> ReturnAllTagsWithAttr(HtmlNode table, string v1, string v2, string v3)
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     /// <summary>

@@ -150,6 +150,6 @@ using System.Data.SQLite;
 
         public SQLiteCommand DeleteTableIfExists(string nazevTabulky)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }

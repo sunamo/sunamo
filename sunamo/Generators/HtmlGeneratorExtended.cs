@@ -5,6 +5,7 @@ using System;
 
 public class HtmlGeneratorExtended : HtmlGenerator
 {
+    static Type type = typeof(HtmlGeneratorExtended);
     public void DetailAnchor(string label, string oUriYouthProfile, string oNameYouthProfile)
     {
         if (!string.IsNullOrEmpty(oNameYouthProfile))
@@ -78,10 +79,11 @@ public class HtmlGeneratorExtended : HtmlGenerator
     public void BoilerplateMiddle()
     {
         //WriteRaw(Resources.)
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
     }
 
     public void BoilerplateEnd()
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
     }
 }

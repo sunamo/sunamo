@@ -15,6 +15,7 @@ using System.Xml;
 
 public static partial class HtmlHelper
 {
+    static Type type = typeof(HtmlHelper);
     public static string ToXmlFinal(string xml)
     {
         xml = HtmlHelper.ReplaceHtmlNonPairTagsWithXmlValid(xml);
@@ -111,7 +112,8 @@ public static partial class HtmlHelper
     /// <returns></returns>
     public static HtmlNode ReturnTagOfAtribute(HtmlNode item2, string v1, string v2, string v3)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        return null;
     }
 
 
@@ -138,7 +140,8 @@ public static partial class HtmlHelper
     /// <returns></returns>
     public static string ReturnInnerTextOfTagsRek(HtmlNode dd2, string v)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        return null;
     }
 
 
@@ -241,7 +244,8 @@ public static partial class HtmlHelper
 
     public static HtmlNode ReturnNextSibling(HtmlNode h4Callback, string v)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        return null;
     }
 
     public static HtmlNode ReturnTagRek(HtmlNode hn, string nameOfTag)
@@ -278,7 +282,8 @@ public static partial class HtmlHelper
     /// <returns></returns>
     public static List<HtmlNode> ReturnTags(HtmlNode dlOuter)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        return null;
     }
 
     /// <summary>

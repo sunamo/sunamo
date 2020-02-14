@@ -57,7 +57,7 @@ public class ColorHelper
 
                 var pxsi = pxs[i, y];
 #if DEBUG
-                ////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
+                //////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
 #endif
 
                 bool b = shared.ColorHelper.IsColorSame(bgPixelColor, pxsi) || shared.ColorHelper.IsColorSame(balckZero, pxsi);

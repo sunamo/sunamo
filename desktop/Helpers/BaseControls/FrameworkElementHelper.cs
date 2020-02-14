@@ -15,62 +15,14 @@ public partial class FrameworkElementHelper
 {
     static Type type = typeof(FrameworkElementHelper);
 
-    public static void CreateBitmapFromVisual(object o, RoutedEventArgs e)
-    {
-        Visual target = null;
-        string fn = null;
-        UserControl uc = null;
-
-        target = (Window)WpfApp.mp;
-
-        if (false)
-        {
-            fn = WpfApp.mp.actual.GetType().Name;
-            SaveScreenshot(target, fn);
-        }
-        else
-        {
-            var modeType = target.GetType().Assembly.GetTypes().Where(d => d.Name == "Mode").Single();
-            var names = Enum.GetNames(modeType);
-        }
-    }
-
-    private static string SaveScreenshot(Visual target, string fn)
-    {
-        fn = FS.Combine(@"d:\vs\" + ThisApp.Name, ThisApp.Project, FolderConsts.screenshots, fn + ".png");
-
-        Rect bounds = VisualTreeHelper.GetDescendantBounds(target);
-
-        RenderTargetBitmap renderTarget = new RenderTargetBitmap((Int32)bounds.Width, (Int32)bounds.Height, 96, 96, PixelFormats.Pbgra32);
-
-        DrawingVisual visual = new DrawingVisual();
-
-        using (DrawingContext context = visual.RenderOpen())
-        {
-            VisualBrush visualBrush = new VisualBrush(target);
-            context.DrawRectangle(visualBrush, null, new Rect(new Point(), bounds.Size));
-        }
-
-        renderTarget.Render(visual);
-        PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-        bitmapEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
-        using (Stream stm = File.Create(fn))
-        {
-            FS.CreateUpfoldersPsysicallyUnlessThere(fn);
-            bitmapEncoder.Save(stm);
-
-            ThisApp.SetStatus(TypeOfMessage.Success, "File written to " + fn);
-        }
-
-        return fn;
-    }
+    
 
     public static Size GetMaxContentSize(FrameworkElement fe)
     {
         return new Size(fe.ActualWidth, fe.ActualHeight);
     }
 
-    public static Size GetContentSize(FrameworkElement fe)
+     public static Size GetContentSize(FrameworkElement fe)
     {
         return new Size(fe.Width, fe.Height);
     }

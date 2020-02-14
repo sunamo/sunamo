@@ -151,6 +151,6 @@ public class StoredProcedures : IStoredProcedures
 
         public SQLiteCommand DeleteTableIfExists(string nazevTabulky)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }

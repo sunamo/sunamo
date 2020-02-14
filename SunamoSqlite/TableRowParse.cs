@@ -14,67 +14,67 @@ public class TableRowParse
 
     public  static DateTime GetDateTime(object[] o, int v)
     {
-        throw new NotImplementedException();
+        return DateTime.MinValue;
     }
 
     public  static string GetString(object[] o, int v)
     {
-        throw new NotImplementedException();
+        return string.Empty;
     }
 
     public  static float GetFloat(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static long GetLong(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static bool GetBool(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public  static string GetBoolS(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return false.ToString();
     }
 
     public  static string GetDateTimeS(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return string.Empty;
     }
 
     public  static byte[] GetImage(object[] o, int dex)
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     public  static decimal GetDecimal(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static double GetDouble(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static short GetShort(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static byte GetByte(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public  static Guid GetGuid(object[] o, int p)
     {
-        throw new NotImplementedException();
+        return Guid.Empty;
     }
 }
 

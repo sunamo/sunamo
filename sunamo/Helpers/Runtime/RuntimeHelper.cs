@@ -6,13 +6,10 @@ using System.Reflection;
 using System.Text;
 using System.Web.UI.WebControls;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
-public class RuntimeHelper
+public partial class RuntimeHelper
 {
     static Type type = typeof(RuntimeHelper);
-
     public static List<Delegate> GetInvocationList(Delegate e)
     {
         if (e == null)
@@ -23,31 +20,21 @@ public class RuntimeHelper
         return e.GetInvocationList().ToList();
     }
 
-    public static bool IsAdminUser()
-    {
-        return FS.ExistsDirectory(@"d:\vs\sunamo\");
-    }
-
     public static bool HasEventHandler(Delegate e)
     {
         return GetInvocationList(e).Count() > 0;
     }
 
-    
-
     public static void EmptyDummyMethod()
     {
-
     }
 
     public static void EmptyDummyMethod(string s, params object[] o)
     {
-
     }
 
     public static void EmptyDummyMethod(TypeOfMessage t, string s, params object[] o)
     {
-
     }
 
     public static T CastToGeneric<T>(object o)
@@ -58,13 +45,12 @@ public class RuntimeHelper
     /// <summary>
     /// Default is true for automatically avoiding errors
     /// </summary>
-    /// <param name="controlWithResult"></param>
-    /// <param name="a"></param>
-    /// <param name="throwException"></param>
-    public static void AttachChangeDialogResult(IControlWithResultDebug controlWithResult, VoidBoolNullable a, bool throwException = true) 
+    /// <param name = "controlWithResult"></param>
+    /// <param name = "a"></param>
+    /// <param name = "throwException"></param>
+    public static void AttachChangeDialogResult(IControlWithResultDebug controlWithResult, VoidBoolNullable a, bool throwException = true)
     {
         var count = controlWithResult.CountOfHandlersChangeDialogResult();
-        
         if (count > 0)
         {
             if (throwException)
@@ -73,13 +59,12 @@ public class RuntimeHelper
             }
             else
             {
-                // Do nothing
+            // Do nothing
             }
         }
         else
         {
-             controlWithResult.ChangeDialogResult +=  a;
+            controlWithResult.ChangeDialogResult += a;
         }
     }
 }
-

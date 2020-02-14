@@ -77,11 +77,11 @@ public static DateTime CalculateStartOfPeriod(string AddedAgo)
 
     public static string AddRightStringToTimeSpan(TimeSpan ts, bool v)
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
     {
-        throw new NotImplementedException();
+        return null;
     }
 }

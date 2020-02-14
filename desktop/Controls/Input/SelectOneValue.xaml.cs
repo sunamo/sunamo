@@ -19,7 +19,7 @@ namespace desktop.Controls.Input
     /// Select Value - more from selector
     /// Enter value - single,  EnterOneValueUC - fwElemements
     /// </summary>
-    public partial class SelectOneValue : UserControl, IControlWithResult
+    public partial class SelectOneValue : UserControl, IControlWithResult, IUserControl
     {
         ComboBoxHelper<string> cbEnteredHelper = null;
 
@@ -89,6 +89,8 @@ namespace desktop.Controls.Input
         /// </summary>
         public WindowWithUserControl ParentWindow { set { } }
 
+        public string Title => "Select one value";
+
         private bool AfterEnteredValue(ComboBox cbEntered)
         {
             cbEntered.Text = SelectedItem.Trim();
@@ -138,6 +140,11 @@ namespace desktop.Controls.Input
         private void CbEntered_Selected(object sender, RoutedEventArgs e)
         {
             EnableBtn();
+        }
+
+        public void Init()
+        {
+            throw new NotImplementedException();
         }
     }
 }

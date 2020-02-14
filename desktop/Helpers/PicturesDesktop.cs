@@ -117,7 +117,7 @@ using System.Windows.Media.Imaging;
                     }
                     else
                     {
-                        ////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
+                        //////DebugLogger.Instance.Write(pxsi.Alpha + AllStrings.dash + pxsi.Red + AllStrings.dash + pxsi.Green + AllStrings.dash + pxsi.Blue);
                         if (b2)
                         {
                             nt++;

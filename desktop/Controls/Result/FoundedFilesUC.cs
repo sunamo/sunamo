@@ -19,6 +19,7 @@ namespace desktop.Controls.Result
         /// <param name="p"></param>
         public void AddFoundedFiles(List<string> foundedList, TUList<string, System.Windows.Media.Brush> p)
         {
+            HideTbNoResultsFound();
             int i = 0;
             foreach (var item in foundedList)
             {
@@ -34,6 +35,7 @@ namespace desktop.Controls.Result
         /// <param name="p"></param>
         public void AddFoundedFile(string item, TUList<string, System.Windows.Media.Brush> p, ref int i)
         {
+            HideTbNoResultsFound();
             FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
             foundedFile.Selected += FoundedFile_Selected;
             sp.Children.Add(foundedFile);

@@ -53,6 +53,8 @@ namespace desktop.Controls
             InitializeComponent();
 
             dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
+
+            uc_Loaded(null, null);
         }
 
         public InputTwoColumnsUC(int neededRows) : this()
@@ -96,7 +98,7 @@ namespace desktop.Controls
             {
                 if (!b.Value)
                 {
-                    //DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + false);
+                    ////DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + false);
 
                     DialogResult = false;
                     return;
@@ -111,7 +113,7 @@ namespace desktop.Controls
                 {
                     ThisApp.SetStatus(TypeOfMessage.Error, ExceptionStrings.AllOfInputsMustBeFilled);
 
-                    //DebugLogger.Instance.ClipboardOrDebug(methodName + "Something was not filled in");
+                    ////DebugLogger.Instance.ClipboardOrDebug(methodName + "Something was not filled in");
 
                     allOk = false;
                 }
@@ -121,7 +123,7 @@ namespace desktop.Controls
             {
                 DialogResult = true;
 
-                //DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + true);
+                ////DebugLogger.Instance.ClipboardOrDebug(methodName + "Dialog result set to " + true);
 
             }
         }
@@ -173,6 +175,11 @@ namespace desktop.Controls
         }
 
         public void Init()
+        {
+            
+        }
+
+        public void uc_Loaded(object sender, RoutedEventArgs e)
         {
             
         }

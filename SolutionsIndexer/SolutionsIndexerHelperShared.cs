@@ -1,6 +1,7 @@
 ﻿using AllProjectsSearch;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,18 @@ using System.Threading.Tasks;
 public partial class SolutionsIndexerHelper{ 
 public static SolutionFolder SolutionWithName(string name)
     {
+        IEnumerable<SolutionFolder> wpf = null;
+
+        if (FoldersWithSolutions.fwss.Count > 1)
+        {
+            Debugger.Break();
+        }
+
         foreach (var item in FoldersWithSolutions.fwss)
         {
             var slns = item.Solutions();
+            wpf = slns.Where(d => d.nameSolution.StartsWith(name[0].ToString().ToUpper()));
+
             foreach (var sln in slns)
             {
                 if (sln.nameSolution == name)

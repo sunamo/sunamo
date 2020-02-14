@@ -349,7 +349,7 @@ public static List<XElement> GetElementsOfNameWithAttrWorker(System.Xml.Linq.XEl
 
     public static List<XElement> GetElementsOfNameWithAttr(XElement hlavniCL, string v1, string v2, string v3)
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     public static List<XElement> GetElementsOfNameRecursive(XElement node, string nazev)

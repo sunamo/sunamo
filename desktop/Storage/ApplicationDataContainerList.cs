@@ -251,7 +251,9 @@ public class ApplicationDataContainerList : IEnumerable
         }
 
         var list2 = CA.ToListString(value as IEnumerable);
-        return SF.GetAllElementsLine(list2[0], delimiter).ToList();
+        var result = SF.GetAllElementsLine(list2[0], delimiter).ToList();
+        CA.RemoveStringsEmpty(result);
+        return result;
     }
 
     public void Nuke()

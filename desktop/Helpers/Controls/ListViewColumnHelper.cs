@@ -9,7 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-public class ListViewColumnHelper<T> where T : IIdentificator<int>
+/// <summary>
+/// Must be IIdentificatorDesktop to avoid checking ltems which isnt visible 
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public class ListViewColumnHelper<T> where T : IIdentificatorDesktop<int>
 {
     public static Type type = typeof(ListViewColumnHelper<T>);
     public int lastId = int.MinValue;
@@ -68,10 +72,17 @@ public class ListViewColumnHelper<T> where T : IIdentificator<int>
                 switch (chb2)
                 {
                     case Checkboxes.IsChecked:
-                        first.IsChecked = setUp;
+                        if (first.Visibility == Visibility.Visible)
+                        {
+                            first.IsChecked = setUp;
+                        }
+                        
                         break;
                     case Checkboxes.IsSelected:
-                        first.IsSelected = setUp;
+                        if (first.Visibility == Visibility.Visible)
+                        {
+                            first.IsSelected = setUp;
+                        }
                         break;
                     default:
                         break;

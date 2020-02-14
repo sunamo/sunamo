@@ -296,21 +296,21 @@ public class StoredProceduresSqliteI : IStoredProceduresI
 
         public int FindOutID(string tabulka, string nazevSloupce, object hodnotaSloupce)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public int FindOutNumberOfRows(string tabulka)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public SQLiteCommand InsertRowTypeEnumIfNotExists(string tabulka, string nazev)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public SQLiteCommand DeleteTableIfExists(string nazevTabulky)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }

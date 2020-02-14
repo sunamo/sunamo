@@ -16,7 +16,7 @@ namespace desktop.Helpers.Backend
     /// <summary>
     /// Have both event and TextBox - more variable
     /// </summary>
-    public class TextBoxBackend : IKeysHandler<KeyEventArgs>, IShowSearchResults
+    public class TextBoxBackend : IKeysHandler, IShowSearchResults
     {
         static Type type = typeof(TextBoxBackend);
         // Menu, ToolBar and tbLineBreak = 67 lines. Should be changed in every App

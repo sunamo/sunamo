@@ -134,7 +134,12 @@ public class ApplicationDataContainer : ApplicationDataConsts
         for (int i = 0; i < list.Count; i++)
         {
             var chb = CheckBoxHelper.Get(new ControlInitData { text = list[i] });
-            chb.IsChecked = BTS.IntToBool(list[++i]);
+            var maybeInt = list[++i];
+            if (!BTS.IsInt(maybeInt))
+            {
+
+            }
+            chb.IsChecked = BTS.IntToBool(maybeInt);
             chbl.l.l.Add(chb);
         }
         chbl.l.CollectionChanged += Chbl_CollectionChanged;

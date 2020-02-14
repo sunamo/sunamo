@@ -1,4 +1,36 @@
-﻿webViewToSunamoBrowser
-webControlsTabItems
+﻿1) Add KeysHandler
 
- SunamoBrowser->WebView 
+keysHandler = actual as IKeysHandler;
+ThrowExceptions.WasNotKeysHandler(type, RH.CallingMethod(), userControl.Title, keysHandler);
+
+2) Attach PreviewKeyDown
+
+private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (keysHandler != null)
+            {
+                if (keysHandler.HandleKey(e))
+                {
+                    e.Handled = true;
+                }
+                else if (e.Key == Key.Scroll)
+                {
+                    actual.MakeScreenshot();
+                    e.Handled = true;
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+3) Add to all KeysHandler
+4) 
+throw new NotImplementedException();
+5) 
+public string ModeString { get => mode.ToString(); }
+
+<b>Bold</b><br>
+<i>Italic</i>
+

@@ -8,6 +8,7 @@ using System.Web;
 
 public partial class HtmlAssistant
 {
+    static Type type = typeof(HtmlAssistant);
     public static string InnerText(HtmlNode item, bool recursive, string tag)
     {
         var node = HtmlAgilityHelper.Node(item, recursive, tag);
@@ -48,6 +49,7 @@ public partial class HtmlAssistant
 
     public static object GetValueOfAttribute(object uibTooltip, HtmlNode htmlNode)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        return null;
     }
 }

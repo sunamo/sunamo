@@ -73,6 +73,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\UserControlExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IKeysHandler.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlClosing.cs" />
     <Compile Include="..\..\sunamo\desktop\EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
@@ -318,6 +321,7 @@
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
+    <Compile Include="Extensions\UserControlExtensions.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GuesslangHelper.cs" />
     <Compile Include="Helpers\Backend\FoundedFileUCBackend.cs" />
@@ -388,6 +392,8 @@
     <Compile Include="Hotkey.cs" />
     <Compile Include="Interfaces\IEssentialMainWindow.cs" />
     <Compile Include="Interfaces\IHideToTray.cs" />
+    <Compile Include="Interfaces\IIdentificatorDesktop.cs" />
+    <Compile Include="Interfaces\IKeysHandler.cs" />
     <Compile Include="Interfaces\IResourceHelperDesktop.cs" />
     <Compile Include="Interfaces\IShowSearchResults.cs" />
     <Compile Include="Interfaces\IUserControl.cs" />
@@ -417,6 +423,7 @@
     <Compile Include="Storage\SettingsManager.cs" />
     <Compile Include="Storage\SunamoApplicationSettings.cs" />
     <Compile Include="TemplatesNotCompile\MainWindow_Ctor.cs" />
+    <Compile Include="TemplatesNotCompile\MainWindow_CtorShared.cs" />
     <Compile Include="TrialManager.cs" />
     <Compile Include="UserControls\AboutApp.xaml.cs">
       <DependentUpon>AboutApp.xaml</DependentUpon>

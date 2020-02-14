@@ -17,6 +17,7 @@ using System.Xml;
 /// </summary>
 public class XmlGenerator
 {
+    static Type type = typeof(XmlGenerator);
     protected StringBuilder sb = new StringBuilder();
     private bool _useStack = false;
     private Stack<string> _stack = null;
@@ -160,7 +161,7 @@ public class XmlGenerator
 
     public void WriteTagNamespaceManager(object rss, XmlNamespaceManager nsmgr, string v1, string v2)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
     }
 
     bool IsNulledOrEmpty(string s)

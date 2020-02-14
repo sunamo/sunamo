@@ -52,7 +52,11 @@ namespace desktop.Controls.Result
             return result;
         }
 
-
+        protected void HideTbNoResultsFound()
+        {
+            tbNoResultsFound.Visibility = Visibility.Collapsed;
+            sv.Visibility = Visibility.Visible;
+        }
 
         public void AddFoundedResults(bool clear, TUList<string, Brush> p, List<TWithName<string>> foundedResult)
         {
@@ -60,7 +64,13 @@ namespace desktop.Controls.Result
 
             if (clear)
             {
-                sp.Children.Clear();
+                ClearFoundedResult();
+            }
+
+            if (foundedResult.Count > 0)
+            {
+                HideTbNoResultsFound();
+                sv.Visibility = Visibility.Visible;
             }
 
             foreach (var item in foundedResult)
@@ -115,6 +125,8 @@ namespace desktop.Controls.Result
         public void ClearFoundedResult()
         {
             sp.Children.Clear();
+            sv.Visibility = Visibility.Collapsed;
+            tbNoResultsFound.Visibility = Visibility.Visible;
         }
 
         public void OnSelected(string p)

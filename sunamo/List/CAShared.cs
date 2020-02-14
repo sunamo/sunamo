@@ -689,6 +689,12 @@ public static partial class CA
         CA.ChangeContent(files_in, SH.Replace, what, forWhat);
     }
 
+    public static List<int> IndexesWithValue<T>(List<T> videoCodes, T empty)
+    {
+        var result = videoCodes.Select((r, index) => new { dx = index, value = r }).Where(d => EqualityComparer<T>.Default.Equals( d.value,empty)).Select(d =>d.dx).ToList();
+        return result;
+    }
+
     /// <summary>
     /// Direct edit
     /// </summary>

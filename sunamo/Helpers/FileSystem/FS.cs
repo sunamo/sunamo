@@ -64,10 +64,7 @@ public partial class FS
         DateTime dt = DateTime.Now;
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
-    //public static void DeleteFile(StorageFile t)
-    //{
-    //    throw new NotImplementedException();
-    //}
+
 
     /// <summary>
     /// A1 MUST BE WITH EXTENSION
@@ -168,7 +165,7 @@ public partial class FS
         }
 
         FS.CopyMoveFilesInList(files, folderFrom, folderTo, wasntExists, false, true, files2);
-        DebugLogger.Instance.WriteList(wasntExists);
+        ////DebugLogger.Instance.WriteList(wasntExists);
     }
     public static List<StorageFile> GetFilesInterop<StorageFolder, StorageFile>(StorageFolder folder, string mask, bool recursive, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
@@ -286,9 +283,15 @@ public partial class FS
             if (!EncodingHelper.isBinary(item))
             {
                 var content = TF.ReadFile(item);
-                content = SH. ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent,  content);
+                var content2 = SH.ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent, content);
 
-                TF.SaveFile(content, item);
+                if (content != content2)
+                {
+                    PpkOnDrive ppk = PpkOnDrive.WroteOnDrive;
+                    ppk.Add(DateTime.Now.ToString() + " " + item);
+                    
+                    TF.SaveFile(content2, item);
+                }
             }
         }
     }

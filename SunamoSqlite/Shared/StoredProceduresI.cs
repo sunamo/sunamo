@@ -14,12 +14,12 @@ public class StoredProceduresI : IStoredProceduresI
 
     public int SelectFindOutNumberOfRows(object tableName)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public int InsertToTable(object tableName, object p, int iD, params object[] p2)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public string[] VratNazvySloupcuTabulky(string p)
@@ -66,7 +66,7 @@ public class StoredProceduresI : IStoredProceduresI
 
     public int SelectID(string privacy1, string v, string privacy2)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public DataTable GetDataTableAllRows(string p)
@@ -140,7 +140,7 @@ public class StoredProceduresI : IStoredProceduresI
 
     public bool SelectExistsCombination(string comments, AB aB1, AB aB2)
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     private List<int> GetValuesAllRowsInt(string sql)
@@ -298,21 +298,21 @@ public class StoredProceduresI : IStoredProceduresI
 
         public int FindOutID(string tabulka, string nazevSloupce, object hodnotaSloupce)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public int FindOutNumberOfRows(string tabulka)
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         public SQLiteCommand InsertRowTypeEnumIfNotExists(string tabulka, string nazev)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public SQLiteCommand DeleteTableIfExists(string nazevTabulky)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }

@@ -52,6 +52,8 @@ namespace desktop.Controls.Input
             cbEntered2Helper.SelectionChanged += CbEntered2_Selected;
 
             btnEnter.IsEnabled = false;
+
+            Loaded += uc_Loaded;
         }
 
         private void CbEntered1_KeyDown(object sender, KeyEventArgs e)
@@ -148,6 +150,11 @@ namespace desktop.Controls.Input
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        public void uc_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

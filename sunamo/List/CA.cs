@@ -97,7 +97,7 @@ public static partial class CA
         }
 
         string vr = sb.ToString();
-        //DebugLogger.Instance.WriteLine(vr);
+        //////DebugLogger.Instance.WriteLine(vr);
         return vr;
     }
 
@@ -378,26 +378,33 @@ public static partial class CA
     /// <param name="contentOneSpace"></param>
     /// <param name="r"></param>
     /// <returns></returns>
+
     public static List<FromTo> EqualRanges<T>(List<T> contentOneSpace, List<T> r)
     {
         List<FromTo> result = new List<FromTo>();
         int? dx = null;
 
+        var r_first = r[0];
+        int startAt = 0;
+        int valueToCompare = 0;
         for (int i = 0; i < contentOneSpace.Count; i++)
         {
+            var _contentOneSpace = contentOneSpace[i];
+
             if (!dx.HasValue)
             {
-
-                if (EqualityComparer<T>.Default.Equals(contentOneSpace[i], r[0]))
+                if (EqualityComparer<T>.Default.Equals(_contentOneSpace, r_first))
                 {
-                    dx = i+2;
+                    dx = i + 1; // +2;
+                    startAt = i;
                 }
             }
             else
             {
-                if (r.Count > dx.Value)
+                valueToCompare = dx.Value - startAt;
+                if (r.Count > valueToCompare)
                 {
-                    if (EqualityComparer<T>.Default.Equals(contentOneSpace[i], r[dx.Value]))
+                    if (EqualityComparer<T>.Default.Equals(_contentOneSpace, r[valueToCompare]))
                     {
                         dx++;
                     }
@@ -409,7 +416,7 @@ public static partial class CA
                 }
                 else
                 {
-                    int dx2 = (int)dx ;
+                    int dx2 = (int)dx;
                     result.Add(new FromTo(dx2 - r.Count + 1, dx2, false));
                     dx = null;
                 }
@@ -418,13 +425,12 @@ public static partial class CA
 
         foreach (var item in result)
         {
-            item.from++;
-            item.to++;
+            item.from--;
+            item.to--;
         }
 
         return result;
     }
-
 
     /// <summary>
     /// Is useful when want to wrap and also join with string. Also last element will have delimiter

@@ -78,10 +78,8 @@ public partial class FS
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
-
         }
         CA.ChangeContent(list, d => SH.FirstCharLower(d));
 
@@ -1357,7 +1355,7 @@ public partial class FS
 
         if (ext2 == ".aspx.cs")
         {
-            DebugLogger.Break();
+            //DebugLogger.Break();
         }
 
         var ext = FS.GetExtension(ext2);

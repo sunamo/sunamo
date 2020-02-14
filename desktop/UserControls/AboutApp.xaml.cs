@@ -55,7 +55,7 @@ namespace desktop.Controls
             }
         }
 
-        public bool? DialogResult { set => throw new System.NotImplementedException(); }
+        public bool? DialogResult { set => RuntimeHelper.EmptyDummyMethod(); }
 
         private void OnClickOK(object sender, RoutedEventArgs e)
         {
@@ -65,7 +65,7 @@ namespace desktop.Controls
 
         public void Accept(object input)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

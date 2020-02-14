@@ -249,7 +249,7 @@ public class ThrowExceptions
                 //}
             }
 
-            //DebugLogger.Instance.WriteLine(exception);
+            ////////DebugLogger.Instance.WriteLine(exception);
             throw new Exception(exception);
             return false;
         }
@@ -270,6 +270,11 @@ public class ThrowExceptions
             return false;
         }
         return true;
+    }
+
+    public static void WasNotKeysHandler(Type type, string methodName, string name, object keysHandler)
+    {
+        ThrowIsNotNull(Exceptions.WasNotKeysHandler( FullNameOfExecutedCode(type, methodName), name, keysHandler));
     }
 
     /// <summary>

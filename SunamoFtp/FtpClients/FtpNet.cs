@@ -275,7 +275,7 @@ namespace SunamoFtp
                             DeleteRecursively(slozkyNeuploadovatAVS, fn, i, td);
 
                         }
-                        //DebugLogger.Instance.WriteLine(item2);
+                        ////DebugLogger.Instance.WriteLine(item2);
                     }
                     //item.adresare.Add(ds);
                 }

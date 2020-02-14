@@ -15,7 +15,7 @@ namespace desktop.Helpers.Backend
     /// <summary>
     /// IsDerived from TextBoxBackend
     /// </summary>
-    public class FoundedFileUCBackend : IKeysHandler<KeyEventArgs>
+    public class FoundedFileUCBackend : IKeysHandler
     {
         public CollectionWithoutDuplicates<string> OldRoots = new CollectionWithoutDuplicates<string>();
         private SelectedCastHelper<string> selectedCastHelperString;

@@ -146,10 +146,11 @@ public partial class ComboBoxHelper
     public void AddValuesOfArrayAsItems(Func<object, string> toMakeNameInTWithName, RoutedEventHandler eh, params object[] o)
         {
         var enu = CA.ToList<object>(o);
-        if (enu[0].ToString().Trim() != string.Empty)
-        {
-            enu.Insert(0, string.Empty);
-        }
+        // cant add here because A1 will try cast added string to Encoding and throw exception
+        //if (enu[0].ToString().Trim() != string.Empty)
+        //{
+        //    enu.Insert(0, string.Empty);
+        //}
             int i = 0;
             foreach (object item in enu)
             {

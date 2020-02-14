@@ -9,6 +9,19 @@ using System;
 /// </summary>
 public class PpkOnDrive : PpkOnDriveBase<string>
 {
+    static PpkOnDrive wroteOnDrive = null;
+    internal static PpkOnDrive WroteOnDrive
+    {
+        get
+        {
+            if (wroteOnDrive == null)
+            {
+                wroteOnDrive = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Logs, "WrittenFiles.txt"));
+            }
+            return wroteOnDrive;
+        }
+    }
+
     /// <summary>
     /// Nacte soubory.
     /// </summary>

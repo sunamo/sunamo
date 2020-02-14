@@ -35,7 +35,6 @@ public static partial class SH
             /*
               Vše zaměnit na 1 mezeru
               porovnat zaměněné a originál - namapovat co je mezi nimi
-
             */
 
             if (isMultilineWithVariousIndent)
@@ -44,12 +43,18 @@ public static partial class SH
 
                 var contentOneSpace = SH.SplitByWhiteSpaces(content, true);
 
+                ////DebugLogger.Instance.WriteNumberedList("", contentOneSpace, true);
+
                 // get indexes
                 List<FromTo> equalRanges = CA.EqualRanges(contentOneSpace, r);
 
+                if (equalRanges.Count == 0)
+                {
+                    return content;
+                }
+
                 int startDx = equalRanges.First().from;
                 int endDx = equalRanges.Last().to;
-                
 
                 // všechny elementy z contentOneSpace namapované na content kde v něm začínají. 
                 // index z nt odkazuje na content
@@ -71,12 +76,12 @@ public static partial class SH
                 //    // Musím vzít index z nt
                 //}
 
-                int add = contentOneSpace[endDx].Length; 
+                int add = contentOneSpace[endDx].Length;
                 startDx = nt[startDx];
                 endDx = nt[endDx];
                 endDx += add;
 
-                var from2 = content.Substring(startDx, endDx-startDx);
+                var from2 = content.Substring(startDx, endDx - startDx);
 
                 content = content.Replace(from2, replaceTo[i]);
             }
@@ -184,9 +189,9 @@ public static partial class SH
                                     //dx++;
                                     alreadyProcessed++;
 
-                                    DebugLogger.Instance.WriteLine("dx", dx);
-                                    DebugLogger.Instance.WriteLine("alreadyProcessed", alreadyProcessed);
-                                    DebugLogger.Instance.WriteLine("dx-alreadyProcessed", dx - alreadyProcessed);
+                                    ////DebugLogger.Instance.WriteLine("dx", dx);
+                                    ////DebugLogger.Instance.WriteLine("alreadyProcessed", alreadyProcessed);
+                                    ////DebugLogger.Instance.WriteLine("dx-alreadyProcessed", dx - alreadyProcessed);
 
                                     if (dx > 1)
                                     {
@@ -199,7 +204,7 @@ public static partial class SH
 
                                     if (d1)
                                     {
-                                        DebugLogger.Instance.WriteLine("i", i);
+                                        ////DebugLogger.Instance.WriteLine("i", i);
                                     }
 
 
@@ -217,9 +222,9 @@ public static partial class SH
                                     alreadyTrimmed += beforeC;
                                     if (d1)
                                     {
-                                        DebugLogger.Instance.WriteLine("beforeC", beforeC);
-                                        DebugLogger.Instance.WriteLine("afterC", afterC);
-                                        DebugLogger.Instance.WriteLine("s1C", s1C);
+                                        ////DebugLogger.Instance.WriteLine("beforeC", beforeC);
+                                        ////DebugLogger.Instance.WriteLine("afterC", afterC);
+                                        ////DebugLogger.Instance.WriteLine("s1C", s1C);
                                     }
 
                                     var ls = d[index];
@@ -230,8 +235,8 @@ public static partial class SH
                                     {
                                         var bC = SH.OccurencesOfStringIn(before, "Tento odstavec má vice než 500 znaků.");
                                         var aC = SH.OccurencesOfStringIn(after, "Tento odstavec má vice než 500 znaků.");
-                                        DebugLogger.Instance.WriteLine("bC", bC);
-                                        DebugLogger.Instance.WriteLine("aC", aC);
+                                        ////DebugLogger.Instance.WriteLine("bC", bC);
+                                        ////DebugLogger.Instance.WriteLine("aC", aC);
                                     }
 
                                     if (dx < 0)
@@ -256,8 +261,8 @@ public static partial class SH
 
                                     if (d1)
                                     {
-                                        DebugLogger.Instance.WriteLine("dx1", dx - 1);
-                                        DebugLogger.Instance.WriteLine("dx2", dx);
+                                        ////DebugLogger.Instance.WriteLine("dx1", dx - 1);
+                                        ////DebugLogger.Instance.WriteLine("dx2", dx);
                                     }
                                 }
                             }
@@ -909,18 +914,8 @@ public static partial class SH
 
     public static bool IsAllUnique(List<string> c)
     {
-        throw new NotImplementedException();
-    }
-
-    public static string ReplaceAllDoubleSpaceToSingle(string arg)
-    {
-        while (arg.Contains(AllStrings.doubleSpace))
-        {
-            arg = SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
-        }
-
-
-        return arg;
+        ThrowExceptions.NotImplementedMethod(s_type, RH.CallingMethod());
+        return false;
     }
 
     /// <summary>

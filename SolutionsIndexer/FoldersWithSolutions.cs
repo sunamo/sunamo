@@ -178,7 +178,7 @@ public class FoldersWithSolutions
 
         result.RemoveAll(d => CA.IsEqualToAnyElement(d.nameSolution, skip));
 
-        ////DebugLogger.Instance.WriteCount("Solutions in " + documentsFolder, solutions);
+        ////////DebugLogger.Instance.WriteCount("Solutions in " + documentsFolder, solutions);
         return result;
     }
 

@@ -51,10 +51,10 @@ namespace Roslyn
             var solution = msWorkspace.OpenSolutionAsync(slnPath).Result;
 
             // Solution or project cant be dumped with Yaml
-            //DebugLogger.Instance.DumpObject("solution", solution, DumpProvider.Yaml);
+            ////DebugLogger.Instance.DumpObject("solution", solution, DumpProvider.Yaml);
             //foreach (var project in solution.Projects)
             //{
-            //    DebugLogger.Instance.DumpObject("", project, DumpProvider.Yaml);
+            //    //DebugLogger.Instance.DumpObject("", project, DumpProvider.Yaml);
             //}
             return solution.Projects.ToList();
         }

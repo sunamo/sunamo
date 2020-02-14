@@ -25,7 +25,11 @@ namespace desktop.Controls.Collections
         public Compare3InCheckBoxListUC()
         {
             InitializeComponent();
+
+            Loaded += uc_Loaded;
         }
+
+       
 
         public void FocusOnMainElement()
         {
@@ -221,6 +225,11 @@ namespace desktop.Controls.Collections
             chblAutoYes.OnSizeChanged(maxSize);
             chblManuallyYes.OnSizeChanged(maxSize);
             chblManuallyNo.OnSizeChanged(maxSize);
+            
+        }
+
+        public void uc_Loaded(object sender, RoutedEventArgs e)
+        {
             
         }
     }

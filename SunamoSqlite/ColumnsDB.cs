@@ -36,7 +36,7 @@ public class ColumnsDB : List<SloupecDB>
 
     public object GetTROfColumns()
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     /// <summary>

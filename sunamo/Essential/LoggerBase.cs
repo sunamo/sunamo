@@ -41,7 +41,7 @@ public partial class LoggerBase
     public void ClipboardOrDebug(string v, params string[] args)
     {
 #if DEBUG
-        DebugLogger.DebugWriteLine(TypeOfMessage.Appeal, v, args);
+        //DebugLogger.DebugWriteLine(TypeOfMessage.Appeal, v, args);
 #else
     //sb.AppendLine(TypeOfMessage.Appeal + ": " + string.Format(v, args));
     //ClipboardHelper.SetText(sb.ToString());

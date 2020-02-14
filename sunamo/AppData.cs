@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public class AppData : AppDataAbstractBase<string, string>
 {
     public static AppData ci = new AppData();
-
+    static Type type = typeof(AppData);
     private AppData()
     {
     }
@@ -130,7 +130,7 @@ public class AppData : AppDataAbstractBase<string, string>
 
     public override void AppendToFile(AppFolders af, string file, string value)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
     }
 
     public override  string GetSunamoFolder()

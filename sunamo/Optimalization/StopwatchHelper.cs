@@ -17,7 +17,7 @@ public class StopwatchHelper
     public  long StopAndPrintElapsed(string operation, string p, params object[] parametry)
     {
         sw.Stop();
-        DebugLogger.Instance.WriteLine(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
+        //////DebugLogger.Instance.WriteLine(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
         return sw.ElapsedMilliseconds;
     }
 

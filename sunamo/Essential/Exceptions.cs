@@ -354,6 +354,15 @@ public class Exceptions
         return null;
     }
 
+    public static string WasNotKeysHandler(string before, string name, object keysHandler)
+    {
+        if (keysHandler == null)
+        {
+            return CheckBefore(before) + name + " " + "was not IKeysHandler";
+        }
+        return null;
+    }
+
     public static object Custom(string before, string message)
     {
         return CheckBefore(before) + message;

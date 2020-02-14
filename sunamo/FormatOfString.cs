@@ -9,7 +9,7 @@ public class FormatOfString
 {
     public static List<string> GetParsedParts(string v1, string v2)
     {
-        throw new NotImplementedException();
+        return null;
     }
 }
 

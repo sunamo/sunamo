@@ -11,10 +11,12 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="sv">
             <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
             </StackPanel>
         </ScrollViewer>
 
+        <TextBlock FontSize="20" x:Name="tbNoResultsFound" Text="No results found" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        
     </Grid>
 </UserControl>

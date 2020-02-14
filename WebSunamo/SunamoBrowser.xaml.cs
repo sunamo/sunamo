@@ -17,6 +17,7 @@ namespace WebSunamo
     /// </summary>
     public partial class SunamoBrowser : UserControl, ISunamoBrowser<Control>, IControlWithResult
     {
+        static Type type = typeof(SunamoBrowser);
         public SunamoBrowser()
         {
             InitializeComponent();
@@ -185,12 +186,13 @@ namespace WebSunamo
         {
             get
             {
-                throw new NotImplementedException();
+                ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+                return null;
             }
 
             set
             {
-                throw new NotImplementedException();
+                ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
             }
         }
 
@@ -209,12 +211,12 @@ namespace WebSunamo
 
         public Task<HtmlDocument> GetHtmlDocument()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void Accept(object input)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         }
 
         public void Init()
@@ -229,7 +231,8 @@ namespace WebSunamo
 
         HtmlDocument ISunamoBrowser<Control>.GetHtmlDocument()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+            return null;
         }
     }
 }

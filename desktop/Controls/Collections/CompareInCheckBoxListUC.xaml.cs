@@ -25,6 +25,8 @@ namespace desktop.Controls.Collections
         public CompareInCheckBoxListUC()
         {
             InitializeComponent();
+
+            Loaded += uc_Loaded;
         }
 
         public void FocusOnMainElement()
@@ -254,6 +256,11 @@ namespace desktop.Controls.Collections
             chblManuallyYes.OnSizeChanged(maxSize);
             chblManuallyNo.OnSizeChanged(maxSize);
             chblAutoNo.OnSizeChanged(maxSize);
+        }
+
+        public void uc_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
