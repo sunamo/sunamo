@@ -209,7 +209,7 @@ namespace WebSunamo
             return webControl.Source.ToString();
         }
 
-        public Task<HtmlDocument> GetHtmlDocument()
+        public HtmlDocument GetHtmlDocument()
         {
             return null;
         }
@@ -229,10 +229,5 @@ namespace WebSunamo
             webControl.Focus();   
         }
 
-        HtmlDocument ISunamoBrowser<Control>.GetHtmlDocument()
-        {
-            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
-            return null;
-        }
     }
 }

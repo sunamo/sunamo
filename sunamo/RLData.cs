@@ -48,6 +48,8 @@ public class TranslateDictionary : IDictionary<string, string>
     {
         get
         {
+
+
             if (!_d.ContainsKey(key))
             {
                 //XlfResourcesH.initialized = false;
@@ -55,7 +57,9 @@ public class TranslateDictionary : IDictionary<string, string>
                 ThrowExceptions.Custom(s_type, RH.CallingMethod(), key + " is not in " + _l + " dictionary");
                 //return string.Empty;
             }
-            return _d[key];
+            var value = _d[key];
+
+            return value;
         }
         set => _d[key] = value;
     }

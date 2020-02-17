@@ -833,6 +833,16 @@ public static partial class SH
         return t.Replace( what, forWhat);
     }
 
+    public static string KeepAfterLast(string searchQuery, string after)
+    {
+        var dx = searchQuery.LastIndexOf(after);
+        if (dx != -1)
+        {
+            return SH.TrimStart( searchQuery.Substring(dx), after);
+        }
+        return searchQuery;
+    }
+
     /// <summary>
     /// Overload is without bool pairLines
     /// </summary>

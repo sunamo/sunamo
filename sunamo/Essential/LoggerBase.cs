@@ -115,6 +115,11 @@ public partial class LoggerBase
         }
     }
 
+    /// <summary>
+    /// Will auto append ": "
+    /// </summary>
+    /// <param name="what"></param>
+    /// <param name="text"></param>
     public void WriteLine(string what, object text)
     {
         if (text != null)

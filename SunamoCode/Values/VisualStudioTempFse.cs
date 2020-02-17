@@ -22,7 +22,7 @@ public class VisualStudioTempFse
     public const string gitFolderName = ".git";
     public const string gitignoreFile = ".gitignore";
 
-    public static List<string> foldersInProjectToDelete = CA.ToListString(".vs", "obj", "bin");
+    public static List<string> foldersInProjectToDelete = CA.ToListString(".vs", "obj", "bin", "BundleArtifacts");
     public static ExtensionSortedCollection filesInSolutionToDelete = new ExtensionSortedCollection("UpgradeLog*.htm", "UpgradeLog*.htm", "*.suo");
     public static ExtensionSortedCollection filesInProjectToDelete = new ExtensionSortedCollection("*.user");
     public static string[] foldersAnywhereToDelete = new string[] { };

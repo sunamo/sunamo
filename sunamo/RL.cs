@@ -27,7 +27,8 @@ public partial class RL
 
     public static string GetString(string k)
     {
-        return loader.GetString(k);
+        return RLData.en[k];
+        //return loader.GetString(k);
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ public class PushSolutionsData
 {
     public bool mergeAndFetch = false; 
     public bool addGitignore = false;
-    public List<string> onlyThese = new List<string>();
+    public List<string> onlyThese = null;
     public void Set(bool mergeAndFetch, bool addGitignore = false)
     {
         this.mergeAndFetch = mergeAndFetch;

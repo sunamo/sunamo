@@ -10216,6 +10216,470 @@
           <source></source>
           <target state="translated">Schované keše uživatele</target>
         </trans-unit>
+        <trans-unit id="miCompareVariousTimes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Porovnat různé časy</target>
+        </trans-unit>
+        <trans-unit id="miMultiUserTest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Multi user test</target>
+        </trans-unit>
+        <trans-unit id="miNextInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Next information</target>
+        </trans-unit>
+        <trans-unit id="miSingleUserTest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Single user test</target>
+        </trans-unit>
+        <trans-unit id="miStatistic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Statistic</target>
+        </trans-unit>
+        <trans-unit id="tbShow.Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show</target>
+        </trans-unit>
+        <trans-unit id="t0" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Present Simple</target>
+        </trans-unit>
+        <trans-unit id="t1" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Past Simple</target>
+        </trans-unit>
+        <trans-unit id="t2" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future Simple</target>
+        </trans-unit>
+        <trans-unit id="t3" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future Simple</target>
+        </trans-unit>
+        <trans-unit id="t4" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Present Progressive</target>
+        </trans-unit>
+        <trans-unit id="t5" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Past Progressive</target>
+        </trans-unit>
+        <trans-unit id="t6" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future Progressive</target>
+        </trans-unit>
+        <trans-unit id="t7" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Present Perfect Simple</target>
+        </trans-unit>
+        <trans-unit id="t8" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Past Perfect Simple</target>
+        </trans-unit>
+        <trans-unit id="t9" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future Perfect Simple</target>
+        </trans-unit>
+        <trans-unit id="t10" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Present Perfect Progressive</target>
+        </trans-unit>
+        <trans-unit id="t11" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Past Perfect Progressive</target>
+        </trans-unit>
+        <trans-unit id="t12" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future Perfect Progressive</target>
+        </trans-unit>
+        <trans-unit id="Progressive" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Progressive</target>
+        </trans-unit>
+        <trans-unit id="Simple" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Simple</target>
+        </trans-unit>
+        <trans-unit id="tbFastSelect.Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Group selecting</target>
+        </trans-unit>
+        <trans-unit id="Future" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Future</target>
+        </trans-unit>
+        <trans-unit id="Past" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Past</target>
+        </trans-unit>
+        <trans-unit id="Perfect" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Perfect</target>
+        </trans-unit>
+        <trans-unit id="Present" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Present</target>
+        </trans-unit>
+        <trans-unit id="AllTimes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All times</target>
+        </trans-unit>
+        <trans-unit id="SelectedColonSpace" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Selected: </target>
+        </trans-unit>
+        <trans-unit id="from" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">from</target>
+        </trans-unit>
+        <trans-unit id="KindOfInfos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kind of infos</target>
+        </trans-unit>
+        <trans-unit id="NegativeSentence" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Negative sentence</target>
+        </trans-unit>
+        <trans-unit id="PositiveSentence" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Positive sentence</target>
+        </trans-unit>
+        <trans-unit id="Question" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Question</target>
+        </trans-unit>
+        <trans-unit id="TraditionalPhrases" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tradiční fráze</target>
+        </trans-unit>
+        <trans-unit id="WhereIsUsed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Where is used</target>
+        </trans-unit>
+        <trans-unit id="Resources\textBlockNoSelectedFlat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nevybrali jste dosud žádný byt, nemohou být zobrazeny jeho podrobnosti</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNoFlatsYet\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do této DB nebyly dosud načteny žádné byty</target>
+        </trans-unit>
+        <trans-unit id="Resources\Address" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Adresa</target>
+        </trans-unit>
+        <trans-unit id="Resources\AreaUsable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Plocha užitná</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnAddDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nová DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnDeleteAllEntries\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vymaž aktuální DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnLoadFromDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Načíst z DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnMapAllFlats\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Mapa se všemi byty</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnParseAll\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nahradit jinými byty</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnRunSearch\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Spusť hledání</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnTextBlock\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podrobné informace</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnViewBox\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Webový prohlížeč</target>
+        </trans-unit>
+        <trans-unit id="Resources\Description" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popis</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorArea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Plocha podlahová</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorLocation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podlaží umístění</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorNumber" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podlaží počet</target>
+        </trans-unit>
+        <trans-unit id="Resources\Furnished" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zařízeno</target>
+        </trans-unit>
+        <trans-unit id="Resources\MainItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hlavní položky</target>
+        </trans-unit>
+        <trans-unit id="Resources\NextItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další položky</target>
+        </trans-unit>
+        <trans-unit id="Resources\No" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ne</target>
+        </trans-unit>
+        <trans-unit id="Resources\Partially" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Částečně</target>
+        </trans-unit>
+        <trans-unit id="Resources\Price" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena</target>
+        </trans-unit>
+        <trans-unit id="Resources\PriceComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Komentář k ceně</target>
+        </trans-unit>
+        <trans-unit id="Resources\Property" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vlastnictví</target>
+        </trans-unit>
+        <trans-unit id="Resources\StateOfObject" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stav budovy</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddress\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Adresa</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddressIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V adrese je:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddressIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V adrese není:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbComment\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Komentář</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbDescriptionIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V popisu je:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbDescriptionIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V popisu není:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbFurnished\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zařízeno</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbIDOrder\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V ID zakázky je:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbIsFurnished\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zařízeno:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbName\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNameIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V názvu je:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNameIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V názvu není:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPrice\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceComment\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Komentář ke ceně</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceFrom\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena od:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceTo\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena do:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbRating\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hodnocení</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbSurfaceFrom\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Užitná plocha od:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbSurfaceTo\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Užitná plocha do:</target>
+        </trans-unit>
+        <trans-unit id="Resources\Transport" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Doprava</target>
+        </trans-unit>
+        <trans-unit id="Resources\TypeOfBuilding" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ budovy</target>
+        </trans-unit>
+        <trans-unit id="Resources\Yes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ano</target>
+        </trans-unit>
+        <trans-unit id="Resources\Cellar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sklep</target>
+        </trans-unit>
+        <trans-unit id="Resources\DateOfArrival" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum nastěhování</target>
+        </trans-unit>
+        <trans-unit id="Resources\Development" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zástavba</target>
+        </trans-unit>
+        <trans-unit id="Resources\Driveway" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Příjezdová komunikace</target>
+        </trans-unit>
+        <trans-unit id="Resources\Electricity" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Elektřina</target>
+        </trans-unit>
+        <trans-unit id="Resources\Garage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Garáž</target>
+        </trans-unit>
+        <trans-unit id="Resources\Gas" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Plyn</target>
+        </trans-unit>
+        <trans-unit id="Resources\Heating" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Topení</target>
+        </trans-unit>
+        <trans-unit id="Resources\IDOnServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ID na serveru</target>
+        </trans-unit>
+        <trans-unit id="Resources\IDOrder" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ID zakázky</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocationOfHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Umístění domu</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocationOfObject" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Umístění objektu</target>
+        </trans-unit>
+        <trans-unit id="Resources\Loggia" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Lodžie</target>
+        </trans-unit>
+        <trans-unit id="Resources\ParkingPlaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Parkovací stání</target>
+        </trans-unit>
+        <trans-unit id="Resources\PlotArea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pozemek</target>
+        </trans-unit>
+        <trans-unit id="Resources\Telecommunications" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telekomunikace</target>
+        </trans-unit>
+        <trans-unit id="Resources\TypeOfHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ domu</target>
+        </trans-unit>
+        <trans-unit id="Resources\Waste" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odpad</target>
+        </trans-unit>
+        <trans-unit id="Resources\Water" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Voda</target>
+        </trans-unit>
+        <trans-unit id="Resources\YearOfAcceptance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rok kolaudace</target>
+        </trans-unit>
+        <trans-unit id="Resources\YearOfReconstruction" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rok rekonstrukce</target>
+        </trans-unit>
+        <trans-unit id="Resources\chbSaveImmediately\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ukládat změny okamžitě</target>
+        </trans-unit>
+        <trans-unit id="Resources\Building" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Budova</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAppLanguage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jazyk aplikace:</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnDeleteDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odstranit DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnRenameDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přejmenovat DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\HideSearch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ukonči hledání</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnAboutApp\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">O aplikaci</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnExit\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ukončit</target>
+        </trans-unit>
+        <trans-unit id="Resources\PartiallyOrOtherValue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Částečně nebo jiná hodnota</target>
+        </trans-unit>
+        <trans-unit id="Resources\ProcessSearchResult" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpracuj výsledky hledání</target>
+        </trans-unit>
+        <trans-unit id="HelloWorld" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nazdárek lidi!</target>
+        </trans-unit>
+        <trans-unit id="OpenMenu" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Open menu</target>
+        </trans-unit>
+        <trans-unit id="a" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">HelloWorld2</target>
+        </trans-unit>
       </group>
     </body>
   </file>

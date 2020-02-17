@@ -20,5 +20,16 @@ public static class TaskExtensions
     {
         return t.ConfigureAwait(true);
     }
+
+    public static void LogExceptions(this Task task)
+    {
+        task.ContinueWith(t =>
+        {
+            var aggException = t.Exception.Flatten();
+            foreach (var exception in aggException.InnerExceptions)
+                DebugLogger.Instance.WriteLine (exception.Message);
+        },
+        TaskContinuationOptions.OnlyOnFaulted);
+    }
 }
 

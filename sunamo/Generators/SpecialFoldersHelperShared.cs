@@ -17,7 +17,9 @@ public static partial class SpecialFoldersHelper
         }
         else
         {
-            vr = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // Vracelo mi to empty string  s Environment.GetFolderPath
+            //vr = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            vr = @"c:\Users\n\AppData\Roaming";
         }
         
 

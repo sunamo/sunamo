@@ -26,7 +26,7 @@ namespace ConfigurableWindow.Shared
             CheckMenuItemTopMost();
         }
 
-        private void CheckMenuItemTopMost()
+        public void CheckMenuItemTopMost()
         {
             miAlwaysOnTop.IsChecked = _settings.AlwaysOnTop = w.Topmost;
         }

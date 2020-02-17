@@ -154,13 +154,54 @@ public class XlfResourcesH
         SaveResouresToRL(VpsHelperSunamo.SunamoProject(), existsDirectory,appData);
     }
 
+    public static Dictionary<string, string> LoadXlfDocument(string file)
+    {
+        var doc = new XlfDocument(file);
+        return GetTransUnits(doc);
+    }
+
+    public static Dictionary<string, string> GetTransUnits(XlfDocument doc)
+    {
+        Dictionary<string, string> result = new Dictionary<string, string>();
+
+        var xlfFiles = doc.Files;
+        if (xlfFiles.Count() != 0)
+        {
+            
+                // Win every xlf will be t least two WPF.TESTS/PROPERTIES/RESOURCES.RESX and WPF.TESTS/RESOURCES/EN-US.RESX
+            
+
+            foreach (var item in xlfFiles)
+            {
+                // like WPF.TESTS/PROPERTIES/
+                if (item.Original.EndsWith("/RESOURCES.RESX"))
+                {
+                if (item.TransUnits.Count() > 0)
+                {
+
+                    Debugger.Break();
+                    }
+                }
+
+                foreach (var tu in item.TransUnits)
+                {
+                    if (!result.ContainsKey(tu.Id))
+                    {
+                        result.Add(tu.Id, tu.Target);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
     private static void ProcessXlfFile(string basePath, string lang, string file)
     {
         var fn = FS.GetFileName(file).ToLower();
         bool isCzech = fn.Contains("cs");
         bool isEnglish = fn.Contains("en");
 
-        
         var doc = new XlfDocument(file);
         //var doc = new XlfDocument(@"C:\Users\w\AppData\Local\Packages\31735sunamo.GeoCachingTool_q65n5amar4ntm\LocalState\sunamo.cs-CZ.xlf");
         lang = lang.ToLower();

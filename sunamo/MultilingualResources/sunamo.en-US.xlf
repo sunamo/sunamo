@@ -225,6 +225,10 @@
           <source>About app</source>
           <target state="new">About app</target>
         </trans-unit>
+        <trans-unit id="abbLoadFromGPX.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="new">Load from GPX</target>
+        </trans-unit>
         <trans-unit id="SuccessfulLoginToSunamoCz" translate="yes" xml:space="preserve">
           <source>Now you're successfully logined to sunamo.cz</source>
           <target state="new">Now you're successfully logined to sunamo.cz</target>
@@ -9865,7 +9869,7 @@
         </trans-unit>
         <trans-unit id="EnjoyMakingLoveToTheFullest" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Valentýn se blíží, obdarujte svého partnera</target>
+          <target state="translated">Obdarujte svého partnera</target>
         </trans-unit>
         <trans-unit id="AllRightsReserved" translate="yes" xml:space="preserve">
           <source></source>
@@ -14197,6 +14201,326 @@
         <trans-unit id="NavigationCompleted" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Navigation completed</target>
+        </trans-unit>
+        <trans-unit id="Resources\textBlockNoSelectedFlat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have not selected a real estate, details cannot be displayed</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNoFlatsYet\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In the DB loaded no real estates yet</target>
+        </trans-unit>
+        <trans-unit id="Resources\Address" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Address</target>
+        </trans-unit>
+        <trans-unit id="Resources\AreaUsable" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Usable area</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnAddDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">New DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnDeleteAllEntries\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Clear actual DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnLoadFromDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Load from DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnMapAllFlats\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Map with all flats</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnParseAll\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Replace with other flats</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnRunSearch\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Run search</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnTextBlock\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Detailed info</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnViewBox\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Webbrowser</target>
+        </trans-unit>
+        <trans-unit id="Resources\Description" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Description</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorArea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Floor area</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorLocation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Floor location</target>
+        </trans-unit>
+        <trans-unit id="Resources\FloorNumber" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Floor count</target>
+        </trans-unit>
+        <trans-unit id="Resources\Furnished" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Furnished</target>
+        </trans-unit>
+        <trans-unit id="Resources\MainItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Main items</target>
+        </trans-unit>
+        <trans-unit id="Resources\NextItems" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Other items</target>
+        </trans-unit>
+        <trans-unit id="Resources\No" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">No</target>
+        </trans-unit>
+        <trans-unit id="Resources\Partially" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Partially</target>
+        </trans-unit>
+        <trans-unit id="Resources\Price" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price</target>
+        </trans-unit>
+        <trans-unit id="Resources\PriceComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price comment</target>
+        </trans-unit>
+        <trans-unit id="Resources\Property" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Property</target>
+        </trans-unit>
+        <trans-unit id="Resources\StateOfObject" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">State of the building</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddress\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Address</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddressIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In address is:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAddressIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In address isn't:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbComment\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Comment</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbDescriptionIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In description is:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbDescriptionIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In description isn't:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbFurnished\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Furnished</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbIDOrder\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In ID Order is:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbIsFurnished\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Furnished:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbName\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Name</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNameIs\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In name is:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbNameIsNot\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">In name isn't:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPrice\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceComment\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price comment</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceFrom\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price from:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbPriceTo\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price to:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbRating\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rating</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbSurfaceFrom\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Usable area from:</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbSurfaceTo\Text" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Usable area to:</target>
+        </trans-unit>
+        <trans-unit id="Resources\Transport" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Transport</target>
+        </trans-unit>
+        <trans-unit id="Resources\TypeOfBuilding" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Type of building:</target>
+        </trans-unit>
+        <trans-unit id="Resources\Yes" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Yes</target>
+        </trans-unit>
+        <trans-unit id="Resources\Cellar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cellar</target>
+        </trans-unit>
+        <trans-unit id="Resources\DateOfArrival" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Move-in date</target>
+        </trans-unit>
+        <trans-unit id="Resources\Development" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Build-up area</target>
+        </trans-unit>
+        <trans-unit id="Resources\Driveway" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Driveway</target>
+        </trans-unit>
+        <trans-unit id="Resources\Electricity" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Electricity</target>
+        </trans-unit>
+        <trans-unit id="Resources\Garage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Garage</target>
+        </trans-unit>
+        <trans-unit id="Resources\Gas" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Gas</target>
+        </trans-unit>
+        <trans-unit id="Resources\Heating" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heating</target>
+        </trans-unit>
+        <trans-unit id="Resources\IDOnServer" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">ID on server</target>
+        </trans-unit>
+        <trans-unit id="Resources\IDOrder" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Order ID</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocationOfHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Location of house</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocationOfObject" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Location of object</target>
+        </trans-unit>
+        <trans-unit id="Resources\Loggia" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Loggia</target>
+        </trans-unit>
+        <trans-unit id="Resources\ParkingPlaces" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Parking places</target>
+        </trans-unit>
+        <trans-unit id="Resources\PlotArea" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Land</target>
+        </trans-unit>
+        <trans-unit id="Resources\Telecommunications" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telecommunication</target>
+        </trans-unit>
+        <trans-unit id="Resources\TypeOfHouse" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Type of house</target>
+        </trans-unit>
+        <trans-unit id="Resources\Waste" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Waste</target>
+        </trans-unit>
+        <trans-unit id="Resources\Water" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Water</target>
+        </trans-unit>
+        <trans-unit id="Resources\YearOfAcceptance" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Year of acceptance</target>
+        </trans-unit>
+        <trans-unit id="Resources\YearOfReconstruction" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Year of reconstruction</target>
+        </trans-unit>
+        <trans-unit id="Resources\chbSaveImmediately\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save changes immediately</target>
+        </trans-unit>
+        <trans-unit id="Resources\Building" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Building</target>
+        </trans-unit>
+        <trans-unit id="Resources\tbAppLanguage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Language of app:</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnDeleteDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Delete DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnRenameDB\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rename DB</target>
+        </trans-unit>
+        <trans-unit id="Resources\HideSearch" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Close search</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnAboutApp\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">About app</target>
+        </trans-unit>
+        <trans-unit id="Resources\btnExit\Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Exit app</target>
+        </trans-unit>
+        <trans-unit id="Resources\PartiallyOrOtherValue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Partially or other value</target>
+        </trans-unit>
+        <trans-unit id="Resources\ProcessSearchResult" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Process search result</target>
+        </trans-unit>
+        <trans-unit id="a" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">cč</target>
+        </trans-unit>
+        <trans-unit id="NavigationFailed" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Navigation failed</target>
         </trans-unit>
       </group>
     </body>

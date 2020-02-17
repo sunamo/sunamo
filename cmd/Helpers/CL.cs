@@ -16,8 +16,6 @@ public static partial class CL{
     {
     }
 
-    
-
     private static void AddToAllActions(string v, Dictionary<string, VoidVoid> actions, Dictionary<string, VoidVoid> allActions)
     {
         foreach (var item in actions)

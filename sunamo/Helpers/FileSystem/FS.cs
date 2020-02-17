@@ -188,7 +188,7 @@ public partial class FS
     {
         if (ac != null)
         {
-            return ac.fs.getStorageFile(folder, v).ToString();
+            return ((dynamic)ac.fs.getStorageFile(folder, v)).Path;
         }
         return FS.Combine(folder.ToString(), v);
     }

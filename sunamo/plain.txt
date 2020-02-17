@@ -1,36 +1,60 @@
-﻿1) Add KeysHandler
+﻿se mi sunamobrowser - webview zůstavají 2
 
-keysHandler = actual as IKeysHandler;
-ThrowExceptions.WasNotKeysHandler(type, RH.CallingMethod(), userControl.Title, keysHandler);
+AweView_NavigationStarting
 
-2) Attach PreviewKeyDown
+poprvé mi dokončí ForceOpenPage
+podruhé také ale nedokončí,  protože už byl vložený
 
-private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (keysHandler != null)
-            {
-                if (keysHandler.HandleKey(e))
-                {
-                    e.Handled = true;
-                }
-                else if (e.Key == Key.Scroll)
-                {
-                    actual.MakeScreenshot();
-                    e.Handled = true;
-                }
-                else
-                {
+připíná mi handlery přímo na sunamoBrowser.WebView
 
-                }
-            }
-        }
+month day
 
-3) Add to all KeysHandler
-4) 
-throw new NotImplementedException();
-5) 
-public string ModeString { get => mode.ToString(); }
+CbOpenedTabs_SelectionChanged:
+změna myší
+otevření keše
 
-<b>Bold</b><br>
-<i>Italic</i>
 
+cbOpenedTabs_Selected:
+změna myší, ale již se nevolá CbOpenedTabs_SelectionChanged
+otevření keše - první CbOpenedTabs_SelectionChanged
+
+zde mám ještě keš
+
+1. NavigationStarting-ForceOpenPage
+2. NavigationStarting-AddTab
+3) NavigationStarting
+
+jaký je rozdíl mezi 1. načtením a druhým?
+
+AddTab je sync
+
+změny v gitu
+
+úvod:
+AddTabNever->AddTab->AddTab(4)
+
+keš:
+NavigationStarting->ForceOpenPage->AddTab(3)->AddTab(4)
+
+AweView_DOMContentLoaded is not async
+AddTab,AddTabNever is not async
+sb navigate není async
+
+pošle mi do AweView_NavigationCompleted v args vždy výchozí uri
+
+0ac02e4d 28-12
+
+mám tu dost cannot await void
+
+3-12:
+
+funguje to docela dobře
+po rozkliku se zobrazí jen kód ale out of focus celý název
+neotevírá se v novém okně což je výhodné
+hledání na googlu funguje
+navigoval jsem na google search, chtěl se vráti zpět, tlačítko zmáčknout šlo ale prý není jak se vrátit
+tak to funguje i když se pohybuji jen po gc
+
+tlačítko vpřed se taky chová nějak divně, když už nemá stránky opakuje furt úvodku
+
+open in funguje bezchybně

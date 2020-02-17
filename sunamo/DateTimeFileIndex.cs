@@ -114,6 +114,8 @@ namespace desktop
         /// <param name="ds"></param>
         public void Initialize(AppFolders af, string ext, FileEntriesDuplicitiesStrategy ds, AbstractCatalog<StorageFolder, StorageFile> ac)
         {
+            this.ac = ac;
+
             _ds = ds;
             _folder = ac.appData.GetFolder(af);
 

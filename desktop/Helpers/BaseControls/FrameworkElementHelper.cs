@@ -102,6 +102,12 @@ public partial class FrameworkElementHelper
         return default(T);
     }
 
+    public static void AligmentStretch(Grid g)
+    {
+        g.HorizontalAlignment = HorizontalAlignment.Stretch;
+        g.VerticalAlignment = VerticalAlignment.Stretch;
+    }
+
     public static T FindName<T>(FrameworkElement element, string controlName)
     {
         return (T)element.FindName(controlName);

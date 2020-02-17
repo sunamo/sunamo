@@ -1,6 +1,7 @@
 ﻿
 
 using sunamo.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -30,6 +31,9 @@ public static partial class HttpRequestHelper{
 
         return html;
     }
+
+    
+
     public static bool ExistsPage(string url)
     {
         try
@@ -319,4 +323,6 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         }
         return vr;
     }
+
+  
 }

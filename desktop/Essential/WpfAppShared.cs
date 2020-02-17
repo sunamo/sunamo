@@ -57,6 +57,14 @@ public partial class WpfApp{
             return;
         }
 
+        var typeExc = e.Exception.GetType();
+        var t = typeExc.Name;
+
+        //https://stackoverflow.com/a/7883087/9327173
+        e.SetObserved();
+
+        DebugLogger.Instance.WriteLine(t);
+
         WpfApp.cd.Invoke(() =>
         {
             if (!Debugger.IsAttached)
@@ -70,8 +78,8 @@ public partial class WpfApp{
 
     static void DebuggerIsAttached()
     {
-        MessageBox.Show("DebuggerIsAttached");
-        Debugger.Break();
+        //MessageBox.Show("DebuggerIsAttached");
+        //Debugger.Break();
     }
 
     private static bool IsSomethingNull(string handler)

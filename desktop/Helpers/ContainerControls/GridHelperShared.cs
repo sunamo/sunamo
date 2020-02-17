@@ -36,6 +36,11 @@ public static ColumnDefinition GetColumnDefinition(GridLength oneC)
         return cd;
     }
 
+    /// <summary>
+    /// With auto and star must be alwys value 1. When will be 0, no controls will be show!!!
+    /// </summary>
+    /// <param name="auto"></param>
+    /// <returns></returns>
 public static RowDefinition GetRowDefinition(GridLength auto)
     {
         RowDefinition rd = new RowDefinition();
