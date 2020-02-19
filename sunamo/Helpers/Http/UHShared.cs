@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 public partial class UH
 {
+    #region Append
+
     public static string AppendHttpsIfNotExists(string p)
     {
         string p2 = p;
@@ -25,53 +27,10 @@ public partial class UH
         }
 
         return p2;
-    }
+    } 
+    #endregion
 
-    public static string CombineTrimEndSlash(params string[] p)
-    {
-        StringBuilder vr = new StringBuilder();
-        foreach (string item in p)
-        {
-            if (string.IsNullOrWhiteSpace(item))
-            {
-                continue;
-            }
-            if (item[item.Length - 1] == AllChars.slash)
-            {
-                vr.Append(item.TrimStart(AllChars.slash));
-            }
-            else
-            {
-                vr.Append(item.TrimStart(AllChars.slash) + AllChars.slash);
-            }
-            //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
-        }
-        return vr.ToString().TrimEnd(AllChars.slash);
-    }
-
-    public static string GetExtension(string image)
-    {
-        return FS.GetExtension(image);
-    }
-
-    public static string UrlEncode(string co)
-    {
-        return WebUtility.UrlEncode(co.Trim());
-    }
-
-    /// <summary>
-    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => Login.aspx
-    /// </summary>
-    /// <param name="rp"></param>
-    /// <returns></returns>
-    public static string GetFileName(string rp)
-    {
-        rp = SH.RemoveAfterFirst(rp, AllChars.q);
-        rp = rp.TrimEnd(AllChars.slash);
-        int dex = rp.LastIndexOf(AllChars.slash);
-        return rp.Substring(dex + 1);
-    }
-
+    #region GetUriSafeString
     public static string GetUriSafeString(string title)
     {
         if (String.IsNullOrEmpty(title)) return "";
@@ -159,7 +118,9 @@ public partial class UH
         }
         return uri;
     }
+    #endregion
 
+    #region Change in uri
     public static string UrlDecodeWithRemovePathSeparatorCharacter(string pridat)
     {
         pridat = WebUtility.UrlDecode(pridat);
@@ -168,6 +129,77 @@ public partial class UH
         return pridat;
     }
 
+    public static string ChangeExtension(string attrA, string oldExt, string extL)
+    {
+        attrA = SH.TrimEnd(attrA, oldExt);
+        return attrA + extL;
+    }
+
+    public static string CombineTrimEndSlash(params string[] p)
+    {
+        StringBuilder vr = new StringBuilder();
+        foreach (string item in p)
+        {
+            if (string.IsNullOrWhiteSpace(item))
+            {
+                continue;
+            }
+            if (item[item.Length - 1] == AllChars.slash)
+            {
+                vr.Append(item.TrimStart(AllChars.slash));
+            }
+            else
+            {
+                vr.Append(item.TrimStart(AllChars.slash) + AllChars.slash);
+            }
+            //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
+        }
+        return vr.ToString().TrimEnd(AllChars.slash);
+    }
+
+    public static string UrlEncode(string co)
+    {
+        return WebUtility.UrlEncode(co.Trim());
+    }
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => Login.aspx
+    /// </summary>
+    /// <param name="rp"></param>
+    /// <returns></returns>
+    public static string GetFileName(string rp)
+    {
+        rp = SH.RemoveAfterFirst(rp, AllChars.q);
+        rp = rp.TrimEnd(AllChars.slash);
+        int dex = rp.LastIndexOf(AllChars.slash);
+        return rp.Substring(dex + 1);
+    }
+
+    #endregion
+
+    #region Get parts of uri
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => ""
+    /// </summary>
+    
+    public static string GetExtension(string image)
+    {
+        return FS.GetExtension(image);
+    }
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => ?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon
+    /// Vr�t� cel� QS v�etn� po��te�n�ho otazn�ku
+    /// 
+    /// </summary>
+    public static string GetQueryAsHttpRequest(Uri uri)
+    {
+        return uri.Query;
+    }
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => /Me/Login.aspx
+    /// </summary>
     public static string GetPageNameFromUri(Uri uri)
     {
         int nt = uri.PathAndQuery.IndexOf(AllStrings.q);
@@ -177,6 +209,12 @@ public partial class UH
         }
         return uri.PathAndQuery;
     }
+
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => GetPageNameFromUriTest: /Me/Login.aspx
+    /// </summary>
+
     public static string GetPageNameFromUri(string atr, string p)
     {
         if (!atr.StartsWith("https://") && !atr.StartsWith("https" + ":" + "//"))
@@ -187,8 +225,9 @@ public partial class UH
     }
 
     /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => GetFileNameWithoutExtension: Login
     /// Pod�v� naprosto stejn� v�sledek jako UH.GetPageNameFromUri
-    /// Tedy nap��klad pro str�nku https://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� /Widgets/VerifyDomain.aspx
+    /// 
     /// </summary>
     /// <param name="uri"></param>
     /// <returns></returns>
@@ -198,14 +237,17 @@ public partial class UH
     }
 
 
-
-public static string ChangeExtension(string attrA, string oldExt, string extL)
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon =>
+    /// </summary>
+    public static string GetProtocolString(Uri uri)
     {
-        attrA = SH.TrimEnd(attrA, oldExt);
-        return attrA + extL;
+        return uri.Scheme + "://";
     }
+    #endregion
 
-/// <summary>
+    #region Other
+    /// <summary>
     /// Vr�t� true pokud m� A1 protokol http nebo https
     /// </summary>
     /// <param name="p"></param>
@@ -224,21 +266,7 @@ public static string ChangeExtension(string attrA, string oldExt, string extL)
         return false;
     }
 
-public static string GetProtocolString(Uri uri)
-    {
-        return uri.Scheme + "://";
-    }
-
-/// <summary>
-    /// Vr�t� cel� QS v�etn� po��te�n�ho otazn�ku
-    /// Tedy nap��klad pro str�nku http://localhost/Widgets/VerifyDomain.aspx?code=xer4o51s0aavpdmndwrmdbd1 d�v� ?code=xer4o51s0aavpdmndwrmdbd1
-    /// </summary>
-    public static string GetQueryAsHttpRequest(Uri uri)
-    {
-        return uri.Query;
-    }
-
-public static Uri CreateUri(string s)
+    public static Uri CreateUri(string s)
     {
         try
         {
@@ -248,5 +276,6 @@ public static Uri CreateUri(string s)
         {
             return null;
         }
-    }
+    } 
+    #endregion
 }

@@ -4,8 +4,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 public class FromTo : IParser
 {
+    bool empty = false;
+
     public FromTo()
     {
+    }
+
+    /// <summary>
+    /// Use Empty contstant outside of class
+    /// </summary>
+    /// <param name="empty"></param>
+    private FromTo(bool empty)
+    {
+        this.empty = empty;
     }
 
     public FromTo(int from, int to, bool useDateTime = true)
@@ -19,6 +30,7 @@ public class FromTo : IParser
 
     public int from = 0;
     public int to = 0;
+    public static FromTo Empty = new FromTo(true);
 
     public void Parse(string input)
     {
@@ -66,15 +78,22 @@ public class FromTo : IParser
 
     public override string ToString()
     {
-        if (useDateTime)
+        if (empty)
         {
-            if (to != 0)
-            {
-                return $"{DTHelperCs.ToShortTimeFromSeconds(from)}-{DTHelperCs.ToShortTimeFromSeconds(to)}";
-            }
-            return $"{DTHelperCs.ToShortTimeFromSeconds(from)}";
+            return string.Empty;
         }
-        return from + "-" + to;
+        else
+        {
+            if (useDateTime)
+            {
+                if (to != 0)
+                {
+                    return $"{DTHelperCs.ToShortTimeFromSeconds(from)}-{DTHelperCs.ToShortTimeFromSeconds(to)}";
+                }
+                return $"{DTHelperCs.ToShortTimeFromSeconds(from)}";
+            }
+            return from + "-" + to;
+        }
     }
 }
 

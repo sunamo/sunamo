@@ -29,6 +29,7 @@ namespace desktop
             }
         }
 
+        
         public static void RegisterHighlightAllTextBox()
         {
             EventManager.RegisterClassHandler(typeof(TextBox),

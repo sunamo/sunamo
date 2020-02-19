@@ -60,6 +60,27 @@ public partial class DTHelperGeneral
     }
 
     /// <summary>
+    /// Return null in case of any exception
+    /// </summary>
+    /// <param name="y"></param>
+    /// <param name="m"></param>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    public static DateTime? Create(int y, int m, int d)
+    {
+        try
+        {
+            return new DateTime(y, m, d);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return null;
+            
+        }
+        return null;
+    }
+
+    /// <summary>
     /// Kontroluje i na MinValue a MaxValue
     /// </summary>
     /// <param name="dt"></param>

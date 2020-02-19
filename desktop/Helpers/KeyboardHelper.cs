@@ -1,5 +1,6 @@
 ﻿using sunamo.Essential;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,6 +23,225 @@ namespace sunamo
         public static bool KeyWithModifier(Key key, ModifierKeys modifier)
         {
             return KeyWithModifier(null, key, modifier);
+        }
+
+        #region nonWhiteSpace
+        static List<string> nonWhiteSpace = SH.GetLines(@"A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+NumPad0
+NumPad1
+NumPad2
+NumPad3
+NumPad4
+NumPad5
+NumPad6
+NumPad7
+NumPad8
+NumPad9");
+        #endregion
+        #region whiteSpace
+        static List<string> whiteSpace = SH.GetLines(@"None
+Cancel
+Back
+Tab
+LineFeed
+Clear
+Return
+Enter
+Pause
+Capital
+CapsLock
+KanaMode
+HangulMode
+JunjaMode
+FinalMode
+HanjaMode
+KanjiMode
+Escape
+ImeConvert
+ImeNonConvert
+ImeAccept
+ImeModeChange
+Space
+Prior
+PageUp
+Next
+PageDown
+End
+Home
+Left
+Up
+Right
+Down
+Select
+Print
+Execute
+Snapshot
+PrintScreen
+Insert
+Delete
+Help
+D0
+D1
+D2
+D3
+D4
+D5
+D6
+D7
+D8
+D9
+LWin
+RWin
+Apps
+Sleep
+Multiply
+Add
+Separator
+Subtract
+Decimal
+Divide
+F1
+F2
+F3
+F4
+F5
+F6
+F7
+F8
+F9
+F10
+F11
+F12
+F13
+F14
+F15
+F16
+F17
+F18
+F19
+F20
+F21
+F22
+F23
+F24
+NumLock
+Scroll
+LeftShift
+RightShift
+LeftCtrl
+RightCtrl
+LeftAlt
+RightAlt
+BrowserBack
+BrowserForward
+BrowserRefresh
+BrowserStop
+BrowserSearch
+BrowserFavorites
+BrowserHome
+VolumeMute
+VolumeDown
+VolumeUp
+MediaNextTrack
+MediaPreviousTrack
+MediaStop
+MediaPlayPause
+LaunchMail
+SelectMedia
+LaunchApplication1
+LaunchApplication2
+Oem1
+OemSemicolon
+OemPlus
+OemComma
+OemMinus
+OemPeriod
+Oem2
+OemQuestion
+Oem3
+OemTilde
+AbntC1
+AbntC2
+Oem4
+OemOpenBrackets
+Oem5
+OemPipe
+Oem6
+OemCloseBrackets
+Oem7
+OemQuotes
+Oem8
+Oem102
+OemBackslash
+ImeProcessed
+System
+OemAttn
+DbeAlphanumeric
+OemFinish
+DbeKatakana
+OemCopy
+DbeHiragana
+OemAuto
+DbeSbcsChar
+OemEnlw
+DbeDbcsChar
+OemBackTab
+DbeRoman
+Attn
+DbeNoRoman
+CrSel
+DbeEnterWordRegisterMode
+ExSel
+DbeEnterImeConfigureMode
+EraseEof
+DbeFlushString
+Play
+DbeCodeInput
+Zoom
+DbeNoCodeInput
+NoName
+DbeDetermineString
+Pa1
+DbeEnterDialogConversionMode
+OemClear
+DeadCharProcessed");
+        #endregion
+
+
+
+        internal static bool IsWhitespace(KeyEventArgs e)
+        {
+            var k = e.Key.ToString();
+            if (whiteSpace.Contains(k))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

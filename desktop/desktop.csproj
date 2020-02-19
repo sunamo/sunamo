@@ -297,6 +297,10 @@
     <Compile Include="Data\ImageButtonsInit.cs" />
     <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="Data\MeasureStringArgs.cs" />
+    <Compile Include="Data\Tag\ControlTag.cs" />
+    <Compile Include="Data\Tag\FrameworkElementTag.cs" />
+    <Compile Include="Data\Tag\TextBoxBaseTag.cs" />
+    <Compile Include="Data\Tag\TextBoxTag.cs" />
     <Compile Include="Data\TextBlockData.cs" />
     <Compile Include="DataTableHelper.cs" />
     <Compile Include="Essential\WpfApp.cs" />

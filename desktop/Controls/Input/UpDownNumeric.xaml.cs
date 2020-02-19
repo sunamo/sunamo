@@ -86,8 +86,10 @@ namespace desktop
         {
             uint nv = 0;
             if (uint.TryParse(txtValue.Text, out nv))
+
             {
-                if (nv > 1000)
+                // 3000 to allow enter also ye
+                if (nv > 3000)
                 {
                     txtValue.Text = latest;
                 }

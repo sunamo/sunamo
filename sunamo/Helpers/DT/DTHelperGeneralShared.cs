@@ -5,6 +5,8 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
+    
+
     /// <summary>
     /// A2 = SqlServerHelper.DateTimeMinVal
     /// if A1 = A2, return 255

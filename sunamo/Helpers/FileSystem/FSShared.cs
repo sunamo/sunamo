@@ -919,7 +919,7 @@ public partial class FS
         folders = CA.TrimEnd(folders, AllChars.bs);
         for (int i = folders.Count - 1; i >= 0; i--)
         {
-            if (!FS.GetFileName(folders[i]).Contains(contains))
+            if (!Wildcard.IsMatch( FS.GetFileName(folders[i]), contains))
             {
                 folders.RemoveAt(i);
             }

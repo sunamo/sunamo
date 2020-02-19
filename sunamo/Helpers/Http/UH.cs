@@ -8,6 +8,7 @@ using System.Linq;
 
 public partial class UH
 {
+    #region Other methods
 
     public static string HostUriToPascalConvention(string s)
     {
@@ -16,12 +17,6 @@ public partial class UH
         var result = SH.ReplaceAll(uri.Host, AllStrings.space, AllStrings.dot);
         result = ConvertPascalConvention.ToConvention(result);
         return SH.FirstCharUpper(result);
-    }
-
-    public static string GetHost(string s)
-    {
-        var u = CreateUri(AppendHttpIfNotExists(s));
-        return u.Host;
     }
 
     private static string GetUriSafeString2(string title)
@@ -49,6 +44,40 @@ public partial class UH
         return title;
     }
 
+    public static string InsertBetweenPathAndFile(string uri, string vlozit)
+    {
+        var s = SH.Split(uri, AllStrings.slash);
+        s[s.Count - 2] += AllStrings.slash + vlozit;
+        //Uri uri2 = new Uri(uri);
+        string vr = null;
+        vr = Join(s);
+        return vr.Replace(":/", "://");
+    }
+
+    public static bool Contains(Uri source, string hostnameEndsWith, string pathContaint, params string[] qsContainsAll)
+    {
+        hostnameEndsWith = hostnameEndsWith.ToLower();
+        pathContaint = pathContaint.ToLower();
+        Uri uri = CreateUri(source.ToString().ToLower());
+        if (uri.Host.EndsWith(hostnameEndsWith))
+        {
+            if (UH.GetFilePathAsHttpRequest(uri).Contains(pathContaint))
+            {
+                foreach (var item in qsContainsAll)
+                {
+                    if (!uri.Query.Contains(item))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
+    } 
+    #endregion
+
+    #region Is*
     public static bool IsHttpDecoded(ref string input)
     {
         string decoded = WebUtility.UrlDecode(input);
@@ -81,7 +110,53 @@ public partial class UH
         }
         return false;
     }
+    #endregion
 
+    #region Get parts of URI
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => lyrics.sunamo.cz
+    /// </summary>
+    public static string GetHost(string s)
+    {
+        var u = CreateUri(AppendHttpIfNotExists(s));
+        return u.Host;
+    }
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => https://lyrics.sunamo.cz/Me/
+    /// Return by convetion with / on end
+    /// </summary>
+    /// <param name="rp"></param>
+    /// <returns></returns>
+    public static string GetDirectoryName(string rp)
+    {
+        if (rp != AllStrings.slash)
+        {
+            rp = rp.TrimEnd(AllChars.slash);
+        }
+
+        rp = SH.RemoveAfterFirst(rp, AllChars.q);
+
+        int dex = rp.LastIndexOf(AllChars.slash);
+        if (dex != -1)
+        {
+            return rp.Substring(0, dex + 1);
+        }
+        return rp;
+    }
+
+    /// <summary>
+    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => Login
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string GetFileNameWithoutExtension(string p)
+    {
+        return FS.GetFileNameWithoutExtension(GetFileName(p));
+    } 
+    #endregion
+
+    #region Join, Combine
     /// <summary>
     /// 
     /// </summary>
@@ -97,58 +172,15 @@ public partial class UH
         return vr;
     }
 
-
-
-    /// <summary>
-    /// Vrac� podle konvence se / na konci
-    /// </summary>
-    /// <param name="rp"></param>
-    /// <returns></returns>
-    public static string GetDirectoryName(string rp)
-    {
-        if (rp != AllStrings.slash)
-        {
-            rp = rp.TrimEnd(AllChars.slash);
-        }
-
-
-        int dex = rp.LastIndexOf(AllChars.slash);
-        if (dex != -1)
-        {
-            return rp.Substring(0, dex + 1);
-        }
-        return rp;
-    }
-
-    public static string GetFileNameWithoutExtension(string p)
-    {
-        return FS.GetFileNameWithoutExtension(GetFileName(p));
-    }
-
-
-
-
-    public static string InsertBetweenPathAndFile(string uri, string vlozit)
-    {
-        var s = SH.Split(uri, AllStrings.slash);
-        s[s.Count - 2] += AllStrings.slash + vlozit;
-        //Uri uri2 = new Uri(uri);
-        string vr = null;
-        vr = Join(s);
-        return vr.Replace(":/", "://");
-    }
-
     private static string Join(params object[] s)
     {
         return SH.Join(AllChars.slash, s);
     }
 
-
     public static string Combine(params string[] p)
     {
         return Combine(p.ToList());
     }
-
 
     /// <summary>
     /// 
@@ -184,8 +216,10 @@ public partial class UH
             //vr.Append(item.TrimEnd(AllChars.slash) + AllStrings.slash);
         }
         return vr.ToString();
-    }
+    } 
+    #endregion
 
+    #region Ŕemove*
     public static string RemovePrefixHttpOrHttps(string t)
     {
         t = t.Replace("http" + ":" + "//", "");
@@ -218,8 +252,6 @@ public partial class UH
         return t;
     }
 
-
-
     public static string RemoveHostAndProtocol(Uri uri)
     {
         string p = RemovePrefixHttpOrHttps(uri.ToString());
@@ -227,25 +259,12 @@ public partial class UH
         return p.Substring(dex);
     }
 
-    public static bool Contains(Uri source, string hostnameEndsWith, string pathContaint, params string[] qsContainsAll)
+    public static bool IsUri(string href)
     {
-        hostnameEndsWith = hostnameEndsWith.ToLower();
-        pathContaint = pathContaint.ToLower();
-        Uri uri = CreateUri(source.ToString().ToLower());
-        if (uri.Host.EndsWith(hostnameEndsWith))
-        {
-            if (UH.GetFilePathAsHttpRequest(uri).Contains(pathContaint))
-            {
-                foreach (var item in qsContainsAll)
-                {
-                    if (!uri.Query.Contains(item))
-                    {
-                        return false;
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;
+        var uri = CreateUri(href);
+        return uri != null;
     }
+    #endregion
+
+
 }

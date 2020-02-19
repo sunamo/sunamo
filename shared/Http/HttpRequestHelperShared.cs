@@ -32,7 +32,19 @@ public static partial class HttpRequestHelper{
         return html;
     }
 
-    
+    /// <summary>
+    /// As folder is use Cache
+    /// </summary>
+    /// <param name="cache"></param>
+    /// <param name="uri"></param>
+    /// <returns></returns>
+    public static string DownloadOrRead(string uri)
+    {
+        var v = UH.GetFileName(uri);
+        var fn = FS.ReplaceInvalidFileNameChars(v);
+        fn = FS.Combine(AppData.ci.GetFolder(AppFolders.Cache), SH.AppendIfDontEndingWith(fn, AllExtensions.html));
+        return DownloadOrRead(fn, uri);
+    }
 
     public static bool ExistsPage(string url)
     {
@@ -324,5 +336,5 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         return vr;
     }
 
-  
+    
 }

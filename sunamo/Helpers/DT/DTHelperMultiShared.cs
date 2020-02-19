@@ -123,7 +123,7 @@ public partial class DTHelperMulti
         return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
     }
 
-public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
     {
         int day = (int)dateTime.DayOfWeek;
         if (day == 0)

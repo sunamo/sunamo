@@ -7,6 +7,25 @@ using System.Threading.Tasks;
 
 public static partial class EnumHelper
 {
+    public static string EnumToString<T>(T ds) where T : Enum
+    {
+        const string comma = AllStrings.comma;
+        StringBuilder sb = new StringBuilder();
+        var v = Enum.GetValues(typeof(T));
+        foreach (T item in v)
+        {
+            if (ds.HasFlag(item))
+            {
+                var ts = item.ToString();
+                if (ts != Consts.Nope)
+                {
+                    sb.Append(ts + comma);
+                }
+            }
+        }
+        return sb.ToString().TrimEnd(comma[0]);
+    }
+
     /// <summary>
     /// Get values include zero and All
     /// Pokud bude A1 null nebo nebude obsahovat žádný element T, vrátí A1

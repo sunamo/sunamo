@@ -97,6 +97,7 @@ public static class AllChars
 
     #region Generic chars
     public static readonly char notNumber;
+    public static readonly char zero = '0';
     #endregion
 
     #region Names here must be the same as in Consts
