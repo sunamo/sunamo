@@ -10,8 +10,9 @@ namespace sunamo.Helpers.DT
     /// </summary>
     public class DTHelperUs
     {
+        #region ToString
         /// <summary>
-        /// M_d_y
+        /// yyyy_mm_dd 
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -20,12 +21,34 @@ namespace sunamo.Helpers.DT
             string dDate = AllStrings.us;
             string dSpace = AllStrings.us;
             string dTime = AllStrings.us;
-            return dt.Year + dDate + NH.MakeUpTo2NumbersToZero(dt.Month) + dDate + NH.MakeUpTo2NumbersToZero(dt.Day) + dSpace + NH.MakeUpTo2NumbersToZero(dt.Hour) + dTime + NH.MakeUpTo2NumbersToZero(dt.Minute);
+            return DateTimeToFileName(dt, true);
         }
 
-        #region FileNameToDateTime
         /// <summary>
-        /// Vrátí null pokud A1 nebude mít správný formát
+        /// yyyy_mm_dd 
+        /// With A2 append hh_mm
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string DateTimeToFileName(DateTime dt, bool time)
+        {
+            string dDate = AllStrings.us;
+            string dSpace = AllStrings.us;
+            string dTime = AllStrings.us;
+            string vr = dt.Year + dDate + NH.MakeUpTo2NumbersToZero(dt.Month) + dDate + NH.MakeUpTo2NumbersToZero(dt.Day);
+            if (time)
+            {
+                vr += dSpace + NH.MakeUpTo2NumbersToZero(dt.Hour) + dTime + NH.MakeUpTo2NumbersToZero(dt.Minute);
+            }
+            return vr;
+        }
+        #endregion
+
+        #region Parse - FileNameToDateTime
+        /// <summary>
+        /// 1989_06_21_11_22 or 1989_06_21 if !A2
+        /// Return null if A1 wont have right format
         /// </summary>
         /// <param name="fnwoe"></param>
         /// <returns></returns>
@@ -55,13 +78,11 @@ namespace sunamo.Helpers.DT
         }
 
         /// <summary>
-        /// Vrátí null pokud A1 nebude mít správný formát
-        /// Pokud A2, A1 musí mít formát ????_??_??_??_?? 
-        /// Pokud !A2, A1 musí mít formát ????_??_??
-        /// V obojím případě co je za A2 je nepodstatné
+        /// Return null if wont have right format
+        /// If A2, A1 must have format ????_??_??_??_?? 
+        /// if !A2, A1 must have format ????_??_??
+        /// In any case what is after A2 is not important
         /// </summary>
-        /// <param name="fnwoe"></param>
-        /// <returns></returns>
         public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
         {
             var sp = SH.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.us);
@@ -113,13 +134,10 @@ namespace sunamo.Helpers.DT
         }
 
         /// <summary>
-        /// Vrátí null pokud A1 nebude mít správný formát
-        /// Pokud A2, A1 musí mít formát ????_??_??_S_??
-        /// Pokud !A2, A1 musí mít formát ????_??_??
-        /// V obojím případě co je za A2 je nepodstatné
+        /// Return null if wont have right format
+        /// If A2, A1 must have format ????_??_??_S_?* 
+        /// 
         /// </summary>
-        /// <param name="fnwoe"></param>
-        /// <returns></returns>
         public static DateTime? FileNameToDateWithSeriePostfix(string fnwoe, out int? serie, out string postfix)
         {
             postfix = "";
@@ -153,7 +171,8 @@ namespace sunamo.Helpers.DT
         }
 
         /// <summary>
-        /// Vrátí null pokud A1 nebude mít správný formát
+        /// 1989_06_21_11_22
+        /// Return null if wont have right format
         /// </summary>
         /// <param name="fnwoe"></param>
         /// <returns></returns>
@@ -170,18 +189,5 @@ namespace sunamo.Helpers.DT
 
 
         #endregion
-
-        public static string DateTimeToFileName(DateTime dt, bool time)
-        {
-            string dDate = AllStrings.us;
-            string dSpace = AllStrings.us;
-            string dTime = AllStrings.us;
-            string vr = dt.Year + dDate + NH.MakeUpTo2NumbersToZero(dt.Month) + dDate + NH.MakeUpTo2NumbersToZero(dt.Day);
-            if (time)
-            {
-                vr += dSpace + NH.MakeUpTo2NumbersToZero(dt.Hour) + dTime + NH.MakeUpTo2NumbersToZero(dt.Minute);
-            }
-            return vr;
-        }
     }
 }

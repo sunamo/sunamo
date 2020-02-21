@@ -617,7 +617,7 @@ namespace SunamoFtp
         /// Vrátí složky, soubory i Linky
         /// </summary>
         /// <returns></returns>
-        public override string[] ListDirectoryDetails()
+        public override List<string> ListDirectoryDetails()
         {
             List<string> vr = new List<string>();
             if (pocetExc < maxPocetExc)

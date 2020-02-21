@@ -5,16 +5,13 @@ using System.Text;
 
 public partial class DTHelperEn
 {
-    //public static string ToShortTime(DateTime value)
-    //{
-    //    return 
-    //}
-
-        /// <summary>
-        /// return MinValue when fail
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+    #region Parse
+    #region Only Date
+    /// <summary>
+    /// return MinValue when fail
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public static DateTime ParseDateUSA(string input)
     {
         DateTime vr = DateTime.MinValue;
@@ -44,8 +41,16 @@ public partial class DTHelperEn
             }
         }
         return vr;
-    }
+    } 
+    #endregion
 
+    #region Only time
+    /// <summary>
+    /// Seconds can be omit
+    /// hh:mm tt
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
     public static DateTime ParseTimeUSA(string t)
     {
         var vr = DateTime.MinValue;
@@ -54,6 +59,7 @@ public partial class DTHelperEn
         {
             var pm = false;
             var amorpm = parts2[1].ToLower();
+
             if (amorpm == "pm" || amorpm == "am")
             {
                 if (amorpm == "pm")
@@ -102,12 +108,45 @@ public partial class DTHelperEn
         }
         return vr;
     }
+    #endregion
 
+    #region Date and time
+    /// <summary>
+    /// Seconds can be omit
+    /// hh:mm tt
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static DateTime ParseDateTimeUSA(string s)
+    {
+        var p = SH.Split(s, AllStrings.space);
+        DateTime result = ParseDateUSA(p[0]);
+        var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
+        return DTHelperGeneral.Combine(result, time);
+        //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
+    }
+    #endregion
+    #endregion
+
+    #region ToString
+    #region Only date
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="today"></param>
+    /// <returns></returns>
     public static string ToShortDateString(DateTime today)
     {
         return ToShortDateString(today, DateTime.MinValue, DTHelperMulti.DateToString(today, Langs.en));
     }
 
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="today"></param>
+    /// <param name="_def"></param>
+    /// <param name="returnWhenA1isA2"></param>
+    /// <returns></returns>
     public static string ToShortDateString(DateTime today, DateTime _def, string returnWhenA1isA2)
     {
         if (today == _def)
@@ -116,16 +155,37 @@ public partial class DTHelperEn
         }
         return DTHelperMulti.DateToString(today, Langs.en);
     }
+    #endregion
 
-    //public static string ToShortTime(DateTime value)
-    //{
-    //    return 
-    //}
-
-
+    #region Date and time
     /// <summary>
-    /// Do této metody se předává {cislo}_{days,weeks,years nebo months}
-    /// Vrátí mi aktuální datum zkrácené o A1
+    /// Its named ToString due to exactly same format return dt.ToString while is en-us localization
+    /// 21.6.1989 / 6/21/1989 + " " + mm:ss tt
+    /// </summary>
+    /// <returns></returns>
+    public static string ToString(DateTime dt)
+    {
+        return ToShortDateString(dt) + " " + ToShortTimeString(dt);
+    }
+    #endregion
+
+    #region Only time (without seconds)
+    /// <summary>
+    /// mm:ss tt
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static string ToShortTimeString(DateTime dt)
+    {
+        return string.Format("{0:mm:ss tt}", dt);
+    } 
+    #endregion
+    #endregion
+
+    #region Helper
+    /// <summary>
+    /// Insert {number}_{days,weeks,years nebo months}
+    /// Get date shortened about A1
     /// </summary>
     /// <param name="AddedAgo"></param>
     /// <returns></returns>
@@ -169,30 +229,5 @@ public partial class DTHelperEn
         days *= -1;
         return DateTime.Today.AddDays(days);
     }
-
-    public static DateTime ParseDateTimeUSA(string s)
-    {
-        var p = SH.Split(s, AllStrings.space);
-        DateTime result = ParseDateUSA(p[0]);
-        var time = ParseTimeUSA(p[1] + AllStrings.space + p[2]);
-        return DTHelperGeneral.Combine(result, time);
-        //return DateTime.Parse(s, CultureInfo.GetCultureInfo("en-us"));
-    }
-
-    
-
-/// <summary>
-    /// Its named ToString due to exactly same format return dt.ToString while is en-us localization
-    /// </summary>
-    /// <returns></returns>
-    public static string ToString(DateTime dt)
-    {
-        return ToShortDateString(dt) + " " + ToShortTimeString(dt);
-    }
-
-public static string ToShortTimeString(DateTime dt)
-    {
-        return string.Format("{0:mm:ss tt}", dt);
-        //return dt.Hour + ":" + dt.Minute + " " + dt.ToString("tt", CultureInfo.InvariantCulture);
-    }
+    #endregion
 }

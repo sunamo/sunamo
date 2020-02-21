@@ -101,8 +101,6 @@ namespace desktop
 
         public DateTimeFileIndex()
         {
-
-
             //Initialize(af, _ext, _ds);
         }
 

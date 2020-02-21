@@ -5,8 +5,10 @@ using System.Text;
 
 public partial class DTHelperCs
 {
+    #region ToString
+    #region Time (with s and ms)
     /// <summary>
-    /// Vrátím aktuální čas(například 12:00:00:000 a zatím A1
+    /// Return actual time(for example 12:00:00:000) and after that A1 postfix
     /// </summary>
     /// <param name="defin"></param>
     /// <returns></returns>
@@ -15,10 +17,38 @@ public partial class DTHelperCs
         DateTime dt = DateTime.Now;
         return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.colon + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + AllStrings.space + defin;
     }
+    #endregion
 
+    #region Date
     /// <summary>
-    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku " " + " den"
-    /// A3 bylo původně SqlServerHelper.DateTimeMinVal
+    /// 21.6.1989
+    /// </summary>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    public static string ToShortDate(DateTime d)
+    {
+        return SH.Join(AllStrings.dot, d.Day, d.Month, d.Year);
+    }
+    #endregion
+
+    #region Date with time (with seconds and Day of week)
+    /// <summary>
+    /// 
+    /// Wednesday, 21.6.1989 11:22 (dont fill with zero)
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
+    {
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
+    } 
+    #endregion
+    #endregion
+
+    #region Calculating
+    /// <summary>
+    /// If !A2 and time will be lower than 1 day, I got day 
+    /// A3 was be originally SqlServerHelper.DateTimeMinVal
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="calculateTime"></param>
@@ -150,20 +180,6 @@ public partial class DTHelperCs
         {
             return "Nezn\u00E1m\u00FD v\u011Bk";
         }
-    }
-
-    public static string ToShortDate(DateTime d)
-    {
-        return SH.Join(AllStrings.dot, d.Day, d.Month, d.Year);
-    }
-
-    /// <summary>
-    /// Tato metoda vrací i čas, proto má v názvu i Time
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <returns></returns>
-    public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
-    {
-        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
-    }
+    } 
+    #endregion
 }

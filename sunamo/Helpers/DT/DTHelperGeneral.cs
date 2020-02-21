@@ -5,12 +5,7 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
-    public static DateTime AddDays(ref DateTime dt, double day)
-    {
-        dt = dt.AddDays(day);
-        return dt;
-    }
-
+    #region Parse special
     /// <summary>
     /// Find four digit letter in any string
     /// </summary>
@@ -30,6 +25,10 @@ public partial class DTHelperGeneral
         }
         return string.Empty;
     }
+    #endregion
+
+    #region Set*
+    
 
     public static DateTime SetMinute(DateTime d, int v)
     {
@@ -40,48 +39,11 @@ public partial class DTHelperGeneral
     {
         return new DateTime(d.Year, d.Month, d.Day, v, d.Minute, d.Second);
     }
+    #endregion
 
+    #region Other
     /// <summary>
-    /// Subtract A2 from A1
-    /// </summary>
-    /// <param name="dt1"></param>
-    /// <param name="dt2"></param>
-    /// <returns></returns>
-    public static TimeSpan Substract(DateTime dt1, DateTime dt2)
-    {
-        TimeSpan ts = dt1 - dt2;
-        return ts;
-    }
-
-    public static DateTime SetDateToMinValue(DateTime dt)
-    {
-        DateTime minVal = DateTime.MinValue;
-        return new DateTime(minVal.Year, minVal.Month, minVal.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
-    }
-
-    /// <summary>
-    /// Return null in case of any exception
-    /// </summary>
-    /// <param name="y"></param>
-    /// <param name="m"></param>
-    /// <param name="d"></param>
-    /// <returns></returns>
-    public static DateTime? Create(int y, int m, int d)
-    {
-        try
-        {
-            return new DateTime(y, m, d);
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            return null;
-            
-        }
-        return null;
-    }
-
-    /// <summary>
-    /// Kontroluje i na MinValue a MaxValue
+    /// Check also for MinValue and MaxValue
     /// </summary>
     /// <param name="dt"></param>
     /// <returns></returns>
@@ -98,14 +60,8 @@ public partial class DTHelperGeneral
         return false;
     }
 
-    public static DateTime SetToday(DateTime ugtFirstStep)
-    {
-        DateTime t = DateTime.Today;
-        return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
-    }
-
     /// <summary>
-    /// Počítá pouze čas, vrátí jako nenormalizovaný int
+    /// Is counting only time, return as non-normalized int
     /// </summary>
     /// <param name="t"></param>
     /// <returns></returns>
@@ -119,6 +75,53 @@ public partial class DTHelperGeneral
         return vr;
     }
 
+    public static DateTime AddDays(ref DateTime dt, double day)
+    {
+        dt = dt.AddDays(day);
+        return dt;
+    }
+
+    /// <summary>
+    /// Subtract A2 from A1
+    /// </summary>
+    /// <param name="dt1"></param>
+    /// <param name="dt2"></param>
+    /// <returns></returns>
+    public static TimeSpan Substract(DateTime dt1, DateTime dt2)
+    {
+        TimeSpan ts = dt1 - dt2;
+        return ts;
+    } 
+    #endregion
+
+    #region Set*
+    public static DateTime SetDateToMinValue(DateTime dt)
+    {
+        DateTime minVal = DateTime.MinValue;
+        return new DateTime(minVal.Year, minVal.Month, minVal.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+    }
+
+    public static DateTime SetToday(DateTime ugtFirstStep)
+    {
+        DateTime t = DateTime.Today;
+        return new DateTime(t.Year, t.Month, t.Day, ugtFirstStep.Hour, ugtFirstStep.Minute, ugtFirstStep.Second);
+    } 
+    #endregion
+
+    #region Create*
+    public static DateTime? Create(int y, int m, int d)
+    {
+        try
+        {
+            return new DateTime(y, m, d);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return null;
+
+        }
+        return null;
+    }
 
     public static DateTime Create(string day, string month, string hour, string minute)
     {
@@ -131,5 +134,6 @@ public partial class DTHelperGeneral
         today = today.AddHours(double.Parse(v1));
         today = today.AddHours(double.Parse(v2));
         return today;
-    }
+    } 
+    #endregion
 }

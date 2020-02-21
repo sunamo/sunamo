@@ -268,7 +268,7 @@ namespace SunamoFtp
                 projiteSlozky.Add(nextPath);
 
 
-                string[] fse = ListDirectoryDetails();
+                var fse = ListDirectoryDetails();
                 string actualPath = ps.ActualPath;
                 foreach (string item in fse)
                 {

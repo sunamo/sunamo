@@ -695,8 +695,6 @@
   <ItemGroup>
     <None Include="Entity\ManageArtistDashTitleShared.cs~RF20d52e9.TMP" />
     <None Include="Fonts\FontAwesome.otf" />
-    <None Include="Helpers\DT\DTHelperFormalizedWithT.cs~RF68a66ba.TMP" />
-    <None Include="Helpers\DT\DTHelperFormalizedWithTShared.cs~RF66768c8.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF100e707.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF10146ea.TMP" />
     <None Include="Html\HtmlHelperTextShared.cs~RF10187fa.TMP" />

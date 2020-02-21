@@ -357,6 +357,11 @@ public partial class FS
         return fullPath + ext;
     }
 
+    public static void CreateFileIfDoesntExists(string path)
+    {
+        CreateFileIfDoesntExists<string, string>(path, null);
+    }
+
     public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if (!FS.ExistsFile<StorageFolder, StorageFile>(path, ac))

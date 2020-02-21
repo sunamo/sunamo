@@ -94,7 +94,7 @@ namespace SunamoFtp
             throw new NotImplementedException();
         }
 
-        public override string[] ListDirectoryDetails()
+        public override List<string> ListDirectoryDetails()
         {
             throw new NotImplementedException();
         }

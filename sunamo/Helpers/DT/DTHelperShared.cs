@@ -5,11 +5,7 @@ using System.Text;
 
 public partial class DTHelper
 {
-    public static string DateToStringWithDayOfWeekCS(DateTime dt)
-    {
-        return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
-    }
-
+    #region Parse
     public static DateTime IsValidTimeText(string r)
     {
         return DTHelperMulti.IsValidTimeText(r);
@@ -28,6 +24,23 @@ public partial class DTHelper
     public static DateTime ParseDateUSA(string input)
     {
         return DTHelperEn.ParseDateUSA(input);
+    }
+
+    /// <summary>
+    /// 2018-08-10T11:33:19Z
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static DateTime StringToDateTimeFormalizeDate(string p)
+    {
+        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);
+    }
+    #endregion
+
+    #region ToString
+    public static string DateToStringWithDayOfWeekCS(DateTime dt)
+    {
+        return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
     }
 
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
@@ -55,22 +68,24 @@ public partial class DTHelper
         return DTHelperMulti.DateToString(p, l);
     }
 
-    public static DateTime StringToDateTimeFormalizeDate(string p)
-    {
-        return DTHelperFormalized.StringToDateTimeFormalizeDate(p);
-    }
-
     public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(d, l, dtMinVal);
     }
 
+    public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
+    {
+        return null;
+    }
+    #endregion
+
+    #region Other
     public static DateTime OnlyDateProperties(DateTime p)
     {
         return new DateTime(p.Year, p.Month, p.Day);
     }
 
-public static DateTime CalculateStartOfPeriod(string AddedAgo)
+    public static DateTime CalculateStartOfPeriod(string AddedAgo)
     {
         return DTHelperEn.CalculateStartOfPeriod(AddedAgo);
     }
@@ -78,10 +93,8 @@ public static DateTime CalculateStartOfPeriod(string AddedAgo)
     public static string AddRightStringToTimeSpan(TimeSpan ts, bool v)
     {
         return null;
-    }
+    } 
+    #endregion
 
-    public static string DateTimeToStringWithoutDayOfWeek(DateTime actualMessageDt)
-    {
-        return null;
-    }
+
 }

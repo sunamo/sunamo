@@ -9,6 +9,14 @@ using System.Text;
 /// </summary>
 public partial class DTHelperCode
 {
+    #region ToString
+    #region Date with time (without seconds)
+    /// <summary>
+    /// 1989-06-21T11:22
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="dtMinVal"></param>
+    /// <returns></returns>
     public static string DateTimeToStringToInputDateTimeLocal(DateTime dt, DateTime dtMinVal)
     {
         if (dt == dtMinVal)
@@ -16,11 +24,15 @@ public partial class DTHelperCode
             return "";
         }
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
-    }
+    } 
+    #endregion
 
+    #region Only date
     /// <summary>
-    /// Tato metoda bude vždy bezčasová! Proto má v názvu jen Date.
-    /// Input v názvu znamená že výstup z této metody budu vkládat do inputů, nikoliv nic se vstupem A1
+    /// mm/dd/yyyy
+    /// 
+    /// Method will be always timeless! Also because of has in name only Date.
+    /// Input in name mean that output of this method I will insert only to input, it dont mean anything method argument
     /// </summary>
     /// <param name="dt"></param>
     /// <returns></returns>
@@ -29,9 +41,19 @@ public partial class DTHelperCode
         //return NH.MakeUpTo2NumbersToZero(dt.Day) + AllStrings.dot + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dot + dt.Year;
         return NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.slash + NH.MakeUpTo2NumbersToZero(dt.Day) + AllStrings.slash + dt.Year;
     }
+    #endregion
 
+
+    #region Date with time
+    /// <summary>
+    /// 19890621T11:22:00
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string DateAndTimeToStringAngularDateTime(DateTime dt)
     {
         return dt.Year + NH.MakeUpTo2NumbersToZero(dt.Month) + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
-    }
+    }  
+    #endregion
+    #endregion
 }

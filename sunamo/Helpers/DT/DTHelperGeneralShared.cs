@@ -5,8 +5,7 @@ using System.Text;
 
 public partial class DTHelperGeneral
 {
-    
-
+    #region Helper
     /// <summary>
     /// A2 = SqlServerHelper.DateTimeMinVal
     /// if A1 = A2, return 255
@@ -46,7 +45,7 @@ public partial class DTHelperGeneral
         return mal * DTConstants.secondsInDay;
     }
 
-public static string TimeInMsToSeconds(Stopwatch p)
+    public static string TimeInMsToSeconds(Stopwatch p)
     {
         p.Stop();
         string d = ((double)p.ElapsedMilliseconds / 1000).ToString();
@@ -55,10 +54,9 @@ public static string TimeInMsToSeconds(Stopwatch p)
             d = d.Substring(0, 4);
         }
         return d + "s";
-        //return Math.Round(((double)p.ElapsedMilliseconds / 999), 2).ToString() + "s";
     }
 
-public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
+    public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
     {
         byte b = CalculateAge(bday, dtMinVal);
         if (b == 255)
@@ -68,18 +66,19 @@ public static string CalculateAgeString(DateTime bday, DateTime dtMinVal)
         return b.ToString();
     }
 
-public static DateTime TodayPlusActualHour()
+    public static DateTime TodayPlusActualHour()
     {
         DateTime dt = DateTime.Today;
         return dt.AddHours(DateTime.Now.Hour);
     }
 
-public static DateTime Combine(DateTime result, DateTime time)
+    public static DateTime Combine(DateTime result, DateTime time)
     {
         result.AddHours(time.Hour);
         result.AddMinutes(time.Minute);
         result.AddSeconds(time.Second);
         result.AddMilliseconds(time.Millisecond);
         return result;
-    }
+    } 
+    #endregion
 }

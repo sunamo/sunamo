@@ -101,6 +101,7 @@ public abstract class PpkOnDriveBase<T> : List<T>
         soubor = file2;
         if (load)
         {
+            FS.CreateFileIfDoesntExists(file2);
             Load();
         }
     }
@@ -118,12 +119,14 @@ public abstract class PpkOnDriveBase<T> : List<T>
         }
         _ukladat = save;
         soubor = file;
+        FS.CreateFileIfDoesntExists(file);
         Load(load);
     }
 
     public PpkOnDriveBase(bool open, bool load)
     {
         _otevrit = open;
+
         Load(load);
     }
     #endregion

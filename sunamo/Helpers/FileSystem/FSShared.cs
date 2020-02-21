@@ -44,6 +44,8 @@ public partial class FS
             getFilesArgs = new GetFilesArgs();
         }
         var folders = SH.Split(folder2, AllStrings.sc);
+        CA.PostfixIfNotEnding(AllStrings.bs, folders);
+
         List<string> list = new List<string>();
         foreach (var folder in folders)
         {

@@ -84,7 +84,6 @@
 //                string fnwoe = FS.GetFileNameWithoutExtension(item);
 //                if (SH.MatchWildcard(fnwoe, mask))
 //                {
-
 //                    DateTime? date = DateTime.MinValue;
 //                    string postfix = "";
 //                    int? serie = null;

@@ -3,8 +3,15 @@ using System;
 
 public partial class DTHelperFormalized
 {
-
-public static string FormatDateTime(DateTime dt, DateTimeFormatStyles fullCalendar)
+    #region ToString
+    #region Date with time (without seconds)
+    /// <summary>
+    /// 2011-10-18 10:30
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="fullCalendar"></param>
+    /// <returns></returns>
+    public static string FormatDateTime(DateTime dt, DateTimeFormatStyles fullCalendar)
     {
         if (fullCalendar == DateTimeFormatStyles.FullCalendar)
         {
@@ -14,14 +21,18 @@ public static string FormatDateTime(DateTime dt, DateTimeFormatStyles fullCalend
 
         return "";
     }
+    #endregion
 
-/// <summary>
-    /// Vrátí formalizované datum - tedyu např. 1989-06-21
+    #region Date
+    /// <summary>
+    /// 1989-06-21
     /// </summary>
     /// <param name = "dt"></param>
     /// <returns></returns>
     public static string DateTimeToStringFormalizeDate(DateTime dt)
     {
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day);
-    }
+    }  
+    #endregion
+    #endregion
 }

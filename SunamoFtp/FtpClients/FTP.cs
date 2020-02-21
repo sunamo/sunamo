@@ -933,7 +933,7 @@ namespace SunamoFtp
             #endregion
         }
 
-        public override string[] ListDirectoryDetails()
+        public override List<string> ListDirectoryDetails()
         {
             List<string> vr = new List<string>();
             String _Path = UH.Combine(true, remoteHost, ps.ActualPath);

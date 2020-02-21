@@ -111,7 +111,7 @@ namespace SunamoFtp
         public abstract bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName);
         public abstract void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td);
         public abstract void CreateDirectoryIfNotExists(string dirName);
-        public abstract string[] ListDirectoryDetails();
+        public abstract List<string> ListDirectoryDetails();
         public abstract Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS);
         public abstract void chdirLite(string dirName);
 

@@ -4,7 +4,10 @@ using System.Text;
 
 public partial class DTHelperMulti
 {
+    #region ToString
     /// <summary>
+    /// 21.6.1989 11:22 (fill zero)
+    /// 6/21/1989 11:22 (fill zero)
     /// Vrátí datum a čas v českém formátu bez ms a s
     /// </summary>
     /// <param name="d"></param>
@@ -25,14 +28,64 @@ public partial class DTHelperMulti
 
         if (l == Langs.cs)
         {
+            // 21.6.1989 11:22 (fill zero)
             return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
         }
         else
         {
+            // 6/21/1989 11:22 (fill zero)
             return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
         }
     }
 
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static string DateToString(DateTime p, Langs l)
+    {
+        if (l == Langs.cs)
+        {
+            return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
+        }
+        return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
+    }
+
+    /// <summary>
+    /// 21.6.1989 (středa) / 6/21/1989 (wednesday)
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <param name="l"></param>
+    /// <returns></returns>
+    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    {
+        int day = (int)dateTime.DayOfWeek;
+        if (day == 0)
+        {
+            day = 6;
+        }
+        else
+        {
+            day--;
+        }
+
+        string dayOfWeek = DTConstants.daysInWeekEN[day];
+        if (l == Langs.cs)
+        {
+            dayOfWeek = DTConstants.daysInWeekCS[day];
+        }
+
+        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
+    } 
+    #endregion
+
+    #region IsValid*
+    /// <summary>
+    /// Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
+    /// </summary>
+    /// <param name="r"></param>
+    /// <returns></returns>
     public static DateTime IsValidDateText(string r)
     {
         DateTime dt = DateTime.MinValue;
@@ -52,7 +105,12 @@ public partial class DTHelperMulti
         return dt;
     }
 
-
+    /// <summary>
+    /// A1 can be in en or cs
+    /// parse time after first space
+    /// </summary>
+    /// <param name="datum"></param>
+    /// <returns></returns>
     public static DateTime IsValidDateTimeText(string datum)
     {
         DateTime vr = DateTime.MinValue;
@@ -63,6 +121,7 @@ public partial class DTHelperMulti
             var cas2 = DateTime.Today;
             var datum3 = datum.Substring(0, indexMezery);
             var cas3 = datum.Substring(indexMezery + 1);
+
             if (datum3.IndexOf(AllChars.dot) != -1)
             {
                 datum2 = DTHelperCs.ParseDateCzech(datum3);
@@ -107,40 +166,6 @@ public partial class DTHelperMulti
             }
         }
         return dt;
-    }
-
-    /// <summary>
-    /// Vrátí datum v českém formátu(například 21.6.1989)
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static string DateToString(DateTime p, Langs l)
-    {
-        if (l == Langs.cs)
-        {
-            return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
-        }
-        return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
-    }
-
-    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
-    {
-        int day = (int)dateTime.DayOfWeek;
-        if (day == 0)
-        {
-            day = 6;
-        }
-        else
-        {
-            day--;
-        }
-
-        string dayOfWeek = DTConstants.daysInWeekEN[day];
-        if (l == Langs.cs)
-        {
-            dayOfWeek = DTConstants.daysInWeekCS[day];
-        }
-
-        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
-    }
+    } 
+    #endregion
 }

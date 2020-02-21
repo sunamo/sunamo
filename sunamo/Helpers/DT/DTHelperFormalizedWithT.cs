@@ -6,23 +6,35 @@ using System;
 /// </summary>
 public partial class DTHelperFormalizedWithT
 {
+    #region ToString
+    /// <summary>
+    /// 1989-06-21T00:00:00.000Z (Z/TZD/+hh:mm/-hh:mm - timezone designation)
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string DateTimeToStringStringifyDateEmptyTime(DateTime dt)
     {
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T00:00:00.000Z";
     }
 
+    /// <summary>
+    /// 1989-06-21Thh:mm:ss.000Z
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string DateTimeToStringStringifyDateTime(DateTime dt)
     {
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.dot + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + "Z";
     }
 
     /// <summary>
-    /// Vrátí normalizovaný datum a čas, to znamená že bude oddělen T, jednotlivé části datumu budou odděleny - a času :
+    /// 1989-06-21T11:22:00
     /// </summary>
     /// <param name = "dt"></param>
     /// <returns></returns>
     public static string DateAndTimeToStringFormalizeDate(DateTime dt)
     {
         return dt.Year + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Month) + AllStrings.dash + NH.MakeUpTo2NumbersToZero(dt.Day) + "T" + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second);
-    }
+    } 
+    #endregion
 }

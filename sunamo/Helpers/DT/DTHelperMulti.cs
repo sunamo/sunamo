@@ -5,8 +5,9 @@ using System.Text;
 
 public partial class DTHelperMulti
 {
+    #region Other
     /// <summary>
-    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
+    /// If A1 could be lower than 1d, return 1d
     /// </summary>
     /// <param name="ts"></param>
     /// <param name="calculateTime"></param>
@@ -283,17 +284,8 @@ public partial class DTHelperMulti
         }
     }
 
-    public static string DateToStringOrSE(DateTime p, Langs l, DateTime dtMinVal)
-    {
-        if (p == dtMinVal)
-        {
-            return "";
-        }
-        return DTHelperMulti.DateToString(p, l);
-    }
-
     /// <summary>
-    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
+    /// If A1 could be lower than 1d, return 1d
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="calculateTime"></param>
@@ -460,20 +452,55 @@ public partial class DTHelperMulti
 
         return s;
     }
+    #endregion
 
+    #region ToString
     /// <summary>
-    /// Vyparsuje datum ve formátu měsíc/den/rok
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="l"></param>
+    /// <param name="dtMinVal"></param>
+    /// <returns></returns>
+    public static string DateToStringOrSE(DateTime p, Langs l, DateTime dtMinVal)
+    {
+        if (p == dtMinVal)
+        {
+            return "";
+        }
+        return DTHelperMulti.DateToString(p, l);
+    } 
+    #endregion
+
+    
+
+    #region Parse
+    /// <summary>
+    /// m/d/yyyy / d/m/yyyy
     /// </summary>
     /// <param name="p"></param>
     /// <returns></returns>
     public static DateTime? ParseDateMonthDayYear(string p)
     {
         var s = SH.SplitNone(p, AllStrings.slash);
-        DateTime vr;
-        if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
+        if (s.Count == 1)
         {
-            return vr;
+            s = SH.SplitNone(p, AllStrings.dot);
+            DateTime vr;
+            if (DateTime.TryParse(s[0] + AllStrings.dot + s[1] + AllStrings.dot + s[2], out vr))
+            {
+                return vr;
+            }
+        }
+        else
+        {
+            DateTime vr;
+            if (DateTime.TryParse(s[1] + AllStrings.dot + s[0] + AllStrings.dot + s[2], out vr))
+            {
+                return vr;
+            }
         }
         return null;
-    }
+    } 
+    #endregion
 }

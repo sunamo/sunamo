@@ -1,11 +1,12 @@
 ﻿using System;
-
-
 public partial class DTHelperCs
 {
+    static Type type = typeof(DTHelperCs);
+
+    #region ToString
+    #region Only date
     /// <summary>
-    /// Tato metoda bude vždy bezčasová! Proto má v názvu jen Date.
-    /// 
+    /// Středa, 21.6.1989
     /// </summary>
     /// <param name="dt"></param>
     /// <returns></returns>
@@ -13,34 +14,14 @@ public partial class DTHelperCs
     {
         return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year;
     }
+    #endregion
 
+    #region Time with seconds
     /// <summary>
-    /// Vrátí český název dne v týdnu podle A1
+    /// 11:22 dont fill up with zero
     /// </summary>
-    /// <param name="dayOfWeek"></param>
+    /// <param name="from"></param>
     /// <returns></returns>
-    public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
-    {
-        switch (dayOfWeek)
-        {
-            case DayOfWeek.Monday:
-                return DTConstants.Pondeli;
-            case DayOfWeek.Tuesday:
-                return DTConstants.Utery;
-            case DayOfWeek.Wednesday:
-                return DTConstants.Streda;
-            case DayOfWeek.Thursday:
-                return DTConstants.Ctvrtek;
-            case DayOfWeek.Friday:
-                return DTConstants.Patek;
-            case DayOfWeek.Saturday:
-                return DTConstants.Sobota;
-            case DayOfWeek.Sunday:
-                return DTConstants.Nedele;
-        }
-        throw new Exception("Nezn\u00E1m\u00FD den v t\u00FDdnu");
-    }
-
     public static string ToShortTimeFromSeconds(int from)
     {
         var dt = DateTime.MinValue;
@@ -50,23 +31,8 @@ public partial class DTHelperCs
     }
 
     /// <summary>
-    /// Must be int[] due to params[]
-    /// </summary>
-    /// <param name="parts"></param>
-    /// <param name="fillUpByZeros"></param>
-    /// <returns></returns>
-    static string ToShortTimeWorker(int[] parts, bool fillUpByZeros)
-    {
-        if (fillUpByZeros)
-        {
-            return SH.JoinMakeUpTo2NumbersToZero(AllStrings.colon, parts
-                );
-        }
-        return SH.Join(AllStrings.colon, parts);
-    }
-
-    /// <summary>
     /// With seconds
+    /// 11:22:00 (depends on A2)
     /// </summary>
     /// <param name="value"></param>
     /// <param name="fillUpByZeros"></param>
@@ -78,8 +44,26 @@ public partial class DTHelperCs
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
+    #endregion
 
     /// <summary>
+    /// Must be int[] due to params[]
+    /// </summary>
+    /// <param name="parts"></param>
+    /// <param name="fillUpByZeros"></param>
+    /// <returns></returns>
+    static string ToShortTimeWorker(int[] parts, bool fillUpByZeros)
+    {
+        if (fillUpByZeros)
+        {
+            return SH.JoinMakeUpTo2NumbersToZero(AllStrings.colon, parts);
+        }
+        return SH.Join(AllStrings.colon, parts);
+    }
+
+    #region Time without seconds
+    /// <summary>
+    /// 11:22
     /// Without seconds
     /// </summary>
     /// <param name="value"></param>
@@ -92,9 +76,15 @@ public partial class DTHelperCs
 
         return ToShortTimeWorker(parts, fillUpByZeros);
     }
+    #endregion
+    #endregion
 
+    #region Parse
+    #region Time with seconds
     /// <summary>
+    /// hh:mm:ss
     /// If fail, return DT.MinValue
+    /// Seconds can be omit
     /// </summary>
     /// <param name="t"></param>
     /// <returns></returns>
@@ -131,8 +121,15 @@ public partial class DTHelperCs
             }
         }
         return vr;
-    }
+    } 
+    #endregion
 
+    #region Date
+    /// <summary>
+    /// 21.6.1989
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public static DateTime ParseDateCzech(string input)
     {
         DateTime vr = DateTime.MinValue;
@@ -180,18 +177,23 @@ public partial class DTHelperCs
             }
         }
         return vr;
-    }
+    }  
+    #endregion
+    #endregion
 
+    #region Helper
     /// <summary>
-    /// Tato metoda zatím funguje pouze česky, ať ji předáš parametr Langs jaký chceš..
-    /// POkud bude !A2 a bude čas menší než 1 den, vrátí mi pro tuto časovou jednotku "1 den"
-    /// A4 bylo původně SqlServerHelper.DateTimeMinVal
     /// </summary>
     /// <param name="dateTime"></param>
     /// <param name="calculateTime"></param>
     /// <returns></returns>
     public static string CalculateAgeAndAddRightStringKymCim(DateTime dateTime, bool calculateTime, Langs l, DateTime dtMinVal)
     {
+        if (l != Langs.cs)
+        {
+            ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), l);
+        }
+
         if (dateTime == dtMinVal)
         {
             return "";
@@ -321,8 +323,36 @@ public partial class DTHelperCs
         }
     }
 
-public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
+    public static string IntervalToString(DateTime oDTStart, DateTime oDTEnd, Langs l, DateTime dtMinVal)
     {
         return DTHelperMulti.DateTimeToString(oDTStart, l, dtMinVal) + AllStrings.swda + DTHelperMulti.DateTimeToString(oDTEnd, l, dtMinVal);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dayOfWeek"></param>
+    /// <returns></returns>
+    public static string DayOfWeek2DenVTydnu(DayOfWeek dayOfWeek)
+    {
+        switch (dayOfWeek)
+        {
+            case DayOfWeek.Monday:
+                return DTConstants.Pondeli;
+            case DayOfWeek.Tuesday:
+                return DTConstants.Utery;
+            case DayOfWeek.Wednesday:
+                return DTConstants.Streda;
+            case DayOfWeek.Thursday:
+                return DTConstants.Ctvrtek;
+            case DayOfWeek.Friday:
+                return DTConstants.Patek;
+            case DayOfWeek.Saturday:
+                return DTConstants.Sobota;
+            case DayOfWeek.Sunday:
+                return DTConstants.Nedele;
+        }
+        throw new Exception("Nezn\u00E1m\u00FD den v t\u00FDdnu");
+    }
+    #endregion
 }
