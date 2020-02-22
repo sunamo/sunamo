@@ -26,6 +26,11 @@ public static partial class EnumHelper
         return sb.ToString().TrimEnd(comma[0]);
     }
 
+    public static List<string> GetNames(Type type)
+    {
+        return Enum.GetNames(type).ToList();
+    }
+
     /// <summary>
     /// Get values include zero and All
     /// Pokud bude A1 null nebo nebude obsahovat žádný element T, vrátí A1
@@ -35,7 +40,7 @@ public static partial class EnumHelper
     /// <typeparam name = "T"></typeparam>
     /// <param name = "v"></param>
     /// <returns></returns>
-    public static List<T> GetEnumList<T>(List<T> _def, string[] v)
+    public static List<T> GetEnumList<T>(List<T> _def, List<string> v)
         where T : struct
     {
         if (v == null)

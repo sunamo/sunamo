@@ -24,7 +24,7 @@ namespace SunamoFtp
         /// <param name="fse"></param>
         /// <param name="fileLenght"></param>
         /// <returns></returns>
-        public static bool IsFileOnHosting(string item2, string[] fse, long fileLenght)
+        public static bool IsFileOnHosting(string item2, List<string> fse, long fileLenght)
         {
             item2 = FS.GetFileName(item2);
             foreach (string item in fse)
@@ -104,7 +104,7 @@ namespace SunamoFtp
             return remFileName.StartsWith("ftp" + ":" + "//");
         }
 
-        public static IEnumerable<string> GetDirectories(string[] fse)
+        public static IEnumerable<string> GetDirectories(List<string> fse)
         {
             List<string> vr = new List<string>();
             foreach (var item in fse)

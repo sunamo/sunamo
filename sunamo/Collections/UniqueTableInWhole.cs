@@ -102,14 +102,14 @@ namespace sunamo.Collections
             return true;
         }
 
-        public void AddCells(string[] c)
+        public void AddCells(List<string> c)
         {
-            if (c.Length != _cells)
+            if (c.Count != _cells)
             {
                 throw new Exception("Different count input elements of array in UniqueTableInWhole.AddCells");
             }
 
-            for (int i = 0; i < c.Length; i++)
+            for (int i = 0; i < c.Count; i++)
             {
                 _rows[_actualRow, i] = c[i];
             }

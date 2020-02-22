@@ -23,14 +23,14 @@ public partial class FS
     /// <param name="item2"></param>
     /// <param name="exts"></param>
     /// <returns></returns>
-    public static string[] GetFilesOfExtensions(string item2, SearchOption so, params string[] exts)
+    public static List<string> GetFilesOfExtensions(string item2, SearchOption so, params string[] exts)
     {
         List<string> vr = new List<string>();
         foreach (string item in exts)
         {
             vr.AddRange(FS.GetFiles(item2, AllStrings.asterisk + item, so));
         }
-        return vr.ToArray();
+        return vr;
     }
 
     /// <summary>
@@ -357,19 +357,6 @@ public partial class FS
         return fullPath + ext;
     }
 
-    public static void CreateFileIfDoesntExists(string path)
-    {
-        CreateFileIfDoesntExists<string, string>(path, null);
-    }
-
-    public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
-    {
-        if (!FS.ExistsFile<StorageFolder, StorageFile>(path, ac))
-        {
-            TF.WriteAllBytes<StorageFolder, StorageFile>(path, CA.ToList<byte>(), ac);
-        }
-    }
-
     /// <summary>
     /// Remove all extensions, not only one
     /// </summary>
@@ -423,19 +410,6 @@ public partial class FS
         // 237+11 - bad 
 
         return Consts.UncLongPath + actualFilePath;
-    }
-
-    public static string ReplaceInvalidFileNameChars(string filename)
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var item in filename)
-        {
-            if (!s_invalidFileNameChars.Contains(item))
-            {
-                sb.Append(item);
-            }
-        }
-        return sb.ToString();
     }
 
 
@@ -859,7 +833,7 @@ public partial class FS
         {
             var backup = l[i];
             var p = SH.SplitToPartsFromEnd(l[i], 2, AllChars.bs);
-            if (p.Length == 1)
+            if (p.Count == 1)
             {
                 path = string.Empty;
             }
@@ -949,10 +923,11 @@ public partial class FS
         DeleteAllRecursively(p, true);
     }
 
-    public static string[] OnlyExtensions(List<string> cesta)
+    public static List<string> OnlyExtensions(List<string> cesta)
     {
-        string[] vr = new string[cesta.Count];
-        for (int i = 0; i < vr.Length; i++)
+        List<string> vr = new List<string>( cesta.Count);
+        CA.InitFillWith(vr, cesta.Count);
+        for (int i = 0; i < vr.Count; i++)
         {
             vr[i] = FS.GetExtension(cesta[i]);
         }
@@ -979,20 +954,22 @@ public partial class FS
         return extDict;
     }
 
-    public static string[] OnlyExtensionsToLower(List<string> cesta)
+    public static List<string> OnlyExtensionsToLower(List<string> cesta)
     {
-        string[] vr = new string[cesta.Count];
-        for (int i = 0; i < vr.Length; i++)
+        List<string> vr = new List<string>( cesta.Count);
+        CA.InitFillWith(vr, cesta.Count);
+        for (int i = 0; i < vr.Count; i++)
         {
             vr[i] = FS.GetExtension(cesta[i]).ToLower();
         }
         return vr;
     }
 
-    public static string[] OnlyExtensionsToLowerWithPath(List<string> cesta)
+    public static List<string> OnlyExtensionsToLowerWithPath(List<string> cesta)
     {
-        string[] vr = new string[cesta.Count];
-        for (int i = 0; i < vr.Length; i++)
+        List<string> vr = new List<string>( cesta.Count);
+        CA.InitFillWith(vr, cesta.Count);
+        for (int i = 0; i < vr.Count; i++)
         {
             string path, fn, ext;
             FS.GetPathAndFileName(cesta[i], out path, out fn, out ext);
@@ -1320,9 +1297,10 @@ public partial class FS
 
 
 
-    public static string[] OnlyNamesWithoutExtensionCopy(List<string> p2)
+    public static List<string> OnlyNamesWithoutExtensionCopy(List<string> p2)
     {
-        string[] p = new string[p2.Count];
+        List<string> p = new List<string>( p2.Count);
+        CA.InitFillWith(p, p2.Count);
         for (int i = 0; i < p2.Count; i++)
         {
             p[i] = FS.GetFileNameWithoutExtension(p2[i]);
@@ -1330,10 +1308,11 @@ public partial class FS
         return p;
     }
 
-    public static string[] OnlyNamesWithoutExtension(string appendToStart, string[] fullPaths)
+    public static List<string> OnlyNamesWithoutExtension(string appendToStart, List<string> fullPaths)
     {
-        string[] ds = new string[fullPaths.Length];
-        for (int i = 0; i < fullPaths.Length; i++)
+        List<string> ds = new List<string>( fullPaths.Count);
+        CA.InitFillWith(ds, fullPaths.Count);
+        for (int i = 0; i < fullPaths.Count; i++)
         {
             ds[i] = appendToStart + FS.GetFileNameWithoutExtension(fullPaths[i]);
         }

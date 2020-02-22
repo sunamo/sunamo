@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
 /// <summary>
@@ -117,7 +118,7 @@ public static partial class DW
     /// InitialDirectory is MyDocuments.
     /// </summary>
     /// <returns></returns>
-    public static string[] SelectOfFiles()
+    public static List<string> SelectOfFiles()
     {
         return SelectOfFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
     }
@@ -130,7 +131,7 @@ public static partial class DW
     /// <param name = "filtr"></param>
     /// <param name = "initialFolder"></param>
     /// <returns></returns>
-    public static string[] SelectOfFiles(string filtr, string initialFolder)
+    public static List<string> SelectOfFiles(string filtr, string initialFolder)
     {
         return SelectOfFiles(filtr, initialFolder, true);
     }

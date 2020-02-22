@@ -205,7 +205,7 @@ public partial class UriWebServices
         /// </summary>
         public const string aliexpress = "https://www.aliexpress.com/wholesale?SearchText=%s";
 
-        public static readonly string[] All = new string[] { ebay, witrigs, aliexpress };
+        public static readonly List<string> All = new List<string> { ebay, witrigs, aliexpress };
 
         public static void SearchInAll(string what)
         {
@@ -240,7 +240,7 @@ Template for which I will find, have to be in derivates the same:
 
         public const string letGoCzPoruba = "https://www.letgo.cz/poruba_g50000007359/q-%" ;
 
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
+        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {
@@ -318,7 +318,7 @@ Template for which I will find, have to be in derivates the same:
         public const string letGoCz = "https://www.letgo.cz/items/q-%" ;
         public const string aukroCz = "https://aukro.cz/vysledky-vyhledavani?text=%" ;
 
-        public static readonly string[] All = new string[] { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
+        public static readonly List<string> All = new List<string> { bazosCz, hyperinzerceCz, bazarCz, sBazarCz, avizoCz, letGoCz, aukroCz };
 
         public static void SearchInAll(string what)
         {

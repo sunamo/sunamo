@@ -112,7 +112,7 @@ public class StoredProcedures : IStoredProcedures
             return vr;
         }
 
-        public string GetColumns(string[] sloupce)
+        public string GetColumns(List<string> sloupce)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("(");
@@ -126,7 +126,7 @@ public class StoredProcedures : IStoredProcedures
 
         public string GetColumns(string tabulka)
         {
-            string[] sloupce = StoredProceduresI.ci.VratNazvySloupcuTabulky(tabulka);
+            List<string> sloupce = StoredProceduresI.ci.VratNazvySloupcuTabulky(tabulka);
             StringBuilder sb = new StringBuilder();
             sb.Append("(");
             foreach (String var in sloupce)
@@ -137,7 +137,7 @@ public class StoredProcedures : IStoredProcedures
             return vr;
         }
 
-        public string GetColumnsWithoutBracets(string[] sloupce)
+        public string GetColumnsWithoutBracets(List<string> sloupce)
         {
             StringBuilder sb = new StringBuilder();
             //sb.Append("(");

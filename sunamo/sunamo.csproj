@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />

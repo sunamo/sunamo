@@ -61,8 +61,6 @@ public static partial class CA
         return result;
     }
 
-
-
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
 
@@ -455,7 +453,7 @@ public static partial class CA
         return celkove;
     }
 
-    public static string[] WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
+    public static List<string> WrapWithIf(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
         for (int i = 0; i < whereIsUsed2.Length; i++)
         {
@@ -464,7 +462,7 @@ public static partial class CA
                 whereIsUsed2[i] = wrapWith + whereIsUsed2[i] + wrapWith;
             }
         }
-        return whereIsUsed2;
+        return whereIsUsed2.ToList();
     }
 
     /// <summary>
@@ -491,10 +489,10 @@ public static partial class CA
     }
 
 
-    public static bool HasFirstItemLength(string[] notContains)
+    public static bool HasFirstItemLength(List<string> notContains)
     {
         string t = "";
-        if (notContains.Length > 0)
+        if (notContains.Count > 0)
         {
             t = notContains[0].Trim();
         }
@@ -512,7 +510,7 @@ public static partial class CA
         return c;
     }
 
-    public static string GetTextAfterIfContainsPattern(string input, string ifNotFound, string[] uriPatterns)
+    public static string GetTextAfterIfContainsPattern(string input, string ifNotFound, List<string> uriPatterns)
     {
         foreach (var item in uriPatterns)
         {
@@ -549,9 +547,9 @@ public static partial class CA
         return folders;
     }
 
-    public static string[] WithoutEndSlash(string[] folders)
+    public static List<string> WithoutEndSlash(List<string> folders)
     {
-        for (int i = 0; i < folders.Length; i++)
+        for (int i = 0; i < folders.Count; i++)
         {
             folders[i] = FS.WithoutEndSlash(folders[i]);
         }
@@ -652,7 +650,7 @@ public static partial class CA
         }
     }
 
-    public static List<string> GetRowOfTable(List<string[]> _dataBinding, int i2)
+    public static List<string> GetRowOfTable(List<List<string>> _dataBinding, int i2)
     {
         List<string> vr = new List<string>();
         for (int i = 0; i < _dataBinding.Count; i++)
@@ -676,24 +674,7 @@ public static partial class CA
         return mySites;
     }
 
-    /// <summary>
-    /// Direct edit with List. With array is more diffucult, so not
-    /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
-    /// </summary>
-    /// <param name="mySites"></param>
-    /// <returns></returns>
-    public static string[] RemoveStringsEmpty(string[] mySites)
-    {
-        List<string> dd = new List<string>();
-        foreach (string item in mySites)
-        {
-            if (item != "")
-            {
-                dd.Add(item);
-            }
-        }
-        return dd.ToArray();
-    }
+    
 
     /// <summary>
     /// Return first A2 elements of A1 or A1 if A2 is bigger
@@ -924,14 +905,15 @@ public static partial class CA
     /// <param name="input"></param>
     /// <param name="requiredLength"></param>
     /// <returns></returns>
-    public static string[] ToSize(string[] input, int requiredLength)
+    public static List<string> ToSize(List<string> input, int requiredLength)
     {
-        string[] returnArray = null;
-        int realLength = input.Length;
+        List<string> returnArray = null;
+        int realLength = input.Count;
 
         if (realLength > requiredLength)
         {
-            returnArray = new string[requiredLength];
+            returnArray = new List<string>( requiredLength);
+            CA.InitFillWith(returnArray, requiredLength);
             for (int i = 0; i < requiredLength; i++)
             {
                 returnArray[i] = input[i];
@@ -944,7 +926,8 @@ public static partial class CA
         }
         else if (realLength < requiredLength)
         {
-            returnArray = new string[requiredLength];
+            returnArray = new List<string>(requiredLength);
+            CA.InitFillWith(returnArray, requiredLength);
             int i = 0;
             for (; i < realLength; i++)
             {
@@ -982,9 +965,9 @@ public static partial class CA
     /// <param name="v"></param>
     /// <param name="toReplace"></param>
     /// <returns></returns>
-    public static string[] Prepend(string v, string[] toReplace)
+    public static List<string> Prepend(string v, String[] toReplace)
     {
-        return Prepend(v, toReplace.ToList()).ToArray();
+        return Prepend(v, toReplace.ToList());
     }
 
     public static List<string> Format(string uninstallNpmPackageGlobal, List<string> globallyInstalledTsDefinitions)

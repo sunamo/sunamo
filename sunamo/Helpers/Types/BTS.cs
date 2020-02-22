@@ -479,9 +479,10 @@ public static partial class BTS
     #endregion
 
     #region Casting between array - cant commented because it wasnt visible between 
-    public static string[] CastArrayObjectToString(object[] args)
+    public static List<string> CastArrayObjectToString(object[] args)
     {
-        string[] vr = new string[args.Length];
+        List<string> vr = new List<string>(args.Length);
+        CA.InitFillWith(vr, args.Length);
         for (int i = 0; i < args.Length; i++)
         {
             vr[i] = args[i].ToString();
@@ -489,9 +490,9 @@ public static partial class BTS
         return vr;
     }
 
-    public static string[] CastArrayIntToString(int[] args)
+    public static List<string> CastArrayIntToString(int[] args)
     {
-        string[] vr = new string[args.Length];
+        List<string> vr = new List<string>( args.Length);
         for (int i = 0; i < args.Length; i++)
         {
             vr[i] = args[i].ToString();
@@ -501,7 +502,7 @@ public static partial class BTS
     #endregion
 
     #region Castint to Array - commented, its in used only List
-    //public static int[] CastArrayStringToInt(string[] plemena)
+    //public static int[] CastArrayStringToInt(List<string> plemena)
     //    {
     //        int[] vr = new int[plemena.Length];
     //        for (int i = 0; i < plemena.Length; i++)
@@ -521,9 +522,9 @@ public static partial class BTS
     //        return vr;
     //    }
 
-    //    public static string[] CastArrayObjectToString(object[] args)
+    //    public static List<string> CastArrayObjectToString(object[] args)
     //    {
-    //        string[] vr = new string[args.Length];
+    //        List<string> vr = new string[args.Length];
     //        for (int i = 0; i < args.Length; i++)
     //        {
     //            vr[i] = args[i].ToString();
@@ -533,9 +534,9 @@ public static partial class BTS
 
 
 
-    //public static string[] CastArrayIntToString(int[] args)
+    //public static List<string> CastArrayIntToString(int[] args)
     //    {
-    //        string[] vr = new string[args.Length];
+    //        List<string> vr = new string[args.Length];
     //        for (int i = 0; i < args.Length; i++)
     //        {
     //            vr[i] = args[i].ToString();
@@ -752,7 +753,7 @@ public static partial class BTS
     }
     #endregion
 
-    public static string[] GetOnlyNonNullValues(params string[] args)
+    public static List<string> GetOnlyNonNullValues(params string[] args)
     {
         List<string> vr = new List<string>();
         for (int i = 0; i < args.Length; i++)
@@ -765,7 +766,7 @@ public static partial class BTS
                 vr.Add(hodnota.ToString());
             }
         }
-        return vr.ToArray();
+        return vr;
     }
 
     #region Get*ValueForType

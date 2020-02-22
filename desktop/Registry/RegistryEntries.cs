@@ -12,12 +12,12 @@ using System.Text;
     public class PolozkyRegistru //: ListViewItem
     {
         #region DPP
-        public string[] Datas;
-        public string[] Values;
+        public List<string> Datas;
+        public List<string> Values;
         /// <summary>
         /// Jedna se sice o pole, ale je u vsech stejna
         /// </summary>
-        public string[] Paths; 
+        public List<string> Paths; 
         bool pridavatPostupne = false;
         /// <summary>
         /// Kolik polozek bylo naplneno.
@@ -33,9 +33,14 @@ using System.Text;
         /// <param name="pridavatPostupne"></param>
         public PolozkyRegistru(int pocet, bool pridavatPostupne)
         {
-            Datas = new string[pocet];
-            Values = new string[pocet];
-            Paths = new string[pocet];
+        Datas = new List<string>();
+        Values = new List<string>();
+        Paths = new List<string>();
+
+        CA.InitFillWith(Datas, pocet);
+        CA.InitFillWith(Values, pocet);
+        CA.InitFillWith(Paths, pocet);
+
             this.pridavatPostupne = pridavatPostupne;
         }
         #endregion 

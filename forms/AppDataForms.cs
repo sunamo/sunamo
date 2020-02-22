@@ -23,7 +23,7 @@ namespace forms.Essential
 //        public static void LoadFiles(AppFolders ap, string mask, ComboBox cb)
 //        {
 //            cb.Items.Clear();
-//            string[] files = FS.GetFiles(AppData.ci.GetFolder(ap), mask);
+//            List<string> files = FS.GetFiles(AppData.ci.GetFolder(ap), mask);
 //            files = FS.OnlyNames(files);
 //            foreach (var item in files)
 //            {

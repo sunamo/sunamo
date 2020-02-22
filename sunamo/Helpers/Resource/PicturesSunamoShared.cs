@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 public partial class PicturesSunamo
 {
-    private static string[] s_supportedExtensionForResize = new string[] {
+    private static List<string> s_supportedExtensionForResize = new List<string> {
         "png", "jpg", "jpeg", "gif"
     };
 
@@ -58,7 +58,7 @@ public partial class PicturesSunamo
         {
             ext = "jpeg";
         }
-        for (int i = 0; i < s_supportedExtensionForResize.Length; i++)
+        for (int i = 0; i < s_supportedExtensionForResize.Count; i++)
         {
             if (s_supportedExtensionForResize[i] == ext)
             {

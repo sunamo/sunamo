@@ -209,7 +209,7 @@ namespace SunamoFtp
         {
 
             i++;
-            string[] smazat = ListDirectoryDetails();
+            List<string> smazat = ListDirectoryDetails();
             //bool pridano = false;
             td.Add(new DirectoriesToDelete { hloubka = i });
             Dictionary<string, List<string>> ds = null;
@@ -336,7 +336,7 @@ namespace SunamoFtp
         /// </summary>
         /// <param name="mask"></param>
         /// <returns></returns>
-        public string[] getFileList(string mask)
+        public List<string> getFileList(string mask)
         {
             if (pocetExc < maxPocetExc)
             {
@@ -364,7 +364,7 @@ namespace SunamoFtp
                         line = reader.ReadLine();
                     }
                     result.Remove(result.ToString().LastIndexOf('\n'), 1);
-                    return result.ToString().Split('\n');
+                    return SH.Split( result.ToString(), '\n');
                 }
                 catch (Exception ex)
                 {
@@ -380,7 +380,7 @@ namespace SunamoFtp
                     if (pocetExc == 2)
                     {
                         pocetExc = 0;
-                        string[] downloadFiles = new string[0];
+                        List<string> downloadFiles = new List<string>();
                         return downloadFiles;
                     }
                     else
@@ -403,7 +403,7 @@ namespace SunamoFtp
             else
             {
                 pocetExc = 0;
-                string[] downloadFiles = new string[0];
+                List<string> downloadFiles = new List<string>();
                 return downloadFiles;
             }
 
@@ -433,7 +433,7 @@ namespace SunamoFtp
             }
 
             bool nalezenAdresar = false;
-            string[] fse = null;
+            List<string> fse = null;
             bool vseMa8 = false;
             while (!vseMa8)
             {
@@ -490,7 +490,7 @@ namespace SunamoFtp
 
 
             bool nalezenAdresar = false;
-            string[] fse = null;
+            List<string> fse = null;
             bool vseMa8 = false;
             while (!vseMa8)
             {
@@ -668,12 +668,12 @@ namespace SunamoFtp
                     }
                 }
                 pocetExc = 0;
-                return vr.ToArray();
+                return vr;
             }
             else
             {
                 pocetExc = 0;
-                return vr.ToArray();
+                return vr;
             }
         }
 
@@ -955,7 +955,7 @@ namespace SunamoFtp
             // Musí se do ní ukládat cesta k celé složce, nikoliv jen název aktuální složky
             List<string> projeteSlozky = new List<string>();
             Dictionary<string, List<string>> vr = new Dictionary<string, List<string>>();
-            string[] fse = ListDirectoryDetails();
+            List<string> fse = ListDirectoryDetails();
 
             string actualPath = ps.ActualPath;
             OnNewStatus("Získávám rekurzivní seznam souborů ze složky" + " " + actualPath);

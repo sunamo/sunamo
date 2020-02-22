@@ -82,15 +82,16 @@ using System.Text;
             return list;
         }
 
-        public List<string[]> Objects(params int[] columns)
+        public List<List<string>> Objects(params int[] columns)
         {
-            List<string[]> result = new List<string[]>();
+            List<List<string>> result = new List<List<string>>();
             int i = 0;
-            string[] o = null;
+            List<string> o = null;
 
             foreach (var item in Records)
             {
-                o = new string[columns.Length];
+                o = new List<string>( columns.Length);
+            CA.InitFillWith(o, columns.Length);
                 for (i = 0; i < columns.Length; i++)
                 {
                     o[i] = item.Fields[columns[i]];

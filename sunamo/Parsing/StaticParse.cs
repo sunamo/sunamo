@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public static class StaticParse
 {
 
-    public static string GetString(string[] o, int p)
+    public static string GetString(List<string> o, int p)
     {
         string vr = o[p];
         return vr.TrimEnd(AllChars.space);
     }
 
-    public static int GetInt(string[] o, int p)
+    public static int GetInt(List<string> o, int p)
     {
         //ID,Name,IDArtist
         /*
@@ -24,12 +25,12 @@ public static class StaticParse
         return int.Parse(o[p]);
     }
 
-    public static float GetFloat(string[] o, int p)
+    public static float GetFloat(List<string> o, int p)
     {
         return float.Parse(o[p]);
     }
 
-    public static long GetLong(string[] o, int p)
+    public static long GetLong(List<string> o, int p)
     {
         return long.Parse(o[p]);
     }
@@ -40,7 +41,7 @@ public static class StaticParse
     /// <param name="o"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static bool GetBoolMS(string[] o, int p)
+    public static bool GetBoolMS(List<string> o, int p)
     {
         return bool.Parse(o[p]);
     }
@@ -51,17 +52,17 @@ public static class StaticParse
     /// <param name="o"></param>
     /// <param name="p"></param>
     /// <returns></returns>
-    public static bool GetBool(string[] o, int p)
+    public static bool GetBool(List<string> o, int p)
     {
         return Convert.ToBoolean(o[p]);
     }
 
-    public static string GetBoolS(string[] o, int p)
+    public static string GetBoolS(List<string> o, int p)
     {
         return BTS.BoolToStringEn(GetBool(o, p));
     }
 
-    public static DateTime GetDateTime(string[] o, int p)
+    public static DateTime GetDateTime(List<string> o, int p)
     {
         string dd = o[p];
         return DTHelperCs.ParseDateCzech(dd);
@@ -69,12 +70,12 @@ public static class StaticParse
 
 
 
-    public static string GetDateTimeS(string[] o, int p)
+    public static string GetDateTimeS(List<string> o, int p)
     {
         return DateTime.Parse(o[p].Trim()).ToString();
     }
 
-    public static byte[] GetImage(string[] o, int dex)
+    public static byte[] GetImage(List<string> o, int dex)
     {
         object obj = o[dex];
         if (obj == System.DBNull.Value)
@@ -98,29 +99,29 @@ public static class StaticParse
         }
     }
 
-    public static decimal GetDecimal(string[] o, int p)
+    public static decimal GetDecimal(List<string> o, int p)
     {
         return decimal.Parse(o[p]);
     }
 
-    public static double GetDouble(string[] o, int p)
+    public static double GetDouble(List<string> o, int p)
     {
         return double.Parse(o[p]);
     }
 
-    public static short GetShort(string[] o, int p)
+    public static short GetShort(List<string> o, int p)
     {
         return short.Parse(o[p]);
     }
 
 
 
-    public static byte GetByte(string[] o, int p)
+    public static byte GetByte(List<string> o, int p)
     {
         return byte.Parse(o[p]);
     }
 
-    public static Guid GetGuid(string[] o, int p)
+    public static Guid GetGuid(List<string> o, int p)
     {
         return Guid.Parse(o[p]);
     }

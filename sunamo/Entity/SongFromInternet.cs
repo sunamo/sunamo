@@ -117,7 +117,7 @@ namespace sunamo
         /// <summary>
         /// Pro správné porovnání musí být všechny řetězce jak v A1 tak v A2 lowercase
         /// </summary>
-        public static bool IsSimilar(string[] titleArray, string name)
+        public static bool IsSimilar(String[] titleArray, string name)
         {
             return IsSimilar(new List<string>(titleArray), name);
         }
@@ -438,7 +438,7 @@ namespace sunamo
 
         private IEnumerable<string> SplitRemix(string u)
         {
-            List<string> gg = u.Split(new string[] { AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> gg = SH.Split( u, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb );
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {
@@ -449,7 +449,7 @@ namespace sunamo
 
         private IEnumerable<string> SplitNazevTitle(string u)
         {
-            List<string> gg = u.Split(new string[] { AllStrings.space, AllStrings.comma, AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> gg =  SH.Split(u, AllStrings.space, AllStrings.comma, AllStrings.dash);
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {

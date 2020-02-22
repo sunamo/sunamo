@@ -378,9 +378,9 @@ public static partial class SH
         return sb.ToString();
     }
 
-    public static IEnumerable<string> SplitAndKeep(this string s, string[] delims)
+    public static IEnumerable<string> SplitAndKeep(this string s, List<string> delims)
     {
-        // delims allow only char[], not string[]
+        // delims allow only char[], not List<string>
 
         //int start = 0, index;
         //string selectedSeperator = null;
@@ -872,7 +872,7 @@ public static partial class SH
         return p.Replace("\r", "").Replace("\n", "").Replace("\t", "");
     }
 
-    public static string[] GetTextsBetween(string p, string after, string before)
+    public static List<string> GetTextsBetween(string p, string after, string before)
     {
         List<string> vr = new List<string>();
 
@@ -900,7 +900,7 @@ public static partial class SH
             vr.Add(p.Substring(p2_3, p3_3 - p2_3 + 1).Trim());
         }
 
-        return vr.ToArray();
+        return vr;
     }
 
     public static string RemoveLastLetters(string v1, int v2)
@@ -938,17 +938,17 @@ public static partial class SH
     /// <param name="typeDynamics"></param>
     /// <param name="tfd"></param>
     /// <returns></returns>
-    public static bool AllHaveRightFormat(bool canBeDifferentCount, string[] typeDynamics, TextFormatData[] tfd)
+    public static bool AllHaveRightFormat(bool canBeDifferentCount, List<string> typeDynamics, List<TextFormatData> tfd)
     {
         if (!canBeDifferentCount)
         {
-            if (typeDynamics.Length != tfd.Length)
+            if (typeDynamics.Count != tfd.Count)
             {
                 throw new Exception("Mismatch count in input arrays of SH.AllHaveRightFormat()");
             }
         }
 
-        int lowerCount = Math.Min(typeDynamics.Length, tfd.Length);
+        int lowerCount = Math.Min(typeDynamics.Count, tfd.Count);
         for (int i = 0; i < lowerCount; i++)
         {
             if (!HasTextRightFormat(typeDynamics[i], tfd[i]))
@@ -1046,21 +1046,6 @@ public static partial class SH
             SplitByIndex(p, firstHranata, out title, out remix);
         }
         return true;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="append"></param>
-    /// <returns></returns>
-    public static string AppendIfDontEndingWith(string text, string append)
-    {
-        if (text.EndsWith(append))
-        {
-            return text;
-        }
-        return text + append;
     }
 
     /// <summary>
@@ -1171,7 +1156,7 @@ public static partial class SH
         return SH.Split(p, Environment.NewLine).ToList();
     }
 
-    public static string GetStringNL(string[] list)
+    public static string GetStringNL(List<string> list)
     {
         StringBuilder sb = new StringBuilder();
         foreach (string item in list)
@@ -1352,7 +1337,7 @@ public static partial class SH
                     }
                 }
                 return vr2;
-                //return new string[] { s[0] };
+                //return new List<string> { s[0] };
             }
             else
             {
@@ -1472,7 +1457,7 @@ public static partial class SH
                     }
                 }
                 return vr2;
-                //return new string[] { s[0] };
+                //return new List<string> { s[0] };
             }
             else
             {
@@ -1681,7 +1666,7 @@ public static partial class SH
     /// <param name="text"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
-    private static string[] SplitSpecial(StringSplitOptions stringSplitOptions, string text, params char[] deli)
+    private static List<string> SplitSpecial(StringSplitOptions stringSplitOptions, string text, params char[] deli)
     {
         if (deli == null || deli.Count() == 0)
         {
@@ -1699,7 +1684,7 @@ public static partial class SH
 
         if (deli.Length == 1 && !SH.IsUnicodeChar(UnicodeChars.Generic, deli[0]))
         {
-            return text.Split(deli, stringSplitOptions);
+            return text.Split(deli, stringSplitOptions).ToList();
         }
         else
         {
@@ -1771,21 +1756,21 @@ public static partial class SH
                         splitted.Add(sb.ToString());
                     }
                 }
-                return splitted.ToArray();
+                return splitted.ToList();
             }
             else
             {
-                return text.Split(deli, stringSplitOptions);
+                return text.Split(deli, stringSplitOptions).ToList();
             }
         }
     }
 
-    public static string[] SplitSpecial(string text, params char[] deli)
+    public static List<string> SplitSpecial(string text, params char[] deli)
     {
         return SplitSpecial(StringSplitOptions.RemoveEmptyEntries, text, deli);
     }
 
-    public static string[] SplitSpecialNone(string text, params char[] deli)
+    public static List<string> SplitSpecialNone(string text, params char[] deli)
     {
         return SplitSpecial(StringSplitOptions.None, text, deli);
     }
@@ -1865,9 +1850,9 @@ public static partial class SH
         return l.ToArray();
     }
 
-    public static string[] SplitBySpaceAndPunctuationChars(string s)
+    public static List<string> SplitBySpaceAndPunctuationChars(string s)
     {
-        return s.Split(spaceAndPuntactionChars, StringSplitOptions.RemoveEmptyEntries);
+        return SH.Split( s, spaceAndPuntactionChars);
     }
 
     /// <summary>
@@ -2033,7 +2018,7 @@ public static partial class SH
     /// <returns></returns>
     public static string JoinMoreWords(object delimiter, params string[] parts)
     {
-        parts = CA.WrapWithIf(StringDelegates.IsNumber, true, AllStrings.space, AllStrings.qm, parts);
+        parts = CA.WrapWithIf(StringDelegates.IsNumber, true, AllStrings.space, AllStrings.qm, parts).ToArray();
         return Join(delimiter, parts);
     }
 

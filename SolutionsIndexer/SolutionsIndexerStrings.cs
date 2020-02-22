@@ -16,6 +16,6 @@ public class SolutionsIndexerStrings
     /// <summary>
     /// Is used to get relative paths
     /// </summary>
-    public static readonly string[] withDirectSolutions = new string[] { GitHubMy, SolutionsIndexerConsts.ProjectsFolderName };
+    public static readonly List<string> withDirectSolutions = new List<string> { GitHubMy, SolutionsIndexerConsts.ProjectsFolderName };
 }
 

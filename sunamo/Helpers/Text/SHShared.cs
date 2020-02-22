@@ -17,6 +17,10 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
+    public static string ReplaceVariables(string innerHtml, List<List<string>> _dataBinding, int actualRow)
+    {
+        return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);
+    }
 
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
 
@@ -1267,11 +1271,8 @@ public static partial class SH
 
 
 
-    public static string ReplaceVariables(string innerHtml, List<String[]> _dataBinding, int actualRow)
-    {
-        return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);
-    }
-    public static string ReplaceVariables(char p, char k, string innerHtml, List<String[]> _dataBinding, int actualRow)
+
+    public static string ReplaceVariables(char p, char k, string innerHtml, List<List<string>> _dataBinding, int actualRow)
     {
         StringBuilder sbNepridano = new StringBuilder();
         StringBuilder sbPridano = new StringBuilder();
@@ -2280,7 +2281,7 @@ public static partial class SH
     /// </summary>
     /// <param name="veta"></param>
     /// <returns></returns>
-    public static string[] SplitBySpaceAndPunctuationCharsLeave(string veta)
+    public static List<string> SplitBySpaceAndPunctuationCharsLeave(string veta)
     {
         List<string> vr = new List<string>();
         vr.Add("");
@@ -2314,7 +2315,7 @@ public static partial class SH
                 vr[vr.Count - 1] += item.ToString();
             }
         }
-        return vr.ToArray();
+        return vr;
     }
 
     /// <summary>
@@ -2880,7 +2881,7 @@ public static bool ContainsFromEnd(string p1, char p2, out int ContainsFromEndRe
     /// <param name="parts"></param>
     /// <param name="deli"></param>
     /// <returns></returns>
-    public static string[] SplitToPartsFromEnd(string what, int parts, params char[] deli)
+    public static List<string> SplitToPartsFromEnd(string what, int parts, params char[] deli)
     {
         List<char> chs = null;
         List<bool> bw = null;
@@ -2929,7 +2930,7 @@ public static bool ContainsFromEnd(string p1, char p2, out int ContainsFromEndRe
                 v[0] = vr[i] + ds + v[0];
             }
         }
-        return v.ToArray();
+        return v;
     }
 
 /// <summary>
@@ -3331,5 +3332,20 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
             //    break;
             //}
         }
+    }
+
+/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
+    public static string AppendIfDontEndingWith(string text, string append)
+    {
+        if (text.EndsWith(append))
+        {
+            return text;
+        }
+        return text + append;
     }
 }

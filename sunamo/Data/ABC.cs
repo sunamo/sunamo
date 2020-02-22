@@ -112,9 +112,10 @@ public class ABC : List<AB>//, IEnumerable<AB>
         return o;
     }
 
-    public string[] OnlyAs()
+    public List<string> OnlyAs()
     {
-        string[] o = new string[this.Count];
+        List<string> o = new List<string>( this.Count);
+        CA.InitFillWith(o, this.Count);
         for (int i = 0; i < this.Count; i++)
         {
             o[i] = this[i].A;

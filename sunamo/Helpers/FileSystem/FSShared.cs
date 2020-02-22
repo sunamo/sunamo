@@ -104,15 +104,6 @@ public partial class FS
         return list;
     }
 
-    /// <summary>
-    /// Without path
-    /// </summary>
-    /// <param name="jpgcka"></param>
-    /// <returns></returns>
-    public static string[] GetFileNamesWoExtension(string[] jpgcka)
-    {
-        return GetFileNamesWoExtension(jpgcka.ToList()).ToArray();
-    }
 
 
     public static List<string> GetFileNamesWoExtension(List<string> jpgcka)
@@ -393,16 +384,6 @@ public partial class FS
     }
 
     /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static string[] OnlyNamesWithoutExtension(string[] p)
-    {
-        return OnlyNamesWithoutExtension(new List<string>(p)).ToArray();
-    }
-
-    /// <summary>
     /// Vrátí cestu a název souboru s ext
     /// </summary>
     /// <param name="fn"></param>
@@ -615,7 +596,7 @@ public partial class FS
     /// <returns></returns>
     private static string CombineWorker(bool firstCharLower, params string[] s)
     {
-        s = CA.TrimStart(AllChars.bs, s);
+        s = CA.TrimStart(AllChars.bs, s).ToArray() ;
         var result = Path.Combine(s);
         if (firstCharLower)
         {
@@ -840,9 +821,9 @@ public partial class FS
         }
     }
 
-    public static string[] OnlyNames(string[] files2)
+    public static List<string> OnlyNames(String[] files2)
     {
-        return OnlyNames(CA.ToListString(files2)).ToArray();
+        return OnlyNames(CA.ToListString(files2));
     }
     /// <summary>
     /// No direct edit
@@ -860,10 +841,11 @@ public partial class FS
         }
         return files;
     }
-    public static string[] OnlyNames(string appendToStart, string[] fullPaths)
+    public static List<string> OnlyNames(string appendToStart, List<string> fullPaths)
     {
-        string[] ds = new string[fullPaths.Length];
-        for (int i = 0; i < fullPaths.Length; i++)
+        List<string> ds = new List<string>( fullPaths.Count);
+        CA.InitFillWith(ds, fullPaths.Count);
+        for (int i = 0; i < fullPaths.Count; i++)
         {
             ds[i] = appendToStart + FS.GetFileName(fullPaths[i]);
         }
@@ -2014,5 +1996,30 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
             return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
         }
         return filter;
+    }
+
+public static void CreateFileIfDoesntExists(string path)
+    {
+        CreateFileIfDoesntExists<string, string>(path, null);
+    }
+public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageFile path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (!FS.ExistsFile<StorageFolder, StorageFile>(path, ac))
+        {
+            TF.WriteAllBytes<StorageFolder, StorageFile>(path, CA.ToList<byte>(), ac);
+        }
+    }
+
+public static string ReplaceInvalidFileNameChars(string filename)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in filename)
+        {
+            if (!s_invalidFileNameChars.Contains(item))
+            {
+                sb.Append(item);
+            }
+        }
+        return sb.ToString();
     }
 }

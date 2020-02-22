@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Is used by more projects - for example MusicSorter, sunamo.cz, SunamoCzAdmin
@@ -101,10 +102,10 @@ public partial class ManageArtistDashTitle
     /// <returns></returns>
     public static string Reverse(string text)
     {
-        string[] d = text.Split(AllChars.dash);
+        List<string> d = SH.Split( text,AllChars.dash);
         string temp = d[0];
-        d[0] = d[d.Length - 1];
-        d[d.Length - 1] = temp;
+        d[0] = d[d.Count - 1];
+        d[d.Count - 1] = temp;
         StringBuilder sb = new StringBuilder();
         foreach (string item in d)
         {

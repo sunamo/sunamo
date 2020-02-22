@@ -94,7 +94,7 @@ using sunamo.Html;
         {
             try
             {
-                string result = AsyncHelper.ci.GetResult<string>(wv.InvokeScriptAsync("eval", new string[] { javascript }));
+                string result = AsyncHelper.ci.GetResult<string>(wv.InvokeScriptAsync("eval", new List<string> { javascript }));
             }
             catch (Exception ex)
             {

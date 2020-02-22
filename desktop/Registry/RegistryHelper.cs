@@ -34,7 +34,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
     {
         string klicS = klic.ToString();
         List<RegistryEntry> vratit = new List<RegistryEntry>();
-        string[] strings = klic.GetValueNames();
+        List<string> strings = CA.ToListString( klic.GetValueNames());
         #region Polkud A2, vsechny je rek projdu a 
         if (vsechnyHodnoty)
         {
@@ -66,7 +66,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
      /// <param name="p"></param>
      /// <param name="adresar"></param>
      /// <returns></returns>
-    public static IEnumerable<RegistryKey> CombinePathWithKeys(string[] p, RegistryKey adresar)
+    public static IEnumerable<RegistryKey> CombinePathWithKeys(List<string> p, RegistryKey adresar)
      {
          List<RegistryKey> l = new List<RegistryKey>();
 
@@ -88,7 +88,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
          RegistryKey rk = GetObjectRegistryKey(cesta);
          string rks = rk.ToString();
 
-         string[] dd = rk.GetValueNames();
+         List<string> dd = CA.ToListString( rk.GetValueNames());
          foreach (string var in dd)
          {
              o.Add(new RegistryEntry(Registry.GetValue(rks, var, null),cesta, var));

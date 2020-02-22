@@ -31,6 +31,8 @@ public static partial class CA
         return mySites;
     }
 
+
+
     /// <summary>
     /// Return true if A1 is null or have zero elements
     /// </summary>
@@ -576,9 +578,9 @@ public static partial class CA
     /// <param name="backslash"></param>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static string[] TrimStart(char backslash, params string[] s)
+    public static List<string> TrimStart(char backslash, params string[] s)
     {
-        return TrimStart(backslash, s.ToList()).ToArray();
+        return TrimStart(backslash, s.ToList());
     }
 
     /// <summary>
@@ -671,12 +673,7 @@ public static partial class CA
         }
         return l;
     }
-    public static string[] Trim(string[] l)
-    {
-        var list = CA.ToListString(l);
-        CA.Trim(list);
-        return list.ToArray();
-    }
+
 
     /// <summary>
     /// Direct edit
@@ -945,16 +942,17 @@ public static partial class CA
     /// </summary>
     /// <param name="ss"></param>
     /// <returns></returns>
-    public static string[] ToLower(string[] ss, bool createNewArray = false)
+    public static List<string> ToLower(List<string> ss, bool createNewArray = false)
     {
-        string[] outArr = ss;
+        List<string> outArr = ss;
 
         if (createNewArray)
         {
-            outArr = new string[ss.Length];
+            outArr = new List<string>( ss.Count);
+            CA.InitFillWith(outArr, ss.Count);
         }
 
-        for (int i = 0; i < ss.Length; i++)
+        for (int i = 0; i < ss.Count; i++)
         {
             outArr[i] = ss[i].ToLower();
         }
@@ -1225,10 +1223,7 @@ public static partial class CA
         }
         return sf;
     }
-    public static string[] TrimEnd(string[] sf, params char[] toTrim)
-    {
-        return TrimEnd(new List<string>(sf), toTrim).ToArray();
-    }
+
 
     /// <summary>
     /// better is use first or default, because here I also have to use default(T)
@@ -1534,19 +1529,7 @@ public static bool HasNullValue(List<string> idPhotos)
         }
     }
 
-public static string[] EnsureBackslash(string[] eb)
-    {
-        for (int i = 0; i < eb.Length; i++)
-        {
-            string r = eb[i];
-            if (r[r.Length - 1] != AllChars.bs)
-            {
-                eb[i] = r + Consts.bs;
-            }
-        }
 
-        return eb;
-    }
 public static List<string> EnsureBackslash(List<string> eb)
     {
         for (int i = 0; i < eb.Count; i++)
@@ -1561,7 +1544,7 @@ public static List<string> EnsureBackslash(List<string> eb)
         return eb;
     }
 
-/// <summary>
+    /// <summary>
     /// Delete which fullfil A2 wildcard
     /// </summary>
     /// <param name="d"></param>
@@ -1662,11 +1645,11 @@ public static void RemovePadding<T>(List<T> decrypted, T v)
         
     }
 
-public static bool HasAtLeastOneElementInArray(string[] d)
+public static bool HasAtLeastOneElementInArray(List<string> d)
     {
         if (d != null)
         {
-            if (d.Length != 0)
+            if (d.Count != 0)
             {
                 return true;
             }
@@ -1711,5 +1694,13 @@ public static bool HasAtLeastOneElementInArray(string[] d)
         }
 
         return existsInBoth;
+    }
+
+public static void InitFillWith(List<string> datas, int pocet, string initWith = Consts.stringEmpty)
+    {
+        for (int i = 0; i < pocet; i++)
+        {
+            datas.Add(initWith);
+        }
     }
 }

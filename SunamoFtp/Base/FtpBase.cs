@@ -166,7 +166,7 @@ namespace SunamoFtp
         public bool UploadFiles(List<string> files)
         {
 
-            string[] fse = ListDirectoryDetails();
+            List<string> fse = ListDirectoryDetails();
             foreach (string item in files)
             {
 
@@ -212,7 +212,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool uploadFolderRek(string slozkaNaLocalu, string slozkaNaHostingu)
         {
-            // Musí to tu být právě kvůli předchozímu řádku string[] fse = getFSEntriesList(); kdy získávám seznam souborů na FTP serveru
+            // Musí to tu být právě kvůli předchozímu řádku List<string> fse = getFSEntriesList(); kdy získávám seznam souborů na FTP serveru
             goToPath(slozkaNaHostingu);
 
 
@@ -445,7 +445,7 @@ namespace SunamoFtp
         /// <returns></returns>
         public bool ExistsFolder(string folder)
         {
-            string[] fse = ListDirectoryDetails();
+            List<string> fse = ListDirectoryDetails();
             List<string> d = new List<string>(FtpHelper.GetDirectories(fse));
             return d.Contains(folder);
         }

@@ -1,5 +1,7 @@
 ﻿using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
+
 namespace forms
 {
     public class ComboBoxEnumHelper<T>
@@ -53,8 +55,8 @@ namespace forms
 
         public void RemoveEnumItem(T var)
         {
-            string[] jmena = Enum.GetNames(typeof(T));
-            for (int i = 0; i < jmena.Length; i++)
+            List<string> jmena = new List<string>( Enum.GetNames(typeof(T)));
+            for (int i = 0; i < jmena.Count; i++)
             {
                 if (jmena[i] == var.ToString())
                 {

@@ -32,13 +32,13 @@ public partial class ManageArtistDashTitle
             delimiter = AllStrings.dash;
         }
 
-        string[] toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+        List<string> toks = SH.Split( item,delimiter );
         artist = song = "";
-        if (toks.Length == 0)
+        if (toks.Count == 0)
         {
             artist = song = remix = "";
         }
-        else if (toks.Length == 1)
+        else if (toks.Count == 1)
         {
             artist = "";
             VratTitleRemix(toks[0], out song, out remix);
@@ -65,8 +65,8 @@ public partial class ManageArtistDashTitle
                     between = left[0] + between + right[0];
                     item = item.Replace(between, string.Empty);
                     item += " " + between;
-                    toks = item.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
-                    if (toks.Length > 0)
+                    toks = SH.Split( item,  delimiter );
+                    if (toks.Count > 0)
                     {
                         artist = toks[0].Trim();
                     }
@@ -74,7 +74,7 @@ public partial class ManageArtistDashTitle
             }
 
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < toks.Length; i++)
+            for (int i = 1; i < toks.Count; i++)
             {
                 sb.Append(toks[i]);
             }
@@ -152,13 +152,14 @@ public partial class ManageArtistDashTitle
     public static void GetArtistTitle(string item, out string název, out string title)
     {
         // FS.GetFileNameWithoutExtension()
-        string[] toks = FS.GetFileNameWithoutExtension(item).Split(new string[] { AllStrings.dash }, StringSplitOptions.RemoveEmptyEntries);
+        var fnwoe = FS.GetFileNameWithoutExtension(item);
+        List<string> toks = SH.Split(fnwoe,  AllStrings.dash);
         název = title = "";
-        if (toks.Length == 0)
+        if (toks.Count == 0)
         {
             název = title = "";
         }
-        else if (toks.Length == 1)
+        else if (toks.Count == 1)
         {
             název = "";
             title = toks[0];
@@ -167,7 +168,7 @@ public partial class ManageArtistDashTitle
         {
             název = toks[0];
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < toks.Length; i++)
+            for (int i = 1; i < toks.Count; i++)
             {
                 sb.Append(toks[i] + AllStrings.dash);
             }

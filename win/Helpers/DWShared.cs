@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 public static partial class DW{ 
@@ -28,7 +30,7 @@ public static partial class DW{
     /// </summary>
     /// <param name = "sf"></param>
     /// <returns></returns>
-    public static string[] SelectOfFiles(Environment.SpecialFolder sf)
+    public static List<string> SelectOfFiles(Environment.SpecialFolder sf)
     {
         return SelectOfFiles(Environment.GetFolderPath(sf));
     }
@@ -38,7 +40,7 @@ public static partial class DW{
     /// </summary>
     /// <param name = "initialFolder"></param>
     /// <returns></returns>
-    public static string[] SelectOfFiles(string initialFolder)
+    public static List<string> SelectOfFiles(string initialFolder)
     {
         return SelectOfFiles(filterDefault, initialFolder, true);
     }
@@ -75,7 +77,7 @@ public static partial class DW{
     /// <returns></returns>
     public static string SelectOfFile(string filter, string initialFolder)
     {
-        string[] d = SelectOfFiles(filter, initialFolder, false);
+        List<string> d = SelectOfFiles(filter, initialFolder, false);
         if (CA.HasAtLeastOneElementInArray(d))
         {
             return d[0];
@@ -92,7 +94,7 @@ public static partial class DW{
     /// <param name = "slozka"></param>
     /// <param name = "multiselect"></param>
     /// <returns></returns>
-    private static string[] SelectOfFiles(string filter, string initialDirectory, bool multiselect)
+    private static List<string> SelectOfFiles(string filter, string initialDirectory, bool multiselect)
     {
         OpenFileDialog ofd = new OpenFileDialog();
         ofd.CustomPlaces.Add(new FileDialogCustomPlace(FS.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Consts.@sunamo)));
@@ -109,7 +111,7 @@ public static partial class DW{
         ofd.Multiselect = multiselect;
         if (ofd.ShowDialog() == DialogResult.OK)
         {
-            return ofd.FileNames;
+            return ofd.FileNames.ToList();
         }
 
         return null;

@@ -54,7 +54,7 @@ namespace sunamo.Constants
         public const string SyncArchivedText = @"d:\SyncArchived\Text\";
         public const string SyncArchivedDrive = @"d:\SyncArchived\Drive\";
 
-        public static string[] All = new string[] { Documents, Docs, Downloads, Music2 };
+        public static List<string> All = new List<string> { Documents, Docs, Downloads, Music2 };
 
         public const string PhotosScz = @"d:\Pictures\photos.sunamo.cz\";
     }

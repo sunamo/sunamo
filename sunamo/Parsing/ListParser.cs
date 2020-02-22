@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-
-
+using System.Collections.Generic;
 
 public class ListParser
 {
-    protected string[] o = null;
+    protected List<string> o = null;
 
     #region Novejší verze s predáváním pouze indexu
     protected string GetString(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetString(o, p);
         }
@@ -25,7 +24,7 @@ public class ListParser
     /// <returns></returns>
     protected int GetInt(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetInt(o, p);
         }
@@ -39,7 +38,7 @@ public class ListParser
     /// <returns></returns>
     protected float GetFloat(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetFloat(o, p);
         }
@@ -53,7 +52,7 @@ public class ListParser
     /// <returns></returns>
     protected long GetLong(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetLong(o, p);
         }
@@ -69,7 +68,7 @@ public class ListParser
     /// <returns></returns>
     protected bool GetBoolMS(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetBoolMS(o, p);
         }
@@ -78,7 +77,7 @@ public class ListParser
 
     protected bool GetBool(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetBool(o, p);
         }
@@ -92,7 +91,7 @@ public class ListParser
     /// <returns></returns>
     protected string GetBoolS(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetBoolS(o, p);
         }
@@ -106,7 +105,7 @@ public class ListParser
     /// <returns></returns>
     protected System.DateTime GetDateTime(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetDateTime(o, p);
         }
@@ -120,7 +119,7 @@ public class ListParser
     /// <returns></returns>
     protected string GetDateTimeS(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetDateTimeS(o, p);
         }
@@ -129,7 +128,7 @@ public class ListParser
 
     protected byte[] GetImage(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetImage(o, p);
         }
@@ -143,7 +142,7 @@ public class ListParser
     /// <returns></returns>
     protected decimal GetDecimal(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetDecimal(o, p);
         }
@@ -157,7 +156,7 @@ public class ListParser
     /// <returns></returns>
     protected double GetDouble(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetDouble(o, p);
         }
@@ -171,7 +170,7 @@ public class ListParser
     /// <returns></returns>
     protected short GetShort(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetShort(o, p);
         }
@@ -185,7 +184,7 @@ public class ListParser
     /// <returns></returns>
     protected byte GetByte(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetByte(o, p);
         }
@@ -199,7 +198,7 @@ public class ListParser
     /// <returns></returns>
     protected object GetObject(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return o[p];
         }return null;
@@ -213,7 +212,7 @@ public class ListParser
     /// <returns></returns>
     protected Guid GetGuid(int p)
     {
-        if (o.Length > p)
+        if (o.Count > p)
         {
             return StaticParse.GetGuid(o, p);
         }

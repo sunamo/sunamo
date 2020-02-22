@@ -65,7 +65,7 @@ public static int keyCodeSeparator
         return null;
     }
 
-    private static string[] GetLinesFromString(string p)
+    private static List<string> GetLinesFromString(string p)
     {
         List<string> vr = new List<string>();
         StringReader sr = new StringReader(p);
@@ -75,7 +75,7 @@ public static int keyCodeSeparator
             vr.Add(f);
         }
 
-        return vr.ToArray();
+        return vr;
     }
 
     public static void AppendToFile(string path, string line)
@@ -180,10 +180,10 @@ public static int keyCodeSeparator
         }
     }
 
-    public static void WriteAllElementsToFile(string VybranySouborLogu, string[][] p)
+    public static void WriteAllElementsToFile(string VybranySouborLogu, List<string>[] p)
     {
         StringBuilder sb = new StringBuilder();
-        foreach (string[] item in p)
+        foreach (List<string> item in p)
         {
             sb.AppendLine(PrepareToSerialization(item));
         }

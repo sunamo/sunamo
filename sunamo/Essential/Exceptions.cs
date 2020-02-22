@@ -197,7 +197,7 @@ public class Exceptions
 
     
 
-    public static object StringContainsUnallowedSubstrings(string before, string input, string[] unallowedStrings)
+    public static object StringContainsUnallowedSubstrings(string before, string input, params string[] unallowedStrings)
     {
         List<string> foundedUnallowed = new List<string>();
         foreach (var item in unallowedStrings)

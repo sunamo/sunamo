@@ -283,7 +283,7 @@ public static partial class HtmlHelper
                 string veta = SH.XCharsBeforeAndAfterWholeWords(SH.ReplaceAll(celyObsah, AllStrings.space, CA.ToListString(AllChars.whiteSpacesChars).ToArray()), stred, naKazdeStrane);
 
                 // Teď zvýrazním nalezené slova
-                string[] slova = SH.SplitBySpaceAndPunctuationCharsLeave(veta);
+                List<string> slova = SH.SplitBySpaceAndPunctuationCharsLeave(veta);
                 StringBuilder vetaSeZvyraznenimiCastmi = new StringBuilder();
                 foreach (var item2 in slova)
                 {

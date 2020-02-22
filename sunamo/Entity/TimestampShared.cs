@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 public partial class Timestamp{ 
-public static string[] GetAllTimeStamps(string p)
+public static List<string> GetAllTimeStamps(string p)
     {
         List<string> vr = new List<string>();
         var s = SH.Split(p, AllChars.space, AllChars.dot);
@@ -24,7 +24,7 @@ public static string[] GetAllTimeStamps(string p)
             }
         }
 
-        return vr.ToArray();
+        return vr;
     }
 
 public static string Get(DateTime dtTo4)

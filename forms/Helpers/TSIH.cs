@@ -4,7 +4,7 @@ namespace forms
 {
     public class TSIH
     {
-        public static ToolStripMenuItem[] ConvertFromArrayStringToTSMI(string[] v)
+        public static ToolStripMenuItem[] ConvertFromArrayStringToTSMI(List<string> v)
         {
             List<ToolStripMenuItem> tsmis = new List<ToolStripMenuItem>();
             foreach (string item in v)
@@ -14,7 +14,7 @@ namespace forms
             return tsmis.ToArray();
         }
 
-        public static ToolStripItem[] ConvertFromArrayStringToTSI(string[] v)
+        public static ToolStripItem[] ConvertFromArrayStringToTSI(List<string> v)
         {
             List<ToolStripItem> tsmis = new List<ToolStripItem>();
             foreach (string item in v)

@@ -172,7 +172,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
             string a = item.Name + "s";
             s.Add(item.Name);
             ss.Add(a);
-            csg.AppendLine(2, "string[] {0} = new string[radku];", a);
+            csg.AppendLine(2, "List<string> {0} = new string[radku];", a);
         }
 
         csg.AppendLine(2, "");

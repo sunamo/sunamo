@@ -1,5 +1,6 @@
 ﻿using sunamo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -42,18 +43,18 @@ public partial class HtmlGenerator2 : HtmlGenerator
         hg.WriteTagWith2Attrs("table", "class", "tabulkaNaStredAutoSirka", "style", "width: 600px");
         hg.WriteTag("tr");
         #region Zapíšu vrchní řádky - názvy dnů
-        string[] ppp = DTConstants.daysInWeekCS;
+        List<string> ppp = DTConstants.daysInWeekCS;
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareLeft bunkaTabulkyKalendareTop");
         hg.WriteElement("b", ppp[0]);
         hg.TerminateTag("td");
-        for (int i = 1; i < ppp.Length - 1; i++)
+        for (int i = 1; i < ppp.Count - 1; i++)
         {
             hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareTop");
             hg.WriteElement("b", ppp[i]);
             hg.TerminateTag("td");
         }
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareRight bunkaTabulkyKalendareTop");
-        hg.WriteElement("b", ppp[ppp.Length - 1]);
+        hg.WriteElement("b", ppp[ppp.Count - 1]);
         hg.TerminateTag("td");
         #endregion
 
@@ -184,7 +185,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-    public static string GetSelect(string id, object def, object[] list)
+    public static string GetSelect(string id, object def, IEnumerable list)
     {
         HtmlGenerator gh = new HtmlGenerator();
         gh.WriteTagWithAttr("select", "name", "select" + id);
@@ -350,7 +351,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="baseAnchor"></param>
     /// <param name="to"></param>
     /// <returns></returns>
-    public static string GetForUlWoCheckDuplicate(string baseAnchor, string[] to)
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> to)
     {
         return GetForUlWoCheckDuplicate(baseAnchor, to, to);
     }
@@ -391,7 +392,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-    public static string GetForUl(string baseAnchor, string[] idcka, string[] texty, bool skipDuplicates)
+    public static string GetForUl(string baseAnchor, String[] idcka, String[] texty, bool skipDuplicates)
     {
         return GetForUl(baseAnchor, CA.ToListString(idcka), CA.ToListString(texty), skipDuplicates);
     }
@@ -426,7 +427,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-    public static string GetForUlWoCheckDuplicate(string baseAnchor, string[] idcka, string[] texty)
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> idcka, List<string> texty)
     {
         return GetForUl(baseAnchor, idcka, texty, false);
     }
@@ -438,7 +439,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="anchors"></param>
     /// <param name="to"></param>
     /// <returns></returns>
-    public static string GetForUlWoCheckDuplicate(string[] anchors, string[] to)
+    public static string GetForUlWoCheckDuplicate(List<string> anchors, List<string> to)
     {
         return GetForUl("", anchors, to, false);
     }
@@ -462,15 +463,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         return hg.ToString();
     }
 
-    /// <summary>
-    /// Tato metoda se používá pokud v Ul nepoužíváš žádné odkazy
-    /// </summary>
-    /// <param name="to"></param>
-    /// <returns></returns>
-    public static string GetForUlWoCheckDuplicate(string[] to)
-    {
-        return GetForUlWCheckDuplicate(CA.ToListString(to));
-    }
+
     #endregion
 
     #region GetForUlWCheckDuplicate
@@ -496,12 +489,12 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
 
     #region Ul
-    public static string GetUlWoCheckDuplicate(string baseAnchor, string[] to)
+    public static string GetUlWoCheckDuplicate(string baseAnchor, List<string> to)
     {
         return "<ul static class=\"textVlevo\">";
         HtmlGenerator hg = new HtmlGenerator();
 
-        for (int i = 0; i < to.Length; i++)
+        for (int i = 0; i < to.Count; i++)
         {
             string s = to[i];
 
@@ -522,7 +515,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// </summary>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static string GetUlWoCheckDuplicate(string[] list, string appendClass)
+    public static string GetUlWoCheckDuplicate(List<string> list, string appendClass)
     {
         return "<ul static class=\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "/" + "/" + "ul>";
     }
@@ -533,7 +526,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="anchors"></param>
     /// <param name="texts"></param>
     /// <returns></returns>
-    public static string GetUlWoCheckDuplicate(string[] anchors, string[] texts)
+    public static string GetUlWoCheckDuplicate(List<string> anchors, List<string> texts)
     {
         return "<ul static class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "/" + "/" + "ul>";
     }
@@ -799,18 +792,18 @@ public partial class HtmlGenerator2 : HtmlGenerator
         hg.WriteTagWith2Attrs("table", "class", "tabulkaNaStredAutoSirka", "style", "width: 100%");
         hg.WriteTag("tr");
         #region Zapíšu vrchní řádky - názvy dnů
-        string[] ppp = DTConstants.monthsInYearCZ;
+        List<string> ppp = DTConstants.monthsInYearCZ;
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareLeft bunkaTabulkyKalendareTop");
         hg.WriteElement("b", ppp[0]);
         hg.TerminateTag("td");
-        for (int i = 1; i < ppp.Length - 1; i++)
+        for (int i = 1; i < ppp.Count - 1; i++)
         {
             hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareTop");
             hg.WriteElement("b", ppp[i]);
             hg.TerminateTag("td");
         }
         hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare bunkaTabulkyKalendareRight bunkaTabulkyKalendareTop");
-        hg.WriteElement("b", ppp[ppp.Length - 1]);
+        hg.WriteElement("b", ppp[ppp.Count - 1]);
         hg.TerminateTag("td");
         #endregion
 

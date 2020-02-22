@@ -59,8 +59,8 @@ public partial class TF
     /// <returns></returns>
     public static int GetNumberOfLinesTrimEnd(string file)
     {
-        string[] lines = GetAllLines(file);
-        for (int i = lines.Length - 1; i >= 0; i--)
+        List<string> lines = GetAllLines(file);
+        for (int i = lines.Count - 1; i >= 0; i--)
         {
             if (lines[i].Trim() != "")
             {
@@ -106,7 +106,7 @@ public partial class TF
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
-    public static string[] GetAllLines(string file)
+    public static List<string> GetAllLines(string file)
     {
         List<string> lines = TF.GetLines<string,string>(file, null);
         List<string> linesPpk = new List<string>();
@@ -118,6 +118,6 @@ public partial class TF
                 linesPpk.Add(trim);
             }
         }
-        return linesPpk.ToArray();
+        return linesPpk;
     }
 }

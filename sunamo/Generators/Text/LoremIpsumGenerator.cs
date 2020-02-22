@@ -1,7 +1,8 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 public static class LoremIpsumGenerator
 {
-    private static string[] s_words = new string[]{"consetetur", "sadipscing", "elitr", "sed", "diam", "nonumy", "eirmod",
+    private static List<string> s_words = new List<string>{"consetetur", "sadipscing", "elitr", "sed", "diam", "nonumy", "eirmod",
     "tempor", "invidunt", "ut", "labore", "et", "dolore", "magna", "aliquyam", "erat", "sed", "diam", "voluptua",
     "at", "vero", "eos", "et", "accusam", "et", "justo", "duo", "dolores", "et", "ea", "rebum", "stet", "clita",
     "kasd", "gubergren", "no", "sea", "takimata", "sanctus", "est", "lorem", "ipsum", "dolor", "sit", "amet",
@@ -55,7 +56,7 @@ public static class LoremIpsumGenerator
         int delkaMezery = 1;
         while (true)
         {
-            string word = RandomHelper.RandomElementOfArray(s_words);
+            string word = RandomHelper.RandomElementOfCollection(s_words);
             if (sb.Length + delkaMezery + word.Length + delkaTecky >= maxChars)
             {
                 sb.Append(AllStrings.dot);

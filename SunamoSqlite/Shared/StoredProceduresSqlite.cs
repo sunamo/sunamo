@@ -111,7 +111,7 @@ using System.Data.SQLite;
             return vr;
         }
 
-        public string GetColumns(string[] sloupce)
+        public string GetColumns(List<string> sloupce)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(AllStrings.lb);
@@ -125,7 +125,7 @@ using System.Data.SQLite;
 
         public string GetColumns(string tabulka)
         {
-            string[] sloupce = StoredProceduresSqliteI.ci.VratNazvySloupcuTabulky(tabulka);
+            List<string> sloupce = StoredProceduresSqliteI.ci.VratNazvySloupcuTabulky(tabulka);
             StringBuilder sb = new StringBuilder();
             sb.Append(AllStrings.lb);
             foreach (String var in sloupce)
@@ -136,7 +136,7 @@ using System.Data.SQLite;
             return vr;
         }
 
-        public string GetColumnsWithoutBracets(string[] sloupce)
+        public string GetColumnsWithoutBracets(List<string> sloupce)
         {
             StringBuilder sb = new StringBuilder();
             //sb.Append(AllStrings.lb);

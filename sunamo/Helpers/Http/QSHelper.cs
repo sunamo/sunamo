@@ -120,12 +120,12 @@ public partial class QSHelper
         return DictionaryHelper.GetDictionaryByKeyValueInString<string>(parts);
     }
 
-    public static void GetArray(string[] p, StringBuilder sb, bool uvo)
+    public static void GetArray(List<string> p, StringBuilder sb, bool uvo)
     {
         sb.Append("new Array(");
         //int to = (p.Length / 2) * 2;
-        int to = p.Length;
-        if (p.Length == 1)
+        int to = p.Count;
+        if (p.Count == 1)
         {
             to = 1;
         }

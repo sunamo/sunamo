@@ -67,7 +67,7 @@ public static partial class RandomHelper
         return s_rnd.Next(od, to);
     }
 
-    public static string RandomElementOfArray(Array ppk)
+    public static string RandomElementOfCollection(Array ppk)
     {
         int nt = RandomInt(ppk.Length);
         return ppk.GetValue(nt).ToString();

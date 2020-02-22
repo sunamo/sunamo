@@ -26,8 +26,6 @@ public class SczNotifyServerErrorChecker
 
     private void T_Elapsed(object sender, ElapsedEventArgs e2)
     {
-        
-       
             var p = Process.GetProcesses().Where(e => e.ProcessName == "SczNotifyServerError").Select(d => d.ProcessName).ToList();
             if (p.Count == 0)
             {

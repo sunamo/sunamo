@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 
@@ -93,8 +94,8 @@ using System.Net.Mail;
             #region Recipient
             if (to.Contains(AllStrings.sc))
             {
-                string[] _EmailsTO = to.Split(AllStrings.sc.ToCharArray());
-                for (int i = 0; i < _EmailsTO.Length; i++)
+                List<string> _EmailsTO = SH.Split( to, AllStrings.sc);
+                for (int i = 0; i < _EmailsTO.Count; i++)
                 {
                     if (!string.IsNullOrWhiteSpace(_EmailsTO[i]))
                     {
@@ -124,8 +125,8 @@ using System.Net.Mail;
             #region Carbon copy
             if (cc.Contains(AllStrings.sc))
             {
-                string[] _EmailsCC = cc.Split(AllStrings.sc.ToCharArray());
-                for (int i = 0; i < _EmailsCC.Length; i++)
+                List<string> _EmailsCC = SH.Split( cc,AllStrings.sc);
+                for (int i = 0; i < _EmailsCC.Count; i++)
                 {
                     if (!string.IsNullOrWhiteSpace(_EmailsCC[i]))
                     {
@@ -150,8 +151,8 @@ using System.Net.Mail;
             //BCC
             if (bcc.Contains(AllStrings.sc))
             {
-                string[] _EmailsBCC = bcc.Split(AllStrings.sc.ToCharArray());
-                for (int i = 0; i < _EmailsBCC.Length; i++)
+                List<string> _EmailsBCC = SH.Split( bcc, AllStrings.sc);
+                for (int i = 0; i < _EmailsBCC.Count; i++)
                 {
                     mail.Bcc.Add(new MailAddress(_EmailsBCC[i]));
                 }

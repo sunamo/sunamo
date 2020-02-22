@@ -7,11 +7,11 @@ using System.Collections;
 /// </summary>
 public static partial class RandomHelper
 {
-    public static void RemoveChars(string[] p)
+    public static void RemoveChars(List<string> p)
     {
         foreach (string item in p)
         {
-            if (p.Length == 1)
+            if (p.Count == 1)
             {
                 vsZnaky.Remove(item[0]);
             }

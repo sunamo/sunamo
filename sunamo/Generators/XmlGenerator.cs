@@ -66,6 +66,11 @@ public class XmlGenerator
         sb.Append("-->");
     }
 
+    public void WriteNonPairTagWithAttrs(string tag, List<string> args)
+    {
+        WriteNonPairTagWithAttrs(tag, args.ToArray());
+    }
+
     public void WriteNonPairTagWithAttrs(string tag, params string[] args)
     {
         sb.AppendFormat("<{0} ", tag);
@@ -127,6 +132,11 @@ public class XmlGenerator
     public override string ToString()
     {
         return sb.ToString();
+    }
+
+    public void WriteTagWithAttrs(string p, List<string> p_2)
+    {
+        WriteTagWithAttrs(p, p_2.ToArray());
     }
 
     /// <summary>

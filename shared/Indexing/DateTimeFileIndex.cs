@@ -78,7 +78,7 @@
 //            }
 //            mask += AllStrings.asterisk;
 //            #region MyRegion
-//            string[] f = FS.GetFiles(folder, AllStrings.asterisk + ext, SearchOption.TopDirectoryOnly);
+//            List<string> f = FS.GetFiles(folder, AllStrings.asterisk + ext, SearchOption.TopDirectoryOnly);
 //            foreach (var item in f)
 //            {
 //                string fnwoe = FS.GetFileNameWithoutExtension(item);

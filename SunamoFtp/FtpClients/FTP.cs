@@ -156,7 +156,7 @@ namespace SunamoFtp
         /// </summary>
         /// <param name="mask"></param>
         /// <returns></returns>
-        public string[] getFileList(string mask)
+        public List<string> getFileList(string mask)
         {
             OnNewStatus("Získávám seznam souborů ze složky" + " " + ps.ActualPath + " " + "příkazem NLST");
             #region MyRegion
@@ -189,8 +189,8 @@ namespace SunamoFtp
                 }
             }
 
-            string[] seperator = { "\r\n" };
-            string[] mess = mes.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            List<string> seperator = CA.ToList<string>( "\r\n" );
+            List<string> mess = SH.Split( mes,seperator);
 
             cSocket.Close();
             #endregion
@@ -245,7 +245,7 @@ namespace SunamoFtp
             // Musí se do ní ukládat cesta k celé složce, nikoliv jen název aktuální složky
             List<string> projeteSlozky = new List<string>();
             Dictionary<string, List<string>> vr = new Dictionary<string, List<string>>();
-            string[] fse = ListDirectoryDetails();
+            List<string> fse = ListDirectoryDetails();
 
             string actualPath = ps.ActualPath;
             OnNewStatus("Získávám rekurzivní seznam souborů ze složky" + " " + actualPath);
@@ -956,7 +956,7 @@ namespace SunamoFtp
             reader.Close();
             response.Close();
 
-            return vr.ToArray();
+            return vr;
         }
 
         /// <summary>
@@ -1204,7 +1204,7 @@ namespace SunamoFtp
 
 
             bool nalezenAdresar = false;
-            string[] fse = null;
+            List<string> fse = null;
             bool vseMa8 = false;
             while (!vseMa8)
             {
@@ -1347,11 +1347,11 @@ namespace SunamoFtp
             }
 
             char[] seperator = { '\n' };
-            string[] mess = mes.Split(seperator);
+            List<string> mess = SH.Split( mes,seperator);
             // Rozdělím získaný string \n a vezmu předposlední prvek, nebo první, který pak vrátím
             if (mes.Length > 2)
             {
-                mes = mess[mess.Length - 2];
+                mes = mess[mess.Count - 2];
             }
             else
             {
@@ -1366,7 +1366,7 @@ namespace SunamoFtp
 
             if (debug)
             {
-                for (int k = 0; k < mess.Length - 1; k++)
+                for (int k = 0; k < mess.Count - 1; k++)
                 {
                     OnNewStatus(mess[k]);
                 }
@@ -1568,7 +1568,7 @@ namespace SunamoFtp
         public override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
         {
             chdirLite(dirName);
-            string[] smazat = ListDirectoryDetails();
+            List<string> smazat = ListDirectoryDetails();
             foreach (var item2 in smazat)
             {
                 FileSystemType fst = FtpHelper.IsFile(item2, out string fn);

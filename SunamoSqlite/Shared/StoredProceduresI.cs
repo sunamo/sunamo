@@ -22,7 +22,7 @@ public class StoredProceduresI : IStoredProceduresI
         return 0;
     }
 
-    public string[] VratNazvySloupcuTabulky(string p)
+    public List<string> VratNazvySloupcuTabulky(string p)
         {
             List<string> vr = new List<string>();
             SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT sql FROM sqlite_master WHERE tbl_name = '{0}' AND type = 'table'", p), _conn);
@@ -31,10 +31,10 @@ public class StoredProceduresI : IStoredProceduresI
             object o = dr.GetValue(0);
             sql = o.ToString();
             string s = SH.Substring(sql, sql.IndexOf('(') + 1, sql.LastIndexOf(')') - 1);
-            string[] sloupce = s.Split(',');
+            List<string> sloupce = s.Split(',');
             for (int i = 0; i < sloupce.Length; i++)
             {
-                string[] g = sloupce[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                List<string> g = sloupce[i].Split(new List<string> { " " }, StringSplitOptions.RemoveEmptyEntries);
                 vr.Add(g[0]);
             }
             return vr.ToArray();

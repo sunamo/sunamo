@@ -8,11 +8,11 @@ public partial class DTConstants
     public const long secondsInHour = secondsInMinute * 60;
     public const long secondsInDay = secondsInHour * 24;
     public static readonly List<string> daysInWeekENShortcut = CA.ToListString("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
-    public static readonly string[] daysInWeekEN = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    public static readonly string[] monthsInYearEN = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+    public static readonly List<string> daysInWeekEN = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    public static readonly List<string> monthsInYearEN = new List<string> { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
     public const int yearStartUnixDate = 1970;
     public static readonly DateTime UnixFsStart = new DateTime(yearStartUnixDate, 1, 1);
-    public static readonly string[] daysInWeekCS = new string[] { Pondeli, Utery, Streda, Ctvrtek, Patek, Sobota, Nedele };
+    public static readonly List<string> daysInWeekCS = new List<string> { Pondeli, Utery, Streda, Ctvrtek, Patek, Sobota, Nedele };
 
     #region Dny v týdny CS
     public const string Pondeli = "Pond\u011Bl\u00ED";
@@ -38,5 +38,5 @@ public partial class DTConstants
     public const string Listopad = "Listopad";
     public const string Prosinec = "Prosinec";
     #endregion
-    public static readonly string[] monthsInYearCZ = new string[] { Leden, Unor, Brezen, Duben, Kveten, Cerven, Cervenec, Srpen, Zari, Rijen, Listopad, Prosinec };
+    public static readonly List<string> monthsInYearCZ = new List<string> { Leden, Unor, Brezen, Duben, Kveten, Cerven, Cervenec, Srpen, Zari, Rijen, Listopad, Prosinec };
 }

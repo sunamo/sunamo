@@ -97,4 +97,5 @@ using System.Text;
         public const string UncLongPath = @"\\?\";
         public const string @sunamo = "sunamo";
     public const string sunamocz = "sunamocz";
+    public const string stringEmpty = "";
 }

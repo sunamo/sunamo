@@ -54,7 +54,7 @@ namespace sunamo.Helpers.DT
         /// <returns></returns>
         public static DateTime? FileNameToDateTimePrefix(string fnwoe, bool time, out string prefix)
         {
-            string[] sp = SH.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, AllStrings.us[0]);
+            List<string> sp = SH.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, AllStrings.us[0]);
             if (time)
             {
                 prefix = sp[0];

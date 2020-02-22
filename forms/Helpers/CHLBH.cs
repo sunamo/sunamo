@@ -13,7 +13,7 @@ namespace forms
             this.chlb = chlb;
         }
 
-        public string[] AllSelectedS
+        public List<string> AllSelectedS
         {
             get
             {
@@ -22,7 +22,7 @@ namespace forms
                 {
                     vr.Add(item.ToString());
                 }
-                return vr.ToArray();
+                return vr;
             }
         }
 
