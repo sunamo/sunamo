@@ -5,7 +5,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Data;
 using System.Text.RegularExpressions;
-
+using System.Linq;
 
 public class StoredProceduresSqliteI : IStoredProceduresI
     {
@@ -21,13 +21,13 @@ public class StoredProceduresSqliteI : IStoredProceduresI
             object o = dr.GetValue(0);
             sql = o.ToString();
             string s = SH.Substring(sql, sql.IndexOf(AllChars.lb) + 1, sql.LastIndexOf(AllChars.rb) - 1);
-            List<string> sloupce = s.Split(AllChars.comma);
-            for (int i = 0; i < sloupce.Length; i++)
+            List<string> sloupce = SH.Split( s, AllChars.comma);
+            for (int i = 0; i < sloupce.Count; i++)
             {
-                List<string> g = sloupce[i].Split(new List<string> { AllStrings.space }, StringSplitOptions.RemoveEmptyEntries);
+                List<string> g = SH.Split( sloupce[i],AllStrings.space );
                 vr.Add(g[0]);
             }
-            return vr.ToArray();
+            return vr;
         }
 
 
@@ -291,7 +291,7 @@ public class StoredProceduresSqliteI : IStoredProceduresI
 
         public DataTable GetDataTable(string p, params string[] selectSloupce)
         {
-            return GetDataTable(SH.Format2("SELECT {0} FROM {1}", StoredProceduresSqlite.ci.GetColumnsWithoutBracets(selectSloupce), p));
+            return GetDataTable(SH.Format2("SELECT {0} FROM {1}", StoredProceduresSqlite.ci.GetColumnsWithoutBracets(selectSloupce.ToList()), p));
         }
 
         public int FindOutID(string tabulka, string nazevSloupce, object hodnotaSloupce)

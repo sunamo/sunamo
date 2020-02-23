@@ -5,7 +5,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Data;
 using System.Text.RegularExpressions;
-
+using System.Linq;
 
 public class StoredProceduresI : IStoredProceduresI
     {
@@ -31,13 +31,13 @@ public class StoredProceduresI : IStoredProceduresI
             object o = dr.GetValue(0);
             sql = o.ToString();
             string s = SH.Substring(sql, sql.IndexOf('(') + 1, sql.LastIndexOf(')') - 1);
-            List<string> sloupce = s.Split(',');
-            for (int i = 0; i < sloupce.Length; i++)
+            List<string> sloupce = SH.Split( s,',');
+            for (int i = 0; i < sloupce.Count; i++)
             {
-                List<string> g = sloupce[i].Split(new List<string> { " " }, StringSplitOptions.RemoveEmptyEntries);
+                List<string> g = SH.Split( sloupce[i],  " " );
                 vr.Add(g[0]);
             }
-            return vr.ToArray();
+            return vr;
         }
 
         public bool SelectExistsTable(string table, SQLiteConnection conn)
@@ -293,7 +293,7 @@ public class StoredProceduresI : IStoredProceduresI
 
         public DataTable GetDataTable(string p, params string[] selectSloupce)
         {
-            return GetDataTable(SH.Format2("SELECT {0} FROM {1}", StoredProcedures.ci.GetColumnsWithoutBracets(selectSloupce), p));
+            return GetDataTable(SH.Format2("SELECT {0} FROM {1}", StoredProcedures.ci.GetColumnsWithoutBracets(selectSloupce.ToList()), p));
         }
 
         public int FindOutID(string tabulka, string nazevSloupce, object hodnotaSloupce)

@@ -48,7 +48,7 @@ using sunamo.Html;
 
         private void Wv_DOMContentLoaded(object sender, WebViewControlDOMContentLoadedEventArgs e)
         {
-        html = GetContent();
+        html = AsyncHelper.ci.GetResult<string>( GetContent());
         // In e is only Uri
 
         if (DOMContentLoaded != null)
@@ -61,7 +61,7 @@ using sunamo.Html;
         {
             if (e.IsSuccess)
             {
-                html = GetContent();
+                html = AsyncHelper.ci.GetResult<string>( GetContent());
             }
 
             if (NavigationCompleted != null)
@@ -80,7 +80,7 @@ using sunamo.Html;
             
         }
 
-        public string GetContent()
+        public async Task< string> GetContent()
         {
         
 
@@ -111,7 +111,7 @@ using sunamo.Html;
         /// Return null if HTML property is null
         /// </summary>
         /// <returns></returns>
-        public HtmlDocument GetHtmlDocument()
+        public async Task< HtmlDocument> GetHtmlDocument()
         {
             if (string.IsNullOrEmpty(html))
             {

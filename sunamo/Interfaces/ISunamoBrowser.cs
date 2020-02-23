@@ -18,6 +18,11 @@ using System.Threading.Tasks;
 public interface ISunamoBrowser<T>
 {
     Uri Source { get; set; }
+    /// <summary>
+    /// Must be Task due to UWP!
+    /// Much time spent with it on GeoCachingTool!
+    /// </summary>
+    /// <returns></returns>
      Task< HtmlDocument> GetHtmlDocument();
 
     /// <summary>

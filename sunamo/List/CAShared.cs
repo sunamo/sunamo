@@ -59,9 +59,9 @@ public static partial class CA
         }
     }
 
-    public static List<string> CreateListStringWithReverse(int reverse, params string[] v)
+    public static List<string> CreateListStringWithReverse(int reverse, IEnumerable<string> v)
     {
-        List<string> vs = new List<string>(reverse + v.Length);
+        List<string> vs = new List<string>(reverse + v.Count());
         vs.AddRange(v);
         return vs;
     }
