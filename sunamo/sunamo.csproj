@@ -122,12 +122,14 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Collections\D.cs" />
     <Compile Include="Constants\FolderConsts.cs" />
     <Compile Include="Constants\UnicodeWhiteToVisible.cs" />
     <Compile Include="Extensions\Task.cs" />
     <Compile Include="Helpers\Base64Helpers.cs" />
     <Compile Include="Helpers\Runtime\AsyncHelper.cs" />
     <Compile Include="Interfaces\IAsync.cs" />
+    <Compile Include="Interfaces\ISunamoDictionary.cs" />
     <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />

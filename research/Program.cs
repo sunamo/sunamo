@@ -8,7 +8,7 @@ namespace research
 {
     partial class Program
     {
-        static void Main(List<string> args)
+        static void Main(String[] args)
         {
         }
     }
