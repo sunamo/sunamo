@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamo.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamoShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextFormatData.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Extensions\Task.cs" />
     <Compile Include="Helpers\Base64Helpers.cs" />
     <Compile Include="Helpers\Runtime\AsyncHelper.cs" />
+    <Compile Include="Helpers\StatusHelperSunamo.cs" />
     <Compile Include="Interfaces\IAsync.cs" />
     <Compile Include="Interfaces\ISunamoDictionary.cs" />
     <Compile Include="Interfaces\IXParser.cs" />

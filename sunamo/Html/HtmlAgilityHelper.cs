@@ -19,6 +19,7 @@ namespace sunamo.Html
         /// Dříve bylo false ale to byla hloupost
         /// </summary>
         public static bool _trimTexts = true;
+        public const string textNode = "#text";
 
         #region Helpers
         /// <summary>
@@ -35,12 +36,25 @@ namespace sunamo.Html
             List<HtmlNode> vr = new List<HtmlNode>();
             foreach (var item in htmlNodeCollection)
             {
-                if (item.Name != "#text")
+                if (item.Name != textNode)
                 {
                     vr.Add(item);
                 }
             }
             return vr;
+        }
+
+        public static bool HasAncestorParentNode(HtmlNode item, string v)
+        {
+            while (item != null)
+            {
+                if (item.Name == v)
+                {
+                    return true;
+                }
+                item = item.ParentNode;
+            }
+            return false;
         }
 
         /// <summary>
@@ -75,7 +89,7 @@ namespace sunamo.Html
                 add = true;
                 if (texts)
                 {
-                    if (item.Name == "#text")
+                    if (item.Name == textNode)
                     {
                         add = false;
                     }
@@ -255,7 +269,11 @@ namespace sunamo.Html
         {
             List<HtmlNode> vr = new List<HtmlNode>();
             RecursiveReturnTags(vr, node, recursive, false, tag);
-            vr = TrimTexts(vr);
+            if (tag != textNode)
+            {
+                vr = TrimTexts(vr);
+            }
+            
             return vr;
         }
 
@@ -264,7 +282,11 @@ namespace sunamo.Html
             List<HtmlNode> vr = new List<HtmlNode>();
 
             RecursiveReturnTagsWithContainsAttr(vr, node, recursive, tag, atribut, hodnotaAtributu, enoughIsContainsAttribute);
-            vr = TrimTexts(vr);
+            if (tag != textNode)
+            {
+                vr = TrimTexts(vr);
+            }
+            
             return vr;
         }
 
@@ -483,7 +505,7 @@ namespace sunamo.Html
             RecursiveReturnTags(allNodes, node, true, false, AllStrings.asterisk);
             foreach (var item in allNodes)
             {
-                if (item.Name == "#text")
+                if (item.Name == textNode)
                 {
                     if (!CA.IsEqualToAnyElement<string>(item.ParentNode.Name, dontHaveAsParentTag))
                     {

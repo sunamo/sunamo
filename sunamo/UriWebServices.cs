@@ -40,6 +40,11 @@ public partial class UriWebServices
         public static List<string> All = CA.ToListString(wwwFirmoCz, rejstrikPenizeCz, wwwFirmyCz, rejstrikFiremKurzyCz, wwwPodnikatelCz, rejstrikyFinanceCz);
     }
 
+    public static class MyBlogs
+    {
+        public const string jpnAdminAllPosts = @"https://jepsano.net/wp-admin/edit.php?s=%s&post_status=all&post_type=post&action=-1&m=0&cat=0&seo_filter&readability_filter&paged=1&action2=-1";
+    }
+
     public const string karaokeTexty = "http://www.karaoketexty.cz/search?q=%s&sid=bbrpp&x=36&y=9";
     public static class AutomotiveSpareParts
     {

@@ -84,6 +84,9 @@ public class AllStrings
     /// </summary>
     public static string cs2 = ": ";
     public static string plus;
+    public static string doubleSpace32160 = AllStrings.space + AllStrings.space160;
+    public static string doubleSpace16032 = AllStrings.space160 + AllStrings.space;
+    public static string space160 = AllChars.space160.ToString();
     public const string bs2 = "\b";
     public const string hashtag = "#";
     public const string equal = "=";
@@ -94,4 +97,6 @@ public class AllStrings
     public const string at = "@";
     public const string la = "‘";
     public const string ra = "’";
+
+    internal static string DoubleSpace32160 { get => doubleSpace32160; set => doubleSpace32160 = value; }
 }

@@ -3202,16 +3202,7 @@ public static string PrefixIfNotStartedWith( string item, string http)
         return resultStatus;
     }
 
-public static string ReplaceAllDoubleSpaceToSingle(string arg)
-    {
-        while (arg.Contains(AllStrings.doubleSpace))
-        {
-            arg = SH.ReplaceAll2(arg, AllStrings.space, AllStrings.doubleSpace);
-        }
 
-
-        return arg;
-    }
 
 public static bool HasTextRightFormat(string r, TextFormatData tfd)
     {
@@ -3347,5 +3338,46 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
             return text;
         }
         return text + append;
+    }
+
+    public static string ReplaceAllDoubleSpaceToSingle(string text)
+    {
+        return ReplaceAllDoubleSpaceToSingle(text, false);
+    }
+
+public static string ReplaceAllDoubleSpaceToSingle(string text, bool alsoHtml = false)
+    {
+        text = SH.FromSpace160To32(ref text);
+
+        if (alsoHtml)
+        {
+            text = text.Replace(" &nbsp;", " ");
+            text = text.Replace("&nbsp; ", " ");
+            text = text.Replace("&nbsp;", " ");
+        }
+
+        while (text.Contains(AllStrings.doubleSpace))
+        {
+            text = SH.ReplaceAll2(text, AllStrings.space, AllStrings.doubleSpace);
+        }
+
+        // Here it was cycling, dont know why, therefore without while
+        //while (text.Contains(AllStrings.doubleSpace16032))
+        //{
+            //text = SH.ReplaceAll2(text, AllStrings.space, AllStrings.doubleSpace16032);
+        //}
+
+        //while (text.Contains(AllStrings.doubleSpace32160))
+        //{
+            //text = SH.ReplaceAll2(text, AllStrings.space, AllStrings.doubleSpace32160);
+        //}
+
+        return text;
+    }
+
+private static string FromSpace160To32(ref string text)
+    {
+        text = Regex.Replace(text, @"\p{Z}", AllStrings.space);
+        return text;
     }
 }

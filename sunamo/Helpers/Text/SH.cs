@@ -918,15 +918,25 @@ public static partial class SH
         return false;
     }
 
+
+
     /// <summary>
+    /// Split by all whitespaces - remove also newline
     /// ReplaceAllDoubleSpaceToSingle not working correctly while copy from webpage
     /// Split and join again
     /// </summary>
-    /// <param name="arg"></param>
+    /// <param name="text"></param>
     /// <returns></returns>
-    public static string ReplaceAllDoubleSpaceToSingle2(string arg)
+    public static string ReplaceAllDoubleSpaceToSingle2(string text, bool alsoHtml = false)
     {
-        var p = SH.SplitByWhiteSpaces(arg, true);
+        if (alsoHtml)
+        {
+            text = text.Replace(" &nbsp;", " ");
+            text = text.Replace("&nbsp; ", " ");
+            text = text.Replace("&nbsp;", " ");
+        }
+
+        var p = SH.SplitByWhiteSpaces(text, true);
 
         return SH.Join(p, " ");
     }

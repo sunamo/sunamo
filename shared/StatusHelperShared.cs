@@ -21,4 +21,5 @@ public static Color GetForegroundBrushOfTypeOfMessage(TypeOfMessage st)
                 return Colors.White;
         }
     }
+
 }

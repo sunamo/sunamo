@@ -141,6 +141,7 @@
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
     <Compile Include="MailBox.cs" />
+    <Compile Include="ParserEventLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RA.cs" />
     <Compile Include="StatusHelper.cs" />

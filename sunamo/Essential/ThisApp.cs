@@ -82,7 +82,7 @@ namespace sunamo.Essential
 
         public static void StatusFromText(string v)
         {
-            var tom = AspNet.IsStatusMessage(ref v);
+            var tom = StatusHelperSunamo.IsStatusMessage(ref v);
             SetStatus(tom, v);
         }
     }

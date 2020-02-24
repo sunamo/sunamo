@@ -25,6 +25,12 @@ public abstract class PpkOnDriveBase<T> : List<T>
     public event EmptyHandler Nahrane;
     #endregion
 
+    public  void RemoveAll()
+    {
+        
+        TF.WriteAllText(soubor, string.Empty);
+    }
+
     public abstract void Load();
 
     public void AddWithoutSave(T t)
