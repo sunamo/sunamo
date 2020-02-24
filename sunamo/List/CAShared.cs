@@ -118,6 +118,18 @@ public static partial class CA
         return captions[i];
     }
 
+    public static bool HasDuplicates(List<string> list)
+    {
+        var list2 = list.ToList();
+        CA.RemoveDuplicitiesList(list);
+        if (list2.Count != list.Count)
+        {
+            //Console.WriteLine( Exceptions.DifferentCountInLists(string.Empty, "list2", list2.Count, "list", list.Count));
+            return true;
+        }
+        return false;
+    }
+
 
 
     /// <summary>
