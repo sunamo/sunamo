@@ -9,6 +9,6 @@ public class UriShortConsts
     public const string LyrCz = "lyr.localhost";
     public const string AppCz = "app.localhost";
     public const string GeoCz = "geo.localhost";
-    public const string ErtCz = "ert.localhost";
+    public const string ErtCz = "var.localhost";
 }
 
