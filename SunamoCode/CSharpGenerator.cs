@@ -195,7 +195,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void Namespace(int tabCount, string ns)
     {
-        sb.AddItem("namespace " + ns);
+        sb.AddItem(CsKeywords.ns + " " + ns);
         sb.AppendLine();
         sb.AddItem("{");
         sb.AppendLine();

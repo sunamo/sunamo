@@ -1,7 +1,7 @@
-﻿<Application.Resources>
-
+﻿    <Application.Resources>
         <!--Copy ONLY inside of ResourceDictionary tag-->
         <ResourceDictionary>
+            
             <!--Start ToggleSwitch-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/desktop;component/Controls/ToggleSwitch/Assets/Styles.xaml"/>
@@ -10,6 +10,8 @@
 
             <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
             <!--End ToggleSwitch-->
+
+        </ResourceDictionary>
     </Application.Resources>
 
 	davat vzdy do gridu s column/row Auto

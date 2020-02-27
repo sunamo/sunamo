@@ -51,25 +51,7 @@ public class ClipboardHelperWin : IClipboardHelper
             clipboardMonitor.afterSet = null;
         }
 
-        if (!string.IsNullOrWhiteSpace(v))
-        {
-            // In use from SunamoCzAdmin.Cmd: Current thread must be set to single thread apartment (STA) mode before OLE calls can be made. Ensure that your Main function has STAThreadAttribute marked on it. 
-            // Ani Dispatcher ani Thread nepomohl
-            //WpfApp.cd.Invoke(() =>
-            //{
-            //new System.Threading.Thread(delegate ()
-            //{
-            try
-            {
-                Clipboard.SetText(v);
-            }
-            catch (Exception ex)
-            {
-                // 
-            }
-            //}).Start();
-            //});
-        }
+        SetText2(v);
     }
 
     /// <summary>
@@ -96,15 +78,21 @@ public class ClipboardHelperWin : IClipboardHelper
         return result;
     }
 
-    public void SetText2(string s)
+    public void SetText2(string v)
     {
-        if (clipboardMonitor != null)
+        if (!string.IsNullOrWhiteSpace(v))
         {
-            clipboardMonitor.afterSet = null;
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    Clipboard.SetText(v);
+                    return;
+                }
+                catch { }
+                System.Threading.Thread.Sleep(10);
+            }
         }
-
-        // Nastavím text a místo toho se mi  uloží nějaký úplně starý
-        Clipboard.SetText(s);
     }
 
     public List<string> GetLines()
@@ -170,10 +158,6 @@ public class ClipboardHelperWin : IClipboardHelper
         Clipboard.SetDataObject(data, true);
     }
 
-    //public void SetText(TextBuilder stringBuilder)
-    //{
-    //    SetText(stringBuilder.ToString());
-    //}
 
     public void SetText(StringBuilder stringBuilder)
     {
@@ -187,11 +171,13 @@ public class ClipboardHelperWin : IClipboardHelper
             clipboardMonitor.afterSet = null;
         }
 
-        Thread thread = new Thread(() => Clipboard.SetText(s));
+        Thread thread = new Thread(() => SetText2(s));
         thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
         thread.Start();
         thread.Join();
     }
+
+
 
     public bool ContainsText()
     {

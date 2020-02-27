@@ -6,7 +6,26 @@ using System.Text;
 
 public static partial class CSharpHelper
 {
-    
+    public static string GetSummaryXmlDocumentation(List<string> cs)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < cs.Count(); i++)
+        {
+            var line = cs[i];
+            if (line.StartsWith(CodeElementsConstants.XmlDocumentationCsharp))
+            {
+                line = SH.TrimStart(line, CodeElementsConstants.XmlDocumentationCsharp).Trim();
+
+                sb.AppendLine(line);
+
+                if (line.Contains("</summary>"))
+                {
+                    break;
+                }
+            }
+        }
+        return sb.ToString();
+    }
     public static string CreateConstsForSearchUris(List<string> uris)
     {
         CSharpGenerator csg = new CSharpGenerator();
@@ -79,7 +98,7 @@ public static partial class CSharpHelper
         CSharpGenerator csg = new CSharpGenerator();
         csg.GetDictionaryValuesFromRandomValue<Key, Value>(tabCount, nameDictionary, keys, randomValue);
         return csg.ToString();
-    } 
+    }
     #endregion
 
     //public static string GetDictionary(string nameDictionary)
@@ -87,6 +106,20 @@ public static partial class CSharpHelper
 
     //}
 
+    public static string RemoveXmlDocComments(List<string> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            list[i] = SH.RemoveAfterFirst(list[i], "///");
+        }
+        CA.TrimWhereIsOnlyWhitespace(list);
+        var s = SH.JoinNL(list);
+        
+
+        CA.DoubleOrMoreMultiLinesToSingle(ref s);
+        
+        return s;
+    }
 
     public static List<string> RemoveComments(List<string> list)
     {

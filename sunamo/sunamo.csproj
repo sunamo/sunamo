@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,13 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamo.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamoShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Data\TextFormatData.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
@@ -75,11 +68,13 @@
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\JavascriptSerialization.cs" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CheckBoxData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CryptData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\MedianAverage.cs" />
@@ -87,6 +82,7 @@
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFile.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\StorageFolder.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\SunamoColor.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Data\TextFormatData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\TextGroupsData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ComplexInfoString.cs" />
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
@@ -99,6 +95,7 @@
     <Compile Include="..\..\sunamo\sunamo\Enums\ModifiersConstructor.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
@@ -109,6 +106,9 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelperShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamo.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamoShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHNotTranslateAbleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\XHelperShared.cs" />
@@ -124,16 +124,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Collections\D.cs" />
-    <Compile Include="Constants\FolderConsts.cs" />
-    <Compile Include="Constants\UnicodeWhiteToVisible.cs" />
-    <Compile Include="Extensions\Task.cs" />
-    <Compile Include="Helpers\Base64Helpers.cs" />
-    <Compile Include="Helpers\Runtime\AsyncHelper.cs" />
-    <Compile Include="Helpers\StatusHelperSunamo.cs" />
-    <Compile Include="Interfaces\IAsync.cs" />
-    <Compile Include="Interfaces\ISunamoDictionary.cs" />
-    <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -168,6 +158,7 @@
     <Compile Include="Collections\CollectionToEnd.cs" />
     <Compile Include="Collections\CollectionWithoutDuplicates.cs" />
     <Compile Include="Collections\CyclingCollection.cs" />
+    <Compile Include="Collections\D.cs" />
     <Compile Include="Collections\DebugCollection.cs" />
     <Compile Include="Collections\DebugLongCollection.cs" />
     <Compile Include="Collections\DictionarySort.cs" />
@@ -198,6 +189,7 @@
     <Compile Include="Constants\DTConstants.cs" />
     <Compile Include="Constants\DTConstantsShared.cs" />
     <Compile Include="Constants\DTFormats.cs" />
+    <Compile Include="Constants\FolderConsts.cs" />
     <Compile Include="Constants\GoogleApiCodes.cs" />
     <Compile Include="Constants\HtmlAttrs.cs" />
     <Compile Include="Constants\HtmlAttrValue.cs" />
@@ -211,6 +203,7 @@
     <Compile Include="Constants\Paths\TemporaryPaths.cs" />
     <Compile Include="Constants\RuntimeFrameworks.cs" />
     <Compile Include="Constants\SunamoStrings.cs" />
+    <Compile Include="Constants\UnicodeWhiteToVisible.cs" />
     <Compile Include="Constants\XlfKeys.cs" />
     <Compile Include="Control\ColumnSizeHelper.cs" />
     <Compile Include="ConvertersSimple\BlobConverter.cs" />
@@ -449,6 +442,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\Task.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="FileSystemWatchers.cs" />
@@ -481,6 +475,7 @@
     <Compile Include="Generators\XmlGeneratorSelective.cs" />
     <Compile Include="Generators\XmlTemplates.cs" />
     <Compile Include="GoogleMyMapsHelper.cs" />
+    <Compile Include="Helpers\Base64Helpers.cs" />
     <Compile Include="Helpers\Clipboard\SheetsHelper.cs" />
     <Compile Include="Helpers\ClipboardHelper.cs" />
     <Compile Include="Helpers\CSharpHelperSunamo.cs" />
@@ -544,8 +539,10 @@
     <Compile Include="Helpers\Resource\RandomHelperList.cs" />
     <Compile Include="Helpers\Resource\RandomHelperShared.cs" />
     <Compile Include="Helpers\Resource\ResourcesHelper.cs" />
+    <Compile Include="Helpers\Runtime\AsyncHelper.cs" />
     <Compile Include="Helpers\Runtime\PlatformInteropHelper.cs" />
     <Compile Include="Helpers\Runtime\RuntimeHelper.cs" />
+    <Compile Include="Helpers\StatusHelperSunamo.cs" />
     <Compile Include="Helpers\Text\EncodingHelper.cs" />
     <Compile Include="Helpers\Text\HtmlSB.cs" />
     <Compile Include="Helpers\Text\InstantSB.cs" />
@@ -589,6 +586,7 @@
     <Compile Include="Indexing\FileSystem\FolderItem.cs" />
     <Compile Include="Indexing\TextContent\TextIndexing.cs" />
     <Compile Include="Interfaces\IAnotherLocation.cs" />
+    <Compile Include="Interfaces\IAsync.cs" />
     <Compile Include="Interfaces\IConvertConvention.cs" />
     <Compile Include="Interfaces\IConvertNumberString.cs" />
     <Compile Include="Interfaces\IConvertShortcut.cs" />
@@ -629,10 +627,12 @@
     <Compile Include="Interfaces\IStatusBroadcaster.cs" />
     <Compile Include="Interfaces\ISunamoBrowser.cs" />
     <Compile Include="Interfaces\ISunamoComparer.cs" />
+    <Compile Include="Interfaces\ISunamoDictionary.cs" />
     <Compile Include="Interfaces\ITypeScriptGenerator.cs" />
     <Compile Include="Interfaces\IUserControlInWindow.cs" />
     <Compile Include="Interfaces\IUsersWebService.cs" />
     <Compile Include="Interfaces\IWorking.cs" />
+    <Compile Include="Interfaces\IXParser.cs" />
     <Compile Include="List\CA.cs" />
     <Compile Include="List\CAShared.cs" />
     <Compile Include="List\DictionaryHelper.cs" />

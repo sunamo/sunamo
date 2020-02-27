@@ -176,6 +176,7 @@ namespace Roslyn
             // With ToFullString and ToString is output the same - good but without new lines
             var formattedText = vr.ToFullString();
 
+
             return FinalizeFormat(formattedText);
         }
 
@@ -300,9 +301,31 @@ namespace Roslyn
             //SH.MultiWhitespaceLineToSingle(lines);
 
             SH.IndentAsPreviousLine(lines);
-            CA.RemoveStringsEmpty2(lines);
+            //CA.RemoveStringsEmpty2(lines);
 
-            return SH.JoinNL(lines);
+            for (int i = lines.Count - 1; i >= 0; i--)
+            {
+                var line = lines[i];
+                var trimmedLine = lines[i].Trim();
+                if (trimmedLine.StartsWith("//") && !trimmedLine.StartsWith("///"))
+                {
+                    if (i != 0)
+                    {
+                        if( lines[i - 1].Trim() != (AllStrings.cbl))
+                        {
+                            lines.Insert(i, string.Empty);
+                        }
+                    }
+                    
+                }
+            }
+
+            var nl = SH.JoinNL(lines);
+
+            nl = nl.Replace(CsKeywords.ns, Environment.NewLine + CsKeywords.ns);
+            
+
+            return nl;
         }
 
         public static ClassDeclarationSyntax GetClass(SyntaxNode root)

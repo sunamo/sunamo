@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -74,10 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
-    <Compile Include="..\..\sunamo\desktop\Extensions\UserControlExtensionsShared.cs" />
-    <Compile Include="..\..\sunamo\desktop\Interfaces\IKeysHandler.cs" />
-    <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlClosing.cs" />
-    <Compile Include="..\..\sunamo\desktop\EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\IConfigurableWindow.cs" />
@@ -93,6 +89,7 @@
     <Compile Include="..\..\sunamo\desktop\Data\ControlInitData.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfApp.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfAppShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ComboBoxExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\FrameworkElementExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\ListBoxExtensions.cs" />
@@ -101,6 +98,7 @@
     <Compile Include="..\..\sunamo\desktop\Extensions\ToggleButtonExtensionShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensions.cs" />
     <Compile Include="..\..\sunamo\desktop\Extensions\UIElementExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\desktop\Extensions\UserControlExtensionsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ContentControlHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\ControlHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\BaseControls\DependencyObjectHelper.cs" />
@@ -124,8 +122,10 @@
     <Compile Include="..\..\sunamo\desktop\Helpers\KeyboardHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Hotkey.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IEssentialMainWindow.cs" />
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IKeysHandler.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControl.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlBackground.cs" />
+    <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlClosing.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowWithSettingsManager.cs" />

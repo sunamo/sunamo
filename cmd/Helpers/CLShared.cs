@@ -75,7 +75,7 @@ public static partial class CL
         }
 
         char znak = entered[0];
-        if (char.ToLower(entered[0]) == 'y')
+        if (char.ToLower(entered[0]) == 'y' || znak == '1')
         {
             return true;
         }

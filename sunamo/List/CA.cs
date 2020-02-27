@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public static partial class CA
 {
@@ -119,6 +120,26 @@ public static partial class CA
     {
         var numbered = BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
         Prepend(numbered, input);
+    }
+
+    public static void TrimWhereIsOnlyWhitespace(List<string> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            var l = list[i];
+            if (string.IsNullOrWhiteSpace(l))
+            {
+                list[i] = list[i].Trim();
+            }
+        }
+    }
+
+    public static string DoubleOrMoreMultiLinesToSingle(ref string list)
+    {
+        var n = Environment.NewLine;
+        list = Regex.Replace(list, "[\\r\\n]+", System.Environment.NewLine, System.Text.RegularExpressions.RegexOptions.Multiline);
+        list = list.Replace(n, n + n);
+        return list;
     }
 
     /// <summary>
