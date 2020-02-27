@@ -301,7 +301,8 @@ namespace Roslyn
             //SH.MultiWhitespaceLineToSingle(lines);
 
             SH.IndentAsPreviousLine(lines);
-            //CA.RemoveStringsEmpty2(lines);
+            // Important, otherwise is every line delimited by empty
+            CA.RemoveStringsEmpty2(lines);
 
             for (int i = lines.Count - 1; i >= 0; i--)
             {

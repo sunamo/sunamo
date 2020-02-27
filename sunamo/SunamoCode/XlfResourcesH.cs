@@ -129,8 +129,7 @@ public class XlfResourcesH
             TF.WriteAllText(file2, xlfContent, enc);
             TF.RemoveDoubleBomUtf8(file2);
 
-            path = appData.RootFolderCommon(false);
-
+            path = FS.Combine( appData.RootFolderCommon(true), "Settings");
         }
 
 
