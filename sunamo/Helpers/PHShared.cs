@@ -60,7 +60,7 @@ public static string NormalizeUri(string v)
 
         foreach (var process in Process.GetProcessesByName(name))
         {
-            process.Kill();
+            PH.KillProcess(process);
             deleted++;
         }
 

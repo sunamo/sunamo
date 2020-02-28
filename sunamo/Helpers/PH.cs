@@ -6,9 +6,43 @@ using System.Diagnostics;
 using sunamo;
 using System.Linq;
 using System.Web;
+using System.Text.RegularExpressions;
 
 public partial class PH
 {
+    public static void ShutdownProcessWhichOccupyFileHandleExe(string fileName)
+    {
+        Process tool = new Process();
+        tool.StartInfo.FileName = "handle64.exe";
+        tool.StartInfo.Arguments = fileName + " /accepteula";
+        tool.StartInfo.UseShellExecute = false;
+        tool.StartInfo.RedirectStandardOutput = true;
+        tool.Start();
+        tool.WaitForExit();
+        string outputTool = tool.StandardOutput.ReadToEnd();
+
+        string matchPattern = @"(?<=\s+pid:\s+)\b(\d+)\b(?=\s+)";
+        var matches = Regex.Matches(outputTool, matchPattern);
+        foreach (Match match in matches)
+        {
+            var pr = Process.GetProcessById(int.Parse(match.Value));
+            KillProcess(pr);
+        }
+    }
+
+    public static void KillProcess(Process pr)
+    {
+        try
+        {
+            pr.Kill();
+        }
+        catch (Exception ex)
+        {
+
+            
+        }
+    }
+
     public static void StartAllUri(List<string> all)
     {
         foreach (var item in all)

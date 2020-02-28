@@ -29,7 +29,7 @@ public partial class WpfApp{
 #endif
 
             // change ! by needs
-            if (Debugger.IsAttached)
+            if (!Debugger.IsAttached)
             {
                 //MessageBox.Show("Debugger wasnt attached");
                 AttachHandlers();

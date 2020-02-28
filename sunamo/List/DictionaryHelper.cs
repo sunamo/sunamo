@@ -38,6 +38,14 @@ public partial class DictionaryHelper
         return t;
     }
 
+    public static void RemoveIfExists<T, U>(Dictionary<T, List<U>> st, T v)
+    {
+        if (st.ContainsKey(v))
+        {
+            st.Remove(v);
+        }
+    }
+
     public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
     {
         if (sl.ContainsKey(baseNazevTabulky))
