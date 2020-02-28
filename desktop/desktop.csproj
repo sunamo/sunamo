@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -189,6 +189,12 @@
       <DependentUpon>TwoRadiosUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Controls\TwoStatesToggleButton.cs" />
+    <Compile Include="Extensions\SizeExtensions.cs" />
+    <Compile Include="Helpers\ColorThemeHelper.cs" />
+    <Compile Include="Helpers\DisplayHelper.cs" />
+    <Compile Include="UserControls\ErrorListing.xaml.cs">
+      <DependentUpon>ErrorListing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Image\CyclingImageViewer.xaml.cs">
       <DependentUpon>CyclingImageViewer.xaml</DependentUpon>
     </Compile>
@@ -536,6 +542,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Controls\TwoRadiosUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ErrorListing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -26,6 +26,7 @@ public class Constants
     /// -Stejné pro všechny weby
     /// </summary>
     public static int MaxLengthColumnWordInTablesWords = 60;
+    public static object dialogSize;
     #endregion
 }
 

@@ -8,6 +8,19 @@ using sunamo.Values;
 
 public partial class ControlHelper
 {
+    public static Size GetMinimumHeightMinimumWidth(UIElement uie)
+    {
+        return GetMinimumHeightMinimumWidth(uie, SizePositiveInfinity);
+    }
+
+    public static Size GetMinimumHeightMinimumWidth(UIElement uie, Size windowSize)
+    {
+        uie.Measure(windowSize);
+        var vr = uie.DesiredSize;
+
+        return vr;
+    }
+
     public static Point GetOnCenter(Size parent, Size child)
     {
         Point vr = new Point();

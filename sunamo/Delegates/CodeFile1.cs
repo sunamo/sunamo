@@ -35,7 +35,7 @@ public delegate void VoidVoid();
 public delegate void VoidListT<T>(List<T> c);
 public delegate void VoidUri(Uri uri);
 
-public delegate void VoidAction(sunamo.Action action);
+public delegate void VoidAction(sunamo.ButtonAction action);
 public delegate void VoidDouble(Double c);
 public delegate void VoidObject(object o);
 

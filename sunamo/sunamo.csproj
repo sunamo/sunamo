@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Constants\CsKeywords.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
@@ -69,6 +68,7 @@
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySort.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DictionarySortShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Constants\CsKeywords.cs" />
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
@@ -336,7 +336,7 @@
     <Compile Include="Entity\Timestamp.cs" />
     <Compile Include="Entity\TimestampShared.cs" />
     <Compile Include="Entity\Wildcard.cs" />
-    <Compile Include="Enums\Action.cs" />
+    <Compile Include="Enums\ButtonAction.cs" />
     <Compile Include="Enums\AddBeforeControl.cs" />
     <Compile Include="Enums\AppFolders.cs" />
     <Compile Include="Enums\AppPics.cs" />

@@ -10,7 +10,7 @@ using System.Windows.Media;
 public class ControlInitData
 {
     #region Sort by alphabet (same as in intellisense popup)
-    public sunamo.Action action;
+    public sunamo.ButtonAction action;
     public bool checkable = false;
     public object content = null;
     public Brush foreground = null;
