@@ -602,7 +602,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https" + ":" + "//", "") + "</a>";
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https" + ":" + "//", "") + "</a>";
     }
 
     public static string AnchorWithHttp(string www, string text)

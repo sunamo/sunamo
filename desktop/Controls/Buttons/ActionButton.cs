@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using sunamo;
 
 public class ActionButton<T> : Button
 {
-    sunamo.ButtonAction action = sunamo.ButtonAction.SaveToClipboard;
+    ButtonAction action = ButtonAction.SaveToClipboard;
     T what;
     public event VoidT<T> Remove; 
-    public ActionButton(sunamo.ButtonAction action, T what)
+    public ActionButton(ButtonAction action, T what)
     {
         this.action = action;
         this.what  = what;
@@ -22,15 +23,15 @@ public class ActionButton<T> : Button
     {
         switch (action)
         {
-            case sunamo.ButtonAction.Nope:
+            case ButtonAction.Nope:
                 break;
-            case sunamo.ButtonAction.Remove:
+            case ButtonAction.Remove:
                 Remove(what);
                 break;
-            case sunamo.ButtonAction.SaveToClipboard:
+            case ButtonAction.SaveToClipboard:
                 ClipboardHelper.SetText(what.ToString());
                 break;
-            case sunamo.ButtonAction.Run:
+            case ButtonAction.Run:
                 PH.Start(what.ToString());
                 break;
             default:

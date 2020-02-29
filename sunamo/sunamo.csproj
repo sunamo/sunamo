@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ButtonAction.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />

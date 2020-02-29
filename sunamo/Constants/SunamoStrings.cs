@@ -152,7 +152,7 @@ public class SunamoStrings
         }
     }
 
-    public const string scFixed = "1pr2qyfsagraqjv4uypgho5o";
+    
 
     public static string UnauthorizedOperation
     {

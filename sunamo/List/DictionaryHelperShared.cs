@@ -137,14 +137,13 @@ public partial class DictionaryHelper
     /// <param name = "sl"></param>
     /// <param name = "key"></param>
     /// <param name = "value"></param>
-    public static void AddOrCreate<Key, Value, ColType>(IDictionary<Key, List<Value>> sl, Key key, Value value, bool withoutDuplicitiesInValue = false)
+    public static void AddOrCreate<Key, Value, ColType>(IDictionary<Key, List<Value>> dict, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
-        //T, byte[]
         if (key is IEnumerable && typeof(ColType) != typeof(object))
         {
             IEnumerable<ColType> keyE = key as IEnumerable<ColType>;
             bool contains = false;
-            foreach (var item in sl)
+            foreach (var item in dict)
             {
                 IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
                 if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
@@ -155,7 +154,7 @@ public partial class DictionaryHelper
 
             if (contains)
             {
-                foreach (var item in sl)
+                foreach (var item in dict)
                 {
                     IEnumerable<ColType> keyD = item.Key as IEnumerable<ColType>;
                     if (Enumerable.SequenceEqual<ColType>(keyD, keyE))
@@ -174,63 +173,63 @@ public partial class DictionaryHelper
             }
             else
             {
-
-
                 List<Value> ad = new List<Value>();
                 ad.Add(value);
-
-                
-
-                sl.Add(key, ad);
+                dict.Add(key, ad);
             }
         }
         else
         {
             bool add = true;
-            lock (sl)
+            lock (dict)
             {
-                if (sl.ContainsKey(key))
+                if (dict.ContainsKey(key))
                 {
                     if (withoutDuplicitiesInValue)
                     {
-                        if (sl[key].Contains(value))
+                        if (dict[key].Contains(value))
                         {
                             add = false;
-
                         }
                     }
 
                     if (add)
                     {
-                        var val = sl[key];
+                        var val = dict[key];
 
-                        //if (Comparer<Value>.Default.Compare(val, default(List<Value>)))
-                        //{
                         if (val != null)
                         {
                             val.Add(value);
                         }
-                            
-                        //}
                     }
 
                 }
                 else
                 {
+                    
                     List<Value> ad = new List<Value>();
                     ad.Add(value);
-                    // Must be Checking again due to FileSystemWatcher in SourceCodeIndexer
-                    if (!sl.ContainsKey(key))
+
+                    if (!dict.ContainsKey(key))
                     {
-                        sl.Add(key, ad);
+                        dict.Add(key, ad);
                     }
                     else
                     {
-                        sl[key].Add(value);
+                        dict[key].Add(value);
                     }
                 }
             }
         }
+    }
+
+    public static List<U> GetValuesOrEmpty<T,U>(IDictionary<T, List<U>> dict, T t, U u)
+    {
+        if (dict.ContainsKey(t))
+        {
+            return dict[t];
+        }
+        return new List<U>();
     }
 
     public static string GetOrKey<T>(Dictionary<T, string> a, T item2)

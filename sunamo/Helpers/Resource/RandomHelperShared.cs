@@ -91,6 +91,7 @@ public static partial class RandomHelper
     /// <summary>
     /// Zad�vej ��slo o 1 v�t�� ne� skute�n� po�et znak� kter� chce�
     /// Vr�t� mi n�hodn� �et�zec pouze z velk�ch, mal�ch p�smen a ��slic
+    /// Call ToLower when save to DB
     /// </summary>
     /// <param name="delka"></param>
     /// <returns></returns>
@@ -100,6 +101,7 @@ public static partial class RandomHelper
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i != delka; i++)
         {
+            
             sb.Append(RandomCharWithoutSpecial());
         }
         return sb.ToString();
@@ -118,6 +120,7 @@ public static partial class RandomHelper
 
     /// <summary>
     /// Vr�t� mi n�hodn� znak pouze z velk�ch, mal�ch p�smen a ��slic
+    /// Call ToLower when save to DB
     /// </summary>
     /// <returns></returns>
     public static char RandomCharWithoutSpecial()

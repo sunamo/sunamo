@@ -8479,15 +8479,15 @@
         </trans-unit>
         <trans-unit id="IsApproximatelyTheSameAsPlane" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated"> is approximately the same as plane.</target>
+          <target state="translated"> is approximately the same as on plane.</target>
         </trans-unit>
         <trans-unit id="xSlowerThanPlane" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">x slower than plane.</target>
+          <target state="translated">x slower than on plane.</target>
         </trans-unit>
         <trans-unit id="xFasterThanPlane" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">x faster than plane.</target>
+          <target state="translated">x faster than on plane.</target>
         </trans-unit>
         <trans-unit id="IsExactlyTheSameAsFlat" translate="yes" xml:space="preserve">
           <source></source>

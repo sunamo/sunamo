@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using sunamo;
 
 public class ControlInitData
 {
     #region Sort by alphabet (same as in intellisense popup)
-    public sunamo.ButtonAction action;
+    public ButtonAction action;
     public bool checkable = false;
     public object content = null;
     public Brush foreground = null;
