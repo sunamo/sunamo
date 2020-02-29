@@ -35,6 +35,7 @@ public partial class WpfApp
         ////DebugLogger.DebugWriteLine(v);
     }
 #endif
+
     /// <summary>
     /// Alternatives are:
     /// InitApp.SetDebugLogger
