@@ -53,6 +53,18 @@ public static string NormalizeUri(string v)
         return v;
     }
 
+    public static void KillProcess(Process pr)
+    {
+        try
+        {
+            pr.Kill();
+        }
+        catch (Exception ex)
+        {
+
+
+        }
+    }
 
     public static int Terminate(string name)
     {
