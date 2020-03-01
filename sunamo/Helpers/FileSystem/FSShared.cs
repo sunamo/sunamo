@@ -36,6 +36,7 @@ public partial class FS
     {
         if (!FS.ExistsDirectory(folder2) && !folder2.Contains(";"))
         {
+            ThisApp.SetStatus(TypeOfMessage.Warning, folder2 + "does not exists");
             return new List<string>();
         }
 

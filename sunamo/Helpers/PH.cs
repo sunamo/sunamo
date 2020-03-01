@@ -30,18 +30,6 @@ public partial class PH
         }
     }
 
-    public static void KillProcess(Process pr)
-    {
-        try
-        {
-            pr.Kill();
-        }
-        catch (Exception ex)
-        {
-
-            
-        }
-    }
 
     public static void StartAllUri(List<string> all)
     {

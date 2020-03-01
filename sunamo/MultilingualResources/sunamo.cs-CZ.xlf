@@ -10680,6 +10680,62 @@
           <source></source>
           <target state="translated">HelloWorld2</target>
         </trans-unit>
+        <trans-unit id="ListingOfAllCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výpis všech keší</target>
+        </trans-unit>
+        <trans-unit id="ListOfFoundCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výpis nalezených keší</target>
+        </trans-unit>
+        <trans-unit id="ListOfCachesNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výpis nenalezených keší</target>
+        </trans-unit>
+        <trans-unit id="ExtractsOfTheRecentlyHuntedCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výpis právě lovených keší</target>
+        </trans-unit>
+        <trans-unit id="FindOutDisableCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zjisti disable kešky</target>
+        </trans-unit>
+        <trans-unit id="TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">První, druhý nebo oba rozdělené soubory neměli žádné segmenty, program nemůže pokračovat.</target>
+        </trans-unit>
+        <trans-unit id="DateFromToOrBothWereNotWithinTheValidGPXFileRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum od, do či oba nebyly v platném rozmezí GPX souboru.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotEnteredBothDatesTheProgramCannotContinue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nezadali jste oba datumy, program nemůže pokračovat.</target>
+        </trans-unit>
+        <trans-unit id="YouWereSignedInButThisTrackDidnTBelongToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Byli jste přihlášení, ale tato stopa nepatřila vám</target>
+        </trans-unit>
+        <trans-unit id="Tracks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stopy</target>
+        </trans-unit>
+        <trans-unit id="GPXRoutesAuthorPages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">GPX trasy autora stránek</target>
+        </trans-unit>
+        <trans-unit id="AllMyTracks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny mé stopy</target>
+        </trans-unit>
+        <trans-unit id="UploadNew" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upload nové</target>
+        </trans-unit>
+        <trans-unit id="CreateHtml" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořit Html</target>
+        </trans-unit>
       </group>
     </body>
   </file>

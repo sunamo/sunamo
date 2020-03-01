@@ -1,4 +1,5 @@
 ﻿using sunamo.Data;
+using sunamo.Essential;
 using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,12 @@ public partial class TF
 {
     static Type type = typeof(TF);
     public static List<byte> bomUtf8 = CA.ToList<byte>(239, 187, 191);
+
+    /// <summary>
+    /// Return string.Empty when file won't exists
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static string ReadFile(string s)
     {
         return ReadFile<string, string>(s);
@@ -74,6 +81,7 @@ public partial class TF
         }
         else
         {
+            ThisApp.SetStatus(TypeOfMessage.Warning, s + " does not exists");
             TF.WriteAllText<StorageFolder, StorageFile>(s, string.Empty, ac);
             
         }

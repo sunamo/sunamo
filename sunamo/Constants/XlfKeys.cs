@@ -5,6 +5,58 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string ToTheEnd = "ToTheEnd" ; 
+
+	public const string ToCzechFormat = "ToCzechFormat" ; 
+
+	public const string ToUSAFormat = "ToUSAFormat" ; 
+
+	public const string FromCzechFormat = "FromCzechFormat" ; 
+
+	public const string FromUSAFormat = "FromUSAFormat" ; 
+
+	public const string visitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt = "visitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt" ; 
+
+	public const string Dear = "Dear" ; 
+
+	public const string CreateHtml = "CreateHtml" ; 
+
+	public const string UploadNew = "UploadNew" ; 
+
+	public const string AllMyTracks = "AllMyTracks" ; 
+
+	public const string GPXRoutesAuthorPages = "GPXRoutesAuthorPages" ; 
+
+	public const string Tracks = "Tracks" ; 
+
+	public const string YouWereSignedInButThisTrackDidnTBelongToYou = "YouWereSignedInButThisTrackDidnTBelongToYou" ; 
+
+	public const string IWasNotEnteredOrWasEmptyI = "IWasNotEnteredOrWasEmptyI" ; 
+
+	public const string YouHaveNotEnteredBothDatesTheProgramCannotContinue = "YouHaveNotEnteredBothDatesTheProgramCannotContinue" ; 
+
+	public const string DateFromToOrBothWereNotWithinTheValidGPXFileRange = "DateFromToOrBothWereNotWithinTheValidGPXFileRange" ; 
+
+	public const string TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue = "TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue" ; 
+
+	public const string BrMojeWaypointyBrBr = "BrMojeWaypointyBrBr" ; 
+
+	public const string BrAutoroviWaypointyBrBr = "BrAutoroviWaypointyBrBr" ; 
+
+	public const string FindOutDisableCaches = "FindOutDisableCaches" ; 
+
+	public const string ExtractsOfTheRecentlyHuntedCaches = "ExtractsOfTheRecentlyHuntedCaches" ; 
+
+	public const string ListOfCachesNotFound = "ListOfCachesNotFound" ; 
+
+	public const string ListOfFoundCaches = "ListOfFoundCaches" ; 
+
+	public const string Hunted = "Hunted" ; 
+
+	public const string ListingOfAllCaches = "ListingOfAllCaches" ; 
+
+	public const string Waypoint = "Waypoint" ; 
+
 	public const string PINebylyNalezenyŽádnéWaypointyIP = "PINebylyNalezenyŽádnéWaypointyIP" ; 
 
 	public const string Stats = "Stats" ; 

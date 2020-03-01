@@ -12,15 +12,35 @@ class MyClass
 
 public class D<T, U> : ISunamoDictionary<T, U>, IEnumerable
 {
+    public Action callWhenIsZeroElements;
     static Type type = typeof(D<T, U>);
-    Dictionary<T, U> d = new Dictionary<T, U>();
-    public U this[T key] { get => d[key]; set => d[key] = value; }
+    public Dictionary<T, U> d = new Dictionary<T, U>();
+    public U this[T key] { 
+        get {
+            if (callWhenIsZeroElements != null)
+            {
+                if (Count == 0)
+                {
+                    callWhenIsZeroElements.Invoke();
+                }
+            }
+            return d[key];
+
+        } set => d[key] = value; }
+
+    
 
     public ICollection<T> Keys => d.Keys;
 
     public ICollection<U> Values => d.Values;
 
-    public int Count => d.Count;
+    public int Count
+    {
+        get
+        {
+            return d.Count;
+        }
+    }
 
     public bool IsReadOnly => false;
 

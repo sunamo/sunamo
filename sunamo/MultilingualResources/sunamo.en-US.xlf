@@ -14522,6 +14522,110 @@
           <source></source>
           <target state="translated">Navigation failed</target>
         </trans-unit>
+        <trans-unit id="Waypoint" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Waypoint|</target>
+        </trans-unit>
+        <trans-unit id="ListingOfAllCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Listing of all caches</target>
+        </trans-unit>
+        <trans-unit id="Hunted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hunted</target>
+        </trans-unit>
+        <trans-unit id="ListOfFoundCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">List of found caches</target>
+        </trans-unit>
+        <trans-unit id="ListOfCachesNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">List of caches not found</target>
+        </trans-unit>
+        <trans-unit id="ExtractsOfTheRecentlyHuntedCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Extracts of the recently hunted caches</target>
+        </trans-unit>
+        <trans-unit id="FindOutDisableCaches" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Find out disable caches</target>
+        </trans-unit>
+        <trans-unit id="BrAutoroviWaypointyBrBr" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;br&gt;Autorovi waypointy&lt;br&gt;&lt;br&gt;</target>
+        </trans-unit>
+        <trans-unit id="BrMojeWaypointyBrBr" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;br&gt;Moje waypointy&lt;br&gt;&lt;br&gt;</target>
+        </trans-unit>
+        <trans-unit id="TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The first, second or both split files had no segments, the program cannot continue.</target>
+        </trans-unit>
+        <trans-unit id="DateFromToOrBothWereNotWithinTheValidGPXFileRange" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Date from, to, or both were not within the valid GPX file range.</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotEnteredBothDatesTheProgramCannotContinue" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have not entered both dates, the program cannot continue.</target>
+        </trans-unit>
+        <trans-unit id="IWasNotEnteredOrWasEmptyI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">&lt;i&gt;Was not entered or was empty&lt;/i&gt;</target>
+        </trans-unit>
+        <trans-unit id="YouWereSignedInButThisTrackDidnTBelongToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You were signed in, but this track didn't belong to you</target>
+        </trans-unit>
+        <trans-unit id="Tracks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tracks</target>
+        </trans-unit>
+        <trans-unit id="GPXRoutesAuthorPages" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">GPX routes author pages</target>
+        </trans-unit>
+        <trans-unit id="AllMyTracks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All my tracks</target>
+        </trans-unit>
+        <trans-unit id="UploadNew" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upload new</target>
+        </trans-unit>
+        <trans-unit id="CreateHtml" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Create Html</target>
+        </trans-unit>
+        <trans-unit id="Dear" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dear</target>
+        </trans-unit>
+        <trans-unit id="visitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOrAddAnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">visitors, whether you are from a planet called GeoCaching or Muggles. I created this site mainly to plan GeoCaching trips, to make various statistics of caches finding or to insert my own waypoints and caching notes. You as no admins of this site can view some of the things but do not edit or add anything. Each cache has a unique number according to the paper on which I have it or will have it printed (at the beginning I printed it)</target>
+        </trans-unit>
+        <trans-unit id="FromUSAFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">From (USA format)</target>
+        </trans-unit>
+        <trans-unit id="FromCzechFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">From (Czech format)</target>
+        </trans-unit>
+        <trans-unit id="ToUSAFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">To (USA format)</target>
+        </trans-unit>
+        <trans-unit id="ToCzechFormat" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">To (Czech format)</target>
+        </trans-unit>
+        <trans-unit id="ToTheEnd" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">To the end</target>
+        </trans-unit>
       </group>
     </body>
   </file>

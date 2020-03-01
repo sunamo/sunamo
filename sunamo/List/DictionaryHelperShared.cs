@@ -290,9 +290,14 @@ public partial class DictionaryHelper
         }
     }
 
+    public static Dictionary<T1, T2> CloneDictionary<T1, T2>(Dictionary<T1, T2> filesWithTranslation)
+    {
+        var newDictionary = filesWithTranslation.ToDictionary(entry => entry.Key,
+                                               entry => entry.Value);
+        return newDictionary;
+    }
 
-
-public static List<string> GetListStringFromDictionary(Dictionary<string, string> p)
+    public static List<string> GetListStringFromDictionary(Dictionary<string, string> p)
     {
         List<string> vr = new List<string>();
 
