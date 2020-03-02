@@ -440,6 +440,11 @@ public partial class FS
             result = result.ToLower(); 
         }
 
+        if (!SH.ContainsOnly(result, RandomHelper.vsZnakyWithoutSpecial))
+        {
+            return string.Empty;
+        }
+
         return result;
     }
 
@@ -1587,7 +1592,15 @@ public static byte[] StreamToArrayBytes(System.IO.Stream stream)
     {
         if (ac == null)
         {
-            return (dynamic)Path.GetFileNameWithoutExtension(s.ToString().TrimEnd(AllChars.bs));
+            var ss = s.ToString();
+            var vr = Path.GetFileNameWithoutExtension(ss.TrimEnd(AllChars.bs));
+            var ext = Path.GetExtension(ss).TrimStart(AllChars.dot);
+    
+            if (!SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial))
+            {
+                return s;
+            }
+            return (dynamic)vr;
         }
         else
         {

@@ -131,7 +131,9 @@ public static partial class RandomHelper
     public static List<char> vsZnaky = null;
 
 
-
+    /// <summary>
+    /// upper, lower and digits
+    /// </summary>
     public static List<char> vsZnakyWithoutSpecial = null;
     static RandomHelper()
     {

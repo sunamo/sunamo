@@ -106,8 +106,11 @@ public partial class ComboBoxHelper
         void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedO = cb.SelectedItem;
+        if (SelectedO != null)
+        {
             // not need ValueFromTWithNameOrObject, TWithName has ToString
             cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
+        }
 
         if (SelectionChanged != null)
         {

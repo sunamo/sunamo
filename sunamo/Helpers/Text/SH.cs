@@ -94,8 +94,6 @@ public static partial class SH
             }
         }
 
-
-
         return content;
     }
 

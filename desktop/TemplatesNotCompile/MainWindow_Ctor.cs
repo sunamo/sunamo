@@ -23,9 +23,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
     dynamic Instance = null;
 
-    public ApplicationDataContainer data { get; set; }
-    public ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
-
     #region MyRegion
     MenuItem miGenerateScreenshot = null;
     MenuItem miAlwaysOnTop = null;
@@ -40,6 +37,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     #endregion
     #endregion
 
+    public ApplicationDataContainer data { get; set; }
+    public ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
     public bool CancelClosing { get; set; }
     public WindowWithUserControl windowWithUserControl { get; set; }
 
@@ -80,7 +79,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
         ClipboardHelper.Instance = ClipboardHelperWin.Instance;
         AppData.ci.CreateAppFoldersIfDontExists();
-        //CryptHelper.ApplyCryptData(CryptHelper.RijndaelBytes.Instance, CryptDataWrapperOld.rijn);
+        //CryptHelper.ApplyCryptData(CryptHelper.RijndaelBytes.Instance, CryptDataWrapper.rijn);
 
         XlfResourcesH.SaveResouresToRLSunamo();
         #endregion
@@ -197,6 +196,25 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
     }
 
+    #region MyRegion
+    // Only for working with notify, but always insert block with userControlClosing
+    //    protected override void OnClosing(CancelEventArgs e)
+    //    {
+    //#if !DEBUG
+    //        e.Cancel = GetCancelClosing();
+    //        WindowState = WindowState.Minimized;
+    //#endif
+    //        CheckMenuItemTopMost();
+
+    //if (userControlClosing != null)
+    //    {
+    //        userControlClosing.OnClosing();
+    //    }
+
+    //        base.OnClosing(e);
+    //    } 
+    #endregion
+
     private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (keysHandler != null)
@@ -234,22 +252,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         miAlwaysOnTop.IsChecked = Topmost;
     }
 
-    // Only for working with notify, but always insert block with userControlClosing
-    //    protected override void OnClosing(CancelEventArgs e)
-    //    {
-    //#if !DEBUG
-    //        e.Cancel = GetCancelClosing();
-    //        WindowState = WindowState.Minimized;
-    //#endif
-    //        CheckMenuItemTopMost();
-
-    //if (userControlClosing != null)
-    //    {
-    //        userControlClosing.OnClosing();
-    //    }
-
-    //        base.OnClosing(e);
-    //    }
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
