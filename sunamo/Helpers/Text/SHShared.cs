@@ -17,6 +17,18 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
+    public static bool ContainsOnly(string floorS, List<char> numericChars)
+    {
+        foreach (var item in floorS)
+        {
+            if (!numericChars.Contains(item))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
     public static string ReplaceVariables(string innerHtml, List<List<string>> _dataBinding, int actualRow)
     {
         return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);

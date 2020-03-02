@@ -440,7 +440,7 @@ public partial class FS
             result = result.ToLower(); 
         }
 
-        if (!SH.ContainsOnly(result, RandomHelper.vsZnakyWithoutSpecial))
+        if (!SH.ContainsOnly(result.Substring(1), RandomHelper.vsZnakyWithoutSpecial))
         {
             return string.Empty;
         }

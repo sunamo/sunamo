@@ -850,18 +850,7 @@ public static partial class SH
         return false;
     }
 
-    public static bool ContainsOnly(string floorS, List<char> numericChars)
-    {
-        foreach (var item in floorS)
-        {
-            if (!numericChars.Contains(item))
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
+    
 
 
 
