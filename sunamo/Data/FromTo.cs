@@ -2,6 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+/// <summary>
+/// Must have always entered both from and to
+/// None of event could have unlimited time!
+/// </summary>
 public class FromTo : IParser
 {
     bool empty = false;
@@ -32,6 +36,10 @@ public class FromTo : IParser
     public int to = 0;
     public static FromTo Empty = new FromTo(true);
 
+    /// <summary>
+    /// After it could be called IsFilledWithData
+    /// </summary>
+    /// <param name="input"></param>
     public void Parse(string input)
     {
         List<string> v = null;
@@ -43,6 +51,7 @@ public class FromTo : IParser
         {
             v = CA.ToListString(input);
         }
+
         int v0 = ReturnSecondsFromTimeFormat(v[0]);
         from = v0;
         if (CA.HasIndex(1, v))
@@ -50,14 +59,11 @@ public class FromTo : IParser
             int v1 = ReturnSecondsFromTimeFormat(v[1]);
             to = v1;
         }
+    }
 
-        if (from < 0)
-        {
-        }
-
-        if (from > 0)
-        {
-        }
+    public bool IsFilledWithData()
+    {
+        return from != 0 && to != 0;
     }
 
     private int ReturnSecondsFromTimeFormat(string v)

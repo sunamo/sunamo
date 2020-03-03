@@ -11,5 +11,7 @@ namespace sunamo.Essential
         private SunamoTemplateLogger() : base(ThisApp.SetStatus)
         {
         }
+
+        
     }
 }

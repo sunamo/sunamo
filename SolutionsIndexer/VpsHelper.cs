@@ -23,6 +23,7 @@ public class VpsHelper
     }
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
+    public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, ""));
     public static readonly List<string> list = CA.ToListString("ConsoleApp1", "Credentials", "Credentials.web", "ParseChromeAPIs", "PowershellScripts", "SqlCodeSnippets", "standard.notmine", "sunamo", "sunamo.cz", "sunamo.notmine", "sunamo.teamwork", "sunamo.teamwork.web", "sunamo.web", "SunamoCzAdmin", "SczAdminWithWebBrowser", "SunamoSmartTools", "webelieve.cz");
 
     public static void PushAll()

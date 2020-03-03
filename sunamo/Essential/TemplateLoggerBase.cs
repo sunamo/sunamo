@@ -17,54 +17,64 @@ namespace sunamo.Essential
 
         public void EndRunTime()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Ordinal, Messages.AppWillBeTerminated);
+            WriteLine(TypeOfMessage.Ordinal, Messages.AppWillBeTerminated);
         }
 
         #region Success
         public void CopiedToClipboard(string what)
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
+            WriteLine(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
         }
 
-        
+
         #endregion
 
         #region Error
+        public void CouldNotBeParsed(string entity, string text)
+        {
+            WriteLine(TypeOfMessage.Error, entity + " " + "with value " + text + " could not be parsed");
+        }
+
         public void SomeErrorsOccuredSeeLog()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Error, "Some errors occured, see log");
+            WriteLine(TypeOfMessage.Error, "Some errors occured, see log");
         }
 
         public void FolderDontExists(string folder)
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Error, "Folder" + " " + folder + " " + "doesn't exists" + ".");
+            WriteLine(TypeOfMessage.Error, "Folder" + " " + folder + " " + "doesn't exists" + ".");
         }
 
         public void FileDontExists(string selectedFile)
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Error, "File" + " " + selectedFile + " " + "doesn't exists" + ".");
+            WriteLine(TypeOfMessage.Error, "File" + " " + selectedFile + " " + "doesn't exists" + ".");
+        }
+
+        private void WriteLine(TypeOfMessage error, string v)
+        {
+            _writeLineDelegate(error, v);
         }
         #endregion
 
         #region Information
         public void InsertAsIndexesZeroBased()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Insert as indexes (zero based)");
+            WriteLine(TypeOfMessage.Information, "Insert as indexes (zero based)");
         }
 
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");
+            WriteLine(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");
         }
 
         public void OperationWasStopped()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Operation was stopped");
+            WriteLine(TypeOfMessage.Information, "Operation was stopped");
         }
 
         public void NoData()
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Please enter right input data");
+            WriteLine(TypeOfMessage.Information, "Please enter right input data");
         }
 
 
@@ -75,7 +85,7 @@ namespace sunamo.Essential
         /// <param name="fn"></param>
         public void SuccessfullyResized(string fn)
         {
-            _writeLineDelegate.Invoke(TypeOfMessage.Information, "Successfully resized to" + " " + fn);
+            WriteLine(TypeOfMessage.Information, "Successfully resized to" + " " + fn);
         }
 
         private string FullNameOfExecutedCode(object type, string methodName)
@@ -95,7 +105,7 @@ namespace sunamo.Essential
         {
             if (args.Count() % 2 == 1)
             {
-                _writeLineDelegate.Invoke(TypeOfMessage.Error, Exceptions.NotEvenNumberOfElements(FullNameOfExecutedCode(type, methodName), nameOfCollection));
+                WriteLine(TypeOfMessage.Error, Exceptions.NotEvenNumberOfElements(FullNameOfExecutedCode(type, methodName), nameOfCollection));
                 return false;
             }
             return true;
@@ -115,7 +125,7 @@ namespace sunamo.Essential
 
             if (nulled.Count > 0)
             {
-                _writeLineDelegate.Invoke(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
+                WriteLine(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
                 return true;
             }
             return false;
@@ -134,7 +144,7 @@ namespace sunamo.Essential
 
             if (nulled.Count > 0)
             {
-                _writeLineDelegate.Invoke(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
+                WriteLine(TypeOfMessage.Information, Exceptions.AnyElementIsNullOrEmpty(FullNameOfExecutedCode(type, methodName), nameOfCollection, nulled));
                 return true;
             }
             return false;
@@ -143,13 +153,13 @@ namespace sunamo.Essential
         public void HaveUnallowedValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            _writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " " + "have unallowed value");
+            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " " + "have unallowed value");
         }
 
         public void MustHaveValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            _writeLineDelegate.Invoke(TypeOfMessage.Appeal, controlNameOrText + " " + "must have value");
+            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " " + "must have value");
         }
         #endregion
     }
