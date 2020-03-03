@@ -10,4 +10,3 @@ using System.Text;
 public class NoImplementedException : Exception
 {
 }
-

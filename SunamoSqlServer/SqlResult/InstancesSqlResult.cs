@@ -259,4 +259,3 @@ public class InstancesSqlResult
         return resultString;
     }
 }
-

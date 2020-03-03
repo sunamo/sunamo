@@ -14,7 +14,6 @@ public partial class CSharpParser{
     /// </summary>
     /// <param name = "file"></param>
     /// <param name = "remove"></param>
-    
     public static void RemoveConsts(string file, List<string> remove)
     {
         var lines = TF.GetLines(file);

@@ -8,4 +8,3 @@ public interface ILog
 {
     void NewLogEntry(string entry);
 }
-

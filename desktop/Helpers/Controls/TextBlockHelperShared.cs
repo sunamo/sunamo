@@ -19,7 +19,6 @@ public partial class TextBlockHelper{
     /// Tag here is mainly for comment what data control hold 
     /// </summary>
     /// <param name="text"></param>
-    
     public static TextBlock Get(ControlInitData d)
     {
         TextBlock tb = new TextBlock();

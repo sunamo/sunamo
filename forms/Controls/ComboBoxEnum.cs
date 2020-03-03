@@ -56,4 +56,3 @@ public class ComboBoxEnum<T> : ComboBox
 
     #endregion
 }
-

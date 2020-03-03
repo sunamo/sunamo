@@ -12,7 +12,82 @@ public partial class QSHelper
     /// GetParameter = return null when not found
     /// GetParameterSE = return string.Empty when not found
     /// </summary>
+    public static string GetParameter(string uri, string nameParam)
+    {
+        // 
+        var main = SH.Split(uri, AllStrings.q, "&");
+        foreach (string var in main)
+        {
+            var v = SH.Split(var, "=");
+            if (v[0] == nameParam)
+            {
+                return v[1];
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// get value of A2 parametr in A1
+    /// GetParameter = return null when not found
+    /// GetParameterSE = return string.Empty when not found
+    /// </summary>
+    /// <param name="uri"></param>
+    /// <param name="nameParam"></param>
+    public static string GetParameterSE(string uri, string nameParam)
+    {
+        nameParam = nameParam + "=";
+        int dexPocatek = uri.IndexOf(nameParam);
+        if (dexPocatek != -1)
+        {
+            int dexKonec = uri.IndexOf("&", dexPocatek);
+            dexPocatek = dexPocatek + nameParam.Length;
+            if (dexKonec != -1)
+            {
+                return SH.Substring(uri, dexPocatek, dexKonec);
+            }
+
+            return uri.Substring(dexPocatek);
+        }
+
+        return "";
+    }
+
+    /// <summary>
+    /// A1 je adresa bez konzového otazníku
+    /// Všechny parametry automaticky zakóduje metodou UH.UrlEncode
+    /// </summary>
+    /// <param name = "adresa"></param>
+    /// <param name = "p"></param>
+    public static string GetQS(string adresa, params object[] p2)
+    {
+        var p = CA.TwoDimensionParamsIntoOne(p2);
+
+        StringBuilder sb = new StringBuilder();
+        sb.Append(adresa + AllStrings.q);
+        int to = (p.Count / 2) * 2;
+        for (int i = 0; i < p.Count; i++)
+        {
+            if (i == to)
+            {
+                break;
+            }
+
+            string k = p[i].ToString();
+            string v = UH.UrlEncode(p[++i].ToString());
+            sb.Append(k + "=" + v + "&");
+        }
+
+        return sb.ToString().TrimEnd('&');
+    }
+
     
+
+    /// <summary>
+    /// Do A1 se zadává Request.Url.Query.Substring(1) neboli třeba pid=1&amp;aid=10 
+    /// </summary>
+    /// <param name = "args"></param>
     public static string GetNormalizeQS(string args)
     {
         if (args.Length != 0)

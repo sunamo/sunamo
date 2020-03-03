@@ -53,7 +53,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// If file A1 dont exists, then create him with empty content and G SE. When optained file/folder doesnt exists, return it anyway
     /// </summary>
     /// <param name = "path"></param>
-    
     public string ReadFileOfSettingsDirectoryOrFile(string path)
     {
         return ReadFileOfSettingsOther(path);

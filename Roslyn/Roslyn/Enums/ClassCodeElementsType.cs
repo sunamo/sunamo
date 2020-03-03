@@ -11,4 +11,3 @@ using System.Threading.Tasks;
     Method = 1,
     All = 255
     }
-

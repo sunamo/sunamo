@@ -27,7 +27,6 @@ public class PanelHelper
     /// because every of structure is other innered, is stupidity have own method for get content control without closer determination
     /// </summary>
     /// <param name="p"></param>
-    
     public static object ContentOfFirstChild(Panel p)
     {
         //var first = p.Children.FirstOrNull();
@@ -100,4 +99,3 @@ public class PanelHelper
         return vr;
     }
 }
-

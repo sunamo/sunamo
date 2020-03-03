@@ -32,4 +32,3 @@ public static class TaskExtensions
         TaskContinuationOptions.OnlyOnFaulted);
     }
 }
-

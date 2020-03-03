@@ -43,4 +43,3 @@ public class StringPaddingData
 
     public string text = null;
 }
-

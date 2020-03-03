@@ -6,7 +6,24 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
     /// NI
     /// </summary>
     /// <param name="p"></param>
-    
+    public static string FromConvention(string p)
+    {
+        throw new NoImplementedException();
+    }
+
+    /// <summary>
+    /// Převede na pascalskou konvenci, to znamená že tam budou pouze velké a malé písmena a 
+    /// písmena za odebranými znaky budou velké.
+    /// hello world => Hello World
+    /// Hello world => Hello World
+    /// helloWorld => Hello World
+    /// hello+world => Hello World
+    /// hello+World => Hello World
+    /// hello 12 world => Hello 12 World
+    /// hello 21world => Hello 21 World
+    /// Hello21world => Hello21 World
+    /// </summary>
+    /// <param name="p"></param>
     public static string ToConvention(string p)
     {
         p = p.ToLower();

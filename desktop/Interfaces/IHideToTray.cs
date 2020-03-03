@@ -13,4 +13,3 @@ public interface IHideToTray
     bool GetCancelClosing();
     void SetCancelClosing(bool b);
 }
-

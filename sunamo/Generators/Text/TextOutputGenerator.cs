@@ -43,7 +43,6 @@ public class TextOutputGenerator
     /// Napíše nadpis A1 do konzole 
     /// </summary>
     /// <param name="text"></param>
-    
     public void StartRunTime(string text)
     {
         int delkaTextu = text.Length;

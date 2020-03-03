@@ -35,4 +35,3 @@ public class ShowTextResultWindow : Window, IControlWithResult
         Close();
     }
 }
-

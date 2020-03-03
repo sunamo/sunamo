@@ -19,4 +19,3 @@ public class FolderEntry
         this.RelativePath = RelativePath;
     }
 }
-

@@ -26,7 +26,16 @@ namespace sunamo
         /// <summary>
         /// Pokud rootFolder bude SE nebo null, G false, jinak vrátí zda rootFolder existuej ve FS
         /// </summary>
-        
+        public abstract bool IsRootFolderOk();
+        public abstract void AppendToFile(AppFolders af, string file, string value);
+        public abstract void AppendToFile(string value, StorageFile file);
+
+        /// <summary>
+        /// G path file A2 in AF A1.
+        /// Automatically create upfolder if there dont exists.
+        /// </summary>
+        /// <param name = "af"></param>
+        /// <param name = "file"></param>
         public abstract StorageFile GetFile(AppFolders af, string file);
         public abstract bool IsRootFolderNull();
         //public abstract StorageFolder GetSunamoFolder();

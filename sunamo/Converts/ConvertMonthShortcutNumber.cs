@@ -17,4 +17,3 @@ public class ConvertMonthShortcutNumber
         return ConvertMonthNumberString.ToNumber(fullName);
     }
 }
-

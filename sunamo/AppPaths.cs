@@ -22,4 +22,3 @@ public class AppPaths
         return FS.Combine(GetStartupPath(), file);
     }
 }
-

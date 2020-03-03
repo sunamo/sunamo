@@ -23,7 +23,6 @@ namespace sunamo.Collections
         /// Must be initialized captions variable
         /// All rows must be trimmed from \r \n
         /// </summary>
-        
         public DataTable SwitchRowsAndColumn()
         {
             DataTable newTable = new DataTable();

@@ -30,4 +30,3 @@ public class SunamoPoint
         return ParserTwoValues.ToString(AllStrings.comma, X.ToString(), Y.ToString());
     }
 }
-

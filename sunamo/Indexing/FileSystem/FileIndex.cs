@@ -55,7 +55,241 @@ namespace sunamo.Indexing.FileSystem
         /// </summary>
         /// <param name="prohledavatSlozky"></param>
         /// <param name="name"></param>
-        
+        public IEnumerable<FolderItem> GetFoldersWithName(int[] prohledavatSlozky, string name)
+        {
+            if (prohledavatSlozky == null)
+            {
+                return _folders.Where(c => c.Name == name);
+            }
+            return _folders.Where(c => c.Name == name).Where(d => prohledavatSlozky.Contains(d.IDParent));
+        }
+
+        public List<FileItem> FindAllFilesWithName(string name)
+        {
+            return files.FindAll(d => d.Name == name);
+        }
+
+        /// <summary>
+        /// Process all files including subfolders
+        /// 
+        /// A1 musí být cesta zakončená slashem
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="relativeDirectoryName"></param>
+        public void AddFolderRecursively(string folder)
+        {
+            folder = FS.WithEndSlash(folder);
+            _basePath = folder;
+            _actualFolderID++;
+            directories.Add(folder);
+
+            var dirs = FS.GetFolders(folder, AllStrings.asterisk, SearchOption.AllDirectories);
+            List<string> fils = new List<string>();
+
+            foreach (var item in dirs)
+            {
+                _folders.Add(GetFolderItem(item));
+                AddFilesFromFolder(folder, item);
+            }
+
+            AddFilesFromFolder(folder, FS.WithoutEndSlash(folder));
+        }
+
+        /// <summary>
+        /// Index all files from A3.
+        /// 
+        /// A1 - full path to base folder
+        /// A2 - whether use relativeDirectories
+        /// A3 - full path to actual folder
+        /// Add with relative file path
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <param name="relativeDirectoryName"></param>
+        /// <param name="folder"></param>
+        private void AddFilesFromFolder(string basePath, string folder)
+        {
+            var files2 = FS.GetFiles(folder, FS.MascFromExtension(), SearchOption.TopDirectoryOnly);
+            files2.ToList().ForEach(c => files.Add(GetFileItem(c, basePath)));
+        }
+
+        private FolderItem GetFolderItem(string p)
+        {
+            FolderItem fi = new FolderItem();
+            fi.IDParent = _actualFolderID;
+            fi.Name = FS.GetFileName(p);
+            fi.Path = FS.GetDirectoryName(p);
+            return fi;
+        }
+
+        /// <summary>
+        /// Return index of folder or -1 if cannot found
+        /// </summary>
+        /// <param name="folder"></param>
+        public int GetRelativeFolder(string folder)
+        {
+            folder = FS.WithEndSlash(folder);
+            return relativeDirectories.IndexOf(folder);
+        }
+
+        public string GetRelativeFolder(int folder)
+        {
+            return relativeDirectories[folder];
+        }
+
+        /// <summary>
+        /// Return object FIleItem.
+        /// Add to relativeDirectories, if A3.
+        /// 
+        /// A3 - whether save to relativeDirectories and can use indexes for directory
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="basePath"></param>
+        /// <param name="relativeDirectoryName"></param>
+        private FileItem GetFileItem(string p, string basePath)
+        {
+            FileItem fi = new FileItem();
+            //fi.IDDirectory = folders.Count;
+            //fi.IDParent = actualFolderID;
+            fi.Name = FS.GetFileName(p);
+            //fi.Path = FS.GetDirectoryName(p);
+
+            //if (relativeDirectoryName)
+            //{
+            string relDirName = FS.GetDirectoryName(p).Replace(basePath, "");
+            if (!relativeDirectories.Contains(relDirName))
+            {
+                relativeDirectories.Add(relDirName);
+                // Počítá se od 1
+                fi.IDRelativeDirectory = relativeDirectories.Count;
+            }
+            else
+            {
+                fi.IDRelativeDirectory = relativeDirectories.IndexOf(relDirName) + 1;
+            }
+            //}
+            return fi;
+        }
+
+        /// <summary>
+        /// Clear folders and files collection
+        /// </summary>
+        public void Nuke()
+        {
+            _folders.Clear();
+            files.Clear();
+        }
+
+        public int GetIndexOfFolder(FolderItem item)
+        {
+            return _folders.IndexOf(item);
+        }
+
+        public IEnumerable<FileItem> GetFilesInRelativeFolder(int p)
+        {
+            return files.Where(c => c.IDRelativeDirectory == p);
+        }
+        #endregion
+
+        #region Has FileIndex as input or output parameter
+        /// <summary>
+        /// Process recursively A1 - for every folder one object FileIndex in output
+        /// 
+        /// </summary>
+        /// <param name="folders"></param>
+        public static Dictionary<string, FileIndex> IndexFolders(IEnumerable<string> folders)
+        {
+            Dictionary<string, FileIndex> vr = new Dictionary<string, FileIndex>();
+            foreach (var item in folders)
+            {
+                FileIndex fi = new FileIndex();
+                fi.AddFolderRecursively(item);
+                vr.Add(item, fi);
+            }
+            return vr;
+        }
+
+        /// <summary>
+        /// Prida do A3 soubor s relativni cestou pokud neexistuje
+        /// Use relative path to file to find relative id directory and insert with file path to ID to A3
+        /// 
+        /// A1 - base path, will be discard, used to make relative file paths from A2
+        /// A2 - 
+        /// A3 - key is relative file path, value is index of relative directory
+        /// A4 - relative paths to files which is used to fill A3. no change
+        /// </summary>
+        /// <param name="folderOfSolution"></param>
+        /// <param name="fi"></param>
+        /// <param name="relativeFilePathForEveryColumn"></param>
+        /// <param name="filesFromAllFoldersUniqueRelative"></param>
+        public static void AggregateFilesFromAllFolders(string folderOfSolution, FileIndex fi, Dictionary<string, int> relativeFilePathForEveryColumn, List<string> filesFromAllFoldersUniqueRelative)
+        {
+            foreach (var item2 in fi.files)
+            {
+                string relativeFilePath = (relativeDirectories[item2.IDRelativeDirectory] + item2.Name).Replace(folderOfSolution, "");
+
+                if (!relativeFilePathForEveryColumn.ContainsKey(relativeFilePath))
+                {
+                    int relativeDirectoryId = filesFromAllFoldersUniqueRelative.IndexOf(relativeFilePath);
+                    relativeFilePathForEveryColumn.Add(relativeFilePath, relativeDirectoryId);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tato metoda má za úkol vytvořit matici ze souborů v A1, kde každý soubor bude v daném sloupci dle A2
+        /// Kdyz soubor nebude existovat bude null
+        /// 
+        /// Load size of files from disc
+        /// In key of A2 - relativeFilePath, value - index of column. 
+        /// </summary>
+        /// <param name="files"></param>
+        /// <param name="relativeFilePathForEveryColumn"></param>
+        public static CheckBoxData<TWithSize<string>>[,] ExistsFilesOnDrive(Dictionary<string, FileIndex> files, Dictionary<string, int> relativeFilePathForEveryColumn)
+        {
+            int columns = relativeFilePathForEveryColumn.Count;
+            CheckBoxData<TWithSize<string>>[,] vr = new CheckBoxData<TWithSize<string>>[files.Count, columns];
+            int r = -1;
+
+            // Process all rows
+            foreach (var item in files)
+            {
+                r++;
+                var fi = item.Value;
+                //List<long> fileSize = new List<long>(columns);
+                //List<int> added = new List<int>();
+
+                for (int c = 0; c < fi.files.Count; c++)
+                {
+                    // get files in column c
+                    var file = fi.files[c];
+
+                    string relativeFilePath = (relativeDirectories[file.IDRelativeDirectory] + file.Name).Replace(item.Key, "");
+                    int columnToInsert = relativeFilePathForEveryColumn[relativeFilePath];
+                    string fullFilePath = relativeDirectories[file.IDRelativeDirectory] + file.Name;
+
+                    if (FS.ExistsFile(fullFilePath))
+                    {
+                        long l2 = FS.GetFileSize(fullFilePath);
+                        // To result set CheckBoxData - full path and size
+                        vr[r, columnToInsert] = new CheckBoxData<TWithSize<string>> { t = new TWithSize<string> { t = fullFilePath, size = l2 } };
+                    }
+                    else
+                    {
+                        vr[r, columnToInsert] = null;
+                    }
+                }
+            }
+
+            return vr;
+        }
+        #endregion
+
+        #region Not use FileIndex
+        // TODO: Not use FileIndex, move to other locations
+        /// <summary>
+        /// Check (or uncheck) all in columns by filesize
+        /// </summary>
+        /// <param name="allRows"></param>
         public static CheckBoxData<TWithSize<string>>[,] CheckVertically(CheckBoxData<TWithSize<string>>[,] allRows)
         {
             int columns = allRows.GetLength(1);

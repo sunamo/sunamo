@@ -137,7 +137,6 @@ namespace desktop.Controls.Result
         /// <summary>
         /// return null if there is no element
         /// </summary>
-        
         public string PathOfFirstFile()
         {
             if (Items.Count != 0)

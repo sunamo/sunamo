@@ -17,4 +17,3 @@ public class ConvertDayShortcutFullName
         return null;
     }
 }
-

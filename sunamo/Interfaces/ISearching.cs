@@ -24,4 +24,3 @@ public interface ISearching<T>
 public interface ISearching : ISearching<string>
 {
 }
-

@@ -28,4 +28,3 @@ public class TypesControls
     //public static readonly Type tControl = typeof(Control);
 
 }
-

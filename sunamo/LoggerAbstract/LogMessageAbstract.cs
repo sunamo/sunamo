@@ -44,7 +44,6 @@ namespace sunamo.LoggerAbstract
         /// <param name="st"></param>
         /// <param name="message"></param>
         /// <param name="color"></param>
-        
         public  LogMessageAbstract<Color, StorageClass> Initialize(DateTime dt, TypeOfMessage st, string message, Color color)
         {
             _dateTime = dt;

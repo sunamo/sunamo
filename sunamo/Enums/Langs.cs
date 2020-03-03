@@ -13,4 +13,3 @@ public enum Langs : byte
     cs = 0,
     en = 1
 }
-

@@ -10,4 +10,3 @@ public interface IUserControlBackground
     void Start();
     void Stop();
 }
-

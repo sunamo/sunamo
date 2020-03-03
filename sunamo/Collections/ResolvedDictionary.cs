@@ -19,4 +19,3 @@ using System.Threading.Tasks;
         return nameOfArtist.Invoke(idArtist);
     }
 }
-

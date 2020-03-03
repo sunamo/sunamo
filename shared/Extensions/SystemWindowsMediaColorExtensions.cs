@@ -12,4 +12,3 @@ public static class SystemWindowsMediaColorExtensions
         return System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
     }
 }
-

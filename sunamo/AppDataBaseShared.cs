@@ -15,7 +15,21 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
     /// Must return always string, not StorageFile - in Standard is not StorageFile class and its impossible to get Path
     /// </summary>
     /// <param name="key"></param>
-    
+    public abstract string GetFileCommonSettings(string key);
+    private string _fileFolderWithAppsFiles = "";
+    public const string folderWithAppsFiles = "folderWithAppsFiles.txt";
+
+    /// <summary>
+    /// After startup will setted up in AppData/Roaming
+    /// Then from fileFolderWithAppsFiles App can load alternative path - 
+    /// For all apps will be valid either AppData/Roaming or alternative path
+    /// </summary>
+    protected StorageFolder rootFolder = default(StorageFolder);
+
+    /// <summary>
+    /// Must be here and Tash because in UWP is everything async
+    /// 
+    /// </summary>
     public abstract StorageFolder GetSunamoFolder();
 
     //public  string CommonFolder()

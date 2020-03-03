@@ -94,4 +94,3 @@ public class FsWatcherDictionary<T, U> : IDictionary<T, U>
         return d.GetEnumerator();
     }
 }
-

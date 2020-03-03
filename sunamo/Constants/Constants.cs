@@ -29,4 +29,3 @@ public class Constants
     public static object dialogSize;
     #endregion
 }
-

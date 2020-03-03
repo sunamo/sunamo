@@ -100,7 +100,23 @@ namespace sunamo.Essential
         /// <param name="methodName"></param>
         /// <param name="nameOfCollection"></param>
         /// <param name="args"></param>
-        
+        public bool NotEvenNumberOfElements(Type type, string methodName, string nameOfCollection, object[] args)
+        {
+            if (args.Count() % 2 == 1)
+            {
+                WriteLine(TypeOfMessage.Error, Exceptions.NotEvenNumberOfElements(FullNameOfExecutedCode(type, methodName), nameOfCollection));
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Return true if any will be null or empty
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="methodName"></param>
+        /// <param name="nameOfCollection"></param>
+        /// <param name="args"></param>
         public bool AnyElementIsNullOrEmpty(Type type, string methodName, string nameOfCollection, IEnumerable args)
         {
             List<int> nulled = CA.IndexesWithNullOrEmpty(args);

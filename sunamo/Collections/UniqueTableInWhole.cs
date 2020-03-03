@@ -33,7 +33,6 @@ namespace sunamo.Collections
         /// Nekontroluje zda je index A1 správný, musí to dělat volající metoda
         /// </summary>
         /// <param name="columnIndex"></param>
-        
         public bool IsRowsInColumnUnique(int columnIndex)
         {
             return false;

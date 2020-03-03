@@ -51,4 +51,3 @@ public class GuesslangHelper
         ClipboardHelper.SetText(output);
     }
 }
-

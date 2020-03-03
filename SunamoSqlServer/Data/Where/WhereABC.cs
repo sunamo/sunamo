@@ -20,4 +20,3 @@ public class WhereABC
         this.lowerThan = lowerThan;
     }
 }
-

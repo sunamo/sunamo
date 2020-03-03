@@ -10,4 +10,3 @@ public class GetFilesArgs
     public bool _trimA1 = false;
     public List<string> excludeFromLocationsCOntains = null;
 }
-

@@ -11,4 +11,3 @@ using System.Text;
         public const string SingleCommentCsharp = "//";
         public const string XmlDocumentationCsharp = "///";
     }
-

@@ -9,4 +9,3 @@ public enum ImageFormats
     Gif,
     None
 }
-

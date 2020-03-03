@@ -227,7 +227,430 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="odkazyText"></param>
     /// <param name="innerHtmlText"></param>
     /// <param name="srcPhoto"></param>
-    
+    public static string TopListWithImages(HtmlGenerator hg, int widthImage, int heightImage, string initialImageUri, List<string> odkazyPhoto, List<string> odkazyText, List<string> innerHtmlText, List<string> srcPhoto, string nameJsArray)
+    {
+        int count = odkazyPhoto.Count;
+        if (count == 0)
+        {
+            //throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto nemá žádný prvek");
+            return "";
+        }
+        if (count != odkazyText.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem odkazyText");
+        }
+        if (count != innerHtmlText.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem innerHtmlText");
+        }
+        if (count != srcPhoto.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem srcPhoto");
+        }
+
+        //HtmlGenerator hg = new HtmlGenerator();
+        int nt = 0;
+        bool animated = int.TryParse(srcPhoto[0], out nt);
+
+        for (int i = 0; i < count; i++)
+        {
+            hg.WriteTagWithAttr("div", "style", "padding: 5px;");
+            hg.WriteTagWithAttr("a", "href", odkazyPhoto[i]);
+            hg.WriteTagWithAttr("div", "style", "display: inline-block;");
+            if (animated)
+            {
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, "alt", odkazyText[i]);
+            }
+            else
+            {
+                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i], "alt", odkazyText[i]);
+            }
+            hg.TerminateTag("div");
+
+            hg.TerminateTag("a");
+            hg.WriteTagWithAttr("a", "href", odkazyText[i]);
+            hg.WriteRaw(innerHtmlText[i]);
+            hg.TerminateTag("a");
+            hg.TerminateTag("div");
+        }
+
+        return hg.ToString();
+    }
+
+    /// <summary>
+    /// Jedná se o divy pod sebou, nikoliv o ol/ul>li 
+    /// </summary>
+    /// <param name="hg"></param>
+    /// <param name="odkazyPhoto"></param>
+    /// <param name="odkazyText"></param>
+    /// <param name="innerHtmlText"></param>
+    /// <param name="srcPhoto"></param>
+    public static string TopListWithImages(HtmlGenerator hg, int widthImage, int heightImage, string initialImageUri, List<string> odkazyPhoto, List<string> odkazyText, List<string> innerHtmlText, List<string> srcPhoto, List<string> idBadges, string nameJsArray)
+    {
+        int count = odkazyPhoto.Count;
+        if (count == 0)
+        {
+            //throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto nemá žádný prvek");
+            return "";
+        }
+        if (count != odkazyText.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem odkazyText");
+        }
+        if (count != innerHtmlText.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem innerHtmlText");
+        }
+        if (count != srcPhoto.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto se nerovn\u00E1 po\u010Dtem srcPhoto");
+        }
+        if (count != idBadges.Count)
+        {
+            throw new Exception("Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto" + " " + count + " " + "se nerovn\u00E1 po\u010Dtem idBadges" + " " + idBadges.Count);
+        }
+
+        //HtmlGenerator hg = new HtmlGenerator();
+        int nt = 0;
+        bool animated = int.TryParse(srcPhoto[0], out nt);
+        for (int i = 0; i < count; i++)
+        {
+            hg.WriteTagWith2Attrs("div", "style", "padding: 5px;", "class", "hoverable");
+            hg.WriteTagWithAttr("a", "href", odkazyPhoto[i]);
+            hg.WriteTagWithAttrs("div", "style", "display: inline-block;", "id", "iosBadge" + idBadges[i], "class", "iosbRepair");
+            
+            if (animated)
+            {
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, HtmlAttrs.alt, odkazyText[i]);
+            }
+            else
+            {
+                hg.WriteNonPairTagWithAttrs("img", "src", srcPhoto[i], HtmlAttrs.alt, odkazyText[i]);
+            }
+
+            hg.TerminateTag("div");
+            hg.TerminateTag("a");
+
+            hg.WriteTagWithAttr("a", "href", odkazyText[i]);
+            hg.WriteRaw(innerHtmlText[i]);
+            hg.TerminateTag("a");
+            hg.TerminateTag("div");
+        }
+        return hg.ToString();
+    }
+
+
+    #region GetForUlWoCheckDuplicate
+    /// <summary>
+    /// Do A1 doplň třeba EditMister.aspx?mid= - co za toto si automaticky doplní a A2 jsou texty do inner textu a
+    /// Nehodí se tedy proto vždy, například, když máš přehozené IDčka v DB
+    /// When uri args and titles are the same
+    /// </summary>
+    /// <param name="baseAnchor"></param>
+    /// <param name="to"></param>
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> to)
+    {
+        return GetForUlWoCheckDuplicate(baseAnchor, to, to);
+    }
+
+    /// <summary>
+    /// Automatically replace A3 for A4
+    /// </summary>
+    /// <param name="baseAnchor"></param>
+    /// <param name="idcka"></param>
+    /// <param name="najitVTextu"></param>
+    /// <param name="nahraditVTextu"></param>
+    /// <param name="pripona"></param>
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> idcka, string najitVTextu, string nahraditVTextu, string pripona = "")
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+
+        for (int i = 0; i < idcka.Count; i++)
+        {
+            string s = idcka[i];
+
+            hg.WriteTag("li");
+            hg.WriteTagWithAttr("a", "href", baseAnchor + s + pripona);
+            if (!string.IsNullOrEmpty(najitVTextu) && !string.IsNullOrEmpty(nahraditVTextu))
+            {
+                hg.WriteRaw(s.Replace(najitVTextu, nahraditVTextu));
+            }
+            else
+            {
+                hg.WriteRaw(s);
+            }
+
+            hg.TerminateTag("a");
+
+            hg.TerminateTag("li");
+        }
+
+        return hg.ToString();
+    }
+
+    public static string GetForUl(string baseAnchor, String[] idcka, String[] texty, bool skipDuplicates)
+    {
+        return GetForUl(baseAnchor, CA.ToListString(idcka), CA.ToListString(texty), skipDuplicates);
+    }
+
+    public static string GetForUl(string baseAnchor, List<string> idcka, List<string> texty, bool skipDuplicates)
+    {
+        if (idcka.Count != texty.Count)
+        {
+            return "Nastala chyba, program poslal na render nejm\u00E9n\u011B v jednom poli m\u00E9n\u011B prvk\u016F ne\u017E se o\u010Dek\u00E1valo";
+        }
+        HtmlGenerator hg = new HtmlGenerator();
+
+        if (skipDuplicates)
+        {
+            texty = CA.RemoveDuplicitiesList(texty);
+        }
+
+        for (int i = 0; i < texty.Count; i++)
+        {
+            string s = texty[i];
+            hg.WriteTag("li");
+            hg.WriteTagWithAttr("a", "href", baseAnchor + idcka[i]);
+
+            hg.WriteRaw(texty[i]);
+
+
+            hg.TerminateTag("a");
+
+            hg.TerminateTag("li");
+        }
+
+        return hg.ToString();
+    }
+
+    public static string GetForUlWoCheckDuplicate(string baseAnchor, List<string> idcka, List<string> texty)
+    {
+        return GetForUl(baseAnchor, idcka, texty, false);
+    }
+
+    /// <summary>
+    /// Počet v A1 a A2 musí být stejný. 
+    /// Mohl bych udělat tu samou metodu s ABC/ABC ale tam je jako druhý parametr object a to se mi nehodí do krámu
+    /// </summary>
+    /// <param name="anchors"></param>
+    /// <param name="to"></param>
+    public static string GetForUlWoCheckDuplicate(List<string> anchors, List<string> to)
+    {
+        return GetForUl("", anchors, to, false);
+    }
+
+    /// <summary>
+    /// Tato metoda se používá pokud v Ul nepoužíváš žádné odkazy
+    /// </summary>
+    /// <param name="to"></param>
+    public static string GetForUlWoCheckDuplicate(List<string> to)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+
+        for (int i = 0; i < to.Count; i++)
+        {
+            hg.WriteTag("li");
+            hg.WriteRaw(to[i]);
+            hg.TerminateTag("li");
+        }
+
+        return hg.ToString();
+    }
+
+
+    #endregion
+
+    #region GetForUlWCheckDuplicate
+    public static string GetForUlWCheckDuplicate(System.Collections.Generic.List<string> to)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+        System.Collections.Generic.List<string> zapsane = new System.Collections.Generic.List<string>();
+        for (int i = 0; i < to.Count; i++)
+        {
+            string s = to[i];
+            if (!zapsane.Contains(s))
+            {
+                zapsane.Add(s);
+                hg.WriteTag("li");
+                //hg.ZapisTagSAtributem("a", "href", "ZobrazText.aspx?sid=" + s.id.ToString());
+                hg.WriteRaw(s);
+                hg.TerminateTag("li");
+            }
+        }
+        return hg.ToString();
+    }
+    #endregion
+
+
+    #region Ul
+    public static string GetUlWoCheckDuplicate(string baseAnchor, List<string> to)
+    {
+        return "<ul static class=\"textVlevo\">";
+        HtmlGenerator hg = new HtmlGenerator();
+
+        for (int i = 0; i < to.Count; i++)
+        {
+            string s = to[i];
+
+            hg.WriteTag("li");
+            hg.WriteTagWithAttr("a", "href", baseAnchor + (i + 1).ToString());
+            hg.WriteRaw(s);
+            hg.TerminateTag("a");
+
+            hg.TerminateTag("li");
+        }
+
+        return hg.ToString() + "/" + "/" + "ul>";
+    }
+
+    /// <summary>
+    /// Bere si pouze jeden parametr, tedy je bez odkazů
+    /// 
+    /// </summary>
+    /// <param name="list"></param>
+    public static string GetUlWoCheckDuplicate(List<string> list, string appendClass)
+    {
+        return "<ul static class=\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "/" + "/" + "ul>";
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="anchors"></param>
+    /// <param name="texts"></param>
+    public static string GetUlWoCheckDuplicate(List<string> anchors, List<string> texts)
+    {
+        return "<ul static class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "/" + "/" + "ul>";
+    }
+    #endregion
+
+    #region Ol
+    public static string GetOl(List<string> possibleAnswers, bool checkDuplicates = false)
+    {
+        return HtmlGeneratorList.GetFor("", possibleAnswers, possibleAnswers, checkDuplicates, HtmlTags.ol);
+    }
+
+    public static string GetOlWoCheckDuplicate(List<string> anchors, List<string> to)
+    {
+        if (anchors.Count != to.Count)
+        {
+            throw new Exception("Po\u010Dty odr\u00E1\u017Eek a odkaz\u016F se li\u0161\u00ED");
+        }
+
+        HtmlGenerator hg = new HtmlGenerator();
+        hg.WriteTag("ol");
+        for (int i = 0; i < to.Count; i++)
+        {
+            string s = to[i];
+
+            hg.WriteTag("li");
+
+            hg.WriteRaw(s);
+
+
+            hg.TerminateTag("li");
+        }
+        hg.TerminateTag("ol");
+        return hg.ToString();
+    }
+    #endregion
+
+    public static string Success(string p)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+        hg.WriteTagWithAttr("div", "class", "success");
+        hg.WriteRaw(p);
+        hg.TerminateTag("div");
+        return hg.ToString();
+    }
+
+    /// <summary>
+    /// Zadávej A1 bez https://, do odkazu se doplní samo, do textu nikoliv
+    /// </summary>
+    /// <param name="www"></param>
+    public static string Anchor(string www)
+    {
+        if (www.Contains("=\""))
+        {
+            return www;
+        }
+
+        string http = UH.AppendHttpIfNotExists(www);
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + www + "</a>";
+    }
+
+    public static string AnchorMailto(string t)
+    {
+        return "<a href=\"mailto:" + t + AllStrings.gt + t + "</a>";
+    }
+
+    /// <summary>
+    /// A1 je text bez https:// / https://, který se doplní do odkazu sám pokud tam nebude. 
+    /// V textu se ale vždy nahradí pokud tam bude.
+    /// </summary>
+    /// <param name="www"></param>
+    public static string AnchorWithHttp(string www)
+    {
+        string http = UH.AppendHttpIfNotExists(www);
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https" + ":" + "//", "") + "</a>";
+    }
+
+    public static string AnchorWithHttp(string www, string text)
+    {
+        string http = UH.AppendHttpIfNotExists(www);
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + text + "</a>";
+    }
+
+    public static string AnchorWithHttp(bool targetBlank, string www, string text)
+    {
+        string http = null;
+        http = UH.AppendHttpIfNotExists(www);
+        return AnchorWithHttpCore(targetBlank, text, http);
+    }
+
+
+
+    public static string AnchorWithHttpCore(bool targetBlank, string text, string http)
+    {
+        if (targetBlank)
+        {
+            return "<a href=\"" + http + "\" target=\"_blank\">" + text + "</a>";
+        }
+        return "<a href=\"" + http + AllStrings.gt + text + "</a>";
+    }
+
+    public static string GetRadioButtonsWoCheckDuplicate(string nameOfRBs, List<string> idcka, List<string> nazvy)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+
+        for (int i = 0; i < idcka.Count; i++)
+        {
+            hg.WriteTagWithAttrs("input", "type", "radio", "name", nameOfRBs, "value", idcka[i]);
+            hg.WriteRaw(nazvy[i]);
+            hg.WriteBr();
+        }
+
+        return hg.ToString();
+    }
+
+    public static string GetRadioButtonsWoCheckDuplicate(string nameOfRBs, List<string> idcka, List<string> nazvy, string eventHandlerSelected)
+    {
+        HtmlGenerator hg = new HtmlGenerator();
+
+        for (int i = 0; i < idcka.Count; i++)
+        {
+            hg.WriteTagWithAttrs("input", "type", "radio", "name", nameOfRBs, "value", idcka[i], "onclick", eventHandlerSelected);
+            hg.WriteRaw(nazvy[i]);
+            hg.WriteBr();
+        }
+
+        return hg.ToString();
+    }
+
+    /// <summary>
+    /// Generátor pro třídu jquery.tagcloud.js
+    /// </summary>
+    /// <param name="dWordCount"></param>
     public static string GetWordsForTagCloud(Dictionary<string, short> dWordCount, string prefixWithDot)
     {
         string nameJavascriptMethod = "AfterWordCloudClick";

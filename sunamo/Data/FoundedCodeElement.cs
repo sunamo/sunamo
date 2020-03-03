@@ -26,4 +26,3 @@ public class FoundedCodeElement : IComparable<FoundedCodeElement>
         return SunamoComparer.Integer.Instance.Asc(Line, other.Line);
     }
 }
-

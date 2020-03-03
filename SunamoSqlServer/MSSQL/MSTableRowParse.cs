@@ -39,7 +39,16 @@ public static class MSTableRowParse
     /// </summary>
     /// <param name="o"></param>
     /// <param name="p"></param>
-    
+    public static bool GetBoolMS(object[] o, int p)
+    {
+        return bool.Parse(o[p].ToString());
+    }
+
+    /// <summary>
+    /// Používá metodu Convert.ToBoolean
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="p"></param>
     public static bool GetBool(object[] o, int p)
     {
         return Convert.ToBoolean(o[p]);

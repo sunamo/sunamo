@@ -64,7 +64,6 @@ using System.Net.Mail;
         /// <param name="subject"></param>
         /// <param name="htmlBody"></param>
         /// <param name="attachments"></param>
-        
         public string SendEmail(string to, string cc, string bcc, string replyTo, string subject, string body, bool htmlBody, params string[] attachments)
         {
             string emailStatus = string.Empty;
@@ -198,4 +197,3 @@ using System.Net.Mail;
             return emailStatus;
         }
     }
-

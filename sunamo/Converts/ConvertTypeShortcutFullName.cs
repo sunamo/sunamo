@@ -53,7 +53,6 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
     /// 
     /// </summary>
     /// <param name="fullName"></param>
-    
     public static string ToShortcut(string fullName, bool throwExceptionWhenNotBasicType)
     {
         switch (fullName)

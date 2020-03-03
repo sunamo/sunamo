@@ -14,4 +14,3 @@ public class XlfData
     public XDocument xd = null;
     public List<XElement> trans_units = null;
 }
-

@@ -13,4 +13,3 @@ public const string netFramework = ".NET Framework";
 
 public const string netNative = ".NET Native";
 }
-

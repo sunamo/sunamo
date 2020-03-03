@@ -13,7 +13,6 @@ public static class HtmlGeneratorList
     /// <param name="titles"></param>
     /// <param name="checkDuplicates"></param>
     /// <param name="tag"></param>
-    
     public static string GetFor(string baseAnchor, List<string> to, List<string> titles, bool checkDuplicates, string tag)
     {
         HtmlGenerator hg = new HtmlGenerator();

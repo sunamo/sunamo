@@ -8,4 +8,3 @@ public enum SerializationLibrary
     Microsoft,
     Newtonsoft
 }
-

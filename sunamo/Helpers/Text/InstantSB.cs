@@ -28,7 +28,24 @@ public class InstantSB //: StringWriter
     /// Nep�ipisuje se k celkov�mu v�stupu ,proto vrac� sv�j valstn�.
     /// </summary>
     /// <param name="polo�ky"></param>
-    
+    public void AddItem(object var)
+    {
+        string s = var.ToString();
+        if (s != _tokensDelimiter && s != "")
+        {
+            _sb.Append(s + _tokensDelimiter);
+        }
+    }
+
+    public void AddRaw(object tab)
+    {
+        _sb.Append(tab.ToString());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="polozky"></param>
     public void AddItems(params object[] polozky)
     {
         foreach (object var in polozky)

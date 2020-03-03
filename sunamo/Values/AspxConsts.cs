@@ -13,4 +13,3 @@ public class AspxConsts
 
     public static readonly List<string> all = CA.ToListString(startAspxComment, endAspxComment, startHtmlComment, endHtmlComment, AllStrings.gt, AllStrings.lt);
 }
-

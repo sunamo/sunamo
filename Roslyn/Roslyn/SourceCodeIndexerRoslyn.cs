@@ -210,7 +210,6 @@ public partial class SourceCodeIndexerRoslyn
     /// <param name = "type"></param>
     /// <param name = "classType"></param>
     /// <param name = "searchStrategy"></param>
-    
     public CodeElements FindNamespaceElement(string text, NamespaceCodeElementsType type, ClassCodeElementsType classType, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         bool makeChecking = type != NamespaceCodeElementsType.All;

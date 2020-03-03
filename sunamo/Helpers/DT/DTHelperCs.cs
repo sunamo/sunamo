@@ -11,7 +11,44 @@ public partial class DTHelperCs
     /// Return actual time(for example 12:00:00:000) and after that A1 postfix
     /// </summary>
     /// <param name="defin"></param>
-    
+    public static string AppendToFrontOnlyTime(string defin)
+    {
+        DateTime dt = DateTime.Now;
+        return NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Second) + AllStrings.colon + NH.MakeUpTo3NumbersToZero(dt.Millisecond) + AllStrings.space + defin;
+    }
+    #endregion
+
+    #region Date
+    /// <summary>
+    /// 21.6.1989
+    /// </summary>
+    /// <param name="d"></param>
+    public static string ToShortDate(DateTime d)
+    {
+        return SH.Join(AllStrings.dot, d.Day, d.Month, d.Year);
+    }
+    #endregion
+
+    #region Date with time (with seconds and Day of week)
+    /// <summary>
+    /// 
+    /// Wednesday, 21.6.1989 11:22 (dont fill with zero)
+    /// </summary>
+    /// <param name="dt"></param>
+    public static string DateTimeToStringWithDayOfWeekCS(DateTime dt)
+    {
+        return DayOfWeek2DenVTydnu(dt.DayOfWeek) + ", " + dt.Day + AllStrings.dot + dt.Month + AllStrings.dot + dt.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(dt.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(dt.Minute);
+    } 
+    #endregion
+    #endregion
+
+    #region Calculating
+    /// <summary>
+    /// If !A2 and time will be lower than 1 day, I got day 
+    /// A3 was be originally SqlServerHelper.DateTimeMinVal
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <param name="calculateTime"></param>
     public static string CalculateAgeAndAddRightString(DateTime dateTime, bool calculateTime, DateTime dtMinVal)
     {
         if (dateTime == dtMinVal)

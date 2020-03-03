@@ -6,7 +6,6 @@ public static  class XmlLocalisationInterchangeFileFormatSunamo{
     /// A1 can be full path
     /// </summary>
     /// <param name="s"></param>
-    
 public static Langs GetLangFromFilename(string s)
     {
         s = FS.GetFileNameWithoutExtension(s);

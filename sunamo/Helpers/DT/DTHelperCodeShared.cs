@@ -11,7 +11,6 @@ public partial class DTHelperCode
     /// </summary>
     /// <param name="v"></param>
     /// <param name="dtMinVal"></param>
-    
     public static DateTime StringToDateTimeFromInputDateTimeLocal(string v, DateTime dtMinVal)
     {
         if (!v.Contains(AllStrings.dash))

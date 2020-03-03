@@ -17,7 +17,6 @@ public class DrawingImageHelper
 	/// Přípona se doplní automaticky na .png
 	/// </summary>
 	/// <param name="appPic2"></param>
-	
 	public static Image MsAppxI(string appPic2)
 	{
 		BitmapImage bs = new BitmapImage(new Uri(ImageHelper.protocol + "i/" + appPic2 + ".png"));
@@ -44,4 +43,3 @@ public class DrawingImageHelper
 	}
 }
 #endregion
-

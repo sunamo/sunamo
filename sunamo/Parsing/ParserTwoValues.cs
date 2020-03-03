@@ -20,4 +20,3 @@ public class ParserTwoValues
         return SH.Split(s, delimiter);
     }
 }
-

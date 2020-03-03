@@ -74,4 +74,3 @@ public class SqlResult
         //this.values = d.values;
     }
 }
-

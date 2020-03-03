@@ -59,7 +59,6 @@ namespace sunamo
         /// Is called just from Start
         /// </summary>
         /// <param name="path"></param>
-        
         private FileSystemWatcher RegisterSingleFolder(string path)
         {
             // A1 must be directory, never file

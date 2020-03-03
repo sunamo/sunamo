@@ -39,4 +39,3 @@ public static class BitConverterLE
         return buff;
     }
 }
-

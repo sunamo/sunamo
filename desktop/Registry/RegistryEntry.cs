@@ -108,7 +108,6 @@ using System.IO;
         /// </summary>
         /// <param name="index"></param>
         /// <param name="vstup"></param>
-        
         public string ReturnInLevel(int index, string vstup)
         {
             var tokeny = SH.Split(vstup, AllStrings.bs);
@@ -117,4 +116,3 @@ using System.IO;
         }
         #endregion
     }
-

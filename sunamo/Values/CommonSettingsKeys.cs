@@ -17,4 +17,3 @@ public static class CommonSettingsKeys
     public static string mathpix_app_id = "mathpix_app_id";
     public static string mathpix_app_key = "mathpix_app_key";
 }
-

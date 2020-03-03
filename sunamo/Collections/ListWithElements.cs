@@ -12,4 +12,3 @@ public class ListWithElements<T> : L<T>
         }
     }
 }
-

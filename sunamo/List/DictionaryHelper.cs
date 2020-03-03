@@ -84,7 +84,6 @@ public partial class DictionaryHelper
     /// Return p1 if exists key A2 with value no equal to A3
     /// </summary>
     /// <param name = "g"></param>
-    
     private T FindIndexOfValue<T, U>(Dictionary<T, U> g, U p1, T p2)
     {
         foreach (KeyValuePair<T, U> var in g)

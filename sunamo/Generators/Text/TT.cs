@@ -12,7 +12,6 @@ public class TT
     /// </summary>
     /// <param name="name"></param>
     /// <param name="value"></param>
-    
     public static string NameValue(string name, string value)
     {
         return name.TrimEnd(AllChars.colon) + ": " + value;

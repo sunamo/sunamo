@@ -17,4 +17,3 @@ public interface IConfigurableWindow
     ApplicationDataContainer data { get; set; }
     ConfigurableWindowWrapper configurableWindowWrapper { get; set; }
 }
-

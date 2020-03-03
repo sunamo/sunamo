@@ -13,7 +13,6 @@ public static partial class StringHexColorConverter //: ISimpleConverter<string,
     /// Tato metoda je nějaká divná asi, kdyby nefungovala, použij místo ní třídu BrushConverter a metodu ConvertFrom
     /// </summary>
     /// <param name = "t"></param>
-    
     public static Color ConvertFrom(string t)
     {
         //Color vr = new Color();

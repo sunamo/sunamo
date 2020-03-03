@@ -5,7 +5,42 @@ public class ConvertMonthNumberString //: IConvertNumberString
     /// A1 je plný název měsíce v AJ
     /// </summary>
     /// <param name="s"></param>
-    
+    public static int ToNumber(string s)
+    {
+        switch (s)
+        {
+            case "January":
+                return 1;
+            case "February":
+                return 2;
+            case "March":
+                return 3;
+            case "April":
+                return 4;
+            case "May":
+                return 5;
+            case "June":
+                return 6;
+            case "July":
+                return 7;
+            case "August":
+                return 8;
+            case "September":
+                return 9;
+            case "October":
+                return 10;
+            case "November":
+                return 11;
+            case "December":
+                return 12;
+        }
+        throw new Exception("\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce" + " " + s + " " + "metod\u011B ConvertMonthNumberString.ToNumber()");
+    }
+
+    /// <summary>
+    /// Vrací anglický název měsíce
+    /// </summary>
+    /// <param name="number"></param>
     public static string ToString(int number)
     {
         switch (number)

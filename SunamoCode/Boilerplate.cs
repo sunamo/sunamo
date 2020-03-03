@@ -43,4 +43,3 @@ namespace ConsoleStandardApp2
         return sb.ToString();
     }
 }
-

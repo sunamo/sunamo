@@ -11,4 +11,3 @@ public class Base64Helpers
     public const string png = "data:image/png;base64,";
 
 }
-

@@ -11,4 +11,3 @@ public enum ListOperation
     Remove,
     Clear
 }
-

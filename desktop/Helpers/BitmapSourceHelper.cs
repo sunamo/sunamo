@@ -72,5 +72,3 @@ public static class BitmapSourceHelper
 }
 #endregion
 
-
-

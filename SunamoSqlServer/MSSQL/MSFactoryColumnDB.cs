@@ -49,4 +49,3 @@ public class MSFactoryColumnDB : IFactoryColumnDB<MSSloupecDB, SqlDbType2>
         return column;
     }
 }
-

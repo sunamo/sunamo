@@ -12,4 +12,3 @@ public class SourceCodeElement
         public NamespaceCodeElementsType type;
         
     }
-

@@ -11,4 +11,3 @@ public enum Encodings
     utf16Be,
     utf32
 }
-

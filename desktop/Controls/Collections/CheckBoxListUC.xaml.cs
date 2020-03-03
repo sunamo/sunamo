@@ -253,7 +253,6 @@ namespace desktop.Controls.Collections
         /// <summary>
         /// Apply method CheckBoxListUC.ContentOfTextBlock if it!s possible (lower hardware consumptation)
         /// </summary>
-        
         public IEnumerable<StackPanel> CheckedContent()
         {
             return CheckBoxListHelper.CheckedContent(l.l);

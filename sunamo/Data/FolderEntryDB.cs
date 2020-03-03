@@ -24,4 +24,3 @@ public class FolderEntryDB : FolderEntry
         return RelativePath.ToString();
     }
 }
-

@@ -42,7 +42,6 @@ public class ValueLabel
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
-    
     public static ValueLabel Get(string value, string label)
     {
         return new ValueLabel(value, label);

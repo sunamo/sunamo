@@ -68,4 +68,3 @@ public static class BitConverterBE
             value[startIndex + 7];
     }
 }
-

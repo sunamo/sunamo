@@ -110,7 +110,6 @@ using sunamo.Html;
         /// <summary>
         /// Return null if HTML property is null
         /// </summary>
-        
         public async Task< HtmlDocument> GetHtmlDocument()
         {
             if (string.IsNullOrEmpty(html))

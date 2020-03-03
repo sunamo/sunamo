@@ -27,4 +27,3 @@ public class ControlFinder
         return default(T);
     }
 }
-

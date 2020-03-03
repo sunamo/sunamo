@@ -10,4 +10,3 @@ using System.Data;
         public DataTable deletedRows = null;
         public string chyba = null;
     }
-

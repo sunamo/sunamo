@@ -63,7 +63,6 @@ public class RA
         /// Pokud klk A1 nebude nalezen, G "".
         /// </summary>
         /// <param name="Login"></param>
-        
         public static string ReturnValueString(string Login)
         {
             return m.GetValue(Login, "", RegistryValueOptions.None).ToString();
@@ -99,4 +98,3 @@ public class RA
             return false;
         }
     }
-

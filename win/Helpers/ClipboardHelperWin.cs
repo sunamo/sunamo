@@ -57,7 +57,6 @@ public class ClipboardHelperWin : IClipboardHelper
     /// <summary>
     /// Use here only managed method! I could avoid reinstall Windows (RepairJpn). Use only managed also for working with formats.
     /// </summary>
-    
     public string GetText()
     {
         #region Nepoužívat, 1) celá třída vypadá jak by ji psal totální amatér. 2) havaruje mi to app a nevyhodi pritom zadnou UnhaldedException

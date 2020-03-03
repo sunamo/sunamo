@@ -17,4 +17,3 @@ public class ValidateData
     public List<string> excludedStrings = new List<string>();
     public bool allowEmpty = false;
 }
-

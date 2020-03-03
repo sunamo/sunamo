@@ -31,4 +31,3 @@ public class TextFormatData : List<CharFormatData>
         AddRange(a);
     }
 }
-

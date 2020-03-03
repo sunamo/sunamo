@@ -19,4 +19,3 @@ public class HtmlAttrValue
     public const string cells = "cells";
     public const string colspan = "colspan";
 }
-

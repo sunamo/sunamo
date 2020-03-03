@@ -17,4 +17,3 @@ public interface IWindowOpener
     WindowWithUserControl windowWithUserControl { get; set; }
     
 }
-

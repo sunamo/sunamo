@@ -19,7 +19,6 @@ namespace sunamo
         /// <summary>
         /// Pokud rootFolder bude SE nebo null, G false, jinak vrátí zda rootFolder existuej ve FS
         /// </summary>
-        
         public abstract bool IsRootFolderOk();
         public abstract void AppendToFile(AppFolders af, string file, string value);
         public abstract void AppendToFile(string value, StorageFile file);

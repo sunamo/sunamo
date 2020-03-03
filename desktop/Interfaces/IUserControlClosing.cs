@@ -12,4 +12,3 @@ public interface IUserControlClosing
 {
     void OnClosing();
 }
-

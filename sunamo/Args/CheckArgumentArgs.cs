@@ -18,4 +18,3 @@ public class CheckArgumentArgs
         this.argName = argName;
     }
 }
-

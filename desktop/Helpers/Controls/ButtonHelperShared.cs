@@ -16,7 +16,6 @@ public static void PerformClick(ButtonBase someButton)
     /// </summary>
     /// <param name="tooltip"></param>
     /// <param name="imagePath"></param>
-    
     public static Button Get(ControlInitData d)
     {
         Button vr = new Button();

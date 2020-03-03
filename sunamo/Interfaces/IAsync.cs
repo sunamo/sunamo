@@ -9,4 +9,3 @@ using System.Threading.Tasks;
     {
     T GetResult<T>(Task<T> t);
     }
-

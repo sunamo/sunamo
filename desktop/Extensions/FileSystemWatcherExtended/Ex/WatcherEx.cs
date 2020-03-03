@@ -100,7 +100,17 @@ using System.Text;
         /// handled by this object.
         /// </summary>
         /// <param name="filter"></param>
-        
+        public bool HandleNotifyFilter(NotifyFilters filter)
+        {
+            return (((NotifyFilters)(this.watcherInfo.ChangesFilters & filter)) == filter);
+        }
+
+        // -------------------------------------------------------------------------------
+        /// <summary>
+        /// Determines if the specified WatcherChangeType item has been specified to be 
+        /// handled by this object.
+        /// </summary>
+        /// <param name="filter"></param>
         public bool HandleWatchesFilter(WatcherChangeTypes filter)
         {
             return (((WatcherChangeTypes)(this.watcherInfo.WatchesFilters & filter)) == filter);

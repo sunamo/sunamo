@@ -40,4 +40,3 @@ public class SunamoSize : IParser
         return ParserTwoValues.ToString(AllStrings.comma, Width.ToString(), Height.ToString());
     }
 }
-

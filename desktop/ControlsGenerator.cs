@@ -27,7 +27,6 @@ namespace desktop
         /// <param name="data"></param>
         /// <param name="addDescription"></param>
         /// <param name="tick"></param>
-        
         public static CheckBox CheckBoxWithDescription(TWithSizeInString<string> data, bool addDescription, bool tick)
         {
             var s = TextBlockHelper.Get(new ControlInitData { text = data.sizeS });

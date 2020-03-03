@@ -12,7 +12,6 @@ public partial class PlatformInteropHelper{
     /// <summary>
     /// Working excellent 11-3-19
     /// </summary>
-    
     public static bool IsUwpWindowsStoreApp()
     {
         if (isUwp.HasValue)

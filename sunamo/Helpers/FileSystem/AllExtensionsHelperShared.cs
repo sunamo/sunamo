@@ -67,7 +67,34 @@ public partial class AllExtensionsHelper
     /// Default was WithDot
     /// </summary>
     /// <param name = "p"></param>
-    
+    public static TypeOfExtension FindTypeWithoutDot(string p)
+    {
+        if (p != "")
+        {
+            if (allExtensionsWithoutDot.ContainsKey(p))
+            {
+                return allExtensionsWithoutDot[p];
+            }
+        }
+
+        return TypeOfExtension.other;
+    }
+
+    /// <summary>
+    /// A1 can be with or without dot
+    /// </summary>
+    /// <param name="ext"></param>
+    public static bool IsContained(string p)
+    {
+        p = p.TrimStart(AllChars.dot);
+        return allExtensionsWithoutDot.ContainsKey(p);
+    }
+
+    /// <summary>
+    /// When can't be found, return other
+    /// Was default
+    /// </summary>
+    /// <param name = "p"></param>
     public static TypeOfExtension FindTypeWithDot(string p)
     {
         if (p != "")

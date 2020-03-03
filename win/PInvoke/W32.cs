@@ -166,7 +166,34 @@ public class W32
     /// <summary>
     /// Use Marshal.GetLastWin32Error instead. https://stackoverflow.com/a/17918729/9327173
     /// </summary>
-    
+    [DllImport("kernel32.dll", SetLastError = true)]
+    public static extern uint GetLastError();
+
+    [DllImport("Kernel32.Dll", EntryPoint = "Wow64EnableWow64FsRedirection")]
+    public static extern bool EnableWow64FSRedirection(bool enable);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern IntPtr GetClipboardData(uint uFormat);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool IsClipboardFormatAvailable(uint format);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool OpenClipboard(IntPtr hWndNewOwner);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool CloseClipboard();
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    public static extern IntPtr GlobalLock(IntPtr hMem);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    public static extern bool GlobalUnlock(IntPtr hMem);
+
+    /// <summary>
+    /// Retrieves the current size of the specified global memory object, in bytes.
+    /// </summary>
+    /// <param name="hMem"></param>
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern UIntPtr GlobalSize(IntPtr hMem);
 

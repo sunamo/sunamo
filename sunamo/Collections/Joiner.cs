@@ -32,4 +32,3 @@ public class Joiner<T>
         list.Add(appName);
     }
 }
-

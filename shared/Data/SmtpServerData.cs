@@ -18,4 +18,3 @@ public class SmtpServerData
         return s;
     }
 }
-

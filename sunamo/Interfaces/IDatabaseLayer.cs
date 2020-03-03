@@ -14,4 +14,3 @@ public interface IDatabaseLayer<SqlDbType>
     Dictionary<SqlDbType, string> hiddenTa { get; set; }
 
 }
-

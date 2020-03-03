@@ -11,7 +11,6 @@ public partial class PlatformInteropHelper
     /// ConsoleStandardApp2 = .NET Core 3.0.0
     /// GeoCachingTool = .NET Core 4.6.00001.0
     /// </summary>
-    
     public static bool IsUseStandardProject()
     {
         // Return one of three values:

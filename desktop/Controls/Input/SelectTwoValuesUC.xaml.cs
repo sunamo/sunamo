@@ -76,7 +76,6 @@ namespace desktop.Controls.Input
         /// IN early time set up red border but this was useless, now not used
         /// </summary>
         /// <param name="cbEntered2"></param>
-        
         private bool AfterEnteredValue(ComboBoxHelper<string> cbEntered2)
         {
             var cbEntered = cbEntered2.Cb;

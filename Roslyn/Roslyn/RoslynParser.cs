@@ -118,7 +118,77 @@ namespace Roslyn
         /// </summary>
         /// <param name="folderFrom"></param>
         /// <param name="folderTo"></param>
-        
+        public List<string> GetCodeOfElementsClass(string folderFrom, string folderTo)
+        {
+            FS.WithEndSlash(ref folderFrom);
+            FS.WithEndSlash(ref folderTo);
+
+            var files = FS.GetFiles(folderFrom, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
+            foreach (var file in files)
+            {
+                SyntaxTree tree = CSharpSyntaxTree.ParseText(TF.ReadFile(file));
+
+                List<string> result = new List<string>();
+                // Here probable it mean SpaceName, ale když není namespace, uloží třídu 
+                SyntaxNode sn;
+                var cl = RoslynHelper.GetClass(tree.GetRoot(),out sn);
+
+                SyntaxAnnotation saSn = new SyntaxAnnotation();
+                sn = sn.WithAdditionalAnnotations(saSn);
+                
+                SyntaxAnnotation saCl = new SyntaxAnnotation();
+                cl = cl.WithAdditionalAnnotations(saCl);
+                //ClassDeclarationSyntax cl2 = cl.Parent.)
+
+                var root = tree.GetRoot();
+
+                int count = cl.Members.Count;
+                for (int i = count - 1; i >= 0; i--)
+                {
+                    var item = cl.Members[i];
+                    //cl.Members.RemoveAt(i);
+                    //cl.Members.Remove(item);
+                    cl = cl.RemoveNode(item, SyntaxRemoveOptions.KeepEndOfLine);
+                }
+                // záměna namespace za class pak dělá problémy tady
+                sn = sn.TrackNodes(cl);
+                root = root.TrackNodes(sn);
+                
+                var d = sn.SyntaxTree.ToString();
+                var fileTo = SH.Replace(file, folderFrom, folderTo);
+                File.WriteAllText(fileTo, d);
+            }
+
+            return null;
+        }
+        private SyntaxNode FindTopParent(SyntaxNode cl)
+        {
+            var result = cl;
+            while (result.Parent != null)
+            {
+                result = result.Parent;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="wrapIntoClass"></param>
+        public static ABC GetVariablesInCsharp(SyntaxNode root)
+        {
+            List<string> lines = new List<string>();
+            CollectionWithoutDuplicates<string> usings;
+
+            return GetVariablesInCsharp(root, lines, out usings);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="lines"></param>
+        /// <param name="usings"></param>
         public static ABC GetVariablesInCsharp(SyntaxNode root, List<string> lines, out CollectionWithoutDuplicates<string> usings)
         {
             ABC result = new ABC();

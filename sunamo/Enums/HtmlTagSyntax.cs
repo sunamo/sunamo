@@ -10,4 +10,3 @@ public enum HtmlTagSyntax
     NonPairingEnded,
     NonPairingNotEnded
 }
-

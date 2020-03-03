@@ -11,7 +11,101 @@ public partial class DTHelperMulti
     /// Vrátí datum a čas v českém formátu bez ms a s
     /// </summary>
     /// <param name="d"></param>
-    
+    public static string DateTimeToString(DateTime d, Langs l, DateTime dtMinVal)
+    {
+        if (d == dtMinVal)
+        {
+            if (l == Langs.cs)
+            {
+                return "Nebylo uvedeno";
+            }
+            else
+            {
+                return "Not indicated";
+            }
+        }
+
+        if (l == Langs.cs)
+        {
+            // 21.6.1989 11:22 (fill zero)
+            return d.Day + AllStrings.dot + d.Month + AllStrings.dot + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+        }
+        else
+        {
+            // 6/21/1989 11:22 (fill zero)
+            return d.Month + AllStrings.slash + d.Day + AllStrings.slash + d.Year + AllStrings.space + NH.MakeUpTo2NumbersToZero(d.Hour) + AllStrings.colon + NH.MakeUpTo2NumbersToZero(d.Minute);
+        }
+    }
+
+    /// <summary>
+    /// 21.6.1989 / 6/21/1989
+    /// </summary>
+    /// <param name="p"></param>
+    public static string DateToString(DateTime p, Langs l)
+    {
+        if (l == Langs.cs)
+        {
+            return p.Day + AllStrings.dot + p.Month + AllStrings.dot + p.Year;
+        }
+        return p.Month + AllStrings.slash + p.Day + AllStrings.slash + p.Year;
+    }
+
+    /// <summary>
+    /// 21.6.1989 (středa) / 6/21/1989 (wednesday)
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <param name="l"></param>
+    public static string DateWithDayOfWeek(DateTime dateTime, Langs l)
+    {
+        int day = (int)dateTime.DayOfWeek;
+        if (day == 0)
+        {
+            day = 6;
+        }
+        else
+        {
+            day--;
+        }
+
+        string dayOfWeek = DTConstants.daysInWeekEN[day];
+        if (l == Langs.cs)
+        {
+            dayOfWeek = DTConstants.daysInWeekCS[day];
+        }
+
+        return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
+    } 
+    #endregion
+
+    #region IsValid*
+    /// <summary>
+    /// Return whether can be parse with DTHelperCs.ParseDateCzech or DTHelperEn.ParseDateUSA
+    /// </summary>
+    /// <param name="r"></param>
+    public static DateTime IsValidDateText(string r)
+    {
+        DateTime dt = DateTime.MinValue;
+        r = r.Trim();
+        if (r != "")
+        {
+            var indexTecky = r.IndexOf(AllChars.dot);
+            if (indexTecky != -1)
+            {
+                dt = DTHelperCs.ParseDateCzech(r);
+            }
+            else
+            {
+                dt = DTHelperEn.ParseDateUSA(r);
+            }
+        }
+        return dt;
+    }
+
+    /// <summary>
+    /// A1 can be in en or cs
+    /// parse time after first space
+    /// </summary>
+    /// <param name="datum"></param>
     public static DateTime IsValidDateTimeText(string datum)
     {
         DateTime vr = DateTime.MinValue;

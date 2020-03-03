@@ -36,4 +36,3 @@ using System.Threading.Tasks;
     /// </summary>
     public MemberDeclarationSyntax Member;
     }
-

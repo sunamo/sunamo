@@ -14,4 +14,3 @@ using System.Threading.Tasks;
             return SourceCodeIndexerRoslyn.e2sNamespaceCodeElements[Type] + AllStrings.space + Name;
         }
     }
-

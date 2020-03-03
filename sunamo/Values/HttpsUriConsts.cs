@@ -11,4 +11,3 @@ public class HttpsUriConsts
     public const string LyrCz = "https://lyrics.sunamo.cz";
     public const string AppCz = "https://apps.sunamo.cz";
 }
-

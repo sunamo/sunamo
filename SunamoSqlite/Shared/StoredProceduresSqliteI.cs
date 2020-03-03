@@ -73,7 +73,179 @@ public class StoredProceduresSqliteI : IStoredProceduresI
         /// <param name="tabulka"></param>
         /// <param name="sloupec"></param>
         /// <param name="hodnota"></param>
-        
+        public bool ContainsRowsInTableValue(string tabulka, string sloupec, object hodnota)
+        {
+            DataTable dt = GetDataTableSelective(tabulka, sloupec, hodnota);
+            return dt.Rows.Count != 0;
+        }
+
+        /// <summary>
+        /// G aktuální počet řádky v tabulce A1 po vložení.
+        /// Do A2 se to zadává bez uvozovek.
+        /// </summary>
+        /// <param name="tabulka"></param>
+        /// <param name="nazvySloupcu"></param>
+        /// <param name="sloupce"></param>
+        public void InsertToTable(string tabulka, string nazvySloupcu, params object[] sloupce)
+        {
+            string hodnoty = StoredProceduresSqlite.ci.GetValues(sloupce);
+            SQLiteCommand comm = new SQLiteCommand(SH.Format2("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, StoredProceduresSqlite.ci.GetValues(sloupce)), _conn);
+            comm.ExecuteNonQuery();
+        }
+
+        public void Insert4(string tableName, params object[] v1)
+        {
+            InsertToTable(tableName, string.Empty, v1);
+        }
+
+        /// <summary>
+        /// G všechny řádky z tabulky A1 kde sloupec A2 bude mít hodnotu A3.
+        /// </summary>
+        /// <param name="tabulka"></param>
+        /// <param name="sloupec"></param>
+        /// <param name="hodnota"></param>
+        public DataTable GetDataTableSelective(string tabulka, string sloupec, object hodnota)
+        {
+            return GetDataTable("SELECT * FROM" + " " + tabulka + " " + "WHERE" + " " + sloupec + " = " + StoredProceduresSqlite.ci.ReplaceValueOnlyOne(hodnota));
+        }
+
+        private DataTable GetDataTableSelective(string tabulka, string sloupecID, int id, string hledanySloupec)
+        {
+            return GetDataTable("SELECT" + " " + hledanySloupec + " " + "FROM" + " " + tabulka + " " + "WHERE" + " " + sloupecID + " = " + StoredProceduresSqlite.ci.ReplaceValueOnlyOne(id));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tabulka"></param>
+        /// <param name="sloupecHledaní"></param>
+        /// <param name="sloupecVeKteremHledat"></param>
+        /// <param name="hodnota"></param>
+        public List<int> GetValueColumnInt(string tabulka, string sloupecHledaní, string sloupecVeKteremHledat, object hodnota)
+        {
+            string sql = SH.Format2("SELECT {0} FROM {1} WHERE {2} = {3}", sloupecHledaní, tabulka, sloupecVeKteremHledat, StoredProceduresSqlite.ci.ReplaceValueOnlyOne(hodnota));
+            //SQLiteCommand comm = new SQLiteCommand(sql, conn);
+
+            return GetValuesAllRowsInt(sql);
+
+            //return vr;
+        }
+
+        private List<int> GetValuesAllRowsInt(string sql)
+        {
+            List<int> vr = new List<int>();
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
+            DataTable dt = StoredProceduresSqliteI.ci.GetDataTable(comm);
+            foreach (DataRow var in dt.Rows)
+            {
+                vr.Add(int.Parse(var.ItemArray[0].ToString()));
+            }
+            return vr;
+        }
+
+
+        private List<string> GetValuesAllRowsString(string sql)
+        {
+            List<string> vr = new List<string>();
+            SQLiteCommand comm = new SQLiteCommand(sql, _conn);
+            DataTable dt = StoredProceduresSqliteI.ci.GetDataTable(comm);
+            foreach (DataRow var in dt.Rows)
+            {
+                vr.Add(var.ItemArray[0].ToString());
+            }
+            return vr;
+        }
+
+        /// <summary>
+        /// ---Pozor, pokud bude více řádků vyhovovat A2,3, vrátí to zřejmě hodnoty od všech. +++Už ne, dělLm to přes tabulku a ne reader
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="nazevSloupce"></param>
+        /// <param name="hodnotaSloupce"></param>
+        public List<object> GetValuesAllRows(string tabulka, string nazevSloupce, object hodnotaSloupce)
+        {
+            List<object> vr = new List<object>();
+            SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT * FROM {0} WHERE {1} = {2}", tabulka, nazevSloupce, StoredProceduresSqlite.ci.ReplaceValueOnlyOne(hodnotaSloupce)), _conn);
+
+
+            return vr;
+        }
+
+        public List<string> FindValuesOfIDs(string tabulka, List<int> idFces)
+        {
+            List<string> vr = new List<string>();
+            foreach (int var in idFces)
+            {
+                vr.Add(StoredProceduresSqliteI.ci.FindValueOfID(tabulka, var));
+            }
+            return vr;
+        }
+
+        public List<string> VratVsechnyHodnotySloupce(string tabulka, string sloupec)
+        {
+            //DataTable dt = UlozeneProceduryI.ci.VratDataTable();
+            return GetValuesAllRowsString(SH.Format2("SELECT {0} FROM {1}", sloupec, tabulka));
+        }
+
+        /// <summary>
+        /// A2 je kombinace klazulE WHERE
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="aB"></param>
+        public bool ExistsCombination(string p, params AB[] aB)
+        {
+            string sql = SH.Format2("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorSqLite.CombinedWhere(new ABC( aB)));
+            DataTable dt = GetDataTable(sql);
+            return dt.Rows.Count != 0;
+        }
+
+        /// <summary>
+        /// Funguje pouze když je sloupec nazev na indexu 1.
+        /// </summary>
+        /// <param name="tabulka"></param>
+        /// <param name="id"></param>
+        public string FindValueOfID(string tabulka, int id)
+        {
+            //SQLiteCommand comm = new SQLiteCommand(SH.Format2("SELECT Nazev FROM {0} WHERE ID = {1}", tabulka, id));
+            return GetElementDataTable(GetDataTableSelective(tabulka, "ID", id), 0, 1);
+        }
+
+        /// <summary>
+        /// G A3. prvek v radku také indexu A2 tabulky A1.
+        /// Může vrátit i null pokud dostanu null. Pokud řádek nebo sloupec nenalezne, vHhodí výjimku
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="p"></param>
+        /// <param name="p_2"></param>
+        private string GetElementDataTable(DataTable dataTable, int radek, int sloupec)
+        {
+            if (dataTable.Rows.Count >= radek)
+            {
+                object[] o = null;
+
+                o = dataTable.Rows[radek].ItemArray;
+
+
+                if (o.Length >= sloupec)
+                {
+                    if (o[sloupec] == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return o[sloupec].ToString();
+                    }
+                }
+            }
+            throw new Exception("Zadan\u00E1 buNka nebyla nalezena");
+        }
+
+        /// <summary>
+        /// Is no rows will affect, return -1, not 0
+        /// </summary>
+        /// <param name="p"></param>
         public int ExecuteNonQuery(string p)
         {
             SQLiteCommand comm = new SQLiteCommand(p, _conn);

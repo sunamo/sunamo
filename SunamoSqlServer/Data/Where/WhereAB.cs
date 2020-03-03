@@ -14,4 +14,3 @@ public class WhereAB
         this.ab = ab;
     }
 }
-

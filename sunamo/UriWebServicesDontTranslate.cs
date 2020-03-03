@@ -29,4 +29,3 @@ public partial class UriWebServices
         return !CA.IsEqualToAnyElement<string>(item, Consts.NA, Consts.na);
     }
 }
-

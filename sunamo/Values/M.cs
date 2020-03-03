@@ -14,4 +14,3 @@ public partial class M
     public static bool Auto = false;
     public static bool Debug = false;
 }
-

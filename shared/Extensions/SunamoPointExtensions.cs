@@ -12,4 +12,3 @@ public static class SunamoPointExtensions
         return new System.Windows.Point(ss.X, ss.Y);
     }
 }
-

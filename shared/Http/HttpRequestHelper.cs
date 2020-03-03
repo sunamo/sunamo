@@ -63,7 +63,6 @@ public static partial class HttpRequestHelper
         /// <param name = "folder2"></param>
         /// <param name = "fn"></param>
         /// <param name = "ext"></param>
-        
     public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
     {
         if (DontHaveAllowedExtension != null)

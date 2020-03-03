@@ -166,7 +166,6 @@ public class UlozTo
     /// U A1 se musí jednat o adresu Uri
     /// </summary>
     /// <param name="niceUri"></param>
-    
     public static UlozToNiceUriParts ParseNiceUri(string niceUri)
     {
         List<string> sp = new List<string>( SH.Split( UH.GetPageNameFromUri(new Uri(niceUri)), AllStrings.slash));

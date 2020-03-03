@@ -8,4 +8,3 @@ using System.Threading.Tasks;
 public interface IClipboardHelperApps : IClipboardHelperBase<string, List<string>, bool>
 {
 }
-

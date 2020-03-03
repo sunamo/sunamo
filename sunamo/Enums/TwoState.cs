@@ -9,4 +9,3 @@ public enum TwoState
     AddRemove,
     AcceptDecline
 }
-

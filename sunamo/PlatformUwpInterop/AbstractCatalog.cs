@@ -10,4 +10,3 @@ public class AbstractCatalog<StorageFolder, StorageFile>
     
     public TFAbstract<StorageFile> tf;
 }
-

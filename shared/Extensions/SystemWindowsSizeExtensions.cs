@@ -15,7 +15,6 @@ using System.Windows;
         /// Může se použít jen pokud není velikost nekonečná
         /// </summary>
         /// <param name="s"></param>
-        
         public static System.Drawing.Size ToDrawing(this Size s)
         {
             return new System.Drawing.Size((int)s.Width, (int)s.Height);
@@ -26,4 +25,3 @@ using System.Windows;
             return new SunamoSize(s.Width, s.Height);
         }
     }
-

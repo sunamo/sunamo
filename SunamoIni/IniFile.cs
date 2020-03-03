@@ -53,7 +53,22 @@ public class IniFile
         /// </summary>
         /// <param name="Section"></param>
         /// <param name="Key"></param>
-        
+        public string IniReadValue( string Section, string Key)
+        {
+            return IniReadValue(true, Section, Key);
+        }
+
+        public string IniReadValueSharpConfig(string Section, string Key)
+        {
+            return IniReadValue(true, Section, Key);
+        }
+
+        /// <summary>
+        /// A1 zda se má použít SharpConfig
+        /// </summary>
+        /// <param name="useIniParser"></param>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
         public string IniReadValue(bool useIniParser, string Section, string Key)
         {
             if (useIniParser)

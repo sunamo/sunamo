@@ -56,7 +56,6 @@ public static class RegexHelper
     /// Not working - keep in plain text, use ReplacePlainUrlWithLinks2
     /// </summary>
     /// <param name="plainText"></param>
-    
     public static string ReplacePlainUrlWithLinks(string plainText)
     {
         var html = Regex.Replace(plainText, @"^(http|https|ftp)\://[a-zA-Z0-9\-\.]+" +

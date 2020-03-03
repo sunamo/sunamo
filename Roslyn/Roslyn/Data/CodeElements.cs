@@ -9,4 +9,3 @@ using System.Threading.Tasks;
         public Dictionary<string, NamespaceCodeElements> namespaces = new Dictionary<string, NamespaceCodeElements>();
         public Dictionary<string, ClassCodeElements> classes = new Dictionary<string, ClassCodeElements>();
     }
-

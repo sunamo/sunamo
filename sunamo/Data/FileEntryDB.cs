@@ -35,4 +35,3 @@ public class FileInfoDB : FileInfoLite
         return UH.Combine(false, base.Path, base.Name);
     }
 }
-

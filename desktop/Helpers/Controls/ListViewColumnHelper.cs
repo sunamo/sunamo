@@ -93,4 +93,3 @@ public class ListViewColumnHelper<T> where T : IIdentificatorDesktop<int>
         }
     }
 }
-

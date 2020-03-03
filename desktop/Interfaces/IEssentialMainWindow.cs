@@ -16,4 +16,3 @@ public interface IEssentialMainWindow : IWindowOpener
         void SetMode(object mode);
      string ModeString { get; }
     }
-

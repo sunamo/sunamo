@@ -28,4 +28,3 @@ public static bool IsUserAdministrator()
     return isAdmin;
 }
     }
-

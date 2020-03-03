@@ -13,7 +13,6 @@ public partial class HashHelper
     /// Pouze vypočte Hash bez soli - resp. sůl musí být v A1 společně s bajty které chci zakódovat s ní.
     /// </summary>
     /// <param name = "vstup"></param>
-    
     public static byte[] GetHash(byte[] vstup)
     {
         SHA256CryptoServiceProvider sha = new SHA256CryptoServiceProvider();

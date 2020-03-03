@@ -26,7 +26,17 @@ namespace SunamoTesseract
         /// </summary>
         /// <param name="imageFile"></param>
         /// <param name="lang"></param>
-        
+        public static string ParseText(byte[] imageFile, params string[] lang)
+        {
+            var tesseractPath = GetTesseractPath();
+            return ParseText(tesseractPath, imageFile, lang);
+        }
+
+        /// <summary>
+        /// lang: cse, eng
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="lang"></param>
         public static string ParseText(string path, string lang = "ces")
         {
             var va = "TESSDATA_PREFIX";

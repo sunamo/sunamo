@@ -40,7 +40,16 @@ public static class StaticParse
     /// </summary>
     /// <param name="o"></param>
     /// <param name="p"></param>
-    
+    public static bool GetBoolMS(List<string> o, int p)
+    {
+        return bool.Parse(o[p]);
+    }
+
+    /// <summary>
+    /// Používá metodu Convert.ToBoolean
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="p"></param>
     public static bool GetBool(List<string> o, int p)
     {
         return Convert.ToBoolean(o[p]);

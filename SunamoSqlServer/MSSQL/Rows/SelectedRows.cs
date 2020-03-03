@@ -10,4 +10,3 @@ using System.Data;
         public DataTable selectedRows = null;
         public string error = null;
     }
-

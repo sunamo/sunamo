@@ -14,7 +14,6 @@ public static TypeOfMessage IsStatusMessage(string resp)
     /// If dont start with none, return Ordinal
     /// </summary>
     /// <param name = "resp"></param>
-    
     public static TypeOfMessage IsStatusMessage(ref string resp)
     {
         if (SH.TrimIfStartsWith(ref resp, error))

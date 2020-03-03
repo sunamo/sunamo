@@ -35,4 +35,3 @@ public class VsInteropHelper
         return null;
     }
 }
-

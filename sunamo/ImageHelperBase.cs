@@ -11,4 +11,3 @@ using System.Text;
         public abstract ImageControl MsAppx(string relPath);
         public abstract ImageControl MsAppx(bool disabled, AppPics appPic);
     }
-

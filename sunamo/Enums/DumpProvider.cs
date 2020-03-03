@@ -11,4 +11,3 @@ public enum DumpProvider
     Yaml,
     ObjectDumper
 }
-

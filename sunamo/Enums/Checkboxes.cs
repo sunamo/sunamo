@@ -10,4 +10,3 @@ public enum Checkboxes
     IsChecked,
     IsSelected
 }
-

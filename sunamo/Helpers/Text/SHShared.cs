@@ -151,7 +151,6 @@ public static partial class SH
     /// <param name="t"></param>
     /// <param name="left"></param>
     /// <param name="right"></param>
-    /// <returns></returns>
     public static bool ContainsBracket(string t, ref List<string> left, ref List<string> right, bool mustBeLeftAndRight = false)
     {
         left = SH.ContainsAny(t, false, AllLists.leftBrackets);
@@ -208,7 +207,6 @@ public static partial class SH
     /// </summary>
     /// <param name="item"></param>
     /// <param name="after"></param>
-    /// <returns></returns>
     public static string TextAfter(string item, string after)
     {
         var dex = item.IndexOf(after);
@@ -679,7 +677,6 @@ public static partial class SH
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p_2"></param>
-    /// <returns></returns>
     public static List<string> SplitToParts(string what, int parts, string deli)
     {
         var s = SH.Split(what, deli);
@@ -801,7 +798,6 @@ public static partial class SH
     /// 
     /// </summary>
     /// <param name="delimiter"></param>
-    /// <returns></returns>
     public static string ConvertTypedWhitespaceToString(string delimiter)
     {
         const string nl = @"
@@ -843,7 +839,6 @@ public static partial class SH
     /// <param name="t"></param>
     /// <param name="what"></param>
     /// <param name="forWhat"></param>
-    /// <returns></returns>
     public static string Replace(string t, string what, string forWhat)
     {
         return t.Replace( what, forWhat);
@@ -866,7 +861,6 @@ public static partial class SH
     /// <param name="zaCo"></param>
     /// <param name="co"></param>
     /// <param name="pairLines"></param>
-    /// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co, bool pairLines)
     {
         if (pairLines)
@@ -901,7 +895,6 @@ public static partial class SH
     /// <param name="vstup"></param>
     /// <param name="zaCo"></param>
     /// <param name="co"></param>
-    /// <returns></returns>
     public static string ReplaceAll2(string vstup, string zaCo, string co)
     {
         return vstup.Replace(co, zaCo);
@@ -913,7 +906,6 @@ public static partial class SH
     /// <param name="vstup"></param>
     /// <param name="zaCo"></param>
     /// <param name="co"></param>
-    /// <returns></returns>
     public static string ReplaceAll(string vstup, string zaCo, params string[] co)
     {
         //Stupid, zaCo can be null
@@ -1147,7 +1139,6 @@ public static partial class SH
     /// G text bez dia A1.
     /// </summary>
     /// <param name="sDiakritik"></param>
-    /// <returns></returns>
     public static string TextWithoutDiacritic(string sDiakritik)
     {
         return sDiakritik.RemoveDiacritics();
@@ -1176,7 +1167,6 @@ public static partial class SH
     /// Insert prefix starting with + 
     /// </summary>
     /// <param name="v"></param>
-    /// <returns></returns>
     public static string TelephonePrefixToBrackets(string v)
     {
         if (string.IsNullOrWhiteSpace(v))
@@ -1204,7 +1194,6 @@ public static partial class SH
     /// <param name="item"></param>
     /// <param name="hasFirstEmptyLength"></param>
     /// <param name="contains"></param>
-    /// <returns></returns>
     public static List<string> ContainsAny(string item, bool checkInCaseOnlyOneString, IEnumerable<string> contains)
     {
         List<string> founded = new List<string>();
@@ -1342,7 +1331,6 @@ public static partial class SH
     /// </summary>
     /// <param name="ret"></param>
     /// <param name="pocetDo"></param>
-    /// <returns></returns>
     public static List<int> GetVariablesInString(char p, char k, string innerHtml)
     {
         /// Vrátí mi formáty, které jsou v A1 od 0 do A2-1
@@ -1387,7 +1375,6 @@ public static partial class SH
     /// </summary>
     /// <param name="input"></param>
     /// <param name="p2"></param>
-    /// <returns></returns>
     public static List<string> RemoveDuplicates(string input, string delimiter)
     {
         var split = SH.Split(input, delimiter);
@@ -1397,7 +1384,6 @@ public static partial class SH
     /// <summary>
     /// G zda je jedinz znak v A1 s dia.
     /// </summary>
-    /// <returns></returns>
     public static bool ContainsDiacritic(string slovo)
     {
         return slovo != SH.TextWithoutDiacritic(slovo);
@@ -1421,7 +1407,6 @@ public static partial class SH
     /// <param name="stringSplitOptions"></param>
     /// <param name="text"></param>
     /// <param name="deli"></param>
-    /// <returns></returns>
     private static List<string> Split(StringSplitOptions stringSplitOptions, string text, params object[] deli)
     {
         if (deli == null || deli.Count() == 0)
@@ -1463,7 +1448,6 @@ public static partial class SH
     /// <param name="id"></param>
     /// <param name="key"></param>
     /// <param name="value"></param>
-    /// <returns></returns>
     public static string Format(string templateHandler, string lsf, string rsf, params string[] args)
     {
         var result = SH.Format2(templateHandler, args);
@@ -1493,7 +1477,6 @@ public static partial class SH
     /// </summary>
     /// <param name="template"></param>
     /// <param name="args"></param>
-    /// <returns></returns>
     public static string Format2(string status, params object[] args)
     {
         if (string.IsNullOrWhiteSpace(status))
@@ -1527,7 +1510,6 @@ public static partial class SH
     /// </summary>
     /// <param name="template"></param>
     /// <param name="args"></param>
-    /// <returns></returns>
     public static string Format3(string template, params object[] args)
     {
         // this was original implementation but dont know why isnt used string.format
@@ -1552,7 +1534,6 @@ public static partial class SH
     /// <param name="r"></param>
     /// <param name="g"></param>
     /// <param name="b"></param>
-    /// <returns></returns>
     public static string Format4(string v, params object[] o)
     {
         return string.Format(v, o);
@@ -1587,7 +1568,6 @@ public static partial class SH
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    /// <returns></returns>
     public static string JoinIEnumerable(object delimiter, IEnumerable parts)
     {
         // TODO: Delete after all app working
@@ -1600,7 +1580,6 @@ public static partial class SH
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    /// <returns></returns>
     public static string JoinString(object delimiter, IEnumerable parts)
     {
         // TODO: Delete after all app working, has here method Join with same arguments
@@ -1614,7 +1593,6 @@ public static partial class SH
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    /// <returns></returns>
     public static string Join(string delimiter, IEnumerable parts)
     {
         string s = delimiter.ToString();
@@ -1652,7 +1630,6 @@ public static partial class SH
     /// </summary>
     /// <param name="delimiter"></param>
     /// <param name="parts"></param>
-    /// <returns></returns>
     public static string Join(object delimiter, params object[] parts)
     {
         // JoinString point to Join with implementation
@@ -1703,7 +1680,6 @@ public static partial class SH
     /// For inner collection use CA.TwoDimensionParamsIntoOne
     /// </summary>
     /// <param name="value"></param>
-    /// <returns></returns>
     public static string ListToString(object value, object delimiter = null)
     {
         var delimiterS = AllStrings.comma;
@@ -1748,7 +1724,6 @@ public static partial class SH
     /// <param name="v1"></param>
     /// <param name="methodName"></param>
     /// <param name="v2"></param>
-    /// <returns></returns>
     public static string ConcatIfBeforeHasValue(params string[] className)
     {
         StringBuilder result = new StringBuilder();
@@ -1770,7 +1745,6 @@ public static partial class SH
     /// Snaž se tuto metodu využívat co nejméně, je zbytečná.
     /// </summary>
     /// <param name="s"></param>
-    /// <returns></returns>
     public static string Copy(string s)
     {
         return s;
@@ -1781,7 +1755,6 @@ public static partial class SH
     /// </summary>
     /// <param name="nazevTabulky"></param>
     /// <param name="p"></param>
-    /// <returns></returns>
     public static string ConvertPluralToSingleEn(string nazevTabulky)
     {
         if (nazevTabulky[nazevTabulky.Length - 1] == 's')
@@ -1803,7 +1776,6 @@ public static partial class SH
     /// Not auto remove empty
     /// </summary>
     /// <param name="p"></param>
-    /// <returns></returns>
     public static List<string> GetLines(string p)
     {
         List<string> vr = new List<string>();
@@ -1839,7 +1811,6 @@ public static partial class SH
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p_2"></param>
-    /// <returns></returns>
     public static string ShortForLettersCountThreeDots(string p, int p_2)
     {
         bool pridatTriTecky = false;
@@ -1930,7 +1901,6 @@ public static partial class SH
     /// </summary>
     /// <param name="item"></param>
     /// <param name="contains"></param>
-    /// <returns></returns>
     public static bool IsContained(string item, ref string contains)
     {
         bool negation = SH.IsNegation(ref contains);
@@ -2032,7 +2002,6 @@ public static partial class SH
     /// Údajně detekuje i japonštinu a podpobné jazyky
     /// </summary>
     /// <param name="text"></param>
-    /// <returns></returns>
     public static bool IsChinese(string text)
     {
         var hiragana = GetCharsInRange(text, 0x3040, 0x309F);
@@ -2074,7 +2043,6 @@ public static partial class SH
     /// <param name="text"></param>
     /// <param name="min"></param>
     /// <param name="max"></param>
-    /// <returns></returns>
     public static bool GetCharsInRange(string text, int min, int max)
     {
         return text.Where(e => e >= min && e <= max).Count() != 0;
@@ -2095,7 +2063,6 @@ public static partial class SH
     /// </summary>
     /// <param name="nazevPP"></param>
     /// <param name="only"></param>
-    /// <returns></returns>
     public static string FirstCharUpper(string nazevPP, bool only = false)
     {
         if (nazevPP != null)
@@ -2117,7 +2084,6 @@ public static partial class SH
     /// <param name="sql"></param>
     /// <param name="p"></param>
     /// <param name="p_3"></param>
-    /// <returns></returns>
     public static string Substring(string sql, int indexFrom, int indexTo, bool returnInputIfInputIsShorterThanA3 = false)
     {
         if (sql == null)
@@ -2162,7 +2128,6 @@ public static partial class SH
     /// <param name="parentheses"></param>
     /// <param name="braces"></param>
     /// <param name="afterSds"></param>
-    /// <returns></returns>
     public static string RemoveBracketsAndHisContent(string title, bool squareBrackets, bool parentheses, bool braces, bool afterSdsFrom)
     {
         if (squareBrackets)
@@ -2199,7 +2164,6 @@ public static partial class SH
     /// <param name="s"></param>
     /// <param name="begin"></param>
     /// <param name="end"></param>
-    /// <returns></returns>
     public static string RemoveBetweenAndEdgeChars(string s, object begin, object end)
     {
         Regex regex = new Regex(SH.Format2("\\{0}.*?\\{1}", begin, end));
@@ -2212,7 +2176,6 @@ public static partial class SH
     /// <param name="celyObsah"></param>
     /// <param name="stred"></param>
     /// <param name="naKazdeStrane"></param>
-    /// <returns></returns>
     public static string XCharsBeforeAndAfterWholeWords(string celyObsah, int stred, int naKazdeStrane)
     {
         StringBuilder prava = new StringBuilder();
@@ -2292,7 +2255,6 @@ public static partial class SH
     /// Do výsledku zahranu i mezery a punktační znaménka 
     /// </summary>
     /// <param name="veta"></param>
-    /// <returns></returns>
     public static List<string> SplitBySpaceAndPunctuationCharsLeave(string veta)
     {
         List<string> vr = new List<string>();
@@ -2337,7 +2299,6 @@ public static partial class SH
     /// </summary>
     /// <param name="p"></param>
     /// <param name="p_2"></param>
-    /// <returns></returns>
     public static string ShortForLettersCountThreeDotsReverse(string p, int p_2)
     {
         p = p.Trim();
@@ -2501,7 +2462,6 @@ public static partial class SH
     /// </summary>
     /// <param name="name"></param>
     /// <param name="ext"></param>
-    /// <returns></returns>
     public static string TrimEnd(string name, string ext)
     {
         while (name.EndsWith(ext))
@@ -2533,7 +2493,6 @@ public static partial class SH
     /// <param name="p"></param>
     /// <param name="begin"></param>
     /// <param name="end"></param>
-    /// <returns></returns>
     public static string GetTextBetweenTwoChars(string p, int begin, int end)
     {
         if (end > begin)
@@ -2602,7 +2561,6 @@ public static partial class SH
     /// </summary>
     /// <param name="v"></param>
     /// <param name="s"></param>
-    /// <returns></returns>
     public static string TrimStart(string v, string s)
     {
         while (v.StartsWith(s))
@@ -2627,7 +2585,6 @@ public static partial class SH
     /// 
     /// </summary>
     /// <param name="p"></param>
-    /// <returns></returns>
     public static string GetFirstWord(string p, bool returnEmptyWhenDontHaveLenght = true)
     {
         p = p.Trim();
@@ -2648,7 +2605,6 @@ public static partial class SH
     /// </summary>
     /// <param name="stringToSplit"></param>
     /// <param name="delimiter"></param>
-    /// <returns></returns>
     public static List<int> SplitToIntList(string stringToSplit, params string[] delimiter)
     {
         var f = SH.Split(stringToSplit, delimiter);
@@ -2666,7 +2622,6 @@ public static partial class SH
     /// </summary>
     /// <param name="p1"></param>
     /// <param name="deli"></param>
-    /// <returns></returns>
     public static string GetFirstPartByLocation(string p1, char deli)
     {
         int dx = p1.IndexOf(deli);
@@ -2694,7 +2649,6 @@ public static partial class SH
     /// </summary>
     /// <param name="source"></param>
     /// <param name="p2"></param>
-    /// <returns></returns>
     public static bool EndsWithArray(string source, params string[] p2)
     {
         foreach (var item in p2)
@@ -2748,7 +2702,6 @@ public static bool EndsWith(string input, string endsWith)
     /// </summary>
     /// <param name="t"></param>
     /// <param name="ch"></param>
-    /// <returns></returns>
     public static string RemoveAfterFirst(string t, string ch)
     {
         int dex = t.IndexOf(ch);
@@ -2765,7 +2718,6 @@ public static bool EndsWith(string input, string endsWith)
     /// </summary>
     /// <param name="t"></param>
     /// <param name="ch"></param>
-    /// <returns></returns>
     public static string RemoveAfterFirst(string t, char ch)
     {
         int dex = t.IndexOf(ch);
@@ -2823,7 +2775,6 @@ public static bool RemovePrefix(ref string s, string v)
     /// </summary>
     /// <param name="s"></param>
     /// <param name="args"></param>
-    /// <returns></returns>
     public static string Trim(string s, string args)
     {
         s = TrimStart(s, args);
@@ -2860,7 +2811,6 @@ public static bool EqualsOneOfThis(string p1, params string[] p2)
     /// OrEmpty pro odliseni od metody NullToStringOrEmpty
     /// </summary>
     /// <param name="v"></param>
-    /// <returns></returns>
     public static string NullToStringOrEmpty(object v)
     {
         if (v == null)
@@ -2892,7 +2842,6 @@ public static bool ContainsFromEnd(string p1, char p2, out int ContainsFromEndRe
     /// <param name="what"></param>
     /// <param name="parts"></param>
     /// <param name="deli"></param>
-    /// <returns></returns>
     public static List<string> SplitToPartsFromEnd(string what, int parts, params char[] deli)
     {
         List<char> chs = null;
@@ -2994,7 +2943,6 @@ public static string FirstWhichIsNotEmpty(params string[] s)
     /// </summary>
     /// <param name="name"></param>
     /// <param name="mask"></param>
-    /// <returns></returns>
     public static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
@@ -3022,7 +2970,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// </summary>
     /// <param name="us"></param>
     /// <param name="nameSolution"></param>
-    /// <returns></returns>
     public static string RemoveAfterLast(object delimiter, string nameSolution)
     {
         int dex = nameSolution.LastIndexOf(delimiter.ToString());
@@ -3038,7 +2985,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// Return joined with space
     /// </summary>
     /// <param name="v"></param>
-    /// <returns></returns>
     public static string FirstCharOfEveryWordUpperDash(string v)
     {
         return FirstCharOfEveryWordUpper(v, AllChars.dash);
@@ -3049,7 +2995,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// </summary>
     /// <param name="v"></param>
     /// <param name="dash"></param>
-    /// <returns></returns>
     private static string FirstCharOfEveryWordUpper(string v, char dash)
     {
         var p = SH.Split(v, dash);
@@ -3068,7 +3013,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// <param name="term"></param>
     /// <param name="enoughIsContainsAttribute"></param>
     /// <param name="caseSensitive"></param>
-    /// <returns></returns>
     public static bool Contains(string input, string term, bool enoughIsContainsAttribute, bool caseSensitive)
     {
         return Contains(input, term, enoughIsContainsAttribute ? SearchStrategy.AnySpaces : SearchStrategy.ExactlyName, caseSensitive);
@@ -3083,7 +3027,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// <param name="term"></param>
     /// <param name="searchStrategy"></param>
     /// <param name="caseSensitive"></param>
-    /// <returns></returns>
     public static bool Contains(string input, string term, SearchStrategy searchStrategy, bool caseSensitive)
     {
         if (term != "")
@@ -3141,7 +3084,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// </summary>
     /// <param name="input"></param>
     /// <param name="what"></param>
-    /// <returns></returns>
     public static bool Contains(string input, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
     {
         return Contains(input, term, searchStrategy, true);
@@ -3152,7 +3094,6 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
     /// </summary>
     /// <param name="input"></param>
     /// <param name="allWords"></param>
-    /// <returns></returns>
     public static bool ContainsAll(string input, IEnumerable<string> allWords, ContainsCompareMethod ccm = ContainsCompareMethod.WholeInput)
     {
         if (ccm == ContainsCompareMethod.SplitToWords)
@@ -3342,7 +3283,6 @@ public static bool HasTextRightFormat(string r, TextFormatData tfd)
     /// </summary>
     /// <param name="text"></param>
     /// <param name="append"></param>
-    /// <returns></returns>
     public static string AppendIfDontEndingWith(string text, string append)
     {
         if (text.EndsWith(append))

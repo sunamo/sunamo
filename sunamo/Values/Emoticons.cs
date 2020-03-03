@@ -119,4 +119,3 @@ O:)	0:‑3
 
     public string disbelief = "',:-|	',:-l";
 }
-

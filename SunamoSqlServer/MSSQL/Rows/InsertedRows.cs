@@ -20,4 +20,3 @@ using System.Data;
             this.error = Chyba;
         }
     }
-

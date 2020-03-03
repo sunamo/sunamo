@@ -18,4 +18,3 @@ public class SolutionsIndexerStrings
     /// </summary>
     public static readonly List<string> withDirectSolutions = new List<string> { GitHubMy, SolutionsIndexerConsts.ProjectsFolderName };
 }
-

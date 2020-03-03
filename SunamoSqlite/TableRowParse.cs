@@ -77,4 +77,3 @@ public class TableRowParse
         return Guid.Empty;
     }
 }
-

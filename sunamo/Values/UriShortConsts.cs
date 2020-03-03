@@ -11,4 +11,3 @@ public class UriShortConsts
     public const string GeoCz = "geo.localhost";
     public const string ErtCz = "var.localhost";
 }
-

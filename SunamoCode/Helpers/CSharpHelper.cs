@@ -106,6 +106,23 @@ public static partial class CSharpHelper
 
     //}
 
+    public static string RemoveXmlDocCommentsExceptSummary(List<string> list, ref bool removedAnything)
+    {
+        removedAnything = false;
+        const string a = @"/// <returns></returns>";
+
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            if (list[i].Trim() == a)
+            {
+                removedAnything = true;
+                list.RemoveAt(i);
+            }
+        }
+
+        return SH.JoinNL( list);
+    }
+
     public static string RemoveXmlDocComments(List<string> list)
     {
         for (int i = list.Count - 1; i >= 0; i--)
@@ -219,7 +236,6 @@ public static partial class CSharpHelper
     /// </summary>
     /// <param name = "input"></param>
     /// <param name = "arrayName"></param>
-    
     public static string GetArray(List<string> input, string arrayName)
     {
         CSharpGenerator generator = new CSharpGenerator();

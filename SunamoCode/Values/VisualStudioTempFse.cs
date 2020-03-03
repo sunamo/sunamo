@@ -43,4 +43,3 @@ public class VisualStudioTempFse
     public static List<string> filesInProjectDownloaded = new List<string> { };
     public static List<string> filesAnywhereDownloaded = new List<string> { };
 }
-

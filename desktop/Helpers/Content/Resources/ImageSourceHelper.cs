@@ -20,7 +20,6 @@ public static class ImageSourceHelper
 	/// <param name="width"></param>
 	/// <param name="height"></param>
 	/// <param name="margin"></param>
-	
 	public static BitmapFrame CreateResizedImage(BitmapSource source, double width, double height, double margin)
 	{
 		var rect = new Rect(margin, margin, width - margin * 2, height - margin * 2);

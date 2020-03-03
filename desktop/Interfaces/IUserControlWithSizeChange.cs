@@ -15,4 +15,3 @@ public interface IUserControlWithSizeChange // : IUserControl
     /// <param name="maxSize"></param>
     void OnSizeChanged(DesktopSize maxSize);
     }
-

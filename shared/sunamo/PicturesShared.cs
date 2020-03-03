@@ -284,7 +284,252 @@ using sunamo.Essential;
         /// <param name="strImageDesPath"></param>
         /// <param name="intWidth"></param>
         /// <param name="intHeight"></param>
+        public static Image ImageResize(Image image, int intWidth, int intHeight, ImageFormats imgsf)
+        {
+            Bitmap objImage = new Bitmap(image);
+
+            if (intWidth > objImage.Width) intWidth = objImage.Width;
+            if (intHeight > objImage.Height) intHeight = objImage.Height;
+
+            if (intWidth == 0 & intHeight == 0)
+            {
+                intWidth = objImage.Width;
+                intHeight = objImage.Height;
+            }
+            else if (intHeight == 0 & intWidth != 0)
+            {
+                intHeight = objImage.Height * intWidth / objImage.Width;
+            }
+            else if (intWidth == 0 & intHeight != 0)
+            {
+                intWidth = objImage.Width * intHeight / objImage.Height;
+            }
+
+            Image imgOutput = null;
+            switch (imgsf)
+            {
+                case ImageFormats.Jpg:
+                    System.Drawing.Size size = new System.Drawing.Size(intWidth, intHeight);
+                    imgOutput = resizeImage(objImage, size);
+                    break;
+                case ImageFormats.Png:
+                case ImageFormats.Gif:
+                    imgOutput = objImage.GetThumbnailImage(intWidth, intHeight, null, IntPtr.Zero);
+                    break;
+                default:
+                    break;
+            }
+            return imgOutput;
+        }
+
+              
+		public static void saveJpeg(string path, Image img, long quality)
+		{
+			try
+			{
+				// Encoder parameter for image quality
+				EncoderParameter qualityParam =
+				   new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, (long)quality);
+
+				// Jpeg image codec
+				ImageCodecInfo jpegCodec = getEncoderInfo("image/jpeg");
+
+				if (jpegCodec == null)
+					return;
+
+				EncoderParameters encoderParams = new EncoderParameters(1);
+				encoderParams.Param[0] = qualityParam;
+
+				img.Save(path, jpegCodec, encoderParams);
+
+			}
+			catch
+			{
+
+			}
+		}
+
+		private static ImageCodecInfo getEncoderInfo(string mimeType)
+		{
+			// Get image codecs for all image formats
+			ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+
+			// Find the correct image codec
+			for (int i = 0; i < codecs.Length; i++)
+				if (codecs[i].MimeType == mimeType)
+					return codecs[i];
+			return null;
+		}
+
+		static Bitmap resizeImage(Bitmap imgToResize, System.Drawing.Size size)
+		{
+			int sourceWidth = imgToResize.Width;
+			int sourceHeight = imgToResize.Height;
+
+			float nPercent = 0;
+			float nPercentW = 0;
+			float nPercentH = 0;
+
+			nPercentW = ((float)size.Width / (float)sourceWidth);
+			nPercentH = ((float)size.Height / (float)sourceHeight);
+
+			if (nPercentH < nPercentW)
+				nPercent = nPercentH;
+			else
+				nPercent = nPercentW;
+
+			int destWidth = (int)(sourceWidth * nPercent);
+			int destHeight = (int)(sourceHeight * nPercent);
+
+			Bitmap dest = new Bitmap(size.Width, size.Height);
+
+            // Scale the bitmap in high quality mode.
+            using (Graphics gr = Graphics.FromImage(dest))
+            {
+                gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                gr.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                gr.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                gr.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                gr.DrawImage(imgToResize, new Rectangle(0, 0, size.Width, size.Height), new Rectangle(0, 0, imgToResize.Width, imgToResize.Height), GraphicsUnit.Pixel);
+                gr.Dispose();
+            }
+
+            // Copy original Bitmap's EXIF tags to new bitmap.
+            foreach (PropertyItem propertyItem in imgToResize.PropertyItems)
+            {
+                dest.SetPropertyItem(propertyItem);
+            }
+
+            imgToResize.Dispose();
+            return dest;
+        }
+
+        /// <summary>
+        /// Funguje spolehlivě jen na obrázky typu png nebo gif a měla by i na obrázky které se nenačítali z disku
+        /// Nezapomeň poté co obrázek už nebudeš potřebovat jej ručně zlikvidovat metodou Dispose.
+        /// Protože nastavuje ImageFormats na Gif, zmemšuje metodou Image.GetThumbnailImage která je silně zvětšuje
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="intWidth"></param>
+        /// <param name="intHeight"></param>
+        public static Image ImageResize(Image image, int intWidth, int intHeight)
+        {
+            // Png nebo gif zmenšuje metodou Image.GetThumbnailImage
+            return ImageResize(image, intWidth, intHeight, ImageFormats.Gif);
+        }
+
+        #region Commented
+        #endregion
+
+        /// <summary>
+        /// Pokud A5 a zdroj nebude plně vyplňovat výstup, vrátím Point.Empty
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <param name="finalWidth"></param>
+        /// <param name="finalHeight"></param>
+        public static System.Drawing.Point CalculateForCrop(double w, double h, double finalWidth, double finalHeight, bool sourceMustFullFillRequiredSize)
+        {
+            if (w < finalWidth && sourceMustFullFillRequiredSize)
+            {
+                return System.Drawing.Point.Empty;
+            }
+
+            if (h < finalHeight && sourceMustFullFillRequiredSize)
+            {
+                return System.Drawing.Point.Empty;
+            }
+
+            double leftRight = w - finalWidth;
+            double left = 0;
+            if (leftRight != 0)
+            {
+                left = leftRight / 2d;
+            }
+
+            double topBottom = h - finalHeight;
+            double top = 0;
+            if (topBottom != 0)
+            {
+                top = topBottom / 2d;
+            }
+
+            return new System.Drawing.Point(Convert.ToInt32(left), Convert.ToInt32(top));
+        }
+
         
+
+		#region Další PlaceToCenter metody - Používají WF třídu Image kterou ihned ukládají na disk a nevrací
+    /// <summary>
+    /// A2 = NSN
+    /// </summary>
+    /// <param name="img"></param>
+    /// <param name="ext"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="finalPath"></param>
+    /// <param name="writeToConsole"></param>
+		public static bool PlaceToCenter(Image img, string ext, int width, int height, string finalPath, bool writeToConsole)
+		{
+			string fnOri = "";
+
+			//string ext = "";
+			if (true) //PicturesSunamo.GetImageFormatFromExtension1(fnOri, out ext))
+			{
+
+				float minWidthImage = width;
+				float newWidth = img.Width;
+				float newHeight = img.Height;
+				while (newWidth > minWidthImage)
+				{
+					newWidth *= .9f;
+					newHeight *= .9f;
+				}
+				while (newHeight > height)
+				{
+					newWidth *= .9f;
+					newHeight *= .9f;
+				}
+				float y = (height - newHeight) / 2f;
+				float x = (width - newWidth) / 2f;
+				string temp = finalPath;
+				//img = PicturesDesktop.ImageResize(img, (int)newWidth, (int)newHeight, PicturesSunamo.GetImageFormatsFromExtension2(ext));
+				if (img != null)
+				{
+					Bitmap bmp = new Bitmap(width, height);
+					Graphics dc = Graphics.FromImage(bmp);
+					dc.Clear(System.Drawing.Color.White);
+					var p = new System.Drawing.RectangleF(new PointF(x, y), new SizeF(newWidth, newHeight));
+					dc.DrawImage(img, p);
+					img.Dispose();
+
+					bmp.Save(finalPath, ImageFormat.Jpeg);
+				}
+				else
+				{
+                ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+            }
+				//}
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// A1 je obrázek do kterého se zmenšuje
+		/// 
+		/// A2, A3 jsou délky stran cílového obrázku
+		/// A4 je index k A2
+		/// A5 je cesta do které se uloží finální obrázek
+		/// A6 je zda se má ukládat na konzoli
+		/// A7 jsou cesty k obrázkům, které chci zmenšit. To která cesta se použije rozhoduje index A5
+		/// </summary>
+		/// <param name="img"></param>
+		/// <param name="args"></param>
+		/// <param name="width"></param>
+		/// <param name="height"></param>
+		/// <param name="i"></param>
+		/// <param name="finalPath"></param>
+		/// <param name="writeToConsole"></param>
 		public static bool PlaceToCenter(Image img, int width, int height, int i, string finalPath, bool writeToConsole, float minimalWidthPadding, float minimalHeightPadding, params string[] args)
         {
             string arg = args[i];

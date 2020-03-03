@@ -32,7 +32,6 @@ public static partial class TwoStatesToggleButton
     /// musí se volat vždy jako první věc v metodě Click
     /// </summary>
     /// <param name = "tb"></param>
-    
     public static void AfterClick(ToggleButton tb)
     {
         bool save = !((bool)previousCheched[tb]);

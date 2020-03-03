@@ -15,7 +15,6 @@ public partial class ComboBoxHelper
     /// </summary>
     /// <param name="tag"></param>
     /// <param name="list12"></param>
-    
     public static ComboBox Get(ControlInitData d)
     {
         ComboBox cb = new ComboBox();
@@ -58,4 +57,3 @@ public partial class ComboBoxHelper
         }
     }
 }
-

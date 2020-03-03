@@ -21,4 +21,3 @@ public interface IUserControl //: IPanel
     // Stupid, better is doing that on ctor
     //void OnClosing();
 }
-

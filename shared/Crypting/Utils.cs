@@ -53,7 +53,28 @@ public partial class UtilsNonNetStandard
     /// </summary>
     /// <param name = "key"></param>
     /// <param name = "value"></param>
-    
+    public static string WriteConfigKey(string key, string value)
+    {
+        string s = "<add key=\"{0}\" value=\"{1}\" />" + Environment.NewLine;
+        return SH.Format2(s, key, value);
+    }
+
+    /// <summary>
+    /// G element A1 s hodnotou A2
+    /// </summary>
+    /// <param name = "element"></param>
+    /// <param name = "value"></param>
+    public static string WriteXmlElement(string element, string value)
+    {
+        string s = "<{0}>{1}</{0}>" + Environment.NewLine;
+        return SH.Format2(s, element, value);
+    }
+
+    /// <summary>
+    /// Pokud A2, vrati mi ukon. tag A1, jinak poc. tag A1.
+    /// </summary>
+    /// <param name = "element"></param>
+    /// <param name = "isClosing"></param>
     public static string WriteXmlNode(string element, bool isClosing)
     {
         string s = null;

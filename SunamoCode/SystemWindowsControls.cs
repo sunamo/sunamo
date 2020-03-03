@@ -50,4 +50,3 @@ public static class SystemWindowsControls
         return s_controls.ContainsKey(r);
     }
 }
-

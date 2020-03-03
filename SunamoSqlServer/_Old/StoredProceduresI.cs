@@ -15,4 +15,3 @@ using System.Threading.Tasks;
             //ci = new MSStoredProceduresIBase();
         }
     }
-

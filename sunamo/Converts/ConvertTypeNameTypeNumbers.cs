@@ -8,7 +8,6 @@ public class ConvertTypeNameTypeNumbers
     /// DO A1 musíš zadávat bez "System." - metoda to sama nenahradí
     /// </summary>
     /// <param name="idt"></param>
-    
     public static Type ToType(string idt)
     {
         switch (idt)

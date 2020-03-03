@@ -20,4 +20,3 @@ public class DrawingColorHelper
         return white2;
     }
 }
-

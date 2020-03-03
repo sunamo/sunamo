@@ -23,4 +23,3 @@ using System.Windows;
             get;
         }
     }
-

@@ -15,7 +15,33 @@ public partial class FS{
     /// Dont check for size
     /// </summary>
     /// <param name="selectedFile"></param>
-    
+    public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = false)
+    {
+        if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
+        {
+            return false;
+        }
+
+        var exists = File.Exists(selectedFile);
+
+        if (falseIfSizeZeroOrEmpty)
+        {
+            if (!exists)
+            {
+                return false;
+            }
+            else if (TF.ReadFile(selectedFile) == string.Empty)
+            {
+                return false;
+            }
+        }
+        return exists;
+    }
+
+    /// <summary>
+    /// For empty or whitespace return false.
+    /// </summary>
+    /// <param name="selectedFile"></param>
     public static bool ExistsFile<StorageFolder, StorageFile>(StorageFile selectedFile, AbstractCatalog<StorageFolder, StorageFile> ac = null)
     {
         if (ac == null)

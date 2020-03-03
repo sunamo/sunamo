@@ -24,7 +24,6 @@ public partial class CheckBoxDataHelper
     /// Use ActionButton() for buttons without handler
     /// </summary>
     /// <param name="c"></param>
-    
     public static CheckBoxData<UIElement> Button(ControlInitData c)
     {
         return Get(ButtonHelper.Get(c));

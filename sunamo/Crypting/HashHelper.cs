@@ -14,7 +14,6 @@ public partial class HashHelper
     /// <param name = "hash"></param>
     /// <param name = "salt"></param>
     /// <param name = "pass"></param>
-    
     public static bool PairHashAndPassword(byte[] hash, byte[] salt, byte[] pass)
     {
         byte[] hash2 = GetHash(CA.JoinBytesArray(pass, salt).ToArray());

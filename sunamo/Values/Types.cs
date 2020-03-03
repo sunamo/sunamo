@@ -48,4 +48,3 @@ public class Types
     public static readonly Type tListLong = typeof(List<long>);
     public static readonly Type list = typeof(IList);
 }
-

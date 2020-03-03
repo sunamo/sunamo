@@ -96,7 +96,6 @@ public class ABC : List<AB>//, IEnumerable<AB>
     /// <summary>
     /// Must be [] due to SQL viz  https://stackoverflow.com/questions/9149919/no-mapping-exists-from-object-type-system-collections-generic-list-when-executin
     /// </summary>
-    
     public object[] OnlyBs()
     {
         return OnlyBsList().ToArray();   

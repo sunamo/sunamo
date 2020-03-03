@@ -13,4 +13,3 @@ public static class SystemDrawingSizeFExtension
         return new SunamoSize(s.Width, s.Height);
     }
 }
-

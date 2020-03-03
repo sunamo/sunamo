@@ -12,4 +12,3 @@ public class SolutionsIndexerConsts
 
     public static List<string> SolutionsExcludeWhileWorkingOnSourceCode = CA.ToListString("AllProjectsSearch", "sunamo", "CodeBoxControl");
 }
-

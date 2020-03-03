@@ -101,4 +101,3 @@ public class TidyExeHelper
         return output;
     }
 }
-

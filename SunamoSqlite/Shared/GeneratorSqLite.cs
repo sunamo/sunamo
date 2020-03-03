@@ -15,7 +15,6 @@ using System.Text;
         /// <param name="table"></param>
         /// <param name="sloupce"></param>
         /// <param name="p"></param>
-        
         public static string CreateTable(string table, ColumnsDB sloupce, bool dynamicTables, SQLiteConnection conn)
         {
             StringBuilder sb = new StringBuilder();

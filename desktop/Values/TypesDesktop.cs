@@ -9,4 +9,3 @@ public class TypesDesktop
 {
     public static readonly Type tRoutedEventHandler = typeof(RoutedEventHandler);
 }
-

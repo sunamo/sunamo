@@ -11,4 +11,3 @@ using System.Text;
     public const string GeoCz = "geocaching.sunamo.cz";
     public const string ErtCz = "dart.sunamo.cz";
 }
-

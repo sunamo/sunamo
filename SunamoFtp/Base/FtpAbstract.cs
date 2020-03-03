@@ -58,7 +58,23 @@ namespace SunamoFtp
         /// <summary>
         /// G adresu vzdáleného hostitele
         /// </summary>
-        
+        public string getRemoteHost()
+        {
+            return remoteHost;
+        }
+
+        /// <summary>
+        /// S PP remotePort A1
+        /// </summary>
+        /// <param name="remotePort"></param>
+        public void setRemotePort(int remotePort)
+        {
+            this.remotePort = remotePort;
+        }
+
+        /// <summary>
+        /// G port který se používá pro vzdálený přenos
+        /// </summary>
         public int getRemotePort()
         {
             return remotePort;

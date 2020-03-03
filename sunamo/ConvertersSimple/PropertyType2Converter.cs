@@ -18,7 +18,6 @@ namespace sunamo
         /// Dont implement all, see usage in other code
         /// </summary>
         /// <param name="t"></param>
-        
         public string ConvertFrom(PropertyType2 t)
         {
             switch (t)

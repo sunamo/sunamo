@@ -13,7 +13,6 @@ namespace sunamo
         /// </summary>
         /// <param name="d"></param>
         /// <param name="zmenaO"></param>
-        
         public static List<double> CalculateWidthOfColumnsAgain(List<double> d, double zmenaO)
         {
             if (zmenaO == 0)

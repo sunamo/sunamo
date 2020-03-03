@@ -45,4 +45,3 @@ public class TestData
     public static readonly List<int> list2 = CA.ToInt(CA.ToList<int>(2));
     public static readonly List<string> list100Items = LinearHelper.GetStringListFromTo(0, 99);
 }
-

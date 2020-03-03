@@ -35,7 +35,6 @@ public class MH
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
-    
     public static int LCF(int a, int b)
     {
         for (int i = 2; ; i++)

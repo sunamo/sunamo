@@ -33,4 +33,3 @@ public class ImageButtonsInit
     public static ImageButtonsInit HideAllButtons = new ImageButtonsInit(false, false, false, false, false);
     public static ImageButtonsInit OnlySelect = new ImageButtonsInit(false, false, false, true, true);
 }
-

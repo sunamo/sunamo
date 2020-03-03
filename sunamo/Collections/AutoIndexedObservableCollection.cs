@@ -81,4 +81,3 @@ public  class AutoIndexedObservableCollection<T> : ObservableCollection<T>
         OnCollectionChanged(args);
     }
 }
-

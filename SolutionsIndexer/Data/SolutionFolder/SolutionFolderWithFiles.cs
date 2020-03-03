@@ -14,6 +14,9 @@ namespace AllProjectsSearch
     public class SolutionFolderWithFiles : SolutionFolder
     {
         public List<string> files = null;
+        /// <summary>
+        /// Without dot
+        /// </summary>
         public Dictionary<string, List<string>> filesOfExtension = null;
         #region Filled in CheckSize()
         public Dictionary<int, long> filesAndSizes = null;

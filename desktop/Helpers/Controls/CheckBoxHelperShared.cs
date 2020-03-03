@@ -14,7 +14,6 @@ public partial class CheckBoxHelper{
     /// Tag here is mainly for comment what data control hold 
     /// </summary>
     /// <param name="text"></param>
-    
     public static CheckBox Get(ControlInitData d)
     {
         CheckBox chb = new CheckBox();

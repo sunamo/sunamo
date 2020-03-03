@@ -12,7 +12,16 @@ public static partial class EnumHelper
     /// Can be use only for int enums
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    
+    public static List<T> GetValues<T>()
+            where T : struct
+    {
+        return GetValues<T>( false, true);
+    }
+    /// <summary>
+    /// Get all values expect of Nope/None
+    /// </summary>
+    /// <typeparam name = "T"></typeparam>
+    /// <param name = "type"></param>
     public static List<T> GetValues<T>( bool IncludeNope, bool IncludeShared)
         where T : struct
     {

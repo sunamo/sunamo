@@ -9,4 +9,3 @@ public class FolderContentsTreeViewArgs
 {
     public bool addFiles = true;
 }
-

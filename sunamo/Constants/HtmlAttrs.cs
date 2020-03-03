@@ -53,5 +53,3 @@ public class HtmlAttrs
     public const string dataTitle = "data-title";
     public const string dataMedia = "data-media";
 }
-
-

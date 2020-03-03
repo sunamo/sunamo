@@ -14,4 +14,3 @@ public enum Operators
     Multiple = 2,
     Divide =3
 }
-

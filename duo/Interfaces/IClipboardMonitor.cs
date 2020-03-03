@@ -16,4 +16,3 @@ public interface IClipboardMonitor
     bool? afterSet { get; set; }
     bool pernamentlyBlock { get; set; }
 }
-

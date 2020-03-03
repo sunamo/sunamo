@@ -12,4 +12,3 @@ public static partial class SunamoSizeExtensions
         return new System.Windows.Size(ss.Width, ss.Height);
     }
 }
-

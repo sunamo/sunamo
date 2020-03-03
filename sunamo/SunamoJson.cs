@@ -10,7 +10,20 @@ public partial class SunamoJson
     /// Musí se to zkonvertovat do xml, protože to je jediná možnost jak to parsovat.
     /// </summary>
     /// <param name = "fd"></param>
-    
+    public static string ConvertToXml(string fd)
+    {
+        return JsonConvert.DeserializeXmlNode(fd, ThisApp.Name, false).OuterXml;
+    }
+
+    public static string SerializeXmlNode(XmlNode xn)
+    {
+        return JsonConvert.SerializeXmlNode(xn);
+    }
+
+    /// <summary>
+    /// Nač JSON převádět na JSON? 
+    /// </summary>
+    /// <param name = "fd"></param>
     public static string ConvertToJson(string fd)
     {
         return JsonConvert.DeserializeObject(fd).ToString();

@@ -11,4 +11,3 @@ using System.Windows.Media.Imaging;
         BitmapImage GetBitmapImageSource(string name);
         
     }
-

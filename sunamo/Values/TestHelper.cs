@@ -90,10 +90,45 @@ public class TestHelper
     /// A1 can be Type, string or any object, then is as name take name of it's class
     /// </summary>
     /// <param name="featureOrType"></param>
-    
+    private static string NameOfFeature(object featureOrType)
+    {
+        string feature = null;
+        if (featureOrType is Type)
+        {
+            feature = (featureOrType as Type).Name;
+        }
+        else if (featureOrType is string)
+        {
+            return featureOrType.ToString();
+        }
+        else
+        {
+            feature = featureOrType.GetType().Name;
+        }
+
+        return feature;
+    }
+
+    /// <summary>
+    /// Get backslashed
+    /// </summary>
+    /// <param name="featureOrType"></param>
+    public static string FolderForTestFiles(object featureOrType)
+    {
+        string feature = NameOfFeature(featureOrType);
+
+        string appName = ThisApp.Name;
+        string project = ThisApp.Project;
+
+        return @"d:\_Test\" + appName + "\\" + project + SH.WrapWith(feature, AllChars.bs, true);
+    }
+
+    /// <summary>
+    /// 
+    /// Path will be combined with ThisApp.Name and ThisApp.Project
+    /// </summary>
     public static string GetFileInProjectsFolder(string fileRelativeToProjectPath)
     {
         return FS.Combine(DefaultPaths.vsProjects, ThisApp.Name, ThisApp.Project, fileRelativeToProjectPath);
     }
 }
-

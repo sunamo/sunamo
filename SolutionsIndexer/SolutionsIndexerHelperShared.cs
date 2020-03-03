@@ -37,7 +37,6 @@ public static SolutionFolder SolutionWithName(string name)
     /// not full path, only name of folder for more accurate deciding
     /// </summary>
     /// <param name = "nameOfFolder"></param>
-    
     public static bool IsTheSolutionsFolder(string nameOfFolder)
     {
         return nameOfFolder.Contains(SolutionsIndexerConsts.ProjectsFolderName) || nameOfFolder == SolutionsIndexerStrings.GitHub;

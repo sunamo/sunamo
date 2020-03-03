@@ -60,7 +60,114 @@ using System.Text;
         /// Return null when cannot be parsed
         /// </summary>
         /// <param name="v"></param>
-        
+        public List<DateTime?> DateTimes(int v)
+        {
+            DateTime dt;
+            List<DateTime?> list = new List<DateTime?>();
+            var objects = Objects(v);
+            foreach (var item in objects)
+            {
+                dt = DTHelperCs.ParseTimeCzech(item[0]);
+                if (dt != DateTime.MinValue)
+                {
+                    list.Add(new System.DateTime(1,1,1, dt.Hour, dt.Minute, dt.Second));
+                }
+                else
+                {
+                    list.Add(null);
+                }
+
+            }
+            return list;
+        }
+
+        public List<List<string>> Objects(params int[] columns)
+        {
+            List<List<string>> result = new List<List<string>>();
+            int i = 0;
+            List<string> o = null;
+
+            foreach (var item in Records)
+            {
+                o = new List<string>( columns.Length);
+            CA.InitFillWith(o, columns.Length);
+                for (i = 0; i < columns.Length; i++)
+                {
+                    o[i] = item.Fields[columns[i]];
+                }
+                result.Add(o);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the record count
+        /// </summary>
+        public int RecordCount
+        {
+            get
+            {
+                return Records.Count;
+            }
+        }
+
+        #endregion Properties
+
+        #region Indexers
+
+        /// <summary>
+        /// Gets a record at the specified index
+        /// </summary>
+        /// <param name="recordIndex">Record index</param>
+        /// <returns>CsvRecord</returns>
+        public CsvRecord this[int recordIndex]
+        {
+            get
+            {
+                if (recordIndex > (Records.Count - 1))
+                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+
+                return Records[recordIndex];
+            }
+        }
+
+        /// <summary>
+        /// Gets the field value at the specified record and field index
+        /// </summary>
+        /// <param name="recordIndex">Record index</param>
+        /// <param name="fieldIndex">Field index</param>
+        public string this[int recordIndex, int fieldIndex]
+        {
+            get
+            {
+                if (recordIndex > (Records.Count - 1))
+                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+
+                CsvRecord record = Records[recordIndex];
+                if (fieldIndex > (record.Fields.Count - 1))
+                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+
+                return record.Fields[fieldIndex];
+            }
+            set
+            {
+                if (recordIndex > (Records.Count - 1))
+                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+
+                CsvRecord record = Records[recordIndex];
+
+                if (fieldIndex > (record.Fields.Count - 1))
+                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0}.", fieldIndex));
+
+                record.Fields[fieldIndex] = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the field value at the specified record index for the supplied field name
+        /// </summary>
+        /// <param name="recordIndex">Record index</param>
+        /// <param name="fieldName">Field name</param>
         public string this[int recordIndex, string fieldName]
         {
             get

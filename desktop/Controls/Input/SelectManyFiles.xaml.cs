@@ -109,7 +109,6 @@ namespace desktop.Controls.Input
         /// <summary>
         /// Validate before call
         /// </summary>
-        
         public List<string> SelectedFiles()
         {
             List<string> result = new List<string>();

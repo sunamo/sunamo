@@ -26,4 +26,3 @@ public class FoundedFileUC : FoundedResultUC
         set { base.file = value; }
     }
 }
-
