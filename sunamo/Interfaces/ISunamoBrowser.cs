@@ -22,14 +22,7 @@ public interface ISunamoBrowser<T>
     /// Must be Task due to UWP!
     /// Much time spent with it on GeoCachingTool!
     /// </summary>
-    /// <returns></returns>
-     Task< HtmlDocument> GetHtmlDocument();
-
-    /// <summary>
-    /// Sometimes is getting outer html quite slow so put await Task.Delay(500); before calling GetContent()
-    /// Remember for troubles with GeoCachingTool
-    /// </summary>
-    /// <returns></returns>
+    
     Task<string> GetContent();
 
     string HTML { get; }

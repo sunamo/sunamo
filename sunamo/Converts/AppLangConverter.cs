@@ -15,7 +15,7 @@ namespace sunamo
         /// A1 - two chars number
         /// </summary>
         /// <param name="b"></param>
-        /// <returns></returns>
+        
         public static AppLang ConvertTo(string b)
         {
             return new AppLang(byte.Parse(b[0].ToString()), byte.Parse(b[1].ToString()));

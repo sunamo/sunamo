@@ -167,25 +167,7 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// <summary>
     /// 
     /// </summary>
-    /// <returns></returns>
-    private string ReturnContent()
-    {
-        string obsah;
-        StringBuilder sb = new StringBuilder();
-
-        foreach (T var in this)
-        {
-            sb.AppendLine(var.ToString());
-        }
-
-        obsah = sb.ToString();
-        return obsah;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
+    
     public override string ToString()
     {
         return ReturnContent();

@@ -30,7 +30,7 @@ public partial class DTHelper
     /// 2018-08-10T11:33:19Z
     /// </summary>
     /// <param name="p"></param>
-    /// <returns></returns>
+    
     public static DateTime StringToDateTimeFormalizeDate(string p)
     {
         return DTHelperFormalized.StringToDateTimeFormalizeDate(p);

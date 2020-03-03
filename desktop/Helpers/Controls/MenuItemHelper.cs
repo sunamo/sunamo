@@ -28,7 +28,7 @@ public partial class MenuItemHelper
     /// A4 was tag
     /// </summary>
     /// <param name="d"></param>
-    /// <returns></returns>
+    
     public static MenuItem GetCheckable(ControlInitData d)
     {
         d.checkable = true;

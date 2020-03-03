@@ -37,7 +37,7 @@ namespace desktop
         /// </summary>
         /// <param name="headers"></param>
         /// <param name="methodHandlers"></param>
-        /// <returns></returns>
+        
         public void MenuItems(List<string> headers, bool methodHandlers)
         {
             CA.Trim(headers);

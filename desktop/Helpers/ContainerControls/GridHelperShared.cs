@@ -40,21 +40,7 @@ public static ColumnDefinition GetColumnDefinition(GridLength oneC)
     /// With auto and star must be alwys value 1. When will be 0, no controls will be show!!!
     /// </summary>
     /// <param name="auto"></param>
-    /// <returns></returns>
-public static RowDefinition GetRowDefinition(GridLength auto)
-    {
-        RowDefinition rd = new RowDefinition();
-        rd.Height = auto;
-        return rd;
-    }
-
-    /// <summary>
-    /// Will increment A3 due to top
-    /// </summary>
-    /// <param name="grid"></param>
-    /// <param name="row"></param>
-    /// <param name="dx"></param>
-    /// <returns></returns>
+    
 public static IEnumerable<T> GetControlsFrom<T>(Grid grid, bool row, int dx) where T : UIElement
     {
         dx++;

@@ -24,58 +24,7 @@ public class Parse
         /// Vrátí -1 v případě že se nepodaří vyparsovat
         /// </summary>
         /// <param name="p"></param>
-        /// <returns></returns>
-        public double ParseDouble(string p)
-        {
-            double p2;
-            if (double.TryParse(p, out p2))
-            {
-                return p2;
-            }
-            return 0;
-        }
-    }
-
-    public class Integer
-    {
-
-
-        /// <summary>
-        /// Vrátí -1 v případě že se nepodaří vyparsovat
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public int ParseInt(string p)
-        {
-            int p2;
-            if (int.TryParse(p, out p2))
-            {
-                return p2;
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Vrátí int.MaxValue v případě že se nepodaří vyparsovat
-        /// </summary>
-        public int ParseIntMaxValue(string p)
-        {
-            int p2;
-            if (int.TryParse(p, out p2))
-            {
-                return p2;
-            }
-            return int.MaxValue;
-        }
-    }
-
-    public class Short
-    {
-        /// <summary>
-        /// Vrátí -1 pokud se nepodaří vyparsovat
-        /// </summary>
-        /// <param name="d"></param>
-        /// <returns></returns>
+        
         public short ParseShort(string d)
         {
             short s = 0;

@@ -41,7 +41,7 @@ public class ABP
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
-    /// <returns></returns>
+    
     public static ABP Get(string a, object b)
     {
         return new ABP(a, b);

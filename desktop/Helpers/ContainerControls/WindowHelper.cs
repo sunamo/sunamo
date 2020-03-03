@@ -12,7 +12,7 @@ public partial class WindowHelper
     /// Pokud bude false, vrátí se výška i šířka 2x delší než jaká ve skutečnosti je(resp. vrátí se správná - 720x1136 ale na obrazovku se zvládne vykreslit jen 360x568)
     /// </summary>
     /// <param name="noScaleFactor"></param>
-    /// <returns></returns>
+    
     public static Size WindowSize(bool noScaleFactor)
     {
         return WpfApp.mp.actual.RenderSize;

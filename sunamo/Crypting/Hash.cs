@@ -175,7 +175,7 @@ namespace shared.Crypting
             /// <summary>
             /// neguji bajty z vysledku, obratim je a reservuji a G
             /// </summary>
-            /// <returns></returns>
+            
             protected override byte[] HashFinal()
             {
                 byte[] b = BitConverter.GetBytes(~(_result));

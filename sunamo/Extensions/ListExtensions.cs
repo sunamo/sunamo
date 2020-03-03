@@ -12,20 +12,7 @@ public static class ListExtensions
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <param name="item"></param>
-    /// <returns></returns>
-    private static List<T> Add2<T>(this IList<T> list, T item)
-    {
-        list.Add(item);
-        return (List<T>)list;
-    }
-
-    /// <summary>
-    /// Js() With Leading should be always the last in code
-    /// Js() With Add should be first in code
-    /// </summary>
-    /// <param name="list"></param>
-    /// <param name="item"></param>
-    /// <returns></returns>
+    
     public static List<string> Leading(this List<string> list, string item)
     {
         list.Insert(0, item);

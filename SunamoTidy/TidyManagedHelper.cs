@@ -15,7 +15,7 @@
 //        /// running without exception, but not format
 //        /// </summary>
 //        /// <param name="html"></param>
-//        /// <returns></returns>
+//        
 //        public static string FormatHtml(string html)
 //        {
 //            string parsed = string.Empty;

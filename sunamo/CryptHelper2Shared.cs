@@ -97,7 +97,7 @@ public partial class CryptHelper2
     /// </summary>
     /// <param name = "plainTextBytes"></param>
     /// <param name = "salt"></param>
-    /// <returns></returns>
+    
     public static String DecryptRijndael(string plainText, List<byte> salt)
     {
         return BTS.ConvertFromBytesToUtf8(DecryptRijndael(BTS.ClearEndingsBytes(BTS.ConvertFromUtf8ToBytes(plainText)), CryptHelper2._pp, salt, CryptHelper2._ivRijn));

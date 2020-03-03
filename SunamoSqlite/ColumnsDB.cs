@@ -54,19 +54,7 @@ public class ColumnsDB : List<SloupecDB>
     /// 
     /// </summary>
     /// <param name="tableName"></param>
-    /// <returns></returns>
-    public SQLiteCommand GetSqlCreateTable(string tableName)
-    {
-        return GetSqlCreateTable(tableName, false);
-    }
-
-    /// <summary>
-    /// Can return null in Command property
-    /// A2 pokud nechci aby se mi vytvářeli reference na ostatní tabulky. Vhodné při testování tabulek a programů, kdy je pak ještě budu mazat a znovu plnit.
-    /// </summary>
-    /// <param name="table"></param>
-    /// <param name="dynamicTables"></param>
-    /// <returns></returns>
+    
     public SQLiteCommand GetSqlCreateTable(string table, bool dynamicTables)
     {
         return GetSqlCreateTable(table, dynamicTables, DatabaseLayer.conn);

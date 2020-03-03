@@ -9,7 +9,7 @@ public partial class DTHelperFormalized
     /// 
     /// </summary>
     /// <param name="p"></param>
-    /// <returns></returns>
+    
     public static DateTime StringToDateTimeFormalizeDate(string p)
     {
         return DateTime.Parse(p, null, System.Globalization.DateTimeStyles.None);

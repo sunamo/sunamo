@@ -40,7 +40,7 @@ public class SunamoCodeHelper
     /// A1 normal, not lower
     /// </summary>
     /// <param name="between"></param>
-    /// <returns></returns>
+    
     public static bool IsNameOfControl(string between)
     {
         var add = false;

@@ -16,7 +16,7 @@ public static partial class HttpRequestHelper{
     /// 
     /// </summary>
     /// <param name = "address"></param>
-    /// <returns></returns>
+    
     public static Stream GetResponseStream(string address, HttpMethod method)
     {
         

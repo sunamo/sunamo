@@ -53,7 +53,7 @@ public static partial class NH
     /// </summary>
     /// <param name="od"></param>
     /// <param name="to"></param>
-    /// <returns></returns>
+    
     public static List<short> GenerateIntervalShort(short od, short to)
     {
         List<short> vr = new List<short>();

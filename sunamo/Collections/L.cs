@@ -31,7 +31,7 @@ public class L<T> : List<T>
     /// Before use is needed set up defIfNotFoundIndex
     /// </summary>
     /// <param name="i"></param>
-    /// <returns></returns>
+    
     public new T this[int i]
     {
         set

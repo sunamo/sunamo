@@ -108,7 +108,7 @@ using System.IO;
         /// </summary>
         /// <param name="index"></param>
         /// <param name="vstup"></param>
-        /// <returns></returns>
+        
         public string ReturnInLevel(int index, string vstup)
         {
             var tokeny = SH.Split(vstup, AllStrings.bs);

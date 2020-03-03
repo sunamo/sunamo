@@ -7,7 +7,7 @@ public partial class LinearHelper
     /// </summary>
     /// <param name = "from"></param>
     /// <param name = "to"></param>
-    /// <returns></returns>
+    
     public static List<string> GetStringListFromTo(int from, int to)
     {
         List<string> vr = new List<string>();

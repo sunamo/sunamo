@@ -66,7 +66,7 @@ public partial class CSharpHelperSunamo
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "t"></param>
-    /// <returns></returns>
+    
     public static object DefaultValueForTypeT<T>(T t)
     {
         var type = t.GetType().FullName;

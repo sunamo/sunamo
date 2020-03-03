@@ -9,7 +9,7 @@ public abstract class SqlHelper
     /// <summary>
     /// 
     /// </summary>
-    /// <returns></returns>
+    
     public string ListingWholeTable(string tableName, DataTable dt)
     {
         StringBuilder sb = new StringBuilder();

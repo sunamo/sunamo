@@ -219,7 +219,7 @@ public static partial class CSharpHelper
     /// </summary>
     /// <param name = "input"></param>
     /// <param name = "arrayName"></param>
-    /// <returns></returns>
+    
     public static string GetArray(List<string> input, string arrayName)
     {
         CSharpGenerator generator = new CSharpGenerator();

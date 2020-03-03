@@ -55,7 +55,7 @@ namespace win.Helpers.Powershell
         /// Returns string because of PowershellRunner
         /// </summary>
         /// <param name="path"></param>
-        /// <returns></returns>
+        
         public string Cd(string path)
         {
             sb.AppendLine("cd \"" + path + AllStrings.qm);

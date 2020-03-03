@@ -177,48 +177,7 @@ public class SloupecDBBase< MSSloupecDB, SqlDbType2>
     /// <summary>
     /// 
     /// </summary>
-    /// <returns></returns>
-    public override string ToString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(databaseLayer.usedTa[ typ] + AllStrings.space + _nazev);
-        if (referencesTable != null)
-        {
-            sb.Append(" " + "odkazuje na" + " " + ReferencesTo());
-        }
-        return sb.ToString();
-    }
-
-    #endregion
     
-    public static IDatabaseLayer<SqlDbType2> databaseLayer = null;
-
-    public static MSSloupecDB CI(SqlDbType2 typ, string nazev, bool primaryKey)
-    {
-        
-        return factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, false, false, null, null, primaryKey);
-    }
-
-    public bool IsUnicode = false;
-
-    public static MSSloupecDB CI(SqlDbType2 typ, string nazev)
-    {
-        return factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, false, false, null, null, false);
-    }
-
-    public static MSSloupecDB CI(SqlDbType2 typ, string nazev, bool primaryKey, string referencesTable, string referencesColumn)
-    {
-        return factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, false, false, referencesTable, referencesColumn, false);
-    }
-
-    /// <summary>
-    /// Pokud použiji metodu bez A3/4, doplní se do obou false
-    /// </summary>
-    /// <param name="typ"></param>
-    /// <param name="nazev"></param>
-    /// <param name="canBeNull"></param>
-    /// <param name="mustBeUnique"></param>
-    /// <returns></returns>
     public static MSSloupecDB CI(SqlDbType2 typ, string nazev, bool canBeNull, bool mustBeUnique)
     {
         MSSloupecDB db = factoryColumnDB.CreateInstance(typ, nazev, Signed.Other, canBeNull, mustBeUnique, null, null, false);

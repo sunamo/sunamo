@@ -13,7 +13,7 @@ public class RadioButtonHelper
     /// </summary>
     /// <param name="text"></param>
     /// <param name="name"></param>
-    /// <returns></returns>
+    
     public static RadioButton Get(ControlInitData d)
     {
         RadioButton chb = new RadioButton();

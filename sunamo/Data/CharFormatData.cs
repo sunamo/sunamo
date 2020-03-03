@@ -67,7 +67,7 @@ public class CharFormatData
     /// <param name="upper"></param>
     /// <param name="fromTo"></param>
     /// <param name="mustBe"></param>
-    /// <returns></returns>
+    
     public static CharFormatData Get(bool? upper, FromTo fromTo, params char[] mustBe)
     {
         CharFormatData data = new CharFormatData(upper, mustBe);

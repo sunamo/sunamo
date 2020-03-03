@@ -11,7 +11,7 @@ public class ParserEventLog
     /// Return string, not whole EventRecord due to must work in using
     /// </summary>
     /// <param name="path"></param>
-    /// <returns></returns>
+    
     public static List<string> ParseDescription(string path)
     {
         CollectionWithoutDuplicates<string> result = new CollectionWithoutDuplicates<string>();

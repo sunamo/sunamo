@@ -88,7 +88,7 @@ namespace desktop
         /// To A1 is transmit eg. DataGridRow.CurrentCell
         /// </summary>
         /// <param name="cell"></param>
-        /// <returns></returns>
+        
         public static object GetCellValue(DataGridCellInfo cell)
         {
             var boundItem = cell.Item;

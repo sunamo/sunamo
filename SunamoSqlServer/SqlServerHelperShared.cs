@@ -18,7 +18,7 @@ public partial class SqlServerHelper
     /// <param name="table"></param>
     /// <param name="column"></param>
     /// <param name="serie"></param>
-    /// <returns></returns>
+    
     public static bool GetTableAndColumn(string sql, ref string table, ref string column, int serie)
     {
         List<int> indexesOfVarCharOrChar = new List<int>();

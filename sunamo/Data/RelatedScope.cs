@@ -28,54 +28,7 @@ namespace sunamo.Data
         /// </summary>
         /// <param name="def"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public List<FromTo> RangeFromStateSimple(List<int> startIndexes)
-        {
-            List<FromTo> foundedRanges = new List<FromTo>();
-
-            bool insideRegion = false;
-            FromTo fromTo = new FromTo();
-
-            for (int i = 0; i < _states.Length; i++)
-            {
-                bool? b = _states[i];
-                if (b.HasValue)
-                {
-                    if (b.Value)
-                    {
-                        if (insideRegion)
-                        {
-                            if (startIndexes.Contains(i))
-                            {
-                                fromTo.from = i;
-                            }
-                            else
-                            {
-                                insideRegion = false;
-                                fromTo.to = i;
-                                foundedRanges.Add(fromTo);
-                            }
-                        }
-                        else
-                        {
-                            insideRegion = true;
-
-                            fromTo = new FromTo();
-                            fromTo.from = i;
-                        }
-                    }
-                }
-            }
-
-            return foundedRanges;
-        }
-
-        /// <summary>
-        /// Was used for deleting comments. Returns serie only when is all lines between is comments
-        /// </summary>
-        /// <param name="def"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        
         public List<FromTo> RangeFromState(bool def, bool b)
         {
             List<FromTo> foundedRanges = new List<FromTo>();

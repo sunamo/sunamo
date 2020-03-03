@@ -11,7 +11,7 @@ public partial class ActionButtonHelper{
     /// </summary>
     /// <param name = "tooltip"></param>
     /// <param name = "imagePath"></param>
-    /// <returns></returns>
+    
     public static ActionButton<T> Get<T>(ControlInitData d)
     {
         ActionButton<T> vr = new ActionButton<T>(d.action, (T)d.tag);

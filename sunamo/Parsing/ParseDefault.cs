@@ -26,7 +26,7 @@ namespace sunamo.Parsing
             /// </summary>
             /// <param name="p"></param>
             /// <param name="def"></param>
-            /// <returns></returns>
+            
             public int ParseInt(string p, int def)
             {
                 int p2;

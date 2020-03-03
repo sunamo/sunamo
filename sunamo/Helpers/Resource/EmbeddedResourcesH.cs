@@ -76,19 +76,7 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     /// Its for getting string from file, never from resx or another in code variable
     /// </summary>
     /// <param name="name"></param>
-    /// <returns></returns>
-    public string GetString(string name)
-    {
-        var s = GetStream(name);
-
-        return Encoding.UTF8.GetString(FS.StreamToArrayBytes(s));
-    }
-
-    /// <summary>
-    /// Resources/tidy_config.txt (no assembly)
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
+    
     public Stream GetStream(string name)
     {
         var s = GetResourceName(name);

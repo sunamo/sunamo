@@ -38,7 +38,7 @@ namespace desktop
         /// It's property as Grid.Row etc.
         /// </summary>
         /// <param name="element"></param>
-        /// <returns></returns>
+        
         public static List<DependencyProperty> GetAttachedProperties(Object element)
         {
             List<DependencyProperty> attachedProperties = new List<DependencyProperty>();

@@ -12,7 +12,7 @@ namespace sunamo.Helpers
         /// Vrátí null pokud cokoliv nebude sedět
         /// </summary>
         /// <param name="ip2"></param>
-        /// <returns></returns>
+        
         public static byte[] GetIPAddressInArray(string ip2)
         {
             byte[] ip = null;

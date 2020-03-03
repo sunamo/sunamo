@@ -12,7 +12,7 @@ public static string FileIn(UserFoldersWin local, string appName, string exe)
     /// All
     /// </summary>
     /// <param name = "af"></param>
-    /// <returns></returns>
+    
     public static string PathOfAppDataFolder(UserFoldersWin af)
     {
         var user = ActualWindowsUserName();

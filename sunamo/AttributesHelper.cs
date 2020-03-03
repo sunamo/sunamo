@@ -15,7 +15,7 @@ namespace sunamo
         /// <param name="car"></param>
         /// <param name="fields"></param>
         /// <param name="basic"></param>
-        /// <returns></returns>
+        
         public static List<object> DataMember(object car, List<FieldInfo> fields, List<string> basic, Dictionary<string, string> dict)
         {
             List<object> result = new List<object>();

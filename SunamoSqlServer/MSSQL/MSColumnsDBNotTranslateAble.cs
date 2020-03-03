@@ -35,7 +35,7 @@ using System.Collections.Generic;
     /// <param name="nazevTabulky"></param>
     /// <param name="dbPrefix"></param>
     /// <param name="tableName"></param>
-    /// <returns></returns>
+    
     public string GetCsTableRow4(string nazevTabulky, string dbPrefix, out string tableName)
     {
         string dbPrefix2 = dbPrefix;

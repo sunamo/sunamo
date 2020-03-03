@@ -19,7 +19,7 @@ public static partial class BitmapImageHelper
     /// Používá se tehdy, když je obrázek v nějaké specifické složce(ne e nebo d) nebo když je přímo v rootu
     /// </summary>
     /// <param name = "appPic2"></param>
-    /// <returns></returns>
+    
     public static BitmapImage MsAppxI(string appPic2)
     {
         BitmapImage bs = new BitmapImage(new Uri(ImageHelper.protocol + "i/" + appPic2 + ".png"));

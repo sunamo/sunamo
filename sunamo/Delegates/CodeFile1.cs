@@ -53,7 +53,7 @@ public delegate void VoidIntDouble(int nt, double d);
 /// Return bool? due to signalling unauthorized access - for example access .xlf in uwp 
 /// </summary>
 /// <param name="path"></param>
-/// <returns></returns>
+
 public delegate bool? ExistsDirectory(string path);
 //public delegate void VoidVoid();
 //public delegate void VoidObject(object o);

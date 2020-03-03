@@ -135,7 +135,7 @@ public partial class ManageArtistDashTitle
     /// Získám interpreta
     /// </summary>
     /// <param name = "item"></param>
-    /// <returns></returns>
+    
     public static string GetArtist(string item)
     {
         string nazev, title = null;

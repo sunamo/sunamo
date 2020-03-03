@@ -11,7 +11,7 @@ public partial class FS
     /// Delete whole folder A1. If fail, only "1" subdir
     /// </summary>
     /// <param name="repairedBlogPostsFolder"></param>
-    /// <returns></returns>
+    
     public static int DeleteSerieDirectoryOrCreateNew(string repairedBlogPostsFolder)
     {
         int resultSerie = 1;

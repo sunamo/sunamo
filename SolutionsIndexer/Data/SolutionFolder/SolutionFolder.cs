@@ -92,7 +92,7 @@ namespace AllProjectsSearch
         /// <summary>
         /// Working
         /// </summary>
-        /// <returns></returns>
+        
         public bool HaveGitFolder()
         {
             var f = FS.Combine(this.fullPathFolder, ".git");

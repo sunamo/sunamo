@@ -16,7 +16,7 @@ public partial class HtmlAssistant
     /// <param name="p"></param>
     /// <param name="divMain"></param>
     /// <param name="_trim"></param>
-    /// <returns></returns>
+    
     public static string GetValueOfAttribute(string p, HtmlNode divMain, bool _trim = false)
     {
         object o = divMain.Attributes[p];

@@ -20,7 +20,7 @@ using System.Text.RegularExpressions;
         /// Get type of tag (paired ended, paired not ended, non paired)
         /// </summary>
         /// <param name="tag"></param>
-        /// <returns></returns>
+        
         public static HtmlTagSyntax GetSyntax(ref string tag)
         {
             ThrowExceptions.InvalidParameter(s_type, "GetSyntax", (string)tag, "tag");

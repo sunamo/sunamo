@@ -19,32 +19,7 @@ public class ConvertCamelConvention
     /// will include numbers
     /// </summary>
     /// <param name="p"></param>
-    /// <returns></returns>
-    public static string ToConvention(string p)
-    {
-        return SH.FirstCharLower(ConvertPascalConvention.ToConvention(p));
-    }
-}
-
-
-public class ConvertCamelConventionWithNumbers
-{
-    public static bool IsCamelWithNumber(string r)
-    {
-        if (r.ToLower() == r && !r.Contains(" "))
-        {
-            return true;
-        }
-        var s = ToConvention(r);
-
-        return s == r;
-    }
-
-    /// <summary>
-    /// wont include numbers
-    /// </summary>
-    /// <param name="p"></param>
-    /// <returns></returns>
+    
     public static string ToConvention(string p)
     {
         return SH.FirstCharLower(ConvertPascalConventionWithNumbers.ToConvention(p));

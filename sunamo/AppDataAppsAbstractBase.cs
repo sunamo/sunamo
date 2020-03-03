@@ -16,7 +16,7 @@ namespace sunamo
         /// </summary>
         /// <param name = "af"></param>
         /// <param name = "file"></param>
-        /// <returns></returns>
+        
         public abstract StorageFile GetFile(AppFolders af, string file);
         public abstract bool IsRootFolderNull();
 

@@ -44,51 +44,7 @@ public class SheetsHelper
     /// If null, will be  load from clipboard
     /// </summary>
     /// <param name="input"></param>
-    /// <returns></returns>
-    public static List<string> Rows(string input = null)
-    {
-        if (input == null)
-        {
-            input = ClipboardHelper.GetText();
-        }
-
-        return SH.Split(input, "\n");
-    }
-
-    /// <summary>
-    /// If A1 null, take from clipboard
-    /// </summary>
-    /// <param name="input"></param>
-    /// <returns></returns>
-    public static List<string> SplitFromGoogleSheets(string input = null)
-    {
-        if (input == null)
-        {
-            input = ClipboardHelper.GetText();
-        }
-
-        var bm = SH.TabOrSpaceNextTo(input);
-        var vr = SH.SplitByIndexes(input, bm);
-
-        vr.Reverse();
-        //var vr = SH.Split(input, AllStrings.tab);
-        return vr;
-    }
-
-    public static void JoinForGoogleSheetRow(StringBuilder sb, IEnumerable en)
-    {
-        CA.JoinForGoogleSheetRow(sb, en);
-    }
-
-    public static string JoinForGoogleSheetRow(IEnumerable en)
-    {
-        return CA.JoinForGoogleSheetRow(en);
-    }
-
-    /// <summary>
-    /// Take data from clipboard
-    /// </summary>
-    /// <returns></returns>
+    
     private static List<string> GetRowCells()
     {
         return GetRowCells(ClipboardHelper.GetText());

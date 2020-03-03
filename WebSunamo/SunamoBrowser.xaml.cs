@@ -76,7 +76,7 @@ namespace WebSunamo
         /// <summary>
         /// return whether was loaded new code
         /// </summary>
-        /// <returns></returns>
+        
         public bool ScrollToEnd()
         {
             var html = MsHtml();

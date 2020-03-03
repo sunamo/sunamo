@@ -59,7 +59,7 @@ public partial class RL
     /// </summary>
     /// <param name="v"></param>
     /// <param name="cs"></param>
-    /// <returns></returns>
+    
     public static string GetStringByLang(string v, Langs cs)
     {
         ThrowExceptions.Custom(s_type, "GetStringByLang", "In desktop app dont pass Langs");

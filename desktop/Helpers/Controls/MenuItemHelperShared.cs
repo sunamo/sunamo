@@ -12,7 +12,7 @@ public partial class MenuItemHelper{
     /// </summary>
     /// <param name="header"></param>
     /// <param name="clickHandler"></param>
-    /// <returns></returns>
+    
     public static MenuItem Get(ControlInitData d)
     {
         MenuItem mi = new MenuItem();

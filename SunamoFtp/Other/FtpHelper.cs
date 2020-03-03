@@ -11,19 +11,7 @@ namespace SunamoFtp
         /// Vrátí zda A1 je .. nebo .
         /// </summary>
         /// <param name="folderName2"></param>
-        /// <returns></returns>
-        public static bool IsThisOrUp(string folderName2)
-        {
-            return folderName2 == AllStrings.dot || folderName2 == AllStrings.dd;
-        }
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        /// <param name="item2"></param>
-        /// <param name="fse"></param>
-        /// <param name="fileLenght"></param>
-        /// <returns></returns>
+        
         public static bool IsFileOnHosting(string item2, List<string> fse, long fileLenght)
         {
             item2 = FS.GetFileName(item2);

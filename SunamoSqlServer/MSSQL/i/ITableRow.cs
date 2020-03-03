@@ -16,7 +16,7 @@ public interface ITableRow<I>
         /// Budes muset kontrolovat sam na UNIQUE, PRIMARY KEY atd.
         /// ID se vzdy dava az v teto metode, jinde neni povoleno ID zjistovat.
         /// </summary>
-        /// <returns></returns>
+        
         I InsertToTable();
         I InsertToTable2();
         void InsertToTable3(I i);

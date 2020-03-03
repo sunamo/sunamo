@@ -23,7 +23,7 @@ namespace sunamo.Storage
         /// If file contains grouped lines by A2, return these groups
         /// </summary>
         /// <param name="file"></param>
-        /// <returns></returns>
+        
         public static Dictionary<string, List<string>> Parse(string file, List<string> sections)
         {
             // In key are section names from A2

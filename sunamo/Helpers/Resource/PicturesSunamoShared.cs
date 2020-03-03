@@ -18,7 +18,7 @@ public partial class PicturesSunamo
     /// <param name="p"></param>
     /// <param name="p_2"></param>
     /// <param name="p_3"></param>
-    /// <returns></returns>
+    
     public static SunamoSize CalculateOptimalSizeHeight(int width, int height, int maxHeight)
     {
         SunamoSize vr = new SunamoSize(width, height);

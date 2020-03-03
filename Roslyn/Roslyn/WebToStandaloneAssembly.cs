@@ -16,41 +16,7 @@ namespace Roslyn
         /// </summary>
         /// <param name="csClass"></param>
         /// <param name="ctorArgs"></param>
-        /// <returns></returns>
-        string GetContentOfNewAspxCs(string csClass, string ctorArgs)
-        {
-            //CSharpGenerator genAspxCs = new CSharpGenerator();
-            //genAspxCs.Field(2, AccessModifiers.Private, false, VariableModifiers.None, fnwoe + "Cs", "cs", false);
-
-            const string template = @"    
-            protected void Page_Init(object sender, EventArgs e)
-            [
-                cs = new {0}({1});
-            ]
-
-            protected void Page_Load(object sender, EventArgs e)
-            [
-                cs.Page = ((Page)this).Page;
-                cs.Page_Load(sender, e);
-                cs.CreateTitle();
-            ]";
-
-            return SH.Format(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="nsX"></param>
-        /// <param name="className"></param>
-        /// <param name="variables"></param>
-        /// <param name="usings"></param>
-        /// <param name="ctorArgs"></param>
-        /// <param name="ctorInner"></param>
-        /// <param name="baseClassCs"></param>
-        /// <param name="nsBaseClassCs"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
+        
         string GetContentOfPageCsFile(string nsX, string className, string variables, string usings, string ctorArgs, string ctorInner, string baseClassCs, string nsBaseClassCs, string code)
         {
             string template = SH.Format(@"{3}

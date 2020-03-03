@@ -48,39 +48,7 @@ namespace desktop
         /// Tag here is mainly for comment what data control hold 
         /// </summary>
         /// <param name="tag"></param>
-        /// <returns></returns>
-        public static TextBox Get(ControlInitData d)
-        {
-            TextBox txt = new TextBox();
-            ControlHelper.SetForeground(txt, d.foreground);
-
-            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.imagePath", d.imagePath);
-            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.OnClick", d.OnClick);
-
-            txt.Width = 200;
-            txt.Tag = d.tag;
-            txt.ToolTip = d.tooltip;
-            txt.Text = d.text;
-            return txt;
-        }
-
-        static TextBoxHelper()
-        {
-            TextBoxHelper.InicializeWidths();
-        }
-
-        public static int GetLineLength(TextBox txt, int line)
-        {
-            // Counting from 0
-            return txt.GetLineLength(line);
-        }
-
-        /// <summary>
-        /// Get number of chars before
-        /// </summary>
-        /// <param name="txt"></param>
-        /// <param name="line"></param>
-        /// <returns></returns>
+        
         public static int GetCharacterIndexFromLineIndex(TextBox txt, int line)
         {
             // Counting from 0

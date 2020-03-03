@@ -76,7 +76,7 @@ namespace desktop.Controls.Input
         /// <summary>
         /// Validate before call
         /// </summary>
-        /// <returns></returns>
+        
         public List<string> SelectedFolders()
         {
             List<string> result = new List<string>();

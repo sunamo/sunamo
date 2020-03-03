@@ -9,7 +9,7 @@ public static partial class YouTube{
     /// G null pokud se YT kód nepodaří získat
     /// </summary>
     /// <param name = "uri"></param>
-    /// <returns></returns>
+    
     public static string ParseYtCode(string uri)
     {
         Regex regex = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");

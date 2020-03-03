@@ -13,7 +13,7 @@ namespace SunamoMarkdown
         /// Therefore commented and remove nuget package
         /// </summary>
         /// <param name="html"></param>
-        /// <returns></returns>
+        
         public static string ConvertToMarkDown(string html)
         {
             ThrowExceptions.Custom(type, RH.CallingMethod(), "See method comment.");

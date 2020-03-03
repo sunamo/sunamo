@@ -10,33 +10,7 @@ using System.Data;
         /// <summary>
         /// Budeš muset kontrolovat sám na UNIQUE, PRIMARY KEY atd.
         /// </summary>
-        /// <returns></returns>
-        int InsertToTable();
-        InsertedRows InsertToTableInsertedRows();
-        /// <summary>
-        /// Budeš muset kontrolovat sám na UNIQUE, PRIMARY KEY atd.
-        /// </summary>
-        /// <returns></returns>
-        ChangedRows UpdateInTable();
-        ChangedRows UpdateInTable(List<string> nazvySloupcu, List<object> hodnotaSloupcu);
-        ChangedRows UpdateInTable(string nazevSloupce, object hodnotaSloupce);
-        ChangedRows UpdateInTableTest();
-        ChangedRows UpdateInTableTest(List<string> nazvySloupcu, List<object> hodnotaSloupcu);
-        ChangedRows UpdateInTableTest(string nazevSloupce, object hodnotaSloupce);
-        void SelectInTable();
-        /// <summary>
-        /// Bere se jen První výsledek
-        /// </summary>
-        /// <param name="nazvySloupcu"></param>
-        /// <param name="hodnotaSloupcu"></param>
-        void SelectInTable(List<string> nazvySloupcu, List<object> hodnotaSloupcu);
-        void SelectInTable(string nazevSloupce, object hodnotaSloupce);
-        /// <summary>
-        /// Vrací všechny nalezené řádky
-        /// </summary>
-        /// <param name="nazvySloupcu"></param>
-        /// <param name="hodnotaSloupcu"></param>
-        /// <returns></returns>
+        
         SelectedRows SelectInTableSelectedRows(List<string> nazvySloupcu, List<object> hodnotaSloupcu);
         SelectedRows SelectInTableSelectedRows(string nazevSloupce, object hodnotaSloupce);
         DataTable SelectInTableDataTable(List<string> nazvySloupcu, List<object> hodnotaSloupcu);

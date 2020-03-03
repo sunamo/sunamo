@@ -138,7 +138,7 @@ public class MenuItemWithSubitemsHelper
     /// <summary>
     /// Používá se pokud chci porovnávat rychleji na reference MenuItem ale chci zjistit Tag zvolené položky.
     /// </summary>
-    /// <returns></returns>
+    
     public object SelectedTag()
     {
         if (Selected)

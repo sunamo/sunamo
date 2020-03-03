@@ -48,53 +48,7 @@ public class CheckBoxListHelper
     /// Return StackPanel which have as only one child TextBlock
     /// </summary>
     /// <param name="chbs"></param>
-    /// <returns></returns>
-    public static IEnumerable<StackPanel> UncheckedContent(IEnumerable<CheckBox> chbs)
-    {
-        //chbs[0].IsChecked = true;
-        var indexes = chbs.Select((v, i) => new { v, i });
-        var where = indexes.Where(x => !BTS.GetValueOfNullable(x.v.IsChecked));
-        return where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
-    }
-
-    /// <summary>
-    /// Return StackPanel which have as only one child TextBlock
-    /// </summary>
-    /// <param name="chbs"></param>
-    /// <returns></returns>
-    public static IEnumerable<StackPanel> CheckedContent(IEnumerable<CheckBox> chbs)
-    {
-        //chbs[0].IsChecked = true;
-        var indexes = chbs.Select((v, i) => new { v, i });
-        var where = indexes.Where(x => BTS.GetValueOfNullable(x.v.IsChecked));
-        return where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
-    }
-
-    /// <summary>
-    /// Return StackPanel which have as only one child TextBlock
-    /// </summary>
-    /// <param name="chbs"></param>
-    /// <returns></returns>
-    public static List<string> CheckedStrings(IEnumerable<CheckBox> chbs)
-    {
-        //chbs[0].IsChecked = true;
-        var indexes = chbs.Select((v, i) => new { v, i });
-        var where = indexes.Where(x => BTS.GetValueOfNullable(x.v.IsChecked));
-        
-        var sp = where.Select(d => d.v.Content).Cast<StackPanel>().ToList();
-        List<string> result = new List<string>(sp.Count);
-        foreach (var item in sp)
-        {
-            result.Add(CheckBoxListUC.ContentOfTextBlock(item));
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Return StackPanel which have as only one child TextBlock
-    /// </summary>
-    /// <param name="chbs"></param>
-    /// <returns></returns>
+    
     public static List<StackPanel> AllContent(IEnumerable<CheckBox> chbs)
     {
         var d = chbs.Select(e => e.Content);

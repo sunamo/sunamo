@@ -14,7 +14,7 @@ namespace shared.Extensions
         /// <typeparam name="Key"></typeparam>
         /// <typeparam name="Value"></typeparam>
         /// <param name="dict"></param>
-        /// <returns></returns>
+        
         public static IEnumerable<Key> GetKeys<Key, Value>(Dictionary<Key, Value> dict)
         {
             //return dict.Keys.ToList();

@@ -29,7 +29,7 @@ namespace sunamo.Helpers
         /// MyApp.MyResource.en-US.resx is MyApp.MyResource
         /// </summary>
         /// <param name="executingAssembly"></param>
-        /// <returns></returns>
+        
         public static ResourcesHelper Create(string resourceClass, Assembly sunamoAssembly)
         {
             ResourcesHelper resourcesHelper = new ResourcesHelper();

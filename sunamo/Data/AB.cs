@@ -22,7 +22,7 @@ public class AB
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
-    /// <returns></returns>
+    
     public static AB Get(string a, object b)
     {
         return new AB(a, b);

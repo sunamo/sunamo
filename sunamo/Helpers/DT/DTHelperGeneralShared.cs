@@ -11,7 +11,7 @@ public partial class DTHelperGeneral
     /// if A1 = A2, return 255
     /// </summary>
     /// <param name="bday"></param>
-    /// <returns></returns>
+    
     public static byte CalculateAge(DateTime bday, DateTime dtMinVal)
     {
         if (bday == dtMinVal)

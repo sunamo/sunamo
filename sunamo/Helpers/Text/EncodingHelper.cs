@@ -14,7 +14,7 @@ namespace sunamo.Helpers
         /// First 4 bytes
         /// </summary>
         /// <param name="bom"></param>
-        /// <returns></returns>
+        
         public static Encoding DetectEncoding(List<byte> bom, Encoding def = null)
         {
             if (def == null)

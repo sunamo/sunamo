@@ -219,29 +219,7 @@ Into A1 insert:
         /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
         /// </summary>
         /// <param name="enS"></param>
-        /// <returns></returns>
-        public static void TrimStringResources(Langs toL, string fn)
-        {
-            var d = GetTransUnits(fn);
-            List<XElement> tus = new List<XElement>();
-            foreach (XElement item in d.trans_units)
-            {
-                XElement source = item.Element(XName.Get("source"));
-                XElement target = item.Element(XName.Get("target"));
-
-                TrimValueIfNot(source);
-                TrimValueIfNot(target);
-            }
-
-            d.xd.Save(fn);
-        }
-
-        /// <summary>
-        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
-        /// </summary>
-        /// <param name="fn"></param>
-        /// <param name="xd"></param>
-        /// <returns></returns>
+        
         public static XlfData GetTransUnits(string fn)
         {
             Langs toL = GetLangFromFilename(fn);

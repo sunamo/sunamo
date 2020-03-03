@@ -59,7 +59,7 @@ public class ResourcesH : IResourceHelper
     /// Its for getting string from file, never from resx or another in code variable
     /// </summary>
     /// <param name="name"></param>
-    /// <returns></returns>
+    
         public string GetString(string name)
         {
             return Encoding.UTF8.GetString(FS.StreamToArrayBytes(GetStream(name)));
