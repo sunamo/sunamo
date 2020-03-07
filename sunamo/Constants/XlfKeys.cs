@@ -5,6 +5,64 @@ using System.Text;
 
 public class XlfKeys
 {
+	public const string ChangesSuccessfullyMadeToTheLink = "ChangesSuccessfullyMadeToTheLink" ; 
+
+	public const string YourUriHasBeenTruncatedSuccessfully = "YourUriHasBeenTruncatedSuccessfully" ; 
+
+	public const string Pragma = "Pragma" ; 
+
+	public const string weeks = "weeks" ; 
+
+	public const string months = "months" ; 
+
+	public const string years = "years" ; 
+
+	public const string SeeARecentGraphOfVisits = "SeeARecentGraphOfVisits" ; 
+
+	public const string ViewLinkStatistics = "ViewLinkStatistics" ; 
+
+	public const string ByLengthOfComment = "ByLengthOfComment" ; 
+
+	public const string CreationDates = "CreationDates" ; 
+
+	public const string FirstActive = "FirstActive" ; 
+
+	public const string WithTheLongestLongURI = "WithTheLongestLongURI" ; 
+
+	public const string FirstHttps = "FirstHttps" ; 
+
+	public const string FirstOwnURI = "FirstOwnURI" ; 
+
+	public const string DefaultNoSorting = "DefaultNoSorting" ; 
+
+	public const string SortAscendingBy = "SortAscendingBy" ; 
+
+	public const string PageAfter = "PageAfter" ; 
+
+	public const string ShortLink = "ShortLink" ; 
+
+	public const string ManageAllTruncatedURIs = "ManageAllTruncatedURIs" ; 
+
+	public const string Short = "Short" ; 
+
+	public const string PleaseEnterHttpOrHttpsOtherwiseTheWebAddressWillNotBeShortenedAndYouWillReceiveAnError = "PleaseEnterHttpOrHttpsOtherwiseTheWebAddressWillNotBeShortenedAndYouWillReceiveAnError" ; 
+
+	public const string GenerateTruncatedURIs = "GenerateTruncatedURIs" ; 
+
+	public const string Copyright = "Copyright" ; 
+
+	public const string ContentType = "ContentType" ; 
+
+	public const string Common = "Common" ; 
+
+	public const string SelectTheFolderWhereYouHaveTheGPXFilesTheConvertedGPXWillBeSavedInTheSplittedGPXsSubfolderOfTheFolderYouSelectedAllExistingFilesFromTheSplittedGPXsFolderWillBeDeleted = "SelectTheFolderWhereYouHaveTheGPXFilesTheConvertedGPXWillBeSavedInTheSplittedGPXsSubfolderOfTheFolderYouSelectedAllExistingFilesFromTheSplittedGPXsFolderWillBeDeleted" ; 
+
+	public const string SplittedGPXs = "SplittedGPXs" ; 
+
+	public const string PleaseLogIn = "PleaseLogIn" ; 
+
+	public const string TheLinkWasSuccessfullyConverted = "TheLinkWasSuccessfullyConverted" ; 
+
 	public const string ToTheEnd = "ToTheEnd" ; 
 
 	public const string ToCzechFormat = "ToCzechFormat" ; 

@@ -14626,6 +14626,122 @@
           <source></source>
           <target state="translated">To the end</target>
         </trans-unit>
+        <trans-unit id="TheLinkWasSuccessfullyConverted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The link was successfully converted</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please log in.</target>
+        </trans-unit>
+        <trans-unit id="SplittedGPXs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Splitted GPXs</target>
+        </trans-unit>
+        <trans-unit id="SelectTheFolderWhereYouHaveTheGPXFilesTheConvertedGPXWillBeSavedInTheSplittedGPXsSubfolderOfTheFolderYouSelectedAllExistingFilesFromTheSplittedGPXsFolderWillBeDeleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Select the folder where you have the GPX files. The converted GPX will be saved in the 'Splitted GPXs' subfolder of the folder you selected. All existing files from the Splitted GPXs folder will be deleted</target>
+        </trans-unit>
+        <trans-unit id="Common" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Common</target>
+        </trans-unit>
+        <trans-unit id="ContentType" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Content-Type: {0}{1}{1}</target>
+        </trans-unit>
+        <trans-unit id="Copyright" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Copyright ©  2013</target>
+        </trans-unit>
+        <trans-unit id="GenerateTruncatedURIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate truncated URIs</target>
+        </trans-unit>
+        <trans-unit id="PleaseEnterHttpOrHttpsOtherwiseTheWebAddressWillNotBeShortenedAndYouWillReceiveAnError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please enter http: // or https: //, otherwise the web address will not be shortened and you will receive an error</target>
+        </trans-unit>
+        <trans-unit id="Short" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Short</target>
+        </trans-unit>
+        <trans-unit id="ManageAllTruncatedURIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Manage all truncated URIs</target>
+        </trans-unit>
+        <trans-unit id="ShortLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Short link</target>
+        </trans-unit>
+        <trans-unit id="PageAfter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Page after</target>
+        </trans-unit>
+        <trans-unit id="SortAscendingBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sort ascending by</target>
+        </trans-unit>
+        <trans-unit id="DefaultNoSorting" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Default (no sorting)</target>
+        </trans-unit>
+        <trans-unit id="FirstOwnURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">First own URI</target>
+        </trans-unit>
+        <trans-unit id="FirstHttps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">First https</target>
+        </trans-unit>
+        <trans-unit id="WithTheLongestLongURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">With the longest long URI</target>
+        </trans-unit>
+        <trans-unit id="FirstActive" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">First active</target>
+        </trans-unit>
+        <trans-unit id="CreationDates" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Creation dates</target>
+        </trans-unit>
+        <trans-unit id="ByLengthOfComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">By length of comment</target>
+        </trans-unit>
+        <trans-unit id="ViewLinkStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">View link statistics</target>
+        </trans-unit>
+        <trans-unit id="SeeARecentGraphOfVisits" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">See a recent graph of visits</target>
+        </trans-unit>
+        <trans-unit id="years" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">years</target>
+        </trans-unit>
+        <trans-unit id="months" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">months</target>
+        </trans-unit>
+        <trans-unit id="weeks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">weeks</target>
+        </trans-unit>
+        <trans-unit id="Pragma" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pragma</target>
+        </trans-unit>
+        <trans-unit id="YourUriHasBeenTruncatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Your uri has been truncated successfully</target>
+        </trans-unit>
+        <trans-unit id="ChangesSuccessfullyMadeToTheLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Changes successfully made to the link</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -102,6 +102,12 @@ public partial class SqlServerHelper
     private static void Insert(string sql, ref string table, ref List< string> columns, int serie)
     {
         string column = null;
+
+        if (sql.StartsWith("INSERT INTO Go"))
+        {
+
+        }
+
         var p = TSQLStatementReader.ParseStatements(sql);
 
         // yet in first parameter is two in from property, there is two elements with text property: 1) from 2) table
@@ -109,8 +115,8 @@ public partial class SqlServerHelper
         {
             var tokens = item.Tokens;
             int i = 0;
-            InsertPosition updatePosition = InsertPosition.Begin;
-            var duo = 0;
+            //InsertPosition updatePosition = InsertPosition.Begin;
+            //var duo = 0;
             List<string> columnNames = new List<string>();
 
             foreach (var item2 in tokens)

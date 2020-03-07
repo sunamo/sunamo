@@ -1325,10 +1325,6 @@ public partial class FS
             return "*.*";
         }
 
-        if (ext2 == ".aspx.cs")
-        {
-            //DebugLogger.Break();
-        }
 
         var ext = FS.GetExtension(ext2);
         var fn = FS.GetFileNameWithoutExtension(ext2);
@@ -1349,10 +1345,11 @@ public partial class FS
         // From base of logic - isNoMascEntered must be without !. When something another wont working, edit only evaluate of condition above
         if (!ext.StartsWith("*.") && isNoMascEntered && isContained && ext == FS.GetExtension( ext2)) 
         {
-            if (cis.QuantityUpperChars > 0 || cis.QuantityLowerChars > 0)
-            {
-                return ext2;
-            }
+            // Dont understand why, when I insert .aspx.cs, then return just .aspx without *
+            //if (cis.QuantityUpperChars > 0 || cis.QuantityLowerChars > 0)
+            //{
+            //    return ext2;
+            //}
 
             var vr = AllStrings.asterisk + AllStrings.dot + ext2.TrimStart(AllChars.dot);
             return vr;

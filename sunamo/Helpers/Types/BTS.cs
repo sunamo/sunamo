@@ -675,10 +675,10 @@ public static partial class BTS
     {
         string vr = null;
         if (p)
-            vr = "Ano";
+            vr = "Yes";
         else
         {
-            vr = "Ne";
+            vr = "No";
         }
 
         return vr.ToLower();

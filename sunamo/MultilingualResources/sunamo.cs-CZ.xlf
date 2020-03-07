@@ -10736,6 +10736,106 @@
           <source></source>
           <target state="translated">Vytvořit Html</target>
         </trans-unit>
+        <trans-unit id="TheLinkWasSuccessfullyConverted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odkaz byl úspěšně konvertován</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přihlašte se prosím. </target>
+        </trans-unit>
+        <trans-unit id="SelectTheFolderWhereYouHaveTheGPXFilesTheConvertedGPXWillBeSavedInTheSplittedGPXsSubfolderOfTheFolderYouSelectedAllExistingFilesFromTheSplittedGPXsFolderWillBeDeleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyberte složku ve které máte GPX soubory. Převedené GPX se uloží do podsložky 'Splitted GPXs' složky kterou jste vybrali. Všechny již existující soubory ze složky Splitted GPXs budou smazány</target>
+        </trans-unit>
+        <trans-unit id="GenerateTruncatedURIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generování zkrácených URI</target>
+        </trans-unit>
+        <trans-unit id="PleaseEnterHttpOrHttpsOtherwiseTheWebAddressWillNotBeShortenedAndYouWillReceiveAnError" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadávejte prosím včetně http:// nebo https://,jinak web adresu nezkrátí a vypíše vám chybu</target>
+        </trans-unit>
+        <trans-unit id="Short" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zkrať</target>
+        </trans-unit>
+        <trans-unit id="ManageAllTruncatedURIs" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Správa všech zkrácených URI-</target>
+        </trans-unit>
+        <trans-unit id="ShortLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zkrať odkaz</target>
+        </trans-unit>
+        <trans-unit id="PageAfter" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stránkovat po</target>
+        </trans-unit>
+        <trans-unit id="SortAscendingBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Seřadit vzestupně podle</target>
+        </trans-unit>
+        <trans-unit id="DefaultNoSorting" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výchozí (bez třídění)</target>
+        </trans-unit>
+        <trans-unit id="FirstOwnURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">První vlastní URI</target>
+        </trans-unit>
+        <trans-unit id="FirstHttps" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">První https</target>
+        </trans-unit>
+        <trans-unit id="WithTheLongestLongURI" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">S nejdelší dlouhou URI</target>
+        </trans-unit>
+        <trans-unit id="FirstActive" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">První aktivní</target>
+        </trans-unit>
+        <trans-unit id="CreationDates" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Data vytvoření</target>
+        </trans-unit>
+        <trans-unit id="ByLengthOfComment" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podle délky komentáře</target>
+        </trans-unit>
+        <trans-unit id="ViewLinkStatistics" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prohlížení statistik odkazu</target>
+        </trans-unit>
+        <trans-unit id="SeeARecentGraphOfVisits" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit graf návštěv na základě posledních</target>
+        </trans-unit>
+        <trans-unit id="years" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">roků</target>
+        </trans-unit>
+        <trans-unit id="months" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">měsíců</target>
+        </trans-unit>
+        <trans-unit id="weeks" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">týdnů</target>
+        </trans-unit>
+        <trans-unit id="Pragma" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pragma</target>
+        </trans-unit>
+        <trans-unit id="YourUriHasBeenTruncatedSuccessfully" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vaše uri byla úspěšně zkrácena</target>
+        </trans-unit>
+        <trans-unit id="ChangesSuccessfullyMadeToTheLink" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změny úspěšně provedeny na odkazu </target>
+        </trans-unit>
       </group>
     </body>
   </file>
