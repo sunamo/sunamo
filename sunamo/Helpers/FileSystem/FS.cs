@@ -997,99 +997,9 @@ public partial class FS
 
     public static string replaceIncorrectFor = string.Empty;
 
-    /// <summary>
-    /// Replacement can be configured with replaceIncorrectFor
-    /// </summary>
-    /// <param name="p"></param>
-    public static string ReplaceIncorrectCharactersFile(string p)
-    {
-        string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (char item2 in t)
-            {
-                if (item != item2)
-                {
-                    sb.Append(item2);
-                }
-                else
-                {
-                    sb.Append(replaceIncorrectFor);
-                }
-            }
-            t = sb.ToString();
-        }
-        return t;
-    }
-
-    /// <summary>
-    /// A3 is applicable only for A2. In general is use replaceIncorrectFor
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="replaceAllOfThisByA3"></param>
-    /// <param name="replaceForThis"></param>
-    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisByA3, string replaceForThis)
-    {
-        string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (char item2 in t)
-            {
-                if (item != item2)
-                {
-                    sb.Append(item2);
-                }
-                else
-                {
-                    sb.Append(replaceIncorrectFor);
-                }
-            }
-            t = sb.ToString();
-        }
-        if (!string.IsNullOrEmpty(replaceAllOfThisByA3))
-        {
-            t = SH.ReplaceAll(t, replaceForThis, replaceAllOfThisByA3);
-        }
-        return t;
-    }
-
     public static string ExpandEnvironmentVariables(EnvironmentVariables environmentVariable)
     {
         return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.modulo));
-    }
-
-    /// <summary>
-    /// Pro odstranění špatných znaků odstraní všechny výskyty A2 za mezery a udělá z více mezere jediné
-    /// </summary>
-    /// <param name="p"></param>
-    /// <param name="replaceAllOfThisThen"></param>
-    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisThen)
-    {
-        string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (char item2 in t)
-            {
-                if (item != item2)
-                {
-                    sb.Append(item2);
-                }
-                else
-                {
-                    sb.Append(replaceIncorrectFor);
-                }
-            }
-            t = sb.ToString();
-        }
-        if (!string.IsNullOrEmpty(replaceAllOfThisThen))
-        {
-            t = SH.ReplaceAll(t, AllStrings.space, replaceAllOfThisThen);
-            t = SH.ReplaceAll(t, AllStrings.space, AllStrings.doubleSpace);
-        }
-        return t;
     }
 
 

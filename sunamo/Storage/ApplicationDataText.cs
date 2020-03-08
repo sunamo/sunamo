@@ -17,7 +17,7 @@ namespace sunamo.Storage
     /// </summary>
     public class ApplicationDataText
     {
-        private static Type s_type = typeof(ApplicationDataText);
+        private static Type type = typeof(ApplicationDataText);
 
         /// <summary>
         /// If file contains grouped lines by A2, return these groups
@@ -59,7 +59,7 @@ namespace sunamo.Storage
             CA.RemoveStringsEmpty(listString);
             v.Add(actualSection, listString);
 
-            ThrowExceptions.DifferentCountInLists(s_type, "Parse", "sections", sections.Count, "v", v.Count);
+            ThrowExceptions.DifferentCountInLists(type, "Parse", "sections", sections.Count, "v", v.Count);
             return v;
         }
     }

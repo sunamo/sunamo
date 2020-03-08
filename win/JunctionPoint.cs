@@ -401,17 +401,20 @@ public static class JunctionPoint
             }
         }
 
-        /// <summary>
-        /// Gets the target of the specified junction point.
-        /// </summary>
-        /// <remarks>
-        /// Only works on NTFS.
-        /// </remarks>
-        /// <param name="junctionPoint">The junction point path</param>
-        /// <returns>The target of the junction point</returns>
-        /// <exception cref="IOException">Thrown when the specified path does not
-        /// exist, is invalid, is not a junction point, or some other error occurs</exception>
-        public static string GetTarget(string path)
+    /// <summary>
+    /// Gets the target of the specified junction point.
+    /// Is working for /j,/d (folders)
+    /// Is not working for /h (file) - see GetTargetTest
+    /// If A1 is not /j,/d,/h, return null
+    /// </summary>
+    /// <remarks>
+    /// Only works on NTFS.
+    /// </remarks>
+    /// <param name="junctionPoint">The junction point path</param>
+    /// <returns>The target of the junction point</returns>
+    /// <exception cref="IOException">Thrown when the specified path does not
+    /// exist, is invalid, is not a junction point, or some other error occurs</exception>
+    public static string GetTarget(string path)
         {
         ReparsePoint p = new ReparsePoint(path);
         return p.Target;

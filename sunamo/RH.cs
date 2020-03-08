@@ -19,7 +19,7 @@ using System.Text;
 /// </summary>
 public class RH
 {
-    private static Type s_type = typeof(RH);
+    private static Type type = typeof(RH);
 
     public static object GetValueOfPropertyOrField(object o, string name)
     {
@@ -288,7 +288,7 @@ public class RH
 
         if (children == null)
         {
-            ThrowExceptions.IsNull(s_type, "IsOrIsDeriveFromBaseClass", "children", children);
+            ThrowExceptions.IsNull(type, "IsOrIsDeriveFromBaseClass", "children", children);
         }
         while (true)
         {
@@ -391,7 +391,7 @@ public class RH
                 dump = RH.DumpAsString(name, o);
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(s_type, "DumpAsString", d);
+                ThrowExceptions.NotImplementedCase(type, "DumpAsString", d);
                 break;
         }
 
@@ -400,7 +400,7 @@ public class RH
 
     private static string DumpAsString(string name, object o)
     {
-        ThrowExceptions.NotImplementedMethod(s_type, "DumpAsString" );
+        ThrowExceptions.NotImplementedMethod(type, "DumpAsString" );
         return null;
     }
 

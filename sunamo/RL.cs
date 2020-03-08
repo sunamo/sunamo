@@ -10,7 +10,7 @@ using System.Text;
 /// </summary>
 public partial class RL
 {
-    private static Type s_type = typeof(RL);
+    private static Type type = typeof(RL);
 
     /// <summary>
     /// Pokud chceš používat tuto třídu, musíš zároveň prvně zavolat RL.Initialize()
@@ -61,7 +61,7 @@ public partial class RL
     /// <param name="cs"></param>
     public static string GetStringByLang(string v, Langs cs)
     {
-        ThrowExceptions.Custom(s_type, "GetStringByLang", "In desktop app dont pass Langs");
+        ThrowExceptions.Custom(type, "GetStringByLang", "In desktop app dont pass Langs");
         //if (l == Langs.en)
         //{
         //    return RLData.en[k];

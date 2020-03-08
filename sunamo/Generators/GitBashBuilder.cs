@@ -14,7 +14,7 @@ namespace sunamo.Generators
     /// </summary>
     public class GitBashBuilder
     {
-        private static Type s_type = typeof(GitBashBuilder);
+        private static Type type = typeof(GitBashBuilder);
         public TextBuilder sb = new TextBuilder();
 
         public GitBashBuilder()
@@ -75,7 +75,7 @@ namespace sunamo.Generators
         /// <param name="files"></param>
         public static string CheckoutWithExtension(string folder, string typedExt, List<string> files)
         {
-            ThrowExceptions.IsNull(s_type, "EnterValueFormCheckoutAllWithExtension_Finished", "typedExt", typedExt);
+            ThrowExceptions.IsNull(type, "EnterValueFormCheckoutAllWithExtension_Finished", "typedExt", typedExt);
 
             GitBashBuilder bashBuilder = new GitBashBuilder();
             bool anyError = false;

@@ -12,7 +12,7 @@ namespace sunamo.Generators.Text
     /// </summary>
     public class TextBuilder
     {
-        private static Type s_type = typeof(TextBuilder);
+        private static Type type = typeof(TextBuilder);
 
         private bool _canUndo = false;
         private int _lastIndex = -1;
@@ -73,7 +73,7 @@ namespace sunamo.Generators.Text
 
         private void UndoIsNotAllowed(string method)
         {
-            ThrowExceptions.IsNotAllowed(s_type, method, "Undo");
+            ThrowExceptions.IsNotAllowed(type, method, "Undo");
         }
 
         public void Undo()

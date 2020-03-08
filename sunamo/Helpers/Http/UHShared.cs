@@ -210,18 +210,19 @@ public partial class UH
     }
 
 
-    /// <summary>
-    /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => GetPageNameFromUriTest: /Me/Login.aspx
-    /// </summary>
-
-    public static string GetPageNameFromUri(string atr, string p)
-    {
-        if (!atr.StartsWith("https://") && !atr.StartsWith("https" + ":" + "//"))
-        {
-            return GetPageNameFromUri(new Uri("https://" + p + AllStrings.slash + atr.TrimStart(AllChars.slash)));
-        }
-        return GetPageNameFromUri(new Uri(atr));
-    }
+    ///// <summary>
+    ///// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => GetPageNameFromUriTest: /Me/Login.aspx
+    ///// 
+    ///// Nonsense - Join A1,2 to return back A1
+    ///// </summary>
+    //public static string GetPageNameFromUri(string atr, string host)
+    //{
+    //    if (!atr.StartsWith("https://") && !atr.StartsWith("https" + ":" + "//"))
+    //    {
+    //        return GetPageNameFromUri(new Uri("https://" + host + AllStrings.slash + atr.TrimStart(AllChars.slash)));
+    //    }
+    //    return GetPageNameFromUri(new Uri(atr));
+    //}
 
     /// <summary>
     /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => GetFileNameWithoutExtension: Login

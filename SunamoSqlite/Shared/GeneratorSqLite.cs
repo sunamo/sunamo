@@ -5,7 +5,7 @@ using System.Text;
 
     public static class GeneratorSqLite
     {
-        private static Type s_type = typeof(GeneratorSqLite);
+        private static Type type = typeof(GeneratorSqLite);
 
         /// <summary>
         /// Může vrátit null když tabulka bude existovat
@@ -69,7 +69,7 @@ using System.Text;
             {
                 if (var.referencesTable != null)
                 {
-                    ThrowExceptions.Custom(s_type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
+                    ThrowExceptions.Custom(type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
 
                     //sb.AddItem((object)"CONSTRAINT");
                     //sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));

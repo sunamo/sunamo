@@ -27,35 +27,24 @@ public class PpkOnDrive : PpkOnDriveBase<string>
     /// </summary>
     public override void Load()
     {
-        if (FS.ExistsFile(soubor))
+        if (FS.ExistsFile(a.file))
         {
-            this.AddRange(TF.ReadAllLines(soubor));
+            this.Clear();
+            this.AddRange(TF.ReadAllLines(a.file));
 
             CA.RemoveStringsEmpty2(this);
         }
     }
 
-    public PpkOnDrive(bool load) : base(load)
-    {
-
-    }
-
-    public PpkOnDrive()
-    {
-
-    }
-
-    public PpkOnDrive(string file2, bool load = true) : base(file2, load)
+    public PpkOnDrive(PpkOnDriveArgs a) : base(a)
     {
     }
 
-    public PpkOnDrive(string file, bool load, bool save) : base(file, load, save)
+    public PpkOnDrive(string file2, bool load = true) : base(new PpkOnDriveArgs { file = file2, load= load  })
     {
-
     }
 
-    public PpkOnDrive(bool open, bool load) : base(open, load)
+    public PpkOnDrive(string file, bool load, bool save) : base(new PpkOnDriveArgs { file = file, load = load, save = save })
     {
-
     }
 }

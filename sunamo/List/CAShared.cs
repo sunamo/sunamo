@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 public static partial class CA
 {
-    private static Type s_type = typeof(CA);
+    private static Type type = typeof(CA);
 
     /// <summary>
     /// Direct edit collection
@@ -543,8 +543,8 @@ public static partial class CA
     {
         string methodName = "TrimStart";
 
-        ThrowExceptions.IsNull(s_type, methodName, "backslash", backslash);
-        ThrowExceptions.IsNull(s_type, methodName, "s", s);
+        ThrowExceptions.IsNull(type, methodName, "backslash", backslash);
+        ThrowExceptions.IsNull(type, methodName, "s", s);
 
         for (int i = 0; i < s.Count; i++)
         {
@@ -1216,8 +1216,37 @@ public static partial class CA
     }
 
     /// <summary>
+    /// ContainsAnyFromElement - Contains string elements of list
     /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement - at least one element must contains.
+    /// ContainsElement - at least one element must be equaled. generic
+    /// IsSomethingTheSame - only for string. 
+    /// ContainsElement - 
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    public static List<int> ContainsAnyFromElement(string s, IEnumerable<string> list)
+    {
+        List<int> result = new List<int>();
+
+        int i = 0;
+        foreach (var item in list)
+        {
+            if (s.Contains(item))
+            {
+                result.Add(i);
+            }
+
+            i++;
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// ContainsAnyFromElement - Contains string elements of list
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement - at least one element must be equaled. generic
     /// IsSomethingTheSame - only for string.   
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -1383,7 +1412,7 @@ public static string StartWith(List<string> suMethods, string line)
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod(), parseNegations);
+            ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), parseNegations);
         }
 
         return result;

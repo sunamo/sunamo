@@ -126,7 +126,7 @@ public static partial class CA
     /// <param name="input"></param>
     private static void Prepend(List<string> numbered, List<string> input)
     {
-        ThrowExceptions.DifferentCountInLists(s_type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+        ThrowExceptions.DifferentCountInLists(type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
 
         for (int i = 0; i < input.Count; i++)
         {
@@ -338,7 +338,10 @@ public static partial class CA
         return result;
     }
 
-    /// <summary>
+    /// <summary>ContainsAnyFromElement - Contains string elements of list
+    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
+    /// ContainsElement - at least one element must be equaled. generic
+    /// IsSomethingTheSame - only for string. 
     /// AnySpaces - split A2 by spaces and A1 must contains all parts
     /// ExactlyName - ==
     /// FixedSpace - simple contains
@@ -719,7 +722,7 @@ public static partial class CA
 
     /// <summary>
     /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement
+    /// ContainsElement - at least one element must be equaled. generic
     /// IsSomethingTheSame - only for string. Method for return contained element.
     /// </summary>
     /// <param name="ext"></param>

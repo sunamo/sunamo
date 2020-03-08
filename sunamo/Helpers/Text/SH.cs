@@ -473,7 +473,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(s_type, methodName, item + " " + "hasn't from");
+                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't from");
             }
 
             if (p.Length() > 1)
@@ -482,7 +482,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(s_type, methodName, item + " " + "hasn't to");
+                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't to");
             }
 
             if (SH.IsWildcard(item))
@@ -895,7 +895,7 @@ public static partial class SH
 
     public static bool IsAllUnique(List<string> c)
     {
-        ThrowExceptions.NotImplementedMethod(s_type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
         return false;
     }
 
@@ -1408,7 +1408,7 @@ public static partial class SH
             case UnicodeChars.Generic:
                 return CharHelper.IsGeneric(c);
             default:
-                ThrowExceptions.NotImplementedCase(s_type, "IsUnicodeChar", generic);
+                ThrowExceptions.NotImplementedCase(type, "IsUnicodeChar", generic);
                 return false;
         }
     }

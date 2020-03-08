@@ -96,8 +96,12 @@ namespace desktop.Controls.Visualization
             }
             #endregion
 
+            if (site == "Lyr")
+            {
 
-            var content = SH.Join(ints, AllChars.comma);
+            }
+
+            var content = SH.Join(AllChars.comma, ints);
 
             //Set(sender, checkBoxes, content);
             //SaveControl(sender);
@@ -167,6 +171,12 @@ namespace desktop.Controls.Visualization
             grid.Children.Clear();
         }
 
+        /// <summary>
+        /// key - twt_Geo etc
+        /// value = key - name of aspx, value - checked
+        /// </summary>
+        /// <param name="twt"></param>
+        /// <returns></returns>
         public static Dictionary<string, Dictionary<string, List<bool>>> GetRowsIsChecked(TwoWayTable twt)
         {
             var begin = twt.Name + "_";
@@ -196,6 +206,7 @@ namespace desktop.Controls.Visualization
 
                 var text = TF.ReadFile(item);
 
+                #region MyRegion
                 //ApplicationDataContainerList adcl = null;
 
                 //// Automatically load
@@ -210,7 +221,13 @@ namespace desktop.Controls.Visualization
                 //}
 
                 // , for delimiting values in row, " " for entire new row
-                //var text = adcl.GetString(ApplicationDataConsts.checkBoxes);
+                //var text = adcl.GetString(ApplicationDataConsts.checkBoxes); 
+                #endregion
+
+                if (item.Contains("Lyr"))
+                {
+
+                }
 
                 var cells = SH.Split(text, ",");
                 var numbers = CA.ToNumber<int>(int.Parse, cells);
@@ -310,7 +327,19 @@ namespace desktop.Controls.Visualization
                             for (int i = 0; i < item.Value.Count; i++)
                             {
                                 var el = ele[i];
-                                el.IsChecked = item.Value[i];
+                                var isChecked = item.Value[i];
+                                if (displayEntity == "Lyr")
+                                {
+                                    if (isChecked)
+                                    {
+
+                                    }
+                                    el.IsChecked = isChecked;
+                                }
+                                else
+                                {
+                                    el.IsChecked = isChecked;
+                                }
                             }
                         }
 
@@ -346,9 +375,9 @@ namespace desktop.Controls.Visualization
         /// <param name="dexCol"></param>
         /// <param name="uie"></param>
         /// <param name="o"></param>
-        public void AddColumn(int dexCol, CheckBoxData<UIElement>[] uie, object[] o)
+        public void AddColumn(int dexCol, List<CheckBoxData<UIElement>> uie, List< object> o)
         {
-            for (int i = 0; i < uie.Length; i++)
+            for (int i = 0; i < uie.Count; i++)
             {
                 UIElement item = null;
                 if (uie[i] != null)

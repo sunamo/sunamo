@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public static class SystemWindowsControls
 {
-    private static Type s_type = typeof(SystemWindowsControls);
+    private static Type type = typeof(SystemWindowsControls);
     private static bool s_initialized = false;
     private static Dictionary<string, List<string>> s_controls = new Dictionary<string, List<string>>();
     private static EmbeddedResourcesH s_embeddedResourcesH = null;
@@ -18,7 +18,7 @@ public static class SystemWindowsControls
         {
             s_initialized = true;
 
-            s_embeddedResourcesH = new EmbeddedResourcesH(s_type.Assembly, "SunamoCode");
+            s_embeddedResourcesH = new EmbeddedResourcesH(type.Assembly, "SunamoCode");
 
             var d = SH.GetLines(s_embeddedResourcesH.GetString("/Resources/SystemWindowsControls.txt"));
             foreach (var item in d)

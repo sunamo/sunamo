@@ -43,7 +43,7 @@ public static partial class SH
         int remain = sl % c; 
         if (remain != 0)
         {
-            ThrowExceptions.Custom(s_type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
+            ThrowExceptions.Custom(type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
         }
 
         List<string> ls = new List<string>(c);
@@ -186,7 +186,7 @@ public static partial class SH
             }
         }
 
-        ThrowExceptions.IsNotAllowed(s_type, RH.CallingMethod(), v +" as bracket");
+        ThrowExceptions.IsNotAllowed(type, RH.CallingMethod(), v +" as bracket");
         return null;
     }
 
@@ -252,11 +252,17 @@ public static partial class SH
         if (sb.Length > 0)
         {
             sb.Remove(sb.Length - 1, 1);
-                
-            
         }
     }
 
+    /// <summary>
+    /// Is used in btnShortTextOfLyrics
+    /// Short text but always keep whole paragraps
+    /// Can be use also for non paragraph strings abcd->ab
+    /// </summary>
+    /// <param name="c"></param>
+    /// <param name="maxLength"></param>
+    /// <returns></returns>
     public static string ShortToLengthByParagraph(string c, int maxLength)
     {
         var delimiter = SH.PadRight(string.Empty, Environment.NewLine, 2);
@@ -281,8 +287,6 @@ public static partial class SH
 
     public static string AddBeforeUpperChars(string text, char add, bool preserveAcronyms)
     {
-    
-
         if (string.IsNullOrWhiteSpace(text))
             return string.Empty;
         StringBuilder newText = new StringBuilder(text.Length * 2);
@@ -299,13 +303,24 @@ public static partial class SH
         return newText.ToString();
     }
 
-    private static Type s_type = typeof(SH);
+    private static Type type = typeof(SH);
 
+    /// <summary>
+    /// If null, return Consts.nulled
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
     public static string NullToStringOrDefault(object n)
     {
         return NullToStringOrDefault(n, null);
     }
 
+    /// <summary>
+    /// If null, return Consts.nulled
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
     public static string NullToStringOrDefault(object n, string v)
     {
         if (v == null)
@@ -758,7 +773,7 @@ public static partial class SH
             case '[':
                 return Brackets.Square;
             default:
-                ThrowExceptions.NotImplementedCase(s_type, RH.CallingMethod(), v);
+                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), v);
                 break;
         }
 
@@ -867,7 +882,7 @@ public static partial class SH
         {
             var from2 = SH.Split(co, Environment.NewLine);
             var to2 = SH.Split(zaCo, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(s_type, "ReplaceInAllFiles", @"from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", @"from2", from2, "to2", to2);
 
             for (int i = 0; i < from2.Count; i++)
             {
@@ -1632,6 +1647,16 @@ public static partial class SH
     /// <param name="parts"></param>
     public static string Join(object delimiter, params object[] parts)
     {
+        if (delimiter is IEnumerable)
+        {
+            var ie = (IEnumerable)delimiter;
+
+            if (ie.Count() > 1 && parts.Length == 1)
+            {
+                ThrowExceptions.Custom( type, RH.CallingMethod(), "Probably was called with swithech delimiter and parts");
+            }
+        }
+
         // JoinString point to Join with implementation
         return Join(delimiter.ToString(), CA.ToEnumerable(parts));
     }
@@ -1662,8 +1687,8 @@ public static partial class SH
 
     public static string JoinPairs(string firstDelimiter, string secondDelimiter, params object[] parts)
     {
-        InitApp.TemplateLogger.NotEvenNumberOfElements(s_type, "JoinPairs", @"args", parts);
-        InitApp.TemplateLogger.AnyElementIsNull(s_type, "JoinPairs", @"args", parts);
+        InitApp.TemplateLogger.NotEvenNumberOfElements(type, "JoinPairs", @"args", parts);
+        InitApp.TemplateLogger.AnyElementIsNull(type, "JoinPairs", @"args", parts);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < parts.Length; i++)
@@ -2684,7 +2709,7 @@ public static string GetTextBetween(string p, string after, string before, bool 
         {
             if (throwExceptionIfNotContains)
             {
-                ThrowExceptions.NotContains(s_type, "GetTextBetween", p, after, before);
+                ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
             }
         }
 

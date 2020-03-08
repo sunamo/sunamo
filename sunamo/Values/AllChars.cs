@@ -6,7 +6,7 @@ using System.Diagnostics;
 /// </summary>
 public static class AllChars
 {
-    private static Type s_type = typeof(AllChars);
+    private static Type type = typeof(AllChars);
 
     /*
      * Ascii - 128 chars - 7B
@@ -163,7 +163,7 @@ public static class AllChars
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(s_type, "ReturnRightPredicate", generalChars);
+            ThrowExceptions.NotImplementedCase(type, "ReturnRightPredicate", generalChars);
         }
 
         return predicate;

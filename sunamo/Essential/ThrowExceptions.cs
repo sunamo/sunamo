@@ -86,9 +86,9 @@ public class ThrowExceptions
         ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
-    public static void IsOdd(Type s_type, string methodName, string colName, IEnumerable col)
+    public static void IsOdd(Type type, string methodName, string colName, IEnumerable col)
     {
-        ThrowIsNotNull(Exceptions.IsOdd(FullNameOfExecutedCode(s_type, methodName), colName, col));
+        ThrowIsNotNull(Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));
     }
 
     public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
@@ -242,13 +242,19 @@ public class ThrowExceptions
             {
                 //if (HttpRuntime.AppDomainAppId != null)
                 //{
-                Debugger.Break();
+                //Debugger.Break();
+                // Will be written in globalasax error
+
                 writeServerError(exception);
                 //}
             }
+            else
+            {
+                throw new Exception(exception);
+            }
 
             ////////DebugLogger.Instance.WriteLine(exception);
-            throw new Exception(exception);
+            
             return false;
         }
         return true;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System;
+using sunamo;
 /// <summary>
 /// Checking whether string is already contained.
 /// Kolekce na retezce.
@@ -13,22 +14,12 @@ using System;
 public abstract class PpkOnDriveBase<T> : List<T>
 {
     #region DPP
-    private bool _ukladat = true;
-    /// <summary>
-    /// 
-    /// </summary>
-    private bool _otevrit = false;
-    /// <summary>
-    /// Cesta, do ktere se uklada soubor.
-    /// </summary>
-    public string soubor = null;
-    public event EmptyHandler Nahrane;
+    protected PpkOnDriveArgs a = null;
     #endregion
 
     public  void RemoveAll()
     {
-        
-        TF.WriteAllText(soubor, string.Empty);
+        TF.WriteAllText(a.file, string.Empty);
     }
 
     public abstract void Load();
@@ -69,71 +60,42 @@ public abstract class PpkOnDriveBase<T> : List<T>
             // keep on false
         }
 
-        if (_ukladat)
+        if (a.save)
         {
+
             Save();
         }
 
         return b;
     }
+    bool isSaving = false;
+
+    /// <summary>
+    /// Must use FileSystemWatcher, not FileSystemWatcher because its in sunamo, not desktop
+    /// </summary>
+    FileSystemWatcher w = null;
 
     #region base
-    /// <summary>
-    /// Pokud A1, nacte ze souboru, takze pri ulozeni bude pripsan novy obsah.
-    /// </summary>
-    /// <param name="load"></param>
-    public PpkOnDriveBase(bool load)
+    public PpkOnDriveBase(PpkOnDriveArgs a)
     {
-        if (load)
+        this.a = a;
+        FS.CreateFileIfDoesntExists(a.file);
+        Load(a.load);
+
+        if (a.loadChangesFromDrive)
+        {
+            w = new FileSystemWatcher(FS.GetDirectoryName(a.file));
+            w.Filter = a.file;
+            w.Changed += W_Changed;
+        }
+    }
+
+    private void W_Changed(object sender, FileSystemEventArgs e)
+    {
+        if (!isSaving)
         {
             Load();
         }
-    }
-
-    /// <summary>
-    /// Ik. Nenacita z souboru, pri ukladani se tedy jeho obsah smaze.
-    /// </summary>
-    public PpkOnDriveBase()
-    {
-    }
-
-    /// <summary>
-    /// Zavede do ppk s ruznym obsahem dle souboru.
-    /// </summary>
-    /// <param name="soubor"></param>
-    /// <param name="load"></param>
-    public PpkOnDriveBase(string file2, bool load = true)
-    {
-        soubor = file2;
-        if (load)
-        {
-            FS.CreateFileIfDoesntExists(file2);
-            Load();
-        }
-    }
-
-    /// <summary>
-    /// Zavede do ppk s ruznym obsahem dle souboru.
-    /// </summary>
-    /// <param name="soubor"></param>
-    /// <param name="load"></param>
-    public PpkOnDriveBase(string file, bool load, bool save)
-    {
-        if (!FS.ExistsFile(file))
-        {
-            File.WriteAllText(file, "");
-        }
-        _ukladat = save;
-        soubor = file;
-        FS.CreateFileIfDoesntExists(file);
-        Load(load);
-    }
-
-    public PpkOnDriveBase(bool open, bool load)
-    {
-        _otevrit = open;
-
-        Load(load);
     }
     #endregion
 
@@ -154,14 +116,16 @@ public abstract class PpkOnDriveBase<T> : List<T>
     /// </summary>
     public void Save()
     {
-        if (FS.ExistsFile(soubor))
+        isSaving = true;
+        if (FS.ExistsFile(a.file))
         {
-            File.Delete(soubor);
+            File.Delete(a.file);
         }
         string obsah;
         obsah = ReturnContent();
         //TextovySoubor.ts.UlozSoubor(obsah, soubor);
-        File.WriteAllText(soubor, obsah);
+        File.WriteAllText(a.file, obsah);
+        isSaving = false;
     }
 
     /// <summary>

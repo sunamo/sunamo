@@ -21,7 +21,7 @@ using Google.Apis.YouTube.v3.Data;
 /// </summary>
 public static class YouTubeHelper
 {
-    private static Type s_type = typeof(YouTubeHelper);
+    private static Type type = typeof(YouTubeHelper);
 
     /// <summary>
     /// Direct edit
@@ -62,14 +62,14 @@ public static class YouTubeHelper
                 new[] { YouTubeService.Scope.Youtube },
                 "user",
                 CancellationToken.None,
-                new FileDataStore(s_type.ToString())
+                new FileDataStore(type.ToString())
             );
         }
 
         var youtubeService = new YouTubeService(new BaseClientService.Initializer()
         {
             HttpClientInitializer = credential,
-            ApplicationName = s_type.ToString()
+            ApplicationName = type.ToString()
         });
         #endregion
 

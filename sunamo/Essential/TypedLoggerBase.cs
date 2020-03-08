@@ -9,7 +9,7 @@ namespace sunamo.Essential
     /// </summary>
     public class TypedLoggerBase
     {
-        private static Type s_type = typeof(TypedLoggerBase);
+        private static Type type = typeof(TypedLoggerBase);
         private Action<TypeOfMessage, string, object[]> _typedWriteLineDelegate;
 
         public TypedLoggerBase(Action<TypeOfMessage, string, object[]> typedWriteLineDelegate)
@@ -76,7 +76,7 @@ namespace sunamo.Essential
                     Success(m);
                     break;
                 default:
-                    ThrowExceptions.NotImplementedCase(s_type, "WriteLine", t);
+                    ThrowExceptions.NotImplementedCase(type, "WriteLine", t);
                     break;
             }
         }

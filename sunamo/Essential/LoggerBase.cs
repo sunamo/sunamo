@@ -10,7 +10,7 @@ public partial class LoggerBase
     // TODO: Make logger public class as base and replace all occurences With Instance 
     private VoidStringParamsObjects _writeLineDelegate;
     public bool IsActive = true;
-    private static Type s_type = typeof(LoggerBase);
+    private static Type type = typeof(LoggerBase);
     private StringBuilder _sb = new StringBuilder();
     /// <summary>
     /// Because in sunamo is not any MessageBox

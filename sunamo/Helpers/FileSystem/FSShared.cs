@@ -15,8 +15,12 @@ public partial class FS
 {
     private static List<char> s_invalidPathChars = null;
     private static Type type = typeof(FS);
-
-    private static List<char> s_invalidFileNameChars = null;
+    /// <summary>
+    /// Field as string because I dont have array and must every time ToArray() to construct string
+    /// </summary>
+    public static string s_invalidFileNameCharsString = null;
+    public static List<char> s_invalidFileNameChars = null;
+    
     private static List<char> s_invalidCharsForMapPath = null;
     private static List<char> s_invalidFileNameCharsWithoutDelimiterOfFolders = null;
 
@@ -101,6 +105,20 @@ public partial class FS
                 CA.RemoveWhichContains(list, item, false);
             }
         }
+        if (getFilesArgs.dontIncludeNewest)
+        {
+            Dictionary<string, DateTime> dictLastModified = new Dictionary<string, DateTime>();
+            foreach (var item in list)
+            {
+                DateTime dt = FS.LastModified(item);
+
+                dictLastModified.Add(item, dt);
+            }
+
+            list = dictLastModified.OrderBy(t => t.Value).Select(r => r.Key).ToList();
+            list.RemoveAt(list.Count - 1);
+        }
+
         return list;
     }
 
@@ -127,7 +145,9 @@ public partial class FS
         {
             s_invalidPathChars.Add(AllChars.bs);
         }
-        s_invalidFileNameChars = new List<char>(Path.GetInvalidFileNameChars());
+        var inv = Path.GetInvalidFileNameChars();
+        s_invalidFileNameChars = new List<char>(inv);
+        s_invalidFileNameCharsString = SH.Join(string.Empty, inv);
         for (char i = (char)65529; i < 65534; i++)
         {
             s_invalidFileNameChars.Add(i);
@@ -1992,8 +2012,15 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
         }
     }
 
-public static string ReplaceInvalidFileNameChars(string filename)
+    /// <summary>
+    /// ReplaceIncorrectCharactersFile - can specify char for replace with
+    /// ReplaceInvalidFileNameChars - all wrong chars skip
+    /// </summary>
+    /// <param name="filename"></param>
+    /// <returns></returns>
+    public static string ReplaceInvalidFileNameChars(string filename)
     {
+        
         StringBuilder sb = new StringBuilder();
         foreach (var item in filename)
         {
@@ -2003,5 +2030,103 @@ public static string ReplaceInvalidFileNameChars(string filename)
             }
         }
         return sb.ToString();
+    }
+
+/// <summary>
+    /// Replacement can be configured with replaceIncorrectFor
+    /// 
+    /// </summary>
+    /// <param name="p"></param>
+    public static string ReplaceIncorrectCharactersFile(string p)
+    {
+        string t = p;
+        foreach (char item in Path.GetInvalidFileNameChars())
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char item2 in t)
+            {
+                if (item != item2)
+                {
+                    sb.Append(item2);
+                }
+                else
+                {
+                    sb.Append(AllStrings.space);
+                }
+            }
+            t = sb.ToString();
+        }
+        return t;
+    }
+/// <summary>
+    /// ReplaceIncorrectCharactersFile - can specify char for replace with
+    /// ReplaceInvalidFileNameChars - all wrong chars skip
+    /// 
+    /// A2 - can specify more letter in one string
+    /// A3 is applicable only for A2. In general is use replaceIncorrectFor
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="replaceAllOfThisByA3"></param>
+    /// <param name="replaceForThis"></param>
+    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisByA3, string replaceForThis)
+    {
+        string t = p;
+        foreach (char item in Path.GetInvalidFileNameChars())
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char item2 in t)
+            {
+                if (item != item2)
+                {
+                    sb.Append(item2);
+                }
+                else
+                {
+                    sb.Append(replaceForThis);
+                }
+            }
+            t = sb.ToString();
+        }
+        if (!string.IsNullOrEmpty(replaceAllOfThisByA3))
+        {
+            foreach (char item in replaceAllOfThisByA3)
+            {
+                t = SH.ReplaceAll(t, replaceForThis, item.ToString());
+            }
+            
+        }
+        return t;
+    }
+/// <summary>
+    /// Pro odstranění špatných znaků odstraní všechny výskyty A2 za mezery a udělá z více mezere jediné
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="replaceAllOfThisThen"></param>
+    public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisThen)
+    {
+        string replaceFor = AllStrings.space;
+        string t = p;
+        foreach (char item in Path.GetInvalidFileNameChars())
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char item2 in t)
+            {
+                if (item != item2)
+                {
+                    sb.Append(item2);
+                }
+                else
+                {
+                    sb.Append(replaceFor);
+                }
+            }
+            t = sb.ToString();
+        }
+        if (!string.IsNullOrEmpty(replaceAllOfThisThen))
+        {
+            t = SH.ReplaceAll(t, replaceFor, replaceAllOfThisThen);
+            t = SH.ReplaceAll(t, replaceFor, AllStrings.doubleSpace);
+        }
+        return t;
     }
 }

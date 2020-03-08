@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
     /// </summary>
     public partial class HtmlHelperText
     {
-        private static Type s_type = typeof(HtmlHelperText);
+        private static Type type = typeof(HtmlHelperText);
 
         /// <summary>
         /// Get type of tag (paired ended, paired not ended, non paired)
@@ -22,7 +22,7 @@ using System.Text.RegularExpressions;
         /// <param name="tag"></param>
         public static HtmlTagSyntax GetSyntax(ref string tag)
         {
-            ThrowExceptions.InvalidParameter(s_type, "GetSyntax", (string)tag, "tag");
+            ThrowExceptions.InvalidParameter(type, "GetSyntax", (string)tag, "tag");
 
             tag = SH.GetToFirst((string)tag, AllStrings.space);
             tag = tag.Trim().TrimStart(AllChars.lt).TrimEnd(AllChars.gt).ToLower();

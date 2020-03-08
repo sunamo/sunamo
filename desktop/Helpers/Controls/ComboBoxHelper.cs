@@ -12,6 +12,7 @@ public partial class ComboBoxHelper
 {
     bool tagy = true;
     protected ComboBox cb = null;
+    public bool raiseSelectionChanged = true;
     public event SelectionChangedEventHandler SelectionChanged;
 
     public ComboBox Cb
@@ -103,7 +104,7 @@ public partial class ComboBoxHelper
             
         }
 
-        void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedO = cb.SelectedItem;
         if (SelectedO != null)
@@ -111,11 +112,14 @@ public partial class ComboBoxHelper
             // not need ValueFromTWithNameOrObject, TWithName has ToString
             cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
         }
-
-        if (SelectionChanged != null)
+        if (raiseSelectionChanged)
         {
-            SelectionChanged(sender, e);
+            if (SelectionChanged != null)
+            {
+                SelectionChanged(sender, e);
+            }
         }
+        
         
         }
 

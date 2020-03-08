@@ -18,10 +18,10 @@ public class PpkOnDrive<T> : PpkOnDriveBase<T> where T : IParser
     /// </summary>
     public override void Load()
     {
-        if (FS.ExistsFile(soubor))
+        if (FS.ExistsFile(a.file))
         {
             int dex = 0;
-            foreach (string item in TF.ReadAllLines(soubor))
+            foreach (string item in TF.ReadAllLines(a.file))
             {
                 T t = (T)Activator.CreateInstance(typeof(T));
                 t.Parse(item);
@@ -31,27 +31,16 @@ public class PpkOnDrive<T> : PpkOnDriveBase<T> where T : IParser
         }
     }
 
-    public PpkOnDrive(bool load) : base(load)
+    public PpkOnDrive(PpkOnDriveArgs a) : base(a)
     {
 
     }
 
-    public PpkOnDrive()
-    {
-
-    }
-
-    public PpkOnDrive(string file2, bool load = true) : base(file2, load)
+    public PpkOnDrive(string file2, bool load = true) : base(new PpkOnDriveArgs { file = file2, load = load })
     {
     }
 
-    public PpkOnDrive(string file, bool load, bool save) : base(file, load, save)
+    public PpkOnDrive(string file, bool load, bool save) : base(new PpkOnDriveArgs { file = file, load = load, save = save })
     {
-
-    }
-
-    public PpkOnDrive(bool open, bool load) : base(open, load)
-    {
-
     }
 }

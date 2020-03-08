@@ -32,7 +32,7 @@ public class ResourceLoaderRL
 
 public class TranslateDictionary : IDictionary<string, string>
 {
-    private static Type s_type = typeof(TranslateDictionary);
+    private static Type type = typeof(TranslateDictionary);
 
     public static string basePathSolution = null;
 
@@ -54,7 +54,7 @@ public class TranslateDictionary : IDictionary<string, string>
             {
                 //XlfResourcesH.initialized = false;
                 //XlfResourcesH.SaveResouresToRL(basePathSolution);
-                ThrowExceptions.Custom(s_type, RH.CallingMethod(), key + " is not in " + _l + " dictionary");
+                ThrowExceptions.Custom(type, RH.CallingMethod(), key + " is not in " + _l + " dictionary");
                 //return string.Empty;
             }
             var value = _d[key];

@@ -7,17 +7,32 @@ using sunamo;
 using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 public partial class PH
 {
-    public static void ShutdownProcessWhichOccupyFileHandleExe(string fileName)
+    public static List<Process> FindProcessesWhichOccupyFileHandleExe(string fileName)
     {
+        List<Process> pr2 = new List<Process>();
+
         Process tool = new Process();
         tool.StartInfo.FileName = "handle64.exe";
         tool.StartInfo.Arguments = fileName + " /accepteula";
         tool.StartInfo.UseShellExecute = false;
         tool.StartInfo.RedirectStandardOutput = true;
-        tool.Start();
+        try
+        {
+            tool.Start();
+        }
+        catch (Win32Exception ex)
+        {
+            if (ex.Message == "The system cannot find the file specified")
+            {
+                // probably file is hold by other process 
+                // like c:\inetpub\logs\logfiles\W3SVC1\u_ex200307.log
+            }
+            /*System.ComponentModel.Win32Exception: ''*/
+        }
         tool.WaitForExit();
         string outputTool = tool.StandardOutput.ReadToEnd();
 
@@ -26,6 +41,17 @@ public partial class PH
         foreach (Match match in matches)
         {
             var pr = Process.GetProcessById(int.Parse(match.Value));
+            pr2.Add(pr);
+        }
+
+        return pr2;
+    }
+
+    public static void ShutdownProcessWhichOccupyFileHandleExe(string fileName)
+    {
+        var pr2 = FindProcessesWhichOccupyFileHandleExe(fileName);
+        foreach (var pr in pr2)
+        {
             KillProcess(pr);
         }
     }

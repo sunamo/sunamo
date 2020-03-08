@@ -8,7 +8,7 @@ using System;
 /// </summary>
 public class InstantSB //: StringWriter
 {
-    private StringBuilder _sb = new StringBuilder();
+    public StringBuilder sb = new StringBuilder();
     private string _tokensDelimiter;
 
     public InstantSB(string znak)
@@ -18,7 +18,7 @@ public class InstantSB //: StringWriter
 
     public override string ToString()
     {
-        string vratit = _sb.ToString();
+        string vratit = sb.ToString();
         return vratit;
     }
 
@@ -33,13 +33,13 @@ public class InstantSB //: StringWriter
         string s = var.ToString();
         if (s != _tokensDelimiter && s != "")
         {
-            _sb.Append(s + _tokensDelimiter);
+            sb.Append(s + _tokensDelimiter);
         }
     }
 
     public void AddRaw(object tab)
     {
-        _sb.Append(tab.ToString());
+        sb.Append(tab.ToString());
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class InstantSB //: StringWriter
         string s = o.ToString();
         if (s != _tokensDelimiter && s != "")
         {
-            _sb.Append(s);
+            sb.Append(s);
         }
     }
 
@@ -83,6 +83,6 @@ public class InstantSB //: StringWriter
 
     public void RemoveEndDelimiter()
     {
-        _sb.Remove(_sb.Length - _tokensDelimiter.Length, _tokensDelimiter.Length);
+        sb.Remove(sb.Length - _tokensDelimiter.Length, _tokensDelimiter.Length);
     }
 }

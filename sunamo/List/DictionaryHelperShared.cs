@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class DictionaryHelper
 {
-    private static Type s_type = typeof(DictionaryHelper);
+    private static Type type = typeof(DictionaryHelper);
     
 
     public static Value GetFirstItemValue<Key,Value>(Dictionary<Key, Value> dict)
@@ -39,7 +39,7 @@ public partial class DictionaryHelper
 
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
-        ThrowExceptions.DifferentCountInLists(s_type, "GetDictionary", "keys", keys.Count, "values", values.Count);
+        ThrowExceptions.DifferentCountInLists(type, "GetDictionary", "keys", keys.Count, "values", values.Count);
         Dictionary<Key, Value> result = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
         {
@@ -89,7 +89,7 @@ public partial class DictionaryHelper
     public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)
     {
         var methodName = RH.CallingMethod();
-        ThrowExceptions.IsOdd(s_type, methodName, "p", p);
+        ThrowExceptions.IsOdd(type, methodName, "p", p);
 
         Dictionary<T, T> result = new Dictionary<T, T>();
         for (int i = 0; i < p.Count; i++)
