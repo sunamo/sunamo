@@ -36,7 +36,7 @@ namespace desktop
         {
             if (index >= VisualChildrenCount)
             {
-                throw new Exception();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
             }
 
             int i = 0;
@@ -51,7 +51,7 @@ namespace desktop
                     i++;
                 }
             }
-            throw new Exception();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
         }
 
         protected override Size MeasureOverride(Size availableSize)

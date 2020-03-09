@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\sunamo\Extensions\ObjectExtensions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\PpkOnDriveArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ButtonAction.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Args\PpkOnDriveArgs.cs" />
     <Compile Include="Collections\DictionaryWithList.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

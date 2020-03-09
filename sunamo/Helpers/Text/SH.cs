@@ -473,7 +473,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't from");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, methodName, item + " " + "hasn't from");
             }
 
             if (p.Length() > 1)
@@ -482,7 +482,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(type, methodName, item + " " + "hasn't to");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, methodName, item + " " + "hasn't to");
             }
 
             if (SH.IsWildcard(item))
@@ -645,7 +645,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                throw new Exception("Nahrazovan\u00FD prvek" + " " + item + " " + "je prvkem j\u00EDm\u017E se nahrazuje" + " " + "" + " " + zaCo + AllStrings.dot);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nahrazovan\u00FD prvek" + " " + item + " " + "je prvkem j\u00EDm\u017E se nahrazuje" + " " + "" + " " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -680,7 +680,7 @@ public static partial class SH
         // Ódstranuje nám to 
         //return Regex.Replace(str, @"(\r\n){2,}", Environment.NewLine);
 
-        //throw new Exception("NOT WORKING, IN FIRST DEBUG WITH UNIT TESTS AND THEN USE");
+        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"NOT WORKING, IN FIRST DEBUG WITH UNIT TESTS AND THEN USE");
 
         //List<int> toRemove = new List<int>();
         //List<bool> isWhitespace = new List<bool>(l.Count);
@@ -895,7 +895,7 @@ public static partial class SH
 
     public static bool IsAllUnique(List<string> c)
     {
-        ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
         return false;
     }
 
@@ -933,7 +933,7 @@ public static partial class SH
         {
             if (typeDynamics.Count != tfd.Count)
             {
-                throw new Exception("Mismatch count in input arrays of SH.AllHaveRightFormat()");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Mismatch count in input arrays of SH.AllHaveRightFormat()");
             }
         }
 
@@ -947,16 +947,6 @@ public static partial class SH
         }
 
         return true;
-    }
-
-    public static string FirstLine(string item)
-    {
-        var lines = SH.GetLines(item);
-        if (lines.Count == 0)
-        {
-            return string.Empty;
-        }
-        return lines[0];
     }
 
 
@@ -1307,7 +1297,7 @@ public static partial class SH
         var s = SH.Split(what, deli);
         if (s.Count < parts)
         {
-            //throw new Exception("");
+            //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"");
             if (s.Count > 0)
             {
                 List<string> vr2 = new List<string>();
@@ -1408,7 +1398,7 @@ public static partial class SH
             case UnicodeChars.Generic:
                 return CharHelper.IsGeneric(c);
             default:
-                ThrowExceptions.NotImplementedCase(type, "IsUnicodeChar", generic);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "IsUnicodeChar", generic);
                 return false;
         }
     }
@@ -1655,11 +1645,11 @@ public static partial class SH
         {
             if (s_cs)
             {
-                throw new Exception("Nebyl specifikov\u00E1n delimiter");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nebyl specifikov\u00E1n delimiter");
             }
             else
             {
-                throw new Exception("No delimiter determined");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"No delimiter determined");
             }
         }
 
@@ -1891,7 +1881,7 @@ public static partial class SH
         {
             if (throwExcWhenInvalidIndex)
             {
-                throw new Exception("Chybn\u00FD parametr" + " " + "");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Chybn\u00FD parametr" + " " + "");
             }
             else
             {

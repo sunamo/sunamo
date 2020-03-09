@@ -24,17 +24,17 @@ namespace SunamoFtp
 
         public override void chdirLite(string dirName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void CreateDirectoryIfNotExists(string dirName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void D(string what, string text, params object[] args)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void DebugActualFolder()
@@ -51,72 +51,72 @@ namespace SunamoFtp
 
         public override void DebugDirChmod(string dir)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override bool deleteRemoteFile(string fileName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override bool download(string remFileName, string locFileName, bool deleteLocalIfExists)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override long getFileSize(string filename)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void goToPath(string slozkaNaHostingu)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void goToUpFolder()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void goToUpFolderForce()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override List<string> ListDirectoryDetails()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void LoginIfIsNot(bool startup)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override bool mkdir(string dirName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void renameRemoteFile(string oldFileName, string newFileName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
     }
 }

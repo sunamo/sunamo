@@ -60,7 +60,7 @@ public class ListViewColumnHelper<T> where T : IIdentificatorDesktop<int>
                 setUp = first.IsSelected;
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), chb2);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), chb2);
                 break;
         }
 

@@ -40,7 +40,7 @@ namespace ThreadsIfaces
         public bool QueueUserWorkItem(System.Threading.WaitCallback callBack)
         {
             if (callBack == null)
-                throw new NotSupportedException(" " + " " + "callback method cannot be null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException(" " + " " + "callback method cannot be null");
 
             lock (jobs)
             {

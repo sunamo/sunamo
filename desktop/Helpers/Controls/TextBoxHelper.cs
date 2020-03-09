@@ -53,8 +53,8 @@ namespace desktop
             TextBox txt = new TextBox();
             ControlHelper.SetForeground(txt, d.foreground);
 
-            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.imagePath", d.imagePath);
-            ThrowExceptions.IsNotNull(type, RH.CallingMethod(), "d.OnClick", d.OnClick);
+            ThrowExceptions.IsNotNull(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "d.imagePath", d.imagePath);
+            ThrowExceptions.IsNotNull(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "d.OnClick", d.OnClick);
 
             txt.Width = 200;
             txt.Tag = d.tag;

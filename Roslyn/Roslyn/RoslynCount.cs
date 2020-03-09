@@ -39,9 +39,9 @@ namespace Roslyn
         {
             //string methodName = "ThrowException";
             //// Members
-            //ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class members", before, after);
+            //ThrowExceptions.ElementWasntRemoved(RuntimeHelper.GetStackTrace(),type, methodName, "removing class members", before, after);
             //// Methods
-            //ThrowExceptions.ElementWasntRemoved(type, methodName, "removing class methods", before2, after2);
+            //ThrowExceptions.ElementWasntRemoved(RuntimeHelper.GetStackTrace(),type, methodName, "removing class methods", before2, after2);
         }
     }
 }

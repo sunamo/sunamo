@@ -30,11 +30,11 @@ namespace CefSunamo
         {
             get
             {
-                throw new NotImplementedException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
             }
             set
             {
-                throw new NotImplementedException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
             }
         }
 
@@ -42,12 +42,12 @@ namespace CefSunamo
         {
             get
             {
-                throw new NotImplementedException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
             }
 
             set
             {
-                throw new NotImplementedException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
             }
         }
 
@@ -58,7 +58,7 @@ namespace CefSunamo
 
         public Task<HtmlDocument> GetHtmlDocument()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
     }
 }

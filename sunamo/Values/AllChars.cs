@@ -163,7 +163,7 @@ public static class AllChars
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, "ReturnRightPredicate", generalChars);
+            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "ReturnRightPredicate", generalChars);
         }
 
         return predicate;

@@ -74,7 +74,7 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
             }
 
             FullFileIndex.Reverse();
-            ThrowExceptions.DifferentCountInLists(type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
+            ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
             // Probably was add on background again due to watch for changes
             if (linesWithContent.ContainsKey(pathFile))
             {

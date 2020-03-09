@@ -17,7 +17,7 @@ public class XamlGeneratorDesktop : XamlGenerator
     /// <param name="elements"></param>
     public void Grid(List<List<string>> elements)
     {
-        ThrowExceptions.HaveAllInnerSameCount(type, "Grid", elements);
+        ThrowExceptions.HaveAllInnerSameCount(RuntimeHelper.GetStackTrace(),type, "Grid", elements);
         int rows = elements.Count;
         int columns = elements[0].Count;
 

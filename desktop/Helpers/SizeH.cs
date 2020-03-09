@@ -96,7 +96,7 @@ public class SizeH
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), t);
+            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), t);
         }
         return null;
     }

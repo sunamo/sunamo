@@ -185,13 +185,13 @@ namespace WebSunamo
         {
             get
             {
-                ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+                ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
                 return null;
             }
 
             set
             {
-                ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+                ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
             }
         }
 
@@ -215,7 +215,7 @@ namespace WebSunamo
 
         public void Accept(object input)
         {
-            ThrowExceptions.NotImplementedMethod(type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
         }
 
         public void Init()
@@ -230,7 +230,7 @@ namespace WebSunamo
 
         public Task<string> GetContent()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
     }
 }

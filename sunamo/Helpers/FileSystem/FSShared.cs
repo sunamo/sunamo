@@ -274,8 +274,8 @@ public partial class FS
     public static string GetDirectoryName(string rp)
     {
         
-        ThrowExceptions.IsNullOrEmpty(type, "GetDirectoryName", "rp", rp);
-        ThrowExceptions.IsNotWindowsPathFormat(type, RH.CallingMethod(), "rp", rp);
+        ThrowExceptions.IsNullOrEmpty(RuntimeHelper.GetStackTrace(),type, "GetDirectoryName", "rp", rp);
+        ThrowExceptions.IsNotWindowsPathFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "rp", rp);
 
         rp = rp.TrimEnd(AllChars.bs);
         int dex = rp.LastIndexOf(AllChars.bs);
@@ -300,14 +300,14 @@ public partial class FS
             var rp = rp2.ToString();
             return (dynamic)GetDirectoryName(rp);
         }
-        throw new Exception("GetDirectoryName");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetDirectoryName");
     }
 
     
 
     private static void ThrowNotImplementedUwp()
     {
-        throw new Exception("NI uwp - see method for stacktrace");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"NI uwp - see method for stacktrace");
     }
 
     /// <summary>
@@ -316,8 +316,8 @@ public partial class FS
     /// <param name="nad"></param>
     public static void CreateFoldersPsysicallyUnlessThere(string nad)
     {
-        ThrowExceptions.IsNullOrEmpty(type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
-        ThrowExceptions.IsNotWindowsPathFormat(type, RH.CallingMethod(), "nad", nad);
+        ThrowExceptions.IsNullOrEmpty(RuntimeHelper.GetStackTrace(),type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
+        ThrowExceptions.IsNotWindowsPathFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "nad", nad);
 
         FS.MakeUncLongPath(ref nad);
         if (FS.ExistsDirectory(nad))
@@ -380,7 +380,7 @@ public partial class FS
         folderWithProjectsFolders = SH.FirstCharUpper(folderWithProjectsFolders);
         folderWithTemporaryMovedContentWithoutBackslash = SH.FirstCharUpper(folderWithTemporaryMovedContentWithoutBackslash);
 
-        if (!ThrowExceptions.NotContains(type, "ReplaceDirectoryThrowExceptionIfFromDoesntExists", p, folderWithProjectsFolders))
+        if (!ThrowExceptions.NotContains(RuntimeHelper.GetStackTrace(),type, "ReplaceDirectoryThrowExceptionIfFromDoesntExists", p, folderWithProjectsFolders))
         {
             // Here can never accomplish when exc was throwed
             return p;
@@ -695,7 +695,7 @@ public partial class FS
             }
             else
             {
-                throw new Exception("SaveMemoryStream");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"SaveMemoryStream");
             }
         }
     }
@@ -1153,7 +1153,7 @@ public partial class FS
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, "CreateDirectory", whenExists);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "CreateDirectory", whenExists);
             }
         }
         else
@@ -1442,7 +1442,7 @@ public partial class FS
         catch (Exception ex)
         {
             // Not throw exception, it's probably Access denied  on Documents and Settings etc
-            //throw new Exception("GetFoldersEveryFolder with path: " + folder, ex);
+            //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetFoldersEveryFolder with path: " + folder, ex);
         }
     }
 
@@ -1464,7 +1464,7 @@ public partial class FS
         }
         catch (Exception ex)
         {
-            throw new Exception("GetFiles with path: " + folder, ex);
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetFiles with path: " + folder, ex);
         }
 
         dirs.Insert(0, folder);
@@ -1477,7 +1477,7 @@ public partial class FS
             catch (Exception ex)
             {
                 // Not throw exception, it's probably Access denied on Documents and Settings etc
-                //ThrowExceptions.FileSystemException(type, RH.CallingMethod(), ex);
+                //ThrowExceptions.FileSystemException(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), ex);
             }
         }
 
@@ -1949,7 +1949,7 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
     {
         if (to == ComputerSizeUnits.Auto)
         {
-            throw new Exception("Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
         }
         else if (to == ComputerSizeUnits.KB && b != ComputerSizeUnits.KB)
         {

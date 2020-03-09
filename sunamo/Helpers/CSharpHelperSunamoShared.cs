@@ -39,9 +39,9 @@ public partial class CSharpHelperSunamo
             case "Guid":
                 return "Guid.Empty";
             case "char":
-                throw new Exception("Nepodporovan\u00FD typ");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
         }
 
-        throw new Exception("Nepodporovan\u00FD typ");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
     }
 }

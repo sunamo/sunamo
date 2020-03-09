@@ -22,12 +22,12 @@ public static bool IsAdminUser()
     public static string GetStackTrace()
     {
         StackTrace st = new StackTrace();
-        
+
         var v = st.ToString();
         var l = SH.GetLines(v);
         CA.Trim(l);
         l.RemoveAt(0);
 
-        return SH.JoinNL( v);
+        return SH.JoinNL(v);
     }
 }

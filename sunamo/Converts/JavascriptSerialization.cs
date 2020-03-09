@@ -38,12 +38,12 @@ public class JavascriptSerialization
 
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
-        throw new Exception("System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
     }
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
-        throw new NotImplementedException("Else if with enum value" + " " + _sl + " " + "in JavascriptSerialization" + "." + v);
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Else if with enum value" + " " + _sl + " " + "in JavascriptSerialization" + "." + v);
     }
 
     public object Deserialize(String o, Type targetType)

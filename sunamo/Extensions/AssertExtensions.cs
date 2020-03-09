@@ -11,14 +11,14 @@ public class AssertExtensions
     {
         if (a.Count != b.Count)
         {
-            throw new Exception("Count in a and b is not equal");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Count in a and b is not equal");
         }
 
         for (int i = 0; i < a.Count; i++)
         {
             if(!EqualityComparer<T>.Default.Equals( a[i].Item1 ,b[i].Item1) || !EqualityComparer<U>.Default.Equals( a[i].Item2, b[i].Item2))
             {
-                throw new Exception("a and b is not equal");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"a and b is not equal");
             }
         }
 

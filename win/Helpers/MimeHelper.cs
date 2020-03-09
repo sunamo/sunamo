@@ -13,7 +13,7 @@ namespace sunamo.Helpers
         public static string GetMimeFromFile(string filename)
         {
             if (!FS.ExistsFile(filename))
-                throw new FileNotFoundException(filename + " " + "not found");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException(filename + " " + "not found");
 
             byte[] buffer = new byte[256];
             using (FileStream fs = new FileStream(filename, FileMode.Open))

@@ -29,7 +29,7 @@ public class SczNotifyServerErrorChecker
             var p = Process.GetProcesses().Where(e => e.ProcessName == "SczNotifyServerError").Select(d => d.ProcessName).ToList();
             if (p.Count == 0)
             {
-                //ThrowExceptions.Custom(type, RH.CallingMethod(), "SczNotifyServerError is not running, starting it");
+                //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "SczNotifyServerError is not running, starting it");
                 Process.Start(@"D:\pa\_sunamo\SczNotifyServerError\SczNotifyServerError.exe");
            }
         

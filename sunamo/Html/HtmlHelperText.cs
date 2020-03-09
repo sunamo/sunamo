@@ -22,7 +22,7 @@ using System.Text.RegularExpressions;
         /// <param name="tag"></param>
         public static HtmlTagSyntax GetSyntax(ref string tag)
         {
-            ThrowExceptions.InvalidParameter(type, "GetSyntax", (string)tag, "tag");
+            ThrowExceptions.InvalidParameter(RuntimeHelper.GetStackTrace(),type, "GetSyntax", (string)tag, "tag");
 
             tag = SH.GetToFirst((string)tag, AllStrings.space);
             tag = tag.Trim().TrimStart(AllChars.lt).TrimEnd(AllChars.gt).ToLower();
@@ -74,7 +74,7 @@ using System.Text.RegularExpressions;
                 {
                     if (dexEnd > dex2)
                     {
-                        throw new Exception($"Another starting tag is before ending <{pre}>");
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),$"Another starting tag is before ending <{pre}>");
                     }
                 }
 

@@ -57,7 +57,7 @@ namespace SunamoFtp
                 {
                     if (initialDirectory.StartsWith(AllStrings.slash))
                     {
-                        throw new Exception("Počáteční složka nemůže začínat s lomítkem na začátku");
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Počáteční složka nemůže začínat s lomítkem na začátku");
                         int druhy = initialDirectory.IndexOf(AllChars.slash, 1);
                         firstToken = initialDirectory.Substring(0, druhy);
                     }
@@ -96,7 +96,7 @@ namespace SunamoFtp
             }
             else
             {
-                throw new Exception();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
             }
         }
 

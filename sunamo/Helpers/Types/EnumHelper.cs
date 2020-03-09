@@ -198,7 +198,7 @@ public static partial class EnumHelper
         }
 
         if (typeof(T).BaseType != typeof(Enum))
-            throw new ArgumentException(" " + " " + "must be an Enum type");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(" " + " " + "must be an Enum type");
         var values = Enum.GetValues(typeof(T)).Cast<int>().ToArray();
         valuesInverted = values.Select(v => ~v).ToArray();
         result = new List<T>();
@@ -218,7 +218,7 @@ public static partial class EnumHelper
         }
 
         if (typeof(T).BaseType != typeof(Enum))
-            throw new ArgumentException(" " + " " + "must be an Enum type");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(" " + " " + "must be an Enum type");
         var values = Enum.GetValues(typeof(T)).Cast<byte>().ToArray();
         valuesInverted = values.Select(v => ~v).Cast<byte>().ToArray();
         result = new List<T>();

@@ -56,7 +56,7 @@ using System.Text;
         {
             if (!pridavatPostupne)
             {
-                throw new Exception("Pokousite se upravit PP kdyz mate nastaveno hromadne");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Pokousite se upravit PP kdyz mate nastaveno hromadne");
             }
             if (i + 1 != Hodnota.Length)
             {
@@ -66,7 +66,7 @@ using System.Text;
             }
             else
             {
-                throw new Exception("Dostali jste pres index kolekce");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Dostali jste pres index kolekce");
             }
         } 
         #endregion  

@@ -210,10 +210,10 @@ public static partial class CSharpHelper
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return "null";
             default:
-                throw new Exception("Nepodporovaný typ v metodě DefaultValueForTypeSqLite");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ v metodě DefaultValueForTypeSqLite");
         }
 
-        throw new Exception("Nepodporovaný typ");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
     }
 
    

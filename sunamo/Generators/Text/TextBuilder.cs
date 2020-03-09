@@ -73,7 +73,7 @@ namespace sunamo.Generators.Text
 
         private void UndoIsNotAllowed(string method)
         {
-            ThrowExceptions.IsNotAllowed(type, method, "Undo");
+            ThrowExceptions.IsNotAllowed(RuntimeHelper.GetStackTrace(),type, method, "Undo");
         }
 
         public void Undo()

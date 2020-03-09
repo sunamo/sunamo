@@ -96,7 +96,7 @@ namespace desktop
                         result.A = value;
                         break;
                     default:
-                        throw new Exception("");
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"");
                 }
                 rectColor.Fill = new SolidColorBrush(result);
                 SetColor(result);

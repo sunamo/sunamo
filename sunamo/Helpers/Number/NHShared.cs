@@ -129,7 +129,7 @@ public static string CalculateMedianAverage(List<double> list)
     {
         list.RemoveAll(d => d == 0);
 
-        ThrowExceptions.OnlyOneElement(type, "CalculateMedianAverage", "list", list);
+        ThrowExceptions.OnlyOneElement(RuntimeHelper.GetStackTrace(),type, "CalculateMedianAverage", "list", list);
 
         MedianAverage<double> medianAverage = new MedianAverage<double>();
         medianAverage.count = list.Count;
@@ -257,7 +257,7 @@ public static T Average<T>(dynamic gridWidth, dynamic columnsCount)
         {
             return Consts.zeroFloat;
         }
-        ThrowExceptions.NotImplementedCase(type, "ReturnZero", t.FullName);
+        ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "ReturnZero", t.FullName);
         return null;
     }
 

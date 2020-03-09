@@ -129,7 +129,7 @@ namespace desktop
             }
             else
             {
-                throw new Exception("Not supported strategy of saving files" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Not supported strategy of saving files" + ".");
             }
             mask += AllStrings.asterisk + ext;
             var files2 = FS.GetFilesInterop(_folder, mask, false, ac);

@@ -84,7 +84,7 @@ static public class FileUtil
         List<Process> processes = new List<Process>();
 
         int res = RmStartSession(out handle, 0, key);
-        if (res != 0) throw new Exception("Could not begin restart session.  Unable to determine file locker.");
+        if (res != 0) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not begin restart session.  Unable to determine file locker.");
 
         try
         {
@@ -97,7 +97,7 @@ static public class FileUtil
 
             res = RmRegisterResources(handle, (uint)resources.Length, resources, 0, null, 0, null);
 
-            if (res != 0) throw new Exception("Could not register resource.");
+            if (res != 0) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not register resource.");
 
             //Note: there's a race condition here -- the first call to RmGetList() returns
             //      the total number of process. However, when we call RmGetList() again to get
@@ -128,9 +128,9 @@ static public class FileUtil
                         catch (ArgumentException) { }
                     }
                 }
-                else throw new Exception("Could not list processes locking resource.");
+                else ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not list processes locking resource.");
             }
-            else if (res != 0) throw new Exception("Could not list processes locking resource. Failed to get size of result.");
+            else if (res != 0) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not list processes locking resource. Failed to get size of result.");
         }
         finally
         {

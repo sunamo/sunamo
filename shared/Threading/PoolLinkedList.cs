@@ -55,8 +55,8 @@ namespace SimpleThreadPool
         {
             lock (this._tasks)
             {
-                if (this._disallowAdd) { throw new InvalidOperationException("This Pool instance is in the process of being disposed, can't add anymore"); }
-                if (this._disposed) { throw new ObjectDisposedException("This Pool instance has already been disposed"); }
+                if (this._disallowAdd) { ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("This Pool instance is in the process of being disposed, can't add anymore"); }
+                if (this._disposed) { ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ObjectDisposedException("This Pool instance has already been disposed"); }
                 this._tasks.AddLast(task);
                 Monitor.PulseAll(this._tasks); // pulse because tasks count changed
             }

@@ -47,7 +47,7 @@ namespace cmd.Essential
                     bk = ConsoleColor.Green;
                     break;
                 default:
-                    throw new Exception(RLData.en["UninplementedBranch"]);
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["UninplementedBranch"]);
                     break;
             }
             if (bk != ConsoleColor.Black)

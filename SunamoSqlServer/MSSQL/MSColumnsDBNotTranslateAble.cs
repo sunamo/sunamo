@@ -86,7 +86,7 @@ using System.Collections.Generic;
                 else
                 {
                     // Je to například IDMisters
-                    throw new Exception("V prvním sloupci není řádek ID nebo ID*");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V prvním sloupci není řádek ID nebo ID*");
                 }
             }
             else

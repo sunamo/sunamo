@@ -16,22 +16,22 @@ namespace mono
 
         public bool ContainsText()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public void CutFiles(params string[] selected)
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
 		public void GetFirstWordOfList()
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
 		public List<string> GetLines()
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
 		public string GetText()
@@ -43,42 +43,42 @@ namespace mono
 
 		public void SetLines(List<string> lines)
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
         public void SetLines(IEnumerable lines)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public void SetList(List<string> d)
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
 		public void SetText(string s)
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
 		//public void SetText(TextBuilder stringBuilder)
 		//{
-		//	throw new NotImplementedException();
+		//	ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		//}
 
 		public void SetText(StringBuilder stringBuilder)
 		{
-			throw new NotImplementedException();
+			ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
 		}
 
         public void SetText2(string s)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public void SetText3(string s)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
     }
 }

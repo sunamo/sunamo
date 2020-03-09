@@ -145,7 +145,7 @@ namespace SunamoTesseract
                 }
                 else
                 {
-                    throw new Exception("Error. Tesseract stopped with an error code" + " " + "" + " " + process.ExitCode);
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Error. Tesseract stopped with an error code" + " " + "" + " " + process.ExitCode);
                 }
             }
             finally

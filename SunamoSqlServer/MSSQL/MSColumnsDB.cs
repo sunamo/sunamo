@@ -117,7 +117,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         StringBuilder sb = new StringBuilder();
         if (this.Count == 0)
         {
-            throw new Exception("Nebyly nalezeny žádné sloupce");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nebyly nalezeny žádné sloupce");
         }
         sb.Append("(");
         foreach (MSSloupecDB item in this)
@@ -443,7 +443,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
         }
         // OBSAHUJE I PREFIX, TAKŽE TŘEBA Koc_
         string nazevTabulkyCopy = SH.Copy(nazevTabulky);
-        string niMethod = CSharpGenerator.AddTab(2, "throw new NotImplementedException();");
+        string niMethod = CSharpGenerator.AddTab(2, "ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();");
         
         // ZBAVÍM TABULKU nazevTabulky PREFIXU, ČILI NEOBSAHUJE NAPŘ. Koc_
         if (nazevTabulky.StartsWith(dbPrefix))
@@ -529,7 +529,7 @@ public partial class MSColumnsDB : List<MSSloupecDB>
                 else
                 {
                     // Je to například IDMisters
-                    throw new Exception("V prvním sloupci není řádek ID nebo ID*");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V prvním sloupci není řádek ID nebo ID*");
                 }
             }
             else
@@ -587,7 +587,7 @@ ParseRow(o);");
         }
         if (nameFields.Count == 0)
         {
-            throw new Exception("Tabulka nemůže mít jen 1 sloupec.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Tabulka nemůže mít jen 1 sloupec.");
         }
         else
         {
@@ -790,7 +790,7 @@ ParseRow(o);");
             case SqlDbType.Structured:
             case SqlDbType.Udt:
             case SqlDbType.Xml:
-                throw new Exception("Snažíte se převést na int strukturovaný(složitý) datový typ");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést na int strukturovaný(složitý) datový typ");
                 
             case SqlDbType.UniqueIdentifier:
                 return "GetGuid";
@@ -803,7 +803,7 @@ ParseRow(o);");
                 return "GetObject";
                 
             default:
-                throw new Exception("Snažíte se převést datový typ, pro který není implementována větev");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést datový typ, pro který není implementována větev");
                 
         }
     }
@@ -867,7 +867,7 @@ ParseRow(o);");
                     break;
                 case SqlDbType.DateTimeOffset:
                 case SqlDbType.Timestamp:
-                    throw new NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Datový typ DateTimeOffset a Timestamp není podporován.");
 
                 case SqlDbType.Real:
                 case SqlDbType.Float:
@@ -877,22 +877,22 @@ ParseRow(o);");
                 case SqlDbType.Image:
                 case SqlDbType.Binary:
                 case SqlDbType.VarBinary:
-                    throw new Exception("Not supported convert binary data to string");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Not supported convert binary data to string");
                     
 
 
                 case SqlDbType.Structured:
-                    throw new NotSupportedException("Strukturované datové typy nejsou podporovány.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Strukturované datové typy nejsou podporovány.");
                     
 
                 case SqlDbType.Udt:
-                    throw new NotSupportedException("Univerzální datové typy nejsou podporovány.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Univerzální datové typy nejsou podporovány.");
                     
                 case SqlDbType.Variant:
-                    throw new NotSupportedException("Variantní datové typy nejsou podporovány.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Variantní datové typy nejsou podporovány.");
                     
                 case SqlDbType.Xml:
-                    throw new NotSupportedException("Xml datový typ není podporován");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Xml datový typ není podporován");
                     
                 default:
                     break;

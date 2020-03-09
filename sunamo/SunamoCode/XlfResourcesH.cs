@@ -228,7 +228,7 @@ public class XlfResourcesH
                 }
                 else
                 {
-                    throw new Exception("Unvalid file" + " " + file + ", " + "please delete it");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unvalid file" + " " + file + ", " + "please delete it");
                 }
             }
         }

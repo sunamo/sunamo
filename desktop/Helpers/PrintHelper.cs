@@ -67,7 +67,7 @@ namespace desktop
             {
 
             }
-            throw new Exception("NI SizeOfPaper.GetPaperSize" + "()");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"NI SizeOfPaper.GetPaperSize" + "()");
         }
     }
 }

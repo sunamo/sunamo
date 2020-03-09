@@ -82,7 +82,7 @@ namespace sunamo.Xml
         {
             if (xml == null)
             {
-                throw new ArgumentNullException("Atributte xml is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Atributte xml is null");
             }
             //xml = xml.Replace("&", " and ");
             StringBuilder buffer = new StringBuilder(xml.Length);

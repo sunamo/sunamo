@@ -15,7 +15,7 @@ namespace SunamoMarkdown
         /// <param name="html"></param>
         public static string ConvertToMarkDown(string html)
         {
-            ThrowExceptions.Custom(type, RH.CallingMethod(), "See method comment.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "See method comment.");
             return null;
             //var converter = new Converter();
             //var markdown = converter.Convert(html);

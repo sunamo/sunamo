@@ -24,9 +24,9 @@ public partial class WindowsOSHelper
 //{
 //    // Check necessary parameters first:
 //    if (String.IsNullOrEmpty(TargetPath))
-//        throw new ArgumentNullException("TargetPath");
+//        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("TargetPath");
 //    if (String.IsNullOrEmpty(ShortcutFile))
-//        throw new ArgumentNullException("ShortcutFile");
+//        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("ShortcutFile");
 //    // Create WshShellClass instance:
 //    IWshShell3 wshShell = new WshShellClass();
 //    // Create shortcut object:

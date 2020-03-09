@@ -125,7 +125,7 @@ using System.Text;
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
 
                 return Records[recordIndex];
             }
@@ -141,23 +141,23 @@ using System.Text;
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 return record.Fields[fieldIndex];
             }
             set
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0}.", fieldIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no field at index {0}.", fieldIndex));
 
                 record.Fields[fieldIndex] = value;
             }
@@ -173,7 +173,7 @@ using System.Text;
             get
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
@@ -189,17 +189,17 @@ using System.Text;
                 }
 
                 if (fieldIndex == -1)
-                    throw new ArgumentException(SH.Format2("There is no field header with the name '{0}'", fieldName));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(SH.Format2("There is no field header with the name '{0}'", fieldName));
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 return record.Fields[fieldIndex];
             }
             set
             {
                 if (recordIndex > (Records.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no record at index {0}.", recordIndex));
 
                 CsvRecord record = Records[recordIndex];
 
@@ -215,10 +215,10 @@ using System.Text;
                 }
 
                 if (fieldIndex == -1)
-                    throw new ArgumentException(SH.Format2("There is no field header with the name '{0}'", fieldName));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(SH.Format2("There is no field header with the name '{0}'", fieldName));
 
                 if (fieldIndex > (record.Fields.Count - 1))
-                    throw new IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException(SH.Format2("There is no field at index {0} in record {1}.", fieldIndex, recordIndex));
 
                 record.Fields[fieldIndex] = value;
             }

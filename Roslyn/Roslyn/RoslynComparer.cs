@@ -15,7 +15,7 @@ namespace Roslyn
             {
                 return false;
             }
-            //ThrowExceptions.DifferentCountInLists(type, "Modifiers", "modifiers1", modifiers1, "modifiers2", modifiers2);
+            //ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "Modifiers", "modifiers1", modifiers1, "modifiers2", modifiers2);
 
             for (int i = 0; i < modifiers2.Count; i++)
             {

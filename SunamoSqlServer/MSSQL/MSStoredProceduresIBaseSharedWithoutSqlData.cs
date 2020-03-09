@@ -2354,7 +2354,7 @@ public partial class MSStoredProceduresIBase2 : SqlServerHelper
         else
 
         {
-            throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
         }
     }
 
@@ -2405,7 +2405,7 @@ public partial class MSStoredProceduresIBase2 : SqlServerHelper
             }
             else
             {
-                throw new Exception("V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
             }
         }
 
@@ -2441,7 +2441,7 @@ public partial class MSStoredProceduresIBase2 : SqlServerHelper
         {
             return UInt64.Parse(dd);
         }
-        //throw new Exception("Nepovolený nehodnotový typ v metodě GetMinValueForType");
+        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType");
         return decimal.Parse(dd);
     }
 

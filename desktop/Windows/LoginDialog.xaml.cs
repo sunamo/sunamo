@@ -122,7 +122,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), storageApplicationData);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), storageApplicationData);
             }
 
             if (txtLogin.Text != "")
@@ -139,7 +139,7 @@ namespace desktop
 
         private static void ThrowExceptionConfigNotSupported()
         {
-            throw new NotImplementedException("Ukládání nastavení do app.config nebo web.config zatím není podporováno");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Ukládání nastavení do app.config nebo web.config zatím není podporováno");
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -238,7 +238,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "", storageApplicationData);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
         }
 
@@ -263,7 +263,7 @@ namespace desktop
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(MethodBase.GetCurrentMethod(), "", storageApplicationData);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),MethodBase.GetCurrentMethod(), "", storageApplicationData);
             }
         }
 

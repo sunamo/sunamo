@@ -61,7 +61,7 @@ namespace desktop.Controls
         {
             if (neededRows > rowsCount)
             {
-                ThrowExceptions.BadMappedXaml(type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en["ItNeedsMoreRowsThanItExists"]);
+                ThrowExceptions.BadMappedXaml(RuntimeHelper.GetStackTrace(),type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en["ItNeedsMoreRowsThanItExists"]);
             }
             else
             {

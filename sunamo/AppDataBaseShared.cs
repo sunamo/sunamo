@@ -69,7 +69,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
             bool isNull = Abstract.IsRootFolderNull();
             if (isNull)
             {
-                throw new Exception("Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + " (Look direct into IsRootFolderNull()).");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + " (Look direct into IsRootFolderNull()).");
             }
 
             return rootFolder;
@@ -119,7 +119,7 @@ public void CreateAppFoldersIfDontExists()
         }
         else
         {
-            throw new Exception("Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
         }
     }
 }

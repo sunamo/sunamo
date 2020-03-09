@@ -43,7 +43,7 @@ public static partial class SH
         int remain = sl % c; 
         if (remain != 0)
         {
-            ThrowExceptions.Custom(type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
+            ThrowExceptions.Custom(null, type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
         }
 
         List<string> ls = new List<string>(c);
@@ -186,7 +186,7 @@ public static partial class SH
             }
         }
 
-        ThrowExceptions.IsNotAllowed(type, RH.CallingMethod(), v +" as bracket");
+        ThrowExceptions.IsNotAllowed(null, type, RH.CallingMethod(), v +" as bracket");
         return null;
     }
 
@@ -773,7 +773,7 @@ public static partial class SH
             case '[':
                 return Brackets.Square;
             default:
-                ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), v);
+                ThrowExceptions.NotImplementedCase(null, type, RH.CallingMethod(), v);
                 break;
         }
 
@@ -882,7 +882,7 @@ public static partial class SH
         {
             var from2 = SH.Split(co, Environment.NewLine);
             var to2 = SH.Split(zaCo, Environment.NewLine);
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", @"from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(null, type, "ReplaceInAllFiles", @"from2", from2, "to2", to2);
 
             for (int i = 0; i < from2.Count; i++)
             {
@@ -1426,17 +1426,9 @@ public static partial class SH
     {
         if (deli == null || deli.Count() == 0)
         {
-            if (s_cs)
-            {
-                throw new Exception("Nebyl specifikov\u00E1n delimiter");
-            }
-            else
-            {
-                throw new Exception("No delimiter determined");
-            }
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"No delimiter determined");   
         }
 
-        
         var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
         var result = text.Split(deli3.ToArray(), stringSplitOptions).ToList();
         CA.Trim(result);
@@ -1444,8 +1436,7 @@ public static partial class SH
         {
             CA.RemoveStringsEmpty(result);
         }
-        
-        
+
         return result;
     }
 
@@ -1647,18 +1638,19 @@ public static partial class SH
     /// <param name="parts"></param>
     public static string Join(object delimiter, params object[] parts)
     {
-        if (delimiter is IEnumerable)
+        var enu =CA.ToEnumerable(parts);
+        if (delimiter is IEnumerable && delimiter.GetType() != Types.tString)
         {
             var ie = (IEnumerable)delimiter;
 
-            if (ie.Count() > 1 && parts.Length == 1)
+            if (ie.Count() > 1 && enu.Count() == 1)
             {
-                ThrowExceptions.Custom( type, RH.CallingMethod(), "Probably was called with swithech delimiter and parts");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(), "Probably was called with swithech delimiter and parts");
             }
         }
 
         // JoinString point to Join with implementation
-        return Join(delimiter.ToString(), CA.ToEnumerable(parts));
+        return Join(delimiter.ToString(), enu);
     }
 
     public static string JoinNL(IEnumerable parts)
@@ -2709,7 +2701,7 @@ public static string GetTextBetween(string p, string after, string before, bool 
         {
             if (throwExceptionIfNotContains)
             {
-                ThrowExceptions.NotContains(type, "GetTextBetween", p, after, before);
+                ThrowExceptions.NotContains(null, type, "GetTextBetween", p, after, before);
             }
         }
 
@@ -3356,5 +3348,15 @@ private static string FromSpace160To32(ref string text)
     {
         text = Regex.Replace(text, @"\p{Z}", AllStrings.space);
         return text;
+    }
+
+public static string FirstLine(string item)
+    {
+        var lines = SH.GetLines(item);
+        if (lines.Count == 0)
+        {
+            return string.Empty;
+        }
+        return lines[0];
     }
 }

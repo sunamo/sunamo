@@ -47,11 +47,11 @@ namespace sunamo
             {
                 if (AppLangHelper.currentUICulture.TwoLetterISOLanguageName == "cs")
                 {
-                    throw new FormatException("Zadan\u00FD \u0159et\u011Bzec se nezd\u00E1 b\u00FDt \u0161estn\u00E1ctkov\u011B k\u00F3dov\u00E1n\u00FD" + ":");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("Zadan\u00FD \u0159et\u011Bzec se nezd\u00E1 b\u00FDt \u0161estn\u00E1ctkov\u011B k\u00F3dov\u00E1n\u00FD" + ":");
                 }
                 else
                 {
-                    throw new FormatException("The provided string does not appear to be Hex encoded" + ":" + hexEncoded, ex);
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("The provided string does not appear to be Hex encoded" + ":" + hexEncoded, ex);
                 }
             }
         }

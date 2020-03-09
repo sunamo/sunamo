@@ -44,7 +44,7 @@ namespace desktop.Converters
 
             public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
             {
-                throw new NotSupportedException("Cannot convert back");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Cannot convert back");
             }
         }
     

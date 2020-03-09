@@ -75,7 +75,7 @@ namespace sunamo.Helpers
             }
             else
             {
-                throw new Exception("Non supported http method in HttpMethod.GetResponseText");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Non supported http method in HttpMethod.GetResponseText");
             }
             //HttpResponseMessage response = responseTask.Result;
             return response;

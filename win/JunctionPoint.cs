@@ -266,12 +266,12 @@ public static class JunctionPoint
             targetDir = Path.GetFullPath(targetDir);
 
             if (!FS.ExistsDirectory(targetDir))
-                throw new IOException("Target path does not exist or is not a directory" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Target path does not exist or is not a directory" + ".");
 
             if (FS.ExistsDirectory(junctionPoint))
             {
                 if (!overwrite)
-                    throw new IOException("Directory already exists and overwrite parameter is false" + ".");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Directory already exists and overwrite parameter is false" + ".");
             }
             else
             {
@@ -332,7 +332,7 @@ public static class JunctionPoint
             if (!FS.ExistsDirectory(junctionPoint))
             {
                 if (FS.ExistsFile(junctionPoint))
-                    throw new IOException("Path is not a junction point.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Path is not a junction point.");
 
                 return;
             }
@@ -369,7 +369,7 @@ public static class JunctionPoint
                 }
                 catch (IOException ex)
                 {
-                    throw new IOException("Unable to delete junction point" + ".", ex);
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Unable to delete junction point" + ".", ex);
                 }
             }
         }
@@ -422,7 +422,7 @@ public static class JunctionPoint
         //{
         //    string target = InternalGetTarget(handle);
         //    if (target == null)
-        //        throw new IOException("Path is not a junction point.");
+        //        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Path is not a junction point.");
 
         //    return target;
         //}
@@ -488,6 +488,6 @@ public static class JunctionPoint
 
         private static void ThrowLastWin32Error(string message)
         {
-            throw new IOException(message, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(message, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
         }
     }

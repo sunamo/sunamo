@@ -273,7 +273,7 @@ using System.Windows.Media.Imaging;
             }
             else
             {
-            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
         }
             return null;
         }
@@ -375,7 +375,7 @@ using System.Windows.Media.Imaging;
             }
             else
             {
-            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(type, RH.CallingMethod(), fnOri);
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
         }
             return bi;
         }

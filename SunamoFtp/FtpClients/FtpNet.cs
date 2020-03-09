@@ -991,7 +991,7 @@ namespace SunamoFtp
                 }
                 else
                 {
-                    throw new Exception("Nepodporovaný typ objektu");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ objektu");
                 }
             }
             return vr;
@@ -1029,12 +1029,12 @@ namespace SunamoFtp
 
         public override void DebugActualFolder()
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
 
         public override void D(string what, string text, params object[] args)
         {
-            throw new NotImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
         }
         #endregion
     }

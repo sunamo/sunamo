@@ -797,7 +797,7 @@ public static partial class BTS
         {
             return UInt64.MaxValue;
         }
-        throw new Exception("Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMaxValueForType");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMaxValueForType");
     }
 
     public static object GetMinValueForType(Type idt)
@@ -834,7 +834,7 @@ public static partial class BTS
         {
             return UInt64.MinValue;
         }
-        throw new Exception("Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMinValueForType");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMinValueForType");
     }
     #endregion
 

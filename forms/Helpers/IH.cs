@@ -117,7 +117,7 @@ namespace forms
         {
             if (value > 100)
             {
-                throw new Exception("Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
                 //value = 100;
             }
             p.Value = value;

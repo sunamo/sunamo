@@ -25,7 +25,7 @@ public partial class ComboBoxHelper
         }
         if (d.OnClick != null)
         {
-            ThrowExceptions.IsNotAllowed(type, RH.CallingMethod(), "d.OnClick");
+            ThrowExceptions.IsNotAllowed(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "d.OnClick");
         }
         cb.Tag = d.tag;
         cb.ToolTip = d.tooltip;

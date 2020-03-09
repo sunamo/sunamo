@@ -38,7 +38,7 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem
 
         set
         {
-            ThrowExceptions.CheckBackslashEnd(value);
+            ThrowExceptions.CheckBackslashEnd(RuntimeHelper.GetStackTrace(),value);
             _fullPathFolder = value;
             _nameSolution = FS.GetFileName(value.TrimEnd(AllChars.bs));
             if (SolutionsIndexerSettings.ignorePartAfterUnderscore)

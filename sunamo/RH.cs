@@ -111,7 +111,7 @@ public class RH
     {
         if (!typeof(T).IsSerializable)
         {
-            throw new ArgumentException("The type must be serializable" + ".", "source");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("The type must be serializable" + ".", "source");
         }
 
         // Don't serialize a null object, simply return the default for that object
@@ -288,7 +288,7 @@ public class RH
 
         if (children == null)
         {
-            ThrowExceptions.IsNull(type, "IsOrIsDeriveFromBaseClass", "children", children);
+            ThrowExceptions.IsNull(RuntimeHelper.GetStackTrace(),type, "IsOrIsDeriveFromBaseClass", "children", children);
         }
         while (true)
         {
@@ -361,6 +361,14 @@ public class RH
         var withType = fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();
         return withType;
     }
+
+    public static List<MethodInfo> GetMethods(Type t)
+    {
+        var methods = t.GetMethods(BindingFlags.Public | BindingFlags.Static |
+           // return protected/public but not private
+           BindingFlags.FlattenHierarchy).ToList();
+        return methods;
+    }
     #endregion
 
     /// <summary>
@@ -391,7 +399,7 @@ public class RH
                 dump = RH.DumpAsString(name, o);
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(type, "DumpAsString", d);
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "DumpAsString", d);
                 break;
         }
 
@@ -400,7 +408,7 @@ public class RH
 
     private static string DumpAsString(string name, object o)
     {
-        ThrowExceptions.NotImplementedMethod(type, "DumpAsString" );
+        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, "DumpAsString" );
         return null;
     }
 

@@ -153,7 +153,7 @@ using System.Text;
         private void Initialise(string filePath, Encoding encoding)
         {
             if (!FS.ExistsFile(filePath))
-                throw new FileNotFoundException(SH.Format2("The file '{0}' does not exist.", filePath));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException(SH.Format2("The file '{0}' does not exist.", filePath));
 
             _fileStream = File.OpenRead(filePath);
             Initialise(_fileStream, encoding);
@@ -167,7 +167,7 @@ using System.Text;
         private void Initialise(Stream stream, Encoding encoding)
         {
             if (stream == null)
-                throw new ArgumentNullException("The supplied stream is null" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("The supplied stream is null" + ".");
 
             _stream = stream;
             _stream.Position = 0;
@@ -183,7 +183,7 @@ using System.Text;
         private void Initialise(Encoding encoding, string csvContent)
         {
             if (csvContent == null)
-                throw new ArgumentNullException("The supplied csvContent is null" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("The supplied csvContent is null" + ".");
 
             _encoding = (encoding ?? Encoding.UTF8);
 

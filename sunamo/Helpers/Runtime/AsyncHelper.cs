@@ -289,7 +289,7 @@ using System.Threading.Tasks;
 
             public override void Send(SendOrPostCallback d, object state)
             {
-                throw new NotSupportedException("We cannot send to our same thread");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("We cannot send to our same thread");
             }
 
             public override void Post(SendOrPostCallback d, object state)
@@ -323,7 +323,7 @@ using System.Threading.Tasks;
                         task.Item1(task.Item2);
                         if (InnerException != null) // the method threw an exeption
                         {
-                            throw new AggregateException("AsyncHelpers.Run method threw an exception.", InnerException);
+                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),AggregateException("AsyncHelpers.Run method threw an exception.", InnerException);
                         }
                     }
                     else

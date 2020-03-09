@@ -92,7 +92,7 @@ namespace SunamoFtp
             }
             else
             {
-                throw new Exception("Nový druh entry (change msdos directory listing to unix)");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nový druh entry (change msdos directory listing to unix)");
             }
             return isFile;
         }

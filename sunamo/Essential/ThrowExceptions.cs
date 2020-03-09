@@ -14,29 +14,29 @@ public class ThrowExceptions
 {
     #region Must be as first - newly created method fall into this
 
-    public static void BadMappedXaml(object type, string methodName, string nameControl, string additionalInfo)
+    public static void BadMappedXaml(string stacktrace, object type, string methodName, string nameControl, string additionalInfo)
     {
-        ThrowIsNotNull(Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName, true), nameControl, additionalInfo));
+        ThrowIsNotNull(stacktrace, Exceptions.BadMappedXaml(FullNameOfExecutedCode(type, methodName, true), nameControl, additionalInfo));
     }
 
-    public static void FileExists(object type, string methodName, string fulLPath)
+    public static void FileExists(string stacktrace, object type, string methodName, string fulLPath)
     {
-        ThrowIsNotNull(Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
+        ThrowIsNotNull(stacktrace, Exceptions.FileExists(FullNameOfExecutedCode(type, methodName, true), fulLPath));
     }
 
-    public static void UseRlc(object type, string methodName)
+    public static void UseRlc(string stacktrace, object type, string methodName)
     {
-        ThrowIsNotNull(Exceptions.UseRlc(FullNameOfExecutedCode(type, methodName, true)));
+        ThrowIsNotNull(stacktrace, Exceptions.UseRlc(FullNameOfExecutedCode(type, methodName, true)));
     }
 
-    public static void NotImplementedMethod(Type type, string methodName)
+    public static void NotImplementedMethod(string stacktrace, object type, string methodName)
     {
-        ThrowIsNotNull(Exceptions.NotImplementedMethod(FullNameOfExecutedCode( type, methodName)));
+        ThrowIsNotNull(stacktrace, Exceptions.NotImplementedMethod(FullNameOfExecutedCode( type, methodName)));
     }
 
-    public static bool OutOfRange(Type type, string methodName, string colName, IEnumerable col, string indexName, int index)
+    public static bool OutOfRange(string stacktrace, object type, string methodName, string colName, IEnumerable col, string indexName, int index)
     {
-        return ThrowIsNotNull(Exceptions.OutOfRange(FullNameOfExecutedCode(type, methodName), colName, col, indexName, index));
+        return ThrowIsNotNull(stacktrace, Exceptions.OutOfRange(FullNameOfExecutedCode(type, methodName), colName, col, indexName, index));
     }
 
     /// <summary>
@@ -45,14 +45,14 @@ public class ThrowExceptions
     /// <param name="type"></param>
     /// <param name="v"></param>
     /// <param name="photosPath"></param>
-    public static bool DirectoryExists(Type type, string methodName, string path)
+    public static bool DirectoryExists(string stacktrace, object type, string methodName, string path)
     {
-        return ThrowIsNotNull(Exceptions.DirectoryExists(FullNameOfExecutedCode(type, methodName, true), path));
+        return ThrowIsNotNull(stacktrace, Exceptions.DirectoryExists(FullNameOfExecutedCode(type, methodName, true), path));
     }
 
-    public static void IsWhitespaceOrNull(Type type, string methodName, string variable, object data)
+    public static void IsWhitespaceOrNull(string stacktrace, object type, string methodName, string variable, object data)
     {
-        ThrowIsNotNull(Exceptions.IsWhitespaceOrNull(FullNameOfExecutedCode(type, methodName, true), variable, data));
+        ThrowIsNotNull(stacktrace, Exceptions.IsWhitespaceOrNull(FullNameOfExecutedCode(type, methodName, true), variable, data));
     }
 
 
@@ -67,116 +67,116 @@ public class ThrowExceptions
     /// <param name="en"></param>
     /// <param name="dictName"></param>
     /// <param name="key"></param>
-    public static void KeyNotFound<T,U>(Type type, string v, IDictionary<T,U> en, string dictName, T key)
+    public static void KeyNotFound<T,U>(string stacktrace, object type, string v, IDictionary<T,U> en, string dictName, T key)
     {
-        ThrowIsNotNull(Exceptions.KeyNotFound( FullNameOfExecutedCode(type, v), en, dictName, key));
+        ThrowIsNotNull(stacktrace, Exceptions.KeyNotFound( FullNameOfExecutedCode(type, v), en, dictName, key));
     }
 
-    public static void HaveAllInnerSameCount(Type type, string methodName, List<List<string>> elements)
+    public static void HaveAllInnerSameCount(string stacktrace, object type, string methodName, List<List<string>> elements)
     {
-        ThrowIsNotNull(Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName, true), elements));
+        ThrowIsNotNull(stacktrace, Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName, true), elements));
     }
 
     /// <summary>
     /// Must be string due to in sunamo is not NamespaceElement
     /// </summary>
     /// <param name="name"></param>
-    public static void NameIsNotSetted(object type, string methodName, string nameControl, string nameFromProperty)
+    public static void NameIsNotSetted(string stacktrace, object type, string methodName, string nameControl, string nameFromProperty)
     {
-        ThrowIsNotNull(Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
+        ThrowIsNotNull(stacktrace, Exceptions.NameIsNotSetted(FullNameOfExecutedCode(type, methodName, true), nameControl, nameFromProperty));
     }
 
-    public static void IsOdd(Type type, string methodName, string colName, IEnumerable col)
+    public static void IsOdd(string stacktrace, object type, string methodName, string colName, IEnumerable col)
     {
-        ThrowIsNotNull(Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));
+        ThrowIsNotNull(stacktrace, Exceptions.IsOdd(FullNameOfExecutedCode(type, methodName), colName, col));
     }
 
-    public static void DifferentCountInLists(object type, string methodName, string namefc, int countfc, string namesc, int countsc)
+    public static void DifferentCountInLists(string stacktrace, object type, string methodName, string namefc, int countfc, string namesc, int countsc)
     {
-        ThrowIsNotNull(Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName, true), namefc, countfc, namesc, countsc));
+        ThrowIsNotNull(stacktrace, Exceptions.DifferentCountInLists(FullNameOfExecutedCode(type, methodName, true), namefc, countfc, namesc, countsc));
     }
 
-    public static void DoesntHaveRequiredType(object type, string methodName, string variableName)
+    public static void DoesntHaveRequiredType(string stacktrace, object type, string methodName, string variableName)
     {
-        ThrowIsNotNull(Exceptions.DoesntHaveRequiredType(FullNameOfExecutedCode(type, methodName, true), variableName));
+        ThrowIsNotNull(stacktrace, Exceptions.DoesntHaveRequiredType(FullNameOfExecutedCode(type, methodName, true), variableName));
     }
 
-    public static void DifferentCountInLists(Type type, string methodName, string namefc, IEnumerable replaceFrom, string namesc, IEnumerable replaceTo)
+    public static void DifferentCountInLists(string stacktrace, object type, string methodName, string namefc, IEnumerable replaceFrom, string namesc, IEnumerable replaceTo)
     {
-        DifferentCountInLists(type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
+        DifferentCountInLists(stacktrace, type, methodName, namefc, replaceFrom.Count(), namesc, replaceTo.Count());
     }
 
     
 
-    public static void IsNotAllowed(Type type, string methodName, string what)
+    public static void IsNotAllowed(string stacktrace, object type, string methodName, string what)
     {
-        ThrowIsNotNull(Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName, true), what));
+        ThrowIsNotNull(stacktrace, Exceptions.IsNotAllowed(FullNameOfExecutedCode(type, methodName, true), what));
     }
 
-    public static void MoreThanOneElement(Type type, string methodName, string listName, int count)
+    public static void MoreThanOneElement(string stacktrace, object type, string methodName, string listName, int count)
     {
-        ThrowIsNotNull(Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName, true), listName, count));
+        ThrowIsNotNull(stacktrace, Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName, true), listName, count));
     }
 
-    public static void IsNull(object type, string methodName, string variableName, object variable)
+    public static void IsNull(string stacktrace, object type, string methodName, string variableName, object variable)
     {
-        ThrowIsNotNull(Exceptions.IsNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
+        ThrowIsNotNull(stacktrace, Exceptions.IsNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
     }
 
-    public static void IsNotNull(Type type, string methodName, string variableName, object variable)
+    public static void IsNotNull(string stacktrace, object type, string methodName, string variableName, object variable)
     {
-        ThrowIsNotNull(Exceptions.IsNotNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
+        ThrowIsNotNull(stacktrace, Exceptions.IsNotNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
     }
 
-    public static void ArrayElementContainsUnallowedStrings(object type, string methodName, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
+    public static void ArrayElementContainsUnallowedStrings(string stacktrace, object type, string methodName, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
     {
-        ThrowIsNotNull(Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName, true), arrayName, dex, valueElement, unallowedStrings));
+        ThrowIsNotNull(stacktrace, Exceptions.ArrayElementContainsUnallowedStrings(FullNameOfExecutedCode(type, methodName, true), arrayName, dex, valueElement, unallowedStrings));
     }
 
-    public static void OnlyOneElement(object type, string methodName, string colName, IEnumerable list)
+    public static void OnlyOneElement(string stacktrace, object type, string methodName, string colName, IEnumerable list)
     {
-        ThrowIsNotNull(Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName, true), colName, list));
+        ThrowIsNotNull(stacktrace, Exceptions.OnlyOneElement(FullNameOfExecutedCode(type, methodName, true), colName, list));
     }
 
-    public static void StringContainsUnallowedSubstrings(object type, string methodName, string input, params string[] unallowedStrings)
+    public static void StringContainsUnallowedSubstrings(string stacktrace, object type, string methodName, string input, params string[] unallowedStrings)
     {
-        ThrowIsNotNull(Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName, true), input, unallowedStrings));
+        ThrowIsNotNull(stacktrace, Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName, true), input, unallowedStrings));
     }
 
-    public static void InvalidParameter(object type, string methodName, string mayUrlDecoded, string typeOfInput)
+    public static void InvalidParameter(string stacktrace, object type, string methodName, string mayUrlDecoded, string typeOfInput)
     {
-        ThrowIsNotNull(Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName, true), mayUrlDecoded, typeOfInput));
+        ThrowIsNotNull(stacktrace, Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName, true), mayUrlDecoded, typeOfInput));
     }
 
-    public static void ElementCantBeFound(object type, string methodName, string nameCollection, string element)
+    public static void ElementCantBeFound(string stacktrace, object type, string methodName, string nameCollection, string element)
     {
-        ThrowIsNotNull(Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName, true), nameCollection, element));
+        ThrowIsNotNull(stacktrace, Exceptions.ElementCantBeFound(FullNameOfExecutedCode(type, methodName, true), nameCollection, element));
     }
 
     //IsNotWindowsPathFormat
-    public static void IsNotWindowsPathFormat(object type, string methodName, string argName, string argValue)
+    public static void IsNotWindowsPathFormat(string stacktrace, object type, string methodName, string argName, string argValue)
     {
-        ThrowIsNotNull(Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
+        ThrowIsNotNull(stacktrace, Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
 
-    public static void IsNullOrEmpty(object type, string methodName, string argName, string argValue)
+    public static void IsNullOrEmpty(string stacktrace, object type, string methodName, string argName, string argValue)
     {
-        ThrowIsNotNull(Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
+        ThrowIsNotNull(stacktrace, Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
     #endregion
 
     #region Without parameters
-    public static void NotImplementedCase(object type, string methodName, object niCase)
+    public static void NotImplementedCase(string stacktrace, object type, string methodName, object niCase)
     {
-        ThrowIsNotNull(Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true), niCase));
+        ThrowIsNotNull(stacktrace, Exceptions.NotImplementedCase(FullNameOfExecutedCode(type, methodName, true), niCase));
     }
 
     #endregion
 
     #region Without locating executing code
-    public static void CheckBackslashEnd(string r)
+    public static void CheckBackslashEnd(string stacktrace, string r)
     {
-        ThrowIsNotNull(Exceptions.CheckBackslashEnd("", r));
+        ThrowIsNotNull(stacktrace, Exceptions.CheckBackslashEnd("", r));
     }
     #endregion
 
@@ -223,9 +223,7 @@ public class ThrowExceptions
         return string.Concat(typeFullName, AllStrings.dot, methodName);
     }
 
-    
-
-    public static Action<string> writeServerError;
+    public static Action<string, string> writeServerError;
 
     #region MyRegion
     /// <summary>
@@ -234,7 +232,7 @@ public class ThrowExceptions
     /// In console app is needed put in into try-catch error due to there is no globally handler of errors
     /// </summary>
     /// <param name="exception"></param>
-    public static bool ThrowIsNotNull(string exception)
+    public static bool ThrowIsNotNull(string stacktrace, string exception)
     {
         if (exception != null)
         {
@@ -245,12 +243,12 @@ public class ThrowExceptions
                 //Debugger.Break();
                 // Will be written in globalasax error
 
-                writeServerError(exception);
+                writeServerError(stacktrace, exception);
                 //}
             }
             else
             {
-                throw new Exception(exception);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),exception);
             }
 
             ////////DebugLogger.Instance.WriteLine(exception);
@@ -265,19 +263,19 @@ public class ThrowExceptions
     /// In console app is needed put in into try-catch error due to there is no globally handler of errors
     /// </summary>
     /// <param name="v"></param>
-    private static bool ThrowIsNotNull(object v)
+    private static bool ThrowIsNotNull(string stacktrace, object v)
     {
         if (v != null)
         {
-            ThrowIsNotNull(v.ToString());
+            ThrowIsNotNull(stacktrace, v.ToString());
             return false;
         }
         return true;
     }
 
-    public static void WasNotKeysHandler(Type type, string methodName, string name, object keysHandler)
+    public static void WasNotKeysHandler(string stacktrace, object type, string methodName, string name, object keysHandler)
     {
-        ThrowIsNotNull(Exceptions.WasNotKeysHandler( FullNameOfExecutedCode(type, methodName), name, keysHandler));
+        ThrowIsNotNull(stacktrace, Exceptions.WasNotKeysHandler( FullNameOfExecutedCode(type, methodName), name, keysHandler));
     }
 
     /// <summary>
@@ -288,23 +286,21 @@ public class ThrowExceptions
     /// <param name="type"></param>
     /// <param name="methodName"></param>
     /// <param name="exception"></param>
-    public static bool ThrowIsNotNull(object type, string methodName, string exception)
+    public static bool ThrowIsNotNull(string stacktrace, object type, string methodName, string exception)
     {
         if (exception != null)
         {
-            throw new Exception(exception);
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),exception);
             return false;
         }
         return true;
     }
     #endregion
 
-    public static void NoPassedFolders(Type type, string v, IEnumerable folders)
+    public static void NoPassedFolders(string stacktrace, object type, string v, IEnumerable folders)
     {
-        ThrowIsNotNull(Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
+        ThrowIsNotNull(stacktrace, Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
     }
-
-    
 
     /// <summary>
     /// Verify whether A3 contains A4
@@ -315,9 +311,9 @@ public class ThrowExceptions
     /// <param name="v"></param>
     /// <param name="p"></param>
     /// <param name="after"></param>
-    public static bool NotContains(Type type, string v, string p, params string[] after)
+    public static bool NotContains(string stacktrace, object type, string v, string p, params string[] after)
     {
-        return ThrowIsNotNull(Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
+        return ThrowIsNotNull(stacktrace, Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
     }
 
     /// <summary>
@@ -326,14 +322,14 @@ public class ThrowExceptions
     /// <param name="type"></param>
     /// <param name="methodName"></param>
     /// <param name="folder1"></param>
-    public static void DirectoryWasntFound(Type type, string methodName, string folder1)
+    public static void DirectoryWasntFound(string stacktrace, object type, string methodName, string folder1)
     {
-        ThrowIsNotNull(Exceptions.DirectoryWasntFound(FullNameOfExecutedCode(type, methodName, true), folder1));
+        ThrowIsNotNull(stacktrace, Exceptions.DirectoryWasntFound(FullNameOfExecutedCode(type, methodName, true), folder1));
     }
 
-    public static void Custom(object type, string methodName, string message)
+    public static void Custom(string stacktrace, object type, string methodName, string message)
     {
-        ThrowIsNotNull(Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message));
+        ThrowIsNotNull(stacktrace, Exceptions.Custom(FullNameOfExecutedCode(type, methodName, true), message));
     }
 
     /// <summary>
@@ -344,29 +340,29 @@ public class ThrowExceptions
     /// <param name="detailLocation"></param>
     /// <param name="before"></param>
     /// <param name="after"></param>
-    public static void ElementWasntRemoved(Type type, string methodName, string detailLocation, int before, int after)
+    public static void ElementWasntRemoved(string stacktrace, object type, string methodName, string detailLocation, int before, int after)
     {
-        ThrowIsNotNull(Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName, true), detailLocation, before, after));
+        ThrowIsNotNull(stacktrace, Exceptions.ElementWasntRemoved(FullNameOfExecutedCode(type, methodName, true), detailLocation, before, after));
     }
 
-    public static void FolderCantBeRemoved(Type type, string methodName, string folder)
+    public static void FolderCantBeRemoved(string stacktrace, object type, string methodName, string folder)
     {
-        ThrowIsNotNull(Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName, true), folder));
+        ThrowIsNotNull(stacktrace, Exceptions.FolderCantBeRemoved(FullNameOfExecutedCode(type, methodName, true), folder));
     }
 
-    public static void FileHasExtensionNotParseableToImageFormat(Type type, string methodName, string fnOri)
+    public static void FileHasExtensionNotParseableToImageFormat(string stacktrace, object type, string methodName, string fnOri)
     {
-        ThrowIsNotNull(Exceptions.FileHasExtensionNotParseableToImageFormat(FullNameOfExecutedCode(type, methodName), fnOri));
+        ThrowIsNotNull(stacktrace, Exceptions.FileHasExtensionNotParseableToImageFormat(FullNameOfExecutedCode(type, methodName), fnOri));
     }
 
-    public static void FileSystemException(Type type, string methodName, Exception ex)
+    public static void FileSystemException(string stacktrace, object type, string methodName, Exception ex)
     {
-        ThrowIsNotNull(Exceptions.FileSystemException(FullNameOfExecutedCode(type, methodName), ex));
+        ThrowIsNotNull(stacktrace, Exceptions.FileSystemException(FullNameOfExecutedCode(type, methodName), ex));
     }
 
-    public static void FuncionalityDenied(Type type, string methodName, string description)
+    public static void FuncionalityDenied(string stacktrace, object type, string methodName, string description)
     {
-        ThrowIsNotNull(Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
+        ThrowIsNotNull(stacktrace, Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
     }
     #endregion
 }

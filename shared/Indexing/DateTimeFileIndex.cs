@@ -74,7 +74,7 @@
 //            }
 //            else
 //            {
-//                throw new Exception("Nepodporovaná strategie ukládání.");
+//                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaná strategie ukládání.");
 //            }
 //            mask += AllStrings.asterisk;
 //            #region MyRegion

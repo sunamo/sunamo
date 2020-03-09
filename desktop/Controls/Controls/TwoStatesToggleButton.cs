@@ -24,7 +24,7 @@ public static partial class TwoStatesToggleButton
         }
         else
         {
-            throw new Exception(RLData.en["YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton"]);
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton"]);
         }
     }
 

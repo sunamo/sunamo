@@ -248,7 +248,7 @@ public partial class FS
                     to2.Add(string.Empty);
                 }
             }
-            ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+            ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
 
             ReplaceInAllFiles(from2, to2, files, isMultilineWithVariousIndent);
         }
@@ -261,7 +261,7 @@ public partial class FS
     public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
-        ThrowExceptions.DifferentCountInLists(type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
         ReplaceInAllFiles(replaceFrom, replaceTo, files, isMultilineWithVariousIndent);
     }
 
@@ -578,7 +578,7 @@ public partial class FS
             value = ConvertToSmallerComputerUnitSize(value, b, ComputerSizeUnits.B);
             if (to == ComputerSizeUnits.Auto)
             {
-                throw new Exception("Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
             }
             else if (to == ComputerSizeUnits.KB && b != ComputerSizeUnits.KB)
             {
@@ -775,7 +775,7 @@ public partial class FS
     /// <param name="files"></param>
     public static void DeleteDuplicatedImages(List<string> files)
     {
-        ThrowExceptions.Custom(type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
     }
 
     public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T> readFunc)
@@ -977,7 +977,7 @@ public partial class FS
     /// <param name="folders"></param>
     public static List<string> AllExtensionsInFolders(SearchOption so, params string[] folders)
     {
-        ThrowExceptions.NoPassedFolders(type, "AllExtensionsInFolders", folders);
+        ThrowExceptions.NoPassedFolders(RuntimeHelper.GetStackTrace(),type, "AllExtensionsInFolders", folders);
 
         List<string> vr = new List<string>();
         List<string> files = AllFilesInFolders(CA.ToListString(folders), CA.ToListString("*."), so);

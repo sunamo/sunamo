@@ -33,7 +33,7 @@ public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
             default:
                 break;
         }
-        //throw new Exception("Neznámý název měsíce");
+        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neznámý název měsíce");
         return null;
     }
 
@@ -69,7 +69,7 @@ public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
             default:
                 break;
         }
-        //throw new Exception("Neznámý název měsíce");
+        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neznámý název měsíce");
         return null;
     }
 }

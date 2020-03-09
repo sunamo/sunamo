@@ -38,12 +38,12 @@ public static partial class CSharpHelper
                 // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
                 return Consts.DateTimeMinVal;
             case "char":
-                throw new Exception("Nepodporovaný typ");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
             case "byte" + "[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return null;
         }
 
-        throw new Exception("Nepodporovaný typ");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
     }
 }

@@ -96,7 +96,7 @@ public partial class FrameworkElementHelper
         }
         else
         {
-            ThrowExceptions.Custom(type, "", "customControl is not ContentControl or Panel");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, "", "customControl is not ContentControl or Panel");
         }
 
         return default(T);

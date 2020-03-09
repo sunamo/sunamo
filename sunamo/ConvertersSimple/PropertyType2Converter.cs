@@ -11,7 +11,7 @@ namespace sunamo
     {
         public PropertyType2 ConvertTo(string u)
         {
-            throw new NoImplementedException();
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NoImplementedException();
         }
 
         /// <summary>

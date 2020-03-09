@@ -8,7 +8,7 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
     /// <param name="p"></param>
     public static string FromConvention(string p)
     {
-        throw new NoImplementedException();
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NoImplementedException();
     }
 
     /// <summary>

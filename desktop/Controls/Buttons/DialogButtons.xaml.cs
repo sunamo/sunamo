@@ -101,7 +101,7 @@ namespace desktop.Controls
 
         public void Accept(object input)
         {
-            throw new Exception(RLData.en["OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept"] + ".");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept"] + ".");
         }
     }
 }

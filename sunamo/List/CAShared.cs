@@ -543,8 +543,8 @@ public static partial class CA
     {
         string methodName = "TrimStart";
 
-        ThrowExceptions.IsNull(type, methodName, "backslash", backslash);
-        ThrowExceptions.IsNull(type, methodName, "s", s);
+        ThrowExceptions.IsNull(RuntimeHelper.GetStackTrace(),type, methodName, "backslash", backslash);
+        ThrowExceptions.IsNull(RuntimeHelper.GetStackTrace(),type, methodName, "s", s);
 
         for (int i = 0; i < s.Count; i++)
         {
@@ -1134,7 +1134,7 @@ public static partial class CA
     {
         if (p < 0)
         {
-            throw new Exception("Chybn\u00FD parametr" + " " + "p");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Chybn\u00FD parametr" + " " + "p");
         }
         if (nahledy.Count() > p)
         {
@@ -1412,7 +1412,7 @@ public static string StartWith(List<string> suMethods, string line)
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(type, RH.CallingMethod(), parseNegations);
+            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), parseNegations);
         }
 
         return result;

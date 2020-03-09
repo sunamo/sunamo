@@ -76,7 +76,7 @@ public class MenuItemWithSubitemsHelper
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                throw new Exception("Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
             }
         }
 
@@ -103,7 +103,7 @@ public class MenuItemWithSubitemsHelper
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                throw new Exception("Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
             }
         }
 

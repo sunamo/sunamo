@@ -96,7 +96,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             return null;
         }
         return null;
-        //throw new Exception("Zadaná buňka nebyla nalezena");
+        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Zadaná buňka nebyla nalezena");
     }
 
     private bool GetCellDataTableBool(DataTable dataTable, int radek, int sloupec)

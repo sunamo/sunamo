@@ -12,7 +12,7 @@ public class NumberTextBoxForms : TextBoxForms
     {
         if ((min > max) || min < 0 || max < 0)
         {
-            throw new Exception("Minimum and maximum values are not supported");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Minimum and maximum values are not supported");
         }
         mMin = min;
         mMax = max;

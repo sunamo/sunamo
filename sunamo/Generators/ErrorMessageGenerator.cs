@@ -86,7 +86,7 @@ public class ErrorMessageGenerator
                 case FileExceptions.General:
                     return "Nezn\u00E1m\u00E1 nebo obecn\u00E1 chyba";
                 default:
-                    throw new Exception("Neimplementovan\u00E1 v\u011Btev");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neimplementovan\u00E1 v\u011Btev");
             }
         }
         else
@@ -103,7 +103,7 @@ public class ErrorMessageGenerator
                 case FileExceptions.General:
                     return "Unknown or general error";
                 default:
-                    throw new Exception("Not implemented case");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Not implemented case");
             }
         }
 

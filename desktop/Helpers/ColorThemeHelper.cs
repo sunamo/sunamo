@@ -10,6 +10,6 @@ public class ColorThemeHelper
 {
     internal static void ApplyColorTheme(Border border, ColorTheme ct)
     {
-        throw new NotImplementedException();
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
     }
 }

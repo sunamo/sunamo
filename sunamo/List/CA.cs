@@ -126,7 +126,7 @@ public static partial class CA
     /// <param name="input"></param>
     private static void Prepend(List<string> numbered, List<string> input)
     {
-        ThrowExceptions.DifferentCountInLists(type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
 
         for (int i = 0; i < input.Count; i++)
         {
@@ -269,6 +269,14 @@ public static partial class CA
 
         result = textOutput.ToString();
         return result;
+    }
+
+    public static void InitFillWith<T>(List<T> arr, int columns)
+    {
+        for (int i = 0; i < columns; i++)
+        {
+            arr.Add(default(T));
+        }
     }
 
     public static List<string> PaddingByEmptyString(List<string> list, int columns)
@@ -831,7 +839,7 @@ public static partial class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
 
@@ -882,7 +890,7 @@ public static partial class CA
             return vr;
         }
 
-        throw new ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
+        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
     }
 
 

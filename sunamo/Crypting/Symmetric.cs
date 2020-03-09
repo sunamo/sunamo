@@ -192,7 +192,7 @@ namespace shared.Crypting
                 }
                 else
                 {
-                    throw new CryptographicException("No key was provided for the decryption operation" + "!");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("No key was provided for the decryption operation" + "!");
                 }
             }
             if (_iv.IsEmpty)
@@ -203,7 +203,7 @@ namespace shared.Crypting
                 }
                 else
                 {
-                    throw new CryptographicException("No initialization vector was provided for the decryption operation" + "!");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("No initialization vector was provided for the decryption operation" + "!");
                 }
             }
             _crypto.Key = _key.Bytes;
@@ -350,7 +350,7 @@ namespace shared.Crypting
             }
             catch (CryptographicException ex)
             {
-                throw new CryptographicException("Unable to decrypt data. The provided key may be invalid" + ".", ex);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("Unable to decrypt data. The provided key may be invalid" + ".", ex);
             }
             finally
             {

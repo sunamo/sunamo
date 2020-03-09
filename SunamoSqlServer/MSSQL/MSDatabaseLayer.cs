@@ -57,7 +57,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case "System.Byte":
                 return SqlDbType.TinyInt;
             default:
-                throw new Exception("Neimplementovaná větev");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neimplementovaná větev");
 
         }
     }
@@ -164,7 +164,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         }
         else
         {
-            throw new Exception("Snažíte se vytvořit třídu s nepodporovaným typem");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se vytvořit třídu s nepodporovaným typem");
         }
     }
 
@@ -307,7 +307,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         }
         else
         {
-            throw new Exception("Snažíte se vytvořit název třídy s nepodporovaným typem");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se vytvořit název třídy s nepodporovaným typem");
         }
     }
 
@@ -366,7 +366,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case SqlDbType.Structured:
             case SqlDbType.Udt:
             case SqlDbType.Xml:
-                throw new Exception("Snažíte se převést na int strukturovaný(složitý) datový typ");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést na int strukturovaný(složitý) datový typ");
 
             case SqlDbType.UniqueIdentifier:
                 return "Guid";
@@ -379,7 +379,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
                 return "object";
 
             default:
-                throw new Exception("Snažíte se převést datový typ, pro který není implementována větev");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést datový typ, pro který není implementována větev");
         }
     }
 
@@ -506,7 +506,7 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case SqlDbType.Xml:
 
             default:
-                throw new Exception("Nepodporovaný datový typ");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný datový typ");
 
         }
     }

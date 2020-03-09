@@ -56,7 +56,7 @@ namespace ConfigurableWindow.Shared
             _settings = ww.CreateSettings();
 
             if (_settings == null)
-                throw new Exception("Cannot return null.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Cannot return null.");
 
             // Direct set _isLoaded to true, because I call this from _Loaded
             _isLoaded = true;

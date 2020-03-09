@@ -60,7 +60,7 @@ public class PHWin
                 break;
             default:
 
-                //ThrowExceptions.NotImplementedCase(type, RH.CallingMethod());
+                //ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
                 break;
         }
 
