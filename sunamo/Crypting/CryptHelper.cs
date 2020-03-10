@@ -35,6 +35,7 @@ public partial class CryptHelper : ICryptHelper
         {
             case Provider.DES:
                 ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
+                break;
             case Provider.RC2:
                 //crypt = new CryptHelper.RC2();
                 break;
@@ -45,7 +46,7 @@ public partial class CryptHelper : ICryptHelper
                 //crypt = new CryptHelper.TripleDES();
                 break;
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("");
+                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),provider);
         }
         _crypt.iv = iv;
         _crypt.pp = pp;
