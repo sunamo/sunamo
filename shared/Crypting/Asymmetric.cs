@@ -324,7 +324,8 @@ namespace shared.Crypting
 
             public static string FromFile(string p)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"The method or operation is not implemented" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The method or operation is not implemented" + ".");
+                return null;
             }
         }
 
@@ -500,14 +501,17 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("bad length") > -1)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption" + ".", ex);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption" + ".");
                 }
                 else
                 {
                     throw;
                 }
             }
+            return null;
         }
+
+        static Type type = typeof(Crypting.Asymmetric);
 
         /// <summary>
         /// Decrypts data using the default private key
@@ -564,7 +568,8 @@ namespace shared.Crypting
                 {
                     s = "public";
                 }
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),System.Security.XmlSyntaxException(SH.Format2("The provided {0} encryption key XML does not appear to be valid.", s), ex);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2("The provided {0} encryption key XML does not appear to be valid.", s));
+                
             }
         }
 
@@ -605,7 +610,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'c:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".", ex);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'c:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".");
                 }
                 else
                 {
@@ -623,6 +628,7 @@ namespace shared.Crypting
                     csp = null;
                 }
             }
+            return null;
         }
 
     }

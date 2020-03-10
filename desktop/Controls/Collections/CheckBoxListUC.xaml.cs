@@ -301,7 +301,7 @@ namespace desktop.Controls.Collections
         //            setUp = first.IsSelected;
         //            break;
         //        default:
-        //            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+        //            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod());
         //            break;
         //    }
 

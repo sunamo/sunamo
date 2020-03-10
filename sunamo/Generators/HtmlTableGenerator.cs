@@ -11,12 +11,12 @@ namespace sunamo.Generators
 
         public void StartTable(object p)
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
 
         public void EndTr()
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
 
         public void WriteRow(string additionalQuestionCssClass, List<string> possibleAnswersAll)
@@ -48,17 +48,17 @@ namespace sunamo.Generators
 
         public void EndTd()
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
 
         public void StartTr(string mainQuestionsCssClass)
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
 
         public void StartTd(object p)
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
     }
 }

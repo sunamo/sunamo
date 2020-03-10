@@ -286,10 +286,11 @@ using System.Threading.Tasks;
             readonly AutoResetEvent workItemsWaiting = new AutoResetEvent(false);
             readonly Queue<Tuple<SendOrPostCallback, object>> items =
                 new Queue<Tuple<SendOrPostCallback, object>>();
+        static Type type = typeof(ExclusiveSynchronizationContext);
 
             public override void Send(SendOrPostCallback d, object state)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("We cannot send to our same thread");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "We cannot send to our same thread");
             }
 
             public override void Post(SendOrPostCallback d, object state)
@@ -323,7 +324,7 @@ using System.Threading.Tasks;
                         task.Item1(task.Item2);
                         if (InnerException != null) // the method threw an exeption
                         {
-                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),AggregateException("AsyncHelpers.Run method threw an exception.", InnerException);
+                            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"AsyncHelpers.Run method threw an exception. "+ InnerException);
                         }
                     }
                     else

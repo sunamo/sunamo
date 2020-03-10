@@ -36,7 +36,8 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
             case "ulong":
                 return "System.UInt64";
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00E9 kl\u00ED\u010Dov\u00E9 slovo");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00E9 kl\u00ED\u010Dov\u00E9 slovo");
+        return null;
     }
 
     public static string ToShortcut(object instance)
@@ -92,8 +93,11 @@ public static class ConvertTypeShortcutFullName //: IConvertShortcutFullName
         }
         if (throwExceptionWhenNotBasicType)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+            return null;
         }
         return fullName;
     }
+
+    static Type type = typeof(ConvertTypeShortcutFullName);
 }

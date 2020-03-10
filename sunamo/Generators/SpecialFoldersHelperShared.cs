@@ -5,12 +5,13 @@ using System.IO;
 
 public static partial class SpecialFoldersHelper
 {
+    public static bool aspnet = false;
+
     public static string AppDataRoaming()
     {
         string vr = null;
-        
 
-        if (ThisApp.aspnet || VpsHelperSunamo.IsVps)
+        if (Exc.aspnet || VpsHelperSunamo.IsVps)
         {
             // Create junction to Administrator
             vr = @"c:\Users\Administrator\AppData\Roaming";
@@ -21,7 +22,6 @@ public static partial class SpecialFoldersHelper
             //vr = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             vr = @"c:\Users\n\AppData\Roaming";
         }
-        
 
         return vr;
     }

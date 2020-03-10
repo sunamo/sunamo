@@ -42,9 +42,12 @@ namespace desktop.Converters
             return null;
         }
 
+        static Type type = typeof(HeaderToImageConverter);
+
             public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Cannot convert back");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Cannot convert back");
+            return null;
             }
         }
     

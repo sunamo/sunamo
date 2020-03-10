@@ -56,7 +56,7 @@ using System.Text;
         {
             if (!pridavatPostupne)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Pokousite se upravit PP kdyz mate nastaveno hromadne");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Pokousite se upravit PP kdyz mate nastaveno hromadne");
             }
             if (i + 1 != Hodnota.Length)
             {
@@ -66,8 +66,10 @@ using System.Text;
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Dostali jste pres index kolekce");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Dostali jste pres index kolekce");
             }
-        } 
-        #endregion  
+        }
+    #endregion
+
+    static Type type = typeof(PolozkyRegistru);
     }

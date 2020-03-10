@@ -42,8 +42,9 @@ public partial class Utils
         }
         catch (System.FormatException ex)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),System.FormatException("The provided string does not appear to be Base64 encoded" + ":" + Environment.NewLine + base64Encoded + Environment.NewLine, ex);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The provided string does not appear to be Base64 encoded" + ":" + Environment.NewLine + base64Encoded + Environment.NewLine);
         }
+        return null;
     }
 
     /// <summary>
@@ -59,6 +60,8 @@ public partial class Utils
 
         return Convert.ToBase64String(b);
     }
+
+    static Type type = typeof(Utils);
 
     /// <summary>
     /// converts from a string Hex representation to an array of bytes
@@ -86,7 +89,8 @@ public partial class Utils
         }
         catch (Exception ex)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine);
+            return null;
         }
     }
 }

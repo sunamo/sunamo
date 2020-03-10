@@ -96,13 +96,16 @@ namespace desktop
                         result.A = value;
                         break;
                     default:
-                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"");
+                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"");
+                        break;
                 }
                 rectColor.Fill = new SolidColorBrush(result);
                 SetColor(result);
                 //ColorChanged(result);
             }
         }
+
+        static Type type = typeof(ColorPicker);
 
         private void htmlColor_KeyUp(object sender, KeyEventArgs e)
         {

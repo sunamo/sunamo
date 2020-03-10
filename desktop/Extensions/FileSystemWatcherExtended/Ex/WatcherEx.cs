@@ -44,7 +44,7 @@ using System.Text;
         {
             if (info == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"WatcherInfo object cannot be null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"WatcherInfo object cannot be null");
             }
             this.watcherInfo = info;
 
@@ -52,6 +52,7 @@ using System.Text;
             Initialize();
         }
 
+    static Type type = typeof(WatcherEx);
         public WatcherEx(string p, string p_2)
         {
             // TODO: Complete member initialization

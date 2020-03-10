@@ -7,15 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
-
 namespace desktop
 {
     public class XamlSerializer
     {
-        Type type = typeof(XamlSerializer);
+static Type type = typeof(XamlSerializer);
+        
         Window w = null;
         string path = null;
-
         /// <summary>
         /// Is Used from Name, A1 is only for showing Exception
         /// </summary>
@@ -24,24 +23,20 @@ namespace desktop
         public XamlSerializer( Window w)
         {
             var name = w.GetType().Name;
-            //ThrowExceptions.NameIsNotSetted(RuntimeHelper.GetStackTrace(),type, "ctor", nameWindow, w.Name);
+            //ThrowExceptions.NameIsNotSetted(Exc.GetStackTrace(),type, "ctor", nameWindow, w.Name);
             this.w = w;
             path = AppData.ci.GetFile(AppFolders.Controls, name);
             w.Loaded += new RoutedEventHandler(MainWindow_Loaded);
             w.Closing += new CancelEventHandler(MainWindow_Closing);
         }
-
-
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadExternalXaml();
         }
-
         void MainWindow_Closing(object sender, CancelEventArgs e)
         {
             SaveExternalXaml();
         }
-
         public void LoadExternalXaml()
         {
             if ( FS.ExistsFile(path))
@@ -52,7 +47,6 @@ namespace desktop
                 }
             }
         }
-
         public void SaveExternalXaml()
         {
             using (FileStream stream = new FileStream(path, FileMode.Create))

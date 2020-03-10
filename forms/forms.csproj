@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -49,18 +49,18 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -149,8 +149,6 @@
     <Compile Include="Helpers\LVH.cs" />
     <Compile Include="Helpers\OPH.cs" />
     <Compile Include="Helpers\SDH.cs" />
-    <Compile Include="PicturesForms.cs" />
-    <Compile Include="SearchingInLBWF.cs" />
     <Compile Include="Helpers\TBH.cs" />
     <Compile Include="Helpers\TSBH.cs" />
     <Compile Include="Helpers\TSCBH.cs" />
@@ -159,7 +157,9 @@
     <Compile Include="Helpers\TSMIH.cs" />
     <Compile Include="Helpers\TSPBH.cs" />
     <Compile Include="Helpers\TSTBH.cs" />
+    <Compile Include="PicturesForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchingInLBWF.cs" />
     <Compile Include="TextBoxPath.cs">
       <SubType>Component</SubType>
     </Compile>

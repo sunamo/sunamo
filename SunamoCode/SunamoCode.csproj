@@ -1,34 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Resources\SystemWindowsControls.txt" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Resources\SystemWindowsControls.txt" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="SolutionsIndexer\Data\" />
     <Folder Include="Templates\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Google.Apis.Core" Version="1.42.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\dll\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

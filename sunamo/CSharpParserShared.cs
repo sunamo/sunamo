@@ -36,7 +36,7 @@ public partial class CSharpParser{
         TF.WriteAllLines(file, lines);
         if (remove.Count > 0)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "Cant be deleted in XlfKeys: " + SH.Join(",", remove));
+            ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "Cant be deleted in XlfKeys: " + SH.Join(",", remove));
         }
     }
 }

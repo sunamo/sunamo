@@ -84,7 +84,7 @@ public partial class SqlServerHelper
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), p);
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), p);
         }
 
 #if DEBUG

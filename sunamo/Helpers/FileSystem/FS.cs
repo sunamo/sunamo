@@ -14,9 +14,9 @@ using sunamo.Constants;
 using System.Diagnostics;
 using sunamo;
 using System.Linq;
-
 public partial class FS
 {
+
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -31,7 +31,6 @@ public partial class FS
         }
         return vr;
     }
-
     /// <summary>
     /// Get path A2/name folder of file A1/name A1
     /// 
@@ -45,7 +44,6 @@ public partial class FS
         string naz = FS.GetFileName(nad);
         return FS.Combine(zmenseno, FS.Combine(naz, FS.GetFileName(var)));
     }
-
     public static FileInfo[] GetFileInfosOfExtensions(string item2, SearchOption so, params string[] exts)
     {
         List<FileInfo> vr = new List<FileInfo>();
@@ -56,14 +54,11 @@ public partial class FS
         }
         return vr.ToArray();
     }
-
     public static string GetActualDateTime()
     {
         DateTime dt = DateTime.Now;
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
-
-
     /// <summary>
     /// A1 MUST BE WITH EXTENSION
     /// A4 can be null if !A5
@@ -81,15 +76,11 @@ public partial class FS
     {
         FS.WithoutEndSlash(folderFrom);
         FS.WithoutEndSlash(folderTo);
-
         CA.RemoveStringsEmpty2(filesFrom);
-
         for (int i = filesFrom.Count - 1; i >= 0; i--)
         {
             filesFrom[i] = filesFrom[i].Replace(folderFrom, string.Empty);
-
             var oldPath = folderFrom + filesFrom[i];
-
             if (files != null)
             {
                 var oldPath2 = files[filesFrom[i]].FirstOrNull();
@@ -98,20 +89,16 @@ public partial class FS
                     oldPath = oldPath2.ToString();
                 }
             }
-
 #if DEBUG
             DebugLogger.DebugWriteLine("Taken: " + oldPath);
 #endif
-
             var newPath = folderTo + filesFrom[i];
-
             if (!File.Exists(oldPath))
             {
                 wasntExistsInFrom.Add(filesFrom[i]);
                 filesFrom.RemoveAt(i);
                 continue;
             }
-
             if (!File.Exists(newPath) && mustExistsInTarget)
             {
                 continue;
@@ -130,12 +117,10 @@ public partial class FS
             }
         }
     }
-
     public static void CreateInOtherLocationSameFolderStructure(string from, string to)
     {
         FS.WithEndSlash(from);
         FS.WithEndSlash(to);
-
         var folders = FS.GetFolders(from, SearchOption.AllDirectories);
         foreach (var item in folders)
         {
@@ -143,7 +128,6 @@ public partial class FS
             FS.CreateFoldersPsysicallyUnlessThere(nf);
         }
     }
-
     /// <summary>
     /// A1 must be with extensions!
     /// </summary>
@@ -161,7 +145,6 @@ public partial class FS
         {
             files2.Add(item, getFiles.Where(d => FS.GetFileName(d) == item).ToList());
         }
-
         FS.CopyMoveFilesInList(files, folderFrom, folderTo, wasntExists, false, true, files2);
         ////DebugLogger.Instance.WriteList(wasntExists);
     }
@@ -174,7 +157,6 @@ public partial class FS
         // folder is StorageFolder
         return CA.ToList<StorageFile>( GetFiles(folder.ToString(), mask, recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly));
     }
-
     /// <summary>
     /// A1 must be sunamo.Data.StorageFolder or uwp StorageFolder
     /// Return fixed string is here right
@@ -189,7 +171,6 @@ public partial class FS
         }
         return FS.Combine(folder.ToString(), v);
     }
-
     public static void DeleteEmptyFiles(string folder, SearchOption so)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
@@ -209,7 +190,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// either A1 or A2 can be null
     /// When A2 is null, will get from file path A1
@@ -227,7 +207,6 @@ public partial class FS
         FS.CreateDirectoryIfNotExists(outputFolder);
         return FS.Combine(outputFolder, FS.GetFileName(item));
     }
-
     public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty, bool isMultilineWithVariousIndent)
     {
         if (isMultilineWithVariousIndent)
@@ -235,7 +214,6 @@ public partial class FS
             from = SH.ReplaceAllDoubleSpaceToSingle2(from);
             to = SH.ReplaceAllDoubleSpaceToSingle2(to);
         }
-
         if (pairLinesInFromAndTo)
         {
             var from2 = SH.Split(from, Environment.NewLine);
@@ -248,8 +226,7 @@ public partial class FS
                     to2.Add(string.Empty);
                 }
             }
-            ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
-
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
             ReplaceInAllFiles(from2, to2, files, isMultilineWithVariousIndent);
         }
         else
@@ -257,14 +234,12 @@ public partial class FS
             ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files, isMultilineWithVariousIndent);
         }
     }
-
     public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
-        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
         ReplaceInAllFiles(replaceFrom, replaceTo, files, isMultilineWithVariousIndent);
     }
-
     /// <summary>
     /// A4 - whether use s.Contains. A4 - SH.ReplaceAll2
     /// </summary>
@@ -280,7 +255,6 @@ public partial class FS
             {
                 var content = TF.ReadFile(item);
                 var content2 = SH.ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent, content);
-
                 if (content != content2)
                 {
                     PpkOnDrive ppk = PpkOnDrive.WroteOnDrive;
@@ -291,7 +265,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// Jen kvuli starým aplikacím, at furt nenahrazuji.
     /// </summary>
@@ -300,14 +273,12 @@ public partial class FS
     {
         return AppPaths.GetFileInStartupPath(v);
     }
-
     public static void RemoveDiacriticInFileContents(string folder, string mask)
     {
         var files = FS.GetFiles(folder, mask, SearchOption.AllDirectories);
         foreach (string item in files)
         {
             string df2 = File.ReadAllText(item, Encoding.Default);
-
             if (true) //SH.ContainsDiacritic(df2))
             {
                 TF.SaveFile(SH.TextWithoutDiacritic(df2), item);
@@ -316,7 +287,6 @@ public partial class FS
             }
         }
     }
-
     public static string RemoveFile(string fullPathCsproj)
     {
         // Most effecient way to handle csproj and dir
@@ -329,12 +299,10 @@ public partial class FS
         FS.FirstCharLower(ref result);
         return result;
     }
-
     public static void WriteAllText(string path, string content)
     {
         WriteAllText<string, string>(path, content, null);
     }
-
     /// <summary>
     /// Create folder hiearchy and write
     /// </summary>
@@ -345,13 +313,11 @@ public partial class FS
         FS.CreateUpfoldersPsysicallyUnlessThere(path, ac);
         TF.WriteAllText<StorageFolder, StorageFile>(path, content, ac);
     }
-
     public static string MakeFromLastPartFile(string fullPath, string ext)
     {
         FS.WithoutEndSlash(ref fullPath);
         return fullPath + ext;
     }
-
     /// <summary>
     /// Remove all extensions, not only one
     /// </summary>
@@ -364,35 +330,29 @@ public partial class FS
         }
         return item;
     }
-
     public static void CopyAs0KbFilesSubfolders
         (string pathDownload, string pathVideos0Kb)
     {
         FS.WithEndSlash(ref pathDownload);
         FS.WithEndSlash(ref pathVideos0Kb);
-
         var folders = FS.GetFolders(pathDownload);
         foreach (var item in folders)
         {
             CopyAs0KbFiles(item, item.Replace(pathDownload, pathVideos0Kb));
         }
     }
-
     public static void CopyAs0KbFiles(string pathDownload, string pathVideos0Kb)
     {
         FS.WithEndSlash(ref pathDownload);
         FS.WithEndSlash(ref pathVideos0Kb);
-
         var files = FS.GetFiles(pathDownload, true);
         foreach (var item in files)
         {
             var path = item.Replace(pathDownload, pathVideos0Kb);
-
             FS.CreateUpfoldersPsysicallyUnlessThere(path);
             TF.WriteAllText(path, string.Empty);
         }
     }
-
    
     public static string ShrinkLongPath(string actualFilePath)
     {
@@ -402,31 +362,21 @@ public partial class FS
         // 216 - OK: d:\Recovered data 03-23 12_11_44012345678901234567890123456\Deep Scan result\Lost Partition1(NTFS)\Other lost files\c# projects - před odstraněním stejných souborů z duplicitních projektů\Visual Studio 2017\Projects\merge-obří temp\temp1\temp\
         // for many API is different limits: https://stackoverflow.com/questions/265769/maximum-filename-length-in-ntfs-windows-xp-and-windows-vista
         // 237+11 - bad 
-
         return Consts.UncLongPath + actualFilePath;
     }
-
-
-
     public static string CreateNewFolderPathWithEndingNextTo(string folder, string ending)
     {
         string pathToFolder = FS.GetDirectoryName(folder.TrimEnd(AllChars.bs)) + AllStrings.bs;
         string folderWithCaretFiles = pathToFolder + FS.GetFileName(folder.TrimEnd(AllChars.bs)) + ending;
-
         var result = folderWithCaretFiles;
         FS.FirstCharLower(ref result);
         return result;
     }
-
-
-
     public static void CopyFilesOfExtensions(string folderFrom, string FolderTo, params string[] extensions)
     {
         folderFrom = FS.WithEndSlash(folderFrom);
         FolderTo = FS.WithEndSlash(FolderTo);
-
         var filesOfExtension = FS.FilesOfExtensions(folderFrom, extensions);
-
         foreach (var item in filesOfExtension)
         {
             foreach (var path in item.Value)
@@ -437,7 +387,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// Kromě jmen také zbavuje diakritiky složky.
     /// </summary>
@@ -483,7 +432,6 @@ public partial class FS
                     File.Delete(item);
                     continue;
                 }
-
                 string realNewPath = SH.Copy(newpath);
                 int vlozeno = 0;
                 while (FS.ExistsFile(realNewPath))
@@ -495,7 +443,6 @@ public partial class FS
             }
         }
     }
-
     public static string GetFilesSize(List<string> winrarFiles)
     {
         long size = 0;
@@ -505,7 +452,6 @@ public partial class FS
         }
         return GetSizeInAutoString(size);
     }
-
     public static string GetUpFolderWhichContainsExtension(string path, string fileExt)
     {
         while (FilesOfExtension(path, fileExt).Count == 0)
@@ -518,7 +464,6 @@ public partial class FS
         }
         return path;
     }
-
     /// <summary>
     /// Non recursive
     /// </summary>
@@ -528,7 +473,6 @@ public partial class FS
     {
         return FS.GetFiles(folder, "*." + fileExt, SearchOption.TopDirectoryOnly);
     }
-
     public static void TrimContentInFilesOfFolder(string slozka, string searchPattern, SearchOption searchOption)
     {
         var files = FS.GetFiles(slozka, searchPattern, searchOption);
@@ -546,7 +490,6 @@ public partial class FS
             //}
         }
     }
-
     /// <summary>
     /// Náhrada za metodu ReplaceFileName se stejnými parametry
     /// </summary>
@@ -561,24 +504,20 @@ public partial class FS
         FS.FirstCharLower(ref vr);
         return vr;
     }
-
     
-
     public static long GetSizeIn(long value, ComputerSizeUnits b, ComputerSizeUnits to)
     {
         if (b == to)
         {
             return value;
         }
-
         bool toLarger = ((byte)b) < ((byte)to);
-
         if (toLarger)
         {
             value = ConvertToSmallerComputerUnitSize(value, b, ComputerSizeUnits.B);
             if (to == ComputerSizeUnits.Auto)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
             }
             else if (to == ComputerSizeUnits.KB && b != ComputerSizeUnits.KB)
             {
@@ -603,7 +542,6 @@ public partial class FS
         }
         return value;
     }
-
     /// <summary>
     /// Zjistí všechny složky rekurzivně z A1 a prvně maže samozřejmě ty, které mají více tokenů
     /// </summary>
@@ -611,8 +549,6 @@ public partial class FS
     public static void DeleteAllEmptyDirectories(string v)
     {
         List<ItemWithCount<string>> dirs = FS.DirectoriesWithToken(v, AscDesc.Desc);
-
-
         foreach (var item in dirs)
         {
             if (FS.IsDirectoryEmpty(item.t, true, true))
@@ -621,7 +557,6 @@ public partial class FS
             }
         }
     }
-
     public static List<ItemWithCount<string>> DirectoriesWithToken(string v, AscDesc sb)
     {
         var dirs = FS.GetFolders(v, AllStrings.asterisk, SearchOption.AllDirectories);
@@ -638,11 +573,8 @@ public partial class FS
         {
             vr.Sort(new SunamoComparerICompare.ItemWithCountComparer.Desc<string>(new SunamoComparer.ItemWithCountSunamoComparer<string>()));
         }
-
         return vr;
     }
-
-
     public static List<string> AllFilesInFolders(IEnumerable<string> folders, IEnumerable<string> exts, SearchOption so)
     {
         List<string> files = new List<string>();
@@ -653,12 +585,8 @@ public partial class FS
                 files.AddRange(FS.GetFiles(item, FS.MascFromExtension(ext), so));
             }
         }
-
-
         return files;
     }
-
-
     /// <summary>
     /// A1 i A2 musí končit backslashem
     /// Může vyhodit výjimku takže je nutné to odchytávat ve volající metodě
@@ -698,7 +626,6 @@ public partial class FS
             {
             }
         }
-
         var files = FS.GetFiles(item, AllStrings.asterisk, SearchOption.TopDirectoryOnly);
         FS.CreateFoldersPsysicallyUnlessThere(nova);
         foreach (var item2 in files)
@@ -706,7 +633,6 @@ public partial class FS
             string fileTo = nova + item2.Substring(item.Length);
             MoveFile(item2, fileTo, co2);
         }
-
         try
         {
             Directory.Move(item, nova);
@@ -714,16 +640,12 @@ public partial class FS
         catch (Exception ex)
         {
         }
-
         if (FS.IsDirectoryEmpty(item, true, true))
         {
             FS.TryDeleteDirectory(item);
         }
-
         return vr;
     }
-
-
     private static bool IsDirectoryEmpty(string item, bool folders, bool files)
     {
         int fse = 0;
@@ -737,7 +659,6 @@ public partial class FS
         }
         return fse == 0;
     }
-
     /// <summary>
     /// Vyhazuje výjimky, takže musíš volat v try-catch bloku
     /// A2 is root of target folder
@@ -754,12 +675,10 @@ public partial class FS
         }
         Directory.Delete(p, false);
     }
-
     public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
     {
         CopyMoveAllFilesRecursively(p, to, co, true, contains, SearchOption.AllDirectories);
     }
-
     /// <summary>
     /// Unit tests = OK
     /// </summary>
@@ -768,16 +687,14 @@ public partial class FS
     {
         DeleteFilesWithSameContentWorking<byte[], byte>(files, File.ReadAllBytes);
     }
-
     /// <summary>
     /// Unit tests = OK
     /// </summary>
     /// <param name="files"></param>
     public static void DeleteDuplicatedImages(List<string> files)
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(),type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
     }
-
     public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T> readFunc)
     {
         Dictionary<string, T> dictionary = new Dictionary<string, T>(files.Count);
@@ -785,9 +702,7 @@ public partial class FS
         {
             dictionary.Add(item, readFunc.Invoke(item));
         }
-
         Dictionary<T, List<string>> sameContent = DictionaryHelper.GroupByValues<string, T, ColType>(dictionary);
-
         foreach (var item in sameContent)
         {
             if (item.Value.Count > 1)
@@ -797,7 +712,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// Working fine, verified by Unit tests
     /// </summary>
@@ -806,7 +720,6 @@ public partial class FS
     {
         DeleteFilesWithSameContentWorking<string, object>(files, TF.ReadFile);
     }
-
     /// <summary>
     /// non direct edit
     ///  working with full paths or just filenames
@@ -815,11 +728,8 @@ public partial class FS
     public static List<string> OrderByNaturalNumberSerie(List<string> l)
     {
         List<Tuple< string, int, string>> filenames = new List<Tuple<string, int, string>>();
-
         List<string> dontHaveNumbersOnBeginning = new List<string>();
-
         string path = null;
-
         for (int i = l.Count - 1; i >= 0; i--)
         {
             var backup = l[i];
@@ -833,10 +743,8 @@ public partial class FS
                 path = p[0];
                 l[i] = p[1];
             }
-
             var fn = l[i];
             var sh = NH.NumberIntUntilWontReachOtherChar(ref fn);
-
             if (sh == int.MaxValue)
             {
                 dontHaveNumbersOnBeginning.Add(backup);
@@ -846,25 +754,18 @@ public partial class FS
                 filenames.Add(new Tuple<string, int, string>( path, sh, fn));
             }
         }
-
         var sorted = filenames.OrderBy(d => d.Item2);
-
         List<string> result = new List<string>(l.Count);
-
         foreach (var item in sorted)
         {
             result.Add(FS.Combine(item.Item1, item.Item2 + item.Item3));
         }
-
         result.AddRange(dontHaveNumbersOnBeginning);
-
         return result;
     }
-
     public static Dictionary<string, List<string>> SortPathsByFileName(List<string> allCsFilesInFolder, bool onlyOneExtension)
     {
         Dictionary<string, List<string>> vr = new Dictionary<string, List<string>>();
-
         foreach (var item in allCsFilesInFolder)
         {
             string fn = null;
@@ -876,14 +777,11 @@ public partial class FS
             {
                 fn = FS.GetFileName(item);
             }
-
             DictionaryHelper.AddOrCreate<string, string>(vr, fn, item);
         }
         return vr;
     }
-
    
-
     public static void DeleteAllRecursively(string p, bool rootDirectoryToo = false)
     {
         if (FS.ExistsDirectory(p))
@@ -904,7 +802,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// Vyhazuje výjimky, takže musíš volat v try-catch bloku
     /// </summary>
@@ -913,7 +810,6 @@ public partial class FS
     {
         DeleteAllRecursively(p, true);
     }
-
     public static List<string> OnlyExtensions(List<string> cesta)
     {
         List<string> vr = new List<string>( cesta.Count);
@@ -924,7 +820,6 @@ public partial class FS
         }
         return vr;
     }
-
     /// <summary>
     /// Both filenames and extension convert to lowercase
     /// Filename is without extension
@@ -943,7 +838,6 @@ public partial class FS
         }
         return extDict;
     }
-
     public static List<string> OnlyExtensionsToLower(List<string> cesta)
     {
         List<string> vr = new List<string>( cesta.Count);
@@ -954,7 +848,6 @@ public partial class FS
         }
         return vr;
     }
-
     public static List<string> OnlyExtensionsToLowerWithPath(List<string> cesta)
     {
         List<string> vr = new List<string>( cesta.Count);
@@ -967,9 +860,6 @@ public partial class FS
         }
         return vr;
     }
-
-
-
     /// <summary>
     /// files as .bowerrc return whole
     /// </summary>
@@ -977,11 +867,9 @@ public partial class FS
     /// <param name="folders"></param>
     public static List<string> AllExtensionsInFolders(SearchOption so, params string[] folders)
     {
-        ThrowExceptions.NoPassedFolders(RuntimeHelper.GetStackTrace(),type, "AllExtensionsInFolders", folders);
-
+        ThrowExceptions.NoPassedFolders(Exc.GetStackTrace(),type, "AllExtensionsInFolders", folders);
         List<string> vr = new List<string>();
         List<string> files = AllFilesInFolders(CA.ToListString(folders), CA.ToListString("*."), so);
-
         files = new List<string>(OnlyExtensionsToLower(files));
         foreach (var item in files)
         {
@@ -992,18 +880,11 @@ public partial class FS
         }
         return vr;
     }
-
-
-
     public static string replaceIncorrectFor = string.Empty;
-
     public static string ExpandEnvironmentVariables(EnvironmentVariables environmentVariable)
     {
         return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.modulo));
     }
-
-
-
     /// <summary>
     /// Pokud by byla cesta zakončená backslashem, vrátila by metoda FS.GetFileName prázdný řetězec. 
     /// </summary>
@@ -1012,14 +893,11 @@ public partial class FS
     {
         return GetFileNameWithoutExtension(s).ToLower();
     }
-
     public static string AddUpfoldersToRelativePath(int i, string file, char delimiter)
     {
         var jumpUp = AllStrings.dd + delimiter;
-
         return SH.JoinTimes(i, jumpUp) + file;
     }
-
     /// <summary>
     /// Keys returns with normalized ext
     /// In case zero files of ext wont be included in dict
@@ -1040,7 +918,6 @@ public partial class FS
         }
         return dict;
     }
-
     /// <summary>
     /// convert to lowercase and remove first dot
     /// </summary>
@@ -1050,19 +927,14 @@ public partial class FS
     {
         return AllStrings.dot + item.TrimStart(AllChars.dot);
     }
-
     public static string GetNormalizedExtension(string filename)
     {
         return NormalizeExtension(filename);
     }
-
-
-
     public static long ModifiedinUnix(string dsi)
     {
         return (long)(File.GetLastWriteTimeUtc(dsi).Subtract(DTConstants.UnixFsStart)).TotalSeconds;
     }
-
     public static void ReplaceDiacriticRecursive(string folder, bool dirs, bool files, DirectoryMoveCollisionOption fo, FileMoveCollisionOption co)
     {
         if (dirs)
@@ -1079,7 +951,6 @@ public partial class FS
                 }
             }
         }
-
         if (files)
         {
             var files2 = FS.GetFiles(folder, AllStrings.asterisk, SearchOption.AllDirectories);
@@ -1095,7 +966,6 @@ public partial class FS
             }
         }
     }
-
     /// <summary>
     /// A1,2 = with ext
     /// Physically rename file, this method is different from ChangeFilename in FileMoveCollisionOption A3 which can control advanced collision solution
@@ -1108,7 +978,6 @@ public partial class FS
         var to = FS.ChangeFilename(oldFn, newFn, false);
         FS.MoveFile(oldFn, to, co);
     }
-
     /// <summary>
     /// Může výhodit výjimku, proto je nutné používat v try-catch bloku
     /// Vrátí řetězec se zprávou kterou vypsat nebo null
@@ -1121,17 +990,13 @@ public partial class FS
         path = FS.WithoutEndSlash(path);
         string cesta = FS.GetDirectoryName(path);
         string nova = FS.Combine(cesta, newname);
-
         vr = MoveDirectoryNoRecursive(path, nova, co, fo);
         return vr;
     }
-
     public static List<string> FilesOfExtensionsArray(string folder, List<string> extension)
     {
         List<string> foundedFiles = new List<string>();
-
         FS.NormalizeExtensions(extension);
-
         var files = Directory.EnumerateFiles(folder, FS.MascFromExtension(), SearchOption.AllDirectories);
         foreach (var item in files)
         {
@@ -1141,10 +1006,8 @@ public partial class FS
                 foundedFiles.Add(ext);
             }
         }
-
         return foundedFiles;
     }
-
     /// <summary>
     /// convert to lowercase and remove first dot
     /// </summary>
@@ -1156,7 +1019,6 @@ public partial class FS
             extension[i] = NormalizeExtension(extension[i]);
         }
     }
-
     /// <summary>
     /// A1 může obsahovat celou cestu, vrátí jen název sobuoru bez připony a příponu
     /// </summary>
@@ -1169,7 +1031,6 @@ public partial class FS
         file = FS.GetFileNameWithoutExtension(fn);
         ext = FS.GetExtension(file);
     }
-
     public static void CreateDirectoryIfNotExists(string p)
     {
         MakeUncLongPath(ref p);
@@ -1178,7 +1039,6 @@ public partial class FS
             Directory.CreateDirectory(p);
         }
     }
-
     public static void SaveStream(string path, Stream s)
     {
         using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
@@ -1187,9 +1047,6 @@ public partial class FS
             fs.Flush();
         }
     }
-
-
-
     public static List<string> OnlyNamesWithoutExtensionCopy(List<string> p2)
     {
         List<string> p = new List<string>( p2.Count);
@@ -1200,7 +1057,6 @@ public partial class FS
         }
         return p;
     }
-
     public static List<string> OnlyNamesWithoutExtension(string appendToStart, List<string> fullPaths)
     {
         List<string> ds = new List<string>( fullPaths.Count);
@@ -1211,7 +1067,6 @@ public partial class FS
         }
         return ds;
     }
-
     /// <summary>
     /// Pokud hledáš metodu ReplacePathToFile, je to tato. Sloučeny protože dělali totéž.
     /// </summary>
@@ -1221,7 +1076,6 @@ public partial class FS
     {
         string p = FS.GetDirectoryName(fileName);
         string fn = FS.GetFileName(fileName);
-
         return FS.Combine(changeFolderTo, fn);
     }
 }

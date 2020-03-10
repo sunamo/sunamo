@@ -101,7 +101,9 @@ namespace desktop.Controls
 
         public void Accept(object input)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept"] + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en["OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept"] + ".");
         }
+
+        static Type type = typeof(DialogButtons);
     }
 }

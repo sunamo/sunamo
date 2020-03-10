@@ -189,12 +189,6 @@
       <DependentUpon>TwoRadiosUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Controls\TwoStatesToggleButton.cs" />
-    <Compile Include="Extensions\SizeExtensions.cs" />
-    <Compile Include="Helpers\ColorThemeHelper.cs" />
-    <Compile Include="Helpers\DisplayHelper.cs" />
-    <Compile Include="UserControls\ErrorListing.xaml.cs">
-      <DependentUpon>ErrorListing.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Image\CyclingImageViewer.xaml.cs">
       <DependentUpon>CyclingImageViewer.xaml</DependentUpon>
     </Compile>
@@ -328,6 +322,7 @@
     <Compile Include="Extensions\ListBoxExtensions.cs" />
     <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
+    <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\ToggleButtonExtension.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
@@ -348,6 +343,7 @@
     <Compile Include="Helpers\CheckBoxDataHelper.cs" />
     <Compile Include="Helpers\Clipboard\ClipboardMonitorW32.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\ColorThemeHelper.cs" />
     <Compile Include="Helpers\ContainerControls\GridHelper.cs" />
     <Compile Include="Helpers\ContainerControls\PanelHelper.cs" />
     <Compile Include="Helpers\ContainerControls\WindowHelper.cs" />
@@ -390,6 +386,7 @@
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
+    <Compile Include="Helpers\DisplayHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
     <Compile Include="Helpers\IHWPF.cs" />
     <Compile Include="Helpers\KeyboardHelper.cs" />
@@ -441,6 +438,9 @@
     <Compile Include="UserControls\EmptyUC.xaml.cs">
       <DependentUpon>EmptyUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ErrorListing.xaml.cs">
+      <DependentUpon>ErrorListing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
     </Compile>
@@ -483,13 +483,13 @@
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
       <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
       <Name>SunamoCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sunamo\sunamo.csproj">
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
+      <Name>sunamo</Name>
     </ProjectReference>
     <ProjectReference Include="..\win\win.csproj">
       <Project>{BEE17656-B10C-42B2-B3A4-70208323E3D7}</Project>
@@ -542,10 +542,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Controls\TwoRadiosUC.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\ErrorListing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -680,6 +676,10 @@
     <Page Include="UserControls\EmptyUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ErrorListing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\LoginUc.xaml">
       <Generator>MSBuild:Compile</Generator>

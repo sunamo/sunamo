@@ -61,7 +61,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, methodName, _public);
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, methodName, _public);
         }
     }
 
@@ -497,7 +497,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void DictionaryFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, bool addingValue = true)
     {
-        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "keys", keys, "values", values);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, Exc.CallingMethod(), "keys", keys, "values", values);
 
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
@@ -559,7 +559,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
     public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
     {
-        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "keys", keys, "values", values);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, Exc.CallingMethod(), "keys", keys, "values", values);
 
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)

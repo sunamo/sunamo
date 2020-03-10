@@ -128,7 +128,7 @@ public class AppData : AppDataAbstractBase<string, string>
 
     public override void AppendToFile(AppFolders af, string file, string value)
     {
-        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 
     public override  string GetSunamoFolder()

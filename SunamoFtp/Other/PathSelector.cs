@@ -57,7 +57,7 @@ namespace SunamoFtp
                 {
                     if (initialDirectory.StartsWith(AllStrings.slash))
                     {
-                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Počáteční složka nemůže začínat s lomítkem na začátku");
+                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Počáteční složka nemůže začínat s lomítkem na začátku");
                         int druhy = initialDirectory.IndexOf(AllChars.slash, 1);
                         firstToken = initialDirectory.Substring(0, druhy);
                     }
@@ -88,15 +88,19 @@ namespace SunamoFtp
             tokens.RemoveAt(Count - 1);
         }
 
+        static Type type = typeof(PathSelector);
+
         public void RemoveLastToken()
         {
+            
+
             if (CanGoToUpFolder)
             {
                 tokens.RemoveAt(Count - 1);
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Is not possible go to up folder");
             }
         }
 

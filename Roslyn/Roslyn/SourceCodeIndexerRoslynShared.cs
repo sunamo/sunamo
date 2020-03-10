@@ -11,13 +11,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-
 public partial class SourceCodeIndexerRoslyn{ 
 public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         ProcessFile(file, NamespaceCodeElementsType.All, ClassCodeElementsType.All, false, fromFileSystemWatcher);
     }
-
 /// <summary>
     /// True if file wasnt indexed yet
     /// False is file was already indexed
@@ -36,12 +34,10 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
         {
             return false;
         }
-
         if (!RoslynHelper.AllowOnlyContains(pathFile, false, false))
         {
             return false;
         }
-
         if (!linesWithContent.ContainsKey(pathFile))
         {
             //if (!fromFileSystemWatcher)
@@ -49,7 +45,6 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
             //    // only would call ProcessFile again
             //    watchers.Start(pathFile);
             //}
-
             IEnumerable<NamespaceCodeElementsType> namespaceCodeElementsAll = EnumHelper.GetValues<NamespaceCodeElementsType>();
             IEnumerable<ClassCodeElementsType> classodeElementsAll = EnumHelper.GetValues<ClassCodeElementsType>();
             List<string> namespaceCodeElementsKeywords = new List<string>();
@@ -72,21 +67,18 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     FullFileIndex.Add(i);
                 }
             }
-
             FullFileIndex.Reverse();
-            ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
             // Probably was add on background again due to watch for changes
             if (linesWithContent.ContainsKey(pathFile))
             {
                 linesWithContent.Remove(pathFile);
             }
-
             linesWithContent.Add(pathFile, lines);
             if (linesWithIndexes.ContainsKey(pathFile))
             {
                 linesWithIndexes.Remove(pathFile);
             }
-
             linesWithIndexes.Add(pathFile, FullFileIndex);
             foreach (var item in namespaceCodeElementsAll)
             {
@@ -95,7 +87,6 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     namespaceCodeElementsKeywords.Add(SH.WrapWith(item.ToString().ToLower(), AllChars.space));
                 }
             }
-
             foreach (var item in namespaceCodeElementsKeywords)
             {
                 string elementTypeString = item.Trim();
@@ -117,13 +108,11 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     }
                 }
             }
-
             ClassCodeElementsType classCodeElementsTypeToFind = ClassCodeElementsType.All;
             if (classCodeElementsType.HasFlag(ClassCodeElementsType.All))
             {
                 classCodeElementsTypeToFind |= ClassCodeElementsType.Method;
             }
-
             tree = CSharpSyntaxTree.ParseText(fileContent);
             root = (CompilationUnitSyntax)tree.GetRoot();
             var c = classCodeElements;
@@ -137,11 +126,9 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     AddMethodsFrom(ancestor, pathFile);
                 }
             }
-
             AddMethodsFrom(root, pathFile);
             return true;
         }
-
         return false;
     }
 }

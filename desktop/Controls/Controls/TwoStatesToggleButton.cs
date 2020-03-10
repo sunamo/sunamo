@@ -24,9 +24,11 @@ public static partial class TwoStatesToggleButton
         }
         else
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton"]);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en["YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton"]);
         }
     }
+
+    static Type type = typeof(TwoStatesToggleButton);
 
     /// <summary>
     /// musí se volat vždy jako první věc v metodě Click

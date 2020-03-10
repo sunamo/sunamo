@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
-
 namespace sunamo.Helpers
 {
     public class WindowsOSHelper
     {
+static Type type = typeof(WindowsOSHelper);
         public static void CreateLnk(string sourceDirectory, string targetFile)
         {
             var fn = FS.GetFileNameWithoutExtension(targetFile);
             FS.CreateFoldersPsysicallyUnlessThere(sourceDirectory);
-
             var shell =  new WshShell();
             var shortCutLinkFilePath = FS.Combine(sourceDirectory, @"\\\\\"+fn+  ".lnk");
             if (!FS.ExistsFile(shortCutLinkFilePath))
@@ -25,21 +24,17 @@ namespace sunamo.Helpers
                 windowsApplicationShortcut.Save();
             }
         }
-
         //public static void CreateLnk2()
         //{
         //    // Check necessary parameters first:
         //    if (String.IsNullOrEmpty(TargetPath))
-        //        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("TargetPath");
+        //        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("TargetPath");
         //    if (String.IsNullOrEmpty(ShortcutFile))
-        //        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("ShortcutFile");
-
+        //        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("ShortcutFile");
         //    // Create WshShellClass instance:
         //    IWshShell3 wshShell = new WshShellClass();
-
         //    // Create shortcut object:
         //    IWshRuntimeLibrary.IWshShortcut shorcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutFile);
-
         //    // Assign shortcut properties:
         //    shorcut.TargetPath = TargetPath;
         //    shorcut.Description = Description;
@@ -49,10 +44,8 @@ namespace sunamo.Helpers
         //        shorcut.Hotkey = HotKey;
         //    if (!String.IsNullOrEmpty(WorkingDirectory))
         //        shorcut.WorkingDirectory = WorkingDirectory;
-
         //    // Save the shortcut:
         //}
-
         //public static void CreateLnk3()
         //{
         //    WshShellClass wsh = new WshShellClass();

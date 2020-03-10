@@ -1,8 +1,8 @@
-﻿
+﻿using System;
 using sunamo.Interfaces;
-
 public partial class SolutionFolderSerialize : IListBoxHelperItem
 {
+static Type type = typeof(SolutionFolderSerialize);
     /// <summary>
     /// Is assingned in FoldersWithSolutions
     /// Zobrazovaný text v LB, například 2013/PHP Projects/PHPWebSite
@@ -35,10 +35,9 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem
         {
             return _fullPathFolder;
         }
-
         set
         {
-            ThrowExceptions.CheckBackslashEnd(RuntimeHelper.GetStackTrace(),value);
+            ThrowExceptions.CheckBackslashEnd(Exc.GetStackTrace(),value);
             _fullPathFolder = value;
             _nameSolution = FS.GetFileName(value.TrimEnd(AllChars.bs));
             if (SolutionsIndexerSettings.ignorePartAfterUnderscore)
@@ -47,7 +46,6 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem
             }
         }
     }
-
     /// <summary>
     /// Konečný název řešení, například PHPWebSite
     /// If contains hiearchy (as _Uap, won't be included)
@@ -59,7 +57,6 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem
             return _nameSolution;
         }
     }
-
     public string RunOne
     {
         get
@@ -67,7 +64,6 @@ public partial class SolutionFolderSerialize : IListBoxHelperItem
             return fullPathFolder;
         }
     }
-
     public string ShortName => _nameSolution;
     public string LongName => _fullPathFolder;
 }

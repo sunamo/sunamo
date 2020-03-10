@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 public class NumberTextBoxForms : TextBoxForms
 {
+    static Type type = typeof(NumberTextBoxForms);
     private string mPrevious;
     private int mMin;
     private int mMax;
@@ -12,7 +13,7 @@ public class NumberTextBoxForms : TextBoxForms
     {
         if ((min > max) || min < 0 || max < 0)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Minimum and maximum values are not supported");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Minimum and maximum values are not supported");
         }
         mMin = min;
         mMax = max;

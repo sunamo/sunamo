@@ -9,6 +9,77 @@ public partial class ComboBoxHelper
 {
     static Type type = typeof(ComboBoxHelper);
 
+    protected ComboBox cb = null;
+    public bool raiseSelectionChanged = true;
+    public event SelectionChangedEventHandler SelectionChanged;
+
+    /// <summary>
+    /// Objekt, ve kterém je vždy aktuální zda v tsddb něco je
+    /// Takže se nelekni že to je promměná
+    /// </summary>
+    public object SelectedO = null;
+
+    public bool Selected
+    {
+        get
+        {
+            if (SelectedO != null)
+            {
+                return SelectedO.ToString().Trim() != "";
+            }
+            return false;
+        }
+    }
+
+    public string SelectedS
+    {
+        get
+        {
+            // not need ValueFromTWithNameOrObject, TWithName has ToString
+            return SelectedO.ToString();
+        }
+    }
+
+    void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        SelectedO = cb.SelectedItem;
+        if (SelectedO != null)
+        {
+            // not need ValueFromTWithNameOrObject, TWithName has ToString
+            cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
+        }
+        if (raiseSelectionChanged)
+        {
+            if (SelectionChanged != null)
+            {
+                SelectionChanged(sender, e);
+            }
+        }
+
+
+    }
+
+    protected string originalToolTipText = "";
+
+    /// <summary>
+    /// A2 zda se má do SelectedO uložit tsmi.Tag nebo jen tsmi
+    /// </summary>
+    /// <param name="tsddb"></param>
+    /// <param name="tagy"></param>
+    public ComboBoxHelper(ComboBox tsddb)
+    {
+        this.cb = tsddb;
+        tsddb.SelectionChanged += tsddb_SelectionChanged;
+    }
+
+    public ComboBox Cb
+    {
+        get
+        {
+            return cb;
+        }
+    }
+
     /// <summary>
     /// A1 is not needed, value is obtained through []
     /// Tag here is mainly for comment what data control hold 
@@ -25,7 +96,7 @@ public partial class ComboBoxHelper
         }
         if (d.OnClick != null)
         {
-            ThrowExceptions.IsNotAllowed(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "d.OnClick");
+            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(),type, Exc.CallingMethod(), "d.OnClick");
         }
         cb.Tag = d.tag;
         cb.ToolTip = d.tooltip;

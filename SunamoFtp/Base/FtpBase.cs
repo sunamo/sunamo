@@ -314,7 +314,7 @@ namespace SunamoFtp
                     else
                     {
 
-                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ objektu");
+                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ objektu");
                     }
                 }
                 if (ps.CanGoToUpFolder)
@@ -330,6 +330,8 @@ namespace SunamoFtp
 
             //ps.ActualPath = p;
         }
+
+        static Type type = typeof(FtpBase);
 
         /// <summary>
         /// OK

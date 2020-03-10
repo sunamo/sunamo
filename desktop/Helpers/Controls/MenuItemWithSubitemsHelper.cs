@@ -10,6 +10,7 @@ using System.Windows.Input;
 /// </summary>
 public class MenuItemWithSubitemsHelper
 {
+static Type type = typeof(MenuItemWithSubitemsHelper);
         protected MenuItem tsddb = null;
         protected MenuItem prev = new MenuItem();
         protected string originalToolTipText = "";
@@ -51,9 +52,6 @@ public class MenuItemWithSubitemsHelper
                 }
             }
         }
-
-
-
     public void AddValuesOfEnumAsItems<T>(object defVal)
     {
         Dictionary<T, string> d = new Dictionary<T, string>();
@@ -64,11 +62,8 @@ public class MenuItemWithSubitemsHelper
             d.Add(item, item.ToString());
             //AddMenuItem(item);
         }
-
         AddValuesOfEnumAsItems<T>(d, defVal);
-
     }
-
     public void AddValuesOfEnumAsItems<T>(Dictionary<MenuItem, T> d, object defVal, MenuItem defMi)
     {
         Type type = typeof(T);
@@ -76,26 +71,21 @@ public class MenuItemWithSubitemsHelper
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
             }
         }
-
         T _def = (T)defVal;
-
         foreach (var item in d)
         {
             item.Key.Tag = item.Value;
             AddMenuItem(item.Key);
         }
-
         if (defVal != null)
         {
             SelectedO = defVal;
         }
-
         prev = defMi;
     }
-
     public void AddValuesOfEnumAsItems<T>(Dictionary<T, string> d, object defVal)
     {
         Type type = typeof(T);
@@ -103,23 +93,19 @@ public class MenuItemWithSubitemsHelper
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
             }
         }
-
         T _def = (T)defVal;
-
         foreach (var item in d)
         {
             AddMenuItem(item.Key, item.Value);
         }
-
         if (defVal != null)
         {
             SelectedO = defVal;
         }
     }
-
     private MenuItem AddMenuItem(object tag, string header)
     {
         MenuItem tsmi = new MenuItem();
@@ -128,13 +114,11 @@ public class MenuItemWithSubitemsHelper
         AddMenuItem(tsmi);
         return tsmi;
     }
-
     private void AddMenuItem(MenuItem tsmi)
     {
         tsmi.Click += new RoutedEventHandler(tsmi_Click);
         tsddb.Items.Add(tsmi);
     }
-
     /// <summary>
     /// Používá se pokud chci porovnávat rychleji na reference MenuItem ale chci zjistit Tag zvolené položky.
     /// </summary>
@@ -146,9 +130,7 @@ public class MenuItemWithSubitemsHelper
         }
         return null;
     }
-
     public bool zaskrtavat = false;
-
         public bool Selected
         {
             get
@@ -161,7 +143,6 @@ public class MenuItemWithSubitemsHelper
             //return SelectedO != null;
         }
         }
-
         public string SelectedS
         {
             get
@@ -169,7 +150,6 @@ public class MenuItemWithSubitemsHelper
                 return SelectedO.ToString();
             }
         }
-
         public void AddValuesOfEnumAsItems(Array bs, bool zaskPrvni)
         {
             tsddb.Items.Clear();
@@ -188,7 +168,6 @@ public class MenuItemWithSubitemsHelper
             i++;
             }
         }
-
         public void tsmi_Click(object sender, RoutedEventArgs e)
         {
             prev.IsChecked = false;
@@ -207,13 +186,11 @@ public class MenuItemWithSubitemsHelper
                 selectedO = tsmi;
             }
             tsddb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
-
         if (MenuItemChecked != null)
         {
             MenuItemChecked(sender, e);
         }
         }
-
         public void AddValuesOfArrayAsItems(RoutedEventHandler eh,  object[] o)
         {
             tsddb.Items.Clear();
@@ -226,7 +203,6 @@ public class MenuItemWithSubitemsHelper
                 i++;
             }
         }
-
         public void AddValuesOfArrayAsItems(ICommand eh, object[] o)
         {
             tsddb.Items.Clear();
@@ -234,14 +210,12 @@ public class MenuItemWithSubitemsHelper
             foreach (object item in o)
             {
             MenuItem tsmi = AddMenuItem(item, item.ToString());
-
             tsmi.Command = eh;
                 tsmi.CommandParameter = item;
                 
                 i++;
             }
         }
-
         public void AddValuesOfArrayAsItems(RoutedCommand cmd0, object[] p, RoutedCommand cmd1, List<StringBuilder> stovky, RoutedCommand cmd2, List<StringBuilder> desitky, RoutedCommand cmd3, List<StringBuilder> jednotky)
         {
             mnoho = true;
@@ -255,9 +229,7 @@ public class MenuItemWithSubitemsHelper
                 string categoryPipe = category + AllStrings.pipe;
                 MenuItem tsmi = new MenuItem();
                 tsmi.Header = category;
-
                 var stovkyDivided = SH.Split(stovky[i].ToString(), AllChars.pipe);
-
                 List< String> stovkyActual = new List<String>();
                 StringBuilder stovkyActualTemp = new StringBuilder();
                 for (int y = 0; y < stovkyDivided.Count; y++)
@@ -282,7 +254,6 @@ public class MenuItemWithSubitemsHelper
                 //int aktualniIndexStovky = 0;
                 foreach (var idcka in stovkyActual)
                 {
-
                     MenuItem tsmiStovky = new MenuItem();
                     tsmiStovky.Header = (pristePokracovatStovky + 1).ToString() + AllStrings.swda + (pristePokracovatStovky + SH.Split(idcka, AllStrings.comma).Count).ToString() ;
                     
@@ -299,7 +270,6 @@ public class MenuItemWithSubitemsHelper
                         pristePokracovatJednotky++;
                         tsmiJednotky.Command = cmd3;
                         tsmiJednotky.CommandParameter = tsmiJednotky.Header.ToString() + AllStrings.pipe + categoryPipe + jednotka;
-
                         var  o = (pristePokracovatJednotky - 1);
                         if (o % 10 == 0 && o % 100 != 0 && o != 0)
                         {
@@ -310,7 +280,6 @@ public class MenuItemWithSubitemsHelper
                         kVlozeniDoDesitky[indexNaKteryUkladatDesitky].Add(tsmiJednotky);
                         idckaDesitky[indexNaKteryUkladatDesitky].Append(jednotka + AllStrings.comma);
                     }
-
                     for (int t = 0; t < kVlozeniDoDesitky.Count; t++)
                     {
                         if (kVlozeniDoDesitky[kVlozeniDoDesitky.Count- 1].Count == 0)
@@ -333,44 +302,34 @@ public class MenuItemWithSubitemsHelper
                         {
                             tsmiDesitky.Items.Add(item4);
                         }
-
                         MenuItem tsmiDesitky2 = new MenuItem();
                         tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + AllStrings.swda + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         tsmiDesitky2.Command = cmd2;
                         //  
                         tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + AllStrings.pipe + categoryPipe + u;
-
                         tsmiStovky.Items.Add(tsmiDesitky2);
-
                         tsmiStovky.Items.Add(tsmiDesitky);
                         pristePokracovatDesitky+= 10;
                     }
-
                     MenuItem tsmiStovky2 = new MenuItem();
                     tsmiStovky2.Header = (pristePokracovatStovky + 1).ToString() + AllStrings.swda + (pristePokracovatStovky + SH.Split(idcka, AllStrings.comma).Count).ToString();
-
                     pristePokracovatStovky += 100;
                     tsmiStovky2.Command = cmd1;
                     //
                     tsmiStovky2.CommandParameter =tsmiStovky2.Header.ToString() + AllStrings.pipe + categoryPipe  + idcka;
                     tsmi.Items.Add(tsmiStovky2);
-
                     tsmi.Items.Add(tsmiStovky);
                 }
-
                 MenuItem tsmi2 = new MenuItem();
                 tsmi2.Header = category;
                 tsmi2.Command = cmd0;
                 tsmi2.CommandParameter = category;
-
                 tsddb.Items.Add(tsmi2);
-
                 tsmi.IsEnabled = true;
                 tsddb.Items.Add(tsmi);
                 i++;
             }
         }
-
         public void AddValuesOfIntAsItems(RoutedEventHandler eh, int initialValue, int resizeOf, int degrees)
         {
             tsddb.Items.Clear();
@@ -380,7 +339,6 @@ public class MenuItemWithSubitemsHelper
             {
                 akt -= resizeOf;
                 pred.Add(akt);
-
             }
             pred.Reverse();
             akt = initialValue;
@@ -406,9 +364,7 @@ public class MenuItemWithSubitemsHelper
                 y++;
             }
         }
-
         bool tagy = true;
-
     /// <summary>
         /// A2 zda se má do SelectedO uložit tsmi.Tag nebo jen tsmi
     /// </summary>
@@ -419,7 +375,6 @@ public class MenuItemWithSubitemsHelper
             this.tsddb = tsddb;
             this.tagy = tagy;
         }
-
         public MenuItemWithSubitemsHelper(MenuItem tsddb)
         {
             this.tsddb = tsddb;

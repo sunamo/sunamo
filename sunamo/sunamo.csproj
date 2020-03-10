@@ -61,12 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Extensions\ObjectExtensions.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Args\PpkOnDriveArgs.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Enums\ButtonAction.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Args\PpkOnDriveArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugCollection.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\DebugLongCollection.cs" />
@@ -93,6 +90,7 @@
     <Compile Include="..\..\sunamo\sunamo\Entity\ManageArtistDashTitleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\AddBeforeControl.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Brackets.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Enums\ButtonAction.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
@@ -101,6 +99,7 @@
     <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
     <Compile Include="..\..\sunamo\sunamo\Extensions\IEnumerableExtensionsShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Extensions\ObjectExtensions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Generators\HtmlGenerator.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperEnShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\DT\DTHelperGeneralShared.cs" />
@@ -108,6 +107,7 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
@@ -129,9 +129,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Args\PpkOnDriveArgs.cs" />
-    <Compile Include="Collections\DictionaryWithList.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Essential\ExcShared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -142,6 +140,7 @@
     <Compile Include="AppDataBaseShared.cs" />
     <Compile Include="AppPaths.cs" />
     <Compile Include="Args\GetFilesArgs.cs" />
+    <Compile Include="Args\PpkOnDriveArgs.cs" />
     <Compile Include="AspNet.cs" />
     <Compile Include="AspNetShared.cs" />
     <Compile Include="AspxHelper.cs" />
@@ -170,6 +169,7 @@
     <Compile Include="Collections\DebugCollection.cs" />
     <Compile Include="Collections\DebugLongCollection.cs" />
     <Compile Include="Collections\DictionarySort.cs" />
+    <Compile Include="Collections\DictionaryWithList.cs" />
     <Compile Include="Collections\ExtensionSortedCollection.cs" />
     <Compile Include="Collections\FsWatcherDictionary.cs" />
     <Compile Include="Collections\Joiner.cs" />
@@ -333,6 +333,7 @@
     <Compile Include="Data\VideoFromInternet.cs" />
     <Compile Include="Data\XPathPart.cs" />
     <Compile Include="DateTimeFileIndex.cs" />
+    <Compile Include="DateTimeFileIndexT.cs" />
     <Compile Include="Delegates\CodeFile1.cs" />
     <Compile Include="Delegates\StringDelegates.cs" />
     <Compile Include="Entity\ComplexInfoString.cs" />
@@ -343,12 +344,12 @@
     <Compile Include="Entity\Timestamp.cs" />
     <Compile Include="Entity\TimestampShared.cs" />
     <Compile Include="Entity\Wildcard.cs" />
-    <Compile Include="Enums\ButtonAction.cs" />
     <Compile Include="Enums\AddBeforeControl.cs" />
     <Compile Include="Enums\AppFolders.cs" />
     <Compile Include="Enums\AppPics.cs" />
     <Compile Include="Enums\AscDesc.cs" />
     <Compile Include="Enums\Browsers.cs" />
+    <Compile Include="Enums\ButtonAction.cs" />
     <Compile Include="Enums\ColorComponent.cs" />
     <Compile Include="Enums\ColorTheme.cs" />
     <Compile Include="Enums\ComputerSizeUnits.cs" />
@@ -427,6 +428,7 @@
     <Compile Include="Essential\DummyTemplateLogger.cs" />
     <Compile Include="Essential\EventArgs\UriEventArgs.cs" />
     <Compile Include="Essential\Exceptions.cs" />
+    <Compile Include="Essential\ExceptionsShared.cs" />
     <Compile Include="Essential\InitApp.cs" />
     <Compile Include="Essential\LoggerBase.cs" />
     <Compile Include="Essential\LoggerBaseShared.cs" />
@@ -435,6 +437,7 @@
     <Compile Include="Essential\TemplateLoggerBase.cs" />
     <Compile Include="Essential\ThisApp.cs" />
     <Compile Include="Essential\ThrowExceptions.cs" />
+    <Compile Include="Essential\ThrowExceptionsShared.cs" />
     <Compile Include="Essential\TypedDebugLogger.cs" />
     <Compile Include="Essential\TypedDummyLogger.cs" />
     <Compile Include="Essential\TypedLoggerBase.cs" />
@@ -448,6 +451,7 @@
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensionsShared.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\Task.cs" />

@@ -239,8 +239,11 @@ public class StoredProceduresSqliteI : IStoredProceduresI
                     }
                 }
             }
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Zadan\u00E1 buNka nebyla nalezena");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Zadan\u00E1 buNka nebyla nalezena");
+        return null;
         }
+
+    static Type type = typeof(StoredProceduresSqliteI);
 
         /// <summary>
         /// Is no rows will affect, return -1, not 0

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 public partial class CSharpHelperSunamo
 {
+static Type type = typeof(CSharpHelperSunamo);
     public static string DefaultValueForType(string type)
     {
         if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
-
         switch (type)
         {
             case "string":
@@ -39,9 +38,10 @@ public partial class CSharpHelperSunamo
             case "Guid":
                 return "Guid.Empty";
             case "char":
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+                break;
         }
-
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+        return null;
     }
 }

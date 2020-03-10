@@ -1,8 +1,8 @@
-﻿
+﻿using System;
 using IWshRuntimeLibrary;
-
 public partial class WindowsOSHelper
 {
+static Type type = typeof(WindowsOSHelper);
     public static void CreateLnk(string sourceDirectory, string targetFile)
     {
         var fn = FS.GetFileNameWithoutExtension(targetFile);
@@ -19,14 +19,13 @@ public partial class WindowsOSHelper
         }
     }
 }
-
 //public static void CreateLnk2()
 //{
 //    // Check necessary parameters first:
 //    if (String.IsNullOrEmpty(TargetPath))
-//        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("TargetPath");
+//        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("TargetPath");
 //    if (String.IsNullOrEmpty(ShortcutFile))
-//        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("ShortcutFile");
+//        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("ShortcutFile");
 //    // Create WshShellClass instance:
 //    IWshShell3 wshShell = new WshShellClass();
 //    // Create shortcut object:

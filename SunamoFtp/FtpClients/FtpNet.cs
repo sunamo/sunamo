@@ -18,6 +18,7 @@ namespace SunamoFtp
 {
     public class FtpNet : FtpBase
     {
+        static Type type = typeof(FtpNet);
         public override void LoginIfIsNot(bool startup)
         {
             base.startup = startup;
@@ -991,7 +992,7 @@ namespace SunamoFtp
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ objektu");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ objektu");
                 }
             }
             return vr;
@@ -1029,12 +1030,12 @@ namespace SunamoFtp
 
         public override void DebugActualFolder()
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
         }
 
         public override void D(string what, string text, params object[] args)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
         }
         #endregion
     }

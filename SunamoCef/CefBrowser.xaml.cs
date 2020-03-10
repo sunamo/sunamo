@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HtmlAgilityPack;
-
 namespace CefSunamo
 {
     /// <summary>
@@ -21,44 +20,40 @@ namespace CefSunamo
     /// </summary>
     public partial class CefBrowser : UserControl, ISunamoBrowser<Control>
     {
+static Type type = typeof(CefBrowser);
         public CefBrowser()
         {
             InitializeComponent();
         }
-
         public HtmlDocument HtmlDocument
         {
             get
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
             }
             set
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
             }
         }
-
         public Uri Source
         {
             get
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
             }
-
             set
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
             }
         }
-
         public event VoidVoid CloseButtonClick;
         public event VoidVoid CustomButtonClick;
         public event VoidString LoadCompleted;
         public event VoidT<Control> ShowPopup;
-
         public Task<HtmlDocument> GetHtmlDocument()
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException();
         }
     }
 }

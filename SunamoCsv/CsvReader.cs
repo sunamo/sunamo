@@ -13,6 +13,8 @@ using System.Text;
     public sealed class CsvReader : IDisposable
     {
 
+    static Type type = typeof(CsvReader);
+
         #region Members
 
         private FileStream _fileStream;
@@ -22,7 +24,7 @@ using System.Text;
         private Stream _memoryStream;
         private Encoding _encoding;
         private readonly StringBuilder _columnBuilder = new StringBuilder(100);
-        private readonly Type _type = Type.File;
+        private readonly TypeSource _type = TypeSource.File;
 
     #endregion Members
 
@@ -77,7 +79,7 @@ using System.Text;
         /// <summary>
         /// Type enum
         /// </summary>
-        private enum Type
+        private enum TypeSource
         {
             File,
             Stream,
@@ -94,7 +96,7 @@ using System.Text;
         /// <param name="filePath">File path</param>
         public CsvReader(string filePath)
         {
-            _type = Type.File;
+            _type = TypeSource.File;
             Initialise(filePath, Encoding.UTF8);
         }
 
@@ -105,7 +107,7 @@ using System.Text;
         /// <param name="encoding">Encoding</param>
         public CsvReader(string filePath, Encoding encoding)
         {
-            _type = Type.File;
+            _type = TypeSource.File;
             Initialise(filePath, encoding);
         }
 
@@ -115,7 +117,7 @@ using System.Text;
         /// <param name="stream">Stream</param>
         public CsvReader(Stream stream)
         {
-            _type = Type.Stream;
+            _type = TypeSource.Stream;
             Initialise(stream, Encoding.UTF8);
         }
 
@@ -126,7 +128,7 @@ using System.Text;
         /// <param name="encoding">Encoding</param>
         public CsvReader(Stream stream, Encoding encoding)
         {
-            _type = Type.Stream;
+            _type = TypeSource.Stream;
             Initialise(stream, encoding);
         }
 
@@ -137,7 +139,7 @@ using System.Text;
         /// <param name="csvContent"></param>
         public CsvReader(Encoding encoding, string csvContent)
         {
-            _type = Type.String;
+            _type = TypeSource.String;
             Initialise(encoding, csvContent);  
         }
 
@@ -153,7 +155,7 @@ using System.Text;
         private void Initialise(string filePath, Encoding encoding)
         {
             if (!FS.ExistsFile(filePath))
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException(SH.Format2("The file '{0}' does not exist.", filePath));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2("The file '{0}' does not exist.", filePath));
 
             _fileStream = File.OpenRead(filePath);
             Initialise(_fileStream, encoding);
@@ -167,7 +169,7 @@ using System.Text;
         private void Initialise(Stream stream, Encoding encoding)
         {
             if (stream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("The supplied stream is null" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The supplied stream is null" + ".");
 
             _stream = stream;
             _stream.Position = 0;
@@ -183,7 +185,7 @@ using System.Text;
         private void Initialise(Encoding encoding, string csvContent)
         {
             if (csvContent == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("The supplied csvContent is null" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The supplied csvContent is null" + ".");
 
             _encoding = (encoding ?? Encoding.UTF8);
 
@@ -343,7 +345,7 @@ using System.Text;
                 _fileStream.Dispose();
             }
 
-            if ((_type == Type.String || _type == Type.File) && _stream != null)
+            if ((_type == TypeSource.String || _type == TypeSource.File) && _stream != null)
             {
                 _stream.Close();
                 _stream.Dispose();

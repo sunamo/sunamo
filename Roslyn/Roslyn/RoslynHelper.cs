@@ -251,13 +251,13 @@ namespace Roslyn
                 }
                 else
                 {
-                    ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "Format", syntaxNodeType);
+                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "Format", syntaxNodeType);
                 }
             }
 
             if (node2 && token)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Cant process token and SyntaxNode - output could be duplicated");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Cant process token and SyntaxNode - output could be duplicated");
             }
 
             // Early if token we get Parent, so now we dont get Parent again
@@ -481,7 +481,7 @@ namespace Roslyn
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "FindNode", SH.JoinPairs("Parent", parent, "Child", child));
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "FindNode", SH.JoinPairs("Parent", parent, "Child", child));
             }
 
             
@@ -597,7 +597,7 @@ namespace Roslyn
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "GetClass", firstMember);
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "GetClass", firstMember);
             }
 
             return helloWorldDeclaration;

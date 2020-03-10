@@ -36,6 +36,8 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         return vr;
     }
 
+    static Type type = typeof(MSDatabaseLayer);
+
     public static SqlDbType GetSqlDbTypeFromType(Type type)
     {
 
@@ -57,9 +59,11 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case "System.Byte":
                 return SqlDbType.TinyInt;
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neimplementovaná větev");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neimplementovaná větev");
+                break;
         }
+
+        return SqlDbType.Xml;
     }
 
     public static MSDatabaseLayerInstance ci = new MSDatabaseLayerInstance();
@@ -164,7 +168,8 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         }
         else
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se vytvořit třídu s nepodporovaným typem");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se vytvořit třídu s nepodporovaným typem");
+            return null;
         }
     }
 
@@ -307,7 +312,8 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
         }
         else
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se vytvořit název třídy s nepodporovaným typem");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se vytvořit název třídy s nepodporovaným typem");
+            return null;
         }
     }
 
@@ -366,8 +372,8 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case SqlDbType.Structured:
             case SqlDbType.Udt:
             case SqlDbType.Xml:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést na int strukturovaný(složitý) datový typ");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se převést na int strukturovaný(složitý) datový typ");
+                break;
             case SqlDbType.UniqueIdentifier:
                 return "Guid";
 
@@ -379,8 +385,11 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
                 return "object";
 
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Snažíte se převést datový typ, pro který není implementována větev");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se převést datový typ, pro který není implementována větev");
+                return null;
         }
+
+        return null;
     }
 
     public static SqlDbType GetProbablyDataType(string p)
@@ -506,9 +515,12 @@ public partial class MSDatabaseLayer :MSDatabaseLayerBase
             case SqlDbType.Xml:
 
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný datový typ");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný datový typ");
+                break;
 
         }
+
+        return null;
     }
 
 

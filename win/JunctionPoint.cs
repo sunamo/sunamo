@@ -248,6 +248,7 @@ public static class JunctionPoint
             ECreationDisposition dwCreationDisposition,
             EFileAttributes dwFlagsAndAttributes,
             IntPtr hTemplateFile);
+    static Type type = typeof(JunctionPoint);
 
         /// <summary>
         /// For files use mklink, this can be use only for directory
@@ -266,12 +267,12 @@ public static class JunctionPoint
             targetDir = Path.GetFullPath(targetDir);
 
             if (!FS.ExistsDirectory(targetDir))
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Target path does not exist or is not a directory" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Target path does not exist or is not a directory" + ".");
 
             if (FS.ExistsDirectory(junctionPoint))
             {
                 if (!overwrite)
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Directory already exists and overwrite parameter is false" + ".");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Directory already exists and overwrite parameter is false" + ".");
             }
             else
             {
@@ -332,7 +333,7 @@ public static class JunctionPoint
             if (!FS.ExistsDirectory(junctionPoint))
             {
                 if (FS.ExistsFile(junctionPoint))
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Path is not a junction point.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Path is not a junction point.");
 
                 return;
             }
@@ -369,7 +370,7 @@ public static class JunctionPoint
                 }
                 catch (IOException ex)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Unable to delete junction point" + ".", ex);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unable to delete junction point" + ".");
                 }
             }
         }
@@ -422,7 +423,7 @@ public static class JunctionPoint
         //{
         //    string target = InternalGetTarget(handle);
         //    if (target == null)
-        //        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Path is not a junction point.");
+        //        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Path is not a junction point.");
 
         //    return target;
         //}
@@ -488,6 +489,6 @@ public static class JunctionPoint
 
         private static void ThrowLastWin32Error(string message)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(message, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),message + Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
         }
     }

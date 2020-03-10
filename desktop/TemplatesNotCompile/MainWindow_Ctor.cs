@@ -332,7 +332,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         userControlWithMenuItems = actual as IUserControlWithMenuItemsList;
         userControlClosing = actual as IUserControlClosing;
         keysHandler = actual as IKeysHandler;
-        ThrowExceptions.WasNotKeysHandler(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), userControl.Title, keysHandler);
+        ThrowExceptions.WasNotKeysHandler(Exc.GetStackTrace(),type, Exc.CallingMethod(), userControl.Title, keysHandler);
 
 
         #region On start I have to unregister

@@ -18,7 +18,7 @@ public partial class UtilsNonNetStandard
         m = Regex.Match(xml, AllStrings.lt + element + ">(?<Element>[^>]*)<" + "/" + element + AllStrings.gt, RegexOptions.IgnoreCase);
         if (m == null)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not find" + " " + "" + element + "></" + element + " " + " " + "in provided Public Key XML" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Could not find" + " " + "" + element + "></" + element + " " + " " + "in provided Public Key XML" + ".");
         }
 
         return m.Groups["Element"].ToString();
@@ -35,7 +35,8 @@ public partial class UtilsNonNetStandard
         {
             if (isRequired)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ConfigurationErrorsException("key " + "" + key + " " + " " + "is missing from .config file");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"key " + "" + key + " " + " " + "is missing from .config file");
+                return string.Empty;
             }
             else
             {
@@ -47,6 +48,8 @@ public partial class UtilsNonNetStandard
             return s;
         }
     }
+
+    static Type type = typeof(Utils);
 
     /// <summary>
     /// Vrati mi retezec <add key =  \ " A1 \ " value  =  \ " A2 \ "/>

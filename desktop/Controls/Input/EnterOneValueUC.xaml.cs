@@ -242,7 +242,7 @@ namespace desktop.Controls.Input
                 else
                 {
                     allOk = false;
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, methodName, "Not implemented Validate for control " + item.GetType().FullName);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, "Not implemented Validate for control " + item.GetType().FullName);
                 }
             }
             //txtEnteredText.Text = txtEnteredText.Text.Trim();
@@ -309,7 +309,7 @@ namespace desktop.Controls.Input
 
         public void uc_Loaded(object sender, RoutedEventArgs e)
         {
-            //ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            //ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
         }
 
         public event VoidBoolNullable ChangeDialogResult;

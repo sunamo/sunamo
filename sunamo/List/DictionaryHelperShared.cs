@@ -39,7 +39,7 @@ public partial class DictionaryHelper
 
     public static Dictionary<Key, Value> GetDictionary<Key, Value>(List<Key> keys, List<Value> values)
     {
-        ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "GetDictionary", "keys", keys.Count, "values", values.Count);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "GetDictionary", "keys", keys.Count, "values", values.Count);
         Dictionary<Key, Value> result = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
         {
@@ -88,8 +88,8 @@ public partial class DictionaryHelper
 
     public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)
     {
-        var methodName = RH.CallingMethod();
-        ThrowExceptions.IsOdd(RuntimeHelper.GetStackTrace(),type, methodName, "p", p);
+        var methodName = Exc.CallingMethod();
+        ThrowExceptions.IsOdd(Exc.GetStackTrace(),type, methodName, "p", p);
 
         Dictionary<T, T> result = new Dictionary<T, T>();
         for (int i = 0; i < p.Count; i++)

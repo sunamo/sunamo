@@ -108,6 +108,8 @@ namespace forms
             button.Enabled = value;
         }
 
+        static Type type = typeof(IH);
+
         /// <summary>
         /// Tato metoda je na WF, pro WPF pak updateProgressBarWpfValue
         /// </summary>
@@ -117,7 +119,7 @@ namespace forms
         {
             if (value > 100)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Hodnota pro ProgressBar nemuze byt vyssi nez 100" + ".");
                 //value = 100;
             }
             p.Value = value;

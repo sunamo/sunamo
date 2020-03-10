@@ -3,9 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-
 public static partial class CSharpHelper
 {
+
     public static string GetSummaryXmlDocumentation(List<string> cs)
     {
         StringBuilder sb = new StringBuilder();
@@ -15,9 +15,7 @@ public static partial class CSharpHelper
             if (line.StartsWith(CodeElementsConstants.XmlDocumentationCsharp))
             {
                 line = SH.TrimStart(line, CodeElementsConstants.XmlDocumentationCsharp).Trim();
-
                 sb.AppendLine(line);
-
                 if (line.Contains("</summary>"))
                 {
                     break;
@@ -30,7 +28,6 @@ public static partial class CSharpHelper
     {
         CSharpGenerator csg = new CSharpGenerator();
         List<string> all = new List<string>();
-
         foreach (var item in uris)
         {
             Uri u = new Uri(item);
@@ -38,46 +35,32 @@ public static partial class CSharpHelper
             csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, item);
             all.Add(name);
         }
-
         csg.List(2, "string", "All", all, false);
-
         return csg.ToString();
     }
-
     #region DictionaryWithClass
     public static string DictionaryWithClass<Key,Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
     {
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
-
-
         
         genCS.DictionaryFromRandomValue<Key, Value>(0, nameDictionary, keys, randomValue, false);
-
         var inner = GetDictionaryValuesFromRandomValue<Key, Value>(tabCount, nameDictionary, keys, randomValue);
         genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
         genCS.EndBrace(0);
-
         return genCS.ToString();
     }
-
     public static string DictionaryWithClass<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> d)
     {
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
-
-
-
         genCS.DictionaryFromDictionary<Key, Value>(0, nameDictionary, d, false);
-
         var inner = GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, d);
         genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
         genCS.EndBrace(0);
-
         return genCS.ToString();
     }
     #endregion
-
     #region GetDictionaryValues
     public static string GetDictionaryValuesFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict)
     {
@@ -85,14 +68,12 @@ public static partial class CSharpHelper
         csg.GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
         return csg.ToString();
     }
-
     public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
     {
         CSharpGenerator csg = new CSharpGenerator();
         csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values);
         return csg.ToString();
     }
-
     public static string GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
     {
         CSharpGenerator csg = new CSharpGenerator();
@@ -100,17 +81,13 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
     #endregion
-
     //public static string GetDictionary(string nameDictionary)
     //{
-
     //}
-
     public static string RemoveXmlDocCommentsExceptSummary(List<string> list, ref bool removedAnything)
     {
         removedAnything = false;
         const string a = @"/// <returns></returns>";
-
         for (int i = list.Count - 1; i >= 0; i--)
         {
             if (list[i].Trim() == a)
@@ -119,10 +96,8 @@ public static partial class CSharpHelper
                 list.RemoveAt(i);
             }
         }
-
         return SH.JoinNL( list);
     }
-
     public static string RemoveXmlDocComments(List<string> list)
     {
         for (int i = list.Count - 1; i >= 0; i--)
@@ -132,12 +107,10 @@ public static partial class CSharpHelper
         CA.TrimWhereIsOnlyWhitespace(list);
         var s = SH.JoinNL(list);
         
-
         CA.DoubleOrMoreMultiLinesToSingle(ref s);
         
         return s;
     }
-
     public static List<string> RemoveComments(List<string> list)
     {
         for (int i = list.Count - 1; i >= 0; i--)
@@ -147,29 +120,24 @@ public static partial class CSharpHelper
         CA.RemoveStringsEmpty2(list);
         return list;
     }
-
     public static string GetDictionaryStringObject<Value>(int tabCount, List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
     {
         int pocetTabu = 0;
         CSharpGenerator gen = new CSharpGenerator();
         gen.DictionaryFromTwoList<string, Value>(tabCount, nameDictionary, keys, values, false);
-
         if (checkForNull)
         {
             gen.If(pocetTabu, nameDictionary + " " + "== null");
         }
-
         gen.GetDictionaryValuesFromDictionary<string, Value>(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
         if (checkForNull)
         {
             gen.EndBrace(pocetTabu);
         }
-
         
         string result = gen.ToString();
         return result;
     }
-
     public static string GetConsts(List<string> list, bool toCamelConvention)
     {
         CSharpGenerator csg = new CSharpGenerator();
@@ -182,19 +150,15 @@ public static partial class CSharpHelper
             }
             csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
         }
-
         return csg.ToString();
     }
-
     
-
     public static string DefaultValueForTypeSqLite(string type)
     {
         if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
-
         switch (type)
         {
             case "TEXT":
@@ -210,12 +174,12 @@ public static partial class CSharpHelper
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return "null";
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ v metodě DefaultValueForTypeSqLite");
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(),type);
+                break;
         }
-
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ");
+        return null;
     }
-
    
     public static string GetCtorInner(int tabCount, IEnumerable values)
     {
@@ -225,12 +189,9 @@ public static partial class CSharpHelper
         {
             csg.AppendLine(tabCount, SH.Format2(assignVariable, item));
         }
-
         return csg.ToString().Trim();
     }
-
     
-
     /// <summary>
     /// Return also List because Array isn't use
     /// </summary>
@@ -242,14 +203,12 @@ public static partial class CSharpHelper
         generator.List(0, "string", arrayName, input);
         return generator.ToString();
     }
-
     public static string GetList(List<string> input, string listName)
     {
         CSharpGenerator generator = new CSharpGenerator();
         generator.List(0, "string", listName, input);
         return generator.ToString();
     }
-
     public static List<string> RemoveRegions(List<string> lines)
     {
         for (int i = lines.Count - 1; i >= 0; i--)
@@ -260,23 +219,18 @@ public static partial class CSharpHelper
                 lines.RemoveAt(i);
             }
         }
-
         return lines;
     }
-
     public static string GenerateConstants(int tabCount, Func<string, string> changeInput, List<string> input)
     {
         CSharpGenerator csg = new CSharpGenerator();
         foreach (var item in input)
         {
             var name = changeInput(item);
-
             csg.Field(tabCount, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, string.Empty);
         }
-
         return csg.ToString();
     }
-
     public static void WrapWithQuote(Type tKey, ref string keyS)
     {
         if (tKey == Types.tString)
@@ -292,7 +246,6 @@ public static partial class CSharpHelper
             
         }
     }
-
     public static string WrapWithQuoteList(Type tValue, IEnumerable valueS)
     {
         StringBuilder sb = new StringBuilder();
@@ -304,7 +257,6 @@ public static partial class CSharpHelper
         }
         return sb.ToString().TrimEnd(AllChars.comma);
     }
-
     public static Dictionary<string, string> ParseFields(List<string> l)
     {
         CA.RemoveStringsEmpty2(l);
@@ -319,25 +271,17 @@ public static partial class CSharpHelper
         }
         return r;
     }
-
     const string tProperty = @"{0} {2} = {1};
-
     public {0} {3} { get { return {2}; } set { {2} = value; OnPropertyChanged(" + "\"{3}\"); } }" + @"
-
 ";
-
     public static string GenerateProperties(List<string> l)
     {
         var d = ParseFields(l);
-
-
-
         StringBuilder sb = new StringBuilder();
         foreach (var item in d)
         {
             sb.AppendLine(SH.Format3(tProperty, item.Value, CSharpHelperSunamo.DefaultValueForType(item.Value), item.Key, SH.FirstCharUpper(item.Key)));
         }
-
         return sb.ToString();
     }
 }

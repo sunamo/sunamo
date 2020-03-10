@@ -75,11 +75,13 @@ namespace sunamo.Helpers
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Non supported http method in HttpMethod.GetResponseText");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Non supported http method in HttpMethod.GetResponseText");
             }
             //HttpResponseMessage response = responseTask.Result;
             return response;
         }
+
+        static Type type = typeof(HttpClientHelper);
 
         private static void SetHttpHeaders(HttpRequestData hrd, HttpClient hc)
         {

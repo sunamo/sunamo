@@ -96,11 +96,13 @@ using System.IO;
             {
                 if (throwExceptionIfNotGettingValues)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Failed to get the item from the registry" + ".");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Failed to get the item from the registry" + ".");
                 }
             }
-        } 
-        #endregion
+        }
+    #endregion
+
+    static Type type = typeof(RegistryEntry);
 
         #region IUroven Members
         /// <summary>

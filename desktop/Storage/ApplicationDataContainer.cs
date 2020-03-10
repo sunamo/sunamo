@@ -9,13 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
 /// <summary>
 /// Key is filename
 /// Value is ApplicationDataContainerList (every instance has unique file)
 /// </summary>
 public class ApplicationDataContainer : ApplicationDataConsts
 {
+static Type type = typeof(ApplicationDataContainer);
     /// <summary>
     /// In key are control
     /// In value its saved values
@@ -23,10 +23,9 @@ public class ApplicationDataContainer : ApplicationDataConsts
     /// Never direct access also in this class!! 
     /// </summary>
     public Dictionary<object, ApplicationDataContainerList> data = new Dictionary<object, ApplicationDataContainerList>();
-    readonly Type type = typeof(Type);
+    
     string file = "";
     public string innerDelimiter = AllStrings.asterisk;
-
     /// <summary>
     /// ctor for old approach
     /// </summary>
@@ -36,9 +35,7 @@ public class ApplicationDataContainer : ApplicationDataConsts
         this.file = file;
         data.Add(file, new ApplicationDataContainerList(file));
     }
-
    
-
     /// <summary>
     /// Must be here due to sunamo.Tests
     /// </summary>
@@ -54,18 +51,14 @@ public class ApplicationDataContainer : ApplicationDataConsts
             return null;
         }
     }
-
     public ApplicationDataContainer()
     {
-
     }
-
     public void Add(TwoWayTable twt)
     {
         //twt.c = list;
         //twt.Save += Twt_Save;
     }
-
     public void SaveControl(object o)
     {
         FrameworkElement fw = (FrameworkElement)o;
@@ -75,22 +68,19 @@ public class ApplicationDataContainer : ApplicationDataConsts
         }
         else
         {
-            ThrowExceptions.DoesntHaveRequiredType(RuntimeHelper.GetStackTrace(),type, "SaveControl", "o");
+            ThrowExceptions.DoesntHaveRequiredType(Exc.GetStackTrace(),type, "SaveControl", "o");
         }
     }
-
     private void Chb_Click(object sender, RoutedEventArgs e)
     {
         CheckBox chb = sender as CheckBox;
         Set(sender, IsChecked, chb.IsChecked);
         SaveControl(chb);
     }
-
     public void Add(UserControl uc)
     {
         var adcl = AddFrameworkElement(uc);
     }
-
     public void Add(Window cb)
     {
         // Automatically load
@@ -102,7 +92,6 @@ public class ApplicationDataContainer : ApplicationDataConsts
         //cb.KeyUp += Cb_KeyUp;
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
-
     public void Add(ComboBox cb)
     {
         // Automatically load
@@ -112,21 +101,18 @@ public class ApplicationDataContainer : ApplicationDataConsts
         cb.KeyUp += Cb_KeyUp;
         //cb.DataContextChanged += Cb_DataContextChanged;
     }
-
     public void Add(CheckBox chb)
     {
         ApplicationDataContainerList adcl = AddFrameworkElement(chb);
         chb.Click += Chb_Click;
         chb.IsChecked = adcl.GetNullableBool( IsChecked);
     }
-
     public void Add(TextBox txt)
     {
         var adcl = AddFrameworkElement(txt);
         txt.Text = adcl.GetString(Text);
         txt.TextChanged += Txt_TextChanged;
     }
-
     public void Add(CheckBoxListUC chbl)
     {
         var adcl = AddFrameworkElement(chbl);
@@ -137,30 +123,24 @@ public class ApplicationDataContainer : ApplicationDataConsts
             var maybeInt = list[++i];
             if (!BTS.IsInt(maybeInt))
             {
-
             }
             chb.IsChecked = BTS.IntToBool(maybeInt);
             chbl.l.l.Add(chb);
         }
         chbl.l.CollectionChanged += Chbl_CollectionChanged;
     }
-
     private void Chbl_CollectionChanged(object sender, string operation, object data)
     {
         CheckBoxListUC chb = sender as CheckBoxListUC;
-
         InstantSB sb = new InstantSB(innerDelimiter);
         foreach (var item in chb.l.l)
         {
             sb.AddItem(item.Content);
             sb.AddItem(BTS.BoolToInt(item.IsChecked.Value));
         }
-
         Set(sender, chbAdded, sb.ToString());
-
         SaveControl(chb);
     }
-
     public void Add(SelectMoreFolders txtFolders)
     {
         var adcl = AddFrameworkElement(txtFolders);
@@ -173,25 +153,20 @@ public class ApplicationDataContainer : ApplicationDataConsts
         txtFolders.FolderRemoved += TxtFolders_FolderRemoved;
         
     }
-
     private void Txt_TextChanged(object sender, TextChangedEventArgs e)
     {
         TextBox chb = sender as TextBox;
         Set(sender, Text, chb.Text);
-
         SaveControl(chb);
     }
-
     private void TxtFolders_FolderRemoved(object sender, List<string> selectedFolders)
     {
         SaveChangesSelectMoreFolders(sender, selectedFolders);
     }
-
     private void TxtFolders_FolderChanged(object sender, List<string> selectedFolders)
     {
         SaveChangesSelectMoreFolders(sender, selectedFolders);
     }
-
     private void SaveChangesSelectMoreFolders(object sender, List<string> selectedFolders)
     {
         SelectMoreFolders chb = sender as SelectMoreFolders;
@@ -200,7 +175,6 @@ public class ApplicationDataContainer : ApplicationDataConsts
         
         SaveControl(chb);
     }
-
     public T Get<T>(object sender, string key)
     {
         
@@ -212,36 +186,28 @@ public class ApplicationDataContainer : ApplicationDataConsts
         
         return default(T);
     }
-
     public object Get(object sender, string key)
     {
         return data[sender][key];
     }
-
     public void Set(object sender, string key, object v)
     {
         // Here must be AllStrings.pipe because in file it is in format name|type|value
-        ThrowExceptions.StringContainsUnallowedSubstrings(RuntimeHelper.GetStackTrace(),type, "Set", v.ToString(), AllStrings.pipe);
+        ThrowExceptions.StringContainsUnallowedSubstrings(Exc.GetStackTrace(),type, "Set", v.ToString(), AllStrings.pipe);
         var f = data[sender];
-
         if (ThisApp.check)
         {
             
         }
-
         f[key] = v;
     }
-
     
-
     public void Add(TextBlock tb)
     {
         var tb2 = AddFrameworkElement(tb);
         //tb.TextChanged +=
     }
-
     
-
     private void Cb_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
     {
         var cb = sender as ComboBox;
@@ -255,30 +221,25 @@ public class ApplicationDataContainer : ApplicationDataConsts
             SaveControl(cb);
         }
     }
-
     private List<string> AddToListString(object list, string text)
     {
         var list2 = ((List<string>)list);
         list2.Add(text);
         return list2;
     }
-
     private void Cb_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         //SaveControl(sender);
     }
-
     public ApplicationDataContainerList AddFrameworkElement(object key, ApplicationDataContainerList fw)
     {
         data.Add(key, fw);
         return fw;
     }
-
     public ApplicationDataContainerList AddFrameworkElement(FrameworkElement fw)
     {
         ApplicationDataContainerList result = new ApplicationDataContainerList(fw);
         return AddFrameworkElement(fw, result);
     }
-
     
 }

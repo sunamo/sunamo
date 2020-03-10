@@ -92,10 +92,12 @@ namespace SunamoFtp
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nový druh entry (change msdos directory listing to unix)");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nový druh entry (change msdos directory listing to unix)");
             }
             return isFile;
         }
+
+        static Type type = typeof(FtpHelper);
 
         public static bool IsSchemaFtp(string remFileName)
         {

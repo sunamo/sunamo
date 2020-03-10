@@ -69,6 +69,9 @@ public class ConvertTypeNameType
             case "UInt64":
                 return typeof(ulong);
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+        return null;
     }
+
+    static Type type = typeof(ConvertTypeNameType);
 }

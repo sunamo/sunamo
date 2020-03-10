@@ -19,6 +19,7 @@ namespace SunamoFtp
 {
     public class FTP : FtpBase
     {
+        static Type type = typeof(FTP);
         /// <summary>
         /// aktuální vzdálený adresář.
         /// </summary>
@@ -169,7 +170,7 @@ namespace SunamoFtp
 
             if (!(retValue == 150 || retValue == 125))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
             mes = "";
@@ -198,7 +199,7 @@ namespace SunamoFtp
 
             if (retValue != 226)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             return mess;
         }
@@ -284,7 +285,7 @@ namespace SunamoFtp
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ objektu");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ objektu");
                 }
             }
             if (ps.indexZero > 0)
@@ -321,13 +322,13 @@ namespace SunamoFtp
                         }
                         else
                         {
-                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ objektu");
+                            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ objektu");
                         }
                     }
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException();
+                    ThrowExceptions.NotSupported(Exc.GetStackTrace(), type, Exc.CallingMethod());
                 }
             }
             return vr;
@@ -410,7 +411,7 @@ namespace SunamoFtp
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
             return size;
@@ -438,7 +439,7 @@ namespace SunamoFtp
             {
                 OnNewStatus("Couldn't connect to remote server" + ": " + ex.Message);
                 return;
-                //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Couldn't connect to remote server" + ": " + ex.Message);
+                //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Couldn't connect to remote server" + ": " + ex.Message);
             }
             #endregion
 
@@ -451,7 +452,7 @@ namespace SunamoFtp
             if (!(retValue == 331 || retValue == 230))
             {
                 cleanup();
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
 
@@ -467,7 +468,7 @@ namespace SunamoFtp
                 {
                     cleanup();
                     bad = true;
-                    //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                    //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
                 }
             }
             #endregion
@@ -517,14 +518,14 @@ namespace SunamoFtp
             catch (Exception ex)
             {
                 // During first attemp to connect to sunamo.cz Message = "A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 185.8.239.101:21"
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Couldn't connect to remote server");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Couldn't connect to remote server");
             }
 
             readReply();
             if (retValue != 220)
             {
                 close();
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
         }
 
@@ -650,7 +651,7 @@ namespace SunamoFtp
             }
             catch (Exception ex)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(ex.Message);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ex.Message);
             }
 
             showSslInfo(remoteHost, _sslStream, true);
@@ -677,7 +678,7 @@ namespace SunamoFtp
             }
             if (retValue != 200)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
         }
 
@@ -721,7 +722,7 @@ namespace SunamoFtp
             #region Pokud nejsem přihlášený, přihlásím se na nastavím binární mód
             if (string.IsNullOrEmpty(locFileName))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Musíte zadat jméno souboru do kterého chcete stáhnout");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Musíte zadat jméno souboru do kterého chcete stáhnout");
             }
 
             if (!logined)
@@ -782,7 +783,7 @@ namespace SunamoFtp
 
             if (!(retValue == 150 || retValue == 125))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
             while (true)
@@ -809,7 +810,7 @@ namespace SunamoFtp
 
             if (!(retValue == 226 || retValue == 250))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
             return true;
@@ -834,7 +835,7 @@ namespace SunamoFtp
 
             if (retValue != 227)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
             if (!logined)
@@ -883,7 +884,7 @@ namespace SunamoFtp
 
             if (!(retValue == 125 || retValue == 150))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
 
@@ -923,7 +924,7 @@ namespace SunamoFtp
             readReply();
             if (!(retValue == 226 || retValue == 250))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
         }
@@ -1007,7 +1008,7 @@ namespace SunamoFtp
 
             if (!(retValue == 125 || retValue == 150))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
 
@@ -1042,7 +1043,7 @@ namespace SunamoFtp
             readReply();
             if (!(retValue == 226 || retValue == 250))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
             #endregion
@@ -1089,13 +1090,13 @@ namespace SunamoFtp
 
             if (retValue != 350)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
             sendCommand("RNTO" + " " + newFileName);
             if (retValue != 250)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
 
         }
@@ -1119,7 +1120,7 @@ namespace SunamoFtp
 
             if (retValue != 250 && retValue != 257)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             chdirLite(dirName);
             return true;
@@ -1147,7 +1148,7 @@ namespace SunamoFtp
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
                 }
 
             }
@@ -1240,7 +1241,7 @@ namespace SunamoFtp
 
                 if (retValue != 250)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
                 }
                 if (dirName == AllStrings.dd)
                 {
@@ -1470,7 +1471,7 @@ namespace SunamoFtp
 
             if (retValue != 227)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException(reply.Substring(4));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),reply.Substring(4));
             }
             #endregion
 
@@ -1494,7 +1495,7 @@ namespace SunamoFtp
                     buf += ch;
                 else if (ch != AllChars.comma)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Malformed PASV reply" + ": " + reply);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Malformed PASV reply" + ": " + reply);
                 }
 
                 #region Pokud je poslední znak čárka,
@@ -1508,7 +1509,7 @@ namespace SunamoFtp
                     }
                     catch (Exception ex)
                     {
-                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Malformed PASV reply" + ": " + reply);
+                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Malformed PASV reply" + ": " + reply);
                     }
                 }
                 #endregion
@@ -1530,7 +1531,7 @@ namespace SunamoFtp
             }
             catch (Exception ex)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IOException("Can't connect to remoteserver");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Can't connect to remoteserver");
             }
 
             return s;
@@ -1580,12 +1581,12 @@ namespace SunamoFtp
 
         public override void DebugActualFolder()
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
         }
 
         public override void D(string what, string text, params object[] args)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
         }
 
 
