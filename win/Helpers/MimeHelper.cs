@@ -10,10 +10,12 @@ namespace sunamo.Helpers
 {
     public class MimeHelper
     {
+        static Type type = typeof(MimeHelper);
+
         public static string GetMimeFromFile(string filename)
         {
             if (!FS.ExistsFile(filename))
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException(filename + " " + "not found");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),filename + " " + "not found");
 
             byte[] buffer = new byte[256];
             using (FileStream fs = new FileStream(filename, FileMode.Open))

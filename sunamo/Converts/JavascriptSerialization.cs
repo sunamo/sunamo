@@ -35,15 +35,17 @@ public class JavascriptSerialization
             return NotSupportedElseIfClasule<string>("Serialize");
         }
     }
-
+    static Type type = typeof(JavascriptSerialization);
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
+        return default(T);
     }
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Else if with enum value" + " " + _sl + " " + "in JavascriptSerialization" + "." + v);
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Else if with enum value" + " " + _sl + " " + "in JavascriptSerialization" + "." + v);
+        return default(T);
     }
 
     public object Deserialize(String o, Type targetType)

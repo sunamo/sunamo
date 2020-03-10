@@ -29,12 +29,15 @@ public partial class CryptHelper : ICryptHelper
         to.s = from.s;
     }
 
+    public static Type type = typeof(CryptHelper);
+
     public CryptHelper(Provider provider, List<byte> s, List<byte> iv, string pp)
     {
         switch (provider)
         {
             case Provider.DES:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
+                break;
             case Provider.RC2:
                 //crypt = new CryptHelper.RC2();
                 break;
@@ -45,7 +48,8 @@ public partial class CryptHelper : ICryptHelper
                 //crypt = new CryptHelper.TripleDES();
                 break;
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("");
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(),provider);
+                break;
         }
         _crypt.iv = iv;
         _crypt.pp = pp;

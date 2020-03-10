@@ -76,7 +76,7 @@ namespace sunamo.Essential
                     Success(m);
                     break;
                 default:
-                    ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "WriteLine", t);
+                    ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "WriteLine", t);
                     break;
             }
         }

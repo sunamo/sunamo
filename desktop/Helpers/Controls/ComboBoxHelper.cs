@@ -11,17 +11,6 @@ using System.Windows.Input;
 public partial class ComboBoxHelper
 {
     bool tagy = true;
-    protected ComboBox cb = null;
-    public bool raiseSelectionChanged = true;
-    public event SelectionChangedEventHandler SelectionChanged;
-
-    public ComboBox Cb
-    {
-        get
-        {
-            return cb;
-        }
-    }
 
     public static void AddRange2List(ComboBox cbInterpret, IList allInterprets)
     {
@@ -53,34 +42,7 @@ public partial class ComboBoxHelper
         Keyboard.Focus(comboBox1);
     }
 
-        protected string originalToolTipText = "";
-
-        /// <summary>
-        /// Objekt, ve kterém je vždy aktuální zda v tsddb něco je
-        /// Takže se nelekni že to je promměná
-        /// </summary>
-        public object SelectedO = null;
-
-        public bool Selected
-        {
-            get
-            {
-                if (SelectedO != null)
-                {
-                    return SelectedO.ToString().Trim() != "";
-                }
-                return false;
-            }
-        }
-
-        public string SelectedS
-        {
-            get
-            {
-            // not need ValueFromTWithNameOrObject, TWithName has ToString
-            return SelectedO.ToString();
-            }
-        }
+    
 
     public void AddValuesOfEnumAsItems<T>() where T : struct
     {
@@ -104,24 +66,6 @@ public partial class ComboBoxHelper
             
         }
 
-    void tsddb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            SelectedO = cb.SelectedItem;
-        if (SelectedO != null)
-        {
-            // not need ValueFromTWithNameOrObject, TWithName has ToString
-            cb.ToolTip = originalToolTipText + AllStrings.space + SelectedO.ToString();
-        }
-        if (raiseSelectionChanged)
-        {
-            if (SelectionChanged != null)
-            {
-                SelectionChanged(sender, e);
-            }
-        }
-        
-        
-        }
 
     public void AddValuesOfEnumerableAsItems(IEnumerable l)
     {
@@ -218,17 +162,4 @@ public partial class ComboBoxHelper
                 y++;
             }
         }
-
-    /// <summary>
-    /// A2 zda se má do SelectedO uložit tsmi.Tag nebo jen tsmi
-    /// </summary>
-    /// <param name="tsddb"></param>
-    /// <param name="tagy"></param>
-        public ComboBoxHelper(ComboBox tsddb)
-        {
-            this.cb = tsddb;
-            tsddb.SelectionChanged += tsddb_SelectionChanged;
-        }
-
-    
 }

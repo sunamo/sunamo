@@ -43,7 +43,7 @@ public static partial class SH
         int remain = sl % c; 
         if (remain != 0)
         {
-            ThrowExceptions.Custom(null, type, RH.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
+            ThrowExceptions.Custom(null, type, Exc.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
         }
 
         List<string> ls = new List<string>(c);
@@ -186,7 +186,7 @@ public static partial class SH
             }
         }
 
-        ThrowExceptions.IsNotAllowed(null, type, RH.CallingMethod(), v +" as bracket");
+        ThrowExceptions.IsNotAllowed(null, type, Exc.CallingMethod(), v +" as bracket");
         return null;
     }
 
@@ -773,7 +773,7 @@ public static partial class SH
             case '[':
                 return Brackets.Square;
             default:
-                ThrowExceptions.NotImplementedCase(null, type, RH.CallingMethod(), v);
+                ThrowExceptions.NotImplementedCase(null, type, Exc.CallingMethod(), v);
                 break;
         }
 
@@ -1426,7 +1426,7 @@ public static partial class SH
     {
         if (deli == null || deli.Count() == 0)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"No delimiter determined");   
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"No delimiter determined");   
         }
 
         var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
@@ -1645,7 +1645,7 @@ public static partial class SH
 
             if (ie.Count() > 1 && enu.Count() == 1)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(), "Probably was called with swithech delimiter and parts");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Probably was called with swithech delimiter and parts");
             }
         }
 

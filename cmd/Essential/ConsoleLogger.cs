@@ -23,6 +23,8 @@ namespace cmd.Essential
             SetColorOfConsole(TypeOfMessage.Ordinal);
         }
 
+        static Type type = typeof(ConsoleLogger);
+
         public static void SetColorOfConsole(TypeOfMessage tz)
         {
             ConsoleColor bk = ConsoleColor.White;
@@ -47,7 +49,7 @@ namespace cmd.Essential
                     bk = ConsoleColor.Green;
                     break;
                 default:
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),RLData.en["UninplementedBranch"]);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en["UninplementedBranch"]);
                     break;
             }
             if (bk != ConsoleColor.Black)

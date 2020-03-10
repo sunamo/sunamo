@@ -37,7 +37,9 @@ public class XPathPart
         }
         else if (dexStartSquareBracket == -1 || dexEndSquareBracket == -1)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neukon\u010Den\u00E1 z\u00E1vorka v metod\u011B XPathPart.ctor");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neukon\u010Den\u00E1 z\u00E1vorka v metod\u011B XPathPart.ctor");
         }
     }
+
+    static Type type = typeof(XPathPart);
 }

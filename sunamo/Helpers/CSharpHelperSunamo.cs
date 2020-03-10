@@ -9,7 +9,6 @@ public partial class CSharpHelperSunamo
         string indentPrevious = string.Empty;
         string line = null;
         StringBuilder sb = new StringBuilder();
-
         for (int i = 0; i < lines.Count; i++)
         {
             line = lines[i];
@@ -21,7 +20,6 @@ public partial class CSharpHelperSunamo
                 }
                 else
                 {
-
                     indentPrevious = SH.GetWhitespaceFromBeginning(sb, line);
                 }
             }
@@ -38,16 +36,13 @@ public partial class CSharpHelperSunamo
         }
         return false;
     }
-
     public static string ReplaceNulled(string s)
     {
         return s.Replace(Consts.nulled, string.Empty).Trim();
     }
-
     public static string ShortcutForControl(string name)
     {
         StringBuilder sb = new StringBuilder();
-
         foreach (var item in name)
         {
             if (char.IsUpper(item))
@@ -57,7 +52,6 @@ public partial class CSharpHelperSunamo
         }
         return sb.ToString();
     }
-
     /// <summary>
     /// Its not compatible with default operator
     /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values
@@ -73,7 +67,6 @@ public partial class CSharpHelperSunamo
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
-
         #region Same seria as in Types
         switch (type)
         {
@@ -103,10 +96,11 @@ public partial class CSharpHelperSunamo
             case "Guid":
                 return Guid.Empty;
             case "char":
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+                break;
         } 
         #endregion
-
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovan\u00FD typ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+        return null;
     }
 }

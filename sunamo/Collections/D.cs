@@ -71,7 +71,7 @@ public class D<T, U> : ISunamoDictionary<T, U>, IEnumerable
 
     public void CopyTo(KeyValuePair<T, U>[] array, int arrayIndex)
     {
-        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 
     public IEnumerator<KeyValuePair<T, U>> GetEnumerator()

@@ -177,6 +177,8 @@ namespace shared.Crypting
             return d;
         }
 
+        static Type type = typeof(Symmetric);
+
         /// <summary>
         /// Ensures that _crypto object has valid Key and IV
         /// prior to any attempt to encrypt/decrypt anythingv
@@ -192,7 +194,7 @@ namespace shared.Crypting
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("No key was provided for the decryption operation" + "!");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"No key was provided for the decryption operation" + "!");
                 }
             }
             if (_iv.IsEmpty)
@@ -203,7 +205,7 @@ namespace shared.Crypting
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("No initialization vector was provided for the decryption operation" + "!");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"No initialization vector was provided for the decryption operation" + "!");
                 }
             }
             _crypto.Key = _key.Bytes;
@@ -350,7 +352,7 @@ namespace shared.Crypting
             }
             catch (CryptographicException ex)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),CryptographicException("Unable to decrypt data. The provided key may be invalid" + ".", ex);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unable to decrypt data. The provided key may be invalid" + ".");
             }
             finally
             {

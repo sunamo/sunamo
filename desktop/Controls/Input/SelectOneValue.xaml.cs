@@ -142,9 +142,11 @@ namespace desktop.Controls.Input
             EnableBtn();
         }
 
+        static Type type = typeof(SelectOneValue);
+
         public void Init()
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
+            
         }
     }
 }

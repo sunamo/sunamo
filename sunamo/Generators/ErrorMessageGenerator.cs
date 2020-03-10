@@ -70,6 +70,8 @@ public class ErrorMessageGenerator
         }
     }
 
+    static Type type = typeof(ErrorMessageGenerator);
+
     private string GetErrorMessage(FileExceptions fileExceptions)
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
@@ -86,7 +88,8 @@ public class ErrorMessageGenerator
                 case FileExceptions.General:
                     return "Nezn\u00E1m\u00E1 nebo obecn\u00E1 chyba";
                 default:
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neimplementovan\u00E1 v\u011Btev");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neimplementovan\u00E1 v\u011Btev");
+                    return null;
             }
         }
         else
@@ -103,7 +106,8 @@ public class ErrorMessageGenerator
                 case FileExceptions.General:
                     return "Unknown or general error";
                 default:
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Not implemented case");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Not implemented case");
+                    return null;
             }
         }
 

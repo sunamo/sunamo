@@ -183,7 +183,7 @@ public partial class DTHelperCs
     {
         if (l != Langs.cs)
         {
-            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), l);
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), l);
         }
 
         if (dateTime == dtMinVal)
@@ -343,7 +343,8 @@ public partial class DTHelperCs
             case DayOfWeek.Sunday:
                 return DTConstants.Nedele;
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nezn\u00E1m\u00FD den v t\u00FDdnu");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nezn\u00E1m\u00FD den v t\u00FDdnu");
+        return null;
     }
     #endregion
 }

@@ -75,6 +75,8 @@ namespace sunamo.Xml
             return (XmlNode)xdoc.FirstChild;
         }
 
+        static Type type = typeof(XH);
+
         /// <summary>
         /// Remove illegal XML characters from a string.
         /// </summary>
@@ -82,7 +84,7 @@ namespace sunamo.Xml
         {
             if (xml == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Atributte xml is null");
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Atributte xml is null");
             }
             //xml = xml.Replace("&", " and ");
             StringBuilder buffer = new StringBuilder(xml.Length);

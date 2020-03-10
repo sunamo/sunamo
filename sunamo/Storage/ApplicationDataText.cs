@@ -59,7 +59,7 @@ namespace sunamo.Storage
             CA.RemoveStringsEmpty(listString);
             v.Add(actualSection, listString);
 
-            ThrowExceptions.DifferentCountInLists(RuntimeHelper.GetStackTrace(),type, "Parse", "sections", sections.Count, "v", v.Count);
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "Parse", "sections", sections.Count, "v", v.Count);
             return v;
         }
     }

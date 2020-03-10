@@ -797,7 +797,8 @@ public static partial class BTS
         {
             return UInt64.MaxValue;
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMaxValueForType");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMaxValueForType");
+        return 0;
     }
 
     public static object GetMinValueForType(Type idt)
@@ -834,10 +835,12 @@ public static partial class BTS
         {
             return UInt64.MinValue;
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMinValueForType");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolen\u00FD nehodnotov\u00FD typ v metod\u011B GetMinValueForType");
+        return null;
     }
     #endregion
 
+    static Type type = typeof(BTS);
 
     public static List<byte> ClearEndingsBytes(List<byte> plainTextBytes)
     {

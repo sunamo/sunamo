@@ -79,11 +79,11 @@ public class HtmlGeneratorExtended : HtmlGenerator
     public void BoilerplateMiddle()
     {
         //WriteRaw(Resources.)
-        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 
     public void BoilerplateEnd()
     {
-        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
     }
 }

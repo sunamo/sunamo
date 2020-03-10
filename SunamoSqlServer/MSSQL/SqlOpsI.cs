@@ -15,7 +15,7 @@ public class SqlOpsI : SqlOperations // : IStoredProceduresI<SqlConnection, SqlC
 
     public static void SetVariable(SqlConnection ci, string databaseName)
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "Commented due to new approach - create new db conn with every request");
+        ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "Commented due to new approach - create new db conn with every request");
         //_ci.conn = ci;
         //MSDatabaseLayer._conn = ci;
         //_databaseName = databaseName;

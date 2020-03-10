@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 public static partial class CSharpHelper
 {
-
+static Type type = typeof(CSharpHelper);
     public static object DefaultValueForTypeObject(string type)
     {
         if (type.Contains(AllStrings.dot))
         {
             type = ConvertTypeShortcutFullName.ToShortcut(type);
         }
-
         switch (type)
         {
             case "string":
@@ -38,12 +35,13 @@ public static partial class CSharpHelper
                 // Původně tu bylo MinValue kvůli SQLite ale dohodl jsem se že SQLite už nebudu používat a proto si ušetřím v kódu práci s MSSQL 
                 return Consts.DateTimeMinVal;
             case "char":
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),type);
+                return 0;
             case "byte" + "[]":
                 // Podporovaný typ pouze v desktopových aplikacích, kde není lsožka sbf
                 return null;
         }
-
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepodporovaný typ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovaný typ");
+        return null;
     }
 }

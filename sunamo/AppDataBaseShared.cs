@@ -58,6 +58,8 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
         }
     }
 
+    static Type type = typeof(AppDataBase<StorageFolder, StorageFile>);
+
     /// <summary>
     /// Tato cesta je již s ThisApp.Name
     /// Set používej s rozvahou a vždy se ujisti zda nenastavuješ na SE(null moc nevadí, v takovém případě RootFolder bude vracet složku v dokumentech)
@@ -69,7 +71,7 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
             bool isNull = Abstract.IsRootFolderNull();
             if (isNull)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + " (Look direct into IsRootFolderNull()).");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na" + " (Look direct into IsRootFolderNull()).");
             }
 
             return rootFolder;
@@ -119,7 +121,7 @@ public void CreateAppFoldersIfDontExists()
         }
         else
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nen\u00ED vypln\u011Bno n\u00E1zev aplikace" + ".");
         }
     }
 }

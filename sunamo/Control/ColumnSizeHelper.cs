@@ -8,6 +8,8 @@ namespace sunamo
 {
     public class ColumnSizeHelper
     {
+        static Type type = typeof(ColumnSizeHelper);
+
         /// <summary>
         /// Sum all non-zero elements of A1 with A2
         /// </summary>
@@ -17,7 +19,7 @@ namespace sunamo
         {
             if (zmenaO == 0)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value" + " " + "");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value" + " " + "");
             }
 
             zmenaO /= d.Count;

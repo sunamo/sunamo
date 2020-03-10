@@ -32,11 +32,13 @@ namespace desktop
             }
         }
 
+        static Type type = typeof(SunamoVariableSizedWrapGrid2);
+
         protected override System.Windows.Media.Visual GetVisualChild(int index)
         {
             if (index >= VisualChildrenCount)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "bla");
             }
 
             int i = 0;
@@ -51,7 +53,8 @@ namespace desktop
                     i++;
                 }
             }
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),);
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
+            return null;
         }
 
         protected override Size MeasureOverride(Size availableSize)

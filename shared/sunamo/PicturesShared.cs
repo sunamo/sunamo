@@ -507,7 +507,7 @@ using sunamo.Essential;
 				}
 				else
 				{
-                ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
+                ThrowExceptions.FileHasExtensionNotParseableToImageFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), fnOri);
             }
 				//}
 			}
@@ -608,13 +608,13 @@ using sunamo.Essential;
                     }
                     else
                     {
-                    ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
+                    ThrowExceptions.FileHasExtensionNotParseableToImageFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), fnOri);
                 }
                 }
             }
             else
             {
-            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), fnOri);
         }
             return false;
         }
@@ -681,7 +681,7 @@ using sunamo.Essential;
             }
             else
             {
-            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), fnOri);
+            ThrowExceptions.FileHasExtensionNotParseableToImageFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), fnOri);
         }
         }
         #endregion

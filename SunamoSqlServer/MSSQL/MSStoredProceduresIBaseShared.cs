@@ -7,7 +7,6 @@
 //using System.Data.SqlClient;
 //using sunamo;
 //using sunamo.Values;
-
 ///// <summary>
 ///// 12-1-2019 refactoring:
 ///// 1)all methods here take ABC if take more than Where. otherwise is allowed params AB[] / object[]
@@ -16,14 +15,13 @@
 ///// </summary>
 //public partial class MSStoredProceduresIBase : SqlServerHelper
 //{
-//    public static PpkOnDrive loggedCommands = null;
 
+//    public static PpkOnDrive loggedCommands = null;
 //    static MSStoredProceduresIBase()
 //    {
 //        //var f = AppData.ci.GetFile(AppFolders.Logs, "sqlCommands.txt");
 //        //loggedCommands = new PpkOnDrive(f);
 //    }
-
 //    /// <summary>
 //    /// A1 NSN
 //    /// </summary>
@@ -42,12 +40,9 @@
 //        }
 //        return ReadValuesInt(comm);
 //    }
-
 //    public static string table2 = null;
 //    public static string column2 = null;
 //    public static bool isNVarChar2 = false;
-
-
 //    /// <summary>
 //    /// a2 je X jako v příkazu @pX
 //    /// A3 cant be AB
@@ -71,7 +66,6 @@
 //            SqlParameter param = comm.Parameters.Add("@p" + i.ToString(), SqlDbType.Binary);
 //            param.Value = o;
 //        }
-
 //        else if (o.GetType() == Types.tString || o.GetType() == Types.tChar)
 //        {
 //            string _ = o.ToString();
@@ -82,43 +76,31 @@
 //            //    i *= -1;
 //            //    return i;
 //            //}
-
 //            //true) //
 //            if (IsNVarChar != null)
 //            {
 //                if (comm.CommandText == @"UPDATE Lyr_YoutubeVideos SET CodeYT=@p2  WHERE  CodeYT = @p0  AND  IDSong = @p1 ")
 //                {
-
 //                }
-
 //                if (SqlServerHelper.GetTableAndColumn(comm.CommandText, ref table2, ref column2, i))
 //                {
 //                    isNVarChar2 = IsNVarChar.Invoke(table2, column2);
-
-
-
 //                    if (!isNVarChar2)
 //                    {
-
-
 //                        _ = MSStoredProceduresI.ConvertToVarChar(_);
 //                    }
 //                }
 //            }
-
 //            comm.Parameters.AddWithValue("@p" + i.ToString(), _);
 //        }
 //        else
 //        {
 //            comm.Parameters.AddWithValue("@p" + i.ToString(), o);
 //        }
-
 //        ++i;
 //        return i;
 //    }
-
 //    public static Func<string, string, bool> IsNVarChar = null;
-
 //    public DataTable DeleteAllSmallerThanWithOutput(string TableName, string sloupceJezVratit, string nameColumnSmallerThan, object valueColumnSmallerThan, ABC whereIs, ABC whereIsNot)
 //    {
 //        ABC whereSmallerThan = new ABC(AB.Get(nameColumnSmallerThan, valueColumnSmallerThan));
@@ -128,7 +110,6 @@
 //        DataTable dt = SelectDataTable(comm);
 //        return dt;
 //    }
-
 //    public DataTable DeleteWithOutput(string TableName, string sloupceJezVratit, string idColumn, object idValue)
 //    {
 //        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + GeneratorMsSql.OutputDeleted(sloupceJezVratit) + GeneratorMsSql.SimpleWhere(idColumn));
@@ -136,19 +117,15 @@
 //        DataTable dt = SelectDataTable(comm);
 //        return dt;
 //    }
-
 //    public Dictionary<T, string> SelectIDNames<T>(Func<string, T> parse, string solutions, params AB[] where)
 //    {
 //        Dictionary<T, string> result = new Dictionary<T, string>();
 //        var dt = SelectDataTableSelective(solutions, "ID,Name", where);
-
 //        foreach (DataRow item in dt.Rows)
 //        {
 //            var row = item.ItemArray;
-
 //            var id = SH.ToNumber<T>(parse, row[0].ToString());
 //            var v = MSTableRowParse.GetString(row, 1);
-
 //            //if (switchKeyAndValue)
 //            //{
 //            //    result.Add(v,id);
@@ -157,17 +134,13 @@
 //            //{
 //            result.Add(id, v);
 //            //}
-
 //        }
-
 //        return result;
 //    }
-
 //    public bool HasAnyValue(string table, string columnName, string iDColumnName, int idColumnValue)
 //    {
 //        return SelectCellDataTableStringOneRow(table, columnName, iDColumnName, idColumnValue) != "";
 //    }
-
 //    public class Parse
 //    {
 //        public class DateTime
@@ -188,12 +161,10 @@
 //            }
 //        }
 //    }
-
 //    public int SelectID(string tabulka, string nazevSloupce, object hodnotaSloupce)
 //    {
 //        return SelectID(false, tabulka, nazevSloupce, hodnotaSloupce);
 //    }
-
 //    //SqlConnection _conn = null;
 //    //public SqlConnection conn
 //    //{
@@ -202,7 +173,6 @@
 //    //        if (_conn == null)
 //    //        {
 //    //            _conn = MSDatabaseLayer._conn;
-
 //    //        }
 //    //        if (string.IsNullOrEmpty( _conn.ConnectionString))
 //    //        {
@@ -215,17 +185,13 @@
 //    //        _conn = value;
 //    //    }
 //    //}
-
 //    public MSStoredProceduresIBase()
 //    {
-
 //    }
-
 //    //public void RepairConnection()
 //    //{
 //    //    SqlConnection.ClearAllPools();
 //    //    conn.Close();
-
 //    //}
 //    //public MSStoredProceduresIBase(SqlConnection conn)
 //    //{
@@ -233,12 +199,7 @@
 //    //    {
 //    //        this.conn = conn;
 //    //    }
-
 //    //}
-
-
-
-
 //    /// <summary>
 //    /// Počítá od nuly
 //    /// </summary>
@@ -251,18 +212,15 @@
 //            AddCommandParameter(comm, i, where[i].B);
 //        }
 //    }
-
 //    public bool SelectExistsDatabase(string p)
 //    {
 //        object v = ExecuteScalar(new SqlCommand("select db_id('" + p + "');"));
 //        return TryParse.Integer.Instance.TryParseInt(v.ToString());
 //    }
-
 //    public void CreateDatabase(string p)
 //    {
 //        ExecuteNonQuery("Create Database [" + p + AllStrings.rsf);
 //    }
-
 //    /// <summary>
 //    /// Počítá od nuly
 //    /// Mohu volat i s A2 null, v takovém případě se nevykoná žádný kód
@@ -294,7 +252,6 @@
 //    //    var arr = CA.TwoDimensionParamsIntoOne<AB>(where, isNotWhere, greaterThanWhere, lowerThanWhere);
 //    //    AddCommandParameteres(comm, i, ABC.OnlyBs(arr));
 //    //}
-
 //    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i2, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
 //    {
 //        int l = CA.GetLength(where);
@@ -333,12 +290,10 @@
 //        }
 //        AddCommandParameterFromAbc(comm, ab, i2);
 //    }
-
 //    private static void AddCommandParameteresArrays(SqlCommand comm, int i, params ABC[] where)
 //    {
 //        AddCommandParameteresCombinedArrays(comm, i, CA.IndexOrNull(where, 0), CA.IndexOrNull(where, 1), CA.IndexOrNull(where, 2), CA.IndexOrNull(where, 3));
 //    }
-
 //    ///// <summary>
 //    ///// Bude se počítat od nuly
 //    ///// Některé z vnitřních polí může být null
@@ -360,7 +315,6 @@
 //    //        }
 //    //    }
 //    //}
-
 //    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, params AB[] hodnotyOdNuly)
 //    {
 //        foreach (var item in hodnotyOdNuly)
@@ -370,7 +324,6 @@
 //        }
 //        return pocIndex;
 //    }
-
 //    public static int AddCommandParameteres(SqlCommand comm, int pocIndex, ABC aWhere)
 //    {
 //        foreach (var item in aWhere)
@@ -380,9 +333,6 @@
 //        }
 //        return pocIndex;
 //    }
-
-
-
 //    public List<bool> DataTableToListBool(DataTable dataTable, int dex)
 //    {
 //        List<bool> vr = new List<bool>(dataTable.Rows.Count);
@@ -393,7 +343,6 @@
 //        }
 //        return vr;
 //    }
-
 //    public List<short> DataTableToListShort(DataTable dataTable, int p)
 //    {
 //        List<short> vr = new List<short>(dataTable.Rows.Count);
@@ -404,7 +353,6 @@
 //        }
 //        return vr;
 //    }
-
 //    public List<int> DataTableToListInt(DataTable dataTable, int p)
 //    {
 //        List<int> vr = new List<int>(dataTable.Rows.Count);
@@ -415,9 +363,6 @@
 //        }
 //        return vr;
 //    }
-
-
-
 //    public List<string> DataTableToListString(DataTable dataTable, int dex)
 //    {
 //        List<string> vr = new List<string>(dataTable.Rows.Count);
@@ -427,7 +372,6 @@
 //        }
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// Maže všechny řádky, ne jen jeden.
 //    /// </summary>
@@ -435,7 +379,6 @@
 //    {
 //        return ExecuteNonQuery(string.Format("DELETE FROM {0} WHERE {1} = @p0", table, sloupec), id);
 //    }
-
 //    /// <summary>
 //    /// Vrací A2
 //    /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
@@ -452,7 +395,6 @@
 //            // Dont use like idiot TwoDimensionParamsIntoOne where is not needed - just iterate. Must more use radio and less blindness
 //            //var sloupce2 = CA.TwoDimensionParamsIntoOne(sloupce);
 //            string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce2));
-
 //            SqlCommand comm = new SqlCommand(SH.Format2("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn);
 //            comm.Parameters.AddWithValue("@p0", IDUsers);
 //            int to = sloupce2.Length();
@@ -466,7 +408,6 @@
 //            conn.Close();
 //        }
 //    }
-
 //    /// <summary>
 //    /// Conn nastaví automaticky
 //    /// Vrátí zda byl vymazán alespoň jeden řádek
@@ -481,10 +422,8 @@
 //        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
 //        AddCommandParameterFromAbc(comm, where);
 //        int f = ExecuteNonQuery(comm);
-
 //        return f;
 //    }
-
 //    public int DeleteAllSmallerThan(string TableName, string nameColumnSmallerThan, object valueColumnSmallerThan, params AB[] where)
 //    {
 //        var whereAbc = new ABC(where);
@@ -493,10 +432,8 @@
 //        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
 //        AddCommandParameteresCombinedArrays(comm, 0, whereAbc, null, null, whereSmallerThan);
 //        int f = ExecuteNonQuery(comm);
-
 //        return f;
 //    }
-
 //    public List<int> SelectAllInColumnLargerThanInt(string TableName, string columnReturn, string nameColumnLargerThan, object valueColumnLargerThan, params AB[] where)
 //    {
 //        var abcWhere = new ABC(where);
@@ -506,7 +443,6 @@
 //        AddCommandParameteresCombinedArrays(comm, 0, abcWhere, null, whereSmallerThan, null);
 //        return ReadValuesInt(comm);
 //    }
-
 //    public int DeleteAllLargerThan(string TableName, string nameColumnLargerThan, object valueColumnLargerThan, params AB[] where)
 //    {
 //        var whereABC = new ABC(where);
@@ -515,25 +451,20 @@
 //        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
 //        AddCommandParameteresCombinedArrays(comm, 0, whereABC, null, whereSmallerThan, null);
 //        int f = ExecuteNonQuery(comm);
-
 //        return f;
 //    }
-
 //    public int DeleteOneRow(string table, string sloupec, object id)
 //    {
 //        return ExecuteNonQuery(string.Format("DELETE TOP(1) FROM {0} WHERE {1} = @p0", table, sloupec), id);
 //    }
-
 //    public bool DeleteOneRow(string TableName, params AB[] where)
 //    {
 //        string whereS = GeneratorMsSql.CombinedWhere(new ABC(where));
 //        SqlCommand comm = new SqlCommand("DELETE TOP(1) FROM " + TableName + whereS);
 //        AddCommandParameterFromAbc(comm, where);
 //        int f = ExecuteNonQuery(comm);
-
 //        return f == 1;
 //    }
-
 //    /// <summary>
 //    /// Pouýžívá se když chceš odstranit více řádků najednou pomocí AB. Nedá se použít pokud aspoň na jednom řádku potřebuješ AND
 //    /// </summary>
@@ -546,10 +477,8 @@
 //        SqlCommand comm = new SqlCommand("DELETE FROM " + TableName + whereS);
 //        AddCommandParameterFromAbc(comm, where);
 //        int f = ExecuteNonQuery(comm);
-
 //        return f;
 //    }
-
 //    public void DropAllTables()
 //    {
 //        List<string> dd = SelectGetAllTablesInDB();
@@ -558,7 +487,6 @@
 //            ExecuteNonQuery(new SqlCommand("DROP TABLE " + item));
 //        }
 //    }
-
 //    public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary)
 //    {
 //        using (var conn = new SqlConnection(Cs))
@@ -571,7 +499,6 @@
 //            conn.Close();
 //        }
 //    }
-
 //    public void DropAndCreateTable(string p, Dictionary<string, MSColumnsDB> dictionary, SqlConnection conn)
 //    {
 //        if (dictionary.ContainsKey(p))
@@ -580,9 +507,7 @@
 //            dictionary[p].GetSqlCreateTable(p, true, conn).ExecuteNonQuery();
 //        }
 //    }
-
 //    public string _cs = null;
-
 //    string Cs
 //    {
 //        get
@@ -591,13 +516,9 @@
 //            {
 //                return _cs;
 //            }
-
 //            return MSDatabaseLayer.cs;
 //        }
 //    }
-
-
-
 //    public void DropAndCreateTable(string p, MSColumnsDB msc)
 //    {
 //        using (var conn = new SqlConnection(Cs))
@@ -608,7 +529,6 @@
 //            conn.Close();
 //        }
 //    }
-
 //    public void DropAndCreateTable2(string p, Dictionary<string, MSColumnsDB> dictionary)
 //    {
 //        var cs = MSDatabaseLayer.cs;
@@ -626,7 +546,6 @@
 //        }
 //        return 0;
 //    }
-
 //    /// <summary>
 //    /// Conn nastaví automaticky
 //    /// </summary>
@@ -638,12 +557,10 @@
 //        {
 //            conn.Open();
 //            var dt = SelectDataTable(conn, comm);
-
 //            conn.Close();
 //            return dt;
 //        }
 //    }
-
 //    /// <summary>
 //    /// A1 jsou hodnoty bez převedení AddCommandParameter nebo ReplaceValueOnlyOne
 //    /// Conn nastaví automaticky
@@ -661,8 +578,6 @@
 //        return SelectDataTable(comm);
 //        //return SelectDataTable(string.Format(sql, _params));
 //    }
-
-
 //    /// <summary>
 //    /// Return count of rows affected
 //    /// </summary>
@@ -674,16 +589,12 @@
 //        {
 //            conn.Open();
 //            comm.Connection = conn;
-
 //            PrintDebugParameters(comm);
-
-
 //            var result = comm.ExecuteNonQuery();
 //            conn.Close();
 //            return result;
 //        }
 //    }
-
 //    private void PrintDebugParameters(SqlCommand comm)
 //    {
 //        //foreach (SqlParameter item in comm.Parameters)
@@ -691,7 +602,6 @@
 //        //    //DebugLogger.DebugWriteLine(SH.NullToStringOrDefault( item.Value));
 //        //}
 //    }
-
 //    public int ExecuteNonQuery(string commText, params object[] para)
 //    {
 //        SqlCommand comm = new SqlCommand(commText);
@@ -701,7 +611,6 @@
 //        }
 //        return ExecuteNonQuery(comm);
 //    }
-
 //    /// <summary>
 //    /// MUST CALL conn.Close(); AFTER GET DATA
 //    /// </summary>
@@ -710,15 +619,11 @@
 //    private SqlDataReader ExecuteReader(SqlCommand comm)
 //    {
 //        var conn = new SqlConnection(Cs);
-
 //        conn.Open();
 //        comm.Connection = conn;
 //        var result = comm.ExecuteReader(CommandBehavior.Default);
-
 //        return result;
-
 //    }
-
 //    /// <summary>
 //    /// Automaticky doplní connection
 //    /// </summary>
@@ -737,7 +642,6 @@
 //            return result;
 //        }
 //    }
-
 //    public object ExecuteScalar(string commText, params object[] para)
 //    {
 //        SqlCommand comm = new SqlCommand(commText);
@@ -748,7 +652,6 @@
 //        var result = ExecuteScalar(comm);
 //        return result;
 //    }
-
 //    private bool ExecuteScalarBool(SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -758,7 +661,6 @@
 //        }
 //        return Convert.ToBoolean(o);
 //    }
-
 //    private byte ExecuteScalarByte(SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -768,7 +670,6 @@
 //        }
 //        return Convert.ToByte(o);
 //    }
-
 //    private DateTime ExecuteScalarDateTime(DateTime getIfNotFound, SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -778,7 +679,6 @@
 //        }
 //        return Convert.ToDateTime(o);
 //    }
-
 //    private float ExecuteScalarFloat(bool signed, SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -796,7 +696,6 @@
 //        }
 //        return Convert.ToSingle(o);
 //    }
-
 //    private int ExecuteScalarInt(bool signed, SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -813,7 +712,6 @@
 //        }
 //        return Convert.ToInt32(o);
 //    }
-
 //    private long ExecuteScalarLong(bool signed, SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -830,7 +728,6 @@
 //        }
 //        return Convert.ToInt64(o);
 //    }
-
 //    private bool? ExecuteScalarNullableBool(SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -840,7 +737,6 @@
 //        }
 //        return Convert.ToBoolean(o);
 //    }
-
 //    private short ExecuteScalarShort(bool signed, SqlCommand comm)
 //    {
 //        var o = ExecuteScalar(comm);
@@ -857,7 +753,6 @@
 //        }
 //        return Convert.ToInt16(o);
 //    }
-
 //    private string ExecuteScalarString(SqlCommand comm)
 //    {
 //        object o = ExecuteScalar(comm);
@@ -871,7 +766,6 @@
 //        }
 //        return o.ToString().TrimEnd(AllChars.space);
 //    }
-
 //    /// <summary>
 //    /// For getting ID use SelectLastIDFromTableSigned (without 2 postfix)
 //    /// Used in TableRow* 
@@ -888,19 +782,15 @@
 //    public long Insert(string tabulka, Type idt, string sloupecID, params object[] sloupce)
 //    {
 //        bool signed = false;
-
 //        return Insert1(tabulka, idt, sloupecID, sloupce, signed);
 //    }
-
 //    public long InsertSigned(string tabulka, Type idt, string sloupecID, params object[] sloupce)
 //    {
 //        return Insert1(tabulka, idt, sloupecID, sloupce, true);
 //    }
-
 //    private long Insert1(string tabulka, Type idt, string sloupecID, object[] sloupce, bool signed)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
 //        bool totalLower = false;
 //        object d = SelectLastIDFromTableSigned(new SqlData { signed = signed }, tabulka, idt, sloupecID, out totalLower);
@@ -948,12 +838,10 @@
 //        }
 //        #endregion
 //        ExecuteNonQuery(comm);
-
 //        long vr = Convert.ToInt64(d);
 //        vr += pricist;
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// For getting ID use SelectLastIDFromTableSigned2 (with 2 postfix)
 //    /// Tato metoda je vyjímečná, vkládá hodnoty signed, hodnotu kterou vložit si zjistí sám a vrátí ji.
@@ -966,11 +854,9 @@
 //    public long Insert2(string tabulka, string sloupecID, Type typSloupecID, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
 //        //bool totalLower = false;
 //        var l = SelectLastIDFromTableSigned2(tabulka, typSloupecID, sloupecID);
-
 //        long id = Convert.ToInt64(l);
 //        AddCommandParameter(comm, 0, id);
 //        for (int i = 0; i < sloupce.Length; i++)
@@ -980,8 +866,6 @@
 //        ExecuteNonQuery(comm);
 //        return id;
 //    }
-
-
 //    /// <summary>
 //    /// In scz use nowhere 
 //    /// A2 může být ID nebo cokoliv začínající na ID(ID*)
@@ -994,7 +878,6 @@
 //    public void Insert3(string tabulka, long IDUsers, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce));
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
 //        comm.Parameters.AddWithValue("@p0", IDUsers);
 //        int to = sloupce.Length;
@@ -1006,7 +889,6 @@
 //        }
 //        ExecuteNonQuery(comm);
 //    }
-
 //    /// <summary>
 //    /// Stjená jako 3, jen ID* je v A2 se všemi
 //    /// </summary>
@@ -1015,9 +897,7 @@
 //    public void Insert4(string tabulka, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
-
 //        int to = sloupce.Length;
 //        for (int i = 0; i < to; i++)
 //        {
@@ -1028,7 +908,6 @@
 //        ExecuteNonQuery(comm);
 //        //return Convert.ToInt64( sloupce[0]);
 //    }
-
 //    /// <summary>
 //    /// In scz used nowhere
 //    /// </summary>
@@ -1039,9 +918,7 @@
 //    public long Insert5(string table, string nazvySloupcu, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu));
-
 //        int to = sloupce.Length;
 //        for (int i = 0; i < to; i++)
 //        {
@@ -1052,7 +929,6 @@
 //        ExecuteNonQuery(comm);
 //        return Convert.ToInt64(sloupce[0]);
 //    }
-
 //    /// <summary>
 //    /// In scz used nowhere
 //    /// Jediná metoda kde můžeš specifikovat sloupce do kterých chceš vložit
@@ -1066,9 +942,7 @@
 //    public void Insert6(string table, string nazvySloupcu, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {2} VALUES {1}", table, hodnoty, nazvySloupcu.Replace("(", "(newid(),")));
-
 //        int to = sloupce.Length;
 //        for (int i = 0; i < to; i++)
 //        {
@@ -1079,7 +953,6 @@
 //        ExecuteNonQuery(comm);
 //        //return Convert.ToInt64( sloupce[0]);
 //    }
-
 //    /// <summary>
 //    /// For inserting to table id-name
 //    /// </summary>
@@ -1095,7 +968,6 @@
 //        ExecuteNonQuery(c);
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// Raději používej metodu s 3/2A sloupecID, pokud používáš v tabulce sloupce ID, které se nejmenují ID
 //    /// Sloupec u kterého se bude určovat poslední index a ten inkrementovat a na ten vkládat je ID
@@ -1108,7 +980,6 @@
 //    {
 //        return InsertToRowGuid2(tabulka, "ID", sloupce);
 //    }
-
 //    /// <summary>
 //    /// Do této metody se vkládají hodnoty bez ID
 //    /// ID se počítá jako v Sqlite - tedy od 1 
@@ -1122,7 +993,6 @@
 //    {
 //        int hodnotyLenght = sloupce.Length + 1;
 //        string hodnoty = MSDatabaseLayer.GetValuesDirect(hodnotyLenght);
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
 //        for (int i = 1; i < hodnotyLenght; i++)
 //        {
@@ -1132,13 +1002,9 @@
 //        }
 //        Guid vr = SelectNewId();
 //        AddCommandParameter(comm, 0, vr);
-
 //        ExecuteNonQuery(comm);
 //        return vr;
 //    }
-
-
-
 //    /// <summary>
 //    /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
 //    /// Používej tehdy když chceš určit index na který vkládat.
@@ -1149,7 +1015,6 @@
 //    public void InsertToRowGuid3(string tabulka, Guid IDUsers, params object[] sloupce)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(CA.JoinVariableAndArray(IDUsers, sloupce));
-
 //        SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
 //        comm.Parameters.AddWithValue("@p0", IDUsers);
 //        int to = sloupce.Length;
@@ -1161,7 +1026,6 @@
 //        }
 //        ExecuteNonQuery(comm);
 //    }
-
 //    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, params AB[] aB)
 //    {
 //        return SelectValuesOfColumnAllRowsString(tabulka, sloupec, new ABC(aB), null);
@@ -1176,7 +1040,6 @@
 //        AddCommandParameter(comm, 0, whereHodnota);
 //        return ReadValuesString(comm);
 //    }
-
 //    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec, ABC where, ABC whereIsNot, string orderBy = "")
 //    {
 //        if (orderBy != "")
@@ -1187,7 +1050,6 @@
 //        AddCommandParameteresCombinedArrays(comm, 0, where, whereIsNot, null, null);
 //        return ReadValuesString(comm);
 //    }
-
 //    /// <summary>
 //    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
 //    /// </summary>
@@ -1199,7 +1061,6 @@
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
 //        return ReadValuesInt(comm);
 //    }
-
 //    public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec, params AB[] ab)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1}", sloupec, tabulka));
@@ -1228,14 +1089,10 @@
 //        }
 //        return ReadValuesByte(comm);
 //    }
-
 //    public IList SelectValuesOfColumnAllRowsNumeric(string tabulka, string sloupec)
 //    {
 //        return SelectValuesOfColumnAllRowsNumeric(tabulka, sloupec, new AB[0]);
 //    }
-
-
-
 //    /// <summary>
 //    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
 //    /// </summary>
@@ -1247,12 +1104,10 @@
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
 //        return ReadValuesShort(comm);
 //    }
-
 //    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, string idColumn, object idValue)
 //    {
 //        return SelectValuesOfColumnAllRowsShort(new SqlData { signed = true }, tabulka, sloupec, idColumn, idValue);
 //    }
-
 //    /// <summary>
 //    /// POkud bude v DB hodnota DBNull.Value, vrátí se -1
 //    /// </summary>
@@ -1265,7 +1120,6 @@
 //        AddCommandParameter(comm, 0, idValue);
 //        return ReadValuesShort(comm);
 //    }
-
 //    /// <summary>
 //    /// Not return space on left or right
 //    /// </summary>
@@ -1277,35 +1131,28 @@
 //        {
 //            return "distinct";
 //        }
-
 //        return string.Empty;
 //    }
-
 //    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, int limit, string sloupec, string idColumn, object idValue)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
 //        AddCommandParameter(comm, 0, idValue);
 //        return ReadValuesShort(comm);
 //    }
-
-
 //    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, int limit, string sloupec, string idColumn, object idValue)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + limit + ") {0} FROM {1} WHERE {2} = @p0", sloupec, tabulka, idColumn));
 //        AddCommandParameter(comm, 0, idValue);
 //        return ReadValuesInt(comm);
 //    }
-
 //    public int RandomValueFromColumnInt(string table, string column)
 //    {
 //        return ExecuteScalarInt(true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
 //    }
-
 //    public short RandomValueFromColumnShort(string table, string column)
 //    {
 //        return ExecuteScalarShort(true, new SqlCommand("select " + column + " from " + table + " where " + column + " in (select top 1 " + column + " from " + table + " order by newid())"));
 //    }
-
 //    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
@@ -1318,19 +1165,14 @@
 //        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
 //        return ReadValuesInt(comm);
 //    }
-
 //    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, int dnuPozpatku, ABC whereIs, ABC whereIsNot)
 //    {
 //        var dateTime = DateTime.Today.AddDays(dnuPozpatku * -1);
-
 //        ABC lowerThanWhere = new ABC(new ABC(AB.Get("Day", dateTime)));
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, lowerThanWhere, null));
 //        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, lowerThanWhere, null);
 //        return ReadValuesInt(comm);
 //    }
-
-
-
 //    public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot, ABC greaterThanWhere, ABC lowerThanWhere)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, greaterThanWhere, lowerThanWhere));
@@ -1349,12 +1191,10 @@
 //        AddCommandParameterFromAbc(comm, ab);
 //        return ReadValuesShort(comm);
 //    }
-
 //    public List<string> SelectValuesOfColumnAllRowsString(string tabulka, string sloupec)
 //    {
 //        return SelectValuesOfColumnAllRowsString(new SqlData { }, tabulka, sloupec);
 //    }
-
 //    /// <summary>
 //    /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsStringTrim
 //    /// </summary>
@@ -1363,14 +1203,12 @@
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
 //        return ReadValuesString(d, comm);
 //    }
-
 //    public List<string> SelectValuesOfColumnAllRowsStringTrim(string tabulka, string sloupec, string idn, object idv)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.SimpleWhere(idn));
 //        AddCommandParameter(comm, 0, idv);
 //        return ReadValuesStringTrim(comm);
 //    }
-
 //    /// <summary>
 //    /// Tato metoda má navíc možnost specifikovat simple where.
 //    /// </summary>
@@ -1385,11 +1223,9 @@
 //        AddCommandParameter(comm, 0, idValue);
 //        return ReadValuesInt(comm);
 //    }
-
 //    public List<long> SelectValuesOfColumnAllRowsLong(bool signed, string tabulka, string hledanySloupec, params AB[] aB)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
-
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB))));
 //        for (int i = 0; i < aB.Length; i++)
 //        {
@@ -1397,12 +1233,9 @@
 //        }
 //        return ReadValuesLong(comm);
 //    }
-
-
 //    public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, int maxRows, string hledanySloupec, params AB[] aB)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(aB.ToArray());
-
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(" + maxRows + ") {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhere(new ABC(aB))));
 //        for (int i = 0; i < aB.Length; i++)
 //        {
@@ -1410,7 +1243,6 @@
 //        }
 //        return ReadValuesInt(comm);
 //    }
-
 //    /// <summary>
 //    /// Pokud bude buňka DBNull, nebudu ukládat do G nic
 //    /// </summary>
@@ -1421,7 +1253,6 @@
 //    public List<DateTime> SelectValuesOfColumnAllRowsDateTime(string table, string returnColumns, params AB[] where)
 //    {
 //        string hodnoty = MSDatabaseLayer.GetValues(where.ToArray());
-
 //        List<DateTime> vr = new List<DateTime>();
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", returnColumns, table, GeneratorMsSql.CombinedWhere(new ABC(where))));
 //        for (int i = 0; i < where.Length; i++)
@@ -1430,7 +1261,6 @@
 //        }
 //        return ReadValuesDateTime(comm);
 //    }
-
 //    /// <summary>
 //    /// Pokud řádek ve sloupci A2 má hodnotu DBNull.Value, zapíšu do výsledku 0
 //    /// </summary>
@@ -1453,7 +1283,6 @@
 //        i = AddCommandParameter(comm, i, mensiNez);
 //        return ReadValuesByte(comm);
 //    }
-
 //    /// <summary>
 //    /// Používej místo této M metodu SelectValuesOfColumnAllRowsInt která je úplně stejná
 //    /// </summary>
@@ -1470,7 +1299,6 @@
 //        }
 //        return ReadValuesInt(comm);
 //    }
-
 //    public List<byte> SelectValuesOfColumnByte(string tabulka, string sloupecHledaný, string sloupecVeKteremHledat, object hodnota)
 //    {
 //        // SQLiteDataReader je třída zásadně pro práci s jedním řádkem výsledků, ne s 2mi a více !!
@@ -1478,7 +1306,6 @@
 //        AddCommandParameter(comm, 0, hodnota);
 //        return ReadValuesByte(comm);
 //    }
-
 //    /// <summary>
 //    /// Používej místo této M metodu SelectValuesOfColumnAllRowsInt, která je úplně stejná
 //    /// </summary>
@@ -1495,7 +1322,6 @@
 //        comm.Connection.Close();
 //        return result;
 //    }
-
 //    private List<int> ReadValuesInt(SqlCommand comm)
 //    {
 //        List<int> vr = new List<int>();
@@ -1514,12 +1340,10 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    public List<string> ReadValuesStringTrim(SqlCommand comm)
 //    {
 //        List<string> vr = new List<string>();
 //        SqlDataReader r = ExecuteReader(comm); ;
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1533,17 +1357,14 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    private List<string> ReadValuesString(SqlCommand comm)
 //    {
 //        return ReadValuesString(new SqlData { }, comm);
 //    }
-
 //    private List<string> ReadValuesString(SqlData d, SqlCommand comm)
 //    {
 //        List<string> vr = new List<string>();
 //        SqlDataReader r = ExecuteReader(comm); ;
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1556,24 +1377,19 @@
 //                    o = s.ToString().TrimEnd(AllChars.space);
 //                }
 //                //o = r.GetString(0);
-
 //                //Type t = val.GetType();
 //                vr.Add(o);
 //            }
 //        }
 //        comm.Connection.Close();
 //        comm.Connection.Dispose();
-
 //        CA.Trim(vr);
-
 //        return vr;
 //    }
-
 //    private List<byte> ReadValuesByte(SqlCommand comm)
 //    {
 //        List<byte> vr = new List<byte>();
 //        SqlDataReader r = ExecuteReader(comm); ;
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1587,12 +1403,10 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    private List<DateTime> ReadValuesDateTime(SqlCommand comm)
 //    {
 //        List<DateTime> vr = new List<DateTime>();
 //        SqlDataReader r = ExecuteReader(comm);
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1606,12 +1420,10 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    private List<long> ReadValuesLong(SqlCommand comm)
 //    {
 //        List<long> vr = new List<long>();
 //        SqlDataReader r = ExecuteReader(comm);
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1625,12 +1437,10 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    private List<short> ReadValuesShort(SqlCommand comm)
 //    {
 //        List<short> vr = new List<short>();
 //        SqlDataReader r = ExecuteReader(comm);
-
 //        if (r.HasRows)
 //        {
 //            while (r.Read())
@@ -1644,7 +1454,6 @@
 //        comm.Connection.Dispose();
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// Vymže tabulku A1 a přejmenuje tabulku A1+"2" na A1
 //    /// </summary>
@@ -1655,7 +1464,6 @@
 //        SqlCommand comm = new SqlCommand("EXEC sp_rename 'dbo." + table + "2', '" + table + "'");
 //        ExecuteNonQuery(comm);
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -1669,16 +1477,12 @@
 //        }
 //        return vr;
 //    }
-
-
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
 //    public List<string> SelectColumnsNamesOfTable(string p)
 //    {
 //        List<string> vr = new List<string>();
-
 //        DataTable dt = SelectDataTableSelective("INFORMATION_SCHEMA.COLUMNS", "COLUMN_NAME", "TABLE_NAME", p);
 //        foreach (DataRow item in dt.Rows)
 //        {
@@ -1686,13 +1490,11 @@
 //        }
 //        return vr;
 //    }
-
 //    public bool SelectExistsTable(string p)
 //    {
 //        using (var conn = new SqlConnection(Cs))
 //        {
 //            DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
-
 //            conn.Close();
 //            return dt.Rows.Count != 0;
 //        }
@@ -1709,14 +1511,10 @@
 //    }
 //    public DataTable SelectDataTable(SqlConnection conn, SqlCommand comm)
 //    {
-
 //        DataTable dt = new DataTable();
 //        comm.Connection = conn;
 //        SqlDataAdapter adapter = new SqlDataAdapter(comm);
 //        adapter.Fill(dt);
-
-
-
 //        return dt;
 //    }
 //    public bool SelectExistsTable(string p, SqlConnection conn)
@@ -1724,7 +1522,6 @@
 //        DataTable dt = SelectDataTable(conn, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
 //        return dt.Rows.Count != 0;
 //    }
-
 //    /// <summary>
 //    /// Pokud chceš použít OrderBy, je tu metoda SelectDataTableLimitLastRows nebo SelectDataTableLimitLastRowsInnerJoin
 //    /// Conn nastaví automaticky
@@ -1738,7 +1535,6 @@
 //        //NT
 //        return this.SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// Conn nastaví automaticky
 //    /// Vrátí prázdnou tabulku pokud se nepodaří žádný řádek najít
@@ -1750,7 +1546,6 @@
 //        //NT
 //        return this.SelectDataTable(comm);
 //    }
-
 //    public DataTable SelectDataTableSelective(string tabulka, string nazvySloupcu, string sloupecID, object id, string orderByColumn, SortOrder sortOrder)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID) + GeneratorMsSql.OrderBy(orderByColumn, sortOrder));
@@ -1758,7 +1553,6 @@
 //        //NT
 //        return this.SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -1768,9 +1562,6 @@
 //        AddCommandParameter(comm, 0, hodnotaWhere);
 //        return SelectDataTable(comm);
 //    }
-
-
-
 //    /// <summary>
 //    /// A2 je sloupec na který se prohledává pro A3
 //    /// </summary>
@@ -1786,22 +1577,18 @@
 //        //NT
 //        return this.SelectDataTable(comm);
 //    }
-
 //    public DataTable SelectAllRowsOfColumnsAB(string table, string vratit, ABC abObsahuje, ABC abNeobsahuje, ABC abVetsiNez, ABC abMensiNez)
 //    {
 //        string sql = "SELECT " + vratit + " FROM " + table;
 //        sql += GeneratorMsSql.CombinedWhere(abObsahuje, abNeobsahuje, abVetsiNez, abMensiNez);
 //        SqlCommand comm = new SqlCommand(sql);
-
 //        int i = 0;
 //        i = AddCommandParameterFromAbc(comm, abObsahuje, i);
 //        i = AddCommandParameterFromAbc(comm, abNeobsahuje, i);
 //        i = AddCommandParameterFromAbc(comm, abVetsiNez, i);
 //        AddCommandParameterFromAbc(comm, abVetsiNez, i);
-
 //        return SelectDataTable(comm);
 //    }
-
 //    public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot)
 //    {
 //        StringBuilder sb = new StringBuilder();
@@ -1817,14 +1604,12 @@
 //        DataTable dt = SelectDataTable(comm);
 //        return dt;
 //    }
-
 //    public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot, ABC greaterThan, ABC lowerThan)
 //    {
 //        StringBuilder sb = new StringBuilder();
 //        sb.Append("SELECT " + vraceneSloupce);
 //        sb.Append(" FROM " + table);
 //        sb.Append(GeneratorMsSql.CombinedWhere(where, whereIsNot, greaterThan, lowerThan));
-
 //        //string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
 //        SqlCommand comm = new SqlCommand(sb.ToString());
 //        AddCommandParameteresCombinedArrays(comm, 0, where, whereIsNot, greaterThan, lowerThan);
@@ -1832,7 +1617,6 @@
 //        DataTable dt = SelectDataTable(comm);
 //        return dt;
 //    }
-
 //    /// <summary>
 //    /// Řadí metodou DESC
 //    /// Tato metoda se přesně hodí když chci získat nějaký nejoblíbenější obsah - srovnává podle hodnoty v A4.
@@ -1849,7 +1633,6 @@
 //        AddCommandParameteres(comm, 0, where);
 //        return SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// Řadí metodou DESC
 //    /// Tato metoda se přesně hodí když chci získat nějaký nejoblíbenější obsah - srovnává podle hodnoty v A4.
@@ -1866,7 +1649,6 @@
 //        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, whereGreaterThan, whereLowerThan);
 //        return SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// 2
 //    /// </summary>
@@ -1874,7 +1656,6 @@
 //    {
 //        return SelectDataTable(string.Format("SELECT {0} FROM {1}", selectSloupce, p));
 //    }
-
 //    public DataTable SelectAllRowsOfColumns(string p, string ziskaneSloupce, string idColumnName, object idColumnValue)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", ziskaneSloupce, p) + GeneratorMsSql.SimpleWhere(idColumnName));
@@ -1896,7 +1677,6 @@
 //        AddCommandParameter(comm, 0, hodnotaOd);
 //        return SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// Tato metoda má přívlastek Columns protože v ní jde specifikovat sloupce které má metoda vrátit
 //    /// </summary>
@@ -1912,15 +1692,10 @@
 //        AddCommandParameter(comm, 0, hodnotaWhere);
 //        return SelectDataTable(comm);
 //    }
-
-
-
-
 //    public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params object[] fixniHodnotyOdNuly)
 //    {
 //        return SelectDataTable("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly, fixniHodnotyOdNuly);
 //    }
-
 //    /// <summary>
 //    /// Řadí metodou DESC
 //    /// </summary>
@@ -1938,18 +1713,14 @@
 //    //    SqlCommand comm = new SqlCommand("select TOP(" + limit.ToString() + ") " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null) + " ORDER BY " + sloupecPodleKterehoRadit + " DESC");
 //    //    AddCommandParameteres(comm, 0, hodnotyOdNuly);
 //    //    AddCommandParameteresCombinedArrays(comm, hodnotyOdNuly.Length, whereIs, whereIsNot, null, null);
-
 //    //    return SelectDataTable(comm);
 //    //}
-
 //    public DataTable SelectTableInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, ABC whereIs, ABC whereIsNot)
 //    {
 //        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
 //        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
-
 //        return SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// Do A4 se zadává např. p.ID = stf.IDPhoto
 //    /// Tato metoda zde musí být, jinak vzniká chyba No mapping exists from object type AB to a known managed provider native type.
@@ -1966,7 +1737,6 @@
 //        AddCommandParameterFromAbc(comm, where);
 //        return SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// POkud nechceš používat reader, který furt nefugnuje, použij metodu SelectOneRowInnerJoin, má úplně stejnou hlavičku a jen funguje s DataTable
 //    /// Do A4 se zadává např. p.ID = stf.IDPhoto
@@ -1977,7 +1747,6 @@
 //        AddCommandParameterFromAbc(comm, where);
 //        return SelectRowReader(comm);
 //    }
-
 //    public object[] SelectOneRowInnerJoin(string tableFromWithShortVersion, string tableJoinWithShortVersion, string sloupceJezZiskavat, string onKlazuleOdNuly, params AB[] where)
 //    {
 //        SqlCommand comm = new SqlCommand("select " + sloupceJezZiskavat + " from " + tableFromWithShortVersion + " inner join " + tableJoinWithShortVersion + " on " + onKlazuleOdNuly + GeneratorMsSql.CombinedWhere(new ABC(where)));
@@ -1989,7 +1758,6 @@
 //        }
 //        return dt.Rows[0].ItemArray;
 //    }
-
 //    /// <summary>
 //    /// Do A4 se zadává např. p.ID = stf.IDPhoto
 //    /// </summary>
@@ -1999,18 +1767,10 @@
 //        //AddCommandParameterFromAbc(comm, where);
 //        return SelectDataTable(comm);
 //    }
-
-
-
-
-
 //    //public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
 //    //{
 //    //    return UpdatePlusIntValue(table, sloupecKUpdate, pridej, abc);
 //    //}
-
-
-
 //    /// <summary>
 //    /// Pokud nenajde, vrátí DateTime.MinValue
 //    /// Do A4 zadej DateTime.MinValue pokud nevíš - je to původní hodnota
@@ -2024,7 +1784,6 @@
 //        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, null, null);
 //        return ExecuteScalarDateTime(getIfNotFound, comm);
 //    }
-
 //    public List<int> SelectValuesOfColumnAllRowsInt(bool signed, string tabulka, string sloupec, int maxRows, ABC whereIs, ABC whereIsNot)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP({2}) {0} FROM {1}", sloupec, tabulka, maxRows) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, null, null));
@@ -2038,8 +1797,6 @@
 //        //AddCommandParameter(comm, 0, IDColumnValue);
 //        return SelectDataTable(comm);
 //    }
-
-
 //    /// <summary>
 //    /// Pracuje jako signed.
 //    /// Vrací skutečně nejvyšší ID, proto když chceš pomocí ní ukládat do DB, musíš si to číslo inkrementovat
@@ -2052,7 +1809,6 @@
 //    {
 //        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p));
 //    }
-
 //    /// <summary>
 //    /// If no row was found, return max value
 //    /// 
@@ -2108,12 +1864,10 @@
 //            return vratit;
 //        }
 //        else
-
 //        {
-//            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+//            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
 //        }
 //    }
-
 //    /// <summary>
 //    /// Has signed, therefore can return values below -1
 //    /// 
@@ -2131,7 +1885,6 @@
 //    {
 //        totalLower = false;
 //        string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
-
 //        if (dd == "")
 //        {
 //            totalLower = true;
@@ -2140,7 +1893,6 @@
 //            {
 //                vr = BTS.GetMinValueForType(idt);
 //            }
-
 //            if (idt == Types.tShort)
 //            {
 //                //short s = (short)vr;
@@ -2162,10 +1914,9 @@
 //            }
 //            else
 //            {
-//                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
+//                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"V klazuli if v metodě MSStoredProceduresIBase.SelectLastIDFromTableSigned nebyl nalezen typ " + idt.FullName.ToString());
 //            }
 //        }
-
 //        if (idt == typeof(Byte))
 //        {
 //            return Byte.Parse(dd);
@@ -2198,10 +1949,9 @@
 //        {
 //            return UInt64.Parse(dd);
 //        }
-//        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType");
+//        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType");
 //        return decimal.Parse(dd);
 //    }
-
 //    public int SelectFirstAvailableIntIndex(bool signed, string table, string column)
 //    {
 //        if (SelectCount(table) == 0)
@@ -2231,7 +1981,6 @@
 //        }
 //        return ++i;
 //    }
-
 //    public short SelectFirstAvailableShortIndex(bool signed, string table, string column)
 //    {
 //        if (SelectCount(table) == 0)
@@ -2261,7 +2010,6 @@
 //        }
 //        return ++i;
 //    }
-
 //    public short SelectMaxShortMinValue(string table, string column)
 //    {
 //        if (SelectCount(table) == 0)
@@ -2272,7 +2020,6 @@
 //        rs++;
 //        return rs;
 //    }
-
 //    /// <summary>
 //    /// Vrací int.MaxValue pokud tabulka nebude mít žádné řádky, na rozdíl od metody SelectMaxInt, která vrací 0
 //    /// To co vrátí tato metoda můžeš vždy jen inkrementovat a vložit do tabulky
@@ -2288,14 +2035,12 @@
 //        }
 //        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
 //    }
-
 //    public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
 //    {
 //        SqlCommand comm = new SqlCommand("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(ab));
 //        AddCommandParameteres(comm, 0, ab);
 //        return ExecuteScalarDateTime(DateTime.MinValue, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrací 0 pokud tabulka nebude mít žádné řádky, na rozdíl od metody SelectMaxIntMinValue, která vrací int.MinValue
 //    /// </summary>
@@ -2310,21 +2055,18 @@
 //        }
 //        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
 //    }
-
 //    public int SelectMaxIntMinValue(string table, string sloupec, params AB[] aB)
 //    {
 //        SqlCommand comm = new SqlCommand("SELECT MAX(" + sloupec + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB));
 //        AddCommandParameteres(comm, 0, aB);
 //        return ExecuteScalarInt(true, comm);
 //    }
-
 //    public short SelectMinShortMinValue(string table, string sloupec, params AB[] aB)
 //    {
 //        SqlCommand comm = new SqlCommand("SELECT MIN(" + sloupec + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB));
 //        AddCommandParameteres(comm, 0, aB);
 //        return ExecuteScalarShort(true, comm);
 //    }
-
 //    public byte SelectMaxByte(string table, string column, params AB[] aB)
 //    {
 //        if (SelectCount(table) == 0)
@@ -2334,7 +2076,6 @@
 //        ABC abc = new ABC(aB);
 //        return Convert.ToByte(ExecuteScalar("SELECT MAX(" + column + ") FROM " + table + GeneratorMsSql.CombinedWhere(aB), abc.OnlyBs()));
 //    }
-
 //    public int SelectMinInt(string table, string column)
 //    {
 //        if (SelectCount(table) == 0)
@@ -2343,22 +2084,15 @@
 //        }
 //        return ExecuteScalarInt(true, new SqlCommand("SELECT MIN(" + column + ") FROM " + table));
 //    }
-
-
-
 //    public Guid SelectNewId()
 //    {
 //        // NEWSEQUENTIALID() zde nemůžu použít, to se může pouze při vytváření nové tabulky
 //        return new Guid(ExecuteScalar("SELECT NEWID()").ToString());
 //    }
-
-
-
 //    public long SelectCount(string table)
 //    {
 //        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM " + table));
 //    }
-
 //    public long SelectCountOrMinusOne(string table)
 //    {
 //        if (!SelectExistsTable(table))
@@ -2367,14 +2101,12 @@
 //        }
 //        return Convert.ToInt64(ExecuteScalar("SELECT COUNT(*) FROM " + table));
 //    }
-
 //    public long SelectCount(string table, params AB[] abc)
 //    {
 //        SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM " + table + GeneratorMsSql.CombinedWhere(abc));
 //        AddCommandParameteres(comm, 0, abc);
 //        return Convert.ToInt64(ExecuteScalar(comm));
 //    }
-
 //    public List<long> SelectGroupByLong(string table, string GroupByColumn, params AB[] where)
 //    {
 //        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
@@ -2383,7 +2115,6 @@
 //        AddCommandParameterFromAbc(comm, where);
 //        return ReadValuesLong(comm);
 //    }
-
 //    public List<int> SelectGroupByInt(string table, string GroupByColumn, params AB[] where)
 //    {
 //        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.CombinedWhere(where);
@@ -2392,7 +2123,6 @@
 //        AddCommandParameterFromAbc(comm, where);
 //        return ReadValuesInt(comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí z řádků který je označen jako group by vždy jen 1 řádek
 //    /// </summary>
@@ -2409,7 +2139,6 @@
 //        AddCommandParameter(comm, 0, IDColumnValue);
 //        return ReadValuesShort(comm);
 //    }
-
 //    public List<long> SelectGroupByLong(bool signed, string table, string GroupByColumn, string IDColumnName, object IDColumnValue)
 //    {
 //        string sql = "select " + GroupByColumn + " from " + table + GeneratorMsSql.SimpleWhere(IDColumnName) + " group by " + GroupByColumn;
@@ -2417,7 +2146,6 @@
 //        AddCommandParameter(comm, 0, IDColumnValue);
 //        return ReadValuesLong(comm);
 //    }
-
 //    /// <summary>
 //    /// Zjištuje to ze všech řádků v databázi.
 //    /// Calculate sum of ViewCount of A2 in A1
@@ -2432,7 +2160,6 @@
 //        SqlCommand comm = new SqlCommand("select SUM(ViewCount) from " + table + " where EntityID = @p0");
 //        //SqlCommand comm2 = new SqlCommand("select count(*) as AccValue from PageViews where Date <= @p0 AND Date >= @p1 AND IDPage = @p2");
 //        AddCommandParameter(comm, 0, idEntity);
-
 //        object o = ExecuteScalar(comm);
 //        if (o == null || o == DBNull.Value)
 //        {
@@ -2440,15 +2167,12 @@
 //        }
 //        return Convert.ToUInt32(o);
 //    }
-
-
 //    public int SelectSum(string table, string columnToSum, params AB[] aB)
 //    {
 //        //DataTable dt = SelectDataTableSelectiveCombination()
 //        List<int> nt = SelectValuesOfColumnAllRowsInt(true, table, columnToSum, aB);
 //        return nt.Sum();
 //    }
-
 //    public int SelectSumByte(string table, string columnToSum, params AB[] aB)
 //    {
 //        int vr = 0;
@@ -2459,7 +2183,6 @@
 //        }
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// Tuto metodu nepoužívej například po vkládání, když chceš zjistit ID posledního řádku, protože když tam bude něco smazaného , tak to budeš mít o to posunuté !!
 //    /// 
@@ -2470,7 +2193,6 @@
 //        //comm.Transaction = tran;
 //        return Convert.ToInt32(ExecuteScalar(comm));
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -2483,7 +2205,6 @@
 //        }
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -2493,7 +2214,6 @@
 //        AddCommandParameter(c, 0, hodnotaSloupce);
 //        return ExecuteScalarInt(signed, c);
 //    }
-
 //    /// <summary>
 //    /// Vrátí SE, když nebude nalezena 
 //    /// </summary>
@@ -2501,24 +2221,20 @@
 //    {
 //        return SelectCellDataTableStringOneRow(tabulka, "Name", "ID", id);
 //    }
-
 //    public string SelectNameOfID(string tabulka, long id, string nameColumnID)
 //    {
 //        return SelectCellDataTableStringOneRow(tabulka, "Name", nameColumnID, id);
 //    }
-
 //    public string SelectNameOfIDOrSE(string tabulka, string idColumnName, int id)
 //    {
 //        return SelectCellDataTableStringOneRow(tabulka, "Name", idColumnName, id);
 //    }
-
 //    public object[] SelectRowReaderLimit(string tableName, int limit, string sloupce, string sloupecWhere, object hodnotaWhere)
 //    {
 //        SqlCommand comm = new SqlCommand("SELECT TOP(" + limit.ToString() + ") " + sloupce + " FROM " + tableName + GeneratorMsSql.SimpleWhere(sloupecWhere));
 //        AddCommandParameter(comm, 0, hodnotaWhere);
 //        return SelectRowReader(comm);
 //    }
-
 //    /// <summary>
 //    /// Interně volá metodu SelectRowReader
 //    /// If fail, return null
@@ -2535,9 +2251,6 @@
 //        //NT
 //        return SelectRowReader(comm);
 //    }
-
-
-
 //    public object[] SelectRowReader(string tabulka, string nazvySloupcu, string sloupecID, object id)
 //    {
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT TOP(1) {0} FROM {1} WHERE {2} = @p0", nazvySloupcu, tabulka, sloupecID));
@@ -2545,7 +2258,6 @@
 //        //NT
 //        return SelectRowReader(comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí null, pokud výsledek nebude mít žádné řádky
 //    /// </summary>
@@ -2554,25 +2266,20 @@
 //    private object[] SelectRowReader(SqlCommand comm)
 //    {
 //        SqlDataReader r = ExecuteReader(comm);
-
 //        if (r.HasRows)
 //        {
 //            object[] o = new object[r.VisibleFieldCount];
 //            r.Read();
 //            for (int i = 0; i < r.VisibleFieldCount; i++)
 //            {
-
 //                o[i] = r.GetValue(i);
 //            }
-
-
 //            return o;
 //        }
 //        comm.Connection.Close();
 //        comm.Connection.Dispose();
 //        return null;
 //    }
-
 //    /// <summary>
 //    /// Vrátí null pokud žádný takový řádek nebude nalezen
 //    /// </summary>
@@ -2588,12 +2295,10 @@
 //        AddCommandParameterFromAbc(comm, ab);
 //        return SelectRowReader(comm);
 //    }
-
 //    public bool SelectExistsCombination(string p, params AB[] aB)
 //    {
 //        return SelectExistsCombination(p, new ABC(aB));
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -2603,7 +2308,6 @@
 //        ABC abc = new ABC(aB);
 //        return ExecuteScalar(sql, abc.OnlyBs()) != null;
 //    }
-
 //    public bool SelectExistsCombination(string p, ABC where, ABC whereIsNot)
 //    {
 //        int dd = 0;
@@ -2620,7 +2324,6 @@
 //        }
 //        return ExecuteScalar(comm) != null;
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -2630,12 +2333,10 @@
 //        var result = ExecuteScalar(sql, hodnota);
 //        return result != null;
 //    }
-
 //    //public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, string whereColumn, object whereValue)
 //    //{
 //    //    return SelectCellDataTableShortOneRow(signed, table, vracenySloupec, new AB(whereColumn, whereValue));
 //    //}
-
 //    /// <summary>
 //    /// Exists method without AB but has switched whereColumn and whereValue
 //    /// </summary>
@@ -2651,7 +2352,6 @@
 //        AddCommandParameterFromAbc(comm, abc);
 //        return ExecuteScalarShort(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// G -1 když se žádný takový řádek nepodaří najít
 //    /// </summary>
@@ -2667,7 +2367,6 @@
 //        AddCommandParameterFromAbc(comm, whereIsNot, dalsi);
 //        return ExecuteScalarInt(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrací -1 pokud se nepodaří najít if !A1 nebo long.MaxValue když A1
 //    /// </summary>
@@ -2683,7 +2382,6 @@
 //        AddCommandParameterFromAbc(comm, abc);
 //        return ExecuteScalarLong(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí -1 pokud žádný takový řádek nenalezne pokud !A1 enbo short.MaxValue pokud A1
 //    /// </summary>
@@ -2699,7 +2397,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarInt(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrací -1 pokud se nepodaří najít if !A1 nebo long.MaxValue když A1.
 //    /// </summary>
@@ -2715,7 +2412,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarLong(true, comm);
 //    }
-
 //    public DateTime SelectCellDataTableDateTimeOneRow(string table, string vracenySloupec, DateTime getIfNotFound, string idColumnName, object idColumnValue)
 //    {
 //        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -2723,7 +2419,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarDateTime(getIfNotFound, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí DateTimeMinVal, pokud takový řádek nebude nalezen.
 //    /// </summary>
@@ -2741,7 +2436,6 @@
 //        AddCommandParameteresArrays(comm, 0, where, whereIsNot);
 //        return ExecuteScalarDateTime(getIfNotFound, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí null pokud se řádek nepodaří najít
 //    /// A3 nebo A4 může být null
@@ -2759,7 +2453,6 @@
 //        AddCommandParameteresArrays(comm, 0, where, whereIsNot);
 //        return ExecuteScalarNullableBool(comm);
 //    }
-
 //    public bool SelectCellDataTableBoolOneRow(string table, string vracenySloupec, ABC where, ABC whereIsNot)
 //    {
 //        int dd = 0;
@@ -2768,7 +2461,6 @@
 //        AddCommandParameteresArrays(comm, 0, where, whereIsNot);
 //        return ExecuteScalarBool(comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí 0 pokud takový řádek nebude nalezen.
 //    /// </summary>
@@ -2780,7 +2472,6 @@
 //        AddCommandParameterFromAbc(comm, where);
 //        return ExecuteScalarByte(comm);
 //    }
-
 //    /// <summary>
 //    /// When not found, return int.MaxValue when A1 or -1 when not
 //    /// </summary>
@@ -2794,10 +2485,8 @@
 //        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc);
 //        SqlCommand comm = new SqlCommand(sql);
 //        AddCommandParameterFromAbc(comm, abc);
-
 //        return ExecuteScalarInt(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí 0 pokud takový řádek nebude nalezen.
 //    /// </summary>
@@ -2813,7 +2502,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarByte(comm);
 //    }
-
 //    public bool SelectCellDataTableBoolOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
 //    {
 //        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -2821,7 +2509,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarBool(comm);
 //    }
-
 //    public bool? SelectCellDataTableNullableBoolOneRow(string table, string vracenySloupec, params AB[] abc)
 //    {
 //        string sql = "SELECT TOP(1) " + vracenySloupec + " FROM " + table + " " + GeneratorMsSql.CombinedWhere(abc);
@@ -2829,7 +2516,6 @@
 //        AddCommandParameteres(comm, 0, abc);
 //        return ExecuteScalarNullableBool(comm);
 //    }
-
 //    /// <summary>
 //    /// V případě nenalezení vrátí -1 pokud !A1, jinak short.MaxValue
 //    /// </summary>
@@ -2845,7 +2531,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarShort(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí -1 když řádek nebude nalezen a !A1.
 //    /// Vrátí float.MaxValue když řádek nebude nalezen a A1.
@@ -2863,7 +2548,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarFloat(signed, comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí -1 když řádek nebude nalezen a !A1.
 //    /// Vrátí float.MaxValue když řádek nebude nalezen a A1.
@@ -2881,7 +2565,6 @@
 //        AddCommandParameterFromAbc(comm, ab);
 //        return ExecuteScalarFloat(signed, comm);
 //    }
-
 //    public object SelectCellDataTableObjectOneRow(string table, string vracenySloupec, string idColumnName, object idColumnValue)
 //    {
 //        string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -2889,7 +2572,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalar(comm);
 //    }
-
 //    /// <summary>
 //    /// Vykonává metodou ExecuteScalar. Ta pokud vrátí null, metoda vrátí "". To je taky rozdíl oproti metodě SelectCellDataTableStringOneRowABC.
 //    /// </summary>
@@ -2903,9 +2585,6 @@
 //        AddCommandParameterFromAbc(comm, ab);
 //        return ExecuteScalarString(comm);
 //    }
-
-
-
 //    public string SelectCellDataTableStringOneLastRow(string table, string vracenySloupec, string orderByDesc, string idColumnName, object idColumnValue)
 //    {
 //        //SELECT TOP 1 * FROM table_Name ORDER BY unique_column DESC
@@ -2914,7 +2593,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarString(comm);
 //    }
-
 //    /// <summary>
 //    /// Vrátí SE v případě že řádek nebude nalezen, nikdy nevrací null.
 //    /// Automaticky vytrimuje
@@ -2931,7 +2609,6 @@
 //        AddCommandParameter(comm, 0, idColumnValue);
 //        return ExecuteScalarString(comm);
 //    }
-
 //    /// <summary>
 //    /// A4 může být null, A3 nikoliv
 //    /// </summary>
@@ -2947,15 +2624,12 @@
 //        sb.Append(" FROM " + table);
 //        int dd = 0;
 //        sb.Append(GeneratorMsSql.CombinedWhere(where, ref dd));
-
 //        sb.Append(GeneratorMsSql.CombinedWhereNotEquals(where.Length != 0, ref dd, whereIsNot));
 //        //string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
 //        SqlCommand comm = new SqlCommand(sb.ToString());
 //        AddCommandParameteresCombinedArrays(comm, 0, where, whereIsNot, null, null);
-
 //        return ExecuteScalarString(comm);
 //    }
-
 //    /// <summary>
 //    /// Nepoužívat a smazat!!!
 //    /// </summary>
@@ -2970,7 +2644,6 @@
 //        //NTd
 //        return this.SelectDataTable(comm);
 //    }
-
 //    /// <summary>
 //    /// Nepužívat a smazat!!!
 //    /// </summary>
@@ -2978,7 +2651,6 @@
 //    {
 //        return SelectDataTable("SELECT * FROM " + table);
 //    }
-
 //    /// <summary>
 //    /// Nepoužívat a smazat!!!
 //    /// Tato metoda se přesně hodí když chci získat nějaký nejoblíbenější obsah - srovnává podle hodnoty v A3.
@@ -2993,7 +2665,6 @@
 //    {
 //        return SelectDataTableLimitLastRows(tableName, limit, "*", sloupecID, abc);
 //    }
-
 //    /// <summary>
 //    /// Nepoužívat a smazat !!!
 //    /// Vrátí null když nenalezne žádný řádek
@@ -3008,7 +2679,6 @@
 //        }
 //        return dt.Rows[0].ItemArray;
 //    }
-
 //    public object[] SelectOneRowForTableRow(string TableName, string nazevSloupce, object hodnotaSloupce)
 //    {
 //        // Index nemůže být ani pole bajtů ani null takže to je v pohodě
@@ -3019,7 +2689,6 @@
 //        }
 //        return dt.Rows[0].ItemArray;
 //    }
-
 //    /// <summary>
 //    /// Nepoužívat a smazat!!!
 //    /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsString
@@ -3033,7 +2702,6 @@
 //        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka));
 //        return ReadValuesStringTrim(comm);
 //    }
-
 //    public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, string sloupec, params AB[] ab)
 //    {
 //        //List<byte> vr = new List<byte>();
@@ -3041,7 +2709,6 @@
 //        AddCommandParameteres(comm, 0, ab);
 //        return ReadValuesByte(comm);
 //    }
-
 //    public List<byte> SelectValuesOfColumnAllRowsByte(string tabulka, int limit, string sloupec, params AB[] ab)
 //    {
 //        //List<byte> vr = new List<byte>();
@@ -3049,7 +2716,6 @@
 //        AddCommandParameteres(comm, 0, ab);
 //        return ReadValuesByte(comm);
 //    }
-
 //    /// <summary>
 //    /// Nepoužívat a smazat!!!
 //    /// </summary>
@@ -3059,12 +2725,6 @@
 //        //AddCommandParameter(comm, 0, hodnotaWhere);
 //        return SelectDataTable(comm);
 //    }
-
-
-
-
-
-
 //    public int UpdateWhereIsLowerThan(string table, string columnToUpdate, object newValue, string columnLowerThan, DateTime valueLowerThan, params AB[] where)
 //    {
 //        ABC lowerThan = new ABC(AB.Get(columnLowerThan, valueLowerThan));
@@ -3073,11 +2733,9 @@
 //        SqlCommand comm = new SqlCommand(sql);
 //        AddCommandParameter(comm, parametrSet, newValue);
 //        AddCommandParameteresCombinedArrays(comm, 0, new ABC(where), null, null, lowerThan);
-
 //        int vr = ExecuteNonQuery(comm);
 //        return vr;
 //    }
-
 //    public void UpdateValuesCombinationCombinedWhere(string TableName, ABC sets, ABC where)
 //    {
 //        string setString = GeneratorMsSql.CombinedSet(sets);
@@ -3097,7 +2755,6 @@
 //        // NT-Při úpravách uprav i UpdateValuesCombination
 //        ExecuteNonQuery(comm);
 //    }
-
 //    /// <summary>
 //    /// Pokud se řádek nepodaří najít, vrátí -1
 //    /// </summary>
@@ -3122,7 +2779,6 @@
 //        Update(table, sloupecKUpdate, pridej, sloupecID, id);
 //        return pridej;
 //    }
-
 //    /// <summary>
 //    /// Updatuje pouze 1 řádek
 //    /// </summary>
@@ -3137,7 +2793,6 @@
 //        UpdateOneRow(tablename, updateColumn, vr, idColumn, idValue);
 //        return vr;
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
@@ -3147,7 +2802,6 @@
 //        aktual += hodnotaAppend;
 //        return UpdateOneRow(tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
 //    }
-
 //    /// <summary>
 //    /// Vrátí nohou hodnotu v DB
 //    /// </summary>
@@ -3168,7 +2822,6 @@
 //        Update(table, sloupecKUpdate, n, sloupecID, id);
 //        return n;
 //    }
-
 //    public long UpdateSumLongValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object id)
 //    {
 //        long d = SelectCellDataTableLongOneRow(false, table, sloupecKUpdate, sloupecID, id);
@@ -3176,7 +2829,6 @@
 //        Update(table, sloupecKUpdate, n, sloupecID, id);
 //        return n;
 //    }
-
 //    /// <summary>
 //    /// Nahrazuje ve všech řádcích
 //    /// </summary>
@@ -3192,12 +2844,10 @@
 //        {
 //            return d;
 //        }
-
 //        odeber = (short)(d - odeber);
 //        Update(table, sloupecKUpdate, odeber, abc);
 //        return odeber;
 //    }
-
 //    /// <summary>
 //    /// Vrací normalizovaný short
 //    /// </summary>
@@ -3213,12 +2863,10 @@
 //        {
 //            return d;
 //        }
-
 //        odeber = (ushort)(d - odeber);
 //        Update(table, sloupecKUpdate, odeber, abc);
 //        return odeber;
 //    }
-
 //    public short UpdateMinusShortValue(string table, string sloupecKUpdate, short odeber, string sloupecID, object hodnotaID)
 //    {
 //        short d = SelectCellDataTableShortOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
@@ -3233,7 +2881,6 @@
 //        Update(table, sloupecKUpdate, odeber, sloupecID, hodnotaID);
 //        return odeber;
 //    }
-
 //    public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, params AB[] abc)
 //    {
 //        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, abc);
@@ -3247,11 +2894,9 @@
 //        Update(table, sloupecKUpdate, n, abc);
 //        return n;
 //    }
-
 //    public int UpdatePlusIntValue(string table, string sloupecKUpdate, int pridej, string sloupecID, object hodnotaID)
 //    {
 //        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-
 //        if (d == int.MaxValue)
 //        {
 //            return d;
@@ -3261,7 +2906,6 @@
 //        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
 //        return n;
 //    }
-
 //    /// <summary>
 //    /// Aktualizuje všechny řádky
 //    /// Vrátí novou zapsanou hodnotu
@@ -3280,11 +2924,9 @@
 //        }
 //        int n = odeber;
 //        n = d - odeber;
-
 //        Update(table, sloupecKUpdate, n, abc);
 //        return n;
 //    }
-
 //    public int UpdateMinusIntValue(string table, string sloupecKUpdate, int odeber, string sloupecID, object hodnotaID)
 //    {
 //        int d = SelectCellDataTableIntOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
@@ -3294,26 +2936,21 @@
 //        }
 //        int n = odeber;
 //        n = d - odeber;
-
 //        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
 //        return n;
 //    }
-
 //    public long UpdateMinusLongValue(string table, string sloupecKUpdate, long odeber, string sloupecID, object hodnotaID)
 //    {
 //        long d = SelectCellDataTableLongOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
-
 //        if (d == long.MaxValue)
 //        {
 //            return d;
 //        }
 //        long n = odeber;
 //        n = d - odeber;
-
 //        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
 //        return n;
 //    }
-
 //    public short UpdatePlusShortValue(string table, string sloupecKUpdate, short pridej, string sloupecID, object hodnotaID)
 //    {
 //        short d = SelectCellDataTableShortOneRow(true, table, sloupecKUpdate, sloupecID, hodnotaID);
@@ -3327,7 +2964,6 @@
 //        Update(table, sloupecKUpdate, n, sloupecID, hodnotaID);
 //        return n;
 //    }
-
 //    public byte UpdateMinusByteValue(string table, string sloupecKUpdate, byte pridej, string sloupecID, object hodnotaID)
 //    {
 //        byte d = SelectCellDataTableByteOneRow(table, sloupecKUpdate, sloupecID, hodnotaID);
@@ -3342,7 +2978,6 @@
 //        Update(table, sloupecKUpdate, pridej, sloupecID, hodnotaID);
 //        return pridej;
 //    }
-
 //    /// <summary>
 //    /// Pouze když hodnota nebude existovat, přidá ji znovu
 //    /// </summary>
@@ -3355,31 +2990,26 @@
 //    public int UpdateAppendStringValueCheckExistsOneRow(string tableName, string sloupecAppend, string hodnotaAppend, string sloupecID, object hodnotaID)
 //    {
 //        string aktual = SelectCellDataTableStringOneRow(tableName, sloupecAppend, sloupecID, hodnotaID);
-
 //        List<string> d = new List<string>(SH.Split(aktual, ","));
 //        if (!d.Contains(hodnotaAppend))
 //        {
 //            aktual += hodnotaAppend + ",";
 //            string save = SH.Join(',', d.ToArray());
-
 //            return UpdateOneRow(tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
 //        }
 //        return 0;
 //    }
-
 //    /// <summary>
 //    /// 
 //    /// </summary>
 //    public int UpdateCutStringValue(string tableName, string sloupecCut, string hodnotaCut, string sloupecID, object hodnotaID)
 //    {
 //        string aktual = SelectCellDataTableStringOneRow(tableName, sloupecCut, sloupecID, hodnotaID);
-
 //        List<string> d = new List<string>(SH.Split(aktual, ","));
 //        d.Remove(hodnotaCut);
 //        string save = SH.JoinWithoutTrim(",", d);
 //        return UpdateOneRow(tableName, sloupecCut, save, sloupecID, hodnotaID);
 //    }
-
 //    /// <summary>
 //    /// Conn nastaví automaticky
 //    /// </summary>
@@ -3392,7 +3022,6 @@
 //        //SqlException: String or binary data would be truncated.
 //        return ExecuteNonQuery(comm);
 //    }
-
 //    /// <summary>
 //    /// Conn přidá automaticky
 //    /// Název metody je sice OneRow ale updatuje to libovolný počet řádků které to najde pomocí where - je to moje interní pojmenování aby mě to někdy trklo, možná později přijdu na způsob jak updatovat jen jeden řádek.
@@ -3405,7 +3034,6 @@
 //        AddCommandParameter(comm, 2, id);
 //        return ExecuteNonQuery(comm);
 //    }
-
 //    public int UpdateOneRow(string table, string sloupecKUpdate, object n, params AB[] ab)
 //    {
 //        int pridavatOd = 1;
@@ -3415,7 +3043,6 @@
 //        AddCommandParameteres(comm, 1, ab);
 //        return ExecuteNonQuery(comm);
 //    }
-
 //    private int Update(string table, string sloupecKUpdate, int n, ABC abc)
 //    {
 //        int parametrSet = abc.Length;
@@ -3429,8 +3056,6 @@
 //        int vr = ExecuteNonQuery(comm);
 //        return vr;
 //    }
-
-
 //    /// <summary>
 //    /// Return count of rows affected
 //    /// </summary>
@@ -3452,29 +3077,24 @@
 //        int vr = ExecuteNonQuery(comm);
 //        return vr;
 //    }
-
 //    public int UpdateMany(string table, string columnID, object valueID, params AB[] update)
 //    {
 //        int vr = 0;
 //        foreach (AB item in update)
 //        {
-
 //            string sql = string.Format("UPDATE {0} SET {1} = @p0 {2}", table, item.A, GeneratorMsSql.SimpleWhere("ID", 1));
 //            SqlCommand comm = new SqlCommand(sql);
 //            AddCommandParameter(comm, 0, item.B);
 //            AddCommandParameter(comm, 1, valueID);
-
 //            vr += ExecuteNonQuery(comm);
 //        }
 //        return vr;
 //    }
-
 //    public void UpdateValuesCombination(string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
 //    {
 //        ABC abc = new ABC(setsNameValue);
 //        UpdateValuesCombination(TableName, nameOfColumn, valueOfColumn, abc.ToArray());
 //    }
-
 //    /// <summary>
 //    /// Conn nastaví automaticky
 //    /// </summary>
@@ -3493,6 +3113,4 @@
 //        // NT-Při úpravách uprav i UpdateValuesCombinationCombinedWhere
 //        ExecuteNonQuery(comm);
 //    }
-
-
 //}

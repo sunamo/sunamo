@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>fae04ec0-301f-11d3-bf4b-00c04f79efbc</ProjectTypeGuids>
+    <ProjectGuid>F3F6F3CA-A5F5-4994-9666-3FED63614B8F</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\sunamo\Essential\ExcShared.cs" Link="ExcShared.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\sunamo\Essential\ExceptionsShared.cs" Link="ExceptionsShared.cs" />
+    <None Include="..\sunamo\Essential\ThrowExceptionsShared.cs" Link="ThrowExceptionsShared.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+  </ItemGroup>
+</Project>

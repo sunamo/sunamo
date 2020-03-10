@@ -34,8 +34,11 @@ public class ConvertMonthNumberString //: IConvertNumberString
             case "December":
                 return 12;
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce" + " " + s + " " + "metod\u011B ConvertMonthNumberString.ToNumber()");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce" + " " + s + " " + "metod\u011B ConvertMonthNumberString.ToNumber()");
+        return 0;
     }
+
+    static Type type = typeof(ConvertMonthNumberString);
 
     /// <summary>
     /// Vrací anglický název měsíce

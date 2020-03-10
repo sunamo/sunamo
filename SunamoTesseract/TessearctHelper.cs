@@ -111,6 +111,7 @@ namespace SunamoTesseract
             var tempImageFile = Path.GetTempFileName();
         }
 
+        static Type type = typeof(TessearctHelper);
         private static string ParseText(string tesseractPath, byte[] imageFile, params string[] lang)
         {
             string output = string.Empty;
@@ -145,7 +146,7 @@ namespace SunamoTesseract
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Error. Tesseract stopped with an error code" + " " + "" + " " + process.ExitCode);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Error. Tesseract stopped with an error code" + " " + "" + " " + process.ExitCode);
                 }
             }
             finally

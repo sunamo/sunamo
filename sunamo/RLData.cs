@@ -16,7 +16,7 @@ public static class RLData
 
     public static string EnPostColon(string key)
     {
-        ThrowExceptions.KeyNotFound<string, string>(null, type, RH.CallingMethod(), en, "en", key);
+        ThrowExceptions.KeyNotFound<string, string>(null, type, Exc.CallingMethod(), en, "en", key);
 
         return en[key] + AllStrings.colon;
     }
@@ -54,7 +54,7 @@ public class TranslateDictionary : IDictionary<string, string>
             {
                 //XlfResourcesH.initialized = false;
                 //XlfResourcesH.SaveResouresToRL(basePathSolution);
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), key + " is not in " + _l + " dictionary");
+                ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");
                 //return string.Empty;
             }
             var value = _d[key];

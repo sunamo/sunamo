@@ -12,7 +12,6 @@ namespace desktop
     public delegate void updateProgressBarWpf(System.Windows.Controls.ProgressBar pb, double value);
     public delegate void updateTextBlockText(TextBlock lbl, string text);
     public delegate void appendToTextBlock(TextBlock lbl, string text);
-
     public delegate void changeVisibilityUIElementWpf(UIElement uie, Visibility v);
     public delegate void updateContentOfStatusBarItem(StatusBarItem sbi, object o);
     public delegate void appendToTextBox(TextBox lbl, string text);
@@ -32,6 +31,7 @@ namespace desktop
     //public delegate ListBoxItem getListBoxItemFromObject(ListBox lb, object )
     public partial class IH
     {
+static Type type = typeof(IH);
         public static changeVisibilityUIElementWpf delegateChangeVisibilityUIElementWpf = null;
         public static insertToListBoxWpf delegateInsertToListBoxWpf = null;
         public static updateContentOfLabel delegateUpdateContentOfLabel = null;
@@ -80,69 +80,55 @@ namespace desktop
             delegateGetItemAtIndexInSelector = new getItemAtIndexInSelector(getItemAtIndexInSelector);
             delegateSetSelectedItemSelector = new setSelectedItemSelector(setSelectedItemSelector);
             delegateUpdateLayoutOfUIElement = new updateLayoutOfUIElement(updateLayoutOfUIElement);
-
         }
-
         public static void updateLayoutOfUIElement(UIElement uie)
         {
             uie.UpdateLayout();
         }
-
         public static void setSelectedItemSelector(Selector s, object item)
         {
             s.SelectedItem = item;
         }
-
         public static object getItemAtIndexInSelector(Selector s, int dex)
         {
             return s.Items[dex];
         }
-
         public static void scrollToEndTextBox(TextBox txt)
         {
             txt.ScrollToEnd();
         }
-
         public static string getTextOfTextBox(TextBox txt)
         {
             return txt.Text;
         }
-
         public static void focusTextBox(TextBox txt)
         {
             txt.Focus();
         }
-
         public static void updateContentOfLabelValue(Label l, object content)
         {
             l.Content = content;
         }
-
         public static void setCaretIndexOfTextBox(TextBox txt, int caretIndex)
         {
             txt.CaretIndex = caretIndex;
         }
-
         public static void updateBorderBrushOfBorderValue(Border b, Brush br)
         {
             b.BorderBrush = br;
         }
-
         public static Brush getBorderBrushOfBorderValue(Border b)
         {
             return b.BorderBrush;
         }
-
         public static void updateContentOfStatusBarItemValue(StatusBarItem sbi, object o)
         {
             sbi.Content = o;
         }
-
         static void setItemsSourceOfItemsControlM(ItemsControl ic, IEnumerable o)
         {
             ic.ItemsSource = o;
         }
-
         /// <summary>
         /// Tato metoda je pro WPF, updateProgressBarValue pak na WF
         /// </summary>
@@ -152,58 +138,48 @@ namespace desktop
         {
             if (value > 100)
             {
-                //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Hodnota pro ProgressBar nemůže být vyšší než 100" + ".");
+                //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Hodnota pro ProgressBar nemůže být vyšší než 100" + ".");
                 value = 100;
             }
             pb.Value = value;
         }
-
         public static void updateTextBlockText(TextBlock lbl, string text)
         {
             lbl.Text = text;
             lbl.ToolTip = text;
         }
-
         public static void appendToTextBlockText(TextBlock lbl, string text)
         {
             lbl.Text = lbl.Text + AllStrings.space + text;
             lbl.ToolTip = lbl.Text;
         }
-
         public static void appendToTextBoxText(TextBox tb, string text)
         {
             tb.Text = tb.Text + AllStrings.space + text;
             tb.ToolTip = tb.Text;
         }
-
         //
         public static void updateVisibility(UIElement ui, Visibility vis)
         {
             ui.Visibility = vis;
         }
-
         
-
         public static void insertToListBoxWpfValue(ListBox lb, int index, object o)
         {
             lb.Items.Insert(index, o);
         }
-
         public static void setDataContextObject(FrameworkElement fw, object dc)
         {
             fw.DataContext = dc;
         }
-
         public static object getDataContextObject(FrameworkElement fw)
         {
             return fw.DataContext;
         }
-
         public static void setEnabledBool(UIElement ui, bool b)
         {
             ui.IsEnabled = b;
         }
-
         public static object getSelectedItemSelector(Selector s)
         {
             return s.SelectedItem;

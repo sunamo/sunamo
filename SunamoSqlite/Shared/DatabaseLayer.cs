@@ -123,10 +123,12 @@ public class DatabaseLayer
         }
         catch (Exception ex)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),System.FormatException("The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine, ex);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The provided string does not appear to be Hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine);
+            return null;
         }
     }
 
+    static Type type = typeof(DatabaseLayer);
     private static bool s_zaheslovat = false;
 
     private static string s_applicationStartupPath = null;

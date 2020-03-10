@@ -74,7 +74,7 @@ public class InstancesSqlResult
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), t);
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, Exc.CallingMethod(), t);
         }
 
         return RuntimeHelper.CastToGeneric<T>(r);

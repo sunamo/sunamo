@@ -251,10 +251,10 @@ public partial class FS
     {
         // Not working, flags from GeoCachingTool wasnt transfered to standard
 #if NETFX_CORE
-        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, RH.CallingMethod(), " - use methods in FSApps");
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), " - use methods in FSApps");
 #endif
 #if WINDOWS_UWP
-        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, RH.CallingMethod(), " - use methods in FSApps");
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), " - use methods in FSApps");
 #endif
 
 
@@ -274,8 +274,8 @@ public partial class FS
     public static string GetDirectoryName(string rp)
     {
         
-        ThrowExceptions.IsNullOrEmpty(RuntimeHelper.GetStackTrace(),type, "GetDirectoryName", "rp", rp);
-        ThrowExceptions.IsNotWindowsPathFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "rp", rp);
+        ThrowExceptions.IsNullOrEmpty(Exc.GetStackTrace(),type, "GetDirectoryName", "rp", rp);
+        ThrowExceptions.IsNotWindowsPathFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), "rp", rp);
 
         rp = rp.TrimEnd(AllChars.bs);
         int dex = rp.LastIndexOf(AllChars.bs);
@@ -300,14 +300,15 @@ public partial class FS
             var rp = rp2.ToString();
             return (dynamic)GetDirectoryName(rp);
         }
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetDirectoryName");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetDirectoryName");
+        return default(StorageFile);
     }
 
     
 
     private static void ThrowNotImplementedUwp()
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"NI uwp - see method for stacktrace");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"NI uwp - see method for stacktrace");
     }
 
     /// <summary>
@@ -316,8 +317,8 @@ public partial class FS
     /// <param name="nad"></param>
     public static void CreateFoldersPsysicallyUnlessThere(string nad)
     {
-        ThrowExceptions.IsNullOrEmpty(RuntimeHelper.GetStackTrace(),type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
-        ThrowExceptions.IsNotWindowsPathFormat(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "nad", nad);
+        ThrowExceptions.IsNullOrEmpty(Exc.GetStackTrace(),type, "CreateFoldersPsysicallyUnlessThere", "nad", nad);
+        ThrowExceptions.IsNotWindowsPathFormat(Exc.GetStackTrace(),type, Exc.CallingMethod(), "nad", nad);
 
         FS.MakeUncLongPath(ref nad);
         if (FS.ExistsDirectory(nad))
@@ -380,7 +381,7 @@ public partial class FS
         folderWithProjectsFolders = SH.FirstCharUpper(folderWithProjectsFolders);
         folderWithTemporaryMovedContentWithoutBackslash = SH.FirstCharUpper(folderWithTemporaryMovedContentWithoutBackslash);
 
-        if (!ThrowExceptions.NotContains(RuntimeHelper.GetStackTrace(),type, "ReplaceDirectoryThrowExceptionIfFromDoesntExists", p, folderWithProjectsFolders))
+        if (!ThrowExceptions.NotContains(Exc.GetStackTrace(),type, "ReplaceDirectoryThrowExceptionIfFromDoesntExists", p, folderWithProjectsFolders))
         {
             // Here can never accomplish when exc was throwed
             return p;
@@ -695,7 +696,7 @@ public partial class FS
             }
             else
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"SaveMemoryStream");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"SaveMemoryStream");
             }
         }
     }
@@ -1153,7 +1154,7 @@ public partial class FS
             }
             else
             {
-                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "CreateDirectory", whenExists);
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "CreateDirectory", whenExists);
             }
         }
         else
@@ -1442,7 +1443,7 @@ public partial class FS
         catch (Exception ex)
         {
             // Not throw exception, it's probably Access denied  on Documents and Settings etc
-            //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetFoldersEveryFolder with path: " + folder, ex);
+            //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetFoldersEveryFolder with path: " + folder, ex);
         }
     }
 
@@ -1464,7 +1465,7 @@ public partial class FS
         }
         catch (Exception ex)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"GetFiles with path: " + folder, ex);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetFiles with path: " + folder);
         }
 
         dirs.Insert(0, folder);
@@ -1477,7 +1478,7 @@ public partial class FS
             catch (Exception ex)
             {
                 // Not throw exception, it's probably Access denied on Documents and Settings etc
-                //ThrowExceptions.FileSystemException(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), ex);
+                //ThrowExceptions.FileSystemException(Exc.GetStackTrace(),type, Exc.CallingMethod(), ex);
             }
         }
 
@@ -1949,7 +1950,7 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
     {
         if (to == ComputerSizeUnits.Auto)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Byl specifikov\u00E1n v\u00FDstupn\u00ED ComputerSizeUnit, nem\u016F\u017Eu toto nastaven\u00ED zm\u011Bnit");
         }
         else if (to == ComputerSizeUnits.KB && b != ComputerSizeUnits.KB)
         {

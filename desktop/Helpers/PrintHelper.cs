@@ -45,6 +45,8 @@ namespace desktop
             papersInMm.Add("A4", new Size(210, 297));
         }
 
+        static Type type = typeof(PrintHelper);
+
         public static Size GetPaperSize(string a4, LengthUnit lu, LandscapePortrait lp)
         {
             if (papersInMm.ContainsKey(a4))
@@ -67,7 +69,8 @@ namespace desktop
             {
 
             }
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"NI SizeOfPaper.GetPaperSize" + "()");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"NI SizeOfPaper.GetPaperSize" + "()");
+            return Size.Empty;
         }
     }
 }

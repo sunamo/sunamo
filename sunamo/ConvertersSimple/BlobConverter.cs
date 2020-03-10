@@ -25,6 +25,7 @@ namespace sunamo
             return "X'" + sb.ToString() + "'";
         }
 
+        static Type type = typeof(BlobConverter);
         public byte[] ConvertFrom(string hexEncoded)
         {
             if (hexEncoded == null || hexEncoded.Length == 0)
@@ -47,11 +48,13 @@ namespace sunamo
             {
                 if (AppLangHelper.currentUICulture.TwoLetterISOLanguageName == "cs")
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("Zadan\u00FD \u0159et\u011Bzec se nezd\u00E1 b\u00FDt \u0161estn\u00E1ctkov\u011B k\u00F3dov\u00E1n\u00FD" + ":");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Zadan\u00FD \u0159et\u011Bzec se nezd\u00E1 b\u00FDt \u0161estn\u00E1ctkov\u011B k\u00F3dov\u00E1n\u00FD" + ":");
+                    return null;
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("The provided string does not appear to be Hex encoded" + ":" + hexEncoded, ex);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The provided string does not appear to be Hex encoded" + ":" + hexEncoded);
+                    return null;
                 }
             }
         }

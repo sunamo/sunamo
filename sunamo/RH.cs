@@ -77,18 +77,7 @@ public class RH
         }
     }
 
-    /// <summary>
-    /// Print name of calling method, not GetCurrentMethod
-    /// If is on end Test, will trim
-    /// </summary>
-    public static string CallingMethod(int v = 1)
-    {
-        StackTrace stackTrace = new StackTrace();
-        MethodBase methodBase = stackTrace.GetFrame(v).GetMethod();
-        var methodName = methodBase.Name;
-        methodName = SH.TrimEnd(methodName, "Test");
-        return methodName;
-    }
+    
 
     public static Assembly AssemblyWithName(string name)
     {
@@ -111,7 +100,7 @@ public class RH
     {
         if (!typeof(T).IsSerializable)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("The type must be serializable" + ".", "source");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The type must be serializable" + ". source");
         }
 
         // Don't serialize a null object, simply return the default for that object
@@ -288,7 +277,7 @@ public class RH
 
         if (children == null)
         {
-            ThrowExceptions.IsNull(RuntimeHelper.GetStackTrace(),type, "IsOrIsDeriveFromBaseClass", "children", children);
+            ThrowExceptions.IsNull(Exc.GetStackTrace(),type, "IsOrIsDeriveFromBaseClass", "children", children);
         }
         while (true)
         {
@@ -399,7 +388,7 @@ public class RH
                 dump = RH.DumpAsString(name, o);
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(),type, "DumpAsString", d);
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", d);
                 break;
         }
 
@@ -408,7 +397,7 @@ public class RH
 
     private static string DumpAsString(string name, object o)
     {
-        ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, "DumpAsString" );
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, "DumpAsString" );
         return null;
     }
 

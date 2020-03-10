@@ -246,8 +246,11 @@ public class StoredProceduresI : IStoredProceduresI
                     }
                 }
             }
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Zadan\u00E1 buNka nebyla nalezena");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Zadan\u00E1 buNka nebyla nalezena");
+        return null;
         }
+
+    static Type type = typeof(StoredProceduresI);
 
         public int ExecuteNonQuery(string p)
         {

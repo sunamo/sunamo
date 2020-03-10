@@ -1,6 +1,7 @@
 ﻿using System;
 public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
 {
+static Type type = typeof(ConvertMonthShortcutFullName);
     public static string FromShortcut(string shortcut)
     {
         switch (shortcut)
@@ -29,14 +30,12 @@ public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
                 return "November";
             case "Dec":
                 return "December";
-
             default:
                 break;
         }
-        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neznámý název měsíce");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce");
         return null;
     }
-
     public static string ToShortcut(string fullName)
     {
         switch (fullName)
@@ -65,11 +64,10 @@ public static class ConvertMonthShortcutFullName //: IConvertShortcutFullName
                 return "Nov";
             case "December":
                 return "Dec";
-
             default:
                 break;
         }
-        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Neznámý název měsíce");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce");
         return null;
     }
 }

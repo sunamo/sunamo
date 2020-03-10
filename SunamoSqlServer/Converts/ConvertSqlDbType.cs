@@ -41,10 +41,13 @@ public class ConvertSqlDbType
             case SqlDbType.Variant:
             case SqlDbType.Xml:
             default:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Program nezná pro výčtový typ SqlDbType2 hodnotu" + " " + db.ToString());
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Program nezná pro výčtový typ SqlDbType2 hodnotu" + " " + db.ToString());
+                break;
         }
         return (SqlDbType2)Enum.Parse(typeof(SqlDbType2), db.ToString());
     }
+
+    static Type type = typeof(ConvertSqlDbType);
 
     public static SqlDbType ToSqlDbType(SqlDbType2 db, out bool isNewId )
     {

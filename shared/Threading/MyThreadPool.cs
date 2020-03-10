@@ -32,6 +32,7 @@ namespace ThreadsIfaces
         /// 
         /// </summary>
         private Queue<WaitCallback> jobs = new Queue<WaitCallback>();
+        static Type type = typeof(MyThreadPool);
 
         /// <summary>
         /// Add thread to queue and call Monitor.Pulse on queue
@@ -40,7 +41,7 @@ namespace ThreadsIfaces
         public bool QueueUserWorkItem(System.Threading.WaitCallback callBack)
         {
             if (callBack == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException(" " + " " + "callback method cannot be null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), " " + " " + "callback method cannot be null");
 
             lock (jobs)
             {

@@ -9,9 +9,12 @@ namespace sunamo
 {
     public class PropertyType2Converter : ISimpleConverter<PropertyType2, string>
     {
+        static Type type = typeof(PropertyType2Converter);
+
         public PropertyType2 ConvertTo(string u)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NoImplementedException();
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
+            return PropertyType2.Bool;
         }
 
         /// <summary>

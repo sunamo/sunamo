@@ -22,7 +22,7 @@ namespace sunamo
 
         public int Compare(List<string> x, List<string> y)
         {
-            ThrowExceptions.NotImplementedMethod(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod());
+            ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(),type, Exc.CallingMethod());
             return int.MinValue;
         }
     }

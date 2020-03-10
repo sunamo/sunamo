@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 public class AssertExtensions
 {
+    static Type type = typeof(AssertExtensions);
     public static void EqualTuple<T,U>(List< Tuple<T,U>> a, List<Tuple<T,U>> b)
     {
         if (a.Count != b.Count)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Count in a and b is not equal");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Count in a and b is not equal");
         }
 
         for (int i = 0; i < a.Count; i++)
         {
             if(!EqualityComparer<T>.Default.Equals( a[i].Item1 ,b[i].Item1) || !EqualityComparer<U>.Default.Equals( a[i].Item2, b[i].Item2))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"a and b is not equal");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"a and b is not equal");
             }
         }
 

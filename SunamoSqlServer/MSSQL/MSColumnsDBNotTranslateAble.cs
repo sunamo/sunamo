@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 public partial class MSColumnsDB : List<MSSloupecDB>
 {
-    static string usings = @"using System;
 
+    static string usings = @"using System;
 using System.Collections.Generic;
 ";
-
     private static void CreateMethodInsert1(CSharpGenerator csg, string am, string sloupecID, Type typSloupecID, string seznamNameValueBezPrvniho, bool signed2)
     {
         string typSloupecIDS = MSDatabaseLayer.ConvertObjectToDotNetType(typSloupecID);
@@ -28,7 +25,6 @@ using System.Collections.Generic;
         }
         csg.Method(1, am + typSloupecIDS + " InsertToTable()", innerInsertToTable);
     }
-
     /// <summary>
     /// Do A2 může být vloženo i Nope_, on si jej automaticky nahradí za SE
     /// </summary>
@@ -46,7 +42,6 @@ using System.Collections.Generic;
         {
             nazevTabulky = nazevTabulky.Substring(dbPrefix.Length);
         }
-
         bool isDynamicTable = false;
         if (nazevTabulky.Contains("_"))
         {
@@ -54,7 +49,6 @@ using System.Collections.Generic;
             nazevTabulky = ConvertPascalConvention.ToConvention(nazevTabulky);
         }
         tableName = "TableRow" + nazevTabulky + "4";
-
         List<string> paramsForCtor = new List<string>(this.Count * 2);
         foreach (MSSloupecDB item in this)
         {
@@ -63,14 +57,11 @@ using System.Collections.Generic;
             paramsForCtor.Add(typ);
             paramsForCtor.Add(name);
         }
-
         List<string> nameFields = new List<string>();
         List<string> temp = new List<string>();
         bool first = true;
-
         string sloupecID = null;
         string sloupecIDTyp = null;
-
         foreach (MSSloupecDB item in this)
         {
             string typ = MSDatabaseLayer.ConvertSqlDbTypeToDotNetType(item.Type2);
@@ -86,7 +77,7 @@ using System.Collections.Generic;
                 else
                 {
                     // Je to například IDMisters
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"V prvním sloupci není řádek ID nebo ID*");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"V prvním sloupci není řádek ID nebo ID*");
                 }
             }
             else
@@ -100,23 +91,14 @@ using System.Collections.Generic;
         string seznamNameValue = SH.Join(',', temp.ToArray());
         bool isOtherColumnID = IsOtherColumnID;
         CSharpGenerator csg = new CSharpGenerator();
-
         csg.Using(usings);
         string tableName2 = "TableRow" + nazevTabulky;
         csg.StartClass(0, AccessModifiers.Public, false, tableName, tableName2 + "Base");
-
         csg.Append(2, GenerateCtors(tableName, isDynamicTable, paramsForCtor, false));
-
-
-
-
-
         CSharpGenerator innerSelectInTable = new CSharpGenerator();
-
         innerSelectInTable.AppendLine(2, "o = MSStoredProceduresI.ci.SelectOneRow(TableName, \"" + sloupecID + "\", " + Copy(sloupecID) + ");" + @");
 ParseRow(o);");
         csg.Method(1, "public void SelectInTable()", innerSelectInTable.ToString());
-
         if (sloupecIDTyp == "int")
         {
             if (isOtherColumnID)
@@ -147,14 +129,9 @@ ParseRow(o);");
                 csg.Method(1, "public " + sloupecIDTyp + " InsertToTable(SqlTransaction trans)", innerInsertToTable);
             }
         }
-
         string innerInsertToTable3 = CSharpGenerator.AddTab(2, "MSTSP.ci.Insert3(trans,TableName, " + sloupecID + "," + SH.Join(',', nameFields.ToArray()) + ");");
         csg.Method(1, "public void InsertToTable3(SqlTransaction trans)", innerInsertToTable3);
-
-
-
         csg.EndBrace(0);
-
         return csg.ToString();
     }
 }

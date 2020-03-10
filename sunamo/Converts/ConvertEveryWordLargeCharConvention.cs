@@ -2,13 +2,16 @@
 using System;
 public class ConvertEveryWordLargeCharConvention //: IConvertConvention
 {
+    static Type type = typeof(ConvertEveryWordLargeCharConvention);
+
     /// <summary>
     /// NI
     /// </summary>
     /// <param name="p"></param>
     public static string FromConvention(string p)
     {
-        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NoImplementedException();
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
+        return null;
     }
 
     /// <summary>

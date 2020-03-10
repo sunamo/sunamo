@@ -11,7 +11,7 @@ using System.Text;
 /// TODO: Don't add anything here and just use TemplateLoggerBase and ThisApp.DefaultLogger (dependent in type of app - Console, WPF, web etc.)
 /// Here only errors and so where is needed define location of code
 /// </summary>
-public class Exceptions
+public partial class Exceptions
 {
     public static bool RaiseIsNotWindowsPathFormat;
 
@@ -74,11 +74,11 @@ public class Exceptions
         return null;
     }
 
-    public static object KeyNotFound<T,U>(string v, IDictionary<T,U> en, string dictName, T key)
+    public static object KeyNotFound<T, U>(string v, IDictionary<T, U> en, string dictName, T key)
     {
         if (!en.ContainsKey(key))
         {
-            return key + " is now exists in Dictionary " + dictName; 
+            return key + " is now exists in Dictionary " + dictName;
         }
         return null;
     }
@@ -143,29 +143,7 @@ public class Exceptions
     }
 
     #region Without parameters
-    public static string NotImplementedCase(string before, object niCase)
-    {
-        string fr = string.Empty;
-        if (niCase != null)
-        {
-            fr = " for ";
-            if (niCase.GetType() == typeof(Type))
-            {
-                fr += ((Type)niCase).FullName;
-            }
-            else 
-            {
-                fr += niCase.ToString();
-            }
-        }
-
-        return CheckBefore(before) + "Not implemented case"+fr+" . public program error. Please contact developer" + ".";
-    }
-
-    public static object NotImplementedMethod(string before)
-    {
-        return CheckBefore(before) + "Not implemented case. public program error. Please contact developer" + ".";
-    }
+    
 
     public static object MoreThanOneElement(string before, string listName, int count)
     {
@@ -194,7 +172,7 @@ public class Exceptions
         return null;
     }
 
-    
+
 
     public static object StringContainsUnallowedSubstrings(string before, string input, params string[] unallowedStrings)
     {
@@ -285,15 +263,12 @@ public class Exceptions
         return FileWasntFoundInDirectory(before, path, fn);
     }
 
-
-    private static string CheckBefore(string before)
+    internal static string NotSupported(string v)
     {
-        if (string.IsNullOrWhiteSpace(before))
-        {
-            return "";
-        }
-        return before + ": ";
+        return CheckBefore(v) + "Not supported";
     }
+
+
 
     #region Called from TemplateLoggerBase
     public static string NotEvenNumberOfElements(string before, string nameOfCollection)
@@ -317,15 +292,7 @@ public class Exceptions
         return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " " + "with null value";
     }
 
-    public static string IsNull(string before, string variableName, object variable)
-    {
-        if (variable == null)
-        {
-            return CheckBefore(before) + variable + " " + "is null" + ".";
-        }
-
-        return null;
-    }
+    
 
     public static object IsNotNull(string before, string variableName, object variable)
     {
@@ -362,10 +329,7 @@ public class Exceptions
         return null;
     }
 
-    public static object Custom(string before, string message)
-    {
-        return CheckBefore(before) + message;
-    }
+    
 
     public static object FolderCantBeRemoved(string v, string folder)
     {
@@ -464,6 +428,8 @@ public class Exceptions
     {
         return CheckBefore(before) + "Under" + " " + item + " " + "is more candidates" + ": " + Environment.NewLine + SH.JoinNL(list);
     }
+
+   
 
     public static string BadMappedXaml(string before, string nameControl, string additionalInfo)
     {

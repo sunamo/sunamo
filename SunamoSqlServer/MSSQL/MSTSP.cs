@@ -4,14 +4,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Data;
-
 public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
 {
+static Type type = typeof(MSTSP);
     public object[] SelectDataTableOneRow(SqlTransaction tran, string TableName, string nazevSloupce, object hodnotaSloupce)
     {
         return SelectOneRow(tran, TableName, nazevSloupce, hodnotaSloupce);
     }
-
     // Duplikátní metoda
     /// <summary>
     /// G null pokud nenalezne
@@ -25,14 +24,12 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         DataTable dt = SelectDataTableSelective(tran, table, sloupecID, id, hledanySloupec);
         return GetCellDataTableString(dt, 0, 0);
     }
-
     /// <summary>
     /// Tato hodnota byla založena aby používal všude v DB konzistentní datovou hodnotu, klidně může mít i hodnotu DT.MaxValue když to tak má být
     /// </summary>
     public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     public static readonly DateTime DateTimeMaxVal = new DateTime(2079, 6, 6);
     public static MSTSP ci = new MSTSP();
-
     public object ExecuteScalar(SqlTransaction tran, SqlCommand comm)
     {
         //SqlDbType.SmallDateTime;
@@ -40,7 +37,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         comm.Transaction = tran;
         return comm.ExecuteScalar();
     }
-
     public int ExecuteNonQuery(SqlTransaction tran, string commText, params object[] para)
     {
         SqlCommand comm = new SqlCommand(commText);
@@ -52,7 +48,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return comm.ExecuteNonQuery();
     }
-
     public int ExecuteNonQuery(SqlTransaction tran, SqlCommand comm, params object[] para)
     {
         comm.Connection = conn;
@@ -63,14 +58,12 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return comm.ExecuteNonQuery();
     }
-
     public int ExecuteNonQuery(SqlTransaction tran, SqlCommand comm)
     {
         comm.Connection = conn;
         comm.Transaction = tran;
         return comm.ExecuteNonQuery();
     }
-
     /// <summary>
     /// Vrátí null, když získaná value bude DBNull.Value
     /// </summary>
@@ -96,9 +89,8 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             return null;
         }
         return null;
-        //ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Zadaná buňka nebyla nalezena");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Zadaná buňka nebyla nalezena");
     }
-
     private bool GetCellDataTableBool(DataTable dataTable, int radek, int sloupec)
     {
         if (dataTable.Rows.Count > radek)
@@ -117,11 +109,8 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             }
             return false;
         }
-
-
         return false;
     }
-
     private int GetCellDataTableInt(DataTable dataTable, int radek, int sloupec)
     {
         if (dataTable.Rows.Count > radek)
@@ -140,14 +129,8 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             }
             return -1;
         }
-
-
         return -1;
     }
-
-
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -155,11 +138,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return SelectDataTable(tran, "SELECT * FROM" + " " + table);
     }
-
-
-
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -169,7 +147,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         //AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -179,7 +156,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         AddCommandParameter(comm, 0, hodnotaWhere);
         return SelectDataTable(tran, comm);
     }
-
     /// <summary>
     /// 2
     /// </summary>
@@ -187,16 +163,13 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return SelectDataTable(tran, string.Format("SELECT {0} FROM {1}", SH.Join(AllChars.comma, selectSloupce), p));
     }
-
     public DataTable SelectAllRowsOfColumns(SqlTransaction tran, string p, List<string> ziskaneSloupce, string idColumnName, int idColumnValue)
     {
         string nazvy = SH.Join(AllChars.comma, ziskaneSloupce.ToArray());
-
         SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", nazvy, p) + GeneratorMsSql.SimpleWhere(idColumnName));
         AddCommandParameter(comm, 0, idColumnValue);
         return SelectDataTable(tran, comm);
     }
-
     /// <summary>
     /// Vrátí mi všechny položky ze sloupce 
     /// </summary>
@@ -206,7 +179,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         AddCommandParameter(comm, 0, hodnotaOd);
         return SelectDataTable(tran, comm);
     }
-
     public string SelectCellDataTableStringOneRow(SqlTransaction tran, string tabulka, string hledanySloupec, params AB[] aB)
     {
         string sql = string.Format("SELECT TOP(1) {0} FROM {1} ", hledanySloupec, tabulka) + GeneratorMsSql.CombinedWhere(aB);
@@ -227,7 +199,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr.ToString();
     }
-
     public string SelectCellDataTableStringOneLastRow(SqlTransaction tran, string table, string idColumnName, object idColumnValue, string vracenySloupec, string unique_column)
     {
         //SELECT TOP 1 * FROM table_Name ORDER BY unique_column DESC
@@ -245,7 +216,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return dt.Rows[0].ItemArray[0].ToString();
     }
-
     public string SelectCellDataTableStringOneRow(SqlTransaction tran, string table, string idColumnName, object idColumnValue, string vracenySloupec)
     {
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -258,7 +228,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return dt.Rows[0].ItemArray[0].ToString();
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -272,9 +241,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return dt.Rows[0].ItemArray;
     }
-
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -287,7 +253,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr;
     }
-
     /// <summary>
     /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsStringTrim
     /// </summary>
@@ -310,7 +275,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr;
     }
-
     /// <summary>
     /// Jakékoliv změny zde musíš provést i v metodě SelectValuesOfColumnAllRowsString
     /// </summary>
@@ -335,7 +299,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -346,7 +309,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         DataTable result = SelectDataTable(tran, sql, abc.OnlyBs());
         return result.Rows.Count != 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -358,7 +320,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         result = SelectDataTable(tran, comm);
         return result.Rows.Count != 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -370,7 +331,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         result = SelectDataTable(tran, comm);
         return result.Rows.Count != 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -380,7 +340,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         DataTable result = SelectDataTable(tran, sql, hodnota);
         return result.Rows.Count != 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -390,9 +349,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         AddCommandParameter(c, 0, hodnotaSloupce);
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter(c);
-
         da.Fill(dt);
-
         if (dt.Rows.Count > 0)
         {
             int vr = 0;
@@ -406,10 +363,8 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             return int.MinValue;
         }
-
         return int.MinValue;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -420,12 +375,10 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             // Metoda již řádek vkládá a SQLiteCommand vrací jen tak..
             InsertRowTypeEnumIfNotExists(tran, tabulka, hodnotaSloupce.ToString());
-
             return SelectFindOutNumberOfRows(tran, tabulka);
         }
         return dex;
     }
-
     public void InsertRowTypeEnumIfNotExists(SqlTransaction tran, string tabulka, string nazev)
     {
         if (SelectID(tran, tabulka, "Name", nazev) == int.MinValue)
@@ -436,7 +389,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             c.ExecuteNonQuery();
         }
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -444,7 +396,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return GetCellDataTableString(SelectDataTableSelective(tran, tabulka, "ID", id), 0, 1);
     }
-
     /// <summary>
     /// Vrátí mi 2. sloupec v celém získáném řádku.
     /// Musí to být sloupec Name
@@ -456,16 +407,11 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return GetCellDataTableString(SelectDataTableSelective(tran, tabulka, idColumn, idValue), 0, 1);
     }
-
-
-
-
     /// <summary>
     /// 
     /// </summary>
     public string SelectValueOfIDOrSE(SqlTransaction tran, string tabulka, int id)
     {
-
         DataTable dt = SelectDataTableSelective(tran, tabulka, "ID", id);
         if (dt.Rows.Count == 0)
         {
@@ -474,7 +420,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         //SQLiteCommand comm = new SQLiteCommand(string.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
         return GetCellDataTableString(dt, 0, 1);
     }
-
     public string SelectValueOfIDOrSE(SqlTransaction tran, string tabulka, int id, string idColumnName)
     {
         DataTable dt = SelectDataTableSelective(tran, tabulka, idColumnName, id);
@@ -485,7 +430,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         //SQLiteCommand comm = new SQLiteCommand(string.Format("SELECT Name FROM {0} WHERE ID = {1}", tabulka, id));
         return GetCellDataTableString(dt, 0, 1);
     }
-
     /// <summary>
     /// Přičte ke stávající hodnotě novou a vypočte nový průměr
     /// </summary>
@@ -508,7 +452,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         Update(tran, table, sloupecKUpdate, n, sloupecID, id);
         return n;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -519,7 +462,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         aktual += hodnotaAppend + AllStrings.comma;
         return Update(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
     }
-
     /// <summary>
     /// Pouze když hodnota nebude existovat, přidá ji znovu
     /// </summary>
@@ -537,12 +479,10 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         {
             aktual += hodnotaAppend + AllStrings.comma;
             string save = SH.Join(AllChars.comma, d.ToArray());
-
             return Update(tran, tableName, sloupecAppend, aktual, sloupecID, hodnotaID);
         }
         return 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -555,7 +495,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         string save = SH.Join(AllChars.comma, d.ToArray());
         return Update(tran, tableName, sloupecCut, save, sloupecID, hodnotaID);
     }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// </summary>
@@ -568,13 +507,11 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         //SqlException: String or binary data would be truncated.
         return comm.ExecuteNonQuery();
     }
-
     public void UpdateValuesCombination(SqlTransaction tran, string TableName, string nameOfColumn, object valueOfColumn, params object[] setsNameValue)
     {
         ABC abc = new ABC(setsNameValue);
         UpdateValuesCombination(tran, TableName, nameOfColumn, valueOfColumn, abc.ToArray());
     }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// </summary>
@@ -593,8 +530,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         // NT-Při úpravách uprav i UpdateValuesCombinationCombinedWhere
         ExecuteNonQuery(tran, comm);
     }
-
-
     /// <summary>
     /// Conn nastaví automaticky
     /// Vrátí zda byl vymazán alespoň jeden řádek
@@ -607,10 +542,8 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         SqlCommand comm = new SqlCommand("DELETE FROM" + " " + TableName + whereS);
         AddCommandParameterFromAbc(comm, where);
         int f = ExecuteNonQuery(tran, comm);
-
         return f > 0;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -618,7 +551,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return ExecuteNonQuery(tran, new SqlCommand(string.Format("DELETE FROM {0} WHERE {1} = @p0", table, sloupec)), id);
     }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// Raději používej tuto metodu s 4/2 parametrem sloupecID, pokud používáš tabulky ve kterých není první sloupec ID
@@ -630,7 +562,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return InsertToTable2(tran, tabulka, "ID", nazvySloupcu, sloupce);
     }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// IB - podle W3S ale dobře
@@ -639,7 +570,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public int InsertToTable2(SqlTransaction tran, string tabulka, string sloupecID, string nazvySloupcu, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} {1} VALUES {2}", tabulka, nazvySloupcu, hodnoty), conn, tran);
         for (int i = 0; i < sloupce.Length; i++)
         {
@@ -648,7 +578,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         comm.ExecuteNonQuery();
         return SelectLastIDFromTable(tran, tabulka, sloupecID);
     }
-
     /// <summary>
     /// Raději používej metodu s 3/2A sloupecID, pokud používáš v tabulce sloupce ID, které se nejmenují ID
     /// Sloupec u kterého se bude určovat poslední index a ten inkrementovat a na ten vkládat je ID
@@ -660,7 +589,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return InsertToRow2(tran, tabulka, "ID", sloupce);
     }
-
     /// <summary>
     /// Do této metody se vkládají hodnoty bez ID
     /// ID se počítá jako v Sqlite - tedy od 1 
@@ -673,7 +601,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         // Nyní je to +1 protože při vkládání do Ggd_Songs mi to názelo chyby nesprávný počet parametrů. Pokud ti to bude házet zase u jiných webů než Ggdag, uprav to na bez "+ 1"
         string hodnoty = MSDatabaseLayer.GetValuesDirect(sloupce.Length + 1);
-
         int d = SelectLastIDFromTable(tran, tabulka, sloupecID);
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", ++d);
@@ -687,7 +614,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         comm.ExecuteNonQuery();
         return d;
     }
-
     /// <summary>
     /// Vrací A2
     /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
@@ -699,7 +625,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public void Insert3(SqlTransaction tran, string tabulka, int IDUsers, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", IDUsers);
         int to = sloupce.Length + 1;
@@ -711,7 +636,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         comm.ExecuteNonQuery();
     }
-
     /// <summary>
     /// Vrací A2
     /// A2 je ID řádku na který se bude vkládat. Název/hodnota/whatever tohoto sloupce musí být 1. v A3.
@@ -723,7 +647,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     public void Insert3(SqlTransaction tran, string tabulka, long IDUsers, params object[] sloupce)
     {
         string hodnoty = MSDatabaseLayer.GetValues(sloupce);
-
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty), conn, tran);
         comm.Parameters.AddWithValue("@p0", IDUsers);
         int to = sloupce.Length + 1;
@@ -735,8 +658,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         comm.ExecuteNonQuery();
     }
-
-
     /// <summary>
     /// Vrací skutečně nejvyšší ID, proto když chceš pomocí ní ukládat do DB, musíš si to číslo inkrementovat
     /// </summary>
@@ -751,7 +672,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return int.Parse(dd);
     }
-
     /// <summary>
     /// Může se používat pouze když je sloupec ID = ID
     /// Vrací skutečně nejvyšší ID, proto když chceš pomocí ní ukládat do DB, musíš si to číslo inkrementovat
@@ -760,9 +680,7 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
     {
         return SelectLastIDFromTable(tran, p, "ID");
     }
-
     string cs = null;
-
     /// <summary>
     /// Tuto metodu nepoužívej například po vkládání, když chceš zjistit ID posledního řádku, protože když tam bude něco smazaného , tak to budeš mít o to posunuté !!
     /// 
@@ -772,7 +690,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         using (var conn = new SqlConnection(cs))
         {
             conn.Open();
-
             SqlCommand comm = new SqlCommand("SELECT Count(*) FROM" + " " + tabulka, conn, tran);
             //comm.Transaction = tran;
             string s = comm.ExecuteScalar().ToString();
@@ -780,7 +697,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             return int.Parse(s);
         }
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -794,7 +710,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr;
     }
-
     /// <summary>
     /// Conn nastaví automaticky
     /// </summary>
@@ -807,7 +722,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         return SelectDataTable(tran, string.Format("SELECT {0} FROM {1} WHERE {2} = @p0", sloupce, tabulka, whereName), whereValue);
         //return null;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -822,7 +736,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return vr;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -831,9 +744,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         DataTable dt = SelectDataTable(tran, string.Format("SELECT * FROM sysobjects WHERE id = object_id(N'{0}') AND OBJECTPROPERTY(id, N'IsUserTable') = 1", p));
         return dt.Rows.Count != 0;
     }
-
-
-
     public int DropTableIfExists(SqlTransaction tran, string table)
     {
         if (SelectExistsTable(tran, table))
@@ -842,7 +752,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return 0;
     }
-
     public void DropAllTables(SqlTransaction tran)
     {
         List<string> dd = SelectGetAllTablesInDB(tran);
@@ -851,7 +760,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
             ExecuteNonQuery(tran, new SqlCommand("DROP TABLE" + " " + item));
         }
     }
-
     public void UpdateValuesCombinationCombinedWhere(SqlTransaction tran, string TableName, ABC sets, ABC where)
     {
         string setString = GeneratorMsSql.CombinedSet(sets);
@@ -872,18 +780,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         // NT-Při úpravách uprav i UpdateValuesCombination
         ExecuteNonQuery(tran, comm);
     }
-
-
-
-
-
-
-
-
-
-
-
-
     public object SelectValueOfIDOneRow(SqlTransaction tran, string tabulka, string idColumnName, int idColumnValue, string vracenySloupec)
     {
         SqlCommand comm = new SqlCommand("SELECT TOP(1)" + " " + vracenySloupec + " " + "FROM" + " " + tabulka + " " + "WHERE" + " " + idColumnName + " = @p0");
@@ -896,7 +792,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return null;
     }
-
     /// <summary>
     /// 
     /// </summary>
@@ -915,8 +810,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         Update(tran, table, sloupecKUpdate, pridej, sloupecID, id);
         return pridej;
     }
-
-
     public int SelectCellDataTableIntOneRow(SqlTransaction tran, string table, string idColumnName, object idColumnValue, string vracenySloupec)
     {
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -929,7 +822,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return int.Parse(dt.Rows[0].ItemArray[0].ToString());
     }
-
     public object SelectCellDataTableObjectOneRow(SqlTransaction tran, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
         string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
@@ -942,9 +834,6 @@ public partial class MSTSP // : IStoredProceduresI<SqlConnection, SqlCommand>
         }
         return dt.Rows[0].ItemArray[0];
     }
-
-
-
     public void InsertToTable3(SqlTransaction tran, string table, string sloupce, string valuesParams, object[] values)
     {
         SqlCommand comm = new SqlCommand("INSERT INTO" + " " + table + AllStrings.space + sloupce + " " + "VALUES" + " " + valuesParams);

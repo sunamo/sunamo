@@ -21,6 +21,8 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
     static string oddeloacRegistru = Path.AltDirectorySeparatorChar.ToString();
     #endregion
 
+    static Type type = typeof(RegistryHelper);
+
     #region -!Hotovo!-
     /// <summary>
     /// V A1 projde vsechny prvky a vrati o [] jejich cestu, nazev a hodnotu. 
@@ -37,7 +39,7 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
         #region Polkud A2, vsechny je rek projdu a 
         if (vsechnyHodnoty)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Nesmi se zadavat s A2 true");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nesmi se zadavat s A2 true");
             //vratit.AddRange(VsechnyKlice(klic));
         } 
         #endregion

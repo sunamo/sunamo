@@ -195,6 +195,7 @@ public class XlfResourcesH
         return result;
     }
 
+    static Type type = typeof(XlfResourcesH);
     private static void ProcessXlfFile(string basePath, string lang, string file)
     {
         var fn = FS.GetFileName(file).ToLower();
@@ -228,7 +229,7 @@ public class XlfResourcesH
                 }
                 else
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unvalid file" + " " + file + ", " + "please delete it");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unvalid file" + " " + file + ", " + "please delete it");
                 }
             }
         }
