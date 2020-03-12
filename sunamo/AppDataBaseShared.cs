@@ -85,13 +85,6 @@ public abstract partial class AppDataBase<StorageFolder, StorageFile>
 
     public abstract string RootFolderCommon(bool inFolderCommon);
 
-    
-
-
-
-
-
-
     public string GetFolderWithAppsFiles()
     {
         //Common(true)

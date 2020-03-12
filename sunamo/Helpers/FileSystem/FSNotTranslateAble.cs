@@ -60,6 +60,24 @@ public partial class FS
         return resultSerie;
     }
 
+    public static bool IsAllInSameFolder(List<string> c)
+    {
+        if (c.Count > 0)
+        {
+            var f = FS.GetDirectoryName(c[0]);
+
+            for (int i = 1; i < c.Count; i++)
+            {
+                if (FS.GetDirectoryName(c[i]) != f)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public static void CreateFileWithTemplateContent(string folder, string files, string ext, string templateFromContent)
     {
         var lines = SH.GetLines(files);

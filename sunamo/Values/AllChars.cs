@@ -183,4 +183,5 @@ public static class AllChars
     public const char at = '@';
     public const char la = '‘';
     public const char ra = '’';
+    public const char st = '\0';
 }

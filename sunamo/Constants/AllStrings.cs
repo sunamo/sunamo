@@ -97,6 +97,6 @@ public class AllStrings
     public const string at = "@";
     public const string la = "‘";
     public const string ra = "’";
-
+    public const string st = "\0";
     internal static string DoubleSpace32160 { get => doubleSpace32160; set => doubleSpace32160 = value; }
 }

@@ -186,10 +186,13 @@ public static partial class CL
             zad = (int)Console.ReadKey().KeyChar;
             if (zad == 8)
             {
-                sb.Remove(sb.Length - 1, 1);
-                // not delete visually, only move cursor about two back
-                //Console.Write(AllChars.bs2);
-                ClearBehindLeftCursor(-1);
+                if (sb.Length > 0)
+                {
+                    sb.Remove(sb.Length - 1, 1);
+                    // not delete visually, only move cursor about two back
+                    //Console.Write(AllChars.bs2);
+                    ClearBehindLeftCursor(-1);
+                }
             }
             else if (zad == 27)
             {
@@ -232,7 +235,7 @@ public static partial class CL
             TypedConsoleLogger.Instance.Information(RLData.en["AppLoadedFromClipboard"] + " " + ": " + z);
         }
 
-        return z;
+        return z.Trim().Trim(AllChars.st).Trim();
     }
 
 /// <summary>
