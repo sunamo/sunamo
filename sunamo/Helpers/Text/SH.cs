@@ -18,7 +18,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 public static partial class SH
 {
-
     public static string ConvertWhitespaceToVisible(string t)
     {
         t = t.Replace(AllChars.tab, UnicodeWhiteToVisible.tab);
@@ -26,6 +25,7 @@ public static partial class SH
         t = t.Replace(AllChars.cr, UnicodeWhiteToVisible.carriageReturn);
         t = t.Replace(AllChars.space, UnicodeWhiteToVisible.space);
         return t;
+        
     }
     public static string ReplaceAll3(IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent, string content)
     {
