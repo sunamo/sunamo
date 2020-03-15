@@ -61,8 +61,6 @@ public static string NormalizeUri(string v)
         }
         catch (Exception ex)
         {
-
-
         }
     }
 

@@ -34,7 +34,7 @@ public partial class CryptHelper : ICryptHelper
         switch (provider)
         {
             case Provider.DES:
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Symetrick\u00E9 \u0161ifrov\u00E1n\u00ED DES nen\u00ED podporov\u00E1no" + ".");
                 break;
             case Provider.RC2:
                 //crypt = new CryptHelper.RC2();
@@ -46,12 +46,15 @@ public partial class CryptHelper : ICryptHelper
                 //crypt = new CryptHelper.TripleDES();
                 break;
             default:
-                ThrowExceptions.NotImplementedCase(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),provider);
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(),provider);
+                break;
         }
         _crypt.iv = iv;
         _crypt.pp = pp;
         _crypt.s = s;
     }
+
+    static Type type = typeof(CryptHelper);
 
     /// <summary>
     /// DES use length of key 56 bit which make it vunverable to hard attacks

@@ -278,7 +278,7 @@ public static partial class SH
             }
             else
             {
-                c = c.Substring(0, 4000); break;
+                c = SH.SubstringIfAvailable( c, 4000); break;
             }
         }
 
@@ -2045,6 +2045,12 @@ public static partial class SH
         return false;
     }
 
+    /// <summary>
+    /// Start at 0
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="lenght"></param>
+    /// <returns></returns>
     public static string SubstringIfAvailable(string input, int lenght)
     {
         if (input.Length > lenght)
