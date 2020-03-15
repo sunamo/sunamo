@@ -1,4 +1,5 @@
-﻿using sunamo.Generators;
+﻿using sunamo.Essential;
+using sunamo.Generators;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -100,8 +101,15 @@ public class VpsHelper
             foreach (var item in list)
             {
                 var sln = SolutionsIndexerHelper.SolutionWithName(item);
-                gitBashBuilder.Cd(sln.fullPathFolder);
-                gitBashBuilder.Pull();
+                if (sln != null)
+                {
+                    gitBashBuilder.Cd(sln.fullPathFolder);
+                    gitBashBuilder.Pull();
+                }
+                else
+                {
+                    ThisApp.SetStatus(TypeOfMessage.Warning, item + " solution was not found");
+                }
             }
 
             pullAllResult = gitBashBuilder.ToString();
