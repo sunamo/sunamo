@@ -38,7 +38,11 @@ public static XmlNode GetAttributeWithName(XmlNode item, string p)
         }
         else
         {
-            eventDescription = eventDescriptionNode.InnerXml;
+            if (eventDescriptionNode != null)
+            {
+                eventDescription = eventDescriptionNode.InnerXml;
+            }
+            
         }
 
         return eventDescription;

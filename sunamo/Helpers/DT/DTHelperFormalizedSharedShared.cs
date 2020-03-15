@@ -11,6 +11,11 @@ public partial class DTHelperFormalized
     /// <param name="p"></param>
     public static DateTime StringToDateTimeFormalizeDate(string p)
     {
+        if (string.IsNullOrEmpty(p))
+        {
+            return DateTime.MinValue;
+        }
+
         return DateTime.Parse(p, null, System.Globalization.DateTimeStyles.None);
     } 
     #endregion
