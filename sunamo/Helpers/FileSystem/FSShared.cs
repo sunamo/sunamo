@@ -1341,6 +1341,15 @@ public partial class FS
 
     public static string MascFromExtension(string ext2 = AllStrings.asterisk)
     {
+        if (!ext2.StartsWith("*"))
+        {
+            ext2 = "*" + ext2;
+        }
+        if (!ext2.StartsWith("*."))
+        {
+            ext2 = "*." + ext2;
+        }
+
         return ext2;
 
         #region MyRegion

@@ -183,7 +183,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 9) Set up UI of app
-        miGenerateScreenshot.Header = "Generate screenshot"; miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
+        miGenerateScreenshot.Header = "Generate screenshot"; 
+        miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {
             miGenerateScreenshot.Visibility = Visibility.Collapsed;
         }

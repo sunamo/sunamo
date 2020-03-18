@@ -10,7 +10,7 @@ public class ColorThemeHelper
 {
     static Type type = typeof(ColorThemeHelper);
 
-    internal static void ApplyColorTheme(Border border, ColorTheme ct)
+    public static void ApplyColorTheme(Border border, ColorTheme ct)
     {
         ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
     }

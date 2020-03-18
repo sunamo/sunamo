@@ -233,7 +233,7 @@ DeadCharProcessed");
 
 
 
-        internal static bool IsWhitespace(KeyEventArgs e)
+        public static bool IsWhitespace(KeyEventArgs e)
         {
             var k = e.Key.ToString();
             if (whiteSpace.Contains(k))

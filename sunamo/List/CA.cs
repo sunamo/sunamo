@@ -156,6 +156,9 @@ public static partial class CA
         }
         return duplicated.c;
     }
+
+    
+
     /// <summary>
     /// Return whether all of A1 are in A2
     /// Not all from A2 must be A1

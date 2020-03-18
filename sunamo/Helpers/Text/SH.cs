@@ -340,7 +340,7 @@ public static partial class SH
     /// <param name="centerIndex"></param>
     /// <param name="before"></param>
     /// <param name="after"></param>
-    public static object CharsBeforeAndAfter(string text, string centerString, int centerIndex, int before, int after)
+    public static string CharsBeforeAndAfter(string text, string centerString, int centerIndex, int before, int after)
     {
         var b = centerIndex - before;
         var a = centerIndex + centerString.Length + after;

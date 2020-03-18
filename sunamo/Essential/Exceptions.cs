@@ -65,7 +65,7 @@ public partial class Exceptions
         return null;
     }
 
-    internal static object OutOfRange(string v, string colName, IEnumerable col, string indexName, int index)
+    public static object OutOfRange(string v, string colName, IEnumerable col, string indexName, int index)
     {
         if (col.Count() <= index)
         {
@@ -263,7 +263,7 @@ public partial class Exceptions
         return FileWasntFoundInDirectory(before, path, fn);
     }
 
-    internal static string NotSupported(string v)
+    public static string NotSupported(string v)
     {
         return CheckBefore(v) + "Not supported";
     }

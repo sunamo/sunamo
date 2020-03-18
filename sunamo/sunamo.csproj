@@ -130,6 +130,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Essential\ExcShared.cs" />
+    <Compile Include="SunamoTimer.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

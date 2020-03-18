@@ -10,7 +10,7 @@ using System;
 public class PpkOnDrive : PpkOnDriveBase<string>
 {
     static PpkOnDrive wroteOnDrive = null;
-    internal static PpkOnDrive WroteOnDrive
+    public static PpkOnDrive WroteOnDrive
     {
         get
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
     public partial class Exceptions
     {
     #region For easy copy in SunamoException project
-    internal static string ArgumentOutOfRangeException(string before, string paramName, string message)
+    public static string ArgumentOutOfRangeException(string before, string paramName, string message)
     {
         if (paramName == null)
         {

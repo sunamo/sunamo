@@ -218,6 +218,7 @@ public partial class FS
         {
             var from2 = SH.Split(from, Environment.NewLine);
             var to2 = SH.Split(to, Environment.NewLine);
+
             if (replaceWithEmpty )
             {
                 to2.Clear();
@@ -226,6 +227,7 @@ public partial class FS
                     to2.Add(string.Empty);
                 }
             }
+
             ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
             ReplaceInAllFiles(from2, to2, files, isMultilineWithVariousIndent);
         }
@@ -262,6 +264,10 @@ public partial class FS
                     
                     TF.SaveFile(content2, item);
                 }
+            }
+            else
+            {
+                ThisApp.SetStatus(TypeOfMessage.Warning, "Content of " + item + " couldn't be replaced - contains control chars.");
             }
         }
     }

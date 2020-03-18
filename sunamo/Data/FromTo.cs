@@ -66,6 +66,11 @@ public class FromTo : IParser
         return from != 0 && to != 0;
     }
 
+    /// <summary>
+    /// Use DTHelperCs.ToShortTimeFromSeconds to convert back
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
     private int ReturnSecondsFromTimeFormat(string v)
     {
         int result = 0;

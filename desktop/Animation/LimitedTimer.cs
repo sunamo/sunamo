@@ -1,37 +1,36 @@
 ﻿using System;
-public class LimitedTimer
+public class LimitedTimer : SunamoTimer
 {
-    System.Timers.Timer t = null;
-    Action a = null;
     int pocet = 0;
     int odbylo = 0;
-    public event VoidVoid Tick;
 
-
-    public LimitedTimer(int ms, int pocet, Action a)
+    public LimitedTimer(int ms, int pocet, Action a) : base(ms,a, false)
     {
-        t = new System.Timers.Timer(ms);
-        t.Elapsed += t_Elapsed;
-
+        Tick += LimitedTimer_Tick;
         this.pocet = pocet;
-        this.a = a;
-        t.Start();
     }
-    
-    void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+
+    private void LimitedTimer_Tick()
     {
         odbylo++;
 
-        a.Invoke();
-        if (Tick != null)
-        {
-            Tick();
-        }
-        
         if (pocet == odbylo)
         {
             //////DebugLogger.Instance.WriteLine(pocet.ToString());
             t.Stop();
         }
+    }
+
+    void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        odbylo++;
+
+        if (pocet == odbylo)
+        {
+            //////DebugLogger.Instance.WriteLine(pocet.ToString());
+            t.Stop();
+        }
+
+
     }
 }

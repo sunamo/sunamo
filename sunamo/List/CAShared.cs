@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Essential;
 using sunamo.Values;
 using System;
 using System.Collections;
@@ -319,11 +320,35 @@ public static partial class CA
         //    result = new List<T>(1);
         //    result.Add(SH.JoinIEnumerable(string.Empty, enumerable));
         //}
+
+        bool b1 = ien != null;
+        bool b2 = typeof(T) == Types.tString;
+        bool b3 = ienf.Count() > 1;
+        bool b4 = false;
+        bool b5 = false;
+
+        if (ienf != null)
+        {
+            var f = ienf.FirstOrNull();
+            if (f != null)
+            {
+                b4 = f.GetType() == Types.tChar;
+            }
+        }
+        if (ien != null)
+        {
+            var l = ien.Last();
+            if (l != null)
+            {
+                b5 = l.GetType() == Types.tChar;
+            }
+        }
+
         if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IEnumerable<object>)
         {
             result = ToListT2<T>((IEnumerable<object>)enumerable.FirstOrNull());
         }
-        else if (ien != null && typeof(T) == Types.tString && ienf.Count() > 1 && ienf.FirstOrNull().GetType() == Types.tChar && ien.Last().GetType() == Types.tChar)
+        else if (b1 && b2&& b3 && b4 && b5)
         {
             result.Add(RuntimeHelper.CastToGeneric<T>( SH.Join(string.Empty, enumerable)));
         }
@@ -446,6 +471,45 @@ public static partial class CA
     /// </summary>
     private static List<T> ToListT2<T>(IEnumerable enumerable)
     {
+        if (M.Debug)
+        {
+
+        }
+
+        if (typeof(T) == Types.tString)
+        {
+            List<T> t = new List<T>();
+            
+
+            foreach (var item in enumerable)
+            {
+                if (item is IEnumerable)
+                {
+                    var ie = (IEnumerable)item;
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item2 in ie)
+                    {
+                        sb.Append(item2.ToString());
+                    }
+                    object t2 = sb.ToString();
+                    t.Add((T)t2);
+                }
+                else if (item is char)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item2 in enumerable)
+                    {
+                        sb.Append(item2.ToString());
+                    }
+                    object t2 = sb.ToString();
+                    t.Add((T)t2);
+                    break;
+                }
+            }
+            return t;
+
+        }
+
         List<T> result = new List<T>(enumerable.Count());
         foreach (var item in enumerable)
         {
@@ -1230,9 +1294,34 @@ public static partial class CA
         List<int> result = new List<int>();
 
         int i = 0;
+
         foreach (var item in list)
         {
             if (s.Contains(item))
+            {
+                result.Add(i);
+            }
+
+            i++;
+        }
+
+        return result;
+    }
+
+    public static List<int> StartWithAnyInElement(string s, List<string> list, bool _trimBefore)
+    {
+        List<int> result = new List<int>();
+
+        int i = 0;
+        foreach (var item in list)
+        {
+            var item2 = item;
+            if (_trimBefore)
+            {
+                item2 = item2.Trim();
+            }
+
+            if (s.StartsWith(item2))
             {
                 result.Add(i);
             }
@@ -1591,6 +1680,12 @@ public static void RemoveWhichContains(List<string> files, List<string> list, bo
             RemoveWhichContains(files, item, wildcard);
         }
     }
+    /// <summary>
+    /// Direct editr
+    /// </summary>
+    /// <param name="files1"></param>
+    /// <param name="item"></param>
+    /// <param name="wildcard"></param>
 public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
     {
         if (wildcard)
