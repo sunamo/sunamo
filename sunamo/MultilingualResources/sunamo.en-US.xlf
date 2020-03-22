@@ -1497,10 +1497,6 @@
           <source />
           <target state="translated">Description</target>
         </trans-unit>
-        <trans-unit id="IApps" translate="yes" xml:space="preserve">
-          <source />
-          <target state="translated">/i/Apps</target>
-        </trans-unit>
         <trans-unit id="Likes" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Likes</target>
@@ -1744,10 +1740,6 @@
         <trans-unit id="TextFile" translate="yes" xml:space="preserve">
           <source />
           <target state="translated">Text file</target>
-        </trans-unit>
-        <trans-unit id="GenesisGenGenesisGenMIMMojIMojMojzisMojzIMojzIMojzis" translate="yes" xml:space="preserve">
-          <source />
-          <target state="translated">Genesis | Gen | Genesis | Gen / 1 M / I M / 1 Moj / I Moj / 1 Mojzis / 1 Mojz / I Mojz / I Mojzis</target>
         </trans-unit>
         <trans-unit id="EnglishName" translate="yes" xml:space="preserve">
           <source />
@@ -4181,22 +4173,7 @@
           <source></source>
           <target state="translated">Popular Louisianan Creole music</target>
         </trans-unit>
-        <trans-unit id="Uri" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Uri (</target>
-        </trans-unit>
-        <trans-unit id="Tag" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Tag (</target>
-        </trans-unit>
-        <trans-unit id="Lat" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Lat (9,6)</target>
-        </trans-unit>
-        <trans-unit id="Lon" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Lon (9,6)</target>
-        </trans-unit>
+      
         <trans-unit id="Rating" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Rating</target>
@@ -6053,10 +6030,7 @@
           <source></source>
           <target state="translated">List of breed cats</target>
         </trans-unit>
-        <trans-unit id="RequestUrlHost" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + Request.Url.Host + </target>
-        </trans-unit>
+
         <trans-unit id="OutIdState" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">, out idState2);</target>
@@ -7189,18 +7163,7 @@
           <source></source>
           <target state="translated">Gyroscope</target>
         </trans-unit>
-        <trans-unit id="Width" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Width(4,1)</target>
-        </trans-unit>
-        <trans-unit id="Height" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Height(4,1)</target>
-        </trans-unit>
-        <trans-unit id="Depth" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Depth(4,1)</target>
-        </trans-unit>
+        
         <trans-unit id="NewMainCategory" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">New main category</target>
@@ -7849,14 +7812,6 @@
           <source></source>
           <target state="translated">Base b)</target>
         </trans-unit>
-        <trans-unit id="SloupecIDTypAllStringsSpaceSloupecIDAllStringsRbInnerDeleteFromTable" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + sloupecIDTyp + AllStrings.space + sloupecID + AllStrings.rb, innerDeleteFromTable2);</target>
-        </trans-unit>
-        <trans-unit id="SloupecIDAllStringsCommaSeznamNameValue" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + sloupecID + AllStrings.comma + seznamNameValue + @</target>
-        </trans-unit>
         <trans-unit id="InnerUpdateInTableT" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">, innerUpdateInTable2T);</target>
@@ -8233,10 +8188,6 @@
           <source></source>
           <target state="translated">/All</target>
         </trans-unit>
-        <trans-unit id="NazevTabulkyTableRowRLDataEnXlfKeysBaseBInnerUpdateInTableT" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + nazevTabulkyTableRow + RLData.en[XlfKeys.BaseB], innerUpdateInTable2T);</target>
-        </trans-unit>
         <trans-unit id="AddANewSpanApplicationSpan" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Add a new &lt;span&gt;application&lt;/span&gt;</target>
@@ -8372,14 +8323,6 @@
         <trans-unit id="SeeAtGcCom" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">See at gc.com</target>
-        </trans-unit>
-        <trans-unit id="GeoCachingHelperDateToStringCacheHiddenDT" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + GeoCachingHelper.DateToString( cacheHiddenDT);</target>
-        </trans-unit>
-        <trans-unit id="GeoCachingHelperDateToStringCacheDateAdded" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated"> + GeoCachingHelper.DateToString(cacheDateAdded);</target>
         </trans-unit>
         <trans-unit id="CacheWithGCCodeWasNotFoundInDB" translate="yes" xml:space="preserve">
           <source></source>
@@ -14513,10 +14456,6 @@
         <trans-unit id="Resources\ProcessSearchResult" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Process search result</target>
-        </trans-unit>
-        <trans-unit id="a" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">cč</target>
         </trans-unit>
         <trans-unit id="NavigationFailed" translate="yes" xml:space="preserve">
           <source></source>
