@@ -1352,7 +1352,7 @@ public partial class FS
         {
             ext2 = "*" + ext2;
         }
-        if (!ext2.StartsWith("*."))
+        if (!ext2.StartsWith("*.") && ext2.StartsWith(AllStrings.dot))
         {
             ext2 = "*." + ext2;
         }

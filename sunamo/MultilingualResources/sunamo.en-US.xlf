@@ -341,7 +341,7 @@
        </trans-unit>
        <trans-unit id="Accept" translate="yes" xml:space="preserve">
          <source />
-         <target state="translated">Accept :</target>
+         <target state="translated">Accept</target>
        </trans-unit>
        <trans-unit id="NotImplementedPleaseContactAdmin" translate="yes" xml:space="preserve">
          <source />
@@ -365,7 +365,7 @@
        </trans-unit>
        <trans-unit id="WatchingThePageInTheLast7DaysCountingTheDayBackThatIsTodaySApproachesWillOnlyAppearTomorrow" translate="yes" xml:space="preserve">
          <source />
-         <target state="translated">Watching the page in the last 7 days (counting the day back, that is, today's approaches will only appear tomorrow)</target>
+         <target state="translated">Watching the page in the last 7 days (counting the day back, that is, today's approaches will only appear tomorrow</target>
        </trans-unit>
        <trans-unit id="errorYouWereNotLoggedIn" translate="yes" xml:space="preserve">
          <source />
@@ -1294,7 +1294,7 @@
        </trans-unit>
        <trans-unit id="MismatchCountInInputArraysOfSH1AllHaveRightFormat" translate="yes" xml:space="preserve">
          <source />
-         <target state="translated">Mismatch count in input arrays of SH1.AllHaveRightFormat(</target>
+         <target state="translated">Mismatch count in input arrays of SH1.AllHaveRightFormat</target>
        </trans-unit>
        <trans-unit id="NoDelimiterSpecified" translate="yes" xml:space="preserve">
          <source />
@@ -2975,7 +2975,7 @@
        </trans-unit>
        <trans-unit id="RomaniStyleOfPunkRock" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Romani style of punk rock. </target>
+         <target state="translated">Romani style of punk rock</target>
        </trans-unit>
        <trans-unit id="AfricanAmericanStyleBasedOnCubanContredanza" translate="yes" xml:space="preserve">
          <source></source>
@@ -4200,7 +4200,7 @@
        </trans-unit>
        <trans-unit id="ASongOfTheSameNameAlreadyExistsInTheDatabaseAndYouCanFindItAHrefHrefAHrefHrefAHref" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">A song of the same name already exists in the database and you can find it &lt;a href = ' href=''&gt;&lt;/a href = '</target>
+         <target state="translated">A song of the same name already exists in the database and you can find it &lt;a href = ' href=''&gt;&lt;/a href</target>
        </trans-unit>
        <trans-unit id="SongTitleCannotBeEmpty" translate="yes" xml:space="preserve">
          <source></source>
@@ -4216,7 +4216,7 @@
        </trans-unit>
        <trans-unit id="TheYTCodeContainedInvalidCharactersSuchAsASpace" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">The YT code contained invalid characters (such as a space)</target>
+         <target state="translated">The YT code contained invalid characters (such as a space</target>
        </trans-unit>
        <trans-unit id="TheYTCodeCanBeAMaximumOf20Characters" translate="yes" xml:space="preserve">
          <source></source>
@@ -4338,7 +4338,7 @@
        </trans-unit>
        <trans-unit id="NoSongsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">No songs have been viewed in the last week (today's hits will only be visible tomorrow)</target>
+         <target state="translated">No songs have been viewed in the last week (today's hits will only be visible tomorrow</target>
        </trans-unit>
        <trans-unit id="YouAreAddingANewSongLyricsToTheSong" translate="yes" xml:space="preserve">
          <source></source>
@@ -5072,7 +5072,7 @@
        </trans-unit>
        <trans-unit id="AnAlbumCannotHaveTheFollowingNamesIntegerNumberNumberOr" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">An album cannot have the following names: integer, number-number, or - </target>
+         <target state="translated">An album cannot have the following names: integer, number-number, or</target>
        </trans-unit>
        <trans-unit id="ThisStringWasNotAnIntegerNumber" translate="yes" xml:space="preserve">
          <source></source>
@@ -5544,7 +5544,7 @@
        </trans-unit>
        <trans-unit id="NeedToBreakDown" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Need to break down? :-</target>
+         <target state="translated">Need to break down</target>
        </trans-unit>
        <trans-unit id="YouAlreadyHaveYourBlogAt" translate="yes" xml:space="preserve">
          <source></source>
@@ -5713,7 +5713,7 @@
        </trans-unit>
        <trans-unit id="UnimplementedMssBranchInDiscussGetHtml" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Unimplemented mss branch in Discuss.GetHtml(</target>
+         <target state="translated">Unimplemented mss branch in Discuss.GetHtml</target>
        </trans-unit>
        <trans-unit id="SuchACommentWasNotFoundInTheDatabase" translate="yes" xml:space="preserve">
          <source></source>
@@ -5837,7 +5837,7 @@
        </trans-unit>
        <trans-unit id="CatNameCalendar" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Cat Name Calendar </target>
+         <target state="translated">Cat Name Calendar</target>
        </trans-unit>
        <trans-unit id="DidnTYouChooseHereAreTheCalendarsForTheFollowingMonths" translate="yes" xml:space="preserve">
          <source></source>
@@ -6352,7 +6352,7 @@
        </trans-unit>
        <trans-unit id="Picture" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Picture </target>
+         <target state="translated">Picture</target>
        </trans-unit>
        <trans-unit id="PhotoSuccessfullySetAsMasterInAlbum" translate="yes" xml:space="preserve">
          <source></source>
@@ -7099,11 +7099,11 @@
        </trans-unit>
        <trans-unit id="ContentMetroAllCss" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Content/metro-all.css' /</target>
+         <target state="translated">Content/metro-all.css</target>
        </trans-unit>
        <trans-unit id="ContentMetroIconsCss" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Content/metro-icons.css' /</target>
+         <target state="translated">Content/metro-icons.css</target>
        </trans-unit>
        <trans-unit id="YouCannotViewOrMakeChangesToCommentsBecauseYouAreNotSignedIn" translate="yes" xml:space="preserve">
          <source></source>
@@ -7798,7 +7798,7 @@
        </trans-unit>
        <trans-unit id="RemovedInPageDoesNotDeleteInPageArgumentAndPageName" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Removed in Page (Does not delete in PageArgument and PageName)</target>
+         <target state="translated">Removed in Page (Does not delete in PageArgument and PageName</target>
        </trans-unit>
        <trans-unit id="RemovedInLastVisits" translate="yes" xml:space="preserve">
          <source></source>
@@ -8038,7 +8038,7 @@
        </trans-unit>
        <trans-unit id="NumberOfStations" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Number of stations </target>
+         <target state="translated">Number of stations</target>
        </trans-unit>
        <trans-unit id="doNotMatchTheirCoordinates" translate="yes" xml:space="preserve">
          <source></source>
@@ -8298,7 +8298,7 @@
        </trans-unit>
        <trans-unit id="NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">No albums have been viewed in the last week (today's hits will only be visible tomorrow)</target>
+         <target state="translated">No albums have been viewed in the last week (today's hits will only be visible tomorrow</target>
        </trans-unit>
        <trans-unit id="GalleryIsPrivateAccessCodeWasIncorrect" translate="yes" xml:space="preserve">
          <source></source>
@@ -8698,12 +8698,12 @@
        
        <trans-unit id="FavoriteLyrics" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Favorite lyrics </target>
+         <target state="translated">Favorite lyrics</target>
        </trans-unit>
         
        <trans-unit id="FavoriteSongTranslations" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Favorite song translations </target>
+         <target state="translated">Favorite song translations</target>
        </trans-unit>
         
         
@@ -8788,7 +8788,7 @@
        </trans-unit>
        <trans-unit id="TheFirstCharacterIsNot" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">The first character is not +</target>
+         <target state="translated">The first character is not</target>
        </trans-unit>
        <trans-unit id="TelNumberDoesNotContainAPeriod" translate="yes" xml:space="preserve">
          <source></source>
@@ -8861,7 +8861,7 @@
        </trans-unit>
        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharactert" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,?, _, ~)</target>
+         <target state="translated">The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,?,</target>
        </trans-unit>
        <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong" translate="yes" xml:space="preserve">
          <source></source>
@@ -9003,7 +9003,7 @@
        </trans-unit>
        <trans-unit id="ILikeIt" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">I like it </target>
+         <target state="translated">I like it</target>
        </trans-unit>
        <trans-unit id="YesILikeTheApp" translate="yes" xml:space="preserve">
          <source></source>
@@ -9416,7 +9416,7 @@
        </trans-unit>
        <trans-unit id="UnimplementedBranchInSunamoPageDescriptionOfSite" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Unimplemented branch in SunamoPage.DescriptionOfSite(</target>
+         <target state="translated">Unimplemented branch in SunamoPage.DescriptionOfSite</target>
        </trans-unit>
        <trans-unit id="ObdarujteSvéhoPartnera" translate="yes" xml:space="preserve">
          <source></source>
@@ -9592,7 +9592,7 @@
        </trans-unit>
        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the alts collection </target>
+         <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the alts collection</target>
        </trans-unit>
        <trans-unit id="doesNotMatchTheNumberOfElementsInTheImagesCollection" translate="yes" xml:space="preserve">
          <source></source>
@@ -9600,7 +9600,7 @@
        </trans-unit>
        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the anchors collection </target>
+         <target state="translated">JustifiedGalleryHelper.GetInnerHtml: The number of elements in the anchors collection</target>
        </trans-unit>
        <trans-unit id="doesNotMatchTheNumberOfElementsInTheAltsCollection" translate="yes" xml:space="preserve">
          <source></source>
@@ -9608,7 +9608,7 @@
        </trans-unit>
        <trans-unit id="JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNames2Collection" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: The number of elements in the photosNames2 collection </target>
+         <target state="translated">JustifiedGalleryHelper.GetInnerHtmlSunamoImagesViewer: The number of elements in the photosNames2 collection</target>
        </trans-unit>
        <trans-unit id="doesNotMatchTheNumberOfElementsInImagesTn" translate="yes" xml:space="preserve">
          <source></source>
@@ -12949,7 +12949,7 @@
        </trans-unit>
        <trans-unit id="SomethingWentWrong" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">Something went wrong..</target>
+         <target state="translated">Something went wrong</target>
        </trans-unit>
        <trans-unit id="IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes" translate="yes" xml:space="preserve">
          <source></source>
