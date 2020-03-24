@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -59,7 +59,7 @@ public static partial class CL{
     /// <param name = "text"></param>
     public static DialogResult DoYouWantToContinue(string text)
     {
-        text = RLData.en["DoYouWantToContinue"] + "?";
+        text = RLData.en[XlfKeys.DoYouWantToContinue] + "?";
         TypedConsoleLogger.Instance.Warning(text);
         bool z = BTS.GetValueOfNullable( UserMustTypeYesNo(text));
         if (z)
@@ -110,7 +110,7 @@ public static partial class CL{
     /// <param name = "appeal"></param>
     public static void AppealEnter(string appeal)
     {
-        Appeal(appeal + ". " + RLData.en["ThenPressEnter"] + ".");
+        Appeal(appeal + ". " + RLData.en[XlfKeys.ThenPressEnter] + ".");
         Console.ReadLine();
     }
 

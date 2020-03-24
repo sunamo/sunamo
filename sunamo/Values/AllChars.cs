@@ -8,6 +8,38 @@ public static class AllChars
 {
     private static Type type = typeof(AllChars);
 
+    #region Generated with SunamoFramework.HtmlEntitiesForNonDigitsOrLetterChars
+    public const char comma = ',';
+    public const char period = '.';
+    public const char colon = ':';
+    public const char excl = '!';
+    public const char apos = '\'';
+    public const char quest = '?';
+    public const char rpar = ')';
+    public const char lpar = '(';
+    public const char sol = '/';
+    public const char lowbar = '_';
+    public const char lt = '<';
+    public const char equals = '=';
+    public const char gt = '>';
+    public const char amp = '&';
+    public const char lcub = '{';
+    public const char rcub = '}';
+    public const char lsqb = '[';
+    public const char verbar = '|';
+    public const char semi = ';';
+    public const char commat = '@';
+    public const char ast = '*';
+    public const char plus = '+';
+    public const char rsqb = ']';
+    public const char num = '#';
+    public const char percnt = '%';
+    public const char dollar = '$';
+    public const char Hat = '^';
+    public const char ndash = '–';
+    public const char copy = '©';
+    #endregion
+
     /*
      * Ascii - 128 chars - 7B
      * ASCII + code page (e.g. ISO 8859-1) - 256 chars - 8B
@@ -29,7 +61,7 @@ public static class AllChars
      */
 
     // IsControl
-    //public static readonly List<int> controlKeyCodes = 
+    //public const List<int> controlKeyCodes = 
     // IsDigit - IsNumber + superset atd.
     public static readonly List<int> numericKeyCodes = new List<int>(new int[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 });
     public static readonly List<char> numericChars = new List<char>(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
@@ -61,7 +93,7 @@ public static class AllChars
     public static readonly List<int> whiteSpacesCodes = new List<int>(new int[] { 9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8232, 8233, 8239, 8287, 12288 });
     public static List<char> whiteSpacesChars = null;
     public static char space160 = (char)160;
-    public const char plus = '+';
+    
 
     // my extension
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
@@ -77,9 +109,6 @@ public static class AllChars
 
     public const char cbl = '{';
     public const char cbr = '}';
-
-    public const char lt = '<';
-    public const char gt = '>';
 
     /// <summary>
     /// left square fowl [
@@ -97,8 +126,8 @@ public static class AllChars
     public const char rq = '”';
 
     #region Generic chars
-    public static readonly char notNumber;
-    public static readonly char zero = '0';
+    public  static readonly char notNumber;
+    public const char zero = '0';
     #endregion
 
     #region Names here must be the same as in Consts
@@ -112,15 +141,12 @@ public static class AllChars
     /// </summary>
     public const char nbsp = (char)160;
     public const char dash = '-';
-    public const char colon = ':';
     public const char us = '_';
 
     public const char tab = '\t';
     public const char nl = '\n';
     public const char cr = '\r';
     public const char bs = '\\';
-
-    public const char comma = ',';
     public const char dot = '.';
     public const char asterisk = '*';
     public const char apostrophe = '\'';

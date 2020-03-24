@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
-
+using sunamo.Essential;
 
 public class StopwatchHelper
 {
@@ -17,7 +17,9 @@ public class StopwatchHelper
     public  long StopAndPrintElapsed(string operation, string p, params object[] parametry)
     {
         sw.Stop();
-        //////DebugLogger.Instance.WriteLine(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
+        string message = string.Format(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
+        ThisApp.SetStatus(TypeOfMessage.Information, message);
+        //////DebugLogger.Instance.WriteLine();
         return sw.ElapsedMilliseconds;
     }
 

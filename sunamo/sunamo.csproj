@@ -129,8 +129,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Essential\ExcShared.cs" />
-    <Compile Include="SunamoTimer.cs" />
+    <Compile Include="Enums\StartEnd.cs" />
+    <Compile Include="Values\AllListsShared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -260,6 +260,7 @@
     <Compile Include="Crypting\Symmetric.cs" />
     <Compile Include="Crypting\UtilsShared.cs" />
     <Compile Include="CSharpParser.cs" />
+    <Compile Include="Data\ReplaceInAllFilesArgs.cs" />
     <Compile Include="Data\AB.cs" />
     <Compile Include="Data\ABC.cs" />
     <Compile Include="Data\ABL.cs" />
@@ -409,6 +410,7 @@
     <Compile Include="Enums\SqlExceptions.cs" />
     <Compile Include="Enums\SqlMethods.cs" />
     <Compile Include="Enums\SqlNumericType.cs" />
+    <Compile Include="Enums\StatisticLetterCharsStrategy.cs" />
     <Compile Include="Enums\StorageApplicationData.cs" />
     <Compile Include="Enums\Tld.cs" />
     <Compile Include="Enums\TwoState.cs" />
@@ -430,6 +432,7 @@
     <Compile Include="Essential\EventArgs\UriEventArgs.cs" />
     <Compile Include="Essential\Exceptions.cs" />
     <Compile Include="Essential\ExceptionsShared.cs" />
+    <Compile Include="Essential\ExcShared.cs" />
     <Compile Include="Essential\InitApp.cs" />
     <Compile Include="Essential\LoggerBase.cs" />
     <Compile Include="Essential\LoggerBaseShared.cs" />
@@ -674,6 +677,7 @@
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoJson.cs" />
     <Compile Include="SunamoJsonShared.cs" />
+    <Compile Include="SunamoTimer.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
     <Compile Include="UriWebServices.cs" />
     <Compile Include="UriWebServicesDontTranslate.cs" />
@@ -695,10 +699,6 @@
     <Compile Include="Values\M.cs" />
     <Compile Include="Values\RandomStatuses.cs" />
     <Compile Include="Values\RepairMobileValues.cs" />
-    <Compile Include="Values\TestData.cs" />
-    <Compile Include="Values\TestDataCs.cs" />
-    <Compile Include="Values\TestDataTxt.cs" />
-    <Compile Include="Values\TestHelper.cs" />
     <Compile Include="Values\Types.cs" />
     <Compile Include="VpsHelperSunamo.cs" />
     <Compile Include="Web\YouTube.cs" />
@@ -740,6 +740,7 @@
     <EmbeddedResource Include="Attributes\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

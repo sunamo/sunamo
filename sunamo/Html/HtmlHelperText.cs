@@ -1,8 +1,10 @@
 ﻿using sunamo.Constants;
 using sunamo.Enums;
+using sunamo.Html;
 using sunamo.Values;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -15,6 +17,18 @@ using System.Text.RegularExpressions;
     public partial class HtmlHelperText
     {
         private static Type type = typeof(HtmlHelperText);
+
+        public static bool ContainsTag(string s)
+    {
+        foreach (var item in AllHtmlTags.WithLeftArrow)
+        {
+            if (s.Contains(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
         /// <summary>
         /// Get type of tag (paired ended, paired not ended, non paired)
@@ -110,7 +124,7 @@ using System.Text.RegularExpressions;
             return result;
         }
 
-        private static string AddIntoParagraph(string s)
+    private static string AddIntoParagraph(string s)
         {
             const string spaceDash = " -";
 

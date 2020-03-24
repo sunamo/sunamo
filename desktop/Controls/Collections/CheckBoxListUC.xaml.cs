@@ -1,4 +1,4 @@
-﻿using desktop.Helpers.Controls;
+using desktop.Helpers.Controls;
 using sunamo;
 using sunamo.Essential;
 using System;
@@ -45,7 +45,7 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public string Title => RLData.en["CheckBoxList"];
+        public string Title => RLData.en[XlfKeys.CheckBoxList];
 
         public void Accept(object input)
         {

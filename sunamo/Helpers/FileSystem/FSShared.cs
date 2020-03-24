@@ -2,7 +2,7 @@
 using sunamo.Data;
 using sunamo.Enums;
 using sunamo.Essential;
-using sunamo.Values;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -97,6 +97,7 @@ public partial class FS
             }
 
         }
+
         if (getFilesArgs.excludeFromLocationsCOntains != null)
         {
             // I want to find files recursively
@@ -105,6 +106,7 @@ public partial class FS
                 CA.RemoveWhichContains(list, item, false);
             }
         }
+
         if (getFilesArgs.dontIncludeNewest)
         {
             Dictionary<string, DateTime> dictLastModified = new Dictionary<string, DateTime>();
@@ -117,6 +119,11 @@ public partial class FS
 
             list = dictLastModified.OrderBy(t => t.Value).Select(r => r.Key).ToList();
             list.RemoveAt(list.Count - 1);
+        }
+
+        if (getFilesArgs.excludeWithMethod != null)
+        {
+            getFilesArgs.excludeWithMethod.Invoke(list);
         }
 
         return list;

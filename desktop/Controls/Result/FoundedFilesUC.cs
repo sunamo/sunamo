@@ -36,6 +36,9 @@ namespace desktop.Controls.Result
         public void AddFoundedFile(string item, TUList<string, System.Windows.Media.Brush> p, ref int i)
         {
             HideTbNoResultsFound();
+
+         
+
             FoundedFileUC foundedFile = new FoundedFileUC(item, p, i++);
             foundedFile.Selected += FoundedFile_Selected;
             sp.Children.Add(foundedFile);

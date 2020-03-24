@@ -10,6 +10,7 @@ using System.Xml.Linq;
 /// </summary>
 public class XlfData
 {
+    public string path = null;
     public XElement group = null;
     public XDocument xd = null;
     public List<XElement> trans_units = null;

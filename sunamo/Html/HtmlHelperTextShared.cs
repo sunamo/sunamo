@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using sunamo.Html;
 
 public partial class HtmlHelperText{ 
 public static string ReplacePairTag(string input, string tag, string forWhat)
@@ -101,4 +103,18 @@ public static string InsertMissingEndingTags(string s, string tag)
         {
             return AllStrings.lt + p + AllStrings.gt + s + "</" + p + AllStrings.gt;
         }
+
+public static string RemoveAllNodes(string v)
+    {
+        var hd = HtmlAgilityHelper.CreateHtmlDocument();
+        hd.LoadHtml(v);
+
+        var nodes = hd.DocumentNode.Descendants().ToList();
+        for (int i = 0; i < nodes.Count(); i++)
+        {
+            nodes[i].ParentNode.Remove();
+        }
+
+        return hd.DocumentNode.OuterHtml;
+    }
 }

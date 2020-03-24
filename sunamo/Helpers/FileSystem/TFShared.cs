@@ -34,57 +34,16 @@ public partial class TF
         {
             FS.MakeUncLongPath<StorageFolder, StorageFile>(ref s, ac);
         }
-        
 
-        string result = string.Empty;
-
-        if (FS.ExistsFile(s, ac))
+        if (ac == null)
         {
-            while (true)
-            {
-                try
-                {
-                    /*
-                     * Měl jsme tu chybu not supported format path
-                     * cesta byla na první pohled v pořádku
-                     * zjistil jsem že v popředí bylo 2x BOM encoding utf8
-                     * tyto znaky jsou bílé a tím pádem sjem je neviděl
-                     * resetoval jsem komp. nastavil nové práva atd.
-                     * všechno to začalo s používáním DetectEncoding
-                     * 
-                     * STAČILO BOHATĚ RESETOVAT KOMP, MOŽNÁ I JEN VRÁTIT TO DO BEZ DetectEncoding!!!
-                     * 
-                     */
-                    //var bytesArray = File.ReadAllBytes(s);
-                    //var bytes = bytesArray.ToList();
-                    //var enc = EncodingHelper.DetectEncoding(bytes);
-
-                    if (ac == null)
-                    {
-                        //result = enc.GetString(bytesArray);
-                        result = File.ReadAllText(s.ToString());
-                    }
-                    else
-                    {
-                        result = ac.tf.readAllText(s);
-                    }
-                    
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Thread.Sleep(500);
-                }
-            }
+            //result = enc.GetString(bytesArray);
+            return File.ReadAllText(s.ToString());
         }
         else
         {
-            ThisApp.SetStatus(TypeOfMessage.Warning, s + " does not exists");
-            TF.WriteAllText<StorageFolder, StorageFile>(s, string.Empty, ac);
-            
+            return ac.tf.readAllText(s);
         }
-
-        return result;//
     }
 
     private static void SaveFile(string obsah, string soubor, bool pripsat)
@@ -99,38 +58,11 @@ public partial class TF
         }
         if (pripsat)
         {
-            while (true)
-            {
-                try
-                {
-                    File.AppendAllText(soubor, obsah, Encoding.UTF8);
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    Thread.Sleep(500);
-                }
-            }
+            File.AppendAllText(soubor, obsah);
         }
         else
         {
-            while (true)
-            {
-                try
-                {
-                    File.WriteAllText(soubor, obsah, Encoding.UTF8);
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    // not for errors like path could not found etc.
-                    if (ex.Message.Contains("ccess"))
-                    {
-                        Thread.Sleep(500);
-                    }
-                    //
-                }
-            }
+            File.WriteAllText(soubor, obsah);
         }
     }
 
@@ -151,17 +83,19 @@ public partial class TF
         TF.SaveFile(content, pathCsproj);
     }
 
+    public static void PureFileOperation(string f, Func<string, string> transformHtmlToMetro4, string insertBetweenFilenameAndExtension)
+    {
+        var content = TF.ReadFile(f);
+        content = transformHtmlToMetro4.Invoke(content);
+        TF.SaveFile(content, FS.InsertBetweenFileNameAndExtension( f, insertBetweenFilenameAndExtension));
+    }
+
     public static void PureFileOperation(string f, Func<string, string> transformHtmlToMetro4)
     {
         var content = TF.ReadFile(f);
         content = transformHtmlToMetro4.Invoke(content);
         TF.SaveFile(content, f);
     }
-
-    //public static void SaveFile(string content, StorageFile storageFile)
-    //{
-    //    TF.SaveFile(content, storageFile.FullPath());
-    //}
 
     public static List<string> ReadAllLines(string file)
     {
@@ -209,25 +143,7 @@ public partial class TF
 
     public static List<byte> ReadAllBytes(string file)
     {
-        if (File.Exists(file))
-        {
-            return File.ReadAllBytes(file).ToList();
-
-            using (System.IO.FileStream input = new System.IO.FileStream(file,
-                                        System.IO.FileMode.Open,
-                                        System.IO.FileAccess.Read))
-            {
-                byte[] buffer = new byte[input.Length];
-
-                int readLength = 0;
-
-                while (readLength < buffer.Length)
-                    readLength += input.Read(buffer, readLength, buffer.Length - readLength);
-
-                return buffer.ToList();
-            }
-        }
-        return new List<byte>();
+        return File.ReadAllBytes(file).ToList();
     }
 
     /// <summary>
@@ -294,7 +210,7 @@ public partial class TF
 
 public static void SaveLines(List<string> list, string file)
     {
-        SaveFile(SH.JoinNL(list), file);
+        File.WriteAllLines( file, list);
     }
 
 public static void RemoveDoubleBomUtf8(string path)
@@ -315,5 +231,10 @@ public static void RemoveDoubleBomUtf8(string path)
 
          b = b.Skip(3).ToList();
         TF.WriteAllBytes(path, b);
+    }
+
+    public static string ReadAllText(string path)
+    {
+        return File.ReadAllText(path);
     }
 }

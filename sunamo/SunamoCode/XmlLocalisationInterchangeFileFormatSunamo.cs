@@ -1,7 +1,10 @@
-﻿/// <summary>
+using System;
+/// <summary>
 /// Must be directly in standard, not SunamoCode.apps because SunamoCode.apps is derive from standard and I need class XmlLocalisationInterchangeFileFormat in standard
 /// </summary>
-public static  class XmlLocalisationInterchangeFileFormatSunamo{ 
+public static  class XmlLocalisationInterchangeFileFormatSunamo{
+    static Type type = typeof(XmlLocalisationInterchangeFileFormatSunamo);
+
     /// <summary>
     /// A1 can be full path
     /// </summary>
@@ -18,4 +21,32 @@ public static Langs GetLangFromFilename(string s)
 
         return Langs.en;
     }
+
+    /// <summary>
+    /// RLData.en[
+    /// </summary>
+    public const string RLDataEn = "RLData.en[";
+    public const string XlfKeysDot = "XlfKeys.";
+
+    /// <summary>
+    /// return code for getting from RLData.en
+    /// </summary>
+    /// <param name="key2"></param>
+    public static string TextFromRLData(string pathOrExt, string key2)
+    {
+        var ext = FS.GetExtension(pathOrExt);
+        ext = SH.PrefixIfNotStartedWith(ext, ".");
+        if (ext == AllExtensions.cs)
+        {
+            return RLDataEn + XlfKeysDot + key2 + "]";
+        }
+        else if (ext == AllExtensions.ts)
+        {
+            return "su.en(\"" + key2 + "\")";
+        }
+        ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), ext);
+        return null;
+    }
+
+   
 }

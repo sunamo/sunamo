@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace sunamo
 {
@@ -87,7 +88,7 @@ namespace sunamo
                     if (CA.HasIndexWithoutException(c, ths))
                     {
                         HtmlNode cellRow = ths[c];
-                        data[r - startRow, c] = cellRow.InnerHtml;
+                        data[r - startRow, c] = cellRow.InnerHtml.Trim();
                         string tdWithColspan = HtmlHelper.GetValueOfAttribute(HtmlAttrValue.colspan, cellRow, true);
                         if (tdWithColspan != "")
                         {
@@ -104,6 +105,52 @@ namespace sunamo
                     }
                 }
             }
+        }
+
+        public static void NormalizeValuesInColumn(List<string> chars, bool removeAlsoInnerHtmlOfSubNodes)
+        {
+            for (int i = 0; i < chars.Count; i++)
+            {
+                if (removeAlsoInnerHtmlOfSubNodes)
+                {
+                    chars[i] = HtmlHelperText.RemoveAllNodes(chars[i]);
+                }
+                else
+                {
+                    chars[i] = HtmlHelper.StripAllTags(chars[i]);
+                }
+                chars[i] = HttpUtility.HtmlDecode(chars[i]);
+            }
+
+            
+        }
+
+        public List<string> ColumnValues(string v, bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes)
+        {
+            var d0 = data.GetLength(0);
+            var d1 = data.GetLength(1);
+
+            List<string> vr = new List<string>();
+
+            for (int i = 0; i < d1; i++)
+            {
+                var nameColumn = data[0, i];
+                var dxColumn = i;
+                if (nameColumn == v)
+                {
+                    for ( i = 1; i < d0; i++)
+                    {
+                        vr.Add(data[i, dxColumn]);
+                    }
+                }
+            }
+
+            if (normalizeValuesInColumn)
+            {
+                NormalizeValuesInColumn(vr, removeAlsoInnerHtmlOfSubNodes);
+            }
+
+            return vr;
         }
     }
 }

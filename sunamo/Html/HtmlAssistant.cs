@@ -83,7 +83,7 @@ public partial class HtmlAssistant
         return string.Empty;
     }
 
-    private static string HtmlDecode(string v)
+    public static string HtmlDecode(string v)
     {
         return HttpUtility.HtmlDecode(v);
     }

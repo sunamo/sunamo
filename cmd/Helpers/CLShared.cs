@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -22,7 +22,7 @@ public static partial class CL
 
     private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
     {
-        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"]);
+        int selected = SelectFromVariants(listOfActions, RLData.en[XlfKeys.SelectActionToProceed]);
         if (selected != -1)
         {
             string ind = listOfActions[selected];
@@ -38,7 +38,7 @@ public static partial class CL
     public static void PerformAction(Dictionary<string, EventHandler> actions, object sender)
     {
         var listOfActions = NamesOfActions(actions);
-        int selected = SelectFromVariants(listOfActions, RLData.en["SelectActionToProceed"] + ":");
+        int selected = SelectFromVariants(listOfActions, RLData.en[XlfKeys.SelectActionToProceed] + ":");
         string ind = listOfActions[selected];
         EventHandler eh = actions[ind];
 
@@ -122,7 +122,7 @@ public static partial class CL
     /// <param name = "vyzva"></param>
     public static void SelectFromVariants(Dictionary<string, EmptyHandler> actions)
     {
-        string appeal = RLData.en["SelectAction"] + ":";
+        string appeal = RLData.en[XlfKeys.SelectAction] + ":";
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
@@ -173,10 +173,10 @@ public static partial class CL
         string z = "";
         if (append)
         {
-            whatOrTextWithoutEndingDot = RLData.en[RLData.en["Enter"]] + " " + whatOrTextWithoutEndingDot + "";
+            whatOrTextWithoutEndingDot = RLData.en[RLData.en[XlfKeys.Enter]] + " " + whatOrTextWithoutEndingDot + "";
         }
 
-        whatOrTextWithoutEndingDot += ". " + RLData.en["ForExitEnter"] + " -1" + ".";
+        whatOrTextWithoutEndingDot += ". " + RLData.en[XlfKeys.ForExitEnter] + " -1" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -232,7 +232,7 @@ public static partial class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information(RLData.en["AppLoadedFromClipboard"] + " " + ": " + z);
+            TypedConsoleLogger.Instance.Information(RLData.en[XlfKeys.AppLoadedFromClipboard] + " " + ": " + z);
         }
 
         return z.Trim().Trim(AllChars.st).Trim();

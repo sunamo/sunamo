@@ -69,6 +69,7 @@ public static partial class HtmlHelper
 
     /// <summary>
     /// Strip all tags and return only 
+    /// Use RemoveAllNodes when need remove also with innerhtml
     /// </summary>
     /// <param name="d"></param>
     public static List<string> StripAllTagsList(string d)

@@ -1,6 +1,6 @@
 ﻿using sunamo;
 using sunamo.Essential;
-using sunamo.Values;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -471,10 +471,7 @@ public static partial class CA
     /// </summary>
     private static List<T> ToListT2<T>(IEnumerable enumerable)
     {
-        if (M.Debug)
-        {
 
-        }
 
         if (typeof(T) == Types.tString)
         {
@@ -1673,6 +1670,12 @@ public static List<bool> ToBool(List<int> numbers)
         return b;
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files"></param>
+    /// <param name="list"></param>
+    /// <param name="wildcard"></param>
 public static void RemoveWhichContains(List<string> files, List<string> list, bool wildcard)
     {
         foreach (var item in list)
@@ -1764,6 +1767,12 @@ public static bool HasAtLeastOneElementInArray(List<string> d)
         {
             string item = c2[i];
             dex = c1.IndexOf(item);
+
+            if (item.Contains("\"Page\""))
+            {
+
+            }
+
             if (dex != -1)
             {
                 existsInBoth.Add(item);
@@ -1813,5 +1822,56 @@ public static string DoubleOrMoreMultiLinesToSingle(ref string list)
         list = Regex.Replace(list, "[\\r\\n]+", System.Environment.NewLine, System.Text.RegularExpressions.RegexOptions.Multiline);
         list = list.Replace(n, n + n);
         return list;
+    }
+
+public static bool HasPostfix(string key, params string[] v1)
+    {
+        foreach (var item in v1)
+        {
+            if (key.EndsWith(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+/// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="numbered"></param>
+    /// <param name="input"></param>
+    private static void Prepend(List<string> numbered, List<string> input)
+    {
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+        for (int i = 0; i < input.Count; i++)
+        {
+            input[i] = numbered[i] + input[i];
+        }
+    }
+/// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="toReplace"></param>
+    public static List<string> Prepend(string v, List<string> toReplace)
+    {
+        for (int i = 0; i < toReplace.Count; i++)
+        {
+            if (!toReplace[i].StartsWith(v))
+            {
+                toReplace[i] = v + toReplace[i];
+            }
+        }
+        return toReplace;
+    }
+/// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="toReplace"></param>
+    public static List<string> Prepend(string v, String[] toReplace)
+    {
+        return Prepend(v, toReplace.ToList());
     }
 }

@@ -62,6 +62,25 @@ public class XlfResourcesH
         SaveResouresToRL<string, string>(new ExistsDirectory( FS.ExistsDirectoryNull), AppData.ci);
     }
 
+    public static string PathToXlfSunamo(Langs l)
+    {
+        var p = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\MultilingualResources\sunamo.";
+        switch (l)
+        {
+            case Langs.cs:
+                p += "cs-CZ";
+                break;
+            case Langs.en:
+                p += "en-US";
+                break;
+            default:
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), l);
+                break;
+        }
+
+        return p + AllExtensions.xlf;
+    }
+
     public static void SaveResouresToRL(string path)
     {
         SaveResouresToRL<string, string>(path, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci);

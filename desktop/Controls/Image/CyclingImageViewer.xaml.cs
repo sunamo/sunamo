@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -71,12 +71,12 @@ namespace desktop
             if (e.Key == Key.Left)
             {
                 Before();
-                OnNewStatus(RLData.en["MovedBackToPhoto"] + " " + imagesPath.ToString());
+                OnNewStatus(RLData.en[XlfKeys.MovedBackToPhoto] + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Right)
             {
                 Next();
-                OnNewStatus(RLData.en["MovedForwardToPhoto"] + " " + imagesPath.ToString());
+                OnNewStatus(RLData.en[XlfKeys.MovedForwardToPhoto] + " " + imagesPath.ToString());
             }
             else if (e.Key == Key.Enter)
             {
@@ -94,7 +94,7 @@ namespace desktop
         public void ClearCollection()
         {
             imagesPath.Clear();
-            OnNewStatus(RLData.en["ImageCollectionDeleted"] + ".");
+            OnNewStatus(RLData.en[XlfKeys.ImageCollectionDeleted] + ".");
         }
 
         public void AddImages(List<string> value)
@@ -103,11 +103,11 @@ namespace desktop
             {
                 imagesPath.AddRange(value);
                 ActualFile = imagesPath.SetIretation(0);
-                OnNewStatusAppend(RLData.en["NewImagesLoadedInstead"] + ".", value.Count);
+                OnNewStatusAppend(RLData.en[XlfKeys.NewImagesLoadedInstead] + ".", value.Count);
             }
             else
             {
-                OnNewStatusAppend(RLData.en["NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages"] + ".");
+                OnNewStatusAppend(RLData.en[XlfKeys.NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages] + ".");
             }
         }
 

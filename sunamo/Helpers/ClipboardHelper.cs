@@ -176,6 +176,17 @@ public class ClipboardHelper
         }
     }
 
+    public static void SetDictionary<T1, T2>(Dictionary<T1, T2> charEntity, string delimiter)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var item in charEntity)
+        {
+            sb.AppendLine(item.Key + delimiter + item.Value);
+        }
+
+        ClipboardHelper.SetText(sb.ToString());
+    }
+
     //public static string GetText()
     //{
     //    return Instance.GetText();

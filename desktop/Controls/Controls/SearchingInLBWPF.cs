@@ -1,4 +1,4 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 using System.Collections.Generic;
 using System;
 using System.Windows.Input;
@@ -105,13 +105,13 @@ public class SearchingInLbWPF
                 }
             }
             lb.Items.Clear();
-            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en["WasFounded"] + " " + nechat.Count + " " + "items" + ". ");
+            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en[XlfKeys.WasFounded] + " " + nechat.Count + " " + "items" + ". ");
             AddRangeToListBox(nechat.ToArray());
         }
         else
         {
             lb.Items.Clear();
-            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en["SearchingWasStopped"] + ".");
+            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en[XlfKeys.SearchingWasStopped] + ".");
             AddRangeToListBox(oc);
         }
     }

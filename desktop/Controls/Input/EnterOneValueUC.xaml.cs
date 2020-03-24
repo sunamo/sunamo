@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -103,7 +103,7 @@ namespace desktop.Controls.Input
 
         public void Init(string whatEnter)
         {
-            tbWhatEnter.Text = RLData.en["Enter"] + " " + whatEnter + " " + "and press enter" + ".";
+            tbWhatEnter.Text = RLData.en[XlfKeys.Enter] + " " + whatEnter + " " + "and press enter" + ".";
         }
 
         public object GetContentByTag(object tag)

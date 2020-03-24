@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
@@ -53,7 +53,7 @@ static Type type = typeof(InputTwoColumnsUC);
         {
             if (neededRows > rowsCount)
             {
-                ThrowExceptions.BadMappedXaml(Exc.GetStackTrace(),type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en["ItNeedsMoreRowsThanItExists"]);
+                ThrowExceptions.BadMappedXaml(Exc.GetStackTrace(),type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en[XlfKeys.ItNeedsMoreRowsThanItExists]);
             }
             else
             {

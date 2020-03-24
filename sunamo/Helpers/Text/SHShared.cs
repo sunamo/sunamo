@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using sunamo.Constants;
 using sunamo.Essential;
-using sunamo.Values;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -182,9 +182,10 @@ public static partial class SH
         return false;
     }
 
+    
+
     public static string ClosingBracketFor(string v)
     {
-
         foreach (var item in bracketsLeft)
         {
             if (item.Value == v)
@@ -346,6 +347,30 @@ public static partial class SH
             return AllStrings.space + v;
         }
         return " " + Consts.nulled;
+    }
+
+    public static Tuple<List<string>, List<string>> SplitFromReplaceManyFormatList(string input)
+    {
+        var t = SplitFromReplaceManyFormat(input);
+        return new Tuple<List<string>, List<string>>(SH.GetLines(t.Item1), SH.GetLines(t.Item2));
+    }
+
+    public static Tuple<string, string> SplitFromReplaceManyFormat(string input)
+    {
+        StringBuilder to = new StringBuilder();
+        StringBuilder from = new StringBuilder();
+
+
+        var lines = SH.GetLines(input);
+        foreach (var item in lines)
+        {
+            var p = SH.Split(item, "->");
+            from.AppendLine(p[0]);
+            to.AppendLine(p[1]);
+        }
+
+        return new Tuple<string, string>(from.ToString(), to.ToString());
+        
     }
 
     public static string ReplaceMany(string input, string fromTo)
@@ -769,6 +794,44 @@ public static partial class SH
         return songName;
     }
 
+    public static string PairsBracketToCompleteBlock(string input)
+    {
+        List<char> add = new List<char>();
+
+        foreach (var item in input)
+        {
+            if (bracketsLeftList.Contains(item))
+            {
+                add.Add(item);
+            }
+            if (bracketsRightList.Contains(item))
+            {
+                Brackets b = GetBracketFromBegin(item);
+                var dx = add.IndexOf(bracketsLeft[b][0]);
+                if (dx != -1)
+                {
+                    add.RemoveAt(dx);
+                }
+                
+            }
+        }
+
+        StringBuilder sb = new StringBuilder(input);
+
+        if (add.Count > 0)
+        {
+            sb.AppendLine();
+
+            for (int i = add.Count - 1; i >= 0; i--)
+            {
+                Brackets b = GetBracketFromBegin(add[i]);
+                sb.Append(bracketsRight[b][0]);
+            }
+            sb.Append(AllChars.sc);
+        }
+        return sb.ToString();
+    }
+
     private static Brackets GetBracketFromBegin(char v)
     {
         switch (v)
@@ -778,6 +841,12 @@ public static partial class SH
             case '{':
                 return Brackets.Curly;
             case '[':
+                return Brackets.Square;
+            case ')':
+                return Brackets.Normal;
+            case '}':
+                return Brackets.Curly;
+            case ']':
                 return Brackets.Square;
             default:
                 ThrowExceptions.NotImplementedCase(null, type, Exc.CallingMethod(), v);
@@ -1456,7 +1525,7 @@ public static partial class SH
     /// <summary>
     /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
     /// Format2 - use string.Format with error checking
-    /// Format3 - Replace {x} with my code
+    /// Format3 - Replace {x} with my code. Can be used with wildcard
     /// Format4 - use string.Format without error checking
     /// 
     /// Cannot be use on existing code - will corrupt them
@@ -1484,7 +1553,7 @@ public static partial class SH
     /// <summary>
     /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
     /// Format2 - use string.Format with error checking
-    /// Format3 - Replace {x} with my code
+    /// Format3 - Replace {x} with my code. Can be used with wildcard
     /// Format4 - use string.Format without error checking
     /// 
     /// Try to use in minimum!! Better use Format3 which dont raise "Input string was in wrong format"
@@ -1522,7 +1591,7 @@ public static partial class SH
     /// <summary>
     /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
     /// Format2 - use string.Format with error checking
-    /// Format3 - Replace {x} with my code
+    /// Format3 - Replace {x} with my code. Can be used with wildcard
     /// Format4 - use string.Format without error checking
     /// 
     /// Manually replace every {i} 
@@ -1542,7 +1611,7 @@ public static partial class SH
     /// <summary>
     /// Format - use string.Format with error checking, as only one can be use wich { } [ ] chars in text
     /// Format2 - use string.Format with error checking
-    /// Format3 - Replace {x} with my code
+    /// Format3 - Replace {x} with my code. Can be used with wildcard
     /// Format4 - use string.Format without error checking
     /// 
     /// Call string.Format, nothing more

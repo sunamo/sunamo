@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\sunamo.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -110,7 +110,6 @@
     <Compile Include="..\..\sunamo\shared\WriterEventLogShared.cs" Link="" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
     <Compile Include="Crypting\Asymmetric.cs" />
-    <Compile Include="Crypting\ProtectedDataHelper.cs" />
     <Compile Include="Crypting\Utils.cs" />
     <Compile Include="Data\ImageWithPath.cs" />
     <Compile Include="Data\PushSolutionsData.cs" />
@@ -157,14 +156,12 @@
     <Compile Include="Threading\ThreadPoolWithoutWaiting.cs" />
     <Compile Include="Threading\TimeThreadPool.cs" />
     <Compile Include="UlozToParser.cs" />
-    <Compile Include="Unsafe.cs" />
     <Compile Include="WikipediaHelper.cs" />
     <Compile Include="WindowsSecurityHelper.cs" />
     <Compile Include="WriterEventLog.cs" />
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -173,6 +170,7 @@
     <Folder Include="Helpers\Http\" />
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">

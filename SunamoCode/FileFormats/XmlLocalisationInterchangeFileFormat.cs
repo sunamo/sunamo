@@ -1,68 +1,205 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Generators.Text;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace SunamoCode
 {
+    
+
     /// <summary>
     /// General methods for working with XML
     /// </summary>
     public static class XmlLocalisationInterchangeFileFormat
     {
+        static List<string> xlfSolutions = new List<string>();
         static Dictionary<string, string> unallowedEnds = new Dictionary<string, string>();
 
-        public static Langs GetLangFromFilename(string s)
+        static XmlLocalisationInterchangeFileFormat()
         {
-            s = FS.GetFileNameWithoutExtension(s);
-            var parts = SH.Split(s, AllChars.dot);
-            string last = parts[parts.Count - 1].ToLower();
-            if (last.StartsWith("cs"))
+            /*
+SunamoAdmin
+AllProjectsSearch
+             */
+
+            var slns = SH.GetLines(@"calc.sunamo.cz
+ConsoleApp1
+SczClientDesktop
+sunamo.cz
+sunamo.performance
+sunamo.tasks
+sunamo2
+SunamoXlf
+TranslateEngine");
+
+            foreach (var item in slns)
             {
-                return Langs.cs;
+                xlfSolutions.Add(DefaultPaths.vs + item);
             }
-            return Langs.en;
         }
 
-        public static void TrimUnallowedChars(Langs toL, string fn)
+        #region Takes XElement
+        private static void TrimValueIfNot(XElement source)
         {
-            if (unallowedEnds.Count == 0)
+            if (source != null)
             {
-                unallowedEnds.Add(":", "c");
-                unallowedEnds.Add(";", "S"); // Semicolon
-                unallowedEnds.Add("?", "Q");
-                unallowedEnds.Add("!", "E"); // exclamation 
-                unallowedEnds.Add(".", "D");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
-                //unallowedEnds.Add("", "");
+                string sourceValue = source.Value;
 
+                if (sourceValue.Length != 0)
+                {
+                    if (char.IsWhiteSpace(sourceValue[sourceValue.Length - 1]) || char.IsWhiteSpace(sourceValue[0]))
+                    {
+                        source.Value = sourceValue.Trim();
+                    }
+                }
             }
-
-            var d = GetTransUnits(fn);
-            List<XElement> tus = new List<XElement>();
-            foreach (XElement item in d.trans_units)
-            {
-                var el = SourceTarget(item);
-
-                //TrimUnallowedChars(el.Item1);
-                TrimUnallowedChars(el.Item2);
-            }
-
-            d.xd.Save(fn);
+        }
+        public static char? GetLastLetter(XElement item)
+        {
+            string id = null;
+            return GetLastLetter(item, out id);
         }
 
+        static Tuple<string, string> GetTransUnit(XElement item)
+        {
+            string id = Id(item);
+            XElement target = GetTarget(item);
+            return new Tuple<string, string>(id, target.Value);
+        }
+
+        public static string Id(XElement item)
+        {
+            return XHelper.Attr(item, "id");
+        }
+
+        public static char? GetLastLetter(XElement item, out string id)
+        {
+            var t = GetTransUnit(item);
+            id = t.Item1;
+            if (t.Item2.Count() > 0)
+            {
+                return t.Item2.Last();
+            }
+
+            return null;
+        }
+
+        public static XElement GetTarget(XElement item)
+        {
+            return XHelper.GetElementOfName(item, "target");
+        }
+
+        static Tuple<XElement, XElement> SourceTarget(XElement item)
+        {
+            XElement source = XHelper.GetElementOfName(item, "source");
+            XElement target = XHelper.GetElementOfName(item, "target");
+
+            return new Tuple<XElement, XElement>(source, target);
+        }
+
+        /// <summary>
+        /// Trim whitespaces from start/end
+        /// </summary>
+        /// <param name="source"></param>
+        private static void TrimUnallowedChars(XElement source)
+        {
+            string sourceValue = source.Value;
+            if (sourceValue.Length != 0)
+            {
+                if (char.IsWhiteSpace(sourceValue[sourceValue.Length - 1]) || char.IsWhiteSpace(sourceValue[0]))
+                {
+                    source.Value = sourceValue.Trim();
+                }
+            }
+        }
+
+
+        #endregion
+
+        public static List<string> GetFilesCs(string path = null)
+        {
+            if (path == null)
+            {
+                path = DefaultPaths.vs;
+            }
+            return FS.GetFiles(path, "*.cs", System.IO.SearchOption.AllDirectories, new GetFilesArgs { excludeWithMethod = SunamoCodeHelper.RemoveTemporaryFilesVS });
+        }
+
+        /// <summary>
+        /// Before mu
+        /// </summary>
+        /// <param name="path"></param>
+        public static void ReplaceForWithoutUnderscore(string folder)
+        {
+             Dictionary<string, string> withWithoutUnderscore = new Dictionary<string, string>();
+
+            var files = XmlLocalisationInterchangeFileFormat.GetFilesCs();
+
+            ReplaceStringKeysWithXlfKeys(files, folder);
+
+            
+
+            string key = null;
+
+            foreach (var item in files)
+            {
+                withWithoutUnderscore.Clear();
+
+                var content = TF.ReadFile(item);
+                var keys = GetKeysInCs(ref key, content);
+
+                if (keys.Count > 0)
+                {
+                    foreach (var k in keys)
+                    {
+                        DictionaryHelper.AddOrSet(withWithoutUnderscore, k, ReplacerXlf.Instance.WithoutUnderscore(k));
+                    }
+
+                    foreach (var item2 in withWithoutUnderscore)
+                    {
+                        content = content.Replace(item2.Key + AllChars.rsf, item2.Value + AllChars.rsf);
+                    }
+
+                    TF.SaveFile(content, item);
+                }
+            }
+        }
+
+        public static List<string> GetKeysInCs(ref string key, string content)
+        {
+            CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
+
+            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
+
+            occ.Reverse();
+
+            StringBuilder sb = new StringBuilder(content);
+
+            foreach (var dx in occ)
+            {
+                var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
+                var end = content.IndexOf(AllChars.rsf, start);
+
+
+                key = content.Substring(start, end - start);
+
+                c.Add(key);
+            }
+
+            return c.c;
+        }
+
+        #region Manage * edit in *.xlf
         public static string ReturnEndingOn(string fn, List<string> list, out List<string> idsEndingOn)
         {
             /*
@@ -115,38 +252,51 @@ Into A1 insert:
             return tb.sb.ToString();
         }
 
-        public static char? GetLastLetter(XElement item)
+        public static void ReplaceInXlfSolutions(string pairsReplace)
         {
-            string id = null;
-            return GetLastLetter(item, out id);
-        }
-
-        static Tuple<string, string> GetTransUnit(XElement item)
-        {
-            var id = XHelper.Attr(item, "id");
-            XElement target = GetTarget(item);
-            return new Tuple<string, string>(id, target.Value);
-        }
-
-        public static char? GetLastLetter(XElement item, out string id)
-        {
-            var t = GetTransUnit(item);
-            id = t.Item1;
-            if (t.Item2.Count() > 0)
+            if (pairsReplace == string.Empty)
             {
-                return t.Item2.Last();
+                Debugger.Break();
             }
 
-            return null;
+            var t = SH.SplitFromReplaceManyFormatList(pairsReplace);
+            var from = t.Item1;
+            var to = t.Item2;
+
+            foreach (var item in xlfSolutions)
+            {
+                var files = GetFilesCs(item);
+
+                foreach (var item2 in files)
+                {
+                    var content = TF.ReadFile(item2);
+                    content = content.Replace("\"-\"+\"-\"", "\"-\"");
+                    for (int i = 0; i < from.Count; i++)
+                    {
+                        content = content.Replace(from[i], to[i]);
+                    }
+                    TF.SaveFile(content, item2);
+                    //break;
+                }
+                //break;
+            }
         }
 
-        private static XElement GetTarget(XElement item)
+        public static XlfData GetTransUnits(Langs en)
         {
-            return XHelper.GetElementOfName(item, "target");
+            return GetTransUnits(XlfResourcesH.PathToXlfSunamo(en));
         }
 
+        /// <summary>
+        /// Is used nowhere 
+        /// Was in MainWindow but probably was replaced with GetAllLastLetterFromEnd
+        /// </summary>
+        /// <param name="fn"></param>
+        /// <param name="saveAllLastLetterToClipboard"></param>
+        /// <returns></returns>
         public static List<string> GetAllLastLetterFromEnd(string fn, bool saveAllLastLetterToClipboard)
         {
+
             List<string> ids = new List<string>();
             CollectionWithoutDuplicates<char> allLastLetters = new CollectionWithoutDuplicates<char>();
 
@@ -175,14 +325,10 @@ Into A1 insert:
             return ids;
         }
 
-        static Tuple<XElement, XElement> SourceTarget(XElement item)
-        {
-            XElement source = XHelper.GetElementOfName(item, "source");
-            XElement target = XHelper.GetElementOfName(item, "target");
-
-            return new Tuple<XElement, XElement>(source, target);
-        }
-
+        /// <summary>
+        /// Completely NSN
+        /// </summary>
+        /// <param name="fn"></param>
         public static void RemoveFromXlfWhichHaveEmptyTarget(string fn)
         {
             var d = GetTransUnits(fn);
@@ -203,30 +349,27 @@ Into A1 insert:
             d.xd.Save(fn);
         }
 
-        private static void TrimUnallowedChars(XElement source)
-        {
-            string sourceValue = source.Value;
-            if (sourceValue.Length != 0)
-            {
-                if (char.IsWhiteSpace(sourceValue[sourceValue.Length - 1]) || char.IsWhiteSpace(sourceValue[0]))
-                {
-                    source.Value = sourceValue.Trim();
-                }
-            }
-        }
-
         /// <summary>
+        /// Trim whitespaces from start/end on source / target
         /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
         /// </summary>
         /// <param name="enS"></param>
-        public static void TrimStringResources(Langs toL, string fn)
+        public static void TrimStringResources(string fn)
         {
             var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
             foreach (XElement item in d.trans_units)
             {
-                XElement source = item.Element(XName.Get("source"));
-                XElement target = item.Element(XName.Get("target"));
+                XElement source = null;
+                XElement target = null;
+
+                var t = SourceTarget(item);
+                source = t.Item1;
+                target = t.Item2;
+
+                var id = Id(item);
+
+
 
                 TrimValueIfNot(source);
                 TrimValueIfNot(target);
@@ -242,10 +385,12 @@ Into A1 insert:
         /// <param name="xd"></param>
         public static XlfData GetTransUnits(string fn)
         {
-            Langs toL = GetLangFromFilename(fn);
+            Langs toL = XmlLocalisationInterchangeFileFormatSunamo.GetLangFromFilename(fn);
 
             string enS = File.ReadAllText(fn);
             XlfData d = new XlfData();
+
+            d.path = fn;
 
             XmlNamespacesHolder h = new XmlNamespacesHolder();
             h.ParseAndRemoveNamespacesXmlDocument(enS);
@@ -264,43 +409,7 @@ Into A1 insert:
 
             return d;
         }
-
-        private static void TrimValueIfNot(XElement source)
-        {
-            string sourceValue = source.Value;
-            if (sourceValue.Length != 0)
-            {
-                if (char.IsWhiteSpace(sourceValue[sourceValue.Length - 1]) || char.IsWhiteSpace(sourceValue[0]))
-                {
-                    source.Value = sourceValue.Trim();
-                }
-            }
-        }
-
-        public static void RemoveFromXlfAndXlfKeys(string fn, List<string> idsEndingEnd)
-        {
-            var d = GetTransUnits(fn);
-
-            foreach (var item in d.trans_units)
-            {
-                string idTransUnit = null;
-                GetLastLetter(item, out idTransUnit);
-
-                for (int i = idsEndingEnd.Count - 1; i >= 0; i--)
-                {
-                    var id = idsEndingEnd[i];
-
-                    if (id == idTransUnit)
-                    {
-                        item.Remove();
-                    }
-                }
-            }
-
-            CSharpParser.RemoveConsts(@"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs", idsEndingEnd);
-
-            d.xd.Save(fn);
-        }
+        #endregion
 
         /// <summary>
         /// 
@@ -337,14 +446,265 @@ Into A1 insert:
             XHelper.FormatXml(fn);
         }
 
+        #region Cooperating XlfKeys and *.xlf
+        public static void RemoveFromXlfAndXlfKeys(string fn, List<string> idsEndingEnd)
+        {
+            RemoveFromXlfAndXlfKeys(fn, idsEndingEnd, XlfParts.Id);
+        }
+
+        public static void FromXlfAndXlfKeysWithDiacritic(string fn, XlfParts p)
+        {
+            // Dont use, its also non czech with diacritic hats tuồng (hats bôi)
+
+            var d = GetTransUnits(fn);
+
+            List<string> r = new List<string>();
+
+            if (p == XlfParts.Id)
+            {
+                foreach (var item in d.trans_units)
+                {
+                    string idTransUnit = null;
+                    GetLastLetter(item, out idTransUnit);
+
+
+
+                    if (SH.ContainsDiacritic(idTransUnit))
+                    {
+                        r.Add(idTransUnit);
+                        // dont remove, just save ID, coz many strings have diac and is not czech hats tuồng (hats bôi)
+                        //item.Remove();
+                        //; break;
+
+                    }
+                }
+
+            }
+            else if (p == XlfParts.Target)
+            {
+
+                foreach (var item in d.trans_units)
+                {
+                    var target = GetTarget(item).Value;
+                    string idTransUnit = null;
+                    GetLastLetter(item, out idTransUnit);
+
+                    if (SH.ContainsDiacritic(target))
+                    {
+
+                        r.Add(idTransUnit);
+                        // dont remove, just save ID, coz many strings have diac and is not czech hats tuồng (hats bôi)
+                        //item.Remove();
+
+                    }
+                }
+
+            }
+
+            ClipboardHelper.SetLines(r);
+
+
+
+        }
+
+        public static void RemoveFromXlfAndXlfKeys(string fn, List<string> idsEndingEnd, XlfParts p)
+        {
+            var d = GetTransUnits(fn);
+
+            bool removed = false;
+
+            if (p == XlfParts.Id)
+            {
+                for (int i = idsEndingEnd.Count - 1; i >= 0; i--)
+                {
+                    foreach (var item in d.trans_units)
+                    {
+                        string idTransUnit = null;
+                        GetLastLetter(item, out idTransUnit);
+
+                        var id = idsEndingEnd[i];
+
+                        if (id == idTransUnit)
+                        {
+                            item.Remove();
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (p == XlfParts.Target)
+            {
+                for (int i = idsEndingEnd.Count - 1; i >= 0; i--)
+                {
+                    removed = false;
+
+                    foreach (var item in d.trans_units)
+                    {
+                        var target = HtmlAssistant.HtmlDecode(GetTarget(item).Value);
+                        var id = idsEndingEnd[i];
+
+                        if (id == target)
+                        {
+                            try
+                            {
+                                item.Remove();
+                                removed = true;
+                            }
+                            catch (Exception ex)
+                            {
+
+                                // have no parent
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if (!removed)
+                    {
+                        DebugLogger.Instance.WriteLine(idsEndingEnd[i]);
+                    }
+
+                }
+            }
+
+
+            CSharpParser.RemoveConsts(@"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs", idsEndingEnd);
+
+            d.xd.Save(fn);
+        }
+
+        public static void RemoveDuplicatesInXlfFile(string xlfPath)
+        {
+            // There is no way to delete node in xlf file with XlfDocument.
+            // XlfDocument is using XDocument but its private
+            /*
+             1) Use xliffParser in sunamo.notmine
+             2) Load in my own XmlDocument and remove throught XPath
+             */
+
+            /*
+            I HAVE IT IN XDOCUMENT, I WILL USE THEREFORE METHODS OF LINQ
+            METHOD REMOVE() IS THERE ISNT FOR FUN!!
+             */
+            if (false)
+            {
+                //XlfData d;
+                //var ids = GetIds(xlfPath, out d);
+
+                //d.xd.XPathSelectElement("/xliff/file[original=@'WPF.TESTS/RESOURCES/EN-US.RESX']");
+
+                //List<string> duplicated;
+
+                //CA.RemoveDuplicitiesList(ids, out duplicated);
+
+                //var b2 = d.xd.Descendants().Count();
+
+
+                //foreach (var item in duplicated)
+                //{
+                //    var elements = d.group.Elements().ToList();
+                //    for (int i = 0; i < elements.Count(); i++)
+                //    {
+                //        var id = XHelper.Attr(elements[i], "id");
+                //        if (id == item)
+                //        {
+                //            elements.Remove(elements[i]);
+                //            break;
+                //        }
+                //    }
+                //}
+
+                //var b3 = d.xd.Descendants().Count();
+
+                //d.xd.Save(xlfPath);
+            }
+
+            XlfData xlfData;
+            var allIds = GetIds(xlfPath, out xlfData);
+
+            List<string> duplicated;
+            CA.RemoveDuplicitiesList<string>(allIds, out duplicated);
+
+            foreach (var item in duplicated)
+            {
+                xlfData.trans_units.First(d => XHelper.Attr(d, "id") == item).Remove();
+            }
+
+            var outer = xlfData.xd.ToString();
+            xlfData.xd.Save(xlfPath);
+        }
+
+        public static List<string> GetIds(string xlfPath)
+        {
+            XlfData d;
+            return GetIds(xlfPath, out d);
+        }
+
+        public static List<string> GetIds(string xlfPath, out XlfData d)
+        {
+            var allids = new List<string>();
+             d = XmlLocalisationInterchangeFileFormat.GetTransUnits(xlfPath);
+            foreach (var item in d.trans_units)
+            {
+                allids.Add(XmlLocalisationInterchangeFileFormat.Id(item));
+            }
+
+            return allids;
+        }
+
+        public static void ReplaceStringKeysWithXlfKeys(List<string> files, string path)
+        {
+            string key = null;
+            
+            foreach (var item in files)
+            {
+                var content = TF.ReadFile(item);
+                var content2 = ReplaceStringKeysWithXlfKeysWorker(ref key, content);
+                if (content != content2)
+                {
+                    TF.SaveFile(content2, item);
+                }
+            }
+        }
+
+        public static string ReplaceStringKeysWithXlfKeysWorker(ref string key, string content)
+        {
+            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn + AllStrings.qm);
+
+            occ.Reverse();
+
+            StringBuilder sb = new StringBuilder(content);
+
+            foreach (var dx in occ)
+            {
+                var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length;
+                var end = content.IndexOf(AllChars.qm, start);
+                
+
+                key = content.Substring(start, end - start);
+
+                sb.Remove(start-1, end - start+2);
+                sb.Insert(start-1, XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot + key);
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// ReplaceXlfKeysForString - Convert from XlfKeys to ""
+        /// Cooperating with NotToTranslateStrings
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="ids"></param>
+        /// <param name="solutionsExcludeWhileWorkingOnSourceCode"></param>
+        /// <param name="addToNotToTranslateStrings"></param>
         public static void ReplaceXlfKeysForString(string path, List<string> ids, List<string> solutionsExcludeWhileWorkingOnSourceCode, out CollectionWithoutDuplicates<string> addToNotToTranslateStrings)
         {
             addToNotToTranslateStrings = new CollectionWithoutDuplicates<string>();
             solutionsExcludeWhileWorkingOnSourceCode.Add("AllProjectsSearchTestFiles");
 
             CA.WrapWith(solutionsExcludeWhileWorkingOnSourceCode, "\\");
-
-            const string XlfKeysDot = "XlfKeys.";
 
             Dictionary<string, string> filesWithXlf = new Dictionary<string, string>();
 
@@ -382,7 +742,7 @@ Into A1 insert:
                 }
 
                 var content = TF.ReadFile(item);
-                if (content.Contains(XlfKeysDot))
+                if (content.Contains(XmlLocalisationInterchangeFileFormatSunamo. XlfKeysDot))
                 {
                     filesWithXlf.Add(item, content);
                 }
@@ -399,7 +759,7 @@ Into A1 insert:
 
                 foreach (var item in ids)
                 {
-                    var item2 = XlfKeysDot + item + "]";
+                    var item2 = XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot + item + "]";
                     var toReplace = "RLData.en[" + item2;
 
                     var toString = sb.ToString();
@@ -421,9 +781,9 @@ Into A1 insert:
                     {
                         var dx = points[i];
 
-                        var dxNextChar = dx + toReplace.Length;
+                        var dxNextChar = dx + toReplace.Length();
 
-                        sb.Remove(dx, toReplace.Length);
+                        sb.Remove(dx, toReplace.Length());
                         sb.Insert(dx, SH.WrapWithQm(idTarget[item]));
                     }
                 }
@@ -437,5 +797,15 @@ Into A1 insert:
 
             // Nepřidávat znovu pokud již končí na postfix
         }
+
+
+        #endregion
+
+        public static bool IsToBeInXlfKeys(string key)
+        {
+            return !SystemWindowsControls.StartingWithShortcutOfControl(key) && !key.StartsWith("Resources\\") && !CA.HasPostfix(key, ".PlaceholderText", ".Content");
+        }
     }
+
+
 }

@@ -22,9 +22,14 @@ public class SunamoTimer
 
     void t_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
-        
-
-        a.Invoke();
+        try
+        {
+            a.Invoke();
+        }
+        catch (Exception)
+        {
+            // often The calling thread cannot access this object because a different thread owns it.'
+        }
         if (Tick != null)
         {
             Tick();

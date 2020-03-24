@@ -12,6 +12,26 @@ public static class SystemWindowsControls
     private static Dictionary<string, List<string>> s_controls = new Dictionary<string, List<string>>();
     private static EmbeddedResourcesH s_embeddedResourcesH = null;
 
+    static Dictionary<string, string> controlsShortLong = null;
+
+    public static void InitControlsShortLong()
+    {
+        Init();
+
+        if (controlsShortLong == null)
+        {
+            controlsShortLong = new Dictionary<string, string>();
+
+            foreach (var item in s_controls)
+            {
+                foreach (var item2 in item.Value)
+                {
+                    controlsShortLong.Add(item2, item.Key);
+                }
+            }
+        }
+    }
+
     public static void Init()
     {
         if (!s_initialized)
@@ -27,6 +47,22 @@ public static class SystemWindowsControls
                 s_controls.Add(p[0], SH.Split(p[1], ","));
             }
         }
+    }
+
+    public static bool StartingWithShortcutOfControl(string r)
+    {
+        foreach (var item in s_controls)
+        {
+            foreach (var item2 in item.Value)
+            {
+                if (r.StartsWith( item2 ))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public static bool IsShortcutOfControl(string r)

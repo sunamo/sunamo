@@ -128,6 +128,20 @@ public partial class DictionaryHelper
         return GetDictionaryFromIEnumerable<T1, T2>(orderedEnumerable);
     }
 
+    public static Dictionary<T1, T2> GetDictionaryFromTwoList<T1, T2>(List<T1> t1, List<T2> t2)
+    {
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, "GetDictionaryFromTwoList", "t1", t1, "t2", t2);
+
+        List<KeyValuePair<T1, T2>> l = new List<KeyValuePair<T1, T2>>();
+
+        for (int i = 0; i < t1.Count; i++)
+        {
+            l.Add(new KeyValuePair<T1, T2>(t1[i], t2[i]));
+        }
+
+        return GetDictionaryFromIEnumerable<T1, T2>(l);
+    }
+
     /// <summary>
     /// A3 is inner type of collection entries
     /// </summary>

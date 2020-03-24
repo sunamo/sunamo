@@ -1,4 +1,5 @@
 ﻿using AllProjectsSearch;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,6 +31,7 @@ public static SolutionFolder SolutionWithName(string name)
             }
         }
 
+        ThisApp.SetStatus(TypeOfMessage.Warning, name + " solution was not found");
         return null;
     }
 

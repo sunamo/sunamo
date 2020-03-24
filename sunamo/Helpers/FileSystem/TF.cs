@@ -5,10 +5,40 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 public partial class TF
 {
-    
+    public static string ReadFileParallel(string fileName, IList<string> from, IList<string> to)
+    {
+        return ReadFileParallel(fileName, 1470, from, to);
+    }
+
+    public static string ReadFileParallel(string fileName, int linesCount, IList<string> from, IList<string> to)
+    {
+        string[] AllLines = new string[linesCount]; //only allocate memory here
+        using (StreamReader sr = File.OpenText(fileName))
+        {
+            int x = 0;
+            while (!sr.EndOfStream)
+            {
+                AllLines[x] = sr.ReadLine();
+                x += 1;
+            }
+        } //CLOSE THE FILE because we are now DONE with it.
+
+        if (from != null)
+        {
+            for (int i = 0; i < from.Count; i++)
+            {
+                Parallel.For(0, AllLines.Length, x =>
+                {
+                    AllLines[x] = AllLines[x].Replace(from[i], to[i]);
+                });
+            }
+        }
+        return string.Empty;
+    }
 
     public static Encoding GetEncoding(string filename)
     {
@@ -105,16 +135,6 @@ public partial class TF
     /// <param name="file"></param>
     public static List<string> GetAllLines(string file)
     {
-        List<string> lines = TF.GetLines<string,string>(file, null);
-        List<string> linesPpk = new List<string>();
-        for (int i = 0; i < lines.Count; i++)
-        {
-            string trim = lines[i].Trim();
-            if (trim != "")
-            {
-                linesPpk.Add(trim);
-            }
-        }
-        return linesPpk;
+        return File.ReadAllLines(file).ToList();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -101,7 +101,7 @@ namespace desktop.Controls
 
         public void Accept(object input)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en["OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept"] + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en[XlfKeys.OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept] + ".");
         }
 
         static Type type = typeof(DialogButtons);

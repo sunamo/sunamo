@@ -14,9 +14,11 @@ using sunamo.Constants;
 using System.Diagnostics;
 using sunamo;
 using System.Linq;
+using System.Threading;
+using XliffParser;
+
 public partial class FS
 {
-
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -31,6 +33,7 @@ public partial class FS
         }
         return vr;
     }
+
     /// <summary>
     /// Get path A2/name folder of file A1/name A1
     /// 
@@ -188,6 +191,7 @@ public partial class FS
                     FS.TryDeleteFile(item);
                 }
             }
+            
         }
     }
     /// <summary>
@@ -207,19 +211,22 @@ public partial class FS
         FS.CreateDirectoryIfNotExists(outputFolder);
         return FS.Combine(outputFolder, FS.GetFileName(item));
     }
-    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty, bool isMultilineWithVariousIndent)
-    {
-        if (isMultilineWithVariousIndent)
-        {
-            from = SH.ReplaceAllDoubleSpaceToSingle2(from);
-            to = SH.ReplaceAllDoubleSpaceToSingle2(to);
-        }
-        if (pairLinesInFromAndTo)
-        {
-            var from2 = SH.Split(from, Environment.NewLine);
-            var to2 = SH.Split(to, Environment.NewLine);
 
-            if (replaceWithEmpty )
+    static void ReplaceInAllFilesWorker(object o)
+    {
+        ReplaceInAllFilesArgs t = (ReplaceInAllFilesArgs)o;
+
+        if (t.isMultilineWithVariousIndent)
+        {
+            t.from = SH.ReplaceAllDoubleSpaceToSingle2(t.from);
+            t.to = SH.ReplaceAllDoubleSpaceToSingle2(t.to);
+        }
+        if (t.pairLinesInFromAndTo)
+        {
+            var from2 = SH.Split(t.from, Environment.NewLine);
+            var to2 = SH.Split(t.to, Environment.NewLine);
+
+            if (t.replaceWithEmpty)
             {
                 to2.Clear();
                 foreach (var item in from2)
@@ -228,19 +235,39 @@ public partial class FS
                 }
             }
 
-            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
-            ReplaceInAllFiles(from2, to2, files, isMultilineWithVariousIndent);
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, "ReplaceInAllFiles", "from2", from2, "to2", to2);
+            ReplaceInAllFiles(from2, to2, t.files, t.isMultilineWithVariousIndent, t.writeEveryReadedFileAsStatus, t.fasterMethodForReplacing);
         }
         else
         {
-            ReplaceInAllFiles(CA.ToListString(from), CA.ToListString(to), files, isMultilineWithVariousIndent);
+            ReplaceInAllFiles(CA.ToListString(t.from), CA.ToListString(t.to), t.files, t.isMultilineWithVariousIndent, t.writeEveryReadedFileAsStatus, t.fasterMethodForReplacing);
         }
+    }
+
+
+    public static void ReplaceInAllFiles(string from, string to, List<string> files, bool pairLinesInFromAndTo, bool replaceWithEmpty, bool isMultilineWithVariousIndent, bool writeEveryReadedFileAsStatus, Func<StringBuilder, IList<string>, IList<string>, StringBuilder> fasterMethodForReplacing)
+    {
+        ReplaceInAllFilesArgs r = new ReplaceInAllFilesArgs();
+        r.from = from;
+        r.to = to;
+        r.files = files;
+        r.pairLinesInFromAndTo = pairLinesInFromAndTo;
+        r.replaceWithEmpty = replaceWithEmpty;
+        r.isMultilineWithVariousIndent = isMultilineWithVariousIndent;
+        r.writeEveryReadedFileAsStatus = writeEveryReadedFileAsStatus;
+        r.fasterMethodForReplacing = fasterMethodForReplacing;
+
+        Thread t = new Thread(new ParameterizedThreadStart(ReplaceInAllFilesWorker));
+        t.Start(r);
+
+        
     }
     public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);
         ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ReplaceInAllFiles", "replaceFrom", replaceFrom, "replaceTo", replaceTo);
-        ReplaceInAllFiles(replaceFrom, replaceTo, files, isMultilineWithVariousIndent);
+        Func<StringBuilder, IList<string>, IList<string>, StringBuilder> fasterMethodForReplacing = null;
+        ReplaceInAllFiles(replaceFrom, replaceTo, files, isMultilineWithVariousIndent, false, fasterMethodForReplacing);
     }
     /// <summary>
     /// A4 - whether use s.Contains. A4 - SH.ReplaceAll2
@@ -249,14 +276,32 @@ public partial class FS
     /// <param name="replaceTo"></param>
     /// <param name="files"></param>
     /// <param name="dontReplaceAll"></param>
-    public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool isMultilineWithVariousIndent)
+    public static void ReplaceInAllFiles(IList<string> replaceFrom, IList<string> replaceTo, List<string> files, bool isMultilineWithVariousIndent, bool writeEveryReadedFileAsStatus, Func<StringBuilder, IList<string>, IList<string>, StringBuilder> fasterMethodForReplacing)
     {
+
+
         foreach (var item in files)
         {
             if (!EncodingHelper.isBinary(item))
             {
-                var content = TF.ReadFile(item);
-                var content2 = SH.ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent, content);
+                if (writeEveryReadedFileAsStatus)
+                {
+                    SunamoTemplateLogger.Instance.LoadedFromStorage(item);
+                }
+
+                // File.ReadAllText is 20x faster than TF.ReadFile
+                var content = File.ReadAllText(item);
+                var content2 = string.Empty;
+
+                if (fasterMethodForReplacing == null)
+                {
+                    content2 = SH.ReplaceAll3(replaceFrom, replaceTo, isMultilineWithVariousIndent, content);
+                }
+                else
+                {
+                    content2 = fasterMethodForReplacing.Invoke(new StringBuilder( content), replaceFrom, replaceTo).ToString();
+                }
+
                 if (content != content2)
                 {
                     PpkOnDrive ppk = PpkOnDrive.WroteOnDrive;

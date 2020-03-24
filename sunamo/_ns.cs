@@ -21,3 +21,11 @@ namespace GeoCaching
 
     }
 }
+
+namespace sunamo.Values
+{
+    public class _ns
+    {
+
+    }
+}

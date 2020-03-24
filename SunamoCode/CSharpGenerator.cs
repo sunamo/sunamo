@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Collections;
 using sunamo.Constants;
-using sunamo.Values;
+
 
 public class CSharpGenerator : GeneratorCodeAbstract
 {
@@ -92,6 +92,8 @@ public class CSharpGenerator : GeneratorCodeAbstract
         Field(tabCount, _public, _static, variableModifiers, type, name, oio, value);
     }
 
+    
+
     /// <summary>
     /// Pokud do A2 zadáš Private tak se jednoduše žádný modifikátor nepřidá - to proto že se může jednat o vnitřek metody atd.
     /// A1 se bude ignorovat pokud v A7 bude NewAssign
@@ -122,9 +124,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
             value = "new " + type + "()";
         }
 
-        sb.AddItem((object)value);
+        sb.AddItem((object)value+ ";");
         //}
-        sb.AddItem((object)";");
+        
             sb.AppendLine();
     }
 
@@ -557,14 +559,40 @@ public class CSharpGenerator : GeneratorCodeAbstract
         GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
     }
 
-    public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
+    public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, object splitKeyWith)
     {
+        bool split = false;
+        string s = null;
+        if (splitKeyWith != null)
+        {
+            if (typeof( Key) == Types.tString)
+            {
+                split = true;
+                s = splitKeyWith.ToString();
+            }
+            else
+            {
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "App want to split key but key is not string");
+            }
+        }
         ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, Exc.CallingMethod(), "keys", keys, "values", values);
 
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
         {
-            dict.Add(keys[i], values[i]);
+            if (split)
+            {
+                var splitted = SH.Split( keys[i].ToString(), splitKeyWith);
+                foreach (var item in splitted)
+                {
+                    dict.Add(RuntimeHelper.CastToGeneric<Key>(item), values[i]);
+                }
+            }
+            else
+            {
+                dict.Add(keys[i], values[i]);
+            }
+            
         }
 
         GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);

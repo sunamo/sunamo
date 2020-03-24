@@ -98,19 +98,6 @@ public static partial class CA
         var numbered = BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
         Prepend(numbered, input);
     }
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="numbered"></param>
-    /// <param name="input"></param>
-    private static void Prepend(List<string> numbered, List<string> input)
-    {
-        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
-        for (int i = 0; i < input.Count; i++)
-        {
-            input[i] = numbered[i] + input[i];
-        }
-    }
     public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
     {
         List<string> existsIn1 = new List<string>();
@@ -227,6 +214,7 @@ public static partial class CA
         result = textOutput.ToString();
         return result;
     }
+
     public static void InitFillWith<T>(List<T> arr, int columns)
     {
         for (int i = 0; i < columns; i++)
@@ -812,31 +800,6 @@ public static partial class CA
             }
         }
         return returnArray;
-    }
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <param name="v"></param>
-    /// <param name="toReplace"></param>
-    public static List<string> Prepend(string v, List<string> toReplace)
-    {
-        for (int i = 0; i < toReplace.Count; i++)
-        {
-            if (!toReplace[i].StartsWith(v))
-            {
-                toReplace[i] = v + toReplace[i];
-            }
-        }
-        return toReplace;
-    }
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <param name="v"></param>
-    /// <param name="toReplace"></param>
-    public static List<string> Prepend(string v, String[] toReplace)
-    {
-        return Prepend(v, toReplace.ToList());
     }
     public static List<string> Format(string uninstallNpmPackageGlobal, List<string> globallyInstalledTsDefinitions)
     {

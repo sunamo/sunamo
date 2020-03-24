@@ -5,6 +5,39 @@ using System.Text;
 
 public class AllStrings
 {
+    #region Generated with SunamoFramework.HtmlEntitiesForNonDigitsOrLetterChars
+    public const string comma = ",";
+    public const string period = ".";
+    public const string colon = ":";
+    public const string excl = "!";
+    public const string apos = "'";
+    public const string quest = "?";
+    public const string rpar = ")";
+    public const string lpar = "(";
+    public const string sol = "/";
+    public const string lowbar = "_";
+    public const string lt = "<";
+    public const string equals = "=";
+    public const string gt = ">";
+    public const string amp = "&";
+    public const string lcub = "{";
+    public const string rcub = "}";
+    public const string lsqb = "[";
+    public const string verbar = "|";
+    public const string semi = ";";
+    public const string commat = "@";
+    public const string ast = "*";
+    public const string plus = "+";
+    public const string rsqb = "]";
+    public const string num = "#";
+    public const string percnt = "%";
+    public const string dollar = "$";
+    public const string Hat = "^";
+    public const string ndash = "–";
+    public const string copy = "©"; 
+    #endregion
+
+
     /// <summary>
     /// Question mark
     /// </summary>
@@ -20,9 +53,6 @@ public class AllStrings
     public const string ds = "./";
     public const string slashAsterisk = "/*";
     public const string apostrophe = "'";
-
-    public const string lt = "<";
-    public const string gt = ">";
 
 
     /// <summary>
@@ -41,7 +71,6 @@ public class AllStrings
 
     public const string space = " ";
     public const string dash = "-";
-    public const string colon = ":";
     public const string us = "_";
 
     /// <summary>
@@ -56,7 +85,6 @@ public class AllStrings
     public const string bs = "\\";
     public const string slash = "/";
 
-    public const string comma = ",";
     public const string dot = ".";
     public const string asterisk = "*";
 
@@ -65,6 +93,9 @@ public class AllStrings
     /// semicolon
     /// </summary>
     public const string sc = ";";
+    /// <summary>
+    /// should be quot
+    /// </summary>
     public const string qm = "\"";
     /// <summary>
     /// space wrapped dash
@@ -83,13 +114,15 @@ public class AllStrings
     /// colon space
     /// </summary>
     public static string cs2 = ": ";
-    public static string plus;
     public static string doubleSpace32160 = AllStrings.space + AllStrings.space160;
     public static string doubleSpace16032 = AllStrings.space160 + AllStrings.space;
     public static string space160 = AllChars.space160.ToString();
     public const string bs2 = "\b";
     public const string hashtag = "#";
     public const string equal = "=";
+    /// <summary>
+    /// should be ampersand as in html entities
+    /// </summary>
     public const string ampersand = "&";
 
     public const string lq = "“";
@@ -99,4 +132,7 @@ public class AllStrings
     public const string ra = "’";
     public const string st = "\0";
     public static string DoubleSpace32160 { get => doubleSpace32160; set => doubleSpace32160 = value; }
+
+   
+
 }

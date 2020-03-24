@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 //using System.Drawing;
 using System.Globalization;
@@ -60,17 +60,17 @@ namespace desktop
 
             if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
             {
-                ATextBlock.Text = RLData.en["Transparency"] + ":";
-                RTextBlock.Text = RLData.en["RedColoredFolder"] + ":";
-                GTextBlock.Text = RLData.en["GreenColorFolder"] + ":";
-                BTextBlock.Text = RLData.en["BlueColorFolder"] + ":";
+                ATextBlock.Text = RLData.en[XlfKeys.Transparency] + ":";
+                RTextBlock.Text = RLData.en[XlfKeys.RedColoredFolder] + ":";
+                GTextBlock.Text = RLData.en[XlfKeys.GreenColorFolder] + ":";
+                BTextBlock.Text = RLData.en[XlfKeys.BlueColorFolder] + ":";
             }
             else
             {
-                ATextBlock.Text = RLData.en["Opacity"] + ":";
-                RTextBlock.Text = RLData.en["RedColorComponent"] + ":";
-                GTextBlock.Text = RLData.en["GreenColorComponent"] + ":";
-                BTextBlock.Text = RLData.en["BlueColorComponent"] + ":";
+                ATextBlock.Text = RLData.en[XlfKeys.Opacity] + ":";
+                RTextBlock.Text = RLData.en[XlfKeys.RedColorComponent] + ":";
+                GTextBlock.Text = RLData.en[XlfKeys.GreenColorComponent] + ":";
+                BTextBlock.Text = RLData.en[XlfKeys.BlueColorComponent] + ":";
             }
         }
 

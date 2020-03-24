@@ -1,4 +1,4 @@
-﻿using sunamo.Essential;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 
@@ -49,7 +49,7 @@ namespace cmd.Essential
                     bk = ConsoleColor.Green;
                     break;
                 default:
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en["UninplementedBranch"]);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en[XlfKeys.UninplementedBranch]);
                     break;
             }
             if (bk != ConsoleColor.Black)

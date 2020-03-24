@@ -68,10 +68,10 @@ public static partial class CSharpHelper
         csg.GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
         return csg.ToString();
     }
-    public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values)
+    public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, object splitKeyWith)
     {
         CSharpGenerator csg = new CSharpGenerator();
-        csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values);
+        csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values, splitKeyWith);
         return csg.ToString();
     }
     public static string GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
@@ -138,20 +138,7 @@ public static partial class CSharpHelper
         string result = gen.ToString();
         return result;
     }
-    public static string GetConsts(List<string> list, bool toCamelConvention)
-    {
-        CSharpGenerator csg = new CSharpGenerator();
-        foreach (var item in list)
-        {
-            string name = item;
-            if (toCamelConvention)
-            {
-                name = ConvertCamelConvention.ToConvention(item);
-            }
-            csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
-        }
-        return csg.ToString();
-    }
+    
     
     public static string DefaultValueForTypeSqLite(string type)
     {
@@ -221,6 +208,56 @@ public static partial class CSharpHelper
         }
         return lines;
     }
+
+    public static string GetConsts(List<string> list, bool toCamelConvention)
+    {
+        return GetConsts(null, list, toCamelConvention);
+    }
+
+    /// <summary>
+    /// A1 can be null
+    /// 
+    /// GenerateConstants - const without value
+    /// GetConsts - static readonly with value
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="toCamelConvention"></param>
+    /// <returns></returns>
+    public static string GetConsts(List<string> names, List<string> list, bool toCamelConvention)
+    {
+        if (names != null)
+        {
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(), type, Exc.CallingMethod(), "names", names, "list", list);
+        }
+
+        CSharpGenerator csg = new CSharpGenerator();
+        for (int i = 0; i < list.Count; i++)
+        {
+            var item = list[i];
+            string name = item;
+
+            if (names != null)
+            {
+                name = names[i];
+            }
+
+            if (toCamelConvention)
+            {
+                name = ConvertCamelConvention.ToConvention(item);
+            }
+            csg.Field(0, AccessModifiers.Public, true, VariableModifiers.ReadOnly, "string", name, true, item);
+        }
+        return csg.ToString();
+    }
+
+    /// <summary>
+    /// GenerateConstants - const without value
+    /// GetConsts - static readonly with value
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="changeInput"></param>
+    /// <param name="input"></param>
+    /// <returns></returns>
     public static string GenerateConstants(int tabCount, Func<string, string> changeInput, List<string> input)
     {
         CSharpGenerator csg = new CSharpGenerator();

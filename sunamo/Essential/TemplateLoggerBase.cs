@@ -46,6 +46,11 @@ static Type type = typeof(TemplateLoggerBase);
         }
         #endregion
         #region Information
+        public void LoadedFromStorage(string item)
+        {
+            WriteLine(TypeOfMessage.Information, "Loaded from storage: " + item);
+        }
+
         public void InsertAsIndexesZeroBased()
         {
             WriteLine(TypeOfMessage.Information, "Insert as indexes (zero based)");

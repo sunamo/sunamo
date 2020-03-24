@@ -3,11 +3,18 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace sunamo.Xml
 {
     public partial class XH
     {
+        public static void RemoveFirstElement(string xml, string elem)
+        {
+            var xd = XDocument.Parse(xml);
+            //xd.Descendants("")
+        }
+
         /// <summary>
         /// 
         /// </summary>

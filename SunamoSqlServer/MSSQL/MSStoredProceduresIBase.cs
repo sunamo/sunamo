@@ -6,7 +6,7 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using sunamo;
-using sunamo.Values;
+
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
     public string AverageLenghtOfColumnData(string table, string column)

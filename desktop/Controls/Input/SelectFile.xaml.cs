@@ -1,4 +1,4 @@
-﻿using desktop.AwesomeFont;
+using desktop.AwesomeFont;
 using sunamo;
 using sunamo.Essential;
 using System;
@@ -69,10 +69,10 @@ namespace desktop.Controls
         {
             if (v == "")
             {
-                v = RLData.en["None"];
+                v = RLData.en[XlfKeys.None];
             }
             selectedFile = v;
-            tbSelectedFile.Text = RLData.en["SelectedFile"] + ": " + v;
+            tbSelectedFile.Text = RLData.en[XlfKeys.SelectedFile] + ": " + v;
         }
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)

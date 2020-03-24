@@ -11,6 +11,7 @@ public class ComplexInfoString
     private int _quantityLowerChars = 0;
     private int _quantitySpecialChars = 0;
     private Dictionary<char, int> _znakyPocty = new Dictionary<char, int>();
+
     public int this[char ch]
     {
         get

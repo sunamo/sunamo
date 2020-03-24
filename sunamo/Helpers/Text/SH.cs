@@ -18,6 +18,38 @@ using System.Text.RegularExpressions;
 using System.Windows;
 public static partial class SH
 {
+    public static Dictionary<char, int> StatisticLetterChars(string between, StatisticLetterCharsStrategy s, params char[] charsToStrategy)
+    {
+        List<char> ignoreCompletely = null;
+
+        if (s == StatisticLetterCharsStrategy.IgnoreCompletely)
+        {
+            ignoreCompletely = new List<char>(charsToStrategy);
+        }
+
+        Dictionary<char, int> list = new Dictionary<char, int>();
+        if (s == StatisticLetterCharsStrategy.AddAsFirst)
+        {
+            foreach (var item in charsToStrategy)
+            {
+                list.Add(item, 0);
+            }
+        }
+
+        foreach (var item in between)
+        {
+            if (s == StatisticLetterCharsStrategy.IgnoreCompletely)
+            {
+                if (ignoreCompletely.Contains(item))
+                {
+                    continue;
+                }
+            }
+            DictionaryHelper.AddOrPlus<char>(list, item, 1);
+        }
+
+        return list;
+    }
     public static string ConvertWhitespaceToVisible(string t)
     {
         t = t.Replace(AllChars.tab, UnicodeWhiteToVisible.tab);
@@ -29,14 +61,16 @@ public static partial class SH
     }
     public static string ReplaceAll3(IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent, string content)
     {
-        for (int i = 0; i < replaceFrom.Count; i++)
+        if (isMultilineWithVariousIndent)
+        {
+
+            for (int i = 0; i < replaceFrom.Count; i++)
         {
             /*
               Vše zaměnit na 1 mezeru
               porovnat zaměněné a originál - namapovat co je mezi nimi
             */
-            if (isMultilineWithVariousIndent)
-            {
+            
                 var r = SH.SplitByWhiteSpaces(replaceFrom[i], true);
                 var contentOneSpace = SH.SplitByWhiteSpaces(content, true);
                 ////DebugLogger.Instance.WriteNumberedList("", contentOneSpace, true);
@@ -72,13 +106,18 @@ public static partial class SH
                 var from2 = content.Substring(startDx, endDx - startDx);
                 content = content.Replace(from2, replaceTo[i]);
             }
-            else
+          
+        }
+        else
+        {
+            for (int i = 0; i < replaceFrom.Count; i++)
             {
-                if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
-                {
-                    content = content.Replace(replaceFrom[i], replaceTo[i]);
-                }
+                content = content.Replace(replaceFrom[i], replaceTo[i]);
             }
+            //if (SH.ContainsAny(content, false, replaceFrom).Count > 0)
+            //{
+            
+            //}
         }
         return content;
     }

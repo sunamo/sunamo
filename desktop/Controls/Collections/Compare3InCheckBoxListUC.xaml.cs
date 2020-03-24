@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,7 +55,7 @@ namespace desktop.Controls.Collections
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
 
-        public string Title => RLData.en["DecideWhichToProcess"];
+        public string Title => RLData.en[XlfKeys.DecideWhichToProcess];
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -214,7 +214,7 @@ namespace desktop.Controls.Collections
         {
             //MenuItem mi = MenuItemHelper.Get(Title);
 
-            //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en["Save"], OnClick = Save });
+            //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en[XlfKeys.Save], OnClick = Save });
             //mi.Items.Add(miSave);
 
             return CA.ToList<MenuItem>();

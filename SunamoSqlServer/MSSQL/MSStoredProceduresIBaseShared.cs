@@ -6,7 +6,7 @@
 //using System.Data;
 //using System.Data.SqlClient;
 //using sunamo;
-//using sunamo.Values;
+//
 ///// <summary>
 ///// 12-1-2019 refactoring:
 ///// 1)all methods here take ABC if take more than Where. otherwise is allowed params AB[] / object[]

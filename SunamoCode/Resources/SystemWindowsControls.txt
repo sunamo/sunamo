@@ -4,6 +4,7 @@ TextBoxLineDrawingVisual tbldv,textBoxLineDrawingVisual,textboxlinedrawingvisual
 TextBoxView tbv,textBoxView,textboxview
 MatchedTextInfo mti,matchedTextInfo,matchedtextinfo
 ControlTemplate ct,controlTemplate,controltemplate
+AppBarButton abb
 AccessText at,accessText,accesstext
 Border b,border
 Button b,button

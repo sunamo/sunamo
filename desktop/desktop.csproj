@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>../../sunamo/sunamo.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -134,7 +135,6 @@
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainerList.cs" />
     <Compile Include="..\..\sunamo\desktop\Values\TypesControls.cs" />
-    <Compile Include="..\..\sunamo\desktop\Windows\LoginDialog.xaml.cs" />
     <Compile Include="..\..\sunamo\desktop\Windows\WindowWithUserControl.cs" />
     <Compile Include="Animation\AutoIncrementNumber.cs" />
     <Compile Include="Animation\LimitedTimer.cs" />
@@ -455,9 +455,6 @@
     <Compile Include="Windows\EnterOneValueWindow.xaml.cs">
       <DependentUpon>EnterOneValueWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LoginDialog.xaml.cs">
-      <DependentUpon>LoginDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\NotificationWindow.xaml.cs">
       <DependentUpon>NotificationWindow.xaml</DependentUpon>
     </Compile>
@@ -483,13 +480,13 @@
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
-      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
-      <Name>SunamoCode</Name>
-    </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
+      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
+      <Name>SunamoCode</Name>
     </ProjectReference>
     <ProjectReference Include="..\win\win.csproj">
       <Project>{BEE17656-B10C-42B2-B3A4-70208323E3D7}</Project>
@@ -690,10 +687,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EnterOneValueWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\LoginDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

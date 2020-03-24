@@ -1,6 +1,6 @@
-﻿using desktop.AwesomeFont;
+using desktop.AwesomeFont;
 using sunamo.Essential;
-using sunamo.Values;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,7 +174,7 @@ namespace desktop.Controls.Buttons
 
         void Handler(object o, RoutedEventArgs e)
         {
-            string methodName = RLData.en["Handler"];
+            string methodName = RLData.en[XlfKeys.Handler];
 
             Button btn = (Button)o;
             var t = btn.Tag.GetType();

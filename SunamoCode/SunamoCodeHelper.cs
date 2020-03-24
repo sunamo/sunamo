@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-
-public class SunamoCodeHelper
+public partial class SunamoCodeHelper
 {
     private static bool IsNameOfHtmlAttrValue(string between)
     {
@@ -39,12 +37,11 @@ public class SunamoCodeHelper
     /// <summary>
     /// A1 normal, not lower
     /// </summary>
-    /// <param name="between"></param>
+    /// <param name = "between"></param>
     public static bool IsNameOfControl(string between)
     {
         var add = false;
         add = IsNameOfHtmlTag(between, add);
-
         if (!add)
         {
             add = IsNameOfHtmlAttr(between);
@@ -57,9 +54,7 @@ public class SunamoCodeHelper
 
         if (!add)
         {
-            #region Check whether contains only lower and no letters after first number
             int firstInt = -1;
-
             var i = 0;
             foreach (var item in between)
             {
@@ -83,15 +78,16 @@ public class SunamoCodeHelper
                     add = false;
                     break;
                 }
+
                 i++;
             }
-            #endregion
 
             string prefix = between;
             if (firstInt != -1)
             {
                 prefix = between.Substring(0, firstInt);
             }
+
             add = SystemWindowsControls.IsShortcutOfControl(prefix);
         }
 

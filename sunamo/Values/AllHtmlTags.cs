@@ -13,6 +13,25 @@ public class AllHtmlTags
     /// Sorted from longest to shortest due to comparing and finding right string
     /// </summary>
     public static List<string> list = null;
+    static List<string> withLeftArrow;
+    public static List<string> WithLeftArrow
+    {
+        get
+        {
+            if (withLeftArrow == null)
+            {
+                Initialize();
+                withLeftArrow = new List<string>(list.Count);
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    withLeftArrow.Add(AllStrings.lt + list[i] + AllStrings.space);
+                }
+            }
+
+            return withLeftArrow;
+                }
+    }
 
     public static void Initialize()
     {
