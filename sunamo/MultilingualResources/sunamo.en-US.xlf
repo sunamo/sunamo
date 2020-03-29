@@ -18,6 +18,11 @@
          <source></source>
          <target state="translated">already exists in the database</target>
        </trans-unit>
+       <trans-unit id="CurrentlyDisplayed" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Currently displayed</target>
+       </trans-unit>
+       
        <trans-unit id="AboutApp" translate="yes" xml:space="preserve">
          <source>About app</source>
          <target state="new">About app</target>
@@ -29,6 +34,9 @@
        <trans-unit id="Cancel" translate="yes" xml:space="preserve">
          <source>Cancel</source>
          <target state="new">Cancel</target>
+       </trans-unit>
+       <trans-unit id="WasNotEnteredOrWasEmpty" translate="yes" xml:space="preserve">
+         <target state="new">Was not entered or was empty</target>
        </trans-unit>
        <trans-unit id="2HereEnter" translate="yes" xml:space="preserve">
          <source>Here enter</source>
@@ -1331,6 +1339,10 @@
        <trans-unit id="DoYouWantToContinue" translate="yes" xml:space="preserve">
          <source />
          <target state="translated">Do you want to continue</target>
+       </trans-unit>
+       <trans-unit id="DoYouWantTo" translate="yes" xml:space="preserve">
+         <source />
+         <target state="translated">Do you want to</target>
        </trans-unit>
        <trans-unit id="ThenPressEnter" translate="yes" xml:space="preserve">
          <source />
@@ -4527,9 +4539,9 @@
          <source></source>
          <target state="translated">All translations of this song were deleted or never existed</target>
        </trans-unit>
-       <trans-unit id="IfTheSongIsOriginallyInCzechIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs" translate="yes" xml:space="preserve">
+       <trans-unit id="IfTheSongIsOriginallyInCzechInstrumentalIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">If the song is originally in Czech, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs</target>
+         <target state="translated">If the song is originally in Czech / Instrumental, ignore this message. The website does not distinguish between foreign, Czech and instrumental songs</target>
        </trans-unit>
        <trans-unit id="ArtistsWithTag" translate="yes" xml:space="preserve">
          <source></source>
@@ -9725,6 +9737,10 @@
        <trans-unit id="all" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">all</target>
+       </trans-unit>
+       <trans-unit id="All" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">All</target>
        </trans-unit>
        <trans-unit id="console" translate="yes" xml:space="preserve">
          <source></source>

@@ -90,6 +90,7 @@ public partial class ThrowExceptions
                 //Debugger.Break();
                 // Will be written in globalasax error
                 writeServerError(stacktrace, exception);
+                throw new Exception(exception);
                 //}
             }
             else
