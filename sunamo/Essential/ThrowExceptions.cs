@@ -93,7 +93,17 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.MoreThanOneElement(FullNameOfExecutedCode(type, methodName, true), listName, count));
     }
-  
+
+    /// <summary>
+    /// Should always check for null before because otherwise stacktrace and methodName is computed uselessly
+    /// must be in code coz Invoke in ThrowIsNotNull should add more lines
+    /// NOT checking whether variable is null, but whether is not null! 
+    /// </summary>
+    /// <param name="stacktrace"></param>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="variableName"></param>
+    /// <param name="variable"></param>
     public static void IsNotNull(string stacktrace, object type, string methodName, string variableName, object variable)
     {
         ThrowIsNotNull(stacktrace, Exceptions.IsNotNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));

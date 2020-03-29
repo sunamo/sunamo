@@ -4,10 +4,11 @@ using System;
 using System.Linq;
 
 using System.Diagnostics;
+using System.Collections;
 
 namespace sunamo
 {
-    public class SongFromInternet
+    public class SongFromInternet : IEquatable<SongFromInternet>
     {
         List<string> nazev = new List<string>();
         List<string> title = new List<string>();
@@ -113,6 +114,8 @@ namespace sunamo
             return this;
         }
         #endregion
+
+        
 
         /// <summary>
         /// Pro správné porovnání musí být všechny řetězce jak v A1 tak v A2 lowercase
@@ -291,6 +294,14 @@ namespace sunamo
 
         }
 
+        /// <summary>
+        /// A2 - compare both after diac trim
+        /// A3 - minimal for return true 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="woDiacritic"></param>
+        /// <param name="minimal"></param>
+        /// <returns></returns>
         public  float CalculateSimilarityAll(SongFromInternet s, bool woDiacritic, float minimal)
         {
             var _this = this;
@@ -302,6 +313,7 @@ namespace sunamo
             {
                 _continue = false;
             }
+
             List<string> feats = null;
             if (_continue)
             {
@@ -336,6 +348,7 @@ namespace sunamo
             return result;
             
         }
+
         public static bool breakInCalculateSimilarity = false;
         public string Artist()
         {
@@ -467,6 +480,31 @@ namespace sunamo
             return art;
         }
 
-       
+        public int Compare(object x, object y)
+        {
+            var xx = (SongFromInternet)x;
+            var xy = (SongFromInternet)y;
+
+            const float min = 0.5f;
+
+            var f = xy.CalculateSimilarityAll(xx, false, min);
+            if( min <= f)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        public bool Equals(SongFromInternet other)
+        {
+            return BTS.IntToBool(Compare(this, other));
+        }
+
+        private readonly StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+        public override int GetHashCode()
+        {
+            return comparer.GetHashCode(this);
+        }
     }
 }

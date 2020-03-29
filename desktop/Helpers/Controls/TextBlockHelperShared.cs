@@ -26,7 +26,10 @@ public partial class TextBlockHelper{
         // TextBlock is not derived from Control, so have own property Foreground
         TextBlockHelper.SetForeground(tb, d.foreground);
 
-        ThrowExceptions.IsNotNull(Exc.GetStackTrace(),type, Exc.CallingMethod(), "d.imagePath", d.imagePath);
+        if (d.imagePath != null)
+        {
+            ThrowExceptions.IsNotNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), "d.imagePath", d.imagePath);
+        }
 
         tb.Tag = d.tag;
         tb.ToolTip = d.tooltip;

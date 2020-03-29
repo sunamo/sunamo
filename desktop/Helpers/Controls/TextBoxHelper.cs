@@ -29,7 +29,6 @@ namespace desktop
             }
         }
 
-        
         public static void RegisterHighlightAllTextBox()
         {
             EventManager.RegisterClassHandler(typeof(TextBox),
@@ -53,14 +52,26 @@ namespace desktop
             TextBox txt = new TextBox();
             ControlHelper.SetForeground(txt, d.foreground);
 
-            ThrowExceptions.IsNotNull(Exc.GetStackTrace(),type, Exc.CallingMethod(), "d.imagePath", d.imagePath);
-            ThrowExceptions.IsNotNull(Exc.GetStackTrace(),type, Exc.CallingMethod(), "d.OnClick", d.OnClick);
+            if (d.imagePath != null)
+            {
+                ThrowExceptions.IsNotNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), "d.imagePath", d.imagePath);
+            }
+            if (d.OnClick != null)
+            {
+                ThrowExceptions.IsNotNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), "d.OnClick", d.OnClick);
+            }
 
             txt.Width = 200;
             txt.Tag = d.tag;
             txt.ToolTip = d.tooltip;
             txt.Text = d.text;
+            txt.TextChanged += d.OnTextChange;
             return txt;
+        }
+
+        private static void Txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
 
         static TextBoxHelper()

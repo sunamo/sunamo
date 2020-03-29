@@ -19,9 +19,9 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock>Only in left</TextBlock>
-        <TextBlock Grid.Column="1">Only in right</TextBlock>
-        <TextBlock Grid.Column="2">Both</TextBlock>
+        <TextBlock x:Name="tblAutoYes">Only in left</TextBlock>
+        <TextBlock x:Name="tblManuallyYes" Grid.Column="1">Only in right</TextBlock>
+        <TextBlock x:Name="tblManuallyNo" Grid.Column="2">Both</TextBlock>
         
 
         <local:CheckBoxListUC x:FieldModifier="public" x:Name="chblAutoYes" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></local:CheckBoxListUC>

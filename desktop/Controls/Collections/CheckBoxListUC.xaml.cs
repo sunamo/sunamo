@@ -2,6 +2,7 @@ using desktop.Helpers.Controls;
 using sunamo;
 using sunamo.Essential;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -99,7 +100,7 @@ namespace desktop.Controls.Collections
         /// A1 can be null but then is needed to call DefaultButtonsInit,HideAllButtons, etc.
         /// </summary>
         /// <param name="list"></param>
-        public void Init(ImageButtonsInit i, List<string> list = null, bool defChecked = false)
+        public void Init(ImageButtonsInit i, IList list = null, bool defChecked = false)
         {
             if (!initialized)
             {
@@ -137,6 +138,7 @@ namespace desktop.Controls.Collections
                 SizeChanged += CheckBoxListUC_SizeChanged;
             }
         }
+
         public  List<string> AllContentString()
         {
             var ac = AllContent();
@@ -211,14 +213,24 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public void AddCheckbox(string input, bool defChecked)
+        public void AddCheckbox(object input, bool defChecked)
         {
-            var lines = SH.GetLines(input);
+            var lines = SH.GetLines(input.ToString());
 
             foreach (var item in lines)
             {
                 var contents = l.Select(r => r.Content);
-                var contentString = CA.ToListString(contents);
+                var contents2 = new List<string>(contents.Count());
+
+                StackPanel sp = null;
+
+                foreach (var item2 in contents)
+                {
+                    sp = (StackPanel)item2;
+                    contents2.Add(CheckBoxListUC.ContentOfTextBlock(sp));
+                }
+
+                var contentString = CA.ToListString(contents2);
                 if (CA.IsEqualToAnyElement<object>(item, contentString))
                 {
                     continue;

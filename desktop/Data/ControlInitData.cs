@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using sunamo;
 
@@ -28,7 +29,7 @@ public class ControlInitData
     public object tag = null;
     public string tooltip = null;
     public bool isEditable = false;
-    public Action<int, int> OnTextChange;
+    public TextChangedEventHandler OnTextChange;
 
     public string text
     {

@@ -73,6 +73,7 @@ public partial class ThrowExceptions
     }
 
 
+
     /// <summary>
     /// true if everything is OK
     /// false if some error occured

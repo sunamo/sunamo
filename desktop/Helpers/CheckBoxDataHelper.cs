@@ -13,8 +13,6 @@ public partial class CheckBoxDataHelper
         return Get(TextBlockHelper.Get(c));
     }
 
-
-
     public static CheckBoxData<UIElement> CheckBox(ControlInitData c)
     {
         return Get(CheckBoxHelper.Get(c));

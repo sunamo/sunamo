@@ -9726,6 +9726,10 @@
          <source></source>
          <target state="translated">all</target>
        </trans-unit>
+       <trans-unit id="All" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">All</target>
+       </trans-unit>
        <trans-unit id="console" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">console</target>

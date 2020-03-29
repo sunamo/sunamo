@@ -635,12 +635,23 @@ Into A1 insert:
             xlfData.xd.Save(xlfPath);
         }
 
+        /// <summary>
+        /// Into A1 pass XlfResourcesH.PathToXlfSunamo
+        /// </summary>
+        /// <param name="xlfPath"></param>
+        /// <returns></returns>
         public static List<string> GetIds(string xlfPath)
         {
             XlfData d;
             return GetIds(xlfPath, out d);
         }
 
+        /// <summary>
+        /// Into A1 pass XlfResourcesH.PathToXlfSunamo
+        /// </summary>
+        /// <param name="xlfPath"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static List<string> GetIds(string xlfPath, out XlfData d)
         {
             var allids = new List<string>();

@@ -25,7 +25,7 @@ public partial class DTHelperCs
         var dt = DateTime.MinValue;
         dt = dt.AddSeconds(from);
 
-        return ToShortTime(dt);
+        return ToShortTime(dt, true);
     }
 
     /// <summary>

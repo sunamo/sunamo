@@ -111,6 +111,10 @@ public class TextOutputGenerator
         }
     }
 
+    /// <summary>
+    /// If you have StringBuilder, use Paragraph()
+    /// </summary>
+    /// <param name="files1"></param>
     public void List(IEnumerable<string> files1)
     {
         List<string>(files1);

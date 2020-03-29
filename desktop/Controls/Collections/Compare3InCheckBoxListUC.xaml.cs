@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using sunamo.Essential;
 
 namespace desktop.Controls.Collections
 {
+
+
     /// <summary>
     /// Interaction logic for Compare3InCheckBoxListUC.xaml
     /// </summary>
     public partial class Compare3InCheckBoxListUC : UserControl, IUserControl, IControlWithResult, IUserControlWithMenuItemsList, IUserControlWithSizeChange
     {
-        List<CheckBoxListUC> chbls = null;
+        public List<CheckBoxListUC> chbls = null;
 
         public Compare3InCheckBoxListUC()
         {
@@ -29,7 +33,7 @@ namespace desktop.Controls.Collections
             Loaded += uc_Loaded;
         }
 
-       
+
 
         public void FocusOnMainElement()
         {
@@ -64,39 +68,35 @@ namespace desktop.Controls.Collections
 
         }
 
-        string left, right, both = null;
-
-        /// <summary>
-        /// If I want save state to files, must be set up all four
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <param name="both"></param>
-        /// <param name="autoNo"></param>
-        public void Init(string left, string right, string both)
-        {
-            this.left = left;
-            this.right = right;
-            this.both = both;
-
-        }
-
         public void Init(List<string> left, List<string> right)
         {
             var both = CA.CompareList(left, right);
             Init(left, right, both);
         }
 
+        //Compare3InheckBoxListUCInit compare3InCheckBoxListUCInit = null;
+
+        public void Init(string tbleft, string tbRight, string tbBoth, IList left, IList right, IList both)
+        {
+            tblAutoYes.Text = tbleft;
+            tblManuallyYes.Text = tbRight;
+            tblManuallyNo.Text = tbBoth;
+
+            Init(left, right, both);
+        }
 
         /// <summary>
         /// A1-4 can be null
+        /// Must be IList to avoid 
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <param name="both"></param>
         /// <param name="autoNo"></param>
-        public void Init(List<string> left, List<string> right, List<string> both)
+        public void Init(IList left, IList right, IList both)
         {
+            //compare3InCheckBoxListUCInit = new Compare3InCheckBListUCInit();
+
             chbls = CA.ToList<CheckBoxListUC>(chblAutoYes, chblManuallyYes, chblManuallyNo);
 
             foreach (var item in chbls)
@@ -210,9 +210,27 @@ namespace desktop.Controls.Collections
 
         }
 
+        void SaveToDrive(object o, RoutedEventArgs e)
+        {
+            var autoYes= chblAutoYes.AllContentString();
+            var manuallyNo = chblManuallyNo.AllContentString();
+            var manuallyYes = chblManuallyYes.AllContentString();
+
+            TextOutputGenerator tog = new TextOutputGenerator();
+
+            tog.List(autoYes, tblAutoYes.Text);
+            tog.List(manuallyNo, tblManuallyNo.Text);
+            tog.List(manuallyYes, tblManuallyYes.Text);
+
+            var file = AppData.ci.GetFile(AppFolders.Output, nameof(Compare3InCheckBoxListUC));
+            TF.SaveFile(tog.ToString(), file);
+            ThisApp.SetStatus(TypeOfMessage.Success, "File was saved to " + file);
+            PH.Start(file);
+        }
+
         public List<MenuItem> MenuItems()
         {
-            //MenuItem mi = MenuItemHelper.Get(Title);
+            MenuItem mi = MenuItemHelper.Get(new ControlInitData { content = "Save to drive", OnClick = SaveToDrive });
 
             //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en[XlfKeys.Save], OnClick = Save });
             //mi.Items.Add(miSave);
