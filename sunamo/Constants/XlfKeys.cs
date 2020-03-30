@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 public class XlfKeys
@@ -3905,7 +3905,6 @@ public class XlfKeys
     public const string uppercaseAndLowercaseLetters_commaNumbers_commaAnd_period_sol_sol_lowbarCharactersAre_sol_solAllowed = "uppercaseAndLowercaseLetters_commaNumbers_commaAnd_period_sol_sol_lowbarCharactersAre_sol_solAllowed";
     public const string YouMustEnterYourLoginNameForTheNextStep = "YouMustEnterYourLoginNameForTheNextStep";
     public const string Page_lowbarLoad = "Page_lowbarLoad";
-    public const string SignInToTakeFullAdvantageOfTheSite_aposSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSite_aposSCapabilitiesAndFeatures";
     public const string LoginWillBePernament_commaUntilYouSignedOut_period = "LoginWillBePernament_commaUntilYouSignedOut_period";
     public const string GenerateNewPassword = "GenerateNewPassword";
     public const string SignIn = "SignIn";

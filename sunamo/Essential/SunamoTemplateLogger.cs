@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using sunamo.Essential;
 
-namespace sunamo.Essential
-{
-    public class SunamoTemplateLogger : TemplateLoggerBase
+public class SunamoTemplateLogger : TemplateLoggerBase
     {
         public static SunamoTemplateLogger Instance = new SunamoTemplateLogger();
 
@@ -14,4 +13,3 @@ namespace sunamo.Essential
 
        
     }
-}

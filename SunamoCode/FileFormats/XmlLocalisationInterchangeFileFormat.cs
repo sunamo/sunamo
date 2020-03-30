@@ -415,11 +415,11 @@ Into A1 insert:
         /// 
         /// </summary>
         /// <param name="toL"></param>
-        /// <param name="originalSource"></param>
-        /// <param name="translated"></param>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
         /// <param name="pascal"></param>
         /// <param name="fn"></param>
-        public static void Append(string originalSource, string translated, string pascal, string fn)
+        public static void Append(string source, string target, string pascal, string fn)
         {
             var d = GetTransUnits(fn);
 
@@ -432,9 +432,9 @@ Into A1 insert:
 
             TransUnit tu = new TransUnit();
             tu.id = pascal;
-            tu.source = originalSource;
+            tu.source = source;
             tu.translate = true;
-            tu.target = translated;
+            tu.target = target;
 
             var xml = tu.ToString();
             XElement xe = XElement.Parse(xml);
