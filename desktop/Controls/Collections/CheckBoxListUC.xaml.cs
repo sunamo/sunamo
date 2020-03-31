@@ -300,7 +300,7 @@ namespace desktop.Controls.Collections
         //    var p = NH.Sort<int>(arg1, arg2);
         //    p[1]++;
         //    // is already checked actully, so i dont negate
-        //    var col = ((ObservableCollection<T>)lstViewXamlColumns.ItemsSource);
+        //    var col = ((ObservableCollection<T>)lstViewXamlColumnNames.ItemsSource);
         //    var first = col.First(d => d.Id == arg1);
 
         //    bool setUp = false;

@@ -24,6 +24,7 @@ public partial class GeneratorMsSql{
         int pridavatOd = 0;
         return CombinedWhere(where, ref pridavatOd);
     }
+
     public static string CombinedWhereNotEquals(bool continuing, ref int pridavatOd, ABC whereIsNot)
     {
         if (whereIsNot != null)
@@ -61,6 +62,7 @@ public partial class GeneratorMsSql{
         }
         return "";
     }
+
     /// <summary>
     /// po vytvoření comm je třeba ručně přidat idValue
     /// </summary>
@@ -77,6 +79,7 @@ public partial class GeneratorMsSql{
         sb.Append(SH.Format2(" {0} = @p0 ", idColumnName));
         return sb.ToString();
     }
+    
     /// <summary>
     /// object hodnota se musí přidat pak k SqlCommand ručně pod @p0
     /// Vrátí pouze klazuli where
@@ -99,6 +102,7 @@ public partial class GeneratorMsSql{
         sb.Append(SH.Format2(" {0} = @p{1} ", sloupec, pocetJizPridanychParametru));
         return sb.ToString();
     }
+
     public static string SimpleWhere(string columns, string tabulka, string sloupec)
     {
         StringBuilder sb = new StringBuilder();
@@ -166,6 +170,7 @@ public partial class GeneratorMsSql{
         }
         return sb.ToString();
     }
+
 ///// <summary>
 //    /// Snaž se tuto metodu používat co nejméně, protože musí všechny parametry(kolekce) převést metodou ToArray() na pole
 //    /// </summary>
@@ -194,6 +199,7 @@ public partial class GeneratorMsSql{
 //        }
 //        return CombinedWhere(where.ToArray(), isNotWhere.ToArray(), greaterThanWhere.ToArray(), lowerThanWhere.ToArray());
 //    }
+
 /// <summary>
     /// Jakýkoliv z A1-4 může být null, v takovém případě se pouze toto pole překosčí
     /// Poté se musejí přidat AB.B z A1 a až poté z A2
@@ -514,7 +520,22 @@ public static string CombinedWhereOR(ABC where, ref int p)
         }
         return sb.ToString();
     }
-public static string CombinedWhereOR(ABC where)
+
+    public static ABC CombinedWhereOR(string id, params object[] where)
+    {
+        ABC abc = new ABC();
+
+        var s = CA.ToListString(where);
+
+        foreach (var item in s)
+        {
+            abc.Add(AB.Get(id, item));
+        }
+
+        return abc;
+    }
+
+    public static string CombinedWhereOR(ABC where)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append(" " + "WHERE" + " ");

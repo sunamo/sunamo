@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ public class DataTableHelper
         
         DataColumn dc = new DataColumn(name, (Type)type);
         
-        dt.Columns.Add(dc);
+        dt.ColumnNames.Add(dc);
     }
 
     public static void NewColumn(DataTable dt, int v, IList<string> columns, IList f)

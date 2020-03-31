@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -27,9 +27,9 @@ namespace sunamo.Collections
         {
             DataTable newTable = new DataTable();
 
-            newTable.Columns.Add(string.Empty);
+            newTable.ColumnNames.Add(string.Empty);
             for (int i = 0; i < _exists.Count; i++)
-                newTable.Columns.Add();
+                newTable.ColumnNames.Add();
 
             var s = _exists[0];
             for (int i = 0; i < s.Count; i++)

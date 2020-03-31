@@ -1040,6 +1040,17 @@ public static partial class SH
         return s;
     }
 
+    public static StringBuilder ReplaceByIndex(StringBuilder s, string zaCo, int v, int length)
+    {
+        s = s.Remove(v, length);
+        if (zaCo != string.Empty)
+        {
+            s = s.Insert(v, zaCo);
+        }
+
+        return s;
+    }
+
 
 
 

@@ -19,7 +19,7 @@ public class RadioButtonHelper
         ControlHelper.SetForeground(chb, d.foreground);
         chb.GroupName = d.group;
         chb.Content = ContentControlHelper.GetContent(d);
-
+        chb.IsChecked = d.isChecked;
         chb.Checked += d.OnClick;
         if (d.tag == null)
         {

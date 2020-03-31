@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -170,7 +170,7 @@ namespace desktop
         {
             foreach (var item in columns)
             {
-                dtGrid.Columns.Add(DataGridHelper.NewTextColumn(item, null));
+                dtGrid.ColumnNames.Add(DataGridHelper.NewTextColumn(item, null));
             }
 
             dtGrid.ItemsSource = o;

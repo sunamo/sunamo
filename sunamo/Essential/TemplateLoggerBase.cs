@@ -13,6 +13,11 @@ static Type type = typeof(TemplateLoggerBase);
         {
             _writeLineDelegate = writeLineDelegate;
         }
+
+        public void Finished(string nameOfOperation)
+        {
+            WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + "Finished");
+        }
         public void EndRunTime()
         {
             WriteLine(TypeOfMessage.Ordinal, Messages.AppWillBeTerminated);

@@ -1821,6 +1821,14 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         AddCommandParameteres(comm, 0, ab);
         return SelectDataTable(comm);
     }
+
+    public DataTable SelectAllRowsOfColumnsOR(string p, string ziskaneSloupce, params AB[] ab)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} ", ziskaneSloupce, p) + GeneratorMsSql.CombinedWhereOR(new ABC(ab)));
+        AddCommandParameteres(comm, 0, ab);
+        return SelectDataTable(comm);
+    }
+
     /// <summary>
     /// Vrátí mi všechny položky ze sloupce 
     /// </summary>
