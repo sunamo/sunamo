@@ -78,11 +78,17 @@ public class FromTo : IParser
         {
             var parts = SH.SplitToIntList(v, AllStrings.colon);
             result += parts[0] * (int)DTConstants.secondsInHour;
-            result += parts[1] * (int)DTConstants.secondsInMinute;
+            if (parts.Count > 1)
+            {
+                result += parts[1] * (int)DTConstants.secondsInMinute;
+            }
         }
         else
         {
-            result += int.Parse(v) * (int)DTConstants.secondsInHour;
+            if (BTS.IsInt(v))
+            {
+                result += int.Parse(v) * (int)DTConstants.secondsInHour;
+            }
         }
         return result;
     }

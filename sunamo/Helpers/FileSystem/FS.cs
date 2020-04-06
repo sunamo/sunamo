@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -193,23 +193,6 @@ public partial class FS
             }
             
         }
-    }
-    /// <summary>
-    /// either A1 or A2 can be null
-    /// When A2 is null, will get from file path A1
-    /// </summary>
-    /// <param name="item"></param>
-    /// <param name="folder"></param>
-    /// <param name="insert"></param>
-    public static string InsertBetweenFileNameAndPath(string item, string folder, string insert)
-    {
-        if (folder == null)
-        {
-            folder = FS.GetDirectoryName(item);
-        }
-        var outputFolder = FS.Combine(folder, insert);
-        FS.CreateDirectoryIfNotExists(outputFolder);
-        return FS.Combine(outputFolder, FS.GetFileName(item));
     }
 
     static void ReplaceInAllFilesWorker(object o)
@@ -1117,16 +1100,5 @@ public partial class FS
             ds[i] = appendToStart + FS.GetFileNameWithoutExtension(fullPaths[i]);
         }
         return ds;
-    }
-    /// <summary>
-    /// Pokud hledáš metodu ReplacePathToFile, je to tato. Sloučeny protože dělali totéž.
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="changeFolderTo"></param>
-    public static string ChangeDirectory(string fileName, string changeFolderTo)
-    {
-        string p = FS.GetDirectoryName(fileName);
-        string fn = FS.GetFileName(fileName);
-        return FS.Combine(changeFolderTo, fn);
     }
 }

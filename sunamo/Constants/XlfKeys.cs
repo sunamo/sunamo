@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 public class XlfKeys
 {
+	public const string MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma = "MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma"; 
+
     public const string NicknameCannotContainAt = "NicknameCannotContainAt";
 
     public const string alreadyExistsInTheDatabase_period = "alreadyExistsInTheDatabase_period";

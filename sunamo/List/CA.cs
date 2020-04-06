@@ -1,4 +1,4 @@
-﻿using sunamo.Collections;
+using sunamo.Collections;
 using sunamo.Data;
 using sunamo.Helpers.Number;
 using System;
@@ -144,11 +144,18 @@ public static partial class CA
         return duplicated.c;
     }
 
-    
+
 
     /// <summary>
     /// Return whether all of A1 are in A2
-    /// Not all from A2 must be A1
+    /// Not all from A2 must be A1ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    ///IsEqualToAllElement - takes two generic list. return bool
+    ///ContainsElement - at least one element must be equaled. generic. bool
+    ///IsSomethingTheSame - only for string. as List.Contains. bool
+    ///IsAllTheSame() - takes element and list.generic. bool
+    ///IndexesWithValue() - element and list.generic. return list<int>
+    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="searchTerms"></param>
@@ -271,31 +278,6 @@ public static partial class CA
         foreach (var item in parts)
         {
             if (EqualityComparer<T>.Default.Equals(item, value))
-            {
-                result.Add(i);
-            }
-            i++;
-        }
-        return result;
-    }
-    /// <summary>ContainsAnyFromElement - Contains string elements of list
-    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement - at least one element must be equaled. generic
-    /// IsSomethingTheSame - only for string. 
-    /// AnySpaces - split A2 by spaces and A1 must contains all parts
-    /// ExactlyName - ==
-    /// FixedSpace - simple contains
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="term"></param>
-    /// <param name="searchStrategy"></param>
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
-    {
-        List<int> result = new List<int>();
-        int i = 0;
-        foreach (var item in value)
-        {
-            if (SH.Contains(item, term, searchStrategy))
             {
                 result.Add(i);
             }
@@ -466,15 +448,6 @@ public static partial class CA
         }
         return folders;
     }
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
-    {
-        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
-        foreach (var item in mustContains)
-        {
-            result.AddRange(ReturnWhichContainsIndexes(parts, item));
-        }
-        return result.c;
-    }
     private static List<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
     {
         CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
@@ -616,9 +589,14 @@ public static partial class CA
         return vr;
     }
     /// <summary>
-    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement - at least one element must be equaled. generic
-    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    ///IsEqualToAllElement - takes two generic list. return bool
+    ///ContainsElement - at least one element must be equaled. generic. bool
+    ///IsSomethingTheSame - only for string. as List.Contains. bool
+    ///IsAllTheSame() - takes element and list.generic. bool
+    ///IndexesWithValue() - element and list.generic. return list<int>
+    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
     /// </summary>
     /// <param name="ext"></param>
     /// <param name="p1"></param>
@@ -718,6 +696,20 @@ public static partial class CA
         ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
         return null;
     }
+    /// <summary>
+    /// ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    ///IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    ///IsEqualToAllElement - takes two generic list. return bool
+    ///ContainsElement - at least one element must be equaled. generic. bool
+    ///IsSomethingTheSame - only for string. as List.Contains. bool
+    ///IsAllTheSame() - takes element and list.generic. bool
+    ///IndexesWithValue() - element and list.generic. return list<int>
+    ///ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <returns></returns>
     public static bool IsAllTheSame<T>(T ext, IList<T> p1)
     {
         for (int i = 0; i < p1.Count; i++)

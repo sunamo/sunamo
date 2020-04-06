@@ -281,7 +281,16 @@ public partial class GeneratorMsSql{
                     {
                         sb.Append(" AND ");
                     }
-                    sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
+
+                    if (SqlServerHelper.IsNull( var.B))
+                    {
+                        sb.Append(SH.Format2(" {0} is not null ", var.A));
+                    }
+                    else
+                    {
+                        sb.Append(SH.Format2(" {0} != {1} ", var.A, "@p" + p));
+                    }
+                    
                     p++;
                 }
             }
@@ -552,6 +561,7 @@ public static string CombinedWhereOR(ABC where, ref int p)
             {
                 sb.Append(" OR ");
             }
+
             sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
             p++;
         }

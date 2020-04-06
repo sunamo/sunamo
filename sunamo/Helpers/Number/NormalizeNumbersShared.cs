@@ -13,6 +13,8 @@ public static partial class NormalizeNumbers
         return nt;
     }
 
+
+
     public static ushort NormalizeShort(short p)
     {
         int p2 = (int)p;

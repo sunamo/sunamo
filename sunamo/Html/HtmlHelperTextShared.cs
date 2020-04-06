@@ -112,7 +112,21 @@ public static string RemoveAllNodes(string v)
         var nodes = hd.DocumentNode.Descendants().ToList();
         for (int i = 0; i < nodes.Count(); i++)
         {
-            nodes[i].ParentNode.Remove();
+
+
+            var node = nodes[i];
+
+            if (node.NodeType != HtmlAgilityPack.HtmlNodeType.Text)
+            {
+                if (node.ParentNode.NodeType != HtmlAgilityPack.HtmlNodeType.Document)
+                {
+                    node.ParentNode.Remove();
+                }
+                else
+                {
+                    node.Remove();
+                }
+            }
         }
 
         return hd.DocumentNode.OuterHtml;

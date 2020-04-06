@@ -13,6 +13,11 @@ public partial class SqlServerHelper
     public static List<char> s_availableCharsInVarCharWithoutDiacriticLetters = null;
     public static List<char> allowedInPassword = CA.ToList<char>('!', '@', '#', '$', '%', '^', '&', '*', '?', '_', '~');
 
+    public static bool IsNull(object o)
+    {
+        return o == null || o == DBNull.Value;
+    }
+
     static SqlServerHelper()
     {
             s_availableCharsInVarCharWithoutDiacriticLetters = new List<char>(new char[] { AllChars.colon, AllChars.space,  AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.exclamation, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr , AllChars.plus, AllChars.modulo, AllChars.us,  AllChars.slash, AllChars.bs, AllChars.lt, AllChars.gt, AllChars.apostrophe });
@@ -45,5 +50,20 @@ public partial class SqlServerHelper
         return vr;
     }
 
-   
+   public static Tuple<int, int> UnnormalizeNumber(int serie)
+    {
+        const int increaseAbout = 1000; 
+
+        int l = int.MinValue;
+        int h = l + increaseAbout;
+
+        for (int i = 0; i < serie; i++)
+        {
+            l += increaseAbout;
+            h += increaseAbout;
+        }
+
+        Tuple<int, int> d = new Tuple<int, int>(l, h);
+        return d;
+    }
 }

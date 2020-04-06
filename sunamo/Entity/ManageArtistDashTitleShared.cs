@@ -22,8 +22,6 @@ public partial class ManageArtistDashTitle
     /// <param name = "remix"></param>
     public static Tuple<string,string,string> GetArtistTitleRemix(string item)
     {
-
-
         string artist;string song; string remix;
         string delimiter = SH.WrapWith(AllStrings.dash, AllChars.space);
 

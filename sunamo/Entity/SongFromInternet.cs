@@ -17,6 +17,7 @@ namespace sunamo
         List<string> titleWoDiacritic = new List<string>();
         List<string> remixWoDiacritic = new List<string>();
         public string ytCode = null;
+        public int idInDb = int.MaxValue;
 
         string _artistS = null;
         string _titleS = null;
@@ -82,6 +83,7 @@ namespace sunamo
             Init(n, t, r);
 
             this.ytCode = ytCode;
+
         }
 
         public SongFromInternet(SongFromInternet item2)
@@ -102,9 +104,11 @@ namespace sunamo
         {
             Artist(n);
 
-            this.title.AddRange(SplitNazevTitle(t));
-            this.remix.AddRange(SplitRemix(r));
+            var splittedNazevTitle = SplitNazevTitle(t);
+            var splittedRemix = SplitRemix(r);
 
+            this.title.AddRange(splittedNazevTitle);
+            this.remix.AddRange(splittedRemix);
 
             this.titleWoDiacritic = CA.WithoutDiacritic(CA.ToListString( this.title));
             this.remixWoDiacritic = CA.WithoutDiacritic(CA.ToListString( this.remix));
@@ -205,8 +209,13 @@ namespace sunamo
             {
                 vr = (n + t + r) / 3;
             }
+
             return vr;
         }
+
+        
+
+        
 
         /// <summary>
         /// A1 pSn = count of Same
@@ -448,7 +457,8 @@ namespace sunamo
 
         private IEnumerable<string> SplitRemix(string u)
         {
-            List<string> gg = SH.Split( u, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb );
+            // comma - artists like Hm... or The Academy Is..
+            List<string> gg = SH.Split( u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb );
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {
@@ -459,7 +469,7 @@ namespace sunamo
 
         private IEnumerable<string> SplitNazevTitle(string u)
         {
-            List<string> gg =  SH.Split(u, AllStrings.space, AllStrings.comma, AllStrings.dash);
+            List<string> gg =  SH.Split(u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash);
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {
@@ -495,6 +505,11 @@ namespace sunamo
             return 0;
         }
 
+        public override bool Equals(object obj)
+        {
+            return Equals((SongFromInternet)obj);
+        }
+
         public bool Equals(SongFromInternet other)
         {
             return BTS.IntToBool(Compare(this, other));
@@ -504,7 +519,7 @@ namespace sunamo
 
         public override int GetHashCode()
         {
-            return comparer.GetHashCode(this);
+            return ToString().GetHashCode();
         }
     }
 }

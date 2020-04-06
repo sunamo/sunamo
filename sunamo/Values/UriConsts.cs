@@ -10,5 +10,6 @@ using System.Text;
     public const string AppCz = "apps.sunamo.cz";
     public const string GeoCz = "geocaching.sunamo.cz";
     public const string ErtCz = "dart.sunamo.cz";
+    public const string RpsCz = "repairservice.sunamo.cz";
     public const string ShoCz = "shortener.sunamo.cz";
 }

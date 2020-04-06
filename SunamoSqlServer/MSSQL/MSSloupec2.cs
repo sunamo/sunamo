@@ -29,7 +29,7 @@ public class MSSloupec2
                 //zav = "(MAX)";
             }
             else 
-                if (o[3] != null && o[3] != DBNull.Value)
+                if (!SqlServerHelper.IsNull( o[3]))
             {
                 int CHARACTER_MAXIMUM_LENGTH = MSTableRowParse.GetInt(o, 3);
                 if (CHARACTER_MAXIMUM_LENGTH != -1)

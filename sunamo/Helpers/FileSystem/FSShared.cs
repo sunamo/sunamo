@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Data;
 using sunamo.Enums;
 using sunamo.Essential;
@@ -1359,7 +1359,6 @@ public partial class FS
 
         return ext2;
 
-        #region MyRegion
         //if (ext2 == ".*")
         //{
         //    return "*.*";
@@ -1396,7 +1395,6 @@ public partial class FS
         //}
 
         //return ext2; 
-        #endregion
     }
     public static List<string> GetFiles(string folderPath, string masc)
     {
@@ -2149,5 +2147,35 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
             t = SH.ReplaceAll(t, replaceFor, AllStrings.doubleSpace);
         }
         return t;
+    }
+
+/// <summary>
+    /// either A1 or A2 can be null
+    /// When A2 is null, will get from file path A1
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="folder"></param>
+    /// <param name="insert"></param>
+    public static string InsertBetweenFileNameAndPath(string item, string folder, string insert)
+    {
+        if (folder == null)
+        {
+            folder = FS.GetDirectoryName(item);
+        }
+        var outputFolder = FS.Combine(folder, insert);
+        FS.CreateFoldersPsysicallyUnlessThere(outputFolder);
+        return FS.Combine(outputFolder, FS.GetFileName(item));
+    }
+
+/// <summary>
+    /// Pokud hledáš metodu ReplacePathToFile, je to tato. Sloučeny protože dělali totéž.
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <param name="changeFolderTo"></param>
+    public static string ChangeDirectory(string fileName, string changeFolderTo)
+    {
+        string p = FS.GetDirectoryName(fileName);
+        string fn = FS.GetFileName(fileName);
+        return FS.Combine(changeFolderTo, fn);
     }
 }

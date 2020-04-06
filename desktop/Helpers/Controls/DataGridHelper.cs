@@ -170,7 +170,7 @@ namespace desktop
         {
             foreach (var item in columns)
             {
-                dtGrid.ColumnNames.Add(DataGridHelper.NewTextColumn(item, null));
+                dtGrid.Columns.Add(DataGridHelper.NewTextColumn(item, null));
             }
 
             dtGrid.ItemsSource = o;

@@ -27,9 +27,9 @@ namespace sunamo.Collections
         {
             DataTable newTable = new DataTable();
 
-            newTable.ColumnNames.Add(string.Empty);
+            newTable.Columns.Add(string.Empty);
             for (int i = 0; i < _exists.Count; i++)
-                newTable.ColumnNames.Add();
+                newTable.Columns.Add();
 
             var s = _exists[0];
             for (int i = 0; i < s.Count; i++)

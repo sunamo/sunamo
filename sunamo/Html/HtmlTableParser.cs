@@ -125,6 +125,21 @@ namespace sunamo
             
         }
 
+        public List<string> ColumnValues(int dxColumn, bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes)
+        {
+            var d0 = data.GetLength(0);
+            List<string> vr = new List<string>();
+
+            for (int i = 1; i < d0; i++)
+            {
+                vr.Add(data[i, dxColumn]);
+            }
+
+            FinalizeColumnValues(normalizeValuesInColumn, removeAlsoInnerHtmlOfSubNodes, vr);
+
+            return vr;
+        }
+
         public List<string> ColumnValues(string v, bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes)
         {
             var d0 = data.GetLength(0);
@@ -138,19 +153,29 @@ namespace sunamo
                 var dxColumn = i;
                 if (nameColumn == v)
                 {
-                    for ( i = 1; i < d0; i++)
+                    for (i = 1; i < d0; i++)
                     {
                         vr.Add(data[i, dxColumn]);
                     }
                 }
+                if (vr.Count != 0)
+                {
+                    break;
+                }
+                
             }
 
-            if (normalizeValuesInColumn)
+            FinalizeColumnValues(normalizeValuesInColumn, removeAlsoInnerHtmlOfSubNodes, vr);
+
+            return vr;
+        }
+
+        private static void FinalizeColumnValues(bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes, List<string> vr)
+        {
+            if (normalizeValuesInColumn || removeAlsoInnerHtmlOfSubNodes)
             {
                 NormalizeValuesInColumn(vr, removeAlsoInnerHtmlOfSubNodes);
             }
-
-            return vr;
         }
     }
 }

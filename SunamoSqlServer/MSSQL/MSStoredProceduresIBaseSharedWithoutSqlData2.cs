@@ -44,6 +44,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
+    public List<int> SelectValuesOfColumnAllRowsIntOR(string tabulka, string hledanySloupec, params AB[] aB)
+    {
+        string hodnoty = MSDatabaseLayer.GetValues(aB);
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1} {2}", hledanySloupec, tabulka, GeneratorMsSql.CombinedWhereOR(new ABC( aB))));
+        for (int i = 0; i < aB.Length; i++)
+        {
+            AddCommandParameter(comm, i, aB[i].B);
+        }
+        return ReadValuesInt(comm);
+    }
+
     public static string table2 = null;
     public static string column2 = null;
     public static bool isNVarChar2 = false;
@@ -745,15 +756,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return Convert.ToByte(o);
     }
 
+
+
     private DateTime ExecuteScalarDateTime(DateTime getIfNotFound, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null || o == DBNull.Value)
+        if (IsNull(o))
         {
             return getIfNotFound;
         }
         return Convert.ToDateTime(o);
     }
+
+    
 
     private float ExecuteScalarFloat(bool signed, SqlCommand comm)
     {
@@ -773,10 +788,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return Convert.ToSingle(o);
     }
 
+    private int? ExecuteScalarNullableInt( SqlCommand comm)
+    {
+        object o = ExecuteScalar(comm);
+        if (IsNull(o))
+        {
+            return null;
+        }
+        return Convert.ToInt32(o);
+    }
+
     private int ExecuteScalarInt(bool signed, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             if (signed)
             {
@@ -837,13 +862,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private string ExecuteScalarString(SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
-            return "";
-        }
-        else if (o == DBNull.Value)
-        {
-            return "";
+            return string.Empty;
         }
         return o.ToString().TrimEnd(AllChars.space);
     }
@@ -1488,7 +1509,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 string o = string.Empty;
                 // Better is use GetValue than GetString, if I found Null value with GetString raise exception
                 var s = r.GetValue(0);
-                if (s != DBNull.Value)
+                if (!IsNull(s))
                 {
                     o = s.ToString().TrimEnd(AllChars.space);
                 }
@@ -2368,7 +2389,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         AddCommandParameter(comm, 0, idEntity);
 
         object o = ExecuteScalar(comm);
-        if (o == null || o == DBNull.Value)
+        if (IsNull(o))
         {
             return 0;
         }
@@ -2721,6 +2742,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         AddCommandParameterFromAbc(comm, abc, 0);
 
         return ExecuteScalarInt(signed, comm);
+    }
+
+    public int? SelectCellDataTableNullableIntOneRow( string table, string vracenySloupec, params AB[] ab)
+    {
+        int from = 0;
+        var abc = new ABC(ab);
+        string sql = GeneratorMsSql.SimpleSelectOneRow(vracenySloupec, table) + GeneratorMsSql.CombinedWhere(abc, ref from);
+        SqlCommand comm = new SqlCommand(sql);
+        AddCommandParameterFromAbc(comm, abc, 0);
+
+        return ExecuteScalarNullableInt( comm);
     }
 
     /// <summary>

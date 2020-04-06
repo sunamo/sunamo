@@ -17,7 +17,7 @@ public class DataTableHelper
         
         DataColumn dc = new DataColumn(name, (Type)type);
         
-        dt.ColumnNames.Add(dc);
+        dt.Columns.Add(dc);
     }
 
     public static void NewColumn(DataTable dt, int v, IList<string> columns, IList f)

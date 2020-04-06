@@ -2476,7 +2476,7 @@ public partial class SqlOperations : SqlServerHelper
         {
             vr = true;
         }
-        else if ((object)o.result == DBNull.Value)
+        else if (IsNull(o.result))
         {
             vr = true;
         }
@@ -3084,7 +3084,7 @@ public partial class SqlOperations : SqlServerHelper
                 string o = d.stringUseWhenNull;
                 // Better is use GetValue than GetString, if I found Null value with GetString raise exception
                 var s = r.GetValue(0);
-                if (s != DBNull.Value)
+                if (!IsNull(s))
                 {
                     o = s.ToString().TrimEnd(AllChars.space);
                 }

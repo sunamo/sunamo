@@ -75,7 +75,7 @@ public static class MSTableRowParse
     public static byte[] GetImage(object[] o, int dex)
     {
         object obj = o[dex];
-        if (obj == System.DBNull.Value)
+        if (SqlServerHelper.IsNull(obj))
             return null;
         else
         {

@@ -1,4 +1,4 @@
-﻿using ConfigurableWindow.Shared;
+using ConfigurableWindow.Shared;
 using desktop.AwesomeFont;
 using desktop.UserControls;
 using sunamo;
@@ -92,7 +92,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         sunamo.Essential.InitApp.Logger = DebugLogger.Instance;
         sunamo.Essential.InitApp.TypedLogger = sunamo.Essential.TypedDebugLogger.Instance;
 #else
-        //sunamo.Essential.InitApp.TemplateLogger = sunamo.Essential.SunamoTemplateLogger.Instance;
+        //sunamo.Essential.InitApp.TemplateLogger = SunamoTemplateLogger.Instance;
         // sunamo.Essential.InitApp.Logger = SunamoLogger.Instance;
         // sunamo.Essential.InitApp.TypedLogger = TypedSunamoLogger.Instance;
 

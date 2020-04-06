@@ -77,7 +77,7 @@ static Type type = typeof(MSTSP);
             object[] o = dataTable.Rows[radek].ItemArray; ;
             if (o.Length >= sloupec)
             {
-                if (o[sloupec] == DBNull.Value)
+                if ( o[sloupec] == DBNull.Value)
                 {
                     return null;
                 }
