@@ -13,9 +13,10 @@ using System.Xml.Linq;
 public partial class FS{
     /// <summary>
     /// Dont check for size
+    /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input
     /// </summary>
     /// <param name="selectedFile"></param>
-    public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = false)
+    public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = true)
     {
         if (selectedFile == Consts.UncLongPath || selectedFile == string.Empty)
         {

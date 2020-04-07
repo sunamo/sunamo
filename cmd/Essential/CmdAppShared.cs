@@ -15,7 +15,7 @@ public partial class CmdApp{
         dump = SunamoJson.SerializeObject(e, true);
 
         ThisApp.SetStatus(TypeOfMessage.Error, e.ExceptionObject.ToString());
-        WriterEventLog.WriteToMainAppLog(dump, System.Diagnostics.EventLogEntryType.Error);
+        WriterEventLog.WriteToMainAppLog(dump, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
     }
 
 

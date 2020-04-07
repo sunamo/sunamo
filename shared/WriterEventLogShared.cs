@@ -13,6 +13,11 @@ public static partial class WriterEventLog{
     static EventLog eventLogWindowsApplication = null;
     static string scz = "sunamo.cz";
 
+    public static void WriteException(string stacktrace, string exception)
+    {
+        WriterEventLog.WriteToMainAppLog(exception + Environment.NewLine + stacktrace, EventLogEntryType.Error, null);
+    }
+
     public static void WriteToMainAppLogScz(string text, EventLogEntryType type)
     {
         WriteToWindowsLogs(scz, text, type);
@@ -47,8 +52,13 @@ public static partial class WriterEventLog{
     /// </summary>
     /// <param name = "text"></param>
     /// <param name = "type"></param>
-    public static void WriteToMainAppLog(string text, EventLogEntryType type)
+    public static void WriteToMainAppLog(string text, EventLogEntryType type, string methodName = null)
     {
+        if (methodName != null)
+        {
+            text = methodName + ": " + text;
+        }
+
         // Exception in ASP.NET: 'The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security.'
         // If the user account under which the code is running does not have read access to a subkey that it attempts to access (in your case, the Security subkey)
         string name = ThisApp.Name;
