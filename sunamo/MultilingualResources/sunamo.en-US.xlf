@@ -2796,6 +2796,14 @@
          <source></source>
          <target state="translated">Cape Verdean accordion-based dance music</target>
        </trans-unit>
+        <trans-unit id="PageViewsInTheLastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Page views in last 7 days</target>
+        </trans-unit>
+        <trans-unit id="ApplicationsInEachLeaderboard" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> applications in each leaderboards.</target>
+        </trans-unit>
         <trans-unit id="styleOfUKGarageThatFusedItWithElementsOfAllOtherContemporaryEDMStyles" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">style of UK garage that fused it with elements of all other contemporary EDM styles</target>

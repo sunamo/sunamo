@@ -1260,6 +1260,20 @@ public static partial class CA
         }
         return false;
     }
+    /// <summary>
+    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// CA.IsEqualToAllElement - takes two generic list. return bool
+    /// CA.ContainsElement - at least one element must be equaled. generic. bool
+    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
+    /// CA.IsAllTheSame() - takes element and list.generic. bool
+    /// CA.IndexesWithValue() - element and list.generic. return list<int>
+    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="p"></param>
+    /// <param name="prvky"></param>
+    /// <returns></returns>
     public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
     {
         return IsEqualToAnyElement(p, prvky.ToList());
@@ -1950,6 +1964,19 @@ public static bool HasPostfix(string key, params string[] v1)
         return result;
     }
 
+    /// <summary>
+    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// CA.IsEqualToAllElement - takes two generic list. return bool
+    /// CA.ContainsElement - at least one element must be equaled. generic. bool
+    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
+    /// CA.IsAllTheSame() - takes element and list.generic. bool
+    /// CA.IndexesWithValue() - element and list.generic. return list<int>
+    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
+    /// </summary>
+    /// <param name="parts"></param>
+    /// <param name="mustContains"></param>
+    /// <returns></returns>
     public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
     {
         CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();

@@ -606,9 +606,14 @@ public static partial class CA
         return IsSomethingTheSame(ext, p1, ref contained);
     }
     /// <summary>
-    /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
-    /// ContainsElement
-    /// IsSomethingTheSame - only for string. Method for return contained element.
+    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// CA.IsEqualToAllElement - takes two generic list. return bool
+    /// CA.ContainsElement - at least one element must be equaled. generic. bool
+    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
+    /// CA.IsAllTheSame() - takes element and list.generic. bool
+    /// CA.IndexesWithValue() - element and list.generic. return list<int>
+    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
     /// </summary>
     /// <param name="ext"></param>
     /// <param name="p1"></param>
@@ -721,6 +726,20 @@ public static partial class CA
         }
         return true;
     }
+    /// <summary>
+    /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
+    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// CA.IsEqualToAllElement - takes two generic list. return bool
+    /// CA.ContainsElement - at least one element must be equaled. generic. bool
+    /// CA.IsSomethingTheSame - only for string. as List.Contains. bool
+    /// CA.IsAllTheSame() - takes element and list.generic. bool
+    /// CA.IndexesWithValue() - element and list.generic. return list<int>
+    /// CA.ReturnWhichContainsIndexes() - takes two list or element and list. return List<int>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="ext"></param>
+    /// <param name="p1"></param>
+    /// <returns></returns>
     public static bool IsAllTheSame<T>(T ext, params T[] p1)
     {
         for (int i = 0; i < p1.Length; i++)

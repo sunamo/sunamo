@@ -3901,7 +3901,7 @@ public class XlfKeys
     public const string SecurityQuestion = "SecurityQuestion";
     public const string ATTENTION_colonMakeSureYouHaveEnteredTheEmailCorrectly = "ATTENTION_colonMakeSureYouHaveEnteredTheEmailCorrectly";
     public const string DoYouWantToSendAPasswordToMail_quest_quest = "DoYouWantToSendAPasswordToMail_quest_quest";
-    public const string DoYouWishToSendALoginNameToTheMail_quest_quest = "DoYouWishToSendALoginNameToTheMail_quest_quest";
+    public const string DoYouWishToSendALoginNameToTheMail = "DoYouWishToSendALoginNameToTheMail";
     public const string PasswordASecondTime = "PasswordASecondTime";
     public const string generateARandomStrongPassword = "generateARandomStrongPassword";
     public const string uppercaseAndLowercaseLetters_commaNumbers_commaAnd_period_sol_sol_lowbarCharactersAre_sol_solAllowed = "uppercaseAndLowercaseLetters_commaNumbers_commaAnd_period_sol_sol_lowbarCharactersAre_sol_solAllowed";
@@ -5276,7 +5276,6 @@ public class XlfKeys
     public const string DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters = "DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters";
     public const string ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly = "ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly";
     public const string DoYouWantToSendAPasswordToMail = "DoYouWantToSendAPasswordToMail";
-    public const string DoYouWishToSendALoginNameToTheMail = "DoYouWishToSendALoginNameToTheMail";
     public const string PageLoad = "PageLoad";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
     public const string LoginWillBePernamentUntilYouSignedOut = "LoginWillBePernamentUntilYouSignedOut";
