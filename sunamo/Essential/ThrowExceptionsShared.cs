@@ -8,7 +8,23 @@ using System.Threading.Tasks;
 
 public partial class ThrowExceptions
 {
+
+
     #region For easy copy in SunamoException project
+    /// <summary>
+    /// Verify whether A3 contains A4
+    /// true if everything is OK
+    /// false if some error occured
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="v"></param>
+    /// <param name="p"></param>
+    /// <param name="after"></param>
+    public static bool NotContains(string stacktrace, object type, string v, string p, params string[] after)
+    {
+        return ThrowIsNotNull(stacktrace, Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
+    }
+
     public static void ArgumentOutOfRangeException(string stacktrace, object type, string methodName, string paramName, string message = null)
     {
         ThrowIsNotNull(stacktrace, Exceptions.ArgumentOutOfRangeException(FullNameOfExecutedCode(type, methodName, true), paramName, message));

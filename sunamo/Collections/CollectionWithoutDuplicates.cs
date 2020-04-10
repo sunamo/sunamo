@@ -12,6 +12,7 @@ public class CollectionWithoutDuplicates<T>
 
     public CollectionWithoutDuplicates()
     {
+        
         if (br)
         {
             System.Diagnostics.Debugger.Break();

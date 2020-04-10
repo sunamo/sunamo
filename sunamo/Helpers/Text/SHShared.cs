@@ -36,6 +36,21 @@ public static partial class SH
 
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
 
+    public static int AnotherOtherThanLetterOrDigit(string content, int v)
+    {
+        int i = v;
+        for (; i < content.Length; i++)
+        {
+            if (!char.IsLetterOrDigit(content[i]))
+            {
+                //i--;
+                return i;
+            }
+        }
+        //i--;
+        return i--;
+    }
+
     public static List<string> SplitByLetterCount(string s, int c)
     {
         int sl = s.Length;

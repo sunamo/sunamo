@@ -130,6 +130,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Enums\StartEnd.cs" />
+    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="Values\AllListsShared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
@@ -674,7 +675,7 @@
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XlfResourcesH.cs" />
-    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
+    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamoShared.cs" />
     <Compile Include="SunamoJson.cs" />
     <Compile Include="SunamoJsonShared.cs" />
     <Compile Include="SunamoTimer.cs" />
