@@ -899,6 +899,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         SqlCommand comm = new SqlCommand(string.Format("INSERT INTO {0} VALUES {1}", tabulka, hodnoty));
         bool totalLower = false;
+
         object d = SelectLastIDFromTableSigned(signed, tabulka, idt, sloupecID, out totalLower);
         #region MyRegion
         int pricist = 0;
@@ -2012,7 +2013,11 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     }
 
     /// <summary>
+    /// Not use
+    /// return alwys int.MinValue
+    /// 
     /// If no row was found, return max value
+    /// Only place where can be called is in Insert2
     /// 
     /// Vrátí všechny hodnoty z sloupce A3 a pak počítá od A2.MinValue až narazí na hodnotu která v tabulce nebyla, tak ji vrátí
     /// Proto není potřeba vr nijak inkrementovat ani jinak měnit
@@ -2078,6 +2083,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// Has signed, therefore can return values below -1
     /// 
     /// 
+    /// Nevm jestli není jeblá - vrací mi ID jež následně budou existovat
+    /// 
     /// Nedá se použít na desetinné typy
     /// Vrátí mi nejmenší volné číslo tabulky A1
     /// Pokud bude obsazene 1,3, vrátí až 4
@@ -2089,6 +2096,9 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     public object SelectLastIDFromTableSigned(bool signed, string p, Type idt, string sloupecID, out bool totalLower)
     {
         totalLower = false;
+        //// Snaž se vždy používat SelectLastIDFromTableSigned2 místo SelectLastIDFromTableSigned - ta mi vracela hodnotu která při přidávání poté již v DB existovala
+        //return SelectLastIDFromTableSigned2(p, idt, sloupecID);
+
         string dd = ExecuteScalar(new SqlCommand("SELECT MAX(" + sloupecID + ") FROM " + p)).ToString();
 
         if (dd == "")
@@ -2127,38 +2137,38 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         if (idt == typeof(Byte))
         {
-            return Byte.Parse(dd);
+            return Byte.Parse(dd) + 1;
         }
         else if (idt == typeof(Int16))
         {
-            return Int16.Parse(dd);
+            return Int16.Parse(dd) + 1;
         }
         else if (idt == typeof(Int32))
         {
-            return Int32.Parse(dd);
+            return Int32.Parse(dd) + 1;
         }
         else if (idt == typeof(Int64))
         {
-            return Int64.Parse(dd);
+            return Int64.Parse(dd) + 1;
         }
         else if (idt == typeof(SByte))
         {
-            return SByte.Parse(dd);
+            return SByte.Parse(dd) + 1;
         }
         else if (idt == typeof(UInt16))
         {
-            return UInt16.Parse(dd);
+            return UInt16.Parse(dd) + 1;
         }
         else if (idt == typeof(UInt32))
         {
-            return UInt32.Parse(dd);
+            return UInt32.Parse(dd) + 1;
         }
         else if (idt == typeof(UInt64))
         {
-            return UInt64.Parse(dd);
+            return UInt64.Parse(dd) + 1;
         }
-        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType");
-        return decimal.Parse(dd);
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType") + 1;
+        return decimal.Parse(dd) + 1;
     }
 
     public int SelectFirstAvailableIntIndex(bool signed, string table, string column)

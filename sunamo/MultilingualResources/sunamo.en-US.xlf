@@ -12,7 +12,12 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
     </header>
     <body>
+      
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
+       <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Describe something you remember well (what you love, but other people don't know about it 1-1000 characters</target>
+       </trans-unit>
         <trans-unit id="alreadyExistsInTheDatabase" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">already exists in the database</target>
@@ -26,7 +31,7 @@
          <target state="new">About app</target>
        </trans-unit>
         <trans-unit id="ThisApplicationWasCreatedInTheDevelopmentEnvironmentVisualStudio2015CommunityWhichIsEntirelyFreeOfChargeThePersonWhoHasMadeThisAppIsOnInternetKnownUnderNickSunamo" translate="yes" xml:space="preserve">
-         <source>This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo.</source>
+         
          <target state="new">This application was created in the development environment Visual Studio 2015 Community, which is entirely free of charge. The person who has made this app is on internet known under nick sunamo</target>
        </trans-unit>
         <trans-unit id="Cancel" translate="yes" xml:space="preserve">

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 public class XlfKeys
 {
-	public const string MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma = "MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma"; 
-
+	public const string MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma = "MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma";
+    public const string DoYouWantToSendASecurityQuestionAndAnswerToMail = "DoYouWantToSendASecurityQuestionAndAnswerToMail";
     public const string NicknameCannotContainAt = "NicknameCannotContainAt";
 
     public const string alreadyExistsInTheDatabase_period = "alreadyExistsInTheDatabase_period";
@@ -694,7 +694,7 @@ public class XlfKeys
     public const string EnterATrackName_lparIfYouEnterDiacriticsOrOtherIllegalCharacters_commaTheyWillReplaceThemselves_rpar = "EnterATrackName_lparIfYouEnterDiacriticsOrOtherIllegalCharacters_commaTheyWillReplaceThemselves_rpar";
     public const string DownloadGeocache_verbar_verbarsToLocale = "DownloadGeocache_verbar_verbarsToLocale";
     public const string CreateANewCacheList = "CreateANewCacheList";
-    public const string TheListIsPublic_quest_quest = "TheListIsPublic_quest_quest";
+    public const string TheListIsPublic = "TheListIsPublic";
     public const string ReverseList = "ReverseList";
     public const string ListOfCachesList = "ListOfCachesList";
     public const string CreateHTMLList = "CreateHTMLList";
@@ -731,7 +731,7 @@ public class XlfKeys
     public const string MetaInformace = "MetaInformace";
     public const string GenerateCodeForEachRoute = "GenerateCodeForEachRoute";
     public const string GenerateCodeForRouteGallery = "GenerateCodeForRouteGallery";
-    public const string CreateMyPublic_quest_questGalleryOfGpxRoutes = "CreateMyPublic_quest_questGalleryOfGpxRoutes";
+    public const string CreateMyPublicGalleryOfGpxRoutes = "CreateMyPublicGalleryOfGpxRoutes";
     public const string IfYouNoLongerWantToShareYourRoutes_commaUseTheButtonBelowToGenerateANewCode_periodHowever_commaIfSomeoneHasAnAddressOnARoute_commaTheyWillSeeIt_periodTheSecondButtonCanReGenerateTheCodeFor_sol_solAllYourRoutes = "IfYouNoLongerWantToShareYourRoutes_commaUseTheButtonBelowToGenerateANewCode_periodHowever_commaIfSomeoneHasAnAddressOnARoute_commaTheyWillSeeIt_periodTheSecondButtonCanReGenerateTheCodeFor_sol_solAllYourRoutes";
     public const string YourCompleteGalleryOfYourRoutesInclOptionsToSortByManyDifferentDataPleaseVisit = "YourCompleteGalleryOfYourRoutesInclOptionsToSortByManyDifferentDataPleaseVisit";
     public const string List_sol_solAllYourGPXTracks = "List_sol_solAllYourGPXTracks";
@@ -1620,7 +1620,7 @@ public class XlfKeys
     public const string TheNicknameCannotContainSpaces = "TheNicknameCannotContainSpaces";
     public const string Login_apos_sol_solAll_aposIsReservedForOtherPurposes = "Login_apos_sol_solAll_aposIsReservedForOtherPurposes";
     public const string DeleteReply = "DeleteReply";
-    public const string WhenWasClickedOnOptionsInThisQuestionnaire_quest_quest = "WhenWasClickedOnOptionsInThisQuestionnaire_quest_quest";
+    public const string WhenWasClickedOnOptionsInThisQuestionnaire = "WhenWasClickedOnOptionsInThisQuestionnaire";
     public const string ofElementsInTheChipsCollection = "ofElementsInTheChipsCollection";
     public const string doesNotMatchTheNumberOfElementsInImagesTn = "doesNotMatchTheNumberOfElementsInImagesTn";
     public const string JustifiedGalleryHelper_periodGetInnerHtmlSunamoImagesViewer_colonTheNumberOfElementsInThePhotosNamesCollection_lpar = "JustifiedGalleryHelper_periodGetInnerHtmlSunamoImagesViewer_colonTheNumberOfElementsInThePhotosNamesCollection_lpar";
@@ -1705,7 +1705,7 @@ public class XlfKeys
     public const string YouHaveNoMoreSignInAttempts_commaPleaseTryAgainInAnHour = "YouHaveNoMoreSignInAttempts_commaPleaseTryAgainInAnHour";
     public const string TheSessionIDFoundInTheDBDoesNotMatchYourSessionID_periodLogOutAndLogIn = "TheSessionIDFoundInTheDBDoesNotMatchYourSessionID_periodLogOutAndLogIn";
     public const string DoMetodyLoginedUser_periodID_lpar_rparSeNedostalAniParametrHttpContext_commaAniSunamoPage = "DoMetodyLoginedUser_periodID_lpar_rparSeNedostalAniParametrHttpContext_commaAniSunamoPage";
-    public const string IllegalSortValues_commaApparentlyPublic_quest_questApplicationError = "IllegalSortValues_commaApparentlyPublic_quest_questApplicationError";
+    public const string IllegalSortValues_commaApparentlyPublicApplicationError = "IllegalSortValues_commaApparentlyPublicApplicationError";
     public const string Webmaster = "Webmaster";
     public const string SuspendedWithoutLogin = "SuspendedWithoutLogin";
     public const string YouCannotAddOrRemoveCommentsForTheNopeWebsite = "YouCannotAddOrRemoveCommentsForTheNopeWebsite";
@@ -1967,7 +1967,7 @@ public class XlfKeys
     public const string AnErrorHasOccured = "AnErrorHasOccured";
     public const string ImageWithIDReceivedInUriNotFound_period_periodInDatabase_period = "ImageWithIDReceivedInUriNotFound_period_periodInDatabase_period";
     public const string Album_colon_colonsAreSortedByFirstUploadDateInDescendingOrder_period = "Album_colon_colonsAreSortedByFirstUploadDateInDescendingOrder_period";
-    public const string ThisGalleryIsPublic_quest_quest_periodOnlyYouCanSeeThisMessage_period = "ThisGalleryIsPublic_quest_quest_periodOnlyYouCanSeeThisMessage_period";
+    public const string ThisGalleryIsPublic_periodOnlyYouCanSeeThisMessage_period = "ThisGalleryIsPublic_periodOnlyYouCanSeeThisMessage_period";
     public const string ThisGalleryIsPrivateAndAValidAlbum_colon_colonKeyParameterWasNotFound_period_periodInURI = "ThisGalleryIsPrivateAndAValidAlbum_colon_colonKeyParameterWasNotFound_period_periodInURI";
     public const string GalleryIsPrivate_commaAccessCodeWasIncorrect_period = "GalleryIsPrivate_commaAccessCodeWasIncorrect_period";
     public const string NoAlbum_colon_colonsHaveBeenViewedInTheLastWeek_lparToday_aposSHitsWillOnlyBeVisibleTomorrow_rpar_period = "NoAlbum_colon_colonsHaveBeenViewedInTheLastWeek_lparToday_aposSHitsWillOnlyBeVisibleTomorrow_rpar_period";
@@ -1977,7 +1977,7 @@ public class XlfKeys
     public const string TheRequestedAlbum_colon_colonWasNotFound_period_periodHere = "TheRequestedAlbum_colon_colonWasNotFound_period_periodHere";
     public const string PhotosInAlbum_colon_colon_colon_colon = "PhotosInAlbum_colon_colon_colon_colon";
     public const string OnlyPhotosUploadedOnAreShown = "OnlyPhotosUploadedOnAreShown";
-    public const string ThisAlbum_colon_colonIsPublic_quest_quest_periodOnlyYouCanSeeThisMessage_period = "ThisAlbum_colon_colonIsPublic_quest_quest_periodOnlyYouCanSeeThisMessage_period";
+    public const string ThisAlbum_colon_colonIsPublic_periodOnlyYouCanSeeThisMessage_period = "ThisAlbum_colon_colonIsPublic_periodOnlyYouCanSeeThisMessage_period";
     public const string ThisAlbum_colon_colonIsPrivateAndAValidAlbum_colon_colonKeyParameterWasNotFound_period_periodInURI = "ThisAlbum_colon_colonIsPrivateAndAValidAlbum_colon_colonKeyParameterWasNotFound_period_periodInURI";
     public const string Album_colon_colonPrivate_commaAccessCodeIncorrect_period = "Album_colon_colonPrivate_commaAccessCodeIncorrect_period";
     public const string TheRequestedAlbum_colon_colonWasNotFound_period_periodHere_commaTheUserRenamedOrDeletedItIfItEverExisted_period = "TheRequestedAlbum_colon_colonWasNotFound_period_periodHere_commaTheUserRenamedOrDeletedItIfItEverExisted_period";
@@ -2014,11 +2014,11 @@ public class XlfKeys
     public const string GCCode = "GCCode";
     public const string TheCorrectCodeWasNotFound_period_periodToAccessThisGallery_commaMaybeTheGalleryNeverExisted_period = "TheCorrectCodeWasNotFound_period_periodToAccessThisGallery_commaMaybeTheGalleryNeverExisted_period";
     public const string GalleryOfUser_aposSGPXFiles = "GalleryOfUser_aposSGPXFiles";
-    public const string NoPublic_quest_questCacheListsFound = "NoPublic_quest_questCacheListsFound";
-    public const string ListingOfPublic_quest_questCacheLists = "ListingOfPublic_quest_questCacheLists";
+    public const string NoPublicCacheListsFound = "NoPublicCacheListsFound";
+    public const string ListingOfPublicCacheLists = "ListingOfPublicCacheLists";
     public const string List_sol_solAllCaches = "List_sol_solAllCaches";
     public const string ListOfCachesWithID = "ListOfCachesWithID";
-    public const string TheListWasNotPublishedAsPublic_quest_questAndTheLoggedInUserHasNoRightToViewTheNonPublic_quest_questCacheLists_period = "TheListWasNotPublishedAsPublic_quest_questAndTheLoggedInUserHasNoRightToViewTheNonPublic_quest_questCacheLists_period";
+    public const string TheListWasNotPublishedAsPublicAndTheLoggedInUserHasNoRightToViewTheNonPublicCacheLists_period = "TheListWasNotPublishedAsPublicAndTheLoggedInUserHasNoRightToViewTheNonPublicCacheLists_period";
     public const string NoCachesAddedToThisList = "NoCachesAddedToThisList";
     public const string YouWereNotLoggedIn_period_period_commaTheProgramCannotAuthorize_excl_exclYou = "YouWereNotLoggedIn_period_period_commaTheProgramCannotAuthorize_excl_exclYou";
     public const string YouHaven_aposTUploadedAnyGPXTracksYet_period = "YouHaven_aposTUploadedAnyGPXTracksYet_period";
@@ -2833,7 +2833,7 @@ public class XlfKeys
     public const string successTabulka = "successTabulka";
     public const string Not_sol_solAllNecessaryParametersWerePassed = "Not_sol_solAllNecessaryParametersWerePassed";
     public const string _sol_solAllTaggedBlogpostsHaveBeenUnmarkedAsDraft_solUnpublished_period = "_sol_solAllTaggedBlogpostsHaveBeenUnmarkedAsDraft_solUnpublished_period";
-    public const string AnEmptyBlogpostListHasBeenSubmittedForPublic_quest_questation = "AnEmptyBlogpostListHasBeenSubmittedForPublic_quest_questation";
+    public const string AnEmptyBlogpostListHasBeenSubmittedForPublication = "AnEmptyBlogpostListHasBeenSubmittedForPublication";
     public const string FailedToSetAsPublished_commaAuthenticationError = "FailedToSetAsPublished_commaAuthenticationError";
     public const string Edit = "Edit";
     public const string Display = "Display";
@@ -3622,7 +3622,7 @@ public class XlfKeys
     public const string ThisCacheIsTemporarilyUnavailable_periodReadTheLogsBelowToReadTheStatusForThisCache_period = "ThisCacheIsTemporarilyUnavailable_periodReadTheLogsBelowToReadTheStatusForThisCache_period";
     public const string Listing = "Listing";
     public const string ShowOnGoogleMaps = "ShowOnGoogleMaps";
-    public const string Public_quest_quest = "Public_quest_quest";
+    public const string Public = "Public";
     public const string District = "District";
     public const string ListOfCaches = "ListOfCaches";
     public const string listsOfCaches = "listsOfCaches";
@@ -3894,13 +3894,13 @@ public class XlfKeys
     public const string GenerateANewPassword = "GenerateANewPassword";
     public const string PleaseAnswerThisSecurityQuestionToGenerateANewPassword = "PleaseAnswerThisSecurityQuestionToGenerateANewPassword";
     public const string Register = "Register";
-    public const string DoYouWantToSendASecurityQuestionAndAnswerToMail_quest_quest = "DoYouWantToSendASecurityQuestionAndAnswerToMail_quest_quest";
+    
     public const string ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnow_periodIfThisRuleIsNotFollowed_commaItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion_period = "ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnow_periodIfThisRuleIsNotFollowed_commaItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion_period";
     public const string DescribeSomethingYouRememberWell_commaWhatYouLoveButOtherPeopleDon_aposTKnowAboutIt_periodCharacters = "DescribeSomethingYouRememberWell_commaWhatYouLoveButOtherPeopleDon_aposTKnowAboutIt_periodCharacters";
     public const string ResponseToSecurityQuestion = "ResponseToSecurityQuestion";
     public const string SecurityQuestion = "SecurityQuestion";
     public const string ATTENTION_colonMakeSureYouHaveEnteredTheEmailCorrectly = "ATTENTION_colonMakeSureYouHaveEnteredTheEmailCorrectly";
-    public const string DoYouWantToSendAPasswordToMail_quest_quest = "DoYouWantToSendAPasswordToMail_quest_quest";
+    public const string DoYouWantToSendAPasswordToMail = "DoYouWantToSendAPasswordToMail";
     public const string DoYouWishToSendALoginNameToTheMail = "DoYouWishToSendALoginNameToTheMail";
     public const string PasswordASecondTime = "PasswordASecondTime";
     public const string generateARandomStrongPassword = "generateARandomStrongPassword";
@@ -4182,7 +4182,7 @@ public class XlfKeys
     public const string NotAllRequiredParametersWerePassed = "NotAllRequiredParametersWerePassed";
     public const string AllTaggedBlogPostsHaveBeenMarkedAsDraftUnpublished = "AllTaggedBlogPostsHaveBeenMarkedAsDraftUnpublished";
     public const string UnableToGetAllParameterNames = "UnableToGetAllParameterNames";
-    public const string AnEmptyBlogpostListHasBeenSubmittedForPublication = "AnEmptyBlogpostListHasBeenSubmittedForPublication";
+    
     public const string AllTaggedBlogpostsHaveBeenUnmarkedAsDraftUnpublished = "AllTaggedBlogpostsHaveBeenUnmarkedAsDraftUnpublished";
     public const string NotAllNecessaryParametersWerePassed = "NotAllNecessaryParametersWerePassed";
     public const string wasReCreatedSuccessfully = "wasReCreatedSuccessfully";
@@ -4322,8 +4322,6 @@ public class XlfKeys
     public const string YouWereNotLoggedInTheProgramCannotAuthorizeYou = "YouWereNotLoggedInTheProgramCannotAuthorizeYou";
     public const string TheListWasNotPublishedAsPublicAndTheLoggedInUserHasNoRightToViewTheNonPublicCacheLists = "TheListWasNotPublishedAsPublicAndTheLoggedInUserHasNoRightToViewTheNonPublicCacheLists";
     public const string ListAllCaches = "ListAllCaches";
-    public const string ListingOfPublicCacheLists = "ListingOfPublicCacheLists";
-    public const string NoPublicCacheListsFound = "NoPublicCacheListsFound";
     public const string TheCorrectCodeWasNotFoundToAccessThisGalleryMaybeTheGalleryNeverExisted = "TheCorrectCodeWasNotFoundToAccessThisGalleryMaybeTheGalleryNeverExisted";
     public const string SuchACombinationOfCodeAndUserIDWasNotFoundInTheDatabase = "SuchACombinationOfCodeAndUserIDWasNotFoundInTheDatabase";
     public const string SuchATraceWasNotFoundHere = "SuchATraceWasNotFoundHere";
@@ -4432,7 +4430,7 @@ public class XlfKeys
     public const string noOfThat = "noOfThat";
     public const string SomethingWentWrong = "SomethingWentWrong";
     public const string IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes = "IfYouNoLongerWantToShareYourRoutesUseTheButtonBelowToGenerateANewCodeHoweverIfSomeoneHasAnAddressOnARouteTheyWillSeeItTheSecondButtonCanReGenerateTheCodeForAllYourRoutes";
-    public const string CreateMyPublicGalleryOfGpxRoutes = "CreateMyPublicGalleryOfGpxRoutes";
+    
     public const string ViewCountLast7DaysToday = "ViewCountLast7DaysToday";
     public const string AutoroviWaypointy = "AutoroviWaypointy";
     public const string MyOwnWaypoints = "MyOwnWaypoints";
@@ -4442,7 +4440,7 @@ public class XlfKeys
     public const string ListingOfAllUsers = "ListingOfAllUsers";
     public const string ShowingMaximumGeocache = "ShowingMaximumGeocache";
     public const string DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOraddnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt = "DearVisitorsWhetherYouAreFromAPlanetCalledGeoCachingOrMugglesICreatedThisSiteMainlyToPlanGeoCachingTripsToMakeVariousStatisticsOfCachesFindingOrToInsertMyOwnWaypointsAndCachingNotesYouAsNoAdminsOfThisSiteCanViewSomeOfTheThingsButDoNotEditOraddnythingEachCacheHasAUniqueNumberAccordingToThePaperOnWhichIHaveItOrWillHaveItPrintedAtTheBeginningIPrintedIt";
-    public const string TheListIsPublic = "TheListIsPublic";
+    
     public const string DownloadGeocachesToLocale = "DownloadGeocachesToLocale";
     public const string SplitTheRouteInto2PartsTheMiddlePartWillBeRemoved = "SplitTheRouteInto2PartsTheMiddlePartWillBeRemoved";
     public const string ListAllGPXTracksOfTheUser = "ListAllGPXTracksOfTheUser";
@@ -4623,7 +4621,7 @@ public class XlfKeys
     public const string NicknameCannotContainEqualSign = "NicknameCannotContainEqualSign";
     public const string NicknameCannotContainAmpersand = "NicknameCannotContainAmpersand";
     public const string NicknameCannotContaintAt = "NicknameCannotContaintAt";
-    public const string WhenWasClickedOnOptionsInThisQuestionnaire = "WhenWasClickedOnOptionsInThisQuestionnaire";
+    
     public const string JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection = "JustifiedGalleryHelperGetInnerHtmlSunamoImagesViewerTheNumberOfElementsInThePhotosNamesCollection";
     public const string JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection = "JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAnchorsCollection";
     public const string JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection = "JustifiedGalleryHelperGetInnerHtmlTheNumberOfElementsInTheAltsCollection";
@@ -5207,7 +5205,7 @@ public class XlfKeys
     public const string UseTheGetAsyncMethod = "UseTheGetAsyncMethod";
     public const string ThisCacheListingHasBeenArchived = "ThisCacheListingHasBeenArchived";
     public const string ThisCacheIsTemporarilyUnavailableReadTheLogsBelowToReadTheStatusForThisCache = "ThisCacheIsTemporarilyUnavailableReadTheLogsBelowToReadTheStatusForThisCache";
-    public const string Public = "Public";
+    
     public const string YouHavenTUploadedAnyGpxTracksYet = "YouHavenTUploadedAnyGpxTracksYet";
     public const string SpeedInMS = "SpeedInMS";
     public const string AltitudeInMNM = "AltitudeInMNM";
@@ -5271,11 +5269,11 @@ public class XlfKeys
     public const string ANewPasswordHasBeenSentToYourEmail = "ANewPasswordHasBeenSentToYourEmail";
     public const string NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword = "NoLoginEmailEnteredEnterOneOfTheseOnAHrefLoginAspxLoginAspxAAndClickGenerateNewPassword";
     public const string HtmlGenericControlPPleaseAnswerThisSecurityQuestionToGenerateANewPasswordHtmlButtonBtnSubmit = "HtmlGenericControlPPleaseAnswerThisSecurityQuestionToGenerateANewPasswordHtmlButtonBtnSubmit";
-    public const string DoYouWantToSendASecurityQuestionAndAnswerToMail = "DoYouWantToSendASecurityQuestionAndAnswerToMail";
+    
     public const string ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion = "ChooseAStrongQuestionAndAnswerThatOnlyYouWillKnowIfThisRuleIsNotFollowedItIsPossibleThatSomeoneWillSeizeYourAccountJustTheRightAnswerToTheSecurityQuestion";
     public const string DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters = "DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters";
     public const string ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly = "ATTENTIONMakeSureYouHaveEnteredTheEmailCorrectly";
-    public const string DoYouWantToSendAPasswordToMail = "DoYouWantToSendAPasswordToMail";
+    
     public const string PageLoad = "PageLoad";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
     public const string LoginWillBePernamentUntilYouSignedOut = "LoginWillBePernamentUntilYouSignedOut";
