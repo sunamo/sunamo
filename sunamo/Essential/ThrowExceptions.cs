@@ -163,19 +163,7 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
     }
-    /// <summary>
-    /// Verify whether A3 contains A4
-    /// true if everything is OK
-    /// false if some error occured
-    /// </summary>
-    /// <param name="type"></param>
-    /// <param name="v"></param>
-    /// <param name="p"></param>
-    /// <param name="after"></param>
-    public static bool NotContains(string stacktrace, object type, string v, string p, params string[] after)
-    {
-        return ThrowIsNotNull(stacktrace, Exceptions.NotContains(FullNameOfExecutedCode(type, v, true), p, after));
-    }
+ 
     /// <summary>
     /// Return & throw exception whether directory NOT exists
     /// </summary>

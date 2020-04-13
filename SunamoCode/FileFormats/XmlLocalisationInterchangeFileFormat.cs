@@ -22,8 +22,46 @@ namespace SunamoCode
     /// </summary>
     public static class XmlLocalisationInterchangeFileFormat
     {
+
+
         static List<string> xlfSolutions = new List<string>();
         static Dictionary<string, string> unallowedEnds = new Dictionary<string, string>();
+
+        public static void CopyKeysTrailedWith_()
+        {
+            #region copy keys trailed with _
+            List<string> consts = new List<string>();
+            AllLists.InitHtmlEntitiesFullNames();
+
+            var val = AllLists.htmlEntitiesFullNames.Values.ToList();
+            int i;
+            for (i = 0; i < val.Count; i++)
+            {
+                val[i] = "_" + val[i];
+            }
+
+            var newConsts = new StringBuilder();
+            var newConsts2 = new List<string>();
+            // 
+            foreach (var item in consts)
+            {
+                var item3 = item;
+                // replace all entity 
+                foreach (var item2 in val)
+                {
+                    item3 = item3.Replace(item2, string.Empty);
+                }
+
+                if (!consts.Contains(item3) && !newConsts2.Contains(item3))
+                {
+                    newConsts2.Add(item3);
+                    newConsts.AppendLine(string.Format(CSharpTemplates.constant, item3));
+                }
+            }
+
+            ClipboardHelper.SetText(newConsts.ToString());
+            #endregion
+        }
 
         static XmlLocalisationInterchangeFileFormat()
         {

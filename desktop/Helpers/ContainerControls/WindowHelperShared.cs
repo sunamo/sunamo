@@ -38,6 +38,7 @@ public partial class WindowHelper{
         {
             windowOpener.windowWithUserControl = new WindowWithUserControl(result, ResizeMode.CanResizeWithGrip, true);
             windowOpener.windowWithUserControl.ShowDialog();
+            MessageBox.Show("Window was shown");
         }
 
         return dump;

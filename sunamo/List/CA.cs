@@ -126,9 +126,30 @@ public static partial class CA
         abl.b = existsIn2;
         return abl;
     }
+
+    /// <summary>
+    /// Get every item once
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="clipboardL"></param>
+    /// <returns></returns>
     public static List<T> GetDuplicities<T>(List<T> clipboardL)
     {
-        List<T> alreadyProcessed = new List<T>(clipboardL.Count);
+        List<T> alreadyProcessed;
+        return GetDuplicities<T>(clipboardL, out alreadyProcessed);
+    }
+
+    /// <summary>
+    /// Get every item once
+    /// A2 = more duplicities = more items
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="clipboardL"></param>
+    /// <param name="alreadyProcessed"></param>
+    /// <returns></returns>
+        public static List<T> GetDuplicities<T>(List<T> clipboardL, out List<T> alreadyProcessed)
+    {
+        alreadyProcessed = new List<T>(clipboardL.Count);
         CollectionWithoutDuplicates<T> duplicated = new CollectionWithoutDuplicates<T>();
         foreach (var item in clipboardL)
         {

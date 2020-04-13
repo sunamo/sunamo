@@ -49,7 +49,29 @@ namespace SunamoExceptions
             return CheckBefore(before) + "Not implemented case" + fr + " . public program error. Please contact developer" + ".";
         }
 
+        /// <summary>
+        /// Verify whether A2 contains A3
+        /// </summary>
+        /// <param name="before"></param>
+        /// <param name="originalText"></param>
+        /// <param name="shouldContains"></param>
+        public static string NotContains(string before, string originalText, params string[] shouldContains)
+        {
+            List<string> notContained = new List<string>();
+            foreach (var item in shouldContains)
+            {
+                if (!originalText.Contains(item))
+                {
+                    notContained.Add(item);
+                }
+            }
 
+            if (notContained.Count == 0)
+            {
+                return null;
+            }
+            return CheckBefore(before) + originalText + " " + "dont contains" + ": " + SH.Join(notContained, ",");
+        }
 
         public static object Custom(string before, string message)
         {

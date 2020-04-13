@@ -112,9 +112,11 @@ public partial class WpfApp{
     {
         if (IsSomethingNull("Current_DispatcherUnhandledException"))
         {
+            
             return;
         }
 
+        
         e.Handled = handled;
         WpfApp.cd.Invoke(() =>
         {
@@ -129,9 +131,9 @@ public partial class WpfApp{
         );
     }
 
-    private static void ShowExceptionWindow(EventArgs e, string n)
+    public static void ShowExceptionWindow(EventArgs e, string n)
     {
-        //MessageBox.Show("ShowExceptionWindow " + n);
+        
         var d = WindowHelper.ShowExceptionWindow(e, n);
 
         WriterEventLog.WriteToMainAppLog(d, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
@@ -157,6 +159,6 @@ public partial class WpfApp{
             }
             else { if (breakAt) { DebuggerIsAttached(); } }
         }
-);
+        );
     }
 }

@@ -18,6 +18,33 @@ using System.Text.RegularExpressions;
 using System.Windows;
 public static partial class SH
 {
+    public static bool ContainsInShared(string item, string mustContains, string v)
+    {
+        var cs = AllExtensions.cs;
+        item = item.Replace(cs, v + cs);
+        if (File.Exists(item))
+        {
+            var c = File.ReadAllText(item);
+            if (c.Contains(mustContains))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static int CountOf(string v1, char v2)
+    {
+        int c = 0;
+        foreach (var item in v1)
+        {
+            if (item == v2)
+            {
+                c++;
+            }
+        }
+
+        return c;
+    }
     public static Dictionary<char, int> StatisticLetterChars(string between, StatisticLetterCharsStrategy s, params char[] charsToStrategy)
     {
         List<char> ignoreCompletely = null;
