@@ -7,7 +7,7 @@
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.112" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\shared\shared.csproj" />

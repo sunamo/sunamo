@@ -154,6 +154,8 @@ public static partial class CL
 
 /// <summary>
     /// if fail, return empty string.
+    /// Cant load multi line
+    /// Use Load
     /// </summary>
     /// <param name = "what"></param>
     public static string UserMustType(string what)

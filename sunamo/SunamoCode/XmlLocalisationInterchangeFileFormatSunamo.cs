@@ -74,7 +74,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     public static void ConstsFromClipboard()
     {
 
-        var l = Clipboard.GetText().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        var l = ClipboardHelper.GetText().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
         //StringBuilder sb = new StringBuilder();
         //foreach (var item in l)
