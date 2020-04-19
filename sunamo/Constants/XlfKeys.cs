@@ -4,8 +4,6 @@ using System.Text;
 public class XlfKeys
 {
     public const string MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma = "MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma";
-
-
     public const string alreadyExistsInTheDatabase = "alreadyExistsInTheDatabase";
     public const string AboutApp = "AboutApp";
     public const string ThisApplicationWasCreatedInTheDevelopmentEnvironmentVisualStudio2015CommunityWhichIsEntirelyFreeOfChargeThePersonWhoHasMadeThisAppIsOnInternetKnownUnderNickSunamo = "ThisApplicationWasCreatedInTheDevelopmentEnvironmentVisualStudio2015CommunityWhichIsEntirelyFreeOfChargeThePersonWhoHasMadeThisAppIsOnInternetKnownUnderNickSunamo";
@@ -2653,7 +2651,7 @@ public class XlfKeys
     public const string SuchASongWasNotFoundInTheDatabase = "SuchASongWasNotFoundInTheDatabase";
     public const string ThereSNothingForYouYouDonTWantToaddNewYTVideoOrEditAnExistingOneItIsAlsoPossibleThatTheVideoDoesNotBelongToYou = "ThereSNothingForYouYouDonTWantToaddNewYTVideoOrEditAnExistingOneItIsAlsoPossibleThatTheVideoDoesNotBelongToYou";
     public const string errorYouWereNotLoggedInInYouCannotEditYTVideo = "errorYouWereNotLoggedInInYouCannotEditYTVideo";
-    public const string FromThePage = "FromThePage";
+    public const string fromThePage = "fromThePage";
     public const string YouManageAnExistingYTVideo = "YouManageAnExistingYTVideo";
     public const string YouHaveAlreadyAddedYourVideoToThisVideoIfYouWantToAddNewOnesYouMustFirstDeleteThePreviousOne = "YouHaveAlreadyAddedYourVideoToThisVideoIfYouWantToAddNewOnesYouMustFirstDeleteThePreviousOne";
     public const string YouAreAddingANewYTVideoToTheSong = "YouAreAddingANewYTVideoToTheSong";
