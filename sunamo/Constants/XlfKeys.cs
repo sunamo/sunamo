@@ -267,7 +267,7 @@ public class XlfKeys
     public const string GPXRoutesAuthorPages = "GPXRoutesAuthorPages";
     public const string Tracks = "Tracks";
     public const string YouWereSignedInButThisTrackDidnTBelongToYou = "YouWereSignedInButThisTrackDidnTBelongToYou";
-    public const string IWasNotEnteredOrWasEmptyI = "IWasNotEnteredOrWasEmptyI";
+    public const string WasNotEnteredOrWasEmpty = "WasNotEnteredOrWasEmpty";
     public const string YouHaveNotEnteredBothDatesTheProgramCannotContinue = "YouHaveNotEnteredBothDatesTheProgramCannotContinue";
     public const string DateFromToOrBothWereNotWithinTheValidGPXFileRange = "DateFromToOrBothWereNotWithinTheValidGPXFileRange";
     public const string TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue = "TheFirstSecondOrBothSplitFilesHadNoSegmentsTheProgramCannotContinue";
