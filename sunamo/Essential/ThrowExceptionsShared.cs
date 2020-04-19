@@ -114,7 +114,6 @@ public partial class ThrowExceptions
             {
                 throw new Exception(exception);
             }
-            ////////DebugLogger.Instance.WriteLine(exception);
 
             return false;
         }

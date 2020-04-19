@@ -140,11 +140,13 @@ namespace sunamo
 
             lastProcessedFile[e.ChangeType] = e.FullPath;
 
-            if (FS.ExistsFile(e.FullPath))
-            {
-                _onStop.Invoke(e.FullPath, true);
-                _onStart.Invoke(e.FullPath, true);
-            }
+            
+                if (FS.ExistsFile(e.FullPath))
+                {
+                    _onStop.Invoke(e.FullPath, true);
+                    _onStart.Invoke(e.FullPath, true);
+                }
+            
         }
 
         private void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)

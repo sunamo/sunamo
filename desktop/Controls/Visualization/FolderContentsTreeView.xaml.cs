@@ -48,6 +48,11 @@ namespace desktop.Controls
             }
         }
 
+        /// <summary>
+        /// A1 can be null
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="args"></param>
         public void Initialize(string folder, FolderContentsTreeViewArgs args = null)
         {
             if (args != null)
@@ -55,10 +60,16 @@ namespace desktop.Controls
                 this.args = args;
             }
 
-            AddTviFolderTo(folder, tv);
+            if (folder != null)
+            {
+                AddTviFolderTo(folder, tv);
+            }
+            
 
             tv.SelectedItemChanged += Tv_SelectedItemChanged;
         }
+
+
 
         private void Tv_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
@@ -86,6 +97,11 @@ namespace desktop.Controls
                 item.ExpandSubtree();
                 Expand(item.Items);
             }
+        }
+
+        public void AddTviFolderTo(string s)
+        {
+            AddTviFolderTo(s, tv);
         }
 
         private void AddTviFolderTo(string s, ItemsControl to)

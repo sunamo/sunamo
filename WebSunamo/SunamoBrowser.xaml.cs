@@ -13,7 +13,7 @@ using HtmlAgilityPack;
 namespace WebSunamo
 {
     /// <summary>
-    /// Interaction logic for SunamoBrowser.xaml
+    /// Use IE WebBrowser
     /// </summary>
     public partial class SunamoBrowser : UserControl, ISunamoBrowser<Control>, IControlWithResult
     {

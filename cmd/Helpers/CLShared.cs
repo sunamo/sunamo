@@ -380,7 +380,13 @@ public static void OperationWasStopped()
         return imageFile;
     }
 
-public static void AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions)
+    /// <summary>
+    /// Return None if !A1
+    /// </summary>
+    /// <param name="askUser"></param>
+    /// <param name="AddGroupOfActions"></param>
+    /// <param name="allActions"></param>
+public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddGroupOfActions, Dictionary<string, VoidVoid> allActions, string mode)
     {
         if (askUser)
         {
@@ -439,6 +445,11 @@ public static void AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> AddG
 
                 }
             }
+            return mode;
+        }
+        else
+        {
+            return "None";
         }
     }
 

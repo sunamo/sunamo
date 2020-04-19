@@ -14,6 +14,11 @@ static Type type = typeof(TemplateLoggerBase);
             _writeLineDelegate = writeLineDelegate;
         }
 
+        public void SavedToDrive(string v)
+        {
+            WriteLine(TypeOfMessage.Success, "Saved to drive: " + v);
+        }
+
         public void Finished(string nameOfOperation)
         {
             WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + "Finished");

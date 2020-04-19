@@ -16,9 +16,10 @@ using HtmlAgilityPack;
 using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
 using sunamo.Html;
 
-
+namespace SunamoWeb
+{
     /// <summary>
-    /// Interaction logic for SunamoWebView.xaml
+    /// Use Edge WebView
     /// </summary>
     public partial class SunamoWebView : UserControl, ISunamoBrowser<Control>
     {
@@ -28,7 +29,7 @@ using sunamo.Html;
         public event EventHandler<WebViewControlDOMContentLoadedEventArgs> DOMContentLoaded;
         #endregion
         #region Events from UIElement
-        public event EventHandler<ManipulationCompletedEventArgs> ManipulationCompleted; 
+        public event EventHandler<ManipulationCompletedEventArgs> ManipulationCompleted;
         #endregion
 
         public string html = null;
@@ -48,10 +49,10 @@ using sunamo.Html;
 
         private void Wv_DOMContentLoaded(object sender, WebViewControlDOMContentLoadedEventArgs e)
         {
-        html = AsyncHelper.ci.GetResult<string>( GetContent());
-        // In e is only Uri
+            html = AsyncHelper.ci.GetResult<string>(GetContent());
+            // In e is only Uri
 
-        if (DOMContentLoaded != null)
+            if (DOMContentLoaded != null)
             {
                 DOMContentLoaded(null, null);
             }
@@ -61,7 +62,7 @@ using sunamo.Html;
         {
             if (e.IsSuccess)
             {
-                html = AsyncHelper.ci.GetResult<string>( GetContent());
+                html = AsyncHelper.ci.GetResult<string>(GetContent());
             }
 
             if (NavigationCompleted != null)
@@ -77,16 +78,16 @@ using sunamo.Html;
         /// <param name="e"></param>
         private void wv_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            
+
         }
 
-        public async Task< string> GetContent()
+        public async Task<string> GetContent()
         {
-        
+
 
             WebViewTag tag = wv.Tag as WebViewTag;
             // Zde je to v pořádku, sunamo.cz vrátí dobrý výsledek ale gc.com si to chrání
-            tag.content =  Eval("document.documentElement.outerHTML;");
+            tag.content = Eval("document.documentElement.outerHTML;");
             return tag.content;
         }
 
@@ -110,7 +111,7 @@ using sunamo.Html;
         /// <summary>
         /// Return null if HTML property is null
         /// </summary>
-        public async Task< HtmlDocument> GetHtmlDocument()
+        public async Task<HtmlDocument> GetHtmlDocument()
         {
             if (string.IsNullOrEmpty(html))
             {
@@ -128,11 +129,25 @@ using sunamo.Html;
 
         public bool ScrollToEnd()
         {
-        return false;
+            return false;
         }
 
         public void Init()
         {
-            
+
+        }
+        
+        public void DownloadOrReadHiddenWebBrowser(string file, string searchQuery)
+        {
+            if (FS.ExistsFile(file))
+            {
+                html = TF.ReadAllText(file);
+            }
+            else
+            {
+                Navigate(searchQuery);
+
+            }
         }
     }
+}

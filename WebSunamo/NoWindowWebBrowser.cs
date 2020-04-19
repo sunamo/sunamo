@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Toolkit.Win32.Samples.WPF.WebView;
 using Microsoft.Toolkit.Wpf.UI.Controls;
+using SunamoWeb;
 
 namespace sunamo.web
 
@@ -17,7 +18,9 @@ namespace sunamo.web
     }
 }
 
-
+/// <summary>
+/// Is called only DownloadOrReadHiddenWebBrowser, no SHow etc.
+/// </summary>
 public class NoWindowWebBrowser : Window
 {
     string html = string.Empty;

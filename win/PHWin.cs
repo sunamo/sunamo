@@ -17,6 +17,11 @@ public class PHWin
         OpenInBrowser(prohlizec, s);
     }
 
+    public static bool IsUsed(string fullPath)
+    {
+        return FileUtil.WhoIsLocking(fullPath).Count > 0;
+    }
+
     static int open = 0;
 
     public static void AddBrowsers()

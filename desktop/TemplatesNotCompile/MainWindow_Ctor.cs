@@ -143,7 +143,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 4) Initialize helpers, SQL of app
-
+        TF.isUsed = PHWin.IsUsed;
         #endregion
 
         #region 5) Set modes

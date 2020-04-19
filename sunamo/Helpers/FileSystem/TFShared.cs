@@ -16,6 +16,7 @@ public partial class TF
 
     /// <summary>
     /// Return string.Empty when file won't exists
+    /// Use FileUtil.WhoIsLocking to avoid error The process cannot access the file because it is being used by another process
     /// </summary>
     /// <param name="s"></param>
     public static string ReadFile(string s)
@@ -23,12 +24,15 @@ public partial class TF
         return ReadFile<string, string>(s);
     }
 
+    public static Func<string, bool> isUsed = null;
+
     /// <summary>
     /// Precte soubor a vrati jeho obsah. Pokud soubor neexistuje, vytvori ho a vrati SE. 
     /// </summary>
     /// <param name="s"></param>
     public static string ReadFile<StorageFolder, StorageFile>(StorageFile s, AbstractCatalog<StorageFolder, StorageFile> ac = null)
     {
+        
         if (!File.Exists(s.ToString()))
         {
             return string.Empty;
@@ -37,6 +41,16 @@ public partial class TF
         if (ac == null)
         {
             FS.MakeUncLongPath<StorageFolder, StorageFile>(ref s, ac);
+        }
+
+        var ss = s.ToString();
+
+        if (isUsed != null)
+        {
+            if (isUsed.Invoke(ss))
+            {
+                return string.Empty;
+            }
         }
 
         if (ac == null)
@@ -239,6 +253,15 @@ public static void RemoveDoubleBomUtf8(string path)
 
     public static string ReadAllText(string path)
     {
+        if (isUsed != null)
+        {
+            if (isUsed.Invoke(path))
+            {
+                return string.Empty;
+            }
+        }
+
+
         return File.ReadAllText(path);
     }
 }

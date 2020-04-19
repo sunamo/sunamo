@@ -441,6 +441,7 @@
     <Compile Include="UserControls\ErrorListing.xaml.cs">
       <DependentUpon>ErrorListing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LoginDialog.xaml.cs" />
     <Compile Include="UserControls\LoginUc.xaml.cs">
       <DependentUpon>LoginUc.xaml</DependentUpon>
     </Compile>
@@ -675,6 +676,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ErrorListing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LoginDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

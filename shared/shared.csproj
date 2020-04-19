@@ -109,6 +109,7 @@
     <Compile Include="..\..\sunamo\shared\WriterEventLog.cs" Link="" />
     <Compile Include="..\..\sunamo\shared\WriterEventLogShared.cs" Link="" />
     <Compile Include="Collections\SunamoDictionaryWithKeysDependencyObject.cs" />
+    <Compile Include="CryptDelegates.cs" />
     <Compile Include="Crypting\Asymmetric.cs" />
     <Compile Include="Crypting\Utils.cs" />
     <Compile Include="Data\ImageWithPath.cs" />

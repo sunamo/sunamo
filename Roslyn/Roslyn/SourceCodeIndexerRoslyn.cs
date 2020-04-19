@@ -160,12 +160,13 @@ public partial class SourceCodeIndexerRoslyn
         }
     }
 
-    public Dictionary<string, List<FoundedCodeElement>> SearchInContent(string term, bool includeEmpty)
+    public Dictionary<string, List<FoundedCodeElement>> SearchInContent(string term, bool includeEmpty, bool? inComments)
     {
         Dictionary<string, List<FoundedCodeElement>> result = new Dictionary<string, List<FoundedCodeElement>>();
         bool include = false;
         foreach (var item in linesWithContent)
         {
+            
 #if DEBUG
             if (FS.GetFileName( item.Key) == "MainWindow.cs")
             {
@@ -176,6 +177,30 @@ public partial class SourceCodeIndexerRoslyn
             include = false;
             // return with zero elements - in item.Value is only lines with content. I need lines with exactly content of file to localize searched results
             List<int> founded = CA.ReturnWhichContainsIndexes(item.Value, term, SearchStrategy.AnySpaces);
+
+            if (inComments.HasValue)
+            {
+                //var lines = SH.GetLines
+                for (int i = founded.Count - 1; i >= 0; i--)
+                {
+                    var line = item.Value[i].Trim();
+                    if (line.StartsWith(CodeElementsConstants.SingleCommentCsharp))
+                    {
+                        if (!inComments.Value)
+                        {
+                            founded.RemoveAt(i);
+                        }
+                    }
+                    else
+                    {
+                        if (inComments.Value)
+                        {
+                            founded.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+
             if (founded.Count == 0)
             {
                 if (includeEmpty)
