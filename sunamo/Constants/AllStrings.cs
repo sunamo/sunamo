@@ -53,8 +53,6 @@ public class AllStrings
     public const string ds = "./";
     public const string slashAsterisk = "/*";
     public const string apostrophe = "'";
-
-
     /// <summary>
     /// left square fowl [
     /// </summary>

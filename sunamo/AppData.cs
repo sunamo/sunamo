@@ -53,6 +53,7 @@ public class AppData : AppDataAbstractBase<string, string>
     public override string GetFolder(AppFolders af)
     {
         string vr = FS.Combine(RootFolder, af.ToString());
+        FS.WithEndSlash(ref vr);
         return vr;
     }
 

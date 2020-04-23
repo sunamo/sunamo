@@ -330,7 +330,9 @@ public static partial class HtmlHelper
     }
     public static string StripAllTags(string p, string replaceFor)
     {
-        return Regex.Replace(p, @"<[^>]*>", replaceFor);
+        string vr = Regex.Replace(p, @"<[^>]*>", replaceFor);
+        vr = SH.ReplaceAllDoubleSpaceToSingle(vr);
+        return vr;
     }
 
     public static HtmlNode TrimNode(HtmlNode hn2)

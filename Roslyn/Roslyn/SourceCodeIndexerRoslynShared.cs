@@ -38,6 +38,11 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
         {
             return false;
         }
+        if (!FS.ExistsFile(pathFile))
+        {
+            return false;
+        }
+
         if (!linesWithContent.ContainsKey(pathFile))
         {
             //if (!fromFileSystemWatcher)
@@ -50,6 +55,9 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
             List<string> namespaceCodeElementsKeywords = new List<string>();
             List<string> classCodeElementsKeywords = new List<string>();
             string fileContent = string.Empty;
+
+            
+
             List<string> lines = TF.ReadAllLines(pathFile);
             fileContent = SH.JoinNL(lines);
             List<string> linesAll = SH.GetLines(fileContent);

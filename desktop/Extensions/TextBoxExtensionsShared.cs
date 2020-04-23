@@ -27,6 +27,18 @@ public static partial class TextBoxExtensions{
             text = text.Trim();
         }
 
+        if (d.validateMethod != null)
+        {
+            // ContainsInvalidFileNameChars return true if fails, therefore here cant be!
+            if (d.validateMethod(text))
+            {
+                d.messageToReallyShow = d.messageWhenValidateMethodFails;
+                validated = false;
+                return;
+            }
+        }
+
+
         if (CA.IsEqualToAnyElement<string>(text.Trim(), d.excludedStrings))
         {
             InitApp.TemplateLogger.HaveUnallowedValue(TextBlockHelper.TextOrToString(tb));

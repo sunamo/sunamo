@@ -65,7 +65,11 @@ namespace desktop
             txt.Tag = d.tag;
             txt.ToolTip = d.tooltip;
             txt.Text = d.text;
-            txt.TextChanged += d.OnTextChange;
+            if (d.OnTextChange != null)
+            {
+                txt.TextChanged += d.OnTextChange;
+            }
+            
             return txt;
         }
 

@@ -12,9 +12,8 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
     </header>
     <body>
-      
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
-       <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" translate="yes" xml:space="preserve">
+        <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">Describe something you remember well (what you love, but other people don't know about it 1-1000 characters</target>
        </trans-unit>
@@ -2807,7 +2806,7 @@
         </trans-unit>
         <trans-unit id="ApplicationsInEachLeaderboard" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated"> applications in each leaderboards.</target>
+          <target state="translated"> applications in each leaderboards</target>
         </trans-unit>
         <trans-unit id="styleOfUKGarageThatFusedItWithElementsOfAllOtherContemporaryEDMStyles" translate="yes" xml:space="preserve">
          <source></source>
@@ -8815,7 +8814,7 @@
        </trans-unit>
         <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharactert" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,?,</target>
+         <target state="translated">The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,</target>
        </trans-unit>
         <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong" translate="yes" xml:space="preserve">
          <source></source>
@@ -13867,7 +13866,11 @@
         </trans-unit>
         <trans-unit id="MayLoveTimeBuyInTheMostPopularEroticShopAndHaveWonderfulMomentsWithYourPetHandcuffsVibratorsDentsEroticLingerieDildosPuffballsOrWomanizerToPartnerWithInMinutesOverKčGiftPostageFromKčFree" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Máj, lásky čas...nakupte v nejpopulárnějším eshopu s erotickým zbožím a udělejte si se svým miláčkem báječné večery:-) pouta, vibrátory, důtky, erotické prádlo, dilda, venučiny kuličky, nebo třeba Womanizer s níž uděláš partnerku do 2 minut:-) Nad 500 Kč dárek, poštovné od 1400 Kč zdarma!</target>
+          <target state="translated">Máj, lásky čas...nakupte v nejpopulárnějším eshopu s erotickým zbožím a udělejte si se svým miláčkem báječné večery:-) pouta, vibrátory, důtky, erotické prádlo, dilda, venučiny kuličky, nebo třeba Womanizer s níž uděláš partnerku do 2 minut:-) Nad 500 Kč dárek, poštovné od 1400 Kč zdarma</target>
+        </trans-unit>
+        <trans-unit id="LastModified" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Last modified</target>
         </trans-unit>
       </group>
     </body>

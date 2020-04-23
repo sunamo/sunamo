@@ -10,5 +10,8 @@ public class HttpRequestData
     public Encoding encodingPostData;
     //public int? timeout = null; // Není v třídě HttpKnownHeaderNames
     public bool? keepAlive = null;
+    /// <summary>
+    /// Assign: StreamContent,ByteArrayContent,FormUrlEncodedContent,StringContent,MultipartContent,MultipartFormDataContent
+    /// </summary>
     public HttpContent content = null;
 }

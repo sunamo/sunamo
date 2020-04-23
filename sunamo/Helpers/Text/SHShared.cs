@@ -3466,7 +3466,7 @@ public static string ReplaceAllDoubleSpaceToSingle(string text, bool alsoHtml = 
         return text;
     }
 
-private static string FromSpace160To32(ref string text)
+public static string FromSpace160To32(ref string text)
     {
         text = Regex.Replace(text, @"\p{Z}", AllStrings.space);
         return text;

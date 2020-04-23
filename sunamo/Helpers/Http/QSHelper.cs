@@ -82,7 +82,18 @@ public partial class QSHelper
         return sb.ToString().TrimEnd('&');
     }
 
-    
+    public static string GetQS(string adresa, Dictionary<string, string> p2)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(adresa + AllStrings.q);
+
+        foreach (var item in p2)
+        {
+            sb.Append(item.Key + AllStrings.equal + item.Value + AllStrings.amp);
+        }
+
+        return sb.ToString().TrimEnd('&');
+    }
 
     /// <summary>
     /// Do A1 se zadává Request.Url.Query.Substring(1) neboli třeba pid=1&amp;aid=10 

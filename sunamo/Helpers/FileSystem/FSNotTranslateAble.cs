@@ -92,7 +92,20 @@ public partial class FS
         }
     }
 
-    
+    public static bool ContainsInvalidFileNameChars(string arg)
+    {
+        foreach (var item in invalidFileNameStrings)
+        {
+            if (arg.Contains(item))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
 
     #endregion

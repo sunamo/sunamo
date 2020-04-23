@@ -1742,7 +1742,7 @@ public class XlfKeys
     public const string ThisAppHasBeenDisabled = "ThisAppHasBeenDisabled";
     public const string NewestVersion = "NewestVersion";
     public const string RecommendedVersion = "RecommendedVersion";
-    public const string LastModifiedSpanSpan = "LastModifiedSpanSpan";
+    public const string LastModified= "LastModified";
     /// <summary>
     /// Had value App <span></span> - commented because contains html
     /// </summary>

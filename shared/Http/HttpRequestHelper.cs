@@ -55,15 +55,19 @@ public static partial class HttpRequestHelper
         }
     }
 
+ 
+
         /// <summary>
         /// A2 can be null (if dont have duplicated extension, set null)
+        /// In earlier time return ext
+        /// Now return whether was downloaded
         /// </summary>
         /// <param name = "href"></param>
         /// <param name = "DontHaveAllowedExtension"></param>
         /// <param name = "folder2"></param>
         /// <param name = "fn"></param>
         /// <param name = "ext"></param>
-    public static string Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
+    public static bool Download(string href, BoolString DontHaveAllowedExtension, string folder2, string fn, string ext = null)
     {
         if (DontHaveAllowedExtension != null)
         {
@@ -88,12 +92,21 @@ public static partial class HttpRequestHelper
             var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
             
             File.WriteAllBytes(path, c);
+            return true;
         }
 
-        return ext;
+        return false;
     }
 
-    public static string Download(string uri, BoolString DontHaveAllowedExtension, string path)
+    /// <summary>
+    /// In earlier time return ext
+    /// Now return whether was downloaded
+    /// </summary>
+    /// <param name="uri"></param>
+    /// <param name="DontHaveAllowedExtension"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static bool Download(string uri, BoolString DontHaveAllowedExtension, string path)
     {
         string p, fn, ext;
         FS.GetPathAndFileNameWithoutExtension(path, out p, out fn, out ext);

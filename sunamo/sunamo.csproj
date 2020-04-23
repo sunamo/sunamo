@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -129,9 +129,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Enums\StartEnd.cs" />
-    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
-    <Compile Include="Values\AllListsShared.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -261,7 +258,6 @@
     <Compile Include="Crypting\Symmetric.cs" />
     <Compile Include="Crypting\UtilsShared.cs" />
     <Compile Include="CSharpParser.cs" />
-    <Compile Include="Data\ReplaceInAllFilesArgs.cs" />
     <Compile Include="Data\AB.cs" />
     <Compile Include="Data\ABC.cs" />
     <Compile Include="Data\ABL.cs" />
@@ -309,6 +305,7 @@
     <Compile Include="Data\PhotoToUploadWithStream.cs" />
     <Compile Include="Data\RelatedScope.cs" />
     <Compile Include="Data\ReplaceArgs.cs" />
+    <Compile Include="Data\ReplaceInAllFilesArgs.cs" />
     <Compile Include="Data\ResultWithException.cs" />
     <Compile Include="Data\SanitizedString.cs" />
     <Compile Include="Data\SerializeContentArgs.cs" />
@@ -359,6 +356,7 @@
     <Compile Include="Enums\ContainsCompareMethod.cs" />
     <Compile Include="Enums\CssFramework.cs" />
     <Compile Include="Enums\CssNamedColors.cs" />
+    <Compile Include="Enums\CurrenciesIso4217.cs" />
     <Compile Include="Enums\CustomStatusCode.cs" />
     <Compile Include="Enums\DateTimeFormat.cs" />
     <Compile Include="Enums\DateTimeFormatStyles.cs" />
@@ -411,6 +409,7 @@
     <Compile Include="Enums\SqlExceptions.cs" />
     <Compile Include="Enums\SqlMethods.cs" />
     <Compile Include="Enums\SqlNumericType.cs" />
+    <Compile Include="Enums\StartEnd.cs" />
     <Compile Include="Enums\StatisticLetterCharsStrategy.cs" />
     <Compile Include="Enums\StorageApplicationData.cs" />
     <Compile Include="Enums\Tld.cs" />
@@ -675,6 +674,7 @@
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XlfResourcesH.cs" />
+    <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamoShared.cs" />
     <Compile Include="SunamoJson.cs" />
     <Compile Include="SunamoJsonShared.cs" />
@@ -688,6 +688,7 @@
     <Compile Include="Values\AllHtmlAttrsValues.cs" />
     <Compile Include="Values\AllHtmlTags.cs" />
     <Compile Include="Values\AllLists.cs" />
+    <Compile Include="Values\AllListsShared.cs" />
     <Compile Include="Values\AspxConsts.cs" />
     <Compile Include="Values\CommonSettingsKeys.cs" />
     <Compile Include="Values\Consts.cs" />

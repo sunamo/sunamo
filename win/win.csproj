@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="..\..\sunamo\win\ClipboardMonitor.cs" />
     <Compile Include="..\..\sunamo\win\Enums\UserFoldersWin.cs" />
+    <Compile Include="..\..\sunamo\win\FileUtilShared.cs" />
     <Compile Include="..\..\sunamo\win\GitHelper.cs" />
     <Compile Include="..\..\sunamo\win\Helpers\ClipboardHelperWin.cs" />
     <Compile Include="..\..\sunamo\win\Helpers\DWShared.cs" />

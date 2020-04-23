@@ -60,7 +60,13 @@ namespace SunamoWeb
 
         private void wv_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
         {
-            if (e.IsSuccess)
+            if (!FS.ExistsFile(file))
+            {
+                var html = HTML;
+                TF.SaveFile(html, file);
+            }
+
+                if (e.IsSuccess)
             {
                 html = AsyncHelper.ci.GetResult<string>(GetContent());
             }
@@ -83,7 +89,7 @@ namespace SunamoWeb
 
         public async Task<string> GetContent()
         {
-
+            await Task.Delay(5000);
 
             WebViewTag tag = wv.Tag as WebViewTag;
             // Zde je to v pořádku, sunamo.cz vrátí dobrý výsledek ale gc.com si to chrání
@@ -136,15 +142,21 @@ namespace SunamoWeb
         {
 
         }
-        
+
+        string file = null;
+
         public void DownloadOrReadHiddenWebBrowser(string file, string searchQuery)
         {
+            this.file = file;
             if (FS.ExistsFile(file))
             {
                 html = TF.ReadAllText(file);
+                
+                wv_NavigationCompleted(null, null);
             }
             else
             {
+                
                 Navigate(searchQuery);
 
             }

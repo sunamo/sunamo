@@ -151,6 +151,7 @@ public partial class UriWebServices
     public static class SunamoCz
     {
         public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
+        public const string appsHelp = "https://apps.sunamo.cz/help/%s";
     }
 
     public static class SexShops
@@ -428,11 +429,11 @@ Template for which I will find, have to be in derivates the same:
         /// Narodni knihovna
         /// </summary>
         public const string nkp = @"https://aleph.nkp.cz/F/K1AF26NFNIRG8S216J2Q7YBV19F2F8LF11VEA4AY4I2L2Y42M3-55374?func=find-b&find_code=WRD&x=0&y=0&request=%s&filter_code_1=WTP&filter_request_1=&filter_code_2=WLN&adjacent=N";
-        public const string vsb = "https://katalog.vsb.cz/search?type=global&q=s";
+        public const string vsb = "https://katalog.vsb.cz/search?type=global&q=%s";
         /// <summary>
         /// Knihovna akademie ved
         /// </summary>
-        public const string cas = @"https://vufind.lib.cas.cz/ustav/KNAV/Search/Results?type=AllFields&institution=KNAV&filter%5B%5D=institution%3AKNAV&lookfor=nginx&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp";
+        public const string cas = @"https://vufind.lib.cas.cz/ustav/KNAV/Search/Results?type=AllFields&institution=KNAV&filter%5B%5D=institution%3AKNAV&lookfor=%s&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp&rQhtuXCSid=04u.IQRKfg&swLoQZTxFJEVbrgB=_oD3lR7wWZ6Sx0yt&umXNFi=c5lOmp";
         public const string mlp = "https://search.mlp.cz/en/?query=%s&kde=all#/c_s_ol=query-eq:%s";
         public const string kmoAll = "https://tritius.kmo.cz/Katalog/search?q=%s&area=247&field=0";
         public const string kmoAV = "https://tritius.kmo.cz/Katalog/search?q=%s&area=238&field=0";
@@ -605,7 +606,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, Uri.EscapeUriString(term));
+        return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode( Uri.EscapeUriString(term)));
     }
 
     public static string TopRecepty(string what)

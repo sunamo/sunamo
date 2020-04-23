@@ -16,18 +16,24 @@ using System.Web;
 /// Can be only in shared coz is not available in standard
 /// </summary>
 public static partial class HttpRequestHelper{
+
+    /// <summary>
+    /// In earlier time return ext
+    /// Now return whether was downloaded
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="uri"></param>
+    /// <returns></returns>
     public static string DownloadOrRead(string path, string uri)
     {
         string html = null;
 
-        if (FS.ExistsFile(path))
+        if (!FS.ExistsFile(path))
         {
-            html = TF.ReadFile(path);
+            Download(uri, null, path);
         }
-        else
-        {
-            html = Download(uri, null, path);
-        }
+
+        html = TF.ReadFile(path); 
 
         return html;
     }
@@ -151,6 +157,12 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     return response.GetResponseStream();
 }
 
+    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
+        return GetResponseText(request, method, hrd, out response);
+    }
+
 /// <summary>
 /// A3 can be null
 /// Dont forger Dispose on A4
@@ -158,7 +170,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 /// <param name = "address"></param>
 /// <param name = "method"></param>
 /// <param name = "hrd"></param>
-public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+    public static string GetResponseText(HttpWebRequest request, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
     {
         response = null;
         
@@ -166,6 +178,8 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
         {
             hrd = new HttpRequestData();
         }
+
+        var address = request.Address.ToString();
 
         int dex = address.IndexOf(AllChars.q);
         string adressCopy = address;
@@ -177,9 +191,12 @@ public static string GetResponseText(string address, HttpMethod method, HttpRequ
             }
         }
 
+        // Cant create new instance, in A1 can be setted up property which is not allowed in Headers
+        //request.Address = address;
+
         string result = null;
 
-        var request = (HttpWebRequest)WebRequest.Create(address);
+        
         request.Method = method.Method;
 
         if (method == HttpMethod.Post)

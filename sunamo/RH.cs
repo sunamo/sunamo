@@ -162,12 +162,15 @@ public class RH
 
     /// <summary>
     /// A1 can be Type of instance
+    /// All fields must be public
     /// </summary>
     /// <param name="carSAutoType"></param>
     public static List<FieldInfo> GetFields(object carSAuto)
     {
         Type carSAutoType = null;
-        if (carSAuto.GetType() == typeof(Type))
+        var t1 = carSAuto.GetType();
+        
+        if (RH.IsType(t1))
         {
             carSAutoType = carSAuto as Type;
         }
@@ -175,7 +178,14 @@ public class RH
         {
             carSAutoType = carSAuto.GetType();
         }
-        return carSAutoType.GetFields().ToList();
+        var result = carSAutoType.GetFields().ToList();
+        return result;
+    }
+
+    private static bool IsType(Type t1)
+    {
+        var t2 = typeof(Type);
+        return t1.FullName == "System.RuntimeType" || t1 == t2;
     }
 
     /// <summary>

@@ -141,8 +141,14 @@ public partial class FS
 
         return dd;
     }
+
+    readonly static List<char> invalidFileNameChars = Path.GetInvalidFileNameChars().ToList();
+    readonly static List<string> invalidFileNameStrings;
+
     static FS()
     {
+        invalidFileNameStrings = CA.ToListString(invalidFileNameChars);
+
         s_invalidPathChars = new List<char>(Path.GetInvalidPathChars());
         if (!s_invalidPathChars.Contains(AllChars.slash))
         {
@@ -152,9 +158,10 @@ public partial class FS
         {
             s_invalidPathChars.Add(AllChars.bs);
         }
-        var inv = Path.GetInvalidFileNameChars();
-        s_invalidFileNameChars = new List<char>(inv);
-        s_invalidFileNameCharsString = SH.Join(string.Empty, inv);
+        
+        
+        s_invalidFileNameChars = new List<char>(invalidFileNameChars);
+        s_invalidFileNameCharsString = SH.Join(string.Empty, invalidFileNameChars);
         for (char i = (char)65529; i < 65534; i++)
         {
             s_invalidFileNameChars.Add(i);
@@ -162,7 +169,7 @@ public partial class FS
 
         s_invalidCharsForMapPath = new List<char>();
         s_invalidCharsForMapPath.AddRange(s_invalidFileNameChars.ToArray());
-        foreach (var item in Path.GetInvalidFileNameChars())
+        foreach (var item in invalidFileNameChars)
         {
             if (!s_invalidCharsForMapPath.Contains(item))
             {
@@ -2059,7 +2066,7 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
     public static string ReplaceIncorrectCharactersFile(string p)
     {
         string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
+        foreach (char item in invalidFileNameChars)
         {
             StringBuilder sb = new StringBuilder();
             foreach (char item2 in t)
@@ -2090,7 +2097,7 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
     public static string ReplaceIncorrectCharactersFile(string p, string replaceAllOfThisByA3, string replaceForThis)
     {
         string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
+        foreach (char item in invalidFileNameChars)
         {
             StringBuilder sb = new StringBuilder();
             foreach (char item2 in t)
@@ -2125,7 +2132,7 @@ public static void CreateFileIfDoesntExists<StorageFolder, StorageFile>(StorageF
     {
         string replaceFor = AllStrings.space;
         string t = p;
-        foreach (char item in Path.GetInvalidFileNameChars())
+        foreach (char item in invalidFileNameChars)
         {
             StringBuilder sb = new StringBuilder();
             foreach (char item2 in t)

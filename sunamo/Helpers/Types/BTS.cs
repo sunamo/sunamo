@@ -280,6 +280,10 @@ public static partial class BTS
 
     public static int ParseInt(string entry, int _default)
     {
+        SH.FromSpace160To32(ref entry);
+        entry = entry.Replace(" ", string.Empty);
+        //var ch = entry[3];
+        
         int lastInt2 = 0;
         if (int.TryParse(entry, out lastInt2))
         {

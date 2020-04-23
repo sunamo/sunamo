@@ -25,7 +25,7 @@ namespace desktop.Controls.Input
     public partial class EnterOneValueUC : UserControl, IControlWithResult, IUserControlWithMenuItemsList, IControlWithResultDebug
     {
         static Type type = typeof(EnterOneValueUC);
-
+        public ValidateData validateData = null;
         public object this[int i]
         {
             get
@@ -224,7 +224,7 @@ namespace desktop.Controls.Input
                 // Always set to true
                 item.SetValidated(previousValidate.Value);
 
-                previousValidate = item.Validate2(ExtractName(item));
+                previousValidate = item.Validate2(ExtractName(item), validateData);
 
                 if (previousValidate.HasValue)
                 {
@@ -235,6 +235,12 @@ namespace desktop.Controls.Input
                             var c = (Control)item;
                             c.BorderThickness = new Thickness(2);
                             c.BorderBrush = new SolidColorBrush(Colors.Red);
+
+                            if (!string.IsNullOrEmpty(validateData.messageToReallyShow))
+                            {
+                                tbHint.Text = validateData.messageToReallyShow;
+                            }
+
                             allOk = false;
                         }
                     }

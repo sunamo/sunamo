@@ -31,9 +31,19 @@ public partial class FS{
             {
                 return false;
             }
-            else if (TF.ReadFile(selectedFile) == string.Empty)
+            else 
             {
-                return false;
+                var ext = FS.GetExtension(selectedFile).ToLower();
+                // Musím to kontrolovat jen když je to tmp, logicky
+                if (ext == AllExtensions.tmp)
+                {
+                    if (TF.ReadFile(selectedFile) == string.Empty)
+                    {
+                        // Měl jsem tu chybu že ač exists bylo true, TF.ReadFile selhalo protože soubor neexistoval. 
+                        // Vyřešil jsem to kontrolou přípony, snad
+                        return false;
+                    }
+                }
             }
         }
         return exists;

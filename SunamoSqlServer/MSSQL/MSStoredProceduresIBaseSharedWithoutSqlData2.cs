@@ -739,7 +739,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private bool ExecuteScalarBool(SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             return false;
         }
@@ -749,7 +749,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private byte ExecuteScalarByte(SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             return 0;
         }
@@ -773,7 +773,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private float ExecuteScalarFloat(bool signed, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             if (signed)
             {
@@ -818,7 +818,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private long ExecuteScalarLong(bool signed, SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             if (signed)
             {
@@ -835,7 +835,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private bool? ExecuteScalarNullableBool(SqlCommand comm)
     {
         object o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             return null;
         }
@@ -845,7 +845,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     private short ExecuteScalarShort(bool signed, SqlCommand comm)
     {
         var o = ExecuteScalar(comm);
-        if (o == null)
+        if (IsNull(o))
         {
             if (signed)
             {

@@ -16,4 +16,7 @@ public class ValidateData
     /// </summary>
     public List<string> excludedStrings = new List<string>();
     public bool allowEmpty = false;
+    public Func<string, bool> validateMethod;
+    public string messageWhenValidateMethodFails;
+    public string messageToReallyShow;
 }
