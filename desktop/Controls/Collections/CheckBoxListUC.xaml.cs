@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -70,7 +71,7 @@ namespace desktop.Controls.Collections
         /// Args are: object sender, string operation, object data
         /// </summary>
         public event Action<object, string, object> CollectionChanged;
-        public NotifyChangesCollection<CheckBox> l = null;
+        public NotifyChangesCollection<NotifyPropertyChangedWrapper<CheckBox>> l = null;
         /// <summary>
         /// Whether have raise CollectionChanged after check 
         /// </summary>
@@ -78,11 +79,11 @@ namespace desktop.Controls.Collections
         public bool onUnCheck = true;
         public bool initialized = false;
 
-        public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear)
+        public void EventOn(bool onCheck, bool onUnCheck, bool onAdd, bool onRemove, bool onClear, bool onPropertyChanged)
         {
             this.onCheck = onCheck;
             this.onUnCheck = onUnCheck;
-            l.EventOn(onAdd, onRemove, onClear);
+            l.EventOn(onAdd, onRemove, onClear, onPropertyChanged);
         }
 
         public CheckBoxListUC()
@@ -91,8 +92,6 @@ namespace desktop.Controls.Collections
 
             Loaded += uc_Loaded;
         }
-
-       
 
         /// <summary>
         /// A2 can be null
@@ -117,12 +116,13 @@ namespace desktop.Controls.Collections
                     colButtons.Init(new ImageButtonsInit { });
                 }
 
-                l = new NotifyChangesCollection<CheckBox>(this, new ObservableCollection<CheckBox>());
+                l = new NotifyChangesCollection<NotifyPropertyChangedWrapper<CheckBox>>(this, new ObservableCollection<NotifyPropertyChangedWrapper<CheckBox>>());
                 l.CollectionChanged += L_CollectionChanged;
 
                 colButtons.SelectAll += ColButtons_SelectAll;
                 colButtons.UnselectAll += ColButtons_UnselectAll;
 
+                //var iso = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l); ;
                 lb.ItemsSource = l.l;
 
                 if (list != null)
@@ -209,7 +209,7 @@ namespace desktop.Controls.Collections
         {
             foreach (var item in l.l)
             {
-                item.IsChecked = b;
+                item.o.IsChecked = b;
             }
         }
 
@@ -219,7 +219,7 @@ namespace desktop.Controls.Collections
 
             foreach (var item in lines)
             {
-                var contents = l.Select(r => r.Content);
+                var contents = l.Select(r => r.o.Content);
                 var contents2 = new List<string>(contents.Count());
 
                 StackPanel sp = null;
@@ -235,19 +235,30 @@ namespace desktop.Controls.Collections
                 {
                     continue;
                 }
+
                 var chb = CheckBoxHelper.Get(new ControlInitData { text = item });
-                chb.IsChecked = defChecked;
-                AddCheckbox(chb);
+
+                NotifyPropertyChangedWrapper<CheckBox> notifyWrapper = new NotifyPropertyChangedWrapper<CheckBox>(chb, FrameworkElement.VisibilityProperty);
+                NotifyPropertyHelper.CheckBox(notifyWrapper);
+
+                notifyWrapper.o.IsChecked = defChecked;
+                AddCheckbox(notifyWrapper);
             }
         }
 
-        public void AddCheckbox(CheckBox chb)
+        private void NotifyWrapper_PropertyChanged(CheckBox obj)
         {
             
+        }
+
+        public void AddCheckbox(NotifyPropertyChangedWrapper<CheckBox> n)
+        {
+            var chb = n.o;
+
             // Must handling Checked / Unchecked, otherwise won't working dialogbuttons and cant exit dialog
             chb.Checked += CheckBox_Checked;
             chb.Unchecked += CheckBox_Unchecked;
-            l.Add(chb);
+            l.Add(n);
         }
 
         int dexLastChecked = -1;
@@ -259,7 +270,8 @@ namespace desktop.Controls.Collections
 
         public IEnumerable<int> CheckedIndexes()
         {
-            return CheckBoxListHelper.CheckedIndexes(l.l);
+            var innerObjects = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l);
+            return CheckBoxListHelper.CheckedIndexes(innerObjects);
         }
 
         /// <summary>
@@ -267,17 +279,20 @@ namespace desktop.Controls.Collections
         /// </summary>
         public IEnumerable<StackPanel> CheckedContent()
         {
-            return CheckBoxListHelper.CheckedContent(l.l);
+            var innerObjects = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l);
+            return CheckBoxListHelper.CheckedContent(innerObjects);
         }
 
         public List<string> CheckedStrings()
         {
-            return CheckBoxListHelper.CheckedStrings(l.l);
+            var innerObjects = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l);
+            return CheckBoxListHelper.CheckedStrings(innerObjects);
         }
 
         public Dictionary<StackPanel, bool> AllContentDict()
         {
-            return CheckBoxListHelper.CheckedContentDict(l.l);
+            var innerObjects = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l);
+            return CheckBoxListHelper.CheckedContentDict(innerObjects);
         }
 
         //public void CheckBox_Click(object sender, RoutedEventArgs e, Checkboxes chb2)
@@ -367,7 +382,7 @@ namespace desktop.Controls.Collections
 
                         for (int i = p[0]; i < p[1]; i++)
                         {
-                            l[i].IsChecked = UIElement.IsChecked;
+                            l[i].o.IsChecked = UIElement.IsChecked;
                         }
                     }
                 }
@@ -378,7 +393,8 @@ namespace desktop.Controls.Collections
 
         public List<StackPanel> AllContent()
         {
-            return CheckBoxListHelper.AllContent(l.l);
+            var innerObjects = NotifyPropertyHelper.InnerObjectsOfNotifyPropertyChangedWrapper<CheckBox>(l.l);
+            return CheckBoxListHelper.AllContent(innerObjects);
         }
 
         /// <summary>
@@ -391,11 +407,11 @@ namespace desktop.Controls.Collections
             var s = ((FrameworkElement)sender);
             var name = s.Tag;
             Tag = sender;
-            var where = l.Where(d => d.Tag == s.Tag);
+            var where = l.Where(d => d.o.Tag == s.Tag);
 
             foreach (var item in where)
             {
-                item.IsChecked = b;
+                item.o.IsChecked = b;
             }
         }
 
@@ -456,7 +472,51 @@ namespace desktop.Controls.Collections
 
         public void uc_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            searchTextBox.OnSearch += SearchTextBox_OnSearch;
+            searchTextBox.ShowSectionButton = false
+        }
+
+        private void SearchTextBox_OnSearch(SearchTextBox.SearchEventArgs e)
+        {
+            var k = e.Keyword;
+
+            DoSearch(k);
+        }
+
+        private void DoSearch(string k)
+        {
+            /*
+Here its is not possible with set up visibility
+             * */
+
+            if (k.Trim() == string.Empty)
+            {
+                foreach (var item in l)
+                {
+                    item.IsActive = true;
+                }
+            }
+            else
+            {
+                foreach (var item in l)
+                {
+                    var o = item.o;
+                    var sp = (StackPanel)o.Content;
+                    var c = CheckBoxListUC.ContentOfTextBlock(sp);
+                    if (c.Contains(k))
+                    {
+                        item.IsActive = true;
+                    }
+                    else
+                    {
+                        //o.Visibility = Visibility.Collapsed;
+                        //sp.Visibility = Visibility.Collapsed;
+                        item.IsActive = false;
+                    }
+                }
+            }
+
+            //lb.UpdateLayout();
         }
 
         public bool HandleKey(KeyEventArgs e)

@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 /// <summary>
 /// This is only one implement IList
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class NotifyChangesCollection<T> : IList<T>
+public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChanged
 {
     /// <summary>
     /// Its collection due to use also ObservableCollection and so
@@ -23,12 +24,14 @@ public class NotifyChangesCollection<T> : IList<T>
     public bool onAdd = false;
     public bool onRemove = false;
     public bool onClear = false;
+    public bool onPropertyChanged = false;
 
-    public void EventOn(bool onAdd, bool onRemove, bool onClear)
+    public void EventOn(bool onAdd, bool onRemove, bool onClear, bool onPropertyChanged)
     {
         this.onAdd = onAdd;
         this.onRemove = onRemove;
         this.onClear = onClear;
+        this.onPropertyChanged = onPropertyChanged;
     }
 
     public NotifyChangesCollection(object sender, Collection<T> c)
@@ -45,11 +48,21 @@ public class NotifyChangesCollection<T> : IList<T>
 
     public void Add(T item)
     {
+        item.PropertyChanged += Item_PropertyChanged;
         l.Add(item);
         if (onAdd)
         {
             OnCollectionChanged(ListOperation.Add, item);
         }
+    }
+
+    private void Item_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (onPropertyChanged)
+        {
+            T t = (T)sender;
+            OnCollectionChanged(ListOperation.PropertyChanged, t);
+        }   
     }
 
     public void Clear()

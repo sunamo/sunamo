@@ -623,11 +623,15 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// Conn nastaví automaticky
     /// </summary>
     /// <param name="sql"></param>
-    public DataTable SelectDataTable(SqlCommand comm)
+    public DataTable SelectDataTableSP(string spName)
     {
         using (var conn = new SqlConnection(Cs))
         {
             conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.CommandText = spName;
+           
             var dt = SelectDataTable(conn, comm);
 
             conn.Close();
@@ -1620,8 +1624,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     public List<string> SelectGetAllTablesInDB()
     {
+        
         List<string> vr = new List<string>();
-        DataTable dt = SelectDataTableSelective("INFORMATION_SCHEMA.TABLES", "TABLE_NAME", "TABLE_TYPE", "BASE TABLE");
+        DataTable dt = null;
+        dt = SelectDataTableSelective("INFORMATION_SCHEMA.TABLES", "TABLE_NAME", "TABLE_TYPE", "BASE TABLE");
+        //dt = SelectDataTable(new SqlCommand("dbo.sp_GetAllTables"));
+        //dt = SelectDataTableSP("sp_GetAllTables");
         foreach (DataRow item in dt.Rows)
         {
             vr.Add(item.ItemArray[0].ToString());
@@ -1696,6 +1704,22 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         AddCommandParameterFromAbc(comm, ab);
         //NT
         return this.SelectDataTable(comm);
+    }
+
+    /// <summary>
+    /// Conn nastaví automaticky
+    /// </summary>
+    /// <param name="sql"></param>
+    public DataTable SelectDataTable(SqlCommand comm)
+    {
+        using (var conn = new SqlConnection(Cs))
+        {
+            conn.Open();
+            var dt = SelectDataTable(conn, comm);
+
+            conn.Close();
+            return dt;
+        }
     }
 
     /// <summary>

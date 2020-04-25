@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 public partial class CheckBoxHelper{
+
+   
 
     /// <summary>
     /// tag is not needed, value is obtained through []

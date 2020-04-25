@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 /// <summary>
 /// Key is filename
 /// Value is ApplicationDataContainerList (every instance has unique file)
@@ -125,7 +126,10 @@ static Type type = typeof(ApplicationDataContainer);
             {
             }
             chb.IsChecked = BTS.IntToBool(maybeInt);
-            chbl.l.l.Add(chb);
+
+            NotifyPropertyChangedWrapper<CheckBox> notifyChb = new NotifyPropertyChangedWrapper<CheckBox>(chb, ToggleButton.IsCheckedProperty); 
+
+            chbl.l.l.Add(notifyChb);
         }
         chbl.l.CollectionChanged += Chbl_CollectionChanged;
     }
@@ -135,8 +139,8 @@ static Type type = typeof(ApplicationDataContainer);
         InstantSB sb = new InstantSB(innerDelimiter);
         foreach (var item in chb.l.l)
         {
-            sb.AddItem(item.Content);
-            sb.AddItem(BTS.BoolToInt(item.IsChecked.Value));
+            sb.AddItem(item.o.Content);
+            sb.AddItem(BTS.BoolToInt(item.o.IsChecked.Value));
         }
         Set(sender, chbAdded, sb.ToString());
         SaveControl(chb);

@@ -9,5 +9,10 @@ public enum ListOperation
     Insert,
     Add,
     Remove,
-    Clear
+    Clear,
+    /// <summary>
+    /// Property in item
+    /// like IsChecked of CheckBox
+    /// </summary>
+    PropertyChanged
 }

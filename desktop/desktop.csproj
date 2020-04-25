@@ -74,6 +74,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\NotifyPropertyHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
     <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />
@@ -285,6 +287,7 @@
       <DependentUpon>TwoWayTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlsGenerator.cs" />
+    <Compile Include="Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Converters\StringHexDrawingColorConverter.cs" />
     <Compile Include="Converters\StringHexWindowsMediaColorConverter.cs" />
@@ -413,6 +416,7 @@
     <Compile Include="Interfaces\IUserControlWithSizeChange.cs" />
     <Compile Include="Interfaces\IWindowOpener.cs" />
     <Compile Include="Interfaces\IWindowWithSettingsManager.cs" />
+    <Compile Include="NotifyPropertyHelper.cs" />
     <Compile Include="PHDesktop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\RegistryEntries.cs" />
@@ -472,6 +476,10 @@
     <ProjectReference Include="..\..\sunamo.notmine\PathEditor\PathEditor.csproj">
       <Project>{ec822654-cde4-4ee2-b033-55125cd11b80}</Project>
       <Name>PathEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo.notmine\SearchTextBox\SearchTextBox.csproj">
+      <Project>{a3082956-9ee4-4b35-9b4e-b07d0c4c8b56}</Project>
+      <Name>SearchTextBox</Name>
     </ProjectReference>
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{38d5e223-a4f9-425a-a848-871bfc6abca7}</Project>

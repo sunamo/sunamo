@@ -11,7 +11,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-public static partial class CA
+public static partial class 
+    CA
 {
     private static Type type = typeof(CA);
 

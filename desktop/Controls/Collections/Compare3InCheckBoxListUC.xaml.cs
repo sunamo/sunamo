@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,9 +112,9 @@ namespace desktop.Controls.Collections
             
 
             #region Must init before to avoid raise breakpoints
-            chblAutoYes.EventOn(false, true, false, false, false);
-            chblManuallyYes.EventOn(false, true, false, false, false);
-            chblManuallyNo.EventOn(true, false, false, false, false);
+            chblAutoYes.EventOn(false, true, false, false, false, false);
+            chblManuallyYes.EventOn(false, true, false, false, false, false);
+            chblManuallyNo.EventOn(true, false, false, false, false, false);
             
             #endregion
 
@@ -167,10 +168,10 @@ namespace desktop.Controls.Collections
             var toName = to.Name;
 
             var c = ch(sender);
-            var con = c.Content;
+            var con = c.o.Content;
             for (int i = from.l.l.Count - 1; i >= 0; i--)
             {
-                if (from.l.l[i].Tag == c.Tag)
+                if (from.l.l[i].o.Tag == c.o.Tag)
                 {
                     from.l.l.RemoveAt(i);
                     break;
@@ -179,7 +180,7 @@ namespace desktop.Controls.Collections
 
             //from.l.l.Remove(c);
 
-            c.Content = con;
+            c.o.Content = con;
             // Tag is transfer OK
             //var tag = c.Tag;
 
@@ -191,14 +192,16 @@ namespace desktop.Controls.Collections
             //{
             //    Save(null, null);
             //}
-
-
         }
 
-        CheckBox ch(object o)
+        NotifyPropertyChangedWrapper< CheckBox> ch(object o)
         {
             var casted = (CheckBoxListUC)o;
-            var chb = (CheckBox)casted.Tag;
+            var chb = (NotifyPropertyChangedWrapper< CheckBox>)casted.Tag;
+
+            // Debugger because I have changed from CheckBox to NotifyPropertyChangedWrapper< CheckBox>
+            Debugger.Break();
+
             return chb;
         }
 

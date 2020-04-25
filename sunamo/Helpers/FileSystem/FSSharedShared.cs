@@ -37,6 +37,10 @@ public partial class FS{
                 // Musím to kontrolovat jen když je to tmp, logicky
                 if (ext == AllExtensions.tmp)
                 {
+                    return false;
+                }
+                else
+                {
                     if (TF.ReadFile(selectedFile) == string.Empty)
                     {
                         // Měl jsem tu chybu že ač exists bylo true, TF.ReadFile selhalo protože soubor neexistoval. 

@@ -56,19 +56,29 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
             List<string> classCodeElementsKeywords = new List<string>();
             string fileContent = string.Empty;
 
-            
+            IEnumerable<string> lines = null;
+            if (fromFileSystemWatcher)
+            {
+                if (File.Exists(pathFile))
+                {
+                    lines = File.ReadAllLines(pathFile).ToList();
+                }
+            }
+            else
+            {
+                lines = TF.ReadAllLines(pathFile);
+            }
 
-            List<string> lines = TF.ReadAllLines(pathFile);
             fileContent = SH.JoinNL(lines);
             List<string> linesAll = SH.GetLines(fileContent);
-            lines = CA.WrapWith(linesAll, AllStrings.space).ToList();
+            linesAll = CA.WrapWith(linesAll, AllStrings.space).ToList();
             List<int> FullFileIndex = new List<int>();
-            for (int i = lines.Count - 1; i >= 0; i--)
+            for (int i = linesAll.Count - 1; i >= 0; i--)
             {
-                string item = lines[i];
+                string item = linesAll[i];
                 if (!SH.HasLetter(item))
                 {
-                    lines.RemoveAt(i);
+                    linesAll.RemoveAt(i);
                 }
                 else
                 {
@@ -76,17 +86,18 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                 }
             }
             FullFileIndex.Reverse();
-            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ProcessFile", "lines", lines.Count, "FullFileIndex", FullFileIndex.Count);
+            ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "ProcessFile", "lines", linesAll.Count, "FullFileIndex", FullFileIndex.Count);
             // Probably was add on background again due to watch for changes
             if (linesWithContent.ContainsKey(pathFile))
             {
                 linesWithContent.Remove(pathFile);
             }
-            linesWithContent.Add(pathFile, lines);
+            linesWithContent.Add(pathFile, linesAll);
             if (linesWithIndexes.ContainsKey(pathFile))
             {
                 linesWithIndexes.Remove(pathFile);
             }
+
             linesWithIndexes.Add(pathFile, FullFileIndex);
             foreach (var item in namespaceCodeElementsAll)
             {
@@ -95,12 +106,13 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     namespaceCodeElementsKeywords.Add(SH.WrapWith(item.ToString().ToLower(), AllChars.space));
                 }
             }
+
             foreach (var item in namespaceCodeElementsKeywords)
             {
                 string elementTypeString = item.Trim();
                 NamespaceCodeElementsType namespaceCodeElementType = (NamespaceCodeElementsType)Enum.Parse(namespaceCodeElementsType2, item, true);
                 List<int> indexes;
-                List<string> linesCodeElements = CA.ReturnWhichContains(lines, item, out indexes);
+                List<string> linesCodeElements = CA.ReturnWhichContains(linesAll, item, out indexes);
                 for (int i = 0; i < linesCodeElements.Count; i++)
                 {
                     var lineCodeElements = linesCodeElements[i];
@@ -116,11 +128,13 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
                     }
                 }
             }
+
             ClassCodeElementsType classCodeElementsTypeToFind = ClassCodeElementsType.All;
             if (classCodeElementsType.HasFlag(ClassCodeElementsType.All))
             {
                 classCodeElementsTypeToFind |= ClassCodeElementsType.Method;
             }
+
             tree = CSharpSyntaxTree.ParseText(fileContent);
             root = (CompilationUnitSyntax)tree.GetRoot();
             var c = classCodeElements;

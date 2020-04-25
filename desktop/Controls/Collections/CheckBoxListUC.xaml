@@ -5,13 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:desktop.Controls.Collections"
              xmlns:desktopControlButtons="clr-namespace:desktop.Controls.Buttons"
+             xmlns:SearchTextBox="clr-namespace:SearchTextBox;assembly=SearchTextBox"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!--<StackPanel x:Name="spCheckBoxes">
             
     </StackPanel>-->
     <StackPanel Orientation="Vertical" x:FieldModifier="public" x:Name="sp">
-    
+
+        <SearchTextBox:SearchTextBox x:Name="searchTextBox"></SearchTextBox:SearchTextBox>
+        
     <!--<Grid x:Name="grid" Background="Red">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" x:Name="r0"></RowDefinition>
@@ -26,13 +29,18 @@
         <!--important to show scrolling is just set up exactly height-->
         <ListBox x:Name="lb" x:FieldModifier="public"   ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
             <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
+                <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsActive}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
             <DataTemplate>
-                <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                    <CheckBox IsChecked="{Binding IsChecked}" Tag="{Binding Tag}" Content="{Binding Content}" Visibility="{Binding Visibility}" Height="{Binding Height}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

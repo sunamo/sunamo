@@ -12,8 +12,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 public static partial class CA
 {
+   
 
-    
     /// <summary>
     /// jagged = zubaty
     /// Change from array where every element have two spec of location to ordinary array with inner array
