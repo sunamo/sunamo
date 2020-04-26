@@ -120,6 +120,7 @@ public class FoldersWithSolutions
         {
             sf = new SolutionFolder();
         }
+        sf.repository = RepositoryFromFullPath(solutionFolder);
         sf.InVsFolder = solutionFolder.Contains(SolutionsIndexerStrings.VisualStudio2017);
         sf.displayedText = GetDisplayedName(solutionFolder);
         sf.fullPathFolder = solutionFolder;
@@ -128,8 +129,22 @@ public class FoldersWithSolutions
         sf.nameSolutionWithoutDiacritic = SH.TextWithoutDiacritic(projName);
         return sf;
     }
-
     
+    private static Repository RepositoryFromFullPath(string fullPathFolder)
+    {
+        if (fullPathFolder.Contains(SolutionsIndexerStrings.VisualStudio2017))
+        {
+            return Repository.Vs17;
+        }
+        else if (fullPathFolder.Contains(SolutionsIndexerConsts.BitBucket))
+        {
+            return Repository.BitBucket;
+        }
+        ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), fullPathFolder);
+        return Repository.All;
+    }
+
+
 
     /// <summary>
     /// Get name based on relative but always fully recognized project
@@ -142,7 +157,7 @@ public class FoldersWithSolutions
 
     public IEnumerable<SolutionFolder> SolutionsUap(IEnumerable<string> skipThese = null)
     {
-        var slns = Solutions(false, skipThese);
+        var slns = Solutions(Repository.Vs17, false, skipThese);
         var uap = slns.Where(d => d.fullPathFolder.Contains(@"\_Uap\"));
         return uap;
     }
@@ -151,9 +166,14 @@ public class FoldersWithSolutions
     /// Simple returns global variable solutions
     /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached
     /// </summary>
-    public List<SolutionFolder> Solutions(bool loadAll = true, IEnumerable<string> skipThese = null)
+    public List<SolutionFolder> Solutions(Repository r, bool loadAll = true, IEnumerable<string> skipThese = null)
     {        
         var result = new List<SolutionFolder>( solutions);
+
+        if (r != Repository.All)
+        {
+            result.RemoveAll(d => d.repository != r);
+        }
 
         List<string> skip = null;
         if (skipThese != null)
@@ -196,7 +216,8 @@ public class FoldersWithSolutions
             foreach (var item in visualStudioFolders)
             {
                 List<string> slozkySJazyky = null;
-                    try
+                List<string> slozkySJazykyOutsideVs17 = new List<string>();
+                try
                 {
                     slozkySJazyky = FS.GetFolders(item);
                 }
@@ -204,6 +225,9 @@ public class FoldersWithSolutions
                 {
                     continue;
                 }
+
+                slozkySJazykyOutsideVs17.Leading(FS.Combine(folderWithVisualStudioFolders, SolutionsIndexerConsts.BitBucket));
+
                 foreach (var item2 in slozkySJazyky)
                 {
                     #region New
@@ -212,6 +236,16 @@ public class FoldersWithSolutions
                     {
                         AddProjectsFolder(projs, item2);
                     }
+                    #endregion
+                }
+
+                foreach (var item2 in slozkySJazykyOutsideVs17)
+                {
+                    #region New
+                    string pfn = FS.GetFileName(item2);
+                   
+                        AddProjectsFolder(projs, item2);
+                    
                     #endregion
                 }
             }

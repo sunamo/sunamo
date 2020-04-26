@@ -8,4 +8,9 @@
     <PackageReference Include="GoPay.NET" Version="1.1.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj" />
+    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+  </ItemGroup>
+
 </Project>

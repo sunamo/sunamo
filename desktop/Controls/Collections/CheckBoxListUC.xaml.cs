@@ -473,7 +473,7 @@ namespace desktop.Controls.Collections
         public void uc_Loaded(object sender, RoutedEventArgs e)
         {
             searchTextBox.OnSearch += SearchTextBox_OnSearch;
-            searchTextBox.ShowSectionButton = false
+            searchTextBox.ShowSectionButton = false;
         }
 
         private void SearchTextBox_OnSearch(SearchTextBox.SearchEventArgs e)

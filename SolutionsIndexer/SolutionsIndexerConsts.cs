@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class SolutionsIndexerConsts
 {
-
+    public const string BitBucket = "BitBucket";
     public const string ProjectsFolderName = "Projects";
 
     public static List<string> SolutionsExcludeWhileWorkingOnSourceCode = CA.ToListString("AllProjectsSearch", "sunamo", "CodeBoxControl");
