@@ -13884,6 +13884,18 @@
           <source></source>
           <target state="translated">Enter login credentials</target>
         </trans-unit>
+        <trans-unit id="SignInToTakeFullAdvantageOfTheSite_aposSCapabilitiesAndFeatures" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sign in to take full advantage of the site_apos scapabilities and features</target>
+        </trans-unit>
+        <trans-unit id="OutputTextCopiedToClipboard_period" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output text copied to clipboard_period</target>
+        </trans-unit>
+        <trans-unit id="DoYouWishToSendALoginNameToTheMail_quest_quest" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do you wish to send alogin name to the mail_quest_quest</target>
+        </trans-unit>
       </group>
     </body>
   </file>

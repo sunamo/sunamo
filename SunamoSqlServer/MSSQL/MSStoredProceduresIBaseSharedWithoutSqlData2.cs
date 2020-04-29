@@ -2272,7 +2272,23 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// </summary>
     /// <param name="table"></param>
     /// <param name="column"></param>
-    public int SelectMaxIntMinValue(string table, string column)
+    public long SelectMaxIntMinValue(string table, string column)
+    {
+        if (SelectCount(table) == 0)
+        {
+            return long.MinValue;
+        }
+        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+    }
+
+    /// <summary>
+    /// Vrací Long.MaxValue pokud tabulka nebude mít žádné řádky, na rozdíl od metody SelectMaxLong, která vrací 0
+    /// To co vrátí tato metoda můžeš vždy jen inkrementovat a vložit do tabulky
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="column"></param>
+    /// <returns></returns>
+    public int SelectMaxLongMinValue(string table, string column)
     {
         if (SelectCount(table) == 0)
         {

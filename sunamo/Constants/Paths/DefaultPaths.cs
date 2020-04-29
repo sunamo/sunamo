@@ -6,6 +6,8 @@ namespace sunamo.Constants
 {
     public class DefaultPaths
     {
+        public const string capturedUris = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris.txt";
+
         public const string rootVideos0Kb = @"d:\Documents\Videos0kb\";
         public static string Documents = @"d:\Documents\";
         public static string Docs = @"d:\Docs\";

@@ -24,11 +24,13 @@ public class SunamoGoPayHelper
 
 
     /// <summary>
-    /// Return error or uri if success
+    /// Return string error or Payment if success
+    /// have GwUrl Property
+    /// 
     /// </summary>
     /// <param name="payment"></param>
     /// <returns></returns>
-        public  string CreatePayment(BasePayment payment)
+    public object CreatePayment(BasePayment payment)
     {
         GPConnector token;
 
@@ -37,7 +39,7 @@ public class SunamoGoPayHelper
         try
         {
             Payment result = token.CreatePayment(payment);
-            return result.GwUrl;
+            return result;
         }
         catch (GPClientException e)
         {
