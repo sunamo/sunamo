@@ -449,7 +449,7 @@ public static string AskUser(bool askUser, Func<Dictionary<string, VoidVoid>> Ad
         }
         else
         {
-            return "None";
+            return mode;
         }
     }
 
