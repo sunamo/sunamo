@@ -233,6 +233,12 @@ namespace sunamo.Html
         /// <param name="p"></param>
         public static void RecursiveReturnTags(List<HtmlNode> vr, HtmlNode html, bool recursive, bool single, string p)
         {
+
+            if (html == null)
+            {
+                return;
+            }
+
             foreach (HtmlNode item in html.ChildNodes)
             {
                 if (HasTagName(item, p))
@@ -310,6 +316,11 @@ namespace sunamo.Html
         /// <param name="hodnotaAtributu"></param>
         public static void RecursiveReturnTagsWithContainsAttr(List<HtmlNode> vr, HtmlNode htmlNode, bool recursively, string p, string atribut, string hodnotaAtributu, bool enoughIsContainsAttribute)
         {
+            if (htmlNode == null)
+            {
+                return;
+            }
+
             foreach (HtmlNode item in htmlNode.ChildNodes)
             {
                 string attrValue = HtmlHelper.GetValueOfAttribute(atribut, item);

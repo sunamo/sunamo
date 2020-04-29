@@ -22,7 +22,7 @@ namespace desktop
     /// </summary>
     public partial class LoginDialog : Window
     {
-        CryptDelegates cryptDelegates;
+        public static CryptDelegates cryptDelegates;
         static Type type = typeof(Type);
         public string Login
         {
@@ -49,6 +49,7 @@ namespace desktop
 
         /// <summary>
         /// A1 = RandomHelper.RandomString(10)
+        /// Set also CryptDelegates from shared.unsafe
         /// </summary>
         public LoginDialog(string salt)
         {
@@ -56,6 +57,8 @@ namespace desktop
             InitializeComponent();
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;
+
+            Title = RLData.en[XlfKeys.EnterLoginCredentials];
         }
 
         void chbRememberLogin_Unchecked(object sender, RoutedEventArgs e)
@@ -72,6 +75,11 @@ namespace desktop
             //}
         }
 
+        /// <summary>
+        /// Set also CryptDelegates from shared.unsafe
+        /// </summary>
+        /// <param name="salt"></param>
+        /// <param name="storageApplicationData"></param>
         public LoginDialog(string salt, StorageApplicationData storageApplicationData)
             : this(salt) 
         {

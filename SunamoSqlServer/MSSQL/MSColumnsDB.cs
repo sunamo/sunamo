@@ -338,7 +338,7 @@ static Type type = typeof(MSColumnsDB);
         for (int i = 0; i < this.Count; i++)
         {
             MSSloupecDB item = this[i];
-            innerParseRow.AppendLine(3, Copy(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2) + "(o," + i.ToString() + ");");
+            innerParseRow.AppendLine(3, Copy(item.Name) + " = MSTableRowParse." + ConvertSqlDbTypeToGetMethod(item.Type2, item.canBeNull) + "(o," + i.ToString() + ");");
         }
         // Na závěr každé metody nesmí být AppendLine
         innerParseRow.Append(2, "}");
@@ -636,7 +636,7 @@ ParseRow(o);");
         }
         return csg2.ToString();
     }
-    public static string ConvertSqlDbTypeToGetMethod(SqlDbType p)
+    public static string ConvertSqlDbTypeToGetMethod(SqlDbType p, bool canBeNull)
     {
         switch (p)
         {
@@ -645,19 +645,48 @@ ParseRow(o);");
             case SqlDbType.NText:
             case SqlDbType.NChar:
             case SqlDbType.NVarChar:
+            case SqlDbType.VarChar:
                 return "GetString";
-                
+
             case SqlDbType.Int:
-                return "GetInt";
+                if (canBeNull)
+                {
+                    return "GetNullableInt";
+                }
+                else
+                {
+                    return "GetInt";
+                }
                 
             case SqlDbType.Real:
-                return "GetFloat";
+                if (canBeNull)
+                {
+                    return "GetNullableFloat";
+                }
+                else
+                {
+                    return "GetFloat";
+                }
                 
             case SqlDbType.BigInt:
-                return "GetLong";
+                if (canBeNull)
+                {
+                    return "GetNullableLong";
+                }
+                else
+                {
+                    return "GetLong";
+                }
                 
             case SqlDbType.Bit:
-                return "GetBool";
+                if (canBeNull)
+                {
+                    return "GetNullableBool";
+                }
+                else
+                {
+                    return "GetBool";
+                }
                 
             case SqlDbType.Date:
             case SqlDbType.DateTime:
@@ -665,27 +694,55 @@ ParseRow(o);");
             case SqlDbType.Time:
             case SqlDbType.DateTimeOffset:
             case SqlDbType.SmallDateTime:
-                return "GetDateTime";
+                if (canBeNull)
+                {
+                    return "GetNullableDateTime";
+                }
+                else
+                {
+                    return "GetDateTime";
+                }
             // Bude to až po všech běžně používaných datových typech, protože bych se měl vyvarovat ukládat do malé DB takové množství dat
             case SqlDbType.Timestamp:
             case SqlDbType.Binary:
             case SqlDbType.VarBinary:
             case SqlDbType.Image:
-                return "GetImage";
+              
+                    return "GetImage";
+                
                 
             case SqlDbType.SmallMoney:
             case SqlDbType.Money:
             case SqlDbType.Decimal:
-                return "GetDecimal";
-                
             case SqlDbType.Float:
-                return "GetDouble";
-                
+                if (canBeNull)
+                {
+                    return "GetNullableDecimal";
+                }
+                else
+                {
+                    return "GetDecimal";
+                }
+
             case SqlDbType.SmallInt:
-                return "GetShort";
+                if (canBeNull)
+                {
+                    return "GetNullableShort";
+                }
+                else
+                {
+                    return "GetShort";
+                }
                 
             case SqlDbType.TinyInt:
-                return "GetByte";
+                if (canBeNull)
+                {
+                    return "GetNullableByte";
+                }
+                else
+                {
+                    return "GetByte";
+                }
                 
             case SqlDbType.Structured:
             case SqlDbType.Udt:
@@ -693,14 +750,16 @@ ParseRow(o);");
                 ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se převést na int strukturovaný(složitý) datový typ");
                 return null;
             case SqlDbType.UniqueIdentifier:
-                return "GetGuid";
-                
-            case SqlDbType.VarChar:
-                return "GetString";
-                
+                if (canBeNull)
+                {
+                    return "GetNullableGuid";
+                }
+                else
+                {
+                    return "GetGuid";
+                }
             case SqlDbType.Variant:
-                return "GetObject";
-                
+                    return "GetObject";
             default:
                 ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Snažíte se převést datový typ, pro který není implementována větev");
                 return null;

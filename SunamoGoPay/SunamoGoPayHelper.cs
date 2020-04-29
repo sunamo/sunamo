@@ -21,30 +21,88 @@ public class SunamoGoPayHelper
         this.goPayData = goPayData;
     }
 
+
+
     /// <summary>
     /// Return error or uri if success
     /// </summary>
     /// <param name="payment"></param>
     /// <returns></returns>
         public  string CreatePayment(BasePayment payment)
+    {
+        GPConnector token;
+
+        token = GetToken();
+
+        try
         {
-            GPConnector connector = new GPConnector("https://gw.sandbox.gopay.com/api", goPayData.ClientID, goPayData.ClientSecret);
-
-            // volá na /api/oauth2/token
-            GPConnector token = connector.GetAppToken();
-
-            try
-            {
-                Payment result = token.CreatePayment(payment);
-                return result.GwUrl;
-            }
-            catch (GPClientException e)
-            {
-            return YamlHelper.DumpAsYaml(e);
-            }
-
-        
+            Payment result = token.CreatePayment(payment);
+            return result.GwUrl;
         }
+        catch (GPClientException e)
+        {
+            return YamlHelper.DumpAsYaml(e);
+        }
+    }
+
+    private  GPConnector GetToken()
+    {
+        GPConnector token;
+        GPConnector connector = new GPConnector("https://gw.sandbox.gopay.com/api", goPayData.ClientID, goPayData.ClientSecret);
+
+        // volá na /api/oauth2/token
+        token = connector.GetAppToken();
+        return token;
+    }
+
+    public  Payment Status(long paymentSessionId)
+    {
+        var token = GetToken();
+
+        /*
+Id: 3101079696
+OrderNumber: 128
+State: PAID
+PaymentInstrument: PAYMENT_CARD
+Amount: 10000
+Payer:
+AllowedPaymentInstruments: []
+AllowedSwifts: []
+Contact:
+Email: sunamocz@gmail.com
+CountryCode: CZE
+PaymendCard:
+CardNumber: 418803******0003
+CardExpiration: 2009
+CardBrand: VISA Electron
+CardIssuerCountry: CZE
+CardIssuerBank: KOMERCNI BANKA, A.S.
+Target:
+Type: ACCOUNT
+GoId: 8700421323
+AdditionalParams: []
+Lang: en
+GwUrl: https://gw.sandbox.gopay.com/gw/v3/2857a4bc36190819ec74b34f81b914d1
+EetCode:
+Fik: 30de9ba1-86db-4a70-a4f9-46bcf8efed5a-fa
+Bkp: 05403C98-9690E74B-F75AA761-E34D22EB-CB82D02E
+Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD5Ls0DMPVoPdATZLYVQwrKBpI5GxvuWkUeXCWjYfi/5nQoyyFI4wqRFA9ZwnK+sfTssTnXuWWUK6dU50hwWsqpTP9PbbDhJixkD01qEKXJkPfigcboOWB+I7ng0if+odActpG021OSvkpjuDyK1RIMxPWPuA2wqBb2DB21AXUt+E37ztupwE5YIYOzx3zq4KMeIwNocXYrayez5qoIpwUc3r/Onez0/xNze7d9GrfDv+6Mnn51x/ggNYplKlFS7jEHnK/BkwAeBw==
+ */
+        var status = token.PaymentStatus(paymentSessionId);
+        return status;
+    }
+
+    public  bool IsPayed(long paymentSessionId)
+    {
+        var payment = Status(paymentSessionId);
+        var state = payment.State;
+        if (state.HasValue)
+        {
+            return state.Value == Payment.SessionState.PAID;
+        }
+
+        return false;
+    }
 
     #region MyRegion
     public static string Encrypt(string data, string secureKey)

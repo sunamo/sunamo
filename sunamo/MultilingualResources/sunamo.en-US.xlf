@@ -156,6 +156,10 @@
          <source>You're successfully logined to</source>
          <target state="new">You're successfully logined to</target>
        </trans-unit>
+        <trans-unit id="SuccessfullyLoginedTo" translate="yes" xml:space="preserve">
+         <source>Successfully logined to</source>
+         <target state="new">You're successfully logined to</target>
+       </trans-unit>
         <trans-unit id="SearchOnGoogle" translate="yes" xml:space="preserve">
          <source>Search on Google</source>
          <target state="new">Search on Google</target>
@@ -9692,6 +9696,10 @@
          <source></source>
          <target state="translated">was not found</target>
        </trans-unit>
+        <trans-unit id="WasNotFound" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Was not found</target>
+       </trans-unit>
         <trans-unit id="imageContainerImageFormatWide" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">image-container image-format-wide</target>
@@ -13871,6 +13879,10 @@
         <trans-unit id="LastModified" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Last modified</target>
+        </trans-unit>
+        <trans-unit id="EnterLoginCredentials" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter login credentials</target>
         </trans-unit>
       </group>
     </body>

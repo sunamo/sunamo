@@ -27,4 +27,20 @@ public static bool IsUserAdministrator()
     }
     return isAdmin;
 }
+
+    public static string CurrentUserName()
+    {
+        return System.Security.Principal.WindowsIdentity.GetCurrent().Name; 
+    }
+
+    public static bool IsMyComputer()
+    {
+        var un = CurrentUserName();
+        if (un == "n" && Environment.MachineName == "ed")
+        {
+            return true;
+        }
+        return false;
+    }
+
     }

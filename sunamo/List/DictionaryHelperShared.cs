@@ -86,6 +86,20 @@ public partial class DictionaryHelper
         }
     }
 
+    public static T2 AddOrGet<T1, T2>(IDictionary<T1, T2> qs, T1 k, Func<T1, T2> i)
+    {
+        if (qs.ContainsKey(k))
+        {
+            return qs[k];
+        }
+        else
+        {
+            var v = i.Invoke(k);
+            qs.Add(k, v);
+            return v;
+        }
+    }
+
     public static Dictionary<T, T> GetDictionaryByKeyValueInString<T>(List<T> p)
     {
         var methodName = Exc.CallingMethod();

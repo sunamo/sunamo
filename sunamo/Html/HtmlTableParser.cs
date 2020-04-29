@@ -88,7 +88,13 @@ namespace sunamo
                     if (CA.HasIndexWithoutException(c, ths))
                     {
                         HtmlNode cellRow = ths[c];
-                        data[r - startRow, c] = cellRow.InnerHtml.Trim();
+                        var cell = cellRow.InnerText.Trim();
+                        //cell = HtmlHelperText.ConvertTextToHtml(cell);
+                        cell = HttpUtility.HtmlDecode(cell);
+                        cell = SH.ReplaceAllDoubleSpaceToSingle(cell);
+                        
+
+                        data[r - startRow, c] = cell;
                         string tdWithColspan = HtmlHelper.GetValueOfAttribute(HtmlAttrValue.colspan, cellRow, true);
                         if (tdWithColspan != "")
                         {

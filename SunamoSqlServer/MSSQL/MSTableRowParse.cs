@@ -12,6 +12,11 @@ public static class MSTableRowParse
 
     public static int GetInt(object[] o, int p)
     {
+        return GetNullableInt(o, p).Value;
+    }
+
+    public static int? GetNullableInt(object[] o, int p)
+    {
         //ID,Name,IDArtist
         /*
 0-2147483547 Just Like You Live At The Palace -32727
@@ -21,18 +26,50 @@ public static class MSTableRowParse
         //Console.WriteLine(SH.JoinSpace( CA.ToListString( o)));
         //Console.WriteLine(p);
 
-        return int.Parse(o[p].ToString());
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return int.Parse(value.ToString());
+    }
+
+    static bool IsNull(object v)
+    {
+        return SqlServerHelper.IsNull(v);
     }
 
     public static float GetFloat(object[] o, int p)
     {
-        return float.Parse(o[p].ToString());
+        return GetNullableFloat(o, p).Value;
+    }
+
+    public static float? GetNullableFloat(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return float.Parse(value.ToString());
     }
 
     public static long GetLong(object[] o, int p)
     {
-        return long.Parse(o[p].ToString());
+        return GetNullableLong(o, p).Value;
     }
+
+    public static long? GetNullableLong(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return long.Parse(value.ToString());
+    }
+
+
 
     /// <summary>
     /// POužívá metodu bool.Parse
@@ -44,14 +81,24 @@ public static class MSTableRowParse
         return bool.Parse(o[p].ToString());
     }
 
+    public static bool GetBool(object[] o, int p)
+    {
+        return GetNullableBool(o, p).Value;
+    }
+
     /// <summary>
     /// Používá metodu Convert.ToBoolean
     /// </summary>
     /// <param name="o"></param>
     /// <param name="p"></param>
-    public static bool GetBool(object[] o, int p)
+    public static bool? GetNullableBool(object[] o, int p)
     {
-        return Convert.ToBoolean(o[p]);
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return Convert.ToBoolean(value);
     }
 
     public static string GetBoolS(object[] o, int p)
@@ -61,7 +108,17 @@ public static class MSTableRowParse
 
     public static DateTime GetDateTime(object[] o, int p)
     {
-        string dd = o[p].ToString();
+        return GetNullableDateTime(o, p).Value;
+    }
+
+    public static DateTime? GetNullableDateTime(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        string dd = value.ToString();
         return DateTime.Parse(dd);
     }
 
@@ -98,7 +155,17 @@ public static class MSTableRowParse
 
     public static decimal GetDecimal(object[] o, int p)
     {
-        return decimal.Parse(o[p].ToString());
+        return GetNullableDecimal(o, p).Value;
+    }
+
+    public static decimal? GetNullableDecimal(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return decimal.Parse(value.ToString());
     }
 
     public static double GetDouble(object[] o, int p)
@@ -108,15 +175,46 @@ public static class MSTableRowParse
 
     public static short GetShort(object[] o, int p)
     {
-        return short.Parse(o[p].ToString());
+        return GetNullableShort(o, p).Value;
     }
+
+    public static short? GetNullableShort(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return short.Parse(value.ToString());
+    }
+
     public static byte GetByte(object[] o, int p)
     {
-        return byte.Parse(o[p].ToString());
+        return GetNullableByte(o, p).Value;
+    }
+
+    public static byte? GetNullableByte(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return byte.Parse(value.ToString());
     }
 
     public static Guid GetGuid(object[] o, int p)
     {
-        return Guid.Parse(o[p].ToString());
+        return GetNullableGuid(o, p).Value;
+    }
+
+    public static Guid? GetNullableGuid(object[] o, int p)
+    {
+        var value = o[p];
+        if (SqlServerHelper.IsNull(value))
+        {
+            return null;
+        }
+        return Guid.Parse(value.ToString());
     }
 }

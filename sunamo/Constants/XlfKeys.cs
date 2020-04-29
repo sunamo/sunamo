@@ -3681,9 +3681,10 @@ public class XlfKeys
     public const string IfTheSongIsOriginallyInCzechInstrumentalIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs = "IfTheSongIsOriginallyInCzechInstrumentalIgnoreThisMessageTheWebsiteDoesNotDistinguishBetweenForeignCzechAndInstrumentalSongs";
 
 
-    public static string YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext;
+    public static string YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext = "YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext";
     public static string DoYouWantTo = "DoYouWantTo";
-    public static string YouHaveRequestedToAddADomain;
-    public static string HasBeenUpdated;
+    public static string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain";
+    public static string HasBeenUpdated = "HasBeenUpdated";
+    public static string EnterLoginCredentials = "EnterLoginCredentials";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
 }

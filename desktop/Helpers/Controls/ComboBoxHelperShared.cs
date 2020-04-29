@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 public partial class ComboBoxHelper
@@ -35,6 +36,19 @@ public partial class ComboBoxHelper
     {
         get
         {
+            if (SelectedO == null)
+            {
+                if (cb.Items.Count> 0)
+                {
+                    cb.SelectedIndex = 0;
+                    SelectedO = cb.Items[0];
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
             // not need ValueFromTWithNameOrObject, TWithName has ToString
             return SelectedO.ToString();
         }
