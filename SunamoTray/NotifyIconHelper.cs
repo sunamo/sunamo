@@ -18,7 +18,7 @@ namespace SunamoTray
         /// Into A1 insert forms.ContextMenuHelper.Get
         /// </summary>
         /// <param name="cm"></param>
-        public static void Create(Action<bool> SetCancelClosing, Stream streamIcon, VoidObjectEventArgs onDoubleClick, ContextMenu cm, Action<object, EventArgs> quitAction)
+        public static void Create(Action<bool> SetCancelClosing, Stream streamIcon, VoidObjectEventArgs onDoubleClick, ContextMenu cm, Action<object, EventArgs> quitAction, Dictionary<string, Action> contextMenuItems)
         {
             quit = quitAction;
             setCancelClosing = SetCancelClosing;
@@ -31,8 +31,12 @@ namespace SunamoTray
             ni.Click += new EventHandler( onDoubleClick);
 
             var mi = MenuItemHelper.Get("Quit", Quit);
-
             ni.ContextMenu.MenuItems.Add(mi);
+            foreach (var item in contextMenuItems)
+            {
+                ni.ContextMenu.MenuItems.Add(MenuItemHelper.Get(item.Key, new VoidObjectEventArgs((a, b) => item.Value())));
+            }
+            
         }
 
         static void Quit(object o, EventArgs ea)

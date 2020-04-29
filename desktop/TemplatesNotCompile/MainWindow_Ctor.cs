@@ -165,6 +165,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 7) Notify icon
         //SetCancelClosing(true);
         //// .ico must be set up to Resource
+        ///Dictionary<string, Action> contextMenuItems = new Dictionary<string, Action>();
         //NotifyIconHelper.Create(SetCancelClosing, ResourcesH.ci.GetStream(ThisApp.Name + ".ico"), delegate (object sen, EventArgs args)
         //{
         //    this.Show();
@@ -175,7 +176,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
         //    // WindowState should be loaded from configuration
         //    //this.WindowState = WindowState.Normal;
-        //}, forms.ContextMenuHelper.Get(null), WpfApp.Shutdown);
+        //}, forms.ContextMenuHelper.Get(WpfApp.Shutdown), null);
         #endregion
 
         #region 8) App-specific testing
@@ -205,8 +206,11 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     //        e.Cancel = GetCancelClosing();
     //        WindowState = WindowState.Minimized;
     //#endif
+    // Must check before - during shutdowning down is miAlwaysOnTop null
+            //if (!e.Cancel)
+            //{
     //        CheckMenuItemTopMost();
-
+    //}
     //if (userControlClosing != null)
     //    {
     //        userControlClosing.OnClosing();

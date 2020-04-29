@@ -2288,13 +2288,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <param name="table"></param>
     /// <param name="column"></param>
     /// <returns></returns>
-    public int SelectMaxLongMinValue(string table, string column)
+    public long SelectMaxLongMinValue(string table, string column)
     {
         if (SelectCount(table) == 0)
         {
             return int.MinValue;
         }
-        return ExecuteScalarInt(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
+        return ExecuteScalarLong(true, new SqlCommand("SELECT MAX(" + column + ") FROM " + table));
     }
 
     public DateTime SelectMaxDateTime(string table, string column, params AB[] ab)
