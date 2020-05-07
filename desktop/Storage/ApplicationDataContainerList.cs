@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using sunamo.Constants;
 using System;
 using System.Collections;
@@ -66,7 +66,7 @@ public class ApplicationDataContainerList : IEnumerable
             content = content.Substring(0, content.Length - 1);
         }
         
-        var d = SH.SplitNone(content, AllStrings.pipe);
+        var d = SH.SplitNone(content, AllStrings.verbar);
         int to = (d.Length() / 3) * 3;
         for (int i = 0; i < to; )
         {

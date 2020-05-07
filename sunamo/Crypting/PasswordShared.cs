@@ -5,6 +5,7 @@ using System.Text;
 
 public partial class Password
 {
+    
     public static string CreateRandomStrongPassword()
     {
         int countCharsLower = 3;

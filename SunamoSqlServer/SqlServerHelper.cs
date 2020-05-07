@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ public partial class SqlServerHelper
 
     static SqlServerHelper()
     {
-            s_availableCharsInVarCharWithoutDiacriticLetters = new List<char>(new char[] { AllChars.colon, AllChars.space,  AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.exclamation, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr , AllChars.plus, AllChars.modulo, AllChars.us,  AllChars.slash, AllChars.bs, AllChars.lt, AllChars.gt, AllChars.apostrophe });
+            s_availableCharsInVarCharWithoutDiacriticLetters = new List<char>(new char[] { AllChars.colon, AllChars.space,  AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.excl, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.rsqb, AllChars.lsqb, AllChars.lcub, AllChars.rcub , AllChars.plus, AllChars.percnt, AllChars.lowbar,  AllChars.slash, AllChars.bs, AllChars.lt, AllChars.gt, AllChars.apostrophe });
         s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.lowerChars);
         s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.upperChars);
         s_availableCharsInVarCharWithoutDiacriticLetters.AddRange(AllChars.numericChars);

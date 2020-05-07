@@ -133,10 +133,9 @@ public partial class WpfApp{
 
     public static void ShowExceptionWindow(EventArgs e, string n)
     {
-        
         var d = WindowHelper.ShowExceptionWindow(e, n);
 
-        WriterEventLog.WriteToMainAppLog(d, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
+        WriterEventLog.WriteToMainAppLog(n + Environment.NewLine + d, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
     }
 
     /// <summary>

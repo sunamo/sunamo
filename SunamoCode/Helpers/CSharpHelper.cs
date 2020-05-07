@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,26 +35,40 @@ public static partial class CSharpHelper
             csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, item);
             all.Add(name);
         }
-        csg.List(2, "string", "All", all, false);
+        csg.List(2, "string", "All", all, new CSharpGeneratorArgs { addHyphens = true });
         return csg.ToString();
     }
     #region DictionaryWithClass
-    public static string DictionaryWithClass<Key,Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
+    public static string DictionaryWithClass<Key,Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue, CSharpGeneratorArgs a = null)
     {
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
         
-        genCS.DictionaryFromRandomValue<Key, Value>(0, nameDictionary, keys, randomValue, false);
+        genCS.DictionaryFromRandomValue<Key, Value>(0, nameDictionary, keys, randomValue, a);
         var inner = GetDictionaryValuesFromRandomValue<Key, Value>(tabCount, nameDictionary, keys, randomValue);
         genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
         genCS.EndBrace(0);
         return genCS.ToString();
     }
-    public static string DictionaryWithClass<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> d)
+    /// <summary>
+    /// addingValue = 0
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    public static string DictionaryWithClass<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> d, CSharpGeneratorArgs a = null)
     {
+        if (a == null)
+        {
+            a.addingValue = false;
+        }
+
         CSharpGenerator genCS = new CSharpGenerator();
         genCS.StartClass(0, AccessModifiers.Private, false, nameDictionary);
-        genCS.DictionaryFromDictionary<Key, Value>(0, nameDictionary, d, false);
+        genCS.DictionaryFromDictionary<Key, Value>(0, nameDictionary, d, a);
         var inner = GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, d);
         genCS.Ctor(1, ModifiersConstructor.Private, nameDictionary, inner);
         genCS.EndBrace(0);
@@ -68,10 +82,21 @@ public static partial class CSharpHelper
         csg.GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
         return csg.ToString();
     }
-    public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, object splitKeyWith)
+    /// <summary>
+    /// a: splitKeyWith
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="keys"></param>
+    /// <param name="values"></param>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    public static string GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, CSharpGeneratorArgs a)
     {
         CSharpGenerator csg = new CSharpGenerator();
-        csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values, splitKeyWith);
+        csg.GetDictionaryValuesFromTwoList<Key, Value>(tabCount, nameDictionary, keys, values,  a);
         return csg.ToString();
     }
     public static string GetDictionaryValuesFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue)
@@ -120,17 +145,19 @@ public static partial class CSharpHelper
         CA.RemoveStringsEmpty2(list);
         return list;
     }
-    public static string GetDictionaryStringObject<Value>(int tabCount, List<string> keys, List<Value> values, string nameDictionary, bool checkForNull)
+    public static string GetDictionaryStringObject<Value>(int tabCount, List<string> keys, List<Value> values, string nameDictionary, CSharpGeneratorArgs a)
     {
+
+
         int pocetTabu = 0;
         CSharpGenerator gen = new CSharpGenerator();
-        gen.DictionaryFromTwoList<string, Value>(tabCount, nameDictionary, keys, values, false);
-        if (checkForNull)
+        gen.DictionaryFromTwoList<string, Value>(tabCount, nameDictionary, keys, values, a);
+        if (a.checkForNull)
         {
             gen.If(pocetTabu, nameDictionary + " " + "== null");
         }
         gen.GetDictionaryValuesFromDictionary<string, Value>(pocetTabu, nameDictionary, DictionaryHelper.GetDictionary<string, Value>(keys, values));
-        if (checkForNull)
+        if (a.checkForNull)
         {
             gen.EndBrace(pocetTabu);
         }
@@ -297,7 +324,7 @@ public static partial class CSharpHelper
     public static Dictionary<string, string> ParseFields(List<string> l)
     {
         CA.RemoveStringsEmpty2(l);
-        CA.ChangeContent(l, e => SH.RemoveAfterFirst(e, AllChars.equal));
+        CA.ChangeContent(l, e => SH.RemoveAfterFirst(e, AllChars.equals));
         CA.TrimEnd(l, AllChars.sc);
         Dictionary<string, string> r = new Dictionary<string, string>();
         foreach (var item in l)

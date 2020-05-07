@@ -1481,7 +1481,6 @@ public class XlfKeys
     public const string InsertNewSongLyrics = "InsertNewSongLyrics";
     public const string TextareaNameTxtLyricsIdTxtLyricsRunatServerDataRoleTextareaEnableviewstateTrueTextarea = "TextareaNameTxtLyricsIdTxtLyricsRunatServerDataRoleTextareaEnableviewstateTrueTextarea";
     public const string TxtLyricsMaxHeightPxImportantScrollPaddingBottomRem = "TxtLyricsMaxHeightPxImportantScrollPaddingBottomRem";
-    public const string ThePasswordMustBeCharactersLong = "ThePasswordMustBeCharactersLong";
     public const string ThePasswordMustBeAtLeastDigitsLong = "ThePasswordMustBeAtLeastDigitsLong";
     public const string ThePasswordMustHaveAtLeastOneSpecialCharacter = "ThePasswordMustHaveAtLeastOneSpecialCharacter";
     public const string PasswordCannotBeEmpty = "PasswordCannotBeEmpty";
@@ -1721,7 +1720,7 @@ public class XlfKeys
     public const string TheTextStringNameWasPassedToThePageButTheApplicationWithThatNameWasNotFoundInTheDB = "TheTextStringNameWasPassedToThePageButTheApplicationWithThatNameWasNotFoundInTheDB";
     public const string ManageImagesApp = "ManageImagesApp";
     public const string IDVersionDT = "IDVersionDT";
-    public const string NotFoundInDatabaseAndCannotBeEdited = "NotFoundInDatabaseAndCannotBeEdited";
+    
     public const string EditingTheApplication = "EditingTheApplication";
     public const string EditaceAplikaceSpanSpan = "EditaceAplikaceSpanSpan";
     public const string addNewApplication = "addNewApplication";
@@ -3374,7 +3373,7 @@ public class XlfKeys
     public const string BadInputUri = "BadInputUri";
     public const string ParseUlozToLiveVideoUri = "ParseUlozToLiveVideoUri";
     public const string FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne = "FileHasAlreadyBeenUploadedToThisVersionUploadingANewFileWillOverwriteTheExistingOne";
-    public const string VersionDetectedInIncorrectURIFormatValidFormatIsDigitsSeparatedByComma = "VersionDetectedInIncorrectURIFormatValidFormatIsDigitsSeparatedByComma";
+    
     public const string Color = "Color";
     public const string Views = "Views";
     public const string NoteThatTheInformationOnTheInformationTabIsValidPrimarilyForTheRecommendedVersionAndThisNewerVersionMayNotMatchThisInformation = "NoteThatTheInformationOnTheInformationTabIsValidPrimarilyForTheRecommendedVersionAndThisNewerVersionMayNotMatchThisInformation";

@@ -35,7 +35,7 @@
         </Grid>
         
         <!--4th row-->
-        <Button Grid.Column="1" Grid.Row="3" x:Name="btnEnter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,5,10,17" Content="Enter" Click="btnEnter_Click_1"></Button>
+        <Button Grid.Column="1" Grid.Row="3" x:Name="btnEnter" FontSize="20" x:FieldModifier="public" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,5,10,17" Content="Enter" Click="btnEnter_Click_1"></Button>
         
     </Grid>
 </UserControl>

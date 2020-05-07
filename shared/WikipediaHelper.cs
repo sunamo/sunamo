@@ -14,7 +14,6 @@ public class WikipediaHelper
         var c = string.Empty;
         //c = TF.ReadFile(@"d:\_Test\sunamo\shared\WikipediaHelper\ParseTable.html");
 
-
         var tables = WikipediaHelper.ParseTable(c, "Character", "Names");
 
         var table = tables.First();
@@ -22,7 +21,7 @@ public class WikipediaHelper
         List<string> chars = table.ColumnValues("Character", true, false);
         List<string> names = table.ColumnValues("Names", true, true);
 
-        return CSharpHelper.GetDictionaryValuesFromTwoList<string, string>(2, "a", names, chars, ",");
+        return CSharpHelper.GetDictionaryValuesFromTwoList<string, string>(2, "a", names, chars, new CSharpGeneratorArgs { splitKeyWith = "," });
     }
 
     /// <summary>

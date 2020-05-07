@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -254,7 +254,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void CreateDatabase(string p)
     {
-        ExecuteNonQuery("Create Database [" + p + AllStrings.rsf);
+        ExecuteNonQuery("Create Database [" + p + AllStrings.lsqb);
     }
 
     /// <summary>
@@ -289,12 +289,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     //    AddCommandParameteres(comm, i, ABC.OnlyBs(arr));
     //}
 
-    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i2, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
+    private static void AddCommandParameteresCombinedArrays(SqlCommand comm, int i2, ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere, ABC whereOr = null)
     {
         int l = CA.GetLength(where);
         l += CA.GetLength(isNotWhere);
         l += CA.GetLength(greaterThanWhere);
         l += CA.GetLength(lowerThanWhere);
+        l += CA.GetLength(whereOr);
         ABC ab = new ABC(l);
         int dex = 0;
         if (where != null)
@@ -323,6 +324,13 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             for (int i = 0; i < lowerThanWhere.Count; i++)
             {
                 ab[dex++] = lowerThanWhere[i];
+            }
+        }
+        if (whereOr != null)
+        {
+            for (int i = 0; i < whereOr.Count; i++)
+            {
+                ab[dex++] = whereOr[i];
             }
         }
         AddCommandParameterFromAbc(comm, ab, i2);
@@ -1800,16 +1808,16 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return dt;
     }
 
-    public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot, ABC greaterThan, ABC lowerThan)
+    public DataTable SelectDataTableSelective(string table, string vraceneSloupce, ABC where, ABC whereIsNot, ABC greaterThan, ABC lowerThan, ABC whereOr = null)
     {
         StringBuilder sb = new StringBuilder();
         sb.Append("SELECT " + vraceneSloupce);
         sb.Append(" FROM " + table);
-        sb.Append(GeneratorMsSql.CombinedWhere(where, whereIsNot, greaterThan, lowerThan));
+        sb.Append(GeneratorMsSql.CombinedWhere(where, whereIsNot, greaterThan, lowerThan, whereOr));
 
         //string sql = GeneratorMsSql.SimpleWhereOneRow(vracenySloupec, table, idColumnName);
         SqlCommand comm = new SqlCommand(sb.ToString());
-        AddCommandParameteresCombinedArrays(comm, 0, where, whereIsNot, greaterThan, lowerThan);
+        AddCommandParameteresCombinedArrays(comm, 0, where, whereIsNot, greaterThan, lowerThan, whereOr);
         //AddCommandParameter(comm, 0, idColumnValue);
         DataTable dt = SelectDataTable(comm);
         return dt;

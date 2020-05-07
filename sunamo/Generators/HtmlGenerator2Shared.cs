@@ -627,7 +627,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
         for (int i = 0; i < idcka.Count; i++)
         {
-            hg.WriteTagWithAttrs("input", "type", "radio", "name", nameOfRBs, "value", idcka[i]);
+            hg.WriteNonPairTagWithAttrs("input", "type", "radio", "name", nameOfRBs, "value", idcka[i]);
             hg.WriteRaw(nazvy[i]);
             hg.WriteBr();
         }

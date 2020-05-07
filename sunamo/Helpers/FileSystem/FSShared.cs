@@ -107,19 +107,27 @@ public partial class FS
             }
         }
 
-        if (getFilesArgs.dontIncludeNewest)
+        Dictionary<string, DateTime> dictLastModified = null;
+
+        if (getFilesArgs.dontIncludeNewest || getFilesArgs.byDateOfLastModifiedAsc)
         {
-            Dictionary<string, DateTime> dictLastModified = new Dictionary<string, DateTime>();
+            dictLastModified = new Dictionary<string, DateTime>();
             foreach (var item in list)
             {
                 DateTime dt = FS.LastModified(item);
 
                 dictLastModified.Add(item, dt);
             }
-
             list = dictLastModified.OrderBy(t => t.Value).Select(r => r.Key).ToList();
+        }
+
+        if(getFilesArgs.dontIncludeNewest)
+        { 
+            
             list.RemoveAt(list.Count - 1);
         }
+
+
 
         if (getFilesArgs.excludeWithMethod != null)
         {
@@ -1229,7 +1237,7 @@ public partial class FS
                 break;
             }
 
-            if (p.Contains(AllStrings.us))
+            if (p.Contains(AllStrings.lowbar))
             {
                 RemoveSerieUnderscore(ref serie, ref p, ref pocetSerii);
             }
@@ -1335,7 +1343,7 @@ public partial class FS
     {
         while (true)
         {
-            int dex = g.LastIndexOf(AllChars.us);
+            int dex = g.LastIndexOf(AllChars.lowbar);
             if (dex != -1)
             {
                 string serieS = g.Substring(dex + 1);
@@ -1839,7 +1847,7 @@ private static void MoveOrCopy(string p, string to, FileMoveCollisionOption co, 
 
         dalsi++;
 
-        return FS.Combine(slozka, fn + AllStrings.us + dalsi + ext);
+        return FS.Combine(slozka, fn + AllStrings.lowbar + dalsi + ext);
     }
 
 public static bool TryDeleteDirectory(string v)
@@ -2018,10 +2026,10 @@ private static double ConvertToSmallerComputerUnitSize(double value, ComputerSiz
     /// <param name="filter"></param>
     public static string RepairFilter(string filter)
     {
-        if (!filter.Contains(AllStrings.pipe))
+        if (!filter.Contains(AllStrings.verbar))
         {
             filter = filter.TrimStart(AllChars.asterisk);
-            return AllStrings.asterisk + filter + AllStrings.pipe + AllStrings.asterisk + filter;
+            return AllStrings.asterisk + filter + AllStrings.verbar + AllStrings.asterisk + filter;
         }
         return filter;
     }

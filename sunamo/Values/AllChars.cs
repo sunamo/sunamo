@@ -10,17 +10,25 @@ public static class AllChars
     private static Type type = typeof(AllChars);
 
     #region Generated with SunamoFramework.HtmlEntitiesForNonDigitsOrLetterChars
+    public const char dollar = '$';
+    public const char Hat = '^';
+    public const char ast = '*';
+    public const char quest = '?';
+    public const char tilda = '~';
+
     public const char comma = ',';
     public const char period = '.';
     public const char colon = ':';
     public const char excl = '!';
     public const char apos = '\'';
-    public const char quest = '?';
     public const char rpar = ')';
     public const char lpar = '(';
     public const char sol = '/';
     public const char lowbar = '_';
     public const char lt = '<';
+    /// <summary>
+    /// skip in specialChars2 - already as equal
+    /// </summary>
     public const char equals = '=';
     public const char gt = '>';
     public const char amp = '&';
@@ -30,18 +38,29 @@ public static class AllChars
     public const char verbar = '|';
     public const char semi = ';';
     public const char commat = '@';
-    public const char ast = '*';
     public const char plus = '+';
     public const char rsqb = ']';
     public const char num = '#';
     public const char percnt = '%';
-    public const char dollar = '$';
-    public const char Hat = '^';
     public const char ndash = '–';
     public const char copy = '©';
     #endregion
 
+    public static readonly List<char> specialChars = new List<char>(new char[] { excl, commat, num, dollar, percnt, Hat, amp, ast, quest, lowbar, tilda });
+    public static readonly List<char> specialChars2 = new List<char>(new char[] {  lq, rq, dash, la, ra,
+    comma, period, colon, apos, rpar, sol, lt, gt, lcub, rcub, lsqb, verbar, semi, plus, rsqb, 
+        ndash });
+    public static readonly List<char> specialCharsWhite = new List<char>(new char[] { space });
+    public static readonly List<char> specialCharsNotEnigma = new List<char>(new char[] { nbsp, space160, copy });
+    /// <summary>
+    /// Used in enigma
+    /// </summary>
+    public static readonly List<char> specialCharsAll = null;
+
     /*
+equal->equals
+
+     * 
      * Ascii - 128 chars - 7B
      * ASCII + code page (e.g. ISO 8859-1) - 256 chars - 8B
      * 
@@ -98,30 +117,24 @@ public static class AllChars
 
     // my extension
     public static readonly List<int> specialKeyCodes = new List<int>(new int[] { 33, 64, 35, 36, 37, 94, 38, 42, 63, 95, 126 });
-    public static readonly List<char> specialChars = new List<char>(new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '?', '_', '~' });
-
+    
+    /// <summary>
+    /// with all which is not in specialChars
+    /// </summary>
     
 
+    
+    public const char la = '‘';
+    public const char ra = '’';
+    public const char st = '\0';
+
+    #region MyRegion
     // my extension
     public static readonly List<char> generalChars = null;
 
-    public const char exclamation = '!';
-    public const char pipe = '|';
 
-    public const char cbl = '{';
-    public const char cbr = '}';
 
-    /// <summary>
-    /// left square fowl [
-    /// </summary>
-    public const char lsf = '[';
-    /// <summary>
-    /// right square fowl ]
-    /// </summary>
-    public const char rsf = ']';
-    public const char hashtag = '#';
-    public const char equal = '=';
-    public const char ampersand = '&';
+
 
     public const char lq = '“';
     public const char rq = '”';
@@ -142,7 +155,8 @@ public static class AllChars
     /// </summary>
     public const char nbsp = (char)160;
     public const char dash = '-';
-    public const char us = '_';
+    
+    #endregion
 
     public const char tab = '\t';
     public const char nl = '\n';
@@ -179,6 +193,11 @@ public static class AllChars
         ConvertWhiteSpaceCodesToChars();
         notNumber = (char)whiteSpacesCodes[0];
         generalChars = new List<char>(new char[] { notNumber });
+
+        specialCharsAll = new List<char>(specialChars.Count + specialChars2.Count + specialCharsWhite.Count);
+        specialCharsAll.AddRange(specialChars);
+        specialCharsAll.AddRange(specialChars2);
+        specialCharsAll.AddRange(specialCharsWhite);
     }
 
     public static Predicate<char> ReturnRightPredicate(char genericChar)
@@ -207,8 +226,5 @@ public static class AllChars
         }
     }
 
-    public const char at = '@';
-    public const char la = '‘';
-    public const char ra = '’';
-    public const char st = '\0';
+    
 }

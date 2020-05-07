@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 public partial class Timestamp{ 
@@ -29,6 +29,6 @@ public static List<string> GetAllTimeStamps(string p)
 
 public static string Get(DateTime dtTo4)
     {
-        return " T" + SH.JoinMakeUpTo2NumbersToZero(AllChars.us, dtTo4.Hour, dtTo4.Minute, dtTo4.Second);
+        return " T" + SH.JoinMakeUpTo2NumbersToZero(AllChars.lowbar, dtTo4.Hour, dtTo4.Minute, dtTo4.Second);
     }
 }

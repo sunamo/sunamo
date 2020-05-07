@@ -128,7 +128,7 @@ public static partial class CA
     }
 
     /// <summary>
-    /// Get every item once
+    /// Get every duplicated item once
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="clipboardL"></param>
@@ -577,25 +577,6 @@ public static partial class CA
             vratit.Add(proj[i]);
         }
         return vratit;
-    }
-    public static string FindOutLongestItem(List<string> list, params string[] delimiters)
-    {
-        int delkaNejdelsiho = 0;
-        string nejdelsi = "";
-        foreach (var item in list)
-        {
-            string tem = item;
-            if (delimiters.Length != 0)
-            {
-                tem = SH.Split(item, delimiters)[0].Trim();
-            }
-            if (delkaNejdelsiho < tem.Length)
-            {
-                nejdelsi = tem;
-                delkaNejdelsiho = tem.Length;
-            }
-        }
-        return nejdelsi;
     }
     public static List<string> ContainsDiacritic(IEnumerable<string> nazvyReseni)
     {

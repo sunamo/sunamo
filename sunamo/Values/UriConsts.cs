@@ -13,5 +13,7 @@ using System.Text;
     public const string RpsCz = "repairservice.sunamo.cz";
     public const string ShoCz = "shortener.sunamo.cz";
 
+    
+
     public static List<string> All = CA.ToList<string>(DevCz, LyrCz, AppCz, GeoCz, ErtCz, RpsCz, ShoCz);
 }

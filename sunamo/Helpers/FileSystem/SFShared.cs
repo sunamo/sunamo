@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Text;
@@ -11,8 +11,8 @@ public static partial class SF
 {
     private static SerializeContentArgs s_contentArgs = new SerializeContentArgs();
 
-    public const string replaceForSeparatorString = AllStrings.us;
-    public static readonly char replaceForSeparatorChar = AllChars.us;
+    public const string replaceForSeparatorString = AllStrings.lowbar;
+    public static readonly char replaceForSeparatorChar = AllChars.lowbar;
 
 
     public static string separatorString
@@ -35,7 +35,7 @@ public static partial class SF
     /// </summary>
     /// <param name="p1"></param>
     /// <param name="o"></param>
-    public static string PrepareToSerializationExplicit(IEnumerable o, char p1 = AllChars.pipe)
+    public static string PrepareToSerializationExplicit(IEnumerable o, char p1 = AllChars.verbar)
     {
         var o3 = CA.ToListString(o);
         var o2 = CA.Trim(o3);
@@ -49,7 +49,7 @@ public static partial class SF
     /// <param name="file"></param>
     /// <param name="hlavicka"></param>
     /// <param name="oddelovaciZnak"></param>
-    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = AllChars.pipe)
+    public static List<List<string>> GetAllElementsFileAdvanced(string file, out List<string> hlavicka, char oddelovaciZnak = AllChars.verbar)
     {
         hlavicka = new List<string>();
         string oz = oddelovaciZnak.ToString();
@@ -88,7 +88,7 @@ public static partial class SF
     {
         if (oddelovaciZnak == null)
         {
-            oddelovaciZnak = AllChars.pipe;
+            oddelovaciZnak = AllChars.verbar;
         }
         // Musí tu být none, protože pak když někde nic nebylo, tak mi to je nevrátilo a progran vyhodil IndexOutOfRangeException
         return SH.SplitNone(var, oddelovaciZnak);
@@ -102,7 +102,7 @@ public static partial class SF
     /// </summary>
     /// <param name="o"></param>
     /// <param name="separator"></param>
-    public static string PrepareToSerialization(IEnumerable<string> o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization(IEnumerable<string> o, string separator = AllStrings.verbar)
     {
         return PrepareToSerializationWorker(o, false, separator);
     }
@@ -113,7 +113,7 @@ public static partial class SF
     /// <param name="o"></param>
     public static string PrepareToSerialization(params string[] o)
     {
-        return PrepareToSerializationWorker(o, false, AllStrings.pipe);
+        return PrepareToSerializationWorker(o, false, AllStrings.verbar);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public static partial class SF
     /// If need to combine string and IEnumerable, lets use CA.Join
     /// </summary>
     /// <param name = "o"></param>
-    public static string PrepareToSerialization2(IEnumerable<string> o, string separator = AllStrings.pipe)
+    public static string PrepareToSerialization2(IEnumerable<string> o, string separator = AllStrings.verbar)
     {
         return PrepareToSerializationWorker(o, true, separator);
     }

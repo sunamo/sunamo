@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SQLite;
@@ -42,11 +42,11 @@ using System.Data.SQLite;
             {
                 string nahraditCim = ReplaceValueOnlyOne(p);
 
-                f = f.Replace(AllStrings.cbl + i.ToString() + AllStrings.cbr, nahraditCim);
+                f = f.Replace(AllStrings.lcub + i.ToString() + AllStrings.rcub, nahraditCim);
             }
             else
             {
-                f = f.Replace(AllStrings.cbl + i.ToString() + AllStrings.cbr, "NULL");
+                f = f.Replace(AllStrings.lcub + i.ToString() + AllStrings.rcub, "NULL");
             }
             return f;
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 /// <summary>
@@ -39,7 +39,7 @@ public partial class ManageArtistDashTitle
                 {
                 }
             }
-            else if (ch[i] == AllChars.lsf)
+            else if (ch[i] == AllChars.rsqb)
             {
                 try
                 {

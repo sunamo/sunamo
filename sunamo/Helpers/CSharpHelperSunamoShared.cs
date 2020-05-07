@@ -40,8 +40,11 @@ static Type type = typeof(CSharpHelperSunamo);
             case "char":
                 ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
                 break;
+            default:
+                // For types like Dictionary<int,int>
+                return "new " + type + "()";
         }
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
         return null;
     }
 }

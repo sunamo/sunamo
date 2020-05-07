@@ -20,12 +20,38 @@ namespace ConsoleStandardApp2
     }
 }";
 
+        string formatted = null;
+
+        StringBuilder sb = new StringBuilder();
+
+        
+
+        sb.AppendLine(formatted);
+
+
+        return sb.ToString();
+    }
+    public static string CSharpClass(string addNamespacesLines, string className, string fields, string contentOfInitMethod)
+    {
+        var c = @"using System;
+{0}
+
+
+    public class {1}
+    {
+        {2}
+
+        public static void Init()
+        {
+            {3}
+        }
+    }";
+
         StringBuilder sb = new StringBuilder();
 
         try
         {
-            sb.AppendLine(SH.Format4(c, innerMain));
-
+            sb.AppendLine(SH.Format4(c, addNamespacesLines, className, fields, contentOfInitMethod));
         }
         catch (Exception)
         {
@@ -33,7 +59,7 @@ namespace ConsoleStandardApp2
 
         try
         {
-            sb.AppendLine(SH.Format3(c, innerMain));
+            sb.AppendLine(SH.Format3(c, addNamespacesLines, className, fields, contentOfInitMethod));
 
         }
         catch (Exception)

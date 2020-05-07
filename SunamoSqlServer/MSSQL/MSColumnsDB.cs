@@ -636,6 +636,13 @@ ParseRow(o);");
         }
         return csg2.ToString();
     }
+    /// <summary>
+    /// Under canBeNull could be Nullable method
+    /// Unfortunately actually I don't have time edit too 
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="canBeNull"></param>
+    /// <returns></returns>
     public static string ConvertSqlDbTypeToGetMethod(SqlDbType p, bool canBeNull)
     {
         switch (p)
@@ -651,7 +658,7 @@ ParseRow(o);");
             case SqlDbType.Int:
                 if (canBeNull)
                 {
-                    return "GetNullableInt";
+                    return "GetInt";
                 }
                 else
                 {
@@ -661,7 +668,7 @@ ParseRow(o);");
             case SqlDbType.Real:
                 if (canBeNull)
                 {
-                    return "GetNullableFloat";
+                    return "GetFloat";
                 }
                 else
                 {
@@ -671,7 +678,7 @@ ParseRow(o);");
             case SqlDbType.BigInt:
                 if (canBeNull)
                 {
-                    return "GetNullableLong";
+                    return "GetLong";
                 }
                 else
                 {
@@ -681,7 +688,7 @@ ParseRow(o);");
             case SqlDbType.Bit:
                 if (canBeNull)
                 {
-                    return "GetNullableBool";
+                    return "GetBool";
                 }
                 else
                 {
@@ -696,7 +703,7 @@ ParseRow(o);");
             case SqlDbType.SmallDateTime:
                 if (canBeNull)
                 {
-                    return "GetNullableDateTime";
+                    return "GetDateTime";
                 }
                 else
                 {
@@ -717,7 +724,7 @@ ParseRow(o);");
             case SqlDbType.Float:
                 if (canBeNull)
                 {
-                    return "GetNullableDecimal";
+                    return "GetDecimal";
                 }
                 else
                 {
@@ -727,7 +734,7 @@ ParseRow(o);");
             case SqlDbType.SmallInt:
                 if (canBeNull)
                 {
-                    return "GetNullableShort";
+                    return "GetShort";
                 }
                 else
                 {
@@ -737,7 +744,7 @@ ParseRow(o);");
             case SqlDbType.TinyInt:
                 if (canBeNull)
                 {
-                    return "GetNullableByte";
+                    return "GetByte";
                 }
                 else
                 {
@@ -752,7 +759,7 @@ ParseRow(o);");
             case SqlDbType.UniqueIdentifier:
                 if (canBeNull)
                 {
-                    return "GetNullableGuid";
+                    return "GetGuid";
                 }
                 else
                 {

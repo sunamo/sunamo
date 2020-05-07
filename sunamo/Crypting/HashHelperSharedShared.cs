@@ -1,9 +1,23 @@
 ﻿using System.Text;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Linq;
 
 public partial class HashHelper
 {
+    public static string GetHashString(string s)
+    {
+        var hash = GetHash( UTF8Encoding.UTF8.GetBytes(s));
+        return Encoding.UTF8.GetString(hash);
+    }
+
+    /// <summary>
+    /// Is used only in HostingManager
+    /// 
+    /// </summary>
+    /// <param name="pass"></param>
+    /// <param name="salt"></param>
+    /// <returns></returns>
     public static byte[] GetHash(byte[] pass, byte[] salt)
     {
         List<byte> joined = CA.JoinBytesArray(pass, salt);

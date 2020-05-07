@@ -55,21 +55,11 @@ public class AllStrings
     public const string apostrophe = "'";
     /// <summary>
     /// left square fowl [
-    /// </summary>
-    public const string lsf = "[";
-    /// <summary>
-    /// right square fowl ]
-    /// </summary>
-    public const string rsf = "]";
 
-    public const string pipe = "|";
-
-    public const string cbl = "{";
-    public const string cbr = "}";
 
     public const string space = " ";
     public const string dash = "-";
-    public const string us = "_";
+    
 
     /// <summary>
     /// ORDINAL BRACKET
@@ -116,16 +106,11 @@ public class AllStrings
     public static string doubleSpace16032 = AllStrings.space160 + AllStrings.space;
     public static string space160 = AllChars.space160.ToString();
     public const string bs2 = "\b";
-    public const string hashtag = "#";
-    public const string equal = "=";
-    /// <summary>
-    /// should be ampersand as in html entities
-    /// </summary>
-    public const string ampersand = "&";
-
+    
+    
     public const string lq = "“";
     public const string rq = "”";
-    public const string at = "@";
+    
     public const string la = "‘";
     public const string ra = "’";
     public const string st = "\0";

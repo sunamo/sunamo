@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -92,7 +92,7 @@ public partial class ManageArtistDashTitle
     {
         title = p;
         remix = "";
-        int firstHranata = p.IndexOf(AllChars.lsf);
+        int firstHranata = p.IndexOf(AllChars.rsqb);
         int firstNormal = p.IndexOf(AllChars.lb);
         if (firstHranata == -1 && firstNormal != -1)
         {

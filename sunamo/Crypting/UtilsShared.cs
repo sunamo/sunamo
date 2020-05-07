@@ -51,14 +51,14 @@ public partial class Utils
     /// converts from an array of bytes to a string Base64 representation
     /// Pokud A1 null nebo L0, G SE. Jinak mi prevede na Base64
     /// </summary>
-    public static string ToBase64(byte[] b)
+    public static string ToBase64(List<byte> b)
     {
-        if (b == null || b.Length == 0)
+        if (b == null || b.Count == 0)
         {
             return "";
         }
 
-        return Convert.ToBase64String(b);
+        return Convert.ToBase64String(b.ToArray());
     }
 
     static Type type = typeof(Utils);

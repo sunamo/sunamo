@@ -15,9 +15,22 @@ using static GoPay.Model.Payments.Target;
 public class SunamoGoPayHelper
     {
     GoPayData goPayData = null;
+    static Type type = typeof(SunamoGoPayHelper);
+    public static Dictionary<SessionStateGoPay, string> stateToString = new Dictionary<SessionStateGoPay, string>();
+
+    static SunamoGoPayHelper()
+    {
+        var v = EnumHelper.GetValues<SessionStateGoPay>();
+        foreach (var item in v)
+        {
+            stateToString.Add(item, ConvertSnakeConvention.FromConvention(item.ToString()));
+        }
+    }
 
     public SunamoGoPayHelper(GoPayData goPayData)
     {
+       
+
         this.goPayData = goPayData;
     }
 
@@ -94,16 +107,17 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
         return status;
     }
 
-    public  bool IsPayed(long paymentSessionId)
+    public  Payment.SessionState IsPayed(long paymentSessionId)
     {
         var payment = Status(paymentSessionId);
         var state = payment.State;
         if (state.HasValue)
         {
-            return state.Value == Payment.SessionState.PAID;
+            return state.Value;// == Payment.SessionState.PAID;
         }
 
-        return false;
+        ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
+        return Payment.SessionState.AUTHORIZED; //false;
     }
 
     #region MyRegion

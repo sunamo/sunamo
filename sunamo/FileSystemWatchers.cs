@@ -120,7 +120,26 @@ namespace sunamo
             lastProcessedFile[e.ChangeType] = e.FullPath;
             lastProcessedFileOld[e.ChangeType] = e.OldFullPath;
 
-            if (FS.ExistsFile(e.FullPath) || FS.ExistsFile(e.OldFullPath))
+            bool existsNew = false;
+            bool existsOld = false;
+
+            try
+            {
+                existsNew = FS.ExistsFile(e.FullPath);
+            }
+            catch (Exception)
+            {
+            }
+
+            try
+            {
+                existsOld = FS.ExistsFile(e.OldFullPath);
+            }
+            catch (Exception)
+            {
+            }
+
+            if (existsOld || existsNew)
             {
                 _onStop.Invoke(e.OldFullPath, true);
                 _onStart.Invoke(e.FullPath, true);

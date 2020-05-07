@@ -1,4 +1,4 @@
-﻿using desktop.Helpers;
+using desktop.Helpers;
 
 using sunamo.Data;
 using sunamo.Enums;
@@ -82,7 +82,7 @@ namespace desktop.Controls.Visualization
         /// <param name="obj"></param>
         private void Twt_Save(TwoWayTable sender, string site, string page)
         {
-            var path = AppData.ci.GetFile(AppFolders.Controls, SH.Join(AllStrings.us, sender.Name, site, page));
+            var path = AppData.ci.GetFile(AppFolders.Controls, SH.Join(AllStrings.lowbar, sender.Name, site, page));
 
             #region Get isChecked from row
 
@@ -199,7 +199,7 @@ namespace desktop.Controls.Visualization
 
                 string key = begin + fn;
 
-                var webPage = SH.Split(fn, AllStrings.us);
+                var webPage = SH.Split(fn, AllStrings.lowbar);
                 var web = webPage[0];
                 var page = webPage[1];
                 var dKey = begin + web;
@@ -310,7 +310,7 @@ namespace desktop.Controls.Visualization
 
                 var checkedCells = TwoWayTable.GetRowsIsChecked(this);
 
-                var key = this.Name + AllStrings.us + displayEntity;
+                var key = this.Name + AllStrings.lowbar + displayEntity;
 
                 if (checkedCells.ContainsKey(key))
                 {

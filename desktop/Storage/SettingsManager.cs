@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Data;
 using sunamo.Essential;
 using sunamo.Interfaces;
@@ -101,7 +101,7 @@ namespace desktop.Storage
             while (p != null)
             {
                 // Must be underscore because its PropertyName
-                sb.Insert(0, p.Name + AllStrings.us);
+                sb.Insert(0, p.Name + AllStrings.lowbar);
                 p = p.Parent as FrameworkElement; ;
             }
             var result = sb.ToString();

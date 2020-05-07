@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Text;
@@ -41,7 +41,7 @@ public static int keyCodeSeparator
 
     static SF()
     {
-        s_contentArgs.separatorString = AllStrings.pipe;
+        s_contentArgs.separatorString = AllStrings.verbar;
     }
 
     /// <summary>

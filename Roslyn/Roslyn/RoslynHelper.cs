@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -65,7 +65,7 @@ namespace Roslyn
         /// <param name="designerCs"></param>
         /// <param name="xamlCs"></param>
         /// <param name="sharedCs"></param>
-        public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs)
+        public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs)
         {
             if (!designerCs && item.EndsWith(".designer.cs"))
             {
@@ -84,6 +84,10 @@ namespace Roslyn
                 return false;
             }
             if (!gICs && item.EndsWith(".g.i.cs"))
+            {
+                return false;
+            }
+            if (!gCs && item.EndsWith(".g.cs"))
             {
                 return false;
             }
@@ -307,7 +311,7 @@ namespace Roslyn
                 {
                     if (i != 0)
                     {
-                        if( lines[i - 1].Trim() != (AllStrings.cbl))
+                        if( lines[i - 1].Trim() != (AllStrings.lcub))
                         {
                             lines.Insert(i, string.Empty);
                         }

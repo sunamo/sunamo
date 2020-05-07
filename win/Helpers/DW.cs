@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -76,12 +76,12 @@ public static partial class DW
     /// <param name = "masc"></param>
     public static void UpdateDefaultFilter(string description, string masc)
     {
-        filterDefault = description + AllStrings.pipe + masc;
+        filterDefault = description + AllStrings.verbar + masc;
     }
 
     public static string GetFilter(string description, string masc)
     {
-        return description + AllStrings.pipe + masc;
+        return description + AllStrings.verbar + masc;
     }
 
     /// <summary>

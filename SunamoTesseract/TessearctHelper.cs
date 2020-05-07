@@ -43,14 +43,13 @@ namespace SunamoTesseract
             Environment.SetEnvironmentVariable(va, @"d:\Documents\GitHub\How-to-use-tesseract-ocr-4.0-with-csharp\tesseract-master.1153\tessdata\");
             var env = Environment.GetEnvironmentVariable(va);
 
-
             var tesseractPath = string.Empty;
             tesseractPath = GetTesseractPath();
 
             byte[] imageFile = null;
             string ext = FS.GetExtension(path);
 
-            if (ext != AllExtensions.tiff)
+            if (false) // ext != AllExtensions.tiff
             {
                 Bitmap bmp = new Bitmap(path);
                 imageFile = GetImageFile(bmp).ToArray();
@@ -87,19 +86,9 @@ namespace SunamoTesseract
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-
-
-            var testFiles = FS.GetFiles(@"d:\_Test\WpfApp1\WpfApp1\OpticalCharacterRecognitionUC\");
-            var tesseractPath = GetTesseractPath();
-
-            var maxDegreeOfParallelism = Environment.ProcessorCount;
-            Parallel.ForEach(testFiles, new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism }, (fileName) =>
-            {
-                
-                var imageFile = File.ReadAllBytes(fileName);
-                var text = ParseText(tesseractPath, imageFile, "enu");
-                Console.WriteLine("File:" + fileName + "\n" + text + "\n");
-            });
+            var testFiles = FS.GetFiles(@"d:\Documents\BitBucket\How-to-use-tesseract-ocr-4.0-with-csharp\samples\a\");
+            var a = new TesseractArgs { lang = TessearactLang.ces, inputFiles = testFiles, writingOnConsole = true, outputFiles = null };
+            ProcessFiles(a);
 
             stopwatch.Stop();
             Console.WriteLine("Duration: " + stopwatch.Elapsed);
@@ -111,9 +100,42 @@ namespace SunamoTesseract
             var tempImageFile = Path.GetTempFileName();
         }
 
+        public static void ProcessFiles(TesseractArgs a)
+        {
+            var tesseractPath = GetTesseractPath();
+
+            var maxDegreeOfParallelism = Environment.ProcessorCount;
+            Parallel.ForEach(a.inputFiles, new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism },
+                (fileName) =>
+                {
+                    var imageFile = File.ReadAllBytes(fileName);
+                    var text = ParseText(tesseractPath, imageFile, a.lang.ToString());
+
+                    if (a.outputFiles != null)
+                    {
+                        TF.SaveFile(text, a.outputFiles[fileName]);
+                    }
+
+                    if (a.writingOnConsole)
+                    {
+                        Console.WriteLine("File:" + fileName + "\n" + text + "\n");
+                    }
+                });
+        }
+
         static Type type = typeof(TessearctHelper);
+
         private static string ParseText(string tesseractPath, byte[] imageFile, params string[] lang)
         {
+            foreach (var item in lang)
+            {
+                if (item == "enu")
+                {
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Use right eng, not enu!!!");
+                    return null;
+                }
+            }
+
             string output = string.Empty;
             var tempOutputFile = Path.GetTempPath() + Guid.NewGuid();
             var tempImageFile = Path.GetTempFileName();
@@ -139,6 +161,7 @@ namespace SunamoTesseract
                 // Start tesseract.
                 Process process = Process.Start(info);
                 process.WaitForExit();
+
                 if (process.ExitCode == 0)
                 {
                     // Exit code: success.
@@ -154,6 +177,7 @@ namespace SunamoTesseract
                 File.Delete(tempImageFile);
                 File.Delete(tempOutputFile + ".txt");
             }
+
             return output;
         }
     }

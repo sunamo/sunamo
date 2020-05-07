@@ -9568,10 +9568,6 @@
           <source></source>
           <target state="translated"> podporovaná.</target>
         </trans-unit>
-        <trans-unit id="Pompinka" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">1Pompinka5*</target>
-        </trans-unit>
         <trans-unit id="display" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">zobrazení</target>

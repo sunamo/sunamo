@@ -189,8 +189,6 @@ using sunamo.Essential;
             }
         }
 
-        
-
         /// <summary>
         /// Po uložení obrázku jej i všechny ostatní prostředky zlikviduje.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ public abstract partial class GeneratorCodeAbstract{
         //sb.AppendLine();
         AddTab(tabCount);
         //sb.AppendLine();
-        sb.AppendLine(AllStrings.cbr);
+        sb.AppendLine(AllStrings.rcub);
 
     }
 
@@ -34,7 +34,7 @@ public abstract partial class GeneratorCodeAbstract{
         // Line always ending previous command
         //sb.AppendLine();
         AddTab(tabCount);
-        sb.AppendLine(AllStrings.cbl);
+        sb.AppendLine(AllStrings.lcub);
         //sb.AppendLine();
     }
 

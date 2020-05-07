@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 public static class ConvertRot21
 {
@@ -54,7 +54,7 @@ public static class ConvertRot21
         s_abc.Add(new ABT<char, char>('E', 'a'));
         s_abc.Add(new ABT<char, char>('F', 'H'));
         s_abc.Add(new ABT<char, char>('G', '^'));
-        s_abc.Add(new ABT<char, char>('H', AllChars.exclamation));
+        s_abc.Add(new ABT<char, char>('H', AllChars.excl));
         s_abc.Add(new ABT<char, char>('I', '&'));
         s_abc.Add(new ABT<char, char>('J', '5'));
         s_abc.Add(new ABT<char, char>('K', '$'));
@@ -73,16 +73,16 @@ public static class ConvertRot21
         s_abc.Add(new ABT<char, char>('X', '4'));
         s_abc.Add(new ABT<char, char>('Y', 'k'));
         s_abc.Add(new ABT<char, char>('Z', 'y'));
-        s_abc.Add(new ABT<char, char>(AllChars.exclamation, 'X'));
+        s_abc.Add(new ABT<char, char>(AllChars.excl, 'X'));
         s_abc.Add(new ABT<char, char>('@', 'q'));
-        s_abc.Add(new ABT<char, char>('#', AllChars.modulo));
+        s_abc.Add(new ABT<char, char>('#', AllChars.percnt));
         s_abc.Add(new ABT<char, char>('$', '1'));
-        s_abc.Add(new ABT<char, char>(AllChars.modulo, AllChars.q));
+        s_abc.Add(new ABT<char, char>(AllChars.percnt, AllChars.q));
         s_abc.Add(new ABT<char, char>('^', 'b'));
         s_abc.Add(new ABT<char, char>('&', 'o'));
-        s_abc.Add(new ABT<char, char>(AllChars.asterisk, AllChars.us));
+        s_abc.Add(new ABT<char, char>(AllChars.asterisk, AllChars.lowbar));
         s_abc.Add(new ABT<char, char>(AllChars.q, 'R'));
-        s_abc.Add(new ABT<char, char>(AllChars.us, '3'));
+        s_abc.Add(new ABT<char, char>(AllChars.lowbar, '3'));
         s_abc.Add(new ABT<char, char>('~', 'A'));
     }
 

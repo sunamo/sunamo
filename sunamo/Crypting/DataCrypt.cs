@@ -231,7 +231,7 @@ namespace shared.Crypting
         /// </summary>
         public string Base64
         {
-            get { return Utils.ToBase64(_b); }
+            get { return Utils.ToBase64(_b.ToList()); }
             set { _b = Utils.FromBase64(value); }
         }
 

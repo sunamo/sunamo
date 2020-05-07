@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
@@ -89,7 +89,7 @@ public partial class QSHelper
 
         foreach (var item in p2)
         {
-            sb.Append(item.Key + AllStrings.equal + item.Value + AllStrings.amp);
+            sb.Append(item.Key + AllStrings.equals + item.Value + AllStrings.amp);
         }
 
         return sb.ToString().TrimEnd('&');

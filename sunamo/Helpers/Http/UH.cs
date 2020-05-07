@@ -74,7 +74,9 @@ public partial class UH
             }
         }
         return false;
-    } 
+    }
+
+    
     #endregion
 
     #region Is*
@@ -260,5 +262,29 @@ public partial class UH
     }
     #endregion
 
+    /// <summary>
+    /// first upper, other lower
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static string DebugLocalhost(string v)
+    {
+        v = v.ToLower();
+        v = SH.FirstCharUpper(v);
 
+#if !DEBUG
+        
+        return Consts.HttpSunamoCzSlash;
+#endif
+        if (v!= "Nope")
+        {
+            var co = RH.GetConsts(typeof(UriShortConsts));
+            var co2 = co.Where(d => d.Name.StartsWith(v)).First();
+            var vr = Consts.https  + co2.GetValue(null).ToString() + "/";
+            return vr;
+        }
+        return Consts.HttpLocalhostSlash;
+        
+        
+    }
 }

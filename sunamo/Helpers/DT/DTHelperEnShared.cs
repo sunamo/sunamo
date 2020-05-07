@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -186,7 +186,7 @@ public partial class DTHelperEn
         int days = -1;
         int number = -1;
 
-        var arg = SH.SplitNone(AddedAgo, AllStrings.us);
+        var arg = SH.SplitNone(AddedAgo, AllStrings.lowbar);
         if (arg.Length() == 2)
         {
             TryParse.Integer dt = new TryParse.Integer();

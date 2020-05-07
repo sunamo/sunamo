@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 public class XPathPart
 {
@@ -9,8 +9,8 @@ public class XPathPart
 
     public XPathPart(string part)
     {
-        int dexStartSquareBracket = part.IndexOf(AllChars.lsf);
-        int dexEndSquareBracket = part.IndexOf(AllChars.rsf);
+        int dexStartSquareBracket = part.IndexOf(AllChars.rsqb);
+        int dexEndSquareBracket = part.IndexOf(AllChars.lsqb);
         if (dexStartSquareBracket != -1 && dexEndSquareBracket != -1)
         {
             tag = part.Substring(0, dexStartSquareBracket);

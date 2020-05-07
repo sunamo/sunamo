@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using sunamo.Interfaces;
 public partial class SolutionFolderSerialize : IListBoxHelperItem
 {
@@ -42,7 +42,7 @@ static Type type = typeof(SolutionFolderSerialize);
             _nameSolution = FS.GetFileName(value.TrimEnd(AllChars.bs));
             if (SolutionsIndexerSettings.ignorePartAfterUnderscore)
             {
-                _nameSolution = SH.RemoveAfterLast(AllChars.us, _nameSolution);
+                _nameSolution = SH.RemoveAfterLast(AllChars.lowbar, _nameSolution);
             }
         }
     }

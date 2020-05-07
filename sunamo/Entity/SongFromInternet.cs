@@ -1,4 +1,4 @@
-﻿ using System.Collections.Generic;
+ using System.Collections.Generic;
 using System.Text;
 using System;
 using System.Linq;
@@ -395,7 +395,7 @@ namespace sunamo
             sb.Append(TitleInConvention());
             if (remix.Count != 0)
             {
-                sb.Append(AllStrings.lsf + RemixInConvention() + AllStrings.rsf);
+                sb.Append(AllStrings.rsqb + RemixInConvention() + AllStrings.lsqb);
             }
             return sb.ToString();
         }
@@ -439,7 +439,7 @@ namespace sunamo
             vr.Append(Artist() + AllStrings.dash + Title());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + Remix() + AllStrings.rsf);
+                vr.Append(" [" + Remix() + AllStrings.lsqb);
             }
             return vr.ToString();
         }
@@ -450,7 +450,7 @@ namespace sunamo
             vr.Append(ArtistInConvention() + AllStrings.dash + TitleInConvention());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + RemixInConvention() + AllStrings.rsf);
+                vr.Append(" [" + RemixInConvention() + AllStrings.lsqb);
             }
             return vr.ToString();
         }
@@ -458,7 +458,7 @@ namespace sunamo
         private IEnumerable<string> SplitRemix(string u)
         {
             // comma - artists like Hm... or The Academy Is..
-            List<string> gg = SH.Split( u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsf, AllStrings.rsf, AllStrings.lb, AllStrings.rb );
+            List<string> gg = SH.Split( u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.rsqb, AllStrings.lsqb, AllStrings.lb, AllStrings.rb );
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {

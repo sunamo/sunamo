@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using desktop;
@@ -74,18 +74,18 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         minute = hour = 0;
         if (fnwoe[11] == 'S')
         {
-            var parts = SH.Split(fnwoe, AllStrings.us);
+            var parts = SH.Split(fnwoe, AllStrings.lowbar);
             serie = int.Parse(parts[4]);
-            postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
+            postfix = SH.JoinFromIndex(5, AllStrings.lowbar, parts);
             return FileEntriesDuplicitiesStrategy.Serie;
         }
         else
         {
             string t = fnwoe.Substring(11, 5);
-            var parts = SH.Split(t, AllStrings.us);
+            var parts = SH.Split(t, AllStrings.lowbar);
             hour = int.Parse(parts[0]);
             minute = int.Parse(parts[1]);
-            postfix = SH.JoinFromIndex(5, AllStrings.us, parts);
+            postfix = SH.JoinFromIndex(5, AllStrings.lowbar, parts);
             return FileEntriesDuplicitiesStrategy.Time;
         }
     }
@@ -143,7 +143,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
     }
     private string DeleteWrongCharsInFileName(string fnwoe)
     {
-        return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.us, AllStrings.space);
+        return SH.ReplaceAll(FS.DeleteWrongCharsInFileName(fnwoe, false), AllStrings.lowbar, AllStrings.space);
     }
     public void DeleteFile(FileNameWithDateTime<StorageFolder, StorageFile> o)
     {
@@ -192,7 +192,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
             {
                 max = 1;
             }
-            fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.us + name;
+            fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.lowbar + name;
         }
         else
         {

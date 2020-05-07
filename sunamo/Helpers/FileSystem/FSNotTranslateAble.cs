@@ -105,6 +105,17 @@ public partial class FS
         return false;
     }
 
+    public static void NumberByDateModified(string folder, string masc, SearchOption so)
+    {
+        var files = FS.GetFiles(folder, masc, so, new GetFilesArgs { byDateOfLastModifiedAsc = true });
+        int i = 1;
+        foreach (var item in files)
+        {
+            FS.RenameFile(item, i + Path.GetExtension(item), FileMoveCollisionOption.DontManipulate);
+            i++;
+        }
+    }
+
 
 
 

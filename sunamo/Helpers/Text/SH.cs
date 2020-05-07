@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using sunamo.Collections;
 using sunamo.Constants;
 using sunamo.Delegates;
@@ -32,6 +32,30 @@ public static partial class SH
         }
         return false;
     }
+
+    public static string Format34(string c, params object[] innerMain)
+    {
+        string formatted = null;
+
+        try
+        {
+            formatted = SH.Format4(c, innerMain);
+        }
+        catch (Exception)
+        {
+        }
+
+        try
+        {
+            formatted = SH.Format3(c, innerMain);
+        }
+        catch (Exception)
+        {
+        }
+
+        return formatted;
+    }
+
     public static int CountOf(string v1, char v2)
     {
         int c = 0;
@@ -902,7 +926,7 @@ public static partial class SH
     {
         title = remix = null;
         p = p.Trim();
-        if (p[p.Length - 1] != AllChars.rsf)
+        if (p[p.Length - 1] != AllChars.lsqb)
         {
             return false;
         }
@@ -910,7 +934,7 @@ public static partial class SH
         {
             p = p.Substring(0, p.Length - 1);
         }
-        int firstHranata = p.LastIndexOf(AllChars.lsf);
+        int firstHranata = p.LastIndexOf(AllChars.rsqb);
         if (firstHranata == -1)
         {
             return false;
@@ -949,9 +973,9 @@ public static partial class SH
     public static string RemoveBracketsWithTextCaseInsensitive(string vr, string zaCo, params string[] co)
     {
         vr = ReplaceAll(vr, AllStrings.lb, "( ");
-        vr = ReplaceAll(vr, AllStrings.rsf, " ]");
+        vr = ReplaceAll(vr, AllStrings.lsqb, " ]");
         vr = ReplaceAll(vr, AllStrings.rb, " )");
-        vr = ReplaceAll(vr, AllStrings.lsf, "[ ");
+        vr = ReplaceAll(vr, AllStrings.rsqb, "[ ");
         for (int i = 0; i < co.Length; i++)
         {
             vr = Regex.Replace(vr, co[i], zaCo, RegexOptions.IgnoreCase);
@@ -988,9 +1012,9 @@ public static partial class SH
                     vr = vr.Substring(ss + 1);
                 }
             }
-            else if (vr.StartsWith(AllStrings.lsf))
+            else if (vr.StartsWith(AllStrings.rsqb))
             {
-                int ss = vr.IndexOf(AllStrings.rsf);
+                int ss = vr.IndexOf(AllStrings.lsqb);
                 if (ss != -1 && ss != vr.Length - 1)
                 {
                     neco = true;

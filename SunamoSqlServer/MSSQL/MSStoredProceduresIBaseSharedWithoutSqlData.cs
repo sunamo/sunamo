@@ -1,4 +1,4 @@
-﻿//using System;
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -172,7 +172,7 @@
 //    }
 //    public void CreateDatabase(string p)
 //    {
-//        ExecuteNonQuery("Create Database [" + p + AllStrings.rsf);
+//        ExecuteNonQuery("Create Database [" + p + AllStrings.lsqb);
 //    }
 //    /// <summary>
 //    /// Počítá od nuly

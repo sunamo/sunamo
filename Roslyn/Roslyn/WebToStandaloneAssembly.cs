@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using sunamo.Constants;
 using System;
@@ -34,7 +34,7 @@ namespace Roslyn
                 cs.CreateTitle();
             ]";
 
-            return SH.Format(template, AllStrings.lsf, AllStrings.rsf, csClass, ctorArgs);
+            return SH.Format(template, AllStrings.rsqb, AllStrings.lsqb, csClass, ctorArgs);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace {0}
 
         [0]
     ]
-]", AllStrings.lsf, AllStrings.rsf, 
+]", AllStrings.rsqb, AllStrings.lsqb, 
 nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs);
             template = SH.Format3(template, code);
             return template;
@@ -187,7 +187,7 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
 
 
                     contentFileNew.Insert(0, genUs.ToString());
-                    contentFileNew.Add(AllStrings.cbr);
+                    contentFileNew.Add(AllStrings.rcub);
 
                     string content = GetContentOfPageCsFile(nsX, fnwoeAspxCs, variables, usingsCode, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs, code);
                     content = SH.ReplaceAll(content, string.Empty, "CreateEmpty();");

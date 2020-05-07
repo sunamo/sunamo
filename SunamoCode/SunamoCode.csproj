@@ -17,7 +17,7 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Core" Version="1.42.0" />
+    <PackageReference Include="Google.Apis.Core" Version="1.45.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

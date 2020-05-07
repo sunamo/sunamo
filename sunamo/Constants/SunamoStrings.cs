@@ -290,6 +290,6 @@ public class SunamoStrings
 
     public static string MessageIfEmpty(string p)
     {
-        return "Nebyly nalezeny \u017E\u00E1dn\u00E9" + " " + p + " " + " " + " " + "zobrazen\u00ED";
+        return "Wasn't found any data to show";
     }
 }

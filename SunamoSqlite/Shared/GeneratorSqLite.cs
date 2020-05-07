@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Text;
@@ -72,7 +72,7 @@ using System.Text;
                     ThrowExceptions.Custom(Exc.GetStackTrace(),type, "Column", "In SQLite must all columns reference the same table https://www.techonthenet.com/sqlite/foreign_keys/foreign_keys.php");
 
                     //sb.AddItem((object)"CONSTRAINT");
-                    //sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));
+                    //sb.AddItem((object)("fk_" + var.Name + AllStrings.lowbar + inTable + AllStrings.lowbar + var.referencesTable + AllStrings.lowbar + var.referencesColumn));
                     //sb.AddItem((object)"FOREIGN KEY REFERENCES");
                     //sb.AddItem((object)(var.referencesTable + AllStrings.lb + var.referencesColumn + AllStrings.rb));
                 }

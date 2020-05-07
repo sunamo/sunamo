@@ -462,20 +462,46 @@ public class CSharpGenerator : GeneratorCodeAbstract
     }
 
     #region Dictionary
-    public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums)
+    /// <summary>
+    /// a: addingValue = true as default
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="U"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="nameCommentEnums"></param>
+    public void DictionaryNumberNumber<T, U>(int tabCount, string nameDictionary, Dictionary<T, U> nameCommentEnums, CSharpGeneratorArgs a)
     {
-        DictionaryFromDictionary<T, U>(tabCount, nameDictionary, nameCommentEnums);
+        DictionaryFromDictionary<T, U>(tabCount, nameDictionary, nameCommentEnums, a);
     }
 
-    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums)
+    /// <summary>
+    /// a: addingValue = true as default
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="nameCommentEnums"></param>
+    public void DictionaryStringString(int tabCount, string nameDictionary, Dictionary<string, string> nameCommentEnums, CSharpGeneratorArgs a)
     {
-        DictionaryFromDictionary<string, string>(tabCount, nameDictionary, nameCommentEnums);
+        DictionaryFromDictionary<string, string>(tabCount, nameDictionary, nameCommentEnums, a);
     }
 
-    public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result)
+    /// <summary>
+    /// createInstance = true as default
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="result"></param>
+    /// <param name="a"></param>
+    public void DictionaryStringListString(int tabCount, string nameDictionary, Dictionary<string, List<string>> result, CSharpGeneratorArgs a = null)
     {
+        if (a == null)
+        {
+            a = new CSharpGeneratorArgs();
+        }
+
         string cn = "Dictionary<string, List<string>>";
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, true);
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, a);
         foreach (var item in result)
         {
             var list = CA.WrapWithQm(item.Value);
@@ -484,9 +510,23 @@ public class CSharpGenerator : GeneratorCodeAbstract
     }
 
     #region DictionaryFrom
-    public void DictionaryFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue, bool addingValue = true)
+    /// <summary>
+    /// a: addingValue = true as default
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="keys"></param>
+    /// <param name="randomValue"></param>
+    /// <param name="addingValue"></param>
+    public void DictionaryFromRandomValue<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue, CSharpGeneratorArgs a = null)
     {
-        
+        if (a == null)
+        {
+            a = new CSharpGeneratorArgs();
+            a.addingValue = true;
+        }
 
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
@@ -494,12 +534,28 @@ public class CSharpGenerator : GeneratorCodeAbstract
             dict.Add(keys[i], randomValue.Invoke());
         }
 
-        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, addingValue);
+        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, a);
     }
 
-    public void DictionaryFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, bool addingValue = true)
+    /// <summary>
+    /// a: addingValue = true was default
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="keys"></param>
+    /// <param name="values"></param>
+    /// <param name="addingValue"></param>
+    public void DictionaryFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, CSharpGeneratorArgs a = null)
     {
+        
         ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, Exc.CallingMethod(), "keys", keys, "values", values);
+
+        if (a == null)
+        {
+            a = new CSharpGeneratorArgs();
+        }
 
         Dictionary<Key, Value> dict = new Dictionary<Key, Value>();
         for (int i = 0; i < keys.Count; i++)
@@ -507,29 +563,52 @@ public class CSharpGenerator : GeneratorCodeAbstract
             dict.Add(keys[i], values[i]);
         }
 
-        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, addingValue);
+        DictionaryFromDictionary<Key, Value>(tabCount, nameDictionary, dict, a);
     }
 
-    public void DictionaryFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict, bool addingValue = true)
+    /// <summary>
+    /// a: addingValue = true
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="dict"></param>
+    /// <param name="addingValue"></param>
+    public void DictionaryFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict,CSharpGeneratorArgs arg = null)
     {
+        if (arg == null)
+        {
+            arg = new CSharpGeneratorArgs();
+        }
+
         string valueType = null;
         if (dict.Count > 0)
         {
             valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key,Value>(dict).GetType().FullName);
         }
         string cn = "Dictionary<string, " + valueType + ">";//
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        arg.createInstance = false;
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, arg);
         AppendLine();
         CreateInstance(cn, nameDictionary);
 
-        if (addingValue)
+        if (arg.addingValue)
         {
             GetDictionaryValuesFromDictionary(tabCount, nameDictionary, dict);
         }
         
     }
-
-    public void DictionaryFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict, bool addingValue = true)
+    /// <summary>
+    /// default addingValue = true
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="dict"></param>
+    /// <param name="addingValue"></param>
+    public void DictionaryFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict, CSharpGeneratorArgs a)
     {
         string valueType = null;
         if (dict.Count > 0)
@@ -537,11 +616,11 @@ public class CSharpGenerator : GeneratorCodeAbstract
             valueType = ConvertTypeShortcutFullName.ToShortcut(DictionaryHelper.GetFirstItemValue<Key, Value>(dict).GetType().FullName);
         }
         string cn = "Dictionary<string, List<" + valueType + ">>";//
-        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, false);
+        NewVariable(tabCount, AccessModifiers.Private, cn, nameDictionary, a);
         AppendLine();
         CreateInstance(cn, nameDictionary);
 
-        if (addingValue)
+        if (a.addingValue)
         {
             GetDictionaryValuesFromDictionary(tabCount, nameDictionary, dict);
         }
@@ -559,16 +638,26 @@ public class CSharpGenerator : GeneratorCodeAbstract
         GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
     }
 
-    public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, object splitKeyWith)
+    /// <summary>
+    /// a: splitKeyWith
+    /// </summary>
+    /// <typeparam name="Key"></typeparam>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="keys"></param>
+    /// <param name="values"></param>
+    /// <param name="a"></param>
+    public void GetDictionaryValuesFromTwoList<Key, Value>(int tabCount, string nameDictionary, List<Key> keys, List<Value> values, CSharpGeneratorArgs a)
     {
         bool split = false;
         string s = null;
-        if (splitKeyWith != null)
+        if (a.splitKeyWith != null)
         {
             if (typeof( Key) == Types.tString)
             {
                 split = true;
-                s = splitKeyWith.ToString();
+                s = a.splitKeyWith.ToString();
             }
             else
             {
@@ -582,7 +671,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             if (split)
             {
-                var splitted = SH.Split( keys[i].ToString(), splitKeyWith);
+                var splitted = SH.Split( keys[i].ToString(), a. splitKeyWith);
                 foreach (var item in splitted)
                 {
                     dict.Add(RuntimeHelper.CastToGeneric<Key>(item), values[i]);
@@ -598,28 +687,24 @@ public class CSharpGenerator : GeneratorCodeAbstract
         GetDictionaryValuesFromDictionary<Key, Value>(tabCount, nameDictionary, dict);
     }
 
-    public void GetDictionaryValuesFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, List< Value>> dict)
+    public void GetDictionaryValuesFromDictionaryInnerList<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, List< Value>> dict, CSharpGeneratorArgs a)
     {
-        Key key = default(Key);
-        Value value = default(Value);
+        Type tKey, tValue;
 
-        foreach (var item in dict)
-        {
-            key = item.Key;
-            value = RuntimeHelper.CastToGeneric<Value>( item.Value.FirstOrNull());
-
-            break;
-        }
-
-        var tKey = key.GetType();
-        var tValue = value.GetType();
+        Key key;
+        GetTKeyAndTValue(dict, out tKey, out tValue, out key);
 
         IEnumerable valueS;
         string keyS = null;
-        
+
         keyS = key.ToString();
 
-        Field(tabCount, AccessModifiers.Private, false, VariableModifiers.None, string.Format("Dictionary<{0}, List<{1}>>", tKey.Name, tValue.Name), nameDictionary, true);
+        if (a.alsoField)
+        {
+            Field(tabCount, AccessModifiers.Public, true, VariableModifiers.None, string.Format("Dictionary<{0}, List<{1}>>", tKey.Name, tValue.Name), nameDictionary, true);
+        }
+
+        string valuesCs = null;
 
         foreach (var item in dict)
         {
@@ -628,10 +713,37 @@ public class CSharpGenerator : GeneratorCodeAbstract
 
             CSharpHelper.WrapWithQuote(tKey, ref keyS);
 
-            var valueS2 = CSharpHelper.WrapWithQuoteList(tValue,  valueS);
+            var valueS2 = CSharpHelper.WrapWithQuoteList(tValue, valueS);
 
-            this.AppendLine(tabCount, nameDictionary + ".Add(" + keyS + ", CA.ToList<" + tValue.Name + ">("  + valueS2 + "));");
+            if (a.useCA)
+            {
+                valuesCs = "CA.ToList<" + tValue.Name + ">(" + valueS2 + ")";
+            }
+            else
+            {
+                valuesCs = "new List<" + tValue.Name + ">(new ;" + tValue.Name + "[] {" + valueS2 + "})";
+            }
+
+
+            this.AppendLine(tabCount, nameDictionary + ".Add(" + keyS + ", " + valuesCs + ");");
         }
+    }
+
+    public static void GetTKeyAndTValue<Key, Value>(Dictionary<Key, List<Value>> dict, out Type tKey, out Type tValue, out Key key)
+    {
+        key = default(Key);
+        Value value = default(Value);
+
+        foreach (var item in dict)
+        {
+            key = item.Key;
+            value = RuntimeHelper.CastToGeneric<Value>(item.Value.FirstOrNull());
+
+            break;
+        }
+
+        tKey = key.GetType();
+        tValue = value.GetType();
     }
 
     public void GetDictionaryValuesFromDictionary<Key, Value>(int tabCount, string nameDictionary, Dictionary<Key, Value> dict)
@@ -669,12 +781,18 @@ public class CSharpGenerator : GeneratorCodeAbstract
     }
     #endregion
 
-    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict)
+    /// <summary>
+    /// a: addingValue = true as default
+    /// </summary>
+    /// <typeparam name="Value"></typeparam>
+    /// <param name="tabCount"></param>
+    /// <param name="nameDictionary"></param>
+    /// <param name="dict"></param>
+    /// <param name="a"></param>
+    public void DictionaryStringObject<Value>(int tabCount, string nameDictionary, Dictionary<string, Value> dict, CSharpGeneratorArgs a)
     {
-        DictionaryFromDictionary<string, Value>(tabCount, nameDictionary, dict);
+        DictionaryFromDictionary<string, Value>(tabCount, nameDictionary, dict, a);
     }
-
-
     #endregion
 
     /// <summary>
@@ -719,42 +837,73 @@ public class CSharpGenerator : GeneratorCodeAbstract
         this.AppendLine(tabCount, "[" + name + zav + "]");
     }
 
-    public void List(int tabCount, string genericType, string listName, List<string> list, bool addHyphens = true)
+    /// <summary>
+    /// addHyphens = true
+    /// 
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="genericType"></param>
+    /// <param name="listName"></param>
+    /// <param name="list"></param>
+    /// <param name="a"></param>
+    public void List(int tabCount, string genericType, string listName, List<string> list, CSharpGeneratorArgs a = null)
     {
+        if (a == null)
+        {
+            a = new CSharpGeneratorArgs { addHyphens = true };
+        }
+
         string cn = "List<" + genericType + AllStrings.gt;
-        NewVariable(tabCount, AccessModifiers.Private, cn, listName, false);
-        if (addHyphens)
+        NewVariable(tabCount, AccessModifiers.Private, cn, listName, a);
+        if (a.addHyphens)
         {
             list = CA.WrapWith(list, AllStrings.qm);
         }
         if (genericType == "string")
         {
-            AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(AllChars.comma, list) + ");");
+            if (a.useCA)
+            {
+                AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(AllChars.comma, list) + ");");
+            }
+            else
+            {
+                AppendLine(tabCount, listName + " = new List<string>(new string[] {" + SH.Join(AllChars.comma, list) + "});");
+            }
         }
         else
         {
-            AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(AllChars.comma,list) + "));");
+            if (a.useCA)
+            {
+                AppendLine(tabCount, listName + " = new List<" + genericType + ">(CA.ToEnumerable(" + SH.Join(AllChars.comma, list) + "));");
+            }
+            else
+            {
+                AppendLine(tabCount, listName + " = new List<" + genericType + ">(new "+genericType+"[] }" + SH.Join(AllChars.comma, list) + "});");
+            }
+            
         }
-
-
     }
-
-
 
     public void This(int tabCount, string item)
     {
         Append(tabCount, "this." + item);
     }
 
-    
-
-    private void NewVariable(int tabCount, AccessModifiers _public, string cn, string name, bool createInstance)
+    /// <summary>
+    /// a: createInstance
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="_public"></param>
+    /// <param name="cn"></param>
+    /// <param name="name"></param>
+    /// <param name="a"></param>
+    private void NewVariable(int tabCount, AccessModifiers _public, string cn, string name, CSharpGeneratorArgs a)
     {
         AddTab2(tabCount, "");
         WriteAccessModifiers(_public);
         sb.AddItem((object)cn);
         sb.AddItem((object)name);
-        if (createInstance)
+        if (a.createInstance)
         {
             sb.EndLine(AllChars.sc);
             AppendLine();
@@ -805,12 +954,12 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <param name="objectName"></param>
     /// <param name="variable"></param>
     /// <param name="value"></param>
-    public void AssignValue(int tabCount, string objectName, string variable, string value, bool addToHyphens)
+    public void AssignValue(int tabCount, string objectName, string variable, string value, CSharpGeneratorArgs a)
     {
         AddTab(tabCount);
         sb.AddItem((object)(objectName + "." + variable));
         sb.AddItem((object)"=");
-        if (addToHyphens)
+        if (a.addHyphens)
         {
             value = SH.WrapWith(value, '"');
         }
@@ -819,14 +968,23 @@ public class CSharpGenerator : GeneratorCodeAbstract
         sb.AppendLine();
     }
 
-    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, string type, List<string> whereIsUsed2, bool wrapToHyphens)
+    /// <summary>
+    /// a: addHyphens
+    /// </summary>
+    /// <param name="tabCount"></param>
+    /// <param name="timeObjectName"></param>
+    /// <param name="v"></param>
+    /// <param name="type"></param>
+    /// <param name="whereIsUsed2"></param>
+    /// <param name="a"></param>
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, string type, List<string> whereIsUsed2, CSharpGeneratorArgs a)
     {
         string objectIdentificator = "";
         if (timeObjectName != null)
         {
             objectIdentificator = timeObjectName + ".";
         }
-        if (wrapToHyphens)
+        if (a.addHyphens)
         {
             whereIsUsed2 = CA.WrapWith(whereIsUsed2, "\"");
         }
@@ -843,9 +1001,9 @@ public class CSharpGenerator : GeneratorCodeAbstract
     /// <param name="type"></param>
     /// <param name="whereIsUsed2"></param>
     /// <param name="wrapToHyphens"></param>
-    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, Type type, List<string> whereIsUsed2, bool wrapToHyphens)
+    public void AddValuesViaAddRange(int tabCount, string timeObjectName, string v, Type type, List<string> whereIsUsed2,CSharpGeneratorArgs a)
     {
-        AddValuesViaAddRange(tabCount, timeObjectName, v, type.FullName, whereIsUsed2, wrapToHyphens);
+        AddValuesViaAddRange(tabCount, timeObjectName, v, type.FullName, whereIsUsed2, a);
         sb.AppendLine();
     }
 }

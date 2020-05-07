@@ -1,4 +1,4 @@
-﻿using sunamo.Helpers;
+using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +27,7 @@ namespace sunamo.Essential
         /// <summary>
         /// Name = Solution
         /// Project = Project
+        /// In selling is without spaces
         /// </summary>
         public static string Name;
         static string project = null;
@@ -53,7 +54,7 @@ namespace sunamo.Essential
         {
             get
             {
-                return AllStrings.us + Name;
+                return AllStrings.lowbar + Name;
             }
         }
 

@@ -14,4 +14,5 @@ public class GetFilesArgs
     /// Insert SunamoCodeHelper.RemoveTemporaryFilesVS etc.
     /// </summary>
     public Action<List<string>> excludeWithMethod = null;
+    public bool byDateOfLastModifiedAsc = false;
 }

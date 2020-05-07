@@ -181,7 +181,7 @@
 //                {
 //                    max = 1;
 //                }
-//                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.us + name;
+//                fnwoe = DTHelper.DateTimeToFileName(dt, false) + "_S_" + max.Value + AllStrings.lowbar + name;
 //            }
 //            else
 //            {

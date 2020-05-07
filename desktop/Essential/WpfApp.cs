@@ -103,8 +103,11 @@ public partial class WpfApp
             if (lbLogsErrors != null)
             {
                 TextBlock txt = DependencyObjectHelper.CreatedWithCopiedValues<TextBlock>(tbLastErrorOrWarning, props);
-                txt.ToolTip = tbLastErrorOrWarning.Text;
-                lbLogsErrors.Children.Insert(0, txt);
+                cd.Invoke(() =>
+                {
+                    txt.ToolTip = tbLastErrorOrWarning.Text;
+                    lbLogsErrors.Children.Insert(0, txt);
+                });
             }
             //}
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class ConvertDateTimeToFileNamePostfix
 {
-    private static char s_delimiter = AllChars.us;
+    private static char s_delimiter = AllChars.lowbar;
 
     /// <summary>
     /// Převede z data na název souboru bez přípony
@@ -15,7 +15,7 @@ public class ConvertDateTimeToFileNamePostfix
     /// </summary>
     public static string ToConvention(string postfix, DateTime dt, bool time)
     {
-        //postfix = SH.ReplaceAll(postfix, AllStrings.space, AllStrings.us);
+        //postfix = SH.ReplaceAll(postfix, AllStrings.space, AllStrings.lowbar);
         return DTHelper.DateTimeToFileName(dt, time) + s_delimiter + postfix;
     }
 

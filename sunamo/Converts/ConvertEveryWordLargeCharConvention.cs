@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System;
 public class ConvertEveryWordLargeCharConvention //: IConvertConvention
 {
@@ -109,6 +109,6 @@ public class ConvertEveryWordLargeCharConvention //: IConvertConvention
 
     private static bool IsSpecialChar(char item)
     {
-        return CA.IsEqualToAnyElement<char>(item, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.dot, AllChars.apostrophe);
+        return CA.IsEqualToAnyElement<char>(item, AllChars.bs, AllChars.lb, AllChars.rb, AllChars.rsqb, AllChars.lsqb, AllChars.dot, AllChars.apostrophe);
     }
 }

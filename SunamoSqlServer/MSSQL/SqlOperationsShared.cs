@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -339,7 +339,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public SqlResult CreateDatabase(SqlData d, string p)
     {
-        return ExecuteNonQuery(d, "Create Database [" + p + AllStrings.rsf);
+        return ExecuteNonQuery(d, "Create Database [" + p + AllStrings.lsqb);
     }
 
     public SqlResult<bool> HasAnyValue(SqlData data, string table, string columnName, string iDColumnName, int idColumnValue)

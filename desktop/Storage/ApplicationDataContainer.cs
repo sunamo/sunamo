@@ -1,4 +1,4 @@
-﻿using desktop.Controls.Collections;
+using desktop.Controls.Collections;
 using desktop.Controls.Input;
 using desktop.Controls.Visualization;
 using desktop.Storage;
@@ -196,8 +196,8 @@ static Type type = typeof(ApplicationDataContainer);
     }
     public void Set(object sender, string key, object v)
     {
-        // Here must be AllStrings.pipe because in file it is in format name|type|value
-        ThrowExceptions.StringContainsUnallowedSubstrings(Exc.GetStackTrace(),type, "Set", v.ToString(), AllStrings.pipe);
+        // Here must be AllStrings.verbar because in file it is in format name|type|value
+        ThrowExceptions.StringContainsUnallowedSubstrings(Exc.GetStackTrace(),type, "Set", v.ToString(), AllStrings.verbar);
         var f = data[sender];
         if (ThisApp.check)
         {

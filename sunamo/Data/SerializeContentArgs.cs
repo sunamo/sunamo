@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +16,7 @@ namespace sunamo.Data
                 return separatorString[0];
             }
         }
-        public string separatorString = AllStrings.pipe;
+        public string separatorString = AllStrings.verbar;
 
         public int keyCodeSeparator
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -226,10 +226,10 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
             {
                 pristePokracovatDesitky = 0;
                 string category = item.ToString();
-                string categoryPipe = category + AllStrings.pipe;
+                string categoryPipe = category + AllStrings.verbar;
                 MenuItem tsmi = new MenuItem();
                 tsmi.Header = category;
-                var stovkyDivided = SH.Split(stovky[i].ToString(), AllChars.pipe);
+                var stovkyDivided = SH.Split(stovky[i].ToString(), AllChars.verbar);
                 List< String> stovkyActual = new List<String>();
                 StringBuilder stovkyActualTemp = new StringBuilder();
                 for (int y = 0; y < stovkyDivided.Count; y++)
@@ -269,7 +269,7 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
                         tsmiJednotky.Header = (pristePokracovatJednotky + 1).ToString();
                         pristePokracovatJednotky++;
                         tsmiJednotky.Command = cmd3;
-                        tsmiJednotky.CommandParameter = tsmiJednotky.Header.ToString() + AllStrings.pipe + categoryPipe + jednotka;
+                        tsmiJednotky.CommandParameter = tsmiJednotky.Header.ToString() + AllStrings.verbar + categoryPipe + jednotka;
                         var  o = (pristePokracovatJednotky - 1);
                         if (o % 10 == 0 && o % 100 != 0 && o != 0)
                         {
@@ -306,7 +306,7 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
                         tsmiDesitky2.Header = (pristePokracovatDesitky + 1).ToString() + AllStrings.swda + (pristePokracovatDesitky + desitkyPouze.Count).ToString();
                         tsmiDesitky2.Command = cmd2;
                         //  
-                        tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + AllStrings.pipe + categoryPipe + u;
+                        tsmiDesitky2.CommandParameter = tsmiDesitky2.Header.ToString() + AllStrings.verbar + categoryPipe + u;
                         tsmiStovky.Items.Add(tsmiDesitky2);
                         tsmiStovky.Items.Add(tsmiDesitky);
                         pristePokracovatDesitky+= 10;
@@ -316,7 +316,7 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
                     pristePokracovatStovky += 100;
                     tsmiStovky2.Command = cmd1;
                     //
-                    tsmiStovky2.CommandParameter =tsmiStovky2.Header.ToString() + AllStrings.pipe + categoryPipe  + idcka;
+                    tsmiStovky2.CommandParameter =tsmiStovky2.Header.ToString() + AllStrings.verbar + categoryPipe  + idcka;
                     tsmi.Items.Add(tsmiStovky2);
                     tsmi.Items.Add(tsmiStovky);
                 }

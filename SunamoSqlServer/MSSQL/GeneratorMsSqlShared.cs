@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System;
 using System.Diagnostics;
 using System.Data.SqlClient;
@@ -206,7 +206,7 @@ public partial class GeneratorMsSql{
     /// </summary>
     /// <param name="where"></param>
     /// <param name="isNotWhere"></param>
-    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere)
+    public static string CombinedWhere(ABC where, ABC isNotWhere, ABC greaterThanWhere, ABC lowerThanWhere, ABC whereOr = null)
     {
         bool asponNeco = false;
         if (where != null)
@@ -242,6 +242,16 @@ public partial class GeneratorMsSql{
             if (lowerThanWhere != null)
             {
                 if (lowerThanWhere.Length != 0)
+                {
+                    asponNeco = true;
+                }
+            }
+        }
+        if (!asponNeco)
+        {
+            if (whereOr != null)
+            {
+                if (whereOr.Length != 0)
                 {
                     asponNeco = true;
                 }
@@ -323,6 +333,24 @@ public partial class GeneratorMsSql{
                         sb.Append(" AND ");
                     }
                     sb.Append(SH.Format2(" {0} < {1} ", var.A, "@p" + p));
+                    p++;
+                }
+            }
+            první = true;
+            if (whereOr != null)
+            {
+                foreach (AB var in whereOr)
+                {
+                    if (první)
+                    {
+                        první = false;
+                        sb.Append(" AND ");
+                    }
+                    else
+                    {
+                        sb.Append(" OR ");
+                    }
+                    sb.Append(SH.Format2(" {0} = {1} ", var.A, "@p" + p));
                     p++;
                 }
             }
@@ -437,7 +465,7 @@ public static string CombinedWhere(string tabulka, bool top1, string nazvySloupc
             if (var.referencesTable != null)
             {
                 sb.AddItem((object)"CONSTRAINT");
-                sb.AddItem((object)("fk_" + var.Name + AllStrings.us + inTable + AllStrings.us + var.referencesTable + AllStrings.us + var.referencesColumn));
+                sb.AddItem((object)("fk_" + var.Name + AllStrings.lowbar + inTable + AllStrings.lowbar + var.referencesTable + AllStrings.lowbar + var.referencesColumn));
                 sb.AddItem((object)"FOREIGN KEY REFERENCES");
                 sb.AddItem((object)(var.referencesTable + AllStrings.lb + var.referencesColumn + AllStrings.rb));
             }

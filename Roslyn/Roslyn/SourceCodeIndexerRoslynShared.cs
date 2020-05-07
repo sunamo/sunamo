@@ -30,7 +30,7 @@ public void ProcessFile(string file, bool fromFileSystemWatcher)
     {
         tree = null;
         root = null;
-        if (!RoslynHelper.AllowOnly(pathFile, false, true, true, false, false))
+        if (!RoslynHelper.AllowOnly(pathFile, false, true, true, false, false, false))
         {
             return false;
         }

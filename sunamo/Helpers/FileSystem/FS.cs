@@ -917,7 +917,7 @@ public partial class FS
     public static string replaceIncorrectFor = string.Empty;
     public static string ExpandEnvironmentVariables(EnvironmentVariables environmentVariable)
     {
-        return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.modulo));
+        return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.percnt));
     }
     /// <summary>
     /// Pokud by byla cesta zakončená backslashem, vrátila by metoda FS.GetFileName prázdný řetězec. 

@@ -36,7 +36,7 @@ public static bool IsUserAdministrator()
     public static bool IsMyComputer()
     {
         var un = CurrentUserName();
-        if (un == "n" && Environment.MachineName == "ed")
+        if (un == "ED\\n" && Environment.MachineName == "ED")
         {
             return true;
         }

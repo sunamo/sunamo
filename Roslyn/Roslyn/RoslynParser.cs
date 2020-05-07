@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -234,7 +234,7 @@ namespace Roslyn
                         removeLines.Add(i);
                         usings.Add(line);
                     }
-                    else if (line.Contains(AllStrings.cbl))
+                    else if (line.Contains(AllStrings.lcub))
                     {
                         break;
                     }

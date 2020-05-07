@@ -22,8 +22,9 @@ namespace desktop
     /// </summary>
     public partial class LoginDialog : Window
     {
-        public static CryptDelegates cryptDelegates;
+        
         static Type type = typeof(Type);
+
         public string Login
         {
             get
@@ -40,6 +41,9 @@ namespace desktop
             }
         }
 
+        public string LoginEnigma;
+        public string PwEnigma;
+
         StorageApplicationData storageApplicationData = StorageApplicationData.NoWhere;
         const string h = "h";
         const string l = "l";
@@ -50,8 +54,10 @@ namespace desktop
         /// <summary>
         /// A1 = RandomHelper.RandomString(10)
         /// Set also CryptDelegates from shared.unsafe
+        /// 
+        /// This must be private
         /// </summary>
-        public LoginDialog(string salt)
+        private LoginDialog(string salt)
         {
             
             InitializeComponent();
@@ -65,9 +71,6 @@ namespace desktop
         {
             chbAutoLogin.IsChecked = false;
         }
-        
-
-
 
         void chbAutoLogin_Checked(object sender, RoutedEventArgs e)
         {
@@ -75,14 +78,18 @@ namespace desktop
             //}
         }
 
+        public CryptDelegates cryptDelegates = null;
+
         /// <summary>
         /// Set also CryptDelegates from shared.unsafe
         /// </summary>
         /// <param name="salt"></param>
         /// <param name="storageApplicationData"></param>
-        public LoginDialog(string salt, StorageApplicationData storageApplicationData)
+        public LoginDialog(string salt, StorageApplicationData storageApplicationData, CryptDelegates c)
             : this(salt) 
         {
+            cryptDelegates = c;
+
             this.storageApplicationData = storageApplicationData;
             if (storageApplicationData == StorageApplicationData.Registry)
             {
@@ -160,6 +167,12 @@ namespace desktop
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            //if (cryptDelegates != null)
+            //{
+            //    LoginEnigma = cryptDelegates.encryptString(null, txtLogin.Text);
+            //    PwEnigma = cryptDelegates.encryptString(null, txtHeslo.Password);
+            //}
+
             if (storageApplicationData == StorageApplicationData.Registry)
             {
                 if ((bool)chbRememberLogin.IsChecked)

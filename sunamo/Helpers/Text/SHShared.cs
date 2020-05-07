@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using sunamo.Enums;
 using System.Diagnostics;
 using System.Globalization;
@@ -31,7 +31,7 @@ public static partial class SH
     }
     public static string ReplaceVariables(string innerHtml, List<List<string>> _dataBinding, int actualRow)
     {
-        return ReplaceVariables(AllChars.cbl, AllChars.cbr, innerHtml, _dataBinding, actualRow);
+        return ReplaceVariables(AllChars.lcub, AllChars.rcub, innerHtml, _dataBinding, actualRow);
     }
 
     public const String diacritic = "\u00E1\u010D\u010F\u00E9\u011B\u00ED\u0148\u00F3\u0161\u0165\u00FA\u016F\u00FD\u0159\u017E\u00C1\u010C\u010E\u00C9\u011A\u00CD\u0147\u00D3\u0160\u0164\u00DA\u016E\u00DD\u0158\u017D";
@@ -278,6 +278,12 @@ public static partial class SH
         }
     }
 
+    public static string RemoveUselessWhitespaces(string innerText)
+    {
+        var p = SH.SplitByWhiteSpaces(innerText, true);
+        return SH.JoinSpace(p);
+    }
+
     /// <summary>
     /// Is used in btnShortTextOfLyrics
     /// Short text but always keep whole paragraps
@@ -429,7 +435,7 @@ public static partial class SH
             vr = vr.Replace(item, string.Empty);
         }
 
-        vr = SH.RemoveEndingPairCharsWhenDontHaveStarting(vr, AllStrings.cbl, AllStrings.cbr);
+        vr = SH.RemoveEndingPairCharsWhenDontHaveStarting(vr, AllStrings.lcub, AllStrings.rcub);
 
         return vr;
     }
@@ -465,7 +471,7 @@ public static partial class SH
 
         //if (occL.Count == 0)
         //{
-        //    result = vr.Replace(AllStrings.cbr, string.Empty);
+        //    result = vr.Replace(AllStrings.rcub, string.Empty);
         //}
         //else
         //{
@@ -1345,7 +1351,7 @@ public static partial class SH
 
     public static bool ContainsVariable(string innerHtml)
     {
-        return ContainsVariable(AllChars.cbl, AllChars.cbr, innerHtml);
+        return ContainsVariable(AllChars.lcub, AllChars.rcub, innerHtml);
     }
     public static bool ContainsVariable(char p, char k, string innerHtml)
     {
@@ -1447,7 +1453,7 @@ public static partial class SH
 
     public static List<int> GetVariablesInString(string innerHtml)
     {
-        return GetVariablesInString(AllChars.cbl, AllChars.cbr, innerHtml);
+        return GetVariablesInString(AllChars.lcub, AllChars.rcub, innerHtml);
     }
     /// <summary>
     /// 
@@ -1567,8 +1573,8 @@ public static partial class SH
         var result = SH.Format2(templateHandler, args);
         const string replacement = "{        }";
         result = SH.ReplaceAll2(result, replacement, "[]");
-        result = SH.ReplaceAll2(result, AllStrings.cbl, lsf);
-        result = SH.ReplaceAll2(result, AllStrings.cbr, rsf);
+        result = SH.ReplaceAll2(result, AllStrings.lcub, lsf);
+        result = SH.ReplaceAll2(result, AllStrings.rcub, rsf);
         result = SH.ReplaceAll2(result, replacement, "{}");
         //result = SH.Format4(result, args);
 
@@ -1597,7 +1603,7 @@ public static partial class SH
         {
             return string.Empty;
         }
-        if (status.Contains(AllChars.cbl) && !status.Contains("{0}"))
+        if (status.Contains(AllChars.lcub) && !status.Contains("{0}"))
         {
             return status;
         }
@@ -1629,7 +1635,7 @@ public static partial class SH
         // this was original implementation but dont know why isnt used string.format
         for (int i = 0; i < args.Length; i++)
         {
-            template = SH.ReplaceAll2(template, args[i].ToString(), AllStrings.cbl + i + AllStrings.cbr);
+            template = SH.ReplaceAll2(template, args[i].ToString(), AllStrings.lcub + i + AllStrings.rcub);
         }
         return template;
     }
@@ -1967,7 +1973,7 @@ public static partial class SH
     /// <summary>
     /// Dont contains 
     /// </summary>
-    public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.exclamation, AllChars.q, '\u2013', '\u2014', '\u2010', '\u2026', '\u201E', '\u201C', '\u201A', '\u2018', '\u00BB', '\u00AB', '\u2019', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.lsf, AllChars.rsf, AllChars.cbl, AllChars.cbr, '\u3008', '\u3009', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.pipe, '\u201D', AllChars.qm, '~', '\u00B0', AllChars.plus, '@', '#', '$', AllChars.modulo, '^', '&', AllChars.asterisk, '=', AllChars.us, '\u02C7', '\u00A8', '\u00A4', '\u00F7', '\u00D7', '\u02DD' };
+    public static char[] spaceAndPuntactionChars = new char[] { AllChars.space, AllChars.dash, AllChars.dot, AllChars.comma, AllChars.sc, AllChars.colon, AllChars.excl, AllChars.q, '\u2013', '\u2014', '\u2010', '\u2026', '\u201E', '\u201C', '\u201A', '\u2018', '\u00BB', '\u00AB', '\u2019', AllChars.bs, AllChars.lb, AllChars.rb, AllChars.rsqb, AllChars.lsqb, AllChars.lcub, AllChars.rcub, '\u3008', '\u3009', AllChars.lt, AllChars.gt, AllChars.slash, AllChars.bs, AllChars.verbar, '\u201D', AllChars.qm, '~', '\u00B0', AllChars.plus, '@', '#', '$', AllChars.percnt, '^', '&', AllChars.asterisk, '=', AllChars.lowbar, '\u02C7', '\u00A8', '\u00A4', '\u00F7', '\u00D7', '\u02DD' };
 
     public static void Init()
     {
@@ -2052,7 +2058,7 @@ public static partial class SH
 
     public static bool IsNegation(ref string contains)
     {
-        if (contains[0] == AllChars.exclamation)
+        if (contains[0] == AllChars.excl)
         {
             contains = contains.Substring(1);
             return true;
@@ -2271,7 +2277,7 @@ public static partial class SH
     {
         if (squareBrackets)
         {
-            title = RemoveBetweenAndEdgeChars(title, AllChars.lsf, AllChars.rsf);
+            title = RemoveBetweenAndEdgeChars(title, AllChars.rsqb, AllChars.lsqb);
         }
         if (parentheses)
         {
@@ -2279,7 +2285,7 @@ public static partial class SH
         }
         if (braces)
         {
-            title = RemoveBetweenAndEdgeChars(title, AllChars.cbl, AllChars.cbr);
+            title = RemoveBetweenAndEdgeChars(title, AllChars.lcub, AllChars.rcub);
         }
         if (afterSdsFrom)
         {
@@ -2574,6 +2580,12 @@ public static partial class SH
         return r;
     }
 
+    /// <summary>
+    /// Replace AllChars.whiteSpacesChars with A2
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="forWhat"></param>
+    /// <returns></returns>
     public static string ReplaceWhitespaces(string s, string forWhat)
     {
         foreach (var item in AllChars.whiteSpacesChars)
@@ -2648,6 +2660,13 @@ public static partial class SH
     {
         return ReplaceWhiteSpacesWithoutSpaces(p, "");
     }
+
+    /// <summary>
+    /// Replace r,n,t with A2
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="replaceWith"></param>
+    /// <returns></returns>
     public static string ReplaceWhiteSpacesWithoutSpaces(string p, string replaceWith = "")
     {
         return p.Replace("\r", replaceWith).Replace("\n", replaceWith).Replace("\t", replaceWith);

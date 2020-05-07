@@ -134,7 +134,8 @@ public static partial class
     /// <summary>
     /// direct edit
     /// Remove duplicities from A1
-    /// In output is from every one instance
+    /// In return value is from every one instance
+    /// In A2 is every duplicities (maybe the same more times)
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
@@ -221,6 +222,18 @@ public static partial class
         var vr = CA.ToList(where);
         RemoveDefaultT(vr);
         return vr;
+    }
+
+    public static bool EndsWith(string fn, List<string> allowedExtension)
+    {
+        foreach (var item in allowedExtension)
+        {
+            if (fn.EndsWith(item))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -1986,5 +1999,25 @@ public static bool HasPostfix(string key, params string[] v1)
             result.AddRange(ReturnWhichContainsIndexes(parts, item));
         }
         return result.c;
+    }
+
+public static string FindOutLongestItem(List<string> list, params string[] delimiters)
+    {
+        int delkaNejdelsiho = 0;
+        string nejdelsi = "";
+        foreach (var item in list)
+        {
+            string tem = item;
+            if (delimiters.Length != 0)
+            {
+                tem = SH.Split(item, delimiters)[0].Trim();
+            }
+            if (delkaNejdelsiho < tem.Length)
+            {
+                nejdelsi = tem;
+                delkaNejdelsiho = tem.Length;
+            }
+        }
+        return nejdelsi;
     }
 }

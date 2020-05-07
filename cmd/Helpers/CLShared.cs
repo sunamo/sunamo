@@ -109,7 +109,7 @@ public static partial class CL
         Console.WriteLine();
         for (int i = 0; i < variants.Count; i++)
         {
-            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + variants[i]);
+            Console.WriteLine(AllStrings.rsqb + i + AllStrings.lsqb + "    " + variants[i]);
         }
 
         return UserMustTypeNumber(what, variants.Count - 1);
@@ -126,7 +126,7 @@ public static partial class CL
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
-            Console.WriteLine(AllStrings.lsf + i + AllStrings.rsf + "    " + kvp.Key);
+            Console.WriteLine(AllStrings.rsqb + i + AllStrings.lsqb + "    " + kvp.Key);
             i++;
         }
 

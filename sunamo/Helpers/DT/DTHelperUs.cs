@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,9 +17,9 @@ namespace sunamo.Helpers.DT
         /// <param name="dt"></param>
         public static string DateTimeToFileName(DateTime dt)
         {
-            string dDate = AllStrings.us;
-            string dSpace = AllStrings.us;
-            string dTime = AllStrings.us;
+            string dDate = AllStrings.lowbar;
+            string dSpace = AllStrings.lowbar;
+            string dTime = AllStrings.lowbar;
             return DateTimeToFileName(dt, true);
         }
 
@@ -31,9 +31,9 @@ namespace sunamo.Helpers.DT
         /// <param name="time"></param>
         public static string DateTimeToFileName(DateTime dt, bool time)
         {
-            string dDate = AllStrings.us;
-            string dSpace = AllStrings.us;
-            string dTime = AllStrings.us;
+            string dDate = AllStrings.lowbar;
+            string dSpace = AllStrings.lowbar;
+            string dTime = AllStrings.lowbar;
             string vr = dt.Year + dDate + NH.MakeUpTo2NumbersToZero(dt.Month) + dDate + NH.MakeUpTo2NumbersToZero(dt.Day);
             if (time)
             {
@@ -51,7 +51,7 @@ namespace sunamo.Helpers.DT
         /// <param name="fnwoe"></param>
         public static DateTime? FileNameToDateTimePrefix(string fnwoe, bool time, out string prefix)
         {
-            List<string> sp = SH.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, AllStrings.us[0]);
+            List<string> sp = SH.SplitToPartsFromEnd(fnwoe, time ? 6 : 4, AllStrings.lowbar[0]);
             if (time)
             {
                 prefix = sp[0];
@@ -82,7 +82,7 @@ namespace sunamo.Helpers.DT
         /// </summary>
         public static DateTime? FileNameToDateTimePostfix(string fnwoe, bool time, out string postfix)
         {
-            var sp = SH.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.us);
+            var sp = SH.SplitToParts(fnwoe, time ? 6 : 4, AllStrings.lowbar);
             if (time)
             {
                 if (CA.HasIndex(5, sp))
@@ -140,7 +140,7 @@ namespace sunamo.Helpers.DT
             postfix = "";
             serie = null;
 
-            var sp = SH.SplitToParts(fnwoe, 6, AllStrings.us);
+            var sp = SH.SplitToParts(fnwoe, 6, AllStrings.lowbar);
 
             if (CA.HasIndex(5, sp))
             {
@@ -174,7 +174,7 @@ namespace sunamo.Helpers.DT
         /// <param name="fnwoe"></param>
         public static DateTime? FileNameToDateTime(string fnwoe)
         {
-            var sp = SH.Split(fnwoe, AllStrings.us);
+            var sp = SH.Split(fnwoe, AllStrings.lowbar);
             var dd = CA.ToInt(sp, 6);
             if (dd == null)
             {

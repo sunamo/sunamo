@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Collections.Generic;
 using System;
 using AllProjectsSearch;
@@ -269,7 +269,7 @@ public class FoldersWithSolutions
             foreach (string var in slo)
             {
                 string nazev = FS.GetFileName(var);
-                if (nazev.StartsWith(AllStrings.us))
+                if (nazev.StartsWith(AllStrings.lowbar))
                 {
                     spec.Add(var);
                 }

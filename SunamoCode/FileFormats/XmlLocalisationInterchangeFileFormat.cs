@@ -205,7 +205,7 @@ TranslateEngine");
 
                     foreach (var item2 in withWithoutUnderscore)
                     {
-                        content = content.Replace(item2.Key + AllChars.rsf, item2.Value + AllChars.rsf);
+                        content = content.Replace(item2.Key + AllChars.lsqb, item2.Value + AllChars.lsqb);
                     }
 
                     TF.SaveFile(content, item);
@@ -226,7 +226,7 @@ TranslateEngine");
             foreach (var dx in occ)
             {
                 var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
-                var end = content.IndexOf(AllChars.rsf, start);
+                var end = content.IndexOf(AllChars.lsqb, start);
 
 
                 key = content.Substring(start, end - start);
