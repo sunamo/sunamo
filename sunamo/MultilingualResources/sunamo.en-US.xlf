@@ -84,6 +84,14 @@
          <source>does not exists</source>
          <target state="new">does not exists</target>
        </trans-unit>
+        <trans-unit id="YouAreNotLogged" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="new">You're not logged</target>
+       </trans-unit>
+        <trans-unit id="YouAreBlocked" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="new">You're blocked</target>
+       </trans-unit>
         <trans-unit id="TheProgramIsAttemptingToShowTheExceptionThatActuallyDoesNotExist" translate="yes" xml:space="preserve">
          <source>The program is attempting to show the exception that actually does not exist.</source>
          <target state="new">The program is attempting to show the exception that actually does not exist</target>
@@ -13895,6 +13903,122 @@
         <trans-unit id="DoYouWishToSendALoginNameToTheMail_quest_quest" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Do you wish to send alogin name to the mail_quest_quest</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedPleaseContactWebAdmin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Not implemented. Please contact the webmaster about this shortcoming which is listed in the footer of each page.</target>
+        </trans-unit>
+        <trans-unit id="ScIsNotTheSame" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Disagree sc.</target>
+        </trans-unit>
+        <trans-unit id="UnvalidSession" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Bad login information - Please log out and log back in again.</target>
+        </trans-unit>
+        <trans-unit id="DetailsClickSurveyAspxLabel" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">When was the answer clicked in this poll?</target>
+        </trans-unit>
+        <trans-unit id="AddAsRsvp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">I'll come check it out</target>
+        </trans-unit>
+        <trans-unit id="RemoveAsRsvp" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Unfortunately, I can't do it</target>
+        </trans-unit>
+        <trans-unit id="RemoveAsRsvpSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">So maybe next time ..</target>
+        </trans-unit>
+        <trans-unit id="AddToFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add to Favorites</target>
+        </trans-unit>
+        <trans-unit id="RemoveFromFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Remove from favourites</target>
+        </trans-unit>
+        <trans-unit id="AddToFavoritesSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Added to favorites!</target>
+        </trans-unit>
+        <trans-unit id="RemoveFromFavoritesSuccess" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Removed from favorites</target>
+        </trans-unit>
+        <trans-unit id="UnauthorizedOperation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You came to this page because you tried to load a page or perform another operation for which you do not have permission or which is not applicable in this context.</target>
+        </trans-unit>
+        <trans-unit id="LinkSuccessfullyShorted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The link was shortened successfully</target>
+        </trans-unit>
+        <trans-unit id="CustomShortUriOccupatedYet" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">This short link has already been taken</target>
+        </trans-unit>
+        <trans-unit id="UriTooLong" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The address was longer than 512 characters</target>
+        </trans-unit>
+        <trans-unit id="UriTooShort" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The website received an address that was empty</target>
+        </trans-unit>
+        <trans-unit id="YouHaveNotValidIPv4Address" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You do not have a valid IPv4 address</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotLoggedAsWebAdmin" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">You were not logged in as the site admin</target>
+        </trans-unit>
+        <trans-unit id="NoRightArgumentsToPage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">The correct number of parameters and / or values were not passed to the page</target>
+        </trans-unit>
+        <trans-unit id="StringNotFound" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chain not found</target>
+        </trans-unit>
+        <trans-unit id="TurnOffSelectingPhotos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Turn off photo tagging mode</target>
+        </trans-unit>
+        <trans-unit id="TurnOnSelectingPhotos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Turn on photo tagging mode</target>
+        </trans-unit>
+        <trans-unit id="YouAreBlocked" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: You have been blocked by IP address or nickname, you cannot perform the requested operation</target>
+        </trans-unit>
+        <trans-unit id="YouAreNotLogged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: You were not logged in</target>
+        </trans-unit>
+        <trans-unit id="ViewLastWeek" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pageviews of the last 7 days (counting the day back, which means that today's accesses will not be displayed until tomorrow):</target>
+        </trans-unit>
+        <trans-unit id="ErrorSerie0" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: The Uri from which this handler was called was not in the database.</target>
+        </trans-unit>
+        <trans-unit id="ErrorSerie255" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">error: Either the page sent the wrong URI parameters entityTableId and entityId, or the entity with these parameters was not found in the database.</target>
+        </trans-unit>
+        <trans-unit id="UserDetail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">User detail</target>
+        </trans-unit>
+        <trans-unit id="EditUserAccount" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Editing a user account</target>
         </trans-unit>
       </group>
     </body>

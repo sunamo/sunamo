@@ -1053,7 +1053,15 @@ public static partial class
         return result;
     }
 
-    public static List<T> ToNumber<T>(Func<string, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true)
+    /// <summary>
+    /// For use with mustBeAllNumbers, must use other parse func than default .net
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="parse"></param>
+    /// <param name="enumerable"></param>
+    /// <param name="mustBeAllNumbers"></param>
+    /// <returns></returns>
+    public static List<T> ToNumber<T>(Func<string, T> parse, IEnumerable enumerable)
     {
         List<T> result = new List<T>();
         foreach (var item in enumerable)
@@ -1073,12 +1081,29 @@ public static partial class
         return result;
     }
 
-    public static List<T> ToNumber<T>(Func<string, bool, T> parse, IEnumerable enumerable, bool mustBeAllNumbers = true)
+    /// <summary>
+    /// U will be use when parsed element wont be number to return never-excepted value and recognize bad value
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="parse"></param>
+    /// <param name="enumerable"></param>
+    /// <param name="mustBeAllNumbers"></param>
+    /// <returns></returns>
+    public static List<T> ToNumber<T>(Func<string, T, T> parse, IEnumerable enumerable, T defVal,  bool mustBeAllNumbers = true)
     {
         List<T> result = new List<T>();
         foreach (var item in enumerable)
         {
-            var number = parse.Invoke(item.ToString(), mustBeAllNumbers);
+            
+            var number = parse.Invoke(item.ToString(), defVal);
+            if (mustBeAllNumbers)
+            {
+                if (EqualityComparer<T>.Default.Equals(number, defVal))
+                {
+                    ThrowExceptions.BadFormatOfElementInList(Exc.GetStackTrace(), type, Exc.CallingMethod(), item, nameof(enumerable));
+                    return null;
+                }
+            }
             if (number.ToString() == int.MinValue.ToString())
             {
                 result.Add(number);

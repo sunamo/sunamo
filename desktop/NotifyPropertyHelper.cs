@@ -21,7 +21,7 @@ public class NotifyPropertyHelper
         return l;
     }
 
-    public static void CheckBox(NotifyPropertyChangedWrapper<CheckBox> notifyWrapper)
+    public static void CheckBox<T>(NotifyPropertyChangedWrapper<T> notifyWrapper) where T : DependencyObject
     {
         notifyWrapper.dpIsChecked = ToggleButton.IsCheckedProperty;
         notifyWrapper.dpContent = ContentControl.ContentProperty;

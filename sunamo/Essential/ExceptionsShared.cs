@@ -90,6 +90,11 @@ using System.Threading.Tasks;
                 return "";
             }
             return before + ": ";
-        } 
-        #endregion
+        }
+
+    internal static string BadFormatOfElementInList(string before, object elVal, string listName)
+    {
+        return before + "Bad format of element " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
     }
+    #endregion
+}

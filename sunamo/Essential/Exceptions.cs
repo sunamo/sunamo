@@ -387,11 +387,18 @@ public partial class Exceptions
         return CheckBefore(before) + description;
     }
 
-    public static string InvalidParameter(string before, string mayUrlDecoded, string typeOfInput)
+    /// <summary>
+    /// Is used when single (not list etc) bad arg is entered to method
+    /// </summary>
+    /// <param name="before"></param>
+    /// <param name="valueVar"></param>
+    /// <param name="nameVar"></param>
+    /// <returns></returns>
+    public static string InvalidParameter(string before, string valueVar, string nameVar)
     {
-        if (mayUrlDecoded != WebUtility.UrlDecode(mayUrlDecoded))
+        if (valueVar != WebUtility.UrlDecode(valueVar))
         {
-            return CheckBefore(before) + mayUrlDecoded + " " + "is url endoded" + " " + typeOfInput;
+            return CheckBefore(before) + valueVar + " " + "is url encoded" + " " + nameVar;
         }
 
         return null;

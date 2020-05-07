@@ -3685,5 +3685,35 @@ public class XlfKeys
     public static string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain";
     public static string HasBeenUpdated = "HasBeenUpdated";
     public static string EnterLoginCredentials = "EnterLoginCredentials";
+    internal static string YouAreNotLogged;
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
+
+    public static readonly string NotImplementedPleaseContactWebAdmin = "NotImplementedPleaseContactWebAdmin";
+    public static readonly string ScIsNotTheSame = "ScIsNotTheSame";
+    public static readonly string UnvalidSession = "UnvalidSession";
+    public static readonly string DetailsClickSurveyAspxLabel = "DetailsClickSurveyAspxLabel";
+    public static readonly string AddAsRsvp = "AddAsRsvp";
+    public static readonly string RemoveAsRsvp = "RemoveAsRsvp";
+    public static readonly string RemoveAsRsvpSuccess = "RemoveAsRsvpSuccess";
+    public static readonly string AddToFavorites = "AddToFavorites";
+    public static readonly string RemoveFromFavorites = "RemoveFromFavorites";
+    public static readonly string AddToFavoritesSuccess = "AddToFavoritesSuccess";
+    public static readonly string RemoveFromFavoritesSuccess = "RemoveFromFavoritesSuccess";
+    public static readonly string UnauthorizedOperation = "UnauthorizedOperation";
+    public static readonly string LinkSuccessfullyShorted = "LinkSuccessfullyShorted";
+    public static readonly string CustomShortUriOccupatedYet = "CustomShortUriOccupatedYet";
+    public static readonly string UriTooLong = "UriTooLong";
+    public static readonly string UriTooShort = "UriTooShort";
+    public static readonly string YouHaveNotValidIPv4Address = "YouHaveNotValidIPv4Address";
+    public static readonly string YouAreNotLoggedAsWebAdmin = "YouAreNotLoggedAsWebAdmin";
+    public static readonly string NoRightArgumentsToPage = "NoRightArgumentsToPage";
+    public static readonly string StringNotFound = "StringNotFound";
+    public static readonly string TurnOffSelectingPhotos = "TurnOffSelectingPhotos";
+    public static readonly string TurnOnSelectingPhotos = "TurnOnSelectingPhotos";
+    public static readonly string YouAreBlocked = "YouAreBlocked";
+    public static readonly string ViewLastWeek = "ViewLastWeek";
+    public static readonly string ErrorSerie0 = "ErrorSerie0";
+    public static readonly string ErrorSerie255 = "ErrorSerie255";
+    public static readonly string EditUserAccount = "EditUserAccount";
+
 }

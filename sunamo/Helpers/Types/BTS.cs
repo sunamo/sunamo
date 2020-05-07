@@ -310,12 +310,17 @@ public static partial class BTS
 
     public static short ParseShort(string entry)
     {
+        return ParseShort(entry, short.MinValue);
+    }
+
+    public static short ParseShort(string entry, short defVal)
+    {
         short lastInt2 = 0;
         if (short.TryParse(entry, out lastInt2))
         {
             return lastInt2;
         }
-        return short.MinValue;
+        return defVal;
     }
 
     public static byte ParseByte(string entry)
@@ -551,7 +556,7 @@ public static partial class BTS
     /// <param name="p"></param>
     public static List<int> CastCollectionStringToInt(IEnumerable<string> p)
     {
-        return CA.ToNumber<int>(int.Parse, p, false);
+        return CA.ToNumber<int>(int.Parse, p);
     }
 
     /// <summary>

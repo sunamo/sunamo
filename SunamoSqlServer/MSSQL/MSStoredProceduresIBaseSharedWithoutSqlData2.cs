@@ -2167,37 +2167,40 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
             }
         }
 
+        // cant add anything here, otherwise tr.InsertToTable inserting 1,3,5,etc.
+        byte add = 0;
+
         if (idt == typeof(Byte))
         {
-            return Byte.Parse(dd) + 1;
+            return Byte.Parse(dd) + add;
         }
         else if (idt == typeof(Int16))
         {
-            return Int16.Parse(dd) + 1;
+            return Int16.Parse(dd) + add;
         }
         else if (idt == typeof(Int32))
         {
-            return Int32.Parse(dd) + 1;
+            return Int32.Parse(dd) + add;
         }
         else if (idt == typeof(Int64))
         {
-            return Int64.Parse(dd) + 1;
+            return Int64.Parse(dd) + add;
         }
         else if (idt == typeof(SByte))
         {
-            return SByte.Parse(dd) + 1;
+            return SByte.Parse(dd) + add;
         }
         else if (idt == typeof(UInt16))
         {
-            return UInt16.Parse(dd) + 1;
+            return UInt16.Parse(dd) + add;
         }
         else if (idt == typeof(UInt32))
         {
-            return UInt32.Parse(dd) + 1;
+            return UInt32.Parse(dd) + add;
         }
         else if (idt == typeof(UInt64))
         {
-            return UInt64.Parse(dd) + 1;
+            return UInt64.Parse(dd) + add;
         }
         //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepovolený nehodnotový typ v metodě GetMinValueForType") + 1;
         return decimal.Parse(dd) + 1;

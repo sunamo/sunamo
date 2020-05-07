@@ -120,9 +120,17 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.StringContainsUnallowedSubstrings(FullNameOfExecutedCode(type, methodName, true), input, unallowedStrings));
     }
-    public static void InvalidParameter(string stacktrace, object type, string methodName, string mayUrlDecoded, string typeOfInput)
+    /// <summary>
+    /// Is used when single (not list etc) bad arg is entered to method
+    /// </summary>
+    /// <param name="stacktrace"></param>
+    /// <param name="type"></param>
+    /// <param name="methodName"></param>
+    /// <param name="valueVar"></param>
+    /// <param name="nameVar"></param>
+    public static void InvalidParameter(string stacktrace, object type, string methodName, string valueVar, string nameVar)
     {
-        ThrowIsNotNull(stacktrace, Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName, true), mayUrlDecoded, typeOfInput));
+        ThrowIsNotNull(stacktrace, Exceptions.InvalidParameter(FullNameOfExecutedCode(type, methodName, true), valueVar, nameVar));
     }
     public static void ElementCantBeFound(string stacktrace, object type, string methodName, string nameCollection, string element)
     {
@@ -203,6 +211,11 @@ public partial class ThrowExceptions
     public static void FuncionalityDenied(string stacktrace, object type, string methodName, string description)
     {
         ThrowIsNotNull(stacktrace, Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
+    }
+
+    internal static void BadFormatOfElementInList(string stacktrace, object type, string methodName, object elVal, string listName)
+    {
+        ThrowIsNotNull(stacktrace, Exceptions.BadFormatOfElementInList(FullNameOfExecutedCode(type, methodName), elVal, listName));
     }
     #endregion
 }

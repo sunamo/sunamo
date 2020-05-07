@@ -468,6 +468,14 @@ Into A1 insert:
                 return;
             }
 
+            Append(source, target, pascal, d);
+            d.xd.Save(fn);
+
+            XHelper.FormatXml(fn);
+        }
+
+        public static void Append(string source, string target, string pascal, XlfData d)
+        {
             TransUnit tu = new TransUnit();
             tu.id = pascal;
             tu.source = source;
@@ -479,9 +487,6 @@ Into A1 insert:
             xe = XHelper.MakeAllElementsWithDefaultNs(xe);
 
             d.group.Add(xe);
-            d.xd.Save(fn);
-
-            XHelper.FormatXml(fn);
         }
 
         #region Cooperating XlfKeys and *.xlf

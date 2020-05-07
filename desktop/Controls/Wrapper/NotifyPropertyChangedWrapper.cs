@@ -124,6 +124,11 @@ public class NotifyPropertyChangedWrapper<T> : INotifyPropertyChanged where T : 
 	{
 		this.o = o;
 
+		if (o.GetType() == TypesControls.tCheckBox)
+		{
+			NotifyPropertyHelper.CheckBox<T>(this);
+		}
+
 		if (d != null)
 		{
 			this.capturedProperty = d;
@@ -135,6 +140,13 @@ public class NotifyPropertyChangedWrapper<T> : INotifyPropertyChanged where T : 
 				.AddValueChanged(o, (s, e) => { OnPropertyChanged(capturedProperty.Name); });
 		}
 	}
+
+	//public static explicit operator NotifyPropertyChangedWrapper<CheckBox>(NotifyPropertyChangedWrapper<T> v) 
+	//{
+	//	CheckBox chb = (CheckBox) v.o;
+
+	//	return new NotifyPropertyChangedWrapper<CheckBox>()
+	//}
 
 	void OnPropertyChanged(string propName)
 	{
