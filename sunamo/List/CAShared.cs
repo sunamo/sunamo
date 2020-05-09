@@ -1104,10 +1104,10 @@ public static partial class
                     return null;
                 }
             }
-            if (number.ToString() == int.MinValue.ToString())
-            {
+            //if (number.ToString() == int.MinValue.ToString())
+            //{
                 result.Add(number);
-            }
+            //}
         }
         return result;
     }

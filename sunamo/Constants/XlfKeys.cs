@@ -3685,7 +3685,7 @@ public class XlfKeys
     public static string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain";
     public static string HasBeenUpdated = "HasBeenUpdated";
     public static string EnterLoginCredentials = "EnterLoginCredentials";
-    internal static string YouAreNotLogged;
+    public static string YouAreNotLogged = "YouAreNotLogged";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
 
     public static readonly string NotImplementedPleaseContactWebAdmin = "NotImplementedPleaseContactWebAdmin";
