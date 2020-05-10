@@ -152,6 +152,7 @@ public partial class UriWebServices
     {
         public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
         public const string appsHelp = "https://apps.sunamo.cz/help/%s";
+        public const string appsFeedBack = "https://apps.sunamo.cz/feedback/%s";
     }
 
     public static class SexShops

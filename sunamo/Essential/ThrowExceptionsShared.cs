@@ -108,7 +108,6 @@ public partial class ThrowExceptions
                 // Will be written in globalasax error
                 writeServerError(stacktrace, exception);
                 throw new Exception(exception);
-                //}
             }
             else
             {
