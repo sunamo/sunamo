@@ -12956,9 +12956,17 @@
          <source></source>
          <target state="translated">Export seznamu</target>
        </trans-unit>
+        <trans-unit id="SearchTimestamp" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Search timestamp</target>
+       </trans-unit>
         <trans-unit id="SearchForCachesContaining" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">Search for caches containing</target>
+       </trans-unit>
+        <trans-unit id="SearchFor" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Search for</target>
        </trans-unit>
         <trans-unit id="ShowingMaximumGeocache" translate="yes" xml:space="preserve">
          <source></source>

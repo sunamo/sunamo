@@ -25,6 +25,7 @@ public class VpsHelper
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
     public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVps.txt"));
+    public static PpkOnDrive listMain = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsMain.txt"));
 
     public static void PushAll()
     {

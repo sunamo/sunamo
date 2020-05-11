@@ -1715,8 +1715,8 @@ public class XlfKeys
     public const string ApplicationsWithTag = "ApplicationsWithTag";
     public const string Versions = "Versions";
     public const string DescriptionOfApp = "DescriptionOfApp";
-    public const string SearchTimestampSpanSpan = "SearchTimestampSpanSpan";
-    public const string SearchForSpanTextSpan = "SearchForSpanTextSpan";
+    public const string SearchTimestamp = "SearchTimestamp";
+    public const string SearchFor = "SearchFor";
     public const string TheTextStringNameWasPassedToThePageButTheApplicationWithThatNameWasNotFoundInTheDB = "TheTextStringNameWasPassedToThePageButTheApplicationWithThatNameWasNotFoundInTheDB";
     public const string ManageImagesApp = "ManageImagesApp";
     public const string IDVersionDT = "IDVersionDT";
