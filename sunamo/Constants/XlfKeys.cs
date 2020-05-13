@@ -1635,7 +1635,7 @@ public class XlfKeys
     public const string ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI = "ThisGalleryIsPrivateAndAValidAlbumKeyParameterWasNotFoundInURI";
     public const string GalleryIsPrivateAccessCodeWasIncorrect = "GalleryIsPrivateAccessCodeWasIncorrect";
     public const string NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow = "NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow";
-    public const string By = "By";
+    public const string by = "by";
     public const string ThereWasNoUnderscoreInTheAlbumNameParameter = "ThereWasNoUnderscoreInTheAlbumNameParameter";
     public const string FailedToParseAlbumIDFromFirstPartOfAlbumParameter = "FailedToParseAlbumIDFromFirstPartOfAlbumParameter";
     public const string TheRequestedAlbumWasNotFoundHere = "TheRequestedAlbumWasNotFoundHere";
