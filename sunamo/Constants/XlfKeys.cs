@@ -1876,7 +1876,6 @@ public class XlfKeys
     public const string CouldNotFindVersionWithThisIDInDatabase = "CouldNotFindVersionWithThisIDInDatabase";
     public const string CouldNotFindThisApplicationInTheDatabase = "CouldNotFindThisApplicationInTheDatabase";
     public const string warningAGithubProgramWithThisNameAlreadyExistedInTheDatabase = "warningAGithubProgramWithThisNameAlreadyExistedInTheDatabase";
-    public const string AlreadyExistsInTheDatabase = "AlreadyExistsInTheDatabase";
     public const string warningApplicationOfTheName = "warningApplicationOfTheName";
     public const string NameGitHubDescriptionIsShowingIsAppGuiWideTileSoftwareType = "NameGitHubDescriptionIsShowingIsAppGuiWideTileSoftwareType";
     public const string VersionChangeLogMustInstall = "VersionChangeLogMustInstall";
