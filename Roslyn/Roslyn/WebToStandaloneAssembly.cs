@@ -34,7 +34,7 @@ namespace Roslyn
                 cs.CreateTitle();
             ]";
 
-            return SH.Format(template, AllStrings.rsqb, AllStrings.lsqb, csClass, ctorArgs);
+            return SH.Format(template, AllStrings.lsqb, AllStrings.rsqb, csClass, ctorArgs);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Roslyn
         /// <param name="baseClassCs"></param>
         /// <param name="nsBaseClassCs"></param>
         /// <param name="code"></param>
-        string GetContentOfPageCsFile(string nsX, string className, string variables, string usings, string ctorArgs, string ctorInner, string baseClassCs, string nsBaseClassCs, string code)
+        public string GetContentOfPageCsFile(string nsX, string className, string variables, string usings, string ctorArgs, string ctorInner, string baseClassCs, string nsBaseClassCs, string code)
         {
             string template = SH.Format(@"{3}
 namespace {0}
@@ -67,7 +67,7 @@ namespace {0}
 
         [0]
     ]
-]", AllStrings.rsqb, AllStrings.lsqb, 
+]", AllStrings.lsqb, AllStrings.rsqb, 
 nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClassCs);
             template = SH.Format3(template, code);
             return template;
@@ -83,16 +83,23 @@ nsX, className, variables, usings, ctorArgs, ctorInner, baseClassCs, nsBaseClass
         /// <param name="to"></param>
         /// <param name="baseClassCs"></param>
         /// <param name="nsBaseClassCs"></param>
-        public void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs)
+        public void AspxCsToStandaloneAssembly(string from, string to, string baseClassCs, string nsBaseClassCs, List<string> skipAspx)
         {
             var files = FS.GetFiles(from, FS.MascFromExtension(".aspx.cs"), SearchOption.TopDirectoryOnly);
             // Get namespace
             string ns = FS.GetFileName(from);
             string nsX = FS.GetFileName(to);
 
+
             foreach (var fileAspxCs in files)
             {
                 string fnwoeAspxCs = FS.GetFileNameWithoutExtensions(fileAspxCs);
+
+                if (CA.IsEqualToAnyElement<string>(FS.GetFileNameWithoutExtension( fnwoeAspxCs), skipAspx))
+                {
+                    continue;
+                }
+
                 string designer = FS.Combine(from, fnwoeAspxCs + ".aspx.designer.cs");
 
                 string fullPathTo = FS.Combine(to, fnwoeAspxCs + "Cs.cs");

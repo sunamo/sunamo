@@ -5032,6 +5032,10 @@
          <source></source>
          <target state="translated">error: You were not logged in as admin</target>
        </trans-unit>
+        <trans-unit id="EitherYouAreNotLoggedInOrHasBeenSelectedAsByNonAdminUserID" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Either You Are Not Logged In Or Has Been Selected As By non-admin UserID</target>
+       </trans-unit>
         <trans-unit id="Update" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">Update</target>
@@ -7968,9 +7972,9 @@
          <source></source>
          <target state="translated">Applications with tag</target>
        </trans-unit>
-        <trans-unit id="AnApplicationsWithTheSpanTagSpan" translate="yes" xml:space="preserve">
+        <trans-unit id="AnApplicationsWithTheTag" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">An applications with the &lt;span&gt;tag&lt;/span</target>
+         <target state="translated">An applications with the tag</target>
        </trans-unit>
         <trans-unit id="NoAppWithTag" translate="yes" xml:space="preserve">
          <source></source>
@@ -9656,9 +9660,9 @@
          <source></source>
          <target state="translated">Cant set Title</target>
        </trans-unit>
-        <trans-unit id="NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA15" translate="yes" xml:space="preserve">
+        <trans-unit id="NoHttpRequestOrSunamoPageObjectWasInsertedIntoTheSunamoPhotoGalleryConstructorA" translate="yes" xml:space="preserve">
          <source></source>
-         <target state="translated">No HttpRequest or SunamoPage object was inserted into the SunamoPhotoGallery constructor, A15</target>
+         <target state="translated">No HttpRequest or SunamoPage object was inserted into the SunamoPhotoGallery constructor, A</target>
        </trans-unit>
         <trans-unit id="TheNumberOfFileNamesAndTheirExtensionsDoesNotMatch" translate="yes" xml:space="preserve">
          <source></source>

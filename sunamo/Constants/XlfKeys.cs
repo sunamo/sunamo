@@ -1711,7 +1711,7 @@ public class XlfKeys
     public const string UploadBinary = "UploadBinary";
     public const string ErrorDisplayingAppsByTag = "ErrorDisplayingAppsByTag";
     public const string NoAppWithTag = "NoAppWithTag";
-    public const string AnApplicationsWithTheSpanTagSpan = "AnApplicationsWithTheSpanTagSpan";
+    public const string AnApplicationsWithTheTag = "AnApplicationsWithTheTag";
     public const string ApplicationsWithTag = "ApplicationsWithTag";
     public const string Versions = "Versions";
     public const string DescriptionOfApp = "DescriptionOfApp";
@@ -3685,6 +3685,7 @@ public class XlfKeys
     public static string HasBeenUpdated = "HasBeenUpdated";
     public static string EnterLoginCredentials = "EnterLoginCredentials";
     public static string YouAreNotLogged = "YouAreNotLogged";
+    public static string EitherYouAreNotLoggedInOrHasBeenSelectedAsByNonAdminUserID = "EitherYouAreNotLoggedInOrHasBeenSelectedAsByNonAdminUserID";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
 
     public static readonly string NotImplementedPleaseContactWebAdmin = "NotImplementedPleaseContactWebAdmin";

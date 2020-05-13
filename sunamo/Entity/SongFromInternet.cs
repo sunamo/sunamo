@@ -458,7 +458,7 @@ namespace sunamo
         private IEnumerable<string> SplitRemix(string u)
         {
             // comma - artists like Hm... or The Academy Is..
-            List<string> gg = SH.Split( u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.rsqb, AllStrings.lsqb, AllStrings.lb, AllStrings.rb );
+            List<string> gg = SH.Split( u, AllStrings.amp, AllStrings.space, AllStrings.comma, AllStrings.dash, AllStrings.lsqb, AllStrings.rsqb, AllStrings.lb, AllStrings.rb );
             //gg.ForEach(g => g.ToLower());
             for (int i = 0; i < gg.Count; i++)
             {
