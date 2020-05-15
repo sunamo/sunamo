@@ -133,10 +133,10 @@
     <Compile Include="Helpers\Resources\ResourcesH.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Http\HttpClientHelper.cs" />
     <Compile Include="Http\HttpRequestHelper.cs" />
     <Compile Include="Http\HttpRequestHelperShared.cs" />
     <Compile Include="Http\HttpResponseHelper.cs" />
-    <Compile Include="Http\HttpWebResponseHelper.cs" />
     <Compile Include="Indexing\DateTimeFileIndex.cs" />
     <Compile Include="Interfaces\IXml.cs" />
     <Compile Include="MailBox.cs" />

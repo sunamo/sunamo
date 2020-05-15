@@ -394,7 +394,7 @@ public static partial class SH
         
     }
 
-    public static string ReplaceMany(string input, string fromTo)
+    public static string ReplaceMany(string input, string fromTo, bool removeEndingPairCharsWhenDontHaveStarting = true)
     {
         StringBuilder from = new StringBuilder();
         StringBuilder to = new StringBuilder();
@@ -435,7 +435,10 @@ public static partial class SH
             vr = vr.Replace(item, string.Empty);
         }
 
-        vr = SH.RemoveEndingPairCharsWhenDontHaveStarting(vr, AllStrings.lcub, AllStrings.rcub);
+        if (removeEndingPairCharsWhenDontHaveStarting)
+        {
+            vr = SH.RemoveEndingPairCharsWhenDontHaveStarting(vr, AllStrings.lcub, AllStrings.rcub);
+        }
 
         return vr;
     }

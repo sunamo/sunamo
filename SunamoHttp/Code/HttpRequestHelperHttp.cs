@@ -1,4 +1,4 @@
-﻿
+
 using HtmlAgilityPack;
 using sunamo.Helpers;
 using sunamo.Html;
@@ -15,7 +15,7 @@ using System.Web;
 /// Náhrada za třídu NetHelper
 /// Can be only in shared coz is not available in standard
 /// </summary>
-public static partial class HttpRequestHelper
+public static partial class HttpRequestHelperHttp
 {
 
     public static bool IsNotFound(object uri)
@@ -23,7 +23,7 @@ public static partial class HttpRequestHelper
         HttpWebResponse r;
         var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
 
-        return HttpResponseHelper.IsNotFound(r);
+        return HttpResponseHelperHttp.IsNotFound(r);
     }
 
     public static bool SomeError(object uri)
@@ -31,7 +31,7 @@ public static partial class HttpRequestHelper
         HttpWebResponse r;
         var test = GetResponseText(uri.ToString(), HttpMethod.Get, null, out r);
 
-        return HttpResponseHelper.SomeError(r);
+        return HttpResponseHelperHttp.SomeError(r);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public static partial class HttpRequestHelper
 
         if (!FS.ExistsFile(path) || FS.GetFileSize(path) == 0)
         {
-            var c = HttpRequestHelper.GetResponseBytes(href, HttpMethod.Get);
+            var c = HttpRequestHelperHttp.GetResponseBytes(href, HttpMethod.Get);
             
             File.WriteAllBytes(path, c);
             return true;

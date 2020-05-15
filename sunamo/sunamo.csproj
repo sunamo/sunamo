@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -77,7 +77,6 @@
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Converts\JavascriptSerialization.cs" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\FSSharedShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\SFShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\FileSystem\TFShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Http\HttpClientHelper.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Http\UHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Number\NHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\PlatformInteropHelperShared.cs" />
@@ -134,6 +132,7 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
     <Compile Include="Args\CSharpGeneratorArgs.cs" />
+    <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="CryptDelegates.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
@@ -208,7 +207,6 @@
     <Compile Include="Constants\HtmlAttrValue.cs" />
     <Compile Include="Constants\HtmlConsts.cs" />
     <Compile Include="Constants\HtmlTags.cs" />
-    <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="Constants\Paths\DefaultPaths.cs" />
     <Compile Include="Constants\Paths\ExecutablePaths.cs" />
@@ -244,7 +242,6 @@
     <Compile Include="Converts\ConvertTypeNameType.cs" />
     <Compile Include="Converts\ConvertTypeNameTypeNumbers.cs" />
     <Compile Include="Converts\ConvertTypeShortcutFullName.cs" />
-    <Compile Include="Converts\JavascriptSerialization.cs" />
     <Compile Include="Converts\NullableConverter.cs" />
     <Compile Include="Converts\Rot13.cs" />
     <Compile Include="CryptHelper2.cs" />
@@ -408,7 +405,6 @@
     <Compile Include="Enums\RunTypes.cs" />
     <Compile Include="Enums\SearchIn.cs" />
     <Compile Include="Enums\SearchStrategy.cs" />
-    <Compile Include="Enums\SerializationLibrary.cs" />
     <Compile Include="Enums\SerieStyle.cs" />
     <Compile Include="Enums\Signed.cs" />
     <Compile Include="Enums\SortBy.cs" />
@@ -533,7 +529,6 @@
     <Compile Include="Helpers\FileSystem\SFShared.cs" />
     <Compile Include="Helpers\FileSystem\TF.cs" />
     <Compile Include="Helpers\FileSystem\TFShared.cs" />
-    <Compile Include="Helpers\Http\HttpClientHelper.cs" />
     <Compile Include="Helpers\Http\QSHelper.cs" />
     <Compile Include="Helpers\Http\UH.cs" />
     <Compile Include="Helpers\Http\UHShared.cs" />
@@ -682,8 +677,6 @@
     <Compile Include="SunamoCode\XlfResourcesH.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamoShared.cs" />
-    <Compile Include="SunamoJson.cs" />
-    <Compile Include="SunamoJsonShared.cs" />
     <Compile Include="SunamoTimer.cs" />
     <Compile Include="Threating\IThreatPool.cs" />
     <Compile Include="UriWebServices.cs" />

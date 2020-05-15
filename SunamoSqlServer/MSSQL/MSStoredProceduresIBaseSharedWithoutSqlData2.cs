@@ -178,7 +178,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
                 {
                     return p2;
                 }
-                return MSStoredProceduresI.DateTimeMinVal;
+                return Consts.DateTimeMinVal;
             }
         }
     }

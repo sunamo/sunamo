@@ -413,6 +413,11 @@ public partial class FS
         return p.Replace(folderWithProjectsFolders, folderWithTemporaryMovedContentWithoutBackslash);
     }
 
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
     public static List<string> OnlyNamesWithoutExtension(List<string> p)
     {
         for (int i = 0; i < p.Count; i++)

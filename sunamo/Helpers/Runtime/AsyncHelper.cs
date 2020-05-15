@@ -56,10 +56,10 @@ using System.Threading.Tasks;
              task.Conf();
         }
 
-    async Task Await(Task t)
-    {
-        await t;
-    }
+        async Task Await(Task t)
+        {
+            await t;
+        }
 
         /// <summary>
         /// Execute's an T> method which has a void return value synchronously

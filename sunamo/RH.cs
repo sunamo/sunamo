@@ -388,12 +388,12 @@ public class RH
             case DumpProvider.Yaml:
                 dump = YamlHelper.DumpAsYaml(o);
                 break;
-            case DumpProvider.Microsoft:
-                dump = JavascriptSerialization.InstanceMs.Serialize(o);
-                break;
-            case DumpProvider.Newtonsoft:
-                dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
-                break;
+            //case DumpProvider.Microsoft:
+            //    dump = JsonSy.Serialize(o);
+            //    break;
+            //case DumpProvider.Newtonsoft:
+            //    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
+            //    break;
             case DumpProvider.ObjectDumper:
                 dump = RH.DumpAsString(name, o);
                 break;

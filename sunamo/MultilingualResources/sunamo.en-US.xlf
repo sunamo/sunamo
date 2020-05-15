@@ -12424,6 +12424,10 @@
          <source></source>
          <target state="translated">not found</target>
        </trans-unit>
+        <trans-unit id="NotFound" translate="yes" xml:space="preserve">
+         <source></source>
+         <target state="translated">Not found</target>
+       </trans-unit>
         <trans-unit id="idPageName" translate="yes" xml:space="preserve">
          <source></source>
          <target state="translated">id page name:</target>

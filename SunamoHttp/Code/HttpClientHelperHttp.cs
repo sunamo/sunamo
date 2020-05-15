@@ -1,4 +1,4 @@
-﻿using sunamo.Data;
+using sunamo.Data;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,12 +13,12 @@ using System.Threading.Tasks;
 namespace sunamo.Helpers
 {
     /// <summary>
-    /// Pokud chceš náhradu za třídu HttpRequestHelper, použij
+    /// Pokud chceš náhradu za třídu HttpRequestHelperHttp, použij
     /// </summary>
-    public class HttpClientHelper
+    public class HttpClientHelperHttp
     {
         public static HttpClient hc = new HttpClient();
-        private HttpClientHelper()
+        private HttpClientHelperHttp()
         {
         }
 
@@ -28,12 +28,14 @@ namespace sunamo.Helpers
             return  GetResponseText(response);
         }
 
-        private static string GetResponseText(HttpResponseMessage response)
+        private  static  string GetResponseText(HttpResponseMessage response)
         {
             string vr = "";
             using (response)
             {
-                vr =  response.Content.ReadAsStringAsync().Result;
+                // Must be await, not AsyncHelper, not .Result, otherwise will be frozen
+                //vr =  AsyncHelper.ci.GetResult<string>( response.Content.ReadAsStringAsync());
+                vr = AsyncHelper.ci.GetResult<string>( response.Content.ReadAsStringAsync());
             }
             return vr;
         }
@@ -81,7 +83,7 @@ namespace sunamo.Helpers
             return response;
         }
 
-        static Type type = typeof(HttpClientHelper);
+        static Type type = typeof(HttpClientHelperHttp);
 
         private static void SetHttpHeaders(HttpRequestData hrd, HttpClient hc)
         {

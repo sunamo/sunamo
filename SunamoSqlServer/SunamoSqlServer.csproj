@@ -56,6 +56,7 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\InstancesSqlResult.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
+    <Compile Include="SqlServerHelperApps.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />
