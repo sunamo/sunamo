@@ -236,8 +236,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             {
 
             }
-
-
         }
     }
 
@@ -285,7 +283,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
     public void SetMode(object mode2)
     {
-
         var mode = EnumHelper.Parse<Mode>(mode2.ToString(), Mode.Empty);
         if (userControlClosing != null)
         {
@@ -338,7 +335,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         userControlClosing = actual as IUserControlClosing;
         keysHandler = actual as IKeysHandler;
         ThrowExceptions.WasNotKeysHandler(Exc.GetStackTrace(),type, Exc.CallingMethod(), userControl.Title, keysHandler);
-
 
         #region On start I have to unregister
         previouslyRegisteredMenuItems.ForEach(menuItem => miUC.Items.Remove(menuItem));

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\SunamoExceptions\SunamoExceptions.csproj" />
   </ItemGroup>
 
 </Project>

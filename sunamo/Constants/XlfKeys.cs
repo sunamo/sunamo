@@ -1316,7 +1316,7 @@ public class XlfKeys
     public const string YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled = "YouAreWorkingWithTheDatabaseButTheInsertToTablePhotosDelegateWasNotFilled";
     public const string TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile = "TheMaximumSizeOfPhotosInThePhotoGalleryAndAllAlbumsIsGBFile";
     public const string errorTheImageWasNotInJPEGFormat = "errorTheImageWasNotInJPEGFormat";
-    public const string FailedToCreateImageFileWillNotBeUploaded = "FailedToCreateImageFileWillNotBeUploaded";
+    public const string failedToCreateImageFileWillNotBeUploaded = "failedToCreateImageFileWillNotBeUploaded";
     public const string errorFromUploadedFile = "errorFromUploadedFile";
     public const string AlreadyExistedAndCouldNotBeDeleted = "AlreadyExistedAndCouldNotBeDeleted";
     public const string DoesNotHaveTheCorrectExtension = "DoesNotHaveTheCorrectExtension";
@@ -1779,7 +1779,7 @@ public class XlfKeys
     public const string NoResultsFound = "NoResultsFound";
     public const string ThisMethodHasNotBeenImplemented = "ThisMethodHasNotBeenImplemented";
     public const string errorTheCorrectSizeOriginalWasNotSpecifiedInTheParameters = "errorTheCorrectSizeOriginalWasNotSpecifiedInTheParameters";
-    public const string HasBeenSuccessfullyUploaded = "HasBeenSuccessfullyUploaded";
+    
     public const string WasNotLoadedHeightCouldNotBeDetected = "WasNotLoadedHeightCouldNotBeDetected";
     public const string WasNotLoadedCouldNotDetectWidth = "WasNotLoadedCouldNotDetectWidth";
     public const string ThisPhotoWasNotFoundOnTheWeb = "ThisPhotoWasNotFoundOnTheWeb";
@@ -3686,6 +3686,14 @@ public class XlfKeys
     public static string EnterLoginCredentials = "EnterLoginCredentials";
     public static string YouAreNotLogged = "YouAreNotLogged";
     public static string EitherYouAreNotLoggedInOrHasBeenSelectedAsByNonAdminUserID = "EitherYouAreNotLoggedInOrHasBeenSelectedAsByNonAdminUserID";
+    public static string AppStartedSuccessfully = "AppStartedSuccessfully";
+    public static string failedWithErrorColon = "failedWithErrorColon";
+    public static string NotLoginedToGeocachingCom = "NotLoginedToGeocachingCom";
+    public static string MakeWithLinks = "MakeWithLinks";
+    public static string NoCacheListingsInSavedList = "NoCacheListingsInSavedList";
+    public static string PromptNewTab = "PromptNewTab";
+    public static string SuccessfulLoginToSunamoCz = "SuccessfulLoginToSunamoCz";
+    public static string LocationOfCaches = "LocationOfCaches";
     public const string SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures = "SignInToTakeFullAdvantageOfTheSiteSCapabilitiesAndFeatures";
 
     public static readonly string NotImplementedPleaseContactWebAdmin = "NotImplementedPleaseContactWebAdmin";
@@ -3716,4 +3724,9 @@ public class XlfKeys
     public static readonly string ErrorSerie255 = "ErrorSerie255";
     public static readonly string EditUserAccount = "EditUserAccount";
 
+    public static string HtmlListSuccessfullyCreated = "HtmlListSuccessfullyCreated";
+    public static string NoCacheListingInTabs = "NoCacheListingInTabs";
+    public static string AllCachesListingsInTabsProcessed = "AllCachesListingsInTabsProcessed";
+    public static string WasCreatedListOfCachesWithNameColon = "WasCreatedListOfCachesWithNameColon";
+    public static string ToUseThisWebYouHaveToBeLogined = "ToUseThisWebYouHaveToBeLogined";
 }

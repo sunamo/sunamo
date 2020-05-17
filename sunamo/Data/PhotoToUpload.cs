@@ -15,5 +15,8 @@ namespace sunamo.Data
         public DateTime DateTaken { get; set; }
         //public string idPhoto { get; set; }
         public int originalSize { get; set; }
+
+        // bytes is already sending in SunamoHttpPostedFile
+        //public List<byte> bytes { get; set; }
     }
 }

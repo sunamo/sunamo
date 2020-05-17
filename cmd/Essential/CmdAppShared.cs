@@ -12,7 +12,7 @@ public partial class CmdApp{
     {
         string dump = null;
         //dump = YamlHelper.DumpAsYaml(e);
-        dump = SunamoJson.SerializeObject(e, true);
+        dump = SunamoJsonHelper.SerializeObject(e, true);
 
         ThisApp.SetStatus(TypeOfMessage.Error, e.ExceptionObject.ToString());
         WriterEventLog.WriteToMainAppLog(dump, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());

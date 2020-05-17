@@ -4,5 +4,5 @@ using System.Text;
 
 public enum XlfParts
 {
-    Id,Target
+    Id,Target,Source
 }

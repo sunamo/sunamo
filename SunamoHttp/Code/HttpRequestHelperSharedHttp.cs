@@ -1,6 +1,5 @@
 
 
-using Microsoft.AspNetCore.Http;
 using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
@@ -120,7 +119,7 @@ public static partial class HttpRequestHelperHttp{
     /// <param name="address"></param>
     /// <param name="method"></param>
     /// <param name="hrd"></param>
-    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
+    public static string GetResponseText(string address, HttpMethod method, HttpRequestDataHttp hrd)
     {
         HttpWebResponse response;
         return GetResponseText(address, method, hrd, out response);
@@ -158,7 +157,7 @@ public static Stream GetResponseStream(string address, HttpMethod method)
     return response.GetResponseStream();
 }
 
-    public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+    public static string GetResponseText(string address, HttpMethod method, HttpRequestDataHttp hrd, out HttpWebResponse response)
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
         return GetResponseText(request, method, hrd, out response);
@@ -171,13 +170,13 @@ public static Stream GetResponseStream(string address, HttpMethod method)
 /// <param name = "address"></param>
 /// <param name = "method"></param>
 /// <param name = "hrd"></param>
-    public static string GetResponseText(HttpWebRequest request, HttpMethod method, HttpRequestData hrd, out HttpWebResponse response)
+    public static string GetResponseText(HttpWebRequest request, HttpMethod method, HttpRequestDataHttp hrd, out HttpWebResponse response)
     {
         response = null;
         
         if (hrd == null)
         {
-            hrd = new HttpRequestData();
+            hrd = new HttpRequestDataHttp();
         }
 
         var address = request.Address.ToString();

@@ -66,14 +66,10 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         }
 
         File.WriteAllText(path, content);
-
     }
-
-
 
     public static void ConstsFromClipboard()
     {
-
         var l = ClipboardHelper.GetText().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
         //StringBuilder sb = new StringBuilder();

@@ -144,9 +144,9 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="sunamo_cs_CZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sunamo\MultilingualResources\sunamo.cs-CZ.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\sunamo\multilingualresources\sunamo.cs-cz.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="sunamo_en_US" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sunamo\MultilingualResources\sunamo.en-US.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\sunamo\multilingualresources\sunamo.en-us.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

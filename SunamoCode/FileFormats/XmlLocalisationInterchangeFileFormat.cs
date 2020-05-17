@@ -15,14 +15,14 @@ using System.Xml.XPath;
 
 namespace SunamoCode
 {
-    
+
 
     /// <summary>
     /// General methods for working with XML
     /// </summary>
     public static class XmlLocalisationInterchangeFileFormat
     {
-
+        static Type type = typeof(XmlLocalisationInterchangeFileFormat);
 
         static List<string> xlfSolutions = new List<string>();
         static Dictionary<string, string> unallowedEnds = new Dictionary<string, string>();
@@ -179,13 +179,13 @@ TranslateEngine");
         /// <param name="path"></param>
         public static void ReplaceForWithoutUnderscore(string folder)
         {
-             Dictionary<string, string> withWithoutUnderscore = new Dictionary<string, string>();
+            Dictionary<string, string> withWithoutUnderscore = new Dictionary<string, string>();
 
             var files = XmlLocalisationInterchangeFileFormat.GetFilesCs();
 
-            ReplaceStringKeysWithXlfKeys(files, folder);
+            ReplaceStringKeysWithXlfKeys(files);
 
-            
+
 
             string key = null;
 
@@ -290,6 +290,10 @@ Into A1 insert:
             return tb.sb.ToString();
         }
 
+        /// <summary>
+        /// Is calling in XlfManager.WhichStartEndWithNonDigitNumber
+        /// </summary>
+        /// <param name="pairsReplace"></param>
         public static void ReplaceInXlfSolutions(string pairsReplace)
         {
             if (pairsReplace == string.Empty)
@@ -364,10 +368,12 @@ Into A1 insert:
         }
 
         /// <summary>
+        /// Into A1 insert XlfResourcesH.PathToXlfSunamo
         /// Completely NSN
+        /// Remove completely whole Trans-unit
         /// </summary>
         /// <param name="fn"></param>
-        public static void RemoveFromXlfWhichHaveEmptyTarget(string fn)
+        public static void RemoveFromXlfWhichHaveEmptyTargetOrSource(string fn, XlfParts xp, bool removeWholeTransUnit = true)
         {
             var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
@@ -377,10 +383,41 @@ Into A1 insert:
                 var item = d.trans_units[i];
                 var el = SourceTarget(item);
 
-
-                if (el.Item2.Value.Trim() == string.Empty)
+                if (xp == XlfParts.Source)
                 {
-                    item.Remove();
+                    if (el.Item1 != null)
+                    {
+                        if (el.Item1.Value.Trim() == string.Empty)
+                        {
+                            if (removeWholeTransUnit)
+                            {
+                                item.Remove();
+                            }
+                            else
+                            {
+                                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Instead of this use <source>.*</source> in VS!");
+                                el.Item1.Remove();
+                            }
+                        }
+                    }
+                }
+                else if(xp == XlfParts.Target)
+                {
+                    if (el.Item2 != null)
+                    {
+                        if (el.Item2.Value.Trim() == string.Empty)
+                        {
+                            if (removeWholeTransUnit)
+                            {
+                                item.Remove();
+                            }
+                            else
+                            {
+                                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Instead of this use <source>.*</source> in VS!");
+                                el.Item2.Remove();
+                            }
+                        }
+                    }
                 }
             }
 
@@ -417,7 +454,7 @@ Into A1 insert:
         }
 
         /// <summary>
-        /// A1 is possible to obtain with XmlLocalisationInterchangeFileFormat.GetLangFromFilename
+        /// A1 is possible to obtain with XlfResourcesH.PathToXlfSunamo
         /// </summary>
         /// <param name="fn"></param>
         /// <param name="xd"></param>
@@ -698,7 +735,7 @@ Into A1 insert:
         public static List<string> GetIds(string xlfPath, out XlfData d)
         {
             var allids = new List<string>();
-             d = XmlLocalisationInterchangeFileFormat.GetTransUnits(xlfPath);
+            d = XmlLocalisationInterchangeFileFormat.GetTransUnits(xlfPath);
             foreach (var item in d.trans_units)
             {
                 allids.Add(XmlLocalisationInterchangeFileFormat.Id(item));
@@ -707,10 +744,20 @@ Into A1 insert:
             return allids;
         }
 
-        public static void ReplaceStringKeysWithXlfKeys(List<string> files, string path)
+
+
+        public static void ReplaceStringKeysWithXlfKeys(string path)
+        {
+
+
+            List<string> files = FS.GetFiles(path, "*.cs", SearchOption.AllDirectories);
+            ReplaceStringKeysWithXlfKeys(files);
+        }
+
+        public static void ReplaceStringKeysWithXlfKeys(List<string> files)
         {
             string key = null;
-            
+
             foreach (var item in files)
             {
                 var content = TF.ReadFile(item);

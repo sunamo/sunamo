@@ -1,4 +1,5 @@
 using sunamo.Data;
+using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,7 +23,7 @@ namespace sunamo.Helpers
         {
         }
 
-        public static string GetResponseText(string address, HttpMethod method, HttpRequestData hrd)
+        public static string GetResponseText(string address, HttpMethod method, HttpRequestDataHttp hrd)
         {
             HttpResponseMessage response =  GetResponse(address, method, hrd);
             return  GetResponseText(response);
@@ -40,7 +41,7 @@ namespace sunamo.Helpers
             return vr;
         }
 
-        public static Stream GetResponseStream(string address, HttpMethod method, HttpRequestData hrd)
+        public static Stream GetResponseStream(string address, HttpMethod method, HttpRequestDataHttp hrd)
         {
             HttpResponseMessage response = GetResponse(address, method, hrd);
 
@@ -50,11 +51,11 @@ namespace sunamo.Helpers
             }
         }
 
-        public static HttpResponseMessage GetResponse(string address, HttpMethod method, HttpRequestData hrd)
+        public static HttpResponseMessage GetResponse(string address, HttpMethod method, HttpRequestDataHttp hrd)
         {
             if (hrd == null)
             {
-                hrd = new HttpRequestData();
+                hrd = new HttpRequestDataHttp();
             }
 
             SetHttpHeaders(hrd, hc);
@@ -85,7 +86,7 @@ namespace sunamo.Helpers
 
         static Type type = typeof(HttpClientHelperHttp);
 
-        private static void SetHttpHeaders(HttpRequestData hrd, HttpClient hc)
+        private static void SetHttpHeaders(HttpRequestDataHttp hrd, HttpClient hc)
         {
             hc = new HttpClient();
             //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
