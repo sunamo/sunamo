@@ -9,10 +9,10 @@ public class CollectionWithoutDuplicates<T>
     public List<T> c = null;
     public bool allowNull = false;
     public static bool br = false;
+    
 
     public CollectionWithoutDuplicates()
     {
-        
         if (br)
         {
             System.Diagnostics.Debugger.Break();
@@ -27,23 +27,44 @@ public class CollectionWithoutDuplicates<T>
 
     public CollectionWithoutDuplicates(IEnumerable<T> l)
     {
-        c = l.ToList();
+        c = new List<T>( l.ToList());
     }
 
     public bool Add(T t2)
+    {
+
+        var con = Contains(t2);
+        if (con.HasValue)
+        {
+            if (con.Value)
+            {
+                c.Add(t2);
+                return true;
+            }
+        }
+        else
+        {
+            if (allowNull)
+            {
+                c.Add(t2);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public bool? Contains(T t2)
     {
         if (!c.Contains(t2))
         {
             if (EqualityComparer<T>.Default.Equals(t2, default(T)))
             {
-                if (allowNull)
-                {
-                    c.Add(t2);
-                }
+                return null;
             }
             else
             {
-                c.Add(t2);
+                
             }
             return true;
         }

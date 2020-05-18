@@ -64,6 +64,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
+      <Project>{de4301c1-ac61-4c89-bf2c-7c860560a979}</Project>
+      <Name>SunamoJson</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

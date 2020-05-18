@@ -18,8 +18,6 @@ public partial class CmdApp{
         WriterEventLog.WriteToMainAppLog(dump, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
     }
 
-
-
     /// <summary>
     /// Dont ask in console, load from Clipboard
     /// </summary>
@@ -56,8 +54,4 @@ public partial class CmdApp{
         InitApp.TemplateLogger = ConsoleTemplateLogger.Instance;
         InitApp.TypedLogger = TypedConsoleLogger.Instance;
     }
-
-
-
-
 }

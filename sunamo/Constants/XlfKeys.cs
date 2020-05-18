@@ -1,8 +1,118 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+/// <summary>
+/// Wont add to .xlf if is key in XlfKeys
+/// </summary>
 public class XlfKeys
 {
+
+	public const string AllYourPhotosEvenPrivate = "AllYourPhotosEvenPrivate"; 
+
+	public const string YouReceivedThisEmailBecauseYouHaveBeenSubscribedToReceiveNewCommentsIfYouWantToUnsubscribeYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheEmail = "YouReceivedThisEmailBecauseYouHaveBeenSubscribedToReceiveNewCommentsIfYouWantToUnsubscribeYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheEmail"; 
+
+	public const string aNewContentCommentHasBeenAdded = "aNewContentCommentHasBeenAdded"; 
+
+	public const string TheUserMentionedAboveRecommendsThisPageToYou = "TheUserMentionedAboveRecommendsThisPageToYou"; 
+
+	public const string RequestToDeleteUserComments = "RequestToDeleteUserComments"; 
+
+	public const string TheUserIsRequestingThatTheUserSCommentsBeDeleted = "TheUserIsRequestingThatTheUserSCommentsBeDeleted"; 
+
+	public const string YouShouldBeAbleToDoItBy = "YouShouldBeAbleToDoItBy"; 
+
+	public const string ItIsAlsoNecessaryToVerifyManually = "ItIsAlsoNecessaryToVerifyManually"; 
+
+	public const string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain"; 
+
+	public const string plan = "plan"; 
+
+	public const string ReadTheVersesForToday = "ReadTheVersesForToday"; 
+
+	public const string weHaveVersesForYouForToday = "weHaveVersesForYouForToday"; 
+
+	public const string whereYouCanFindMoreInformation = "whereYouCanFindMoreInformation"; 
+
+	public const string itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenYouFindSelectedVersesUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors = "itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenYouFindSelectedVersesUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors"; 
+
+	public const string GreatYourReadingPlanHasBeenApprovedInPhase = "GreatYourReadingPlanHasBeenApprovedInPhase"; 
+
+	public const string itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenFindingSelectedVersesUnsystematicallyOrNonThematicallyArranged = "itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenFindingSelectedVersesUnsystematicallyOrNonThematicallyArranged"; 
+
+	public const string YouCanNowStartReadingItAt = "YouCanNowStartReadingItAt"; 
+
+	public const string ApplicationForNameApproval = "ApplicationForNameApproval"; 
+
+	public const string TheUserRequestsApprovalOfTheReadingPlan = "TheUserRequestsApprovalOfTheReadingPlan"; 
+
+	public const string IWishYouMyBenefitAndJoy = "IWishYouMyBenefitAndJoy"; 
+
+	public const string FileCanTBeDeleted = "FileCanTBeDeleted"; 
+
+	public const string OnlyForTestFilesForAnotherApps = "OnlyForTestFilesForAnotherApps"; 
+
+	public const string FolderHasBeenRenamedTo = "FolderHasBeenRenamedTo"; 
+
+	public const string TheComputerSizeUnitOutputHasBeenSpecifiedICannotChangeThisSetting = "TheComputerSizeUnitOutputHasBeenSpecifiedICannotChangeThisSetting"; 
+
+	public const string Gallery = "Gallery"; 
+
+	public const string photographedIn = "photographedIn"; 
+
+	public const string AllPhotos = "AllPhotos"; 
+
+	public const string takenThatMonth = "takenThatMonth"; 
+
+	public const string PhotosOfAllYears = "PhotosOfAllYears"; 
+
+	public const string perMonthForAllYears = "perMonthForAllYears"; 
+
+	public const string daily = "daily"; 
+
+	public const string PhotoShootCalendar = "PhotoShootCalendar"; 
+
+	public const string Agree = "Agree"; 
+
+	public const string Disagree = "Disagree"; 
+
+	public const string BassusAbactorsDucuntAdTriticumAFraternalFormOfManifestationIsTheBliss = "BassusAbactorsDucuntAdTriticumAFraternalFormOfManifestationIsTheBliss"; 
+
+	public const string ChangeTheImageDescription = "ChangeTheImageDescription"; 
+
+	public const string MakeTheGalleryHidden = "MakeTheGalleryHidden"; 
+
+	public const string MakeTheGalleryVisibleToEveryone = "MakeTheGalleryVisibleToEveryone"; 
+
+	public const string LatestAlbums = "LatestAlbums"; 
+
+	public const string forThePastWeekMax = "forThePastWeekMax"; 
+
+	public const string MostPopularAlbums = "MostPopularAlbums"; 
+
+	public const string OnlyAlbumsThatArePublicAreShown = "OnlyAlbumsThatArePublicAreShown"; 
+
+	public const string InFavorites = "InFavorites"; 
+
+	public const string ChangeAlbumDescription = "ChangeAlbumDescription"; 
+
+	public const string MakeTheAlbumHidden = "MakeTheAlbumHidden"; 
+
+	public const string MakeTheAlbumVisibleToEveryone = "MakeTheAlbumVisibleToEveryone"; 
+
+	public const string EnterAnAlbumDescription = "EnterAnAlbumDescription"; 
+
+	public const string ForThisAlbumSharingHasOnlyBeenEnabledWithTheCodeInTheLinkThisWillPreventAccessToSubAlbumsAsLongAsUsersDonTHaveAnOldLinkToThemAlbumAddressAlreadyWithACodeYouAsTheAlbumAdminWillStillBeAbleToViewTheAlbumWithoutACodeInTheURIIfTheAlbumIsAlreadySharedOnlyWithTheCodeInTheLinkItWillOnlyWorkWithTheNewlyCreatedCode = "ForThisAlbumSharingHasOnlyBeenEnabledWithTheCodeInTheLinkThisWillPreventAccessToSubAlbumsAsLongAsUsersDonTHaveAnOldLinkToThemAlbumAddressAlreadyWithACodeYouAsTheAlbumAdminWillStillBeAbleToViewTheAlbumWithoutACodeInTheURIIfTheAlbumIsAlreadySharedOnlyWithTheCodeInTheLinkItWillOnlyWorkWithTheNewlyCreatedCode"; 
+
+	public const string IntoTheMailbox = "IntoTheMailbox"; 
+
+	public const string DownloadImage = "DownloadImage"; 
+
+	public const string Photos = "Photos"; 
+
+	public const string Photo = "Photo"; 
+
+	public const string beautiful = "beautiful"; 
+
     public const string MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma = "MájLáskyČasNakupteVNejpopulárnějšímEshopuSErotickýmZbožímAUdělejteSiSeSvýmMiláčkemBáječnéVečeryPoutaVibrátoryDůtkyErotickéPrádloDildaVenučinyKuličkyNeboTřebaWomanizerSNížUdělášPartnerkuDoMinutNadKčDárekPoštovnéOdKčZdarma";
     public const string alreadyExistsInTheDatabase = "alreadyExistsInTheDatabase";
     public const string AboutApp = "AboutApp";
@@ -579,7 +689,6 @@ public class XlfKeys
     public const string pID = "pID";
     public const string aID = "aID";
     public const string display = "display";
-    public const string Pompinka = "Pompinka";
     public const string add = "add";
     public const string DoYouWantToText = "DoYouWantToText";
     public const string Supported = "Supported";
@@ -3681,7 +3790,7 @@ public class XlfKeys
 
     public static string YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext = "YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext";
     public static string DoYouWantTo = "DoYouWantTo";
-    public static string YouHaveRequestedToAddADomain = "YouHaveRequestedToAddADomain";
+    
     public static string HasBeenUpdated = "HasBeenUpdated";
     public static string EnterLoginCredentials = "EnterLoginCredentials";
     public static string YouAreNotLogged = "YouAreNotLogged";

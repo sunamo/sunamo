@@ -11,6 +11,8 @@ using System.Text;
 /// <typeparam name="T"></typeparam>
 public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChanged
 {
+    public NotifyChangesCollection<T> c => this;
+
     /// <summary>
     /// Its collection due to use also ObservableCollection and so
     /// </summary>
@@ -48,6 +50,11 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
 
     public void Add(T item)
     {
+        if (item.ToString().Contains("<b>Všechny vaše fotky(i neveřejné):</b>"))
+        {
+
+        }
+
         item.PropertyChanged += Item_PropertyChanged;
         l.Add(item);
         if (onAdd)

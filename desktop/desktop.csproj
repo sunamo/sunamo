@@ -501,6 +501,10 @@
       <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
       <Name>SunamoCode</Name>
     </ProjectReference>
+    <ProjectReference Include="..\win\win.csproj">
+      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
+      <Name>win</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\Buttons\DialogButtons.xaml">

@@ -904,7 +904,10 @@ Into A1 insert:
 
         public static bool IsToBeInXlfKeys(string key)
         {
-            return !SystemWindowsControls.StartingWithShortcutOfControl(key) && !key.StartsWith("Resources\\") && !CA.HasPostfix(key, ".PlaceholderText", ".Content");
+            var b1 = !SystemWindowsControls.StartingWithShortcutOfControl(key);
+            var b2 = !key.StartsWith("Resources\\");
+            var b3 = !CA.HasPostfix(key, ".PlaceholderText", ".Content");
+            return b1 && b2 && b3;
         }
     }
 

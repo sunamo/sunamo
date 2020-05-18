@@ -55,9 +55,12 @@ public static class SystemWindowsControls
         {
             foreach (var item2 in item.Value)
             {
-                if (r.StartsWith( item2 ))
+                if (item2.Length > 2)
                 {
-                    return true;
+                    if (r.StartsWith(item2))
+                    {
+                        return true;
+                    }
                 }
             }
         }

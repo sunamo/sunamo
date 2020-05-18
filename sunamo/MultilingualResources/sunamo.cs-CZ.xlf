@@ -1,4 +1,4 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -10831,6 +10831,182 @@
         <trans-unit id="ChangesSuccessfullyMadeToTheLink" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Změny úspěšně provedeny na odkazu </target>
+        </trans-unit>
+        <trans-unit id="beautiful" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">překrásný </target>
+        </trans-unit>
+        <trans-unit id="Beautiful" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated"> překrásný </target>
+        </trans-unit>
+        <trans-unit id="DownloadImage" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhnout obrázek</target>
+        </trans-unit>
+        <trans-unit id="IntoTheMailbox" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do schránky</target>
+        </trans-unit>
+        <trans-unit id="ForThisAlbumSharingHasOnlyBeenEnabledWithTheCodeInTheLinkThisWillPreventAccessToSubAlbumsAsLongAsUsersDonTHaveAnOldLinkToThemAlbumAddressAlreadyWithACodeYouAsTheAlbumAdminWillStillBeAbleToViewTheAlbumWithoutACodeInTheURIIfTheAlbumIsAlreadySharedOnlyWithTheCodeInTheLinkItWillOnlyWorkWithTheNewlyCreatedCode" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">U tohoto alba bylo sdílení povoleno pouze s kódem v odkazu (tím zamezíte v přístupu i k podalbům, pokud uživatelé nebudou mít na ně starý odkaz). Adresa albumu již s kódem(vy jako admin alba stále budete moci zobrazit album i bez kódu v URI)(pokud již album sdíleno jen pomocí kódem v odkazu, bude funkční jen s nově vytvořeným kódem)</target>
+        </trans-unit>
+        <trans-unit id="EnterAnAlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte popis alba</target>
+        </trans-unit>
+        <trans-unit id="MakeTheAlbumVisibleToEveryone" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Udělat album viditelné všem</target>
+        </trans-unit>
+        <trans-unit id="MakeTheAlbumHidden" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Udělat album skryté</target>
+        </trans-unit>
+        <trans-unit id="ChangeAlbumDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změnit popis alba</target>
+        </trans-unit>
+        <trans-unit id="InFavorites" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">V oblíbených</target>
+        </trans-unit>
+        <trans-unit id="OnlyAlbumsThatArePublicAreShown" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazují se pouze alba, co jsou veřejné</target>
+        </trans-unit>
+        <trans-unit id="MostPopularAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejpopulárnější alba</target>
+        </trans-unit>
+        <trans-unit id="forThePastWeekMax" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">za uplynulý týden(max. 10)</target>
+        </trans-unit>
+        <trans-unit id="LatestAlbums" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejnovější alba</target>
+        </trans-unit>
+        <trans-unit id="MakeTheGalleryVisibleToEveryone" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Udělat galerii viditelnou všem</target>
+        </trans-unit>
+        <trans-unit id="MakeTheGalleryHidden" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Udělat galerii skrytou</target>
+        </trans-unit>
+        <trans-unit id="ChangeTheImageDescription" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změna popisu obrázku</target>
+        </trans-unit>
+        <trans-unit id="PhotoShootCalendar" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kalendář focení</target>
+        </trans-unit>
+        <trans-unit id="daily" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">každý den</target>
+        </trans-unit>
+        <trans-unit id="perMonthForAllYears" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">v měsíci za všechny roky</target>
+        </trans-unit>
+        <trans-unit id="PhotosOfAllYears" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fotky všech roků</target>
+        </trans-unit>
+        <trans-unit id="takenThatMonth" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">vyfocené daný měsíc</target>
+        </trans-unit>
+        <trans-unit id="AllPhotos" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny fotky</target>
+        </trans-unit>
+        <trans-unit id="photographedIn" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">vyfocené v roce</target>
+        </trans-unit>
+        <trans-unit id="TheComputerSizeUnitOutputHasBeenSpecifiedICannotChangeThisSetting" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Byl specifikován výstupní ComputerSizeUnit, nemůžu toto nastavení změnit</target>
+        </trans-unit>
+        <trans-unit id="IWishYouMyBenefitAndJoy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přeji vám, aby vám moje weby byly k prospěchu a radosti</target>
+        </trans-unit>
+        <trans-unit id="TheUserRequestsApprovalOfTheReadingPlan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel žádá o schválení čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="ApplicationForNameApproval" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádost o schválení názvu</target>
+        </trans-unit>
+        <trans-unit id="YouCanNowStartReadingItAt" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nyní můžete jej začít číst na</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenFindingSelectedVersesUnsystematicallyOrNonThematicallyArranged" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při schledání zvolených veršů nesystematicky nebo netématicky uspořádaných</target>
+        </trans-unit>
+        <trans-unit id="GreatYourReadingPlanHasBeenApprovedInPhase" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výborně, došlo k 1. fázi schválení vašeho čtecího plánu</target>
+        </trans-unit>
+        <trans-unit id="itHasNotBeenApprovedAndEverythingYouHaveDoneOnItSoFarHasBeenCompletelyDeletedThisMostOftenHappensWhenYouFindSelectedVersesUnsystematicallyOrNonThematicallyArrangedIfTheReadingPlanAlreadyExistsOrTheReadingPlanHasSomethingThatWouldNotBenefitOtherReadersOfThisSiteAlsoApprovalMayNotOccurIfTheReadingPlanContainedALargeNumberOfGrammaticalErrors" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">nebyl schválen a všechno co jste na něm dosud provedli bylo kompletně vymazáno. Nejčastěji se toto děje při shledání zvolených veršů nesystematicky nebo netématicky uspořádaných, pokud čtecí plán již existuje nebo čtecí plán má něco, co by nebylo přínosem pro ostatní čtenáře tohoto webu. Také ke schválení nemusí dojít, pokud čtecí plán obsahoval velké množství gramatických chyb</target>
+        </trans-unit>
+        <trans-unit id="whereYouCanFindMoreInformation" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">kde najdete více informací</target>
+        </trans-unit>
+        <trans-unit id="weHaveVersesForYouForToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">máme pro Vás veršíčky pro dnešní den</target>
+        </trans-unit>
+        <trans-unit id="ReadTheVersesForToday" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Číst verše pro dnešní den</target>
+        </trans-unit>
+        <trans-unit id="plan" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">plánu</target>
+        </trans-unit>
+        <trans-unit id="ItIsAlsoNecessaryToVerifyManually" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dále pro ověření je nutné manuálně</target>
+        </trans-unit>
+        <trans-unit id="YouShouldBeAbleToDoItBy" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Měli byste to stihnout do</target>
+        </trans-unit>
+        <trans-unit id="TheUserIsRequestingThatTheUserSCommentsBeDeleted" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uživatel žádá o odstranění komentů uživatele</target>
+        </trans-unit>
+        <trans-unit id="RequestToDeleteUserComments" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žádost o odstranění komentářů uživatele</target>
+        </trans-unit>
+        <trans-unit id="TheUserMentionedAboveRecommendsThisPageToYou" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výše zmiňovaný uživatel vám doporučuje tuto stránku</target>
+        </trans-unit>
+        <trans-unit id="aNewContentCommentHasBeenAdded" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">byl přidán nový komentář o obsahem</target>
+        </trans-unit>
+        <trans-unit id="YouReceivedThisEmailBecauseYouHaveBeenSubscribedToReceiveNewCommentsIfYouWantToUnsubscribeYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheEmail" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento mail jste dostali, protože jste byly zaregistrováni k odběru nových komentářů. Pokud chcete odběr zrušit, můžete tak učinit na stránce, naníž odkaz máte na začátku mailu</target>
+        </trans-unit>
+        <trans-unit id="AllYourPhotosEvenPrivate" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny vaše fotky(i neveřejné):</target>
         </trans-unit>
       </group>
     </body>
