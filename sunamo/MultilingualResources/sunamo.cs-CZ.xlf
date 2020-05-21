@@ -11008,6 +11008,46 @@
           <source></source>
           <target state="translated">Všechny vaše fotky(i neveřejné):</target>
         </trans-unit>
+        <trans-unit id="SearchUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prohledat uživatele</target>
+        </trans-unit>
+        <trans-unit id="AllUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všichni uživatelé</target>
+        </trans-unit>
+        <trans-unit id="CurrentUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aktuální uživatel</target>
+        </trans-unit>
+        <trans-unit id="OnlyMine" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pouze moje</target>
+        </trans-unit>
+        <trans-unit id="CompletedUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vyplněný uživatel</target>
+        </trans-unit>
+        <trans-unit id="AlbumNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Názvy alb</target>
+        </trans-unit>
+        <trans-unit id="AlbumDescriptions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popisy alb</target>
+        </trans-unit>
+        <trans-unit id="ImageNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Názvy obrázků</target>
+        </trans-unit>
+        <trans-unit id="ImageDescriptions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popisy obrázků</target>
+        </trans-unit>
+        <trans-unit id="UserName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název uživatele</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -14,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SolutionsIndexer\Data\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Google.Apis.Core" Version="1.45.0" />

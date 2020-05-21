@@ -28,7 +28,7 @@ public partial class PlatformInteropHelper
 //{
 //    if (IsUwpWindowsStoreApp())
 //    {
-//        return AppDataApps.
+//        return AppData.
 //    }
 //}
 }

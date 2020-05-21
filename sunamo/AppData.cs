@@ -14,6 +14,7 @@ public class AppData : AppDataAbstractBase<string, string>
     static Type type = typeof(AppData);
     private AppData()
     {
+        
     }
 
     public override string GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext)

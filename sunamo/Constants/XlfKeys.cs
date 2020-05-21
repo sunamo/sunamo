@@ -7,6 +7,32 @@ using System.Text;
 public class XlfKeys
 {
 
+	public const string UserName = "UserName"; 
+
+	public const string MyStatistic = "MyStatistic"; 
+
+	public const string MyGallery = "MyGallery"; 
+
+	public const string ImageDescriptions = "ImageDescriptions"; 
+
+	public const string ImageNames = "ImageNames"; 
+
+	public const string AlbumDescriptions = "AlbumDescriptions"; 
+
+	public const string AlbumNames = "AlbumNames"; 
+
+	public const string CompletedUser = "CompletedUser"; 
+
+	public const string OnlyMine = "OnlyMine"; 
+
+	public const string CurrentUser = "CurrentUser"; 
+
+	public const string AllUsers = "AllUsers"; 
+
+	public const string SearchUsers = "SearchUsers"; 
+
+	public const string NázevUživatele = "NázevUživatele"; 
+
 	public const string AllYourPhotosEvenPrivate = "AllYourPhotosEvenPrivate"; 
 
 	public const string YouReceivedThisEmailBecauseYouHaveBeenSubscribedToReceiveNewCommentsIfYouWantToUnsubscribeYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheEmail = "YouReceivedThisEmailBecauseYouHaveBeenSubscribedToReceiveNewCommentsIfYouWantToUnsubscribeYouCanDoSoOnThePageThatHasTheLinkAtTheBeginningOfTheEmail"; 
@@ -2660,7 +2686,7 @@ public class XlfKeys
     public const string PasswordChangedSuccessfully = "PasswordChangedSuccessfully";
     public const string TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace = "TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace";
     public const string UserGallery = "UserGallery";
-    public const string aIDStfIDAlbum = "aIDStfIDAlbum";
+    
     public const string pIDStfIDPhoto = "pIDStfIDPhoto";
     public const string Default = "Default";
     public const string Path = "Path";

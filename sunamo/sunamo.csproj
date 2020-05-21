@@ -134,6 +134,8 @@
     <Compile Include="Args\CSharpGeneratorArgs.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="CryptDelegates.cs" />
+    <Compile Include="Helpers\NetHelperSunamo.cs" />
+    <Compile Include="Interfaces\ILoginManager.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />

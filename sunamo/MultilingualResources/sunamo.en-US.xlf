@@ -8328,7 +8328,7 @@
        </trans-unit>
         <trans-unit id="NoAlbumsHaveBeenViewedInTheLastWeekTodaySHitsWillOnlyBeVisibleTomorrow" translate="yes" xml:space="preserve">
          
-         <target state="translated">No albums have been viewed in the last week (today's hits will only be visible tomorrow</target>
+         <target state="translated">No albums have been viewed in the last week (today's hits will only be visible tomorrow)</target>
        </trans-unit>
         <trans-unit id="GalleryIsPrivateAccessCodeWasIncorrect" translate="yes" xml:space="preserve">
          
@@ -14298,6 +14298,58 @@
         <trans-unit id="AllYourPhotosEvenPrivate" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">All your photos (even private)</target>
+        </trans-unit>
+        <trans-unit id="NázevUživatele" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název uživatele</target>
+        </trans-unit>
+        <trans-unit id="SearchUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Search users</target>
+        </trans-unit>
+        <trans-unit id="AllUsers" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">All users</target>
+        </trans-unit>
+        <trans-unit id="CurrentUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Current user</target>
+        </trans-unit>
+        <trans-unit id="OnlyMine" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Only mine</target>
+        </trans-unit>
+        <trans-unit id="CompletedUser" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Completed user</target>
+        </trans-unit>
+        <trans-unit id="AlbumNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album names</target>
+        </trans-unit>
+        <trans-unit id="AlbumDescriptions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Album descriptions</target>
+        </trans-unit>
+        <trans-unit id="ImageNames" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Image names</target>
+        </trans-unit>
+        <trans-unit id="ImageDescriptions" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Image descriptions</target>
+        </trans-unit>
+        <trans-unit id="MyGallery" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">My gallery</target>
+        </trans-unit>
+        <trans-unit id="MyStatistic" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">My statistic</target>
+        </trans-unit>
+        <trans-unit id="UserName" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">User name</target>
         </trans-unit>
       </group>
     </body>

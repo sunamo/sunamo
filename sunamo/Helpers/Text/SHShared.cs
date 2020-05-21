@@ -370,6 +370,11 @@ public static partial class SH
         return " " + Consts.nulled;
     }
 
+    public static string TrimEndSpaces(string v)
+    {
+        return v.TrimEnd(AllChars.space);
+    }
+
     public static Tuple<List<string>, List<string>> SplitFromReplaceManyFormatList(string input)
     {
         var t = SplitFromReplaceManyFormat(input);

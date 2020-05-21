@@ -23,6 +23,11 @@ namespace sunamo.Helpers
         {
         }
 
+        private string DoWebRequest(string uri)
+        {
+            return HttpClientHelperHttp.GetResponseText(uri, HttpMethod.Get, new HttpRequestDataHttp());
+        }
+
         public static string GetResponseText(string address, HttpMethod method, HttpRequestDataHttp hrd)
         {
             HttpResponseMessage response =  GetResponse(address, method, hrd);

@@ -19,6 +19,8 @@ using XliffParser;
 
 public partial class FS
 {
+   
+
     /// <summary>
     /// c:\Users\w\AppData\Roaming\sunamo\
     /// </summary>
@@ -62,6 +64,7 @@ public partial class FS
         DateTime dt = DateTime.Now;
         return ReplaceIncorrectCharactersFile(dt.ToString());
     }
+
     /// <summary>
     /// A1 MUST BE WITH EXTENSION
     /// A4 can be null if !A5
@@ -131,13 +134,14 @@ public partial class FS
             FS.CreateFoldersPsysicallyUnlessThere(nf);
         }
     }
+
     /// <summary>
     /// A1 must be with extensions!
     /// </summary>
     /// <param name="files"></param>
     /// <param name="folderFrom"></param>
     /// <param name="folderTo"></param>
-    public static void CopyMoveFromMultiLocationIntoOne(List<string> files, string folderFrom, string folderTo)
+    public static void CopyMoveFromMultiLocationIntoOne(List<string> files, string folderFrom, string folderTo )
     {
         
         List<string> wasntExists = new List<string>();
@@ -151,6 +155,36 @@ public partial class FS
         FS.CopyMoveFilesInList(files, folderFrom, folderTo, wasntExists, false, true, files2);
         ////DebugLogger.Instance.WriteList(wasntExists);
     }
+
+
+
+    public static string StorageFilePath<StorageFolder, StorageFile>(StorageFile item, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            ac.fs.storageFilePath.Invoke(item);
+        }
+        return item.ToString();
+    }
+
+    public static List<StorageFile> GetFilesOfExtensionCaseInsensitiveRecursively<StorageFolder, StorageFile>(StorageFolder sf, string ext, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.getFilesOfExtensionCaseInsensitiveRecursively.Invoke(sf, ext);
+        }
+        List<StorageFile> files = new List<StorageFile>();
+        files = FS.GetFilesInterop<StorageFolder, StorageFile>(sf, AllStrings.asterisk, true, ac);
+        for (int i = files.Count - 1; i >= 0; i--)
+        {
+            dynamic file = files[i];
+            if (!file.ToLower().EndsWith(ext))
+            {
+                files.RemoveAt(i);
+            }
+        }
+        return files;
+    }
     public static List<StorageFile> GetFilesInterop<StorageFolder, StorageFile>(StorageFolder folder, string mask, bool recursive, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if (ac != null)
@@ -160,6 +194,41 @@ public partial class FS
         // folder is StorageFolder
         return CA.ToList<StorageFile>( GetFiles(folder.ToString(), mask, recursive ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly));
     }
+
+    public static Stream OpenStreamForReadAsync<StorageFolder, StorageFile>(StorageFile file, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.openStreamForReadAsync.Invoke(file);
+        }
+        return FS.OpenStream(file.ToString());
+    }
+
+    private static Stream OpenStream(string v)
+    {
+        return new FileStream(v, FileMode.OpenOrCreate);
+    }
+
+    public static bool IsFoldersEquals<StorageFolder, StorageFile>(StorageFolder parent, StorageFolder path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.isFoldersEquals.Invoke(parent, path);
+        }
+        var f1 = parent.ToString();
+        var f2 = path.ToString();
+        return f1 == f2;
+    }
+
+    public static string GetFileName<StorageFolder, StorageFile>(StorageFile item, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.getFileName.Invoke(item);
+        }
+        return FS.GetFileName(item.ToString());
+    }
+
     /// <summary>
     /// A1 must be sunamo.Data.StorageFolder or uwp StorageFolder
     /// Return fixed string is here right
@@ -174,6 +243,7 @@ public partial class FS
         }
         return FS.Combine(folder.ToString(), v);
     }
+
     public static void DeleteEmptyFiles(string folder, SearchOption so)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(), so);
@@ -245,6 +315,9 @@ public partial class FS
 
         
     }
+
+   
+
     public static void ReplaceInAllFiles(string folder, string extension, IList<string> replaceFrom, IList<string> replaceTo, bool isMultilineWithVariousIndent)
     {
         var files = FS.GetFiles(folder, FS.MascFromExtension(extension), SearchOption.AllDirectories);

@@ -487,14 +487,15 @@ public static partial class SH
             if (SH.IsWildcard(item))
             {
                 Wildcard wc = new Wildcard(from);
-                var occurences = wc.Matches(input);
-                foreach (Match m in occurences)
-                {
-                    var result = m.Result("abc");
-                    var groups = m.Groups;
-                    var captues = m.Captures;
-                    var value = m.Value;
-                }
+                ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
+                //var occurences = wc.Matches(input);
+                //foreach (Match m in occurences)
+                //{
+                //    var result = m.Result();
+                //    var groups = m.Groups;
+                //    var captues = m.Captures;
+                //    var value = m.Value;
+                //}
             }
             else
             {

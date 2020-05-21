@@ -315,18 +315,27 @@ public partial class FS
     /// Return with backslash
     /// </summary>
     /// <param name="rp"></param>
-    public static StorageFile GetDirectoryName<StorageFolder, StorageFile>(StorageFile rp2, AbstractCatalog<StorageFolder, StorageFile> ac)
+    public static StorageFolder GetDirectoryName<StorageFolder, StorageFile>(StorageFile rp2, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
-        if (ac == null)
+        if (ac!= null)
         {
-            var rp = rp2.ToString();
-            return (dynamic)GetDirectoryName(rp);
+            return ac.fs.getDirectoryName.Invoke(rp2);
         }
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetDirectoryName");
-        return default(StorageFile);
+        
+        var rp = rp2.ToString();
+        return (dynamic)GetDirectoryName(rp);
     }
 
-    
+    public static StorageFolder GetDirectoryNameFolder<StorageFolder, StorageFile>(StorageFolder rp2, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac != null)
+        {
+            return ac.fs.getDirectoryNameFolder.Invoke(rp2);
+        }
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "GetDirectoryName");
+        var rp = rp2.ToString();
+        return (dynamic)GetDirectoryName(rp);
+    }
 
     private static void ThrowNotImplementedUwp()
     {
@@ -389,7 +398,17 @@ public partial class FS
             ThrowNotImplementedUwp();
         }
     }
-
+    public static void CreateFoldersPsysicallyUnlessThereFolder<StorageFolder, StorageFile>(StorageFolder nad, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            CreateFoldersPsysicallyUnlessThere(nad.ToString());
+        }
+        else
+        {
+            ThrowNotImplementedUwp();
+        }
+    }
 
     /// <summary>
     /// change all first (drive) letter to uppercase
@@ -745,7 +764,7 @@ public partial class FS
         }
         else
         {
-            CreateFoldersPsysicallyUnlessThere<StorageFolder, StorageFile>(FS.GetDirectoryName<StorageFolder, StorageFile>(nad, ac), ac);
+            CreateFoldersPsysicallyUnlessThereFolder<StorageFolder, StorageFile>(FS.GetDirectoryName<StorageFolder, StorageFile>(nad, ac), ac);
         }
     }
 
@@ -786,6 +805,16 @@ public partial class FS
         return FS.CiStorageFile < StorageFolder, StorageFile >( FS.Combine(p, fn + whatInsert + e), ac);
     }
 
+    public static StorageFolder CiStorageFolder<StorageFolder, StorageFile>(string path, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        if (ac == null)
+        {
+            var ps = path.ToString();
+            ps = FS.WithEndSlash(ps);
+            return (dynamic)ps;
+        }
+        return ac.fs.ciStorageFolder.Invoke(path);
+    }
     public static StorageFile CiStorageFile<StorageFolder, StorageFile>(string path, AbstractCatalog<StorageFolder, StorageFile> ac)
     {
         if (ac == null)
