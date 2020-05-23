@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Newtonsoft.Json;
 using win.Helpers.Powershell;
 
 
@@ -37,9 +36,10 @@ public class GuesslangHelper
     {
         string File = @"c:\Program Files\Python36\Lib\site-packages\guesslang\data\languages.json";
         var s = TF.ReadFile(File);
-        TextReader tr = TF.TextReader(File);
-        JsonTextReader js = new JsonTextReader(tr);
-        dynamic son = JsonConvert.DeserializeObject(s);
+        //TextReader tr = TF.TextReader(File);
+        //JsonTextReader js = new JsonTextReader(tr);
+        //dynamic son = JsonConvert.DeserializeObject(s);
+        dynamic son = JsonNewtonSoft.instance.Deserialize(s);
         Dictionary<string, string> d = new Dictionary<string, string>();
         foreach (var item in son)
         {

@@ -1,11 +1,13 @@
-﻿using Resources;
+﻿
 
+using Resources;
 using sunamo.Constants;
 using System;
 
 public class HtmlGeneratorExtended : HtmlGenerator
 {
     static Type type = typeof(HtmlGeneratorExtended);
+
     public void DetailAnchor(string label, string oUriYouthProfile, string oNameYouthProfile)
     {
         if (!string.IsNullOrEmpty(oNameYouthProfile))

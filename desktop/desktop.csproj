@@ -51,10 +51,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -481,18 +477,6 @@
       <Project>{a3082956-9ee4-4b35-9b4e-b07d0c4c8b56}</Project>
       <Name>SearchTextBox</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
-      <Project>{ff853416-55b9-47ba-a80e-04e3d545c9a1}</Project>
-      <Name>SunamoJson</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\duo\duo.csproj">
-      <Project>{38d5e223-a4f9-425a-a848-871bfc6abca7}</Project>
-      <Name>duo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\shared\shared.csproj">
-      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
-      <Name>shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
@@ -500,10 +484,6 @@
     <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
       <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
       <Name>SunamoCode</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\win\win.csproj">
-      <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
-      <Name>win</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

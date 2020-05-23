@@ -1,4 +1,4 @@
-﻿using Resources;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +63,9 @@ public partial class PlatformInteropHelper{
 public static Type GetTypeOfResources()
     {
         return typeof(Resources.ResourcesDuo_DontUse);
+        //return null;
+
+
     //if (IsUseStandardProject())
     //{
     //    return typeof(standard.ResourcesStandard);

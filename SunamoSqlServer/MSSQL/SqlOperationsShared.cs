@@ -746,8 +746,6 @@ public partial class SqlOperations : SqlServerHelper
     #endregion
     #endregion
 
-
-
     #region SelectRowReader*
     public SqlResult<object[]> SelectRowReader(SqlData data, string tableName, string sloupce, string sloupecWhere, object hodnotaWhere)
     {
@@ -1205,7 +1203,6 @@ public partial class SqlOperations : SqlServerHelper
         return ExecuteScalarString(data, comm);
     } 
     #endregion
-
     public SqlResult<string> SelectCellDataTableStringOneLastRow(SqlData data, string table, string vracenySloupec, string idColumnName, object idColumnValue)
     {
         //SELECT TOP 1 * FROM table_Name ORDER BY unique_column DESC
