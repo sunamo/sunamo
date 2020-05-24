@@ -41,7 +41,7 @@ public static SolutionFolder SolutionWithName(string name)
     /// <param name = "nameOfFolder"></param>
     public static bool IsTheSolutionsFolder(string nameOfFolder)
     {
-        return nameOfFolder.Contains(SolutionsIndexerConsts.ProjectsFolderName) || nameOfFolder == SolutionsIndexerStrings.GitHub;
+        return nameOfFolder.Contains(SolutionsIndexerConsts.ProjectsFolderName) || nameOfFolder == SolutionsIndexerStrings.GitHub || nameOfFolder == SolutionsIndexerStrings.BitBucket;
     }
 
 public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, bool onlynames = true)

@@ -199,20 +199,40 @@ public partial class Exceptions
 
     public static string IsNullOrEmpty(string before, string argName, string argValue)
     {
+        string addParams = null;
+
         if (argValue == null)
         {
-            return CheckBefore(before) + argName + " is null";
+            addParams = AddParams();
+            return CheckBefore(before) + argName + " is null" + addParams;
         }
         else if (argValue == string.Empty)
         {
-            return CheckBefore(before) + argName + " is empty (without trim)";
+            addParams = AddParams();
+            return CheckBefore(before) + argName + " is empty (without trim)" + addParams;
         }
         else if (argValue.Trim() == string.Empty)
         {
-            return CheckBefore(before) + argName + " is empty (with trim)";
+            addParams = AddParams();
+            return CheckBefore(before) + argName + " is empty (with trim)" + addParams;
         }
 
         return null;
+    }
+
+    private static string AddParams()
+    {
+        sbAdditionalInfo.Insert(0, Environment.NewLine);
+        sbAdditionalInfo.Insert(0, "Outer:");
+        sbAdditionalInfo.Insert(0, Environment.NewLine);
+
+        sbAdditionalInfoInner.Insert(0, Environment.NewLine);
+        sbAdditionalInfoInner.Insert(0, "Inner:");
+        sbAdditionalInfoInner.Insert(0, Environment.NewLine);
+
+        var addParams = sbAdditionalInfo.ToString();
+        var addParamsInner = sbAdditionalInfoInner.ToString();
+        return  addParams + addParamsInner;
     }
 
     public static object IsNotWindowsPathFormat(string before, string argName, string argValue)

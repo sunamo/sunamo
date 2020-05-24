@@ -11,9 +11,12 @@ using System.Threading.Tasks;
 using sunamo;
 using sunamo.Constants;
 using sunamo.Helpers;
-
 using XliffParser;
 
+/// <summary>
+/// Must be in shared
+/// In sunamo is not XliffParser and fmdev.ResX - these projects requires .net fw due to CodeDom
+/// </summary>
 public class XlfResourcesH
 {
     public static bool initialized = false;

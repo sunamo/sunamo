@@ -454,7 +454,7 @@ public partial class FS
     /// <param name="file"></param>
     public static void GetPathAndFileName(string fn, out string path, out string file)
     {
-        path = FS.GetDirectoryName(fn);
+        path = FS.WithEndSlash(FS.GetDirectoryName(fn));
         file = FS.GetFileName(fn);
     }
     /// <summary>
@@ -466,9 +466,9 @@ public partial class FS
     /// <param name="ext"></param>
     public static void GetPathAndFileName(string fn, out string path, out string file, out string ext)
     {
-        path = FS.GetDirectoryName(fn) + AllChars.bs;
-        file = FS.GetFileName(fn);
-        ext = FS.GetExtension(file);
+        path = FS.WithEndSlash( FS.GetDirectoryName(fn));
+        file = FS.GetFileNameWithoutExtension(fn);
+        ext = FS.GetExtension(fn);
     }
 
     /// <summary>

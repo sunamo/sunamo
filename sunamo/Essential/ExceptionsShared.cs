@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
     public partial class Exceptions
     {
+    public static StringBuilder sbAdditionalInfoInner = new StringBuilder();
+    public static StringBuilder sbAdditionalInfo = new StringBuilder();
+
     #region For easy copy in SunamoException project
     public static string ArgumentOutOfRangeException(string before, string paramName, string message)
     {

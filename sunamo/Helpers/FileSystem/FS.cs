@@ -15,7 +15,7 @@ using System.Diagnostics;
 using sunamo;
 using System.Linq;
 using System.Threading;
-using XliffParser;
+
 
 public partial class FS
 {
@@ -394,6 +394,19 @@ public partial class FS
             }
         }
     }
+
+    public static List<string> PathsOfStorageFiles<StorageFolder, StorageFile>(IEnumerable<StorageFile> files1, AbstractCatalog<StorageFolder, StorageFile> ac)
+    {
+        List<string> d = new List<string>(files1.Count());
+
+        foreach (var item in files1)
+        {
+            d.Add(FS.StorageFilePath(item, ac));
+        }
+
+        return d;
+    }
+
     public static string RemoveFile(string fullPathCsproj)
     {
         // Most effecient way to handle csproj and dir
@@ -961,12 +974,20 @@ public partial class FS
         CA.InitFillWith(vr, cesta.Count);
         for (int i = 0; i < vr.Count; i++)
         {
-            string path, fn, ext;
-            FS.GetPathAndFileName(cesta[i], out path, out fn, out ext);
-            vr[i] = path + fn + ext.ToLower();
+            
+            vr[i] = FS.OnlyExtensionToLowerWithPath(cesta[i]);
         }
         return vr;
     }
+
+    public static string OnlyExtensionToLowerWithPath(string d)
+    {
+        string path, fn, ext;
+        FS.GetPathAndFileName(d, out path, out fn, out ext);
+        var result  = path + fn + ext.ToLower();
+        return result;
+    }
+
     /// <summary>
     /// files as .bowerrc return whole
     /// </summary>
@@ -988,6 +1009,7 @@ public partial class FS
         return vr;
     }
     public static string replaceIncorrectFor = string.Empty;
+
     public static string ExpandEnvironmentVariables(EnvironmentVariables environmentVariable)
     {
         return Environment.ExpandEnvironmentVariables(SH.WrapWith(environmentVariable.ToString(), AllChars.percnt));

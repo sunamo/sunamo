@@ -1930,7 +1930,7 @@ public class XlfKeys
     public const string CouldNotRetrievePhotoIDsForDeletion = "CouldNotRetrievePhotoIDsForDeletion";
     public const string ScDisagreed = "ScDisagreed";
     public const string stfIDPhotoPID = "stfIDPhotoPID";
-    public const string FailedToSerialize = "FailedToSerialize";
+    public const string failedToSerialize = "failedToSerialize";
     public const string JSONString = "JSONString";
     public const string NumbersEnteredInTheIntervalAreNull = "NumbersEnteredInTheIntervalAreNull";
     public const string TheIntervalResultWasGreaterThan = "TheIntervalResultWasGreaterThan";
@@ -2687,7 +2687,7 @@ public class XlfKeys
     public const string TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace = "TheServerUploadServiceCanOnlyBeUsedByAdminDueToLimitedHostingSpace";
     public const string UserGallery = "UserGallery";
     
-    public const string pIDStfIDPhoto = "pIDStfIDPhoto";
+    
     public const string Default = "Default";
     public const string Path = "Path";
     public const string Shared = "Shared";

@@ -141,10 +141,12 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
+
     public static void IsNullOrEmpty(string stacktrace, object type, string methodName, string argName, string argValue)
     {
         ThrowIsNotNull(stacktrace, Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
     }
+
     #endregion
     #region Without parameters
    
