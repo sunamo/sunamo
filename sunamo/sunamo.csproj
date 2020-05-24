@@ -726,7 +726,6 @@
     <None Include="Html\HtmlParserSShared.cs~RF6ca9257.TMP" />
     <None Include="MultilingualResources\sunamo.cs-CZ.xlf" />
     <None Include="MultilingualResources\sunamo.en-US.xlf" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mixins\" />
