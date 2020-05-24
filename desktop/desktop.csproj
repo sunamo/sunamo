@@ -501,6 +501,10 @@
       <Project>{bee17656-b10c-42b2-b3a4-70208323e3d7}</Project>
       <Name>win</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\Buttons\DialogButtons.xaml">

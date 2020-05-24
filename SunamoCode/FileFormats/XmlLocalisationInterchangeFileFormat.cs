@@ -326,7 +326,8 @@ Into A1 insert:
 
         public static XlfData GetTransUnits(Langs en)
         {
-            return GetTransUnits(XlfResourcesH.PathToXlfSunamo(en));
+            //return GetTransUnits(XlfResourcesH.PathToXlfSunamo(en));
+            return null;
         }
 
         /// <summary>
