@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -56,7 +56,6 @@
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlResult\InstancesSqlResult.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelper.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\SqlServerHelperShared.cs" />
-    <Compile Include="SqlServerHelperApps.cs" />
     <Compile Include="_Old\BaseRowTable.cs" />
     <Compile Include="_Old\StoredProceduresI.cs" />
     <Compile Include="Attributtes\NoReturnSqlResultAttribute.cs" />
@@ -107,11 +106,12 @@
     <Compile Include="MSSQL\SqlOpsI.cs" />
     <Compile Include="MSSQL\TableRowHelper.cs" />
     <Compile Include="MSSQL\TableRowHelperShared.cs" />
+    <None Include="packages.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlResult\CastSqlResult.cs" />
     <Compile Include="SqlResult\InstancesSqlResult.cs" />
     <Compile Include="SqlResult\SqlResult.cs" />
-    <None Include="packages.config" />
+    <Compile Include="SqlServerHelperApps.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo.web\WebShared\WebShared.csproj">

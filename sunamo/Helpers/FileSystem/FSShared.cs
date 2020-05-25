@@ -991,8 +991,6 @@ public partial class FS
         return rp.Substring(dex + 1);
     }
 
-
-
     /// <summary>
     /// Copy file by ordinal way 
     /// </summary>

@@ -11,6 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\Xlf\Xlf.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SolutionsIndexer\Data\" />
