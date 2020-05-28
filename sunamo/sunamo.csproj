@@ -158,11 +158,6 @@
     <Compile Include="Attributes\OuterObjectAttribute.cs" />
     <Compile Include="Attributes\OuterObjectMapping.cs" />
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
-    <Compile Include="Attributes\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="Attributes\SerializableAttribute.cs" />
     <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
     <Compile Include="AttributesHelper.cs" />
@@ -729,13 +724,6 @@
   <ItemGroup>
     <Folder Include="Mixins\" />
     <Folder Include="MultilingualResources\CopyWhileMassAdding\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Attributes\Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">
