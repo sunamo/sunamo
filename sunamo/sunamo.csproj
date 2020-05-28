@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\DontUseVs\packages\Costura.Fody.4.1.0\build\Costura.Fody.props" Condition="Exists('..\..\DontUseVs\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -159,11 +158,6 @@
     <Compile Include="Attributes\OuterObjectAttribute.cs" />
     <Compile Include="Attributes\OuterObjectMapping.cs" />
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
-    <Compile Include="Attributes\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="Attributes\SerializableAttribute.cs" />
     <Compile Include="Attributes\TypeOfExtensionAttribute.cs" />
     <Compile Include="AttributesHelper.cs" />
@@ -732,13 +726,6 @@
     <Folder Include="MultilingualResources\CopyWhileMassAdding\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Attributes\Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
@@ -749,12 +736,4 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\DontUseVs\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\..\DontUseVs\packages\Fody.6.0.0\build\Fody.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\DontUseVs\packages\Fody.6.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\DontUseVs\packages\Fody.6.0.0\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\..\DontUseVs\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\DontUseVs\packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
-  </Target>
 </Project>
