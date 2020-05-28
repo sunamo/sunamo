@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TSQL_Parser, Version=1.5.2.0, Culture=neutral, PublicKeyToken=09a45a2da17eccd6, processorArchitecture=MSIL">
-      <HintPath>..\..\ConsoleApp1\packages\TSQL.Parser.1.5.2\lib\net452\TSQL_Parser.dll</HintPath>
+      <HintPath>..\..\sunamo.cz\packages\TSQL.Parser.1.5.2\lib\net452\TSQL_Parser.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
