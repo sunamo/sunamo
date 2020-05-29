@@ -678,6 +678,32 @@ public static partial class SH
         return result;
     }
 
+    public static string JoinSentences(bool addAfterLast, params string[] pDescription)
+    {
+        StringBuilder sb = new StringBuilder();
+        string args = null;
+        foreach (var item in pDescription)
+        {
+            var t = item.Trim();
+            if (string.IsNullOrEmpty(item))
+            {
+                sb.Append(item);
+                if (!item.EndsWith(AllStrings.dotSpace))
+                {
+                    sb.Append(AllStrings.dotSpace);
+                }
+            }
+        }
+
+        var result = sb.ToString();
+
+        if (!addAfterLast)
+        {
+            result = SH.TrimEnd(result, AllStrings.dotSpace);
+        }
+        return result;
+    }
+
     public static string RepairQuotes(string c)
     {
         c = c.Replace(AllStrings.lq, AllStrings.qm);

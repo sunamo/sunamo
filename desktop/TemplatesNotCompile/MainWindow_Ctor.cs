@@ -5,6 +5,7 @@ using sunamo;
 using sunamo.Essential;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -184,6 +185,14 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 9) Set up UI of app
+        Assembly assembly = this.GetType().Assembly;
+        EmbeddedResourcesHShared embeddedResourcesHShared = new EmbeddedResourcesHShared(assembly, ThisApp.Name);
+        // To show it also in taskbar must be in ico format!!!
+        var ims = embeddedResourcesHShared.GetBitmapImageSource(ThisApp.Name + ".ico");
+        Icon = ims;
+
+
+
         miGenerateScreenshot.Header = "Generate screenshot"; 
         miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {

@@ -7,6 +7,8 @@ using System.Text;
 public class XlfKeys
 {
 
+	public const string SomeAlbums = "SomeAlbums"; 
+
 	public const string UserName = "UserName"; 
 
 	public const string MyStatistic = "MyStatistic"; 

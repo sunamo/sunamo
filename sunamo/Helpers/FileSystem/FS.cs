@@ -791,9 +791,10 @@ public partial class FS
         var dirs = FS.GetFolders(p, AllStrings.asterisk, SearchOption.AllDirectories);
         for (int i = dirs.Length() - 1; i >= 0; i--)
         {
-            Directory.Delete(dirs[i], false);
+            FS.TryDeleteDirectory(dirs[i]);
+            
         }
-        Directory.Delete(p, false);
+        FS.TryDeleteDirectory(p);
     }
     public static void MoveAllFilesRecursively(string p, string to, FileMoveCollisionOption co, string contains = null)
     {

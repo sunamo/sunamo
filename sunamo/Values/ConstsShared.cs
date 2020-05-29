@@ -8,7 +8,10 @@ using System.Text;
 /// </summary>
     public static partial class Consts
     {
-    
+    public const string slashLocalhost = AllStrings.slash + Consts.localhost;
+    public const string slashScz = AllStrings.slash + Consts.Cz;
+    public const string dotScz = ".sunamo.cz";
+    public const string dotSczSlash = ".sunamo.cz/";
     /// <summary>
     /// Min age is 18 due to GDPR - below 18 is needed parent agreement of child
     /// </summary>

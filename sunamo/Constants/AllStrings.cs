@@ -51,6 +51,7 @@ public class AllStrings
     /// </summary>
     public const string dds = "../";
     public const string ds = "./";
+    public const string dotSpace = ". ";
     public const string slashAsterisk = "/*";
     public const string apostrophe = "'";
     /// <summary>
