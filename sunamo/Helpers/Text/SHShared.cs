@@ -685,7 +685,7 @@ public static partial class SH
         foreach (var item in pDescription)
         {
             var t = item.Trim();
-            if (string.IsNullOrEmpty(item))
+            if (!string.IsNullOrEmpty(item))
             {
                 sb.Append(item);
                 if (!item.EndsWith(AllStrings.dotSpace))
