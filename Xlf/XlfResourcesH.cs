@@ -120,8 +120,8 @@ public class XlfResourcesH
             exists = FS.ExistsDirectory(path);
         }
 
-        if (!exists)
-        {
+        //if (!exists)
+        //{
             String xlfContent = null;
 
             var fn = "sunamo_cs_CZ";
@@ -151,16 +151,16 @@ public class XlfResourcesH
             TF.WriteAllText(file2, xlfContent, enc);
             TF.RemoveDoubleBomUtf8(file2);
 
-            //path = FS.Combine( appData.RootFolderCommon(true), "Settings");
-            path = appData.RootFolderCommon(false);
-        }
+            path = FS.Combine( appData.RootFolderCommon(true), "Settings");
+            //path = appData.RootFolderCommon(false);
+        //}
 
 
         var files = FS.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
-        foreach (var file in files)
+        foreach (var file3 in files)
         {
             var lang = XmlLocalisationInterchangeFileFormatSunamo.GetLangFromFilename(file);
-            ProcessXlfFile(path,  lang.ToString(), file);
+            ProcessXlfFile(path,  lang.ToString(), file3);
         }
 
         if (RLData.en.ContainsKey(XlfKeys.LocationOfCaches))

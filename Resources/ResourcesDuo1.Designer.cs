@@ -22,24 +22,24 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourcesDuo_DontUse {
+    internal class ResourcesDuo {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public ResourcesDuo_DontUse() {
+        internal ResourcesDuo() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesDuo", typeof(ResourcesDuo_DontUse).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ResourcesDuo", typeof(ResourcesDuo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace Resources {
         ///   Looks up a localized string similar to &lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
-        public static string Html5BoilerplateEnd {
+        internal static string Html5BoilerplateEnd {
             get {
                 return ResourceManager.GetString("Html5BoilerplateEnd", resourceCulture);
             }
@@ -77,7 +77,7 @@ namespace Resources {
         ///            &lt;p class=&quot;browsehappy&quot;&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href=&quot;#&quot;&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
         ///        &lt;![endif]--&gt;.
         /// </summary>
-        public static string Html5BoilerplateMiddle {
+        internal static string Html5BoilerplateMiddle {
             get {
                 return ResourceManager.GetString("Html5BoilerplateMiddle", resourceCulture);
             }
@@ -96,7 +96,7 @@ namespace Resources {
         ///        &lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
         ///        &lt;meta name=&quot;viewport&quot; content=&quot;width=devi [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Html5BoilerplateStart {
+        internal static string Html5BoilerplateStart {
             get {
                 return ResourceManager.GetString("Html5BoilerplateStart", resourceCulture);
             }
@@ -105,7 +105,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] sunamo_cs_CZ {
+        internal static byte[] sunamo_cs_CZ {
             get {
                 object obj = ResourceManager.GetObject("sunamo_cs_CZ", resourceCulture);
                 return ((byte[])(obj));
@@ -115,7 +115,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] sunamo_en_US {
+        internal static byte[] sunamo_en_US {
             get {
                 object obj = ResourceManager.GetObject("sunamo_en_US", resourceCulture);
                 return ((byte[])(obj));
