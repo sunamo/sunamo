@@ -155,7 +155,8 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <param name="filename"></param>
     public override string GetFileCommonSettings(string filename)
     {
-        var vr = FS.Combine(RootFolderCommon(true), AppFolders.Settings.ToString(), filename);
+        var fc = RootFolderCommon(true);
+        var vr = FS.Combine(fc, AppFolders.Settings.ToString(), filename);
         return vr;
     }
 

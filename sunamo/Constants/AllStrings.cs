@@ -106,6 +106,7 @@ public class AllStrings
     public static string doubleSpace32160 = AllStrings.space + AllStrings.space160;
     public static string doubleSpace16032 = AllStrings.space160 + AllStrings.space;
     public static string space160 = AllChars.space160.ToString();
+    public static string doubleBs = AllStrings.bs + AllStrings.bs;
     public const string bs2 = "\b";
     
     
