@@ -28,8 +28,6 @@ public class AppData : AppDataAbstractBase<string, string>
     /// <param name="inFolderCommon"></param>
     public override string RootFolderCommon(bool inFolderCommon)
     {
-
-
         //string appDataFolder = SpecialFO
         string sunamo2 = FS.Combine(SpecialFoldersHelper.AppDataRoaming(), Consts.@sunamo);
         var redirect = GetSunamoFolder();
