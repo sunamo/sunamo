@@ -110,6 +110,7 @@ public partial class WpfApp{
     /// <param name="e"></param>
     private static void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
     {
+        // cd je null
         if (IsSomethingNull("Current_DispatcherUnhandledException"))
         {
             

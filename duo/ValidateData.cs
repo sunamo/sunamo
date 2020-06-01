@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,4 +20,12 @@ public class ValidateData
     public Func<string, bool> validateMethod;
     public string messageWhenValidateMethodFails;
     public string messageToReallyShow;
+
+    // https://stackoverflow.com/a/43707185
+    //[MethodImpl(MethodImplOptions.NoInlining)]
+    public int ValidateNotInline()
+    {
+        int i = 0;
+        return i;
+    }
 }

@@ -29,6 +29,18 @@ public class VpsHelperSunamo
         }
     }
 
+    public static string SunamoCzSln()
+    {
+        if (IsVps)
+        {
+            return @"c:\_\sunamo.cz\";
+        }
+        else
+        {
+            return @"d:\Documents\Visual Studio 2017\Projects\sunamo.cz\";
+        }
+    }
+
     public static string SunamoProject()
     {
         return FS.Combine(SunamoSln(), "sunamo");

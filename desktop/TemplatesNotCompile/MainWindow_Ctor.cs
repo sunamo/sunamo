@@ -185,11 +185,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 9) Set up UI of app
-        Assembly assembly = this.GetType().Assembly;
-        EmbeddedResourcesHShared embeddedResourcesHShared = new EmbeddedResourcesHShared(assembly, ThisApp.Name);
-        // To show it also in taskbar must be in ico format!!!
-        var ims = embeddedResourcesHShared.GetBitmapImageSource(ThisApp.Name + ".ico");
-        Icon = ims;
+        Icon = EmbeddedResourcesHShared.ciShared.GetAppIcon("" + ".ico");
 
 
 

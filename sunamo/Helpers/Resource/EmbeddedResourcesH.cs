@@ -26,17 +26,14 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
     /// <summary>
     /// For entry assembly
     /// </summary>
-    public static EmbeddedResourcesH ci = new EmbeddedResourcesH();
+    public static EmbeddedResourcesH ci = null;
 
     /// <summary>
     /// 
     /// </summary>
-    private EmbeddedResourcesH()
+    protected EmbeddedResourcesH()
     {
-        _entryAssembly = RH.AssemblyWithName(ThisApp.Name);
-        //Assembly.GetAssembly()
 
-        _defaultNamespace = ThisApp.Name;
     }
 
     /// <summary>
@@ -50,8 +47,8 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
         _defaultNamespace = defaultNamespace;
     }
 
-    private Assembly _entryAssembly = null;
-    private string _defaultNamespace;
+    protected Assembly _entryAssembly = null;
+    protected string _defaultNamespace;
 
     protected Assembly entryAssembly
     {
@@ -94,3 +91,5 @@ GetString(uri.ToString()) - the same string as passed in ctor Uri
         return vr;
     }
 }
+
+   

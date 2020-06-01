@@ -15,6 +15,19 @@ using sunamo.Essential;
 
     public class PicturesShared
     {
+    public static void ConvertImageToIco(string newDir, string path, Func<Image, Icon> method)
+        {
+            var newPath = FS.ChangeExtension(path, ".ico", false);
+            newPath = FS.ChangeDirectory(newPath, newDir);
+            using (FileStream fs = new FileStream(newPath, FileMode.OpenOrCreate))
+            {
+            var image = new Bitmap(path);
+                var icon = method.Invoke(image);
+                icon.Save(fs);
+            }
+
+        }
+
     static Type type = typeof(PicturesShared);
     private static Regex r = new Regex(AllStrings.colon);
     public static Bitmap RotateBitmap(Image bitmap)

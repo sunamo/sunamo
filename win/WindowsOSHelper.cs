@@ -1,23 +1,23 @@
 ﻿using System;
-using IWshRuntimeLibrary;
+//using IWshRuntimeLibrary;
 public partial class WindowsOSHelper
 {
 static Type type = typeof(WindowsOSHelper);
-    public static void CreateLnk(string sourceDirectory, string targetFile)
-    {
-        var fn = FS.GetFileNameWithoutExtension(targetFile);
-        FS.CreateFoldersPsysicallyUnlessThere(sourceDirectory);
-        var shell = new WshShell();
-        var shortCutLinkFilePath = FS.Combine(sourceDirectory, @"\" + fn + ".lnk");
-        if (!FS.ExistsFile(shortCutLinkFilePath))
-        {
-            var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
-            windowsApplicationShortcut.Description = "How to create short for application example";
-            windowsApplicationShortcut.WorkingDirectory = FS.GetDirectoryName(targetFile);
-            windowsApplicationShortcut.TargetPath = targetFile;
-            windowsApplicationShortcut.Save();
-        }
-    }
+    //public static void CreateLnk(string sourceDirectory, string targetFile)
+    //{
+    //    var fn = FS.GetFileNameWithoutExtension(targetFile);
+    //    FS.CreateFoldersPsysicallyUnlessThere(sourceDirectory);
+    //    var shell = new WshShell();
+    //    var shortCutLinkFilePath = FS.Combine(sourceDirectory, @"\" + fn + ".lnk");
+    //    if (!FS.ExistsFile(shortCutLinkFilePath))
+    //    {
+    //        var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
+    //        windowsApplicationShortcut.Description = "How to create short for application example";
+    //        windowsApplicationShortcut.WorkingDirectory = FS.GetDirectoryName(targetFile);
+    //        windowsApplicationShortcut.TargetPath = targetFile;
+    //        windowsApplicationShortcut.Save();
+    //    }
+    //}
 }
 //public static void CreateLnk2()
 //{
