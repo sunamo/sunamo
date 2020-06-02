@@ -1,4 +1,4 @@
- using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 using System;
 using System.Linq;
@@ -395,7 +395,7 @@ namespace sunamo
             sb.Append(TitleInConvention());
             if (remix.Count != 0)
             {
-                sb.Append(AllStrings.rsqb + RemixInConvention() + AllStrings.lsqb);
+                sb.Append(AllStrings.lsqb + RemixInConvention() + AllStrings.rsqb);
             }
             return sb.ToString();
         }
@@ -439,7 +439,7 @@ namespace sunamo
             vr.Append(Artist() + AllStrings.dash + Title());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + Remix() + AllStrings.lsqb);
+                vr.Append(" [" + Remix() + AllStrings.rsqb);
             }
             return vr.ToString();
         }
@@ -450,7 +450,7 @@ namespace sunamo
             vr.Append(ArtistInConvention() + AllStrings.dash + TitleInConvention());
             if (remix.Count != 0)
             {
-                vr.Append(" [" + RemixInConvention() + AllStrings.lsqb);
+                vr.Append(" [" + RemixInConvention() + AllStrings.rsqb);
             }
             return vr.ToString();
         }

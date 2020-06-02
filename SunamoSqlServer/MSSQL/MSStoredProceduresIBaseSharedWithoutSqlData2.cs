@@ -254,7 +254,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
     public void CreateDatabase(string p)
     {
-        ExecuteNonQuery("Create Database [" + p + AllStrings.lsqb);
+        ExecuteNonQuery("Create Database [" + p + AllStrings.rsqb);
     }
 
     /// <summary>
@@ -2614,7 +2614,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         string sql = string.Format("SELECT {0} FROM {1} {2}", aB[0].A, p, GeneratorMsSql.CombinedWhere(aB));
         ABC abc = new ABC(aB);
-        return ExecuteScalar(sql, abc.OnlyBs()) != null;
+        return IsNotNullOrWhiteSpace( ExecuteScalar(sql, abc.OnlyBs()));
     }
 
     public bool SelectExistsCombination(string p, ABC where, ABC whereIsNot)
@@ -2631,7 +2631,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         {
             pridatNa = AddCommandParameter(comm, pridatNa, item.B);
         }
-        return ExecuteScalar(comm) != null;
+        return IsNotNullOrWhiteSpace( ExecuteScalar(comm) );
     }
 
     /// <summary>
@@ -2641,7 +2641,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     {
         string sql = string.Format("SELECT TOP(1) {0} FROM {1} {2}", sloupec, tabulka, GeneratorMsSql.SimpleWhere(sloupec));
         var result = ExecuteScalar(sql, hodnota);
-        return result != null;
+        return IsNotNullOrWhiteSpace( result);
+    }
+
+    private bool IsNotNullOrWhiteSpace(object result)
+    {
+        if (result == null)
+        {
+            return false;
+        }
+        else
+        {
+            return !string.IsNullOrWhiteSpace(result.ToString());
+        }
     }
 
     //public short SelectCellDataTableShortOneRow(bool signed, string table, string vracenySloupec, string whereColumn, object whereValue)

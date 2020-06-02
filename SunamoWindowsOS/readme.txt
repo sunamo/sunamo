@@ -1,0 +1,1 @@
+﻿For code which use IWsh library (Windows Script Host Object Model) which cannot be processed with Fody.Costure

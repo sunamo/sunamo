@@ -58,6 +58,7 @@ public static partial class HtmlHelper
     public static string ConvertTextToHtml(string p)
     {
         p = p.Replace(Environment.NewLine, "<br" + " /" + ">");
+        p = p.Replace("\n", "<br" + " /" + ">");
         return p;
     }
 

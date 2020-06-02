@@ -863,7 +863,7 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             if (a.useCA)
             {
-                AppendLine(tabCount, listName + " = CA.ToListString(" + SH.Join(AllChars.comma, list) + ");");
+                AppendLine(tabCount, listName + " = CA.ToListString(@" + SH.Join(AllChars.comma, list) + ");");
             }
             else
             {

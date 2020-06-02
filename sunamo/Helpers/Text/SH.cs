@@ -974,9 +974,9 @@ public static partial class SH
     public static string RemoveBracketsWithTextCaseInsensitive(string vr, string zaCo, params string[] co)
     {
         vr = ReplaceAll(vr, AllStrings.lb, "( ");
-        vr = ReplaceAll(vr, AllStrings.lsqb, " ]");
+        vr = ReplaceAll(vr, AllStrings.rsqb, " ]");
         vr = ReplaceAll(vr, AllStrings.rb, " )");
-        vr = ReplaceAll(vr, AllStrings.rsqb, "[ ");
+        vr = ReplaceAll(vr, AllStrings.lsqb, "[ ");
         for (int i = 0; i < co.Length; i++)
         {
             vr = Regex.Replace(vr, co[i], zaCo, RegexOptions.IgnoreCase);
@@ -1013,9 +1013,9 @@ public static partial class SH
                     vr = vr.Substring(ss + 1);
                 }
             }
-            else if (vr.StartsWith(AllStrings.rsqb))
+            else if (vr.StartsWith(AllStrings.lsqb))
             {
-                int ss = vr.IndexOf(AllStrings.lsqb);
+                int ss = vr.IndexOf(AllStrings.rsqb);
                 if (ss != -1 && ss != vr.Length - 1)
                 {
                     neco = true;

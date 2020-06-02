@@ -339,7 +339,7 @@ public partial class SqlOperations : SqlServerHelper
 
     public SqlResult CreateDatabase(SqlData d, string p)
     {
-        return ExecuteNonQuery(d, "Create Database [" + p + AllStrings.lsqb);
+        return ExecuteNonQuery(d, "Create Database [" + p + AllStrings.rsqb);
     }
 
     public SqlResult<bool> HasAnyValue(SqlData data, string table, string columnName, string iDColumnName, int idColumnValue)

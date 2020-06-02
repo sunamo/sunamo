@@ -8,8 +8,8 @@ using System.Text;
 /// </summary>
 public partial class AllLists
     {
-        public static List<string> leftBrackets = CA.ToListString(AllStrings.lb, AllStrings.lcub, AllStrings.rsqb);
-        public static List<string> rightBrackets = CA.ToListString(AllStrings.rb, AllStrings.rcub, AllStrings.lsqb);
+        public static List<string> leftBrackets = CA.ToListString(AllStrings.lb, AllStrings.lcub, AllStrings.lsqb);
+        public static List<string> rightBrackets = CA.ToListString(AllStrings.rb, AllStrings.rcub, AllStrings.rsqb);
         public static List<string> featUpper = CA.ToListString("Feat.", "Featuring", "Ft.");
         public static List<string> featLower = CA.ToListString("feat.", "featuring", "ft.");
         public static List<string> OstravaCityParts = null;

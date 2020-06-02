@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
-namespace sunamo.Helpers
-{
-    public class WindowsOSHelper
+
+    public class WshHelper
     {
-static Type type = typeof(WindowsOSHelper);
+        static Type type = typeof(WshHelper);
         public static void CreateLnk(string sourceDirectory, string targetFile)
         {
             var fn = FS.GetFileNameWithoutExtension(targetFile);
@@ -61,4 +60,3 @@ static Type type = typeof(WindowsOSHelper);
         //    shortcut.Save();
         //}
     }
-}
