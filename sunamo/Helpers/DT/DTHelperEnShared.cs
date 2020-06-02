@@ -221,5 +221,10 @@ public partial class DTHelperEn
         days *= -1;
         return DateTime.Today.AddDays(days);
     }
+
+    public static string DateToStringWithDayOfWeekEN(DateTime dt)
+    {
+        return dt.DayOfWeek.ToString() + ", " + ToShortDateString(dt);
+    }
     #endregion
 }
