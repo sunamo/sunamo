@@ -6,8 +6,18 @@ using System.Linq;
 public partial class DictionaryHelper
 {
     private static Type type = typeof(DictionaryHelper);
-    
 
+    public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
+    {
+        if (sl.ContainsKey(baseNazevTabulky))
+        {
+            sl[baseNazevTabulky]++;
+        }
+        else
+        {
+            sl.Add(baseNazevTabulky, 1);
+        }
+    }
     public static Value GetFirstItemValue<Key,Value>(Dictionary<Key, Value> dict)
     {
         foreach (var item in dict)

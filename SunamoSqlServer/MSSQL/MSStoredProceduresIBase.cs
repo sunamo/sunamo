@@ -9,6 +9,29 @@ using sunamo;
 
 public partial class MSStoredProceduresIBase : SqlServerHelper
 {
+    /// <summary>
+    /// 1 = from
+    /// 2 = to
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="returnColumn"></param>
+    /// <param name="y1"></param>
+    /// <param name="m1"></param>
+    /// <param name="d1"></param>
+    /// <param name="y2"></param>
+    /// <param name="m2"></param>
+    /// <param name="d2"></param>
+    /// <returns></returns>
+    public List<int> GetBetweenDateIntervalSameMonthIdsListInt(string table, string returnColumn, int y1, int m1, int d1, int d2)
+    {
+        var y = ColumnNamesWeb.Year;
+        var m = ColumnNamesWeb.Month;
+        var d = ColumnNamesWeb.Day;
+
+        var result = this.SelectValuesOfColumnAllRowsInt(table, returnColumn, new ABC(m, m1, y, y1), null, new ABC(d, d1 - 1), new ABC(d, d2 + 1));
+        return result;
+    }
+
     public string AverageLenghtOfColumnData(string table, string column)
     {
         var c = MSStoredProceduresI.ci.SelectValuesOfColumnAllRowsString(table, column);
@@ -34,6 +57,8 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
         return NH.CalculateMedianAverage(l);
     }
+
+    
 
 
     /// <summary>

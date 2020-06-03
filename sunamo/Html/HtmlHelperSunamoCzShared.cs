@@ -1,15 +1,19 @@
 ﻿public partial class HtmlHelperSunamoCz{ 
 public static string ConvertTextToHtmlWithAnchors(string p)
     {
-        var d = SH.SplitNone(HtmlHelper.ConvertTextToHtml(p), AllChars.space);
+        p = HtmlHelper.ConvertTextToHtml(p);
+        p = p.Replace("<", " <");
+        var d = SH.SplitAndKeepDelimiters(p, CA.ToList<char>( AllChars.space, AllChars.lt, AllChars.gt));
         for (int i = 0; i < d.Length(); i++)
         {
             if (d[i].StartsWith("https://") || d[i].StartsWith("https" + ":" + "//"))
             {
-                d[i] = HtmlGenerator2.AnchorWithHttp(d[i]);
+                var res = d[i];
+                 res = HtmlGenerator2.AnchorWithHttp(res);
+                d[i] = res;
             }
         }
 
-        return SH.Join(AllChars.space, d);
+        return SH.Join("", d);
     }
 }

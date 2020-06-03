@@ -58,6 +58,13 @@ public static partial class NH
         }
     }
 
+    public static byte Last2NumberByte(int year)
+    {
+        var ts = year.ToString();
+        ts = ts.Substring(ts.Length - 3);
+        return byte.Parse(ts);
+    }
+
     /// <summary>
     /// Cast A1,2 to double and divide
     /// </summary>

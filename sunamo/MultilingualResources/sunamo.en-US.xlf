@@ -14355,6 +14355,10 @@
           <source></source>
           <target state="translated">Some albums</target>
         </trans-unit>
+        <trans-unit id="WebsiteTrafficLastDays" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="translated">Traffic to the main pages of websites - the last 7 days</target>
+        </trans-unit>
       </group>
     </body>
   </file>
