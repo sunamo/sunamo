@@ -18,7 +18,7 @@ namespace desktop.Controls.ToggleSwitch
 {
 	///<summary>
 	/// Vertically oriented toggle switch control.
-	///</summary>
+	///</summary> 
 	public class VerticalToggleSwitch : ToggleSwitchBase
 	{
 		public VerticalToggleSwitch()

@@ -1313,7 +1313,12 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         return ReadValuesInt(comm);
     }
 
-
+    public List<short> SelectValuesOfColumnAllRowsShort(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot, ABC greaterThanWhere, ABC lowerThanWhere)
+    {
+        SqlCommand comm = new SqlCommand(string.Format("SELECT {0} FROM {1}", sloupec, tabulka) + GeneratorMsSql.CombinedWhere(whereIs, whereIsNot, greaterThanWhere, lowerThanWhere));
+        AddCommandParameteresCombinedArrays(comm, 0, whereIs, whereIsNot, greaterThanWhere, lowerThanWhere);
+        return ReadValuesShort(comm);
+    }
 
     public List<int> SelectValuesOfColumnAllRowsInt(string tabulka, string sloupec, ABC whereIs, ABC whereIsNot, ABC greaterThanWhere, ABC lowerThanWhere)
     {

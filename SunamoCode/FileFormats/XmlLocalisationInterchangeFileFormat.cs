@@ -225,8 +225,8 @@ TranslateEngine");
 
             foreach (var dx in occ)
             {
-                var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
-                var end = content.IndexOf(AllChars.lsqb, start);
+                var start = dx + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
+                var end = content.IndexOf(AllChars.rsqb, start);
 
 
                 key = content.Substring(start, end - start);

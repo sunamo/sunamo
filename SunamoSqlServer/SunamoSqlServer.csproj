@@ -45,6 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo.web\SunamoSqlServer.web\Layers\ColumnNamesWeb.cs">
+      <Link>ColumnNamesWeb.cs</Link>
+    </Compile>
     <Compile Include="..\..\sunamo\SunamoSqlServer\Args\ConvertToVarcharArgs.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Attributtes\NoReturnSqlResultAttribute.cs" />
     <Compile Include="..\..\sunamo\SunamoSqlServer\Data\SqlData.cs" />

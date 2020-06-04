@@ -28,7 +28,17 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         var m = ColumnNamesWeb.Month;
         var d = ColumnNamesWeb.Day;
 
-        var result = this.SelectValuesOfColumnAllRowsInt(table, returnColumn, new ABC(m, m1, y, y1), null, new ABC(d, d1 - 1), new ABC(d, d2 + 1));
+        var result = this.SelectValuesOfColumnAllRowsInt(table, returnColumn, new ABC(m, m1, y, NH.Last2NumberByte( y1)), null, new ABC(d, d1 - 1), new ABC(d, d2 + 1));
+        return result;
+    }
+
+    public List<short> GetBetweenDateIntervalSameMonthIdsListShort(string table, string returnColumn, int y1, int m1, int d1, int d2)
+    {
+        var y = ColumnNamesWeb.Year;
+        var m = ColumnNamesWeb.Month;
+        var d = ColumnNamesWeb.Day;
+
+        var result = this.SelectValuesOfColumnAllRowsShort(table, returnColumn, new ABC(m, m1, y, NH.Last2NumberByte(y1)), null, new ABC(d, d1 - 1), new ABC(d, d2 + 1));
         return result;
     }
 

@@ -1395,6 +1395,15 @@ public partial class FS
 
     public static string MascFromExtension(string ext2 = AllStrings.asterisk)
     {
+        if (ext2.Length == 0)
+        {
+
+        }
+        if (char.IsLetterOrDigit( ext2[0]))
+        {
+            // For wildcard, dot (simply non letters) include .
+            ext2 = "." + ext2;
+        }
         if (!ext2.StartsWith("*"))
         {
             ext2 = "*" + ext2;
@@ -1443,6 +1452,20 @@ public partial class FS
 
         //return ext2; 
     }
+
+    public static List<string> GetFiles(string folderPath, string masc, bool? rec)
+    {
+        SearchOption so = SearchOption.TopDirectoryOnly;
+
+        var b = BTS.GetValueOfNullable(rec);
+        if (b)
+        {
+            so = SearchOption.TopDirectoryOnly;
+        }
+
+        return FS.GetFiles(folderPath, masc, so);
+    }
+
     public static List<string> GetFiles(string folderPath, string masc)
     {
         return FS.GetFiles(folderPath, masc, SearchOption.TopDirectoryOnly);

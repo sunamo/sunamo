@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <TextBlock Text="Monitor clipboard: " VerticalAlignment="Center" Padding="10,0,10,0"></TextBlock>
         <desktopControlsToggleSwitch:HorizontalToggleSwitch x:Name="monitorClipboard" x:FieldModifier="public" Grid.Column="1" IsChecked="False" ></desktopControlsToggleSwitch:HorizontalToggleSwitch>
         

@@ -46,17 +46,7 @@ public partial class DictionaryHelper
         }
     }
 
-    public static void IncrementOrCreate<T>(Dictionary<T, int> sl, T baseNazevTabulky)
-    {
-        if (sl.ContainsKey(baseNazevTabulky))
-        {
-            sl[baseNazevTabulky]++;
-        }
-        else
-        {
-            sl.Add(baseNazevTabulky, 1);
-        }
-    }
+   
 
     public static Dictionary<T, List<U>> GroupByValues<U, T, ColType>(Dictionary<U, T> dictionary)
     {
