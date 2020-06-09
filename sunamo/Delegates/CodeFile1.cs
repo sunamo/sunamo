@@ -48,12 +48,7 @@ public delegate string EditHtmlWidthHandler(ref HtmlNode hm, string s);
 public delegate String StringVoid();
 public delegate void VoidUIElement(VoidUIElement uie);
 public delegate void VoidIntDouble(int nt, double d);
-/// <summary>
-/// For redirect to FSApps or FS - can't add
-/// Return bool? due to signalling unauthorized access - for example access .xlf in uwp 
-/// </summary>
-/// <param name="path"></param>
-public delegate bool? ExistsDirectory(string path);
+
 //public delegate void VoidVoid();
 //public delegate void VoidObject(object o);
 //public delegate string EditHtmlWidthHandler(ref HtmlNode hm, string s);

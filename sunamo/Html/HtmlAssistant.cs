@@ -18,6 +18,28 @@ public partial class HtmlAssistant
         return SplitByTag(input, "br");
     }
 
+    static void RemoveComments(HtmlNode node)
+    {
+        if (!node.HasChildNodes)
+        {
+            return;
+        }
+
+        for (int i = 0; i < node.ChildNodes.Count; i++)
+        {
+            if (node.ChildNodes[i].NodeType == HtmlNodeType.Comment)
+            {
+                node.ChildNodes.RemoveAt(i);
+                --i;
+            }
+        }
+
+        foreach (HtmlNode subNode in node.ChildNodes)
+        {
+            RemoveComments(subNode);
+        }
+    }
+
     public static string InnerTextDecodeTrim(HtmlNode n)
     {
         var r = n.InnerText.Trim();

@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlf", "Xlf\Xlf.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoWindowsOS", "SunamoWindowsOS\SunamoWindowsOS.csproj", "{9FDD3FF2-3A7E-4D4F-B57C-BE5FEF567277}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCode.forms", "SunamoCode.forms\SunamoCode.forms.csproj", "{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -446,6 +448,18 @@ Global
 		{9FDD3FF2-3A7E-4D4F-B57C-BE5FEF567277}.Release|x64.Build.0 = Release|Any CPU
 		{9FDD3FF2-3A7E-4D4F-B57C-BE5FEF567277}.Release|x86.ActiveCfg = Release|Any CPU
 		{9FDD3FF2-3A7E-4D4F-B57C-BE5FEF567277}.Release|x86.Build.0 = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|x64.Build.0 = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x64.Build.0 = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

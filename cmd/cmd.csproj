@@ -76,6 +76,10 @@
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

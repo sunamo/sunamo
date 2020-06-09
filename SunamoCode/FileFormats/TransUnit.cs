@@ -22,10 +22,12 @@ public class TransUnit
         }
         set
         {
-            value = SHNotTranslateAble.DecodeSlashEncodedString(value);
-            value = HtmlAssistant.TrimInnerHtml(value);
-            value = HtmlDocument.HtmlEncode(value);
-
+            if (value != null)
+            {
+                value = SHNotTranslateAble.DecodeSlashEncodedString(value);
+                value = HtmlAssistant.TrimInnerHtml(value);
+                value = HtmlDocument.HtmlEncode(value);
+            }
             _source = value;
         }
     }

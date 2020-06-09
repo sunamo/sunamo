@@ -213,6 +213,8 @@ TranslateEngine");
             }
         }
 
+        
+
         public static List<string> GetKeysInCs(ref string key, string content)
         {
             CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
@@ -228,6 +230,21 @@ TranslateEngine");
                 var start = dx + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
                 var end = content.IndexOf(AllChars.rsqb, start);
 
+                key = content.Substring(start, end - start);
+
+                c.Add(key);
+            }
+
+            occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
+
+            occ.Reverse();
+
+            
+
+            foreach (var dx in occ)
+            {
+                var start = dx + XmlLocalisationInterchangeFileFormatSunamo.SessI18n.Length + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
+                var end = content.IndexOf(AllChars.rb, start);
 
                 key = content.Substring(start, end - start);
 
@@ -256,7 +273,7 @@ Into A1 insert:
 / - always path
              */
 
-            list = CA.ChangeContent(list, t => SH.RemoveAfterFirst(t, AllChars.space));
+            list = CA.ChangeContent(null,list, t => SH.RemoveAfterFirst(t, AllChars.space));
 
             idsEndingOn = new List<string>();
             Dictionary<string, StringBuilder> result = new Dictionary<string, StringBuilder>();
@@ -516,8 +533,9 @@ Into A1 insert:
         {
             TransUnit tu = new TransUnit();
             tu.id = pascal;
-            tu.source = source;
-            tu.translate = true;
+            // Directly set to null due to not inserting into .xlf
+            tu.source = null;
+            //tu.translate = true;
             tu.target = target;
 
             var xml = tu.ToString();
@@ -533,7 +551,13 @@ Into A1 insert:
             RemoveFromXlfAndXlfKeys(fn, idsEndingEnd, XlfParts.Id);
         }
 
-        public static void FromXlfAndXlfKeysWithDiacritic(string fn, XlfParts p)
+        /// <summary>
+        /// AndXlfKeys
+        /// </summary>
+        /// <param name="fn"></param>
+        /// <param name="p"></param>
+        /// <param name="saveToClipboard"></param>
+        public static List<string> FromXlfWithDiacritic(string fn, XlfParts p, bool saveToClipboard = false)
         {
             // Dont use, its also non czech with diacritic hats tuồng (hats bôi)
 
@@ -582,10 +606,12 @@ Into A1 insert:
 
             }
 
-            ClipboardHelper.SetLines(r);
+            if (saveToClipboard)
+            {
+                ClipboardHelper.SetLines(r);
+            }
 
-
-
+            return r;
         }
 
         public static void RemoveFromXlfAndXlfKeys(string fn, List<string> idsEndingEnd, XlfParts p)
@@ -648,7 +674,6 @@ Into A1 insert:
 
                 }
             }
-
 
             CSharpParser.RemoveConsts(@"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Constants\XlfKeys.cs", idsEndingEnd);
 
@@ -735,14 +760,11 @@ Into A1 insert:
         /// <returns></returns>
         public static List<string> GetIds(string xlfPath, out XlfData d)
         {
-            var allids = new List<string>();
+            
             d = XmlLocalisationInterchangeFileFormat.GetTransUnits(xlfPath);
-            foreach (var item in d.trans_units)
-            {
-                allids.Add(XmlLocalisationInterchangeFileFormat.Id(item));
-            }
+            d.FillIds();
 
-            return allids;
+            return d.allids;
         }
 
 
@@ -770,6 +792,8 @@ Into A1 insert:
             }
         }
 
+
+
         public static string ReplaceStringKeysWithXlfKeysWorker(ref string key, string content)
         {
             var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn + AllStrings.qm);
@@ -783,7 +807,6 @@ Into A1 insert:
                 var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length;
                 var end = content.IndexOf(AllChars.qm, start);
                 
-
                 key = content.Substring(start, end - start);
 
                 sb.Remove(start-1, end - start+2);
@@ -791,6 +814,84 @@ Into A1 insert:
             }
 
             return sb.ToString();
+        }
+
+        static readonly List<string> sunamoStrings = SH.GetLines(@"SunamoStrings.AddAsRsvp
+SunamoStrings.EditUserAccount
+SunamoStrings.UserDetail
+SunamoStrings.ErrorSerie255
+SunamoStrings.ErrorSerie0
+SunamoStrings.ViewLastWeek
+SunamoStrings.YouAreNotLogged
+SunamoStrings.YouAreBlocked
+SunamoStrings.TurnOnSelectingPhotos
+SunamoStrings.TurnOffSelectingPhotos
+SunamoStrings.StringNotFound
+SunamoStrings.NoRightArgumentsToPage
+SunamoStrings.YouAreNotLoggedAsWebAdmin
+SunamoStrings.YouHaveNotValidIPv4Address
+SunamoStrings.UriTooShort
+SunamoStrings.UriTooLong
+SunamoStrings.CustomShortUriOccupatedYet
+SunamoStrings.LinkSuccessfullyShorted
+SunamoStrings.Error
+SunamoStrings.Success
+SunamoStrings.RemoveFromFavoritesSuccess
+SunamoStrings.AddToFavoritesSuccess
+SunamoStrings.RemoveFromFavorites
+SunamoStrings.AddToFavorites
+SunamoStrings.RemoveAsRsvpSuccess
+SunamoStrings.RemoveAsRsvp
+SunamoStrings.DetailsClickSurveyAspxLabel
+SunamoStrings.UnvalidSession
+SunamoStrings.ScIsNotTheSame
+SunamoStrings.NotImplementedPleaseContactWebAdmin");
+
+        public static string ReplaceRlDataToSessionI18n(string content)
+        {
+            int dx = -1;
+
+            foreach (var item in sunamoStrings)
+            {
+                dx = content.IndexOf(item);
+                if (dx != -1)
+                {
+                    content = content.Insert(dx + item.Length, AllStrings.rb);
+                    content = content.Remove(dx, XmlLocalisationInterchangeFileFormatSunamo.SunamoStringsDot.Length);
+                    content = content.Insert(dx, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
+                }
+            }
+
+            var l = XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length;
+
+            content = content.Replace(XmlLocalisationInterchangeFileFormatSunamo.RLDataEn2, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn);
+
+            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn);
+            List<int> ending = new List<int>();
+            foreach (var item in occ)
+            {
+                var io = content.IndexOf( AllChars.rsqb, item);
+                ending.Add(io);
+            }
+
+            StringBuilder sb = new StringBuilder(content);
+
+            occ.Reverse();
+            ending.Reverse();
+
+            for (int i = 0; i < occ.Count; i++)
+            {
+                sb.Remove(occ[i], l);
+                sb.Insert(occ[i], XmlLocalisationInterchangeFileFormatSunamo.SessI18n);
+
+                var ending2 = ending[i];
+                sb.Remove(ending2, 1);
+                sb.Insert(ending2, AllStrings.rb);
+            }
+
+            var c = sb.ToString();
+            //TF.SaveFile(c, )
+            return c;
         }
 
         /// <summary>
@@ -862,7 +963,7 @@ Into A1 insert:
                 foreach (var item in ids)
                 {
                     var item2 = XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot + item + "]";
-                    var toReplace = "RLData.en[" + item2;
+                    var toReplace = XmlLocalisationInterchangeFileFormatSunamo.RLDataEn + item2;
 
                     var toString = sb.ToString();
                     var points = SH.ReturnOccurencesOfString(toString, toReplace);
@@ -908,7 +1009,9 @@ Into A1 insert:
             var b1 = !SystemWindowsControls.StartingWithShortcutOfControl(key);
             var b2 = !key.StartsWith("Resources\\");
             var b3 = !CA.HasPostfix(key, ".PlaceholderText", ".Content");
-            return b1 && b2 && b3;
+            var b4 = !key.Contains(AllStrings.dot);
+            var b5 = !key.Contains(AllStrings.bs);
+            return b1 && b2 && b3 && b4 && b5;
         }
     }
 

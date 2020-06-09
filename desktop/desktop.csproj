@@ -305,6 +305,7 @@
     <Compile Include="Essential\WpfApp.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="ExceptionStrings.cs" />
+    <Compile Include="Extensions\CheckBoxExtensions.cs" />
     <Compile Include="Extensions\ComboBoxExtensions.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\ArgumentType.cs" />
     <Compile Include="Extensions\FileSystemWatcherExtended\Common\WatcherInfo.cs" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
+
 /// <summary>
 /// Je to všechno v jedné třídě, aby se mi změny udělané zde projevili ve všech třídách.
 /// </summary>

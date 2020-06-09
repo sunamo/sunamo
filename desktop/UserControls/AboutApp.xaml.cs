@@ -1,4 +1,4 @@
-﻿using sunamo.Essential;
+using sunamo.Essential;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,14 +21,14 @@ namespace desktop.Controls
 
             
 
-                tbTitle.Text = RL.GetString("AboutApp") + AllStrings.space  + ThisApp.Name;
-            string ad = RL.GetString("AboutDeveloper");
+                tbTitle.Text = sess.i18n("AboutApp") + AllStrings.space  + ThisApp.Name;
+            string ad = sess.i18n("AboutDeveloper");
             tbAboutApp.Text = ad;
 
             WRTBH tbh2 = new WRTBH(475, 10, FontArgs.DefaultRun());
-            tbh2.HyperLink(RL.GetString("CzechBlog"), "http://jepsano.net");
+            tbh2.HyperLink(sess.i18n("CzechBlog"), "http://jepsano.net");
             tbh2.LineBreak();
-            tbh2.HyperLink(RL.GetString("EnglishBlog"), "http://for-you-the.best");
+            tbh2.HyperLink(sess.i18n("EnglishBlog"), "http://for-you-the.best");
             tbh2.LineBreak();
             tbh2.HyperLink("Web", "http://www.sunamo.cz");
             tbh2.LineBreak();

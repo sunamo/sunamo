@@ -236,6 +236,26 @@ public static partial class CSharpHelper
         return lines;
     }
 
+    public static void ReplaceForConsts(string pathXlfKeys)
+    {
+        var c = TF.ReadAllLines(pathXlfKeys);
+        for (int i = 0; i < c.Count; i++)
+        {
+            var a = c[i];
+            if (a.Contains(CSharpParser.p))
+            {
+                if (!a.Contains("const") && !a.Contains("class"))
+                {
+                    a = SH.ReplaceOnce(a, "static ", string.Empty);
+                    a = SH.ReplaceOnce(a, "readonly ", string.Empty);
+                    c[i] = SH.ReplaceOnce(a, CSharpParser.p, CSharpParser.p + "const ");
+                }
+            }
+        }
+
+        TF.SaveLines(c, pathXlfKeys);
+    }
+
     public static string GetConsts(List<string> list, bool toCamelConvention)
     {
         return GetConsts(null, list, toCamelConvention);
@@ -324,7 +344,7 @@ public static partial class CSharpHelper
     public static Dictionary<string, string> ParseFields(List<string> l)
     {
         CA.RemoveStringsEmpty2(l);
-        CA.ChangeContent(l, e => SH.RemoveAfterFirst(e, AllChars.equals));
+        CA.ChangeContent(null,l, e => SH.RemoveAfterFirst(e, AllChars.equals));
         CA.TrimEnd(l, AllChars.sc);
         Dictionary<string, string> r = new Dictionary<string, string>();
         foreach (var item in l)

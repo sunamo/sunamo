@@ -177,6 +177,11 @@ public partial class DictionaryHelper
     /// <param name = "value"></param>
     public static void AddOrCreate<Key, Value, ColType>(IDictionary<Key, List<Value>> dict, Key key, Value value, bool withoutDuplicitiesInValue = false)
     {
+        if (value.ToString().Contains("<"))
+        {
+
+        }
+
         if (key is IEnumerable && typeof(ColType) != typeof(object))
         {
             IEnumerable<ColType> keyE = key as IEnumerable<ColType>;

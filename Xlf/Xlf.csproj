@@ -47,14 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultPaths.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="Enums\Langs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RLData.cs" />
+    <Compile Include="TranslateDictionary.cs" />
     <Compile Include="XlfResourcesH.cs" />
+    <Compile Include="XlfResourcesHUwp.cs" />
+    <Compile Include="XmlLocalisationInterchangeFileFormatXlf.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
-      <Name>sunamo</Name>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}</Project>
+      <Name>SunamoExceptions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Values\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

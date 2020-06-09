@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 public partial class CSharpParser{
     static Type type = typeof(CSharpParser);
-    public const string c = "const string";
-    public const string eq = "=";
+    //public const string c = "const string";
+    public static string c => XmlLocalisationInterchangeFileFormatSunamo.cs;
     public const string p = "public" + " ";
 
     /// <summary>
@@ -16,14 +17,18 @@ public partial class CSharpParser{
     /// <param name = "remove"></param>
     public static void RemoveConsts(string file, List<string> remove)
     {
+        remove.Leading(null);
+
+        var ind = CA.IndexesWithNull(remove);
+
         var lines = TF.GetLines(file);
-        //first = -1;
+
         for (int i = lines.Count - 1; i >= 0; i--)
         {
             var text = lines[i].Trim();
             if (text.Contains(CSharpParser.c))
             {
-                string key = SH.GetTextBetween(text, CSharpParser.c, CSharpParser.eq);
+                string key = XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(text);
                 var dx = remove.IndexOf(key);
                 if (dx != -1)
                 {
@@ -33,10 +38,14 @@ public partial class CSharpParser{
             }
         }
 
+        //var d3 = lines.Where(d => d.Contains(d2));
+
         TF.WriteAllLines(file, lines);
         if (remove.Count > 0)
         {
             //ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "Cant be deleted in XlfKeys: " + SH.Join(",", remove));
         }
     }
+
+    //public const string d2 = "YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext";
 }

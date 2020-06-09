@@ -156,7 +156,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         }
         catch (Exception ex)
         {
-            ThisApp.SetStatus(TypeOfMessage.Error, RL.GetString("FileCannotBeDeleted"));
+            ThisApp.SetStatus(TypeOfMessage.Error, sess.i18n("FileCannotBeDeleted"));
         }
     }
     public string GetStorageFile(FileNameWithDateTime<StorageFolder, StorageFile> o)

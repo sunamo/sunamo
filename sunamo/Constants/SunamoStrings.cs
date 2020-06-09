@@ -21,7 +21,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.Accept];
+            return "";//sess.i18n(XlfKeys.Accept);
         }
     }
     #endregion
@@ -31,7 +31,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.EditUserAccount];
+            return "";//sess.i18n(XlfKeys.EditUserAccount);
         }
     }
 
@@ -39,7 +39,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.UserDetail];
+            return "";//sess.i18n(XlfKeys.UserDetail);
         }
     }
 
@@ -47,7 +47,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.ErrorSerie255];
+            return "";//sess.i18n(XlfKeys.ErrorSerie255);
         }
     }
 
@@ -55,7 +55,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.ErrorSerie0];
+            return "";//sess.i18n(XlfKeys.ErrorSerie0);
         }
     }
 
@@ -63,7 +63,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.ViewLastWeek];
+            return "";//sess.i18n(XlfKeys.ViewLastWeek);
         }
     }
 
@@ -71,7 +71,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.YouAreNotLogged];
+            return "";//sess.i18n(XlfKeys.YouAreNotLogged);
         }
     }
 
@@ -79,7 +79,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.YouAreBlocked];
+            return "";//sess.i18n(XlfKeys.YouAreBlocked);
         }
     }
 
@@ -87,7 +87,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.TurnOnSelectingPhotos];
+            return "";//sess.i18n(XlfKeys.TurnOnSelectingPhotos);
         }
     }
 
@@ -95,7 +95,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.TurnOffSelectingPhotos];
+            return "";//sess.i18n(XlfKeys.TurnOffSelectingPhotos);
         }
     }
 
@@ -103,7 +103,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.StringNotFound];
+            return "";//sess.i18n(XlfKeys.StringNotFound);
         }
     }
 
@@ -111,7 +111,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.NoRightArgumentsToPage];
+            return "";//sess.i18n(XlfKeys.NoRightArgumentsToPage);
         }
     }
 
@@ -119,7 +119,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.YouAreNotLoggedAsWebAdmin];
+            return "";//sess.i18n(XlfKeys.YouAreNotLoggedAsWebAdmin);
         }
     }
 
@@ -127,7 +127,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.YouHaveNotValidIPv4Address];
+            return "";//sess.i18n(XlfKeys.YouHaveNotValidIPv4Address);
         }
     }
 
@@ -135,7 +135,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.UriTooShort];
+            return "";//sess.i18n(XlfKeys.UriTooShort);
         }
     }
 
@@ -143,7 +143,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.UriTooLong];
+            return "";//sess.i18n(XlfKeys.UriTooLong);
         }
     }
 
@@ -151,7 +151,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.CustomShortUriOccupatedYet];
+            return "";//sess.i18n(XlfKeys.CustomShortUriOccupatedYet);
         }
     }
 
@@ -159,7 +159,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.LinkSuccessfullyShorted];
+            return "";//sess.i18n(XlfKeys.LinkSuccessfullyShorted);
         }
     }
 
@@ -167,7 +167,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.UnauthorizedOperation];
+            return "";//sess.i18n(XlfKeys.UnauthorizedOperation);
         }
     }
 
@@ -175,7 +175,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.Error];
+            return "";//sess.i18n(XlfKeys.Error);
         }
     }
 
@@ -183,7 +183,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.Success];
+            return "";//sess.i18n(XlfKeys.Success);
         }
     }
 
@@ -191,7 +191,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.RemoveFromFavoritesSuccess];
+            return "";//sess.i18n(XlfKeys.RemoveFromFavoritesSuccess);
         }
     }
 
@@ -199,7 +199,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.AddToFavoritesSuccess];
+            return "";//sess.i18n(XlfKeys.AddToFavoritesSuccess);
         }
     }
 
@@ -207,7 +207,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.RemoveFromFavorites];
+            return "";//sess.i18n(XlfKeys.RemoveFromFavorites);
         }
     }
 
@@ -215,7 +215,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.AddToFavorites];
+            return "";//sess.i18n(XlfKeys.AddToFavorites);
         }
     }
 
@@ -223,7 +223,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.RemoveAsRsvpSuccess];
+            return "";//sess.i18n(XlfKeys.RemoveAsRsvpSuccess);
         }
     }
 
@@ -231,7 +231,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.RemoveAsRsvp];
+            return "";//sess.i18n(XlfKeys.RemoveAsRsvp);
         }
     }
 
@@ -239,7 +239,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.AddAsRsvp];
+            return "";//sess.i18n(XlfKeys.AddAsRsvp);
         }
     }
 
@@ -247,7 +247,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.DetailsClickSurveyAspxLabel];
+            return "";//sess.i18n(XlfKeys.DetailsClickSurveyAspxLabel);
         }
     }
 
@@ -255,7 +255,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.UnvalidSession];
+            return "";//sess.i18n(XlfKeys.UnvalidSession);
         }
     }
 
@@ -263,7 +263,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.ScIsNotTheSame];
+            return "";//sess.i18n(XlfKeys.ScIsNotTheSame);
         }
     }
 
@@ -271,7 +271,7 @@ public class SunamoStrings
     {
         get
         {
-            return RLData.en[XlfKeys.NotImplementedPleaseContactWebAdmin];
+            return "";//sess.i18n(XlfKeys.NotImplementedPleaseContactWebAdmin);
         }
     } 
     #endregion
@@ -292,6 +292,6 @@ public class SunamoStrings
 
     public static string MessageIfEmpty(string p)
     {
-        return "Nebyly nalezeny \u017E\u00E1dn\u00E9" + " " + p + " " + " " + " " + "zobrazen\u00ED";
+        return "";//"Nebyly nalezeny \u017E\u00E1dn\u00E9" + " " + p + " " + " " + " " + "zobrazen\u00ED";
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
@@ -423,7 +423,7 @@ namespace sunamo.Html
                     continue;
                 }
                 var d = SH.SplitByWhiteSpaces(item.InnerText);
-                bool changed = CA.ChangeContent(d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
+                bool changed = CA.ChangeContent(null,d, RegexHelper.IsUri, HtmlGenerator2.Anchor);
 
                 item.InnerHtml = string.Empty;
                 InsertGroup(item, d);

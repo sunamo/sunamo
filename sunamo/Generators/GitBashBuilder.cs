@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Essential;
 using sunamo.Generators.Text;
 
@@ -130,11 +130,11 @@ namespace sunamo.Generators
             var files = FS.GetFiles(pathSearchForFiles, FS.MascFromExtension(), System.IO.SearchOption.AllDirectories, new GetFilesArgs { excludeFromLocationsCOntains = CA.ToListString(@"\.git\") });
 
             CA.Replace(linesFiles, solution, string.Empty);
-            CA.ChangeContent(linesFiles, SH.RemoveAfterFirst, AllStrings.swd);
+            CA.ChangeContent(null,linesFiles, SH.RemoveAfterFirst, AllStrings.swd);
             CA.Trim(linesFiles);
-            CA.ChangeContent(linesFiles, FS.AddExtensionIfDontHave, searchOnlyWithExtension);
-            CA.ChangeContent<bool>(linesFiles, FS.Slash, true);
-            CA.ChangeContent(linesFiles, SH.TrimStart, AllStrings.slash);
+            CA.ChangeContent(null,linesFiles, FS.AddExtensionIfDontHave, searchOnlyWithExtension);
+            CA.ChangeContent<bool>(null, linesFiles, FS.Slash, true);
+            CA.ChangeContent(null,linesFiles, SH.TrimStart, AllStrings.slash);
             var linesFilesOnlyFilename = FS.OnlyNames(linesFiles);
 
             anyError = false;

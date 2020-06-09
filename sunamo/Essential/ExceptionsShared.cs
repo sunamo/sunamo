@@ -11,6 +11,15 @@ using System.Threading.Tasks;
     public static StringBuilder sbAdditionalInfo = new StringBuilder();
 
     #region For easy copy in SunamoException project
+
+    public static object KeyNotFound<T, U>(string v, IDictionary<T, U> en, string dictName, T key)
+    {
+        if (!en.ContainsKey(key))
+        {
+            return key + " is now exists in Dictionary " + dictName;
+        }
+        return null;
+    }
     public static string ArgumentOutOfRangeException(string before, string paramName, string message)
     {
         if (paramName == null)

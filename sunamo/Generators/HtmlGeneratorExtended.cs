@@ -65,7 +65,7 @@ public class HtmlGeneratorExtended : HtmlGenerator
 
     public void BoilerplateStart(string css, bool directInject)
     {
-        WriteRaw(ResourcesDuo_DontUse.Html5BoilerplateStart);
+        WriteRaw(ResourcesDuo.Html5BoilerplateStart);
         if (directInject)
         {
             WriteTagWithAttr(HtmlTags.style, HtmlAttrs.type, HtmlAttrValue.textCss);

@@ -8,9 +8,8 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using sunamo;
-using sunamo.Constants;
-using sunamo.Helpers;
+using SunamoExceptions;
+using Xlf;
 using XliffParser;
 
 /// <summary>
@@ -21,48 +20,18 @@ public class XlfResourcesH
 {
     public static bool initialized = false;
 
-    /// <summary>
-    /// 1. Entry method 
-    /// </summary>
-    /// <typeparam name="StorageFolder"></typeparam>
-    /// <typeparam name="StorageFile"></typeparam>
-    /// <param name="existsDirectory"></param>
-    /// <param name="appData"></param>
-    public static void SaveResouresToRLSunamo<StorageFolder, StorageFile>(ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
+    public static void SaveResouresToRLSunamo()
     {
-        //var sunamoAssembly = typeof(Resources).Assembly;
-
-        //var resources2 = sunamoAssembly.GetManifestResourceNames();
-
-        //var resourceManager = new ResourceManager("sunamo.Properties.Resources", sunamoAssembly);
-        //var resources = resourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
-        //foreach (var res in resources)
-        //{
-        //    var v = ((DictionaryEntry)res).Key;
-        //    System.Console.WriteLine(v);
-        //}
-
-        string path = null;
-
-        if (!PlatformInteropHelper.IsUwpWindowsStoreApp())
-        {
-            path = DefaultPaths.sunamoProject;
-        }
-        else
-        {
-            path = appData.RootFolderCommon(false);
-        }
-
-        SaveResouresToRL<StorageFolder, StorageFile>(path, existsDirectory, appData);
+        SaveResouresToRLSunamo(null);
     }
 
     /// <summary>
     /// 1. Entry method 
     /// Only for non-UWP apps
     /// </summary>
-    public static void SaveResouresToRLSunamo()
+    public static string SaveResouresToRLSunamo(string key)
     {
-        SaveResouresToRL<string, string>(new ExistsDirectory( FS.ExistsDirectoryNull), AppData.ci);
+        return SaveResouresToRL<string, string>(key, DefaultPaths.sunamoProject, new ExistsDirectory( FS.ExistsDirectoryNull));
     }
 
     public static string PathToXlfSunamo(Langs l)
@@ -84,10 +53,7 @@ public class XlfResourcesH
         return p + AllExtensions.xlf;
     }
 
-    public static void SaveResouresToRL(string path)
-    {
-        SaveResouresToRL<string, string>(path, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci);
-    }
+    static string previousKey = null;
 
     /// <summary>
     /// 2. loading from xlf files
@@ -97,87 +63,30 @@ public class XlfResourcesH
     /// <param name="basePath"></param>
     /// <param name="existsDirectory"></param>
     /// <param name="appData"></param>
-    public static void SaveResouresToRL<StorageFolder, StorageFile>(string basePath, ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
+    public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory)
     {
+        if (previousKey == key)
+        {
+            return null;
+        }
+
+        previousKey = key;
+
         // cant be inicialized - after cs is set initialized to true and skip english
         //initialized = true;
 
         var path = Path.Combine(basePath, "MultilingualResources");
 
-        Type type = PlatformInteropHelper.GetTypeOfResources();
-
-        //ResourcesHelper rm = ResourcesHelper.Create("standard.Properties.Resources", type.Assembly);
-        ResourcesHelper rm = ResourcesHelper.Create("Resources.ResourcesDuo", type.Assembly);
-
-        var exists = false;
-
-        if (PlatformInteropHelper.IsUwpWindowsStoreApp())
-        {
-            // keep exists on false
-        }
-        else
-        {
-            exists = FS.ExistsDirectory(path);
-        }
-
-        //if (!exists)
-        //{
-            String xlfContent = null;
-
-            var fn = "sunamo_cs_CZ";
-
-
-            var file = appData.GetFileCommonSettings(fn + ".xlf");
-
-
-            // Cant use StorageFile.ToString - get only name of method
-            //pathFile = file.ToString();
-
-            var enc = Encoding.GetEncoding(65001);
-
-            xlfContent = rm.GetByteArrayAsString(fn);
-            //xlfContent = xlfContent.Skip(3);
-            TF.WriteAllText(file, xlfContent, enc);
-            TF.RemoveDoubleBomUtf8(file);
-
-
-            fn = "sunamo_en_US";
-
-            var file2 = appData.GetFileCommonSettings(fn + ".xlf"); 
-
-
-            xlfContent = rm.GetByteArrayAsString(fn);
-            //xlfContent = xlfContent.Skip(3);
-            TF.WriteAllText(file2, xlfContent, enc);
-            TF.RemoveDoubleBomUtf8(file2);
-
-            path = FS.Combine( appData.RootFolderCommon(true), "Settings");
-            //path = appData.RootFolderCommon(false);
-        //}
-
-
         var files = FS.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
         foreach (var file3 in files)
         {
-            var lang = XmlLocalisationInterchangeFileFormatSunamo.GetLangFromFilename(file);
+            var lang = XmlLocalisationInterchangeFileFormatXlf.GetLangFromFilename(file3);
             ProcessXlfFile(path,  lang.ToString(), file3);
         }
 
-        if (RLData.en.ContainsKey(XlfKeys.LocationOfCaches))
-        {
+    
 
-        }
-    }
-
-    /// <summary>
-    /// 2. loading from xlf files
-    /// Private to use SaveResouresToRLSunamo
-    /// </summary>
-    private static void SaveResouresToRL<StorageFolder, StorageFile>( ExistsDirectory existsDirectory, AppDataBase<StorageFolder, StorageFile> appData)
-    {
-        // Cant use SolutionsIndexerHelper.SolutionWithName or VPSHelper because is in SolutionsIndexer.web
-      
-        SaveResouresToRL(VpsHelperSunamo.SunamoProject(), existsDirectory,appData);
+        return key;
     }
 
     public static Dictionary<string, string> LoadXlfDocument(string file)
@@ -225,7 +134,7 @@ public class XlfResourcesH
     static Type type = typeof(XlfResourcesH);
     private static void ProcessXlfFile(string basePath, string lang, string file)
     {
-        var fn = FS.GetFileName(file).ToLower();
+        var fn = Path.GetFileName(file).ToLower();
         bool isCzech = fn.Contains("cs");
         bool isEnglish = fn.Contains("en");
 

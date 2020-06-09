@@ -102,10 +102,45 @@ public partial class FrameworkElementHelper
         return default(T);
     }
 
+    /// <summary>
+    /// Dont use Aligment for stretch / fill all available size. 
+    /// Width / Height = double.NaN work like a charm!
+    /// </summary>
+    /// <param name="g"></param>
     public static void AligmentStretch(Grid g)
     {
         g.HorizontalAlignment = HorizontalAlignment.Stretch;
         g.VerticalAlignment = VerticalAlignment.Stretch;
+    }
+
+    /// <summary>
+    /// Dont use Aligment for stretch / fill all available size. 
+    /// Width / Height = double.NaN work like a charm!
+    /// </summary>
+    /// <param name="fw"></param>
+    public static void HorizontalAligmentStretch(FrameworkElement fw)
+    {
+        fw.HorizontalAlignment = HorizontalAlignment.Stretch;
+        if (fw is Control)
+        {
+            var c = (Control)fw;
+            c.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+        }
+    }
+
+    /// <summary>
+    /// Dont use Aligment for stretch / fill all available size. 
+    /// Width / Height = double.NaN work like a charm!
+    /// </summary>
+    /// <param name="fw"></param>
+    public static void VerticalAligmentStretch(FrameworkElement fw)
+    {
+        fw.VerticalAlignment = VerticalAlignment.Stretch;
+        if (fw is Control)
+        {
+            var c = (Control)fw;
+            c.VerticalContentAlignment = VerticalAlignment.Stretch;
+        }
     }
 
     public static T FindName<T>(FrameworkElement element, string controlName)

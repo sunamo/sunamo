@@ -9,31 +9,54 @@ using System.Windows;
 /// </summary>
 public partial  class XmlLocalisationInterchangeFileFormatSunamo{
     static Type type = typeof(XmlLocalisationInterchangeFileFormatSunamo);
+    public const string cs = "const string ";
+    const string eqBs = " = \"";
 
-    
-
-    /// <summary>
-    /// A1 can be full path
-    /// </summary>
-    /// <param name="s"></param>
-    public static Langs GetLangFromFilename(string s)
+    public static string GetConstsFromLine(string d4)
     {
-        s = FS.GetFileNameWithoutExtension(s);
-        var parts = SH.Split(s, AllChars.dot);
-        string last = parts[parts.Count - 1].ToLower();
-        if (last.StartsWith("cs"))
-        {
-            return Langs.cs;
-        }
 
-        return Langs.en;
+        return SH.GetTextBetween(d4, cs, eqBs, false);
     }
 
+
+    public static Langs GetLangFromFilename(string s)
+    {
+        return XmlLocalisationInterchangeFileFormatXlf.GetLangFromFilename(s);
+    }
+
+
     /// <summary>
-    /// RLData.en[
+    /// sess.i18n(
     /// </summary>
     public const string RLDataEn = "RLData.en[";
+    public const string RLDataEn2 = "RLDataEn[";
+    public const string SessI18n = "sess.i18n(";
     public const string XlfKeysDot = "XlfKeys.";
+
+    public static string RemoveAllSessI18n(string c)
+    {
+        
+        var sb = new StringBuilder(c);
+
+        var sessI18n = XmlLocalisationInterchangeFileFormatSunamo.SessI18n;
+
+        var occ = SH.ReturnOccurencesOfString(c, sessI18n);
+        var ending = new List<int>(occ.Count);
+        foreach (var item in occ)
+        {
+            ending.Add(c.IndexOf(AllChars.rb, item));
+        }
+
+        var l = sessI18n.Length;
+
+        for (int i = occ.Count - 1; i >= 0; i--)
+        {
+            sb = sb.Remove(ending[i], 1);
+            sb = sb.Remove(occ[i], l);
+        }
+
+        return sb.ToString();
+    }
 
     /// <summary>
     /// return code for getting from RLData.en

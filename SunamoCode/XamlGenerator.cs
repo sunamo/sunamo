@@ -28,7 +28,7 @@ namespace desktop
         public void WriteColumnDefinitions(List<double> cd)
         {
             var cds = CA.ToListString(cd);
-            CA.ChangeContent<string, string>(cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
+            CA.ChangeContent<string, string>(null, cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
             WriteColumnDefinitions(cds);
         }
 
@@ -101,7 +101,7 @@ namespace desktop
         public void WriteRowDefinitions(List<double> cd)
         {
             var cds = CA.ToListString(cd);
-            CA.ChangeContent<string, string>(cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
+            CA.ChangeContent<string, string>(null, cds, SH.ReplaceOnce, AllStrings.comma, AllStrings.dot);
             WriteRowDefinitions(cds);
         }
 

@@ -42,20 +42,7 @@ public partial class ThrowExceptions
     {
         ThrowIsNotNull(stacktrace, Exceptions.IsWhitespaceOrNull(FullNameOfExecutedCode(type, methodName, true), variable, data));
     }
-    /// <summary>
-    /// A1 have to be Dictionary<T,U>, not IDictionary without generic
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="U"></typeparam>
-    /// <param name="type"></param>
-    /// <param name="v"></param>
-    /// <param name="en"></param>
-    /// <param name="dictName"></param>
-    /// <param name="key"></param>
-    public static void KeyNotFound<T, U>(string stacktrace, object type, string v, IDictionary<T, U> en, string dictName, T key)
-    {
-        ThrowIsNotNull(stacktrace, Exceptions.KeyNotFound(FullNameOfExecutedCode(type, v), en, dictName, key));
-    }
+    
     public static void HaveAllInnerSameCount(string stacktrace, object type, string methodName, List<List<string>> elements)
     {
         ThrowIsNotNull(stacktrace, Exceptions.HaveAllInnerSameCount(FullNameOfExecutedCode(type, methodName, true), elements));

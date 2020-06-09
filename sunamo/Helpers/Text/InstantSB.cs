@@ -8,13 +8,17 @@ using System;
 /// </summary>
 public class InstantSB //: StringWriter
 {
-    public StringBuilder sb = new StringBuilder();
+    public StringBuilderDebug sb = new StringBuilderDebug();
     private string _tokensDelimiter;
 
     public InstantSB(string znak)
     {
         _tokensDelimiter = znak;
     }
+
+    
+
+    public int Length => sb.Length;
 
     public override string ToString()
     {

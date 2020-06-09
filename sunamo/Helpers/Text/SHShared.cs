@@ -17,6 +17,8 @@ using Diacritics.Extensions;
 
 public static partial class SH
 {
+
+
     public static bool ContainsOnly(string floorS, List<char> numericChars)
     {
         foreach (var item in floorS)
@@ -397,6 +399,19 @@ public static partial class SH
 
         return new Tuple<string, string>(from.ToString(), to.ToString());
         
+    }
+
+    /// <summary>
+    /// Method is useless
+    /// ReplaceMany firstly split into two strings
+    /// Better is call SH.ReplaceAll2(input, to.ToString(), from.ToString(), true);
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
+    public static string PrepareForReplaceMany(List<string> from, List<string> to)
+    {
+        return null;
     }
 
     public static string ReplaceMany(string input, string fromTo, bool removeEndingPairCharsWhenDontHaveStarting = true)
@@ -2256,6 +2271,11 @@ public static partial class SH
         return null;
     }
 
+    public static string Substring(string sql, int indexFrom, int indexTo, bool returnInputIfInputIsShorterThanA3 = false)
+    {
+        return Substring(sql, indexFrom, indexTo, new SubstringArgs { returnInputIfInputIsShorterThanA3 = returnInputIfInputIsShorterThanA3 });
+    }
+
     /// <summary>
     /// POZOR, tato metoda se změnila, nyní automaticky přičítá k indexu od 1
     /// When I want to include delimiter, add to A3 +1
@@ -2263,13 +2283,32 @@ public static partial class SH
     /// <param name="sql"></param>
     /// <param name="p"></param>
     /// <param name="p_3"></param>
-    public static string Substring(string sql, int indexFrom, int indexTo, bool returnInputIfInputIsShorterThanA3 = false)
+    public static string Substring(string sql, int indexFrom, int indexTo, SubstringArgs a = null)
     {
+        if (a == null)
+        {
+            a = SubstringArgs.Instance;
+        }
+
         if (sql == null)
         {
             return null;
         }
+
         int tl = sql.Length;
+
+        if (indexFrom > indexTo)
+        {
+            if (a.returnInputIfIndexFromIsLessThanIndexTo)
+            {
+                return sql;
+            }
+            else
+            {
+                ThrowExceptions.ArgumentOutOfRangeException(Exc.GetStackTrace(), type, Exc.CallingMethod(), "indexFrom", "indexFrom is lower than indexTo");
+            }
+        }
+
         if (tl > indexFrom)
         {
             if (tl > indexTo)
@@ -2278,7 +2317,7 @@ public static partial class SH
             }
             else
             {
-                if (returnInputIfInputIsShorterThanA3)
+                if (a.returnInputIfInputIsShorterThanA3)
                 {
                     return sql;
                 }
@@ -3167,7 +3206,7 @@ private static bool IsMatchRegex(string str, string pat, char singleWildcard, ch
         int dex = nameSolution.LastIndexOf(delimiter.ToString());
         if (dex != -1)
         {
-            string s = SH.Substring(nameSolution, 0, dex);
+            string s = SH.Substring(nameSolution, 0, dex, null);
             return s;
         }
         return nameSolution;

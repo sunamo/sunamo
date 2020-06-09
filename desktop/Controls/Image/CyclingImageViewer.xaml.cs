@@ -103,7 +103,7 @@ namespace desktop
             {
                 imagesPath.AddRange(value);
                 ActualFile = imagesPath.SetIretation(0);
-                OnNewStatusAppend(RLData.en[XlfKeys.NewImagesLoadedInstead] + ".", value.Count);
+                //OnNewStatusAppend(RLData.en[XlfKeys.ewImagesLoadedInstead] + ".", value.Count);
             }
             else
             {

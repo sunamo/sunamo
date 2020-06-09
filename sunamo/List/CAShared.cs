@@ -11,10 +11,151 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-public static partial class 
-    CA
+public static partial class CA
 {
+
+
     private static Type type = typeof(CA);
+
+    #region ChangeContent
+ 
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
+    {
+        List<TResult> result = new List<TResult>(files_in.Count);
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            result.Add(func.Invoke(files_in[i]));
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// TResult is the same type as T1 (output collection is the same generic as input)
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="T2"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    private static List<TResult> ChangeContent<T1, T2, TResult>(ChangeContentArgs a, Func<T1, T2, TResult> func, List<T1> files_in, T2 t2)
+    {
+        List<TResult> result = new List<TResult>(files_in.Count);
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            // Fully generic - no strict string can't return the same collection
+            result.Add(func.Invoke(files_in[i], t2));
+        }
+
+        CA.RemoveDefaultT<TResult>(result);
+        return result;
+    }
+
+
+
+    /// <summary>
+    /// Direct edit
+    /// If not every element fullfil pattern, is good to remove null (or values returned if cant be changed) from result
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    public static List<string> ChangeContent(ChangeContentArgs a, List<string> files_in, Func<string, string> func)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i]);
+        }
+
+        RemoveNullOrEmpty(a, files_in);
+
+        return files_in;
+    }
+
+    /// <summary>
+    /// Direct edit input collection
+    /// </summary>
+    /// <typeparam name="Arg1"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <param name="arg"></param>
+    public static List<string> ChangeContent<Arg1>(ChangeContentArgs a, List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i], arg);
+        }
+
+        RemoveNullOrEmpty(a, files_in);
+
+        return files_in;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <typeparam name="Arg1"></typeparam>
+    /// <typeparam name="Arg2"></typeparam>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    /// <param name="arg1"></param>
+    /// <param name="arg2"></param>
+    public static List<string> ChangeContent<Arg1, Arg2>(ChangeContentArgs a, List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
+    {
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            files_in[i] = func.Invoke(files_in[i], arg1, arg2);
+        }
+
+        RemoveNullOrEmpty(a, files_in);
+
+        return files_in;
+    }
+
+    /// <summary>
+    /// Direct edit
+    /// </summary>
+    /// <param name="files_in"></param>
+    /// <param name="func"></param>
+    public static bool ChangeContent(ChangeContentArgs a, List<string> files_in, Predicate<string> predicate, Func<string, string> func)
+    {
+        bool changed = false;
+        for (int i = 0; i < files_in.Count; i++)
+        {
+            if (predicate.Invoke(files_in[i]))
+            {
+                files_in[i] = func.Invoke(files_in[i]);
+                changed = true;
+            }
+        }
+
+        RemoveNullOrEmpty(a, files_in);
+
+        return changed;
+    }
+    #endregion
+
+    private static void RemoveNullOrEmpty(ChangeContentArgs a, List<string> files_in)
+    {
+        if (a != null)
+        {
+            if (a.removeNull)
+            {
+                CA.RemoveDefaultT<string>(files_in);
+            }
+
+            if (a.removeEmpty)
+            {
+                CA.RemoveStringsEmpty2(files_in);
+            }
+        }
+    }
 
     /// <summary>
     /// Direct edit collection
@@ -79,14 +220,16 @@ public static partial class
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
     }
 
+
+
     public static void FirstCharUpper(List<string> s)
     {
-        CA.ChangeContent(s, r => SH.FirstCharUpper(r));
+        CA.ChangeContent(null,s, r => SH.FirstCharUpper(r));
     }
 
     public static void FirstCharOfEveryWordUpperDash(List<string> appNames)
     {
-        CA.ChangeContent(appNames, r => SH.FirstCharOfEveryWordUpperDash(r));
+        CA.ChangeContent(null,appNames, r => SH.FirstCharOfEveryWordUpperDash(r));
     }
 
     public static List<char> ToListChar(ICollection<string> values)
@@ -751,7 +894,6 @@ public static partial class
         return l;
     }
 
-
     /// <summary>
     /// Direct edit
     /// </summary>
@@ -760,7 +902,7 @@ public static partial class
     /// <param name="forWhat"></param>
     public static void Replace(List<string> files_in, string what, string forWhat)
     {
-        CA.ChangeContent(files_in, SH.Replace, what, forWhat);
+        CA.ChangeContent(null,files_in, SH.Replace, what, forWhat);
     }
 
     /// <summary>
@@ -783,60 +925,8 @@ public static partial class
         return result;
     }
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="TResult"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    private static List<TResult> ChangeContent<T1, TResult>(List<T1> files_in, Func<T1, TResult> func)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            result.Add(func.Invoke(files_in[i]));
-        }
-        return result;
-    }
-    /// <summary>
-    /// TResult is the same type as T1 (output collection is the same generic as input)
-    /// </summary>
-    /// <typeparam name="T1"></typeparam>
-    /// <typeparam name="T2"></typeparam>
-    /// <typeparam name="TResult"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    private static List<TResult> ChangeContent<T1, T2, TResult>(Func<T1, T2, TResult> func, List<T1> files_in, T2 t2)
-    {
-        List<TResult> result = new List<TResult>(files_in.Count);
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            // Fully generic - no strict string can't return the same collection
-            result.Add(func.Invoke(files_in[i], t2));
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    public static bool ChangeContent(List<string> files_in, Predicate<string> predicate, Func<string, string> func)
-    {
-        bool changed = false;
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            if (predicate.Invoke(files_in[i]))
-            {
-                files_in[i] = func.Invoke(files_in[i]);
-                changed = true;
-            }
-        }
-        return changed;
-    }
-
+    
+   
     public static List<T> JoinIEnumerable<T>(params IEnumerable<T>[] enumerable)
     {
         List<T> t = new List<T>();
@@ -855,53 +945,12 @@ public static partial class
         ChangeContent(dirs, d => SH.PostfixIfNotEmpty(d, v));
     }
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    public static List<string> ChangeContent(List<string> files_in, Func<string, string> func)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i]);
-        }
-        return files_in;
-    }
+   
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <typeparam name="Arg1"></typeparam>
-    /// <typeparam name="Arg2"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <param name="arg1"></param>
-    /// <param name="arg2"></param>
-    public static List<string> ChangeContent<Arg1, Arg2>(List<string> files_in, Func<string, Arg1, Arg2, string> func, Arg1 arg1, Arg2 arg2)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg1, arg2);
-        }
-        return files_in;
-    }
 
-    /// <summary>
-    /// Direct edit input collection
-    /// </summary>
-    /// <typeparam name="Arg1"></typeparam>
-    /// <param name="files_in"></param>
-    /// <param name="func"></param>
-    /// <param name="arg"></param>
-    public static List<string> ChangeContent<Arg1>(List<string> files_in, Func<string, Arg1, string> func, Arg1 arg)
-    {
-        for (int i = 0; i < files_in.Count; i++)
-        {
-            files_in[i] = func.Invoke(files_in[i], arg);
-        }
-        return files_in;
-    }
+
+   
+    
 
     /// <summary>
     /// Direct edit
@@ -1119,7 +1168,7 @@ public static partial class
     public static List<int> ToInt(IEnumerable enumerable)
     {
         var ts = ToListString2(enumerable);
-        CA.ChangeContent(ts, d => SH.RemoveAfterFirst(d.Replace(AllChars.comma, AllChars.dot), AllChars.dot));
+        CA.ChangeContent(null,ts, d => SH.RemoveAfterFirst(d.Replace(AllChars.comma, AllChars.dot), AllChars.dot));
 
         return ToNumber<int>(int.Parse, ts);
     }

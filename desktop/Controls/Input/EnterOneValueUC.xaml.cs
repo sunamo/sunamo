@@ -123,15 +123,27 @@ namespace desktop.Controls.Input
         /// Tag can be TWithName<object> or any object and its value is set to TextBlock
         /// </summary>
         /// <param name="uie"></param>
-        public void Init(IEnumerable<FrameworkElement> uie)
+        public void Init(IEnumerable<FrameworkElement> uie, GridSize gs = GridSize.GetAutoSize)
         {
-
+            //gridGrowable.
             txtEnteredText.Visibility = Visibility.Collapsed;
             //txtEnteredText.Parent.Chi
 
             fwElemements = CA.ToList<FrameworkElement>(uie);
 
-            GridHelper.GetAutoSize(gridGrowable, 2, uie.Count());
+            if (gs == GridSize.GetAutoSize)
+            {
+                GridHelper.GetAutoSize(gridGrowable, 2, uie.Count());
+            }
+            else if (gs == GridSize.Mine)
+            {
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), gs);
+            }
+            else if (gs == GridSize.XamlDefined)
+            {
+                // is already in xaml
+                GridHelper.GetAutoSize(gridGrowable, 0, uie.Count());
+            }
 
             int i = 0;
 
@@ -176,8 +188,12 @@ namespace desktop.Controls.Input
             
             Grid.SetRow(ui, i);
             Grid.SetColumn(ui, 1);
-            ui.HorizontalAlignment = HorizontalAlignment.Left;
+            // Horizontal alignment cant be set here - otherwise won't be horizontally stretched
+            //ui.HorizontalAlignment = HorizontalAlignment.Left;
             ui.Margin = uit;
+            // double.NaN to fill all available width
+            // HorizontalAligment have no effect
+            ui.Width = double.NaN;
             gridGrowable.Children.Add(ui);
 
             var tb = TextBlockHelper.Get(new ControlInitData { text = name });
@@ -286,6 +302,7 @@ namespace desktop.Controls.Input
         }
 
         public List<MenuItem> menuItems = new List<MenuItem>();
+        //public TextBox txtEnteredText => new TextBox();
 
         public List<MenuItem> MenuItems()
         {

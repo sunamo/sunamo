@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -93,8 +93,8 @@ public partial class PH
 
     public static void StartAllUri(List<string> carModels, Func<string, string> spritMonitor)
     {
-        carModels = CA.ChangeContent(carModels, spritMonitor);
-        carModels = CA.ChangeContent(carModels, NormalizeUri);
+        carModels = CA.ChangeContent(null,carModels, spritMonitor);
+        carModels = CA.ChangeContent(null,carModels, NormalizeUri);
         StartAllUri(carModels);
     }
 

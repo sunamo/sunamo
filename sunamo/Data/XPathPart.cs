@@ -14,7 +14,7 @@ public class XPathPart
         if (dexStartSquareBracket != -1 && dexEndSquareBracket != -1)
         {
             tag = part.Substring(0, dexStartSquareBracket);
-            string attr = SH.Substring(part, dexStartSquareBracket + 1, dexEndSquareBracket - 1);
+            string attr = SH.Substring(part, dexStartSquareBracket + 1, dexEndSquareBracket - 1, null);
             if (attr != "")
             {
                 if (attr[0] == '@')

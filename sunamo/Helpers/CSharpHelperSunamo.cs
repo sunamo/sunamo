@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 public partial class CSharpHelperSunamo
 {
+  
+
 
     public static void IndentAsPreviousLine(List<string> lines)
     {

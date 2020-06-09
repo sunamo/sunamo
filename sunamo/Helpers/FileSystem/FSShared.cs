@@ -30,7 +30,7 @@ public partial class FS
     /// When is occur Access denied exception, use GetFilesEveryFolder, which find files in every folder
     /// A1 have to be with ending backslash
     /// A4 must have underscore otherwise is suggested while I try type true
-    /// A2 can be delimited by semicolon
+    /// A2 can be delimited by semicolon. In case more extension use FS.GetFilesOfExtensions
     /// </summary>
     /// <param name="folder"></param>
     /// <param name="mask"></param>
@@ -87,13 +87,13 @@ public partial class FS
                 }
             }
         }
-        CA.ChangeContent(list, d => SH.FirstCharLower(d));
+        CA.ChangeContent(null,list, d => SH.FirstCharLower(d));
 
         if (getFilesArgs._trimA1)
         {
             foreach (var folder in folders)
             {
-                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+                list = CA.ChangeContent(null,list, d => d = d.Replace(folder, ""));
             }
 
         }
@@ -510,7 +510,7 @@ public partial class FS
     }
 
     /// <summary>
-    /// Cant name GetAbsolutePath because The call is ambiguous between the following methods or properties: 'CA.ChangeContent(List<string>, Func<string, string, string>)' and 'CA.ChangeContent(List<string>, Func<string, string>)'
+    /// Cant name GetAbsolutePath because The call is ambiguous between the following methods or properties: 'CA.ChangeContent(null,List<string>, Func<string, string, string>)' and 'CA.ChangeContent(null,List<string>, Func<string, string>)'
     /// </summary>
     /// <param name="a"></param>
     public static string AbsoluteFromCombinePath(string a)
@@ -951,7 +951,7 @@ public partial class FS
             return new List<string>();
         }
 
-        CA.ChangeContent(dirs, d => SH.FirstCharLower(d));
+        CA.ChangeContent(null,dirs, d => SH.FirstCharLower(d));
 
         if (_trimA1)
         {
@@ -1460,7 +1460,7 @@ public partial class FS
         var b = BTS.GetValueOfNullable(rec);
         if (b)
         {
-            so = SearchOption.TopDirectoryOnly;
+            so = SearchOption.AllDirectories;
         }
 
         return FS.GetFiles(folderPath, masc, so);
@@ -1502,7 +1502,7 @@ public partial class FS
 
         if (a._trimA1)
         {
-                list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+                list = CA.ChangeContent(null,list, d => d = d.Replace(folder, ""));
         }
         if (a.excludeFromLocationsCOntains != null)
         {
@@ -1570,11 +1570,11 @@ public partial class FS
             }
         }
 
-        CA.ChangeContent(list, d => SH.FirstCharLower(d));
+        CA.ChangeContent(null,list, d => SH.FirstCharLower(d));
 
         if (_trimA1)
         {
-            list = CA.ChangeContent(list, d => d = d.Replace(folder, ""));
+            list = CA.ChangeContent(null,list, d => d = d.Replace(folder, ""));
         }
         return list;
     }

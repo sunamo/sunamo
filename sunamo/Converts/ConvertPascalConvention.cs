@@ -11,7 +11,12 @@ public class ConvertPascalConvention //: IConvertConvention
     /// <param name="p"></param>
     public static string FromConvention(string p, bool allLettersExceptFirstLower = true)
     {
-        return SH.FirstCharUpper(Regex.Replace(p, "[a-z][A-Z]", m => $"{m.Value[0]} {char.ToLower(m.Value[1])}").ToLower());
+        var r = Regex.Replace(p, "[a-z][A-Z]", m => $"{m.Value[0]} {char.ToLower(m.Value[1])}").ToLower();
+        if (char.IsLower( p[0]))
+        {
+            return SH.FirstCharLower(r);
+        }
+        return SH.FirstCharUpper(r);
     }
 
     /// <summary>

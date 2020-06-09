@@ -45,7 +45,7 @@ public partial class QSHelper
             dexPocatek = dexPocatek + nameParam.Length;
             if (dexKonec != -1)
             {
-                return SH.Substring(uri, dexPocatek, dexKonec);
+                return SH.Substring(uri, dexPocatek, dexKonec, SubstringArgs.Instance);
             }
 
             return uri.Substring(dexPocatek);

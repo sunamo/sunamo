@@ -8,9 +8,8 @@ using System.Windows;
 
 public partial class XmlLocalisationInterchangeFileFormatSunamo
 {
+    public static string SunamoStringsDot = "SunamoStrings.";
 
-    #region MyRegion
-    #region MyRegion
     public static void ReplaceHtmlEntitiesWithEmpty()
     {
         var path = @"D:\a\sunamo.en-US.xlf";
@@ -80,7 +79,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
 
         //Clipboard.SetText(sb.ToString());
     }
-
+    
     /// <summary>
     /// Compare to whole line
     /// </summary>
@@ -101,7 +100,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         List<string> constsAllLines = new List<string>();
 
         var c = "const ";
-        var cs = "const string ";
+        
 
         i = 0;
 
@@ -113,7 +112,7 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
             if (item.Contains(c))
             {
                 // Get consts names
-                var s = SH.GetTextBetween(item, cs, "=", false);
+                var s = GetConstsFromLine(item);
                 consts.Add(s);
                 constsAllLines.Add(s);
             }
@@ -139,6 +138,8 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
 
         File.WriteAllLines(pathXlfKeys, l);
     }
+
+   
 
     public static void RemoveDuplicatedXlfKeysConsts2()
     {
@@ -172,7 +173,30 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         File.WriteAllLines(path, ls);
     }
 
-    #endregion
+    public static List<string> UsedXlfKeysInCs(string c)
+    {
+        List<string> usedKeys = new List<string>();
 
-    #endregion
+        var occ = SH.ReturnOccurencesOfString(c, SessI18n);
+        var ending = new List<int>(occ.Count);
+
+        foreach (var item in occ)
+        {
+            ending.Add(c.IndexOf(AllChars.rb, item));
+        }
+
+        var l = SessI18n.Length;
+        var l2 = XlfKeysDot.Length;
+
+        for (int i = occ.Count - 1; i >= 0; i--)
+        {
+            var k = SH.Substring(c, occ[i] + l + l2, ending[i], new SubstringArgs { returnInputIfIndexFromIsLessThanIndexTo = true } );
+            if (k != c)
+            {
+                usedKeys.Add(k);
+            }
+        }
+
+        return usedKeys;
+    }
 }

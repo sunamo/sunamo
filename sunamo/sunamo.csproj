@@ -99,7 +99,6 @@
     <Compile Include="..\..\sunamo\sunamo\Enums\Checkboxes.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ContainsCompareMethod.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\CustomStatusCode.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Enums\Langs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\ModifiersConstructor.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\SqlExceptions.cs" />
     <Compile Include="..\..\sunamo\sunamo\Enums\StorageApplicationData.cs" />
@@ -133,11 +132,17 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Args\ChangeContentArgs.cs" />
     <Compile Include="Args\CSharpGeneratorArgs.cs" />
+    <Compile Include="Args\SubstringArgs.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
+    <Compile Include="Constants\HttpKnownHeaderValues.cs" />
     <Compile Include="CryptDelegates.cs" />
+    <Compile Include="Enums\GridSize.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Interfaces\ILoginManager.cs" />
+    <Compile Include="RL\ResourceLoaderRL.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -389,7 +394,6 @@
     <Compile Include="Enums\InternetProtocols.cs" />
     <Compile Include="Enums\Iso3166_1_Alpha_2.cs" />
     <Compile Include="Enums\LandscapePortrait.cs" />
-    <Compile Include="Enums\Langs.cs" />
     <Compile Include="Enums\ListOperation.cs" />
     <Compile Include="Enums\ModifiersConstructor.cs" />
     <Compile Include="Enums\NamespaceCodeElements.cs" />
@@ -670,7 +674,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RH.cs" />
     <Compile Include="RL.cs" />
-    <Compile Include="RLData.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
@@ -712,11 +715,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fonts\FontAwesome.otf" />
-    <None Include="Html\HtmlHelperTextShared.cs~RF100e707.TMP" />
-    <None Include="Html\HtmlHelperTextShared.cs~RF10146ea.TMP" />
-    <None Include="Html\HtmlHelperTextShared.cs~RF10187fa.TMP" />
-    <None Include="Html\HtmlHelperTextShared.cs~RF43e96a0.TMP" />
-    <None Include="Html\HtmlHelperTextShared.cs~RF43e99cc.TMP" />
     <None Include="Html\HtmlParserSShared.cs~RF6ca9257.TMP" />
     <None Include="MultilingualResources\sunamo.cs-CZ.xlf" />
     <None Include="MultilingualResources\sunamo.en-US.xlf" />
@@ -726,6 +724,10 @@
     <Folder Include="MultilingualResources\CopyWhileMassAdding\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoDebugging\SunamoDebugging.csproj">
+      <Project>{7863231e-7c7e-47eb-a61a-eccb8b717c65}</Project>
+      <Name>SunamoDebugging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
@@ -733,6 +735,10 @@
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{3204432d-b6e7-4481-beb0-8b177af809c2}</Project>
       <Name>Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

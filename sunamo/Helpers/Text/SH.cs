@@ -18,6 +18,27 @@ using System.Text.RegularExpressions;
 using System.Windows;
 public static partial class SH
 {
+    public static string TrimNumbersAtEnd(string nameSolution)
+    {
+        for (int i = nameSolution.Length - 1; i >= 0; i--)
+        {
+            bool replace = false;
+            for (int n = 0; n < 10; n++)
+            {
+                if (nameSolution[i] == n.ToString()[0])
+                {
+                    replace = true;
+                    nameSolution = nameSolution.Substring(0, nameSolution.Length - 1);
+                    break;
+                }
+            }
+            if (!replace)
+            {
+                return nameSolution;
+            }
+        }
+        return nameSolution;
+    }
     public static bool ContainsInShared(string item, string mustContains, string v)
     {
         var cs = AllExtensions.cs;
@@ -1133,7 +1154,7 @@ public static partial class SH
         }
         return false;
     }
-    public static string TrimNumbersAtEnd(string nameSolution)
+    public static string TrimTrailingNumbersAtEnd(string nameSolution)
     {
         for (int i = nameSolution.Length - 1; i >= 0; i--)
         {
@@ -1154,6 +1175,28 @@ public static partial class SH
         }
         return nameSolution;
     }
+    public static string TrimLeadingNumbersAtStart(string nameSolution)
+    {
+        for (int i = 0; i < nameSolution.Length; i++)
+        {
+            bool replace = false;
+            for (int n = 0; n < 10; n++)
+            {
+                if (nameSolution[i] == n.ToString()[0])
+                {
+                    replace = true;
+                    nameSolution = nameSolution.Substring(1);
+                    break;
+                }
+            }
+            if (!replace)
+            {
+                return nameSolution;
+            }
+        }
+        return nameSolution;
+    }
+
     /// <summary>
     /// Výchozí byla metoda NullToStringOrEmpty
     /// OrNull pro odliseni od metody NullToStringOrEmpty

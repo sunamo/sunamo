@@ -8,6 +8,7 @@ using sunamo.Constants;
 public class CSharpGenerator : GeneratorCodeAbstract
 {
     static Type type = typeof(CSharpGenerator);
+    //public int Length => sb.Length;
 
     public CSharpGenerator()
     {
@@ -113,9 +114,13 @@ public class CSharpGenerator : GeneratorCodeAbstract
     {
         AddTab(tabCount);
         ModificatorsField(_public, _static, variableModifiers);
+        
+
         ReturnTypeName(type, name);
         sb.AddItem((object)"=");
-            if (oio == ObjectInitializationOptions.Hyphens)
+        
+
+        if (oio == ObjectInitializationOptions.Hyphens)
             {
                 value = "\"" + value + "\"";
             }
@@ -123,8 +128,14 @@ public class CSharpGenerator : GeneratorCodeAbstract
         {
             value = "new " + type + "()";
         }
+        
 
-        sb.AddItem((object)value+ ";");
+        var s = value + ";";
+        // zde mi to nevysvětlitelně - dokud jsem v AddItem tak hodnotu má
+        // jen co se z něj dostanu tak je empty
+        // dělá to i když vložím jiný text
+        // nefungovalo to ani když jsem vložil přímoo do sb bez InstantSb
+        sb.AddItem(s);
         //}
         
             sb.AppendLine();

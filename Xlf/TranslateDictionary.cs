@@ -1,34 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-
-/// <summary>
-/// Is here dont mix RL and RLData with intellisense
-/// </summary>
-public static class RLData
-{
-    static Type type = typeof(RLData);
-
-    // In case of serious problem I can use TranslateDictionary
-    public static TranslateDictionary en = new TranslateDictionary(Langs.en);
-    public static TranslateDictionary cs = new TranslateDictionary(Langs.cs);
-
-    public static string EnPostColon(string key)
-    {
-        ThrowExceptions.KeyNotFound<string, string>(null, type, Exc.CallingMethod(), en, "en", key);
-
-        return en[key] + AllStrings.colon;
-    }
-}
-
-public class ResourceLoaderRL
-{
-    public string GetString(string k)
-    {
-        return RLData.en[k];
-    }
-}
+using System.Threading.Tasks;
+using SunamoExceptions;
 
 public class TranslateDictionary : IDictionary<string, string>
 {
@@ -48,17 +24,18 @@ public class TranslateDictionary : IDictionary<string, string>
     {
         get
         {
-
-
             if (!_d.ContainsKey(key))
             {
-                //XlfResourcesH.initialized = false;
-                //XlfResourcesH.SaveResouresToRL(basePathSolution);
-                ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");
-                //return string.Empty;
-            }
+                var k = XlfResourcesH.SaveResouresToRLSunamo(key);
 
-            
+                if (!_d.ContainsKey(key))
+                {
+                    //XlfResourcesH.initialized = false;
+                    //XlfResourcesH.SaveResouresToRL(basePathSolution);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");
+                    //return string.Empty;
+                }
+            }
 
             var value = _d[key];
 

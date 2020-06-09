@@ -1,4 +1,4 @@
-﻿using sunamo.Constants;
+using sunamo.Constants;
 using sunamo.Enums;
 using sunamo.Html;
 using sunamo.Values;
@@ -17,6 +17,12 @@ using System.Text.RegularExpressions;
     public partial class HtmlHelperText
     {
         private static Type type = typeof(HtmlHelperText);
+
+    public static string RemoveAspxComments(string c)
+    {
+        c = Regex.Replace(c, AspxConsts.startAspxComment + ".*?" + AspxConsts.endAspxComment, String.Empty, RegexOptions.Singleline);
+        return c;
+    }
 
         public static bool ContainsTag(string s)
     {
@@ -117,7 +123,7 @@ using System.Text.RegularExpressions;
 
             var endP = "</p>";
 
-            CA.ChangeContent(lines, AddIntoParagraph);
+            CA.ChangeContent(null,lines, AddIntoParagraph);
 
             var result = SH.JoinNL(lines);
             result = SH.ReplaceAll(result, endP + AllStrings.cr + AllStrings.nl, endP);

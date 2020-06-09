@@ -61,7 +61,8 @@ namespace desktop
                 ThrowExceptions.IsNotNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), "d.OnClick", d.OnClick);
             }
 
-            txt.Width = 200;
+            // Set up NaN due to fill all available size
+            txt.Width = double.NaN;
             txt.Tag = d.tag;
             txt.ToolTip = d.tooltip;
             txt.Text = d.text;

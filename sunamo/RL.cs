@@ -1,4 +1,4 @@
-﻿using sunamo;
+using sunamo;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,11 +25,7 @@ public partial class RL
         }
     }
 
-    public static string GetString(string k)
-    {
-        return RLData.en[k];
-        //return RLData.en[k];
-    }
+
 
     /// <summary>
     /// Globální proměnná pro nastavení jazyka celé app
@@ -64,7 +60,7 @@ public partial class RL
         ThrowExceptions.Custom(Exc.GetStackTrace(),type, "GetStringByLang", "In desktop app dont pass Langs");
         //if (l == Langs.en)
         //{
-        //    return RLData.en[k];
+        //    return sess.i18n(k];
         //}
         //return RLData.cs[k];
         return null;
