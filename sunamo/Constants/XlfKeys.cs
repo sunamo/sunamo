@@ -6,6 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string TheRecommendedVersionHasNotBeenUploadedYet = "TheRecommendedVersionHasNotBeenUploadedYet"; 
+
+	public const string DoporučenáVerzeNebylaDosudNauploadována = "DoporučenáVerzeNebylaDosudNauploadována"; 
 	public const string UsefulAppsForYourNeeds = "UsefulAppsForYourNeeds"; 
 	public const string _thCenturyStyleOfFrenchAccordionBasedDanceMusic = "_thCenturyStyleOfFrenchAccordionBasedDanceMusic"; 
 	public const string _th15thCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic = "_th15thCenturyItalianMusicalAndPoeticFormBasedOnAnAbbaAStructureThatActedAsAFormOfDanceMusic"; 

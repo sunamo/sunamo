@@ -8,7 +8,7 @@ using System.Windows;
 
 public partial class XmlLocalisationInterchangeFileFormatSunamo
 {
-    public static string SunamoStringsDot = "SunamoStrings.";
+    
 
     public static void ReplaceHtmlEntitiesWithEmpty()
     {

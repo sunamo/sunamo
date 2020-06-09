@@ -10793,7 +10793,10 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="ChangeLanguage">
           <target>Change language</target>
         </trans-unit>
-
+        <trans-unit id="TheRecommendedVersionHasNotBeenUploadedYet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">The recommended version has not been uploaded yet.</target>
+        </trans-unit>
       </group>
     </body>
   </file>
