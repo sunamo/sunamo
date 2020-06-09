@@ -194,7 +194,7 @@ TranslateEngine");
                 withWithoutUnderscore.Clear();
 
                 var content = TF.ReadFile(item);
-                var keys = GetKeysInCs(ref key, content);
+                var keys = GetKeysInCsWithRLDataEn(ref key, content);
 
                 if (keys.Count > 0)
                 {
@@ -213,9 +213,40 @@ TranslateEngine");
             }
         }
 
-        
+        public static List<string> GetKeysInCsWithoutRLDataEn(ref string key, string content)
+        {
+            CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
 
-        public static List<string> GetKeysInCs(ref string key, string content)
+            var occ = SH.ReturnOccurencesOfString(content,  XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
+
+            occ.Reverse();
+
+            StringBuilder sb = new StringBuilder(content);
+
+            foreach (var dx in occ)
+            {
+                var start = dx +  XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot.Length;
+                var end = -1;
+                for (int i = start; i < content.Length; i++)
+                {
+                    if (!char.IsLetterOrDigit(content[i]))
+                    {
+                        end = i ;
+                        break;
+                    }
+                }
+
+                key = content.Substring(start, end - start);
+
+                c.Add(key);
+            }
+
+            
+
+            return c.c;
+        }
+
+        public static List<string> GetKeysInCsWithRLDataEn(ref string key, string content)
         {
             CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
 

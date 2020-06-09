@@ -1,4 +1,4 @@
-<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="cs-CZ" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -59,7 +59,7 @@
         </trans-unit>
         <trans-unit id="Description" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Description</target>
+          <target state="translated">Popis</target>
         </trans-unit>
         <trans-unit id="warningAGithubProgramWithThisNameAlreadyExistedInTheDatabase" translate="yes" xml:space="preserve">
           <source></source>
@@ -803,7 +803,7 @@
         </trans-unit>
         <trans-unit id="ThisVersionDownloads" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Tato verze se stahuje</target>
+          <target state="translated">Stažení této verze</target>
         </trans-unit>
         <trans-unit id="CreationDate" translate="yes" xml:space="preserve">
           <source></source>
@@ -1496,6 +1496,114 @@
         <trans-unit id="UsefulAppsForYourNeeds" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Užitečné aplikace pro vaše potřeby</target>
+        </trans-unit>
+        <trans-unit id="PriceIsWithAllTaxes" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena je vč. DPH a poplatků</target>
+        </trans-unit>
+        <trans-unit id="BuyNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kup nyní</target>
+        </trans-unit>
+        <trans-unit id="AreYouInterested" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Máš zájem?</target>
+        </trans-unit>
+        <trans-unit id="TotalViews" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet shlédnutí celkově</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsDown" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet palců dolů</target>
+        </trans-unit>
+        <trans-unit id="NumberOfThumbsUp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet palců nahoru</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDownloads" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet stažení</target>
+        </trans-unit>
+        <trans-unit id="AFewMoreDetails" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pár dalších údajů</target>
+        </trans-unit>
+        <trans-unit id="LinkToGitHub" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odkaz na GitHub</target>
+        </trans-unit>
+        <trans-unit id="License" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Licence</target>
+        </trans-unit>
+        <trans-unit id="HasApplicationGraphicalInterface" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Má aplikační grafické rozhraní</target>
+        </trans-unit>
+        <trans-unit id="MoreInformation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další informace</target>
+        </trans-unit>
+        <trans-unit id="DependsOn" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Závisí na</target>
+        </trans-unit>
+        <trans-unit id="Screenshots" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Screenshoty</target>
+        </trans-unit>
+        <trans-unit id="Name" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jméno</target>
+        </trans-unit>
+        <trans-unit id="BasicInformation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Základní informace</target>
+        </trans-unit>
+        <trans-unit id="NoIDonTLikeTheApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ne, aplikace se mi nelíbí</target>
+        </trans-unit>
+        <trans-unit id="IDoNotLike" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nic moc teda</target>
+        </trans-unit>
+        <trans-unit id="ILikeIt" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">To je super</target>
+        </trans-unit>
+        <trans-unit id="YesILikeTheApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ano, aplikace se mi líbí</target>
+        </trans-unit>
+        <trans-unit id="EditApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Upravit aplikaci</target>
+        </trans-unit>
+        <trans-unit id="DownloadTheRecommendedVersion" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhnout doporučenou verzi</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToBuyMyApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Chcete-li si koupit mou aplikaci, přihlaste se</target>
+        </trans-unit>
+        <trans-unit id="NotLogined" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Není přihlášen</target>
+        </trans-unit>
+        <trans-unit id="CopyImageLinkIntoTheClipboard" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zkopírujte odkaz na obrázek do schránky</target>
+        </trans-unit>
+        <trans-unit id="DownloadImage" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhnout obrázek</target>
+        </trans-unit>
+        <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace nemá závislost</target>
         </trans-unit>
       </group>
     </body>

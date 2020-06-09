@@ -2143,9 +2143,6 @@
         <trans-unit id="CapeVerdeanAccordionBasedDanceMusic">
           <target>Cape Verdean accordion-based dance music</target>
         </trans-unit>
-        <trans-unit id="PageViewsInTheLastDays">
-          <target>Page views in last 7 days</target>
-        </trans-unit>
         <trans-unit id="ApplicationsInEachLeaderboard">
           <target> applications in each leaderboards</target>
         </trans-unit>
@@ -4629,9 +4626,6 @@
         </trans-unit>
         <trans-unit id="YouReTryingToEditACatThatDoesnTBelongToYou">
           <target>You're trying to edit a cat that doesn't belong to you</target>
-        </trans-unit>
-        <trans-unit id="Editace">
-          <target>Editace</target>
         </trans-unit>
         <trans-unit id="CatIDNotFoundInDBWasEntered">
           <target>Cat ID not found in DB was entered</target>
@@ -9718,8 +9712,8 @@
         <trans-unit id="AuthorSDescriptionOfTheCache">
           <target>Author's description of the cache</target>
         </trans-unit>
-        <trans-unit id="AutoroviWaypointy">
-          <target>Autorovi Waypointy</target>
+        <trans-unit id="AuthorsWaypoints">
+          <target>Author's waypoints</target>
         </trans-unit>
         <trans-unit id="MyOwnWaypoints">
           <target>My own Waypoints</target>
@@ -9727,8 +9721,8 @@
         <trans-unit id="addNewWaypoint">
           <target>Add a new waypoint</target>
         </trans-unit>
-        <trans-unit id="EditaceWaypointu">
-          <target>Editace waypointu</target>
+        <trans-unit id="EditOfWaypoint">
+          <target>Edit of waypoint</target>
         </trans-unit>
         <trans-unit id="CloseWaypointEditing">
           <target>Close waypoint editing</target>
@@ -9910,8 +9904,8 @@
         <trans-unit id="TheHighestPoint">
           <target>The highest point</target>
         </trans-unit>
-        <trans-unit id="Nachozeno">
-          <target>Nachozeno</target>
+        <trans-unit id="Walked">
+          <target>Walked</target>
         </trans-unit>
         <trans-unit id="AverageSpeed">
           <target>Average speed</target>
@@ -10796,6 +10790,50 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="TheRecommendedVersionHasNotBeenUploadedYet" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">The recommended version has not been uploaded yet.</target>
+        </trans-unit>
+        <trans-unit id="License" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">License</target>
+        </trans-unit>
+        <trans-unit id="CopyImageLinkIntoTheClipboard" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Copy image link into the clipboard</target>
+        </trans-unit>
+        <trans-unit id="NotLogined" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Not logined</target>
+        </trans-unit>
+        <trans-unit id="PleaseLogInToBuyMyApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please, log in to buy my app</target>
+        </trans-unit>
+        <trans-unit id="Screenshots" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Screenshots</target>
+        </trans-unit>
+        <trans-unit id="DependsOn" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Depends on</target>
+        </trans-unit>
+        <trans-unit id="AreYouInterested" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Are you interested?</target>
+        </trans-unit>
+        <trans-unit id="PriceIsWithAllTaxes" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price is with all taxes</target>
+        </trans-unit>
+        <trans-unit id="BuyNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Buy now</target>
+        </trans-unit>
+        <trans-unit id="ViewsToday" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Views today</target>
+        </trans-unit>
+        <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">App have no dependecies</target>
         </trans-unit>
       </group>
     </body>

@@ -80,7 +80,7 @@ public partial class TF
         }
         else
         {
-            File.WriteAllText(soubor, obsah);
+            File.WriteAllText(soubor, obsah, Encoding.UTF8);
         }
     }
 

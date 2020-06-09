@@ -139,6 +139,7 @@
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
     <Compile Include="CryptDelegates.cs" />
     <Compile Include="Enums\GridSize.cs" />
+    <Compile Include="Enums\KeysXlf.cs" />
     <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Interfaces\ILoginManager.cs" />
     <Compile Include="RL\ResourceLoaderRL.cs" />

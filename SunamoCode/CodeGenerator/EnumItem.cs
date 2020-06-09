@@ -6,32 +6,32 @@ public class EnumItem
     /// <summary>
     /// Zadává se bez počátečního 0x
     /// </summary>
-    protected string hex = "";
-    protected Dictionary<string, string> attributes = null;
-    protected string name = "";
+    public string Hex = "";
+    public Dictionary<string, string> Attributes = null;
+    public string Name = "";
 
-    /// <summary>
-    /// Zadává se bez počátečního 0x
-    /// </summary>
-    public string Hex
-    {
-        get
-        {
-            return hex;
-        }
-    }
-    public Dictionary<string, string> Attributes
-    {
-        get
-        {
-            return attributes;
-        }
-    }
-    public string Name
-    {
-        get
-        {
-            return name;
-        }
-    }
+    ///// <summary>
+    ///// Zadává se bez počátečního 0x
+    ///// </summary>
+    //public string Hex
+    //{
+    //    get
+    //    {
+    //        return hex;
+    //    }
+    //}
+    //public Dictionary<string, string> Attributes
+    //{
+    //    get
+    //    {
+    //        return attributes;
+    //    }
+    //}
+    //public string Name
+    //{
+    //    get
+    //    {
+    //        return name;
+    //    }
+    //}
 }

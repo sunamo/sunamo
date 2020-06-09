@@ -452,6 +452,26 @@ public partial class DTHelperMulti
     }
     #endregion
 
+    public static string BoolToString(bool b, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return;
+        }
+    }
+
+    public static bool DateToStringWithDayOfWeek(DateTime dt, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
+        }
+        else if (l == Langs.cs)
+        {
+            return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
+        }
+    }
+
     #region ToString
     /// <summary>
     /// 21.6.1989 / 6/21/1989

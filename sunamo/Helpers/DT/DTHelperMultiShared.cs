@@ -4,6 +4,8 @@ using System.Text;
 
 public partial class DTHelperMulti
 {
+    static Type type = typeof(DTHelperMulti);
+
     #region ToString
     /// <summary>
     /// 21.6.1989 11:22 (fill zero)
@@ -74,8 +76,42 @@ public partial class DTHelperMulti
         }
 
         return DateToString(dateTime, l) + " (" + dayOfWeek + AllStrings.rb;
-    } 
+    }
     #endregion
+
+    public static string BoolToString(bool b, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return BTS.BoolToStringEn(b);
+        }
+        else if (l == Langs.cs)
+        {
+            return BTS.BoolToString(b);
+        }
+        else
+        {
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), l);
+            return string.Empty;
+        }
+    }
+
+    public static string DateToStringWithDayOfWeek(DateTime dt, Langs l)
+    {
+        if (l == Langs.en)
+        {
+            return DTHelperEn.DateToStringWithDayOfWeekEN(dt);
+        }
+        else if (l == Langs.cs)
+        {
+            return DTHelperCs.DateToStringWithDayOfWeekCS(dt);
+        }
+        else
+        {
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), l);
+            return null;
+        }
+    }
 
     #region IsValid*
     /// <summary>

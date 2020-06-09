@@ -6,8 +6,19 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string TheRecommendedVersionHasNotBeenUploadedYet = "TheRecommendedVersionHasNotBeenUploadedYet"; 
+	public const string AppHaveNoDependecies = "AppHaveNoDependecies"; 
 
+	public const string ViewsToday = "ViewsToday"; 
+	public const string BuyNow = "BuyNow"; 
+	public const string CopyImageLinkIntoTheClipboard = "CopyImageLinkIntoTheClipboard"; 
+	public const string NotLogined = "NotLogined"; 
+	public const string PleaseLogInToBuyMyApp = "PleaseLogInToBuyMyApp"; 
+	public const string Screenshots = "Screenshots"; 
+	public const string DependsOn = "DependsOn"; 
+	public const string AreYouInterested = "AreYouInterested"; 
+	public const string PriceIsWithAllTaxes = "PriceIsWithAllTaxes"; 
+	public const string License = "License"; 
+	public const string TheRecommendedVersionHasNotBeenUploadedYet = "TheRecommendedVersionHasNotBeenUploadedYet"; 
 	public const string DoporučenáVerzeNebylaDosudNauploadována = "DoporučenáVerzeNebylaDosudNauploadována"; 
 	public const string UsefulAppsForYourNeeds = "UsefulAppsForYourNeeds"; 
 	public const string _thCenturyStyleOfFrenchAccordionBasedDanceMusic = "_thCenturyStyleOfFrenchAccordionBasedDanceMusic"; 
@@ -114,7 +125,6 @@ public class XlfKeys
 	public const string GeneralCzechAbbreviation = "GeneralCzechAbbreviation"; 
 	public const string CzechName = "CzechName"; 
 	public const string OtherSupportedWriteVariants = "OtherSupportedWriteVariants"; 
-	public const string PageViewsInTheLastDays = "PageViewsInTheLastDays"; 
 	public const string Page = "Page"; 
 	public const string LogIn = "LogIn"; 
 	public const string Login = "Login"; 
@@ -647,7 +657,7 @@ public class XlfKeys
     public const string NameOrPlace = "NameOrPlace";
     public const string FileName = "FileName";
     public const string AverageSpeed = "AverageSpeed";
-    public const string Nachozeno = "Nachozeno";
+    public const string Walked = "Walked";
     public const string TheHighestPoint = "TheHighestPoint";
     public const string TheLowestPoint = "TheLowestPoint";
     public const string OverallTime = "OverallTime";
@@ -704,10 +714,10 @@ public class XlfKeys
     public const string CheckEverything = "CheckEverything";
     public const string ListingOfAllUsers = "ListingOfAllUsers";
     public const string CloseWaypointEditing = "CloseWaypointEditing";
-    public const string EditaceWaypointu = "EditaceWaypointu";
+    public const string EditOfWaypoint = "EditOfWaypoint";
+    public const string AuthorsWaypoints = "AuthorsWaypoints";
     public const string addNewWaypoint = "addNewWaypoint";
     public const string MyOwnWaypoints = "MyOwnWaypoints";
-    public const string AutoroviWaypointy = "AutoroviWaypointy";
     public const string AuthorSDescriptionOfTheCache = "AuthorSDescriptionOfTheCache";
     public const string ViewMyComment = "ViewMyComment";
     public const string DateOfRegistration = "DateOfRegistration";
@@ -2256,7 +2266,6 @@ public class XlfKeys
     public const string RegisterThePet = "RegisterThePet";
     public const string CatsProfileRegistration = "CatsProfileRegistration";
     public const string CatIDNotFoundInDBWasEntered = "CatIDNotFoundInDBWasEntered";
-    public const string Editace = "Editace";
     public const string YouReTryingToEditACatThatDoesnTBelongToYou = "YouReTryingToEditACatThatDoesnTBelongToYou";
     public const string EditingACatProfile = "EditingACatProfile";
     public const string NoneYet = "NoneYet";

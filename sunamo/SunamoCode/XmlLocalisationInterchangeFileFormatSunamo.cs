@@ -139,8 +139,6 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         File.WriteAllLines(pathXlfKeys, l);
     }
 
-   
-
     public static void RemoveDuplicatedXlfKeysConsts2()
     {
         int y, i;
@@ -173,30 +171,32 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         File.WriteAllLines(path, ls);
     }
 
-    public static List<string> UsedXlfKeysInCs(string c)
-    {
-        List<string> usedKeys = new List<string>();
+    #region Mám už tady metodu GetKeysInCsWithRLDataEn, proto je toto zbytečné
+    //public static List<string> UsedXlfKeysInCs(string c)
+    //{
+    //    List<string> usedKeys = new List<string>();
 
-        var occ = SH.ReturnOccurencesOfString(c, SessI18n);
-        var ending = new List<int>(occ.Count);
+    //    var occ = SH.ReturnOccurencesOfString(c, SessI18n);
+    //    var ending = new List<int>(occ.Count);
 
-        foreach (var item in occ)
-        {
-            ending.Add(c.IndexOf(AllChars.rb, item));
-        }
+    //    foreach (var item in occ)
+    //    {
+    //        ending.Add(c.IndexOf(AllChars.rb, item));
+    //    }
 
-        var l = SessI18n.Length;
-        var l2 = XlfKeysDot.Length;
+    //    var l = SessI18n.Length;
+    //    var l2 = XlfKeysDot.Length;
 
-        for (int i = occ.Count - 1; i >= 0; i--)
-        {
-            var k = SH.Substring(c, occ[i] + l + l2, ending[i], new SubstringArgs { returnInputIfIndexFromIsLessThanIndexTo = true } );
-            if (k != c)
-            {
-                usedKeys.Add(k);
-            }
-        }
+    //    for (int i = occ.Count - 1; i >= 0; i--)
+    //    {
+    //        var k = SH.Substring(c, occ[i] + l + l2, ending[i], new SubstringArgs { returnInputIfIndexFromIsLessThanIndexTo = true } );
+    //        if (k != c)
+    //        {
+    //            usedKeys.Add(k);
+    //        }
+    //    }
 
-        return usedKeys;
-    }
+    //    return usedKeys;
+    //} 
+    #endregion
 }

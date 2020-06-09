@@ -419,6 +419,8 @@ public static partial class BTS
 
     private const string Yes = "Yes";
     private const string No = "No";
+    private const string Ano = "Ano";
+    private const string Ne = "Ne";
 
     /// <summary>
     /// G bool repr. A1. Pro Yes true, JF.
@@ -431,13 +433,13 @@ public static partial class BTS
     }
 
     /// <summary>
-    /// G str rep. pro A1 - Yes/No.
+    /// G str rep. pro A1 - Ano/Ne
     /// </summary>
     /// <param name="v"></param>
     public static string BoolToString(bool p)
     {
-        if (p) return Yes;
-        return No;
+        if (p) return Ano;
+        return Ne;
     }
 
     public static string BoolToString(bool p, bool lower = false)
