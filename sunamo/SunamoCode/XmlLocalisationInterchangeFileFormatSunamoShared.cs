@@ -11,7 +11,7 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
     static Type type = typeof(XmlLocalisationInterchangeFileFormatSunamo);
     public const string cs = "const string ";
     const string eqBs = " = \"";
-
+    public static string SunamoStringsDot = "SunamoStrings.";
     public static string GetConstsFromLine(string d4)
     {
 
