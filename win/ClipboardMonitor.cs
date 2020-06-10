@@ -58,7 +58,7 @@ namespace sunamo.Clipboard
 
 		private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 		{
-            ////////DebugLogger.Instance.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "lParam", lParam);
+            //////////DebugLogger.Instance.WriteArgs("hwnd", hwnd, "msg", msg, "wParam", wParam, "lParam", lParam);
 
             if (!pernamentlyBlock)
 			{

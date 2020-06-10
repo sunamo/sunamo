@@ -14,7 +14,6 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
     public static string SunamoStringsDot = "SunamoStrings.";
     public static string GetConstsFromLine(string d4)
     {
-
         return SH.GetTextBetween(d4, cs, eqBs, false);
     }
 

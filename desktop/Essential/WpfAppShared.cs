@@ -63,7 +63,7 @@ public partial class WpfApp{
         //https://stackoverflow.com/a/7883087/9327173
         e.SetObserved();
 
-        DebugLogger.Instance.WriteLine(t);
+        //DebugLogger.Instance.WriteLine(t);
 
         WpfApp.cd.Invoke(() =>
         {

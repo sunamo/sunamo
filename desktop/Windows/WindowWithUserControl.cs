@@ -297,7 +297,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     {
         if (dialogButtons != null)
         {
-            //////DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with window dialog buttons");
+            ////////DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with window dialog buttons");
 
             if (dialogButtons.clickedOk)
             {
@@ -306,7 +306,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         }
         else
         {
-            //////DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with NO window dialog buttons");
+            ////////DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with NO window dialog buttons");
 
             uc_ChangeDialogResult(b);
         }

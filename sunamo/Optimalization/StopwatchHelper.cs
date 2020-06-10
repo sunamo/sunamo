@@ -19,7 +19,7 @@ public class StopwatchHelper
         sw.Stop();
         string message = string.Format(operation + " takes " + sw.ElapsedMilliseconds + "ms" + p, parametry);
         ThisApp.SetStatus(TypeOfMessage.Information, message);
-        //////DebugLogger.Instance.WriteLine();
+        ////////DebugLogger.Instance.WriteLine();
         return sw.ElapsedMilliseconds;
     }
 

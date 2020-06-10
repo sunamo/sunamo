@@ -339,7 +339,7 @@
         </trans-unit>
         <trans-unit id="Version" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Version</target>
+          <target state="translated">Verze</target>
         </trans-unit>
         <trans-unit id="Application" translate="yes" xml:space="preserve">
           <source></source>
@@ -1604,6 +1604,70 @@
         <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Aplikace nemá závislost</target>
+        </trans-unit>
+        <trans-unit id="MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Můj první řádek kódu, který jsem napsal v roce 2009. V současné době studuji informatiku na VŠB-TU Ostrava. Zaměřuji se na platformu Microsoft a .NET a snažím se dělat nejužitečnější aplikace.</target>
+        </trans-unit>
+        <trans-unit id="me" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">mě</target>
+        </trans-unit>
+        <trans-unit id="SomethingAbout" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Něco o</target>
+        </trans-unit>
+        <trans-unit id="LastModifiedDate" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Datum poslední změny</target>
+        </trans-unit>
+        <trans-unit id="Created" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vytvořeno</target>
+        </trans-unit>
+        <trans-unit id="Purchased" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zakoupené</target>
+        </trans-unit>
+        <trans-unit id="modules" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">moduly</target>
+        </trans-unit>
+        <trans-unit id="PaymentMethodChosen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zvolená platební metoda</target>
+        </trans-unit>
+        <trans-unit id="Paid" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zaplaceno</target>
+        </trans-unit>
+        <trans-unit id="Authorized" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Autorizovaný</target>
+        </trans-unit>
+        <trans-unit id="Canceled" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zrušeno</target>
+        </trans-unit>
+        <trans-unit id="Timeouted" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Čas vypršel</target>
+        </trans-unit>
+        <trans-unit id="Refunded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vráceno</target>
+        </trans-unit>
+        <trans-unit id="PartiallyRefunded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Částečně vráceno</target>
+        </trans-unit>
+        <trans-unit id="ShowSelected" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit vybrané</target>
+        </trans-unit>
+        <trans-unit id="TermsOfUse" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Podmínky použití</target>
         </trans-unit>
       </group>
     </body>

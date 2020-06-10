@@ -27,7 +27,9 @@ public static class TaskExtensions
         {
             var aggException = t.Exception.Flatten();
             foreach (var exception in aggException.InnerExceptions)
-                DebugLogger.Instance.WriteLine (exception.Message);
+            {
+                DebugLogger.Instance.WriteLine(exception.Message);
+            }
         },
         TaskContinuationOptions.OnlyOnFaulted);
     }

@@ -20,7 +20,7 @@ public class StoredProceduresSqliteI : IStoredProceduresI
             string sql = null;
             object o = dr.GetValue(0);
             sql = o.ToString();
-            string s = SH.Substring(sql, sql.IndexOf(AllChars.lb) + 1, sql.LastIndexOf(AllChars.rb) - 1);
+            string s = SH.Substring(sql, sql.IndexOf(AllChars.lb) + 1, sql.LastIndexOf(AllChars.rb) - 1, new bool { });
             List<string> sloupce = SH.Split( s, AllChars.comma);
             for (int i = 0; i < sloupce.Count; i++)
             {

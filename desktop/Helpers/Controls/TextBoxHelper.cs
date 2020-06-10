@@ -115,7 +115,7 @@ namespace desktop
         public static void ScrollToLine(TextBox txt, int line)
         {
 #if DEBUG
-            //////DebugLogger.Instance.WriteLine($"Line: {line} txt lines: {txt.LineCount}");
+            ////////DebugLogger.Instance.WriteLine($"Line: {line} txt lines: {txt.LineCount}");
 #endif
             //try
             //{

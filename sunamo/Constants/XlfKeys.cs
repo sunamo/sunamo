@@ -6,8 +6,23 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string AppHaveNoDependecies = "AppHaveNoDependecies"; 
+	public const string TermsOfUse = "TermsOfUse"; 
 
+	public const string ofApp = "ofApp"; 
+	public const string Purchased = "Purchased"; 
+	public const string modules = "modules"; 
+	public const string PaymentMethodChosen = "PaymentMethodChosen"; 
+	public const string Paid = "Paid"; 
+	public const string Authorized = "Authorized"; 
+	public const string Canceled = "Canceled"; 
+	public const string Timeouted = "Timeouted"; 
+	public const string Refunded = "Refunded"; 
+	public const string PartiallyRefunded = "PartiallyRefunded"; 
+	public const string ShowSelected = "ShowSelected"; 
+	public const string MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps = "MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps"; 
+	public const string me = "me"; 
+	public const string SomethingAbout = "SomethingAbout"; 
+	public const string AppHaveNoDependecies = "AppHaveNoDependecies"; 
 	public const string ViewsToday = "ViewsToday"; 
 	public const string BuyNow = "BuyNow"; 
 	public const string CopyImageLinkIntoTheClipboard = "CopyImageLinkIntoTheClipboard"; 

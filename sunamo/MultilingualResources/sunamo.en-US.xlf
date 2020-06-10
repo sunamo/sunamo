@@ -1,4 +1,4 @@
-<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -10834,6 +10834,66 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">App have no dependecies</target>
+        </trans-unit>
+        <trans-unit id="SomethingAbout" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Something about</target>
+        </trans-unit>
+        <trans-unit id="me" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">me</target>
+        </trans-unit>
+        <trans-unit id="MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">My first line of code I wrote on 2009. Nowadays, I study Informatics on VSB - Technical University of Ostrava. I'm targeting on Microsoft and .NET platform and trying to do the usefulest apps.</target>
+        </trans-unit>
+        <trans-unit id="Purchased" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Purchased</target>
+        </trans-unit>
+        <trans-unit id="modules" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">modules</target>
+        </trans-unit>
+        <trans-unit id="PaymentMethodChosen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Payment Method Chosen</target>
+        </trans-unit>
+        <trans-unit id="Paid" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Paid</target>
+        </trans-unit>
+        <trans-unit id="Authorized" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Authorized</target>
+        </trans-unit>
+        <trans-unit id="Canceled" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Canceled</target>
+        </trans-unit>
+        <trans-unit id="Timeouted" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Timeouted</target>
+        </trans-unit>
+        <trans-unit id="Refunded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Refunded</target>
+        </trans-unit>
+        <trans-unit id="PartiallyRefunded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Partially Refunded</target>
+        </trans-unit>
+        <trans-unit id="ShowSelected" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show selected</target>
+        </trans-unit>
+        <trans-unit id="ofApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">of app</target>
+        </trans-unit>
+        <trans-unit id="TermsOfUse" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Terms of use</target>
         </trans-unit>
       </group>
     </body>

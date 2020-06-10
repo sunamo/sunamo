@@ -185,8 +185,6 @@ TranslateEngine");
 
             ReplaceStringKeysWithXlfKeys(files);
 
-
-
             string key = null;
 
             foreach (var item in files)

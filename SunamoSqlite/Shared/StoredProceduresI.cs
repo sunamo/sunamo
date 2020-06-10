@@ -30,7 +30,7 @@ public class StoredProceduresI : IStoredProceduresI
             string sql = null;
             object o = dr.GetValue(0);
             sql = o.ToString();
-            string s = SH.Substring(sql, sql.IndexOf('(') + 1, sql.LastIndexOf(')') - 1);
+            string s = SH.Substring(sql, sql.IndexOf('(') + 1, sql.LastIndexOf(')') - 1, null);
             List<string> sloupce = SH.Split( s,',');
             for (int i = 0; i < sloupce.Count; i++)
             {

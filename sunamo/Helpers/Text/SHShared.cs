@@ -1161,7 +1161,7 @@ public static partial class SH
         for (int Index = 0; Index < (vcem.Length - co.Length) + 1; Index++)
         {
             var subs = vcem.Substring(Index, co.Length);
-            //////DebugLogger.Instance.WriteLine(subs);
+            ////////DebugLogger.Instance.WriteLine(subs);
             // non-breaking space. &nbsp; code 160
             // 32 space
             char ch = subs[0];

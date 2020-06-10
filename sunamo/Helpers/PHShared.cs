@@ -42,7 +42,7 @@ public static void Uri(string v)
         }
         else
         {
-            ////////DebugLogger.Instance.WriteLine("Wasnt in right format" + ": " + v);
+            //////////DebugLogger.Instance.WriteLine("Wasnt in right format" + ": " + v);
         }
     }
 
