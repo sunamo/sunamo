@@ -137,6 +137,7 @@
     <Compile Include="Args\SubstringArgs.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
+    <Compile Include="Constants\Paths\CompareFilesPaths.cs" />
     <Compile Include="CryptDelegates.cs" />
     <Compile Include="Enums\GridSize.cs" />
     <Compile Include="Enums\KeysXlf.cs" />

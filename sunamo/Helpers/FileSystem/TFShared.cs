@@ -110,9 +110,14 @@ public partial class TF
 
     public static void PureFileOperation(string f, Func<string, string> transformHtmlToMetro4)
     {
-        var content = TF.ReadFile(f);
-        content = transformHtmlToMetro4.Invoke(content);
-        TF.SaveFile(content, f);
+        var content = TF.ReadFile(f).Trim();
+        var content2 = transformHtmlToMetro4.Invoke(content);
+        if (String.Compare( content, content2) != 0)
+        {
+            //TF.SaveFile(content, CompareFilesPaths.GetFile(CompareExt.cs, 1));
+            //TF.SaveFile(content2, CompareFilesPaths.GetFile(CompareExt.cs, 2));
+            TF.SaveFile(content2, f);
+        }
     }
 
     public static List<string> ReadAllLines(string file)

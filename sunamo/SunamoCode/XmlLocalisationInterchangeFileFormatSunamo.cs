@@ -8,8 +8,6 @@ using System.Windows;
 
 public partial class XmlLocalisationInterchangeFileFormatSunamo
 {
-    
-
     public static void ReplaceHtmlEntitiesWithEmpty()
     {
         var path = @"D:\a\sunamo.en-US.xlf";

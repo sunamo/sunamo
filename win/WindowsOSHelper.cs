@@ -5,4 +5,3 @@ public partial class WindowsOSHelper
 static Type type = typeof(WindowsOSHelper);
     
 }
-

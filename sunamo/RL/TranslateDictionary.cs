@@ -23,19 +23,15 @@ public class TranslateDictionary : IDictionary<string, string>
     {
         get
         {
-
-
             if (!_d.ContainsKey(key))
             {
-                XlfResourcesH.
+                XlfResourcesH.SaveResouresToRLSunamo();
 
                 //XlfResourcesH.initialized = false;
                 //XlfResourcesH.SaveResouresToRL(basePathSolution);
                 ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");
                 //return string.Empty;
             }
-
-
 
             var value = _d[key];
 

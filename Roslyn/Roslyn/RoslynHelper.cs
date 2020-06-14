@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -58,57 +58,7 @@ namespace Roslyn
             return solution.Projects.ToList();
         }
 
-        /// <summary>
-        /// A2 is also for master.designer.cs and aspx.designer.cs
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="designerCs"></param>
-        /// <param name="xamlCs"></param>
-        /// <param name="sharedCs"></param>
-        public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs)
-        {
-            if (!designerCs && item.EndsWith(".designer.cs"))
-            {
-                return false;
-            }
-            if (!xamlCs && item.EndsWith(".xaml.cs"))
-            {
-                return false;
-            }
-            if (!sharedCs && item.EndsWith("Shared.cs"))
-            {
-                return false;
-            }
-            if (!iCs && item.EndsWith(".i.cs"))
-            {
-                return false;
-            }
-            if (!gICs && item.EndsWith(".g.i.cs"))
-            {
-                return false;
-            }
-            if (!gCs && item.EndsWith(".g.cs"))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public static bool AllowOnlyContains(string i, bool obj, bool bin)
-        {
-            if (!obj && i.Contains(@"\obj\"))
-            {
-                return false;
-            }
-
-            if (!bin && i.Contains(@"\bin\"))
-            {
-                return false;
-            }
-
-            return true;
-        }
+        
 
         public static string WrapIntoClass(string code)
         {

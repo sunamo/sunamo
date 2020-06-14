@@ -245,4 +245,3 @@ public class RegistryHelper //: IRegistry //, IPrevedPpk<RegistryKey, PolozkaReg
     }
 }
 
-

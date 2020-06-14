@@ -126,6 +126,10 @@
       <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
       <Name>SunamoCode</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xlf\Xlf.csproj">
+      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Name>Xlf</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MSSQL\Wid\" />

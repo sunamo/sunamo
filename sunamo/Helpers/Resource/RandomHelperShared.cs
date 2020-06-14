@@ -84,13 +84,16 @@ public static partial class RandomHelper
         return s_rnd.Next(od, to + 1);
     }
 
+
+
     /// <summary>
     /// Zad�vej ��slo o 1 v�t�� ne� skute�n� po�et znak� kter� chce�
     /// Vr�t� mi n�hodn� �et�zec pouze z velk�ch, mal�ch p�smen a ��slic
     /// Call ToLower when save to DB
+    /// Newly call ToLower automatically
     /// </summary>
     /// <param name="delka"></param>
-    public static string RandomStringWithoutSpecial(int delka)
+    public static string RandomStringWithoutSpecial(int delka, bool alsoUpper = false)
     {
         delka--;
         StringBuilder sb = new StringBuilder();
@@ -99,7 +102,12 @@ public static partial class RandomHelper
             
             sb.Append(RandomCharWithoutSpecial());
         }
-        return sb.ToString();
+        var result = sb.ToString();
+        if (!alsoUpper)
+        {
+            return result.ToLower();
+        }
+        return result;
     }
 
     /// <summary>

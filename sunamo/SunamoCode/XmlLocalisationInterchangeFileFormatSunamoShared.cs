@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +23,6 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
         return XmlLocalisationInterchangeFileFormatXlf.GetLangFromFilename(s);
     }
 
-
     /// <summary>
     /// sess.i18n(
     /// </summary>
@@ -32,9 +31,41 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
     public const string SessI18n = "sess.i18n(";
     public const string XlfKeysDot = "XlfKeys.";
 
+    public static List<string> removeSessI18nIfLineContains = CA.ToList<string>("MSStoredProceduresI");
+
+    public static string RemoveSessI18nIfLineContains(string c)
+    {
+        return RemoveSessI18nIfLineContainsWorker(c, removeSessI18nIfLineContains.ToArray());
+    }
+
+    public static string RemoveSessI18nIfLineContainsWorker(string c, params string[] lineCont)
+    {
+        var l = SH.GetLines(c);
+        bool cont = false;
+        for (int i = l.Count - 1; i >= 0; i--)
+        {
+            var line = l[i];
+            cont = false;
+            foreach (var item in lineCont)
+            {
+                if (line.Contains(item))
+                {
+                    cont = true;
+                    break;
+                }
+            }
+
+            if (cont)
+            {
+                l[i] = RemoveAllSessI18n(l[i]);
+            }
+        }
+
+        return SH.JoinNL(l);
+    }
+
     public static string RemoveAllSessI18n(string c)
     {
-        
         var sb = new StringBuilder(c);
 
         var sessI18n = XmlLocalisationInterchangeFileFormatSunamo.SessI18n;

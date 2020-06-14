@@ -201,4 +201,3 @@ public partial class CryptHelper : ICryptHelper
         return _crypt.Encrypt(v);
     }
 }
-
