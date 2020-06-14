@@ -6,8 +6,10 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string RequiredMonthsYouWillEnterIn2Step = "RequiredMonthsYouWillEnterIn2Step"; 
+	public const string Prepay = "Prepay"; 
+	public const string Prepaid = "Prepaid"; 
 	public const string TermsOfUse = "TermsOfUse"; 
-
 	public const string ofApp = "ofApp"; 
 	public const string Purchased = "Purchased"; 
 	public const string modules = "modules"; 

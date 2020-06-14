@@ -67,6 +67,14 @@ public class TextOutputGenerator
         AppendLine(SH.Format2(text, p));
     }
 
+    public void Dictionary(Dictionary<string, int> charEntity, string delimiter)
+    {
+        foreach (var item in charEntity)
+        {
+            sb.AppendLine(item.Key + delimiter + item.Value);
+        }
+    }
+
     public void AppendLine(StringBuilder text)
     {
         sb.AppendLine(text.ToString());

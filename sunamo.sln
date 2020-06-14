@@ -66,6 +66,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoWindowsOS", "SunamoWi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCode.forms", "SunamoCode.forms\SunamoCode.forms.csproj", "{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoTranslateXlf", "SunamoTranslateXlf\SunamoTranslateXlf.csproj", "{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -460,6 +462,18 @@ Global
 		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x64.Build.0 = Release|Any CPU
 		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x86.ActiveCfg = Release|Any CPU
 		{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}.Release|x86.Build.0 = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|x64.Build.0 = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Debug|x86.Build.0 = Debug|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|x64.ActiveCfg = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|x64.Build.0 = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|x86.ActiveCfg = Release|Any CPU
+		{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

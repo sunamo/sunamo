@@ -10895,6 +10895,18 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Terms of use</target>
         </trans-unit>
+        <trans-unit id="Prepaid" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prepaid</target>
+        </trans-unit>
+        <trans-unit id="Prepay" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Prepay</target>
+        </trans-unit>
+        <trans-unit id="RequiredMonthsYouWillEnterIn2Step" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Required months you will enter in 2. step</target>
+        </trans-unit>
       </group>
     </body>
   </file>

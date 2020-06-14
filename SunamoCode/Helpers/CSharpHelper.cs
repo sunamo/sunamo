@@ -27,17 +27,43 @@ public static partial class CSharpHelper
     public static string CreateConstsForSearchUris(List<string> uris)
     {
         CSharpGenerator csg = new CSharpGenerator();
+
+        // In key name of const, in value value
+        Dictionary<string, string> dict = new Dictionary<string, string>();
         List<string> all = new List<string>();
+
         foreach (var item in uris)
         {
             Uri u = new Uri(item);
             string name = ConvertPascalConvention.ToConvention(u.Host);
-            csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", name, true, item);
-            all.Add(name);
+            dict.Add(name, item);
         }
+
+        CreateConsts(csg, dict);
+
         csg.List(2, "string", "All", all, new CSharpGeneratorArgs { addHyphens = true });
+
         return csg.ToString();
     }
+
+    public static string CreateConsts(Dictionary<string, string> dict)
+    {
+        CSharpGenerator csg = new CSharpGenerator();
+
+        return CreateConsts(csg, dict);
+    }
+
+    private static string CreateConsts(CSharpGenerator csg, Dictionary<string, string> dict)
+    {
+        foreach (var item in dict)
+        {
+
+            csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", item.Key, true, item.Value);
+        }
+        
+        return csg.ToString();
+    }
+
     #region DictionaryWithClass
     public static string DictionaryWithClass<Key,Value>(int tabCount, string nameDictionary, List<Key> keys, Func<Value> randomValue, CSharpGeneratorArgs a = null)
     {
@@ -106,6 +132,7 @@ public static partial class CSharpHelper
         return csg.ToString();
     }
     #endregion
+
     //public static string GetDictionary(string nameDictionary)
     //{
     //}

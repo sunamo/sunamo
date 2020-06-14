@@ -43,6 +43,19 @@ namespace sunamo.Html
             return vr;
         }
 
+        public static HtmlNode FindAncestorParentNode(HtmlNode item, string v)
+        {
+            while (item != null)
+            {
+                if (item.Name == v)
+                {
+                    return item;
+                }
+                item = item.ParentNode;
+            }
+            return null;
+        }
+
         public static bool HasAncestorParentNode(HtmlNode item, string v)
         {
             while (item != null)

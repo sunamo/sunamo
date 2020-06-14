@@ -1669,6 +1669,14 @@
           <source></source>
           <target state="translated">Podmínky použití</target>
         </trans-unit>
+        <trans-unit id="RequiredMonthsYouWillEnterIn2Step" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Požadované měsíce zadáte v 2. kroku</target>
+        </trans-unit>
+        <trans-unit id="Pragma" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pragma</target>
+        </trans-unit>
       </group>
     </body>
   </file>
