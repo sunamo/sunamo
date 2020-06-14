@@ -296,21 +296,26 @@ public static partial class SH
     /// <returns></returns>
     public static string ShortToLengthByParagraph(string c, int maxLength)
     {
-        var delimiter = SH.PadRight(string.Empty, Environment.NewLine, 2);
-        var p = SH.Split(c, delimiter);
+        //var delimiter = SH.PadRight(string.Empty, Environment.NewLine, 2);
+        var p = SH.SplitByWhiteSpaces(c);
         
 
-        while (c.Length > maxLength)
+        while (c.Length + p.Count > maxLength)
         {
             if (p.Count > 1)
             {
                 p.RemoveAt(p.Count - 1);
-                c = SH.Join(delimiter, p);
+                c = SH.Join(AllStrings.space, p);
             }
             else
             {
-                c = SH.SubstringIfAvailable( c, 4000); break;
+                c = SH.SubstringIfAvailable( c, maxLength); break;
             }
+        }
+
+        if (maxLength < c.Length)
+        {
+
         }
 
         return c;

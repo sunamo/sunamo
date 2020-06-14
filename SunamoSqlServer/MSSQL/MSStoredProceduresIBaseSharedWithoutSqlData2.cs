@@ -3407,7 +3407,7 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         SqlCommand comm = new SqlCommand(sql);
         AddCommandParameter(comm, 0, n);
         AddCommandParameter(comm, 1, id);
-        //SqlException: String or binary data would be truncated.
+        //Sql String or binary data would be truncated.
         return ExecuteNonQuery(comm);
     }
 

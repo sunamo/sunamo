@@ -70,6 +70,18 @@ public class Exc
         return l;
     }
 
+    public static string MethodOfOccuredFromStackTrace(string exc)
+    {
+        var st = SH.FirstLine(exc);
+        var dx = st.IndexOf(" in ");
+        if (dx != -1)
+        {
+            st = SH.SubstringIfAvailable(st, dx);
+        }
+        return st;
+        //
+    }
+
     private static List<string> GetLines(string v)
     {
         var l = v.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
