@@ -211,7 +211,7 @@ TranslateEngine");
             }
         }
 
-        public static List<string> GetKeysInCsWithoutRLDataEn(ref string key, string content)
+        public static IList<string> GetKeysInCsWithoutRLDataEn(ref string key, string content)
         {
             CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
 
@@ -244,7 +244,7 @@ TranslateEngine");
             return c.c;
         }
 
-        public static List<string> GetKeysInCsWithRLDataEn(ref string key, string content)
+        public static IList<string> GetKeysInCsWithRLDataEn(ref string key, string content)
         {
             CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
 
@@ -267,8 +267,6 @@ TranslateEngine");
             occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
 
             occ.Reverse();
-
-            
 
             foreach (var dx in occ)
             {
@@ -404,6 +402,7 @@ Into A1 insert:
                 ids.Add(id);
             }
 
+            
             allLastLetters.c.Sort();
 
             if (saveAllLastLetterToClipboard)

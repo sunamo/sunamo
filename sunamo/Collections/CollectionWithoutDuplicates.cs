@@ -6,7 +6,7 @@ using System.Windows;
 
 public class CollectionWithoutDuplicates<T>
 {
-    public List<T> c = null;
+    public L2<T> c = null;
     public bool allowNull = false;
     public static bool br = false;
     
@@ -17,22 +17,21 @@ public class CollectionWithoutDuplicates<T>
         {
             System.Diagnostics.Debugger.Break();
         }
-        c = new List<T>();
+        c = new L2<T>();
     }
 
     public CollectionWithoutDuplicates(int count)
     {
-        c = new List<T>(count);
+        c = new L2<T>(count);
     }
 
     public CollectionWithoutDuplicates(IEnumerable<T> l)
     {
-        c = new List<T>( l.ToList());
+        c = new L2<T>( l.ToList());
     }
 
     public bool Add(T t2)
     {
-
         var con = Contains(t2);
         if (con.HasValue)
         {

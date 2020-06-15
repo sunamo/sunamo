@@ -77,7 +77,7 @@ namespace desktop.Controls.Collections
 
         //Compare3InheckBoxListUCInit compare3InCheckBoxListUCInit = null;
 
-        public void Init(string tbleft, string tbRight, string tbBoth, IList left, IList right, IList both)
+        public void Init(string tbleft, string tbRight, string tbBoth, IList<string> left, IList<string> right, IList<string> both)
         {
             tblAutoYes.Text = tbleft;
             tblManuallyYes.Text = tbRight;
@@ -94,7 +94,7 @@ namespace desktop.Controls.Collections
         /// <param name="right"></param>
         /// <param name="both"></param>
         /// <param name="autoNo"></param>
-        public void Init(IList left, IList right, IList both)
+        public void Init(IList<string> left, IList<string> right, IList<string> both)
         {
             //compare3InCheckBoxListUCInit = new Compare3InCheckBListUCInit();
 

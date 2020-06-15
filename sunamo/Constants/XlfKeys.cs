@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 /// <summary>
@@ -6,6 +6,21 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string Send = "Send"; 
+	public const string DescriptionMax4000Letters = "DescriptionMax4000Letters"; 
+	public const string Attachment = "Attachment"; 
+	public const string Type = "Type"; 
+	public const string AppWasFoundButNoHelpForIt = "AppWasFoundButNoHelpForIt"; 
+	public const string ShowGraphOfViewsForLast7Days = "ShowGraphOfViewsForLast7Days"; 
+	public const string Help = "Help"; 
+	public const string Feedback = "Feedback"; 
+	public const string ByUsingThisWebsiteYouAgreeToThis = "ByUsingThisWebsiteYouAgreeToThis"; 
+	public const string PrivacyPolicy = "PrivacyPolicy"; 
+	public const string ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits = "ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits"; 
+	public const string ResearchForTheBookExperimentalAtlasOfMen = "ResearchForTheBookExperimentalAtlasOfMen"; 
+	public const string MeasureYourIQ = "MeasureYourIQ"; 
+	public const string MyFreeGeoCachingAppForPlanningYourAdventures = "MyFreeGeoCachingAppForPlanningYourAdventures"; 
+	public const string CheapAndQualityHostingServices = "CheapAndQualityHostingServices"; 
 	public const string RequiredMonthsYouWillEnterIn2Step = "RequiredMonthsYouWillEnterIn2Step"; 
 	public const string Prepay = "Prepay"; 
 	public const string Prepaid = "Prepaid"; 

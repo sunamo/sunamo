@@ -18,11 +18,19 @@ using System.Threading.Tasks;
         l = new List<T>(count);
     }
 
-    public RefreshingList(List<T> sourceToRefresh, List<T> asA1)
+    public RefreshingList(List<T> sourceToRefresh, IEnumerable<T> asA1)
     {
         this.sourceToRefresh = sourceToRefresh;
         l = new List<T>(asA1);
     }
+
+    #region Is not in any interface
+
+    public void Sort()
+    {
+        l.Sort();
+    }
+    #endregion
 
     public T this[int index] { get => l[index]; set => l[index] = value; }
 

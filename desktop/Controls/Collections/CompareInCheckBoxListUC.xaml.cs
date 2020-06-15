@@ -186,7 +186,7 @@ namespace desktop.Controls.Collections
             Init(TF.ReadAllLines(autoYes), TF.ReadAllLines(manuallyYes), TF.ReadAllLines(manuallyNo), TF.ReadAllLines(autoNo));
         }
 
-        public void Init(List<string> autoYes, List<string> autoNo)
+        public void Init(IList<string> autoYes, IList<string> autoNo)
         {
             Init(autoYes, null, null, autoNo);
         }
@@ -198,7 +198,7 @@ namespace desktop.Controls.Collections
         /// <param name="manuallyYes"></param>
         /// <param name="manuallyNo"></param>
         /// <param name="autoNo"></param>
-        public void Init(List<string> autoYes, List<string> manuallyYes, List<string> manuallyNo, List<string> autoNo)
+        public void Init(IList<string> autoYes, IList<string> manuallyYes, IList<string> manuallyNo, IList<string> autoNo)
         {
             chbls = CA.ToList<CheckBoxListUC>(chblAutoYes, chblManuallyYes, chblManuallyNo, chblAutoNo);
 

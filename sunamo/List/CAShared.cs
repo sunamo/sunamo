@@ -214,7 +214,7 @@ public static partial class CA
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
-    public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek)
+    public static List<T> RemoveDuplicitiesList<T>(IList<T> idKesek)
     {
         List<T> foundedDuplicities;
         return RemoveDuplicitiesList<T>(idKesek, out foundedDuplicities);
@@ -283,7 +283,7 @@ public static partial class CA
     /// <typeparam name="T"></typeparam>
     /// <param name="idKesek"></param>
     /// <param name="foundedDuplicities"></param>
-    public static List<T> RemoveDuplicitiesList<T>(List<T> idKesek, out List<T> foundedDuplicities)
+    public static List<T> RemoveDuplicitiesList<T>(IList<T> idKesek, out List<T> foundedDuplicities)
     {
         foundedDuplicities = new List<T>();
         List<T> h = new List<T>();
@@ -525,7 +525,7 @@ public static partial class CA
     /// </summary>
     /// <param name="s"></param>
     /// <param name="manuallyNo"></param>
-    public static void RemoveWhichExists(List<string> s, List<string> manuallyNo)
+    public static void RemoveWhichExists(IList<string> s, List<string> manuallyNo)
     {
         var dex = -1;
         foreach (var item in manuallyNo)
@@ -2065,7 +2065,7 @@ public static bool HasPostfix(string key, params string[] v1)
     /// <param name="parts"></param>
     /// <param name="mustContains"></param>
     /// <returns></returns>
-    public static List<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
+    public static IList<int> ReturnWhichContainsIndexes(IEnumerable<string> parts, IEnumerable<string> mustContains)
     {
         CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
         foreach (var item in mustContains)

@@ -2628,13 +2628,19 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
         string sql = string.Format("SELECT {0} FROM {1} {2} {3}", where[0].A, p, GeneratorMsSql.CombinedWhere(where, ref dd), GeneratorMsSql.CombinedWhereNotEquals(true, ref dd, whereIsNot));
         int pridatNa = 0;
         SqlCommand comm = new SqlCommand(sql);
-        foreach (var item in where)
+        if (where != null)
         {
-            pridatNa = AddCommandParameter(comm, pridatNa, item.B);
+            foreach (var item in where)
+            {
+                pridatNa = AddCommandParameter(comm, pridatNa, item.B);
+            }
         }
-        foreach (var item in whereIsNot)
+        if (whereIsNot != null)
         {
-            pridatNa = AddCommandParameter(comm, pridatNa, item.B);
+            foreach (var item in whereIsNot)
+            {
+                pridatNa = AddCommandParameter(comm, pridatNa, item.B);
+            }
         }
         return IsNotNullOrWhiteSpace( ExecuteScalar(comm) );
     }

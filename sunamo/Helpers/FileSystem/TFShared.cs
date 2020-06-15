@@ -231,7 +231,7 @@ public partial class TF
         return ReadAllLines<StorageFolder, StorageFile>(item, ac);
     }
 
-public static void SaveLines(List<string> list, string file)
+public static void SaveLines(IList<string> list, string file)
     {
         File.WriteAllLines( file, list);
     }

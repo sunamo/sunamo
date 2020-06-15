@@ -10907,6 +10907,66 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Required months you will enter in 2. step</target>
         </trans-unit>
+        <trans-unit id="CheapAndQualityHostingServices" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cheap and quality hosting services</target>
+        </trans-unit>
+        <trans-unit id="MyFreeGeoCachingAppForPlanningYourAdventures" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">My free GeoCaching app for planning your adventures</target>
+        </trans-unit>
+        <trans-unit id="MeasureYourIQ" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Measure your IQ</target>
+        </trans-unit>
+        <trans-unit id="ResearchForTheBookExperimentalAtlasOfMen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Research for the book Experimental Atlas of Men</target>
+        </trans-unit>
+        <trans-unit id="ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">This web use to service of the service, personalization and analysis of visits</target>
+        </trans-unit>
+        <trans-unit id="PrivacyPolicy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Privacy policy</target>
+        </trans-unit>
+        <trans-unit id="ByUsingThisWebsiteYouAgreeToThis" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">By using this website, you agree to this</target>
+        </trans-unit>
+        <trans-unit id="Feedback" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Feedback</target>
+        </trans-unit>
+        <trans-unit id="Help" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Help</target>
+        </trans-unit>
+        <trans-unit id="ShowGraphOfViewsForLast7Days" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show graph of views for last 7 days</target>
+        </trans-unit>
+        <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">App was found but no help for it</target>
+        </trans-unit>
+        <trans-unit id="Type" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Type</target>
+        </trans-unit>
+        <trans-unit id="Attachment" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Attachment</target>
+        </trans-unit>
+        <trans-unit id="DescriptionMax4000Letters" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Description (max 4000 letters)</target>
+        </trans-unit>
+        <trans-unit id="Send" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Send</target>
+        </trans-unit>
       </group>
     </body>
   </file>

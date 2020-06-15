@@ -478,7 +478,7 @@ namespace Roslyn
         /// if it List<string>, use RoslynParser.Usings
         /// </summary>
         /// <param name="t"></param>
-        public static List<string> Usings(object t)
+        public static IList<string> Usings(object t)
         {
             List<string> lines;
             return Usings(t, out lines);
@@ -490,7 +490,7 @@ namespace Roslyn
         /// </summary>
         /// <param name="t"></param>
         /// <param name="lines"></param>
-        public static List<string> Usings(object t, out List<string> lines)
+        public static IList<string> Usings(object t, out List<string> lines)
         {
             string text = null;
             if (t is SyntaxTree || t is string)

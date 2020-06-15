@@ -525,10 +525,6 @@
           <source></source>
           <target state="translated">Přejít na hlavní stránku všech webů</target>
         </trans-unit>
-        <trans-unit id="AllRightsReserved" translate="yes" xml:space="preserve">
-          <source></source>
-          <target state="translated">Všechna práva vyhrazena</target>
-        </trans-unit>
         <trans-unit id="UnimplementedBranchInSunamoPageDescriptionOfSite" translate="yes" xml:space="preserve">
           <source></source>
           <target state="translated">Unimplemented branch in SunamoPage.DescriptionOfSite</target>
@@ -1676,6 +1672,82 @@
         <trans-unit id="Pragma" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Pragma</target>
+        </trans-unit>
+        <trans-unit id="CheapAndQualityHostingServices" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Levné a kvalitní hostingové služby</target>
+        </trans-unit>
+        <trans-unit id="MyFreeGeoCachingAppForPlanningYourAdventures" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Moje bezplatná aplikace pro plánování vašich GeoCaching dobrodružství</target>
+        </trans-unit>
+        <trans-unit id="MeasureYourIQ" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Změřte své IQ</target>
+        </trans-unit>
+        <trans-unit id="ResearchForTheBookExperimentalAtlasOfMen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výzkum ke knize Experimentální atlas mužů</target>
+        </trans-unit>
+        <trans-unit id="AllRightsReserved" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechna práva vyhrazena</target>
+        </trans-unit>
+        <trans-unit id="ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tento web užívá k poskytování služeb, personalizaci a analýze návštěv</target>
+        </trans-unit>
+        <trans-unit id="PrivacyPolicy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zásady ochrany osobních údajů</target>
+        </trans-unit>
+        <trans-unit id="ByUsingThisWebsiteYouAgreeToThis" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Používáním tohoto webu s tím souhlasíte</target>
+        </trans-unit>
+        <trans-unit id="Feedback" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpětná vazba</target>
+        </trans-unit>
+        <trans-unit id="Help" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pomoc</target>
+        </trans-unit>
+        <trans-unit id="HomePage" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Domovská stránka</target>
+        </trans-unit>
+        <trans-unit id="ViewsToday" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazení dnes</target>
+        </trans-unit>
+        <trans-unit id="PageViewsInTheLast7Days" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazení stránky za posledních 7 dní</target>
+        </trans-unit>
+        <trans-unit id="ShowGraphOfViewsForLast7Days" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit graf zobrazení za posledních 7 dní</target>
+        </trans-unit>
+        <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace byla nalezena, ale bez pomoci</target>
+        </trans-unit>
+        <trans-unit id="Type" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Typ</target>
+        </trans-unit>
+        <trans-unit id="Attachment" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Příloha</target>
+        </trans-unit>
+        <trans-unit id="DescriptionMax4000Letters" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Popis (max. 4000 znaků)</target>
+        </trans-unit>
+        <trans-unit id="Send" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Odeslat</target>
         </trans-unit>
       </group>
     </body>

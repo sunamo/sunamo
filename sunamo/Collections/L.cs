@@ -4,6 +4,7 @@ using System.Text;
 
 /// <summary>
 /// Can be derived because new keyword
+/// For completely derived from IList, use RefreshingList
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class L<T> : List<T>

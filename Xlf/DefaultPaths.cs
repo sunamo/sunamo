@@ -9,5 +9,6 @@ namespace Xlf
 public class DefaultPaths
 {
     public static string sunamoProject = @"d:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\";
-}
+        public const string KeysXlf = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
+    }
 }

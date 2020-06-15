@@ -135,6 +135,8 @@
     <Compile Include="Args\ChangeContentArgs.cs" />
     <Compile Include="Args\CSharpGeneratorArgs.cs" />
     <Compile Include="Args\SubstringArgs.cs" />
+    <Compile Include="Collections\L2.cs" />
+    <Compile Include="Collections\RefreshingList.cs" />
     <Compile Include="Constants\HttpKnownHeaderNames.cs" />
     <Compile Include="Constants\HttpKnownHeaderValues.cs" />
     <Compile Include="Constants\Paths\CompareFilesPaths.cs" />

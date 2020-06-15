@@ -99,7 +99,7 @@ namespace desktop.Controls.Collections
         /// A1 can be null but then is needed to call DefaultButtonsInit,HideAllButtons, etc.
         /// </summary>
         /// <param name="list"></param>
-        public void Init(ImageButtonsInit i, IList list = null, bool defChecked = false)
+        public void Init(ImageButtonsInit i, IList<string> list = null, bool defChecked = false)
         {
             if (!initialized)
             {

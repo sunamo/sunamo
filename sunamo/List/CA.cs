@@ -133,7 +133,7 @@ public static partial class CA
     /// <typeparam name="T"></typeparam>
     /// <param name="clipboardL"></param>
     /// <returns></returns>
-    public static List<T> GetDuplicities<T>(List<T> clipboardL)
+    public static IList<T> GetDuplicities<T>(List<T> clipboardL)
     {
         List<T> alreadyProcessed;
         return GetDuplicities<T>(clipboardL, out alreadyProcessed);
@@ -147,7 +147,7 @@ public static partial class CA
     /// <param name="clipboardL"></param>
     /// <param name="alreadyProcessed"></param>
     /// <returns></returns>
-        public static List<T> GetDuplicities<T>(List<T> clipboardL, out List<T> alreadyProcessed)
+        public static IList<T> GetDuplicities<T>(List<T> clipboardL, out List<T> alreadyProcessed)
     {
         alreadyProcessed = new List<T>(clipboardL.Count);
         CollectionWithoutDuplicates<T> duplicated = new CollectionWithoutDuplicates<T>();
@@ -469,7 +469,7 @@ public static partial class CA
         }
         return folders;
     }
-    private static List<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
+    private static IList<int> ReturnWhichAreEqualIndexes<T>(IEnumerable<T> parts, IEnumerable<T> mustBeEqual)
     {
         CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
         foreach (var item in mustBeEqual)
