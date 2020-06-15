@@ -14,7 +14,16 @@ public partial class SqlServerHelper
         return o == null || o == DBNull.Value;
     }
 
-   public static Tuple<int, int> UnnormalizeNumber(int serie)
+    public static bool IsNullOrEmpty(object o)
+    {
+        if (IsNull(o))
+        {
+            return true;
+        }
+        return o.ToString().Trim() != string.Empty;
+    }
+
+    public static Tuple<int, int> UnnormalizeNumber(int serie)
     {
         const int increaseAbout = 1000; 
 
