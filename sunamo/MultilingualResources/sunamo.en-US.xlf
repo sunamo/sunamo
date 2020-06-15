@@ -10967,6 +10967,30 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Send</target>
         </trans-unit>
+        <trans-unit id="NotRegisteredYet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Not registered yet</target>
+        </trans-unit>
+        <trans-unit id="LoginOrEmail" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Login (or email</target>
+        </trans-unit>
+        <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">in format m/d/y, min age 18</target>
+        </trans-unit>
+        <trans-unit id="DoItNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Do it now</target>
+        </trans-unit>
+        <trans-unit id="generateRandomLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">generate random login</target>
+        </trans-unit>
+        <trans-unit id="ResetPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Reset password</target>
+        </trans-unit>
       </group>
     </body>
   </file>

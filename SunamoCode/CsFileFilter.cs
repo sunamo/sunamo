@@ -6,7 +6,13 @@ using System.Text;
 public class CsFileFilter
 {
     bool designerCs= false; bool xamlCs= false; bool sharedCs= false; bool iCs= false; bool gICs= false; bool gCs= false;
-    bool obj= false; bool bin= false;
+    bool tmp = false;
+    bool TMP = false;
+    bool obj= false;
+    bool bin= false;
+
+  
+    //".TMP", ".tmp"
 
     /// <summary>
     /// In default is everything in false
@@ -23,6 +29,54 @@ public class CsFileFilter
          obj = false;  bin = false;
     }
 
+    static string designerCsPp = ".designer.cs"; static string xamlCsPp = ".xaml.cs"; static string sharedCsPp = "Shared.cs"; static string iCsPp = ".i.cs"; static string gICsPp = ".g.i.cs"; static string gCsPp = ".g.cs";
+    static string tmpPp = ".tmp";
+    static string TMPPp = ".TMP";
+    static string objPp = @"\obj\"; static string binPp = @"\bin\";
+
+    public List<string> GetEndingByFlags()
+    {
+        List<string> l = new List<string>();
+        if (designerCs)
+        {
+            l.Add(designerCsPp);
+        }
+        else if (xamlCs)
+        {
+            l.Add(xamlCsPp);
+        }
+        else if (xamlCs)
+        {
+            l.Add(xamlCsPp);
+        }
+        else if (sharedCs)
+        {
+            l.Add(sharedCsPp);
+        }
+        else if (iCs)
+        {
+            l.Add(iCsPp);
+        }
+        else if (gICs)
+        {
+            l.Add(gICsPp);
+        }
+        else if (gCs)
+        {
+            l.Add(gCsPp);
+        }
+        else if (tmp)
+        {
+            l.Add(tmpPp);
+        }
+        else if (TMP)
+        {
+            l.Add(TMPPp);
+        }
+
+        return l;
+    }
+
     #region Take by method
     /// <summary>
     /// A2 is also for master.designer.cs and aspx.designer.cs
@@ -31,29 +85,32 @@ public class CsFileFilter
     /// <param name="designerCs"></param>
     /// <param name="xamlCs"></param>
     /// <param name="sharedCs"></param>
+
+
+
     public static bool AllowOnly(string item, bool designerCs, bool xamlCs, bool sharedCs, bool iCs, bool gICs, bool gCs)
     {
-        if (!designerCs && item.EndsWith(".designer.cs"))
+        if (!designerCs && item.EndsWith(designerCsPp))
         {
             return false;
         }
-        if (!xamlCs && item.EndsWith(".xaml.cs"))
+        if (!xamlCs && item.EndsWith(xamlCsPp))
         {
             return false;
         }
-        if (!sharedCs && item.EndsWith("Shared.cs"))
+        if (!sharedCs && item.EndsWith(sharedCsPp))
         {
             return false;
         }
-        if (!iCs && item.EndsWith(".i.cs"))
+        if (!iCs && item.EndsWith(iCsPp))
         {
             return false;
         }
-        if (!gICs && item.EndsWith(".g.i.cs"))
+        if (!gICs && item.EndsWith(gICsPp))
         {
             return false;
         }
-        if (!gCs && item.EndsWith(".g.cs"))
+        if (!gCs && item.EndsWith(gCsPp))
         {
             return false;
         }

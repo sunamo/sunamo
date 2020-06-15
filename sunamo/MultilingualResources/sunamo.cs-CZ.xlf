@@ -1749,6 +1749,46 @@
           <source></source>
           <target state="translated">Odeslat</target>
         </trans-unit>
+        <trans-unit id="Password" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo</target>
+        </trans-unit>
+        <trans-unit id="NotRegisteredYet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ještě nejste zaregistrováni</target>
+        </trans-unit>
+        <trans-unit id="LoginOrEmail" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přihlášení (nebo e-mail</target>
+        </trans-unit>
+        <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">ve formátu m/d/r, min. věk 18 let</target>
+        </trans-unit>
+        <trans-unit id="District" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Okres</target>
+        </trans-unit>
+        <trans-unit id="DoItNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Udělej to teď</target>
+        </trans-unit>
+        <trans-unit id="generateRandomLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">generovat náhodné přihlášení</target>
+        </trans-unit>
+        <trans-unit id="Man" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Muž</target>
+        </trans-unit>
+        <trans-unit id="Woman" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Žena</target>
+        </trans-unit>
+        <trans-unit id="ResetPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Obnovit heslo</target>
+        </trans-unit>
       </group>
     </body>
   </file>

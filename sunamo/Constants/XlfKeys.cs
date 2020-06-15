@@ -6,6 +6,12 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string ResetPassword = "ResetPassword"; 
+	public const string generateRandomLogin = "generateRandomLogin"; 
+	public const string DoItNow = "DoItNow"; 
+	public const string inFormatMDYMinAge18 = "inFormatMDYMinAge18"; 
+	public const string LoginOrEmail = "LoginOrEmail"; 
+	public const string NotRegisteredYet = "NotRegisteredYet"; 
 	public const string Send = "Send"; 
 	public const string DescriptionMax4000Letters = "DescriptionMax4000Letters"; 
 	public const string Attachment = "Attachment"; 

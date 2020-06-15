@@ -564,7 +564,7 @@ Into A1 insert:
             // Directly set to null due to not inserting into .xlf
             tu.source = null;
             //tu.translate = true;
-            tu.target = target;
+            tu.target = SH.TrimStartAndEnd(target, char.IsLetterOrDigit, char.IsLetterOrDigit);
 
             var xml = tu.ToString();
             XElement xe = XElement.Parse(xml);

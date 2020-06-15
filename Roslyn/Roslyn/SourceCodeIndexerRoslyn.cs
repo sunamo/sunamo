@@ -114,8 +114,14 @@ public partial class SourceCodeIndexerRoslyn
         return namespaceCodeElements.ContainsKey(pathFile);
     }
 
-    public SourceCodeIndexerRoslyn()
+    public static SourceCodeIndexerRoslyn Instance = new SourceCodeIndexerRoslyn();
+
+    /// <summary>
+    /// 15-6-20 Make it private & singleton
+    /// </summary>
+    private SourceCodeIndexerRoslyn()
     {
+        
         var arr = Enum.GetValues(typeof(NamespaceCodeElementsType));
         foreach (NamespaceCodeElementsType item in arr)
         {

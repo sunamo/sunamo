@@ -698,6 +698,36 @@ public static partial class SH
         return result;
     }
 
+    public static string TrimStartAndEnd(string target, Func<char, bool> startAllowed, Func<char, bool> endAllowed)
+    {
+        for (int i = 0; i < target.Length; i++)
+        {
+            if (!startAllowed.Invoke( target[i]))
+            {
+                target = target.Substring(1);
+                i--;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        for (int i = target.Length - 1; i >= 0; i--)
+        {
+            if (!startAllowed.Invoke(target[i]))
+            {
+                target = target.Remove(target.Length - 1,1);
+                
+            }
+            else
+            {
+                break;
+            }
+        }
+        return target;
+    }
+
     public static string JoinSentences(bool addAfterLast, params string[] pDescription)
     {
         StringBuilder sb = new StringBuilder();

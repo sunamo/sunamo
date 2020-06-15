@@ -92,14 +92,14 @@ namespace Roslyn
 
         private static void AddPageMethods(StringBuilder sb, List<string> files)
         {
-            SourceCodeIndexerRoslyn indexer = new SourceCodeIndexerRoslyn();
+            SourceCodeIndexerRoslyn Instance = SourceCodeIndexerRoslyn.Instance;
 
             foreach (var file in files)
             {
-                indexer.ProcessFile(file, NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method, false, false);
+                Instance.ProcessFile(file, NamespaceCodeElementsType.Nope, ClassCodeElementsType.Method, false, false);
             }
 
-            foreach (var file2 in indexer.classCodeElements)
+            foreach (var file2 in Instance.classCodeElements)
             {
                 sb.AppendLine(file2.Key);
                 foreach (var method in file2.Value)
