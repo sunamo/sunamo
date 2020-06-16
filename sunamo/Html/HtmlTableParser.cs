@@ -131,12 +131,18 @@ namespace sunamo
             
         }
 
-        public List<string> ColumnValues(int dxColumn, bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes)
+        public List<string> ColumnValues(int dxColumn, bool normalizeValuesInColumn, bool removeAlsoInnerHtmlOfSubNodes, bool skipFirstRow)
         {
             var d0 = data.GetLength(0);
             List<string> vr = new List<string>();
 
-            for (int i = 1; i < d0; i++)
+            int i = 0;
+            if (skipFirstRow)
+            {
+                i = 1;
+            }
+
+            for (; i < d0; i++)
             {
                 vr.Add(data[i, dxColumn]);
             }

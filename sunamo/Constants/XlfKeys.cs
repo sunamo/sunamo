@@ -6,7 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string ResetPassword = "ResetPassword"; 
+	public const string Country = "Country"; 
+    public const string characters2 = "characters2";
+    public const string ResetPassword = "ResetPassword"; 
 	public const string generateRandomLogin = "generateRandomLogin"; 
 	public const string DoItNow = "DoItNow"; 
 	public const string inFormatMDYMinAge18 = "inFormatMDYMinAge18"; 

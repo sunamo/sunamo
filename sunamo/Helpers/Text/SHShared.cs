@@ -393,14 +393,22 @@ public static partial class SH
         StringBuilder to = new StringBuilder();
         StringBuilder from = new StringBuilder();
 
-
-        var lines = SH.GetLines(input);
-        foreach (var item in lines)
+        if (input.Contains(Consts.transformTo))
         {
-            var p = SH.Split(item, "->");
-            from.AppendLine(p[0]);
-            to.AppendLine(p[1]);
+
+            var lines = SH.GetLines(input);
+            foreach (var item in lines)
+            {
+                var p = SH.Split(item, Consts.transformTo);
+                from.AppendLine(p[0]);
+                to.AppendLine(p[1]);
+            }
         }
+        else
+        {
+            from.AppendLine(input);
+        }
+
 
         return new Tuple<string, string>(from.ToString(), to.ToString());
         
@@ -426,7 +434,7 @@ public static partial class SH
 
         var l = SH.GetLines(fromTo);
         CA.RemoveStringsEmpty2(l);
-        string delimiter = "->";
+        string delimiter = Consts.transformTo;
 
         List<string> replaceForEmpty = new List<string>();
 

@@ -16,10 +16,5 @@ public static class RLData
     public static TranslateDictionary en = new TranslateDictionary(Langs.en);
     public static TranslateDictionary cs = new TranslateDictionary(Langs.cs);
 
-    public static string EnPostColon(string key)
-    {
-        ThrowExceptions.KeyNotFound<string, string>(null, type, Exc.CallingMethod(), en, "en", key);
-
-        return en[key] + AllStrings.colon;
-    }
+    
 }

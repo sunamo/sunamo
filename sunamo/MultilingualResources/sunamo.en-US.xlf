@@ -418,6 +418,9 @@
         <trans-unit id="characters">
           <target>characters</target>
         </trans-unit>
+        <trans-unit id="characters2">
+          <target>characters</target>
+        </trans-unit>
         <trans-unit id="YouShouldCheckYourEmailSeveralTimesToSeeIfItIsCorrectYouWillNotLogInAgainWithoutReactivatingYourEmail">
           <target>You should check your email several times to see if it is correct, you will not log in again without reactivating your email</target>
         </trans-unit>
@@ -10990,6 +10993,10 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="ResetPassword" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Reset password</target>
+        </trans-unit>
+        <trans-unit id="Country" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Country</target>
         </trans-unit>
       </group>
     </body>

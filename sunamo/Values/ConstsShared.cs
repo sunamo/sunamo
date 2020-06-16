@@ -22,6 +22,7 @@ using System.Text;
     public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     public static readonly DateTime DateTimeMaxVal = new DateTime(2079, 6, 6);
     public const string Nope = "Nope";
+    public const string transformTo = "->";
 
     static Consts()
     {

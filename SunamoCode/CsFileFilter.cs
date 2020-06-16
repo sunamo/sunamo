@@ -10,8 +10,8 @@ public class CsFileFilter
     bool TMP = false;
     bool obj= false;
     bool bin= false;
+    bool DesignerCs = false;
 
-  
     //".TMP", ".tmp"
 
     /// <summary>
@@ -27,9 +27,11 @@ public class CsFileFilter
     {
          designerCs = false;  xamlCs = true;  sharedCs = true;  iCs = false;  gICs = false;  gCs = false;
          obj = false;  bin = false;
+        DesignerCs = false;
     }
 
-    static string designerCsPp = ".designer.cs"; static string xamlCsPp = ".xaml.cs"; static string sharedCsPp = "Shared.cs"; static string iCsPp = ".i.cs"; static string gICsPp = ".g.i.cs"; static string gCsPp = ".g.cs";
+    static string designerCsPp = ".designer.cs";
+    static string DesignerCsPp = ".designer.cs"; static string xamlCsPp = ".xaml.cs"; static string sharedCsPp = "Shared.cs"; static string iCsPp = ".i.cs"; static string gICsPp = ".g.i.cs"; static string gCsPp = ".g.cs";
     static string tmpPp = ".tmp";
     static string TMPPp = ".TMP";
     static string objPp = @"\obj\"; static string binPp = @"\bin\";
@@ -72,6 +74,10 @@ public class CsFileFilter
         else if (TMP)
         {
             l.Add(TMPPp);
+        }
+        else if (DesignerCs)
+        {
+            l.Add(DesignerCsPp);
         }
 
         return l;
