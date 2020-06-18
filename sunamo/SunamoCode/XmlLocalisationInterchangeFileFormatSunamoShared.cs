@@ -98,7 +98,7 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
         ext = SH.PrefixIfNotStartedWith(ext, ".");
         if (ext == AllExtensions.cs)
         {
-            return RLDataEn + XlfKeysDot + key2 + "]";
+            return SessI18n + XlfKeysDot + key2 + ")";
         }
         else if (ext == AllExtensions.ts)
         {

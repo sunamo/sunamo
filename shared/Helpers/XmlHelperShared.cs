@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Xml;
 
+/// <summary>
+/// Use System.Xml NS
+/// </summary>
 public static partial class XmlHelper{ 
 public static XmlNode GetAttributeWithName(XmlNode item, string p)
     {

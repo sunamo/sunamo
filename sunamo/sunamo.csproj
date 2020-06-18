@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -63,11 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\sunamo\Args\CSharpGeneratorArgs.cs" />
-    <Compile Include="..\..\sunamo\sunamo\CryptDelegates.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\EncodingHelperShared.cs" />
-    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertSnakeConvention.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Args\CSharpGeneratorArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\GetFilesArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\PpkOnDriveArgs.cs" />
     <Compile Include="..\..\sunamo\sunamo\Collections\AutoIndexedObservableCollection.cs" />
@@ -79,6 +76,8 @@
     <Compile Include="..\..\sunamo\sunamo\Constants\FolderConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\ConvertersSimple\StringHexColorConverterShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Converts\ConvertOnlyLowercase.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Converts\ConvertSnakeConvention.cs" />
+    <Compile Include="..\..\sunamo\sunamo\CryptDelegates.cs" />
     <Compile Include="..\..\sunamo\sunamo\Crypting\UtilsShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\CSharpParserShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Data\CharFormatData.cs" />
@@ -117,6 +116,7 @@
     <Compile Include="..\..\sunamo\sunamo\Helpers\Runtime\RuntimeHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamo.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\StatusHelperSunamoShared.cs" />
+    <Compile Include="..\..\sunamo\sunamo\Helpers\Text\EncodingHelperShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHNotTranslateAbleShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Helpers\Text\SHShared.cs" />
     <Compile Include="..\..\sunamo\sunamo\Html\XHelperShared.cs" />
@@ -132,21 +132,6 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
-    <Compile Include="Args\ChangeContentArgs.cs" />
-    <Compile Include="Args\CSharpGeneratorArgs.cs" />
-    <Compile Include="Args\SubstringArgs.cs" />
-    <Compile Include="Collections\L2.cs" />
-    <Compile Include="Collections\RefreshingList.cs" />
-    <Compile Include="Constants\HttpKnownHeaderNames.cs" />
-    <Compile Include="Constants\HttpKnownHeaderValues.cs" />
-    <Compile Include="Constants\Paths\CompareFilesPaths.cs" />
-    <Compile Include="CryptDelegates.cs" />
-    <Compile Include="Enums\GridSize.cs" />
-    <Compile Include="Enums\KeysXlf.cs" />
-    <Compile Include="Helpers\NetHelperSunamo.cs" />
-    <Compile Include="Interfaces\ILoginManager.cs" />
-    <Compile Include="RL\ResourceLoaderRL.cs" />
-    <Compile Include="Session.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -156,8 +141,11 @@
     <Compile Include="AppDataBase.cs" />
     <Compile Include="AppDataBaseShared.cs" />
     <Compile Include="AppPaths.cs" />
+    <Compile Include="Args\ChangeContentArgs.cs" />
+    <Compile Include="Args\CSharpGeneratorArgs.cs" />
     <Compile Include="Args\GetFilesArgs.cs" />
     <Compile Include="Args\PpkOnDriveArgs.cs" />
+    <Compile Include="Args\SubstringArgs.cs" />
     <Compile Include="AspNet.cs" />
     <Compile Include="AspNetShared.cs" />
     <Compile Include="AspxHelper.cs" />
@@ -186,11 +174,13 @@
     <Compile Include="Collections\FsWatcherDictionary.cs" />
     <Compile Include="Collections\Joiner.cs" />
     <Compile Include="Collections\L.cs" />
+    <Compile Include="Collections\L2.cs" />
     <Compile Include="Collections\ListWithElements.cs" />
     <Compile Include="Collections\NotifyChangesCollection.cs" />
     <Compile Include="Collections\PpkOnDrive.cs" />
     <Compile Include="Collections\PpkOnDriveBase.cs" />
     <Compile Include="Collections\PpkOnDriveT.cs" />
+    <Compile Include="Collections\RefreshingList.cs" />
     <Compile Include="Collections\ResolvedDictionary.cs" />
     <Compile Include="Collections\SafeStringCollection.cs" />
     <Compile Include="Collections\SunamoDictionary.cs" />
@@ -215,7 +205,10 @@
     <Compile Include="Constants\HtmlAttrValue.cs" />
     <Compile Include="Constants\HtmlConsts.cs" />
     <Compile Include="Constants\HtmlTags.cs" />
+    <Compile Include="Constants\HttpKnownHeaderNames.cs" />
+    <Compile Include="Constants\HttpKnownHeaderValues.cs" />
     <Compile Include="Constants\Messages.cs" />
+    <Compile Include="Constants\Paths\CompareFilesPaths.cs" />
     <Compile Include="Constants\Paths\DefaultPaths.cs" />
     <Compile Include="Constants\Paths\ExecutablePaths.cs" />
     <Compile Include="Constants\Paths\SourceCodePaths.cs" />
@@ -252,6 +245,7 @@
     <Compile Include="Converts\ConvertTypeShortcutFullName.cs" />
     <Compile Include="Converts\NullableConverter.cs" />
     <Compile Include="Converts\Rot13.cs" />
+    <Compile Include="CryptDelegates.cs" />
     <Compile Include="CryptHelper2.cs" />
     <Compile Include="CryptHelper2Shared.cs" />
     <Compile Include="Crypting\CryptHelper.cs" />
@@ -390,6 +384,7 @@
     <Compile Include="Enums\FirstLast.cs" />
     <Compile Include="Enums\FirstSecondNothing.cs" />
     <Compile Include="Enums\FontWeight2.cs" />
+    <Compile Include="Enums\GridSize.cs" />
     <Compile Include="Enums\HtmlTagSyntax.cs" />
     <Compile Include="Enums\HtmlTextWriterAttribute.cs" />
     <Compile Include="Enums\HtmlTextWriterTag.cs" />
@@ -397,6 +392,7 @@
     <Compile Include="Enums\ImageOperation.cs" />
     <Compile Include="Enums\InternetProtocols.cs" />
     <Compile Include="Enums\Iso3166_1_Alpha_2.cs" />
+    <Compile Include="Enums\KeysXlf.cs" />
     <Compile Include="Enums\LandscapePortrait.cs" />
     <Compile Include="Enums\ListOperation.cs" />
     <Compile Include="Enums\ModifiersConstructor.cs" />
@@ -544,6 +540,7 @@
     <Compile Include="Helpers\i18n\CzechHelper.cs" />
     <Compile Include="Helpers\i18n\Translation.cs" />
     <Compile Include="Helpers\Net\IPAddressHelper.cs" />
+    <Compile Include="Helpers\NetHelperSunamo.cs" />
     <Compile Include="Helpers\Number\HexHelper.cs" />
     <Compile Include="Helpers\Number\LinearHelper.cs" />
     <Compile Include="Helpers\Number\LinearHelperShared.cs" />
@@ -626,6 +623,7 @@
     <Compile Include="Interfaces\IL.cs" />
     <Compile Include="Interfaces\IListBoxHelperItem.cs" />
     <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\ILoginManager.cs" />
     <Compile Include="Interfaces\ILogMessage.cs" />
     <Compile Include="Interfaces\IName.cs" />
     <Compile Include="Interfaces\IPanel.cs" />
@@ -678,6 +676,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RH.cs" />
     <Compile Include="RL.cs" />
+    <Compile Include="RL\ResourceLoaderRL.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
@@ -741,7 +741,7 @@
       <Name>Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xlf\Xlf.csproj">
-      <Project>{00b76d22-b82f-43fd-ac48-4b1f56e6910f}</Project>
+      <Project>{00B76D22-B82F-43FD-AC48-4B1F56E6910F}</Project>
       <Name>Xlf</Name>
     </ProjectReference>
   </ItemGroup>

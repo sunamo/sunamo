@@ -296,7 +296,7 @@
 	becauseItWasLongerThan512Characters,
 	_20MostPopularSongsInTheLast7Days,
 	_10MostPopularSongs,
-	ThePasswordMustHaveAtLeastOneSpecialCharactert,
+	ThePasswordMustHaveAtLeastOneSpecialCharacter,
 	successfullyUploaded,
 	doesNotHaveTheCorrectExtension,
 	doesNotExistOnTheServer,

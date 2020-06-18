@@ -1,18 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="NTextCat" Version="0.3.65" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo.teamwork\SunamoNTextCat\SunamoNTextCat.csproj" />
     <ProjectReference Include="..\..\sunamo.teamwork\SunamoTranslate\SunamoTranslate.csproj" />
     <ProjectReference Include="..\..\SunamoXlf\SunamoXlf\SunamoXlf.csproj" />
     <ProjectReference Include="..\SunamoCode\SunamoCode.csproj" />
   </ItemGroup>
-
 </Project>

@@ -61,15 +61,17 @@ public partial class FS
 
                 foreach (var item in masces)
                 {
-                    var masc = FS.MascFromExtension(item);
+                    var masc = mask;
+                    if (getFilesArgs.useMascFromExtension)
+                    {
+                        masc = FS.MascFromExtension(item);
+                    }
                     try
                     {
                         list.AddRange(Directory.GetFiles(folder, masc, searchOption));
                     }
                     catch (Exception)
                     {
-
-
                     }
 
                 }
@@ -79,8 +81,12 @@ public partial class FS
 
                 try
                 {
-                    mask = FS.MascFromExtension(mask);
-                    list.AddRange(Directory.GetFiles(folder, mask, searchOption));
+                    var masc = mask;
+                    if (getFilesArgs.useMascFromExtension)
+                    {
+                        masc = FS.MascFromExtension(mask);
+                    }
+                    list.AddRange(Directory.GetFiles(folder, masc, searchOption));
                 }
                 catch (Exception ex)
                 {

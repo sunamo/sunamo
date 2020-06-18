@@ -6649,7 +6649,7 @@
         <trans-unit id="PasswordCannotBeEmpty">
           <target>Password cannot be empty</target>
         </trans-unit>
-        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharactert">
+        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter">
           <target>The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong">
@@ -10997,6 +10997,20 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="Country" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Country</target>
+        </trans-unit>
+
+        <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">The password must be at least 20 characters long</target>
+        </trans-unit>
+
+        <trans-unit id="By" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">By</target>
+        </trans-unit>
+        <trans-unit id="ArtistGigiDagostino" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Artist Gigi D'Agostino</target>
         </trans-unit>
       </group>
     </body>

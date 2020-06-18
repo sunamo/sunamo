@@ -9,6 +9,9 @@ using System.Xml;
 using System.Xml.Linq;
 using sunamo.Essential;
 
+/// <summary>
+/// XHelper - For use System.Xml.Linq
+/// </summary>
 public partial class XHelper{
 
     public static Dictionary<string, string> ns = new Dictionary<string, string>();

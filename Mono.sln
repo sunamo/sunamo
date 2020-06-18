@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoHtml", "SunamoHtml\Su
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoExceptions", "SunamoExceptions\SunamoExceptions.csproj", "{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlf", "Xlf\Xlf.csproj", "{00B76D22-B82F-43FD-AC48-4B1F56E6910F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,18 @@ Global
 		{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}.Release|x64.Build.0 = Release|x64
 		{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}.Release|x86.ActiveCfg = Release|x86
 		{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}.Release|x86.Build.0 = Release|x86
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|x64.ActiveCfg = Debug|x64
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|x64.Build.0 = Debug|x64
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|x86.ActiveCfg = Debug|x86
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Debug|x86.Build.0 = Debug|x86
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|x64.ActiveCfg = Release|x64
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|x64.Build.0 = Release|x64
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|x86.ActiveCfg = Release|x86
+		{00B76D22-B82F-43FD-AC48-4B1F56E6910F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

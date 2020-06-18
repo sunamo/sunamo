@@ -15,4 +15,5 @@ public class GetFilesArgs
     /// </summary>
     public Action<List<string>> excludeWithMethod = null;
     public bool byDateOfLastModifiedAsc = false;
+    public bool useMascFromExtension = true;
 }

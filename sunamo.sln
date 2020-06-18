@@ -66,7 +66,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoWindowsOS", "SunamoWi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoCode.forms", "SunamoCode.forms\SunamoCode.forms.csproj", "{A59E8710-A0F5-4154-80FF-1AE3CCE1ACC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoTranslateXlf", "SunamoTranslateXlf\SunamoTranslateXlf.csproj", "{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoTranslateXlf", "SunamoTranslateXlf\SunamoTranslateXlf.csproj", "{762FDCB1-AA1D-4419-929F-6AAAC13C8F14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

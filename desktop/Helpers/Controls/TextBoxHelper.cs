@@ -50,6 +50,7 @@ namespace desktop
         public static TextBox Get(ControlInitData d)
         {
             TextBox txt = new TextBox();
+            
             ControlHelper.SetForeground(txt, d.foreground);
 
             if (d.imagePath != null)

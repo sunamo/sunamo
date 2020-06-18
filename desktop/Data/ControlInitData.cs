@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using sunamo;
 
@@ -26,6 +27,7 @@ public class ControlInitData
     /// Only for Click, not Checked etc!
     /// </summary>
     public RoutedEventHandler OnClick = null;
+    public MouseButtonEventHandler MouseDown = null;
     public object tag = null;
     public string tooltip = null;
     public bool isEditable = false;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using sunamo.Essential;
 
 namespace win.Helpers.Powershell
 {
@@ -90,11 +91,25 @@ namespace win.Helpers.Powershell
     /// When return no elements, try InvokeProcess
     /// </summary>
     /// <param name="commands"></param>
-    public static List<List<string>> Invoke(IEnumerable<string> commands)
+    public static List<List<string>> Invoke(IEnumerable<string> commands, bool immediatelyToStatus = false)
     {
         var result = InvokeAsync(commands);
         result.Wait();
-        return result.Result;
+        var output = result.Result;
+        if (immediatelyToStatus)
+            {
+                foreach (var item in output)
+                {
+                    foreach (var item2 in item)
+                    {
+                        if (!string.IsNullOrEmpty(item2))
+                        {
+                            ThisApp.SetStatus(TypeOfMessage.Information, item2);
+                        }
+                    }
+                }
+            }
+            return output;
     }
 
     private static List<string> ProcessPSObjects(ICollection<PSObject> pso)

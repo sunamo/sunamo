@@ -319,7 +319,7 @@ public class XlfKeys
 	public const string becauseItWasLongerThan512Characters = "becauseItWasLongerThan512Characters"; 
 	public const string _20MostPopularSongsInTheLast7Days = "_20MostPopularSongsInTheLast7Days"; 
 	public const string _10MostPopularSongs = "_10MostPopularSongs"; 
-	public const string ThePasswordMustHaveAtLeastOneSpecialCharactert = "ThePasswordMustHaveAtLeastOneSpecialCharactert"; 
+	public const string ThePasswordMustHaveAtLeastOneSpecialCharacter = "ThePasswordMustHaveAtLeastOneSpecialCharacter"; 
 	public const string successfullyUploaded = "successfullyUploaded"; 
 	public const string doesNotHaveTheCorrectExtension = "doesNotHaveTheCorrectExtension"; 
 	public const string doesNotExistOnTheServer = "doesNotExistOnTheServer"; 

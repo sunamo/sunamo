@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -107,6 +108,15 @@ using System.Threading.Tasks;
     internal static string BadFormatOfElementInList(string before, object elVal, string listName)
     {
         return before + "Bad format of element " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
+    }
+
+    internal static string IsEmpty(string before, IEnumerable folders, string colName, string additionalMessage)
+    {
+        if (folders.Count() == 0)
+        {
+            return before + colName + " has no elements. " + additionalMessage;
+        }
+        return null;
     }
     #endregion
 }

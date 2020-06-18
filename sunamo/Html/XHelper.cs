@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using sunamo.Essential;
+
+/// <summary>
+/// Use System.Xml.Linq
+/// </summary>
 public partial class XHelper
 {
     

@@ -155,10 +155,15 @@ public partial class ThrowExceptions
     }
 
     #region Helpers
-    
-    public static void NoPassedFolders(string stacktrace, object type, string v, IEnumerable folders)
+
+    public static void IsEmpty(string stacktrace, object type, string methodName, IEnumerable folders, string colName, string additionalMessage)
     {
-        ThrowIsNotNull(stacktrace, Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, v, true), folders));
+        ThrowIsNotNull(stacktrace, Exceptions.IsEmpty(FullNameOfExecutedCode(type, methodName, true), folders, colName, additionalMessage));
+    }
+
+    public static void NoPassedFolders(string stacktrace, object type, string methodName, IEnumerable folders)
+    {
+        ThrowIsNotNull(stacktrace, Exceptions.NoPassedFolders(FullNameOfExecutedCode(type, methodName, true), folders));
     }
  
     /// <summary>

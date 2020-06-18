@@ -165,6 +165,7 @@ public class FoldersWithSolutions
     /// <summary>
     /// Simple returns global variable solutions
     /// Exclude from SolutionsIndexerConsts.SolutionsExcludeWhileWorkingOnSourceCode if Debugger is attached
+    /// A3 - can use wildcard
     /// </summary>
     public List<SolutionFolder> Solutions(Repository r, bool loadAll = true, IEnumerable<string> skipThese = null)
     {        
@@ -184,6 +185,7 @@ public class FoldersWithSolutions
         {
             skip = new List<string>();
         }
+
         if (!loadAll)
         {
             if (Debugger.IsAttached)
@@ -192,7 +194,30 @@ public class FoldersWithSolutions
             }
         }
 
-        result.RemoveAll(d => CA.IsEqualToAnyElement(d.nameSolution, skip));
+        Dictionary<string, Wildcard> dict = new Dictionary<string, Wildcard>();
+        foreach (var item in skip)
+        {
+            dict.Add(item, new Wildcard(item));
+        }
+
+        var l = result.Count;
+        for (int i = result.Count - 1; i >= 0; i--)
+        {
+            var it = result[i];
+            foreach (var item in dict)
+            {
+                if (item.Value.IsMatch( it.nameSolution))
+                {
+                    result.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
+        
+        var l2 = result.Count;
+
+        //result.RemoveAll(d => CA.IsEqualToAnyElement(d.nameSolution, skip));
 
         ////////DebugLogger.Instance.WriteCount("Solutions in " + documentsFolder, solutions);
         return result;

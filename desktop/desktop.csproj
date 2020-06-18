@@ -70,8 +70,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\desktop\NotifyPropertyHelper.cs" />
-    <Compile Include="..\..\sunamo\desktop\Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
     <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />
@@ -85,6 +83,7 @@
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectFolderShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Input\SelectManyFilesShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Controls\Panels\SunamoGrid.cs" />
+    <Compile Include="..\..\sunamo\desktop\Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
     <Compile Include="..\..\sunamo\desktop\Data\ControlInitData.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfApp.cs" />
     <Compile Include="..\..\sunamo\desktop\Essential\WpfAppShared.cs" />
@@ -128,6 +127,7 @@
     <Compile Include="..\..\sunamo\desktop\Interfaces\IUserControlShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowOpener.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IWindowWithSettingsManager.cs" />
+    <Compile Include="..\..\sunamo\desktop\NotifyPropertyHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\StatusesLogger.cs" Link="" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataConsts.cs" />
     <Compile Include="..\..\sunamo\desktop\Storage\ApplicationDataContainer.cs" />
@@ -230,6 +230,7 @@
       <DependentUpon>InsertLetterAfterMouseDownUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Panels\FrugalContainer.cs" />
+    <Compile Include="Controls\Panels\StackPanelUC.cs" />
     <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid.cs" />
     <Compile Include="Controls\Panels\SunamoVariableSizedWrapGrid2.cs" />
     <Compile Include="Controls\Result\FoundedFilesUC.cs" />
@@ -282,8 +283,8 @@
     <Compile Include="Controls\Visualization\TwoWayTable.xaml.cs">
       <DependentUpon>TwoWayTable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Controls\Wrapper\NotifyPropertyChangedWrapper.cs" />
+    <Compile Include="ControlsGenerator.cs" />
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Converters\StringHexDrawingColorConverter.cs" />
     <Compile Include="Converters\StringHexWindowsMediaColorConverter.cs" />
