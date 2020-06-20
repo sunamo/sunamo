@@ -36,4 +36,10 @@ using System.Diagnostics;
                 return sw.ElapsedMS;
             }
         }
+
+    public static void PrintElapsedAndContinue(string v)
+    {
+        StopAndPrintElapsed(v);
+        Start();
     }
+}

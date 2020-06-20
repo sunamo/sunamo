@@ -19,7 +19,16 @@ namespace AllProjectsSearch
             projectFolder = t.projectFolder;
             slnFullPath = t.slnFullPath;
 
+            
         }
+
+        
+
+        /// <summary>
+        /// C# Projects
+        /// PHP PHP_Projects etc.
+        /// </summary>
+        public ProjectsTypes typeProjectFolder = ProjectsTypes.None;
 
         public  void UpdateModules(PpkOnDrive toSelling)
         {
@@ -29,6 +38,7 @@ namespace AllProjectsSearch
                 this.modulesNotSelling = SolutionsIndexerHelper.ModulesInSolution(this.projects, this.fullPathFolder, false, toSelling);
             }
         }
+
         public SolutionFolder()
         {
         }

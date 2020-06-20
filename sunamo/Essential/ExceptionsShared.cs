@@ -17,7 +17,7 @@ using System.Threading.Tasks;
     {
         if (!en.ContainsKey(key))
         {
-            return key + " is now exists in Dictionary " + dictName;
+            return key + " is not exists in Dictionary " + dictName;
         }
         return null;
     }
@@ -105,12 +105,12 @@ using System.Threading.Tasks;
             return before + ": ";
         }
 
-    internal static string BadFormatOfElementInList(string before, object elVal, string listName)
+    public static string BadFormatOfElementInList(string before, object elVal, string listName)
     {
         return before + "Bad format of element " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
     }
 
-    internal static string IsEmpty(string before, IEnumerable folders, string colName, string additionalMessage)
+    public static string IsEmpty(string before, IEnumerable folders, string colName, string additionalMessage)
     {
         if (folders.Count() == 0)
         {

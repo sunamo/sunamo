@@ -2069,6 +2069,118 @@
           <source></source>
           <target state="translated">Nemůžete se přihlásit po změně e-mailu? Vyzkoušejte tuto stránku</target>
         </trans-unit>
+        <trans-unit id="Fuel" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Palivo</target>
+        </trans-unit>
+        <trans-unit id="Volume" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Objem</target>
+        </trans-unit>
+        <trans-unit id="Transmission" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Převodovka</target>
+        </trans-unit>
+        <trans-unit id="AirConditioning" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Klimatizace</target>
+        </trans-unit>
+        <trans-unit id="MoreInformationAboutTheCar" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Další informace o autě</target>
+        </trans-unit>
+        <trans-unit id="Engine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Motor</target>
+        </trans-unit>
+        <trans-unit id="Performance" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výkon</target>
+        </trans-unit>
+        <trans-unit id="HistoryAndDocuments" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Historie a dokumenty</target>
+        </trans-unit>
+        <trans-unit id="TheFirstOwner" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">První majitel</target>
+        </trans-unit>
+        <trans-unit id="ServiceBook" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Servisní knížka</target>
+        </trans-unit>
+        <trans-unit id="CountryOfOrigin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Země původu</target>
+        </trans-unit>
+        <trans-unit id="NumberOfAirbags" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet airbagů</target>
+        </trans-unit>
+        <trans-unit id="Body" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Karoserie</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDoors" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet dveří</target>
+        </trans-unit>
+        <trans-unit id="NumberOfPlaces" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Počet míst</target>
+        </trans-unit>
+        <trans-unit id="YearOfManufacture" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rok výroby</target>
+        </trans-unit>
+        <trans-unit id="EcologicalTaxPaid" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zaplacena ekologická daň</target>
+        </trans-unit>
+        <trans-unit id="AverageConsumption" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Průměrná spotřeba</target>
+        </trans-unit>
+        <trans-unit id="MeetsTheEURO" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Plní EURO</target>
+        </trans-unit>
+        <trans-unit id="PriceNote" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Poznámka k ceně</target>
+        </trans-unit>
+        <trans-unit id="CrashedInThePast" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">V minulosti havarováno</target>
+        </trans-unit>
+        <trans-unit id="YearOfManufactureAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rok výroby jako číslo</target>
+        </trans-unit>
+        <trans-unit id="PriceAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena jako číslo</target>
+        </trans-unit>
+        <trans-unit id="TachometerAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tachometr jako číslo</target>
+        </trans-unit>
+        <trans-unit id="Other" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ostatní</target>
+        </trans-unit>
+        <trans-unit id="Tacho" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tacho</target>
+        </trans-unit>
+        <trans-unit id="TodayOpen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Dnes otevřeno</target>
+        </trans-unit>
+        <trans-unit id="PrivateSeller" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Soukromý prodejce</target>
+        </trans-unit>
       </group>
     </body>
   </file>

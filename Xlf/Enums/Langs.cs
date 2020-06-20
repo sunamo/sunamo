@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 /// </summary>
 public enum Langs : byte
 {
+    #region For easy copying to other files
     cs = 0,
-    en = 1
+    en = 1 
+    #endregion
 }

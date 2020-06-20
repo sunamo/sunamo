@@ -1,4 +1,5 @@
 ﻿using desktop;
+using desktop.AwesomeFont;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,28 @@ public static StackPanel GetContent(ControlInitData d)
 
 private static void AddImg(string img, StackPanel sp, double w, double h)
     {
-        sp.Children.Add(ImageHelperDesktop.Get(img));
+        bool isAwesome = false;
+
+        if (img.Length == 1)
+        {
+            var ch = img[0];
+            if (ch >= AwesomeFontControls.low && ch <= AwesomeFontControls.high)
+            {
+                isAwesome = true;
+            }
+        }
+
+        if (isAwesome)
+        {
+            TextBlock tb = new TextBlock();
+            AwesomeFontControls.SetAwesomeFontSymbol(tb, img);
+            sp.Children.Add(tb);
+        }
+        else
+        {
+            sp.Children.Add(ImageHelperDesktop.Get(img));
+        }
+        
     }
 
 private static void AddTextBlock(string text, StackPanel sp)

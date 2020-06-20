@@ -6,6 +6,8 @@ using sunamo;
 using System.Linq;
 using sunamo.Essential;
 using System.Diagnostics;
+using sunamo.Collections;
+using sunamo.Constants;
 
 public class FoldersWithSolutions
 {
@@ -32,9 +34,9 @@ public class FoldersWithSolutions
     /// </summary>
     public FoldersWithSolutions(string documentsFolder, PpkOnDrive toSelling)
     {
-        
         this.documentsFolder = documentsFolder;
          Reload(documentsFolder, toSelling);
+
     }
     #endregion
 
@@ -57,7 +59,8 @@ public class FoldersWithSolutions
     /// </summary>
     /// <param name="documentsFolder"></param>
     public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool ignorePartAfterUnderscore = false)
-    {       
+    {
+        
         // Get all projects in A1(Visual Studio Projects *) and GitHub folder
         List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder, FS.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy));
 
@@ -75,14 +78,49 @@ public class FoldersWithSolutions
             solutions.Add(sf);
         }
 
-        
-
         return solutions;
     }
 
+    static TwoWayDictionary<ProjectsTypes, string> projectTypes = new TwoWayDictionary<ProjectsTypes, string>();
+
+    public static void PairProjectFolderWithEnum()
+    {
+        var folders = FS.GetFolders(DefaultPaths.VisualStudio2017, "*", SearchOption.TopDirectoryOnly);
+
+        foreach (var item in folders)
+        {
+            var fn = FS.GetFileName(item);
+            if (fn.EndsWith(SolutionsIndexerStrings.ProjectPostfix))
+            {
+                ProjectsTypes p = ProjectsTypes.None;
+
+                var l = fn.Replace(SolutionsIndexerStrings.ProjectPostfix, string.Empty);
+                var l2 = l.Replace(AllStrings.lowbar, string.Empty).Trim();
+                switch (l2)
+                {
+                    case "C++":
+                        p = ProjectsTypes.Cpp;
+                        break;
+                    //case "":
+                    //    p = ProjectsTypes.Cs;
+                    //    break;
+                    default:
+                        p = EnumHelper.Parse<ProjectsTypes>(l2, ProjectsTypes.None);
+                        break;
+                }
+
+                if (p == ProjectsTypes.None)
+                {
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Can't assign to enum type of folder " + item);
+                }
+
+                projectTypes.Add(p, l);
+            }
+        }
+        projectTypes.Add(ProjectsTypes.Cs, "Projects");
+    }
+
     public static List<string> onlyRealLoadedSolutionsFolders = new List<string>();
-
-
 
     /// <summary>
     /// Pass into toSelling null! While working with SellingUC must use other CreateSolutionFolder
@@ -121,15 +159,36 @@ public class FoldersWithSolutions
             sf = new SolutionFolder();
         }
         sf.repository = RepositoryFromFullPath(solutionFolder);
-        sf.InVsFolder = solutionFolder.Contains(SolutionsIndexerStrings.VisualStudio2017);
+        IdentifyProjectType(solutionFolder, sf);
         sf.displayedText = GetDisplayedName(solutionFolder);
         sf.fullPathFolder = solutionFolder;
         sf.projects = SolutionsIndexerHelper.ProjectsInSolution(true, sf.fullPathFolder);
-        sf. UpdateModules(toSelling);
+        sf.UpdateModules(toSelling);
         sf.nameSolutionWithoutDiacritic = SH.TextWithoutDiacritic(projName);
         return sf;
     }
-    
+
+    protected static void IdentifyProjectType(string solutionFolder, SolutionFolder sf)
+    {
+        // SolutionFolderSerialize doesn't have InVsFolder or typeProjectFolder
+        sf.InVsFolder = solutionFolder.Contains(SolutionsIndexerStrings.VisualStudio2017);
+        if (sf.InVsFolder)
+        {
+            var p = SH.Split(solutionFolder, AllChars.bs);
+            var dx = p.IndexOf(SolutionsIndexerStrings.VisualStudio2017);
+            var pr = p[dx + 1];
+            pr = pr.Replace(SolutionsIndexerStrings.ProjectPostfix, string.Empty);
+            if (projectTypes._d2.ContainsKey(pr))
+            {
+                sf.typeProjectFolder = projectTypes._d2[pr];
+            }
+            else
+            {
+                ThrowExceptions.KeyNotFound<string, ProjectsTypes>(Exc.GetStackTrace(), type, Exc.CallingMethod(), projectTypes._d2, "projectTypes._d2", pr);
+            }
+        }
+    }
+
     private static Repository RepositoryFromFullPath(string fullPathFolder)
     {
         if (fullPathFolder.Contains(SolutionsIndexerStrings.VisualStudio2017))

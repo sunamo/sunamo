@@ -25,10 +25,10 @@ public class FSAbstract<StorageFolder,StorageFile>
     public Func<StorageFile, string> pathFromStorageFile;
     public Func<StorageFile, Stream> openStreamForReadAsync;
     public Func<StorageFolder, StorageFolder, bool> isFoldersEquals;
-    internal Func<StorageFile, string> storageFilePath;
-    internal Func< StorageFolder, StorageFolder> getDirectoryNameFolder;
-    internal Func<StorageFile, StorageFolder> getDirectoryName;
-    internal Func<StorageFile, string> getFileName;
+    public Func<StorageFile, string> storageFilePath;
+    public Func< StorageFolder, StorageFolder> getDirectoryNameFolder;
+    public Func<StorageFile, StorageFolder> getDirectoryName;
+    public Func<StorageFile, string> getFileName;
     public Func<StorageFolder, string, List<StorageFile>> getFilesOfExtensionCaseInsensitiveRecursively;
 
     

@@ -12,7 +12,7 @@ public class SolutionsIndexerStrings
     public const string GitHubMy = "GitHubMy";
     public const string BitBucket = "BitBucket";
     //
-
+    public const string ProjectPostfix = "_Projects";
 
 
     /// <summary>

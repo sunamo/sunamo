@@ -46,6 +46,14 @@ public class EmbeddedResourcesHShared : EmbeddedResourcesH
         return imageSource;
     }
 
+    /// <summary>
+    /// When is ns different (Dummy Selling app) than name of uc (Dummy UC) must use this
+    /// Normally used ThisApp.Name as ns
+    /// </summary>
+    /// <param name="_entryAssembly"></param>
+    /// <param name="defaultNamespace"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
     public ImageSource GetAppIcon(Assembly _entryAssembly, string defaultNamespace, string v)
     {
         var er = new EmbeddedResourcesHShared(_entryAssembly, defaultNamespace);

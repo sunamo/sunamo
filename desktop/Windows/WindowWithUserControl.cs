@@ -191,8 +191,12 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             }
             else
             {
-                controlWithResultDebug.DialogResult = true;
+                if (controlWithResultDebug != null)
+                {
+                    controlWithResultDebug.DialogResult = true;
+                }
             }
+
             Close();
         }
         else if (e.Key == System.Windows.Input.Key.Escape)

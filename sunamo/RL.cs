@@ -1,4 +1,5 @@
 ﻿using sunamo;
+using sunamo.Essential;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,13 +26,21 @@ public partial class RL
         }
     }
 
-
-
     /// <summary>
     /// Globální proměnná pro nastavení jazyka celé app
     /// Musí to být výčet protože aplikace může mít více jazyků
     /// </summary>
-    public static Langs l = Langs.en;
+    public static Langs l
+    {
+        set
+        {
+            ThisApp.l = value;
+        }
+        get
+        {
+            return ThisApp.l;
+        }
+    }
 
     public static IResourceHelper loader = null;
     private static int s_langsLength = 0;

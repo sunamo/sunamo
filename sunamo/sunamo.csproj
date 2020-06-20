@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -132,6 +132,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Helpers\LocaleHelper.cs" />
+    <Compile Include="Helpers\Number\LowHighHelper.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
@@ -677,7 +679,7 @@
     <Compile Include="RH.cs" />
     <Compile Include="RL.cs" />
     <Compile Include="RL\ResourceLoaderRL.cs" />
-    <Compile Include="Session.cs" />
+    <Compile Include="sess.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />

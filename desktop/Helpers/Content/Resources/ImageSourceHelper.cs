@@ -1,6 +1,7 @@
 ﻿#region Mono
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -41,7 +42,19 @@ public static class ImageSourceHelper
 		return BitmapFrame.Create(resizedImage);
 	}
 
-    public static ImageSource ImageSourceFromBitmap(Bitmap bmp)
+	public static ImageSource ImageSourceFromBitmap2(Bitmap bmp)
+	{
+		MemoryStream ms = new MemoryStream();
+		((System.Drawing.Bitmap)bmp).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+		BitmapImage image = new BitmapImage();
+		image.BeginInit();
+		ms.Seek(0, SeekOrigin.Begin);
+		image.StreamSource = ms;
+		image.EndInit();
+		return image;
+	}
+
+	public static ImageSource ImageSourceFromBitmap(Bitmap bmp)
     {
         var handle = bmp.GetHbitmap();
         try

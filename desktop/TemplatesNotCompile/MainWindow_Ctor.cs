@@ -50,6 +50,9 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         Loaded += MainWindow_Loaded;
     }
 
+    
+
+
     public void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
         /*
@@ -62,6 +65,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
              */
 
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
+        
         string appName = "";
         ThisApp.Name = appName;
         WpfApp.Init();
@@ -75,8 +79,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
                 Close();
             }
 #endif
-
-
 
         ClipboardHelper.Instance = ClipboardHelperWin.Instance;
         AppData.ci.CreateAppFoldersIfDontExists();

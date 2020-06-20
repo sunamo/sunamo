@@ -23,6 +23,19 @@ public partial class WpfApp
         Application.Current.MainWindow.Close();
     }
 
+    public static void Restart()
+    {
+        System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+        Application.Current.Shutdown();
+    }
+
+    // Is not available in desktop.web
+    //public static void Restart2()
+    //{
+    //    System.Windows.Forms.Application.Restart();
+    //    System.Windows.Application.Current.Shutdown();
+    //}
+
     static DependencyProperty[] props = new DependencyProperty[] { TextBlock.ForegroundProperty, TextBlock.TextProperty };
     public static string SQLExpressInstanceName()
     {

@@ -10998,12 +10998,10 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Country</target>
         </trans-unit>
-
         <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">The password must be at least 20 characters long</target>
         </trans-unit>
-
         <trans-unit id="By" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">By</target>
@@ -11011,6 +11009,214 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="ArtistGigiDagostino" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Artist Gigi D'Agostino</target>
+        </trans-unit>
+        <trans-unit id="UsedCarComparing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Used car comparing</target>
+        </trans-unit>
+        <trans-unit id="AppCanTRunUnderAdminAccountDueToWebBrowserComponentAppWillBeShutdownNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">App can't run under admin account (due to web browser component). App will be shutdown now</target>
+        </trans-unit>
+        <trans-unit id="RuntimeTrouble" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Runtime trouble</target>
+        </trans-unit>
+        <trans-unit id="Tachometr" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tachometr</target>
+        </trans-unit>
+        <trans-unit id="Fuel" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Fuel</target>
+        </trans-unit>
+        <trans-unit id="Volume" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Volume</target>
+        </trans-unit>
+        <trans-unit id="Transmission" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Transmission</target>
+        </trans-unit>
+        <trans-unit id="AirConditioning" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Air conditioning</target>
+        </trans-unit>
+        <trans-unit id="MoreInformationAboutTheCar" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">More information about the car</target>
+        </trans-unit>
+        <trans-unit id="Engine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Engine</target>
+        </trans-unit>
+        <trans-unit id="Performance" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Performance</target>
+        </trans-unit>
+        <trans-unit id="HistoryAndDocuments" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">History and documents</target>
+        </trans-unit>
+        <trans-unit id="TheFirstOwner" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">The first owner</target>
+        </trans-unit>
+        <trans-unit id="ServiceBook" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Service book</target>
+        </trans-unit>
+        <trans-unit id="CountryOfOrigin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Country of origin</target>
+        </trans-unit>
+        <trans-unit id="SpecifikaceVozu" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Specifikace vozu</target>
+        </trans-unit>
+        <trans-unit id="NumberOfAirbags" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of airbags</target>
+        </trans-unit>
+        <trans-unit id="Body" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Body</target>
+        </trans-unit>
+        <trans-unit id="NumberOfDoors" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of doors</target>
+        </trans-unit>
+        <trans-unit id="NumberOfPlaces" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Number of places</target>
+        </trans-unit>
+        <trans-unit id="YearOfManufacture" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Year of manufacture</target>
+        </trans-unit>
+        <trans-unit id="EcologicalTaxPaid" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Ecological tax paid</target>
+        </trans-unit>
+        <trans-unit id="AverageConsumption" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Average consumption</target>
+        </trans-unit>
+        <trans-unit id="MeetsTheEURO" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Meets the EURO</target>
+        </trans-unit>
+        <trans-unit id="PriceNote" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price note</target>
+        </trans-unit>
+        <trans-unit id="CrashedInThePast" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Crashed in the past</target>
+        </trans-unit>
+        <trans-unit id="CenaNaLeasing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena na leasing</target>
+        </trans-unit>
+        <trans-unit id="YearOfManufactureAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Year of manufacture as a number</target>
+        </trans-unit>
+        <trans-unit id="PriceAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Price as a number</target>
+        </trans-unit>
+        <trans-unit id="TachometerAsANumber" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tachometer as a number</target>
+        </trans-unit>
+        <trans-unit id="Copyright2020" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Copyright ©  2020</target>
+        </trans-unit>
+        <trans-unit id="AppWasSuccessfullyStarted" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">App was successfully started</target>
+        </trans-unit>
+        <trans-unit id="ClosestMHD" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Closest MHD</target>
+        </trans-unit>
+        <trans-unit id="Other" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Other</target>
+        </trans-unit>
+        <trans-unit id="NearStation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Near station</target>
+        </trans-unit>
+        <trans-unit id="OpeningTime" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Opening time</target>
+        </trans-unit>
+        <trans-unit id="Telefon" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefon</target>
+        </trans-unit>
+        <trans-unit id="ProcessedByApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Processed by app</target>
+        </trans-unit>
+        <trans-unit id="Telephone" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telephone</target>
+        </trans-unit>
+        <trans-unit id="UnderSameTitleAnotherWithOtherValue" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Under same title another with other value</target>
+        </trans-unit>
+        <trans-unit id="Tacho" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Tacho</target>
+        </trans-unit>
+        <trans-unit id="TodayOpen" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Today open</target>
+        </trans-unit>
+        <trans-unit id="PrivateSeller" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Private seller</target>
+        </trans-unit>
+        <trans-unit id="NameOfSet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Name of set</target>
+        </trans-unit>
+        <trans-unit id="NameContainsUnallowedChars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Name contains unallowed chars</target>
+        </trans-unit>
+        <trans-unit id="DownloadCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">1. Download cars</target>
+        </trans-unit>
+        <trans-unit id="DownloadPhotos" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">2. Download photos</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardGoogleSheetCompare" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">3. Copy to clipboard Google Sheet compare</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardForGoogleMyMaps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">4. Copy to clipboard for Google My Maps</target>
+        </trans-unit>
+        <trans-unit id="OpenFolderOnDrive" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Open folder on drive</target>
+        </trans-unit>
+        <trans-unit id="RefreshSetsFromDrive" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Refresh sets from drive</target>
+        </trans-unit>
+        <trans-unit id="PasteFromClipoardIntoGoogleSheets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Paste from clipoard into Google Sheets</target>
         </trans-unit>
       </group>
     </body>

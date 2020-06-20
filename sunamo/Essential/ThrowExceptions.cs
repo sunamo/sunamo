@@ -207,7 +207,7 @@ public partial class ThrowExceptions
         ThrowIsNotNull(stacktrace, Exceptions.FuncionalityDenied(FullNameOfExecutedCode(type, methodName), description));
     }
 
-    internal static void BadFormatOfElementInList(string stacktrace, object type, string methodName, object elVal, string listName)
+    public static void BadFormatOfElementInList(string stacktrace, object type, string methodName, object elVal, string listName)
     {
         ThrowIsNotNull(stacktrace, Exceptions.BadFormatOfElementInList(FullNameOfExecutedCode(type, methodName), elVal, listName));
     }

@@ -19,6 +19,28 @@ public partial class RuntimeHelper
         return e.GetInvocationList().ToList();
     }
 
+    /// <summary>
+    /// Not working for WPF
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsConsole()
+    {
+        return Environment.UserInteractive;
+    }
+
+    private static bool? _console_present;
+
+    public static bool IsConsole2()
+    {
+        if (_console_present == null)
+        {
+            _console_present = true;
+            try { int window_height = Console.WindowHeight; }
+            catch { _console_present = false; }
+        }
+        return _console_present.Value;
+    }
+
     public static bool HasEventHandler(Delegate e)
     {
         return GetInvocationList(e).Count() > 0;

@@ -36,14 +36,42 @@ public static ColumnDefinition GetColumnDefinition(GridLength oneC)
         return cd;
     }
 
+    public static ColumnDefinition GetColumnDefinitionDirect(double pixels)
+    {
+        ColumnDefinition cd = new ColumnDefinition();
+        cd.Width = new GridLength(pixels);
+        return cd;
+    }
+
+    public static ColumnDefinition GetColumnDefinitionDirect(double value, GridUnitType type)
+    {
+        ColumnDefinition cd = new ColumnDefinition();
+        cd.Width = new GridLength(value, type);
+        return cd;
+    }
+
     /// <summary>
     /// With auto and star must be alwys value 1. When will be 0, no controls will be show!!!
     /// </summary>
     /// <param name="auto"></param>
-public static RowDefinition GetRowDefinition(GridLength auto)
+    public static RowDefinition GetRowDefinition(GridLength auto)
     {
         RowDefinition rd = new RowDefinition();
         rd.Height = auto;
+        return rd;
+    }
+
+    public static RowDefinition GetRowDefinitionDirect(double pixels)
+    {
+        RowDefinition rd = new RowDefinition();
+        rd.Height = new GridLength(pixels);
+        return rd;
+    }
+
+    public static RowDefinition GetRowDefinitionDirect(double value, GridUnitType type)
+    {
+        RowDefinition rd = new RowDefinition();
+        rd.Height = new GridLength(value, type);
         return rd;
     }
 
@@ -53,7 +81,7 @@ public static RowDefinition GetRowDefinition(GridLength auto)
     /// <param name="grid"></param>
     /// <param name="row"></param>
     /// <param name="dx"></param>
-public static IEnumerable<T> GetControlsFrom<T>(Grid grid, bool row, int dx) where T : UIElement
+    public static IEnumerable<T> GetControlsFrom<T>(Grid grid, bool row, int dx) where T : UIElement
     {
         dx++;
 

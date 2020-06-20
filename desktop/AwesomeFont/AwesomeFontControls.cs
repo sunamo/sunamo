@@ -8,12 +8,17 @@ using System.Windows.Controls;
 
 namespace desktop.AwesomeFont
 {
+    
+
     /// <summary>
     /// For WPF app is necessary *.ttf/.otf with build action Resource.
     /// For UWP is needed*.otf with build action Content.
     /// </summary>
     public static class AwesomeFontControls
     {
+        public const int low = 61440;
+        public const int high = 62176;
+
         public static async Task SetAwesomeFontSymbol(Button txtSearchIcon, string v)
         {
             await WpfApp.cd.InvokeAsync(() =>

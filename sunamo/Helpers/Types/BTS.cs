@@ -14,6 +14,10 @@ using System.Text;
 
 public static partial class BTS
 {
+    public static int FromHex(string hexValue)
+    {
+        return int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
+    }
     public static Stream StreamFromString(string s)
     {
         var stream = new MemoryStream();
