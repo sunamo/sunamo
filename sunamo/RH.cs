@@ -124,7 +124,7 @@ public class RH
         var props = o.GetType().GetProperties();
         foreach (var item in props)
         {
-            if (onlyNames.Count > 0)
+            if (onlyNames.Length > 0)
             {
                 if (!onlyNames.Contains(item.Name))
                 {
