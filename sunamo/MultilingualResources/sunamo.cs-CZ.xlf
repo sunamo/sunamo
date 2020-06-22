@@ -2181,6 +2181,334 @@
           <source></source>
           <target state="translated">Soukromý prodejce</target>
         </trans-unit>
+        <trans-unit id="Language" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jazyk</target>
+        </trans-unit>
+        <trans-unit id="RuntimeTrouble" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Runtime potíže</target>
+        </trans-unit>
+        <trans-unit id="AppCanTRunUnderAdminAccountDueToWebBrowserComponentAppWillBeShutdownNow" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace nelze spustit pod účtem správce (kvůli součásti webového prohlížeče). Aplikace bude nyní vypnuta</target>
+        </trans-unit>
+        <trans-unit id="PasteFromClipoardIntoGoogleSheets" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vložit ze schránky do Tabulek Google</target>
+        </trans-unit>
+        <trans-unit id="RefreshSetsFromDrive" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přenačíst sady z disku</target>
+        </trans-unit>
+        <trans-unit id="OpenFolderOnDrive" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Otevřít složku na disku</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardForGoogleMyMaps" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výstup pro Google My Maps do schránky</target>
+        </trans-unit>
+        <trans-unit id="CopyToClipboardGoogleSheetCompare" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Google Sheets porovnání do schránky</target>
+        </trans-unit>
+        <trans-unit id="DownloadPhotos" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhněte si fotografie</target>
+        </trans-unit>
+        <trans-unit id="DownloadCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Stáhněte si auta</target>
+        </trans-unit>
+        <trans-unit id="NameContainsUnallowedChars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název obsahuje nepovolené znaky</target>
+        </trans-unit>
+        <trans-unit id="NameOfSet" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Název sady</target>
+        </trans-unit>
+        <trans-unit id="UnderSameTitleAnotherWithOtherValue" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Pod stejným názvem jiný s jinou hodnotou</target>
+        </trans-unit>
+        <trans-unit id="Telephone" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefon</target>
+        </trans-unit>
+        <trans-unit id="OpeningTime" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Otevírací doba</target>
+        </trans-unit>
+        <trans-unit id="ProcessedByApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpracováno aplikací</target>
+        </trans-unit>
+        <trans-unit id="Telefon" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Telefon</target>
+        </trans-unit>
+        <trans-unit id="CenaNaLeasing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Cena na leasing</target>
+        </trans-unit>
+        <trans-unit id="NearStation" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Blízko stanice</target>
+        </trans-unit>
+        <trans-unit id="SpecifikaceVozu" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Specifikace vozu</target>
+        </trans-unit>
+        <trans-unit id="ClosestMHD" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nejbližší MHD</target>
+        </trans-unit>
+        <trans-unit id="AppWasSuccessfullyStarted" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace byla úspěšně spuštěna</target>
+        </trans-unit>
+        <trans-unit id="OnlyButtonsCanBeAcceptedBecauseItHasNoDataForAccept" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Lze přijímat pouze tlačítka, protože neobsahuje žádná data k přijetí</target>
+        </trans-unit>
+        <trans-unit id="Handler" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Handler</target>
+        </trans-unit>
+        <trans-unit id="CheckBoxList" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Check box list</target>
+        </trans-unit>
+        <trans-unit id="Save" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Save</target>
+        </trans-unit>
+        <trans-unit id="DecideWhichToProcess" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Rozhodněte se, které chcete zpracovat</target>
+        </trans-unit>
+        <trans-unit id="SearchingWasStopped" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Searching was stopped</target>
+        </trans-unit>
+        <trans-unit id="WasFounded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Was founded</target>
+        </trans-unit>
+        <trans-unit id="YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nelze volat SetInitialChecked dvakrát pro stejný ToggleButton</target>
+        </trans-unit>
+        <trans-unit id="NoMoreImagesLoadedBecauseTheSpecifiedFolderDidNotContainAnyImages" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nebyly načteny žádné další obrázky, protože zadaná složka neobsahovala žádné obrázky</target>
+        </trans-unit>
+        <trans-unit id="ImageCollectionDeleted" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Kolekce obrázků byla smazána</target>
+        </trans-unit>
+        <trans-unit id="MovedForwardToPhoto" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Posunul se dopředu k fotografii</target>
+        </trans-unit>
+        <trans-unit id="MovedBackToPhoto" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přesunuto zpět na fotografii</target>
+        </trans-unit>
+        <trans-unit id="BlueColorComponent" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Blue color component</target>
+        </trans-unit>
+        <trans-unit id="GreenColorComponent" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Green color component</target>
+        </trans-unit>
+        <trans-unit id="RedColorComponent" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Red color component</target>
+        </trans-unit>
+        <trans-unit id="Opacity" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Opacity</target>
+        </trans-unit>
+        <trans-unit id="BlueColorFolder" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Modrá barevná složka</target>
+        </trans-unit>
+        <trans-unit id="GreenColorFolder" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zelená barevná složka</target>
+        </trans-unit>
+        <trans-unit id="RedColoredFolder" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Červená barevná složka</target>
+        </trans-unit>
+        <trans-unit id="Transparency" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Průhlednost</target>
+        </trans-unit>
+        <trans-unit id="Enter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter</target>
+        </trans-unit>
+        <trans-unit id="ItNeedsMoreRowsThanItExists" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Potřebuje více řádků, než existuje</target>
+        </trans-unit>
+        <trans-unit id="SelectedFile" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Selected file</target>
+        </trans-unit>
+        <trans-unit id="None" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">None</target>
+        </trans-unit>
+        <trans-unit id="EnterLoginCredentials" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadejte přihlašovací údaje</target>
+        </trans-unit>
+        <trans-unit id="Settings" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Nastavení</target>
+        </trans-unit>
+        <trans-unit id="PleaseUseAppInTray" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Použijte prosím aplikaci v zásobníku</target>
+        </trans-unit>
+        <trans-unit id="Mode" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Režim</target>
+        </trans-unit>
+        <trans-unit id="ShowLoginedUser" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit přihlášeného uživatele</target>
+        </trans-unit>
+        <trans-unit id="GenerateScreenshot" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vygenerujte snímek obrazovky</target>
+        </trans-unit>
+        <trans-unit id="FeedBack" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpětná vazba</target>
+        </trans-unit>
+        <trans-unit id="YouHaveToLogInBeforeUseApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Před použitím aplikace se musíte přihlásit</target>
+        </trans-unit>
+        <trans-unit id="YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jste přihlášeni, ale nezakoupili jste předplatné. Aplikace otevře stránku, kde můžete nakupovat</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyLoginedTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jste úspěšně přihlášeni</target>
+        </trans-unit>
+        <trans-unit id="AlwaysOnTop" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vždy na vrchu</target>
+        </trans-unit>
+        <trans-unit id="logs" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">logy</target>
+        </trans-unit>
+        <trans-unit id="UriFrom" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uri z</target>
+        </trans-unit>
+        <trans-unit id="Like" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jako</target>
+        </trans-unit>
+        <trans-unit id="SetOfCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Sada aut</target>
+        </trans-unit>
+        <trans-unit id="AddNewSetOfCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Přidejte novou sadu aut</target>
+        </trans-unit>
+        <trans-unit id="andPressEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">a stiskněte klávesu Enter</target>
+        </trans-unit>
+        <trans-unit id="EnteringData" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zadávání dat</target>
+        </trans-unit>
+        <trans-unit id="ToEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Vložte</target>
+        </trans-unit>
+        <trans-unit id="RememberLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zapamatovat login</target>
+        </trans-unit>
+        <trans-unit id="AutoLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Automatické přihlášení</target>
+        </trans-unit>
+        <trans-unit id="andCreateComparingTable" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">a vytvořit srovnávací tabulku</target>
+        </trans-unit>
+        <trans-unit id="UsedCarComparing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Porovnání ojetých vozů</target>
+        </trans-unit>
+        <trans-unit id="optional" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">volitelný</target>
+        </trans-unit>
+        <trans-unit id="photos" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">fotky</target>
+        </trans-unit>
+        <trans-unit id="successfullyDownloaded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">úspěšně staženo</target>
+        </trans-unit>
+        <trans-unit id="cars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">auta</target>
+        </trans-unit>
+        <trans-unit id="OutputWasSavedTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Výstup byl uložen do</target>
+        </trans-unit>
+        <trans-unit id="ScrolledToLine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Posunutý na řádek</target>
+        </trans-unit>
+        <trans-unit id="AllOfTheInputsMustBeFilled" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Všechny vstupy musí být vyplněny</target>
+        </trans-unit>
+        <trans-unit id="HowToUse" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Jak používat</target>
+        </trans-unit>
+        <trans-unit id="FeedbackWasSavedDeveloperWillBeContactingYouBackSoon" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zpětná vazba byla uložena. Vývojář vás bude brzy kontaktovat</target>
+        </trans-unit>
+        <trans-unit id="feedback" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">zpětná vazba</target>
+        </trans-unit>
+        <trans-unit id="ReadOurTermsOfUseBeforeBuy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Před nákupem si přečtěte naše Podmínky použití</target>
+        </trans-unit>
+        <trans-unit id="OriginalPrice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Původní cena</target>
+        </trans-unit>
+        <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Úvodní cena</target>
+        </trans-unit>
       </group>
     </body>
   </file>

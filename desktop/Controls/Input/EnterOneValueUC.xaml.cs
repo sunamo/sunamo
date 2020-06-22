@@ -103,7 +103,8 @@ namespace desktop.Controls.Input
 
         public void Init(string whatEnter)
         {
-            tbWhatEnter.Text = RLData.en[XlfKeys.Enter] + " " + whatEnter + " " + "and press enter" + ".";
+            tbWhatEnter.Text = sess.i18n(XlfKeys.ToEnter) + " " + whatEnter + " " + sess.i18n(XlfKeys.andPressEnter) + ".";
+            btnEnter.Content = sess.i18n(XlfKeys.Enter);
         }
 
         public object GetContentByTag(object tag)
@@ -226,7 +227,7 @@ namespace desktop.Controls.Input
             }
         }//
 
-        public string Title => "Enter inputs";
+        public string Title => sess.i18n(XlfKeys.EnteringData);
 
         private bool AfterEnteredValue(List<FrameworkElement> txtEnteredText)
         {

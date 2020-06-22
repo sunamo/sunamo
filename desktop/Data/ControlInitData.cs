@@ -16,8 +16,15 @@ public class ControlInitData
     public ButtonAction action;
     public bool checkable = false;
     public object content = null;
-    public Brush foreground = null;
+    /// <summary>
+    /// Cant be null
+    /// Otherwise control is invisible!
+    /// </summary>
+    public Brush foreground = Brushes.Black;
     public string group = null;
+    /// <summary>
+    /// FontSize when is used Awesome
+    /// </summary>
     public double imageHeight = 16;
     public string imagePath = null;
     public bool isChecked = false;

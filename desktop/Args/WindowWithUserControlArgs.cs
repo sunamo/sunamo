@@ -15,4 +15,5 @@ public class WindowWithUserControlArgs
     /// </summary>
     public bool addDialogButtons = false;
     public string tag = null;
+    public string hint = null;
 }

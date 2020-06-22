@@ -59,7 +59,7 @@ public static partial class CL{
     /// <param name = "text"></param>
     public static DialogResult DoYouWantToContinue(string text)
     {
-        text = RLData.en[XlfKeys.DoYouWantToContinue] + "?";
+        text = sess.i18n(XlfKeys.DoYouWantToContinue) + "?";
         TypedConsoleLogger.Instance.Warning(text);
         bool z = BTS.GetValueOfNullable( UserMustTypeYesNo(text));
         if (z)
@@ -110,7 +110,7 @@ public static partial class CL{
     /// <param name = "appeal"></param>
     public static void AppealEnter(string appeal)
     {
-        Appeal(appeal + ". " + RLData.en[XlfKeys.ThenPressEnter] + ".");
+        Appeal(appeal + ". " + sess.i18n(XlfKeys.ThenPressEnter) + ".");
         Console.ReadLine();
     }
 

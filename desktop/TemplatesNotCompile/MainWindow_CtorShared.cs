@@ -16,6 +16,7 @@ public partial class MainWindow_Ctor
 
         // then shared UC for every app
         LogUC,
+        Settings,
         CheckBoxListMode
     }
 }

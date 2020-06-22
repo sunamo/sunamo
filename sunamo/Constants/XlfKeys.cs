@@ -6,8 +6,41 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string PasteFromClipoardIntoGoogleSheets = "PasteFromClipoardIntoGoogleSheets"; 
+	public const string IntroductoryPrice = "IntroductoryPrice"; 
 
+	public const string OriginalPrice = "OriginalPrice"; 
+	public const string ReadOurTermsOfUseBeforeBuy = "ReadOurTermsOfUseBeforeBuy"; 
+	public const string feedback = "feedback"; 
+	public const string FeedbackWasSavedDeveloperWillBeContactingYouBackSoon = "FeedbackWasSavedDeveloperWillBeContactingYouBackSoon"; 
+	public const string HowToUse = "HowToUse"; 
+	public const string ScrolledToLine = "ScrolledToLine"; 
+	public const string OutputWasSavedTo = "OutputWasSavedTo"; 
+	public const string cars = "cars"; 
+	public const string successfullyDownloaded = "successfullyDownloaded"; 
+	public const string photos = "photos"; 
+	public const string optional = "optional"; 
+	public const string andCreateComparingTable = "andCreateComparingTable"; 
+	public const string AutoLogin = "AutoLogin"; 
+	public const string RememberLogin = "RememberLogin"; 
+	public const string ToEnter = "ToEnter"; 
+	public const string EnteringData = "EnteringData"; 
+	public const string andPressEnter = "andPressEnter"; 
+	public const string AddNewSetOfCars = "AddNewSetOfCars"; 
+	public const string SetOfCars = "SetOfCars"; 
+	public const string Like = "Like"; 
+	public const string UriFrom = "UriFrom"; 
+	public const string logs = "logs"; 
+	public const string AlwaysOnTop = "AlwaysOnTop"; 
+	public const string FirstItem = "FirstItem"; 
+	public const string YouHaveToLogInBeforeUseApp = "YouHaveToLogInBeforeUseApp"; 
+	public const string YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase = "YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase"; 
+	public const string Mode = "Mode"; 
+	public const string ShowLoginedUser = "ShowLoginedUser"; 
+	public const string GenerateScreenshot = "GenerateScreenshot"; 
+	public const string FeedBack = "FeedBack"; 
+	public const string PleaseUseAppInTray = "PleaseUseAppInTray"; 
+	public const string Init = "Init"; 
+	public const string PasteFromClipoardIntoGoogleSheets = "PasteFromClipoardIntoGoogleSheets"; 
 	public const string RefreshSetsFromDrive = "RefreshSetsFromDrive"; 
 	public const string OpenFolderOnDrive = "OpenFolderOnDrive"; 
 	public const string CopyToClipboardForGoogleMyMaps = "CopyToClipboardForGoogleMyMaps"; 

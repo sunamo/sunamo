@@ -45,7 +45,7 @@ namespace ConfigurableWindow.Shared
             this.miAlwaysOnTop = miAlwaysOnTop;
             miAlwaysOnTop.Click += MiAlwaysOnTop_Click;
             miAlwaysOnTop.IsCheckable = true;
-            miAlwaysOnTop.Header = "Always on top";
+            miAlwaysOnTop.Header = ContentControlHelper.GetContent(new ControlInitData { text = sess.i18n(XlfKeys.AlwaysOnTop) });
 
             w = w2;
             w.LocationChanged += W_LocationChanged;

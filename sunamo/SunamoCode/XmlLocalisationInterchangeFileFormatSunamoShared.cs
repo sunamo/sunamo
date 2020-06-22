@@ -7,7 +7,8 @@ using System.Windows;
 /// <summary>
 /// Must be directly in standard, not SunamoCode.apps because SunamoCode.apps is derive from standard and I need class XmlLocalisationInterchangeFileFormat in standard
 /// </summary>
-public partial  class XmlLocalisationInterchangeFileFormatSunamo{
+public partial class XmlLocalisationInterchangeFileFormatSunamo
+{
     static Type type = typeof(XmlLocalisationInterchangeFileFormatSunamo);
     public const string cs = "const string ";
     const string eqBs = " = \"";
@@ -108,5 +109,5 @@ public partial  class XmlLocalisationInterchangeFileFormatSunamo{
         return null;
     }
 
-   
+
 }

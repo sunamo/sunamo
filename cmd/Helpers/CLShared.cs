@@ -22,7 +22,7 @@ public static partial class CL
 
     private static void PerformAction(Dictionary<string, VoidVoid> actions, List<string> listOfActions)
     {
-        int selected = SelectFromVariants(listOfActions, RLData.en[XlfKeys.SelectActionToProceed]);
+        int selected = SelectFromVariants(listOfActions, sess.i18n(XlfKeys.SelectActionToProceed));
         if (selected != -1)
         {
             string ind = listOfActions[selected];
@@ -38,7 +38,7 @@ public static partial class CL
     public static void PerformAction(Dictionary<string, EventHandler> actions, object sender)
     {
         var listOfActions = NamesOfActions(actions);
-        int selected = SelectFromVariants(listOfActions, RLData.en[XlfKeys.SelectActionToProceed] + ":");
+        int selected = SelectFromVariants(listOfActions, sess.i18n(XlfKeys.SelectActionToProceed) + ":");
         string ind = listOfActions[selected];
         EventHandler eh = actions[ind];
 
@@ -122,7 +122,7 @@ public static partial class CL
     /// <param name = "vyzva"></param>
     public static void SelectFromVariants(Dictionary<string, EmptyHandler> actions)
     {
-        string appeal = RLData.en[XlfKeys.SelectAction] + ":";
+        string appeal = sess.i18n(XlfKeys.SelectAction) + ":";
         int i = 0;
         foreach (KeyValuePair<string, EmptyHandler> kvp in actions)
         {
@@ -175,10 +175,10 @@ public static partial class CL
         string z = "";
         if (append)
         {
-            whatOrTextWithoutEndingDot = RLData.en[RLData.en[XlfKeys.Enter]] + " " + whatOrTextWithoutEndingDot + "";
+            whatOrTextWithoutEndingDot = sess.i18n(XlfKeys.Enter) + " " + whatOrTextWithoutEndingDot + "";
         }
 
-        whatOrTextWithoutEndingDot += ". " + RLData.en[XlfKeys.ForExitEnter] + " -1" + ".";
+        whatOrTextWithoutEndingDot += ". " + sess.i18n(XlfKeys.ForExitEnter) + " -1" + ".";
         Console.WriteLine();
         Console.WriteLine(whatOrTextWithoutEndingDot);
         StringBuilder sb = new StringBuilder();
@@ -234,7 +234,7 @@ public static partial class CL
         if (z == string.Empty)
         {
             z = ClipboardHelper.GetText();
-            TypedConsoleLogger.Instance.Information(RLData.en[XlfKeys.AppLoadedFromClipboard] + " " + ": " + z);
+            TypedConsoleLogger.Instance.Information(sess.i18n(XlfKeys.AppLoadedFromClipboard) + " " + ": " + z);
         }
 
         return z.Trim().Trim(AllChars.st).Trim();

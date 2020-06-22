@@ -524,6 +524,14 @@ public partial class FS
         var r = Path.GetFullPath((new Uri(a)).LocalPath);
         return r;
     }
+
+    public static string GetAbsolutePath2(string relativePath, string dir)
+    {
+        var ap = GetAbsolutePath(dir, relativePath);
+        return Path.GetFullPath(ap);
+        
+    }
+
     public static string GetAbsolutePath(string dir, string relativePath)
     {
         var ds = AllStrings.ds;

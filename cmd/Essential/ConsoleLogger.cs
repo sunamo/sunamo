@@ -49,7 +49,7 @@ namespace cmd.Essential
                     bk = ConsoleColor.Green;
                     break;
                 default:
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en[XlfKeys.UninplementedBranch]);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.UninplementedBranch));
                     break;
             }
             if (bk != ConsoleColor.Black)

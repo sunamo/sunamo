@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -68,8 +68,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="netstandard" />
-    <Reference Include="ObjectDumper">
-      <HintPath>..\..\..\Documents\vs17\Projects\sunamo\dll\ObjectDumper.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -126,6 +127,7 @@
     <Compile Include="Extensions\SystemWindowsMediaColorExtensions.cs" />
     <Compile Include="Extensions\SystemWindowsSizeExtensions.cs" />
     <Compile Include="GoogleAppsMailbox.cs" />
+    <Compile Include="Helpers\ColorH.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\DrawingColorHelper.cs" />
     <Compile Include="Helpers\NetHelper.cs" />
@@ -162,7 +164,6 @@
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -172,6 +173,7 @@
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
     <Folder Include="SunamoCode\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\duo\duo.csproj">
@@ -182,17 +184,10 @@
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj">
-      <Project>{1ec9de60-7cb6-4b6e-bb43-16654f58ff2b}</Project>
-      <Name>SunamoCode</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms">
       <Version>3.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

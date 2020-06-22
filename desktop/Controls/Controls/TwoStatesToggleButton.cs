@@ -24,7 +24,7 @@ public static partial class TwoStatesToggleButton
         }
         else
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),RLData.en[XlfKeys.YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton]);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.YouCannotCallSetInitialCheckedTwiceForTheSameToggleButton));
         }
     }
 

@@ -3,8 +3,10 @@ using desktop.AwesomeFont;
 using desktop.UserControls;
 using sunamo;
 using sunamo.Essential;
+using sunamo.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +18,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     Mode mode = Mode.Empty; public string ModeString { get => mode.ToString(); }
     EmptyUC emptyUC = null;
     LogUC logUC = null;
+    UserControl settingsUC = null;
     UserControl _actual = new UserControl(); public UserControl actual { get => _actual; set => _actual = value; }
     IUserControl userControl = null;
     IUserControlWithMenuItemsList userControlWithMenuItems;
@@ -23,6 +26,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     IKeysHandler keysHandler;
     List<MenuItem> previouslyRegisteredMenuItems = new List<MenuItem>();
     dynamic Instance = null;
+    //public SunamoCzLoginManager sunamoCzLoginManager = new SunamoCzLoginManager();
 
     #region MyRegion
     MenuItem miGenerateScreenshot = null;
@@ -130,6 +134,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         Name = ThisApp.Name;
         data.Add(this);
 
+        
+
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
@@ -147,6 +153,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
 
         #region 4) Initialize helpers, SQL of app
         TF.isUsed = PHWin.IsUsed;
+        //sunamoCzLoginManager.DoWebRequest = DoWebRequest;
         #endregion
 
         #region 5) Set modes
@@ -189,8 +196,6 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 9) Set up UI of app
         Icon = EmbeddedResourcesHShared.ciShared.GetAppIcon("" + ".ico");
 
-
-
         miGenerateScreenshot.Header = "Generate screenshot"; 
         miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {
@@ -227,6 +232,11 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     //    } 
     #endregion
 
+        string DoWebRequest(string uri)
+    {
+        //return HttpClientHelperHttp.GetResponseText(uri, HttpMethod.Get, new HttpRequestDataHttp());
+        return HttpClientHelper.GetResponseText(uri, HttpMethod.Get, new HttpRequestData());
+    }
     private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
     {
         if (keysHandler != null)
@@ -328,6 +338,13 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
                     logUC = new LogUC();
                 }
                 actual = logUC;
+                break;
+            case Mode.Settings:
+                if (settingsUC == null)
+                {
+                    //settingsUC = ne
+                }
+                actual = settingsUC;
                 break;
             #endregion
             default:

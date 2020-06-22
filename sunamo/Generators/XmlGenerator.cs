@@ -18,7 +18,7 @@ using System.Xml;
 public class XmlGenerator
 {
     static Type type = typeof(XmlGenerator);
-    protected StringBuilder sb = new StringBuilder();
+    public StringBuilder sb = new StringBuilder();
     private bool _useStack = false;
     private Stack<string> _stack = null;
 

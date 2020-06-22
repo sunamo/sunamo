@@ -32,14 +32,14 @@ public class GuesslangHelper
         return null;
     }
 
-    public static void GenerateDictionaryForMapToTextBoxSyntax()
+    public static void GenerateDictionaryForMapToTextBoxSyntax(Func<Dictionary<string, string>, string> CSharpHelperGetDictionaryValuesFromDictionary)
     {
         string File = @"c:\Program Files\Python36\Lib\site-packages\guesslang\data\languages.json";
         var s = TF.ReadFile(File);
         //TextReader tr = TF.TextReader(File);
         //JsonTextReader js = new JsonTextReader(tr);
         //dynamic son = JsonConvert.DeserializeObject(s);
-        dynamic son = JsonNewtonSoft.instance.Deserialize(s);
+        dynamic son = new object(); //JsonNewtonSoft.instance.Deserialize(s);
         Dictionary<string, string> d = new Dictionary<string, string>();
         foreach (var item in son)
         {
@@ -47,7 +47,7 @@ public class GuesslangHelper
             d.Add(name, string.Empty);
         }
 
-        var output = CSharpHelper.GetDictionaryValuesFromDictionary<string, string>(0, "name", d);
+        var output = CSharpHelperGetDictionaryValuesFromDictionary(d);
         ClipboardHelper.SetText(output);
     }
 }

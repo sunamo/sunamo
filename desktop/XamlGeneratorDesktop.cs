@@ -6,41 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Markup;
 using desktop;
 
-public class XamlGeneratorDesktop : XamlGenerator
+public class XamlGeneratorDesktop //: XamlGenerator
 {
     static Type type = typeof(XamlGeneratorDesktop);
 
-    /// <summary>
-    /// in outer rows
-    /// in inner columns
-    /// </summary>
-    /// <param name="elements"></param>
-    public void Grid(List<List<string>> elements)
+    
+
+    public T GetControl<T>(XmlGenerator x)
     {
-        ThrowExceptions.HaveAllInnerSameCount(Exc.GetStackTrace(),type, "Grid", elements);
-        int rows = elements.Count;
-        int columns = elements[0].Count;
-
-        WriteTag("Grid");
-
-        WriteColumnDefinitions(GridHelper.ForAllTheSame(columns));
-        WriteRowDefinitions(GridHelper.ForAllTheSame(rows));
-
-        for (int row = 0; row < rows; row++)
-        {
-            for (int column = 0; column < columns; column++)
-            {
-                string cell = elements[row][column];
-                cell = cell.Replace("><", $" Grid.Column=\"{column}\" Grid.Row=\"{row}\"><");
-                WriteRaw(cell);
-            }
-        }
-        TerminateTag("Grid");
-    }
-
-    public T GetControl<T>()
-    {
-        string vr = sb.ToString();
+        string vr = x.sb.ToString();
         vr = SH.ReplaceFirstOccurences(vr, ">", " xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">");
         var vrR = (T)XamlReader.Parse(vr);
         return vrR;

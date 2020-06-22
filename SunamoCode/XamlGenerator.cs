@@ -11,6 +11,34 @@ namespace desktop
 {
     public class XamlGenerator : XmlGenerator
     {
+        /// <summary>
+        /// in outer rows
+        /// in inner columns
+        /// </summary>
+        /// <param name="elements"></param>
+        public void Grid(List<List<string>> elements)
+        {
+            ThrowExceptions.HaveAllInnerSameCount(Exc.GetStackTrace(), type, "Grid", elements);
+            int rows = elements.Count;
+            int columns = elements[0].Count;
+
+            WriteTag("Grid");
+
+            WriteColumnDefinitions(GridHelperSunamo.ForAllTheSame(columns));
+            WriteRowDefinitions(GridHelperSunamo.ForAllTheSame(rows));
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int column = 0; column < columns; column++)
+                {
+                    string cell = elements[row][column];
+                    cell = cell.Replace("><", $" Grid.Column=\"{column}\" Grid.Row=\"{row}\"><");
+                    WriteRaw(cell);
+                }
+            }
+            TerminateTag("Grid");
+        }
+
         static Type type = typeof(XamlGenerator);
         public void WriteDataTemplate(List<double> cd)
         {

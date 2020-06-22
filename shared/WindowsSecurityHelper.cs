@@ -33,10 +33,10 @@ public static bool IsUserAdministrator()
         return System.Security.Principal.WindowsIdentity.GetCurrent().Name; 
     }
 
-    public static bool IsMyComputer()
+    public static bool IsMyComputer(string winAccountUserName, string machineName)
     {
         var un = CurrentUserName();
-        if (un == "ED\\n" && Environment.MachineName == "ED")
+        if (un == winAccountUserName && Environment.MachineName == machineName)
         {
             return true;
         }

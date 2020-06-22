@@ -9,6 +9,8 @@ public class VpsHelperSunamo
 {
     public const string path = @"c:\_";
 
+
+
     public static bool IsVps
     {
         get

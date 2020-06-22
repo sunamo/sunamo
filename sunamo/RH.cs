@@ -1,6 +1,4 @@
-﻿
-using sunamo.Constants;
-
+﻿using sunamo.Constants;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -126,9 +124,12 @@ public class RH
         var props = o.GetType().GetProperties();
         foreach (var item in props)
         {
-            if (!onlyNames.Contains(item.Name))
+            if (onlyNames.Count > 0)
             {
-                continue;
+                if (!onlyNames.Contains(item.Name))
+                {
+                    continue;
+                }
             }
 
             var getMethod = item.GetGetMethod();
@@ -388,10 +389,10 @@ public class RH
             case DumpProvider.Yaml:
                 dump = YamlHelper.DumpAsYaml(o);
                 break;
-            //case DumpProvider.Microsoft:
-            //    dump = JsonSy.Serialize(o);
-            //    break;
-            //case DumpProvider.Newtonsoft:
+            case DumpProvider.Json:
+                //dump = JsonParser.Serialize(o);
+                break;
+            //case DumpProvider.Json:
             //    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
             //    break;
             case DumpProvider.ObjectDumper:

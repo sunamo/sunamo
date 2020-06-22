@@ -49,7 +49,7 @@ namespace desktop.Controls.Collections
                 result.Add(((TextBlock)item).Text);
             }
             ClipboardHelper.SetLines(result);
-            SunamoTemplateLogger.Instance.CopiedToClipboard("logs");
+            SunamoTemplateLogger.Instance.CopiedToClipboard(sess.i18n(XlfKeys.logs));
         }
     }
 }

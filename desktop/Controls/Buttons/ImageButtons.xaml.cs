@@ -23,6 +23,7 @@ namespace desktop.Controls.Buttons
     /// </summary>
     public partial class ImageButtons : UserControl
     {
+
         static Type type = typeof(ImageButtons);
         List<Button> allButtons = null;
         public event VoidString Added;
@@ -174,7 +175,7 @@ namespace desktop.Controls.Buttons
 
         void Handler(object o, RoutedEventArgs e)
         {
-            string methodName = RLData.en[XlfKeys.Handler];
+            string methodName = sess.i18n(XlfKeys.Handler);
 
             Button btn = (Button)o;
             var t = btn.Tag.GetType();

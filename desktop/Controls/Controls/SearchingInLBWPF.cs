@@ -105,13 +105,13 @@ public class SearchingInLbWPF
                 }
             }
             lb.Items.Clear();
-            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en[XlfKeys.WasFounded] + " " + nechat.Count + " " + "items" + ". ");
+            ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.WasFounded) + " " + nechat.Count + " " + "items" + ". ");
             AddRangeToListBox(nechat.ToArray());
         }
         else
         {
             lb.Items.Clear();
-            ThisApp.SetStatus(TypeOfMessage.Information, RLData.en[XlfKeys.SearchingWasStopped] + ".");
+            ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.SearchingWasStopped) + ".");
             AddRangeToListBox(oc);
         }
     }

@@ -16,10 +16,12 @@ public static StackPanel GetContent(ControlInitData d)
         bool isText = text != null;
         StackPanel sp = new StackPanel();
         sp.Orientation = Orientation.Horizontal;
+        //10*2 padding
+        sp.Height = d.imageHeight + 20;
         if (isImg && isText)
         {
-            AddImg(img, sp, d.imageWidth, d.imageHeight);
-            AddTextBlock(text, sp);
+            var tbHeight = AddImg(img, sp, d.imageWidth, d.imageHeight);
+            AddTextBlock(text, sp, tbHeight);
         }
         else if (isImg)
         {
@@ -33,7 +35,15 @@ public static StackPanel GetContent(ControlInitData d)
         return sp;
     }
 
-private static void AddImg(string img, StackPanel sp, double w, double h)
+    /// <summary>
+    /// Return height which 
+    /// </summary>
+    /// <param name="img"></param>
+    /// <param name="sp"></param>
+    /// <param name="w"></param>
+    /// <param name="h"></param>
+    /// <returns></returns>
+private static double AddImg(string img, StackPanel sp, double w, double h)
     {
         bool isAwesome = false;
 
@@ -49,18 +59,38 @@ private static void AddImg(string img, StackPanel sp, double w, double h)
         if (isAwesome)
         {
             TextBlock tb = new TextBlock();
+
+            tb.FontSize = h;
+            tb.Padding = new System.Windows.Thickness(10);
+
+            sp.Height = h + tb.Padding.Top + tb.Padding.Bottom;
+
             AwesomeFontControls.SetAwesomeFontSymbol(tb, img);
             sp.Children.Add(tb);
         }
         else
         {
-            sp.Children.Add(ImageHelperDesktop.Get(img));
+            var img2 = ImageHelperDesktop.Get(img);
+            img2.Margin = new System.Windows.Thickness( 10);
+
+            sp.Children.Add(img2);
         }
-        
+
+        var r = AwesomeFontControls.ReturnFontSizeForTextNextToAwesomeIconWithSize(sp.Height);
+        return r;
     }
 
-private static void AddTextBlock(string text, StackPanel sp)
+    private static void AddTextBlock(string text, StackPanel sp, double tbHeight = double.NaN)
     {
-        sp.Children.Add(TextBlockHelper.Get(new ControlInitData{text = text}));
+        var tb = TextBlockHelper.Get(new ControlInitData { text = text });
+        if (!double.IsNaN( tbHeight ))
+        {
+            tb.FontSize = tbHeight;
+        }
+
+        // Must be vertical alignment
+        tb.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+
+        sp.Children.Add(tb);
     }
 }

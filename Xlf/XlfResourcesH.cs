@@ -65,7 +65,7 @@ public class XlfResourcesH
     /// <param name="appData"></param>
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory)
     {
-        if (previousKey == key)
+        if (previousKey == key && previousKey != null)
         {
             return null;
         }

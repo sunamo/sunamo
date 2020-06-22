@@ -1925,7 +1925,9 @@ public static partial class SH
                 delimiter = Environment.NewLine;
             }
             var enumerable = CA.ToListString(value as IEnumerable);
-            CA.Replace(enumerable, delimiterS, AllStrings.space);
+            // I dont know why is needed replace delimiterS(,) for space
+            // This setting remove , before RoutedEventArgs etc.
+            //CA.Replace(enumerable, delimiterS, AllStrings.space);
             text = SH.Join(delimiter, enumerable);
         }
         else if (valueType == Types.tDateTime)
@@ -1936,6 +1938,7 @@ public static partial class SH
         {
             text = value.ToString();
         }
+
         return text;
     }
 

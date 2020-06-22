@@ -68,18 +68,20 @@ namespace desktop.Controls.Controls
             return false;
         }
 
-        public  void Validate(object tb, TwoRadiosUC control, ValidateData d = null)
+        public  bool Validate(object tb, TwoRadiosUC control, ValidateData d = null)
         {
             if (d == null)
             {
                 d = new ValidateData();
             }
             validated = BTS.GetValueOfNullable( rb1.IsChecked) || BTS.GetValueOfNullable( rb2.IsChecked);
+            return validated;
         }
 
-        public void Validate(object tbFolder, ValidateData d = null)
+        public bool Validate(object tbFolder, ValidateData d = null)
         {
             Validate(tbFolder, this, d);
+            return validated;
         }
     }
 }

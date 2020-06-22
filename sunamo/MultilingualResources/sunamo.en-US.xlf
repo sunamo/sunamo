@@ -11192,19 +11192,19 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="DownloadCars" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">1. Download cars</target>
+          <target state="translated">Download cars</target>
         </trans-unit>
         <trans-unit id="DownloadPhotos" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">2. Download photos</target>
+          <target state="translated">Download photos</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardGoogleSheetCompare" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">3. Copy to clipboard Google Sheet compare</target>
+          <target state="translated">Copy to clipboard Google Sheet compare</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardForGoogleMyMaps" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">4. Copy to clipboard for Google My Maps</target>
+          <target state="translated">Copy to clipboard for Google My Maps</target>
         </trans-unit>
         <trans-unit id="OpenFolderOnDrive" translate="no" xml:space="preserve">
           <source></source>
@@ -11217,6 +11217,138 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="PasteFromClipoardIntoGoogleSheets" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Paste from clipoard into Google Sheets</target>
+        </trans-unit>
+        <trans-unit id="Init" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Init</target>
+        </trans-unit>
+        <trans-unit id="PleaseUseAppInTray" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Please use app in tray</target>
+        </trans-unit>
+        <trans-unit id="FeedBack" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Feed back</target>
+        </trans-unit>
+        <trans-unit id="GenerateScreenshot" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Generate screenshot</target>
+        </trans-unit>
+        <trans-unit id="ShowLoginedUser" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show logined user</target>
+        </trans-unit>
+        <trans-unit id="Mode" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Mode</target>
+        </trans-unit>
+        <trans-unit id="YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">You're logined but you haven't purchased subscription. App will open page where you can make purchase</target>
+        </trans-unit>
+        <trans-unit id="YouHaveToLogInBeforeUseApp" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">You have to log in before use app</target>
+        </trans-unit>
+        <trans-unit id="FirstItem" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">First Item</target>
+        </trans-unit>
+        <trans-unit id="AlwaysOnTop" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Always on top</target>
+        </trans-unit>
+        <trans-unit id="logs" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">logs</target>
+        </trans-unit>
+        <trans-unit id="UriFrom" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Uri from</target>
+        </trans-unit>
+        <trans-unit id="Like" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Like</target>
+        </trans-unit>
+        <trans-unit id="SetOfCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Set of cars</target>
+        </trans-unit>
+        <trans-unit id="AddNewSetOfCars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Add new set of cars</target>
+        </trans-unit>
+        <trans-unit id="andPressEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">and press enter</target>
+        </trans-unit>
+        <trans-unit id="EnteringData" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Entering data</target>
+        </trans-unit>
+        <trans-unit id="ToEnter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Enter</target>
+        </trans-unit>
+        <trans-unit id="RememberLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Remember login</target>
+        </trans-unit>
+        <trans-unit id="AutoLogin" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Auto login</target>
+        </trans-unit>
+        <trans-unit id="andCreateComparingTable" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">and create comparing table</target>
+        </trans-unit>
+        <trans-unit id="optional" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">optional</target>
+        </trans-unit>
+        <trans-unit id="photos" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">photos</target>
+        </trans-unit>
+        <trans-unit id="successfullyDownloaded" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">successfully downloaded</target>
+        </trans-unit>
+        <trans-unit id="cars" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">cars</target>
+        </trans-unit>
+        <trans-unit id="OutputWasSavedTo" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Output was saved to</target>
+        </trans-unit>
+        <trans-unit id="ScrolledToLine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Scrolled to line</target>
+        </trans-unit>
+        <trans-unit id="HowToUse" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">How to use</target>
+        </trans-unit>
+        <trans-unit id="FeedbackWasSavedDeveloperWillBeContactingYouBackSoon" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Feedback was saved. Developer will be contacting you back soon</target>
+        </trans-unit>
+        <trans-unit id="feedback" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">feedback</target>
+        </trans-unit>
+        <trans-unit id="ReadOurTermsOfUseBeforeBuy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Read our Terms of use before buy</target>
+        </trans-unit>
+        <trans-unit id="OriginalPrice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Original price</target>
+        </trans-unit>
+        <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Introductory price</target>
         </trans-unit>
       </group>
     </body>

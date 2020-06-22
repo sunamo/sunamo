@@ -60,7 +60,7 @@ namespace desktop.Controls.Collections
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
 
-        public string Title => RLData.en[XlfKeys.DecideWhichToProcess];
+        public string Title => sess.i18n(XlfKeys.DecideWhichToProcess);
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -227,7 +227,7 @@ namespace desktop.Controls.Collections
 
             var file = AppData.ci.GetFile(AppFolders.Output, nameof(Compare3InCheckBoxListUC));
             TF.SaveFile(tog.ToString(), file);
-            ThisApp.SetStatus(TypeOfMessage.Success, "File was saved to " + file);
+            ThisApp.SetStatus(TypeOfMessage.Success, sess.i18n(XlfKeys.OutputWasSavedTo) + " " + file);
             PH.Start(file);
         }
 
@@ -235,7 +235,7 @@ namespace desktop.Controls.Collections
         {
             MenuItem mi = MenuItemHelper.Get(new ControlInitData { content = "Save to drive", OnClick = SaveToDrive });
 
-            //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en[XlfKeys.Save], OnClick = Save });
+            //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = sess.i18n(XlfKeys.Save), OnClick = Save });
             //mi.Items.Add(miSave);
 
             return CA.ToList<MenuItem>();

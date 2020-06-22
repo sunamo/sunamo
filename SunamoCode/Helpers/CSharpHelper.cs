@@ -5,6 +5,17 @@ using System.Collections.Generic;
 using System.Text;
 public static partial class CSharpHelper
 {
+    public static string GetDictionaryValuesFromTwoList(List<string> names, List<string> chars)
+    {
+        return CSharpHelper.GetDictionaryValuesFromTwoList<string, string>(2, "a", names, chars, new CSharpGeneratorArgs { splitKeyWith = "," });
+    }
+
+    //var output = 
+
+    public static string GetDictionaryValuesFromDictionary(Dictionary<string, string> d)
+    {
+        return CSharpHelper.GetDictionaryValuesFromDictionary<string, string>(0, "name", d);
+    }
 
     public static string GetSummaryXmlDocumentation(List<string> cs)
     {

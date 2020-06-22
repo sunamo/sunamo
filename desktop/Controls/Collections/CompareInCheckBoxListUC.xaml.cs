@@ -54,7 +54,7 @@ namespace desktop.Controls.Collections
 
         public bool? DialogResult { set => ChangeDialogResult(value); }
 
-        public string Title => RLData.en[XlfKeys.DecideWhichToProcess];
+        public string Title => sess.i18n(XlfKeys.DecideWhichToProcess);
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -247,7 +247,7 @@ namespace desktop.Controls.Collections
         {
             //MenuItem mi = MenuItemHelper.Get(Title);
 
-            MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = RLData.en[XlfKeys.Save], OnClick = Save });
+            MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = sess.i18n(XlfKeys.Save), OnClick = Save });
             //mi.Items.Add(miSave);
 
             return CA.ToList<MenuItem>(miSave);

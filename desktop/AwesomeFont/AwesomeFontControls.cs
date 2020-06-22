@@ -14,7 +14,7 @@ namespace desktop.AwesomeFont
     /// For WPF app is necessary *.ttf/.otf with build action Resource.
     /// For UWP is needed*.otf with build action Content.
     /// </summary>
-    public static class AwesomeFontControls
+    public  static partial class AwesomeFontControls
     {
         public const int low = 61440;
         public const int high = 62176;

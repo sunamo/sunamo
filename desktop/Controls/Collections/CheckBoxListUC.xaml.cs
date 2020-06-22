@@ -47,7 +47,7 @@ namespace desktop.Controls.Collections
             }
         }
 
-        public string Title => RLData.en[XlfKeys.CheckBoxList];
+        public string Title => sess.i18n(XlfKeys.CheckBoxList);
 
         public void Accept(object input)
         {

@@ -37,9 +37,9 @@ using System.Diagnostics;
             }
         }
 
-    public static void PrintElapsedAndContinue(string v)
+    public static void PrintElapsedAndContinue(string notTranslateAbleString)
     {
-        StopAndPrintElapsed(v);
+        StopAndPrintElapsed(notTranslateAbleString);
         Start();
     }
 }

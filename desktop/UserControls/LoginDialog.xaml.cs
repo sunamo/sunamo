@@ -59,12 +59,16 @@ namespace desktop
         /// </summary>
         private LoginDialog(string salt)
         {
-            
             InitializeComponent();
             chbAutoLogin.Checked += chbAutoLogin_Checked;
             chbRememberLogin.Unchecked += chbRememberLogin_Unchecked;
 
-            Title = RLData.en[XlfKeys.EnterLoginCredentials];
+            Title = sess.i18n(XlfKeys.EnterLoginCredentials);
+
+            tbLogin.Text = sess.i18n(XlfKeys.Login) + AllStrings.cs2;
+            tbPw.Text = sess.i18n(XlfKeys.Password) + AllStrings.cs2;
+            chbRememberLogin.Content = sess.i18n(XlfKeys.RememberLogin);
+            chbAutoLogin.Content = sess.i18n(XlfKeys.AutoLogin);
         }
 
         void chbRememberLogin_Unchecked(object sender, RoutedEventArgs e)

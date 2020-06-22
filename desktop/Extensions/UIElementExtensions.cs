@@ -11,7 +11,6 @@ using desktop;
 using desktop.Controls;
 using desktop.Controls.Controls;
 using desktop.Controls.Input;
-using PathEditor;
 public static partial class UIElementExtensions
 {
     private static Action EmptyDelegate = delegate ()

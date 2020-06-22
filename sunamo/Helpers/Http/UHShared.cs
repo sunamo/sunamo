@@ -162,6 +162,11 @@ public partial class UH
         return WebUtility.UrlEncode(co.Trim());
     }
 
+    public static string UrlDecode(string co)
+    {
+        return WebUtility.UrlDecode(co.Trim());
+    }
+
     /// <summary>
     /// https://lyrics.sunamo.cz/Me/Login.aspx?ReturnUrl=https://lyrics.sunamo.cz/Artist/walk-the-moon => Login.aspx
     /// </summary>

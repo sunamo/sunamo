@@ -53,7 +53,7 @@ static Type type = typeof(InputTwoColumnsUC);
         {
             if (neededRows > rowsCount)
             {
-                ThrowExceptions.BadMappedXaml(Exc.GetStackTrace(),type, "InputTwoColumnsUC", "InputTwoColumnsUC", RLData.en[XlfKeys.ItNeedsMoreRowsThanItExists]);
+                ThrowExceptions.BadMappedXaml(Exc.GetStackTrace(),type, "InputTwoColumnsUC", "InputTwoColumnsUC", sess.i18n(XlfKeys.ItNeedsMoreRowsThanItExists));
             }
             else
             {
@@ -93,7 +93,7 @@ static Type type = typeof(InputTwoColumnsUC);
             {
                 if (string.IsNullOrEmpty(item.Text))
                 {
-                    ThisApp.SetStatus(TypeOfMessage.Error, ExceptionStrings.AllOfInputsMustBeFilled);
+                    ThisApp.SetStatus(TypeOfMessage.Error, sess.i18n(XlfKeys.AllOfTheInputsMustBeFilled));
                     ////DebugLogger.Instance.ClipboardOrDebug(methodName + "Something was not filled in");
                     allOk = false;
                 }

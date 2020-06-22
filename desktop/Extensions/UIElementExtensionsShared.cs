@@ -11,7 +11,7 @@ using desktop;
 using desktop.Controls;
 using desktop.Controls.Controls;
 using desktop.Controls.Input;
-using PathEditor;
+
 
 public static partial class UIElementExtensions{
     static Type type = typeof(UIElementExtensions);
@@ -86,12 +86,10 @@ public static partial class UIElementExtensions{
             c.Validate(name, d);
             return TwoRadiosUC.validated;
         }
-        else if (t == PathEditor.SuggestTextBoxPath.type)
+        else if (t == TypesControlsSunamo.tPathEditor)
         {
-            var c = ui as PathEditor.SuggestTextBoxPath;
-            //, d here cannot be
-            c.Validate(name);
-            return PathEditor.SuggestTextBoxPath.validated;
+            IValidateControl td = (IValidateControl)ui;
+            return td.Validate(name, d);
         }
         else
         {
@@ -137,9 +135,10 @@ public static partial class UIElementExtensions{
             {
                 SelectManyFiles.validated = b;
             }
-            else if (t == PathEditor.SuggestTextBoxPath.type)
+            else if (t == TypesControlsSunamo.tPathEditor)
             {
-                PathEditor.SuggestTextBoxPath.validated = b;
+            var ivc = (IValidateControl)ui;
+            ivc.Validated = b;
             }
             else
             {
@@ -185,10 +184,10 @@ public static partial class UIElementExtensions{
             var txt = (TwoRadiosUC)ui;
             return txt.GetBool();
         }
-        else if (t == SuggestTextBoxPath.type)
+        else if (t == TypesControlsSunamo.tPathEditor)
         {
-            var txt = (SuggestTextBoxPath)ui;
-            return txt.dataContext.SelectedPathPart.Path;
+            var txt = (IValidateControl)ui;
+            return txt.GetContent();
         }
         else if (t == TypesControls.tTextBlock)
         {

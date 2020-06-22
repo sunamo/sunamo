@@ -1,4 +1,5 @@
 ﻿using desktop.Controls;
+using Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,9 @@ public partial class WindowHelper{
 
         string dump = null;
         //dump = YamlHelper.DumpAsYaml(e);
-        dump = SunamoJsonHelper.SerializeObject(e, true);
+        //dump = SunamoJsonHelper.SerializeObject(e, true);
+        //dump = JsonParser.Serialize<>
+        dump = RH.DumpAsString(string.Empty, e, DumpProvider.Reflection);
         ShowTextResult result = new ShowTextResult(methodName + dump);
         result.ChangeDialogResult += Result_ChangeDialogResult;
         windowOpener = Application.Current.MainWindow as IWindowOpener;

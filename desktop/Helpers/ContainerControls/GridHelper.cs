@@ -19,24 +19,6 @@ public partial class GridHelper
     /// </summary>
     public static readonly ColumnDefinition cdAuto = GetColumnDefinition(glAuto);
 
-
-    /// <summary>
-    /// After can be use with XamlGeneratorDesktop.Write*Definitions 
-    /// </summary>
-    /// <param name="columns"></param>
-    /// <returns></returns>
-    public static List<string> ForAllTheSame(int columns)
-    {
-        List<string> result = new List<string>(columns);
-        var d = 100d / (double)columns;
-        for (int i = 0; i < columns; i++)
-        {
-            result.Add(d + AllStrings.asterisk);
-        }
-
-        return result;
-    }
-
     public static void ForAllTheSameRuntime(Grid grid, int count, bool columns)
     {
         var d = 100d / (double)count;

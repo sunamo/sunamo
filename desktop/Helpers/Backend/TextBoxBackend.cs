@@ -169,7 +169,7 @@ namespace desktop.Helpers.Backend
             {
                 TextBoxHelper.ScrollToLine(txtContent, line);
             }
-            ThisApp.SetStatus(TypeOfMessage.Information, "Scrolled to line" + " " + line);
+            ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.ScrolledToLine) + " " + line);
             SetTextBoxState();
         }
 

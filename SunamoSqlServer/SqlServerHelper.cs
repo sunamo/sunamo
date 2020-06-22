@@ -5,10 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 public partial class SqlServerHelper
 {
-  
-    
-    
-
     public static bool IsNull(object o)
     {
         return o == null || o == DBNull.Value;
@@ -20,7 +16,7 @@ public partial class SqlServerHelper
         {
             return true;
         }
-        return o.ToString().Trim() != string.Empty;
+        return o.ToString().Trim() == string.Empty;
     }
 
     public static Tuple<int, int> UnnormalizeNumber(int serie)

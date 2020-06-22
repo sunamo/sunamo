@@ -69,10 +69,10 @@ namespace desktop.Controls
         {
             if (v == "")
             {
-                v = RLData.en[XlfKeys.None];
+                v = sess.i18n(XlfKeys.None);
             }
             selectedFile = v;
-            tbSelectedFile.Text = RLData.en[XlfKeys.SelectedFile] + ": " + v;
+            tbSelectedFile.Text = sess.i18n(XlfKeys.SelectedFile) + ": " + v;
         }
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)

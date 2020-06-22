@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public class WikipediaHelper
 {
-    public static string HtmlEntitiesList()
+    public static string HtmlEntitiesList(Func<List<string>, List<string>, string> CSharpHelperGetDictionaryValuesFromTwoList)
     {
         var c = string.Empty;
         //c = TF.ReadFile(@"d:\_Test\sunamo\shared\WikipediaHelper\ParseTable.html");
@@ -21,7 +21,7 @@ public class WikipediaHelper
         List<string> chars = table.ColumnValues("Character", true, false);
         List<string> names = table.ColumnValues("Names", true, true);
 
-        return CSharpHelper.GetDictionaryValuesFromTwoList<string, string>(2, "a", names, chars, new CSharpGeneratorArgs { splitKeyWith = "," });
+        return CSharpHelperGetDictionaryValuesFromTwoList(names, chars);
     }
 
     /// <summary>

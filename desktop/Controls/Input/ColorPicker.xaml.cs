@@ -60,17 +60,17 @@ namespace desktop
 
             if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
             {
-                ATextBlock.Text = RLData.en[XlfKeys.Transparency] + ":";
-                RTextBlock.Text = RLData.en[XlfKeys.RedColoredFolder] + ":";
-                GTextBlock.Text = RLData.en[XlfKeys.GreenColorFolder] + ":";
-                BTextBlock.Text = RLData.en[XlfKeys.BlueColorFolder] + ":";
+                ATextBlock.Text = sess.i18n(XlfKeys.Transparency) + ":";
+                RTextBlock.Text = sess.i18n(XlfKeys.RedColoredFolder) + ":";
+                GTextBlock.Text = sess.i18n(XlfKeys.GreenColorFolder) + ":";
+                BTextBlock.Text = sess.i18n(XlfKeys.BlueColorFolder) + ":";
             }
             else
             {
-                ATextBlock.Text = RLData.en[XlfKeys.Opacity] + ":";
-                RTextBlock.Text = RLData.en[XlfKeys.RedColorComponent] + ":";
-                GTextBlock.Text = RLData.en[XlfKeys.GreenColorComponent] + ":";
-                BTextBlock.Text = RLData.en[XlfKeys.BlueColorComponent] + ":";
+                ATextBlock.Text = sess.i18n(XlfKeys.Opacity) + ":";
+                RTextBlock.Text = sess.i18n(XlfKeys.RedColorComponent) + ":";
+                GTextBlock.Text = sess.i18n(XlfKeys.GreenColorComponent) + ":";
+                BTextBlock.Text = sess.i18n(XlfKeys.BlueColorComponent) + ":";
             }
         }
 

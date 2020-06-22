@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using sunamo.Essential;
 
 /// <summary>
 /// Never use Task, async, await!!! 
@@ -28,7 +29,7 @@ public static class TaskExtensions
             var aggException = t.Exception.Flatten();
             foreach (var exception in aggException.InnerExceptions)
             {
-                DebugLogger.Instance.WriteLine(exception.Message);
+                ThisApp.SetStatus(TypeOfMessage.Error, Exceptions.TextOfExceptions(exception));
             }
         },
         TaskContinuationOptions.OnlyOnFaulted);
