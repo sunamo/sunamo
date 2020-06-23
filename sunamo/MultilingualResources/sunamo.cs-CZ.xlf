@@ -131,7 +131,7 @@
         </trans-unit>
         <trans-unit id="Login" translate="yes" xml:space="preserve">
           <source></source>
-          <target state="translated">Přihlášení</target>
+          <target state="translated">Login</target>
         </trans-unit>
         <trans-unit id="TheFileNameWasEmpty" translate="yes" xml:space="preserve">
           <source></source>
@@ -1775,7 +1775,7 @@
         </trans-unit>
         <trans-unit id="DoItNow" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Udělej to teď</target>
+          <target state="translated">Udělejte to teď</target>
         </trans-unit>
         <trans-unit id="generateRandomLogin" translate="no" xml:space="preserve">
           <source></source>
