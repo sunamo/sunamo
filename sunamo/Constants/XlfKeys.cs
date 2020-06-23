@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string IntroductoryPrice = "IntroductoryPrice"; 
+	public const string appFocusing = "appFocusing"; 
 
+	public const string IntroductoryPrice = "IntroductoryPrice"; 
 	public const string OriginalPrice = "OriginalPrice"; 
 	public const string ReadOurTermsOfUseBeforeBuy = "ReadOurTermsOfUseBeforeBuy"; 
 	public const string feedback = "feedback"; 
@@ -158,10 +159,10 @@ public class XlfKeys
 	public const string _MostPopularSongs = "_MostPopularSongs"; 
 	public const string _0sElectronicMusicBasedOnBreakbeatWithOtherInfluences = "_0sElectronicMusicBasedOnBreakbeatWithOtherInfluences"; 
 	public const string AddANewApp = "AddANewApp"; 
-	public const string InTheFormAppsCloud = "InTheFormAppsCloud"; 
-	public const string InTheFormTiles = "InTheFormTiles"; 
-	public const string InTheFormTilesNotShowing = "InTheFormTilesNotShowing"; 
-	public const string OrChooseByFocusApplication = "OrChooseByFocusApplication"; 
+	public const string appsCloud = "appsCloud"; 
+	public const string tiles4 = "tiles4"; 
+	public const string notShowing = "notShowing"; 
+	public const string OrChooseBy = "OrChooseBy"; 
 	public const string ChangeLanguage = "ChangeLanguage"; 
 	public const string CooperatingWith = "CooperatingWith"; 
 	public const string Store = "Store"; 
@@ -1728,7 +1729,6 @@ public class XlfKeys
     public const string TheNameOfTheAppOnGitHub = "TheNameOfTheAppOnGitHub";
     public const string TheNameOfTheApplication = "TheNameOfTheApplication";
     public const string SharedSettings = "SharedSettings";
-    public const string OrChooseBy = "OrChooseBy";
     public const string appsCloudu = "appsCloudu";
     public const string InTheForm = "InTheForm";
     public const string addNewApp = "addNewApp";

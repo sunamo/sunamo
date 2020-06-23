@@ -21,21 +21,21 @@
           <source></source>
           <target state="translated">Add a new app</target>
         </trans-unit>
-        <trans-unit id="InTheFormAppsCloud" translate="no" xml:space="preserve">
+        <trans-unit id="appsCloud" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">In the form apps cloud</target>
+          <target state="translated">apps cloud</target>
         </trans-unit>
-        <trans-unit id="InTheFormTiles" translate="no" xml:space="preserve">
+        <trans-unit id="tiles4" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">In the form tiles</target>
+          <target state="translated">tiles</target>
         </trans-unit>
-        <trans-unit id="InTheFormTilesNotShowing" translate="no" xml:space="preserve">
+        <trans-unit id="notShowing" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">In the form tiles (not showing)</target>
+          <target state="translated">not showing</target>
         </trans-unit>
-        <trans-unit id="OrChooseByFocusApplication" translate="no" xml:space="preserve">
+        <trans-unit id="OrChooseBy" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Or choose by focus application</target>
+          <target state="translated">Or choose by</target>
         </trans-unit>
         <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters">
           <target>Describe something you remember well (what you love, but other people don't know about it 1-1000 characters</target>
@@ -11349,6 +11349,10 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Introductory price</target>
+        </trans-unit>
+        <trans-unit id="appFocusing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">app focusing</target>
         </trans-unit>
       </group>
     </body>

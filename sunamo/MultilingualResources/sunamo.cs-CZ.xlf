@@ -1477,21 +1477,21 @@
           <source></source>
           <target state="translated">Přidat novou aplikaci</target>
         </trans-unit>
-        <trans-unit id="InTheFormAppsCloud" translate="no" xml:space="preserve">
+        <trans-unit id="appsCloud" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Ve formě app cloudu</target>
+          <target state="translated">app cloudu</target>
         </trans-unit>
-        <trans-unit id="InTheFormTiles" translate="no" xml:space="preserve">
+        <trans-unit id="tiles4" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Ve formě dlaždic</target>
+          <target state="translated">dlaždic</target>
         </trans-unit>
-        <trans-unit id="InTheFormTilesNotShowing" translate="no" xml:space="preserve">
+        <trans-unit id="NotShowing" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Ve formě dlaždic (nezobrazuje se)</target>
+          <target state="translated">nezobrazuje se</target>
         </trans-unit>
-        <trans-unit id="OrChooseByFocusApplication" translate="no" xml:space="preserve">
+        <trans-unit id="OrChooseBy" translate="no" xml:space="preserve">
           <source></source>
-          <target state="translated">Nebo si vyberte aplikaci jejím zaměřením</target>
+          <target state="translated">Nebo si vyberte</target>
         </trans-unit>
         <trans-unit id="UsefulAppsForYourNeeds" translate="no" xml:space="preserve">
           <source></source>
@@ -2508,6 +2508,14 @@
         <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Zaváděcí cena</target>
+        </trans-unit>
+        <trans-unit id="A" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zaměření na aplikaci</target>
+        </trans-unit>
+        <trans-unit id="appFocusing" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">zaměření aplikace</target>
         </trans-unit>
       </group>
     </body>
