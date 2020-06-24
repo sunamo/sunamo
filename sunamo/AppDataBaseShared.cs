@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-public abstract partial class AppDataBase<StorageFolder, StorageFile>
+public abstract partial class AppDataBase<StorageFolder, StorageFile>: IAppDataBase<StorageFolder, StorageFile>
 {
     public abstract StorageFile GetFileInSubfolder(AppFolders output, string subfolder, string file, string ext);
     public abstract StorageFolder GetFolder(AppFolders af);

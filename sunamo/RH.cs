@@ -117,11 +117,42 @@ public class RH
         }
     }
 
-    public static List<string> GetValuesOfProperty(object o, params string[] onlyNames)
+    public static List<string> GetValuesOfPropertyOrField(object o, params string[] onlyNames)
     {
         List<string> values = new List<string>();
+        values.AddRange(GetValuesOfProperty(o, onlyNames));
+        values.AddRange(GetValuesOfField(o, onlyNames));
 
+        return values;
+    }
+
+    public static List<string> GetValuesOfField(object o, params string[] onlyNames)
+    {
+        var t = o.GetType();
+        var props = t.GetFields();
+        List<string> values = new List<string>(props.Length);
+
+        foreach (var item in props)
+        {
+            if (onlyNames.Length > 0)
+            {
+                if (!onlyNames.Contains(item.Name))
+                {
+                    continue;
+                }
+            }
+
+            values.Add(item.Name + AllStrings.cs2 + SH.ListToString( GetValueOfField(item.Name, t, o, false)));
+        }
+
+        return values;
+    }
+
+    public static List<string> GetValuesOfProperty(object o, params string[] onlyNames)
+    {
         var props = o.GetType().GetProperties();
+        List<string> values = new List<string>(props.Length);
+
         foreach (var item in props)
         {
             if (onlyNames.Length > 0)
@@ -137,6 +168,7 @@ public class RH
             {
                 string name = getMethod.Name;
                 object value = null;
+
                 if (getMethod.GetParameters().Length > 0)
                 {
                     name += "[]";
@@ -153,6 +185,8 @@ public class RH
                         value = Exceptions.TextOfExceptions(ex);
                     }
                 }
+
+                name = name.Replace("get_", string.Empty);
 
                 values.Add($"{name}: {SH.ListToString(value)}");
             }
@@ -210,6 +244,8 @@ public class RH
     #endregion
 
     #region Get value
+    
+
     public static object GetValueOfField(string name, Type type, object instance, bool ignoreCase)
     {
         FieldInfo[] pis = type.GetFields();
@@ -383,20 +419,11 @@ public class RH
         string dump = null;
         switch (d)
         {
-            case DumpProvider.Reflection:
-                dump = SH.Join(RH.GetValuesOfProperty(o, onlyNames), Environment.NewLine);
-                break;
             case DumpProvider.Yaml:
-                dump = YamlHelper.DumpAsYaml(o);
-                break;
             case DumpProvider.Json:
-                //dump = JsonParser.Serialize(o);
-                break;
-            //case DumpProvider.Json:
-            //    dump = JavascriptSerialization.InstanceNewtonSoft.Serialize(o);
-            //    break;
             case DumpProvider.ObjectDumper:
-                dump = RH.DumpAsString(name, o);
+            case DumpProvider.Reflection:
+                dump = SH.Join(Environment.NewLine,RH.GetValuesOfProperty(o, onlyNames));
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", d);

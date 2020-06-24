@@ -20,13 +20,15 @@ public class TranslateDictionary : IDictionary<string, string>
         _l = l;
     }
 
+    public static Func<string, string> ReloadIfKeyWontBeFound;
+
     public string this[string key]
     {
         get
         {
             if (!_d.ContainsKey(key))
             {
-                var k = XlfResourcesH.SaveResouresToRLSunamo(key);
+                var k = ReloadIfKeyWontBeFound(key);
 
                 if (!_d.ContainsKey(key))
                 {

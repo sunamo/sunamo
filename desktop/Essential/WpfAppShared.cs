@@ -113,10 +113,8 @@ public partial class WpfApp{
         // cd je null
         if (IsSomethingNull("Current_DispatcherUnhandledException"))
         {
-            
             return;
         }
-
         
         e.Handled = handled;
         WpfApp.cd.Invoke(() =>

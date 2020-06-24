@@ -88,7 +88,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         AppData.ci.CreateAppFoldersIfDontExists();
         //CryptHelper.ApplyCryptData(CryptHelper.RijndaelBytes.Instance, CryptDataWrapper.rijn);
 
-        XlfResourcesH.SaveResouresToRLSunamo();
+        XlfResourcesHSunamo.SaveResouresToRLSunamo();
         #endregion
 
         // All initialization must be after #region Initialize base properties of every app 

@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string appFocusing = "appFocusing"; 
+	public const string DummyUC = "DummyUC"; 
 
+	public const string appFocusing = "appFocusing"; 
 	public const string IntroductoryPrice = "IntroductoryPrice"; 
 	public const string OriginalPrice = "OriginalPrice"; 
 	public const string ReadOurTermsOfUseBeforeBuy = "ReadOurTermsOfUseBeforeBuy"; 

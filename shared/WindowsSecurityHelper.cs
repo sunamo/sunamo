@@ -28,19 +28,6 @@ public static bool IsUserAdministrator()
     return isAdmin;
 }
 
-    public static string CurrentUserName()
-    {
-        return System.Security.Principal.WindowsIdentity.GetCurrent().Name; 
-    }
-
-    public static bool IsMyComputer(string winAccountUserName, string machineName)
-    {
-        var un = CurrentUserName();
-        if (un == winAccountUserName && Environment.MachineName == machineName)
-        {
-            return true;
-        }
-        return false;
-    }
+   
 
     }

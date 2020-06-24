@@ -8,7 +8,6 @@ public interface IValidateControl
 {
      bool Validate(object tb, object control, ValidateData d = null);
      bool Validate(object tbFolder, ValidateData d = null);
-
     bool Validated { get; set; }
     /// <summary>
     /// 

@@ -379,4 +379,9 @@ public static List<XElement> GetElementsOfNameWithAttrWorker(System.Xml.Linq.XEl
 
         return vr;
     }
+
+    public static string Minify(string c)
+    {
+        return c.Replace(Environment.NewLine, string.Empty);
+    }
 }

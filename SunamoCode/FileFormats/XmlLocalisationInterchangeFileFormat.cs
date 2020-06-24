@@ -419,8 +419,13 @@ Into A1 insert:
         /// Remove completely whole Trans-unit
         /// </summary>
         /// <param name="fn"></param>
-        public static void RemoveFromXlfWhichHaveEmptyTargetOrSource(string fn, XlfParts xp, bool removeWholeTransUnit = true)
+        public static string RemoveFromXlfWhichHaveEmptyTargetOrSource(string fn, XlfParts xp, RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs a = null)
         {
+            if (a == null)
+            {
+                a = RemoveFromXlfWhichHaveEmptyTargetOrSourceArgs.Default;
+            }
+
             var d = GetTransUnits(fn);
             List<XElement> tus = new List<XElement>();
 
@@ -435,7 +440,7 @@ Into A1 insert:
                     {
                         if (el.Item1.Value.Trim() == string.Empty)
                         {
-                            if (removeWholeTransUnit)
+                            if (a.removeWholeTransUnit)
                             {
                                 item.Remove();
                             }
@@ -453,7 +458,7 @@ Into A1 insert:
                     {
                         if (el.Item2.Value.Trim() == string.Empty)
                         {
-                            if (removeWholeTransUnit)
+                            if (a.removeWholeTransUnit)
                             {
                                 item.Remove();
                             }
@@ -467,7 +472,12 @@ Into A1 insert:
                 }
             }
 
-            d.xd.Save(fn);
+            if (a.save)
+            {
+                d.xd.Save(fn);
+            }
+
+            return d.xd.ToString();
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace desktop.UserControls
 
         public void Init()
         {
-
+            
         }
 
         public void uc_Loaded(object sender, RoutedEventArgs e)

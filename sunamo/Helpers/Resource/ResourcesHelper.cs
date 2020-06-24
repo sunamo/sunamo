@@ -18,6 +18,7 @@ namespace sunamo.Helpers
     /// </summary>
     public class ResourcesHelper
     {
+        #region For easy copy
         private ResourceManager _rm = null;
 
         private ResourcesHelper()
@@ -47,6 +48,7 @@ namespace sunamo.Helpers
             var ba = _rm.GetObject(name);
             //var ab = FS.StreamToArrayBytes((Stream)ba);
             return Encoding.UTF8.GetString((byte[])ba);
-        }
+        } 
+        #endregion
     }
 }

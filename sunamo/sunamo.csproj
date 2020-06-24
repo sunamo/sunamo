@@ -203,6 +203,7 @@
     <Compile Include="Helpers\Number\LowHighHelper.cs" />
     <Compile Include="Interfaces\IValidateControl.cs" />
     <Compile Include="Values\TypesControlsSunamo.cs" />
+    <Compile Include="XlfResourcesHSunamo.cs" />
     <Compile Include="_ns.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppDataAbstractBase.cs" />
