@@ -82,6 +82,16 @@ public class XlfResourcesH
     #endregion
 
     #region More sophisficated - If is not my computer, reading from resources
+    /// <summary>
+    /// A2 can be string.Empty
+    /// </summary>
+    /// <typeparam name="StorageFolder"></typeparam>
+    /// <typeparam name="StorageFile"></typeparam>
+    /// <param name="key"></param>
+    /// <param name="basePath"></param>
+    /// <param name="existsDirectory"></param>
+    /// <param name="appData"></param>
+    /// <returns></returns>
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory, IAppDataBase<StorageFolder, StorageFile> appData)
     {
         if (previousKey == key && previousKey != null)
@@ -112,10 +122,11 @@ public class XlfResourcesH
         //    exists = FS.ExistsDirectory(path);
         //}
 
-        exists = WinSecHelper.IsMyComputer(SczSecureCodesXlf.winAccountUserName, SczSecureCodesXlf.machineName);
-
+        exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
+        exists = false;
         if (appData == null)
         {
+            // Is web app
             exists = true;
         }
 
@@ -125,7 +136,7 @@ public class XlfResourcesH
         {
             String xlfContent = null;
 
-        var fn = "sunamo_cs_CZ";
+        var fn = "sunamo_cs_CZ_min";
 
         var file = appData.GetFileCommonSettings(fn + ".xlf");
 
@@ -139,7 +150,7 @@ public class XlfResourcesH
         File.WriteAllText(file, xlfContent, enc);
         TFXlf.RemoveDoubleBomUtf8(file);
 
-        fn = "sunamo_en_US";
+        fn = "sunamo_en_US_min";
 
         var file2 = appData.GetFileCommonSettings(fn + ".xlf");
 
@@ -186,10 +197,7 @@ public class XlfResourcesH
         var xlfFiles = doc.Files;
         if (xlfFiles.Count() != 0)
         {
-            
                 // Win every xlf will be t least two WPF.TESTS/PROPERTIES/RESOURCES.RESX and WPF.TESTS/RESOURCES/EN-US.RESX
-            
-
             foreach (var item in xlfFiles)
             {
                 // like WPF.TESTS/PROPERTIES/

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using sunamo.Essential;
 
 public partial class WpfApp{
     /// <summary>
@@ -93,7 +94,38 @@ public partial class WpfApp{
 
         if (vr)
         {
-            MessageBox.Show(handler +  " Something is null (probably WpfApp.cd");
+            var d = Exc.GetStackTrace();
+            try
+            {
+                if (WindowsSecurityHelper.IsMyComputer())
+                {
+                    Clipboard.SetText(d);
+                }
+                
+            }
+            catch (Exception)
+            {
+                /*
+Application: UsedCarComparing.exe
+Framework Version: v4.0.30319
+Description: The process was terminated due to an unhandled exception.
+Exception Info: System.Runtime.InteropServices.COMException
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32, IntPtr)
+   at System.Windows.Clipboard.CriticalSetDataObject(System.Object, Boolean)
+   at System.Windows.Clipboard.SetDataInternal(System.String, System.Object)
+   at System.Windows.Clipboard.SetText(System.String, System.Windows.TextDataFormat)
+   at System.Windows.Clipboard.SetText(System.String)
+   at WpfApp.IsSomethingNull(System.String)
+   at WpfApp.Current_DispatcherUnhandledException(System.Object, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs)
+   at System.Windows.Threading.Dispatcher.CatchException(System.Exception)
+   at System.Windows.Threading.Dispatcher.CatchExceptionStatic(System.Object, System.Exception)
+   at System.Windows.Threading.ExceptionWrapper.CatchException(System.Object, System.Exception, System.Delegate)
+   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(System.Object, System.Delegate, System.Object, Int32, System.Delegate)
+   at System.Windows.Threading.Dispatcher.LegacyInvokeImpl(System.Windows.Threading.DispatcherPriority, System.TimeSpan, System.Delegate, System.Object, Int32)
+   at MS.Win32.HwndSubclass.SubclassWndProc(IntPtr, Int32, IntPtr, IntPtr)
+                */
+            }
+            MessageBox.Show(handler +  " Something is null (probably WpfApp.cd). Into clipboard was copied stacktrace.");
         }
         else
         {
@@ -133,6 +165,7 @@ public partial class WpfApp{
     public static void ShowExceptionWindow(EventArgs e, string n)
     {
         var d = WindowHelper.ShowExceptionWindow(e, n);
+
 
         WriterEventLog.WriteToMainAppLog(n + Environment.NewLine + d, System.Diagnostics.EventLogEntryType.Error, Exc.CallingMethod());
     }

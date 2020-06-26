@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using SunamoExceptions;
 
 public class TranslateDictionary : IDictionary<string, string>
@@ -21,17 +22,28 @@ public class TranslateDictionary : IDictionary<string, string>
     }
 
     public static Func<string, string> ReloadIfKeyWontBeFound;
+    public static Action<string> ShowMb;
 
     public string this[string key]
     {
         get
         {
+            //ShowMb(_l + ": " + Count +" . Key was copied to clipboard");
+            ////Clipboard.SetText(Exc.GetStackTrace());
+            //Clipboard.SetText(SH.NullToStringOrDefault( key));
+
             if (!_d.ContainsKey(key))
             {
+                //if (ReloadIfKeyWontBeFound == null)
+                //{
+                //    ShowMb("ReloadIfKeyWontBeFound is null");
+                //}
                 var k = ReloadIfKeyWontBeFound(key);
 
                 if (!_d.ContainsKey(key))
                 {
+                    //ShowMb(key + " is not in " + _l);
+
                     //XlfResourcesH.initialized = false;
                     //XlfResourcesH.SaveResouresToRL(basePathSolution);
                     ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");

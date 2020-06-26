@@ -20,30 +20,35 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-
                 <ColumnDefinition Width="Auto"  MaxWidth="{Binding ElementName=uc, Path=MaxWidth, Mode=TwoWay}"></ColumnDefinition>
-
             </Grid.ColumnDefinitions>
 
             <TextBlock Margin="10, 0, 10, 10" Grid.Row="0" x:Name="tbTitle" FontSize="28" FontWeight="Light" TextWrapping="Wrap" Text="About app"></TextBlock>
 
             <TextBlock Margin="10, 0, 10, 10" Grid.Row="1" x:Uid="tbAboutApp" x:Name="tbAboutApp" x:FieldModifier="public" TextWrapping="Wrap" MaxWidth="{Binding ElementName=uc, Path=Tag, Mode=TwoWay}"></TextBlock>
 
-            <TextBlock Margin="10, 0, 10, 10" Grid.Row="2" x:Uid="tbAnyFeedbackIsWelcome" x:Name="tbAnyFeedbackIsWelcome" TextWrapping="Wrap" MaxWidth="{Binding ElementName=uc, Path=Tag, Mode=TwoWay}"></TextBlock>
-                
-                <ItemsControl x:Name="wg" Grid.Row="3" ItemsSource="{Binding}">
+            <Button Grid.Row="2" x:Name="btnCheckNewVersion" Click="btnCheckNewVersion_Click"></Button>
+            
+            <TextBlock Margin="10, 0, 10, 10" Grid.Row="3" x:Uid="tbAnyFeedbackIsWelcome" x:Name="tbAnyFeedbackIsWelcome" TextWrapping="Wrap" MaxWidth="{Binding ElementName=uc, Path=Tag, Mode=TwoWay}"></TextBlock>
+            
+            
+            
+            <!--<ItemsControl x:Name="wg" Grid.Row="3" ItemsSource="{Binding}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical">
-                        </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                            </StackPanel>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                </ItemsControl>-->
+            
+            
 
-                <StackPanel Margin="0" Grid.Row="4" HorizontalAlignment="Left" Orientation="Horizontal">
+            <!--No button OK, will be show with SetMode-->
+                <!--<StackPanel Margin="0" Grid.Row="4" HorizontalAlignment="Left" Orientation="Horizontal">
                     <Button Content="OK" Margin="10" Click="OnClickOK" x:Name="btnOk" />
-                    <!--<Button Content="Cancel" Width="90" Margin="10" Click="OnClickCancel" />-->
-                </StackPanel>
+                    
+                </StackPanel>-->
             
         </Grid>
     </Border>

@@ -96,7 +96,7 @@ namespace desktop.Controls.Collections
         /// <summary>
         /// A2 can be null
         /// Into A1.add can be CheckBoxListUC.ColButtons_Added
-        /// A1 can be null but then is needed to call DefaultButtonsInit,HideAllButtons, etc.
+        /// A1 can be null but then is needed to call () which contains Buttons in name like DefaultButtonsInit,HideAllButtons, etc.
         /// </summary>
         /// <param name="list"></param>
         public void Init(ImageButtonsInit i, IList<string> list = null, bool defChecked = false)
@@ -406,7 +406,27 @@ namespace desktop.Controls.Collections
         {
             var s = ((FrameworkElement)sender);
             var name = s.Tag;
-            Tag = sender;
+
+            if (Tag != null)
+            {
+                if (RH.IsOrIsDeriveFromBaseClass(Tag.GetType(), typeof(FrameworkElementTag)))
+                {
+                    var frameworkElementTag = (FrameworkElementTag)Tag;
+                    frameworkElementTag.tagCheckBoxListUC = sender;
+                }
+                else
+                {
+                    FrameworkElementTag ft = new FrameworkElementTag();
+                    ft.tagCheckBoxListUC = sender;
+                    ft.Tag = Tag;
+                    Tag = ft;
+                }
+            }
+            else
+            {
+                Tag = sender;
+            }
+            
             var where = l.Where(d => d.o.Tag == s.Tag);
 
             foreach (var item in where)

@@ -61,26 +61,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] _011 {
-            get {
-                object obj = ResourceManager.GetObject("_011", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] _012_ {
-            get {
-                object obj = ResourceManager.GetObject("_012_", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
@@ -125,9 +105,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] sunamo_cs_CZ {
+        public static byte[] sunamo_cs_CZ_min {
             get {
-                object obj = ResourceManager.GetObject("sunamo_cs_CZ", resourceCulture);
+                object obj = ResourceManager.GetObject("sunamo_cs_CZ_min", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -135,9 +115,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] sunamo_en_US {
+        public static byte[] sunamo_en_US_min {
             get {
-                object obj = ResourceManager.GetObject("sunamo_en_US", resourceCulture);
+                object obj = ResourceManager.GetObject("sunamo_en_US_min", resourceCulture);
                 return ((byte[])(obj));
             }
         }

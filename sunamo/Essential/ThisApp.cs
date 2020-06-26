@@ -86,5 +86,7 @@ namespace sunamo.Essential
             var tom = StatusHelperSunamo.IsStatusMessage(ref v);
             SetStatus(tom, v);
         }
+
+        
     }
 }

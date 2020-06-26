@@ -442,7 +442,7 @@ Into A1 insert:
                         {
                             if (a.removeWholeTransUnit)
                             {
-                                item.Remove();
+                                el.Item1.Remove();
                             }
                             else
                             {
@@ -460,7 +460,7 @@ Into A1 insert:
                         {
                             if (a.removeWholeTransUnit)
                             {
-                                item.Remove();
+                                el.Item2.Remove();
                             }
                             else
                             {

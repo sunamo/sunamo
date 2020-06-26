@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using sunamo.Essential;
 
 public partial class PH
 {
@@ -34,7 +35,20 @@ public partial class PH
             /*System.ComponentModel.Win32Exception: ''*/
         }
         tool.WaitForExit();
-        string outputTool = tool.StandardOutput.ReadToEnd();
+        string outputTool = null;
+        try
+        {
+             outputTool = tool.StandardOutput.ReadToEnd();
+        }
+        catch (Exception ex)
+        {
+
+            if (ex.Message.Contains("No process is associated with this object."))
+            {
+                ThisApp.SetStatus(TypeOfMessage.Warning, "Please add handle64.exe to PATH");
+                return pr2;
+            }
+        }
 
         string matchPattern = @"(?<=\s+pid:\s+)\b(\d+)\b(?=\s+)";
         var matches = Regex.Matches(outputTool, matchPattern);

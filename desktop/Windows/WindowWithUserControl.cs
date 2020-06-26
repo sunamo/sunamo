@@ -18,7 +18,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     UserControl userControl = null;
     DockPanel dock = null;
     IUserControl uc = null;
-    
+
     IControlWithResult userControlWithResult = null;
     IControlWithResultDebug controlWithResultDebug = null;
     bool isControlWithResultDebug = false;
@@ -54,9 +54,9 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         var hMenu = menu.ActualHeight();
         var staturBarH = statusBar.ActualHeight();
         var dialogButtonsH = dialogButtons.ActualHeight();
-        
+
         var e2 = ControlHelper.ActualInnerSize(this).Height;
-        var growingRow = e2 - hMenu - staturBarH - dialogButtonsH ;
+        var growingRow = e2 - hMenu - staturBarH - dialogButtonsH;
         OnSizeChanged(new DesktopSize(ActualWidth, growingRow));
 
         //Title = SH.Join(",", "Growing row", growingRow, "Height", ActualHeight);
@@ -65,7 +65,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     private double ah(FrameworkElement dialogButtons)
     {
         return dialogButtons.ActualHeight();
-        
+
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     /// <param name="addDialogButtons"></param>
     /// <param name="tag"></param>
     public WindowWithUserControl(object iUserControlInWindow, ResizeMode rm, bool addDialogButtons = false, string tag = null) : this(new WindowWithUserControlArgs { iUserControlInWindow = iUserControlInWindow, addDialogButtons = addDialogButtons, tag = tag, rm = rm })
-    {}
+    { }
 
     /// <summary>
     /// A1 can be IControlWithResult, if have own buttons for accepting
@@ -93,11 +93,11 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         controlWithResultDebug = uc as IControlWithResultDebug;
         userControlWithSizeChange = uc as IUserControlWithSizeChange;
         controlWithResult = uc as IControlWithResult;
-        
+
         this.Closed += WindowWithUserControl_Closed;
         this.Closing += WindowWithUserControl_Closing;
 
-        args= a;
+        args = a;
 
         dock = new DockPanel();
         dock.LastChildFill = true;
@@ -106,7 +106,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         DockPanel.SetDock(menu, Dock.Top);
         dock.Children.Add(menu);
 
-        
+
         var tb = TextBlockHelper.Get(new ControlInitData { text = "Enter for fast closing" });
         DockPanel.SetDock(tb, Dock.Top);
         dock.Children.Add(tb);
@@ -141,7 +141,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         //dialogButtons.ChangeDialogResult += DialogButtons_ChangeDialogResult;
         //dock.Children.Add(dialogButtons);
 
-        
+
         TextBlock textBlockStatus = TextBlockHelper.Get(new ControlInitData { text = "" });
         WpfApp.SaveReferenceToTextBlockStatus(false, textBlockStatus, textBlockStatus);
         statusBar.Items.Add(textBlockStatus);
@@ -268,7 +268,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     private void UserControlWithResult_ChangeDialogResult(bool? b)
     {
-        if (userControl is CheckBoxListUC )
+        if (userControl is CheckBoxListUC)
         {
             CheckBoxListUC checkBoxListUC = (CheckBoxListUC)userControl;
 
@@ -280,15 +280,36 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
                     UserControlWithResult_ChangeDialogResult2(b);
                 }
 
-                if (checked2.Count() >0)
-            {
+                if (checked2.Count() > 0)
+                {
                     dialogButtons.IsEnabledBtnOk = true;
-                
+
+                }
+                else
+                {
+                    dialogButtons.IsEnabledBtnOk = false;
+                }
             }
-            else
+        }
+        else if (userControl is RadioButtonsList)
+        {
+            RadioButtonsList rbl = (RadioButtonsList)userControl;
+            var tag = rbl.clickedTag;
+            if (dialogButtons != null)
             {
-                dialogButtons.IsEnabledBtnOk = false;
-            }
+                if (dialogButtons.clickedOk || dialogButtons.clickedApply || dialogButtons.clickedCancel)
+                {
+                    UserControlWithResult_ChangeDialogResult2(b);
+                }
+
+                if (tag != null)
+                {
+                    dialogButtons.IsEnabledBtnOk = true;
+                }
+                else
+                {
+                    dialogButtons.IsEnabledBtnOk = false;
+                }
             }
         }
         else
@@ -301,8 +322,6 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
     {
         if (dialogButtons != null)
         {
-            ////////DebugLogger.Instance.ClipboardOrDebug("Calling uc_ChangeDialogResult with window dialog buttons");
-
             if (dialogButtons.clickedOk)
             {
                 uc_ChangeDialogResult(b);
@@ -338,7 +357,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
             if (isControlWithResultDebug)
             {
-                controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable( UserControlWithResult_ChangeDialogResult), false);
+                controlWithResultDebug.AttachChangeDialogResult(new VoidBoolNullable(UserControlWithResult_ChangeDialogResult), false);
                 countOfHandlers = controlWithResultDebug.CountOfHandlersChangeDialogResult();
             }
 
@@ -397,7 +416,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
             userControlWithResult.Accept(input);
         }
 
-        
+
     }
 
     public void OnSizeChanged(DesktopSize maxSize)
@@ -410,7 +429,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
 
     public void Init()
     {
-        
+
     }
 
     public void FocusOnMainElement()

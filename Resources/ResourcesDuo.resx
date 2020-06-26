@@ -143,16 +143,10 @@
     </value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="sunamo_cs_CZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sunamo\multilingualresources\sunamo.cs-cz.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="sunamo_cs_CZ_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sunamo\multilingualresources\sunamo.cs-cz.min.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="sunamo_en_US" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sunamo\multilingualresources\sunamo.en-us.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>011.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_012_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>[012].jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="sunamo_en_US_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sunamo\multilingualresources\sunamo.en-us.min.xlf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

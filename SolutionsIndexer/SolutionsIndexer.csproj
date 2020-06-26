@@ -58,6 +58,7 @@
     <Compile Include="Data\SolutionFolder\SolutionFolderWithFiles.cs" />
     <Compile Include="Enums\ProjectsTypes.cs" />
     <Compile Include="FoldersWithSolutions.cs" />
+    <Compile Include="ProjectsNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionsIndexerConsts.cs" />
     <Compile Include="SolutionsIndexerHelper.cs" />

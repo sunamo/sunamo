@@ -15,11 +15,19 @@ public static partial class WriterEventLog{
 
     public static void WriteException(string stacktrace, string exception)
     {
+        if (!IsAdmin())
+        {
+            return;
+        }
         WriterEventLog.WriteToMainAppLog(exception + Environment.NewLine + stacktrace, EventLogEntryType.Error, null);
     }
 
     public static void WriteToMainAppLogScz(string text, EventLogEntryType type)
     {
+        if (!IsAdmin())
+        {
+            return;
+        }
         WriteToWindowsLogs(scz, text, type);
     }
 
@@ -30,6 +38,11 @@ public static partial class WriterEventLog{
     /// <param name = "type"></param>
     public static void WriteToWindowsLogs(string appName, string text, EventLogEntryType type)
     {
+        if (!IsAdmin())
+        {
+            return;
+        }
+
         // Exists every time. Cant iterate - SecurityException will be happen in asp.net app
         if (!EventLog.SourceExists(appName))
         {
@@ -54,6 +67,10 @@ public static partial class WriterEventLog{
     /// <param name = "type"></param>
     public static void WriteToMainAppLog(string text, EventLogEntryType type, string methodName = null)
     {
+        if (!IsAdmin())
+        {
+            return;
+        }
         if (methodName != null)
         {
             text = methodName + ": " + text;
@@ -74,15 +91,23 @@ public static partial class WriterEventLog{
         mainEventLogOfApplication.WriteEntry(text, type);
     }
 
-public static bool CreateMainAppLog(string name)
+    private static bool IsAdmin()
     {
+        return WindowsSecurityHelper.IsUserAdministrator();
+    }
 
+    public static bool CreateMainAppLog(string name)
+    {
+        if (!IsAdmin())
+        {
+            return false;
+        }
         //if (EventLog.SourceExists(name))
         //{
         //    // Excetpion: The event log source 'sunamo.cz' cannot be deleted, because it's equal to the log name.
         //    System.Diagnostics.EventLog.DeleteEventSource("sunamo.cz");
         //}
-        
+
         bool existsSource = false;
         try
         {
@@ -103,6 +128,10 @@ public static bool CreateMainAppLog(string name)
 
 public static bool CreateMainAppLogScz()
     {
+        if (!IsAdmin())
+        {
+            return false;
+        }
         bool b = CreateMainAppLog(scz);
         WriteToMainAppLogScz("Template", EventLogEntryType.Information);
         return b;

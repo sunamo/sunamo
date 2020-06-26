@@ -15,7 +15,13 @@ public partial class FrameworkElementHelper
 {
     static Type type = typeof(FrameworkElementHelper);
 
-    
+    public static object GetTagCheckBoxListUC(object o)
+    {
+        var fw = (FrameworkElement)o;
+        var t = fw.Tag;
+        var s = (FrameworkElementTag)t;
+        return s.tagCheckBoxListUC;
+    }
 
     public static Size GetMaxContentSize(FrameworkElement fe)
     {

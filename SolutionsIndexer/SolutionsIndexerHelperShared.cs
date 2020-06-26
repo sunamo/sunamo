@@ -44,6 +44,13 @@ public static SolutionFolder SolutionWithName(string name)
         return nameOfFolder.Contains(SolutionsIndexerConsts.ProjectsFolderName) || nameOfFolder == SolutionsIndexerStrings.GitHub || nameOfFolder == SolutionsIndexerStrings.BitBucket;
     }
 
+    /// <summary>
+    /// Find as subfolders
+    /// </summary>
+    /// <param name="removeVsFolders"></param>
+    /// <param name="fp"></param>
+    /// <param name="onlynames"></param>
+    /// <returns></returns>
 public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, bool onlynames = true)
     {
         // TODO: Filter auto created files, then uncomment

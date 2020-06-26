@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:desktop.Controls.Collections"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel x:Name="spRbs" Orientation="Horizontal">
+    <StackPanel x:Name="spRbs" Orientation="Vertical">
             
     </StackPanel>
 </UserControl>

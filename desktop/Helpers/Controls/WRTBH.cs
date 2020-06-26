@@ -9,7 +9,7 @@ using System.Windows.Documents;
 
 namespace desktop
 {
-    public class WRTBH : TextBlockHelperBase
+    public class WRTBH : InlineBuilderBase
     {
         FontArgs fa = null;
         Thickness margin = new Thickness(0);
@@ -44,8 +44,6 @@ namespace desktop
             }
         }
 
-
-
         private List<string> GetWords(string text)
         {
             return SH.SplitNone(text, AllStrings.space);
@@ -56,9 +54,9 @@ namespace desktop
         /// </summary>
         /// <param name="text"></param>
         /// <param name="uri"></param>
-        public void HyperLink(string text, string uri)
+        public void Hyperlink(string text, string uri)
         {
-            Add(GetTextBlock(GetHyperlink(text, uri, margin, padding, fa)));
+            Add(GetTextBlock(GetHyperlink(text, uri,fa)));
             //Add(GetRichTextBlock( GetHyperlink(text, uri, margin, padding, fa)));
             Add(GetTextBlock(GetRun(AllStrings.space, fa)));
         }
@@ -76,6 +74,7 @@ namespace desktop
         {
             TextBlock txt = new TextBlock();
             txt.Inlines.Add(inline);
+
             txt.Padding = padding;
             txt.Margin = margin;
             return txt;
@@ -104,7 +103,8 @@ namespace desktop
                 width = width3;
             }
 
-            uis[uis.Count - 1].Children.Add(textBlock);
+            var sp = uis[uis.Count - 1];
+            sp.Children.Add(textBlock);
         }
 
         public void LineBreak()

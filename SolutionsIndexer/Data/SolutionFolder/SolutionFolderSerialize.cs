@@ -17,7 +17,7 @@ static Type type = typeof(SolutionFolderSerialize);
     /// </summary>
     public string projectFolder;
     /// <summary>
-    /// Is not full path to sln folder, for these reason it's here _fullPathFolder
+    /// Is not full path to sln folder, for these reason it's here _fullPathFolder.
     /// Is filled up in AllProjectsSearchHelper.GetProjectFolderAndSlnPath
     /// _Uap/apps
     /// relative path to solution folder from Project folder

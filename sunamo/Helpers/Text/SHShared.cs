@@ -414,6 +414,19 @@ public static partial class SH
         
     }
 
+    internal static string ReplaceAllWhitecharsForSpace(string c)
+    {
+        foreach (var item in AllChars.whiteSpacesChars)
+        {
+            if (item != AllChars.space)
+            {
+                c = c.Replace(item, AllChars.space);
+            }
+        }
+
+        return c;
+    }
+
     /// <summary>
     /// Method is useless
     /// ReplaceMany firstly split into two strings

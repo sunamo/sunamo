@@ -382,6 +382,10 @@ public static List<XElement> GetElementsOfNameWithAttrWorker(System.Xml.Linq.XEl
 
     public static string Minify(string c)
     {
-        return c.Replace(Environment.NewLine, string.Empty);
+        c = c.Replace(Environment.NewLine, string.Empty);
+        c = SH.ReplaceAllWhitecharsForSpace(c);
+        c = SH.ReplaceAllDoubleSpaceToSingle(c);
+        c = c.Replace("> <", "><");
+        return c;
     }
 }

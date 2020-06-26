@@ -28,6 +28,9 @@ public static bool IsUserAdministrator()
     return isAdmin;
 }
 
-   
-
+    public static bool IsMyComputer()
+    {
+        return WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
     }
+
+}

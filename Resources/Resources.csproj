@@ -52,8 +52,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\sunamo\MultilingualResources\sunamo.cs-CZ.xlf" Link="sunamo.cs-cz.xlf" />
-    <None Include="..\sunamo\MultilingualResources\sunamo.en-US.xlf" Link="sunamo.en-us.xlf" />
+    <None Include="..\sunamo\MultilingualResources\sunamo.cs-CZ.min.xlf" Link="sunamo.cs-cz.min.xlf" />
+    <None Include="..\sunamo\MultilingualResources\sunamo.en-US.min.xlf" Link="sunamo.en-us.min.xlf" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">

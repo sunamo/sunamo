@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Media;
 
 public partial class TextBlockHelper{
+
     static Type type = typeof(TextBlockHelper);
 
     /// <summary>
@@ -38,7 +39,7 @@ public partial class TextBlockHelper{
         return tb;
     }
 
-public static void SetText(TextBlock lblStatusDownload, string status)
+    public static void SetText(TextBlock lblStatusDownload, string status)
     {
         if (lblStatusDownload != null)
         {
@@ -52,7 +53,7 @@ public static void SetText(TextBlock lblStatusDownload, string status)
         }
     }
 
-/// <summary>
+    /// <summary>
     /// A1 can be TextBlock or any object
     /// </summary>
     /// <param name = "tb"></param>
@@ -67,7 +68,7 @@ public static void SetText(TextBlock lblStatusDownload, string status)
         return tb.ToString();
     }
 
-public static void SetForeground(TextBlock c, Brush fg)
+    public static void SetForeground(TextBlock c, Brush fg)
     {
         if (fg != null)
         {

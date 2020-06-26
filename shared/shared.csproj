@@ -94,6 +94,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\shared\WindowsSecurityHelper.cs" />
     <Compile Include="..\..\sunamo\shared\Data\PushSolutionsData.cs" />
     <Compile Include="..\..\sunamo\shared\Data\SmtpServerData.cs" />
     <Compile Include="..\..\sunamo\shared\Extensions\SunamoSizeExtensionsShared.cs" Link="" />
@@ -176,6 +177,14 @@
     <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj">
+      <Project>{20d0420a-dc10-4bfb-a663-146daaa8df8b}</Project>
+      <Name>Scz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamoWithoutDep\WinSec\WinSec.csproj">
+      <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
+      <Name>WinSec</Name>
+    </ProjectReference>
     <ProjectReference Include="..\duo\duo.csproj">
       <Project>{2d474b31-dfc6-4603-9637-33a079ad9bf5}</Project>
       <Name>duo</Name>

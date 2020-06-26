@@ -201,6 +201,8 @@
     <Compile Include="Helpers\GridHelperSunamo.cs" />
     <Compile Include="Helpers\LocaleHelper.cs" />
     <Compile Include="Helpers\Number\LowHighHelper.cs" />
+    <Compile Include="Interfaces\IInlineBuilder.cs" />
+    <Compile Include="Interfaces\ITextBlockHelperBase.cs" />
     <Compile Include="Interfaces\IValidateControl.cs" />
     <Compile Include="Values\TypesControlsSunamo.cs" />
     <Compile Include="XlfResourcesHSunamo.cs" />

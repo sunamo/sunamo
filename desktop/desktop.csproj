@@ -70,6 +70,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo\desktop\Helpers\ControlsWithGet\TextBlockHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\AwesomeFont\AwesomeFontControlsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
@@ -111,6 +112,10 @@
     <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\ImageHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ControlFinder.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControlsShared.cs" />
+    <Compile Include="Data\Tag\ButtonBaseTag.cs" />
+    <Compile Include="Data\Tag\CheckBoxTag.cs" />
+    <Compile Include="Data\Tag\ContentControlTag.cs" />
+    <Compile Include="Data\Tag\ToggleButtonTag.cs" />
     <Compile Include="Helpers\ControlsWithGet\ActionButtonHelperShared.cs" />
     <Compile Include="Helpers\ControlsWithGet\ButtonHelperShared.cs" />
     <Compile Include="Helpers\ControlsWithGet\ComboBoxHelper.cs" />
@@ -368,6 +373,7 @@
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
     <Compile Include="Helpers\Controls\DataGridHelper.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilderTextBlock.cs" />
     <Compile Include="Helpers\Controls\LBHT.cs" />
     <Compile Include="Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="Helpers\Controls\ListViewHelper.cs" />
@@ -376,12 +382,15 @@
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
+    <Compile Include="Helpers\Controls\ParagraphBuilderTextBlock.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
     <Compile Include="Helpers\ControlsWithGet\RadioButtonHelper.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />
     <Compile Include="Helpers\ControlsWithGet\TextBlockHelper.cs" />
-    <Compile Include="Helpers\Controls\TextBlockHelperBase.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilderBase.cs" />
     <Compile Include="Helpers\ControlsWithGet\TextBoxHelper.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilderBlock.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilder.cs" />
     <Compile Include="Helpers\Controls\ToolbarHelper.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />

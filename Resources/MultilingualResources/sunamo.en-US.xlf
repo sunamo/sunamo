@@ -1,4 +1,5 @@
-﻿<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="xml" source-language="en" target-language="en-US" original="WPF.TESTS/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6901.0" tool-company="Microsoft" />
@@ -14,27 +15,27 @@
     <body>
       <group id="WPF.TESTS/RESOURCES/CS-CZ.RESX" datatype="resx">
         <trans-unit id="UsefulAppsForYourNeeds" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Useful apps for your needs</target>
         </trans-unit>
         <trans-unit id="AddANewApp" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Add a new app</target>
         </trans-unit>
         <trans-unit id="appsCloud" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">apps cloud</target>
         </trans-unit>
         <trans-unit id="tiles4" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">tiles</target>
         </trans-unit>
         <trans-unit id="notShowing" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">not showing</target>
         </trans-unit>
         <trans-unit id="OrChooseBy" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Or choose by</target>
         </trans-unit>
         <trans-unit id="DescribeSomethingYouRememberWellWhatYouLoveButOtherPeopleDonTKnowAboutItCharacters">
@@ -10791,571 +10792,571 @@ A fraternal form of manifestation is the bliss</target>
           <target>Change language</target>
         </trans-unit>
         <trans-unit id="TheRecommendedVersionHasNotBeenUploadedYet" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">The recommended version has not been uploaded yet.</target>
         </trans-unit>
         <trans-unit id="License" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">License</target>
         </trans-unit>
         <trans-unit id="CopyImageLinkIntoTheClipboard" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Copy image link into the clipboard</target>
         </trans-unit>
         <trans-unit id="NotLogined" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Not logined</target>
         </trans-unit>
         <trans-unit id="PleaseLogInToBuyMyApp" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Please, log in to buy my app</target>
         </trans-unit>
         <trans-unit id="Screenshots" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Screenshots</target>
         </trans-unit>
         <trans-unit id="DependsOn" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Depends on</target>
         </trans-unit>
         <trans-unit id="AreYouInterested" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Are you interested?</target>
         </trans-unit>
         <trans-unit id="PriceIsWithAllTaxes" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Price is with all taxes</target>
         </trans-unit>
         <trans-unit id="BuyNow" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Buy now</target>
         </trans-unit>
         <trans-unit id="ViewsToday" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Views today</target>
         </trans-unit>
         <trans-unit id="AppHaveNoDependecies" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">App have no dependecies</target>
         </trans-unit>
         <trans-unit id="SomethingAbout" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Something about</target>
         </trans-unit>
         <trans-unit id="me" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">me</target>
         </trans-unit>
         <trans-unit id="MyFirstLineOfCodeIWroteOn2009NowadaysIStudyInformaticsOnVSBTechnicalUniversityOfOstravaIMTargetingOnMicrosoftAndNETPlatformAndTryingToDoTheUsefulestApps" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">My first line of code I wrote on 2009. Nowadays, I study Informatics on VSB - Technical University of Ostrava. I'm targeting on Microsoft and .NET platform and trying to do the usefulest apps.</target>
         </trans-unit>
         <trans-unit id="Purchased" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Purchased</target>
         </trans-unit>
         <trans-unit id="modules" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">modules</target>
         </trans-unit>
         <trans-unit id="PaymentMethodChosen" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Payment Method Chosen</target>
         </trans-unit>
         <trans-unit id="Paid" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Paid</target>
         </trans-unit>
         <trans-unit id="Authorized" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Authorized</target>
         </trans-unit>
         <trans-unit id="Canceled" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Canceled</target>
         </trans-unit>
         <trans-unit id="Timeouted" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Timeouted</target>
         </trans-unit>
         <trans-unit id="Refunded" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Refunded</target>
         </trans-unit>
         <trans-unit id="PartiallyRefunded" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Partially Refunded</target>
         </trans-unit>
         <trans-unit id="ShowSelected" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Show selected</target>
         </trans-unit>
         <trans-unit id="ofApp" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">of app</target>
         </trans-unit>
         <trans-unit id="TermsOfUse" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Terms of use</target>
         </trans-unit>
         <trans-unit id="Prepaid" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prepaid</target>
         </trans-unit>
         <trans-unit id="Prepay" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Prepay</target>
         </trans-unit>
         <trans-unit id="RequiredMonthsYouWillEnterIn2Step" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Required months you will enter in 2. step</target>
         </trans-unit>
         <trans-unit id="CheapAndQualityHostingServices" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Cheap and quality hosting services</target>
         </trans-unit>
         <trans-unit id="MyFreeGeoCachingAppForPlanningYourAdventures" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">My free GeoCaching app for planning your adventures</target>
         </trans-unit>
         <trans-unit id="MeasureYourIQ" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Measure your IQ</target>
         </trans-unit>
         <trans-unit id="ResearchForTheBookExperimentalAtlasOfMen" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Research for the book Experimental Atlas of Men</target>
         </trans-unit>
         <trans-unit id="ThisWebUseToServiceOfTheServicePersonalizationAndAnalysisOfVisits" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">This web use to service of the service, personalization and analysis of visits</target>
         </trans-unit>
         <trans-unit id="PrivacyPolicy" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Privacy policy</target>
         </trans-unit>
         <trans-unit id="ByUsingThisWebsiteYouAgreeToThis" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">By using this website, you agree to this</target>
         </trans-unit>
         <trans-unit id="Feedback" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Feedback</target>
         </trans-unit>
         <trans-unit id="Help" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Help</target>
         </trans-unit>
         <trans-unit id="ShowGraphOfViewsForLast7Days" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Show graph of views for last 7 days</target>
         </trans-unit>
         <trans-unit id="AppWasFoundButNoHelpForIt" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">App was found but no help for it</target>
         </trans-unit>
         <trans-unit id="Type" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Type</target>
         </trans-unit>
         <trans-unit id="Attachment" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Attachment</target>
         </trans-unit>
         <trans-unit id="DescriptionMax4000Letters" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Description (max 4000 letters)</target>
         </trans-unit>
         <trans-unit id="Send" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Send</target>
         </trans-unit>
         <trans-unit id="NotRegisteredYet" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Not registered yet</target>
         </trans-unit>
         <trans-unit id="LoginOrEmail" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Login (or email</target>
         </trans-unit>
         <trans-unit id="inFormatMDYMinAge18" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">in format m/d/y, min age 18</target>
         </trans-unit>
         <trans-unit id="DoItNow" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Do it now</target>
         </trans-unit>
         <trans-unit id="generateRandomLogin" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">generate random login</target>
         </trans-unit>
         <trans-unit id="ResetPassword" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Reset password</target>
         </trans-unit>
         <trans-unit id="Country" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Country</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">The password must be at least 20 characters long</target>
         </trans-unit>
         <trans-unit id="By" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">By</target>
         </trans-unit>
         <trans-unit id="ArtistGigiDagostino" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Artist Gigi D'Agostino</target>
         </trans-unit>
         <trans-unit id="UsedCarComparing" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Used car comparing</target>
         </trans-unit>
         <trans-unit id="AppCanTRunUnderAdminAccountDueToWebBrowserComponentAppWillBeShutdownNow" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">App can't run under admin account (due to web browser component). App will be shutdown now</target>
         </trans-unit>
         <trans-unit id="RuntimeTrouble" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Runtime trouble</target>
         </trans-unit>
         <trans-unit id="Tachometr" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Tachometr</target>
         </trans-unit>
         <trans-unit id="Fuel" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Fuel</target>
         </trans-unit>
         <trans-unit id="Volume" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Volume</target>
         </trans-unit>
         <trans-unit id="Transmission" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Transmission</target>
         </trans-unit>
         <trans-unit id="AirConditioning" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Air conditioning</target>
         </trans-unit>
         <trans-unit id="MoreInformationAboutTheCar" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">More information about the car</target>
         </trans-unit>
         <trans-unit id="Engine" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Engine</target>
         </trans-unit>
         <trans-unit id="Performance" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Performance</target>
         </trans-unit>
         <trans-unit id="HistoryAndDocuments" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">History and documents</target>
         </trans-unit>
         <trans-unit id="TheFirstOwner" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">The first owner</target>
         </trans-unit>
         <trans-unit id="ServiceBook" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Service book</target>
         </trans-unit>
         <trans-unit id="CountryOfOrigin" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Country of origin</target>
         </trans-unit>
         <trans-unit id="SpecifikaceVozu" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Specifikace vozu</target>
         </trans-unit>
         <trans-unit id="NumberOfAirbags" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Number of airbags</target>
         </trans-unit>
         <trans-unit id="Body" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Body</target>
         </trans-unit>
         <trans-unit id="NumberOfDoors" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Number of doors</target>
         </trans-unit>
         <trans-unit id="NumberOfPlaces" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Number of places</target>
         </trans-unit>
         <trans-unit id="YearOfManufacture" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Year of manufacture</target>
         </trans-unit>
         <trans-unit id="EcologicalTaxPaid" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Ecological tax paid</target>
         </trans-unit>
         <trans-unit id="AverageConsumption" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Average consumption</target>
         </trans-unit>
         <trans-unit id="MeetsTheEURO" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Meets the EURO</target>
         </trans-unit>
         <trans-unit id="PriceNote" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Price note</target>
         </trans-unit>
         <trans-unit id="CrashedInThePast" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Crashed in the past</target>
         </trans-unit>
         <trans-unit id="CenaNaLeasing" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Cena na leasing</target>
         </trans-unit>
         <trans-unit id="YearOfManufactureAsANumber" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Year of manufacture as a number</target>
         </trans-unit>
         <trans-unit id="PriceAsANumber" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Price as a number</target>
         </trans-unit>
         <trans-unit id="TachometerAsANumber" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Tachometer as a number</target>
         </trans-unit>
         <trans-unit id="Copyright2020" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Copyright ©  2020</target>
         </trans-unit>
         <trans-unit id="AppWasSuccessfullyStarted" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">App was successfully started</target>
         </trans-unit>
         <trans-unit id="ClosestMHD" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Closest MHD</target>
         </trans-unit>
         <trans-unit id="Other" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Other</target>
         </trans-unit>
         <trans-unit id="NearStation" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Near station</target>
         </trans-unit>
         <trans-unit id="OpeningTime" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Opening time</target>
         </trans-unit>
         <trans-unit id="Telefon" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Telefon</target>
         </trans-unit>
         <trans-unit id="ProcessedByApp" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Processed by app</target>
         </trans-unit>
         <trans-unit id="Telephone" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Telephone</target>
         </trans-unit>
         <trans-unit id="UnderSameTitleAnotherWithOtherValue" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Under same title another with other value</target>
         </trans-unit>
         <trans-unit id="Tacho" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Tacho</target>
         </trans-unit>
         <trans-unit id="TodayOpen" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Today open</target>
         </trans-unit>
         <trans-unit id="PrivateSeller" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Private seller</target>
         </trans-unit>
         <trans-unit id="NameOfSet" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Name of set</target>
         </trans-unit>
         <trans-unit id="NameContainsUnallowedChars" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Name contains unallowed chars</target>
         </trans-unit>
         <trans-unit id="DownloadCars" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Download cars</target>
         </trans-unit>
         <trans-unit id="DownloadPhotos" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Download photos</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardGoogleSheetCompare" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Copy to clipboard Google Sheet compare</target>
         </trans-unit>
         <trans-unit id="CopyToClipboardForGoogleMyMaps" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Copy to clipboard for Google My Maps</target>
         </trans-unit>
         <trans-unit id="OpenFolderOnDrive" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Open folder on drive</target>
         </trans-unit>
         <trans-unit id="RefreshSetsFromDrive" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Refresh sets from drive</target>
         </trans-unit>
         <trans-unit id="PasteFromClipoardIntoGoogleSheets" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Paste from clipoard into Google Sheets</target>
         </trans-unit>
         <trans-unit id="Init" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Init</target>
         </trans-unit>
         <trans-unit id="PleaseUseAppInTray" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Please use app in tray</target>
         </trans-unit>
         <trans-unit id="FeedBack" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Feed back</target>
         </trans-unit>
         <trans-unit id="GenerateScreenshot" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Generate screenshot</target>
         </trans-unit>
         <trans-unit id="ShowLoginedUser" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Show logined user</target>
         </trans-unit>
         <trans-unit id="Mode" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Mode</target>
         </trans-unit>
         <trans-unit id="YouReLoginedButYouHavenTPurchasedSubscriptionAppWillOpenPageWhereYouCanMakePurchase" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">You're logined but you haven't purchased subscription. App will open page where you can make purchase</target>
         </trans-unit>
         <trans-unit id="YouHaveToLogInBeforeUseApp" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">You have to log in before use app</target>
         </trans-unit>
         <trans-unit id="FirstItem" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">First Item</target>
         </trans-unit>
         <trans-unit id="AlwaysOnTop" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Always on top</target>
         </trans-unit>
         <trans-unit id="logs" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">logs</target>
         </trans-unit>
         <trans-unit id="UriFrom" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Uri from</target>
         </trans-unit>
         <trans-unit id="Like" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Like</target>
         </trans-unit>
         <trans-unit id="SetOfCars" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Set of cars</target>
         </trans-unit>
         <trans-unit id="AddNewSetOfCars" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Add new set of cars</target>
         </trans-unit>
         <trans-unit id="andPressEnter" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">and press enter</target>
         </trans-unit>
         <trans-unit id="EnteringData" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Entering data</target>
         </trans-unit>
         <trans-unit id="ToEnter" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Enter</target>
         </trans-unit>
         <trans-unit id="RememberLogin" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Remember login</target>
         </trans-unit>
         <trans-unit id="AutoLogin" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Auto login</target>
         </trans-unit>
         <trans-unit id="andCreateComparingTable" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">and create comparing table</target>
         </trans-unit>
         <trans-unit id="optional" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">optional</target>
         </trans-unit>
         <trans-unit id="photos" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">photos</target>
         </trans-unit>
         <trans-unit id="successfullyDownloaded" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">successfully downloaded</target>
         </trans-unit>
         <trans-unit id="cars" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">cars</target>
         </trans-unit>
         <trans-unit id="OutputWasSavedTo" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Output was saved to</target>
         </trans-unit>
         <trans-unit id="ScrolledToLine" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Scrolled to line</target>
         </trans-unit>
         <trans-unit id="HowToUse" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">How to use</target>
         </trans-unit>
         <trans-unit id="FeedbackWasSavedDeveloperWillBeContactingYouBackSoon" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Feedback was saved. Developer will be contacting you back soon</target>
         </trans-unit>
         <trans-unit id="feedback" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">feedback</target>
         </trans-unit>
         <trans-unit id="ReadOurTermsOfUseBeforeBuy" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Read our Terms of use before buy</target>
         </trans-unit>
         <trans-unit id="OriginalPrice" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Original price</target>
         </trans-unit>
         <trans-unit id="IntroductoryPrice" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Introductory price</target>
         </trans-unit>
         <trans-unit id="appFocusing" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">app focusing</target>
         </trans-unit>
         <trans-unit id="DummyUC" translate="no" xml:space="preserve">
-          <source></source>
+          
           <target state="translated">Dummy UC</target>
         </trans-unit>
       </group>

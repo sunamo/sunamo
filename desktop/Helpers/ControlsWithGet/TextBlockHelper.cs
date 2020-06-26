@@ -14,21 +14,8 @@ using System.Windows.Media;
 /// <summary>
 /// TBH je pro TextBox, TBH2 pro TextBlock
 /// </summary>
-public partial class TextBlockHelper : TextBlockHelperBase
+public partial class TextBlockHelper 
 {
-    public static void SetTextPostColon(TextBlock lblStatusDownload, string status)
-    {
-        status = SH.PostfixIfNotEmpty(status, AllStrings.colon);
-        SetText(lblStatusDownload, status);
-    }
-
-    static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
-    static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
-    static TextBlockHelper()
-    {
-        TextBlockHelper.InicializeWidths();
-    }
-
     public static void InicializeWidths()
     {
         StackPanel p = new StackPanel();
@@ -89,6 +76,13 @@ public partial class TextBlockHelper : TextBlockHelperBase
         p.Visibility = Visibility.Collapsed;
     }
 
+    static TextBlockHelper()
+    {
+        InicializeWidths();
+    }
+
+    static Dictionary<int, double> averageNumberWidthOnFontSize = new Dictionary<int, double>();
+    static Dictionary<int, double> averageCharWidthOnFontSize = new Dictionary<int, double>();
     public static double GetOptimalWidthForCountOfChars(int count, bool alsoLetters, TextBlock txt)
     {
         double countDouble = (double)count;
@@ -117,140 +111,10 @@ public partial class TextBlockHelper : TextBlockHelperBase
         return dict[copyInt] * countDouble;
     }
 
-    public FontArgs fa = FontArgs.DefaultRun();
-    TextBlock tb = null;
-    public TextBlockHelper(TextBlock tb)
+    public static void SetTextPostColon(TextBlock lblStatusDownload, string status)
     {
-        this.tb = tb;
+        status = SH.PostfixIfNotEmpty(status, AllStrings.colon);
+        TextBlockHelper.SetText(lblStatusDownload, status);
     }
 
-    public void DivideStringToRows(FontArgs fa, string text, Size maxSize)
-    {
-        List<string> ls = FontHelper.DivideStringToRows(fa.fontFamily, fa.fontSize, fa.fontStyle, fa.fontStretch, fa.fontWeight, text, maxSize);
-        foreach (var item in ls)
-        {
-            tb.Inlines.Add(GetRun(item, fa));
-            tb.Inlines.Add(new LineBreak());
-        }
-    }
-
-    public void Bold(string text)
-    {
-        FontArgs fa = FontArgs.DefaultRun();
-        fa.fontWeight = GetFontWeight(FontWeight2.bold);
-        tb.Inlines.Add(GetBold(text, fa));
-    }
-
-    public Run Run(string p)
-    {
-        Run run = GetRun(p, fa);
-        tb.Inlines.Add(run);
-        return run;
-    }
-
-    public void H1(string text, double maxWidth)
-    {
-        Bold b = new Bold();
-        FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 50;
-        //b.FontSize = 40;
-        b.Inlines.Add(new LineBreak());
-        //b.Inlines.Add(GetRun(text, fa));
-        DivideStringToRows(fa, text, new Size(maxWidth, double.PositiveInfinity));
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(new LineBreak());
-        tb.Inlines.Add(b);
-    }
-
-    public void H1(string text)
-    {
-        Bold b = new Bold();
-        FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 50;
-        //b.FontSize = 40;
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(GetRun(text, fa));
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(new LineBreak());
-        tb.Inlines.Add(b);
-    }
-
-    public void H2(string text)
-    {
-        Bold b = new Bold();
-        FontArgs fa = FontArgs.DefaultRun();
-        //fa.fontSize = 50;
-        fa.fontSize = 40;
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(GetRun(text, fa));
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(new LineBreak());
-        tb.Inlines.Add(b);
-    }
-
-    public void H3(string text)
-    {
-        Italic b = new Italic();
-        FontArgs fa = FontArgs.DefaultRun();
-        fa.fontSize = 30;
-        //b.FontSize = 30;
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(GetRun(text, fa));
-        b.Inlines.Add(new LineBreak());
-        b.Inlines.Add(new LineBreak());
-        tb.Inlines.Add(b);
-    }
-
-    /// <summary>
-    /// Tato Metoda nefunguje, protože Paragraph je odvozený od Block a ne od Inline 
-    /// </summary>
-    /// <param name = "italic"></param>
-    public void AddParagraph(Inline italic)
-    {
-    }
-
-    public void LineBreak()
-    {
-        tb.Inlines.Add(new LineBreak());
-    }
-
-    public void KeyValue(string p1, string p2)
-    {
-        if (!string.IsNullOrWhiteSpace(p2))
-        {
-            p2 = p2.Trim();
-            p1 = p1.Trim();
-            if (p2 != "" && p1 != "")
-            {
-                Bold(p1);
-                Run(AllStrings.space + p2);
-                LineBreak();
-            }
-        }
-    }
-
-    public void Error(string p)
-    {
-        tb.Inlines.Add(GetError(p, FontArgs.DefaultRun()));
-        LineBreak();
-    }
-
-    public void Bullet(string p)
-    {
-        Inline il = GetBullet(p, fa);
-        //il.Foreground = new SolidColorBrush(Colors.Black);
-        tb.Inlines.Add(il);
-        LineBreak();
-    }
-
-    public void Italic(string p)
-    {
-        tb.Inlines.Add(GetItalic(p, fa));
-    }
-
-    public void DivideStringToRows(FontFamily fontFamily, double fontSize, FontStyle fontStyle, FontStretch fontStretch, System.Windows.FontWeight fontWeight, string text, Size maxSize)
-    {
-        FontArgs fa = new FontArgs(fontFamily, fontSize, fontStyle, fontStretch, fontWeight);
-        DivideStringToRows(fa, text, maxSize);
-    }
 }
