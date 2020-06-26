@@ -181,7 +181,7 @@
       <Project>{20d0420a-dc10-4bfb-a663-146daaa8df8b}</Project>
       <Name>Scz</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sunamoWithoutDep\WinSec\WinSec.csproj">
+    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSec\WinSec.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
     </ProjectReference>

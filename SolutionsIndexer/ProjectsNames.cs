@@ -9,6 +9,7 @@ public class ProjectsNames
     public const string sunamoWeb = "sunamo.web";
     public const string sunamoWithoutDep = "sunamoWithoutDep";
     public const string sunamo = "sunamo";
+    public const string CredentialsWithoutDep = "CredentialsWithoutDep";
 
-    public static List<string> All = CA.ToList<string>(sunamoWeb, sunamoWithoutDep, sunamo);
+    public static List<string> All = CA.ToList<string>(sunamoWeb, sunamoWithoutDep, sunamo, CredentialsWithoutDep);
 }
