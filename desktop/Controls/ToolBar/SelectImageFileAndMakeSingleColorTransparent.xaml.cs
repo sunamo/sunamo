@@ -38,10 +38,10 @@ namespace desktop.Controls
         {
             if (v == "")
             {
-                v = "None";
+                v = sess.i18n(XlfKeys.None);
             }
             selectedFile = v;
-            tbSelectedFile.Text = "Selected file" + ": " + v;
+            tbSelectedFile.Text = sess.i18n(XlfKeys.SelectedFile) + ": " + v;
         }
 
         public event VoidStringBitmapBitmapSource FileSelected;

@@ -21,7 +21,7 @@ public class XlfResourcesH
     public static bool initialized = false;
     static Type type = typeof(XlfResourcesH);
 
-    
+
 
     public static string PathToXlfSunamo(Langs l)
     {
@@ -123,7 +123,7 @@ public class XlfResourcesH
         //}
 
         exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
-        exists = false;
+        
         if (appData == null)
         {
             // Is web app
@@ -136,30 +136,30 @@ public class XlfResourcesH
         {
             String xlfContent = null;
 
-        var fn = "sunamo_cs_CZ_min";
+            var fn = "sunamo_cs_CZ_min";
 
-        var file = appData.GetFileCommonSettings(fn + ".xlf");
+            var file = appData.GetFileCommonSettings(fn + ".xlf");
 
-        // Cant use StorageFile.ToString - get only name of method
-        //pathFile = file.ToString();
+            // Cant use StorageFile.ToString - get only name of method
+            //pathFile = file.ToString();
 
-        var enc = Encoding.GetEncoding(65001);
+            var enc = Encoding.GetEncoding(65001);
 
-        xlfContent = rm.GetByteArrayAsString(fn);
-        //xlfContent = xlfContent.Skip(3);
-        File.WriteAllText(file, xlfContent, enc);
-        TFXlf.RemoveDoubleBomUtf8(file);
+            xlfContent = rm.GetByteArrayAsString(fn);
+            //xlfContent = xlfContent.Skip(3);
+            File.WriteAllText(file, xlfContent, enc);
+            TFXlf.RemoveDoubleBomUtf8(file);
 
-        fn = "sunamo_en_US_min";
+            fn = "sunamo_en_US_min";
 
-        var file2 = appData.GetFileCommonSettings(fn + ".xlf");
+            var file2 = appData.GetFileCommonSettings(fn + ".xlf");
 
-        xlfContent = rm.GetByteArrayAsString(fn);
-        //xlfContent = xlfContent.Skip(3);
-        File.WriteAllText(file2, xlfContent, enc);
-        TFXlf.RemoveDoubleBomUtf8(file2);
+            xlfContent = rm.GetByteArrayAsString(fn);
+            //xlfContent = xlfContent.Skip(3);
+            File.WriteAllText(file2, xlfContent, enc);
+            TFXlf.RemoveDoubleBomUtf8(file2);
 
-        path = Path.Combine(appData.RootFolderCommon(true), "Settings");
+            path = Path.Combine(appData.RootFolderCommon(true), "Settings");
             //path = appData.RootFolderCommon(false);
         }
 
@@ -182,7 +182,7 @@ public class XlfResourcesH
 
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory)
     {
-        return SaveResouresToRL<StorageFolder, StorageFile>(key, basePath, existsDirectory,null);
+        return SaveResouresToRL<StorageFolder, StorageFile>(key, basePath, existsDirectory, null);
     }
     public static Dictionary<string, string> LoadXlfDocument(string file)
     {
@@ -197,16 +197,16 @@ public class XlfResourcesH
         var xlfFiles = doc.Files;
         if (xlfFiles.Count() != 0)
         {
-                // Win every xlf will be t least two WPF.TESTS/PROPERTIES/RESOURCES.RESX and WPF.TESTS/RESOURCES/EN-US.RESX
+            // Win every xlf will be t least two WPF.TESTS/PROPERTIES/RESOURCES.RESX and WPF.TESTS/RESOURCES/EN-US.RESX
             foreach (var item in xlfFiles)
             {
                 // like WPF.TESTS/PROPERTIES/
                 if (item.Original.EndsWith("/RESOURCES.RESX"))
                 {
-                if (item.TransUnits.Count() > 0)
-                {
+                    if (item.TransUnits.Count() > 0)
+                    {
 
-                    Debugger.Break();
+                        Debugger.Break();
                     }
                 }
 
@@ -256,12 +256,12 @@ public class XlfResourcesH
                 }
                 else
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unvalid file" + " " + file + ", " + "please delete it");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Invalid file " + file + ", please delete it");
                 }
             }
         }
 
 
-        
+
     }
 }

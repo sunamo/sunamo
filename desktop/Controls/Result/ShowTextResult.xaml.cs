@@ -52,7 +52,7 @@ namespace desktop.Controls
             }
         }
 
-        public string Title => "Show result";
+        public string Title => sess.i18n(XlfKeys.ShowResult);
 
         public event VoidBoolNullable ChangeDialogResult;
 
@@ -79,7 +79,7 @@ namespace desktop.Controls
         private void resultButtons_CopyToClipboard()
         {
             ClipboardHelper.SetText(txtResult.Text);
-            SunamoTemplateLogger.Instance.CopiedToClipboard("Result");
+            SunamoTemplateLogger.Instance.CopiedToClipboard(sess.i18n(XlfKeys.Result));
         }
     }
 }

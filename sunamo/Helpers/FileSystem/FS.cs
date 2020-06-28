@@ -368,7 +368,7 @@ public partial class FS
             }
             else
             {
-                ThisApp.SetStatus(TypeOfMessage.Warning, "Content of " + item + " couldn't be replaced - contains control chars.");
+                ThisApp.SetStatus(TypeOfMessage.Warning, sess.i18n(XlfKeys.ContentOf)+" " + item + " couldn't be replaced - contains control chars.");
             }
         }
     }
@@ -730,7 +730,7 @@ public partial class FS
                     string newFn = nova + " (" + serie + AllStrings.rb;
                     if (!FS.ExistsDirectory(newFn))
                     {
-                        vr = "Folder has been renamed to" + " " + FS.GetFileName(newFn);
+                        vr = sess.i18n(XlfKeys.FolderHasBeenRenamedTo) + " " + FS.GetFileName(newFn);
                         nova = newFn;
                         break;
                     }
@@ -814,7 +814,7 @@ public partial class FS
     /// <param name="files"></param>
     public static void DeleteDuplicatedImages(List<string> files)
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(),type, "DeleteDuplicatedImages", "Only for test files for another apps" + ". ");
+        ThrowExceptions.Custom(Exc.GetStackTrace(),type, "DeleteDuplicatedImages", sess.i18n(XlfKeys.OnlyForTestFilesForAnotherApps) + ". ");
     }
     public static void DeleteFilesWithSameContentWorking<T, ColType>(List<string> files, Func<string, T> readFunc)
     {

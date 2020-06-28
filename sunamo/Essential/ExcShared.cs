@@ -37,7 +37,7 @@ public class Exc
         StackTrace stackTrace = new StackTrace();
         MethodBase methodBase = stackTrace.GetFrame(v).GetMethod();
         var methodName = methodBase.Name;
-        methodName = TrimEnd(methodName, "Test");
+        methodName = TrimEnd(methodName, XlfKeys.Test);
         return methodName;
     }
 

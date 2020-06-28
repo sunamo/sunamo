@@ -265,7 +265,7 @@ namespace desktop.Controls.Input
                 else
                 {
                     allOk = false;
-                    ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, "Not implemented Validate for control " + item.GetType().FullName);
+                    ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, sess.i18n(XlfKeys.NotImplementedValidateForControl)+" " + item.GetType().FullName);
                 }
             }
             //txtEnteredText.Text = txtEnteredText.Text.Trim();

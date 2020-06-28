@@ -21,7 +21,7 @@ using System.Text;
     /// </summary>
     public static readonly DateTime DateTimeMinVal = new DateTime(1900, 1, 1);
     public static readonly DateTime DateTimeMaxVal = new DateTime(2079, 6, 6);
-    public const string Nope = "Nope";
+    public const string Nope = XlfKeys.Nope;
     public const string transformTo = "->";
 
     static Consts()
@@ -40,7 +40,7 @@ using System.Text;
         /// "x "
         /// </summary>
         public const string xs = "x ";
-        public const string Exception = "Exception" + ": ";
+        public const string Exception = "Exception: ";
 
    
     public const string spaces4 = "    ";
@@ -49,15 +49,15 @@ using System.Text;
 
         public const string nulled = "(null)";
 
-        public const string HttpLocalhostSlash = "https://localhost" + "/";
-        public const string HttpSunamoCzSlash = "https://sunamo.cz" + "/";
+        public const string HttpLocalhostSlash = "https://localhost/";
+        public const string HttpSunamoCzSlash = "https://sunamo.cz/";
     /// <summary>
     /// localhost
     /// </summary>
         public const string localhost = "localhost";
 
-        public const string HttpWwwCzSlash = "https://sunamo.cz" + "/";
-        public const string HttpCzSlash = "https://sunamo.cz" + "/";
+        public const string HttpWwwCzSlash = "https://sunamo.cz/";
+        public const string HttpCzSlash = "https://sunamo.cz/";
         public const string HttpWwwCz = "https://sunamo.cz";
     public const string httpLocalhost = "https://localhost/";
 
@@ -68,8 +68,8 @@ using System.Text;
     public const string Cz = "sunamo.cz";
         public const string WwwCz = "sunamo.cz";
 
-        public const string CzSlash = "sunamo.cz" + "/";
-        public const string DotCzSlash = "." + "sunamo.cz" + "/";
+        public const string CzSlash = "sunamo.cz/";
+        public const string DotCzSlash = ".sunamo.cz/";
         public const string DotCz = ".sunamo.cz";
 
     /// <summary>

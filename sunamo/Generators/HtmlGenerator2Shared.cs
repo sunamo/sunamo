@@ -96,8 +96,8 @@ public partial class HtmlGenerator2 : HtmlGenerator
             {
                 pt2 = "bunkaTabulkyKalendareLeft";
             }
-            hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare" + " " + pt2);
-            hg.WriteRaw("&" + "nbsp" + ";");
+            hg.WriteTagWithAttr("td", "class", "bunkaTabulkyKalendare " + pt2);
+            hg.WriteRaw("&nbsp;");
             hg.TerminateTag("td");
         }
 
@@ -132,7 +132,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
                 appendStyle = "color:white;";
             }
             string datum = i + AllStrings.dot + mesic + AllStrings.dot;
-            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare" + " " + pridatTridu, "style", appendStyle + "background-color:" + colors[i - 1]);
+            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare " + pridatTridu, "style", appendStyle + "background-color:" + colors[i - 1]);
             //hg.WriteTag("td");
             hg.WriteRaw("<b>" + datum + "</b>");
             hg.WriteBr();
@@ -152,8 +152,8 @@ public partial class HtmlGenerator2 : HtmlGenerator
             {
                 pt = "bunkaTabulkyKalendareRight";
             }
-            hg.WriteTagWithAttr("td", "class", /*bunkaTabulkyKalendareBottom */ "bunkaTabulkyKalendare" + " " + pt);
-            hg.WriteRaw("&" + "nbsp" + ";");
+            hg.WriteTagWithAttr("td", "class", /*bunkaTabulkyKalendareBottom */ "bunkaTabulkyKalendare " + pt);
+            hg.WriteRaw("&nbsp;");
             hg.TerminateTag("td");
         }
         hg.TerminateTag("tr");
@@ -259,7 +259,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             hg.WriteTagWithAttr("div", "style", "display: inline-block;");
             if (animated)
             {
-                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, "alt", odkazyText[i]);
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height:" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, "alt", odkazyText[i]);
             }
             else
             {
@@ -307,7 +307,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         }
         if (count != idBadges.Count)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto" + " " + count + " " + "se nerovn\u00E1 po\u010Dtem idBadges" + " " + idBadges.Count);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.MetodaHtmlGenerator2TopListWithImagesOdkazyPhoto) + " " + count + " se nerovn\u00E1 po\u010Dtem idBadges " + idBadges.Count);
         }
 
         //HtmlGenerator hg = new HtmlGenerator();
@@ -321,7 +321,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             
             if (animated)
             {
-                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height" + ":" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, HtmlAttrs.alt, odkazyText[i]);
+                hg.WriteNonPairTagWithAttrs("img", "style", "margin-left: auto; margin-right: auto; vertical-align-middle; width: " + widthImage + "px;height:" + heightImage + "px", "id", nameJsArray + srcPhoto[i], "class", "alternatingImage", "src", initialImageUri, HtmlAttrs.alt, odkazyText[i]);
             }
             else
             {
@@ -500,7 +500,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             hg.TerminateTag("li");
         }
 
-        return hg.ToString() + "/" + "/" + "ul>";
+        return hg.ToString() + "//ul>";
     }
 
     /// <summary>
@@ -510,7 +510,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="list"></param>
     public static string GetUlWoCheckDuplicate(List<string> list, string appendClass)
     {
-        return "<ul static class=\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "/" + "/" + "ul>";
+        return "<ul static class=\"textVlevo " + appendClass + AllStrings.gt + GetForUlWoCheckDuplicate(list) + "//ul>";
     }
 
     /// <summary>
@@ -520,7 +520,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     /// <param name="texts"></param>
     public static string GetUlWoCheckDuplicate(List<string> anchors, List<string> texts)
     {
-        return "<ul static class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "/" + "/" + "ul>";
+        return "<ul static class=\"textVlevo\">" + GetForUlWoCheckDuplicate(anchors, texts) + "//ul>";
     }
     #endregion
 
@@ -594,7 +594,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
     public static string AnchorWithHttp(string www)
     {
         string http = UH.AppendHttpIfNotExists(www);
-        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https" + ":" + "//", "") + "</a>";
+        return "<a href=\"" + http + AllStrings.qm + AllStrings.gt + SH.ReplaceOnce(SH.ReplaceOnce(www, "https://", ""), "https://", "") + "</a>";
     }
 
     public static string AnchorWithHttp(string www, string text)
@@ -671,10 +671,10 @@ public partial class HtmlGenerator2 : HtmlGenerator
         foreach (var item in dWordCount)
         {
             string bezmezer = item.Key.Replace(AllStrings.space, "");
-            hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript" + ":" + prefixWithDot + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
+            hg.WriteTagWithAttrs("a", "id", "tag" + bezmezer, "href", "javascript:" + prefixWithDot + nameJavascriptMethod + "($('#tag" + bezmezer + "'), '" + item.Key + "');", "rel", item.Value.ToString());
             hg.WriteRaw(SH.FirstCharOfEveryWordUpperDash( item.Key));
             hg.TerminateTag("a");
-            hg.WriteRaw(" &" + "nbsp" + "; ");
+            hg.WriteRaw(" &nbsp; ");
         }
         return hg.ToString();
     }
@@ -696,12 +696,12 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
     public static string DetailStatic(string name, object value)
     {
-        return "<b>" + name + ":</b> " + value.ToString() + "<br" + " /" + ">";
+        return "<b>" + name + ":</b> " + value.ToString() + "<br />";
     }
 
     public static string DetailStatic(string green, string name, object value)
     {
-        return "<div style='color" + ":" + green + "'><b>" + name + ":</b> " + value.ToString() + "/" + "/" + "div>";
+        return "<div style='color:" + green + "'><b>" + name + ":</b> " + value.ToString() + "//div>";
     }
 
 
@@ -712,7 +712,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         {
             string whatLeave = SH.ShortForLettersCount(p1, p2);
             //"<span static class='tooltip'>" +
-            whatLeave += "<span static class='showonhover'><a href='#'> ... </a><span static class='hovertext" + "'" + ">" + SH.ReplaceOnce(p1, whatLeave, "") + "<" + "/" + "span></span>";
+            whatLeave += "<span static class='showonhover'><a href='#'> ... </a><span static class='hovertext'>" + SH.ReplaceOnce(p1, whatLeave, "") + "</span></span>";
             return whatLeave;
         }
         return p1;
@@ -720,7 +720,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
 
     public static string LiI(string p)
     {
-        return "<li><i>" + p + "/" + "/" + "i></li>";
+        return "<li><i>" + p + "//i></li>";
     }
 
     public static string GetForCheckBoxListWoCheckDuplicate(string idClassCheckbox, string idClassSpan, List<string> idCheckBoxes, List<string> list)
@@ -728,7 +728,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
         HtmlGenerator hg = new HtmlGenerator();
         if (idCheckBoxes.Count != list.Count)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nestejn\u00FD po\u010Det parametr\u016F v metod\u011B GetForCheckBoxListWoCheckDuplicate" + " " + idCheckBoxes.Count + AllStrings.colon + list.Count);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nestejn\u00FD po\u010Det parametr\u016F v metod\u011B GetForCheckBoxListWoCheckDuplicate " + idCheckBoxes.Count + AllStrings.colon + list.Count);
         }
 
         for (int i = 0; i < idCheckBoxes.Count; i++)
@@ -773,11 +773,11 @@ public partial class HtmlGenerator2 : HtmlGenerator
     {
         if (AllYearsHtmlBoxes.Count != 12)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"D\u00E9lka AllMonthsHtmlBoxes nen\u00ED 12" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"D\u00E9lka AllMonthsHtmlBoxes nen\u00ED 12.");
         }
         if (AllMonthsBoxColors.Count != 12)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"D\u00E9lka AllMonthsBoxColors nen\u00ED 12" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"D\u00E9lka AllMonthsBoxColors nen\u00ED 12.");
         }
         HtmlGenerator hg = new HtmlGenerator();
         hg.WriteTagWith2Attrs("table", "class", "tabulkaNaStredAutoSirka", "style", "width: 100%");
@@ -821,7 +821,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             {
                 appendStyle = "color:white;";
             }
-            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare" + " " + pridatTridu, "style", appendStyle + "background-color:" + color);
+            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare " + pridatTridu, "style", appendStyle + "background-color:" + color);
 
             hg.WriteRaw("<b>" + AllYearsHtmlBoxes[i] + "</b>");
 
@@ -862,10 +862,10 @@ public partial class HtmlGenerator2 : HtmlGenerator
             string pridatTriduTop = "";
             if (i == 0)
             {
-                pridatTriduTop = "bunkaTabulkyKalendareTop" + " ";
+                pridatTriduTop = "bunkaTabulkyKalendareTop ";
             }
             pridatTridu = "bunkaTabulkyKalendareLeft";
-            hg.WriteTagWithAttr("td", "class", "tableCenter bunkaTabulkyKalendare" + " " + pridatTriduTop + pridatTridu);
+            hg.WriteTagWithAttr("td", "class", "tableCenter bunkaTabulkyKalendare " + pridatTriduTop + pridatTridu);
             hg.WriteRaw("<b>" + years[i] + "</b>");
             hg.TerminateTag("td");
             pridatTridu = "bunkaTabulkyKalendareRight";
@@ -875,7 +875,7 @@ public partial class HtmlGenerator2 : HtmlGenerator
             {
                 appendStyle = "color:white;";
             }
-            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare" + " " + pridatTriduTop + pridatTridu, "style", appendStyle + "background-color:" + color);
+            hg.WriteTagWith2Attrs("td", "class", "tableCenter bunkaTabulkyKalendare " + pridatTriduTop + pridatTridu, "style", appendStyle + "background-color:" + color);
 
             //hg.WriteRaw("<b>" + AllMonthsHtmlBoxes[i] + "</b>");
             hg.WriteRaw(AllYearsHtmlBoxes[i]);

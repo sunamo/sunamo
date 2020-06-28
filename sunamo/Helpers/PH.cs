@@ -27,7 +27,7 @@ public partial class PH
         }
         catch (Win32Exception ex)
         {
-            if (ex.Message == "The system cannot find the file specified")
+            if (ex.Message == sess.i18n(XlfKeys.TheSystemCannotFindTheFileSpecified))
             {
                 // probably file is hold by other process 
                 // like c:\inetpub\logs\logfiles\W3SVC1\u_ex200307.log
@@ -43,9 +43,9 @@ public partial class PH
         catch (Exception ex)
         {
 
-            if (ex.Message.Contains("No process is associated with this object."))
+            if (ex.Message.Contains(sess.i18n(XlfKeys.NoProcessIsAssociatedWithThisObject)+"."))
             {
-                ThisApp.SetStatus(TypeOfMessage.Warning, "Please add handle64.exe to PATH");
+                ThisApp.SetStatus(TypeOfMessage.Warning, sess.i18n(XlfKeys.PleaseAddHandle64ExeToPATH));
                 return pr2;
             }
         }

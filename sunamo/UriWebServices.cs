@@ -95,7 +95,7 @@ public partial class UriWebServices
         public const string WeworkremotelyCom = "https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=%s";
         public const string JobspressoCo = "https://jobspresso.co/remote-work/#%s=1";
         //https://remoteok.io/remote-virtual-assistant-jobs
-        public const string RemoteokIo = "https://remoteok.io" + "/";
+        public const string RemoteokIo = "https://remoteok.io/";
         //https://www.workingnomads.co/jobs
         public const string WwwWorkingnomadsCo = "https://www.workingnomads.co";
 
@@ -148,11 +148,15 @@ public partial class UriWebServices
         public static List<string> All  = CA.ToListString(wwwMusixmatchCom, geniusCom, wwwMetrolyricsCom, wwwLyricsCom, azlyricsCom);
     }
 
+    /// <summary>
+    /// Localhost due to easy convert with 
+    /// </summary>
     public static class SunamoCz
     {
-        public const string lyricsScz = "https://lyrics.sunamo.cz/search/%s";
-        public const string appsHelp = "https://apps.sunamo.cz/help/%s";
-        public const string appsFeedBack = "https://apps.sunamo.cz/feedback/%s";
+        public const string lyricsScz = "https://lyr.localhost/search/%s";
+        public const string appsHelp = "https://app.localhost/help/%s";
+        public const string appsFeedBack = "https://app.localhost/feedback/%s";
+        public const string appsApp = "https://app.localhost/app/%s";
     }
 
     public static class SexShops
@@ -179,7 +183,7 @@ public partial class UriWebServices
         {
             if (s_list == null)
             {
-                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", "Orient", "Drago", "v\u00EDtana", "sv\u011Bt bylinek"));
+                s_list = new List<string>(CA.ToEnumerable("kotanyi", "avok\u00E1do", "nadir", sess.i18n(XlfKeys.Orient), sess.i18n(XlfKeys.Drago), "v\u00EDtana", "sv\u011Bt bylinek"));
             }
 
             foreach (var item in s_list)
@@ -238,7 +242,7 @@ Template for which I will find, have to be in derivates the same:
          */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&hlokalita=70800&humkreis=25&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s" + "/";
+        public const string hyperinzerceCz = "https://moravskoslezsky-kraj.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&p=70800&a=25&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%s" ;
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
@@ -315,7 +319,7 @@ Template for which I will find, have to be in derivates the same:
  */
 
         public const string bazosCz = "https://www.bazos.cz/search.php?hledat=%s&rubriky=www&cenaod=&cenado=&Submit=Hledat&kitx=ano";
-        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s" + "/";
+        public const string hyperinzerceCz = "https://inzeraty.hyperinzerce.cz/%s/";
         public const string bazarCz = "https://www.bazar.cz/?search=1&ft=%s&pid=6934";
         public const string sBazarCz = "https://www.sbazar.cz/hledej/%" ;
         public const string avizoCz = "https://www.avizo.cz/fulltext/?beng=1&searchfor=ads&keywords=%s";
@@ -465,7 +469,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string CoordsInfo(string f)
         {
-            return "https://coords.info" + "/" + f;
+            return "https://coords.info/" + f;
         }
 
         public static string GC(string f)
@@ -478,7 +482,7 @@ Template for which I will find, have to be in derivates the same:
     {
         public static string FacebookProfile(string nick)
         {
-            return "https://www.facebook.com" + "/" + nick;
+            return "https://www.facebook.com/" + nick;
         }
 
         public static string FbTopSearch(string q)
@@ -525,7 +529,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string TwitterProfile(string nick)
     {
-        return "https://www.twitter.com" + "/" + nick;
+        return "https://www.twitter.com/" + nick;
     }
 
     public static string SearchGitHub(string item)
@@ -540,7 +544,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string YouTubeProfile(string nick)
     {
-        return "https://www.youtube.com/c" + "/" + nick;
+        return "https://www.youtube.com/c/" + nick;
     }
 
     public static string GooglePlusProfile(string nick)
@@ -607,7 +611,7 @@ Template for which I will find, have to be in derivates the same:
 
     public static string FromChromeReplacement(string uri, string term)
     {
-        return uri.Replace(chromeSearchstringReplacement, HttpUtility.UrlEncode( Uri.EscapeUriString(term)));
+        return uri.Replace(chromeSearchstringReplacement, UH.UrlEncode( Uri.EscapeUriString(term)));
     }
 
     public static string TopRecepty(string what)
@@ -622,7 +626,7 @@ Template for which I will find, have to be in derivates the same:
     /// <param name="slnName"></param>
     public static string GitRepoInVsts(string slnName)
     {
-        return "https://radekjancik.visualstudio.com/_git" + "/" + HttpUtility.UrlEncode(slnName);
+        return "https://radekjancik.visualstudio.com/_git/" + HttpUtility.UrlEncode(slnName);
     }
 
     public static string AzureRepoWebUI(string slnName)
@@ -668,7 +672,7 @@ Template for which I will find, have to be in derivates the same:
 
         public static string GetHtmlAnchor(string kod)
         {
-            return "<a href=" + "'" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
+            return "<a href='" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
         }
 
         public static string ReplaceOperators(string vstup)

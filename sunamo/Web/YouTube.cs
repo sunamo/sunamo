@@ -15,7 +15,7 @@ public static partial class YouTube
 
     public static string GetHtmlAnchor(string kod)
     {
-        return "<a href=" + "'" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
+        return "<a href='" + GetLinkToVideo(kod) + "'>" + kod + "</a>";
     }
 
     public static string GetLinkToSearch(string co)

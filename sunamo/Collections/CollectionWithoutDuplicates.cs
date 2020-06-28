@@ -6,6 +6,7 @@ using System.Windows;
 
 public class CollectionWithoutDuplicates<T>
 {
+    
     public List<T> c = null;
     public bool allowNull = false;
     public static bool br = false;

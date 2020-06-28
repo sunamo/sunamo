@@ -66,8 +66,8 @@ using System.Text.RegularExpressions;
 
         public static string TrimInnerOfEncodedHtml(string value)
         {
-            value = SH.ReplaceAll(value, "&" + "gt" + ";", "&" + "gt" + "; ");
-            value = SH.ReplaceAll(value, "&" + "lt" + ";", " &" + "lt" + ";");
+            value = SH.ReplaceAll(value, "&gt;", "&gt; ");
+            value = SH.ReplaceAll(value, "&lt;", " &lt;");
             return value;
         }
 

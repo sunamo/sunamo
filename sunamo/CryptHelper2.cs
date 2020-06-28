@@ -143,7 +143,7 @@ public partial class CryptHelper2
         //bool b = rsa.PublicOnly;
         if ((cipherTextBytes.Count % RSA_BLOCKSIZE) != 0)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Encrypted text is an invalid length");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.EncryptedTextIsAnInvalidLength));
         }
 
         //Calculate the number of blocks we will have to work on

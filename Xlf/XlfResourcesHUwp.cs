@@ -256,7 +256,7 @@
 //                }
 //                else
 //                {
-//                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Unvalid file" + " " + file + ", " + "please delete it");
+//                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.UnvalidFile) + " " + file + ", please delete it");
 //                }
 //            }
 //        }

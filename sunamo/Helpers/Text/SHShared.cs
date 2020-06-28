@@ -1,4 +1,4 @@
-using sunamo;
+﻿using sunamo;
 using sunamo.Enums;
 using System.Diagnostics;
 using System.Globalization;
@@ -60,7 +60,7 @@ public static partial class SH
         int remain = sl % c; 
         if (remain != 0)
         {
-            ThrowExceptions.Custom(null, type, Exc.CallingMethod(), "Numbers of letters " + s + " is not dividable with " + c);
+            ThrowExceptions.Custom(null, type, Exc.CallingMethod(), sess.i18n(XlfKeys.NumbersOfLetters)+" " + s + " is not dividable with " + c);
         }
 
         List<string> ls = new List<string>(c);
@@ -1150,8 +1150,8 @@ public static partial class SH
     public static bool IsValidISO(string input)
     {
         // ISO-8859-1 je to samé jako latin1 https://en.wikipedia.org/wiki/ISO/IEC_8859-1
-        byte[] bytes = Encoding.GetEncoding("ISO-8859" + "-" + "1").GetBytes(input);
-        String result = Encoding.GetEncoding("ISO-8859" + "-" + "1").GetString(bytes);
+        byte[] bytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(input);
+        String result = Encoding.GetEncoding("ISO-8859-1").GetString(bytes);
         return String.Equals(input, result);
     }
 
@@ -1645,7 +1645,7 @@ public static partial class SH
     {
         if (deli == null || deli.Count() == 0)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"No delimiter determined");   
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NoDelimiterDetermined));   
         }
 
         var deli3 = CA.ToListString( CA.OneElementCollectionToMulti(deli));
@@ -1864,7 +1864,7 @@ public static partial class SH
 
             if (ie.Count() > 1 && enu.Count() == 1)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Probably was called with swithech delimiter and parts");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.ProbablyWasCalledWithSwithechDelimiterAndParts));
             }
         }
 
@@ -2424,7 +2424,7 @@ public static partial class SH
             var dex = title.IndexOf(" - from");
             if (dex == -1)
             {
-                dex = title.IndexOf(" - From");
+                dex = title.IndexOf(SunamoNotTranslateAble.From);
             }
             if (dex != -1)
             {

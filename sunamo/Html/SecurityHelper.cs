@@ -25,7 +25,7 @@
                     {
                         item.Remove();
                     }
-                    else if (item.Value.ToLower().Trim().StartsWith("javascript" + ":"))
+                    else if (item.Value.ToLower().Trim().StartsWith("javascript:"))
                     {
                         item.Remove();
                     }

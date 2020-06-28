@@ -56,7 +56,7 @@ public class HtmlGeneratorExtended : HtmlGenerator
         {
             WriteElement("b", label + AllStrings.colon);
             WriteRaw(AllStrings.space);
-            WriteTagWithAttr("a", "href", "mailto" + ":" + oMail);
+            WriteTagWithAttr("a", "href", "mailto:" + oMail);
             WriteRaw(oMail);
             TerminateTag("a");
             WriteBr();

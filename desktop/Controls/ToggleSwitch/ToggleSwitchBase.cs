@@ -37,24 +37,21 @@ namespace desktop.Controls.ToggleSwitch
 	[TemplatePart(Name = SwitchThumbPart, Type = typeof(Thumb))]
 	[TemplatePart(Name = SwitchRootPart, Type = typeof(FrameworkElement))]
 	[TemplatePart(Name = SwitchTrackPart, Type = typeof(FrameworkElement))]
-	[Description(" " + " " + "control which when clicked or dragged toggles between on and off states" + ".")]
+	[Description("  control which when clicked or dragged toggles between on and off states.")]
 	public abstract class ToggleSwitchBase : Control
 	{
 		#region Constants
 
 		private const string CommonStates = "CommonStates";
-		private const string NormalState = "Normal";
+		private const string NormalState = XlfKeys.Normal;
 		private const string DisabledState = "Disabled";
 		private const string MouseOverState = "MouseOver";
-
-		private const string CheckStates = "CheckStates";
-		private const string CheckedState = "Checked";
-		private const string DraggingState = "Dragging";
-		private const string UncheckedState = "Unchecked";
+		private const string DraggingState = XlfKeys.Dragging;
+		private const string UncheckedState = XlfKeys.Unchecked;
 
 		private const string FocusStates = "FocusStates";
-		private const string FocusedState = "Focused";
-		private const string UnfocusedState = "Unfocused";
+		private const string FocusedState = XlfKeys.Focused;
+		private const string UnfocusedState = XlfKeys.Unfocused;
 
 		private const string SwitchRootPart = "SwitchRoot";
 		private const string SwitchCheckedPart = "SwitchChecked";
@@ -63,7 +60,10 @@ namespace desktop.Controls.ToggleSwitch
 		private const string SwitchTrackPart = "SwitchTrack";
 
 		private const string CommonPropertiesCategory = "Common Properties";
-		private const string AppearanceCategory = "Appearance";
+		private const string AppearanceCategory = XlfKeys.Appearance;
+
+		private const string CheckStates = "CheckStates";
+		private const string CheckedState = "Checked";
 
 		#endregion
 
@@ -208,7 +208,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The template applied to the <see cref="CheckedContent">Checked</see> and <see cref="UncheckedContent">Unchecked</see> content properties.
 		///</summary>
-		[Description("The template applied to the Checked and Unchecked content properties" + ".")]
+		[Description(XlfKeys.TheTemplateAppliedToTheCheckedAndUncheckedContentProperties+ ".")]
 		public ControlTemplate ContentTemplate
 		{
 			get { return (ControlTemplate)GetValue(ContentTemplateProperty); }
@@ -234,7 +234,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// The content shown on the checked side of the toggle switch
 		///</summary>
 		[Category(CommonPropertiesCategory)]
-		[Description("The content shown on the checked side of the toggle switch")]
+		[Description(XlfKeys.TheContentShownOnTheCheckedSideOfTheToggleSwitch)]
 		public object CheckedContent
 		{
 			get { return GetValue(CheckedContentProperty); }
@@ -254,7 +254,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the foreground of the checked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the foreground of the checked side of the toggle switch" + ".")]
+		[Description(XlfKeys.TheBrushUsedForTheForegroundOfTheCheckedSideOfTheToggleSwitch+ ".")]
 		public Brush CheckedForeground
 		{
 			get { return (Brush)GetValue(CheckedForegroundProperty); }
@@ -274,7 +274,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the background of the checked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the background of the checked side of the toggle switch" + ".")]
+		[Description(XlfKeys.TheBrushUsedForTheBackgroundOfTheCheckedSideOfTheToggleSwitch+ ".")]
 		public Brush CheckedBackground
 		{
 			get { return (Brush)GetValue(CheckedBackgroundProperty); }
@@ -300,7 +300,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// The content shown on the unchecked side of the toggle switch.
 		///</summary>
 		[Category(CommonPropertiesCategory)]
-		[Description("The content shown on the unchecked side of the toggle switch" + ".")]
+		[Description(XlfKeys.TheContentShownOnTheUncheckedSideOfTheToggleSwitch+ ".")]
 		public object UncheckedContent
 		{
 			get { return GetValue(UncheckedContentProperty); }
@@ -320,7 +320,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the foreground of the Unchecked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the foreground of the Unchecked side of the toggle switch" + ".")]
+		[Description(XlfKeys.TheBrushUsedForTheForegroundOfTheUncheckedSideOfTheToggleSwitch+ ".")]
 		public Brush UncheckedForeground
 		{
 			get { return (Brush)GetValue(UncheckedForegroundProperty); }
@@ -340,7 +340,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used for the background of the Unchecked side of the toggle switch.
 		///</summary>
-		[Description("The brush used for the background of the Unchecked side of the toggle switch" + ".")]
+		[Description(XlfKeys.TheBrushUsedForTheBackgroundOfTheUncheckedSideOfTheToggleSwitch+ ".")]
 		public Brush UncheckedBackground
 		{
 			get { return (Brush)GetValue(UncheckedBackgroundProperty); }
@@ -352,10 +352,10 @@ namespace desktop.Controls.ToggleSwitch
 		#region Elasticity (Dependency Property)
 
 		///<summary>
-		/// DependencyProperty for the <see cref="Elasticity">Elasticity</see> property.
+		/// DependencyProperty for the <see cref=sess.i18n(XlfKeys.Elasticity)>Elasticity</see> property.
 		///</summary>
 		public static readonly DependencyProperty ElasticityProperty =
-			DependencyProperty.Register("Elasticity", typeof(double), typeof(ToggleSwitchBase), new PropertyMetadata(0.5));
+			DependencyProperty.Register(sess.i18n(XlfKeys.Elasticity), typeof(double), typeof(ToggleSwitchBase), new PropertyMetadata(0.5));
 
 		///<summary>
 		/// Determines the percentage of the way the <see cref="Thumb">thumb</see> must be dragged before the switch changes it's <see cref="IsChecked">IsChecked</see> state.
@@ -364,7 +364,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// This value must be within the range of 0.0 - 1.0. 
 		///</remarks>
 		[Category(CommonPropertiesCategory)]
-		[Description("Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state" + ".")]
+		[Description(XlfKeys.DeterminesThePercentageOfTheWayTheThumbMustBeDraggedBeforeTheSwitchChangesItSIsCheckedState+ ".")]
 		public double Elasticity
 		{
 			get { return ((double)GetValue(ElasticityProperty)).Clamp(0.0, 1.0); }
@@ -389,7 +389,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The <see cref="Thumb">thumb's</see> control template.
 		///</summary>
-		[Description("The thumb's control template" + ".")]
+		[Description(XlfKeys.TheThumbSControlTemplate+ ".")]
 		public ControlTemplate ThumbTemplate
 		{
 			get { return (ControlTemplate)GetValue(ThumbTemplateProperty); }
@@ -409,7 +409,7 @@ namespace desktop.Controls.ToggleSwitch
 		///<summary>
 		/// The brush used to fill the <see cref="Thumb">thumb</see>.
 		///</summary>
-		[Description("The brush used to fill the thumb" + ".")]
+		[Description(XlfKeys.TheBrushUsedToFillTheThumb+ ".")]
 		public Brush ThumbBrush
 		{
 			get { return (Brush)GetValue(ThumbBrushProperty); }
@@ -435,7 +435,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// The size of the toggle switch's <see cref="Thumb">thumb</see>.
 		///</summary>
 		[Category(AppearanceCategory)]
-		[Description("The size of the toggle switch's thumb" + ".")]
+		[Description(XlfKeys.TheSizeOfTheToggleSwitchSThumb+ ".")]
 		public double ThumbSize
 		{
 			get { return (double)GetValue(ThumbSizeProperty); }
@@ -461,7 +461,7 @@ namespace desktop.Controls.ToggleSwitch
 		/// Gets or sets whether the control is in the checked state.
 		///</summary>
 		[Category(CommonPropertiesCategory)]
-		[Description("Gets or sets whether the control is in the checked state" + ".")]
+		[Description(XlfKeys.GetsOrSetsWhetherTheControlIsInTheCheckedState+ ".")]
 		public bool IsChecked
 		{
 			get { return (bool)GetValue(IsCheckedProperty); }

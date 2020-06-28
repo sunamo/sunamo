@@ -28,7 +28,7 @@ namespace shared.Crypting
         /// Determines the default text encoding across ALL DataCrypt instances
         /// Vychozi ekodovani
         /// </summary>
-        public static System.Text.Encoding DefaultEncoding = System.Text.Encoding.GetEncoding("Windows-1252");
+        public static System.Text.Encoding DefaultEncoding = System.Text.Encoding.GetEncoding(sess.i18n(XlfKeys.Windows1252));
         /// <summary>
         /// Determines the default text encoding for this DataCrypt instance
         /// Kodovani pro ziskavani stringu a bajtu

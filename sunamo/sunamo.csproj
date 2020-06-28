@@ -63,6 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\sunamo.web\webforms\converters\MySitesConverter.cs">
+      <Link>webforms\MySitesConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\sunamo.web\webforms\enums\MySites.cs">
+      <Link>webforms\MySites.cs</Link>
+    </Compile>
+    <Compile Include="..\..\sunamo.web\webforms\enums\MySitesShort.cs">
+      <Link>webforms\MySitesShort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\sunamo.web\webforms\SubdomainHelperShared.cs">
+      <Link>webforms\SubdomainHelperShared.cs</Link>
+    </Compile>
     <Compile Include="..\..\sunamo\sunamo\Interfaces\IValidateControl.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\TypesControlsSunamo.cs" />
     <Compile Include="..\..\sunamo\sunamo\Args\CheckArgumentArgs.cs" />
@@ -124,6 +136,8 @@
     <Compile Include="..\..\sunamo\sunamo\Values\UriConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\Values\UriShortConsts.cs" />
     <Compile Include="..\..\sunamo\sunamo\XmlNamespacesHolder.cs" />
+    <Compile Include="Args\GetMemberArgs.cs" />
+    <Compile Include="Attributes\NotTranslateAttribute.cs" />
     <Compile Include="Data\AB.cs" />
     <Compile Include="Data\ABC.cs" />
     <Compile Include="Data\ABL.cs" />
@@ -204,6 +218,7 @@
     <Compile Include="Interfaces\IInlineBuilder.cs" />
     <Compile Include="Interfaces\ITextBlockHelperBase.cs" />
     <Compile Include="Interfaces\IValidateControl.cs" />
+    <Compile Include="SunamoNotTranslateAble.cs" />
     <Compile Include="Values\TypesControlsSunamo.cs" />
     <Compile Include="XlfResourcesHSunamo.cs" />
     <Compile Include="_ns.cs" />
@@ -306,7 +321,7 @@
     <Compile Include="Converts\ConvertDayShortcutFullName.cs" />
     <Compile Include="Converts\ConvertDayShortcutString.cs" />
     <Compile Include="Converts\ConvertEveryWordLargeCharConvention.cs" />
-    <Compile Include="Converts\ConvertMonthCzechEnglish.cs" />
+    <Compile Include="Converts\ConvertMonthCzechEnglishNotTranslateAble.cs" />
     <Compile Include="Converts\ConvertMonthNumberString.cs" />
     <Compile Include="Converts\ConvertMonthShortcutFullName.cs" />
     <Compile Include="Converts\ConvertMonthShortcutNumber.cs" />
@@ -428,7 +443,7 @@
     <Compile Include="Enums\ViewTable.cs" />
     <Compile Include="Enums\WizardResult.cs" />
     <Compile Include="Enums\WriteInXml.cs" />
-    <Compile Include="Enums\ZdrojDomena.cs" />
+    <Compile Include="Enums\SourceMailDomain.cs" />
     <Compile Include="Essential\CleanUp.cs" />
     <Compile Include="Essential\DebugLogger.cs" />
     <Compile Include="Essential\DebugTemplateLogger.cs" />

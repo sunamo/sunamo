@@ -91,14 +91,14 @@ namespace desktop.Helpers.Backend
 
         public void SetActualFile(string file)
         {
-            state.textActualFile = "File" + ": " + file;
+            state.textActualFile = sess.i18n(XlfKeys.File) + ": " + file;
             SetTextBoxState();
         }
 
         public void SetActualLine(int line)
         {
             _actualLine = line++;
-            state.textActualFile = "Line" + ": " + _actualLine;
+            state.textActualFile = sess.i18n(XlfKeys.Line) + ": " + _actualLine;
             SetTextBoxState();
         }
 
@@ -113,7 +113,7 @@ namespace desktop.Helpers.Backend
         {
             if (s == null)
             {
-                s = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + "Line" + ": " + (actualLine + 1)).Trim();
+                s = (SH.Join(AllStrings.doubleSpace, state.textActualFile, state.textSearchedResult) + " " + sess.i18n(XlfKeys.Line) + ": " + (actualLine + 1)).Trim();
             }
             txtTextBoxState.Text = s;
         }

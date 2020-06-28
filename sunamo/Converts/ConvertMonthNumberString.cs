@@ -9,32 +9,32 @@ public class ConvertMonthNumberString //: IConvertNumberString
     {
         switch (s)
         {
-            case "January":
+            case XlfKeys.January:
                 return 1;
-            case "February":
+            case XlfKeys.February:
                 return 2;
-            case "March":
+            case XlfKeys.March:
                 return 3;
-            case "April":
+            case XlfKeys.April:
                 return 4;
             case "May":
                 return 5;
-            case "June":
+            case XlfKeys.June:
                 return 6;
-            case "July":
+            case XlfKeys.July:
                 return 7;
-            case "August":
+            case XlfKeys.August:
                 return 8;
-            case "September":
+            case XlfKeys.September:
                 return 9;
-            case "October":
+            case XlfKeys.October:
                 return 10;
-            case "November":
+            case XlfKeys.November:
                 return 11;
-            case "December":
+            case XlfKeys.December:
                 return 12;
         }
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce" + " " + s + " " + "metod\u011B ConvertMonthNumberString.ToNumber()");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"\u0160patn\u00FD anglick\u00FD n\u00E1zev m\u011Bs\u00EDce " + s + " metod\u011B ConvertMonthNumberString.ToNumber()");
         return 0;
     }
 
@@ -49,29 +49,29 @@ public class ConvertMonthNumberString //: IConvertNumberString
         switch (number)
         {
             case 1:
-                return "January";
+                return XlfKeys.January;
             case 2:
-                return "February";
+                return XlfKeys.February;
             case 3:
-                return "March";
+                return XlfKeys.March;
             case 4:
-                return "April";
+                return XlfKeys.April;
             case 5:
                 return "May";
             case 6:
-                return "June";
+                return XlfKeys.June;
             case 7:
-                return "July";
+                return XlfKeys.July;
             case 8:
-                return "August";
+                return XlfKeys.August;
             case 9:
-                return "September";
+                return XlfKeys.September;
             case 10:
-                return "October";
+                return XlfKeys.October;
             case 11:
-                return "November";
+                return XlfKeys.November;
             case 12:
-                return "December";
+                return XlfKeys.December;
 
             default:
                 break;

@@ -298,7 +298,7 @@ public class ApplicationDataContainerList : IEnumerable
                 }
                 else
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2( "Pravděpodobně chyba v aplikaci, pokoušíte se uložit do souboru v AppData položku typu {0} pod klíčem {1} která měla původně typ {" + "{" + "}", typeName, key, ab.A));
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2( "Pravděpodobně chyba v aplikaci, pokoušíte se uložit do souboru v AppData položku typu {0} pod klíčem {1} která měla původně typ {{}", typeName, key, ab.A));
                 }
             }
             else

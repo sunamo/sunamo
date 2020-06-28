@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class Joiner<T> 
+public class Joiner<T>
 {
     List<T> list = null;
 

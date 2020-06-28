@@ -1,4 +1,6 @@
 ﻿using sunamo.Essential;
+using System.Diagnostics;
+using System.Net.Http;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,43 +13,59 @@ namespace desktop.Controls
         //public event VoidT<object> ClickOK;
         //public event VoidT<object> ClickCancel;
         public event VoidBoolNullable ChangeDialogResult;
+        string updateUri = null;
+        string actualVersion = null;
+        string appUri = null;
+        string appName = null;
 
         public void FocusOnMainElement()
         {
             //btnOk.Focus();
         }
 
-        public AboutApp()
+        /// <summary>
+        /// A2 like used-car-comparing
+        /// </summary>
+        /// <param name="updateUri"></param>
+        /// <param name="appUri"></param>
+        public AboutApp(string updateUri, string appUri, string appName)
         {
             this.InitializeComponent();
 
-            tbTitle.Text = sess.i18n("AboutApp") + AllStrings.space  + ThisApp.Name;
+            this.updateUri = updateUri;
+            this.appUri = appUri;
+            this.appName = appName;
+
+            tbTitle.Text = sess.i18n(XlfKeys.AboutApp) + AllStrings.space  + appName;
 
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly();
-            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
-
-            tbAboutApp.Text = sess.i18n(XlfKeys.Version) + ": " + fvi.FileVersion;
-
             
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            actualVersion = fvi.FileVersion;
+            tbAboutApp.Text = sess.i18n(XlfKeys.Version) + ": " + actualVersion;
 
             //WRTBH tbh2 = new WRTBH(475, 10, FontArgs.DefaultRun());
             ParagraphBuilderTextBlock tbh2 = new ParagraphBuilderTextBlock();
             // padding / margin top / bottom not working, therefore create new line will
-            tbh2.Hyperlink(sess.i18n("CzechBlog"), "http://jepsano.net");
+            tbh2.Hyperlink(sess.i18n(XlfKeys.CzechBlog), "http://jepsano.net");
             tbh2.LineBreak();
             tbh2.LineBreak();
-            tbh2.Hyperlink(sess.i18n("EnglishBlog"), "http://blog.sunamo.cz");
+            tbh2.Hyperlink(sess.i18n(XlfKeys.EnglishBlog), "http://blog.sunamo.cz");
             tbh2.LineBreak();
             tbh2.LineBreak();
             tbh2.Hyperlink("Web", "http://www.sunamo.cz");
             tbh2.LineBreak();
             tbh2.LineBreak();
-            tbh2.Hyperlink("Google+", "https://plus.google.com/111524962367375368826");
+
+            //tbh2.Hyperlink(sess.i18n(XlfKeys.Google), "https://plus.google.com/111524962367375368826");
+            //tbh2.LineBreak();
+            //tbh2.LineBreak();
+            tbh2.Hyperlink("Mail: radek.jancik@sunamo.cz", "mailto:radek.jancik@sunamo.cz");
             tbh2.LineBreak();
             tbh2.LineBreak();
-            tbh2.Hyperlink("Mail: sunamo@outlook.com", "mailto:radek.jancik@sunamo.cz");
-            tbh2.LineBreak();
-            tbh2.LineBreak();
+
+            // cant be named new instead of updated - translation toolkit check for new a, new b, atd... 
+            btnCheckNewVersion.Content = sess.i18n(XlfKeys.CheckUpdatedVersion);
 
             tbh2.margin = new Thickness(25, 0, 0, 0);
             tbh2.padding = new Thickness(0, 0, 0, 0);
@@ -101,7 +119,21 @@ namespace desktop.Controls
 
         private void btnCheckNewVersion_Click(object sender, RoutedEventArgs e)
         {
-            //HttpRequestHelper.GetResponseText();
+            var r = HttpRequestHelper.GetResponseText(updateUri + actualVersion, HttpMethod.Get, new HttpRequestData { });
+            if (r != string.Empty)
+            {
+                ThisApp.SetStatus(TypeOfMessage.Information, "Is available new version: " + r);
+                var uri =  UriWebServices.FromChromeReplacement(UriWebServices.SunamoCz.appsApp, appUri);
+                if (!WindowsSecurityHelper.IsMyComputer())
+                {
+                    uri = SubdomainHelper.LocalhostToVps(uri);
+                }
+                PH.Start(uri);
+            }
+            else
+            {
+                ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.YouHaveLastPublishedVersion));
+            }
         }
     }
 }

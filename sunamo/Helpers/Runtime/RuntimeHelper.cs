@@ -76,7 +76,7 @@ public partial class RuntimeHelper
         {
             if (throwException)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "ChangeDialogResult has alredy registered handler");
+                ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), sess.i18n(XlfKeys.ChangeDialogResultHasAlredyRegisteredHandler));
             }
             else
             {

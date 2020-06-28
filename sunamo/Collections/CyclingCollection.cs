@@ -237,7 +237,7 @@ public class CyclingCollection<T> //: IStatusBroadcaster
                         }
                         else
                         {
-                            OnNewStatus("Nepodarilo se nacist prvek, pridejte nejake a akci opakujte");
+                            OnNewStatus(sess.i18n(XlfKeys.UnableToLoadElementAddSomeAndTryAgain));
                         }
                     }
                 }

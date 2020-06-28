@@ -16,12 +16,12 @@ static Type type = typeof(TemplateLoggerBase);
 
         public void SavedToDrive(string v)
         {
-            WriteLine(TypeOfMessage.Success, "Saved to drive: " + v);
+            WriteLine(TypeOfMessage.Success, sess.i18n(XlfKeys.SavedToDrive)+": " + v);
         }
 
         public void Finished(string nameOfOperation)
         {
-            WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + "Finished");
+            WriteLine(TypeOfMessage.Success, nameOfOperation + " - " + sess.i18n(XlfKeys.Finished));
         }
         public void EndRunTime()
         {
@@ -30,25 +30,25 @@ static Type type = typeof(TemplateLoggerBase);
         #region Success
         public void CopiedToClipboard(string what)
         {
-            WriteLine(TypeOfMessage.Success, what + " " + "was successfully copied to clipboard" + ".");
+            WriteLine(TypeOfMessage.Success, what + " was successfully copied to clipboard.");
         }
         #endregion
         #region Error
         public void CouldNotBeParsed(string entity, string text)
         {
-            WriteLine(TypeOfMessage.Error, entity + " " + "with value " + text + " could not be parsed");
+            WriteLine(TypeOfMessage.Error, entity + " with value " + text + " could not be parsed");
         }
         public void SomeErrorsOccuredSeeLog()
         {
-            WriteLine(TypeOfMessage.Error, "Some errors occured, see log");
+            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.SomeErrorsOccuredSeeLog));
         }
         public void FolderDontExists(string folder)
         {
-            WriteLine(TypeOfMessage.Error, "Folder" + " " + folder + " " + "doesn't exists" + ".");
+            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.Folder) + " " + folder + " doesn't exists.");
         }
         public void FileDontExists(string selectedFile)
         {
-            WriteLine(TypeOfMessage.Error, "File" + " " + selectedFile + " " + "doesn't exists" + ".");
+            WriteLine(TypeOfMessage.Error, sess.i18n(XlfKeys.File) + " " + selectedFile + " doesn't exists.");
         }
         private void WriteLine(TypeOfMessage error, string v)
         {
@@ -58,24 +58,24 @@ static Type type = typeof(TemplateLoggerBase);
         #region Information
         public void LoadedFromStorage(string item)
         {
-            WriteLine(TypeOfMessage.Information, "Loaded from storage: " + item);
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.LoadedFromStorage)+": " + item);
         }
 
         public void InsertAsIndexesZeroBased()
         {
-            WriteLine(TypeOfMessage.Information, "Insert as indexes (zero based)");
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.InsertAsIndexesZeroBased));
         }
         public void UnfortunatelyBadFormatPleaseTryAgain()
         {
-            WriteLine(TypeOfMessage.Information, "Unfortunately bad format. Please try again" + ".");
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.UnfortunatelyBadFormatPleaseTryAgain) + ".");
         }
         public void OperationWasStopped()
         {
-            WriteLine(TypeOfMessage.Information, "Operation was stopped");
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.OperationWasStopped));
         }
         public void NoData()
         {
-            WriteLine(TypeOfMessage.Information, "Please enter right input data");
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.PleaseEnterRightInputData));
         }
         /// <summary>
         /// Zmena: metoda nezapisuje primo na konzoli, misto toho pouze vraci retezec
@@ -83,7 +83,7 @@ static Type type = typeof(TemplateLoggerBase);
         /// <param name="fn"></param>
         public void SuccessfullyResized(string fn)
         {
-            WriteLine(TypeOfMessage.Information, "Successfully resized to" + " " + fn);
+            WriteLine(TypeOfMessage.Information, sess.i18n(XlfKeys.SuccessfullyResizedTo) + " " + fn);
         }
         private string FullNameOfExecutedCode(object type, string methodName)
         {
@@ -142,12 +142,12 @@ static Type type = typeof(TemplateLoggerBase);
         public void HaveUnallowedValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " " + "have unallowed value");
+            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " have unallowed value");
         }
         public void MustHaveValue(string controlNameOrText)
         {
             controlNameOrText = controlNameOrText.TrimEnd(AllChars.colon);
-            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " " + "must have value");
+            WriteLine(TypeOfMessage.Appeal, controlNameOrText + " must have value");
         }
         #endregion
     }

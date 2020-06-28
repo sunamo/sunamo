@@ -103,7 +103,7 @@ using System.Net.Mail;
                 }
                 if (mail.To.Count == 0)
                 {
-                    emailStatus = "error: Nebyl zadán primární příjemce zprávy" + ". ";
+                    emailStatus = "error: Nebyl zadán primární příjemce zprávy. ";
                     return emailStatus;
                 }
             }
@@ -115,7 +115,7 @@ using System.Net.Mail;
                 }
                 else
                 {
-                    emailStatus = "error: Nebyl zadán primární příjemce zprávy" + ". ";
+                    emailStatus = "error: Nebyl zadán primární příjemce zprávy. ";
                     return emailStatus;
                 }
             }
@@ -186,7 +186,7 @@ using System.Net.Mail;
             }
             catch (Exception ex)
             {
-                emailStatus = "error" + ": ";
+                emailStatus = "error: ";
                 if (ex.Message != null)
                 {
                     emailStatus += ex.Message + ". ";

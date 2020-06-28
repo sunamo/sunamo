@@ -11359,6 +11359,1910 @@ A fraternal form of manifestation is the bliss</target>
           
           <target state="translated">Dummy UC</target>
         </trans-unit>
+        <trans-unit id="Web" translate="no" xml:space="preserve">
+          
+          <target state="translated">Web</target>
+        </trans-unit>
+        <trans-unit id="Google" translate="no" xml:space="preserve">
+          
+          <target state="translated">Google</target>
+        </trans-unit>
+        <trans-unit id="CheckUpdatedVersion" translate="no" xml:space="preserve">
+          
+          <target state="translated">Check updated version</target>
+        </trans-unit>
+        <trans-unit id="YouHaveLastPublishedVersion" translate="no" xml:space="preserve">
+          
+          <target state="translated">You have last published version</target>
+        </trans-unit>
+        <trans-unit id="TheSourceCodeIsWrittenIn" translate="no" xml:space="preserve">
+          
+          <target state="translated">The source code is written in</target>
+        </trans-unit>
+        <trans-unit id="CannotReturnNull" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cannot return null</target>
+        </trans-unit>
+        <trans-unit id="SaveToDrive" translate="no" xml:space="preserve">
+          
+          <target state="translated">Save to drive</target>
+        </trans-unit>
+        <trans-unit id="Decline" translate="no" xml:space="preserve">
+          
+          <target state="translated">Decline</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedValidateForControl" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not implemented Validate for control</target>
+        </trans-unit>
+        <trans-unit id="InputTwoColumns" translate="no" xml:space="preserve">
+          
+          <target state="translated">Input two columns</target>
+        </trans-unit>
+        <trans-unit id="SelectOneValue" translate="no" xml:space="preserve">
+          
+          <target state="translated">Select one value</target>
+        </trans-unit>
+        <trans-unit id="SelectTwoValues" translate="no" xml:space="preserve">
+          
+          <target state="translated">Select two values</target>
+        </trans-unit>
+        <trans-unit id="ShowResult" translate="no" xml:space="preserve">
+          
+          <target state="translated">Show result</target>
+        </trans-unit>
+        <trans-unit id="Result" translate="no" xml:space="preserve">
+          
+          <target state="translated">Result</target>
+        </trans-unit>
+        <trans-unit id="SegoeUI" translate="no" xml:space="preserve">
+          
+          <target state="translated">Segoe UI</target>
+        </trans-unit>
+        <trans-unit id="Appearance" translate="no" xml:space="preserve">
+          
+          <target state="translated">Appearance</target>
+        </trans-unit>
+        <trans-unit id="TheDropShadowColor" translate="no" xml:space="preserve">
+          
+          <target state="translated">The drop shadow color</target>
+        </trans-unit>
+        <trans-unit id="TheDropShadowOpacity" translate="no" xml:space="preserve">
+          
+          <target state="translated">The drop shadow opacity</target>
+        </trans-unit>
+        <trans-unit id="CommonProperties" translate="no" xml:space="preserve">
+          
+          <target state="translated">Common Properties</target>
+        </trans-unit>
+        <trans-unit id="TheTextContent" translate="no" xml:space="preserve">
+          
+          <target state="translated">The text content</target>
+        </trans-unit>
+        <trans-unit id="TheTextDecorations" translate="no" xml:space="preserve">
+          
+          <target state="translated">The text decorations</target>
+        </trans-unit>
+        <trans-unit id="WhetherTheTextWraps" translate="no" xml:space="preserve">
+          
+          <target state="translated">Whether the text wraps</target>
+        </trans-unit>
+        <trans-unit id="TheDropShadowDistance" translate="no" xml:space="preserve">
+          
+          <target state="translated">The drop shadow distance</target>
+        </trans-unit>
+        <trans-unit id="TheDropShadowAngle" translate="no" xml:space="preserve">
+          
+          <target state="translated">The drop shadow angle</target>
+        </trans-unit>
+        <trans-unit id="Normal" translate="no" xml:space="preserve">
+          
+          <target state="translated">Normal</target>
+        </trans-unit>
+        <trans-unit id="Dragging" translate="no" xml:space="preserve">
+          
+          <target state="translated">Dragging</target>
+        </trans-unit>
+        <trans-unit id="Unchecked" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unchecked</target>
+        </trans-unit>
+        <trans-unit id="Focused" translate="no" xml:space="preserve">
+          
+          <target state="translated">Focused</target>
+        </trans-unit>
+        <trans-unit id="Unfocused" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unfocused</target>
+        </trans-unit>
+        <trans-unit id="TheTemplateAppliedToTheCheckedAndUncheckedContentProperties" translate="no" xml:space="preserve">
+          
+          <target state="translated">The template applied to the Checked and Unchecked content properties</target>
+        </trans-unit>
+        <trans-unit id="TheContentShownOnTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The content shown on the checked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="TheBrushUsedForTheForegroundOfTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The brush used for the foreground of the checked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="TheBrushUsedForTheBackgroundOfTheCheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The brush used for the background of the checked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="TheContentShownOnTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The content shown on the unchecked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="TheBrushUsedForTheForegroundOfTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The brush used for the foreground of the Unchecked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="TheBrushUsedForTheBackgroundOfTheUncheckedSideOfTheToggleSwitch" translate="no" xml:space="preserve">
+          
+          <target state="translated">The brush used for the background of the Unchecked side of the toggle switch</target>
+        </trans-unit>
+        <trans-unit id="Elasticity" translate="no" xml:space="preserve">
+          
+          <target state="translated">Elasticity</target>
+        </trans-unit>
+        <trans-unit id="DeterminesThePercentageOfTheWayTheThumbMustBeDraggedBeforeTheSwitchChangesItSIsCheckedState" translate="no" xml:space="preserve">
+          
+          <target state="translated">Determines the percentage of the way the thumb must be dragged before the switch changes it's IsChecked state</target>
+        </trans-unit>
+        <trans-unit id="TheThumbSControlTemplate" translate="no" xml:space="preserve">
+          
+          <target state="translated">The thumb's control template</target>
+        </trans-unit>
+        <trans-unit id="TheBrushUsedToFillTheThumb" translate="no" xml:space="preserve">
+          
+          <target state="translated">The brush used to fill the thumb</target>
+        </trans-unit>
+        <trans-unit id="TheSizeOfTheToggleSwitchSThumb" translate="no" xml:space="preserve">
+          
+          <target state="translated">The size of the toggle switch's thumb</target>
+        </trans-unit>
+        <trans-unit id="GetsOrSetsWhetherTheControlIsInTheCheckedState" translate="no" xml:space="preserve">
+          
+          <target state="translated">Gets or sets whether the control is in the checked state</target>
+        </trans-unit>
+        <trans-unit id="SetsTheCornerRadiusOnTheBorder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sets the corner radius on the border</target>
+        </trans-unit>
+        <trans-unit id="SetsWhetherTheContentIsClippedOrNot" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sets whether the content is clipped or not</target>
+        </trans-unit>
+        <trans-unit id="Set0ForBehindTheShadow1ForInFront" translate="no" xml:space="preserve">
+          
+          <target state="translated">Set 0 for behind the shadow, 1 for in front</target>
+        </trans-unit>
+        <trans-unit id="TheInnerGlowOpacity" translate="no" xml:space="preserve">
+          
+          <target state="translated">The inner glow opacity</target>
+        </trans-unit>
+        <trans-unit id="TheInnerGlowColor" translate="no" xml:space="preserve">
+          
+          <target state="translated">The inner glow color</target>
+        </trans-unit>
+        <trans-unit id="TheInnerGlowSize" translate="no" xml:space="preserve">
+          
+          <target state="translated">The inner glow size</target>
+        </trans-unit>
+        <trans-unit id="TheOuterGlowOpacity" translate="no" xml:space="preserve">
+          
+          <target state="translated">The outer glow opacity</target>
+        </trans-unit>
+        <trans-unit id="TheOuterGlowSize" translate="no" xml:space="preserve">
+          
+          <target state="translated">The outer glow size</target>
+        </trans-unit>
+        <trans-unit id="TheOuterGlowColor" translate="no" xml:space="preserve">
+          
+          <target state="translated">The outer glow color</target>
+        </trans-unit>
+        <trans-unit id="CannotConvertBack" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cannot convert back</target>
+        </trans-unit>
+        <trans-unit id="SomethingIsNullProbablyWpfAppCdIntoClipboardWasCopiedStacktrace" translate="no" xml:space="preserve">
+          
+          <target state="translated">Something is null (probably WpfApp.cd). Into clipboard was copied stacktrace</target>
+        </trans-unit>
+        <trans-unit id="Validated" translate="no" xml:space="preserve">
+          
+          <target state="translated">Validated</target>
+        </trans-unit>
+        <trans-unit id="WatcherInfoObjectCannotBeNull" translate="no" xml:space="preserve">
+          
+          <target state="translated">WatcherInfo object cannot be null</target>
+        </trans-unit>
+        <trans-unit id="NISizeOfPaperGetPaperSize" translate="no" xml:space="preserve">
+          
+          <target state="translated">NI SizeOfPaper.GetPaperSize</target>
+        </trans-unit>
+        <trans-unit id="Line" translate="no" xml:space="preserve">
+          
+          <target state="translated">Line</target>
+        </trans-unit>
+        <trans-unit id="customControlIsNotContentControlOrPanel" translate="no" xml:space="preserve">
+          
+          <target state="translated">customControl is not ContentControl or Panel</target>
+        </trans-unit>
+        <trans-unit id="MainWindowMustBeIWindowOpenerDueToShowExceptions" translate="no" xml:space="preserve">
+          
+          <target state="translated">MainWindow must be IWindowOpener due to show exceptions</target>
+        </trans-unit>
+        <trans-unit id="AvailableShortcuts" translate="no" xml:space="preserve">
+          
+          <target state="translated">Available shortcuts</target>
+        </trans-unit>
+        <trans-unit id="ParameterDefValInMenuItemWithSubitemsHelperAddValuesOfEnumAsItemsWasNotTypeOfEnum" translate="no" xml:space="preserve">
+          
+          <target state="translated">Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum</target>
+        </trans-unit>
+        <trans-unit id="Copyright2015" translate="no" xml:space="preserve">
+          
+          <target state="translated">Copyright ©  2015</target>
+        </trans-unit>
+        <trans-unit id="TryToAdjustThePPIfYouHaveItSetInBulk" translate="no" xml:space="preserve">
+          
+          <target state="translated">Try to adjust the PP if you have it set in bulk</target>
+        </trans-unit>
+        <trans-unit id="YouGotThroughTheCollectionIndex" translate="no" xml:space="preserve">
+          
+          <target state="translated">You got through the collection index</target>
+        </trans-unit>
+        <trans-unit id="FailedToGetTheItemFromTheRegistry" translate="no" xml:space="preserve">
+          
+          <target state="translated">Failed to get the item from the registry</target>
+        </trans-unit>
+        <trans-unit id="MustNotBeEnteredWithA2True" translate="no" xml:space="preserve">
+          
+          <target state="translated">Must not be entered with A2 true</target>
+        </trans-unit>
+        <trans-unit id="Cred" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cred</target>
+        </trans-unit>
+        <trans-unit id="SavingSettingsToAppConfigOrWebConfigIsNotYetSupported" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saving settings to app.config or web.config is not yet supported</target>
+        </trans-unit>
+        <trans-unit id="Logs" translate="no" xml:space="preserve">
+          
+          <target state="translated">Logs</target>
+        </trans-unit>
+        <trans-unit id="EnterForFastClosing" translate="no" xml:space="preserve">
+          
+          <target state="translated">Enter for fast closing</target>
+        </trans-unit>
+        <trans-unit id="Server" translate="no" xml:space="preserve">
+          
+          <target state="translated">Server</target>
+        </trans-unit>
+        <trans-unit id="Part1" translate="no" xml:space="preserve">
+          
+          <target state="translated">Part1</target>
+        </trans-unit>
+        <trans-unit id="Part2" translate="no" xml:space="preserve">
+          
+          <target state="translated">Part2</target>
+        </trans-unit>
+        <trans-unit id="Part3" translate="no" xml:space="preserve">
+          
+          <target state="translated">Part3</target>
+        </trans-unit>
+        <trans-unit id="Character" translate="no" xml:space="preserve">
+          
+          <target state="translated">Character</target>
+        </trans-unit>
+        <trans-unit id="Template" translate="no" xml:space="preserve">
+          
+          <target state="translated">Template</target>
+        </trans-unit>
+        <trans-unit id="Modulus" translate="no" xml:space="preserve">
+          
+          <target state="translated">Modulus</target>
+        </trans-unit>
+        <trans-unit id="Exponent" translate="no" xml:space="preserve">
+          
+          <target state="translated">Exponent</target>
+        </trans-unit>
+        <trans-unit id="PublicKeyClass" translate="no" xml:space="preserve">
+          
+          <target state="translated">PublicKey class</target>
+        </trans-unit>
+        <trans-unit id="PrivateKeyClass" translate="no" xml:space="preserve">
+          
+          <target state="translated">PrivateKey class</target>
+        </trans-unit>
+        <trans-unit id="TheMethodOrOperationIsNotImplemented" translate="no" xml:space="preserve">
+          
+          <target state="translated">The method or operation is not implemented</target>
+        </trans-unit>
+        <trans-unit id="YourDataIsTooLargeRSAEncryptionIsDesignedToEncryptRelativelySmallAmountsOfDataTheExactByteLimitDependsOnTheKeySizeToEncryptMoreDataUseSymmetricEncryptionAndThenEncryptThatSymmetricKeyWithAsymmetricRSAEncryption" translate="no" xml:space="preserve">
+          
+          <target state="translated">Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption</target>
+        </trans-unit>
+        <trans-unit id="TheProvided0EncryptionKeyXMLDoesNotAppearToBeValid" translate="no" xml:space="preserve">
+          
+          <target state="translated">The provided {0} encryption key XML does not appear to be valid</target>
+        </trans-unit>
+        <trans-unit id="UnableToObtainCryptographicServiceProvider" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unable to obtain Cryptographic Service Provider</target>
+        </trans-unit>
+        <trans-unit id="EitherThePermissionsAreIncorrectOnThe" translate="no" xml:space="preserve">
+          
+          <target state="translated">Either the permissions are incorrect on the</target>
+        </trans-unit>
+        <trans-unit id="CouldNotFind" translate="no" xml:space="preserve">
+          
+          <target state="translated">Could not find</target>
+        </trans-unit>
+        <trans-unit id="inProvidedPublicKeyXML" translate="no" xml:space="preserve">
+          
+          <target state="translated">in provided Public Key XML</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedCaseInColorHelperAppsRandomBrush" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not implemented case in ColorHelperApps.RandomBrush</target>
+        </trans-unit>
+        <trans-unit id="StartOfListingWholeTable" translate="no" xml:space="preserve">
+          
+          <target state="translated">Start of listing whole table</target>
+        </trans-unit>
+        <trans-unit id="EndOfListingWholeTable" translate="no" xml:space="preserve">
+          
+          <target state="translated">End of listing whole table</target>
+        </trans-unit>
+        <trans-unit id="NonSupportedHttpMethodInHttpMethodGetResponseText" translate="no" xml:space="preserve">
+          
+          <target state="translated">Non supported http method in HttpMethod.GetResponseText</target>
+        </trans-unit>
+        <trans-unit id="Worker" translate="no" xml:space="preserve">
+          
+          <target state="translated">Worker</target>
+        </trans-unit>
+        <trans-unit id="ThisPoolInstanceIsInTheProcessOfBeingDisposedCanTAddAnymore" translate="no" xml:space="preserve">
+          
+          <target state="translated">This Pool instance is in the process of being disposed, can't add anymore</target>
+        </trans-unit>
+        <trans-unit id="ThisPoolInstanceHasAlreadyBeenDisposed" translate="no" xml:space="preserve">
+          
+          <target state="translated">This Pool instance has already been disposed</target>
+        </trans-unit>
+        <trans-unit id="LookDirectIntoIsRootFolderNull" translate="no" xml:space="preserve">
+          
+          <target state="translated">Look direct into IsRootFolderNull</target>
+        </trans-unit>
+        <trans-unit id="EncryptedTextIsAnInvalidLength" translate="no" xml:space="preserve">
+          
+          <target state="translated">Encrypted text is an invalid length</target>
+        </trans-unit>
+        <trans-unit id="NotSupportedStrategyOfSavingFiles" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not supported strategy of saving files</target>
+        </trans-unit>
+        <trans-unit id="Address" translate="no" xml:space="preserve">
+          
+          <target state="translated">Address</target>
+        </trans-unit>
+        <trans-unit id="ItIsRecommendedThatImplementationsAlsoRecognizeTheMediaType" translate="no" xml:space="preserve">
+          
+          <target state="translated">It is recommended that implementations also recognize the media type</target>
+        </trans-unit>
+        <trans-unit id="TheTypeMustBeSerializable" translate="no" xml:space="preserve">
+          
+          <target state="translated">The type must be serializable</target>
+        </trans-unit>
+        <trans-unit id="InDesktopAppDontPassLangs" translate="no" xml:space="preserve">
+          
+          <target state="translated">In desktop app dont pass Langs</target>
+        </trans-unit>
+        <trans-unit id="Orient" translate="no" xml:space="preserve">
+          
+          <target state="translated">Orient</target>
+        </trans-unit>
+        <trans-unit id="Drago" translate="no" xml:space="preserve">
+          
+          <target state="translated">Drago</target>
+        </trans-unit>
+        <trans-unit id="UnableToLoadElementAddSomeAndTryAgain" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unable to load element, add some and try again</target>
+        </trans-unit>
+        <trans-unit id="BothColumnAndRowArgumentsInUniqueTableInWholeIsUniqueAsRowOrColumnWasFalse" translate="no" xml:space="preserve">
+          
+          <target state="translated">Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false</target>
+        </trans-unit>
+        <trans-unit id="DifferentCountInputElementsOfArrayInUniqueTableInWholeAddCells" translate="no" xml:space="preserve">
+          
+          <target state="translated">Different count input elements of array in UniqueTableInWhole.AddCells</target>
+        </trans-unit>
+        <trans-unit id="ParameterZmenaOOfMethodColumnSizeHelperCalculateWidthOfColumnsAgainHasValue" translate="no" xml:space="preserve">
+          
+          <target state="translated">Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value</target>
+        </trans-unit>
+        <trans-unit id="Bedouin" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bedouin</target>
+        </trans-unit>
+        <trans-unit id="January" translate="no" xml:space="preserve">
+          
+          <target state="translated">January</target>
+        </trans-unit>
+        <trans-unit id="February" translate="no" xml:space="preserve">
+          
+          <target state="translated">February</target>
+        </trans-unit>
+        <trans-unit id="March" translate="no" xml:space="preserve">
+          
+          <target state="translated">March</target>
+        </trans-unit>
+        <trans-unit id="April" translate="no" xml:space="preserve">
+          
+          <target state="translated">April</target>
+        </trans-unit>
+        <trans-unit id="Duben" translate="no" xml:space="preserve">
+          
+          <target state="translated">Duben</target>
+        </trans-unit>
+        <trans-unit id="June" translate="no" xml:space="preserve">
+          
+          <target state="translated">June</target>
+        </trans-unit>
+        <trans-unit id="July" translate="no" xml:space="preserve">
+          
+          <target state="translated">July</target>
+        </trans-unit>
+        <trans-unit id="August" translate="no" xml:space="preserve">
+          
+          <target state="translated">August</target>
+        </trans-unit>
+        <trans-unit id="Srpen" translate="no" xml:space="preserve">
+          
+          <target state="translated">Srpen</target>
+        </trans-unit>
+        <trans-unit id="September" translate="no" xml:space="preserve">
+          
+          <target state="translated">September</target>
+        </trans-unit>
+        <trans-unit id="October" translate="no" xml:space="preserve">
+          
+          <target state="translated">October</target>
+        </trans-unit>
+        <trans-unit id="November" translate="no" xml:space="preserve">
+          
+          <target state="translated">November</target>
+        </trans-unit>
+        <trans-unit id="December" translate="no" xml:space="preserve">
+          
+          <target state="translated">December</target>
+        </trans-unit>
+        <trans-unit id="Boolean" translate="no" xml:space="preserve">
+          
+          <target state="translated">Boolean</target>
+        </trans-unit>
+        <trans-unit id="Windows1252" translate="no" xml:space="preserve">
+          
+          <target state="translated">Windows-1252</target>
+        </trans-unit>
+        <trans-unit id="CRC32HashAlgorithm" translate="no" xml:space="preserve">
+          
+          <target state="translated">CRC32 HashAlgorithm</target>
+        </trans-unit>
+        <trans-unit id="NoKeyWasProvidedForTheDecryptionOperation" translate="no" xml:space="preserve">
+          
+          <target state="translated">No key was provided for the decryption operation</target>
+        </trans-unit>
+        <trans-unit id="NoInitializationVectorWasProvidedForTheDecryptionOperation" translate="no" xml:space="preserve">
+          
+          <target state="translated">No initialization vector was provided for the decryption operation</target>
+        </trans-unit>
+        <trans-unit id="UnableToDecryptDataTheProvidedKeyMayBeInvalid" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unable to decrypt data. The provided key may be invalid</target>
+        </trans-unit>
+        <trans-unit id="TheProvidedStringDoesNotAppearToBeBase64Encoded" translate="no" xml:space="preserve">
+          
+          <target state="translated">The provided string does not appear to be Base64 encoded</target>
+        </trans-unit>
+        <trans-unit id="Managed" translate="no" xml:space="preserve">
+          
+          <target state="translated">Managed</target>
+        </trans-unit>
+        <trans-unit id="Restored" translate="no" xml:space="preserve">
+          
+          <target state="translated">Restored</target>
+        </trans-unit>
+        <trans-unit id="Founded" translate="no" xml:space="preserve">
+          
+          <target state="translated">Founded</target>
+        </trans-unit>
+        <trans-unit id="Feat" translate="no" xml:space="preserve">
+          
+          <target state="translated">Feat</target>
+        </trans-unit>
+        <trans-unit id="DonTImplementUseMethodsInRlc" translate="no" xml:space="preserve">
+          
+          <target state="translated">Don't implement, use methods in rlc</target>
+        </trans-unit>
+        <trans-unit id="ArrayShouldHave0Or1ElementsHave2" translate="no" xml:space="preserve">
+          
+          <target state="translated">Array should have {0} or {1} elements, have {2</target>
+        </trans-unit>
+        <trans-unit id="DoesnTExists" translate="no" xml:space="preserve">
+          
+          <target state="translated">Doesn't exists</target>
+        </trans-unit>
+        <trans-unit id="doesntHaveSettedName" translate="no" xml:space="preserve">
+          
+          <target state="translated">doesnt have setted Name</target>
+        </trans-unit>
+        <trans-unit id="DoesnTHaveRequiredType" translate="no" xml:space="preserve">
+          
+          <target state="translated">Doesn't have required type</target>
+        </trans-unit>
+        <trans-unit id="isNotInWindowsPathFormat" translate="no" xml:space="preserve">
+          
+          <target state="translated">is not in Windows path format</target>
+        </trans-unit>
+        <trans-unit id="StringHasNotBeenInPathFormat" translate="no" xml:space="preserve">
+          
+          <target state="translated">String has not been in path format</target>
+        </trans-unit>
+        <trans-unit id="NotSupported" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not supported</target>
+        </trans-unit>
+        <trans-unit id="DifferentCountElementsInCollection" translate="no" xml:space="preserve">
+          
+          <target state="translated">Different count elements in collection</target>
+        </trans-unit>
+        <trans-unit id="ElementOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Element of</target>
+        </trans-unit>
+        <trans-unit id="wasNotIKeysHandler" translate="no" xml:space="preserve">
+          
+          <target state="translated">was not IKeysHandler</target>
+        </trans-unit>
+        <trans-unit id="CanTDeleteFolder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Can't delete folder</target>
+        </trans-unit>
+        <trans-unit id="ElementWasntRemovedDuring" translate="no" xml:space="preserve">
+          
+          <target state="translated">Element wasnt removed during</target>
+        </trans-unit>
+        <trans-unit id="NoPassedFolderInto" translate="no" xml:space="preserve">
+          
+          <target state="translated">No passed folder into</target>
+        </trans-unit>
+        <trans-unit id="Directory" translate="no" xml:space="preserve">
+          
+          <target state="translated">Directory</target>
+        </trans-unit>
+        <trans-unit id="Under" translate="no" xml:space="preserve">
+          
+          <target state="translated">Under</target>
+        </trans-unit>
+        <trans-unit id="isNotExistsInDictionary" translate="no" xml:space="preserve">
+          
+          <target state="translated">is not exists in Dictionary</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedCase" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not implemented case</target>
+        </trans-unit>
+        <trans-unit id="publicProgramErrorPleaseContactDeveloper" translate="no" xml:space="preserve">
+          
+          <target state="translated">public program error. Please contact developer</target>
+        </trans-unit>
+        <trans-unit id="NotImplementedCasePublicProgramErrorPleaseContactDeveloper" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not implemented case. public program error. Please contact developer</target>
+        </trans-unit>
+        <trans-unit id="BadFormatOfElement" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bad format of element</target>
+        </trans-unit>
+        <trans-unit id="Test" translate="no" xml:space="preserve">
+          
+          <target state="translated">Test</target>
+        </trans-unit>
+        <trans-unit id="SavedToDrive" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saved to drive</target>
+        </trans-unit>
+        <trans-unit id="Finished" translate="no" xml:space="preserve">
+          
+          <target state="translated">Finished</target>
+        </trans-unit>
+        <trans-unit id="SomeErrorsOccuredSeeLog" translate="no" xml:space="preserve">
+          
+          <target state="translated">Some errors occured, see log</target>
+        </trans-unit>
+        <trans-unit id="Folder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Folder</target>
+        </trans-unit>
+        <trans-unit id="LoadedFromStorage" translate="no" xml:space="preserve">
+          
+          <target state="translated">Loaded from storage</target>
+        </trans-unit>
+        <trans-unit id="InsertAsIndexesZeroBased" translate="no" xml:space="preserve">
+          
+          <target state="translated">Insert as indexes (zero based</target>
+        </trans-unit>
+        <trans-unit id="UnfortunatelyBadFormatPleaseTryAgain" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unfortunately bad format. Please try again</target>
+        </trans-unit>
+        <trans-unit id="OperationWasStopped" translate="no" xml:space="preserve">
+          
+          <target state="translated">Operation was stopped</target>
+        </trans-unit>
+        <trans-unit id="PleaseEnterRightInputData" translate="no" xml:space="preserve">
+          
+          <target state="translated">Please enter right input data</target>
+        </trans-unit>
+        <trans-unit id="SuccessfullyResizedTo" translate="no" xml:space="preserve">
+          
+          <target state="translated">Successfully resized to</target>
+        </trans-unit>
+        <trans-unit id="CountInAAndBIsNotEqual" translate="no" xml:space="preserve">
+          
+          <target state="translated">Count in a and b is not equal</target>
+        </trans-unit>
+        <trans-unit id="InTheseFilesTheFollowingErrorsOccurred" translate="no" xml:space="preserve">
+          
+          <target state="translated">In these files the following errors occurred</target>
+        </trans-unit>
+        <trans-unit id="IfYouThinkThatThisIsApplicationErrorPleaseSendMeAnEmailAtTheAddressThatIsListedInTheAboutApp" translate="no" xml:space="preserve">
+          
+          <target state="translated">If you think that this is application error, please send me an email at the address that is listed in the About app</target>
+        </trans-unit>
+        <trans-unit id="FileNotFound" translate="no" xml:space="preserve">
+          
+          <target state="translated">File not found</target>
+        </trans-unit>
+        <trans-unit id="TheProgramDoesNotHaveAccessToTheFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">The program does not have access to the file</target>
+        </trans-unit>
+        <trans-unit id="UnknownOrGeneralError" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unknown or general error</target>
+        </trans-unit>
+        <trans-unit id="MetodaHtmlGenerator2TopListWithImagesOdkazyPhoto" translate="no" xml:space="preserve">
+          
+          <target state="translated">Metoda HtmlGenerator2.TopListWithImages - odkazyPhoto</target>
+        </trans-unit>
+        <trans-unit id="Undo" translate="no" xml:space="preserve">
+          
+          <target state="translated">Undo</target>
+        </trans-unit>
+        <trans-unit id="TheSystemCannotFindTheFileSpecified" translate="no" xml:space="preserve">
+          
+          <target state="translated">The system cannot find the file specified</target>
+        </trans-unit>
+        <trans-unit id="NoProcessIsAssociatedWithThisObject" translate="no" xml:space="preserve">
+          
+          <target state="translated">No process is associated with this object</target>
+        </trans-unit>
+        <trans-unit id="PleaseAddHandle64ExeToPATH" translate="no" xml:space="preserve">
+          
+          <target state="translated">Please add handle64.exe to PATH</target>
+        </trans-unit>
+        <trans-unit id="NoKnownPeriod" translate="no" xml:space="preserve">
+          
+          <target state="translated">No known period</target>
+        </trans-unit>
+        <trans-unit id="ItWasNotMentioned" translate="no" xml:space="preserve">
+          
+          <target state="translated">It was not mentioned</target>
+        </trans-unit>
+        <trans-unit id="NotIndicated" translate="no" xml:space="preserve">
+          
+          <target state="translated">Not indicated</target>
+        </trans-unit>
+        <trans-unit id="ContentOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Content of</target>
+        </trans-unit>
+        <trans-unit id="UseMethodsInFSApps" translate="no" xml:space="preserve">
+          
+          <target state="translated">use methods in FSApps</target>
+        </trans-unit>
+        <trans-unit id="NIUwpSeeMethodForStacktrace" translate="no" xml:space="preserve">
+          
+          <target state="translated">NI uwp - see method for stacktrace</target>
+        </trans-unit>
+        <trans-unit id="GetFilesWithPath" translate="no" xml:space="preserve">
+          
+          <target state="translated">GetFiles with path</target>
+        </trans-unit>
+        <trans-unit id="Madam" translate="no" xml:space="preserve">
+          
+          <target state="translated">Madam</target>
+        </trans-unit>
+        <trans-unit id="Sir" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sir</target>
+        </trans-unit>
+        <trans-unit id="WeCannotSendToOurSameThread" translate="no" xml:space="preserve">
+          
+          <target state="translated">We cannot send to our same thread</target>
+        </trans-unit>
+        <trans-unit id="AsyncHelpersRunMethodThrewAnException" translate="no" xml:space="preserve">
+          
+          <target state="translated">AsyncHelpers.Run method threw an exception</target>
+        </trans-unit>
+        <trans-unit id="ChangeDialogResultHasAlredyRegisteredHandler" translate="no" xml:space="preserve">
+          
+          <target state="translated">ChangeDialogResult has alredy registered handler</target>
+        </trans-unit>
+        <trans-unit id="ThisParagraphIsLongerThan500Characters" translate="no" xml:space="preserve">
+          
+          <target state="translated">This paragraph is longer than 500 characters</target>
+        </trans-unit>
+        <trans-unit id="MismatchCountInInputArraysOfSHAllHaveRightFormat" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mismatch count in input arrays of SH.AllHaveRightFormat</target>
+        </trans-unit>
+        <trans-unit id="NumbersOfLetters" translate="no" xml:space="preserve">
+          
+          <target state="translated">Numbers of letters</target>
+        </trans-unit>
+        <trans-unit id="ProbablyWasCalledWithSwithechDelimiterAndParts" translate="no" xml:space="preserve">
+          
+          <target state="translated">Probably was called with swithech delimiter and parts</target>
+        </trans-unit>
+        <trans-unit id="mustBeAnEnumType" translate="no" xml:space="preserve">
+          
+          <target state="translated">must be an Enum type</target>
+        </trans-unit>
+        <trans-unit id="ChangesSavedToFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Changes saved to file</target>
+        </trans-unit>
+        <trans-unit id="ChangesSavedToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Changes saved to clipboard</target>
+        </trans-unit>
+        <trans-unit id="InvalidRowIndexInMethodCAGetRowOfTwoDimensionalArray" translate="no" xml:space="preserve">
+          
+          <target state="translated">Invalid row index in method CA.GetRowOfTwoDimensionalArray</target>
+        </trans-unit>
+        <trans-unit id="Prepend" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prepend</target>
+        </trans-unit>
+        <trans-unit id="Parse" translate="no" xml:space="preserve">
+          
+          <target state="translated">Parse</target>
+        </trans-unit>
+        <trans-unit id="Featuring" translate="no" xml:space="preserve">
+          
+          <target state="translated">Featuring</target>
+        </trans-unit>
+        <trans-unit id="Poincareplane" translate="no" xml:space="preserve">
+          
+          <target state="translated">Poincareplane</target>
+        </trans-unit>
+        <trans-unit id="Dashv" translate="no" xml:space="preserve">
+          
+          <target state="translated">Dashv</target>
+        </trans-unit>
+        <trans-unit id="Vdashl" translate="no" xml:space="preserve">
+          
+          <target state="translated">Vdashl</target>
+        </trans-unit>
+        <trans-unit id="Vbar" translate="no" xml:space="preserve">
+          
+          <target state="translated">Vbar</target>
+        </trans-unit>
+        <trans-unit id="Prague" translate="no" xml:space="preserve">
+          
+          <target state="translated">Prague</target>
+        </trans-unit>
+        <trans-unit id="Carlsbad" translate="no" xml:space="preserve">
+          
+          <target state="translated">Carlsbad</target>
+        </trans-unit>
+        <trans-unit id="Liberec" translate="no" xml:space="preserve">
+          
+          <target state="translated">Liberec</target>
+        </trans-unit>
+        <trans-unit id="Pardubice" translate="no" xml:space="preserve">
+          
+          <target state="translated">Pardubice</target>
+        </trans-unit>
+        <trans-unit id="Olomouc" translate="no" xml:space="preserve">
+          
+          <target state="translated">Olomouc</target>
+        </trans-unit>
+        <trans-unit id="Ostrava" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ostrava</target>
+        </trans-unit>
+        <trans-unit id="Brno" translate="no" xml:space="preserve">
+          
+          <target state="translated">Brno</target>
+        </trans-unit>
+        <trans-unit id="Jihlava" translate="no" xml:space="preserve">
+          
+          <target state="translated">Jihlava</target>
+        </trans-unit>
+        <trans-unit id="Andorra" translate="no" xml:space="preserve">
+          
+          <target state="translated">Andorra</target>
+        </trans-unit>
+        <trans-unit id="UnitedArabEmirates" translate="no" xml:space="preserve">
+          
+          <target state="translated">United Arab Emirates</target>
+        </trans-unit>
+        <trans-unit id="Afghanistan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Afghanistan</target>
+        </trans-unit>
+        <trans-unit id="AntiguaAndBarbuda" translate="no" xml:space="preserve">
+          
+          <target state="translated">Antigua and Barbuda</target>
+        </trans-unit>
+        <trans-unit id="Anguilla" translate="no" xml:space="preserve">
+          
+          <target state="translated">Anguilla</target>
+        </trans-unit>
+        <trans-unit id="Albania" translate="no" xml:space="preserve">
+          
+          <target state="translated">Albania</target>
+        </trans-unit>
+        <trans-unit id="Armenia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Armenia</target>
+        </trans-unit>
+        <trans-unit id="Angola" translate="no" xml:space="preserve">
+          
+          <target state="translated">Angola</target>
+        </trans-unit>
+        <trans-unit id="Antarctica" translate="no" xml:space="preserve">
+          
+          <target state="translated">Antarctica</target>
+        </trans-unit>
+        <trans-unit id="Argentina" translate="no" xml:space="preserve">
+          
+          <target state="translated">Argentina</target>
+        </trans-unit>
+        <trans-unit id="AmericanSamoa" translate="no" xml:space="preserve">
+          
+          <target state="translated">American Samoa</target>
+        </trans-unit>
+        <trans-unit id="Austria" translate="no" xml:space="preserve">
+          
+          <target state="translated">Austria</target>
+        </trans-unit>
+        <trans-unit id="Australia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Australia</target>
+        </trans-unit>
+        <trans-unit id="Aruba" translate="no" xml:space="preserve">
+          
+          <target state="translated">Aruba</target>
+        </trans-unit>
+        <trans-unit id="Azerbaijan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Azerbaijan</target>
+        </trans-unit>
+        <trans-unit id="BosniaAndHerzegovina" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bosnia and Herzegovina</target>
+        </trans-unit>
+        <trans-unit id="Barbados" translate="no" xml:space="preserve">
+          
+          <target state="translated">Barbados</target>
+        </trans-unit>
+        <trans-unit id="Bangladesh" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bangladesh</target>
+        </trans-unit>
+        <trans-unit id="Belgium" translate="no" xml:space="preserve">
+          
+          <target state="translated">Belgium</target>
+        </trans-unit>
+        <trans-unit id="BurkinaFaso" translate="no" xml:space="preserve">
+          
+          <target state="translated">Burkina Faso</target>
+        </trans-unit>
+        <trans-unit id="Bulgaria" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bulgaria</target>
+        </trans-unit>
+        <trans-unit id="Bahrain" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bahrain</target>
+        </trans-unit>
+        <trans-unit id="Burundi" translate="no" xml:space="preserve">
+          
+          <target state="translated">Burundi</target>
+        </trans-unit>
+        <trans-unit id="Benin" translate="no" xml:space="preserve">
+          
+          <target state="translated">Benin</target>
+        </trans-unit>
+        <trans-unit id="Bermuda" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bermuda</target>
+        </trans-unit>
+        <trans-unit id="BruneiDarussalam" translate="no" xml:space="preserve">
+          
+          <target state="translated">Brunei Darussalam</target>
+        </trans-unit>
+        <trans-unit id="BoliviaPlurinationalStateOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bolivia, Plurinational State of</target>
+        </trans-unit>
+        <trans-unit id="BonaireSintEustatiusAndSaba" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bonaire, Sint Eustatius and Saba</target>
+        </trans-unit>
+        <trans-unit id="Brazil" translate="no" xml:space="preserve">
+          
+          <target state="translated">Brazil</target>
+        </trans-unit>
+        <trans-unit id="Bahamas" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bahamas</target>
+        </trans-unit>
+        <trans-unit id="Bhutan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bhutan</target>
+        </trans-unit>
+        <trans-unit id="BouvetIsland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Bouvet Island</target>
+        </trans-unit>
+        <trans-unit id="Botswana" translate="no" xml:space="preserve">
+          
+          <target state="translated">Botswana</target>
+        </trans-unit>
+        <trans-unit id="Belarus" translate="no" xml:space="preserve">
+          
+          <target state="translated">Belarus</target>
+        </trans-unit>
+        <trans-unit id="Belize" translate="no" xml:space="preserve">
+          
+          <target state="translated">Belize</target>
+        </trans-unit>
+        <trans-unit id="Canada" translate="no" xml:space="preserve">
+          
+          <target state="translated">Canada</target>
+        </trans-unit>
+        <trans-unit id="CocosKeelingIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cocos (Keeling) Islands</target>
+        </trans-unit>
+        <trans-unit id="CongoTheDemocraticRepublicOfThe" translate="no" xml:space="preserve">
+          
+          <target state="translated">Congo, the Democratic Republic of the</target>
+        </trans-unit>
+        <trans-unit id="CentralAfricanRepublic" translate="no" xml:space="preserve">
+          
+          <target state="translated">Central African Republic</target>
+        </trans-unit>
+        <trans-unit id="Congo" translate="no" xml:space="preserve">
+          
+          <target state="translated">Congo</target>
+        </trans-unit>
+        <trans-unit id="Switzerland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Switzerland</target>
+        </trans-unit>
+        <trans-unit id="CookIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cook Islands</target>
+        </trans-unit>
+        <trans-unit id="Chile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Chile</target>
+        </trans-unit>
+        <trans-unit id="Cameroon" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cameroon</target>
+        </trans-unit>
+        <trans-unit id="China" translate="no" xml:space="preserve">
+          
+          <target state="translated">China</target>
+        </trans-unit>
+        <trans-unit id="Colombia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Colombia</target>
+        </trans-unit>
+        <trans-unit id="CostaRica" translate="no" xml:space="preserve">
+          
+          <target state="translated">Costa Rica</target>
+        </trans-unit>
+        <trans-unit id="Cuba" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cuba</target>
+        </trans-unit>
+        <trans-unit id="CaboVerde" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cabo Verde</target>
+        </trans-unit>
+        <trans-unit id="ChristmasIsland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Christmas Island</target>
+        </trans-unit>
+        <trans-unit id="Cyprus" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cyprus</target>
+        </trans-unit>
+        <trans-unit id="Germany" translate="no" xml:space="preserve">
+          
+          <target state="translated">Germany</target>
+        </trans-unit>
+        <trans-unit id="Djibouti" translate="no" xml:space="preserve">
+          
+          <target state="translated">Djibouti</target>
+        </trans-unit>
+        <trans-unit id="Denmark" translate="no" xml:space="preserve">
+          
+          <target state="translated">Denmark</target>
+        </trans-unit>
+        <trans-unit id="Dominica" translate="no" xml:space="preserve">
+          
+          <target state="translated">Dominica</target>
+        </trans-unit>
+        <trans-unit id="DominicanRepublic" translate="no" xml:space="preserve">
+          
+          <target state="translated">Dominican Republic</target>
+        </trans-unit>
+        <trans-unit id="Algeria" translate="no" xml:space="preserve">
+          
+          <target state="translated">Algeria</target>
+        </trans-unit>
+        <trans-unit id="Ecuador" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ecuador</target>
+        </trans-unit>
+        <trans-unit id="Estonia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Estonia</target>
+        </trans-unit>
+        <trans-unit id="Egypt" translate="no" xml:space="preserve">
+          
+          <target state="translated">Egypt</target>
+        </trans-unit>
+        <trans-unit id="WesternSahara" translate="no" xml:space="preserve">
+          
+          <target state="translated">Western Sahara</target>
+        </trans-unit>
+        <trans-unit id="Eritrea" translate="no" xml:space="preserve">
+          
+          <target state="translated">Eritrea</target>
+        </trans-unit>
+        <trans-unit id="Spain" translate="no" xml:space="preserve">
+          
+          <target state="translated">Spain</target>
+        </trans-unit>
+        <trans-unit id="Ethiopia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ethiopia</target>
+        </trans-unit>
+        <trans-unit id="Finland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Finland</target>
+        </trans-unit>
+        <trans-unit id="Fiji" translate="no" xml:space="preserve">
+          
+          <target state="translated">Fiji</target>
+        </trans-unit>
+        <trans-unit id="FalklandIslandsMalvinas" translate="no" xml:space="preserve">
+          
+          <target state="translated">Falkland Islands (Malvinas</target>
+        </trans-unit>
+        <trans-unit id="MicronesiaFederatedStatesOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Micronesia, Federated States of</target>
+        </trans-unit>
+        <trans-unit id="FaroeIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Faroe Islands</target>
+        </trans-unit>
+        <trans-unit id="France" translate="no" xml:space="preserve">
+          
+          <target state="translated">France</target>
+        </trans-unit>
+        <trans-unit id="Gabon" translate="no" xml:space="preserve">
+          
+          <target state="translated">Gabon</target>
+        </trans-unit>
+        <trans-unit id="UnitedKingdomOfGreatBritainAndNorthernIreland" translate="no" xml:space="preserve">
+          
+          <target state="translated">United Kingdom of Great Britain and Northern Ireland</target>
+        </trans-unit>
+        <trans-unit id="Grenada" translate="no" xml:space="preserve">
+          
+          <target state="translated">Grenada</target>
+        </trans-unit>
+        <trans-unit id="Georgia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Georgia</target>
+        </trans-unit>
+        <trans-unit id="FrenchGuiana" translate="no" xml:space="preserve">
+          
+          <target state="translated">French Guiana</target>
+        </trans-unit>
+        <trans-unit id="Guernsey" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guernsey</target>
+        </trans-unit>
+        <trans-unit id="Ghana" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ghana</target>
+        </trans-unit>
+        <trans-unit id="Gibraltar" translate="no" xml:space="preserve">
+          
+          <target state="translated">Gibraltar</target>
+        </trans-unit>
+        <trans-unit id="Greenland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Greenland</target>
+        </trans-unit>
+        <trans-unit id="Gambia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Gambia</target>
+        </trans-unit>
+        <trans-unit id="Guinea" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guinea</target>
+        </trans-unit>
+        <trans-unit id="Guadeloupe" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guadeloupe</target>
+        </trans-unit>
+        <trans-unit id="EquatorialGuinea" translate="no" xml:space="preserve">
+          
+          <target state="translated">Equatorial Guinea</target>
+        </trans-unit>
+        <trans-unit id="Greece" translate="no" xml:space="preserve">
+          
+          <target state="translated">Greece</target>
+        </trans-unit>
+        <trans-unit id="SouthGeorgiaAndTheSouthSandwichIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">South Georgia and the South Sandwich Islands</target>
+        </trans-unit>
+        <trans-unit id="Guatemala" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guatemala</target>
+        </trans-unit>
+        <trans-unit id="Guam" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guam</target>
+        </trans-unit>
+        <trans-unit id="Guyana" translate="no" xml:space="preserve">
+          
+          <target state="translated">Guyana</target>
+        </trans-unit>
+        <trans-unit id="HongKong" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hong Kong</target>
+        </trans-unit>
+        <trans-unit id="HeardIslandAndMcDonaldIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Heard Island and McDonald Islands</target>
+        </trans-unit>
+        <trans-unit id="Honduras" translate="no" xml:space="preserve">
+          
+          <target state="translated">Honduras</target>
+        </trans-unit>
+        <trans-unit id="Croatia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Croatia</target>
+        </trans-unit>
+        <trans-unit id="Haiti" translate="no" xml:space="preserve">
+          
+          <target state="translated">Haiti</target>
+        </trans-unit>
+        <trans-unit id="Hungary" translate="no" xml:space="preserve">
+          
+          <target state="translated">Hungary</target>
+        </trans-unit>
+        <trans-unit id="Indonesia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Indonesia</target>
+        </trans-unit>
+        <trans-unit id="Ireland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ireland</target>
+        </trans-unit>
+        <trans-unit id="Israel" translate="no" xml:space="preserve">
+          
+          <target state="translated">Israel</target>
+        </trans-unit>
+        <trans-unit id="IsleOfMan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Isle of Man</target>
+        </trans-unit>
+        <trans-unit id="India" translate="no" xml:space="preserve">
+          
+          <target state="translated">India</target>
+        </trans-unit>
+        <trans-unit id="BritishIndianOceanTerritory" translate="no" xml:space="preserve">
+          
+          <target state="translated">British Indian Ocean Territory</target>
+        </trans-unit>
+        <trans-unit id="Iraq" translate="no" xml:space="preserve">
+          
+          <target state="translated">Iraq</target>
+        </trans-unit>
+        <trans-unit id="IranIslamicRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Iran, Islamic Republic of</target>
+        </trans-unit>
+        <trans-unit id="Iceland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Iceland</target>
+        </trans-unit>
+        <trans-unit id="Italy" translate="no" xml:space="preserve">
+          
+          <target state="translated">Italy</target>
+        </trans-unit>
+        <trans-unit id="Jersey" translate="no" xml:space="preserve">
+          
+          <target state="translated">Jersey</target>
+        </trans-unit>
+        <trans-unit id="Jamaica" translate="no" xml:space="preserve">
+          
+          <target state="translated">Jamaica</target>
+        </trans-unit>
+        <trans-unit id="Jordan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Jordan</target>
+        </trans-unit>
+        <trans-unit id="Japan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Japan</target>
+        </trans-unit>
+        <trans-unit id="Kenya" translate="no" xml:space="preserve">
+          
+          <target state="translated">Kenya</target>
+        </trans-unit>
+        <trans-unit id="Kyrgyzstan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Kyrgyzstan</target>
+        </trans-unit>
+        <trans-unit id="Cambodia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cambodia</target>
+        </trans-unit>
+        <trans-unit id="Kiribati" translate="no" xml:space="preserve">
+          
+          <target state="translated">Kiribati</target>
+        </trans-unit>
+        <trans-unit id="Comoros" translate="no" xml:space="preserve">
+          
+          <target state="translated">Comoros</target>
+        </trans-unit>
+        <trans-unit id="SaintKittsAndNevis" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Kitts and Nevis</target>
+        </trans-unit>
+        <trans-unit id="KoreaDemocraticPeopleSRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Korea, Democratic People's Republic of</target>
+        </trans-unit>
+        <trans-unit id="KoreaRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Korea, Republic of</target>
+        </trans-unit>
+        <trans-unit id="Kuwait" translate="no" xml:space="preserve">
+          
+          <target state="translated">Kuwait</target>
+        </trans-unit>
+        <trans-unit id="CaymanIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Cayman Islands</target>
+        </trans-unit>
+        <trans-unit id="Kazakhstan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Kazakhstan</target>
+        </trans-unit>
+        <trans-unit id="LaoPeopleSDemocraticRepublic" translate="no" xml:space="preserve">
+          
+          <target state="translated">Lao People's Democratic Republic</target>
+        </trans-unit>
+        <trans-unit id="Lebanon" translate="no" xml:space="preserve">
+          
+          <target state="translated">Lebanon</target>
+        </trans-unit>
+        <trans-unit id="SaintLucia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Lucia</target>
+        </trans-unit>
+        <trans-unit id="Liechtenstein" translate="no" xml:space="preserve">
+          
+          <target state="translated">Liechtenstein</target>
+        </trans-unit>
+        <trans-unit id="SriLanka" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sri Lanka</target>
+        </trans-unit>
+        <trans-unit id="Liberia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Liberia</target>
+        </trans-unit>
+        <trans-unit id="Lesotho" translate="no" xml:space="preserve">
+          
+          <target state="translated">Lesotho</target>
+        </trans-unit>
+        <trans-unit id="Lithuania" translate="no" xml:space="preserve">
+          
+          <target state="translated">Lithuania</target>
+        </trans-unit>
+        <trans-unit id="Luxembourg" translate="no" xml:space="preserve">
+          
+          <target state="translated">Luxembourg</target>
+        </trans-unit>
+        <trans-unit id="Latvia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Latvia</target>
+        </trans-unit>
+        <trans-unit id="Libya" translate="no" xml:space="preserve">
+          
+          <target state="translated">Libya</target>
+        </trans-unit>
+        <trans-unit id="Morocco" translate="no" xml:space="preserve">
+          
+          <target state="translated">Morocco</target>
+        </trans-unit>
+        <trans-unit id="Monaco" translate="no" xml:space="preserve">
+          
+          <target state="translated">Monaco</target>
+        </trans-unit>
+        <trans-unit id="MoldovaRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Moldova, Republic of</target>
+        </trans-unit>
+        <trans-unit id="Montenegro" translate="no" xml:space="preserve">
+          
+          <target state="translated">Montenegro</target>
+        </trans-unit>
+        <trans-unit id="SaintMartinFrenchPart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Martin (French part</target>
+        </trans-unit>
+        <trans-unit id="Madagascar" translate="no" xml:space="preserve">
+          
+          <target state="translated">Madagascar</target>
+        </trans-unit>
+        <trans-unit id="MarshallIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Marshall Islands</target>
+        </trans-unit>
+        <trans-unit id="MacedoniaTheFormerYugoslavRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Macedonia, the former Yugoslav Republic of</target>
+        </trans-unit>
+        <trans-unit id="Mali" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mali</target>
+        </trans-unit>
+        <trans-unit id="Myanmar" translate="no" xml:space="preserve">
+          
+          <target state="translated">Myanmar</target>
+        </trans-unit>
+        <trans-unit id="Mongolia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mongolia</target>
+        </trans-unit>
+        <trans-unit id="Macao" translate="no" xml:space="preserve">
+          
+          <target state="translated">Macao</target>
+        </trans-unit>
+        <trans-unit id="NorthernMarianaIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Northern Mariana Islands</target>
+        </trans-unit>
+        <trans-unit id="Martinique" translate="no" xml:space="preserve">
+          
+          <target state="translated">Martinique</target>
+        </trans-unit>
+        <trans-unit id="Mauritania" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mauritania</target>
+        </trans-unit>
+        <trans-unit id="Montserrat" translate="no" xml:space="preserve">
+          
+          <target state="translated">Montserrat</target>
+        </trans-unit>
+        <trans-unit id="Malta" translate="no" xml:space="preserve">
+          
+          <target state="translated">Malta</target>
+        </trans-unit>
+        <trans-unit id="Mauritius" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mauritius</target>
+        </trans-unit>
+        <trans-unit id="Maldives" translate="no" xml:space="preserve">
+          
+          <target state="translated">Maldives</target>
+        </trans-unit>
+        <trans-unit id="Malawi" translate="no" xml:space="preserve">
+          
+          <target state="translated">Malawi</target>
+        </trans-unit>
+        <trans-unit id="Mexico" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mexico</target>
+        </trans-unit>
+        <trans-unit id="Malaysia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Malaysia</target>
+        </trans-unit>
+        <trans-unit id="Mozambique" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mozambique</target>
+        </trans-unit>
+        <trans-unit id="Namibia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Namibia</target>
+        </trans-unit>
+        <trans-unit id="NewCaledonia" translate="no" xml:space="preserve">
+          
+          <target state="translated">New Caledonia</target>
+        </trans-unit>
+        <trans-unit id="Niger" translate="no" xml:space="preserve">
+          
+          <target state="translated">Niger</target>
+        </trans-unit>
+        <trans-unit id="NorfolkIsland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Norfolk Island</target>
+        </trans-unit>
+        <trans-unit id="Nigeria" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nigeria</target>
+        </trans-unit>
+        <trans-unit id="Nicaragua" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nicaragua</target>
+        </trans-unit>
+        <trans-unit id="Netherlands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Netherlands</target>
+        </trans-unit>
+        <trans-unit id="Norway" translate="no" xml:space="preserve">
+          
+          <target state="translated">Norway</target>
+        </trans-unit>
+        <trans-unit id="Nepal" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nepal</target>
+        </trans-unit>
+        <trans-unit id="Nauru" translate="no" xml:space="preserve">
+          
+          <target state="translated">Nauru</target>
+        </trans-unit>
+        <trans-unit id="Niue" translate="no" xml:space="preserve">
+          
+          <target state="translated">Niue</target>
+        </trans-unit>
+        <trans-unit id="NewZealand" translate="no" xml:space="preserve">
+          
+          <target state="translated">New Zealand</target>
+        </trans-unit>
+        <trans-unit id="Oman" translate="no" xml:space="preserve">
+          
+          <target state="translated">Oman</target>
+        </trans-unit>
+        <trans-unit id="Panama" translate="no" xml:space="preserve">
+          
+          <target state="translated">Panama</target>
+        </trans-unit>
+        <trans-unit id="Peru" translate="no" xml:space="preserve">
+          
+          <target state="translated">Peru</target>
+        </trans-unit>
+        <trans-unit id="FrenchPolynesia" translate="no" xml:space="preserve">
+          
+          <target state="translated">French Polynesia</target>
+        </trans-unit>
+        <trans-unit id="PapuaNewGuinea" translate="no" xml:space="preserve">
+          
+          <target state="translated">Papua New Guinea</target>
+        </trans-unit>
+        <trans-unit id="Philippines" translate="no" xml:space="preserve">
+          
+          <target state="translated">Philippines</target>
+        </trans-unit>
+        <trans-unit id="Pakistan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Pakistan</target>
+        </trans-unit>
+        <trans-unit id="Poland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Poland</target>
+        </trans-unit>
+        <trans-unit id="SaintPierreAndMiquelon" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Pierre and Miquelon</target>
+        </trans-unit>
+        <trans-unit id="Pitcairn" translate="no" xml:space="preserve">
+          
+          <target state="translated">Pitcairn</target>
+        </trans-unit>
+        <trans-unit id="PuertoRico" translate="no" xml:space="preserve">
+          
+          <target state="translated">Puerto Rico</target>
+        </trans-unit>
+        <trans-unit id="PalestineStateOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Palestine, State of</target>
+        </trans-unit>
+        <trans-unit id="Portugal" translate="no" xml:space="preserve">
+          
+          <target state="translated">Portugal</target>
+        </trans-unit>
+        <trans-unit id="Palau" translate="no" xml:space="preserve">
+          
+          <target state="translated">Palau</target>
+        </trans-unit>
+        <trans-unit id="Paraguay" translate="no" xml:space="preserve">
+          
+          <target state="translated">Paraguay</target>
+        </trans-unit>
+        <trans-unit id="Qatar" translate="no" xml:space="preserve">
+          
+          <target state="translated">Qatar</target>
+        </trans-unit>
+        <trans-unit id="Romania" translate="no" xml:space="preserve">
+          
+          <target state="translated">Romania</target>
+        </trans-unit>
+        <trans-unit id="Serbia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Serbia</target>
+        </trans-unit>
+        <trans-unit id="RussianFederation" translate="no" xml:space="preserve">
+          
+          <target state="translated">Russian Federation</target>
+        </trans-unit>
+        <trans-unit id="Rwanda" translate="no" xml:space="preserve">
+          
+          <target state="translated">Rwanda</target>
+        </trans-unit>
+        <trans-unit id="SaudiArabia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saudi Arabia</target>
+        </trans-unit>
+        <trans-unit id="SolomonIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Solomon Islands</target>
+        </trans-unit>
+        <trans-unit id="Seychelles" translate="no" xml:space="preserve">
+          
+          <target state="translated">Seychelles</target>
+        </trans-unit>
+        <trans-unit id="Sudan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sudan</target>
+        </trans-unit>
+        <trans-unit id="Sweden" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sweden</target>
+        </trans-unit>
+        <trans-unit id="Singapore" translate="no" xml:space="preserve">
+          
+          <target state="translated">Singapore</target>
+        </trans-unit>
+        <trans-unit id="SaintHelenaAscensionAndTristanDaCunha" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Helena, Ascension and Tristan da Cunha</target>
+        </trans-unit>
+        <trans-unit id="Slovenia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Slovenia</target>
+        </trans-unit>
+        <trans-unit id="SvalbardAndJanMayen" translate="no" xml:space="preserve">
+          
+          <target state="translated">Svalbard and Jan Mayen</target>
+        </trans-unit>
+        <trans-unit id="Slovakia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Slovakia</target>
+        </trans-unit>
+        <trans-unit id="SierraLeone" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sierra Leone</target>
+        </trans-unit>
+        <trans-unit id="SanMarino" translate="no" xml:space="preserve">
+          
+          <target state="translated">San Marino</target>
+        </trans-unit>
+        <trans-unit id="Senegal" translate="no" xml:space="preserve">
+          
+          <target state="translated">Senegal</target>
+        </trans-unit>
+        <trans-unit id="Somalia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Somalia</target>
+        </trans-unit>
+        <trans-unit id="Suriname" translate="no" xml:space="preserve">
+          
+          <target state="translated">Suriname</target>
+        </trans-unit>
+        <trans-unit id="SouthSudan" translate="no" xml:space="preserve">
+          
+          <target state="translated">South Sudan</target>
+        </trans-unit>
+        <trans-unit id="SaoTomeAndPrincipe" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sao Tome and Principe</target>
+        </trans-unit>
+        <trans-unit id="ElSalvador" translate="no" xml:space="preserve">
+          
+          <target state="translated">El Salvador</target>
+        </trans-unit>
+        <trans-unit id="SintMaartenDutchPart" translate="no" xml:space="preserve">
+          
+          <target state="translated">Sint Maarten (Dutch part</target>
+        </trans-unit>
+        <trans-unit id="SyrianArabRepublic" translate="no" xml:space="preserve">
+          
+          <target state="translated">Syrian Arab Republic</target>
+        </trans-unit>
+        <trans-unit id="Swaziland" translate="no" xml:space="preserve">
+          
+          <target state="translated">Swaziland</target>
+        </trans-unit>
+        <trans-unit id="TurksAndCaicosIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">Turks and Caicos Islands</target>
+        </trans-unit>
+        <trans-unit id="Chad" translate="no" xml:space="preserve">
+          
+          <target state="translated">Chad</target>
+        </trans-unit>
+        <trans-unit id="FrenchSouthernTerritories" translate="no" xml:space="preserve">
+          
+          <target state="translated">French Southern Territories</target>
+        </trans-unit>
+        <trans-unit id="Togo" translate="no" xml:space="preserve">
+          
+          <target state="translated">Togo</target>
+        </trans-unit>
+        <trans-unit id="Thailand" translate="no" xml:space="preserve">
+          
+          <target state="translated">Thailand</target>
+        </trans-unit>
+        <trans-unit id="Tajikistan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tajikistan</target>
+        </trans-unit>
+        <trans-unit id="Tokelau" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tokelau</target>
+        </trans-unit>
+        <trans-unit id="Turkmenistan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Turkmenistan</target>
+        </trans-unit>
+        <trans-unit id="Tunisia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tunisia</target>
+        </trans-unit>
+        <trans-unit id="Tonga" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tonga</target>
+        </trans-unit>
+        <trans-unit id="Turkey" translate="no" xml:space="preserve">
+          
+          <target state="translated">Turkey</target>
+        </trans-unit>
+        <trans-unit id="TrinidadAndTobago" translate="no" xml:space="preserve">
+          
+          <target state="translated">Trinidad and Tobago</target>
+        </trans-unit>
+        <trans-unit id="Tuvalu" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tuvalu</target>
+        </trans-unit>
+        <trans-unit id="TaiwanProvinceOfChina" translate="no" xml:space="preserve">
+          
+          <target state="translated">Taiwan, Province of China</target>
+        </trans-unit>
+        <trans-unit id="TanzaniaUnitedRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Tanzania, United Republic of</target>
+        </trans-unit>
+        <trans-unit id="Ukraine" translate="no" xml:space="preserve">
+          
+          <target state="translated">Ukraine</target>
+        </trans-unit>
+        <trans-unit id="Uganda" translate="no" xml:space="preserve">
+          
+          <target state="translated">Uganda</target>
+        </trans-unit>
+        <trans-unit id="UnitedStatesMinorOutlyingIslands" translate="no" xml:space="preserve">
+          
+          <target state="translated">United States Minor Outlying Islands</target>
+        </trans-unit>
+        <trans-unit id="UnitedStatesOfAmerica" translate="no" xml:space="preserve">
+          
+          <target state="translated">United States of America</target>
+        </trans-unit>
+        <trans-unit id="Uruguay" translate="no" xml:space="preserve">
+          
+          <target state="translated">Uruguay</target>
+        </trans-unit>
+        <trans-unit id="Uzbekistan" translate="no" xml:space="preserve">
+          
+          <target state="translated">Uzbekistan</target>
+        </trans-unit>
+        <trans-unit id="HolySee" translate="no" xml:space="preserve">
+          
+          <target state="translated">Holy See</target>
+        </trans-unit>
+        <trans-unit id="SaintVincentAndTheGrenadines" translate="no" xml:space="preserve">
+          
+          <target state="translated">Saint Vincent and the Grenadines</target>
+        </trans-unit>
+        <trans-unit id="VenezuelaBolivarianRepublicOf" translate="no" xml:space="preserve">
+          
+          <target state="translated">Venezuela, Bolivarian Republic of</target>
+        </trans-unit>
+        <trans-unit id="VirginIslandsBritish" translate="no" xml:space="preserve">
+          
+          <target state="translated">Virgin Islands, British</target>
+        </trans-unit>
+        <trans-unit id="VirginIslandsUS" translate="no" xml:space="preserve">
+          
+          <target state="translated">Virgin Islands, U.S</target>
+        </trans-unit>
+        <trans-unit id="VietNam" translate="no" xml:space="preserve">
+          
+          <target state="translated">Viet Nam</target>
+        </trans-unit>
+        <trans-unit id="Vanuatu" translate="no" xml:space="preserve">
+          
+          <target state="translated">Vanuatu</target>
+        </trans-unit>
+        <trans-unit id="WallisAndFutuna" translate="no" xml:space="preserve">
+          
+          <target state="translated">Wallis and Futuna</target>
+        </trans-unit>
+        <trans-unit id="Samoa" translate="no" xml:space="preserve">
+          
+          <target state="translated">Samoa</target>
+        </trans-unit>
+        <trans-unit id="Yemen" translate="no" xml:space="preserve">
+          
+          <target state="translated">Yemen</target>
+        </trans-unit>
+        <trans-unit id="Mayotte" translate="no" xml:space="preserve">
+          
+          <target state="translated">Mayotte</target>
+        </trans-unit>
+        <trans-unit id="SouthAfrica" translate="no" xml:space="preserve">
+          
+          <target state="translated">South Africa</target>
+        </trans-unit>
+        <trans-unit id="Zambia" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zambia</target>
+        </trans-unit>
+        <trans-unit id="Zimbabwe" translate="no" xml:space="preserve">
+          
+          <target state="translated">Zimbabwe</target>
+        </trans-unit>
+        <trans-unit id="AtributteXmlIsNull" translate="no" xml:space="preserve">
+          
+          <target state="translated">Atributte xml is null</target>
+        </trans-unit>
+        <trans-unit id="CouldNotBeginRestartSessionUnableToDetermineFileLocker" translate="no" xml:space="preserve">
+          
+          <target state="translated">Could not begin restart session.  Unable to determine file locker</target>
+        </trans-unit>
+        <trans-unit id="CouldNotRegisterResource" translate="no" xml:space="preserve">
+          
+          <target state="translated">Could not register resource</target>
+        </trans-unit>
+        <trans-unit id="CouldNotListProcessesLockingResource" translate="no" xml:space="preserve">
+          
+          <target state="translated">Could not list processes locking resource</target>
+        </trans-unit>
+        <trans-unit id="CouldNotListProcessesLockingResourceFailedToGetSizeOfResult" translate="no" xml:space="preserve">
+          
+          <target state="translated">Could not list processes locking resource. Failed to get size of result</target>
+        </trans-unit>
+        <trans-unit id="Vivaldi" translate="no" xml:space="preserve">
+          
+          <target state="translated">Vivaldi</target>
+        </trans-unit>
+        <trans-unit id="FailedToRetrieveParsePoint" translate="no" xml:space="preserve">
+          
+          <target state="translated">Failed to retrieve parse point</target>
+        </trans-unit>
+        <trans-unit id="TargetStringTooShort" translate="no" xml:space="preserve">
+          
+          <target state="translated">Target string too short</target>
+        </trans-unit>
+        <trans-unit id="MalformedSubsString" translate="no" xml:space="preserve">
+          
+          <target state="translated">Malformed subsString</target>
+        </trans-unit>
+        <trans-unit id="RelativeJunctionPoint" translate="no" xml:space="preserve">
+          
+          <target state="translated">Relative junction point</target>
+        </trans-unit>
+        <trans-unit id="CopyTextToClipboard" translate="no" xml:space="preserve">
+          
+          <target state="translated">Copy text to clipboard</target>
+        </trans-unit>
+        <trans-unit id="PreferredDropEffect" translate="no" xml:space="preserve">
+          
+          <target state="translated">Preferred DropEffect</target>
+        </trans-unit>
+        <trans-unit id="SelectAFileToSaveTo" translate="no" xml:space="preserve">
+          
+          <target state="translated">Select a file to save to</target>
+        </trans-unit>
+        <trans-unit id="SelectTheFolder" translate="no" xml:space="preserve">
+          
+          <target state="translated">Select the folder</target>
+        </trans-unit>
+        <trans-unit id="AllFiles" translate="no" xml:space="preserve">
+          
+          <target state="translated">All Files</target>
+        </trans-unit>
+        <trans-unit id="UnvalidFile" translate="no" xml:space="preserve">
+          
+          <target state="translated">Unvalid file</target>
+        </trans-unit>
+        <trans-unit id="SystemWebScriptingSerializationJavaScriptSerializerIsNotSupportedInWindowsStoreApps" translate="no" xml:space="preserve">
+          
+          <target state="translated">System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps</target>
+        </trans-unit>
+        <trans-unit id="ElseIfWithEnumValue" translate="no" xml:space="preserve">
+          
+          <target state="translated">Else if with enum value</target>
+        </trans-unit>
+        <trans-unit id="inJavascriptSerialization" translate="no" xml:space="preserve">
+          
+          <target state="translated">in JavascriptSerialization</target>
+        </trans-unit>
+        <trans-unit id="Serialize" translate="no" xml:space="preserve">
+          
+          <target state="translated">Serialize</target>
+        </trans-unit>
+        <trans-unit id="Deserialize" translate="no" xml:space="preserve">
+          
+          <target state="translated">Deserialize</target>
+        </trans-unit>
+        <trans-unit id="doesNotSupportSerialize" translate="no" xml:space="preserve">
+          
+          <target state="translated">does not support Serialize</target>
+        </trans-unit>
+        <trans-unit id="doesNotSupportDeserialize" translate="no" xml:space="preserve">
+          
+          <target state="translated">does not support Deserialize</target>
+        </trans-unit>
+        <trans-unit id="Elements" translate="no" xml:space="preserve">
+          
+          <target state="translated">Elements</target>
+        </trans-unit>
+        <trans-unit id="isNotInRange" translate="no" xml:space="preserve">
+          
+          <target state="translated">is not in range</target>
+        </trans-unit>
       </group>
     </body>
   </file>

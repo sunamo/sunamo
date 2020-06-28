@@ -30,11 +30,11 @@ public static partial class BitmapImageHelper
         string cesta = "";
         if (disabled)
         {
-            cesta = "/" + "/d" + "/";
+            cesta = "//d/";
         }
         else
         {
-            cesta = "/" + "/e" + "/";
+            cesta = "//e/";
         }
 
         cesta += appPic.ToString() + ".png";

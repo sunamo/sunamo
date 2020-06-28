@@ -19,7 +19,7 @@ namespace desktop
 
     public class ToolStripButton : ToggleButton
     {
-        public static readonly DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(ToolStripButton));
+        public static readonly DependencyProperty ImageProperty = DependencyProperty.Register(sess.i18n(XlfKeys.Image), typeof(ImageSource), typeof(ToolStripButton));
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(ToolStripButton));
         //public static readonly DependencyProperty CheckedProperty = DependencyProperty.Register("Checked", typeof(bool), typeof(ToolStripButton));
         public static readonly DependencyProperty CheckOnClickProperty = DependencyProperty.Register("CheckOnClick", typeof(bool), typeof(ToolStripButton));

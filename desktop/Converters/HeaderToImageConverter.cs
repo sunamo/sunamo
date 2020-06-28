@@ -46,7 +46,7 @@ namespace desktop.Converters
 
             public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Cannot convert back");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.CannotConvertBack));
             return null;
             }
         }

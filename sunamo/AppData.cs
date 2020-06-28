@@ -37,7 +37,7 @@ public class AppData : AppDataAbstractBase<string, string>
         }
         if (inFolderCommon)
         {
-            return FS.Combine(sunamo2, "Common");
+            return FS.Combine(sunamo2, XlfKeys.Common);
         }
 
         return sunamo2;

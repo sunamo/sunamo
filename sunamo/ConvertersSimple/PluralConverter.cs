@@ -43,7 +43,7 @@ namespace sunamo
                 s_dictionary.Add("axis", "axes");
                 s_dictionary.Add("bacillus", "bacilli");
                 s_dictionary.Add("basis", "bases");
-                s_dictionary.Add("Bedouin", "Bedouin");
+                s_dictionary.Add(sess.i18n(XlfKeys.Bedouin), sess.i18n(XlfKeys.Bedouin));
                 s_dictionary.Add("cactus", "cacti");
                 s_dictionary.Add("calf", "calves");
                 s_dictionary.Add("cherub", "cherubim");

@@ -61,7 +61,7 @@ namespace desktop.Controls.Input
 
         public void Init(string whatEnter)
         {
-            tbWhatEnter.Text = "Enter or select" + " " + whatEnter;
+            tbWhatEnter.Text = sess.i18n(XlfKeys.EnterOrSelect) + " " + whatEnter;
         }
 
         private void btnEnter_Click_1(object sender, RoutedEventArgs e)
@@ -84,12 +84,12 @@ namespace desktop.Controls.Input
         }
 
         /// <summary>
-        /// Very stupid, if was set ParentWIndow.DialogResult was set here, then "'" + "DialogResult can be set only after Window is created and shown as dialog" + ".'" occured
+        /// Very stupid, if was set ParentWIndow.DialogResult was set here, then "'DialogResult can be set only after Window is created and shown as dialog.'" occured
         /// Right approach is call here Finished which has registered WindowWithUserControl, which will set DialogResult itself
         /// </summary>
         public WindowWithUserControl ParentWindow { set { } }
 
-        public string Title => "Select one value";
+        public string Title => sess.i18n(XlfKeys.SelectOneValue);
 
         private bool AfterEnteredValue(ComboBox cbEntered)
         {

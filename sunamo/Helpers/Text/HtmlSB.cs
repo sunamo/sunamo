@@ -6,7 +6,7 @@
 /// </summary>
 public class HtmlSB : InstantSB
 {
-    public HtmlSB() : base("<br" + " /" + "")
+    public HtmlSB() : base("<br /")
     {
     }
 }

@@ -152,12 +152,12 @@ public static XElement MakeAllElementsWithDefaultNs(XElement settings)
         if (FS.ExistsFile(xml))
         {
             TF.SaveFile(formatted, xml);
-            ThisApp.SetStatus(TypeOfMessage.Success, "Changes saved to file");
+            ThisApp.SetStatus(TypeOfMessage.Success, sess.i18n(XlfKeys.ChangesSavedToFile));
             return null;
         }
         else
         {
-            ThisApp.SetStatus(TypeOfMessage.Success, "Changes saved to clipboard");
+            ThisApp.SetStatus(TypeOfMessage.Success, sess.i18n(XlfKeys.ChangesSavedToClipboard));
             return formatted;
         }
     }
@@ -218,7 +218,7 @@ public static void AddXmlNamespaces(XmlNamespaceManager nsmgr)
         for (int i = 0; i < p.Length; i++)
         {
             //.TrimEnd(AllChars.slash) + AllStrings.slash
-            ns.Add(p[i].Replace("xmlns" + ":", ""), p[++i]);
+            ns.Add(p[i].Replace("xmlns:", ""), p[++i]);
         }
     }
 public static void AddXmlNamespaces(Dictionary<string, string> d)

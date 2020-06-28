@@ -73,14 +73,14 @@ namespace sunamo.Generators.Text
 
         private void UndoIsNotAllowed(string method)
         {
-            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(),type, method, "Undo");
+            ThrowExceptions.IsNotAllowed(Exc.GetStackTrace(),type, method, sess.i18n(XlfKeys.Undo));
         }
 
         public void Undo()
         {
             if (_useList)
             {
-                UndoIsNotAllowed("Undo");
+                UndoIsNotAllowed(sess.i18n(XlfKeys.Undo));
             }
             if (_lastIndex != -1)
             {

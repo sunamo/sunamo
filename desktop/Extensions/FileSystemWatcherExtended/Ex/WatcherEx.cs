@@ -44,7 +44,7 @@ using System.Text;
         {
             if (info == null)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"WatcherInfo object cannot be null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.WatcherInfoObjectCannotBeNull));
             }
             this.watcherInfo = info;
 

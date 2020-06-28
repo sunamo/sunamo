@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class Constants
 {
     // TODO: Distribute to other because public class name is the same as namespace
-    public const string AfterCloseNonCompletedSettingsWizard = "Pr\u016Fvodce nastaven\u00EDm nebyl dokon\u010Den. P\u0159ejete si jej p\u0159esto zav\u0159\u00EDt" + "?";
+    public const string AfterCloseNonCompletedSettingsWizard = "Pr\u016Fvodce nastaven\u00EDm nebyl dokon\u010Den. P\u0159ejete si jej p\u0159esto zav\u0159\u00EDt?";
     public const int OneMB = 1048576;
     /// <summary>
     /// Připočítává 1 pro snadnější porovnání

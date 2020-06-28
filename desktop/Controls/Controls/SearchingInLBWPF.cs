@@ -105,7 +105,7 @@ public class SearchingInLbWPF
                 }
             }
             lb.Items.Clear();
-            ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.WasFounded) + " " + nechat.Count + " " + "items" + ". ");
+            ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.WasFounded) + " " + nechat.Count + " items. ");
             AddRangeToListBox(nechat.ToArray());
         }
         else

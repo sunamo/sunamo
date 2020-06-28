@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Xml.Linq;
 using sunamo.Essential;
 
 public partial class WpfApp{
@@ -85,6 +87,12 @@ public partial class WpfApp{
 
     private static bool IsSomethingNull(string handler)
     {
+        WpfApp.cd = Application.Current.Dispatcher;
+        WpfApp.cdp = System.Windows.Threading.DispatcherPriority.Normal;
+        return false;
+
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("Entering IsSomethingNull");
         bool vr = false;
 
         if (WpfApp.cd == null)
@@ -94,38 +102,31 @@ public partial class WpfApp{
 
         if (vr)
         {
-            var d = Exc.GetStackTrace();
+            sb.AppendLine("WpfApp.cd was null");
+            Exception ex = new Exception();
+
             try
             {
-                if (WindowsSecurityHelper.IsMyComputer())
-                {
-                    Clipboard.SetText(d);
-                }
-                
+                sb.AppendLine("Empty try block");
             }
-            catch (Exception)
+            catch (Exception ex2)
             {
-                /*
-Application: UsedCarComparing.exe
-Framework Version: v4.0.30319
-Description: The process was terminated due to an unhandled exception.
-Exception Info: System.Runtime.InteropServices.COMException
-   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32, IntPtr)
-   at System.Windows.Clipboard.CriticalSetDataObject(System.Object, Boolean)
-   at System.Windows.Clipboard.SetDataInternal(System.String, System.Object)
-   at System.Windows.Clipboard.SetText(System.String, System.Windows.TextDataFormat)
-   at System.Windows.Clipboard.SetText(System.String)
-   at WpfApp.IsSomethingNull(System.String)
-   at WpfApp.Current_DispatcherUnhandledException(System.Object, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs)
-   at System.Windows.Threading.Dispatcher.CatchException(System.Exception)
-   at System.Windows.Threading.Dispatcher.CatchExceptionStatic(System.Object, System.Exception)
-   at System.Windows.Threading.ExceptionWrapper.CatchException(System.Object, System.Exception, System.Delegate)
-   at System.Windows.Threading.ExceptionWrapper.TryCatchWhen(System.Object, System.Delegate, System.Object, Int32, System.Delegate)
-   at System.Windows.Threading.Dispatcher.LegacyInvokeImpl(System.Windows.Threading.DispatcherPriority, System.TimeSpan, System.Delegate, System.Object, Int32)
-   at MS.Win32.HwndSubclass.SubclassWndProc(IntPtr, Int32, IntPtr, IntPtr)
-                */
+                ex = ex2;
+                sb.AppendLine("Catch block from empty try block");
             }
-            MessageBox.Show(handler +  " Something is null (probably WpfApp.cd). Into clipboard was copied stacktrace.");
+
+            bool run = false;
+            //sb.AppendLine("Is my computer");
+            //run = WindowsSecurityHelper.IsMyComputer();
+            run = true;
+
+            if (run)
+            {
+                
+                Clipboard.SetText(Exc.GetStackTrace() + Environment.NewLine + Exceptions.TextOfExceptions(ex));
+                MessageBox.Show(handler + " " + DesktopNotTranslateAble.SomethingIsNullProbablyWpfAppCdIntoClipboardWasCopiedStacktrace + ".");
+            }
+            
         }
         else
         {

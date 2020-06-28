@@ -12,7 +12,7 @@ public abstract class SqlHelper
     public string ListingWholeTable(string tableName, DataTable dt)
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("**" + "*" + "Start of listing whole table" + " " + tableName + "***");
+        sb.AppendLine("***" + sess.i18n(XlfKeys.StartOfListingWholeTable) + " " + tableName + "***");
         if (dt.Rows.Count != 0)
         {
             sb.AppendLine(SF.PrepareToSerialization(CA.ToListString( GetColumnsOfTable(tableName))));
@@ -21,7 +21,7 @@ public abstract class SqlHelper
                 sb.AppendLine(SF.PrepareToSerialization(CA.ToListString( item.ItemArray)));
             }
         }
-        sb.AppendLine("**" + "*" + "End of listing whole table" + " " + tableName + "***");
+        sb.AppendLine("***" + sess.i18n(XlfKeys.EndOfListingWholeTable) + " " + tableName + "***");
         return sb.ToString();
     }
 

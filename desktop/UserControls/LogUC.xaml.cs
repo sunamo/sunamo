@@ -18,7 +18,7 @@ namespace desktop.UserControls
             uc_Loaded(null, null);
         }
 
-        public string Title => "Logs";
+        public string Title => sess.i18n(XlfKeys.Logs);
         bool initialized = false;
         public WindowWithUserControl windowWithUserControl { get => windowOpenerMain.windowWithUserControl; set => windowOpenerMain.windowWithUserControl = value; }
 

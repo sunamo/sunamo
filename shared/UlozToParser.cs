@@ -36,7 +36,7 @@ public class UlozTo
             {
                 continue;
             }
-            qUri = qUri.Replace("hraj(" + "'", "").Replace("'," + "$(this))" + ";", "");
+            qUri = qUri.Replace("hraj('", "").Replace("',$(this));", "");
 
             try
             {
@@ -69,38 +69,38 @@ public class UlozTo
             ut.server = sp[1];
             if (ut.server.Length > 4)
             {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "Server", ut.server));
+                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Server), ut.server));
             }
             else
             {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "Server", ut.server));
+                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Server), ut.server));
             }
             ut.part1 = sp[4];
             if (ut.part1.Length > 1)
             {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "Part1", ut.part1));
+                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part1), ut.part1));
             }
             else
             {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "Part1", ut.part1));
+                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part1), ut.part1));
             }
             ut.part2 = sp[5];
             if (ut.part2.Length >1)
             {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "Part2", ut.part2));
+                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part2), ut.part2));
             }
             else
             {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "Part2", ut.part2));
+                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part2), ut.part2));
             }
             ut.part3 = sp[6];
             if (ut.part3.Length > 1)
             {
-                errors.Append(HtmlGenerator2.DetailStatic("red", "Part3", ut.part3));
+                errors.Append(HtmlGenerator2.DetailStatic("red", sess.i18n(XlfKeys.Part3), ut.part3));
             }
             else
             {
-                errors.Append(HtmlGenerator2.DetailStatic("green", "Part3", ut.part3));
+                errors.Append(HtmlGenerator2.DetailStatic("green", sess.i18n(XlfKeys.Part3), ut.part3));
             }
             ut.fileCode = sp[7];
             if (ut.fileCode.Length > 32)
@@ -149,7 +149,7 @@ public class UlozTo
 
     public static string ToUri(UlozToMediaUriParts ut)
     {
-        return "http" + ":" + "//"+ut.server+"." + "uloz.to" + "/"+ut.part1+AllStrings.slash+ut.part2+AllStrings.slash+ut.part3+AllStrings.slash+ut.fileCode+AllStrings.dot+ut.maxQuality+AllStrings.dot+ut.ext+"?fileId=" + ut.fileId;
+        return "http://"+ut.server+".uloz.to/"+ut.part1+AllStrings.slash+ut.part2+AllStrings.slash+ut.part3+AllStrings.slash+ut.fileCode+AllStrings.dot+ut.maxQuality+AllStrings.dot+ut.ext+"?fileId=" + ut.fileId;
     }
 
     public static string GetNiceUri(bool live, string code, string name)
@@ -157,9 +157,9 @@ public class UlozTo
         string liveS = "";
         if (live)
         {
-            liveS = "live" + "/";
+            liveS = "live/";
         }
-        return "http://uloz.to" + "/" + liveS + code + AllStrings.slash + name;
+        return "http://uloz.to/" + liveS + code + AllStrings.slash + name;
     }
 
     /// <summary>

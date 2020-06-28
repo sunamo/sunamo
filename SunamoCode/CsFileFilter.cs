@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-public class CsFileFilter
+public class CsFileFilter : FiltersNotTranslateAble
 {
     bool designerCs= false; 
     bool xamlCs= false; 
@@ -13,7 +13,6 @@ public class CsFileFilter
     bool gCs= false;
     bool tmp = false;
     bool TMP = false;
-
     bool DesignerCs = false;
     bool NotTranslateAble = false;
 
@@ -103,14 +102,21 @@ public class CsFileFilter
          designerCs = false;  xamlCs = true;  sharedCs = true;  iCs = false;  gICs = false;  gCs = false;
          obj = false;  bin = false;
         DesignerCs = false;
+        NotTranslateAble = false;
     }
 
-    static string designerCsPp = ".designer.cs";
-    static string DesignerCsPp = ".designer.cs"; static string xamlCsPp = ".xaml.cs"; static string sharedCsPp = "Shared.cs"; static string iCsPp = ".i.cs"; static string gICsPp = ".g.i.cs"; static string gCsPp = ".g.cs";
-    static string tmpPp = ".tmp";
-    static string TMPPp = ".TMP";
-    static string NotTranslateAblePp = "NotTranslateAble.cs";
-    static string objPp = @"\obj\"; static string binPp = @"\bin\";
+    const string designerCsPp = ".designer.cs";
+    const string DesignerCsPp = ".Designer.cs"; 
+    const string xamlCsPp = ".xaml.cs"; 
+    const string sharedCsPp = "Shared.cs"; 
+    const string iCsPp = ".i.cs"; 
+    const string gICsPp = ".g.i.cs"; 
+    const string gCsPp = ".g.cs";
+    const string tmpPp = ".tmp";
+    const string TMPPp = ".TMP";
+    const string notTranslateAblePp = "NotTranslateAble.cs";
+
+    static string objFp = @"\obj\"; static string binFp = @"\bin\";
 
     public List<string> GetEndingByFlags()
     {

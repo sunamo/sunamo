@@ -49,7 +49,7 @@ namespace desktop
         const string l = "l";
         const string s = "s";
         bool loginClicked = false;
-        string iniCredSection = "Cred";
+        string iniCredSection = sess.i18n(XlfKeys.Cred);
 
         /// <summary>
         /// A1 = RandomHelper.RandomString(10)
@@ -159,7 +159,7 @@ namespace desktop
 
         private static void ThrowExceptionConfigNotSupported()
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Ukládání nastavení do app.config nebo web.config zatím není podporováno");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.SavingSettingsToAppConfigOrWebConfigIsNotYetSupported));
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

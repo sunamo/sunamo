@@ -20,7 +20,7 @@ public class ConvertTypeNameType
                 return typeof(int);
             case "bool":
                 return typeof(bool);
-            case "Boolean":
+            case XlfKeys.Boolean:
                 return typeof(bool);
             case "float":
                 return typeof(float);

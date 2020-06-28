@@ -50,7 +50,7 @@ public class NotifyChangesCollection<T> : IList<T> where T : INotifyPropertyChan
 
     public void Add(T item)
     {
-        if (item.ToString().Contains("<b>Všechny vaše fotky(i neveřejné):</b>"))
+        if (item.ToString().Contains("<b>"+sess.i18n(XlfKeys.AllYourPhotosEvenPrivate)+":</b>"))
         {
 
         }

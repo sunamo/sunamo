@@ -17,14 +17,14 @@ namespace sunamo.Data
             {
                 TextOutputGenerator textOutputGenerator = new TextOutputGenerator();
 
-                textOutputGenerator.Header("Managed" + ":");
+                textOutputGenerator.Header(sess.i18n(XlfKeys.Managed) + ":");
 
                 foreach (var item in result.OnlyInFirst)
                 {
                     textOutputGenerator.sb.AppendLine(item.ToString());
                 }
 
-                textOutputGenerator.Header("Restored" + ":");
+                textOutputGenerator.Header(sess.i18n(XlfKeys.Restored) + ":");
 
                 foreach (var item in result.OnlyInSecond)
                 {
@@ -33,7 +33,7 @@ namespace sunamo.Data
 
                 if (result.Both != null)
                 {
-                    textOutputGenerator.Header("Founded" + ":");
+                    textOutputGenerator.Header(sess.i18n(XlfKeys.Founded) + ":");
 
                     foreach (var item in result.Both)
                     {

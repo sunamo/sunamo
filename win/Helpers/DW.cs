@@ -40,7 +40,7 @@ public static partial class DW
         sfd.Filter = FS.RepairFilter(filter);
         sfd.ValidateNames = true;
         sfd.FileName = nameWithExt;
-        sfd.Title = "Vyberte soubor do ktereho se ulozi";
+        sfd.Title = sess.i18n(XlfKeys.SelectAFileToSaveTo);
         if (sfd.ShowDialog() == DialogResult.OK)
         {
             return sfd.FileName;
@@ -92,7 +92,7 @@ public static partial class DW
     {
         CommonOpenFileDialog fbd = new CommonOpenFileDialog();
         //FolderBrowserDialog fbd = new FolderBrowserDialog();
-        fbd.Title = "Select the folder";
+        fbd.Title = sess.i18n(XlfKeys.SelectTheFolder);
         // Here is available set this only way
         fbd.IsFolderPicker = true;
         fbd.InitialDirectory = rootFolder;

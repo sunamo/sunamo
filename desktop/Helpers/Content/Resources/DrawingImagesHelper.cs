@@ -7,11 +7,11 @@ public static class DrawingImagesHelper
         string cesta = "";
         if (enabled)
         {
-            cesta = "/" + "/d" + "/";
+            cesta = "//d/";
         }
         else
         {
-            cesta = "/" + "/e" + "/";
+            cesta = "//e/";
         }
         cesta += appPic.ToString() + ".png";
         return DrawingImageHelper.MsAppx(cesta);

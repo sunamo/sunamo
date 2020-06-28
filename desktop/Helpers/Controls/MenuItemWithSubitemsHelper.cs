@@ -71,7 +71,7 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.ParameterDefValInMenuItemWithSubitemsHelperAddValuesOfEnumAsItemsWasNotTypeOfEnum) + ".");
             }
         }
         T _def = (T)defVal;
@@ -93,7 +93,7 @@ static Type type = typeof(MenuItemWithSubitemsHelper);
         {
             if (type.FullName != defVal.GetType().FullName)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter defVal in MenuItemWithSubitemsHelper.AddValuesOfEnumAsItems was not type of Enum" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.ParameterDefValInMenuItemWithSubitemsHelperAddValuesOfEnumAsItemsWasNotTypeOfEnum) + ".");
             }
         }
         T _def = (T)defVal;

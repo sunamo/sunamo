@@ -13,7 +13,7 @@ public static partial class HtmlTemplates
 
 public static string HiddenField(string id, string value)
     {
-        string format = "<input type='hidden' id=" + "'" + id + "' " + "value=" + "'" + value + "' />";
+        string format = "<input type='hidden' id='" + id + "' value='" + value + "' />";
         return format;
         //HtmlInjection.InjectInternalToHead(page, format);
     }

@@ -42,7 +42,7 @@ public partial class DTHelperMulti
                         }
                         else
                         {
-                            return tt.Days + " " + "days";
+                            return tt.Days + " days";
                         }
                     }
                     else
@@ -53,33 +53,33 @@ public partial class DTHelperMulti
                             {
                                 if (l == Langs.cs)
                                 {
-                                    return tt.Hours + " " + "hodinu";
+                                    return tt.Hours + " hodinu";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " " + "hour";
+                                    return tt.Hours + " hour";
                                 }
                             }
                             else if (tt.Hours > 1 && tt.Hours < 5)
                             {
                                 if (l == Langs.cs)
                                 {
-                                    return tt.Hours + " " + "hodiny";
+                                    return tt.Hours + " hodiny";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " " + "hours";
+                                    return tt.Hours + " hours";
                                 }
                             }
                             else if (tt.Hours > 4)
                             {
                                 if (l == Langs.cs)
                                 {
-                                    return tt.Hours + " " + "hodin";
+                                    return tt.Hours + " hodin";
                                 }
                                 else
                                 {
-                                    return tt.Hours + " " + "hours";
+                                    return tt.Hours + " hours";
                                 }
                             }
                             else
@@ -89,33 +89,33 @@ public partial class DTHelperMulti
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Minutes + " " + "minutu";
+                                        return tt.Minutes + " minutu";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " " + "minute";
+                                        return tt.Minutes + " minute";
                                     }
                                 }
                                 else if (tt.Minutes > 1 && tt.Minutes < 5)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Minutes + " " + "minuty";
+                                        return tt.Minutes + " minuty";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " " + "minutes";
+                                        return tt.Minutes + " minutes";
                                     }
                                 }
                                 else if (tt.Minutes > 4)
                                 {
                                     if (l == Langs.cs)
                                     {
-                                        return tt.Minutes + " " + "minut";
+                                        return tt.Minutes + " minut";
                                     }
                                     else
                                     {
-                                        return tt.Minutes + " " + "minutes";
+                                        return tt.Minutes + " minutes";
                                     }
                                 }
                                 else //if (tt.Minutes == 0)
@@ -124,33 +124,33 @@ public partial class DTHelperMulti
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Seconds + " " + "sekundu";
+                                            return tt.Seconds + " sekundu";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " " + "second";
+                                            return tt.Seconds + " second";
                                         }
                                     }
                                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Seconds + " " + "sekundy";
+                                            return tt.Seconds + " sekundy";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " " + "seconds";
+                                            return tt.Seconds + " seconds";
                                         }
                                     }
                                     else //if (tt.Seconds > 4)
                                     {
                                         if (l == Langs.cs)
                                         {
-                                            return tt.Seconds + " " + "sekund";
+                                            return tt.Seconds + " sekund";
                                         }
                                         else
                                         {
-                                            return tt.Seconds + " " + "seconds";
+                                            return tt.Seconds + " seconds";
                                         }
                                     }
                                 }
@@ -173,33 +173,33 @@ public partial class DTHelperMulti
                 {
                     if (l == Langs.cs)
                     {
-                        return totalWeeks + " " + "t\u00FDden";
+                        return totalWeeks + " t\u00FDden";
                     }
                     else
                     {
-                        return totalWeeks + " " + "week";
+                        return totalWeeks + " week";
                     }
                 }
                 else if (totalWeeks < 5 && totalWeeks > 1)
                 {
                     if (l == Langs.cs)
                     {
-                        return totalWeeks + " " + "t\u00FDdny";
+                        return totalWeeks + " t\u00FDdny";
                     }
                     else
                     {
-                        return totalWeeks + " " + "weeks";
+                        return totalWeeks + " weeks";
                     }
                 }
                 else
                 {
                     if (l == Langs.cs)
                     {
-                        return totalWeeks + " " + "t\u00FDdn\u016F";
+                        return totalWeeks + " t\u00FDdn\u016F";
                     }
                     else
                     {
-                        return totalWeeks + " " + "weeks";
+                        return totalWeeks + " weeks";
                     }
                 }
             }
@@ -209,33 +209,33 @@ public partial class DTHelperMulti
                 {
                     if (l == Langs.cs)
                     {
-                        return months + " " + "m\u011Bs\u00EDc";
+                        return months + " m\u011Bs\u00EDc";
                     }
                     else
                     {
-                        return months + " " + "months";
+                        return months + " months";
                     }
                 }
                 else if (months > 1 && months < 5)
                 {
                     if (l == Langs.cs)
                     {
-                        return months + " " + "m\u011Bs\u00EDce";
+                        return months + " m\u011Bs\u00EDce";
                     }
                     else
                     {
-                        return months + " " + "months";
+                        return months + " months";
                     }
                 }
                 else
                 {
                     if (l == Langs.cs)
                     {
-                        return months + " " + "m\u011Bs\u00EDc\u016F";
+                        return months + " m\u011Bs\u00EDc\u016F";
                     }
                     else
                     {
-                        return months + " " + "months";
+                        return months + " months";
                     }
                 }
             }
@@ -244,33 +244,33 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                return " " + " rok";
+                return "  rok";
             }
             else
             {
-                return " " + " " + "year";
+                return "  year";
             }
         }
         else if (age > 1 && age < 5)
         {
             if (l == Langs.cs)
             {
-                return age + " " + "roky";
+                return age + " roky";
             }
             else
             {
-                return age + " " + "years";
+                return age + " years";
             }
         }
         else if (age > 4 || age == 0)
         {
             if (l == Langs.cs)
             {
-                return age + " " + "rok\u016F";
+                return age + " rok\u016F";
             }
             else
             {
-                return age + " " + "years";
+                return age + " years";
             }
         }
         else
@@ -279,7 +279,7 @@ public partial class DTHelperMulti
             {
                 return "Nezn\u00E1m\u00FD \u010Das";
             }
-            return "No known period";
+            return sess.i18n(XlfKeys.NoKnownPeriod);
         }
     }
 
@@ -296,33 +296,33 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                vr.Add(tt.Hours + " " + "hodinu");
+                vr.Add(tt.Hours + " hodinu");
             }
             else
             {
-                vr.Add(tt.Hours + " " + "hour");
+                vr.Add(tt.Hours + " hour");
             }
         }
         else if (tt.Hours > 1 && tt.Hours < 5)
         {
             if (l == Langs.cs)
             {
-                vr.Add(tt.Hours + " " + "hodiny");
+                vr.Add(tt.Hours + " hodiny");
             }
             else
             {
-                vr.Add(tt.Hours + " " + "hours");
+                vr.Add(tt.Hours + " hours");
             }
         }
         else if (tt.Hours > 4)
         {
             if (l == Langs.cs)
             {
-                vr.Add(tt.Hours + " " + "hodin");
+                vr.Add(tt.Hours + " hodin");
             }
             else
             {
-                vr.Add(tt.Hours + " " + "hours");
+                vr.Add(tt.Hours + " hours");
             }
         }
         else
@@ -332,33 +332,33 @@ public partial class DTHelperMulti
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Minutes + " " + "minutu");
+                    vr.Add(tt.Minutes + " minutu");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " " + "minute");
+                    vr.Add(tt.Minutes + " minute");
                 }
             }
             else if (tt.Minutes > 1 && tt.Minutes < 5)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Minutes + " " + "minuty");
+                    vr.Add(tt.Minutes + " minuty");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " " + "minutes");
+                    vr.Add(tt.Minutes + " minutes");
                 }
             }
             else if (tt.Minutes > 4)
             {
                 if (l == Langs.cs)
                 {
-                    vr.Add(tt.Minutes + " " + "minut");
+                    vr.Add(tt.Minutes + " minut");
                 }
                 else
                 {
-                    vr.Add(tt.Minutes + " " + "minutes");
+                    vr.Add(tt.Minutes + " minutes");
                 }
             }
             else //if (tt.Minutes == 0)
@@ -367,33 +367,33 @@ public partial class DTHelperMulti
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Seconds + " " + "sekundu");
+                        vr.Add(tt.Seconds + " sekundu");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " " + "second");
+                        vr.Add(tt.Seconds + " second");
                     }
                 }
                 else if (tt.Seconds > 1 && tt.Seconds < 5)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Seconds + " " + "sekundy");
+                        vr.Add(tt.Seconds + " sekundy");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " " + "seconds");
+                        vr.Add(tt.Seconds + " seconds");
                     }
                 }
                 else if (tt.Seconds > 4)
                 {
                     if (l == Langs.cs)
                     {
-                        vr.Add(tt.Seconds + " " + "sekund");
+                        vr.Add(tt.Seconds + " sekund");
                     }
                     else
                     {
-                        vr.Add(tt.Seconds + " " + "seconds");
+                        vr.Add(tt.Seconds + " seconds");
                     }
                 }
                 else
@@ -402,44 +402,44 @@ public partial class DTHelperMulti
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Milliseconds + " " + "milisekundu");
+                            vr.Add(tt.Milliseconds + " milisekundu");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " " + "millisecond");
+                            vr.Add(tt.Milliseconds + " millisecond");
                         }
                     }
                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Milliseconds + " " + "milisekundy");
+                            vr.Add(tt.Milliseconds + " milisekundy");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " " + "milliseconds");
+                            vr.Add(tt.Milliseconds + " milliseconds");
                         }
                     }
                     else if (tt.Seconds > 4)
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Milliseconds + " " + "milisekund");
+                            vr.Add(tt.Milliseconds + " milisekund");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " " + "milliseconds");
+                            vr.Add(tt.Milliseconds + " milliseconds");
                         }
                     }
                     else
                     {
                         if (l == Langs.cs)
                         {
-                            vr.Add(tt.Milliseconds + " " + "milisekund");
+                            vr.Add(tt.Milliseconds + " milisekund");
                         }
                         else
                         {
-                            vr.Add(tt.Milliseconds + " " + "milliseconds");
+                            vr.Add(tt.Milliseconds + " milliseconds");
                         }
                     }
                 }

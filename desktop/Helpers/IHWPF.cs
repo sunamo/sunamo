@@ -138,7 +138,7 @@ static Type type = typeof(IH);
         {
             if (value > 100)
             {
-                //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Hodnota pro ProgressBar nemůže být vyšší než 100" + ".");
+                //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Hodnota pro ProgressBar nemůže být vyšší než 100.");
                 value = 100;
             }
             pb.Value = value;

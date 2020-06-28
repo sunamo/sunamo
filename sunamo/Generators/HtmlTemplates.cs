@@ -7,10 +7,10 @@ public static partial class HtmlTemplates
     /// <summary>
     /// Toto se muze pouzivat pouze kdyz nechces nic zadat do head, jinak pouzij ostatni konstanty zde
     /// </summary>
-    public const string htmlEndTitleBody = "/" + "/" + "title></head><body>";
-    public const string htmlEndTitle = "/" + "/" + "title>";
-    public const string htmlEndHeadBody = "/" + "/" + "head><body>";
-    public const string htmlEnd = "/" + "/" + "body></html>";
+    public const string htmlEndTitleBody = "//title></head><body>";
+    public const string htmlEndTitle = "//title>";
+    public const string htmlEndHeadBody = "//head><body>";
+    public const string htmlEnd = "//body></html>";
 
     public static string GetH2(string title)
     {
@@ -19,7 +19,7 @@ public static partial class HtmlTemplates
 
     public static string NameValueBr(string name, string value)
     {
-        return "<b>" + name + "</b>" + ": " + value;
+        return "<b>" + name + "</b>: " + value;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -27,9 +27,9 @@ public static partial class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td>" + name + ": " + "/" + "/" + "td><td>" + value + "/" + "/" + "td></tr>";
+            return "<tr><td>" + name + ": //td><td>" + value + "//td></tr>";
         }
-        return "<tr><td>" + name + " " + "/" + "/" + "td><td>" + value + "/" + "/" + "td></tr>";
+        return "<tr><td>" + name + " //td><td>" + value + "//td></tr>";
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -42,8 +42,8 @@ public static partial class HtmlTemplates
     {
         if (pridavatDvojtecku)
         {
-            return "<tr><td colspan='2'><b>" + name + ": " + "<" + "/" + "b></td></tr><tr><td colspan=" + "'" + "2" + "'" + ">" + value + "</" + "/" + "td></tr>";
+            return "<tr><td colspan='2'><b>" + name + ": </b></td></tr><tr><td colspan='2'>" + value + "<//td></tr>";
         }
-        return "<tr><td colspan='2'><b>" + name + " " + "/" + "/" + "b></td></tr><tr><td colspan=" + "'" + "2" + "'" + ">" + value + "</" + "/" + "td></tr>";
+        return "<tr><td colspan='2'><b>" + name + " //b></td></tr><tr><td colspan='2'>" + value + "<//td></tr>";
     }
 }

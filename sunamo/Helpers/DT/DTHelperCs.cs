@@ -71,7 +71,7 @@ public partial class DTHelperCs
                 {
                     if (tt.Days == 1)
                     {
-                        return " " + " den";
+                        return "  den";
                     }
                     else if (tt.Days < 5 && tt.Days > 1)
                     {
@@ -83,44 +83,44 @@ public partial class DTHelperCs
                         {
                             if (tt.Hours == 1)
                             {
-                                return tt.Hours + " " + "hodina";
+                                return tt.Hours + " hodina";
                             }
                             else if (tt.Hours > 1 && tt.Hours < 5)
                             {
-                                return tt.Hours + " " + "hodiny";
+                                return tt.Hours + " hodiny";
                             }
                             else if (tt.Hours > 4)
                             {
-                                return tt.Hours + " " + "hodin";
+                                return tt.Hours + " hodin";
                             }
                             else
                             {
                                 // Hodin je méně než 1
                                 if (tt.Minutes == 1)
                                 {
-                                    return tt.Minutes + " " + "minuta";
+                                    return tt.Minutes + " minuta";
                                 }
                                 else if (tt.Minutes > 1 && tt.Minutes < 5)
                                 {
-                                    return tt.Minutes + " " + "minuty";
+                                    return tt.Minutes + " minuty";
                                 }
                                 else if (tt.Minutes > 4)
                                 {
-                                    return tt.Minutes + " " + "minut";
+                                    return tt.Minutes + " minut";
                                 }
                                 else //if (tt.Minutes == 0)
                                 {
                                     if (tt.Seconds == 1)
                                     {
-                                        return tt.Seconds + " " + "sekunda";
+                                        return tt.Seconds + " sekunda";
                                     }
                                     else if (tt.Seconds > 1 && tt.Seconds < 5)
                                     {
-                                        return tt.Seconds + " " + "sekundy";
+                                        return tt.Seconds + " sekundy";
                                     }
                                     else //if (tt.Seconds > 4)
                                     {
-                                        return tt.Seconds + " " + "sekund";
+                                        return tt.Seconds + " sekund";
                                     }
                                 }
                             }
@@ -133,44 +133,44 @@ public partial class DTHelperCs
                 }
                 else if (totalWeeks == 1)
                 {
-                    return totalWeeks + " " + "t\u00FDden";
+                    return totalWeeks + " t\u00FDden";
                 }
                 else if (totalWeeks < 5 && totalWeeks > 1)
                 {
-                    return totalWeeks + " " + "t\u00FDdny";
+                    return totalWeeks + " t\u00FDdny";
                 }
                 else
                 {
-                    return totalWeeks + " " + "t\u00FDdn\u016F";
+                    return totalWeeks + " t\u00FDdn\u016F";
                 }
             }
             else
             {
                 if (months == 1)
                 {
-                    return months + " " + "m\u011Bs\u00EDc";
+                    return months + " m\u011Bs\u00EDc";
                 }
                 else if (months > 1 && months < 5)
                 {
-                    return months + " " + "m\u011Bs\u00EDce";
+                    return months + " m\u011Bs\u00EDce";
                 }
                 else
                 {
-                    return months + " " + "m\u011Bs\u00EDc\u016F";
+                    return months + " m\u011Bs\u00EDc\u016F";
                 }
             }
         }
         else if (age == 1)
         {
-            return " " + " rok";
+            return "  rok";
         }
         else if (age > 1 && age < 5)
         {
-            return age + " " + "roky";
+            return age + " roky";
         }
         else if (age > 4 || age == 0)
         {
-            return age + " " + "rok\u016F";
+            return age + " rok\u016F";
         }
         else
         {

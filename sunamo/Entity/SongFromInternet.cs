@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System;
 using System.Linq;
@@ -482,7 +482,7 @@ namespace sunamo
         {
             var remix = Remix();
             remix = SH.ReplaceAll(remix, "Ft", "ft", 
-                "Feat", "feat");
+                sess.i18n(XlfKeys.Feat), "feat");
             remix = remix.Trim(AllChars.dot);
             remix = remix.Trim();
 

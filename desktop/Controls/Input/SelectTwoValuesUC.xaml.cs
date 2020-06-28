@@ -37,7 +37,7 @@ namespace desktop.Controls.Input
             cbEntered1.Focus();
         }
 
-        public string Title => "Select two values";
+        public string Title => sess.i18n(XlfKeys.SelectTwoValues);
 
         public event VoidBoolNullable ChangeDialogResult;
 

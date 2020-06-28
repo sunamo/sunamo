@@ -27,11 +27,11 @@ public class ErrorMessageGenerator
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            _vypis.AppendLine(" " + " " + "t\u011Bchto souborech se vyskytly tyto chyby" + ": ");
+            _vypis.AppendLine("  t\u011Bchto souborech se vyskytly tyto chyby: ");
         }
         else
         {
-            _vypis.AppendLine("In these files the following errors occurred" + ": ");
+            _vypis.AppendLine(sess.i18n(XlfKeys.InTheseFilesTheFollowingErrorsOccurred) + ": ");
         }
 
         if (chybneSoubory.Count < i)
@@ -52,7 +52,7 @@ public class ErrorMessageGenerator
         }
         else
         {
-            priChybe = "If you think that this is application error, please send me an email at the address that is listed in the About app";
+            priChybe = sess.i18n(XlfKeys.IfYouThinkThatThisIsApplicationErrorPleaseSendMeAnEmailAtTheAddressThatIsListedInTheAboutApp);
         }
 
         if (y == chybneSoubory.Count)
@@ -82,7 +82,7 @@ public class ErrorMessageGenerator
                     // Žádná chyba
                     break;
                 case FileExceptions.FileNotFound:
-                    return "File not found";
+                    return sess.i18n(XlfKeys.FileNotFound);
                 case FileExceptions.UnauthorizedAccess:
                     return "Program z\u0159ejm\u011B nem\u00E1 p\u0159\u00EDstup k souboru";
                 case FileExceptions.General:
@@ -100,13 +100,13 @@ public class ErrorMessageGenerator
                     // Žádná chyba
                     break;
                 case FileExceptions.FileNotFound:
-                    return "File not found";
+                    return sess.i18n(XlfKeys.FileNotFound);
                 case FileExceptions.UnauthorizedAccess:
-                    return "The program does not have access to the file";
+                    return sess.i18n(XlfKeys.TheProgramDoesNotHaveAccessToTheFile);
                 case FileExceptions.General:
-                    return "Unknown or general error";
+                    return sess.i18n(XlfKeys.UnknownOrGeneralError);
                 default:
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Not implemented case");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NotImplementedCase));
                     return null;
             }
         }

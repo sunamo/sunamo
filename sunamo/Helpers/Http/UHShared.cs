@@ -222,7 +222,7 @@ public partial class UH
     ///// </summary>
     //public static string GetPageNameFromUri(string atr, string host)
     //{
-    //    if (!atr.StartsWith("https://") && !atr.StartsWith("https" + ":" + "//"))
+    //    if (!atr.StartsWith("https://") && !atr.StartsWith("https://"))
     //    {
     //        return GetPageNameFromUri(new Uri("https://" + host + AllStrings.slash + atr.TrimStart(AllChars.slash)));
     //    }
@@ -258,11 +258,11 @@ public partial class UH
     public static bool HasHttpProtocol(string p)
     {
         p = p.ToLower();
-        if (p.StartsWith("http" + ":" + "//"))
+        if (p.StartsWith("http://"))
         {
             return true;
         }
-        if (p.StartsWith("https" + ":" + "//"))
+        if (p.StartsWith("https://"))
         {
             return true;
         }

@@ -112,6 +112,12 @@ public partial class TF
     {
         var content = TF.ReadFile(f).Trim();
         var content2 = transformHtmlToMetro4.Invoke(content);
+
+        if (f == @"d:\Documents\Visual Studio 2017\Projects\sunamo.cz\AppsX\PhotoCs.cs")
+        {
+
+        }
+
         if (String.Compare( content, content2) != 0)
         {
             //TF.SaveFile(content, CompareFilesPaths.GetFile(CompareExt.cs, 1));

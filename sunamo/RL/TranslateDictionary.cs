@@ -25,7 +25,7 @@ public class TranslateDictionary : IDictionary<string, string>
         {
             if (!_d.ContainsKey(key))
             {
-                XlfResourcesH.SaveResouresToRLSunamo();
+                XlfResourcesHSunamo.SaveResouresToRLSunamo();
 
                 //XlfResourcesH.initialized = false;
                 //XlfResourcesH.SaveResouresToRL(basePathSolution);

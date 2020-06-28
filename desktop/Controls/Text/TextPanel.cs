@@ -11,7 +11,7 @@ namespace desktop
 {
     public class TextPanel : StackPanel
     {
-        public FontFamily fontFamily = new FontFamily("Segoe UI");
+        public FontFamily fontFamily = new FontFamily(sess.i18n(XlfKeys.SegoeUI));
         public double fontSize = 12;
         public FontStyle fontStyle = FontStyles.Normal;
         /// <summary>

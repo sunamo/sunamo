@@ -7,67 +7,67 @@ static Type type = typeof(ConvertMonthShortcutFullName);
         switch (shortcut)
         {
             case "Jan":
-                return "January";
+                return XlfKeys.January;
             case "Feb":
-                return "February";
+                return XlfKeys.February;
             case "Mar":
-                return "March";
+                return XlfKeys.March;
             case "Apr":
-                return "April";
+                return XlfKeys.April;
             case "May":
                 return "May";
             case "Jun":
-                return "June";
+                return XlfKeys.June;
             case "Jul":
-                return "July";
+                return XlfKeys.July;
             case "Aug":
-                return "August";
+                return XlfKeys.August;
             case "Sep":
-                return "September";
+                return XlfKeys.September;
             case "Oct":
-                return "October";
+                return XlfKeys.October;
             case "Nov":
-                return "November";
+                return XlfKeys.November;
             case "Dec":
-                return "December";
+                return XlfKeys.December;
             default:
                 break;
         }
-        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce";
         return null;
     }
     public static string ToShortcut(string fullName)
     {
         switch (fullName)
         {
-            case "January":
+            case XlfKeys.January:
                 return "Jan";
-            case "February":
+            case XlfKeys.February:
                 return "Feb";
-            case "March":
+            case XlfKeys.March:
                 return "Mar";
-            case "April":
+            case XlfKeys.April:
                 return "Apr";
             case "May":
                 return "May";
-            case "June":
+            case XlfKeys.June:
                 return "Jun";
-            case "July":
+            case XlfKeys.July:
                 return "Jul";
-            case "August":
+            case XlfKeys.August:
                 return "Aug";
-            case "September":
+            case XlfKeys.September:
                 return "Sep";
-            case "October":
+            case XlfKeys.October:
                 return "Oct";
-            case "November":
+            case XlfKeys.November:
                 return "Nov";
-            case "December":
+            case XlfKeys.December:
                 return "Dec";
             default:
                 break;
         }
-        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce");
+        //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Neznámý název měsíce";
         return null;
     }
 }

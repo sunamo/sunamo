@@ -93,7 +93,7 @@ public static partial class UIElementExtensions{
         }
         else
         {
-            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "Validate", t);
+            ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, sess.i18n(XlfKeys.Validated), t);
         }
 
         return null;

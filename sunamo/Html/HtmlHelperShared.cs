@@ -57,8 +57,8 @@ public static partial class HtmlHelper
 
     public static string ConvertTextToHtml(string p)
     {
-        p = p.Replace(Environment.NewLine, "<br" + " /" + ">");
-        p = p.Replace("\n", "<br" + " /" + ">");
+        p = p.Replace(Environment.NewLine, "<br />");
+        p = p.Replace("\n", "<br />");
         return p;
     }
 
@@ -69,12 +69,12 @@ public static partial class HtmlHelper
 
     public static string ReplaceAllFontCase(string r)
     {
-        string za = "<br" + " /" + ">";
+        string za = "<br />";
         r = r.Replace("<BR />", za);
         r = r.Replace("<bR />", za);
         r = r.Replace("<Br />", za);
 
-        r = r.Replace("<br" + "/" + ">", za);
+        r = r.Replace("<br/>", za);
         r = r.Replace("<BR/>", za);
         r = r.Replace("<bR/>", za);
         r = r.Replace("<Br/>", za);
@@ -88,7 +88,7 @@ public static partial class HtmlHelper
 
     public static string ClearSpaces(string dd)
     {
-        return dd.Replace("&" + "nbsp" + ";", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
+        return dd.Replace("&nbsp;", AllStrings.space).Replace(AllStrings.doubleSpace, AllStrings.space);
     }
 
     private static void RecursiveReturnTagWithAttr(List<HtmlNode> vr, HtmlNode htmlNode, string tag, string attr, string value)
@@ -316,7 +316,7 @@ public static partial class HtmlHelper
     public static string ConvertHtmlToText(string h)
     {
         h = HttpUtility.HtmlDecode(h);
-        h = SH.ReplaceAll(h, Environment.NewLine, "<br>", "<br" + " /" + ">", "<br" + "/" + ">");
+        h = SH.ReplaceAll(h, Environment.NewLine, "<br>", "<br />", "<br/>");
         h = StripAllTags(h);
         return h;
     }

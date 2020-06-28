@@ -56,7 +56,7 @@ using System.Text;
         {
             if (!pridavatPostupne)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Pokousite se upravit PP kdyz mate nastaveno hromadne");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.TryToAdjustThePPIfYouHaveItSetInBulk));
             }
             if (i + 1 != Hodnota.Length)
             {
@@ -66,7 +66,7 @@ using System.Text;
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Dostali jste pres index kolekce");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.YouGotThroughTheCollectionIndex));
             }
         }
     #endregion

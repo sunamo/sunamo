@@ -103,7 +103,7 @@ public class ClipboardHelperWin : IClipboardHelper
 
     public void GetFirstWordOfList()
     {
-        Console.WriteLine("Copy text to clipboard" + ".");
+        Console.WriteLine(sess.i18n(XlfKeys.CopyTextToClipboard) + ".");
         Console.ReadLine();
 
         StringBuilder sb = new StringBuilder();
@@ -150,7 +150,7 @@ public class ClipboardHelperWin : IClipboardHelper
         StringCollection filestToCut = new StringCollection();
         filestToCut.AddRange(selected);
 
-        DataObject data = new DataObject("Preferred DropEffect", dropEffect);
+        DataObject data = new DataObject(sess.i18n(XlfKeys.PreferredDropEffect), dropEffect);
         data.SetFileDropList(filestToCut);
 
         Clipboard.Clear();

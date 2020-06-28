@@ -7,7 +7,7 @@ public partial class CSharpParser{
     static Type type = typeof(CSharpParser);
     //public const string c = "const string";
     public static string c => XmlLocalisationInterchangeFileFormatSunamo.cs;
-    public const string p = "public" + " ";
+    public const string p = "public ";
 
     /// <summary>
     /// Directly save to file

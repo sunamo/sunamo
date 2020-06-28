@@ -233,7 +233,7 @@ namespace desktop.Controls.Collections
 
         public List<MenuItem> MenuItems()
         {
-            MenuItem mi = MenuItemHelper.Get(new ControlInitData { content = "Save to drive", OnClick = SaveToDrive });
+            MenuItem mi = MenuItemHelper.Get(new ControlInitData { content = sess.i18n(XlfKeys.SaveToDrive), OnClick = SaveToDrive });
 
             //MenuItem miSave = MenuItemHelper.Get(new ControlInitData { text = sess.i18n(XlfKeys.Save), OnClick = Save });
             //mi.Items.Add(miSave);

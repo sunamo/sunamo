@@ -14,7 +14,7 @@ using System.Text;
 public partial class Exceptions
 {
     public static bool RaiseIsNotWindowsPathFormat;
-
+    
     //
 
 
@@ -42,7 +42,7 @@ public partial class Exceptions
 
     public static object UseRlc(string before)
     {
-        return CheckBefore(before) + "Don't implement, use methods in rlc";
+        return CheckBefore(before) + sess.i18n(XlfKeys.DonTImplementUseMethodsInRlc);
     }
 
     public static object IsWhitespaceOrNull(string before, string variable, object data)
@@ -81,12 +81,12 @@ public partial class Exceptions
     /// </summary>
     public static string FileHasExtensionNotParseableToImageFormat(string before, string fnOri)
     {
-        return CheckBefore(before) + "File" + " " + fnOri + " " + "has wrong file extension";
+        return CheckBefore(before) + sess.i18n(XlfKeys.File) + " " + fnOri + " has wrong file extension";
     }
 
     public static string WrongCountInList2(int numberOfElementsWithoutPause, int numberOfElementsWithPause, int arrLength)
     {
-        return SH.Format2("Array should have {0} or {1} elements, have {2}", numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
+        return SH.Format2(sess.i18n(XlfKeys.ArrayShouldHave0Or1ElementsHave2), numberOfElementsWithoutPause, numberOfElementsWithPause, arrLength);
     }
 
     public static object IsOdd(string before, string colName, IEnumerable col)
@@ -122,7 +122,7 @@ public partial class Exceptions
         {
             return null;
         }
-        return CheckBefore(before) + " " + "Doesn't exists" + ": " + fulLPath;
+        return CheckBefore(before) + " " + sess.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
     }
 
 
@@ -132,7 +132,7 @@ public partial class Exceptions
         {
             return null;
         }
-        return CheckBefore(before) + " " + "Doesn't exists" + ": " + fulLPath;
+        return CheckBefore(before) + " " + sess.i18n(XlfKeys.DoesnTExists) + ": " + fulLPath;
     }
 
     #region Without parameters
@@ -142,7 +142,7 @@ public partial class Exceptions
     {
         if (count > 1)
         {
-            return CheckBefore(before) + listName + " has " + count + " " + "elements, which is more than" + " 1";
+            return CheckBefore(before) + listName + " has " + count + " elements, which is more than 1";
         }
         return null;
     }
@@ -151,7 +151,7 @@ public partial class Exceptions
     {
         if (string.IsNullOrWhiteSpace(nameFromProperty))
         {
-            return CheckBefore(before) + nameControl + " " + "doesnt have setted Name";
+            return CheckBefore(before) + nameControl + " " + sess.i18n(XlfKeys.doesntHaveSettedName);
         }
         return null;
     }
@@ -160,7 +160,7 @@ public partial class Exceptions
     {
         if (list.Count() == 1)
         {
-            return CheckBefore(before) + colName + " " + "has only one element";
+            return CheckBefore(before) + colName + " has only one element";
         }
         return null;
     }
@@ -180,14 +180,14 @@ public partial class Exceptions
 
         if (foundedUnallowed.Count > 0)
         {
-            return CheckBefore(before) + input + " " + "contains unallowed chars" + ": " + SH.Join(unallowedStrings, AllStrings.space);
+            return CheckBefore(before) + input + " contains unallowed chars: " + SH.Join(unallowedStrings, AllStrings.space);
         }
         return null;
     }
 
     public static string DoesntHaveRequiredType(string before, string variableName)
     {
-        return variableName + "Doesn't have required type" + ".";
+        return variableName + sess.i18n(XlfKeys.DoesnTHaveRequiredType) + ".";
     }
 
     public static string IsNullOrEmpty(string before, string argName, string argValue)
@@ -236,7 +236,7 @@ public partial class Exceptions
 
             if (badFormat)
             {
-                return CheckBefore(before) + " " + argName + " is not in Windows path format";
+                return CheckBefore(before) + " " + argName + " "+sess.i18n(XlfKeys.isNotInWindowsPathFormat);
             }
         }
 
@@ -252,7 +252,7 @@ public partial class Exceptions
         {
             if (r[r.Length - 1] != AllChars.bs)
             {
-                return CheckBefore(before) + "String has not been in path format" + "!";
+                return CheckBefore(before) + sess.i18n(XlfKeys.StringHasNotBeenInPathFormat) + "!";
             }
         }
 
@@ -261,12 +261,12 @@ public partial class Exceptions
 
     public static object IsNotAllowed(string before, string what)
     {
-        return CheckBefore(before) + what + " " + "is not allowed" + ".";
+        return CheckBefore(before) + what + " is not allowed.";
     }
 
     public static string FileWasntFoundInDirectory(string before, string directory, string fileName)
     {
-        return CheckBefore(before) + "File" + " " + fileName + " " + "wasn't found in" + " " + directory;
+        return CheckBefore(before) + sess.i18n(XlfKeys.File) + " " + fileName + " wasn't found in " + directory;
     }
 
     public static string FileWasntFoundInDirectory(string before, string fullPath)
@@ -278,7 +278,7 @@ public partial class Exceptions
 
     public static string NotSupported(string v)
     {
-        return CheckBefore(v) + "Not supported";
+        return CheckBefore(v) + sess.i18n(XlfKeys.NotSupported);
     }
 
 
@@ -286,7 +286,7 @@ public partial class Exceptions
     #region Called from TemplateLoggerBase
     public static string NotEvenNumberOfElements(string before, string nameOfCollection)
     {
-        return CheckBefore(before) + nameOfCollection + " " + "have odd elements count";
+        return CheckBefore(before) + nameOfCollection + " have odd elements count";
     }
     #endregion
 
@@ -294,7 +294,7 @@ public partial class Exceptions
     {
         if (countfc != countsc)
         {
-            return CheckBefore(before) + " " + "Different count elements in collection" + " " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
+            return CheckBefore(before) + " " + sess.i18n(XlfKeys.DifferentCountElementsInCollection) + " " + string.Concat(namefc + AllStrings.swda + countfc) + " vs. " + string.Concat(namesc + AllStrings.swda + countsc);
         }
 
         return null;
@@ -302,7 +302,7 @@ public partial class Exceptions
 
     public static string AnyElementIsNullOrEmpty(string before, string nameOfCollection, List<int> nulled)
     {
-        return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " " + "with null value";
+        return CheckBefore(before) + $"In {nameOfCollection} has indexes " + SH.Join(AllChars.comma, nulled) + " with null value";
     }
 
     
@@ -311,7 +311,7 @@ public partial class Exceptions
     {
         if (variable != null)
         {
-            return CheckBefore(before) + variable + " " + "must be null" + ".";
+            return CheckBefore(before) + variable + " must be null.";
         }
 
         return null;
@@ -319,7 +319,7 @@ public partial class Exceptions
 
     public static string ToManyElementsInCollection(string before, int max, int actual, string nameCollection)
     {
-        return CheckBefore(before) + actual + " " + "elements in" + " " + nameCollection + ", " + "maximum is" + " " + max;
+        return CheckBefore(before) + actual + " elements in " + nameCollection + ", maximum is " + max;
     }
 
     public static string ArrayElementContainsUnallowedStrings(string before, string arrayName, int dex, string valueElement, params string[] unallowedStrings)
@@ -327,7 +327,7 @@ public partial class Exceptions
         List<string> foundedUnallowed = SH.ContainsAny(valueElement, false, unallowedStrings);
         if (foundedUnallowed.Count != 0)
         {
-            return CheckBefore(before) + " " + "Element of" + " " + arrayName + " " + "with value" + " " + valueElement + " " + "contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
+            return CheckBefore(before) + " " + sess.i18n(XlfKeys.ElementOf) + " " + arrayName + " with value " + valueElement + " contains unallowed string(" + foundedUnallowed.Count + "): " + SH.Join(AllChars.comma, unallowedStrings);
         }
 
         return null;
@@ -337,7 +337,7 @@ public partial class Exceptions
     {
         if (keysHandler == null)
         {
-            return CheckBefore(before) + name + " " + "was not IKeysHandler";
+            return CheckBefore(before) + name + " " + sess.i18n(XlfKeys.wasNotIKeysHandler);
         }
         return null;
     }
@@ -346,7 +346,7 @@ public partial class Exceptions
 
     public static object FolderCantBeRemoved(string v, string folder)
     {
-        return CheckBefore(v) + "Can't delete folder" + ": " + folder;
+        return CheckBefore(v) + sess.i18n(XlfKeys.CanTDeleteFolder) + ": " + folder;
     }
 
     /// <summary>
@@ -360,7 +360,7 @@ public partial class Exceptions
     {
         if (before2 == after)
         {
-            return CheckBefore(before) + "Element wasnt removed during" + ": " + detailLocation;
+            return CheckBefore(before) + sess.i18n(XlfKeys.ElementWasntRemovedDuring) + ": " + detailLocation;
         }
         return null;
     }
@@ -371,7 +371,7 @@ public partial class Exceptions
     {
         if (folders.Count() == 0)
         {
-            return CheckBefore(before) + "No passed folder into";
+            return CheckBefore(before) + sess.i18n(XlfKeys.NoPassedFolderInto);
         }
         return null;
     }
@@ -389,7 +389,7 @@ public partial class Exceptions
     {
         if (!FS.ExistsDirectory(directory))
         {
-            return CheckBefore(before) + "Directory" + " " + directory + " " + "wasn't found" + ".";
+            return CheckBefore(before) + sess.i18n(XlfKeys.Directory) + " " + directory + " wasn't found.";
         }
 
         return null;
@@ -411,7 +411,7 @@ public partial class Exceptions
     {
         if (valueVar != WebUtility.UrlDecode(valueVar))
         {
-            return CheckBefore(before) + valueVar + " " + "is url encoded" + " " + nameVar;
+            return CheckBefore(before) + valueVar + " is url encoded " + nameVar;
         }
 
         return null;
@@ -419,12 +419,12 @@ public partial class Exceptions
 
     public static string ElementCantBeFound(string before, string nameCollection, string element)
     {
-        return CheckBefore(before) + element + "cannot be found in" + " " + nameCollection;
+        return CheckBefore(before) + element + "cannot be found in " + nameCollection;
     }
 
     public static string MoreCandidates(string before, List<string> list, string item)
     {
-        return CheckBefore(before) + "Under" + " " + item + " " + "is more candidates" + ": " + Environment.NewLine + SH.JoinNL(list);
+        return CheckBefore(before) + sess.i18n(XlfKeys.Under) + " " + item + " is more candidates: " + Environment.NewLine + SH.JoinNL(list);
     }
 
    

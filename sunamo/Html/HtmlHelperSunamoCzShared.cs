@@ -6,7 +6,7 @@ public static string ConvertTextToHtmlWithAnchors(string p)
         var d = SH.SplitAndKeepDelimiters(p, CA.ToList<char>( AllChars.space, AllChars.lt, AllChars.gt));
         for (int i = 0; i < d.Length(); i++)
         {
-            if (d[i].StartsWith("https://") || d[i].StartsWith("https" + ":" + "//"))
+            if (d[i].StartsWith("https://") || d[i].StartsWith("https://"))
             {
                 var res = d[i];
                  res = HtmlGenerator2.AnchorWithHttp(res);

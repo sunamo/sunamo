@@ -19,7 +19,7 @@ namespace sunamo
         {
             if (zmenaO == 0)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Parameter zmenaO of method ColumnSizeHelper.CalculateWidthOfColumnsAgain() has value" + " " + "");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.ParameterZmenaOOfMethodColumnSizeHelperCalculateWidthOfColumnsAgainHasValue) + " ");
             }
 
             zmenaO /= d.Count;

@@ -22,7 +22,7 @@ public class StringPaddingData
     /// </summary>
     public char lastChar = 'a';
 
-    #region for cases like "xxx" + ": "
+    #region for cases like "xxx: "
     /// <summary>
     /// [1]
     /// </summary>

@@ -16,7 +16,7 @@ namespace SimpleThreadPool
             this._workers = new List<Thread>();
             for (var i = 0; i < size; ++i)
             {
-                var worker = new Thread(this.Worker) { Name = string.Concat("Worker" + " ", i) };
+                var worker = new Thread(this.Worker) { Name = string.Concat(sess.i18n(XlfKeys.Worker) + " ", i) };
                 worker.Start();
                 this._workers.Add(worker);
             }
@@ -59,8 +59,8 @@ namespace SimpleThreadPool
         {
             lock (this._tasks)
             {
-                if (this._disallowAdd) { ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"This Pool instance is in the process of being disposed, can't add anymore"); }
-                if (this._disposed) { ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"This Pool instance has already been disposed"); }
+                if (this._disallowAdd) { ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.ThisPoolInstanceIsInTheProcessOfBeingDisposedCanTAddAnymore)); }
+                if (this._disposed) { ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.ThisPoolInstanceHasAlreadyBeenDisposed)); }
                 this._tasks.AddLast(task);
                 Monitor.PulseAll(this._tasks); // pulse because tasks count changed
             }

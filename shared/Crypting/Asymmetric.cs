@@ -33,8 +33,8 @@ namespace shared.Crypting
         private int _KeySize = 1024;
         #region Nazvy elementu pro ukladani do XML
         private const string _ElementParent = "RSAKeyValue";
-        private const string _ElementModulus = "Modulus";
-        private const string _ElementExponent = "Exponent";
+        private const string _ElementModulus = XlfKeys.Modulus;
+        private const string _ElementExponent = XlfKeys.Exponent;
         private const string _ElementPrimeP = "P";
         private const string _ElementPrimeQ = "Q";
         private const string _ElementPrimeExponentP = "DP";
@@ -57,7 +57,7 @@ namespace shared.Crypting
         private const string _KeyPrivateExponent = "PrivateKey.D";
         #endregion
 
-        #region "  " + "PublicKey class"
+        #region "  " + sess.i18n(XlfKeys.PublicKeyClass)
         /// <summary>
         /// Represents a public encryption key. Intended to be shared, it 
         /// contains only the Modulus and Exponent.
@@ -125,8 +125,8 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
-                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
-                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
+                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, sess.i18n(XlfKeys.Modulus));
+                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, sess.i18n(XlfKeys.Exponent));
             }
 
             /// <summary>
@@ -172,7 +172,7 @@ namespace shared.Crypting
         }
         #endregion
 
-        #region "  " + "PrivateKey class"
+        #region "  " + sess.i18n(XlfKeys.PrivateKeyClass)
 
         /// <summary>
         /// Represents a private encryption key. Not intended to be shared, as it 
@@ -278,8 +278,8 @@ namespace shared.Crypting
             /// </summary>
             public void LoadFromXml(string keyXml)
             {
-                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
-                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
+                this.Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, sess.i18n(XlfKeys.Modulus));
+                this.Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, sess.i18n(XlfKeys.Exponent));
                 this.PrimeP = UtilsNonNetStandard.GetXmlElement(keyXml, "P");
                 this.PrimeQ = UtilsNonNetStandard.GetXmlElement(keyXml, "Q");
                 this.PrimeExponentP = UtilsNonNetStandard.GetXmlElement(keyXml, "DP");
@@ -324,7 +324,7 @@ namespace shared.Crypting
 
             public static string FromFile(string p)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The method or operation is not implemented" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.TheMethodOrOperationIsNotImplemented) + ".");
                 return null;
             }
         }
@@ -501,7 +501,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("bad length") > -1)
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Your data is too large; RSA encryption is designed to encrypt relatively small amounts of data. The exact byte limit depends on the key size. To encrypt more data, use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption" + ".");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.YourDataIsTooLargeRSAEncryptionIsDesignedToEncryptRelativelySmallAmountsOfDataTheExactByteLimitDependsOnTheKeySizeToEncryptMoreDataUseSymmetricEncryptionAndThenEncryptThatSymmetricKeyWithAsymmetricRSAEncryption) + ".");
                 }
                 else
                 {
@@ -568,7 +568,7 @@ namespace shared.Crypting
                 {
                     s = "public";
                 }
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2("The provided {0} encryption key XML does not appear to be valid.", s));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),SH.Format2(sess.i18n(XlfKeys.TheProvided0EncryptionKeyXMLDoesNotAppearToBeValid)+".", s));
                 
             }
         }
@@ -610,7 +610,7 @@ namespace shared.Crypting
             {
                 if (ex.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unable to obtain Cryptographic Service Provider" + ". " + "Either the permissions are incorrect on the" + " " + "'c:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' " + "folder, or the current security context" + " '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'" + " " + "does not have access to this folder" + ".");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.UnableToObtainCryptographicServiceProvider) + ". " + sess.i18n(XlfKeys.EitherThePermissionsAreIncorrectOnThe) + " 'c:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' folder, or the current security context '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "' does not have access to this folder.");
                 }
                 else
                 {

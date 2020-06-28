@@ -19,6 +19,7 @@ public partial class PH
         }
         catch (Exception ex)
         {
+            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
         }
     }
 
@@ -42,7 +43,7 @@ public static void Uri(string v)
         }
         else
         {
-            //////////DebugLogger.Instance.WriteLine("Wasnt in right format" + ": " + v);
+            //////////DebugLogger.Instance.WriteLine("Wasnt in right format: " + v);
         }
     }
 

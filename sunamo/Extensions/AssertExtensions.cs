@@ -12,7 +12,7 @@ public class AssertExtensions
     {
         if (a.Count != b.Count)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Count in a and b is not equal");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.CountInAAndBIsNotEqual));
         }
 
         for (int i = 0; i < a.Count; i++)

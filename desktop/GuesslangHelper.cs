@@ -17,7 +17,7 @@ public class GuesslangHelper
     public static string DetectLanguage(string s)
     {
         var d = "echo \"" + s.Replace("\"", "'") +  "\" | guesslang";
-        const string SourceCode = "The source code is written in";
+         string SourceCode = sess.i18n(XlfKeys.TheSourceCodeIsWrittenIn);
 
         var result = PowershellRunner.Invoke(CA.ToEnumerable(d));
         foreach (var item in result[0])

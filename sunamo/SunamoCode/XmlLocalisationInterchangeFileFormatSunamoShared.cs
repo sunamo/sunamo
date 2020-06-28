@@ -29,8 +29,8 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     /// </summary>
     public const string RLDataEn = "RLData.en[";
     public const string RLDataEn2 = "RLDataEn[";
-    public const string SessI18n = "sess.i18n(";
-    public const string XlfKeysDot = "XlfKeys.";
+    public const string SessI18n = SunamoNotTranslateAble.SessI18n;
+    public const string XlfKeysDot = SunamoNotTranslateAble.XlfKeysDot;
 
     public static List<string> removeSessI18nIfLineContains = CA.ToList<string>("MSStoredProceduresI");
 

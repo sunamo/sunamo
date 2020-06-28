@@ -47,7 +47,7 @@ namespace sunamo.Helpers
                 buffer = Encoding.UTF8.GetBytes(SH.Format2("Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"{2}", file.Name, file.Filename, Environment.NewLine));
                 requestStream.Write(buffer, 0, buffer.Length);
 
-                buffer = Encoding.ASCII.GetBytes(SH.Format2("Content-Type: {0}{1}{1}", file.ContentType, Environment.NewLine));
+                buffer = Encoding.ASCII.GetBytes(SH.Format2(sess.i18n(XlfKeys.ContentType011), file.ContentType, Environment.NewLine));
                 requestStream.Write(buffer, 0, buffer.Length);
 
                 file.Stream.CopyTo(requestStream);

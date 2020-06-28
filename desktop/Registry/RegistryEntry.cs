@@ -96,7 +96,7 @@ using System.IO;
             {
                 if (throwExceptionIfNotGettingValues)
                 {
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Failed to get the item from the registry" + ".");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.FailedToGetTheItemFromTheRegistry) + ".");
                 }
             }
         }

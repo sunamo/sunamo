@@ -406,4 +406,22 @@ public static partial class CSharpHelper
         }
         return sb.ToString();
     }
+
+    public static string LineWithClass(List<string> l, bool mustDerive)
+    {
+        foreach (var item in l)
+        {
+            if (item.Contains("class "))
+            {
+                if (mustDerive)
+                {
+                    if (item.Contains(AllStrings.colon))
+                    {
+                        return item;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

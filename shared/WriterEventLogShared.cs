@@ -9,7 +9,7 @@ using sunamo.Essential;
 
 public static partial class WriterEventLog{
     static EventLog mainEventLogOfApplication = null;
-    public const string ApplicationLogName = "Application";
+    public const string ApplicationLogName = XlfKeys.Application;
     static EventLog eventLogWindowsApplication = null;
     static string scz = "sunamo.cz";
 
@@ -133,7 +133,7 @@ public static bool CreateMainAppLogScz()
             return false;
         }
         bool b = CreateMainAppLog(scz);
-        WriteToMainAppLogScz("Template", EventLogEntryType.Information);
+        WriteToMainAppLogScz(sess.i18n(XlfKeys.Template), EventLogEntryType.Information);
         return b;
     }
 }

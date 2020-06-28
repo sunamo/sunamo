@@ -15,10 +15,10 @@ public partial class UtilsNonNetStandard
     public static string GetXmlElement(string xml, string element)
     {
         Match m = null;
-        m = Regex.Match(xml, AllStrings.lt + element + ">(?<Element>[^>]*)<" + "/" + element + AllStrings.gt, RegexOptions.IgnoreCase);
+        m = Regex.Match(xml, AllStrings.lt + element + ">(?<Element>[^>]*)</" + element + AllStrings.gt, RegexOptions.IgnoreCase);
         if (m == null)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Could not find" + " " + "" + element + "></" + element + " " + " " + "in provided Public Key XML" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.CouldNotFind) + " " + element + "></" + element + "  " + sess.i18n(XlfKeys.inProvidedPublicKeyXML) + ".");
         }
 
         return m.Groups["Element"].ToString();
@@ -35,7 +35,7 @@ public partial class UtilsNonNetStandard
         {
             if (isRequired)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"key " + "" + key + " " + " " + "is missing from .config file");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"key " + key + "  is missing from .config file");
                 return string.Empty;
             }
             else

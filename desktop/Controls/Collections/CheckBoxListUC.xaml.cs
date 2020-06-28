@@ -547,7 +547,7 @@ Here its is not possible with set up visibility
 
     public class CheckBoxListOperations
     {
-        public const string Check = "Check";
+        public const string Check = XlfKeys.Check;
         public const string UnCheck = "UnCheck";
     }
 }

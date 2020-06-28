@@ -84,7 +84,7 @@ public class ColorH
                 b += 127;
                 break;
             default:
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Not implemented case in ColorHelperApps.RandomBrush");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.NotImplementedCaseInColorHelperAppsRandomBrush));
                 return Brushes.Black;
         }
         return new SolidColorBrush(GetOpaqueColor(r, g, b));

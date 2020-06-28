@@ -66,7 +66,7 @@ public partial class RL
     /// <param name="cs"></param>
     public static string GetStringByLang(string v, Langs cs)
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(),type, "GetStringByLang", "In desktop app dont pass Langs");
+        ThrowExceptions.Custom(Exc.GetStackTrace(),type, "GetStringByLang", sess.i18n(XlfKeys.InDesktopAppDontPassLangs));
         //if (l == Langs.en)
         //{
         //    return sess.i18n(k];

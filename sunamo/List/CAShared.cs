@@ -1306,7 +1306,7 @@ public static partial class CA
     {
         if (p < 0)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Chybn\u00FD parametr" + " " + "p");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Chybn\u00FD parametr p");
         }
         if (nahledy.Count() > p)
         {
@@ -1409,11 +1409,11 @@ public static partial class CA
     }
 
     /// <summary>
-    /// ContainsAnyFromElement - Contains string elements of list
+    /// ContainsAnyFromElement - return string elements of list which is contained
     /// IsEqualToAnyElement - same as ContainsElement, only have switched elements
     /// ContainsElement - at least one element must be equaled. generic
     /// IsSomethingTheSame - only for string. 
-    /// ContainsElement - 
+    /// ContainsElement - bool, generic, check for equal.
     /// </summary>
     /// <param name="s"></param>
     /// <param name="list"></param>
@@ -1430,11 +1430,25 @@ public static partial class CA
             {
                 result.Add(i);
             }
-
             i++;
         }
 
         return result;
+    }
+
+    public static bool ContainsAnyFromElementBool(string s, IEnumerable<string> list)
+    {
+        List<int> result = new List<int>();
+
+        foreach (var item in list)
+        {
+            if (s.Contains(item))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static List<int> StartWithAnyInElement(string s, List<string> list, bool _trimBefore)
@@ -1985,7 +1999,7 @@ public static bool HasPostfix(string key, params string[] v1)
     /// <param name="input"></param>
     private static void Prepend(List<string> numbered, List<string> input)
     {
-        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, "Prepend", "numbered", numbered.Count(), "input", input.Count);
+        ThrowExceptions.DifferentCountInLists(Exc.GetStackTrace(),type, sess.i18n(XlfKeys.Prepend), "numbered", numbered.Count(), "input", input.Count);
         for (int i = 0; i < input.Count; i++)
         {
             input[i] = numbered[i] + input[i];

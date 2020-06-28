@@ -28,7 +28,7 @@ namespace win.Helpers.Powershell
             await PowershellRunner.InvokeAsync(ps.ToList());
         }
 
-    const string lang = "language" + ":";
+    const string lang = "language:";
 
     public static string DetectLanguageForFileGithubLinguist(string windowsPath)
     {
@@ -37,7 +37,7 @@ namespace win.Helpers.Powershell
 
         // With WSL or WSL 2 not working. In both cases Powershell returns right values but in c# everything empty. Asked on StackOverflow
         StringBuilder linuxPath = new StringBuilder();
-        linuxPath.Append("/" + "mnt" + "/");
+        linuxPath.Append("/mnt/");
         linuxPath.Append(windowsPath[0].ToString().ToLower());
         var parts = SH.Split(windowsPath, AllStrings.bs);
         for (int i = 1; i < parts.Count; i++)

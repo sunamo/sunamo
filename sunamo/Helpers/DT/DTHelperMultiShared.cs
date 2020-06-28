@@ -19,11 +19,11 @@ public partial class DTHelperMulti
         {
             if (l == Langs.cs)
             {
-                return "Nebylo uvedeno";
+                return sess.i18n(XlfKeys.ItWasNotMentioned);
             }
             else
             {
-                return "Not indicated";
+                return sess.i18n(XlfKeys.NotIndicated);
             }
         }
 

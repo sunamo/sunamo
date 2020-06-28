@@ -1,4 +1,4 @@
-using sunamo;
+﻿using sunamo;
 using sunamo.Collections;
 using sunamo.Constants;
 using sunamo.Delegates;
@@ -295,8 +295,8 @@ public static partial class SH
                                     var ls = d[index];
                                     if (d1)
                                     {
-                                        var bC = SH.OccurencesOfStringIn(before, "Tento odstavec má vice než 500 znaků.");
-                                        var aC = SH.OccurencesOfStringIn(after, "Tento odstavec má vice než 500 znaků.");
+                                        var bC = SH.OccurencesOfStringIn(before, sess.i18n(XlfKeys.ThisParagraphIsLongerThan500Characters)+".");
+                                        var aC = SH.OccurencesOfStringIn(after, sess.i18n(XlfKeys.ThisParagraphIsLongerThan500Characters)+".");
                                         ////DebugLogger.Instance.WriteLine("bC", bC);
                                         ////DebugLogger.Instance.WriteLine("aC", aC);
                                     }
@@ -443,6 +443,7 @@ public static partial class SH
         }
         return false;
     }
+
     /// <summary>
     /// A2 is use to calculate length of center
     /// </summary>
@@ -469,6 +470,7 @@ public static partial class SH
         }
         return sb.ToString();
     }
+
     /// <summary>
     /// Return index, therefore x-1
     /// </summary>
@@ -495,7 +497,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, item + " " + "hasn't from");
+                ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, item + " hasn't from");
             }
             if (p.Length() > 1)
             {
@@ -503,7 +505,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, item + " " + "hasn't to");
+                ThrowExceptions.Custom(Exc.GetStackTrace(),type, methodName, item + " hasn't to");
             }
             if (SH.IsWildcard(item))
             {
@@ -650,7 +652,7 @@ public static partial class SH
         {
             if (zaCo.Contains(item))
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nahrazovan\u00FD prvek" + " " + item + " " + "je prvkem j\u00EDm\u017E se nahrazuje" + " " + "" + " " + zaCo + AllStrings.dot);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nahrazovan\u00FD prvek " + item + " je prvkem j\u00EDm\u017E se nahrazuje  " + zaCo + AllStrings.dot);
             }
         }
         for (int i = 0; i < co.Length; i++)
@@ -887,7 +889,7 @@ public static partial class SH
         {
             if (typeDynamics.Count != tfd.Count)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Mismatch count in input arrays of SH.AllHaveRightFormat()");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.MismatchCountInInputArraysOfSHAllHaveRightFormat));
             }
         }
         int lowerCount = Math.Min(typeDynamics.Count, tfd.Count);
@@ -1536,7 +1538,7 @@ public static partial class SH
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"No delimiter determined");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NoDelimiterDetermined));
             }
         }
         if (deli.Length == 1 && !SH.IsUnicodeChar(UnicodeChars.Generic, deli[0]))
@@ -1743,7 +1745,7 @@ public static partial class SH
         {
             if (throwExcWhenInvalidIndex)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Chybn\u00FD parametr" + " " + "");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Chybn\u00FD parametr ");
             }
             else
             {

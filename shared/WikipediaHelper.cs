@@ -14,12 +14,12 @@ public class WikipediaHelper
         var c = string.Empty;
         //c = TF.ReadFile(@"d:\_Test\sunamo\shared\WikipediaHelper\ParseTable.html");
 
-        var tables = WikipediaHelper.ParseTable(c, "Character", "Names");
+        var tables = WikipediaHelper.ParseTable(c, sess.i18n(XlfKeys.Character), sess.i18n(XlfKeys.Names));
 
         var table = tables.First();
 
-        List<string> chars = table.ColumnValues("Character", true, false);
-        List<string> names = table.ColumnValues("Names", true, true);
+        List<string> chars = table.ColumnValues(sess.i18n(XlfKeys.Character), true, false);
+        List<string> names = table.ColumnValues(sess.i18n(XlfKeys.Names), true, true);
 
         return CSharpHelperGetDictionaryValuesFromTwoList(names, chars);
     }

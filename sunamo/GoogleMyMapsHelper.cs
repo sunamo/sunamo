@@ -11,7 +11,7 @@ namespace sunamo
         {
             StringBuilder sb = new StringBuilder();
 
-            var captions = CA.ToListString("Name", "Address");
+            var captions = CA.ToListString("Name", sess.i18n(XlfKeys.Address));
             CA.JoinForGoogleSheetRow(sb, captions);
 
             List<List<string>> exists = new List<List<string>>();

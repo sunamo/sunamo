@@ -88,7 +88,7 @@ public static void CreateBitmapFromVisual(object o, RoutedEventArgs e)
                 fn = WpfApp.mp.actual.GetType().Name;
                 SaveScreenshot(target, fn);
 
-                var modeType = target.GetType().Assembly.GetTypes().Where(d => d.Name == "Mode").Single();
+                var modeType = target.GetType().Assembly.GetTypes().Where(d => d.Name == sess.i18n(XlfKeys.Mode)).Single();
                 var names = Enum.GetNames(modeType);
                 var names_ctor = Enum.GetNames(typeof(MainWindow_Ctor.Mode));
 

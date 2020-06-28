@@ -700,7 +700,7 @@ public static partial class CA
             }
             return vr;
         }
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.InvalidRowIndexInMethodCAGetRowOfTwoDimensionalArray) + ";");
         return null;
     }
     /// <summary>
@@ -772,7 +772,7 @@ public static partial class CA
             }
             return vr;
         }
-        ThrowExceptions.ArgumentOutOfRangeException(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Invalid row index in method CA.GetRowOfTwoDimensionalArray()" + ";");
+        ThrowExceptions.ArgumentOutOfRangeException(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.InvalidRowIndexInMethodCAGetRowOfTwoDimensionalArray) + ";");
         return null;
     }
     /// <summary>

@@ -33,7 +33,7 @@ namespace sunamo.Xml
         {
             vstup = vstup.Replace("&rsquo;", "'");//
 
-            vstup = vstup.Replace("&" + "lsquo" + ";", "'"); //¢
+            vstup = vstup.Replace("&lsquo;", "'"); //¢
             return vstup;
         }
 
@@ -44,7 +44,7 @@ namespace sunamo.Xml
         public static string ReplaceAmpInString(string xml)
         {
             Regex badAmpersand = new Regex("&(?![a-zA-Z]{2,6};|#[0-9]{2,4};)");
-            const string goodAmpersand = "&" + "amp" + ";";
+            const string goodAmpersand = "&amp;";
             return badAmpersand.Replace(xml, goodAmpersand);
         }
 
@@ -91,7 +91,7 @@ namespace sunamo.Xml
         {
             if (xml == null)
             {
-                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Atributte xml is null");
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.AtributteXmlIsNull));
             }
             //xml = xml.Replace("&", " and ");
             StringBuilder buffer = new StringBuilder(xml.Length);

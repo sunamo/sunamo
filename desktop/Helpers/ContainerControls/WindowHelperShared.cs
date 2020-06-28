@@ -35,7 +35,7 @@ public partial class WindowHelper{
         windowOpener = Application.Current.MainWindow as IWindowOpener;
         if (windowOpener == null)
         {
-            MessageBox.Show("MainWindow must be IWindowOpener due to show exceptions");
+            MessageBox.Show(sess.i18n(XlfKeys.MainWindowMustBeIWindowOpenerDueToShowExceptions));
         }
         else
         {

@@ -1,4 +1,4 @@
-using ConfigurableWindow.Shared;
+﻿using ConfigurableWindow.Shared;
 using desktop.AwesomeFont;
 using desktop.UserControls;
 using sunamo;
@@ -78,7 +78,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             {
                 SetCancelClosing(false);
             
-                MessageBox.Show("Please use app in tray");
+                MessageBox.Show(sess.i18n(XlfKeys.PleaseUseAppInTray));
                 
                 Close();
             }
@@ -140,7 +140,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
             if (PH.IsAlreadyRunning(ThisApp.Name))
             {
                 SetCancelClosing(false);
-                //MessageBox.Show("Please use app in tray");
+                //MessageBox.Show(sess.i18n(XlfKeys.PleaseUseAppInTray));
                 Close();
             }
 #endif
@@ -194,9 +194,9 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
 
         #region 9) Set up UI of app
-        Icon = EmbeddedResourcesHShared.ciShared.GetAppIcon("" + ".ico");
+        Icon = EmbeddedResourcesHShared.ciShared.GetAppIcon(".ico");
 
-        miGenerateScreenshot.Header = "Generate screenshot"; 
+        miGenerateScreenshot.Header = sess.i18n(XlfKeys.GenerateScreenshot); 
         miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {
             miGenerateScreenshot.Visibility = Visibility.Collapsed;

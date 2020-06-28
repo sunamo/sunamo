@@ -25,7 +25,12 @@ public class XmlLocalisationInterchangeFileFormatXlf
         {
             parts = SH.Split(s, AllChars.dot, AllChars.dash);
         }
-        string beforeLast = parts[parts.Count - 2].ToLower();
+        int sub = 2;
+        if (s.Contains("min"))
+        {
+            sub++;
+        }
+        string beforeLast = parts[parts.Count - sub].ToLower();
         if (beforeLast.StartsWith("cs"))
         {
             return Langs.cs;

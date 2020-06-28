@@ -34,11 +34,11 @@ namespace desktop.Controls.Controls
                     break;
                 case TwoState.AddRemove:
                     rb1.Content = "Add";
-                    rb2.Content = "Remove";
+                    rb2.Content = sess.i18n(XlfKeys.Remove);
                     break;
                 case TwoState.AcceptDecline:
-                    rb1.Content = "Accept";
-                    rb2.Content = "Decline";
+                    rb1.Content = sess.i18n(XlfKeys.Accept);
+                    rb2.Content = sess.i18n(XlfKeys.Decline);
                     break;
                 default:
                     break;

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("desktop")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright(XlfKeys.Copyright2015)]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

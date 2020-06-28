@@ -68,7 +68,7 @@ static public partial class FileUtil{
         List<Process> processes = new List<Process>();
         int res = RmStartSession(out handle, 0, key);
         if (res != 0)
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Could not begin restart session.  Unable to determine file locker.");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CouldNotBeginRestartSessionUnableToDetermineFileLocker)+".");
         try
         {
             const int ERROR_MORE_DATA = 234;
@@ -76,7 +76,7 @@ static public partial class FileUtil{
             string[] resources = new string[]{path}; // Just checking on one resource.
             res = RmRegisterResources(handle, (uint)resources.Length, resources, 0, null, 0, null);
             if (res != 0)
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Could not register resource.");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CouldNotRegisterResource)+".");
             //Note: there's a race condition here -- the first call to RmGetList() returns
             //      the total number of process. However, when we call RmGetList() again to get
             //      the actual processes this number may have increased.
@@ -106,10 +106,10 @@ static public partial class FileUtil{
                     }
                 }
                 else
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Could not list processes locking resource.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CouldNotListProcessesLockingResource)+".");
             }
             else if (res != 0)
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Could not list processes locking resource. Failed to get size of result.");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.CouldNotListProcessesLockingResourceFailedToGetSizeOfResult)+".");
         }
         finally
         {

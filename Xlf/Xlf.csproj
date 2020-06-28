@@ -64,13 +64,13 @@
     <Compile Include="sunamo\XmlLocalisationInterchangeFileFormatXlf.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
-      <Project>{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}</Project>
-      <Name>SunamoExceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSec\WinSec.csproj">
+    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSec.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
+      <Name>SunamoExceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{3204432d-b6e7-4481-beb0-8b177af809c2}</Project>

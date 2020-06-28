@@ -119,7 +119,7 @@ static Type type = typeof(InputTwoColumnsUC);
                 }
             }
         }
-        public string Title => "Input two columns";
+        public string Title => sess.i18n(XlfKeys.InputTwoColumns);
         public event VoidBoolNullable ChangeDialogResult;
         /// <summary>
         /// A1 must be ABT<string, string>

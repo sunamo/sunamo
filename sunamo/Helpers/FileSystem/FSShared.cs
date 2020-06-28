@@ -1,4 +1,4 @@
-using sunamo.Constants;
+﻿using sunamo.Constants;
 using sunamo.Data;
 using sunamo.Enums;
 using sunamo.Essential;
@@ -279,10 +279,10 @@ public partial class FS
     {
         // Not working, flags from GeoCachingTool wasnt transfered to standard
 #if NETFX_CORE
-        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), " - use methods in FSApps");
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), "  "+-sess.i18n(XlfKeys.UseMethodsInFSApps));
 #endif
 #if WINDOWS_UWP
-        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), " - use methods in FSApps");
+        ThrowExceptions.IsNotAvailableInUwpWindowsStore(type, Exc.CallingMethod(), "  "+-sess.i18n(XlfKeys.UseMethodsInFSApps));
 #endif
 
 
@@ -345,7 +345,7 @@ public partial class FS
 
     private static void ThrowNotImplementedUwp()
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"NI uwp - see method for stacktrace");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NIUwpSeeMethodForStacktrace));
     }
 
     /// <summary>
@@ -1567,7 +1567,7 @@ public partial class FS
         }
         catch (Exception ex)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"GetFiles with path: " + folder);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.GetFilesWithPath)+": " + folder);
         }
 
         dirs.Insert(0, folder);
@@ -1947,7 +1947,7 @@ public static bool TryDeleteDirectory(string v)
         }
         catch
         {
-            ThisApp.SetStatus(TypeOfMessage.Error, "File can't be deleted" + ": " + item);
+            ThisApp.SetStatus(TypeOfMessage.Error, sess.i18n(XlfKeys.FileCanTBeDeleted) + ": " + item);
             return false;
         }
     }

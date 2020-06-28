@@ -77,7 +77,7 @@ namespace sunamo.Helpers
             }
             else
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Non supported http method in HttpMethod.GetResponseText");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.NonSupportedHttpMethodInHttpMethodGetResponseText));
             }
             //HttpResponseMessage response = responseTask.Result;
             return response;

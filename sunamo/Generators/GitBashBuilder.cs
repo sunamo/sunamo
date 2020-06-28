@@ -123,7 +123,7 @@ namespace sunamo.Generators
                 tlb.Information("Is sunamo.cz");
                 pathSearchForFiles += AllStrings.bs + solution;
             }
-            tlb.Information("Path" + ": " + pathSearchForFiles);
+            tlb.Information(sess.i18n(XlfKeys.Path) + ": " + pathSearchForFiles);
 
             FS.WithEndSlash(ref pathRepository);
 
@@ -282,13 +282,13 @@ namespace sunamo.Generators
         #region Git commands
         public void Clone(string repoUri)
         {
-            Git("clone" + " " + repoUri);
+            Git("clone " + repoUri);
             AppendLine();
         }
 
         public void Commit(bool addAllUntrackedFiles, string commitMessage)
         {
-            Git("commit" + " ");
+            Git("commit ");
             if (addAllUntrackedFiles)
             {
                 Append("-a");
@@ -389,7 +389,7 @@ namespace sunamo.Generators
 
         public void Merge(string v)
         {
-            Git("merge" + " " + v);
+            Git("merge " + v);
             AppendLine();
         }
     }

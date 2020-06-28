@@ -49,7 +49,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         }
         else
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Not supported strategy of saving files" + ".");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), sess.i18n(XlfKeys.NotSupportedStrategyOfSavingFiles) + ".");
         }
         mask += AllStrings.asterisk + ext;
         var files2 = FS.GetFilesInterop(_folder, mask, false, ac);
@@ -156,7 +156,7 @@ static Type type = typeof(DateTimeFileIndex<StorageFolder,StorageFile>);
         }
         catch (Exception ex)
         {
-            ThisApp.SetStatus(TypeOfMessage.Error, sess.i18n("FileCannotBeDeleted"));
+            ThisApp.SetStatus(TypeOfMessage.Error, sess.i18n(XlfKeys.FileCannotBeDeleted));
         }
     }
     public string GetStorageFile(FileNameWithDateTime<StorageFolder, StorageFile> o)

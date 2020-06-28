@@ -70,7 +70,7 @@ namespace sunamo.Collections
         {
             if (!columns && !rows)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Both column and row arguments in UniqueTableInWhole.IsUniqueAsRowOrColumn() was false" + ".");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.BothColumnAndRowArgumentsInUniqueTableInWholeIsUniqueAsRowOrColumnWasFalse) + ".");
             }
 
             int rowsCount = _rows.GetLength(0);
@@ -106,7 +106,7 @@ namespace sunamo.Collections
         {
             if (c.Count != _cells)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Different count input elements of array in UniqueTableInWhole.AddCells");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.DifferentCountInputElementsOfArrayInUniqueTableInWholeAddCells));
             }
 
             for (int i = 0; i < c.Count; i++)

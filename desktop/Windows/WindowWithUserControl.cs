@@ -107,7 +107,7 @@ public class WindowWithUserControl : Window, IControlWithResult, IUserControlWit
         dock.Children.Add(menu);
 
 
-        var tb = TextBlockHelper.Get(new ControlInitData { text = "Enter for fast closing" });
+        var tb = TextBlockHelper.Get(new ControlInitData { text = sess.i18n(XlfKeys.EnterForFastClosing) });
         DockPanel.SetDock(tb, Dock.Top);
         dock.Children.Add(tb);
 

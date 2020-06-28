@@ -98,7 +98,7 @@ public class RH
     {
         if (!typeof(T).IsSerializable)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The type must be serializable" + ". source");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.TheTypeMustBeSerializable) + ". source");
         }
 
         // Don't serialize a null object, simply return the default for that object
@@ -387,11 +387,26 @@ public class RH
     /// Return FieldInfo, so will be useful extract Name etc. 
     /// </summary>
     /// <param name="type"></param>
-    public static List<FieldInfo> GetConsts(Type type)
+    public static List<FieldInfo> GetConsts( Type type, GetMemberArgs a = null)
     {
-        FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static |
+        if (a == null)
+        {
+            a = new GetMemberArgs();
+        }
+        IEnumerable<FieldInfo> fieldInfos = null;
+        if (a.onlyPublic)
+        {
+            fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static |
             // return protected/public but not private
-            BindingFlags.FlattenHierarchy);
+            BindingFlags.FlattenHierarchy).ToList();
+        }
+        else
+        {
+            ///fieldInfos = type.GetFields(BindingFlags.Static);//.Where(f => f.IsLiteral);
+            fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic |
+              BindingFlags.FlattenHierarchy).ToList();
+
+        }
 
 
         var withType = fieldInfos.Where(fi => fi.IsLiteral && !fi.IsInitOnly).ToList();

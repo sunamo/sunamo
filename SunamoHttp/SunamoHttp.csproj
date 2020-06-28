@@ -7,7 +7,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SunamoExceptions\SunamoExceptions.csproj" />
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj" />
     <ProjectReference Include="..\sunamo\sunamo.csproj" />
   </ItemGroup>
 </Project>

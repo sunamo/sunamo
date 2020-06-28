@@ -17,7 +17,7 @@ using System.Threading.Tasks;
     {
         if (!en.ContainsKey(key))
         {
-            return key + " is not exists in Dictionary " + dictName;
+            return key + " "+sess.i18n(XlfKeys.isNotExistsInDictionary)+" " + dictName;
         }
         return null;
     }
@@ -39,7 +39,7 @@ using System.Threading.Tasks;
     {
         if (variable == null)
         {
-            return CheckBefore(before) + variable + " " + "is null" + ".";
+            return CheckBefore(before) + variable + " is null.";
         }
 
         return null;
@@ -60,7 +60,7 @@ using System.Threading.Tasks;
             }
         }
 
-        return CheckBefore(before) + "Not implemented case" + fr + " . public program error. Please contact developer" + ".";
+        return CheckBefore(before) + sess.i18n(XlfKeys.NotImplementedCase) + fr + ". "+sess.i18n(XlfKeys.publicProgramErrorPleaseContactDeveloper) + ".";
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ using System.Threading.Tasks;
         {
             return null;
         }
-        return CheckBefore(before) + originalText + " " + "dont contains" + ": " + SH.Join(notContained, AllStrings.comma);
+        return CheckBefore(before) + originalText + " dont contains: " + SH.Join(notContained, AllStrings.comma);
     }
 
     public static object Custom(string before, string message)
@@ -94,7 +94,7 @@ using System.Threading.Tasks;
 
     public static object NotImplementedMethod(string before)
     {
-        return CheckBefore(before) + "Not implemented case. public program error. Please contact developer" + ".";
+        return CheckBefore(before) + sess.i18n(XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper) + ".";
     }
     private static string CheckBefore(string before)
         {
@@ -107,7 +107,7 @@ using System.Threading.Tasks;
 
     public static string BadFormatOfElementInList(string before, object elVal, string listName)
     {
-        return before + "Bad format of element " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
+        return before + sess.i18n(XlfKeys.BadFormatOfElement)+" " + SH.NullToStringOrDefault(elVal) + " in list " + listName; 
     }
 
     public static string IsEmpty(string before, IEnumerable folders, string colName, string additionalMessage)

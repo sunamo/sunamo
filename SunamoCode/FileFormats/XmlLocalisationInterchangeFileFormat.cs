@@ -1,4 +1,5 @@
 ﻿using sunamo.Constants;
+using sunamo.Essential;
 using sunamo.Generators.Text;
 using System;
 using System.Collections;
@@ -244,7 +245,15 @@ TranslateEngine");
             return c.c;
         }
 
-        public static IList<string> GetKeysInCsWithRLDataEn(ref string key, string content)
+        /// <summary>
+        /// To be able to found with this method must be wrapped with XlfKeys and sess.i18n or RLData.en
+        /// 
+        /// A3 is here only due to breakpoint for certain files
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static IList<string> GetKeysInCsWithRLDataEn(ref string key, string content, string file = "")
         {
             CollectionWithoutDuplicates<string> c = new CollectionWithoutDuplicates<string>();
 
@@ -266,6 +275,11 @@ TranslateEngine");
 
             occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
 
+            if (file.Contains(XlfKeys.AboutApp))
+            {
+
+            }
+
             occ.Reverse();
 
             foreach (var dx in occ)
@@ -274,6 +288,11 @@ TranslateEngine");
                 var end = content.IndexOf(AllChars.rb, start);
 
                 key = content.Substring(start, end - start);
+
+                if (ThisApp.check)
+                {
+
+                }
 
                 c.Add(key);
             }
@@ -834,7 +853,8 @@ Into A1 insert:
 
         public static string ReplaceStringKeysWithXlfKeysWorker(ref string key, string content)
         {
-            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn + AllStrings.qm);
+            
+            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + AllStrings.qm);
 
             occ.Reverse();
 
@@ -842,7 +862,7 @@ Into A1 insert:
 
             foreach (var dx in occ)
             {
-                var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length;
+                var start = dx + 1 + XmlLocalisationInterchangeFileFormatSunamo.SessI18n.Length;
                 var end = content.IndexOf(AllChars.qm, start);
                 
                 key = content.Substring(start, end - start);
@@ -854,6 +874,9 @@ Into A1 insert:
             return sb.ToString();
         }
 
+        /// <summary>
+        /// was collection with previously existed properties in SunamoStrings class like sess.i18n(XlfKeys.EditUserAccount) 
+        /// </summary>
         static readonly List<string> sunamoStrings = SH.GetLines(@"sess.i18n(XlfKeys.AddAsRsvp)
 sess.i18n(XlfKeys.EditUserAccount)
 sess.i18n(XlfKeys.UserDetail)
@@ -872,6 +895,7 @@ sess.i18n(XlfKeys.UriTooShort)
 sess.i18n(XlfKeys.UriTooLong)
 sess.i18n(XlfKeys.CustomShortUriOccupatedYet)
 sess.i18n(XlfKeys.LinkSuccessfullyShorted)
+sess.i18n(XlfKeys.UnauthorizedOperation)
 sess.i18n(XlfKeys.Error)
 sess.i18n(XlfKeys.Success)
 sess.i18n(XlfKeys.RemoveFromFavoritesSuccess)
@@ -880,10 +904,35 @@ sess.i18n(XlfKeys.RemoveFromFavorites)
 sess.i18n(XlfKeys.AddToFavorites)
 sess.i18n(XlfKeys.RemoveAsRsvpSuccess)
 sess.i18n(XlfKeys.RemoveAsRsvp)
+sess.i18n(XlfKeys.AddAsRsvp)
 sess.i18n(XlfKeys.DetailsClickSurveyAspxLabel)
 sess.i18n(XlfKeys.UnvalidSession)
 sess.i18n(XlfKeys.ScIsNotTheSame)
-sess.i18n(XlfKeys.NotImplementedPleaseContactWebAdmin)");
+sess.i18n(XlfKeys.NotImplementedPleaseContactWebAdmin)
+sess.i18n(XlfKeys.IsNotInRange)");
+
+        public static List< string> GetSunamoStrings()
+        {
+            var l = sunamoStrings.ToList();
+            for (int i = 0; i < l.Count; i++)
+            {
+                l[i] = SH.ReplaceOnce(l[i], SunamoNotTranslateAble.SessI18n + SunamoNotTranslateAble.XlfKeysDot, string.Empty).TrimEnd(AllChars.rb);
+            }
+            return l;
+        }
+
+        public static string ReplaceSunamoStringsWithSessI18n(string c)
+        {
+            var from = GetSunamoStrings();
+            CA.Prepend("SunamoStrings.", from);
+            var to = sunamoStrings;
+
+            for (int i = 0; i < from.Count; i++)
+            {
+                c = c.Replace(from[i], to[i]);
+            }
+            return c;
+        }
 
         public static string ReplaceRlDataToSessionI18n(string content)
         {

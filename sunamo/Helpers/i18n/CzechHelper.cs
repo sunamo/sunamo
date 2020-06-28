@@ -13,11 +13,11 @@
     {
         if (sex)
         {
-            return "vážená paní " + name;
+            return sess.i18n(XlfKeys.Madam)+" " + name;
         }
         else
         {
-            return "vážený pane " + name;
+            return sess.i18n(XlfKeys.Sir)+" " + name;
         }
     }
 

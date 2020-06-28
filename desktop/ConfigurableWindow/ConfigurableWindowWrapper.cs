@@ -56,7 +56,7 @@ namespace ConfigurableWindow.Shared
             _settings = ww.CreateSettings();
 
             if (_settings == null)
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Cannot return null.");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),sess.i18n(XlfKeys.CannotReturnNull)+".");
 
             // Direct set _isLoaded to true, because I call this from _Loaded
             _isLoaded = true;
