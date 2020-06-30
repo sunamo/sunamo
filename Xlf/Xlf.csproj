@@ -52,6 +52,7 @@
     <Compile Include="DefaultPaths.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Enums\Langs.cs" />
+    <Compile Include="IdLang.cs" />
     <Compile Include="Interfaces\IAppDataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RLData.cs" />

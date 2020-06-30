@@ -38,6 +38,9 @@
           
           <target state="translated">Nebyla nalezena položka databáze, verzi nelze odstranit</target>
         </trans-unit>
+        <trans-unit id="InTheForm">
+        <target>Ve formě</target>
+        </trans-unit>
         <trans-unit id="YouCannotDownloadTheProgramBecauseItHasBeenDisabled" translate="yes" xml:space="preserve">
           
           <target state="translated">Program nelze stáhnout, protože byl deaktivován</target>
