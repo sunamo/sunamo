@@ -177,7 +177,7 @@
     <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSec.csproj">
+    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSecFw.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
     </ProjectReference>
@@ -192,6 +192,10 @@
     <ProjectReference Include="..\sunamo\sunamo.csproj">
       <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
       <Name>sunamo</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\Documents\Visual Studio 2017\Projects\sunamoWithoutDep\SunamoJson\SunamoJson.csproj">
+      <Project>{f635c10a-b28f-46e6-867d-be48f79c82a8}</Project>
+      <Name>SunamoJson</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
