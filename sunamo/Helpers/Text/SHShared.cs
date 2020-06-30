@@ -18,6 +18,28 @@ using Diacritics.Extensions;
 public static partial class SH
 {
 
+    public static string Format34(string c, params object[] innerMain)
+    {
+        string formatted = null;
+
+        try
+        {
+            formatted = SH.Format4(c, innerMain);
+        }
+        catch (Exception)
+        {
+        }
+
+        try
+        {
+            formatted = SH.Format3(c, innerMain);
+        }
+        catch (Exception)
+        {
+        }
+
+        return formatted;
+    }
 
     public static bool ContainsOnly(string floorS, List<char> numericChars)
     {
@@ -31,6 +53,32 @@ public static partial class SH
 
         return true;
     }
+
+
+    /// <summary>
+    /// Nothing can be null
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="lines"></param>
+    /// <param name="dx2"></param>
+    /// <returns></returns>
+    public static string GetLineFromCharIndex(string content, List<string> lines, int dx2)
+    {
+        var dx = GetLineIndexFromCharIndex(content, dx2);
+        return lines[dx];
+    }
+
+    /// <summary>
+    /// Return index, therefore x-1
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="pos"></param>
+    public static int GetLineIndexFromCharIndex(string input, int pos)
+    {
+        var lineNumber = input.Take(pos).Count(c => c == '\n') + 1;
+        return lineNumber - 1;
+    }
+
     public static string ReplaceVariables(string innerHtml, List<List<string>> _dataBinding, int actualRow)
     {
         return ReplaceVariables(AllChars.lcub, AllChars.rcub, innerHtml, _dataBinding, actualRow);

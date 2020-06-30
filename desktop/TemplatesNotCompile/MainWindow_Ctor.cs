@@ -55,7 +55,21 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     }
 
     
+    public void CheckIsAlreadyRunning()
+    {
+        #if !DEBUG
+              
+                    if (PH.IsAlreadyRunning(ThisApp.Name))
+                    {
+                        SetCancelClosing(false);
 
+                        MessageBox.Show(sess.i18n(XlfKeys.PleaseUseAppInTray));
+
+                        Close();
+                    }
+                
+        #endif
+    }
 
     public void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
@@ -69,26 +83,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
              */
 
         #region 1) ThisApp.Name, Check for already running, required conditions, Clipboard, AppData and Xlf
-        
         string appName = "";
-        ThisApp.Name = appName;
-        WpfApp.Init();
-#if !DEBUG
-            if (PH.IsAlreadyRunning(ThisApp.Name))
-            {
-                SetCancelClosing(false);
-            
-                MessageBox.Show(sess.i18n(XlfKeys.PleaseUseAppInTray));
-                
-                Close();
-            }
-#endif
-
-        ClipboardHelper.Instance = ClipboardHelperWin.Instance;
-        AppData.ci.CreateAppFoldersIfDontExists();
-        //CryptHelper.ApplyCryptData(CryptHelper.RijndaelBytes.Instance, CryptDataWrapper.rijn);
-
-        XlfResourcesHSunamo.SaveResouresToRLSunamo();
+        MainWindowSunamo_Ctor.FirstSection(appName, WpfApp.Init, ClipboardHelperWin.Instance, CheckIsAlreadyRunning);
         #endregion
 
         // All initialization must be after #region Initialize base properties of every app 
@@ -134,7 +130,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         Name = ThisApp.Name;
         data.Add(this);
 
-        
+
 
 #if !DEBUG
             if (PH.IsAlreadyRunning(ThisApp.Name))
@@ -196,7 +192,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #region 9) Set up UI of app
         Icon = EmbeddedResourcesHShared.ciShared.GetAppIcon(".ico");
 
-        miGenerateScreenshot.Header = sess.i18n(XlfKeys.GenerateScreenshot); 
+        miGenerateScreenshot.Header = sess.i18n(XlfKeys.GenerateScreenshot);
         miGenerateScreenshot.Click += FrameworkElementHelper.CreateBitmapFromVisual; if (!RuntimeHelper.IsAdminUser())
         {
             miGenerateScreenshot.Visibility = Visibility.Collapsed;
@@ -210,6 +206,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
         #endregion
     }
 
+    
+
     #region MyRegion
     // Only for working with notify, but always insert block with userControlClosing
     //    protected override void OnClosing(CancelEventArgs e)
@@ -219,8 +217,8 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     //        WindowState = WindowState.Minimized;
     //#endif
     // Must check before - during shutdowning down is miAlwaysOnTop null
-            //if (!e.Cancel)
-            //{
+    //if (!e.Cancel)
+    //{
     //        CheckMenuItemTopMost();
     //}
     //if (userControlClosing != null)
@@ -232,7 +230,7 @@ public partial class MainWindow_Ctor : Window, IEssentialMainWindow, IHideToTray
     //    } 
     #endregion
 
-        string DoWebRequest(string uri)
+    string DoWebRequest(string uri)
     {
         //return HttpClientHelperHttp.GetResponseText(uri, HttpMethod.Get, new HttpRequestDataHttp());
         return HttpClientHelper.GetResponseText(uri, HttpMethod.Get, new HttpRequestData());

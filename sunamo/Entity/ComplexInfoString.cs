@@ -3,6 +3,7 @@
 /// </summary>
 
 
+using System;
 using System.Collections.Generic;
 public class ComplexInfoString
 {
@@ -64,14 +65,17 @@ public class ComplexInfoString
             if (AllChars.lowerKeyCodes.Contains(nt))
             {
                 _quantityLowerChars++;
+                NumberLettersOrDigit++;
             }
             else if (AllChars.upperKeyCodes.Contains(nt))
             {
                 _quantityUpperChars++;
+                NumberLettersOrDigit++;
             }
             else if (AllChars.numericKeyCodes.Contains(nt))
             {
                 _quantityNumbers++;
+                NumberLettersOrDigit++;
             }
             else if (AllChars.specialKeyCodes.Contains(nt))
             {
@@ -86,6 +90,18 @@ public class ComplexInfoString
             {
                 _znakyPocty.Add(item, 1);
             }
+
+            if (CountOfNeededLettersOrDigit != int.MaxValue)
+            {
+                
+                if (NumberLettersOrDigit > CountOfNeededLettersOrDigit)
+                {
+                    break;
+                }
+            }
         }
     }
+
+    public int CountOfNeededLettersOrDigit = int.MaxValue;
+    public int NumberLettersOrDigit = 0;
 }

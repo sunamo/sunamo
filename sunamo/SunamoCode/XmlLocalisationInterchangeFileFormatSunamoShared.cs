@@ -18,7 +18,6 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
         return SH.GetTextBetween(d4, cs, eqBs, false);
     }
 
-
     public static Langs GetLangFromFilename(string s)
     {
         return XmlLocalisationInterchangeFileFormatXlf.GetLangFromFilename(s);
@@ -27,8 +26,9 @@ public partial class XmlLocalisationInterchangeFileFormatSunamo
     /// <summary>
     /// sess.i18n(
     /// </summary>
-    public const string RLDataEn = "RLData.en[";
-    public const string RLDataEn2 = "RLDataEn[";
+    public const string RLDataEn = SunamoNotTranslateAble.RLDataEn;
+    public const string RLDataCs = SunamoNotTranslateAble.RLDataCs;
+    public const string RLDataEn2 = SunamoNotTranslateAble.RLDataEn2;
     public const string SessI18n = SunamoNotTranslateAble.SessI18n;
     public const string XlfKeysDot = SunamoNotTranslateAble.XlfKeysDot;
 

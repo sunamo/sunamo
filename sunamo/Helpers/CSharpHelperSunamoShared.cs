@@ -47,4 +47,11 @@ static Type type = typeof(CSharpHelperSunamo);
         //ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Nepodporovan\u00FD typ");
         return null;
     }
+
+    public static string ReplaceReadonlyToConst(string arg)
+    {
+        arg = arg.Replace("static readonly", "const");
+        arg = arg.Replace("readonly", "const");
+        return arg;
+    }
 }

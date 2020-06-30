@@ -21,7 +21,7 @@ namespace desktop.Controls.Input
     /// </summary>
     public partial class SelectOneValue : UserControl, IControlWithResult, IUserControl
     {
-        ComboBoxHelper<string> cbEnteredHelper = null;
+        public ComboBoxHelper<string> cbEnteredHelper = null;
 
         public void FocusOnMainElement()
         {
@@ -41,12 +41,7 @@ namespace desktop.Controls.Input
         {
             InitializeComponent();
 
-            cbEnteredHelper = new ComboBoxHelper<string>(cbEntered);
-            cbEntered.IsEditable = allowCustomEntry;
 
-            cbEnteredHelper.AddValuesOfArrayAsItems(toMakeNameInTWithName, null, items);
-
-            cbEntered.SelectionChanged += CbEntered_Selected;
 
             Init(whatEnter);
         }
@@ -61,6 +56,21 @@ namespace desktop.Controls.Input
 
         public void Init(string whatEnter)
         {
+            Init(false, whatEnter, null, null);
+        }
+
+        public void Init(bool allowCustomEntry, string whatEnter, Func<object, string> toMakeNameInTWithName, params object[] items)
+        {
+            cbEnteredHelper = new ComboBoxHelper<string>(cbEntered);
+            cbEntered.IsEditable = allowCustomEntry;
+            if (toMakeNameInTWithName != null /*&& items != null*/)
+            {
+                cbEnteredHelper.AddValuesOfArrayAsItems(toMakeNameInTWithName, null, items);
+            }
+            
+
+            cbEntered.SelectionChanged += CbEntered_Selected;
+
             tbWhatEnter.Text = sess.i18n(XlfKeys.EnterOrSelect) + " " + whatEnter;
         }
 

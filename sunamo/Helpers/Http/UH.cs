@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 public partial class UH
 {
@@ -272,17 +273,22 @@ public partial class UH
         v = v.ToLower();
         v = SH.FirstCharUpper(v);
 
-#if !DEBUG
-        
-        return Consts.HttpSunamoCzSlash;
-#endif
-        if (v!= sess.i18n(XlfKeys.Nope))
+        if (v != sess.i18n(XlfKeys.Nope))
         {
-            var co = RH.GetConsts(typeof(UriShortConsts));
+            List<FieldInfo> co = null;
+#if DEBUG
+            co = RH.GetConsts(typeof(UriShortConsts));
+#elif !DEBUG
+            co = RH.GetConsts(typeof(UriConsts));
+#endif
             var co2 = co.Where(d => d.Name.StartsWith(v)).First();
             var vr = Consts.https  + co2.GetValue(null).ToString() + "/";
             return vr;
         }
+#if !DEBUG
+
+        return Consts.HttpSunamoCzSlash;
+#endif
         return Consts.HttpLocalhostSlash;
         
         

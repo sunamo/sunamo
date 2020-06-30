@@ -219,6 +219,7 @@
     <Compile Include="Interfaces\ITextBlockHelperBase.cs" />
     <Compile Include="Interfaces\IValidateControl.cs" />
     <Compile Include="SunamoNotTranslateAble.cs" />
+    <Compile Include="TemplatesNotCompiled\MainWindowSunamo_Ctor.cs" />
     <Compile Include="Values\TypesControlsSunamo.cs" />
     <Compile Include="XlfResourcesHSunamo.cs" />
     <Compile Include="_ns.cs" />

@@ -54,28 +54,7 @@ public static partial class SH
         return false;
     }
 
-    public static string Format34(string c, params object[] innerMain)
-    {
-        string formatted = null;
-
-        try
-        {
-            formatted = SH.Format4(c, innerMain);
-        }
-        catch (Exception)
-        {
-        }
-
-        try
-        {
-            formatted = SH.Format3(c, innerMain);
-        }
-        catch (Exception)
-        {
-        }
-
-        return formatted;
-    }
+    
 
     public static int CountOf(string v1, char v2)
     {
@@ -471,16 +450,6 @@ public static partial class SH
         return sb.ToString();
     }
 
-    /// <summary>
-    /// Return index, therefore x-1
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="pos"></param>
-    public static int GetLineIndexFromCharIndex(string input, int pos)
-    {
-        var lineNumber = input.Take(pos).Count(c => c == '\n') + 1;
-        return lineNumber - 1;
-    }
     public static string ReplaceManyFromString(string input, string v, string delimiter)
     {
         string methodName = "ReplaceManyFromString";

@@ -51,11 +51,12 @@ public static SolutionFolder SolutionWithName(string name)
     /// <param name="fp"></param>
     /// <param name="onlynames"></param>
     /// <returns></returns>
-public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, bool onlynames = true)
+    public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, bool onlynames = true)
     {
         // TODO: Filter auto created files, then uncomment
         List<string> d = FS.GetFolders(fp);
         d = FS.OnlyNames(d);
+
         if (removeVsFolders)
         {
             VisualStudioTempFse.foldersInSolutionDownloaded.ToList().ForEach(folder => CA.RemoveWildcard(d, folder));
@@ -74,7 +75,7 @@ public static List<string> ProjectsInSolution(bool removeVsFolders, string fp, b
         return d;
     }
 
-public static string GetDisplayedSolutionName(string item)
+    public static string GetDisplayedSolutionName(string item)
     {
         List<string> tokens = new List<string>();
         tokens.Add(FS.GetFileName(item.TrimEnd(AllChars.bs)));

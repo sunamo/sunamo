@@ -67,6 +67,8 @@ namespace desktop.Controls.Input
         {
             Init(whatEnter);
 
+            txtEnteredText.AcceptsReturn = true;
+
             Loaded += EnterOneValueUC_Loaded;
         } 
         #endregion

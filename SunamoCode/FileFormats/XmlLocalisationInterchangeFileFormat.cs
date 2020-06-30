@@ -16,12 +16,10 @@ using System.Xml.XPath;
 
 namespace SunamoCode
 {
-
-
     /// <summary>
     /// General methods for working with XML
     /// </summary>
-    public static class XmlLocalisationInterchangeFileFormat
+    public  static partial class XmlLocalisationInterchangeFileFormat
     {
         static Type type = typeof(XmlLocalisationInterchangeFileFormat);
 
@@ -62,6 +60,79 @@ namespace SunamoCode
 
             ClipboardHelper.SetText(newConsts.ToString());
             #endregion
+        }
+
+        public static string ReplaceRlDataToSessionI18n(string content, string from, string to)
+        {
+            var RLDataEn = SunamoNotTranslateAble.RLDataEn;
+            var SessI18n = SunamoNotTranslateAble.SessI18n;
+            var RLDataCs = SunamoNotTranslateAble.RLDataCs;
+
+            char endingChar = AllChars.rsqb;
+            string newEndingChar = AllStrings.rb;
+            if (from == SessI18n)
+            {
+                endingChar = AllChars.rb;
+                newEndingChar = AllStrings.rsqb;
+            }
+            else if (from == RLDataCs || from == RLDataEn)
+            {
+                // keep as is
+            }
+            else
+            {
+                ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), from);
+            }
+
+            string SunamoStringsDot = XmlLocalisationInterchangeFileFormatSunamo.SunamoStringsDot;
+
+            int dx = -1;
+
+            foreach (var item in sunamoStrings)
+            {
+                dx = content.IndexOf(item);
+                if (dx != -1)
+                {
+                    var line = SH.GetLineFromCharIndex(content, SH.GetLines(content), dx);
+                    if (line.Contains(SunamoStringsDot))
+                    {
+                        content = content.Insert(dx + item.Length, newEndingChar);
+                        content = content.Remove(dx, SunamoStringsDot.Length);
+                        content = content.Insert(dx, to + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
+                    }
+                }
+            }
+
+            var l = from.Length;
+
+            content = content.Replace(XmlLocalisationInterchangeFileFormatSunamo.RLDataEn2, from);
+
+            var occ = SH.ReturnOccurencesOfString(content, from);
+            List<int> ending = new List<int>();
+            foreach (var item in occ)
+            {
+                var io = content.IndexOf(endingChar, item);
+                ending.Add(io);
+            }
+
+            StringBuilder sb = new StringBuilder(content);
+
+            occ.Reverse();
+            ending.Reverse();
+
+            for (int i = 0; i < occ.Count; i++)
+            {
+                sb.Remove(occ[i], l);
+                sb.Insert(occ[i], to);
+
+                var ending2 = ending[i];
+                sb.Remove(ending2, 1);
+                sb.Insert(ending2, newEndingChar);
+            }
+
+            var c = sb.ToString();
+            //TF.SaveFile(c, )
+            return c;
         }
 
         static XmlLocalisationInterchangeFileFormat()
@@ -243,6 +314,11 @@ TranslateEngine");
             
 
             return c.c;
+        }
+
+        public static string ReplaceRlDataToSessionI18n(string text)
+        {
+            return ReplaceRlDataToSessionI18n(text, SunamoNotTranslateAble.RLDataEn, SunamoNotTranslateAble.SessI18n);
         }
 
         /// <summary>
@@ -934,52 +1010,7 @@ sess.i18n(XlfKeys.IsNotInRange)");
             return c;
         }
 
-        public static string ReplaceRlDataToSessionI18n(string content)
-        {
-            int dx = -1;
-
-            foreach (var item in sunamoStrings)
-            {
-                dx = content.IndexOf(item);
-                if (dx != -1)
-                {
-                    content = content.Insert(dx + item.Length, AllStrings.rb);
-                    content = content.Remove(dx, XmlLocalisationInterchangeFileFormatSunamo.SunamoStringsDot.Length);
-                    content = content.Insert(dx, XmlLocalisationInterchangeFileFormatSunamo.SessI18n + XmlLocalisationInterchangeFileFormatSunamo.XlfKeysDot);
-                }
-            }
-
-            var l = XmlLocalisationInterchangeFileFormatSunamo.RLDataEn.Length;
-
-            content = content.Replace(XmlLocalisationInterchangeFileFormatSunamo.RLDataEn2, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn);
-
-            var occ = SH.ReturnOccurencesOfString(content, XmlLocalisationInterchangeFileFormatSunamo.RLDataEn);
-            List<int> ending = new List<int>();
-            foreach (var item in occ)
-            {
-                var io = content.IndexOf( AllChars.rsqb, item);
-                ending.Add(io);
-            }
-
-            StringBuilder sb = new StringBuilder(content);
-
-            occ.Reverse();
-            ending.Reverse();
-
-            for (int i = 0; i < occ.Count; i++)
-            {
-                sb.Remove(occ[i], l);
-                sb.Insert(occ[i], XmlLocalisationInterchangeFileFormatSunamo.SessI18n);
-
-                var ending2 = ending[i];
-                sb.Remove(ending2, 1);
-                sb.Insert(ending2, AllStrings.rb);
-            }
-
-            var c = sb.ToString();
-            //TF.SaveFile(c, )
-            return c;
-        }
+        
 
         /// <summary>
         /// ReplaceXlfKeysForString - Convert from XlfKeys to ""

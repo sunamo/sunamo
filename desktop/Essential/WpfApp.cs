@@ -17,6 +17,11 @@ public partial class WpfApp
         EnableDesktopLogging(true);
     }
 
+    public static void ShowMb(string t)
+    {
+        MessageBox.Show(t);
+    }
+
     public static void Shutdown(object o, EventArgs eh)
     {
         //WpfApp.mp.SetCancelClosing(false);

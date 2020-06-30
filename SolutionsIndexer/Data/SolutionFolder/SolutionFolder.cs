@@ -43,7 +43,8 @@ namespace AllProjectsSearch
         {
         }
 
-        /// <summary>)
+        /// <summary>
+        /// Only name without path
         /// Is filled in ctor with CreateSolutionFolder()
         /// Only subfolders. csproj files must be find out manually
         /// Csproj are available to get with APSH.GetCsprojs()
