@@ -10562,6 +10562,7 @@
         <trans-unit id="Photos">
           <target>Photos</target>
         </trans-unit>
+		  
         <trans-unit id="DownloadImage">
           <target>Download image</target>
         </trans-unit>
@@ -11308,6 +11309,10 @@ A fraternal form of manifestation is the bliss</target>
           <target state="translated">optional</target>
         </trans-unit>
         <trans-unit id="photos" translate="no" xml:space="preserve">
+          
+          <target state="translated">photos</target>
+        </trans-unit>
+		  <trans-unit id="photos2" translate="no" xml:space="preserve">
           
           <target state="translated">photos</target>
         </trans-unit>
@@ -13262,6 +13267,10 @@ A fraternal form of manifestation is the bliss</target>
         <trans-unit id="isNotInRange" translate="no" xml:space="preserve">
           
           <target state="translated">is not in range</target>
+        </trans-unit>
+        <trans-unit id="AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion" translate="no" xml:space="preserve">
+          
+          <target state="translated">App can sometimes seem to be frozen. Please be patient, async operation will be implemented in upcoming version</target>
         </trans-unit>
       </group>
     </body>

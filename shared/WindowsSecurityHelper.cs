@@ -30,7 +30,6 @@ public static bool IsUserAdministrator()
 
     public static bool IsMyComputer()
     {
-        return WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
+        return MyPc.Instance.IsMyComputer();
     }
-
 }

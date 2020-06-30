@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -73,8 +74,15 @@ namespace desktop
             
             Hyperlink link = new Hyperlink(GetRun(text, fa));
             link.NavigateUri = new Uri(uri);
+            link.RequestNavigate += Link_RequestNavigate;
 
             return link;
+        }
+
+        private void Link_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

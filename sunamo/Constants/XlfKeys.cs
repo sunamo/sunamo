@@ -6,8 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string isNotInRange = "isNotInRange"; 
+	public const string AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion = "AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion"; 
 
+	public const string isNotInRange = "isNotInRange"; 
 	public const string Elements = "Elements"; 
 	public const string doesNotSupportDeserialize = "doesNotSupportDeserialize"; 
 	public const string doesNotSupportSerialize = "doesNotSupportSerialize"; 
@@ -495,8 +496,9 @@ public class XlfKeys
 	public const string OutputWasSavedTo = "OutputWasSavedTo"; 
 	public const string cars = "cars"; 
 	public const string successfullyDownloaded = "successfullyDownloaded"; 
-	public const string photos = "photos"; 
-	public const string optional = "optional"; 
+	public const string photos = "photos";
+    public const string photos2 = "photos2";
+    public const string optional = "optional"; 
 	public const string andCreateComparingTable = "andCreateComparingTable"; 
 	public const string AutoLogin = "AutoLogin"; 
 	public const string RememberLogin = "RememberLogin"; 
