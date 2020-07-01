@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 public class VpsHelperSunamo
 {
     public const string path = @"c:\_";
-
-
+    public const string ip = "46.36.40.198";
 
     public static bool IsVps
     {

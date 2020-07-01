@@ -148,6 +148,40 @@ public class RH
         return values;
     }
 
+    public static List<string> GetValuesOfProperty2(object obj, params string[] onlyNames)
+    {
+        var onlyNames2 = onlyNames.ToList();
+        List<string> values = new List<string>();
+        bool add = false;
+
+        foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(obj))
+        {
+            add = true;
+            string name = descriptor.Name;
+            if (onlyNames2.Count > 0)
+            {
+                if (!onlyNames2.Contains(name))
+                {
+                    add = false;
+                }
+            }
+
+            if (add)
+            {
+                object value = descriptor.GetValue(obj);
+                AddValue(values, name, value);
+            }
+        }
+
+        return values;
+    }
+
+    /// <summary>
+    /// U složitějších ne mých .net objektů tu byla chyba, proto je zde GetValuesOfProperty2
+    /// </summary>
+    /// <param name="o"></param>
+    /// <param name="onlyNames"></param>
+    /// <returns></returns>
     public static List<string> GetValuesOfProperty(object o, params string[] onlyNames)
     {
         var props = o.GetType().GetProperties();
@@ -187,12 +221,16 @@ public class RH
                 }
 
                 name = name.Replace("get_", string.Empty);
-
-                values.Add($"{name}: {SH.ListToString(value)}");
+                AddValue(values, name, value);
             }
         }
 
         return values;
+    }
+
+    private static void AddValue(List<string> values, string name, object value)
+    {
+        values.Add($"{name}: {SH.ListToString(value)}");
     }
 
     /// <summary>
@@ -438,7 +476,7 @@ public class RH
             case DumpProvider.Json:
             case DumpProvider.ObjectDumper:
             case DumpProvider.Reflection:
-                dump = SH.Join(Environment.NewLine,RH.GetValuesOfProperty(o, onlyNames));
+                dump = SH.Join(Environment.NewLine,RH.GetValuesOfProperty2(o, onlyNames));
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(),type, "DumpAsString", d);
