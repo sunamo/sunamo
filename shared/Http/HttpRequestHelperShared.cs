@@ -83,7 +83,11 @@ public static partial class HttpRequestHelper{
         request.Timeout = int.MaxValue;
         request.UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
         var t = request.GetResponseAsync();
-        using (var response = (HttpWebResponse)t.Result)
+        HttpWebResponse response = null;
+       // var response = (HttpWebResponse)t.Result;
+        var result2 = AsyncHelper.ci.GetResult<WebResponse>(t);
+
+        if (false)
         {
             Encoding encoding = null;
 
@@ -108,9 +112,17 @@ public static partial class HttpRequestHelper{
                     reader = new StreamReader(responseStream, encoding);
                 }
                 string vr = reader.ReadToEnd();
+
+                //response.Dispose();
+                result2.Dispose();
+
                 return vr;
             }
         }
+
+        var ts = result2.ToString();
+        return ts;
+        
     }
 
     /// <summary>

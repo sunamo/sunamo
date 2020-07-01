@@ -21,6 +21,26 @@ public partial class PH
         {
             DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
         }
+        
+    }
+
+    public static void StartHidden(string p, string k)
+    {
+        try
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.WorkingDirectory = k;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C " + p;
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        catch (Exception ex)
+        {
+            DebugLogger.Instance.WriteLine(Exceptions.TextOfExceptions(ex));
+        }
     }
 
 public static bool IsAlreadyRunning(string name)
