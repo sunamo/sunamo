@@ -60,7 +60,8 @@ public class FoldersWithSolutions
     /// <param name="documentsFolder"></param>
     public List<SolutionFolder> Reload(string documentsFolder, PpkOnDrive toSelling, bool ignorePartAfterUnderscore = false)
     {
-        
+        PairProjectFolderWithEnum();
+
         // Get all projects in A1(Visual Studio Projects *) and GitHub folder
         List<string> solutionFolders = ReturnAllProjectFolders(documentsFolder, FS.Combine(documentsFolder, SolutionsIndexerStrings.GitHubMy));
 
@@ -85,6 +86,11 @@ public class FoldersWithSolutions
 
     public static void PairProjectFolderWithEnum()
     {
+        if (projectTypes._d1.Count > 0)
+        {
+            return;
+        }
+
         var folders = FS.GetFolders(DefaultPaths.VisualStudio2017, "*", SearchOption.TopDirectoryOnly);
 
         foreach (var item in folders)

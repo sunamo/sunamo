@@ -9,8 +9,6 @@ using System.Net.Mail;
 /// </summary>
     public partial class GoogleAppsMailbox
     {
-        
-
         /// <summary>
         /// Řetězec, který se objeví u příjemce jako odesílatel. Nemusí to být mailová adresa.
         /// </summary>
@@ -24,7 +22,7 @@ using System.Net.Mail;
         /// </summary>
         string password = null;
         public string mailOfAdmin = null;
-    SmtpServerData smtpServerData = new SmtpServerData();
+        SmtpServerData smtpServerData = new SmtpServerData();
 
     /// <summary>
     /// For sending from noreply@sunamo.cz

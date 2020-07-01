@@ -5,6 +5,9 @@ using System.Text;
 
 public static class CommonSettingsKeys
 {
+    /// <summary>
+    /// for seznam and gmail too
+    /// </summary>
     public const string noreply_scz = "noreply_scz";
     public const string rj_scz = "rj_scz";
     public const string ftp_test_pw = "ftp_test_pw";

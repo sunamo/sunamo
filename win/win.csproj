@@ -119,6 +119,10 @@
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{3204432d-b6e7-4481-beb0-8b177af809c2}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>

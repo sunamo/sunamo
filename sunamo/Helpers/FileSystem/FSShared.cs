@@ -61,7 +61,7 @@ public partial class FS
 
                 foreach (var item in masces)
                 {
-                    var masc = mask;
+                    var masc = item;
                     if (getFilesArgs.useMascFromExtension)
                     {
                         masc = FS.MascFromExtension(item);
