@@ -38,6 +38,10 @@ public class TranslateDictionary : IDictionary<string, string>
                 //{
                 //    ShowMb("ReloadIfKeyWontBeFound is null");
                 //}
+                if (ReloadIfKeyWontBeFound == null)
+                {
+                    return ThrowNotFoundError(key, "ReloadIfKeyWontBeFound is null.");
+                }
                 var k = ReloadIfKeyWontBeFound(key);
 
                 if (!_d.ContainsKey(key))
@@ -46,7 +50,7 @@ public class TranslateDictionary : IDictionary<string, string>
 
                     //XlfResourcesH.initialized = false;
                     //XlfResourcesH.SaveResouresToRL(basePathSolution);
-                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), key + " is not in " + _l + " dictionary");
+                    return ThrowNotFoundError(key, string.Empty);
                     //return string.Empty;
                 }
             }
@@ -56,6 +60,12 @@ public class TranslateDictionary : IDictionary<string, string>
             return value;
         }
         set => _d[key] = value;
+    }
+
+    private string ThrowNotFoundError(string key, string customErr)
+    {
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), customErr + ". " + key + " is not in " + _l + " dictionary");
+        return null;
     }
 
     public ICollection<string> Keys => _d.Keys;

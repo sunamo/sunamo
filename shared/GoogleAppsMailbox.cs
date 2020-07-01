@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 
 /// <summary>
@@ -54,24 +55,28 @@ using System.Net.Mail;
         
         }
 
-        /// <summary>
-        /// Do A1, A2, A3 se může zadat více adres, stačí je oddělit středníkem
-        /// A4 nastav na "", pokud chceš použít jako reply-to adresu A1
-        /// </summary>
-        /// <param name="to"></param>
-        /// <param name="cc"></param>
-        /// <param name="bcc"></param>
-        /// <param name="subject"></param>
-        /// <param name="htmlBody"></param>
-        /// <param name="attachments"></param>
-        public string SendEmail(string to, string cc, string bcc, string replyTo, string subject, string body, bool htmlBody, params string[] attachments)
+    /// <summary>
+    /// Return either success or starting with error:
+    /// Do A1, A2, A3 se může zadat více adres, stačí je oddělit středníkem
+    /// A4 nastav na "", pokud chceš použít jako reply-to adresu A1
+    /// </summary>
+    /// <param name="to"></param>
+    /// <param name="cc"></param>
+    /// <param name="bcc"></param>
+    /// <param name="subject"></param>
+    /// <param name="htmlBody"></param>
+    /// <param name="attachments"></param>
+    public string SendEmail(string to, string cc, string bcc, string replyTo, string subject, string body, bool htmlBody, params string[] attachments)
         {
             string emailStatus = string.Empty;
 
-            SmtpClient client = new SmtpClient();
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+        SmtpClient client = new SmtpClient();
             client.EnableSsl = true; //Mail aspone nefunguje na SSL zatím, pokud byste zde dali true, tak vám vznikne výjimka se zprávou Server does not support secure connections.
-        client.UseDefaultCredentials = false; // must be before set up Credentials
-        client.Credentials = new System.Net.NetworkCredential(fromEmail, password);
+        
+            client.UseDefaultCredentials = false; // must be before set up Credentials
+            client.Credentials = new System.Net.NetworkCredential(fromEmail, password);
             client.Port = smtpServerData.port; //Fungovalo mi to když jsem žádný port nezadal a jelo mi to na výchozím
             client.Host = smtpServerData.smtpServer; //Adresa smtp serveru. Může končit buď na název vašeho webu nebo na aspone.cz. Zadává se bez protokolu, jak je zvykem
         
@@ -186,14 +191,13 @@ using System.Net.Mail;
             }
             catch (Exception ex)
             {
-                emailStatus = "error: ";
-                if (ex.Message != null)
-                {
-                    emailStatus += ex.Message + ". ";
-                }
+                emailStatus = "error: " + Exceptions.TextOfExceptions(ex);
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), Exc.CallingMethod());
                 return emailStatus;
             }
 
             return emailStatus;
         }
+
+    static Type type = typeof(GoogleAppsMailbox);
     }

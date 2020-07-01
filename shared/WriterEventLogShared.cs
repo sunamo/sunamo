@@ -22,16 +22,29 @@ public static partial class WriterEventLog{
         WriterEventLog.WriteToMainAppLog(exception + Environment.NewLine + stacktrace, EventLogEntryType.Error, null);
     }
 
-    public static void WriteToMainAppLogScz(string text, EventLogEntryType type)
-    {
-        if (!IsAdmin())
-        {
-            return;
-        }
-        WriteToWindowsLogs(scz, text, type);
-    }
+    #region In scz never call CreateMainAppLogScz, so commented it
+    //public static void WriteToMainAppLogScz(string text, EventLogEntryType type)
+    //{
+    //    if (!IsAdmin())
+    //    {
+    //        return;
+    //    }
+    //    WriteToWindowsLogs(scz, text, type);
+    //}
 
-/// <summary>
+    //public static bool CreateMainAppLogScz()
+    //{
+    //    if (!IsAdmin())
+    //    {
+    //        return false;
+    //    }
+    //    bool b = CreateMainAppLog(scz);
+    //    WriteToMainAppLogScz(sess.i18n(XlfKeys.Template), EventLogEntryType.Information);
+    //    return b;
+    //} 
+    #endregion
+
+    /// <summary>
     /// Zda to funguje nevím, já už jsem v aplikaci zapisoval metodou WriteToMainAppLog a žádná aplikace nemůže zapisovat do více logů
     /// </summary>
     /// <param name = "text"></param>
@@ -58,10 +71,12 @@ public static partial class WriterEventLog{
         eventLogWindowsApplication.WriteEntry(text, type);
     }
 
-/// <summary>
+    /// <summary>
     /// Cant use in Web - SecurityException. Use WriteToWindowsLogsApplication()
     /// K prvnímu volání potřebuje administrátorská práva, aby mohla vytvořil log s názvem ThisApp.Name. 
     /// K zapisování událostí již pak administrátorská práva nepotřebuje.
+    /// 
+    /// In web is too much better WriteToPageWhenMyPoda
     /// </summary>
     /// <param name = "text"></param>
     /// <param name = "type"></param>
@@ -126,14 +141,5 @@ public static partial class WriterEventLog{
         return existsSource;
     }
 
-public static bool CreateMainAppLogScz()
-    {
-        if (!IsAdmin())
-        {
-            return false;
-        }
-        bool b = CreateMainAppLog(scz);
-        WriteToMainAppLogScz(sess.i18n(XlfKeys.Template), EventLogEntryType.Information);
-        return b;
-    }
+
 }
