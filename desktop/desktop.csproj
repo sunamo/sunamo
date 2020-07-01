@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -106,9 +106,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\sunamo\desktop\Helpers\ControlsWithGet\TextBlockHelper.cs" />
-    <Compile Include="..\..\sunamo\desktop\AwesomeFont\AwesomeFontControlsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Args\WindowWithUserControlArgs.cs" />
+    <Compile Include="..\..\sunamo\desktop\AwesomeFont\AwesomeFontControlsShared.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowSettings.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\ConfigurableWindowWrapper.cs" />
     <Compile Include="..\..\sunamo\desktop\ConfigurableWindow\IConfigurableWindow.cs" />
@@ -147,21 +146,9 @@
     <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\BitmapImageHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Content\Resources\ImageHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\ControlFinder.cs" />
-    <Compile Include="AwesomeFont\AwesomeFontControlsShared.cs" />
-    <Compile Include="Data\Tag\ButtonBaseTag.cs" />
-    <Compile Include="Data\Tag\CheckBoxTag.cs" />
-    <Compile Include="Data\Tag\ContentControlTag.cs" />
-    <Compile Include="Data\Tag\ToggleButtonTag.cs" />
-    <Compile Include="DesktopNotTranslateAble.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ActionButtonHelperShared.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ButtonHelperShared.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ComboBoxHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ImageHelperDesktop.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ImageHelperDesktopShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ListViewColumnHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\LabelHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\TextBlockHelperShared.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\Controls\ToolbarHelper.cs" />
+    <Compile Include="..\..\sunamo\desktop\Helpers\ControlsWithGet\TextBlockHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Helpers\KeyboardHelper.cs" />
     <Compile Include="..\..\sunamo\desktop\Hotkey.cs" />
     <Compile Include="..\..\sunamo\desktop\Interfaces\IEssentialMainWindow.cs" />
@@ -184,6 +171,7 @@
     <Compile Include="Args\FolderContentsTreeViewArgs.cs" />
     <Compile Include="Args\WindowWithUserControlArgs.cs" />
     <Compile Include="AwesomeFont\AwesomeFontControls.cs" />
+    <Compile Include="AwesomeFont\AwesomeFontControlsShared.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowHelper.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowInstance.cs" />
     <Compile Include="ConfigurableWindow\ConfigurableWindowSettings.cs" />
@@ -342,12 +330,17 @@
     <Compile Include="Data\ImageButtonsInit.cs" />
     <Compile Include="Data\InsertLetterAfterMouseDownData.cs" />
     <Compile Include="Data\MeasureStringArgs.cs" />
+    <Compile Include="Data\Tag\ButtonBaseTag.cs" />
+    <Compile Include="Data\Tag\CheckBoxTag.cs" />
+    <Compile Include="Data\Tag\ContentControlTag.cs" />
     <Compile Include="Data\Tag\ControlTag.cs" />
     <Compile Include="Data\Tag\FrameworkElementTag.cs" />
     <Compile Include="Data\Tag\TextBoxBaseTag.cs" />
     <Compile Include="Data\Tag\TextBoxTag.cs" />
+    <Compile Include="Data\Tag\ToggleButtonTag.cs" />
     <Compile Include="Data\TextBlockData.cs" />
     <Compile Include="DataTableHelper.cs" />
+    <Compile Include="DesktopNotTranslateAble.cs" />
     <Compile Include="Essential\WpfApp.cs" />
     <Compile Include="EventArgs\ValueChangedRoutedEventArgs.cs" />
     <Compile Include="Extensions\CheckBoxExtensions.cs" />
@@ -401,37 +394,44 @@
     <Compile Include="Helpers\Content\Resources\ImagesHelper.cs" />
     <Compile Include="Helpers\Content\Resources\ImageSourceHelper.cs" />
     <Compile Include="Helpers\ControlFinder.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ActionButtonHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ButtonHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\CheckBoxHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\CheckBoxHelperShared.cs" />
     <Compile Include="Helpers\Controls\CheckBoxListHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\ComboBoxHelperShared.cs" />
     <Compile Include="Helpers\Controls\ComboBoxHelperT.cs" />
     <Compile Include="Helpers\Controls\ContextMenuHelper.cs" />
     <Compile Include="Helpers\Controls\DataGridHelper.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilder.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilderBase.cs" />
+    <Compile Include="Helpers\Controls\InlineBuilderBlock.cs" />
     <Compile Include="Helpers\Controls\InlineBuilderTextBlock.cs" />
     <Compile Include="Helpers\Controls\LBHT.cs" />
     <Compile Include="Helpers\Controls\ListViewColumnHelper.cs" />
     <Compile Include="Helpers\Controls\ListViewHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\MenuItemHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\MenuItemHelperShared.cs" />
     <Compile Include="Helpers\Controls\MenuItemTemplates.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelper.cs" />
     <Compile Include="Helpers\Controls\MenuItemWithSubitemsHelperT.cs" />
     <Compile Include="Helpers\Controls\ParagraphBuilderTextBlock.cs" />
     <Compile Include="Helpers\Controls\ProgressBarHelper.cs" />
-    <Compile Include="Helpers\ControlsWithGet\RadioButtonHelper.cs" />
     <Compile Include="Helpers\Controls\RTBH.cs" />
-    <Compile Include="Helpers\ControlsWithGet\TextBlockHelper.cs" />
-    <Compile Include="Helpers\Controls\InlineBuilderBase.cs" />
-    <Compile Include="Helpers\ControlsWithGet\TextBoxHelper.cs" />
-    <Compile Include="Helpers\Controls\InlineBuilderBlock.cs" />
-    <Compile Include="Helpers\Controls\InlineBuilder.cs" />
     <Compile Include="Helpers\Controls\ToolbarHelper.cs" />
     <Compile Include="Helpers\Controls\ToolbarTemplates.cs" />
     <Compile Include="Helpers\Controls\TreeViewHelper.cs" />
     <Compile Include="Helpers\Controls\WRTBH.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ActionButtonHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ActionButtonHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ButtonHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ButtonHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\CheckBoxHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\CheckBoxHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ComboBoxHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ComboBoxHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ImageHelperDesktop.cs" />
+    <Compile Include="Helpers\ControlsWithGet\ImageHelperDesktopShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\LabelHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\MenuItemHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\MenuItemHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\RadioButtonHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\TextBlockHelper.cs" />
+    <Compile Include="Helpers\ControlsWithGet\TextBlockHelperShared.cs" />
+    <Compile Include="Helpers\ControlsWithGet\TextBoxHelper.cs" />
     <Compile Include="Helpers\DisplayHelper.cs" />
     <Compile Include="Helpers\FontWeightHelper.cs" />
     <Compile Include="Helpers\IHWPF.cs" />
