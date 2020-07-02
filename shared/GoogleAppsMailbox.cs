@@ -57,6 +57,7 @@ using System.Net.Mail;
     /// Return either success or starting with error:
     /// Do A1, A2, A3 se může zadat více adres, stačí je oddělit středníkem
     /// A4 nastav na "", pokud chceš použít jako reply-to adresu A1
+    /// As empty value use se, not null
     /// </summary>
     /// <param name="to"></param>
     /// <param name="cc"></param>
@@ -190,7 +191,7 @@ using System.Net.Mail;
             catch (Exception ex)
             {
                 emailStatus = "error: " + Exceptions.TextOfExceptions(ex);
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), Exc.CallingMethod());
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), Exc.CallingMethod());
                 return emailStatus;
             }
 

@@ -30,4 +30,5 @@ public class HtmlTags
     public const string tbody = "tbody";
     public static string li = "li";
     public static string b = "b";
+    public static string p = "p";
 }

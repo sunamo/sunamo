@@ -6,8 +6,12 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion = "AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion"; 
+	public const string forApplication = "forApplication"; 
 
+	public const string monthlySubscription = "monthlySubscription"; 
+	public const string InAttachmentIsJoinedActualTermsOfUse = "InAttachmentIsJoinedActualTermsOfUse"; 
+	public const string ThankYouForYourPurchase = "ThankYouForYourPurchase"; 
+	public const string AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion = "AppCanSometimesSeemToBeFrozenPleaseBePatientAsyncOperationWillBeImplementedInUpcomingVersion"; 
 	public const string isNotInRange = "isNotInRange"; 
 	public const string Elements = "Elements"; 
 	public const string doesNotSupportDeserialize = "doesNotSupportDeserialize"; 
