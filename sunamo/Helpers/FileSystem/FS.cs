@@ -36,6 +36,28 @@ public partial class FS
         return vr;
     }
 
+public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
+    {
+        var masc = FS.MascFromExtension(ext);
+        var f = FS.GetFiles(p, masc, SearchOption.TopDirectoryOnly);
+        if (f.Count > 0)
+        {
+            var r = f.First();
+            for (int i = startFrom; ; i++)
+            {
+                var t = p + i + ext;
+                if (!f.Contains(t))
+                {
+                    break;
+                }
+                else
+                {
+                    FS.RenameFile(t, d[i-startFrom] + ext, FileMoveCollisionOption.AddSerie); 
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Get path A2/name folder of file A1/name A1
     /// 
