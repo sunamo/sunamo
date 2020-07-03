@@ -71,4 +71,36 @@ public partial class FS{
         return f.LastWriteTime;
 
     }
+
+    public static void RenameNumberedSerieFiles(List<string> d, string p, int startFrom, string ext)
+    {
+        var masc = FS.MascFromExtension(ext);
+        var f = FS.GetFiles(p, masc, SearchOption.TopDirectoryOnly);
+        if (f.Count > 0)
+        {
+            var r = f.First();
+            for (int i = startFrom; ; i++)
+            {
+                var t = p + i + ext;
+                if (!f.Contains(t))
+                {
+                    break;
+                }
+                else
+                {
+                    FS.RenameFile(t, d[i-startFrom] + ext, FileMoveCollisionOption.AddSerie); 
+                }
+            }
+        }
+    }
+
+    public static bool IsException(string ext)
+    {
+        if (string.IsNullOrWhiteSpace( ext ))
+        {
+            return false;
+        }
+        ext = ext.TrimStart(AllChars.dot);
+        return SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial);
+    }
 }

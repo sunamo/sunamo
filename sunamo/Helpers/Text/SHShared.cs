@@ -127,6 +127,28 @@ public static partial class SH
         return ls;
     }
 
+    internal static bool IsAllLower(string ext)
+    {
+        return IsAllLower(ext, char.IsLower);
+    }
+
+    private static bool IsAllLower(string ext, Func<char, bool> isLower)
+    {
+        for (int i = 0; i < ext.Length; i++)
+        {
+            if (!isLower(ext[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    internal static bool IsAllUpper(string ext)
+    {
+        return IsAllLower(ext, char.IsUpper);
+    }
+
     public static bool ContainsBracket(string t, bool mustBeLeftAndRight = false)
     {
         List<string> left, right;

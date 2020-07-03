@@ -1696,7 +1696,7 @@ public static byte[] StreamToArrayBytes(System.IO.Stream stream)
     
             if (!SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial))
             {
-                return s;
+                return (dynamic)vr + ext;
             }
             return (dynamic)vr;
         }

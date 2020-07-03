@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class IUserControlStateChanging<T>
+public interface IUserControlStateChanging<T>
 {
-    public event Action<T> StateChanged;
+     event Action<T> StateChanged;
 }
