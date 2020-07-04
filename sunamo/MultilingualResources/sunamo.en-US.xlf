@@ -13290,6 +13290,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">for application</target>
         </trans-unit>
+        <trans-unit id="CodeSearch" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Code Search</target>
+        </trans-unit>
+        <trans-unit id="EveryLine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Every line</target>
+        </trans-unit>
       </group>
     </body>
   </file>

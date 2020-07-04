@@ -12,7 +12,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 public static partial class CA
 {
-   
+    public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            l[i] = SH.RemoveAfterFirst(l[i], CharHelper.IsSpecial);
+        }
+        
+    }
 
     /// <summary>
     /// jagged = zubaty
@@ -34,6 +41,25 @@ public static partial class CA
                 result[i][j] = value[i, j];
         return result;
     }
+
+    public static List<string> LinesIndexes(List<string> cOnlyNamesBy10, int from, int to, bool indexedFrom1)
+    {
+        if (indexedFrom1)
+        {
+            from--;
+            to--;
+        }
+
+        List<string> s = new List<string>();
+
+        for (int i = from; i < to+1; i++)
+        {
+            s.Add(cOnlyNamesBy10[i]);
+        }
+
+        return s;
+    }
+
     // In order to convert any 2d array to jagged one
     // let's use a generic implementation
     public static List<List<int>> ToJagged( bool[,] value)

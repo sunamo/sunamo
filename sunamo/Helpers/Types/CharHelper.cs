@@ -8,7 +8,12 @@ public partial class CharHelper
 {
     public static bool IsSpecial(char c)
     {
-        return CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
+        bool v = CA.IsEqualToAnyElement<char>(c, AllChars.specialChars);
+        if (!v)
+        {
+            v = CA.IsEqualToAnyElement<char>(c, AllChars.specialChars2);
+        }
+        return v;
     }
 
     public static string OnlyDigits(string v)

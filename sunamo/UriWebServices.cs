@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -29,12 +30,12 @@ public partial class UriWebServices
 
     public static class Business
     {
-        public static readonly string wwwFirmoCz = "www.firmo.cz";
-        public static readonly string rejstrikPenizeCz = "rejstrik.penize.cz";
-        public static readonly string wwwFirmyCz = "www.firmy.cz";
-        public static readonly string rejstrikFiremKurzyCz = "rejstrik-firem.kurzy.cz";
-        public static readonly string wwwPodnikatelCz = "www.podnikatel.cz";
-        public static readonly string rejstrikyFinanceCz = "rejstriky.finance.cz";
+        public const string wwwFirmoCz = "www.firmo.cz";
+        public const string rejstrikPenizeCz = "rejstrik.penize.cz";
+        public const string wwwFirmyCz = "www.firmy.cz";
+        public const string rejstrikFiremKurzyCz = "rejstrik-firem.kurzy.cz";
+        public const string wwwPodnikatelCz = "www.podnikatel.cz";
+        public const string rejstrikyFinanceCz = "rejstriky.finance.cz";
 
 
         public static List<string> All = CA.ToListString(wwwFirmoCz, rejstrikPenizeCz, wwwFirmyCz, rejstrikFiremKurzyCz, wwwPodnikatelCz, rejstrikyFinanceCz);
@@ -201,6 +202,37 @@ public partial class UriWebServices
         public static readonly List<string> All = CA.ToListString(vratnepenize, tipli, plnapenezenka);
     }
 
+    public static class HorticultureWholeCzech
+    {
+        public const string wwwZahradnictviFlosCz = "https://www.zahradnictvi-flos.cz/vyhledavani/%s?productFilter-s%5B13%5D=%s";
+        public const string eshopStarklCom = "https://eshop.starkl.com/search/?q=%s";
+        public const string wwwHornbachCz = "https://www.hornbach.cz/shop/vyhledavani/sortiment/%s";
+        public const string wwwObiCz = "https://www.obi.cz/search/%s/";
+
+        public static readonly List<string> All = CA.ToListString(wwwZahradnictviFlosCz, eshopStarklCom, wwwHornbachCz, wwwObiCz);
+    }
+
+    public static class HorticultureHavirovAndSurroundings
+    {
+        public const string wwwZahradnictviporubaCz = "https://www.zahradnictviporuba.cz/";
+        public const string wwwKornerCz = "https://www.korner.cz";
+        public const string wwwHavlinaCz = "https://www.havlina.cz/";
+        public const string wwwZahradnictviSimkovaCz = "https://www.zahradnictvi-simkova.cz";
+        public const string zahradnictviDetmaroviceWebnodeCz = "https://zahradnictvi-detmarovice.webnode.cz/";
+        public const string wwwFrutoCz = "https://www.fruto.cz/";
+        public const string wwwZahradnictvikrhutCz = "https://www.zahradnictvikrhut.cz";
+        public const string wwwZupazCz = "https://www.zupaz.cz/";
+        public const string wwwVahamoCz = "https://www.vahamo.cz";
+        public const string eshopPasicCz = "https://eshop.pasic.cz";
+
+        public static List<string> All()
+        {
+            var fi = RH.GetConsts(typeof(HorticultureHavirovAndSurroundings));
+            var l = fi.Select(d => d.GetValue(null).ToString()).ToList();
+            return l;
+        }
+    }
+
     public static class EnglishMobileParts
     {
         /// <summary>
@@ -215,6 +247,7 @@ public partial class UriWebServices
         /// ae
         /// </summary>
         public const string aliexpress = "https://www.aliexpress.com/wholesale?SearchText=%s";
+
 
         public static readonly List<string> All = new List<string> { ebay, witrigs, aliexpress };
 
@@ -556,7 +589,7 @@ Template for which I will find, have to be in derivates the same:
     {
         foreach (var item in allRepairKitShops)
         {
-            if (opened % 10 == 0)
+            if (opened % 10 == 0 && opened != 0)
             {
                 Debugger.Break();
             }
@@ -564,6 +597,7 @@ Template for which I will find, have to be in derivates the same:
             opened++;
         }
     }
+
     //http://www.bdsluzby.cz/stavebni-cinnost/materialy.htm
 
     public static string GoogleMaps(string coordsOrAddress, string center, string zoom)
@@ -589,6 +623,12 @@ Template for which I will find, have to be in derivates the same:
     {
         // q for reviews in czech and not translated 
         return "https://www.google.cz/search?hl=cs&q=" + UrlEncode(s);
+    }
+
+    public static string GoogleSearchImages(string s)
+    {
+        // q for reviews in czech and not translated 
+        return "https://www.google.cz/search?hl=cs&tbm=isch&q=" + UrlEncode(s) ;
     }
 
     public static string GoogleSearchSite(string site, string v)

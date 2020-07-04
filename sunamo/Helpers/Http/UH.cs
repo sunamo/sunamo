@@ -90,6 +90,21 @@ public partial class UH
         return false;
     }
 
+    public static string RemoveTrackingPart(string v)
+    {
+        var r = SH.RemoveAfterFirst(v, "#utm_");
+        r = UH.RemovePrefixHttpOrHttps(r);
+        r = SH.RemoveAfterFirst(r, AllChars.slash);
+
+        if (r.Contains(AllStrings.dot))
+        {
+            return Consts.https + r;
+        }
+
+        return r;
+        //return v.Substring("#utm_source")
+    }
+
     /// <summary>
     /// A2 can be * - then return true for any domain
     /// </summary>

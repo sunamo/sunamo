@@ -53,43 +53,53 @@ public partial class FS
         List<string> list = new List<string>();
         foreach (var folder in folders)
         {
-
-            if (mask.Contains(AllStrings.sc))
+            if (!FS.ExistsDirectory(folder))
             {
-                //list = new List<string>();
-                var masces = SH.Split(mask, AllStrings.sc);
 
-                foreach (var item in masces)
-                {
-                    var masc = item;
-                    if (getFilesArgs.useMascFromExtension)
-                    {
-                        masc = FS.MascFromExtension(item);
-                    }
-                    try
-                    {
-                        list.AddRange(Directory.GetFiles(folder, masc, searchOption));
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-                }
             }
             else
             {
+                if (mask.Contains(AllStrings.sc))
+                {
+                    //list = new List<string>();
+                    var masces = SH.Split(mask, AllStrings.sc);
 
-                try
-                {
-                    var masc = mask;
-                    if (getFilesArgs.useMascFromExtension)
+                    foreach (var item in masces)
                     {
-                        masc = FS.MascFromExtension(mask);
+                        var masc = item;
+                        if (getFilesArgs.useMascFromExtension)
+                        {
+                            masc = FS.MascFromExtension(item);
+                        }
+                        try
+                        {
+                            list.AddRange(Directory.GetFiles(folder, masc, searchOption));
+                        }
+                        catch (Exception)
+                        {
+                        }
+
                     }
-                    list.AddRange(Directory.GetFiles(folder, masc, searchOption));
                 }
-                catch (Exception ex)
+                else
                 {
+
+                    try
+                    {
+                        var folder3 = FS.WithoutEndSlash(folder);
+                        DirectoryInfo di = new DirectoryInfo(folder3);
+                        var masc = mask;
+                        if (getFilesArgs.useMascFromExtension)
+                        {
+                            masc = FS.MascFromExtension(mask);
+                        }
+
+                        //list.AddRange(Directory.GetFiles(folder3, masc, searchOption));
+                        list.AddRange(di.GetFiles(masc, searchOption).Select(d=>d.FullName));
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                 }
             }
         }

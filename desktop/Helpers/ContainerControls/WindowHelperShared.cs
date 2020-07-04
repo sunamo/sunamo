@@ -33,6 +33,7 @@ public partial class WindowHelper{
         ShowTextResult result = new ShowTextResult(methodName + dump);
         result.ChangeDialogResult += Result_ChangeDialogResult;
         windowOpener = Application.Current.MainWindow as IWindowOpener;
+
         if (windowOpener == null)
         {
             MessageBox.Show(sess.i18n(XlfKeys.MainWindowMustBeIWindowOpenerDueToShowExceptions));

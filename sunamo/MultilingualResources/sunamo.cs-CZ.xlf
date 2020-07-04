@@ -4332,6 +4332,14 @@
           <source></source>
           <target state="translated">pro aplikaci</target>
         </trans-unit>
+        <trans-unit id="CodeSearch" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hledání kódu</target>
+        </trans-unit>
+        <trans-unit id="EveryLine" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Každý řádek</target>
+        </trans-unit>
       </group>
     </body>
   </file>

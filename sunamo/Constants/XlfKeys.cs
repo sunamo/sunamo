@@ -6,8 +6,10 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
-	public const string forApplication = "forApplication"; 
+	public const string EveryLine = "EveryLine"; 
 
+	public const string CodeSearch = "CodeSearch"; 
+	public const string forApplication = "forApplication"; 
 	public const string monthlySubscription = "monthlySubscription"; 
 	public const string InAttachmentIsJoinedActualTermsOfUse = "InAttachmentIsJoinedActualTermsOfUse"; 
 	public const string ThankYouForYourPurchase = "ThankYouForYourPurchase"; 

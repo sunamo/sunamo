@@ -48,11 +48,12 @@ public static partial class CSharpHelper
             Uri u = new Uri(item);
             string name = ConvertPascalConvention.ToConvention(u.Host);
             dict.Add(name, item);
+            all.Add(name);
         }
 
         CreateConsts(csg, dict);
 
-        csg.List(2, "string", "All", all, new CSharpGeneratorArgs { addHyphens = true });
+        csg.List(2, "string", "All", all, new CSharpGeneratorArgs { addHyphens = false });
 
         return csg.ToString();
     }
@@ -68,7 +69,6 @@ public static partial class CSharpHelper
     {
         foreach (var item in dict)
         {
-
             csg.Field(2, AccessModifiers.Public, true, VariableModifiers.Mapped, "string", item.Key, true, item.Value);
         }
         

@@ -99,9 +99,13 @@ public partial class PH
     /// <param name = "v"></param>
     public static void StartAllUri(List<string> carModels, string v)
     {
-        foreach (var item in carModels)
+        for (int i = 0; i < carModels.Count; i++)
         {
-            Uri(UH.AppendHttpIfNotExists(UriWebServices.FromChromeReplacement(v, item)));
+            if (i % 10 == 0 && i != 0)
+            {
+                //Debugger.Break();
+            }
+            Uri(UH.AppendHttpIfNotExists(UriWebServices.FromChromeReplacement(v, carModels[i])));
         }
     }
 

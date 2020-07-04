@@ -8,7 +8,7 @@ using System;
 /// </summary>
 public class InstantSB //: StringWriter
 {
-    public StringBuilder sb = new StringBuilder();
+    public static StringBuilder sb = new StringBuilder();
     private string _tokensDelimiter;
 
     public InstantSB(string znak)
@@ -88,5 +88,10 @@ public class InstantSB //: StringWriter
     public void RemoveEndDelimiter()
     {
         sb.Remove(sb.Length - _tokensDelimiter.Length, _tokensDelimiter.Length);
+    }
+
+    public void Clear()
+    {
+        sb.Clear();
     }
 }

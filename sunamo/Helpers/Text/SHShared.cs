@@ -54,6 +54,19 @@ public static partial class SH
         return true;
     }
 
+    public static string RemoveAfterFirst(string v, Func<char, bool> isSpecial)
+    {
+        v = v.Trim();
+        for (int i = 0; i < v.Length; i++)
+        {
+            if (isSpecial(v[i]))
+            {
+                return v.Substring(0, i);
+            }
+        }
+        return v;
+    }
+
 
     /// <summary>
     /// Nothing can be null

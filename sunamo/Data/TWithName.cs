@@ -6,6 +6,9 @@ using System.Text;
 public class TWithName<T>
 {
     public T t = default(T);
+    /// <summary>
+    /// Just first 5. letters
+    /// </summary>
     public string name = string.Empty;
 
     public override string ToString()

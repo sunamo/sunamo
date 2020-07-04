@@ -94,6 +94,7 @@ public class XlfResourcesH
     /// <returns></returns>
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory, IAppDataBase<StorageFolder, StorageFile> appData)
     {
+        
         if (previousKey == key && previousKey != null)
         {
             return null;

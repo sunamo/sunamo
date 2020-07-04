@@ -219,6 +219,7 @@
     <Compile Include="Constants\Paths\ExecutablePaths.cs" />
     <Compile Include="Constants\Paths\SourceCodePaths.cs" />
     <Compile Include="Constants\Paths\TemporaryPaths.cs" />
+    <Compile Include="Constants\Paths\TodoPaths.cs" />
     <Compile Include="Constants\RuntimeFrameworks.cs" />
     <Compile Include="Constants\SunamoStrings.cs" />
     <Compile Include="Constants\UnicodeWhiteToVisible.cs" />
@@ -691,6 +692,7 @@
     <Compile Include="RL\ResourceLoaderRL.cs" />
     <Compile Include="sess.cs" />
     <Compile Include="Storage\ApplicationDataText.cs" />
+    <Compile Include="StringBuilderSlow.cs" />
     <Compile Include="Structs\PixelColor.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamo.cs" />
     <Compile Include="SunamoCode\XmlLocalisationInterchangeFileFormatSunamoShared.cs" />

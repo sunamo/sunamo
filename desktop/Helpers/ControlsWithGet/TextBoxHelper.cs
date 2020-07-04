@@ -29,6 +29,19 @@ namespace desktop
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="txt"></param>
+        /// <returns></returns>
+        public static int VisibleLineCount(TextBox txt)
+        {
+            var f = txt.GetFirstVisibleLineIndex();
+            var l = txt.GetLastVisibleLineIndex();
+
+            return l - f;
+        }
+
         public static void RegisterHighlightAllTextBox()
         {
             EventManager.RegisterClassHandler(typeof(TextBox),

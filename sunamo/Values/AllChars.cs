@@ -48,9 +48,12 @@ public static class AllChars
     #endregion
 
     public static readonly List<char> specialChars = new List<char>(new char[] { excl, commat, num, dollar, percnt, Hat, amp, ast, quest, lowbar, tilda });
+    /// <summary>
+    /// 2020-07-4 added slash
+    /// </summary>
     public static readonly List<char> specialChars2 = new List<char>(new char[] {  lq, rq, dash, la, ra,
     comma, period, colon, apos, rpar, sol, lt, gt, lcub, rcub, lsqb, verbar, semi, plus, rsqb, 
-        ndash });
+        ndash, slash });
     public static readonly List<char> specialCharsWhite = new List<char>(new char[] { space });
     public static readonly List<char> specialCharsNotEnigma = new List<char>(new char[] { nbsp, space160, copy });
     /// <summary>

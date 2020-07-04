@@ -55,6 +55,22 @@ public class SheetsHelper
     }
 
     /// <summary>
+    /// A1 can be null
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    public static List<string> SplitFromGoogleSheetsRow(string input, bool removeEmptyElements )
+    {
+        var r =SplitFromGoogleSheets(input);
+        if (removeEmptyElements)
+        {
+            CA.RemoveStringsEmpty2(r);
+        }
+        return r;
+    }
+
+    /// <summary>
     /// If A1 null, take from clipboard
     /// </summary>
     /// <param name="input"></param>

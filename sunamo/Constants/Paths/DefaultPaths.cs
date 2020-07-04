@@ -6,6 +6,8 @@ namespace sunamo.Constants
 {
     public class DefaultPaths
     {
+        
+
         public const string KeysXlf = @"D:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Enums\KeysXlf.cs";
         public const string capturedUris = @"C:\Users\Administrator\AppData\Roaming\sunamo\SunamoCzAdmin\Data\SubsSignalR\CapturedUris.txt";
         public const string DllSunamo = @"d:\Documents\Visual Studio 2017\Projects\sunamo\dll\";
