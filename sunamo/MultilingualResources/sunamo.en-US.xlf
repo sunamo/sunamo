@@ -11000,7 +11000,7 @@ A fraternal form of manifestation is the bliss</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
           
-          <target state="translated">The password must be at least 20 characters long</target>
+          <target state="translated">The password must be between 10-20 characters long</target>
         </trans-unit>
         <trans-unit id="By" translate="no" xml:space="preserve">
           
@@ -13298,6 +13298,15 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Every line</target>
         </trans-unit>
+        <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">App will be your in one minute</target>
+        </trans-unit>
+        <trans-unit id="HassleFreeOneClickBuy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Hassle-free One-Click buy</target>
+        </trans-unit>
+
       </group>
     </body>
   </file>

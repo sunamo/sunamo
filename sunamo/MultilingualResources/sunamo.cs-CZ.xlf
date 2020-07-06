@@ -4340,6 +4340,34 @@
           <source></source>
           <target state="translated">Každý řádek</target>
         </trans-unit>
+        <trans-unit id="AppWillBeYourInOneMinute" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Aplikace bude Vaše za minutu</target>
+        </trans-unit>
+        <trans-unit id="HassleFreeOneClickBuy" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zrychlený nákup</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeCharactersLong" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí být dlouhé 10-20 znaků</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí mít nejméně 2 číslice</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo musí obsahovat alespoň jeden zvláštní znak (!, @, #, $,%, ^, &amp;, *,</target>
+        </trans-unit>
+        <trans-unit id="PasswordCannotBeEmpty" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo nemůže být prázdné</target>
+        </trans-unit>
+        <trans-unit id="ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Heslo je silné a ve správném formátu. Vaše heslo je</target>
+        </trans-unit>
       </group>
     </body>
   </file>

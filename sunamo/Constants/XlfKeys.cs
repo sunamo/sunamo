@@ -6,8 +6,11 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string ThePasswordMustBeAtLeastDigitsLong = "ThePasswordMustBeAtLeastDigitsLong"; 
+	public const string ThePasswordMustBeCharactersLong = "ThePasswordMustBeCharactersLong"; 
+	public const string HassleFreeOneClickBuy = "HassleFreeOneClickBuy"; 
+	public const string AppWillBeYourInOneMinute = "AppWillBeYourInOneMinute"; 
 	public const string EveryLine = "EveryLine"; 
-
 	public const string CodeSearch = "CodeSearch"; 
 	public const string forApplication = "forApplication"; 
 	public const string monthlySubscription = "monthlySubscription"; 
