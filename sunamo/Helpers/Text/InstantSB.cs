@@ -8,7 +8,7 @@ using System;
 /// </summary>
 public class InstantSB //: StringWriter
 {
-    public static StringBuilder sb = new StringBuilder();
+    public StringBuilder sb = new StringBuilder();
     private string _tokensDelimiter;
 
     public InstantSB(string znak)
