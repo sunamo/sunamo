@@ -27,9 +27,4 @@ public static bool IsUserAdministrator()
     }
     return isAdmin;
 }
-
-    public static bool IsMyComputer()
-    {
-        return MyPc.Instance.IsMyComputer();
-    }
 }
