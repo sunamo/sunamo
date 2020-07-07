@@ -16,5 +16,6 @@ public class CheckArgumentArgs
     public CheckArgumentArgs(string argName, StringBuilder sb)
     {
         this.argName = argName;
+        this.sb = sb;
     }
 }

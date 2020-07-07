@@ -678,7 +678,6 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
 
             PrintDebugParameters(comm);
 
-
             var result = comm.ExecuteNonQuery();
             conn.Close();
             return result;

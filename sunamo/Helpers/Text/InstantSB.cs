@@ -16,8 +16,6 @@ public class InstantSB //: StringWriter
         _tokensDelimiter = znak;
     }
 
-    
-
     public int Length => sb.Length;
 
     public override string ToString()

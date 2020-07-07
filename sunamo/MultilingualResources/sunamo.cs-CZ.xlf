@@ -1598,7 +1598,7 @@
         </trans-unit>
         <trans-unit id="NotLogined" translate="no" xml:space="preserve">
           
-          <target state="translated">Není přihlášen</target>
+          <target state="translated">Nejste přihlášení</target>
         </trans-unit>
         <trans-unit id="CopyImageLinkIntoTheClipboard" translate="no" xml:space="preserve">
           
@@ -4367,6 +4367,14 @@
         <trans-unit id="ThePasswordIsStrongAndInTheCorrectFormatYourPasswordIs" translate="no" xml:space="preserve">
           <source></source>
           <target state="translated">Heslo je silné a ve správném formátu. Vaše heslo je</target>
+        </trans-unit>
+        <trans-unit id="ShowPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Zobrazit heslo</target>
+        </trans-unit>
+        <trans-unit id="showPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">zobrazit heslo</target>
         </trans-unit>
       </group>
     </body>

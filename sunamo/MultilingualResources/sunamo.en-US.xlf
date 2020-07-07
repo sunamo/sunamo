@@ -13306,7 +13306,14 @@ A fraternal form of manifestation is the bliss</target>
           <source></source>
           <target state="translated">Hassle-free One-Click buy</target>
         </trans-unit>
-
+        <trans-unit id="ShowPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">Show password</target>
+        </trans-unit>
+        <trans-unit id="showPassword" translate="no" xml:space="preserve">
+          <source></source>
+          <target state="translated">show password</target>
+        </trans-unit>
       </group>
     </body>
   </file>

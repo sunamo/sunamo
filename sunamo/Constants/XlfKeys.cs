@@ -6,6 +6,9 @@ using System.Text;
 /// </summary>
 public class XlfKeys
 {
+	public const string showPassword = "showPassword"; 
+
+	public const string ShowPassword = "ShowPassword"; 
 	public const string ThePasswordMustBeAtLeastDigitsLong = "ThePasswordMustBeAtLeastDigitsLong"; 
 	public const string ThePasswordMustBeCharactersLong = "ThePasswordMustBeCharactersLong"; 
 	public const string HassleFreeOneClickBuy = "HassleFreeOneClickBuy"; 
