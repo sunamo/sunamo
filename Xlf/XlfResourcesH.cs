@@ -123,7 +123,7 @@ public class XlfResourcesH
         //    exists = FS.ExistsDirectory(path);
         //}
 
-        exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
+        exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName, isVps);
         
         if (appData == null)
         {
@@ -183,7 +183,7 @@ public class XlfResourcesH
 
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, ExistsDirectory existsDirectory)
     {
-        return SaveResouresToRL<StorageFolder, StorageFile>(key, basePath, existsDirectory, null);
+        return SaveResouresToRL<StorageFolder, StorageFile>(key, basePath, existsDirectory, null, isVps);
     }
     public static Dictionary<string, string> LoadXlfDocument(string file)
     {

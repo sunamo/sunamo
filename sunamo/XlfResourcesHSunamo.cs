@@ -10,7 +10,7 @@ public class XlfResourcesHSunamo
     public static void SaveResouresToRLSunamo()
     {
         
-        SaveResouresToRLSunamo(null);
+        SaveResouresToRLSunamo(null, isVps);
     }
 
     /// <summary>
@@ -19,11 +19,12 @@ public class XlfResourcesHSunamo
     /// </summary>
     public static string SaveResouresToRLSunamo(string key)
     {
-        return XlfResourcesH.SaveResouresToRL<string, string>(key, DefaultPaths.sunamoProject, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci);
+        return XlfResourcesH.SaveResouresToRL<string, string>(key, DefaultPaths.sunamoProject, new ExistsDirectory(FS.ExistsDirectoryNull), AppData.ci, isVps);
     }
 
     static XlfResourcesHSunamo()
     {
         TranslateDictionary.ReloadIfKeyWontBeFound = SaveResouresToRLSunamo;
+        TranslateDictionary.isVps = VpsHelperSunamo.IsVpsMethod;
     }
 }

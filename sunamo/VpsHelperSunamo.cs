@@ -19,6 +19,11 @@ public class VpsHelperSunamo
         }
     }
 
+    public static bool IsVpsMethod()
+    {
+        return IsVps;
+    }
+
     public static string SunamoSln()
     {
         if (IsVps)

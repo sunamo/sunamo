@@ -1,4 +1,5 @@
 ﻿using sunamo.Essential;
+using System;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
@@ -28,7 +29,7 @@ namespace desktop.Controls
         /// </summary>
         /// <param name="updateUri"></param>
         /// <param name="appUri"></param>
-        public AboutApp(string updateUri, string appUri, string appName)
+        public AboutApp(string updateUri, string appUri, string appName, Action<string, string, string> CheckNewVersion)
         {
             this.InitializeComponent();
 
@@ -77,6 +78,8 @@ namespace desktop.Controls
             //var itemsPanel = wg.ItemsPanel;
             ////var ipt = itemsPanel.te
             //var d = wg;
+
+            this.CheckNewVersion = CheckNewVersion;
         }
 
         public Size MaxContentSize
@@ -92,6 +95,8 @@ namespace desktop.Controls
                 FrameworkElementHelper.SetMaxContentSize(this, value);
             }
         }
+
+        public  Action<string, string, string> CheckNewVersion;
 
         public bool? DialogResult { set => RuntimeHelper.EmptyDummyMethod(); }
 
@@ -119,21 +124,7 @@ namespace desktop.Controls
 
         private void btnCheckNewVersion_Click(object sender, RoutedEventArgs e)
         {
-            var r = HttpRequestHelper.GetResponseText(updateUri + actualVersion, HttpMethod.Get, new HttpRequestData { });
-            if (r != string.Empty)
-            {
-                ThisApp.SetStatus(TypeOfMessage.Information, "Is available new version: " + r);
-                var uri =  UriWebServices.FromChromeReplacement(UriWebServices.SunamoCz.appsApp, appUri);
-                if (!WindowsSecurityHelper.IsMyComputer())
-                {
-                    uri = SubdomainHelper.LocalhostToVps(uri);
-                }
-                PH.Start(uri);
-            }
-            else
-            {
-                ThisApp.SetStatus(TypeOfMessage.Information, sess.i18n(XlfKeys.YouHaveLastPublishedVersion));
-            }
+            CheckNewVersion(updateUri, actualVersion, appUri);
         }
     }
 }

@@ -70,7 +70,6 @@ public class VpsHelper
                 }
 
                 ClipboardHelper.SetText(gitBashBuilder.ToString());
-            
         }
     }
 
@@ -78,8 +77,6 @@ public class VpsHelper
 
     public static void PullAll()
     {
-        
-
         if (IsVps)
         {
             var gitBashBuilder = new GitBashBuilder();
