@@ -1634,12 +1634,20 @@ public partial class MSStoredProceduresIBase : SqlServerHelper
     /// <summary>
     /// 
     /// </summary>
-    public List<string> SelectGetAllTablesInDB()
+    public List<string> SelectGetAllTablesInDB(string dbName = null)
     {
-        
+        if (string.IsNullOrEmpty(dbName))
+        {
+            dbName = string.Empty;
+        }
+        else
+        {
+            dbName = dbName + ".";
+        }
+
         List<string> vr = new List<string>();
         DataTable dt = null;
-        dt = SelectDataTableSelective("INFORMATION_SCHEMA.TABLES", "TABLE_NAME", "TABLE_TYPE", "BASE TABLE");
+        dt = SelectDataTableSelective(dbName + "INFORMATION_SCHEMA.TABLES", "TABLE_NAME", "TABLE_TYPE", "BASE TABLE");
         //dt = SelectDataTable(new SqlCommand("dbo.sp_GetAllTables"));
         //dt = SelectDataTableSP("sp_GetAllTables");
         foreach (DataRow item in dt.Rows)

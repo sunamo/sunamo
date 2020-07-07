@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -165,7 +165,6 @@
     <Compile Include="WriterEventLogShared.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_ToNetStd16\" />
     <Folder Include="Collections\Converters\" />
     <Folder Include="Converts\" />
     <Folder Include="Database\" />
@@ -175,12 +174,9 @@
     <Folder Include="Resources2\" />
     <Folder Include="SqLite\" />
     <Folder Include="SunamoCode\" />
+    <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj">
-      <Project>{20d0420a-dc10-4bfb-a663-146daaa8df8b}</Project>
-      <Name>Scz</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSecFw.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
