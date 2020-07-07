@@ -5,24 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
 
-public class VpsHelperSunamo
+public partial class VpsHelperSunamo
 {
-    public const string path = @"c:\_";
+    
     public const string ip = "46.36.40.198";
     public const string ipMyPoda = "85.135.38.18";
 
-    public static bool IsVps
-    {
-        get
-        {
-            return FS.ExistsDirectory(path);
-        }
-    }
-
-    public static bool IsVpsMethod()
-    {
-        return IsVps;
-    }
+    
 
     public static string SunamoSln()
     {

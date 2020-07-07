@@ -21,9 +21,8 @@ public class TranslateDictionary : IDictionary<string, string>
         _l = l;
     }
 
-    public static Func<string, Func< bool>, string> ReloadIfKeyWontBeFound;
+    public static Func<string,  string> ReloadIfKeyWontBeFound;
     public static Action<string> ShowMb;
-    public static ;
 
     public string this[string key]
     {
@@ -43,7 +42,7 @@ public class TranslateDictionary : IDictionary<string, string>
                 {
                     return ThrowNotFoundError(key, "ReloadIfKeyWontBeFound is null.");
                 }
-                var k = ReloadIfKeyWontBeFound(key, isVps);
+                var k = ReloadIfKeyWontBeFound(key);
 
                 if (!_d.ContainsKey(key))
                 {
