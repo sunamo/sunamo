@@ -11,7 +11,11 @@ public partial class VpsHelperSunamo
     public const string ip = "46.36.40.198";
     public const string ipMyPoda = "85.135.38.18";
 
-    
+    public static string LocationOfSqlBackup(string s)
+    {
+        var p = @"c:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\"+s+".bak";
+        return p;
+    }
 
     public static string SunamoSln()
     {
