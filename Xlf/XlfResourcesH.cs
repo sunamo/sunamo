@@ -114,15 +114,6 @@ public class XlfResourcesH
 
         var exists = false;
 
-        //if (PlatformInteropHelper.IsUwpWindowsStoreApp())
-        //{
-        //    // keep exists on false
-        //}
-        //else
-        //{
-        //    exists = FS.ExistsDirectory(path);
-        //}
-
         exists = WinSecHelper.IsMyComputer(SczSecureCodesWinSec.winAccountUserName, SczSecureCodesWinSec.machineName);
         
         if (appData == null)
