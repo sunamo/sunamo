@@ -14,6 +14,7 @@ public partial class FS{
     /// <summary>
     /// Dont check for size
     /// Into A2 is good put true - when storage was fulled, all new files will be written with zero size. But then failing because HtmlNode as null - empty string as input
+    /// But when file is big, like backup of DB, its better false.. Then will be avoid reading whole file to determining their size and totally blocking HW resources on VPS
     /// </summary>
     /// <param name="selectedFile"></param>
     public static bool ExistsFile(string selectedFile, bool falseIfSizeZeroOrEmpty = true)
