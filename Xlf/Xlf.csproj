@@ -44,6 +44,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\_Selling\Selling\packages\System.Security.Principal.Windows.4.4.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -65,7 +68,7 @@
     <Compile Include="XlfResourcesHUwp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSec.csproj">
+    <ProjectReference Include="E:\Documents\Visual Studio 2017\Projects\CredentialsWithoutDep\WinSecFw\WinSecFw.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
     </ProjectReference>
@@ -81,6 +84,9 @@
   <ItemGroup>
     <Folder Include="Scz\" />
     <Folder Include="Values\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

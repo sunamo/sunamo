@@ -177,7 +177,7 @@
     <Folder Include="_ToNetStd16\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CredentialsWithoutDep\WinSecFw\WinSec.csproj">
+    <ProjectReference Include="E:\Documents\Visual Studio 2017\Projects\CredentialsWithoutDep\WinSecFw\WinSecFw.csproj">
       <Project>{f9251321-d780-44b1-b590-5cb9d34fb724}</Project>
       <Name>WinSec</Name>
     </ProjectReference>
