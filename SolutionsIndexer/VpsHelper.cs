@@ -24,8 +24,9 @@ public class VpsHelper
     }
 
     static PushSolutionsData pushSolutionsData = new PushSolutionsData();
-    public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVps.txt"));
-    public static PpkOnDrive listMain = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsMain.txt"));
+    //public static PpkOnDrive list = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVps.txt"));
+    //public static PpkOnDrive listMain = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsMain.txt"));
+    public static PpkOnDrive listVpsNew = new PpkOnDrive(AppData.ci.GetFile(AppFolders.Data, "SlnVpsNew.txt"));
 
     public static void PushAll()
     {
@@ -62,7 +63,7 @@ public class VpsHelper
 
                 var gitBashBuilder = new GitBashBuilder();
                 var gitStatus = new GitBashBuilder();
-                foreach (var sln in list)
+                foreach (var sln in listVpsNew)
                 {
                     var sln2 = SolutionsIndexerHelper.SolutionWithName(sln);
                     var item = sln2.fullPathFolder;
@@ -96,7 +97,7 @@ public class VpsHelper
 
             GitBashBuilder gitBashBuilder = new GitBashBuilder();
 
-            foreach (var item in list)
+            foreach (var item in listVpsNew)
             {
                 var sln = SolutionsIndexerHelper.SolutionWithName(item);
                 if (sln != null)

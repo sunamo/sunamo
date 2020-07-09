@@ -517,7 +517,7 @@
     <Compile Include="XamlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo.notmine\SearchTextBox\SearchTextBox.csproj">
+    <ProjectReference Include="..\..\sunamo.notmine.web\SearchTextBox\SearchTextBox.csproj">
       <Project>{a3082956-9ee4-4b35-9b4e-b07d0c4c8b56}</Project>
       <Name>SearchTextBox</Name>
     </ProjectReference>

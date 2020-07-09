@@ -84,4 +84,44 @@ public partial class FS{
         ext = ext.TrimStart(AllChars.dot);
         return SH.ContainsOnly(ext, RandomHelper.vsZnakyWithoutSpecial);
     }
+
+    public static string PathSpecialAndLevel(string basePath, string item, int v)
+    {
+        basePath = basePath.Trim(AllChars.bs);
+        
+        item = item.Trim(AllChars.bs);
+
+        item = item.Replace(basePath, string.Empty);
+        var pBasePath = SH.Split(basePath, AllStrings.bs);
+        var basePathC = pBasePath.Count;
+
+        var p = SH.Split(item, AllStrings.bs);
+        int i = 0;
+        for (; i < p.Count; i++)
+        {
+            if (p[i].StartsWith(AllStrings.lowbar))
+            {
+                pBasePath.Add(p[i]);
+            }
+            else
+            {
+                //i--;
+                break;
+            }
+        }
+        for (int y = 0; y < i; y++)
+        {
+            p.RemoveAt(0);
+        }
+
+        var h = p.Count - i + basePathC;
+        var to = Math.Min(v, h);
+        i = 0;
+        for (; i < to; i++)
+        {
+            pBasePath.Add(p[i]);
+        }
+
+        return SH.Join(AllStrings.bs, pBasePath);
+    }
 }
