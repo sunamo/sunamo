@@ -33,6 +33,7 @@ namespace desktop.Controls.Collections
     public partial class CheckBoxListUC : UserControl
         , IControlWithResultDebug, IUserControlWithSizeChange,IUserControl, IKeysHandler
     {
+        //dynamic searchTextBox = new object();
         public static Type type = typeof(CheckBoxListUC);
         #region IControlWithResult implementation
         public bool? DialogResult
