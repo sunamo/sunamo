@@ -17,10 +17,5 @@ public partial class VpsHelperSunamo
             return Directory.Exists(path);
         }
     }
-
-    public static bool IsVpsMethod()
-    {
-        return IsVps;
-    } 
     #endregion
 }
