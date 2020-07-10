@@ -6650,7 +6650,7 @@
           <target>Password cannot be empty</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustHaveAtLeastOneSpecialCharacter">
-          <target>The password must have at least one special character (!, @, #, $,%, ^, &amp;, *,</target>
+          <target>The password must have at least one special character (!, @, #, $,%, ^, &amp;, *</target>
         </trans-unit>
         <trans-unit id="ThePasswordMustBeAtLeast2DigitsLong">
           <target>The password must be at least 2 digits long</target>
